@@ -51809,3 +51809,207 @@ one frozen HASH permutation — never breadth across unseen action
 types, never broad OOD generalization); next design gets its own
 GO and prereg;
 after booking commit/push, census, STOP.
+
+## PRE-REG MATH-CYBER-1-SVP-STRICT-GRID-CHALLENGE-DESIGN-1: successor to the DESIGN-0 NO-FIRE — the SAME matched-grid scientific and inferential law re-registered unchanged, over larger completely fresh horizons (CH-F3 144, CH-F4 576; 720 bases, 2,160 qualification parents); one materialization, frozen fill gate, mechanical selection (2026-08-27, Mac)
+
+Per outside GO (GPT via Artin, 2026-08-27). Zero
+model/checkpoint access, zero inference under this GO; scoring
+is a separate explicit GO. DESIGN-0 (RESULTS.md#L51720) stays
+booked PERMANENTLY as a legitimate preregistered NO-FIRE, never
+reinterpreted as a pass.
+
+ASSESSMENT (from the booked record, confirmed against source):
+constructibility NO-failure (240/240 bases qualified,
+block_fail_census empty), teacher-law NO-failure,
+ActionProgram/code NO-failure, held-out-cell NO-failure (CH-F4
+t2/t3 = 12/20 at-or-above bar), matching-law NO-failure; the
+sole failed assumption was CH-F4|t1 CONTROL-cell yield (4 < 12).
+The construct is robust; only the fill assumption broke.
+
+LAW RE-REGISTERED VERBATIM-IN-SUBSTANCE from the DESIGN-0 prereg
+(RESULTS.md#L51519, unconsumed there — no decisions bytes ever
+existed, no model access occurred): families CH-F3/CH-F4; term
+strata t1 covered/covered site-shift control, t2/t3 strict
+held-out; N = 12 per {family x term}; selection = first 12
+qualified by SHA256(base_signature) per stratum; matched site
+variants (I0 same-term covered v I1 same-term target); t2/t3 I1
+= STRICT-WITHIN-RULE-RECOMBINATION under the booked semantic
+ontology (re-gated in-run); block qualification = all three
+distractor variants (x**x, 1/(x+log(x)), sin(sin(x))) pass
+stable legal set, unique frozen teacher label by the argmin
+(hce, name, key) law, chosen rule i_unprod with
+site_kind/param_kind (I, term_index), identical term_index
+across variants, measured ordinals 1/1/0, complete exact
+ActionProgram derivation, no program collision, tokenizer
+roundtrip, CTX-4096 fit, FACTOR and HASH exact roundtrip, code
+domain fit — no constructor intent ever substitutes for teacher
+output. PROHIBITIONS carried: no N lowering, no family pooling,
+no CH-F4|t1 removal, no term0 substitution, no unequal family
+strata, no primary-scoring-law change — the DESIGN-0 NO-FIRE is
+exactly why these protections exist.
+
+FROZEN FILL GATE (verbatim): qualified_count >= 12 for every
+{family in {CH-F3, CH-F4}} x {term in {1,2,3}}; ANY short
+stratum => CHALLENGE NO-FIRE again — no horizon extension after
+seeing counts, no second-stage top-up, no retry-until-12; the
+complete finite horizon runs exactly once. The full base census
+is persisted (blocks.jsonl) before the fill decision, and
+blocks_sha/decisions_sha are receipt fields on every
+RECEIPT-WRITING exit path — NO-FIRE, GATE-REFUTED, MATERIALIZED
+(closing the DESIGN-0 receipt-audit should-fix); pre-mkdir
+aborts (pin mismatch, bank-freshness or semantic-gate failure,
+smoke-staleness) are receiptless SystemExits by design, before
+any artifact exists.
+
+DESIGN-0 AS BURNED YIELD PILOT (registered): the fresh CH-F4
+census t0..t5 = 24/4/12/20/28/8 over 96 qualified bases prices
+CARDINALITY ONLY — no parameter combination is chosen for
+known-t1 yield, and the successor bank is a full deterministic
+product space fixed before any engine qualification (builder
+EXECUTED pre-commit: 720 bases, zero duplicate signatures, zero
+duplicate target integrands, all CH-F4 pairs/frequencies
+gate-checked disjoint from the burned sets).
+
+FROZEN FRESH HORIZONS:
+  CH-F3 (same lineage), 144 bases:
+    f_t = expand(d/dx[P*T(c*x)]) + Integral(w, x) + first-k
+    polys; P in {x^6, x^5+x, x^5+x^2, x^4+x^3, x^6+x^2,
+    x^5+x^3}; T in {sin, cos}; c in {6, 7}; w in {exp(x)/x,
+    sin(x)/x}; k in {0,1,2} over fresh polys (3*x, 11*x^4).
+    6*2*2*2*3 = 144. Disjoint from the pilot and DESIGN-0 CH-F3
+    banks on P, c, and polys simultaneously.
+  CH-F4 (the same construction family — two derivative
+  components + inner Integral(w,x); broad fresh variation, not a
+  narrow frequency repeat), 576 bases:
+    f_t = expand(d/dx[P1*T1(a*x)]) + expand(d/dx[P2*T2(b*x)])
+          + Integral(w, x)
+    24 fresh (P1,P2) pairs (enumerated in the committed driver;
+    gate-checked disjoint from the 5 pilot + 12 DESIGN-0 pairs);
+    (a,b) in {(6,7),(7,6),(7,4),(4,7),(6,5),(5,6)} (disjoint
+    from all burned frequency pairs); (T1,T2) in {(sin,cos),
+    (cos,sin)} — a trig-assignment NUISANCE axis that does not
+    alter the semantic question; w in {exp(x)/x, sin(x)/x}.
+    24*6*2*2 = 576.
+  The 2,160 figure is the parent BUDGET — a base's later
+  variants are not attempted after its first failing variant;
+  the accounting unit is the base (as at DESIGN-0).
+  PRICING REGISTER (explicitly NOT an IID/binomial claim and NOT
+  a guarantee — term index is deterministic under constructor
+  parameters): DESIGN-0 fresh t1 yield 4/96; the 6x horizon
+  prices ~24 t1 bases v the frozen N=12, buying prespecified
+  margin relative to the observed fresh yield. NO-FIRE remains
+  the protection if the transport fails again.
+
+BURN / NOVELTY LAW: pins now include
+logs/mathworld1/svpchal/blocks.jsonl (sha 21e7e635...) and
+svpchal_receipt.json (literal sha pin 0f58517b..., matching its
+receipts.lock.json row) plus all four grid-desk receipts, three band decisions
+files, and the training shard. Zero exact visible-cur overlap
+required against: training parents, band1/2/3, SPACE-1/2/3/4
+(566 pilot parents), and ALL DESIGN-0 bases x all three parent
+variants (the 720 DESIGN-0 parents are RECONSTRUCTED
+deterministically from the frozen committed DESIGN-0 builder —
+blocks.jsonl carries no cur field — and gate-counted 720). Zero
+duplicate base signatures; zero duplicate selected curs; zero
+duplicate target integrands within the horizon. Overlap of
+selected target integrands with training/band curs is REPORTED
+separately, never silently excluded.
+
+SELECTION + FINAL STRUCTURE (gated exactly before any decisions
+byte): first 12 by sig sha per stratum; D_before alternates
+x**x / 1/(x+log(x)) in hash order (exact 6/6 per stratum,
+gated); 2 families x 3 terms x 12 = 72 blocks; x2 scored site
+states = 144 frozen primary challenge decisions = 48 held-out I1
+(t2+t3), 48 matched covered I0 (t2+t3), 24 control-I0 + 24
+control-I1 (t1); + 72 robustness-I1 states flagged non-primary
+and excluded from primary scoring. Any count mismatch, balance
+failure, duplicate, or novelty hit writes a GATE-REFUTED receipt
+and stops.
+
+INFERENTIAL LAW RE-REGISTERED VERBATIM from DESIGN-0 (permitted
+because zero challenge bytes and zero model access existed
+there): the next GO scores CANONICAL-340 (descriptive bridge),
+FACTOR and HASH (primary) — sealed seed12001 checkpoints only,
+pins carried: canonical 1913b53c50ed938b1430628c3e14435c80abbf7
+4eb5aa2d945b9f74339c08a3f, factor 82f4f0d76fce2dc887ec09df2757e
+4213bed05d9d595d149ed48ca1798bc03dd, hash e2b7479549f2cc2fa9c15
+6e253fc054f43f57631bac65c75d2ff01f1d237fae3, init e21be542c998c
+cb63021f1241faecd46c322448a4ee25750dbbe8608af7aabe0; no
+13001/14001 under that rung.
+  ABSOLUTE HELD-OUT PRIMARY: the 48 heldout-I1 states; mean
+  continuation logprob, pessimistic top-1 (frozen svpadj
+  primitives), exact two-sided McNemar, alpha .05;
+  HELDOUT-FACTOR-WIN iff FACTOR top1 > HASH top1 AND p < .05;
+  HELDOUT-HASH-WIN symmetric; HELDOUT-INCONCLUSIVE otherwise.
+  MATCHED TRANSFER: per t2/t3 block and arm, site_drop_arm =
+  top1(covered I0/tk) - top1(held-out I1/tk); q = site_drop_HASH
+  - site_drop_FACTOR; exact two-sided sign test on nonzero q
+  (the primitive registered by definition at DESIGN-0: exact
+  binomial two-sided p, success = q > 0, p0 = 1/2), alpha .05;
+  q > 0 favors FACTOR. STRONG-FACTOR iff HELDOUT-FACTOR-WIN AND
+  sign p < .05 AND positive q strictly outnumbering negative;
+  STRONG-HASH symmetric; anything else MIXED/INCONCLUSIVE —
+  never a forced mechanism win, never loosened.
+  t1 CALIBRATION: matched covered/covered site-shift anatomy,
+  descriptive, family-blocked (the family-blocked qualifier is
+  an ADDITION over the DESIGN-0 text, descriptive-only, no
+  inferential effect); no effect there is never read as
+  equivalence.
+  CODEWORD ANATOMY RIDER: persisted at materialization
+  (outcome-independent, model-free) — held-out FACTOR/HASH codes
+  v the 33 training-target codes: nearest Hamming, longest
+  shared prefix, per-position token support, nearest codewords;
+  inclusion never altered by codeword convenience.
+
+INTERPRETATION (frozen): a FACTOR win = explicit typed
+action-factor alignment improves generalization for the two
+preregistered withheld i_unprod site x term cells across diverse
+matched parent states under this frozen constructor law — never
+generalized to arbitrary unseen action types, never to broad OOD
+math generalization, semantic geometry among rule IDs, universal
+compositionality, or solve rates (the DESIGN-0 enumeration,
+carried verbatim); a HASH win = the
+explicit coordinate surface underperforms the fixed invertible
+scrambling on this matched grid-completion challenge;
+inconclusive = the matched challenge does not distinguish the
+surfaces under the registered criterion — equivalence is never
+inferred from a null. Two fixed held-out semantic cells under
+one frozen HASH permutation; no breadth claim.
+
+SMOKE QUALIFICATION (path-isolated; the selection/emission path
+never executed in DESIGN-0, and a 2,160-parent production run
+must not be its first test): SVPCHAL2_SMOKE=1 runs the full
+pipeline over 6 BURNED DESIGN-0 bases (one per {family x term},
+deterministic by sig sha from the pinned blocks.jsonl) with N=1,
+writing ONLY under logs/mathworld1/svpchal2_smoke/; novelty
+gates run report-only there (the bases are burned by design,
+flagged in the smoke receipt); the production entry point
+REFUSES to run unless a green smoke receipt exists AND that
+receipt's recorded driver sha equals the current driver
+(staleness gate); the smoke receipt sha is recorded in the
+production receipt. All pins are literal shas (including the
+DESIGN-0 receipt via its lock value and the frozen DESIGN-0
+driver whose builder reconstructs the burned parents).
+
+REGISTERED PRIOR (house): instrument-level — all strata fill
+(CH-F4 t1 priced ~24 v bar 12 exactly; CH-F3 strata priced
+2.7-3.3x bar — t1 32.0, t2 40.0, t3 38.0 scaled; CH-F4 t2/t3
+6-10x bar), all gates fire, zero novelty overlaps; transport
+caveat carried verbatim: these are proxies, not sampling
+estimates, and NO-FIRE is the protection. No directional
+FACTOR/HASH prediction (standing record).
+
+REFUTED-IF (instrument): any stratum short (books NO-FIRE), any
+post-mkdir novelty/balance/count/duplicate gate hit (books
+GATE-REFUTED), any pre-mkdir pin/semantic/freshness gate failure
+(receiptless SystemExit, bookable from the log), or a receipt
+aggregate not reproducible from rows.
+
+FENCES. Mac; deterministic given the frozen horizon; anti-
+peeking order (assessment -> law + banks -> design audit ->
+COMMIT -> smoke -> materialize once -> qualify -> census -> fill
+gate -> select -> freeze bytes -> dual audit -> book -> STOP);
+zero model/checkpoint access; a mid-run crash's manual delete +
+deterministic rerun is not a retry; all DESIGN-1 qualification
+parents are burned for any future design regardless of outcome;
+after booking commit/push, census, STOP.

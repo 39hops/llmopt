@@ -2925,6 +2925,13 @@ MATH-CYBER-1 SVP-STRICT-GRID-CHALLENGE-DESIGN-0 — materialize + qualify the FI
 - `qualify_parent(f_t, D)` — svpeval3-mirrored candidate law on one constructed parent.
 - `main()`
 
+### scratch/mathworld1_svpchal2.py
+MATH-CYBER-1 SVP-STRICT-GRID-CHALLENGE-DESIGN-1 — successor to the booked DESIGN-0 NO-FIRE: SAME matched-grid scientific and inferential law re-registered unchanged, larger completely fresh constructor horizons, one materialization, qualify, mechanical fill gate, mechanical selection, frozen challenge bytes. Zero model/checkpoint access; scoring is a separate GO. DESIGN-0 stays booked as a legitimate preregistered NO-FIRE, and its 240 bases (720 parent variants) are BURNED here alongside the 566 pilot parents.
+
+- `build_horizon1()`
+- `smoke_horizon()` — Six BURNED DESIGN-0 bases, one per {family x term}, first
+- `main()`
+
 ### scratch/mathworld1_svpcode.py
 MATH-CYBER-1 SVP-CODE-QUALIFY-0 — the FACTOR-OPAQUE / HASH-OPAQUE encoding pair, defined and qualified BEFORE any birth prereg or third-band materialization. Zero training, zero checkpoint access, zero new band.
 
