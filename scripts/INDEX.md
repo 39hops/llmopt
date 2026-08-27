@@ -2932,6 +2932,13 @@ MATH-CYBER-1 SVP-STRICT-GRID-CHALLENGE-DESIGN-1 — successor to the booked DESI
 - `smoke_horizon()` — Six BURNED DESIGN-0 bases, one per {family x term}, first
 - `main()`
 
+### scratch/mathworld1_svpchalscore.py
+MATH-CYBER-1 SVP-STRICT-GRID-CHALLENGE-SCORE-0 — ONE joint scoring run: the three sealed seed-12001 checkpoints scored on the frozen DESIGN-1 challenge bytes under the preregistered law (274310c2). Zero training, zero checkpoint mutation, zero challenge regeneration, zero sympy, zero legal-set re-enumeration, zero HCE recomputation; frozen candidate bytes only.
+
+- `fsha(p) -> str`
+- `ctup(c)`
+- `main()`
+
 ### scratch/mathworld1_svpcode.py
 MATH-CYBER-1 SVP-CODE-QUALIFY-0 — the FACTOR-OPAQUE / HASH-OPAQUE encoding pair, defined and qualified BEFORE any birth prereg or third-band materialization. Zero training, zero checkpoint access, zero new band.
 
