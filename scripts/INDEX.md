@@ -3023,6 +3023,12 @@ MATH-CYBER-1 SVP-STRICT-GRID-CONSTRUCTIBILITY-DESK-0, SPACE-3 — third frozen c
 - `build_space3()`
 - `main()`
 
+### scratch/mathworld1_svpgriddesk4.py
+MATH-CYBER-1 SVP-STRICT-GRID-CONSTRUCTIBILITY-DESK-0, SPACE-4 — fourth frozen constructor space, committed BEFORE its first run. SPACE-3 (svpgriddesk3_receipt.json) achieved 216/216 successes with both held-out cells rich (I1 term2 48 / term3 28) and all six covered controls hit, but resolved D TOO-SCARCE mechanically: every success came from the single U-F3v3 family and the frozen feasibility clause requires >= 2 families. SPACE-4 adds the SECOND family — the two-pair construction (U-F2 lineage) ported to the small non-integrable distractors — so the frozen >= 2 family clause becomes satisfiable. Verdict computed over the UNION of SPACE-3 and SPACE-4 successes (both spaces frozen pre-run; union law stated here before this space runs). SPACE-2 (svpgriddesk2_receipt.json) established teacher-selection constructibility (143/148 successes, term indices 0-4) but every success landed at site ordinal 0: the op-blocker distractor always sorts AFTER the target in canonical Add order, so held-out I1 cells stayed at zero (C-on-space-2). SPACE-3 replaces the distractor axis with SMALL heurisch-proof integrands that sympy cannot integrate (sp.integrate returns an unevaluated Integral, filtered by i_heurisch's own F.has(Integral) gate): x**x and 1/(x + log(x)) sort BEFORE the target (target ordinal 1 — the held-out band), sin(sin(x)) sorts AFTER it (target ordinal 0 — matched covered controls from the SAME family/parameters). Same success definition and A/B/C/D thresholds/precedence as v1 (docstring of scratch/mathworld1_svpgriddesk.py), applied to THIS space. Zero model access; pilot parents BURNED.
+
+- `build_space4()`
+- `main()`
+
 ### scratch/mathworld1_svpldesk.py
 MATH-CYBER-1 SVP-LENGTH-CONTROL-DESK-0 — desk-only triage of the length/factorization mechanism from FROZEN score artifacts. No model inference, no training, no checkpoint load, no task generation. Bands stay separate surfaces throughout.
 
