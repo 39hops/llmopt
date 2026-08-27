@@ -3011,6 +3011,12 @@ MATH-CYBER-1 SVP-STRICT-GRID-CONSTRUCTIBILITY-DESK-0 — SACRIFICIAL exact-engin
 - `run_attempt(fam, target_rule, sig, target_f, distract)`
 - `main()`
 
+### scratch/mathworld1_svpgriddesk2.py
+MATH-CYBER-1 SVP-STRICT-GRID-CONSTRUCTIBILITY-DESK-0, SPACE-2 — second frozen constructor space, committed BEFORE its first run. Space v1 (scratch/mathworld1_svpgriddesk.py, receipt svpgriddesk_receipt.json) resolved C-on-that-space: i_heurisch (op-capped sympy.integrate) closed every site because the v1 "hard" terms all have special-function antiderivatives (Ei, Si, Fresnel S, erfi). SPACE-2 uses the blockers i_heurisch actually gates on (rules.py: count_ops > 100, or integrand containing an inner Integral) — the shape of the natural states where i_unprod trained. Same success definition, same A/B/C/D thresholds and precedence as v1 (docstring of the v1 driver), applied to THIS space. Zero model access; pilot parents BURNED.
+
+- `build_space2()`
+- `main()`
+
 ### scratch/mathworld1_svpldesk.py
 MATH-CYBER-1 SVP-LENGTH-CONTROL-DESK-0 — desk-only triage of the length/factorization mechanism from FROZEN score artifacts. No model inference, no training, no checkpoint load, no task generation. Bands stay separate surfaces throughout.
 
