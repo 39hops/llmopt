@@ -1,0 +1,4740 @@
+{
+ "space": "SPACE-3",
+ "verdict": "D TOO-SCARCE",
+ "cell_summary": {
+  "i_parts I 0 u_choice 0": {
+   "successes": 0,
+   "families": [],
+   "feasible": false,
+   "class": "COVERED"
+  },
+  "i_parts I 0 u_choice 1": {
+   "successes": 0,
+   "families": [],
+   "feasible": false,
+   "class": "COVERED"
+  },
+  "i_parts I 1 u_choice 0": {
+   "successes": 0,
+   "families": [],
+   "feasible": false,
+   "class": "HELD-OUT"
+  },
+  "i_parts I 1 u_choice 1": {
+   "successes": 0,
+   "families": [],
+   "feasible": false,
+   "class": "COVERED"
+  },
+  "i_unprod I 0 term_index 0": {
+   "successes": 10,
+   "families": [
+    "U-F3v3"
+   ],
+   "feasible": false,
+   "class": "COVERED"
+  },
+  "i_unprod I 0 term_index 1": {
+   "successes": 20,
+   "families": [
+    "U-F3v3"
+   ],
+   "feasible": false,
+   "class": "COVERED"
+  },
+  "i_unprod I 0 term_index 2": {
+   "successes": 24,
+   "families": [
+    "U-F3v3"
+   ],
+   "feasible": false,
+   "class": "COVERED"
+  },
+  "i_unprod I 0 term_index 3": {
+   "successes": 14,
+   "families": [
+    "U-F3v3"
+   ],
+   "feasible": false,
+   "class": "COVERED"
+  },
+  "i_unprod I 0 term_index 4": {
+   "successes": 4,
+   "families": [
+    "U-F3v3"
+   ],
+   "feasible": false,
+   "class": "COVERED"
+  },
+  "i_unprod I 1 term_index 0": {
+   "successes": 20,
+   "families": [
+    "U-F3v3"
+   ],
+   "feasible": false,
+   "class": "COVERED"
+  },
+  "i_unprod I 1 term_index 1": {
+   "successes": 40,
+   "families": [
+    "U-F3v3"
+   ],
+   "feasible": false,
+   "class": "COVERED"
+  },
+  "i_unprod I 1 term_index 2": {
+   "successes": 48,
+   "families": [
+    "U-F3v3"
+   ],
+   "feasible": false,
+   "class": "HELD-OUT"
+  },
+  "i_unprod I 1 term_index 3": {
+   "successes": 28,
+   "families": [
+    "U-F3v3"
+   ],
+   "feasible": false,
+   "class": "HELD-OUT"
+  },
+  "i_unprod I 1 term_index 4": {
+   "successes": 8,
+   "families": [
+    "U-F3v3"
+   ],
+   "feasible": false,
+   "class": "COVERED"
+  }
+ },
+ "held_out_zero": [],
+ "covered_controls_hit": [
+  "i_unprod I 0 term_index 0",
+  "i_unprod I 0 term_index 1",
+  "i_unprod I 0 term_index 2",
+  "i_unprod I 0 term_index 3",
+  "i_unprod I 1 term_index 0",
+  "i_unprod I 1 term_index 1"
+ ],
+ "family_overlap": [
+  "U-F3v3"
+ ],
+ "held_out_only_families": [],
+ "distractor_x_cell": {
+  "x**x | i_unprod I 1 term_index 2": 24,
+  "1/(x + log(x)) | i_unprod I 1 term_index 2": 24,
+  "sin(sin(x)) | i_unprod I 0 term_index 2": 24,
+  "x**x | i_unprod I 1 term_index 1": 20,
+  "1/(x + log(x)) | i_unprod I 1 term_index 1": 20,
+  "sin(sin(x)) | i_unprod I 0 term_index 1": 20,
+  "x**x | i_unprod I 1 term_index 3": 14,
+  "1/(x + log(x)) | i_unprod I 1 term_index 3": 14,
+  "sin(sin(x)) | i_unprod I 0 term_index 3": 14,
+  "x**x | i_unprod I 1 term_index 0": 10,
+  "1/(x + log(x)) | i_unprod I 1 term_index 0": 10,
+  "sin(sin(x)) | i_unprod I 0 term_index 0": 10,
+  "x**x | i_unprod I 1 term_index 4": 4,
+  "1/(x + log(x)) | i_unprod I 1 term_index 4": 4,
+  "sin(sin(x)) | i_unprod I 0 term_index 4": 4
+ },
+ "outcomes": {
+  "success": 216,
+  "chosen_other": 4
+ },
+ "intended_cell_distribution": {
+  "i_unprod I 1 term_index 1": 40,
+  "i_unprod I 0 term_index 1": 20,
+  "i_unprod I 1 term_index 2": 48,
+  "i_unprod I 0 term_index 2": 24,
+  "i_unprod I 1 term_index 3": 28,
+  "i_unprod I 0 term_index 3": 14,
+  "i_unprod I 1 term_index 0": 20,
+  "i_unprod I 0 term_index 0": 10,
+  "i_unprod I 1 term_index 4": 8,
+  "i_unprod I 0 term_index 4": 4,
+  "i_parts I 1 u_choice 1": 2,
+  "i_parts I 0 u_choice 1": 2
+ },
+ "legal_set_size_distribution": {
+  "4": 74,
+  "3": 72,
+  "2": 18,
+  "6": 18,
+  "7": 15,
+  "5": 23
+ },
+ "competing_chosen_rules_on_failure": {
+  "together": 4
+ },
+ "duplicate_parent_count": 0,
+ "duplicate_visible_state_count": 0,
+ "n_attempts": 220,
+ "attempts": [
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=2 w=exp(x)/x k=0 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(2*x**2*cos(2*x) + 2*x*sin(2*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "6988f8f1489c8ed1",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.43
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=2 w=exp(x)/x k=0 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(2*x**2*cos(2*x) + 2*x*sin(2*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "557802daa541194e",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.33
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=2 w=exp(x)/x k=0 D=sin(sin(x))",
+   "parent_sstr": "Integral(2*x**2*cos(2*x) + 2*x*sin(2*x) + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "6b44caa40eac29fc",
+   "intended_cell": "i_unprod I 0 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.29
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=2 w=exp(x)/x k=1 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(2*x**2*cos(2*x) + 2*x*sin(2*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "f4606acd6bb29c75",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.3
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=2 w=exp(x)/x k=1 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(2*x**2*cos(2*x) + 2*x*sin(2*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "eff00b058dedbeb9",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.33
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=2 w=exp(x)/x k=1 D=sin(sin(x))",
+   "parent_sstr": "Integral(2*x**2*cos(2*x) + 2*x*sin(2*x) + x + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "248edcb46a2e8204",
+   "intended_cell": "i_unprod I 0 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.29
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=2 w=exp(x)/x k=2 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(7*x**3 + 2*x**2*cos(2*x) + 2*x*sin(2*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "6632258cfd4341e8",
+   "intended_cell": "i_unprod I 1 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.35
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=2 w=exp(x)/x k=2 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(7*x**3 + 2*x**2*cos(2*x) + 2*x*sin(2*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "1e6e5dc46ea82c4f",
+   "intended_cell": "i_unprod I 1 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.35
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=2 w=exp(x)/x k=2 D=sin(sin(x))",
+   "parent_sstr": "Integral(7*x**3 + 2*x**2*cos(2*x) + 2*x*sin(2*x) + x + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "fddf0627054af289",
+   "intended_cell": "i_unprod I 0 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.3
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=2 w=sin(x)/x k=0 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(2*x**2*cos(2*x) + 2*x*sin(2*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "1a6ef16d68e32248",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.31
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=2 w=sin(x)/x k=0 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(2*x**2*cos(2*x) + 2*x*sin(2*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "9fb826f0bc5c532c",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.32
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=2 w=sin(x)/x k=0 D=sin(sin(x))",
+   "parent_sstr": "Integral(2*x**2*cos(2*x) + 2*x*sin(2*x) + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "0c97029eb96caf0d",
+   "intended_cell": "i_unprod I 0 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.25
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=2 w=sin(x)/x k=1 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(2*x**2*cos(2*x) + 2*x*sin(2*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "0b585fdf621c711d",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.33
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=2 w=sin(x)/x k=1 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(2*x**2*cos(2*x) + 2*x*sin(2*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "f0738bdaa021ede4",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.3
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=2 w=sin(x)/x k=1 D=sin(sin(x))",
+   "parent_sstr": "Integral(2*x**2*cos(2*x) + 2*x*sin(2*x) + x + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "9a836b006687de85",
+   "intended_cell": "i_unprod I 0 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.24
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=2 w=sin(x)/x k=2 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(7*x**3 + 2*x**2*cos(2*x) + 2*x*sin(2*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "91acd2e2b294dfa4",
+   "intended_cell": "i_unprod I 1 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.29
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=2 w=sin(x)/x k=2 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(7*x**3 + 2*x**2*cos(2*x) + 2*x*sin(2*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "7b04db424f26abe9",
+   "intended_cell": "i_unprod I 1 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.36
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=2 w=sin(x)/x k=2 D=sin(sin(x))",
+   "parent_sstr": "Integral(7*x**3 + 2*x**2*cos(2*x) + 2*x*sin(2*x) + x + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "3d20d8caaabe246f",
+   "intended_cell": "i_unprod I 0 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.4
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=3 w=exp(x)/x k=0 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(3*x**2*cos(3*x) + 2*x*sin(3*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "ec332327682cf9e7",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.4
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=3 w=exp(x)/x k=0 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(3*x**2*cos(3*x) + 2*x*sin(3*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "21899d8612e9cd75",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.38
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=3 w=exp(x)/x k=0 D=sin(sin(x))",
+   "parent_sstr": "Integral(3*x**2*cos(3*x) + 2*x*sin(3*x) + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "2ec338fb0ba3dbb3",
+   "intended_cell": "i_unprod I 0 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.31
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=3 w=exp(x)/x k=1 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(3*x**2*cos(3*x) + 2*x*sin(3*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "6ebff6b99d621ab5",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.33
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=3 w=exp(x)/x k=1 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(3*x**2*cos(3*x) + 2*x*sin(3*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "827c46b725cfae45",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.39
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=3 w=exp(x)/x k=1 D=sin(sin(x))",
+   "parent_sstr": "Integral(3*x**2*cos(3*x) + 2*x*sin(3*x) + x + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "44621f27becc4443",
+   "intended_cell": "i_unprod I 0 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.3
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=3 w=exp(x)/x k=2 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(7*x**3 + 3*x**2*cos(3*x) + 2*x*sin(3*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "8ca5c5df12c26310",
+   "intended_cell": "i_unprod I 1 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.35
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=3 w=exp(x)/x k=2 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(7*x**3 + 3*x**2*cos(3*x) + 2*x*sin(3*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "ac183a9eb9119330",
+   "intended_cell": "i_unprod I 1 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.36
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=3 w=exp(x)/x k=2 D=sin(sin(x))",
+   "parent_sstr": "Integral(7*x**3 + 3*x**2*cos(3*x) + 2*x*sin(3*x) + x + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "f1f1254e18f1661d",
+   "intended_cell": "i_unprod I 0 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.39
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=3 w=sin(x)/x k=0 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(3*x**2*cos(3*x) + 2*x*sin(3*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "31b6c82722b49e82",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 2,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.29
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=3 w=sin(x)/x k=0 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(3*x**2*cos(3*x) + 2*x*sin(3*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "e2fb114c0f65a4f2",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 2,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.31
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=3 w=sin(x)/x k=0 D=sin(sin(x))",
+   "parent_sstr": "Integral(3*x**2*cos(3*x) + 2*x*sin(3*x) + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "3a479cb3695d7f18",
+   "intended_cell": "i_unprod I 0 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 2,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.25
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=3 w=sin(x)/x k=1 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(3*x**2*cos(3*x) + 2*x*sin(3*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "e94616c2c9f60a22",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 2,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.28
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=3 w=sin(x)/x k=1 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(3*x**2*cos(3*x) + 2*x*sin(3*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "3d3eae41034326dd",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 2,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.29
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=3 w=sin(x)/x k=1 D=sin(sin(x))",
+   "parent_sstr": "Integral(3*x**2*cos(3*x) + 2*x*sin(3*x) + x + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "46a881e23896db56",
+   "intended_cell": "i_unprod I 0 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 2,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.22
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=3 w=sin(x)/x k=2 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(7*x**3 + 3*x**2*cos(3*x) + 2*x*sin(3*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "c6a1ff60156d4201",
+   "intended_cell": "i_unprod I 1 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 2,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.3
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=3 w=sin(x)/x k=2 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(7*x**3 + 3*x**2*cos(3*x) + 2*x*sin(3*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "e89ac7603b45c815",
+   "intended_cell": "i_unprod I 1 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 2,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.3
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=sin c=3 w=sin(x)/x k=2 D=sin(sin(x))",
+   "parent_sstr": "Integral(7*x**3 + 3*x**2*cos(3*x) + 2*x*sin(3*x) + x + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "3c3d6ec7c157a6bc",
+   "intended_cell": "i_unprod I 0 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 2,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.23
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=2 w=exp(x)/x k=0 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(-2*x**2*sin(2*x) + 2*x*cos(2*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "877d115c4e85f199",
+   "intended_cell": "i_unprod I 1 term_index 0",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 0",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.31
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=2 w=exp(x)/x k=0 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(-2*x**2*sin(2*x) + 2*x*cos(2*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "22440fdd1b7ea8d2",
+   "intended_cell": "i_unprod I 1 term_index 0",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 0",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.34
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=2 w=exp(x)/x k=0 D=sin(sin(x))",
+   "parent_sstr": "Integral(-2*x**2*sin(2*x) + 2*x*cos(2*x) + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "3eada3436c6286d2",
+   "intended_cell": "i_unprod I 0 term_index 0",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 0",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.29
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=2 w=exp(x)/x k=1 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(-2*x**2*sin(2*x) + 2*x*cos(2*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "d67c1ba2e2c590b2",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.31
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=2 w=exp(x)/x k=1 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(-2*x**2*sin(2*x) + 2*x*cos(2*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "612fd329b2236855",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.34
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=2 w=exp(x)/x k=1 D=sin(sin(x))",
+   "parent_sstr": "Integral(-2*x**2*sin(2*x) + 2*x*cos(2*x) + x + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "6335e4c41c725a58",
+   "intended_cell": "i_unprod I 0 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.33
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=2 w=exp(x)/x k=2 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(7*x**3 - 2*x**2*sin(2*x) + 2*x*cos(2*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "37de9703fc483c33",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.33
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=2 w=exp(x)/x k=2 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(7*x**3 - 2*x**2*sin(2*x) + 2*x*cos(2*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "dac799ca5353520a",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.35
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=2 w=exp(x)/x k=2 D=sin(sin(x))",
+   "parent_sstr": "Integral(7*x**3 - 2*x**2*sin(2*x) + 2*x*cos(2*x) + x + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "03c832f5734ce353",
+   "intended_cell": "i_unprod I 0 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.31
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=2 w=sin(x)/x k=0 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(-2*x**2*sin(2*x) + 2*x*cos(2*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "fff543f6d3ff683a",
+   "intended_cell": "i_unprod I 1 term_index 0",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 0",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.29
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=2 w=sin(x)/x k=0 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(-2*x**2*sin(2*x) + 2*x*cos(2*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "f38f44fe6baa46c5",
+   "intended_cell": "i_unprod I 1 term_index 0",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 0",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.31
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=2 w=sin(x)/x k=0 D=sin(sin(x))",
+   "parent_sstr": "Integral(-2*x**2*sin(2*x) + 2*x*cos(2*x) + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "db2d7cc15003cd6a",
+   "intended_cell": "i_unprod I 0 term_index 0",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 0",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.24
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=2 w=sin(x)/x k=1 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(-2*x**2*sin(2*x) + 2*x*cos(2*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "b41c15ad48280200",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.35
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=2 w=sin(x)/x k=1 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(-2*x**2*sin(2*x) + 2*x*cos(2*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "c10ec12480429667",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.33
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=2 w=sin(x)/x k=1 D=sin(sin(x))",
+   "parent_sstr": "Integral(-2*x**2*sin(2*x) + 2*x*cos(2*x) + x + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "1215d4b998b46506",
+   "intended_cell": "i_unprod I 0 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.27
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=2 w=sin(x)/x k=2 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(7*x**3 - 2*x**2*sin(2*x) + 2*x*cos(2*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "eb810e40ef314537",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.4
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=2 w=sin(x)/x k=2 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(7*x**3 - 2*x**2*sin(2*x) + 2*x*cos(2*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "5f4fe0c4d9d234a2",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.36
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=2 w=sin(x)/x k=2 D=sin(sin(x))",
+   "parent_sstr": "Integral(7*x**3 - 2*x**2*sin(2*x) + 2*x*cos(2*x) + x + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "acc3e48fa11cd1cb",
+   "intended_cell": "i_unprod I 0 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.28
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=3 w=exp(x)/x k=0 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(-3*x**2*sin(3*x) + 2*x*cos(3*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "73cb71e99eebd10f",
+   "intended_cell": "i_unprod I 1 term_index 0",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 0",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.31
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=3 w=exp(x)/x k=0 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(-3*x**2*sin(3*x) + 2*x*cos(3*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "9e963ce8da494dc1",
+   "intended_cell": "i_unprod I 1 term_index 0",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 0",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.4
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=3 w=exp(x)/x k=0 D=sin(sin(x))",
+   "parent_sstr": "Integral(-3*x**2*sin(3*x) + 2*x*cos(3*x) + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "86401cd6cecf281d",
+   "intended_cell": "i_unprod I 0 term_index 0",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 0",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.33
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=3 w=exp(x)/x k=1 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(-3*x**2*sin(3*x) + 2*x*cos(3*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "1c657f2778d08b5b",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.37
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=3 w=exp(x)/x k=1 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(-3*x**2*sin(3*x) + 2*x*cos(3*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "90a65dde935ad871",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.36
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=3 w=exp(x)/x k=1 D=sin(sin(x))",
+   "parent_sstr": "Integral(-3*x**2*sin(3*x) + 2*x*cos(3*x) + x + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "62a15085b119741e",
+   "intended_cell": "i_unprod I 0 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.31
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=3 w=exp(x)/x k=2 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(7*x**3 - 3*x**2*sin(3*x) + 2*x*cos(3*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "38d5d8fd84d36bf0",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.34
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=3 w=exp(x)/x k=2 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(7*x**3 - 3*x**2*sin(3*x) + 2*x*cos(3*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "ad9d3c39c6b709d3",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.38
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=3 w=exp(x)/x k=2 D=sin(sin(x))",
+   "parent_sstr": "Integral(7*x**3 - 3*x**2*sin(3*x) + 2*x*cos(3*x) + x + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "e54cbacb62cd38bc",
+   "intended_cell": "i_unprod I 0 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.33
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=3 w=sin(x)/x k=0 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(-3*x**2*sin(3*x) + 2*x*cos(3*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "93ff8b1614f06657",
+   "intended_cell": "i_unprod I 1 term_index 0",
+   "legal_set_stable": true,
+   "legal_set_size": 2,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 0",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.38
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=3 w=sin(x)/x k=0 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(-3*x**2*sin(3*x) + 2*x*cos(3*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "988070b8785df453",
+   "intended_cell": "i_unprod I 1 term_index 0",
+   "legal_set_stable": true,
+   "legal_set_size": 2,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 0",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.3
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=3 w=sin(x)/x k=0 D=sin(sin(x))",
+   "parent_sstr": "Integral(-3*x**2*sin(3*x) + 2*x*cos(3*x) + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "3cd52f652d49eb90",
+   "intended_cell": "i_unprod I 0 term_index 0",
+   "legal_set_stable": true,
+   "legal_set_size": 2,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 0",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.24
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=3 w=sin(x)/x k=1 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(-3*x**2*sin(3*x) + 2*x*cos(3*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "4818a4f2ff4ca87c",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 2,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.28
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=3 w=sin(x)/x k=1 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(-3*x**2*sin(3*x) + 2*x*cos(3*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "e696412deba9a3a7",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 2,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.33
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=3 w=sin(x)/x k=1 D=sin(sin(x))",
+   "parent_sstr": "Integral(-3*x**2*sin(3*x) + 2*x*cos(3*x) + x + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "e52c187e0a7ab4c3",
+   "intended_cell": "i_unprod I 0 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 2,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.25
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=3 w=sin(x)/x k=2 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(7*x**3 - 3*x**2*sin(3*x) + 2*x*cos(3*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "f375f55f6e2fa8f6",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 2,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.29
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=3 w=sin(x)/x k=2 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(7*x**3 - 3*x**2*sin(3*x) + 2*x*cos(3*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "2d0ebee1038cb543",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 2,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.31
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 T=cos c=3 w=sin(x)/x k=2 D=sin(sin(x))",
+   "parent_sstr": "Integral(7*x**3 - 3*x**2*sin(3*x) + 2*x*cos(3*x) + x + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "824e45d2c7c8732d",
+   "intended_cell": "i_unprod I 0 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 2,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.24
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=2 w=exp(x)/x k=0 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(2*x**3*cos(2*x) + 3*x**2*sin(2*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "58de45b7c898d6ba",
+   "intended_cell": "i_unprod I 1 term_index 0",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 0",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.36
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=2 w=exp(x)/x k=0 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(2*x**3*cos(2*x) + 3*x**2*sin(2*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "5dcc3eeabb44088a",
+   "intended_cell": "i_unprod I 1 term_index 0",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 0",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.34
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=2 w=exp(x)/x k=0 D=sin(sin(x))",
+   "parent_sstr": "Integral(2*x**3*cos(2*x) + 3*x**2*sin(2*x) + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "554befd225340afb",
+   "intended_cell": "i_unprod I 0 term_index 0",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 0",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.3
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=2 w=exp(x)/x k=1 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(2*x**3*cos(2*x) + 3*x**2*sin(2*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "1786984ccc2dea25",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.32
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=2 w=exp(x)/x k=1 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(2*x**3*cos(2*x) + 3*x**2*sin(2*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "cf76a94d464fa581",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.34
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=2 w=exp(x)/x k=1 D=sin(sin(x))",
+   "parent_sstr": "Integral(2*x**3*cos(2*x) + 3*x**2*sin(2*x) + x + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "91d0ea9324e98d01",
+   "intended_cell": "i_unprod I 0 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.3
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=2 w=exp(x)/x k=2 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(2*x**3*cos(2*x) + 7*x**3 + 3*x**2*sin(2*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "905748c07cd8de4a",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.33
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=2 w=exp(x)/x k=2 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(2*x**3*cos(2*x) + 7*x**3 + 3*x**2*sin(2*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "1f323c1029db9174",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.4
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=2 w=exp(x)/x k=2 D=sin(sin(x))",
+   "parent_sstr": "Integral(2*x**3*cos(2*x) + 7*x**3 + 3*x**2*sin(2*x) + x + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "c56499a062d19fd1",
+   "intended_cell": "i_unprod I 0 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.32
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=2 w=sin(x)/x k=0 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(2*x**3*cos(2*x) + 3*x**2*sin(2*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "1454b5b30485cfaa",
+   "intended_cell": "i_unprod I 1 term_index 0",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 0",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.29
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=2 w=sin(x)/x k=0 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(2*x**3*cos(2*x) + 3*x**2*sin(2*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "f732d3818eedacaf",
+   "intended_cell": "i_unprod I 1 term_index 0",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 0",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.31
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=2 w=sin(x)/x k=0 D=sin(sin(x))",
+   "parent_sstr": "Integral(2*x**3*cos(2*x) + 3*x**2*sin(2*x) + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "4be2e0e8755a15e7",
+   "intended_cell": "i_unprod I 0 term_index 0",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 0",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.24
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=2 w=sin(x)/x k=1 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(2*x**3*cos(2*x) + 3*x**2*sin(2*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "b9ac5968ab731e54",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.29
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=2 w=sin(x)/x k=1 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(2*x**3*cos(2*x) + 3*x**2*sin(2*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "cbd708625d0ec026",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.35
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=2 w=sin(x)/x k=1 D=sin(sin(x))",
+   "parent_sstr": "Integral(2*x**3*cos(2*x) + 3*x**2*sin(2*x) + x + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "ec6f3ddf90062772",
+   "intended_cell": "i_unprod I 0 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.29
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=2 w=sin(x)/x k=2 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(2*x**3*cos(2*x) + 7*x**3 + 3*x**2*sin(2*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "2ec385962d57ac53",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.3
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=2 w=sin(x)/x k=2 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(2*x**3*cos(2*x) + 7*x**3 + 3*x**2*sin(2*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "50f8cafb4eb22a43",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.33
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=2 w=sin(x)/x k=2 D=sin(sin(x))",
+   "parent_sstr": "Integral(2*x**3*cos(2*x) + 7*x**3 + 3*x**2*sin(2*x) + x + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "205bd9729f63093c",
+   "intended_cell": "i_unprod I 0 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.26
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=3 w=exp(x)/x k=0 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(3*x**3*cos(3*x) + 3*x**2*sin(3*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "7a71cfe39cd89d81",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.3
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=3 w=exp(x)/x k=0 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(3*x**3*cos(3*x) + 3*x**2*sin(3*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "204f528aec222a8c",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.32
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=3 w=exp(x)/x k=0 D=sin(sin(x))",
+   "parent_sstr": "Integral(3*x**3*cos(3*x) + 3*x**2*sin(3*x) + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "65aeeb7e4ec8ad3f",
+   "intended_cell": "i_unprod I 0 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.28
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=3 w=exp(x)/x k=1 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(3*x**3*cos(3*x) + 3*x**2*sin(3*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "fe3fbb65237a9417",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.3
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=3 w=exp(x)/x k=1 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(3*x**3*cos(3*x) + 3*x**2*sin(3*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "913faec9e36af5b5",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.37
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=3 w=exp(x)/x k=1 D=sin(sin(x))",
+   "parent_sstr": "Integral(3*x**3*cos(3*x) + 3*x**2*sin(3*x) + x + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "8b175f479c4860ea",
+   "intended_cell": "i_unprod I 0 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.29
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=3 w=exp(x)/x k=2 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(3*x**3*cos(3*x) + 7*x**3 + 3*x**2*sin(3*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "9cf93109240e4797",
+   "intended_cell": "i_unprod I 1 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.31
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=3 w=exp(x)/x k=2 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(3*x**3*cos(3*x) + 7*x**3 + 3*x**2*sin(3*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "e0359e562180326d",
+   "intended_cell": "i_unprod I 1 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.34
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=3 w=exp(x)/x k=2 D=sin(sin(x))",
+   "parent_sstr": "Integral(3*x**3*cos(3*x) + 7*x**3 + 3*x**2*sin(3*x) + x + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "5951e81bd9069b42",
+   "intended_cell": "i_unprod I 0 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.33
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=3 w=sin(x)/x k=0 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(3*x**3*cos(3*x) + 3*x**2*sin(3*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "f41ae39544714cc5",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.31
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=3 w=sin(x)/x k=0 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(3*x**3*cos(3*x) + 3*x**2*sin(3*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "e883fdeaed3f55de",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.32
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=3 w=sin(x)/x k=0 D=sin(sin(x))",
+   "parent_sstr": "Integral(3*x**3*cos(3*x) + 3*x**2*sin(3*x) + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "0a2f0767a55e94e3",
+   "intended_cell": "i_unprod I 0 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.26
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=3 w=sin(x)/x k=1 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(3*x**3*cos(3*x) + 3*x**2*sin(3*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "4e0ac35a53e9a9ce",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.29
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=3 w=sin(x)/x k=1 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(3*x**3*cos(3*x) + 3*x**2*sin(3*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "9b3e5c2f2e2bc571",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.38
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=3 w=sin(x)/x k=1 D=sin(sin(x))",
+   "parent_sstr": "Integral(3*x**3*cos(3*x) + 3*x**2*sin(3*x) + x + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "289e3f34cea98265",
+   "intended_cell": "i_unprod I 0 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.27
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=3 w=sin(x)/x k=2 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(3*x**3*cos(3*x) + 7*x**3 + 3*x**2*sin(3*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "1ad00fc5c2de50c7",
+   "intended_cell": "i_unprod I 1 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.32
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=3 w=sin(x)/x k=2 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(3*x**3*cos(3*x) + 7*x**3 + 3*x**2*sin(3*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "ce2f1de23eabc5d4",
+   "intended_cell": "i_unprod I 1 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.35
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=sin c=3 w=sin(x)/x k=2 D=sin(sin(x))",
+   "parent_sstr": "Integral(3*x**3*cos(3*x) + 7*x**3 + 3*x**2*sin(3*x) + x + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "976bb95db118d43b",
+   "intended_cell": "i_unprod I 0 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.29
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=2 w=exp(x)/x k=0 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(-2*x**3*sin(2*x) + 3*x**2*cos(2*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "3a78368a32c95a21",
+   "intended_cell": "i_unprod I 1 term_index 0",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 0",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.42
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=2 w=exp(x)/x k=0 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(-2*x**3*sin(2*x) + 3*x**2*cos(2*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "4b4c6005530a31f1",
+   "intended_cell": "i_unprod I 1 term_index 0",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 0",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.4
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=2 w=exp(x)/x k=0 D=sin(sin(x))",
+   "parent_sstr": "Integral(-2*x**3*sin(2*x) + 3*x**2*cos(2*x) + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "a5f6a5fd9992a4e9",
+   "intended_cell": "i_unprod I 0 term_index 0",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 0",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.35
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=2 w=exp(x)/x k=1 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(-2*x**3*sin(2*x) + 3*x**2*cos(2*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "fb6b2518b6237c56",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.43
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=2 w=exp(x)/x k=1 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(-2*x**3*sin(2*x) + 3*x**2*cos(2*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "5866981b4b1c4d8e",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.41
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=2 w=exp(x)/x k=1 D=sin(sin(x))",
+   "parent_sstr": "Integral(-2*x**3*sin(2*x) + 3*x**2*cos(2*x) + x + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "3e89da5feb00a6f2",
+   "intended_cell": "i_unprod I 0 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.32
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=2 w=exp(x)/x k=2 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(-2*x**3*sin(2*x) + 7*x**3 + 3*x**2*cos(2*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "78f8690030aaaec9",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.38
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=2 w=exp(x)/x k=2 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(-2*x**3*sin(2*x) + 7*x**3 + 3*x**2*cos(2*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "d7dae08cb58c3153",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.42
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=2 w=exp(x)/x k=2 D=sin(sin(x))",
+   "parent_sstr": "Integral(-2*x**3*sin(2*x) + 7*x**3 + 3*x**2*cos(2*x) + x + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "9f00ca75c724516b",
+   "intended_cell": "i_unprod I 0 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.36
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=2 w=sin(x)/x k=0 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(-2*x**3*sin(2*x) + 3*x**2*cos(2*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "b88499c3e8b41cb1",
+   "intended_cell": "i_unprod I 1 term_index 0",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 0",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.3
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=2 w=sin(x)/x k=0 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(-2*x**3*sin(2*x) + 3*x**2*cos(2*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "c816cfbe794b0573",
+   "intended_cell": "i_unprod I 1 term_index 0",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 0",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.36
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=2 w=sin(x)/x k=0 D=sin(sin(x))",
+   "parent_sstr": "Integral(-2*x**3*sin(2*x) + 3*x**2*cos(2*x) + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "0014f88fb833588d",
+   "intended_cell": "i_unprod I 0 term_index 0",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 0",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.25
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=2 w=sin(x)/x k=1 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(-2*x**3*sin(2*x) + 3*x**2*cos(2*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "5b9b7cf1620f5a64",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.3
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=2 w=sin(x)/x k=1 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(-2*x**3*sin(2*x) + 3*x**2*cos(2*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "a29a53eaf7fe7322",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.32
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=2 w=sin(x)/x k=1 D=sin(sin(x))",
+   "parent_sstr": "Integral(-2*x**3*sin(2*x) + 3*x**2*cos(2*x) + x + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "c5aace000ca4d8fe",
+   "intended_cell": "i_unprod I 0 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.26
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=2 w=sin(x)/x k=2 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(-2*x**3*sin(2*x) + 7*x**3 + 3*x**2*cos(2*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "36d53ebeb4da137b",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.31
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=2 w=sin(x)/x k=2 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(-2*x**3*sin(2*x) + 7*x**3 + 3*x**2*cos(2*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "37fb4cc0c176b45c",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.35
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=2 w=sin(x)/x k=2 D=sin(sin(x))",
+   "parent_sstr": "Integral(-2*x**3*sin(2*x) + 7*x**3 + 3*x**2*cos(2*x) + x + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "d714ca7f7860fbde",
+   "intended_cell": "i_unprod I 0 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.27
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=3 w=exp(x)/x k=0 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(-3*x**3*sin(3*x) + 3*x**2*cos(3*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "e4393999a648fc23",
+   "intended_cell": "i_unprod I 1 term_index 0",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 0",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.35
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=3 w=exp(x)/x k=0 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(-3*x**3*sin(3*x) + 3*x**2*cos(3*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "aade23f57c10dc26",
+   "intended_cell": "i_unprod I 1 term_index 0",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 0",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.33
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=3 w=exp(x)/x k=0 D=sin(sin(x))",
+   "parent_sstr": "Integral(-3*x**3*sin(3*x) + 3*x**2*cos(3*x) + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "f82b9628819f056b",
+   "intended_cell": "i_unprod I 0 term_index 0",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 0",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.29
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=3 w=exp(x)/x k=1 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(-3*x**3*sin(3*x) + 3*x**2*cos(3*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "1b398b69e9d6e98e",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.31
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=3 w=exp(x)/x k=1 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(-3*x**3*sin(3*x) + 3*x**2*cos(3*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "9314202064289351",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.33
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=3 w=exp(x)/x k=1 D=sin(sin(x))",
+   "parent_sstr": "Integral(-3*x**3*sin(3*x) + 3*x**2*cos(3*x) + x + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "c14b25ab4ffb290d",
+   "intended_cell": "i_unprod I 0 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.29
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=3 w=exp(x)/x k=2 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(-3*x**3*sin(3*x) + 7*x**3 + 3*x**2*cos(3*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "80c4b836134caf55",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.34
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=3 w=exp(x)/x k=2 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(-3*x**3*sin(3*x) + 7*x**3 + 3*x**2*cos(3*x) + x + Integral(exp(x)/x, x), x)",
+   "parent_sha": "0775fd62f3af7d4e",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.37
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=3 w=exp(x)/x k=2 D=sin(sin(x))",
+   "parent_sstr": "Integral(-3*x**3*sin(3*x) + 7*x**3 + 3*x**2*cos(3*x) + x + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "623b9f9a85b51a55",
+   "intended_cell": "i_unprod I 0 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.35
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=3 w=sin(x)/x k=0 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(-3*x**3*sin(3*x) + 3*x**2*cos(3*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "29bb9c8d8284dda1",
+   "intended_cell": "i_unprod I 1 term_index 0",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 0",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.28
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=3 w=sin(x)/x k=0 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(-3*x**3*sin(3*x) + 3*x**2*cos(3*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "e37f424d81d58bc8",
+   "intended_cell": "i_unprod I 1 term_index 0",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 0",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.29
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=3 w=sin(x)/x k=0 D=sin(sin(x))",
+   "parent_sstr": "Integral(-3*x**3*sin(3*x) + 3*x**2*cos(3*x) + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "04059005ed67e0e0",
+   "intended_cell": "i_unprod I 0 term_index 0",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 0",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.23
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=3 w=sin(x)/x k=1 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(-3*x**3*sin(3*x) + 3*x**2*cos(3*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "8c35420afbcc4831",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.27
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=3 w=sin(x)/x k=1 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(-3*x**3*sin(3*x) + 3*x**2*cos(3*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "afbe7f13e89de1e2",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.31
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=3 w=sin(x)/x k=1 D=sin(sin(x))",
+   "parent_sstr": "Integral(-3*x**3*sin(3*x) + 3*x**2*cos(3*x) + x + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "2b3f0eba5f11f4cb",
+   "intended_cell": "i_unprod I 0 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.23
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=3 w=sin(x)/x k=2 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(-3*x**3*sin(3*x) + 7*x**3 + 3*x**2*cos(3*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "fe61ad6fdb5a38ca",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.29
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=3 w=sin(x)/x k=2 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(-3*x**3*sin(3*x) + 7*x**3 + 3*x**2*cos(3*x) + x + Integral(sin(x)/x, x), x)",
+   "parent_sha": "e4ecb1fc9e118c24",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.32
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**3 T=cos c=3 w=sin(x)/x k=2 D=sin(sin(x))",
+   "parent_sstr": "Integral(-3*x**3*sin(3*x) + 7*x**3 + 3*x**2*cos(3*x) + x + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "ee44f7ac6303daa7",
+   "intended_cell": "i_unprod I 0 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 3,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 2
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.29
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=2 w=exp(x)/x k=0 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(2*x**2*cos(2*x) + 2*x*sin(2*x) + 2*x*cos(2*x) + sin(2*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "54cab9bc41b8f1ef",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 6,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 4
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.42
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=2 w=exp(x)/x k=0 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(2*x**2*cos(2*x) + 2*x*sin(2*x) + 2*x*cos(2*x) + sin(2*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "8f45f3f12442d36a",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 6,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 4
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.43
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=2 w=exp(x)/x k=0 D=sin(sin(x))",
+   "parent_sstr": "Integral(2*x**2*cos(2*x) + 2*x*sin(2*x) + 2*x*cos(2*x) + sin(2*x) + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "8b9eb0b37b521a4f",
+   "intended_cell": "i_unprod I 0 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 6,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 4
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.39
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=2 w=exp(x)/x k=1 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(2*x**2*cos(2*x) + 2*x*sin(2*x) + 2*x*cos(2*x) + x + sin(2*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "a1d939ab5571e9ce",
+   "intended_cell": "i_unprod I 1 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 7,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 4,
+    "trigsimp": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.44
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=2 w=exp(x)/x k=1 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(2*x**2*cos(2*x) + 2*x*sin(2*x) + 2*x*cos(2*x) + x + sin(2*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "4c9b1113c106a2a8",
+   "intended_cell": "i_unprod I 1 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 7,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 4,
+    "trigsimp": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.45
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=2 w=exp(x)/x k=1 D=sin(sin(x))",
+   "parent_sstr": "Integral(2*x**2*cos(2*x) + 2*x*sin(2*x) + 2*x*cos(2*x) + x + sin(2*x) + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "85db81189abc6679",
+   "intended_cell": "i_unprod I 0 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 7,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 4,
+    "trigsimp": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.41
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=2 w=exp(x)/x k=2 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(7*x**3 + 2*x**2*cos(2*x) + 2*x*sin(2*x) + 2*x*cos(2*x) + x + sin(2*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "0fe19099dd82b45f",
+   "intended_cell": "i_unprod I 1 term_index 4",
+   "legal_set_stable": true,
+   "legal_set_size": 7,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 4",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 4,
+    "trigsimp": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.49
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=2 w=exp(x)/x k=2 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(7*x**3 + 2*x**2*cos(2*x) + 2*x*sin(2*x) + 2*x*cos(2*x) + x + sin(2*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "ab35900f4997c0c7",
+   "intended_cell": "i_unprod I 1 term_index 4",
+   "legal_set_stable": true,
+   "legal_set_size": 7,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 4",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 4,
+    "trigsimp": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.48
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=2 w=exp(x)/x k=2 D=sin(sin(x))",
+   "parent_sstr": "Integral(7*x**3 + 2*x**2*cos(2*x) + 2*x*sin(2*x) + 2*x*cos(2*x) + x + sin(2*x) + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "dc342f600b03ce99",
+   "intended_cell": "i_unprod I 0 term_index 4",
+   "legal_set_stable": true,
+   "legal_set_size": 7,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 4",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 4,
+    "trigsimp": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.43
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=2 w=sin(x)/x k=0 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(2*x**2*cos(2*x) + 2*x*sin(2*x) + 2*x*cos(2*x) + sin(2*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "4870ef002116a570",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 5,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 4
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.38
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=2 w=sin(x)/x k=0 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(2*x**2*cos(2*x) + 2*x*sin(2*x) + 2*x*cos(2*x) + sin(2*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "092d04f66124e41a",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 5,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 4
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.39
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=2 w=sin(x)/x k=0 D=sin(sin(x))",
+   "parent_sstr": "Integral(2*x**2*cos(2*x) + 2*x*sin(2*x) + 2*x*cos(2*x) + sin(2*x) + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "4f13e5119d3c9504",
+   "intended_cell": "i_unprod I 0 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 5,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 4
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.32
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=2 w=sin(x)/x k=1 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(2*x**2*cos(2*x) + 2*x*sin(2*x) + 2*x*cos(2*x) + x + sin(2*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "b5cb0ec1365a3bc0",
+   "intended_cell": "i_unprod I 1 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 6,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 4,
+    "trigsimp": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.39
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=2 w=sin(x)/x k=1 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(2*x**2*cos(2*x) + 2*x*sin(2*x) + 2*x*cos(2*x) + x + sin(2*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "e598b7f6b0a94050",
+   "intended_cell": "i_unprod I 1 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 6,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 4,
+    "trigsimp": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.46
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=2 w=sin(x)/x k=1 D=sin(sin(x))",
+   "parent_sstr": "Integral(2*x**2*cos(2*x) + 2*x*sin(2*x) + 2*x*cos(2*x) + x + sin(2*x) + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "9e26cb9bc2ff0bf8",
+   "intended_cell": "i_unprod I 0 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 6,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 4,
+    "trigsimp": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.34
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=2 w=sin(x)/x k=2 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(7*x**3 + 2*x**2*cos(2*x) + 2*x*sin(2*x) + 2*x*cos(2*x) + x + sin(2*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "0e05cb397d9523b2",
+   "intended_cell": "i_unprod I 1 term_index 4",
+   "legal_set_stable": true,
+   "legal_set_size": 6,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 4",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 4,
+    "trigsimp": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.4
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=2 w=sin(x)/x k=2 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(7*x**3 + 2*x**2*cos(2*x) + 2*x*sin(2*x) + 2*x*cos(2*x) + x + sin(2*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "06dc12d08f8578f5",
+   "intended_cell": "i_unprod I 1 term_index 4",
+   "legal_set_stable": true,
+   "legal_set_size": 6,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 4",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 4,
+    "trigsimp": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.43
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=2 w=sin(x)/x k=2 D=sin(sin(x))",
+   "parent_sstr": "Integral(7*x**3 + 2*x**2*cos(2*x) + 2*x*sin(2*x) + 2*x*cos(2*x) + x + sin(2*x) + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "f90d4f35c1410a14",
+   "intended_cell": "i_unprod I 0 term_index 4",
+   "legal_set_stable": true,
+   "legal_set_size": 6,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 4",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 4,
+    "trigsimp": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.36
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=3 w=exp(x)/x k=0 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(3*x**2*cos(3*x) + 2*x*sin(3*x) + 3*x*cos(3*x) + sin(3*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "cd02acefa0090fae",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 5,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.38
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=3 w=exp(x)/x k=0 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(3*x**2*cos(3*x) + 2*x*sin(3*x) + 3*x*cos(3*x) + sin(3*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "ef24c8a735f7154b",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 5,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.41
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=3 w=exp(x)/x k=0 D=sin(sin(x))",
+   "parent_sstr": "Integral(3*x**2*cos(3*x) + 2*x*sin(3*x) + 3*x*cos(3*x) + sin(3*x) + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "184de8cd3e5e6eca",
+   "intended_cell": "i_unprod I 0 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 5,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.4
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=3 w=exp(x)/x k=1 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(3*x**2*cos(3*x) + 2*x*sin(3*x) + 3*x*cos(3*x) + x + sin(3*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "dd4759faa6c98a4b",
+   "intended_cell": "i_unprod I 1 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 5,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.38
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=3 w=exp(x)/x k=1 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(3*x**2*cos(3*x) + 2*x*sin(3*x) + 3*x*cos(3*x) + x + sin(3*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "8ec72587f3a54b0b",
+   "intended_cell": "i_unprod I 1 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 5,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.4
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=3 w=exp(x)/x k=1 D=sin(sin(x))",
+   "parent_sstr": "Integral(3*x**2*cos(3*x) + 2*x*sin(3*x) + 3*x*cos(3*x) + x + sin(3*x) + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "2d67ee4d7897435f",
+   "intended_cell": "i_unprod I 0 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 5,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.36
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=3 w=exp(x)/x k=2 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(7*x**3 + 3*x**2*cos(3*x) + 2*x*sin(3*x) + 3*x*cos(3*x) + x + sin(3*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "5dd7da2f00745940",
+   "intended_cell": "i_unprod I 1 term_index 4",
+   "legal_set_stable": true,
+   "legal_set_size": 5,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 4",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.39
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=3 w=exp(x)/x k=2 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(7*x**3 + 3*x**2*cos(3*x) + 2*x*sin(3*x) + 3*x*cos(3*x) + x + sin(3*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "f3f9b7ba2f64acf1",
+   "intended_cell": "i_unprod I 1 term_index 4",
+   "legal_set_stable": true,
+   "legal_set_size": 5,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 4",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.42
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=3 w=exp(x)/x k=2 D=sin(sin(x))",
+   "parent_sstr": "Integral(7*x**3 + 3*x**2*cos(3*x) + 2*x*sin(3*x) + 3*x*cos(3*x) + x + sin(3*x) + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "e13aaf7b3777c2fa",
+   "intended_cell": "i_unprod I 0 term_index 4",
+   "legal_set_stable": true,
+   "legal_set_size": 5,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 4",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.37
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=3 w=sin(x)/x k=0 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(3*x**2*cos(3*x) + 2*x*sin(3*x) + 3*x*cos(3*x) + sin(3*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "df6a539811d4aa26",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.39
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=3 w=sin(x)/x k=0 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(3*x**2*cos(3*x) + 2*x*sin(3*x) + 3*x*cos(3*x) + sin(3*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "7f4467b7982f92b9",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.36
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=3 w=sin(x)/x k=0 D=sin(sin(x))",
+   "parent_sstr": "Integral(3*x**2*cos(3*x) + 2*x*sin(3*x) + 3*x*cos(3*x) + sin(3*x) + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "32460a6f4098e744",
+   "intended_cell": "i_unprod I 0 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.29
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=3 w=sin(x)/x k=1 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(3*x**2*cos(3*x) + 2*x*sin(3*x) + 3*x*cos(3*x) + x + sin(3*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "a87a55e8dd519b92",
+   "intended_cell": "i_unprod I 1 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.33
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=3 w=sin(x)/x k=1 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(3*x**2*cos(3*x) + 2*x*sin(3*x) + 3*x*cos(3*x) + x + sin(3*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "83fc32daba76a2f2",
+   "intended_cell": "i_unprod I 1 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.36
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=3 w=sin(x)/x k=1 D=sin(sin(x))",
+   "parent_sstr": "Integral(3*x**2*cos(3*x) + 2*x*sin(3*x) + 3*x*cos(3*x) + x + sin(3*x) + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "3ed8753d87e28bf0",
+   "intended_cell": "i_unprod I 0 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.29
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=3 w=sin(x)/x k=2 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(7*x**3 + 3*x**2*cos(3*x) + 2*x*sin(3*x) + 3*x*cos(3*x) + x + sin(3*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "06a1bef8ae9b435f",
+   "intended_cell": "i_unprod I 1 term_index 4",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 4",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.35
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=3 w=sin(x)/x k=2 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(7*x**3 + 3*x**2*cos(3*x) + 2*x*sin(3*x) + 3*x*cos(3*x) + x + sin(3*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "94f282722a5dd39d",
+   "intended_cell": "i_unprod I 1 term_index 4",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 4",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.4
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=sin c=3 w=sin(x)/x k=2 D=sin(sin(x))",
+   "parent_sstr": "Integral(7*x**3 + 3*x**2*cos(3*x) + 2*x*sin(3*x) + 3*x*cos(3*x) + x + sin(3*x) + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "62f54ce0f8f06d1d",
+   "intended_cell": "i_unprod I 0 term_index 4",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 4",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.36
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=2 w=exp(x)/x k=0 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(-2*x**2*sin(2*x) - 2*x*sin(2*x) + 2*x*cos(2*x) + cos(2*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "88b6bfe780230712",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 7,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 4,
+    "trigsimp": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.44
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=2 w=exp(x)/x k=0 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(-2*x**2*sin(2*x) - 2*x*sin(2*x) + 2*x*cos(2*x) + cos(2*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "d5d97e8494340129",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 7,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 4,
+    "trigsimp": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.46
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=2 w=exp(x)/x k=0 D=sin(sin(x))",
+   "parent_sstr": "Integral(-2*x**2*sin(2*x) - 2*x*sin(2*x) + 2*x*cos(2*x) + cos(2*x) + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "4739534ba8895f53",
+   "intended_cell": "i_unprod I 0 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 7,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 4,
+    "trigsimp": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.41
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=2 w=exp(x)/x k=1 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(-2*x**2*sin(2*x) - 2*x*sin(2*x) + 2*x*cos(2*x) + x + cos(2*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "35b41374a9869bdf",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 7,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 4,
+    "trigsimp": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.48
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=2 w=exp(x)/x k=1 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(-2*x**2*sin(2*x) - 2*x*sin(2*x) + 2*x*cos(2*x) + x + cos(2*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "6fe8d478150755a6",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 7,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 4,
+    "trigsimp": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.49
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=2 w=exp(x)/x k=1 D=sin(sin(x))",
+   "parent_sstr": "Integral(-2*x**2*sin(2*x) - 2*x*sin(2*x) + 2*x*cos(2*x) + x + cos(2*x) + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "aac4957a4b25133e",
+   "intended_cell": "i_unprod I 0 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 7,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 4,
+    "trigsimp": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.47
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=2 w=exp(x)/x k=2 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(7*x**3 - 2*x**2*sin(2*x) - 2*x*sin(2*x) + 2*x*cos(2*x) + x + cos(2*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "ad3f19322ee4d28d",
+   "intended_cell": "i_unprod I 1 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 7,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 4,
+    "trigsimp": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.6
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=2 w=exp(x)/x k=2 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(7*x**3 - 2*x**2*sin(2*x) - 2*x*sin(2*x) + 2*x*cos(2*x) + x + cos(2*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "3defc15cdc2a6d33",
+   "intended_cell": "i_unprod I 1 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 7,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 4,
+    "trigsimp": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.57
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=2 w=exp(x)/x k=2 D=sin(sin(x))",
+   "parent_sstr": "Integral(7*x**3 - 2*x**2*sin(2*x) - 2*x*sin(2*x) + 2*x*cos(2*x) + x + cos(2*x) + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "23f2cdf0b27edc0e",
+   "intended_cell": "i_unprod I 0 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 7,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 4,
+    "trigsimp": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.5
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=2 w=sin(x)/x k=0 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(-2*x**2*sin(2*x) - 2*x*sin(2*x) + 2*x*cos(2*x) + cos(2*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "f0215e4a82070f6d",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 6,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 4,
+    "trigsimp": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.5
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=2 w=sin(x)/x k=0 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(-2*x**2*sin(2*x) - 2*x*sin(2*x) + 2*x*cos(2*x) + cos(2*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "d833a19adc7a2579",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 6,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 4,
+    "trigsimp": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.47
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=2 w=sin(x)/x k=0 D=sin(sin(x))",
+   "parent_sstr": "Integral(-2*x**2*sin(2*x) - 2*x*sin(2*x) + 2*x*cos(2*x) + cos(2*x) + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "24ebbdf3ee1e15f0",
+   "intended_cell": "i_unprod I 0 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 6,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 4,
+    "trigsimp": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.41
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=2 w=sin(x)/x k=1 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(-2*x**2*sin(2*x) - 2*x*sin(2*x) + 2*x*cos(2*x) + x + cos(2*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "bfeed10e227a6412",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 6,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 4,
+    "trigsimp": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.44
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=2 w=sin(x)/x k=1 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(-2*x**2*sin(2*x) - 2*x*sin(2*x) + 2*x*cos(2*x) + x + cos(2*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "0825820254b219d1",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 6,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 4,
+    "trigsimp": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.55
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=2 w=sin(x)/x k=1 D=sin(sin(x))",
+   "parent_sstr": "Integral(-2*x**2*sin(2*x) - 2*x*sin(2*x) + 2*x*cos(2*x) + x + cos(2*x) + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "120bda325cfeb177",
+   "intended_cell": "i_unprod I 0 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 6,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 4,
+    "trigsimp": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.4
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=2 w=sin(x)/x k=2 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(7*x**3 - 2*x**2*sin(2*x) - 2*x*sin(2*x) + 2*x*cos(2*x) + x + cos(2*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "785a4f5dae97c095",
+   "intended_cell": "i_unprod I 1 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 6,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 4,
+    "trigsimp": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.46
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=2 w=sin(x)/x k=2 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(7*x**3 - 2*x**2*sin(2*x) - 2*x*sin(2*x) + 2*x*cos(2*x) + x + cos(2*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "20ad2e28e6615095",
+   "intended_cell": "i_unprod I 1 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 6,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 4,
+    "trigsimp": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.49
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=2 w=sin(x)/x k=2 D=sin(sin(x))",
+   "parent_sstr": "Integral(7*x**3 - 2*x**2*sin(2*x) - 2*x*sin(2*x) + 2*x*cos(2*x) + x + cos(2*x) + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "d8bd350855829574",
+   "intended_cell": "i_unprod I 0 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 6,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 4,
+    "trigsimp": 1
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.38
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=3 w=exp(x)/x k=0 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(-3*x**2*sin(3*x) - 3*x*sin(3*x) + 2*x*cos(3*x) + cos(3*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "25302dd999ac1f5e",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 5,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.42
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=3 w=exp(x)/x k=0 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(-3*x**2*sin(3*x) - 3*x*sin(3*x) + 2*x*cos(3*x) + cos(3*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "49b9af7e19885795",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 5,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.41
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=3 w=exp(x)/x k=0 D=sin(sin(x))",
+   "parent_sstr": "Integral(-3*x**2*sin(3*x) - 3*x*sin(3*x) + 2*x*cos(3*x) + cos(3*x) + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "164154b478bb530a",
+   "intended_cell": "i_unprod I 0 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 5,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.42
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=3 w=exp(x)/x k=1 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(-3*x**2*sin(3*x) - 3*x*sin(3*x) + 2*x*cos(3*x) + x + cos(3*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "866f3c94bb0f0a46",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 5,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.4
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=3 w=exp(x)/x k=1 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(-3*x**2*sin(3*x) - 3*x*sin(3*x) + 2*x*cos(3*x) + x + cos(3*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "b3ccbfabc367a343",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 5,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.47
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=3 w=exp(x)/x k=1 D=sin(sin(x))",
+   "parent_sstr": "Integral(-3*x**2*sin(3*x) - 3*x*sin(3*x) + 2*x*cos(3*x) + x + cos(3*x) + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "e2ea556becfbfd50",
+   "intended_cell": "i_unprod I 0 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 5,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.42
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=3 w=exp(x)/x k=2 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(7*x**3 - 3*x**2*sin(3*x) - 3*x*sin(3*x) + 2*x*cos(3*x) + x + cos(3*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "2083b5f795cbda16",
+   "intended_cell": "i_unprod I 1 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 5,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.44
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=3 w=exp(x)/x k=2 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(7*x**3 - 3*x**2*sin(3*x) - 3*x*sin(3*x) + 2*x*cos(3*x) + x + cos(3*x) + Integral(exp(x)/x, x), x)",
+   "parent_sha": "8ede4329838e6055",
+   "intended_cell": "i_unprod I 1 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 5,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.52
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=3 w=exp(x)/x k=2 D=sin(sin(x))",
+   "parent_sstr": "Integral(7*x**3 - 3*x**2*sin(3*x) - 3*x*sin(3*x) + 2*x*cos(3*x) + x + cos(3*x) + Integral(exp(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "ad22f01968c511fa",
+   "intended_cell": "i_unprod I 0 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 5,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "euler": 1,
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.46
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=3 w=sin(x)/x k=0 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(-3*x**2*sin(3*x) - 3*x*sin(3*x) + 2*x*cos(3*x) + cos(3*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "46b3ee79b3a9aaca",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.37
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=3 w=sin(x)/x k=0 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(-3*x**2*sin(3*x) - 3*x*sin(3*x) + 2*x*cos(3*x) + cos(3*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "addcc2402ab0d83d",
+   "intended_cell": "i_unprod I 1 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.52
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=3 w=sin(x)/x k=0 D=sin(sin(x))",
+   "parent_sstr": "Integral(-3*x**2*sin(3*x) - 3*x*sin(3*x) + 2*x*cos(3*x) + cos(3*x) + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "1aba7762fbf38398",
+   "intended_cell": "i_unprod I 0 term_index 1",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 1",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.37
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=3 w=sin(x)/x k=1 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(-3*x**2*sin(3*x) - 3*x*sin(3*x) + 2*x*cos(3*x) + x + cos(3*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "bdfaaf8f73d2daab",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.41
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=3 w=sin(x)/x k=1 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(-3*x**2*sin(3*x) - 3*x*sin(3*x) + 2*x*cos(3*x) + x + cos(3*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "6cb07b65f6cc53e7",
+   "intended_cell": "i_unprod I 1 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.4
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=3 w=sin(x)/x k=1 D=sin(sin(x))",
+   "parent_sstr": "Integral(-3*x**2*sin(3*x) - 3*x*sin(3*x) + 2*x*cos(3*x) + x + cos(3*x) + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "69f4e616060006f4",
+   "intended_cell": "i_unprod I 0 term_index 2",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 2",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.3
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=3 w=sin(x)/x k=2 D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral(7*x**3 - 3*x**2*sin(3*x) - 3*x*sin(3*x) + 2*x*cos(3*x) + x + cos(3*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "99a7ba6bca6da504",
+   "intended_cell": "i_unprod I 1 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.4
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=3 w=sin(x)/x k=2 D=1/(x + log(x))",
+   "parent_sstr": "Integral(1/(x + log(x)), x) + Integral(7*x**3 - 3*x**2*sin(3*x) - 3*x*sin(3*x) + 2*x*cos(3*x) + x + cos(3*x) + Integral(sin(x)/x, x), x)",
+   "parent_sha": "bd30808216feab08",
+   "intended_cell": "i_unprod I 1 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 1 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.43
+  },
+  {
+   "family": "U-F3v3",
+   "signature": "P=x**2 + x T=cos c=3 w=sin(x)/x k=2 D=sin(sin(x))",
+   "parent_sstr": "Integral(7*x**3 - 3*x**2*sin(3*x) - 3*x*sin(3*x) + 2*x*cos(3*x) + x + cos(3*x) + Integral(sin(x)/x, x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "ae53cf52ed1bfd51",
+   "intended_cell": "i_unprod I 0 term_index 3",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "i_unprod I 0 term_index 3",
+   "chosen_rule": "i_unprod",
+   "competing_rules": {
+    "i_sum": 1,
+    "i_unprod": 3
+   },
+   "success": true,
+   "outcome": "success",
+   "wall_s": 0.33
+  },
+  {
+   "family": "P-F3",
+   "signature": "m=log(x) D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral((2*x**40 + x**39 + 3*x**38 + 2*x**37 + x**36 + 3*x**35 + 2*x**34 + x**33 + 3*x**32 + 2*x**31 + x**30 + 3*x**29 + 2*x**28 + x**27 + 3*x**26 + 2*x**25 + x**24 + 3*x**23 + 2*x**22 + x**21 + 3*x**20 + 2*x**19 + x**18 + 3*x**17 + 2*x**16 + x**15 + 3*x**14 + 2*x**13 + x**12 + 3*x**11 + 2*x**10 + x**9 + 3*x**8 + 2*x**7 + x**6 + 3*x**5 + 2*x**4 + x**3 + 3*x**2 + 2*x)*log(x), x)",
+   "parent_sha": "c3ac6cc897b8ac86",
+   "intended_cell": "i_parts I 1 u_choice 1",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "together W -1 none -1",
+   "chosen_rule": "together",
+   "competing_rules": {
+    "expand": 1,
+    "i_parts": 2,
+    "together": 1
+   },
+   "success": false,
+   "outcome": "chosen_other",
+   "wall_s": 0.63
+  },
+  {
+   "family": "P-F3",
+   "signature": "m=log(x) D=sin(sin(x))",
+   "parent_sstr": "Integral((2*x**40 + x**39 + 3*x**38 + 2*x**37 + x**36 + 3*x**35 + 2*x**34 + x**33 + 3*x**32 + 2*x**31 + x**30 + 3*x**29 + 2*x**28 + x**27 + 3*x**26 + 2*x**25 + x**24 + 3*x**23 + 2*x**22 + x**21 + 3*x**20 + 2*x**19 + x**18 + 3*x**17 + 2*x**16 + x**15 + 3*x**14 + 2*x**13 + x**12 + 3*x**11 + 2*x**10 + x**9 + 3*x**8 + 2*x**7 + x**6 + 3*x**5 + 2*x**4 + x**3 + 3*x**2 + 2*x)*log(x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "1fcce02733a6a4b1",
+   "intended_cell": "i_parts I 0 u_choice 1",
+   "legal_set_stable": true,
+   "legal_set_size": 5,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "together W -1 none -1",
+   "chosen_rule": "together",
+   "competing_rules": {
+    "euler": 1,
+    "expand": 1,
+    "i_parts": 2,
+    "together": 1
+   },
+   "success": false,
+   "outcome": "chosen_other",
+   "wall_s": 0.65
+  },
+  {
+   "family": "P-F3",
+   "signature": "m=atan(x) D=x**x",
+   "parent_sstr": "Integral(x**x, x) + Integral((2*x**40 + x**39 + 3*x**38 + 2*x**37 + x**36 + 3*x**35 + 2*x**34 + x**33 + 3*x**32 + 2*x**31 + x**30 + 3*x**29 + 2*x**28 + x**27 + 3*x**26 + 2*x**25 + x**24 + 3*x**23 + 2*x**22 + x**21 + 3*x**20 + 2*x**19 + x**18 + 3*x**17 + 2*x**16 + x**15 + 3*x**14 + 2*x**13 + x**12 + 3*x**11 + 2*x**10 + x**9 + 3*x**8 + 2*x**7 + x**6 + 3*x**5 + 2*x**4 + x**3 + 3*x**2 + 2*x)*atan(x), x)",
+   "parent_sha": "79b6f446f2c5aed1",
+   "intended_cell": "i_parts I 1 u_choice 1",
+   "legal_set_stable": true,
+   "legal_set_size": 4,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "together W -1 none -1",
+   "chosen_rule": "together",
+   "competing_rules": {
+    "expand": 1,
+    "i_parts": 2,
+    "together": 1
+   },
+   "success": false,
+   "outcome": "chosen_other",
+   "wall_s": 0.55
+  },
+  {
+   "family": "P-F3",
+   "signature": "m=atan(x) D=sin(sin(x))",
+   "parent_sstr": "Integral((2*x**40 + x**39 + 3*x**38 + 2*x**37 + x**36 + 3*x**35 + 2*x**34 + x**33 + 3*x**32 + 2*x**31 + x**30 + 3*x**29 + 2*x**28 + x**27 + 3*x**26 + 2*x**25 + x**24 + 3*x**23 + 2*x**22 + x**21 + 3*x**20 + 2*x**19 + x**18 + 3*x**17 + 2*x**16 + x**15 + 3*x**14 + 2*x**13 + x**12 + 3*x**11 + 2*x**10 + x**9 + 3*x**8 + 2*x**7 + x**6 + 3*x**5 + 2*x**4 + x**3 + 3*x**2 + 2*x)*atan(x), x) + Integral(sin(sin(x)), x)",
+   "parent_sha": "cde7cdb3480dd2be",
+   "intended_cell": "i_parts I 0 u_choice 1",
+   "legal_set_stable": true,
+   "legal_set_size": 5,
+   "target_legal": true,
+   "min_hce_ties": 1,
+   "chosen_cell": "together W -1 none -1",
+   "chosen_rule": "together",
+   "competing_rules": {
+    "euler": 1,
+    "expand": 1,
+    "i_parts": 2,
+    "together": 1
+   },
+   "success": false,
+   "outcome": "chosen_other",
+   "wall_s": 0.75
+  }
+ ],
+ "pins": {
+  "data/matsub_paired.jsonl": "a943ba7fc581db743b07192e5d951fadddd2ba19bca3225b75d8402351d468e8"
+ },
+ "start": {
+  "start_commit": "3fa02d7a",
+  "start_status_porcelain": "",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_svpgriddesk3.py": "5bca5632b4a2f79249aeccbedfb535892aa3b1b136a399c548580b8cfa731a00",
+   "scratch/mathworld1_svpgriddesk2.py": "87dfa7081495c3f464e11e8f1ea05b8b5ce29155d775867333e888377d5192e7",
+   "scratch/mathworld1_svpgriddesk.py": "2f6d715a7f9da7c202b8b617af3f723e57535d530070215474d21eb20396485d",
+   "scratch/mathworld1_svpeval.py": "4c5e5ec9f97446680c7ea962850efc34c361f87120a23c0aa0a6159b74cc3786",
+   "scratch/mathworld1_actionsem.py": "c79462129730328592ee2cc909fc563076afe80542dd2a745ce88ceef3e9c23b",
+   "scratch/mathworld1_actionfinal.py": "978298d58f543a26e8a42214a455aa56ce4ad208ae246f1e9d5960334f2f8963",
+   "scratch/mathworld1_unprodsem.py": "9f6a17324ea31691fe240682b431fcc0a53af18b898c6dc73a143cc0fc5f3609",
+   "scratch/mathworld0.py": "4c130625535aa73ca10cdc368213d2d875862d324eb3796508feab5dd30c52d4",
+   "llmopt/search/derivation.py": "c38eeb73dd9b803fe207271b37d7097e1843cac7a776d3704d9de04dd1683e87",
+   "llmopt/search/rules.py": "dc83caf67e46edd16c4bb8aca5e9c12be637aedc395e4410e59fc1149bf29e58",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "3fa02d7a"
+}
