@@ -1,0 +1,194 @@
+{
+ "frozen_precedence": "WHOLE-COVERED > NEW-RULE > NEW-FACTOR-VALUE > RECOMBINATION-OOV; field support = marginal per-field value support among training targets; RULE-COVERED-OOV reported as nonexclusive flag (= NEW-FACTOR-VALUE + RECOMBINATION-OOV)",
+ "training": {
+  "rows": 73324,
+  "distinct_whole_action_tuples": 33,
+  "tuple_frequencies": {
+   "i_linear_basis I 0 none -1": 17160,
+   "i_const I 0 none -1": 14932,
+   "i_heurisch I 0 none -1": 12781,
+   "i_sum I 0 none -1": 10822,
+   "i_heurisch I 1 none -1": 5574,
+   "i_linear_basis I 1 none -1": 3583,
+   "i_inverse_trig I 0 none -1": 2770,
+   "i_unprod I 0 term_index 1": 2011,
+   "i_unprod I 0 term_index 0": 948,
+   "expand W -1 none -1": 716,
+   "i_heurisch I 2 none -1": 544,
+   "i_const_factor I 0 none -1": 401,
+   "i_inverse_trig I 1 none -1": 388,
+   "i_linear_basis I 2 none -1": 322,
+   "i_unprod I 1 term_index 1": 138,
+   "i_heurisch I 3 none -1": 47,
+   "i_log_power I 0 none -1": 36,
+   "i_linear_basis I 3 none -1": 30,
+   "i_sqrt_basis I 0 none -1": 30,
+   "i_unprod I 1 term_index 0": 20,
+   "i_log_power I 1 none -1": 19,
+   "i_usub I 0 none -1": 19,
+   "i_ansatz_exp I 0 none -1": 10,
+   "together W -1 none -1": 7,
+   "i_unprod I 0 term_index 2": 5,
+   "i_transcend_div I 0 none -1": 4,
+   "i_parts I 0 u_choice 0": 1,
+   "i_parts I 0 u_choice 1": 1,
+   "i_const_factor I 1 none -1": 1,
+   "i_parts I 1 u_choice 1": 1,
+   "i_inverse_trig I 3 none -1": 1,
+   "i_sqrt_basis I 2 none -1": 1,
+   "i_unprod I 0 term_index 3": 1
+  },
+  "top1_mass": 0.23402978560907753,
+  "top5_mass": 0.8355927117996836,
+  "top10_mass": 0.9723555725274126,
+  "freq_p10": 1,
+  "freq_median": 36,
+  "freq_p90": 10822,
+  "freq_max": 17160,
+  "shannon_entropy_nats": 2.0720193494273054,
+  "effective_support_expH": 7.940842273566937,
+  "hhi": 0.15915311722372216,
+  "per_coordinate_support": {
+   "rule": {
+    "distinct": 15,
+    "counts": {
+     "i_linear_basis": 21095,
+     "i_heurisch": 18946,
+     "i_const": 14932,
+     "i_sum": 10822,
+     "i_inverse_trig": 3159,
+     "i_unprod": 3123,
+     "expand": 716,
+     "i_const_factor": 402,
+     "i_log_power": 55,
+     "i_sqrt_basis": 31,
+     "i_usub": 19,
+     "i_ansatz_exp": 10,
+     "together": 7,
+     "i_transcend_div": 4,
+     "i_parts": 3
+    }
+   },
+   "site_kind": {
+    "distinct": 2,
+    "counts": {
+     "I": 72601,
+     "W": 723
+    }
+   },
+   "site_ordinal": {
+    "distinct": 5,
+    "counts": {
+     "0": 61932,
+     "1": 9724,
+     "2": 867,
+     "-1": 723,
+     "3": 78
+    }
+   },
+   "param_kind": {
+    "distinct": 3,
+    "counts": {
+     "none": 70198,
+     "term_index": 3123,
+     "u_choice": 3
+    }
+   },
+   "param_index": {
+    "distinct": 5,
+    "counts": {
+     "-1": 70198,
+     "1": 2151,
+     "0": 969,
+     "2": 5,
+     "3": 1
+    }
+   }
+  },
+  "joint_support": {
+   "rule_x_site": 28,
+   "rule_x_param_kind": 15,
+   "rule_x_site_x_param_kind": 28
+  }
+ },
+ "bands": {
+  "band1": {
+   "n_primary": 72,
+   "labels": {
+    "WHOLE-COVERED": 71,
+    "NEW-RULE": 1
+   },
+   "labels_rule_covered_oov_flag": 0,
+   "rivals": {
+    "NEW-RULE": 149,
+    "WHOLE-COVERED": 278,
+    "RECOMBINATION-OOV": 10
+   },
+   "rivals_rule_covered_oov_flag": 10,
+   "decisions": {
+    "ge1_new_rule_rival": 65,
+    "ge1_recomb_oov_rival": 10,
+    "only_whole_covered_candidates": 7
+   },
+   "labels_recombination_oov_records": []
+  },
+  "band2": {
+   "n_primary": 79,
+   "labels": {
+    "WHOLE-COVERED": 78,
+    "NEW-RULE": 1
+   },
+   "labels_rule_covered_oov_flag": 0,
+   "rivals": {
+    "NEW-RULE": 171,
+    "WHOLE-COVERED": 301,
+    "RECOMBINATION-OOV": 11
+   },
+   "rivals_rule_covered_oov_flag": 11,
+   "decisions": {
+    "ge1_recomb_oov_rival": 10,
+    "ge1_new_rule_rival": 72,
+    "only_whole_covered_candidates": 7
+   },
+   "labels_recombination_oov_records": []
+  },
+  "band3": {
+   "n_primary": 69,
+   "labels": {
+    "WHOLE-COVERED": 69
+   },
+   "labels_rule_covered_oov_flag": 0,
+   "rivals": {
+    "NEW-RULE": 145,
+    "WHOLE-COVERED": 271,
+    "RECOMBINATION-OOV": 8,
+    "NEW-FACTOR-VALUE": 1
+   },
+   "rivals_rule_covered_oov_flag": 9,
+   "decisions": {
+    "ge1_new_rule_rival": 66,
+    "ge1_recomb_oov_rival": 8,
+    "ge1_new_factor_value_candidate": 1,
+    "only_whole_covered_candidates": 3
+   },
+   "labels_recombination_oov_records": []
+  }
+ },
+ "pins": {
+  "data/matsub_paired.jsonl": "a943ba7fc581db743b07192e5d951fadddd2ba19bca3225b75d8402351d468e8",
+  "logs/mathworld1/svpeval/decisions.jsonl": "f63100a62f3091d544750d679483009a473261c587f3165241406a86253858c6",
+  "logs/mathworld1/svpeval2/decisions.jsonl": "89efbe0ea447ee937c0c130d5419112921a2dd6c2159c6c2112cfd5e92f79315",
+  "logs/mathworld1/svpeval3/decisions.jsonl": "2ff5433249622df9d421cf8014131b3907092a943040bb7b20f46f1afffb7efa"
+ },
+ "start": {
+  "start_commit": "665c84c3",
+  "start_status_porcelain": " M scripts/INDEX.md\n?? scratch/mathworld1_svpsuppdesk.py\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_svpsuppdesk.py": "f259bbfa3233b2cf12d5425843a8369c5d635231d214463643bc8e208d988201",
+   "scratch/mathworld1_svpbirth.py": "c0bed95ec6a4db6faad424fa4780fba3af8d4f6d2cec364c75726da9e532950c",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "665c84c3"
+}
