@@ -16,15 +16,20 @@ FROZEN SPACE-2 (deterministic, each grid point once):
     f_t = expand(d/dx[P*T(c*x)]) + Integral(w, x) + first-k polys
     P in {x^2, x^3, x^2+x}; T in {sin, cos}; c in {2,3};
     w in {exp(x)/x, sin(x)/x}; k in {0,1,2} over (x, 7*x^3);
-    B in {B16s, B12c} with
-    B16s = sum_{j=1..16} (j%5+2)*x^j*sin((j+2)x),
-    B12c = sum_{j=1..12} (j%4+2)*x^j*cos((j+3)x),
+    B in {B20s, B18c} with
+    B20s = sum_{j=1..20} (j%5+2)*x^j*sin((j+2)x),
+    B18c = sum_{j=1..18} (j%4+2)*x^j*cos((j+3)x),
     both gate-checked count_ops > 100 (heurisch refuses).
     Grid: 3*2*2*2*3*2 = 144 attempts.
   P-F2 (SECONDARY, never gates): f_t = m * Q with
-    m in {log(x), atan(x)}, Q in {Q40, Q28} where
+    m in {log(x), atan(x)}, Q in {Q40, Q48} where
     Qn = sum_{j=1..n} (j%3+1)*x^j (count_ops > 100 gate-checked
-    for m*Q); distractor B = B16s. Grid: 2*2 = 4 attempts.
+    for m*Q); distractor B = B20s.
+  AMENDED PRE-RUN: the originally committed sizes (B16s 94 ops,
+  B12c 70 ops, Q28 75 ops) failed the >100 op gate BEFORE any
+  attempt executed (zero examples produced under the failed
+  freeze); sizes raised to B20s 118 / B18c 106 / Q48 128, gate
+  law unchanged. Grid: 2*2 = 4 attempts.
   Total 148. Site ordinals/term indices MEASURED, never assumed
   (canonical Add order decides which summand is ordinal 0; the
   inner blocker Integral inside f_t adds a nested site whose
@@ -55,12 +60,12 @@ from scratch.mathworld1_svpgriddesk import (COVERED_P,  # noqa: E402
 
 RECEIPT = Path("logs/mathworld1/svpgriddesk2_receipt.json")
 
-B16S = sp.Add(*[(j % 5 + 2) * X**j * sp.sin((j + 2) * X)
-                for j in range(1, 17)])
-B12C = sp.Add(*[(j % 4 + 2) * X**j * sp.cos((j + 3) * X)
-                for j in range(1, 13)])
+B20S = sp.Add(*[(j % 5 + 2) * X**j * sp.sin((j + 2) * X)
+                for j in range(1, 21)])
+B18C = sp.Add(*[(j % 4 + 2) * X**j * sp.cos((j + 3) * X)
+                for j in range(1, 19)])
 Q40 = sp.Add(*[(j % 3 + 1) * X**j for j in range(1, 41)])
-Q28 = sp.Add(*[(j % 3 + 1) * X**j for j in range(1, 29)])
+Q48 = sp.Add(*[(j % 3 + 1) * X**j for j in range(1, 49)])
 
 
 def build_space2():
@@ -71,8 +76,8 @@ def build_space2():
             for c in (2, 3):
                 for w in (sp.exp(X) / X, sp.sin(X) / X):
                     for k in (0, 1, 2):
-                        for bn, B in (("B16s", B16S),
-                                      ("B12c", B12C)):
+                        for bn, B in (("B20s", B20S),
+                                      ("B18c", B18C)):
                             f = (sp.expand(
                                 sp.diff(P * T(c * X), X))
                                 + sp.Integral(w, X)
@@ -82,9 +87,9 @@ def build_space2():
                                 f"P={P} T={T.__name__} c={c} "
                                 f"w={w} k={k} B={bn}", f, B))
     for m in (sp.log(X), sp.atan(X)):
-        for qn, Q in (("Q40", Q40), ("Q28", Q28)):
+        for qn, Q in (("Q40", Q40), ("Q48", Q48)):
             space.append(("P-F2", "i_parts", f"m={m} Q={qn}",
-                          m * Q, B16S))
+                          m * Q, B20S))
     return space
 
 
@@ -92,10 +97,10 @@ def main():
     if RECEIPT.exists():
         raise SystemExit(f"REFUSING: {RECEIPT} exists")
     gate(fsha(PAIRED) == PAIRED_SHA, "PAIRED PIN")
-    gate(sp.count_ops(B16S) > 100, "B16S NOT OP-BLOCKED")
-    gate(sp.count_ops(B12C) > 100, "B12C NOT OP-BLOCKED")
+    gate(sp.count_ops(B20S) > 100, "B20S NOT OP-BLOCKED")
+    gate(sp.count_ops(B18C) > 100, "B18C NOT OP-BLOCKED")
     gate(sp.count_ops(sp.log(X) * Q40) > 100, "Q40 NOT BLOCKED")
-    gate(sp.count_ops(sp.log(X) * Q28) > 100, "Q28 NOT BLOCKED")
+    gate(sp.count_ops(sp.log(X) * Q48) > 100, "Q48 NOT BLOCKED")
     START = start_provenance(
         ["scratch/mathworld1_svpgriddesk2.py",
          "scratch/mathworld1_svpgriddesk.py",
