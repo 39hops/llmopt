@@ -3538,7 +3538,11 @@ regime tag on every bullet is the fence.
   labels RECOMBINATION-OOV 0/220; training support is 33 tuples
   with effective support exp(H)=7.94, top-5 mass 83.6%,
   HHI 0.159; recombination-OOV rival mass is 29 and confined to
-  the i_parts u_choice family; frozen decision rule (5%
+  the i_parts u_choice family (CORRECTED READING 2026-08-27,
+  SEMANTIC-SUPPORT-QUAL-0: under semantic (param_kind,
+  param_index) blocks these are NEW-PARAMETER extrapolations,
+  not recombinations — the marginal-class count stands, the
+  compositional reading does not); frozen decision rule (5%
   threshold, named before counting) resolves B: design a
   prospective OOV-LABEL/RECOMBINATION challenge before spending
   replication seeds 13001/14001; scope: deterministic census of
@@ -3546,3 +3550,20 @@ regime tag on every bullet is the fence.
   field-support convention, zero model access — prices
   opportunity, never explains the INCONCLUSIVE.
   RESULTS.md#L51045
+
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] Semantic-support
+  requalification (amendment, deterministic, auditor-recomputed):
+  the marginal RECOMBINATION-OOV class conflated numerically
+  identical but semantically conditional parameter values — under
+  R/S/P factor blocks all 29 marginal-recombination rivals plus
+  band3's NEW-FACTOR-VALUE rival are NEW-PARAMETER, and the
+  scored record contains ZERO strict within-rule recombinations
+  (label or rival, any band); exactly 3 latent strict challenge
+  cells exist (i_parts I1 u_choice0; i_unprod I1 term2/term3 —
+  the cleaner pair), matching the registered house expectation;
+  frozen rule resolves B: targeted exact-engine construction, a
+  natural-generator yield pricing unsupported by the record;
+  scope: support-analysis ontology only, prior desk's counts
+  valid under its registered marginal convention, engine
+  legality/teacher selection of the 3 cells undetermined.
+  RESULTS.md#L51192

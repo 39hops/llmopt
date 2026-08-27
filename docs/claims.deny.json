@@ -1,158 +1,164 @@
 {
-    "_doc": "Superseded readings \u2014 do not resurrect. Each entry is a regex the claim linter (llmopt/lab/claimlint.py) refuses in NEW verdict/analysis prose, with the booked correction that killed it. Add entries when a reading correction books; never delete one (the registry is provenance, like RIFF-LEDGER). Historical ledger text is NOT linted \u2014 only new drafts. Optional per-rule 'scope': a regex; the rule fires as ERROR only when the draft matches it (thread-scoped readings); scopeless rules are global.",
-    "deny": [
-        {
-            "pattern": "near-isotropic",
-            "reason": "Refuted by own data: private D at r=296 captures 4.678x the random baseline \u2014 individual experts are substantially anisotropic.",
-            "superseded_by": "2026-08-16-amendment-stream-wdistill-0-reading-2",
-            "scope": "stream[- ]?wdistill|expert|V4"
-        },
-        {
-            "pattern": "misalignment is the (reason|cause|explanation)",
-            "reason": "Misalignment is the leading CANDIDATE, not measured. Efficiency at different ranks does not measure alignment (synthetic 1/i spectrum with no coordinate change reproduces a ~3x efficiency gap). Pending the C@296-v-D@296 rider and the overlap census.",
-            "superseded_by": "2026-08-16-amendment-stream-wdistill-0-reading-3",
-            "scope": "stream[- ]?wdistill|expert|V4"
-        },
-        {
-            "pattern": "statistically indistinguishable",
-            "reason": "No distribution was measured. E's 1.067x capture proxy is 'close to random expectation', nothing stronger.",
-            "superseded_by": "2026-08-16-amendment-stream-wdistill-0-reading-3",
-            "scope": "stream[- ]?wdistill|gauge|capture|subspace"
-        },
-        {
-            "pattern": "independent (gauge )?(evidence|support|confirmation)",
-            "reason": "E IS the registered gauge-control arm \u2014 convergent post-hoc evidence from the same arm, never independent. Independence requires a distinct registered source.",
-            "superseded_by": "2026-08-16-amendment-stream-wdistill-0-reading-3",
-            "scope": "stream[- ]?wdistill|gauge|arm E"
-        },
-        {
-            "pattern": "matched[- ]bytes? scalar|scalar.{0,40}matched[- ]bytes?",
-            "reason": "No admissible scalar contrast exists in STREAM-WDISTILL-0: arm A serialized 19 bytes over B1. Scalar wording stays descriptive \u2014 never 'matched bytes', 'winner', or 'loses'.",
-            "superseded_by": "2026-08-16-verdict-stream-wdistill-0-audit-repair",
-            "scope": "stream[- ]?wdistill|B1|arm A"
-        },
-        {
-            "pattern": "Lloyd-optimal",
-            "reason": "Booked overclaim: the k-means stage is Lloyd-ITERATED, not optimal; no optimality certificate exists.",
-            "superseded_by": "2026-08-16-amendment-stream-wdistill-0-deltas-2"
-        },
-        {
-            "pattern": "exploits? \\d[\\d.]*x more structure",
-            "reason": "Efficiency ratios at different ranks carry a rank-position confound; a structure multiple between arms at unequal rank is not a measured quantity.",
-            "superseded_by": "2026-08-16-amendment-stream-wdistill-0-reading-3"
-        },
-        {
-            "pattern": "RUN_TAG.{0,60}(graduat|invariant)",
-            "reason": "RUN_TAG is a mitigation only. The frozen-receipt invariant is the content-addressed lock (docs/receipts.lock.json) plus CI refusal.",
-            "superseded_by": "2026-08-16-verdict-stream-wdistill-0-audit-repair"
-        },
-        {
-            "pattern": "even with perfect selection|exact (subset )?optim(um|al) selection",
-            "reason": "RK-CENSUS reconstruction references are HEURISTIC selections (teacher-top-|z|, contribution-ranked), not exact subset optima; the exact optimum is unmeasured.",
-            "superseded_by": "2026-08-18-amendment-qwen-rk-io-attrib-capacity",
-            "scope": "rk|router|top-k|recon"
-        },
-        {
-            "pattern": "embed carries (the )?CE|head carries (the )?KL",
-            "reason": "X is measured on the corpus surface and K on prefixes; the io split confounds metric with evaluation surface. Say corpus-X / prefix-K recovery.",
-            "superseded_by": "2026-08-18-amendment-qwen-rk-io-attrib-capacity",
-            "scope": "io[- ]?attrib|embed|lm_head"
-        },
-        {
-            "pattern": "deep inside the (head's )?decision cell",
-            "reason": "Raw top1-top2 logit margin is not geometric distance to the decision boundary ((z_y-z_j)/||w_y-w_j||, needs head row norms). Corrected by AMENDMENT QWEN-LOOP-STATE-0-COLOR2 (2026-08-20).",
-            "scope": "loop-state|LOOP-STATE|decision cell",
-            "superseded_by": "2026-08-20-amendment-qwen-loop-state-0-color2"
-        },
-        {
-            "pattern": "not (merely )?unlucky sampling",
-            "reason": "Greedy decoding is deterministic; the sampling framing was wrong. Corrected reading: the deterministic correction policy itself substantially repeats (AMENDMENT QWEN-LOOP-STATE-0-COLOR2, 2026-08-20).",
-            "scope": "retry|LOOP-STATE|loop-state",
-            "superseded_by": "2026-08-20-amendment-qwen-loop-state-0-color2"
-        },
-        {
-            "pattern": "readout repair (is )?measured out(?!.{0,40}local)",
-            "reason": "HEADSWAP was an offline conditional read of frozen h_BLe, not an online causal replacement; only the LOCAL/static reading is supported. Corrected by AMENDMENT QWEN-LOOP-STATE-1-SCOPE (2026-08-20).",
-            "scope": "loop-state|LOOP-STATE|headswap|HEADSWAP",
-            "superseded_by": "2026-08-20-amendment-qwen-loop-state-1-scope"
-        },
-        {
-            "pattern": "readout is a bystander",
-            "reason": "Supported only as a local/static claim on frozen BLe states; trajectory-level readout causality open. Corrected by AMENDMENT QWEN-LOOP-STATE-1-SCOPE (2026-08-20).",
-            "scope": "loop-state|LOOP-STATE|headswap|HEADSWAP",
-            "superseded_by": "2026-08-20-amendment-qwen-loop-state-1-scope"
-        },
-        {
-            "pattern": "starts topic-free and converges",
-            "reason": "Cumulative first-N reading; equal-width windowed adjudication (rider3) shows the thinking topic contrast peaks in window 9:16 then declines. Surviving claim is the early-horizon regime difference only. Corrected by AMENDMENT GRF-NOTHINK-0-WINDOWS (2026-08-21).",
-            "scope": "grf|GRF|horizon|time-as-structure|TIME-AS-STRUCTURE",
-            "superseded_by": "2026-08-21-amendment-grf-nothink-0-windows-windowed"
-        },
-        {
-            "pattern": "gap statistics, growing to",
-            "reason": "The beyond-frequency AUC component is U-shaped in H, largest at H<=4; what grows with H is the popularity-dominated FULL-AGE delta. Corrected by AMENDMENT ROUTE-TIME-0-ISOLATION (2026-08-21).",
-            "scope": "route-time|ROUTE-TIME",
-            "superseded_by": "2026-08-21-amendment-route-time-0-isolation-outside"
-        },
-        {
-            "pattern": "identical design dose|equal dose by construction",
-            "reason": "EX6-TEMPORAL arms are matched on temporal-call dose only; realized routing displacement differs ~2.1x (z1 excluded mass 1.82% v 0.86-0.88% at z2/z3). Say 'identical temporal-call dose'.",
-            "superseded_by": "2026-08-21-amendment-ex6-temporal-0-scope-equal",
-            "scope": "ex6[- ]?temporal|z1|z2|z3|temporal mask"
-        },
-        {
-            "pattern": "bands compose additively|no cross-band conjunction",
-            "reason": "Pooled additivity residual 0 hides per-level residuals L1 -6 / L2 +1 / L3 +5 that cancel. Say 'no registered large pooled NET interaction (|I|<14)'; difficulty-dependent interaction/cancellation open.",
-            "superseded_by": "2026-08-22-amendment-ex6-depth-0-scope-per",
-            "scope": "ex6[- ]?depth|depth[- ]band|z1.*band"
-        },
-        {
-            "pattern": "same-sized write|expert 71's output displacement direction",
-            "reason": "B43/B46 matched displaced-SLOT COUNT only; B43 removes the rank-0 expert (359/360) while B46 removes ranks 2-7 \u2014 removed router mass and |delta| unmeasured. delta_43 is the NET post-MoE rerouting delta (deleted + entrant + renormalization terms), not one expert's output direction.",
-            "superseded_by": "2026-08-22-amendment-ex6-b43-identity-0-scope",
-            "scope": "b43|block[- ]?43|expert 71|jspace|j[- ]space"
-        },
-        {
-            "pattern": "PERFECT (bar|prediction) is ill-posed|16\\.5% of (L4-5 )?child states",
-            "reason": "T4 corrected: the PERFECT bar is LITERAL (40/40 observed ACTIVE-ONLINE solves); reachability is interpretation/ceiling evidence, never a prerequisite. Encodability full-grain figure is 110/725 actions (15.2%) with a third char class (fresnelc); the L4-5 16.5% child figure is superseded.",
-            "superseded_by": "2026-08-22-amendment-math-cyber-1-desk-0",
-            "scope": "math[- ]?cyber|mathworld|perfect"
-        },
-        {
-            "pattern": "16/101 decisions and 15/40 episodes fully",
-            "reason": "That count's booked criterion was encodability only (vocab-complete). The registered stock-eligibility criterion is joint (encodes AND fits ctx<=512): measured joint = 16/101, equal on this corpus by co-occurrence, not identity. Name the criterion when quoting the number; >512 is outside the trained/registered context contract, not physically unscorable.",
-            "superseded_by": "2026-08-22-amendment-math-cyber-1-desk-0-b",
-            "scope": "math[- ]?cyber|mathworld|model[- ]controlled"
-        },
-        {
-            "pattern": "identical conditionals|world('s)?( successors\\(\\))? wall (still )?(remains |stays )?dominat",
-            "reason": "MicroLM's cached path is causal only at T=1 (is_causal=False whenever past is set): chunked cached scoring leaks future child tokens, so cached and full conditionals are NOT established identical (qualification registered, unrun). Runtime dominance was a position-count argument ignoring O(T^2) attention; retracted pending the measured microbench.",
-            "superseded_by": "2026-08-22-amendment-math-cyber-1-substrate-desk-b",
-            "scope": "math[- ]?cyber|mathworld|kv[- ]?reuse|cached scor"
-        },
-        {
-            "pattern": "full batched (teacher-forced )?forwards|17\\.1% (of .{0,20})?exceed 512",
-            "reason": "SCOREQAL's accepted path is full TEACHER-FORCED scoring; its bench was serial B=1 (batching measured separately at 0.92x \u2014 a small loss \u2014 EXECBENCH-0, serial is the frozen law). The 17.1%-exceed-512 figure is the CANDIDATE-SCORING population; the success-gated TRAINING population is 205/205 <=512 (POPULATIONS amendment). Name the population when quoting exposure.",
-            "superseded_by": "2026-08-22-amendment-math-cyber-1-longctx-0",
-            "scope": "math[- ]?cyber|mathworld|scoreqal|longctx"
-        },
-        {
-            "pattern": "reproduces hce's preference ordering|preference ordering on 75",
-            "reason": "The join measured TOP-1 action agreement only (36/48); nothing was observed about ordering over non-chosen candidates. Say 'matches hce's top-1 action on 75%'; full ranking similarity is unmeasured.",
-            "superseded_by": "2026-08-23-amendment-math-cyber-1-theta0-hce",
-            "scope": "math[- ]?cyber|mathworld|hce[- ]join"
-        },
-        {
-            "pattern": "double null|38 updates changed 6 choices total|MINLEN beats",
-            "reason": "PERFECT is a failed endpoint prediction and ACTIVE>FROZEN is the null contrast (never 'double null'); the 6 are OBSERVED same-state top-1 divergences only (unshared post-divergence states admit no comparison); MINLEN's 37/40 is non-parity wall-accounting color, never a beats-the-model claim.",
-            "superseded_by": "2026-08-23-amendment-math-cyber-1-active-episodic-b-b",
-            "scope": "math[- ]?cyber|mathworld|active[- ]episodic|minlen"
-        },
-        {
-            "pattern": "median 76[- ]token (delta|action|label)|sparsity premise measurably holds",
-            "reason": "LONGCTX P2 medians measure the FULL scoring sequence (parent prefix + full child + newline), never action-label/residual length; delta sparsity in the engine is UNMEASURED. Full retraction text: RIFF-LEDGER TRANSITION-BASIS CORRECTION 2026-08-23.",
-            "superseded_by": "2026-08-23-observation-transition-basis-sparsity-retraction-0",
-            "scope": "transition[- ]basis|action[- ]basis|visual[- ]ngram|delta"
-        }
-    ]
+ "_doc": "Superseded readings \u2014 do not resurrect. Each entry is a regex the claim linter (llmopt/lab/claimlint.py) refuses in NEW verdict/analysis prose, with the booked correction that killed it. Add entries when a reading correction books; never delete one (the registry is provenance, like RIFF-LEDGER). Historical ledger text is NOT linted \u2014 only new drafts. Optional per-rule 'scope': a regex; the rule fires as ERROR only when the draft matches it (thread-scoped readings); scopeless rules are global.",
+ "deny": [
+  {
+   "pattern": "near-isotropic",
+   "reason": "Refuted by own data: private D at r=296 captures 4.678x the random baseline \u2014 individual experts are substantially anisotropic.",
+   "superseded_by": "2026-08-16-amendment-stream-wdistill-0-reading-2",
+   "scope": "stream[- ]?wdistill|expert|V4"
+  },
+  {
+   "pattern": "misalignment is the (reason|cause|explanation)",
+   "reason": "Misalignment is the leading CANDIDATE, not measured. Efficiency at different ranks does not measure alignment (synthetic 1/i spectrum with no coordinate change reproduces a ~3x efficiency gap). Pending the C@296-v-D@296 rider and the overlap census.",
+   "superseded_by": "2026-08-16-amendment-stream-wdistill-0-reading-3",
+   "scope": "stream[- ]?wdistill|expert|V4"
+  },
+  {
+   "pattern": "statistically indistinguishable",
+   "reason": "No distribution was measured. E's 1.067x capture proxy is 'close to random expectation', nothing stronger.",
+   "superseded_by": "2026-08-16-amendment-stream-wdistill-0-reading-3",
+   "scope": "stream[- ]?wdistill|gauge|capture|subspace"
+  },
+  {
+   "pattern": "independent (gauge )?(evidence|support|confirmation)",
+   "reason": "E IS the registered gauge-control arm \u2014 convergent post-hoc evidence from the same arm, never independent. Independence requires a distinct registered source.",
+   "superseded_by": "2026-08-16-amendment-stream-wdistill-0-reading-3",
+   "scope": "stream[- ]?wdistill|gauge|arm E"
+  },
+  {
+   "pattern": "matched[- ]bytes? scalar|scalar.{0,40}matched[- ]bytes?",
+   "reason": "No admissible scalar contrast exists in STREAM-WDISTILL-0: arm A serialized 19 bytes over B1. Scalar wording stays descriptive \u2014 never 'matched bytes', 'winner', or 'loses'.",
+   "superseded_by": "2026-08-16-verdict-stream-wdistill-0-audit-repair",
+   "scope": "stream[- ]?wdistill|B1|arm A"
+  },
+  {
+   "pattern": "Lloyd-optimal",
+   "reason": "Booked overclaim: the k-means stage is Lloyd-ITERATED, not optimal; no optimality certificate exists.",
+   "superseded_by": "2026-08-16-amendment-stream-wdistill-0-deltas-2"
+  },
+  {
+   "pattern": "exploits? \\d[\\d.]*x more structure",
+   "reason": "Efficiency ratios at different ranks carry a rank-position confound; a structure multiple between arms at unequal rank is not a measured quantity.",
+   "superseded_by": "2026-08-16-amendment-stream-wdistill-0-reading-3"
+  },
+  {
+   "pattern": "RUN_TAG.{0,60}(graduat|invariant)",
+   "reason": "RUN_TAG is a mitigation only. The frozen-receipt invariant is the content-addressed lock (docs/receipts.lock.json) plus CI refusal.",
+   "superseded_by": "2026-08-16-verdict-stream-wdistill-0-audit-repair"
+  },
+  {
+   "pattern": "even with perfect selection|exact (subset )?optim(um|al) selection",
+   "reason": "RK-CENSUS reconstruction references are HEURISTIC selections (teacher-top-|z|, contribution-ranked), not exact subset optima; the exact optimum is unmeasured.",
+   "superseded_by": "2026-08-18-amendment-qwen-rk-io-attrib-capacity",
+   "scope": "rk|router|top-k|recon"
+  },
+  {
+   "pattern": "embed carries (the )?CE|head carries (the )?KL",
+   "reason": "X is measured on the corpus surface and K on prefixes; the io split confounds metric with evaluation surface. Say corpus-X / prefix-K recovery.",
+   "superseded_by": "2026-08-18-amendment-qwen-rk-io-attrib-capacity",
+   "scope": "io[- ]?attrib|embed|lm_head"
+  },
+  {
+   "pattern": "deep inside the (head's )?decision cell",
+   "reason": "Raw top1-top2 logit margin is not geometric distance to the decision boundary ((z_y-z_j)/||w_y-w_j||, needs head row norms). Corrected by AMENDMENT QWEN-LOOP-STATE-0-COLOR2 (2026-08-20).",
+   "scope": "loop-state|LOOP-STATE|decision cell",
+   "superseded_by": "2026-08-20-amendment-qwen-loop-state-0-color2"
+  },
+  {
+   "pattern": "not (merely )?unlucky sampling",
+   "reason": "Greedy decoding is deterministic; the sampling framing was wrong. Corrected reading: the deterministic correction policy itself substantially repeats (AMENDMENT QWEN-LOOP-STATE-0-COLOR2, 2026-08-20).",
+   "scope": "retry|LOOP-STATE|loop-state",
+   "superseded_by": "2026-08-20-amendment-qwen-loop-state-0-color2"
+  },
+  {
+   "pattern": "readout repair (is )?measured out(?!.{0,40}local)",
+   "reason": "HEADSWAP was an offline conditional read of frozen h_BLe, not an online causal replacement; only the LOCAL/static reading is supported. Corrected by AMENDMENT QWEN-LOOP-STATE-1-SCOPE (2026-08-20).",
+   "scope": "loop-state|LOOP-STATE|headswap|HEADSWAP",
+   "superseded_by": "2026-08-20-amendment-qwen-loop-state-1-scope"
+  },
+  {
+   "pattern": "readout is a bystander",
+   "reason": "Supported only as a local/static claim on frozen BLe states; trajectory-level readout causality open. Corrected by AMENDMENT QWEN-LOOP-STATE-1-SCOPE (2026-08-20).",
+   "scope": "loop-state|LOOP-STATE|headswap|HEADSWAP",
+   "superseded_by": "2026-08-20-amendment-qwen-loop-state-1-scope"
+  },
+  {
+   "pattern": "starts topic-free and converges",
+   "reason": "Cumulative first-N reading; equal-width windowed adjudication (rider3) shows the thinking topic contrast peaks in window 9:16 then declines. Surviving claim is the early-horizon regime difference only. Corrected by AMENDMENT GRF-NOTHINK-0-WINDOWS (2026-08-21).",
+   "scope": "grf|GRF|horizon|time-as-structure|TIME-AS-STRUCTURE",
+   "superseded_by": "2026-08-21-amendment-grf-nothink-0-windows-windowed"
+  },
+  {
+   "pattern": "gap statistics, growing to",
+   "reason": "The beyond-frequency AUC component is U-shaped in H, largest at H<=4; what grows with H is the popularity-dominated FULL-AGE delta. Corrected by AMENDMENT ROUTE-TIME-0-ISOLATION (2026-08-21).",
+   "scope": "route-time|ROUTE-TIME",
+   "superseded_by": "2026-08-21-amendment-route-time-0-isolation-outside"
+  },
+  {
+   "pattern": "identical design dose|equal dose by construction",
+   "reason": "EX6-TEMPORAL arms are matched on temporal-call dose only; realized routing displacement differs ~2.1x (z1 excluded mass 1.82% v 0.86-0.88% at z2/z3). Say 'identical temporal-call dose'.",
+   "superseded_by": "2026-08-21-amendment-ex6-temporal-0-scope-equal",
+   "scope": "ex6[- ]?temporal|z1|z2|z3|temporal mask"
+  },
+  {
+   "pattern": "bands compose additively|no cross-band conjunction",
+   "reason": "Pooled additivity residual 0 hides per-level residuals L1 -6 / L2 +1 / L3 +5 that cancel. Say 'no registered large pooled NET interaction (|I|<14)'; difficulty-dependent interaction/cancellation open.",
+   "superseded_by": "2026-08-22-amendment-ex6-depth-0-scope-per",
+   "scope": "ex6[- ]?depth|depth[- ]band|z1.*band"
+  },
+  {
+   "pattern": "same-sized write|expert 71's output displacement direction",
+   "reason": "B43/B46 matched displaced-SLOT COUNT only; B43 removes the rank-0 expert (359/360) while B46 removes ranks 2-7 \u2014 removed router mass and |delta| unmeasured. delta_43 is the NET post-MoE rerouting delta (deleted + entrant + renormalization terms), not one expert's output direction.",
+   "superseded_by": "2026-08-22-amendment-ex6-b43-identity-0-scope",
+   "scope": "b43|block[- ]?43|expert 71|jspace|j[- ]space"
+  },
+  {
+   "pattern": "PERFECT (bar|prediction) is ill-posed|16\\.5% of (L4-5 )?child states",
+   "reason": "T4 corrected: the PERFECT bar is LITERAL (40/40 observed ACTIVE-ONLINE solves); reachability is interpretation/ceiling evidence, never a prerequisite. Encodability full-grain figure is 110/725 actions (15.2%) with a third char class (fresnelc); the L4-5 16.5% child figure is superseded.",
+   "superseded_by": "2026-08-22-amendment-math-cyber-1-desk-0",
+   "scope": "math[- ]?cyber|mathworld|perfect"
+  },
+  {
+   "pattern": "16/101 decisions and 15/40 episodes fully",
+   "reason": "That count's booked criterion was encodability only (vocab-complete). The registered stock-eligibility criterion is joint (encodes AND fits ctx<=512): measured joint = 16/101, equal on this corpus by co-occurrence, not identity. Name the criterion when quoting the number; >512 is outside the trained/registered context contract, not physically unscorable.",
+   "superseded_by": "2026-08-22-amendment-math-cyber-1-desk-0-b",
+   "scope": "math[- ]?cyber|mathworld|model[- ]controlled"
+  },
+  {
+   "pattern": "identical conditionals|world('s)?( successors\\(\\))? wall (still )?(remains |stays )?dominat",
+   "reason": "MicroLM's cached path is causal only at T=1 (is_causal=False whenever past is set): chunked cached scoring leaks future child tokens, so cached and full conditionals are NOT established identical (qualification registered, unrun). Runtime dominance was a position-count argument ignoring O(T^2) attention; retracted pending the measured microbench.",
+   "superseded_by": "2026-08-22-amendment-math-cyber-1-substrate-desk-b",
+   "scope": "math[- ]?cyber|mathworld|kv[- ]?reuse|cached scor"
+  },
+  {
+   "pattern": "full batched (teacher-forced )?forwards|17\\.1% (of .{0,20})?exceed 512",
+   "reason": "SCOREQAL's accepted path is full TEACHER-FORCED scoring; its bench was serial B=1 (batching measured separately at 0.92x \u2014 a small loss \u2014 EXECBENCH-0, serial is the frozen law). The 17.1%-exceed-512 figure is the CANDIDATE-SCORING population; the success-gated TRAINING population is 205/205 <=512 (POPULATIONS amendment). Name the population when quoting exposure.",
+   "superseded_by": "2026-08-22-amendment-math-cyber-1-longctx-0",
+   "scope": "math[- ]?cyber|mathworld|scoreqal|longctx"
+  },
+  {
+   "pattern": "reproduces hce's preference ordering|preference ordering on 75",
+   "reason": "The join measured TOP-1 action agreement only (36/48); nothing was observed about ordering over non-chosen candidates. Say 'matches hce's top-1 action on 75%'; full ranking similarity is unmeasured.",
+   "superseded_by": "2026-08-23-amendment-math-cyber-1-theta0-hce",
+   "scope": "math[- ]?cyber|mathworld|hce[- ]join"
+  },
+  {
+   "pattern": "double null|38 updates changed 6 choices total|MINLEN beats",
+   "reason": "PERFECT is a failed endpoint prediction and ACTIVE>FROZEN is the null contrast (never 'double null'); the 6 are OBSERVED same-state top-1 divergences only (unshared post-divergence states admit no comparison); MINLEN's 37/40 is non-parity wall-accounting color, never a beats-the-model claim.",
+   "superseded_by": "2026-08-23-amendment-math-cyber-1-active-episodic-b-b",
+   "scope": "math[- ]?cyber|mathworld|active[- ]episodic|minlen"
+  },
+  {
+   "pattern": "median 76[- ]token (delta|action|label)|sparsity premise measurably holds",
+   "reason": "LONGCTX P2 medians measure the FULL scoring sequence (parent prefix + full child + newline), never action-label/residual length; delta sparsity in the engine is UNMEASURED. Full retraction text: RIFF-LEDGER TRANSITION-BASIS CORRECTION 2026-08-23.",
+   "superseded_by": "2026-08-23-observation-transition-basis-sparsity-retraction-0",
+   "scope": "transition[- ]basis|action[- ]basis|visual[- ]ngram|delta"
+  },
+  {
+   "pattern": "i_parts u_choice recombinations|RECOMBINATION-OOV rival mass",
+   "reason": "Under semantic factor blocks (P=(param_kind,param_index)) the 29 marginal-recombination rivals plus band3's NEW-FACTOR-VALUE rival are NEW-PARAMETER (u_choice2/3, term_index4 unseen P); the scored record contains ZERO strict within-rule recombinations, label or rival. Say 'NEW-PARAMETER rivals (marginal-class recombination-OOV, superseded reading)'.",
+   "superseded_by": "2026-08-27-amendment-math-cyber-1-svp-semantic",
+   "scope": "svp|factor[- ]?hash|support[- ]?opportunity|recombination"
+  }
+ ]
 }

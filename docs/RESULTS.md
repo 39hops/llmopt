@@ -51188,3 +51188,146 @@ counting (the frozen text is quoted in this entry's FROZEN LAW
 paragraph; the receipt carries the precedence string — the
 threshold text lived session-side, a weaker freeze than a
 committed prereg, disclosed); after booking commit/push, census, STOP.
+
+## AMENDMENT MATH-CYBER-1-SVP-SEMANTIC-SUPPORT-QUAL-0: the marginal RECOMBINATION-OOV class of SUPPORT-OPPORTUNITY-DESK-0 conflated numerically identical but semantically conditional parameter values — under semantic factor blocks R/S/P all 29 marginal RECOMBINATION-OOV rivals plus band3's single NEW-FACTOR-VALUE rival (30 rival occurrences) are NEW-PARAMETER and the scored record contains ZERO strict within-rule recombinations, label or rival; exactly 3 latent strict challenge cells exist; frozen rule resolves B: targeted exact-engine construction (2026-08-27, Mac)
+
+AMENDS: OBSERVATION MATH-CYBER-1-SVP-SUPPORT-OPPORTUNITY-DESK-0
+(RESULTS.md#L51045). Per outside GO (GPT via Artin, 2026-08-27):
+assessment + amendment census only; zero checkpoint/model access,
+zero inference, zero training, zero new task generation, no new
+seeds. The prior receipt is NOT mutated and stays VALID under its
+explicitly registered marginal-field convention (its own fence
+already stated conditional support "would only LOWER the
+recombination counts" — it named NEW-FACTOR-VALUE as the
+destination class; the semantic precedence routes these rivals to
+NEW-PARAMETER, same direction, different class name); this
+amendment prices the semantic
+ontology and requalifies the challenge criterion behind
+recommendation B. Instrument scratch/mathworld1_svpsemdesk.py;
+receipt logs/mathworld1/svpsemdesk_receipt.json; same four pins,
+compared by in-driver gates (digests recorded in-receipt, no
+pass/fail field: training shard a943ba7f..., band1/2/3
+decisions f63100a6... / 89efbe0e... / 2ff54332...).
+
+RESEARCHER'S READ (on record before the census ran; frozen text
+session-side): the critique is CORRECT in mechanism — the
+marginal five-field convention treats param_index as a bare
+integer shared across param_kinds, so (i_parts, I, 0, u_choice,
+2) classified RECOMBINATION-OOV merely because index 2 occurred
+under term_index (i_unprod). A parameter index is meaningful only
+WITHIN its param_kind, and de facto within its rule: the booked
+joint coincidence rule x site = rule x site x param_kind = 28
+already showed param_kind is determined by (rule, site).
+
+FROZEN LAW (before any count): support-analysis ontology ONLY
+(the trained FACTOR encoding is untouched): R = rule, S =
+(site_kind, site_ordinal), P = (param_kind, param_index), whole
+action A = (R,S,P). Exclusive first-cause precedence:
+WHOLE-COVERED > NEW-RULE > NEW-SITE > NEW-PARAMETER >
+STRICT-WITHIN-RULE-RECOMBINATION (whole unseen, (R,S) seen AND
+(R,P) seen) > CROSS-RULE-PARAM-RECOMBINATION (whole unseen, R/S/P
+each seen somewhere, but a rule-conditional pair absent).
+Nonexclusive flags rs_seen/rp_seen and the prior marginal class
+carried per action. Decision rule: A iff >= 10 latent strict
+cells AND >= 1 strict-class action occurred naturally as a band
+candidate; B iff 1-9 latent cells or zero natural occurrence; C
+iff 0 latent cells; scarcity is reported, never repaired by
+weakening the criterion. REGISTERED HOUSE EXPECTATION (on
+record): 3 latent cells — i_parts I1 u_choice0, i_unprod I1
+term2, i_unprod I1 term3 — resolving B.
+
+SEMANTIC TRAINING SUPPORT (73,324 targets): 33 whole tuples over
+15 rules, 5 distinct S sites, 7 distinct P params; rule x site
+pairs 28, rule x param pairs 19. Per-rule grids: by CONSTRUCTION of the per-rule observed grid
+(observed sites x observed params), any single-parameter rule is
+saturated identically, so latent strict cells can only arise in
+the two multi-parameter rules (saturation does not mean site
+coverage — e.g. i_inverse_trig lacks site I2): i_parts (grid 4, seen 3 — u_choice 0/1
+only, 3 training rows total) and i_unprod (grid 8, seen 6 —
+term_index 0-3 at I0, 0/1 at I1; rule-level row counts per the
+prior desk receipt: u_choice 3 / term_index 3,123, each
+param_kind exclusive to its rule).
+
+OUTSIDE SUSPICION: CONFIRMED. The semantic x marginal crosstab is
+off-diagonal ONLY into NEW-PARAMETER, from two marginal source
+classes: the 10/11/8 marginal RECOMBINATION-OOV rivals AND
+band3's single marginal NEW-FACTOR-VALUE rival (i_unprod I 0
+term_index 4) all reclassify to NEW-PARAMETER (10/11/9 per band,
+29 + 1 = 30 total) — the i_parts
+u_choice2/3 rivals are extrapolations to an unseen semantic
+parameter value, not recombinations of trained-target factor
+values. Under the
+semantic ontology the scored record contains ZERO
+STRICT-WITHIN-RULE-RECOMBINATION actions — no label, no rival, in
+any band (strict_recombination_records empty x3;
+decisions_containing carries no strict entry). The prior desk's
+central 0/220 label conclusion is UNCHANGED and now strengthened:
+no STRICT-WITHIN-RULE-RECOMBINATION action was ever a label, and
+none appeared in any censused candidate set
+(strict_recombination_records empty in all three bands); the two
+unseen labels on the record remain the NEW-RULE trigsimp cells. CROSS-RULE-PARAM-RECOMBINATION: also
+zero everywhere.
+
+LATENT CHALLENGE CELLS (exhaustive from training support; driver
+gate "LATENT CELLS NOT ALL STRICT-CLASS" fired — see the
+tautology disclosure below): EXACTLY 3 —
+i_parts I1 u_choice0; i_unprod I1 term_index2; i_unprod I1
+term_index3. The registered house expectation matched exactly.
+Status distinction carried (frozen): these are ALGEBRAICALLY
+AVAILABLE SUPPORT CELLS only — whether each is
+engine-constructible/legal on any state, and whether the teacher
+would ever select it as a label, is NOT determinable without task
+generation and was not determined (out of scope). i_parts I1
+u_choice0 qualifies but sits in an ultra-low-shot family (3
+training rows, singleton factors); the i_unprod I1 term2/3 pair
+is the cleaner class — a dense within-rule grid (6/8 seen) in a
+rule carrying 3,123 training targets (param_kind term_index
+count, prior desk receipt; term_index occurs only under
+i_unprod), where both missing cells recombine a
+trained site (I1) with trained parameters (term2/3 at I0).
+
+CHALLENGE-DESIGN IMPLICATION (requalification of the prior B):
+the prospective OOV-label challenge must target
+STRICT-WITHIN-RULE-RECOMBINATION labels — exact whole action
+unseen, same (rule, site) trained, same (rule, param) trained —
+not the superseded-for-this-purpose marginal RECOMBINATION-OOV
+class, which under the semantic ontology contains cells whose
+parameter value never occurs in the training targets (HYPOTHESIS,
+untested here: such cells cannot be ranked from trained factor
+values; no model was consulted). DECISION (mechanical, by
+the frozen rule): 3 cells is in 1-9 AND natural historical
+occurrence is zero => B — strict cells exist but likely require
+TARGETED exact-engine task construction (states where i_unprod
+I1 term2/3 or i_parts I1 u_choice0 are legal and label-worthy);
+a natural-generator yield pricing (option A's path) is not
+supported by the record, since the 220 primary-eligible decisions
+across the three bands produced zero strict candidates (the 25
+non-primary decisions in those files were not censused). SCARCITY IS THE RESULT: the
+current 33-tuple support admits a 3-cell challenge at most — a
+powered factorization test beyond those cells requires the
+larger-action-support training regime already banked (C's regime,
+not selected: latent cells are nonzero). Not begun under this GO.
+
+DISCLOSURES (receipt audit, adopted): the in-driver LATENT gate
+is TAUTOLOGICAL with respect to its label — the enumeration
+already constructs cells from covered (R,S)/(R,P) pairs, so the
+gate's only real content is the string round-trip (the auditor
+independently reverified the 3-cell enumeration structurally:
+sum(grid) - sum(seen) = 36 - 33 = 3, deficit entirely in
+i_parts/i_unprod); the receipt's s_marginal_seen/p_marginal_seen
+flags marginalize over RULES (global S/P factor support), a
+different sense of "marginal" than the prior desk's per-FIELD
+convention carried as marginal_class — both appear per action, do
+not conflate them; noncovered_actions rows (160/183/154) carry no
+episode/decision ids (strict records do, and are empty).
+
+FENCES. Deterministic desk census of the pinned artifacts
+(73,324 training targets; 72/79/69 primary-eligible decisions,
+population stated in-receipt this time); zero model access; the ontology is
+support-analysis only and implies nothing about what any trained
+arm represents; "seen somewhere" sets are target-side (labels of
+training rows), never candidate-side; engine legality and teacher
+selection of the 3 cells UNDETERMINED; the prior desk's numbers
+remain correct under its registered convention — this is a
+READING requalification, not a retraction of counts; after
+booking commit/push, census, STOP.
