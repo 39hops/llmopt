@@ -1,0 +1,106 @@
+{
+ "smoke": false,
+ "prereg": "MATH-CYBER-1-SVP-GRID-EVAL-DESIGN-1",
+ "N_per_stratum": 24,
+ "n_eval_horizon": 3408,
+ "smoke_receipt_sha": "63a217d0c450c97f01ae07acc7c6197412550022c425747bac5ec3c6c7ccb107",
+ "pins": {
+  "data/matsub_paired.jsonl": "a943ba7fc581db743b07192e5d951fadddd2ba19bca3225b75d8402351d468e8",
+  "logs/mathworld1/svpeval/decisions.jsonl": "f63100a62f3091d544750d679483009a473261c587f3165241406a86253858c6",
+  "logs/mathworld1/svpeval2/decisions.jsonl": "89efbe0ea447ee937c0c130d5419112921a2dd6c2159c6c2112cfd5e92f79315",
+  "logs/mathworld1/svpeval3/decisions.jsonl": "2ff5433249622df9d421cf8014131b3907092a943040bb7b20f46f1afffb7efa",
+  "logs/mathworld1/svpchal/blocks.jsonl": "21e7e635244574266ec876c1c8c76f8d7d2a77e20c2f6680d3ee48db372c4d10",
+  "logs/mathworld1/svpdiet/svpdiet_receipt.json": "519d38b8a725fe726285aadb34101c22e80eba1874a23936ea88b5438e4efbb7",
+  "logs/mathworld1/svpdiet/train_blocks.jsonl": "dd5e72391db557049e45efe6c6b5aff2118c8ea24ef53c85496b04f8539159d5",
+  "logs/mathworld1/svpdiet/eval_blocks.jsonl": "720863bc4955658fa039d6677043af40f645a91042a8e8402d923afebe36ce93",
+  "logs/mathworld1/svpdiet/balanced_grid_train.jsonl": "0ef3d8a880a7e07712d8de757bc1670df12701e487b856b44c97f8db16cb3759"
+ },
+ "verdict": "EVAL MATERIALIZED",
+ "eval_stratum_qualified_counts": {
+  "CH-F3|t1": 132,
+  "CH-F3|t2": 144,
+  "CH-F3|t3": 228,
+  "CH-F4|t1": 346,
+  "CH-F4|t2": 74,
+  "CH-F4|t3": 312
+ },
+ "eval_block_fail_census": {},
+ "eval_terms_census": {
+  "2": 218,
+  "3": 540,
+  "4": 406,
+  "1": 478,
+  "5": 506,
+  "0": 1116,
+  "6": 144
+ },
+ "wall_s": 8033.3,
+ "eval_blocks_selected": 144,
+ "selected_target_overlap_with_train_targets": 0,
+ "calibration_role_census": {
+  "control-I1": 48,
+  "control-I0": 48,
+  "control-robust-I1": 48,
+  "covered-I0": 96
+ },
+ "heldout_role_census": {
+  "heldout-I1": 96,
+  "robustness-I1": 96
+ },
+ "eval_d_before_census": {
+  "CH-F3|t1|x**x": 12,
+  "CH-F3|t1|1/(x + log(x))": 12,
+  "CH-F3|t2|x**x": 12,
+  "CH-F3|t2|1/(x + log(x))": 12,
+  "CH-F3|t3|x**x": 12,
+  "CH-F3|t3|1/(x + log(x))": 12,
+  "CH-F4|t1|x**x": 12,
+  "CH-F4|t1|1/(x + log(x))": 12,
+  "CH-F4|t2|x**x": 12,
+  "CH-F4|t2|1/(x + log(x))": 12,
+  "CH-F4|t3|x**x": 12,
+  "CH-F4|t3|1/(x + log(x))": 12
+ },
+ "min_hce_ties_census": {
+  "2": 261,
+  "1": 117,
+  "3": 54
+ },
+ "legal_set_size_census": {
+  "4": 129,
+  "3": 81,
+  "2": 18,
+  "5": 90,
+  "7": 48,
+  "8": 15,
+  "6": 51
+ },
+ "artifact_sha256": {
+  "covered_calibration.jsonl": "90421e8b9bcab38648a20e7cd24f48e2d54cdcd20a437b18b8f54e9e3f4d9977",
+  "eval_blocks.jsonl": "0eb45f211d0e2b1e4994175bc69715751eb37d59bfb08eb2b7c3edc3b93b5756",
+  "heldout_test.jsonl": "3346bd84e90751d43937ea9b15a47fbb1d8f027392139b0efba41e2a91eeffdd"
+ },
+ "start": {
+  "start_commit": "1b0939fb",
+  "start_status_porcelain": "",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_svpdiet2.py": "3d81af802bbb51f50295df504b29a5a91ba15542a5acd113f680cd510bd67f5e",
+   "scratch/mathworld1_svpdiet.py": "872d40802eb0d25f1e468579f5e52dd84813eeb73d98e5ffde714671b53a6876",
+   "scratch/mathworld1_svpbirth.py": "c0bed95ec6a4db6faad424fa4780fba3af8d4f6d2cec364c75726da9e532950c",
+   "scratch/mathworld1_svpchal.py": "4e72cf2c9d9e15e8d84692d077e658dc535199ffb9fd6f81406ca7c23785eaf0",
+   "scratch/mathworld1_svpchal2.py": "150129d8addc66b46e4f58b4676c7d4465cb0994ffe28e049ccd978b9011ad74",
+   "scratch/mathworld1_svpeval.py": "4c5e5ec9f97446680c7ea962850efc34c361f87120a23c0aa0a6159b74cc3786",
+   "scratch/mathworld1_svpcode.py": "3b80655cbddc835e6fac99c81335a4d21a4b812ac304b786f8ca07ec96277ca0",
+   "scratch/mathworld1_actiontok.py": "a5a22b38c775f67b303b305fa98d8a7fd3e79ac2f11e151385a2701a6d0c4aec",
+   "scratch/mathworld1_actionsem.py": "c79462129730328592ee2cc909fc563076afe80542dd2a745ce88ceef3e9c23b",
+   "scratch/mathworld1_actionfinal.py": "978298d58f543a26e8a42214a455aa56ce4ad208ae246f1e9d5960334f2f8963",
+   "scratch/mathworld1_unprodsem.py": "9f6a17324ea31691fe240682b431fcc0a53af18b898c6dc73a143cc0fc5f3609",
+   "scratch/mathworld0.py": "4c130625535aa73ca10cdc368213d2d875862d324eb3796508feab5dd30c52d4",
+   "llmopt/search/derivation.py": "c38eeb73dd9b803fe207271b37d7097e1843cac7a776d3704d9de04dd1683e87",
+   "llmopt/search/rules.py": "dc83caf67e46edd16c4bb8aca5e9c12be637aedc395e4410e59fc1149bf29e58",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "1b0939fb"
+}
