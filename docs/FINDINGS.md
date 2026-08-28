@@ -3634,3 +3634,16 @@ regime tag on every bullet is the fence.
   earlier STATE-v-PROGRAM result untouched; next question banked
   (challenge distribution nearer the natural manifold), own GO.
   RESULTS.md#L52132
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] GRID-DIET-DESIGN-0
+  split verdict: the balanced covered-grid augmentation FIRED
+  (all 12 {family x cell} buckets >= K=128, 1,536 rows, zero
+  held-out I1/t2-t3 labels by triple check, batch plan 7,020
+  frozen) while the fresh eval pair NO-FIREd on one stratum
+  (CH-F4|t2 22 v N=24) — term-index proportions again failed to
+  transport between parameter banks, in both directions in one
+  run (t2 3.8% v 9.5% priced down, 31.3-31.7% v 27.8% up); the
+  frozen fill law refused, no partial eval bytes were sealed,
+  and the augmentation stays adoptable under the pre-frozen
+  disposition. Fences: constructor-style exposure by design;
+  pricing register non-IID; zero model access.
+  RESULTS.md#L52476

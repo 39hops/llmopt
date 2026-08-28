@@ -52473,3 +52473,112 @@ receipts small-text force-added, big jsonl untracked and
 anchored by receipt shas; the two held-out cells and one frozen
 HASH permutation bound every future claim (no breadth).
 
+## VERDICT MATH-CYBER-1-SVP-GRID-DIET-DESIGN-0: AUGMENTATION MATERIALIZED / EVAL NO-FIRE — all 12 covered-grid training buckets filled (worst CH-F4 I0/t2 140 v the frozen K=128), 1,536 balanced rows frozen with ZERO held-out labels and zero censored emissions; the fresh eval pair did NOT materialize (CH-F4|t2 qualified 22 v the frozen N=24) and by the pre-frozen disposition the augmentation remains adoptable while the eval pair waits on a successor eval-only design (2026-08-28, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-GRID-DIET-DESIGN-0 (committed with
+the driver scratch/mathworld1_svpdiet.py at 3c3a635a BEFORE any
+byte; pre-commit design audit returned 1 blocker — unreceipted
+gate-failure paths after OUTDIR creation — and 7 should-fixes,
+all folded into the committed text/driver: refuted()-receipted
+gates, batch_plan imported BY CALL from svpbirth, strengthened
+eval leak gate over ALL train-side qualified curs, site_kind in
+the held-out re-gate, plan-sha/step-count divergence from the
+svpfhbirth lineage named, EVAL NO-FIRE disposition frozen,
+single-realization fence written into the STRONG label
+definition). Anti-peeking order held: assessment -> freeze ->
+driver -> audit -> COMMIT -> path-isolated smoke (burned
+DESIGN-0 bases, K=1/N=1, green, staleness-gated) -> ONE
+production materialization. ZERO model/checkpoint access, zero
+training, zero inference anywhere under this GO.
+
+RESULT (mechanical; receipt
+logs/mathworld1/svpdiet/svpdiet_receipt.json, wall 7,702 s,
+completion_commit d3dfeab0 = one docs-only commit past the
+prereg; independent session-side recount of every number below
+from the frozen bytes matched exactly — recounts are
+session-side reads, not receipt fields):
+
+TRAIN AUGMENTATION — FIRED. 4,536 fresh bases (2,520 CH-F3 +
+2,016 CH-F4), zero qualification failures, zero censored
+held-out emissions, out-of-grid t4/t5/t6 = 910 counted rows.
+Bucket counts (v K=128): CH-F3 I0 t0/t1/t2/t3 = 322/490/800/518,
+I1 t0/t1 = 644/980; CH-F4 I0 = 600/490/140/266, I1 =
+1200/980. Selected first-128 by SHA256(cur) per
+{family x cell}: 1,536 rows, all curs and row_ids unique
+(session recount); zero burned overlap and zero held-out labels
+are established by the refute-on-hit gates having passed (the
+receipt carries no dedicated fields) PLUS the independent
+post-run recount of the frozen file (0 rows i_unprod I1 t2/t3)
+and the receipt's combined_whole_action_freq, which contains no
+I1/term_index-2 or -3 key at all. The receipt auditor's
+accounting identity closes exactly: 8,340 qualified variants =
+7,430 emitted + 910 out-of-grid + 0 censored, and the empty
+off-rule class means every one of the 8,340 variants had an
+i_unprod (I, term_index) teacher. Distinct bases per cell 117-128;
+distractor census sin(sin(x)) 1,024 / x**x 267 / 1/(x+log(x))
+245; state tokens max 252 mean 163.3. Combined manifest 74,860
+rows (73,324 natural + 1,536), row-id collision gated; frozen
+target-blind batch plan by CALL to the svpbirth law: 7,020
+batches, sha f55e9fee... (receipt field). Every covered whole
+action now carries 256 fresh constructor-style target examples
+v the natural 5 (I0/t2) and 1 (I0/t3).
+
+EVAL PAIR — NO-FIRE. Qualified stratum counts (v N=24):
+CH-F3 t1/t2/t3 = 32/60/40; CH-F4 = 56/22/62. CH-F4|t2 = 22 is
+2 short; the frozen fill gate refuses, no top-up, no
+substitution, and covered_calibration.jsonl / heldout_test.jsonl
+were NEVER WRITTEN — the driver returns at the fill gate,
+before both writes; only eval_blocks.jsonl, the qualified-block
+census, exists on the eval side. Zero block
+failures — the shortfall is term-distribution transport, not
+qualification loss: the fresh eval CH-F4 bank realized t2 at
+22/576 = 3.8% v the burned pooled 9.5% (registered prior
+predicted FIRE at priced ~55; WRONG on this gate, booked
+against the house — and the prior also mis-ranked the risk:
+it named EVAL CH-F3 t1 as riskiest, which fired at 32). The train-side CH-F4 bank also ran low
+(140/2,016 = 6.9%) but cleared its need. The DESIGN-1 transport
+caveat is again measured in both directions in THIS run's own
+draws (CH-F4 t2 down: 3.8% v 9.5% pooled; CH-F3 t2 up: 60/192
+= 31.3% eval and 800/2,520 = 31.7% train v 27.8% pooled): no
+bank draw has yet reproduced its pricing, and the pricing
+register stays non-IID.
+
+DISPOSITION (the prereg's frozen text: "the already-frozen
+augmentation, manifest and batch plan REMAIN FROZEN and
+adoptable; a successor eval-only design GO may materialize a
+fresh eval pair; the augmentation is never regenerated" —
+applied as written; the house reading, consistent with the
+frozen scorer entry gate, is that a fresh eval pair is REQUIRED
+before any scoring can occur): the augmentation, manifest, and
+batch plan remain frozen and adoptable for the next-GO birth (seeds 15001 first, 16001/17001
+replications; F/H arms; calibration competence gate FACTOR AND
+HASH top-1 >= 75% on covered-I0 strict states with no stratum
+< 12/24 — all already frozen in the prereg). A successor
+EVAL-ONLY design GO can materialize the fresh calibration/
+heldout pair (fresh disjoint banks, same law; the augmentation
+is never regenerated); no scoring is possible without it, since
+the scored DESIGN-1 challenge stays
+development/diagnostic and may never be the confirmatory
+endpoint for this diet. The two held-out cells and the frozen
+scoring law are untouched by this NO-FIRE.
+
+ARTIFACT INTEGRITY: balanced_grid_train.jsonl (0ef3d8a8...),
+combined_train_manifest.jsonl (897c8bf8...), train_blocks.jsonl
+(dd5e7239...), eval_blocks.jsonl (720863bc...) — big jsonl stay
+untracked, anchored by the force-added lock-registered receipt;
+the next-GO birth driver MUST pin balanced_grid_train.jsonl and
+batch_plan_sha256 from this receipt before any load. All 4,536
+train bases and 768 eval bases are BURNED for future designs.
+
+FENCES. Mac; deterministic given the frozen horizons; the
+augmentation is constructor-STYLE exposure by design — the
+future result is fenced to constructor-style-in-distribution
+grid completion, never broad natural-math OOD; pricing register
+remains non-IID (now with a measured miss on its own gate);
+single-realization fences travel with the future birth; the
+two held-out cells and the one frozen HASH permutation bound
+every future claim (no breadth); the tightest margins on the
+record: CH-F4 I0/t2 cleared K by 12 rows, CH-F4|t2 missed the
+eval gate by 2 blocks; zero model access under this GO; after
+booking commit/push, census, STOP.
+
