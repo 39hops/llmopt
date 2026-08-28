@@ -2984,6 +2984,12 @@ MATH-CYBER-1 SVP-GRID-DIET-DESIGN-0 — balanced covered-grid TRAINING augmentat
 - `emit_train_row(fam, sig, variant, D, vrow)`
 - `main()`
 
+### scratch/mathworld1_svpdiet2.py
+MATH-CYBER-1 SVP-GRID-EVAL-DESIGN-1 — EVAL-ONLY successor to the booked SVP-GRID-DIET-DESIGN-0 EVAL NO-FIRE (CH-F4|t2 22 v N=24). The frozen augmentation / manifest / batch plan / calibration gate / scoring law / seeds are untouched; this GO materializes ONLY the fresh calibration/heldout pair under the verbatim matched-block law. ZERO model/checkpoint access.
+
+- `smoke_slice()`
+- `main()`
+
 ### scratch/mathworld1_svpeval.py
 MATH-CYBER-1 SVP-EVALBAND-0 — materialize + qualify the frozen primary evaluation band (seeds 9600-9619 x L4-L7, 80 episodes) under the exact 101-corpus trajectory law (mathworld0 greedy-hce, 12-decision budget, 60s wall cap), emitting a SEMANTIC treatment-neutral candidate artifact: every legal candidate carries child_sstr AND its canonical FINAL ActionProgram + program_text. Zero model, zero training.
 
