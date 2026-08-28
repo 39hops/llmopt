@@ -3660,3 +3660,15 @@ regime tag on every bullet is the fence.
   calibration gate fires; seed-15001 paired birth unblocked.
   Fences: pricing non-IID; constructor-style scope only.
   RESULTS.md#L52702
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] GRID-BIRTH-15001
+  sealed: paired FACTOR/HASH birth over the frozen 74,860-row
+  balanced-grid diet from one bit-identical seed-15001 init —
+  7,020 updates and 2,021,220 continuation tokens per arm
+  exactly, per-batch equal-compute gates green on all 7,020
+  batches (shapes/lengths/masks/non-pad identical F v H), order
+  law 3,510/3,510, zero held-out I1/t2-t3 labels re-gated at
+  load; both checkpoints sealed UNSCORED (F 6ef7b85c, H
+  3b9da5a7) with zero evaluation-artifact dependency in the
+  birth driver. Fences: single realization (15001); loss curves
+  descriptive only; calibration gate (72/96 both arms) must fire
+  before heldout ever opens. RESULTS.md#L52925

@@ -52922,3 +52922,117 @@ held-out cells and one frozen HASH permutation bound every
 future claim; checkpoints sealed unscored; after booking
 commit/push, census, STOP.
 
+## VERDICT MATH-CYBER-1-SVP-GRID-BIRTH-15001: BIRTH SEALED — both arms trained once under the frozen GRID-DIET law from the shared bit-identical seed-15001 init (4b085795...), 7,020 updates and 2,021,220 continuation tokens per arm exactly, per-batch equal-compute gates green on all 7,020 batches, order law 3,510/3,510; FACTOR checkpoint 6ef7b85c... / HASH 3b9da5a7... sealed UNSCORED (2026-08-28, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-GRID-BIRTH-15001 (committed with
+the driver scratch/mathworld1_svpgbirth.py at 719d3782 BEFORE
+any training; pre-commit birth/source audit returned 3 blockers
+— a promised-but-unemitted receipt field, the 2x59
+bitwise-init-count asserted only in smoke, and the missing
+storage-disjointness check — plus 9 should-fixes, all folded:
+production gates for bitwise count and distinct checkpoint
+shas, data_ptr disjointness gate, staleness gate widened to
+every provenance file, updates/sched-terminal derived from run
+objects, unique-row_id gate, init create-if-absent wording
+corrected in prereg and docstring, arm-wall comparability note,
+wall band recomputed, frozen calibration-gate text quoted
+verbatim with the stratum reading marked as interpretation,
+natural-retention rider carried forward). Anti-peeking held:
+ZERO calibration/heldout/old-band scoring, ZERO candidate
+inference, ZERO checkpoint probes; the birth driver has no path
+or string dependency on any evaluation artifact (the two frozen
+eval shas enter the receipt as opaque literals only; receipt
+auditor grep confirms zero eval paths).
+
+RESULT (mechanical; receipt
+logs/mathworld1/svpgbirth_s15001_receipt.json, wall 3,943.5 s —
+inside the registered 3,100-4,200 s band; completion_commit =
+start_commit = 299cf2ac, one docs-only commit past the prereg;
+run-start porcelain " M docs/receipts.lock.json" only, a
+non-instrument regen file. Items marked [driver gate] below are
+abort-on-fail source gates: their evidence is the completed run
+plus the receipt's check counts, not a dedicated receipt
+field):
+  SHARED INIT: seed 15001, double-build byte-identical, sha =
+  pinned 4b085795...; both arms reloaded from the same file,
+  118 = 2x59 tensor-by-tensor torch.equal comparisons gated in
+  production, storage-disjointness gated [driver gate],
+  19,142,016 params per arm.
+  EQUAL COMPUTE (gated per batch on all 7,020 batches [driver
+  gate; receipt shape_checks 7,020] AND on totals): identical
+  shapes/per-row lengths/target-mask/non-pad per batch; totals
+  identical across arms — continuation
+  2,021,220 = 9 x 74,860 x 3 exactly per arm, padded 21,691,032
+  each, non-pad 8,823,393 each; updates 7,020 each; scheduler
+  terminal 7,019 each; 14,040/14,040 finite losses; 7,020
+  lockstep checks.
+  ORDER LAW: FACTOR-first 3,510 / HASH-first 3,510, gated.
+  LABEL RECHECK: zero combined rows labeled i_unprod I1 t2/t3
+  [driver gate at load over the pinned frozen bytes,
+  independently reconfirmed by the receipt auditor on the raw
+  files; natural,
+  augmentation, manifest, and plan shas all pin-gated).
+  CHECKPOINTS (written only after all completion gates,
+  distinct-sha gated): svp_grid_factor_s15001.pt 6ef7b85c...,
+  svp_grid_hash_s15001.pt 3b9da5a7..., shared init
+  svp_grid_init_s15001.pt 4b085795... — all three SEALED
+  UNSCORED.
+  DESCRIPTIVE ONLY (never an F-v-H quality comparison; the
+  token identities induce different target distributions):
+  epoch mean losses FACTOR 0.12559/0.02858/0.01565, HASH
+  0.16908/0.02951/0.01585; grad-norm p50 0.213/0.210, max
+  18.27/8.25 (descriptive only, same fence); peak mps 617 MB
+  (SI), peak RSS 2,136 MiB; arm walls 1,960.4/1,961.7 s
+  (within-run-paired only — encode excluded, never cross-run
+  comparable).
+
+SMOKE (pre-production, path-isolated
+logs/mathworld1/smoke_svpgbirth.json): both arms resident, the
+longest-prompt real batch + batch 0 + the epoch-0 12-row tail,
+all 10 bars green (init bitwise, T=9 tokens 9x76, both orders,
+shape gates every step, finite, lockstep, no production paths);
+production entry re-gated smoke green AND freshness of ALL
+seven provenance-file shas. DISCLOSED path-isolation deviation
+(registered in the committed prereg, mtime-confirmed by the
+receipt auditor): the smoke run MATERIALIZED the shared init on
+its production path (create-if-absent, double-build gated,
+sha-pinned — the bytes are provably the intended ones and were
+never overwritten); the smoke NO_PRODUCTION_PATHS bar covers
+only the arm checkpoints and receipt. A successor birth should
+materialize the init in a dedicated pre-step so the smoke-path
+rule holds without exception.
+
+REGISTERED-PRIOR ACCOUNTING: mechanical-gates prior CORRECT
+(all gates passed); wall 3,943.5 s landed inside the 3,100-
+4,200 s band, above the ~3,280 s point estimate. The excess
+sits INSIDE the arm blocks (1,960.4/1,961.7 s per arm v the
+~1,644 s per-arm point estimate); everything outside the arm
+timers — dual encode and the per-batch equal-compute gates —
+totals 21.4 s, so the restructure does not account for it.
+Cause not isolated; no claim made.
+
+NEXT RUNG (its own GO): CALIBRATION-SCORE-15001 — opens
+covered_calibration.jsonl (sha 90421e8b...) ONLY, applies the
+frozen competence gate ("FACTOR top-1 >= 75% AND HASH top-1 >=
+75% AND no {family x term} stratum (4 strata of 24) below 50%
+(>= 12/24)") on the 96 covered-I0 strict states, i.e. 72/96 per
+arm (the t1 states are controls outside the gate);
+SUPPORT-NOT-LEARNED + STOP on failure with heldout unopened —
+only a calibration FIRE gives a later phase authority to open
+the heldout sha; calibration and heldout as
+separate scorer invocations/receipts; the natural-retention
+rider (svpeval3 band, descriptive) belongs to the
+post-calibration scoring phase.
+
+FENCES. Mac/mps; single realization (seed 15001) — every
+downstream claim carries SINGLE-REALIZATION until 16001/17001
+replicate; no cross-run bit-exact claim (mps substrate
+nondeterminism is on the record; the paired arms shared this
+run); loss curves descriptive only; checkpoints sealed
+unscored; the two held-out cells and one frozen HASH
+permutation bound every future claim; big .pt files stay
+untracked, anchored by the force-added lock-registered
+receipt's checkpoint shas — the future scorer MUST pin all
+three before any load; after booking commit/push, census,
+STOP.
+
