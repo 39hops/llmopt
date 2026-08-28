@@ -52260,3 +52260,216 @@ all primary denominators; CANONICAL comparisons descriptive;
 dual audit before booking; receipts force-added small-text
 (scores.jsonl 216 rows included); after booking commit/push,
 census, STOP.
+## PRE-REG MATH-CYBER-1-SVP-GRID-DIET-DESIGN-0: balanced covered-grid training augmentation + fresh separately-sealed calibration/heldout evaluation pair for the i_unprod site x term grid — K frozen at 128 by a preregistered feasibility rule; zero held-out training labels hard-gated; calibration competence gate frozen before any training (2026-08-28, Mac)
+
+RESEARCH ASSESSMENT (post-result mechanism diagnosis, stated
+cautiously — no reinterpretation of any booked verdict). The
+strict-grid challenge (VERDICT ...CHALLENGE-SCORE-0, RESULTS
+L52132, MIXED/INCONCLUSIVE) had TWO candidate floor mechanisms,
+not one, and this session's census confirms both were live:
+(1) THIN COVERED SUPPORT — the natural 73,324-row diet's
+i_unprod grid support is I0/t0 948, I0/t1 2,011, I0/t2 5,
+I0/t3 1, I1/t0 20, I1/t1 138 (recomputed this session from the
+pinned shard; matches the outside numbers exactly). The
+"covered" strict control cells I0/t2 and I0/t3 were 5-shot and
+1-shot: the KNOWN side of the t2/t3 transfer contrast was
+itself barely trained. Consistent (not probative): SCORE-0's
+covered-I0 strict solves were FACTOR 8/48, HASH 0/48,
+CANONICAL 8/48.
+(2) STATE-DISTRIBUTION SHIFT — constructor-shaped states sat
+far off the natural trajectory manifold (CANONICAL held-out
+4/48; CH-F4 0 for all arms in every non-t1 role).
+The previous matched grid was therefore plausibly
+UNDERIDENTIFIED for the compositional question; this is a
+mechanism hypothesis motivating a new design, not an
+established cause. The new design removes both mechanisms at
+once: balanced abundant covered-cell exposure AND
+constructor-style states inside the training distribution.
+
+SCIENTIFIC QUESTION (frozen): with both representations given
+abundant balanced target exposure to every KNOWN cell of the
+i_unprod site x term grid, while the two strict combinations
+I1/t2 and I1/t3 remain COMPLETELY ABSENT as training targets,
+does explicit FACTOR structure enable better completion of the
+missing cells than the invertibly scrambled HASH code? Scope
+fence (frozen now): a positive result licenses within-rule
+coordinate recombination for these two withheld cells on a
+constructor-STYLE-in-distribution challenge — never broad
+natural-math OOD generalization, never universal
+compositionality, never solve-rate. The challenge is
+deliberately in-distribution w.r.t. constructor style and
+out-of-support w.r.t. the two whole actions; that is the
+design, and it will be described that way.
+
+FROZEN GRID. Covered cells: I0/t0, I0/t1, I0/t2, I0/t3, I1/t0,
+I1/t1. Held-out cells: I1/t2, I1/t3. HARD GATE (never
+weakened): the synthetic augmentation contains ZERO target rows
+labeled i_unprod I1 term_index 2 or 3 — enforced at emission
+(censor + count), re-gated over the selected rows, and
+re-checkable from the frozen bytes. Legal-set RIVALS may
+contain held-out tuples if naturally emitted; the standing
+training input does not expose legal sets, so rival presence is
+reported, never censored on.
+
+FROZEN K RULE (decided from burned yields ONLY — DESIGN-0 +
+DESIGN-1 block censuses, both burned artifacts; no new model or
+engine result consulted): K = largest of {512, 256, 128} such
+that for both families the literal fresh bank satisfies
+H_family >= 1.5 * K / worst_covered_cell_rate, rates pooled
+over 288 burned CH-F3 bases (t0/t1/t2/t3 = 22/60/80/74) and
+672 burned CH-F4 bases (216/118/64/122), one base = one I0 row
++ two I1 rows (t in {0,1} only). Pricing caveats (frozen with
+the rule): the burned rates are BLOCK-qualified (all three
+variants passing and agreeing) while the train law qualifies
+the after variant alone — a conservative proxy in the favorable
+direction; the two I1 covered cells are NOT separately priced
+(their fill assumes small-variant terms track the after
+variant's, as they did in every burned block); NO-FIRE protects
+both. Outside-proposed K=512 FAILS
+the rule (CH-F3 worst cell I0/t0 rate .0764 needs 10,052 bases;
+K=256 needs 5,026; the largest clean fresh CH-F3 bank
+enumerable without narrow template duplication is 2,520).
+K=128 passes both families (CH-F3 need 2,514 <= 2,520; CH-F4
+need 1.5*128/(2/21) = 2,016 <= 2,016 — the CH-F4 horizon was
+sized to meet the rule exactly, equality by construction, not
+an independent pass). FROZEN: K = 128 per {family x covered
+cell}; augmentation = 128 x 2 x 6 = 1,536 rows; each covered
+whole action receives 256 fresh synthetic examples (v the old
+5/1 for I0/t2/t3). Combined diet = 73,324 + 1,536 = 74,860.
+Any short bucket at qualification => AUGMENTATION NO-FIRE
+(booked honestly; no widening, pooling, or substitution).
+
+FROZEN BANKS + HORIZONS (full literal banks in the committed
+driver scratch/mathworld1_svpdiet.py; disjoint from
+SPACE-1/2/3/4, DESIGN-0, DESIGN-1, and train v eval mutually
+disjoint by disjoint P/P1 and c/freq banks): TRAIN CH-F3 2,520
+bases (21 fresh P, c in {8..12,15..19}, T sin/cos, 2 blockers,
+k 0..2 over fresh polys 9x, 13x^6); TRAIN CH-F4 2,016 (42
+fresh (P1,P2) pairs = 7 fresh P1 x 6 P2, 12 fresh freq pairs,
+(T1,T2) both orders, 2 blockers); EVAL CH-F3 192 (8 fresh P =
+x^9+x^n, c in {13,14}, fresh polys 10x^2, 12x^5); EVAL CH-F4
+576 (4 fresh P1 x 6 P2 = 24 pairs, 6 fresh freq pairs).
+Constructor semantics reused from the U-F3v3/CH-F3 and
+U-F4/CH-F4 lineage; parameter banks all new.
+
+TRAIN EMISSION LAW (frozen, deterministic, no
+retry-until-success): per base, qualify the after variant
+first (first-fail skips the base); iff its measured term is in
+{0,1}, also qualify the two small variants; every emitted row
+carries ITS OWN measured teacher cell (exact parent, stable
+legal set, complete ActionProgram derivation on all candidates,
+frozen teacher argmin (hce, name, key), tok roundtrip, CTX
+4096, code domain, FACTOR+HASH roundtrip — via the frozen
+qualify_parent, unmodified); desired cell == actual unique
+teacher label is the bucket criterion, never an assignment.
+Selection: first K unique rows by SHA256(cur) per
+{family x covered cell}.
+
+BATCH PLAN (frozen): verbatim svpbirth law — sorted combined
+row_ids, per-epoch random.Random(f"svp-epoch-{e}").shuffle,
+BS=32, EPOCHS=3 — over 74,860 rows; target-blind by
+construction (no target-length sorting, no cell-dependent
+oversampling beyond the one-copy balanced augmentation);
+identical plan later consumed by both arms; plan sha in the
+receipt; combined whole-action frequency table reported. The
+new plan has 74,860 rows -> 2,340 batches/epoch x 3 = 7,020
+steps; the next-GO birth pins THIS receipt's batch_plan_sha256,
+NOT the svpfhbirth lineage PLAN_SHA (6,876 steps), and the
+optimizer schedule length follows the new step count under the
+same update law. New
+deterministic row IDs sha256("svpdiet|"+cur)[:16], collision-
+gated against the natural IDs.
+
+EVAL PAIR (fresh, disjoint; the scored DESIGN-1 challenge is
+hereby a DEVELOPMENT/DIAGNOSTIC artifact and may never serve as
+the confirmatory endpoint for this diet). Verbatim DESIGN-1
+matched-block law: 3 distractor variants per base, all-pass +
+kind/rule/single-term + ordinals [1,1,0]; strata
+{family x term 1|2|3}; fill gate >= 24 each else EVAL NO-FIRE;
+selection first 24 by sig_sha; D_before alternation 12/12.
+Structure: 96 strict blocks (2 families x {t2,t3} x 24) + 48
+matched t1 control blocks (24/family). Disposition on EVAL
+NO-FIRE (frozen now): the already-frozen augmentation, manifest
+and batch plan REMAIN FROZEN and adoptable; a successor
+eval-only design GO may materialize a fresh eval pair; the
+augmentation is never regenerated. TWO separately sealed
+artifacts with independent SHAs:
+  covered_calibration.jsonl — 96 strict covered-I0 states +
+    144 t1 control states (48 control-I1, 48 control-I0, 48
+    control-robust-I1); 240 states.
+  heldout_test.jsonl — 96 strict heldout-I1 + 96 strict
+    robustness-I1; 192 states; SEALED.
+Novelty gates (refute-on-hit): eval curs disjoint from natural
+training, ALL train-side qualified constructor states (every
+qualified variant cur — bucketed, censored, or out-of-grid —
+not merely the selected 1,536), all three scored bands, the 566
+pilot parents, and the 720+2,160 DESIGN-0/DESIGN-1 parents.
+The heldout seal is PROCEDURAL (separate file, independent sha,
+frozen scorer entry gate), not cryptographic.
+
+FUTURE BIRTH LAW (frozen NOW, before any training; the birth is
+the next GO): arms FACTOR and HASH primary, ActionGCTok
+vocab340, same architecture/parameter count/fixed T=9 targets/
+natural rows/synthetic rows/batch plan/optimizer/update law as
+the svpfhbirth lineage; ONE bit-identical shared vocab340 init
+for F/H; first realization seed = 15001; future replications
+16001, 17001; the first result is SINGLE-REALIZATION and will
+be fenced as such. CANONICAL-340 may be retained as a
+descriptive bridge only if compute cost is acceptable; it must
+not alter the F/H design or decision law and is NOT required.
+
+FROZEN CALIBRATION COMPETENCE GATE (the future scorer's entry
+condition; heldout_test.jsonl stays unopened until it fires):
+on the 96 covered-I0 strict calibration states — FACTOR top-1
+>= 75% AND HASH top-1 >= 75% AND no {family x term} stratum
+(4 strata of 24) below 50% (>= 12/24). If either arm fails:
+verdict SUPPORT-NOT-LEARNED, book, STOP; heldout never scored.
+Gate failure is informative about within-support learnability
+and is NOT a compositional-generalization result.
+
+FROZEN CONFIRMATORY LAW (if calibration fires; one joint
+scoring run, its own GO): (1) absolute held-out F-v-H top-1 on
+the 96 heldout-I1 primary states, exact McNemar, alpha .05;
+(2) matched same-target transfer penalty q per strict block
+(site_drop_HASH - site_drop_FACTOR over the 96 blocks), exact
+two-sided sign test, with transition anatomy (cc/cw/wc/ww)
+reported; STRONG-FACTOR iff HELDOUT-FACTOR-WIN AND sign p<.05
+AND q_pos>q_neg (symmetric STRONG-HASH); anything else
+MIXED/INCONCLUSIVE. Any STRONG label from the first run is
+SINGLE-REALIZATION (seed 15001) and carries that fence in its
+name until 16001/17001 replicate. No equivalence inference from null; no
+rescue tests; robustness-I1 duplicates never enter primary
+denominators; t1 controls descriptive calibration.
+
+NATURAL-RETENTION RIDER (secondary, descriptive, frozen): the
+new F/H models are additionally scored descriptively on the
+frozen svpeval3 band (pinned decisions.jsonl) under its
+existing law — does balanced grid augmentation destroy
+ordinary sibling ranking? Never alters the grid-completion
+verdict; no old scored result becomes a new confirmatory
+denominator.
+
+REGISTERED PRIOR (house, on record, this GO's gates only): all
+12 training buckets fill at K=128 — riskiest CH-F3 I0/t0,
+priced 192 v need 128 (margin 1.50); all 6 eval strata fill at
+N=24 — riskiest EVAL CH-F3 t1, priced 40 of 192 v need 24
+(and CH-F4 t2 priced ~55 of 576). Predict FIRE on both. The DESIGN-1 transport caveat stands: term proportions
+moved up to ~4.3x against pricing across strata; NO-FIRE is the
+protection, and a NO-FIRE books honestly.
+
+ORDER (anti-peeking): assessment -> freeze (this entry) ->
+driver -> source/design audit -> COMMIT PREREG -> path-isolated
+smoke (burned DESIGN-0 bases, K=1/N=1) -> ONE production
+materialization -> qualify + dual audit of the frozen bytes ->
+book -> commit/push/census -> STOP. ZERO model/checkpoint
+access anywhere under this GO; ZERO training; ZERO inference.
+
+FENCES. Mac; deterministic given the frozen horizons; K rule,
+banks, thresholds, seeds, scoring law all frozen before any
+byte is generated; burned pricing is a prediction register, not
+an IID claim; all bases consumed by this GO (train + eval
+horizons) are burned for future designs once inspected;
+receipts small-text force-added, big jsonl untracked and
+anchored by receipt shas; the two held-out cells and one frozen
+HASH permutation bound every future claim (no breadth).
+
