@@ -52792,3 +52792,133 @@ any future STRONG label from seed 15001 is SINGLE-REALIZATION
 until 16001/17001 replicate; after booking commit/push, census,
 STOP.
 
+## PRE-REG MATH-CYBER-1-SVP-GRID-BIRTH-15001: paired FACTOR/HASH production birth over the frozen 74,860-row GRID-DIET population — one shared seed-15001 vocab-340 init (double-build pinned 4b085795...), 7,020 updates per arm, per-batch equal-compute gates, frozen two-arm order alternation 3,510/3,510; ZERO evaluation scoring; seal both checkpoints and STOP (2026-08-28, Mac)
+
+SCOPE. Third rung of the frozen GRID-DIET chain (prereg
+2026-08-28 -> DIET-DESIGN-0 -> EVAL-DESIGN-1). Train the two
+production arms ONCE under the already-frozen law, seal, STOP.
+CANONICAL is NOT trained under this GO. ZERO calibration
+scoring, ZERO heldout scoring, ZERO old-band scoring, ZERO
+candidate inference, ZERO checkpoint quality probes. The birth
+driver has no path or string dependency on any evaluation
+artifact; the two frozen eval shas (calibration 90421e8b...,
+heldout 3346bd84...) enter the receipt ONLY as opaque literal
+copy-throughs, and neither file is opened, parsed, imported,
+scored, or counted.
+
+INSTRUMENT (frozen). Arms FACTOR and HASH; ActionGCTok vocab
+340 (code atoms ids 332..339); build_model(340, ctx=4096),
+19,142,016 params per arm; every training sequence <= 512
+tokens (measured max 229 at design time, gated per row); same
+74,860 rows (73,324 natural + 1,536 augmentation, all three
+artifact shas pinned: natural a943ba7f..., augmentation
+0ef3d8a8..., manifest 897c8bf8...); same target-blind batch
+plan (sha f55e9fee..., gated; 2,340 batches/epoch x 3 epochs =
+7,020 updates/arm; 12-row tail per epoch, gated); law by
+IMPORT from the frozen svpbirth driver — per-arm AdamW +
+OneCycle via make_opt, train_step with nonfinite-loss and
+nonfinite-grad abort BEFORE mutation and clip
+error_if_nonfinite, scheduler lockstep gated every batch;
+prefix-masked per-row-normalized continuation CE; EOS-terminated
+targets. Treatment is ONLY the target payload: FACTOR code v
+HASH = P(FACTOR) code, both exactly 8 dedicated code atoms +
+EOS (T=9 gated per row with exact semantic inverse via
+factor_decode/hash_decode).
+
+SHARED INIT (frozen): seed 15001; double-build bit-identity
+gate; sha pinned in the committed driver =
+4b085795f9e8b0be874cabdc6d58899a2a4554f8b42cb711f5154614e41797bc
+(computed at design time by two independent builds, byte-equal);
+both arms reload from the same frozen init file with
+tensor-by-tensor torch.equal gates (2 x 59 tensors) and
+identical param counts; neither arm derives from the other's
+model object. Seeds 16001/17001 remain untouched replication
+slots.
+
+EQUAL-COMPUTE LAW (new, stronger than row exposure; any
+mismatch = INSTRUMENT FAILURE): per batch, F and H tensors must
+have identical shape, identical per-row sequence lengths,
+identical target-mask totals, identical non-pad totals; end
+totals gated exactly — continuation tokens 2,021,220 per arm
+(= 9 x 74,860 x 3), padded and non-pad totals equal across
+arms, updates 7,020 per arm.
+
+ORDER LAW (frozen before production; replaces the 12001 3-arm
+rotation with its 2-arm mechanical equivalent): even global
+batch index -> FACTOR then HASH, odd -> HASH then FACTOR;
+counts gated 3,510/3,510; both arms consume the same batch
+before the plan advances.
+
+LABEL RECHECK (frozen bytes, not regeneration): zero combined
+rows labeled i_unprod I1 term_index 2 or 3, gated at load.
+
+SMOKE (path-isolated; logs/mathworld1/smoke_svpgbirth.json;
+refuses if a bad receipt already exists rather than
+overwriting): both arms resident on mps, three REAL plan
+batches — the longest-prompt batch, batch 0, and the epoch-0
+12-row tail — shared-init equality, real encode paths,
+backward, finite grads, clipping, optimizer + scheduler steps,
+both arm orders exercised, per-batch shape gates every step; no
+production checkpoint/init-overwrite/receipt path written.
+Production refuses unless the smoke receipt is green AND
+records this driver's current sha.
+
+OUTPUTS: sealed checkpoints (refuse-if-exists)
+checkpoints/svp_grid_factor_s15001.pt /
+svp_grid_hash_s15001.pt (written only after ALL completion
+gates, including the 2x59 bitwise-init-count gate and a
+distinct-checkpoint-sha gate), the shared init
+checkpoints/svp_grid_init_s15001.pt (create-if-absent under the
+double-build law, then sha-gated on every entry — smoke may
+materialize it, never overwrite it), and the receipt
+logs/mathworld1/svpgbirth_s15001_receipt.json (refuse-if-exists)
+(seed, init/checkpoint/manifest/augmentation/plan/driver shas,
+updates, continuation/padded/non-pad totals, order counts,
+epoch mean losses, per-arm + total wall, peak MPS/RSS,
+scheduler terminal state and finite-loss counts derived from
+the run objects, eval provenance literals). arm_wall_s excludes
+encoding and is within-run-paired only, never cross-run
+comparable (the 12001 receipt timed encoding inside the arm
+block). Loss curves are DESCRIPTIVE ONLY: F-v-H loss is
+never compared numerically as evidence of representation
+quality — the token identities induce different target
+distributions.
+
+REGISTERED PRIOR (house, mechanical gates only): all gates
+pass; wall predicted around the 12001-derived point estimate
+~3,280 s (two arms of ~1,610 s x 7,020/6,876 plus overhead),
+band 3,100-4,200 s. No capability
+prediction is registered under this GO (nothing is scored).
+
+NEXT RUNG (not this GO): CALIBRATION-SCORE-15001 opens
+covered_calibration.jsonl ONLY, applies the frozen gate — the
+DIET-DESIGN-0 prereg's words: "FACTOR top-1 >= 75% AND HASH
+top-1 >= 75% AND no {family x term} stratum (4 strata of 24)
+below 50% (>= 12/24)" on the 96 covered-I0 strict states, i.e.
+72/96 per arm ({family x term} there ranges over the four
+family x {t2,t3} strict strata; the t1 states are controls
+outside the gate); on failure books SUPPORT-NOT-LEARNED and
+STOPS
+with heldout unopened; only a calibration FIRE gives a later
+phase authority to open the heldout sha. Calibration and
+heldout run as SEPARATE scorer invocations with separate
+receipts — no single process preloads both. The frozen
+NATURAL-RETENTION RIDER (descriptive svpeval3-band scoring of
+the new F/H models under its existing law) stays live and
+belongs to a post-calibration scoring GO; it is not lost by
+this chain.
+
+ORDER: freeze (this entry) -> driver -> source audit -> COMMIT
+-> smoke -> ONE production birth -> dual audit (birth/source +
+independent receipt recompute) -> book -> commit/push/census ->
+STOP.
+
+FENCES. Mac/mps (run-level nondeterminism at fixed seed is a
+known substrate property — no cross-run bit-exact precondition
+is registered; the paired arms share the same run/substrate);
+single realization (seed 15001) — every downstream claim
+carries SINGLE-REALIZATION until 16001/17001 replicate; the two
+held-out cells and one frozen HASH permutation bound every
+future claim; checkpoints sealed unscored; after booking
+commit/push, census, STOP.
+
