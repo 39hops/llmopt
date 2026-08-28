@@ -1,0 +1,55 @@
+{
+ "t1_control_I1": {
+  "FACTOR": 23,
+  "HASH": 25,
+  "n": 48
+ },
+ "t1_control_I0": {
+  "FACTOR": 17,
+  "HASH": 12,
+  "n": 48
+ },
+ "t1_control_robust_I1": {
+  "FACTOR": 25,
+  "HASH": 26,
+  "n": 48
+ },
+ "covered_mrr": {
+  "FACTOR": 0.7135,
+  "HASH": 0.7014
+ },
+ "covered_by_block_d_before": {
+  "1/(x + log(x))": {
+   "FACTOR": 20,
+   "HASH": 19,
+   "n": 48
+  },
+  "x**x": {
+   "FACTOR": 23,
+   "HASH": 23,
+   "n": 48
+  }
+ },
+ "covered_by_family_term": {
+  "CH-F3|t2": {
+   "FACTOR": 9,
+   "HASH": 5,
+   "n": 24
+  },
+  "CH-F3|t3": {
+   "FACTOR": 0,
+   "HASH": 2,
+   "n": 24
+  },
+  "CH-F4|t2": {
+   "FACTOR": 16,
+   "HASH": 16,
+   "n": 24
+  },
+  "CH-F4|t3": {
+   "FACTOR": 18,
+   "HASH": 19,
+   "n": 24
+  }
+ }
+}
