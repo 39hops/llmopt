@@ -2973,6 +2973,17 @@ MATH-CYBER-1 STATE-v-PROGRAM DESIGN-0 — design-qualification smoke harness. Ve
 - `encode_row(tok, r, view)`
 - `main()`
 
+### scratch/mathworld1_svpdiet.py
+MATH-CYBER-1 SVP-GRID-DIET-DESIGN-0 — balanced covered-grid TRAINING augmentation + a completely fresh, separately sealed calibration/heldout evaluation pair for the i_unprod site x term grid. ZERO model/checkpoint access; the paired birth is the next GO. The two held-out whole actions (i_unprod I1 term_index 2 and 3) receive ZERO training target rows — hard-gated at emission and re-gated over the final bytes.
+
+- `f3_bases(tag, Ps, Cs, polys)`
+- `f4_bases(tag, P1s, freqs)`
+- `d0_qualified_by_stratum()` — (family, term) -> qualified DESIGN-0 blocks sorted by
+- `smoke_slice(terms)`
+- `chosen_cand(row)`
+- `emit_train_row(fam, sig, variant, D, vrow)`
+- `main()`
+
 ### scratch/mathworld1_svpeval.py
 MATH-CYBER-1 SVP-EVALBAND-0 — materialize + qualify the frozen primary evaluation band (seeds 9600-9619 x L4-L7, 80 episodes) under the exact 101-corpus trajectory law (mathworld0 greedy-hce, 12-decision budget, 60s wall cap), emitting a SEMANTIC treatment-neutral candidate artifact: every legal candidate carries child_sstr AND its canonical FINAL ActionProgram + program_text. Zero model, zero training.
 
