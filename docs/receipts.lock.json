@@ -1097,6 +1097,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svpdiet/svpdiet_receipt.json": {
+   "bytes": 5760,
+   "exists": true,
+   "sha256": "519d38b8a725fe726285aadb34101c22e80eba1874a23936ea88b5438e4efbb7",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/svpeval/decisions.jsonl": {
    "bytes": 225120,
    "exists": true,
