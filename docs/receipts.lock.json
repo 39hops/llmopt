@@ -964,6 +964,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/smoke_svpgbirth.json": {
+   "bytes": 2123,
+   "exists": true,
+   "sha256": "fb74efed07cdacf2279be7bb7ee49d9f4cbf758fe801201534314f45175fc5a3",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/srepr_export_verdict.json": {
    "bytes": 1584,
    "exists": true,
@@ -1192,6 +1199,13 @@
    "bytes": 2365,
    "exists": true,
    "sha256": "04bd724d7735c0d228f2bc250bb7f35a435499d7566cc67d6651a729569a7c13",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/svpgbirth_s15001_receipt.json": {
+   "bytes": 170226,
+   "exists": true,
+   "sha256": "cacee4efed9200fef1f4cf1a02b4c2197fde5d6afa12c70e59271bfecf0bb36c",
    "source": "results",
    "tracked": true
   },
