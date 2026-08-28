@@ -3032,6 +3032,18 @@ MATH-CYBER-1 SVP-FACTOR-HASH-BIRTH-0 — the frozen three-arm mechanism birth: C
 - `run(plan, rows_by_id, dev, init_sha, n_steps, tag)`
 - `main()`
 
+### scratch/mathworld1_svpgbirth.py
+MATH-CYBER-1 SVP-GRID-BIRTH-15001 — the frozen PAIRED FACTOR/HASH production birth over the GRID-DIET combined population (74,860 rows = 73,324 natural + 1,536 balanced covered-grid augmentation), one target-blind batch plan (7,020 updates), one frozen optimization law, ONE bit-identical shared vocab-340 init (seed 15001). ZERO evaluation scoring; this file has no path or string dependency on any evaluation artifact — the two frozen eval shas appear ONLY as opaque provenance literals copied into the receipt (EVAL_PROVENANCE below), never as paths, and nothing here opens, parses, or counts them.
+
+- `fsha(p) -> str`
+- `state_bytes(seed)`
+- `ensure_init()`
+- `load_rows()`
+- `make_batch(rows, view, dev)`
+- `load_arm_models(dev, init_sha)`
+- `run(plan, rows_by_id, dev, init_sha, n_steps, tag)`
+- `main()`
+
 ### scratch/mathworld1_svpgenadj.py
 MATH-CYBER-1 SVP-GENERALIZATION-SCORE-0 — ONE joint scorer: all three paired births (9001, 10001, 11001 in that fixed order) teacher-force scored on the frozen SECOND band (79 primary decisions, seeds 9700-9719) under the byte-frozen first-band scoring law. Zero training, zero generation, zero sympy/world.
 
