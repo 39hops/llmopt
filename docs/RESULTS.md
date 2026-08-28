@@ -53036,3 +53036,92 @@ receipt's checkpoint shas — the future scorer MUST pin all
 three before any load; after booking commit/push, census,
 STOP.
 
+## PRE-REG MATH-CYBER-1-SVP-GRID-CALIBRATION-SCORE-15001: one scoring run of the two sealed seed-15001 checkpoints on the frozen COVERED-CALIBRATION artifact only — the already-frozen competence gate (both arms >= 72/96 on covered-I0 strict states, no {family x term} stratum < 12/24) applied mechanically; sealed test artifact neither named nor opened; CALIBRATION FIRED grants heldout authority to a LATER GO, SUPPORT-NOT-LEARNED stops the chain (2026-08-28, Mac)
+
+SCOPE. Fourth rung of the frozen GRID-DIET chain. One scorer
+invocation, calibration artifact ONLY, per the frozen
+procedural-separation law (calibration and heldout as separate
+scorer invocations/receipts; no process preloads both). The
+scorer driver scratch/mathworld1_svpcalscore.py has zero path
+or string dependency on the sealed test artifact — it opens
+exactly covered_calibration.jsonl (sha 90421e8b..., pin-gated
+pre- and post-run) and the sealed sibling appears nowhere in
+the file (docstring mentions of the authority rule only — grep-checked
+zero path/sha references). Zero training, zero checkpoint mutation, zero sympy,
+zero regeneration.
+
+INSTRUMENT. The two sealed checkpoints, pin-gated:
+FACTOR 6ef7b85c..., HASH 3b9da5a7..., shared init 4b085795...;
+birth receipt cacee4ef... and eval receipt 6313f3a5... pinned;
+19,142,016 params gated per arm. Scoring law verbatim from the
+frozen svpadj/svpchalscore lineage: standing prompt
+"Current: {cur}\\nHints: none\\nStep: "; continuations solely
+from stored candidate representation fields (factor_code /
+hash_code + EOS, T=9 gated); pessimistic top-1 by mean
+continuation logprob (rank_metrics); is_label consumed only
+after scores exist; mean/sum rank identity and full-order
+identity gated (near-vacuous for fixed-width arms — length-gate
+escape check only, disclosed as at prior scorings); no
+per-state console output during scoring.
+
+STRUCTURE GATES (re-derived from row metadata before load): 240
+rows; roles covered-I0 96 / control-I1 48 / control-I0 48 /
+control-robust-I1 48; covered strata exactly 24 per
+{family x t2/t3}; covered ordinals all 0; 144 t1 states all
+control roles; 240 unique curs; unique label per state; F/H
+code roundtrips on every stored candidate.
+
+FROZEN GATE (registered at the DIET-DESIGN-0 prereg, applied
+verbatim; the 75% conversion is exact): on the 96 covered-I0
+strict states — FACTOR top-1 >= 72/96 AND HASH top-1 >= 72/96
+AND no {family x term} stratum (4 strata of 24) below 12/24 for
+either arm. Resolution (mechanical, no reinterpretation):
+  ALL pass -> CALIBRATION FIRED — a LATER GO gains the
+  authority to open the sealed test sha and apply the frozen
+  confirmatory law (96-state McNemar + 96-block q sign test +
+  directional conjunction).
+  ANY fail -> SUPPORT-NOT-LEARNED — book, STOP; the sealed
+  sibling stays unopened; the failure is informative about
+  within-support learnability and is NOT a
+  compositional-generalization result.
+
+DESCRIPTIVE RIDERS (post-verdict, never alter the gate): t1
+control solves per role per arm, covered MRR, per-stratum and
+per-block-D_before covered splits (the covered distractor
+itself is constant sin(sin(x)) by construction, so a
+per-distractor split would be degenerate). The natural-retention rider
+(svpeval3 band) stays live for the post-calibration phase and
+is NOT run here. F-v-H comparisons on calibration are
+DESCRIPTIVE only — at n=96 with p near 0.75 the per-arm
+binomial sigma is ~4.2 solves, so a single-seed F-minus-H gap
+under ~6 solves on calibration is unresolved noise; the
+confirmatory F-v-H contrast lives exclusively in the sealed
+test under its frozen law.
+
+ANTI-PEEKING ORDER: pins -> structure gates -> load -> blind
+score all 240 -> write + hash raw scores -> hard gates -> gate
+computation -> verdict -> post-run pin re-gate -> receipt ->
+only then riders.
+
+REGISTERED PRIOR (house, on record): both arms PASS the gate.
+Basis: each covered whole action now carries 256 fresh
+constructor-style training examples (v the natural 5/1 that
+preceded the 0/48 HASH covered floor at SCORE-0), and the
+calibration states are in-distribution w.r.t. constructor
+style by design. Named risk: the augmentation's distractor mix
+is sin(sin(x))-heavy (1,024 of 1,536) and EVERY covered-I0
+calibration state carries sin(sin(x)) as its distractor (96/96
+by the block law's after-variant construction) — a
+distractor-composition transport miss is the plausible failure
+mode, and the sin(sin(x)) dominance of the augmentation cuts
+toward passing. The codeword
+geometry is NOT used as a prior (standing fence).
+
+FENCES. Mac/mps; single realization (seed 15001), fenced
+SINGLE-REALIZATION; gate numbers are within-support competence
+readings, never generalization evidence; no equivalence from
+any null; outputs under logs/mathworld1/svpcalscore/
+(refuse-if-exists), receipts force-added small-text, raw
+scores.jsonl included; dual audit before booking; after booking
+commit/push, census, STOP.
+
