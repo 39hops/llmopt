@@ -52699,3 +52699,96 @@ bound every future claim; heldout_test.jsonl stays sealed until
 the frozen calibration gate fires in a future scoring GO; after
 booking commit/push, census, STOP.
 
+## VERDICT MATH-CYBER-1-SVP-GRID-EVAL-DESIGN-1: EVAL MATERIALIZED — all six strata filled (CH-F3 t1/t2/t3 = 132/144/228, CH-F4 = 346/74/312 v the frozen N=24), 144 matched blocks selected with zero block failures, the two artifacts frozen with independent shas (calibration 240 states; heldout 192 states, sealed) and zero overlap against every burned parent and every train-side target integrand; the seed-15001 paired birth is now unblocked as the next GO (2026-08-28, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-GRID-EVAL-DESIGN-1 (committed with
+the driver scratch/mathworld1_svpdiet2.py at 2850633b BEFORE any
+byte; pre-commit design audit returned 2 blockers — the draft
+mis-named the binding stratum (CH-F3 t1 at 2.5x, the very
+stratum that under-delivered in DESIGN-0) and the margins did
+not survive the documented adverse transport factors — both
+fixed by WIDENING the horizons before commit (CH-F3 360 -> 720,
+CH-F4 2,016 -> 2,688) under an explicit frozen margin law:
+every stratum survives the measured 2.5x adverse factor, with
+the sole 4.3x-worst-case edge (CH-F4|t2 at 103/4.3 = 23.9)
+accepted and stated in advance; 6 should-fixes also folded —
+band-file pins restored, svpbirth in provenance, shard held-out/
+covered-cell gates re-added, pair-grain P1-recurrence disclosed,
+"qualified" wording corrected to the full train horizon,
+receipt-scope wording narrowed to verdict exit paths).
+Anti-peeking order held: freeze -> driver -> audit -> COMMIT ->
+path-isolated smoke (burned DESIGN-0 bases, N=1, green,
+staleness-gated) -> ONE production materialization. ZERO
+model/checkpoint access; the DIET-DESIGN-0 augmentation,
+manifest, batch plan, calibration gate, scoring law, and seeds
+were not touched.
+
+RESULT (mechanical; receipt
+logs/mathworld1/svpdiet2/svpdiet2_receipt.json, wall 8,033 s,
+completion_commit 1b0939fb = one docs-only commit past the
+prereg; independent session-side recount of the sealed bytes
+matched every number below): 3,408 fresh bases (720 CH-F3 +
+2,688 CH-F4), ZERO qualification failures (the constructor
+recipe is now 9,672/9,672 qualified bases across the five
+materializations: 240 + 720 + 4,536 + 768 + 3,408). Stratum counts v N=24: CH-F3 t1 132, t2 144,
+t3 228; CH-F4 t1 346, t2 74, t3 312 => fill gate FIRES on all
+six. Selection first-24 by sig_sha; D_before exactly 12/12 in
+all six strata; 144 blocks, 432 states, no duplicate eval
+parent (refute-on-hit gate passed; session recount 432/432
+unique).
+  covered_calibration.jsonl (sha 90421e8b...): 240 states = 96
+  strict covered-I0 (t2/t3 after variants, ordinal 0) + 48
+  control-I1 + 48 control-I0 + 48 control-robust-I1 (t1).
+  heldout_test.jsonl (sha 3346bd84...): 192 states = 96
+  heldout-I1 (the confirmatory denominator, flagged per-row) +
+  96 robustness-I1; SEALED — the future scorer may not open it
+  until the frozen calibration competence gate fires.
+Every strict heldout-I1 state shares its block_id, base
+signature, and term with its covered-I0 calibration partner
+(96/96 matched, session recount); role x ordinal census exact
+(I1 roles all ordinal 1, I0 roles all ordinal 0).
+
+NOVELTY: zero cur overlap against natural training, all three
+bands, the 566 pilot parents, and all 18,792 reconstructed
+design/diet horizon parents (720 + 2,160 + 13,608 + 2,304;
+refute-on-hit gates passed — the gates' evidentiary form is
+the MATERIALIZED exit path, not a receipt count field; the
+session recount additionally re-checked natural and
+augmentation overlap directly on the frozen bytes: 0/0, and is
+reproducible from the three sha-pinned jsonls). NEW
+GATE clean: selected eval target integrands v all 4,536
+train-side constructor targets = 0 overlap (receipt field).
+
+REGISTERED-PRIOR ACCOUNTING: predict-FIRE was CORRECT this time
+(track record on this gate class now 1/2). The transport caveat
+held again in magnitude, full register (measured v priced):
+CH-F3 t1 132/120, t2 144/225 (1.56x adverse — the LARGEST miss
+this run), t3 228/150; CH-F4 t1 346/261, t2 74/103 (1.39x
+adverse on the binding stratum), t3 312/289. Max adverse 1.56x
+< the 2.5x margin law the widened horizons were sized for;
+CH-F3 t1 — DESIGN-0's under-deliverer — came in at 132 v 120. The margin law did the work the 0/1 track
+record demanded; pricing remains non-IID and descriptive.
+
+ARTIFACT INTEGRITY: eval_blocks.jsonl (0eb45f21...),
+covered_calibration.jsonl, heldout_test.jsonl stay UNTRACKED
+(big jsonl), anchored by the force-added lock-registered
+receipt's independent shas. The future scorer MUST pin
+covered_calibration.jsonl's sha before any load, and
+heldout_test.jsonl's sha at its own gated opening. All 3,408
+bases are BURNED for future designs.
+
+NEXT (per the standing chain, its own GO): the frozen paired
+FACTOR/HASH seed-15001 birth over the 74,860-row diet /
+7,020-batch plan, then calibration-gated scoring under the
+frozen law.
+
+FENCES. Mac; deterministic given the frozen horizon;
+constructor-style-in-distribution scope only; pricing
+descriptive/non-IID (misses on record in both directions); the
+two held-out cells and the one frozen HASH permutation bound
+every future claim (no breadth); heldout seal is procedural
+(separate file, independent sha, frozen scorer entry gate);
+any future STRONG label from seed 15001 is SINGLE-REALIZATION
+until 16001/17001 replicate; after booking commit/push, census,
+STOP.
+

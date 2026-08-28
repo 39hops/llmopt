@@ -3647,3 +3647,16 @@ regime tag on every bullet is the fence.
   disposition. Fences: constructor-style exposure by design;
   pricing register non-IID; zero model access.
   RESULTS.md#L52476
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] GRID-EVAL-DESIGN-1
+  materialized the fresh calibration/heldout pair on the first
+  successor attempt: all six strata >= N=24 (min CH-F4|t2 74),
+  144 matched blocks / 432 states, zero block failures, zero
+  overlap against 18,792 burned parents and all 4,536 train-side
+  target integrands; the frozen margin law (size every stratum
+  to survive the measured 2.5x adverse transport) absorbed this
+  run's worst miss (CH-F3 t2 at 1.56x adverse) — the constructor
+  recipe stands at 9,672/9,672 qualified bases over five
+  materializations. heldout_test.jsonl sealed until the frozen
+  calibration gate fires; seed-15001 paired birth unblocked.
+  Fences: pricing non-IID; constructor-style scope only.
+  RESULTS.md#L52702
