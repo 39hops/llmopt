@@ -53125,3 +53125,120 @@ any null; outputs under logs/mathworld1/svpcalscore/
 scores.jsonl included; dual audit before booking; after booking
 commit/push, census, STOP.
 
+## VERDICT MATH-CYBER-1-SVP-GRID-CALIBRATION-SCORE-15001: SUPPORT-NOT-LEARNED — both arms fail the frozen competence gate on the covered-I0 strict calibration states (FACTOR 43/96, HASH 42/96 v the bar 72/96; worst strata CH-F3 t3 = 0/24 FACTOR and 2/24 HASH v the 12/24 floor); the sealed test artifact stays UNOPENED and the confirmatory chain STOPS here; registered prior (both arms pass) WRONG, booked against the house (2026-08-28, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-GRID-CALIBRATION-SCORE-15001
+(scorer scratch/mathworld1_svpcalscore.py committed at 7ec214cf
+BEFORE any inference — the commit message records the audit
+folds; pre-inference source audit returned zero blockers and 5
+should-fixes, all folded — post-run init pin
+re-gate, re-derived structural census in the receipt,
+label-index computed only after scoring, block-D_before rider
+replacing a degenerate split, provenance widened to the
+tokenizer's transitive dependencies). One scoring run,
+anti-peeking order held mechanically: pins -> structure gates
+-> load -> blind score all 240 states -> raw scores written and
+hashed -> hard gates -> frozen gate computation -> verdict ->
+post-run pin re-gates (including init) -> receipt -> only then
+riders. Zero training, zero checkpoint mutation, zero sympy;
+the sealed sibling is neither named nor opened anywhere in the
+scorer (grep-checked zero path/sha references).
+
+HARD GATES (all fired): six pre-run pins + three checkpoint/
+init pins verified pre- AND post-run; structure re-derived from
+row metadata (240 rows; roles covered-I0 96 / control-I1 48 /
+control-I0 48 / control-robust-I1 48; covered strata exactly
+24 per {family x t2/t3}; covered ordinals all 0; 240 unique
+curs; unique label per state; F/H roundtrip on all 1,155 stored
+candidates); T=9 on all 2,310 F/H candidate scorings; mean/sum
+rank and full-order identity 480/480 checks (near-vacuous for
+the fixed-width arms, disclosed); finiteness everywhere;
+19,142,016 params per arm (the param/ordinal/label-unique/
+finiteness figures are abort-on-fail driver gates — completion
+implies pass; the receipt records the check counts and
+structural census). Receipt
+logs/mathworld1/svpcalscore/svpcalscore_receipt.json (wall
+7.6 s post-load); raw rows scores.jsonl (240, sha in receipt);
+riders.json post-receipt.
+
+FROZEN GATE (mechanical): FACTOR top-1 43/96, HASH 42/96 v the
+bar >= 72/96 — BOTH FAIL; strata (bar >= 12/24 each):
+FACTOR CH-F3 t2/t3 = 9/0, CH-F4 = 16/18; HASH CH-F3 = 5/2,
+CH-F4 = 16/19 — the two CH-F3 strata fail for both arms, the
+two CH-F4 strata pass for both. VERDICT: SUPPORT-NOT-LEARNED.
+The sealed test artifact stays UNOPENED (no authority is
+granted); the confirmatory compositional question is NOT
+reached and nothing about it is licensed in either direction.
+Per the frozen law this failure is informative about
+WITHIN-SUPPORT LEARNABILITY only: 256 balanced constructor-
+style training examples per covered whole action did not
+suffice for 75% top-1 on fresh same-family covered states at
+this scale, and the shortfall is family-structured.
+
+REGISTERED-PRIOR ACCOUNTING: WRONG (predicted both arms pass;
+neither did). Chain track record, convention explicit: 2/4 by
+GO (DIET-DESIGN-0 wrong on its eval gate though right on its
+train gate, EVAL-DESIGN-1 right, BIRTH-15001 right on
+mechanical gates only with no capability prediction, this one
+wrong), 3/5 by individual gate. The named risk
+(distractor-composition transport) is UNRESOLVED and untestable
+on this artifact — the covered distractor is constant
+sin(sin(x)) by construction, so no distractor split exists; the
+block-D_before split IS flat (1/(x+log(x)) F 20 / H 19,
+x**x F 23 / H 23, of 48 per side). The
+actual anatomy is FAMILY-structured and shared by both arms:
+CH-F4 covered ~2/3 (16-19 of 24 per stratum) v CH-F3 near
+floor (F 9/24 t2, 0/24 t3; H 5/24, 2/24), with t1 controls
+mid-range (F 23/17/25, H 25/12/26 of 48 per role). Post-hoc
+mechanism note (descriptive, not established): the EVAL CH-F3
+bank sits outside the augmentation's CH-F3 parameter range on
+both axes (P degree 10 v trained <= 9; trig frequency c in
+{20..25} v trained {8-12, 15-19}), while 8 of the EVAL CH-F4
+bank's 14 P1 polys recur from the TRAINED F3 bank (the other 6
+from the burned DESIGN-0 eval bank, never trained) — though
+CH-F4's frequencies (11-13) are ALSO above the trained maximum
+and it still passes ~2/3, so the story rests mainly on the
+P1-recurrence axis; consistent with the family split being
+parameter-extrapolation distance, not representation identity,
+and nothing stronger is claimed. Both arms move together everywhere (max F-H gap 4
+solves, inside the prereg's registered ~6-solve unresolved-
+noise threshold; no F-v-H reading is taken).
+
+DESCRIPTIVE RIDERS (never gate-relevant): covered MRR F .7135
+/ H .7014 (consistent with the missed labels sitting near
+rank 2 — an MRR-consistent inference, no rank histogram was
+emitted); per-role t1 controls above. Zero first-place ties
+occurred in any of the 480 row-arm scorings, so the
+pessimistic tie law never bound. Receipt-audit disclosures
+(both directions of use): (1) the 96 covered-I0 calibration
+bases are EXACTLY the 96 sealed-test bases — "held-out" in
+this design means held out BY SITE (I1 v I0 on shared base
+derivations), never by base; every future claim citing this
+calibration or the sealed pair carries that fence. (2)
+Candidate index 0 (a euler/W-site or i_sum candidate) is never
+the label and was never ranked first by either arm on any of
+the 240 states, so the effective competitive set is
+n_candidates - 1; never quote 1/n_candidates as chance.
+
+WHAT THIS CHANGES: the GRID-DIET chain stops before its
+confirmatory endpoint, honestly. The 15001 checkpoints, the
+augmentation, and the sealed eval pair remain frozen artifacts;
+seeds 16001/17001 remain untouched. The banked next question
+(own GO, not run): either widen the augmentation's parameter
+coverage toward the eval banks' ranges (a diet change — new
+design GO under the same zero-heldout-label law), or
+re-materialize an eval pair whose parameter ranges INTERPOLATE
+the trained augmentation (an eval-only design GO); either way
+the competence gate stays the entry condition and the sealed
+pair of this chain stays burned for any redesigned diet.
+
+FENCES. Mac/mps; single realization (seed 15001) — the gate
+failure is SINGLE-REALIZATION and the 16001/17001 slots could
+in principle be spent to replicate it, gated on Artin's
+judgment of value; within-support competence reading only,
+never generalization evidence, never F-v-H evidence, no
+equivalence from the near-tie; the sealed artifact remains
+sealed with its sha lock-anchored; receipts force-added
+small-text (scores.jsonl 240 rows included); after booking
+commit/push, census, STOP.
+

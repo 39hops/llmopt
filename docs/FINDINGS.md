@@ -3672,3 +3672,17 @@ regime tag on every bullet is the fence.
   birth driver. Fences: single realization (15001); loss curves
   descriptive only; calibration gate (72/96 both arms) must fire
   before heldout ever opens. RESULTS.md#L52925
+- [SINGLE-SEED] [math-cyber] [mac] CALIBRATION-SCORE-15001:
+  SUPPORT-NOT-LEARNED — after 256 balanced constructor-style
+  examples per covered whole action, both arms fail the frozen
+  competence gate on fresh covered-I0 strict states (FACTOR
+  43/96, HASH 42/96 v 72/96), with a family-structured shared
+  anatomy (CH-F4 strata 16-19/24, CH-F3 near floor incl. 0/24)
+  consistent with parameter-extrapolation distance (eval CH-F3
+  banks outside the trained P-degree/frequency ranges); the
+  sealed test stays unopened, no compositional claim licensed
+  in either direction, max F-H gap 4 solves inside the ~6-solve
+  noise fence. Fences: within-support reading only; held-out is
+  BY SITE not by base; effective candidate set is n-1 (index 0
+  never label, never top-ranked); seed 15001 only.
+  RESULTS.md#L53128
