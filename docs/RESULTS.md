@@ -52582,3 +52582,120 @@ record: CH-F4 I0/t2 cleared K by 12 rows, CH-F4|t2 missed the
 eval gate by 2 blocks; zero model access under this GO; after
 booking commit/push, census, STOP.
 
+## PRE-REG MATH-CYBER-1-SVP-GRID-EVAL-DESIGN-1: eval-only successor to the DIET-DESIGN-0 EVAL NO-FIRE — same matched-block law re-registered unchanged, larger fresh horizons (CH-F3 720, CH-F4 2,688) sized so every stratum survives the MEASURED 2.5x adverse transport factor, new selected-target-v-train-target zero-overlap gate; one materialization; zero model access (2026-08-28, Mac)
+
+SCOPE. Successor to VERDICT MATH-CYBER-1-SVP-GRID-DIET-DESIGN-0
+(AUGMENTATION MATERIALIZED / EVAL NO-FIRE, CH-F4|t2 22 v N=24).
+Everything frozen there stays frozen and untouched: the 1,536-row
+augmentation, the 74,860-row combined manifest, the 7,020-batch
+plan, N=24 per stratum, the calibration competence gate (FACTOR
+AND HASH top-1 >= 75% on covered-I0 strict states, no stratum
+< 12/24), the confirmatory scoring law (96-state McNemar +
+96-block q sign test + directional conjunction), seeds
+15001/16001/17001, and the interpretation fences. The
+DIET-DESIGN-0 eval horizon (768 bases) is PERMANENTLY BURNED
+after its mechanical NO-FIRE; no base reused. This GO
+materializes ONLY the fresh calibration/heldout pair. ZERO
+model/checkpoint access, zero training. The seed-15001 birth is
+NOT run under this GO.
+
+FROZEN FRESH HORIZONS (priced from the now-burned DESIGN-0 eval
+census as a DESCRIPTIVE rate — the pricing register is non-IID
+and has missed its own gate once; NO-FIRE is the protection):
+  CH-F3, 720 bases: P in {x^10, x^10+x..x^10+x^9} (10 fresh
+    polys), T sin/cos, c in {20..25}, 2 blockers, k 0..2 over
+    fresh polys (14x^3, 15x^7). 10*2*6*2*3 = 720. Priced at
+    burned rates (32/60/40 of 192): t1 120, t2 225, t3 150 v
+    need 24.
+  CH-F4, 2,688 bases: 84 pairs fresh at PAIR grain (14 P1 rows
+    x the 6 P2 columns), 8 fresh freq pairs {(12,13),(13,12),
+    (12,5),(5,12),(13,4),(4,13),(11,12),(12,11)}, (T1,T2) both
+    orders, 2 blockers. 84*8*2*2 = 2,688. Priced at burned
+    rates (56/22/62 of 576): t1 261, t2 103 (4.3x over N=24 —
+    the binding stratum), t3 289.
+MARGIN LAW (frozen; the response to the 0/1 prior track record
+on this gate class): every stratum's priced count survives the
+MEASURED adverse transport factor from DESIGN-0's own miss
+(priced ~55 -> measured 22 = 2.5x): worst post-adverse counts
+are CH-F4 t2 103/2.5 = 41 and CH-F3 t1 120/2.5 = 48, both
+>= 24. At the documented historical worst-case factor (~4.3x,
+DESIGN-1 register), every stratum still clears except CH-F4|t2,
+which sits at the gate edge (103/4.3 = 23.9 v 24) — accepted
+and stated in advance; NO-FIRE is the protection.
+Bank freshness is per-axis at the axis's own grain: no CH-F3
+P/c/poly value and no CH-F4 (P1,P2) PAIR or (a,b) freq pair has
+appeared in any prior bank (pilot, DESIGN-0/1 challenge,
+DIET-DESIGN-0 train + eval) — gate-checked in the driver. The
+14 F4 P1 polynomials individually RECUR from prior F3 banks (8
+from the DIET train bank, 6 from the burned DIET eval bank) —
+disclosed here explicitly; pair-grain, parent-cur, and
+target-integrand novelty are what the gates enforce, exactly as
+in the burned DESIGN-1 banks where F3 P values also served as
+F4 P1s. No parameter value was chosen for post-hoc t2 affinity:
+the banks extend the same literal axes with next-fresh values
+(higher-degree P family, next unused c and freq integers).
+
+LAW (verbatim DIET-DESIGN-0 eval phase, unchanged; prohibitions
+carried: no N lowering, no family pooling, no term
+substitution): three distractor variants per base; block
+qualifies iff all three pass qualify_parent, teacher (i_unprod,
+I, term_index), single term, ordinals [1,1,0]; strata
+{family x term 1|2|3}; fill gate every stratum >= 24 else EVAL
+NO-FIRE again (booked honestly); selection first 24 by sig_sha;
+D_before alternation 12/12; split covered_calibration.jsonl (96
+strict covered-I0 + 144 t1 controls, 240 states) /
+heldout_test.jsonl (96 heldout-I1 + 96 robustness-I1, 192
+states, SEALED — procedural seal: separate file, independent
+sha, frozen scorer entry gate). Independent shas on both.
+
+NOVELTY (refute-on-hit in production): eval curs disjoint from
+natural training (73,324), all three scored bands, 566 pilot
+parents, 720 + 2,160 DESIGN-0/1 challenge parents, and all
+13,608 + 2,304 DIET-DESIGN-0 train/eval horizon parents
+(reconstructed from the frozen banks). NEW GATE this GO:
+selected eval TARGET INTEGRANDS disjoint from all 4,536
+train-side constructor target integrands (the FULL train
+horizon in train_blocks.jsonl, sha-pinned) — parent-level
+novelty alone
+would permit a shared inner target; this closes it. If the
+constructor law made this impossible it would be reported, not
+weakened; the disjoint banks make it structurally expected.
+
+DRIVER scratch/mathworld1_svpdiet2.py, committed with this
+entry BEFORE any byte; pins: natural shard, the three scored
+band decision files, DESIGN-0 challenge blocks, and the four
+DIET-DESIGN-0 artifacts (receipt, train_blocks, eval_blocks,
+balanced_grid_train) by exact sha. The natural-shard held-out
+absence (I1/t2, I1/t3 not in training) and all six covered
+cells' presence are re-gated at run start. Receipts carry
+artifact shas on every VERDICT exit path (NO-FIRE /
+GATE-REFUTED / MATERIALIZED); entry gates (pins, freshness,
+smoke staleness) exit non-zero without a receipt, before any
+byte is generated.
+SMOKE (SVPDIET2_SMOKE=1): N=1 on burned DESIGN-0 challenge
+bases, path-isolated under logs/mathworld1/svpdiet2_smoke/,
+novelty report-only, production gated on smoke green + driver
+sha staleness check. Production outputs refuse-if-exists under
+logs/mathworld1/svpdiet2/.
+
+REGISTERED PRIOR (house, on record): all six strata fill —
+binding stratum CH-F4 t2 priced 103 v need 24; runner-up risk
+CH-F3 t1 priced 120 (the stratum the DESIGN-0 prior mis-ranked
+and that under-delivered 40 -> 32). The prior's track record on
+this exact gate class is 0/1; the margin law above (survive the
+measured 2.5x adverse factor on every stratum) is the response.
+Predict FIRE.
+
+ORDER: freeze (this entry) -> driver -> design audit -> COMMIT
+-> smoke -> ONE production materialization -> dual audit ->
+book -> commit/push/census -> STOP. If EVAL NO-FIRE again: book
+honestly; the augmentation remains adoptable; any further
+successor is its own GO.
+
+FENCES. Mac; deterministic given the frozen horizon; all 3,408
+fresh bases burned once inspected; pricing descriptive/non-IID;
+the two held-out cells and the one frozen HASH permutation
+bound every future claim; heldout_test.jsonl stays sealed until
+the frozen calibration gate fires in a future scoring GO; after
+booking commit/push, census, STOP.
+
