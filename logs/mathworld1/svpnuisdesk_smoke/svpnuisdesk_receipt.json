@@ -1,0 +1,190 @@
+{
+ "smoke": true,
+ "prereg": "MATH-CYBER-1-SVP-GRID-CH-F3-NUISANCE-DESK-0",
+ "n_horizon": 16,
+ "bars": {
+  "A_competence": 0.75,
+  "drop": 0.2
+ },
+ "smoke_receipt_sha": null,
+ "smoke_novelty_hits": 0,
+ "qualification_census": {
+  "A|scored_t2": 3,
+  "A|out_of_scope": 1,
+  "B|scored_t2": 3,
+  "B|out_of_scope": 1,
+  "C|out_of_scope": 3,
+  "C|scored_t3": 1,
+  "D|scored_t2": 2,
+  "D|scored_t3": 1,
+  "D|out_of_scope": 1
+ },
+ "n_scored_states": 10,
+ "verdict": "SMOKE",
+ "cells": {
+  "A": {
+   "n": 3,
+   "pooled": 1.0,
+   "FACTOR": 1.0,
+   "HASH": 1.0,
+   "by_term": {
+    "t2": {
+     "n": 3,
+     "pooled": 1.0,
+     "FACTOR": 1.0,
+     "HASH": 1.0
+    },
+    "t3": {
+     "n": 0,
+     "pooled": null,
+     "FACTOR": null,
+     "HASH": null
+    }
+   },
+   "legal_K": {
+    "3": 2,
+    "2": 1
+   },
+   "cand0_strict_top_ranked": {
+    "FACTOR": 0,
+    "HASH": 0
+   },
+   "cand0_is_label": 0
+  },
+  "B": {
+   "n": 3,
+   "pooled": 1.0,
+   "FACTOR": 1.0,
+   "HASH": 1.0,
+   "by_term": {
+    "t2": {
+     "n": 3,
+     "pooled": 1.0,
+     "FACTOR": 1.0,
+     "HASH": 1.0
+    },
+    "t3": {
+     "n": 0,
+     "pooled": null,
+     "FACTOR": null,
+     "HASH": null
+    }
+   },
+   "legal_K": {
+    "3": 2,
+    "2": 1
+   },
+   "cand0_strict_top_ranked": {
+    "FACTOR": 0,
+    "HASH": 0
+   },
+   "cand0_is_label": 0
+  },
+  "C": {
+   "n": 1,
+   "pooled": 1.0,
+   "FACTOR": 1.0,
+   "HASH": 1.0,
+   "by_term": {
+    "t2": {
+     "n": 0,
+     "pooled": null,
+     "FACTOR": null,
+     "HASH": null
+    },
+    "t3": {
+     "n": 1,
+     "pooled": 1.0,
+     "FACTOR": 1.0,
+     "HASH": 1.0
+    }
+   },
+   "legal_K": {
+    "4": 1
+   },
+   "cand0_strict_top_ranked": {
+    "FACTOR": 0,
+    "HASH": 0
+   },
+   "cand0_is_label": 0
+  },
+  "D": {
+   "n": 3,
+   "pooled": 0.6667,
+   "FACTOR": 0.6667,
+   "HASH": 0.6667,
+   "by_term": {
+    "t2": {
+     "n": 2,
+     "pooled": 1.0,
+     "FACTOR": 1.0,
+     "HASH": 1.0
+    },
+    "t3": {
+     "n": 1,
+     "pooled": 0.0,
+     "FACTOR": 0.0,
+     "HASH": 0.0
+    }
+   },
+   "legal_K": {
+    "3": 1,
+    "2": 1,
+    "4": 1
+   },
+   "cand0_strict_top_ranked": {
+    "FACTOR": 0,
+    "HASH": 0
+   },
+   "cand0_is_label": 0
+  }
+ },
+ "pooled": {
+  "A": 1.0,
+  "B": 1.0,
+  "C": 1.0,
+  "D": 0.6667
+ },
+ "matched_template_freq_contrast": {
+  "P_IN": {
+   "n_templates_both_sides": 3,
+   "mean_in_acc": 1.0,
+   "mean_out_acc": 1.0
+  },
+  "P_OUT": {
+   "n_templates_both_sides": 1,
+   "mean_in_acc": 1.0,
+   "mean_out_acc": 0.0
+  }
+ },
+ "raw_scores_sha": "1247d659e26ac8fd537b4f4f24ab163cb7d72107d4f1ac6e83d04b3618f113c3",
+ "attempts_sha": "3e84934ec2fee84469d6e816e3ddce9feb01f6c851baadb969bcd6ddb09968c2",
+ "wall_qual_s": 7.4,
+ "wall_score_s": 0.4,
+ "pins": {
+  "data/matsub_paired.jsonl": "a943ba7fc581db743b07192e5d951fadddd2ba19bca3225b75d8402351d468e8",
+  "checkpoints/svp_grid_factor_s15001.pt": "6ef7b85ce9215c1ba299d64fdf61e2b32573b2aaac1e0ea4bb1dedf4cf790cd3",
+  "checkpoints/svp_grid_hash_s15001.pt": "3b9da5a7ee3bd72bc40a21afcbc8b114ebd19040079ce1f7194941946052501a"
+ },
+ "start": {
+  "start_commit": "daa8e757",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_svpnuisdesk.py": "e97f689101ff3e0486682d8f220e3d037463f5077d6d1f2ddce6c36ca4dbd625",
+   "scratch/mathworld1_svpdiet.py": "872d40802eb0d25f1e468579f5e52dd84813eeb73d98e5ffde714671b53a6876",
+   "scratch/mathworld1_svpdiet2.py": "3d81af802bbb51f50295df504b29a5a91ba15542a5acd113f680cd510bd67f5e",
+   "scratch/mathworld1_svpchal.py": "4e72cf2c9d9e15e8d84692d077e658dc535199ffb9fd6f81406ca7c23785eaf0",
+   "scratch/mathworld1_svpchal2.py": "150129d8addc66b46e4f58b4676c7d4465cb0994ffe28e049ccd978b9011ad74",
+   "scratch/mathworld1_svpadj.py": "2598d258d74b0d5d604104a3a495c6e2471c41cbf656a8935a2d9180a6d22209",
+   "scratch/mathworld1_svpbirth.py": "c0bed95ec6a4db6faad424fa4780fba3af8d4f6d2cec364c75726da9e532950c",
+   "scratch/mathworld1_svpcode.py": "3b80655cbddc835e6fac99c81335a4d21a4b812ac304b786f8ca07ec96277ca0",
+   "scratch/mathworld1_actiontok.py": "a5a22b38c775f67b303b305fa98d8a7fd3e79ac2f11e151385a2701a6d0c4aec",
+   "llmopt/search/derivation.py": "c38eeb73dd9b803fe207271b37d7097e1843cac7a776d3704d9de04dd1683e87",
+   "llmopt/search/rules.py": "dc83caf67e46edd16c4bb8aca5e9c12be637aedc395e4410e59fc1149bf29e58",
+   "llmopt/train/mathnative.py": "f8f5ca114d83d0dd854ebcb25de1a707e41e57822f06b15efecb0a1d87dcab61",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "daa8e757"
+}

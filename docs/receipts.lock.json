@@ -1286,6 +1286,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svpnuisdesk/svpnuisdesk_receipt.json": {
+   "bytes": 4891,
+   "exists": true,
+   "sha256": "a9ac4f22bbecd4104b74048a06d3b07d5d84a39de9f7599d22b9432796686f1d",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/svprep_design.json": {
    "bytes": 1313,
    "exists": true,
