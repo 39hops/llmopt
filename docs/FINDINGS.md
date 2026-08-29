@@ -3718,3 +3718,16 @@ regime tag on every bullet is the fence.
   5%. The nuisance-desk axis language is amended to
   P-form/degree-class (form and degree confounded).
   RESULTS.md#L53641
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] GRID-BIRTH-16001
+  sealed: first realization of the revised IN-SUPPORT protocol
+  — paired F/H from the shared seed-16001 init (pin verified by
+  independently rebuilding the init from the seed), every exact
+  invariant hit (7,020 updates / 2,021,220 continuation tokens
+  per arm, per-batch F/H equality on all 7,020 batches, order
+  3,510/3,510, zero held-out labels), init materialized by a
+  dedicated pre-step so smoke wrote no production path (the
+  15001 deviation closed); checkpoints sealed UNSCORED (F
+  c3f7a3e9, H 645fc24f). Fences: single realization; loss
+  curves descriptive only; frequency-stratified calibration
+  gate must fire before heldout_test16 opens, heldout before
+  the secondary P-OUT scorer. RESULTS.md#L53871

@@ -53868,3 +53868,90 @@ receipt's shas — future scorers MUST pin all three; the two
 held-out cells and one frozen HASH permutation bound every
 claim; after booking commit/push, census, STOP.
 
+## VERDICT MATH-CYBER-1-SVP-GRID-BIRTH-16001: BIRTH SEALED — the first realization of the revised IN-SUPPORT-CONFIRMATORY protocol trained once from the shared seed-16001 init (2a580568..., materialized by the dedicated pre-step so smoke wrote no production path); every exact invariant hit (7,020 updates and 2,021,220 continuation tokens per arm, identical F/H shapes/masks/totals on all 7,020 batches, order 3,510/3,510, zero I1/t2-t3 labels); FACTOR c3f7a3e9... / HASH 645fc24f... sealed UNSCORED (2026-08-29, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-GRID-BIRTH-16001 (driver
+scratch/mathworld1_svpgbirth16.py committed at 9252031f BEFORE
+any training; pre-commit source audit of the copy-modified
+driver returned 1 blocker — an inherited docstring still
+claiming smoke materializes the init, the exact deviation this
+birth was to fix — and 3 should-fixes, all folded:
+MAKE_INIT-with-PRODUCTION refusal gate, pin comment corrected
+to design-time computation, EVAL_PROVENANCE widened to all six
+svpdiet3 shas with every literal machine-verified against the
+envelope receipt; the audit's full diff confirmed the only
+behavioral deltas from the booked BIRTH-15001 driver are seed/
+paths/pins/provenance literals and the init pre-step). Order
+held (mtime-verified by the receipt auditor: commit 00:15:48 ->
+init 00:15:49 -> smoke 00:15:58 -> production 00:16:18-
+01:15:53): prereg+driver commit -> init pre-step
+(SVPGB16_MAKE_INIT=1: double-build byte-identical, sha = pin,
+write, exit — a [driver gate] pre-step with no receipt of its
+own; the receipt auditor independently REBUILT the init from
+seed 16001 and reproduced sha 2a580568... byte-for-byte, so
+the pin is verified against the seed, not just the file) ->
+path-isolated smoke (all 10 bars green; smoke
+REQUIRES the pre-step init and created nothing) -> ONE
+production birth. ZERO evaluation scoring, zero checkpoint
+probes; the birth executable has no path/string dependency on
+covered_calibration/heldout_test16/pout_robustness (grep-clean;
+their shas are opaque receipt literals only); no seed-15001
+weights touched.
+
+RESULT (mechanical; receipt
+logs/mathworld1/svpgbirth_s16001_receipt.json, wall 3,574.6 s —
+inside the registered 3,400-4,600 s band, itself an n=1-based
+band; completion_commit = start_commit = 9252031f = the prereg
+commit; run-start porcelain " M docs/receipts.lock.json /
+M scripts/INDEX.md" — ledger regen files, not instruments; the
+init path is deliberately absent from the refuse-if-exists
+list because it must pre-exist and is sha-gated at entry and
+before load):
+  SHARED INIT: seed 16001, sha = pinned 2a580568...; 118 = 2x59
+  tensor-equal comparisons gated in production;
+  storage-disjointness gated [driver gate]; 19,142,016 params
+  per arm.
+  EXACT INVARIANTS (all gated): updates 7,020/arm; continuation
+  tokens 2,021,220/arm exactly; padded 21,691,032 and non-pad
+  8,823,393 identical across arms; per-batch shape/length/mask
+  gates green on all 7,020 batches; scheduler terminal 7,019;
+  14,040/14,040 finite losses; order FACTOR-first 3,510 /
+  HASH-first 3,510; zero combined rows labeled i_unprod I1
+  t2/t3 [driver gate over pinned frozen bytes]; distinct
+  checkpoint shas gated.
+  CHECKPOINTS SEALED UNSCORED: svp_grid_factor_s16001.pt
+  c3f7a3e9..., svp_grid_hash_s16001.pt 645fc24f..., init
+  svp_grid_init_s16001.pt 2a580568...
+  DESCRIPTIVE ONLY (never an F-v-H quality comparison): epoch
+  mean losses FACTOR 0.12779/0.03007/0.01618, HASH
+  0.17122/0.02996/0.01652; grad p50 0.207/0.211, max
+  10.62/5.49 (same fence); peak RSS 2,587 MB (ru_maxrss//2^20 on macOS); arm walls
+  1,777.9/1,778.3 s (within-run-paired only, encode excluded,
+  never cross-run comparable — including never v the 15001
+  arm walls).
+
+REGISTERED-PRIOR ACCOUNTING: mechanical-gates prior CORRECT
+(all gates passed; wall inside the band). No capability
+prediction was registered and none is implied.
+
+NEXT (own GOs, frozen at IN-SUPPORT-CONFIRMATORY-DESIGN-0):
+CALIBRATION-SCORE-16001 opens covered_calibration.jsonl
+(af1a4aa1...) ONLY and applies the frozen frequency-stratified
+gate (per arm c-IN covered >= 36/48 AND c-OUT covered >= 36/48
+AND none of the four {term x regime} strata below 12/24; both
+arms or SUPPORT-NOT-LEARNED with heldout inaccessible); on
+FIRE, strict heldout scoring (a3f6103b...) runs BEFORE the
+independent secondary P-OUT scorer (5c85fc1f...); separate
+invocations and receipts throughout; robustness-I1 never in
+primary denominators; alpha .05 on both confirmatory laws.
+
+FENCES. Mac/mps (no cross-run bit-exact claim; the paired arms
+shared this run); SINGLE-REALIZATION of the revised protocol
+(seed 16001; 17001 remains the untouched replication slot);
+loss curves descriptive only — the token identities induce
+different target distributions; checkpoints sealed unscored;
+big .pt untracked, anchored by the force-added lock-registered
+receipt's shas (future scorers MUST pin all three); the two
+held-out cells and one frozen HASH permutation bound every
+claim; after booking commit/push, census, STOP.
+

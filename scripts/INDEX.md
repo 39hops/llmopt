@@ -3058,6 +3058,19 @@ MATH-CYBER-1 SVP-GRID-BIRTH-15001 — the frozen PAIRED FACTOR/HASH production b
 - `run(plan, rows_by_id, dev, init_sha, n_steps, tag)`
 - `main()`
 
+### scratch/mathworld1_svpgbirth16.py
+MATH-CYBER-1 SVP-GRID-BIRTH-16001 — the FIRST production birth of the revised IN-SUPPORT-CONFIRMATORY protocol (not a replication claim): the frozen PAIRED FACTOR/HASH production birth over the GRID-DIET combined population (74,860 rows = 73,324 natural + 1,536 balanced covered-grid augmentation), one target-blind batch plan (7,020 updates), one frozen optimization law, ONE bit-identical shared vocab-340 init (seed 16001). ZERO evaluation scoring; this file has no path or string dependency on any evaluation artifact — the frozen IN-SUPPORT eval shas (calibration / sealed heldout / secondary robustness) appear ONLY as opaque provenance literals copied into the receipt (EVAL_PROVENANCE below), never as paths, and nothing here opens, parses, counts, or scores them. Successor fix folded (BIRTH-15001 disclosed deviation): the shared init is materialized by a DEDICATED PRE-STEP (SVPGB16_MAKE_INIT=1, which builds+gates+writes the init and exits); smoke and production REFUSE if the init is absent, so smoke never writes any production path.
+
+- `fsha(p) -> str`
+- `state_bytes(seed)`
+- `make_init()`
+- `ensure_init()`
+- `load_rows()`
+- `make_batch(rows, view, dev)`
+- `load_arm_models(dev, init_sha)`
+- `run(plan, rows_by_id, dev, init_sha, n_steps, tag)`
+- `main()`
+
 ### scratch/mathworld1_svpgenadj.py
 MATH-CYBER-1 SVP-GENERALIZATION-SCORE-0 — ONE joint scorer: all three paired births (9001, 10001, 11001 in that fixed order) teacher-force scored on the frozen SECOND band (79 primary decisions, seeds 9700-9719) under the byte-frozen first-band scoring law. Zero training, zero generation, zero sympy/world.
 
