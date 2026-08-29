@@ -3743,3 +3743,4 @@ regime tag on every bullet is the fence.
   FACTOR misses share one P form (x^5+x^4, both rank 2) — n=6
   residue, unread. Fences: within-support only; no F-v-H
   reading; sealed-test question untouched. RESULTS.md#L54034
+- [SINGLE-SEED] SVP strict-grid heldout STRONG-FACTOR: with polynomial-form support controlled and covered baselines near ceiling (F 94/96, H 96/96), FACTOR completes the two never-trained whole-action combinations at 84/96 v HASH 41/96 (McNemar p=2.6e-12; matched sign 45+/0-, p=5.7e-14; direction survives baseline-miss removal); the split concentrates at I1/t3 (F 37/48 v H 2/48) — the two conjunction legs are near-redundant given the ceiling baselines (one large paired contrast, not two confirmations); seed 16001 only, CH-F3 regime + one frozen HASH permutation bound every claim. RESULTS.md#L54242

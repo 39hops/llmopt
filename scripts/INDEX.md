@@ -3114,6 +3114,17 @@ MATH-CYBER-1 SVP-STRICT-GRID-CONSTRUCTIBILITY-DESK-0, SPACE-4 — fourth frozen 
 - `build_space4()`
 - `main()`
 
+### scratch/mathworld1_svpheldout16.py
+MATH-CYBER-1 SVP-GRID-HELDOUT-SCORE-16001 — ONE joint strict heldout scoring run of the two sealed seed-16001 checkpoints on the frozen heldout_test16 artifact, under CALIBRATION-FIRED authority verified mechanically from the frozen calibration receipt before the heldout bytes are opened. The secondary P-OUT robustness artifact is neither named by path nor read anywhere in this file. Zero training, zero checkpoint mutation, zero sympy, zero candidate regeneration; frozen bytes only.
+
+- `fsha(p) -> str`
+- `ctup(c)`
+- `binom_minlik_p(k_obs, n)` — Exact two-sided p under Binomial(n, 0.5): sum pmf(k) over
+- `score_rows(rows, arms, dev)` — Blind-score rows for both arms; label consumed only after
+- `hard_gates(recs)`
+- `structure_gates(rows, role, n_expect)`
+- `main()`
+
 ### scratch/mathworld1_svpldesk.py
 MATH-CYBER-1 SVP-LENGTH-CONTROL-DESK-0 — desk-only triage of the length/factorization mechanism from FROZEN score artifacts. No model inference, no training, no checkpoint load, no task generation. Bands stay separate surfaces throughout.
 

@@ -54238,3 +54238,138 @@ independently preregistered realization replicates.
 ORDER: freeze (this entry) -> scorer commit (source audit first)
 -> ONE scoring run -> dual audit -> book -> commit/push/census ->
 STOP. Outputs logs/mathworld1/svpheldout16/ (refuse-if-exists).
+
+## VERDICT MATH-CYBER-1-SVP-GRID-HELDOUT-SCORE-16001: STRONG-FACTOR — on the 96 sealed heldout-I1 states (the two whole-action combinations I1/t2, I1/t3 absent from training, polynomial-form support controlled), FACTOR top-1 84/96 v HASH 41/96 (discordants 44 F-only v 1 H-only, exact McNemar p=2.6e-12) AND matched-transfer sign test 45 positive / 0 negative q over the 96 frozen blocks (p=5.7e-14) — the frozen joint conjunction fires in the FACTOR direction; descriptively, the direction also survives removing the covered-side baseline misses (2026-08-29, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-GRID-HELDOUT-SCORE-16001 (scorer
+scratch/mathworld1_svpheldout16.py committed at 1647a4a7 BEFORE
+any inference; pre-commit source audit: zero blockers, folded
+fixes = calibration-receipt byte pin, mechanical
+baseline-asymmetry statement field, derived-not-literal counts,
+is_label docstring carve-out). ONE joint scoring run under
+CALIBRATION-FIRED authority (verified mechanically from the
+frozen calibration receipt before the heldout bytes were
+opened); anti-peeking order held: pins + authority -> heldout
+bytes -> structure gates -> load checkpoints -> blind-score the
+96 primary states -> raw scores persisted and hashed -> hard
+gates -> endpoint 1 -> endpoint 2 (c0 from the FROZEN
+calibration raw scores, sha 1eeb67a9..., never rescored) ->
+mechanical joint verdict -> primary receipt -> only then
+robustness rider + descriptive riders. pout_robustness.jsonl
+neither opened nor referenced (grep-clean); zero sympy, zero
+candidate regeneration, zero checkpoint mutation.
+
+HARD GATES (all fired): 96 heldout-I1 primary + 96
+robustness-I1 rider rows; one-to-one block_id/base_signature/
+term match to the 96 frozen calibration blocks (calibration
+covered-I0, heldout heldout-I1); labels all (i_unprod, I,
+ordinal 1), term_cell in {2,3}; T=9 on all candidate scorings;
+all scores finite; mean/sum rank + full-order identity per
+state per arm; F/H roundtrips exact; every sha pin exact pre-
+and post-run (run-start porcelain " M scripts/INDEX.md" — a
+generated docs index, no instrument class; the calibration
+RECEIPT bytes got their own pin 5df7e1ae..., a post-freeze
+tightening beyond the prereg's single 1eeb67a9... scores pin,
+disclosed). Receipt
+logs/mathworld1/svpheldout16/svpheldout16_receipt.json (primary
+scoring wall 2.2 s post-load); raw rows primary_scores.jsonl
+(96), matched_transfer.jsonl (96 q rows), robustness_scores.jsonl
+(96), riders.json.
+
+PRIMARY ENDPOINT 1 (ABSOLUTE, n=96): FACTOR 84/96, HASH 41/96;
+discordants F-only 44, H-only 1 (n_disc 45); exact two-sided
+McNemar p = 2.6e-12 < .05 => HELDOUT-FACTOR-WIN. MRR
+(descriptive) FACTOR .9375, HASH .6719.
+
+PRIMARY ENDPOINT 2 (MATCHED TRANSFER, all 96 frozen blocks
+incl. the two FACTOR calibration-miss blocks): q = drop_H -
+drop_F; q_positive 45, q_negative 0, q_zero 51; exact two-sided
+sign test over nonzero q p = 5.7e-14 < .05; positive favors
+FACTOR.
+
+FROZEN JOINT VERDICT (mechanical): HELDOUT-FACTOR-WIN AND sign
+p < .05 AND q_positive > q_negative => STRONG-FACTOR.
+
+TRANSITION ANATOMY (required, descriptive): covered->heldout
+per arm over all 96 — FACTOR correct->correct 83,
+correct->wrong 11, wrong->correct 1, wrong->wrong 1; HASH
+correct->correct 41, correct->wrong 55 (HASH had zero covered
+misses). Baseline-asymmetry statement (mechanical receipt
+field): covered-side misses F 2 / H 0; sign direction UNCHANGED
+after removing the baseline-miss blocks (both-covered-correct
+rider, 94 blocks: F heldout 83, H heldout 39, q 44+/0-) — the
+result is NOT driven by covered-side baseline asymmetry (the
+SCORE-0 floor confound is absent here; both arms entered at
+94-96/96 covered).
+
+REDUNDANCY DISCLOSURE (source-audit S1, carried into the
+reading): because HASH missed zero covered blocks and FACTOR
+only two, endpoint 2's nonzero-q set nearly coincides with
+endpoint 1's discordant set (both n=45, 44 blocks shared; the
+two differing blocks are t2-IN-02, H-only discordant with q=0
+because FACTOR was wrong on both sides, and t2-OUT-04, q=+1
+from a covered-side FACTOR recovery rather than heldout
+separation) — the two frozen legs of the conjunction are close
+to the same contrast computed twice, not two independent
+confirmations. The conjunction is reported as
+registered; its evidential weight is that of ONE very large
+paired contrast plus a directional-consistency check.
+
+WHERE THE SPLIT LIVES (post-verdict descriptive, no subgroup
+tests): per {term x regime} cell (each of 24) — FACTOR t2-IN
+23, t2-OUT 24, t3-IN 19, t3-OUT 18; HASH t2-IN 19, t2-OUT 20,
+t3-IN 0, t3-OUT 2. Pooled t2 FACTOR 47/48 v HASH 39/48; pooled
+t3 FACTOR 37/48 v HASH 2/48 — the HASH arm collapses almost completely on
+the deeper withheld combination I1/t3 while FACTOR stays high;
+both frequency regimes carry the split (c-IN 42 v 19, c-OUT 42
+v 22). Per-P: FACTOR >= HASH on every one of the 12 P forms
+(x**6+x**4 is 0 v 0 at n=3); the x5+x4 calibration-residue form
+sits at F 4/6 v H 2/6. Candidate-0 (never the label): HASH
+ranks it strictly top on 25 states, FACTOR on 0. Legal-K census
+{2:15, 3:41, 4:32, 5:8}.
+
+ROBUSTNESS RIDER (never in the primary denominator, scored
+after the primary receipt froze): robustness-I1 96 rows —
+FACTOR 84/96 v HASH 48/96, same t3 anatomy (F 19+17 v H 1+2);
+MRR F .9358 / H .7118. Direction matches the primary;
+descriptive only. The rider files are written after the primary
+receipt freezes and so carry no receipt anchor; their booking
+anchors are robustness_scores.jsonl ece00131... and riders.json
+8cef6322... (computed at force-add).
+
+REGISTERED-PRIOR ACCOUNTING: registered MIXED/INCONCLUSIVE-
+leaning-possible-STRONG-FACTOR with no confident direction —
+the measured result is STRONG-FACTOR at effect sizes far beyond
+the registered uncertainty; the prior was UNDER-CONFIDENT in
+the FACTOR direction. On the chain's record: SCORE-0's
+floor-confounded negative sign result did not transport to the
+floor-free design.
+
+READING (inside the frozen interpretation fence, verbatim
+scope): under this frozen CH-F3 regime, with polynomial forms
+already well supported in training, equal-length/
+equal-information action codes, and two whole-action site x
+term combinations absent from training, exposing reusable
+FACTOR coordinates improved completion of those withheld
+combinations relative to the fixed HASH permutation. NOT
+established: universal compositionality, broad math OOD
+generalization, degree-class robustness, that factorization
+explains the full STATE-v-PROGRAM gain, solve-rate improvement,
+backend-independent action semantics. The mechanism claim stays
+at the level the design isolates: the action-code REPRESENTATION
+axis, with all else matched.
+
+FENCES. Mac/mps; SINGLE-REALIZATION (seed 16001) of the revised
+protocol until an independently preregistered realization
+replicates (17001 remains the untouched slot); held-out is BY
+SITE on shared base derivations; c0 values are cross-run mps
+forwards (frozen by prereg — any near-tie coin flips ride in q;
+with 45/0 the direction is far outside that concern);
+candidate-0 census reported, never quote 1/n as chance;
+effective competitive set n-1; the two held-out cells and the
+one frozen HASH permutation bound every claim. The secondary
+P-OUT robustness artifact (5c85fc1f...) remains sealed and gets
+its own later GO. Receipts force-added small-text
+(primary_scores.jsonl, matched_transfer.jsonl,
+robustness_scores.jsonl included); dual audit before booking;
+after booking commit/push, census, STOP.

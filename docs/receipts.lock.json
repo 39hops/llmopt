@@ -1293,6 +1293,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svpheldout16/svpheldout16_receipt.json": {
+   "bytes": 4756,
+   "exists": true,
+   "sha256": "1525350d873ec896d8a0de999b4eab0201aca7f3df79f03a8177a134b4954d05",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/svpldesk/anatomy.jsonl": {
    "bytes": 167922,
    "exists": true,
