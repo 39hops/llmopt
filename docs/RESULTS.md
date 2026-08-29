@@ -54803,3 +54803,68 @@ distributions); checkpoints sealed unscored; big .pt untracked,
 anchored by the force-added lock-registered receipt's shas
 (future scorers MUST pin all three); after booking commit/push,
 census, STOP.
+
+## PRE-REG MATH-CYBER-1-SVP-GRID-CALIBRATION-SCORE-17001: one scoring run of the two sealed seed-17001 checkpoints on the frozen covered-calibration artifact only — the frozen frequency-stratified competence gate applied verbatim (per arm c-IN covered >= 36/48 AND c-OUT covered >= 36/48 AND no {term x regime} cell < 12/24), all eight cells reported; FIRED grants heldout authority to a later GO; any failure = SUPPORT-NOT-LEARNED and replication books REPLICATION-NOT-REACHED under the frozen law (2026-08-29, Mac)
+
+SCOPE. The calibration stage of the frozen replication protocol
+(REPLICATION-17001-PREREG-0, cd6db7e3). One scorer invocation,
+covered_calibration.jsonl ONLY (af1a4aa1..., pin-gated pre- and
+post-run); heldout and P-OUT neither opened nor scored; no
+anatomy-driven filtering, no threshold changes; the seed-16001
+STRONG-FACTOR result and the P-OUT reverse split may not and do
+not influence this law (gate text frozen at cd6db7e3, before
+both scorings' bookings could matter here — and the gate itself
+predates them at DESIGN-0). Zero training, zero checkpoint
+mutation, zero sympy.
+
+INSTRUMENT. scratch/mathworld1_svpcalscore17.py, generated
+MECHANICALLY from the booked svpcalscore16 scorer (b91ee2d4
+lineage): 46 changed lines + the receipt prereg-name literal,
+all {seed label, path, checkpoint/init/birth-receipt pin,
+provenance self-reference}; zero 16001 strings remain
+(grep-verified). A fresh-context verifier diffs the two scorers
+BEFORE inference and confirms scoring population, candidate
+construction/order, prompt, encoding, ranking law, thresholds,
+and gate logic unchanged; inference proceeds only on PASS.
+
+PINS: calibration af1a4aa1...; svpdiet3 receipt 26cb6d01...;
+BIRTH-17001 receipt fb607dd5...; checkpoints FACTOR 12e19fae...
+/ HASH e24237b8... / init 4384ed98...; 19,142,016 params/arm.
+
+SCORING LAW (verbatim svpadj lineage, unchanged from 16001):
+standing prompt; factor_code/hash_code + EOS in stored candidate
+order; T=9; pessimistic top-1 by mean logprob; mean/sum rank +
+full-order identity gates; roundtrip gates; finite-score gates;
+is_label consumed for ranking only after both arms' scores
+exist; raw scores persisted and hashed before adjudication; no
+candidate regeneration or mutation.
+
+FROZEN GATE + OUTCOMES (verbatim): per arm c-IN covered >=36/48
+AND c-OUT covered >=36/48 AND no {term x regime} cell <12/24;
+BOTH arms pass => CALIBRATION FIRED (a later explicit GO gains
+HELDOUT-SCORE-17001 authority; not run here); ANY leg fails =>
+SUPPORT-NOT-LEARNED, STOP, heldout stays sealed, and the frozen
+replication law books REPLICATION-NOT-REACHED. All eight
+arm x term x regime cells reported. Calibration F-v-H
+differences are DESCRIPTIVE only — competence gate, not a
+representation contest.
+
+REGISTERED PRIOR (house, on record): BOTH arms PASS. Grounds:
+the identical gate passed near ceiling at seed 16001 (F 94/96,
+H 96/96) on exactly-trained P forms, and the 16001 prereg's
+named seed-variance risk did not materialize there; the same
+risk is re-named here — this is the first fresh-seed test of
+that calibration robustness, and a failure books
+REPLICATION-NOT-REACHED honestly.
+
+ORDER: freeze (this entry) + scorer commit -> fresh-context
+scorer diff verifier -> ONE scoring run -> independent receipt
+recomputation (dual audit) -> book mechanical outcome ->
+commit/push/census -> STOP. Outputs logs/mathworld1/
+svpcalscore17/ (refuse-if-exists).
+
+FENCES. Mac/mps; second realization (seed 17001), per-seed
+reporting only, no pooling with 16001; within-support competence
+reading only, never generalization evidence, never F-v-H
+evidence; effective candidate set n-1; receipts force-added
+small-text; every claim grounded in THIS run's tool output.
