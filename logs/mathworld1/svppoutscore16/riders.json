@@ -1,0 +1,142 @@
+{
+ "primary_by_regime": {
+  "IN": {
+   "FACTOR": 9,
+   "HASH": 23,
+   "n": 26
+  },
+  "OUT": {
+   "FACTOR": 6,
+   "HASH": 10,
+   "n": 22
+  }
+ },
+ "control_by_regime": {
+  "IN": {
+   "FACTOR": 8,
+   "HASH": 6,
+   "n": 12
+  },
+  "OUT": {
+   "FACTOR": 2,
+   "HASH": 0,
+   "n": 12
+  }
+ },
+ "by_P": {
+  "x**11 + x": {
+   "FACTOR": 14,
+   "HASH": 11,
+   "n": 14
+  },
+  "x**11 + x**10": {
+   "FACTOR": 8,
+   "HASH": 9,
+   "n": 9
+  },
+  "x**11 + x**2": {
+   "FACTOR": 1,
+   "HASH": 3,
+   "n": 8
+  },
+  "x**11 + x**3": {
+   "FACTOR": 0,
+   "HASH": 0,
+   "n": 4
+  },
+  "x**11 + x**4": {
+   "FACTOR": 0,
+   "HASH": 2,
+   "n": 5
+  },
+  "x**11 + x**5": {
+   "FACTOR": 1,
+   "HASH": 2,
+   "n": 7
+  },
+  "x**11 + x**6": {
+   "FACTOR": 0,
+   "HASH": 2,
+   "n": 3
+  },
+  "x**11 + x**7": {
+   "FACTOR": 0,
+   "HASH": 3,
+   "n": 7
+  },
+  "x**11 + x**8": {
+   "FACTOR": 1,
+   "HASH": 4,
+   "n": 8
+  },
+  "x**11 + x**9": {
+   "FACTOR": 0,
+   "HASH": 3,
+   "n": 7
+  }
+ },
+ "primary_by_P": {
+  "x**11 + x": {
+   "FACTOR": 8,
+   "HASH": 8,
+   "n": 8
+  },
+  "x**11 + x**10": {
+   "FACTOR": 7,
+   "HASH": 8,
+   "n": 8
+  },
+  "x**11 + x**2": {
+   "FACTOR": 0,
+   "HASH": 3,
+   "n": 6
+  },
+  "x**11 + x**3": {
+   "FACTOR": 0,
+   "HASH": 0,
+   "n": 3
+  },
+  "x**11 + x**4": {
+   "FACTOR": 0,
+   "HASH": 2,
+   "n": 2
+  },
+  "x**11 + x**5": {
+   "FACTOR": 0,
+   "HASH": 2,
+   "n": 4
+  },
+  "x**11 + x**6": {
+   "FACTOR": 0,
+   "HASH": 2,
+   "n": 2
+  },
+  "x**11 + x**7": {
+   "FACTOR": 0,
+   "HASH": 2,
+   "n": 5
+  },
+  "x**11 + x**8": {
+   "FACTOR": 0,
+   "HASH": 3,
+   "n": 6
+  },
+  "x**11 + x**9": {
+   "FACTOR": 0,
+   "HASH": 3,
+   "n": 4
+  }
+ },
+ "cand0": {
+  "is_label": 0,
+  "strict_top": {
+   "FACTOR": 0,
+   "HASH": 0
+  }
+ },
+ "legal_K": {
+  "5": 16,
+  "3": 22,
+  "4": 34
+ }
+}

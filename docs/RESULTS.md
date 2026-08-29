@@ -54549,3 +54549,104 @@ checkpoints with the strict result — correlated, not
 independent); effective candidate set n-1, candidate-0 census
 reported, never quote 1/n as chance; the one frozen HASH
 permutation bounds every claim.
+
+## VERDICT MATH-CYBER-1-SVP-GRID-POUT-ROBUSTNESS-SCORE-16001: SECONDARY-INCONCLUSIVE under the frozen law, WITH A SIGNIFICANT REVERSE SPLIT DISCLOSED — on the 48 fresh degree-11 covered-I0/t2 states the direction is HASH: FACTOR 15/48 v HASH 33/48 (discordants 0 F-only v 18 H-only, exact McNemar p=7.6e-06), the opposite of the registered prior and of the seed-15001 degree-10 desk residue; the t3 control (24, separate) leans FACTOR non-significantly (10 v 6, p=.22) (2026-08-29, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-GRID-POUT-ROBUSTNESS-SCORE-16001
+(scorer scratch/mathworld1_svppoutscore16.py committed at
+890c31cd BEFORE any inference; source audit zero blockers,
+folded fixes = exact P-form set gate, chosen_ordinal + stratum
+row gates, direction and reverse-significance receipt fields).
+ONE scoring run; anti-peek order held (pins -> structure gates
+-> load -> blind-score all 72 -> raw scores persisted + hashed
+-> hard gates -> frozen adjudication -> receipt -> riders).
+Zero training, zero sympy, zero candidate regeneration; no
+sealed sibling and no 17001 path referenced (grep-clean).
+
+HARD GATES (all fired): 72 rows = 48 t2 (frozen census 26 c-IN
+/ 22 c-OUT, unrebalanced) + 24 t3; labels all (i_unprod, I,
+ordinal 0); P forms exactly the ten x^11+x^n; T=9 on all
+candidate scorings; scores finite; mean/sum rank + full-order
+identity; F/H roundtrips exact; all sha pins exact pre- and
+post-run. Receipt
+logs/mathworld1/svppoutscore16/svppoutscore16_receipt.json
+(scoring wall 1.9 s post-load); raw rows scores.jsonl (72);
+riders.json. Disclosures: no smoke invocation exists for this
+scorer (refuse-if-exists is the sole path guard, cost bounded
+by the 1.9 s wall); raw_scores_sha anchors THESE bytes only —
+no re-run reproducibility claim on mps.
+
+FROZEN ADJUDICATION (mechanical): SECONDARY-FACTOR-WIN
+required FACTOR top1 > HASH top1 AND exact McNemar p < .05 on
+the 48 t2 states. Measured: FACTOR 15/48, HASH 33/48 — F does
+NOT exceed H, so the verdict is SECONDARY-INCONCLUSIVE.
+Disclosure required by the prereg: the split is SIGNIFICANT in
+REVERSE (discordants 0 F-only v 18 H-only, exact two-sided
+McNemar p = 7.6e-06; receipt fields primary_direction=HASH,
+reverse_significant=true). The frozen law registers no
+HASH-win label, so no directional HASH verdict is booked; the
+reverse split stands as a disclosed measured fact awaiting its
+own preregistered hypothesis if ever claimed. MRR (descriptive)
+FACTOR .6458, HASH .8438.
+
+CONTROL t3 (24, separate, never pooled, never verdict-
+relevant): FACTOR 10/24 v HASH 6/24; discordants 5 F-only v 1
+H-only; exact p = .22 — non-significant, direction OPPOSITE the
+t2 primary.
+
+DESCRIPTIVE RIDERS (no subgroup tests): t2 by regime — c-IN F
+9/26 v H 23/26, c-OUT F 6/22 v H 10/22 (both regimes carry the
+HASH lean). Per-P (t2): FACTOR's 15 solves come ENTIRELY
+from the two boundary forms x^11+x (8/8) and x^11+x^10 (7/8);
+FACTOR scores 0 on ALL eight interior forms n=2..9 (combined
+0/32) while HASH solves 2-3 on seven of the eight interior
+forms (0/3 on x^11+x^3), spread across nine of the ten forms.
+Candidate-0: never the label (0/72) and never strictly
+top-ranked for either arm. Legal-K
+census {3:22, 4:34, 5:16}.
+
+REGISTERED-PRIOR ACCOUNTING: WRONG, decisively — the house
+registered SECONDARY-FACTOR-WIN (moderate confidence) from the
+seed-15001 degree-10 desk residue (D cell F .615 v H .231);
+the measured seed-16001 degree-11 direction is the reverse at
+p=7.6e-06. The banked nuisance-desk residue (RIFF/desk lineage)
+does NOT transport across seed AND degree class; that unclaimed
+bank stays unclaimed and now carries this reversal as evidence
+against it.
+
+READING (inside the frozen fence): under the frozen law this
+books only SECONDARY-INCONCLUSIVE — no directional claim in
+either direction is licensed by this entry. The disclosed
+reverse split, taken descriptively, coheres with the per-P
+anatomy: FACTOR's advantage on the strict heldout lived in
+recombining TRAINED coordinates; on a novel P-form/degree-class
+population the factored code appears to bind to coordinate
+patterns that no longer match (0/32 on interior forms), while
+the arbitrary-identity HASH code degrades more uniformly. That
+is a hypothesis, not a finding: it would need its own
+preregistered test (fresh population, registered HASH-favoring
+bar) before any claim. NOT established here: any degree-class
+robustness ranking, any modification of the strict
+STRONG-FACTOR heldout verdict (different population, different
+question, same checkpoints), any seed-15001 residue
+replication (this is a different seed and degree class), any
+universal-OOD statement.
+
+ANTI-ADAPTATION (registered in the GO and at
+REPLICATION-17001-PREREG-0): the seed-17001 replication law
+frozen at cd6db7e3 is NOT modified by this result — byte/law
+identity stands; this entry changes no 17001 threshold,
+endpoint, prior, or interpretation. NEXT regardless of outcome
+(Artin, in the GO): BIRTH-17001 under the frozen init-only
+replication law, on its own GO.
+
+FENCES. Mac/mps; SINGLE-REALIZATION seed 16001, checkpoints
+SHARED with the strict heldout result (correlated evidence,
+not an independent realization); n=48 primary with the
+discordant mass on one side; covered-I0 population only —
+says nothing about held-out action combinations; effective
+candidate set n-1 (candidate-0 census reported, never quote
+1/n as chance); the one frozen HASH permutation bounds every
+claim; receipts force-added small-text (scores.jsonl 72 rows
+included); dual audit before booking; after booking
+commit/push, census, STOP.

@@ -1328,6 +1328,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svppoutscore16/svppoutscore16_receipt.json": {
+   "bytes": 3892,
+   "exists": true,
+   "sha256": "444a110125d1b8a436dca67c854dc7bf5f559fa81ad32c641ac1fc694a192457",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/svprep_design.json": {
    "bytes": 1313,
    "exists": true,
