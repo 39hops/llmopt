@@ -423,8 +423,10 @@ def main():
         longest_step = max(
             range(2340),
             key=lambda s: max(maxlen[i] for i in plan[s][2]))
-        ordinary = [s for s in (0, 1, 2, 3)
-                    if s != longest_step][:4]
+        ordinary = [s for s in (0, 1, 2, 3, 4)
+                    if s != longest_step and s != 2339][:4]
+        gate(longest_step != 2339 or 2339 not in ordinary,
+             "SMOKE TAIL DUP")
         mini = ([plan[longest_step]]
                 + [plan[s] for s in ordinary]
                 + [plan[2339]])
@@ -492,10 +494,12 @@ def main():
          f"ORDER CENSUS {dict(oc)}")
     gate(stats["bitwise_tensors_compared"] == 3 * 59,
          "INIT BITWISE COUNT")
-    # post-run P2 immutability re-gates
+    # post-run P2 immutability re-gates (derived value kept for
+    # the receipt)
     gate(fsha(P2_QUAL_RECEIPT) == P2_QUAL_RECEIPT_SHA,
          "POST P2 QUAL RECEIPT PIN")
-    gate(rederive_p2_realization_sha() == P2_REALIZATION_SHA,
+    p2_post_sha = rederive_p2_realization_sha()
+    gate(p2_post_sha == P2_REALIZATION_SHA,
          "POST P2 REALIZATION DRIFT")
     for a in ARMS:
         torch.save({k: v.cpu() for k, v in
@@ -544,8 +548,8 @@ def main():
                 "device": str(dev)},
         "checkpoints": {str(CKS[a]): shas[a] for a in ARMS},
         "p2": {"qual_receipt_sha": fsha(P2_QUAL_RECEIPT),
-               "realization_sha_rederived_pre_and_post": True,
-               "realization_sha": P2_REALIZATION_SHA},
+               "realization_sha_rederived_post": p2_post_sha,
+               "realization_sha_pin": P2_REALIZATION_SHA},
         "pins": {PAIRED: fsha(PAIRED), AUG: fsha(AUG),
                  MANIFEST: fsha(MANIFEST),
                  str(INIT_CK): fsha(INIT_CK)},
