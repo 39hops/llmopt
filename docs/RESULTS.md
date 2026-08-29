@@ -54373,3 +54373,95 @@ its own later GO. Receipts force-added small-text
 (primary_scores.jsonl, matched_transfer.jsonl,
 robustness_scores.jsonl included); dual audit before booking;
 after booking commit/push, census, STOP.
+
+## PRE-REG MATH-CYBER-1-SVP-GRID-REPLICATION-17001-PREREG-0: seed-17001 INIT-ONLY replication of the booked seed-16001 STRONG-FACTOR result — initialization is the ONLY changed experimental variable; every law, byte, gate, endpoint, and fence identical; replication outcomes frozen BEFORE any training; zero training / zero scoring / zero checkpoint creation under this GO (2026-08-29, Mac)
+
+QUESTION. Does STRONG-FACTOR reproduce when initialization is
+the ONLY changed experimental variable? Seed 17001 (the slot
+reserved at GRID-DIET-DESIGN-0 and left untouched since) births
+a fresh shared init; everything downstream is byte/law identical
+to the seed-16001 chain.
+
+FROZEN IDENTITY LIST (each pinned by the sha its 16001 sibling
+already carries; the 17001 drivers repin them all): the 74,860
+training rows and augmentation (natural a943ba7f...,
+balanced_grid_train 0ef3d8a8..., manifest 897c8bf8...); the frozen batch plan f55e9fee... (7,020
+updates, BS=32, EPOCHS=3, seeded shuffle "svp-epoch-{e}"); the
+F/H encoding implementations and the SAME frozen HASH
+permutation (svpcode file sha pinned in provenance); model/
+optimizer/scheduler (build_model VOCAB=340 ctx=4096, 19,142,016
+params/arm, AdamW+OneCycle via svpbirth imports); the
+equal-compute and order-alternation laws (identical per-batch
+shapes/masks/token totals, F-first 3,510 / H-first 3,510,
+2,021,220 continuation tokens/arm, zero I1/t2-t3 labels);
+covered_calibration.jsonl bytes af1a4aa1...; heldout_test16
+bytes a3f6103b... (96 primary heldout-I1 in the confirmatory
+denominator, 96 robustness-I1 rider after the primary receipt,
+frozen anti-peek ordering unchanged); the frequency-stratified competence gate (per
+arm c-IN covered >=36/48 AND c-OUT covered >=36/48 AND no
+{term x regime}
+stratum <12/24); the absolute McNemar endpoint, the
+matched-transfer endpoint (c0 from the SEED-17001 calibration
+raw scores, by the same law), the STRONG conjunction, alpha .05;
+the candidate sets and stored order; the interpretation fences
+verbatim. NO new examples, thresholds, filters, P forms,
+nuisance strata, candidate removal, hash key, or scoring law.
+
+PROTOCOL SHAPE (each stage its own GO, mirroring 16001):
+BIRTH-17001 (dedicated init pre-step, path-isolated smoke, ONE
+production birth, seal unscored) -> CALIBRATION-SCORE-17001
+(frozen gate, eight-cell report) -> on FIRE,
+HELDOUT-SCORE-17001 (frozen joint law, c0 = the 17001
+calibration raw scores). Drivers are copy-modifications of the
+committed 16001 siblings with ONLY seed/paths/pins changed
+(diff-audited before commit, the svpgbirth16 pattern).
+
+FROZEN REPLICATION OUTCOMES (mechanical, registered before any
+training):
+  REPLICATES-STRONG-FACTOR: calibration FIRES AND heldout
+    mechanically returns STRONG-FACTOR.
+  REPLICATES-DIRECTION-ONLY: calibration FIRES, the joint
+    STRONG-FACTOR conjunction does not fire, but FACTOR > HASH
+    on absolute heldout top-1.
+  FAILS-REPLICATION: calibration FIRES and FACTOR <= HASH on
+    absolute heldout top-1.
+  REPLICATION-NOT-REACHED: calibration fails; heldout is NOT
+    scored.
+These four exhaust the reachable SCIENTIFIC-VERDICT states;
+an instrument failure at any stage (birth abort, hard-gate
+miss) yields NO replication status, per the inherited laws. NO pooling of
+seed-16001 and seed-17001 rows or p-values, ever; after a
+completed replication the realization-level report is a
+per-seed table: seed | F covered | H covered | F heldout |
+H heldout | F-only/H-only | McNemar p | q+/q- | sign p | joint
+verdict.
+
+DESCRIPTIVE REPLICATION RIDERS (may not alter replication
+status): t2/t3 split, c-IN/c-OUT split, candidate-0 top-rank
+census, per-P direction.
+
+SECONDARY DECOUPLING (registered): the P-OUT secondary
+(pout_robustness.jsonl 5c85fc1f..., its own frozen McNemar law)
+is a separate prospective hypothesis and may not alter this
+replication law. Because THIS prereg freezes the entire
+replication protocol before any 17001 artifact exists, the
+secondary scorer may run before or after BIRTH-17001 without
+adaptive risk — the replication protocol can no longer respond
+to its result. The secondary still fires only on its own GO.
+
+REGISTERED PRIOR (house, on record): REPLICATES-STRONG-FACTOR.
+Grounds: the 16001 effect is enormous (44/1 discordants, both
+legs p<1e-11) and the seed-15001 sibling failure was a SUPPORT
+failure (P-form axis), not an F-v-H reversal; the named risk is
+calibration-level seed variance (the desk showed trained-form
+competence is robust, but n=1 seed cleared this gate).
+Secondary risk: a fired calibration with a shrunken heldout
+split (mps realization variance) landing DIRECTION-ONLY.
+
+FENCES. Mac/mps, same machine, same scoring device; per-seed
+claims only until this replication books; a successful
+replication retires the 16001 SINGLE-REALIZATION fence into
+'two independent realizations, reported per-seed' — it licenses
+no seed-population inference beyond n=2; no
+cross-run wall/loss comparisons; each stage gated on its own
+explicit GO; this entry authorizes NOTHING to run.
