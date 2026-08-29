@@ -55347,3 +55347,190 @@ priced quantities are estimates from booked walls/RSS (n=1-2
 runs), not calibrated bands; per-seed/per-permutation reporting
 law carries into any adopting prereg; the P-OUT reverse split
 and all standing interpretation fences travel unchanged.
+
+## PRE-REG MATH-CYBER-1-SVP-GRID-PERMUTATION-REPLICATION-PREREG-0: the prospective three-arm HASH-permutation replication law frozen — one fresh shared init (seed 18001, census-verified untouched), arms FACTOR / HASH-P1 (unchanged) / HASH-P2 (salt-changed Feistel bound to THIS prereg's commit sha, NO-AMEND, first realization final), six-cycle order law, per-arm frozen calibration gate, intersection-union known-set primary with four outcome labels exhaustive on calibration FIRE (plus NOT-REACHED), H1-v-H2 sensitivity separate; KNOWN-SET treatment replication, never sealed confirmatory; PREREG ONLY — zero P2 generation/inspection/qualification/training/scoring under this GO (2026-08-29, Mac)
+
+WHY. STRONG-FACTOR is [REPLICATED] across seeds 16001/17001,
+but both realizations share ONE arbitrary HASH bijection P1.
+This rung asks whether the effect survives an independently
+frozen arbitrary identity representation. It runs INTENTIONALLY
+on the existing KNOWN evaluation population to isolate the
+permutation axis — every outcome label below is prefixed
+KNOWN-SET and reads as treatment replication on a known set,
+never sealed confirmatory replication of FACTOR itself. A fresh
+sealed population is a later, separate axis, not constructed
+under this chain.
+
+SEED. 18001, fresh shared initialization; repo census (grep
+over scratch/scripts/llmopt/checkpoints/logs + RESULTS)
+confirms no prior use in this treatment chain — RESERVED here.
+Init law = the BIRTH-17001 law verbatim (dedicated pre-step,
+double-build byte-identity, design-time pin, bitwise gates now
+3x59, storage disjointness across all three arms and all prior
+seeds).
+
+ARMS (equal compute, one frozen world): FACTOR; HASH-P1 (the
+existing frozen Feistel, unchanged); HASH-P2 (below). All arms:
+the frozen 74,860 rows (natural a943ba7f... + aug 0ef3d8a8... +
+manifest 897c8bf8...), batch plan f55e9fee..., same
+architecture, ActionGCTok vocab 340, the same 8-symbol
+dedicated code alphabet <c:0>..<c:7> (atoms ids 332..339),
+width-8 payload + EOS (T=9), same optimizer/scheduler, same
+target masks, zero I1/t2-t3 labels (re-gated), same calibration
+(af1a4aa1...) and heldout (a3f6103b...) populations, same
+scoring/candidate laws, Mac/mps fences.
+
+P2 LAW (symbolic now; the sha resolves only after this prereg
+commit exists; P2 materializes in a LATER commit): P2 = the
+same 4-round balanced 24-bit Feistel construction as P1 with
+ONLY the round-function salt changed. Exact shipped semantics,
+not a paraphrase: round i on 12-bit half x uses the FIRST TWO
+BYTES of sha256(salt_string), big-endian, modulo 4096, where P1's
+salt_string is "svp-feistel-r{i}-{x}" and P2's is
+"svp-feistel-p2-{PREREG_COMMIT_SHA}-r{i}-{x}" with
+PREREG_COMMIT_SHA = the full 40-hex sha of the commit that
+introduces THIS entry. Bijectivity on all 2^24 payloads is
+inherited from the Feistel construction for any round function;
+same code path, same domain, same width/alphabet.
+
+CRITICAL ANTI-SELECTION LAW (frozen): before this prereg
+commit exists — zero P2 codewords generated, zero samples
+inspected, zero agreement/exposure/correlation censuses, zero
+qualification (procedurally enforced: the salt embeds a
+commit sha the protocol fixes exactly once — the honesty
+declaration here plus the NO-AMEND clause are the control, and
+the resolved 40-hex value is booked and gate-asserted from git
+log in the materialization entry before any codeword is
+generated). After the commit: the FIRST resulting
+P2 is FINAL. No reroll, no amend-to-change-salt, no
+regeneration for undesirable overlap, token balance,
+performance expectation, or any other observed property. Any
+accidental P2 relationship to FACTOR or P1 is DISCLOSED, never
+repaired.
+
+P2 QUALIFICATION (own later GO, before any training): exact
+inverse roundtrip; bijectivity/injectivity over the qualified
+domain (exhaustive, the svpcode bar pattern); same
+width/alphabet; exact domain coverage; no collisions.
+QUALIFICATION-FAILURE BRANCH (frozen): bijectivity is
+inherited by construction, so a bar failure implies an
+implementation bug — the branch books
+P2-QUALIFICATION-INSTRUMENT-FAILURE with full disclosure; a
+bug fix may re-run qualification ONLY with the salt string
+byte-identical (the carve-out repairs code, never the salt;
+any salt change remains forbidden).
+DESCRIPTIVE-ONLY realization censuses (never filters, never
+eligibility bars, can never trigger regeneration): P1-v-P2
+whole-code agreement; FACTOR-v-P2 whole-code agreement; prefix
+agreement/overlap by prefix length 1..8; per-position x
+code-atom target exposure for F/H1/H2 over the exact 74,860-row
+training population; aggregate code-atom exposure per arm.
+
+THREE-ARM ORDER LAW (frozen): cycle all six orderings of
+{F, H1, H2} by global batch index mod 6. 7,020 = 6 x 1,170:
+every ordering exactly 1,170 times; every arm in execution
+position 1/2/3 exactly 2,340 times each. Equal-compute gates
+extend across all three arms per batch: same rows before the
+plan advances, equal shapes, equal row lengths, equal masks,
+equal padded and non-pad totals, equal target tokens
+(2,021,220/arm), equal updates (7,020/arm), scheduler lockstep
+across all three.
+
+CALIBRATION AUTHORITY (frozen): all THREE arms independently
+clear the EXISTING frozen competence gate — per arm c-IN
+covered >= 36/48 AND c-OUT covered >= 36/48 AND no
+{term x regime} cell < 12/24 — four cells per arm, twelve
+cells total reported across the three arms.
+ANY arm fails => PERMUTATION-REPLICATION-NOT-REACHED: book,
+STOP, heldout not scored, NO rescue and NO pairwise heldout
+scoring among the competent arms.
+
+PRIMARY KNOWN-SET LAW (frozen): on calibration FIRE, the
+existing frozen strict joint law applies SEPARATELY to
+(1) FACTOR v HASH-P1 and (2) FACTOR v HASH-P2 — each with the
+96-state paired exact McNemar endpoint, the 96-block
+matched-transfer sign endpoint against THAT arm's own frozen
+seed-18001 calibration baseline (c0 per arm from the
+calibration raw scores), the existing directional conjunction quoted verbatim (per
+comparison F v Hx: HELDOUT-FACTOR-WIN iff F top1 > Hx top1 AND
+exact McNemar p < .05; matched transfer per block q = drop_Hx -
+drop_F with drop = c0 - c1, c0 per arm from that arm's frozen
+seed-18001 calibration raw scores; STRONG-FACTOR iff
+HELDOUT-FACTOR-WIN AND sign p < .05 AND q_pos > q_neg), alpha
+.05. H1 and H2 rows are never pooled; no pooled p-value
+exists. Class-level claim by intersection-union logic —
+EXHAUSTIVE outcome labels:
+  KNOWN-SET-PERMUTATION-ROBUST-STRONG-FACTOR iff BOTH pairwise
+    comparisons independently return STRONG-FACTOR;
+  KNOWN-SET-P1-ONLY-STRONG-FACTOR iff F-v-H1 STRONG-FACTOR and
+    F-v-H2 not;
+  KNOWN-SET-P2-ONLY-STRONG-FACTOR iff F-v-H2 STRONG-FACTOR and
+    F-v-H1 not;
+  KNOWN-SET-NO-ROBUST-STRONG-FACTOR iff neither.
+Both pairwise underlying verdicts (and their full endpoint
+numbers) are always reported separately, whatever the class
+label.
+
+HASH-PERMUTATION SENSITIVITY (separate, same-init,
+secondary/descriptive; can never alter or rescue the primary):
+H1-v-H2 on the same 96 primary states — top1 H1/H2, H1-only /
+H2-only discordants, paired exact McNemar p, MRR descriptive,
+calibration comparison (per-arm gate numbers side by side). No
+directional label is desired or frozen: it books as
+PERMUTATION-SENSITIVITY-MEASURED with direction and p-value
+disclosed verbatim.
+
+ANATOMY RIDER (descriptive only, preregistered mechanically,
+no subgroup tests, no effect on any verdict): for each new
+pairwise comparison (F-v-H1, F-v-H2 at seed 18001), the
+Spearman rank correlation of the 4-vector of cell-level F-H
+top-1 gaps over {t2,t3} x {c-IN,c-OUT} against each prior
+realization's corresponding 4-vector (seed 16001 F-v-H1, seed
+17001 F-v-H1, from the booked riders) — reported as
+coefficients only, no p-values (n=4 cells; the
+invariant-effect/non-invariant-trace bank graduates only if a
+LARGER preregistered design later measures it properly).
+
+KNOWN-SET FENCE (frozen into interpretation): heldout_test16
+has been scored twice and anatomized. This rung can establish
+robustness of the representation treatment to a second
+arbitrary bijection ON THIS KNOWN POPULATION; it cannot provide
+a new sealed confirmatory replication of FACTOR. All standing
+fences travel, two by name because they are procedural laws:
+the REDUNDANCY DISCLOSURE (each conjunction's two legs are
+correlated views of one paired contrast, not independent
+confirmations — now true of BOTH pairwise conjunctions under
+the IUT) and the anti-peek rider ordering (rider files written
+only after the primary receipt freezes). Also:
+per-seed/per-permutation reporting, no pooling, the P-OUT
+reverse split stands, one dataset/protocol, effect sizes
+quoted per-realization.
+
+REGISTERED PRIOR (house, on record, before P2 exists):
+KNOWN-SET-PERMUTATION-ROBUST-STRONG-FACTOR, with LOW-MODERATE
+confidence and a named substantial risk of
+KNOWN-SET-P1-ONLY-STRONG-FACTOR or P2-ONLY via a single failed
+leg: the expected magnitude is the 17001-scale realization
+(12-solve split, McNemar at .036, one-state sensitive), NOT
+16001's — at that scale each pairwise conjunction individually
+has real miss risk, and the IUT requires both. Grounds for the
+direction: two seeds returned STRONG-FACTOR against P1, and
+nothing in the FACTOR arm changes; the genuinely open question
+is whether an arbitrary bijection's specific structure
+contributes to the H arm's failure pattern. A NOT-REACHED at
+calibration is priced low (competence held 4/4 arm-realizations
+so far) but named.
+
+PROTOCOL SHAPE (each stage its own GO): P2 MATERIALIZATION +
+QUALIFICATION ONLY (next eligible; not run here) -> three-arm
+BIRTH-18001 (new instrument, full audit chain — NOT a
+mechanical sibling of the two-arm driver) -> three-arm
+CALIBRATION-SCORE-18001 -> on FIRE, KNOWN-SET heldout scoring
+(one joint run, both pairwise laws + sensitivity + riders).
+
+FENCES. PREREG ONLY: nothing materialized, generated,
+inspected, trained, or scored under this GO; this entry
+authorizes NOTHING to run; Mac/mps; compute estimates from the
+design desk are estimates (wall ~5,200-5,600 s birth), not
+bands; every future claim grounded in its own run's tool
+output.
