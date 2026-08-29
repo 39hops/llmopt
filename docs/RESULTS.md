@@ -54131,3 +54131,110 @@ held-out cells and the one frozen HASH permutation; receipts force-added small-t
 96 rows included); dual audit before booking; after booking
 commit/push, census, STOP.
 
+
+## PRE-REG MATH-CYBER-1-SVP-GRID-HELDOUT-SCORE-16001: ONE joint strict heldout run — the confirmatory endpoint of the frozen IN-SUPPORT protocol; open heldout_test16.jsonl (a3f6103b...) under CALIBRATION-FIRED authority, score all 96 heldout-I1 primary states blind, apply the frozen joint law (96-state exact McNemar + 96-block matched-transfer sign test v the FROZEN calibration raw scores + directional conjunction, alpha .05); robustness-I1 rider scored only after the primary receipt is frozen; secondary P-OUT artifact untouched (2026-08-29, Mac)
+
+AUTHORITY. CALIBRATION-SCORE-16001 receipt mechanically says
+CALIBRATION FIRED (verified pre-run); its raw_scores_sha
+1eeb67a9... is PINNED and those frozen scores supply the
+covered-side c0 values — calibration is NOT rescored.
+pout_robustness.jsonl (5c85fc1f...) is FORBIDDEN under this GO:
+not opened, not hashed, not referenced by any scorer path.
+
+PINS (all pre- AND post-run): HEAD at freeze 6719f790;
+heldout_test16.jsonl a3f6103b...; covered_calibration.jsonl
+af1a4aa1...; svpdiet3 receipt 26cb6d01...; birth receipt
+24f1f150...; calibration receipt + scores.jsonl 1eeb67a9...;
+checkpoints FACTOR c3f7a3e9... / HASH 645fc24f... / init
+2a580568...; 19,142,016 params per arm.
+
+ANTI-PEEK ORDER (frozen): pins + FIRE authority -> heldout bytes
+-> structure/count/roundtrip gates -> load both checkpoints ->
+blind-score the 96 PRIMARY states -> persist + hash raw scores ->
+hard gates -> PRIMARY endpoint 1 -> PRIMARY endpoint 2 (join to
+frozen calibration scores by block_id) -> mechanical joint
+verdict -> primary receipt written -> ONLY THEN robustness rider
+scoring + descriptive anatomy/riders -> dual audit -> book. No
+per-state top1 printed before the raw score file is closed and
+hashed.
+
+SCORING LAW (verbatim svpadj lineage, unchanged): prompt
+"Current: {cur}\nHints: none\nStep: "; continuations
+factor_code/hash_code + EOS in stored candidate order; T=9 every
+candidate; pessimistic top-1 by mean logprob; mean/sum rank +
+full-order identity gates; is_label consumed only after both
+arms' scores exist; zero sympy, zero re-enumeration, zero HCE
+recomputation, zero candidate mutation, zero checkpoint mutation.
+
+HARD GATES: exactly 96 heldout-I1 primary + 96 robustness-I1
+rider rows; one-to-one block_id match primary v the 96 frozen
+calibration states with same base_signature and term (calibration
+role covered-I0, heldout role heldout-I1); heldout labels only
+(i_unprod, I, ordinal 1) with term_cell in {2,3}; T==9 all
+candidates; all scores finite; mean/sum identical ordering per
+state per arm; F/H code roundtrips exact; all sha pins exact. ANY
+failure = INSTRUMENT FAILURE, no scientific verdict.
+
+PRIMARY ENDPOINT 1 (ABSOLUTE, n=96): F top1 count, H top1 count,
+F-only and H-only discordants, exact two-sided McNemar p (minlik
+binomial), alpha .05. HELDOUT-FACTOR-WIN iff F>H AND p<.05;
+HELDOUT-HASH-WIN symmetric; else HELDOUT-INCONCLUSIVE. MRR
+descriptive only.
+
+PRIMARY ENDPOINT 2 (MATCHED TRANSFER, all 96 frozen blocks —
+including the two FACTOR-calibration-miss blocks; no alternative
+denominator): per block per arm persist c0 (frozen calibration
+top1), c1 (heldout top1), drop = c0 - c1, q = drop_H - drop_F;
+report q_positive/q_negative/q_zero; exact two-sided sign test
+over NONZERO q only; positive q favors FACTOR (frozen
+convention).
+
+FROZEN JOINT VERDICT (mechanical): STRONG-FACTOR iff
+HELDOUT-FACTOR-WIN AND sign p<.05 AND q_positive>q_negative;
+STRONG-HASH symmetric; otherwise MIXED/INCONCLUSIVE. No rescue,
+no pooling change, no equivalence claim from a null.
+
+REQUIRED DESCRIPTIVE (never verdict-relevant): per-arm 2x2
+covered->heldout transition table over all 96 (with an explicit
+statement whether any sign result is or is not driven by
+covered-side baseline asymmetry — the SCORE-0 floor lesson);
+BOTH-COVERED-CORRECT rider (blocks where both arms were correct
+on calibration; no p-value, never changes the verdict);
+post-verdict subgroup top1s t2-IN/t2-OUT/t3-IN/t3-OUT (24 each)
++ pooled t2/t3/c-IN/c-OUT (48 each), no subgroup tests; per-P
+counts incl. the x5+x4 residue, descriptive only. CANONICAL
+absent, not introduced.
+
+ROBUSTNESS RIDER: the 96 robustness-I1 rows scored only after
+the primary receipt exists; never in the primary denominator,
+never used to strengthen or rescue.
+
+REGISTERED PRIOR (house, on record): MIXED/INCONCLUSIVE leaning
+STRONG-FACTOR-possible. Grounds: SCORE-0's sign test was
+negative-significant on a floor-confounded anatomy and its joint
+law refused conversion; this run removes the covered floor
+(94-96/96 baselines), so any real FACTOR coordinate reuse now
+has room to show as heldout-side separation — but the only
+direct prior evidence of an F-H split on withheld combinations
+is the unclaimed seed-15001 P-OUT bracketing, a different axis.
+Named risk in BOTH directions; no confident direction is
+registered.
+
+INTERPRETATION FENCE (verbatim scope): a STRONG-FACTOR result
+supports only — under this frozen CH-F3 regime, with polynomial
+forms already well supported in training, equal-length/
+equal-information action codes, and two whole-action site x term
+combinations absent from training, exposing reusable FACTOR
+coordinates improved completion of those withheld combinations
+relative to the fixed HASH permutation. NOT established by any
+outcome: universal compositionality, broad math OOD
+generalization, degree-class robustness, that factorization
+explains the full STATE-v-PROGRAM gain, solve-rate improvement,
+backend-independent action semantics. A null is evidence against
+a large factorization advantage in this narrow protocol, not
+equivalence. SINGLE-REALIZATION seed 16001 until an
+independently preregistered realization replicates.
+
+ORDER: freeze (this entry) -> scorer commit (source audit first)
+-> ONE scoring run -> dual audit -> book -> commit/push/census ->
+STOP. Outputs logs/mathworld1/svpheldout16/ (refuse-if-exists).
