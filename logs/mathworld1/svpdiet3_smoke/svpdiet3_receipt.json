@@ -1,0 +1,112 @@
+{
+ "smoke": true,
+ "prereg": "MATH-CYBER-1-SVP-GRID-IN-SUPPORT-CONFIRMATORY-DESIGN-0",
+ "n_eval_horizon": 4,
+ "n_sec_horizon": 6,
+ "N_per_stratum": 1,
+ "N_sec_t2": 1,
+ "N_sec_t3": 24,
+ "smoke_receipt_sha": null,
+ "p12_aug_cell_coverage": {
+  "x**8 + x**5": 6,
+  "x**7": 6,
+  "x**8 + x**7": 6,
+  "x**7 + x**5": 6,
+  "x**7 + x**6": 6,
+  "x**7 + x**4": 6,
+  "x**8": 6,
+  "x**8 + x**3": 6,
+  "x**9": 6,
+  "x**5 + x**4": 6,
+  "x**6 + x**5": 6,
+  "x**6 + x**4": 6
+ },
+ "pins": {
+  "data/matsub_paired.jsonl": "a943ba7fc581db743b07192e5d951fadddd2ba19bca3225b75d8402351d468e8",
+  "logs/mathworld1/svpdiet/balanced_grid_train.jsonl": "0ef3d8a880a7e07712d8de757bc1670df12701e487b856b44c97f8db16cb3759",
+  "logs/mathworld1/svpdiet/train_blocks.jsonl": "dd5e72391db557049e45efe6c6b5aff2118c8ea24ef53c85496b04f8539159d5",
+  "logs/mathworld1/svpchal/blocks.jsonl": "21e7e635244574266ec876c1c8c76f8d7d2a77e20c2f6680d3ee48db372c4d10",
+  "logs/mathworld1/svpnuisdesk/attempts.jsonl": "54659cda39d0578c507d984aae7fdcb90c9d3cc86bf3b5a82fed740be93b5504"
+ },
+ "verdict": "ENVELOPE MATERIALIZED",
+ "eval_stratum_qualified_counts": {
+  "t2|SMOKE": 2,
+  "t3|SMOKE": 2
+ },
+ "eval_block_fail_census": {},
+ "eval_terms_census": {
+  "3": 2,
+  "2": 2
+ },
+ "wall_s": 8.1,
+ "smoke_novelty_hits_expected_burned": {
+  "natural": 0,
+  "band": 0,
+  "pilot": 0,
+  "designs_diet_nuis": 6
+ },
+ "smoke_target_overlap": 0,
+ "eval_blocks_selected": 2,
+ "calibration_role_census": {
+  "covered-I0": 2
+ },
+ "heldout_role_census": {
+  "heldout-I1": 2,
+  "robustness-I1": 2
+ },
+ "eval_d_before_census": {
+  "t2|SMOKE|x**x": 1,
+  "t3|SMOKE|x**x": 1
+ },
+ "selected_target_overlap_with_train_targets": 0,
+ "selected_P_census_by_stratum": {
+  "t2|SMOKE": {
+   "d0": 1
+  },
+  "t3|SMOKE": {
+   "d0": 1
+  }
+ },
+ "sec_census": {
+  "sec_t2": 2,
+  "sec_t3": 3,
+  "sec_out_of_scope": 1
+ },
+ "wall_sec_s": 2.4,
+ "smoke_sec_novelty_hits": 0,
+ "sec_selected": {
+  "primary-t2": 1,
+  "control-t3": 3,
+  "regime_census": {
+   "t2|IN": 1,
+   "t3|IN": 3
+  }
+ },
+ "artifact_sha256": {
+  "covered_calibration.jsonl": "06d17c537ca397b7631ec21d167d00d875f95fcd64a5e367cabebe80ecf4afda",
+  "eval_blocks.jsonl": "ff50f9f10f5957b7ccb0af85a216e1afcabd91436ff10882a0d360757e768ec1",
+  "heldout_test16.jsonl": "8c30b996058e0000aa23fb17c5cce22a683b969b5f675974f34f15cd4affdc91",
+  "pout_attempts.jsonl": "6ecfed4b6255170eb90767e8cd19fcaa5f264c823dc3717552cffc5f6fe03974",
+  "pout_robustness.jsonl": "a71a858582458d06227fa520275ff8b31a6502f6e6be03e0f2a5030f4c708957"
+ },
+ "start": {
+  "start_commit": "6edd9319",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_svpdiet3.py": "b9e01e5ca8d36842d0d5f6808b6ad121ea3bb6dbb3f14931037cd788b4b94529",
+   "scratch/mathworld1_svpnuisdesk.py": "e97f689101ff3e0486682d8f220e3d037463f5077d6d1f2ddce6c36ca4dbd625",
+   "scratch/mathworld1_svpdiet.py": "872d40802eb0d25f1e468579f5e52dd84813eeb73d98e5ffde714671b53a6876",
+   "scratch/mathworld1_svpdiet2.py": "3d81af802bbb51f50295df504b29a5a91ba15542a5acd113f680cd510bd67f5e",
+   "scratch/mathworld1_svpchal.py": "4e72cf2c9d9e15e8d84692d077e658dc535199ffb9fd6f81406ca7c23785eaf0",
+   "scratch/mathworld1_svpchal2.py": "150129d8addc66b46e4f58b4676c7d4465cb0994ffe28e049ccd978b9011ad74",
+   "scratch/mathworld1_svpbirth.py": "c0bed95ec6a4db6faad424fa4780fba3af8d4f6d2cec364c75726da9e532950c",
+   "scratch/mathworld1_svpcode.py": "3b80655cbddc835e6fac99c81335a4d21a4b812ac304b786f8ca07ec96277ca0",
+   "scratch/mathworld1_actiontok.py": "a5a22b38c775f67b303b305fa98d8a7fd3e79ac2f11e151385a2701a6d0c4aec",
+   "llmopt/search/derivation.py": "c38eeb73dd9b803fe207271b37d7097e1843cac7a776d3704d9de04dd1683e87",
+   "llmopt/search/rules.py": "dc83caf67e46edd16c4bb8aca5e9c12be637aedc395e4410e59fc1149bf29e58",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "6edd9319"
+}
