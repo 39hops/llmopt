@@ -54868,3 +54868,91 @@ reporting only, no pooling with 16001; within-support competence
 reading only, never generalization evidence, never F-v-H
 evidence; effective candidate set n-1; receipts force-added
 small-text; every claim grounded in THIS run's tool output.
+
+## VERDICT MATH-CYBER-1-SVP-GRID-CALIBRATION-SCORE-17001: CALIBRATION FIRED — the fresh-init seed-17001 arms clear the frozen frequency-stratified competence gate near ceiling (FACTOR c-IN 46/48 and c-OUT 47/48; HASH 48/48 and 48/48; all eight arm x term x regime cells at 22-24 of 24 v the 12/24 floor); HELDOUT-SCORE-17001 is now eligible under its frozen law, on its own explicit GO (2026-08-29, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-GRID-CALIBRATION-SCORE-17001
+(scorer scratch/mathworld1_svpcalscore17.py committed at
+960b5d42 BEFORE any inference; generated MECHANICALLY from the
+booked svpcalscore16 scorer — 46 changed lines including the
+receipt prereg-name literal, every one classified {seed label,
+output path, pin, provenance self-reference} by a fresh-context
+verifier that returned PASS with zero substantive lines,
+thresholds BAR_REGIME=36 / BAR_STRATUM=12 and all scoring/gate
+logic byte-unchanged, all six pins independently recomputed
+against disk). ONE scoring run, anti-peeking order held: pins ->
+structure gates re-derived from row metadata -> load -> blind
+score all 96 states -> raw scores written and hashed
+(74b2bad6...) -> hard gates -> frozen gate computation ->
+verdict -> post-run pin re-gates (incl. init) -> receipt -> only
+then riders. Zero training, zero checkpoint mutation, zero
+sympy; heldout and P-OUT neither named nor opened (grep-clean,
+docstring authority prose only); no smoke invocation exists for
+this scorer (sibling convention; refuse-if-exists is the sole
+path guard, cost bounded by the 2.1 s scoring wall).
+
+HARD GATES (all fired): three artifact pins + two checkpoint +
+init pins verified pre- AND post-run (calibration af1a4aa1...,
+svpdiet3 receipt 26cb6d01..., BIRTH-17001 receipt fb607dd5...,
+FACTOR 12e19fae..., HASH e24237b8..., init 4384ed98...);
+structure re-derived (96 rows, covered-I0 only, 24 per
+{term x regime}, ordinals 0, 96 unique curs, one label per
+state, F/H roundtrips on all stored candidates); T=9 on all 642
+candidate scorings; 192 rank + 192 full-order identity checks;
+cell-sum consistency gated; param-count gate 19,142,016/arm
+green (asserted in-scorer; not a receipt field). Receipt
+logs/mathworld1/svpcalscore17/svpcalscore17_receipt.json
+(scoring wall 2.1 s post-load); raw rows scores.jsonl (96, sha
+74b2bad6...); riders.json post-receipt.
+
+FROZEN GATE (mechanical) — ALL EIGHT CELLS (each of 24):
+  FACTOR t2-IN 22   t2-OUT 23   t3-IN 24   t3-OUT 24
+  HASH   t2-IN 24   t2-OUT 24   t3-IN 24   t3-OUT 24
+Regime totals (the gate's consumed statistic, each of 48):
+FACTOR c-IN 46, c-OUT 47; HASH c-IN 48, c-OUT 48 — v the bars
+>= 36/48 per arm per regime and >= 12/24 per cell: every leg
+passes for BOTH arms => CALIBRATION FIRED. A later explicit GO
+gains HELDOUT-SCORE-17001 authority under the already-frozen
+joint law (c0 from THIS run's raw scores); heldout was not
+opened here.
+
+READING (within-support competence only): the fresh seed-17001
+initialization reproduces near-ceiling covered competence on the
+same frozen calibration population (per-seed report: 17001
+F 93/96 H 96/96; the sibling 16001 realization booked F 94/96
+H 96/96 — stated side by side as the frozen per-seed table
+requires, never pooled; a 1-solve FACTOR difference — no cross-seed
+inference is licensed and none is taken).
+Calibration F-v-H differences are DESCRIPTIVE only — this is a
+competence gate, not a representation contest; the replication
+question lives entirely in the sealed heldout under the frozen
+four-outcome law. REPLICATION-NOT-REACHED is now off the table;
+which of the remaining three outcomes books is undetermined
+until heldout scores.
+
+REGISTERED-PRIOR ACCOUNTING: CORRECT (predicted both arms pass;
+both did, near ceiling — the re-named seed-variance risk again
+did not materialize; calibration-level competence has now held
+at two independent inits).
+
+DESCRIPTIVE RIDERS: MRR FACTOR .9844 / HASH 1.0000; candidate 0
+never the label and never strictly top for either arm
+(effective competitive set n-1; never quote 1/n as chance);
+legal-K census {2:15, 3:41, 4:32, 5:8}. The three FACTOR misses
+are all t2 states (two c-IN, one c-OUT, per the cell table),
+each a hair-margin rank-2 (mean-logprob margins .0020/.0163/
+.0149; zero tied means anywhere, so the pessimistic tie rule
+was never exercised);
+per-P detail in riders.json, reported without reading (n<=8
+per form).
+
+FENCES. Mac/mps; second realization (seed 17001), per-seed
+reporting only, NO pooling with seed 16001; within-support
+competence reading only — never generalization evidence, never
+F-v-H evidence; held-out is BY SITE on shared base derivations;
+the gate numbers say nothing about the two withheld whole-action
+combinations (the sealed test's sole question); raw_scores_sha
+anchors THESE bytes only (no re-run reproducibility claim on
+mps); receipts force-added small-text (scores.jsonl included);
+every claim grounded in THIS run's tool output; dual audit
+before booking; after booking commit/push, census, STOP.

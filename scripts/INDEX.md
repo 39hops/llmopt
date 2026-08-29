@@ -2931,6 +2931,13 @@ MATH-CYBER-1 SVP-GRID-CALIBRATION-SCORE-16001 — ONE scoring run of the two sea
 - `ctup(c)`
 - `main()`
 
+### scratch/mathworld1_svpcalscore17.py
+MATH-CYBER-1 SVP-GRID-CALIBRATION-SCORE-17001 — ONE scoring run of the two sealed seed-17001 checkpoints on the frozen IN-SUPPORT COVERED-CALIBRATION artifact ONLY (96 covered-I0 strict states over {t2,t3} x {c-IN,c-OUT}). This file has ZERO path or string dependency on the sealed test artifact or the secondary robustness artifact: it opens exactly covered_calibration.jsonl (sha-gated pre- and post-run) and the sealed siblings are neither named nor read anywhere here. Zero training, zero checkpoint mutation, zero sympy; frozen candidate bytes only.
+
+- `fsha(p) -> str`
+- `ctup(c)`
+- `main()`
+
 ### scratch/mathworld1_svpchal.py
 MATH-CYBER-1 SVP-STRICT-GRID-CHALLENGE-DESIGN-0 — materialize + qualify the FINAL prospective strict-recombination challenge under the frozen law (prereg committed with this driver BEFORE any byte is generated). Zero model/checkpoint access, zero inference; scoring happens under the NEXT GO only.
 
