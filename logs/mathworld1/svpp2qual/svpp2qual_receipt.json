@@ -1,0 +1,41 @@
+{
+ "prereg": "MATH-CYBER-1-SVP-GRID-P2-MATERIALIZATION-QUALIFICATION-0",
+ "verdict": "P2 MATERIALIZED + QUALIFIED",
+ "prereg_commit_sha": "7976613b3fef18f54d953ac0404f377e5c74031b",
+ "salt_template": "svp-feistel-p2-7976613b3fef18f54d953ac0404f377e5c74031b-r{i}-{x}",
+ "round_law": "first two bytes of sha256(salt), big-endian, mod 4096; 4-round balanced 24-bit Feistel, halves of 12 bits",
+ "hard_bars": {
+  "domain_enumeration_size": 884736,
+  "factor_injective_roundtrip": 884736,
+  "p1_injective_roundtrip": 884736,
+  "p2_injective_roundtrip": 884736,
+  "p2_width8_alphabet8": 884736,
+  "feistel2_inverse_stride_checks": 173,
+  "train_rows_in_domain_p2_roundtrip": 74860,
+  "eval_candidate_actions_in_domain_p2_roundtrip": 963
+ },
+ "p2_realization_sha": "952f332da4e25961b2dd52c786902e74ba4b33bbf8413f88496a0df952450ba9",
+ "census_sha": "053c490f10e9e8c59f3017d4efa417cb4b0eb33e2b49a36ca89c64a8e47c6b2a",
+ "first_and_final_realization": true,
+ "no_model_trained_no_score_produced": true,
+ "wall_s": 9.7,
+ "pins": {
+  "data/matsub_paired.jsonl": "a943ba7fc581db743b07192e5d951fadddd2ba19bca3225b75d8402351d468e8",
+  "logs/mathworld1/svpdiet/balanced_grid_train.jsonl": "0ef3d8a880a7e07712d8de757bc1670df12701e487b856b44c97f8db16cb3759",
+  "logs/mathworld1/svpdiet3/covered_calibration.jsonl": "af1a4aa1df7bf3224745e91a90e1a77c36e5c54f7ff9b08509794d0fb7978db3",
+  "logs/mathworld1/svpdiet3/heldout_test16.jsonl": "a3f6103b3733d909281849dcb3fd6ba9fba3891f2014bec13881b4509df46ddb"
+ },
+ "start": {
+  "start_commit": "ac553450",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_svpp2qual.py": "2abd5970ff76bdc02c40f59763da5555c211a0ea53c297086953d34afa395c64",
+   "scratch/mathworld1_svpcode.py": "3b80655cbddc835e6fac99c81335a4d21a4b812ac304b786f8ca07ec96277ca0",
+   "scratch/mathworld1_actiontok.py": "a5a22b38c775f67b303b305fa98d8a7fd3e79ac2f11e151385a2701a6d0c4aec",
+   "scratch/mathworld1_svpbirth.py": "c0bed95ec6a4db6faad424fa4780fba3af8d4f6d2cec364c75726da9e532950c",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "ac553450"
+}

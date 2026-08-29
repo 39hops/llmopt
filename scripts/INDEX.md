@@ -3170,6 +3170,16 @@ MATH-CYBER-1 SVP-GRID-CH-F3-NUISANCE-DESK-0 — post-hoc mechanism diagnostic of
 - `build_cell(cell, Ps, Cs)`
 - `main()`
 
+### scratch/mathworld1_svpp2qual.py
+MATH-CYBER-1 SVP-GRID-P2-MATERIALIZATION-QUALIFICATION-0 — the FIRST and FINAL realization of HASH-P2 under the frozen law of PERMUTATION-REPLICATION-PREREG-0 (commit 7976613b3fef18f54d953ac0404f377e5c74031b). ONE invocation: implement the salt-changed Feistel exactly as frozen, qualify it exhaustively, record the preregistered descriptive realization census, write the receipt. NO model initialization, training, checkpoint creation, calibration/heldout scoring, or model inference anywhere in this file.
+
+- `_round2(i, x)`
+- `feistel2(v, inverse=False)`
+- `hash2_symbols(rule, sk, so, pk, pi)`
+- `hash2_decode(sym)`
+- `fsha(p) -> str`
+- `main()`
+
 ### scratch/mathworld1_svppoutscore16.py
 MATH-CYBER-1 SVP-GRID-POUT-ROBUSTNESS-SCORE-16001 — ONE scoring run of the two sealed seed-16001 checkpoints on the frozen SECONDARY P-OUT robustness artifact pout_robustness.jsonl (72 fresh covered-I0 states on the degree-11 two-term P class: 48 t2 PRIMARY + 24 t3 CONTROL, separately adjudicated, never pooled). Applies the secondary law frozen at IN-SUPPORT- CONFIRMATORY-DESIGN-0 verbatim: hypothesis FACTOR > HASH on the 48 t2 states, exact two-sided McNemar alpha .05; SECONDARY-FACTOR-WIN iff p < .05 AND F top1 > H top1, otherwise SECONDARY-INCONCLUSIVE (no symmetric HASH-win label is registered; a significant reverse split books INCONCLUSIVE with the direction disclosed). This scorer can never modify the strict heldout verdict or any seed-17001 law. Zero training, zero checkpoint mutation, zero sympy; frozen bytes only.
 

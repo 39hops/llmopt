@@ -1349,6 +1349,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svpp2qual/svpp2qual_receipt.json": {
+   "bytes": 2223,
+   "exists": true,
+   "sha256": "47309f22e2be3fba57a28ea0937c985d9ae616121b4cfff608c19371246c2337",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/svppoutscore16/svppoutscore16_receipt.json": {
    "bytes": 3892,
    "exists": true,

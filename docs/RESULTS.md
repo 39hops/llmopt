@@ -55534,3 +55534,86 @@ authorizes NOTHING to run; Mac/mps; compute estimates from the
 design desk are estimates (wall ~5,200-5,600 s birth), not
 bands; every future claim grounded in its own run's tool
 output.
+
+## VERDICT MATH-CYBER-1-SVP-GRID-P2-MATERIALIZATION-QUALIFICATION-0: P2 MATERIALIZED + QUALIFIED — the first and FINAL HASH-P2 realization exists under the frozen salt law (prereg commit 7976613b bound; realization pin 952f332d...); every hard bar fired exhaustively (884,736/884,736 P2 width-alphabet/injectivity/roundtrip, P1 and FACTOR re-established unchanged, 74,860 training rows + 963 eval candidate actions in-domain and P2-roundtripping); the descriptive census shows an unremarkable arbitrary bijection — zero whole-code agreement with P1 or FACTOR, prefix agreement at chance, P1-like exposure balance (2026-08-29, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-GRID-PERMUTATION-REPLICATION-
+PREREG-0 (7976613b). Instrument
+scratch/mathworld1_svpp2qual.py committed at ac553450 BEFORE
+execution; a fresh-context source verifier established
+pre-run, source-level, all eleven registered properties (exact
+resolved sha, salt template with P1-identical integer
+formatting, first-two-bytes big-endian mod 4096, 4 rounds /
+12-bit halves structurally identical to shipped P1, P1/FACTOR
+imported unchanged, no salt-search or reroll path, no census-
+conditional control flow, no model dependency in the run path,
+domain enumeration identical to svpcode, bars complete,
+eval reads action tuples only): PASS. ONE invocation (wall
+9.7 s, RC=0). ANTI-SELECTION HELD: zero P2 codewords existed
+before the instrument commit; the first realization is kept
+as-is.
+
+HARD BARS (all fired; receipt
+logs/mathworld1/svpp2qual/svpp2qual_receipt.json): domain
+884,736 = 36x2x64x3x64 enumerated exhaustively; FACTOR and P1
+re-established injective + exact-roundtrip on all 884,736
+(unchanged behavior); P2 width exactly 8, every atom 0..7,
+zero collisions, exact encode/decode roundtrip on all 884,736;
+Feistel-P2 inverse identity on the 173-point deterministic
+stride of the 2^24 payload space (code check — bijectivity is
+by construction for any round function); all 74,860 frozen
+training-row actions and all 963 calibration+heldout candidate
+actions (321 + 642) in-domain and P2-roundtripping exactly. No
+model was initialized, trained, or scored; no calibration or
+heldout outcome exists for P2.
+
+P2 REALIZATION PIN (for the three-arm drivers):
+p2_realization_sha 952f332d... = sha256 over the concatenated
+P2 codewords in canonical enumeration order; salt template
+"svp-feistel-p2-7976613b3fef18f54d953ac0404f377e5c74031b-
+r{i}-{x}"; regeneration is deterministic from the committed
+law. Census artifact census.json (sha in receipt).
+
+DESCRIPTIVE REALIZATION CENSUS (frozen list; never gates,
+never regeneration triggers): whole-code agreement P1-v-P2 = 0
+and FACTOR-v-P2 = 0 of 884,736 (chance expectation ~0.05
+codewords); prefix agreement (cumulative >= length k) P1-v-P2
+[110835, 13830, 1689, 188, 26, 5, 1, 0] and FACTOR-v-P2
+[110397, 13649, 1696, 225, 28, 2, 0, 0] v chance 110,592 at
+len 1 (both within 1.6 sigma at every length); training-
+population code-atom exposure (74,860 rows): HASH-P2
+min/median/max 45,583/73,594/100,814 v HASH-P1
+49,207/75,081/111,259 — the P1-like balanced profile — v
+FACTOR's skewed 57/21,497/306,552; zero-exposure atoms 0 for
+all three arms. The realization is UNREMARKABLE in every
+registered census: no accidental structure to disclose beyond
+these numbers.
+
+INDEPENDENT RECOMPUTATION (post-run): a second verifier
+REBUILT the entire P2 map from the frozen law with its own
+independent Feistel implementation (importing only
+OPCODE_ORDER) and reproduced the realization sha byte-for-byte,
+all 884,736 roundtrips (full, not sampled), every census table
+exactly (3 arms x 8 positions), 963 = 321 + 642, and all pins;
+zero blockers, zero should-fixes. Disclosed notes: the
+prefix-agreement arrays are cumulative >= k counts (nested by
+construction); the gate import transitively loads torch at
+module level though no model is constructed (verified inert).
+
+STATED EXPLICITLY (per the GO): this is the first and final P2
+realization; NO performance evidence exists; NO model has been
+trained with P2; NO calibration or heldout score has been
+produced; the descriptive realization structure cannot alter
+eligibility — P2 proceeds to the three-arm birth exactly as
+realized.
+
+NEXT (own GO, frozen at PERMUTATION-REPLICATION-PREREG-0):
+three-arm BIRTH-18001 (new instrument, full audit chain) ->
+three-arm CALIBRATION-SCORE-18001 -> on FIRE, the KNOWN-SET
+heldout scoring under the frozen IUT law. Not run here.
+
+FENCES. No model outcome of any kind exists for P2; the census
+is descriptive and closed (no further P2 censuses without
+their own prereg); Mac; deterministic given the frozen law;
+receipts force-added small-text; after booking
+commit/push/census, STOP.
