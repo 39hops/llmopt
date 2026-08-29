@@ -54717,3 +54717,89 @@ share this run); checkpoints sealed UNSCORED; big .pt
 untracked, anchored by the force-added lock-registered
 receipt's shas; every progress claim grounded in tool output
 from THIS run.
+
+## VERDICT MATH-CYBER-1-SVP-GRID-BIRTH-17001: BIRTH SEALED — the seed-17001 INIT-ONLY replication birth completed with every exact invariant hit (7,020 updates and 2,021,220 continuation tokens per arm, identical F/H padded 21,691,032 / non-pad 8,823,393 totals, per-batch shape/length/mask gates green on all 7,020, order 3,510/3,510, zero I1/t2-t3 labels, 118 = 2x59 bitwise init gates); FACTOR 12e19fae... / HASH e24237b8... sealed UNSCORED from init 4384ed98... (2026-08-29, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-GRID-BIRTH-17001 (driver
+scratch/mathworld1_svpgbirth17.py committed at f115b71c BEFORE
+any run; generated MECHANICALLY from the booked svpgbirth16
+driver — 56 changed lines, every one classified {seed literal,
+path, env-var prefix, log tag, init-pin literal, docstring
+framing} by an independent fresh-context verifier that returned
+PASS with ZERO substantive lines, and which independently
+REBUILT the seed-17001 init to the pinned sha 4384ed98...
+byte-for-byte before anything ran). Initialization is the only
+experimental variable: data pins (natural a943ba7f...,
+augmentation 0ef3d8a8..., manifest 897c8bf8...), plan sha
+f55e9fee..., encoding/optimizer/scheduler/order/mask laws, and
+the EVAL_PROVENANCE literals are byte-identical between the two
+drivers (verifier-hashed). The later P-OUT reverse result did
+not and could not influence this run: the replication law at
+cd6db7e3 predates it and the driver diff contains no
+law-touching line.
+
+ORDER HELD (tool-grounded): prereg+driver commit f115b71c ->
+init pre-step (SVPGB17_MAKE_INIT=1: double-build byte-identical
+at design time, sha = pin, written, gated) -> path-isolated
+smoke (all 10 bars green incl. NO_PRODUCTION_PATHS; smoke
+receipt sha carried into the production receipt) -> ONE
+production birth (RC=0). ZERO evaluation scoring, zero
+checkpoint probes, zero anatomy; no calibration/heldout/P-OUT
+artifact opened (path-free by construction, verifier-checked);
+no seed-15001 or seed-16001 weights loaded (grep: the only
+prior-seed token in the driver is a docstring history
+reference).
+
+RESULT (mechanical; receipt
+logs/mathworld1/svpgbirth_s17001_receipt.json, wall 3,478.5 s —
+inside the registered 3,400-4,600 s band; start_commit =
+completion_commit = f115b71c; run-start porcelain
+" M scripts/INDEX.md" — generated docs index, no instrument
+class):
+  SHARED INIT: seed 17001, sha = pinned 4384ed98...; 118 = 2x59
+  tensor-equal comparisons gated in production; storage
+  disjointness gated; 19,142,016 params per arm.
+  EXACT INVARIANTS (all gated): updates 7,020/arm; scheduler
+  lockstep on all 7,020 batches, terminal 7,019; continuation
+  tokens 2,021,220/arm exactly; padded 21,691,032 and non-pad
+  8,823,393 identical across arms (and identical to the 16001
+  realization's totals, as the frozen plan requires); per-batch
+  shape/length/mask gates green on all 7,020; 14,040/14,040
+  finite losses; order FACTOR-first 3,510 / HASH-first 3,510;
+  zero combined rows labeled i_unprod I1 t2/t3 [driver gate over
+  pinned frozen bytes]; distinct checkpoint shas gated.
+  Disclosure: the init pin is gated pre-run and at load; post-
+  run it is RECOMPUTED into the receipt (value = pin, audit-
+  verified) rather than gated — a one-line gate for the next
+  sibling.
+  CHECKPOINTS SEALED UNSCORED: svp_grid_factor_s17001.pt
+  12e19fae..., svp_grid_hash_s17001.pt e24237b8..., init
+  svp_grid_init_s17001.pt 4384ed98...
+  DESCRIPTIVE ONLY (operational, never representation evidence,
+  never scientifically compared across seeds): epoch mean losses
+  FACTOR 0.12930/0.03030/0.01670, HASH 0.17043/0.02855/0.01526;
+  grad p50 0.213/0.211, max 10.66/5.56; peak RSS 2,527 MB; arm
+  walls 1,730.7/1,731.0 s (within-run-paired only).
+
+REGISTERED-PRIOR ACCOUNTING: mechanical-gates prior CORRECT
+(all gates passed; wall inside the band). No capability
+prediction was registered at this stage and none is implied.
+
+NEXT (own GO, frozen at REPLICATION-17001-PREREG-0):
+CALIBRATION-SCORE-17001 opens covered_calibration.jsonl
+(af1a4aa1...) ONLY and applies the frozen frequency-stratified
+gate; on FIRE, HELDOUT-SCORE-17001 under the frozen joint law
+with c0 from the seed-17001 calibration raw scores; the four
+frozen replication outcomes adjudicate; no pooling with
+seed-16001; BIRTH-17001 itself establishes NO replication
+status.
+
+FENCES. Mac/mps (no cross-run bit-exact claim; the paired arms
+shared this run); the SECOND realization of the revised
+protocol (seed 17001) — replication status entirely undetermined
+until the frozen outcomes law adjudicates; loss curves
+descriptive only (token identities induce different target
+distributions); checkpoints sealed unscored; big .pt untracked,
+anchored by the force-added lock-registered receipt's shas
+(future scorers MUST pin all three); after booking commit/push,
+census, STOP.

@@ -1244,6 +1244,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svpgbirth_s17001_receipt.json": {
+   "bytes": 170686,
+   "exists": true,
+   "sha256": "fb607dd5328973eca7dec79697449bd00ab1099f5351880ae40025b9704f4833",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/svpgen/inspectable_sets.json": {
    "bytes": 18894,
    "exists": true,
