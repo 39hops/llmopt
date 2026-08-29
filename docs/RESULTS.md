@@ -55187,3 +55187,163 @@ held-out cells and one frozen HASH permutation bound every
 claim; receipts force-added small-text; every claim grounded in
 THIS run's tool output; dual audit before booking; after
 booking commit/push, census, STOP.
+
+## OBSERVATION MATH-CYBER-1-SVP-HASH-PERMUTATION-REPLICATION-DESIGN-0: design desk for the HASH-permutation replication axis — DESIGN DELIVERED: three-arm shared-init instrument (FACTOR / HASH-P1 / HASH-P2) at a fresh seed, P2 as a salt-changed Feistel (bijective by construction, key mechanically bound to the prereg commit, zero discretionary selection), intersection-union decision rule for "beats both hashes", H1-v-H2 as a separate same-init sensitivity estimate; evaluation-freshness limitation stated plainly (heldout_test16 is now a KNOWN set) with the fresh-envelope upgrade priced; nothing trained, scored, or materialized (2026-08-29, Mac)
+
+FRONTIER (per-seed, never pooled): strict coordinate-completion
+is [REPLICATED] across seeds 16001/17001 under one fixed
+protocol (16001: covered F94/H96, heldout F84/H41,
+STRONG-FACTOR; 17001: covered F93/H96, heldout F75/H63,
+REPLICATES-STRONG-FACTOR). Direction replicated; magnitude and
+cell anatomy did not (realization-dependent, descriptive). LIVE
+LIMITATION: both realizations share ONE frozen HASH permutation
+P1 — the contrast "reusable coordinates v equal-information
+arbitrary identity" rests on n=1 arbitrary bijection.
+
+1. AXIS PRIORITY. HASH-permutation replication is the
+HIGHEST-VALUE next axis. Grounds: seed 18001 (same P1) would be
+a third draw from a variance already characterized as large in
+direction-preserving ways (44/1 v 20/8 discordants) — low
+marginal information; a fresh evaluation population changes two
+things at once (population AND whatever axis it rides); P2
+attacks the single sharpest untested confound of the CORE
+interpretation. A FACTOR advantage that held against only one
+particular bijection would narrow the claim from
+"factorization v arbitrary identity" to "factorization v that
+bijection"; P2 is the direct test.
+
+2. TREATMENT ARMS (proposed): ONE fresh shared init (a NEW
+seed, e.g. 18001, reserved by the prereg that adopts this
+design), THREE equal-compute arms — FACTOR, HASH-P1 (the
+existing frozen permutation, unchanged), HASH-P2 (new,
+independently derived, frozen before inspection). All arms
+share the frozen 74,860-row population, batch-plan law
+f55e9fee..., architecture/vocab 340, T=9, zero I1/t2-t3
+targets, candidate sets and scoring law, Mac/mps fences.
+
+3. P2 GENERATION LAW (proposed, committed BEFORE
+materialization or inspection): P1 is a 4-round balanced
+Feistel on the 24-bit payload space with round function
+the first two bytes of sha256("svp-feistel-r{i}-{x}") mod
+4096 (the svpcode SHIPPED construction, quoted from code, not
+the docstring paraphrase) — bijective on ALL 2^24 payloads BY CONSTRUCTION
+for ANY round function. P2 = the identical Feistel with round
+salt "svp-feistel-p2-{PREREG_COMMIT_SHA}-r{i}-{x}", where
+PREREG_COMMIT_SHA is the full sha of the commit that freezes
+the adopting prereg. Properties inherited mechanically: exact
+bijectivity over the same full action domain (no
+collision-resolution law needed), same 8-symbol base-8 code (atoms ids 332..339, vocab 340),
+exact invertibility, identical information content,
+zero discretionary selection or search under the protocol
+(the key is the prereg's own commit identity; the adopting
+prereg carries a NO-AMEND clause — the first committed salt is
+final, so sha rerolling is procedurally excluded). Registered
+identifiability census (DISCLOSURE ONLY, never an exclusion or
+regeneration rule — any post-hoc filter on P2 would reintroduce
+selection): after materialization, report P2-v-P1 and
+P2-v-FACTOR codeword agreement/prefix-overlap statistics over
+the qualified domain, plus the standing svpcode qualification
+bars (exhaustive injectivity + inverse roundtrips) re-run for
+P2. If P2 accidentally correlates with FACTOR structure, that
+is reported and interpreted, not repaired.
+
+4. THREE-ARM CONFOUNDS + ORDER LAW (assessed): the booked
+two-arm instrument alternates F-first/H-first per batch; a
+naive extension is unbalanced. Proposed balanced law: cycle the
+six orderings of {F, H1, H2} by batch index mod 6 -> 1,170
+occurrences each over 7,020 batches (7,020 = 6 x 1,170
+exactly, no remainder), every arm appearing 2,340 times in each
+position. Equal-compute gates extend to all three pairwise
+comparisons (shapes/lengths/masks/nonpad F=H1=H2 per batch);
+H1 and H2 targets are both width-9, so token totals stay
+identical by the same argument as F=H. Resource: three
+resident arms ~1.5x the two-arm birth — est. wall 5,200-5,600 s
+(v 3,478 s measured at 2 arms), peak RSS est. ~3.4-3.9 GB (v
+2,527 MB) — comfortably inside the Mac. Init law unchanged
+(dedicated pre-step, 3x59 bitwise gates, storage disjointness
+across all three arms).
+
+5. EVALUATION FRESHNESS (stated plainly): heldout_test16 has
+now been SCORED TWICE and its anatomy inspected — it is a KNOWN
+evaluation set. A P2 run on it is a REPLICATION OF THE
+REPRESENTATION TREATMENT ON A KNOWN SET, not a sealed
+confirmatory test: the protection that remains is that arms and
+P2 are frozen outcome-blind BEFORE scoring and no
+population/law element changes; the protection that is GONE is
+set-level novelty (designers know which states were hard for
+which representation CLASS). Recommendation: run the
+permutation question on the existing populations WITH this
+limitation booked in the verdict headline class, because the
+question targets the CONTROL side (does the arbitrary-identity
+control's behavior depend on the bijection?) and the F-v-H2
+comparison inherits exactly the same known-set status as any
+16001-v-17001 comparison already does. IF the P2 result is to
+carry sealed confirmatory weight for FACTOR itself, the upgrade
+is a fresh envelope: the svpdiet3 machinery with fresh
+inert-addend axes and a new sealed heldout (a
+DESIGN-1-class materialization rung, ~1 session, burns fresh
+parent horizon; NOT constructed under this GO — assessment
+first, and the desk rules do not permit design-time
+construction of a sealed population inside a design desk).
+
+6. STATISTICAL DECISION-LAW OPTIONS (priced, not chosen —
+choice belongs to the adopting prereg): paired structure is a
+per-state TRIPLE (F, H1, H2) on n=96 primary states.
+  (a) RECOMMENDED: intersection-union test for the primary
+  "FACTOR beats both hashes" claim — the existing joint law
+  applied to (F v H1) and (F v H2) separately, each at alpha
+  .05, claim PERMUTATION-ROBUST-STRONG-FACTOR only if BOTH
+  conjunctions fire. IUT is level-alpha without correction
+  (the null is a union), controls the two-control multiplicity,
+  and mechanically distinguishes beats-both / beats-one
+  (exactly one conjunction fires -> named intermediate outcome,
+  no rescue) / beats-neither. H1 and H2 are never pooled as
+  independent rows.
+  (b) Bonferroni min-p on the two F-v-Hx McNemars — stricter
+  than needed given (a); priced and not preferred.
+  (c) Trinomial per-state preference modeling — rejected:
+  introduces a new law class mid-chain.
+  H1-v-H2 (permutation sensitivity) books SEPARATELY: paired
+  McNemar + discordant census on the same 96 states, reported
+  as an ESTIMATE of arbitrary-identity realization variance at
+  matched init/data/evaluation — it gates nothing and can never
+  rescue or modify the primary.
+
+7. COMPUTE ESTIMATE: birth ~5,200-5,600 s (one evening slot);
+three calibration scorings + three heldout scorings ~2 s each
+post-load; audits dominate wall as usual. Total: one session.
+
+8. SMALLEST PREREGISTERABLE NEXT RUNG:
+SVP-GRID-PERMUTATION-REPLICATION-PREREG-0 — freeze in one
+commit: the P2 salt law bound to that commit's own sha (via the
+parent-commit convention: the salt embeds the PREREG entry
+commit, P2 materializes in a LATER commit), the three-arm order
+law, the IUT decision rule with its three named outcomes, the
+H1-v-H2 sensitivity law, the known-set limitation in the
+outcome names themselves, per-seed/per-permutation reporting
+with no pooling, and the seed reservation. Then (own GOs):
+P2 materialization + qualification bars -> three-arm birth ->
+calibration gate (all three arms) -> heldout.
+
+IDENTIFIABILITY RISKS (named): (i) known-eval-set status
+(above, the principal one); (ii) accidental P2-FACTOR structure
+correlation (census-disclosed, never repaired); (iii) three-arm
+scheduler/order confounds (balanced law above); (iv) the
+two-arm-instrument lineage breaks — the three-arm driver is a
+NEW instrument requiring its own full audit chain, not a
+mechanical sibling; (v) memory headroom on 36GB with three
+resident arms plus batches (est. safe; preflight gate in the
+driver); (vi) effect-size expectations must come from the
+17001-scale realization (12-solve split), not 16001's — the
+IUT's F-v-H2 leg at 17001-scale effect sizes has REAL miss
+risk, which is the honest price of the conjunction.
+
+NO-FIRE conditions found: none — the design is feasible as
+specified; nothing here authorizes running it.
+
+FENCES. Design desk only: zero training, zero scoring, zero
+materialization, zero new evaluation outcomes opened; all
+priced quantities are estimates from booked walls/RSS (n=1-2
+runs), not calibrated bands; per-seed/per-permutation reporting
+law carries into any adopting prereg; the P-OUT reverse split
+and all standing interpretation fences travel unchanged.
