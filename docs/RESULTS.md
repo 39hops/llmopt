@@ -53242,3 +53242,109 @@ sealed with its sha lock-anchored; receipts force-added
 small-text (scores.jsonl 240 rows included); after booking
 commit/push, census, STOP.
 
+## PRE-REG MATH-CYBER-1-SVP-GRID-CH-F3-NUISANCE-DESK-0: post-hoc mechanism diagnostic of SUPPORT-NOT-LEARNED — a 2x2 {P IN/OUT} x {c IN/OUT} CH-F3 covered-I0-only crossing (1,152 fresh bases, full-census scoring of the sealed seed-15001 F/H checkpoints) with frozen resolution RANGE-SENSITIVE / SUPPORT-STILL-WEAK / MIXED; can never rescue the calibration verdict or grant heldout authority; the sealed test is retired from any redesigned confirmatory chain (2026-08-28, Mac)
+
+SCOPE. Descriptive/mechanistic desk on the booked
+CALIBRATION-SCORE-15001 SUPPORT-NOT-LEARNED verdict, which is
+PRESERVED UNCHANGED. Question: is the CH-F3 covered-cell
+collapse associated specifically with extrapolation beyond the
+augmentation's trained polynomial/frequency ranges, or does
+covered competence remain low even inside those ranges? The
+seed-15001 F/H checkpoints may be scored; heldout_test remains
+FORBIDDEN — the scorer neither names nor reads it (its burned
+horizon is reconstructed from bank literals for novelty
+gating; no svpdiet2 output file is opened). ZERO training.
+STANDING RETIREMENT (booked here): heldout_test.jsonl is
+retired from any redesigned confirmatory chain regardless of
+this desk's outcome, because its bases are matched to the
+now-scored calibration bases (held-out by site, not by base).
+
+DESIGN (frozen; driver scratch/mathworld1_svpnuisdesk.py
+committed with this entry BEFORE any byte or logit):
+  Cells: A = P IN x c IN, B = P IN x c OUT, C = P OUT x c IN,
+  D = P OUT x c OUT. P IN = 6 exactly-trained augmentation P
+  forms (x^7, x^8, x^9, x^6+x^3, x^7+x^4, x^8+x^5); P OUT = 6
+  degree-10 forms of the failed calibration class (x^10,
+  x^10+x^2/4/6/8/9); c IN = {8,10,12,15,17,19} (trained
+  support); c OUT = {20..25} (failed regime). DISCLOSED
+  CONSTRAINT (forced, not chosen): every two-term monomial-sum
+  P of degree <= 9 is already consumed across the burned banks,
+  so "fresh P forms inside the envelope" is unattainable at the
+  form grain; P IN instead reuses trained forms VERBATIM (the
+  sharpest IN condition) and parent novelty comes from a fresh
+  inert-addend axis shared by all four cells (k in {1,2} over
+  fresh polys 4x^2, 6x^5) — every parent exact-cur-novel
+  against natural training, all bands, 566 pilot parents, and
+  all 29,016 reconstructed design/diet/eval horizon parents
+  (refute-on-hit). Matched nuisance pairs: each (P, T, w, k)
+  template appears under all 12 c values, giving
+  within-template IN/OUT frequency contrasts.
+  Horizon: 288 bases/cell, 1,152 total, after-variant
+  (sin(sin(x))) qualification only under the frozen
+  qualify_parent/teacher law. A base is SCORED iff its unique
+  teacher label is (i_unprod, I, ordinal 0, term_index, 2|3);
+  a constructed I1/t2-t3 label REFUTES the run (gated); all
+  other outcomes counted, never scored; EVERY attempted parent
+  (scored, out-of-scope, or failed) is novelty-checked.
+  POPULATION = every qualified I0/t2 and I0/t3 row (full
+  census, selection law = take-all, frozen). Priced from the
+  burned CH-F3 register plus the design audit's 24-base engine
+  sample (t2+t3 landing on ~50-71% of bases): roughly 120-220
+  scored rows per cell expected; the frozen floor is 40.
+
+SCORING LAW: the sealed seed-15001 F/H checkpoints (pinned
+6ef7b85c... / 3b9da5a7..., init 4b085795..., re-gated
+post-run), frozen svpadj law (standing prompt, factor_code/
+hash_code + EOS, pessimistic top-1, T=9 gated), blind one-pass
+scoring of all cells, is_label consumed only after scores
+exist. Candidate 0 PRESERVED (never removed); legal K
+(n_candidates census) and competitive K (candidate-0
+top-ranked and is-label censuses) reported per cell.
+
+FROZEN RESOLUTION (thresholds fixed NOW, before any counting;
+primary statistic = POOLED-ARMS accuracy per cell over t2+t3 =
+(F_correct + H_correct)/(2n); per-arm rates persisted but small
+F-H differences are never converted into a representation
+claim — the calibration prereg's ~6-solve noise fence carries):
+  INSUFFICIENT-CELLS iff any cell yields < 40 scored rows —
+                     no mechanism claim is booked.
+  REFUTED            iff any constructed label lands I1/t2-t3
+                     (gated abort; the partial OUTDIR is then
+                     moved to the session scratchpad, disclosed,
+                     and any rerun is a NEW registered decision,
+                     never silent).
+  RANGE-SENSITIVE    iff pooled A >= 0.75 AND
+                     min(pooled B, C, D) <= pooled A - 0.20.
+  SUPPORT-STILL-WEAK iff pooled A < 0.75.
+  MIXED              otherwise.
+No inferential law is preregistered; all comparisons are
+descriptive rates; no significance test will be quoted. The
+pooled statistic double-counts each decision across the two
+arms (correlated units) — it is a descriptive rate, and the
+per-arm rates are persisted beside it.
+Candidate-0 competitive census convention: candidate 0 counts
+as top-ranked only if STRICTLY greater than every other
+candidate (pessimistic, matching rank_metrics); the
+first-of-ties argmax is persisted separately per row.
+
+REGISTERED PRIOR (house, on record): RANGE-SENSITIVE, with the
+frequency axis (B) predicted to carry more of the drop than
+the degree axis (C) — grounds: CH-F4 passed its calibration
+strata despite frequency extrapolation but with P1 forms
+recurring from trained banks, suggesting form recurrence
+matters; confidence moderate, and the A >= 75% leg is the
+riskier half (calibration t1 controls sat near 50%).
+
+FENCES. Mac/mps; single realization (seed 15001); descriptive
+mechanism desk — never a rescue, never heldout authority,
+never a representation claim, never generalization evidence;
+the booked calibration verdict and every prior verdict stand
+unchanged; all 1,152 bases burned once inspected; outputs
+under logs/mathworld1/svpnuisdesk/ (refuse-if-exists), smoke
+path-isolated (a stride-72 slice per cell touching both T and
+both w, at least one scored state required, novelty
+report-only, staleness gate over every provenance file); dual
+audit before booking; after booking
+commit/push/census, STOP. The successor birth/eval design
+waits for this desk's answer and its own GO.
+
