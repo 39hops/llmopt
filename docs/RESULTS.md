@@ -55617,3 +55617,94 @@ is descriptive and closed (no further P2 censuses without
 their own prereg); Mac; deterministic given the frozen law;
 receipts force-added small-text; after booking
 commit/push/census, STOP.
+
+## PRE-REG MATH-CYBER-1-SVP-GRID-THREE-ARM-BIRTH-18001: the BIRTH stage of the frozen permutation-replication protocol (7976613b) — ONE shared seed-18001 init, THREE equal-compute arms FACTOR / HASH-P1 (unchanged) / HASH-P2 (immutable realization 952f332d..., re-derived and gated pre- AND post-run); six-cycle order law with the residue map resolved lexicographically as a disclosed implementation detail; init pin a7bb5b88... from two byte-equal builds; birth only, all three checkpoints sealed UNSCORED (2026-08-29, Mac)
+
+SCOPE. Birth only: no calibration, no heldout, no scoring or
+probing of trained checkpoints, no P-OUT, no
+permutation-replication status. The birth establishes ONLY that
+three equal-compute models were produced correctly from one
+frozen world differing only in output representation.
+
+INSTRUMENT. scratch/mathworld1_svpgbirth18.py — a NEW three-arm
+instrument (not a mechanical sibling): the common training law
+(rows, plan, model, optimizer, scheduler, masks, label
+censoring, per-batch equal-compute gates, init pre-step,
+path-isolated smoke) carries from the booked BIRTH-17001 law;
+the two-arm order alternation is replaced by the frozen
+six-cycle; H2 encoding imports from the qualified svpp2qual
+module (single source of P2 truth). A fresh-context verifier
+audits it BEFORE production against the prereg, the BIRTH-17001
+law, shipped FACTOR/P1, and the P2 qualification receipt.
+
+ORDER-LAW RESOLUTION (disclosed): the prereg froze "cycle all
+six orderings of {F, H1, H2} by global batch index mod 6"
+without fixing the residue->ordering map. Resolved HERE, before
+any initialization and on no model outcome, as the
+LEXICOGRAPHIC cycle: 0 F,H1,H2 / 1 F,H2,H1 / 2 H1,F,H2 /
+3 H1,H2,F / 4 H2,F,H1 / 5 H2,H1,F. This is an
+implementation-detail resolution, not a change to the
+scientific law; 7,020 = 6 x 1,170 => every ordering exactly
+1,170 times, every arm in each execution position exactly
+2,340 times (both gated).
+
+COMMON LAW (all pin-gated): 74,860 rows (natural a943ba7f... +
+aug 0ef3d8a8... + manifest 897c8bf8...); plan f55e9fee...
+(BS=32, EPOCHS=3, 7,020 updates/arm); vocab 340, code atoms
+<c:0>..<c:7> (332..339), width-8 + EOS (T=9 all three arms);
+same architecture (19,142,016 params/arm), optimizer,
+scheduler; zero I1/t2-t3 labels re-gated; same masks; Mac/mps;
+eval artifacts only as opaque provenance literals.
+
+P2 IMMUTABILITY (gated pre- AND post-run): qualification
+receipt bytes pinned (47309f22...); realization sha RE-DERIVED
+over the canonical 884,736-tuple enumeration and gated ==
+952f332d... before any training and again after; per-row P2
+inverse gated on all 74,860 training actions. The salt,
+mapping, and realization can never change.
+
+INIT LAW: seed 18001; pin a7bb5b88... from two independent
+byte-equal builds (this session, tool-verified); dedicated
+pre-step (SVPGB18_MAKE_INIT=1); smoke and production REFUSE if
+absent; 3x59 bitwise init-equality gates; storage disjointness
+across all three arms; checkpoint paths
+svp_grid_{factor,hashp1,hashp2,init}_s18001.pt disjoint from
+all prior seeds (refuse-if-exists); no
+seed-15001/16001/17001 weight loaded or mutated.
+
+SMOKE (path-isolated, writes only its own receipt): six real
+plan batches (longest, four ordinary, epoch-0 12-row tail) so
+ALL SIX orderings execute at least once; all three encode
+paths, backward, finite grads, clipping, optimizer + scheduler
+steps; NO_PRODUCTION_PATHS bar.
+
+BARS (mechanical, INSTRUMENT FAILURE on any miss): per-batch
+pairwise equality across all three arms
+(shape/lengths/mask/padded/non-pad, same rows before the plan
+advances); updates 7,020/arm; continuation tokens
+2,021,220/arm; identical padded and non-pad totals across
+arms; scheduler lockstep, terminal 7,019; order census
+6 x 1,170 exact; position census 3 x 2,340 per arm exact;
+21,060 finite losses (3 x 7,020); three DISTINCT checkpoint
+shas; init pin re-gated post-run; prior-seed checkpoints
+untouched (post-run audit recomputes). Losses/wall
+operational/descriptive only — never representation evidence.
+
+REGISTERED PRIOR (mechanical gates only): all gates pass; wall
+in the priced ~5,200-5,600 s band (estimate from n=2 two-arm
+walls x 1.5, not calibrated). No capability prediction here —
+capability priors live at PERMUTATION-REPLICATION-PREREG-0.
+
+ORDER: freeze (this entry) + driver commit -> fresh-context
+instrument verifier -> init pre-step -> path-isolated smoke ->
+ONE production birth -> independent post-run receipt
+recomputation -> book THREE-ARM BIRTH-18001 SEALED ->
+commit/push/census -> STOP. NEXT eligible GO if clean:
+THREE-ARM CALIBRATION-SCORE-18001 (not run here).
+
+FENCES. Mac/mps (no cross-run bit-exact claim; the three arms
+share this run); checkpoints sealed UNSCORED; no H1/H2
+behavior comparison of any kind under this GO; big .pt
+untracked, anchored by the force-added lock-registered
+receipt's shas; every progress claim grounded in THIS run's
+tool output.
