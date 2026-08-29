@@ -53348,3 +53348,132 @@ audit before booking; after booking
 commit/push/census, STOP. The successor birth/eval design
 waits for this desk's answer and its own GO.
 
+## VERDICT MATH-CYBER-1-SVP-GRID-CH-F3-NUISANCE-DESK-0: RANGE-SENSITIVE — the CH-F3 covered-cell collapse is carried by the POLYNOMIAL-DEGREE axis, not frequency: pooled accuracy A (P-in, c-in) 98.9% and B (P-in, c-OUT) 99.7% v C (P-OUT, c-in) 50.9% and D (P-OUT, c-OUT) 42.3%; no measurable frequency cost on trained P forms in this desk, degree-10 P forms collapse at either frequency; registered prior right on the resolution, WRONG on the axis (2026-08-28, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-GRID-CH-F3-NUISANCE-DESK-0
+(driver scratch/mathworld1_svpnuisdesk.py committed at daa8e757
+BEFORE any byte or logit; pre-commit design audit returned 3
+blockers — an unpreregistered INSUFFICIENT-CELLS branch, no
+bookable REFUTED outcome, no minimum-n floor — and 6
+should-fixes, all folded into the committed text/driver:
+novelty over every attempted parent, pessimistic candidate-0
+census, stride smoke covering all axes, staleness gate over
+every provenance file, imported bank literals, matched contrast
+split by P class). Path-isolated smoke green (10 scored states,
+zero burned hits); ONE production run: 1,152 qualifications
+(wall 493 s) + one blind scoring pass of the sealed seed-15001
+F/H checkpoints (wall 13 s). Zero training; the sealed test
+artifact neither named nor read; the booked
+CALIBRATION-SCORE-15001 verdict stands UNCHANGED — this desk is
+mechanism diagnosis, never rescue, and heldout_test stays
+retired from any redesigned confirmatory chain (its bases match
+the scored calibration bases).
+
+RESULT (mechanical; receipt
+logs/mathworld1/svpnuisdesk/svpnuisdesk_receipt.json; every
+number below independently recomputed session-side from
+scores.jsonl and re-verified by the receipt auditor): all
+1,152 parents novel — zero burned hits by the refute-on-hit
+gate (the production receipt persists no counter; the smoke
+receipt records 0), zero qualification failures, zero I1/t2-t3
+labels constructed (all 1,152 teacher labels are ordinal-0;
+the REFUTED branch never armed), scored populations A/B/C/D =
+180/180/166/156 (all >= the frozen 40 floor; the out-of-scope
+remainder is t1/t4/t5 labels, counted — and the SHIFT is
+itself mechanism-relevant: degree-10 P pushes the teacher's
+chosen term from t1 toward t4/t5, out-of-scope census A
+{t1:74, t4:34} v D {t1:12, t4:60, t5:60}, recoverable from
+attempts.jsonl).
+  POOLED-ARMS ACCURACY (the frozen primary):
+    A (P in, c in)  = .9889     B (P in, c OUT) = .9972
+    C (P OUT, c in) = .5090     D (P OUT, c OUT) = .4231
+  Resolution: pooled A .9889 >= .75 AND min(B,C,D) = .4231 <=
+  A - .20 => RANGE-SENSITIVE, mechanically.
+  Per-term: t2/t3 inside P-in cells .98-1.00 everywhere; in
+  P-OUT cells t2 stays partial (C .72, D .64) while t3
+  collapses (C .28, D .17) — the same t3-worst ordering the
+  calibration showed.
+  MATCHED TEMPLATES (within-(P,T,w,k), IN v OUT frequency;
+  denominators disclosed — 30 of 32 P_IN and 26 of 38 P_OUT
+  templates survive with both sides populated): P_IN mean IN
+  .9889 v OUT .9972 — no measurable frequency cost in this
+  desk; P_OUT .4840 v .4231 — a directional-only frequency
+  decrement on one realization, on top of the degree collapse.
+
+READING (descriptive, within the desk's fences): the CH-F3
+calibration collapse is associated with DEGREE-10 POLYNOMIAL
+EXTRAPOLATION, not trig-frequency extrapolation. With exactly-
+trained P forms, both arms are near ceiling on fresh covered
+I0/t2-t3 states EVEN AT frequencies 20-25 they never saw; with
+the degree-10 P family (the calibration eval bank's class),
+accuracy halves or worse at either frequency. This coheres with
+the calibration's family split: the failed CH-F3 eval bank was
+entirely degree-10 forms, while the passing CH-F4 bank's P1
+forms recurred from trained banks. The within-support
+learnability picture is thereby SHARPENED, not changed: ON
+THIS DESK'S FRESH COVERED I0/t2-t3 POPULATION, the trained-P
+cells sit near ceiling (including at never-seen frequencies)
+while the novel degree class collapses — a population-scoped
+observation, never generalization evidence and never a rescue
+of the SUPPORT-NOT-LEARNED booking. The
+SUPPORT-NOT-LEARNED booking stands as written (its gate was
+defined over its frozen artifact); this desk locates the
+failure axis.
+
+REGISTERED-PRIOR ACCOUNTING: resolution RANGE-SENSITIVE
+CORRECT; axis prediction WRONG — the prior named frequency (B)
+as the heavier axis and B shows no measurable cost; the degree
+axis (C) carries the collapse. The A >= 75% leg, flagged as
+the riskier half, passed at .99. Booked against the house:
+right verdict, wrong mechanism weighting.
+
+CONFOUND AND CENSUS NOTES (on the record): the P-OUT cells
+carry systematically larger legal sets (legal-K 4-5 in 88/166
+C and 78/156 D states v 41/180 and 40/180 in A/B), so degree
+extrapolation and candidate-set size co-vary and the frozen
+statistic cannot fully separate them; an UNREGISTERED
+descriptive K-matched slice (receipt-auditor recompute from
+the raw rows, quoted as disclosure only) shows the degree gap
+SURVIVING at matched K (K=3: A .988 v C .582; K>=4: A .973-
+1.000 v C .379 / D .250; K=2: 1.000 in all four cells), so
+the verdict is unlikely to be a chance-baseline artifact,
+though no registered statistic supports that sentence. Candidate 0 was preserved
+throughout, is never the label, and is never strictly
+top-ranked by either arm in any of the 682 scored states —
+matching the calibration disclosure; effective competitive set
+remains n-1. UNREGISTERED F-H ASYMMETRY (banked, not claimed):
+in the P-OUT cells the per-arm rates split widely (C F .5904 v
+H .4277 = 27 solves of 166; D F .6154 v H .2308 = 60 solves of
+156). The frozen fence covers only SMALL F-H differences, so
+this gap is not covered by it; conversion is refused instead
+under the prereg's no-inferential-law clause and the
+single-realization fence, and the gap is banked as a
+hypothesis for a future preregistered paired test (its
+direction matches the SCORE-0-era descriptive residue where
+FACTOR degraded more gracefully off-support).
+
+DESIGN DISCLOSURES (carried from the prereg): P IN reuses
+trained forms verbatim — the pre-commit design audit verified
+by enumeration that every two-term monomial-sum P of degree
+<= 9 is consumed across burned banks (a disclosed design
+constraint, not a gated receipt field); parent novelty came
+from the fresh inert-addend axis shared by all cells; the
+design audit's 24-base engine sample (pricing only) is part of
+the burned record; the committed smoke slice uses four
+explicit per-cell picks covering both T/w/k, not the prereg
+prose's "stride-72" wording (coverage requirement met,
+divergence disclosed).
+
+FENCES. Mac/mps; single realization (seed 15001); descriptive
+mechanism desk — no rescue, no heldout authority, no
+representation claim, never generalization evidence, no
+significance statements (none were preregistered); the booked
+calibration verdict and every prior verdict stand unchanged; pooled statistic double-counts correlated
+arm-pairs by construction (per-arm rates persisted); all 1,152
+bases burned; the successor birth/eval design is its own GO —
+this desk's answer says the repair axis is POLYNOMIAL-FORM
+COVERAGE (degree/form diversity in the augmentation), not
+frequency coverage; receipts force-added small-text
+(scores.jsonl 682 rows + attempts.jsonl 1,152 rows); after
+booking commit/push, census, STOP.
+

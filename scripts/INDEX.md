@@ -3095,6 +3095,12 @@ MATH-CYBER-1 SVP-LENGTH-CONTROL-DESK-0 — desk-only triage of the length/factor
 - `load_rows()` — Returns {band: {seed: [row,...]}} with rows in band file
 - `main()`
 
+### scratch/mathworld1_svpnuisdesk.py
+MATH-CYBER-1 SVP-GRID-CH-F3-NUISANCE-DESK-0 — post-hoc mechanism diagnostic of the booked SUPPORT-NOT-LEARNED verdict: is the CH-F3 covered-cell collapse associated with parameter EXTRAPOLATION (P degree / trig frequency beyond the trained augmentation envelope), or is covered competence low even INSIDE the envelope? Descriptive/mechanistic only; can never rescue CALIBRATION-SCORE-15001 or grant heldout authority. The sealed test artifact is neither named nor read anywhere here.
+
+- `build_cell(cell, Ps, Cs)`
+- `main()`
+
 ### scratch/mathworld1_svprep.py
 MATH-CYBER-1 SVP-REPLICATION-DESIGN-0 — freeze the two additional paired-birth inits (seed law 9001 + 1000k, k=1,2 -> 10001, 11001) BEFORE any replication outcome exists. Zero training.
 

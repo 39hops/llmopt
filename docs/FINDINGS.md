@@ -3686,3 +3686,17 @@ regime tag on every bullet is the fence.
   BY SITE not by base; effective candidate set is n-1 (index 0
   never label, never top-ranked); seed 15001 only.
   RESULTS.md#L53128
+- [SINGLE-SEED] [math-cyber] [mac] CH-F3-NUISANCE-DESK-0:
+  RANGE-SENSITIVE with the axis inverted from the prior — the
+  covered-cell collapse is carried by POLYNOMIAL DEGREE, not
+  trig frequency: pooled accuracy .9889 (trained P, trained c)
+  and .9972 (trained P, frequency-extrapolated c 20-25) v .5090
+  and .4231 on degree-10 P at either frequency; matched
+  templates show no measurable frequency cost on trained forms;
+  the degree gap survives legal-K matching (unregistered
+  slice); degree-10 P also shifts the teacher's term toward
+  t4/t5 (differential censoring, counted). SUPPORT-NOT-LEARNED
+  stands; heldout stays sealed AND retired. Banked unclaimed:
+  large P-OUT F-H split (D .615 v .231) awaits a preregistered
+  paired test. Repair axis for any successor diet =
+  polynomial-form coverage. RESULTS.md#L53351
