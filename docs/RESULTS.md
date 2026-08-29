@@ -53955,3 +53955,79 @@ receipt's shas (future scorers MUST pin all three); the two
 held-out cells and one frozen HASH permutation bound every
 claim; after booking commit/push, census, STOP.
 
+## PRE-REG MATH-CYBER-1-SVP-GRID-CALIBRATION-SCORE-16001: one scoring run of the two sealed seed-16001 checkpoints on the frozen IN-SUPPORT covered-calibration artifact only — the already-frozen frequency-stratified competence gate applied mechanically (per arm c-IN >= 36/48 AND c-OUT >= 36/48 AND no {term x regime} stratum < 12/24), with ALL EIGHT arm x term x regime cells reported separately; sealed siblings neither named nor opened; FIRED grants heldout authority to a later GO with heldout before the secondary scorer, SUPPORT-NOT-LEARNED stops the chain (2026-08-29, Mac)
+
+SCOPE. Applies the gate registered at IN-SUPPORT-CONFIRMATORY-
+DESIGN-0, unchanged. One scorer invocation, calibration
+artifact ONLY (af1a4aa1..., pin-gated pre- and post-run); the
+sealed test artifact and the secondary robustness artifact are
+neither named nor read anywhere in the scorer (grep-checked
+zero path/sha references beyond the docstring authority rule).
+Zero training, zero checkpoint mutation, zero sympy. Seed-16001
+checkpoints pinned (FACTOR c3f7a3e9..., HASH 645fc24f..., init
+2a580568...); birth and envelope receipts pinned; 19,142,016
+params gated per arm.
+
+REPORTING LAW (per the GO): all EIGHT arm x term x regime cells
+are reported separately in the receipt —
+F|t2|IN, F|t2|OUT, F|t3|IN, F|t3|OUT, H|t2|IN, H|t2|OUT,
+H|t3|IN, H|t3|OUT (each of 24) — alongside the four per-arm
+regime totals (each of 48) that the gate consumes. The gate
+itself is UNCHANGED from the frozen registration; the
+eight-cell report is presentation, not a new decision rule.
+
+FROZEN GATE (verbatim from DESIGN-0): per arm, c-IN covered
+top-1 >= 36/48 AND c-OUT covered top-1 >= 36/48 AND none of
+the four {term x regime} strata (24 each) below 12. BOTH arms
+pass => CALIBRATION FIRED — a later GO gains authority to open
+the sealed test sha, and strict heldout scoring runs BEFORE
+the independent secondary P-OUT scorer (an ordering registered
+in the BIRTH-16001 GO and its prereg's NEXT paragraph, carried
+here unchanged). ANY leg fails =>
+SUPPORT-NOT-LEARNED — book, STOP, sealed siblings stay
+unopened; informative about within-support learnability only,
+never a compositional-generalization result.
+
+SCORING LAW (verbatim svpadj/lineage): standing prompt,
+continuations from stored factor_code/hash_code + EOS in
+stored candidate order, pessimistic top-1 by mean continuation
+logprob, T=9 and mean/sum + full-order identity gates
+(near-vacuous for fixed-width arms, disclosed), is_label
+consumed only after scores exist, blind one-pass scoring of
+all 96 states, structure gates re-derived from row metadata
+(96 rows, covered-I0 only, 24 per {term x regime}, ordinals 0,
+unique curs, exactly one label per state, F/H roundtrips).
+
+DESCRIPTIVE RIDERS (post-verdict, never gate-relevant): MRR,
+by-block-D_before, by-P-form, by-c-value, candidate-0 censuses
+(strict-top convention), legal-K census. F-v-H comparisons on
+calibration are DESCRIPTIVE only (per-arm binomial sigma at
+n=48/stratum-pair scale ~3-4 solves; no F-v-H reading is
+taken here — the confirmatory contrast lives in the sealed
+test under its frozen law).
+
+REGISTERED PRIOR (house, on record): BOTH arms PASS. Grounds:
+the calibration P forms are exactly-trained and fully
+augmentation-represented, and the nuisance desk measured
+near-ceiling covered accuracy on trained forms at BOTH
+frequency regimes (A .9889 / B .9972 pooled) on the sibling
+seed-15001 realization; the c-OUT legs are the risk (fresh
+addend axis + regime), but the desk's B-cell result prices
+them high. Named risk: seed-to-seed realization variance —
+the desk evidence is seed-15001, this scores seed-16001.
+
+ORDER: freeze (this entry) -> scorer commit (source audit
+first) -> ONE scoring run -> dual audit -> book ->
+commit/push/census -> STOP.
+
+FENCES. Mac/mps; SINGLE-REALIZATION (seed 16001) of the
+revised protocol; within-support competence reading only,
+never generalization evidence, never F-v-H evidence, no
+equivalence from any null; held-out is BY SITE on shared base
+derivations (standing fence); effective candidate set may be
+smaller than legal K (candidate-0 census reported; never quote
+1/n as chance); outputs under logs/mathworld1/svpcalscore16/
+(refuse-if-exists), receipts force-added small-text with
+scores.jsonl; dual audit before booking; after booking
+commit/push, census, STOP.
+
