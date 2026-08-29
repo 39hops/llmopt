@@ -53477,3 +53477,164 @@ frequency coverage; receipts force-added small-text
 (scores.jsonl 682 rows + attempts.jsonl 1,152 rows); after
 booking commit/push, census, STOP.
 
+## PRE-REG MATH-CYBER-1-SVP-GRID-IN-SUPPORT-CONFIRMATORY-DESIGN-0: the successor confirmatory chain with polynomial-form nuisance held INSIDE demonstrated training support — fresh CH-F3 matched strict envelope (96 blocks over {t2,t3} x {c-IN,c-OUT}), frequency-stratified competence gate, sealed heldout for a future seed-16001 first realization, plus the independent P-OUT covered-robustness artifact with a preregistered paired McNemar law; zero training, zero scoring, zero checkpoint access under this GO (2026-08-28, Mac)
+
+INTERPRETATION CORRECTION (carried as a standing fence, and a
+correction to the NUISANCE-DESK-0 booking's axis language): the
+nuisance desk isolated the P-FORM/DEGREE-CLASS axis versus
+frequency — NOT degree alone — because its P-IN cells
+necessarily reused exact trained forms while its P-OUT cells
+used novel degree-10 forms; form identity and degree class are
+confounded in that design and no claim separates them. The
+FINDINGS bullet is corrected in place in this commit; every
+use of the desk's answer below says "P-form/degree-class".
+
+SCOPE. Design/materialization only. All prior verdicts stand;
+seed-15001 is development/mechanism evidence ONLY and may NOT
+score this new population; the old sealed heldout remains
+unopened and permanently retired (its bases are matched to the
+scored calibration bases); ZERO new training, ZERO seed-16001
+checkpoint creation, ZERO scoring under this GO.
+
+PRIMARY QUESTION (frozen for the future chain): with
+polynomial-form nuisance held inside demonstrated training
+support, do FACTOR coordinates outperform HASH on the two
+strict unseen whole-action combinations i_unprod I1/t2 and
+I1/t3?
+
+TRAINING (unchanged, reused frozen): the 74,860-row GRID-DIET
+(natural + 1,536 augmentation), batch plan (7,020), optimizer
+law, and zero-heldout-label gate — pinned by sha, not
+regenerated; NO degree-10 rows are added.
+
+PRIMARY EVAL ENVELOPE (frozen; driver
+scratch/mathworld1_svpdiet3.py committed with this entry BEFORE
+any byte): CH-F3 matched strict blocks under the verbatim
+DESIGN-1 block law. P bank = 12 trained P forms each
+represented in the frozen augmentation in ALL SIX covered cells
+(gated by census of the pinned augmentation file at run start):
+x^8+x^5, x^7, x^8+x^7, x^7+x^5, x^7+x^6, x^7+x^4, x^8,
+x^8+x^3, x^9, x^5+x^4, x^6+x^5, x^6+x^4 — the selection rule
+is FROZEN AND DISCLOSED: of the 16 fully-covered forms these
+are the top 12 by augmentation CH-F3 row count (the census is
+recorded in the receipt). Frequency regimes as
+a frozen nuisance stratum: c-IN = {9,11,12,16,18,19} (trained
+support), c-OUT = {20..25} — both regimes included by law, not
+the regime that scored best in the desk. Fresh parent
+identities via the fresh inert-addend axis k in {1,2} over
+fresh polys (7x^2, 8x^6). Horizon 576 bases per regime (1,152
+total; priced from the burned register at ~21-31% per term:
+~120-180 qualified blocks per {term x regime} v need 24).
+Strata {t2,t3} x {IN,OUT}, fill gate >= 24 each else EVAL
+NO-FIRE; selection first 24 by sig_sha per stratum (frozen: no
+P quota, deterministic sha order, per-stratum P census
+reported); D_before alternation 12/12. Split into TWO sealed
+artifacts with independent shas: covered_calibration.jsonl (96
+covered-I0 strict states) and heldout_test16.jsonl (96
+heldout-I1 + 96 robustness-I1) — SEALED for the future
+seed-16001 protocol; same base target, same term, only the
+site combination differs, under the ordinary exact-engine
+teacher law.
+
+NOVELTY (refute-on-hit): every selected cur novel v natural
+training, all bands, 566 pilot parents, 720+2,160 challenge
+parents, 15,912+10,224 DIET/EVAL-DESIGN-1 horizon parents, and
+all 3,456 NUISANCE-DESK horizon parents (all three distractor
+variants); selected target integrands disjoint from the 4,536
+train-side targets; primary and secondary populations mutually
+disjoint.
+
+FROZEN FUTURE PROTOCOL (registered now; each step its own GO):
+(1) SEED-16001 BIRTH — the FIRST realization of this revised
+confirmatory protocol, NOT a replication claim of anything:
+same frozen diet/batch-plan/optimizer law as BIRTH-15001, new
+shared double-build-gated seed-16001 init, F/H arms, equal-
+compute gates, zero eval dependency. (2) CALIBRATION GATE
+(separate scorer invocation/receipt, opens
+covered_calibration.jsonl only): per arm, c-IN covered >= 36/48
+AND c-OUT covered >= 36/48 (the standing 75% competence
+philosophy with explicit frequency-stratum protection) AND none
+of the four {term x regime} strata below 12 of its 24; BOTH arms must
+pass or the verdict is SUPPORT-NOT-LEARNED and the heldout
+stays unopened. (3) HELDOUT (separate invocation, authority
+granted only by a calibration FIRE): one joint scoring run,
+absolute held-out F-v-H top-1 on the 96 heldout-I1 states with
+exact McNemar (alpha .05) AND matched same-target transfer
+penalty q per strict block with the exact two-sided sign test;
+STRONG-FACTOR iff HELDOUT-FACTOR-WIN AND sign p < .05 AND
+q_pos > q_neg (symmetric STRONG-HASH); else
+MIXED/INCONCLUSIVE; frequency-stratum splits reported
+descriptively; robustness-I1 never enters primary
+denominators; no equivalence from null.
+
+SECONDARY INDEPENDENT TEST (frozen now; separate scorer
+invocation/receipt in the future chain; can NEVER modify the
+strict-composition verdict): pout_robustness.jsonl — fresh
+NOVEL-DEGREE-CLASS covered I0 states: DEGREE-11 two-term monic
+P forms (x^11 + x^n, n = 1..10), shape-matched to the burned
+failed degree-10 class with the degree extended. Forced
+constraint, measured before freezing: the two-term degree-10
+space is exhausted, and the design audit's engine sample found
+three-term degree-10 P shifts the teacher term entirely out of
+t2 (0 of 120), so degree-11 two-term is the nearest fresh
+member of the class; a pre-commit engine sample of THIS bank
+priced t2 at ~50% (16/32) and t3 at ~6% (2/32). After-variant
+only, mixed-frequency bank (4 c-IN + 4 c-OUT values, membership
+gated), horizon 10P x 2T x 8c x 2w x 2k = 640 bases; select
+first 48 I0/t2 by SHA256(cur) (PRIMARY stratum, HARD fill gate
+>= 48 else SECONDARY NO-FIRE, priced ~320) + first 24 I0/t3
+(prespecified SOFT control stratum, priced ~40: if fewer than
+24 qualify the control is reported over the qualified
+population with its n and flagged SHORT — the control can
+never fail the secondary; it is separately reported and never
+pooled). Frozen adjudication when seed-16001 scores it:
+hypothesis FACTOR > HASH on the 48 t2 states; exact two-sided
+McNemar on the paired discordants, alpha .05; directional win
+booked only if p < .05 AND F > H; the t3 control reported
+separately under the same law, never pooled; motivated by the
+nuisance-desk residue (a banked unclaimed single-seed split)
+and by design cannot rescue or alter the primary verdict.
+VERDICT LABELS for THIS GO (exhaustive): ENVELOPE MATERIALIZED
+/ PRIMARY MATERIALIZED, SECONDARY NO-FIRE / EVAL NO-FIRE,
+SECONDARY MATERIALIZED / EVAL NO-FIRE, SECONDARY NO-FIRE /
+GATE-REFUTED. DESIGN DELTA disclosed: unlike DESIGN-1, this
+envelope carries NO t1 covered-action control blocks — the
+competence gate's subject is the covered-I0 strict strata
+themselves, stratified by frequency regime — the protection
+this chain's measured failure mode calls for; the matched
+BLOCK law (kinds/rule/single-term/ordinals) is verbatim, the
+role plan is not, and both facts are on the record.
+Artifact list (all sha'd in the receipt): eval_blocks.jsonl,
+covered_calibration.jsonl, heldout_test16.jsonl,
+pout_attempts.jsonl, pout_robustness.jsonl.
+
+SCOPE FENCES (frozen): primary compositional test =
+action-combination OOD with P-form support controlled;
+secondary test = covered-action robustness to
+P-form/degree-class extrapolation; NEITHER establishes broad
+math OOD or universal compositionality; all results from
+seed-16001 are SINGLE-REALIZATION of this protocol until
+further seeds replicate; the two held-out cells and one frozen
+HASH permutation bound every claim.
+
+REGISTERED PRIOR (house, this GO's mechanical gates only): all
+four primary strata fill (audit engine sample prices ~190 t2 /
+~145 t3 per regime v 24) and the secondary t2 hard gate fills
+(priced ~320 v 48); the t3 soft control prices ~40 v its 24
+cap and may book SHORT. Predict FIRE on primary and secondary
+hard gates.
+Capability priors for the future scoring GOs are NOT registered
+here and belong to their own preregs.
+
+ORDER: freeze (this entry) -> driver -> design audit -> COMMIT
+-> path-isolated smoke -> ONE materialization -> dual audit ->
+book -> commit/push/census -> STOP.
+
+FENCES. Mac; deterministic given the frozen horizons; all
+1,536 fresh bases burned once inspected; big jsonl untracked,
+anchored by the force-added lock-registered receipt's
+independent shas; heldout_test16.jsonl seal is procedural
+(separate file, independent sha, frozen scorer entry gate);
+pricing descriptive/non-IID; after booking commit/push,
+census, STOP.
+
