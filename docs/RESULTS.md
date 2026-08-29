@@ -53777,3 +53777,94 @@ prereg commit (6edd9319); this amendment supplies the
 RESULTS-side record and the index amends-link. Registered at
 the DESIGN-0 prereg's INTERPRETATION CORRECTION paragraph.
 
+## PRE-REG MATH-CYBER-1-SVP-GRID-BIRTH-16001: the FIRST production birth of the revised IN-SUPPORT-CONFIRMATORY protocol — paired FACTOR/HASH over the unchanged frozen 74,860-row GRID-DIET from one shared double-build seed-16001 init (pinned 2a580568...); BIRTH-15001's optimization/equal-compute/order/abort/sealing laws reused verbatim in substance, with the init materialized by a dedicated pre-step so smoke writes no production path; ZERO evaluation scoring; seal and STOP (2026-08-29, Mac)
+
+SCOPE. First realization of the revised protocol registered at
+IN-SUPPORT-CONFIRMATORY-DESIGN-0 — NOT a replication claim of
+anything. No seed-15001 weights are reused or touched. ZERO
+calibration/heldout/secondary/old-band scoring, ZERO candidate
+inference, ZERO checkpoint probes. The birth executable
+scratch/mathworld1_svpgbirth16.py has no path or string
+dependency on covered_calibration.jsonl, heldout_test16.jsonl,
+or pout_robustness.jsonl — their frozen shas (af1a4aa1...,
+a3f6103b..., 5c85fc1f..., envelope receipt 26cb6d01...) enter
+the receipt ONLY as opaque literals, and none is opened,
+parsed, counted, or scored.
+
+INSTRUMENT (BIRTH-15001 laws verbatim in substance; the one
+registered delta is the init pre-step): arms FACTOR and HASH,
+ActionGCTok vocab 340, build_model(340, ctx=4096), 19,142,016
+params per arm, seq cap 512 gated per row; same 74,860 rows
+(natural a943ba7f... + augmentation 0ef3d8a8... + manifest
+897c8bf8..., pin-gated), same target-blind batch plan (sha
+f55e9fee..., 2,340 batches/epoch x 3 = 7,020 updates/arm,
+12-row tail/epoch, gated); law by IMPORT from the frozen
+svpbirth driver (per-arm AdamW + OneCycle, nonfinite-loss and
+nonfinite-grad abort before mutation, clip error_if_nonfinite,
+scheduler lockstep gated every batch); treatment = target
+payload only (FACTOR v HASH = P(FACTOR), 8 code atoms + EOS,
+T=9 gated with exact semantic inverse per row).
+
+SHARED INIT (delta from 15001, folding that booking's disclosed
+deviation): seed 16001; the init is materialized by a DEDICATED
+PRE-STEP (SVPGB16_MAKE_INIT=1: double-build bit-identity gate,
+sha-v-pin gate, write, exit); smoke and production REFUSE if
+the init is absent, so smoke writes no production path at all.
+Pin (computed at design time by two independent byte-equal
+builds) =
+2a580568e37ec91d976dbde0d4654a371f8a31f66dd514a78bdfd1afed3dbbaf.
+Both arms reload from the same frozen init with 2 x 59
+tensor-by-tensor torch.equal gates (count gated in production),
+storage-disjointness gate, identical param counts; neither arm
+derives from the other's model object. Seed 17001 remains an
+untouched replication slot.
+
+EXACT PRODUCTION INVARIANTS (all gated, INSTRUMENT FAILURE on
+any miss): 7,020 updates per arm; 2,021,220 continuation tokens
+per arm (= 9 x 74,860 x 3); per-batch identical F/H shapes,
+per-row lengths, target-mask and non-pad totals, plus equal
+end totals; order alternation 3,510 FACTOR-first / 3,510
+HASH-first; zero combined rows labeled i_unprod I1 t2/t3
+(re-gated at load over frozen bytes); distinct checkpoint shas;
+checkpoints written only after ALL completion gates.
+
+SMOKE (path-isolated logs/mathworld1/smoke_svpgbirth16.json,
+refuse-if-exists): both arms resident on mps, longest-prompt
+real batch + batch 0 + epoch-0 12-row tail, shared-init
+equality, backward/clip/step, both arm orders, per-batch shape
+gates; production requires smoke green AND freshness of all
+seven provenance-file shas.
+
+OUTPUTS: checkpoints/svp_grid_init_s16001.pt (pre-step),
+svp_grid_factor_s16001.pt / svp_grid_hash_s16001.pt (sealed
+unscored, refuse-if-exists), receipt
+logs/mathworld1/svpgbirth_s16001_receipt.json (all fields as
+at 15001, derived from run objects; arm_wall_s within-run-
+paired only; loss curves DESCRIPTIVE ONLY — F-v-H loss is never
+evidence of representation quality).
+
+REGISTERED PRIOR (house, mechanical gates only): all gates
+pass; wall predicted near BIRTH-15001's 3,943.5 s, band
+3,400-4,600 s. No capability prediction under this GO.
+
+NEXT (own GOs, frozen at DESIGN-0): CALIBRATION-SCORE-16001
+opens covered_calibration.jsonl only, applies the frozen
+frequency-stratified gate (per arm c-IN >= 36/48 AND c-OUT >=
+36/48 AND no {term x regime} stratum < 12/24; both arms or
+SUPPORT-NOT-LEARNED with heldout inaccessible); on FIRE, strict
+heldout scoring runs BEFORE the independent secondary P-OUT
+scorer; separate invocations/receipts throughout.
+
+ORDER: freeze (this entry) -> driver -> source audit -> COMMIT
+-> init pre-step -> smoke -> ONE production birth -> dual audit
+-> book -> commit/push/census -> STOP.
+
+FENCES. Mac/mps (no cross-run bit-exact precondition; paired
+arms share the run); SINGLE-REALIZATION of the revised protocol
+(seed 16001) for every downstream claim; loss curves
+descriptive only; checkpoints sealed unscored; big .pt
+untracked, anchored by the force-added lock-registered
+receipt's shas — future scorers MUST pin all three; the two
+held-out cells and one frozen HASH permutation bound every
+claim; after booking commit/push, census, STOP.
+
