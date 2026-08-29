@@ -54956,3 +54956,95 @@ anchors THESE bytes only (no re-run reproducibility claim on
 mps); receipts force-added small-text (scores.jsonl included);
 every claim grounded in THIS run's tool output; dual audit
 before booking; after booking commit/push, census, STOP.
+
+## PRE-REG MATH-CYBER-1-SVP-GRID-HELDOUT-SCORE-17001: the seed-17001 strict heldout endpoint of the frozen replication protocol — ONE joint scoring run of the fresh-init checkpoints on the same frozen heldout_test16 bytes (a3f6103b...) under the unchanged joint law (96-state exact McNemar + 96-block matched transfer v the frozen seed-17001 calibration raw scores + directional conjunction, alpha .05), mechanically mapped to the frozen replication outcomes; no pooling with seed 16001 (2026-08-29, Mac)
+
+QUESTION. Does the seed-16001 STRONG-FACTOR result reproduce
+under a fresh initialization with every other experimental
+variable fixed?
+
+AUTHORITY. CALIBRATION-SCORE-17001 = CALIBRATION FIRED (F 93/96,
+H 96/96), verified mechanically from its frozen receipt before
+the heldout bytes open. c0 for matched transfer = the FROZEN
+seed-17001 calibration raw scores (74b2bad6..., pinned);
+calibration is NOT rescored. P-OUT untouched. No law changes,
+no filtering, no threshold changes, no redesign from seed-16001
+or calibration-17001 details.
+
+INSTRUMENT. scratch/mathworld1_svpheldout17.py, generated
+MECHANICALLY from the booked svpheldout16 scorer (1647a4a7
+lineage): 64 changed lines {seed label, path,
+checkpoint/init/birth-receipt/calibration pins, provenance
+self-references, the three-miss docstring count} plus TWO
+registered additions absent from the 16001 sibling because this
+stage carries the replication adjudication: (a) the frozen
+replication-status mapping computed mechanically in-receipt
+(STRONG-FACTOR => REPLICATES-STRONG-FACTOR; else F>H =>
+REPLICATES-DIRECTION-ONLY; else FAILS-REPLICATION;
+REPLICATION-NOT-REACHED unreachable once calibration authority
+is gated), and (b) its receipt field + print. A fresh-context
+verifier diffs the instruments BEFORE inference and must
+confirm the joint law (endpoints, thresholds, anti-peek order,
+gates) byte-unchanged and the additions exactly the registered
+mapping; inference only on PASS.
+
+PINS (pre- and post-run): heldout a3f6103b...;
+covered_calibration af1a4aa1...; svpdiet3 receipt 26cb6d01...;
+BIRTH-17001 receipt fb607dd5...; calibration-17001 receipt
+ec0b3285... + raw scores 74b2bad6...; checkpoints FACTOR
+12e19fae... / HASH e24237b8... / init 4384ed98...; 19,142,016
+params/arm gate.
+
+FROZEN LAW (verbatim from the 16001 sibling and cd6db7e3):
+anti-peek order pins -> authority -> heldout bytes -> structure
+gates (96 heldout-I1 primary + 96 robustness-I1 rider,
+one-to-one block/base_signature/term match to calibration,
+labels (i_unprod, I, 1)) -> load -> blind-score the 96 primary
+-> persist + hash raw scores -> hard gates (T=9, finite,
+mean/sum order identity, roundtrips) -> ENDPOINT 1 (F/H top1,
+discordants, exact two-sided McNemar, alpha .05;
+HELDOUT-FACTOR-WIN iff F>H and p<.05, symmetric, else
+INCONCLUSIVE) -> ENDPOINT 2 (all 96 frozen blocks INCLUDING the
+three FACTOR calibration-miss blocks; q = drop_H - drop_F,
+positive favors FACTOR; q census + exact two-sided sign test
+over nonzero q) -> joint verdict (STRONG-FACTOR iff
+HELDOUT-FACTOR-WIN AND sign p<.05 AND q+>q-; symmetric
+STRONG-HASH; else MIXED/INCONCLUSIVE) -> frozen replication
+mapping -> primary receipt -> only then descriptive riders
+(transition anatomy + baseline-asymmetry statement +
+both-covered-correct rider; t2/t3, c-IN/c-OUT, candidate-0
+census, per-P direction; robustness-I1 rider under its
+existing law, never in primaries). NO pooling of seed rows or
+p-values; the realization table books per-seed:
+seed | F covered | H covered | F heldout | H heldout |
+F-only/H-only | McNemar p | q+/q- | sign p | joint verdict.
+
+REGISTERED PRIOR (house, on record): REPLICATES-STRONG-FACTOR.
+Grounds: the 16001 effect size (44/1 discordants, both legs
+p<1e-11) leaves enormous room for seed attenuation before the
+conjunction fails, and the 17001 calibration baselines are
+near-ceiling like 16001's (floor confound absent). Named risk:
+mps realization variance shrinking the heldout split into
+DIRECTION-ONLY; FAILS-REPLICATION would require a sign
+reversal, which nothing measured predicts — being wrong here
+books honestly either way.
+
+INTERPRETATION FENCE (frozen): a successful result establishes
+TWO INDEPENDENT INITIALIZATION REALIZATIONS under one fixed
+dataset, one fixed HASH permutation, one fixed evaluation
+population, one fixed protocol. It does NOT establish
+seed-population generality or HASH-permutation generality; the
+16001 interpretation fence (no universal compositionality, no
+broad OOD, no degree-class robustness — the P-OUT reverse split
+stands booked beside it) carries verbatim.
+
+ORDER: freeze (this entry) + scorer commit -> fresh-context
+verifier -> ONE run -> independent receipt recomputation (dual
+audit) -> book -> commit/push/census -> STOP. Outputs
+logs/mathworld1/svpheldout17/ (refuse-if-exists).
+
+FENCES. Mac/mps; per-seed claims only; c0 cross-run mps
+forwards (frozen by prereg); candidate-0 census, never 1/n as
+chance; the two held-out cells and one frozen HASH permutation
+bound every claim; receipts force-added small-text; every claim
+grounded in THIS run's tool output.
