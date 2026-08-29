@@ -2997,6 +2997,13 @@ MATH-CYBER-1 SVP-GRID-EVAL-DESIGN-1 — EVAL-ONLY successor to the booked SVP-GR
 - `smoke_slice()`
 - `main()`
 
+### scratch/mathworld1_svpdiet3.py
+MATH-CYBER-1 SVP-GRID-IN-SUPPORT-CONFIRMATORY-DESIGN-0 — materialize the fresh successor confirmatory eval envelope with polynomial-form nuisance held INSIDE demonstrated training support (the CH-F3-NUISANCE-DESK-0 mechanism answer), plus the independent P-OUT covered-robustness artifact. ZERO training, ZERO scoring, ZERO checkpoint access; seed-16001 is a later GO. The old sealed heldout stays retired and is not named here.
+
+- `build_f3(tag, Ps, Cs, kpolys)`
+- `smoke_slice()`
+- `main()`
+
 ### scratch/mathworld1_svpeval.py
 MATH-CYBER-1 SVP-EVALBAND-0 — materialize + qualify the frozen primary evaluation band (seeds 9600-9619 x L4-L7, 80 episodes) under the exact 101-corpus trajectory law (mathworld0 greedy-hce, 12-decision budget, 60s wall cap), emitting a SEMANTIC treatment-neutral candidate artifact: every legal candidate carries child_sstr AND its canonical FINAL ActionProgram + program_text. Zero model, zero training.
 

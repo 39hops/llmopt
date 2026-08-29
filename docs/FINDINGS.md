@@ -3703,3 +3703,18 @@ regime tag on every bullet is the fence.
   large P-OUT F-H split (D .615 v .231) awaits a preregistered
   paired test. Repair axis for any successor diet =
   polynomial-form coverage. RESULTS.md#L53351
+- [MECHANISM-CONFIRMED] [math-cyber] [mac] IN-SUPPORT-
+  CONFIRMATORY-DESIGN-0 materialized the successor envelope on
+  the first attempt: all four {t2,t3} x {c-IN,c-OUT} strata
+  filled hugely (180/180/144/144 v N=24, zero block failures),
+  96 matched strict blocks frozen (calibration 96 covered-I0 /
+  sealed heldout_test16 192), plus the independent degree-11
+  P-OUT robustness artifact (48 primary-t2 + 24 control-t3);
+  frequency-stratified competence gate and both confirmatory
+  laws frozen for the seed-16001 first realization. Pricing
+  lesson booked: engine samples are unrepresentative across
+  NOVEL-CLASS product spaces (secondary missed 0.52x/4.75x both
+  ways) while the same-scale sample on trained forms priced to
+  5%. The nuisance-desk axis language is amended to
+  P-form/degree-class (form and degree confounded).
+  RESULTS.md#L53641

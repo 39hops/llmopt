@@ -53638,3 +53638,142 @@ independent shas; heldout_test16.jsonl seal is procedural
 pricing descriptive/non-IID; after booking commit/push,
 census, STOP.
 
+## VERDICT MATH-CYBER-1-SVP-GRID-IN-SUPPORT-CONFIRMATORY-DESIGN-0: ENVELOPE MATERIALIZED — all four primary strata filled (t2 IN/OUT 180/180, t3 IN/OUT 144/144 v the frozen N=24) with zero block failures, 96 matched strict blocks frozen into covered_calibration.jsonl (96 states) and SEALED heldout_test16.jsonl (192 states); the secondary degree-11 P-OUT robustness artifact filled both strata (t2 166 v the hard 48, t3 190 v the soft 24); the seed-16001 birth is now the unblocked next GO (2026-08-28, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-GRID-IN-SUPPORT-CONFIRMATORY-
+DESIGN-0 (driver scratch/mathworld1_svpdiet3.py committed at
+6edd9319 BEFORE any byte; pre-commit design audit returned 3
+blockers, all folded pre-commit: the secondary class was
+RE-PRICED from three-term degree-10 — whose teacher term the
+audit's engine sample measured entirely out of t2, 0/120 — to
+degree-11 two-term monic forms with a fresh engine sample; the
+smoke was rebuilt to exercise the secondary emission path with
+a materialized-verdict production gate; the mid-write SEC-I1
+gate was routed through the receipted refuted() path; plus 6
+should-fixes: the P12 selection rule disclosed as top-12-of-16
+fully-covered by augmentation exposure, exhaustive verdict
+labels preregistered, the dropped t1-control leg disclosed as a
+design delta, C_SEC membership gates, N-per-stratum receipt
+fields, augmentation-coverage census in the receipt). The
+NUISANCE-DESK FINDINGS bullet was corrected IN PLACE in the
+prereg commit: the desk's axis is P-FORM/DEGREE-CLASS (form
+identity and degree class confounded), not degree alone — a
+standing fence for every downstream use.
+
+RESULT (mechanical; receipt
+logs/mathworld1/svpdiet3/svpdiet3_receipt.json, wall 2,105 s +
+346 s secondary, completion_commit 6edd9319 = the prereg
+commit; independent session recount of the frozen bytes matched
+every number):
+  PRIMARY ENVELOPE: 1,152 fresh bases (12 augmentation-fully-
+  represented trained P forms x both frequency regimes x fresh
+  addend axis), ZERO qualification failures; strata t2|IN 180,
+  t2|OUT 180, t3|IN 144, t3|OUT 144 v N=24 => fill gate FIRES
+  on all four. 96 blocks selected first-24-by-sha per stratum,
+  D_before 12/12 in all eight cells; covered_calibration.jsonl
+  (sha af1a4aa1...) = 96 covered-I0 strict states exactly
+  24 per {term x regime}, all ordinal 0; heldout_test16.jsonl
+  (sha a3f6103b...) = 96 heldout-I1 + 96 robustness-I1, all
+  ordinal 1, SEALED for the seed-16001 protocol; 96/96 matched
+  block pairing (same base, same term, site combination only)
+  session-verified; zero cur overlap v natural/augmentation
+  (direct recount) and v every burned horizon (refute-on-hit
+  gates passed); zero selected-target overlap with the 4,536
+  train-side targets (receipt field).
+  SECONDARY ARTIFACT: 640 degree-11 bases, census t2 166 /
+  t3 190 / out-of-scope 284, zero fails, zero I1/t2-t3
+  teachers (the refute branch never armed); pout_robustness
+  .jsonl (72 states: 48 primary-t2 + 24 control-t3, all
+  ordinal 0, regime census t2 26 IN / 22 OUT, t3 12/12);
+  control NOT short; mutually disjoint from the primary
+  populations (360/360 unique curs across all three
+  artifacts). DISCLOSURE (receipt audit): the smoke's 6-base
+  secondary slice is the first 6 rows of the LIVE production
+  horizon (unlike the primary smoke, which used burned
+  DESIGN-0 bases), and 2 of those bases landed among the 48
+  selected primary-t2 rows — smoke performs zero model access
+  and qualify_parent is a deterministic engine oracle, so
+  nothing leaked to any learner, but the overlap is on the
+  record and a successor should slice its secondary smoke from
+  a burned tail.
+
+REGISTERED-PRIOR ACCOUNTING: primary and secondary hard gates
+predicted FIRE — CORRECT. Scoring the full pricing register:
+the PRIMARY prices were nearly exact (t2 priced ~190/regime,
+measured 180 = 0.95x; t3 ~145, measured 144 = 0.99x) while the
+SECONDARY prices missed in both directions (t2 priced ~320
+from the 16/32 pre-commit engine sample, measured 166 = 0.52x;
+t3 priced ~40 from 2/32, measured 190 = 4.75x). The lesson,
+booked precisely: a small engine sample is unrepresentative
+across a NOVEL-CLASS product space whose term distribution is
+heterogeneous in the bank parameters — not small samples per
+se (the comparable-scale primary sample on trained forms was
+accurate to 5%). The gates themselves were never at risk
+(166 >= 48, 190 >= 24).
+
+FROZEN FUTURE PROTOCOL (registered in the prereg, restated):
+(1) seed-16001 F/H birth over the unchanged 74,860-row diet /
+7,020-batch plan — the FIRST realization of this revised
+protocol, not a replication claim; (2) calibration gate with
+frequency-stratum protection (per arm c-IN covered >= 36/48
+AND c-OUT covered >= 36/48 AND none of the four {term x
+regime} strata below 12/24; both arms or
+SUPPORT-NOT-LEARNED); (3) heldout one joint run (96-state
+McNemar + 96-block q sign test + directional conjunction);
+(4) secondary P-OUT test, separate invocation (FACTOR > HASH
+on 48 t2 states, exact two-sided McNemar at alpha .05, t3
+control separate, can never modify the strict verdict). Also
+carried verbatim from the prereg: heldout McNemar and sign
+test at alpha .05; robustness-I1 never enters primary
+denominators; the seed-16001 init is a new shared
+double-build-gated init with equal-compute gates and zero eval
+dependency; ALL prior verdicts stand; seed-15001 may NOT score
+any of these artifacts; the old sealed heldout stays retired.
+
+ARTIFACT INTEGRITY: all five jsonl (eval_blocks d500ee55...,
+covered_calibration af1a4aa1..., heldout_test16 a3f6103b...,
+pout_attempts, pout_robustness) sha'd in the force-added
+lock-registered receipt; big jsonl stay untracked; the future
+scorers MUST pin their artifact's sha before any load; all
+1,792 fresh bases (1,152 + 640) are BURNED for future designs
+— the prereg's FENCES paragraph wrote "1,536 fresh bases", a
+copy-slip from its own TRAINING line; the correct burned count
+is 1,792, named here explicitly, correction in the
+conservative direction (more burned). The P12 ranking claim
+("top 12 of 16 fully-covered by row count") is receipt-backed
+only at the eligibility grain (p12_aug_cell_coverage = 6/6 for
+all twelve); the row-count ranking itself was recomputed and
+confirmed independently by both audits (49..36 v 35..33, no
+tie straddling the cut) and is disclosed here rather than
+carried as a receipt field.
+
+FENCES. Mac; deterministic given the frozen horizons; primary
+compositional test = action-combination OOD with P-form
+support controlled; secondary = covered-action robustness to
+P-form/degree-class extrapolation (degree-11 two-term monic —
+the nearest fresh member of the failed class; shape-matched,
+degree-extended); neither establishes broad math OOD or
+universal compositionality; every future seed-16001 result is
+SINGLE-REALIZATION of this protocol; the two held-out cells
+and one frozen HASH permutation bound every claim;
+heldout_test16 seal is procedural; pricing non-IID (now with a
+measured small-sample failure mode); after booking
+commit/push, census, STOP.
+
+## AMENDMENT MATH-CYBER-1-SVP-GRID-CH-F3-NUISANCE-DESK-0-AXIS: the desk's axis language is corrected from "POLYNOMIAL DEGREE" to "P-FORM/DEGREE-CLASS" — form identity and degree class are confounded in that design (P-IN reused exact trained forms; P-OUT used novel degree-10 forms) and no claim separates them (2026-08-28, Mac)
+
+Target: VERDICT MATH-CYBER-1-SVP-GRID-CH-F3-NUISANCE-DESK-0
+(RESULTS.md L53351). The verdict's numbers, resolution
+(RANGE-SENSITIVE), fences, and every mechanical statement stand
+unchanged; only the axis NAME is corrected. The desk's P-IN
+cells necessarily reused exactly-trained P forms (the two-term
+degree<=9 space was exhausted) while its P-OUT cells used novel
+degree-10 forms, so "the collapse is carried by polynomial
+degree" overstates what the crossing can separate: the isolated
+axis is P-FORM/DEGREE-CLASS versus frequency. The frequency
+null is unaffected. The FINDINGS bullet was corrected in place
+(named correction) in the IN-SUPPORT-CONFIRMATORY-DESIGN-0
+prereg commit (6edd9319); this amendment supplies the
+RESULTS-side record and the index amends-link. Registered at
+the DESIGN-0 prereg's INTERPRETATION CORRECTION paragraph.
+
