@@ -54031,3 +54031,103 @@ smaller than legal K (candidate-0 census reported; never quote
 scores.jsonl; dual audit before booking; after booking
 commit/push, census, STOP.
 
+## VERDICT MATH-CYBER-1-SVP-GRID-CALIBRATION-SCORE-16001: CALIBRATION FIRED — both arms clear the frozen frequency-stratified competence gate near ceiling (FACTOR 47/48 c-IN and 47/48 c-OUT; HASH 48/48 and 48/48; all eight arm x term x regime cells at 23-24 of 24 v the 12/24 floor); the in-support repair holds at BOTH frequency regimes; heldout authority is granted to a later GO, strict heldout before the secondary scorer (2026-08-29, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-GRID-CALIBRATION-SCORE-16001
+(scorer scratch/mathworld1_svpcalscore16.py committed at
+b91ee2d4 BEFORE any inference; pre-inference source audit
+returned zero blockers and 4 should-fixes, all folded —
+cell/regime-total consistency gate, structure census derived
+from rows rather than literals, prereg wording tightened, the
+heldout-before-secondary ordering attributed to its actual
+registration in the BIRTH-16001 GO). One scoring run,
+anti-peeking order held: pins -> structure gates -> load ->
+blind score all 96 states -> raw scores written and hashed ->
+hard gates -> frozen gate computation -> verdict -> post-run
+pin re-gates (incl. init) -> receipt -> only then riders. Zero
+training, zero checkpoint mutation, zero sympy; the sealed
+test artifact and the secondary robustness artifact are
+neither read nor referenced by any path or sha in the scorer
+(grep-checked; docstring authority-rule prose only). Receipt-
+audit disclosures: the docstring's label-separation law is
+satisfied in the SCORING sense (label consumed for ranking
+only after both arms' scores exist) while a pre-load
+cardinality gate also reads is_label for a count — nothing
+from it reaches scoring; the scorer ran without a smoke pass
+(a deviation from sibling convention, cost bounded by the
+2.1 s wall and the refuse-if-exists guard) and without a
+captured run log, so device/wall rest on the receipt fields
+alone.
+
+HARD GATES (all fired): three pre-run pins + two checkpoint +
+init pins verified pre- AND post-run; structure re-derived from
+row metadata (96 rows, covered-I0 only, exactly 24 per
+{term x regime}, ordinals all 0, 96 unique curs, one label per
+state, F/H roundtrips on all 321 stored candidates); T=9 on
+all 642 F/H candidate scorings; 192 rank and 192 full-order
+identity checks (near-vacuous for fixed-width arms,
+disclosed); cell-sum-to-regime-total consistency gated;
+19,142,016 params per arm. Receipt
+logs/mathworld1/svpcalscore16/svpcalscore16_receipt.json
+(scoring wall 2.1 s post-load); raw rows scores.jsonl (96, sha
+in receipt); riders.json post-receipt.
+
+FROZEN GATE (mechanical) — ALL EIGHT CELLS, per the GO's
+reporting law (each of 24):
+  FACTOR t2-IN 23   t2-OUT 23   t3-IN 24   t3-OUT 24
+  HASH   t2-IN 24   t2-OUT 24   t3-IN 24   t3-OUT 24
+Regime totals (the gate's consumed statistic, each of 48):
+FACTOR c-IN 47, c-OUT 47; HASH c-IN 48, c-OUT 48 — v the bars
+>= 36/48 per arm per regime and >= 12/24 per stratum: every
+leg passes for BOTH arms => CALIBRATION FIRED. A later GO
+gains the authority to open the sealed test sha (a3f6103b...)
+and apply the frozen confirmatory law; strict heldout scoring
+runs BEFORE the independent secondary P-OUT scorer, separate
+invocations and receipts.
+
+READING (within-support competence only, never generalization
+evidence): the in-support envelope did what the NUISANCE-DESK
+mechanism answer predicted a trained-P-form population would
+do — both arms sit at 95.8-100% per cell (regime totals
+97.9-100%) on fresh covered strict states, INCLUDING the
+frequency-extrapolated c-OUT regime (20-25, never in
+training), on a fresh seed. This COHERES WITH the desk's
+seed-15001 P-OUT bracketing rather than establishing it: this
+run scored only trained P forms, so it adds the second-seed
+P-IN leg and nothing about the degree-10 collapse; the
+P-form/degree-class confound fence stands, and the 15001
+SUPPORT-NOT-LEARNED booking stands as written (its gate was
+defined over its own frozen artifact; nothing here rescues or
+reinterprets it). With polynomial-form nuisance held inside
+demonstrated support, covered competence is robust — a
+statement about THIS envelope's population only. No F-v-H
+reading is taken (the 1-2 solve differences are far inside
+noise; the confirmatory contrast lives exclusively in the
+sealed test).
+
+REGISTERED-PRIOR ACCOUNTING: CORRECT (predicted both arms
+pass; both did, near ceiling — the named seed-to-seed risk did
+not materialize). Chain capability-gate track record: the
+seed-15001 calibration prior was wrong, this one right.
+
+DESCRIPTIVE RIDERS: MRR FACTOR .9896 / HASH 1.0000; candidate
+0 never the label and never strictly top-ranked (effective
+competitive set n-1; never quote 1/n as chance); legal-K
+census {2:15, 3:41, 4:32, 5:8}; 192 rank and 192 full-order
+identity checks. The two FACTOR misses are NOT independent
+draws: both are t2 states of the SAME P form x^5+x^4 (c=12
+and c=24, one per regime, both rank 2, both x**x-D_before
+blocks) — a shared-template residue at n=6 per P form, far
+too small to read, reported as-is.
+
+FENCES. Mac/mps; SINGLE-REALIZATION (seed 16001) of the
+revised protocol; within-support competence reading only —
+never generalization evidence, never F-v-H evidence, no
+equivalence from any null; held-out is BY SITE on shared base
+derivations; the gate numbers say nothing about the two
+withheld whole-action combinations (that is the sealed test's
+sole question) and every claim stays bounded by the two
+held-out cells and the one frozen HASH permutation; receipts force-added small-text (scores.jsonl
+96 rows included); dual audit before booking; after booking
+commit/push, census, STOP.
+

@@ -3731,3 +3731,15 @@ regime tag on every bullet is the fence.
   curves descriptive only; frequency-stratified calibration
   gate must fire before heldout_test16 opens, heldout before
   the secondary P-OUT scorer. RESULTS.md#L53871
+- [SINGLE-SEED] [math-cyber] [mac] CALIBRATION-SCORE-16001:
+  CALIBRATION FIRED near ceiling — on the in-support envelope
+  (trained P forms only, both frequency regimes) FACTOR scores
+  47/48 in each regime and HASH 96/96, v the frozen 36/48 +
+  12/24 gate; all eight arm x term x regime cells at 23-24/24;
+  the frequency-extrapolated c-OUT regime (20-25) costs nothing
+  on trained forms at a second seed, cohering with the
+  nuisance-desk P-IN result. Heldout authority granted; strict
+  heldout scoring precedes the secondary P-OUT scorer. The two
+  FACTOR misses share one P form (x^5+x^4, both rank 2) — n=6
+  residue, unread. Fences: within-support only; no F-v-H
+  reading; sealed-test question untouched. RESULTS.md#L54034
