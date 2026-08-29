@@ -55048,3 +55048,142 @@ forwards (frozen by prereg); candidate-0 census, never 1/n as
 chance; the two held-out cells and one frozen HASH permutation
 bound every claim; receipts force-added small-text; every claim
 grounded in THIS run's tool output.
+
+## VERDICT MATH-CYBER-1-SVP-GRID-HELDOUT-SCORE-17001: REPLICATES-STRONG-FACTOR — the frozen joint conjunction fires again at the fresh initialization: FACTOR 75/96 v HASH 63/96 on the sealed heldout (discordants 20 F-only v 8 H-only, exact McNemar p=.0357) AND matched-transfer sign test 21 positive / 6 negative q (p=.0059) AND the direction survives removing the covered-side baseline misses; the frozen replication law books its top outcome — two independent initialization realizations now return STRONG-FACTOR under one fixed protocol (2026-08-29, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-GRID-HELDOUT-SCORE-17001 (scorer
+scratch/mathworld1_svpheldout17.py committed at 90e5e92f BEFORE
+any inference; generated mechanically from the booked
+svpheldout16 scorer (parent file sha 3d427f4e..., clean at its
+booking commit lineage 1647a4a7) with only pins/paths/labels changed plus
+the two REGISTERED additions — the frozen replication-status
+mapping and its receipt field/print — a fresh-context verifier
+classified every changed line, verified the mapping exact
+against the frozen four-outcome law with NOT-REACHED
+unreachable once authority is gated, confirmed the joint law
+byte-unchanged, and recomputed all nine pins against disk:
+PASS; its one note, a 64-v-66 mechanical-line counting-basis
+difference with zero substantive lines either way, is
+disclosed). ONE joint scoring run under CALIBRATION-FIRED
+authority (verified from the frozen calibration-17001 receipt
+before the heldout bytes opened); anti-peeking order held; c0
+from the FROZEN seed-17001 calibration raw scores (74b2bad6...,
+never rescored); pout untouched; zero sympy, zero candidate
+regeneration, zero checkpoint mutation; no smoke invocation
+(refuse-if-exists sole path guard, 2.1 s scoring wall).
+
+HARD GATES (all fired): nine pins exact pre- and post-run
+(heldout a3f6103b..., calibration scores 74b2bad6... + receipt
+ec0b3285..., covered_calibration af1a4aa1..., svpdiet3 receipt
+26cb6d01..., BIRTH-17001 receipt fb607dd5..., FACTOR
+12e19fae..., HASH e24237b8..., init 4384ed98...); 96 heldout-I1
+primary + 96 robustness-I1 rider; one-to-one
+block/base_signature/term match to calibration; labels all
+(i_unprod, I, ordinal 1); T=9 everywhere; scores finite;
+mean/sum rank + full-order identity; roundtrips exact;
+param-count gate 19,142,016/arm green (asserted in-scorer).
+Receipt logs/mathworld1/svpheldout17/svpheldout17_receipt.json;
+raw rows primary_scores.jsonl (96, sha 1861e52e...),
+matched_transfer.jsonl (96), robustness_scores.jsonl (96),
+riders.json.
+
+PRIMARY ENDPOINT 1 (ABSOLUTE, n=96): FACTOR 75/96, HASH 63/96;
+discordants F-only 20, H-only 8 (n_disc 28); exact two-sided
+McNemar p = .0357 < .05 => HELDOUT-FACTOR-WIN. MRR
+(descriptive) FACTOR .8906, HASH .8160.
+
+PRIMARY ENDPOINT 2 (MATCHED TRANSFER, all 96 frozen blocks
+incl. the three FACTOR calibration-miss blocks): q_positive 21,
+q_negative 6, q_zero 69; exact two-sided sign test p = .0059 <
+.05; positive favors FACTOR.
+
+FROZEN JOINT VERDICT (mechanical): HELDOUT-FACTOR-WIN AND sign
+p < .05 AND q_positive > q_negative => STRONG-FACTOR.
+FROZEN REPLICATION MAPPING (mechanical): calibration FIRED AND
+heldout STRONG-FACTOR => REPLICATES-STRONG-FACTOR.
+
+REALIZATION TABLE (per-seed, as preregistered; NEVER pooled):
+  seed  | F cov | H cov | F held | H held | F/H-only | McNemar p | q+/q- | sign p  | joint
+  16001 | 94/96 | 96/96 | 84/96  | 41/96  | 44/1     | 2.6e-12   | 45/0  | 5.7e-14 | STRONG-FACTOR
+  17001 | 93/96 | 96/96 | 75/96  | 63/96  | 20/8     | 3.6e-02   | 21/6  | 5.9e-03 | STRONG-FACTOR
+Both realizations return STRONG-FACTOR; the seed-17001 effect
+is markedly SMALLER (43-solve v 12-solve absolute split; both
+legs near their alpha bars rather than at p<1e-11) —
+realization-level effect-size variance is real and on the
+record; no pooled estimate is computed.
+
+TRANSITION ANATOMY (required, descriptive): FACTOR
+correct->correct 75, correct->wrong 18, wrong->correct 0,
+wrong->wrong 3; HASH correct->correct 63, correct->wrong 33
+(zero covered misses). Baseline-asymmetry statement (mechanical
+field): covered misses F 3 / H 0; sign direction UNCHANGED on
+the 93 both-covered-correct blocks (F 75, H 61, q 20+/6-) — not
+driven by covered-side baseline asymmetry.
+
+REDUNDANCY DISCLOSURE (carried from the 16001 booking, same
+mechanism): with HASH at zero covered misses, the nonzero-q set
+largely coincides with the discordant set — the conjunction's
+two legs are correlated views of one paired contrast, not
+independent confirmations.
+
+WHERE THE SPLIT LIVES (post-verdict descriptive, no subgroup
+tests, cells of 24): FACTOR t2-IN 13, t2-OUT 16, t3-IN 24,
+t3-OUT 22; HASH t2-IN 20, t2-OUT 10, t3-IN 14, t3-OUT 19.
+Pooled across regime, WITHIN seed 17001 (registered riders,
+never cross-seed): t2 F 29 v H 30; t3 F 46 v H 33; c-IN F 37 v
+H 34; c-OUT F 38 v H 29. The DIRECTION of the primary contrast replicates;
+the cell-level shape does NOT match seed 16001 (there t3 was a
+HASH collapse to 2/48 and t2 favored FACTOR; here t3 carries
+FACTOR's edge at 46 v 33 while pooled t2 is even and t2-IN is 13 v 20, descriptive,
+untested) — reported as-is, no anatomy hypothesis registered
+or updated under this GO. Per-P: FACTOR >= HASH on 8 of 12
+forms. Candidate-0 (never the label): HASH ranks it strictly
+top on 26 states, FACTOR on 0 (the same one-sided census shape
+as 16001's 25/0). Legal-K {2:15, 3:41, 4:32, 5:8}.
+
+ROBUSTNESS RIDER (separate, never in primaries): 96
+robustness-I1 rows — FACTOR 75/96 v HASH 65/96; MRR .8906 v
+.8299; cell shape mirrors the primary. Descriptive only. Rider files
+are post-receipt by the anti-peek law and carry no receipt
+anchor; booking anchors: robustness_scores.jsonl 178d56ef...,
+riders.json 68e35ede... (computed at force-add).
+
+REGISTERED-PRIOR ACCOUNTING: CORRECT — the house registered
+REPLICATES-STRONG-FACTOR with mps-variance attenuation as the
+named risk; both happened: the conjunction fired AND the effect
+attenuated sharply (the named DIRECTION-ONLY risk was nearly
+realized; McNemar cleared its bar at .036, and the outcome is
+one-state sensitive: a 19/9 discordant split would give p=.087
+and book REPLICATES-DIRECTION-ONLY — descriptive sensitivity,
+not a new test; the sign leg is less brittle, 20/7 still
+.019). On the chain's full-day record: this heldout prior
+right (17001); the 16001 heldout prior registered
+MIXED/INCONCLUSIVE with no confident direction and the outcome
+was STRONG-FACTOR; calibration priors right twice; P-OUT prior
+decisively wrong.
+
+READING (inside the frozen fence): two independent
+initialization realizations, under ONE fixed dataset, ONE
+frozen HASH permutation, ONE fixed evaluation population, and
+ONE fixed protocol, both return STRONG-FACTOR on the two
+withheld whole-action combinations with polynomial-form support
+controlled. This retires the single-realization fence on the
+seed axis for THIS protocol and nothing more: it does NOT
+establish seed-population generality (n=2 realizations, one
+shared everything-but-init), HASH-permutation generality (one
+permutation ever tested), degree-class robustness (the P-OUT
+reverse split stands booked), universal compositionality, broad
+math OOD, or solve-rate improvement. Effect size is
+realization-dependent (44/1 v 20/8 discordants); any future
+claim quotes the per-seed table, never a pooled number.
+
+FENCES. Mac/mps; per-seed reporting only, no pooled rows or
+p-values ever; c0 values are cross-run mps forwards (frozen by
+prereg); the seed-17001 legs sit near their alpha bars — a
+third preregistered realization (no seed currently reserved)
+would be the natural next rung if the program continues;
+candidate-0 census reported, never quote 1/n as chance; the two
+held-out cells and one frozen HASH permutation bound every
+claim; receipts force-added small-text; every claim grounded in
+THIS run's tool output; dual audit before booking; after
+booking commit/push, census, STOP.
