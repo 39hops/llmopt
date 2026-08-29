@@ -54465,3 +54465,87 @@ replication retires the 16001 SINGLE-REALIZATION fence into
 no seed-population inference beyond n=2; no
 cross-run wall/loss comparisons; each stage gated on its own
 explicit GO; this entry authorizes NOTHING to run.
+
+## PRE-REG MATH-CYBER-1-SVP-GRID-POUT-ROBUSTNESS-SCORE-16001: ONE scoring invocation of the already-frozen SECONDARY P-OUT robustness test (IN-SUPPORT-CONFIRMATORY-DESIGN-0) — seed-16001 checkpoints on pout_robustness.jsonl (5c85fc1f...): primary = FACTOR > HASH on the 48 covered-I0/t2 degree-11 states, exact two-sided McNemar alpha .05; the 24 t3 control separately reported, never pooled; can never modify the strict verdict or any 17001 law (2026-08-29, Mac)
+
+SCOPE. Applies the secondary law frozen at IN-SUPPORT-
+CONFIRMATORY-DESIGN-0 verbatim, nothing new: fresh
+novel-P-form/degree-class COVERED-I0 states (x^11 + x^n,
+n=1..10, after-variant, mixed-frequency bank). ZERO training,
+zero checkpoint mutation, zero sympy, zero candidate
+regeneration, zero 17001 work. The replication law frozen at
+cd6db7e3 (REPLICATION-17001-PREREG-0) is untouchable: this
+result may not alter any seed-17001 law, threshold, byte,
+endpoint, prior, or interpretation — decoupling already
+registered there (protocol frozen before this scorer ran).
+
+PINS (pre- and post-run): pout_robustness.jsonl 5c85fc1f...;
+svpdiet3 receipt 26cb6d01...; birth receipt 24f1f150...;
+checkpoints FACTOR c3f7a3e9... / HASH 645fc24f... / init
+2a580568...; 19,142,016 params per arm.
+
+SCORING LAW (verbatim svpadj lineage): standing prompt;
+FACTOR = factor_code + EOS, HASH = hash_code + EOS, stored
+candidate order; T=9 every candidate; pessimistic top-1 by mean
+logprob; mean/sum rank + full-order identity gates; is_label
+consumed for ranking only after both arms' scores exist
+(structure gates may read it pre-load for cardinality/semantics
+only); blind one-pass scoring of all 72 states; raw scores
+persisted and hashed before any endpoint.
+
+STRUCTURE GATES: 72 rows; 48 t2 (frozen selected census 26
+c-IN / 22 c-OUT — reported descriptively, never rebalanced or
+filtered) + 24 t3; unique curs; one label per state, all
+(i_unprod, I, ordinal 0) = covered I0; F/H roundtrips exact;
+P forms exactly the ten x^11+x^n.
+
+FROZEN ADJUDICATION (verbatim from DESIGN-0): hypothesis
+FACTOR > HASH on the 48 t2 states; exact two-sided McNemar on
+the paired discordants, alpha .05; SECONDARY-FACTOR-WIN booked
+iff p < .05 AND F top1 > H top1; otherwise
+SECONDARY-INCONCLUSIVE (the frozen law registers no symmetric
+HASH-win label; a significant reverse split would book as
+SECONDARY-INCONCLUSIVE with the reverse direction disclosed
+verbatim in the entry). The t3 control (24) reported separately
+under the same reporting law (F/H top1, discordants, exact p),
+never pooled, can never change the secondary verdict. NO
+combined verdict with the strict heldout result is constructed.
+
+REQUIRED REPORTING: primary t2 — F/48, H/48, F-only and H-only
+discordants, exact McNemar p, MRR descriptive; c-IN/c-OUT
+primary subsets descriptive only; control t3 — F/H over 24,
+discordants/p, separate; riders — candidate-0 top-rank census,
+legal-K census, per-P direction descriptive. No subgroup
+significance tests.
+
+REGISTERED PRIOR (house, on record): SECONDARY-FACTOR-WIN.
+Grounds: the nuisance-desk banked unclaimed split on the
+sibling degree-10 class at seed 15001 (D cell F .615 v H .231)
+and the heldout result showing FACTOR coordinates carry where
+HASH identity fails; named risk: that split was a different
+seed AND a different degree class, and covered-I0 at ~.42-.51
+pooled accuracy leaves both arms room to land anywhere —
+confidence moderate, direction registered.
+
+INTERPRETATION FENCE (frozen): a win supports only that, for
+this one seed-16001 realization and this fresh adjacent novel
+P-form/degree-class population, FACTOR preserved a COVERED
+action better than the same frozen HASH representation. NOT: a
+replication of the degree-10 seed-15001 residue; an independent
+model realization from the strict seed-16001 result (same
+checkpoints); evidence of universal OOD robustness; part of the
+strict-composition conjunction. A null is not equivalence.
+
+ORDER: freeze (this entry) -> scorer commit (source audit
+first) -> ONE run -> raw scores frozen -> independent receipt
+recomputation (dual audit) -> book -> commit/push/census ->
+STOP. Outputs logs/mathworld1/svppoutscore16/
+(refuse-if-exists). NEXT regardless of outcome (Artin,
+registered in the GO): BIRTH-17001 under the frozen init-only
+replication law, on its own GO.
+
+FENCES. Mac/mps; SINGLE-REALIZATION seed 16001 (shared
+checkpoints with the strict result — correlated, not
+independent); effective candidate set n-1, candidate-0 census
+reported, never quote 1/n as chance; the one frozen HASH
+permutation bounds every claim.
