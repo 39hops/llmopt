@@ -3178,6 +3178,20 @@ MATH-CYBER-1 SVP-GRID-HELDOUT-SCORE-17001 — ONE joint strict heldout scoring r
 - `structure_gates(rows, role, n_expect)`
 - `main()`
 
+### scratch/mathworld1_svpheldout18.py
+MATH-CYBER-1 SVP-GRID-KNOWN-SET-PERMUTATION-HELDOUT-SCORE- 18001 — ONE joint three-arm heldout scoring run of the sealed seed-18001 checkpoints (FACTOR / HASH-P1 / HASH-P2) on the frozen heldout_test16 artifact, under CALIBRATION-FIRED authority verified mechanically from the frozen three-arm calibration receipt before the heldout bytes open. The secondary P-OUT artifact is neither named by path nor read. Zero training, zero checkpoint mutation, zero sympy, zero candidate regeneration; frozen bytes + the immutable P2 law only.
+
+- `fsha(p) -> str`
+- `ctup(c)`
+- `binom_minlik_p(k_obs, n)` — Exact two-sided p under Binomial(n, 0.5): sum pmf(k) over
+- `spearman(a, b)` — Spearman rho with average ranks (n=4 descriptive).
+- `rederive_p2_realization_sha()`
+- `score_rows(rows, arms, dev)` — Blind-score rows for all three arms; label consumed only
+- `hard_gates(recs)`
+- `structure_gates(rows, role, n_expect)`
+- `pairwise(recs, calmap, hx)` — The frozen joint law for FACTOR v one HASH arm.
+- `main()`
+
 ### scratch/mathworld1_svpldesk.py
 MATH-CYBER-1 SVP-LENGTH-CONTROL-DESK-0 — desk-only triage of the length/factorization mechanism from FROZEN score artifacts. No model inference, no training, no checkpoint load, no task generation. Bands stay separate surfaces throughout.
 

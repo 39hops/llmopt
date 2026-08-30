@@ -538,7 +538,8 @@ def main():
             binom_minlik_p(h1_only, h1_only + h2_only),
         "mrr": {a: mrr[a] for a in HASHES},
         "calibration_side_by_side": {
-            "H1_covered": "96/96", "H2_covered": "92/96"}}
+            a: f"{sum(1 for c in cal if c[a]['top1'])}/96"
+            for a in HASHES}}
 
     rob_recs = score_rows(rob, arms, dev)
     hard_gates(rob_recs)
