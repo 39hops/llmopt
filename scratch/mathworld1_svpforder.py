@@ -173,8 +173,9 @@ def sep_position(gold, rivals):
     rivals of the first differing position."""
     best = 0
     for r in rivals:
-        first = next(i + 1 for i in range(8) if gold[i] != r[i])
-        best = max(best, first)
+        diffs = [i + 1 for i in range(8) if gold[i] != r[i]]
+        gate(bool(diffs), "IDENTICAL RIVAL PAYLOAD")
+        best = max(best, diffs[0])
     return best
 
 
@@ -244,7 +245,8 @@ def run_census():
                         cz = factor_symbols(*tup)
                         pz = pf_encode(tup)
                         gate(len(cz) == len(pz) == 8
-                             and all(0 <= s < 8 for s in pz),
+                             and all(0 <= s < 8 for s in pz)
+                             and all(0 <= s < 8 for s in cz),
                              "WIDTH/ALPHABET")
                         gate(factor_decode(cz) == tup, "C RT")
                         gate(pf_decode(pz) == tup, "PF RT")
@@ -289,6 +291,7 @@ def run_census():
             k = sep_position(gold, rivals)
             hist[k] += 1
             per_state[r["block_id"]] = k
+        gate(len(per_state) == 96, f"PER-STATE COUNT {arm}")
         census[arm] = {"histogram": {str(k): v for k, v
                                      in sorted(hist.items())},
                        "per_state": per_state}
@@ -410,6 +413,8 @@ def make_init():
     cr = json.loads(CENSUS_RECEIPT.read_text())
     gate(cr["verdict"] == "CENSUS QUALIFIED",
          "CENSUS NOT QUALIFIED")
+    for pth, h in cr["start"]["file_sha256"].items():
+        gate(fsha(pth) == h, f"CENSUS STALE {pth}")
     gate(not INIT_CK.exists(), "INIT ALREADY EXISTS")
     b1 = state_bytes(SEED)
     b2 = state_bytes(SEED)
@@ -555,6 +560,8 @@ def main():
     cr = json.loads(CENSUS_RECEIPT.read_text())
     gate(cr["verdict"] == "CENSUS QUALIFIED",
          "CENSUS NOT QUALIFIED")
+    for pth, h in cr["start"]["file_sha256"].items():
+        gate(fsha(pth) == h, f"CENSUS STALE {pth}")
     if PRODUCTION:
         for p in list(CKS.values()) + [RECEIPT]:
             if p.exists():
