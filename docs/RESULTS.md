@@ -57242,3 +57242,96 @@ FENCES. Mac/mps; single realization (seed 19001); within-
 support competence reading only; effective candidate set n-1;
 receipts force-added small-text; every claim grounded in THIS
 run's tool output.
+
+## VERDICT MATH-CYBER-1-SVP-FIELD-ORDER-CALIBRATION-SCORE-19001: FIELD-ORDER CALIBRATION FIRED — both field orders competently learned the covered support (CANONICAL 94/96 = c-IN 48/48 + c-OUT 46/48; PARAM-FIRST 93/96 = c-IN 48/48 + c-OUT 45/48; every one of the eight arm x term x regime cells at 21-24 of 24 v the 12/24 floor); FIELD-ORDER KNOWN-SET HELDOUT + ONSET-SCORE-19001 is now eligible under the already-frozen law (2026-08-30, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-FIELD-ORDER-CALIBRATION-SCORE-
+19001 (scorer scratch/mathworld1_svpfocal.py committed at
+fad2a43c BEFORE any inference; fresh-context verifier run in this session returned PASS on
+every registered check (session tool output; not a receipted
+artifact) — calibration bytes unchanged
+(af1a4aa1... recomputed), candidate sets/order untouched with
+PARAM-FIRST payloads derived per candidate from the qualified
+PERM law and PROVED arm-correct (the permutation-identity gate
+forces the canonical stream byte-identical to training-time
+encoding and PARAM-FIRST exactly its PERM image), both
+checkpoint pins + init full-hex v disk and the birth receipt,
+standing prompt/pessimistic-top-1/T=9/mean-normalization
+unchanged, no heldout opened, no token-prefix or onset value
+computed anywhere, thresholds and verdict strings
+character-exact v the frozen prereg). ONE scoring run (RC=0,
+scoring wall 2.1 s post-load); raw scores persisted and hashed
+(deb7f59f...) BEFORE any competence summary; is_label
+ranking-only after both arms scored.
+
+HARD GATES (all fired): four pins + two checkpoints + init
+verified pre- AND post-run (calibration af1a4aa1..., svpdiet3
+receipt 26cb6d01..., FIELD-ORDER birth receipt f9565f74...,
+census receipt 3f65b7ea..., CANONICAL ae0a86e0..., PARAM-FIRST
+0fe38f78..., init 20751529...); structure re-derived (96
+covered-I0 rows, 24 per stratum, ordinals 0, unique curs, one
+label per state); C roundtrips + PF roundtrips + per-candidate
+PERM identity on all stored candidates; T=9 on all 642
+candidate scorings (321 x 2 arms); 192 rank + 192 full-order
+identity checks; cell-sum consistency; param-count gate
+19,142,016/arm green (asserted in-scorer). Receipt
+logs/mathworld1/svpfocal/svpfocal_receipt.json; raw rows
+scores.jsonl (96); riders.json post-receipt. No smoke
+invocation exists for this scorer — a read-only 2.1 s scorer
+with no checkpoint or receipt writes outside its own
+refuse-if-exists OUTDIR, so the path-isolation rule is
+satisfied by construction rather than by a smoke pass
+(disclosed). Receipt-shape disclosures from the post-run
+audit, all verified sound: no torch-version, seed, prereg-
+commit, or checkpoint-path field in the receipt (recoverable
+via the driver source sha and this booking; next-sibling
+fields); svpcalscore18 is provenance-pinned as the predecessor
+scorer for lineage, not a code dependency.
+
+FROZEN GATE (mechanical) — ALL EIGHT CELLS (each of 24):
+  CANONICAL    t2-IN 24  t2-OUT 24  t3-IN 24  t3-OUT 22
+  PARAM-FIRST  t2-IN 24  t2-OUT 24  t3-IN 24  t3-OUT 21
+Regime totals (each of 48): CANONICAL c-IN 48 / c-OUT 46;
+PARAM-FIRST c-IN 48 / c-OUT 45 — v the frozen bars, verbatim:
+per arm c-IN covered >= 36/48 AND c-OUT covered >= 36/48 AND
+no {term x regime} cell < 12/24: every bar passes for BOTH
+arms => FIELD-ORDER CALIBRATION FIRED. A later explicit GO
+gains the stage-3 authority (known-set heldout completion +
+the fresh-run token-onset mechanism endpoint); heldout was not
+opened here and no onset value exists.
+
+READING (within-support competence only; the interpretation
+fence verbatim): calibration answers ONLY whether each
+representation learned the covered support competently — both
+did, near ceiling. It does NOT answer whether moving the
+parameter block damages or improves completion, whether the
+learned onset follows k=8 -> k=3, or whether either arm is
+superior; the 1-solve arm difference is DESCRIPTIVE and reads
+as nothing (single realization; arm calibration differences
+are never field-order-superiority evidence, per the frozen
+prereg). The named prior risk — serialization order harming
+covered-support learnability itself — did NOT materialize.
+
+REGISTERED-PRIOR ACCOUNTING: CORRECT (predicted both arms
+pass; both did — covered competence now 9/9
+arm-realizations of the revised in-support protocol across
+four seeds (16001 F+H, 17001 F+H, 18001 F+H1+H2, 19001 C+PF),
+two code laws (two HASH bijection realizations), and two field
+orders; the 15001 failure predates the revised protocol and
+stands outside this count; the prereg's grounds enumeration
+carried a self-contradictory count and was corrected pre-push
+in the same working tree, disclosed here).
+
+DESCRIPTIVE RIDERS: MRR CANONICAL .9896 / PARAM-FIRST .9844;
+candidate 0 never the label and never strictly top for either
+arm (effective competitive set n-1; never quote 1/n as
+chance); legal-K census {2:15, 3:41, 4:32, 5:8}.
+
+FENCES. Mac/mps; single realization (seed 19001);
+within-support competence reading only; the gate numbers say
+nothing about the withheld combinations, completion damage, or
+onset relocation (stage 3's questions); raw_scores_sha anchors
+THESE bytes only (no re-run reproducibility claim on mps);
+receipts force-added small-text (scores.jsonl included); every
+claim grounded in THIS run's tool output; dual audit before
+booking; after booking commit/push, census, STOP.

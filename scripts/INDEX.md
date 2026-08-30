@@ -3068,6 +3068,13 @@ MATH-CYBER-1 SVP-FACTOR-HASH-BIRTH-0 — the frozen three-arm mechanism birth: C
 - `run(plan, rows_by_id, dev, init_sha, n_steps, tag)`
 - `main()`
 
+### scratch/mathworld1_svpfocal.py
+MATH-CYBER-1 SVP-FIELD-ORDER-CALIBRATION-SCORE-19001 — ONE scoring run of the two sealed seed-19001 field-order checkpoints (CANONICAL / PARAM-FIRST) on the frozen covered-calibration artifact ONLY (af1a4aa1..., the same 96 covered-I0 strict states). Stage 2 of the frozen FIELD-ORDER protocol (prereg 3ac5a70e). No heldout scoring, no token-onset values, no accuracy(k)/k_step, no completion or relocation endpoint.
+
+- `fsha(p) -> str`
+- `ctup(c)`
+- `main()`
+
 ### scratch/mathworld1_svpforder.py
 MATH-CYBER-1 SVP-FIELD-ORDER-MATERIALIZATION-CENSUS-BIRTH- 19001 — stage 1 of the frozen FIELD-ORDER protocol (prereg 3ac5a70e): PARAM-FIRST implementation + qualification, the HARD-STOP pre-training structural census, the descriptive exposure census, and (only when every gate has passed) the two-arm seed-19001 BIRTH. No calibration, no heldout scoring, no token-onset scoring, no verdict.
 

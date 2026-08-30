@@ -1,0 +1,19 @@
+{
+ "covered_mrr": {
+  "CANONICAL": 0.9896,
+  "PARAM_FIRST": 0.9844
+ },
+ "cand0": {
+  "is_label": 0,
+  "strict_top": {
+   "CANONICAL": 0,
+   "PARAM_FIRST": 0
+  }
+ },
+ "legal_K": {
+  "3": 41,
+  "4": 32,
+  "2": 15,
+  "5": 8
+ }
+}

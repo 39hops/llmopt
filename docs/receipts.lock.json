@@ -1244,6 +1244,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svpfocal/svpfocal_receipt.json": {
+   "bytes": 3650,
+   "exists": true,
+   "sha256": "f5e3be58c76982e8af908d1c34497606757932909d63be9648660a92eb3039a4",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/svpforder_s19001_receipt.json": {
    "bytes": 170356,
    "exists": true,
