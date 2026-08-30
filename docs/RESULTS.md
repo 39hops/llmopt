@@ -55795,3 +55795,78 @@ comparison of any kind yet; big .pt untracked, anchored by the
 force-added lock-registered receipt's shas (future scorers MUST
 pin all four); every claim grounded in THIS run's tool output;
 after booking commit/push, census, STOP.
+
+## PRE-REG MATH-CYBER-1-SVP-GRID-THREE-ARM-CALIBRATION-SCORE-18001: one scoring run of the three sealed seed-18001 checkpoints on the frozen covered-calibration artifact only (af1a4aa1...), applying the frozen ALL-THREE competence gate verbatim (per arm c-IN covered >= 36/48 AND c-OUT covered >= 36/48 AND no {term x regime} cell < 12/24; twelve cells reported); ALL THREE pass => CALIBRATION FIRED (known-set heldout authority to a later GO); ANY failure => PERMUTATION-REPLICATION-NOT-REACHED, no subset heldout, no rescue (2026-08-29, Mac)
+
+SCOPE. Calibration only: no heldout, no permutation primary
+verdict, no H1-v-H2 heldout comparison, no P-OUT, no
+anatomy-driven adaptation. A gate, not a representation
+contest — all F/H1/H2 calibration differences are DESCRIPTIVE
+only. The 16001 STRONG-FACTOR, 17001 REPLICATES-STRONG-FACTOR,
+P-OUT reverse split, and P2 realization census do not and may
+not alter this law (frozen at 7976613b before any of the 18001
+artifacts existed).
+
+INSTRUMENT. scratch/mathworld1_svpcalscore18.py — the booked
+svpcalscore17 scorer extended to three arms; the ONE
+substantive extension: HASH-P2 continuations are DERIVED per
+candidate from its semantic tuple via the immutable qualified
+P2 law (single source: svpp2qual module; realization re-derived
+and gated == 952f332d... pre-load AND post-run; per-candidate
+hash2_decode roundtrip gated). Candidate sets and stored order
+unchanged; no regeneration, no filtering. A fresh-context
+verifier confirms before inference: calibration bytes
+unchanged; prompt/candidates/order/scoring law/pessimistic
+top-1/T=9/rank-identity gates unchanged; FACTOR and P1 scoring
+paths behavior-identical to the booked scorer; P2 exactly the
+immutable realization; no heldout artifact opened; no
+threshold changed; no arm-specific advantage.
+
+PINS: calibration af1a4aa1...; svpdiet3 receipt 26cb6d01...;
+BIRTH-18001 receipt d6e4ee99...; P2 qual receipt 47309f22...;
+checkpoints FACTOR ecf5be31... / HASH-P1 1ec2ea43... / HASH-P2
+26e4afc3... (full values in the scorer, machine-verified
+against the birth receipt); init a7bb5b88...; 19,142,016
+params/arm gate.
+
+FROZEN GATE (verbatim from 7976613b): per arm c-IN covered
+>= 36/48 AND c-OUT covered >= 36/48 AND no {term x regime}
+cell < 12/24 (four cells per arm, twelve total reported).
+CALIBRATION FIRED iff ALL THREE arms satisfy every bar; any
+single failure books PERMUTATION-REPLICATION-NOT-REACHED —
+STOP, heldout not scored for any surviving subset, no
+F-v-H1 rescue, no dropping H2, no threshold change, no
+retraining.
+
+SCORING LAW (verbatim): frozen prompt; stored candidate order;
+width-8 + EOS T=9; finite-score gates; exact roundtrips (F, P1,
+P2); pessimistic top-1; mean/sum rank + full-order identity;
+raw scores persisted and hashed BEFORE adjudication; is_label
+ranking-only after all three arms score (structure-gate read
+disclosed).
+
+REGISTERED PRIOR (house, on record): ALL THREE ARMS PASS
+(CALIBRATION FIRED). Grounds: the identical gate passed at
+near ceiling for 4/4 prior arm-realizations (16001 F/H, 17001
+F/H) on exactly-trained P forms, and H2's training targets are
+information-equivalent to H1's under a same-construction
+bijection with P1-like exposure balance (census). Named risk:
+H2 is the first-ever model trained on the P2 code — a
+calibration failure would itself be informative
+(bijection-realization sensitivity at the COMPETENCE level)
+and books NOT-REACHED honestly.
+
+ORDER: freeze (this entry) + scorer commit -> fresh-context
+verifier -> ONE scoring run (all three arms) -> independent
+recomputation of all 12 cells / regime totals / top1 /
+rank-identity / pins / raw-score hashes / mechanical
+adjudication -> book -> commit/push/census -> STOP. Outputs
+logs/mathworld1/svpcalscore18/ (refuse-if-exists). If FIRED,
+the only statement: the frozen KNOWN-SET PERMUTATION
+HELDOUT-SCORE-18001 GO becomes eligible (not run here).
+
+FENCES. Mac/mps; per-seed/per-permutation reporting, no
+pooling; within-support competence reading only — never
+generalization evidence, never F-v-H1-v-H2 evidence; effective
+candidate set n-1; receipts force-added small-text; every claim
+grounded in THIS run's tool output.
