@@ -56769,3 +56769,150 @@ summaries.json, sha in receipt); receipts force-added
 small-text incl. raw_token_scores.jsonl (0.5 MB); independent post-run
 recomputation before this booking; after booking
 commit/push/census, STOP.
+
+## OBSERVATION MATH-CYBER-1-SVP-FACTOR-FIELD-ORDER-DESIGN-0: design desk for the FACTOR field-order causal intervention — DESIGN DELIVERED: two-arm shared-init CANONICAL v PARAM-FIRST ([pk,x1,x2,r1,r2,k,o1,o2]) at a fresh seed, field boundaries and digit order preserved, information/invertibility exactly conserved; recommended primary endpoints = paired strict heldout top-1 (existing directional law) + a mechanical ONSET-RELOCATED binary (does the accuracy(k) step move from token 8 to the new structural separating position, predicted k=3); the three interpretive labels map from the 2x2 of two independently frozen binaries, with null-never-equivalence fenced; higher-value than an immediate P3; nothing trained, scored, reserved, or materialized (2026-08-30, Mac)
+
+FRONTIER + FENCE. TOKEN-ONSET-PROBE-0: FACTOR is a step
+function at token 8 across all three seeds (flat 29/96 then
+84/75/85), and position 8 is the structural separating
+coordinate (low base-8 digit of param_index+1) on 67/96 strict
+states. FENCE CARRIED: the step is partly IMPOSED by
+serialization structure — it is not by itself evidence of a
+learned token-8 mechanism. Live causal question: does
+completion follow the SEMANTIC COORDINATE when it moves to a
+different autoregressive position, or is the late ordering
+itself load-bearing?
+
+1. VALUE v P3. This intervention outranks an immediate P3:
+a third arbitrary bijection would add one more draw to a HASH
+realization-variance story already measured along both its
+axes (bijection: P1 v P2 same-init; seed: 41/63/83), while the
+field-order intervention attacks the NEW causal question the
+onset probe just opened on the FACTOR side — and FACTOR is the
+arm whose anatomy has been stable enough to make a causal
+prediction crisp. The banked prospective HASH onset-predictor
+rung is RETAINED UNCHANGED and untouched by this design.
+
+2. ARMS (proposed): TWO arms, one fresh shared init (a new
+seed, reserved by the adopting prereg, NOT here):
+  CANONICAL FACTOR  [r1, r2, k, o1, o2, pk, x1, x2]
+  PARAM-FIRST FACTOR [pk, x1, x2, r1, r2, k, o1, o2]
+— a pure FIELD-BLOCK PERMUTATION: same 8-symbol alphabet, same
+width 8 + EOS, identical whole-action information, exact
+invertibility (decode = the inverse position map), no hashing
+or renaming of any value. Everything else the frozen world:
+same 74,860 rows, batch plan, model/init, equal-compute laws,
+candidate population, scoring law. THIRD ARM ASSESSED AND
+DEFERRED: a PARAM-MIDDLE arm ([r1,r2,k,pk,x1,x2,o1,o2]) would
+separate a monotone position effect from canonical-v-alternative
+idiosyncrasy, but it is needed ONLY IF the two-arm result
+lands ORDER-LOAD-BEARING (then the gradient question becomes
+live); under SEMANTIC-SOCKET it adds nothing. Two arms now;
+the middle arm is named as the contingent follow-up, not
+built.
+
+3. IDENTIFIABILITY (assessed; the honest structure):
+  (a) position-specific token exposure changes — PART OF THE
+  TREATMENT, not a removable confound (order IS the variable);
+  a frozen pre-training per-position exposure census (the
+  geodesk family-A machinery) is REQUIRED in the materializing
+  rung so the change is documented, never repaired.
+  (b) conditional factorization changes (parameter coordinates
+  now condition rule/site) — this is the treatment itself.
+  (c) EOS distance of the decisive coordinate changes (8 -> 3)
+  — inherent; disclosed.
+  (d) candidate prefix-sharing structure changes BY DESIGN:
+  under PARAM-FIRST the withheld-term digit sits at position 3,
+  so the structural separating-position census (the 29/67
+  split under canonical) MUST be recomputed per arm from the
+  frozen candidate sets as a static, pre-training design
+  artifact — it defines where the ONSET-RELOCATED binary looks.
+  Predicted separating positions, RECOMPUTED from the frozen
+  candidate sets during this audit (not inferred): the 67
+  late-separated states land at k=3 (x2 relocated); the 29
+  position-1-separated states STAY at position 1 — for all
+  29, every rival also differs at pk, which PARAM-FIRST
+  places first (their all-rival-differ coordinate sets are
+  {r1, pk, x2} supersets, so pk carries them; r1 was never
+  the unique carrier). Aggregate structural curve: 29 at
+  k=1 -> 96 at k=3; argmax single-step gain = k=3.
+  (e) KNOWN-SET status: heldout_test16 is anatomized; this is
+  a causal treatment/mechanism replication on a known set,
+  never fresh confirmation — carried into every outcome name.
+
+4. RECOMMENDED PRIMARY ENDPOINTS (two, complementary):
+  (i) COMPLETION: paired strict heldout top-1, CANONICAL v
+  PARAM-FIRST, on the 96 frozen states under the EXISTING
+  directional law (discordants, exact McNemar, alpha .05) —
+  reused unchanged, so the "materially damages" bar is the
+  standing one, not invented.
+  (ii) MECHANISM: ONSET-RELOCATED, a mechanical binary — for
+  the PARAM-FIRST arm, the argmax single-step accuracy gain
+  position k_step = argmax_k [acc(k) - acc(k-1)] (acc(0)=0)
+  must equal the arm's structurally predicted separating
+  position (k=3 from the census in 3d); ties broken to the
+  earliest k. Frozen as YES/NO before any training.
+  Calibration competence REQUIRED first under the existing
+  all-or-stop philosophy (both arms clear the frozen gate or
+  the rung books NOT-REACHED with heldout sealed).
+
+5. LABELS (the design's answer to the freeze-or-continuous
+question): the three interpretive labels CANNOT be frozen as
+single mechanical outcomes without a null-as-equivalence
+violation ("completion remains strong" is an equivalence
+claim). Resolution: freeze TWO independent mechanical binaries
+— ORDER-DAMAGE (CANONICAL beats PARAM-FIRST at McNemar p<.05)
+and ONSET-RELOCATED (4ii) — and map the outcomes to interpretive
+prose: (no-damage + relocated) reads toward SEMANTIC-SOCKET
+with the null explicitly fenced as not-equivalence; (damage +
+any) reads toward ORDER-LOAD-BEARING; (no-damage +
+not-relocated) and (damage + relocated) read MIXED; a
+SIGNIFICANT REVERSAL (PARAM-FIRST beats CANONICAL at p<.05)
+is its own named cell — reported as such, never folded into
+no-damage. A NOT-RELOCATED reading on an arm that failed
+calibration is a competence artifact, not a mechanism
+reading (the all-or-stop gate covers this; the adopting
+prereg names it). The
+continuous record (paired difference, full accuracy(k) curves,
+onset anatomy) is always reported beside the binaries.
+
+6. SMALLEST PREREGISTERABLE RUNG:
+SVP-FACTOR-FIELD-ORDER-PREREG-0 — one commit freezing: the
+PARAM-FIRST layout literal + inverse map; the seed
+reservation; the per-arm structural separating-position census
+law (static, from frozen candidate sets, computed at
+materialization BEFORE training); the two-arm birth law (the
+booked two-arm instrument with the encode swap as the only
+treatment delta); the calibration gate; both endpoints and the
+two frozen binaries; the known-set fences. Then (own GOs):
+census + birth -> calibration -> heldout + onset probe (the
+token-onset instrument re-run on the two new arms under its
+existing frozen law).
+
+7. COMPUTE PRICE: one two-arm birth (~3,500 s, the booked
+class), two calibration + heldout scorings (~3 s each), one
+token-onset probe pass (~7 s), audits dominating. One evening
+session.
+
+8. STRENGTHEN / WEAKEN the semantic-coordinate interpretation
+(registered at the design level): STRENGTHENED if the onset
+relocates to the predicted position AND completion sits in the
+canonical realization range (75-85/96 observed across seeds) —
+the socket travels with the coordinate. WEAKENED if completion
+collapses under reordering (order load-bearing — the late
+position, not the semantic factorization, was carrying the
+result) or if the onset FAILS to relocate despite the
+coordinate being available early (a position-anchored
+mechanism rather than a coordinate-anchored one). Either
+weakening outcome would materially re-scope the STRONG-FACTOR
+interpretation and is exactly why the intervention is worth
+running.
+
+NO-FIRE conditions found: none — the design is feasible as
+specified; nothing here authorizes running it.
+
+FENCES. Design desk only: zero training, zero scoring, zero
+seed reservation, zero population work; compute figures are
+estimates from booked walls; the known-set fence travels into
+every adopting document; the FACTOR token-8 step remains
+partly serialization-imposed until this intervention runs.
