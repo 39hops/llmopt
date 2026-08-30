@@ -55959,3 +55959,144 @@ this scorer (refuse-if-exists sole path guard, 3.0 s wall);
 receipts force-added small-text (scores.jsonl included); every
 claim grounded in THIS run's tool output; dual audit before
 booking; after booking commit/push, census, STOP.
+
+## PRE-REG MATH-CYBER-1-SVP-GRID-KNOWN-SET-PERMUTATION-HELDOUT-SCORE-18001: ONE joint three-arm heldout scoring run — the mechanical execution of the frozen PERMUTATION-REPLICATION-PREREG-0 law (7976613b) under live CALIBRATION-FIRED authority: both pairwise strict joint laws (F v H1, F v H2) adjudicated independently on the 96 frozen primary states with per-arm c0 from the frozen seed-18001 calibration raw scores, mechanically mapped to the four exhaustive KNOWN-SET IUT class labels; H1-v-H2 sensitivity and all anatomy riders post-receipt; no rescue, no pooling, no P-OUT (2026-08-30, Mac)
+
+AUTHORITY. THREE-ARM-CALIBRATION-SCORE-18001 = CALIBRATION
+FIRED (F 96/96, H-P1 96/96, H-P2 92/96), verified mechanically
+from the frozen calibration receipt (byte-pinned 3a56bd51...)
+before the heldout bytes open. c0 for both matched-transfer
+laws = the FROZEN seed-18001 calibration raw scores
+(c5af7e8f..., pinned; never rescored). P-OUT untouched.
+
+CRITICAL BASELINE LAW (frozen): calibration is NOT rescored;
+HASH-P2's four calibration-miss blocks STAY in both primaries;
+no both-covered-correct restriction of any primary; no
+denominator matching, baseline correction, or normalization
+for the 96/96, 96/96, 92/96 covered totals — all 96 frozen
+blocks enter both pairwise laws exactly as preregistered.
+
+PINS (pre- and post-run): heldout a3f6103b...; calibration raw
+scores c5af7e8f... + receipt 3a56bd51...; covered_calibration
+af1a4aa1...; svpdiet3 receipt 26cb6d01...; BIRTH-18001 receipt
+d6e4ee99...; P2 qual receipt 47309f22...; checkpoints FACTOR
+ecf5be31... / HASH-P1 1ec2ea43... / HASH-P2 26e4afc3...; init
+a7bb5b88...; P2 realization independently RE-DERIVED and gated
+== 952f332d... pre-load and post-run; 19,142,016 params/arm.
+
+INSTRUMENT. scratch/mathworld1_svpheldout18.py — the booked
+svpheldout17 scorer minimally adapted to three arms: HASH-P2
+continuations derived per candidate from the immutable
+qualified P2 law (single source svpp2qual, per-candidate
+roundtrip gated); both pairwise laws are the frozen joint law
+verbatim, applied independently; the IUT class mapping and the
+sensitivity/rider laws are those frozen at 7976613b.
+Fresh-context source audit before inference (population pin,
+checkpoint pins, calibration-score pin, P2 realization + law,
+roundtrips, no label-dependent construction/order, no
+arm-specific mutation, no outcome-dependent branches, no P-OUT
+access, no score summaries before the raw artifact freezes);
+scorer committed BEFORE inference; ONE production invocation.
+
+ANTI-PEEK ORDER (frozen, verbatim from the GO): FIRE authority
+-> pins -> P2 re-derivation -> heldout bytes -> structure
+gates -> load three checkpoints -> blind-score all three arms
+-> persist + hash raw scores -> scoring gates -> adjudicate
+F-v-H1 -> adjudicate F-v-H2 -> mechanical IUT class label ->
+PRIMARY receipt frozen -> only then H1-v-H2 sensitivity +
+robustness rider + descriptive anatomy riders -> independent
+receipt audit -> book. No per-state top1 printed or inspected
+before the raw score artifact is written and hashed.
+
+SCORING LAW (verbatim): standing prompt; T=9 (8 code atoms +
+EOS); same candidate sets and stored order for every arm;
+mean/sum full-order identity gates on all scored arm x state
+cases; exact semantic->code->decode roundtrip per candidate
+per arm; is_label ranking-only after all three arms' scores
+exist (structure-gate cardinality read disclosed); finite
+gates.
+
+PAIRWISE LAWS (each independent, frozen): endpoint A = 96-state
+paired top1 with F-only/Hx-only discordants and exact
+two-sided McNemar; HELDOUT-FACTOR-WIN iff F top1 > Hx top1 AND
+p < .05 (symmetric HASH-WIN, else INCONCLUSIVE). Matched
+transfer over ALL 96 blocks: drop = c0 - c1 per arm from the
+frozen calibration scores, q = drop_Hx - drop_F, positive
+favors FACTOR; q census + exact two-sided sign test over
+nonzero q. STRONG-FACTOR(F v Hx) iff HELDOUT-FACTOR-WIN AND
+sign p < .05 AND q_pos > q_neg; otherwise the exact non-STRONG
+verdict books mechanically, no rescue.
+
+FROZEN IUT CLASS MAP: both STRONG =>
+KNOWN-SET-PERMUTATION-ROBUST-STRONG-FACTOR; F-v-H1 only =>
+KNOWN-SET-P1-ONLY-STRONG-FACTOR; F-v-H2 only =>
+KNOWN-SET-P2-ONLY-STRONG-FACTOR; neither =>
+KNOWN-SET-NO-ROBUST-STRONG-FACTOR. Never pool H1/H2 rows or
+p-values; no 192-state HASH comparison; both pairwise tables
+reported whatever the class label.
+
+REDUNDANCY DISCLOSURE (frozen into the booking): within each
+conjunction the two legs are correlated views of one paired
+contrast; across conjunctions F-v-H1 and F-v-H2 share the same
+FACTOR checkpoint, seed, population, and training rows —
+permutation robustness is a TREATMENT-AXIS result, never two
+independent model replications.
+
+BASELINE ANATOMY (required, descriptive, per pair):
+covered->heldout 2x2 transitions; covered-miss disclosure
+F 0 / H1 0 / H2 4; both-covered-correct subset direction
+(standing rider, no p-value, zero verdict effect); the four H2
+miss blocks stay in the registered primary.
+
+SENSITIVITY + RIDERS (only after the primary receipt freezes):
+H1-v-H2 on the same 96 states (top1s, discordants, exact
+McNemar p, MRR, calibration 96/96 v 92/96 side by side) books
+as PERMUTATION-SENSITIVITY-MEASURED with direction/p verbatim
+— secondary/descriptive, cannot alter the IUT verdict.
+Robustness-I1 rider under its standing law (never in
+primaries). Anatomy riders: per-cell counts F/H1/H2, pooled
+t2/t3 and c-IN/c-OUT, candidate-0 strict-top census, per-P
+counts, the frozen 4-cell F-Hx gap vectors, and the
+preregistered Spearman rank correlation of each 18001 gap
+vector against the booked 16001 and 17001 F-H1 vectors
+(coefficients only, n=4, descriptive; no subgroup tests; no
+anatomy can change the verdict).
+
+KNOWN-SET INTERPRETATION FENCE (frozen, carried verbatim from
+7976613b and the GO): a ROBUST fire supports only — on the
+already-known frozen CH-F3 strict-grid population, under the
+fixed high-support trained-P envelope and equal-length/
+equal-information coding treatment, FACTOR's completion
+advantage over an arbitrary whole-action identity code
+survives a second independently preregistered arbitrary
+Feistel bijection at seed 18001, with both controls
+demonstrably competent on the covered grid. Narratively
+combinable with the 16001/17001 initialization replication but
+never pooled. NOT: a fresh sealed population; universal
+compositionality; broad math OOD; degree-class robustness (the
+P-OUT reverse split stands untouched and visible); solve-rate
+gain; backend-independent semantics; proof that all arbitrary
+encodings fail; independence across the two 18001 pairwise
+contrasts. Non-ROBUST outcomes book their exact frozen label
+without rescue and update the mechanism interpretation
+accordingly.
+
+REGISTERED PRIOR (carried verbatim from 7976613b, not
+rewritten): KNOWN-SET-PERMUTATION-ROBUST-STRONG-FACTOR,
+LOW-MODERATE confidence, substantial single-leg failure risk,
+expected scale closer to seed 17001 than 16001.
+
+ORDER: freeze (this entry) + scorer commit -> fresh-context
+audit -> ONE run -> independent recomputation (all three top1
+totals, both discordant tables, both McNemar p, both q
+censuses, both sign p, class mapping, sensitivity, P2 byte
+identity, raw sha, calibration pin, roundtrip/order gates) ->
+claim_lint -> book + FINDINGS same commit -> index/lock regen
+-> full suite -> push -> census -> STOP. Outputs
+logs/mathworld1/svpheldout18/ (refuse-if-exists).
+
+FENCES. Mac/mps; per-seed/per-permutation reporting only;
+known-set status in every claim; c0 cross-run mps forwards
+(frozen); candidate-0 census, never 1/n as chance; receipts
+force-added small-text; every claim grounded in THIS run's
+tool output.
