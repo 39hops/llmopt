@@ -57424,3 +57424,135 @@ FENCES. Mac/mps; single realization (seed 19001); per-arm
 reporting, nothing pooled; effective candidate set n-1;
 receipts force-added small-text; every claim grounded in THIS
 run's tool output.
+
+## VERDICT MATH-CYBER-1-SVP-FIELD-ORDER-KNOWN-SET-HELDOUT-ONSET-SCORE-19001: cell B — ORDER-LOAD-BEARING + SOCKET-MOVES: the learned decision step FOLLOWS the relocated semantic coordinate (ONSET-RELOCATED = YES: fresh CANONICAL k_step = 8, fresh PARAM-FIRST k_step = 3, both equal to their frozen structural predictions), AND moving that coordinate earlier significantly harms completion (ORDER-DAMAGE: CANONICAL 85/96 v PARAM-FIRST 78/96, discordants 8/1, exact McNemar p = .0390625) — per the frozen map's own words, IDENTITY AND ORDERING INTERACT; both endpoints sit one state from their boundaries and are booked with that fragility quoted (2026-08-30, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-FIELD-ORDER-KNOWN-SET-HELDOUT-
+ONSET-SCORE-19001 (scorer scratch/mathworld1_svpfoheld.py
+committed at 883fcb47, verifier fixes folded at 03782caa
+BEFORE inference — per-state k=9 coherence gate replacing the
+totals-only check, derived coherence-count receipt field;
+fresh-context verifier PASS on the full GO list: all seven
+pins full-hex v disk, serialization gates byte-identical to
+the qualified law, token_lps byte-equivalent to the booked
+probe lineage, pessimistic top-1 convention transported, the
+interpretive-map else-chain enumerated exhaustive with E
+precedence, no historical-result branch, receipt carries
+seed/prereg-commit/torch-version/checkpoint-paths per the
+prior audits' asks). ONE joint prefix-scoring run under live
+calibration authority (focal receipt f5e3be58... verified
+FIRED before the heldout opened); RC=0, scoring wall 2.1 s
+post-load; all 192 raw per-(arm, state) token-lp rows
+persisted and hashed (ee0319f4...) before any endpoint; the
+k=9 per-state vector computed ONCE and consumed by both
+endpoints (192/192 duplicate-derivation equality checks —
+coherence holds by construction; the gate is a re-derivation,
+not an independent check).
+
+COMPLETION ENDPOINT (k=9 only, frozen symmetric law):
+CANONICAL 85/96, PARAM-FIRST 78/96; discordants CANONICAL-only
+8, PARAM-FIRST-only 1 (n_disc 9); exact two-sided McNemar
+p = .0390625 < .05 AND CANONICAL > PARAM-FIRST =>
+ORDER-DAMAGE.
+FRAGILITY (required disclosure): one state from the boundary —
+a 7/1 discordant split gives p = .0703 (and 7/2 gives .1797)
+and would book NO-DIRECTIONAL-SEPARATION; single realization,
+seed 19001.
+MRR (descriptive) CANONICAL .9427, PARAM-FIRST .9062.
+
+MECHANISM ENDPOINT (same raw artifact): accuracy(k) —
+  CANONICAL:   29 29 29 29 29 29 29 85 85 (gain 56 at k=8)
+  PARAM-FIRST: 29 29 59 60 78 78 78 78 78 (gain 30 at k=3,
+    +1 at k=4, +18 at k=5)
+k_step CANONICAL = 8 == k_struct 8 => ALIGNED; k_step
+PARAM-FIRST = 3 == k_struct 3 => ALIGNED; ONSET-RELOCATED =
+YES. FRAGILITY (required disclosure): PARAM-FIRST's argmax
+margin is ONE state (gain(3) = 30 v gain(1) = 29) — a single
+state moving between those bins flips k_step to 1 and unmakes
+the relocation binary; the full gain vector is persisted and
+quoted so the call is inspectable. CANONICAL's margin is wide
+(56 v 29).
+
+FROZEN INTERPRETIVE CELL (mechanical): ORDER-DAMAGE +
+ONSET-RELOCATED => B: ORDER-LOAD-BEARING + SOCKET-MOVES — the
+learned decision follows the semantic coordinate to its new
+position, but placing that coordinate earlier significantly
+harms performance — 'identity and ordering interact', quoted
+verbatim from the frozen map. Reported as the exact registered
+cell, no stronger composite.
+
+STRUCTURAL-GROUP ANATOMY (descriptive riders, the frozen
+29/67 groups from the byte-pinned census): the damage lives in
+the RELOCATED group — late-67: CANONICAL solves 56/67, all at
+k=8; PARAM-FIRST jumps to 48/67 at exactly k=3 (the relocated
+socket firing as predicted) but finishes at 49/67. Early-29:
+CANONICAL flat 29/29 throughout; PARAM-FIRST transiently DROPS
+to 11-12/29 at k=3-4 — while the early-position param block is
+being consumed it briefly loses states it had at k=1-2 — then
+recovers to 29/29 by k=5. Per-state transitions: both-correct
+77, CANONICAL-only 8, PARAM-FIRST-only 1, both-wrong 10.
+Final-rival delta medians persisted in riders.json. All
+descriptive; no subgroup significance; endpoints unaltered.
+
+READING (inside the frozen known-set fence): on these fixed
+states under a fresh shared realization, the FACTOR
+representation's completion advantage is NOT carried by the
+late position alone — the socket moves with the coordinate —
+but the late ordering contributes: the same semantic
+factorization completes 7 solves better when its decisive
+coordinate arrives LAST than when it arrives at position 3.
+One candidate account, hypothesis only: with the parameter
+block first, the model must commit to the withheld coordinate
+BEFORE conditioning on the rule/site context that makes it
+inferable, and the transient early-29 dip at k=3-4 is the
+visible cost of that inverted conditioning. Not a finding; a
+PARAM-MIDDLE arm (the design desk's contingent follow-up,
+unbuilt; NOT authorized under this GO or any standing law —
+it would need its own design adoption and prereg) would be
+the discriminating instrument.
+NOT established: fresh-population claims of any kind;
+equivalence anywhere; a settled relocation call at one-state
+margins (single realization; a second seed would be the
+cheapest sharpener).
+
+REGISTERED-PRIOR ACCOUNTING (every registered element, none
+rewritten): (a) onset relocation, moderate confidence —
+MEASURED (both arms aligned, one at a one-state margin); (b)
+large damage not expected but materially possible — a
+SIGNIFICANT but boundary-adjacent 7-solve damage measured,
+honestly not 'large'; (c) no PARAM-FIRST-equals-canonical
+claim was made and none is made now; (d) significant reversal,
+lower prior — did NOT materialize; (e) the historical 75-85
+band was context only and was NOT used in any adjudication
+(both totals incidentally fall inside it); failure modes: (1)
+competence — pre-cleared at stage 2; (2) canonical wins
+significantly — MATERIALIZED; (3) onset fails to follow — did
+NOT materialize.
+
+BANK AMENDMENT (same commit, per the registered outcome): the
+ORDERED-COORDINATE-CHARTS bank gains its first measured
+anchor — coordinate permutation preserved information and
+covered competence (93-94/96) while changing withheld-
+combination completion (85 v 78, p=.0390625) and moving the
+learned decision step to the relocated coordinate (8 -> 3):
+order IS part of the representation for this learner, in both
+the mechanism and the outcome, at this single realization.
+
+FENCES. Mac/mps; single realization (seed 19001); known-set
+causal treatment statement only, never fresh-population
+confirmation; both endpoints one-state boundary-adjacent
+(quoted above; the cell label is mechanical but its evidential
+weight is bounded by those margins); per-arm reporting,
+nothing pooled; effective candidate set n-1; the /96 totals
+mix candidate-set sizes {2,3,4,5} and are not
+difficulty-matched (MRR descriptive only); raw_scores_sha
+anchors THESE bytes only (no re-run reproducibility claim on
+mps); no smoke invocation (read-only 2.1 s scorer,
+refuse-if-exists sole guard, disclosed); riders post-receipt,
+unanchored by the receipt — booking anchors computed at
+force-add; structural groups read from CANONICAL's census
+per_state map (the PF map's own 29/67 split is the same state
+partition, gated at materialization); receipts force-added
+small-text; every claim grounded in THIS run's tool output;
+dual audit before booking; after booking commit/push, census,
+STOP.
