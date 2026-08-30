@@ -256,9 +256,7 @@ def main():
                          "term": r["term_cell"],
                          "regime": r["regime"],
                          "label_index": li,
-                         "token_lps": [[round(x, 6)
-                                        for x in v]
-                                       for v in lps]})
+                         "token_lps": lps})
         raw[name] = rows
         del m
     OUTDIR.mkdir(parents=True)
@@ -291,7 +289,10 @@ def main():
             cum = cums(row)
             li = row["label_index"]
             top = gold_class(cum, li, 9) == "gold-top"
-            if top != booked[row["block_id"]][arm]["top1"]:
+            b = booked[row["block_id"]]
+            gate(b["label_index"] == li,
+                 f"LABEL INDEX MISMATCH {row['block_id']}")
+            if top != b[arm]["top1"]:
                 mismatch.append((name, row["block_id"]))
     gate(not mismatch, f"INSTRUMENT FAILURE k=9 {mismatch[:5]}")
 
@@ -423,7 +424,8 @@ def main():
         "design_prereg_commit": fr.stdout.strip(),
         "onset_label": label,
         "D4": d4, "D9": d9,
-        "instrument_gate_k9_exact_match": True,
+        "instrument_gate_k9_exact_match":
+            len(mismatch) == 0,
         "raw_scores_sha": raw_sha,
         "summaries_sha": fsha(OUTDIR / "summaries.json"),
         "n_rows_raw": 7 * 96,
