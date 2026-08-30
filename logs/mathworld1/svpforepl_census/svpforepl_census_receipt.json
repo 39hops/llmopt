@@ -1,0 +1,57 @@
+{
+ "prereg": "MATH-CYBER-1-SVP-FIELD-ORDER-REPLICATION-PREREG-0",
+ "replication_of": "seed 19001 (prereg 3ac5a70e)",
+ "stage": "replication materialization-integrity/census",
+ "verdict": "CENSUS QUALIFIED",
+ "structural_match_frozen_predictions": true,
+ "perm": [
+  5,
+  6,
+  7,
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "inv": [
+  3,
+  4,
+  5,
+  6,
+  7,
+  0,
+  1,
+  2
+ ],
+ "census_sha": "7d8343b3f328b00a1147b675441181e897d3d96eaff33fe33d403aa482dd71d5",
+ "hard_bars": {
+  "domain_roundtrips_both_arms": 884736,
+  "perm_identity": 884736,
+  "multiset_identity": 884736,
+  "eval_candidates_covered": 963,
+  "train_rows_gated": 74860,
+  "aggregate_exposure_equal": true
+ },
+ "wall_s": 9.4,
+ "pins": {
+  "data/matsub_paired.jsonl": "a943ba7fc581db743b07192e5d951fadddd2ba19bca3225b75d8402351d468e8",
+  "logs/mathworld1/svpdiet/balanced_grid_train.jsonl": "0ef3d8a880a7e07712d8de757bc1670df12701e487b856b44c97f8db16cb3759",
+  "logs/mathworld1/svpdiet/combined_train_manifest.jsonl": "897c8bf8fd2b6d39e361ed541d3e14c53c1c1302eeed560f77ee8fb2f2477bdd",
+  "logs/mathworld1/svpdiet3/heldout_test16.jsonl": "a3f6103b3733d909281849dcb3fd6ba9fba3891f2014bec13881b4509df46ddb",
+  "logs/mathworld1/svpdiet3/covered_calibration.jsonl": "af1a4aa1df7bf3224745e91a90e1a77c36e5c54f7ff9b08509794d0fb7978db3"
+ },
+ "start": {
+  "start_commit": "7fa47de7",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_svpforepl.py": "bc9174885f7360f6c407d4f03d6eb7f1af771f96f98674d9cb783b10c0a073b9",
+   "scratch/mathworld1_svpcode.py": "3b80655cbddc835e6fac99c81335a4d21a4b812ac304b786f8ca07ec96277ca0",
+   "scratch/mathworld1_actiontok.py": "a5a22b38c775f67b303b305fa98d8a7fd3e79ac2f11e151385a2701a6d0c4aec",
+   "scratch/mathworld1_svpbirth.py": "c0bed95ec6a4db6faad424fa4780fba3af8d4f6d2cec364c75726da9e532950c",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "7fa47de7"
+}

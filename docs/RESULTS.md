@@ -57677,3 +57677,95 @@ FENCES. PREREG ONLY; Mac/mps when executed; known-set status
 travels into every stage; per-seed/per-arm reporting, nothing
 pooled; every future claim grounded in its own run's tool
 output.
+
+## VERDICT MATH-CYBER-1-SVP-FIELD-ORDER-REPLICATION-MATERIALIZATION-INTEGRITY-BIRTH-20001: FIELD-ORDER REPLICATION MATERIALIZATION-INTEGRITY QUALIFIED + TWO-ARM BIRTH-20001 SEALED — the frozen structural 8->3 intervention was reproduced EXACTLY from bytes before the fresh model existed (both arms' per-state maps identical to the seed-19001 qualified census, 96+96 states), the initialization seed (20001) is the SOLE changed scientific variable (fresh-context semantic diff: zero substantive deltas), and both checkpoints are sealed UNSCORED (2026-08-30, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-FIELD-ORDER-REPLICATION-PREREG-0
+(732a5312), stage 1 of the init-only replication of the booked
+seed-19001 field-order cell-B result.
+
+INSTRUMENT + SOURCE AUDIT. Replication birth driver
+scratch/mathworld1_svpforepl.py adopted from the booked
+scratch/mathworld1_svpforder.py and committed BEFORE any
+initialization at 7fa47de7, carrying the seed-20001 init pin
+frozen in the same commit (7c95e77f..., computed by two
+independent byte-equal builds pre-commit). Fresh-context
+verifier (Opus) ran the full line-by-line diff: every changed
+line classified into {seed literal, fresh disjoint namespace,
+init pin, replication provenance strings, path plumbing};
+ZERO substantive changes — representation, tokenizer, data
+pins (a943ba7f / 0ef3d8a8 / 897c8bf8 / plan f55e9fee), PERM
+[5,6,7,0,1,2,3,4] / INV [3,4,5,6,7,0,1,2], PRED, model,
+optimizer/scheduler/loss/masks, update counts,
+execution-order law, init procedure, and every qualification
+gate byte-identical. Two cosmetic notes disclosed: checkpoint
+basenames keep the svp_forder_ family prefix (disjoint via
+_s20001 suffix); the pin's only pre-run witness was the
+committed literal — resolved when the init gate passed on the
+first build.
+
+REPLICATION INTEGRITY GATES (all from bytes, nothing
+regenerated): 884,736/884,736 domain roundtrips both arms +
+per-action PERM identity + token-multiset identity; 74,860
+training rows re-gated row-by-row (encode/decode inverses,
+PERM/multiset per row, T=9, seq-cap); manifest and batch-plan
+pins exact; aggregate token exposure equal between arms; zero
+forbidden I1/t2-t3 targets; eval candidate coverage 963.
+
+STRUCTURAL CENSUS RE-GATE (integrity check, HARD-STOP armed,
+recomputed from exact candidate bytes BEFORE init): CANONICAL
+29/96 at k=1 + 67/96 at k=8, max 8; PARAM-FIRST same 29 at
+k=1 + same 67 at k=3, max 3 — histograms exact v the frozen
+predictions AND per-state maps EXACTLY equal to the seed-19001
+qualified census (both arms, state-ID level); exposure and
+prefix-sharing censuses byte-identical to 19001's. The
+intervention's structural content is therefore reproduced
+before any fresh weights existed.
+
+INIT. Dedicated seed-20001 init built twice, byte-identical,
+sha == the pre-committed pin
+7c95e77f8d7ccea5f4dd71c989e4d3225e347a178032d43539a1ae6ef62c9452
+on the FIRST build; sealed at
+checkpoints/svp_forder_init_s20001.pt. No prior weights loaded
+anywhere; seed-19001 artifacts verified byte-identical to
+their booked pins before and after (init 20751529..., C
+ae0a86e0..., PF 0fe38f78...).
+
+SMOKE (path-isolated): ordinary + longest + tail batches, both
+arm-first orders, forward/backward/clip/optimizer/scheduler,
+all 10 bars true, no production writes.
+
+PRODUCTION BIRTH (one run, rc=0, wall 3499.7 s): both arms
+from the same frozen init (2x59 bitwise tensor equality gates,
+118 checked); paired lockstep — per-batch row-ID/shape/
+target-length/mask/pad/non-pad equality gates all 7,020 steps;
+PARAM-FIRST payload == PERM(CANONICAL payload) with identical
+multiset gated on every row at load. Exact totals PER ARM:
+updates 7,020; continuation tokens 2,021,220; scheduler
+terminal 7,019; padded/non-pad totals equal between arms;
+execution order exactly 3,510/3,510; 14,040/14,040 losses
+finite; zero forbidden labels. Epoch mean loss (instrument
+receipt only, never comparative): CANONICAL .13374/.02976/
+.01640, PARAM-FIRST .13268/.02967/.01650. Sealed checkpoints:
+CANONICAL 0a841a5f..., PARAM-FIRST b7198ff2... — distinct from
+each other and disjoint from every earlier artifact; receipt
+logs/mathworld1/svpforepl_s20001_receipt.json.
+
+EVIDENCE STATE (explicit): NO evidence yet exists about
+seed-20001 calibration competence, NO evidence about onset
+relocation replication, NO evidence about completion-damage
+replication — both checkpoints are sealed and UNSCORED; no
+accuracy, top-1, k_step, or direction of any kind was
+computed or observed.
+
+FENCES. Mac/mps (run-level nondeterministic — no cross-run
+bit-exact claim; the init pin is the only bitwise
+reproducibility claim and it held); world and laws
+byte-adopted, never regenerated; training losses retained as
+finite/instrument receipts only; per-batch gates are
+in-instrument, quoted from THIS run's receipt; small-text
+receipts force-added under logs/mathworld1/, large logs stay
+untracked; PARAM-MIDDLE remains unbuilt and unauthorized;
+dual audit (fresh-context source verifier + receipt-auditor)
+before this booking. NEXT eligible GO: FIELD-ORDER REPLICATION
+CALIBRATION-SCORE-20001 only — not run.

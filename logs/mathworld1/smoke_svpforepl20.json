@@ -1,0 +1,79 @@
+{
+ "mode": "smoke",
+ "seed": 20001,
+ "vocab": 340,
+ "n_params": 19142016,
+ "init_sha": "7c95e77f8d7ccea5f4dd71c989e4d3225e347a178032d43539a1ae6ef62c9452",
+ "plan_sha": "f55e9fee1b00f57256f3c8152be149fbb4c619479c14e4d8c01e1672afebad4d",
+ "steps": 4,
+ "smoke_plan_steps": [
+  1116,
+  0,
+  1,
+  2339
+ ],
+ "losses": {
+  "CANONICAL": [
+   6.459716320037842,
+   3.1262269020080566,
+   2.260038375854492,
+   2.6037113666534424
+  ],
+  "PARAM_FIRST": [
+   6.484413146972656,
+   3.1700847148895264,
+   2.1898040771484375,
+   2.5348331928253174
+  ]
+ },
+ "grad_norms": {
+  "CANONICAL": [
+   10.155267715454102,
+   7.57952356338501,
+   4.560068607330322,
+   4.735727787017822
+  ],
+  "PARAM_FIRST": [
+   10.061761856079102,
+   7.891005516052246,
+   4.8501081466674805,
+   4.916260719299316
+  ]
+ },
+ "tokens_continuation": {
+  "CANONICAL": 972,
+  "PARAM_FIRST": 972
+ },
+ "order_counts": {
+  "0": 2,
+  "1": 2
+ },
+ "bars": {
+  "INIT_BITWISE_ALL_ARMS": true,
+  "VOCAB_340": true,
+  "PARAM_EQUAL": true,
+  "PLAN_SHA_MATCH": true,
+  "BOTH_ARMS_T9": true,
+  "BOTH_ORDERS_EXERCISED": true,
+  "SHAPE_GATES_EVERY_STEP": true,
+  "FINITE": true,
+  "STEP_LOCKSTEP": true,
+  "NO_PRODUCTION_PATHS": true
+ },
+ "wall_s": 3.1,
+ "start": {
+  "start_commit": "7fa47de7",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_svpforepl.py": "bc9174885f7360f6c407d4f03d6eb7f1af771f96f98674d9cb783b10c0a073b9",
+   "scratch/mathworld1_svpbirth.py": "c0bed95ec6a4db6faad424fa4780fba3af8d4f6d2cec364c75726da9e532950c",
+   "scratch/mathworld1_svpcode.py": "3b80655cbddc835e6fac99c81335a4d21a4b812ac304b786f8ca07ec96277ca0",
+   "scratch/mathworld1_actiontok.py": "a5a22b38c775f67b303b305fa98d8a7fd3e79ac2f11e151385a2701a6d0c4aec",
+   "scratch/mathworld1_birth.py": "90dbf312bc42c4eeeeefaaa27489351fb0fa615bb3a14463b41fd56ef1b466ad",
+   "llmopt/train/mathnative.py": "f8f5ca114d83d0dd854ebcb25de1a707e41e57822f06b15efecb0a1d87dcab61",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "7fa47de7"
+}

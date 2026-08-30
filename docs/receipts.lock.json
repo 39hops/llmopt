@@ -1258,6 +1258,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svpforepl_s20001_receipt.json": {
+   "bytes": 170402,
+   "exists": true,
+   "sha256": "70ff3248a9b2f6e584c2d7bb8e9fc7b59853ebb7055f58193783fbd61eab78b3",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/svpgbirth_s15001_receipt.json": {
    "bytes": 170226,
    "exists": true,
