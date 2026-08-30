@@ -57335,3 +57335,92 @@ THESE bytes only (no re-run reproducibility claim on mps);
 receipts force-added small-text (scores.jsonl included); every
 claim grounded in THIS run's tool output; dual audit before
 booking; after booking commit/push, census, STOP.
+
+## PRE-REG MATH-CYBER-1-SVP-FIELD-ORDER-KNOWN-SET-HELDOUT-ONSET-SCORE-19001: stage 3 of the frozen FIELD-ORDER protocol (3ac5a70e) — ONE joint prefix-scoring run of the two sealed seed-19001 checkpoints on the 96 frozen strict states, BOTH registered endpoints derived from ONE raw per-(arm, state, candidate, k) score artifact: completion from S_j(9) under the frozen symmetric McNemar law, mechanism = per-arm k_step (earliest argmax gain) v the frozen structural predictions 8 and 3, ONSET-RELOCATED iff both align; interpretive cells A-E applied mechanically; instrument coherence = one k-vector derivation for both endpoints (2026-08-30, Mac)
+
+AUTHORITY. FIELD-ORDER CALIBRATION FIRED (CANONICAL 94/96,
+PARAM-FIRST 93/96), verified mechanically from the byte-pinned
+focal receipt (f5e3be58...) before the heldout opens.
+
+INSTRUMENT. scratch/mathworld1_svpfoheld.py — the token-onset
+probe pattern applied to the two field-order arms: per-token
+teacher-forced log-probabilities for every candidate (T=9,
+payload 1..8 + EOS), arm-specific serialization (CANONICAL
+stored factor_code roundtrip-gated; PARAM-FIRST derived per
+candidate from the qualified PERM law with roundtrip AND
+permutation-identity gates), raw artifact persisted and hashed
+BEFORE any endpoint; the k=9 per-state top-1 vector computed
+ONCE and consumed by BOTH endpoints (a duplicate-derivation
+equality gate stands as the coherence check); pessimistic
+top-1 throughout. No retraining, no mutation, no new
+arm/population, no regeneration/filtering, no
+historical-result-dependent branch, no new endpoint or
+threshold. Fresh-context verifier before inference per the GO
+list.
+
+PINS: heldout a3f6103b...; focal receipt f5e3be58...; census
+bytes 7d8343b3... (source of the frozen 29/67 structural
+groups for riders); FIELD-ORDER birth receipt f9565f74...;
+CANONICAL ae0a86e0... / PARAM-FIRST 0fe38f78...; init
+20751529...; 19,142,016 params/arm gate.
+
+COMPLETION ENDPOINT (frozen, k=9 only): ORDER-DAMAGE iff
+CANONICAL > PARAM-FIRST AND exact two-sided McNemar p < .05;
+ORDER-REVERSAL symmetric; else NO-DIRECTIONAL-SEPARATION —
+explicitly NOT equivalence. Reported always: both /96 totals,
+both one-sided discordants, exact p, MRR descriptive. The
+historical 75-85 range is not a decision rule.
+
+MECHANISM ENDPOINT (frozen): per arm from the SAME raw scores,
+pessimistic accuracy(k), gain(k) with accuracy(0)=0, k_step =
+EARLIEST argmax gain(k); CANONICAL-ONSET-ALIGNED iff k_step ==
+8; PARAM-FIRST-ONSET-ALIGNED iff k_step == 3; ONSET-RELOCATED
+iff BOTH; a single-arm alignment books its exact asymmetric
+cell, never relocation. Full accuracy(k) and gain(k) persisted.
+
+INTERPRETIVE MAP (frozen, mechanical): A NO-SEP + RELOCATED =>
+SEMANTIC-SOCKET (strongest available from this known-set
+intervention; absence of significant completion difference is
+NOT evidence of equivalence, stated verbatim); B DAMAGE +
+RELOCATED => ORDER-LOAD-BEARING + SOCKET-MOVES; C DAMAGE +
+NOT-RELOCATED => ORDER-LOAD-BEARING, no socket support; D
+NO-SEP + NOT-RELOCATED => MIXED; E REVERSAL => SIGNIFICANT
+ORDER REVERSAL with onset beside it. No stronger composite
+label than the map permits.
+
+RIDERS (post-receipt, descriptive only, never
+endpoint-altering): per-state C/PF correctness transitions;
+accuracy(k) restricted to the preregistered 29-early / 67-
+relocated structural groups (read from the byte-pinned census
+per_state map); final-rival token contributions per the frozen
+token-onset formulas (r* from the k=9 score, delta_t medians).
+
+REGISTERED PRIOR (carried verbatim from 3ac5a70e, not
+rewritten): onset relocation expected with MODERATE confidence;
+large completion damage NOT expected but materially possible;
+no claim PARAM-FIRST equals canonical; significant reversal
+possible at lower prior; named failure modes — competence
+(already cleared), significant canonical win, onset not
+following the relocated position.
+
+KNOWN-SET FENCE: a prospectively frozen causal serialization
+intervention on an already-known population; answers whether
+field order changes behavior ON THESE FIXED STATES under a
+fresh shared realization; never fresh-population confirmation
+of FACTOR.
+
+ORDER: freeze (this entry) + scorer commit -> fresh-context
+verifier -> ONE run -> independent recomputation (pins,
+serializations, all S_j(k), both k=9 vectors, totals,
+discordants, p, MRR, curves, gains, k_step, binaries,
+relocated, cell, hashes; explicit no-retraining/no-rescoring/
+no-new-population checks) -> book + ORDERED-COORDINATE-CHARTS
+bank amendment per the registered outcome ->
+commit/push/census -> STOP. Outputs logs/mathworld1/svpfoheld/
+(refuse-if-exists). No PARAM-MIDDLE or follow-up under this
+GO.
+
+FENCES. Mac/mps; single realization (seed 19001); per-arm
+reporting, nothing pooled; effective candidate set n-1;
+receipts force-added small-text; every claim grounded in THIS
+run's tool output.
