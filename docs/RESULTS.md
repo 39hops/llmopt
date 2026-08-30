@@ -57067,3 +57067,114 @@ GO; no hidden third arm (PARAM-MIDDLE stays the design desk's
 contingent follow-up, unbuilt); per-seed/per-arm reporting,
 nothing pooled; every future claim grounded in its own run's
 tool output.
+
+## VERDICT MATH-CYBER-1-SVP-FIELD-ORDER-MATERIALIZATION-CENSUS-BIRTH-19001: FIELD-ORDER MATERIALIZATION/CENSUS QUALIFIED + TWO-ARM BIRTH-19001 SEALED — the structural intervention matched the prospectively frozen 8->3 prediction from bytes BEFORE any model existed (CANONICAL 29@k=1 + 67@k=8 max 8; PARAM-FIRST the SAME 29@k=1 + the SAME 67@k=3 max 3, group identities gated); every qualification bar exhaustive (884,736/884,736 roundtrips, perm identity, and token-MULTISET identity in both arms); the paired seed-19001 birth hit every exact invariant; CANONICAL ae0a86e0... / PARAM-FIRST 0fe38f78... sealed UNSCORED (2026-08-30, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-FACTOR-FIELD-ORDER-PREREG-0
+(3ac5a70e). Instrument scratch/mathworld1_svpforder.py
+committed at addb6269 BEFORE execution; a fresh-context
+verifier established source-level, pre-run: PARAM-FIRST is the
+LITERAL positional permutation of the shipped canonical
+payload (pf_encode calls factor_symbols then permutes; PERM/
+INV match the prereg literals; index algebra verified),
+canonical behavior unchanged (imports only), no hashing or
+renaming, the census law implements the pessimistic
+prefix-tie rule, HARD-STOP gates against the frozen
+predictions with group state-identity, census-precedes-init
+enforced, the training law diffs clean against the booked
+two-arm driver (every delta {arm rename, treatment gates,
+census precondition, paths/pins/seed}), and no evaluation
+OUTCOME dependency exists (candidate tuples only, recomputed
+rather than trusting stored codes). Its verifier fixes folded
+and committed at 44be0e77, still before execution (census
+staleness re-checks at init and smoke/production entry, named
+identical-rival gate, canonical alphabet gate, per-state
+completeness gate). The verifier also INDEPENDENTLY recomputed
+the structural census from bytes before the instrument ran and
+reproduced 29@1+67@8 / 29@1+67@3 with both group identities.
+
+ORDER HELD (tool-grounded): instrument commits -> CENSUS
+(SVPFO_CENSUS=1, one invocation, wall 9.4 s, RC=0) ->
+verdict CENSUS QUALIFIED with every hard bar fired:
+884,736/884,736 domain roundtrips BOTH arms + perm identity +
+multiset identity; 963 eval candidate actions covered both
+arms; 74,860 training rows row-gated (perm + multiset + T=9);
+aggregate code-atom exposure EXACTLY equal between arms
+(gated); STRUCTURAL CENSUS == the frozen predictions exactly
+(29@1 + 67@8 max 8 canonical; the same 29@1 + the same 67@3
+max 3 param-first; early-group and late-group state identities
+gated) — the HARD STOP did not fire; per-position exposure
+differences and prefix-sharing structure persisted
+descriptively (census.json, sha in receipt) -> init pre-step
+(double-build byte-identical, sha = design-time pin
+20751529..., census-green + staleness gates passed) ->
+path-isolated smoke (all 10 bars green incl. both encoders,
+both execution orders, NO_PRODUCTION_PATHS) -> ONE production
+birth (RC=0).
+
+RESULT (mechanical; receipt
+logs/mathworld1/svpforder_s19001_receipt.json, wall 3,499.4 s;
+start_commit = completion_commit = 44be0e77; run-start
+porcelain " M scripts/INDEX.md" — generated docs index, no
+instrument class):
+  SHARED INIT: seed 19001, sha = pin 20751529...; 118 = 2x59
+  bitwise gates; storage disjointness gated; 19,142,016
+  params/arm.
+  EXACT INVARIANTS (all gated): updates 7,020/arm; scheduler
+  lockstep on all 7,020, terminal 7,019 both arms;
+  continuation tokens 2,021,220/arm; padded 21,691,032 and
+  non-pad 8,823,393 identical across arms; per-batch
+  shape/length/mask/nonpad equality on all 7,020 (plus the
+  per-row treatment gates at load: PARAM-FIRST payload ==
+  PERM(CANONICAL) with identical token multiset, all 74,860
+  rows); 14,040/14,040 finite losses; order CANONICAL-first
+  3,510 / PARAM-FIRST-first 3,510; zero I1/t2-t3 labeled rows;
+  distinct checkpoint shas gated; census receipt byte-pinned
+  into the production receipt (3f65b7ea...). Disclosures
+  (post-run audit notes, all verified sound): three census-
+  receipt booleans are gate-backed literals (each unreachable
+  if false; derived forms for the next sibling); the
+  make_init staleness sweep omits mathnative.py (mitigated by
+  the INIT_SHA pin and the smoke staleness re-check at
+  production entry, which includes it); the census
+  single_step_max key is the histogram MODE (coincides with
+  the intended reading on this data; naming aligned before
+  stage 3 consumes it).
+  CHECKPOINTS SEALED UNSCORED: svp_forder_canonical_s19001.pt
+  ae0a86e0..., svp_forder_paramfirst_s19001.pt 0fe38f78...,
+  init svp_forder_init_s19001.pt 20751529...
+  DESCRIPTIVE ONLY (operational; never treatment evidence):
+  epoch mean losses CANONICAL 0.13123/0.02904/0.01606,
+  PARAM-FIRST 0.13209/0.03068/0.01725; arm walls
+  1,741.4/1,740.9 s (within-run-paired only); peak RSS
+  2,728 MB.
+
+STATED EXPLICITLY (per the GO): the structural intervention
+matched the prospectively frozen 8->3 prediction BEFORE
+training; both checkpoints remain UNSCORED; NO evidence yet
+exists about completion damage or reversal; NO evidence yet
+exists about onset relocation in the trained models. Loss
+curves are operational only — the two arms' targets are
+permutations with different conditional structure, so their
+losses are not treatment evidence.
+
+REGISTERED-PRIOR ACCOUNTING (mechanical gates only): CORRECT —
+all census and birth gates passed; wall 3,499.4 s inside the
+booked two-arm class (3,478-3,575 s observed at seeds
+16001/17001). Capability priors live at the prereg and remain
+untouched.
+
+NEXT (own GO, frozen at 3ac5a70e): FIELD-ORDER
+CALIBRATION-SCORE-19001 only — both arms v the frozen
+competence gate, all-or-stop (FIELD-ORDER-NOT-REACHED on any
+failure); then, on FIRE and its own GO, the known-set heldout
++ onset scoring under the frozen endpoints.
+
+FENCES. Mac/mps (no cross-run bit-exact claim; the paired arms
+shared this run); single realization (seed 19001); checkpoints
+sealed unscored; big .pt untracked, anchored by the
+force-added lock-registered receipts' shas (future scorers
+MUST pin init + both checkpoints + the census receipt);
+per-position exposure differences are the treatment, reported
+never repaired; every claim grounded in THIS run's tool
+output; after booking commit/push, census, STOP.

@@ -3068,6 +3068,25 @@ MATH-CYBER-1 SVP-FACTOR-HASH-BIRTH-0 — the frozen three-arm mechanism birth: C
 - `run(plan, rows_by_id, dev, init_sha, n_steps, tag)`
 - `main()`
 
+### scratch/mathworld1_svpforder.py
+MATH-CYBER-1 SVP-FIELD-ORDER-MATERIALIZATION-CENSUS-BIRTH- 19001 — stage 1 of the frozen FIELD-ORDER protocol (prereg 3ac5a70e): PARAM-FIRST implementation + qualification, the HARD-STOP pre-training structural census, the descriptive exposure census, and (only when every gate has passed) the two-arm seed-19001 BIRTH. No calibration, no heldout scoring, no token-onset scoring, no verdict.
+
+- `fsha(p) -> str`
+- `ctup(c)`
+- `pf_encode(tup)`
+- `pf_decode(sym)`
+- `encode(arm, tup)`
+- `sep_position(gold, rivals)` — Earliest prefix position at which gold is distinguishable
+- `load_rows()`
+- `run_census()`
+- `state_bytes(seed)`
+- `make_init()`
+- `ensure_init()`
+- `make_batch(rows, view, dev)`
+- `load_arm_models(dev, init_sha)`
+- `run(plan, rows_by_id, dev, init_sha, n_steps, tag)`
+- `main()`
+
 ### scratch/mathworld1_svpgbirth.py
 MATH-CYBER-1 SVP-GRID-BIRTH-15001 — the frozen PAIRED FACTOR/HASH production birth over the GRID-DIET combined population (74,860 rows = 73,324 natural + 1,536 balanced covered-grid augmentation), one target-blind batch plan (7,020 updates), one frozen optimization law, ONE bit-identical shared vocab-340 init (seed 15001). ZERO evaluation scoring; this file has no path or string dependency on any evaluation artifact — the two frozen eval shas appear ONLY as opaque provenance literals copied into the receipt (EVAL_PROVENANCE below), never as paths, and nothing here opens, parses, or counts them.
 
