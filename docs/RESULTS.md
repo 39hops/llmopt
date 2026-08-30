@@ -56916,3 +56916,154 @@ seed reservation, zero population work; compute figures are
 estimates from booked walls; the known-set fence travels into
 every adopting document; the FACTOR token-8 step remains
 partly serialization-imposed until this intervention runs.
+
+## PRE-REG MATH-CYBER-1-SVP-FACTOR-FIELD-ORDER-PREREG-0: the field-order causal intervention law frozen (adopting FACTOR-FIELD-ORDER-DESIGN-0 at a1eedf6f) — one future shared init at seed 19001 (census-verified untouched, RESERVED), two equal-compute arms CANONICAL [r1,r2,k,o1,o2,pk,x1,x2] v PARAM-FIRST [pk,x1,x2,r1,r2,k,o1,o2]; per-action token-MULTISET identity a hard gate; pre-training structural census with a registered STOP-on-disagreement; symmetric completion law + fresh-run within-seed onset-relocation mechanism endpoint; PREREG ONLY — nothing materialized, initialized, trained, or scored under this GO (2026-08-30, Mac)
+
+WHY. The FACTOR token-8 onset step is partly
+serialization-imposed. This intervention changes ONLY the
+ORDER of the same explicit semantic coordinates and asks
+whether the learned decision follows the relocated parameter
+coordinate (SEMANTIC-SOCKET) or the canonical late ordering is
+itself load-bearing.
+
+SEED. 19001, census-verified untouched in this treatment chain
+(repo-wide grep: the only hits are an unrelated bibliography
+identifier in a vendored package and unrelated substring
+matches in two data files; no seed use anywhere) — RESERVED here. Init law =
+the booked two-arm birth law verbatim (dedicated pre-step,
+double-build byte-identity, design-time pin, 2x59 bitwise
+gates, storage disjointness, no prior-seed weights).
+
+ARMS + REPRESENTATION IDENTITY LAW (frozen): CANONICAL encode
+= the shipped factor_symbols [r//8, r%8, KIND, o//8, o%8, PK,
+x//8, x%8]; PARAM-FIRST encode = the positional permutation
+placing [PK, x//8, x%8] first then [r//8, r%8, KIND, o//8,
+o%8] — i.e. output position i takes canonical position
+PERM[i] with PERM = [5, 6, 7, 0, 1, 2, 3, 4]; decode = the
+inverse position map, frozen as the literal
+INV = [3, 4, 5, 6, 7, 0, 1, 2] (canonical position j sits at
+output position INV[j]; INV[PERM[i]] == i for all i), then the
+shipped factor_decode. Field
+boundaries and within-field digit order preserved; no hashing,
+no renaming, no changed semantic values. PROSPECTIVE
+QUALIFICATION GATES over every qualified semantic action:
+canonical and param-first encode/decode exact roundtrips; both
+widths exactly 8 on the <c:0>..<c:7> alphabet; the PARAM-FIRST
+payload exactly the registered permutation of the CANONICAL
+payload per action; therefore the per-action payload TOKEN
+MULTISET is IDENTICAL between arms — multiset identity is a
+HARD gate, implying exact aggregate code-atom exposure
+equality over any common population. Per-position exposure
+changes are the treatment, censused descriptively, never
+rebalanced or repaired.
+
+PRE-TRAINING STRUCTURAL CENSUS (frozen law; runs at
+materialization BEFORE any training): from the exact frozen
+strict candidate sets (the 96 primary states of
+heldout_test16, a3f6103b...), per arm, the earliest prefix position
+at which the gold is distinguishable from ALL rivals
+(pessimistic prefix-tie law). DESIGN-AUDIT PREDICTIONS to be
+RECOMPUTED from bytes, never copied: CANONICAL 29 states at
+k=1 + 67 at k=8, structural single-step maximum k=8;
+PARAM-FIRST the same 29 at k=1 + the 67 relocated to k=3,
+structural maximum k=3. REGISTERED STOP: if the recomputation
+disagrees with these predictions, book the discrepancy and
+STOP before training so the mechanism endpoint is repaired
+prospectively. Also censused (descriptive): per-position x
+code-atom exposure per arm over the exact training targets;
+aggregate exposure (gated identical); candidate
+prefix-sharing structure by k.
+
+TRAINING WORLD (frozen, the standing paired law): 74,860 rows
+(natural a943ba7f... + aug 0ef3d8a8... + manifest
+897c8bf8...), batch plan f55e9fee..., ActionGCTok vocab 340,
+same architecture (19,142,016 params/arm), shared init, same
+optimizer/scheduler, BS=32, 3 epochs, 7,020 updates/arm,
+2,021,220 continuation tokens/arm, same masks, Mac/mps, zero
+I1/t2-t3 targets re-gated. Because one payload is a
+permutation of the other, the per-row target width, token
+count, and symbol multiset are equal ROW-BY-ROW (gated) and
+total exposure exactly equal; only ordering differs. Two-arm
+paired execution with the balanced arm-first alternation law.
+STAGES, each on its own explicit GO: (1)
+materialization/census + BIRTH; (2) calibration; (3) known-set
+heldout + onset scoring.
+
+CALIBRATION AUTHORITY (frozen): both arms independently clear
+the existing gate (c-IN covered >= 36/48 AND c-OUT covered
+>= 36/48 AND no {term x regime} cell < 12/24, all cells
+reported); ANY failure => FIELD-ORDER-NOT-REACHED, STOP, no
+heldout, no onset mechanism reading.
+
+COMPLETION ENDPOINT (frozen, symmetric): on FIRE, CANONICAL v
+PARAM-FIRST on the exact 96 known strict states under the
+standing paired top-1 law. ORDER-DAMAGE iff CANONICAL >
+PARAM-FIRST AND exact McNemar p < .05; ORDER-REVERSAL iff
+PARAM-FIRST > CANONICAL AND p < .05;
+NO-DIRECTIONAL-SEPARATION otherwise — explicitly NOT
+equivalence. Always reported: both totals, both one-sided
+discordant counts, exact two-sided p, MRR descriptive. No new
+effect-size threshold.
+
+MECHANISM ENDPOINT (frozen; FRESH-RUN, within-seed — never
+judged against historical anatomy alone): per fresh arm,
+gain(k) = accuracy(k) - accuracy(k-1) with accuracy(0) = 0,
+k_step = EARLIEST argmax gain(k). CANONICAL-ONSET-ALIGNED iff
+fresh CANONICAL k_step == its frozen structural maximum
+(expected 8 if the census confirms); PARAM-FIRST-ONSET-ALIGNED
+iff fresh PARAM-FIRST k_step == its structural maximum
+(expected 3). ONSET-RELOCATED iff BOTH fire. If only one arm
+aligns, the exact asymmetric cell is reported, never called
+relocation. Full accuracy(k) curves persisted regardless. A
+NOT-ALIGNED reading on an arm that failed calibration is a
+competence artifact, not a mechanism reading (unreachable
+under the all-or-stop gate, named anyway).
+
+INTERPRETIVE MAP (frozen prose; null never equivalence):
+  A. NO-DIRECTIONAL-SEPARATION + ONSET-RELOCATED => the
+  strongest evidence this known-set intervention can give for
+  SEMANTIC-SOCKET — the learned decision step follows the
+  relocated semantic coordinate while no significant
+  completion damage is DETECTED (absence of significance is
+  not evidence of equal performance, stated verbatim in any
+  booking).
+  B. ORDER-DAMAGE + any onset result => ORDER-LOAD-BEARING
+  for completion; if ONSET-RELOCATED also fires, the booking
+  states that the socket moves but moving it earlier harms
+  performance — identity and ordering interact.
+  C. NO-DIRECTIONAL-SEPARATION + NOT-RELOCATED => MIXED;
+  the semantic-socket mechanism is not supported by this
+  intervention.
+  D. ORDER-REVERSAL => SIGNIFICANT ORDER REVERSAL, its own
+  outcome, onset result beside it.
+No compression into a single winner label that hides an
+endpoint.
+
+KNOWN-SET FENCE (frozen): the strict population is known and
+anatomized; the experiment supports a causal treatment
+statement about FIELD ORDER ON THIS FIXED POPULATION (the
+serialization treatment and the fresh realization are frozen
+prospectively); it can never serve as fresh confirmation of
+FACTOR performance on a new population.
+
+REGISTERED PRIOR (house, before any seed-19001 artifact
+exists): onset relocation expected with MODERATE confidence;
+large completion damage NOT expected but materially possible;
+NO claim that PARAM-FIRST equals canonical; significant
+reversal possible at lower prior; the canonical historical
+75-85/96 range is context only, never a decision threshold.
+The scientifically important failure modes, named: (1)
+PARAM-FIRST fails competence; (2) CANONICAL beats PARAM-FIRST
+significantly; (3) the onset does not follow the relocated
+structural position.
+
+ORDER: freeze (this entry) -> fresh-context prereg audit ->
+commit/push/census -> STOP. Next eligible GO: FIELD-ORDER
+MATERIALIZATION/CENSUS + TWO-ARM BIRTH only (not run here).
+
+FENCES. PREREG ONLY: zero materialization, initialization,
+training, calibration, heldout, or onset inference under this
+GO; no hidden third arm (PARAM-MIDDLE stays the design desk's
+contingent follow-up, unbuilt); per-seed/per-arm reporting,
+nothing pooled; every future claim grounded in its own run's
+tool output.
