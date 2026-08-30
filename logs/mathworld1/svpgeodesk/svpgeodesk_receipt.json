@@ -1,0 +1,28 @@
+{
+ "prereg": "MATH-CYBER-1-SVP-BIJECTION-GEOMETRY-DESK-0",
+ "definitions_frozen_at_commit": "178db461121a8bafe721bbf785729ad6b3dafd72",
+ "n_train": 74860,
+ "n_primary_states": 96,
+ "census_sha": "283042da61c53705afbf92012037f7bedc45782e146f8b93115a05988cd90e20",
+ "p2_realization_rederived": "952f332da4e25961b2dd52c786902e74ba4b33bbf8413f88496a0df952450ba9",
+ "wall_s": 1.7,
+ "pins": {
+  "data/matsub_paired.jsonl": "a943ba7fc581db743b07192e5d951fadddd2ba19bca3225b75d8402351d468e8",
+  "logs/mathworld1/svpdiet/balanced_grid_train.jsonl": "0ef3d8a880a7e07712d8de757bc1670df12701e487b856b44c97f8db16cb3759",
+  "logs/mathworld1/svpdiet3/heldout_test16.jsonl": "a3f6103b3733d909281849dcb3fd6ba9fba3891f2014bec13881b4509df46ddb"
+ },
+ "start": {
+  "start_commit": "543ab891",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_svpgeodesk.py": "6bcaac3c76a018c70e6457a517f3ba21606bf460755e7ba1acc6e423d79fbf7d",
+   "scratch/mathworld1_svpp2qual.py": "2abd5970ff76bdc02c40f59763da5555c211a0ea53c297086953d34afa395c64",
+   "scratch/mathworld1_svpcode.py": "3b80655cbddc835e6fac99c81335a4d21a4b812ac304b786f8ca07ec96277ca0",
+   "scratch/mathworld1_actiontok.py": "a5a22b38c775f67b303b305fa98d8a7fd3e79ac2f11e151385a2701a6d0c4aec",
+   "scratch/mathworld1_svpbirth.py": "c0bed95ec6a4db6faad424fa4780fba3af8d4f6d2cec364c75726da9e532950c",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "543ab891"
+}

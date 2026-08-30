@@ -1300,6 +1300,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svpgeodesk/svpgeodesk_receipt.json": {
+   "bytes": 1574,
+   "exists": true,
+   "sha256": "a1ab51866513ad640a6828c3eba356e4e0b86d3538254bd200e5b33afef3aa7d",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/svpgriddesk2_receipt.json": {
    "bytes": 153880,
    "exists": true,

@@ -56388,3 +56388,121 @@ definitions are the control); descriptive throughout, no
 p-values anywhere; n=2 permutations, n=3 seeds; Mac,
 deterministic given frozen bytes; every claim grounded in THIS
 run's tool output.
+
+## OBSERVATION MATH-CYBER-1-SVP-BIJECTION-GEOMETRY-DESK-0: MIXED-GEOMETRY — the frozen static-descriptor census INVERTS the outcome anatomy: HASH-P2 (the collapsed arm, 43/96 strict) has the HIGHEST static target support (family-B rank-1 fraction .6875 v P1 .4271 v FACTOR .3021; P1-P2 = -.2604, a >= .25-scale separation in the direction OPPOSITE the outcomes, 0/4 cells with P1 above), and P2's withheld targets sit CLOSER to training codewords than P1's (min-Hamming median 3.5 v 5) — static n-gram/density geometry as frozen does not explain the permutation split and anti-aligns with it; posthoc, descriptive, n=2 permutations (2026-08-30, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-BIJECTION-GEOMETRY-DESK-0
+(definitions, lambda=1, witness law, and the categorical bar
+frozen at 178db461 BEFORE any value was computed; instrument
+committed at d226e329 with a pre-execution fresh-context audit
+PASS — order verified from commit timestamps, no census
+artifact pre-existing, all definitions checked
+line-by-line against the freeze; its six reporting-
+completeness fixes folded and committed at 543ab891, still
+before execution: family-D rival density leg, full family-C
+rival geometry, bigram/trigram emission, per-cell margins,
+family-E rival counts, freeze-commit gate-asserted from git).
+ONE census run (wall 1.7 s; completion evidenced by the
+receipt existing past the post-run pin gates — no rc field); zero model inference, zero
+checkpoints, zero new permutations; P2 via the immutable
+realization (re-derived, gated, derived receipt field). Pins
+pre- and post-run (natural a943ba7f..., aug 0ef3d8a8...,
+heldout a3f6103b...). Receipt
+logs/mathworld1/svpgeodesk/svpgeodesk_receipt.json; full
+census census.json (sha in receipt).
+
+FROZEN-BAR ADJUDICATION (mechanical, by the frozen clauses
+verbatim): GEOMETRY-LEAD required P1 rank-1 fraction ABOVE P2
+by >= .25 with >= 3/4 cells agreeing — measured P1 - P2 =
+-.2604 with 0/4 cells P1-above: not met. NO-STATIC-LEAD is
+excluded because family B DOES reach a >= .25-scale
+separation. The frozen MIXED-GEOMETRY clause ('>= .25-scale
+separations whose directions conflict with each other or with
+the cell/candidate-0 anatomy') is met via the CANDIDATE-0 leg:
+the family-B separation runs P2-above-P1 while the frozen
+candidate-0 static census runs P1-above-P2 (P1 9 v P2 0 static
+tops) — a direction conflict within the frozen anatomy set;
+the CELL anatomy itself does not conflict (0/4, internally
+consistent) => MIXED-GEOMETRY. Beyond the mechanical label,
+the defining descriptive fact is that the family-B separation
+is ANTI-aligned with the booked outcomes (P1 83/96 v P2 43/96
+strict).
+
+THE INVERSION (descriptive, all posthoc): by every frozen
+support/density descriptor, P2's withheld targets are the
+BEST-supported of the three arms and P2 performed WORST:
+  family B rank-1 fraction: F .3021 / P1 .4271 / P2 .6875
+    (outcome strict: F 85 / P1 83 / P2 43);
+  by cell, P2's static advantage concentrates at t3 (24/24 and
+    22/24 rank-1) where its outcome is least bad, but its t2
+    static rank-1 (9, 11 of 24) still exceeds P1's (6, 5)
+    while P1 dominates t2 in outcomes (48/48 pooled v P2's 15/48;
+cells 24+24 v 8+7);
+  margin medians: P2 +1.80 v P1 0.00 v F 0.00;
+  family D density: min-Hamming-to-training median P2 3.5 v
+    P1 5.0, and the RIVAL control (medians F 1.0 / P1 5.0 /
+    P2 5.0) shows P2's advantage is TARGET-SPECIFIC (3.5 v its
+    rivals' 5.0) while P1's targets match their rivals and
+    FACTOR's density is arm-wide, not target-specific;
+  family C witness bridges: F's withheld codes sit at Hamming
+    ~1 from their covered witnesses (factorization's designed
+    property); P1 ~6-7, P2 ~7-7.5 — comparable to each other,
+    so witness geometry separates F from the hashes but NOT P1
+    from P2 (their rival-control Hamming medians differ, 8 v 6,
+    without changing that reading);
+  family E (secondary; the model never sees internals): the
+    withheld actions traverse almost entirely
+    training-unvisited Feistel round inputs in BOTH hashes
+    (P1 0/4 reused on all 96 targets; P2 0/4 on 48 and 1/4 on
+    48) — no separation;
+  candidate-0 static census: static support ranks candidate 0
+    top on 9 states for P1 and 0 for F/P2, bearing no relation
+    to the MODEL censuses (P2 39 strict tops at 18001, P1
+    25/26/0 across seeds).
+  Structural context: training contains only 33 DISTINCT
+  whole-action codewords per arm (74,860 rows over 33 tuples),
+  so every static descriptor rides a very small support set.
+
+READING (exploratory, hypothesis generation only; POSTHOC
+stamped on every association; n=2 permutations and n=3 seeds
+establish nothing predictive): static n-gram support and local
+code density — the natural first-order "what the
+autoregressive learner saw" descriptors — fail to explain the
+P1/P2 outcome split and in fact anti-align with it: the model
+family solved the LESS statically supported hash targets
+(P1's) and collapsed on the MORE supported ones (P2's). This is
+CONSISTENT WITH the optimization-interaction working hypothesis
+(the seed fence already required it: P1's identical geometry
+scored 41/63/83 across seeds) and weakens any simple
+completion-by-memorized-n-gram story — coherently with the
+FACTOR side, whose witness-bridge geometry (Hamming ~1 to
+covered witnesses) is the one static structure that does align
+with a stable high outcome, though as an F-only property it
+cannot discriminate P1 from P2. What property of a bijection
+realization (if any static one exists) predicts completion
+remains OPEN; nothing here is predictive; no descriptor is
+nominated as a frozen future predictor because the measured
+lead points the wrong way.
+
+NEXT-RUNG LOGIC (bank only; DISCLOSED: the frozen desk law
+registered next-rung branches only for a coherent lead and for
+NO-STATIC-LEAD, no MIXED branch — the following is an
+unregistered extrapolation banked for a future GO to adopt or
+reject): a frozen-checkpoint
+TOKEN-ONSET-PROBE (existing checkpoints only: P1 at three
+seeds + P2 at 18001; locate the continuation position where
+target-v-rival likelihood diverges) is now the natural next
+instrument, since the explanation is evidently not in the
+static code statistics as frozen. Banked, not designed, not
+executed.
+
+FENCES. Posthoc relative to ALL P1/P2 outcomes (author had
+seen them; controls: mechanical definitions + freeze-then-
+compute order, independently audited); descriptive throughout,
+no p-values; the bar was frozen before values and is honored
+as written (the label is MIXED-GEOMETRY, not a lead); no
+model inference occurred; the 33-distinct-codeword support
+base bounds every density statement; seed fence stands (static
+geometry cannot explain 41/63/83); FACTOR arm-stability
+observation stays BANKED, not claimed (three seeds); after
+booking commit/push, census, STOP.

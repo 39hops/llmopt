@@ -3127,6 +3127,18 @@ MATH-CYBER-1 SVP-GENERALIZATION-SCORE-0 — ONE joint scorer: all three paired b
 - `pin_all()`
 - `main()`
 
+### scratch/mathworld1_svpgeodesk.py
+MATH-CYBER-1 SVP-BIJECTION-GEOMETRY-DESK-0 — ONE static code-geometry census over the frozen world, per the definitions FROZEN at the desk prereg (commit 178db461) BEFORE any value was computed. POSTHOC hypothesis generation only. Zero model inference, zero checkpoints, zero torch, zero new permutations, zero training, zero fresh population. Arms: FACTOR / HASH-P1 (stored codes) / HASH-P2 (derived from the immutable realization, re-derivation gated == 952f332d...).
+
+- `fsha(p) -> str`
+- `ctup(c)`
+- `code_of(arm, tup)`
+- `rederive_p2()`
+- `feistel_trace(tup, which)` — (round, input-half) pairs traversed under forward encode.
+- `stat5(vals)`
+- `pair_geo(a, b)`
+- `main()`
+
 ### scratch/mathworld1_svpgriddesk.py
 MATH-CYBER-1 SVP-STRICT-GRID-CONSTRUCTIBILITY-DESK-0 — SACRIFICIAL exact-engine constructibility pilot for the 3 latent strict cells (semantic-support result frozen at b2199346). Zero model/checkpoint access, zero inference, zero training, zero scoring. Pilot parents are BURNED: they may never enter a final challenge.
 
