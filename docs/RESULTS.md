@@ -56506,3 +56506,149 @@ base bounds every density statement; seed fence stands (static
 geometry cannot explain 41/63/83); FACTOR arm-stability
 observation stays BANKED, not claimed (three seeds); after
 booking commit/push, census, STOP.
+
+## PRE-REG MATH-CYBER-1-SVP-HASH-TOKEN-ONSET-PROBE-DESIGN-0: the analysis law for a frozen-checkpoint TOKEN-ONSET-PROBE over the four existing HASH checkpoints (P1 at seeds 16001/17001/18001; P2 at 18001) + a descriptive FACTOR reference rider (three seeds) — cumulative-score formulas, stable-onset definition, final-rival decomposition, the two frozen contrasts, the k<=4 Feistel-half early boundary, and the three categorical onset labels ALL FROZEN BEFORE execution; DESIGN/PREREG ONLY — zero inference, zero checkpoint opening, zero token-level values computed under this GO (2026-08-30, Mac)
+
+FRONTIER + WHY. GEOMETRY-DESK-0 booked MIXED-GEOMETRY with an
+INVERSION: static support anti-aligns with outcomes (P2 rank-1
+.6875 v P1 .4271 while P2 scored 43/96 v P1's 83/96 at seed
+18001), and P1's unchanged geometry scores 41/63/83 across
+seeds — static representation geometry alone is mathematically
+insufficient for the observed variation. Live mechanism
+question: at what autoregressive token position does successful
+v failed completion emerge inside the trained HASH models?
+POSTHOC mechanism anatomy on a known outcome set — can never
+establish prediction or causality.
+
+INSTRUMENT SCOPE (frozen): the four existing HASH checkpoints
+(HASH-P1 s16001 645fc24f..., s17001 e24237b8..., s18001
+1ec2ea43...; HASH-P2 s18001 26e4afc3...) plus the FACTOR
+REFERENCE RIDER (s16001 c3f7a3e9..., s17001 12e19fae...,
+s18001 ecf5be31...) — included because the identical
+instrument pass over three more existing checkpoints is
+near-free and supplies the stability reference; the rider is
+purely descriptive, never enters any HASH mechanism label, and
+supports no new FACTOR-stability claim at n=3. Exact existing
+96 strict heldout primary states (a3f6103b...), exact stored
+candidate sets/order, exact standing prompt, exact code
+mappings (P2 via the immutable realization, re-derivation
+gated). All checkpoint/artifact pins full-hex in the probe
+driver, verified against the booked birth receipts.
+
+PRIMARY DYNAMIC OBJECT (frozen formula): for state s,
+candidate j, cumulative continuation score
+  S_j(k) = sum_{t=1..k} log p_theta(c_{j,t} | prompt, c_{j,<t})
+for k = 1..9 (tokens 1..8 = the fixed-width code payload,
+token 9 = EOS). Equal prefix lengths at each k => no
+normalization. All per-(state, candidate, k) values persisted
+raw before any summary.
+
+FAMILY A — PREFIX TOP1 CURVE (frozen): per checkpoint and
+k=1..9, pessimistic gold top-1 count over the 96 states (ties
+against gold, the standing convention) = accuracy(k); MRR(k)
+as a descriptive rider; per-state winner identity at every k
+persisted. No significance tests across k; no post-hoc k
+selection: the categorical boundary is frozen below.
+
+FAMILY B — STABLE DECISION ONSET (frozen): per state,
+M(k) = S_gold(k) - max_{j != gold} S_j(k); the decision class
+at k is {gold-top, tied, gold-beaten} under pessimistic ties
+(tied counts as not-top); final class from M(9); stable onset
+k* = the smallest k such that the decision class at every
+k' >= k equals the final class. Reported SEPARATELY for
+final-correct and final-incorrect states: histogram k*=1..9,
+median, p25/p75, and the frozen lock fractions k*<=2, <=4,
+<=6, <=8. No outcome-dependent bins beyond this frozen list.
+
+FAMILY C — FINAL-RIVAL TOKEN CONTRIBUTIONS (frozen): per
+state, r* = the strongest non-gold candidate under the FINAL
+k=9 score with the standing tie/order law (argmax, first index
+on exact ties — ONE concrete final competitor, never re-chosen
+per token); delta_t = log p(gold token t | gold prefix) -
+log p(r* token t | r* prefix) for t=1..9, all persisted.
+Across states: median delta_t by position (primary), mean as
+rider, cumulative median/mean trajectories of partial sums
+sum_{t<=k} delta_t (defined here, before execution); for
+final-incorrect states, the first cumulative-crossing position
+where sum_{t<=k} delta_t < 0, and whether the sum later
+returns >= 0 (recovers) before k=9.
+
+THE TWO FROZEN CONTRASTS (never pooled):
+  SEED CONTRAST — HASH-P1 at 16001/17001/18001: does the
+  onset anatomy (accuracy(k) curves, k* distributions, delta
+  trajectories) move systematically with the 41 -> 63 -> 83
+  record?
+  PERMUTATION CONTRAST — seed 18001, HASH-P1 (83/96) v
+  HASH-P2 (43/96): does the split appear early, late, or
+  diffusely?
+
+FROZEN EARLY BOUNDARY + CATEGORICAL LABELS (permutation
+contrast only; frozen before any value): the boundary is
+k <= 4 — the L-HALF of the 24-bit Feistel payload (symbols 1-4
+v 5-8), a CONSTRUCTION-level split that exists identically for
+any round salt and carries no semantic position meaning (the
+FACTOR field layout is NOT used — it does not transfer to
+arbitrary codes). Define D(k) = accuracy_H1(k) -
+accuracy_H2(k) on the 96 states. Labels:
+  EARLY-ONSET DIFFERENCE iff D(4) >= (2/3) * D(9);
+  LATE-ONSET DIFFERENCE iff D(4) <= (1/3) * D(9);
+  DIFFUSE/MIXED-ONSET otherwise.
+(D(9) is known-positive from the booked outcome; the fractions
+2/3 and 1/3 are frozen here.) INSTRUMENT-FAILURE clause (numeric, frozen): the probe's
+k=9 per-state top-1 vectors must EXACTLY EQUAL the booked
+heldout-18001 per-state top-1 vectors for H1 and H2 (same
+pessimistic law, same bytes) — any mismatch is an INSTRUMENT
+FAILURE, not a label. The seed contrast takes NO categorical label — it books
+TOKEN-ONSET-MEASURED with the frozen summaries verbatim.
+
+COMPUTE PRICE: 7 checkpoints x 96 states x <=5 candidates x
+9-token scoring = the same wall class as every prior scorer
+(~2-3 s scoring per checkpoint post-load; total well under a
+minute of scoring; audits dominate). One session.
+
+WHAT WOULD STRENGTHEN / WEAKEN the initialization-conditioned
+optimization hypothesis (registered before execution;
+descriptive reading law, no p-values): STRENGTHEN — the seed
+contrast shows the P1 onset anatomy moving systematically with
+performance (e.g., final-correct k* medians shifting earlier
+and lock fractions rising 16001 -> 18001), AND the 18001 H1/H2
+trajectories differ in SHAPE (where commitment happens), not
+merely level. WEAKEN — near-identical k* distributions and
+delta trajectories across all arms with the outcome
+differences appearing only as uniform level shifts in M(9)
+(that would point at a global calibration/margin factor rather
+than trajectory-level conditioning, and the banked
+onset-stability riff would take the hit).
+
+SMALLEST PROSPECTIVE VALIDATION (bank only, do not design):
+freeze ONE token-onset descriptor computable WITHOUT the
+heldout answer sheet (candidate: the covered-calibration lock
+fraction k*<=4 per arm) and preregister it as a predictor of
+strict heldout completion across NEW anti-selected
+realizations (a P3+ permutation panel and/or a fresh seed),
+committed before those realizations exist. Only such a
+prospective hit graduates any token descriptor from anatomy to
+predictor.
+
+INTERPRETATION FENCES (frozen): posthoc on known outcomes;
+association never causation; H1/H2 token positions are
+arbitrary code positions, not semantic coordinates; static
+geometry may still interact with optimization (insufficient
+alone is not irrelevant); the FACTOR rider makes no stability
+claim; no token descriptor is a predictor until prospectively
+registered; per-seed/per-permutation reporting, nothing
+pooled.
+
+ORDER (the future execution GO, not this one): probe driver
+committed BEFORE inference -> fresh-context source audit ->
+ONE scoring invocation over the seven checkpoints -> raw
+per-(state, candidate, k) scores persisted + hashed before any
+summary -> families A/B/C -> frozen label (permutation
+contrast only) -> dual audit -> book -> STOP. Outputs
+logs/mathworld1/svptokonset/ (refuse-if-exists). THIS GO
+executes nothing.
+
+FENCES. Design/prereg only: zero inference, zero checkpoint
+opening, zero token-level values under this GO; Mac/mps when
+executed; every future claim grounded in that run's tool
+output.
