@@ -164,9 +164,20 @@ def pair_geo(a, b):
 def main():
     if OUTDIR.exists():
         raise SystemExit(f"REFUSING: {OUTDIR} exists")
+    import subprocess
+    fr = subprocess.run(["git", "rev-parse", "178db461"],
+                        capture_output=True, text=True)
+    gate(fr.returncode == 0, "FREEZE COMMIT NOT FOUND")
+    subj = subprocess.run(
+        ["git", "log", "-1", "--format=%s", "178db461"],
+        capture_output=True, text=True).stdout
+    gate("BIJECTION-GEOMETRY-DESK-0" in subj,
+         f"FREEZE COMMIT SUBJECT: {subj!r}")
+    freeze_commit = fr.stdout.strip()
     for p, h in PINS.items():
         gate(fsha(p) == h, f"PIN MISMATCH {p}")
-    gate(rederive_p2() == P2_REALIZATION_SHA, "P2 DRIFT")
+    p2_derived = rederive_p2()
+    gate(p2_derived == P2_REALIZATION_SHA, "P2 DRIFT")
     START = start_provenance(
         ["scratch/mathworld1_svpgeodesk.py",
          "scratch/mathworld1_svpp2qual.py",
@@ -262,6 +273,8 @@ def main():
                   for a in ARMS}
     cand0_rank1 = {a: 0 for a in ARMS}
     margins = {a: [] for a in ARMS}
+    margins_cell = {a: {f"t{t}-{rg}": [] for t, rg in CELLS}
+                    for a in ARMS}
     for r in pri:
         cands = r["candidates"]
         li = [i for i, c in enumerate(cands)
@@ -289,6 +302,7 @@ def main():
             if c0_top:
                 cand0_rank1[a] += 1
             margins[a].append(margin)
+            margins_cell[a][cell].append(margin)
             tz = cands[li]["_codes"][a]
             # Family A components for the target
             prefv = [fam_a[a]["pref"].get(tuple(tz[:k]), 0)
@@ -304,22 +318,32 @@ def main():
                       for k, w in wit.items()}
             rivgeo = [pair_geo(tz, c["_codes"][a])
                       for i, c in enumerate(cands) if i != li]
-            # Family D
-            dists = [sum(1 for x, y in zip(tz, w) if x != y)
-                     for w in distinct[a]]
-            minham = min(dists)
-            radius = {f"r{r_}": sum(1 for d in dists
-                                    if d <= r_)
-                      for r_ in (1, 2, 3)}
-            lcps = []
-            for w in distinct[a]:
-                lc = 0
-                for x, y in zip(tz, w):
-                    if x != y:
-                        break
-                    lc += 1
-                lcps.append(lc)
-            maxlcp = max(lcps)
+
+            def density(z):
+                dists = [sum(1 for x, y in zip(z, w)
+                             if x != y) for w in distinct[a]]
+                mh = min(dists)
+                rad = {f"r{r_}": sum(1 for d_ in dists
+                                     if d_ <= r_)
+                       for r_ in (1, 2, 3)}
+                lcs = []
+                for w in distinct[a]:
+                    lc = 0
+                    for x, y in zip(z, w):
+                        if x != y:
+                            break
+                        lc += 1
+                    lcs.append(lc)
+                ml = max(lcs)
+                return {"min_hamming_train": mh, **rad,
+                        "max_train_lcp": ml,
+                        "n_at_max_lcp": sum(
+                            1 for x in lcs if x == ml)}
+            riv_density = [density(c["_codes"][a])
+                           for i, c in enumerate(cands)
+                           if i != li]
+            # Family D (target + rival control via density())
+            tden = density(tz)
             row[a] = {
                 "target_logp": round(tgt, 4),
                 "max_rival_logp": round(mx, 4),
@@ -330,22 +354,23 @@ def main():
                 "cand0_static_top": c0_top,
                 "target_prefix_counts": prefv,
                 "witness_geometry": witgeo,
-                "rival_geometry_summary": {
-                    "min_hamming": min(g["hamming"]
-                                       for g in rivgeo),
-                    "max_lcp": max(g["lcp"] for g in rivgeo),
-                    "max_shared_bigrams": max(
-                        g["shared_bigrams"] for g in rivgeo)},
-                "density": {"min_hamming_train": minham,
-                            **radius,
-                            "max_train_lcp": maxlcp,
-                            "n_at_max_lcp": sum(
-                                1 for x in lcps
-                                if x == maxlcp)}}
+                "rival_geometry_full": rivgeo,
+                "density": tden,
+                "rival_density": {
+                    k: {"min": min(d_[k] for d_ in riv_density),
+                        "max": max(d_[k] for d_ in riv_density)}
+                    for k in ("min_hamming_train", "r1", "r2",
+                              "r3", "max_train_lcp")}}
             if a in ("HASH_P1", "HASH_P2"):
                 tp = feistel_trace(tgt_tup, a)
-                row[a]["feistel_reused_rounds"] = sum(
-                    1 for p_ in tp if p_ in trav[a])
+                tr = sum(1 for p_ in tp if p_ in trav[a])
+                rr = [sum(1 for p_ in feistel_trace(
+                          ctup(c), a) if p_ in trav[a])
+                      for i, c in enumerate(cands) if i != li]
+                row[a]["feistel_reuse"] = {
+                    "target_count": tr,
+                    "target_fraction": tr / 4.0,
+                    "rival_counts": rr}
         states.append(row)
 
     # Family B summaries + the FROZEN BAR components
@@ -359,6 +384,11 @@ def main():
         "margin_stats": {a: {k: round(v, 4) for k, v in
                              (stat5(margins[a]) or {}).items()}
                          for a in ARMS},
+        "margin_stats_by_cell": {
+            a: {c2: {k: round(v, 4) for k, v in
+                     (stat5(margins_cell[a][c2])
+                      or {}).items()}
+                for c2 in margins_cell[a]} for a in ARMS},
         "cand0_static_rank1_census": cand0_rank1}
     d = (summary["rank1_fraction"]["HASH_P1"]
          - summary["rank1_fraction"]["HASH_P2"])
@@ -380,6 +410,14 @@ def main():
                       (str(k), v) for k, v in c.items()))
                       for c in fam_a[a]["pos"]]
                   for a in ARMS},
+              "train_bigram_counts": {
+                  a: {str(k): v for k, v in sorted(
+                      fam_a[a]["big"].items())}
+                  for a in ARMS},
+              "train_trigram_counts": {
+                  a: {str(k): v for k, v in sorted(
+                      fam_a[a]["tri"].items())}
+                  for a in ARMS},
               "distinct_train_codewords": {
                   a: len(distinct[a]) for a in ARMS},
               "feistel_training_traversal": {
@@ -394,11 +432,11 @@ def main():
         json.dumps(census, indent=1))
     receipt = {
         "prereg": "MATH-CYBER-1-SVP-BIJECTION-GEOMETRY-DESK-0",
-        "definitions_frozen_at_commit": "178db461",
+        "definitions_frozen_at_commit": freeze_commit,
         "n_train": len(train_tups),
         "n_primary_states": n,
         "census_sha": fsha(OUTDIR / "census.json"),
-        "p2_realization_rederived": P2_REALIZATION_SHA,
+        "p2_realization_rederived": p2_derived,
         "wall_s": round(time.time() - t0, 1),
         "pins": {p: fsha(p) for p in PINS},
         "start": START,
