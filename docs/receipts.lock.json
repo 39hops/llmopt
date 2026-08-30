@@ -1069,6 +1069,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svpcalscore18/svpcalscore18_receipt.json": {
+   "bytes": 4679,
+   "exists": true,
+   "sha256": "3a56bd51b194a0b4ddefff777df1923572c5fded630fe8162851e403d6d968bf",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/svpchal/blocks.jsonl": {
    "bytes": 78432,
    "exists": true,

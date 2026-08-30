@@ -1,0 +1,21 @@
+{
+ "covered_mrr": {
+  "FACTOR": 1.0,
+  "HASH_P1": 1.0,
+  "HASH_P2": 0.9792
+ },
+ "cand0": {
+  "is_label": 0,
+  "strict_top": {
+   "FACTOR": 0,
+   "HASH_P1": 0,
+   "HASH_P2": 0
+  }
+ },
+ "legal_K": {
+  "3": 41,
+  "4": 32,
+  "2": 15,
+  "5": 8
+ }
+}

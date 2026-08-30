@@ -55870,3 +55870,92 @@ pooling; within-support competence reading only — never
 generalization evidence, never F-v-H1-v-H2 evidence; effective
 candidate set n-1; receipts force-added small-text; every claim
 grounded in THIS run's tool output.
+
+## VERDICT MATH-CYBER-1-SVP-GRID-THREE-ARM-CALIBRATION-SCORE-18001: CALIBRATION FIRED — all three fresh seed-18001 arms clear the frozen competence gate (FACTOR 96/96; HASH-P1 96/96; HASH-P2 92/96 = c-IN 48/48 + c-OUT 44/48, minimum cell 21/24 v the 12/24 floor; every one of the twelve arm x term x regime cells at 21-24 of 24); the frozen KNOWN-SET PERMUTATION HELDOUT-SCORE-18001 GO is now eligible (2026-08-29, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-GRID-THREE-ARM-CALIBRATION-SCORE-
+18001 (scorer scratch/mathworld1_svpcalscore18.py committed at
+7dc16e43 BEFORE any inference; fresh-context verifier run in this session returned PASS on
+all nine registered checks (session tool output; not a
+receipted artifact) — calibration bytes unchanged,
+prompt/candidates/order/law/pessimistic-top-1/T=9/rank-identity
+byte- or behavior-identical to the booked svpcalscore17 for the
+FACTOR and P1 paths, P1 continuations identical to the prior
+scorer's HASH construction, HASH-P2 continuations derived
+solely from the immutable qualified realization (single source
+svpp2qual; per-candidate roundtrip gated; realization
+re-derived and gated == 952f332d... pre-load AND post-run), no
+heldout/P-OUT path, no threshold change, no arm-specific
+advantage, all eight pins + three checkpoints + init recomputed
+full-hex against disk). ONE scoring run (RC=0, scoring wall
+3.0 s post-load); raw scores persisted and hashed
+(c5af7e8f...) BEFORE adjudication; is_label ranking-only after
+all three arms scored; index regen committed pre-launch so the
+run porcelain is clean.
+
+HARD GATES (all fired): eight pins (calibration af1a4aa1...,
+svpdiet3 receipt 26cb6d01..., BIRTH-18001 receipt d6e4ee99...,
+P2 qual receipt 47309f22..., FACTOR ecf5be31..., HASH-P1
+1ec2ea43..., HASH-P2 26e4afc3..., init a7bb5b88...) verified
+pre- AND post-run; P2 realization re-derived pre and post
+(the receipt's rederived_pre_run flag is a literal True and no
+post-run flag exists — the post gate is control-flow-backed:
+it raises before the receipt write; disclosed, next-sibling
+fix); gate authority = PERMUTATION-REPLICATION-PREREG-0 at
+7976613b (docstring-named, not a receipt field — disclosed);
+structure re-derived (96 covered-I0 rows, 24 per
+{term x regime}, ordinals 0, unique curs, one label per state);
+F/P1/P2 roundtrips on all stored candidates; T=9 on all 963
+candidate scorings (321 x 3 arms); 288 rank + 288 full-order
+identity checks; cell-sum consistency; param-count gate
+19,142,016/arm green (asserted in-scorer). Receipt
+logs/mathworld1/svpcalscore18/svpcalscore18_receipt.json; raw
+rows scores.jsonl (96); riders.json post-receipt.
+
+FROZEN ALL-THREE GATE (mechanical) — ALL TWELVE CELLS (each of
+24):
+  FACTOR   t2-IN 24  t2-OUT 24  t3-IN 24  t3-OUT 24
+  HASH-P1  t2-IN 24  t2-OUT 24  t3-IN 24  t3-OUT 24
+  HASH-P2  t2-IN 24  t2-OUT 21  t3-IN 24  t3-OUT 23
+Regime totals (each of 48): FACTOR c-IN 48 / c-OUT 48;
+HASH-P1 c-IN 48 / c-OUT 48; HASH-P2 c-IN 48 / c-OUT 44 — v the
+frozen bars, verbatim: per arm c-IN covered >= 36/48 AND c-OUT
+covered >= 36/48 AND no {term x regime} cell < 12/24: every bar passes for ALL THREE
+arms => CALIBRATION FIRED. A later explicit GO gains the frozen
+KNOWN-SET permutation heldout authority; heldout was not
+opened here.
+
+READING (within-support competence only; a gate, not a
+representation contest): all three arms — including the
+first-ever model trained on the P2 code — sit at 92-96/96 on
+the frozen covered grid. The 4-solve HASH-P2 deficit
+(c-OUT 44/48, all four misses in frequency-extrapolated
+c-OUT cells) is DESCRIPTIVE only and inside single-seed noise per the
+standing resolution law (~1.1 sigma at the 96-gate scale); no F-v-H1-v-H2 reading
+is taken and none is licensed. Per-seed calibration record
+across the chain (per-seed table convention, never pooled):
+16001 F 94 H 96; 17001 F 93 H 96; 18001 F 96 H1 96 H2 92 — of
+96 each.
+
+REGISTERED-PRIOR ACCOUNTING: CORRECT (predicted all three
+pass; all did — the named H2 first-realization risk did not
+materialize at the competence level; covered competence has
+now held for 7/7 arm-realizations across three seeds and two
+HASH bijections).
+
+DESCRIPTIVE RIDERS: MRR FACTOR 1.0000 / HASH-P1 1.0000 /
+HASH-P2 .9792; candidate 0 never the label and never strictly
+top for any arm (effective competitive set n-1; never quote
+1/n as chance); legal-K census {2:15, 3:41, 4:32, 5:8}.
+
+FENCES. Mac/mps; per-seed/per-permutation reporting only, no
+pooling; within-support competence reading only — never
+generalization evidence, never representation-contest
+evidence; the gate numbers say nothing about the two withheld
+whole-action combinations (the KNOWN-SET heldout's question);
+raw_scores_sha anchors THESE bytes only (no re-run
+reproducibility claim on mps); no smoke invocation exists for
+this scorer (refuse-if-exists sole path guard, 3.0 s wall);
+receipts force-added small-text (scores.jsonl included); every
+claim grounded in THIS run's tool output; dual audit before
+booking; after booking commit/push, census, STOP.
