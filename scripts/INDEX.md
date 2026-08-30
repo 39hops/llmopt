@@ -3271,6 +3271,17 @@ MATH-CYBER-1 SVP-TOKEN-CHANNEL-DESK-0 — identifiability census of ActionProgra
 - `fsha(p) -> str`
 - `main()`
 
+### scratch/mathworld1_svptokonset.py
+MATH-CYBER-1 SVP-HASH-TOKEN-ONSET-PROBE-0 — ONE execution of the analysis law frozen at TOKEN-ONSET-PROBE-DESIGN-0 (commit b46bc71f): per-token cumulative-score anatomy of the SEVEN existing checkpoints (HASH-P1 s16001/s17001/s18001, HASH-P2 s18001, FACTOR s16001/s17001/s18001 as the descriptive rider) on the exact 96 strict heldout primary states, stored candidate sets/order, standing prompt. POSTHOC anatomy on known outcomes — no prediction, no causation, no new descriptor, no redesign.
+
+- `fsha(p) -> str`
+- `ctup(c)`
+- `rederive_p2()`
+- `token_lps(model, dev, cur, conts)` — Per-token logprob vectors (len 9) per candidate — the
+- `gold_class(cum, li, k)` — Decision class at k: gold-top / tied / gold-beaten,
+- `summarize_kstar(kstars)`
+- `main()`
+
 ### scratch/mathworld1_terminal.py
 MATH-CYBER-1 TERMINAL-DOMINANCE-0 terminal-miss census (PRE-REG MATH-CYBER-1-TERMINAL-DOMINANCE-0, commit a3759d06).
 

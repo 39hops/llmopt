@@ -56652,3 +56652,120 @@ FENCES. Design/prereg only: zero inference, zero checkpoint
 opening, zero token-level values under this GO; Mac/mps when
 executed; every future claim grounded in that run's tool
 output.
+
+## OBSERVATION MATH-CYBER-1-SVP-HASH-TOKEN-ONSET-PROBE-0: LATE-ONSET DIFFERENCE — the seed-18001 H1/H2 40-solve split becomes DECISIVE only in the last tokens (D(4)=8 v the frozen <=13 LATE bar; D(k) by k: 19, 12, -15, 8, 9, 5, 24, 40, 40 — an early D(1)=19 lead collapses to 5-9 through mid-sequence, then 24 at k=7 and 40 at k=8); the P1 seed trajectories move SYSTEMATICALLY with 41->63->83 (stable-onset median for final-correct states 7->2->1, lock-by-k<=4 fractions 18/41 -> 47/63 -> 60/83, final cumulative gold-rival median -0.90 -> +4.77 -> +11.87); the FACTOR rider is a STEP FUNCTION at token 8 (flat 29/96 through k=7, then 84/75/85) — the registered STRENGTHEN conditions for the initialization-conditioned optimization hypothesis are met as written; posthoc anatomy, no causal or predictive claim (2026-08-30, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-HASH-TOKEN-ONSET-PROBE-DESIGN-0
+(b46bc71f; probe driver scratch/mathworld1_svptokonset.py
+committed at 2b357c27 BEFORE inference, fresh-context verifier
+PASS on the implementation-fidelity checks — token_lps
+byte-equivalent to the booked score_decision teacher-forcing,
+label thresholds float-checked against the GO's integer
+rendering, all ten pins full-hex v disk, rounding headroom
+~2400x — with its pre-run fixes folded at f01a4c45: raw
+UNROUNDED persistence per the frozen clause, label-index
+coherence gate, derived instrument-gate field). ONE probe
+invocation over the seven frozen checkpoints (RC=0, wall
+7.3 s); anti-peek order held (all 672 raw per-(checkpoint,
+state) token-lp rows persisted and hashed, f9014afd..., before
+the instrument gate and any summary; no per-state value
+printed pre-hash).
+
+INSTRUMENT GATE (numeric, frozen): the probe's k=9 per-state
+pessimistic top-1 vectors for seed-18001 H1 and H2 EXACTLY
+reproduce the booked heldout-18001 vectors (per-state identity
+gated, label indices coherence-gated); totals resolve to
+H1 83/96, H2 43/96, D(9) = 40 (gated == booked). PASS.
+
+PERMUTATION CONTRAST (s18001 H1 v H2; the frozen label):
+accuracy(k) H1: 45, 71, 65, 74, 60, 65, 83, 83, 83;
+H2: 26, 59, 80, 66, 51, 60, 59, 43, 43. D(4) = 8 <= 13 =>
+LATE-ONSET DIFFERENCE (mechanical; D(4)=8 sits well inside the
+band, not boundary-adjacent). D starts at 19 (k=1), collapses
+to 8-9 through k=4-6 (with a k=3 sign flip where H2 LEADS by
+15), then 24 at k=7 and 40 at k=8 — the durable separation is
+a late-token event even though a transient early lead exists. H2 tracks H1 early — its collapse is a late-token
+event: failing-state first-crossings cluster at k=5 (25 of 53)
+and its final-incorrect states mostly never recover (18/53
+recovered).
+
+SEED CONTRAST (P1 at 16001/17001/18001; TOKEN-ONSET-MEASURED,
+no label): the trajectories move systematically with the
+41 -> 63 -> 83 record on every frozen summary —
+  stable-onset k* median (final-correct): 7 -> 2 -> 1;
+  lock fractions (final-correct): k*<=2 rises monotonically
+    .293 -> .635 -> .675; k*<=4 as FRACTIONS .439 -> .746 ->
+    .723 (the last step dips — counts 18/41 -> 47/63 -> 60/83
+    rise partly via the growing denominator; disclosed);
+  final cumulative gold-v-rival median: -0.90 -> +4.77 ->
+    +11.87;
+  final-incorrect first-crossing anatomy: s16001 first-crosses at
+    k=1 on 32/55 and, separately, 32/55 recover at some point
+    before losing again (two distinct 32s, both verified — its accuracy(k) curve rises to 85/96 at k=4
+    and CRASHES to 21 by k=7); s18001's 13 failures all cross
+    at k=1 and mostly stay lost (2/13 recover).
+  The weak realization is not uniformly weak: mid-sequence it
+  briefly ranks gold top on 85/96 states — the failure is a
+  LATE-TOKEN loss of an advantage it transiently holds.
+Non-monotone accuracy(k) is the norm for every HASH arm.
+
+FACTOR RIDER (descriptive only; F positions ARE semantic, so
+this reading is licensed for F and forbidden for the hashes):
+all three FACTOR arms are a step function — 29/96 flat from
+k=1..7, then 84/75/85 at k=8, cum-delta medians exactly 0
+through k=7. Position 8 of the factor code is the low base-8 digit of
+(param_index + 1) — the ONE coordinate that distinguishes the
+withheld term from its siblings when rule/site/kind fields are
+shared. FACTOR's entire withheld-combination decision is
+carried by the single semantically-aligned token, hit reliably
+at all three seeds; its 11-21 failures all first-cross at k=8
+with zero recoveries. (The k=8 step also explains the 29/96
+floor: on 67/96 states at least one rival shares the gold's
+7-symbol prefix, and pessimistic ties book as not-top; the
+other 29 separate at position 1.)
+
+REGISTERED STRENGTHEN/WEAKEN ADJUDICATION (the reading law
+frozen at the design prereg, applied as written): STRENGTHEN
+required (a) the P1 onset anatomy moving systematically with
+performance — met on all three frozen summaries above — AND
+(b) the 18001 H1/H2 trajectories differing in SHAPE, not
+merely level — met on the FAILURE-STATE anatomy (H1's 13
+failures all first-cross at k=1 with 2 recoveries; H2's 53
+failures cluster their crossings at k=5, 25/53, with 18
+recoveries and k* median 4), while the correct-state lock
+fraction is DISCLOSED as not higher for H1 (k*<=4: H1 .723 v
+H2 .860) — the shape difference lives in how the arms fail,
+not in how they succeed.
+The initialization-conditioned optimization hypothesis is
+STRENGTHENED per the registered conditions; this remains a
+posthoc descriptive adjudication, not a test.
+
+DISCLOSURES: the "recovers" convention includes k=9 (reachable
+only for final-tied states; the frozen prose said "before
+k=9" — convention recorded here, code committed pre-run);
+median/quartiles are index-based order statistics (upper
+median, no interpolation); MRR denominator hardcoded 96
+(gated); the mechanical label is one-state-fragile only near
+its 13/14 and 26/27 boundaries — D(4)=8 is not near either.
+
+INTERPRETATION FENCES (carried verbatim): posthoc on known
+outcomes; association never causation; H1/H2 token positions
+are arbitrary code positions (the FACTOR position-8 reading
+does NOT transfer); static geometry insufficient-not-
+irrelevant; no token descriptor is a predictor until
+prospectively registered (the banked covered-calibration
+k*<=4 lock fraction remains the candidate, not designed here);
+per-seed/per-permutation reporting, nothing pooled; n=3 seeds,
+n=2 permutations. Bank residue updated in the same commit: the
+ONSET-STABILITY riff gains a descriptive anchor — the three
+FACTOR accuracy(k) curves are numerically identical in shape
+(flat 29 then a k=8 step) while the HASH arms' curves swing;
+this is a description of three curves, NOT a FACTOR-stability
+claim (the rider fence stands, n=3).
+
+Receipts logs/mathworld1/svptokonset/ (svptokonset_receipt.json;
+raw_token_scores.jsonl 672 rows, sha f9014afd...;
+summaries.json, sha in receipt); receipts force-added
+small-text incl. raw_token_scores.jsonl (0.5 MB); independent post-run
+recomputation before this booking; after booking
+commit/push/census, STOP.
