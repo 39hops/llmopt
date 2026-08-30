@@ -274,12 +274,14 @@ def main():
     # coherence gate: k=9 totals derived twice agree
     k9 = {a: {b: v[8] for b, v in top_by_k[a].items()}
           for a in ARMS}
+    coherence_checked = 0
     for a in ARMS:
-        t1_ = sum(1 for v in k9[a].values() if v)
-        t2_ = sum(1 for row in raw[a]
-                  if gold_top(cums(row["token_lps"]),
-                              row["label_index"], 9))
-        gate(t1_ == t2_, f"COHERENCE {a}")
+        for row in raw[a]:
+            v2 = gold_top(cums(row["token_lps"]),
+                          row["label_index"], 9)
+            gate(k9[a][row["block_id"]] == v2,
+                 f"COHERENCE {a} {row['block_id']}")
+            coherence_checked += 1
 
     # COMPLETION ENDPOINT (k=9 only)
     c_top = sum(1 for v in k9["CANONICAL"].values() if v)
@@ -365,7 +367,8 @@ def main():
                 aligned["PARAM_FIRST"],
             "ONSET_RELOCATED": relocated},
         "interpretive_cell": cell,
-        "instrument_coherence_k9_single_derivation": True,
+        "instrument_coherence_per_state_checks":
+            coherence_checked,
         "raw_scores_sha": raw_sha,
         "calibration_authority": {
             "receipt_verdict": cal["verdict"],
