@@ -1,0 +1,228 @@
+{
+ "permutation_sensitivity_H1_v_H2": {
+  "label": "PERMUTATION-SENSITIVITY-MEASURED",
+  "H1_top1": 83,
+  "H2_top1": 43,
+  "H1_only_discordant": 46,
+  "H2_only_discordant": 6,
+  "mcnemar_p_two_sided": 1.0325821975243343e-08,
+  "mrr": {
+   "HASH_P1": 0.9323,
+   "HASH_P2": 0.7049
+  },
+  "calibration_side_by_side": {
+   "HASH_P1": "96/96",
+   "HASH_P2": "92/96"
+  }
+ },
+ "primary_cells": {
+  "t2-IN": {
+   "FACTOR": 24,
+   "HASH_P1": 24,
+   "HASH_P2": 8,
+   "n": 24
+  },
+  "t2-OUT": {
+   "FACTOR": 24,
+   "HASH_P1": 24,
+   "HASH_P2": 7,
+   "n": 24
+  },
+  "t3-IN": {
+   "FACTOR": 19,
+   "HASH_P1": 19,
+   "HASH_P2": 10,
+   "n": 24
+  },
+  "t3-OUT": {
+   "FACTOR": 18,
+   "HASH_P1": 16,
+   "HASH_P2": 18,
+   "n": 24
+  }
+ },
+ "pooled": {
+  "t2": {
+   "FACTOR": 48,
+   "HASH_P1": 48,
+   "HASH_P2": 15,
+   "n": 48
+  },
+  "t3": {
+   "FACTOR": 37,
+   "HASH_P1": 35,
+   "HASH_P2": 28,
+   "n": 48
+  },
+  "c-IN": {
+   "FACTOR": 43,
+   "HASH_P1": 43,
+   "HASH_P2": 18,
+   "n": 48
+  },
+  "c-OUT": {
+   "FACTOR": 42,
+   "HASH_P1": 40,
+   "HASH_P2": 25,
+   "n": 48
+  }
+ },
+ "primary_by_P": {
+  "x**5 + x**4": {
+   "FACTOR": 5,
+   "HASH_P1": 5,
+   "HASH_P2": 3,
+   "n": 6
+  },
+  "x**6 + x**4": {
+   "FACTOR": 0,
+   "HASH_P1": 0,
+   "HASH_P2": 2,
+   "n": 3
+  },
+  "x**6 + x**5": {
+   "FACTOR": 5,
+   "HASH_P1": 4,
+   "HASH_P2": 2,
+   "n": 6
+  },
+  "x**7": {
+   "FACTOR": 11,
+   "HASH_P1": 11,
+   "HASH_P2": 6,
+   "n": 11
+  },
+  "x**7 + x**4": {
+   "FACTOR": 4,
+   "HASH_P1": 4,
+   "HASH_P2": 4,
+   "n": 4
+  },
+  "x**7 + x**5": {
+   "FACTOR": 3,
+   "HASH_P1": 3,
+   "HASH_P2": 1,
+   "n": 8
+  },
+  "x**7 + x**6": {
+   "FACTOR": 8,
+   "HASH_P1": 7,
+   "HASH_P2": 3,
+   "n": 8
+  },
+  "x**8": {
+   "FACTOR": 11,
+   "HASH_P1": 11,
+   "HASH_P2": 6,
+   "n": 11
+  },
+  "x**8 + x**3": {
+   "FACTOR": 7,
+   "HASH_P1": 7,
+   "HASH_P2": 1,
+   "n": 8
+  },
+  "x**8 + x**5": {
+   "FACTOR": 8,
+   "HASH_P1": 8,
+   "HASH_P2": 5,
+   "n": 8
+  },
+  "x**8 + x**7": {
+   "FACTOR": 16,
+   "HASH_P1": 16,
+   "HASH_P2": 6,
+   "n": 16
+  },
+  "x**9": {
+   "FACTOR": 7,
+   "HASH_P1": 7,
+   "HASH_P2": 4,
+   "n": 7
+  }
+ },
+ "cand0": {
+  "is_label": 0,
+  "strict_top": {
+   "FACTOR": 0,
+   "HASH_P1": 0,
+   "HASH_P2": 39
+  }
+ },
+ "legal_K": {
+  "3": 41,
+  "4": 32,
+  "2": 15,
+  "5": 8
+ },
+ "gap_vectors_t2IN_t2OUT_t3IN_t3OUT": {
+  "F_H1": [
+   0,
+   0,
+   0,
+   2
+  ],
+  "F_H2": [
+   16,
+   17,
+   9,
+   0
+  ]
+ },
+ "prior_gap_vectors": {
+  "16001_F_H1": [
+   4,
+   4,
+   19,
+   16
+  ],
+  "17001_F_H1": [
+   -7,
+   6,
+   10,
+   3
+  ]
+ },
+ "spearman_n4_descriptive": {
+  "F_H1_v_16001_F_H1": 0.2722,
+  "F_H1_v_17001_F_H1": -0.2582,
+  "F_H2_v_16001_F_H1": -0.7379,
+  "F_H2_v_17001_F_H1": 0.0
+ },
+ "robustness_rider": {
+  "n": 96,
+  "top1": {
+   "FACTOR": 83,
+   "HASH_P1": 85,
+   "HASH_P2": 43
+  },
+  "cells": {
+   "t2-IN": {
+    "FACTOR": 21,
+    "HASH_P1": 24,
+    "HASH_P2": 9
+   },
+   "t2-OUT": {
+    "FACTOR": 24,
+    "HASH_P1": 24,
+    "HASH_P2": 6
+   },
+   "t3-IN": {
+    "FACTOR": 19,
+    "HASH_P1": 19,
+    "HASH_P2": 9
+   },
+   "t3-OUT": {
+    "FACTOR": 19,
+    "HASH_P1": 18,
+    "HASH_P2": 19
+   }
+  },
+  "mrr": {
+   "FACTOR": 0.9288,
+   "HASH_P1": 0.941,
+   "HASH_P2": 0.7049
+  },
+  "wall_s": 2.8
+ }
+}

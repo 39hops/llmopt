@@ -56100,3 +56100,176 @@ known-set status in every claim; c0 cross-run mps forwards
 (frozen); candidate-0 census, never 1/n as chance; receipts
 force-added small-text; every claim grounded in THIS run's
 tool output.
+
+## VERDICT MATH-CYBER-1-SVP-GRID-KNOWN-SET-PERMUTATION-HELDOUT-SCORE-18001: KNOWN-SET-P2-ONLY-STRONG-FACTOR — the frozen IUT conjunction does NOT fire: F v H2 is STRONG-FACTOR at enormous margin (85/96 v 43/96, discordants 46/4, McNemar p=4.5e-10; sign 43+/4-, p=2.8e-09) but F v H1 is MIXED/INCONCLUSIVE because HASH-P1 ALSO completed the withheld combinations (83/96 v FACTOR's 85/96; discordants 2/0, p=.5, unresolved at n_disc=2 — no equivalence claim); the registered ROBUST prior is WRONG (the P1-ONLY/P2-ONLY labels were named risks; the control-success mechanism and the 16001-scale F-v-H2 split were not); same-init permutation sensitivity H1 v H2 is massive (46/6 discordants, p=1.0e-08) (2026-08-30, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-GRID-KNOWN-SET-PERMUTATION-
+HELDOUT-SCORE-18001 (scorer scratch/mathworld1_svpheldout18.py
+committed at 02f6c101 BEFORE any inference — f70e5f3d plus one
+audited fix deriving the calibration side-by-side from pinned
+bytes; fresh-context source audit PASS on all nine registered
+checks, including independent re-derivation of the P2
+realization to 952f332d... and hand-verification of the
+Spearman implementation and both PRIOR_GAPS literals against
+the booked riders). ONE joint three-arm scoring run (RC=0,
+scoring wall 3.1 s post-load, clean porcelain) under
+CALIBRATION-FIRED authority verified from the frozen three-arm
+calibration receipt (3a56bd51...) before the heldout bytes
+opened; c0 for both matched-transfer laws from the FROZEN
+seed-18001 calibration raw scores (c5af7e8f..., never
+rescored); HASH-P2's four calibration-miss blocks stayed in
+both primaries; no denominator matching or baseline
+correction; P-OUT untouched; anti-peek order held (raw scores
+persisted and hashed, 0b2c8014..., before any adjudication;
+sensitivity and every rider computed only after the primary
+receipt froze).
+
+HARD GATES (all fired): eleven pins exact pre- and post-run
+(heldout a3f6103b..., calibration scores c5af7e8f... + receipt
+3a56bd51..., covered_calibration af1a4aa1..., svpdiet3 receipt
+26cb6d01..., BIRTH-18001 receipt d6e4ee99..., P2 qual receipt
+47309f22..., FACTOR ecf5be31..., HASH-P1 1ec2ea43..., HASH-P2
+26e4afc3..., init a7bb5b88...); P2 realization re-derived pre
+AND post (post value a derived receipt field); 96 heldout-I1
+primary + 96 robustness-I1 rider; one-to-one
+block/base_signature/term match to calibration; labels all
+(i_unprod, I, ordinal 1); T=9 on all 963 primary candidate
+scorings; scores finite; mean/sum rank + full-order identity;
+F/P1/P2 roundtrips exact per candidate. Receipt
+logs/mathworld1/svpheldout18/svpheldout18_receipt.json; raw
+rows primary_scores.jsonl (96), matched_transfer.jsonl (192 =
+96 blocks x 2 pairwise laws), robustness_scores.jsonl (96),
+riders.json.
+
+PAIRWISE PRIMARY 1 — FACTOR v HASH-P1 (frozen law, all 96
+blocks): F 85/96, H1 83/96; discordants F-only 2, H1-only 0
+(n_disc 2); exact McNemar p = .5 => HELDOUT-INCONCLUSIVE.
+Matched transfer: q 2+/0-/94 zero; sign p = .5. Pairwise
+verdict MIXED/INCONCLUSIVE. Covered misses F 0 / H1 0;
+transitions F 85/11, H1 83/13; both-covered-correct rider
+(96 blocks, vacuously all): direction 2+/0-, unread at n=2.
+
+PAIRWISE PRIMARY 2 — FACTOR v HASH-P2 (identical law,
+independently adjudicated): F 85/96, H2 43/96; discordants
+F-only 46, H2-only 4 (n_disc 50); exact McNemar p = 4.5e-10 =>
+HELDOUT-FACTOR-WIN. Matched transfer (H2's four covered-miss
+blocks included): q 43+/4-/49 zero; sign p = 2.8e-09; q_pos >
+q_neg. Pairwise verdict STRONG-FACTOR. Covered misses F 0 /
+H2 4; transitions F 85/11, H2 correct->wrong 50,
+correct->correct 42, wrong->correct 1, wrong->wrong 3;
+both-covered-correct rider (92 blocks): F 82, H2 42, q 43+/3-
+— direction unchanged after removing H2's covered misses.
+
+FROZEN IUT CLASS (mechanical): F-v-H1 not STRONG, F-v-H2
+STRONG => KNOWN-SET-P2-ONLY-STRONG-FACTOR. Both pairwise
+tables reported above as required; H1 and H2 rows never
+pooled; no pooled p-value exists.
+
+REDUNDANCY DISCLOSURE (frozen): within each conjunction the
+McNemar and matched-transfer legs are correlated views of one
+paired contrast (F-v-H2: nonzero-q set 47 v discordant set 50,
+largely shared), never independent confirmations; F-v-H1 and
+F-v-H2 share the same FACTOR checkpoint, seed, population, and
+training rows — this is a treatment-axis result, not two
+independent model replications.
+
+PERMUTATION SENSITIVITY (secondary/descriptive, post-receipt,
+booked as PERMUTATION-SENSITIVITY-MEASURED): H1 83/96 v H2
+43/96 on the same 96 states; discordants H1-only 46 / H2-only
+6; exact McNemar p = 1.03e-08, direction H1; MRR H1 .9323 v H2
+.7049; calibration side by side H1 96/96 v H2 92/96. The two
+information-equivalent, same-construction, same-init,
+same-data arbitrary bijections differ by 40 solves on the
+withheld combinations while differing by 4 on the covered
+grid.
+
+REGISTERED-PRIOR ACCOUNTING: WRONG. The prior (carried
+verbatim from 7976613b) was
+KNOWN-SET-PERMUTATION-ROBUST-STRONG-FACTOR at LOW-MODERATE
+confidence, with P1-ONLY or P2-ONLY via a single failed leg
+both named as substantial risks — so the outcome LABEL was an
+anticipated risk; what nothing registered anticipated was the
+MECHANISM (the failed leg failed because the CONTROL
+SUCCEEDED) or the SCALE (the F-v-H2 split came in at
+16001-scale, 42 solves at p=4.5e-10, where the prior expected
+17001-scale ~12 solves): HASH-P1 at seed 18001 completed
+the withheld combinations at 83/96 — an arbitrary-identity arm
+performing at FACTOR's level, which no registered scenario
+contained.
+
+MECHANISM INTERPRETATION UPDATE (required by the GO on a
+non-ROBUST outcome; hypothesis language, no new claim): the
+per-realization record on the SAME frozen heldout population —
+FACTOR 84, 75, 85 across seeds 16001/17001/18001; HASH-P1 41,
+63, 83 across the same seeds; HASH-P2 43 at 18001 — shows the
+FACTOR arm comparatively stable and the arbitrary-identity
+arms swinging across BOTH the seed axis and the bijection
+axis, from collapse to near-parity, while covered competence
+stays at 92-96/96 everywhere. The earlier STRONG-FACTOR
+verdicts therefore cannot be read as "arbitrary whole-action
+identity cannot complete withheld combinations" — at least one
+(bijection, seed) realization of it can. What the full record
+supports narrowly: FACTOR's completion of the withheld
+combinations has been high in all three primary realizations
+(84/75/85) and all three robustness riders (84/75/83),
+while the arbitrary-identity outcome is strongly
+realization-dependent; the treatment CONTRAST is therefore
+dominated by control-arm variance, not by factorization-arm
+stability alone. Which structural property of a bijection
+realization predicts heldout completion is an OPEN question —
+no candidate axis is registered here, and any test of one
+needs its own prereg. The [[coordinate-reuse/
+coordinate-extrapolation]] and [[invariant-effect/
+non-invariant-trace]] banks and the MODEL-CONFLUENCE bank all
+take this result as a further anchor (updated in
+RIFF-LEDGER this commit): behavioral non-confluence between
+information-equivalent representations is itself
+realization-dependent.
+
+ANATOMY RIDERS (descriptive, no subgroup tests): per-cell
+(each of 24) — FACTOR 24/24/19/18, HASH-P1 24/24/19/16,
+HASH-P2 8/7/10/18 over (t2-IN, t2-OUT, t3-IN, t3-OUT); pooled
+t2 F 48 H1 48 H2 15; pooled t3 F 37 H1 35 H2 28; c-IN 43/43/18;
+c-OUT 42/40/25 (H2's least-bad cell is t3-OUT 18/24 — shape
+unread). Gap vectors: F-H1 [0,0,0,2]; F-H2 [16,17,9,0].
+Preregistered n=4 Spearman (descriptive only): F-H1 v 16001
+.2722, v 17001 -.2582; F-H2 v 16001 -.7379, v 17001 .0000 —
+no anatomy stability signal at this resolution. Candidate-0
+(never the label): strictly top for H2 on 39 states, F 0, H1 0
+(the same one-sided census shape as every prior weak-HASH
+realization). MRR F .9410 / H1 .9323 / H2 .7049. Legal-K
+{2:15, 3:41, 4:32, 5:8}. ROBUSTNESS RIDER (separate, never in
+primaries): F 83, H1 85, H2 43 of 96 — H1 descriptively AHEAD
+of FACTOR on the rider population; reported as-is, unread.
+
+KNOWN-SET INTERPRETATION FENCE (frozen, carried verbatim):
+this population has been scored repeatedly — every claim here
+is KNOWN-SET treatment replication, never sealed confirmatory.
+NOT: a fresh sealed population; universal compositionality;
+broad math OOD; degree-class robustness (the P-OUT reverse
+split stands untouched and visible); solve-rate gain;
+backend-independent semantics; proof that all arbitrary
+encodings fail (this run measured the opposite for one
+realization); independence across the two pairwise contrasts.
+Narrative combination with the 16001/17001 replication is
+permitted, never pooled.
+
+FENCES. Mac/mps; per-seed/per-permutation reporting only, no
+pooled rows or p-values, no 192-state HASH comparison; c0
+cross-run mps forwards (frozen); the F-v-H1 null is NOT
+equivalence (n_disc 2 resolves nothing beyond "no large
+split"); candidate-0 census reported, never 1/n as chance; no
+smoke invocation exists for this scorer (refuse-if-exists sole
+path guard); rider files are post-receipt and carry no receipt
+anchor — booking anchors robustness_scores.jsonl 716609ef...
+and riders.json f633f62c... (computed at force-add); the
+PRIOR_GAPS rider literals were transcribed from the booked
+16001/17001 riders.json files (not receipts as the code
+comment says) and were independently re-derived correct by
+BOTH post-run audits — the source files are not sha-pinned by
+this scorer, a next-sibling fix; the receipt's ckpt_pins carry
+shas without paths and no seed field (paths anchored via the
+driver source sha, disclosed); receipts
+force-added small-text; every claim grounded in THIS run's
+tool output; dual audit before booking; after booking
+commit/push, census, STOP.
