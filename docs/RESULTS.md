@@ -57556,3 +57556,124 @@ partition, gated at materialization); receipts force-added
 small-text; every claim grounded in THIS run's tool output;
 dual audit before booking; after booking commit/push, census,
 STOP.
+
+## PRE-REG MATH-CYBER-1-SVP-FIELD-ORDER-REPLICATION-PREREG-0: init-only replication of the seed-19001 FIELD-ORDER intervention — seed 20001 (census-verified untouched, RESERVED) is the ONE changed experimental variable; arms/PERM/INV/world/laws adopted byte-for-byte from the frozen 3ac5a70e protocol; mechanism and completion replication outcomes plus the joint status table frozen BEFORE any new initialization exists; PARAM-MIDDLE stays unbuilt until this replication adjudicates; PREREG ONLY — nothing initialized, trained, calibrated, or scored under this GO (2026-08-30, Mac)
+
+WHY. The seed-19001 intervention booked cell B
+(ORDER-LOAD-BEARING + SOCKET-MOVES) with BOTH endpoints
+one-state boundary-adjacent (completion 8/1 discordants at
+p=.0390625, a 7/1 split books NO-DIRECTIONAL-SEPARATION;
+PARAM-FIRST k_step=3 by a one-state argmax margin, gain 30 v
+29). The goal here is not a new effect: does a fresh
+initialization under the SAME frozen world reproduce (1) the
+coordinate-following mechanism direction and (2) the
+completion-damage direction/endpoint?
+
+SEED. 20001, census-verified untouched (repo-wide grep: the only hits are an unrelated DOI substring
+in a vendored package and unrelated longer-integer substring
+matches in several data files; no experimental-seed use, no
+checkpoint, log, or booking) — RESERVED here. Init law =
+the 19001 law verbatim (dedicated pre-step, double-build
+byte-identity, design-time pin computed at the adopting birth
+stage, 2x59 bitwise gates, storage disjointness, no
+prior-seed weights).
+
+ARMS + WORLD (adopted byte-for-byte from 3ac5a70e and the
+booked stage receipts; NOTHING changes but the seed):
+CANONICAL [r1,r2,k,o1,o2,pk,x1,x2]; PARAM-FIRST
+[pk,x1,x2,r1,r2,k,o1,o2]; PERM = [5,6,7,0,1,2,3,4]; INV =
+[3,4,5,6,7,0,1,2]; no PARAM-MIDDLE, no representation/
+population/training-law change. The exact qualified world:
+884,736-action domain; 74,860 rows (natural a943ba7f... + aug
+0ef3d8a8... + manifest 897c8bf8...); batch plan f55e9fee...;
+per-action token-multiset identity as a HARD gate; the same 96
+calibration states (af1a4aa1...) and 96 known strict heldout
+states (a3f6103b...); the same structural groups. The
+structural census (CANONICAL 29@k1 + the same 67@k8, max 8;
+PARAM-FIRST the same 29@k1 + the same 67@k3, max 3) is
+RECOMPUTED AND GATED before training as an INTEGRITY CHECK —
+it is not a newly estimated hypothesis; a disagreement is an
+instrument failure, not a finding: book the discrepancy and
+STOP before any initialization.
+
+LAWS (carried unchanged): shared fresh init both arms; equal
+compute; 7,020 updates/arm; 2,021,220 continuation tokens/arm;
+balanced 3,510/3,510 execution order; the frozen competence
+gate with all-or-stop calibration
+(FIELD-ORDER-REPLICATION-NOT-REACHED on any arm failure); ONE
+joint raw prefix-scoring artifact for heldout + onset;
+pessimistic top-1; the symmetric exact-McNemar completion law;
+earliest-argmax k_step with k_struct 8 and 3.
+
+REPLICATION OUTCOMES (frozen; seed 19001 and the fresh
+realization NEVER pooled; the new seed reports independently):
+  MECHANISM: REPLICATES-ONSET-RELOCATION iff fresh CANONICAL
+  k_step == 8 AND fresh PARAM-FIRST k_step == 3; otherwise
+  DOES-NOT-REPLICATE-ONSET-RELOCATION with the exact
+  asymmetric alignment cell reported. The k_step argmax
+  margins are ALWAYS quoted (the 19001 fragility lesson).
+  COMPLETION (the existing symmetric law, unchanged):
+  ORDER-DAMAGE iff CANONICAL > PARAM-FIRST and exact McNemar
+  p < .05; ORDER-REVERSAL symmetric; else
+  NO-DIRECTIONAL-SEPARATION — and the raw directional
+  difference is reported even when non-significant;
+  non-significance is never equality.
+  JOINT STATUS TABLE (frozen, exhaustive given the above):
+    REPLICATES-FULL-CELL iff REPLICATES-ONSET-RELOCATION AND
+      ORDER-DAMAGE;
+    REPLICATES-MECHANISM-DIRECTION iff
+      REPLICATES-ONSET-RELOCATION AND completion is
+      NO-DIRECTIONAL-SEPARATION with CANONICAL numerically
+      above PARAM-FIRST;
+    MECHANISM-ONLY / DAMAGE-NOT-REPLICATED iff
+      REPLICATES-ONSET-RELOCATION AND completion direction is
+      tied or numerically reversed without significance;
+    REPLICATES-MECHANISM-CONTRADICTS-COMPLETION iff
+      REPLICATES-ONSET-RELOCATION AND a significant
+      ORDER-REVERSAL (its own row — the socket follows the
+      coordinate while completion significantly favors the
+      reordered arm);
+    FAILS-MECHANISM-REPLICATION iff onset relocation does not
+      fire (whatever completion does — the completion result
+      still books beside it);
+    a significant ORDER-REVERSAL is ALWAYS additionally named
+      verbatim wherever it occurs, never folded into another
+      label. With the fifth row the table is exhaustive over
+      {relocated, not} x {DAMAGE, NO-SEP-above, NO-SEP-tied-
+      or-below, REVERSAL}.
+
+REGISTERED PRIOR (house, before any seed-20001 artifact
+exists): ONSET-RELOCATED at MODERATE-TO-HIGH confidence;
+CANONICAL numerical completion advantage at MODERATE
+confidence; a repeated p < .05 ORDER-DAMAGE at LOWER
+confidence (19001 sat one discordant from the bar); effect
+magnitude not expected to reproduce exactly; PARAM-FIRST's
+k_step margin may vary materially across initialization. No
+pooling planned or permitted.
+
+CLAIM CEILING (frozen): a successful replication supports —
+across two independent initialization realizations under one
+fixed dataset, one fixed population, one fixed field-order
+intervention, and one frozen protocol, the dominant learned
+decision step follows the relocated semantic coordinate; if
+ORDER-DAMAGE also repeats, canonical context-first ordering
+also repeatedly yields better strict completion. NOT
+established by any outcome: seed-population generality;
+fresh-population generality; a universal optimal ordering;
+that context-before-parameter is the causal mechanism (that
+account stays a NOMINATED hypothesis for a later
+PARAM-MIDDLE / graded-context intervention, which remains
+UNBUILT until this replication adjudicates).
+
+ORDER: freeze (this entry) -> fresh-context prereg audit ->
+commit/push/census -> STOP. Next stages, EACH on its own GO:
+(1) replication materialization-integrity + two-arm birth
+(init pin computed and frozen at that stage's commit; that
+stage names its own fresh output/checkpoint namespace with
+refuse-if-exists — no 19001 path is reused); (2)
+calibration; (3) heldout + onset score. Nothing executes here.
+
+FENCES. PREREG ONLY; Mac/mps when executed; known-set status
+travels into every stage; per-seed/per-arm reporting, nothing
+pooled; every future claim grounded in its own run's tool
+output.
