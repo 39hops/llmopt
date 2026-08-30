@@ -56273,3 +56273,118 @@ driver source sha, disclosed); receipts
 force-added small-text; every claim grounded in THIS run's
 tool output; dual audit before booking; after booking
 commit/push, census, STOP.
+
+## PRE-REG MATH-CYBER-1-SVP-BIJECTION-GEOMETRY-DESK-0: static code-geometry descriptor census over the frozen world (74,860 training target codewords + 96 strict heldout primary states, arms FACTOR/HASH-P1/HASH-P2) — ALL descriptor definitions, the smoothing constant, the witness law, and the categorical desk-label bar FROZEN HERE before any value is computed; POSTHOC hypothesis generation only (n=2 HASH permutations can never establish prediction or mechanism); zero model inference, zero new permutations, zero training (2026-08-30, Mac)
+
+QUESTION (exploratory): why can two equal-information,
+same-construction arbitrary bijections differ by 40 strict
+solves at one seed (P1 83 v P2 43 at 18001) while P1 itself
+moves 41 -> 63 -> 83 across seeds? Working hypothesis only,
+never a finding: task-conditioned code geometry interacting
+with optimization realization.
+
+SEED FENCE (frozen into every reading): P1's geometry is
+IDENTICAL across seeds while its strict score and candidate-0
+census move (41/63/83; strict-top 25/26/0) — no static
+descriptor can explain seed variation by itself; a geometry
+lead can at most nominate SUSCEPTIBILITY/available inductive
+structure, and realized performance requires an optimization
+interaction. Banked, not claimed: FACTOR arm levels (84/75/85)
+look descriptively more stable than P1's (41/63/83); three
+seeds cannot support a variance claim.
+
+POPULATION (all frozen, pin-gated): the 74,860 training rows'
+target action tuples (natural a943ba7f... + aug 0ef3d8a8...);
+the 96 heldout-I1 primary states of heldout_test16
+(a3f6103b...) with their frozen legal candidate sets; codes
+FACTOR/HASH-P1 from stored fields, HASH-P2 derived from the
+immutable realization (952f332d..., re-derivation gated). No
+logits, no checkpoints, no scoring.
+
+FROZEN DESCRIPTOR DEFINITIONS (mechanical resolutions booked
+here; no value inspected before this freeze):
+  A. AUTOREGRESSIVE TARGET SUPPORT (per arm, from TRAINING
+  TARGET CODEWORDS ONLY, counted WITH row multiplicity — the
+  learner's exposure): (1) prefix-count vector N_k(z), k=1..8;
+  (2) per-position token counts over training; (3)
+  position-specific bigram counts (k, z_k, z_{k+1}), k=1..7,
+  and trigram counts (k, z_k, z_k+1, z_k+2), k=1..6; (4) ONE
+  smoothed empirical autoregressive score log P_emp(z) =
+  sum_{k=1..8} log((count(prefix_k) + lambda) /
+  (count(prefix_{k-1}) + 8*lambda)) with LAMBDA = 1 (fixed
+  here; no sweep; prefix_0 count = 74,860). Raw components
+  reported beside the scalar.
+  B. SIBLING-RELATIVE SUPPORT (per heldout state per arm):
+  target log P_emp; max legal-rival log P_emp; target - max
+  rival margin; STATIC RANK of the target (pessimistic: ties
+  count against, matching the scorer's rank convention);
+  candidate-0 log P_emp and target - candidate-0 margin.
+  Summaries: fraction of 96 with target static-rank 1; margin
+  median/p10/p90; the same by the four frozen cells;
+  candidate-0 static-rank-1 census. No significance tests, no
+  fit against model correctness.
+  C. COVERED-WITNESS BRIDGE GEOMETRY (witness selection
+  mechanical from SEMANTIC TUPLES, never code similarity): for
+  each withheld target action (i_unprod, I, ordinal 1,
+  term_index, t), t in {2,3}: same-term other-site witness =
+  (i_unprod, I, ordinal 0, term_index, t); same-site
+  covered-term witnesses = (i_unprod, I, ordinal 1,
+  term_index, 0) AND (..., 1), reported SEPARATELY in the
+  frozen order [t0, t1] (no post-hoc aggregate). Per
+  target-witness code pair: Hamming distance over 8 symbols;
+  longest common prefix; per-position equality vector; shared
+  position-aligned adjacent bigram count (positions k where
+  (z_k, z_{k+1}) match); shared position-aligned trigram
+  count. The SAME quantities for target-to-legal-rival pairs
+  per state (density control).
+  D. LOCAL TRAINING-CODE DENSITY (per heldout target per arm,
+  against the DISTINCT training target codeword set): min
+  Hamming to any training codeword; counts within Hamming
+  radius r = 1, 2, 3; max common-prefix length with training
+  codewords + count attaining it. Reported beside the min/max
+  of the same metrics over that state's legal rivals.
+  E. FEISTEL-INTERNAL OVERLAP (P1/P2 only; SECONDARY; fence:
+  the model never observes Feistel internals — this can only
+  describe how the permutation induces output geometry): the 4
+  (round i, 12-bit input half) pairs traversed by each heldout
+  semantic action under forward encode; the training-traversed
+  (round, input) set; per target and per rival the
+  count/fraction of reused round inputs.
+
+CRITICAL ANALYSIS LAW (frozen): no broad feature search; no
+classifier/regressor on the 96 correctness outcomes; no
+correlation ranking over metric families; no P1/P2 separation
+called predictive. POSTHOC status stamped on every association.
+
+FROZEN CATEGORICAL BAR (defined before any value): the desk
+books GEOMETRY-LEAD iff the Family-B primary summary — the
+fraction of the 96 states where the target is static-rank 1 —
+differs between P1 and P2 by >= .25 ABSOLUTE in the direction
+aligned with the known outcome anatomy (P1 above P2), AND the
+same sign of difference holds in at least 3 of the 4 frozen
+cells. MIXED-GEOMETRY iff one or more frozen descriptors show
+>= .25-scale separations whose directions conflict with each
+other or with the cell/candidate-0 anatomy.
+NO-STATIC-LEAD iff no frozen descriptor family reaches the
+bar. Family B's rank-1 fraction is the ONLY bar-carrying
+statistic; families A/C/D/E are reported descriptively and can
+support or complicate the label in prose but never flip it.
+
+NEXT-RUNG LOGIC (bank only, never executed here): a coherent
+lead -> freeze the predictor BEFORE any P3+ realization, then
+an anti-selected multi-permutation prospective panel; a
+NO-STATIC-LEAD -> a frozen-checkpoint TOKEN-ONSET-PROBE
+locating where target-v-rival likelihood diverges across P1
+seeds and P2, existing checkpoints only.
+
+ORDER: freeze (this entry) -> instrument commit -> independent
+audit that definitions preceded values -> ONE census run ->
+book (exploratory status explicit) -> commit/push/census ->
+STOP. Outputs logs/mathworld1/svpgeodesk/ (refuse-if-exists).
+
+FENCES. Posthoc relative to all P1/P2 outcomes (the author has
+seen them; the freeze-then-compute order and the mechanical
+definitions are the control); descriptive throughout, no
+p-values anywhere; n=2 permutations, n=3 seeds; Mac,
+deterministic given frozen bytes; every claim grounded in THIS
+run's tool output.
