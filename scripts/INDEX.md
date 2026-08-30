@@ -2938,6 +2938,14 @@ MATH-CYBER-1 SVP-GRID-CALIBRATION-SCORE-17001 — ONE scoring run of the two sea
 - `ctup(c)`
 - `main()`
 
+### scratch/mathworld1_svpcalscore18.py
+MATH-CYBER-1 SVP-GRID-THREE-ARM-CALIBRATION-SCORE-18001 — ONE scoring run of the three sealed seed-18001 checkpoints (FACTOR / HASH-P1 / HASH-P2) on the frozen covered-calibration artifact ONLY (af1a4aa1..., the same 96 covered-I0 strict states scored by the 16001/17001 chain). Applies the frozen ALL-THREE competence gate of PERMUTATION-REPLICATION-PREREG-0 (7976613b): per arm c-IN covered >= 36/48 AND c-OUT covered >= 36/48 AND no {term x regime} cell < 12/24 — ALL THREE arms pass => CALIBRATION FIRED (a later explicit GO gains the KNOWN-SET permutation heldout authority); ANY arm fails ANY bar => PERMUTATION-REPLICATION-NOT-REACHED, STOP, no heldout for any subset, no rescue, no threshold change. Twelve arm x term x regime cells reported. Calibration differences across arms are DESCRIPTIVE ONLY — a gate, not a representation contest.
+
+- `fsha(p) -> str`
+- `ctup(c)`
+- `rederive_p2_realization_sha()`
+- `main()`
+
 ### scratch/mathworld1_svpchal.py
 MATH-CYBER-1 SVP-STRICT-GRID-CHALLENGE-DESIGN-0 — materialize + qualify the FINAL prospective strict-recombination challenge under the frozen law (prereg committed with this driver BEFORE any byte is generated). Zero model/checkpoint access, zero inference; scoring happens under the NEXT GO only.
 
