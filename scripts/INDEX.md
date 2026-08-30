@@ -3098,6 +3098,20 @@ MATH-CYBER-1 SVP-GRID-BIRTH-17001 — the seed-17001 INIT-ONLY replication birth
 - `run(plan, rows_by_id, dev, init_sha, n_steps, tag)`
 - `main()`
 
+### scratch/mathworld1_svpgbirth18.py
+MATH-CYBER-1 SVP-GRID-THREE-ARM-BIRTH-18001 — the BIRTH stage of the frozen permutation-replication protocol (PERMUTATION-REPLICATION-PREREG-0, commit 7976613b): ONE shared fresh seed-18001 initialization, THREE equal-compute arms over the frozen GRID-DIET population (74,860 rows, batch plan f55e9fee..., 7,020 updates/arm):   FACTOR   = frozen factor code (unchanged)   HASH_P1  = frozen P1 Feistel (unchanged)   HASH_P2  = the immutable qualified P2 realization              (svpp2qual; realization pin 952f332d..., re-derived              and gated at entry — the salt/mapping can NEVER              change) ZERO evaluation scoring; no calibration/heldout/P-OUT access; eval shas appear ONLY as opaque provenance literals. This is a NEW three-arm instrument, not a mechanical sibling of the two-arm births; its common training law (rows, plan, model, optimizer, scheduler, masks, label censoring, per-batch equal-compute gates, init pre-step, path-isolated smoke) is carried from the booked BIRTH-17001 law with the two-arm order law replaced by the frozen six-cycle.
+
+- `fsha(p) -> str`
+- `rederive_p2_realization_sha()` — Re-derive the P2 realization pin over the canonical
+- `state_bytes(seed)`
+- `make_init()`
+- `ensure_init()`
+- `load_rows()`
+- `make_batch(rows, view, dev)`
+- `load_arm_models(dev, init_sha)`
+- `run(plan, rows_by_id, dev, init_sha, n_steps, tag)`
+- `main()`
+
 ### scratch/mathworld1_svpgenadj.py
 MATH-CYBER-1 SVP-GENERALIZATION-SCORE-0 — ONE joint scorer: all three paired births (9001, 10001, 11001 in that fixed order) teacher-force scored on the frozen SECOND band (79 primary decisions, seeds 9700-9719) under the byte-frozen first-band scoring law. Zero training, zero generation, zero sympy/world.
 

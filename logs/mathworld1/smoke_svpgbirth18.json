@@ -1,0 +1,138 @@
+{
+ "mode": "smoke",
+ "seed": 18001,
+ "vocab": 340,
+ "n_params": 19142016,
+ "init_sha": "a7bb5b8839e78560b6648f7471c03827796309c990514fd4bdce949b00299fc4",
+ "plan_sha": "f55e9fee1b00f57256f3c8152be149fbb4c619479c14e4d8c01e1672afebad4d",
+ "steps": 6,
+ "smoke_plan_steps": [
+  1116,
+  0,
+  1,
+  2,
+  3,
+  2339
+ ],
+ "losses": {
+  "FACTOR": [
+   5.993986129760742,
+   2.7067017555236816,
+   1.9311637878417969,
+   1.4218337535858154,
+   1.6039830446243286,
+   1.9950084686279297
+  ],
+  "HASH_P1": [
+   6.0251569747924805,
+   4.045345783233643,
+   3.0361790657043457,
+   2.585510015487671,
+   2.5590648651123047,
+   2.928391456604004
+  ],
+  "HASH_P2": [
+   5.95082950592041,
+   3.8204903602600098,
+   2.9349560737609863,
+   2.492954969406128,
+   2.414102077484131,
+   2.8828012943267822
+  ]
+ },
+ "grad_norms": {
+  "FACTOR": [
+   10.487751960754395,
+   5.4658966064453125,
+   4.428569316864014,
+   2.8370444774627686,
+   2.951652765274048,
+   3.7939698696136475
+  ],
+  "HASH_P1": [
+   5.43057918548584,
+   4.6717658042907715,
+   3.9112701416015625,
+   3.498898983001709,
+   3.212048053741455,
+   4.184978485107422
+  ],
+  "HASH_P2": [
+   5.537532329559326,
+   4.785661220550537,
+   3.90336275100708,
+   3.337273359298706,
+   3.2033417224884033,
+   3.4337401390075684
+  ]
+ },
+ "tokens_padded": {
+  "FACTOR": 18940,
+  "HASH_P1": 18940,
+  "HASH_P2": 18940
+ },
+ "tokens_continuation": {
+  "FACTOR": 1548,
+  "HASH_P1": 1548,
+  "HASH_P2": 1548
+ },
+ "tokens_nonpad": {
+  "FACTOR": 6717,
+  "HASH_P1": 6717,
+  "HASH_P2": 6717
+ },
+ "order_counts": {
+  "0": 1,
+  "1": 1,
+  "2": 1,
+  "3": 1,
+  "4": 1,
+  "5": 1
+ },
+ "position_counts": {
+  "FACTOR": [
+   2,
+   2,
+   2
+  ],
+  "HASH_P1": [
+   2,
+   2,
+   2
+  ],
+  "HASH_P2": [
+   2,
+   2,
+   2
+  ]
+ },
+ "bars": {
+  "INIT_BITWISE_ALL_ARMS": true,
+  "VOCAB_340": true,
+  "PARAM_EQUAL": true,
+  "PLAN_SHA_MATCH": true,
+  "ALL_ARMS_T9": true,
+  "ALL_SIX_ORDERINGS_EXERCISED": true,
+  "SHAPE_GATES_EVERY_STEP": true,
+  "FINITE": true,
+  "STEP_LOCKSTEP": true,
+  "NO_PRODUCTION_PATHS": true
+ },
+ "wall_s": 5.8,
+ "start": {
+  "start_commit": "eba92337",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_svpgbirth18.py": "8464e0da5a81db7b5b7e81c51bdcddf001e26c948ee4c11d057ead6e0bd35929",
+   "scratch/mathworld1_svpp2qual.py": "2abd5970ff76bdc02c40f59763da5555c211a0ea53c297086953d34afa395c64",
+   "scratch/mathworld1_svpbirth.py": "c0bed95ec6a4db6faad424fa4780fba3af8d4f6d2cec364c75726da9e532950c",
+   "scratch/mathworld1_svpcode.py": "3b80655cbddc835e6fac99c81335a4d21a4b812ac304b786f8ca07ec96277ca0",
+   "scratch/mathworld1_actiontok.py": "a5a22b38c775f67b303b305fa98d8a7fd3e79ac2f11e151385a2701a6d0c4aec",
+   "scratch/mathworld1_birth.py": "90dbf312bc42c4eeeeefaaa27489351fb0fa615bb3a14463b41fd56ef1b466ad",
+   "llmopt/train/mathnative.py": "f8f5ca114d83d0dd854ebcb25de1a707e41e57822f06b15efecb0a1d87dcab61",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "eba92337"
+}

@@ -55708,3 +55708,90 @@ behavior comparison of any kind under this GO; big .pt
 untracked, anchored by the force-added lock-registered
 receipt's shas; every progress claim grounded in THIS run's
 tool output.
+
+## VERDICT MATH-CYBER-1-SVP-GRID-THREE-ARM-BIRTH-18001: THREE-ARM BIRTH SEALED — one shared seed-18001 init trained three equal-compute arms (FACTOR / HASH-P1 / HASH-P2) with every exact invariant hit (7,020 updates and 2,021,220 continuation tokens per arm, identical padded 21,691,032 / non-pad 8,823,393 totals across all three, order census 6 x 1,170 exact, position census 2,340 per arm per slot, 21,060 finite losses, 177 = 3x59 bitwise init gates, P2 realization re-derived pre AND post == 952f332d...); FACTOR ecf5be31... / HASH-P1 1ec2ea43... / HASH-P2 26e4afc3... sealed UNSCORED (2026-08-29, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-GRID-THREE-ARM-BIRTH-18001
+(driver scratch/mathworld1_svpgbirth18.py, a NEW three-arm
+instrument audited as such: pre-production fresh-context
+verification classified the full diff against the booked
+BIRTH-17001 law — every difference {three-arm extension
+required by the frozen law, path/pin/seed, disclosed
+order-law}, ZERO substantive, common training law byte-carried
+(rows/plan/model/optimizer/scheduler/masks/censoring), P1 and
+FACTOR imported unchanged, H2 imported from the qualified
+svpp2qual module as the single P2 source — and returned PASS
+with one should-fix (a data-dependent smoke mini-plan abort)
+plus a derived-receipt note, both folded and committed at
+eba92337 BEFORE the init pre-step). The ORDER-LAW RESOLUTION
+(lexicographic six-cycle for the prereg's unspecified
+residue->ordering map) was frozen in the prereg entry before
+any initialization, on no model outcome.
+
+ORDER HELD (tool-grounded): prereg 741ef9b9 + fix commit
+eba92337 -> init pre-step (SVPGB18_MAKE_INIT=1: double-build
+byte-identical, sha = design-time pin a7bb5b88...) ->
+path-isolated smoke (all 10 bars green incl.
+ALL_SIX_ORDERINGS_EXERCISED and NO_PRODUCTION_PATHS) -> ONE
+production birth (RC=0). ZERO evaluation scoring, zero
+checkpoint probes, zero H1/H2 behavior comparison; no
+calibration/heldout/P-OUT artifact opened (opaque provenance
+literals only); no seed-15001/16001/17001 weight loaded.
+
+P2 IMMUTABILITY (gated): qualification receipt bytes pinned
+47309f22...; the realization sha RE-DERIVED over the canonical
+884,736-tuple enumeration BEFORE training and AGAIN after —
+both == the qualified pin 952f332d... (the post-run derived
+value is a receipt field, not a literal). The salt, mapping,
+and realization are unchanged.
+
+RESULT (mechanical; receipt
+logs/mathworld1/svpgbirth_s18001_receipt.json, wall 5,264.2 s —
+inside the priced ~5,200-5,600 s estimate; start_commit =
+completion_commit = eba92337; run-start porcelain
+" M scripts/INDEX.md" — generated docs index, no instrument
+class):
+  SHARED INIT: seed 18001, sha = pinned a7bb5b88...; 177 = 3x59
+  tensor-equal comparisons gated; pairwise storage disjointness
+  gated; 19,142,016 params per arm.
+  EXACT INVARIANTS (all gated): updates 7,020/arm x 3;
+  scheduler lockstep on all 7,020 batches, terminal 7,019 all
+  arms; continuation tokens 2,021,220/arm exactly; padded
+  21,691,032 and non-pad 8,823,393 identical across all three
+  arms; per-batch shape/length/mask/padded/non-pad equality
+  gates green on all 7,020 (pairwise v the FACTOR reference —
+  equality is transitive); order census {0..5}: 1,170 each;
+  position census 2,340 per arm per execution slot;
+  21,060/21,060 finite losses; zero I1/t2-t3 labeled rows
+  [driver gate over pinned frozen bytes]; three DISTINCT
+  checkpoint shas gated; init pin re-gated post-run.
+  CHECKPOINTS SEALED UNSCORED: svp_grid_factor_s18001.pt
+  ecf5be31..., svp_grid_hashp1_s18001.pt 1ec2ea43...,
+  svp_grid_hashp2_s18001.pt 26e4afc3..., init
+  svp_grid_init_s18001.pt a7bb5b88...
+  DESCRIPTIVE ONLY (operational; never representation evidence;
+  the token identities induce different target distributions):
+  epoch mean losses FACTOR 0.12959/0.02962/0.01632, HASH-P1
+  0.17125/0.03032/0.01680, HASH-P2 0.16386/0.02950/0.01598;
+  arm walls 1,746.2/1,746.3/1,746.1 s (within-run-paired only);
+  peak RSS 2,592 MB.
+
+REGISTERED-PRIOR ACCOUNTING: mechanical-gates prior CORRECT
+(all gates passed; wall 5,264.2 s inside the n=2-derived
+estimate band). No capability prediction was registered at this
+stage and none is implied.
+
+NEXT (own GO, frozen at PERMUTATION-REPLICATION-PREREG-0):
+THREE-ARM CALIBRATION-SCORE-18001 — all three arms
+independently v the frozen competence gate (any failure =
+PERMUTATION-REPLICATION-NOT-REACHED); on FIRE, the KNOWN-SET
+heldout scoring under the frozen IUT law. The birth establishes
+only that three equal-compute models were produced correctly;
+no permutation-replication status exists.
+
+FENCES. Mac/mps (no cross-run bit-exact claim; the three arms
+shared this run); checkpoints sealed UNSCORED; no H1/H2
+comparison of any kind yet; big .pt untracked, anchored by the
+force-added lock-registered receipt's shas (future scorers MUST
+pin all four); every claim grounded in THIS run's tool output;
+after booking commit/push, census, STOP.
