@@ -57178,3 +57178,67 @@ MUST pin init + both checkpoints + the census receipt);
 per-position exposure differences are the treatment, reported
 never repaired; every claim grounded in THIS run's tool
 output; after booking commit/push, census, STOP.
+
+## PRE-REG MATH-CYBER-1-SVP-FIELD-ORDER-CALIBRATION-SCORE-19001: stage 2 of the frozen FIELD-ORDER protocol (3ac5a70e) — one scoring run of the two sealed seed-19001 checkpoints on the frozen covered-calibration artifact only, the frozen competence gate applied to BOTH arms independently (all-or-stop: EITHER arm fails ANY bar => FIELD-ORDER-NOT-REACHED); PARAM-FIRST candidate serialization derived from the qualified PERM law with per-candidate permutation-identity gates; no heldout, no onset values, no completion or relocation endpoint (2026-08-30, Mac)
+
+SCOPE. Calibration only: does each field order competently
+learn the covered support? It does NOT answer completion
+damage, improvement, onset relocation, or superiority; the
+canonical historical 75-85/96 heldout range is irrelevant to
+this adjudication; arm calibration differences are never
+field-order-superiority evidence.
+
+INSTRUMENT. scratch/mathworld1_svpfocal.py — the booked
+three-arm calibration scorer pattern reduced to the two
+field-order arms; CANONICAL candidates from stored factor_code
+(roundtrip-gated); PARAM-FIRST candidates DERIVED per candidate
+via pf_encode from the qualified svpforder instrument (single
+source of the PERM law), each gated by pf_decode roundtrip AND
+exact permutation identity v the canonical payload; candidates
+never regenerated; standing prompt/T=9/pessimistic-top-1/
+rank-identity laws unchanged; raw scores persisted and hashed
+BEFORE any competence summary. A fresh-context verifier checks
+before inference: frozen calibration bytes; semantic candidate
+sets/order; both checkpoints; arm-correct serialization;
+unchanged prompt/top-1/normalization; no heldout opened; no
+token-prefix/onset values computed; no threshold change.
+
+PINS: calibration af1a4aa1...; svpdiet3 receipt 26cb6d01...;
+FIELD-ORDER birth receipt f9565f74...; census receipt
+3f65b7ea...; checkpoints CANONICAL ae0a86e0... / PARAM-FIRST
+0fe38f78...; init 20751529...; 19,142,016 params/arm gate.
+
+FROZEN GATE + OUTCOMES (verbatim): per arm c-IN covered
+>= 36/48 AND c-OUT covered >= 36/48 AND no {term x regime}
+cell < 12/24; all eight cells + regime totals + overall /96 +
+MRR reported. BOTH arms pass => FIELD-ORDER CALIBRATION FIRED
+(stage-3 authority — known-set heldout completion + fresh-run
+token-onset — to a LATER explicit GO). EITHER arm fails ANY
+bar => FIELD-ORDER-NOT-REACHED: STOP, no heldout, no
+single-surviving-arm scoring, no gate weakening, no retraining
+or repair, no onset inspection, no 8->3 inference.
+
+REGISTERED PRIOR (house, on record): BOTH ARMS PASS. Grounds:
+covered competence has held for 7/7 arm-realizations of the
+revised in-support protocol (16001 F+H, 17001 F+H, 18001
+F+H1+H2) across three seeds and two code laws (two HASH
+bijection realizations), and PARAM-FIRST's
+training targets are an information-identical permutation with
+equal exposure; named risk: serialization order changing the
+covered-support learnability itself — a PARAM-FIRST calibration
+failure would be a STRIKING order effect at the competence
+level and books FIELD-ORDER-NOT-REACHED honestly.
+
+ORDER: freeze (this entry) + scorer commit -> fresh-context
+verifier -> ONE run (both arms) -> independent recomputation
+(pins, serialization identities, all cells, totals, gate,
+hashes; explicit verification that no heldout or onset scoring
+occurred) -> book -> commit/push/census -> STOP. Outputs
+logs/mathworld1/svpfocal/ (refuse-if-exists). On FIRE, the
+only forward statement: FIELD-ORDER KNOWN-SET HELDOUT +
+ONSET-SCORE-19001 becomes eligible (not run here).
+
+FENCES. Mac/mps; single realization (seed 19001); within-
+support competence reading only; effective candidate set n-1;
+receipts force-added small-text; every claim grounded in THIS
+run's tool output.
