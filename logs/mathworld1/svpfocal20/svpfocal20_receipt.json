@@ -1,0 +1,130 @@
+{
+ "prereg": "MATH-CYBER-1-SVP-FIELD-ORDER-REPLICATION-CALIBRATION-SCORE-20001",
+ "replication_of": "seed 19001 calibration (prereg 3ac5a70e; replication prereg 732a5312)",
+ "seed": 20001,
+ "verdict": "FIELD-ORDER-REPLICATION CALIBRATION FIRED",
+ "gate": {
+  "bar_regime": ">=36/48 per arm",
+  "bar_stratum": ">=12/24 per cell",
+  "cells_arm_term_regime": {
+   "CANONICAL|t2|IN": {
+    "correct": 18,
+    "n": 24
+   },
+   "CANONICAL|t2|OUT": {
+    "correct": 19,
+    "n": 24
+   },
+   "CANONICAL|t3|IN": {
+    "correct": 24,
+    "n": 24
+   },
+   "CANONICAL|t3|OUT": {
+    "correct": 24,
+    "n": 24
+   },
+   "PARAM_FIRST|t2|IN": {
+    "correct": 23,
+    "n": 24
+   },
+   "PARAM_FIRST|t2|OUT": {
+    "correct": 24,
+    "n": 24
+   },
+   "PARAM_FIRST|t3|IN": {
+    "correct": 24,
+    "n": 24
+   },
+   "PARAM_FIRST|t3|OUT": {
+    "correct": 20,
+    "n": 24
+   }
+  },
+  "regime_totals": {
+   "CANONICAL|IN": {
+    "correct": 42,
+    "n": 48
+   },
+   "CANONICAL|OUT": {
+    "correct": 43,
+    "n": 48
+   },
+   "PARAM_FIRST|IN": {
+    "correct": 47,
+    "n": 48
+   },
+   "PARAM_FIRST|OUT": {
+    "correct": 44,
+    "n": 48
+   }
+  },
+  "overall_top1": {
+   "CANONICAL": {
+    "correct": 85,
+    "n": 96
+   },
+   "PARAM_FIRST": {
+    "correct": 91,
+    "n": 96
+   }
+  },
+  "arm_pass": {
+   "CANONICAL": {
+    "regimes_pass": true,
+    "strata_pass": true,
+    "pass": true
+   },
+   "PARAM_FIRST": {
+    "regimes_pass": true,
+    "strata_pass": true,
+    "pass": true
+   }
+  }
+ },
+ "n_states_scored": 96,
+ "raw_scores_sha": "5df6ee83ff684920395d634a3f6f8ba9c6b7c96f5805540c8b8cefc25f968ddf",
+ "gates": {
+  "T9_candidates_checked": 642,
+  "rank_identity_checks": 192,
+  "full_order_identity_checks": 192,
+  "rederived_structure": {
+   "rows": 96,
+   "role_census": {
+    "covered-I0": 96
+   },
+   "unique_curs": 96
+  }
+ },
+ "device": "mps",
+ "wall_s": 2.0,
+ "pins": {
+  "logs/mathworld1/svpdiet3/covered_calibration.jsonl": "af1a4aa1df7bf3224745e91a90e1a77c36e5c54f7ff9b08509794d0fb7978db3",
+  "logs/mathworld1/svpdiet3/svpdiet3_receipt.json": "26cb6d0119f56e24b4025d43976ddf323a5540e0177c19583bfe2f5c984fb365",
+  "logs/mathworld1/svpforepl_s20001_receipt.json": "70ff3248a9b2f6e584c2d7bb8e9fc7b59853ebb7055f58193783fbd61eab78b3",
+  "logs/mathworld1/svpforepl_census/svpforepl_census_receipt.json": "49bf9823c93b5bd91e63694b26bef9bed86d04dde298c668c434e85e80fea302"
+ },
+ "ckpt_pins": {
+  "CANONICAL": "0a841a5f2a43b6f64b0dac8259c26fd79961e6ab91359a54be9c2582815b3e34",
+  "PARAM_FIRST": "b7198ff2e7b903ab5ed075fe947cb29142c5790ec84831434c53a598e466c322"
+ },
+ "init_pin": "7c95e77f8d7ccea5f4dd71c989e4d3225e347a178032d43539a1ae6ef62c9452",
+ "start": {
+  "start_commit": "443afd0c",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_svpfoclrepl.py": "23abeea8dc335b1880bff35bfa2db6cd5f31eaeea7113cbdbc03ed93d94e838b",
+   "scratch/mathworld1_svpfocal.py": "22e76e0a11c18c6fa73a1b3f5abc33af41ba60663db4f4da5b6865564128b6a5",
+   "scratch/mathworld1_svpforder.py": "293e2bb578704d60abcd4562a252d5f3671ea61f673c4cc76041d460a6330c06",
+   "scratch/mathworld1_svpforepl.py": "bc9174885f7360f6c407d4f03d6eb7f1af771f96f98674d9cb783b10c0a073b9",
+   "scratch/mathworld1_svpcalscore18.py": "ea0b9abc9da9d5a9a4b666b3fca163e3cd048f5dbb9d645a5b38c85f1ac32c15",
+   "scratch/mathworld1_svpadj.py": "2598d258d74b0d5d604104a3a495c6e2471c41cbf656a8935a2d9180a6d22209",
+   "scratch/mathworld1_svpbirth.py": "c0bed95ec6a4db6faad424fa4780fba3af8d4f6d2cec364c75726da9e532950c",
+   "scratch/mathworld1_svpcode.py": "3b80655cbddc835e6fac99c81335a4d21a4b812ac304b786f8ca07ec96277ca0",
+   "scratch/mathworld1_actiontok.py": "a5a22b38c775f67b303b305fa98d8a7fd3e79ac2f11e151385a2701a6d0c4aec",
+   "llmopt/train/mathnative.py": "f8f5ca114d83d0dd854ebcb25de1a707e41e57822f06b15efecb0a1d87dcab61",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "443afd0c"
+}

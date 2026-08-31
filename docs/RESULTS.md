@@ -57769,3 +57769,69 @@ untracked; PARAM-MIDDLE remains unbuilt and unauthorized;
 dual audit (fresh-context source verifier + receipt-auditor)
 before this booking. NEXT eligible GO: FIELD-ORDER REPLICATION
 CALIBRATION-SCORE-20001 only — not run.
+
+## VERDICT MATH-CYBER-1-SVP-FIELD-ORDER-REPLICATION-CALIBRATION-SCORE-20001: FIELD-ORDER-REPLICATION CALIBRATION FIRED — both fresh seed-20001 arms pass every frozen competence bar (CANONICAL 85/96, c-IN 42/48, c-OUT 43/48, min cell 18/24; PARAM-FIRST 91/96, c-IN 47/48, c-OUT 44/48, min cell 20/24); the registered seed-20001 joint heldout + onset stage is now ELIGIBLE under the frozen replication law, not run (2026-08-30, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-FIELD-ORDER-REPLICATION-PREREG-0
+(732a5312), stage 2 of the init-only seed-20001 replication.
+Scorer scratch/mathworld1_svpfoclrepl.py committed BEFORE
+inference (9fa95316; verifier docstring fix folded pre-run at
+443afd0c). Fresh-context verifier PASS, zero blockers: full
+line-by-line diff v the booked seed-19001 instrument
+scratch/mathworld1_svpfocal.py — every changed line classified
+into {20001 checkpoint pins/paths, fresh namespace, replication
+provenance}; scoring law untouched (prompt, T=9, pessimistic
+top-1 by mean logprob, mean/sum rank + full-order identity
+gates, BAR_REGIME 36, BAR_STRATUM 12, raw-first ordering);
+pf_encode/PERM imported from the svpforder single source,
+verified byte-identical to the seed-20001 birth's own copy; all
+six pin literals verified three-way (literal / disk / booked
+birth receipt).
+
+ONE scoring invocation over both sealed checkpoints (C
+0a841a5f..., PF b7198ff2..., both loaded from full-hash pins;
+init pin 7c95e77f re-gated pre and post). Raw per-candidate
+scores persisted and hashed BEFORE any summary
+(scores.jsonl sha 5df6ee83..., 96 rows). Instrument gates: 642
+candidate continuations all T=9; 192/192 mean-v-sum rank
+identity; 192/192 full-order identity; strata census exact
+(24 per {term x regime}); 96 unique states, all covered-I0.
+Wall 2.0 s post-load; rc=0.
+
+FROZEN COMPETENCE GATE (all eight cells):
+  CANONICAL:   t2xIN 18/24, t2xOUT 19/24, t3xIN 24/24,
+               t3xOUT 24/24; c-IN 42/48, c-OUT 43/48;
+               overall 85/96
+  PARAM-FIRST: t2xIN 23/24, t2xOUT 24/24, t3xIN 24/24,
+               t3xOUT 20/24; c-IN 47/48, c-OUT 44/48;
+               overall 91/96
+Every bar >= its threshold (regimes >= 36/48, cells >= 12/24)
+in BOTH arms => FIELD-ORDER-REPLICATION CALIBRATION FIRED
+(mechanical). Descriptive MRR: CANONICAL .9427, PARAM-FIRST
+.9740. Riders: candidate-0 never the label and never strict
+top in either arm; legal-K census {2:15, 3:41, 4:32, 5:8}.
+
+REPLICATION FENCE (registered): calibration is a competence
+gate ONLY — it is NOT part of the replication endpoint. The
+19001 covered values (C 94/96, PF 93/96) are provenance
+context only; no 19001-v-20001 calibration comparison is made
+or adjudicated, and nothing here bears on socket relocation,
+ORDER-DAMAGE, representation stability, or seed invariance.
+Arm-v-arm covered differences are never a field-order
+treatment endpoint.
+
+NEGATIVE CHECKS (post-run audit): no heldout artifact opened
+(all 96 scored states covered-I0 calibration blocks); no
+token-prefix/onset quantity computed anywhere in the outputs;
+seed-19001 checkpoints and receipts byte-unchanged v their
+booked pins (20751529/ae0a86e0/0fe38f78); seed-20001 pins
+byte-unchanged pre and post.
+
+FENCES. Mac/mps; single realization per arm (seed 20001);
+covered-support competence only, never a treatment reading;
+pessimistic top-1; raw_scores_sha anchors THESE bytes only (no
+cross-run mps reproducibility claim); receipts force-added
+small-text; dual audit (fresh-context source verifier +
+post-run independent recompute) before booking. NEXT: the
+frozen seed-20001 joint heldout + onset stage is ELIGIBLE and
+awaits its own explicit GO — not run.

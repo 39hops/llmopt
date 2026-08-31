@@ -3075,6 +3075,13 @@ MATH-CYBER-1 SVP-FIELD-ORDER-CALIBRATION-SCORE-19001 — ONE scoring run of the 
 - `ctup(c)`
 - `main()`
 
+### scratch/mathworld1_svpfoclrepl.py
+MATH-CYBER-1 SVP-FIELD-ORDER-REPLICATION-CALIBRATION- SCORE-20001 — ONE scoring run of the two sealed seed-20001 field-order REPLICATION checkpoints (CANONICAL / PARAM-FIRST) on the frozen covered-calibration artifact ONLY (af1a4aa1..., the same 96 covered-I0 strict states). Stage 2 of the frozen seed-20001 replication protocol (replication prereg 732a5312; scoring law byte-adopted from the booked seed-19001 calibration instrument scratch/mathworld1_svpfocal.py — deltas are checkpoint paths/pins, fresh output namespace, and replication provenance only). No heldout scoring, no token-onset values, no accuracy(k)/k_step, no completion or relocation endpoint.
+
+- `fsha(p) -> str`
+- `ctup(c)`
+- `main()`
+
 ### scratch/mathworld1_svpfoheld.py
 MATH-CYBER-1 SVP-FIELD-ORDER-KNOWN-SET-HELDOUT-ONSET-SCORE- 19001 — stage 3 (final scoring stage) of the frozen FIELD-ORDER protocol (prereg 3ac5a70e), under live calibration authority (FIELD-ORDER CALIBRATION FIRED, receipt byte-pinned). ONE joint prefix-scoring run of the two sealed seed-19001 checkpoints (CANONICAL / PARAM-FIRST) on the 96 frozen strict heldout primary states; BOTH registered endpoints derive from the SAME raw per-(arm, state, candidate, k) token log-probabilities:   S_j(k) = sum_{t<=k} log p(token_t | prompt, token_<t),   payload tokens 1..8, EOS = token 9, arm-specific   serialization, equal prefix lengths, no normalization. COMPLETION (k=9 only, frozen symmetric law): ORDER-DAMAGE iff CANONICAL > PARAM-FIRST and exact two-sided McNemar p < .05; ORDER-REVERSAL symmetric; else NO-DIRECTIONAL-SEPARATION (NOT equivalence). MECHANISM: per arm accuracy(k) pessimistic, gain(k) = accuracy(k) - accuracy(k-1) with accuracy(0)=0, k_step = EARLIEST argmax gain(k); CANONICAL-ONSET-ALIGNED iff k_step == 8; PARAM-FIRST-ONSET-ALIGNED iff k_step == 3; ONSET-RELOCATED iff BOTH. INSTRUMENT COHERENCE: the k=9 per-state top-1 vector is computed ONCE and consumed by both endpoints; any divergence between derivations is INSTRUMENT FAILURE. INTERPRETIVE MAP (frozen, mechanical): A NO-DIRECTIONAL-SEPARATION + ONSET-RELOCATED => SEMANTIC-SOCKET (strongest available from this known-set intervention; null is not equivalence); B ORDER-DAMAGE + ONSET-RELOCATED => ORDER-LOAD-BEARING + SOCKET-MOVES; C ORDER-DAMAGE + NOT-RELOCATED => ORDER-LOAD-BEARING, no socket support; D NO-DIRECTIONAL-SEPARATION + NOT-RELOCATED => MIXED; E ORDER-REVERSAL => SIGNIFICANT ORDER REVERSAL, onset beside it. Asymmetric single-arm alignment reported as its exact cell, never called relocation.
 
