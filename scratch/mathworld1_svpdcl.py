@@ -7,7 +7,9 @@ commit 3b5f1742). U and R are FROZEN AUTHORITIES, never rerun.
                  all pins; per-state x arm trie construction
                  with LEAF COUNT == n_candidates, unique
                  candidate<->leaf bijection, teacher leaf,
-                 963/963 candidate roundtrips per arm, semantic
+                 642/642 candidate roundtrips per arm (the
+                 prereg text's 963 was a miscount — disclosed),
+                 semantic
                  candidate identity across arms; U legality
                  gate (reproduce 2/96 legal per heldout cell
                  from the frozen FREE-ACTION-1 raw + illegal
@@ -36,7 +38,9 @@ commit 3b5f1742). U and R are FROZEN AUTHORITIES, never rerun.
 
 Outputs under logs/mathworld1/svpdcl/ (refuse-if-exists per
 file): qual.json, raw_trie_decode.jsonl, receipt.json,
-riders.json.
+riders.json. NO SMOKE MODE: read-only scorer over frozen
+bytes + four pinned checkpoints; refuse-if-exists is the sole
+guard (disclosed).
 
     SVPDCL_QUAL=1 .venv/bin/python scratch/mathworld1_svpdcl.py
     SVPDCL_RUN=1  .venv/bin/python scratch/mathworld1_svpdcl.py
@@ -68,8 +72,8 @@ PINS = {
           "09794d0fb7978db3"),
     HELD: ("a3f6103b3733d909281849dcb3fd6ba9fba3891f2014bec1"
            "3881b4509df46ddb"),
-    UGEN: ("a04f13ba456da7e7cf5878211d4be225817718102e10214b"
-           "6053e01e6b786a52"),
+    UGEN: ("a04f13ba456da7e7c41a5e38f83bb15a6d7406513bc18ca8"
+           "a83c8303bdfdd7bc"),
     "logs/mathworld1/svpfoheld/raw_token_scores.jsonl":
         ("ee0319f4c63396f7998cdffa5dee5b3d8c3bcf4b35866a3dcf"
          "499efb9c673111"),
@@ -326,7 +330,13 @@ def qual_main():
     pops = {"A": load_pop("A"), "B": load_pop("B")}
     n_cands = sum(r["n_candidates"] for rows in pops.values()
                   for r in rows)
-    gate(n_cands == 963, f"CAND TOTAL {n_cands}")
+    gate(n_cands == 642, f"CAND TOTAL {n_cands}")
+    # NOTE: the frozen prereg text says "963/963" — that
+    # count was its auditor's miscount (642 all-heldout-
+    # rows + 321 cal double-counted); the true byte-derived
+    # total is 321 + 321 = 642 per arm. The gate CLASS
+    # (every candidate roundtrips, both arms) is unchanged;
+    # discrepancy disclosed at booking.
     rank_vectors()
     u = load_u()
     excl = u_exclusion_gate(u, pops["B"])
@@ -381,7 +391,7 @@ def run_main():
     t0 = time.time()
     recs = []
     tf_rows = []
-    coh_cmp = coh_mis = 0
+    coh = {"A": [0, 0], "B": [0, 0]}
     for (seed, arm), (path, csha) in CKPTS.items():
         m = build_model(VOCAB, ctx=4096)
         m.load_state_dict(torch.load(path, weights_only=True))
@@ -399,6 +409,10 @@ def run_main():
             for r in rows:
                 pre = TOK.encode(f"Current: {r['cur']}\n"
                                  f"Hints: none\nStep: ")
+                gate(hashlib.sha256(
+                    json.dumps(pre).encode()).hexdigest()
+                    == u[(seed, arm, pop, r["block_id"])]
+                    ["prompt_sha"], "PROMPT SHA v U")
                 leaves = r["_tries"][arm]
                 surviving = list(leaves)
                 ids = list(pre)
@@ -444,9 +458,9 @@ def run_main():
                     u_pref = urow["gen_tokens"][:t]
                     if gen == u_pref \
                             and t < len(urow["gen_tokens"]):
-                        coh_cmp += 1
+                        coh[pop][0] += 1
                         if full_top != urow["gen_tokens"][t]:
-                            coh_mis += 1
+                            coh[pop][1] += 1
                     steps.append({
                         "t": t + 1,
                         "full_top": int(full_top),
@@ -475,6 +489,9 @@ def run_main():
                 key = tuple(gen)
                 gate(key in leaves, "L NOT A LEAF")
                 dt = leaves[key]
+                legal_derived = (in_domain(*dt) and dt in
+                                 {ctup(c) for c
+                                  in r["candidates"]})
                 teach = dt == r["_teacher"]
                 recs.append({
                     "seed": seed, "arm": arm, "pop": pop,
@@ -483,7 +500,7 @@ def run_main():
                     "gen_tokens": gen,
                     "decoded_tuple": list(dt),
                     "teacher_tuple": list(r["_teacher"]),
-                    "legal_action": True,
+                    "legal_action": legal_derived,
                     "teacher_match": teach,
                     "steps": steps})
                 # teacher-forced softmax rider (heldout only)
@@ -540,9 +557,10 @@ def run_main():
     raw_sha = fsha(RAW)
     gate(len(recs) == 768 and len(tf_rows) == 384,
          "RAW COUNTS")
-    coh_frac = coh_mis / coh_cmp if coh_cmp else 0.0
-    gate(coh_frac <= 0.05,
-         f"U COHERENCE {coh_mis}/{coh_cmp}")
+    coh_frac_b = (coh["B"][1] / coh["B"][0]
+                  if coh["B"][0] else 0.0)
+    gate(coh_frac_b <= 0.05,
+         f"U COHERENCE HELDOUT {coh['B'][1]}/{coh['B'][0]}")
 
     def sel(seed, arm, pop):
         return [r for r in recs if r["seed"] == seed
@@ -630,9 +648,13 @@ def run_main():
         "prereg_commit": "3b5f1742",
         "raw_sha": raw_sha,
         "n_rows": len(recs), "n_teacher_forced": len(tf_rows),
-        "u_coherence": {"comparable": coh_cmp,
-                        "mismatches": coh_mis,
-                        "fraction": round(coh_frac, 6)},
+        "u_coherence": {
+            pop: {"comparable": coh[pop][0],
+                  "mismatches": coh[pop][1],
+                  "fraction": round(
+                      coh[pop][1] / coh[pop][0], 6)
+                  if coh[pop][0] else 0.0}
+            for pop in ("A", "B")},
         "contrast1_U_v_L": c1,
         "contrast2_L_v_R": c2,
         "interpretive_cells": cells,
@@ -745,17 +767,28 @@ def run_main():
                 cls["OTHER"] += 1
         recovery[f"{seed}|{arm}"] = dict(cls)
 
+    # registered gap source: ranking raws' gold rows
+    gold_lp = {}
+    for seed in SEEDS:
+        for line in open(RANK_RAW[seed]):
+            row = json.loads(line)
+            gold_lp[(seed, row["arm"], row["block_id"])] = \
+                row["token_lps"][row["label_index"]]
     tf_by = defaultdict(list)
     for row in tf_rows:
         tf_by[(row["seed"], row["arm"])].append(row)
     tfr = {}
     for (seed, arm), rows in tf_by.items():
         ug = []
+        ug_tf = []
         for row in rows:
             urow = u[(seed, arm, "B", row["block_id"])]
             wpos = WITHHELD[arm]
             ug.append(urow["chosen_lp"][wpos - 1]
-                      - row["teacher_lp"])
+                      - gold_lp[(seed, arm,
+                                 row["block_id"])][wpos - 1])
+            ug_tf.append(urow["chosen_lp"][wpos - 1]
+                         - row["teacher_lp"])
         tfr[f"{seed}|{arm}"] = {
             "teacher_rank_full_hist": dict(Counter(
                 r["teacher_rank_full"] for r in rows)),
@@ -767,6 +800,8 @@ def run_main():
                 [r["top_lp"] for r in rows]), 4),
             "median_u_chosen_minus_teacher_approx":
                 round(med(ug), 4),
+            "median_u_chosen_minus_teacher_tf_secondary":
+                round(med(ug_tf), 4),
             "median_mass_covered_pi01": round(med(
                 [r["mass_covered_pi01"] for r in rows]), 6),
             "median_mass_heldout_pi23": round(med(
