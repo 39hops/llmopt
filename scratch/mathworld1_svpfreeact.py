@@ -341,13 +341,15 @@ def derive_groups():
 
 
 def build_replay_cache(pops):
-    """One successors() call per unique state; teacher
-    resolution gated on every state (both populations)."""
+    """One successors() call per (population, state) — block_ids
+    COLLIDE across the two populations (all 96 shared, different
+    cur), so the cache key carries the population; teacher
+    resolution gated on all 192 (pop, state) rows."""
     cache = {}
     checked = 0
-    for rows in pops.values():
+    for which, rows in pops.items():
         for r in rows:
-            b = r["block_id"]
+            b = (which, r["block_id"])
             if b in cache:
                 continue
             parent = sp.sympify(r["cur"])
@@ -364,6 +366,7 @@ def build_replay_cache(pops):
                  and res == r["_teacher_child_srepr"],
                  f"TEACHER REPLAY {b}")
             checked += 1
+    gate(checked == 192, f"TEACHER REPLAYS {checked} != 192")
     return cache, checked
 
 
@@ -508,17 +511,19 @@ def run_main():
                 dec = tup is not None
                 legal = dec and tup in r["_candset"]
                 teach = dec and tup == r["_teacher"]
+                replay_binds = False
                 replay = False
                 replay_child_match = None
                 if dec:
-                    parent, accepted = cache[r["block_id"]]
+                    parent, accepted = cache[(pop,
+                                             r["block_id"])]
                     child = resolve(parent, accepted, tup)
-                    replay = child is not None
-                    if replay and legal:
+                    replay_binds = child is not None
+                    replay = replay_binds
+                    if replay_binds and legal:
                         replay_child_match = (
                             child == r["_child_by_tup"][tup])
-                        replay = replay and \
-                            replay_child_match
+                        replay = replay_child_match
                 tt = teacher_tokens(arm, r["_teacher"])
                 fe = None
                 for t in range(len(gen)):
@@ -546,6 +551,7 @@ def run_main():
                     "legal_action": legal,
                     "teacher_match": teach,
                     "legal_nonteacher": legal and not teach,
+                    "replay_binds": replay_binds,
                     "replay_valid": replay,
                     "replay_child_match": replay_child_match,
                     "teacher_tuple": list(r["_teacher"]),
@@ -738,7 +744,7 @@ def run_main():
     rr = groups["famD"]["20001|PARAM_FIRST"].get(
         "RULE_RESCUED", [])
     rrs = [by_state[(20001, "PARAM_FIRST", b)] for b in rr]
-    pf_param_end = 3
+    pf_param_end = FIELDS["PARAM_FIRST"]["PARAM"][1]
     central = {
         "group_N": len(rrs),
         "greedy_teacher_match": sum(r["teacher_match"]
