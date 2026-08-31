@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 228, library 73, reproduce-pinned 10, results-cited 355, spec-cited 89, cited-but-library 61
+Census: UNCITED 228, library 73, reproduce-pinned 10, results-cited 356, spec-cited 89, cited-but-library 61
 
 ## scratch/
 
@@ -262,7 +262,7 @@ Census: UNCITED 228, library 73, reproduce-pinned 10, results-cited 355, spec-ci
 | mathworld1 | mathworld1_actionprog2.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | mathworld1 | mathworld1_actionsem.py | results-cited | RESULTS | RESULTS×2 | — | 24 |
 | mathworld1 | mathworld1_actionsite.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
-| mathworld1 | mathworld1_actiontok.py | results-cited | RESULTS | RESULTS×2 | — | 42 |
+| mathworld1 | mathworld1_actiontok.py | results-cited | RESULTS | RESULTS×2 | — | 43 |
 | mathworld1 | mathworld1_active.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_autopsy.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_axfixture.py | results-cited | RESULTS | RESULTS×1 | — | 5 |
@@ -285,8 +285,8 @@ Census: UNCITED 228, library 73, reproduce-pinned 10, results-cited 355, spec-ci
 | mathworld1 | mathworld1_srepr_export.py | results-cited | RESULTS | RESULTS×3 | — | 19 |
 | mathworld1 | mathworld1_stateobs.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_substrate_desk.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| mathworld1 | mathworld1_svpadj.py | results-cited | RESULTS | RESULTS×6 | — | 16 |
-| mathworld1 | mathworld1_svpbirth.py | results-cited | RESULTS | RESULTS×5 | — | 36 |
+| mathworld1 | mathworld1_svpadj.py | results-cited | RESULTS | RESULTS×6 | — | 17 |
+| mathworld1 | mathworld1_svpbirth.py | results-cited | RESULTS | RESULTS×5 | — | 37 |
 | mathworld1 | mathworld1_svpcalscore.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | mathworld1 | mathworld1_svpcalscore16.py | results-cited | RESULTS | RESULTS×1 | — | 2 |
 | mathworld1 | mathworld1_svpcalscore17.py | results-cited | RESULTS | RESULTS×2 | — | 2 |
@@ -294,7 +294,7 @@ Census: UNCITED 228, library 73, reproduce-pinned 10, results-cited 355, spec-ci
 | mathworld1 | mathworld1_svpchal.py | UNCITED | — | — | — | 6 |
 | mathworld1 | mathworld1_svpchal2.py | UNCITED | — | — | — | 5 |
 | mathworld1 | mathworld1_svpchalscore.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| mathworld1 | mathworld1_svpcode.py | results-cited | RESULTS | RESULTS×1 | — | 30 |
+| mathworld1 | mathworld1_svpcode.py | results-cited | RESULTS | RESULTS×1 | — | 31 |
 | mathworld1 | mathworld1_svpcovdesk.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_svpdesign.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_svpdiet.py | results-cited | RESULTS | RESULTS×2 | — | 3 |
@@ -305,11 +305,12 @@ Census: UNCITED 228, library 73, reproduce-pinned 10, results-cited 355, spec-ci
 | mathworld1 | mathworld1_svpeval3.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_svpfhadj.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_svpfhbirth.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
-| mathworld1 | mathworld1_svpfocal.py | results-cited | RESULTS | RESULTS×3 | — | 2 |
-| mathworld1 | mathworld1_svpfoclrepl.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| mathworld1 | mathworld1_svpfoheld.py | results-cited | RESULTS | RESULTS×2 | — | — |
-| mathworld1 | mathworld1_svpforder.py | results-cited | RESULTS | RESULTS×2 | — | 4 |
-| mathworld1 | mathworld1_svpforepl.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
+| mathworld1 | mathworld1_svpfocal.py | results-cited | RESULTS | RESULTS×3 | — | 3 |
+| mathworld1 | mathworld1_svpfoclrepl.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
+| mathworld1 | mathworld1_svpfoheld.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
+| mathworld1 | mathworld1_svpfohrepl.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| mathworld1 | mathworld1_svpforder.py | results-cited | RESULTS | RESULTS×2 | — | 5 |
+| mathworld1 | mathworld1_svpforepl.py | results-cited | RESULTS | RESULTS×1 | — | 2 |
 | mathworld1 | mathworld1_svpgbirth.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | mathworld1 | mathworld1_svpgbirth16.py | results-cited | RESULTS | RESULTS×3 | — | 3 |
 | mathworld1 | mathworld1_svpgbirth17.py | results-cited | RESULTS | RESULTS×2 | — | 2 |
@@ -331,7 +332,7 @@ Census: UNCITED 228, library 73, reproduce-pinned 10, results-cited 355, spec-ci
 | mathworld1 | mathworld1_svpsemdesk.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_svpsuppdesk.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_svptokdesk.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| mathworld1 | mathworld1_svptokonset.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
+| mathworld1 | mathworld1_svptokonset.py | results-cited | RESULTS | RESULTS×1 | — | 2 |
 | mathworld1 | mathworld1_terminal.py | UNCITED | — | — | — | — |
 | mathworld1 | mathworld1_unprod_probe.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_unprodsem.py | results-cited | RESULTS | RESULTS×1 | — | 15 |

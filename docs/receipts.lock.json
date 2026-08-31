@@ -1251,6 +1251,34 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svpfocal20/svpfocal20_receipt.json": {
+   "bytes": 3996,
+   "exists": true,
+   "sha256": "83d3220d90bd9a7adf1b3204c0b914399abd5f4a9a9c967a6fded8a39afb0bf8",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/svpfoheld20/raw_token_scores.jsonl": {
+   "bytes": 157072,
+   "exists": true,
+   "sha256": "18f27b666ce54c5402abff746e696f9b8c35c94235d096a060f97cf015aae17f",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/svpfoheld20/riders.json": {
+   "bytes": 898,
+   "exists": true,
+   "sha256": "a1b70bf15b70c7527790bdfff783c2c12c7b7acdc4ef8c3b1f9d170517dd4832",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/svpfoheld20/svpfoheld20_receipt.json": {
+   "bytes": 4322,
+   "exists": true,
+   "sha256": "7f4f35f591a48785874d71f7564281b5347122450298316c8c1250e6909d92bf",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/svpforder_s19001_receipt.json": {
    "bytes": 170356,
    "exists": true,

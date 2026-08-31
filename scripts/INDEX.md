@@ -3093,6 +3093,17 @@ MATH-CYBER-1 SVP-FIELD-ORDER-KNOWN-SET-HELDOUT-ONSET-SCORE- 19001 — stage 3 (f
 - `gold_top(cum, li, k)` — Pessimistic: gold strictly above every rival at k.
 - `main()`
 
+### scratch/mathworld1_svpfohrepl.py
+MATH-CYBER-1 SVP-FIELD-ORDER-REPLICATION-KNOWN-SET-HELDOUT- ONSET-SCORE-20001 — stage 3 (final adjudicating stage) of the frozen seed-20001 replication protocol (replication prereg 732a5312; scoring law byte-adopted from the booked seed-19001 stage-3 instrument scratch/mathworld1_svpfoheld.py — deltas are 20001 pins/paths and replication provenance only), under live calibration authority (FIELD-ORDER-REPLICATION CALIBRATION FIRED, receipt byte-pinned). ONE joint prefix-scoring run of the two sealed seed-20001 checkpoints (CANONICAL / PARAM-FIRST) on the 96 frozen strict heldout primary states; BOTH registered endpoints derive from the SAME raw per-(arm, state, candidate, k) token log-probabilities:   S_j(k) = sum_{t<=k} log p(token_t | prompt, token_<t),   payload tokens 1..8, EOS = token 9, arm-specific   serialization, equal prefix lengths, no normalization. COMPLETION (k=9 only, frozen symmetric law): ORDER-DAMAGE iff CANONICAL > PARAM-FIRST and exact two-sided McNemar p < .05; ORDER-REVERSAL symmetric; else NO-DIRECTIONAL-SEPARATION (NOT equivalence). MECHANISM: per arm accuracy(k) pessimistic, gain(k) = accuracy(k) - accuracy(k-1) with accuracy(0)=0, k_step = EARLIEST argmax gain(k); CANONICAL-ONSET-ALIGNED iff k_step == 8; PARAM-FIRST-ONSET-ALIGNED iff k_step == 3; ONSET-RELOCATED iff BOTH. INSTRUMENT COHERENCE: the k=9 per-state top-1 vector is computed ONCE and consumed by both endpoints; any divergence between derivations is INSTRUMENT FAILURE. INTERPRETIVE MAP (frozen, mechanical): A NO-DIRECTIONAL-SEPARATION + ONSET-RELOCATED => SEMANTIC-SOCKET (strongest available from this known-set intervention; null is not equivalence); B ORDER-DAMAGE + ONSET-RELOCATED => ORDER-LOAD-BEARING + SOCKET-MOVES; C ORDER-DAMAGE + NOT-RELOCATED => ORDER-LOAD-BEARING, no socket support; D NO-DIRECTIONAL-SEPARATION + NOT-RELOCATED => MIXED; E ORDER-REVERSAL => SIGNIFICANT ORDER REVERSAL, onset beside it. Asymmetric single-arm alignment reported as its exact cell, never called relocation.
+
+- `fsha(p) -> str`
+- `ctup(c)`
+- `binom_minlik_p(k_obs, n)` — Exact two-sided p under Binomial(n, 0.5).
+- `token_lps(model, dev, cur, conts)` — Per-token logprob vectors (len 9) per candidate.
+- `cums(vecs)`
+- `gold_top(cum, li, k)` — Pessimistic: gold strictly above every rival at k.
+- `main()`
+
 ### scratch/mathworld1_svpforder.py
 MATH-CYBER-1 SVP-FIELD-ORDER-MATERIALIZATION-CENSUS-BIRTH- 19001 — stage 1 of the frozen FIELD-ORDER protocol (prereg 3ac5a70e): PARAM-FIRST implementation + qualification, the HARD-STOP pre-training structural census, the descriptive exposure census, and (only when every gate has passed) the two-arm seed-19001 BIRTH. No calibration, no heldout scoring, no token-onset scoring, no verdict.
 

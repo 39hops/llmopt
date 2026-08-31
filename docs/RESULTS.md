@@ -57835,3 +57835,135 @@ small-text; dual audit (fresh-context source verifier +
 post-run independent recompute) before booking. NEXT: the
 frozen seed-20001 joint heldout + onset stage is ELIGIBLE and
 awaits its own explicit GO — not run.
+
+## VERDICT MATH-CYBER-1-SVP-FIELD-ORDER-REPLICATION-KNOWN-SET-HELDOUT-ONSET-SCORE-20001: FAILS-MECHANISM-REPLICATION, with a significant ORDER-REVERSAL named beside it — onset relocation does NOT fire (fresh CANONICAL k_step = 8 ALIGNED; fresh PARAM-FIRST k_step = 5, not the structural 3) AND completion significantly favors the REORDERED arm (PARAM-FIRST 87/96 v CANONICAL 80/96, discordants 0/7, exact McNemar p = .015625): under an independent initialization the seed-19001 cell-B result does not reproduce in either endpoint — both the decision-step position and the completion direction are initialization-dependent under this frozen world (2026-08-30, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-FIELD-ORDER-REPLICATION-PREREG-0
+(732a5312), stage 3, under live calibration authority
+(FIELD-ORDER-REPLICATION CALIBRATION FIRED, receipt 83d3220d...
+byte-pinned and re-gated). Scorer
+scratch/mathworld1_svpfohrepl.py committed BEFORE inference at
+e2d2e891; fresh-context verifier PASS, zero blockers (scoring
+law byte-adopted from the booked 19001 stage-3 instrument;
+only 20001 pins/paths/provenance changed; no
+historical-result branch — K_STRUCT the sole prediction
+constant). ONE joint prefix-scoring run, rc=0, wall 2.1 s
+post-load; all 192 raw per-(arm, state) token-lp rows
+persisted and hashed (18f27b66...) before any endpoint; k=9
+vector derived ONCE, consumed by both endpoints (the 192
+in-run coherence checks are re-derivations of the same pure
+function — coherence holds by construction, not by independent
+verification; the post-run audit's independent implementation
+reproduced both endpoints from raw, which is the real check);
+19001 artifacts and receipts byte-unchanged. Receipts for THIS
+run: logs/mathworld1/svpfoheld20/raw_token_scores.jsonl,
+logs/mathworld1/svpfoheld20/svpfoheld20_receipt.json,
+logs/mathworld1/svpfoheld20/riders.json (all force-added);
+calibration authority receipt
+logs/mathworld1/svpfocal20/svpfocal20_receipt.json.
+
+COMPLETION ENDPOINT (k=9, frozen symmetric law, seed 20001
+adjudicated ALONE): CANONICAL 80/96, PARAM-FIRST 87/96;
+discordants CANONICAL-only 0, PARAM-FIRST-only 7 (n_disc 7);
+exact two-sided McNemar p = .015625 < .05 AND PARAM-FIRST >
+CANONICAL => ORDER-REVERSAL (raw difference -7). MRR
+(descriptive) CANONICAL .9149, PARAM-FIRST .9531.
+
+MECHANISM ENDPOINT (same raw artifact): accuracy(k) —
+  CANONICAL:   29 29 29 29 29 29 29 75 80
+  PARAM-FIRST: 29 29 17 42 87 87 87 87 87
+gain(k) —
+  CANONICAL:   29 0 0 0 0 0 0 46 5
+  PARAM-FIRST: 29 0 -12 25 45 0 0 0 0
+k_step CANONICAL = 8 == k_struct 8 => ALIGNED (margin
+disclosure: gain(8) = 46, second-largest 29 at k=1, argmax
+margin 17, no ties). k_step PARAM-FIRST = 5 != k_struct 3 =>
+NOT ALIGNED (gain(5) = 45, second-largest 29 at k=1, argmax
+margin 16, no ties; gain(3) is NEGATIVE, -12). Asymmetric
+alignment cell reported exactly: CANONICAL-ONSET-ALIGNED only
+=> DOES-NOT-REPLICATE-ONSET-RELOCATION.
+
+FROZEN JOINT STATUS (the five-row table, applied verbatim):
+onset relocation does not fire => FAILS-MECHANISM-REPLICATION
+(fifth row), and the significant ORDER-REVERSAL is ADDITIONALLY
+NAMED verbatim beside it per the frozen naming law. The
+within-seed interpretive cell books mechanically as E:
+SIGNIFICANT ORDER REVERSAL. No other row applies; no composite
+status is invented.
+
+TWO-ROW REALIZATION TABLE (descriptive, NEVER pooled — no
+pooled McNemar, no pooled accuracy, no meta-analytic p):
+  seed 19001: C 85/96, PF 78/96, disc 8/1, p=.0390625,
+    ORDER-DAMAGE; k_step C=8 (margin 27), PF=3 (margin
+    ONE state, gain 30 v 29); joint cell B.
+  seed 20001: C 80/96, PF 87/96, disc 0/7, p=.015625,
+    ORDER-REVERSAL; k_step C=8 (margin 17), PF=5 (margin 16;
+    gain(3) = -12); relocation NOT fired.
+Descriptive comparison: the CANONICAL arm's mechanism is
+stable across both realizations (flat 29 then one k=8 step);
+the PARAM-FIRST arm's onset anatomy moved materially (19001:
++30 at k=3 with a one-state margin; 20001: a NEGATIVE k=3
+gain, mass arriving at k=4-5); the completion direction
+INVERTED between realizations with both sides individually
+significant. Two single-realization significances in opposite
+directions do not sum to any direction; the pair is evidence
+that the completion effect of this field-order intervention is
+initialization-dependent, and nothing more.
+
+STRUCTURAL-GROUP RIDERS (descriptive, frozen 29/67 groups from
+the byte-pinned census): EARLY-29 — CANONICAL flat 29/29
+throughout; PARAM-FIRST transient disruption RECURS and is
+DEEPER than 19001's (29 -> 8 at k=3, 15 at k=4, full recovery
+29/29 at k=5; 19001 dipped to 11-12). RELOCATED-67 — CANONICAL
+0 until 46 at k=8, 51/67 final; PARAM-FIRST 9 at k=3, 27 at
+k=4, 58/67 at k=5 and flat to the end. The 19001 anatomy
+pattern (immediate k=3 gain on relocated-67 + early-29
+transient) recurs in SHAPE but not in position or rate: the
+relocated socket fires across k=3-5 rather than AT k=3, deep
+enough to push the argmax to 5. Delta upper-medians (sorted[n//2], n=96 even — the upper of
+the two central values, per the adopted instrument's
+convention) persisted in riders.json. All descriptive; endpoints unaltered.
+
+READING (inside the frozen known-set fence and claim ceiling):
+across two independent initialization realizations of one
+frozen world, the field-order intervention's effects are NOT
+initialization-stable in either registered endpoint. What IS
+stable: the CANONICAL arm's late one-step mechanism (k=8, both
+seeds) and the qualitative PARAM-FIRST early-block disruption/
+early-mass shape. What is NOT: the PARAM-FIRST argmax position
+(3 v 5) and the completion direction (significant damage v
+significant reversal). The 19001 cell-B claim ('identity and
+ordering interact') survives only at its registered
+single-realization scope; the replication prereg's claim
+ceiling for a SUCCESSFUL replication is not licensed and is
+not claimed. CONTEXT-BEFORE-PARAMETER remains hypothesis only
+— this outcome WEAKENS it descriptively (a reordered arm
+completing significantly BETTER under one init is the opposite
+of the hypothesis's expected sign) but the run cannot adjudicate
+mechanism; PARAM-MIDDLE stays unbuilt and unauthorized.
+
+REGISTERED-PRIOR ACCOUNTING (every element, none rewritten):
+ONSET-RELOCATED at moderate-to-high confidence — did NOT
+materialize (house wrong); CANONICAL numerical completion
+advantage at moderate confidence — did NOT materialize
+(reversed, house wrong); repeated p<.05 ORDER-DAMAGE at lower
+confidence — did NOT materialize; effect magnitude not
+expected to reproduce exactly — vacuously consistent;
+PARAM-FIRST k_step margin may vary materially across
+initialization — MATERIALIZED beyond its intent (the argmax
+position itself moved).
+
+FENCES. Mac/mps; two realizations, one world, one population,
+one intervention — per-seed reporting only, nothing pooled;
+known-set causal statements only, never fresh-population;
+non-significance anywhere is never equality; the /96 totals
+mix candidate-set sizes and are not difficulty-matched (MRR
+descriptive); raw_scores_sha anchors THESE bytes only; riders
+post-receipt, anchored at force-add; every claim grounded in
+THIS run's tool output; dual audit (fresh-context source
+verifier + post-run independent raw reconstruction) before
+booking; no smoke invocation (read-only 2.1 s scorer,
+refuse-if-exists sole guard, disclosed); effective candidate
+set n-1; structural groups read from CANONICAL's census
+per_state map. PARAM-MIDDLE and any successor experiment remain
+un-launched under this GO.
