@@ -3048,6 +3048,17 @@ MATH-CYBER-1 SVP-FACTOR-HASH-DESIGN-0 — materialize + qualify the THIRD untouc
 - `fsha(p) -> str`
 - `main()`
 
+### scratch/mathworld1_svpfbcredit.py
+MATH-CYBER-1 SVP-FIELD-BLOCK-CREDIT-DESK-0 — POSTHOC DESCRIPTIVE mechanism desk over the two EXISTING raw stage-3 token-score artifacts (seed 19001 svpfoheld + seed 20001 svpfoheld20). No model inference, no training, no new scoring, no new population; seeds never pooled. Families:
+
+- `fsha(p)`
+- `cums(vecs)`
+- `gold_top(cum, li, k)`
+- `margin(cum, li, k)`
+- `q(vals)`
+- `med(vals)`
+- `main()`
+
 ### scratch/mathworld1_svpfhadj.py
 MATH-CYBER-1 SVP-FACTOR-HASH-SCORE-0 — ONE joint scoring run: the three sealed seed-12001 checkpoints (CANONICAL-340 / FACTOR / HASH) teacher-force scored on the frozen third band (69 primary decisions) under the preregistered law. Zero training, zero generation, zero sympy, zero re-enumeration; frozen candidate bytes only.
 

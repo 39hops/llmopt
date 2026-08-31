@@ -1223,6 +1223,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svpfbcredit/desk.json": {
+   "bytes": 8823,
+   "exists": true,
+   "sha256": "d190cf0c3fb9fac1bcf40a614b15e46478c8d8ff911e10619eb381ad0a9ca916",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/svpfhadj/svpfhadj_receipt.json": {
    "bytes": 2744,
    "exists": true,

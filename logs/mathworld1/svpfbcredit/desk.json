@@ -1,0 +1,443 @@
+{
+ "blocks": {
+  "CANONICAL": [
+   [
+    "RULE",
+    1,
+    2
+   ],
+   [
+    "SITE",
+    3,
+    5
+   ],
+   [
+    "PARAM",
+    6,
+    8
+   ],
+   [
+    "EOS",
+    9,
+    9
+   ]
+  ],
+  "PARAM_FIRST": [
+   [
+    "PARAM",
+    1,
+    3
+   ],
+   [
+    "RULE",
+    4,
+    5
+   ],
+   [
+    "SITE",
+    6,
+    8
+   ],
+   [
+    "EOS",
+    9,
+    9
+   ]
+  ]
+ },
+ "pins": {
+  "19001": "ee0319f4c63396f7998cdffa5dee5b3d8c3bcf4b35866a3dcf499efb9c673111",
+  "20001": "18f27b666ce54c5402abff746e696f9b8c35c94235d096a060f97cf015aae17f"
+ },
+ "census_pin": "7d8343b3f328b00a1147b675441181e897d3d96eaff33fe33d403aa482dd71d5",
+ "definitions": {
+  "famA": "pessimistic top-1 count/96 at k=0 (=0 by convention) and at each block end; k=1 also reported (the GO tables' leading value)",
+  "famB": "M(k)=S_gold(k)-max_nongold S_j(k); quartiles at sorted[n//4], [n//2], [3n//4] (upper-type indices)",
+  "famC": "r* fixed at k=9 (max cum, tie lower index); D(k)=S_gold(k)-S_r*(k), D(0)=0; Delta_block=D(end)-D(start-1); blocks partition 1..9 so sum = D(9)",
+  "famD": "per arm in ITS serialization: PARAM_CORRECT = top1 at end PARAM; PARAM_DAMAGED = top1 at some k inside an EARLIER position (k < PARAM start; for PARAM_FIRST, PARAM is first so damaged uses top1 at k in 1..2 i.e. inside the block before its end) AND not top1 at end PARAM; RULE_RESCUED = not top1 at end PARAM, top1 at end RULE (PARAM_FIRST only: RULE follows PARAM); RULE_LOST = top1 at end PARAM, not at end RULE (PARAM_FIRST only); FINAL_RESCUED = not top1 at end PARAM, top1 at k=9"
+ },
+ "families": {
+  "19001": {
+   "CANONICAL": {
+    "A": {
+     "top1": {
+      "k0": 0,
+      "k1": 29,
+      "end_RULE_k2": 29,
+      "end_SITE_k5": 29,
+      "end_PARAM_k8": 85,
+      "end_EOS_k9": 85
+     },
+     "boundary_deltas": {
+      "RULE": 29,
+      "SITE": 0,
+      "PARAM": 56,
+      "EOS": 0
+     }
+    },
+    "B": {
+     "end_RULE_k2": {
+      "q1": 0.0,
+      "median": 0.0,
+      "q3": 15.4143,
+      "frac_pos": 0.3021,
+      "median_delta_from_prev_boundary": 0.0
+     },
+     "end_SITE_k5": {
+      "q1": 0.0,
+      "median": 0.0,
+      "q3": 15.6622,
+      "frac_pos": 0.3021,
+      "median_delta_from_prev_boundary": 0.0
+     },
+     "end_PARAM_k8": {
+      "q1": 1.3996,
+      "median": 3.5814,
+      "q3": 6.2729,
+      "frac_pos": 0.8854,
+      "median_delta_from_prev_boundary": 3.5814
+     },
+     "end_EOS_k9": {
+      "q1": 1.5463,
+      "median": 3.6637,
+      "q3": 6.2729,
+      "frac_pos": 0.8854,
+      "median_delta_from_prev_boundary": 0.0823
+     }
+    },
+    "C": {
+     "RULE": {
+      "median": 0.0,
+      "mean": 5.193,
+      "n_pos": 29,
+      "n_neg": 0,
+      "n_zero": 67
+     },
+     "SITE": {
+      "median": 0.0,
+      "mean": 0.0285,
+      "n_pos": 29,
+      "n_neg": 0,
+      "n_zero": 67
+     },
+     "PARAM": {
+      "median": 1.3078,
+      "mean": -1.6411,
+      "n_pos": 56,
+      "n_neg": 40,
+      "n_zero": 0
+     },
+     "EOS": {
+      "median": -0.0,
+      "mean": 0.0457,
+      "n_pos": 37,
+      "n_neg": 59,
+      "n_zero": 0
+     },
+     "additivity_check_max_abs": 0.0
+    },
+    "D": {
+     "all": {
+      "PARAM_CORRECT": 85
+     },
+     "early29": {
+      "PARAM_CORRECT": 29
+     },
+     "late67": {
+      "PARAM_CORRECT": 56
+     }
+    }
+   },
+   "PARAM_FIRST": {
+    "A": {
+     "top1": {
+      "k0": 0,
+      "k1": 29,
+      "end_PARAM_k3": 59,
+      "end_RULE_k5": 78,
+      "end_SITE_k8": 78,
+      "end_EOS_k9": 78
+     },
+     "boundary_deltas": {
+      "PARAM": 59,
+      "RULE": 19,
+      "SITE": 0,
+      "EOS": 0
+     }
+    },
+    "B": {
+     "end_PARAM_k3": {
+      "q1": -0.8011,
+      "median": 1.6669,
+      "q3": 4.4999,
+      "frac_pos": 0.6146,
+      "median_delta_from_prev_boundary": 1.6669
+     },
+     "end_RULE_k5": {
+      "q1": 1.5779,
+      "median": 5.4928,
+      "q3": 8.903,
+      "frac_pos": 0.8125,
+      "median_delta_from_prev_boundary": 3.8259
+     },
+     "end_SITE_k8": {
+      "q1": 1.5779,
+      "median": 5.4928,
+      "q3": 11.1522,
+      "frac_pos": 0.8125,
+      "median_delta_from_prev_boundary": 0.0
+     },
+     "end_EOS_k9": {
+      "q1": 1.5779,
+      "median": 5.4928,
+      "q3": 11.1521,
+      "frac_pos": 0.8125,
+      "median_delta_from_prev_boundary": 0.0
+     }
+    },
+    "C": {
+     "PARAM": {
+      "median": 1.7361,
+      "mean": 1.8697,
+      "n_pos": 60,
+      "n_neg": 36,
+      "n_zero": 0
+     },
+     "RULE": {
+      "median": 0.0,
+      "mean": 3.4409,
+      "n_pos": 55,
+      "n_neg": 41,
+      "n_zero": 0
+     },
+     "SITE": {
+      "median": 0.0001,
+      "mean": 0.4986,
+      "n_pos": 59,
+      "n_neg": 37,
+      "n_zero": 0
+     },
+     "EOS": {
+      "median": -0.0,
+      "mean": -0.0,
+      "n_pos": 36,
+      "n_neg": 58,
+      "n_zero": 2
+     },
+     "additivity_check_max_abs": 0.0
+    },
+    "D": {
+     "all": {
+      "PARAM_DAMAGED": 18,
+      "RULE_RESCUED": 19,
+      "FINAL_RESCUED": 19,
+      "PARAM_CORRECT": 59
+     },
+     "early29": {
+      "PARAM_DAMAGED": 18,
+      "RULE_RESCUED": 18,
+      "FINAL_RESCUED": 18,
+      "PARAM_CORRECT": 11
+     },
+     "late67": {
+      "RULE_RESCUED": 1,
+      "FINAL_RESCUED": 1,
+      "PARAM_CORRECT": 48
+     }
+    }
+   }
+  },
+  "20001": {
+   "CANONICAL": {
+    "A": {
+     "top1": {
+      "k0": 0,
+      "k1": 29,
+      "end_RULE_k2": 29,
+      "end_SITE_k5": 29,
+      "end_PARAM_k8": 75,
+      "end_EOS_k9": 80
+     },
+     "boundary_deltas": {
+      "RULE": 29,
+      "SITE": 0,
+      "PARAM": 46,
+      "EOS": 5
+     }
+    },
+    "B": {
+     "end_RULE_k2": {
+      "q1": 0.0,
+      "median": 0.0,
+      "q3": 15.4165,
+      "frac_pos": 0.3021,
+      "median_delta_from_prev_boundary": 0.0
+     },
+     "end_SITE_k5": {
+      "q1": 0.0,
+      "median": 0.0,
+      "q3": 15.7589,
+      "frac_pos": 0.3021,
+      "median_delta_from_prev_boundary": 0.0
+     },
+     "end_PARAM_k8": {
+      "q1": 0.1206,
+      "median": 1.6674,
+      "q3": 7.3643,
+      "frac_pos": 0.7812,
+      "median_delta_from_prev_boundary": 1.6674
+     },
+     "end_EOS_k9": {
+      "q1": 0.5131,
+      "median": 1.8241,
+      "q3": 7.3643,
+      "frac_pos": 0.8333,
+      "median_delta_from_prev_boundary": 0.1567
+     }
+    },
+    "C": {
+     "RULE": {
+      "median": 0.0,
+      "mean": 5.089,
+      "n_pos": 29,
+      "n_neg": 0,
+      "n_zero": 67
+     },
+     "SITE": {
+      "median": 0.0,
+      "mean": 0.021,
+      "n_pos": 29,
+      "n_neg": 0,
+      "n_zero": 67
+     },
+     "PARAM": {
+      "median": -0.2428,
+      "mean": -2.2826,
+      "n_pos": 46,
+      "n_neg": 50,
+      "n_zero": 0
+     },
+     "EOS": {
+      "median": -0.0,
+      "mean": 0.1999,
+      "n_pos": 38,
+      "n_neg": 58,
+      "n_zero": 0
+     },
+     "additivity_check_max_abs": 0.0
+    },
+    "D": {
+     "all": {
+      "PARAM_CORRECT": 75,
+      "FINAL_RESCUED": 5
+     },
+     "early29": {
+      "PARAM_CORRECT": 29
+     },
+     "late67": {
+      "PARAM_CORRECT": 46,
+      "FINAL_RESCUED": 5
+     }
+    }
+   },
+   "PARAM_FIRST": {
+    "A": {
+     "top1": {
+      "k0": 0,
+      "k1": 29,
+      "end_PARAM_k3": 17,
+      "end_RULE_k5": 87,
+      "end_SITE_k8": 87,
+      "end_EOS_k9": 87
+     },
+     "boundary_deltas": {
+      "PARAM": 17,
+      "RULE": 70,
+      "SITE": 0,
+      "EOS": 0
+     }
+    },
+    "B": {
+     "end_PARAM_k3": {
+      "q1": -1.4274,
+      "median": -0.7867,
+      "q3": -0.0839,
+      "frac_pos": 0.1771,
+      "median_delta_from_prev_boundary": -0.7867
+     },
+     "end_RULE_k5": {
+      "q1": 1.2831,
+      "median": 2.469,
+      "q3": 9.7634,
+      "frac_pos": 0.9062,
+      "median_delta_from_prev_boundary": 3.2557
+     },
+     "end_SITE_k8": {
+      "q1": 1.2831,
+      "median": 2.469,
+      "q3": 10.3025,
+      "frac_pos": 0.9062,
+      "median_delta_from_prev_boundary": 0.0
+     },
+     "end_EOS_k9": {
+      "q1": 1.2831,
+      "median": 2.469,
+      "q3": 10.3025,
+      "frac_pos": 0.9062,
+      "median_delta_from_prev_boundary": 0.0
+     }
+    },
+    "C": {
+     "PARAM": {
+      "median": 1.1073,
+      "mean": 0.6708,
+      "n_pos": 66,
+      "n_neg": 30,
+      "n_zero": 0
+     },
+     "RULE": {
+      "median": 0.0002,
+      "mean": 3.7663,
+      "n_pos": 83,
+      "n_neg": 13,
+      "n_zero": 0
+     },
+     "SITE": {
+      "median": 0.0,
+      "mean": 0.2363,
+      "n_pos": 53,
+      "n_neg": 43,
+      "n_zero": 0
+     },
+     "EOS": {
+      "median": -0.0,
+      "mean": -0.0,
+      "n_pos": 37,
+      "n_neg": 58,
+      "n_zero": 1
+     },
+     "additivity_check_max_abs": 0.0
+    },
+    "D": {
+     "all": {
+      "PARAM_CORRECT": 17,
+      "PARAM_DAMAGED": 21,
+      "RULE_RESCUED": 70,
+      "FINAL_RESCUED": 70
+     },
+     "early29": {
+      "PARAM_CORRECT": 8,
+      "PARAM_DAMAGED": 21,
+      "RULE_RESCUED": 21,
+      "FINAL_RESCUED": 21
+     },
+     "late67": {
+      "RULE_RESCUED": 49,
+      "FINAL_RESCUED": 49,
+      "PARAM_CORRECT": 9
+     }
+    }
+   }
+  }
+ }
+}

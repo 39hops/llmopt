@@ -57967,3 +57967,153 @@ refuse-if-exists sole guard, disclosed); effective candidate
 set n-1; structural groups read from CANONICAL's census
 per_state map. PARAM-MIDDLE and any successor experiment remain
 un-launched under this GO.
+
+## OBSERVATION MATH-CYBER-1-SVP-FIELD-BLOCK-CREDIT-DESK-0: posthoc field-block anatomy of both completed FIELD-ORDER realizations — the falsified replication resolves into initialization-dependent AUTOREGRESSIVE CREDIT ROUTING: CANONICAL routes discrimination through the final PARAM block in BOTH seeds (+56/+46 of 96 at k=8), while PARAM-FIRST routes through PARAM at seed 19001 (+59 at k=3) but through RULE at seed 20001 (PARAM +17, RULE +70 — with 70/96 states RULE-RESCUED after being behind at end-of-PARAM); SITE is top-1-inert in all four (arm x seed) cells; DESCRIPTIVE ONLY, raw-artifact-only, no new inference (2026-08-30, Mac)
+
+DESK LAW. scratch/mathworld1_svpfbcredit.py over the two
+byte-pinned raw stage-3 artifacts ONLY (19001 ee0319f4...,
+20001 18f27b66...; census pin 7d8343b3... — the 19001 census
+path, byte-identical to the replication's own svpforepl
+census per both booked receipts, so the frozen groups are the
+same object); no checkpoint opened, no torch computation run
+(torch reaches the process only via a transitive constants
+import), no new scoring, no training, no new population,
+seeds never pooled; fresh-context verifier recomputed every family
+with an independent implementation. Blocks: CANONICAL
+RULE=1-2, SITE=3-5, PARAM=6-8, EOS=9; PARAM-FIRST PARAM=1-3,
+RULE=4-5, SITE=6-8, EOS=9. Receipt
+logs/mathworld1/svpfbcredit/desk.json (force-added; all
+conventions disclosed in its definitions block).
+
+FAMILY A — FIELD-BOUNDARY TOP-1 (k0 -> k1 -> block ends;
+recomputed from raw, matches the GO's expected tables with
+their leading value = k1):
+  19001 CANONICAL:   0, 29 | RULE 29, SITE 29, PARAM 85,
+    EOS 85  (deltas +29, 0, +56, 0)
+  19001 PARAM-FIRST: 0, 29 | PARAM 59, RULE 78, SITE 78,
+    EOS 78  (deltas +59, +19, 0, 0)
+  20001 CANONICAL:   0, 29 | RULE 29, SITE 29, PARAM 75,
+    EOS 80  (deltas +29, 0, +46, +5)
+  20001 PARAM-FIRST: 0, 29 | PARAM 17, RULE 87, SITE 87,
+    EOS 87  (deltas +17, +70, 0, 0)
+The 20001 PARAM-FIRST end-of-PARAM top-1 (17/96) sits BELOW
+its k1 value (29): completing the fronted parameter block
+makes the gold candidate lose rank on net before the rule
+block restores and surpasses it.
+
+FAMILY B — DYNAMIC GOLD MARGIN M(k) v strongest current rival
+(median / frac>0 at boundaries): 19001 C: 0/.30 flat until
+PARAM (3.58/.89); 20001 C: same shape, PARAM 1.67/.78, EOS
+1.82/.83. 19001 PF: PARAM 1.67/.61 -> RULE 5.49/.81. 20001
+PF: PARAM median NEGATIVE (-0.79, frac>0 .18) -> RULE
+2.47/.91 — the gold candidate is typically BEHIND its
+strongest rival after the fronted param block at 20001, then
+overtakes during RULE.
+
+FAMILY C — FIXED-FINAL-RIVAL ADDITIVE CREDIT (r* frozen at
+k=9; block deltas sum exactly to the final margin, additivity
+check 0.0 in all four cells): CANONICAL both seeds: RULE
+median 0 with EXACTLY 29 pos / 67 zero (the early-29 group and
+nothing else), SITE the same 29/67 zero-pattern near zero,
+PARAM the swing block (median +1.31 / 56 pos at 19001; median
+-0.24 / 46 pos 50 neg at 20001). PARAM-FIRST 20001: PARAM
+still contributes POSITIVE median credit v the FIXED final
+rival (+1.11, 66 pos) even though top-1 collapses there —
+the k=3 collapse is rank loss against OTHER rivals, not
+absence of parameter information; RULE median +0.0002 but 83
+pos / 13 neg with mean +3.77 (the decisive block). SITE:
+median ~0, mixed signs — top-1-inert but NOT margin-inert
+(aggregate-only inertness).
+
+FAMILY D — RESCUE/DAMAGE COUNTS (definitions in receipt):
+  19001 PF: PARAM_CORRECT 59, PARAM_DAMAGED 18, RULE_RESCUED
+    19, FINAL_RESCUED 19 (early29: 18 damaged / 18 rescued;
+    late67: 48 param-correct, 1 rescued).
+  20001 PF: PARAM_CORRECT 17, PARAM_DAMAGED 21, RULE_RESCUED
+    70, FINAL_RESCUED 70 (early29: 21/21; late67: 9
+    param-correct, 49 rescued).
+  CANONICAL: no post-PARAM field except EOS; FINAL_RESCUED 0
+    at 19001, 5 at 20001 (the +5 EOS delta).
+The early-29 transient is the SAME phenomenon in both seeds
+(damaged-then-rescued within PF); the seeds differ in the
+LATE-67 group: 19001 late-67 resolves inside PARAM (48/67),
+20001 late-67 resolves in RULE (49/67 rescued).
+
+FAMILY E — CROSS-SEED ROUTING (descriptive answers): (1)
+CANONICAL routing is qualitatively stable across seeds (same
+flat-then-PARAM shape; magnitudes differ 56 v 46, EOS 0 v 5).
+(2) YES — PF routes discrimination through PARAM at 19001 and
+predominantly through RULE at 20001. (3) SITE is EXACTLY
+top-1-inert in all four cells (boundary delta 0), but only
+aggregate-inert at margin level (Family C signs mixed). (4)
+The completion sign flip coincides with the routing shift (the
+arm whose margin builds in its later informative block wins in
+each seed) — ASSOCIATION ONLY, n=2, no causal claim. (5) The
+20001 k_step=5 outcome reads descriptively as RULE-block
+rescue, NOT failure to represent the parameter coordinate:
+PARAM still adds positive fixed-rival credit (median +1.11, 66
+pos) while losing top-1 to dynamic rivals.
+
+INTERPRETIVE NARROWING (required by the fence): the structural
+first-separation position answers "when is the candidate set
+distinguishable in principle"; it does NOT identify which
+field the trained model uses. k_step is a cumulative-ranking
+transition, not a localized causal socket. The 19001 cell-B
+"socket follows the coordinate" phrasing therefore reads too
+strongly in hindsight: what was measured is that the dominant
+RANKING TRANSITION landed at the structurally predicted
+position in that realization — 20001 shows the transition can
+land two positions later under the same structure. Future
+bookings should say "dominant cumulative ranking transition"
+and treat structural alignment as one realization's outcome,
+never a mechanism identification. The registered 19001 cell
+label stands at its registered scope; no retraction — a
+narrowing of the interpretive vocabulary going forward.
+
+WHAT SURVIVES OF ORDERED COORDINATE CHARTS: the core claim
+survives and sharpens — ordering changed outcomes in both
+realizations; what the desk adds is the CANDIDATE MECHANISM
+VOCABULARY: an ordered chart fixes which coordinates are
+AVAILABLE at each prefix, but finite training need not assign
+discrimination to the structurally earliest distinguishing
+coordinate; initialization routes sequence-level credit
+through later conditional fields (banked as AUTOREGRESSIVE
+CREDIT ROUTING, same commit).
+
+FREE-GENERATION CONSEQUENCE (assessment only, NOT executed):
+in forced-choice ranking a gold candidate behind at end-PARAM
+is rescued by later RULE/SITE likelihood (70/96 states at
+20001 PF); in greedy free generation an incorrect early PARAM
+token is committed and unrecoverable. The rescue anatomy is a
+concrete candidate mechanism by which sibling RANKING
+OVERESTIMATES free-generation competence, and it is largest
+exactly where the completion advantage flipped. ASSESSMENT:
+FREE-ACTION-1 now OUTRANKS PARAM-MIDDLE as the next
+experiment: (a) it tests a live validity threat to the entire
+ranking-based record using EXISTING checkpoints at desk cost
+(no training); (b) PARAM-MIDDLE probes an order contrast now
+known to be initialization-unstable — any single-init order
+arm has low information, and a multi-seed order design is a
+full birth battery. Smallest future design (assessment level,
+NOT run, needs its own prereg + GO): standing prompt
+"Current: {cur}\nHints: none\nStep: "; greedy argmax decode,
+max 9 tokens (8 payload + EOS); arms = the four existing
+field-order checkpoints (2 seeds x 2 serializations) on the 96
+frozen heldout states (+ 96 calibration states as covered
+control); metrics per arm: syntax-valid rate (8 in-alphabet
+symbols + EOS), semantic-decode rate (arm-specific decode
+roundtrips in-domain), legal-action rate (decoded action in
+the state's frozen candidate set), exact teacher-action match,
+replay-valid rate (engine executes the decoded action); no
+closed-loop solving, no search, no new training.
+
+FENCES. POSTHOC DESCRIPTIVE — nothing confirmatory; two
+realizations, one world/population/intervention; no
+inferential statistics anywhere in the desk; seeds reported
+separately, never pooled; family definitions travel with the
+receipt (upper-type quartile indices, tie conventions);
+association never elevated to causality; "credit" names a
+logprob decomposition, not a causal mechanism; every number
+recomputed by an independent fresh-context implementation
+before booking; PARAM-MIDDLE and FREE-ACTION-1 both remain
+un-launched — next experiment selection is Artin's call.

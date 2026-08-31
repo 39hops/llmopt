@@ -231,7 +231,7 @@
       },
       {
         "label": "Single seed",
-        "value": 171,
+        "value": 172,
         "entity": "crown",
         "note": "fenced as provisional"
       },
@@ -248,6 +248,6 @@
         "note": "we were wrong, in writing"
       }
     ],
-    "fence": "docs/FINDINGS.md · 368 curated claims · recounted from the source at build time"
+    "fence": "docs/FINDINGS.md · 369 curated claims · recounted from the source at build time"
   }
 }

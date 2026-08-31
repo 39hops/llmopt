@@ -19,7 +19,7 @@ no new population; seeds never pooled. Families:
   C FIXED-FINAL-RIVAL ADDITIVE CREDIT — r* chosen ONCE per
     state as the strongest non-gold at k=9 (tie toward lower
     index, the booked scorer's convention); per block
-    Delta_block = D(end) - D(start) with D(k) = S_gold(k) -
+    Delta_block = D(end) - D(start-1) with D(k) = S_gold(k) -
     S_r*(k), D(0)=0; blocks partition k=1..9 so the block
     deltas sum exactly to the final gold-v-r* margin. Medians
     primary, means riders, sign counts.
