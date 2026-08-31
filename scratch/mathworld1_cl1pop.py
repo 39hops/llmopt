@@ -46,6 +46,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+import sympy  # noqa: E402,F401  (parent-side import so
+#     every fork inherits it instead of re-importing)
+import llmopt.mathgen.problems  # noqa: E402,F401
+import llmopt.search.derivation  # noqa: E402,F401
 from llmopt.lab.provenance import (completion_commit,  # noqa: E402
                                    start_provenance)
 
@@ -110,25 +114,34 @@ def _worker(level, seed, q):
            "depth0_solved": bool(is_solved(State(root)))})
 
 
-def materialize(level, seed):
+def materialize(level, seed, timeout=None):
+    """Returns (result_or_None, failure_mode_or_None). Queue is
+    drained BEFORE join (large-payload pipe deadlock guard) and
+    read with a timeout (a bare get_nowait after join can race
+    the pipe flush and fabricate a failure)."""
     ctx = mp.get_context("fork")
     q = ctx.Queue()
     proc = ctx.Process(target=_worker, args=(level, seed, q))
     proc.start()
-    proc.join(MAT_TIMEOUT_S)
+    try:
+        res = q.get(timeout=timeout or MAT_TIMEOUT_S)
+    except Exception:
+        res = None
+    proc.join(2.0)
     if proc.is_alive():
         proc.kill()
         proc.join()
-        return None
-    if proc.exitcode != 0:
-        return None
-    try:
-        return q.get_nowait()
-    except Exception:
-        return None
+        return None, "timeout"
+    if res is None:
+        return None, ("nonzero_exit" if proc.exitcode
+                      else "no_result")
+    return res, None
 
 
 def build_exclusion():
+    """Pure in-memory build; caller creates OUTDIR and writes
+    the receipt AFTER all gates pass (an aborted gate must not
+    leave a partial namespace that bricks the retry)."""
     cats = {}
     # A: training parents
     for p, h in SOURCES.items():
@@ -148,9 +161,10 @@ def build_exclusion():
     for name, d in EVAL_DIRS.items():
         for line in open(Path(d) / "episodes.jsonl"):
             r = json.loads(line)
-            res = materialize(r["level"], r["seed"])
+            res, fm = materialize(r["level"], r["seed"],
+                                  timeout=120.0)
             gate(res is not None,
-                 f"EVAL ROOT REBUILD {name} {r['seed']}")
+                 f"EVAL ROOT REBUILD {name} {r['seed']} {fm}")
             ev.add(res["cur"])
             n_roots += 1
             raw_b += 1
@@ -207,17 +221,17 @@ def build_exclusion():
                        for n, (s, raw) in cats.items()},
         "union_cardinality": len(union),
         "pairwise_intersections": inter}
-    EXCL.write_text(json.dumps(receipt, indent=1))
     return union, cats, receipt
 
 
 def main():
     if OUTDIR.exists():
         raise SystemExit(f"REFUSING: {OUTDIR} exists")
-    OUTDIR.mkdir(parents=True)
     START = start_provenance(SRC)
     t0 = time.time()
     union, cats, excl_receipt = build_exclusion()
+    OUTDIR.mkdir(parents=True)
+    EXCL.write_text(json.dumps(excl_receipt, indent=1))
     excl_sha = fsha(EXCL)
     print(f"[cl1pop] exclusion universe {len(union)} states "
           f"({time.time() - t0:.0f}s)", flush=True)
@@ -230,11 +244,12 @@ def main():
         for lv in LEVELS:
             seed = BAND_START
             while len(accepted[lv]) < PER_LEVEL:
-                res = materialize(lv, seed)
+                res, fm = materialize(lv, seed)
                 row = {"level": lv, "seed": seed}
                 if res is None:
                     row.update({
                         "status": "materialization_failure",
+                        "failure_mode": fm,
                         "accepted": False,
                         "reason": "materialization_failure"})
                     stats[lv]["materialization_failure"] += 1
@@ -330,11 +345,10 @@ def main():
             for lv in LEVELS},
         "totals": {
             "attempts": sum(len(scan[lv]) for lv in LEVELS),
-            "accepted": 96,
             **{k: sum(stats[lv][k] for lv in LEVELS)
                for k in sorted({k for lv in LEVELS
                                 for k in stats[lv]})}},
-        "overlap_receipt": {**{n: f"0/96" for n in overlap},
+        "overlap_receipt": {**{n: "0/96" for n in overlap},
                             "duplicate_shas_within_96": 0,
                             "depth0_solved_within_96": 0},
         "sealed_unscored": ("POPULATION SEALED, UNSCORED, "
