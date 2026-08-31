@@ -1153,6 +1153,14 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svpdiet3/heldout_test16.jsonl": {
+   "bytes": 843705,
+   "exists": true,
+   "local_only": true,
+   "sha256": "a3f6103b3733d909281849dcb3fd6ba9fba3891f2014bec13881b4509df46ddb",
+   "source": "results",
+   "tracked": false
+  },
   "logs/mathworld1/svpdiet3/svpdiet3_receipt.json": {
    "bytes": 4987,
    "exists": true,
