@@ -21,9 +21,10 @@ are never regenerated.
 
 FROZEN GATE (verbatim): per arm c-IN covered >= 36/48 AND c-OUT
 covered >= 36/48 AND no {term x regime} cell < 12/24 — BOTH
-arms pass => FIELD-ORDER CALIBRATION FIRED (stage-3 authority
-to a later GO); EITHER arm fails ANY bar =>
-FIELD-ORDER-NOT-REACHED, STOP, no heldout, no single-arm
+arms pass => FIELD-ORDER-REPLICATION CALIBRATION FIRED
+(stage-3 authority to a later GO); EITHER arm fails ANY bar =>
+FIELD-ORDER-REPLICATION-NOT-REACHED, STOP, no heldout, no
+single-arm
 scoring, no gate change, no onset inference. Eight
 arm x term x regime cells reported. Arm differences are NEVER
 field-order-superiority evidence.
