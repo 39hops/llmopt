@@ -1139,6 +1139,22 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svpdiet/balanced_grid_train.jsonl": {
+   "bytes": 1099108,
+   "exists": true,
+   "local_only": true,
+   "sha256": "0ef3d8a880a7e07712d8de757bc1670df12701e487b856b44c97f8db16cb3759",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/mathworld1/svpdiet/combined_train_manifest.jsonl": {
+   "bytes": 3905008,
+   "exists": true,
+   "local_only": true,
+   "sha256": "897c8bf8fd2b6d39e361ed541d3e14c53c1c1302eeed560f77ee8fb2f2477bdd",
+   "source": "results",
+   "tracked": false
+  },
   "logs/mathworld1/svpdiet/svpdiet_receipt.json": {
    "bytes": 5760,
    "exists": true,
@@ -1259,6 +1275,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svpfocal/scores.jsonl": {
+   "bytes": 87120,
+   "exists": true,
+   "sha256": "deb7f59fe837423f9561b190451f770cc574d3f9486a4294ae6587233796a879",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/svpfocal/svpfocal_receipt.json": {
    "bytes": 3650,
    "exists": true,
@@ -1270,6 +1293,13 @@
    "bytes": 3996,
    "exists": true,
    "sha256": "83d3220d90bd9a7adf1b3204c0b914399abd5f4a9a9c967a6fded8a39afb0bf8",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/svpfoheld/raw_token_scores.jsonl": {
+   "bytes": 157002,
+   "exists": true,
+   "sha256": "ee0319f4c63396f7998cdffa5dee5b3d8c3bcf4b35866a3dcf499efb9c673111",
    "source": "results",
    "tracked": true
   },
@@ -1305,6 +1335,13 @@
    "bytes": 170402,
    "exists": true,
    "sha256": "70ff3248a9b2f6e584c2d7bb8e9fc7b59853ebb7055f58193783fbd61eab78b3",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/svpfreeact/raw_generations.jsonl": {
+   "bytes": 630692,
+   "exists": true,
+   "sha256": "a04f13ba456da7e7c41a5e38f83bb15a6d7406513bc18ca8a83c8303bdfdd7bc",
    "source": "results",
    "tracked": true
   },

@@ -58545,3 +58545,249 @@ independent raw reconstruction) before booking; receipts
 force-added small-text (qual.json, groups.json, receipt.json,
 riders.json, raw_generations.jsonl); every claim grounded in
 THIS run's tool output.
+
+## PRE-REG MATH-CYBER-1-SVP-DECODE-CONSTRAINT-LADDER-PREREG-0: decompose the booked 0/96 free-generation collapse into an INTERNALIZED-LEGALITY gap and a LOCAL-v-GLOBAL decoding gap via a three-rung ladder U (unconstrained greedy, frozen) -> L (legal-trie greedy, the ONE new measurement) -> R (full legal-set ranking, frozen) on the same four checkpoints and frozen populations — EIGHT inferential applications (2 contrasts x 4 checkpoints, strict heldout), frozen before any scoring; PREREG ONLY — nothing decoded, no checkpoint loaded (2026-08-31, Mac)
+
+MOTIVATION (booked, FREE-ACTION-1 RESULTS L58370):
+strict-heldout unconstrained greedy = 0/96 teacher-match on
+all four checkpoints v ranking 85/78/80/87, while EOS/syntax/
+semantic-decode are 96/96 everywhere and LEGAL-ACTION is 2/96;
+every generation diverges at the withheld coordinate's low
+digit (position 8 CANONICAL / 3 PARAM-FIRST) and substitutes
+the param_index values that co-occurred with that site in
+training. That gap confounds at least two components: (A)
+INTERNALIZED-LEGALITY — the model prefers semantically valid
+ActionPrograms that are not legal in the current state; (B)
+LOCAL-v-GLOBAL — even given exact legal support, token-wise
+greedy choice may differ from highest total-score legal
+sequence. This ladder separates them on the EXISTING
+checkpoints and populations only.
+
+ARMS (per checkpoint x state):
+  U — UNCONSTRAINED GREEDY: ALREADY MEASURED. Authority = the
+    frozen FREE-ACTION-1 raw artifact
+    (logs/mathworld1/svpfreeact/raw_generations.jsonl,
+    a04f13ba...). COHERENCE GATE (zero extra inference,
+    frozen): at every position where L's reached prefix
+    equals U's prefix, the L run's unmasked full-vocab top-1
+    must equal U's generated token; any mismatch count > 0 is
+    an mps-nondeterminism disclosure and > 5% of comparable
+    positions is INSTRUMENT FAILURE (halt interpretation of
+    Contrast 1); U is not rerun in either case without its
+    own disclosed GO.
+  L — LEGAL-TRIE GREEDY: the ONE new measurement. Per state
+    and arm, build a prefix trie over the EXACT frozen legal
+    candidate serializations (arm-specific: canonical
+    factor_code bytes; PARAM-FIRST = PERM of each candidate's
+    canonical payload, the qualified pf_encode — semantic
+    candidate identity frozen BEFORE serialization). At each
+    position: allowed = token IDs extending the current prefix
+    to at least one complete legal serialization (EOS allowed
+    exactly at position 9); mask everything else; select the
+    highest-logit ALLOWED token; exact ties -> lowest token ID
+    (the FREE-ACTION-1 law); no lookahead, no beam, no
+    candidate total-score comparison, no teacher preference,
+    no retry. The trie supplies ONLY hard support ("this
+    prefix can still become some legal action"), never the
+    teacher's identity. L always terminates on one frozen
+    legal action; any non-termination or non-candidate
+    terminal is INSTRUMENT FAILURE, STOP.
+  R — FULL LEGAL-SET RANKING: ALREADY MEASURED. Authority =
+    the frozen ranking artifacts (heldout
+    logs/mathworld1/svpfoheld/raw_token_scores.jsonl
+    ee0319f4... and .../svpfoheld20/raw_token_scores.jsonl
+    18f27b66..., k=9 pessimistic vectors = 85/78/80/87;
+    calibration logs/mathworld1/svpfocal/scores.jsonl
+    deb7f59f... and .../svpfocal20/scores.jsonl 5df6ee83... =
+    94/93/85/91). NOT rerun.
+
+PRIMARY POPULATION: the 96 strict heldout states
+(logs/mathworld1/svpdiet3/heldout_test16.jsonl a3f6103b...,
+site_role heldout-I1). All four checkpoints (pins verbatim
+from FREE-ACTION-1: ae0a86e0 / 0fe38f78 / 0a841a5f /
+b7198ff2), seeds NEVER pooled.
+
+FROZEN CONTRASTS (paired state-level teacher-match vectors,
+exact two-sided McNemar in the MIN-LIKELIHOOD convention —
+binom_minlik_p, the svpfoheld lineage; p=1.0 at zero
+discordants — alpha .05, symmetric):
+  CONTRAST 1 (U v L, legality-support effect):
+    LEGAL-CONSTRAINT-HELPS iff L-only > U-only AND p < .05;
+    LEGAL-CONSTRAINT-HURTS symmetric; else
+    NO-DIRECTIONAL-SEPARATION. Rider: LEGAL-ACTION rates —
+    L's legal rate MUST be 96/96 by construction (HARD GATE;
+    any miss is an instrument bug, never a result).
+    REGISTERED DEGENERACY: the frozen U authority is 0/96
+    teacher-match in all four heldout cells, so U-only = 0
+    identically and Contrast 1 on strict heldout reduces by
+    construction to a one-sided test — HELPS fires iff L-only
+    >= 6 (min-lik p at 6/0 = .03125; 5/0 = .0625); the HURTS
+    branch is UNREACHABLE there and is retained only as an
+    instrument-coherence tripwire (a nonzero U-only would
+    contradict the frozen authority and halts interpretation).
+  CONTRAST 2 (L v R, local-v-global with legal support held
+    fixed): GLOBAL-RANKING-ADVANTAGE iff R-only > L-only AND
+    p < .05; LOCAL-GREEDY-ADVANTAGE symmetric; else
+    NO-DIRECTIONAL-SEPARATION. Both L and R operate over the
+    SAME frozen legal set; a residual R>L gap isolates
+    token-local greedy legal decoding v full-sequence global
+    scoring under identical model/state/support. NOT search
+    optimality, NOT beam-search performance.
+MULTIPLICITY (frozen now): exactly EIGHT inferential
+applications — 2 contrasts x 4 checkpoints, strict heldout
+only. Per-test alpha .05, no family-wise correction applied or
+claimed; no retrofitted global headline from whichever cells
+fire; each result reported as one of eight. The calibration
+ladder below is DESCRIPTIVE with ZERO inferential
+applications.
+
+CALIBRATION RIDER (descriptive only): the same U/L/R ladder on
+the 96 covered calibration states (af1a4aa1...; U authority =
+the frozen calibration generations, R = the frozen calibration
+score artifacts) — does legal-prefix support materially
+improve ordinary covered generation too, or primarily repair
+the strict-combination regime? Cannot redefine any heldout
+endpoint; no verdict labels.
+
+TOKEN-LEVEL MECHANISM RECEIPT (L run, every position, every
+state): generated prefix; unmasked full-vocab top-1; the
+allowed set; selected token; whether the unconstrained top-1
+was masked out; rank of the selected token in the full
+unmasked vocabulary; chosen-token logprob; teacher-token
+logprob at that position; teacher-token rank among allowed
+tokens. Persisted raw and hashed before any endpoint.
+
+WITHHELD-DIGIT PRIMARY ANATOMY (strict heldout, the frozen
+first-error coordinate: position 8 CANONICAL / 3 PARAM-FIRST;
+per state, summarized separately for t2 and t3 cells;
+reported CONDITIONAL ON THE ACTUALLY-REACHED L PREFIX, with
+n_prefix_divergent — the count of states whose L prefix at
+that position differs from the teacher prefix — a first-class
+receipt field per cell; in divergent states items (1)-(6) are
+reported against the reached prefix and flagged, never
+silently mixed): (1) unconstrained top token at the position
+(the L run's unmasked logits at the reached prefix); (2) whether that token extends to any legal action; (3)
+allowed code values; (4) teacher-token rank within allowed;
+(5) selected token; (6) selection == teacher.
+
+TRAINING-SUPPORT DESCRIPTIVE RIDER (frozen corpus bytes only
+— data/matsub_paired.jsonl a943ba7f...,
+logs/mathworld1/svpdiet/balanced_grid_train.jsonl
+0ef3d8a8...,
+logs/mathworld1/svpdiet/combined_train_manifest.jsonl
+897c8bf8...): target frequency of every relevant (site_ordinal,
+param_kind, param_index) tuple; verify the booked fact —
+site_ordinal 1 x param_index 2/3 has ZERO target support while
+site_ordinal 1 x 0/1 has positive support (booked counts
+276/394 for i_unprod I; recomputed, not copied). Frequency
+alignment only; NO causal inference from co-occurrence.
+
+CANDIDATE-SET EXCLUSION RECEIPT (mechanical, BEFORE any L
+inference, from the frozen FREE-ACTION-1 raw + candidate
+sets): per strict state — U action legal / illegal; when
+illegal, whether it differs from the teacher action ONLY in
+param_index; whether the generated param_index lands in a
+training-covered site x parameter cell. Must reproduce the
+booked 2/96 legal counts exactly (gate).
+
+TOKEN-RANK RIDER (descriptive, no sampling/top-k claims): at
+the withheld digit under the exact teacher prefix — teacher
+token full-vocab rank; rank among the 8 code-alphabet token
+IDs 332..339 (atoms, not positions); logprob
+gap chosen_unconstrained - teacher (teacher-token logprob
+from the frozen ranking raws' gold rows — a DIFFERENT run and
+forward regime on a nondeterministic device: the gap is
+APPROXIMATE by construction, disclosed as such); cumulative probability mass over training-covered v
+heldout parameter values. The full softmax under the EXACT
+teacher prefix is captured by ONE teacher-forced forward per
+state per arm at that position, authorized here as part of
+the same joint run (the L-run softmax equals it only when the
+reached prefix is the teacher prefix; both are persisted, the
+rider uses the teacher-forced one).
+
+HARD INSTRUMENT FENCES (all gated BEFORE checkpoint
+inference): trie built exclusively from the frozen legal
+candidate semantic tuples already used by ranking; per state —
+LEAF COUNT == n_candidates (the countable injectivity gate),
+every trie leaf corresponds to exactly one frozen candidate
+serialization, every frozen candidate appears as a leaf, no
+non-candidate leaf exists, the teacher serialization is a
+leaf, and EVERY candidate serialization roundtrips in its arm
+(canonical factor_decode and PARAM-FIRST permute-then-decode
+— a NEW candidate-level gate; FREE-ACTION-1 gated teachers
+only), with leaf replay validity anchored by the standing
+192/192 teacher replays. CARRIED VERBATIM from the
+FREE-ACTION-1 qualification: standing prompt bytes
+("Current: {cur}\nHints: none\nStep: "), both codecs +
+PERM/INV, the 8-payload+EOS grammar constants (CODE_BASE 332,
+code alphabet 332..339, EOS 1, VOCAB 340), and ALL pins
+re-verified pre- AND post-run. OUTPUT NAMESPACE (frozen):
+logs/mathworld1/svpdcl/ with refuse-if-exists per file (qual,
+raw token-level receipt, receipt, riders); no earlier path
+reused; smoke (if any) path-isolated. Any failure: INSTRUMENT
+FAILURE, STOP.
+
+REGISTERED PRIOR (house, before any L token exists): CASE A
+(LEGALITY-SUPPORT DOMINANT: U << L ~ R) at moderate
+confidence for the CANONICAL arms — the structural separating
+coordinate sits at position 8 where remaining legal rivals
+share the teacher prefix, so local and global choice should
+approximately coincide; for PARAM-FIRST arms, L could fall
+between (Case B) because the fronted decision position leaves
+more downstream divergence room — low-to-moderate confidence;
+LEGAL-CONSTRAINT-HURTS is expected NOWHERE (and on heldout
+is unreachable by construction, per the registered
+degeneracy). The arm-level clauses of this
+prior are scored DESCRIPTIVELY across the four per-checkpoint
+outcomes and license no arm-level conclusion (no
+CANONICAL-v-PARAM-FIRST contrast is registered). Wrong-in-
+public is the point.
+
+INTERPRETIVE MAP (frozen, per checkpoint; no forced aggregate
+label if checkpoints differ):
+  A: U << L ~ R => LEGALITY-SUPPORT DOMINANT (the model
+     selects the teacher action greedily once impossible
+     actions are removed; most of the free-generation failure
+     is failure to internalize legal support — NOT why it
+     failed to learn legality);
+  B: U << L << R => TWO-STAGE GAP (external legality repairs
+     part; global sequence scoring adds substantial further
+     recovery);
+  C: U ~ L << R => LOCAL-v-GLOBAL DOMINANT (removing illegal
+     prefixes does little; full-sequence scoring carries the
+     ranking advantage);
+  D: U ~ L ~ R => inconsistent with the booked FREE-ACTION-1 /
+     ranking record — treat as an instrument/coherence problem
+     BEFORE interpretation, never book as a finding.
+The '<<' / '~' calls are made by the two frozen McNemar
+contrasts, not by eyeballing totals. Any LOCAL-GREEDY-
+ADVANTAGE firing (L > R, reachable) books as its own named
+outcome BESIDE the map, never folded into A-D; LEGAL-
+CONSTRAINT-HURTS is unreachable on heldout by the registered
+degeneracy and would surface only as the coherence tripwire.
+
+CLAIM CEILING (frozen): this ladder can establish ONLY how
+much of the measured one-step ranking->generation gap, on
+these four checkpoints and two fixed populations, is removed
+by (1) exact legal-prefix support and (2) global legal-
+sequence scoring v local legal greedy. NOT establishable:
+autonomous solve-rate; closed-loop performance; that training
+co-occurrence CAUSES the substitution; universal inability to
+compose unseen coordinates; that constrained decoding is a
+desirable deployment solution; whether beam/sampling would
+repair generation; population-level field-order superiority.
+
+ORDER: freeze (this entry) -> fresh-context prereg audit ->
+commit/push/census -> STOP. Next separate GO if clean:
+DECODE-CONSTRAINT-LADDER INSTRUMENT-QUAL + ONE JOINT
+LEGAL-TRIE RUN (instrument committed before checkpoint access;
+trie gates before inference; raw-first; dual audit). Nothing
+decoded under this GO.
+
+FENCES. PREREG ONLY; Mac/mps at run time (no bit-exact rerun
+precondition; hashed raws are the record); known-set
+populations; per-checkpoint reporting, seeds never pooled;
+U and R are frozen authorities, not re-measured; riders
+descriptive and never alter endpoints; PARAM-MIDDLE and
+closed-loop remain unbuilt/unauthorized; every future claim
+grounded in its own run's tool output.
