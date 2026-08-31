@@ -58965,3 +58965,225 @@ and is anchored by raw_sha in the tracked receipt; dual audit (fresh-context
 instrument verifier + post-run independent raw reconstruction)
 before booking; every claim grounded in THIS run's tool
 output.
+
+## OBSERVATION MATH-CYBER-1-CLOSED-LOOP-1-ASSESSMENT-0: GO CLOSED-LOOP-1 — the hybrid-controller question is well-posed, leakage-clean, and cheap, but with ONE structural redesign: legal-trie greedy dies as an arm (kill condition 2 fires against it specifically — it is operationally a strict subset of full legal-set ranking with no computational advantage in this engine), so the nominated smallest design is ENGINE-HCE v MODEL-LEGAL-RANKING v RANDOM-LEGAL on a fresh exclusion-audited episode population under the verbatim standing budget; ASSESSMENT ONLY, nothing implemented or run (2026-08-31, Mac)
+
+FRONTIER (booked): DECODE-CONSTRAINT-LADDER (RESULTS L58795)
+— constrained one-step preference among legal actions is
+measured and strong (L = R state-for-state in 3/4 cells, L a
+strict subset of R everywhere, zero forced-teacher). The open
+question is the SYSTEM one: symbolic engine owns legality and
+transition, learned model owns preference — is that useful in
+closed loop where the controller's own choices determine the
+next-state distribution?
+
+Q1 DETERMINISM: YES with one registered caveat. The engine leg
+is the verbatim standing law (scratch/mathworld1_svpeval.py:
+run_episode — greedy-hce, MAX_DECISIONS 12, WALL_CAP_S 60 s,
+both from scratch/mathworld0.py L66-67; deterministic
+tie law min by (hce, name, child key)). Legal sets have a
+MEASURED instability class: stable_legal_set enumerates twice
+with a cleared rule cache and requires identical multisets;
+svpeval3 books legal_set_unstable as its FIRST exclusion
+class. A closed-loop run must apply the same stability gate at
+every decision and register unstable-legal-set as an episode
+OUTCOME class (not silently retry). Model leg deterministic
+per the frozen in-run tie law (lowest token ID / pessimistic
+rank), with the standing mps fence (no cross-run bit-exact
+claim; one run is the record).
+
+Q2 NO TEACHER AT INFERENCE: YES, operationally provable. The
+candidate set = legal_actions(state) (engine successors) +
+derive_program (site/param resolution against engine-accepted
+child sets) — scratch/mathworld1_svpeval.py L95-130. No
+is_label, no teacher rank, no future outcome, no
+distance-to-solution enters candidate construction; the eval
+artifacts' is_label fields are BUILD-time annotations absent
+from the closed-loop path. The proof obligation for the
+prereg: the controller consumes exactly (state bytes, engine
+legal set, frozen checkpoint) and nothing else — auditable by
+import census + receipt field enumeration.
+
+Q3 COMPUTATIONAL DISTINCTION L v R: THERE IS NONE WORTH
+TESTING, said plainly. Trie greedy costs <= 9 incremental
+single-sequence forwards; full legal-set ranking costs one
+batched teacher-forced forward over K candidates — for the
+19M-parameter model both are milliseconds, and the booked
+anatomy says the ENGINE dominates episode wall (candidate
+materialization was 73-89% of wall in the REGRET-LDS world;
+here every decision pays legal_actions + derive_program
+regardless of decoder). Both decoders require the SAME engine
+work (the trie is built FROM the enumerated legal set). With
+Contrast 2 firing nowhere (three cells state-identical, the
+fourth carried as UNRESOLVED at p=.0625 — the booked word)
+and L never beating R on a single state, an L arm
+answers nothing R does not. KILL CONDITION 2 FIRES AGAINST
+L-AS-ARM — but not against the system question, which never
+needed L: the controller arm is MODEL-LEGAL-RANKING (argmax
+full-sequence score over the engine legal set, the booked
+assay run as a policy).
+
+Q4 POPULATION: no appropriate frozen episode population
+exists — the SVP eval populations (svpeval seeds 9600-9619,
+svpeval2 9700-9719, svpeval3 9800-9819) are decision-level and
+burned as previously-scored populations. CORRECTED DIRECTION
+(challenger-caught): those bands were SCREENED AGAINST the
+training corpus (the
+training_parent_overlap exclusion class is theirs), not its
+source — they are burned as decision-level, previously-scored
+populations, which is reason enough not to reuse them. The
+clean choice is a FRESH make_integrate(level, seed) root
+population from an unused seed band (band chosen and
+census-verified at prereg; 9600-9819 are burned), levels 4-7
+(the eval3 ladder), with a DATA-CONTRACT audit rather than a
+casual freshness claim: grain = EPISODE (root); label timing =
+outcome computed by the engine at run time (no future join);
+split policy = root-signature exclusion v (a) the 73,324
+training rows' parent states (58,988 distinct FULL cur
+strings — full-string or sha keys, never truncated prefixes,
+which collapse 146 states), (b) all prior eval populations —
+seed band alone never suffices (two booked contamination
+incidents). Prior-exposure overlap census is a REGISTERED
+receipt, not an assumption. Root MATERIALIZATION uses the
+standing fork-isolation pattern (make_integrate on L4+ seeds
+is the named sympy-hang hazard, five call sites bitten) — it
+is real extra work, not work the arms already pay.
+
+Q5 ARMS (exactly three): A ENGINE-HCE — the standing episode
+baseline. CORRECTED FRAMING (challenger-caught): the training
+corpus's labels are NOT hce choices — matsub_paired's source
+census is reverse 68,321 / grpo 3,255 / coeff 1,135 / other
+~600, historical next-states relabeled to canonical
+ActionPrograms, zero rows from greedy-hce run_episode. Arm A
+is therefore a policy baseline the model was NEVER trained to
+imitate; B-v-A is a genuine policy comparison and B may
+legitimately beat A — the prereg must not pre-fence that away
+as 'clone fidelity'. B MODEL-LEGAL-
+RANKING — one frozen checkpoint (smallest: 19001 CANONICAL,
+the original representation; the four-checkpoint battery is a
+follow-up, not the first run); C RANDOM-LEGAL — uniform
+seeded choice among legal actions, the control that prices
+how much legality ALONE solves under this budget (without it,
+any solve rate is uninterpretable). Unconstrained generation
+is EXCLUDED: its one-step 0/96 is booked and a closed-loop
+rerun answers nothing at episode cost.
+
+Q6 PRIMARY ENDPOINT: episode-level SOLVED under the verbatim
+standing budget, paired per root across arms (every arm sees
+the same roots), exact McNemar B v A as the single inferential
+contrast; C descriptive. CEILING/POWER (challenger-measured):
+engine-hce solves 221/240 = 92% of prior L4-7 root bands under
+this exact budget — arm A is near ceiling, so at small n the
+test is powered only for a material B collapse; the prereg
+names the detectable effect at its chosen n, and a B ~ A read
+at low n books as UNRESOLVED, never equivalence. Riders (never endpoints): steps-to-
+solve on jointly-solved roots; wall / engine calls / model
+calls; exact final symbolic correctness re-verified by the
+engine's is_solved (already the outcome law). Episode-level
+pairing kills the long-episode weighting problem by
+construction.
+
+Q7 BUDGETS/STOPPING (all standing, none invented; one honest
+limit): MAX_DECISIONS 12; WALL_CAP_S 60 s CHECKED BETWEEN
+DECISIONS — a within-decision sympy hang is not timeboxed
+(the standing fork law's target class); precedent is
+in-process (svpeval bands ran unforked and wall_cap outcomes
+fired correctly), accepted explicitly, with an outer fork as
+the optional hardening if the fresh band misbehaves; outcomes {solved,
+budget_exhausted, wall_cap, dead_end} from run_episode,
+PLUS registered closed-loop classes: legal_set_unstable,
+context_overflow (the standing prompt may exceed SEQ_CAP on
+deep states — eval3's booked exclusion class), and
+repeated-state (cycle) — the hce baseline cannot cycle on
+monotone hce but a model policy CAN revisit; law: repeated
+state key => episode books CYCLE outcome (a loss), never a
+silent continue. Deterministic tie laws as in Q1.
+
+Q8 DISTRIBUTION SHIFT — the most substantive scientific gap,
+now MEASURED rather than hedged (challenger census): the
+one-step assays measured preference among 2-5 DESIGNED
+distractor blocks (the diet3 block law), while natural full
+legal sets on real episodes run 3-10 with median ~7-8
+(svpeval decisions {3:3,4:6,5:9,6:12,7:17,8:19,9:14,10:2};
+svpeval3 similar). Closed-loop arm B is asked to choose among
+up to 10 natural actions — a set-size AND generator shift
+(make_integrate roots v the constructed inert-addend block
+family) relative to everything its competence was measured
+on. Named as a TRANSPORT RISK in the prereg, not buried as a
+rider; the run's descriptive anatomy adds the per-decision
+depth census (parent in training-parent set? tuple in the
+884,736 domain? state encodable under the prompt cap?
+legal-set size by depth). Reported, not excluded, unless the
+prereg names a specific exclusion with cause.
+
+Q9 ORACLE/LEAKAGE: the legal set is exact LEGALITY ONLY —
+constructed from successors + program derivation with no
+teacher rank, no teacher path, no success signal, no
+distance-to-solution (Q2 evidence). One subtlety the prereg
+must carry: hce is the ENGINE's heuristic, and arm A uses it
+as preference — arms B and C must never see hce values, only
+the legal set; the receipt evidences this by construction
+(separate action-selection functions, import census).
+
+Q10 COMPUTE: bounded and small, stated per the honest wall
+law (Q7). 96 roots TOTAL (24 per level, the ceiling-aware
+size) x 3 arms worst-cases at ~4.8 h engine wall on the Mac
+and typically far less (92% of episodes solve early under
+arm A's precedent; model adds <= 12 batched forwards of the
+19M model per decision, negligible). Root materialization is
+separate fork-isolated work (Q4), minutes-class with the
+solve_isolated pattern. No 3080, no overnight window
+needed.
+
+KILL CONDITIONS AUDITED: (1) trie/legality from state alone —
+PASSES (Q2). (2) L operationally equivalent to full scoring —
+FIRES against the L arm; system question survives with R as
+the policy; design redesigned accordingly (this is the GO's
+own contemplated outcome, not a redesign of the question).
+(3) episode population — a clean one is cheaply
+materializable with registered exclusion audit (Q4); no
+already-burned population is reused. (4) determinism/
+auditability — PASSES with the registered instability/cycle
+outcome classes (Q1, Q7). (5) compute — PASSES (Q10).
+VERDICT: GO CLOSED-LOOP-1.
+
+NOMINATED SMALLEST PREREG (one design, for a future GO —
+nothing executes now): CLOSED-LOOP-1-PREREG-0 = fresh
+root population (seed band reserved at prereg; exclusion
+census v training parents + all eval populations booked
+before any episode runs), levels 4-7, n = 96 roots total (24 per level; the
+ceiling/power note travels); arms
+A/B/C as Q5 with one checkpoint (19001 CANONICAL); primary =
+paired episode-level solved, B v A exact McNemar at .05, ONE
+inferential application; C and everything else descriptive;
+standing budgets verbatim; registered outcome classes incl.
+CYCLE/unstable/overflow; raw per-decision receipts hashed
+before endpoints; leakage fence by construction + import
+census; the four-checkpoint battery and any SOFT-SUPPORT /
+LEGALITY-TRAINING arm are separate future designs.
+
+WHAT A RESULT CHANGES: B ~ A (clone fidelity holds in closed
+loop) => the hybrid architecture is validated as a controller
+substrate and the interesting next lever becomes preference
+QUALITY (training beyond cloning); B << A => compounding
+deviation dominates and the banked abort/regret and
+legality-training threads outrank scaling the controller;
+C ~ B => learned preference adds nothing over legality at
+this budget and the model leg is dead weight in-loop — each
+outcome picks a different next instrument, which is what
+makes the run worth its wall.
+
+FENCES. ASSESSMENT ONLY — no implementation, no seeds
+reserved, no population materialized, no prereg frozen;
+two challenger-caught false claims corrected above in place
+(training-label lineage; eval-population direction) — the
+assessment's conclusions survive on corrected grounds; a
+positive future result would establish ONLY that engine-
+legality + learned preference is useful on the tested episode
+population — never autonomous generation, OOD generality,
+pre-measured solve-rate improvement, "legality need not be
+learned", or general L=R; clone-v-expert framing mandatory
+(arm A is the label source); SOFT-SUPPORT and LEGALITY-
+TRAINING stay banked alternatives; PARAM-MIDDLE stays
+unbuilt; every number above cites a booked receipt or names
+itself an estimate.
