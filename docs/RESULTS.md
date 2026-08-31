@@ -58791,3 +58791,177 @@ U and R are frozen authorities, not re-measured; riders
 descriptive and never alter endpoints; PARAM-MIDDLE and
 closed-loop remain unbuilt/unauthorized; every future claim
 grounded in its own run's tool output.
+
+## VERDICT MATH-CYBER-1-SVP-DECODE-CONSTRAINT-LADDER: cell A — LEGALITY-SUPPORT DOMINANT on ALL FOUR checkpoints: legal-trie greedy recovers the ENTIRE ranking total in three of four cells (L = R state-for-state: 85/85, 78/78, 87/87; the fourth L 75 v R 80, R-only 5, p = .0625, NO-DIRECTIONAL-SEPARATION), lifting free generation from the booked 0/96 to 75-87/96 (Contrast 1 LEGAL-CONSTRAINT-HELPS, all four, p < 1e-22) — and the recovery is NOT oracle-forced: in every cell the non-early states were CHOSE-TEACHER (56/49/46/58 v ZERO forced-teacher), the model locally selecting the withheld coordinate among 2-3 legal alternatives once impossible continuations are masked; the unconstrained failure was preference for ILLEGAL trained-co-occurrence continuations (~99.9% of withheld-digit mass), not inability to discriminate among legal ones (2026-08-31, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-DECODE-CONSTRAINT-LADDER-PREREG-0
+(3b5f1742). Instrument scratch/mathworld1_svpdcl.py committed
+BEFORE any checkpoint access (63c7b2f4); fresh-context
+verifier found two blockers, both folded pre-run at e8209a66:
+(1) the U raw pin literal had been reconstructed from the
+prereg's truncated prefix instead of derived from the artifact
+— replaced with the true full sha (a04f13ba...bdfdd7bc,
+matching the booked FREE-ACTION-1 receipt and the lock); (2)
+the candidate-total gate carried 963, a number inherited from
+the prereg AUDIT REPORT's miscount (the frozen prereg entry
+itself registers the roundtrip LAW without any count) — the
+byte-derived total is 321 covered + 321 heldout = 642 per
+arm; the gate now holds the derived value. No registered bar
+existed or moved. Five should-fixes
+also folded (per-state prompt_sha gate v the frozen U rows;
+per-population coherence census with the heldout gate;
+legal_action derived not literal; the registered rank-raw gap
+source restored with the teacher-forced variant kept as
+secondary; no-smoke disclosure).
+
+QUALIFICATION (green, no checkpoint touched): 15 pins + 4
+checkpoint pins; 192 state x arm tries — leaf count ==
+n_candidates, unique bijection, teacher leaf, 642/642
+candidate roundtrips per arm; ranking vectors reproduced
+without inference (85/78/80/87 heldout, 94/93/85/91
+calibration); U exclusion gate — U legal exactly 2/96 in all
+four heldout cells, and ALL 94 illegal actions in EVERY cell
+are param_index-only substitutions into training-covered
+cells (94/94/94/94, zero other-field errors); support matrix
+recomputed from corpus bytes — i_unprod I site_ordinal 1:
+pi {0: 276, 1: 394, 2: 0, 3: 0}; site_ordinal 0:
+{0: 1204, 1: 2267, 2: 261, 3: 257}.
+
+ONE joint L run (rc=0, wall 30.6 s post-load): legal-trie
+greedy, highest-logit allowed token, lowest-ID ties (zero tie events occurred — the tie law was
+never exercised, not verified), full per-position receipt; 768 decode rows + 384
+teacher-forced rows persisted and hashed (da2eee3a...) before
+endpoints; L legal 96/96 in all eight cells (derived, hard
+gate); U-COHERENCE CENSUS: 3226 (calibration) + 2140 (heldout)
+comparable positions, ZERO mismatches — the frozen U authority
+and this run's unmasked argmaxes agree everywhere they
+overlap.
+
+U -> L -> R, STRICT HELDOUT (teacher-match /96):
+  19001 CANONICAL:   0 -> 85 -> 85
+  19001 PARAM-FIRST: 0 -> 78 -> 78
+  20001 CANONICAL:   0 -> 75 -> 80
+  20001 PARAM-FIRST: 0 -> 87 -> 87
+
+CONTRAST 1 (U v L, frozen min-lik McNemar; registered
+degeneracy honored — U-only = 0 everywhere): LEGAL-CONSTRAINT-
+HELPS in all four cells; L-only 85/78/75/87; p = 5.2e-26 /
+6.6e-24 / 5.3e-23 / 1.3e-26.
+CONTRAST 2 (L v R, same law): NO-DIRECTIONAL-SEPARATION in all
+four cells — and in three of four the vectors are IDENTICAL
+state-for-state (L-only 0, R-only 0, both-correct = the full
+ranking set). The fourth cell is NOT equality: 20001 CANONICAL
+L 75 v R 80, R-only 5, L-only 0, p = .0625 — one discordant
+state short of firing, a sub-threshold trend toward R, carried
+as unresolved. L teacher-match is a strict SUBSET of R in
+every cell: local legal greedy never beats global scoring on a
+single state. LOCAL-GREEDY-ADVANTAGE was arithmetically
+unreachable given L-only = 0 and did not fire. Estimator note
+(inherited from the frozen authorities): heldout R is the
+total-sum k=9 law, calibration R is the mean-lp law — same
+full-sequence ordering at T=9 throughout, both reproduced
+exactly; strict-inequality top-1 (a tie counts as failure)
+everywhere.
+Eight inferential applications as frozen; multiplicity
+disclosure stands (moot for Contrast 1 at floor p; Contrast 2
+fired nowhere). No LOCAL-GREEDY-ADVANTAGE.
+
+FROZEN MAP: all four checkpoints book cell A — LEGALITY-
+SUPPORT DOMINANT.
+
+RECOVERY ANATOMY (the registered descriptive distinction, and
+the sharpest fact of the run): among heldout teacher-match
+successes, ZERO were FORCED-TEACHER. Every success is either
+PREVIOUS-PREFIX-DECIDED (exactly 29 per cell — the early-29
+structural group, where one candidate leaf remains before the
+withheld digit) or CHOSE-TEACHER (56/49/46/58): two or more
+legal tokens were allowed at the withheld digit and the model
+LOCALLY SELECTED the withheld teacher coordinate. Per the
+registered phrasing law: once impossible continuations are
+removed, the model can usually locally select the withheld
+teacher coordinate among multiple legal choices — exact legal
+support does not hand the model the answer; it removes the
+illegal trained-co-occurrence continuations that otherwise
+dominate. Withheld-digit anatomy (all cells, t2 and t3):
+n_prefix_divergent = 0 (every L trajectory reaches the
+withheld digit on the teacher prefix); the unconstrained top
+token is allowed in only 0-2 states per cell (it is the
+ILLEGAL pi 0/1 continuation elsewhere); teacher rank among
+allowed = 1 in the large majority (e.g. 19001-C t3: rank-1 in
+37/48 with 11 rank-2 — those 11 select a legal rival and
+fail; 48 + 37 = 85 = that cell's L total, so the
+withheld-digit choice fully determines the CANONICAL
+outcome).
+
+TEACHER-FORCED SOFTMAX RIDER (exact teacher prefix, withheld
+digit, descriptive): the teacher token sits at full-vocab rank
+3-6 (median rank 3-4; never rank 1-2 except one state) with
+median logprob -7.3 to -9.0 v the unconstrained top's -0.01 to
+-0.12; median probability mass on the training-covered pi 0/1
+low-digit atoms .998-.9996 v .0003-.0012 on the withheld pi
+2/3 atoms; the registered approximate gap (frozen-U chosen
+minus rank-raw gold teacher lp) medians (upper-median convention, sorted[n//2]) 8.52 / 7.50 /
+9.03 / 7.17 nats, identical to 4dp with the teacher-forced
+secondary source (max per-state source disagreement 8.6e-06). The unconstrained model is ~e^8 confident in the
+illegal substitution — and still ranks the teacher FIRST among
+legal alternatives at that same position in most states.
+
+CALIBRATION LADDER (descriptive rider): U -> L -> R =
+69 -> 94 -> 94, 85 -> 93 -> 93, 72 -> 85 -> 85, 67 -> 91 ->
+91: L equals R on covered support too, and legal support
+repairs the moderate covered generation gap as well (the
+covered errors were also mostly legality errors). L legal
+96/96 everywhere; median allowed-set size at first divergence
+1-2.
+
+READING (inside the frozen ceiling): on these four checkpoints
+and two known populations, the one-step ranking->generation
+gap is ~entirely an INTERNALIZED-LEGALITY gap. The models DO
+carry the discriminative information to select the withheld
+combination locally — they rank it first among legal
+continuations at the very position where free generation
+substitutes a trained co-occurrence — but nothing in
+unconstrained decoding confines them to the legal support, and
+~99.9% of their probability mass sits on illegal
+continuations there. Local greedy legal decoding loses nothing
+detectable v global full-sequence scoring (Contrast 2 null,
+one 5-state numerical deficit at p=.0625 fenced as
+unresolved). NOT established (frozen ceiling, verbatim):
+autonomous solve-rate; closed-loop performance; that training
+co-occurrence CAUSES the substitution; universal inability to
+compose unseen coordinates; that constrained decoding is a
+desirable deployment solution; whether beam/sampling would
+repair generation; population-level field-order superiority.
+
+REGISTERED-PRIOR ACCOUNTING: Case A at moderate confidence for
+CANONICAL arms — MATERIALIZED; Case B possible for PARAM-FIRST
+— did NOT materialize (both PF cells are exact L = R, cell A);
+LEGAL-CONSTRAINT-HURTS expected nowhere — did not occur
+(unreachable by the registered degeneracy); the arm-level
+clauses score descriptively only, as registered.
+
+NEXT SCIENTIFIC FORK (stated, NOT launched, Artin's call):
+(a) the legality gap is now the named object — the natural
+next instruments are a soft-support probe (does ANY
+finite-temperature sampling mass reach legal actions?) or a
+legality-training rung (does adding state-conditional
+legality signal to the diet close the U gap without candidate
+oracles?); (b) CLOSED-LOOP-1 remains gated behind the
+standing assessment; (c) PARAM-MIDDLE remains unbuilt. No
+successor executes under this GO.
+
+FENCES. Mac/mps (no bit-exact rerun precondition; hashed raws
+are the record; the U-coherence census's 0/5366 mismatches is
+THIS run's measurement, not a determinism claim); known-set
+populations; four single-realization checkpoints, seeds never
+pooled; calibration ladder descriptive, zero inferential
+applications; recovery classification and all anatomy
+descriptive, no causal claim; the trie is an ORACLE
+intervention — L numbers are never autonomous-competence
+claims; the prereg-text 963 miscount disclosed above and
+corrected from bytes; receipts force-added small-text (qual, receipt, riders); the
+3.1 MB raw_trie_decode.jsonl stays UNTRACKED per logs doctrine
+and is anchored by raw_sha in the tracked receipt; dual audit (fresh-context
+instrument verifier + post-run independent raw reconstruction)
+before booking; every claim grounded in THIS run's tool
+output.

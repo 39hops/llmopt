@@ -1,0 +1,372 @@
+{
+ "calibration_ladder_descriptive": {
+  "19001|CANONICAL": {
+   "U": 69,
+   "L": 94,
+   "R": 94,
+   "L_legal": 96,
+   "teacher_unique_steps": 701,
+   "median_allowed_at_first_divergence": 1
+  },
+  "19001|PARAM_FIRST": {
+   "U": 85,
+   "L": 93,
+   "R": 93,
+   "L_legal": 96,
+   "teacher_unique_steps": 701,
+   "median_allowed_at_first_divergence": 2
+  },
+  "20001|CANONICAL": {
+   "U": 72,
+   "L": 85,
+   "R": 85,
+   "L_legal": 96,
+   "teacher_unique_steps": 701,
+   "median_allowed_at_first_divergence": 1
+  },
+  "20001|PARAM_FIRST": {
+   "U": 67,
+   "L": 91,
+   "R": 91,
+   "L_legal": 96,
+   "teacher_unique_steps": 701,
+   "median_allowed_at_first_divergence": 2
+  }
+ },
+ "withheld_digit_anatomy": {
+  "19001|CANONICAL": {
+   "t2": {
+    "N": 48,
+    "n_prefix_divergent": 0,
+    "unmasked_top_allowed": 0,
+    "allowed_size_hist": {
+     "1": 20,
+     "2": 21,
+     "3": 7
+    },
+    "teacher_rank_allowed_hist": {
+     "1": 48
+    },
+    "teacher_unique": 20,
+    "selected_eq_teacher": 48,
+    "leaves_before_hist": {
+     "1": 20,
+     "2": 21,
+     "3": 7
+    },
+    "leaves_after_hist": {
+     "1": 48
+    }
+   },
+   "t3": {
+    "N": 48,
+    "n_prefix_divergent": 0,
+    "unmasked_top_allowed": 2,
+    "allowed_size_hist": {
+     "3": 11,
+     "2": 28,
+     "1": 9
+    },
+    "teacher_rank_allowed_hist": {
+     "2": 11,
+     "1": 37
+    },
+    "teacher_unique": 9,
+    "selected_eq_teacher": 37,
+    "leaves_before_hist": {
+     "3": 11,
+     "2": 28,
+     "1": 9
+    },
+    "leaves_after_hist": {
+     "1": 48
+    }
+   }
+  },
+  "19001|PARAM_FIRST": {
+   "t2": {
+    "N": 48,
+    "n_prefix_divergent": 0,
+    "unmasked_top_allowed": 0,
+    "allowed_size_hist": {
+     "1": 20,
+     "2": 21,
+     "3": 7
+    },
+    "teacher_rank_allowed_hist": {
+     "1": 40,
+     "2": 8
+    },
+    "teacher_unique": 20,
+    "selected_eq_teacher": 40,
+    "leaves_before_hist": {
+     "1": 20,
+     "2": 21,
+     "3": 7
+    },
+    "leaves_after_hist": {
+     "1": 48
+    }
+   },
+   "t3": {
+    "N": 48,
+    "n_prefix_divergent": 0,
+    "unmasked_top_allowed": 2,
+    "allowed_size_hist": {
+     "3": 11,
+     "2": 28,
+     "1": 9
+    },
+    "teacher_rank_allowed_hist": {
+     "2": 10,
+     "1": 38
+    },
+    "teacher_unique": 9,
+    "selected_eq_teacher": 38,
+    "leaves_before_hist": {
+     "3": 11,
+     "2": 28,
+     "1": 9
+    },
+    "leaves_after_hist": {
+     "1": 48
+    }
+   }
+  },
+  "20001|CANONICAL": {
+   "t2": {
+    "N": 48,
+    "n_prefix_divergent": 0,
+    "unmasked_top_allowed": 0,
+    "allowed_size_hist": {
+     "1": 20,
+     "2": 21,
+     "3": 7
+    },
+    "teacher_rank_allowed_hist": {
+     "1": 45,
+     "2": 3
+    },
+    "teacher_unique": 20,
+    "selected_eq_teacher": 45,
+    "leaves_before_hist": {
+     "1": 20,
+     "2": 21,
+     "3": 7
+    },
+    "leaves_after_hist": {
+     "1": 48
+    }
+   },
+   "t3": {
+    "N": 48,
+    "n_prefix_divergent": 0,
+    "unmasked_top_allowed": 2,
+    "allowed_size_hist": {
+     "3": 11,
+     "2": 28,
+     "1": 9
+    },
+    "teacher_rank_allowed_hist": {
+     "2": 14,
+     "1": 30,
+     "3": 4
+    },
+    "teacher_unique": 9,
+    "selected_eq_teacher": 30,
+    "leaves_before_hist": {
+     "3": 11,
+     "2": 28,
+     "1": 9
+    },
+    "leaves_after_hist": {
+     "1": 48
+    }
+   }
+  },
+  "20001|PARAM_FIRST": {
+   "t2": {
+    "N": 48,
+    "n_prefix_divergent": 0,
+    "unmasked_top_allowed": 0,
+    "allowed_size_hist": {
+     "1": 20,
+     "2": 21,
+     "3": 7
+    },
+    "teacher_rank_allowed_hist": {
+     "1": 48
+    },
+    "teacher_unique": 20,
+    "selected_eq_teacher": 48,
+    "leaves_before_hist": {
+     "1": 20,
+     "2": 21,
+     "3": 7
+    },
+    "leaves_after_hist": {
+     "1": 48
+    }
+   },
+   "t3": {
+    "N": 48,
+    "n_prefix_divergent": 0,
+    "unmasked_top_allowed": 2,
+    "allowed_size_hist": {
+     "3": 11,
+     "2": 28,
+     "1": 9
+    },
+    "teacher_rank_allowed_hist": {
+     "2": 9,
+     "1": 39
+    },
+    "teacher_unique": 9,
+    "selected_eq_teacher": 39,
+    "leaves_before_hist": {
+     "3": 11,
+     "2": 28,
+     "1": 9
+    },
+    "leaves_after_hist": {
+     "1": 48
+    }
+   }
+  }
+ },
+ "recovery_classification": {
+  "19001|CANONICAL": {
+   "PREVIOUS_PREFIX_DECIDED": 29,
+   "CHOSE_TEACHER": 56
+  },
+  "19001|PARAM_FIRST": {
+   "PREVIOUS_PREFIX_DECIDED": 29,
+   "CHOSE_TEACHER": 49
+  },
+  "20001|CANONICAL": {
+   "PREVIOUS_PREFIX_DECIDED": 29,
+   "CHOSE_TEACHER": 46
+  },
+  "20001|PARAM_FIRST": {
+   "PREVIOUS_PREFIX_DECIDED": 29,
+   "CHOSE_TEACHER": 58
+  }
+ },
+ "teacher_forced_softmax": {
+  "19001|CANONICAL": {
+   "teacher_rank_full_hist": {
+    "3": 53,
+    "4": 37,
+    "5": 6
+   },
+   "teacher_rank_atoms_hist": {
+    "3": 53,
+    "4": 43
+   },
+   "median_teacher_lp": -8.5844,
+   "median_top_lp": -0.046,
+   "median_u_chosen_minus_teacher_approx": 8.518,
+   "median_u_chosen_minus_teacher_tf_secondary": 8.518,
+   "median_mass_covered_pi01": 0.999346,
+   "median_mass_heldout_pi23": 0.000384
+  },
+  "19001|PARAM_FIRST": {
+   "teacher_rank_full_hist": {
+    "3": 65,
+    "4": 30,
+    "2": 1
+   },
+   "teacher_rank_atoms_hist": {
+    "3": 66,
+    "4": 29,
+    "2": 1
+   },
+   "median_teacher_lp": -7.5609,
+   "median_top_lp": -0.0396,
+   "median_u_chosen_minus_teacher_approx": 7.499,
+   "median_u_chosen_minus_teacher_tf_secondary": 7.499,
+   "median_mass_covered_pi01": 0.998495,
+   "median_mass_heldout_pi23": 0.001165
+  },
+  "20001|CANONICAL": {
+   "teacher_rank_full_hist": {
+    "3": 46,
+    "4": 33,
+    "6": 5,
+    "5": 12
+   },
+   "teacher_rank_atoms_hist": {
+    "3": 46,
+    "4": 38,
+    "6": 4,
+    "5": 8
+   },
+   "median_teacher_lp": -9.0048,
+   "median_top_lp": -0.0122,
+   "median_u_chosen_minus_teacher_approx": 9.0312,
+   "median_u_chosen_minus_teacher_tf_secondary": 9.0312,
+   "median_mass_covered_pi01": 0.999646,
+   "median_mass_heldout_pi23": 0.000269
+  },
+  "20001|PARAM_FIRST": {
+   "teacher_rank_full_hist": {
+    "3": 37,
+    "4": 40,
+    "5": 18,
+    "6": 1
+   },
+   "teacher_rank_atoms_hist": {
+    "3": 37,
+    "4": 40,
+    "5": 18,
+    "6": 1
+   },
+   "median_teacher_lp": -7.3192,
+   "median_top_lp": -0.1212,
+   "median_u_chosen_minus_teacher_approx": 7.1745,
+   "median_u_chosen_minus_teacher_tf_secondary": 7.1745,
+   "median_mass_covered_pi01": 0.997943,
+   "median_mass_heldout_pi23": 0.001205
+  }
+ },
+ "u_exclusion": {
+  "19001|CANONICAL": {
+   "U_legal": 2,
+   "U_illegal_param_index_only": 94,
+   "U_illegal_other": 0,
+   "U_illegal_pi_in_trained_cell": 94
+  },
+  "19001|PARAM_FIRST": {
+   "U_legal": 2,
+   "U_illegal_param_index_only": 94,
+   "U_illegal_other": 0,
+   "U_illegal_pi_in_trained_cell": 94
+  },
+  "20001|CANONICAL": {
+   "U_legal": 2,
+   "U_illegal_param_index_only": 94,
+   "U_illegal_other": 0,
+   "U_illegal_pi_in_trained_cell": 94
+  },
+  "20001|PARAM_FIRST": {
+   "U_legal": 2,
+   "U_illegal_param_index_only": 94,
+   "U_illegal_other": 0,
+   "U_illegal_pi_in_trained_cell": 94
+  }
+ },
+ "support_matrix": {
+  "i_unprod_I_site1_term_index": {
+   "0": 276,
+   "1": 394,
+   "2": 0,
+   "3": 0
+  },
+  "i_unprod_I_site0_term_index": {
+   "0": 1204,
+   "1": 2267,
+   "2": 261,
+   "3": 257
+  }
+ }
+}

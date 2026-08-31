@@ -2991,6 +2991,22 @@ MATH-CYBER-1 SVP-ACTION-COVERAGE-DESK-0 — outcome-independent census of exact 
 - `band_census(path, n_expected, train_tup, train_txt)`
 - `main()`
 
+### scratch/mathworld1_svpdcl.py
+MATH-CYBER-1 SVP-DECODE-CONSTRAINT-LADDER — LEGAL-TRIE GREEDY (L) instrument, the ONE new measurement of the frozen U -> L -> R ladder (prereg DECODE-CONSTRAINT-LADDER-PREREG-0, commit 3b5f1742). U and R are FROZEN AUTHORITIES, never rerun.
+
+- `gate(cond, msg)`
+- `fsha(p)`
+- `ctup(c)`
+- `serialize(arm, fc)` — Candidate serialization from the stored factor_code.
+- `load_pop(which)`
+- `rank_vectors()`
+- `load_u()` — Frozen U authority: per (seed, arm, pop, block).
+- `u_exclusion_gate(u, popB)`
+- `support_matrix()`
+- `qual_main()`
+- `run_main()`
+- `main()`
+
 ### scratch/mathworld1_svpdesign.py
 MATH-CYBER-1 STATE-v-PROGRAM DESIGN-0 — design-qualification smoke harness. Verifies the five frozen design mechanisms with ZERO training: (1) frozen-init determinism + pin, (2) target-blind batch-plan determinism, (3) sequence-cap census, (4) prefix-masked per-row-normalized CE arithmetic v an independent hand loop, (5) one forward pass per arm (no backward, no optimizer).
 
