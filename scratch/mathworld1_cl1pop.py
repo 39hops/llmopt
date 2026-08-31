@@ -154,25 +154,37 @@ def build_exclusion():
     gate(raw == 73324, "TRAIN ROWS")
     gate(len(curs) == 58988, f"TRAIN PARENTS {len(curs)}")
     cats["A_training_parents"] = (curs, raw)
-    # B: eval roots (re-materialized) + decision parents
+    # B: eval roots + decision parents. Root identity comes
+    # from FROZEN BYTES where they exist (decision_index 0 cur
+    # of solved episodes — the decisions artifacts only carry
+    # solved-episode decisions); only the unsolved episodes'
+    # roots are re-materialized fork-isolated, at a long
+    # timeout (first attempt at 120 s hung on svpeval3 seed
+    # 9816, the named make_integrate hang class — disclosed).
     ev = set()
     raw_b = 0
     n_roots = 0
     for name, d in EVAL_DIRS.items():
-        for line in open(Path(d) / "episodes.jsonl"):
-            r = json.loads(line)
-            res, fm = materialize(r["level"], r["seed"],
-                                  timeout=120.0)
-            gate(res is not None,
-                 f"EVAL ROOT REBUILD {name} {r['seed']} {fm}")
-            ev.add(res["cur"])
-            n_roots += 1
-            raw_b += 1
+        dec0 = {}
         for line in open(Path(d) / "decisions.jsonl"):
             r = json.loads(line)
             if "cur" in r:
                 ev.add(r["cur"])
                 raw_b += 1
+                if r.get("decision_index") == 0:
+                    dec0[r["episode_id"]] = r["cur"]
+        for line in open(Path(d) / "episodes.jsonl"):
+            r = json.loads(line)
+            if r["episode_id"] in dec0:
+                n_roots += 1   # root already in ev via dec0
+                continue
+            res, fm = materialize(r["level"], r["seed"],
+                                  timeout=600.0)
+            gate(res is not None,
+                 f"EVAL ROOT REBUILD {name} {r['seed']} {fm}")
+            ev.add(res["cur"])
+            n_roots += 1
+            raw_b += 1
     gate(n_roots == 240, f"EVAL ROOTS {n_roots}")
     cats["B_eval_roots_and_parents"] = (ev, raw_b)
     # C: SVP state blocks + challenge material
