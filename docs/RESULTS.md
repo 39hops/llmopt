@@ -58117,3 +58117,252 @@ logprob decomposition, not a causal mechanism; every number
 recomputed by an independent fresh-context implementation
 before booking; PARAM-MIDDLE and FREE-ACTION-1 both remain
 un-launched — next experiment selection is Artin's call.
+
+## PRE-REG MATH-CYBER-1-SVP-FREE-ACTION-1-PREREG-0: does frozen legal-set sibling-ranking correctness transport to unconstrained ONE-STEP greedy ActionProgram generation, on the four existing FIELD-ORDER checkpoints and the two frozen 96-state populations — primary endpoint = paired state-level ranking-top1 v greedy TEACHER-MATCH per checkpoint on strict heldout, symmetric exact McNemar at alpha .05; PREREG ONLY — no checkpoint loaded, no token generated, nothing trained or scored under this GO (2026-08-30, Mac)
+
+MOTIVATION (booked): FIELD-BLOCK-CREDIT-DESK-0 (RESULTS
+L57971) exposed a concrete validity threat to the standing
+sibling-ranking assay — full-sequence ranking can recover a
+candidate that trails at an early field boundary via later
+compensating likelihood (seed-20001 PARAM-FIRST: 29 at k1 ->
+17 at end-PARAM k3 -> 87 at end-RULE k5; 70/96 states
+RULE-RESCUED under the desk's frozen definition), while greedy
+generation commits tokens irreversibly. That desk does NOT
+show greedy generation fails; it motivates measuring it. This
+is a ONE-STEP transport test only — no recursive transition,
+no solve-rate claim.
+
+CHECKPOINTS (exactly four, frozen, full pins from booked birth
+receipts; no further training or adaptation):
+  19001 CANONICAL   ae0a86e027d8b0ca1cd7a97a83a6927d326da5bd
+                    34258910b1b81d3492322e1d
+  19001 PARAM-FIRST 0fe38f785f68165e868c54fff482844ea4b2476c
+                    737f2e4af50990ece6df390f
+  20001 CANONICAL   0a841a5f2a43b6f64b0dac8259c26fd79961e6ab
+                    91359a54be9c2582815b3e34
+  20001 PARAM-FIRST b7198ff2e7b903ab5ed075fe947cb29142c5790e
+                    c84831434c53a598e466c322
+
+POPULATIONS (frozen, no new states, no resampling, no
+post-generation filtering): A = the 96 covered calibration
+states (covered_calibration.jsonl af1a4aa1...); B = the 96
+strict heldout primary states
+(logs/mathworld1/svpdiet3/heldout_test16.jsonl a3f6103b...,
+the site_role heldout-I1 rows of the 192-row artifact). The heldout population is
+KNOWN and previously ranking-scored: this is a prospective new
+MEASUREMENT on a known population, never a fresh-population
+confirmation.
+
+PROMPT (the exact standing prefix, byte-identical to training
+and every ranking run): "Current: {cur}\nHints: none\nStep: ".
+No candidates shown, no grammar instruction, generation starts
+immediately after the prefix.
+
+GREEDY GENERATION LAW (frozen): autoregressive argmax over the
+FULL 340-token model vocabulary at every position; exact
+numerical logit ties resolve to the LOWEST token ID (the
+prospective deterministic tie law) and EVERY tie is counted
+and reported; no sampling, no beam, no candidate rescoring, no
+grammar/legality mask, no restriction to code tokens, no
+teacher forcing, no rejection/retry, no token repair.
+Generation stops at the FIRST of: EOS emitted, or 9
+continuation tokens emitted. EOS is never forced at position
+9. (The cap equals the target length, so over-generation
+LENGTH beyond 9 is unmeasurable by construction — 'no EOS
+within the cap' is a syntax failure, never evidence about
+generation length.) The trained target grammar is exactly 8 payload tokens +
+EOS (payload alphabet = token IDs 332..339 = CODE_BASE+0..7;
+EOS id 1): early EOS fails exact syntax; no EOS within the
+9-token cap fails exact syntax; any non-code payload token
+fails exact syntax. The instrument PRESERVES these failures.
+
+ARM-SPECIFIC DECODING (frozen codecs, single source):
+CANONICAL payload decodes under the shipped FACTOR codec
+(factor_decode). PARAM-FIRST applies the frozen INV =
+[3,4,5,6,7,0,1,2] to recover the canonical payload and decodes
+with the SAME semantic factor_decode (pf_decode from the
+qualified svpforder module; the PARAM-FIRST validity
+constraint IS the post-INV range predicate — no separate PF
+grammar exists). IN-DOMAIN is the named FACTOR DECODE RANGE
+predicate of factor_decode: r < 36, kind < 2, pk < 3, o < 64,
+x < 64. INSTRUMENT LAW (blocker fix, registered): the shipped
+factor_decode range gate raises SystemExit on out-of-range
+symbols — reachable for the FIRST time under free generation
+(constrained ranking only ever saw valid encodings). The
+generation instrument therefore evaluates level 3 as a CAUGHT
+PREDICATE (a pure range pre-check, or an explicit SystemExit
+wrapper); a decode failure records SEMANTIC-DECODE = 0 and the
+run CONTINUES — a run abort on an invalid generation is an
+instrument bug, never a result. All arm comparisons use
+SEMANTIC ACTION identity (the decoded 5-tuple), never raw
+bytes.
+
+METRIC FUNNEL (every state x checkpoint x population; a
+strict funnel through level 4; levels 5 and 6 state their own
+prerequisites explicitly):
+  1 EOS-WELL-FORMED: exactly 9 tokens, token 9 is EOS, no
+    earlier EOS.
+  2 SYNTAX-VALID: 1 AND positions 1..8 all in the code
+    alphabet.
+  3 SEMANTIC-DECODE: 2 AND the 8 symbols decode under the
+    arm codec to one in-domain canonical tuple.
+  4 LEGAL-ACTION: 3 AND the decoded tuple is a member of the
+    state's exact frozen candidate set.
+  5 TEACHER-MATCH: 3 AND the decoded tuple equals the frozen
+    teacher-selected action exactly — THE PRIMARY
+    free-generation correctness endpoint. (Reported both as
+    the funnel cell and as the raw /96 rate; a TEACHER-MATCH
+    is necessarily LEGAL-ACTION since every teacher action is
+    in its candidate set — verified at qualification.)
+  6 REPLAY-VALID: the generated semantic ActionProgram binds
+    and reproduces its deterministic accepted child under the
+    frozen engine replay law — the named entry point is the
+    replay_core lineage (scratch/mathworld1_axfixture.py),
+    exact symbol confirmed at instrument qualification. REPLAY never redefines
+    TEACHER-MATCH (no child-equivalence substitution).
+Complete funnel counts for every checkpoint x population.
+
+PRIMARY TRANSPORT COMPARISON (per checkpoint, STRICT HELDOUT
+only, paired state-level vectors; seeds NEVER pooled):
+  R_i = the existing frozen full-sequence ranking top-1
+    correctness for that checkpoint (k=9 vectors derived from
+    the booked raw artifacts: 19001 ee0319f4..., 20001
+    18f27b66... — reproducible WITHOUT new inference).
+  G_i = prospective greedy TEACHER-MATCH.
+FROZEN SYMMETRIC LAW: RANKING-ADVANTAGE iff #(R=1,G=0) >
+#(R=0,G=1) AND exact two-sided McNemar p < .05;
+GENERATION-ADVANTAGE symmetric; else
+NO-DIRECTIONAL-SEPARATION (never equivalence). Report per
+checkpoint: ranking /96, generation /96, R-only, G-only,
+both-correct, both-wrong, exact p. Four independent applications, four independent outcomes;
+MULTIPLICITY ON THE RECORD: four primary tests (plus four
+secondary field-order tests) at per-test alpha .05 — under a
+global null the chance of at least one primary fire is ~0.19;
+any single firing cell is reported as one of four, never as
+'the' result, and no family-wise correction is applied or
+claimed.
+
+COVERED-CALIBRATION RIDER: the same funnel on population A per
+checkpoint (ranking reference vectors from the booked
+calibration SCORE artifacts — derived per-candidate score
+files, not token-level raws: 19001 deb7f59f..., 20001
+5df6ee83...) — a
+SUPPORT/COMPETENCE rider, not part of the primary transport
+verdict; no posthoc calibration gate may be invented after
+outputs are seen. Interpretation fork registered now: if free
+generation fails already on covered calibration, the diagnosis
+is basic autoregressive-generation competence, and heldout
+transport numbers are reported but not attributed to strict
+recombination.
+
+FIELD-ORDER FREE-GENERATION RIDER (secondary, per seed and
+population): CANONICAL v PARAM-FIRST TEACHER-MATCH under the
+same paired symmetric law (C-ADVANTAGE / PF-ADVANTAGE /
+NO-DIRECTIONAL-SEPARATION). Cannot alter the primary
+transport verdict; no pooling across seeds.
+
+RESCUE-ANATOMY PROSPECTIVE RIDER (POPULATION B ONLY — the
+desk defines no groups on the calibration population; its
+pinned raws are the two heldout artifacts). The desk receipt
+(logs/mathworld1/svpfbcredit/desk.json d190cf0c..., census
+7d8343b3...) freezes the group DEFINITIONS and COUNTS but
+carries no per-state memberships; the run stage RE-DERIVES
+memberships mechanically from the pinned raw artifacts
+(ee0319f4/18f27b66) under the desk's verbatim famD definitions
+and frozen blocks map (deterministic, so still frozen), and
+the re-derived per-group counts MUST reproduce the desk's
+counts exactly as a qualification gate — any mismatch halts
+before any generation. Groups: EARLY-29, RELOCATED-67, and
+per-checkpoint PARAM-CORRECT / PARAM-DAMAGED / RULE-RESCUED /
+RULE-LOST / FINAL-RESCUED (all five desk-defined famD groups;
+RULE-RESCUED and RULE-LOST are PARAM-FIRST-only by definition,
+so CANONICAL rider rows carry PARAM-CORRECT and FINAL-RESCUED
+only; RULE-LOST is 0 in every existing cell and its rows may
+be empty). These groups OVERLAP and do not partition the 96
+states (e.g. 20001 PF: 17+21+70 > 96; PARAM-DAMAGED and
+RULE-RESCUED are both subsets of not-top1-at-end-PARAM) —
+rider rows never sum to 96. Per group report generation
+syntax-valid / semantic-decode / legal-action / teacher-match
+counts. KEY MOTIVATED RIDER: seed-20001
+PARAM-FIRST RULE-RESCUED — among states where ranking becomes
+correct only after later RULE likelihood, does greedy
+generation preserve teacher-match? Prospective measurement,
+NOT randomized causal evidence; a worse RULE-RESCUED cell
+licenses no mechanism claim by itself.
+
+PREFIX-COMMITMENT RECEIPT: per generated sequence, retain all
+tokens and compute first_error_position = smallest t with
+emitted token_t != teacher token_t (NONE if all 8 payload
+tokens + EOS match). Histogram over positions 1..9 per
+checkpoint x population, plus the field map (CANONICAL RULE
+1-2 / SITE 3-5 / PARAM 6-8 / EOS 9; PARAM-FIRST PARAM 1-3 /
+RULE 4-5 / SITE 6-8 / EOS 9). RANKING-RESCUE v
+GREEDY-COMMITMENT rider: for the frozen ranking-rescued
+groups, count generations whose first error falls BEFORE the
+field that rescued the candidate in ranking (e.g., PF-20001
+RULE-RESCUED states with first_error_position in PARAM
+positions 1-3). first_error_position is never equated with
+causal importance; "rescued" is never redefined
+retrospectively.
+
+INSTRUMENT QUALIFICATION (all BEFORE any checkpoint access;
+the generation instrument is COMMITTED before any model load):
+verify the four checkpoint pins, both population pins, teacher
+semantic tuples, candidate legal sets, standing prompt bytes,
+both codecs + PERM/INV, the 8+EOS grammar constants, teacher
+serialization roundtrips in both arms, every frozen teacher
+action legal AND replay-valid under the engine, and
+reproduction of the existing ranking correctness vectors from
+the booked raw artifacts WITHOUT new inference. Fresh-context
+verifier audits the committed instrument against THIS prereg
+before the run GO.
+
+RAW-FIRST: persist before any summary — state ID, checkpoint/
+arm/seed, every generated token ID, the per-step chosen-token
+logprob (and tie count), EOS position, all funnel
+classifications, decoded tuple when available, frozen teacher
+tuple, first_error_position. Hash the raw artifact before
+summaries.
+
+REGISTERED PRIOR (house, on the record before any token
+exists): covered-calibration greedy teacher-match HIGH for all
+four checkpoints (moderate-to-high confidence; terminal train
+losses ~.016 on exactly this grammar); heldout RANKING-
+ADVANTAGE for seed-20001 PARAM-FIRST specifically (moderate
+confidence — the 70-state rescue anatomy predicts greedy
+divergence inside the fronted PARAM block); CANONICAL arms
+expected closer to their ranking totals (low-to-moderate
+confidence); no directional prior for 19001 PARAM-FIRST.
+Wrong-in-public is the point.
+
+CLAIM LAW (frozen ceiling): this rung can establish ONLY
+whether sibling-ranking correctness transports to one-step
+greedy generation on these four checkpoints and two fixed
+known populations. NOT establishable: closed-loop solve-rate;
+search performance; robustness under generated-state
+distribution shift; broad calculus generalization; universal
+ranking/generation gaps; that RULE rescue CAUSES greedy
+failure; that any field order is universally superior.
+Registered interpretation fork: strong RANKING-ADVANTAGE with
+first errors landing before the ranking-rescue fields => the
+sibling-ranking assay overstates one-step autonomous
+action-generation competence for that checkpoint/regime;
+ranking ~ generation => the late-rescue concern is weakened
+despite the desk anatomy; calibration-level generation failure
+=> diagnose basic generation competence first. No outcome
+licenses closed-loop execution.
+
+ORDER: freeze (this entry) -> fresh-context prereg audit ->
+commit/push/census -> STOP. Next separate GO if clean:
+FREE-ACTION-1 INSTRUMENT-QUAL + ONE JOINT GENERATION RUN over
+the four checkpoints and both populations. Nothing is
+generated under this GO; no checkpoint was loaded.
+
+FENCES. PREREG ONLY; Mac/mps at run time (mps float is
+run-level nondeterministic — NO bit-exact rerun precondition
+is registered; the hashed raw artifact is the record);
+known-set
+populations; per-checkpoint reporting, seeds never pooled;
+riders never alter primary endpoints; PARAM-MIDDLE remains
+unbuilt and unauthorized; every future claim grounded in its
+own run's tool output.
