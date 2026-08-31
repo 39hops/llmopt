@@ -58366,3 +58366,182 @@ populations; per-checkpoint reporting, seeds never pooled;
 riders never alter primary endpoints; PARAM-MIDDLE remains
 unbuilt and unauthorized; every future claim grounded in its
 own run's tool output.
+
+## VERDICT MATH-CYBER-1-SVP-FREE-ACTION-1: RANKING-ADVANTAGE on ALL FOUR checkpoints, at the maximum possible separation — strict-heldout greedy free generation scores 0/96 TEACHER-MATCH on every checkpoint (ranking 85/78/80/87; discordants 85/0, 78/0, 80/0, 87/0; all exact p < 1e-23) while syntax and semantic decode stay PERFECT (96/96 everywhere) and covered-calibration generation stays healthy (69/85/72/67): every single heldout generation emits a syntactically flawless, decodable action that substitutes, at the withheld combination's site, the param_index values that CO-OCCURRED WITH THAT SITE in training (0 or 1; zero training rows pair site_ordinal 1 with the withheld 2 or 3), diverging exactly at the withheld coordinate's low-digit position (8 CANONICAL / 3 PARAM-FIRST, all 96, all four cells) — the sibling-ranking assay overstates one-step autonomous teacher-action generation for the strict-recombination regime on these checkpoints, and the FIELD-BLOCK-CREDIT validity threat is CONFIRMED in its strongest form (2026-08-31, Mac)
+
+Per PRE-REG MATH-CYBER-1-SVP-FREE-ACTION-1-PREREG-0
+(e87471f6). Instrument scratch/mathworld1_svpfreeact.py
+committed BEFORE any checkpoint access (b1efd859;
+fresh-context verifier blocker — replay cache keyed by
+(population, block_id) since all 96 block_ids collide across
+populations with different states, plus a hard 192
+teacher-replay gate — folded pre-run at b0ed54fe; verifier
+otherwise PASS on the full prereg list). QUALIFICATION ran
+first and green with NO checkpoint touched: 12 pins + 4
+checkpoint pins; 96+96 population structure; 384 teacher
+serialization roundtrips both arms; 192 teacher actions legal
+AND replay-valid (engine resolution reproduces the labeled
+child srepr via successors on every (population, state);
+level 6 used an IN-INSTRUMENT transcription of the
+replay_core resolution logic, not the axfixture symbol itself
+— axfixture is not sha-pinned in the receipt; the post-run
+audit independently reproduced 192/192 replays);
+ranking reference vectors reproduced WITHOUT inference
+(heldout 85/78/80/87, calibration 94/93/85/91, the calibration
+recompute cross-checked against every stored top1 flag);
+rescue-group memberships re-derived from the pinned raws under
+the desk's verbatim famD definitions with EXACT count
+reproduction (all four cells). ONE joint generation run,
+rc=0, wall 34.0 s post-load: greedy argmax over the full
+340-token vocabulary, lowest-token-ID tie law (ZERO tie events
+occurred), stop at EOS or 9 tokens, EOS never forced, no
+masks/beam/sampling/retry/repair; 768 = 4 x 2 x 96 raw
+generation rows persisted and hashed
+(a04f13ba...) BEFORE any endpoint; malformed generations were
+results by law (none occurred — the caught-predicate decode
+path was armed but never needed on syntax-valid rows).
+
+GENERATION FUNNEL, STRICT HELDOUT (per checkpoint, /96):
+  EOS-well-formed 96, syntax-valid 96, semantic-decode 96 in
+  ALL FOUR cells; legal-action 2/2/2/2; TEACHER-MATCH 0/0/0/0;
+  legal-nonteacher 2/2/2/2; replay-binds 2 per cell (the
+  substituted actions almost never resolve to an accepted
+  child; the 2 legal rows are the SAME two blocks in all
+  eight cells — t3-OUT-04/05, where the pi=1 substitution
+  happens to land on a legal distractor: not a partial
+  success).
+GENERATION FUNNEL, COVERED CALIBRATION (per checkpoint, /96):
+  19001 CANONICAL: legal 71, teacher 69, legal-nonteacher 2
+  19001 PARAM-FIRST: legal 88, teacher 85, legal-nonteacher 3
+  20001 CANONICAL: legal 83, teacher 72, legal-nonteacher 11
+  20001 PARAM-FIRST: legal 72, teacher 67, legal-nonteacher 5
+  (EOS/syntax/decode 96/96/96 in all four.)
+
+PRIMARY HELDOUT TRANSPORT (frozen symmetric law, four
+independent applications, seeds never pooled):
+  19001 CANONICAL:   R 85 v G 0, R-only 85, G-only 0,
+    both-wrong 11, p = 5.2e-26 => RANKING-ADVANTAGE
+  19001 PARAM-FIRST: R 78 v G 0, 78/0, both-wrong 18,
+    p = 6.6e-24 => RANKING-ADVANTAGE
+  20001 CANONICAL:   R 80 v G 0, 80/0, both-wrong 16,
+    p = 1.7e-24 => RANKING-ADVANTAGE
+  20001 PARAM-FIRST: R 87 v G 0, 87/0, both-wrong 9,
+    p = 1.3e-26 => RANKING-ADVANTAGE
+The preregistered multiplicity disclosure stands (four tests
+at .05, ~.19 one-fire chance under a global null) and is moot
+at these p values: all four fired, identically, at floor.
+
+SUBSTITUTION ANATOMY (descriptive, from the raw rows; the
+audit sharpened it): on heldout, rule / site_kind /
+site_ordinal / param_kind are generated CORRECTLY 96/96 in
+all four cells — the failure is a PURE param_index
+substitution, single-field. The teacher pi is the withheld 2
+or 3 (48+48 per cell); the generated pi is 0 or 1 (counts
+34/62, 1/95, 23/73, 2/94). NOT 'untrained values': pi 2/3
+appear in training and the model emits them correctly on
+covered calibration (whose teachers are exactly (i_unprod, I,
+0, term_index, 2/3)); the corpus simply contains ZERO rows
+pairing site_ordinal 1 with pi 2/3 (v 276+394 rows pairing it
+with 0/1). The model reproduces the site and substitutes the
+param value that co-occurred with that site in training.
+first_error_position is the withheld coordinate's LOW DIGIT
+position in ALL 96 states of ALL FOUR cells: position 8
+(CANONICAL, PARAM block) and position 3 (PARAM-FIRST, fronted
+PARAM block). The prefix up to that position matches the
+teacher exactly. Greedy generation never once emits the
+withheld combination it reliably ranks top-1.
+
+CENTRAL VALIDITY-THREAT CELL (seed-20001 PARAM-FIRST
+RULE-RESCUED, N = 70, the frozen group): greedy teacher-match
+0; greedy legal 0; first error in PARAM positions 1-3: 70/70;
+later: 0; no-error: 0; ranking-correct AND already
+irreversibly off the teacher prefix BEFORE the RULE block:
+70/70. The ranking-rescue mechanism named by the desk is
+exactly what generation cannot use: every state that ranking
+rescues after PARAM is already committed to a wrong PARAM
+token in greedy decode.
+
+FIELD-ORDER GENERATION RIDER (secondary): heldout degenerate
+(0 v 0 both seeds, NO-DIRECTIONAL-SEPARATION). Calibration:
+19001 PF-ADVANTAGE (C 69 v PF 85, discordants 4/20,
+p = .00154 — reported as ONE of four secondary tests at
+per-test alpha .05, no registered family-wise correction);
+20001 NO-DIRECTIONAL-SEPARATION (C 72 v PF 67, 25/20,
+p = .5515). Secondary only; single seed each;
+initialization-dependence of field-order effects (booked at
+stage 3) extends to covered free generation.
+
+FIRST-ERROR HISTOGRAMS: heldout — CANONICAL {8: 96},
+PARAM-FIRST {3: 96}, all four cells. Calibration — None
+69/85/72/67 with the remainder at the same positions ({8: 27},
+{3: 11}, {8: 24}, {3: 29}). No first error is causal; the
+histogram is a divergence location, not a mechanism.
+
+REGISTERED-PRIOR ACCOUNTING: calibration generation HIGH —
+PARTIALLY materialized (67-85/96: substantial in absolute
+terms but below every ranking reference, R-only 25/8/13/24 —
+a partial miss, and the registered calibration fork
+therefore engages); RANKING-ADVANTAGE specifically at
+20001 PARAM-FIRST — MATERIALIZED, but the house predicted a
+CONTRAST between checkpoints (CANONICAL arms "expected closer
+to their ranking totals") and that part was WRONG: the
+collapse is total and uniform across all four checkpoints; no
+directional prior was held for 19001 PF — it collapsed
+identically.
+
+READING (frozen interpretation forks, BOTH engaged): (a) the
+calibration fork engages PARTIALLY — generation sits below its
+ranking reference in ALL FOUR covered cells (R-only 25/8/13/24
+v G-only 0/0/0/0; the registered prior said calibration
+generation would be HIGH, and 67-85/96 is a partial miss), so
+per the registered fork the heldout 0/96 is NOT attributed
+purely to strict recombination — a general
+ranking-exceeds-generation gap exists on covered support too;
+(b) ranking materially exceeds generation while syntax/decode
+competence remains PERFECT, so the basic-language-production
+diagnosis does NOT apply. The two forks together: a moderate
+covered gap plus a TOTAL heldout collapse whose anatomy is the
+single withheld field. The registered conclusion
+sentence: the candidate-ranking assay OVERSTATES one-step
+autonomous teacher-action generation for the
+strict-recombination regime on all four checkpoints. Sharper
+(still within the ceiling): the compositional-generalization
+ability booked by every strict-heldout ranking verdict in this
+program is, on these four checkpoints, an ability to RANK the
+withheld combination when it is offered — not an ability to
+PRODUCE it. Both are real measurements; they measure different
+capabilities, and they dissociate completely here (75-87/96 v
+0/96 on the same states, same weights).
+
+CLAIM CEILING (frozen, verbatim scope): established ONLY for
+one-step greedy transport on these four checkpoints and two
+fixed known populations. NOT established: closed-loop
+solve-rate; search performance; behavior under generated-state
+distribution shift; broad calculus generalization; universal
+ranking/generation gaps; that RULE rescue CAUSES greedy
+failure (the 70/70 anatomy is consistent with it and is
+descriptive); that any field order is universally superior.
+Sampling, beam, or constrained decoding could behave
+differently and were deliberately out of scope. No successor
+experiment launches under this GO; next-step selection
+(CLOSED-LOOP-1 assessment v generation-gap work v nothing) is
+Artin's call — the registered fork points at
+policy/generation-gap work, since syntax/legal competence is
+high on covered support while the gap is specifically the
+withheld coordinate.
+
+FENCES. Mac/mps (no bit-exact rerun precondition; the hashed
+raw artifact is the record); known-set populations; four
+single-realization checkpoints, seeds never pooled; TEACHER-
+MATCH requires semantic-decode (level 3) per the frozen
+funnel; replay_valid mixes two sub-predicates by construction
+(binds-and-child-match for legal decodes, binds-only
+otherwise; replay_binds persisted separately); calibration
+rider descriptive, no verdict label, no posthoc gate;
+LEGAL-NONTEACHER is a diagnostic count, never a correctness
+redefinition; rescue-group rows overlap and never sum to 96;
+dual audit (fresh-context instrument verifier + post-run
+independent raw reconstruction) before booking; receipts
+force-added small-text (qual.json, groups.json, receipt.json,
+riders.json, raw_generations.jsonl); every claim grounded in
+THIS run's tool output.

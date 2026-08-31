@@ -3153,6 +3153,24 @@ MATH-CYBER-1 SVP-FIELD-ORDER-REPLICATION-MATERIALIZATION- INTEGRITY-BIRTH-20001 
 - `run(plan, rows_by_id, dev, init_sha, n_steps, tag)`
 - `main()`
 
+### scratch/mathworld1_svpfreeact.py
+MATH-CYBER-1 SVP-FREE-ACTION-1 — ONE-STEP greedy free- generation transport instrument (prereg FREE-ACTION-1-PREREG-0, commit e87471f6). Two modes:
+
+- `gate(cond, msg)`
+- `fsha(p)`
+- `ctup(c)`
+- `teacher_tokens(arm, tup)`
+- `safe_decode(arm, syms)` — Caught-predicate semantic decode (prereg blocker law):
+- `load_pop(which)`
+- `rank_vectors_held()` — Heldout k=9 pessimistic top-1 per (seed, arm, block) from
+- `rank_vectors_cal()`
+- `derive_groups()` — Re-derive rescue-group memberships from the pinned raws
+- `build_replay_cache(pops)` — One successors() call per (population, state) — block_ids
+- `resolve(parent, accepted, tup)` — replay_core resolution, verbatim logic; any failure ->
+- `qual_main()`
+- `run_main()`
+- `main()`
+
 ### scratch/mathworld1_svpgbirth.py
 MATH-CYBER-1 SVP-GRID-BIRTH-15001 — the frozen PAIRED FACTOR/HASH production birth over the GRID-DIET combined population (74,860 rows = 73,324 natural + 1,536 balanced covered-grid augmentation), one target-blind batch plan (7,020 updates), one frozen optimization law, ONE bit-identical shared vocab-340 init (seed 15001). ZERO evaluation scoring; this file has no path or string dependency on any evaluation artifact — the two frozen eval shas appear ONLY as opaque provenance literals copied into the receipt (EVAL_PROVENANCE below), never as paths, and nothing here opens, parses, or counts them.
 

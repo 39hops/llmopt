@@ -1,0 +1,249 @@
+{
+ "rescue_anatomy_popB": {
+  "19001|CANONICAL": {
+   "PARAM_CORRECT": {
+    "N": 85,
+    "eos_well_formed": 85,
+    "syntax_valid": 85,
+    "semantic_decode": 85,
+    "legal_action": 0,
+    "teacher_match": 0,
+    "legal_nonteacher": 0,
+    "first_error_hist": {
+     "8": 85
+    }
+   },
+   "EARLY29": {
+    "N": 29,
+    "eos_well_formed": 29,
+    "syntax_valid": 29,
+    "semantic_decode": 29,
+    "legal_action": 0,
+    "teacher_match": 0,
+    "legal_nonteacher": 0,
+    "first_error_hist": {
+     "8": 29
+    }
+   },
+   "RELOCATED67": {
+    "N": 67,
+    "eos_well_formed": 67,
+    "syntax_valid": 67,
+    "semantic_decode": 67,
+    "legal_action": 2,
+    "teacher_match": 0,
+    "legal_nonteacher": 2,
+    "first_error_hist": {
+     "8": 67
+    }
+   }
+  },
+  "19001|PARAM_FIRST": {
+   "PARAM_DAMAGED": {
+    "N": 18,
+    "eos_well_formed": 18,
+    "syntax_valid": 18,
+    "semantic_decode": 18,
+    "legal_action": 0,
+    "teacher_match": 0,
+    "legal_nonteacher": 0,
+    "first_error_hist": {
+     "3": 18
+    }
+   },
+   "RULE_RESCUED": {
+    "N": 19,
+    "eos_well_formed": 19,
+    "syntax_valid": 19,
+    "semantic_decode": 19,
+    "legal_action": 0,
+    "teacher_match": 0,
+    "legal_nonteacher": 0,
+    "first_error_hist": {
+     "3": 19
+    }
+   },
+   "FINAL_RESCUED": {
+    "N": 19,
+    "eos_well_formed": 19,
+    "syntax_valid": 19,
+    "semantic_decode": 19,
+    "legal_action": 0,
+    "teacher_match": 0,
+    "legal_nonteacher": 0,
+    "first_error_hist": {
+     "3": 19
+    }
+   },
+   "PARAM_CORRECT": {
+    "N": 59,
+    "eos_well_formed": 59,
+    "syntax_valid": 59,
+    "semantic_decode": 59,
+    "legal_action": 0,
+    "teacher_match": 0,
+    "legal_nonteacher": 0,
+    "first_error_hist": {
+     "3": 59
+    }
+   },
+   "EARLY29": {
+    "N": 29,
+    "eos_well_formed": 29,
+    "syntax_valid": 29,
+    "semantic_decode": 29,
+    "legal_action": 0,
+    "teacher_match": 0,
+    "legal_nonteacher": 0,
+    "first_error_hist": {
+     "3": 29
+    }
+   },
+   "RELOCATED67": {
+    "N": 67,
+    "eos_well_formed": 67,
+    "syntax_valid": 67,
+    "semantic_decode": 67,
+    "legal_action": 2,
+    "teacher_match": 0,
+    "legal_nonteacher": 2,
+    "first_error_hist": {
+     "3": 67
+    }
+   }
+  },
+  "20001|CANONICAL": {
+   "PARAM_CORRECT": {
+    "N": 75,
+    "eos_well_formed": 75,
+    "syntax_valid": 75,
+    "semantic_decode": 75,
+    "legal_action": 0,
+    "teacher_match": 0,
+    "legal_nonteacher": 0,
+    "first_error_hist": {
+     "8": 75
+    }
+   },
+   "FINAL_RESCUED": {
+    "N": 5,
+    "eos_well_formed": 5,
+    "syntax_valid": 5,
+    "semantic_decode": 5,
+    "legal_action": 0,
+    "teacher_match": 0,
+    "legal_nonteacher": 0,
+    "first_error_hist": {
+     "8": 5
+    }
+   },
+   "EARLY29": {
+    "N": 29,
+    "eos_well_formed": 29,
+    "syntax_valid": 29,
+    "semantic_decode": 29,
+    "legal_action": 0,
+    "teacher_match": 0,
+    "legal_nonteacher": 0,
+    "first_error_hist": {
+     "8": 29
+    }
+   },
+   "RELOCATED67": {
+    "N": 67,
+    "eos_well_formed": 67,
+    "syntax_valid": 67,
+    "semantic_decode": 67,
+    "legal_action": 2,
+    "teacher_match": 0,
+    "legal_nonteacher": 2,
+    "first_error_hist": {
+     "8": 67
+    }
+   }
+  },
+  "20001|PARAM_FIRST": {
+   "PARAM_CORRECT": {
+    "N": 17,
+    "eos_well_formed": 17,
+    "syntax_valid": 17,
+    "semantic_decode": 17,
+    "legal_action": 0,
+    "teacher_match": 0,
+    "legal_nonteacher": 0,
+    "first_error_hist": {
+     "3": 17
+    }
+   },
+   "RULE_RESCUED": {
+    "N": 70,
+    "eos_well_formed": 70,
+    "syntax_valid": 70,
+    "semantic_decode": 70,
+    "legal_action": 0,
+    "teacher_match": 0,
+    "legal_nonteacher": 0,
+    "first_error_hist": {
+     "3": 70
+    }
+   },
+   "FINAL_RESCUED": {
+    "N": 70,
+    "eos_well_formed": 70,
+    "syntax_valid": 70,
+    "semantic_decode": 70,
+    "legal_action": 0,
+    "teacher_match": 0,
+    "legal_nonteacher": 0,
+    "first_error_hist": {
+     "3": 70
+    }
+   },
+   "PARAM_DAMAGED": {
+    "N": 21,
+    "eos_well_formed": 21,
+    "syntax_valid": 21,
+    "semantic_decode": 21,
+    "legal_action": 0,
+    "teacher_match": 0,
+    "legal_nonteacher": 0,
+    "first_error_hist": {
+     "3": 21
+    }
+   },
+   "EARLY29": {
+    "N": 29,
+    "eos_well_formed": 29,
+    "syntax_valid": 29,
+    "semantic_decode": 29,
+    "legal_action": 0,
+    "teacher_match": 0,
+    "legal_nonteacher": 0,
+    "first_error_hist": {
+     "3": 29
+    }
+   },
+   "RELOCATED67": {
+    "N": 67,
+    "eos_well_formed": 67,
+    "syntax_valid": 67,
+    "semantic_decode": 67,
+    "legal_action": 2,
+    "teacher_match": 0,
+    "legal_nonteacher": 2,
+    "first_error_hist": {
+     "3": 67
+    }
+   }
+  }
+ },
+ "central_20001_PF_RULE_RESCUED": {
+  "group_N": 70,
+  "greedy_teacher_match": 0,
+  "greedy_legal_action": 0,
+  "first_error_in_PARAM_1_3": 70,
+  "first_error_later": 0,
+  "no_error": 0,
+  "ranking_correct_and_off_teacher_before_RULE": 70
+ }
+}
