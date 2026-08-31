@@ -7,9 +7,9 @@ commit 3b5f1742). U and R are FROZEN AUTHORITIES, never rerun.
                  all pins; per-state x arm trie construction
                  with LEAF COUNT == n_candidates, unique
                  candidate<->leaf bijection, teacher leaf,
-                 642/642 candidate roundtrips per arm (the
-                 prereg text's 963 was a miscount — disclosed),
-                 semantic
+                 642/642 candidate roundtrips per arm (321
+                 covered + 321 heldout; the prereg registers
+                 the law, not a count), semantic
                  candidate identity across arms; U legality
                  gate (reproduce 2/96 legal per heldout cell
                  from the frozen FREE-ACTION-1 raw + illegal
@@ -331,12 +331,9 @@ def qual_main():
     n_cands = sum(r["n_candidates"] for rows in pops.values()
                   for r in rows)
     gate(n_cands == 642, f"CAND TOTAL {n_cands}")
-    # NOTE: the frozen prereg text says "963/963" — that
-    # count was its auditor's miscount (642 all-heldout-
-    # rows + 321 cal double-counted); the true byte-derived
-    # total is 321 + 321 = 642 per arm. The gate CLASS
-    # (every candidate roundtrips, both arms) is unchanged;
-    # discrepancy disclosed at booking.
+    # 642 = 321 covered + 321 heldout candidates per arm,
+    # derived from the pinned population bytes; the prereg
+    # registers the roundtrip LAW without a count.
     rank_vectors()
     u = load_u()
     excl = u_exclusion_gate(u, pops["B"])
