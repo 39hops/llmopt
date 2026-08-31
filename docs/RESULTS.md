@@ -59187,3 +59187,240 @@ learned", or general L=R; clone-v-expert framing mandatory
 TRAINING stay banked alternatives; PARAM-MIDDLE stays
 unbuilt; every number above cites a booked receipt or names
 itself an estimate.
+
+## PRE-REG MATH-CYBER-1-CLOSED-LOOP-1-PREREG-0: hybrid-controller closed-loop transport — three arms (ENGINE-HCE / MODEL-LEGAL-RANKING with the frozen seed-19001 CANONICAL checkpoint / RANDOM-LEGAL descriptive control) on a fresh fork-materialized 96-root episode population under the standing episode law plus three named terminal classes; ONE inferential contrast (B v A, paired episode-level exact McNemar, alpha .05, rejection region frozen); PREREG ONLY — nothing materialized, no episode run, no checkpoint scored (2026-08-31, Mac)
+
+PURPOSE (per the booked assessment, RESULTS L58969): does the
+hybrid architecture — symbolic engine owns exact legality and
+deterministic transition, frozen model owns preference among
+legal actions — transport from measured one-step legal-action
+preference (DECODE-CONSTRAINT-LADDER, L58795) to actual
+closed-loop solving where the controller's own choices set the
+next-state distribution? NOT a test of autonomous
+unconstrained generation.
+
+ARMS (exactly three; no legal-trie arm, no unconstrained arm,
+no PARAM-FIRST/PARAM-MIDDLE, no additional checkpoints):
+  A ENGINE-HCE — the verbatim standing episode controller
+    (scratch/mathworld1_svpeval.py run_episode law: choose
+    min over legal actions by (hce(child), name, child key)).
+  B MODEL-LEGAL-RANKING — frozen checkpoint
+    checkpoints/svp_forder_canonical_s19001.pt
+    (ae0a86e027d8b0ca1cd7a97a83a6927d326da5bd34258910b1b81d34
+    92322e1d, the booked birth-receipt pin). Per decision:
+    (1) exact legal set from the engine; (2) derive each
+    action's canonical ActionProgram (derive_program lineage),
+    encode under the standing serialization (factor code +
+    EOS, T=9, standing prompt "Current: {cur}\nHints: none\n
+    Step: "); (3) score every candidate with the standing
+    full-sequence continuation law (the ranking assay's
+    score_decision class: teacher-forced candidate tokens,
+    total log-probability); (4) choose the top-scored legal
+    action, exact score ties broken by lexicographically
+    smallest factor code, then (same-code collisions being the
+    booked program-ambiguity class) by the engine's (name,
+    child-key) sort order as the residual tiebreak
+    (deterministic; no randomness in A or B); (5) apply through the engine. No retraining, no
+    temperature/sampling, no beam, no new normalization.
+  C RANDOM-LEGAL — uniform seeded choice among the SAME exact
+    legal actions; DESCRIPTIVE ONLY (prices legality alone).
+    RNG law (frozen, execution-order-independent): per
+    decision, index = int.from_bytes(sha256(
+    "closed-loop-1-random-{root_full_sha}-{depth}"
+    .encode("utf-8")).digest()[:8], "big") mod K over the legal actions in the engine's
+    deterministic (name, child-key) sort order. Changing arm
+    order, prior episode wall, or other roots' fates cannot
+    alter a qualified root's C trajectory.
+
+ONE INFERENTIAL CONTRAST: B v A, paired at the EPISODE/ROOT
+level, exact two-sided McNemar in the MIN-LIKELIHOOD
+convention (binom_minlik_p, the standing lineage), alpha .05.
+MODEL-BETTER iff B-only > A-only and p < .05; MODEL-WORSE
+symmetric; NO-DIRECTIONAL-SEPARATION otherwise — and
+NO-DIRECTIONAL-SEPARATION is UNRESOLVED at N=96, never parity
+or equivalence. C carries NO confirmatory hypothesis; B - C
+readings are descriptive only and are not promoted to
+inference under this rung. No additional p-valued pairwise
+tests may be created after outcomes are seen.
+
+FROZEN REJECTION REGION (exact, min-lik convention, so no
+posthoc threshold invention is possible): with discordant
+split (max, min), the test fires iff min(b,c)=0 and n>=6
+(6/0: p=.03125); min=1 from n>=9 (8/1: .03906); min=2 from
+n>=12 (10/2: .03857); min=3 from n>=15 (12/3: .03516); min=4
+from n>=17 (13/4: .04904); min=5 from n>=20 (15/5: .04139).
+POWER/CEILING FENCE: standing ENGINE-HCE precedent is 221/240
+= 92.1% solved under this exact budget on prior L4-7 root
+bands — CONTEXT ONLY, never an assumed A outcome for the new
+band. The design is ceiling-limited for detecting model
+superiority and better powered for detecting a material model
+collapse; close totals book UNRESOLVED.
+
+POPULATION (frozen law; MATERIALIZATION UNDER A LATER GO):
+N = 96 fresh make_integrate(level, seed) roots, exactly 24
+qualified per level L4/L5/L6/L7. SEED-BAND LAW: seeds scan
+deterministically s = 500000, 500001, ... per level (band
+census: every make_integrate seed literal in the repo's
+episode lineage is <= 9819 — eval bands 9600-9819, mathworld0
+9100+i — and seed novelty is NOT freshness evidence; the
+exclusion census below is). QUALIFICATION per candidate root,
+in scan order, outcomes never inspected: (1) fork-isolated
+materialization (the solve_isolated pattern — make_integrate
+on L4+ seeds is the named sympy-hang hazard); (2) STRUCTURAL FILTER: is_solved(root) roots are SKIPPED
+(policy-independent, outcome-blind — a depth-0-solved root
+burns a concordant observation); (3) EXCLUSION
+CENSUS on FULL canonical state bytes / full sha, never
+truncated prefixes: root must not appear in (a) the 58,988
+distinct training-parent full states of data/matsub_paired
+.jsonl (a943ba7f...), (b) any prior evaluation population
+— the svpeval/svpeval2/svpeval3 root bands and decision
+parents (80+80+80 episodes, seed bands 9600-9819), the SVP
+state blocks (96 covered calibration + 192 heldout_test16
+rows + the svpchal/svpchal2 challenge bases and blocks), (c)
+any prior closed-loop population (none exist at freeze). REPLACEMENT LAW: an
+overlapping/filtered/failed candidate is SKIPPED (logged with its
+exclusion reason) and the scan continues to the next seed;
+scanning stops per level at exactly 24 qualified roots. The
+frozen root manifest carries root bytes, full sha, level,
+generator seed, exclusion-census result — and NO outcome or
+model-score field of any kind.
+
+STANDING EPISODE LAW (the standing run_episode law PLUS three
+named terminal classes applied prospectively to all arms —
+run_episode itself carries no stability/cycle/context check,
+so 'verbatim' would overstate): MAX_DECISIONS = 12;
+WALL_CAP_S = 60 s with the standing BETWEEN-DECISION check
+semantics (a within-decision sympy hang is not timeboxed;
+precedent accepted explicitly per the assessment). WALL
+FAIRNESS LAW (frozen): the 60 s cap meters ENGINE-SIDE wall
+only — arm B's per-decision model-scoring time is EXCLUDED
+from the cap (the booked 'encode excluded' receipt precedent)
+so B's decision budget is not silently smaller than A's;
+model-scoring wall and total wall persist as riders. Engine
+tie laws unchanged; is_solved is the terminal-correctness
+law.
+FROZEN OUTCOME CLASSES: solved, budget_exhausted, wall_cap,
+dead_end, legal_set_unstable (the stable_legal_set
+double-enumeration law — an unstable set ENDS the episode in
+this class, never silently retries), context_overflow (ARM B
+ONLY — only B builds prompts; the cap is the EVAL-LINEAGE
+CTX = 4096 tokens on prompt + 9 continuation, the named
+integer, NOT the training batch SEQ_CAP 512; the prior eval
+bands measured zero overflows at 4096, so this class is
+expected rare), cycle (a repeated full state
+key under ANY policy ends the episode as a loss),
+action_encoding_failure (arm B only: a legal action whose
+program derivation / 884,736-domain encoding / tokenization
+fails ends B's episode in this class — B is handicapped by
+instrument limits there, disclosed and counted, never
+repaired; A and C do not need encodings). All non-solved
+classes count as NOT SOLVED for the primary endpoint.
+
+CONTROLLER/ORACLE FENCE (operational): B and C receive ONLY
+(current state bytes, exact engine legal set); B additionally
+the frozen checkpoint. Neither receives hce values, teacher
+labels/paths, future success, distance-to-solution, prior
+episode outcomes, or candidate ordering carrying hce rank
+(the candidate order fed to B's scorer and C's RNG is the
+engine's deterministic (name, child-key) sort, hce-free).
+Legal-action construction is ONE shared function independent
+of the running arm. If candidate enumeration is found to
+embed preference or future information: STOP, never
+reinterpret. Import census + per-arm receipt field
+enumeration evidence this at audit.
+
+EXECUTION FAIRNESS: every arm starts from the identical root
+bytes; no arm inherits another's engine state, rule cache
+effects on legal-set membership (cache cleared per decision
+per the standing law), trajectory state, or model KV state
+(B scores each decision as a fresh batch). ARM ORDER LAW
+(frozen): per root, execution order rotates by root scan
+index mod 3 — (A,B,C), (B,C,A), (C,A,B) — so order is
+balanced and never a treatment; wall time is a rider only.
+
+TRANSPORT RISK (named prospectively, per the assessment):
+prior preference evidence comes from designed 2-5-candidate
+one-step blocks; natural episode legal sets run 3-12
+(pooled median 7.0 over the 245 booked decision rows — a
+SAMPLED-decision census, ~1 decision per episode; the full
+closed-loop depth distribution is unmeasured) from ordinary
+make_integrate roots — a set-size
+AND generator shift — and closed-loop adds policy-induced
+state-distribution shift after the first decision.
+CLOSED-LOOP-1 is a TRANSPORT experiment, not a repetition of
+the one-step assay. Qualified roots' subsequent states are
+never excluded for novelty.
+
+DESCRIPTIVE TRAJECTORY ANATOMY (receipts only, never
+endpoints): by arm x depth — legal-set size; parent
+full-state overlap with the training-parent set; ActionProgram
+inside/outside the 884,736 domain; prompt token length and
+cap status; chosen action identity; repeated-state incidence;
+decisions, engine calls, model calls, wall. Plus steps-to-
+solve on jointly-solved A/B roots; outcome-class table by
+arm; solve rate by level. RAW-FIRST: per-episode trajectory
+receipts (root, every state, complete legal set per decision,
+chosen action, child, stopping reason; B's scores persisted
+for audit, consumed by no other arm) hashed before any
+endpoint. Fresh namespace logs/mathworld1/cl1/ with
+refuse-if-exists per file; no smoke mode (read-only engine +
+frozen checkpoint; refuse-if-exists sole guard, disclosed).
+
+REGISTERED PRIOR (house, before any root exists): C
+materially below A and B (moderate confidence — hce is an
+informative heuristic and random walks burn the 12-decision
+budget); B within a few roots of A with NO confident
+direction (the one-step evidence says B discriminates well
+among legal actions, the transport risks say sets are larger
+and states drift); MODEL-WORSE is more probable than
+MODEL-BETTER given the ceiling (low-to-moderate confidence).
+Wrong-in-public is the point.
+
+CLAIM CEILING (frozen): a fired result establishes ONLY that,
+under this frozen population, budget, engine, and checkpoint,
+the hybrid controller yields a different (better/worse)
+closed-loop solve rate than the standing ENGINE-HCE policy.
+ENCODING-CONFOUND GATE (frozen): the action_encoding_failure
+episode count is a MANDATORY co-reported figure, and a
+MODEL-WORSE firing is attributable to preference/transport
+quality ONLY IF a majority of the A-only-solved episodes
+ended in classes OTHER than action_encoding_failure;
+otherwise MODEL-WORSE books with the explicit reading
+'driven by encoder coverage, not measured preference' — the
+mechanical label is unchanged, its interpretation pre-fenced
+(prior evals EXCLUDED underivable decisions at build; the
+closed loop cannot, and the measured derivation-ambiguity
+base rate is ~3.3% per decision on the labeled child alone).
+NOT claimable: autonomous model solving; broad calculus
+generality; generality beyond this materialized band; that
+learned legality is unnecessary; that model ranking equals
+hce; that one-step preference caused episode success; any
+PARAM-ordering resolution.
+
+DECISION MAP (frozen): (1) no separation with close totals =>
+preference-quality / power / broader-population work outranks
+legality-training — never called equality; (2) MODEL-WORSE =>
+closed-loop transport/regret anatomy becomes the frontier
+(diagnose divergence depth before any new training); (3)
+MODEL-BETTER => replicate before broadening checkpoints or
+populations; (4) C approaches B (descriptive) => nominate a
+targeted preference-value test before scaling; (5) C far
+below B (descriptive) => learned preference does useful
+system work above legality, descriptively. Secondary
+observations never override the one confirmatory B-v-A
+result.
+
+ORDER: freeze (this entry) -> fresh-context prereg audit ->
+commit/push/census -> STOP. Next GO if clean: CLOSED-LOOP-1
+POPULATION-MATERIALIZATION-QUALIFICATION-0 only (root
+manifest + exclusion census; still no episodes). Then, on its
+own GO, the joint three-arm run.
+
+FENCES. PREREG ONLY; Mac/mps at run time (no bit-exact rerun
+precondition; hashed raws are the record); per-root pairing,
+no pooling over decisions, no length weighting; one
+inferential application; C descriptive; single checkpoint,
+single seed — battery is a separate future design;
+SOFT-SUPPORT and LEGALITY-TRAINING stay banked; PARAM-MIDDLE
+stays unbuilt; every future claim grounded in its own run's
+tool output.
