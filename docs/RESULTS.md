@@ -59424,3 +59424,105 @@ single seed — battery is a separate future design;
 SOFT-SUPPORT and LEGALITY-TRAINING stay banked; PARAM-MIDDLE
 stays unbuilt; every future claim grounded in its own run's
 tool output.
+
+## VERDICT MATH-CYBER-1-CLOSED-LOOP-1-POPULATION-MATERIALIZATION-QUALIFICATION-0: CLOSED-LOOP-1 POPULATION MATERIALIZED + QUALIFIED — 96 roots fresh WITH RESPECT TO THE NAMED EXCLUSION CATEGORIES (exactly 24 per level L4-L7) frozen at manifest sha 50c05794..., built outcome-blind from a deterministic per-level seed scan (500000.., 108 total attempts, 12 prior-exposure skips, ZERO materialization failures / depth-0-solved / within-manifest duplicates) against a 60,697-state exclusion universe rebuilt from authoritative bytes; POPULATION SEALED, UNSCORED, NO EPISODES RUN — no checkpoint loaded, no model forward, no controller policy executed (2026-08-31, Mac)
+
+Per PRE-REG MATH-CYBER-1-CLOSED-LOOP-1-PREREG-0 (082d4bc6),
+materialization stage only. Builder
+scratch/mathworld1_cl1pop.py committed BEFORE materialization
+(4be82a57; fresh-context verifier PASS zero blockers — import/
+call census confirms no torch/checkpoint/run_episode/hce/
+score/random-policy reachability; four operational should-
+fixes folded at ed36e5a9: queue drained before join with timed
+get, failure_mode rider, exclusion universe built before
+namespace creation so an aborted gate cannot brick the retry,
+parent-side sympy import). FIRST RUN GATE-FAILED honestly: the
+eval-root rebuild hung at 120 s on svpeval3 seed 9816 — the
+named make_integrate hang class the verifier's S4 predicted —
+with NO namespace created (the S3 fix working); amended at
+cd1ddedb to take solved-episode root identity from FROZEN
+decision-0 bytes (221/240 roots) and re-materialize only the
+19 unsolved-episode roots at a 600 s fork timeout. Second run
+rc=0, wall 400.3 s. (The hung rebuild measured 346.8 s under
+the auditor's fork — above the failed 120 s, below the amended
+600 s: the timeout lift, not the dec0 shortcut, resolved that
+seed. The 30 s SCAN-candidate timeout — outcome-blind but
+difficulty-correlated if it fired — fired ZERO times across
+all 108 attempts, so no construction-time selection effect
+exists in the band. Refuse-if-exists is directory-level,
+strictly stronger than the prereg's per-file wording.)
+
+EXCLUSION UNIVERSE (receipt persisted + hashed BEFORE any seed
+scanned; 9542f5d9...): category A training parents 73,324 raw
+rows -> 58,988 distinct full states (both GATED derived
+values, not literals); B eval roots + decision parents 264 raw
+-> 261 distinct (240 roots: 221 from frozen decision-0 bytes +
+19 re-materialized, plus 245 decision curs, overlapping); C
+SVP state blocks + challenge material 1,464 distinct (96
+calibration + 192 heldout rows + svpchal/svpchal2 blocks and
+decisions; challenge target_integrand strings are integrands,
+not Integral-form states, so their string-level exclusionary
+power is nil by construction — included for completeness,
+disclosed); D prior closed-loop populations: none exist
+(gated). Union 60,697 full states; all comparisons on FULL
+canonical sstr strings, never truncated prefixes.
+
+SCAN (frozen skip-and-continue law, rejection precedence
+materialization_failure -> depth0_solved ->
+prior_exposure_overlap -> duplicate_within_new_manifest ->
+accepted): L4 24/24 accepted in seeds 500000-500023 (zero
+skips); L5 24 accepted over 34 attempts, 500000-500033 (10
+prior-exposure overlaps); L6 24/24, 500000-500023 (zero
+skips); L7 24 over 26, 500000-500025 (2 overlaps). Totals:
+108 attempts, 96 accepted, 12 prior_exposure_overlap, 0
+materialization failures/timeouts, 0 depth-0 solved, 0
+within-manifest duplicates. Raw attempt stream persisted and
+hashed FIRST (95d3761e...); manifest derived from it.
+
+OVERLAP RECEIPT (per category, independently recomputed on the
+final 96): A_training_parents 0/96; B_eval_roots_and_parents
+0/96; C_state_blocks_and_challenge 0/96; D_prior_closed_loop
+0/96; duplicate shas within the 96: 0; depth-0 solved within
+the 96: 0. SUPPLEMENTARY (auditor-raised, recomputed in the
+main session): the arm-B checkpoint's OTHER two pinned
+training artifacts (balanced_grid_train.jsonl 0ef3d8a8...,
+combined_train_manifest.jsonl 897c8bf8...) also overlap the
+96 at 0 hits each — the prereg named only matsub_paired, so
+this witnesses the full checkpoint diet. SCOPING DISCLOSURE:
+21 of the 96 root strings DO appear verbatim in 63 non-pinned
+data/ corpora of the earlier micromodel lineage (1,342 string
+hits) — none of those files is pinned to the arm-B checkpoint,
+so there is no arm-B leakage, but 'fresh' means exactly
+'zero overlap with the frozen exclusion categories', nothing
+broader (the prereg's own scoping: seed novelty and band
+novelty are not freshness evidence; the census is).
+
+MANIFEST (frozen, deterministic row order = levels 4/5/6/7 in
+acceptance order; sha 50c05794...): 96 rows carrying ONLY
+population/provenance fields (population, prereg_commit,
+row_index, level, generator_seed, root_cur, root_sha,
+depth0_is_solved=false, exclusion_pass=true, qualification) —
+no outcome, score, hce, model, trajectory, or controller field
+of any kind; safe to publish before the experiment; the future
+joint run consumes it byte-for-byte, and the arm execution-
+order rotation derives from row_index as preregistered.
+
+EXPLICIT STATE: POPULATION SEALED, UNSCORED, NO EPISODES RUN.
+No checkpoint was loaded, no model forward occurred, no
+ENGINE-HCE/RANDOM-LEGAL/ranking policy touched any root; no
+root was removed for any downstream property (legal-set size,
+encoding coverage, difficulty, context length all UNINSPECTED
+— they belong to the future experiment); the population is
+final unless an instrument/qualification failure is
+demonstrated from prereg criteria.
+
+FENCES. Materialization stage only; the 12-overlap census is a
+population-construction fact, never an outcome; the dec0-bytes
+amendment STRENGTHENS root identity (frozen artifact bytes
+over regeneration) and is committed and disclosed, not silent;
+Mac; receipts force-added small-text (exclusion_universe,
+manifest, receipt; raw_attempts small enough to track);
+dual audit (fresh-context builder verifier + post-
+materialization independent reconstruction) before booking.
+NEXT eligible GO: MATH-CYBER-1-CLOSED-LOOP-1-JOINT-THREE-ARM-
+RUN-0 — not preregistered further, not executed here.

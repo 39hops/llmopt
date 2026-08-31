@@ -1,0 +1,85 @@
+{
+ "prereg": "MATH-CYBER-1-CLOSED-LOOP-1-PREREG-0",
+ "prereg_commit": "082d4bc6ed32207a0d0b1fd5d85a56af0a9e4caf",
+ "verdict": "POPULATION MATERIALIZED + QUALIFIED",
+ "manifest_sha": "50c05794d9773142c55b932f69685ad1c0124d168c12dd1f830e36a2944d1846",
+ "raw_attempts_sha": "95d3761e81e9e5a9c94ea6b63d3ef465ac56873cb605235bdc992cf6e40b500a",
+ "exclusion_universe_sha": "9542f5d968c8ac3715d85ba202035523bf8e4a3de7527944d9e1bb9ac395ba54",
+ "exclusion_summary": {
+  "union": 60697,
+  "categories": {
+   "A_training_parents": {
+    "raw_rows": 73324,
+    "distinct_states": 58988
+   },
+   "B_eval_roots_and_parents": {
+    "raw_rows": 264,
+    "distinct_states": 261
+   },
+   "C_state_blocks_and_challenge": {
+    "raw_rows": 1464,
+    "distinct_states": 1464
+   },
+   "D_prior_closed_loop": {
+    "raw_rows": 0,
+    "distinct_states": 0
+   }
+  }
+ },
+ "per_level": {
+  "4": {
+   "attempts": 24,
+   "first_seed": 500000,
+   "last_seed": 500023,
+   "accepted": 24
+  },
+  "5": {
+   "attempts": 34,
+   "first_seed": 500000,
+   "last_seed": 500033,
+   "accepted": 24,
+   "prior_exposure_overlap": 10
+  },
+  "6": {
+   "attempts": 24,
+   "first_seed": 500000,
+   "last_seed": 500023,
+   "accepted": 24
+  },
+  "7": {
+   "attempts": 26,
+   "first_seed": 500000,
+   "last_seed": 500025,
+   "accepted": 24,
+   "prior_exposure_overlap": 2
+  }
+ },
+ "totals": {
+  "attempts": 108,
+  "accepted": 96,
+  "prior_exposure_overlap": 12
+ },
+ "overlap_receipt": {
+  "A_training_parents": "0/96",
+  "B_eval_roots_and_parents": "0/96",
+  "C_state_blocks_and_challenge": "0/96",
+  "D_prior_closed_loop": "0/96",
+  "duplicate_shas_within_96": 0,
+  "depth0_solved_within_96": 0
+ },
+ "sealed_unscored": "POPULATION SEALED, UNSCORED, NO EPISODES RUN \u2014 no checkpoint loaded, no model forward, no controller policy executed",
+ "mat_timeout_s": 30.0,
+ "wall_s": 400.3,
+ "start": {
+  "start_commit": "cd1ddedb",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_cl1pop.py": "a89cbe053159a572fbc64ba65ce9d68ae4fd05cbdaec7514de167de9d2eb3270",
+   "llmopt/mathgen/problems.py": "9f1dcac61712696b2b7f9e65585d33d26865edf6b60f338977f09a792fe51215",
+   "llmopt/search/derivation.py": "c38eeb73dd9b803fe207271b37d7097e1843cac7a776d3704d9de04dd1683e87",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "cd1ddedb"
+}

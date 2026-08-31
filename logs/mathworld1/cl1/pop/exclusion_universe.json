@@ -1,0 +1,53 @@
+{
+ "sources": {
+  "data/matsub_paired.jsonl": "a943ba7fc581db743b07192e5d951fadddd2ba19bca3225b75d8402351d468e8",
+  "logs/mathworld1/svpdiet3/covered_calibration.jsonl": "af1a4aa1df7bf3224745e91a90e1a77c36e5c54f7ff9b08509794d0fb7978db3",
+  "logs/mathworld1/svpdiet3/heldout_test16.jsonl": "a3f6103b3733d909281849dcb3fd6ba9fba3891f2014bec13881b4509df46ddb"
+ },
+ "eval_dirs": {
+  "svpeval": {
+   "episodes": "cb90ff0f6d655cfe5dc20f091da0597b1bb0e23a4d0c23355a997e8849c61dd8",
+   "decisions": "f63100a62f3091d544750d679483009a473261c587f3165241406a86253858c6"
+  },
+  "svpeval2": {
+   "episodes": "584c7acc2c779e01eab9293a94ab91b5930e5a19d93d318801cd93d808ade50d",
+   "decisions": "89efbe0ea447ee937c0c130d5419112921a2dd6c2159c6c2112cfd5e92f79315"
+  },
+  "svpeval3": {
+   "episodes": "cb57dd356dad46abbc69dde8c33a6c187010bf5c26cddc06b66118b0a869fde7",
+   "decisions": "2ff5433249622df9d421cf8014131b3907092a943040bb7b20f46f1afffb7efa"
+  }
+ },
+ "challenge": {
+  "svpchal_blocks": "21e7e635244574266ec876c1c8c76f8d7d2a77e20c2f6680d3ee48db372c4d10",
+  "svpchal2_blocks": "a50da492b2447b3bd10fd0409dd17d3d77ca57b4b4accbc6a703880c34a57fea",
+  "svpchal2_decisions": "1e3a5ef0483a7ee4970aa84c1f3d1dcc9171b8376cc6281e81d2b301a8f80d69"
+ },
+ "categories": {
+  "A_training_parents": {
+   "raw_rows": 73324,
+   "distinct_states": 58988
+  },
+  "B_eval_roots_and_parents": {
+   "raw_rows": 264,
+   "distinct_states": 261
+  },
+  "C_state_blocks_and_challenge": {
+   "raw_rows": 1464,
+   "distinct_states": 1464
+  },
+  "D_prior_closed_loop": {
+   "raw_rows": 0,
+   "distinct_states": 0
+  }
+ },
+ "union_cardinality": 60697,
+ "pairwise_intersections": {
+  "A_training_parents&B_eval_roots_and_parents": 16,
+  "A_training_parents&C_state_blocks_and_challenge": 0,
+  "A_training_parents&D_prior_closed_loop": 0,
+  "B_eval_roots_and_parents&C_state_blocks_and_challenge": 0,
+  "B_eval_roots_and_parents&D_prior_closed_loop": 0,
+  "C_state_blocks_and_challenge&D_prior_closed_loop": 0
+ }
+}
