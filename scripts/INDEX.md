@@ -2759,6 +2759,12 @@ MATH-CYBER-1 CLOSED-LOOP-1 JOINT-THREE-ARM-RUN-0 — execute the frozen CLOSED-L
 - `run_arm(arm, root, root_sha, model, dev, sink, row_index, level)` — One episode under one arm. Streams the full trajectory
 - `main()`
 
+### scratch/mathworld1_cl1splice.py
+MATH-CYBER-1 CLOSED-LOOP-1 POLICY-SPLICE-DESK-0 — execute the frozen splice prereg (96940b89d699c0478bab3e5d50358c99c36d0770, RESULTS L59878) with the two record amendments carried as factual/provenance corrections only (HEAD 62058c7e).
+
+- `run_cell(cell, root, row, model, dev, sink, forced0)` — One splice cell. forced0 = None for anchors (natural
+- `main()`
+
 ### scratch/mathworld1_cycle.py
 MATH-CYBER-1 CYCLE-ESCAPE-DESK-0 (PRE-REG booked at edef875c). CYCLE-ESCAPE controller = TERMINAL-FIRST + theta_0 + per-episode memory M: State.key() -> set of action identities already emitted from that state this episode. On an EXACT repeated state, mask exactly the already-emitted identities and choose among the remainder (terminal override first, then theta_0 argmax over the remaining set; overflow law over the remaining set); no actions remaining = CYCLE_EXHAUSTED. First visits are never masked. Budget 12, charged wall 60 s, ctx 4096. Depth receipts: EXACT(d) / LOWER_BOUND(12) / CYCLE_EXHAUSTED / CENSORED / model_ctx_overflow / dead_end — never collapsed. Population: the 15 spent argmax-controller failures. Divergence color: per episode, step of first divergence from the recorded failed trajectory + cause (terminal_override v mask v none). Zero training; d(s', M) receipts are controller-hash scoped.
 

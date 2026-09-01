@@ -60174,3 +60174,172 @@ experimental law, budget, decision map, and every bar are
 untouched and remain authoritative at 96940b89. NO
 EXPERIMENTAL BAR MOVED.
 
+## VERDICT MATH-CYBER-1-CLOSED-LOOP-1-POLICY-SPLICE-DESK-0: FIRST-ACTION REGRET LOCALIZED — anchors reproduced 32/32 (every fresh AA/BB depth-0 action AND outcome identical to the booked CLOSED-LOOP-1 run), and on the six causal-eligible discordant roots the frozen map books FIRST-ACTION-SUFFICIENT on FIVE {23, 54, 68, 88, 94} and OVERDETERMINED on one {78}; TAIL-POLICY-SUFFICIENT fired NOWHERE — swapping in the model's single depth-0 action defeats the full ENGINE-HCE tail on all four expand focus roots (BA wall-caps at 61.9-71.3 s engine wall), while giving the model A's first action rescues it on 5/6 (AB solves); depth-0 anatomy: on all six expand-family relevant roots hce ranks A's action 1st while the model ranks its own expand/i_sum 1st and A's action 2nd-4th — a depth-0 preference inversion whose cost lands on the engine; posthoc mechanism localization on 16 known roots, UNRESOLVED tendency, no p-values, MODEL-WORSE and p=.015625 untouched (2026-09-01, Mac)
+
+Per PRE-REG MATH-CYBER-1-CLOSED-LOOP-1-POLICY-SPLICE-PREREG-0
+(96940b89) with the two record amendments carried (L60108
+anatomy, L60145 rider provenance; zero bars moved). Driver
+scratch/mathworld1_cl1splice.py committed BEFORE any cell
+(04bb6ce0); pre-run fresh-context verifier: NO blockers, five
+should-fixes folded at 35f5e4d5 (provenance census completed;
+the unregistered-label catch-all hard-gates instead of
+booking silently; rider re-enumeration disclosed with
+flag+size; hce rider fields A-side only; pop authority gates
+added). ONE joint run (rc=0, wall 1272 s): 16 roots x 4 cells
+= 64 episodes, Latin-square order k%4, raw streamed and
+hashed (93c1d204...) BEFORE any classification.
+
+1) ANCHOR CENSUS: 32/32 ANCHOR-REPRODUCED — every fresh
+in-process AA and BB anchor chose the identical depth-0
+action and terminated in the identical outcome class/solved
+bit as the booked CLOSED-LOOP-1 episode. Zero
+action/outcome/both nonreproduction; zero SPLICE-INFEASIBLE
+(all 32 forced actions present in the fresh stable legal
+sets, membership gate green). Process-relativity did NOT
+bite this realization; the booked root-94 cross-process
+scope note stands unrevised as the one measured instance.
+
+2) CAUSAL LABELS (six eligible roots: booked A-solved/
+B-failed with both anchors reproduced): FIRST-ACTION-
+SUFFICIENT x5 = {23, 54, 68, 88, 94}; OVERDETERMINED x1 =
+{78}; TAIL-POLICY-SUFFICIENT x0; CONJUNCTION-REQUIRED x0.
+Per the frozen fence: n = 6, four of them the
+outcome-conditioned expand focus subset — this is an
+UNRESOLVED TENDENCY on a posthoc desk far below any
+resolving power, never a directional population claim; the
+decision map's "dominates" trigger reads as frontier
+NOMINATION only.
+
+3) EXPAND FOCUS {54, 68, 78, 88} (the outcome-conditioned
+subset, named as such): BA (model expand at depth 0 +
+ENGINE-HCE tail) WALL-CAPS ON ALL FOUR — engine walls
+65.4 / 71.3 / 67.8 / 61.9 s with depth-1 legal sets
+76/69/51/37 decaying only to 25-41 under the hce tail
+(4-10 tail decisions burned) — the single depth-0 expand
+is sufficient under the frozen 60 s budget to defeat the
+engine's own policy. AB (A's first action + model tail)
+SOLVES 3/4 in 2 decisions; the fourth (78) fails at depth 2
+on det_ambiguous after only 8.4 s engine wall — an
+ENCODER-COVERAGE cut, never budget- or search-limited. 78's
+OVERDETERMINED is therefore mechanical-only: the frozen
+gloss "each component sufficient" does NOT transfer there
+(nothing was demonstrated about A's first action sufficing;
+the AB half failed on the encoder hole). Similarly root 20's
+ROBUST-BOTH-FAILED is encoder-driven on the B/AB side, and
+root 94's causal ELIGIBILITY rests on booked B failing by
+encoding — its FIRST-ACTION-SUFFICIENT label reads "B's
+first action dooms even the hce tail (cycle)", which is
+search-mediated, but the original BB loss class was encoder.
+
+4) ALL-16 TABLE (AA / BB / BA / AB):
+  12 S/S/S/S  14 S/S/S/S  15 S/S/S/S  35 S/S/S/S
+  37 S/S/S/S  47 S/S/S/S  76 S/S/S/S      (ROBUST x7)
+  20 cycle / enc_fail / cycle / enc_fail  (ROBUST-BOTH-
+     FAILED; hybrids reproduce each component's failure)
+  89 budget / cycle / budget / cycle      (ROBUST-BOTH-
+     FAILED; same pattern)
+  23 S / cycle / cycle(4) / S(2)          (FIRST-ACTION-SUFF)
+  54 S / wall / wall(8) / S(2)            (FIRST-ACTION-SUFF)
+  68 S / wall / wall(4) / S(2)            (FIRST-ACTION-SUFF)
+  88 S / wall / wall(4) / S(2)            (FIRST-ACTION-SUFF)
+  94 S / enc_fail / cycle(6) / S(2)       (FIRST-ACTION-SUFF)
+  78 S / wall / wall(10) / enc_fail(2)    (OVERDETERMINED)
+  72 cycle / wall / wall / SOLVED(8)      (HYBRID-WIN — A's
+     first action + model tail solved a root BOTH anchors
+     failed; the one splice cell that beat both parents)
+Splice fragility x0 — with a named degeneracy: on all seven
+ROBUST roots BOTH hybrids ran zero model calls (AB's forced
+engine action solved at depth 1; BA is model-free by
+design), so those cells price the FORCED-ACTION MACHINERY's
+false-alarm rate at zero, not tail-policy robustness — the
+model tail was never exercised there.
+
+5) SEARCH-EXTERNALITY ANATOMY (depth-0, descriptive): on all
+six expand-family relevant roots (54, 68, 72, 78, 88 expand;
+94 i_sum) the pattern is uniform — hce ranks A's chosen
+action 1st; the MODEL ranks its own action 1st and A's
+action only 2nd/2nd/2nd/3rd/4th; branching ratio of the
+model's choice 4.6-12.7x (v A's typical ~1x) and expression
+length 3.9-5.7x (root 23: 1.12x/1.57x, the named
+counter-instance — its BA failure is a CYCLE, so
+first-action sufficiency there is not wall-mediated). The
+regret mechanism measured by the splice: a depth-0
+preference inversion (model prefers the co-occurrence-heavy
+expand/i_sum over the integral-rule step hce prefers) whose
+cost is paid downstream as engine enumeration wall or cycle
+— not tail incompetence: the model tail, handed A's first
+action, solved 5/6 discordant roots and even root 72.
+Branching factor + expression-length ratio are hereby
+NOMINATED (not fit, not thresholded) as the cheap cost-proxy
+family for the next instrument.
+
+6) PROCESS-RELATIVITY: none observed in this realization
+(32/32 anchors, 32/32 membership gates). Rider hce values
+come from a disclosed post-run re-enumeration (flag + size
+persisted); no join nulls occurred.
+
+7) CLAIM CEILING (frozen, verbatim scope): POSTHOC MECHANISM
+LOCALIZATION on 16 already-observed depth-0-divergence
+roots, one population, one checkpoint, one budget, one
+engine. Cannot modify MODEL-WORSE or p = .015625; cannot
+estimate population prevalence of first-action regret;
+cannot establish universal search-cost awareness or
+deep-loop behavior; cannot justify a trained cost penalty by
+itself. The CLOSED-LOOP-1 verdict stands untouched.
+
+8) DECISION MAP (frozen row selected mechanically):
+FIRST-ACTION-SUFFICIENT dominates the causal-labeled roots
+(5/6, including all three cleanly-labeled expand wall-caps)
+=> SEARCH-COST / DEPTH-0 PREFERENCE becomes the frontier;
+the next instrument evaluates simple predeclared cost
+proxies (branching factor, expression length) BEFORE any
+training rung. The wall-cap rider stays PARKED under its
+amended reading law (promotion gate: outcome condition met
+in part — FIRST-ACTION-SUFFICIENT fired — so a future cap
+prereg is ELIGIBLE but not required before the cost-proxy
+desk). Encoder det_ambiguous stays a separate coverage
+thread (it produced root 78's OVERDETERMINED and root 20's
+both-failed anatomy).
+
+REGISTERED-PRIOR ACCOUNTING: four A-only expand wall-caps
+book FIRST-ACTION-SUFFICIENT — CORRECT on 3/4 (54, 68, 88),
+root 78 OVERDETERMINED (the BA half of the prediction held;
+AB failed on its own encoder hole); root 23 predicted
+TAIL-POLICY-SUFFICIENT or CONJUNCTION — WRONG, it booked
+FIRST-ACTION-SUFFICIENT (the cycle, like the walls, follows
+from the first action alone); root 94's AB predicted to
+re-hit det_ambiguous — WRONG, AB solved in 2 (A's i_unprod
+first step routed around the ambiguous state); anchors
+mostly reproduce — CORRECT (32/32).
+
+PREREG READING NOTE (booked, per the pre-run audit): the
+prereg's RAW-content list names "anchor comparison fields"
+among the hashed raw rows while also requiring the hash
+BEFORE any classification; the driver resolved the internal
+contradiction in favor of RAW-FIRST (anchor classes derived
+after the hash, from the sealed rows) — the strictly more
+conservative reading.
+
+FENCES. Mac/mps single realization (hashed raws are the
+record; no bit-exact rerun precondition); 16 named roots, no
+pooling into the 96-root inference; zero inferential
+applications; single checkpoint/seed; all labels mechanical
+from the frozen map (the unregistered-pattern branch
+hard-gates and never fired); the 5/6 dominance is an
+UNRESOLVED tendency; the 4 MB splice trajectories stay
+UNTRACKED per logs doctrine, anchored by raw_splice_sha in
+the tracked receipt; small-text receipts force-added; dual
+audit (pre-run verifier + post-run independent raw
+reconstruction: sha, 64 rows, 32/32 anchors, all labels, all
+32 forced gates, 75/75 B-tail argmax decisions, all riders
+zero-mismatch) before this booking; A-tail replay 92/95
+decisions reproduced, 3 unverifiable by string reparse (the
+named sympify-reparse hazard — all three within 1.0
+count_ops, two corroborated by the booked CL1 arm; not a run
+defect); rider model-score join uses a name-keyed dict that
+would collapse duplicate candidate names (audited: no joined
+name was a duplicate this run; fix before rider reuse); BA/AB
+are budget-asymmetric in real time by the booked model-wall
+exclusion (drives no label here); every claim grounded in
+THIS run's tool output.
+
