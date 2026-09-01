@@ -787,6 +787,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/cl1/pop/manifest.jsonl": {
+   "bytes": 38285,
+   "exists": true,
+   "sha256": "50c05794d9773142c55b932f69685ad1c0124d168c12dd1f830e36a2944d1846",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/cycle_escape_desk.jsonl": {
    "bytes": 38504,
    "exists": true,
