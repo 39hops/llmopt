@@ -180,6 +180,14 @@ def sha(s):
     return hashlib.sha256(s.encode()).hexdigest()
 
 
+def field(r, name):
+    """Value of |name=...| in base_signature, 'n/a' if absent."""
+    for part in r["base_signature"].split("|"):
+        if part.startswith(name + "="):
+            return part[len(name) + 1:]
+    return "n/a"
+
+
 def gold_class(t):
     return "a" if t == GOLD_A else ("b" if t == GOLD_B else "other")
 
@@ -690,11 +698,9 @@ def main():
         "family_census": {
             "P": dict(Counter(r["P"] for r in primary)),
             "c": dict(Counter(r["c"] for r in primary)),
-            "T": dict(Counter(r["base_signature"].split("|T=")[1]
-                              .split("|")[0] for r in primary)),
-            "w": dict(Counter(r["base_signature"].split("|w=")[1]
-                              .split("|")[0] for r in primary)),
-            "kb_k": dict(Counter(r["base_signature"].split("|kb=")[1]
+            "T": dict(Counter(field(r, "T") for r in primary)),
+            "w": dict(Counter(field(r, "w") for r in primary)),
+            "kb_k": dict(Counter(f"{field(r, 'kb')}|{field(r, 'k')}"
                                  for r in primary)),
             "distractor": dict(Counter(r["distractor"]
                                        for r in primary))},
