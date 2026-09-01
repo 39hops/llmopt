@@ -61900,3 +61900,275 @@ pooling across seeds without its own prereg; FACTOR/HASH,
 sublayer cube, permutation, and retraining all stay out;
 every future claim grounded in its own run's tool output.
 
+## PRE-REG MATH-CYBER-1-RESIDUAL-PATH-ROUTING-REPLICATION-PREREG-0: seed-20001 replication of the residual-path census — full 256-mask cube on the receipt-derived C/PF pair over the same two sealed populations under the seed-19001 census laws VERBATIM (only the five reference pins and four baseline totals change); two frozen endpoints: TASK-DEPENDENT EFFECTIVE DEPTH (2/2-arm strict ordering law) and BLOCK-LABEL-AGNOSTIC ROUTING (complete four-class truth table with integer floors, max-necessity SETS not lowest-index ties, and the exact paired-discordance computation frozen here); registered mechanism prior = RECONFIGURATION; PREREG ONLY — no 20001 checkpoint loaded, no mask evaluated (2026-09-01, Mac)
+
+PURPOSE (adopting OBSERVATION ...ROUTING-REPLICATION-
+ASSESSMENT-0, e1aefa90; post-booking HEAD d88fd718 is a
+receipts-lock refresh moving no law): replicate the
+seed-19001 residual-path findings (VERDICT L61504,
+b728bd51) under the independently trained seed-20001 pair.
+Question A: does covered calibration again require greater
+effective residual depth than strict heldout ranking?
+Question B: does C v PF again show materially different
+reliance on SPECIFIC residual blocks, with dominant block
+identities FREE TO CHANGE with initialization? Block 1 (PF)
+and block 3 (C) are NOT preregistered targets — the
+replication target is representation-dependent routing,
+never literal layer identity.
+
+CHECKPOINTS (receipt-derived, verified before freeze and
+re-gated at execution): CANONICAL
+checkpoints/svp_forder_canonical_s20001.pt (0a841a5f2a43b6
+f64b0dac8259c26fd79961e6ab91359a54be9c2582815b3e34);
+PARAM_FIRST checkpoints/svp_forder_paramfirst_s20001.pt
+(b7198ff2e7b903ab5ed075fe947cb29142c5790ec84831434c53a598e
+466c322); shared init_pin 7c95e77f8d7ccea5f4dd71c989e4d322
+5e347a178032d43539a1ae6ef62c9452; birth receipt
+logs/mathworld1/svpforepl_s20001_receipt.json (pin
+70ff3248a9b2f6e584c2d7bb8e9fc7b59853ebb7055f58193783fbd61e
+ab78b3). Same architecture / data / update law / shared
+init / exact per-action token-multiset equality /
+field-order-only treatment = the booked replication stage-1
+facts (L57681), re-gated from the birth receipt at run
+time, never inferred from filenames.
+
+POPULATIONS (the seed-19001 census populations, verbatim):
+STRICT HELDOUT heldout_test16 (a3f6103b3733d909281849dcb3
+fd6ba9fba3891f2014bec13881b4509df46ddb) with the frozen
+site_role == "heldout-I1" 96-filter; 20001 scoring raw
+logs/mathworld1/svpfoheld20/raw_token_scores.jsonl
+(18f27b666ce54c5402abff746e696f9b8c35c94235d096a060f97cf01
+5aae17f, per-token lps — drift rider carries); booked
+baselines C 80/96, PF 87/96. COVERED CALIBRATION
+covered_calibration (af1a4aa1df7bf3224745e91a90e1a77c36e5c
+54f7ff9b08509794d0fb7978db3), 96 states; every pin above is
+FULL and receipt-derived — never expanded by hand from a
+published prefix (the named 19001 pre-run blocker class); 20001 raw
+logs/mathworld1/svpfocal20/scores.jsonl (5df6ee83ff684920
+395d634a3f6f8ba9c6b7c96f5805540c8b8cefc25f968ddf — the raw
+ALSO carries per-candidate mean_lp/sum_lp, so the
+calibration score-drift rider IS computable and is ADDED
+here: max |mask-255 sum_lp - reference sum_lp| per state,
+descriptive, never a bar); booked
+baselines C 85/96, PF 91/96. No artifact regeneration, no
+root generation.
+
+MASK CUBE + LAWS: the FULL 256 x 2 x 2 cube under the
+seed-19001 census laws VERBATIM (PRE-REG ...RESIDUAL-PATH-
+CENSUS-PREREG-0, 5b48c02a): mask ids 0..255, LSB = block 0,
+exact loop-skip identity bypass, final RMSNorm/head always
+active, teacher-forced complete-candidate scoring with
+attn_mask=None (is_causal path) and no cache, heldout
+total-SUM law, calibration MEAN-LP law with per-mask
+mean-v-sum disclosure checks, PARAM_FIRST payload via
+pf_encode with the three roundtrip/PERM gates, pessimistic
+strict-inequality top-1, raw-first hashing, the same
+effective-depth statistics, the frozen within-2-states
+near-full tolerance, the <= 1-state integer baseline
+coherence gate (per cell, against the 20001 raws; breach =
+BASELINE-COHERENCE-FAILURE, no scientific reading for that
+cell), the mask-00000000 finite-score gate, and the same
+integer C-v-PF depth-resolution fence. The ONLY deltas TO THE CENSUS MEASUREMENT LAWS: the FIVE
+reference pins and the four baseline totals (80/87/85/91).
+NEW LAWS in this prereg (superseding nothing, added beside
+the census laws): the task-depth classification, the
+routing truth table with floors and tie law, the mechanism
+prior, and the cross-seed synthesis; the 19001 census's A-F
+decision map is REPLACED for this rung by the program-level
+reading and FACTOR/HASH gate below. Named floor delta v the
+assessment: the material-reliance floor binds PER
+POPULATION here (the assessment sketched "in at least one
+population"), a deliberate tightening frozen now. DRIVER
+LAW: adopt the results-cited
+scratch/mathworld1_respath.py implementation with the
+reference pins/baselines parameterized (adopt-not-fork; the
+copy commits BEFORE any mask outcome; receipt-auditor runs
+on its first real receipts; the copy's PREREG_COMMIT
+constant repoints to THIS entry's commit); outputs land in
+the NEW refuse-if-exists namespace
+logs/mathworld1/respath20/ — the frozen seed-19001 path
+logs/mathworld1/respath/ (cited by the booked verdict) is
+never touched.
+
+TASK-DEPTH ENDPOINT (frozen): with H_r / K_r = minimal-full
+k on heldout / calibration for arm r, calibration is deeper
+for arm r iff K_r > H_r (strict; ties fail).
+TASK-DEPTH-REPLICATED = 2/2 arms; -PARTIAL = 1/2;
+-NOT-REPLICATED = 0/2. No pooled p-value; near-full k and
+full k-envelopes report descriptively beside the
+classification.
+
+ROUTING VECTORS (per checkpoint x population): D_r[i] =
+full_top1 - top1(leave-one-out mask deleting block i)
+(positive = deletion hurts). SIGN-CONVERSION LAW (frozen):
+the adopted driver's receipt field top1_delta = masked -
+full carries the OPPOSITE sign; adjudication computes
+D_r[i] = -(receipt.leave_one_out[i].top1_delta), stated
+here so no conversion is improvised. S_r[i] = singleton
+top-1 of block i alone; every deletion preserves lost-correct /
+gained-correct state lists and the paired state anatomy —
+never top-1 delta alone. The assessment's candidate L1
+distance between D_C and D_PF is REPORTED descriptively per
+population (a stated choice: it informs, the truth table
+decides).
+
+FLOORS (frozen NOW, before any 20001 mask; calibrated on
+the 19001 measured values — outcome-blind w.r.t. 20001 —
+with 19001 heldout PF sitting exactly ON the 8 boundary and
+19001 heldout C at 0, i.e. below it): ARM-LEVEL MATERIAL
+BLOCK RELIANCE iff max_i D_r[i] >= 8 states in that
+population. PAIRED-DISCORDANCE COMPUTATION (exact, the
+19001 receipt form): for population p and block b, define
+  X_lost_Y_kept(b) = #{states i : arm X correct at i under
+  its full mask AND incorrect under its b-deleted mask,
+  AND arm Y correct at i under BOTH its full and b-deleted
+  masks}.
+REPRESENTATION-DISCORDANCE FLOOR (set vocabulary, matching
+the tie law): C's floor clears iff C_lost_PF_kept(b) >= 10
+for SOME b in the distinct (non-shared) portion of C's
+dominant set; PF's symmetrically with PF_lost_C_kept; each
+in the same population under classification; the clearing
+block is reported.
+
+TIE / MULTIPLE-ARGMAX LAW (frozen): the DOMINANT SET of an
+arm = { i : D_r[i] == max_j D_r[j] } (exact integer ties
+only). Routing identity compares SETS: IDENTICAL sets =>
+shared candidate; DISJOINT sets => differing candidate;
+PARTIAL OVERLAP => classify as DIFFERING iff each arm's set
+contains at least one block absent from the other arm's set
+AND the discordance floor clears at one such distinct block
+per arm; otherwise the population books
+ROUTING-NOT-RESOLVED. No lowest-index tie-break, no
+post-hoc dominant-block choice. When a set has multiple
+members, the discordance floor may be cleared by ANY member
+of the distinct (non-shared) portion, and the clearing
+block is reported.
+
+ROUTING CLASSIFICATION (complete, mutually exclusive, per
+population): (1) ROUTING-REPLICATES = both arms clear the
+material-reliance floor AND their dominant sets DIFFER
+(per the tie law) AND both representation-discordance
+floors clear => representation-dependent residual routing
+materially separated again (block ids free to differ from
+19001). (2) ROUTING-SHARED/CONVERGED = both arms clear
+material reliance AND dominant sets IDENTICAL AND the
+paired anatomy confirms shared dependence (EVERY member of the identical dominant set is both arms'
+argmax by construction; the shared-dependence check = for
+SOME member b, D_C[b] >= 8 AND D_PF[b] >= 8) — a
+distinct result, never called replication. (3)
+ROUTING-NOT-RESOLVED = the floors are not jointly cleared
+or profiles too similar per the tie law. SEED-LEVEL COMBINATION RULE (frozen — a split
+per-population outcome must not force an adjudication
+choice): CALIBRATION is the CLASSIFYING population for the
+seed-level routing label (at 19001, heldout CANONICAL's
+leave-one-out maximum is 0, failing the material-reliance
+floor — so under this law 19001 itself classifies on
+calibration, and a 20001 heldout NOT-RESOLVED is the
+status quo, not a replication failure); heldout reports its
+own per-population class BESIDE the seed label,
+descriptively. RECONFIGURES = descriptive SUB-LABEL applied
+only after ROUTING-REPLICATES: at least one arm's 20001
+dominant set differs from its 19001 dominant set in the
+SAME population (19001 CALIBRATION references: PF {1},
+C {3}; 19001 HELDOUT references: PF {1}, C {2,3,4,7} — the
+zero-max tie set; all derived from the booked census
+receipt under the sign-conversion law at adjudication,
+never re-measured); not a failure.
+
+REGISTERED MECHANISM PRIOR (frozen): RECONFIGURATION —
+representation-dependent separation may persist while block
+identities change, warranted by the booked initialization-
+dependent autoregressive credit routing (L57971) via an
+explicitly labeled ANALOGY across two different block axes
+(output-position credit v residual-depth sensitivity); NO
+registered mapping from RULE/PARAM token fields to any
+Transformer layer.
+
+FULL-MODEL-NOT-BEST RIDER (descriptive, per cell): whether
+any mask beats the full stack, best mask total, improvement
+over full, k of the best mask, count of masks beating full
+— beside the 19001 record (3/4 cells, +8 max, cal-C 96/96
+at k=5); never a pruning/deployment claim and never a
+routing endpoint.
+
+BASELINE-QUALITY CEILING (mandatory): 20001 baseline
+geometry inverts v 19001 on BOTH populations (19001:
+heldout C 85 > PF 78, calibration C 94 > PF 93; 20001:
+heldout PF 87 > C 80, calibration PF 91 > C 85);
+minimal-full/near-full k are relative to each cell's OWN
+full baseline, absolute BEST-k totals always report beside
+them, and a small k against a weak baseline is never read
+as capability.
+
+CROSS-SEED SYNTHESIS (after 20001 classification, both
+seeds' frozen laws respected, NO pooling of masks or states
+and NO cross-seed p-value): a 19001/20001 matrix of heldout
+and calibration min-full k + task-depth classification, and
+per population the C and PF dominant sets, max deletion
+costs, paired-discordance anatomy, and routing class.
+PROGRAM-LEVEL READING (frozen): STRONGER TWO-SEED
+REPRESENTATION-ROUTING SUPPORT only if BOTH seeds show
+materially separated C-v-PF routing under their respective
+frozen laws (block identities need not match); 20001
+ROUTING-NOT-RESOLVED => the 19001 routing remains
+initialization-specific / not replicated; 20001
+SHARED/CONVERGED => representation-dependent routing does
+not replicate at 20001, strong common layer reliance
+replaces it for that realization; 20001 REPLICATES +
+RECONFIGURES => book INITIALIZATION-CONDITIONED ROUTE
+SELECTION as the nominated mechanism reading at explicit
+two-seed scope — never "universal gauge freedom".
+
+FACTOR/HASH DECISION GATE (no execution here): routing
+replicates (same or reconfigured blocks) => FACTOR/HASH
+becomes the high-value generalization across representation
+TYPE; not resolved => FACTOR/HASH may still probe
+representation x initialization geometry but field-order
+residual routing is not a replicated architectural effect;
+shared/converged => investigate the common residual
+bottleneck first. No successor executes automatically.
+
+HOUSEKEEPING FENCE (session report, not a booked fact —
+no artifact exists by construction): the transient
+results-index curation-stripping incident (caught
+pre-commit, restored, did not reproduce, never entered
+history) is a tooling matter — it
+alters no law here and blocks nothing unless a fresh
+reproducible integrity failure appears; a future
+housekeeping pass may audit gen_results_index.py
+separately.
+
+CLAIM CEILING (frozen): at most — across TWO independently
+initialized C/PF realizations under one architecture/data
+treatment, residual-path effective-depth and
+representation-routing behavior replicated / partially
+replicated / reconfigured / failed as measured. NOT
+establishable: universal layer roles; broad Transformer
+behavior; training-time necessity; block-to-semantic-field
+correspondence; closed-loop effects; generality beyond the
+two frozen ranking populations; universal computational
+gauge freedom.
+
+REGISTERED PRIOR (house, frozen before masks): TASK-DEPTH
+ordering replicates 2/2 arms (moderate); C-v-PF total
+effective-depth difference remains UNRESOLVED (moderate);
+representation-dependent routing separation REPLICATES
+(moderate); routing RECONFIGURES v 19001 (moderate); PF's
+dominant block differs from 19001's block 1 (moderate-low);
+exact replacement block identity: NO prior; some ablated
+mask beats the full model in >= 2/4 cells (moderate).
+Wrong-in-public is desired.
+
+ORDER: freeze (this entry) -> fresh-context prereg audit ->
+commit/push/index/census -> STOP. Nothing executes under
+this GO. Next eligible GO if clean:
+MATH-CYBER-1-RESIDUAL-PATH-ROUTING-REPLICATION-0.
+
+FENCES. PREREG ONLY (no 20001 checkpoint loaded, no mask
+evaluated); Mac/mps at run time (hashed raws the record;
+coherence gate tolerance-shaped, never bit-exact);
+two-seed scope; no pooling across seeds; FACTOR/HASH,
+sublayer cube, permutation, register/pause tokens, and
+retraining all fenced out; every future claim grounded in
+its own run's tool output.
+
