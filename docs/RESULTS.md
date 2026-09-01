@@ -60343,3 +60343,221 @@ are budget-asymmetric in real time by the booked model-wall
 exclusion (drives no label here); every claim grounded in
 THIS run's tool output.
 
+## OBSERVATION MATH-CYBER-1-CLOSED-LOOP-1-SEARCH-COST-PROXY-ASSESSMENT-0: GO SEARCH-COST-PROXY-DESK (house recommendation, Artin's call) — the first instrument should target SEARCH-EXPANSION REGRET ONLY (root 23 is the named counter-instance that breaks any single "search cost" concept), with STRING-LEVEL child-complexity proxies (expression-length ratio, additive-term ratio, Integral-node count) as the deployable family and EXACT child branching as DIAGNOSTIC-ONLY (one post-expand stability-law enumeration measures 5.9-21.9 s in the sealed splice raw — half that for a single pass — so K-candidate lookahead is fatal precisely on the states that matter); depth-0 candidate model scores already exist for 95/96 roots and child sstr for 96/96, so a zero-model development desk can run without any rollout; lambda is NOT avoidable and must be development-selected under a frozen rule then transported frozen to a fresh population; ASSESSMENT ONLY — no proxy computed against outcomes, nothing trained, no lambda fit (2026-09-01, Mac)
+
+ASSESSMENT under GO ...SEARCH-COST-PROXY-ASSESSMENT-0,
+adopting VERDICT POLICY-SPLICE-DESK-0 (L60177, f4dbe7ce).
+All data-availability and cost figures below are measured
+from the sealed CL1 raw (22198ddf...) and splice raw
+(93c1d204...) in this session; no controller executed, no
+proxy scored against any outcome.
+
+(1) MECHANISM — TWO REGRETS, NOT ONE. The splice separates:
+A. SEARCH-EXPANSION REGRET: the chosen child multiplies
+   future engine burden (the four focus roots: branching
+   4.6-12.7x, expression length 3.9-5.7x, BA wall-caps).
+B. TRAJECTORY-TOPOLOGY REGRET: root 23 — branching 1.12x,
+   length 1.57x, FIRST-ACTION-SUFFICIENT through a CYCLE.
+   No scalar in the family below should be CREDITED for 23
+   (P1/P3 do fire weakly there — len 1.57x, Integral count
+   2x — but through expansion signal, not cycle prediction);
+   predicting cycle-topology needs lookahead the proxy
+   program is designed to avoid.
+A single "search cost" concept is NOT scientifically
+coherent across both. The first instrument targets A ONLY;
+root 23 is frozen as the negative control with a MAGNITUDE
+criterion owed to the desk prereg (e.g. 23's choice must
+not flip at the lambda selected on the focus roots) — a
+blanket any-movement-is-noise rule would be unfalsifiable
+since P1/P3 give 23 a nonzero penalty by construction. Root 94 (i_sum, branching
+6.67x but length 1.39x) sits between the classes and is
+named as the discriminating instance between size-based and
+length-based proxies.
+
+(2) CANDIDATE PROXIES (exactly four; no feature zoo). All
+operate on the child state produced by a legal action:
+  P1 log expression-length ratio:
+     log((1+len_sstr(s'))/(1+len_sstr(s))) — dimensionless.
+  P2 log additive-term ratio: top-level "+"-count from the
+     serialized child v parent (the expand signature is
+     literally additive-term multiplication) — dimensionless.
+  P3 Integral-node count of the child (count of "Integral("
+     substrings) — measures how many live subproblems the
+     action creates (root 94's i_sum child: Integral count
+     1 -> 4, i.e. P3 = 4x, while its length stays 1.39x).
+     P2 and P3 are NEW nominations of this assessment; the
+     booked verdict nominated only branching factor and
+     expression length.
+  P4 exact child legal-set size / branching ratio
+     K_child/K_parent (the plain ratio the booked riders
+     use; e.g. 76/6 = 12.67) — DIAGNOSTIC ONLY (see 3).
+P1-P3 are string-level measures on serializations the
+controller pipeline ALREADY produces (cur/child sstr are
+constructed for scoring and receipts), immune to the
+sympify-reparse hazard because they never reparse.
+
+(3) OPERATIONAL COST (measured, the load-bearing finding):
+one stable_legal_set call on a POST-EXPAND state costs
+5.9-21.9 s in the sealed splice raw (root 54: 7.8-9.2 s at
+K 31-76; root 68: 21.3-21.9 s at K 40-69; min 5.89 s at
+root 78 depth 6) — and that is the DOUBLE enumeration the
+stability law requires; a single pass would run roughly
+half (~3-11 s). Exact child branching (P4) online requires
+one enumeration PER CANDIDATE per decision — at the focus
+roots' K_parent 6/7/7/8, roughly 20 s-1.5 min single-pass
+(40 s-3 min under the stability law) of engine wall per
+decision on exactly the dangerous states, v the 60 s
+whole-episode budget (extrapolated from chosen-child costs;
+non-chosen children were never enumerated): P4 DEFEATS ITS
+OWN PURPOSE as a deployable feature and is classified
+DIAGNOSTIC (offline desks, receipts, mechanism tables).
+P1-P3 are DEPLOYABLE: string scans on serializations the
+timed pipeline already builds (the splice driver constructs
+every child sstr inside the metered seg_legal segment), so
+their marginal cost is estimated negligible — an estimate,
+not a measurement; the future desk should time them.
+Applying the candidate to GET the child is already part of
+legal-set enumeration (successors materializes children),
+so P1-P3 need zero additional engine calls.
+
+(4) DATA ALREADY SEALED (measured this session): the CL1 raw
+records, for EVERY depth-0 legal candidate of all 96 roots:
+name/rule and child sstr (96/96 roots, all THREE arms'
+rows, 687 candidates per arm) and the model's full
+continuation score + token lps (95/96 roots — root 93's
+candidate list carries 9 unscored entries from its encoding
+failure). The splice riders add hce value/rank for the
+CHOSEN depth-0 action of each arm on the 16 splice roots
+ONLY — 16 single actions per side, NOT candidate lists. NOT
+materialized anywhere: per-candidate hce for any root
+(recovering it is a full hce pass over all 687 children — a
+new deterministic measurement the desk must price, beyond
+the child-enumeration pass), and child legal-set sizes for
+NON-CHOSEN candidates (P4 requires fresh child enumerations
+— deterministic, policy-free, fine for a future desk but a
+NEW measurement). JOIN LAW (measured hazard): the raw's
+legal[] (has child_sstr) and candidates[] (has score) lists
+join POSITIONALLY — verified prefix-identical on 96/96
+roots — and 69/96 roots carry duplicate name strings, so a
+name-keyed join silently mis-assigns; the desk mandates the
+positional join with a prefix-identity assertion. P1-P3 are computable TODAY from sealed
+strings for every depth-0 candidate of all 96 roots with no
+engine call at all.
+
+(5) DEVELOPMENT POPULATION LAW: the 96 CLOSED-LOOP-1 roots
+(outcomes, discordants, splice labels all observed) are
+KNOWN/DEVELOPMENT ONLY — usable for proxy behavior,
+family nomination, and design; NEVER for a confirmatory
+improvement claim. Any proxy/lambda touching these outcomes
+transports FROZEN to a fresh sealed population; without
+that transport no improvement claim is supportable.
+
+(6) PARAMETERIZATION: baseline S0 = the frozen total
+continuation log-score (T=9 tokens); family
+S_lambda(a|s) = S0(a|s) - lambda * C(s') with C a
+dimensionless log-ratio (P1/P2) or count (P3). NO natural
+lambda exists: measured top1-top2 S0 gaps over the 95
+scored depth-0 lists run 0.05-13.1 nats (median 5.4, 26% of
+roots above 8) while focus-root log length-ratios run
+~1.4-1.8 — the units do not align (an honest scale
+statement: demoting the focus choices via P1 implies lambda
+of roughly 3-4), and lambda=1 has no probabilistic argument
+(C is not a log-probability). Lambda MUST be
+development-selected under a rule-SHAPE frozen before the
+desk's joined tables are computed — a pre-commitment of
+form, NOT information-blindness: the population's outcomes
+are already known, which is exactly why (5) forbids any
+confirmatory reading here
+(candidate rule shape: smallest lambda in a fixed
+log-spaced grid that demotes the harmful choice below the
+hce-chosen action's rank on a NAMED subset, reported with
+the full collateral curve — final wording belongs to the
+desk prereg, not this assessment).
+
+(7) HCE-DISTILLATION FENCE: the tuning objective must be
+COST-GROUNDED (demote children whose measured cost
+signature matches the expansion class), not
+HCE-AGREEMENT-MAXIMIZING — selecting lambda by agreement
+with hce actions is partial hce distillation, a different
+(also legitimate) question. HCE agreement is reported
+DESCRIPTIVELY per lambda; it becomes the objective only if
+the desk shows no cost-grounded rule separates the classes,
+and then only by explicit re-registration.
+
+(8) SMALLEST DEVELOPMENT DESK (nominated, zero model
+forwards, zero rollouts): from the sealed raws, for every
+depth-0 candidate of all 96 roots compute P1-P3 (strings
+only) and join the recorded model scores; add P4 + hce
+values via ONE fresh deterministic child-enumeration pass
+(policy-free measurement; fork-probed; the only new engine
+work). Then, under the pre-frozen selection rule, produce:
+(a) the re-ranking table on {54, 68, 78, 88} — is the
+expand child demoted; (b) the COLLATERAL CENSUS — for each
+lambda, how many of the 95 scored depth-0 choices change,
+and on which roots (the booked-solved roots are the
+regression set); (c) root 23 and root 94 reported as the
+named controls; (d) hce-agreement curve, descriptive (requires the
+per-candidate hce pass named in (4)). Cost: depth-0 legal
+sizes measured 3-10, 687 candidates total; at the measured
+depth-0 enumeration median ~4.1 s the child-enumeration
+sweep prices at roughly 1-3 HOURS (queued job, not a casual
+run; expansion children cost more, fork-walled), plus the
+hce pass and ~minutes of string work.
+
+(9) SMALLEST FRESH CONFIRMATORY TEST (nominated, not
+preregistered): fresh sealed L4-L7 population under the
+CLOSED-LOOP-1 materialization law (new seed band, exclusion
+census extended to include the 96 development roots and
+their trajectories); TWO arms, paired: B0 = frozen
+MODEL-LEGAL-RANKING v B+C = frozen MODEL+COST (exact proxy
+FAMILY member — the family choice is development-informed
+and freezes with lambda — plus frozen lambda + selection
+provenance and exact tie law, all frozen
+pre-materialization); ENGINE-HCE descriptive
+reference only; primary endpoint paired episode-level
+SOLVED, exact min-lik McNemar, standing budget; ONE
+inferential contrast (B+C v B0). The 96 development roots
+are never recycled into confirmation.
+
+(10) COMPUTE-FAIRNESS LAW (adopted as the default): proxy
+computation is ENGINE-SIDE work and counts against the SAME
+60 s engine wall the baseline pays — the controller pays
+for the information it uses; no hidden free lookahead. This
+law is exactly what kills P4 online (3) and what makes
+P1-P3 honest: their measured cost is within noise of the
+serialization work both arms already do.
+
+(11) ENCODER FENCE: det_ambiguous stays a separate coverage
+thread; the proxy operates on ENGINE legal children and
+their serializations, never on ActionProgram encodability;
+no derive_program repair rides this program.
+
+(12) ARCHITECTURE FENCE: the banked residual-path/
+passthrough thread stays separate — no architecture change,
+pause/register tokens, lesions, LayerDrop, or retraining
+enters the controller-cost program.
+
+DECISION VALUE: (a) desk shows a P1/P2/P3-class rule
+demotes all four focus expand children at some lambda with
+near-zero collateral on booked-solved roots => the fresh
+confirmatory controller test (9) is the next GO-eligible
+experiment; (b) desk shows heavy collateral at every
+demoting lambda => the cheap-cost frame is wrong at depth 0
+and the frontier shifts to either the hce-distillation
+question (asked honestly as such) or topology-aware
+control; (c) desk shows P3 (Integral count) separates root
+94 while P1/P2 do not (or v.v.) => the mechanism family
+narrows before any lambda is chosen; (d) P4-diagnostic
+disagrees with P1-P3 on which children are expensive =>
+string complexity is not a valid cost surrogate and the
+program needs a measured-cost proxy instead (e.g. bounded
+child-enumeration with a wall cap, priced under (10)).
+
+FENCES. ASSESSMENT ONLY: no proxy value was computed
+against any outcome under this GO (the only numbers above
+are sealed-raw availability censuses and already-booked
+figures); development population law (5) binds every
+successor; single checkpoint/engine/budget scope inherited
+from the splice ceiling; nothing here modifies MODEL-WORSE,
+p=.015625, or any splice label.
+
