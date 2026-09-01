@@ -62172,3 +62172,222 @@ sublayer cube, permutation, register/pause tokens, and
 retraining all fenced out; every future claim grounded in
 its own run's tool output.
 
+## VERDICT MATH-CYBER-1-RESIDUAL-PATH-ROUTING-REPLICATION-0: ROUTING-NOT-RESOLVED at the classifying population — the seed-19001 representation-routing finding does NOT replicate at seed 20001 (initialization-specific), because 20001 CANONICAL has NO load-bearing block on calibration at all (max deletion cost 6 < the frozen 8-state floor; deleting block 7 GAINS 11 and block 2 GAINS 9), while 20001 PARAM-FIRST concentrates massively in BLOCK 0 (deletion -48 calibration / -24 heldout; 39-state paired discordance); TASK-DEPTH-PARTIAL (1/2: PF calibration k=5 > heldout k=0; CANONICAL 0 = 0 fails the strict ordering); the heldout rider descriptively REPLICATES routing ({4} v {0}, discordances 15/16 >= 10) — and the run's sharpest cross-seed fact is the ZERO-DEPTH PRIOR AT ITS EXACT CEILING: mask 00000000's logits are mathematically CONTEXT-FREE (no positional embedding — the score never sees the problem), the audit brute-forced all 5040 rankings of the 7 candidate codes and the maximum ANY context-free ranking can score is EXACTLY 87/96 in both populations — and the 20001 mask-0 scores exactly 87 in all four cells (the trained embedding/head geometry sits precisely at the problem-blind optimum) while the 19001 mask-0 scored 0/96; THREE of four 20001 full models sit AT or BELOW that 87 ceiling (80/87/85; only calibration PF at 91 beats a problem-blind prior), so their min-full-k = 0 values are DEGENERATE, not depth measurements; C-v-PF depth books UNRESOLVED under the mechanically applied fence; perfect coherence in all four cells (0/96, exact booked 80/87/91/85, drift 0.0 heldout / <=4.6e-06 calibration) (2026-09-01, Mac)
+
+Per PRE-REG MATH-CYBER-1-RESIDUAL-PATH-ROUTING-REPLICATION-
+PREREG-0 (5d69d303). Driver scratch/mathworld1_respath20.py
+= the adopt-not-fork copy of the results-cited census
+driver, committed BEFORE any mask outcome (55c4b399);
+deltas exactly the five frozen 20001 pins, four baselines,
+respath20 namespace, prereg repoint, birth-receipt gate,
+and the prereg-added calibration score-drift rider. ONE run
+(rc=0, wall 635.5 s): 256 x 2 x 2 = 1024 mask-cells, raw
+streamed and hashed (2bc40d36...) BEFORE any adjudication;
+the frozen 19001 path untouched.
+
+1) BASELINE COHERENCE: all four cells 0/96 top-1 mismatches
+v the frozen 20001 raws; full-mask totals EXACTLY the
+booked 80 / 87 / 91 / 85; heldout drift 0.0 (bit-identical
+again), calibration drift rider (added per prereg) 4.6e-06
+/ 3.9e-06 — float-level only, no top-1 effect. Mask
+00000000 executed finite everywhere.
+
+2) TASK-DEPTH REPLICATION: TASK-DEPTH-PARTIAL (1/2).
+PARAM_FIRST: calibration min-full k = 5 > heldout 0 —
+satisfies. CANONICAL: calibration 0 v heldout 0 — the
+strict ordering FAILS, and BOTH zeros are the degenerate
+ceiling case (the zero-block prior already matches or beats
+the full stack; see 8). The 19001 heldout-shallow/
+calibration-deep ordering survives only on the PF arm — the
+only arm whose full model beats the problem-blind prior.
+
+3) CALIBRATION ROUTING VERDICT (classifying population,
+frozen truth table, sign law D_r = -top1_delta applied):
+ROUTING-NOT-RESOLVED. PF clears material reliance
+spectacularly (D_PF = [48, -2, 0, 0, 1, -1, 22, 1]; max 48
+at block 0, second 22 at block 6) but CANONICAL FAILS the
+>= 8 floor: D_C = [-3, 0, -9, 1, 0, 1, 6, -11]; max 6
+(block 6), with deletions of blocks 7 and 2 IMPROVING the
+total by 11 and 9. The floors are not jointly cleared; the
+representation-dependent separation of 19001 is NOT
+replicated at the classifying population. Per the frozen
+program-level reading: the seed-19001 routing finding is
+INITIALIZATION-SPECIFIC on the calibration population.
+
+4) RECONFIGURES: NOT APPLICABLE (calibration did not book
+ROUTING-REPLICATES; the sub-label is defined only there).
+
+5) DOMINANT SETS + COSTS (all cells, D convention positive
+= deletion hurts): heldout C DOM {4} (D=13; D_0=10 also
+material); heldout PF DOM {0} (D=24); calibration PF DOM
+{0} (D=48); calibration C DOM {6} at D=6 — below floor.
+Cross-seed identity note (descriptive): PF's dominant block
+moved from {1} at 19001 to {0} at 20001 in BOTH
+populations; CANONICAL's calibration dominance ({3} at
+19001, D=25) DISSOLVED entirely at 20001.
+
+6) DISCORDANCE ANATOMY: calibration block 0 —
+PF_lost_C_kept = 39 (v C_lost_PF_kept 1), block 6
+PF_lost_C_kept = 10; heldout block 4 C_lost_PF_kept = 15,
+block 0 PF_lost_C_kept = 16. The PF-side floors clear
+everywhere; the C side has nothing to clear on calibration.
+
+7) HELDOUT ROUTING RIDER (descriptive, per the frozen
+seed-level law): heldout BOOKS ROUTING-REPLICATES — both
+arms material (C {4} D=13, PF {0} D=24), sets disjoint,
+both discordance floors clear (15/16 >= 10). EFFECTIVE-N
+FENCE (audit-measured): the 96 states collapse to ~16
+distinct (candidate-multiset, label) signature classes
+(multiplicities 19,13,11,9,... identical in both
+populations), and C's 15-state heldout floor clearance
+decomposes into just TWO classes (10+5) — one decision type
+replicated 10 times meets the >= 10 floor by itself; the
+floors were calibrated as if states were independent and
+they are not, so this rider is carried at
+correlated-effective-n ~1-2 resolution, one more reason it
+never overrides the classifying-population law.
+(Calibration's PF-side clearances are broader: 39 states
+across 10 classes.) At 19001
+heldout was the floor-failing population and calibration
+the separating one; at 20001 the roles EXCHANGE. Routing
+separation exists at both seeds but never in the same
+population twice — carried as anatomy, never promoted over
+the frozen classifying-population law.
+
+8) EFFECTIVE DEPTH + BEST-k:
+                 full  min-full-k  min-near-k  frac<=2  best
+  heldout C       80       0           0        43.4%   92(k4)
+  heldout PF      87       0           0        17.2%   91(k5)
+  calibration C   85       0           0        46.9%   96(k5-7)
+  calibration PF  91       5           4        11.3%   94(k5)
+THE ZERO-DEPTH PRIOR AT ITS CEILING (the audit's central
+finding): mask 00000000's logits carry NO positional term —
+logits[:, t] = head(norm(emb(ids[:, t]))) — so its score is
+mathematically independent of the problem; each of the 13
+distinct factor codes maps to exactly one mask-0 score, and
+a brute force over all 5040 rankings of the 7 per-population
+codes establishes by exhaustive enumeration that 87/96 is
+the maximum any context-free
+ranking can achieve in BOTH populations. The 20001 mask-0
+scores exactly 87 in all four cells: the trained
+embedding/head geometry sits precisely at the problem-blind
+optimum (the 19001 mask-0 scored 0/96 — a genuine
+cross-seed difference in WHERE competence settled). Against
+that ceiling the full models read 80 (-7) / 87 (0) /
+85 (-2) / 91 (+4): ONLY calibration PARAM-FIRST beats a
+problem-blind prior, so the three min-full-k = 0 cells are
+DEGENERATE (the prior already matches/beats the stack),
+never depth measurements — the prereg's own
+baseline-quality clause applied at full strength.
+DEPTH-CONTRAST FENCE (applied mechanically by the
+independent auditor and adopted): clause 2 FIRES — the
+calibration per-k envelope maxima differ by <= 2 states at
+k = 0, 2, and 5 (87/87, 87/87, 96/94) and the paired
+anatomy is NOT consistent (mean delta positive at k 1-7 but
+NEGATIVE at k=8, where full PF 91 > full C 85), and the
+multi-signal escape's two aligned signals (min-near k,
+near-full fraction) are both computed against C's
+sub-ceiling baseline => UNRESOLVED REPRESENTATION-DEPTH
+DIFFERENCE. A fence-text ambiguity ("any envelope total" =
+per-k maxima v full-mask totals) is resolved CONSERVATIVELY
+and disclosed. Cross-seed: UNRESOLVED at both seeds.
+
+9) FULL-MODEL-NOT-BEST RIDER: 4/4 cells have masks beating
+the full stack — heldout C +12 (92 at k=4), heldout PF +4
+(91 at k=5), calibration C +11 (96/96 PERFECT again at
+k=5-7), calibration PF +3 (94 at k=5). Masks matching each
+full total exactly: 5/6/23/7. No pruning claim.
+
+10) CROSS-SEED SYNTHESIS (no pooling, two descriptive
+realizations):
+             19001                    20001
+  task depth C 5>2, PF 5>1 (2/2)     C 0=0 fail, PF 5>0 (1/2)
+  cal routing REPLICATES {3}v{1}     NOT-RESOLVED (C floor
+              (25/31 discord)         fail; PF {0} D=48)
+  held routing NOT-RESOLVED           REPLICATES {4}v{0}
+              (C floor fail)          (15/16 discord)
+  mask-0      0/96 all cells          87/96 all cells
+  full-not-best 3/4 cells (+8 max)    4/4 cells (+12 max)
+PROGRAM-LEVEL READING (frozen): 20001 calibration =
+ROUTING-NOT-RESOLVED => the seed-19001 representation-
+routing effect is NOT a replicated architectural effect;
+what recurs across both seeds is (a) PF carrying ONE
+dominant load-bearing block (identity moving 1 -> 0), (b)
+some population showing C-v-PF routing separation (but
+never the same population twice), and (c) masks beating the
+full model. INITIALIZATION-CONDITIONED ROUTE SELECTION does
+NOT book (its trigger, calibration REPLICATES +
+RECONFIGURES, did not fire); the nominated reading instead
+is that WHERE competence lives (blocks v embedding/head)
+is itself initialization-dependent — carried as anatomy at
+two-seed scope, not a mechanism claim.
+
+11) REGISTERED-PRIOR SCORECARD: task-depth 2/2 — WRONG
+(1/2, with the C arm's tie itself degenerate); C-v-PF depth
+remains UNRESOLVED — RIGHT (the fence books UNRESOLVED
+under the auditor's mechanical application; a first-pass
+house reading toward a licensed difference was corrected in
+audit); routing REPLICATES — WRONG at the classifying
+population (NOT-RESOLVED; the heldout rider replicates at
+correlated-effective-n resolution); RECONFIGURES — NOT
+REACHED at seed level (the prereg attaches it to the
+classifying population's REPLICATES; heldout's descriptive
+set changes {1}->{0} and {2,3,4,7}->{4} are anatomy only);
+PF dominant differs from {1} — RIGHT ({0} both
+populations); replacement identity — no prior; masks beat
+full in >= 2/4 cells — RIGHT (4/4). Two of six scored
+predictions wrong, in public, as designed.
+
+12) CLAIM CEILING (frozen): two independently initialized
+C/PF realizations, one architecture/data treatment, two
+frozen ranking populations — the replication FAILED as
+measured at the classifying population and that failure is
+the booked result. NOT establishable: universal layer
+roles; broad Transformer behavior; training-time necessity;
+block-to-semantic-field correspondence; closed-loop
+effects; generality beyond these populations; universal
+computational gauge freedom; any mechanism for WHY 20001
+placed competence in the embedding/head.
+
+13) FACTOR/HASH DECISION GATE (frozen branch B): routing
+not resolved => field-order residual routing is not a
+replicated architectural effect; FACTOR/HASH may still
+probe representation x initialization geometry, but the
+claim it would test has changed. The zero-depth-prior
+discovery (mask-0 87 v 0 across seeds) is itself a
+candidate next question (where does competence settle, and
+does representation shape THAT?) — Artin's call; nothing
+launches under this GO.
+
+INSTRUMENT DISCLOSURES (receipt-audit findings, booked):
+(i) the run receipt's "prereg" STRING field carries the
+sibling census prereg name inherited from the copied driver
+(the RULE-ABLATE-1 class); prereg_commit 5d69d303 was
+correct throughout and disambiguates; the driver source is
+corrected post-run with the defect noted in its docstring;
+the frozen receipt is the record and is not rewritten. (ii)
+the copied docstring's stale 19001 paths corrected in the
+same source fix. (iii) the calibration mean-v-sum
+disclosure checks are VACUOUS BY CONSTRUCTION at T=9
+constant (mean = sum/9 is strictly monotone) — 0/512 flags
+is a structural identity, never "passed". (iv) block_id
+namespaces are SHARED between the two populations with
+identical n_candidates distribution and label indices
+(contents verified disjoint; a latent join hazard for any
+future pooling, and the reason the mask-0 top-1 vector is
+bit-identical across cells).
+
+FENCES. Two-seed scope, no pooling; the frozen 19001 path
+untouched (mtimes/sha unchanged); coherence and drift are
+this run's measurements, not determinism claims; all
+adjudication labels mechanical from the frozen truth
+table/sign law/floors (no improvised class); the
+depth-difference reading carries the mandatory
+baseline-quality ceiling and books at single-realization
+scope; raw_census.jsonl (19 MB class) stays UNTRACKED
+anchored by raw_census_sha; receipt + riders force-added
+small-text; dual audit (adopt-not-fork receipt audit on the
+copied driver's first receipts + post-run independent raw
+reconstruction) before booking; every claim grounded in
+THIS run's tool output.
+

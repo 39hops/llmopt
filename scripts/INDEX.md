@@ -2896,6 +2896,18 @@ MATH-CYBER-1 RESIDUAL-PATH-CENSUS-0 — exhaustive 2^8 = 256 whole-block passthr
 - `score_state(lps, pop, label)` — Per-state scores + top1 + rr + margin under the
 - `main()`
 
+### scratch/mathworld1_respath20.py
+MATH-CYBER-1 RESIDUAL-PATH-ROUTING-REPLICATION-0 — the seed-20001 replication of the exhaustive 256-mask census (frozen prereg 5d69d303d8a355f9719b0bb4242ed686b2d9fc09, RESULTS L61903). Adopt-not-fork copy of the results-cited scratch/mathworld1_respath.py: the ONLY deltas are the five frozen seed-20001 reference pins, the four booked baseline totals, the fresh namespace, and the ADDED calibration score-drift rider registered in the prereg.
+
+- `fsha(p) -> str`
+- `ctup(c)`
+- `load_pop(pop)`
+- `masked_token_lps(model, dev, cur, conts, mask_id)` — token_lps law with a whole-block mask: skipped blocks
+- `heldout_ref_top1(arm)` — Re-derive per-state top-1 from the frozen heldout raw
+- `calibration_ref_top1(arm)` — Also returns per-state reference sum_lp lists for the
+- `score_state(lps, pop, label)` — Per-state scores + top1 + rr + margin under the
+- `main()`
+
 ### scratch/mathworld1_retrolabel.py
 MATH-CYBER-1 RETRO-LABELER-QUAL-0 — failure-triggered retrospective-credit labeler, mechanism qualification on outcome-spent data (PRE-REG MATH-CYBER-1-RETRO-LABELER-QUAL-0, booked at 61fdbc96).
 

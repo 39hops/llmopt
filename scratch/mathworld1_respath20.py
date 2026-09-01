@@ -557,8 +557,8 @@ def main():
             "leave_one_out_paired_discordance": loo_disc}
 
     receipt = {
-        "prereg": "MATH-CYBER-1-RESIDUAL-PATH-CENSUS-"
-                  "PREREG-0",
+        "prereg": "MATH-CYBER-1-RESIDUAL-PATH-ROUTING-"
+                  "REPLICATION-PREREG-0",
         "prereg_commit": PREREG_COMMIT,
         "raw_census_sha": raw_sha,
         "coherence": coherence,
