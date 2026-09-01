@@ -60988,3 +60988,234 @@ this desk measured); (c) the honest hce-distillation
 question, asked as such. Encoder and architecture threads
 stay separate and banked.
 
+## OBSERVATION MATH-CYBER-1-RESIDUAL-PATH-CENSUS-ASSESSMENT-0: GO RESIDUAL-PATH-CENSUS (house recommendation, Artin's call) — the exhaustive 2^8 = 256 whole-block passthrough cube is exactly implementable on the standing 8-block pre-norm MicroLM as a pure runtime loop-skip (zero weight edits, zero cache hazard on the teacher-forced ranking assay), the cleanest first census is the seed-19001 CANONICAL + PARAM-FIRST same-init pair on the two sealed 96-state ranking populations (booked full-model baselines 85/78 heldout, 94/93 calibration), estimated well under an hour Mac for the full 2-checkpoint x 2-population x 256-mask cube (booked svpfoheld20 wall: 2.1 s for 192 state-batches); near-full tolerance frozen NOW at within-2-states-of-96; ASSESSMENT ONLY — no mask executed, no checkpoint loaded (2026-09-01, Mac)
+
+ASSESSMENT under GO ...RESIDUAL-PATH-CENSUS-ASSESSMENT-0.
+Architecture facts below verified against
+llmopt/train/mathnative.py in this session; baselines and
+walls quoted from booked receipts. Nothing was run.
+
+(Q1) EXACT BYPASS LAW: build_model's MicroLM iterates
+self.blocks (nn.ModuleList of 8 pre-norm Blocks, each =
+x + attn(x) then x + mlp(x)) in a plain python loop
+(mathnative.py forward). Whole-block bypass = SKIP the loop
+iteration: x_out = x_in exactly — no zeroed weights, no
+checkpoint tensor touched, no approximation. Implementation:
+a scoring function that replays MicroLM.forward's exact body
+(emb -> masked block loop -> final norm -> head) reading the
+loaded model's modules, taking a frozen 8-bit mask; the
+checkpoint loads ONCE and serves all 256 masks. KV/cache
+semantics are MOOT for the first census: the frozen ranking
+law (token_lps lineage) scores full sequences in ONE
+teacher-forced forward per candidate batch — no incremental
+cache exists to corrupt. (A future closed-loop or
+free-generation census would need mask-aware cache handling;
+out of scope here.)
+
+(Q2) FIRST CENSUS (nominated): checkpoints = seed-19001
+CANONICAL (ae0a86e0...) + PARAM-FIRST (0fe38f78...) — the
+SAME-INIT pair (shared init_pin 20751529f2..., a sha prefix, not a seed — the birth seed is 19001) with exact per-action
+token-multiset equality, field order the only delta;
+populations = the two sealed 96-state blocks with embedded
+candidate sets: strict heldout (heldout_test16 a3f6103b...,
+a 192-row file from which the assay selects the 96
+primary/heldout-I1 rows — the filter must be stated in the
+prereg or a re-implementation scores 192) and covered
+calibration (af1a4aa1..., 96 rows). Booked full-model baselines: heldout 85/78
+(C/PF), calibration 94/93. Zero retraining, zero new
+artifact generation, no engine in the loop — the residual
+mechanism is isolated from policy dynamics exactly as the
+GO requires. CLOSED-LOOP solve rate is explicitly NOT the
+first assay.
+
+(Q3) OBSERVABLES per mask (256 x 2 ckpts x 2 pops): active
+count k; the 8 mask bits; top-1 total /96 (frozen
+strict-inequality pessimistic law); MRR (already natural to
+the assay, booked as a descriptive rider in the svpfoheld
+lineage); per-state agreement with the full-mask reference
+behavior (reference = frozen behavior, never a teacher);
+mean gold-minus-best-rival k=9 margin; per-mask model wall.
+Raw per-state top-1 vectors persist for every mask
+(mask-level rows, hashed before any envelope is computed).
+
+(Q4) EFFECTIVE-DEPTH QUANTITIES (preregisterable now):
+BEST-k / WORST-k / MEAN-k envelopes over the C(8,k) masks
+per k; MINIMAL-FULL-PERFORMANCE k (smallest k with any mask
+matching the full model's top-1 total); MINIMAL-NEAR-FULL k
+with the tolerance FROZEN HERE, before any curve exists:
+within 2 states of the full-model total on the same
+96-state population (an integer-state law, not percentage
+points); per-block NECESSITY (the 8 leave-one-out masks,
+k=7, delta v full); per-block SUFFICIENCY (the 8 singleton
+masks, k=1, plus k=2 pairs as descriptive anatomy); plus
+the full k-v-tolerance curve reported alongside, so the
+frozen 2-state choice is auditable without post-hoc
+selection.
+
+(Q5) PATH-SIGNATURE LANGUAGE (frozen vocabulary): results
+read as RESIDUAL-PATH REDUNDANCY / EFFECTIVE DEPTH
+DISTRIBUTION, with the Veit-style qualitative signature
+named prospectively (graceful degradation in k; many masks
+per k near the envelope; no universally-required single
+block; substantial short-path performance) — and NO literal
+probabilistic-ensemble equivalence claim without a
+separately registered test.
+
+(Q6) BLOCK ORDER: excluded from the first census. A mask
+census changes inclusion; permutation asks commutation — a
+different question with its own confounds. Reorder census =
+a later, separate design.
+
+(Q7) SUBLAYER CUBE: 2^16 = 65,536 attn/MLP sublayer masks
+is ~256x the compute (~3 days Mac at the corrected
+first-census rate) and a finer question whose raw volume
+and interpretation burden, not raw feasibility, are the
+real objection — STAGE TWO only, and only if the whole-block census shows
+structure worth resolving below block granularity. The
+first desk stays at 256 whole-block masks: exact, tiny,
+and directly mapped onto the layer-dropping literature.
+
+(Q8) REPRESENTATION CONFLUENCE (the extension that matters):
+we DO possess matched frozen material for two contrasts.
+  CONTRAST 1 (cleanest, recommended first): CANONICAL v
+  PARAM-FIRST seed 19001 — same init, same token multiset,
+  order-only delta. Question: does target FIELD ORDER move
+  which blocks are load-bearing and the effective depth?
+  Comparators: best-k envelopes, minimal-full and
+  minimal-near-full k, per-block deletion sensitivity,
+  fraction of the 256 masks preserving full-model top-1,
+  per-state minimal-k where identifiable.
+  CONTRAST 2 (second): FACTOR v HASH under
+  equal-width/equal-information codes — the booked scoring
+  receipts each carry a SINGLE init_pin covering both arms
+  (svpheldout16 init 2a580568..., svpheldout17
+  4384ed98..., svpcalscore 4b085795..., and the
+  width-matched svpheldout18 FACTOR/HASH_P1/HASH_P2
+  family), the same shape that establishes same-init for
+  C/PF — so same-init FACTOR/HASH pairs exist at three-plus
+  seeds; the birth-receipt confirmation stays the prereg
+  gate before this contrast registers.
+HYPOTHESIS (nominated, NOT established, direction
+deliberately unassumed): a representation supplying
+reusable/local semantic coordinates MAY admit shallower or
+more redundant computation than an arbitrary bijection —
+FACTOR is not assumed shallower.
+
+(Q9) CONFOUNDS (stated): everything is single-realization
+per cell (one init per checkpoint pair; the booked
+FIELD-ORDER replication showed initialization-dependent
+routing at 19001 v 20001, so any depth-profile difference
+found at 19001 carries a named seed fence and no pooling
+without its own prereg). CANONICAL v PARAM-FIRST 19001 is
+the cleanest available cell: same init, same data, same
+multiset. The 20001 pair exists for a later replication
+rung. What stays confounded even in the clean cell:
+field-order effects on depth cannot be separated from
+field-order effects on WHERE within the sequence
+discrimination happens (the booked k_step anatomy) — the
+census measures depth-of-blocks, not position-of-tokens,
+and the two interact.
+
+(Q10) BASELINE GATES (frozen; shaped to obey the standing
+no-cross-run-bit-exact-precondition law for mps): mask
+11111111 runs as a COHERENCE CHECK against the frozen
+per-state raw score vectors (raw pins ee0319f4... heldout /
+deb7f59f... calibration), per-state top-1 compared with a
+NAMED tolerance in the svpdcl-precedent shape (that census
+gated at <= 5% mismatch and measured 0/5366; its booking
+explicitly fences 0/5366 as that run's measurement, never a
+determinism claim) — a tolerance breach STOPS the census as
+an instrument finding; exact totals matching 85/78 and
+94/93 are the EXPECTED outcome, not a bit-exact
+precondition. Mask 00000000 must EXECUTE validly (emb ->
+final norm -> head) with its score recorded, no performance
+requirement; degenerate-mask behavior is pre-lawed: the
+frozen assay's non-finite-lp gate ABORTS the run loudly
+(instrument failure, never an accuracy 0), and exact score
+ties score 0 under the strict-inequality top-1 law
+(pessimistic, named — near-degenerate masks are where ties
+concentrate).
+
+(Q11) SCORE COMPARABILITY: the frozen continuation-score
+law (total log-probability over the 9 candidate tokens,
+strict-inequality top-1) is retained VERBATIM for every
+mask; no per-mask renormalization, no calibration repair.
+The mean-lp form exists in the calibration lineage and
+rides only where that assay already froze it.
+
+(Q12) COMPUTE (derived from booked walls, corrected in
+audit: an earlier draft mis-carried svpdcl's 30.6 s wall):
+the svpfoheld20 stage-3 receipt books wall_s = 2.1 for 192
+state-batches (~11 ms per state-batch on mps). The full
+cube = 256 masks x 2 ckpts x 2 pops x 96 states = 98,304
+state-batches ~ 18 min of forward compute; with python
+overhead and two model loads, comfortably under an hour of
+Mac wall, zero backward passes. Mask-level raw persistence
+is trivially affordable at this cost; batching across
+masks is unnecessary — simple reliable implementation, per
+the GO.
+
+(Q13) CAUSAL CEILING (frozen): same weights, same inputs,
+same tokenizer, same scoring law, same output
+representation, only exact identity passthrough on selected
+blocks => mask effects causally attribute RUNTIME
+dependence to the bypassed residual transformations FOR
+THIS FROZEN TRAINED FUNCTION. Checkpoint-specific,
+population-specific; NO statement about training necessity
+— a block dispensable at inference was not necessarily
+dispensable during learning. That distinction freezes into
+every downstream booking.
+
+(Q14) THREAD FENCES: register/pause tokens, scratch
+workspace, LayerDrop, ReZero, stochastic depth, and any
+retraining stay OUT of the census and remain their own
+banked threads; they become follow-ups only if the census
+exposes a concrete depth/redundancy mechanism. Encoder and
+controller threads untouched.
+
+(Q15) DECISION VALUE (frozen map of readings):
+A. many 3-5-block masks near-full => residual-path
+   redundancy live; the representation contrast becomes the
+   next rung.
+B. nearly every block load-bearing => passthrough
+   robustness weak at 19M/8 blocks; park the ensemble
+   analogy with the measured curve as the record.
+C. FACTOR materially shallower/more mask-robust than HASH
+   (if contrast 2 registers) => representation affects
+   effective computational depth — high-value mechanism.
+D. C v PF differ in WHICH blocks are load-bearing =>
+   field order relocates computation through depth,
+   companion to the booked k_step relocation through
+   sequence position.
+E. near-identical mask profiles across representations =>
+   representation effects live in token-level conditional
+   geometry, not required residual depth — itself a clean
+   negative.
+CROSS-CHECKPOINT RESOLUTION FENCE (binds D and E): mask-v-
+full comparisons are paired on identical weights and carry
+no sampling error, but C-v-PF envelope deltas are
+single-realization checkpoint comparisons — deltas of a few
+states book UNRESOLVED, and per-block sensitivity
+differences report as paired per-state discordance counts
+(the parent lineage's McNemar shape), never as bare total
+differences.
+
+SMALLEST SUCCESSOR (ONE, nominated, NOT frozen): PRE-REG
+MATH-CYBER-1-RESIDUAL-PATH-CENSUS-PREREG-0 — seed-19001
+CANONICAL + PARAM-FIRST, both sealed 96-state populations,
+256 whole-block masks, observables (Q3), effective-depth
+quantities with the within-2-states tolerance (Q4),
+baseline gates (Q10), frozen score law (Q11), raw-first
+mask-level receipts, claim ceiling (Q13). Nothing executes
+under this GO.
+
+FENCES. ASSESSMENT ONLY: no checkpoint loaded, no mask
+evaluated, no new number measured (architecture facts read
+from source; baselines/walls quoted from booked receipts);
+single-seed scope; charter-clean (analysis of our own
+math-native model's weights — the explicitly sanctioned
+neuroscience/architecture-analysis frame, zero chem/bio
+surface); FACTOR/HASH contrast contingent on a birth-receipt
+init-identity verification before its prereg; every future
+claim grounded in its own run's tool output.
+
