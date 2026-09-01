@@ -1289,6 +1289,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svpfocal20/scores.jsonl": {
+   "bytes": 87001,
+   "exists": true,
+   "sha256": "5df6ee83ff684920395d634a3f6f8ba9c6b7c96f5805540c8b8cefc25f968ddf",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/svpfocal20/svpfocal20_receipt.json": {
    "bytes": 3996,
    "exists": true,
