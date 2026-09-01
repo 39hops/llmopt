@@ -61219,3 +61219,285 @@ surface); FACTOR/HASH contrast contingent on a birth-receipt
 init-identity verification before its prereg; every future
 claim grounded in its own run's tool output.
 
+## PRE-REG MATH-CYBER-1-RESIDUAL-PATH-CENSUS-PREREG-0: exhaustive 2^8 = 256 whole-block residual-passthrough census on the frozen seed-19001 CANONICAL / PARAM-FIRST same-init pair over the two sealed 96-state ranking populations — exact loop-skip identity bypass, verbatim frozen scoring laws, tolerance-shaped baseline coherence gate (never a bit-exact mps precondition), frozen within-2-states near-full law plus the full integer tolerance curve, paired mask-level C-v-PF representation contrast under a conservative resolution fence; no p-values (exhaustive finite census); PREREG ONLY — no checkpoint loaded, no mask evaluated, nothing trained (2026-09-01, Mac)
+
+PURPOSE (adopting OBSERVATION ...RESIDUAL-PATH-CENSUS-
+ASSESSMENT-0, L60991, HEAD 9561d61b): how much of the
+frozen 8-block computation is required at INFERENCE, and
+does target FIELD ORDER change the effective residual depth
+or which blocks are load-bearing? Inference-time mechanism
+on frozen trained functions — explicitly NOT a claim about
+training necessity.
+
+CHECKPOINTS (exactly two; pins from the authoritative
+svpfoheld receipt): CANONICAL
+checkpoints/svp_forder_canonical_s19001.pt (ae0a86e027d8
+b0ca1cd7a97a83a6927d326da5bd34258910b1b81d3492322e1d);
+PARAM_FIRST checkpoints/svp_forder_paramfirst_s19001.pt
+(0fe38f785f68165e868c54fff482844ea4b2476c737f2e4af50990ec
+e6df390f). SAME-INIT REQUIREMENT (established by the booked
+record, re-gated at run time): shared init_pin
+20751529f22e3f5da4bfdf1504fbc8e8f33200003de2eec7848a2a1461
+20339e (a sha, not a seed; birth seed 19001), same
+architecture (build_model(340, ctx=4096), 19,142,016
+params), same data/update law, exact per-action target-
+token multiset equality, field-block order the sole
+treatment (all booked in the FIELD-ORDER stage-1 entry,
+L57071 lineage). Seed 20001 EXCLUDED from this census; the
+booked 19001-v-20001 initialization-dependent routing is
+the standing seed fence.
+
+POPULATIONS (exactly two, sealed, pins from the
+authoritative scoring receipts):
+  STRICT HELDOUT: logs/mathworld1/svpdiet3/
+  heldout_test16.jsonl (a3f6103b3733d909281849dcb3fd6ba9fb
+  a3891f2014bec13881b4509df46ddb) — a 192-row artifact;
+  FROZEN FILTER: rows with site_role == "heldout-I1"
+  (equivalently primary == True), gated to exactly 96, the
+  svpfoheld law verbatim. Booked full-model references:
+  C 85/96, PF 78/96.
+  COVERED CALIBRATION: logs/mathworld1/svpdiet3/
+  covered_calibration.jsonl (af1a4aa1df7bf3224745...,
+  full sha re-gated from the svpfocal receipt pin at run
+  time) — exactly 96 rows. Booked references: C 94/96,
+  PF 93/96.
+No root generation, no engine rollout, no new population.
+ALL pins above (both checkpoints, init, both populations,
+both frozen raw references) are re-gated by full sha at run
+time, and the driver's own source files enter the receipt
+via the standing start_provenance census.
+
+MASK SPACE (frozen): 8 blocks, bits b0..b7 in architectural
+execution order (b0 = first block the forward loop runs);
+mask integer id m in 0..255 with bit i of m = b_i (LSB =
+b0); 1 = execute normally, 0 = bypass the ENTIRE block as
+exact identity. ALL 256 masks, exactly once per checkpoint
+x population cell (4 cells, 1024 mask-cells); no sampling,
+no adaptive stopping, no post-hoc mask additions.
+
+BYPASS LAW (frozen): x_out = x_in by SKIPPING the
+ModuleList loop iteration. Never: zeroed weights, scaled
+residual branches, learned identity, norm edits elsewhere,
+checkpoint tensor modification. Final RMSNorm and LM head
+active for every mask; mask 00000000 = embedding -> final
+RMSNorm -> head and MUST execute. RoPE positions derive
+from sequence positions inside each executed block exactly
+as in the standing model (per-block recomputation from
+position 0), so skipping cannot desynchronize positions.
+The replay of the forward body asserts eval mode and passes
+attn_mask=None, relying on the model's is_causal=True SDPA
+path — never an explicit causal mask, which is semantically
+equivalent but can select a different mps kernel and shift
+floats (any added mask would silently change the frozen
+score law).
+
+SCORING LAW (verbatim per population's frozen assay): one
+teacher-forced forward per complete candidate batch
+(token_lps lineage: prompt + arm-specific serialization —
+CANONICAL = the stored factor_code, PARAM_FIRST = the
+payload re-derived at scoring time by pf_encode from
+scratch/mathworld1_svpforder.py (the single PERM-law
+source), with the three frozen per-candidate gates carried
+verbatim: factor_decode roundtrip, pf_decode roundtrip, and
+the PERM identity pz == [cz[PERM[i]] for i in range(8)] —
++ EOS, T = 9); no grad, no KV/incremental path, no sampling,
+no temperature; each population keeps its OWN frozen
+normalization (heldout: total-sum k=9 law; calibration:
+mean-lp law, full stop — mean = sum/9 is monotone but float
+division can CREATE ties, so the calibration assay's
+MEAN!=SUM-RANK and ORDER-MISMATCH checks run PER MASK in
+the calibration cells as disclosure flags beyond the full
+mask, since near-degenerate masks are exactly where ties
+concentrate); pessimistic strict-inequality top-1 (exact
+ties are losses). NO per-mask recalibration of any
+kind — masks alter network computation only.
+
+BASELINE COHERENCE GATE (frozen; tolerance-shaped per the
+standing no-bit-exact-mps-precondition law): before the
+cube opens for a cell, run mask 11111111 and compare its
+per-state top-1 decisions to the authoritative frozen raw
+reference (heldout raw ee0319f4c63396f7...; calibration raw
+deb7f59fe837423f...); MISMATCH METRIC = per-state top-1
+disagreement COUNT over the 96 states; TOLERANCE <= 1 STATE
+(integer; the svpdcl 5%-shape precedent transplanted to
+n=96 would license 4 flips — larger than the science's own
+2-state resolution — so the gate is tightened to the
+integer form, and a passing-but-nonzero gate is DISCLOSED
+beside every 2-state-scale reading in that cell). Reference
+top-1 decisions are RE-DERIVED from the frozen raws by each
+population's own law: the heldout raw stores per-token lps,
+decisions derived via the assay's cums + gold_top(cum, li,
+9); the calibration raw carries top1 directly. Breach =>
+STOP, book
+BASELINE-COHERENCE-FAILURE, no mask verdict. Exact totals
+85/78/94/93 are the EXPECTED outcome, reported, never a
+stricter gate. DESCRIPTIVE RIDER (never a bar, clear of the
+no-bit-exact law): max per-state absolute score deviation
+of the full mask v the frozen heldout raw lps — the
+quantity that detects float drift beneath unchanged
+top-1s.
+
+MASK-00000000 GATE: valid finite scores required; any
+non-finite log-probability ABORTS the run as instrument
+failure (no epsilon, no special normalization); exact ties
+remain losses.
+
+RAW FIRST: per checkpoint x population x mask x state
+persist checkpoint id, population id, mask bits + id,
+k, state id, complete candidate scores (or exact
+reconstruction data), gold index, top-1 correctness,
+reciprocal rank, gold-minus-best-rival margin, full-mask
+top-1 choice, agreement-with-full boolean, forward wall.
+Hash the raw mask-state evidence BEFORE any envelope or
+contrast is computed. Fresh refuse-if-exists namespace.
+
+PER-MASK OBSERVABLES (each of 256 masks x 4 cells): k,
+top-1 /96, MRR, agreement-with-full /96, mean
+gold-minus-best-rival margin, model wall. NO p-values
+anywhere — an exhaustive finite census, not a sampled
+inference.
+
+EFFECTIVE DEPTH (per cell, frozen): (1) BEST-k, (2)
+WORST-k, (3) MEAN-k over the C(8,k) masks, (4)
+DISTRIBUTION-k = per-k min / 25th pct / median / 75th pct /
+max top-1 plus the count of C(8,k) masks within 2 states of
+full (frozen statistics, no mid-run choice), (5)
+MINIMAL-FULL-PERFORMANCE k = smallest k with ANY mask
+matching-or-exceeding that cell's full-mask top-1 TOTAL
+(state-for-state identity separately reported, never
+required), (6) MINIMAL-NEAR-FULL k with the FROZEN
+tolerance = full-model top-1 minus 2 states on the same
+96-state population (frozen at the assessment, immutable),
+(7) the FULL INTEGER TOLERANCE CURVE (minimal k at
+tolerance 0, 1, 2, 3, ... states) — descriptive,
+sensitivity-exposing, never redefining (6).
+
+BLOCK NECESSITY (per cell): the 8 leave-one-out masks —
+top-1 delta v full, state-level lost AND gained
+correctness, MRR delta, margin delta; a deletion may
+IMPROVE the total, and no block books as "anti-useful"
+without the state-level anatomy. BLOCK SUFFICIENCY: the 8
+singleton masks, same metrics; all C(8,2) = 28 pair masks
+reported descriptively within the cube; no posthoc
+hand-selected short architecture is created.
+
+RESIDUAL-PATH REDUNDANCY METRICS (frozen vocabulary:
+RESIDUAL-PATH REDUNDANCY / EFFECTIVE DEPTH DISTRIBUTION;
+never "ensemble probability"): (A) fraction of the 256
+masks within 2 states of full; (B) that fraction by k; (C)
+count of masks matching the full TOTAL exactly; (D) count
+matching the full STATE-LEVEL top-1 vector exactly; (E)
+per-state mask robustness = fraction of the 256 masks on
+which the state stays correct; (F) per-state minimal active count among masks scoring
+that state correct, reported for every state whose
+correct-mask set is non-empty (states correct under no mask
+report null) — a mechanical rule, no identifiability
+judgement.
+
+REPRESENTATION CONTRAST (C v PF, per population): compare
+BEST/WORST/MEAN-k curves, minimal-full k, minimal-near-full
+k, near-full mask fraction, state-level mask robustness,
+leave-one-out sensitivity, singleton behavior; and, because
+mask identities are shared, PAIRED mask-level differences
+Delta_top1(mask) = top1_C(mask) - top1_PF(mask) with
+state-level disagreement anatomy. No judgement from a
+single envelope maximum.
+
+RESOLUTION FENCE (frozen, conservative, integer): if the
+principal effective-depth quantities (minimal-full k,
+minimal-near-full k) differ by only ONE active block, OR
+any envelope total differs by <= 2 STATES (the same frozen
+integer as the near-full law) without consistent
+paired-mask/state anatomy, book UNRESOLVED
+REPRESENTATION-DEPTH DIFFERENCE. A stronger reading
+requires MULTIPLE ALIGNED SIGNALS (lower minimal-near-full
+k AND materially larger near-full fraction AND consistent
+paired mask advantage across k AND/OR coherent
+block-deletion differences). Cross-checkpoint per-block
+differences report as paired per-state discordance counts,
+never bare totals. No numeric significance test is invented
+after the cube. NO DIRECTIONAL PRIOR AS A BAR: field order
+MAY change effective depth in either direction; a
+PF-shallower result is equally valid. KNOWN FIELD-ORDER
+CONTEXT (background only, never reclassifying this result):
+the 19001 realization booked ORDER-DAMAGE and exact k_step
+onset relocation — that is the token-position axis; this
+census measures the model-depth axis.
+
+EXECUTION ORDER (frozen): identical deterministic mask
+order id 0..255 in every cell; cell order (heldout, C) ->
+(heldout, PF) -> (calibration, PF) -> (calibration, C)
+(checkpoint order reversed between populations so
+checkpoint identity is not confounded with global warm
+order); wall is descriptive only and never affects mask
+selection; no order optimization after seeing wall or
+performance.
+
+EXPECTED COMPUTE (booked scale, measured at run time): 256
+x 2 x 2 x 96 = 98,304 state-batches; assessment estimate
+~18 min pure forward (the seed-19001 svpfoheld receipt books 2.1 s / 192
+state-batches; the 20001 sibling books the identical wall), well under 1 h Mac total.
+
+CLAIM CEILING (frozen): establishes only that, for these
+frozen checkpoints on these frozen populations, replacing
+the specified residual blocks by exact identity at
+inference changes ranking behavior by the measured amounts;
+characterizes effective depth, residual-path redundancy,
+and representation-dependent inference-time block reliance.
+CANNOT establish: training-time necessity of any block;
+that shallower retraining reproduces the function; a
+literal ensemble decomposition; broad Transformer behavior;
+broader calculus generality; closed-loop solve-rate
+effects; the causal mechanism by which field order shaped
+any depth profile.
+
+FENCED OUT of this census entirely: FACTOR/HASH (eligible
+later only per the assessment's conditions, with a
+same-init birth-receipt verification gate first);
+attention-only or MLP-only sublayer bypass; the 2^16 cube;
+block permutation; LayerDrop; ReZero; stochastic depth;
+register/pause tokens; any retraining; multi-seed pooling.
+
+REGISTERED PRIOR (house, before any mask exists): moderate
+redundancy in both arms (BEST-k within 2 states of full by
+k = 5-6; low-moderate); mask 00000000 and singletons far
+below full (high); at least one leave-one-out mask within 1
+state of full in every cell (moderate); C-v-PF
+depth-profile difference lands UNRESOLVED under the frozen
+fence at this single realization (moderate — the honest
+default given the resolution law); which blocks are most
+necessary differs between C and PF in at least one
+population (low). Wrong-in-public is the point.
+
+DECISION MAP (frozen): A. strong redundancy both arms =>
+redundancy live; profiles differ materially =>
+representation-depth mechanism is the next frontier;
+profiles match => field-order effects live elsewhere than
+whole-block depth. B. little redundancy both => park the
+effective-short-path analogy at whole-block granularity
+for this micro-model, curve as record. C./D. C or PF
+materially more redundant (per the multi-signal fence) =>
+field order affects effective computational depth at this
+realization; nominate seed-20001 replication BEFORE any
+broader architectural claim. E. similar envelopes,
+different per-block necessity => field order relocates
+computation across depth without changing total effective
+depth. F. baseline coherence failure => instrument first,
+no scientific mask verdict. (Letter map v the assessment's
+Q15: GO A->A, B->B, D->E here, E->A's profiles-match
+clause; GO C (FACTOR/HASH) is fenced out entirely; C/D/F
+here are this prereg's additions.)
+
+ORDER: freeze (this entry) -> fresh-context prereg audit ->
+commit/push/index/census -> STOP. Nothing executes under
+this GO. Next eligible GO if clean:
+MATH-CYBER-1-RESIDUAL-PATH-CENSUS-0.
+
+FENCES. PREREG ONLY (no checkpoint loaded, no mask
+evaluated, no curve computed); Mac/mps at run time (hashed
+raws the record; the coherence gate is tolerance-shaped,
+never bit-exact); single seed/realization; two populations
+scored under their own frozen laws, never cross-compared as
+one number; every future claim grounded in its own run's
+tool output.
+
