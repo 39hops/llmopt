@@ -61698,3 +61698,205 @@ receipt + riders force-added small-text; dual audit
 independent raw reconstruction) before booking; every claim
 grounded in THIS run's tool output.
 
+## OBSERVATION MATH-CYBER-1-RESIDUAL-PATH-ROUTING-REPLICATION-ASSESSMENT-0: GO SEED20001 RESIDUAL-PATH REPLICATION (house recommendation, Artin's call) — the full 256-mask cube is RUNNABLE at seed 20001 with ZERO regeneration: both checkpoints, the shared init, and frozen full-model scoring raws for BOTH populations exist under the exact corresponding score laws (heldout raw 18f27b66..., calibration raw 5df6ee83...; booked baselines heldout C 80 / PF 87, calibration C 85 / PF 91 — the ORDER-REVERSAL realization), so the seed-19001 census laws transfer verbatim at ~10.5 min measured-precedent compute; the routing-replication endpoint is frozen BLOCK-LABEL-AGNOSTIC (representation-dependent block reliance may replicate, not-resolve, or RECONFIGURE — exact block identities are free to change, and the registered mechanism prior is RECONFIGURATION, not block 1 again); ASSESSMENT ONLY — no 20001 checkpoint loaded, no mask evaluated (2026-09-01, Mac)
+
+ASSESSMENT under GO ...ROUTING-REPLICATION-ASSESSMENT-0,
+adopting VERDICT RESIDUAL-PATH-CENSUS-0 (L61504, b728bd51).
+All pins and baselines below read from authoritative
+receipts in this session; nothing was loaded or evaluated.
+
+(1) AUTHORITATIVE 20001 CHECKPOINTS (full shas from the
+svpfoheld20 receipt, never filenames):
+  CANONICAL checkpoints/svp_forder_canonical_s20001.pt
+  0a841a5f2a43b6f64b0dac8259c26fd79961e6ab91359a54be9c2582
+  815b3e34
+  PARAM_FIRST checkpoints/svp_forder_paramfirst_s20001.pt
+  b7198ff2e7b903ab5ed075fe947cb29142c5790ec84831434c53a598
+  e466c322
+  shared init_pin 7c95e77f8d7ccea5f4dd71c989e4d3225e347a17
+  8032d43539a1ae6ef62c9452 (birth receipt
+  svpforepl_s20001_receipt.json, pin 70ff3248... in the
+  booked stage-3 instrument). Training-law identity,
+  token-multiset equality, and field-order-only treatment
+  are the booked REPLICATION stage-1 facts (L57681:
+  init-only replication, fresh-context semantic diff clean,
+  74,860 rows re-gated, 884,736 roundtrips) — re-gated at
+  prereg time from the birth receipt, not asserted anew.
+
+(2) FROZEN POPULATIONS + RAWS: the SAME two sealed
+populations as the 19001 census (heldout_test16 a3f6103b
+with the heldout-I1 96-filter; covered_calibration
+af1a4aa1). Authoritative seed-20001 full-model scoring raws
+EXIST for both under the exact corresponding laws:
+  heldout: logs/mathworld1/svpfoheld20/raw_token_scores
+  .jsonl (18f27b666ce54c5402abff746e696f9b8c35c94235d096a0
+  60f97cf015aae17f) — per-token lps, same schema as 19001,
+  so the drift rider carries too;
+  calibration: logs/mathworld1/svpfocal20/scores.jsonl
+  (5df6ee83ff684920395d634a3f6f8ba9c6b7c96f5805540c8b8cef
+  c25f968ddf) — per-state top1/rank/mean_lp/sum_lp per arm,
+  same schema as svpfocal.
+NOTHING needs regeneration — the artifact set is complete
+(the census OUTCOME is of course the unmeasured endpoint).
+
+(3) BOOKED 20001 RANKING BASELINES (ranking, never
+free-generation or legal-trie numbers): heldout C 80/96,
+PF 87/96 (the booked ORDER-REVERSAL realization, L57839);
+calibration C 85/96, PF 91/96 (calibration FIRED, L57773).
+Note the baseline geometry INVERTS v 19001 on BOTH
+populations (heldout: 19001 C 85 > PF 78, 20001 PF 87 >
+C 80; calibration: 19001 C 94 > PF 93, 20001 PF 91 >
+C 85) — which makes the ceiling/baseline-quality fence
+(11) doubly mandatory.
+
+(4) SCOPE: FULL 256-MASK CUBE, not a targeted panel. The
+19001 cube cost 631.7 s; a block1/block3 panel would save
+~10 minutes while importing exactly the confirmation-bias
+hazard the GO names; exhaustive masks also let the
+TASK-DEPTH result replicate or break on its own terms. No
+operational blocker exists. Recommendation: full cube.
+
+(5) LAWS: the seed-19001 census laws transfer VERBATIM —
+same 256 masks and bit convention, same loop-skip identity
+bypass, same two populations and filters, same
+per-population score laws (heldout total-sum / calibration
+mean-lp with per-mask tie disclosures), same pessimistic
+top-1, same raw-first receipt shape, same <= 1-state
+integer coherence gate against the 20001 raws, same
+effective-depth statistics and frozen within-2-states
+near-full tolerance, same C-v-PF integer resolution fence.
+The ONLY deltas: the FIVE reference pins (2 checkpoints +
+shared init + 2 frozen raws) and the four booked baseline
+totals (80/87/85/91).
+Named now; nothing else may change.
+
+(6) TWO FROZEN ENDPOINT LEVELS: (A) EFFECTIVE DEPTH — does
+C-v-PF again book UNRESOLVED, or does a genuine depth
+difference emerge at 20001 (either outcome is a result)?
+(B) ROUTING — do the arms show materially different
+leave-one-out / singleton / paired-mask dependence on
+SPECIFIC block identities, with the identities free to
+differ from 19001? "Block 1 v block 3 again" is never the
+endpoint.
+
+(7) BLOCK-LABEL-AGNOSTIC ROUTING LAW (preregisterable
+shape; exact truth table frozen at prereg): per cell derive
+the deletion-sensitivity vector D_r (8 leave-one-out top-1
+deltas) and singleton vector S_r; compare C v PF on (i)
+identity of the maximum-necessity block, (ii) magnitude of
+the max deletion cost, (iii) the paired per-state
+discordance count at each arm's own max-necessity block
+(the 19001 form: 31/25/20-state concordance-broken counts),
+(iv) a frozen distance between the C and PF sensitivity
+vectors (candidate: L1 distance on D_r, plus whether the
+argmax blocks differ), (v) whether each representation has
+a distinct load-bearing block/set. CLASSIFICATION
+(candidate labels, truth table owed to the prereg):
+ROUTING-REPLICATES = representation-dependent block
+reliance again materially separated (argmax blocks differ
+between C and PF AND the paired discordance at each argmax
+clears a frozen integer floor), REGARDLESS of whether the
+winning block ids equal 19001's; ROUTING-NOT-RESOLVED =
+C/PF sensitivity profiles too similar (below the frozen
+floors); ROUTING-RECONFIGURES = a SUB-label of
+ROUTING-REPLICATES recording that the representation-to-
+block mapping changed v 19001 (descriptive, never a
+failure); ROUTING-SHARED/CONVERGED = the uncovered fourth
+cell frozen here as its own label — BOTH arms' argmax
+blocks IDENTICAL while both discordances clear the floors
+(strong shared reliance, a meaningful outcome, neither
+replication nor non-resolution). The integer floors (candidate: max deletion cost
+>= 8 states in at least one population per arm; paired
+discordance >= 10 states) must be frozen at prereg BEFORE
+any 20001 mask exists, alongside the complete truth table.
+
+(8) INITIALIZATION-CONDITIONED MECHANISM PRIOR (registered
+at prereg, directional, wrong-in-public welcome): because
+the booked seed-20001 credit anatomy routes PF's token-level
+discrimination through RULE rather than PARAM (the
+initialization-dependent AUTOREGRESSIVE CREDIT ROUTING
+observation, L57971), the nominated prior is
+RECONFIGURATION — PF 20001's dominant residual block
+plausibly differs from PF 19001's block 1 — with NO mapping
+from token-block to a particular Transformer layer (no
+evidence licenses one). The prediction that matters is
+reconfiguration-under-preserved-separation, not a layer
+number — and the prior's warrant is explicitly an ANALOGY
+between two different block axes (output-position credit v
+residual-depth sensitivity), labeled as such.
+
+(9) TASK-DEPTH REPLICATION TARGET (separate, frozen):
+19001 gave heldout-shallow (min-full k 1-2) v
+calibration-deep (k 5). Candidate law for the prereg:
+TASK-DEPENDENT EFFECTIVE DEPTH REPLICATES iff the strict
+ordering minimal-full-k(calibration) >
+minimal-full-k(heldout) holds within BOTH 20001 arms (each
+arm contributes one heldout-v-calibration comparison): 2/2
+arms = REPLICATED, 1/2 = PARTIAL, 0/2 = NOT-REPLICATED. No pooled p-value — integer cell counts
+only, frozen before execution.
+
+(10) FULL-MODEL-NOT-BEST RIDER (descriptive replication
+target): count of cells where some ablated mask beats the
+full model, the maximum improvement, and the k of the best
+mask — reported beside the 19001 record (3/4 cells, +8 max —
+heldout PF's k=1 singleton over its full 78 — and
+calibration-C 96/96 at k=5), never converted into a
+pruning recommendation.
+
+(11) BASELINE-QUALITY FENCE (mandatory, doubly so here):
+relative-to-full effective depth and absolute accuracy are
+SEPARATE quantities; every min-k books beside its cell's
+full total AND the cell's envelope maximum (the 19001
+ceiling disclosure carried forward). At 20001 the weak
+heldout baseline is C (80), not PF — the fence's direction
+flips with the ORDER-REVERSAL realization, and a mask
+"reaching full" against C-80 is weaker evidence than
+against PF-87.
+
+(12) FACTOR/HASH GATE (not executed here): routing
+separation replicating across both initializations =>
+representation-dependent residual routing strengthens and
+FACTOR/HASH tests generality across representation TYPE;
+routing disappearing => 19001 routing is
+initialization-specific and the FACTOR/HASH question
+becomes representation x initialization geometry; routing
+reconfiguring under preserved separation =>
+initialization-conditioned route selection is the live
+mechanism. Each outcome names a different FACTOR/HASH
+prereg; none launches without its own GO.
+
+(13) CLAIM CEILING: two independently trained
+initializations, same treatment/data/populations — a
+replication can strengthen reproducibility-across-two-
+realizations statements only; it cannot establish general
+Transformer behavior, training necessity, universal layer
+roles, closed-loop effects, or WHY particular layers are
+selected.
+
+EXPECTED COMPUTE: identical shape to the 19001 census —
+98,304 state-batches; the measured 19001 precedent is
+631.7 s (~10.5 min) wall for the whole cube on this Mac;
+comparable wall expected.
+
+SMALLEST SUCCESSOR (ONE, nominated, NOT frozen): PRE-REG
+MATH-CYBER-1-RESIDUAL-PATH-ROUTING-REPLICATION-PREREG-0 —
+seed-20001 C/PF pair, same two populations, full 256-mask
+cube under the verbatim 19001 census laws with the four
+named pin/baseline deltas, the block-label-agnostic routing
+truth table with frozen integer floors (7), the task-depth
+replication law (9), the mechanism prior (8), the
+baseline-quality fence (11), and the standing driver laws:
+the 20001 driver is an adopt-not-fork copy of the
+results-cited scratch/mathworld1_respath.py committed
+BEFORE any mask outcome, receipt-auditor runs on the copied
+driver's first real receipts, and all outputs land in a NEW
+refuse-if-exists namespace (never appended into the frozen
+19001 census path). Nothing executes under this GO.
+
+FENCES. ASSESSMENT ONLY (no 20001 checkpoint loaded, no
+mask evaluated, no new number measured — pins/baselines
+read from booked receipts); two-seed scope ceiling; no
+pooling across seeds without its own prereg; FACTOR/HASH,
+sublayer cube, permutation, and retraining all stay out;
+every future claim grounded in its own run's tool output.
+
