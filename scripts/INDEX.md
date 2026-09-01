@@ -2884,6 +2884,18 @@ MATH-CYBER-1 REGRET-WALLLIFT-0 (PRE-REG booked at d30e84f4). Closure re-read of 
 - `_finish(eid, outcome, solved, stats, walls, sink, ladder_solves, table, scorer)`
 - `main()`
 
+### scratch/mathworld1_respath.py
+MATH-CYBER-1 RESIDUAL-PATH-CENSUS-0 — exhaustive 2^8 = 256 whole-block passthrough census (frozen prereg 5b48c02a2c32a1f72f385f4c0e36cbdc279cb73b, RESULTS L61222).
+
+- `fsha(p) -> str`
+- `ctup(c)`
+- `load_pop(pop)`
+- `masked_token_lps(model, dev, cur, conts, mask_id)` — token_lps law with a whole-block mask: skipped blocks
+- `heldout_ref_top1(arm)` — Re-derive per-state top-1 from the frozen heldout raw
+- `calibration_ref_top1(arm)`
+- `score_state(lps, pop, label)` — Per-state scores + top1 + rr + margin under the
+- `main()`
+
 ### scratch/mathworld1_retrolabel.py
 MATH-CYBER-1 RETRO-LABELER-QUAL-0 — failure-triggered retrospective-credit labeler, mechanism qualification on outcome-spent data (PRE-REG MATH-CYBER-1-RETRO-LABELER-QUAL-0, booked at 61fdbc96).
 

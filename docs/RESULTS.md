@@ -61501,3 +61501,200 @@ scored under their own frozen laws, never cross-compared as
 one number; every future claim grounded in its own run's
 tool output.
 
+## VERDICT MATH-CYBER-1-RESIDUAL-PATH-CENSUS-0: TASK-DEPENDENT EFFECTIVE DEPTH with REPRESENTATION-ROUTED BLOCKS — perfect baseline coherence in all four cells (0/96 mismatch, exact booked totals 85/78/93/94, heldout drift 0.0), then the cube separates cleanly by POPULATION, not by representation: strict-heldout ranking is SHALLOW (minimal-full k = 2 CANONICAL / k = 1 PARAM-FIRST — the single-block-1 mask scores 86/96, EIGHT STATES ABOVE the full model's 78) while covered calibration is DEEP (minimal-full k = 5 in both arms, near-full fraction 3.1-3.5% v 19-25% heldout); the C-v-PF depth quantities differ by at most one block and book UNRESOLVED under the frozen fence, but the ROUTING difference is large and consistent — PARAM-FIRST's computation runs through BLOCK 1 (deleting it costs 32/96 calibration states, 31 paired-discordant v C; its singleton alone scores 86-87) while CANONICAL's runs through BLOCK 3 (deletion -25 calibration, 25 paired-discordant; singleton 85) — the frozen map's reading E: field order relocates WHERE computation lives across depth without changing total effective depth; and the full model is NOT the envelope maximum anywhere except one cell — masks beat it by up to +7 heldout (92/96 at k=6) and calibration CANONICAL k=5-6 masks reach 96/96 PERFECT (2026-09-01, Mac)
+
+Per PRE-REG MATH-CYBER-1-RESIDUAL-PATH-CENSUS-PREREG-0
+(5b48c02a). Driver scratch/mathworld1_respath.py committed
+BEFORE any mask outcome (7ce96e37); pre-run fresh-context
+verifier found ONE blocker — the two frozen-raw reference
+pins had fabricated tails reconstructed from the prereg's
+published prefixes (the derived-never-literal class, caught
+at the gate design + audit exactly as built) — replaced with
+the receipt-derived full shas, plus five should-fixes folded
+(MEAN-k; paired per-block per-state discordance; gold index
++ agreement boolean in raw rows; full-precision sums;
+mask-255 wall carried), all at 2fbf0c2c. ONE run (rc=0,
+wall 631.7 s): 256 masks x 2 checkpoints x 2 populations =
+1024 mask-cells, 98,304 state-batches, raw streamed and
+hashed (9adbb8ae...) BEFORE any envelope.
+
+1) BASELINE COHERENCE (gate <= 1/96, frozen): ALL FOUR
+cells 0/96 top-1 mismatches v the frozen raw references,
+full-mask totals EXACTLY the booked 85 / 78 / 93 / 94, and
+the heldout max per-token score drift = 0.0 — bit-identical
+re-inference on this stack in this realization (reported as
+this run's measurement, not a determinism claim). Mask
+00000000 executed with finite scores in all cells (top-1 0
+everywhere, as expected).
+
+2) PRIMARY EFFECTIVE DEPTH (per cell; near-full = within
+the frozen 2 states):
+                     full  min-full-k  min-near-k  frac<=2
+  heldout    C        85       2           2        25.0%
+  heldout    PF       78       1           1        19.1%
+  calibration C       94       5           4         3.1%
+  calibration PF      93       5           5         3.5%
+CEILING DISCLOSURE (mandatory reading guard): min-full-k
+benchmarks each arm against ITS OWN full total, and the
+full model is not the best mask in 3 of 4 cells — the best
+masks reach 92 (heldout C, 20 masks exceed full), 86
+(heldout PF, 42 masks exceed), 96 (calibration C, 3
+exceed), 93 (calibration PF, 0). Heldout PF's k=1 is
+therefore partly a WEAK-BASELINE artifact (a single block
+beats its 8-block model by 8), and the arms are benchmarked
+against different bars — which STRENGTHENS the UNRESOLVED
+depth verdict below. The cube separates by TASK: the
+strict-heldout ranking (select the withheld combination
+among designed rivals) is computable by 1-2 blocks; the
+covered-calibration task needs 4-5. Redundancy census: heldout C has 30/256 masks
+matching the full TOTAL and 27/256 matching the full
+STATE-LEVEL vector exactly; heldout PF 3 and 1; calibration
+3-4 and 2 (all counts include the full mask itself).
+
+3) C-v-PF REPRESENTATION VERDICT (frozen fence applied
+mechanically): every principal depth quantity differs by AT
+MOST ONE BLOCK (min-full 2 v 1 heldout, 5 v 5 calibration;
+min-near 2 v 1, 4 v 5) => UNRESOLVED REPRESENTATION-DEPTH
+DIFFERENCE — and the multi-signal conjunction fails on its
+own terms: the min-k signal FLIPS DIRECTION between
+populations (PF shallower on heldout, C shallower on
+calibration near-full) and the near-full fractions run
+OPPOSITE to the min-k signal in both populations; the
+uniform paired C-advantage (positive mean delta at every k)
+traces to C's higher full totals, a quality gap, not a
+depth signal. The depth PROFILES are not separated at this
+realization. The ROUTING anatomy, however, is the frozen
+map's reading E (field order relocates computation across
+depth without changing total effective depth), carried by
+multiple aligned per-block signals, not one envelope:
+  PF runs through BLOCK 1: leave-one-out block-1 costs -32
+  calibration states (v the next-worst -8) and -8 heldout
+  (the only large heldout deletion cost); the paired
+  discordance is 31 calibration / 20 heldout states where
+  PF-minus-block-1 loses while C-minus-block-1 keeps; PF's
+  block-1 SINGLETON scores 86 heldout / 87 calibration.
+  C runs through BLOCK 3 (with block 2 secondary): deletion
+  -25 calibration (25 paired-discordant states v PF), -10
+  block 2; C's singletons 2/3/4/5 score 65/64/57/57 heldout
+  and 50/85/51/57 calibration — a BROADER singleton profile
+  than PF's one-hot block 1.
+This is the depth-axis companion to the booked k_step
+finding (PF moved token-level discrimination to position 3;
+here PF concentrates model-level computation in block 1).
+The routing counts (20/25/31 of 96) sit far outside the
+instrument's slack (exhaustive census, drift exactly 0.0) —
+but they are ONE REALIZATION (seed 19001): the decision
+map's seed-20001-replication clause is imported to reading
+E explicitly, and no architectural claim books on n=1.
+
+4) ENVELOPES (BEST-k, per cell): heldout C 0/65/85/87/90/
+91/92/91/85 for k=0..8 — the k=6 maximum 92 sits SEVEN
+STATES ABOVE the full model; heldout PF 0/86/85/85/85/86/
+86/86/78 — best-k ~flat from k=1 and ALWAYS above the full
+78 (deleting blocks helps the ORDER-DAMAGED arm's heldout
+ranking); calibration C 0/85/89/89/93/96/96/95/94 — k=5 and
+k=6 masks reach 96/96 PERFECT; calibration PF 0/87/87/87/
+87/93/93/93/93. MEAN-k rises smoothly in all cells (e.g.
+cal C 33/47/62/73/79/83/87/94) — graceful degradation, the
+qualitative redundancy signature, with the sharp caveat
+that the ENVELOPE maxima exceeding full mean some block
+subsets actively harm these frozen functions.
+
+5) BLOCK NECESSITY (leave-one-out top-1 deltas v full):
+  heldout C: +1/+6/0/0/0/+3/+1/0 — NO deletion hurts;
+    deleting block 1 GAINS six states. Delta-0 blocks are
+    NOT all inert: block 7's 0 is lost-6/gained-6 churn
+    (blocks 2/3/4 are genuinely 0/0).
+  heldout PF: +5/-8/+5/+8/+3/-3/0/+4 — block 1 (and mildly
+    5) load-bearing; four deletions IMPROVE.
+  calibration C: -7/0/-10/-25/-4/+1/-7/-5 — block 3
+    dominant, blocks 2/0/6/5 material.
+  calibration PF: -8/-32/-4/-2/-7/-3/-1/0 — block 1
+    dominant by far.
+Deletion improvements are booked literally with state
+anatomy in the receipt; no block is called anti-useful
+beyond the measured deltas.
+
+6) SHORT-PATH ANATOMY: heldout PF's singleton block 1 (86)
+and calibration C's pair/quad structure (best k=2 89, k=4
+93) are the sharpest short paths; all 8 singletons and 28
+pairs booked per cell in the receipt/riders.
+
+7) STATE-LEVEL ROBUSTNESS: per-state mask-survival
+fractions and per-state minimal-k persist in riders.json.
+Metric F is NEAR-DEGENERATE as recorded: zero nulls, max
+per-state minimal-k of 1-2 in every cell — essentially
+every state is correct under SOME 1-block mask, so F
+carries little information and is never read as "minimum
+depth per state = 1" (at low k the ranking degenerates
+toward token-prior structure: the mask-0 per-state RR
+vectors are IDENTICAL across the two disjoint populations —
+audited as a genuine zero-depth token-prior collapse, not a
+leak; sums differ, populations verified disjoint 0/96).
+
+8) CALIBRATION MEAN-v-SUM DISCLOSURES (auditor-recomputed
+from raw, booked here since the receipt carries the flags
+only in raw rows): ZERO order mismatches and ZERO rank
+mismatches over all 49,152 calibration state-instances
+(512 mask-cells) — float division created no tie or order
+event anywhere in the cube. Calibration drift rider is
+null by scope (the frozen calibration raw stores top1
+only, no lps; the rider is heldout-scoped as registered).
+
+9) COMPUTE: 631.7 s wall for the full cube (98,304
+state-batches + coherence passes), one load per checkpoint,
+zero backward passes — inside the assessed under-an-hour
+envelope.
+
+10) CLAIM CEILING (frozen, verbatim scope): these are
+INFERENCE-TIME facts about two frozen trained functions on
+two frozen populations — replacing the named blocks by
+exact identity changes ranking behavior by the measured
+amounts. NOT established: that bypassed blocks were
+unnecessary during TRAINING; that shallower retraining
+reproduces the function; a literal ensemble decomposition;
+broad Transformer behavior; broader calculus generality;
+closed-loop solve-rate effects; the causal mechanism by
+which field order produced the block-1/block-3 routing.
+
+REGISTERED-PRIOR ACCOUNTING: moderate redundancy both arms,
+BEST-k within 2 by k=5-6 — RIGHT in direction, UNDERSOLD
+(heldout hits full at k=1-2; calibration near-full at 4-5);
+singletons far below full — WRONG for heldout PF (singleton
+86 > full 78) and heldout C block-2 (65); a leave-one-out
+within 1 state of full in every cell — RIGHT (heldout C/PF
+and cal PF block-7 0-deltas; cal C block-5 +1); C-v-PF
+UNRESOLVED under the fence — RIGHT; per-block necessity
+differs in at least one population — RIGHT, in BOTH, and
+larger than predicted (32-state v 25-state one-block
+concentrations).
+
+DECISION MAP (frozen row selected mechanically): reading E
+— field order relocates computation across depth (block 1 v
+block 3) without materially changing total effective depth;
+plus the strong redundancy limb of A on the heldout task.
+Per the map, the representation-depth mechanism did NOT
+separate (UNRESOLVED), so the high-value follow-ups the map
+licenses are (i) seed-20001 replication of the ROUTING
+anatomy before any architectural claim, and (ii) the
+FACTOR/HASH contrast, now eligible under the assessment's
+condition (nontrivial residual-depth structure exists) —
+each requiring its own GO and prereg. The envelope-exceeds-
+full anatomy (deletion improvements up to +7-8, calibration
+96/96 masks) is booked as measured fact with NO deployment
+or training claim.
+
+FENCES. Single seed/realization (19001), no pooling; the
+depth-axis v token-position-axis interaction stays
+confounded as registered; exhaustive census — no p-values,
+no sampling error, but 1-2-state differences sit inside the
+instrument's own coherence slack and are never read as
+directional; the 0/96 coherence and 0.0 drift are THIS
+run's measurements, not determinism claims; raw
+raw_census.jsonl (19 MB) stays
+UNTRACKED per logs doctrine anchored by raw_census_sha,
+receipt + riders force-added small-text; dual audit
+(pre-run verifier incl. the fabricated-pin catch + post-run
+independent raw reconstruction) before booking; every claim
+grounded in THIS run's tool output.
+
