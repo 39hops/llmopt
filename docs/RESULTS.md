@@ -60817,3 +60817,174 @@ ORDER: freeze (this entry) -> fresh-context prereg audit ->
 commit/push/index/census -> STOP. Next eligible GO if
 clean: MATH-CYBER-1-CLOSED-LOOP-1-SEARCH-COST-PROXY-DESK-0.
 
+## VERDICT MATH-CYBER-1-CLOSED-LOOP-1-SEARCH-COST-PROXY-DESK-0: NO-CLEAN-CHEAP-PROXY — zero of the three frozen string proxies satisfies the frozen conjunction at any grid lambda, and the failure is entirely the NEGATIVE CONTROL, not focus power: at lambda 4 ALL THREE proxies demote all four expand focus roots with collateral only 4-5/91, but root 23's baseline choice is ITSELF expand with a 0.086-nat score margin, so every expansion penalty flips it at lambda 0.25-0.5 (two orders below the 4/4 threshold) — and the "failing" flip lands on i_usub, the exact action that SOLVED root 23 in the engine arm; the mechanical result books as frozen with no relaxation, the confirmation gate is BLOCKED, and the Pareto anatomy plus a perfect-completeness P4/hce sweep (687/687 children; Spearman P1 .74 / P2 .70 / P3 .87, no surrogate inversion) become the development record (2026-09-01, Mac)
+
+Per PRE-REG MATH-CYBER-1-CLOSED-LOOP-1-SEARCH-COST-PROXY-
+DESK-PREREG-0 (4dab4fc2). Driver
+scratch/mathworld1_cl1cost.py committed BEFORE any joined
+table (76a247c6); pre-run fresh-context verifier: no
+blockers, five should-fixes folded at fe9b9244 (baseline
+gate hoisted above namespace creation; equal v higher cost
+displacement split; registered P4/outcome riders
+implemented; hce tie-law disclosure; timing comparison +
+global sweep deadline). DEVELOPMENT ONLY on the known
+96-root population; no rollout, no model forward, no
+training, no encoder repair, no solve-rate claim.
+
+QUALIFICATION (green): positional prefix join 96/96 (root
+93's 10-legal/9-candidate prefix behaves as frozen); parent
+structural gates terms=1 and integral_count=1 on 96/96;
+677-candidate deduplicated scored universe exact; all proxy
+values finite; baseline top-1 == booked chosen_index on all
+95 scored roots; lambda-0 identity gate green.
+
+NORMALIZATION (outcome-blind, frozen law): q_P1 =
+1.1396393352038474; q_P2 = q_P3 = 1.252762968495368 (90th
+pct of |C_j| over the 677, numpy linear interpolation).
+
+RAW FIRST: the complete 3-proxy x 11-lambda reranking
+artifact (95 rows + root-93 proxy-only census) hashed
+b809337d... BEFORE selection; sweep artifact hashed
+eb5d7ae5... separately after selection sealed.
+
+MECHANICAL RESULT: NO-CLEAN-CHEAP-PROXY. Survivor census
+empty — no proxy has any grid lambda with FOCUS_DEMOTION
+4/4 AND root-23 preserved. PROXY-DEGENERACY DISCLOSURE:
+C2 == C3 on 421/687 candidates and q_P2 == q_P3 exactly, so
+the grid effectively tested ~2-and-a-fraction independent
+proxy directions, not three — the negative is a
+correspondingly narrower sweep than "three families" reads.
+Structure of the miss (the sharpest development fact):
+  FOCUS SIDE WORKS: at lambda 4, P1/P2/P3 each demote ALL
+  FOUR focus roots {54, 68, 78, 88} (first-demote lambda 4
+  in every cell; zero equal-cost and zero higher-cost
+  displacements anywhere on the grid), replacing expand
+  with the i_transcend_div child in every case, at
+  collateral 5/91 (P1: {20, 23, 37, 76, 94}), 4/91 (P2:
+  {20, 23, 85, 94}), 4/91 (P3: {20, 23, 76, 94}).
+  CONTROL SIDE FAILS EVERYWHERE: root 23's baseline model
+  choice is ALSO expand (C1 0.4437, C2/C3 0.4055) sitting
+  on a 0.0864-nat margin — the smallest nonzero grid lambda
+  already flips it (P1 at 0.25; P2/P3 at 0.5), so the
+  conjunction is unsatisfiable on this grid; root 23 stays
+  flipped at every lambda that achieves 4/4.
+  DESCRIPTIVE TWIST (booked as anatomy, not a relaxation):
+  root 23's control-failing flip target is
+  i_usub@... — the exact action that solved root 23 in the
+  ENGINE arm (2 decisions), and root 94's early flip (P1/P2
+  0.5, P3 0.25) lands on i_unprod@... — its engine-arm
+  action too. The frozen control law scores flips as
+  failures regardless of where they land; that law was the
+  right prospective choice and is not relaxed here — but
+  the measured failure mode is "the penalty moves
+  known-loss roots onto their engine-solving actions",
+  which the next design must reckon with. SCALE FENCE: the
+  entire conjunction failure hinges on ONE root's 0.086-nat
+  margin — n=1, far inside noise for any shape claim;
+  "root 23 is genuinely un-preservable" is NOT established,
+  only that THIS grid on THIS realization never satisfies
+  the frozen conjunction.
+
+FOCUS TABLE (per frozen law): booked expand top1-top2 gaps
+5.43 / 6.15 / 2.64 / 2.81 nats on {54, 68, 78, 88}; harmful
+C1 1.43-1.74, replacement C1 negative to ~0; first genuine
+demotion lambda = 4 for all proxies on all four roots.
+
+PROXY TIMING (measurement, replacing the estimate): 687
+candidates, total 6.3 ms, mean 8.7 us / median 6.1 us / max
+165 us per candidate — ~6 orders below the standing
+engine-side costs (booked depth-0 enumeration median 4.07 s;
+model scoring 0.69 s/call), so P1-P3 deployability is
+confirmed on cost grounds even though no proxy advanced.
+
+P4/HCE SWEEP (post-selection, fork-per-root, 1900.6 s):
+COMPLETE — 96/96 roots, 687/687 children measured, zero
+missing (no process-relativity miss in this realization),
+zero deadline skips. P4 DIAGNOSTIC VALIDITY: Spearman v P4
+over all 687 children = P1 .7425 / P2 .6988 / P3 .8662 —
+the string proxies track exact child branching, P3
+strongest; surrogate-failure flag not applicable (no
+winner), and no inversion is present on the focus class.
+P4 PROCESS-RELATIVITY (audit-measured): 2 of 6 spot-replayed
+children reproduce DIFFERENT sizes in a fresh process (root
+75 pos 2: 20 v 18; root 94 pos 0: 45 v 47; both recorded
+child_stable) — the stability law certifies within-call
+stability only, so every P4 number here is PROCESS-RELATIVE,
+not a reproducible constant (consistent with the booked
+root-94 45-v-47 scope note).
+Placement: booked expand children carry P4 4.6-12.7 on the
+focus roots (set maxima 7.5-16.2); root 23's whole set
+spans P4 1.125-1.25 (expansion is structurally absent
+there); root 94's i_sum child P4 6.67 (set max 15.0).
+HCE-agreement rider: empty by law (defined only for a
+selected winner).
+
+READING (inside the frozen ceiling): on this development
+population the cheap string proxies are VALID expansion
+surrogates (P4 correlations .70-.87, zero focus
+mispricing, microsecond cost) and the lambda~4 region
+achieves exactly the intended surgical demotion of the four
+landmines — but the frozen selectivity control is
+unsatisfiable because the control root's pathology is not
+DISJOINT from expansion: root 23's cycle loss travels
+through a thin-margin expand choice too. The desk therefore
+establishes that the SELECTION LAW's control, as frozen,
+conflates "penalty is indiscriminate" with "control root
+shares the penalized feature". No relaxation under this
+rung; any revised control law (e.g. a non-expand control
+root, or a margin-stratified control) is NEW DESIGN
+requiring its own prereg.
+
+CONFIRMATION GATE: BLOCKED mechanically (gate (a) fails —
+no surviving proxy). Nothing transports; no fresh
+population may be materialized on this desk's authority.
+
+REGISTERED-PRIOR ACCOUNTING: P1 passes at lambda 3-6 —
+HALF-RIGHT (4/4 focus demotion does arrive at lambda 4, but
+the conjunction never passes); root 23 preserved at those
+lambdas — WRONG (flips at 0.25, the margin arithmetic was
+the miss: 0.086 nats v the predicted robustness); P2 ~ P1 —
+RIGHT; P3 flips root 94 earliest (0.25 v 0.5) — RIGHT;
+collateral <= ~10 at selected lambda — RIGHT in the region
+(4-5/91 at lambda 4).
+
+CLAIM CEILING (frozen, verbatim scope): this establishes
+ONLY that, on the already-known development population, the
+prospectively specified proxies + selection rule CANNOT
+jointly demote the four known search-expansion failures
+while preserving the frozen negative control. NOT
+established: improved or worsened solve rate; fresh
+generalization; universal search-cost awareness;
+cycle/topology correction; hce equivalence; causal
+sufficiency of branching; lambda optimality; that a
+different control law would or would not pass.
+
+FENCES. DEVELOPMENT/posthoc-mechanism maturity;
+known-population only, outcome-conditioned focus/control
+designations as frozen; zero inferential applications; the
+sstr float-exponent hazard is LATENT here (0 hits over 687
+children + 96 parents for the [0-9]e[-+][0-9] pattern) and
+must be re-checked on any future population before the
+frozen terms() law transports; the 4/4 focus count is a
+deterministic 4-root census carrying no sampling error and
+is never read as a rate; hce-agreement tie law is the
+reconstructed (hce, name, sstr) argmin, disclosed; ALL FOUR
+desk artifacts are small text (rerank 204K, sweep 68K,
+receipt 20K, riders 4K) and are force-added under the
+small-text-receipt exception, with rerank_sha/sweep_sha in
+the receipt anchoring them; dual
+audit (pre-run verifier + post-run independent
+reconstruction) before booking; every claim grounded in
+THIS run's tool output.
+
+NEXT (stated, NOT launched, Artin's call): the frozen
+decision map ends here — NO-CLEAN-CHEAP-PROXY books and the
+Pareto record stands. Candidate successor DESIGNS (each
+needing its own prereg): (a) a revised selectivity law with
+a control that does not share the penalized feature; (b) a
+margin-aware penalty (the 0.086-nat control margin v
+2.6-6.1-nat focus margins is the discriminating structure
+this desk measured); (c) the honest hce-distillation
+question, asked as such. Encoder and architecture threads
+stay separate and banked.
+

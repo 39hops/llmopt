@@ -2737,6 +2737,17 @@ MATH-CYBER-1 interface census (AMENDMENT MATH-CYBER-1-DESK-0 -INTERFACE): full L
 - `sha(t: str) -> str`
 - `main()`
 
+### scratch/mathworld1_cl1cost.py
+MATH-CYBER-1 CLOSED-LOOP-1 SEARCH-COST-PROXY-DESK-0 — execute the frozen development desk (prereg 4dab4fc2d7cf00248d9fa59c824d1aa2526247d6, RESULTS L60564).
+
+- `terms(s: str) -> int` — Frozen parser-free depth-0 additive-term count.
+- `ic(s: str) -> int`
+- `proxies(parent: str, child: str)`
+- `rerank_top1(cands, key_score)` — Standing tie law: max score, ties -> smallest factor
+- `_sweep_worker(level, seed, root_cur, want_children, q)` — Fork target: rebuild root, enumerate its stable legal
+- `sweep_root(row, want_children)` — Fork-isolated per-root sweep; drain queue with timeout
+- `main()`
+
 ### scratch/mathworld1_cl1pop.py
 MATH-CYBER-1 CLOSED-LOOP-1 population builder (prereg 082d4bc6, materialization stage ONLY). Materializes, qualifies, freezes, and hashes the exact 96-root population (24 per level L4-L7; per-level deterministic seed scan from 500000 with the frozen skip-and-continue law). OUTCOME-BLIND by construction: this module imports NO checkpoint, NO scoring/ranking function, NO run_episode, NO hce, NO random policy — only sympy, make_integrate (fork-isolated: L4+ construction is the named hang class), and the engine's State/is_solved for the frozen depth-0 structural filter.
 

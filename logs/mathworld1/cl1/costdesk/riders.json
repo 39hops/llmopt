@@ -1,0 +1,126 @@
+{
+ "sweep_sha": "eb5d7ae57d9a171b56aa3b9c7e8f5e91b1ba4812cc7a2a7e933bf0191483b85b",
+ "sweep_wall_s": 1900.6,
+ "sweep_skipped_roots": [],
+ "p4_spearman_v_proxies": {
+  "P1": 0.7425,
+  "P2": 0.6988,
+  "P3": 0.8662
+ },
+ "p4_pairs_n": {
+  "P1": 687,
+  "P2": 687,
+  "P3": 687
+ },
+ "p4_anatomy": {
+  "P1": {
+   "false_positives_cheapcost_lowP4": [
+    [
+     20,
+     4
+    ],
+    [
+     88,
+     4
+    ],
+    [
+     89,
+     3
+    ],
+    [
+     93,
+     0
+    ]
+   ],
+   "false_negatives_highP4_lowcost": [
+    [
+     51,
+     4
+    ],
+    [
+     58,
+     3
+    ],
+    [
+     61,
+     4
+    ],
+    [
+     63,
+     3
+    ],
+    [
+     75,
+     2
+    ],
+    [
+     85,
+     0
+    ],
+    [
+     85,
+     4
+    ],
+    [
+     94,
+     1
+    ]
+   ],
+   "n_fp": 4,
+   "n_fn": 8
+  },
+  "P2": {
+   "false_positives_cheapcost_lowP4": [
+    [
+     51,
+     3
+    ]
+   ],
+   "false_negatives_highP4_lowcost": [],
+   "n_fp": 1,
+   "n_fn": 0
+  },
+  "P3": {
+   "false_positives_cheapcost_lowP4": [],
+   "false_negatives_highP4_lowcost": [],
+   "n_fp": 0,
+   "n_fn": 0
+  }
+ },
+ "p4_placement_focus_23_94": {
+  "54": {
+   "booked_choice_P4": 12.666666666666666,
+   "max_P4_in_set": 16.166666666666668
+  },
+  "68": {
+   "booked_choice_P4": 9.857142857142858,
+   "max_P4_in_set": 13.0
+  },
+  "78": {
+   "booked_choice_P4": 7.285714285714286,
+   "max_P4_in_set": 16.0
+  },
+  "88": {
+   "booked_choice_P4": 4.625,
+   "max_P4_in_set": 7.5
+  },
+  "23": {
+   "booked_choice_P4": 1.125,
+   "max_P4_in_set": 1.25
+  },
+  "94": {
+   "booked_choice_P4": 6.666666666666667,
+   "max_P4_in_set": 15.0
+  }
+ },
+ "surrogate_failure_check": null,
+ "hce_agreement_descriptive": {
+  "baseline": 0,
+  "selected": 0,
+  "n": 0,
+  "gained": [],
+  "lost": [],
+  "tie_law_note": "reconstructed hce argmin with (hce, name, child_sstr) ties \u2014 approximates arm A's (hce, name, key)"
+ },
+ "known_outcome_collateral_join": {}
+}
