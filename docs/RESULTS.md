@@ -62391,3 +62391,264 @@ copied driver's first receipts + post-run independent raw
 reconstruction) before booking; every claim grounded in
 THIS run's tool output.
 
+## OBSERVATION MATH-CYBER-1-ZERO-DEPTH-PRIOR-ASSESSMENT-0: GO PRIOR-RESISTANT-EVAL-DESIGN — the 87/96 problem-blind ceiling is now EXPLAINED from the evaluation geometry itself: both sealed 96-state populations are the SAME seven-code ranking problem (i_unprod term_index 1-5 at one site, an always-present i_sum distractor, euler in 44 states), gold is ALWAYS term_index 2 (48 states) or term_index 3 (48), and the only context-dependent content is the 37 states where BOTH gold codes co-occur (28 gold=2 v 9 gold=3) — every one of the 144 optimal fixed orderings misses exactly the same 9 gold=term-3 states, so 87 = 96 - 9 is a structural constant of the population, not a model property; mask-0 is an exact first-order Markov action prior (state-invariance measured: score spread 0.0 CANONICAL / <= 1.4e-06 PARAM-FIRST across all recurrences of a code in all 8 cells); the 20001 CANONICAL calibration full model recovers ALL 9 of its own prior's only 9 failures (calibration PF 5/9, heldout PF 2/9, heldout C 0/9 — membership in the 9 is forced by the prior sitting at the ceiling; the COUNT is the finding) while HARMING 11 prior-solved states, and the 20001 prior orderings do NOT track first-order training marginals (7-code Spearman -0.14/-0.11/-0.14/+0.11, a null at n=7) where 19001's i_sum-first ordering does explain its 0/96 — so the 20001 prior is not a training-frequency prior and its origin is unexplained; existing populations hold only 13 conflict-signature states (2 groups), too few for a context-required desk, hence a fresh balanced band is the next design; ASSESSMENT + DESK CENSUS ONLY — no model loaded, no mask run, nothing trained (2026-09-01, Mac)
+
+ASSESSMENT under GO ...ZERO-DEPTH-PRIOR-ASSESSMENT-0,
+adopting VERDICT ...ROUTING-REPLICATION-0 (L62175, HEAD
+12de7e5e). Every number below is a deterministic census over
+already-booked artifacts (the two sealed population files,
+the two residual-census raws 9adbb8ae/2bc40d36, the 74,860-
+row training corpus) computed in this session — a /desk in
+the house sense; nothing is a new experiment and no booked
+verdict is amended.
+
+(Q1) THE ZERO-BLOCK FUNCTION CLASS, FROM SOURCE: with every
+block skipped, MicroLM computes logits[:, t] =
+head(norm(emb(ids[:, t]))) — the embedding carries no
+positional term (RoPE lives inside attention, mathnative.py
+Block.forward), there is no attention, no MLP, no cross-token
+mixing. Hence each next-token log-probability depends ONLY
+on the identity of the immediately preceding token, the
+first action-token distribution depends only on the fixed
+final prompt token (id 26 = the tail of "Step: ", identical
+for every state — verified by tokenizing two different
+prompts), and a complete candidate code c1..c8+EOS receives
+  S0(a) = M[26][c1] + sum_{t=1..7} M[c_t][c_{t+1}] + M[c8][EOS]
+with M = log_softmax(head(norm(emb))) a fixed 340x340
+transition matrix. Mask 0 is EXACTLY a first-order Markov
+(token-transition) action prior — a lookup table over code
+bigrams, not a reasoning model. The mean-lp form is the same
+sum divided by 9.
+
+(Q2) STATE INVARIANCE, MEASURED FROM THE RAWS (no checkpoint
+touched): joining each mask-0 raw row's candidate sums to the
+population candidate codes by position, every cell has
+exactly 7 unique codes; max score spread across all
+recurrences of the same code = 0.0 in all four CANONICAL
+cells and 4.8e-07 / 9.5e-07 / 1.4e-06 / 9.5e-07 in the four
+PARAM-FIRST cells — float-representation noise on identical
+sums, zero exceptions. No state-dependent path remains.
+
+(Q3) THE 87/96 CEILING EXPLAINED — EVALUATION GEOMETRY. The
+two populations are the SAME problem up to one digit (site
+ordinal 1 = strict heldout, 0 = covered calibration): seven
+codes = i_unprod term_index 1/2/3/4/5 at the site (5 codes),
+i_sum (present as a candidate in ALL 96 states), euler (44
+states); candidate-set sizes {2: 15, 3: 41, 4: 32, 5: 8}; 14
+distinct candidate-set signatures, 16 (set, gold)
+signatures with multiplicities 19/13/11/9/9/8/7/5/4/3/2/2/1/
+1/1/1 — IDENTICAL in both populations. GOLD IS ALWAYS
+term_index 2 (48 states) or term_index 3 (48 states) — the
+designed withheld pair. So a fixed ranking scores 96 minus
+the states where it must choose between term 2 and term 3
+in the wrong direction: the two golds CO-OCCUR as candidates
+in 37 states (28 with gold=term 2, 9 with gold=term 3), the
+only pairwise contradiction in the entire precedence graph
+(28 v 9; no cycles, no other conflicts — i_sum and euler are
+never gold, so "gold above i_sum, gold above euler, term 2
+above term 3" satisfies everything else). Exhaustive
+enumeration (7! = 5040 orders): ceiling 87 = 96 - 9,
+attained by 144 orderings, and ALL 144 miss the SAME nine
+states {48, 54, 55, 65, 66, 73, 74, 90, 91} — every one a
+term-cell-3 block (block ids t3-IN x5 / t3-OUT x4; candidate
+set sizes 4-5) with gold term_index 3 and term_index 2
+present as a rival. The 87 is a structural
+constant of the design, shared by both populations because
+they share the geometry, not merely the optimum.
+
+(Q4) PRECEDENCE VIEW: the weighted tournament over seven
+codes is acyclic except for the single 28-v-9 edge pair
+(term 2 > term 3 in 28 states, term 3 > term 2 in 9); the
+maximum-acyclic ordering drops the 9-weight edge. There is
+no smaller conflict motif: the whole context-dependent
+content of a 96-state population is ONE binary decision
+(term 2 v term 3) that only 37 states even pose.
+
+(Q5) SIGNATURE / EFFECTIVE-N: 16 exact decision templates
+carry the 96 states; 83 states sit in signatures with a
+single gold (satisfiable by a fixed ranking — note 24 of
+them contain BOTH gold codes with gold = t2, so they also
+require t2 above t3, not merely golds above distractors); 13 states sit in
+the 2 conflict signatures ({t2,t3,t4,i_sum}: gold t2 x1 /
+t3 x7; {t2,t3,t4,i_sum,euler}: t2 x3 / t3 x2) whose fixed-
+ranking ceiling is 10/13. Macro-averaging over the 16
+signature cells gives a ceiling of exactly 14/16 = 0.875:
+the 9 missed states are two WHOLE (set, gold=term 3) cells
+(multiplicities 7 and 2), every other cell is fully solved,
+and the equal-weight-by-signature optimum over all 5040
+orders is the same 0.875 — so 87/96 does NOT come from a few
+heavily repeated templates being lucky; it comes from the
+population containing almost no context-required decisions
+at all. No inferential
+effective-n claim is made; the descriptive fact is that
+context is required on at most 37/96 states and, for any
+ceiling-optimal (87-scoring) fixed ranking, unreachable on
+exactly 9 — a t3-above-t2 ranking solves those 9 and loses
+the 28, so they are unreachable for OPTIMAL priors, not for
+the class of context-free priors.
+
+(Q6) TRAINING-MARGINAL ORIGIN (74,860 rows, codes derived
+from the row tuples): whole-code frequencies — heldout site:
+term 1 = 394, terms 2-5 = 0 (the withheld combinations),
+i_sum(site 1) = 0, euler = 0; calibration site: term 1 =
+2,267, term 2 = 261, term 3 = 257, terms 4-5 = 0, i_sum(site
+0) = 10,822. A first-order Markov model fit to the training
+code sequences (arm-specific serialization, add-0.5
+smoothing) orders codes i_sum > t1 > t2 > t3 > euler > t5 >
+t4 (CANONICAL). The 19001 mask-0 orderings agree with that on the ONE fact
+that matters — i_sum first in all four 19001 cells (7-code
+Spearman +0.50 C / +0.14 PF, carried almost entirely by
+i_sum's position; neither value is significant at n=7) —
+which is exactly why 19001 mask-0 scored 0/96: i_sum is a
+candidate in 96/96 states and gold in none. The 20001 mask-0
+orderings put t2 FIRST and i_sum/euler LAST in both arms and
+both populations; their 7-code Spearman v the training
+marginals is -0.14 C / -0.11 PF heldout and -0.14 / +0.11
+calibration — a NULL (|rho| ~ .14, p ~ .76 at n=7; robust to
+smoothing alpha 0.01-1.0), read as "does not track", never
+"anti-correlates" —
+the 20001 embedding/head prior is NOT a transition-frequency
+prior; it encodes the evaluation-favoring preference (gold
+codes above distractors, term 2 above term 3) at zero
+context, including on the heldout site where the gold codes
+have ZERO training occurrences. WHY 20001 learned that is
+out of scope and not claimed (correlation only; the
+covered-site term-2/3 rows and the shared digit structure
+across sites are the obvious candidates, untested).
+
+(Q7) CONTEXT GAIN/HARM v EACH CHECKPOINT'S OWN PRIOR (from
+the raws; net = gain - harm = full - mask0):
+  19001 (mask0 = 0 everywhere): pure GAIN — heldout C 85/0,
+    PF 78/0; calibration C 94/0, PF 93/0; both-correct 0.
+  20001 (mask0 = 87 everywhere):
+    heldout C      gain 0  harm 7   both-correct 80, net -7
+    heldout PF     gain 2  harm 2   both-correct 85, net  0
+    calibration C  gain 9  harm 11  both-correct 76, net -2
+    calibration PF gain 5  harm 1   both-correct 86, net +4
+  The net-0 heldout PF cell hides 2-v-2 churn; the net -2
+  calibration C cell hides 9-v-11 churn. Because the 20001
+  prior fails on exactly the 9 states {48, 54, 55, 65, 66,
+  73, 74, 90, 91} in every cell, ANY gain is necessarily one
+  of those 9 — membership is forced; the finding is the
+  COUNT: calibration CANONICAL recovers 9/9 of its prior's
+  failures (breaking 11 prior-solved states), calibration PF
+  5/9 (48, 54, 55, 65, 66; 1 harm), heldout PF 2/9 (65, 73;
+  2 harms), heldout C 0/9 with 7 harms (28, 30, 34, 49, 59,
+  76, 77) — its blocks only subtract. SINGLE-REALIZATION
+  FENCE: the gain/harm IDENTITIES are exact and
+  deterministic; the per-cell NETS (-7/0/-2/+4) and the
+  9-v-5 arm contrast are one seed, one arm each, inside the
+  house single-seed resolution and read as anatomy only.
+
+(Q8) THREE PRIORS, KEPT SEPARATE: (A) the ORACLE problem-
+blind ceiling 87/96 — an evaluation-geometry constant chosen
+with knowledge of the labels, NEVER a deployable baseline;
+(B) the LEARNED problem-blind prior of a checkpoint (19001:
+0/96 both arms — a training-frequency prior; 20001: 87/96
+both arms — the oracle optimum, origin unexplained); (C) the
+contextual model. Full-model totals compare to (B) for
+gain/harm and to (A) only as a geometry diagnostic.
+
+(Q9) LIKELIHOOD-RATIO DIAGNOSTIC R = S_full - S0 (descriptive
+feasibility census only, not an endpoint, not tuned): top-1
+under R — 19001: 85 / 85 / 89 / 88 (heldout C, PF;
+calibration C, PF) v full 85 / 78 / 94 / 93 — heldout PF's
+R EXCEEDS its full total (85 v 78), calibration loses 5;
+the 19001 prior is nearly uninformative on the gold pair; 20001: 58 /
+68 / 84 / 76 v full 80 / 87 / 85 / 91 — subtracting the
+20001 prior costs 22 / 19 / 1 / 15 states: in three cells
+the full models' correctness is largely CARRIED BY the
+prior, while calibration CANONICAL's residual context term
+alone nearly matches its full (84 v 85); the residual term
+is below the prior's 87 in every cell. Caveat
+carried: R is not an additive mechanistic decomposition
+(executed blocks alter token-local features too); it is a
+contrast only. A cleaner centering would condition on the
+candidate-set signature (a per-signature prior), which the
+Q10 design makes unnecessary by construction.
+
+(Q10-11) PRIOR-RESISTANT EVALUATION — DEFINITION AND DESK
+FEASIBILITY. Definition (defensible, proposed for the
+successor prereg): a group G is CONTEXT-DISCRIMINATING when
+it contains >= 2 states with IDENTICAL candidate-code sets
+and DIFFERENT gold codes; any problem-blind ranking must
+make the same choice on all of G, so a balanced G over m
+golds has fixed-ranking ceiling <= 1/m; the evaluation
+metric is accuracy over the union of such groups (or macro
+over groups). EXISTING POPULATIONS: only 2 conflict
+signatures / 13 states (ceiling 10/13 inside them), and the
+broader co-occurrence set is 37 states at ceiling 28/37 =
+75.7% — too few and too unbalanced (28-v-9) for a useful
+desk; option A (matched conflict sets) and C (prior-residual
+subset) can be reported descriptively on the 37/13 states
+but cannot carry a verdict. RECOMMENDATION: option D — a
+FRESH BALANCED BAND from the same generator family with
+controlled candidate-set/gold balance (e.g. each conflict
+signature realized with each of its gold codes an equal
+number of times), so the fixed-ranking ceiling is
+PREDECLARED (50% for binary groups) and materially below the
+model target. Not materialized under this GO.
+
+(Q12) WHAT SURVIVES IN THE RESIDUAL-PATH RECORD: the masks
+did what they did — every inference-time mask fact stands.
+The INTERPRETATION narrows: minimal-full-k and near-full k
+are relative to a baseline that at 20001 sits at the prior
+ceiling in three cells (degenerate, already booked); cross-
+seed effective-depth comparisons are entangled with learned-
+prior quality (19001 prior 0, 20001 prior 87). Quantities
+that remain meaningful without correction: state-level
+gain/harm over each checkpoint's own mask-0 (Q7, computed
+here); performance and block-deletion effects restricted to
+the 9 optimal-prior-unreachable / 37 co-occurrence states
+(feasible
+descriptively on existing raws); routing anatomy on a
+prior-resistant subset (future). No booked verdict is
+amended — no factual error exists in them.
+
+(Q13) FACTOR/HASH: PARKED for residual-path purposes until a
+prior-resistant endpoint or a low-ceiling population exists;
+scientifically live otherwise.
+
+(Q14) DECISION: GO PRIOR-RESISTANT-EVAL-DESIGN. The four
+desk questions the GO named are answered here from existing
+artifacts — (1) the 87/96 source is the 28-v-9 term-2/term-3
+co-occurrence conflict, the only context-required content;
+(2) 20001's prior does NOT match training transition
+marginals (a 7-code null, not a tracking) — origin
+unexplained, not claimed; (3) contextual gain/harm decomposed
+per cell, with calibration CANONICAL recovering 9/9 of its
+prior's failures (membership forced, count informative); (4) existing states hold only 13
+matched-conflict states — insufficient — so the next
+instrument is a fresh balanced band with a predeclared
+fixed-ranking ceiling. SMALLEST SUCCESSOR (nominated, NOT
+frozen): PRE-REG MATH-CYBER-1-PRIOR-RESISTANT-EVAL-DESIGN-0
+— generator law for balanced context-discriminating groups
+from the standing SVP family, predeclared ceiling, exclusion
+census against the 60,697-state universe + these
+populations, endpoint = full-model and mask-0 accuracy on
+the union of groups with the ceiling as the frozen floor;
+FACTOR/HASH and residual-path censuses re-enter only on that
+endpoint.
+
+CLAIM CEILING: properties of the frozen evaluation geometry,
+the frozen checkpoints' learned problem-blind priors, and
+state-level contextual gain/harm on the existing
+populations. NOT established: broad LM behavior; that the
+embedding/head "reasons"; the training mechanism behind
+20001's prior; any solve-rate effect; general residual
+depth; that context is useless because an oracle prior
+scores 87 — the 9 optimal-prior-unreachable states and the
+20001 calibration recovery counts show precisely where
+context is required and delivered.
+
+FENCES. Desk census on booked artifacts only (population
+files a3f6103b/af1a4aa1, census raws 9adbb8ae/2bc40d36,
+training corpus a943ba7f + 0ef3d8a8); Markov fit uses
+add-0.5 smoothing and arm-specific serialization
+(PARAM-FIRST via PERM), a descriptive comparator only;
+Spearman over 7 codes is a 7-point descriptive rank
+statistic; the R census is feasibility, never a scored
+endpoint; two seeds, two populations, one representation
+family; nothing loaded, run, trained, or generated under
+this GO.
+

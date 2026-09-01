@@ -3500,6 +3500,14 @@ MATH-CYBER-1 LABEL-YIELD-0 — sacrificial fresh-band census of retrospective-cr
 - `contamination_audit(episodes, exclude_bands=())` — Exact-match of root strings v birth diet + prior bands +
 - `main()`
 
+### scratch/mathworld1_zdpdesk.py
+MATH-CYBER-1 ZERO-DEPTH-PRIOR-ASSESSMENT-0 desk census over booked artifacts only (population files, residual-census raws, training corpus): Q2 state-invariance, Q3-Q5 evaluation geometry + 5040-order brute force, Q6 training Markov marginals, Q7 gain/harm, Q9 R feasibility. No model, no mask, no training. Output logs/mathworld1/zdp/desk_census.json (booked at RESULTS L62394).
+
+- `load(pop)`
+- `load_raw(path)`
+- `code_of(r)`
+- `markov_score(seq, arm)`
+
 ### scratch/matryoshka_r1.py
 Matryoshka rung 1 (pre-reg 2026-07-28 night): joint loss CE(W) + CE(STE P_C8(W)) — one crystal whose OWN circulant projection must also work. 1 warm epoch from wfloor d256 on MPS. Implementation: parametrize gate weights with a toggleable STE projection (flag off -> raw W; flag on -> W + (P(W)-W) .detach(), i.e. forward uses P(W), gradient flows to W). Gates BOTH tiers at the end; saves the single weight tensor.
 
