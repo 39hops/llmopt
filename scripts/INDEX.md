@@ -2860,6 +2860,35 @@ MATH-CYBER-1 PROGRAM-DIET-COVERAGE-0 — census: how much of theta0's EXACT hist
 - `_subtype_nomatch(parent, legal, nxt)`
 - `main()`
 
+### scratch/mathworld1_prband.py
+MATH-CYBER-1 PRIOR-RESISTANT-EVAL-MATERIALIZATION-0 — materialize, or mechanically NO-FIRE, the fresh N=96 prior-resistant ranking band frozen by PRE-REG MATH-CYBER-1-PRIOR-RESISTANT-EVAL-DESIGN-PREREG-0 (cb098ee5, RESULTS L62655). ZERO checkpoint access, ZERO scoring, ZERO masks, ZERO training; every law below is the prereg's.
+
+- `build_pr()`
+- `ctup(c)`
+- `cand_sig(cands)`
+- `sha(s)`
+- `field(r, name)` — Value of |name=...| in base_signature, 'n/a' if absent.
+- `gold_class(t)`
+- `group_ceiling(states)` — states: list of (codes tuple-set, gold). Exhaustive over
+- `global_ceiling(states)` — states: list of (codes list, gold). Every global order of the
+- `ceiling_report(rows, label)`
+- `main()`
+
+### scratch/mathworld1_prband_anat.py
+MATH-CYBER-1 PRIOR-RESISTANT-EVAL-MATERIALIZATION-0 — descriptive census anatomy of the NO-FIRE horizon (read-only over logs/mathworld1/prband/horizon_census.jsonl; no law, no selection, no model). Writes logs/mathworld1/prband_verify/anatomy.json (refuse-if-exists): per-signature gold census, lowest-index rule counts and exception shapes, within-k co-occurrence, parity-v-k alignment, gold-class-v-k table, the a-states of the two mixed signatures, and the companion (after) side of the same quantities.
+
+- `side(rows, pick)`
+- `main()`
+
+### scratch/mathworld1_prband_verify.py
+MATH-CYBER-1 PRIOR-RESISTANT-EVAL-MATERIALIZATION-0 — INDEPENDENT VERIFIER. Reconstructs the frozen design (PRE-REG ...-DESIGN- PREREG-0, cb098ee5) from the RAW materialization artifacts under logs/mathworld1/prband/ WITHOUT reusing the selector's derived tables: own horizon enumeration, own signature function, own bucket / capacity / walk / selection, own ceiling enumeration, own overlap sets, and a full re-qualification (qualify_parent) of every selected primary and companion parent. Zero checkpoint access, zero scoring. Writes logs/mathworld1/prband_verify/ verify_receipt.json (refuse-if-exists). PRBAND_VERIFY_DIR overrides the input directory (smoke self-test); PRBAND_SMOKE=1 makes the smoke-only deviations report-only.
+
+- `check(cond, msg)`
+- `h(s)`
+- `sig_of(cands)` — Independent signature: 5-tuples from the candidate rows,
+- `rows(p)`
+- `main()`
+
 ### scratch/mathworld1_regret.py
 MATH-CYBER-1 REGRET-LDS-DESK-0 (PRE-REG booked at 5e7c2cbc). Rank-weighted limited-discrepancy GRAPH search over the realized world snapshot: edge cost = rank-1 (rank-only, never raw scores; no cross-parent score comparison), frontier popped by (path_discrepancy, path_depth, State.key()), TERMINAL-FIRST hard override at expansion (terminal edges cost 0 and carry rank tag "T"), depth cap 12 (nodes at depth 12 never expand), transposition table on full State.key() with the registered strictly-lower-cost reopen law, overflow-unscorable states book state-censored (search continues), 300 s charged instrument wall per episode, unique-expansion ladder 12/24/48/96 with primary read at 96. Zero training; frozen theta_0 ranks siblings only.
 

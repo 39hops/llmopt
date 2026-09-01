@@ -897,6 +897,42 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/prband/horizon_census.jsonl": {
+   "bytes": 4456362,
+   "exists": true,
+   "local_only": true,
+   "sha256": "2e28abf09219d4ac5ee2cb834f22f9cbc40f750c13029a8b96979f9a7e144c4c",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/mathworld1/prband/prband_receipt.json": {
+   "bytes": 5048,
+   "exists": true,
+   "sha256": "e12594130df56e4d120472d31490605714d0cd25480e82c392eee9cf1fb28f40",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/prband_smoke/prband_receipt.json": {
+   "bytes": 6700,
+   "exists": true,
+   "sha256": "c1c4048b53cad594c866c637926bd652b3b3384e004d0b4a1d15146679b19e83",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/prband_verify/anatomy.json": {
+   "bytes": 24662,
+   "exists": true,
+   "sha256": "606b1f3ff3feec35995c0500bae189f934bb9c5220058de11b8046d9b2de54d0",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/prband_verify/verify_receipt.json": {
+   "bytes": 1033,
+   "exists": true,
+   "sha256": "a09edd2708806bff7deec1eb6fddeac9fc7e087dbe6a53d33de650a988795942",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/regret_lds_desk.jsonl": {
    "bytes": 2686,
    "exists": true,

@@ -1,0 +1,41 @@
+{
+ "input_dir": "logs/mathworld1/prband",
+ "smoke": false,
+ "input_sha256": {
+  "capacity_table.json": "a61e09323f1510544eb79c4c6fa95b6d70f51714b02e1585d6af6e983ee52c9b",
+  "horizon_census.jsonl": "2e28abf09219d4ac5ee2cb834f22f9cbc40f750c13029a8b96979f9a7e144c4c",
+  "prband_receipt.json": "e12594130df56e4d120472d31490605714d0cd25480e82c392eee9cf1fb28f40",
+  "qualified_blocks.jsonl": "2ccee9878ef94c1206b3444cfd06e0cf72103c017cfa62414c371c382837e27c"
+ },
+ "horizon": {
+  "n": 1920,
+  "burned": 5760
+ },
+ "blocks": {
+  "pass": 1920,
+  "fail_census": {}
+ },
+ "signatures_rechecked": 5760,
+ "selection": {
+  "n_signatures": 22,
+  "n_usable": 2,
+  "sum_m_g": 16,
+  "walk": [
+   {
+    "cand_sig_id": "264f5d9d558a945a792d22d2b96ebc068750354995c264ea304059f5d9a328bd",
+    "m_g": 8,
+    "q_g": 8
+   },
+   {
+    "cand_sig_id": "5e92cd3bb6b10eb88ccd94a7b11d4f293d799c8a517154ec3e14d73b285f9805",
+    "m_g": 8,
+    "q_g": 8
+   }
+  ],
+  "filled": 16,
+  "supply_a": 612,
+  "supply_b": 476
+ },
+ "verdict": "VERIFIED NO-FIRE",
+ "problems": []
+}

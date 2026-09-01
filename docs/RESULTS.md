@@ -63071,3 +63071,171 @@ the driver, smoke, one production run under the laws above,
 independent verifier, book MATERIALIZED (A/B) or NO-FIRE (D)
 or INSTRUMENT FAILURE (E) with the full bucket census.
 
+## VERDICT MATH-CYBER-1-PRIOR-RESISTANT-EVAL-MATERIALIZATION-0: NO-FIRE — the frozen CH-F3 horizon cannot fill the prior-resistant band: 1,920/1,920 bases qualified under the three-variant block law (zero rejections, 5,760 parents burned), but the fill gate reached only 16 of 48 (two candidate signatures, m_g = 8 each; sum of all m_g = 16, so even without the four-signature cap the horizon supplies at most 32 states); the binding constraint is that the complete legal candidate set nearly DETERMINES the teacher's choice — gold is the lowest-index i_unprod candidate in 1,728/1,920 primaries (90.0%), 30 of the 36 primary candidate signatures carry exactly one gold and only 2 carry both t2 and t3, and within a fixed inert-addend count k NO signature carries both t2 and t3 — the only a/b co-occurrence arises ACROSS k, where the same index set {2,3,4} is produced by k = 1 bases (gold t3, 38) and k = 2 bases (gold t2, 8), because adding an inert polynomial shifts every term index by one; the prereg's target-blind parity assignment coincides exactly with k (smallA = k 1, smallB = k 2, 960/960 — the addend configuration is the innermost enumeration loop), disclosed here as a frozen-design fact; verified NO-FIRE by the independent reconstruction (zero discrepancies); no population, no scoring, nothing loaded; redesign requires its own prereg (2026-09-01, Mac)
+
+Per PRE-REG MATH-CYBER-1-PRIOR-RESISTANT-EVAL-DESIGN-PREREG-0
+(cb098ee5, L62655), decision D applied mechanically. Driver
+scratch/mathworld1_prband.py committed BEFORE any byte
+(e126b7cb; the first smoke caught a family-census parser
+defect on the D0-format smoke signatures; the smoke rerun
+SMOKE OK ran on the fixed WORKING TREE at e126b7cb — smoke
+receipt start/completion commit e126b7cb, driver file sha
+e4fb51d5... byte-identical to the production driver — and
+that tree was committed as 7e378e2b; path-isolated under
+logs/mathworld1/prband_smoke/, receipt c1c4048b...;
+production launched at 7e378e2b, completion_commit 94b6f74f
+= the verifier commit, no driver change after launch);
+independent verifier scratch/mathworld1_prband_verify.py
+(94b6f74f, NO-FIRE artifact handling 96061330). ONE
+production run, wall 2,945.4 s (~49 min), zero checkpoint
+access, zero scoring, zero masks.
+
+1) HORIZON + BURN: 1,920 bases (12 P x 2 T x 10 c x 2 w x 4
+addend configs), base_signature / sig_sha / base-srepr
+uniqueness gates passed, 5,760 parents burned at run start
+(all three distractor variants of every base, selected or
+not). Burned-set sizes read at run time: natural 58,988
+curs, band 242, pilot 566, lineage horizons 37,848, svpdiet3
+artifacts 360, CLOSED-LOOP-1 108, own smoke 4; 4,536 train
+targets, 1,792 svpdiet3 targets. Overlap gates were not
+reached (no selection); freshness rests on the construction
+argument only (fresh addend polynomials; unmeasured — see
+4).
+
+2) QUALIFICATION: 1,920/1,920 blocks pass the DESIGN-1 block
+law (all three variants qualify; teacher i_unprod (I,
+term_index); one common term; ordinals [1,1,0]); rejection
+census EMPTY. Primary-variant teacher term census: t1 484,
+t2 612, t3 476, t4 348. Gold class: a (t2) 612, b (t3) 476,
+out-of-scope (t1/t4) 832 — censused, never used.
+
+3) TARGET SUPPLY: 36 distinct primary candidate signatures
+(census count; the receipt's n_signatures_total = 22 counts
+only signatures holding an a-or-b bucket); 22 contain gold a
+or b; exactly TWO contain both (each: 8 a
+v 38 b; the two differ only by the presence of the euler
+candidate, i.e. w = exp(x)/x v sin(x)/x). Top m_g: 8, 8, then
+zeros. sum m_g = 16 (reserve-margin rider: 16 v the 72
+comfort level and the 48 bar).
+
+4) SELECTION (mechanical): walk = the two usable signatures
+in (-m_g, cand_sig_id) order, q_g = 8 each, filled = 16 <
+48 => NO-FIRE. GATES THAT DID NOT EXECUTE (the driver exits
+at the fill gate): no primary/companion artifact, no
+overlap_receipt (the refute-on-hit freshness fences were
+never MEASURED — freshness rests on the fresh-addend
+construction gate only), no ceiling_receipt (the 50% gate
+never ran), no companion classification. Nothing in this
+entry may be read as those gates passing; the smoke run's
+relaxed-selection outputs carry no authority. No state was
+moved, relabeled, or re-bucketed.
+
+5) WHY THE HORIZON CANNOT FILL (descriptive anatomy from the
+persisted census, no law changed): the teacher's choice is
+almost a function of the candidate set. Gold = the LOWEST
+term index among the i_unprod candidates in 1,728/1,920
+primaries; the 192 exceptions all have the shape "set
+{j, j+1, j+2} (or {j-1, j+1, j+2}, {j-1..j+2}) with gold
+j+1" — 76 + 16 + 4 at each k. 30/36 signatures are
+single-gold (6 multi-gold: term pairs [2,3] x2, [1,3] x2,
+[2,4] x2); only the two [2,3] ones carry the target pair. Within k = 1 (20 signatures) and within k = 2
+(20 signatures) NO signature carries both t2 and t3. The two
+mixed signatures are cross-k coincidences: index set
+{2,3,4} arises from k = 1 bases (gold t3, 38 states) and
+from k = 2 bases (gold t2, 8 states: P in {x**7 + x**4,
+x**8 + x**3, x**5 + x**4}, T = cos, c in {12, 18}), because
+each inert addend sorts ahead of the trig terms and shifts
+every i_unprod index by one. So the only context-
+discriminating content this generator can produce is the
+number of leading inert terms — a legitimate group under
+the frozen definition (identical observable candidate set,
+different gold), but its only discriminating axis is the
+leading-inert-term count, and its capacity is 16. The
+companion I0 side shows the same structure (36 signatures, 6
+with more than one gold, same 1,728/192 lowest-index split)
+— computed from the census, no companion artifact exists.
+
+6) PARITY/K ALIGNMENT DISCLOSURE: the prereg froze "smallA
+when the horizon index is even, smallB when odd" and the
+addend configuration ((A,1),(A,2),(B,1),(B,2)) as the
+innermost loop; therefore every smallA primary has k = 1 and
+every smallB primary has k = 2 (960/960). The assignment is
+target-blind exactly as frozen, and no law is amended here —
+but a successor must know that distractor identity and
+addend count were perfectly confounded in this realization,
+and that smallB never met a k = 1 base. Gold class v k
+(primary): a = 128 at k 1 / 484 at k 2; b = 348 / 128;
+out-of-scope 484 / 348 — gold and k are correlated through
+the same index shift.
+
+7) VERIFIER (fresh reconstruction from raw): own horizon
+enumeration (1,920; all uniqueness gates; 5,760 burn set;
+every census row's index / base_signature / sig_sha /
+target_integrand), block law + parity from the raw census,
+signatures and golds recomputed from every qualified block's
+candidate lists (5,760 variant records), buckets / m_g /
+usable order / walk / filled rebuilt independently and
+matched to the driver's capacity table, verdict-v-fill
+consistency. VERIFIED NO-FIRE, zero problems
+(logs/mathworld1/prband_verify/verify_receipt.json,
+a09edd27...). Two verifier limits disclosed: its receipt
+carries no code provenance (the verifier commit 96061330 is
+the provenance, stated here), and its pin recheck sits on
+the materialized branch and did not execute on the NO-FIRE
+path — the 11 driver pins were re-derived by hand in this
+session (11/11 match) and by the receipt auditor
+independently (11/11).
+
+8) ARTIFACTS: logs/mathworld1/prband/prband_receipt.json +
+capacity_table.json, the smoke receipt
+logs/mathworld1/prband_smoke/prband_receipt.json, and the
+anatomy receipt logs/mathworld1/prband_verify/anatomy.json
+(606b1f3f..., written by scratch/mathworld1_prband_anat.py,
+the persisted source of every section-5/6 number) are
+force-added in the booking commit (small text);
+horizon_census.jsonl (4.4 MB, 2e28abf0...) and
+qualified_blocks.jsonl (26 MB, 2ccee987...) stay UNTRACKED
+per logs doctrine, anchored by sha in the receipt; the
+verify receipt is force-added. BURN REGISTRY OBLIGATION:
+the burn is a documentation mechanism, not an automatic
+one — every successor driver in this lineage must add
+logs/mathworld1/prband/horizon_census.jsonl (all 5,760
+parent curs, one row per base, three variants) to its
+burned-set construction and gate on its sha. Driver start
+tree carried only the generated scripts/INDEX.md as dirty
+(recorded verbatim in the receipt).
+
+REGISTERED-PRIOR ACCOUNTING: single exact signature 48/48
+"difficult, moderate" — RIGHT (max 8); "<= 4 balanced
+signatures supply N = 96 — moderate" — WRONG (filled 16 of
+48; 32 states of 96); "CH-F3 machinery
+yields enough fresh t2/t3 cells, moderate; exact-signature
+co-occurrence is the binding constraint" — the raw supply was
+ample (612 a / 476 b) and the named constraint was exactly
+the one that bound, so RIGHT on mechanism, WRONG on
+sufficiency; ceiling-holds-at-50% and all scoring priors —
+NOT TESTED (no population).
+
+CLAIM CEILING: this is a NO-FIRE of ONE frozen generator
+horizon under ONE signature law; it establishes that THIS
+CH-F3 construction with in-support banks does not produce
+enough identical-candidate-set / different-gold pairs for the
+t2-v-t3 design, and it exhibits the mechanism (candidate set
+nearly determines the HCE-argmin). It does NOT establish that
+prior-resistant bands are unconstructible, that the t2/t3
+pair is wrong, that another family (two-blocker / U-F2
+lineage, or constructions that vary which i_unprod guess
+wins while holding the index set fixed) cannot fill, or
+anything about any model. FACTOR/HASH stays parked.
+Successor requires a NEW prereg (the GO forbids redesign
+here); the census above is the design input for it.
+
+FENCES. Materialization only; no checkpoint loaded, no mask,
+no scoring, nothing trained; single deterministic run (no
+seeds, no sampling error); every number read from this
+run's receipts, the verifier's, or the persisted anatomy
+receipt recomputed from horizon_census.jsonl (2e28abf0...);
+the horizon is BURNED —
+none of its 5,760 parents may enter any future evaluation
+band.
+
