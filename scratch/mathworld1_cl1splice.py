@@ -168,8 +168,9 @@ def run_cell(cell, root, row, model, dev, sink, forced0):
         state = child
         if ck in visited:
             outcome = "cycle"
-            row_d["seg_apply_s"] = round(time.monotonic() - t0, 4)
-            engine_wall += time.monotonic() - t0
+            seg_apply = time.monotonic() - t0
+            row_d["seg_apply_s"] = round(seg_apply, 4)
+            engine_wall += seg_apply
             dec_rows.append(row_d)
             break
         visited.add(ck)
@@ -207,6 +208,10 @@ def main():
     cl1r = json.loads(CL1_RECEIPT.read_text())
     gate(cl1r["raw_trajectories_sha"] == RAW_CL1_SHA,
          "RECEIPT RAW PIN")
+    pop = json.loads((POPDIR / "receipt.json").read_text())
+    gate(pop["verdict"] == "POPULATION MATERIALIZED + QUALIFIED",
+         "POP AUTHORITY")
+    gate(pop["manifest_sha"] == MANIFEST_SHA, "POP MANIFEST")
     lock = json.loads(LOCK.read_text())["receipts"]
     birth_lock_sha = lock[str(BIRTH_RECEIPT)]["sha256"]
     gate(fsha(BIRTH_RECEIPT) == birth_lock_sha, "BIRTH LOCK PIN")
@@ -221,6 +226,11 @@ def main():
          "scratch/mathworld1_svpfohrepl.py",
          "scratch/mathworld1_svpcode.py",
          "scratch/mathworld1_svpbirth.py",
+         "scratch/mathworld1_svpforder.py",
+         "scratch/mathworld1_actiontok.py",
+         "scratch/mathworld1_actionsem.py",
+         "scratch/mathworld1_actionfinal.py",
+         "scratch/mathworld1_axfixture.py",
          "scratch/mathworld0.py",
          "llmopt/search/derivation.py", "llmopt/search/rules.py",
          "llmopt/train/mathnative.py",
@@ -352,7 +362,10 @@ def main():
                          if ba["solved"] or ab["solved"]
                          else "ROBUST-BOTH-FAILED")
         else:
-            labels[i] = "DESCRIPTIVE-OTHER"
+            # unreachable on this population: reproduced anchors
+            # force fresh solved bits == booked, and no eligible
+            # root booked B-solved/A-failed
+            gate(False, f"UNREGISTERED LABEL PATTERN root {i}")
 
     table = {i: {c: {"outcome": S[(c, i)]["outcome"],
                      "solved": S[(c, i)]["solved"],
@@ -394,11 +407,16 @@ def main():
         bb = traj[("BB", i)]
         d0 = aa["decisions"][0]
         # hce over the depth-0 legal set (A-side anatomy) needs
-        # engine states: re-enumerate from the already-built root
+        # engine states: this is a POST-RUN re-enumeration from
+        # the already-built root and may differ from the run's
+        # recorded set (process-relative legal sets) — size and a
+        # flag persist so a null join is explicable
         acts, _ = stable_legal_set(State(roots[i]))
         hvals = {}
         for n, c in acts:
             hvals[(n, sp.sstr(c.expr))] = float(hce(c))
+        reenum = {"reenumerated": True,
+                  "reenum_n_legal": len(acts)}
         ent = {}
         for arm, t in (("A", aa), ("B", bb)):
             td = t["decisions"][0]
@@ -437,9 +455,11 @@ def main():
                                     / len(td["parent"]), 2)
                               if ch and td.get("parent")
                               else None),
-                "hce_value": hv, "hce_rank": rank,
                 "model_score": bs, "model_rank": brank}
-        anat[str(i)] = ent
+            if arm == "A":
+                ent[arm]["hce_value"] = hv
+                ent[arm]["hce_rank"] = rank
+        anat[str(i)] = {**ent, **reenum}
     (OUTDIR / "riders.json").write_text(
         json.dumps({"depth0_anatomy": anat}, indent=1))
     print("[cl1splice] DONE", flush=True)
