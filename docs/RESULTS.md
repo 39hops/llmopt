@@ -62652,3 +62652,422 @@ endpoint; two seeds, two populations, one representation
 family; nothing loaded, run, trained, or generated under
 this GO.
 
+## PRE-REG MATH-CYBER-1-PRIOR-RESISTANT-EVAL-DESIGN-PREREG-0: FROZEN PRIOR-RESISTANT EVAL DESIGN — a fresh 96-state binary ranking band in which every deterministic problem-blind fixed ordering over the complete legal candidate codes is capped at 48/96 = 50.0% by construction (a cap the best orderings attain exactly): strict i_unprod term_index 2 v term_index 3 at the held-out site ordinal 1, 48 gold-t2 / 48 gold-t3, stratified into at most FOUR exact candidate-set signatures with EXACT within-signature balance (n_g(t2) = n_g(t3) for every signature), CH-F3 construction under the verbatim DESIGN-1 three-variant block law on a fresh inert-addend horizon (1,920 bases), target-blind sig_sha selection, refute-on-hit freshness against every burned lineage set, an exhaustive fixed-ranking ceiling gate, and a separate later scoring GO (4 frozen checkpoints, full + mask-0 only, no cube); DESIGN FREEZE ONLY — nothing materialized, no checkpoint loaded, no model scored (2026-09-01, Mac)
+
+PURPOSE (adopting OBSERVATION MATH-CYBER-1-ZERO-DEPTH-PRIOR-
+ASSESSMENT-0, L62394, booked at 3a9e86b2; HEAD at freeze
+f5583944): the two sealed 96-state populations
+(heldout_test16 heldout-I1 filter, covered_calibration) have
+a fixed-ranking ceiling of 87/96 because gold is always
+i_unprod term_index 2 (48) or 3 (48), the two golds co-occur
+in only 37 states (28 v 9), and every one of the 144 optimal
+fixed orderings misses the same 9 gold-t3 states; mask-0 of
+a checkpoint of this 8-block MicroLM family is an exact
+context-free first-order Markov action prior, so cross-seed
+effective-depth readings are ENTANGLED with learned-prior
+quality when a prior already sits at 87 (the booked reading;
+no residual-path verdict is amended).
+This prereg freezes a FRESH evaluation band whose problem-
+blind ceiling is 50% by design, so the question "can the
+frozen model choose between legal actions whose correct
+ordering changes with the mathematical state, when the legal
+candidate set itself is held fixed?" has an endpoint with
+real headroom. Freeze first, materialize under the next GO.
+
+CORE DEFINITION (frozen). A CONTEXT-DISCRIMINATING SIGNATURE
+GROUP G is a set of states with (1) a byte-identical complete
+candidate signature (below), (2) at least two distinct
+teacher/gold actions inside that identical candidate set,
+(3) prospectively balanced gold counts. A problem-blind
+scorer induces one fixed ordering over the candidate codes,
+hence chooses the same top code for every state of G; with
+golds a and b and n(a) = n(b) it is correct on at most n of
+2n states: per-group ceiling <= 1/2. Context requirement is
+a GROUP property created by contradictory labels under an
+identical observable candidate set; no single state is ever
+called "context-required".
+
+CANDIDATE SIGNATURE (load-bearing, frozen before any byte):
+for a state s, enumerate the COMPLETE stable legal set under
+the standing law (scratch/mathworld1_svpeval.py
+stable_legal_set: two enumerations with a cleared rule cache,
+identical (name, child-key) multisets required, else the
+state is rejected as legal_set_unstable — never repaired),
+derive every candidate's canonical ActionProgram
+(derive_program, as in scratch/mathworld1_svpchal.py
+qualify_parent), and take the 5-tuple
+  (rule, site_kind, site_ordinal, param_kind, param_index)
+of EVERY legal candidate. cand_sig(s) = the list of these
+5-tuples sorted in Python tuple order (rule string first),
+serialized as canonical JSON (sort_keys, no whitespace);
+cand_sig_id = sha256 of that JSON. Two states match only if
+cand_sig_id is byte-identical; a verifier recomputes it from
+the persisted 5-tuples, never from factor codes (the factor-
+code multiset carries the same information — factor_decode
+roundtrip is gated per candidate — but sorts numerically, so
+its sha is a different string). pf_encode is a fixed
+permutation (PERM) of the same symbols, so signature identity
+is representation-invariant across CANONICAL and PARAM_FIRST.
+Site ordinal is IN the signature (an I0 and an I1 state can
+never share a signature); action name alone, candidate-set
+size alone, and any digit-dropping canonicalization are all
+forbidden. Candidate order inside the signature is the sorted
+order above, never the enumeration order.
+
+TARGET GOLD PAIR (frozen, binary, no broadening): a =
+(i_unprod, I, 1, term_index, 2), factor code
+[1,3,1,0,2,2,0,3]; b = (i_unprod, I, 1, term_index, 3),
+factor code [1,3,1,0,2,2,0,4] — the exact pair whose 28-v-9
+imbalance produced the old 87/96 shortcut, at the strict
+held-out site ordinal 1. Blocks whose primary-variant gold is
+any other code are OUT-OF-SCOPE (censused, never used). If
+this pair cannot fill the population the run books NO-FIRE
+(decision D); no other pair is substituted under this prereg
+and no multi-label zoo is admitted after yields are seen.
+
+POPULATION SHAPE (frozen): N = 96 primary states = 48 gold-a
++ 48 gold-b, in at most K_MAX = 4 exact candidate signatures,
+with EXACT within-signature balance q_g(a) = q_g(b) for every
+selected signature g. Global balance with within-signature
+imbalance is structurally impossible under the selection law
+below (q_g is taken from BOTH sides of a signature at once);
+decision C therefore cannot occur, and any post-hoc
+reweighting is forbidden.
+
+CONSTRUCTION LAW (frozen; adopt-not-fork of the results-cited
+CH-F3 lineage). Base integrand f = expand(d/dx[P * T(c x)])
++ Integral(w, x) + Add(*K[:k]) — the verbatim build_f3 shape
+of scratch/mathworld1_svpdiet3.py. Frozen banks: P in P12
+(the 12 trained forms with all six covered augmentation cells
+represented — census-gated from the pinned augmentation file
+at run start exactly as svpdiet3 does); T in {sin, cos}; c in
+F3_TRAIN_C = (8, 9, 10, 11, 12, 15, 16, 17, 18, 19), i.e.
+in-support frequencies ONLY (no c-OUT nuisance stratum — the
+band measures context use, not extrapolation); w in WS =
+(exp(x)/x, sin(x)/x); inert-addend configuration in the
+FRESH namespace, an ORDERED tuple ((A,1), (A,2), (B,1),
+(B,2)) with K_A = (9*x**3, 12*x**4) and K_B = (13*x**2,
+15*x**5) — four
+polynomials absent from every previously used inert-addend
+bank (F3 train/eval polys, E1 polys, nuisance K, the six
+early polys, K_POLYS2; the driver gates each with the
+lineage's K USED check). Horizon = 12 x 2 x 10 x 2 x 4 =
+1,920 bases. base_signature is frozen as the string
+"PR|P={P}|T={T}|c={c}|w={w}|kb={A|B}|k={k}" (the lineage
+build_f3 string with the bank letter ADDED — without it the
+two banks collide at the same k, which the lineage's SIG DUP
+gate would refuse); base_signature uniqueness AND base-
+integrand (srepr) uniqueness over the 1,920 horizon are hard
+gates (the lineage's SIG DUP / TARGET DUP), not census lines.
+sig_sha = sha256(base_signature) is persisted per state. Each
+base is
+qualified under the verbatim DESIGN-1 BLOCK LAW: three
+distractor variants (smallA = x**x, smallB = 1/(x + log(x)),
+after = sin(sin(x))), parent = Integral(f) + Integral(D),
+qualify_parent on each (stable legal set, HCE-argmin teacher,
+program derivation, tokenizer roundtrip, program-collision,
+context <= 4096 under the qualify tokenizer, in_domain,
+factor/hash code roundtrip, unique label); the block passes
+only if all three variants pass with teacher kind (I,
+term_index), rule i_unprod, ONE common term, and ordinals
+[1, 1, 0]. Gold is the teacher's HCE argmin — never hand-
+labelled, never constructor intent; a state is never mutated
+after its teacher output is seen. Ties (label_not_unique) and
+instabilities reject the block; no silent candidate-set
+repair.
+
+PRIMARY VARIANT ASSIGNMENT (target-blind, frozen): the
+primary I1 state of block i (0-based HORIZON index over all
+1,920 bases in the frozen nested enumeration order P, T, c,
+w, addend-config — not an index over qualifying blocks) is
+its
+smallA variant when i is even and its smallB variant when i
+is odd — assigned BEFORE bucketing and independent of any
+label; the signature and gold of the block are computed on
+THAT variant's complete candidate list. The "after" variant
+(site ordinal 0) becomes the block's COMPANION state (below).
+
+BUCKET / SELECTION LAW (frozen): bucket identity =
+(cand_sig_id of the primary variant, gold in {a, b}). Within every
+bucket, states are ordered by sig_sha ascending (the
+lineage's selection order; no expression is ever chosen by
+inspection). For each candidate signature g define capacity
+m_g = min(|bucket(g,a)|, |bucket(g,b)|); signatures with
+m_g = 0 are EXCLUDED from the walk list and never consume
+the four-signature budget. Sort the remaining signatures by
+(-m_g, cand_sig_id). Walk that list: q_g = min(m_g, 48 -
+filled); take the first q_g states of bucket(g,a) AND the
+first q_g of bucket(g,b); filled += q_g; stop when filled =
+48 or when four signatures have been taken. FILL GATE: GO iff filled == 48 (which implies 96
+states, 48/48, <= 4 signatures, exact per-signature balance);
+otherwise NO-FIRE (decision D) and the whole horizon is
+burned. Reserve-margin rider (descriptive, never a bar): the
+sum of m_g over ALL signatures v 48 (>= 72 = 1.5x is the
+preferred comfort level). Also persisted: unique state count
+(must equal 96, refuse on any duplicate cur or duplicate
+parent srepr sha), unique base-integrand count among the
+selected 96 (descriptive; horizon-level uniqueness is the
+hard gate above), per-(P, T, c,
+w, addend) family census of the selected states, per-bucket
+D census (x**x v 1/(x + log(x)) — descriptive, NOT the old
+exact-half gate: the parity assignment is target-blind but
+small quotas cannot guarantee exact D halves, so the census
+is reported and no state is moved to balance it). Selected
+states sharing a construction base are never described as
+independent examples; the family census is the disclosure.
+
+FIXED-RANKING CEILING GATE (frozen, independent computation
+by the verifier from the materialized artifact alone): for
+every selected signature g, enumerate ALL permutations of its
+candidate set A_g (this lineage's candidate sets hold 2-5
+codes; the gate enumerates whatever size appears and REFUSES
+above 9 codes rather than sampling) and record the best
+per-group accuracy; if the union
+of all candidate codes across the band has <= 9 distinct
+codes, ALSO enumerate all global orders (<= 362,880) and
+report the exact global micro ceiling, the number of optimal
+global orders, and the state set each optimum misses; if the
+union exceeds 9 codes the global ceiling is the sum of the
+per-group maxima (an exact upper bound that the balanced
+design attains). REQUIRE: primary micro ceiling = 48/96 =
+50.0% exactly and macro ceiling = 50.0% exactly, where macro
+= unweighted mean over the selected candidate-signature
+GROUPS (not (signature, gold) cells) of the best-order
+per-group accuracy.
+Derivation frozen here: a global order restricted to A_g is a
+permutation of A_g; its top code is either a (scores
+q_g(a)), b (scores q_g(b)), or a third code (scores 0);
+under q_g(a) = q_g(b) every group's maximum is exactly half
+its states, so every order attains at most 48/96 and every
+order ranking a or b first inside every selected A_g attains
+exactly 48/96. Any ceiling other than 50.0% in the accepted
+construction = decision E, INSTRUMENT FAILURE (signature
+definition or balance bug) — STOP, no reweighting.
+
+COMPANION I0 ARTIFACT (secondary, independent, can never
+modify the primary verdict): the "after" variants of the same
+96 selected blocks form a covered-site companion population
+(gold = (i_unprod, I, 0, term_index, t) with the block's
+common t, by the block law). Its signatures are computed
+independently at ordinal 0 and its per-signature balance is
+checked with the same law: COMPANION BALANCED iff every I0
+signature group is exactly balanced (then its ceiling is also
+exactly 50.0% and it is an eligible secondary endpoint);
+otherwise COMPANION IMBALANCED, materialized as a descriptive
+artifact with its exact computed ceiling booked and no
+scoring authority. Global 48/48 at I0 holds by construction;
+only the per-signature balance can fail.
+
+FRESHNESS / BURN LAW (frozen). There is no RNG anywhere in
+this lineage: the generator is a deterministic nested
+enumeration, and the freshness namespace is the inert-addend
+axis. Scan order = the frozen nested loop (P, T, c, w,
+addend-config), then sig_sha inside buckets. BURN SEMANTICS:
+every base of the 1,920-base horizon, in all three variants
+(5,760 parents), is burned the moment the materialization
+run starts, whether or not it qualifies or is selected; the
+horizon pins into the lineage burn registry exactly as the
+DESIGN-0/DESIGN-1/DIET/E1/NUISANCE/svpdiet3 horizons did.
+OVERLAP GATES (refute-on-hit, GATE-REFUTED on any hit — the
+fresh K polys make a CH-F3 hit structurally impossible, so a
+hit signals a code defect, not a near miss): every selected
+cur (primary AND companion) must be absent from (i) natural
+training curs data/matsub_paired.jsonl (a943ba7f...), (ii)
+the three svpeval band decision files, (iii) the 566 pilot
+parents, (iv) the burned D0 720 / D1 2,160 / DIET 15,912 /
+E1 10,224 / NUISANCE 3,456 horizon parents, (v) the svpdiet3
+eval horizon (1,152 bases x 3 variants) and secondary horizon
+(640), hence heldout_test16, covered_calibration and
+pout_robustness themselves (the FIELD-ORDER, residual-path,
+zero-depth and calibration populations are these same
+artifacts), (vi) the CLOSED-LOOP-1 sealed population
+(logs/mathworld1/cl1/pop/manifest.jsonl root_cur and every
+raw_attempts cur — a different root lineage, included for
+completeness), and (vii) any state of this run's own smoke
+slice. Selected target integrands must be absent from the
+4,536 train-side targets and from the svpdiet3 eval/secondary
+target integrands. Primary and companion curs are pairwise
+distinct (they differ by distractor) and the 96 primary curs
+are unique.
+
+FEASIBILITY DESK: NOT authorized as a separate stage. The
+lineage convention (DESIGN-0 NO-FIRE, then DESIGN-1 on a
+larger fresh horizon) is a single materialization run with a
+MECHANICAL fill gate; a separate pilot would burn a horizon
+to learn what the fill gate learns anyway, and yield
+information would sit in the session before the population
+exists. The frozen bars ARE the fill gate above (48/48 in <=
+4 signatures) plus zero qualification failures inside the
+selected cells (guaranteed by qualify_parent, censused). A
+NO-FIRE books honestly with the full bucket census and burns
+the horizon; a successor with a larger fresh addend namespace
+would need its own prereg.
+
+ENCODING / CONTEXT (frozen): every candidate of every
+accepted primary and companion state carries a canonical
+ActionProgram, an exact replay child (child_sstr / srepr
+persisted), factor and hash codes with decode roundtrip,
+pf_encode payload roundtrip under PERM (the three PARAM_FIRST
+gates of the scoring lineage, applied at materialization so
+both representations can later use the band), no
+det_ambiguous, no encoding failure, and the qualify
+tokenizer's state/program sequence lengths (state_seq_tokens,
+program_seq_tokens) <= 4096 with the maximum reported. The
+scoring prereg re-gates the prompt + 9-token candidate
+continuation under the frozen scoring tokenizer (the
+"Current: {cur}\nHints: none\nStep: " prompt law of
+svpfoheld) and requires zero overflow, no truncation.
+
+POPULATION RECEIPT SCHEMA (frozen; refuse-if-exists namespace
+logs/mathworld1/prband/, SMOKE path-isolated under
+logs/mathworld1/prband_smoke/ with its own receipt): per
+accepted state — block_id, role (primary-I1 / companion-I0),
+base_signature (frozen string above), sig_sha, horizon
+index, variant + distractor, cur (state sstr), state sha256
+of cur, parent_srepr_sha, cand_sig_id, cand_sig (the sorted
+5-tuple list), complete candidate list (child_sstr, child_srepr,
+program fields, factor_code, hash_code, pf payload,
+is_label, sequence lengths), gold 5-tuple, gold_class (t2 /
+t3), signature stratum + quota, n_candidates, min_hce_ties,
+qualification flags, overlap results per burned set. Run
+receipt: horizon size, block-law fail census, out-of-scope
+gold census, full bucket census (every candidate signature x gold count
+BEFORE selection, with every qualified block's
+base_signature / sig_sha / cand_sig_id / gold persisted so
+selection is re-derivable), selected-signature quotas, reserve-margin
+rider, family/D censuses, ceiling gate outputs (micro, macro,
+n_optimal, missed sets), companion verdict + ceiling, all
+input pins (data/aug/train_blocks/chal blocks/nuisance
+attempts/svpdiet3 eval_blocks + pout_attempts + the three
+materialized artifacts/cl1 manifest + raw_attempts, full
+receipt-derived shas), start provenance + completion commit,
+and sha256 of every emitted jsonl. Small-text receipts
+force-added; the primary + companion population files (96
+rows each) are force-added ONLY if each is under 2 MB
+(refuse-and-anchor-by-sha otherwise, per logs doctrine), so
+the verifier can reconstruct from git alone.
+
+INDEPENDENT VERIFIER (fresh context, before booking, from the
+artifacts only): 96-state count; exact 48/48; exact per-
+signature balance; byte-identical candidate sets inside every
+group (recomputed from the persisted candidate lists, not
+from cand_sig_id); fixed-ranking ceiling exactly 50.0% micro and
+macro with n_optimal; zero duplicate curs / parent shas;
+every overlap fence re-run against the pinned burned sets;
+every ActionProgram / factor / hash / pf roundtrip re-run;
+block law (three variants, one term, ordinals [1,1,0])
+re-checked per block; K polys absent from all prior banks;
+SELECTION RE-DERIVED: buckets rebuilt from the persisted
+base_signature, sig_sha, cand_sig_id and gold of every
+qualified block (the full pre-selection census is persisted),
+m_g, the (-m_g, cand_sig_id) walk and the first-q_g-by-
+sig_sha picks recomputed, and set-equality with the selected
+rows asserted.
+
+EVENTUAL SCORING PLAN (separate GO, its own prereg,
+MATH-CYBER-1-PRIOR-RESISTANT-EVAL-SCORE-0; nothing here
+authorizes it): checkpoints = the four frozen same-init pairs
+seed 19001 CANONICAL / PARAM_FIRST and seed 20001 CANONICAL /
+PARAM_FIRST (receipt-derived pins, never filenames); masks =
+full model (255) and mask-0 ONLY via the results-cited
+loop-skip law of scratch/mathworld1_respath.py — no 256-mask
+cube under that GO; scoring law = the existing legal-set
+sibling-ranking law, total-SUM of the 9 continuation
+log-probs (every factor/pf payload is exactly 8 symbols +
+EOS, so the sum and mean-lp laws induce identical rankings —
+disclosed, the mean-v-sum check still runs), pessimistic
+strict top-1, teacher-forced complete-candidate scoring,
+attn_mask=None, no cache. Three separated quantities: ORACLE
+PRIOR CEILING = 48/96 (a design constant, never a baseline in
+a paired test); ACTUAL MASK-0 = the checkpoint's learned
+problem-blind prior; FULL MODEL = the contextual model.
+PRIMARY ENDPOINT: full-model top-1 on the 96 primary states;
+CONTEXT ADVANTAGE OVER ORACLE PRIOR CEILING = top-1 - 48
+(states). Paired FULL-v-MASK-0 anatomy per checkpoint: both
+correct / full-only / mask0-only / both wrong (gain/harm v
+the checkpoint's own learned prior). Companion I0 scored
+under the same law only if COMPANION BALANCED. R(s,a) =
+S_full(s,a) - S_mask0(a) is a DESCRIPTIVE rider only (the
+zero-depth record shows raw R-ranking can be worse than the
+full score, 20001 costs 22/19/1/15 states); no interpolation
+or tuning between S_full and S_0. No residual cube, no
+FACTOR/HASH, no field-order / pause-token / register /
+layer-ablation mixing into the population or that first
+scoring. A later residual-path rung ("which blocks carry
+CONTEXTUAL discrimination where the fixed prior is capped at
+50%?") is eligible only after that scoring shows nontrivial
+contextual performance, under its own prereg.
+
+DECISION MAP (frozen, mechanical): A ONE signature supplies
+48/48 = BEST, materialize; B two to four signatures supply
+exact within-signature quotas summing to 48/48 = GO with the
+50% ceiling preserved exactly; C (global balance with
+within-signature imbalance) = structurally excluded by the
+selection law — if it ever appears in the artifact it is
+decision E; D the horizon cannot supply 48/48 within four
+signatures = NO-FIRE, horizon burned, redesign (larger fresh
+addend namespace or another predeclared binary pair) under a
+new prereg before any model scoring; E ceiling != 50.0% in
+an accepted construction = INSTRUMENT FAILURE, no
+population.
+
+REGISTERED PRIOR (frozen before any byte; wrong in public is
+the point): a single exact signature supplying 48/48 is
+DIFFICULT — moderate (the old horizon's two exact conflict
+groups held 8 and 5 states, 1-v-7 and 3-v-2); <= 4 balanced
+signatures supply N = 96 — moderate; the CH-F3 machinery on
+this in-support horizon yields enough fresh t2/t3 cells —
+moderate (the svpdiet3 IN regime qualified 180 t2 / 144 t3
+blocks from 576 bases, but exact-signature co-occurrence
+with both golds is the binding constraint, not raw t2/t3
+supply); the structural ceiling holds at exactly 50% — HIGH
+conditional on fill (it is a theorem of the selection law,
+so a miss is a bug); at the later scoring, seed-20001 full
+models reach >= 57/96, i.e. >= 9 states above the 48 cap
+(the smallest count whose exact one-sided binomial tail at
+n = 96, p = 1/2 is below 5%: P(X >= 57) = 0.041, P(X >= 56) =
+0.062; frozen as the "material" line, used descriptively —
+the 48 cap is a design constant, not a null hypothesis) —
+moderate, SINGLE-REALIZATION per
+cell (2 seeds x 2 arms, n = 1 each; no pooling, no C-v-PF
+direction claimed from one realization); CANONICAL companion
+I0 shows a larger full-v-mask-0 contextual gain than the
+primary I1 band — low-moderate; no prior on the C-v-PF
+winner.
+
+CLAIM CEILING (frozen): a materialized band establishes ONLY
+that it is structurally prior-resistant in the specific sense
+that any deterministic problem-blind fixed ordering over the
+complete legal candidate codes is capped at 50% accuracy
+while the correct action varies with the mathematical state.
+NOT established, ever, by this design: that a model above
+50% reasons correctly; broad OOD generalization; solve-rate
+improvement; autonomous generation; universal context use;
+that mask-0 exhausts every context-free classifier beyond the
+fixed-code-ranking function class (a separate proof would be
+required); that t2/t3 is representative of all calculus
+actions; anything about training necessity or layer roles.
+
+FENCES. DESIGN FREEZE ONLY: no state materialized, no
+checkpoint loaded, no model scored, no residual mask, no
+FACTOR/HASH, nothing trained — every number above is read
+from booked receipts or is a frozen design constant. The
+materialization driver is an adopt-not-fork copy of the
+results-cited svpdiet3/svpchal machinery (qualify_parent,
+build_f3 shape, block law, sig_sha selection) with the
+frozen PR banks, the signature function, the bucket law and
+the ceiling gate added; it commits BEFORE any byte is
+generated, runs its path-isolated smoke (burned DESIGN-0
+CH-F3 bases, as svpdiet3's smoke slice) before production,
+gets receipt-auditor on its first real receipts, and never
+writes into any frozen namespace. Expected wall: ~5,760
+qualify_parent calls at the svpdiet3 rate (~0.6 s each) =
+roughly one hour on the Mac, one process, no GPU. Nothing
+executes under this GO.
+
+NEXT ELIGIBLE GO (one, nominated, NOT authorized here):
+MATH-CYBER-1-PRIOR-RESISTANT-EVAL-MATERIALIZATION-0 — commit
+the driver, smoke, one production run under the laws above,
+independent verifier, book MATERIALIZED (A/B) or NO-FIRE (D)
+or INSTRUMENT FAILURE (E) with the full bucket census.
+
