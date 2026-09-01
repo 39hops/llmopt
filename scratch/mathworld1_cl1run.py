@@ -69,6 +69,7 @@ VOCAB = 340
 CODE_BASE = 332
 ALPHA = 0.05
 X = sp.Symbol("x")
+MAT_TIMEOUT_S = 120.0
 OUTDIR = Path("logs/mathworld1/cl1/run")
 POPDIR = Path("logs/mathworld1/cl1/pop")
 LOCK = Path("docs/receipts.lock.json")
@@ -93,11 +94,18 @@ def ssha(s: str) -> str:
 
 
 def rebuild_root(row):
-    """Root from sealed manifest bytes: sympify(root_cur) with
-    sstr-roundtrip + full-sha identity gates."""
-    root = sp.sympify(row["root_cur"])
+    """Root identity: sympify(sstr) is NOT an identity (reparse
+    auto-distributes 31/96 sealed roots), so the exact engine
+    object is re-materialized from the generator, then gated
+    byte-identical to the sealed manifest bytes. The fork probe
+    below has already bounded this seed's wall (the named
+    make_integrate hang class), so the in-process rebuild is
+    hang-retired for this exact (level, seed)."""
+    from llmopt.mathgen.problems import make_integrate
+    p = make_integrate(row["level"], row["generator_seed"])
+    root = sp.Integral(p._expr, X)
     cur = sp.sstr(root)
-    gate(cur == row["root_cur"], "ROOT SSTR ROUNDTRIP")
+    gate(cur == row["root_cur"], "ROOT BYTES")
     gate(ssha(cur) == row["root_sha"], "ROOT SHA")
     return root
 
@@ -126,28 +134,40 @@ def b_score_decision(model, dev, parent, acts):
         try:
             prog, why = derive_program(parent, rule, c.key(),
                                        accepted)
-            if prog is None:
-                return None, cands, None, "action_encoding_failure"
+        except (SystemExit, Exception):
+            prog, why = None, "derive_exception"
+        if prog is None:
+            cands.append({"name": n, "failed": why})
+            return None, cands, None, "action_encoding_failure"
+        dom_ok = bool(in_domain(
+            prog["rule"], prog["site_kind"], prog["site_ordinal"],
+            prog["param_kind"], prog["param_index"]))
+        if not dom_ok:
+            cands.append({"name": n, "prog": prog,
+                          "in_domain": False,
+                          "failed": "out_of_domain"})
+            return None, cands, None, "action_encoding_failure"
+        try:
             fc = factor_symbols(prog["rule"], prog["site_kind"],
                                 prog["site_ordinal"],
                                 prog["param_kind"],
                                 prog["param_index"])
-        except BaseException:
+        except (SystemExit, Exception):
+            cands.append({"name": n, "prog": prog,
+                          "in_domain": True,
+                          "failed": "factor_encode_exception"})
             return None, cands, None, "action_encoding_failure"
         cands.append({"name": n, "prog": prog, "fc": fc,
-                      "in_domain": bool(in_domain(
-                          prog["rule"], prog["site_kind"],
-                          prog["site_ordinal"], prog["param_kind"],
-                          prog["param_index"]))})
+                      "in_domain": True})
     pre_len = len(TOK.encode(f"Current: {cur}\nHints: none\nStep: "))
     if pre_len + 9 > CTX:
         return None, cands, pre_len, "context_overflow"
     conts = [[CODE_BASE + s for s in c["fc"]] + [TOK.eos_id]
              for c in cands]
-    try:
-        lps = token_lps(model, dev, cur, conts)
-    except BaseException:
-        return None, cands, pre_len, "action_encoding_failure"
+    # scoring-integrity gates inside token_lps (non-finite lp,
+    # T!=9) abort the RUN loudly — they are instrument failures,
+    # never an action_encoding_failure outcome
+    lps = token_lps(model, dev, cur, conts)
     for c, v in zip(cands, lps):
         c["token_lps"] = v
         c["score"] = sum(v)
@@ -183,8 +203,8 @@ def run_arm(arm, root, root_sha, model, dev, sink, row_index,
             break
         acts, stable = stable_legal_set(state)
         engine_calls += 1
-        engine_wall += time.monotonic() - t0
         parent_cur = sp.sstr(state.expr)
+        engine_wall += time.monotonic() - t0
         if not stable:
             outcome = "legal_set_unstable"
             dec_rows.append({"depth": depth, "parent": parent_cur,
@@ -195,8 +215,10 @@ def run_arm(arm, root, root_sha, model, dev, sink, row_index,
             dec_rows.append({"depth": depth, "parent": parent_cur,
                              "event": "dead_end"})
             break
+        t0 = time.monotonic()
         legal = [{"name": n, "child_sstr": sp.sstr(c.expr)}
                  for n, c in acts]
+        engine_wall += time.monotonic() - t0
         row = {"depth": depth, "parent": parent_cur,
                "n_legal": len(acts), "legal": legal}
         if arm == "A":
@@ -219,8 +241,10 @@ def run_arm(arm, root, root_sha, model, dev, sink, row_index,
             model_calls += 1
             row["prompt_tokens"] = pre_len
             row["candidates"] = [
-                {"name": c["name"], "factor_code": c["fc"],
-                 "in_domain": c["in_domain"],
+                {"name": c["name"],
+                 "factor_code": c.get("fc"),
+                 "in_domain": c.get("in_domain"),
+                 "failed": c.get("failed"),
                  "score": c.get("score"),
                  "token_lps": c.get("token_lps")}
                 for c in cands]
@@ -314,6 +338,21 @@ def main():
         train_par.add(json.loads(l)["cur"])
     gate(len(train_par) == 58988, "TRAIN PARENT COUNT")
 
+    # rebuild + gate ALL 96 roots BEFORE the namespace exists, so
+    # a failed root gate cannot brick the retry. Fork probe first
+    # (the named make_integrate hang class), then the in-process
+    # rebuild whose bytes must equal the sealed manifest exactly.
+    from scratch.mathworld1_cl1pop import materialize
+    roots = []
+    for r in rows:
+        res, fail = materialize(r["level"], r["generator_seed"],
+                                timeout=MAT_TIMEOUT_S)
+        gate(fail is None, f"FORK PROBE {r['row_index']}: {fail}")
+        gate(res["cur"] == r["root_cur"],
+             f"FORK PROBE BYTES {r['row_index']}")
+        roots.append(rebuild_root(r))
+    gate(len(roots) == 96, "ROOTS REBUILT")
+
     gate(torch.backends.mps.is_available(), "MPS")
     dev = torch.device("mps")
     model = build_model(VOCAB, ctx=CTX)
@@ -331,9 +370,11 @@ def main():
             order = ROTATION[r["row_index"] % 3]
             got = {}
             for arm in order:
+                # sympy exprs are immutable; each arm gets its own
+                # State/visited/walls from the same root object
                 got[arm] = run_arm(
-                    arm, rebuild_root(r), r["root_sha"], model,
-                    dev, sink, r["row_index"], r["level"])
+                    arm, roots[r["row_index"]], r["root_sha"],
+                    model, dev, sink, r["row_index"], r["level"])
             summaries.extend(got[a] for a in ARMS)
             print(f"[cl1run] root {r['row_index']:2d} L{r['level']}"
                   + "".join(f" {a}:{got[a]['outcome']}"
@@ -428,6 +469,9 @@ def main():
     gate(fsha(POPDIR / "manifest.jsonl") == MANIFEST_SHA,
          "POST MANIFEST PIN")
     gate(fsha(CKPT) == ckpt_sha_expected, "POST CKPT PIN")
+    gate(fsha(PAIRED) == PAIRED_SHA, "POST PAIRED PIN")
+    gate(fsha(BIRTH_RECEIPT) == birth_lock_sha,
+         "POST BIRTH RECEIPT PIN")
     (OUTDIR / "cl1run_receipt.json").write_text(
         json.dumps(receipt, indent=1))
     print(json.dumps({k: receipt[k] for k in
