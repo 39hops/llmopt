@@ -256,7 +256,25 @@ def main():
             sorted(per_cand_ns)[len(per_cand_ns) // 2] / 1e3,
             2),
         "max_us_per_candidate": round(
-            max(per_cand_ns) / 1e3, 2)}
+            max(per_cand_ns) / 1e3, 2),
+        "standing_cost_comparison": {
+            "booked_depth0_enum_median_s": 4.07,
+            "booked_model_scoring_wall_s_per_call":
+                round(97.0 / 140, 3),
+            "note": "reference figures from the booked "
+                    "CLOSED-LOOP-1/splice receipts (L59529/"
+                    "L60177 lineage): depth-0 stable-set "
+                    "enumeration median and B model wall "
+                    "97.0 s over 140 calls"}}
+
+    # baseline==booked gate BEFORE namespace creation (a gate
+    # failure must not brick the retry)
+    baseline = {i: rerank_top1(scored[i]["joined"],
+                               lambda c: c["score"])
+                for i in scored}
+    for i in scored:
+        gate(baseline[i] == scored[i]["chosen_index"],
+             f"BASELINE!=BOOKED root {i}")
 
     # ---- normalization over the deduplicated 677 universe ----
     univ = [e for i, r in scored.items() for e in r["joined"]]
@@ -308,21 +326,13 @@ def main():
 
     # ---- SELECTION (frozen law; from in-memory = sealed rows) --
     for i in sorted(scored):
-        gate(top1[("P1", 0, i)]
-             == rerank_top1(scored[i]["joined"],
-                            lambda c: c["score"]),
+        gate(top1[("P1", 0, i)] == baseline[i],
              "LAMBDA0 IDENTITY")
-    baseline = {i: rerank_top1(scored[i]["joined"],
-                               lambda c: c["score"])
-                for i in scored}
-    for i in scored:
-        gate(baseline[i] == scored[i]["chosen_index"],
-             f"BASELINE!=BOOKED root {i}")
 
     def cell(j, lam):
         key = {"P1": "C1", "P2": "C2", "P3": "C3"}[j]
         demote = 0
-        equal_cost = []
+        equal_cost, higher_cost = [], []
         for i in FOCUS:
             b, t = baseline[i], top1[(j, lam, i)]
             if t != b:
@@ -330,34 +340,40 @@ def main():
                 ct = scored[i]["joined"][t][key]
                 if ct < cb:
                     demote += 1
-                else:
+                elif ct == cb:
                     equal_cost.append(i)
+                else:
+                    higher_cost.append(i)
         c23 = top1[(j, lam, CONTROL)] == baseline[CONTROL]
         others = [i for i in scored if i not in FOCUS]
         changed = [i for i in others
                    if top1[(j, lam, i)] != baseline[i]]
-        return demote, equal_cost, c23, changed
+        return demote, equal_cost, higher_cost, c23, changed
 
     pareto = {}
     survivors = {}
     for j in PROXIES:
         key = {"P1": "C1", "P2": "C2", "P3": "C3"}[j]
         for lam in GRID:
-            d, eq, c23, ch = cell(j, lam)
-            hi = []
+            d, eq, hc, c23, ch = cell(j, lam)
+            eq_col, hi_col = [], []
             for i in ch:
                 b, t = baseline[i], top1[(j, lam, i)]
                 cb = scored[i]["joined"][b][key]
                 ct = scored[i]["joined"][t][key]
-                if ct >= cb:
-                    hi.append(i)
+                if ct == cb:
+                    eq_col.append(i)
+                elif ct > cb:
+                    hi_col.append(i)
             pareto[f"{j}:{lam}"] = {
                 "focus_demotion": d,
-                "equal_cost_displacements": eq,
+                "focus_equal_cost_displacements": eq,
+                "focus_higher_cost_displacements": hc,
                 "root23_preserved": c23,
                 "collateral_changed": len(ch),
                 "changed_roots": ch,
-                "changed_to_higher_or_equal_cost": hi}
+                "collateral_equal_cost": eq_col,
+                "collateral_higher_cost": hi_col}
             if d == 4 and c23 and j not in survivors:
                 survivors[j] = lam
     winner = None
@@ -464,8 +480,16 @@ def main():
 
     # ---- P4 + HCE sweep (AFTER selection; diagnostic) ----
     t_sw = time.time()
+    GLOBAL_SWEEP_DEADLINE_S = 6 * 3600.0
+    skipped_roots = []
     with open(OUTDIR / "sweep.jsonl", "w") as f:
         for i in sorted(roots):
+            if time.time() - t_sw > GLOBAL_SWEEP_DEADLINE_S:
+                skipped_roots.append(i)
+                f.write(json.dumps({"row_index": i,
+                                    "skipped_deadline": True})
+                        + "\n")
+                continue
             want = [(lg["name"], lg["child_sstr"])
                     for lg in roots[i]["legal"]]
             rows, done = sweep_root(manifest[i], want)
@@ -531,21 +555,81 @@ def main():
             e = (r["joined"][pos] if "joined" in r
                  and pos < len(r["joined"]) else None)
             if e is not None and "C1" in e:
-                p4pairs["P1"].append((e["C1"], p4))
-                p4pairs["P2"].append((e["C2"], p4))
-                p4pairs["P3"].append((e["C3"], p4))
+                p4pairs["P1"].append(
+                    (i, pos, e["C1"], p4))
+                p4pairs["P2"].append(
+                    (i, pos, e["C2"], p4))
+                p4pairs["P3"].append(
+                    (i, pos, e["C3"], p4))
             hvals[pos] = x["hce"]
         if hvals:
-            hce_best[i] = min(hvals, key=lambda p: hvals[p])
+            # reconstructed hce argmin; tie law approximates
+            # arm A's (hce, name, child key) with
+            # (hce, name, child_sstr) — disclosed label
+            hce_best[i] = min(
+                hvals,
+                key=lambda p: (hvals[p],
+                               r["legal"][p]["name"],
+                               r["legal"][p]["child_sstr"]))
     def corr(j):
         if not p4pairs[j]:
             return None
-        v = spearman([a for a, _ in p4pairs[j]],
-                     [b for _, b in p4pairs[j]])
+        v = spearman([c for _, _, c, _ in p4pairs[j]],
+                     [p for _, _, _, p in p4pairs[j]])
         return round(v, 4) if v is not None else None
     p4_corr = {j: corr(j) for j in PROXIES}
+    # P4 validity anatomy: FP = cheap-proxy top-decile cost
+    # with bottom-half P4; FN = top-decile P4 with bottom-half
+    # proxy cost (descriptive deciles over the measured pairs)
+    p4_anatomy = {}
+    for j in PROXIES:
+        pr = p4pairs[j]
+        if not pr:
+            continue
+        cs = sorted(c for _, _, c, _ in pr)
+        ps = sorted(p for _, _, _, p in pr)
+        c90 = cs[int(0.9 * (len(cs) - 1))]
+        c50 = cs[len(cs) // 2]
+        p90 = ps[int(0.9 * (len(ps) - 1))]
+        p50 = ps[len(ps) // 2]
+        fp = [(i, pos) for i, pos, c, p in pr
+              if c >= c90 and p <= p50]
+        fn = [(i, pos) for i, pos, c, p in pr
+              if p >= p90 and c <= c50]
+        p4_anatomy[j] = {
+            "false_positives_cheapcost_lowP4": fp[:15],
+            "false_negatives_highP4_lowcost": fn[:15],
+            "n_fp": len(fp), "n_fn": len(fn)}
+    # focus/23/94 placement under P4
+    place = {}
+    for i in FOCUS + [CONTROL, RIDER]:
+        b = scored[i]["chosen_index"]
+        pr = [(pos, p) for (ri, pos, _, p) in p4pairs["P1"]
+              if ri == i]
+        pv = dict(pr)
+        place[str(i)] = {
+            "booked_choice_P4": pv.get(b),
+            "max_P4_in_set": max(pv.values()) if pv else None}
+    # surrogate-failure check: sign of selected-proxy v P4
+    # relation on the focus class (mechanical winner immutable)
+    surrogate_flag = None
+    if winner is not None:
+        wpairs = [(c, p) for ri, pos, c, p in p4pairs[winner]
+                  if ri in FOCUS]
+        if wpairs:
+            v = spearman([c for c, _ in wpairs],
+                         [p for _, p in wpairs])
+            surrogate_flag = {
+                "focus_class_spearman": (round(v, 4)
+                                         if v is not None
+                                         else None),
+                "STRING_COST_SURROGATE_FAILURE":
+                    bool(v is not None and v < 0)}
     hce_agree = {"baseline": 0, "selected": 0, "n": 0,
-                 "gained": [], "lost": []}
+                 "gained": [], "lost": [],
+                 "tie_law_note": "reconstructed hce argmin "
+                 "with (hce, name, child_sstr) ties — "
+                 "approximates arm A's (hce, name, key)"}
     if winner is not None:
         lam = survivors[winner]
         for i in scored:
@@ -560,14 +644,53 @@ def main():
                 hce_agree["gained"].append(i)
             if b_ok and not s_ok:
                 hce_agree["lost"].append(i)
+    # known-outcome riders (post-selection, descriptive only):
+    # join booked CL1 solved bits + categories to collateral
+    outcome_join = {}
+    if winner is not None:
+        solved_a, solved_b = {}, {}
+        for l in open(RAW_CL1):
+            t = json.loads(l)
+            if t["arm"] == "A":
+                solved_a[t["row_index"]] = t["solved"]
+            elif t["arm"] == "B":
+                solved_b[t["row_index"]] = t["solved"]
+        lam = survivors[winner]
+        ch = pareto[f"{winner}:{lam}"]["changed_roots"]
+        cat = {"concordant_solved": [], "concordant_failed": [],
+               "A_only": [], "B_only": []}
+        for i in ch:
+            a, b = solved_a[i], solved_b[i]
+            k = ("concordant_solved" if a and b else
+                 "concordant_failed" if not a and not b else
+                 "A_only" if a else "B_only")
+            cat[k].append(i)
+        outcome_join = {
+            "selected_lambda_changed_roots_by_outcome": cat,
+            "expand_family_changed":
+                [i for i in ch
+                 if i in (20, 23, 54, 68, 72, 78, 88)],
+            "root72_changed": 72 in ch,
+            "root94_changed": RIDER in ch}
     riders = {"sweep_sha": sweep_sha,
+              "sweep_wall_s": round(time.time() - t_sw, 1),
+              "sweep_skipped_roots": skipped_roots,
               "p4_spearman_v_proxies": p4_corr,
               "p4_pairs_n": {j: len(p4pairs[j])
                              for j in PROXIES},
-              "hce_agreement_descriptive": hce_agree}
+              "p4_anatomy": p4_anatomy,
+              "p4_placement_focus_23_94": place,
+              "surrogate_failure_check": surrogate_flag,
+              "hce_agreement_descriptive": hce_agree,
+              "known_outcome_collateral_join": outcome_join}
     (OUTDIR / "riders.json").write_text(
         json.dumps(riders, indent=1))
-    print(json.dumps(riders, indent=1)[:1500], flush=True)
+    print(json.dumps({k: riders[k] for k in
+                      ("p4_spearman_v_proxies",
+                       "surrogate_failure_check",
+                       "hce_agreement_descriptive",
+                       "known_outcome_collateral_join")},
+                     indent=1)[:2000], flush=True)
     print("[cl1cost] DONE", flush=True)
     return 0
 
