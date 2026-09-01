@@ -87,11 +87,15 @@ def main():
                IN.glob("*.json*"))}}
     census = rows(IN / "horizon_census.jsonl")
     qual = rows(IN / "qualified_blocks.jsonl")
-    primary = rows(IN / "primary.jsonl")
-    companion = rows(IN / "companion.jsonl")
     cap_tab = json.loads((IN / "capacity_table.json").read_text())
-    ceil_rec = json.loads((IN / "ceiling_receipt.json").read_text())
     drv = json.loads((IN / "prband_receipt.json").read_text())
+    nofire = drv["verdict"] == "NO-FIRE"
+    check(nofire == (not (IN / "primary.jsonl").exists()),
+          "NO-FIRE verdict v primary artifact presence")
+    primary = [] if nofire else rows(IN / "primary.jsonl")
+    companion = [] if nofire else rows(IN / "companion.jsonl")
+    ceil_rec = (None if nofire else
+                json.loads((IN / "ceiling_receipt.json").read_text()))
 
     # ---- 1. horizon re-enumeration (own loops) ----------------
     if not SMOKE:
@@ -234,6 +238,7 @@ def main():
             "PRIOR-RESISTANT POPULATION MATERIALIZED"),
             "verdict v fill")
     if not materialized and not SMOKE:
+        check(nofire, "fill < N but driver did not book NO-FIRE")
         rec["verdict"] = "VERIFIED NO-FIRE" if not problems \
             else "DISCREPANCIES"
         rec["problems"] = problems
