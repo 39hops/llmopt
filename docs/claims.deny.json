@@ -159,6 +159,18 @@
    "reason": "Under semantic factor blocks (P=(param_kind,param_index)) the 29 marginal-recombination rivals plus band3's NEW-FACTOR-VALUE rival are NEW-PARAMETER (u_choice2/3, term_index4 unseen P); the scored record contains ZERO strict within-rule recombinations, label or rival. Say 'NEW-PARAMETER rivals (marginal-class recombination-OOV, superseded reading)'.",
    "superseded_by": "2026-08-27-amendment-math-cyber-1-svp-semantic",
    "scope": "svp|factor[- ]?hash|support[- ]?opportunity|recombination"
+  },
+  {
+   "pattern": "i_transcend_div\\s*x\\s*3",
+   "scope": "closed-loop|CLOSED-LOOP|splice|SPLICE|wall_cap|wall-cap",
+   "reason": "Fabricated rule split in the CLOSED-LOOP-1 anatomy sentence: all FOUR A-only wall_cap roots {54,68,78,88} are i_transcend_div (x4); the i_usub root is 23, a cycle loss.",
+   "superseded_by": "2026-08-31-amendment-math-cyber-1-closed-loop"
+  },
+  {
+   "pattern": "separately preregistered wall[- ]?cap rider",
+   "scope": "closed-loop|CLOSED-LOOP|splice|SPLICE",
+   "reason": "No standalone wall-cap-sensitivity prereg exists; the rider is PARKED/FUTURE-ELIGIBLE with the assessment's outcome gate, promotion requires its own future prereg.",
+   "superseded_by": "2026-08-31-amendment-math-cyber-1-closed-loop-b"
   }
  ]
 }

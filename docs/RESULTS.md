@@ -60105,3 +60105,72 @@ LEGALITY-TRAINING, PARAM-MIDDLE, and the wall-cap rider all
 stay banked/parked/unbuilt; every future claim grounded in
 its own run's tool output.
 
+## AMENDMENT MATH-CYBER-1-CLOSED-LOOP-1-JOINT-THREE-ARM-RUN-0-ANATOMY: narrow factual correction of one anatomy sentence in the booked CLOSED-LOOP-1 verdict (L59529) — the A-side depth-0 rule split "(i_transcend_div x3, i_usub x1)" for the four A-only wall_cap roots is WRONG; all FOUR focus roots {54, 68, 78, 88} are i_transcend_div on the A side, and the i_usub root is root 23, the booked cycle-loss counter-instance, which is NOT one of the four wall-cap roots; no endpoint, total, gate, membership, or conclusion changes (2026-08-31, Mac)
+
+TARGET: VERDICT MATH-CYBER-1-CLOSED-LOOP-1-JOINT-THREE-ARM-
+RUN-0 (L59529), the sentence at L59578: "In all 4 wall_cap
+losses B chose 'expand' at depth 0 where A chose an integral
+rule (i_transcend_div x3, i_usub x1)". Recomputed from the
+sealed raw (22198ddf...) in this session AND independently
+by the splice prereg auditor: A's depth-0 chosen rule is
+i_transcend_div on ALL FOUR of {54, 68, 78, 88}; root 23's
+A depth-0 rule is i_usub, and root 23 lost by CYCLE, not
+wall_cap. Origin of the error: UNDETERMINED — no root subset
+in the raw yields a 3+1 split (the four wall_cap roots are
+x4 i_transcend_div; the five non-encoder discordants
+{23, 54, 68, 78, 88} are i_transcend_div x4 + i_usub x1); the
+wrong enumeration was a drafting fabrication caught only at
+the splice-prereg audit. The corrected sentence reads: "In all 4 wall_cap
+losses B chose 'expand' at depth 0 where A chose
+i_transcend_div." (Scope reminder, unchanged from the splice
+prereg: root 72 is a FIFTH expand wall_cap — B wall_cap, A
+cycled, A depth-0 also i_transcend_div — outside the A-only
+focus subset; disclosed at L59999-60003.)
+
+DENY ENTRY (same commit): "i_transcend_div x3" added to
+docs/claims.deny.json scoped to the closed-loop threads,
+superseded_by this amendment, so the dead split cannot be
+re-quoted into the live splice-desk verdict prose.
+
+EXPLICITLY UNCHANGED: MODEL-WORSE; A 92 / B 85 / C 30;
+discordants 7/0; p = .015625; encoding-confound gate and its
+PERMITTED reading; expand-family membership {20, 23, 54, 68,
+72, 78, 88}; every scientific conclusion, fence, and
+decision-map row. The frozen splice prereg (96940b89)
+already carries the correct figures and is untouched. NO
+EXPERIMENTAL BAR MOVED. Sole occurrence of the wrong split
+is the target sentence (repo-wide grep; the FINDINGS bullet
+for L59529 does not carry the rule enumeration).
+
+## AMENDMENT MATH-CYBER-1-CLOSED-LOOP-1-POLICY-SPLICE-PREREG-0-RIDER-PROVENANCE: provenance clarification of the frozen splice prereg's phrase "the separately preregistered wall-cap rider" (96940b89, L60086) — NO standalone wall-cap-sensitivity prereg exists anywhere in the record (repo-wide search, zero matches); wall-cap sensitivity is PARKED / FUTURE-ELIGIBLE only, no 120 s / 300 s / unlimited-cap law exists, and any future wall-cap experiment requires its OWN prereg after splice adjudication; the frozen splice experimental law is not edited and no endpoint or decision-map row changes (2026-08-31, Mac)
+
+TARGET: PRE-REG MATH-CYBER-1-CLOSED-LOOP-1-POLICY-SPLICE-
+PREREG-0 (L59878, frozen at 96940b89). Its decision map
+says "consider the separately preregistered wall-cap rider
+(still PARKED ...)". Audited before booking this
+clarification: no PRE-REG entry for a wall-cap or
+cap-sensitivity experiment exists in docs/RESULTS.md or the
+index (grep for wall-cap/cap-sensitivity prereg headings:
+zero). The word "preregistered" there is a PROVENANCE ERROR
+in prose only — the correct status, already stated in the
+same sentence's "(still PARKED — no 120 s/300 s/unlimited
+variant under this program until then)" and in the splice
+assessment (L59792: "WALL-CAP SENSITIVITY: LATER ... Park a
+cap-sensitivity rider"), is: PARKED / FUTURE-ELIGIBLE, not
+frozen, no cap law of any kind registered. Reading law from
+this amendment forward: wherever the splice program refers
+to "the wall-cap rider", it denotes a PARKED NOMINATION
+whose promotion requires its own future prereg AND the
+assessment's registered outcome gate (L59796-59799:
+promoted only if the expand roots book FIRST-ACTION-
+SUFFICIENT or the interaction classes and the cost question
+survives) — never bare adjudication alone. DENY ENTRY (same
+commit): "separately preregistered wall-cap rider" added to
+docs/claims.deny.json scoped to the closed-loop/splice
+threads, superseded_by this amendment. The frozen prereg
+text itself is
+NOT edited (frozen entries are never rewritten); its
+experimental law, budget, decision map, and every bar are
+untouched and remain authoritative at 96940b89. NO
+EXPERIMENTAL BAR MOVED.
+
