@@ -60561,3 +60561,259 @@ successor; single checkpoint/engine/budget scope inherited
 from the splice ceiling; nothing here modifies MODEL-WORSE,
 p=.015625, or any splice label.
 
+## PRE-REG MATH-CYBER-1-CLOSED-LOOP-1-SEARCH-COST-PROXY-DESK-PREREG-0: DEVELOPMENT-ONLY depth-0 reranking desk on the known 96-root population — three deployable string proxies (P1 length / P2 additive terms / P3 Integral load) with outcome-blind quantile normalization, a frozen 11-point lambda grid, and a lexicographic minimal-intervention selection law (demote all four expand focus roots AND preserve root 23 top-1, then fewest collateral changes, then smaller lambda, then simpler proxy); P4 exact branching DIAGNOSTIC-ONLY forever under this rung; no rollout, no solve-rate claim, no HCE-agreement tuning; PREREG ONLY — no table joined, no child enumerated, no lambda touched, nothing executed (2026-09-01, Mac)
+
+PURPOSE (adopting OBSERVATION ...SEARCH-COST-PROXY-
+ASSESSMENT-0, L60346, HEAD c3b3b6c5): can a cheap
+child-state complexity penalty demote the localized
+SEARCH-EXPANSION first-action mistakes (VERDICT
+POLICY-SPLICE-DESK-0, L60177) while preserving as much of
+the frozen model's existing preference policy as possible?
+DEVELOPMENT ONLY: the 96 roots, outcomes, discordants,
+splice labels, and focus anatomy are all known; any selected
+proxy, normalization constant, and lambda must later
+transport FROZEN to a fresh sealed population before any
+improvement claim exists.
+
+MECHANISM SCOPE: SEARCH-EXPANSION REGRET only; no
+trajectory-topology claim. POSITIVE FOCUS = {54, 68, 78,
+88} (the four A-only expand roots where BA still
+wall-capped). NEGATIVE CONTROL = root 23 (cycle/topology
+failure, modest expansion): its purpose is selectivity —
+an expansion penalty must not indiscriminately suppress any
+previously bad first action. DISCRIMINATING RIDER = root 94
+(high branching/Integral proliferation, modest length):
+reported prospectively, NOT part of the selection target.
+
+DATA + JOIN LAW (frozen): sealed CL1 raw
+22198ddf... depth-0 rows; candidate model scores = the
+frozen seed-19001 CANONICAL total continuation log-scores
+S0 already recorded for 95/96 roots — NO new model
+forwards; root 93 excluded from model reranking (incomplete
+scores from the known encoder failure) but kept in
+proxy-only descriptive censuses. Join legal[i] (child_sstr)
+to candidates[i] (score) POSITIONALLY with a
+PREFIX-identity assertion (root 93 records 10 legal v 9
+candidate entries — an equal-length zip would abort;
+name-order agrees on the common prefix 96/96); NEVER by
+name (69/96 roots carry duplicate names — the known
+silent-corruption path).
+
+PROXY FAMILY (exactly three deployable + one diagnostic):
+  P1 C1 = log((1+len(child_sstr))/(1+len(parent_sstr))),
+     exact sealed serializations.
+  P2 C2 = log((1+terms(child))/(1+terms(parent))) where
+     terms() is a DETERMINISTIC PARSER-FREE top-level
+     additive-term count frozen here: scan the serialized
+     expression left to right tracking parenthesis depth;
+     count '+' and binary '-' occurrences at depth 0 ONLY
+     (a '-' is binary iff a preceding non-space character
+     EXISTS and is not one of '(', ',', '+', '-', '*', '/';
+     a '-' at string position 0 is unary — 81/687 sealed
+     children start with one); terms = depth-0 separator
+     count + 1. Counting binary '-' as a separator is a
+     deliberate refinement of the assessment's nominated
+     '+'-count, frozen here. MEASURED STRUCTURAL FACT
+     (frozen disclosure): terms(parent) = 1 and
+     integral_count(parent) = 1 on 96/96 roots (every
+     parent is one Integral(...) atom at depth 0), so on
+     THIS population C2 and C3 are child-only measures with
+     constant denominators — child terms() still spans
+     1..12+ (i_sum-style children split into multiple
+     depth-0 Integrals), so P2/P3 discriminate, but they
+     are not parent-relative ratios here and the
+     'additive-term multiplication' factor inside the
+     parent Integral is invisible to the depth-0 scan. If
+     qualification shows the rule ambiguous on any sealed
+     string beyond the cases frozen here, STOP or SIMPLIFY
+     P2 before any joined analysis — never a silent
+     per-case fix.
+  P3 C3 = log((1+integral_count(child))/
+     (1+integral_count(parent))) with integral_count = count
+     of the exact substring "Integral(" — the dimensionless
+     log-ratio form, chosen NOW. Named departure: the
+     assessment's parameterization sketch said "count (P3)";
+     this prereg freezes the log-ratio instead, before any
+     behavior is seen, for unit consistency with P1/P2
+     (with integral_count(parent) = 1 measured on 96/96,
+     the two differ only by the constant denominator and
+     the log).
+  P4 exact stable child legal-set size / branching ratio —
+     DIAGNOSTIC ONLY, measurable offline in this desk, can
+     NEVER become the deployable selected proxy under this
+     rung (booked cost 5.9-21.9 s per post-expand
+     stability-law enumeration v the 60 s budget).
+
+PROXY TIMING (registered measurement): actual marginal
+runtime of P1-P3 over all sealed depth-0 candidates —
+total, per candidate, max, and comparison to standing
+candidate construction/scoring cost; the "negligible" claim
+is currently an estimate and must become a measurement.
+P4/hce sweep time reported separately.
+
+OFFLINE P4/HCE SWEEP (development instrumentation only):
+one deterministic policy-free pass over the 687 depth-0
+children measuring P4 exact stable child legal-set size and
+hce value per child; no trajectory continues past the
+child; no controller decision executes; hce values are
+DESCRIPTIVE and may not drive proxy/lambda selection.
+
+NORMALIZATION (outcome-blind, frozen): for each proxy j,
+q_j = the 90th percentile of |C_j| over the DEDUPLICATED
+per-root depth-0 candidate universe of the 95
+completely-scored roots (677 candidates; the recorded legal
+lists are byte-identical across arms, so an all-arm union
+would merely 3x-replicate — the deduplicated reading is
+frozen and stays correct if a future population has
+arm-dependent sets), computed WITHOUT outcome labels,
+linear-interpolation percentile (numpy default convention);
+if any q_j fails the q_j > 0 gate the desk STOPS and books,
+never substitutes a fallback constant;
+Cj_norm = Cj / q_j; S(j, lambda) = S0 - lambda * Cj_norm.
+The derived q_j are part of the selected controller and
+transport FROZEN to any future confirmation population —
+never recomputed there.
+
+LAMBDA GRID (frozen, no interpolation, no posthoc points):
+lambda in {0, 0.25, 0.5, 1, 2, 3, 4, 6, 8, 12, 16}. For
+every proxy x lambda cell, rerank the COMPLETE depth-0
+legal candidate set of each completely-scored root under
+S(j, lambda) with the standing deterministic tie law
+(exact score tie -> lexicographically smallest factor
+code -> engine order).
+
+DEVELOPMENT TARGET (per proxy x lambda; no episode rerun):
+  FOCUS_DEMOTION: count of {54, 68, 78, 88} where the
+    original harmful MODEL depth-0 action is no longer
+    top-1 AND the replacement top-1 has strictly lower
+    proxy cost C_j than the displaced action. An EQUAL-cost
+    displacement counts as NON-demotion and must be
+    REPORTED by name if observed (it can make 4/4
+    unreachable; that is a result, not a repair target).
+  NEGATIVE-CONTROL PRESERVATION: root 23 PASSES iff its
+    original MODEL top-1 remains top-1 (score movement
+    allowed; a flip fails) — the frozen selectivity
+    criterion the assessment promised (rank-preservation
+    form; the assessment's word "magnitude" resolves to
+    this falsifiable rank law).
+  COLLATERAL (over the 91 completely-scored roots outside
+    the four-root focus — roots 23 and 94 ARE inside the
+    collateral denominator in addition to their named
+    roles, frozen here since tier-1 of the selection order
+    depends on the count): top-1 unchanged / changed;
+    changed-to-lower-cost v changed-to-higher-cost (the
+    latter should be impossible absent tie/pathology and is
+    AUDITED if observed); exact named changed roots.
+    Outcomes BEYOND the frozen focus/control/rider
+    designations may not enter selection (the designations
+    themselves are outcome-conditioned by construction —
+    exactly why the development-only law exists); outcomes
+    appear otherwise only in the post-selection descriptive
+    riders.
+
+SELECTION RULE (lexicographic, minimal-intervention,
+frozen): per proxy, the SMALLEST grid lambda achieving
+FOCUS_DEMOTION = 4/4 AND root-23 preservation; a proxy with
+no such lambda FAILS the strict target. Among surviving
+proxies: (1) fewest collateral top-1 changes; (2) smaller
+selected normalized lambda; (3) frozen simplicity order
+P1 < P2 < P3. If NO proxy survives: book
+NO-CLEAN-CHEAP-PROXY, publish the full Pareto curves
+descriptively, and do NOT relax the target posthoc.
+
+ROOT 94 RIDER (prospective, selection-neutral): whether
+P1/P2/P3 each flip root 94's top-1, the first-flipping
+lambda per proxy, and its P4 branching anatomy. Root 94
+never alters selection — this protects against choosing P3
+merely because a known non-focus failure favors Integral
+count.
+
+P4 DIAGNOSTIC VALIDITY (descriptive, never inferential):
+rank correlations of P1-P3 v P4 over all measured children;
+named false positives/negatives; focus-root ordering; root
+23/94 placement. If the selected cheap proxy is
+mechanistically inverted or strongly discordant with P4 on
+the focus expansion class, flag STRING-COST-SURROGATE-
+FAILURE even if it demotes the four known actions.
+
+HCE FENCE: hce agreement (baseline MODEL top-1 v hce;
+selected MODEL+COST top-1 v hce; named gains/losses) is
+reported ONLY after selection is mechanically complete and
+participates in NOTHING (not proxy choice, not lambda, not
+ties, not the target) — otherwise the desk becomes hce
+distillation, a different question.
+
+KNOWN-OUTCOME RIDERS (only after selection freezes): join
+CLOSED-LOOP-1 outcomes + splice labels descriptively —
+collateral incidence on concordant-solved / concordant-
+failed / A-only categories, the expand family, root 72
+(hybrid-win), root 94. Retrospective development evidence
+only; NO solve-rate improvement claim of any kind.
+
+NO ROLLOUT: this desk reranks depth-0 candidate lists and
+never evaluates a modified policy in closed loop; a proxy
+that looks perfect here has NOT been shown to improve
+solving.
+
+COMPUTE FAIRNESS (future controller law, adopted): P1-P3
+computation is engine-side controller work counted against
+the same 60 s engine wall; no hidden free lookahead; the
+selected q_j and lambda freeze with the controller. P4
+stays barred from deployable confirmation under this rung.
+
+FUTURE CONFIRMATION GATE (frozen): advance to a fresh
+confirmatory controller prereg ONLY if (a) >= 1 proxy
+passes the strict target, (b) root 23 preserved, (c)
+collateral low enough under the mechanical result that
+transport is scientifically worthwhile — a DISCRETIONARY
+gate that is by construction judged after the desk and can
+only ever BLOCK confirmation, never manufacture it (the
+mechanical selection books regardless), (d) measured proxy timing is
+genuinely negligible v standing engine work, (e) P4
+diagnostics do not reveal the selected proxy inverted on
+the expansion class. Any fresh test freezes BEFORE
+population materialization: selected proxy, q_j, lambda,
+exact score formula, exact tie law, cost-compute
+accounting; fresh population excludes the entire known
+96-root development population; primary contrast MODEL+COST
+v baseline MODEL, paired episode-level SOLVED, one exact
+min-lik McNemar; ENGINE-HCE descriptive only unless
+separately registered.
+
+CLAIM CEILING (frozen): this desk can establish ONLY that,
+on the already-known development population, a
+prospectively specified cheap cost proxy + lambda-selection
+rule can or cannot selectively demote the known
+search-expansion first-action failures while preserving
+most baseline choices. NOT establishable: improved solve
+rate; fresh generalization; universal search-cost
+awareness; cycle/topology correction; hce equivalence;
+general causal sufficiency of branching factor; lambda
+optimality.
+
+REGISTERED PRIOR (house, before any table exists): P1
+passes the strict target at lambda 3-6 (moderate — the
+implied-lambda desk arithmetic says ~3-4 on the focus
+roots; the S0 gap tail above 8 nats may push higher);
+root 23 preserved at those lambdas for P1 (low-moderate —
+its length signal 0.45 log-units is well below the focus
+1.4-1.8); P2 behaves like P1 (moderate); P3 flips root 94
+earliest (moderate); collateral under P1 at its selected
+lambda touches <= ~10 of the ~90 non-focus scored roots
+(low confidence, wide). Wrong-in-public is the point.
+
+FENCES. PREREG ONLY: no joined table, no child enumeration,
+no per-candidate hce, no lambda selection, no reranking, no
+episode, nothing trained under this GO; encoder
+det_ambiguous separate (no repair); architecture/residual
+threads separate and banked; development-population law
+binds every successor; Mac/mps at desk time; single
+checkpoint/engine/budget scope inherited; outputs will land
+in a fresh refuse-if-exists namespace named by the desk
+driver; every future claim grounded in its own run's tool
+output.
+
+ORDER: freeze (this entry) -> fresh-context prereg audit ->
+commit/push/index/census -> STOP. Next eligible GO if
+clean: MATH-CYBER-1-CLOSED-LOOP-1-SEARCH-COST-PROXY-DESK-0.
+
