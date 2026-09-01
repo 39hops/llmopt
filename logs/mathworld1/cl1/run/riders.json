@@ -1,0 +1,1165 @@
+{
+ "legal_set_size_by_arm_depth": {
+  "A": {
+   "0": {
+    "n": 96,
+    "p50": 7,
+    "max": 10
+   },
+   "1": {
+    "n": 15,
+    "p50": 6,
+    "max": 19
+   },
+   "2": {
+    "n": 4,
+    "p50": 9,
+    "max": 13
+   },
+   "3": {
+    "n": 3,
+    "p50": 6,
+    "max": 10
+   },
+   "4": {
+    "n": 3,
+    "p50": 6,
+    "max": 9
+   },
+   "5": {
+    "n": 3,
+    "p50": 5,
+    "max": 7
+   },
+   "6": {
+    "n": 3,
+    "p50": 8,
+    "max": 9
+   },
+   "7": {
+    "n": 3,
+    "p50": 8,
+    "max": 10
+   },
+   "8": {
+    "n": 3,
+    "p50": 7,
+    "max": 8
+   },
+   "9": {
+    "n": 2,
+    "p50": 7,
+    "max": 7
+   },
+   "10": {
+    "n": 1,
+    "p50": 14,
+    "max": 14
+   },
+   "11": {
+    "n": 1,
+    "p50": 10,
+    "max": 10
+   }
+  },
+  "B": {
+   "0": {
+    "n": 96,
+    "p50": 7,
+    "max": 10
+   },
+   "1": {
+    "n": 17,
+    "p50": 9,
+    "max": 76
+   },
+   "2": {
+    "n": 7,
+    "p50": 47,
+    "max": 74
+   },
+   "3": {
+    "n": 7,
+    "p50": 42,
+    "max": 71
+   },
+   "4": {
+    "n": 4,
+    "p50": 37,
+    "max": 68
+   },
+   "5": {
+    "n": 3,
+    "p50": 22,
+    "max": 32
+   },
+   "6": {
+    "n": 3,
+    "p50": 10,
+    "max": 28
+   },
+   "7": {
+    "n": 3,
+    "p50": 16,
+    "max": 27
+   }
+  },
+  "C": {
+   "0": {
+    "n": 96,
+    "p50": 7,
+    "max": 10
+   },
+   "1": {
+    "n": 79,
+    "p50": 8,
+    "max": 63
+   },
+   "2": {
+    "n": 76,
+    "p50": 11,
+    "max": 62
+   },
+   "3": {
+    "n": 70,
+    "p50": 17,
+    "max": 64
+   },
+   "4": {
+    "n": 65,
+    "p50": 15,
+    "max": 62
+   },
+   "5": {
+    "n": 58,
+    "p50": 16,
+    "max": 98
+   },
+   "6": {
+    "n": 55,
+    "p50": 16,
+    "max": 95
+   },
+   "7": {
+    "n": 50,
+    "p50": 17,
+    "max": 100
+   },
+   "8": {
+    "n": 44,
+    "p50": 18,
+    "max": 70
+   },
+   "9": {
+    "n": 39,
+    "p50": 19,
+    "max": 69
+   },
+   "10": {
+    "n": 38,
+    "p50": 17,
+    "max": 65
+   },
+   "11": {
+    "n": 35,
+    "p50": 17,
+    "max": 56
+   }
+  }
+ },
+ "training_parent_overlap_by_arm_depth": {
+  "A": {
+   "0": {
+    "overlap": 0,
+    "n": 96
+   },
+   "1": {
+    "overlap": 0,
+    "n": 15
+   },
+   "2": {
+    "overlap": 0,
+    "n": 4
+   },
+   "3": {
+    "overlap": 0,
+    "n": 3
+   },
+   "4": {
+    "overlap": 0,
+    "n": 3
+   },
+   "5": {
+    "overlap": 0,
+    "n": 3
+   },
+   "6": {
+    "overlap": 0,
+    "n": 3
+   },
+   "7": {
+    "overlap": 0,
+    "n": 3
+   },
+   "8": {
+    "overlap": 0,
+    "n": 3
+   },
+   "9": {
+    "overlap": 0,
+    "n": 2
+   },
+   "10": {
+    "overlap": 0,
+    "n": 1
+   },
+   "11": {
+    "overlap": 0,
+    "n": 1
+   }
+  },
+  "B": {
+   "0": {
+    "overlap": 0,
+    "n": 96
+   },
+   "1": {
+    "overlap": 0,
+    "n": 17
+   },
+   "2": {
+    "overlap": 0,
+    "n": 7
+   },
+   "3": {
+    "overlap": 0,
+    "n": 7
+   },
+   "4": {
+    "overlap": 0,
+    "n": 4
+   },
+   "5": {
+    "overlap": 0,
+    "n": 3
+   },
+   "6": {
+    "overlap": 0,
+    "n": 3
+   },
+   "7": {
+    "overlap": 0,
+    "n": 3
+   }
+  },
+  "C": {
+   "0": {
+    "overlap": 0,
+    "n": 96
+   },
+   "1": {
+    "overlap": 0,
+    "n": 79
+   },
+   "2": {
+    "overlap": 0,
+    "n": 76
+   },
+   "3": {
+    "overlap": 0,
+    "n": 70
+   },
+   "4": {
+    "overlap": 0,
+    "n": 65
+   },
+   "5": {
+    "overlap": 0,
+    "n": 58
+   },
+   "6": {
+    "overlap": 0,
+    "n": 55
+   },
+   "7": {
+    "overlap": 0,
+    "n": 50
+   },
+   "8": {
+    "overlap": 0,
+    "n": 44
+   },
+   "9": {
+    "overlap": 0,
+    "n": 39
+   },
+   "10": {
+    "overlap": 0,
+    "n": 38
+   },
+   "11": {
+    "overlap": 0,
+    "n": 35
+   }
+  }
+ },
+ "B_actionprogram_domain": {
+  "in": 1950,
+  "out": 4
+ },
+ "B_prompt_tokens": {
+  "n": 136,
+  "p50": 65,
+  "max": 700
+ },
+ "cycle_by_arm": {
+  "A": 3,
+  "B": 2,
+  "C": 10
+ },
+ "steps_to_solve_joint_AB": {
+  "n_joint": 85,
+  "A": {
+   "n": 85,
+   "p50": 1,
+   "max": 2
+  },
+  "B": {
+   "n": 85,
+   "p50": 1,
+   "max": 2
+  },
+  "B_minus_A_per_root": {
+   "0": 83,
+   "1": 2
+  }
+ },
+ "AB_divergence_all": [
+  {
+   "row_index": 0,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 1,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 2,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 3,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 4,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 5,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 6,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 7,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 8,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 9,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 10,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 11,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 12,
+   "divergence_depth": 0,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 13,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 14,
+   "divergence_depth": 0,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 15,
+   "divergence_depth": 0,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 16,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 17,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 18,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 19,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 20,
+   "divergence_depth": 0,
+   "A_outcome": "cycle",
+   "B_outcome": "action_encoding_failure",
+   "A_solved": false,
+   "B_solved": false
+  },
+  {
+   "row_index": 21,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 22,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 23,
+   "divergence_depth": 0,
+   "A_outcome": "solved",
+   "B_outcome": "cycle",
+   "A_solved": true,
+   "B_solved": false
+  },
+  {
+   "row_index": 24,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 25,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 26,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 27,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 28,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 29,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 30,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 31,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 32,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 33,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 34,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 35,
+   "divergence_depth": 0,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 36,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 37,
+   "divergence_depth": 0,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 38,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 39,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 40,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 41,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 42,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 43,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 44,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 45,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 46,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 47,
+   "divergence_depth": 0,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 48,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 49,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 50,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 51,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 52,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 53,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 54,
+   "divergence_depth": 0,
+   "A_outcome": "solved",
+   "B_outcome": "wall_cap",
+   "A_solved": true,
+   "B_solved": false
+  },
+  {
+   "row_index": 55,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 56,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 57,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 58,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 59,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 60,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 61,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 62,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 63,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 64,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 65,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 66,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 67,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 68,
+   "divergence_depth": 0,
+   "A_outcome": "solved",
+   "B_outcome": "wall_cap",
+   "A_solved": true,
+   "B_solved": false
+  },
+  {
+   "row_index": 69,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 70,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 71,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 72,
+   "divergence_depth": 0,
+   "A_outcome": "cycle",
+   "B_outcome": "wall_cap",
+   "A_solved": false,
+   "B_solved": false
+  },
+  {
+   "row_index": 73,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 74,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 75,
+   "divergence_depth": 1,
+   "A_outcome": "cycle",
+   "B_outcome": "action_encoding_failure",
+   "A_solved": false,
+   "B_solved": false
+  },
+  {
+   "row_index": 76,
+   "divergence_depth": 0,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 77,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 78,
+   "divergence_depth": 0,
+   "A_outcome": "solved",
+   "B_outcome": "wall_cap",
+   "A_solved": true,
+   "B_solved": false
+  },
+  {
+   "row_index": 79,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 80,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 81,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 82,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 83,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 84,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 85,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 86,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 87,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 88,
+   "divergence_depth": 0,
+   "A_outcome": "solved",
+   "B_outcome": "wall_cap",
+   "A_solved": true,
+   "B_solved": false
+  },
+  {
+   "row_index": 89,
+   "divergence_depth": 0,
+   "A_outcome": "budget_exhausted",
+   "B_outcome": "cycle",
+   "A_solved": false,
+   "B_solved": false
+  },
+  {
+   "row_index": 90,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 91,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 92,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  },
+  {
+   "row_index": 93,
+   "divergence_depth": 0,
+   "A_outcome": "solved",
+   "B_outcome": "action_encoding_failure",
+   "A_solved": true,
+   "B_solved": false
+  },
+  {
+   "row_index": 94,
+   "divergence_depth": 0,
+   "A_outcome": "solved",
+   "B_outcome": "action_encoding_failure",
+   "A_solved": true,
+   "B_solved": false
+  },
+  {
+   "row_index": 95,
+   "divergence_depth": null,
+   "A_outcome": "solved",
+   "B_outcome": "solved",
+   "A_solved": true,
+   "B_solved": true
+  }
+ ],
+ "AB_disagreement_anatomy": [
+  {
+   "row_index": 23,
+   "divergence_depth": 0,
+   "A_outcome": "solved",
+   "B_outcome": "cycle",
+   "A_solved": true,
+   "B_solved": false
+  },
+  {
+   "row_index": 54,
+   "divergence_depth": 0,
+   "A_outcome": "solved",
+   "B_outcome": "wall_cap",
+   "A_solved": true,
+   "B_solved": false
+  },
+  {
+   "row_index": 68,
+   "divergence_depth": 0,
+   "A_outcome": "solved",
+   "B_outcome": "wall_cap",
+   "A_solved": true,
+   "B_solved": false
+  },
+  {
+   "row_index": 78,
+   "divergence_depth": 0,
+   "A_outcome": "solved",
+   "B_outcome": "wall_cap",
+   "A_solved": true,
+   "B_solved": false
+  },
+  {
+   "row_index": 88,
+   "divergence_depth": 0,
+   "A_outcome": "solved",
+   "B_outcome": "wall_cap",
+   "A_solved": true,
+   "B_solved": false
+  },
+  {
+   "row_index": 93,
+   "divergence_depth": 0,
+   "A_outcome": "solved",
+   "B_outcome": "action_encoding_failure",
+   "A_solved": true,
+   "B_solved": false
+  },
+  {
+   "row_index": 94,
+   "divergence_depth": 0,
+   "A_outcome": "solved",
+   "B_outcome": "action_encoding_failure",
+   "A_solved": true,
+   "B_solved": false
+  }
+ ]
+}

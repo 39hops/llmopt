@@ -59526,3 +59526,141 @@ dual audit (fresh-context builder verifier + post-
 materialization independent reconstruction) before booking.
 NEXT eligible GO: MATH-CYBER-1-CLOSED-LOOP-1-JOINT-THREE-ARM-
 RUN-0 — not preregistered further, not executed here.
+## VERDICT MATH-CYBER-1-CLOSED-LOOP-1-JOINT-THREE-ARM-RUN-0: MODEL-WORSE — hybrid MODEL-LEGAL-RANKING controller solves 85/96 v ENGINE-HCE 92/96 on the sealed population (discordants A-only 7 / B-only 0, exact min-lik McNemar p = .015625; RANDOM-LEGAL 30/96 descriptive), with the encoding-confound gate PERMITTING preference/transport attribution (2/7 A-only losses in action_encoding_failure, 5/7 in other classes) — AND two mandatory depth fences: the loop was SHALLOW (81/92 A solves and 78/85 B solves take ONE decision; i_heurisch closes 50/96 roots at depth 0; A and B produce byte-identical trajectories on 78/96 roots, so policy-induced state drift was exercised on 18 roots and materially on ~7), and the firing rests on a TWO-discordant margin whose class composition is 4 engine-wall blowups + 1 cycle + 2 encoder failures — dropping the 2 encoder-failure roots alone gives 5/0, p = .0625, below threshold (2026-08-31, Mac)
+
+Per PRE-REG MATH-CYBER-1-CLOSED-LOOP-1-PREREG-0 (082d4bc6)
+on the sealed 96-root population (manifest 50c05794...,
+booked L59428). Runner scratch/mathworld1_cl1run.py committed
+BEFORE any episode (b4e0969c); fresh-context verifier found
+two blockers, both folded pre-run at c874d65b: (1)
+sympify(sstr) is NOT an identity — reparse auto-distributes
+31/96 sealed roots — so roots are re-materialized from
+make_integrate(level, generator_seed) (fork-probed first, the
+named hang class) and gated byte-identical to the sealed
+manifest bytes; (2) root gates moved BEFORE namespace
+creation so a gate failure cannot brick the retry. Five
+should-fixes folded (scoring-integrity SystemExit aborts the
+run instead of booking action_encoding_failure; failed
+candidate persisted with its derive reason; in_domain checked
+before encode; receipt-serialization wall metered engine-side
+for all arms; post-run pin re-gates widened).
+
+ONE joint run (rc=0): 96 roots x 3 arms = 288 episodes, arm
+order rotated row_index mod 3, raw trajectories streamed and
+hashed (22198ddf...) BEFORE any endpoint. Checkpoint sha
+derived at runtime from the lock-pinned birth receipt (never
+a literal): ae0a86e0..., seed-19001 CANONICAL.
+
+PRIMARY (the one registered contrast, B v A, paired
+root-level, exact min-lik McNemar, alpha .05): A 92/96,
+B 85/96, A-only 7, B-only 0, n_disc 7, p = .015625 =>
+MODEL-WORSE (B - A = -7.29 pp). Frozen rejection region
+honored (min=0, n=7 >= 6). C RANDOM-LEGAL 30/96, descriptive
+only: learned preference does large system work above bare
+legality (decision map row 5, descriptive).
+
+ENCODING-CONFOUND GATE (frozen, mandatory): 7 A-only roots;
+B outcomes there = 4 wall_cap + 1 cycle + 2
+action_encoding_failure. Majority (5/7) in classes OTHER than
+action_encoding_failure => preference/transport attribution
+PERMITTED per the frozen gate law. CO-REPORTED ROBUSTNESS
+ANATOMY (registered-law framing unchanged; no new test): the
+firing clears the frozen region by exactly two discordant
+episodes; without the 2 encoder-failure roots the split is
+5/0, p = .0625 (would not fire); exactly ONE of the seven
+(root 23, B cycle) is an ordinary wrong-preference loss.
+
+WALL-BLOWUP MECHANISM (descriptive, the sharpest anatomy):
+all 7 discordances diverge at B's FIRST decision (6 genuine
+depth-0 choice differences; root 93's depth-0 entry is a
+no-choice artifact — B failed encoding before choosing). In
+all 4 wall_cap losses B chose "expand" at depth 0 where A
+chose an integral rule (i_transcend_div x3, i_usub x1), and
+the expanded states' legal sets inflate ~10x (6-8 actions ->
+27-76), burning the 60 s ENGINE-SIDE budget (B walls 64.7-
+74.1 s v A 6.4-10.1 s solved) — a state-complexity blowup
+priced in engine wall, not a wrong-answer event; whether
+those roots stay losses at a larger cap is UNMEASURED. All 4
+action_encoding_failure episodes (roots 20, 75, 93, 94; 2 of
+them concordant-failed since A cycled too) are det_ambiguous
+derive failures on i_usub candidates — the prereg-named
+~3.3%/decision derivation-ambiguity class; ZERO ActionPrograms
+were out of the 884,736 domain (RIDER CORRECTION: riders.json
+B_actionprogram_domain reads {in: 1950, out: 4} — the 4 "out"
+are these underivable candidates bucketed by a falsy-None
+key; the corrected census is 1950 in / 0 out / 4 underivable).
+
+DEPTH FENCE (mandatory reading bound): this run measured a
+NEAR-ONE-STEP preference contrast with a small closed-loop
+tail, not deep closed-loop transport — i_heurisch (sympy's
+full heuristic integrator) is legal at depth 0 on 50/96 roots
+and is the final chosen rule on 50/92 A and 41/85 B solves;
+joint A/B solves match step counts on 83/85 (p50 1, max 2).
+The transport question at depth remains OPEN on this
+population class.
+
+OUTCOME TABLE: A {solved 92, cycle 3, budget_exhausted 1};
+B {solved 85, wall_cap 5, action_encoding_failure 4,
+cycle 2}; C {solved 30, budget_exhausted 34, wall_cap 20,
+cycle 10, dead_end 1, legal_set_unstable 1}. Solved by level
+(A/B/C): L4 23/22/9, L5 24/24/6, L6 24/22/8, L7 21/17/7.
+Walls: A engine 260.7 s (137 decisions); B engine 530.7 s +
+model 97.0 s rider-metered outside the cap (136 decisions,
+140 model calls); C engine 2432.5 s (705 decisions).
+Training-parent overlap 0 at every arm x depth. Zero
+context_overflow (prompt p50 65, max 700 v CTX 4096). B
+exact-tie law never fired (0/136) — codified, not exercised.
+
+POST-RUN AUDIT (fresh-context, independent recompute from raw
+only): 288 rows, all outcome/solved bits, both endpoint
+tables, McNemar p, gate counts, all descriptive tables
+reproduced exactly; C RNG law re-derived for ALL 705 C
+decisions (0 mismatches); B internals for ALL 136 decisions
+(candidate order = engine order, score = sum of 9 token lps
+to 1e-9, argmax + tie law, 0 violations); engine replay from
+re-materialized roots across 17 roots incl. every decision of
+all 7 disagreement roots — 135/136 legal sets and 133/133
+transitions exact. The 1 replay mismatch is a booked SCOPE
+NOTE, not an in-run failure: cross-process legal-set
+nondeterminism (root 94 C depth 1 replays 47 actions v 45
+recorded; both extras i_heurisch; recorded set a strict
+subset) — stable_legal_set's double enumeration is
+process-relative, and within THIS run all 105 states visited
+by 2+ arms carried identical recorded legal sets, so
+execution fairness held empirically; exact cross-process
+legal-set reproduction is NOT a property of this world and
+future re-runs must not assume it (consistent with the
+registered no-bit-exact-rerun fence).
+
+DECISION MAP (frozen row 2): closed-loop transport/regret
+anatomy is now the frontier before any training intervention
+— and the measured anatomy already localizes it: depth-0
+expand-preference regret (wall blowup) + encoder det_ambiguous
+coverage, on a population whose depth is mostly 1. C far
+below B (row 5): learned preference does useful system work
+above legality, descriptively.
+
+CLAIM CEILING (frozen, verbatim scope): this establishes ONLY
+that, under this frozen population, budget, engine,
+representation, and single seed-19001 CANONICAL checkpoint,
+the hybrid controller yields a WORSE closed-loop solve rate
+than ENGINE-HCE. NOT claimable: autonomous model solving;
+broad calculus generality; universal inferiority to hce;
+population generality; that one-step preference caused
+episode outcomes; any PARAM-ordering resolution. PARAM-MIDDLE
+stays unbuilt; SOFT-SUPPORT and LEGALITY-TRAINING stay
+banked.
+
+FENCES. Mac/mps single run (hashed raws are the record; no
+bit-exact rerun precondition; the S2 scope note above is the
+measured form of that fence); single checkpoint, single seed;
+N=96 paired; one inferential application; C descriptive
+throughout; all anatomy descriptive, no causal claim; the
+15 MB raw trajectories.jsonl stays UNTRACKED per logs
+doctrine, anchored by raw_trajectories_sha in the tracked
+receipt; small-text receipts (cl1run_receipt.json,
+riders.json) force-added; dual audit (pre-run fresh-context
+instrument verifier + post-run independent raw reconstruction)
+before this booking; every claim grounded in THIS run's tool
+output.
+

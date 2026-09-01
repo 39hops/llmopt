@@ -2748,6 +2748,17 @@ MATH-CYBER-1 CLOSED-LOOP-1 population builder (prereg 082d4bc6, materialization 
 - `build_exclusion()` — Pure in-memory build; caller creates OUTDIR and writes
 - `main()`
 
+### scratch/mathworld1_cl1run.py
+MATH-CYBER-1 CLOSED-LOOP-1 JOINT-THREE-ARM-RUN-0 — execute the frozen CLOSED-LOOP-1 experiment (prereg 082a.. entry MATH-CYBER-1-CLOSED-LOOP-1-PREREG-0, prereg commit 082d4bc6ed32207a0d0b1fd5d85a56af0a9e4caf) on the sealed 96-root population (manifest sha 50c05794...).
+
+- `fsha(p) -> str`
+- `ssha(s: str) -> str`
+- `rebuild_root(row)` — Root identity: sympify(sstr) is NOT an identity (reparse
+- `rng_choice(root_sha, depth, k)` — Frozen C RNG law (execution-order-independent).
+- `b_score_decision(model, dev, parent, acts)` — Arm B one decision: programs + factor codes + total-lp
+- `run_arm(arm, root, root_sha, model, dev, sink, row_index, level)` — One episode under one arm. Streams the full trajectory
+- `main()`
+
 ### scratch/mathworld1_cycle.py
 MATH-CYBER-1 CYCLE-ESCAPE-DESK-0 (PRE-REG booked at edef875c). CYCLE-ESCAPE controller = TERMINAL-FIRST + theta_0 + per-episode memory M: State.key() -> set of action identities already emitted from that state this episode. On an EXACT repeated state, mask exactly the already-emitted identities and choose among the remainder (terminal override first, then theta_0 argmax over the remaining set; overflow law over the remaining set); no actions remaining = CYCLE_EXHAUSTED. First visits are never masked. Budget 12, charged wall 60 s, ctx 4096. Depth receipts: EXACT(d) / LOWER_BOUND(12) / CYCLE_EXHAUSTED / CENSORED / model_ctx_overflow / dead_end — never collapsed. Population: the 15 spent argmax-controller failures. Divergence color: per episode, step of first divergence from the recorded failed trajectory + cause (terminal_override v mask v none). Zero training; d(s', M) receipts are controller-hash scoped.
 
