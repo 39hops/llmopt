@@ -59664,3 +59664,214 @@ instrument verifier + post-run independent raw reconstruction)
 before this booking; every claim grounded in THIS run's tool
 output.
 
+## OBSERVATION MATH-CYBER-1-CLOSED-LOOP-1-POLICY-SPLICE-ASSESSMENT-0: SPLICE DESK OPERATIONALLY WELL-DEFINED (house recommendation: GO POLICY-SPLICE-DESK, Artin's call) — the 2x2 depth-0 splice (AA/BB anchors, BA/AB counterfactuals) is well-posed on the 16 roots with genuine depth-0 A/B choice divergence under the standing episode law, with one necessary deviation from the frozen-reference preference: AA/BB must be RE-RUN in-process as paired anchors (one measured instance of cross-process legal-set nondeterminism, the booked root-94 45-v-47 scope note, breaks frozen-reference validity), with anchor outcome AND anchor depth-0-action mismatches their own disclosed classes; posthoc mechanism localization only — the MODEL-WORSE verdict and p=.015625 are untouchable by any splice outcome (2026-08-31, Mac)
+
+ASSESSMENT ONLY under GO ...POLICY-SPLICE-ASSESSMENT-0. No
+episode run, no checkpoint scored, no encoder change, no cap
+change, no prereg frozen. All counts below derived from the
+sealed CLOSED-LOOP-1 raw (22198ddf..., booked L59529) in this
+session.
+
+(1) REPLAYABILITY OF DEPTH-0 ACTIONS: YES, teacher-free. The
+raw records every depth-0 legal set (name + child_sstr) and
+the chosen action for both arms; the forced action is an
+identity lookup in the run's own receipts, no teacher, hce,
+or future field consulted. Root reconstruction law is the
+booked one: make_integrate(level, generator_seed), byte-gated
+to the sealed manifest (sympify(sstr) reparse is NOT identity
+— 31/96 roots auto-distribute; established at L59529).
+
+(2) MEMBERSHIP GATE: YES, and mandatory. At splice time the
+forced (name, child_sstr) pair must be gated a member of the
+FRESHLY reconstructed stable_legal_set; a miss (the measured
+nondeterminism class) books SPLICE-INFEASIBLE for that root —
+never substituted, never silently repaired.
+
+(3) BUDGET LAW (adopting the GO's preferred interpretation
+verbatim): MAX_DECISIONS = 12 TOTAL, forced action consumes
+decision 1, tail gets <= 11; the 60 s ENGINE-SIDE wall starts
+at the original root and includes the forced action's engine
+work (enumeration, membership gate, apply) plus all tail
+engine work; model-scoring wall excluded exactly where the
+prereg excluded it (AB tail only; BA needs ZERO model calls).
+No wall reset after the splice.
+
+(4) AA/BB FROZEN REFERENCES: NO — re-run required, and the
+reason is measured, not hypothetical. The booked audit found
+cross-process legal-set nondeterminism (root 94 arm C depth 1:
+replay 47 actions v 45 recorded, extras i_heurisch, recorded
+set a strict subset) while within-run all 105 multi-arm
+states matched. Both policies are deterministic GIVEN a legal
+set, but the set itself is process-relative, so a
+fresh-process BA against a frozen-process AA is an unpaired
+comparison — exactly the cross-substrate confound the paired-
+arms law exists to kill. The evidence for process-relativity
+is ONE observed instance (1 of 135 replayed legal sets;
+within-run 105/105 multi-arm states matched) — the in-process
+design is the conservative choice, not a proven necessity,
+and it controls process identity, not within-process history
+(the 105/105 is evidence against history effects, not proof).
+Design consequence: all four cells run per root IN ONE
+PROCESS; in-run AA/BB are the anchors the per-root map reads.
+TWO disclosed anchor-failure classes, both mandatory: (i)
+ANCHOR-OUTCOME-NONREPRODUCED — in-run AA/BB outcome differs
+from booked; (ii) ANCHOR-ACTION-NONREPRODUCED — the fresh
+anchor's DEPTH-0 ACTION differs from the booked one (outcome
+match alone can mask a root silently ceasing to be depth-0-
+divergent). Either class makes that root's splice cells
+descriptive only. This doubles cost from 32 to 64 episodes
+and buys identification.
+
+(5) ENCODER ROOTS: root 93 is STRUCTURALLY EXCLUDED — B made
+no depth-0 choice (n_decisions 0), so no B first action
+exists and none may be invented. Root 94 IS spliceable: B's
+depth-0 action (i_sum, valid, applied) exists; the encoding
+failure hit at depth 1, so BA (B's i_sum + A tail) and AB
+(A's i_unprod + B tail, which may re-hit det_ambiguous — that
+outcome is a result, not a defect) are both defined. The
+encoder-coverage class stays its own thread throughout (11).
+
+(6) ELIGIBLE SET: option (b), measured = 16 roots with
+genuine depth-0 A/B action divergence: {12, 14, 15, 20, 23,
+35, 37, 47, 54, 68, 72, 76, 78, 88, 89, 94} (root 93 out per
+(5); root 75 diverges only at depth >= 1, no depth-0
+counterfactual exists). Partition of the 16 (arithmetic
+closes against the 7 booked discordants): 6 discordant
+A-only {23, 54, 68, 78, 88, 94} + 7 concordant-SOLVED
+{12, 14, 15, 35, 37, 47, 76} + 3 concordant-FAILED
+{20, 72, 89}; the 7th booked discordant (93) is the excluded
+no-choice root. Why not the 5-root A-only-non-encoder set
+(a): it conditions on downstream outcome; the 7 concordant-
+solved roots are the negative controls that price splice-
+machinery false alarms (splices there should mostly solve),
+and the 3 concordant-failed roots probe whether A's own
+failures are first-action-driven. Why not (c) all 18
+trajectory-divergent roots: the 2 extra roots have identical
+depth-0 actions, so the depth-0 splice is a no-op there by
+construction. Depth-0 divergence is a pre-outcome property,
+so 16 is the smallest set that answers the causal question
+without outcome selection (residual conditioning — divergence
+is itself B-policy-produced — is intrinsic to posthoc
+localization and fenced by the claim ceiling).
+
+(7) INTERPRETATION MAP (assessed; EXHAUSTIVE version to be
+frozen in the successor prereg): per root, read against
+IN-RUN anchors. On AA=solved/BB=failed roots: BA fail + AB
+solve = FIRST-ACTION-SUFFICIENT; BA solve + AB fail =
+TAIL-POLICY-SUFFICIENT; both hybrids fail = OVERDETERMINED
+(EITHER component alone suffices for the loss — the GO's
+"BOTH/INTERACTION" label is causally inverted for this cell
+and is not adopted); both hybrids solve =
+CONJUNCTION-REQUIRED/INTERACTION (the loss needs both
+components together — includes wall interplay). The full desk
+map must also cover: AA=BB=solved anchors (both hybrids solve
+= ROBUST; any hybrid failure = SPLICE-FRAGILITY,
+descriptive); AA=BB=failed anchors (any hybrid SOLVE = hybrid
+win, descriptive curiosity); AA=failed/BB=solved anchors
+(reachable because anchors are RE-RUN, not frozen — labeled
+mirror-image or descriptive-only, frozen at prereg);
+ANCHOR-OUTCOME-NONREPRODUCED; ANCHOR-ACTION-NONREPRODUCED;
+SPLICE-INFEASIBLE. Full outcome space enumerated and frozen
+before execution; no per-root p-values — counts and named
+roots only, and any dominance reading over the ~6 discordant
+roots books as UNRESOLVED tendency, never directional.
+
+(8) THE EXPAND ROOTS: depth-0 expand-first is measured on
+SEVEN roots (20, 23, 54, 68, 72, 78, 88), of which the four
+booked A-only wall_caps are 54, 68, 78, 88 (23 = A-only via
+cycle; 20, 72 = concordant-failed). BA under the original
+60 s budget is exactly the cleanest sufficiency test of the
+externality hypothesis: forced expand costs ~0 MODEL wall
+(engine wall for enumeration from the expanded state is still
+charged, as it must be), so
+if A's tail still wall-caps from the expanded state, the
+first action alone is sufficient for the loss under the
+registered operating budget; if BA solves, B's tail choices
+contributed. The hypothesis stays NOMINATED until then.
+
+(9) WALL-CAP SENSITIVITY: LATER. The splice answers WHOSE
+CHOICE caused the loss; a larger cap answers whether the loss
+is budget-relative — a different question, one operating-
+characteristic rider, never mixed into the same experiment as
+the primary budget. Park a cap-sensitivity rider explicitly
+gated on the splice outcome (promoted only if the expand
+roots book FIRST-ACTION-SUFFICIENT or NONTRANSPORTING and the
+cost question survives).
+
+(10) SEARCH-EXTERNALITY ANATOMY FROM EXISTING RECEIPTS:
+partially measurable NOW, no new rollout. Already recorded:
+depth-0 candidate names + B scores + token-lps (ranks
+derivable from scores, not a receipt field) + factor codes +
+derive status (B rows); full legal sets both arms;
+parent/child sstr lengths; n_legal along each TAKEN path. The
+recorded evidence shows the externality signature on 6 of the
+7 expand roots — depth-1 n_legal 22-76 from parents at 6-8,
+sstr length 1.87-5.7x (root 54: 195 -> 820 chars, 6 -> 76
+actions; root 68: 137 -> 785, 7 -> 69) while A's chosen
+children stay 59-173 chars — with root 23 a NAMED
+COUNTER-INSTANCE (8 -> 9 actions, 1.57x chars; its B loss is
+a cycle, not a wall blowup). NOT recorded: hce values/ranks
+(recomputation needs re-materialized states — the sstr
+reparse hazard — so it belongs inside the splice desk, which
+reconstructs states anyway, not a standalone table); per-
+decision engine wall (only per-episode); depth-1 legal size
+for NON-taken children (would require materializing
+counterfactual children — forbidden under this GO and not
+needed). VERDICT on the proxy: existing evidence suffices to
+NOMINATE branching-factor/legal-set-size + expression-length
+as the cheap cost proxy family; no coefficient tuned, no
+penalty designed here.
+
+(11) ENCODER THREAD, SEPARATE: all four det_ambiguous
+failures are i_usub candidates (roots 20, 75, 93, 94), the
+prereg-named ~3.3%/decision ambiguity class. Recommendation:
+CONTINUED BOOKING as known controller coverage loss for now,
+plus a future standalone zero-model repair DESK (census of
+det_ambiguous incidence over existing corpora + whether the
+u_choice parameterization can disambiguate deterministic
+rules) under its own GO. Never merged with the splice
+experiment — the splice must measure the controller AS
+BOOKED, coverage holes included.
+
+(12) CLAIM CEILING (frozen into any successor): posthoc
+mechanism localization on already-observed disagreement roots
+under one frozen population/checkpoint/budget/engine; no
+population-level causal prevalence; no new confirmatory
+performance estimate; the CLOSED-LOOP-1 MODEL-WORSE verdict
+and its p = .015625 are untouched by every possible splice
+outcome.
+
+EXPECTED COMPUTE: 64 episodes (16 roots x 4 in-process
+cells), one model load; wall dominated by the ~7 expand-class
+roots at up to ~80 s engine wall per affected cell (observed
+B max 77.3 s); everything
+else solves in 1-2 decisions. Estimate ~30-60 min Mac wall —
+/probe-cheap.
+
+DECISION VALUE (what result changes the next move): expand
+roots book FIRST-ACTION-SUFFICIENT => the frontier is DEPTH-0
+COST-BLIND PREFERENCE (model prefers expand; engine pays),
+and the cost-proxy desk (10) outranks any training rung.
+TAIL-POLICY-SUFFICIENT dominates => compounding downstream
+error is real after all and a deep-transport instrument
+outranks the proxy. BOTH/INTERACTION or NONTRANSPORTING
+dominates => promote the parked cap-sensitivity rider.
+Anchor nonreproduction at scale => the engine's process-
+relative legal sets become the frontier instrument problem
+before any policy conclusion.
+
+NOMINATED SUCCESSOR (ONE): PRE-REG MATH-CYBER-1-CLOSED-
+LOOP-1-POLICY-SPLICE-PREREG-0 — 16 named roots, 4 in-process
+cells each, budget law (3), membership gate (2), the full
+enumerated outcome map (7), descriptive counts only (any
+dominance reading UNRESOLVED, never directional), claim
+ceiling
+(12). NOT frozen, NOT launched under this GO.
+
+FENCES. Assessment derives entirely from the sealed L59529
+raw + booked audit facts; no new engine or model execution
+occurred under this GO; all root lists above are measured
+from trajectories.jsonl in this session; single population,
+single checkpoint; every splice-desk number remains
+unmeasured until its own GO.
+
