@@ -69,13 +69,16 @@ POPS = {
                     "7ff9b08509794d0fb7978db3"),
 }
 RAW_REFS = {
+    # full shas DERIVED from the authoritative receipts
+    # (svpfoheld_receipt raw_scores_sha / svpfocal_receipt
+    # raw_scores_sha) — never reconstructed from a prefix
     "heldout": ("logs/mathworld1/svpfoheld/raw_token_scores"
                 ".jsonl",
-                "ee0319f4c63396f7998c66a748db4a3423eab6787003"
-                "6764fed238394915e39d"),
+                "ee0319f4c63396f7998cdffa5dee5b3d8c3bcf4b3586"
+                "6a3dcf499efb9c673111"),
     "calibration": ("logs/mathworld1/svpfocal/scores.jsonl",
-                    "deb7f59fe837423f956178053f807ba0be1a86b8"
-                    "8e7c0e12eea9d0ad57a97ccd"),
+                    "deb7f59fe837423f9561b190451f770cc574d3f9"
+                    "486a4294ae6587233796a879"),
 }
 BOOKED_FULL = {("heldout", "CANONICAL"): 85,
                ("heldout", "PARAM_FIRST"): 78,
@@ -227,7 +230,7 @@ def score_state(lps, pop, label):
         rank_s = 1 + sum(1 for j in range(len(sums))
                          if j != label and sums[j] >= sums[label])
         flags["mean_sum_rank_mismatch"] = rank_s != rank
-    return {"sums": [round(v, 6) for v in sums],
+    return {"sums": sums,
             "top1": top1, "rr": round(1.0 / rank, 6),
             "margin": round(margin, 6), "choice": choice,
             "flags": flags}
@@ -275,12 +278,14 @@ def main():
             states = pops[pop]
             # --- baseline coherence: mask 255 first ---
             full_rows = []
+            t_full = time.monotonic()
             for st in states:
                 lps = masked_token_lps(model, dev, st["cur"],
                                        st["conts"][arm], 255)
                 full_rows.append(
                     (st, lps,
                      score_state(lps, pop, st["label"])))
+            full_wall = round(time.monotonic() - t_full, 3)
             if pop == "heldout":
                 ref, ref_lps = heldout_ref_top1(arm)
             else:
@@ -317,7 +322,8 @@ def main():
             for mid in range(256):
                 t0 = time.monotonic()
                 if mid == 255:
-                    rows = full_rows
+                    rows = full_rows  # computed once in the
+                    # coherence pass; wall carried from there
                 else:
                     rows = []
                     for st in states:
@@ -349,7 +355,8 @@ def main():
                             1 for _, _, sc in rows
                             if sc["flags"]
                             ["mean_sum_rank_mismatch"])}
-                wall = round(time.monotonic() - t0, 3)
+                wall = (full_wall if mid == 255 else
+                        round(time.monotonic() - t0, 3))
                 summary = {"mask": mid, "k": k, "top1": top1,
                            "mrr": round(mrr, 4),
                            "agree_full": agree,
@@ -365,11 +372,14 @@ def main():
                     "pop": pop, "arm": arm, **summary,
                     "states": [
                         {"block_id": st["block_id"],
+                         "label": st["label"],
                          "sums": sc["sums"],
                          "top1": sc["top1"],
                          "rr": sc["rr"],
                          "margin": sc["margin"],
-                         "choice": sc["choice"]}
+                         "choice": sc["choice"],
+                         "agree_full": sc["choice"]
+                         == full_choice[st["block_id"]]}
                         for st, _, sc in rows]}) + "\n")
                 if mid % 64 == 0:
                     sink.flush()
@@ -395,6 +405,7 @@ def main():
                     "p25": pct(v, .25),
                     "median": pct(v, .5),
                     "p75": pct(v, .75), "max": max(v),
+                    "mean": round(sum(v) / len(v), 3),
                     "within2": sum(1 for x in v
                                    if x >= full
                                    - NEAR_FULL_TOL)}
@@ -486,6 +497,26 @@ def main():
         for mid, d in deltas.items():
             by_k.setdefault(bin(mid).count("1"),
                             []).append(d)
+        # per-block leave-one-out paired per-state
+        # discordance (the registered anatomy: counts of
+        # states where C loses and PF keeps, and v.v., under
+        # each block deletion)
+        loo_disc = {}
+        for blk in range(8):
+            mid = 255 & ~(1 << blk)
+            vc = dc[mid]["per_state_top1"]
+            vp = dp[mid]["per_state_top1"]
+            fc = dc[255]["per_state_top1"]
+            fp = dp[255]["per_state_top1"]
+            loo_disc[str(blk)] = {
+                "C_lost_PF_kept": sum(
+                    1 for i in range(96)
+                    if fc[i] and not vc[i]
+                    and fp[i] and vp[i]),
+                "PF_lost_C_kept": sum(
+                    1 for i in range(96)
+                    if fp[i] and not vp[i]
+                    and fc[i] and vc[i])}
         paired[pop] = {
             "mean_delta_by_k": {
                 str(k): round(sum(v) / len(v), 3)
@@ -495,7 +526,8 @@ def main():
             "n_masks_PF_better": sum(
                 1 for d in deltas.values() if d < 0),
             "n_masks_equal": sum(
-                1 for d in deltas.values() if d == 0)}
+                1 for d in deltas.values() if d == 0),
+            "leave_one_out_paired_discordance": loo_disc}
 
     receipt = {
         "prereg": "MATH-CYBER-1-RESIDUAL-PATH-CENSUS-"
