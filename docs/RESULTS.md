@@ -59875,3 +59875,233 @@ from trajectories.jsonl in this session; single population,
 single checkpoint; every splice-desk number remains
 unmeasured until its own GO.
 
+## PRE-REG MATH-CYBER-1-CLOSED-LOOP-1-POLICY-SPLICE-PREREG-0: posthoc 2x2 policy-splice mechanism desk on the 16 booked depth-0-divergence roots — AA/BB anchors freshly rerun in-process beside forced-first-action hybrids BA/AB under the unchanged CLOSED-LOOP-1 budget; frozen anchor-reproduction classes (nonreproduction is a FINDING, never an exclusion), frozen causal labels on reproduced AA-solved/BB-failed roots only, no p-values, no population inference; PREREG ONLY — nothing executed, no checkpoint loaded, no root replayed, no legal set inspected (2026-08-31, Mac)
+
+PURPOSE (adopting OBSERVATION ...POLICY-SPLICE-ASSESSMENT-0,
+L59667, HEAD 5389610b): localize the booked CLOSED-LOOP-1
+MODEL-WORSE anatomy (L59529) into FIRST-ACTION REGRET v
+DOWNSTREAM POLICY REGRET. This desk cannot change the
+original verdict, effect size, or p = .015625.
+
+ELIGIBLE ROOTS (frozen, selected by depth-0 action
+divergence — a pre-outcome property — from the sealed raw
+22198ddf..., manifest 50c05794...): exactly
+{12, 14, 15, 20, 23, 35, 37, 47, 54, 68, 72, 76, 78, 88, 89,
+94}. Root 93 excluded structurally (B produced no depth-0
+action; none may be invented). Root 75 excluded (A and B
+chose the IDENTICAL depth-0 action, so the depth-0 splice is
+a no-op there by construction; B then terminated at depth 1
+on encoding). No
+additions or removals after execution.
+
+2x2 POLICIES per root: AA = engine-hce depth 0 + engine-hce
+tail; BB = model-legal-ranking depth 0 + model tail (both the
+verbatim CLOSED-LOOP-1 arm laws, seed-19001 CANONICAL
+checkpoint ae0a86e0..., sha derived from the lock-pinned
+birth receipt as booked); BA = FORCE the originally booked
+MODEL depth-0 action, engine-hce tail from depth 1; AB =
+FORCE the originally booked ENGINE-HCE depth-0 action, model
+tail from depth 1. Forced identities come ONLY from the
+booked raw receipt (arm, root, depth-0 chosen name +
+child_sstr); no teacher/future information enters.
+
+FORCED-ACTION GATE (per hybrid cell): reconstruct the sealed
+root from authoritative make_integrate(level,
+generator_seed), byte-gated to the sealed manifest (the
+booked sympify-reparse hazard law); enumerate the fresh
+stable legal set; require the EXACT booked (name, child)
+action present. Absent => that cell books SPLICE-INFEASIBLE.
+Never substitute, never nearest-match, never regenerate.
+
+ANCHOR LAW: AA/BB are NOT frozen references — all four cells
+per root run in ONE root-local process (the booked root-94
+cross-process legal-set discrepancy invalidates
+frozen-process anchoring); each cell starts from identical
+sealed root bytes with fresh episode state and the standing
+per-decision cache clearing. Fresh AA/BB each compare to
+their original CLOSED-LOOP-1 receipt on TWO dimensions,
+booked per root in the frozen four-class law:
+ANCHOR-REPRODUCED (depth-0 action AND outcome class/solved
+bit both reproduce); ANCHOR-ACTION-NONREPRODUCED (action
+differs, outcome matches); ANCHOR-OUTCOME-NONREPRODUCED
+(action reproduces, outcome does not);
+ANCHOR-BOTH-NONREPRODUCED (both differ). The four classes
+partition; an outcome match never downgrades a root out of a
+nonreproduction class. NONREPRODUCTION IS NOT
+AN EXCLUSION: all 16 roots stay in the raw and summary
+accounting; the report gives all 16 roots, each root's
+anchor classes, and the mechanistically interpretable subset
+SEPARATELY; if nonreproduction occurs at meaningful scale,
+PROCESS-RELATIVITY books as the headline
+limitation/frontier, never a silent N shrink.
+
+BUDGET (unchanged CLOSED-LOOP-1 law): MAX_DECISIONS = 12
+total — the forced action consumes decision 1, tail gets at
+most 11; engine-side wall cap 60 s metered from the original
+root with the standing BETWEEN-DECISION check semantics (a
+within-decision hang is not timeboxed — observed episode
+walls may legitimately exceed 60 s, as in the booked
+64.7-77.3 s range), INCLUDING the engine work to
+construct/gate/apply the forced action, no reset after
+depth 0; model-scoring wall
+excluded from the meter exactly as booked (BA requires zero
+model calls; AB and BB load/score the checkpoint). No
+enlarged-cap rider in this experiment. Terminal classes and
+tie laws verbatim from the CLOSED-LOOP-1 prereg (082d4bc6);
+encoding failures book honestly under the standing outcome
+law — no derive_program/encoder repair here.
+
+EXECUTION-ORDER SCHEDULE (frozen, balanced): let k = the
+root's ordinal position 0..15 in the ascending frozen list
+above; cell order = row k mod 4 of the Latin square
+  k%4==0: (AA, BB, BA, AB)
+  k%4==1: (BB, BA, AB, AA)
+  k%4==2: (BA, AB, AA, BB)
+  k%4==3: (AB, AA, BB, BA)
+so every cell type occupies every order position exactly 4
+times across the 16 roots; warm-order effects are never
+aligned with a cell type. The root process is the pairing
+unit.
+
+INTERPRETATION MAP (frozen, mechanical; audited exhaustive
+over the binarized solved bit plus the SPLICE-INFEASIBLE
+cell state). CAUSAL LABELS apply ONLY to roots whose
+original pattern was AA solved / BB failed AND whose fresh
+anchors are ANCHOR-REPRODUCED on both arms:
+  BA fail + AB solve  => FIRST-ACTION-SUFFICIENT
+  BA solve + AB fail  => TAIL-POLICY-SUFFICIENT
+  BA fail + AB fail   => OVERDETERMINED (each component
+                         sufficient under its complementary
+                         splice)
+  BA solve + AB solve => CONJUNCTION-REQUIRED/INTERACTION
+SPLICE-INFEASIBLE row (applies ACROSS causal AND descriptive
+blocks): any root with an infeasible hybrid cell books
+SPLICE-INFEASIBLE for that root, no causal label, remaining
+cells reported descriptively.
+Completeness: each hybrid has exactly three cell states
+(solved / not-solved / infeasible); the four labels cover the
+2x2 of the first two and the fifth row covers any infeasible
+— exhaustive. All OTHER anchor patterns book frozen
+DESCRIPTIVE classes only (no causal label forced onto a
+different anchor state): ROBUST-BOTH-SOLVED (fresh AA and BB
+both solve; hybrids both solve), SPLICE-FRAGILITY (both-
+solved anchors, any hybrid fails), ROBUST-BOTH-FAILED
+(fresh anchors both fail, hybrids fail), HYBRID-WIN (any
+hybrid solves where both fresh anchors failed),
+ANCHOR-SHIFTED (any nonreproduced-anchor root: all four cell
+outcomes reported descriptively under its anchor class). No
+p-values anywhere; no directional population inference; any
+dominance reading over the causal-labeled subset books as
+UNRESOLVED tendency, never directional.
+
+EXPAND HYPOTHESIS (nominated, frozen): expand-first family =
+the seven measured roots {20, 23, 54, 68, 72, 78, 88}. B
+wall-capped on FIVE of them ({54, 68, 72, 78, 88}); the
+focus subset {54, 68, 78, 88} is the four that were ALSO
+A-only discordant — an OUTCOME-conditioned selector, named
+as such: root 72 is the fifth expand wall-cap but
+concordant-failed (A cycled too) and reads descriptively. Hypothesis: the MODEL depth-0 expand
+action is SUFFICIENT under the frozen 60 s engine budget to
+induce the downstream search-cost failure; cleanest
+observation = BA (model expand + hce tail): BA failing
+similarly supports FIRST-ACTION-SUFFICIENT under this
+budget; BA solving means the first action alone was not
+sufficient and later model policy contributed. Root 23 is
+the prospectively named counter-instance (modest branching
+growth 8->9, original loss by cycle not wall) and stays in
+the family.
+
+SEARCH-EXTERNALITY RECEIPTS (descriptive mechanism
+variables, persisted per depth-0 A and B action from states
+the run itself constructs): rule/action identity; parent and
+child sstr representation + length; parent and child
+legal-set size; branching ratio; expression-length ratio;
+hce value + hce rank within the legal set (A-side anatomy —
+computed on run-constructed states, never fed to B or C-like
+policies); model score + rank (B-side anatomy, from BB's own
+scoring); engine wall attributable to legal-set
+construction/transition — the booked instrument persists
+wall PER EPISODE only, so the splice driver ADDS
+per-segment wall emission (the sole instrumentation change,
+disclosed here). B-side score/rank receipts join from BB's
+own scoring AFTER all four cells complete, so BA runs
+model-free under every Latin-square order. NO cost penalty, lambda, combined
+score, threshold, or learned proxy is created or fit under
+this rung.
+
+RAW FIRST: 64 cell trajectories (16 roots x AA/BB/BA/AB)
+streamed to a fresh namespace logs/mathworld1/cl1/splice/
+(refuse-if-exists; no smoke mode — read-only engine + frozen
+checkpoint, sole guard disclosed), each retaining root
+identity, fresh stable legal sets, natural/forced depth-0
+action + membership-gate record, every subsequent
+state/action, tail policy, stopping class, solved bit,
+decision count, engine wall, model wall, anchor comparison
+fields; hashed BEFORE any aggregate or classification is
+computed.
+
+AUDIT: fresh-context verifier BEFORE execution (against this
+prereg, the splice assessment, the CLOSED-LOOP-1 prereg +
+raw + sealed population, and the standing arm
+implementations); independent post-run auditor reconstructs
+all 16 root identities, the exact booked depth-0 A/B
+actions, all forced-action gates, all 64 outcomes, fresh
+anchor action/outcome comparisons, all classifications,
+expand-family membership, and the branching/expression
+anatomy, replaying transitions where practical. If
+anchor/process nondeterminism prevents clean interpretation,
+THAT is the finding — no rerun hunting for a preferred
+anchor realization.
+
+REGISTERED PRIOR (house, before any cell exists): anchors
+mostly reproduce (moderate confidence — 105/105 within-run
+multi-arm states matched, but this is a fresh process and
+one cross-process discrepancy is measured); the four A-only
+expand wall-cap roots {54, 68, 78, 88} book
+FIRST-ACTION-SUFFICIENT (moderate — the
+recorded depth-1 legal-set inflation 37-76 suggests the
+post-expand state is expensive for ANY tail under 60 s);
+root 23 books TAIL-POLICY-SUFFICIENT or
+CONJUNCTION-REQUIRED (low confidence); root 94's AB likely
+re-hits det_ambiguous (low-moderate). Wrong-in-public is the
+point.
+
+CLAIM CEILING (frozen): POSTHOC MECHANISM LOCALIZATION on 16
+already-observed depth-0-divergence roots, one population,
+one checkpoint, one budget, one engine. Cannot modify
+MODEL-WORSE or p = .015625; cannot estimate population
+prevalence of first-action regret; cannot establish
+universal search-cost awareness or deep-loop behavior;
+cannot justify a trained cost penalty by itself.
+
+DECISION MAP (frozen): FIRST-ACTION-SUFFICIENT dominates the
+causal-labeled discordant roots (especially the four A-only
+expand wall-caps {54, 68, 78, 88}) => SEARCH-COST/DEPTH-0
+PREFERENCE is the
+frontier; next instrument evaluates simple predeclared cost
+proxies BEFORE any training. TAIL-POLICY-SUFFICIENT
+dominates => deep/policy-induced transport is the frontier.
+OVERDETERMINED or CONJUNCTION-REQUIRED common => interaction
++ budget sensitivity outrank a first-action correction;
+consider the separately preregistered wall-cap rider (still
+PARKED — no 120 s/300 s/unlimited variant under this
+program until then). Substantial anchor nonreproduction =>
+engine process-relativity/legal-set stability is the
+instrument frontier before any mechanistic policy
+conclusion. Encoder det_ambiguous stays a separate coverage
+thread under every outcome.
+
+ORDER: freeze (this entry) -> fresh-context prereg audit ->
+commit/push/index/census -> STOP. Nothing executes under
+this GO. Next GO if clean:
+MATH-CYBER-1-CLOSED-LOOP-1-POLICY-SPLICE-DESK-0.
+
+FENCES. PREREG ONLY; Mac/mps at run time (no bit-exact rerun
+precondition; hashed raws the record); 16 named roots, no
+pooling into the original 96-root inference; zero
+inferential applications in the entire desk; single
+checkpoint/seed/population/budget; SOFT-SUPPORT,
+LEGALITY-TRAINING, PARAM-MIDDLE, and the wall-cap rider all
+stay banked/parked/unbuilt; every future claim grounded in
+its own run's tool output.
+
