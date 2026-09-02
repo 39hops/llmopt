@@ -64082,3 +64082,261 @@ no scoring, no masks, no training; deterministic construction
 receipts or the verifier's; the 192 desk parents are BURNED
 for every future population; V1 stands unamended.
 
+## OBSERVATION MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-PRODUCTION-DESIGN-ASSESSMENT-0: GO SUPPORT-COVERED PRODUCTION PREREG (the selected branch meets the stronger SUPPORT-SUBSTANTIAL class) — the already-burned after / e_lo = 1 branch of the V2 desk is a SUPPORT-SUBSTANTIAL strict crossover witness: reconstructed from the burned artifact alone, its 32 parents sit at site ordinal 0 under ONE complete cand_sig_id (i_sum + i_unprod I0/t1 + I0/t3 + I0/t5), the cos-pair correct guess is A0 = (i_unprod, I, 0, term_index, 1) and the sin-pair correct guess is B0 = (i_unprod, I, 0, term_index, 3) in 32/32, the authoritative full-legal-set teacher is A0 under SIN_LOW 16/16 and B0 under COS_LOW 16/16 with min_hce_ties = 1 in 32/32, zero non-target teachers, A0-B0 gap exactly 3.0 in 32/32, and the balanced state-blind fixed-ranking ceiling is 16/32 = 50%; the exact 74,860-row support matrix (pinned) puts I0/t1 at 2,267 whole-coordinate rows and I0/t3 at 257 (ratio 8.8), every FACTOR and PARAM-FIRST positional symbol supported — SUPPORT-SUBSTANTIAL under the frozen terminology, NOT support-matched; all six variant x e_lo branches reproduce the strict crossover (16/16, one signature, gap 1.0 at e_lo = 2 and 3.0 at e_lo = 1), the I1 branches (smallA, smallB) and after / e_lo = 2 are OOD on their B coordinate (I1/t4, I0/t4 whole 0, last symbol unseen); the retained I1/t1-v-t4 construction stays a distinct SECONDARY OOD-recombination assay; production proposal: 144 fresh bases (e_hi {5,6,7,9} x fresh odd c {29,31,37,41,43,47} x fresh K {33x^3, 27x^4, 35x^3}, e_lo = 1, primary = after variant), forecast sum m_g = 72 at cand_sig_id grain; the witness branch was selected POST HOC over the six burned cells and carried no registered bar in the desk prereg; READ-ONLY — no parent generated, nothing loaded, scored, or trained (2026-09-02, Mac)
+
+ADOPTS VERDICT ...V2-CROSSOVER-DESK-0 (L63897, ac5184b2),
+PRE-REG ...V2-CROSSOVER-DESK-0 (L63579, 488e8b23),
+OBSERVATION ...V2-CROSSOVER-ASSESSMENT-0 (L63242, f99a3718),
+VERDICT ...MATERIALIZATION-0 (L63074, b5f7b9c7). Instrument:
+scratch/mathworld1_prband2branch.py (read-only over
+logs/mathworld1/prband2desk/bases.jsonl, sha 0fd7ac37...) ->
+logs/mathworld1/prband2desk_verify/branch_census.json
+(82720264...) and support_matrix.json (65b77230...); both
+force-added. No rule call, no parent, no model.
+
+(A) SIX BURNED BRANCH CENSUSES (variant x e_lo; roles from
+the persisted source-term / guessed-A semantics, coordinates
+reported after roles; 32 parents each):
+  smallA | e_lo 2: site I1; one cand_sig_id 89111c27... =
+    {i_sum, I1/t1, I1/t4}; COS_CORRECT = I1/t1, SIN_CORRECT =
+    I1/t4 (32/32 each); teacher A 16 under SIN_LOW / B 16
+    under COS_LOW; ties 1 in 32/32; gap 1.0 x 32; STRICT-A 16
+    / STRICT-B 16 / TIE 0 / NON-TARGET 0 / ABSENT 0; n_A 16,
+    n_B 16, m_g 16; ceiling 16/32 = 50% (balanced); strict
+    state-dependent crossover YES.
+  smallA | e_lo 1: site I1; one signature 425e56e6... =
+    {i_sum, I1/t1, I1/t3, I1/t5}; COS_CORRECT = I1/t1,
+    SIN_CORRECT = I1/t3, WRONG_FAMILY = I1/t5 (32/32 each);
+    16/16, ties 1, gap 3.0 x 32, m_g 16, ceiling 50%, YES.
+  smallB | e_lo 2: site I1; one signature; I1/t1 v I1/t4;
+    16/16, ties 1, gap 1.0 x 32, m_g 16, 50%, YES.
+  smallB | e_lo 1: site I1; one signature; I1/t1 v I1/t3
+    (+ I1/t5 wrong); 16/16, ties 1, gap 3.0 x 32, m_g 16, 50%,
+    YES.
+  after | e_lo 2: site I0; one signature = {i_sum, I0/t1,
+    I0/t4}; COS_CORRECT = I0/t1, SIN_CORRECT = I0/t4; 16/16,
+    ties 1, gap 1.0 x 32, m_g 16, 50%, YES.
+  after | e_lo 1: site I0; one signature = {i_sum, I0/t1,
+    I0/t3, I0/t5}; COS_CORRECT = I0/t1, SIN_CORRECT = I0/t3,
+    WRONG_FAMILY = I0/t5 (32/32 each); teacher A0 16 under
+    SIN_LOW, B0 16 under COS_LOW; ties 1 in 32/32; gap 3.0 x
+    32; STRICT 16/16, TIE 0, NON-TARGET 0, ABSENT 0; n_A0 16,
+    n_B0 16, m_g 16; ceiling 16/32 = 50%; YES.
+The numeric term indices are the same across the three
+distractor variants (the distractor is a separate Integral
+term of the parent, never a term of f); only the site
+ordinal differs (I1 for the small distractors that sort
+before the target, I0 for after).
+
+(B) after x e_lo = 1, the primary special question: the
+hypothesis A0 = (i_unprod, I, 0, term_index, 1), B0 = (...,
+3), SIN_LOW -> A0, COS_LOW -> B0, one fixed complete
+cand_sig_id, 16/16 balance, min_hce_ties = 1, zero
+non-target teachers, gap 3.0 is CONFIRMED from the burned
+artifact in every clause (census above); nothing was
+relabeled, rescued, or regenerated. The three-op anatomy in THIS cell: the
+teacher child (cancelling the high-degree pair) has A-ops 4 /
+residual-ops 14 / count_ops 24, the other target 3 / 18 / 27,
+the wrong-family guess from the bare sin(cx) term 32 (the
+smallA cell reads 23 / 26 / 31 — the after distractor
+Integral(sin(sin(x))) costs one op more than Integral(x**x)
+in every child, a uniform offset); the exponent-1 pair's
+derivative terms carry fewer ops (x*T(cx) has no POW, T(cx)
+alone has neither POW nor MUL), so cancelling the high-degree
+pair leaves the cheaper residual.
+
+(C) EXACT CURRENT TRAINING-SUPPORT MATRIX (recomputed from the
+frozen corpus the checkpoints were trained on:
+data/matsub_paired.jsonl a943ba7fc581db743b07192e5d951fadddd2ba
+19bca3225b75d8402351d468e8 (73,324 rows) + logs/mathworld1/
+svpdiet/balanced_grid_train.jsonl 0ef3d8a880a7e07712d8de757bc16
+70df12701e487b856b44c97f8db16cb3759 (1,536 rows) = 74,860
+rows; never from the older 73,324-row desk). Rule i_unprod,
+site kind I, param kind term_index; (rule, site) counts:
+I0 3,989 / I1 670; (rule, param_index) counts: t0 1,480, t1
+2,661, t2 261, t3 257, t4 0, t5 0. Whole-coordinate = program
+text count in every cell:
+  I0/t0 1,204   I0/t1 2,267   I0/t2 261   I0/t3 257
+  I0/t4 0       I0/t5 0
+  I1/t0 276     I1/t1 394     I1/t2 0     I1/t3 0
+  I1/t4 0       I1/t5 0
+FACTOR codes [1,3,1,0,o,2,0,p+1] with o = ordinal + 1;
+per-position symbol counts are identical across cells except
+position 4 (I0: 62,956; I1: 10,236) and position 7 (value p+1:
+1: 1,481, 2: 2,663, 3: 261, 4: 257, 5: 0, 6: 0). PARAM-FIRST
+codes are PERM of the same symbols (position 2 carries p+1,
+position 7 carries o); same counts. Every positional symbol
+is supported for t0-t3 at both ordinals; t4 and t5 have a
+NEVER-SEEN symbol (5 / 6) at the term_index position in both
+codes.
+
+(D) TERMINOLOGY (frozen before interpretation): OOD = either
+target's whole coordinate count 0; SUPPORT-COVERED = both
+whole counts > 0 and every required FACTOR and PF positional
+symbol supported; SUPPORT-SUBSTANTIAL = both whole counts >=
+32 and every positional symbol supported. "Support-matched"
+is NOT used for any pair here. Candidate pairs:
+  after/e_lo1  I0/t1 v I0/t3: 2,267 v 257, ratio 8.8 —
+    SUPPORT-SUBSTANTIAL.
+  after/e_lo2  I0/t1 v I0/t4: 2,267 v 0 — OOD (B).
+  smallA/e_lo2, smallB/e_lo2  I1/t1 v I1/t4: 394 v 0 — OOD
+    (B; the term_index symbol 5 unseen at its position in
+    both codes: FACTOR position 7, PARAM-FIRST position 2).
+  smallA/e_lo1, smallB/e_lo1  I1/t1 v I1/t3: 394 v 0 — OOD
+    (B whole; its symbols are all supported, from I0/t3).
+
+(E/F) BRANCH SELECTION (no model access; a POST-HOC choice
+over the six burned cells — the after / e_lo = 1 cell carried
+no registered bar in the desk prereg L63579 / verdict L63897,
+where the primary was smallA and e_lo = 1 was secondary):
+ALL six cells share the fixed complete signature, strict
+unique teachers 32/32, exact balance and the 50% ceiling; the
+ONLY discriminator is support, and exactly one cell is
+SUPPORT-SUBSTANTIAL: after / e_lo = 1. Selected as PRIMARY (a PURE-CONTEXT assay:
+"can the frozen model use mathematical state to switch
+between two previously observed semantic ActionProgram
+coordinates under an identical legal candidate set and a
+strict state-dependent HCE teacher?"). The smallA / e_lo = 2
+construction (I1/t1 v I1/t4, gap 1) is RETAINED as a distinct
+SECONDARY OOD-RECOMBINATION assay ("additionally requires
+generalization to an unseen ActionProgram coordinate");
+claims never pool.
+
+(G) FREQUENCY CONFOUND, stated prominently: the selected
+pair's whole-coordinate training counts are 2,267 (A0 =
+I0/t1) v 257 (B0 = I0/t3), ratio 8.8; (rule, param) 2,661 v
+257. Coverage removes only the "never observed at all"
+confound; an 8.8x frequency asymmetry can still carry a
+strong problem-blind prior toward A0, so mask-0 scoring and
+the full-v-mask-0 anatomy remain mandatory, and the assay is
+described as support-substantial, never support-matched.
+
+(H) PRODUCTION CONSTRUCTION PROPOSAL (assessment only): the
+same frozen skeleton f = d/dx[x^a sin(cx)] + d/dx[x^b
+cos(cx)] + Integral(sin(x)/x, x) + K with e_lo = 1, theta in
+{SIN_LOW, COS_LOW}, w fixed; fresh axes only: e_hi in {5, 6,
+7, 9} (reused values; freshness is carried by c and K), c in
+{29, 31, 37, 41, 43, 47} (odd primes, none in any lineage c
+bank — every c from 8 to 25 is used, 11/13/17/19 by the desk),
+K in {33*x**3, 27*x**4, 35*x**3} (absent from all nine burned
+inert-addend banks incl. the desk's 21x^3; coefficients 33 /
+27 / 35 outside every lineage c bank — 25 was rejected here
+because it sits in three c banks; exponents 3 / 4 are reused
+bank exponents, freshness being carried by the coefficient);
+4 x 2 x 6 x 3 = 144 bases,
+three standing variants = 432 burned parents; PRIMARY = the
+after variant (site ordinal 0; smallA / smallB qualification-
+only, no parity, no hash); same semantic pair A0 / B0, same
+role mapping SIN_LOW -> A0 / COS_LOW -> B0, six additive terms
+for every base, no k axis, no prefix, no swapping. Selection
+model-blind and score-blind, target-aware only through the
+registered balancing law: bucket by (cand_sig_id, strict
+target), order by sig_sha, exact within-signature balance q_g
+from both sides, 48 + 48, at most K_MAX signatures
+(preferably one). Note cand_sig_id does not distinguish the
+smallA and smallB variants (same site, same legal set —
+identical ids in the desk); the production population uses
+ONE variant (after) as primary, so no pooling across
+distractors can occur.
+Integrand-level probe of ALL 144 proposed cells (this session,
+prior information only; recipe: f.args in sympy's canonical
+order, for each term with a trig atom cof = cancel(t / (v'
+fn)), A = cof * TABLE[fn](v), dedup by srepr(A), legal iff
+count_ops(expand(f - A')) < count_ops(f), score = count_ops(A
++ Integral(r, x)) on the unwrapped integrand, so absolute
+values sit 4 below the desk's parent-level 24 / 27): six
+terms, guesses at {1, 3, 5} with roles COS / SIN / WRONG,
+winner 20 v 23 (wrong 28), gap 3, the
+mapping holds in 144/144 — the axes preserve term indices,
+roles and gap at the integrand level; the complete legal
+signature and teacher uniqueness are the production run's
+own gates.
+
+(I) CAPACITY FORECAST (cand_sig_id grain): the desk rate on
+this branch is 32/32 strict in one signature, i.e. m_g =
+bases per theta. Proposed horizon: 72 bases per theta ->
+forecast n_A0 = 72, n_B0 = 72, sum m_g = 72 = the preferred
+reserve, with 48 pairs selected from it; the smallest
+horizon reaching 48 pairs alone is 48 per theta (96 bases).
+Not from raw A/B frequency; the production fill gate is the
+measurement.
+
+(FIXED-RANKING CEILING PROOF) Under exact within-signature
+balance (q_g A0 = q_g B0 for every selected signature), a
+global fixed order restricted to a signature's candidate set
+puts A0, B0, or a third code first, scoring q_g, q_g, or 0
+in that group; hence every order scores at most 48/96, and
+any order ranking A0 or B0 first in every selected set
+scores exactly 48/96. With ONE signature {i_sum, I0/t1,
+I0/t3, I0/t5} (the desk outcome), all 24 orders score 48 or
+0 (12 each). The zero-block model of this 8-block family is a
+context-free fixed order (booked: mask-0 logits never see the
+problem, L62175; measured state-invariance, L62394), so
+conditional on that architecture mask-0 top-1 <= 48 is
+forced on such a population; mask-0 > 48 = INSTRUMENT /
+DESIGN MISMATCH.
+
+(BURN / FRESHNESS) Production fences: the 192 desk parents
+(receipt-pinned, bases.jsonl 0fd7ac37...), the 5,760 V1
+parents (horizon_census.jsonl 2e28abf0...), and every
+V1-named source; refute-on-hit over all 432 parents; the
+desk's c bank and K are excluded by construction (disjoint
+c and K), and this session's 144-cell integrand probe was
+never wrapped as a parent.
+
+(K) EVENTUAL SCORING DESIGN (design only; separate prereg;
+not authorized): checkpoints seed 19001 CANONICAL / PARAM-
+FIRST and seed 20001 CANONICAL / PARAM-FIRST, each full and
+mask-0 only (pins verified from receipts before freeze); no
+residual cube, no FACTOR/HASH; standing law: total SUM of
+teacher-forced continuation log-probs over T = 9 incl. EOS,
+strict top-1; structural reference 48/96 (a function-class
+ceiling, not a binomial null); primary evidence full top-1 >
+48 with a MARGIN the scoring prereg must freeze (the house
+resolution fence treats single-realization deltas under ~5
+states as unresolved; a chance-level binomial sd at n = 96 is
+4.9), single realization per checkpoint; also mask-0 top-1, full - 48, mask-0 - 48, the paired
+four-cell table, predictions by target class and by
+signature, top-action switch anatomy; MASK-0 HARD SANITY
+mask-0 <= 48 else STOP; no p-value primary. The scoring
+prereg must carry the (G) asymmetry fence verbatim.
+
+(J) CLAIM SEPARATION: PRIMARY (after / e_lo = 1) claim
+ceiling: "tests whether the frozen model can use mathematical
+state to switch between two previously observed semantic
+ActionProgram coordinates under an identical legal candidate
+set and a strict state-dependent HCE teacher" — support-
+substantial, frequency-asymmetric 8.8x, never support-
+matched. SECONDARY (smallA / e_lo = 2, I1/t1 v I1/t4): "the
+OOD-recombination assay additionally requires generalization
+to a never-seen coordinate". Not pooled.
+
+(M) DECISION: GO SUPPORT-COVERED PRODUCTION PREREG, with the
+burned after / e_lo = 1 branch as the mechanism witness
+(registered hypothesis confirmed by the artifact, not forced).
+
+CLAIM CEILING (this entry): read-only censuses of one burned
+desk and one frozen corpus plus an integrand-level probe;
+establishes the branch anatomy, the support matrix, the
+classification under frozen terminology, and a design.
+NOT established: any model behaviour, that support coverage
+removes prior bias, production capacity (forecast only), or
+signature / teacher uniqueness on the proposed axes (the
+production run measures them).
+
+SUCCESSOR GO (one, nominated, NOT authorized): PRE-REG
+MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-PRODUCTION-0 (the 144-
+base after / e_lo = 1 band above, fill / balance / ceiling
+gates, burn fences, target-blind selection, companion I1
+artifact from the smallA variants, the (G) asymmetry fence).
+
+FENCES. Read-only: no parent generated, no legal set
+enumerated on any new expression, nothing loaded, scored,
+masked, or trained; every branch number from
+branch_census.json (recomputed from bases.jsonl), every
+support number from support_matrix.json over the two pinned
+files; the 144-cell probe is integrand-level sympy prior
+information with no population authority; V1 and the V2 desk
+stand unamended; the 192 desk parents and 5,760 V1 parents
+stay burned.
+
