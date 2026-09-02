@@ -63576,3 +63576,321 @@ files; the skeleton probe is integrand-level sympy in this
 session (16 + 4 cells, printed in the session log, not a
 receipt; reproduced independently by the challenger) and carries no population authority.
 
+## PRE-REG MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-CROSSOVER-DESK-0: FROZEN CONTROLLED-CROSSOVER FEASIBILITY DESK — 64 fresh bases of the two-pair skeleton f = d/dx[x^a sin(cx)] + d/dx[x^b cos(cx)] + Integral(sin(x)/x, x) + 21*x**3 over e_hi in {5,6,7,9} x theta in {SIN_LOW, COS_LOW} x c in {11,13,17,19} x e_lo in {1,2}, three standing distractor variants each (192 burned parents; primary = smallA always, no parity, no hash), classifying stratum e_lo = 2 ONLY with the target pair frozen from the source derivation as A = (i_unprod, I, 1, term_index, 1) [the cos-pair correct guess] and B = (i_unprod, I, 1, term_index, 4) [the sin-pair correct guess], expected winner mapping SIN_LOW -> A and COS_LOW -> B with a 1-op strict gap, counted crossover = unique authoritative full-legal-set teacher (min over (hce, name, child srepr) with min_hce_ties = 1 and a >= 1.0 gap to the other target), bars B1-B7 at COMPLETE cand_sig_id grain (B3: a <= 2-signature subset with sum m_g >= 12 is load-bearing), e_lo = 1 a secondary robustness stratum with its own pair (term_index 1 v 3) that can never rescue the primary; training-support census booked as a CONFOUND DISCLOSURE (A seen 394 times whole-coordinate, B never, B's last factor symbol unseen at that position in all 74,860 rows); PREREG ONLY — no parent generated, nothing executed, loaded, scored, or trained (2026-09-02, Mac)
+
+ADOPTS OBSERVATION ...V2-CROSSOVER-ASSESSMENT-0 (L63242,
+f99a3718) and VERDICT ...MATERIALIZATION-0 (L63074,
+b5f7b9c7). Nothing in V1 is amended. This is a NEW
+controlled-crossover assay, not a continuation of the
+historical t2-v-t3 held-out challenge: the target actions
+are term_index 1 and 4, chosen by the skeleton's derivation,
+never by convenience.
+
+QUESTION (construction desk only): can a prospectively
+fixed construction produce many fresh parents in which (1)
+the COMPLETE legal ActionProgram candidate signature is
+byte-identical, (2) two fixed i_unprod actions are both
+legal, (3) the authoritative full HCE teacher chooses each
+in different states, (4) each choice is a STRICT minimum
+(never the srepr tie-break), (5) the preferred action
+changes with state structure while legality stays fixed?
+
+SKELETON (frozen; the standing construction law of
+build_f3 with the P*T(cx) product replaced by two products):
+  f = expand(d/dx[x^a * sin(c x)]) + expand(d/dx[x^b *
+  cos(c x)]) + Integral(w, x) + K,
+  w = sin(x)/x for every base (euler membership constant:
+  V1 showed euler present iff w = exp(x)/x, 2,880/2,880 each
+  way), K = 21*x**3 for every base.
+theta = SIN_LOW means (a, b) = (e_lo, e_hi); theta = COS_LOW
+means (a, b) = (e_hi, e_lo). Exactly one pair carries e_lo.
+No k axis, no class-dependent prefix, one additive term
+count for every base (six terms expected in all 64, from the
+prior probe). Parent = Integral(f, x) + Integral(D, x) under
+the standing qualify_parent law.
+
+K CHOICE (inspected before freeze, all burned inert-addend
+banks enumerated from the lineage modules: F3 train (9x,
+13x**6), F3 eval (10x**2, 12x**5), E1 (14x**3, 15x**7),
+nuisance (4x**2, 6x**5), the six early polys (x, 7x**3, 2x,
+5x**2, 3x, 11x**4), K_POLYS2 (7x**2, 8x**6), V1 K_A (9x**3,
+12x**4), V1 K_B (13x**2, 15x**5)): 21*x**3 is absent from
+every bank; its coefficient 21 is outside the c bank and
+outside every exponent / derivative coefficient in play
+(1, 2, 5, 6, 7, 9, 11, 13, 17, 19). The driver gates K
+against the union of these banks (K USED) at run start.
+
+BANK (frozen; enumeration order e_lo, e_hi, theta, c, all
+ascending / SIN_LOW before COS_LOW): e_hi in {5, 6, 7, 9}
+(4) x theta in {SIN_LOW, COS_LOW} (2) x c in {11, 13, 17,
+19} (4, primes above every exponent and derivative
+coefficient; the c = 8 re-sorting collision of the
+assessment cannot recur) x e_lo in {1, 2} (2) = 64 bases.
+base_signature = "V2D|elo={e_lo}|ehi={e_hi}|theta={theta}|
+c={c}|w={w}|K={K}" (unique by construction; base_signature,
+sig_sha = sha256(base_signature), and base srepr uniqueness
+are hard gates over the 64).
+
+THREE VARIANTS (standing roles, frozen): smallA = x**x,
+smallB = 1/(x + log(x)), after = sin(sin(x)). All three are
+qualification parents and are burned. The PRIMARY /
+CLASSIFYING parent is ALWAYS smallA (site ordinal 1: the
+distractor sorts before the target Integral). smallB is
+qualification-only; after is the I0 companion /
+qualification-only. No parity, no hash, no variant choice
+depending on any construction axis, teacher, or signature.
+64 x 3 = 192 burned parents.
+
+CLASSIFYING STRATUM: e_lo = 2 ONLY (32 bases, 16 per
+theta). e_lo = 1 (32 bases) is a predeclared SECONDARY
+ROBUSTNESS stratum with a different expected index set and
+gap; it can never satisfy, rescue, or pool into any primary
+bar.
+
+TARGET ACTIONS, FROZEN FROM THE SOURCE DERIVATION (the
+i_unprod law of rules.py: for each term t containing fn(v),
+cof = cancel(t / (v' fn(v))), A = cof * TABLE[fn](v), legal
+iff count_ops(expand(f - A')) < count_ops(f); term_index =
+position in canonical f.args, trace_unprod / derive_program
+law). Prior information, integrand-level sympy on the frozen
+banks (64 cells, this session; NOT desk observations, may
+not be repaired after generation): six terms in every cell;
+at e_lo = 2 the canonical order is [K, -c x^b sin, 2x T_low,
+e_hi x^(e_hi-1) T_hi, c x^a cos, Integral(w)], the cos-pair
+correct guess (A = x^b cos(cx), from the -c x^b sin term)
+sits at term_index 1 and the sin-pair correct guess (A = x^a
+sin(cx), from the c x^a cos term) at term_index 4 in 32/32
+cells; the two wrong-family guesses (indices 2, 3) FAIL the
+residual-shrink guard in 32/32 cells (residual ops 29 and
+30 v count_ops(f) = 29, neither strictly smaller), so the
+expected i_unprod index set is exactly {1, 4} — a DEVIATION
+from the assessment's {1, 2, 4} expectation whose cause is
+the PARITY OF c, not K or w (recomputed on the 2 x 2 of K in
+{9x**3, 21x**3} x w in {exp(x)/x, sin(x)/x}: identical
+index sets in every cell; at even c the index-2 wrong guess
+A = -2x cos(cx)/c has coefficient 2/c reduced to 1/(c/2),
+one op fewer, residual 28 < 29 and the guess is legal; at
+odd c the residual is 29 = 29 and it is not; the
+assessment's probe used c = 8 and 12, the desk's c bank is
+odd). The prereg follows the derivation under the FROZEN
+banks, and the c axis is the one a future variant must not
+move without re-deriving the index set. Hence:
+  A = (i_unprod, I, 1, term_index, 1)  factor code
+      [1,3,1,0,2,2,0,2]  = COS-PAIR CORRECT guess
+  B = (i_unprod, I, 1, term_index, 4)  factor code
+      [1,3,1,0,2,2,0,5]  = SIN-PAIR CORRECT guess
+EXPECTED WINNER MAPPING (frozen now, from count_ops
+arithmetic: the child cancelling the HIGH-degree pair is
+one op cheaper — 23 v 24 in all 32 probed cells):
+  theta = SIN_LOW  (sin pair low, cos pair high) -> A wins
+  theta = COS_LOW  (cos pair low, sin pair high) -> B wins
+Desk outcomes never redefine A, B, or this mapping. If the
+desk's authoritative trace shows the correct guesses at
+other indices, that is a B1 failure, not a re-labeling.
+ROBUSTNESS PAIR (e_lo = 1, frozen separately, never pooled):
+expected order puts the cos-pair correct guess at
+term_index 1, the sin-pair correct guess at term_index 3,
+and a wrong-family guess at term_index 5 (32/32 probed
+cells; index set {1, 3, 5}; gap 3 ops, 20 v 23; the
+wrong guess at 28): A1 = (i_unprod, I, 1, term_index, 1),
+B1 = (i_unprod, I, 1, term_index, 3); mapping SIN_LOW -> A1,
+COS_LOW -> B1.
+
+COMPLETE LEGAL CANDIDATE SIGNATURE (primary grain; the V1
+law verbatim): for EVERY legal candidate of the stable legal
+set, (rule, site_kind, site_ordinal, param_kind,
+param_index) from derive_program; sorted in Python tuple
+order; canonical JSON (sort_keys, no whitespace); cand_sig_id
+= sha256. Never i_unprod indices alone, candidate count,
+names, or target presence. Every capacity number books at
+cand_sig_id grain. The i_unprod term-index set is persisted
+as a DIAGNOSTIC only (expected {1, 4} at e_lo = 2 and
+{1, 3, 5} at e_lo = 1); it never substitutes for signature
+identity.
+
+PERSISTED PER PRIMARY (and per variant where the same
+fields exist): canonical f.args as sstr list; for every
+i_unprod candidate the source term, its role (SIN_CORRECT /
+COS_CORRECT / WRONG_FAMILY, assigned by exact equality of A
+with x^a sin(cx) / x^b cos(cx)), numeric term_index, A,
+residual, child, count_ops(A), count_ops(residual),
+count_ops(child), full hce(child) recomputed from the
+child expression (100 * unsolved atoms + count_ops + 0.1 *
+plies) and the qualify_parent min_hce_ties; the complete
+candidate list with factor / hash / pf payloads; cand_sig,
+cand_sig_id; teacher tuple; gap to the other target; class
+label (STRICT-A / STRICT-B / TIE / NON-TARGET-TEACHER /
+TARGET-ABSENT / FAIL). No post-generation permutation.
+
+TEACHER LAW (standing, untouched): the authoritative label
+is the minimum over the COMPLETE stable legal set of the
+tuple (hce(child), raw site-suffixed action name, child
+srepr) — svpchal qualify_parent's scored tuple verbatim;
+condition (6) below restates min_hce_ties = 1, which
+qualify_parent counts over ALL candidates. A COUNTED
+crossover primary must satisfy ALL of: (1) A and B both
+legal; (2) teacher rule i_unprod; (3) teacher site (I, 1);
+(4) teacher exactly A or B; (5) min_hce_ties = 1; (6) the
+teacher's hce is strictly below every other legal candidate
+(no non-target candidate — i_sum, algebra moves, euler,
+another i_unprod guess, anything — equal or lower); (7) gap
+to the OTHER target >= 1.0 HCE unit (e_lo = 2). The
+integrand-level probe compared only the two target children;
+the desk must show one of them is the unique GLOBAL teacher.
+Any A-B HCE tie, or any label decided by the srepr
+tie-break, is class TIE and never counts.
+
+FRESHNESS / BURN: all 192 parents burned at execution start
+regardless of outcome; no desk parent may enter any
+production population. Refute-on-hit overlap fences against
+every V1-named source (natural training curs, svpeval bands,
+566 pilot parents, D0 / D1 / DIET / E1 / NUISANCE horizons,
+svpdiet3 eval + secondary horizons and artifacts,
+CLOSED-LOOP-1 curs, own smoke) PLUS the V1 census
+logs/mathworld1/prband/horizon_census.jsonl, full sha
+2e28abf09219d4ac5ee2cb834f22f9cbc40f750c13029a8b96979f9a7e144c4c
+(all 5,760 parent curs, every variant), pinned at run start.
+The assessment's pure-sympy probe integrands (c in {8, 12},
+K = 9x**3, w = exp(x)/x, and the e_lo = 1 probe at c = 11
+with K = 9x**3) are disjoint from this namespace by K and w;
+this session's frozen-bank probe evaluated exactly the
+desk's 64 integrands at the integrand level (never wrapped
+as parents, no legal set enumerated, no teacher run) — it
+is prior information about the desk's own cells, not a
+separate population to fence.
+
+QUALIFICATION (standing gates, all three variants):
+stable legal set (two enumerations, cleared cache), exact
+ActionProgram derivation and replay, tokenizer roundtrip,
+no program collision, context <= 4096, in_domain, factor /
+hash / pf roundtrip and PERM identity, unique label
+(label_not_unique rejects). A classifying primary counts
+only if its block's three variants all qualify AND targets
+A and B are present AND the teacher is unique and strict as
+above. Failures are preserved and censused, never repaired.
+
+PRIMARY DESK BARS (classifying e_lo = 2, denominator = the
+32 classifying primaries unless a bar names otherwise;
+exact numerator / denominator reported for each):
+  B1 TERM / TARGET INDEX STABILITY: >= 90% of otherwise
+     qualifying classifying primaries (29/32 or better)
+     show the frozen role mapping (cos-pair correct guess at
+     term_index 1, sin-pair correct guess at term_index 4)
+     AND the expected dominant i_unprod index set {1, 4}.
+  B2 STRICT TARGET CROSSOVER: >= 12 fresh STRICT-A primaries
+     AND >= 12 fresh STRICT-B primaries (each with
+     min_hce_ties = 1, teacher exactly A / B, A-B gap >= 1).
+  B3 EXACT COMPLETE-SIGNATURE CAPACITY (load-bearing): with
+     n_g(A), n_g(B) counted over STRICT winners among the
+     32 classifying primaries only and
+     m_g = min(n_g(A), n_g(B)) per cand_sig_id g: sum_g m_g
+     >= 12 AND there exists a subset G of at most TWO
+     signatures with sum_{g in G} m_g >= 12. Reported:
+     number of complete signatures, number mixed (both
+     STRICT-A and STRICT-B present), top m_g values, total
+     sum m_g, fraction of strict target primaries inside
+     mixed signatures.
+  B4 CONCENTRATION: >= 80% of STRICT target-bearing
+     classifying primaries lie in mixed signatures.
+  B5 QUALIFICATION: zero qualification failures among the
+     32 classifying blocks (all three variants). Lineage
+     precedent: 1,920/1,920 blocks qualified in V1 under the
+     same gates, so the full-denominator form is not
+     stronger than precedent; the auditor may propose a
+     prospective denominator correction before freeze only.
+  B6 FRESHNESS: zero prohibited overlap hits over ALL 192
+     burned parents (every variant of every base, both
+     strata), not only the classifying primaries.
+  B7 NO TIE-DEPENDENT SUCCESS: >= 24/32 classifying primaries
+     have min_hce_ties = 1 with authoritative teacher A or B.
+DECISION (mechanical): GO V2 PRODUCTION DESIGN iff B1-B7
+all hold; PARK CONTROLLED CROSSOVER if strict A winners < 6
+OR strict B winners < 6 OR exact-signature sum m_g < 6;
+NEEDS-REDESIGN otherwise. Bars never move after execution.
+
+ROBUSTNESS e_lo = 1 (secondary, reported, never rescuing):
+the same anatomy (index set, complete signatures, STRICT-A1
+/ STRICT-B1 counts, gap distribution, mixed-signature
+capacity) against A1 / B1. A failed primary with a passing
+robustness stratum books the primary failure and may
+nominate a NEW e_lo = 1 design under its own assessment.
+
+CAPACITY FORECAST (only if GO; forecast only, nothing
+materialized): from the observed e_lo = 2 rates at
+cand_sig_id grain (fraction of bases landing in the dominant
+mixed signature, per theta), forecast the production bank
+(e_hi x c x K-set axes, w fixed) needed for 48 balanced
+pairs with preferred reserve sum m_g >= 72. Never from raw
+A / B frequencies.
+
+TRAINING-SUPPORT RIDER (census of the 74,860 training rows,
+matsub_paired a943ba7f... + balanced_grid_train 0ef3d8a8...;
+ZERO effect on the desk decision): A = (i_unprod, I, 1,
+term_index, 1): whole coordinate seen 394 times; (rule,
+site) (i_unprod, I, 1) 670; (rule, param) (i_unprod,
+term_index, 1) 2,661; every factor-symbol component seen at
+its position. B = (i_unprod, I, 1, term_index, 4): whole
+coordinate NEVER seen; (rule, param) (i_unprod, term_index,
+4) NEVER seen at any site; its last factor symbol (5 at
+position 7) is UNSEEN at that position in all 74,860 rows
+(i_unprod param_index frequencies in training: 0: 1,480,
+1: 2,661, 2: 261, 3: 257; site ordinal 0: 3,989, ordinal 1:
+670). The pair is SUPPORT-ASYMMETRIC: A in-support, B
+whole-coordinate AND component out-of-support. e_lo = 1
+pair: A1 = A (394); B1 = (…, term_index, 3): whole never,
+(rule, param) 257 at ordinal 0, component seen. For
+comparison the historical t2 / t3 coordinates were both
+whole-unseen at ordinal 1 with (rule, param) 261 / 257.
+CONSEQUENCE (binding on any later scoring prereg, not on
+this desk): "context discrimination on this band is
+confounded with asymmetric action-coordinate familiarity —
+B is a never-seen coordinate whose final symbol never
+appeared at that position in the training supervision"; the band is not a
+replacement for t2 / t3 and must not be described as one.
+A and B are NOT changed here; equalizing support would
+require a skeleton redesign under a separate assessment.
+
+CLAIM CEILING: a passing desk establishes ONLY that this
+controlled two-pair construction produces fresh states whose
+complete legal candidate signature is fixed while the
+authoritative HCE teacher strictly switches between two
+legal i_unprod actions with state structure. NOT
+established: model context use or performance, solve-rate
+optimality, the globally best move, production capacity
+until forecasted, generality beyond this HCE / count_ops
+crossover family.
+
+REGISTERED PRIORS (frozen): B1 index stability — high
+(32/32 probed cells; the risk is the authoritative legal set
+adding a candidate the probe cannot see); B2 12/12 strict —
+moderate-high; B3 <= 2-signature capacity >= 12 — moderate
+(the risk is signature fragmentation by algebra-move
+legality across c or e_hi); B4 >= 80% — moderate; B5 — high;
+B6 — high conditional on the K / namespace audit; expected
+e_lo = 2 gap exactly 1 op — high; e_lo = 1 reproduces the
+crossover at a 3-op gap — high; training support asymmetric
+— now KNOWN (census above), so no prior is registered on it.
+Wrong in public is desired.
+
+DRIVER LAW: a new driver scratch/mathworld1_prband2desk.py,
+adopt-not-fork of scratch/mathworld1_prband.py (qualify_
+parent, block law, signature function, burn-set builders,
+refuse-if-exists, path-isolated smoke on burned V1 bases,
+receipt-derived pins) with the skeleton builder, role
+tracer, teacher-gap classifier, and the B1-B7 census added;
+committed BEFORE any byte; receipt-auditor on its first real
+receipts; outputs in the NEW namespace logs/mathworld1/
+prband2desk/ (smoke under prband2desk_smoke/); an
+independent verifier reconstructs the horizon, signatures,
+roles, teacher gaps, and every bar from raw. Expected wall:
+192 parents x 0.511 s = under 2 minutes.
+
+FENCES. Prereg only: no parent generated, nothing executed,
+loaded, scored, masked, or trained; every training-support
+number is a census of the two pinned training files; the
+probe numbers are integrand-level sympy prior information
+and carry no desk authority; V1 stands; the desk is burned
+regardless of GO / PARK / NEEDS-REDESIGN. NEXT ELIGIBLE GO
+(one, nominated, NOT authorized): MATH-CYBER-1-PRIOR-
+RESISTANT-EVAL-V2-CROSSOVER-DESK-0 execution.
+
