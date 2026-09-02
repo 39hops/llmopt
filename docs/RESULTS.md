@@ -64862,3 +64862,281 @@ number from this run's receipts or the verifier's; the 432
 parents are burned for every future population; V1, the V2 desk,
 the assessment and the prereg stand unamended.
 
+## PRE-REG MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-SCORING-0: FROZEN RAW-VIEW SCORING DESIGN for the qualified matched-pair population — four frozen checkpoints (seed 19001 / 20001 x CANONICAL / PARAM-FIRST, exact sha256 pins) x two arms (FULL = all 8 blocks, MASK0 = all 8 blocks skipped) = 8 scoring cells on the EXACT stored cur strings of logs/mathworld1/prband2prod/primary.jsonl (209391ef...), candidates canonicalized to semantic tuple order before any checkpoint access, TOTAL SUM of the 9 teacher-forced continuation log-probs incl. EOS, strict top-1 with exact ties booked as SCORE-TIE losses; the PRIMARY INTERPRETIVE CORRECTION is frozen before any score exists — the artifact carries a perfect shallow cue (SIN_LOW prompt 89 tokens with a leading unary minus, COS_LOW 88 without, in 48/48 pairs), so the model-blind baselines F_LEN, F_SIGN and F_ORDER each attain 96/96 top-1 and 48/48 both-correct pairs (computed here from the artifact), F_SURFACE = 96/96, and SEMANTIC-BEYOND-SURFACE is NOT IDENTIFIABLE on the raw primary regardless of any model score; what the run CAN establish is STATE-CONDITIONED RANKING via the exact function-class theorems (state-blind fixed order: top-1 <= 48/96 and both-correct pairs = 0/48), with target-margin flip anatomy, MASK0 hard sanities (top-1 <= 48, 0 both-correct, 0 switch pairs, 0 margin flips, spread within the booked float-noise class), per-checkpoint 2 x 2 reporting with no pooling and no IID / binomial bar; PREREG ONLY — no checkpoint loaded, no logits produced, nothing trained (2026-09-02, Mac)
+
+ADOPTS VERDICT ...V2-PRODUCTION-MATERIALIZATION-0 (L64676,
+0c40dd86; producer 91a0b136; verifier 5eb718f8) and PRE-REG
+...V2-PRODUCTION-0 (L64343, fd78a82b). Nothing is amended; the
+population is not modified; the companion is not scored.
+
+FROZEN ARTIFACTS (refuse on sha drift):
+  logs/mathworld1/prband2prod/primary.jsonl 209391ef3b2e5c87308571d6ef309bb5724a214160caa1b7857f4a31f9112c34
+  logs/mathworld1/prband2prod/nuisance.json e98eaed34df4a57deb0238ef20d35f2a9bef0e5371794f7b297317a01075d678
+  logs/mathworld1/prband2prod/pairs.jsonl ee6cf884b5140a1f3bd2dff812b8bba475a1d2509b8e586377fd0395330a5d33
+  logs/mathworld1/prband2prod/permutations.json b57626ae20d7c8645a11bafec69c917708fa26ae679fc65f8d654f54c8023919
+POPULATION FACTS (design facts, not results): N = 96, 48
+matched pairs (rows adjacent: SIN_LOW then COS_LOW, same pair_key),
+48 SIN_LOW / gold A0 = (i_unprod, I, 0, term_index, 1), 48 COS_LOW
+/ gold B0 = (i_unprod, I, 0, term_index, 3); complete legal
+signature in 96/96 = [i_sum I0 none -1, i_unprod I0 t1, i_unprod
+I0 t3, i_unprod I0 t5], cand_sig_id 0b66cc4381c54e0fa8c2a6e6ea6b
+ac4de06011c3f8e52e1bfcb9986d993202d8; teacher unique 96/96;
+|HCE(A0) - HCE(B0)| = 3.0 in 96/96; support A0 2,267 / B0 257
+(ratio 8.8) — SUPPORT-SUBSTANTIAL, never support-matched; I0/t5
+is a fixed unseen-symbol OOD non-target rival in every state.
+
+CHECKPOINTS (frozen by sha256, resolved from the lineage
+receipt logs/mathworld1/svpdcl/receipt.json ckpt_pins and
+re-hashed on disk at freeze — hashes match exactly; no
+substitution, no "latest", no retraining):
+  seed 19001 CANONICAL   checkpoints/svp_forder_canonical_s19001.pt
+    ae0a86e027d8b0ca1cd7a97a83a6927d326da5bd34258910b1b81d3492322e1d
+  seed 19001 PARAM-FIRST checkpoints/svp_forder_paramfirst_s19001.pt
+    0fe38f785f68165e868c54fff482844ea4b2476c737f2e4af50990ece6df390f
+  seed 20001 CANONICAL   checkpoints/svp_forder_canonical_s20001.pt
+    0a841a5f2a43b6f64b0dac8259c26fd79961e6ab91359a54be9c2582815b3e34
+  seed 20001 PARAM-FIRST checkpoints/svp_forder_paramfirst_s20001.pt
+    b7198ff2e7b903ab5ed075fe947cb29142c5790ec84831434c53a598e466c322
+The scorer gates each file's sha before load and records path +
+sha + architecture / load verification in the receipt.
+
+MODEL ARMS: per checkpoint exactly FULL (all 8 blocks active) and
+MASK0 (all 8 blocks skipped under the booked loop-skip identity
+bypass of scratch/mathworld1_respath.py, final norm + head active)
+= 8 cells. No other mask, no singleton, no residual cube, no
+FACTOR/HASH. ZERO-DEPTH LAW (booked, L62175 / L62394): with all
+blocks skipped no token mixing or positional term remains,
+logits_t = head(norm(emb(token_t))), so the candidate score is a
+first-order token-transition action prior that cannot depend on
+the prompt — MASK0 is a state-blind fixed action scorer on this
+population, and its sanities below are structural.
+
+SCORING PROMPT: the EXACT stored cur string of primary.jsonl,
+never regenerated, simplified, reordered, sign-normalized, padded
+or length-normalized; the standing prompt law "Current: {cur}\n
+Hints: none\nStep: " under the standing tokenizer. This run
+measures the frozen RAW production view; any nuisance-neutralized
+or counterfactual rendering is a separate assessment / prereg.
+
+CANDIDATE ORDER: the persisted raw cand_tuples enumeration is
+arm-correlated (booked) and MUST NOT control iteration, tie-break
+or interpretation. Before any checkpoint access every state's
+four candidates are canonicalized to the semantic order (1)
+(i_sum, I, 0, none, -1), (2) (i_unprod, I, 0, term_index, 1),
+(3) (..., 3), (4) (..., 5); the scorer REFUSES unless all 96
+states contain exactly this set (verified here: 96/96). Scores
+attach to semantic ActionProgram identity, never array position.
+
+MODEL SCORE LAW (standing, frozen): for state s and candidate a,
+encode a in the checkpoint's frozen representation (CANONICAL =
+factor code; PARAM-FIRST = pf_encode, PERM identity gated);
+continuation = 8 action symbols + EOS, T = 9; teacher-force the
+complete continuation after the exact prompt; S(a | s) = SUM over
+t = 1..9 of log p(action_token_t | prompt(s), action_tokens_<t),
+INCLUDING EOS, TOTAL SUM only — no mean, no length normalization,
+no first / last token, no float-space product, no prior, no
+temperature, no beam, no generation. Non-finite log-prob = abort
+(instrument failure, no epsilon). TOP-1: the unique candidate
+with the maximum total; an exact numerical tie for the maximum is
+class SCORE-TIE, counted incorrect and reported separately, never
+resolved by enumeration order, semantic order, gold or srepr; the
+standing precision / device law applies and no tie tolerance is
+introduced after scores exist.
+
+PRIMARY INTERPRETIVE CORRECTION (frozen before any score): the
+artifact contains a PERFECT shallow nuisance cue — in every
+matched pair SIN_LOW prompt = 89 tokens and COS_LOW = 88, and the
+SIN_LOW target integrand begins with a leading unary minus while
+the COS_LOW one does not (booked L64676); since SIN_LOW -> A0 and
+COS_LOW -> B0, prompt length and leading sign each determine gold
+perfectly. Hence the raw assay CANNOT identify "semantic
+mathematical reasoning beyond shallow surface cues", whatever
+the score; even 96/96 does not establish semantic HCE reasoning,
+because a frozen shallow rule already attains 96/96. Receipt
+field frozen now: semantic_beyond_surface_identifiable = false;
+reason = "prompt-length and leading-sign nuisance classes each
+attain 96/96 and 48/48 both-correct on the exact raw primary
+artifact" — independent of any model outcome.
+
+NUISANCE BASELINES (model-blind; re-derived from the frozen
+artifact by the scorer before any checkpoint load; computed here
+at freeze from the same artifact):
+  F0  STATE-BLIND FIXED ACTION ORDER — the 24 booked permutations
+      (permutations.json): max top-1 48/96, both-correct 0/48.
+  F_LEN  PROMPT-LENGTH ONLY: 89 -> A0 first, 88 -> B0 first
+      (remaining ranks in semantic order; top-1 only matters):
+      96/96, 48/48 both-correct (verified at freeze).
+  F_SIGN  LEADING-SIGN ONLY: the first term immediately inside
+      the target outer Integral of the exact cur begins with
+      unary "-" -> A0 first, else B0 first: 96/96, 48/48
+      (verified at freeze: cur starts with "Integral(-" in
+      exactly the 48 SIN_LOW states).
+  F_ORDER  RAW ENUMERATION ORDER ONLY (diagnosis only; the raw
+      order never controls iteration, tie-break or
+      interpretation — the scorer reads it solely to permute
+      into semantic order): census of the persisted raw cand_tuples
+      order signatures — exactly TWO signatures, one per theta
+      (gold A0 x 48 under one, B0 x 48 under the other); lookup
+      ceiling 96/96, 48/48. Raw candidate order perfectly
+      predicts the target.
+  F_SURFACE = max(F_LEN, F_SIGN, F_ORDER) = 96/96, 48/48.
+CRITICAL INTERPRETIVE LAW: because F_SURFACE = 96/96 there is NO
+"model beats nuisance" bar on the raw artifact and no model can
+exceed 96/96; SEMANTIC-BEYOND-SURFACE = NOT IDENTIFIABLE ON RAW
+PRIMARY. No fake threshold; 95/96 or 96/96 is never evidence that
+the model ignored the cue. The raw run answers only the narrower
+STATE-CONDITIONED ACTION RANKING and model / prior questions.
+
+PRIMARY STATE-CONDITIONING THEOREMS (exact, from the pair
+construction): a deterministic state-blind fixed ranking has
+top-1 <= 48/96 and both-correct matched pairs = 0/48. For a FULL
+model, top-1 > 48 is exact mechanical evidence that its ranking
+is not ONE state-blind fixed ordering on this artifact; more
+directly, both-correct pairs > 0 is an exact witness of state-
+conditioned ranking (identical candidate set, opposite gold in
+each pair), and ONE such pair suffices for the FUNCTION-CLASS
+VIOLATION provided its deciding margins (the runner-up gap in
+both states) are at or above the frozen 1e-05 float-noise
+bound — a violation is booked WITH its deciding margins, and a
+pair resting on a sub-bound margin is class MARGIN-SUBNOISE,
+reported, and carries no mechanical claim; 1/48 is a small
+effect and is never called robust for being nonzero. No IID / binomial p-value, no "+5
+states" threshold, no chance-null language.
+
+PRIMARY METRICS PER CELL (each of the 8, persisted
+independently): strict top-1 / 96; score-ties / 96; correct A0
+states / 48; correct B0 states / 48; both-correct pairs / 48;
+exactly-one-correct pairs / 48; neither-correct pairs / 48;
+top-action-switch pairs / 48 (the two arms' predicted top actions
+differ); predicted top-action census by theta and overall;
+prediction confusion over {A0, B0, I0/t5, i_sum}; mean / median
+teacher-v-runner-up margin (descriptive).
+
+TARGET-PAIR MARGIN ANATOMY: d(s) = S(A0 | s) - S(B0 | s); per pair
+report d_SIN and d_COS; classes CORRECT-DIRECTION TARGET FLIP
+(d_SIN > 0 and d_COS < 0), REVERSED FLIP (d_SIN < 0 and d_COS >
+0), NO FLIP (same nonzero sign), TARGET-MARGIN TIE (either
+exactly 0); report correct-direction / reversed / any-sign flips
+/ no-flips out of 48, median d_SIN - d_COS, range. Useful even
+when i_sum or I0/t5 takes overall top-1. For MASK0, d is
+state-invariant, so MASK0 sign flips MUST be 0/48 (violation =
+INSTRUMENT FAILURE).
+
+MASK0 HARD SANITIES (per checkpoint, structural, all required):
+(1) top-1 <= 48/96; (2) both-correct pairs = 0/48; (3) top-
+action-switch pairs = 0/48; (4) target-margin sign flips = 0/48;
+(5) for repeated identical candidate codes the statewise score
+spread is within the frozen float-noise bound of 1e-05 absolute
+per code (a PRE-SCORE class bound inherited from the booked
+measurements: mask-0 spread 0.0 CANONICAL / <= 1.4e-06
+PARAM-FIRST at L62394 and the 4.6e-06 calibration drift at
+L62175 — measured on the seven-code populations, transported
+structurally because mask-0 logits are prompt-independent; the
+bound is ~7x the largest measured value and is frozen now, not
+tuned after scores). FLOAT-NOISE class (frozen now, so the hard
+sanities cannot fire on float noise alone): any MASK0 switch
+pair or margin sign flip whose deciding margin |d| is below the
+1e-05 bound is classed FLOAT-NOISE-TIE, reported with its
+margin, excluded from every mechanical count, and is NOT an
+instrument failure; a switch or flip at or above the bound, or
+any breach of (1), (2) or (5), = INSTRUMENT FAILURE, and
+interpretation for that checkpoint stops until diagnosed.
+
+FULL-v-MASK0: per checkpoint the paired per-state four-cell table
+(both correct / FULL only / MASK0 only / both wrong), pair-level
+both-correct counts and target-margin flips for both arms.
+McNemar or any p-value is NOT primary; if computed it is labelled
+descriptive with the constructed matched population disclosed;
+states are never pooled as IID.
+
+CROSS-CHECKPOINT REPORTING: the four FULL cells are never pooled
+into N = 384; each checkpoint is one deterministic realization.
+Report the 2 x 2 FULL matrix (seed 19001 / 20001 x CANONICAL /
+PARAM-FIRST); per cell: STATE-CONDITIONED-RANKING OBSERVED iff
+both-correct pairs > 0 (or another frozen fixed-ranking theorem
+is violated); else STATE-BLIND FIXED-RANKING CLASS NOT REFUTED
+(never "model is state-blind" — a state-dependent but poor model
+can score under the ceiling). ROBUSTNESS TERMINOLOGY (frozen,
+never a p-value, never required for the individual mechanical
+claim): MECHANICAL STATE-CONDITIONING = at least one exact
+function-class violation in a checkpoint; WITHIN-REPRESENTATION
+REPLICATION = the same representation shows it at both seeds;
+CROSS-REPRESENTATION SUPPORT = both representations show it at a
+given seed.
+
+NUISANCE INTERPRETATION (per FULL checkpoint, descriptive): since
+F_LEN and F_SIGN equal the gold labels in 96/96 states, agreement
+with a nuisance rule is numerically identical to target
+correctness and CANNOT establish causal feature usage. Allowed
+for FULL = 96/96: "the model conditions its ranking in the
+correct direction on every matched pair"; NOT allowed: "solved
+the mathematical crossover" or "used HCE-relevant structure
+rather than the sign / length cue". Allowed for e.g. 70/96 with
+22 both-correct pairs: "state-conditioned, violates the state-
+blind fixed-order class"; NOT allowed: "22 pairs demonstrate
+semantic calculus reasoning".
+
+FUTURE COUNTERFACTUAL WORK (NOT executed here): if raw FULL
+scoring shows meaningful state-conditioning, the next eligible
+design is a model-blind nuisance-counterfactual assessment —
+semantically equivalent paired prompts with frozen gold and
+legal set, the leading-sign and prompt-length cues broken or
+counterbalanced, canonical candidate iteration, no checkpoint
+consulted during construction, and NEVER designed after seeing
+which states a checkpoint gets wrong.
+
+COMPANION: logs/mathworld1/prband2prod/companion.jsonl is NOT
+scored under this prereg; the coordinate-recombination-OOD
+question stays parked until the primary raw scoring is booked.
+
+DEVICE / EXECUTION: the standing runtime of this lineage (Mac,
+device mps, torch 2.12.1 in the respath / svpfoheld receipts;
+build_model(340, ctx = 4096), fp32); all 8 cells in one process
+on one device; the receipt records device, torch version, scorer
+commit, scorer file sha, checkpoint path + sha, population sha,
+architecture / load verification; raw score magnitudes are never
+compared across devices; a forced device change is booked before
+interpretation and tiny margins are then not compared. Scorer
+law: adopt-not-fork of the results-cited scratch/mathworld1_
+svpfoheld.py token_lps + scratch/mathworld1_respath.py loop-skip
+mask, committed BEFORE any logit, path-isolated smoke, raw-first
+receipts (per state x candidate x arm x checkpoint per-token
+lps), receipt-auditor on first real receipts, independent
+reconstruction of every metric from the raw lps.
+
+REGISTERED EXPECTATIONS (frozen): MASK0 satisfies all state-blind
+sanities — HIGH; seed 20001 MASK0 strongly prefers the frequent
+A0 (I0/t1) coordinate over B0 (I0/t3) — MODERATE-HIGH, registered
+AGAINST the booked counter-evidence that the 20001 prior did
+NOT track first-order training marginals on the seven-code
+populations (L62394, Spearman null at n = 7) — a frequency prior
+stated for the record, not receipt-grounded; FULL
+checkpoints show > 0 both-correct pairs — MODERATE; at least one
+representation replicates state-conditioning across both seeds —
+LOW-MODERATE; 96/96 FULL via the easy surface cue — LOW-MODERATE;
+PARAM-FIRST universally beats CANONICAL — NO DIRECTIONAL PRIOR;
+semantic-beyond-surface identifiable from this run — ZERO BY
+DESIGN. Wrong in public is desired.
+
+CLAIM CEILING: the scoring run can establish, per checkpoint,
+whether the FULL ranking is state-conditioned on this artifact
+(function-class violation) and how the MASK0 prior ranks the
+four fixed candidates; it can NOT establish semantic reasoning
+beyond the surface cue, generalization, solve-rate effects, or
+anything about the companion. The 8.8x support asymmetry and the
+I0/t5 OOD rival remain disclosed in every reading.
+
+NEXT ELIGIBLE GO (one, nominated, NOT authorized): MATH-CYBER-1-
+PRIOR-RESISTANT-EVAL-V2-SCORING-EXECUTION-0.
+
+FENCES. Prereg only: no checkpoint loaded — the only checkpoint
+access in this session was shasum -a 256 over the four files
+(and the same by the challenger); no scorer script exists yet,
+the tree is clean at freeze, and no scoring output directory
+exists (positive evidence recorded here because file atimes on
+this volume do not update and cannot witness it); no logits, no
+inference, no training, no masks run, no companion scoring,
+population unmodified, no nuisance-neutralized view generated;
+the three baseline numbers are model-blind censuses of the
+frozen artifact recomputed at freeze.
+

@@ -1288,6 +1288,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svpdcl/receipt.json": {
+   "bytes": 5169,
+   "exists": true,
+   "sha256": "aafd2b8e9b445f5e8d2f5b9ec90b8516561a6e0dae0af025d00dc8d8b121e53c",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/svpdesign_receipt.json": {
    "bytes": 1908,
    "exists": true,
