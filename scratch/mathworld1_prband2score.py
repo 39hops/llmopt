@@ -120,8 +120,10 @@ def baselines(P):
         best_top = max(best_top, sum(corr))
         best_both = max(best_both, sum(corr[k] and corr[k + 1]
                                        for k in range(0, len(P), 2)))
-    gate(perm["max_top1"] == best_top and perm["max_both_correct_pairs"]
-         == best_both, "F0 v permutations.json")
+    if not SMOKE:  # smoke scores a 2-state slice; the pin is population-wide
+        gate(perm["max_top1"] == best_top
+             and perm["max_both_correct_pairs"] == best_both,
+             "F0 v permutations.json")
     def acc(pred):
         corr = [pred(p) == tuple(p["gold_tuple"]) for p in P]
         return sum(corr), sum(corr[k] and corr[k + 1]
