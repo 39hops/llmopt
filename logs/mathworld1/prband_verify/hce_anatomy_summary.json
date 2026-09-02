@@ -1,0 +1,66 @@
+{
+ "n_variant_rows": 5760,
+ "by_variant_k": {
+  "smallA|k=1": {
+   "n": 960,
+   "lowest": 864,
+   "min_ops": 960,
+   "min_r_ops": 960,
+   "tie": 720,
+   "gap0": 720,
+   "unsolved_const": 960,
+   "gold_unprod": 960
+  },
+  "smallB|k=1": {
+   "n": 960,
+   "lowest": 864,
+   "min_ops": 960,
+   "min_r_ops": 960,
+   "tie": 720,
+   "gap0": 720,
+   "unsolved_const": 960,
+   "gold_unprod": 960
+  },
+  "after|k=1": {
+   "n": 960,
+   "lowest": 864,
+   "min_ops": 960,
+   "min_r_ops": 960,
+   "tie": 720,
+   "gap0": 720,
+   "unsolved_const": 960,
+   "gold_unprod": 960
+  },
+  "smallA|k=2": {
+   "n": 960,
+   "lowest": 864,
+   "min_ops": 960,
+   "min_r_ops": 960,
+   "tie": 720,
+   "gap0": 720,
+   "unsolved_const": 960,
+   "gold_unprod": 960
+  },
+  "smallB|k=2": {
+   "n": 960,
+   "lowest": 864,
+   "min_ops": 960,
+   "min_r_ops": 960,
+   "tie": 720,
+   "gap0": 720,
+   "unsolved_const": 960,
+   "gold_unprod": 960
+  },
+  "after|k=2": {
+   "n": 960,
+   "lowest": 864,
+   "min_ops": 960,
+   "min_r_ops": 960,
+   "tie": 720,
+   "gap0": 720,
+   "unsolved_const": 960,
+   "gold_unprod": 960
+  }
+ },
+ "rows_sha256": "fe0bf130ddffe79454ff22ac4f5a0533890204c8cbbe3088f51cc1fe98fe2153"
+}

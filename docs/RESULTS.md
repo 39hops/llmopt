@@ -63239,3 +63239,340 @@ the horizon is BURNED —
 none of its 5,760 parents may enter any future evaluation
 band.
 
+## OBSERVATION MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-CROSSOVER-ASSESSMENT-0: GO CONTROLLED-CROSSOVER-DESK — the V1 teacher was never a preference between term 2 and term 3: recomputing HCE from the persisted child expressions of the burned V1 horizon shows every primary with two or more i_unprod candidates is an EXACT HCE TIE (1,440/1,440; unsolved count and plies constant, the correct partial guesses A_j = x^a T(cx) leave residuals of identical count_ops), and in every one of the 5,760 variant rows the label is the lowest term index among the HCE-best candidates (4,320 tie rows resolved by the frozen (hce, name, srepr-key) tuple minimum, which equals the lowest tied index in all 4,320; 1,440 single-candidate rows) — the 192 "exceptions" are tie rows where a strictly worse lower-index guess (a T-type term passing the residual-shrink guard) sits below the tied pair; the OLD sealed populations carry the same signature (heldout-I1 and covered-I0: 67/96 states tie-labelled, 29 single-candidate, gold = lowest i_unprod index in 85/96); strict HCE gaps exist only where a pair carries exponent 1 or 2 (a term loses its POW node), and a pure-sympy probe of a two-pair skeleton d/dx[x^a sin(cx)] + d/dx[x^b cos(cx)] + Integral(w) + K shows a genuine CROSSOVER (winner 23 v 24 ops flips between the two pairs when the exponent-2 monomial moves from one pair to the other) under one candidate index set {1, 2, 4} in 11 of the 12 crossover cells (the four exponent-(5,7) cells tie at 24/24 with only two guesses, {1, 4}, exactly as V1 did; one c = 8 cell re-sorts to {1, 2, 3}); ASSESSMENT ONLY — no parent generated, nothing loaded, scored, or trained; the NO-FIRE stands unamended (2026-09-02, Mac)
+
+ADOPTS VERDICT ...MATERIALIZATION-0 (L63074, b5f7b9c7; regen
+ba31c58e). Read-only inputs: llmopt/search/derivation.py
+(hce, State, UNSOLVED, legal_actions naming), llmopt/search/
+rules.py (i_unprod, INT_RULES), scratch/mathworld1_svpchal.py
+qualify_parent (label = min over (hce, name, key)), scratch/
+mathworld1_svpeval.py derive_program + scratch/
+mathworld1_actionfinal.py unprod_term_children + scratch/
+mathworld1_unprodsem.py trace_unprod (term_index = position
+of the source term in f.args, canonical Add order; family-1
+guess first; dedup by srepr(A); cap 6), and the burned V1
+artifacts logs/mathworld1/prband/qualified_blocks.jsonl
+(2ccee987...) / horizon_census.jsonl (2e28abf0...). New
+instrument (read-only over burned artifacts):
+scratch/mathworld1_prband_hce.py -> logs/mathworld1/
+prband_verify/hce_anatomy.jsonl (5.6 MB, untracked, sha
+fe0bf130...) + hce_anatomy_summary.json (force-added). The
+mandatory V1 burn fence carries: every successor fences
+against horizon_census.jsonl, full sha
+2e28abf09219d4ac5ee2cb834f22f9cbc40f750c13029a8b96979f9a7e144c4c
+(all 5,760 parent curs).
+
+(Q1) EXACT ONE-PLY TEACHER FOR COMPETING i_unprod GUESSES
+(from source). For the site Integral(f, x) and source term
+t = f.args[j] containing fn(v) with fn in {sin, cos, exp}:
+cof_j = cancel(t / (v' * fn(v))), skipped if cof_j contains
+sin/cos/exp/log/Integral; A_j = cof_j * TABLE[fn](v); r_j =
+expand(f - dA_j/dx); the guess is legal iff count_ops(r_j) <
+count_ops(f) (a second family, F = integrate(cof) needing a
+log, never fires in this lineage); dedup by srepr(A_j),
+first-term-wins, cap 6. child_j = parent with the site
+replaced by A_j + Integral(r_j, x) (r_j != 0 always here).
+hce(child_j) = 100 * |atoms(Derivative, Integral, Limit)| +
+count_ops(child_j) + 0.1 * plies. In this lineage the atom
+count is CONSTANT across j (the site Integral, the inner
+Integral(w) inside r_j, and the distractor Integral: 3) and
+plies is constant (1), so
+   hce(child_2) - hce(child_3) = count_ops(child_2) -
+   count_ops(child_3)
+   = [count_ops(A_2) + count_ops(r_2)] - [count_ops(A_3) +
+   count_ops(r_3)]  (up to the shared Add/Integral nodes),
+and the label is min over the tuple (hce, action name, child
+srepr) — the name is identical for all i_unprod guesses at
+one site, so an HCE tie is resolved by the srepr STRING of
+the child. Verified on every row: unsolved_constant
+5,760/5,760; gold = min-ops child 5,760/5,760.
+
+(Q2) WHY V1 COLLAPSED TO THE LOWEST INDEX. Per variant x k
+cell (960 rows each; identical in all six cells): 720 rows
+are exact ties at the best HCE (gap 0), 240 rows have a
+single i_unprod candidate (strict by vacuity), zero rows
+have two candidates separated by a strict gap. Mechanism:
+for P = x^a + x^b (every two-monomial P12 form has both
+exponents >= 3), the two correct partial guesses A = x^a
+T(cx) and A = x^b T(cx) have equal count_ops (POW + MUL +
+trig, exponent value invisible to count_ops), and each
+residual keeps the OTHER monomial's two derivative terms,
+again of equal count_ops — so child_a and child_b tie
+exactly, and the srepr tie-break picks the lower index
+(srepr of the tied children orders by the exponent integer
+string; with exponents <= 9 that is index order — 4,320/4,320
+tie rows: winner = lowest tied index = lexicographic min).
+Single-monomial P (x**7, x**8, x**9) yields one guess. The
+receipt field min_hce_ties recorded these ties (2 in every
+tie row) and the label law admitted them; label_not_unique
+rejects only a non-unique min over the full tuple, which
+never occurs.
+
+(Q3) THE 192 EXCEPTIONS (primary rows; 576 over all 5,760
+variant rows, same motifs x3) are not crossovers. All 192
+are tie rows (0 strict) whose candidate set holds three
+(184) or four (8) i_unprod guesses: one or two lower-index
+guesses from T-type terms (e.g. for P = x**7 + x**5, T =
+cos, the 5*x**4*sin term yields A = -(5/c)*x**4*cos, a
+larger residual, hce excess +9 in 128 rows, +12 in 40, +8 in
+32) plus the two tied correct guesses; the label is the
+lowest TIED index, which is not the lowest index. Motifs,
+exhaustive: tied degree pairs (5,7) 80, (4,6) 80, (3,8) 16,
+(4,7) 8, (4,5) 8 — all T = cos (the sin-type wrong guess
+sorts below the cos-type correct guesses), 96 per k;
+exception P forms: x**7 + x**5 80, x**6 + x**4 80, x**8 +
+x**3 16, x**7 + x**4 8, x**5 + x**4 8. A label-free
+predictor that reproduces EVERY V1 label (5,760/5,760,
+recomputed in-session and by the challenger): "lowest index
+among the guesses sourced from a partner-function term" (the
+T' terms: cos terms when T = sin, sin terms when T = cos) — a
+syntactic function of the candidate set, consistent with
+30/36 signatures being single-gold. No exception is driven
+by cancellation quality.
+
+(Q2 addendum, OLD POPULATIONS, census only, nothing
+amended): heldout_test16 heldout-I1 and covered_calibration
+covered-I0 (the two sealed 96-state scoring populations; the
+robustness-I1 96 carries a byte-identical census) carry the
+same structure: min_hce_ties = 2 in 67/96 states (49 with two
+guesses, 18 with three), 1 in 29 (single-guess); gold = the
+lowest i_unprod index in 85/96 and the lowest TIED index in
+all 96. Gold-term x tie census: t2 = 20 strict + 28 tied, t3
+= 9 strict + 39 tied. So the t2-v-t3 labels those bands
+scored were, in 67/96 states, the srepr tie-break of an exact
+HCE tie. This is a fact about the label law as frozen, not an
+error in any booked verdict; a rider on what "teacher
+preference" meant there.
+
+(Q1/Q5) THE CROSSOVER EQUATION AND WHERE STRICT GAPS COME
+FROM. count_ops sees structure, not exponent value: a
+monomial x^e T(cx) costs the same for every e >= 2, but e = 1
+drops the POW (x*T) and the derivative of x^1 drops both POW
+and MUL (T(cx) alone). So the residual left by guessing pair
+j has fewer ops when the OTHER pair is the low-exponent one,
+and the child that cancels the HIGH-degree pair wins
+strictly. Skeleton probed in pure sympy (integrand level, no
+parent, no rule call, no state): f = d/dx[x^a sin(cx)] +
+d/dx[x^b cos(cx)] + Integral(exp(x)/x) + 9x^3, (a, b) in
+{(5,2),(2,5),(7,2),(2,7),(8,2),(2,8),(5,7),(7,5)} x c in {8,
+12}, ops metric = count_ops(A + Integral(r, x)): six
+additive terms in every cell; in the 12 cells holding an
+exponent-2 pair the guesses sit at {1, 2, 4} in 11 (index 2
+= the wrong guess from the low-exponent pair's f'H-half term
+2x*T, 34 ops, a constant loser; the two correct guesses 23 v
+24), and the WINNER FLIPS between index 1 and index 4 with
+the position of the exponent-2 monomial (a = 2 -> index 1
+wins; b = 2 -> index 4 wins); the four (5,7)/(7,5) cells
+have only the two correct guesses, {1, 4}, tied 24/24 as V1
+did (no low-exponent pair, no wrong guess). The one
+deviation: (a, b) = (2, 8) at c = 8 places the guesses at
+{1, 2, 3} — the term 8*x**7*sin(8x) with coefficient 8 = c
+re-sorts (sympy's Add order is not exponent order once
+coefficients coincide), which is precisely the term-order
+instability Q6 must fence. A second probe at e_lo = 1 ((5,1),
+(1,5),(7,1),(1,7), c = 11) also crosses over, with a DIFFERENT
+index set {1, 3, 5} and a 3-op gap (20 v 23 v 28) — so the
+low exponent value is a stratum, not a free knob. This is the
+controlled crossover the GO asked for: legality fixed,
+cancellation quality varied, no term inserted or removed, no
+index shift.
+
+(Q4) STRATEGY A (natural mining of CH-F3) is dead on the
+evidence: the family produces ties, not preferences, and its
+only strict gaps arise from exponent-1/2 monomials that P12
+does not contain. STRATEGY B (controlled double-pair) is
+nominated: two independent reverse-product pairs with
+DIFFERENT trig functions at the same argument (sin pair, cos
+pair — so each pair's correct guess is unique and the two
+pairs never dedup against each other), a fixed exponent bank
+in which exactly one pair carries exponent 2 (the crossover
+knob theta = which pair), a fixed background (one inner
+Integral(w) blocker with w fixed for the whole bank, one
+inert polynomial K fixed for the whole bank), fixed c bank.
+Cleaner because the winner follows from count_ops
+arithmetic (the child cancelling the high-degree pair is one
+op cheaper at e_lo = 2, three at e_lo = 1, in every probed
+cell), not from a mined coincidence — verified in 16 + 4
+sympy cells, not proved in general.
+
+(Q6) TERM-ORDER STABILITY LAW. term_index = position in
+f.args after sympy's canonical Add ordering; the lineage
+never re-sorts. The order is NOT exponent order in general
+(the c = 8 collision above; V1's 7*x**8 probes showed
+coefficient-driven re-sorting). Prospective law for the desk:
+freeze the skeleton and the full bank, and make INDEX-SET
+INVARIANCE a measured gate — the desk censuses the i_unprod
+index set of every base and requires ONE index set across
+>= 90% of qualifying bases (the target pair is then the two
+correct-guess indices of that set, declared from the
+skeleton BEFORE the desk: {1, 4} for the probed skeleton, or
+{2, 3} if a two-term fixed prefix is chosen for continuity
+with V1 — a constant prefix for ALL states is not an index
+shift between classes). Bases outside the dominant index set
+are censused and excluded; no post-generation permutation,
+no coefficient tuning after seeing where terms land. Bank
+hygiene that removes the known collision: coefficients of
+all monomials = 1, c bank disjoint from every exponent and
+derivative coefficient in play (c not in {2..9}); the desk
+verifies rather than assumes.
+
+(Q7) SIGNATURE-INVARIANCE RISKS, rule by rule (INT_RULES +
+ALGEBRA_MOVES): i_sum — always legal on an Add integrand,
+constant. i_unprod multiplicity — the wrong-family guess from
+the low-exponent pair's f'H-half term (index 2 above) is
+legal only while its residual shrinks; it must be present in
+BOTH theta classes (it was, 12/12 crossover cells; it is
+absent by construction in the no-low-exponent tie cells,
+which the bank excludes) — measured, not assumed. i_parts —
+Mul-gated (rules.py: returns [] unless the integrand is a
+Mul): absent on an Add.
+euler — legal iff the state's Integrals contain trig, and in
+V1 its membership tracked w (present with exp(x)/x, absent
+with sin(x)/x): fix w for the whole bank so euler membership
+is constant. i_heurisch — blocked by the inner Integral(w)
+(the standing blocker), constant. i_ansatz_exp — needs an
+exp factor: absent with a sin/cos skeleton (do NOT use exp
+pairs). i_cyclic — needs a two-factor Mul integrand: absent
+on an Add. i_transcend_div / i_apart — need a polynomial
+denominator / rational integrand: absent. i_usub — needs
+h(g)*g' shape: absent on this Add. i_linear_basis /
+i_inverse_trig / i_sqrt_basis / i_log_power / i_power /
+i_table / i_const(_factor) — shape-gated away by the Add with
+an inner Integral; expand/factor/cancel/together/trigsimp/
+powsimp/subs_eval — algebra moves are name-distinct
+candidates whose legality depends on whether they change the
+expression; expand of an already-expanded f is identity
+(filtered), the others are constant across the bank only if
+the skeleton shape is constant — measured. The knob (which
+pair has exponent 2) changes count_ops and NOTHING about
+function classes, so it is the least likely knob to move
+legality; the c bank and w are held fixed to keep the rest
+constant.
+
+(Q8/Q9) BANNED: any k / additive-count difference between
+classes (the V1 cross-k coincidence). The desk uses ONE
+additive count for every base. The smallA/smallB primary
+axis is DROPPED (Q9 option A): one primary distractor
+(x**x, the smallA of the lineage, sorting before the target
+so the site is ordinal 1) for every base, and the after
+variant (sin(sin x)) as the I0 companion only; the block law
+keeps all three variants qualifying (the standing
+three-variant qualification), but the primary identity is
+constant, so no parity axis exists to confound.
+
+(Q10) SMALLEST FRESH FEASIBILITY DESK (nominated, NOT run):
+MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-CROSSOVER-DESK-0, its
+own prereg and burn namespace. Bank: high exponent e_hi in
+{5, 6, 7, 9} (4), theta in {sin-pair-low, cos-pair-low} (2),
+c in {11, 13, 17, 19} (4, primes above every exponent and
+derivative coefficient), w = sin(x)/x fixed (no euler), K =
+one fresh inert polynomial fixed (fresh coefficient/degree
+absent from every bank incl. V1's K_A/K_B), T-order fixed
+(sin pair, cos pair) = 32 bases; doubled by a second low
+exponent value e_lo in {1, 2} = 64 bases (the e_lo = 1 arm
+is a robustness stratum, censused separately). Three
+variants each = 192 parents, all burned. FROZEN BARS
+(defensible, chosen now): B1 index-set invariance, PER
+STRATUM (the e_lo = 2 stratum and the e_lo = 1 stratum have
+different index sets by the probe, {1, 2, 4} v {1, 3, 5}):
+one i_unprod index set on >= 90% of the stratum's qualifying
+bases (else NEEDS-REDESIGN of the skeleton); B2 crossover: within that
+index set, BOTH target indices win with a STRICT gap (>= 1
+op, min_hce_ties = 1) in >= 12 fresh parents each (the
+e_lo = 2 stratum alone must satisfy it); B3 within-signature
+variation: >= 80% of target-bearing desk primaries sit in
+candidate signatures showing both winners; B4 zero
+qualification failures in the counted cells; B5 zero
+overlap hits. GO V2 DESIGN iff B1-B5 all hold; PARK the
+construction if B2 < 6 per side; NEEDS-REDESIGN otherwise.
+Registered desk prior: B1 holds per stratum — high (probe
+11/12 crossover cells at e_lo = 2, 4/4 at e_lo = 1); B2 holds
+— moderate-high (count_ops arithmetic); B3 — moderate
+(euler/wrong-guess membership is the risk); expected strict
+gap = 1 op at e_lo = 2 and 3 ops at e_lo = 1 — high.
+
+(Q11) CAPACITY FORECAST for production: with theta binary and
+the winner a theorem, every qualifying base of the dominant
+index set contributes to m_g symmetrically; the production
+bank (e_hi x c x K axes with w FIXED, ~6 x 8 x 2 = 96 per
+theta class) forecasts sum m_g ~ 75-95 at exact-signature
+grain if B1/B3 hold at desk rates, above 48 and near the 72
+comfort level; a forecast with no artifact behind it. Not a
+bar; the desk's measured within-
+signature rate replaces this forecast.
+
+(Q12) HCE v SEARCH-VALUE TEACHER. HCE argmin is, in this
+lineage, "cancel the pair that removes more ops, else lowest
+index"; the V2 band tests whether the model reads WHICH pair
+is cheaper to cancel from the equation. An existing
+engine-derived alternative label does exist in the doctrine:
+the CLOSED-LOOP-1 ENGINE-HCE controller (92/96 solves,
+L59529) yields a per-action downstream outcome (solved
+within MAX_DECISIONS 12 / wall 60 s, and steps-to-solve)
+under the frozen engine; a SEARCH-VALUE-CROSSOVER band would
+label a v b by that outcome. Comparison: HCE-CROSSOVER is
+cheap (one ply, deterministic, theorem-backed), but its
+semantics are "predict the heuristic"; SEARCH-VALUE is
+semantically closer to "which move is actually better" but
+costs one engine rollout per candidate per state, and no
+rollout artifact exists for this family: both correct
+children keep the inner Integral(w) blocker in their
+residual, so whether their downstream outcomes differ is
+UNKNOWN here (not measured; w = exp(x)/x is non-elementary).
+Nominated as a SEPARATE branch (PIVOT clause) only if the
+desk shows HCE crossover is unattainable; not the default.
+
+(Q13) EPISTEMIC TARGET, precise: with gold = HCE argmin, a
+successful V2 band tests "can the frozen model use the
+mathematical state to predict which of two legal
+reverse-product guesses the engine heuristic prefers, when
+the candidate list alone cannot tell (both always legal,
+same signature, the preferred one varying with the state)".
+It does NOT test the globally best calculus move, proof
+length, or solve rate; and the preference it tests is a
+count_ops difference of one op — a real but narrow notion of
+context.
+
+(Q14) FRESHNESS: the desk and any production horizon fence
+against the V1 census (5,760 curs, sha above), the svpdiet3
+eval/secondary horizons and artifacts, D0/D1/DIET/E1/
+NUISANCE, pilots, natural training curs, the svpeval bands,
+CLOSED-LOOP-1, and their own smoke; the pure-sympy probe
+integrands above were never wrapped as parents, never
+enumerated for legal sets, and are listed here so the desk
+can exclude them by construction (different c bank).
+
+(Q15) DECISION: GO CONTROLLED-CROSSOVER-DESK. Compute: 64
+bases x 3 variants at the measured 0.511 s per parent (V1
+receipt: 2,945.4 s / 5,760) = under 2 minutes; the census + ceiling arithmetic is seconds.
+
+CLAIM CEILING: everything above is (i) a source reading of
+the frozen teacher, (ii) an exhaustive recomputation over the
+burned V1 artifact, (iii) a census of the two sealed
+populations' tie fields, and (iv) a 16 + 4 cell pure-sympy probe
+of one skeleton's integrands (metric count_ops(A +
+Integral(r, x))). Established: the V1 label
+mechanism (ties + srepr order), the exception anatomy, the
+exact crossover equation, and the existence of a count_ops
+crossover in the probed skeleton at the integrand level. NOT
+established: that the skeleton keeps a byte-identical
+complete legal signature across theta (the desk's B1/B3
+question), that the wrong-family third guess stays legal,
+euler/algebra-move constancy, production capacity, or
+anything about any model. No booked verdict or population is
+amended; the NO-FIRE stands.
+
+SUCCESSOR GO (one, nominated): PRE-REG MATH-CYBER-1-PRIOR-
+RESISTANT-EVAL-V2-CROSSOVER-DESK-0 (skeleton, bank, index-set
+law, target pair declared from the skeleton, bars B1-B5,
+burn namespace, three-variant qualification with a single
+primary distractor, own smoke).
+
+FENCES. Assessment only: no parent generated, no legal set
+enumerated on any new expression, nothing loaded, scored,
+masked, or trained; every V1 number is from the persisted
+child expressions (hce_anatomy_summary.json) and census
+files; the skeleton probe is integrand-level sympy in this
+session (16 + 4 cells, printed in the session log, not a
+receipt; reproduced independently by the challenger) and carries no population authority.
+

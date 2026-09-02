@@ -2880,6 +2880,12 @@ MATH-CYBER-1 PRIOR-RESISTANT-EVAL-MATERIALIZATION-0 — descriptive census anato
 - `side(rows, pick)`
 - `main()`
 
+### scratch/mathworld1_prband_hce.py
+MATH-CYBER-1 PRIOR-RESISTANT-EVAL-V2-CROSSOVER-ASSESSMENT-0 — candidate-level HCE anatomy of the burned V1 horizon, recomputed from the persisted child expressions in logs/mathworld1/prband/qualified_blocks.jsonl (read-only; no new parent, no rule call, no model). For every variant of every block: every i_unprod candidate's HCE terms (unsolved atoms, count_ops, plies constant), the winner's HCE gap, tie count, whether the winner is the lowest term index / smallest child ops / smallest residual ops, and per-candidate structure (guessed A, residual r, the source term f.args[i], its monomial degree and whether it is the T'-type term). Writes logs/mathworld1/prband_verify/hce_anatomy.jsonl + summary json.
+
+- `unsolved(e)`
+- `main()`
+
 ### scratch/mathworld1_prband_verify.py
 MATH-CYBER-1 PRIOR-RESISTANT-EVAL-MATERIALIZATION-0 — INDEPENDENT VERIFIER. Reconstructs the frozen design (PRE-REG ...-DESIGN- PREREG-0, cb098ee5) from the RAW materialization artifacts under logs/mathworld1/prband/ WITHOUT reusing the selector's derived tables: own horizon enumeration, own signature function, own bucket / capacity / walk / selection, own ceiling enumeration, own overlap sets, and a full re-qualification (qualify_parent) of every selected primary and companion parent. Zero checkpoint access, zero scoring. Writes logs/mathworld1/prband_verify/ verify_receipt.json (refuse-if-exists). PRBAND_VERIFY_DIR overrides the input directory (smoke self-test); PRBAND_SMOKE=1 makes the smoke-only deviations report-only.
 
