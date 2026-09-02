@@ -2923,6 +2923,23 @@ MATH-CYBER-1 PRIOR-RESISTANT-EVAL-V2-PRODUCTION-MATERIALIZATION-0 — INDEPENDEN
 - `rows(p)`
 - `main()`
 
+### scratch/mathworld1_prband2score.py
+MATH-CYBER-1 PRIOR-RESISTANT-EVAL-V2-SCORING-EXECUTION-0 — execute the frozen scoring prereg (PRE-REG ...V2-SCORING-0, ee9dfa5c, RESULTS L64865) on the frozen RAW N=96 matched-pair primary artifact. Adopt-not-fork: the token-lp law is scratch/mathworld1_respath.py masked_token_lps (the svpfoheld token_lps law plus the loop-skip block mask; mask 255 = FULL, mask 0 = MASK0), the model load law is svpfoheld's (build_model(340, ctx=4096), weights_only load, param count gate, eval, mps). No new scoring semantics.
+
+- `fsha(p)`
+- `ctup(c)`
+- `top1_of(scores)` — scores: dict sem->float. Returns (winner or None, tie flag,
+- `baselines(P)`
+- `cell_metrics(rows_cell, P, arm)` — rows_cell: {state_idx: {sem: {'sum':..}}}. P: population rows.
+- `main()`
+
+### scratch/mathworld1_prband2score_verify.py
+MATH-CYBER-1 PRIOR-RESISTANT-EVAL-V2-SCORING-EXECUTION-0 — INDEPENDENT METRIC RECONSTRUCTION from the raw per-token log-prob receipt (logs/mathworld1/prband2score/raw_scores.jsonl). Imports nothing from the scorer: own 9-token sums, own semantic association, own strict top-1 / SCORE-TIE, own A/B accuracy, pair classes, top-action switches, target margins d = S(A0) - S(B0), flip classes with the frozen 1e-05 noise bound, MASK0 spreads and sanities, FULL-v-MASK0 tables, the 2 x 2 matrix, and the F0 / F_LEN / F_SIGN / F_ORDER baselines from the frozen primary artifact. Writes logs/mathworld1/prband2score_verify/verify_receipt.json.
+
+- `check(c, m)`
+- `fsha(p)`
+- `main()`
+
 ### scratch/mathworld1_prband_anat.py
 MATH-CYBER-1 PRIOR-RESISTANT-EVAL-MATERIALIZATION-0 — descriptive census anatomy of the NO-FIRE horizon (read-only over logs/mathworld1/prband/horizon_census.jsonl; no law, no selection, no model). Writes logs/mathworld1/prband_verify/anatomy.json (refuse-if-exists): per-signature gold census, lowest-index rule counts and exception shapes, within-k co-occurrence, parity-v-k alignment, gold-class-v-k table, the a-states of the two mixed signatures, and the companion (after) side of the same quantities.
 

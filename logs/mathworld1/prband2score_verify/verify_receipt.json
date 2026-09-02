@@ -1,0 +1,338 @@
+{
+ "verifier_commit": "3b72e21f2def217ee590f60676fe148db7ebb01f",
+ "verifier_file_sha256": "b4845fbd506c526c8defef9a8e61e1b7ab39c1857271247133934725012a7b33",
+ "input_sha256": {
+  "baselines.json": "e004cb719743a01735ecbe6eeb3259ef32cac6ed50385957049eaa7a4ea79173",
+  "cells.json": "09d7ee99a1443044ccce5869d16e108f22321c33e6f97fa249010e4b1f9361eb",
+  "prband2score_receipt.json": "5584ef0d527d43dca5a00317b8c2cf67c70cf72ad241b5e512e89aedaf457ff4",
+  "raw_scores.jsonl": "68d014ac2a0bf5b085941daeeae7def5a30506c7bb45c91630a96113b01cb31e"
+ },
+ "primary_sha256": "209391ef3b2e5c87308571d6ef309bb5724a214160caa1b7857f4a31f9112c34",
+ "baselines": {
+  "F0": [
+   48,
+   0
+  ],
+  "F_LEN": [
+   96,
+   48
+  ],
+  "F_SIGN": [
+   96,
+   48
+  ],
+  "F_ORDER": [
+   96,
+   48
+  ],
+  "n_raw_signatures": 2
+ },
+ "cells": {
+  "19001|CANONICAL|FULL": {
+   "top1": 29,
+   "ties": 0,
+   "A0": 0,
+   "B0": 29,
+   "both": 0,
+   "both_robust": 0,
+   "one": 29,
+   "neither": 19,
+   "switch_robust": 19,
+   "switch_noise": 0,
+   "flips": {
+    "NONE": 29,
+    "REVERSED": 19
+   },
+   "median_dd": -1.9669032096917363,
+   "pred_census": {
+    "B0": 77,
+    "A0": 19
+   },
+   "pred_by_theta": {
+    "SIN_LOW": {
+     "B0": 48
+    },
+    "COS_LOW": {
+     "B0": 29,
+     "A0": 19
+    }
+   },
+   "fixed_order_violated": false,
+   "state_conditioned_both": false,
+   "switch_theorem_violated": true
+  },
+  "19001|CANONICAL|MASK0": {
+   "top1": 0,
+   "ties": 0,
+   "A0": 0,
+   "B0": 0,
+   "both": 0,
+   "both_robust": 0,
+   "one": 0,
+   "neither": 48,
+   "switch_robust": 0,
+   "switch_noise": 0,
+   "flips": {
+    "NONE": 48
+   },
+   "median_dd": 0.0,
+   "pred_census": {
+    "i_sum": 96
+   },
+   "pred_by_theta": {
+    "SIN_LOW": {
+     "i_sum": 48
+    },
+    "COS_LOW": {
+     "i_sum": 48
+    }
+   },
+   "spread": {
+    "i_sum": 0.0,
+    "A0": 0.0,
+    "B0": 0.0,
+    "I0/t5": 0.0
+   },
+   "sanity": true
+  },
+  "19001|PARAM_FIRST|FULL": {
+   "top1": 48,
+   "ties": 0,
+   "A0": 0,
+   "B0": 48,
+   "both": 0,
+   "both_robust": 0,
+   "one": 48,
+   "neither": 0,
+   "switch_robust": 0,
+   "switch_noise": 0,
+   "flips": {
+    "NONE": 48
+   },
+   "median_dd": 1.4671942850263804,
+   "pred_census": {
+    "B0": 96
+   },
+   "pred_by_theta": {
+    "SIN_LOW": {
+     "B0": 48
+    },
+    "COS_LOW": {
+     "B0": 48
+    }
+   },
+   "fixed_order_violated": false,
+   "state_conditioned_both": false,
+   "switch_theorem_violated": false
+  },
+  "19001|PARAM_FIRST|MASK0": {
+   "top1": 0,
+   "ties": 0,
+   "A0": 0,
+   "B0": 0,
+   "both": 0,
+   "both_robust": 0,
+   "one": 0,
+   "neither": 48,
+   "switch_robust": 0,
+   "switch_noise": 0,
+   "flips": {
+    "NONE": 48
+   },
+   "median_dd": 0.0,
+   "pred_census": {
+    "i_sum": 96
+   },
+   "pred_by_theta": {
+    "SIN_LOW": {
+     "i_sum": 48
+    },
+    "COS_LOW": {
+     "i_sum": 48
+    }
+   },
+   "spread": {
+    "i_sum": 0.0,
+    "A0": 0.0,
+    "B0": 0.0,
+    "I0/t5": 0.0
+   },
+   "sanity": true
+  },
+  "20001|CANONICAL|FULL": {
+   "top1": 96,
+   "ties": 0,
+   "A0": 48,
+   "B0": 48,
+   "both": 48,
+   "both_robust": 48,
+   "one": 0,
+   "neither": 0,
+   "switch_robust": 48,
+   "switch_noise": 0,
+   "flips": {
+    "CORRECT": 48
+   },
+   "median_dd": 4.77915522454532,
+   "pred_census": {
+    "A0": 48,
+    "B0": 48
+   },
+   "pred_by_theta": {
+    "SIN_LOW": {
+     "A0": 48
+    },
+    "COS_LOW": {
+     "B0": 48
+    }
+   },
+   "fixed_order_violated": true,
+   "state_conditioned_both": true,
+   "switch_theorem_violated": true
+  },
+  "20001|CANONICAL|MASK0": {
+   "top1": 48,
+   "ties": 0,
+   "A0": 0,
+   "B0": 48,
+   "both": 0,
+   "both_robust": 0,
+   "one": 48,
+   "neither": 0,
+   "switch_robust": 0,
+   "switch_noise": 0,
+   "flips": {
+    "NONE": 48
+   },
+   "median_dd": 0.0,
+   "pred_census": {
+    "B0": 96
+   },
+   "pred_by_theta": {
+    "SIN_LOW": {
+     "B0": 48
+    },
+    "COS_LOW": {
+     "B0": 48
+    }
+   },
+   "spread": {
+    "i_sum": 0.0,
+    "A0": 0.0,
+    "B0": 0.0,
+    "I0/t5": 0.0
+   },
+   "sanity": true
+  },
+  "20001|PARAM_FIRST|FULL": {
+   "top1": 62,
+   "ties": 0,
+   "A0": 48,
+   "B0": 14,
+   "both": 14,
+   "both_robust": 14,
+   "one": 34,
+   "neither": 0,
+   "switch_robust": 14,
+   "switch_noise": 0,
+   "flips": {
+    "CORRECT": 14,
+    "NONE": 34
+   },
+   "median_dd": -5.952892992613215,
+   "pred_census": {
+    "A0": 82,
+    "B0": 14
+   },
+   "pred_by_theta": {
+    "SIN_LOW": {
+     "A0": 48
+    },
+    "COS_LOW": {
+     "B0": 14,
+     "A0": 34
+    }
+   },
+   "fixed_order_violated": true,
+   "state_conditioned_both": true,
+   "switch_theorem_violated": true
+  },
+  "20001|PARAM_FIRST|MASK0": {
+   "top1": 0,
+   "ties": 0,
+   "A0": 0,
+   "B0": 0,
+   "both": 0,
+   "both_robust": 0,
+   "one": 0,
+   "neither": 48,
+   "switch_robust": 0,
+   "switch_noise": 0,
+   "flips": {
+    "NONE": 48
+   },
+   "median_dd": 0.0,
+   "pred_census": {
+    "I0/t5": 96
+   },
+   "pred_by_theta": {
+    "SIN_LOW": {
+     "I0/t5": 48
+    },
+    "COS_LOW": {
+     "I0/t5": 48
+    }
+   },
+   "spread": {
+    "i_sum": 0.0,
+    "A0": 0.0,
+    "B0": 0.0,
+    "I0/t5": 0.0
+   },
+   "sanity": true
+  }
+ },
+ "matrix": {
+  "19001|CANONICAL": {
+   "top1": 29,
+   "both_robust": 0,
+   "switch_robust": 19,
+   "observed_by_both_correct": false,
+   "observed_by_switch_theorem": true,
+   "observed_by_top1": false,
+   "mask0_sanity": true
+  },
+  "19001|PARAM_FIRST": {
+   "top1": 48,
+   "both_robust": 0,
+   "switch_robust": 0,
+   "observed_by_both_correct": false,
+   "observed_by_switch_theorem": false,
+   "observed_by_top1": false,
+   "mask0_sanity": true
+  },
+  "20001|CANONICAL": {
+   "top1": 96,
+   "both_robust": 48,
+   "switch_robust": 48,
+   "observed_by_both_correct": true,
+   "observed_by_switch_theorem": true,
+   "observed_by_top1": true,
+   "mask0_sanity": true
+  },
+  "20001|PARAM_FIRST": {
+   "top1": 62,
+   "both_robust": 14,
+   "switch_robust": 14,
+   "observed_by_both_correct": true,
+   "observed_by_switch_theorem": true,
+   "observed_by_top1": true,
+   "mask0_sanity": true
+  }
+ },
+ "observed_by_both_correct": 2,
+ "observed_by_any_frozen_theorem": 3,
+ "mask0_all_sane": true,
+ "problems": [],
+ "verdict": "VERIFIED"
+}

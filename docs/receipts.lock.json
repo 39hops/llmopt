@@ -1025,6 +1025,49 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/prband2score/baselines.json": {
+   "bytes": 832,
+   "exists": true,
+   "sha256": "e004cb719743a01735ecbe6eeb3259ef32cac6ed50385957049eaa7a4ea79173",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/prband2score/cells.json": {
+   "bytes": 398097,
+   "exists": true,
+   "sha256": "09d7ee99a1443044ccce5869d16e108f22321c33e6f97fa249010e4b1f9361eb",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/prband2score/prband2score_receipt.json": {
+   "bytes": 13668,
+   "exists": true,
+   "sha256": "5584ef0d527d43dca5a00317b8c2cf67c70cf72ad241b5e512e89aedaf457ff4",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/prband2score/raw_scores.jsonl": {
+   "bytes": 1924668,
+   "exists": true,
+   "local_only": true,
+   "sha256": "68d014ac2a0bf5b085941daeeae7def5a30506c7bb45c91630a96113b01cb31e",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/mathworld1/prband2score_smoke/prband2score_receipt.json": {
+   "bytes": 6089,
+   "exists": true,
+   "sha256": "43eb9a6a7fd68e432b161d92e4e9b6e9c93e35058eb18089d274cd438c50dec0",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/prband2score_verify/verify_receipt.json": {
+   "bytes": 6057,
+   "exists": true,
+   "sha256": "eeaa3a05d2ce680e8e55eaa5130c937f7e303187a37bfa0b998a583e43107e9c",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/prband_smoke/prband_receipt.json": {
    "bytes": 6700,
    "exists": true,

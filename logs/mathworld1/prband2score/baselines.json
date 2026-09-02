@@ -1,0 +1,34 @@
+{
+ "F0": {
+  "max_top1": 48,
+  "max_both_correct": 0,
+  "n_orders": 24
+ },
+ "F_LEN": {
+  "top1": 96,
+  "both_correct": 48
+ },
+ "F_SIGN": {
+  "top1": 96,
+  "both_correct": 48
+ },
+ "F_ORDER": {
+  "n_raw_signatures": 2,
+  "signature_gold_census": {
+   "[[\"i_sum\", \"I\", 0, \"none\", -1], [\"i_unprod\", \"I\", 0, \"term_index\", 5], [\"i_unpro": {
+    "[\"i_unprod\", \"I\", 0, \"term_index\", 1]": 48
+   },
+   "[[\"i_sum\", \"I\", 0, \"none\", -1], [\"i_unprod\", \"I\", 0, \"term_index\", 3], [\"i_unpro": {
+    "[\"i_unprod\", \"I\", 0, \"term_index\", 3]": 48
+   }
+  },
+  "top1": 96,
+  "both_correct": 48
+ },
+ "F_SURFACE": {
+  "top1": 96,
+  "both_correct": 48
+ },
+ "semantic_beyond_surface_identifiable": false,
+ "reason": "perfect prompt-length, leading-sign and raw-order nuisance classes exist on the exact scored artifact"
+}

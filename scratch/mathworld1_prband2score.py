@@ -262,9 +262,17 @@ def cell_metrics(rows_cell, P, arm):
     if arm == "FULL":
         m["fixed_order_violated"] = top1 > n // 2
         m["state_conditioned_observed"] = m["both_correct_robust"] > 0
+        # registered clause: both-correct > 0 OR any frozen fixed-
+        # ranking theorem violated (top-1 > n/2; robust switch pairs;
+        # robust margin sign flips). The production run at 3b72e21f
+        # applied only the first two legs (booked, receipts frozen).
+        m["switch_theorem_violated"] = m["switch_pairs_robust"] > 0
+        m["flip_theorem_violated"] = robust_flips > 0
         m["classification"] = ("STATE-CONDITIONED-RANKING OBSERVED"
                                if m["state_conditioned_observed"]
                                or m["fixed_order_violated"]
+                               or m["switch_theorem_violated"]
+                               or m["flip_theorem_violated"]
                                else "STATE-BLIND FIXED-RANKING CLASS "
                                "NOT REFUTED")
         m["nuisance_agreement"] = {

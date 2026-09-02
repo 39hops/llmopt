@@ -65140,3 +65140,230 @@ population unmodified, no nuisance-neutralized view generated;
 the three baseline numbers are model-blind censuses of the
 frozen artifact recomputed at freeze.
 
+## VERDICT MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-SCORING-0: STATE-CONDITIONED RANKING OBSERVED IN 3/4 FULL CHECKPOINTS UNDER THE REGISTERED CLAUSE (2/4 by both-correct matched pairs in the correct direction, 1 more by the top-action-switch theorem in the REVERSED direction); SEMANTIC-BEYOND-SURFACE: NOT IDENTIFIABLE ON RAW PRIMARY — on the frozen raw N = 96 matched-pair artifact, FULL seed-20001 CANONICAL ranks 96/96 with 48/48 both-correct pairs and 48 correct-direction target-margin flips (minimum deciding margin 0.060, above the frozen 1e-05 bound), FULL seed-20001 PARAM-FIRST 62/96 with 14/48 both-correct pairs (all A0 states correct, 14/48 B0; min margin 0.021), FULL seed-19001 CANONICAL 29/96 with 0 both-correct pairs but 19/48 robust top-action-switch pairs in the REVERSED direction (predicts B0 on every SIN_LOW state and A0 on 19 COS_LOW states; min switch margin 0.049) — a violation of the frozen same-top-action-per-pair theorem, hence state-conditioned but wrongly directed — and FULL seed-19001 PARAM-FIRST exactly 48/96 predicting B0 in 96/96 states with zero switches and zero flips (indistinguishable in top-1 from a state-blind fixed order: STATE-BLIND FIXED-RANKING CLASS NOT REFUTED); all four MASK0 cells pass every hard sanity (top-1 0/0/48/0, zero both-correct, zero switches, zero flips, per-candidate spread exactly 0.0) and each is a single fixed action for all 96 states (19001 C i_sum, 19001 PF i_sum, 20001 C B0, 20001 PF I0/t5); no SCORE-TIE anywhere; model-blind baselines re-derived before any checkpoint load: F0 48/96 and 0/48, F_LEN = F_SIGN = F_ORDER = F_SURFACE = 96/96 and 48/48; the scorer's coded classification field applied only the both-correct and top-1 clauses (2/4) — the registered clause's third leg is applied here from the same raw receipts, disclosed, not a post-hoc law change; wall 5.6 s on mps / torch 2.12.1; nothing trained, no companion scored, no other mask (2026-09-02, Mac)
+
+Per PRE-REG ...V2-SCORING-0 (ee9dfa5c, L64865), executed
+mechanically on the population of VERDICT ...V2-PRODUCTION-
+MATERIALIZATION-0 (L64676). Scorer scratch/mathworld1_prband2score
+.py committed BEFORE any real logit (60e55527; a one-line
+smoke-scope fix 3b72e21f — the population-wide F0-v-permutations
+pin skipped on the 2-state smoke slice — was committed before the
+production run; production start and completion commit 3b72e21f);
+path-isolated smoke (1 checkpoint, 2 states) SMOKE OK, receipt
+43eb9a6a...; independent reconstruction scratch/mathworld1_
+prband2score_verify.py (277c52f8) rebuilds every metric from the
+raw per-token lps and the frozen primary, importing nothing from
+the scorer: VERIFIED, zero discrepancies (verify receipt
+eeaa3a05...).
+
+1) PINS + ORDER OF OPERATIONS: primary 209391ef..., nuisance
+e98eaed3..., pairs ee6cf884..., permutations b57626ae... gated;
+population gates (96, 48 keys, 48/48 theta and gold, one
+cand_sig_id, exact four semantic candidates, adjacent pairs)
+passed; model-blind baselines computed and persisted
+(baselines.json, e004cb71...) with semantic_beyond_surface_
+identifiable = false BEFORE any checkpoint load; candidates
+canonicalized to the semantic order (i_sum, A0, B0, I0/t5) with
+C / PF / PERM roundtrips gated; then each checkpoint hashed
+immediately before its own load (exact: ae0a86e0...,
+0fe38f78..., 0a841a5f..., b7198ff2...), loaded (19,142,016
+params, 8 blocks), scored FULL (mask 255) and
+MASK0 (mask 0) under the respath masked_token_lps law (svpfoheld
+token-lp law + loop-skip): exact stored cur, prompt "Current:
+{cur}\nHints: none\nStep: ", continuation 8 symbols + EOS = 9,
+TOTAL SUM, strict top-1, exact ties = SCORE-TIE. Raw receipt
+raw_scores.jsonl (68d014ac..., 3,072 rows, every lp finite)
+written before any aggregate. Device mps, torch 2.12.1, fp32,
+all 8 cells in one process; start tree carried only the
+generated scripts/INDEX.md as dirty (recorded verbatim).
+
+2) BASELINES (from the artifact, before any logit): F0 max
+top-1 48/96, both-correct 0/48 (24 orders, matching
+permutations.json); F_LEN (89 -> A0, 88 -> B0) 96/96, 48/48;
+F_SIGN (cur begins "Integral(-" -> A0) 96/96, 48/48; F_ORDER
+(two raw cand_tuples signatures, one per theta; a resubstitution
+lookup ceiling on the same 96 states, never a held-out baseline)
+96/96, 48/48;
+F_SURFACE 96/96, 48/48. CRITICAL: no model can exceed 96/96 and
+agreement with any nuisance rule equals correctness; SEMANTIC-
+BEYOND-SURFACE = NOT IDENTIFIABLE ON RAW PRIMARY, independent of
+every number below.
+
+3) FULL CELLS (per cell; n = 96, 48 pairs; float-noise bound
+1e-05, no subnoise or noise-tie event occurred anywhere):
+  19001 CANONICAL: top-1 29/96 (A0 0/48, B0 29/48), ties 0;
+    pairs both-correct 0, exactly-one 29, neither 19; robust
+    top-action-switch pairs 19 (min switch margin 0.049);
+    predictions SIN_LOW -> B0 48/48, COS_LOW -> B0 29 / A0 19;
+    confusion A0->B0 48, B0->B0 29, B0->A0 19; target margins
+    d_SIN in [-3.61, -1.42] (all negative), d_COS in [-1.61,
+    2.01]; flips: correct-direction 0, REVERSED 19, no-flip 29;
+    median d_SIN - d_COS = -1.97. Fixed-order clause: not
+    violated (29 <= 48); both-correct clause: not met; switch
+    theorem: VIOLATED (19 pairs) — the ranking changes with the
+    state, in the wrong direction on every pair where it changes.
+  19001 PARAM-FIRST: top-1 48/96 (A0 0/48, B0 48/48); predicts
+    B0 in 96/96; switches 0, flips 0 (d_SIN - d_COS median 1.47,
+    all positive but never sign-crossing); STATE-BLIND FIXED-
+    RANKING CLASS NOT REFUTED — its top-1 function is CONSISTENT
+    WITH a single fixed ranking (exactly at the 48/96 ceiling,
+    top action constant); the margins move with theta without
+    crossing zero (descriptive); never read as "the model is
+    state-blind".
+  20001 CANONICAL: top-1 96/96 (48/48, 48/48), ties 0; both-
+    correct 48/48 (min deciding margin 0.060), switches 48/48,
+    correct-direction flips 48/48; d_SIN in [0.060, 4.99], d_COS
+    in [-4.75, -1.06]; median d_SIN - d_COS 4.78. STATE-
+    CONDITIONED-RANKING OBSERVED (by all three clauses). Allowed
+    statement: the model conditions its action ranking in the
+    correct direction on every matched pair of the raw artifact.
+    NOT allowed: solved the calculus crossover / learned HCE /
+    ignored the surface cue / used semantic context.
+  20001 PARAM-FIRST: top-1 62/96 (A0 48/48, B0 14/48); predicts
+    A0 on 82 states (all 48 SIN_LOW + 34 COS_LOW), B0 on 14;
+    both-correct 14/48 (min margin 0.021), switches 14,
+    correct-direction flips 14, no-flip 34; d_SIN in [0.75,
+    2.90], d_COS in [-1.83, 8.88]; median d_SIN - d_COS -5.95.
+    STATE-CONDITIONED-RANKING OBSERVED (top-1 > 48 and 14
+    both-correct pairs) — an A0-leaning ranking that flips to B0
+    on 14 pairs.
+
+4) MASK0 CELLS (hard sanities, all four PASS): single fixed
+prediction across all 96 states in every cell — 19001 C i_sum
+(top-1 0), 19001 PF i_sum (0), 20001 C B0 (48/96: exactly the
+COS_LOW half, A0 0/48 — sanity (1) passes AT EQUALITY, the
+structural maximum for a fixed action), 20001 PF I0/t5 (0);
+A0 is never the mask-0 top action in any cell; both-correct 0/48,
+switches 0, robust flips 0, TARGET-MARGIN d constant per cell
+(d_SIN - d_COS = 0.0 in 48/48); per-candidate statewise score
+spread EXACTLY 0.0 for all four candidates in all four cells (the
+zero-depth law holds bit-for-bit here). Registered prior "20001
+MASK0 strongly prefers the frequent A0" — WRONG: the 20001
+CANONICAL prior ranks B0 (the 257-row coordinate) above A0 (the
+2,267-row coordinate) on every state, and the 20001 PARAM-FIRST
+prior ranks the never-seen I0/t5 first; consistent with the
+booked non-frequency character of the 20001 prior (L62394).
+
+5) FULL-v-MASK0 (state-level four-cell both / FULL-only /
+MASK0-only / both-wrong; pair-level in parentheses): 19001 C
+0 / 29 / 0 / 67 (FULL both-correct 0, MASK0 0; FULL robust flips
+19, MASK0 0; switches 19 v 0); 19001 PF 0 / 48 / 0 / 48 (0 / 0;
+0 / 0; 0 / 0); 20001 C 48 / 48 / 0 / 0 (48 / 0; 48 / 0; 48 / 0);
+20001 PF 0 / 62 / 0 / 34 (14 / 0; 14 / 0; 14 / 0). No p-value
+computed; none is primary.
+
+6) 2 x 2 FULL MATRIX (top-1 | A0 / B0 correct | both-correct
+robust | robust flips | classification under the registered
+clause):
+                 CANONICAL                   PARAM-FIRST
+  seed 19001     29 | 0/29 | 0 | 19 rev.     48 | 0/48 | 0 | 0
+                 OBSERVED (switch theorem)   NOT REFUTED
+  seed 20001     96 | 48/48 | 48 | 48        62 | 48/14 | 14 | 14
+                 OBSERVED                    OBSERVED
+CLASSIFICATION-CLAUSE DISCLOSURE: the registered clause reads
+"STATE-CONDITIONED-RANKING OBSERVED iff both-correct pairs > 0
+(or another frozen fixed-ranking theorem is violated)"; the
+scorer's coded classification field implemented only the
+both-correct and top-1 > 48 legs and therefore books 19001
+CANONICAL as NOT REFUTED and the lead as 2/4; the same-top-action-
+per-pair theorem is frozen in the same prereg (MASK0 sanity 3 and
+the production prereg's section F) and 19001 CANONICAL violates
+it on 19 robust pairs, so the registered clause gives 3/4. Both
+counts are booked; the 3/4 lead applies the clause as registered
+from the same raw receipts (the verifier persists both:
+observed_by_both_correct 2, observed_by_any_frozen_theorem 3);
+no law moved after scores; the scorer source is corrected
+going forward IN THIS BOOKING COMMIT to apply all legs (switch
+and margin-flip theorems added; the 3b72e21f receipts stay
+frozen as record — the respath20 precedent);
+the verifier's 3/4 rests on the switch, top-1 and both-correct
+legs (its clause omits the margin-flip theorem, which here
+coincides with the switch count, 19 = 19, so the count is
+unchanged). PROVENANCE OF THE 3/4: the frozen scorer receipt
+carries no switch-theorem field and its own strings read
+"STATE-CONDITIONED RANKING OBSERVED IN 2/4 FULL CHECKPOINTS"
+and within_representation_replication CANONICAL false /
+PARAM_FIRST false (the coded two-leg clause); the 19-pair
+switch count comes from the verifier receipt
+(observed_by_any_frozen_theorem 3) and the raw stream, both
+reproduced by the challenger — the scorer receipt's 2/4 is the
+both-correct-or-top-1 count, the verifier's
+observed_by_both_correct 2 is the both-correct leg alone, and
+they coincide here by fact, not by construction. Frozen terms:
+MECHANICAL STATE-
+CONDITIONING in 19001 C (reversed), 20001 C, 20001 PF; WITHIN-
+REPRESENTATION REPLICATION: CANONICAL yes under the registered
+clause (19001 by the switch theorem, reversed direction; 20001
+by all clauses) — no under the both-correct leg alone;
+PARAM-FIRST no (19001 PF not refuted); CROSS-REPRESENTATION
+SUPPORT: seed 20001 yes, seed 19001 no. No pooled N = 384.
+
+7) NUISANCE COMPARISON (descriptive): FULL agreement with F_LEN
+/ F_SIGN = 29 / 48 / 96 / 62 for the four cells — numerically
+identical to correctness, as frozen; this cannot identify which
+state feature any model uses. Receipt field
+semantic_beyond_surface_identifiable = false; reason = perfect
+prompt-length, leading-sign and raw-order nuisance classes exist
+on the exact scored artifact. This field did not and cannot
+change with the results.
+
+8) REGISTERED-PRIOR ACCOUNTING: MASK0 sanities HIGH — RIGHT
+(4/4); 20001 MASK0 prefers A0 MODERATE-HIGH — WRONG (B0 / I0/t5);
+FULL > 0 both-correct pairs MODERATE — RIGHT for 2/4; one
+representation replicates across seeds LOW-MODERATE — RIGHT for
+CANONICAL only under the registered clause and with opposite
+directions at the two seeds; 96/96 FULL via the cue LOW-MODERATE
+— RIGHT in 1/4 (20001 C); PF v C no prior — mixed (C wins at
+seed 20001 on top-1, 96 v 62; PF wins at seed 19001, 48 v 29); semantic identifiability ZERO by design —
+as designed.
+
+9) ARTIFACTS (force-added small-text receipts; full paths on
+their own lines for the receipt lock):
+logs/mathworld1/prband2score/prband2score_receipt.json
+logs/mathworld1/prband2score/baselines.json (e004cb71...)
+logs/mathworld1/prband2score/cells.json (09d7ee99...)
+logs/mathworld1/prband2score_smoke/prband2score_receipt.json
+logs/mathworld1/prband2score_verify/verify_receipt.json
+and logs/mathworld1/prband2score/raw_scores.jsonl (68d014ac..., 1.9 MB — a per-state
+x candidate x arm x checkpoint stream: UNTRACKED under the logs
+doctrine (per-problem streams are never force-added),
+sha-anchored here and in both receipts, regenerate-don't-
+download by re-running the committed scorer; the independent
+reconstruction reads it locally; whether this raw-first
+reconstruction input deserves a tracked exception is flagged
+for Artin's ruling, not self-granted),
+logs/mathworld1/prband2score_smoke/prband2score_receipt.json,
+logs/mathworld1/prband2score_verify/verify_receipt.json.
+
+CLAIM CEILING: per checkpoint, whether the FULL legal-action
+ranking changes with state on this raw artifact (function-class
+violation) and how the MASK0 prior ranks the four fixed
+candidates — nothing more. NOT established: semantic or HCE
+reasoning, that any model used or ignored the length / sign /
+order cue, generalization, solve-rate effects, the companion, or
+robustness (three single deterministic realizations, no
+inferential test). The 8.8x support asymmetry (A0 2,267 v B0 257)
+and the unseen-symbol rival I0/t5 remain disclosed; the 20001
+CANONICAL 96/96 is exactly what the perfect surface cue permits
+and is not evidence against cue use.
+
+NEXT ELIGIBLE GO (one, nominated, NOT authorized; the required
+model-blind design must be written without consulting which
+states any checkpoint got wrong): MATH-CYBER-1-PRIOR-RESISTANT-
+EVAL-V2-NUISANCE-COUNTERFACTUAL-ASSESSMENT-0 — meaningful state-
+conditioning exists (48/48 and 14/48 pairs at seed 20001, 19
+reversed pairs at 19001 C), so the counterfactual assessment
+(break / counterbalance the leading-sign and prompt-length cues
+with gold and legal set frozen, canonical candidate iteration)
+is the only design that can separate intended mathematical state
+discrimination from the surface oracle.
+
+FENCES. Scoring execution only: four frozen checkpoints, two
+arms, one population, one device / runtime; no training, no
+other mask, no cube, no FACTOR/HASH, no companion scoring, no
+population edit, no prompt normalization, no tie tolerance
+introduced (none needed: zero ties), no IID bar; every number
+from raw_scores.jsonl or the frozen primary and reproduced by
+the independent reconstruction; deterministic single
+realizations, never pooled.
+

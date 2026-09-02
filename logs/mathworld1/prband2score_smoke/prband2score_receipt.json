@@ -1,0 +1,231 @@
+{
+ "smoke": true,
+ "prereg": "MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-SCORING-0",
+ "prereg_commit": "ee9dfa5c70190dead546b0a080ed9c3fb735a435",
+ "n_states": 2,
+ "pins": {
+  "logs/mathworld1/prband2prod/primary.jsonl": "209391ef3b2e5c87308571d6ef309bb5724a214160caa1b7857f4a31f9112c34",
+  "logs/mathworld1/prband2prod/nuisance.json": "e98eaed34df4a57deb0238ef20d35f2a9bef0e5371794f7b297317a01075d678",
+  "logs/mathworld1/prband2prod/pairs.jsonl": "ee6cf884b5140a1f3bd2dff812b8bba475a1d2509b8e586377fd0395330a5d33",
+  "logs/mathworld1/prband2prod/permutations.json": "b57626ae20d7c8645a11bafec69c917708fa26ae679fc65f8d654f54c8023919"
+ },
+ "checkpoints": [
+  {
+   "seed": "19001",
+   "representation": "CANONICAL",
+   "path": "checkpoints/svp_forder_canonical_s19001.pt",
+   "sha256": "ae0a86e027d8b0ca1cd7a97a83a6927d326da5bd34258910b1b81d3492322e1d",
+   "params": 19142016,
+   "blocks": 8
+  }
+ ],
+ "semantic_order": [
+  [
+   "i_sum",
+   "I",
+   0,
+   "none",
+   -1
+  ],
+  [
+   "i_unprod",
+   "I",
+   0,
+   "term_index",
+   1
+  ],
+  [
+   "i_unprod",
+   "I",
+   0,
+   "term_index",
+   3
+  ],
+  [
+   "i_unprod",
+   "I",
+   0,
+   "term_index",
+   5
+  ]
+ ],
+ "noise_bound": 1e-05,
+ "baselines": {
+  "F0": {
+   "max_top1": 1,
+   "max_both_correct": 0,
+   "n_orders": 24
+  },
+  "F_LEN": {
+   "top1": 2,
+   "both_correct": 1
+  },
+  "F_SIGN": {
+   "top1": 2,
+   "both_correct": 1
+  },
+  "F_ORDER": {
+   "n_raw_signatures": 2,
+   "signature_gold_census": {
+    "[[\"i_sum\", \"I\", 0, \"none\", -1], [\"i_unprod\", \"I\", 0, \"term_index\", 5], [\"i_unpro": {
+     "[\"i_unprod\", \"I\", 0, \"term_index\", 1]": 1
+    },
+    "[[\"i_sum\", \"I\", 0, \"none\", -1], [\"i_unprod\", \"I\", 0, \"term_index\", 3], [\"i_unpro": {
+     "[\"i_unprod\", \"I\", 0, \"term_index\", 3]": 1
+    }
+   },
+   "top1": 2,
+   "both_correct": 1
+  },
+  "F_SURFACE": {
+   "top1": 2,
+   "both_correct": 1
+  },
+  "semantic_beyond_surface_identifiable": false,
+  "reason": "perfect prompt-length, leading-sign and raw-order nuisance classes exist on the exact scored artifact"
+ },
+ "semantic_beyond_surface_identifiable": false,
+ "reason": "perfect prompt-length, leading-sign and raw-order nuisance classes exist on the exact scored artifact",
+ "device": "mps",
+ "torch": "2.12.1",
+ "verdict": "SMOKE OK",
+ "matrix": {
+  "19001|CANONICAL": {
+   "top1": 1,
+   "A0_correct": 0,
+   "B0_correct": 1,
+   "both_correct_robust": 0,
+   "robust_flips": 0,
+   "correct_direction_flips": 0,
+   "classification": "STATE-BLIND FIXED-RANKING CLASS NOT REFUTED",
+   "mask0_sanity_pass": true
+  }
+ },
+ "contrasts": {
+  "19001|CANONICAL": {
+   "both_correct": 0,
+   "full_only": 1,
+   "mask0_only": 0,
+   "both_wrong": 1,
+   "full_both_correct_pairs": 0,
+   "mask0_both_correct_pairs": 0,
+   "full_robust_flips": 0,
+   "mask0_robust_flips": 0,
+   "full_switches": 0,
+   "mask0_switches": 0,
+   "mask0_sanity_pass": true
+  }
+ },
+ "within_representation_replication": {
+  "CANONICAL": false,
+  "PARAM_FIRST": false
+ },
+ "cross_representation_support": {
+  "19001": false,
+  "20001": false
+ },
+ "mask0_sanity_failures": [],
+ "cell_summary": {
+  "19001|CANONICAL|FULL": {
+   "top1": 1,
+   "score_ties": 0,
+   "A0_correct": 0,
+   "B0_correct": 1,
+   "both_correct_pairs": 0,
+   "both_correct_robust": 0,
+   "both_correct_subnoise": 0,
+   "exactly_one_pairs": 1,
+   "neither_pairs": 0,
+   "switch_pairs_robust": 0,
+   "switch_pairs_float_noise": 0,
+   "pred_census": {
+    "B0": 2
+   },
+   "pred_census_by_theta": {
+    "SIN_LOW": {
+     "B0": 1
+    },
+    "COS_LOW": {
+     "B0": 1
+    }
+   },
+   "flips": {
+    "correct_direction": 0,
+    "reversed": 0,
+    "robust_sign_flips": 0,
+    "no_flip": 1,
+    "tie": 0,
+    "subnoise": 0,
+    "median_dSIN_minus_dCOS": -2.3696624040640017,
+    "min_dSIN_minus_dCOS": -2.3696624040640017,
+    "max_dSIN_minus_dCOS": -2.3696624040640017
+   },
+   "mask0_spread": {},
+   "margin_median": 2.4274420142392046
+  },
+  "19001|CANONICAL|MASK0": {
+   "top1": 0,
+   "score_ties": 0,
+   "A0_correct": 0,
+   "B0_correct": 0,
+   "both_correct_pairs": 0,
+   "both_correct_robust": 0,
+   "both_correct_subnoise": 0,
+   "exactly_one_pairs": 0,
+   "neither_pairs": 1,
+   "switch_pairs_robust": 0,
+   "switch_pairs_float_noise": 0,
+   "pred_census": {
+    "i_sum": 2
+   },
+   "pred_census_by_theta": {
+    "SIN_LOW": {
+     "i_sum": 1
+    },
+    "COS_LOW": {
+     "i_sum": 1
+    }
+   },
+   "flips": {
+    "correct_direction": 0,
+    "reversed": 0,
+    "robust_sign_flips": 0,
+    "no_flip": 1,
+    "tie": 0,
+    "subnoise": 0,
+    "median_dSIN_minus_dCOS": 0.0,
+    "min_dSIN_minus_dCOS": 0.0,
+    "max_dSIN_minus_dCOS": 0.0
+   },
+   "mask0_spread": {
+    "i_sum": 0.0,
+    "A0": 0.0,
+    "B0": 0.0,
+    "I0/t5": 0.0
+   },
+   "margin_median": 2.167175769805908
+  }
+ },
+ "wall_s": 0.4,
+ "artifact_sha256": {
+  "baselines.json": "adf09e2b9492c601028c0f475c924d1285c0ff33981993e4f1228e6caba7286f",
+  "cells.json": "40f3dfe1360358648fcdcd29f242077b40a7aebd0f4eee73d8b158601cd10b92",
+  "raw_scores.jsonl": "afe487ba2a7c37e38bd32bdafe84dc8e03b328c5d5c8fe2df33c6cad0405fe0e"
+ },
+ "start": {
+  "start_commit": "3b72e21f",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_prband2score.py": "08f8735aa407076fd5195cf7d4a29864f5b4dbc970c1438d76c615c412a6df97",
+   "scratch/mathworld1_respath.py": "294e6249d37e5a788f67cdb8b744db21f3fd54a439d59e15d26d76b19315ef39",
+   "scratch/mathworld1_svpfoheld.py": "f8bc81f4cd479d98f143a822baa0cc05df6ac9f495b87eff198063617badcd7f",
+   "scratch/mathworld1_svpforder.py": "293e2bb578704d60abcd4562a252d5f3671ea61f673c4cc76041d460a6330c06",
+   "scratch/mathworld1_svpcode.py": "3b80655cbddc835e6fac99c81335a4d21a4b812ac304b786f8ca07ec96277ca0",
+   "scratch/mathworld1_actiontok.py": "a5a22b38c775f67b303b305fa98d8a7fd3e79ac2f11e151385a2701a6d0c4aec",
+   "llmopt/train/mathnative.py": "f8f5ca114d83d0dd854ebcb25de1a707e41e57822f06b15efecb0a1d87dcab61",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "3b72e21f"
+}
