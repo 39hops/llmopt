@@ -948,6 +948,20 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/prband2nuis/prband2nuis_receipt.json": {
+   "bytes": 17447,
+   "exists": true,
+   "sha256": "27729b4234fc98016cceaf2411ebca85a41d00cd617a039cadd853c3c23d4fc6",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/prband2nuis/views.jsonl": {
+   "bytes": 462384,
+   "exists": true,
+   "sha256": "677201ccc0cf34fbdf2b2e060146b68c157a2450926ac062f1c0f16cac8a72bb",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/prband2prod/companion.jsonl": {
    "bytes": 602016,
    "exists": true,
