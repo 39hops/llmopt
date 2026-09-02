@@ -1,0 +1,724 @@
+{
+ "smoke": true,
+ "assessment": "MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-NUISANCE-COUNTERFACTUAL-ASSESSMENT-0",
+ "adopted": {
+  "verdict": "MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-SCORING-0",
+  "commit": "1c0d25c338fb6f3f2baf2e7e106208abb88f749b"
+ },
+ "pins": {
+  "logs/mathworld1/prband2prod/primary.jsonl": "209391ef3b2e5c87308571d6ef309bb5724a214160caa1b7857f4a31f9112c34"
+ },
+ "n_states": 4,
+ "views": {
+  "HIGH_PAIR_FIRST": [
+   "HI_D",
+   "HI_L",
+   "K",
+   "LO_D",
+   "LO_L",
+   "W"
+  ],
+  "HIGH_PAIR_FIRST_LDEG": [
+   "HI_L",
+   "HI_D",
+   "K",
+   "LO_L",
+   "LO_D",
+   "W"
+  ],
+  "K_FIRST": [
+   "K",
+   "HI_D",
+   "HI_L",
+   "LO_D",
+   "LO_L",
+   "W"
+  ],
+  "LOW_PAIR_FIRST": [
+   "LO_D",
+   "LO_L",
+   "K",
+   "HI_D",
+   "HI_L",
+   "W"
+  ],
+  "W_FIRST": [
+   "W",
+   "HI_D",
+   "HI_L",
+   "K",
+   "LO_D",
+   "LO_L"
+  ],
+  "COS_SOURCE_FIRST": [
+   "COS_D",
+   "COS_L",
+   "K",
+   "SIN_D",
+   "SIN_L",
+   "W"
+  ],
+  "SIN_SOURCE_FIRST": [
+   "SIN_D",
+   "SIN_L",
+   "K",
+   "COS_D",
+   "COS_L",
+   "W"
+  ]
+ },
+ "prompt_law": "Current: {cur}\nHints: none\nStep: ",
+ "report": {
+  "RAW": {
+   "n": 4,
+   "checks": {},
+   "identical_to_raw": 0,
+   "ceilings": {
+    "prompt_tokens": {
+     "values": {
+      "89": {
+       "SIN_LOW": 2
+      },
+      "88": {
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 4,
+     "both_correct_of_48": 2,
+     "constant": false
+    },
+    "lead_sign": {
+     "values": {
+      "-": {
+       "SIN_LOW": 2
+      },
+      "+": {
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 4,
+     "both_correct_of_48": 2,
+     "constant": false
+    },
+    "minus_pos": {
+     "values": {
+      "0": {
+       "SIN_LOW": 2
+      },
+      "3": {
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 4,
+     "both_correct_of_48": 2,
+     "constant": false
+    },
+    "first_trig": {
+     "values": {
+      "sin": {
+       "SIN_LOW": 2
+      },
+      "cos": {
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 4,
+     "both_correct_of_48": 2,
+     "constant": false
+    }
+   },
+   "pair_geometry_v_raw": {
+    "pairs": 2,
+    "sign_reversed": 0,
+    "sign_same": 2,
+    "length_diff_reversed": 0,
+    "length_diff_same": 2,
+    "length_abs_diff_equal": 2
+   }
+  },
+  "HIGH_PAIR_FIRST": {
+   "n": 4,
+   "checks": {
+    "parse=True": 4,
+    "srepr_identical=True": 4,
+    "equiv_zero=True": 4,
+    "six_term_multiset=True": 4,
+    "law_reproduces=True": 4,
+    "cand_sig_id_equal=True": 4,
+    "teacher_equal=True": 4,
+    "child_srepr_set_equal=True": 4,
+    "ties_equal=True": 4,
+    "law_cur_is_raw=True": 4
+   },
+   "identical_to_raw": 4,
+   "ceilings": {
+    "prompt_tokens": {
+     "values": {
+      "89": {
+       "SIN_LOW": 2
+      },
+      "88": {
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 4,
+     "both_correct_of_48": 2,
+     "constant": false
+    },
+    "lead_sign": {
+     "values": {
+      "-": {
+       "SIN_LOW": 2
+      },
+      "+": {
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 4,
+     "both_correct_of_48": 2,
+     "constant": false
+    },
+    "minus_pos": {
+     "values": {
+      "0": {
+       "SIN_LOW": 2
+      },
+      "3": {
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 4,
+     "both_correct_of_48": 2,
+     "constant": false
+    },
+    "first_trig": {
+     "values": {
+      "sin": {
+       "SIN_LOW": 2
+      },
+      "cos": {
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 4,
+     "both_correct_of_48": 2,
+     "constant": false
+    }
+   },
+   "pair_geometry_v_raw": {
+    "pairs": 2,
+    "sign_reversed": 0,
+    "sign_same": 2,
+    "length_diff_reversed": 0,
+    "length_diff_same": 2,
+    "length_abs_diff_equal": 2
+   }
+  },
+  "HIGH_PAIR_FIRST_LDEG": {
+   "n": 4,
+   "checks": {
+    "parse=True": 4,
+    "srepr_identical=True": 4,
+    "equiv_zero=True": 4,
+    "six_term_multiset=True": 4,
+    "law_reproduces=True": 4,
+    "cand_sig_id_equal=True": 4,
+    "teacher_equal=True": 4,
+    "child_srepr_set_equal=True": 4,
+    "ties_equal=True": 4,
+    "law_cur_is_raw=True": 4
+   },
+   "identical_to_raw": 0,
+   "ceilings": {
+    "prompt_tokens": {
+     "values": {
+      "88": {
+       "SIN_LOW": 2,
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 2,
+     "both_correct_of_48": 0,
+     "constant": true
+    },
+    "lead_sign": {
+     "values": {
+      "+": {
+       "SIN_LOW": 2,
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 2,
+     "both_correct_of_48": 0,
+     "constant": true
+    },
+    "minus_pos": {
+     "values": {
+      "1": {
+       "SIN_LOW": 2
+      },
+      "4": {
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 4,
+     "both_correct_of_48": 2,
+     "constant": false
+    },
+    "first_trig": {
+     "values": {
+      "cos": {
+       "SIN_LOW": 2
+      },
+      "sin": {
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 4,
+     "both_correct_of_48": 2,
+     "constant": false
+    }
+   },
+   "pair_geometry_v_raw": {
+    "pairs": 2,
+    "sign_reversed": 0,
+    "sign_same": 0,
+    "length_diff_reversed": 0,
+    "length_diff_same": 0,
+    "length_abs_diff_equal": 0
+   }
+  },
+  "K_FIRST": {
+   "n": 4,
+   "checks": {
+    "parse=True": 4,
+    "srepr_identical=True": 4,
+    "equiv_zero=True": 4,
+    "six_term_multiset=True": 4,
+    "law_reproduces=True": 4,
+    "cand_sig_id_equal=True": 4,
+    "teacher_equal=True": 4,
+    "child_srepr_set_equal=True": 4,
+    "ties_equal=True": 4,
+    "law_cur_is_raw=True": 4
+   },
+   "identical_to_raw": 0,
+   "ceilings": {
+    "prompt_tokens": {
+     "values": {
+      "88": {
+       "SIN_LOW": 2,
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 2,
+     "both_correct_of_48": 0,
+     "constant": true
+    },
+    "lead_sign": {
+     "values": {
+      "+": {
+       "SIN_LOW": 2,
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 2,
+     "both_correct_of_48": 0,
+     "constant": true
+    },
+    "minus_pos": {
+     "values": {
+      "1": {
+       "SIN_LOW": 2
+      },
+      "3": {
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 4,
+     "both_correct_of_48": 2,
+     "constant": false
+    },
+    "first_trig": {
+     "values": {
+      "sin": {
+       "SIN_LOW": 2
+      },
+      "cos": {
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 4,
+     "both_correct_of_48": 2,
+     "constant": false
+    }
+   },
+   "pair_geometry_v_raw": {
+    "pairs": 2,
+    "sign_reversed": 0,
+    "sign_same": 0,
+    "length_diff_reversed": 0,
+    "length_diff_same": 0,
+    "length_abs_diff_equal": 0
+   }
+  },
+  "LOW_PAIR_FIRST": {
+   "n": 4,
+   "checks": {
+    "parse=True": 4,
+    "srepr_identical=True": 4,
+    "equiv_zero=True": 4,
+    "six_term_multiset=True": 4,
+    "law_reproduces=True": 4,
+    "cand_sig_id_equal=True": 4,
+    "teacher_equal=True": 4,
+    "child_srepr_set_equal=True": 4,
+    "ties_equal=True": 4,
+    "law_cur_is_raw=True": 4
+   },
+   "identical_to_raw": 0,
+   "ceilings": {
+    "prompt_tokens": {
+     "values": {
+      "88": {
+       "SIN_LOW": 2
+      },
+      "89": {
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 4,
+     "both_correct_of_48": 2,
+     "constant": false
+    },
+    "lead_sign": {
+     "values": {
+      "+": {
+       "SIN_LOW": 2
+      },
+      "-": {
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 4,
+     "both_correct_of_48": 2,
+     "constant": false
+    },
+    "minus_pos": {
+     "values": {
+      "3": {
+       "SIN_LOW": 2
+      },
+      "0": {
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 4,
+     "both_correct_of_48": 2,
+     "constant": false
+    },
+    "first_trig": {
+     "values": {
+      "cos": {
+       "SIN_LOW": 2
+      },
+      "sin": {
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 4,
+     "both_correct_of_48": 2,
+     "constant": false
+    }
+   },
+   "pair_geometry_v_raw": {
+    "pairs": 2,
+    "sign_reversed": 2,
+    "sign_same": 0,
+    "length_diff_reversed": 2,
+    "length_diff_same": 0,
+    "length_abs_diff_equal": 2
+   }
+  },
+  "W_FIRST": {
+   "n": 4,
+   "checks": {
+    "parse=True": 4,
+    "srepr_identical=True": 4,
+    "equiv_zero=True": 4,
+    "six_term_multiset=True": 4,
+    "law_reproduces=True": 4,
+    "cand_sig_id_equal=True": 4,
+    "teacher_equal=True": 4,
+    "child_srepr_set_equal=True": 4,
+    "ties_equal=True": 4,
+    "law_cur_is_raw=True": 4
+   },
+   "identical_to_raw": 0,
+   "ceilings": {
+    "prompt_tokens": {
+     "values": {
+      "88": {
+       "SIN_LOW": 2,
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 2,
+     "both_correct_of_48": 0,
+     "constant": true
+    },
+    "lead_sign": {
+     "values": {
+      "+": {
+       "SIN_LOW": 2,
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 2,
+     "both_correct_of_48": 0,
+     "constant": true
+    },
+    "minus_pos": {
+     "values": {
+      "1": {
+       "SIN_LOW": 2
+      },
+      "4": {
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 4,
+     "both_correct_of_48": 2,
+     "constant": false
+    },
+    "first_trig": {
+     "values": {
+      "sin": {
+       "SIN_LOW": 2
+      },
+      "cos": {
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 4,
+     "both_correct_of_48": 2,
+     "constant": false
+    }
+   },
+   "pair_geometry_v_raw": {
+    "pairs": 2,
+    "sign_reversed": 0,
+    "sign_same": 0,
+    "length_diff_reversed": 0,
+    "length_diff_same": 0,
+    "length_abs_diff_equal": 0
+   }
+  },
+  "COS_SOURCE_FIRST": {
+   "n": 4,
+   "checks": {
+    "parse=True": 4,
+    "srepr_identical=True": 4,
+    "equiv_zero=True": 4,
+    "six_term_multiset=True": 4,
+    "law_reproduces=True": 4,
+    "cand_sig_id_equal=True": 4,
+    "teacher_equal=True": 4,
+    "child_srepr_set_equal=True": 4,
+    "ties_equal=True": 4,
+    "law_cur_is_raw=True": 4
+   },
+   "identical_to_raw": 2,
+   "ceilings": {
+    "prompt_tokens": {
+     "values": {
+      "89": {
+       "SIN_LOW": 2,
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 2,
+     "both_correct_of_48": 0,
+     "constant": true
+    },
+    "lead_sign": {
+     "values": {
+      "-": {
+       "SIN_LOW": 2,
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 2,
+     "both_correct_of_48": 0,
+     "constant": true
+    },
+    "minus_pos": {
+     "values": {
+      "0": {
+       "SIN_LOW": 2,
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 2,
+     "both_correct_of_48": 0,
+     "constant": true
+    },
+    "first_trig": {
+     "values": {
+      "sin": {
+       "SIN_LOW": 2,
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 2,
+     "both_correct_of_48": 0,
+     "constant": true
+    }
+   },
+   "pair_geometry_v_raw": {
+    "pairs": 2,
+    "sign_reversed": 0,
+    "sign_same": 0,
+    "length_diff_reversed": 0,
+    "length_diff_same": 0,
+    "length_abs_diff_equal": 0
+   }
+  },
+  "SIN_SOURCE_FIRST": {
+   "n": 4,
+   "checks": {
+    "parse=True": 4,
+    "srepr_identical=True": 4,
+    "equiv_zero=True": 4,
+    "six_term_multiset=True": 4,
+    "law_reproduces=True": 4,
+    "cand_sig_id_equal=True": 4,
+    "teacher_equal=True": 4,
+    "child_srepr_set_equal=True": 4,
+    "ties_equal=True": 4,
+    "law_cur_is_raw=True": 4
+   },
+   "identical_to_raw": 2,
+   "ceilings": {
+    "prompt_tokens": {
+     "values": {
+      "88": {
+       "SIN_LOW": 2,
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 2,
+     "both_correct_of_48": 0,
+     "constant": true
+    },
+    "lead_sign": {
+     "values": {
+      "+": {
+       "SIN_LOW": 2,
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 2,
+     "both_correct_of_48": 0,
+     "constant": true
+    },
+    "minus_pos": {
+     "values": {
+      "3": {
+       "SIN_LOW": 2,
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 2,
+     "both_correct_of_48": 0,
+     "constant": true
+    },
+    "first_trig": {
+     "values": {
+      "cos": {
+       "SIN_LOW": 2,
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 2,
+     "both_correct_of_48": 0,
+     "constant": true
+    }
+   },
+   "pair_geometry_v_raw": {
+    "pairs": 2,
+    "sign_reversed": 0,
+    "sign_same": 0,
+    "length_diff_reversed": 0,
+    "length_diff_same": 0,
+    "length_abs_diff_equal": 0
+   }
+  }
+ },
+ "verdict": {
+  "HIGH_PAIR_FIRST": {
+   "all_checks_true": true,
+   "neutral_geometry": true,
+   "cue_flipped_geometry": false,
+   "minus_pos_constant": false,
+   "first_trig_constant": false
+  },
+  "HIGH_PAIR_FIRST_LDEG": {
+   "all_checks_true": true,
+   "neutral_geometry": true,
+   "cue_flipped_geometry": false,
+   "minus_pos_constant": false,
+   "first_trig_constant": false
+  },
+  "K_FIRST": {
+   "all_checks_true": true,
+   "neutral_geometry": true,
+   "cue_flipped_geometry": false,
+   "minus_pos_constant": false,
+   "first_trig_constant": false
+  },
+  "LOW_PAIR_FIRST": {
+   "all_checks_true": true,
+   "neutral_geometry": true,
+   "cue_flipped_geometry": true,
+   "minus_pos_constant": false,
+   "first_trig_constant": false
+  },
+  "W_FIRST": {
+   "all_checks_true": true,
+   "neutral_geometry": true,
+   "cue_flipped_geometry": false,
+   "minus_pos_constant": false,
+   "first_trig_constant": false
+  },
+  "COS_SOURCE_FIRST": {
+   "all_checks_true": true,
+   "neutral_geometry": true,
+   "cue_flipped_geometry": false,
+   "minus_pos_constant": true,
+   "first_trig_constant": true
+  },
+  "SIN_SOURCE_FIRST": {
+   "all_checks_true": true,
+   "neutral_geometry": true,
+   "cue_flipped_geometry": false,
+   "minus_pos_constant": true,
+   "first_trig_constant": true
+  }
+ },
+ "wall_s": 8.96,
+ "provenance": {
+  "start_commit": "1c0d25c3",
+  "start_status_porcelain": " M scripts/INDEX.md\n?? scratch/mathworld1_prband2nuis.py\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_prband2nuis.py": "9430c181b772e12fe1d470b9b5456880f98f6207fff3b061b22ca28628276c75",
+   "scratch/mathworld1_svpchal.py": "4e72cf2c9d9e15e8d84692d077e658dc535199ffb9fd6f81406ca7c23785eaf0",
+   "scratch/mathworld1_prband.py": "e4fb51d59e973c19b90a10da50365a488b63f15faf1356838abfeb2c994a178e",
+   "scratch/mathworld1_actiontok.py": "a5a22b38c775f67b303b305fa98d8a7fd3e79ac2f11e151385a2701a6d0c4aec",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "1c0d25c3",
+ "views_sha": "08dc3a8742367d81ba339ba80556ca10ae8fec0fce452f202f1c11ee44a89b8b"
+}
