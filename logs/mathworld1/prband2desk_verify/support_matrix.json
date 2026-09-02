@@ -1,0 +1,669 @@
+{
+ "n_rows": 74860,
+ "pins": {
+  "data/matsub_paired.jsonl": "a943ba7fc581db743b07192e5d951fadddd2ba19bca3225b75d8402351d468e8",
+  "logs/mathworld1/svpdiet/balanced_grid_train.jsonl": "0ef3d8a880a7e07712d8de757bc1670df12701e487b856b44c97f8db16cb3759"
+ },
+ "matrix": {
+  "I0/t0": {
+   "tuple": [
+    "i_unprod",
+    "I",
+    0,
+    "term_index",
+    0
+   ],
+   "whole": 1204,
+   "rule_param": 1480,
+   "rule_site": 3989,
+   "program_text": "<r:i_unprod> I0 t0\n",
+   "program_text_count": 1204,
+   "factor_code": [
+    1,
+    3,
+    1,
+    0,
+    1,
+    2,
+    0,
+    1
+   ],
+   "factor_pos_counts": [
+    43886,
+    4659,
+    74137,
+    74860,
+    62956,
+    4659,
+    74860,
+    1481
+   ],
+   "pf_code": [
+    2,
+    0,
+    1,
+    1,
+    3,
+    1,
+    0,
+    1
+   ],
+   "pf_pos_counts": [
+    4659,
+    74860,
+    1481,
+    43886,
+    4659,
+    74137,
+    74860,
+    62956
+   ],
+   "all_positions_supported": true
+  },
+  "I0/t1": {
+   "tuple": [
+    "i_unprod",
+    "I",
+    0,
+    "term_index",
+    1
+   ],
+   "whole": 2267,
+   "rule_param": 2661,
+   "rule_site": 3989,
+   "program_text": "<r:i_unprod> I0 t1\n",
+   "program_text_count": 2267,
+   "factor_code": [
+    1,
+    3,
+    1,
+    0,
+    1,
+    2,
+    0,
+    2
+   ],
+   "factor_pos_counts": [
+    43886,
+    4659,
+    74137,
+    74860,
+    62956,
+    4659,
+    74860,
+    2663
+   ],
+   "pf_code": [
+    2,
+    0,
+    2,
+    1,
+    3,
+    1,
+    0,
+    1
+   ],
+   "pf_pos_counts": [
+    4659,
+    74860,
+    2663,
+    43886,
+    4659,
+    74137,
+    74860,
+    62956
+   ],
+   "all_positions_supported": true
+  },
+  "I0/t2": {
+   "tuple": [
+    "i_unprod",
+    "I",
+    0,
+    "term_index",
+    2
+   ],
+   "whole": 261,
+   "rule_param": 261,
+   "rule_site": 3989,
+   "program_text": "<r:i_unprod> I0 t2\n",
+   "program_text_count": 261,
+   "factor_code": [
+    1,
+    3,
+    1,
+    0,
+    1,
+    2,
+    0,
+    3
+   ],
+   "factor_pos_counts": [
+    43886,
+    4659,
+    74137,
+    74860,
+    62956,
+    4659,
+    74860,
+    261
+   ],
+   "pf_code": [
+    2,
+    0,
+    3,
+    1,
+    3,
+    1,
+    0,
+    1
+   ],
+   "pf_pos_counts": [
+    4659,
+    74860,
+    261,
+    43886,
+    4659,
+    74137,
+    74860,
+    62956
+   ],
+   "all_positions_supported": true
+  },
+  "I0/t3": {
+   "tuple": [
+    "i_unprod",
+    "I",
+    0,
+    "term_index",
+    3
+   ],
+   "whole": 257,
+   "rule_param": 257,
+   "rule_site": 3989,
+   "program_text": "<r:i_unprod> I0 t3\n",
+   "program_text_count": 257,
+   "factor_code": [
+    1,
+    3,
+    1,
+    0,
+    1,
+    2,
+    0,
+    4
+   ],
+   "factor_pos_counts": [
+    43886,
+    4659,
+    74137,
+    74860,
+    62956,
+    4659,
+    74860,
+    257
+   ],
+   "pf_code": [
+    2,
+    0,
+    4,
+    1,
+    3,
+    1,
+    0,
+    1
+   ],
+   "pf_pos_counts": [
+    4659,
+    74860,
+    257,
+    43886,
+    4659,
+    74137,
+    74860,
+    62956
+   ],
+   "all_positions_supported": true
+  },
+  "I0/t4": {
+   "tuple": [
+    "i_unprod",
+    "I",
+    0,
+    "term_index",
+    4
+   ],
+   "whole": 0,
+   "rule_param": 0,
+   "rule_site": 3989,
+   "program_text": "<r:i_unprod> I0 t4\n",
+   "program_text_count": 0,
+   "factor_code": [
+    1,
+    3,
+    1,
+    0,
+    1,
+    2,
+    0,
+    5
+   ],
+   "factor_pos_counts": [
+    43886,
+    4659,
+    74137,
+    74860,
+    62956,
+    4659,
+    74860,
+    0
+   ],
+   "pf_code": [
+    2,
+    0,
+    5,
+    1,
+    3,
+    1,
+    0,
+    1
+   ],
+   "pf_pos_counts": [
+    4659,
+    74860,
+    0,
+    43886,
+    4659,
+    74137,
+    74860,
+    62956
+   ],
+   "all_positions_supported": false
+  },
+  "I0/t5": {
+   "tuple": [
+    "i_unprod",
+    "I",
+    0,
+    "term_index",
+    5
+   ],
+   "whole": 0,
+   "rule_param": 0,
+   "rule_site": 3989,
+   "program_text": "<r:i_unprod> I0 t5\n",
+   "program_text_count": 0,
+   "factor_code": [
+    1,
+    3,
+    1,
+    0,
+    1,
+    2,
+    0,
+    6
+   ],
+   "factor_pos_counts": [
+    43886,
+    4659,
+    74137,
+    74860,
+    62956,
+    4659,
+    74860,
+    0
+   ],
+   "pf_code": [
+    2,
+    0,
+    6,
+    1,
+    3,
+    1,
+    0,
+    1
+   ],
+   "pf_pos_counts": [
+    4659,
+    74860,
+    0,
+    43886,
+    4659,
+    74137,
+    74860,
+    62956
+   ],
+   "all_positions_supported": false
+  },
+  "I1/t0": {
+   "tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    0
+   ],
+   "whole": 276,
+   "rule_param": 1480,
+   "rule_site": 670,
+   "program_text": "<r:i_unprod> I1 t0\n",
+   "program_text_count": 276,
+   "factor_code": [
+    1,
+    3,
+    1,
+    0,
+    2,
+    2,
+    0,
+    1
+   ],
+   "factor_pos_counts": [
+    43886,
+    4659,
+    74137,
+    74860,
+    10236,
+    4659,
+    74860,
+    1481
+   ],
+   "pf_code": [
+    2,
+    0,
+    1,
+    1,
+    3,
+    1,
+    0,
+    2
+   ],
+   "pf_pos_counts": [
+    4659,
+    74860,
+    1481,
+    43886,
+    4659,
+    74137,
+    74860,
+    10236
+   ],
+   "all_positions_supported": true
+  },
+  "I1/t1": {
+   "tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    1
+   ],
+   "whole": 394,
+   "rule_param": 2661,
+   "rule_site": 670,
+   "program_text": "<r:i_unprod> I1 t1\n",
+   "program_text_count": 394,
+   "factor_code": [
+    1,
+    3,
+    1,
+    0,
+    2,
+    2,
+    0,
+    2
+   ],
+   "factor_pos_counts": [
+    43886,
+    4659,
+    74137,
+    74860,
+    10236,
+    4659,
+    74860,
+    2663
+   ],
+   "pf_code": [
+    2,
+    0,
+    2,
+    1,
+    3,
+    1,
+    0,
+    2
+   ],
+   "pf_pos_counts": [
+    4659,
+    74860,
+    2663,
+    43886,
+    4659,
+    74137,
+    74860,
+    10236
+   ],
+   "all_positions_supported": true
+  },
+  "I1/t2": {
+   "tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    2
+   ],
+   "whole": 0,
+   "rule_param": 261,
+   "rule_site": 670,
+   "program_text": "<r:i_unprod> I1 t2\n",
+   "program_text_count": 0,
+   "factor_code": [
+    1,
+    3,
+    1,
+    0,
+    2,
+    2,
+    0,
+    3
+   ],
+   "factor_pos_counts": [
+    43886,
+    4659,
+    74137,
+    74860,
+    10236,
+    4659,
+    74860,
+    261
+   ],
+   "pf_code": [
+    2,
+    0,
+    3,
+    1,
+    3,
+    1,
+    0,
+    2
+   ],
+   "pf_pos_counts": [
+    4659,
+    74860,
+    261,
+    43886,
+    4659,
+    74137,
+    74860,
+    10236
+   ],
+   "all_positions_supported": true
+  },
+  "I1/t3": {
+   "tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    3
+   ],
+   "whole": 0,
+   "rule_param": 257,
+   "rule_site": 670,
+   "program_text": "<r:i_unprod> I1 t3\n",
+   "program_text_count": 0,
+   "factor_code": [
+    1,
+    3,
+    1,
+    0,
+    2,
+    2,
+    0,
+    4
+   ],
+   "factor_pos_counts": [
+    43886,
+    4659,
+    74137,
+    74860,
+    10236,
+    4659,
+    74860,
+    257
+   ],
+   "pf_code": [
+    2,
+    0,
+    4,
+    1,
+    3,
+    1,
+    0,
+    2
+   ],
+   "pf_pos_counts": [
+    4659,
+    74860,
+    257,
+    43886,
+    4659,
+    74137,
+    74860,
+    10236
+   ],
+   "all_positions_supported": true
+  },
+  "I1/t4": {
+   "tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    4
+   ],
+   "whole": 0,
+   "rule_param": 0,
+   "rule_site": 670,
+   "program_text": "<r:i_unprod> I1 t4\n",
+   "program_text_count": 0,
+   "factor_code": [
+    1,
+    3,
+    1,
+    0,
+    2,
+    2,
+    0,
+    5
+   ],
+   "factor_pos_counts": [
+    43886,
+    4659,
+    74137,
+    74860,
+    10236,
+    4659,
+    74860,
+    0
+   ],
+   "pf_code": [
+    2,
+    0,
+    5,
+    1,
+    3,
+    1,
+    0,
+    2
+   ],
+   "pf_pos_counts": [
+    4659,
+    74860,
+    0,
+    43886,
+    4659,
+    74137,
+    74860,
+    10236
+   ],
+   "all_positions_supported": false
+  },
+  "I1/t5": {
+   "tuple": [
+    "i_unprod",
+    "I",
+    1,
+    "term_index",
+    5
+   ],
+   "whole": 0,
+   "rule_param": 0,
+   "rule_site": 670,
+   "program_text": "<r:i_unprod> I1 t5\n",
+   "program_text_count": 0,
+   "factor_code": [
+    1,
+    3,
+    1,
+    0,
+    2,
+    2,
+    0,
+    6
+   ],
+   "factor_pos_counts": [
+    43886,
+    4659,
+    74137,
+    74860,
+    10236,
+    4659,
+    74860,
+    0
+   ],
+   "pf_code": [
+    2,
+    0,
+    6,
+    1,
+    3,
+    1,
+    0,
+    2
+   ],
+   "pf_pos_counts": [
+    4659,
+    74860,
+    0,
+    43886,
+    4659,
+    74137,
+    74860,
+    10236
+   ],
+   "all_positions_supported": false
+  }
+ }
+}
