@@ -1,0 +1,106 @@
+{
+ "input_sha256": {
+  "bars.json": "dbc195cb26bd348df268a2004afda5f1d8939f04791405c64da0c9d8aae3f092",
+  "bases.jsonl": "0fd7ac37b75a1dae4547afa3e8b3fd0fa6077d97cb169df34cfa306afb71e80c",
+  "capacity.json": "5dfc6d88d465eb69a665e8147e0821017a14110b4eb381c296571862ced8711e",
+  "overlap_receipt.json": "631a75d60c73ce017e07ca070df2fa08343d60b43da3285e336acb585c7017ca",
+  "prband2desk_receipt.json": "60368b1c7b56303281b27e099f506883e8f088d242268429e77d9028c6329337",
+  "primaries.jsonl": "c547b3a03bcaff80c63af972eca4e0f75758f10e9a26bf75f0f2e3d122fba427",
+  "support_rider.json": "34d6b3a4d8e2538465bdd343eb18cfece7c3f883f9afde6cea5ca6bbfbf32bca"
+ },
+ "requalified_parents": 192,
+ "overlap_hits": {
+  "natural": 0,
+  "v1_census": 0,
+  "pilot": 0,
+  "d3_artifacts": 0,
+  "cl1": 0,
+  "fresh_K_present": 0
+ },
+ "classifying": {
+  "n": 32,
+  "census": {
+   "STRICT-A": 16,
+   "STRICT-B": 16
+  },
+  "by_theta": {
+   "SIN_LOW": {
+    "STRICT-A": 16
+   },
+   "COS_LOW": {
+    "STRICT-B": 16
+   }
+  },
+  "B1": 32,
+  "B2": [
+   16,
+   16
+  ],
+  "map_violations": 0,
+  "gaps": {
+   "1.0": 32
+  },
+  "n_sigs": 1,
+  "n_mixed": 1,
+  "m": [
+   16
+  ],
+  "sum_m": 16,
+  "top2": 16,
+  "B4": [
+   32,
+   32
+  ],
+  "fails": 0,
+  "B7": 32
+ },
+ "robustness": {
+  "n": 32,
+  "census": {
+   "STRICT-A": 16,
+   "STRICT-B": 16
+  },
+  "by_theta": {
+   "SIN_LOW": {
+    "STRICT-A": 16
+   },
+   "COS_LOW": {
+    "STRICT-B": 16
+   }
+  },
+  "B1": 32,
+  "B2": [
+   16,
+   16
+  ],
+  "map_violations": 0,
+  "gaps": {
+   "3.0": 32
+  },
+  "n_sigs": 1,
+  "n_mixed": 1,
+  "m": [
+   16
+  ],
+  "sum_m": 16,
+  "top2": 16,
+  "B4": [
+   32,
+   32
+  ],
+  "fails": 0,
+  "B7": 32
+ },
+ "passes": {
+  "B1": true,
+  "B2": true,
+  "B3": true,
+  "B4": true,
+  "B5": true,
+  "B6": true,
+  "B7": true
+ },
+ "decision": "GO V2 PRODUCTION DESIGN",
+ "problems": [],
+ "verdict": "VERIFIED GO V2 PRODUCTION DESIGN"
+}

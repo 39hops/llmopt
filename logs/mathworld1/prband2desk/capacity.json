@@ -1,0 +1,44 @@
+{
+ "classifying": {
+  "n_signatures_complete": 1,
+  "signature_census": {
+   "89111c27402d36153869777ae2b6fb4e485f79a5e5f413ec6694ea5df0b5a61f": 32
+  },
+  "n_mixed": 1,
+  "groups": {
+   "89111c27402d36153869777ae2b6fb4e485f79a5e5f413ec6694ea5df0b5a61f": {
+    "n_A": 16,
+    "n_B": 16,
+    "m_g": 16
+   }
+  },
+  "top_m_g": [
+   16
+  ],
+  "sum_m_g": 16,
+  "top2_capacity": 16,
+  "min_signatures_for_12": 1,
+  "pass": true
+ },
+ "robustness": {
+  "n_signatures_complete": 1,
+  "signature_census": {
+   "425e56e6e3bb06b8d36aaadb13b25a0373665cc840374bd4cbcb39b16e26332f": 32
+  },
+  "n_mixed": 1,
+  "groups": {
+   "425e56e6e3bb06b8d36aaadb13b25a0373665cc840374bd4cbcb39b16e26332f": {
+    "n_A": 16,
+    "n_B": 16,
+    "m_g": 16
+   }
+  },
+  "top_m_g": [
+   16
+  ],
+  "sum_m_g": 16,
+  "top2_capacity": 16,
+  "min_signatures_for_12": 1,
+  "pass": true
+ }
+}

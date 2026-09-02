@@ -2874,6 +2874,26 @@ MATH-CYBER-1 PRIOR-RESISTANT-EVAL-MATERIALIZATION-0 — materialize, or mechanic
 - `ceiling_report(rows, label)`
 - `main()`
 
+### scratch/mathworld1_prband2desk.py
+MATH-CYBER-1 PRIOR-RESISTANT-EVAL-V2-CROSSOVER-DESK-0 — execute the frozen controlled-crossover feasibility desk (PRE-REG ...V2-CROSSOVER- DESK-0, 488e8b23, RESULTS L63579). ZERO checkpoint access, ZERO scoring, ZERO training, ZERO production materialization.
+
+- `build_desk()`
+- `smoke_bases()`
+- `hce_of(expr)`
+- `anatomy(base, D, v)` — Per-candidate recomputation + i_unprod role trace.
+- `classify(prim, block_ok, e_lo)`
+- `main()`
+
+### scratch/mathworld1_prband2desk_verify.py
+MATH-CYBER-1 PRIOR-RESISTANT-EVAL-V2-CROSSOVER-DESK-0 — INDEPENDENT VERIFIER. Reconstructs the frozen desk (PRE-REG 488e8b23) from raw WITHOUT importing any aggregate from the driver: own bank enumeration, own base/burn uniqueness, own overlap sets, a FULL re-qualification of all 192 parents (qualify_parent), own term ordering + role trace, own signature function, own HCE from child expressions, own min_hce_ties, own strict A/B classification, own B1-B7 and decision, own robustness census; then compares against the driver's per-row artifacts. Zero checkpoint access. Writes logs/mathworld1/prband2desk_verify/verify_receipt.json.
+
+- `check(cond, msg)`
+- `h(s)`
+- `tup(c)`
+- `sig_of(cands)`
+- `hce(e)`
+- `main()`
+
 ### scratch/mathworld1_prband_anat.py
 MATH-CYBER-1 PRIOR-RESISTANT-EVAL-MATERIALIZATION-0 — descriptive census anatomy of the NO-FIRE horizon (read-only over logs/mathworld1/prband/horizon_census.jsonl; no law, no selection, no model). Writes logs/mathworld1/prband_verify/anatomy.json (refuse-if-exists): per-signature gold census, lowest-index rule counts and exception shapes, within-k co-occurrence, parity-v-k alignment, gold-class-v-k table, the a-states of the two mixed signatures, and the companion (after) side of the same quantities.
 

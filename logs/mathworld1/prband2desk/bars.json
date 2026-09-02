@@ -1,0 +1,180 @@
+{
+ "classifying_e_lo2": {
+  "n": 32,
+  "class_census": {
+   "STRICT-A": 16,
+   "STRICT-B": 16
+  },
+  "by_theta": {
+   "SIN_LOW": {
+    "STRICT-A": 16
+   },
+   "COS_LOW": {
+    "STRICT-B": 16
+   }
+  },
+  "B1": {
+   "num": 32,
+   "den": 32,
+   "pass": true
+  },
+  "B2": {
+   "strict_A": 16,
+   "strict_B": 16,
+   "pass": true,
+   "mapping_violations": 0,
+   "gap_distribution": {
+    "1.0": 32
+   }
+  },
+  "B3": {
+   "n_signatures_complete": 1,
+   "signature_census": {
+    "89111c27402d36153869777ae2b6fb4e485f79a5e5f413ec6694ea5df0b5a61f": 32
+   },
+   "n_mixed": 1,
+   "groups": {
+    "89111c27402d36153869777ae2b6fb4e485f79a5e5f413ec6694ea5df0b5a61f": {
+     "n_A": 16,
+     "n_B": 16,
+     "m_g": 16
+    }
+   },
+   "top_m_g": [
+    16
+   ],
+   "sum_m_g": 16,
+   "top2_capacity": 16,
+   "min_signatures_for_12": 1,
+   "pass": true
+  },
+  "B4": {
+   "num": 32,
+   "den": 32,
+   "pass": true
+  },
+  "B5": {
+   "blocks_qualified": 32,
+   "den": 32,
+   "fail_census": {},
+   "pass": true
+  },
+  "B6": {
+   "hits": {
+    "natural": 0,
+    "band": 0,
+    "pilot": 0,
+    "horizons": 0,
+    "d3_artifacts": 0,
+    "cl1": 0,
+    "v1_census": 0,
+    "own_smoke": 0
+   },
+   "den": 192,
+   "pass": true
+  },
+  "B7": {
+   "num": 32,
+   "den": 32,
+   "tie": 0,
+   "non_target": 0,
+   "target_absent": 0,
+   "fail": 0,
+   "pass": true
+  }
+ },
+ "robustness_e_lo1": {
+  "n": 32,
+  "class_census": {
+   "STRICT-A": 16,
+   "STRICT-B": 16
+  },
+  "by_theta": {
+   "SIN_LOW": {
+    "STRICT-A": 16
+   },
+   "COS_LOW": {
+    "STRICT-B": 16
+   }
+  },
+  "B1": {
+   "num": 32,
+   "den": 32,
+   "pass": true
+  },
+  "B2": {
+   "strict_A": 16,
+   "strict_B": 16,
+   "pass": true,
+   "mapping_violations": 0,
+   "gap_distribution": {
+    "3.0": 32
+   }
+  },
+  "B3": {
+   "n_signatures_complete": 1,
+   "signature_census": {
+    "425e56e6e3bb06b8d36aaadb13b25a0373665cc840374bd4cbcb39b16e26332f": 32
+   },
+   "n_mixed": 1,
+   "groups": {
+    "425e56e6e3bb06b8d36aaadb13b25a0373665cc840374bd4cbcb39b16e26332f": {
+     "n_A": 16,
+     "n_B": 16,
+     "m_g": 16
+    }
+   },
+   "top_m_g": [
+    16
+   ],
+   "sum_m_g": 16,
+   "top2_capacity": 16,
+   "min_signatures_for_12": 1,
+   "pass": true
+  },
+  "B4": {
+   "num": 32,
+   "den": 32,
+   "pass": true
+  },
+  "B5": {
+   "blocks_qualified": 32,
+   "den": 32,
+   "fail_census": {},
+   "pass": true
+  },
+  "B6": {
+   "hits": {
+    "natural": 0,
+    "band": 0,
+    "pilot": 0,
+    "horizons": 0,
+    "d3_artifacts": 0,
+    "cl1": 0,
+    "v1_census": 0,
+    "own_smoke": 0
+   },
+   "den": 192,
+   "pass": true
+  },
+  "B7": {
+   "num": 32,
+   "den": 32,
+   "tie": 0,
+   "non_target": 0,
+   "target_absent": 0,
+   "fail": 0,
+   "pass": true
+  }
+ },
+ "passes": {
+  "B1": true,
+  "B2": true,
+  "B3": true,
+  "B4": true,
+  "B5": true,
+  "B6": true,
+  "B7": true
+ },
+ "decision": "GO V2 PRODUCTION DESIGN"
+}

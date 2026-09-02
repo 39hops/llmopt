@@ -1,0 +1,14 @@
+{
+ "hits": {
+  "natural": 0,
+  "band": 0,
+  "pilot": 0,
+  "horizons": 0,
+  "d3_artifacts": 0,
+  "cl1": 0,
+  "v1_census": 0,
+  "own_smoke": 0
+ },
+ "n_checked": 192,
+ "n_unique": 192
+}

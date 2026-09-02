@@ -63894,3 +63894,191 @@ regardless of GO / PARK / NEEDS-REDESIGN. NEXT ELIGIBLE GO
 (one, nominated, NOT authorized): MATH-CYBER-1-PRIOR-
 RESISTANT-EVAL-V2-CROSSOVER-DESK-0 execution.
 
+## VERDICT MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-CROSSOVER-DESK-0: GO V2 PRODUCTION DESIGN — the controlled two-pair construction produces STRICT state-dependent HCE crossovers under a FIXED complete legal candidate signature: all 32 classifying (e_lo = 2) primaries qualified, every one is a counted strict crossover (16 STRICT-A under SIN_LOW, 16 STRICT-B under COS_LOW, zero mapping violations, zero ties, zero non-target teachers), all 32 share ONE complete cand_sig_id (i_sum + i_unprod term_index 1 + i_unprod term_index 4, three candidates, no euler, no algebra move), the winning child is exactly 1.0 HCE unit cheaper than the other target in 32/32 (residual count_ops 17 v 18, A-ops equal 4/4), so n_A = n_B = m_g = 16 in that single signature (sum m_g 16, one signature suffices for capacity 12), B1-B7 all PASS (32/32, 16/16, 16 in <= 2 signatures, 32/32, 32/32 blocks, 0/192 overlap hits, 32/32 strict unique-target teachers); the secondary e_lo = 1 stratum reproduces the mechanism with a 3.0 gap (16/16, its own single signature {1,3,5} + i_sum) and enters no primary bar; VERIFIED by the fresh-reconstruction verifier with a full re-qualification of all 192 parents (zero discrepancies); training-support confound re-persisted (A 394 whole-coordinate, B never, B's last factor symbol unseen); wall 92.6 s; no production materialized, nothing loaded or scored (2026-09-02, Mac)
+
+Per PRE-REG ...V2-CROSSOVER-DESK-0 (488e8b23, L63579),
+applied mechanically. Driver scratch/mathworld1_prband2desk.py
+committed BEFORE any byte (c5bf60cf); path-isolated smoke on
+two burned V1 bases SMOKE OK (receipt 327f0c72...);
+production launched at c5bf60cf, completion_commit c5bf60cf;
+independent verifier scratch/mathworld1_prband2desk_verify.py
+(ffd28293) reconstructs bank, burn set, overlap sets, the full
+qualification of all 192 parents, term ordering, roles,
+signatures, HCE from child expressions, min_hce_ties, strict
+classes, B1-B7, capacities and the decision from raw, importing
+no driver aggregate: VERIFIED GO V2 PRODUCTION DESIGN, zero
+problems (verify_receipt 6fac596e...; the verify receipt
+carries no code-identity block — the verifier commit
+ffd28293 IS its provenance; its freshness re-check
+reproduces 5 of the driver's 8 fences, omitting the svpeval
+band, the constructed-horizon sets, and own smoke, which
+are driver-measured only). Wall 92.6 s (192 qualifications); driver
+start tree carried only the generated scripts/INDEX.md as
+dirty (recorded verbatim).
+
+1) HORIZON + BURN: 64 bases exactly as frozen (e_lo {1,2} x
+e_hi {5,6,7,9} x theta {SIN_LOW, COS_LOW} x c {11,13,17,19}; w
+= sin(x)/x, K = 21*x**3, K USED gate passed against all eight
+burned inert-addend banks, odd-c gate passed); base_signature
+/ sig_sha / base-srepr uniqueness gates passed; six additive
+terms in 64/64; 192 parents (three standing variants, primary
+ALWAYS smallA, no parity, no hash) burned at run start. All 192
+curs unique.
+
+2) QUALIFICATION (B5): 32/32 classifying blocks qualify under
+all three variants (and 32/32 robustness blocks); rejection
+census EMPTY (the receipt's fail_census field is
+accumulated over all 64 bases, both strata; it is empty, so
+the scope mislabel has no effect). Every candidate's
+factor / hash / pf codes and PERM identity re-gated per
+row; max primary prompt 93 tokens (101 over all 192
+qualification parents), against the 4,096 gate.
+
+3) TERM ORDER + ROLES (B1 = 32/32 PASS): canonical f.args at
+e_lo = 2 are [21x^3, -c x^b sin(cx), 2x T_low(cx), e_hi
+x^(e_hi-1) T_hi(cx), c x^a cos(cx), Integral(sin(x)/x)] in
+every cell; the cos-pair correct guess (A = x^b cos(cx))
+sits at term_index 1 and the sin-pair correct guess (A = x^a
+sin(cx)) at term_index 4 in 32/32; the diagnostic i_unprod
+set is {1, 4} in 32/32 (the wrong-family guesses fail the
+residual-shrink guard, as derived for odd c). No relabeling
+occurred; roles were assigned by exact expression equality
+after generation and matched the frozen expectation.
+
+4) STRICT CROSSOVER (B2 PASS, B7 32/32 PASS): theta x class:
+SIN_LOW -> STRICT-A 16 / STRICT-B 0 / TIE 0 / other 0;
+COS_LOW -> STRICT-A 0 / STRICT-B 16 / TIE 0 / other 0 — the
+frozen mapping SIN_LOW -> A, COS_LOW -> B holds with zero
+violations. Every counted state: A and B legal, teacher rule
+i_unprod at site (I, 1), teacher exactly A or B,
+min_hce_ties = 1 over the COMPLETE legal set (three
+candidates: the two targets and i_sum at hce ~738, far
+above), gap to the other target exactly 1.0 in 32/32 (HCE
+gap distribution {1.0: 32}). No srepr tie-break decided any
+label. B7 as EXECUTED counts STRICT classes, which is
+tighter than the registered "min_hce_ties = 1 with teacher A
+or B" (a ties-1 target teacher with gap < 1 would be
+excluded); no such row exists (all gaps 1.0), so the
+executed and registered bars coincide here. Anatomy of the
+one op — the MINIMUM possible strict separation, one
+count_ops unit on top of 300 shared unsolved-atom mass
+(326.1 v 327.1): A-ops equal (4 v 4); residual
+ops 17 (child cancelling the high-degree pair) v 18 (child
+cancelling the exponent-2 pair); child ops 26 v 27; unsolved
+atoms 3 v 3; e.g. e_hi = 5, c = 11, SIN_LOW: teacher A =
+x^5 cos(11x) guess at index 1, hce 326.1, v B at index 4,
+327.1.
+
+5) COMPLETE-SIGNATURE CAPACITY (B3 PASS, B4 32/32 PASS): ONE
+complete cand_sig_id (89111c27...) over all 32 classifying
+primaries: cand_sig = [(i_sum, I, 1, none, -1), (i_unprod, I,
+1, term_index, 1), (i_unprod, I, 1, term_index, 4)]; n_A =
+16, n_B = 16, m_g = 16; mixed signatures 1 of 1; sum m_g =
+16; top-2 capacity 16; minimum signatures for capacity 12 =
+1; 32/32 strict target primaries inside a mixed signature.
+No euler (w fixed at sin(x)/x), no algebra move, no other
+rule became legal on any base. DISCLOSURE: the complete
+legal set is TINY (three candidates at e_lo = 2, four at
+e_lo = 1), so the single-signature capacity and the 100%
+concentration are near-definitional at this legal-set size
+— they show the construction adds no stray legal action,
+not signature stability across a rich candidate space; the
+crossover claim (strict teacher switch under fixed legality)
+is the finding.
+
+6) FRESHNESS (B6 PASS): 0 hits / 192 parents against natural
+training curs (58,988), svpeval bands (242), 566 pilot
+parents, the D0/D1/DIET/E1/NUISANCE/svpdiet3 horizons
+(37,848), svpdiet3 artifacts (360), CLOSED-LOOP-1 (108), the
+V1 census (5,760 curs, sha 2e28abf09219d4ac5ee2cb834f22f9cb
+c40f750c13029a8b96979f9a7e144c4c, pinned) and own smoke (6).
+Verifier re-derived natural / V1 census / pilot / svpdiet3
+artifacts / CLOSED-LOOP-1 from raw: 0 hits, and every one
+of the 192 curs carries the fresh 21*x**3 addend (which
+makes a hit on the two driver-only constructed sets
+impossible by construction).
+
+7) ROBUSTNESS e_lo = 1 (secondary; entered no primary bar
+except the registered all-192 freshness fence B6 and the
+globally accumulated B5 fail census, both disclosed above):
+32/32 qualify; one complete signature (425e56e6..., i_sum +
+i_unprod {1, 3, 5}, four candidates, the index-5 candidate is
+the WRONG_FAMILY guess from the sin(cx) term); STRICT-A1 16
+(SIN_LOW) / STRICT-B1 16 (COS_LOW), zero ties, gap exactly
+3.0 in 32/32 (child ops 23 v 26; the wrong guess 31); B1-
+analogue 32/32; sum m_g 16. The same mechanism survives the
+larger structural gap.
+
+8) TRAINING-SUPPORT RIDER (zero effect on the desk; binding
+on any later scoring prereg): over the 74,860 training rows,
+A = (i_unprod, I, 1, term_index, 1): whole 394, rule-param
+2,661, every factor-symbol component seen; B = (i_unprod, I,
+1, term_index, 4): whole 0, rule-param 0, last factor
+symbol (5) seen 0 times at its position; robustness B1 =
+(..., 3): whole 0, rule-param 257, component seen 257 (the
+prereg census located those 257 at site ordinal 0; this
+run's rider records no ordinal breakdown). The pair is support-asymmetric; this
+band is NOT a support-matched model assay and NOT a t2/t3
+replacement.
+
+9) CAPACITY FORECAST (cand_sig_id grain, forecast only,
+nothing materialized): at the desk rate every classifying
+base landed in the single dominant signature as a strict
+winner of the expected side (32/32), so the production m_g
+is min(bases per theta class) if the rate holds; 48
+balanced pairs need >= 48 bases per theta (96 bases) and the
+preferred reserve sum m_g >= 72 needs >= 72 per theta (144
+bases) — e.g. e_hi (4) x c (4) x THREE fresh K values = 48
+per theta for the bar, and a wider bank such as e_hi (6) x c
+(4) x K (3) = 72 per theta for the reserve, w fixed, on a
+fresh namespace disjoint from this desk's 64 bases (all 192
+parents burned); sizing is the successor assessment's job.
+
+DECISION MAP: B1-B7 all PASS => GO V2 PRODUCTION DESIGN.
+REGISTERED-PRIOR ACCOUNTING: B1 high — RIGHT (32/32); B2
+moderate-high — RIGHT (16/16, the maximum); B3 moderate —
+RIGHT and stronger than registered (ONE signature, not two);
+B4 moderate — RIGHT (100%); B5 high — RIGHT; B6 high
+conditional on the K / namespace audit — RIGHT (K gate
+passed, namespace fresh);
+gap exactly 1 op — RIGHT (32/32); e_lo = 1 at ~3 ops — RIGHT
+(exactly 3.0, 32/32).
+
+CLAIM CEILING (frozen): this establishes ONLY that this
+controlled two-pair construction produces fresh states whose
+COMPLETE legal candidate signature is fixed while the
+authoritative HCE teacher strictly switches between two legal
+i_unprod actions with state structure (a one-op count_ops
+difference in the residual). NOT established: model context
+use or performance, solve-rate optimality, the globally best
+move, production capacity (forecast only), generality beyond
+this HCE / count_ops crossover family, or that the A-seen /
+B-unseen support asymmetry is acceptable for any scoring
+claim — that question is resolved BEFORE any checkpoint is
+scored.
+
+ARTIFACTS: logs/mathworld1/prband2desk/ prband2desk_receipt
+.json, bars.json, capacity.json, overlap_receipt.json,
+support_rider.json (force-added, small text), primaries.jsonl
+(372 KB, force-added), bases.jsonl (1.0 MB, force-added under
+the 2 MB law), smoke receipt and verify receipt force-added;
+the six production artifact shas are in the receipt, the
+smoke (327f0c72...) and verify (6fac596e...) receipt shas
+are recomputed here.
+
+NEXT ELIGIBLE GO (one, nominated, NOT authorized):
+MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-PRODUCTION-DESIGN-
+ASSESSMENT-0 — assess the production band (fresh namespace,
+bank sizing from the forecast above, the 96-state / 48-pair
+law at cand_sig_id grain, the 50% by-construction
+fixed-ranking cap registered in the V1 design prereg
+(L62655) and never yet measured, companion I0) AND resolve whether the A-seen /
+B-unseen support asymmetry is acceptable for the intended
+scientific claim before any checkpoint scoring is nominated.
+
+FENCES. Desk only: no production population, no checkpoint,
+no scoring, no masks, no training; deterministic construction
+(no seeds, no sampling error); every number from this run's
+receipts or the verifier's; the 192 desk parents are BURNED
+for every future population; V1 stands unamended.
+
