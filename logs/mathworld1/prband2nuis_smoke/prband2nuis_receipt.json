@@ -125,6 +125,21 @@
      "top1_of_96": 4,
      "both_correct_of_48": 2,
      "constant": false
+    },
+    "first_trig_degree": {
+     "values": {
+      "9": {
+       "SIN_LOW": 1,
+       "COS_LOW": 1
+      },
+      "5": {
+       "SIN_LOW": 1,
+       "COS_LOW": 1
+      }
+     },
+     "top1_of_96": 2,
+     "both_correct_of_48": 0,
+     "constant": false
     }
    },
    "pair_geometry_v_raw": {
@@ -203,6 +218,21 @@
      "top1_of_96": 4,
      "both_correct_of_48": 2,
      "constant": false
+    },
+    "first_trig_degree": {
+     "values": {
+      "9": {
+       "SIN_LOW": 1,
+       "COS_LOW": 1
+      },
+      "5": {
+       "SIN_LOW": 1,
+       "COS_LOW": 1
+      }
+     },
+     "top1_of_96": 2,
+     "both_correct_of_48": 0,
+     "constant": false
     }
    },
    "pair_geometry_v_raw": {
@@ -277,6 +307,21 @@
      "top1_of_96": 4,
      "both_correct_of_48": 2,
      "constant": false
+    },
+    "first_trig_degree": {
+     "values": {
+      "8": {
+       "SIN_LOW": 1,
+       "COS_LOW": 1
+      },
+      "4": {
+       "SIN_LOW": 1,
+       "COS_LOW": 1
+      }
+     },
+     "top1_of_96": 2,
+     "both_correct_of_48": 0,
+     "constant": false
     }
    },
    "pair_geometry_v_raw": {
@@ -350,6 +395,21 @@
      },
      "top1_of_96": 4,
      "both_correct_of_48": 2,
+     "constant": false
+    },
+    "first_trig_degree": {
+     "values": {
+      "9": {
+       "SIN_LOW": 1,
+       "COS_LOW": 1
+      },
+      "5": {
+       "SIN_LOW": 1,
+       "COS_LOW": 1
+      }
+     },
+     "top1_of_96": 2,
+     "both_correct_of_48": 0,
      "constant": false
     }
    },
@@ -429,6 +489,17 @@
      "top1_of_96": 4,
      "both_correct_of_48": 2,
      "constant": false
+    },
+    "first_trig_degree": {
+     "values": {
+      "1": {
+       "SIN_LOW": 2,
+       "COS_LOW": 2
+      }
+     },
+     "top1_of_96": 2,
+     "both_correct_of_48": 0,
+     "constant": true
     }
    },
    "pair_geometry_v_raw": {
@@ -503,6 +574,21 @@
      "top1_of_96": 4,
      "both_correct_of_48": 2,
      "constant": false
+    },
+    "first_trig_degree": {
+     "values": {
+      "9": {
+       "SIN_LOW": 1,
+       "COS_LOW": 1
+      },
+      "5": {
+       "SIN_LOW": 1,
+       "COS_LOW": 1
+      }
+     },
+     "top1_of_96": 2,
+     "both_correct_of_48": 0,
+     "constant": false
     }
    },
    "pair_geometry_v_raw": {
@@ -573,6 +659,22 @@
      "top1_of_96": 2,
      "both_correct_of_48": 0,
      "constant": true
+    },
+    "first_trig_degree": {
+     "values": {
+      "9": {
+       "SIN_LOW": 1
+      },
+      "1": {
+       "COS_LOW": 2
+      },
+      "5": {
+       "SIN_LOW": 1
+      }
+     },
+     "top1_of_96": 4,
+     "both_correct_of_48": 2,
+     "constant": false
     }
    },
    "pair_geometry_v_raw": {
@@ -643,6 +745,22 @@
      "top1_of_96": 2,
      "both_correct_of_48": 0,
      "constant": true
+    },
+    "first_trig_degree": {
+     "values": {
+      "1": {
+       "SIN_LOW": 2
+      },
+      "9": {
+       "COS_LOW": 1
+      },
+      "5": {
+       "COS_LOW": 1
+      }
+     },
+     "top1_of_96": 4,
+     "both_correct_of_48": 2,
+     "constant": false
     }
    },
    "pair_geometry_v_raw": {
@@ -658,67 +776,75 @@
  "verdict": {
   "HIGH_PAIR_FIRST": {
    "all_checks_true": true,
-   "neutral_geometry": true,
+   "neutral_geometry": false,
    "cue_flipped_geometry": false,
    "minus_pos_constant": false,
-   "first_trig_constant": false
+   "first_trig_constant": false,
+   "first_trig_degree_ceiling": 2
   },
   "HIGH_PAIR_FIRST_LDEG": {
    "all_checks_true": true,
    "neutral_geometry": true,
    "cue_flipped_geometry": false,
    "minus_pos_constant": false,
-   "first_trig_constant": false
+   "first_trig_constant": false,
+   "first_trig_degree_ceiling": 2
   },
   "K_FIRST": {
    "all_checks_true": true,
    "neutral_geometry": true,
    "cue_flipped_geometry": false,
    "minus_pos_constant": false,
-   "first_trig_constant": false
+   "first_trig_constant": false,
+   "first_trig_degree_ceiling": 2
   },
   "LOW_PAIR_FIRST": {
    "all_checks_true": true,
-   "neutral_geometry": true,
+   "neutral_geometry": false,
    "cue_flipped_geometry": true,
    "minus_pos_constant": false,
-   "first_trig_constant": false
+   "first_trig_constant": false,
+   "first_trig_degree_ceiling": 2
   },
   "W_FIRST": {
    "all_checks_true": true,
    "neutral_geometry": true,
    "cue_flipped_geometry": false,
    "minus_pos_constant": false,
-   "first_trig_constant": false
+   "first_trig_constant": false,
+   "first_trig_degree_ceiling": 2
   },
   "COS_SOURCE_FIRST": {
    "all_checks_true": true,
    "neutral_geometry": true,
    "cue_flipped_geometry": false,
    "minus_pos_constant": true,
-   "first_trig_constant": true
+   "first_trig_constant": true,
+   "first_trig_degree_ceiling": 4
   },
   "SIN_SOURCE_FIRST": {
    "all_checks_true": true,
    "neutral_geometry": true,
    "cue_flipped_geometry": false,
    "minus_pos_constant": true,
-   "first_trig_constant": true
+   "first_trig_constant": true,
+   "first_trig_degree_ceiling": 4
   }
  },
- "wall_s": 8.96,
+ "wall_s": 8.89,
  "provenance": {
-  "start_commit": "1c0d25c3",
-  "start_status_porcelain": " M scripts/INDEX.md\n?? scratch/mathworld1_prband2nuis.py\n",
+  "start_commit": "3ef4ecd0",
+  "start_status_porcelain": " D logs/mathworld1/prband2nuis_smoke/prband2nuis_receipt.json\n M scratch/mathworld1_prband2nuis.py\n M scripts/INDEX.md\n",
   "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
   "file_sha256": {
-   "scratch/mathworld1_prband2nuis.py": "9430c181b772e12fe1d470b9b5456880f98f6207fff3b061b22ca28628276c75",
+   "scratch/mathworld1_prband2nuis.py": "90317ee863a5eeb5515953a0fe5e36812a65354e2de0fe42dfe4aa8a407ef280",
    "scratch/mathworld1_svpchal.py": "4e72cf2c9d9e15e8d84692d077e658dc535199ffb9fd6f81406ca7c23785eaf0",
    "scratch/mathworld1_prband.py": "e4fb51d59e973c19b90a10da50365a488b63f15faf1356838abfeb2c994a178e",
    "scratch/mathworld1_actiontok.py": "a5a22b38c775f67b303b305fa98d8a7fd3e79ac2f11e151385a2701a6d0c4aec",
+   "scratch/mathworld1_svpbirth.py": "c0bed95ec6a4db6faad424fa4780fba3af8d4f6d2cec364c75726da9e532950c",
    "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
   }
  },
- "completion_commit": "1c0d25c3",
- "views_sha": "08dc3a8742367d81ba339ba80556ca10ae8fec0fce452f202f1c11ee44a89b8b"
+ "completion_commit": "3ef4ecd0",
+ "views_sha": "209dd0c2b3cf91b23de0e1938913be53429846f70a61c736ec7ac6c9a38c7d7d"
 }

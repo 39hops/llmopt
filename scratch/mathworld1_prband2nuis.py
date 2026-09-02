@@ -20,7 +20,10 @@ kept verbatim. Every view is checked for: parse, srepr identity with
 the frozen parent, six-term multiset identity, candidate-law
 reproduction (qualify_parent on the reparsed object == frozen
 cand_sig / teacher / child srepr list), tokenizer round trip, prompt
-token count, leading-sign bit, minus position, first trig function.
+token count, leading-sign bit, minus position, first trig function,
+degree of the first trig term (the exponent-position signature), and
+the CTX bound on the view prompt. NEUTRAL geometry = sign AND length
+constant across all 96 (not merely a 48/96 ceiling).
 
 Model-blind ceilings: for each view and each surface feature the
 best fixed-class mapping feature-value -> theta over the 96 states,
@@ -48,7 +51,7 @@ from llmopt.lab.provenance import (completion_commit,  # noqa: E402
 from scratch.mathworld1_actiontok import ActionGCTok  # noqa: E402
 from scratch.mathworld1_prband import cand_sig, sha  # noqa: E402
 from scratch.mathworld1_svpbirth import gate  # noqa: E402
-from scratch.mathworld1_svpchal import (AFTER_D, X, fsha,  # noqa: E402
+from scratch.mathworld1_svpchal import (AFTER_D, CTX, X, fsha,  # noqa: E402
                                         qualify_parent)
 import torch  # noqa: E402  (transitive via GCTok; trapped below)
 
@@ -168,8 +171,16 @@ def surface(cur_v, order_terms):
         if first_trig is None and t.has(sp.sin, sp.cos) \
                 and not isinstance(t, sp.Integral):
             first_trig = list(t.atoms(sp.sin, sp.cos))[0].func.__name__
+    first_deg = None
+    for t in order_terms:
+        if t.has(sp.sin, sp.cos) and not isinstance(t, sp.Integral):
+            first_deg = int(sp.degree(sp.cancel(
+                t / list(t.atoms(sp.sin, sp.cos))[0]), X))
+            break
+    gate(len(ids) + 9 <= CTX, "VIEW CONTEXT")
     return {"prompt_tokens": len(ids), "lead_sign": lead,
-            "minus_pos": minus_pos, "first_trig": first_trig}
+            "minus_pos": minus_pos, "first_trig": first_trig,
+            "first_trig_degree": first_deg}
 
 
 def check_view(row, parent, f, cur_v):
@@ -224,7 +235,7 @@ def main():
     START = start_provenance(
         ["scratch/mathworld1_prband2nuis.py", "scratch/mathworld1_svpchal.py",
          "scratch/mathworld1_prband.py", "scratch/mathworld1_actiontok.py",
-         "llmopt/lab/provenance.py"])
+         "scratch/mathworld1_svpbirth.py", "llmopt/lab/provenance.py"])
     gate(torch.load is _no_load, "TORCH LOAD TRAP")
     for p, h in PINS.items():
         gate(fsha(p) == h, f"PIN {p}")
@@ -280,7 +291,7 @@ def main():
                                        if s.get("identical_to_raw")),
                "ceilings": {feat: ceiling(states, feat) for feat in
                             ("prompt_tokens", "lead_sign", "minus_pos",
-                             "first_trig")}}
+                             "first_trig", "first_trig_degree")}}
         pairs = defaultdict(dict)
         for s in states:
             pairs[s["pair_id"]][s["theta"]] = s
@@ -312,8 +323,7 @@ def main():
 
     def neutral_ok(rep):
         c = rep["ceilings"]
-        return (c["lead_sign"]["top1_of_96"] <= 48
-                and c["prompt_tokens"]["top1_of_96"] <= 48)
+        return c["lead_sign"]["constant"] and c["prompt_tokens"]["constant"]
 
     def flipped_ok(rep):
         g = rep["pair_geometry_v_raw"]
@@ -326,7 +336,9 @@ def main():
         "neutral_geometry": neutral_ok(rep),
         "cue_flipped_geometry": flipped_ok(rep),
         "minus_pos_constant": rep["ceilings"]["minus_pos"]["constant"],
-        "first_trig_constant": rep["ceilings"]["first_trig"]["constant"]}
+        "first_trig_constant": rep["ceilings"]["first_trig"]["constant"],
+        "first_trig_degree_ceiling": rep["ceilings"]["first_trig_degree"][
+            "top1_of_96"]}
         for v, rep in report.items() if v != "RAW"}
     receipt = {"smoke": SMOKE, "assessment": ASSESS, "adopted": ADOPTED,
                "pins": PINS, "n_states": len(P),
@@ -344,6 +356,7 @@ def main():
         print(v, "tok", c["prompt_tokens"]["values"], "sign",
               c["lead_sign"]["values"], "minus", c["minus_pos"]["values"],
               "trig", c["first_trig"]["values"],
+              "deg", c["first_trig_degree"]["values"],
               "geom", rep["pair_geometry_v_raw"], "checks", rep["checks"])
 
 

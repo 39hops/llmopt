@@ -2902,6 +2902,18 @@ MATH-CYBER-1 PRIOR-RESISTANT-EVAL-V2-CROSSOVER-DESK-0 — INDEPENDENT VERIFIER. 
 - `hce(e)`
 - `main()`
 
+### scratch/mathworld1_prband2nuis.py
+MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-NUISANCE-COUNTERFACTUAL-ASSESSMENT-0 render-only view assessment (model-blind desk).
+
+- `_no_load(*a, **k)`
+- `classify_terms(f)` — Six integrand terms -> {role: term}, plus family roles.
+- `render(terms)` — Join term strings the way SymPy's printer does: unary minus
+- `view_string(order, table, D)`
+- `surface(cur_v, order_terms)`
+- `check_view(row, parent, f, cur_v)` — Parse + identity + candidate-law reproduction for one view.
+- `ceiling(states, feat)` — Best fixed-class mapping feature-value -> theta: top-1 count
+- `main()`
+
 ### scratch/mathworld1_prband2prod.py
 MATH-CYBER-1 PRIOR-RESISTANT-EVAL-V2-PRODUCTION-MATERIALIZATION-0 — execute the frozen production prereg (PRE-REG ...V2-PRODUCTION-0, fd78a82b, RESULTS L64343). ZERO checkpoint access, ZERO scoring, ZERO training. Adopt-not-fork of scratch/mathworld1_prband2desk.py (skeleton, qualification, anatomy, signature, burn sets).
 
