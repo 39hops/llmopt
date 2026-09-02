@@ -64340,3 +64340,336 @@ information with no population authority; V1 and the V2 desk
 stand unamended; the 192 desk parents and 5,760 V1 parents
 stay burned.
 
+## PRE-REG MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-PRODUCTION-0: FROZEN MATCHED-PAIR SUPPORT-SUBSTANTIAL TARGET-SWITCH PRODUCTION DESIGN — a fresh N = 96 population built as 48 MATCHED THETA PAIRS (each pair = one SIN_LOW and one COS_LOW state sharing e_hi, c, K, distractor, term count, site ordinal I0, byte-identical complete candidate signature, and opposite unique HCE teachers A0 = (i_unprod, I, 0, term_index, 1) v B0 = (i_unprod, I, 0, term_index, 3) with |HCE(A0) - HCE(B0)| = 3.0 in every arm), from the frozen 144-base horizon (e_lo = 1, e_hi {5,6,7,9}, c {29,31,37,41,43,47}, K {33x^3, 27x^4, 35x^3}, w = sin(x)/x, the V2 two-pair skeleton, three standing distractor variants = 432 burned parents, primary = after only), 72 prospective pair keys (e_hi, c, K), pair eligibility requiring BOTH arms to pass every gate including the exact booked witness signature (0b66cc43...: i_sum + I0/t1 + I0/t3 + I0/t5), deterministic selection of the first 48 eligible pairs by pair_sha (target- and model-blind), two structural theorems verified from the artifact (fixed-ranking top-1 ceiling 48/96 and both-correct-pair ceiling 0/48, exhaustively over the 24 orders of the four-action signature), GO iff >= 48 eligible pairs (72 = FULL-RESERVE, 48-71 = PARTIAL-RESERVE, < 48 = NO-FIRE, no relaxation), a predeclared smallA I1/t1-v-I1/t3 COORDINATE-RECOMBINATION-OOD companion on the SAME 48 pair keys, and the assay frozen as a SUPPORT-SUBSTANTIAL TARGET-PAIR CONTEXTUAL-SWITCH ASSAY (targets 2,267 v 257 training rows, ratio 8.8, never support-matched; the fixed non-target rival I0/t5 is OOD by an unseen symbol and disclosed); PREREG ONLY — no parent generated, no qualification run, nothing loaded, scored, or trained (2026-09-02, Mac)
+
+ADOPTS OBSERVATION ...V2-PRODUCTION-DESIGN-ASSESSMENT-0
+(L64085, 8ca0b2ec; lock fe08ab59), VERDICT ...V2-CROSSOVER-
+DESK-0 (L63897, ac5184b2), PRE-REG ...V2-CROSSOVER-DESK-0
+(L63579, 488e8b23). Nothing in them is amended.
+
+PRIMARY DESCRIPTION (frozen): SUPPORT-SUBSTANTIAL TARGET-PAIR
+CONTEXTUAL-SWITCH ASSAY. Claim ceiling of the eventual assay:
+"this assay tests whether a frozen model can use mathematical
+state to switch between two previously observed semantic
+ActionProgram target coordinates under an identical complete
+legal candidate set and a strict state-dependent HCE
+teacher." SCOPE CLARIFICATION: the TARGET PAIR is
+support-substantial (A0 whole-coordinate training count
+2,267, B0 257, ratio 8.8); the COMPLETE legal candidate set
+is NOT fully training-covered, because the witness signature
+also contains the wrong-family rival I0/t5, whose term_index
+symbol (6) is unseen at its position in both codes. That
+fixed OOD non-target rival is a disclosed property of the
+assay; the pair is never called support-matched.
+
+(A) FROZEN PRODUCTION HORIZON: skeleton f = expand(d/dx[x^a
+sin(cx)]) + expand(d/dx[x^b cos(cx)]) + Integral(sin(x)/x, x)
++ K, theta = SIN_LOW -> (a, b) = (1, e_hi), COS_LOW -> (e_hi,
+1); e_lo = 1 only; e_hi in {5, 6, 7, 9}; c in {29, 31, 37, 41,
+43, 47}; K in {33*x**3, 27*x**4, 35*x**3}; enumeration order
+e_hi, theta (SIN_LOW first), c, K, all ascending; 4 x 2 x 6 x
+3 = 144 theta-specific bases; base_signature = "V2P|ehi=
+{e_hi}|theta={theta}|c={c}|K={K}|w=sin(x)/x" (unique,
+sig_sha and base-srepr uniqueness hard gates). Three standing
+distractor variants per base — smallA = x**x, smallB = 1/(x +
+log(x)), after = sin(sin(x)) — parent = Integral(f, x) +
+Integral(D, x) under the standing qualify_parent law: 432
+parents. PRIMARY authority: after only (site ordinal 0).
+smallA: the predeclared companion (J). smallB:
+qualification / anatomy only. No new axes, no replacement K
+or c, no fifth e_hi, no adaptive expansion; capacity failure
+= NO-FIRE. K gate at run start: each K absent from all nine
+burned inert-addend banks (F3 train / eval, E1, nuisance, the
+six early polys, K_POLYS2, V1 K_A / K_B, desk 21x^3);
+coefficients 33 / 27 / 35 absent from every lineage c bank
+(the union of which, including the early BURNED_F3_C {2..7},
+is exactly {2..25}; the desk used 11/13/17/19); c gate: every
+c odd and absent from that union.
+
+(B) MATCHED-PAIR UNIT (load-bearing): the production unit is
+a matched theta pair. pair key = (e_hi, c, K) — theta and
+target identity excluded; exactly 72 prospective keys. Each
+pair holds exactly one SIN_LOW and one COS_LOW state with
+identical e_hi, c, K, distractor variant and non-theta axes.
+A and B rows are NEVER selected independently; no orphan
+arm; no swap; no borrowing across pairs.
+
+(C) PRIMARY PAIR QUALIFICATION: an after pair is ELIGIBLE
+only if BOTH arms independently pass ALL of: (1) parent
+construction; (2) complete stable legal enumeration (two
+enumerations, cleared cache, identical multisets); (3)
+teacher site ordinal 0; (4) A0 = (i_unprod, I, 0,
+term_index, 1) legal; (5) B0 = (i_unprod, I, 0, term_index,
+3) legal; (6) the authoritative teacher (min over (hce, raw
+site-suffixed name, child srepr) of the COMPLETE legal set)
+is a UNIQUE HCE minimum, min_hce_ties = 1; (7) SIN_LOW
+teacher = A0; (8) COS_LOW teacher = B0; (9) |HCE(A0) - HCE(B0)| = 3.0 in
+both arms, the teacher being the cheaper one (HCE recomputed
+from the child expressions and matched to qualify_parent); (10) no
+relabeling; (11) no non-target teacher; (12) the two arms'
+complete candidate signatures byte-identical; (13) that
+signature equals the booked witness signature from
+logs/mathworld1/prband2desk_verify/branch_census.json
+(82720264ac8f57468d1e5ac729ac66834c24f1508d0c9bf46d88c589e1cd9ca8)
+cell after|e_lo=1, cand_sig_id
+0b66cc4381c54e0fa8c2a6e6ea6bac4de06011c3f8e52e1bfcb9986d993202d8,
+literal [["i_sum","I",0,"none",-1],["i_unprod","I",0,
+"term_index",1],["i_unprod","I",0,"term_index",3],
+["i_unprod","I",0,"term_index",5]] — byte for byte; (14)
+hence exactly those four candidates and no additional legal
+action; (15) ActionProgram canonicalization (derive_program)
+for every candidate; (16) CANONICAL factor-code roundtrip for
+every candidate; (17) PARAM-FIRST pf_encode / pf_decode /
+PERM roundtrip for every candidate; (18) every candidate
+continuation is 8 symbols + EOS = T = 9; (19) parent unique
+in the horizon; (20) every overlap fence (I) passes. The
+exact-signature requirement is strict: no second signature,
+no relaxation; fewer than 48 eligible pairs = NO-FIRE.
+
+(D) THREE-VARIANT BLOCK LAW: all 432 parents are generated
+and burned at run start; a pair key has PRIMARY eligibility
+only if its standing three-variant block qualifies for BOTH
+theta arms — smallA, smallB, after each pass qualify_parent
+(stable legal set, program derivation, roundtrips, context,
+unique label), with the standing site-ordinal relationship
+(small distractors ordinal 1, after ordinal 0) and the
+correct target-family anatomy (roles assigned by exact
+equality of the guessed A with x^a sin(cx) / x^b cos(cx)). A
+failed sibling disqualifies the pair key; no cherry-picking
+of variants.
+
+(E) DETERMINISTIC MATCHED-PAIR SELECTION: N_pairs_eligible =
+the count of eligible keys. GO iff N_pairs_eligible >= 48;
+reserve status FULL-RESERVE (72), PARTIAL-RESERVE (48-71),
+NO-FIRE (< 48). The 72 figure is a descriptive reserve label,
+NOT a hard bar; no new threshold after the census.
+pair_signature = the canonical string "ehi={e_hi}|c={c}|K=
+{sstr(K)}"; pair_sha = sha256(pair_signature); sort eligible
+pairs by pair_sha ascending; select exactly the first 48;
+each contributes BOTH arms. Final PRIMARY: 48 pairs, 96
+states, 48 A0-gold, 48 B0-gold. Target identity, theta, model
+/ checkpoint information, and HCE magnitude beyond the
+qualification law never enter pair_sha or selection.
+
+(F) STRUCTURAL CEILING (two exact theorems, verified from
+the selected artifact): within every selected pair the
+candidate set is identical and the golds are opposite, so a
+deterministic state-blind fixed ranking emits the same top
+action on both members and is correct on at most one — (i)
+fixed-ranking top-1 ceiling = 48/96 = 50%; (ii) BOTH-CORRECT
+PAIRS ceiling = 0/48. The materialization enumerates all 24
+orders of the four-action signature and persists, per order,
+top-1 correct / 96 and both-correct pairs / 48; expected
+maxima 48 and 0 (12 orders score 48, 12 score 0). Any
+violation = INSTRUMENT / DESIGN FAILURE, STOP.
+
+(G) PAIRED NUISANCE AUDIT: for every selected pair persist
+and assert equal e_hi, c, K, distractor, candidate
+signature, candidate count, additive-term count (6), site
+ordinal, and target coordinates; the controlled difference
+(which trig pair carries e_lo = 1) is the treatment, never a
+nuisance. Descriptive, never exclusionary: parent count_ops
+by arm, CANONICAL and PARAM-FIRST prompt / total token
+lengths by arm (scoring tokenizer prompt law "Current: {cur}
+\nHints: none\nStep: " + 9), all <= 4,096. INTERPRETATION
+LAW (frozen now): the two arms differ by exponent placement,
+so a systematic per-arm offset in parent count_ops or token
+length is structurally possible; if the selected artifact
+shows one, the later scoring prereg must (a) book it beside
+the ceiling and (b) treat any full-model gain that is
+explained by a length- or size-only classifier (a
+length-threshold ranking evaluated on the artifact, to be
+frozen there) as NOT evidence of semantic state use; the
+structural ceiling covers only the fixed-ranking function
+class, never length-aware classifiers.
+
+(H) TRAINING-SUPPORT PIN: load-bearing artifact
+logs/mathworld1/prband2desk_verify/support_matrix.json
+(sha256 65b77230775f4f7b05e341f40220c7069b2996e5b7b1bf187b492cb202e02b0e);
+underlying corpus data/matsub_paired.jsonl
+(a943ba7fc581db743b07192e5d951fadddd2ba19bca3225b75d8402351d468e8)
++ logs/mathworld1/svpdiet/balanced_grid_train.jsonl
+(0ef3d8a880a7e07712d8de757bc1670df12701e487b856b44c97f8db16cb3759)
+= 74,860 rows; the materialization refuses on drift of any
+of the three. PROVENANCE NOTE: the assessment booking cited
+support_matrix.json as a line-wrapped bare filename, which
+the receipt-lock scanner does not match, so
+docs/receipts.lock.json did not lock it at fe08ab59 (branch_
+census.json and bases.jsonl were locked); this entry cites
+the full path on one line so the post-booking lock regen
+locks it, and the booking report states whether it did.
+
+(I) BURN AND FRESHNESS: at run start, before any
+qualification or selection, all 432 parents are burned and
+the complete attempted horizon persisted, regardless of
+outcome or exception; all 432 unique (a duplicate parent =
+INSTRUMENT FAILURE, STOP). Refute-on-hit (0 hits
+required; any hit = NO-FIRE, no replacement) against the
+EXPLICIT manifest, each path pinned at run start:
+  logs/mathworld1/prband2desk/bases.jsonl 0fd7ac37b75a1dae4547afa3e8b3fd0fa6077d97cb169df34cfa306afb71e80c (192 V2 desk parents, all variants)
+  logs/mathworld1/prband/horizon_census.jsonl 2e28abf09219d4ac5ee2cb834f22f9cbc40f750c13029a8b96979f9a7e144c4c (5,760 V1 parents)
+  data/matsub_paired.jsonl a943ba7fc581db743b07192e5d951fadddd2ba19bca3225b75d8402351d468e8 (natural training curs)
+  logs/mathworld1/svpdiet/train_blocks.jsonl dd5e72391db557049e45efe6c6b5aff2118c8ea24ef53c85496b04f8539159d5 (4,536 train targets)
+  logs/mathworld1/svpeval/decisions.jsonl f63100a62f3091d544750d679483009a473261c587f3165241406a86253858c6
+  logs/mathworld1/svpeval2/decisions.jsonl 89efbe0ea447ee937c0c130d5419112921a2dd6c2159c6c2112cfd5e92f79315
+  logs/mathworld1/svpeval3/decisions.jsonl 2ff5433249622df9d421cf8014131b3907092a943040bb7b20f46f1afffb7efa (svpeval bands)
+  logs/mathworld1/svpgriddesk_receipt.json ec9cb9b870d2515e7959025f7f3cbfcee7309a6dc90b880d3176d3e2ccf72edc
+  logs/mathworld1/svpgriddesk2_receipt.json f0184b01c36017bcb93ed4b715e41e015999075c4da7976e11adc5cae28e6977
+  logs/mathworld1/svpgriddesk3_receipt.json 26389ebb8d68f45447d9676b9c188ea86ab9dd70ec71329fe6ae268cfc34080f
+  logs/mathworld1/svpgriddesk4_receipt.json 8439fc636fcf5c6e18a7dd75a76642cfe088e7eeeaf1e9f1243c5bb0cf08610f (566 pilot parents)
+  logs/mathworld1/svpchal/blocks.jsonl 21e7e635244574266ec876c1c8c76f8d7d2a77e20c2f6680d3ee48db372c4d10 (D0 record)
+  logs/mathworld1/svpnuisdesk/attempts.jsonl 54659cda39d0578c507d984aae7fdcb90c9d3cc86bf3b5a82fed740be93b5504 (nuisance record)
+  logs/mathworld1/svpdiet3/eval_blocks.jsonl d500ee554e1cbfe6cb9e8e594b8324f9529f08710e3312d1375a4f44a4c5ca0b
+  logs/mathworld1/svpdiet3/pout_attempts.jsonl 3f63680ab29724644b9c564cd31f71faf6a78b602e01b102774b6520a8097dc8
+  logs/mathworld1/svpdiet3/heldout_test16.jsonl a3f6103b3733d909281849dcb3fd6ba9fba3891f2014bec13881b4509df46ddb
+  logs/mathworld1/svpdiet3/covered_calibration.jsonl af1a4aa1df7bf3224745e91a90e1a77c36e5c54f7ff9b08509794d0fb7978db3
+  logs/mathworld1/svpdiet3/pout_robustness.jsonl 5c85fc1f336791522db78e681bfdadad8c4efdaafed640a7aa503d72a82c6137 (svpdiet3 populations)
+  logs/mathworld1/cl1/pop/manifest.jsonl 50c05794d9773142c55b932f69685ad1c0124d168c12dd1f830e36a2944d1846
+  logs/mathworld1/cl1/pop/raw_attempts.jsonl 95d3761e81e9e5a9c94ea6b63d3ef465ac56873cb605235bdc992cf6e40b500a (CLOSED-LOOP-1)
+  logs/mathworld1/svpdiet3/svpdiet3_receipt.json 26cb6d0119f56e24b4025d43976ddf323a5540e0177c19583bfe2f5c984fb365 (provenance pin)
+plus the constructed D0 / D1 / DIET / E1 / NUISANCE / svpdiet3
+eval + secondary horizons rebuilt from the frozen lineage
+builders with their booked counts gated (720 / 2,160 /
+15,912 / 10,224 / 3,456 / 3,456 / 1,920), and the run's own
+path-isolated smoke. MANIFEST CLASSES (stated so a verifier
+can implement it literally): the V2-desk driver's burn-set
+code is adopted for the CUR-CONTRIBUTING fences — natural
+training curs, the three svpeval band files, the four
+svpgriddesk pilot receipts (566 parents), the three svpdiet3
+population files, the two CLOSED-LOOP-1 files, the V1 census,
+the rebuilt horizons, own smoke — PLUS the V2 desk
+bases.jsonl added here as a cur-contributing fence; the
+train_blocks file is the TARGET-integrand fence; the
+svpchal blocks, svpnuisdesk attempts, svpdiet3 eval_blocks /
+pout_attempts and svpdiet3_receipt entries are PROVENANCE
+PINS (sha-gated at run start, their horizons are covered by
+the rebuilt-builder fences), not additional cur sets.
+
+(J) PREDECLARED SECONDARY COMPANION: smallA, e_lo = 1, site
+I1, expected pair I1/t1 v I1/t3 with the same mapping; support
+status: I1/t1 whole-coordinate seen (394), I1/t3 whole-
+coordinate UNSEEN while its positional symbols are all
+represented (from I0/t3) — a COORDINATE-RECOMBINATION-OOD
+COMPANION, not unseen-symbol OOD. Companion eligibility:
+BOTH theta arms of the SAME 48 primary-selected pair keys
+pass the companion gates (stable legal set, targets I1/t1 and
+I1/t3 present, unique teacher, SIN_LOW -> I1/t1, COS_LOW ->
+I1/t3, |gap| 3.0, identical complete signature within the
+pair AND byte-identical to the booked smallA|e_lo=1 witness
+signature 425e56e6e3bb06b8d36aaadb13b25a0373665cc840374bd4cbcb39b16e26332f,
+literal [["i_sum","I",1,"none",-1],["i_unprod","I",1,
+"term_index",1],["i_unprod","I",1,"term_index",3],
+["i_unprod","I",1,"term_index",5]], roundtrips, T = 9).
+COMPANION DISCLOSURE: its complete signature carries the
+same wrong-family rival at I1/t5, whose term_index symbol 6
+is unseen at its position in both codes (support_matrix
+I1/t5: whole 0, positions unsupported) — an unseen-symbol
+OOD non-target rival, exactly as in the primary. No independent companion selection, no
+rescue: a failing companion pair is marked unavailable, the
+primary pair is retained, nothing is substituted; the
+companion artifact carries its exact signature census,
+teacher mapping, ties, gaps and the missing-pair count. A
+later scoring prereg must state whether it requires all 48
+companions. The older e_lo = 2 I1/t1-v-I1/t4 desk
+construction is a SEPARATE UNSEEN-PARAMETER-SYMBOL OOD
+mechanism witness; it is NOT materialized here and must not
+be labelled as this companion.
+
+(K) MATERIALIZATION OUTPUT CONTRACT (all under the new
+refuse-if-exists namespace logs/mathworld1/prband2prod/,
+smoke under prband2prod_smoke/): prereg commit; producer
+code commit; producer file sha; the 144-base horizon; all 432
+burned parents with qualification result; pair_id per row;
+complete legal candidate ActionPrograms; cand_sig_id and
+signature literal; authoritative teacher; min hce;
+min_hce_ties; A0 and B0 HCE; gap; theta; role mapping; parent
+srepr; cur; CANONICAL and PARAM-FIRST candidate codes;
+roundtrip status; overlap result per fence source; eligible
+pair census; pair_sha ordering; the 48 selected pair ids; the
+24-permutation census; structural ceiling report; companion
+artifact; all sha256 pins; per-arm descriptive nuisance
+table. Small-text receipts and the two 96-row populations
+force-added under the 2 MB law; the 432-parent horizon file
+force-added only if under 2 MB, else sha-anchored.
+
+(L) INDEPENDENT VERIFIER: a fresh script reconstructs, from
+raw and without importing the producer's selection or
+ceiling functions (the shared rule engine, qualify_parent,
+factor / pf codecs are allowed): horizon axes and the 72 pair
+keys; the 432-parent burn census and uniqueness; full
+re-qualification of every parent; complete legal enumeration;
+exact complete signature v the witness literal; target roles;
+HCE from child expressions; unique-teacher law; the exact 3.0
+gap; theta mapping; matched-pair construction; eligible pair
+census; deterministic pair selection; N = 96; 48/48; the 48
+top-1 and 0 both-correct ceilings by its own permutation
+enumeration; the overlap manifest; the support pins;
+CANONICAL and PARAM-FIRST roundtrips. Zero unexplained
+discrepancies required; the verifier receipt records its
+own commit and file sha.
+
+(M) LATER SCORING (NOT authorized here; no model access in
+this prereg): seed 19001 CANONICAL / PARAM-FIRST and seed
+20001 CANONICAL / PARAM-FIRST, each full and mask-0 only,
+every checkpoint pin re-verified from receipts before that
+prereg; standing law: TOTAL SUM of teacher-forced
+continuation log-probs over T = 9 incl. EOS, strict
+deterministic top-1; no residual cube; no FACTOR/HASH. No
+binomial / IID significance margin is frozen (the 96 states
+are constructed matched pairs, not IID trials). Later
+interpretation distinguishes: MECHANICAL STATE-DEPENDENCE
+EVIDENCE = full top-1 > 48/96 (above the exact fixed-ranking
+function-class ceiling; deterministic scoring, so +1 is
+intentionally sufficient for the MECHANICAL claim and never
+for any robustness claim); PAIR-LEVEL STATE-DEPENDENCE = the
+number of matched pairs with both opposite-gold states
+top-ranked (any value > 0 is impossible for a state-blind
+fixed ranking); ROBUST PERFORMANCE = NOT a bar frozen here —
+the later scoring prereg must freeze its effect-magnitude
+and replication-across-checkpoints law before any score is
+read. MASK-0 HARD SANITY (mask-0 is
+state-independent, L62175 / L62394): mask-0 top-1 <= 48 and
+mask-0 both-correct pairs = 0, else INSTRUMENT / DESIGN
+MISMATCH, STOP.
+
+(N) CLAIM CEILING: a GO materialization establishes ONLY a
+fresh N = 96 matched artifact with exact 48/48 opposite
+teachers, two support-substantial TARGET coordinates, an
+identical complete legal candidate set, a strict state-
+dependent HCE teacher, the exact deterministic fixed-ranking
+and both-correct-pair ceilings, and freshness / overlap
+qualification. It establishes NO model behaviour. The
+non-target I0/t5 OOD rival and the 8.8x target-frequency
+asymmetry stay disclosed; the targets are never called
+support-matched.
+
+REGISTERED PRIORS (frozen): eligible pairs = 72/72 — high
+(integrand-level probe of all 144 cells gave the {1, 3, 5}
+set, roles and gap 3 in 144/144; the authoritative legal set
+adding a candidate is the residual risk); exact witness
+signature in every arm — high; both theorems verified — high
+(they are theorems of the construction); 0 overlap hits —
+high (fresh c and K by construction); companion available
+for 48/48 — high. Wrong in public is desired.
+
+DRIVER LAW: scratch/mathworld1_prband2prod.py, adopt-not-fork
+of scratch/mathworld1_prband2desk.py (skeleton, qualification,
+anatomy, signature, burn sets) with the pair-key law,
+pair-eligibility gates, pair_sha selection, permutation
+census, nuisance audit and companion added; committed BEFORE
+any byte; path-isolated smoke on burned desk bases;
+receipt-auditor on first real receipts; independent verifier
+(L); expected wall 432 x 0.51 s = under 4 minutes.
+
+NEXT ELIGIBLE GO (one, nominated, NOT authorized): MATH-
+CYBER-1-PRIOR-RESISTANT-EVAL-V2-PRODUCTION-MATERIALIZATION-0.
+
+FENCES. Prereg only: no parent generated, no qualification
+run, nothing loaded, scored, masked, or trained; every count
+above is read from the booked artifacts (branch_census,
+support_matrix, the desk receipt) or the frozen lineage
+banks; the 144-cell integrand probe is prior information
+from the assessment; V1, the V2 desk and the assessment stand
+unamended; the 192 desk parents and 5,760 V1 parents stay
+burned.
+

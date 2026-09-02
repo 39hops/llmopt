@@ -794,6 +794,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/cl1/pop/raw_attempts.jsonl": {
+   "bytes": 31463,
+   "exists": true,
+   "sha256": "95d3761e81e9e5a9c94ea6b63d3ef465ac56873cb605235bdc992cf6e40b500a",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/cycle_escape_desk.jsonl": {
    "bytes": 38504,
    "exists": true,
@@ -931,6 +938,13 @@
    "bytes": 11007,
    "exists": true,
    "sha256": "82720264ac8f57468d1e5ac729ac66834c24f1508d0c9bf46d88c589e1cd9ca8",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/prband2desk_verify/support_matrix.json": {
+   "bytes": 8001,
+   "exists": true,
+   "sha256": "65b77230775f4f7b05e341f40220c7069b2996e5b7b1bf187b492cb202e02b0e",
    "source": "results",
    "tracked": true
   },
@@ -1227,6 +1241,14 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svpdiet/train_blocks.jsonl": {
+   "bytes": 1738012,
+   "exists": true,
+   "local_only": true,
+   "sha256": "dd5e72391db557049e45efe6c6b5aff2118c8ea24ef53c85496b04f8539159d5",
+   "source": "results",
+   "tracked": false
+  },
   "logs/mathworld1/svpdiet2/svpdiet2_receipt.json": {
    "bytes": 4453,
    "exists": true,
@@ -1234,11 +1256,43 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svpdiet3/covered_calibration.jsonl": {
+   "bytes": 434010,
+   "exists": true,
+   "local_only": true,
+   "sha256": "af1a4aa1df7bf3224745e91a90e1a77c36e5c54f7ff9b08509794d0fb7978db3",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/mathworld1/svpdiet3/eval_blocks.jsonl": {
+   "bytes": 392976,
+   "exists": true,
+   "local_only": true,
+   "sha256": "d500ee554e1cbfe6cb9e8e594b8324f9529f08710e3312d1375a4f44a4c5ca0b",
+   "source": "results",
+   "tracked": false
+  },
   "logs/mathworld1/svpdiet3/heldout_test16.jsonl": {
    "bytes": 843705,
    "exists": true,
    "local_only": true,
    "sha256": "a3f6103b3733d909281849dcb3fd6ba9fba3891f2014bec13881b4509df46ddb",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/mathworld1/svpdiet3/pout_attempts.jsonl": {
+   "bytes": 104544,
+   "exists": true,
+   "local_only": true,
+   "sha256": "3f63680ab29724644b9c564cd31f71faf6a78b602e01b102774b6520a8097dc8",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/mathworld1/svpdiet3/pout_robustness.jsonl": {
+   "bytes": 379570,
+   "exists": true,
+   "local_only": true,
+   "sha256": "5c85fc1f336791522db78e681bfdadad8c4efdaafed640a7aa503d72a82c6137",
    "source": "results",
    "tracked": false
   },
@@ -1501,6 +1555,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/svpgriddesk_receipt.json": {
+   "bytes": 114310,
+   "exists": true,
+   "sha256": "ec9cb9b870d2515e7959025f7f3cbfcee7309a6dc90b880d3176d3e2ccf72edc",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/svpheldout16/svpheldout16_receipt.json": {
    "bytes": 4756,
    "exists": true,
@@ -1540,6 +1601,13 @@
    "bytes": 2722,
    "exists": true,
    "sha256": "404242600be1b6e4b0b4fc47dd4df3a568516867355a61dc4ebbb8a11d7a4193",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/svpnuisdesk/attempts.jsonl": {
+   "bytes": 239808,
+   "exists": true,
+   "sha256": "54659cda39d0578c507d984aae7fdcb90c9d3cc86bf3b5a82fed740be93b5504",
    "source": "results",
    "tracked": true
   },
