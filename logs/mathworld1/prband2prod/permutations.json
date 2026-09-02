@@ -1,0 +1,829 @@
+{
+ "n_orders": 24,
+ "max_top1": 48,
+ "n": 96,
+ "max_both_correct_pairs": 0,
+ "n_pairs": 48,
+ "top1_census": {
+  "0": 12,
+  "48": 12
+ },
+ "orders": [
+  {
+   "order": [
+    [
+     "i_sum",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     5
+    ]
+   ],
+   "top1": 0,
+   "both_correct_pairs": 0
+  },
+  {
+   "order": [
+    [
+     "i_sum",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     5
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     3
+    ]
+   ],
+   "top1": 0,
+   "both_correct_pairs": 0
+  },
+  {
+   "order": [
+    [
+     "i_sum",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     5
+    ]
+   ],
+   "top1": 0,
+   "both_correct_pairs": 0
+  },
+  {
+   "order": [
+    [
+     "i_sum",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     5
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     1
+    ]
+   ],
+   "top1": 0,
+   "both_correct_pairs": 0
+  },
+  {
+   "order": [
+    [
+     "i_sum",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     5
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     3
+    ]
+   ],
+   "top1": 0,
+   "both_correct_pairs": 0
+  },
+  {
+   "order": [
+    [
+     "i_sum",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     5
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     1
+    ]
+   ],
+   "top1": 0,
+   "both_correct_pairs": 0
+  },
+  {
+   "order": [
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     1
+    ],
+    [
+     "i_sum",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     5
+    ]
+   ],
+   "top1": 48,
+   "both_correct_pairs": 0
+  },
+  {
+   "order": [
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     1
+    ],
+    [
+     "i_sum",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     5
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     3
+    ]
+   ],
+   "top1": 48,
+   "both_correct_pairs": 0
+  },
+  {
+   "order": [
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     3
+    ],
+    [
+     "i_sum",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     5
+    ]
+   ],
+   "top1": 48,
+   "both_correct_pairs": 0
+  },
+  {
+   "order": [
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     5
+    ],
+    [
+     "i_sum",
+     "I",
+     0,
+     "none",
+     -1
+    ]
+   ],
+   "top1": 48,
+   "both_correct_pairs": 0
+  },
+  {
+   "order": [
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     5
+    ],
+    [
+     "i_sum",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     3
+    ]
+   ],
+   "top1": 48,
+   "both_correct_pairs": 0
+  },
+  {
+   "order": [
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     5
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     3
+    ],
+    [
+     "i_sum",
+     "I",
+     0,
+     "none",
+     -1
+    ]
+   ],
+   "top1": 48,
+   "both_correct_pairs": 0
+  },
+  {
+   "order": [
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     3
+    ],
+    [
+     "i_sum",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     5
+    ]
+   ],
+   "top1": 48,
+   "both_correct_pairs": 0
+  },
+  {
+   "order": [
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     3
+    ],
+    [
+     "i_sum",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     5
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     1
+    ]
+   ],
+   "top1": 48,
+   "both_correct_pairs": 0
+  },
+  {
+   "order": [
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     1
+    ],
+    [
+     "i_sum",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     5
+    ]
+   ],
+   "top1": 48,
+   "both_correct_pairs": 0
+  },
+  {
+   "order": [
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     5
+    ],
+    [
+     "i_sum",
+     "I",
+     0,
+     "none",
+     -1
+    ]
+   ],
+   "top1": 48,
+   "both_correct_pairs": 0
+  },
+  {
+   "order": [
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     5
+    ],
+    [
+     "i_sum",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     1
+    ]
+   ],
+   "top1": 48,
+   "both_correct_pairs": 0
+  },
+  {
+   "order": [
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     5
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     1
+    ],
+    [
+     "i_sum",
+     "I",
+     0,
+     "none",
+     -1
+    ]
+   ],
+   "top1": 48,
+   "both_correct_pairs": 0
+  },
+  {
+   "order": [
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     5
+    ],
+    [
+     "i_sum",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     3
+    ]
+   ],
+   "top1": 0,
+   "both_correct_pairs": 0
+  },
+  {
+   "order": [
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     5
+    ],
+    [
+     "i_sum",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     1
+    ]
+   ],
+   "top1": 0,
+   "both_correct_pairs": 0
+  },
+  {
+   "order": [
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     5
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     1
+    ],
+    [
+     "i_sum",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     3
+    ]
+   ],
+   "top1": 0,
+   "both_correct_pairs": 0
+  },
+  {
+   "order": [
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     5
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     3
+    ],
+    [
+     "i_sum",
+     "I",
+     0,
+     "none",
+     -1
+    ]
+   ],
+   "top1": 0,
+   "both_correct_pairs": 0
+  },
+  {
+   "order": [
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     5
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     3
+    ],
+    [
+     "i_sum",
+     "I",
+     0,
+     "none",
+     -1
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     1
+    ]
+   ],
+   "top1": 0,
+   "both_correct_pairs": 0
+  },
+  {
+   "order": [
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     5
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     3
+    ],
+    [
+     "i_unprod",
+     "I",
+     0,
+     "term_index",
+     1
+    ],
+    [
+     "i_sum",
+     "I",
+     0,
+     "none",
+     -1
+    ]
+   ],
+   "top1": 0,
+   "both_correct_pairs": 0
+  }
+ ]
+}

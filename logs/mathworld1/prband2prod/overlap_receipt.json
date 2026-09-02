@@ -1,0 +1,26 @@
+{
+ "hits": {
+  "natural": 0,
+  "band": 0,
+  "pilot": 0,
+  "horizons": 0,
+  "d3_artifacts": 0,
+  "cl1": 0,
+  "v1_census": 0,
+  "v2_desk": 0,
+  "own_smoke": 0,
+  "train_targets": 0
+ },
+ "n_checked": 432,
+ "burned_set_sizes": {
+  "natural": 58988,
+  "band": 242,
+  "pilot": 566,
+  "horizons": 37848,
+  "d3_artifacts": 360,
+  "cl1": 108,
+  "v1_census": 5760,
+  "v2_desk": 192,
+  "own_smoke": 6
+ }
+}

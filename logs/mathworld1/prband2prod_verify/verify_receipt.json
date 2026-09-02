@@ -1,0 +1,40 @@
+{
+ "verifier_commit": "5eb718f86a81ba325d6b1f86a6fc32af5b393475",
+ "verifier_file_sha256": "714ff72ca459f4cb6567043983104b333982c3d731b06b2a8dac2bc79f61644e",
+ "input_sha256": {
+  "companion.jsonl": "9716bdee8b6d13907889492b5ddacc4e01d4e6704e588a83025d7c3065478426",
+  "horizon.jsonl": "e4e738e20556e2cc9e72998e4d69e67e70c2fb5f086339945062688c732af347",
+  "nuisance.json": "e98eaed34df4a57deb0238ef20d35f2a9bef0e5371794f7b297317a01075d678",
+  "overlap_receipt.json": "89804503f1b14fee157b3a9d16c865802865a19b33b68c6125172deab60075f4",
+  "pairs.jsonl": "ee6cf884b5140a1f3bd2dff812b8bba475a1d2509b8e586377fd0395330a5d33",
+  "parents.jsonl": "f42411f45a2a9a527f30839d5cf82ee2caf2750a5f18c9cee8b9b02e9c8b1bf9",
+  "permutations.json": "b57626ae20d7c8645a11bafec69c917708fa26ae679fc65f8d654f54c8023919",
+  "prband2prod_receipt.json": "3c909deb1693a2f6c3df7d1fbe489cf93d0f9830a6969f4a6f7d45f1b495af4d",
+  "primary.jsonl": "209391ef3b2e5c87308571d6ef309bb5724a214160caa1b7857f4a31f9112c34",
+  "rows.jsonl": "e6cba400d742ffaf3538f3ffaee91327ada3d0f6b62d740fe2d91ab1400e77fc"
+ },
+ "overlap_hits": {
+  "natural": 0,
+  "v1_census": 0,
+  "v2_desk": 0,
+  "d3_artifacts": 0,
+  "cl1": 0,
+  "pilot": 0,
+  "fresh_K_missing": 0
+ },
+ "requalified": 432,
+ "fail_census": {},
+ "n_pairs_eligible": 72,
+ "reserve": "FULL-RESERVE",
+ "n_companion_available": 72,
+ "top1_census": {
+  "0": 12,
+  "48": 12
+ },
+ "max_top1": 48,
+ "max_both_correct": 0,
+ "n_primary": 96,
+ "n_companion": 96,
+ "problems": [],
+ "verdict": "VERIFIED QUALIFIED"
+}

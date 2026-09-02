@@ -2902,6 +2902,27 @@ MATH-CYBER-1 PRIOR-RESISTANT-EVAL-V2-CROSSOVER-DESK-0 — INDEPENDENT VERIFIER. 
 - `hce(e)`
 - `main()`
 
+### scratch/mathworld1_prband2prod.py
+MATH-CYBER-1 PRIOR-RESISTANT-EVAL-V2-PRODUCTION-MATERIALIZATION-0 — execute the frozen production prereg (PRE-REG ...V2-PRODUCTION-0, fd78a82b, RESULTS L64343). ZERO checkpoint access, ZERO scoring, ZERO training. Adopt-not-fork of scratch/mathworld1_prband2desk.py (skeleton, qualification, anatomy, signature, burn sets).
+
+- `build_horizon()`
+- `smoke_horizon()`
+- `burned_sets()`
+- `support_check()`
+- `arm_gates(v, target_A, target_B, witness_id, witness, expect)` — Section C gates on one qualified arm's anatomy row. Returns
+- `main()`
+
+### scratch/mathworld1_prband2prod_verify.py
+MATH-CYBER-1 PRIOR-RESISTANT-EVAL-V2-PRODUCTION-MATERIALIZATION-0 — INDEPENDENT VERIFIER. Reconstructs the frozen production design (PRE-REG fd78a82b) from raw without importing the producer's selection, ceiling, or decision code (shared rule engine, qualify_parent and the codecs are allowed): own horizon and 72 pair keys, own 432-parent burn census and uniqueness, own overlap checks from the authoritative sources, full re-qualification of all 432 parents, own signature function, own HCE from child expressions, own unique-teacher / gap / mapping gates, own pair eligibility, own pair_sha selection, own 24-order theorems, own encoding roundtrips, own companion mapping; then compares to the producer's per-row artifacts. Writes logs/mathworld1/prband2prod_verify/ verify_receipt.json (refuse-if-exists), recording its own commit and file sha.
+
+- `check(cond, msg)`
+- `h(s)`
+- `tup(c)`
+- `sig_of(cands)`
+- `hce(e)`
+- `rows(p)`
+- `main()`
+
 ### scratch/mathworld1_prband_anat.py
 MATH-CYBER-1 PRIOR-RESISTANT-EVAL-MATERIALIZATION-0 — descriptive census anatomy of the NO-FIRE horizon (read-only over logs/mathworld1/prband/horizon_census.jsonl; no law, no selection, no model). Writes logs/mathworld1/prband_verify/anatomy.json (refuse-if-exists): per-signature gold census, lowest-index rule counts and exception shapes, within-k co-occurrence, parity-v-k alignment, gold-class-v-k table, the a-states of the two mixed signatures, and the companion (after) side of the same quantities.
 

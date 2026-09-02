@@ -64673,3 +64673,192 @@ from the assessment; V1, the V2 desk and the assessment stand
 unamended; the 192 desk parents and 5,760 V1 parents stay
 burned.
 
+## VERDICT MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-PRODUCTION-MATERIALIZATION-0: QUALIFIED SUPPORT-SUBSTANTIAL MATCHED-PAIR POPULATION MATERIALIZED — the frozen 144-base horizon (e_lo = 1, e_hi {5,6,7,9} x c {29,31,37,41,43,47} x K {33x^3, 27x^4, 35x^3}, w = sin(x)/x) burned and persisted all 432 parents (432/432 unique) BEFORE qualification, 0 overlap hits across all 10 cur / target fences with all 23 manifest paths sha-pinned, 432/432 parents qualified under all three standing variants, ALL 72 matched pair keys ELIGIBLE (FULL-RESERVE) under every section-C gate — both after arms at site I0 with the exact frozen witness signature 0b66cc43... (i_sum + I0/t1 + I0/t3 + I0/t5, four candidates, 96/96), unique full-legal-set teacher (min_hce_ties 1 in 96/96), SIN_LOW -> A0 and COS_LOW -> B0 with zero violations, |HCE(A0) - HCE(B0)| = 3.0 in 96/96 — deterministic pair_sha selection took the first 48 pairs (both arms: 96 states, 48 A0-gold / 48 B0-gold), both structural theorems verified by exhaustive enumeration of the 24 fixed orders (12 score 48/96, 12 score 0/96, both-correct pairs 0/48 in all 24), the smallA COORDINATE-RECOMBINATION-OOD companion is available for 48/48 keys (witness 425e56e6..., gap 3.0 x 96), and the paired nuisance audit is equal on every discrete axis and on parent count_ops (31 v 31) but finds one systematic surface cue IN THE PROMPT — the COS_LOW prompt is exactly one token shorter than its SIN_LOW partner in 48/48 pairs (89 v 88; the SIN_LOW integrand begins with a leading unary minus) — carried forward as a mandatory nuisance-aware baseline for the scoring prereg; VERIFIED by the fresh reconstruction verifier (full re-qualification of 432 parents, own selection and theorems, zero discrepancies); wall 195.9 s; nothing loaded, scored, or trained (2026-09-02, Mac)
+
+Per PRE-REG ...V2-PRODUCTION-0 (fd78a82b, L64343), executed
+mechanically; the prereg was authoritative throughout. Producer
+scratch/mathworld1_prband2prod.py committed BEFORE any production
+byte (91a0b136; producer file sha in the receipt's start block),
+path-isolated smoke on two burned V2-desk bases SMOKE OK (receipt
+11ef58fb...), production launched at 91a0b136, completion_commit
+5eb718f8 (the verifier commit; git diff 91a0b136..5eb718f8 adds
+only scratch/mathworld1_prband2prod_verify.py). Verifier
+scratch/mathworld1_prband2prod_verify.py (5eb718f8) records its
+own commit and file sha (714ff72c...) in logs/mathworld1/
+prband2prod_verify/verify_receipt.json (receipt sha 71f5cc88...):
+VERIFIED QUALIFIED, zero
+problems, importing none of the producer's selection, ceiling or
+decision code. Verifier limits disclosed: it re-derives 5 of the
+23 manifest pins and 6 of the producer's 10 overlap fences,
+omitting the svpeval band (242), the rebuilt lineage horizons
+(37,848 — the largest fence), the 4,536 train targets and own
+smoke, which rest on the producer's measurement (fresh K in
+every parent makes a hit on those sets impossible by
+construction). PROVENANCE DISCLOSURE: the witness signature and
+its id, and the companion witness, are module LITERALS in the
+producer and the verifier, not loaded from
+logs/mathworld1/prband2desk_verify/branch_census.json at run
+time (that file is not in the 23-entry manifest); the receipt
+auditor re-derived both literals from that file (82720264...)
+and found them byte-identical — true literals, the derived-not-
+literal rule met post hoc rather than at the gate.
+
+1) PROVENANCE + PINS: all 23 manifest paths (the three support
+pins among them) sha-gated at run start (drift = refuse); 18 of
+the 23 feed the 10 cur / target overlap fences, 5 are provenance
+pins as the prereg classes them; support re-derived from
+the two pinned files at run time: 74,860 rows, A0 = I0/t1 2,267,
+B0 = I0/t3 257, ratio 8.82 — never used for selection, never
+called support-matched. K gate (nine burned inert-addend banks)
+and c gate (odd, outside the lineage union {2..25}) passed.
+
+2) HORIZON + BURN FIRST: 144 bases, 72 pair keys (e_hi, c, K),
+base_signature / sig_sha / base-srepr unique, six additive terms
+in 144/144; horizon.jsonl and parents.jsonl (432 curs, 432
+unique) written BEFORE the first qualify_parent call; the burn
+holds regardless of outcome.
+
+3) FRESHNESS: 0 hits / 432 parents against natural training curs
+(58,988), svpeval bands (242), 566 pilot parents, the rebuilt
+D0/D1/DIET/E1/NUISANCE/svpdiet3 horizons (37,848), svpdiet3
+populations (360), CLOSED-LOOP-1 (108), the V1 census (5,760),
+the V2 desk (192), own smoke (6); 0 target-integrand hits against
+the 4,536 train targets. Verifier re-derived natural / V1 / V2 /
+svpdiet3 / CLOSED-LOOP-1 / pilot from raw: 0 hits; every parent
+carries one of the three fresh K addends.
+
+4) QUALIFICATION (section D): 432/432 parents pass qualify_parent
+(rejection census empty); every candidate's factor / pf / PERM
+roundtrip re-gated per row; T = 9 continuation; max total scoring
+length 98 tokens (prompt 89 + 9) against the 4,096 gate.
+
+5) PAIR ELIGIBILITY (section C): 72/72 keys eligible; pair fail
+census empty. Per after arm: site I0; A0 and B0 legal; teacher
+unique (min_hce_ties = 1); SIN_LOW teacher A0 (48/48 selected
+arms), COS_LOW teacher B0 (48/48); |gap| exactly 3.0 with the
+teacher the cheaper child; complete signature byte-identical
+across arms and equal to the witness literal in every arm;
+parents unique. Anatomy (e.g. key ehi=9|c=41|K=35x^3, SIN_LOW):
+teacher A0 child 24 ops (A-ops 4, residual 14, hce 324.1), B0
+child 27 (3 / 18, hce 327.1), wrong-family I0/t5 32 (hce 332.1),
+i_sum 736.1 — the disclosed OOD non-target rival I0/t5 is present
+in all 96 states and never excluded.
+
+6) SELECTION: pair_signature "ehi=|c=|K=" (theta and target
+absent), pair_sha ascending, first 48 of the persisted 72-entry
+eligible ordering (first five pair_sha prefixes 019ed1e5,
+04ea2af6, 0a2c347d, 0a649653, 0e2dd200; pair_id = the 16-hex
+prefix); selected axis census e_hi 5/6/7/9
+= 11/15/11/11, c 29/31/37/41/43/47 = 10/5/5/10/10/8, K 33x^3 /
+27x^4 / 35x^3 = 16/17/15 — a hash draw, not a design. Final
+PRIMARY 96 states, 48 SIN_LOW / A0 + 48 COS_LOW / B0, one
+cand_sig_id (96/96), gap census {3.0: 96}, ties {1: 96}, tie /
+non-target / target-absent 0.
+
+7) STRUCTURAL THEOREMS (from the selected artifact, all 24 orders
+persisted with top-1 and both-correct counts): max top-1 = 48/96
+(12 orders at 48, 12 at 0), max both-correct pairs = 0/48 in
+every order. Verifier's own enumeration agrees.
+
+8) PAIRED NUISANCE AUDIT: asserted equal within every selected
+pair — e_hi, c, K, distractor, complete signature, candidate
+count (4), additive-term count (6), site ordinal (0), target
+coordinates. Descriptive, unfiltered: parent count_ops 31 in
+every state of both arms (within-pair offset 0 in 48/48);
+CANONICAL = PARAM-FIRST prompt length (a derived identity: the
+prompt string is code-independent and both codes are exactly
+T = 9, so one prompt figure per arm is persisted, a disclosed
+deviation from the prereg's separate-by-code wording): SIN_LOW
+89 tokens in 48/48, COS_LOW 88 in 48/48, within-pair offset COS
+- SIN = -1 in 48/48. SECOND ARM-CORRELATED FIELD (outside the
+prompt): the persisted cand_tuples enumeration ORDER differs by
+theta (position 1 is term_index 5 in 48/48 SIN_LOW rows and
+term_index 3 in 48/48 COS_LOW rows) while the sorted signature
+is identical; it cannot enter a teacher-forced score unless a
+scorer consumes candidate order, so the scoring prereg must
+canonicalize candidate order (sorted signature order) before
+any scoring or tie-break. CAUSE: the SIN_LOW
+integrand's canonical string begins with the unary-minus term
+-c x^e_hi sin(cx) while COS_LOW's begins with +c x^e_hi cos(cx)
+and carries its minus as a binary operator inside; one extra
+tokenizer symbol. This is a SYSTEMATIC ARM-LEVEL SURFACE CUE
+(gold is perfectly predictable from prompt length on this
+artifact: a length-threshold rule "89 tokens -> A0, 88 -> B0"
+scores 96/96 top-1 and 48/48 both-correct pairs, against the
+structural 48/96 and 0/48 — the auditor computed it, no
+classifier was fit by the run). It does not touch the fixed-
+ranking theorem (which covers only state-blind action orders),
+and the prereg did not require a length classifier; the
+next scoring prereg MUST freeze a nuisance-aware baseline
+(e.g. a length-threshold ranking and a sign-cue ranking scored
+on the artifact) before interpreting any full-model gain as
+semantic context use. Equivalent statement: a classifier that
+reads only the leading sign of the integrand scores 96/96.
+
+9) COMPANION (smallA, I1, COORDINATE-RECOMBINATION-OOD): the same
+48 selected keys, 48/48 available, 96 states, one signature
+425e56e6... (i_sum + I1/t1 + I1/t3 + I1/t5, with I1/t5 the
+unseen-symbol rival, disclosed), SIN_LOW -> I1/t1 and COS_LOW ->
+I1/t3, ties 1, gap 3.0 x 96; no substitution, no scoring
+authority.
+
+10) ARTIFACTS (sha256 in the receipt; full paths for the lock):
+logs/mathworld1/prband2prod/primary.jsonl 209391ef... (96 rows),
+logs/mathworld1/prband2prod/companion.jsonl 9716bdee...,
+logs/mathworld1/prband2prod/parents.jsonl f42411f4...,
+logs/mathworld1/prband2prod/horizon.jsonl e4e738e2...,
+logs/mathworld1/prband2prod/pairs.jsonl ee6cf884...,
+logs/mathworld1/prband2prod/permutations.json b57626ae...,
+logs/mathworld1/prband2prod/nuisance.json e98eaed3...,
+logs/mathworld1/prband2prod/overlap_receipt.json 89804503...,
+logs/mathworld1/prband2prod/prband2prod_receipt.json,
+logs/mathworld1/prband2prod_smoke/prband2prod_receipt.json,
+logs/mathworld1/prband2prod_verify/verify_receipt.json,
+rows.jsonl e6cba400... (2.66 MB — UNTRACKED, sha-anchored, over
+the 2 MB law; it carries every parent's qualification + anatomy
+row and is the verifier's per-row input, so it must be
+regenerated by re-running the producer if logs/ is wiped);
+receipt, smoke receipt and verify receipt force-added with the
+small-text artifacts. Note two denominators: the producer's
+companion_pairs_available 48 is over the 48 selected keys; the
+verifier's 72 is over all 72 keys (all companion-available).
+The support_matrix.json pin is now receipt-locked
+(docs/receipts.lock.json, 65b77230...), closing the prereg's
+section-H provenance question.
+
+REGISTERED-PRIOR ACCOUNTING (prereg): eligible 72/72 — RIGHT;
+exact witness signature in every arm — RIGHT (96/96 + companion
+96/96); both theorems — RIGHT; 0 overlap hits — RIGHT; companion
+48/48 — RIGHT. Not registered and now KNOWN: the one-token
+SIN/COS prompt-length cue.
+
+CLAIM CEILING (frozen): a fresh N = 96 matched artifact with
+exact 48/48 opposite unique teachers, two support-substantial
+TARGET coordinates (2,267 v 257, 8.8x, never support-matched),
+an identical complete legal candidate set that includes the
+unseen-symbol OOD rival I0/t5, a strict state-dependent HCE
+teacher (3-op gap), exact fixed-ranking (48/96) and both-
+correct-pair (0/48) ceilings, and freshness qualification. It
+establishes NO model behaviour; and because the two arms differ
+by a one-token surface cue, no later score on this artifact may
+be read as semantic context use without the nuisance-aware
+baselines above.
+
+NEXT ELIGIBLE (one, nominated, NOT authorized): PRE-REG
+MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-SCORING-0 — the four frozen
+checkpoints x full / mask-0 under the standing T = 9 total-sum
+law, mask-0 hard sanity (<= 48, 0 both-correct), the 48/96 and
+0/48 structural references, and MANDATORY nuisance-aware
+baselines for the prompt-length / leading-sign cue, canonical
+candidate order, and a RE-DERIVED mechanical bar (the prereg's
+"+1 above 48 is sufficient" rule was frozen before a perfect
+surface cue was known and must be re-stated against the
+length-rule baseline), all frozen before any score is read. No
+model is scored here.
+
+FENCES. Materialization only: no checkpoint, no scoring, no
+masks, no training; deterministic construction (no seeds); every
+number from this run's receipts or the verifier's; the 432
+parents are burned for every future population; V1, the V2 desk,
+the assessment and the prereg stand unamended.
+
