@@ -2884,6 +2884,34 @@ MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-RENDER-ATLAS-ASSESSMENT-0 model-blind exhau
 - `render_policy(job)` — One policy over every state; runs inside a fork worker.
 - `main()`
 
+### scratch/mathworld1_prband2atlasagg.py
+MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-RENDER-ATLAS-SCORING-0 aggregation over the four complete checkpoint chunks (RESULTS L65585). Runs ONLY after scratch/mathworld1_prband2atlasscore.py has closed all four chunks with verdict CHUNK COMPLETE and passing RAW replay / MASK0 / anchor gates; refuses otherwise.
+
+- `sgn(x)`
+- `top1(scores)`
+- `avg_rank(xs)`
+- `spearman(xs, ys)`
+- `iqr(v)`
+- `dist(v)`
+- `pareto(vecs)`
+- `main()`
+
+### scratch/mathworld1_prband2atlasscore.py
+MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-RENDER-ATLAS-SCORING-0 execution scorer (adopt-not-fork of scratch/mathworld1_prband2cf.py).
+
+- `sgn(x)`
+- `load_atlas(P)` — Atlas authority gates; returns manifest rows, policies rows,
+- `main()`
+
+### scratch/mathworld1_prband2atlasverify.py
+Independent verifier for MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-RENDER-ATLAS-SCORING-0.
+
+- `chk(cond, msg)`
+- `sha(p)`
+- `ranks(v)`
+- `rho(x, y)`
+- `main()`
+
 ### scratch/mathworld1_prband2branch.py
 MATH-CYBER-1 PRIOR-RESISTANT-EVAL-V2-PRODUCTION-DESIGN-ASSESSMENT-0 — READ-ONLY census over the burned V2 desk artifact (logs/mathworld1/prband2desk/bases.jsonl): every variant x e_lo branch cell (six), with roles taken from the persisted source-term / guessed-A semantics, the branch's own correct-guess coordinates, the authoritative full-legal-set teacher, strict classification by theta, exact cand_sig_id capacity, and the state-blind fixed-ranking ceiling under balance. Plus the exact training-support matrix for (i_unprod, I, ordinal in {0,1}, term_index 0..5) from the two pinned training files (74,860 rows): whole-coordinate, rule+param, rule+site, program_text counts, FACTOR and PARAM-FIRST codes with per-position symbol counts. No parent generated, no rule call, no model. Writes logs/mathworld1/prband2desk_verify/branch_census.json and support_matrix.json (refuse-if-exists).
 

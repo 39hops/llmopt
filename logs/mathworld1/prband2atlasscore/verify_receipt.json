@@ -1,0 +1,34 @@
+{
+ "verdict": "VERIFIED",
+ "discrepancies": [],
+ "lp_rows": 50688,
+ "lp_ok": 50688,
+ "aggregate_sha256": "8df318f742952740ce44c98d57fd8fb2f9632fa283d75f5c4808c4e158e66105",
+ "policy_table_sha256": "73dba755a3089a42177ef00a91481e93c2114276938df92958509a8aeda2505e",
+ "chunk_shas": {
+  "19001|CANONICAL": "51fc16091c0a6ee8d6fb4c86bd92a2f2d1d54492e46433be173919f4ae14dd54",
+  "19001|PARAM_FIRST": "70d2a2db77e2e8a2438e39d44453782433b47ff3d6c3053778bc7e4302235bf0",
+  "20001|CANONICAL": "418d06be1e0f1509021f206c06804e1b0ecc7e0808bbb38a4a0cf44030a3f263",
+  "20001|PARAM_FIRST": "51206ce84cfde050e9a409c192a92c2384ccea39961d0f4d5edfca8e58f559aa"
+ },
+ "maximin_winner": 488,
+ "common_basin": [],
+ "T_summary": {
+  "19001|CANONICAL": {
+   "RAW": 29,
+   "max": 96
+  },
+  "19001|PARAM_FIRST": {
+   "RAW": 48,
+   "max": 96
+  },
+  "20001|CANONICAL": {
+   "RAW": 96,
+   "max": 96
+  },
+  "20001|PARAM_FIRST": {
+   "RAW": 62,
+   "max": 96
+  }
+ }
+}

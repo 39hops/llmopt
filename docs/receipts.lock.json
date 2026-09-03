@@ -963,6 +963,69 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/prband2atlasscore/aggregate.json": {
+   "bytes": 105020,
+   "exists": true,
+   "sha256": "8df318f742952740ce44c98d57fd8fb2f9632fa283d75f5c4808c4e158e66105",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/prband2atlasscore/chunk_19001_CANONICAL/chunk_receipt.json": {
+   "bytes": 19232,
+   "exists": true,
+   "sha256": "c97c444eaa8e408b68d6ead730c622fd259d034cb49630e7e7488401cdf71708",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/prband2atlasscore/chunk_19001_PARAM_FIRST/chunk_receipt.json": {
+   "bytes": 19276,
+   "exists": true,
+   "sha256": "8d8bc146af6fa27b1994e83aa017ba63f211685dbd2d4b29ce4c03d90bbc3575",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/prband2atlasscore/chunk_20001_CANONICAL/chunk_receipt.json": {
+   "bytes": 19305,
+   "exists": true,
+   "sha256": "c4e664ad41879df1578f5b8bd1680e14f5c572c1c2ab8cae91e6d9a544278e27",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/prband2atlasscore/chunk_20001_PARAM_FIRST/chunk_receipt.json": {
+   "bytes": 19235,
+   "exists": true,
+   "sha256": "86e96defd5fa1cc4cce962c4b21fb70ea1942cb1ad26314c79a83e1c88327e87",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/prband2atlasscore/policy_table.jsonl": {
+   "bytes": 768928,
+   "exists": true,
+   "sha256": "73dba755a3089a42177ef00a91481e93c2114276938df92958509a8aeda2505e",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/prband2atlasscore/prband2atlasscore_receipt.json": {
+   "bytes": 93306,
+   "exists": true,
+   "sha256": "3f22568f97fdf2d4472ac0eaafc4057379dffea9e9c512bf9bb3aa63c9614e4a",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/prband2atlasscore/verify_receipt.json": {
+   "bytes": 933,
+   "exists": true,
+   "sha256": "e81d7f55a0f6deb9f0e66c9665df64905697ce2425da6336cf9450f4b0439214",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/prband2atlasscore_smoke/prband2atlasscore_receipt.json": {
+   "bytes": 5106,
+   "exists": true,
+   "sha256": "016bb05a76ceb4304d4740678f66d6f783f13a3a89cba56958ed06ab307276a3",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/prband2cf_smoke/prband2cf_receipt.json": {
    "bytes": 5333,
    "exists": true,
