@@ -1063,10 +1063,9 @@
   "logs/mathworld1/prband2score/raw_scores.jsonl": {
    "bytes": 1924668,
    "exists": true,
-   "local_only": true,
    "sha256": "68d014ac2a0bf5b085941daeeae7def5a30506c7bb45c91630a96113b01cb31e",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/mathworld1/prband2score_smoke/prband2score_receipt.json": {
    "bytes": 6089,
