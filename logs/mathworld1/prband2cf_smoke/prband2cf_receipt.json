@@ -1,0 +1,203 @@
+{
+ "smoke": true,
+ "prereg": "MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-NUISANCE-COUNTERFACTUAL-0",
+ "prereg_commit": "8800ec8bec67748bad8d7e7a7fc5089324dd25ac",
+ "n_states": 2,
+ "pins": {
+  "logs/mathworld1/prband2nuis/views.jsonl": "677201ccc0cf34fbdf2b2e060146b68c157a2450926ac062f1c0f16cac8a72bb",
+  "logs/mathworld1/prband2nuis/prband2nuis_receipt.json": "27729b4234fc98016cceaf2411ebca85a41d00cd617a039cadd853c3c23d4fc6",
+  "logs/mathworld1/prband2prod/primary.jsonl": "209391ef3b2e5c87308571d6ef309bb5724a214160caa1b7857f4a31f9112c34",
+  "logs/mathworld1/prband2score/raw_scores.jsonl": "68d014ac2a0bf5b085941daeeae7def5a30506c7bb45c91630a96113b01cb31e"
+ },
+ "views": [
+  "RAW",
+  "K_FIRST",
+  "LOW_PAIR_FIRST"
+ ],
+ "view_gates": {
+  "RAW": 2,
+  "K_FIRST": 2,
+  "LOW_PAIR_FIRST": 2
+ },
+ "semantic_order": [
+  [
+   "i_sum",
+   "I",
+   0,
+   "none",
+   -1
+  ],
+  [
+   "i_unprod",
+   "I",
+   0,
+   "term_index",
+   1
+  ],
+  [
+   "i_unprod",
+   "I",
+   0,
+   "term_index",
+   3
+  ],
+  [
+   "i_unprod",
+   "I",
+   0,
+   "term_index",
+   5
+  ]
+ ],
+ "eps": {
+  "EPS_SCORE": 1e-05,
+  "EPS_D": 2e-05,
+  "EPS_DELTA": 4e-05
+ },
+ "slack": {
+  "pairs": 2,
+  "top1": 4,
+  "shift_pairs": 2
+ },
+ "semantic_beyond_all_surface_identifiable": false,
+ "checkpoints": [
+  {
+   "seed": "19001",
+   "representation": "CANONICAL",
+   "path": "checkpoints/svp_forder_canonical_s19001.pt",
+   "sha256": "ae0a86e027d8b0ca1cd7a97a83a6927d326da5bd34258910b1b81d3492322e1d"
+  }
+ ],
+ "device": "mps",
+ "torch": "2.12.1",
+ "replay": {
+  "cells": {
+   "19001|CANONICAL|FULL": {
+    "rows": 8,
+    "exact": 8
+   },
+   "19001|CANONICAL|MASK0": {
+    "rows": 8,
+    "exact": 8
+   }
+  },
+  "rows_compared": 16,
+  "rows_exact": 16,
+  "max_abs_lp_drift": 0.0,
+  "max_abs_sum_drift": 0.0,
+  "exact": true
+ },
+ "verdict": "SMOKE OK",
+ "summary": {
+  "19001|CANONICAL": {
+   "FULL": {
+    "RAW": {
+     "top1": 1,
+     "A0_correct": 0,
+     "B0_correct": 1,
+     "both_correct_pairs": 0,
+     "correct_direction_pairs": 0,
+     "reversed_direction_pairs": 0
+    },
+    "K_FIRST": {
+     "top1": 1,
+     "A0_correct": 1,
+     "B0_correct": 0,
+     "both_correct_pairs": 0,
+     "correct_direction_pairs": 0,
+     "reversed_direction_pairs": 0
+    },
+    "LOW_PAIR_FIRST": {
+     "top1": 2,
+     "A0_correct": 1,
+     "B0_correct": 1,
+     "both_correct_pairs": 1,
+     "correct_direction_pairs": 1,
+     "reversed_direction_pairs": 0
+    }
+   },
+   "MASK0": {
+    "RAW": {
+     "top1": 0,
+     "A0_correct": 0,
+     "B0_correct": 0,
+     "both_correct_pairs": 0,
+     "correct_direction_pairs": 0,
+     "reversed_direction_pairs": 0
+    },
+    "K_FIRST": {
+     "top1": 0,
+     "A0_correct": 0,
+     "B0_correct": 0,
+     "both_correct_pairs": 0,
+     "correct_direction_pairs": 0,
+     "reversed_direction_pairs": 0
+    },
+    "LOW_PAIR_FIRST": {
+     "top1": 0,
+     "A0_correct": 0,
+     "B0_correct": 0,
+     "both_correct_pairs": 0,
+     "correct_direction_pairs": 0,
+     "reversed_direction_pairs": 0
+    }
+   }
+  }
+ },
+ "mask0": {
+  "19001|CANONICAL": {
+   "max_cross_view_spread": 0.0,
+   "spread_le_bound": true,
+   "same_top_all_views": true,
+   "robust_top_switches": 0,
+   "robust_margin_flips": 0,
+   "sane": true
+  }
+ },
+ "raw_anchors": {
+  "19001|CANONICAL": {
+   "top1": 29,
+   "both": 0
+  },
+  "19001|PARAM_FIRST": {
+   "top1": 48,
+   "both": 0
+  },
+  "20001|CANONICAL": {
+   "top1": 96,
+   "both": 48
+  },
+  "20001|PARAM_FIRST": {
+   "top1": 62,
+   "both": 14
+  }
+ },
+ "raw_anchor_reproduced": "smoke",
+ "wall_s": 2.5,
+ "artifact_sha256": {
+  "cells.json": "0b1dc09f5d937cc06cacbf379d93524a7a00f900b8c25b020d233ae980d04d5d",
+  "cf_scores.jsonl": "559e0ad18dc7a9b52dfbe667dc4dd59cb8ae1522221bdf918fef8418984796eb",
+  "mask0.json": "ebae818e84d4ae41f2a9650f1deca5e1503eb2d32a114db0ea1e31adb564afab",
+  "pairs.json": "b93478992330bf704eb52e8884318a03d23079cac2ea51604ce863c255551c78",
+  "per_state.json": "6e54a5d5e0c6c782012c1edc950ced760b1bc3fb0f6e44c0bdd474388d41ecde",
+  "replay.json": "7f27c1cfcae1154026bafc0174ae0652e2cc485a2fb934bf380fa24498299024"
+ },
+ "start": {
+  "start_commit": "8800ec8b",
+  "start_status_porcelain": " M scripts/INDEX.md\n?? scratch/mathworld1_prband2cf.py\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_prband2cf.py": "e94d6323835620ce032db9d4a826127a73d73c6bfb7410ec9c45f110abf9c0fb",
+   "scratch/mathworld1_prband2score.py": "2d7f080dcea434cc85ee8c57361f27a32a807f0ab12f9088b9346134b31b0624",
+   "scratch/mathworld1_respath.py": "294e6249d37e5a788f67cdb8b744db21f3fd54a439d59e15d26d76b19315ef39",
+   "scratch/mathworld1_svpchal.py": "4e72cf2c9d9e15e8d84692d077e658dc535199ffb9fd6f81406ca7c23785eaf0",
+   "scratch/mathworld1_svpforder.py": "293e2bb578704d60abcd4562a252d5f3671ea61f673c4cc76041d460a6330c06",
+   "scratch/mathworld1_svpcode.py": "3b80655cbddc835e6fac99c81335a4d21a4b812ac304b786f8ca07ec96277ca0",
+   "scratch/mathworld1_actiontok.py": "a5a22b38c775f67b303b305fa98d8a7fd3e79ac2f11e151385a2701a6d0c4aec",
+   "scratch/mathworld1_svpbirth.py": "c0bed95ec6a4db6faad424fa4780fba3af8d4f6d2cec364c75726da9e532950c",
+   "llmopt/train/mathnative.py": "f8f5ca114d83d0dd854ebcb25de1a707e41e57822f06b15efecb0a1d87dcab61",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "8800ec8b"
+}
