@@ -285,14 +285,14 @@ Census: UNCITED 229, library 73, reproduce-pinned 10, results-cited 380, spec-ci
 | mathworld1 | mathworld1_prband.py | results-cited | RESULTS | RESULTS×2 | — | 4 |
 | mathworld1 | mathworld1_prband2atlas.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_prband2branch.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| mathworld1 | mathworld1_prband2cf.py | results-cited | RESULTS | RESULTS×2 | — | — |
+| mathworld1 | mathworld1_prband2cf.py | results-cited | RESULTS | RESULTS×4 | — | — |
 | mathworld1 | mathworld1_prband2cf_verify.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_prband2desk.py | results-cited | RESULTS | RESULTS×3 | — | 1 |
 | mathworld1 | mathworld1_prband2desk_verify.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_prband2nuis.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
 | mathworld1 | mathworld1_prband2prod.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | mathworld1 | mathworld1_prband2prod_verify.py | results-cited | RESULTS | RESULTS×2 | — | — |
-| mathworld1 | mathworld1_prband2score.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
+| mathworld1 | mathworld1_prband2score.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
 | mathworld1 | mathworld1_prband2score_verify.py | UNCITED | — | — | — | — |
 | mathworld1 | mathworld1_prband_anat.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_prband_hce.py | results-cited | RESULTS | RESULTS×1 | — | — |
