@@ -927,6 +927,42 @@
    "source": "results",
    "tracked": false
   },
+  "logs/mathworld1/prband2atlas/atlas_manifest.jsonl": {
+   "bytes": 111490,
+   "exists": true,
+   "sha256": "687b5e54e0da19bf057431eb4d44b755302c1963d18e13fb6d316fa99dd2f4b2",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/prband2atlas/atlas_policies.jsonl": {
+   "bytes": 1801724,
+   "exists": true,
+   "sha256": "b4a1c08308ca429d4bd7eb01210dfe469cd11eb9c9c527daf42997cec6d86c71",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/prband2atlas/prband2atlas_receipt.json": {
+   "bytes": 4244,
+   "exists": true,
+   "sha256": "da51825d4966bba31b0f8a4123397ae5eb8e159c077789237cba12c088c48ad6",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/prband2atlas/renders.jsonl": {
+   "bytes": 50423904,
+   "exists": true,
+   "local_only": true,
+   "sha256": "2cac5570bc8eb6143a0a35797dafe1ea78147e6871ef93aceb87951e88419d8b",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/mathworld1/prband2atlas_smoke/prband2atlas_receipt.json": {
+   "bytes": 3685,
+   "exists": true,
+   "sha256": "0aadf37682a5638250b387b558109d6bff6c5d5e3c594c297764bf54433739c0",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/prband2cf_smoke/prband2cf_receipt.json": {
    "bytes": 5333,
    "exists": true,

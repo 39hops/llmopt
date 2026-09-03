@@ -2874,6 +2874,16 @@ MATH-CYBER-1 PRIOR-RESISTANT-EVAL-MATERIALIZATION-0 — materialize, or mechanic
 - `ceiling_report(rows, label)`
 - `main()`
 
+### scratch/mathworld1_prband2atlas.py
+MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-RENDER-ATLAS-ASSESSMENT-0 model-blind exhaustive global role-permutation render atlas.
+
+- `render_id(perm)`
+- `manifest()` — All 6! global role permutations in itertools order over ROLES.
+- `prep_states(P)`
+- `poly_degree(t)`
+- `render_policy(job)` — One policy over every state; runs inside a fork worker.
+- `main()`
+
 ### scratch/mathworld1_prband2branch.py
 MATH-CYBER-1 PRIOR-RESISTANT-EVAL-V2-PRODUCTION-DESIGN-ASSESSMENT-0 — READ-ONLY census over the burned V2 desk artifact (logs/mathworld1/prband2desk/bases.jsonl): every variant x e_lo branch cell (six), with roles taken from the persisted source-term / guessed-A semantics, the branch's own correct-guess coordinates, the authoritative full-legal-set teacher, strict classification by theta, exact cand_sig_id capacity, and the state-blind fixed-ranking ceiling under balance. Plus the exact training-support matrix for (i_unprod, I, ordinal in {0,1}, term_index 0..5) from the two pinned training files (74,860 rows): whole-coordinate, rule+param, rule+site, program_text counts, FACTOR and PARAM-FIRST codes with per-position symbol counts. No parent generated, no rule call, no model. Writes logs/mathworld1/prband2desk_verify/branch_census.json and support_matrix.json (refuse-if-exists).
 

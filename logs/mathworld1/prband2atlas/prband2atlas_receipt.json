@@ -1,0 +1,160 @@
+{
+ "smoke": false,
+ "assessment": "MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-RENDER-ATLAS-ASSESSMENT-0",
+ "adopted": {
+  "verdict": "MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-NUISANCE-COUNTERFACTUAL-0",
+  "verdict_commit": "08d6529c105385a4dfdc6f2c8306e7db457839fe",
+  "assessment": "MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-NUISANCE-COUNTERFACTUAL-ASSESSMENT-0",
+  "assessment_commit": "62ac8f3d86c44540eb2fe47965342d11f90cda82"
+ },
+ "pins": {
+  "logs/mathworld1/prband2prod/primary.jsonl": "209391ef3b2e5c87308571d6ef309bb5724a214160caa1b7857f4a31f9112c34",
+  "logs/mathworld1/prband2nuis/views.jsonl": "677201ccc0cf34fbdf2b2e060146b68c157a2450926ac062f1c0f16cac8a72bb"
+ },
+ "n_states": 96,
+ "n_policies": 720,
+ "workers": 8,
+ "prompt_law": "Current: {cur}\nHints: none\nStep: ",
+ "roles": [
+  "HI_D",
+  "HI_L",
+  "LO_D",
+  "LO_L",
+  "K",
+  "W"
+ ],
+ "manifest_sha": "687b5e54e0da19bf057431eb4d44b755302c1963d18e13fb6d316fa99dd2f4b2",
+ "eligible": 720,
+ "distinct_matrices": 720,
+ "duplicate_classes": {},
+ "gate_totals": {
+  "parse=True": 69120,
+  "srepr_identical=True": 69120,
+  "equiv_zero=True": 69120,
+  "six_term_multiset=True": 69120,
+  "law_reproduces=True": 69120,
+  "cand_sig_id_equal=True": 69120,
+  "teacher_equal=True": 69120,
+  "child_srepr_set_equal=True": 69120,
+  "ties_equal=True": 69120,
+  "law_cur_is_raw=True": 69120,
+  "state_identity=True": 69120,
+  "programs_equal=True": 69120,
+  "gold_equal=True": 69120
+ },
+ "anchors": {
+  "RAW": {
+   "render_ids": [
+    "8f1479a9402429ac18d1d1e55f803d02bd47313f8c69dfbfae6abd0a4f5f26f2"
+   ],
+   "roles": [
+    [
+     "HI_D",
+     "HI_L",
+     "K",
+     "LO_D",
+     "LO_L",
+     "W"
+    ]
+   ]
+  },
+  "K_FIRST": {
+   "render_ids": [
+    "12170b528662864717abfd685b6666da8567a56699d76621aac22a047e39aa4a"
+   ],
+   "roles": [
+    [
+     "K",
+     "HI_D",
+     "HI_L",
+     "LO_D",
+     "LO_L",
+     "W"
+    ]
+   ]
+  },
+  "LOW_PAIR_FIRST": {
+   "render_ids": [
+    "654ee0410fd5e2ec8dc74365e1cb89265d3a7320a9c1c4679885c294b7c18afb"
+   ],
+   "roles": [
+    [
+     "LO_D",
+     "LO_L",
+     "K",
+     "HI_D",
+     "HI_L",
+     "W"
+    ]
+   ]
+  }
+ },
+ "ceiling_top1_distribution": {
+  "prompt_tokens": {
+   "96": 240,
+   "48": 480
+  },
+  "lead_sign": {
+   "96": 240,
+   "48": 480
+  },
+  "minus_pos": {
+   "96": 720
+  },
+  "first_trig": {
+   "96": 720
+  },
+  "first_trig_degree": {
+   "48": 720
+  },
+  "first_poly_degree": {
+   "48": 720
+  },
+  "first_role": {
+   "48": 720
+  },
+  "neg_role_pos": {
+   "96": 720
+  }
+ },
+ "constant_feature_policies": {
+  "prompt_tokens": 480,
+  "lead_sign": 480,
+  "minus_pos": 0,
+  "first_trig": 0,
+  "first_trig_degree": 360,
+  "first_poly_degree": 360,
+  "first_role": 720,
+  "neg_role_pos": 0
+ },
+ "max_prompt_tokens": 89,
+ "cost_estimate": {
+  "cf_wall_s": 112.1,
+  "cf_rows": 9216,
+  "per_row_s_upper": 0.012163628472222222,
+  "atlas_distinct_matrices": 720,
+  "atlas_full_rows": 1105920,
+  "atlas_full_wall_h_linear": 3.736666666666667,
+  "atlas_full_wall_h_2x": 7.473333333333334,
+  "continuation_T": 9,
+  "note": "cf wall includes four checkpoint loads and MASK0 cells; treated as per-row cost (conservative)"
+ },
+ "wall_s": 8305.3,
+ "provenance": {
+  "start_commit": "95e4e0cc",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_prband2atlas.py": "3fbdde61e30a301d6b91967a47ee215869d693d8b2eedbd1052d608c8d91ab27",
+   "scratch/mathworld1_prband2nuis.py": "90317ee863a5eeb5515953a0fe5e36812a65354e2de0fe42dfe4aa8a407ef280",
+   "scratch/mathworld1_svpchal.py": "4e72cf2c9d9e15e8d84692d077e658dc535199ffb9fd6f81406ca7c23785eaf0",
+   "scratch/mathworld1_prband.py": "e4fb51d59e973c19b90a10da50365a488b63f15faf1356838abfeb2c994a178e",
+   "scratch/mathworld1_actiontok.py": "a5a22b38c775f67b303b305fa98d8a7fd3e79ac2f11e151385a2701a6d0c4aec",
+   "scratch/mathworld1_svpbirth.py": "c0bed95ec6a4db6faad424fa4780fba3af8d4f6d2cec364c75726da9e532950c",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "95e4e0cc",
+ "renders_sha": "2cac5570bc8eb6143a0a35797dafe1ea78147e6871ef93aceb87951e88419d8b",
+ "policies_sha": "b4a1c08308ca429d4bd7eb01210dfe469cd11eb9c9c527daf42997cec6d86c71"
+}

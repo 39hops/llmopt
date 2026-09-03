@@ -1,0 +1,125 @@
+{
+ "smoke": true,
+ "assessment": "MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-RENDER-ATLAS-ASSESSMENT-0",
+ "adopted": {
+  "verdict": "MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-NUISANCE-COUNTERFACTUAL-0",
+  "verdict_commit": "08d6529c105385a4dfdc6f2c8306e7db457839fe",
+  "assessment": "MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-NUISANCE-COUNTERFACTUAL-ASSESSMENT-0",
+  "assessment_commit": "62ac8f3d86c44540eb2fe47965342d11f90cda82"
+ },
+ "pins": {
+  "logs/mathworld1/prband2prod/primary.jsonl": "209391ef3b2e5c87308571d6ef309bb5724a214160caa1b7857f4a31f9112c34",
+  "logs/mathworld1/prband2nuis/views.jsonl": "677201ccc0cf34fbdf2b2e060146b68c157a2450926ac062f1c0f16cac8a72bb"
+ },
+ "n_states": 4,
+ "n_policies": 6,
+ "workers": 3,
+ "prompt_law": "Current: {cur}\nHints: none\nStep: ",
+ "roles": [
+  "HI_D",
+  "HI_L",
+  "LO_D",
+  "LO_L",
+  "K",
+  "W"
+ ],
+ "manifest_sha": "687b5e54e0da19bf057431eb4d44b755302c1963d18e13fb6d316fa99dd2f4b2",
+ "eligible": 6,
+ "distinct_matrices": 6,
+ "duplicate_classes": {},
+ "gate_totals": {
+  "parse=True": 24,
+  "srepr_identical=True": 24,
+  "equiv_zero=True": 24,
+  "six_term_multiset=True": 24,
+  "law_reproduces=True": 24,
+  "cand_sig_id_equal=True": 24,
+  "teacher_equal=True": 24,
+  "child_srepr_set_equal=True": 24,
+  "ties_equal=True": 24,
+  "law_cur_is_raw=True": 24,
+  "state_identity=True": 24,
+  "programs_equal=True": 24,
+  "gold_equal=True": 24
+ },
+ "anchors": {
+  "RAW": {
+   "render_ids": [],
+   "roles": []
+  },
+  "K_FIRST": {
+   "render_ids": [],
+   "roles": []
+  },
+  "LOW_PAIR_FIRST": {
+   "render_ids": [],
+   "roles": []
+  }
+ },
+ "ceiling_top1_distribution": {
+  "prompt_tokens": {
+   "4": 6
+  },
+  "lead_sign": {
+   "4": 6
+  },
+  "minus_pos": {
+   "4": 6
+  },
+  "first_trig": {
+   "4": 6
+  },
+  "first_trig_degree": {
+   "2": 6
+  },
+  "first_poly_degree": {
+   "2": 6
+  },
+  "first_role": {
+   "2": 6
+  },
+  "neg_role_pos": {
+   "4": 6
+  }
+ },
+ "constant_feature_policies": {
+  "prompt_tokens": 0,
+  "lead_sign": 0,
+  "minus_pos": 0,
+  "first_trig": 0,
+  "first_trig_degree": 0,
+  "first_poly_degree": 0,
+  "first_role": 6,
+  "neg_role_pos": 0
+ },
+ "max_prompt_tokens": 89,
+ "cost_estimate": {
+  "cf_wall_s": 112.1,
+  "cf_rows": 9216,
+  "per_row_s_upper": 0.012163628472222222,
+  "atlas_distinct_matrices": 6,
+  "atlas_full_rows": 9216,
+  "atlas_full_wall_h_linear": 0.031138888888888886,
+  "atlas_full_wall_h_2x": 0.06227777777777777,
+  "continuation_T": 9,
+  "note": "cf wall includes four checkpoint loads and MASK0 cells; treated as per-row cost (conservative)"
+ },
+ "wall_s": 5.6,
+ "provenance": {
+  "start_commit": "9e0def54",
+  "start_status_porcelain": " M scripts/INDEX.md\n?? scratch/mathworld1_prband2atlas.py\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_prband2atlas.py": "3fbdde61e30a301d6b91967a47ee215869d693d8b2eedbd1052d608c8d91ab27",
+   "scratch/mathworld1_prband2nuis.py": "90317ee863a5eeb5515953a0fe5e36812a65354e2de0fe42dfe4aa8a407ef280",
+   "scratch/mathworld1_svpchal.py": "4e72cf2c9d9e15e8d84692d077e658dc535199ffb9fd6f81406ca7c23785eaf0",
+   "scratch/mathworld1_prband.py": "e4fb51d59e973c19b90a10da50365a488b63f15faf1356838abfeb2c994a178e",
+   "scratch/mathworld1_actiontok.py": "a5a22b38c775f67b303b305fa98d8a7fd3e79ac2f11e151385a2701a6d0c4aec",
+   "scratch/mathworld1_svpbirth.py": "c0bed95ec6a4db6faad424fa4780fba3af8d4f6d2cec364c75726da9e532950c",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "9e0def54",
+ "renders_sha": "5133246f8d4001311d091842ebe668f65d4f3f13d7011cf867ac700486a024ac",
+ "policies_sha": "dd1efba182b3e8c5c51fbeb63c09def96b443978eaa06a67193c45050d6ef3b4"
+}
