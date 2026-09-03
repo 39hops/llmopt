@@ -1,0 +1,62 @@
+{
+ "prereg": "MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-RENDER-ATLAS-FRESH-SEED-0",
+ "pins": {
+  "logs/mathworld1/prband2atlas/renders.jsonl": "2cac5570bc8eb6143a0a35797dafe1ea78147e6871ef93aceb87951e88419d8b",
+  "logs/mathworld1/prband2atlas/atlas_manifest.jsonl": "687b5e54e0da19bf057431eb4d44b755302c1963d18e13fb6d316fa99dd2f4b2",
+  "logs/mathworld1/prband2atlas/atlas_policies.jsonl": "b4a1c08308ca429d4bd7eb01210dfe469cd11eb9c9c527daf42997cec6d86c71",
+  "logs/mathworld1/prband2prod/primary.jsonl": "209391ef3b2e5c87308571d6ef309bb5724a214160caa1b7857f4a31f9112c34"
+ },
+ "views": {
+  "RAW": {
+   "atlas_index": 12,
+   "render_id": "8f1479a9402429ac18d1d1e55f803d02bd47313f8c69dfbfae6abd0a4f5f26f2",
+   "roles": [
+    "HI_D",
+    "HI_L",
+    "K",
+    "LO_D",
+    "LO_L",
+    "W"
+   ],
+   "matrix_sha": "c4edb35529ea6075b904ef84981b10f480e4be06ccd4e6bbac3111525fbad272"
+  },
+  "R488": {
+   "atlas_index": 488,
+   "render_id": "91e4098b48717d6b611445824a6c987594c38df1b9c5f40e815ff95b36a5f9d9",
+   "roles": [
+    "K",
+    "HI_D",
+    "LO_D",
+    "LO_L",
+    "HI_L",
+    "W"
+   ],
+   "matrix_sha": "0d0c796f7f4185ba86cf1b528d270ae2965cb4dd98a65a0f488ae463b3d67b72"
+  }
+ },
+ "rows": 192,
+ "prompt_tokens": {
+  "RAW": {
+   "89": 48,
+   "88": 48
+  },
+  "R488": {
+   "88": 96
+  }
+ },
+ "artifact_sha256": "ce06c5bc4f687d8fada5797cab9e7fa052da8cab4accf730816f7be4d4313386",
+ "prompt_law": "Current: {cur}\nHints: none\nStep: ",
+ "provenance": {
+  "start_commit": "900f3cb3",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_prband2freshprompts.py": "4be03265cbb25ea25d3151872a6b81660ad0c4102b503958b519815921401e9c",
+   "scratch/mathworld1_actiontok.py": "a5a22b38c775f67b303b305fa98d8a7fd3e79ac2f11e151385a2701a6d0c4aec",
+   "scratch/mathworld1_svpbirth.py": "c0bed95ec6a4db6faad424fa4780fba3af8d4f6d2cec364c75726da9e532950c",
+   "scratch/mathworld1_svpchal.py": "4e72cf2c9d9e15e8d84692d077e658dc535199ffb9fd6f81406ca7c23785eaf0",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "900f3cb3"
+}

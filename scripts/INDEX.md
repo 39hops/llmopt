@@ -2955,6 +2955,12 @@ MATH-CYBER-1 PRIOR-RESISTANT-EVAL-V2-CROSSOVER-DESK-0 — INDEPENDENT VERIFIER. 
 - `hce(e)`
 - `main()`
 
+### scratch/mathworld1_prband2freshprompts.py
+MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-RENDER-ATLAS-FRESH-SEED-0 model-blind validation prompt extraction (prereg-time instrument).
+
+- `_no_load(*a, **k)`
+- `main()`
+
 ### scratch/mathworld1_prband2nuis.py
 MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-NUISANCE-COUNTERFACTUAL-ASSESSMENT-0 render-only view assessment (model-blind desk).
 

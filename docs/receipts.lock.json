@@ -1061,6 +1061,20 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/prband2fresh/validation_prompts.jsonl": {
+   "bytes": 92956,
+   "exists": true,
+   "sha256": "ce06c5bc4f687d8fada5797cab9e7fa052da8cab4accf730816f7be4d4313386",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/prband2fresh/validation_prompts_receipt.json": {
+   "bytes": 2170,
+   "exists": true,
+   "sha256": "33dea1bed26b362ece66ad2733aab1193ecaba4f2b5073fbf29cd76d5f4f64f3",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/prband2nuis/prband2nuis_receipt.json": {
    "bytes": 17447,
    "exists": true,
@@ -1707,6 +1721,13 @@
    "bytes": 170356,
    "exists": true,
    "sha256": "f9565f745cfe92462c5f35e938d2a3e6d50e646533e16363e09f884190856b25",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/svpforepl_census/svpforepl_census_receipt.json": {
+   "bytes": 2018,
+   "exists": true,
+   "sha256": "49bf9823c93b5bd91e63694b26bef9bed86d04dde298c668c434e85e80fea302",
    "source": "results",
    "tracked": true
   },
