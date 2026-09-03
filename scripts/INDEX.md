@@ -2882,6 +2882,21 @@ MATH-CYBER-1 PRIOR-RESISTANT-EVAL-V2-PRODUCTION-DESIGN-ASSESSMENT-0 — READ-ONL
 - `branch(rows, vt, e_lo)`
 - `main()`
 
+### scratch/mathworld1_prband2cf.py
+MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-NUISANCE-COUNTERFACTUAL-0 execution scorer (adopt-not-fork of scratch/mathworld1_prband2score.py).
+
+- `sgn(x)`
+- `view_gates(P, views)` — Frozen pre-score artifact gates, per view, 96/96 (or the smoke
+- `classify(dR, dK, dL, g)` — Frozen per-state flags and class.
+- `main()`
+
+### scratch/mathworld1_prband2cf_verify.py
+Independent verifier for MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2- NUISANCE-COUNTERFACTUAL-0. Reconstructs every aggregate from the raw per-token lps in logs/mathworld1/prband2cf/cf_scores.jsonl with its own code (no scorer aggregate function imported), and checks:
+
+- `sha(s)`
+- `sgn(x)`
+- `main()`
+
 ### scratch/mathworld1_prband2desk.py
 MATH-CYBER-1 PRIOR-RESISTANT-EVAL-V2-CROSSOVER-DESK-0 — execute the frozen controlled-crossover feasibility desk (PRE-REG ...V2-CROSSOVER- DESK-0, 488e8b23, RESULTS L63579). ZERO checkpoint access, ZERO scoring, ZERO training, ZERO production materialization.
 

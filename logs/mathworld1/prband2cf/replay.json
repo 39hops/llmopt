@@ -1,0 +1,41 @@
+{
+ "cells": {
+  "19001|CANONICAL|FULL": {
+   "rows": 384,
+   "exact": 384
+  },
+  "19001|CANONICAL|MASK0": {
+   "rows": 384,
+   "exact": 384
+  },
+  "19001|PARAM_FIRST|FULL": {
+   "rows": 384,
+   "exact": 384
+  },
+  "19001|PARAM_FIRST|MASK0": {
+   "rows": 384,
+   "exact": 384
+  },
+  "20001|CANONICAL|FULL": {
+   "rows": 384,
+   "exact": 384
+  },
+  "20001|CANONICAL|MASK0": {
+   "rows": 384,
+   "exact": 384
+  },
+  "20001|PARAM_FIRST|FULL": {
+   "rows": 384,
+   "exact": 384
+  },
+  "20001|PARAM_FIRST|MASK0": {
+   "rows": 384,
+   "exact": 384
+  }
+ },
+ "rows_compared": 3072,
+ "rows_exact": 3072,
+ "max_abs_lp_drift": 0.0,
+ "max_abs_sum_drift": 0.0,
+ "exact": true
+}

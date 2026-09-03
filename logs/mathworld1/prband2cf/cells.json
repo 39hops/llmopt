@@ -1,0 +1,1020 @@
+{
+ "19001|CANONICAL|FULL|RAW": {
+  "top1": 29,
+  "ties": 0,
+  "A0_correct": 0,
+  "B0_correct": 29,
+  "both_correct_pairs": 0,
+  "top_census": {
+   "B0": 77,
+   "A0": 19
+  },
+  "target_sign_census": {
+   "gold_directed": 29,
+   "opposite_gold": 67,
+   "subnoise": 0
+  },
+  "correct_direction_pairs": 0,
+  "reversed_direction_pairs": 19
+ },
+ "19001|CANONICAL|FULL|K_FIRST": {
+  "top1": 48,
+  "ties": 0,
+  "A0_correct": 48,
+  "B0_correct": 0,
+  "both_correct_pairs": 0,
+  "top_census": {
+   "A0": 96
+  },
+  "target_sign_census": {
+   "gold_directed": 48,
+   "opposite_gold": 48,
+   "subnoise": 0
+  },
+  "correct_direction_pairs": 0,
+  "reversed_direction_pairs": 0
+ },
+ "19001|CANONICAL|FULL|LOW_PAIR_FIRST": {
+  "top1": 82,
+  "ties": 0,
+  "A0_correct": 37,
+  "B0_correct": 45,
+  "both_correct_pairs": 34,
+  "top_census": {
+   "A0": 40,
+   "B0": 56
+  },
+  "target_sign_census": {
+   "gold_directed": 82,
+   "opposite_gold": 14,
+   "subnoise": 0
+  },
+  "correct_direction_pairs": 34,
+  "reversed_direction_pairs": 0
+ },
+ "19001|CANONICAL|FULL|CONTRASTS": {
+  "changes": {
+   "RAW->K_FIRST": {
+    "states_changed": 77,
+    "robust_changes": 77,
+    "pairs_with_change": 48,
+    "transition": {
+     "A0->A0": 19,
+     "B0->A0": 77
+    }
+   },
+   "RAW->LOW_PAIR_FIRST": {
+    "states_changed": 55,
+    "robust_changes": 55,
+    "pairs_with_change": 39,
+    "transition": {
+     "A0->A0": 2,
+     "A0->B0": 17,
+     "B0->A0": 38,
+     "B0->B0": 39
+    }
+   },
+   "K_FIRST->LOW_PAIR_FIRST": {
+    "states_changed": 56,
+    "robust_changes": 56,
+    "pairs_with_change": 45,
+    "transition": {
+     "A0->A0": 40,
+     "A0->B0": 56
+    }
+   }
+  },
+  "class_census": {
+   "CUE-FOLLOWING": 55,
+   "NEUTRAL-SHIFT": 39,
+   "RENDER-SIGN-INVARIANT": 2
+  },
+  "polarity_census": {
+   "CUE-FOLLOWING REVERSED-POLARITY": 54,
+   "CUE-FOLLOWING CORRECT-POLARITY": 1
+  },
+  "pair_census": {
+   "PAIR-BUNDLE-FOLLOWING CORRECT-POLARITY": 0,
+   "PAIR-BUNDLE-FOLLOWING REVERSED-POLARITY": 15,
+   "PAIR-REGISTERED-CUE-REMOVAL-STABLE": 0,
+   "PAIR-BUNDLE-REVERSAL-STABLE": 9,
+   "both_reverse_RAW_LOW": 16,
+   "raw_both_correct_with_cue_following": 0,
+   "raw_both_correct_with_neutral_shift": 0
+  },
+  "delta_dist": {
+   "Delta_K": {
+    "min": 1.9132903814370366,
+    "max": 6.448476746680171,
+    "median": 4.290764510638837,
+    "n_abs_ge_eps_delta": 96,
+    "n_pos": 96,
+    "n_neg": 0
+   },
+   "Delta_LOW": {
+    "min": -4.0886573791703995,
+    "max": 4.521903872484472,
+    "median": 1.4326452016848634,
+    "n_abs_ge_eps_delta": 96,
+    "n_pos": 57,
+    "n_neg": 39
+   }
+  },
+  "reading": {
+   "K_FIRST": {
+    "SURVIVES": true,
+    "PARTIAL": false
+   },
+   "LOW_PAIR_FIRST": {
+    "SURVIVES": true,
+    "COLLAPSES": false,
+    "REVERSES": false,
+    "PARTIAL": false
+   }
+  }
+ },
+ "19001|CANONICAL|MASK0|RAW": {
+  "top1": 0,
+  "ties": 0,
+  "A0_correct": 0,
+  "B0_correct": 0,
+  "both_correct_pairs": 0,
+  "top_census": {
+   "i_sum": 96
+  },
+  "target_sign_census": {
+   "gold_directed": 48,
+   "opposite_gold": 48,
+   "subnoise": 0
+  },
+  "correct_direction_pairs": 0,
+  "reversed_direction_pairs": 0
+ },
+ "19001|CANONICAL|MASK0|K_FIRST": {
+  "top1": 0,
+  "ties": 0,
+  "A0_correct": 0,
+  "B0_correct": 0,
+  "both_correct_pairs": 0,
+  "top_census": {
+   "i_sum": 96
+  },
+  "target_sign_census": {
+   "gold_directed": 48,
+   "opposite_gold": 48,
+   "subnoise": 0
+  },
+  "correct_direction_pairs": 0,
+  "reversed_direction_pairs": 0
+ },
+ "19001|CANONICAL|MASK0|LOW_PAIR_FIRST": {
+  "top1": 0,
+  "ties": 0,
+  "A0_correct": 0,
+  "B0_correct": 0,
+  "both_correct_pairs": 0,
+  "top_census": {
+   "i_sum": 96
+  },
+  "target_sign_census": {
+   "gold_directed": 48,
+   "opposite_gold": 48,
+   "subnoise": 0
+  },
+  "correct_direction_pairs": 0,
+  "reversed_direction_pairs": 0
+ },
+ "19001|CANONICAL|MASK0|CONTRASTS": {
+  "changes": {
+   "RAW->K_FIRST": {
+    "states_changed": 0,
+    "robust_changes": 0,
+    "pairs_with_change": 0,
+    "transition": {
+     "i_sum->i_sum": 96
+    }
+   },
+   "RAW->LOW_PAIR_FIRST": {
+    "states_changed": 0,
+    "robust_changes": 0,
+    "pairs_with_change": 0,
+    "transition": {
+     "i_sum->i_sum": 96
+    }
+   },
+   "K_FIRST->LOW_PAIR_FIRST": {
+    "states_changed": 0,
+    "robust_changes": 0,
+    "pairs_with_change": 0,
+    "transition": {
+     "i_sum->i_sum": 96
+    }
+   }
+  },
+  "class_census": {
+   "RENDER-SIGN-INVARIANT": 96
+  },
+  "polarity_census": {},
+  "pair_census": {
+   "PAIR-BUNDLE-FOLLOWING CORRECT-POLARITY": 0,
+   "PAIR-BUNDLE-FOLLOWING REVERSED-POLARITY": 0,
+   "PAIR-REGISTERED-CUE-REMOVAL-STABLE": 48,
+   "PAIR-BUNDLE-REVERSAL-STABLE": 48,
+   "both_reverse_RAW_LOW": 0,
+   "raw_both_correct_with_cue_following": 0,
+   "raw_both_correct_with_neutral_shift": 0
+  },
+  "delta_dist": {
+   "Delta_K": {
+    "min": 0.0,
+    "max": 0.0,
+    "median": 0.0,
+    "n_abs_ge_eps_delta": 0,
+    "n_pos": 0,
+    "n_neg": 0
+   },
+   "Delta_LOW": {
+    "min": 0.0,
+    "max": 0.0,
+    "median": 0.0,
+    "n_abs_ge_eps_delta": 0,
+    "n_pos": 0,
+    "n_neg": 0
+   }
+  },
+  "reading": {
+   "K_FIRST": {
+    "SURVIVES": true,
+    "PARTIAL": false
+   },
+   "LOW_PAIR_FIRST": {
+    "SURVIVES": true,
+    "COLLAPSES": true,
+    "REVERSES": false,
+    "PARTIAL": false
+   }
+  }
+ },
+ "19001|PARAM_FIRST|FULL|RAW": {
+  "top1": 48,
+  "ties": 0,
+  "A0_correct": 0,
+  "B0_correct": 48,
+  "both_correct_pairs": 0,
+  "top_census": {
+   "B0": 96
+  },
+  "target_sign_census": {
+   "gold_directed": 48,
+   "opposite_gold": 48,
+   "subnoise": 0
+  },
+  "correct_direction_pairs": 0,
+  "reversed_direction_pairs": 0
+ },
+ "19001|PARAM_FIRST|FULL|K_FIRST": {
+  "top1": 95,
+  "ties": 0,
+  "A0_correct": 47,
+  "B0_correct": 48,
+  "both_correct_pairs": 47,
+  "top_census": {
+   "A0": 47,
+   "B0": 49
+  },
+  "target_sign_census": {
+   "gold_directed": 95,
+   "opposite_gold": 1,
+   "subnoise": 0
+  },
+  "correct_direction_pairs": 47,
+  "reversed_direction_pairs": 0
+ },
+ "19001|PARAM_FIRST|FULL|LOW_PAIR_FIRST": {
+  "top1": 54,
+  "ties": 0,
+  "A0_correct": 6,
+  "B0_correct": 48,
+  "both_correct_pairs": 6,
+  "top_census": {
+   "B0": 90,
+   "A0": 6
+  },
+  "target_sign_census": {
+   "gold_directed": 54,
+   "opposite_gold": 42,
+   "subnoise": 0
+  },
+  "correct_direction_pairs": 6,
+  "reversed_direction_pairs": 0
+ },
+ "19001|PARAM_FIRST|FULL|CONTRASTS": {
+  "changes": {
+   "RAW->K_FIRST": {
+    "states_changed": 47,
+    "robust_changes": 47,
+    "pairs_with_change": 47,
+    "transition": {
+     "B0->A0": 47,
+     "B0->B0": 49
+    }
+   },
+   "RAW->LOW_PAIR_FIRST": {
+    "states_changed": 6,
+    "robust_changes": 6,
+    "pairs_with_change": 6,
+    "transition": {
+     "B0->A0": 6,
+     "B0->B0": 90
+    }
+   },
+   "K_FIRST->LOW_PAIR_FIRST": {
+    "states_changed": 41,
+    "robust_changes": 41,
+    "pairs_with_change": 41,
+    "transition": {
+     "A0->A0": 6,
+     "A0->B0": 41,
+     "B0->B0": 49
+    }
+   }
+  },
+  "class_census": {
+   "NEUTRAL-SHIFT": 41,
+   "RENDER-SIGN-INVARIANT": 49,
+   "CUE-FOLLOWING": 6
+  },
+  "polarity_census": {
+   "CUE-FOLLOWING REVERSED-POLARITY": 6
+  },
+  "pair_census": {
+   "PAIR-BUNDLE-FOLLOWING CORRECT-POLARITY": 0,
+   "PAIR-BUNDLE-FOLLOWING REVERSED-POLARITY": 0,
+   "PAIR-REGISTERED-CUE-REMOVAL-STABLE": 1,
+   "PAIR-BUNDLE-REVERSAL-STABLE": 42,
+   "both_reverse_RAW_LOW": 0,
+   "raw_both_correct_with_cue_following": 0,
+   "raw_both_correct_with_neutral_shift": 0
+  },
+  "delta_dist": {
+   "Delta_K": {
+    "min": -1.2734580086962524,
+    "max": 7.361483524143296,
+    "median": 2.5637702910007647,
+    "n_abs_ge_eps_delta": 96,
+    "n_pos": 92,
+    "n_neg": 4
+   },
+   "Delta_LOW": {
+    "min": -1.7575570397075353,
+    "max": 4.659315353384045,
+    "median": 0.9453739155014773,
+    "n_abs_ge_eps_delta": 96,
+    "n_pos": 70,
+    "n_neg": 26
+   }
+  },
+  "reading": {
+   "K_FIRST": {
+    "SURVIVES": true,
+    "PARTIAL": false
+   },
+   "LOW_PAIR_FIRST": {
+    "SURVIVES": true,
+    "COLLAPSES": false,
+    "REVERSES": false,
+    "PARTIAL": false
+   }
+  }
+ },
+ "19001|PARAM_FIRST|MASK0|RAW": {
+  "top1": 0,
+  "ties": 0,
+  "A0_correct": 0,
+  "B0_correct": 0,
+  "both_correct_pairs": 0,
+  "top_census": {
+   "i_sum": 96
+  },
+  "target_sign_census": {
+   "gold_directed": 48,
+   "opposite_gold": 48,
+   "subnoise": 0
+  },
+  "correct_direction_pairs": 0,
+  "reversed_direction_pairs": 0
+ },
+ "19001|PARAM_FIRST|MASK0|K_FIRST": {
+  "top1": 0,
+  "ties": 0,
+  "A0_correct": 0,
+  "B0_correct": 0,
+  "both_correct_pairs": 0,
+  "top_census": {
+   "i_sum": 96
+  },
+  "target_sign_census": {
+   "gold_directed": 48,
+   "opposite_gold": 48,
+   "subnoise": 0
+  },
+  "correct_direction_pairs": 0,
+  "reversed_direction_pairs": 0
+ },
+ "19001|PARAM_FIRST|MASK0|LOW_PAIR_FIRST": {
+  "top1": 0,
+  "ties": 0,
+  "A0_correct": 0,
+  "B0_correct": 0,
+  "both_correct_pairs": 0,
+  "top_census": {
+   "i_sum": 96
+  },
+  "target_sign_census": {
+   "gold_directed": 48,
+   "opposite_gold": 48,
+   "subnoise": 0
+  },
+  "correct_direction_pairs": 0,
+  "reversed_direction_pairs": 0
+ },
+ "19001|PARAM_FIRST|MASK0|CONTRASTS": {
+  "changes": {
+   "RAW->K_FIRST": {
+    "states_changed": 0,
+    "robust_changes": 0,
+    "pairs_with_change": 0,
+    "transition": {
+     "i_sum->i_sum": 96
+    }
+   },
+   "RAW->LOW_PAIR_FIRST": {
+    "states_changed": 0,
+    "robust_changes": 0,
+    "pairs_with_change": 0,
+    "transition": {
+     "i_sum->i_sum": 96
+    }
+   },
+   "K_FIRST->LOW_PAIR_FIRST": {
+    "states_changed": 0,
+    "robust_changes": 0,
+    "pairs_with_change": 0,
+    "transition": {
+     "i_sum->i_sum": 96
+    }
+   }
+  },
+  "class_census": {
+   "RENDER-SIGN-INVARIANT": 96
+  },
+  "polarity_census": {},
+  "pair_census": {
+   "PAIR-BUNDLE-FOLLOWING CORRECT-POLARITY": 0,
+   "PAIR-BUNDLE-FOLLOWING REVERSED-POLARITY": 0,
+   "PAIR-REGISTERED-CUE-REMOVAL-STABLE": 48,
+   "PAIR-BUNDLE-REVERSAL-STABLE": 48,
+   "both_reverse_RAW_LOW": 0,
+   "raw_both_correct_with_cue_following": 0,
+   "raw_both_correct_with_neutral_shift": 0
+  },
+  "delta_dist": {
+   "Delta_K": {
+    "min": 0.0,
+    "max": 0.0,
+    "median": 0.0,
+    "n_abs_ge_eps_delta": 0,
+    "n_pos": 0,
+    "n_neg": 0
+   },
+   "Delta_LOW": {
+    "min": 0.0,
+    "max": 0.0,
+    "median": 0.0,
+    "n_abs_ge_eps_delta": 0,
+    "n_pos": 0,
+    "n_neg": 0
+   }
+  },
+  "reading": {
+   "K_FIRST": {
+    "SURVIVES": true,
+    "PARTIAL": false
+   },
+   "LOW_PAIR_FIRST": {
+    "SURVIVES": true,
+    "COLLAPSES": true,
+    "REVERSES": false,
+    "PARTIAL": false
+   }
+  }
+ },
+ "20001|CANONICAL|FULL|RAW": {
+  "top1": 96,
+  "ties": 0,
+  "A0_correct": 48,
+  "B0_correct": 48,
+  "both_correct_pairs": 48,
+  "top_census": {
+   "A0": 48,
+   "B0": 48
+  },
+  "target_sign_census": {
+   "gold_directed": 96,
+   "opposite_gold": 0,
+   "subnoise": 0
+  },
+  "correct_direction_pairs": 48,
+  "reversed_direction_pairs": 0
+ },
+ "20001|CANONICAL|FULL|K_FIRST": {
+  "top1": 48,
+  "ties": 0,
+  "A0_correct": 48,
+  "B0_correct": 0,
+  "both_correct_pairs": 0,
+  "top_census": {
+   "A0": 96
+  },
+  "target_sign_census": {
+   "gold_directed": 48,
+   "opposite_gold": 48,
+   "subnoise": 0
+  },
+  "correct_direction_pairs": 0,
+  "reversed_direction_pairs": 0
+ },
+ "20001|CANONICAL|FULL|LOW_PAIR_FIRST": {
+  "top1": 48,
+  "ties": 0,
+  "A0_correct": 48,
+  "B0_correct": 0,
+  "both_correct_pairs": 0,
+  "top_census": {
+   "A0": 96
+  },
+  "target_sign_census": {
+   "gold_directed": 48,
+   "opposite_gold": 48,
+   "subnoise": 0
+  },
+  "correct_direction_pairs": 0,
+  "reversed_direction_pairs": 0
+ },
+ "20001|CANONICAL|FULL|CONTRASTS": {
+  "changes": {
+   "RAW->K_FIRST": {
+    "states_changed": 48,
+    "robust_changes": 48,
+    "pairs_with_change": 48,
+    "transition": {
+     "A0->A0": 48,
+     "B0->A0": 48
+    }
+   },
+   "RAW->LOW_PAIR_FIRST": {
+    "states_changed": 48,
+    "robust_changes": 48,
+    "pairs_with_change": 48,
+    "transition": {
+     "A0->A0": 48,
+     "B0->A0": 48
+    }
+   },
+   "K_FIRST->LOW_PAIR_FIRST": {
+    "states_changed": 0,
+    "robust_changes": 0,
+    "pairs_with_change": 0,
+    "transition": {
+     "A0->A0": 96
+    }
+   }
+  },
+  "class_census": {
+   "RENDER-SIGN-INVARIANT": 48,
+   "CUE-FOLLOWING": 48
+  },
+  "polarity_census": {
+   "CUE-FOLLOWING CORRECT-POLARITY": 48
+  },
+  "pair_census": {
+   "PAIR-BUNDLE-FOLLOWING CORRECT-POLARITY": 0,
+   "PAIR-BUNDLE-FOLLOWING REVERSED-POLARITY": 0,
+   "PAIR-REGISTERED-CUE-REMOVAL-STABLE": 0,
+   "PAIR-BUNDLE-REVERSAL-STABLE": 0,
+   "both_reverse_RAW_LOW": 0,
+   "raw_both_correct_with_cue_following": 48,
+   "raw_both_correct_with_neutral_shift": 0
+  },
+  "delta_dist": {
+   "Delta_K": {
+    "min": -3.570504426952539,
+    "max": 8.090550869714207,
+    "median": 3.031557559967041,
+    "n_abs_ge_eps_delta": 96,
+    "n_pos": 55,
+    "n_neg": 41
+   },
+   "Delta_LOW": {
+    "min": -3.2522584796060983,
+    "max": 6.041644573198937,
+    "median": 2.047172307937217,
+    "n_abs_ge_eps_delta": 96,
+    "n_pos": 69,
+    "n_neg": 27
+   }
+  },
+  "reading": {
+   "K_FIRST": {
+    "SURVIVES": false,
+    "PARTIAL": true
+   },
+   "LOW_PAIR_FIRST": {
+    "SURVIVES": false,
+    "COLLAPSES": true,
+    "REVERSES": false,
+    "PARTIAL": false
+   }
+  }
+ },
+ "20001|CANONICAL|MASK0|RAW": {
+  "top1": 48,
+  "ties": 0,
+  "A0_correct": 0,
+  "B0_correct": 48,
+  "both_correct_pairs": 0,
+  "top_census": {
+   "B0": 96
+  },
+  "target_sign_census": {
+   "gold_directed": 48,
+   "opposite_gold": 48,
+   "subnoise": 0
+  },
+  "correct_direction_pairs": 0,
+  "reversed_direction_pairs": 0
+ },
+ "20001|CANONICAL|MASK0|K_FIRST": {
+  "top1": 48,
+  "ties": 0,
+  "A0_correct": 0,
+  "B0_correct": 48,
+  "both_correct_pairs": 0,
+  "top_census": {
+   "B0": 96
+  },
+  "target_sign_census": {
+   "gold_directed": 48,
+   "opposite_gold": 48,
+   "subnoise": 0
+  },
+  "correct_direction_pairs": 0,
+  "reversed_direction_pairs": 0
+ },
+ "20001|CANONICAL|MASK0|LOW_PAIR_FIRST": {
+  "top1": 48,
+  "ties": 0,
+  "A0_correct": 0,
+  "B0_correct": 48,
+  "both_correct_pairs": 0,
+  "top_census": {
+   "B0": 96
+  },
+  "target_sign_census": {
+   "gold_directed": 48,
+   "opposite_gold": 48,
+   "subnoise": 0
+  },
+  "correct_direction_pairs": 0,
+  "reversed_direction_pairs": 0
+ },
+ "20001|CANONICAL|MASK0|CONTRASTS": {
+  "changes": {
+   "RAW->K_FIRST": {
+    "states_changed": 0,
+    "robust_changes": 0,
+    "pairs_with_change": 0,
+    "transition": {
+     "B0->B0": 96
+    }
+   },
+   "RAW->LOW_PAIR_FIRST": {
+    "states_changed": 0,
+    "robust_changes": 0,
+    "pairs_with_change": 0,
+    "transition": {
+     "B0->B0": 96
+    }
+   },
+   "K_FIRST->LOW_PAIR_FIRST": {
+    "states_changed": 0,
+    "robust_changes": 0,
+    "pairs_with_change": 0,
+    "transition": {
+     "B0->B0": 96
+    }
+   }
+  },
+  "class_census": {
+   "RENDER-SIGN-INVARIANT": 96
+  },
+  "polarity_census": {},
+  "pair_census": {
+   "PAIR-BUNDLE-FOLLOWING CORRECT-POLARITY": 0,
+   "PAIR-BUNDLE-FOLLOWING REVERSED-POLARITY": 0,
+   "PAIR-REGISTERED-CUE-REMOVAL-STABLE": 48,
+   "PAIR-BUNDLE-REVERSAL-STABLE": 48,
+   "both_reverse_RAW_LOW": 0,
+   "raw_both_correct_with_cue_following": 0,
+   "raw_both_correct_with_neutral_shift": 0
+  },
+  "delta_dist": {
+   "Delta_K": {
+    "min": 0.0,
+    "max": 0.0,
+    "median": 0.0,
+    "n_abs_ge_eps_delta": 0,
+    "n_pos": 0,
+    "n_neg": 0
+   },
+   "Delta_LOW": {
+    "min": 0.0,
+    "max": 0.0,
+    "median": 0.0,
+    "n_abs_ge_eps_delta": 0,
+    "n_pos": 0,
+    "n_neg": 0
+   }
+  },
+  "reading": {
+   "K_FIRST": {
+    "SURVIVES": true,
+    "PARTIAL": false
+   },
+   "LOW_PAIR_FIRST": {
+    "SURVIVES": true,
+    "COLLAPSES": true,
+    "REVERSES": false,
+    "PARTIAL": false
+   }
+  }
+ },
+ "20001|PARAM_FIRST|FULL|RAW": {
+  "top1": 62,
+  "ties": 0,
+  "A0_correct": 48,
+  "B0_correct": 14,
+  "both_correct_pairs": 14,
+  "top_census": {
+   "A0": 82,
+   "B0": 14
+  },
+  "target_sign_census": {
+   "gold_directed": 62,
+   "opposite_gold": 34,
+   "subnoise": 0
+  },
+  "correct_direction_pairs": 14,
+  "reversed_direction_pairs": 0
+ },
+ "20001|PARAM_FIRST|FULL|K_FIRST": {
+  "top1": 47,
+  "ties": 0,
+  "A0_correct": 32,
+  "B0_correct": 15,
+  "both_correct_pairs": 8,
+  "top_census": {
+   "A0": 65,
+   "B0": 31
+  },
+  "target_sign_census": {
+   "gold_directed": 47,
+   "opposite_gold": 49,
+   "subnoise": 0
+  },
+  "correct_direction_pairs": 8,
+  "reversed_direction_pairs": 9
+ },
+ "20001|PARAM_FIRST|FULL|LOW_PAIR_FIRST": {
+  "top1": 17,
+  "ties": 0,
+  "A0_correct": 17,
+  "B0_correct": 0,
+  "both_correct_pairs": 0,
+  "top_census": {
+   "B0": 31,
+   "A0": 65
+  },
+  "target_sign_census": {
+   "gold_directed": 17,
+   "opposite_gold": 79,
+   "subnoise": 0
+  },
+  "correct_direction_pairs": 0,
+  "reversed_direction_pairs": 31
+ },
+ "20001|PARAM_FIRST|FULL|CONTRASTS": {
+  "changes": {
+   "RAW->K_FIRST": {
+    "states_changed": 17,
+    "robust_changes": 17,
+    "pairs_with_change": 17,
+    "transition": {
+     "A0->A0": 65,
+     "A0->B0": 17,
+     "B0->B0": 14
+    }
+   },
+   "RAW->LOW_PAIR_FIRST": {
+    "states_changed": 45,
+    "robust_changes": 45,
+    "pairs_with_change": 35,
+    "transition": {
+     "A0->A0": 51,
+     "A0->B0": 31,
+     "B0->A0": 14
+    }
+   },
+   "K_FIRST->LOW_PAIR_FIRST": {
+    "states_changed": 42,
+    "robust_changes": 42,
+    "pairs_with_change": 33,
+    "transition": {
+     "A0->A0": 44,
+     "A0->B0": 21,
+     "B0->A0": 21,
+     "B0->B0": 10
+    }
+   }
+  },
+  "class_census": {
+   "CUE-FOLLOWING": 45,
+   "RENDER-SIGN-INVARIANT": 44,
+   "NEUTRAL-SHIFT": 7
+  },
+  "polarity_census": {
+   "CUE-FOLLOWING CORRECT-POLARITY": 45
+  },
+  "pair_census": {
+   "PAIR-BUNDLE-FOLLOWING CORRECT-POLARITY": 10,
+   "PAIR-BUNDLE-FOLLOWING REVERSED-POLARITY": 0,
+   "PAIR-REGISTERED-CUE-REMOVAL-STABLE": 31,
+   "PAIR-BUNDLE-REVERSAL-STABLE": 13,
+   "both_reverse_RAW_LOW": 10,
+   "raw_both_correct_with_cue_following": 14,
+   "raw_both_correct_with_neutral_shift": 3
+  },
+  "delta_dist": {
+   "Delta_K": {
+    "min": -6.073380693483159,
+    "max": 2.176908982363784,
+    "median": -2.38984129615892,
+    "n_abs_ge_eps_delta": 96,
+    "n_pos": 24,
+    "n_neg": 72
+   },
+   "Delta_LOW": {
+    "min": -8.53807950033297,
+    "max": 2.982620699306608,
+    "median": -3.0767759986629244,
+    "n_abs_ge_eps_delta": 96,
+    "n_pos": 19,
+    "n_neg": 77
+   }
+  },
+  "reading": {
+   "K_FIRST": {
+    "SURVIVES": false,
+    "PARTIAL": true
+   },
+   "LOW_PAIR_FIRST": {
+    "SURVIVES": false,
+    "COLLAPSES": true,
+    "REVERSES": false,
+    "PARTIAL": false
+   }
+  }
+ },
+ "20001|PARAM_FIRST|MASK0|RAW": {
+  "top1": 0,
+  "ties": 0,
+  "A0_correct": 0,
+  "B0_correct": 0,
+  "both_correct_pairs": 0,
+  "top_census": {
+   "I0/t5": 96
+  },
+  "target_sign_census": {
+   "gold_directed": 48,
+   "opposite_gold": 48,
+   "subnoise": 0
+  },
+  "correct_direction_pairs": 0,
+  "reversed_direction_pairs": 0
+ },
+ "20001|PARAM_FIRST|MASK0|K_FIRST": {
+  "top1": 0,
+  "ties": 0,
+  "A0_correct": 0,
+  "B0_correct": 0,
+  "both_correct_pairs": 0,
+  "top_census": {
+   "I0/t5": 96
+  },
+  "target_sign_census": {
+   "gold_directed": 48,
+   "opposite_gold": 48,
+   "subnoise": 0
+  },
+  "correct_direction_pairs": 0,
+  "reversed_direction_pairs": 0
+ },
+ "20001|PARAM_FIRST|MASK0|LOW_PAIR_FIRST": {
+  "top1": 0,
+  "ties": 0,
+  "A0_correct": 0,
+  "B0_correct": 0,
+  "both_correct_pairs": 0,
+  "top_census": {
+   "I0/t5": 96
+  },
+  "target_sign_census": {
+   "gold_directed": 48,
+   "opposite_gold": 48,
+   "subnoise": 0
+  },
+  "correct_direction_pairs": 0,
+  "reversed_direction_pairs": 0
+ },
+ "20001|PARAM_FIRST|MASK0|CONTRASTS": {
+  "changes": {
+   "RAW->K_FIRST": {
+    "states_changed": 0,
+    "robust_changes": 0,
+    "pairs_with_change": 0,
+    "transition": {
+     "I0/t5->I0/t5": 96
+    }
+   },
+   "RAW->LOW_PAIR_FIRST": {
+    "states_changed": 0,
+    "robust_changes": 0,
+    "pairs_with_change": 0,
+    "transition": {
+     "I0/t5->I0/t5": 96
+    }
+   },
+   "K_FIRST->LOW_PAIR_FIRST": {
+    "states_changed": 0,
+    "robust_changes": 0,
+    "pairs_with_change": 0,
+    "transition": {
+     "I0/t5->I0/t5": 96
+    }
+   }
+  },
+  "class_census": {
+   "RENDER-SIGN-INVARIANT": 96
+  },
+  "polarity_census": {},
+  "pair_census": {
+   "PAIR-BUNDLE-FOLLOWING CORRECT-POLARITY": 0,
+   "PAIR-BUNDLE-FOLLOWING REVERSED-POLARITY": 0,
+   "PAIR-REGISTERED-CUE-REMOVAL-STABLE": 48,
+   "PAIR-BUNDLE-REVERSAL-STABLE": 48,
+   "both_reverse_RAW_LOW": 0,
+   "raw_both_correct_with_cue_following": 0,
+   "raw_both_correct_with_neutral_shift": 0
+  },
+  "delta_dist": {
+   "Delta_K": {
+    "min": 0.0,
+    "max": 0.0,
+    "median": 0.0,
+    "n_abs_ge_eps_delta": 0,
+    "n_pos": 0,
+    "n_neg": 0
+   },
+   "Delta_LOW": {
+    "min": 0.0,
+    "max": 0.0,
+    "median": 0.0,
+    "n_abs_ge_eps_delta": 0,
+    "n_pos": 0,
+    "n_neg": 0
+   }
+  },
+  "reading": {
+   "K_FIRST": {
+    "SURVIVES": true,
+    "PARTIAL": false
+   },
+   "LOW_PAIR_FIRST": {
+    "SURVIVES": true,
+    "COLLAPSES": true,
+    "REVERSES": false,
+    "PARTIAL": false
+   }
+  }
+ }
+}

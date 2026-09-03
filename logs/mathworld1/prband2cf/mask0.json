@@ -1,0 +1,34 @@
+{
+ "19001|CANONICAL": {
+  "max_cross_view_spread": 0.0,
+  "spread_le_bound": true,
+  "same_top_all_views": true,
+  "robust_top_switches": 0,
+  "robust_margin_flips": 0,
+  "sane": true
+ },
+ "19001|PARAM_FIRST": {
+  "max_cross_view_spread": 0.0,
+  "spread_le_bound": true,
+  "same_top_all_views": true,
+  "robust_top_switches": 0,
+  "robust_margin_flips": 0,
+  "sane": true
+ },
+ "20001|CANONICAL": {
+  "max_cross_view_spread": 0.0,
+  "spread_le_bound": true,
+  "same_top_all_views": true,
+  "robust_top_switches": 0,
+  "robust_margin_flips": 0,
+  "sane": true
+ },
+ "20001|PARAM_FIRST": {
+  "max_cross_view_spread": 0.0,
+  "spread_le_bound": true,
+  "same_top_all_views": true,
+  "robust_top_switches": 0,
+  "robust_margin_flips": 0,
+  "sane": true
+ }
+}

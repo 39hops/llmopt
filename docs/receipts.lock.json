@@ -927,6 +927,20 @@
    "source": "results",
    "tracked": false
   },
+  "logs/mathworld1/prband2cf_smoke/prband2cf_receipt.json": {
+   "bytes": 5333,
+   "exists": true,
+   "sha256": "440e817b4f2e20cc06b95009def9f9e5760d6cbf3e3c748b69ea4a2bfbb4ce1c",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/prband2cf_verify/verify_receipt.json": {
+   "bytes": 4976,
+   "exists": true,
+   "sha256": "9e79716fd3d7c0313401a567929c9ff734f50838bfc5abf1a21b342544d9f46e",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/prband2desk/bases.jsonl": {
    "bytes": 1048934,
    "exists": true,
