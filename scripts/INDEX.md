@@ -2955,10 +2955,36 @@ MATH-CYBER-1 PRIOR-RESISTANT-EVAL-V2-CROSSOVER-DESK-0 — INDEPENDENT VERIFIER. 
 - `hce(e)`
 - `main()`
 
+### scratch/mathworld1_prband2fresh.py
+MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-RENDER-ATLAS-FRESH-SEED-0 Stage-A validation scorer (adopt-not-fork of the atlas scorer scratch/mathworld1_prband2atlasscore.py, RESULTS L65695).
+
+- `sgn(x)`
+- `load_model(path, sha_exp, dev)`
+- `metrics(sc, states, pairs)` — sc: {state_i: {sem: sum}}. Explicit pair_id join.
+- `main()`
+
+### scratch/mathworld1_prband2freshagg.py
+Frozen Stage-A analysis for RENDER-ATLAS-FRESH-SEED-0 (RESULTS L65695). Reads the scorer receipt and the raw score stream (FULL rows), recomputes every metric from the sums with an explicit pair_id join, and writes aggregate.json: per checkpoint RAW / R488 T, B, A0, B0, ties, censuses, deltas; seed-pair minima and deltas; MAJORITY floor labels, PAIR-MAJORITY count / 4 and the frozen transfer label; secondary tiers; sign-only RAW comparator; the seven registered priors adjudicated; MASK0 sanity carried from the receipt. Never pools old with fresh; never pools to N = 768.
+
+- `main()`
+
+### scratch/mathworld1_prband2freshfreeze.py
+FRESH-CHECKPOINT FREEZE RECEIPT for RENDER-ATLAS-FRESH-SEED-0 (RESULTS L65695). Written only after all four fresh training receipts exist; records, for 4 seeds x 2 representations, the checkpoint path, sha256, attempt, init sha, training instrument commit and sha, adopted-instrument sha, runtime, and the training receipt sha. Refuse-if-exists. No model is opened.
+
+- `fsha(p)`
+- `main()`
+
 ### scratch/mathworld1_prband2freshprompts.py
 MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-RENDER-ATLAS-FRESH-SEED-0 model-blind validation prompt extraction (prereg-time instrument).
 
 - `_no_load(*a, **k)`
+- `main()`
+
+### scratch/mathworld1_prband2freshverify.py
+Independent verifier for RENDER-ATLAS-FRESH-SEED-0 Stage A. Reconstructs from the raw score stream alone (no scorer / aggregator import): 16 FULL cells and 16 MASK0 cells complete, explicit pair_id pairing, T / B / A0 / B0 / ties, RAW-R488 deltas, MAJORITY and PAIR-MAJORITY, secondary tiers, comparator labels, priors, MASK0 sanity, old-checkpoint replay (exact) with join == adjacency, LP re-sum on every row, checkpoint sha binding to the freeze receipt. Writes verify_receipt.json.
+
+- `chk(c, m)`
+- `sha(p)`
 - `main()`
 
 ### scratch/mathworld1_prband2nuis.py
@@ -3342,6 +3368,15 @@ MATH-CYBER-1 SVP-FIELD-ORDER-REPLICATION-CALIBRATION- SCORE-20001 — ONE scorin
 
 - `fsha(p) -> str`
 - `ctup(c)`
+- `main()`
+
+### scratch/mathworld1_svpfofresh.py
+MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-RENDER-ATLAS-FRESH-SEED-0 fresh seeded paired training realizations (RESULTS L65695).
+
+- `fsha(p)`
+- `guard()` — Source-identity + constant guard on the adopted module.
+- `census_applicable()` — Choice B (L65695): adopt the booked census; recheck every
+- `make_init(path)`
 - `main()`
 
 ### scratch/mathworld1_svpfoheld.py
