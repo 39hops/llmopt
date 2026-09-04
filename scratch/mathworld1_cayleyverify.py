@@ -111,7 +111,7 @@ def main():
             chk(res["B"]["distances"][f"{a_} <-> {b_}"] == min(d[v] for v in sets[b_]), f"{cohort} dist {a_} {b_}")
         # widest bottleneck values (independent: threshold scan + union-find)
         for key, w in res["B"]["widest"].items():
-            parts = key.split("|")
+            parts = key.split("|", 3)
             ck, fld, rest = parts[0] + "|" + parts[1], parts[2], parts[3]
             F = (B if fld == "B" else T)[ck]
             a_, z_ = rest.split(" <-> ")
