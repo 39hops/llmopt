@@ -2731,6 +2731,28 @@ MATH-CYBER-1 theta_0 one-shot birth (PRE-REG MATH-CYBER-1-THETA0-BIRTH-0; prereg
 - `class GCTok` (encode)
 - `main()`
 
+### scratch/mathworld1_cayley.py
+MATH-CYBER-1-RENDER-ATLAS-CAYLEY-LANDSCAPE-0 — zero-logit Cayley-graph landscape analysis of the booked render atlases (definitions frozen at RESULTS L65753; prereg L65895). Banks A (component geometry at the frozen NEAR / MAJORITY / STRONG thresholds), B (Cayley distances and widest-path barriers, set-to-set conventions), C (steepest-ascent basins per field and under the frozen lexicographic maximin tuple), D (edge-conflict field, local Pareto optimality, common-monotone paths) and K (2 x 2 similarity), run on the four discovery atlases and then unchanged on the eight fresh atlases (never pooled). No model, no logit; torch is never imported.
+
+- `fsha(p)`
+- `build_graph()`
+- `bfs_dist(adj, sources, allowed=None)`
+- `components(adj, S)`
+- `comp_diameter(adj, c)`
+- `widest(adj, field, A, Z)` — Max over endpoint pairs of the bottleneck value; ties -> ascending (a, z);
+- `ascend(adj, key)` — Steepest ascent: move to the strictly better neighbor with the max key,
+- `analyze(cohort, spec, adj, edges, rid, pol)`
+- `pearson(x, y)`
+- `spearman(x, y)`
+- `main()`
+
+### scratch/mathworld1_cayleyverify.py
+Independent recount for MATH-CYBER-1-RENDER-ATLAS-CAYLEY-LANDSCAPE-0. Separate code (no import from mathworld1_cayley): rebuilds the Cayley graph from the manifest by inversion-distance-1 test (not by generator application), then for both cohorts recomputes from the policy tables: component counts and sizes at the three thresholds, R488 same-component flags and within-threshold path lengths, all anchor/optimum-set Cayley distances, widest-path bottleneck values (by threshold scan with an independent union-find connectivity check), steepest-ascent terminals and basin sizes for B and T and the joint tuple, edge-conflict counts and histogram, local-Pareto flags, monotone-path existence (both rules), and the bank-K node/edge correlations and Jaccards. Compares to DISCOVERY.json / FRESH.json; writes verify_receipt.json.
+
+- `chk(c, m)`
+- `inv_dist(p, q)`
+- `main()`
+
 ### scratch/mathworld1_census.py
 MATH-CYBER-1 interface census (AMENDMENT MATH-CYBER-1-DESK-0 -INTERFACE): full L4-7 pass over every legal action recorded in the frozen rung-0 ACTIVE receipts. For each of the 101 decisions the walk re-enumerates the legal set (asserting legal_action_set_hash equality row-by-row against logs/mathworld0/active.jsonl — a binding check, abort on mismatch) and, for every (parent, child) action, measures under the stock MathTokenizer (base ATOMS vocab, strict mode):
 
