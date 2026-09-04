@@ -780,6 +780,34 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/cayley/DISCOVERY.json": {
+   "bytes": 352083,
+   "exists": true,
+   "sha256": "fc25acd443343fedad44fbed411cb059907a7dcbd39aaacdb2683c1cc0cc64e2",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/cayley/FRESH.json": {
+   "bytes": 640133,
+   "exists": true,
+   "sha256": "101475dbd35153974ae53f1d8170b1aea53d223d01a0e322f7a52bf254504307",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/cayley/cayley_receipt.json": {
+   "bytes": 2102,
+   "exists": true,
+   "sha256": "07f53a2bfe1ce407d323eac12eccbb3f5800baf6825ff5e0a37ea8653a70bdf9",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/cayley/verify_receipt.json": {
+   "bytes": 755,
+   "exists": true,
+   "sha256": "790b26399d742656ad91e58a0cdc604c6a58d9b695610d34be98c0931571e36d",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/census.jsonl": {
    "bytes": 144816,
    "exists": true,

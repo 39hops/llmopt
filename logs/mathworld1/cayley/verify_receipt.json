@@ -1,0 +1,16 @@
+{
+ "verdict": "VERIFIED",
+ "discrepancies": [],
+ "n_discrepancies": 0,
+ "input_pins": {
+  "logs/mathworld1/prband2atlas/atlas_manifest.jsonl": "687b5e54e0da19bf057431eb4d44b755302c1963d18e13fb6d316fa99dd2f4b2",
+  "logs/mathworld1/prband2atlasscore/policy_table.jsonl": "73dba755a3089a42177ef00a91481e93c2114276938df92958509a8aeda2505e",
+  "logs/mathworld1/prband2atlasfresh/policy_table.jsonl": "e42999947102112d03d0aa7529d79daf5896e0cc972ace8aa2acc41b6381d321"
+ },
+ "commit": "51ae837f",
+ "verifier_sha256": "4a27ff3754c576ef32d072925311bc01b56ad479e564b860d187e8fdd327edda",
+ "inputs": {
+  "DISCOVERY": "fc25acd443343fedad44fbed411cb059907a7dcbd39aaacdb2683c1cc0cc64e2",
+  "FRESH": "101475dbd35153974ae53f1d8170b1aea53d223d01a0e322f7a52bf254504307"
+ }
+}

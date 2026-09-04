@@ -2734,6 +2734,7 @@ MATH-CYBER-1 theta_0 one-shot birth (PRE-REG MATH-CYBER-1-THETA0-BIRTH-0; prereg
 ### scratch/mathworld1_cayley.py
 MATH-CYBER-1-RENDER-ATLAS-CAYLEY-LANDSCAPE-0 — zero-logit Cayley-graph landscape analysis of the booked render atlases (definitions frozen at RESULTS L65753; prereg L65895). Banks A (component geometry at the frozen NEAR / MAJORITY / STRONG thresholds), B (Cayley distances and widest-path barriers, set-to-set conventions), C (steepest-ascent basins per field and under the frozen lexicographic maximin tuple), D (edge-conflict field, local Pareto optimality, common-monotone paths) and K (2 x 2 similarity), run on the four discovery atlases and then unchanged on the eight fresh atlases (never pooled). No model, no logit; torch is never imported.
 
+- `gate(cond, msg)` — Local gate (the svpbirth gate would import torch; this analysis
 - `fsha(p)`
 - `build_graph()`
 - `bfs_dist(adj, sources, allowed=None)`

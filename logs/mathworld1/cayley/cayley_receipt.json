@@ -1,0 +1,64 @@
+{
+ "prereg": "MATH-CYBER-1-RENDER-ATLAS-CAYLEY-LANDSCAPE-0",
+ "pins": {
+  "logs/mathworld1/prband2atlas/atlas_manifest.jsonl": "687b5e54e0da19bf057431eb4d44b755302c1963d18e13fb6d316fa99dd2f4b2",
+  "logs/mathworld1/prband2atlas/atlas_policies.jsonl": "b4a1c08308ca429d4bd7eb01210dfe469cd11eb9c9c527daf42997cec6d86c71",
+  "logs/mathworld1/prband2atlasscore/policy_table.jsonl": "73dba755a3089a42177ef00a91481e93c2114276938df92958509a8aeda2505e",
+  "logs/mathworld1/prband2atlasscore/aggregate.json": "8df318f742952740ce44c98d57fd8fb2f9632fa283d75f5c4808c4e158e66105",
+  "logs/mathworld1/prband2atlasfresh/policy_table.jsonl": "e42999947102112d03d0aa7529d79daf5896e0cc972ace8aa2acc41b6381d321",
+  "logs/mathworld1/prband2atlasfresh/aggregate.json": "c6d16e8c7b2c68b9d73e9e7e28eb2d6e0b354b3ee64e459ca66460ccad1fa443"
+ },
+ "graph": {
+  "V": 720,
+  "E": 1800,
+  "degree": 5,
+  "diameter": 15
+ },
+ "cohorts": {
+  "DISCOVERY": {
+   "sha256": "fc25acd443343fedad44fbed411cb059907a7dcbd39aaacdb2683c1cc0cc64e2",
+   "checkpoints": [
+    "19001|CANONICAL",
+    "19001|PARAM_FIRST",
+    "20001|CANONICAL",
+    "20001|PARAM_FIRST"
+   ],
+   "anchors": {
+    "RAW": 12,
+    "K_FIRST": 480,
+    "LOW_PAIR_FIRST": 300,
+    "R488": 488
+   }
+  },
+  "FRESH": {
+   "sha256": "101475dbd35153974ae53f1d8170b1aea53d223d01a0e322f7a52bf254504307",
+   "checkpoints": [
+    "21001|CANONICAL",
+    "21001|PARAM_FIRST",
+    "22001|CANONICAL",
+    "22001|PARAM_FIRST",
+    "23001|CANONICAL",
+    "23001|PARAM_FIRST",
+    "24001|CANONICAL",
+    "24001|PARAM_FIRST"
+   ],
+   "anchors": {
+    "RAW": 12,
+    "R488": 488,
+    "R128": 128
+   }
+  }
+ },
+ "semantic_beyond_all_surface_identifiable": false,
+ "wall_s": 7.9,
+ "start": {
+  "start_commit": "51ae837f",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_cayley.py": "cd655f5a86bedbddea2674c164878838d531dbb4d7e557ea0fca3b6e4a7a55bf",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "51ae837f"
+}
