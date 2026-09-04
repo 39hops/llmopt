@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 233, library 73, reproduce-pinned 10, results-cited 389, spec-cited 89, cited-but-library 61
+Census: UNCITED 230, library 73, reproduce-pinned 10, results-cited 392, spec-cited 89, cited-but-library 61
 
 ## scratch/
 
@@ -285,9 +285,9 @@ Census: UNCITED 233, library 73, reproduce-pinned 10, results-cited 389, spec-ci
 | mathworld1 | mathworld1_prband.py | results-cited | RESULTS | RESULTS×2 | — | 4 |
 | mathworld1 | mathworld1_prband2atlas.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_prband2atlasagg.py | results-cited | RESULTS | RESULTS×1 | — | 2 |
-| mathworld1 | mathworld1_prband2atlasfresh.py | UNCITED | — | — | — | — |
-| mathworld1 | mathworld1_prband2atlasfreshagg.py | UNCITED | — | — | — | — |
-| mathworld1 | mathworld1_prband2atlasfreshverify.py | UNCITED | — | — | — | — |
+| mathworld1 | mathworld1_prband2atlasfresh.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| mathworld1 | mathworld1_prband2atlasfreshagg.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| mathworld1 | mathworld1_prband2atlasfreshverify.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | mathworld1 | mathworld1_prband2atlasscore.py | results-cited | RESULTS | RESULTS×3 | — | 3 |
 | mathworld1 | mathworld1_prband2atlasverify.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
 | mathworld1 | mathworld1_prband2branch.py | results-cited | RESULTS | RESULTS×1 | — | — |

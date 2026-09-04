@@ -2904,6 +2904,7 @@ MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-RENDER-ATLAS-FRESH-SEED-PREVALENCE-0 Stage-
 ### scratch/mathworld1_prband2atlasfreshagg.py
 Stage-B aggregation for RENDER-ATLAS-FRESH-SEED-PREVALENCE-0 (adopt-not-fork of scratch/mathworld1_prband2atlasagg.py: same metric, maximin, tier, optimum, near-set, regret, Pareto, Spearman, basin-width and anatomy code paths, applied to the EIGHT fresh checkpoints; plus the prevalence readouts, R488's position in each fresh atlas, and the twelve-checkpoint descriptive SET intersections computed against the discovery policy table without pooling scores). Refuses unless all eight chunks are CHUNK COMPLETE with passing replay / MASK0 / anchor gates.
 
+- `pareto(vecs)` — Nondominated set over vectors of ANY common length (the
 - `main()`
 
 ### scratch/mathworld1_prband2atlasfreshverify.py
