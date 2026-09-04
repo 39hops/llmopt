@@ -16,7 +16,7 @@ from statistics import median
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from scratch.mathworld1_prband2atlasagg import (FEATS, TIERS, dist,  # noqa: E402
-                                                pareto, spearman, top1)
+                                                spearman, top1)
 from scratch.mathworld1_prband2score import A0, B0, NAMES, fsha  # noqa: E402
 from scratch.mathworld1_svpbirth import gate  # noqa: E402
 
@@ -28,6 +28,20 @@ DISC = ["19001|CANONICAL", "19001|PARAM_FIRST", "20001|CANONICAL", "20001|PARAM_
 EPS_D = 2e-05
 SLACK_B, SLACK_T = 2, 4
 RAW_IDX, R488 = 12, 488
+
+
+def pareto(vecs):
+    """Nondominated set over vectors of ANY common length (the
+    four-checkpoint routine in prband2atlasagg hard-codes range(4);
+    the Stage-B verifier caught that on the eight-vectors)."""
+    front = []
+    for i, v in vecs.items():
+        n = len(v)
+        dom = any(all(w[k] >= v[k] for k in range(n)) and any(w[k] > v[k] for k in range(n))
+                  for j, w in vecs.items() if j != i)
+        if not dom:
+            front.append(i)
+    return sorted(front)
 
 
 def main():
