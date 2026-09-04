@@ -96,6 +96,13 @@ def main():
                 chk(a["internal_edges"] == sum(x in Sset and y in Sset for x, y in edges), f"{cohort} {ck} {name} internal")
                 chk(a["boundary_edges"] == sum((x in Sset) != (y in Sset) for x, y in edges), f"{cohort} {ck} {name} boundary")
                 chk(a["membership"]["R488"] == (488 in Sset), f"{cohort} {ck} {name} 488 member")
+                for an, av in anchors.items():
+                    ac = a["anchor_components"][an]
+                    if av in Sset:
+                        same = any(root[av] == root[v] for v in opt[ck] if v in Sset)
+                        chk(ac["same_component_as_an_optimum"] == same, f"{cohort} {ck} {name} {an} comp")
+                    else:
+                        chk(ac["same_component_as_an_optimum"] is None, f"{cohort} {ck} {name} {an} none")
                 if 488 in Sset:
                     same = any(root[488] == root[v] for v in opt[ck] if v in Sset)
                     chk(a["R488"]["same_component_as_an_optimum"] == same, f"{cohort} {ck} {name} 488 same comp")
@@ -175,6 +182,9 @@ def main():
         chk({int(k): v for k, v in d["hist_B_improved_count"].items()} == dict(hist), f"{cohort} hist")
         fw = sum(all((dB[ck][e], dT[ck][e]) >= (0, 0) for ck in cks) and any((dB[ck][e], dT[ck][e]) > (0, 0) for ck in cks) for e in edges)
         chk(d["edges_lex_weakly_improving_all_forward"] == fw, f"{cohort} lex fwd")
+        chk(d["edges_B_weak_all_strict_one_forward"] == sum(all(dB[ck][e] >= 0 for ck in cks) and any(dB[ck][e] > 0 for ck in cks) for e in edges), f"{cohort} B weak fwd")
+        chk(d["edges_B_weak_all_strict_one_reverse"] == sum(all(dB[ck][e] <= 0 for ck in cks) and any(dB[ck][e] < 0 for ck in cks) for e in edges), f"{cohort} B weak rev")
+        chk(d["edges_B_mixed"] == sum(any(dB[ck][e] > 0 for ck in cks) and any(dB[ck][e] < 0 for ck in cks) for e in edges), f"{cohort} mixed")
         for an, v in anchors.items():
             lp = True
             for w in adj[v]:
@@ -209,7 +219,12 @@ def main():
             chk(k["jaccard_MAJORITY"] == j, f"{cohort} jaccard {c1} {c2}")
             d1 = bfs(opt[c1])
             chk(k["dist_optimum_sets"] == min(d1[v] for v in opt[c2]), f"{cohort} optdist {c1} {c2}")
+    import subprocess
+    pins = {p: hashlib.sha256(open(p, "rb").read()).hexdigest() for p in (
+        "logs/mathworld1/prband2atlas/atlas_manifest.jsonl", "logs/mathworld1/prband2atlasscore/policy_table.jsonl",
+        "logs/mathworld1/prband2atlasfresh/policy_table.jsonl")}
     rec = {"verdict": "VERIFIED" if not D else "DISCREPANCIES", "discrepancies": D[:40], "n_discrepancies": len(D),
+           "input_pins": pins, "commit": subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip(),
            "verifier_sha256": hashlib.sha256(open(__file__, "rb").read()).hexdigest(),
            "inputs": {c: hashlib.sha256((OUTDIR / f"{c}.json").read_bytes()).hexdigest() for c in ("DISCOVERY", "FRESH")}}
     (OUTDIR / "verify_receipt.json").write_text(json.dumps(rec, indent=1))

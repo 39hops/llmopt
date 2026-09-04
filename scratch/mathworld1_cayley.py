@@ -209,6 +209,15 @@ def analyze(cohort, spec, adj, edges, rid, pol):
             cid = {v: k for k, c in enumerate(comps) for v in c}
             optc = {cid[v] for v in opt[ck]["set"] if v in cid}
             memb = {an: (v in Sset) for an, v in anchors.items()}
+            anchor_comp = {}
+            for an, av in anchors.items():
+                if av in Sset and optc:
+                    same = cid[av] in optc
+                    dd = bfs_dist(adj, [av], Sset) if same else {}
+                    anchor_comp[an] = {"same_component_as_an_optimum": same,
+                                       "within_threshold_path_len": (min(dd[v] for v in opt[ck]["set"] if v in dd) if same else None)}
+                else:
+                    anchor_comp[an] = {"same_component_as_an_optimum": None, "within_threshold_path_len": None}
             r488 = {"in_set": 488 in Sset, "same_component_as_an_optimum": None, "within_threshold_path_len": None}
             if 488 in Sset and optc:
                 if cid[488] in optc:
@@ -228,7 +237,7 @@ def analyze(cohort, spec, adj, edges, rid, pol):
                            "optimum_set_in_set": all(v in Sset for v in opt[ck]["set"]),
                            "optima_in_one_component": len(optc) == 1,
                            "optimum_components": sorted(optc),
-                           "membership": memb, "R488": r488,
+                           "membership": memb, "R488": r488, "anchor_components": anchor_comp,
                            "largest_component": comps[0][:64] if comps else []}
     out["A"] = A
     # ---- Bank B ----
@@ -326,6 +335,8 @@ def analyze(cohort, spec, adj, edges, rid, pol):
          "edges_B_unchanged_all": sum(all(dB[ck][e] == 0 for ck in cks) for e in edges),
          "edges_B_mixed": sum(any(dB[ck][e] > 0 for ck in cks) and any(dB[ck][e] < 0 for ck in cks) for e in edges),
          "hist_B_improved_count": {str(k): v for k, v in sorted(hist.items())},
+         "edges_B_weak_all_strict_one_forward": sum(all(dB[ck][e] >= 0 for ck in cks) and any(dB[ck][e] > 0 for ck in cks) for e in edges),
+         "edges_B_weak_all_strict_one_reverse": sum(all(dB[ck][e] <= 0 for ck in cks) and any(dB[ck][e] < 0 for ck in cks) for e in edges),
          "edges_lex_weakly_improving_all_forward": len(allimp),
          "edges_lex_weakly_improving_all_reverse": len(allimp_rev)}
     def vertex_profile(v):
