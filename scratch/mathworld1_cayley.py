@@ -21,7 +21,13 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from llmopt.lab.provenance import completion_commit, start_provenance  # noqa: E402
-from scratch.mathworld1_svpbirth import gate  # noqa: E402
+
+
+def gate(cond, msg):
+    """Local gate (the svpbirth gate would import torch; this analysis
+    must stay torch-free by construction)."""
+    if not cond:
+        raise SystemExit(f"GATE FAILED: {msg}")
 
 PINS = {
     "logs/mathworld1/prband2atlas/atlas_manifest.jsonl":
@@ -429,8 +435,7 @@ def main():
     for p, h in PINS.items():
         gate(fsha(p) == h, f"PIN DRIFT {p}")
     gate("torch" not in sys.modules, "TORCH IMPORTED")
-    START = start_provenance(["scratch/mathworld1_cayley.py", "scratch/mathworld1_svpbirth.py",
-                              "llmopt/lab/provenance.py"])
+    START = start_provenance(["scratch/mathworld1_cayley.py", "llmopt/lab/provenance.py"])
     t0 = time.time()
     OUTDIR.mkdir(parents=True, exist_ok=True)
     for f in ("cayley_receipt.json", "DISCOVERY.json", "FRESH.json"):
