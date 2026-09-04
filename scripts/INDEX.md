@@ -2896,6 +2896,25 @@ MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-RENDER-ATLAS-SCORING-0 aggregation over the
 - `pareto(vecs)`
 - `main()`
 
+### scratch/mathworld1_prband2atlasfresh.py
+MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-RENDER-ATLAS-FRESH-SEED-PREVALENCE-0 Stage-B scorer: the complete 720-policy atlas on the EIGHT frozen fresh checkpoints (adopt-not-fork of scratch/mathworld1_prband2atlasscore.py: its atlas authority / anchor / subset-digest gates, constants and MASK0 law are IMPORTED and reused; only the checkpoint source (the Stage-A freeze receipt), the replay reference (the Stage-A stream's FULL RAW rows, since the tracked raw_scores.jsonl has no fresh rows) and the anchor expectations (Stage-A T/B of index 12 and 488) differ). Checkpoint-major in freeze-receipt order, ascending atlas_index, per-policy flush, chunk receipts with stream sha, partial chunks set aside without authority, LP vectors on the frozen 16-policy subset only.
+
+- `main()`
+
+### scratch/mathworld1_prband2atlasfreshagg.py
+Stage-B aggregation for RENDER-ATLAS-FRESH-SEED-PREVALENCE-0 (adopt-not-fork of scratch/mathworld1_prband2atlasagg.py: same metric, maximin, tier, optimum, near-set, regret, Pareto, Spearman, basin-width and anatomy code paths, applied to the EIGHT fresh checkpoints; plus the prevalence readouts, R488's position in each fresh atlas, and the twelve-checkpoint descriptive SET intersections computed against the discovery policy table without pooling scores). Refuses unless all eight chunks are CHUNK COMPLETE with passing replay / MASK0 / anchor gates.
+
+- `main()`
+
+### scratch/mathworld1_prband2atlasfreshverify.py
+Independent verifier for RENDER-ATLAS-FRESH-SEED-PREVALENCE-0 (adapted from scratch/mathworld1_prband2atlasverify.py; imports no aggregate function). From the eight chunk streams, the discovery policy table, the freeze receipt and the Stage-A stream alone: completeness (720 x 96 x 4 FULL + 16 x 96 x 4 MASK0 per chunk), every T / B in the fresh policy table, Stage-A replay of index 12 (both writes) exact, MASK0 spread, LP re-sum on every lps-bearing row and the lps policy set == frozen 16, anchor reproduction of 12 and 488 against the Stage-A aggregate, fresh maximin winner and tie set, tiers over 8, optima / near sets / 8-way intersection, R488 ranks, regret winner, Pareto fronts, all 28 Spearman pairs, basin counts, twelve-way tier counts and near intersection, priors.
+
+- `chk(c, m)`
+- `sha(p)`
+- `ranks(v)`
+- `rho(x, y)`
+- `main()`
+
 ### scratch/mathworld1_prband2atlasscore.py
 MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-RENDER-ATLAS-SCORING-0 execution scorer (adopt-not-fork of scratch/mathworld1_prband2cf.py).
 
