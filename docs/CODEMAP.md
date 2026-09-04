@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 234, library 73, reproduce-pinned 10, results-cited 385, spec-cited 89, cited-but-library 61
+Census: UNCITED 230, library 73, reproduce-pinned 10, results-cited 389, spec-cited 89, cited-but-library 61
 
 ## scratch/
 
@@ -292,11 +292,11 @@ Census: UNCITED 234, library 73, reproduce-pinned 10, results-cited 385, spec-ci
 | mathworld1 | mathworld1_prband2cf_verify.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_prband2desk.py | results-cited | RESULTS | RESULTS×3 | — | 1 |
 | mathworld1 | mathworld1_prband2desk_verify.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| mathworld1 | mathworld1_prband2fresh.py | UNCITED | — | — | — | — |
+| mathworld1 | mathworld1_prband2fresh.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_prband2freshagg.py | UNCITED | — | — | — | — |
-| mathworld1 | mathworld1_prband2freshfreeze.py | UNCITED | — | — | — | — |
+| mathworld1 | mathworld1_prband2freshfreeze.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_prband2freshprompts.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| mathworld1 | mathworld1_prband2freshverify.py | UNCITED | — | — | — | — |
+| mathworld1 | mathworld1_prband2freshverify.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | mathworld1 | mathworld1_prband2nuis.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
 | mathworld1 | mathworld1_prband2prod.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | mathworld1 | mathworld1_prband2prod_verify.py | results-cited | RESULTS | RESULTS×2 | — | — |
@@ -338,11 +338,11 @@ Census: UNCITED 234, library 73, reproduce-pinned 10, results-cited 385, spec-ci
 | mathworld1 | mathworld1_svpfhbirth.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | mathworld1 | mathworld1_svpfocal.py | results-cited | RESULTS | RESULTS×3 | — | 5 |
 | mathworld1 | mathworld1_svpfoclrepl.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
-| mathworld1 | mathworld1_svpfofresh.py | results-cited | RESULTS | RESULTS×1 | — | 2 |
+| mathworld1 | mathworld1_svpfofresh.py | results-cited | RESULTS | RESULTS×2 | — | 2 |
 | mathworld1 | mathworld1_svpfoheld.py | results-cited | RESULTS | RESULTS×2 | — | 5 |
 | mathworld1 | mathworld1_svpfohrepl.py | results-cited | RESULTS | RESULTS×1 | — | 2 |
 | mathworld1 | mathworld1_svpforder.py | results-cited | RESULTS | RESULTS×3 | — | 17 |
-| mathworld1 | mathworld1_svpforepl.py | results-cited | RESULTS | RESULTS×4 | — | 4 |
+| mathworld1 | mathworld1_svpforepl.py | results-cited | RESULTS | RESULTS×5 | — | 4 |
 | mathworld1 | mathworld1_svpfreeact.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | mathworld1 | mathworld1_svpgbirth.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | mathworld1 | mathworld1_svpgbirth16.py | results-cited | RESULTS | RESULTS×3 | — | 3 |
@@ -474,7 +474,7 @@ Census: UNCITED 234, library 73, reproduce-pinned 10, results-cited 385, spec-ci
 | poly5 | poly5_pipeline.sh | spec-cited | specs | specs×1 | — | 2 |
 | poly5 | poly5_watcher.sh | UNCITED | — | — | — | — |
 | practice | practice_mine.py | spec-cited | specs | specs×1 | — | — |
-| prband2fresh | prband2fresh_train.sh | UNCITED | — | — | — | — |
+| prband2fresh | prband2fresh_train.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | prefix | prefix_pair.sh | UNCITED | — | — | — | — |
 | probe | probe_int_device_parity.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | prologue | prologue_arms.py | library | — | — | 1 | — |

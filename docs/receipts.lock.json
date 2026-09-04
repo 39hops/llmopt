@@ -1075,6 +1075,77 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/prband2fresh_score/aggregate.json": {
+   "bytes": 15900,
+   "exists": true,
+   "sha256": "9815b527db863bc453612cfa806946f35ace07c7de4faa82a362e1e32a99773a",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/prband2fresh_score/prband2fresh_receipt.json": {
+   "bytes": 12686,
+   "exists": true,
+   "sha256": "b3ec1d435b65da2c5cf3750b9558048cccd587d63a891c3380f926bf06f45463",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/prband2fresh_score/scores.jsonl": {
+   "bytes": 10271134,
+   "exists": true,
+   "local_only": true,
+   "sha256": "d9063cfbb3bcbb1b1a03d96eafc5edc5b998caf542fe7f86435cbb4b18983959",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/mathworld1/prband2fresh_score/verify_receipt.json": {
+   "bytes": 234,
+   "exists": true,
+   "sha256": "d6df313ff3e6e617c97cb40e1baaf12886ca309702ccfbc488bf85d10df9ac79",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/prband2fresh_score_smoke/prband2fresh_receipt.json": {
+   "bytes": 3266,
+   "exists": true,
+   "sha256": "e65e459f9053836930d79809f28e6294fa9d3e4f364d865af4a3f86a8c6db3b9",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/prband2fresh_train/fresh_checkpoint_freeze.json": {
+   "bytes": 8934,
+   "exists": true,
+   "sha256": "67003be7d421d4a7d470d8ee80cb254625d67a0c134e2b9514e1ef64e706b22c",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/prband2fresh_train/train_s21001_receipt.json": {
+   "bytes": 171970,
+   "exists": true,
+   "sha256": "a87a3cc43a873276863b7f8de021d170664350de5e46d9b4f79e8604c13b9070",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/prband2fresh_train/train_s22001_receipt.json": {
+   "bytes": 171926,
+   "exists": true,
+   "sha256": "5cde1ef25aee49d389091a22fefa1fd477fa77180a2cb5843007d512cb06d3a5",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/prband2fresh_train/train_s23001_receipt.json": {
+   "bytes": 171930,
+   "exists": true,
+   "sha256": "b9d23b44eda31f7d794d31a4bb058b991f15ff4eed9cbbea5792061d401b0edb",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/prband2fresh_train/train_s24001_receipt.json": {
+   "bytes": 171921,
+   "exists": true,
+   "sha256": "2622da8c0e0d5f9147a60e06a5a525d18f5b84d631a990bece6637c6a3f2fcfa",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/prband2nuis/prband2nuis_receipt.json": {
    "bytes": 17447,
    "exists": true,

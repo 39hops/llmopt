@@ -1,0 +1,837 @@
+{
+ "prereg": "MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-RENDER-ATLAS-FRESH-SEED-0",
+ "prereg_commit": "632e57dd5593cc33c3f5588066c8e6176b7b14dd",
+ "scores_sha256": "d9063cfbb3bcbb1b1a03d96eafc5edc5b998caf542fe7f86435cbb4b18983959",
+ "replay": {
+  "19001|CANONICAL": {
+   "rows": 384,
+   "exact": 384,
+   "max_abs_drift": 0.0,
+   "pass": true,
+   "T": 29,
+   "B_pairid": 0,
+   "B_adjacency": 0,
+   "join_equals_adjacency": true
+  },
+  "19001|PARAM_FIRST": {
+   "rows": 384,
+   "exact": 384,
+   "max_abs_drift": 0.0,
+   "pass": true,
+   "T": 48,
+   "B_pairid": 0,
+   "B_adjacency": 0,
+   "join_equals_adjacency": true
+  },
+  "20001|CANONICAL": {
+   "rows": 384,
+   "exact": 384,
+   "max_abs_drift": 0.0,
+   "pass": true,
+   "T": 96,
+   "B_pairid": 48,
+   "B_adjacency": 48,
+   "join_equals_adjacency": true
+  },
+  "20001|PARAM_FIRST": {
+   "rows": 384,
+   "exact": 384,
+   "max_abs_drift": 0.0,
+   "pass": true,
+   "T": 62,
+   "B_pairid": 14,
+   "B_adjacency": 14,
+   "join_equals_adjacency": true
+  }
+ },
+ "per_checkpoint": {
+  "21001|CANONICAL": {
+   "seed": "21001",
+   "representation": "CANONICAL",
+   "sha256": "8a26cde56b5ecbed764b0cd838ea4d0a3c95a22d36a5b58dff66496cd9908d9d",
+   "RAW": {
+    "T": 38,
+    "B": 0,
+    "A0_correct": 0,
+    "B0_correct": 38,
+    "ties": 0
+   },
+   "R488": {
+    "T": 48,
+    "B": 0,
+    "A0_correct": 0,
+    "B0_correct": 48,
+    "ties": 0
+   },
+   "receipt_full": {
+    "RAW": {
+     "T": 38,
+     "B": 0,
+     "A0_correct": 0,
+     "B0_correct": 38,
+     "ties": 0,
+     "top_census": {
+      "B0": 86,
+      "A0": 10
+     },
+     "pair_top_switches": 10,
+     "margin_census": {
+      "gold_directed": 38,
+      "opposite_gold": 58,
+      "subnoise": 0
+     }
+    },
+    "R488": {
+     "T": 48,
+     "B": 0,
+     "A0_correct": 0,
+     "B0_correct": 48,
+     "ties": 0,
+     "top_census": {
+      "B0": 96
+     },
+     "pair_top_switches": 0,
+     "margin_census": {
+      "gold_directed": 48,
+      "opposite_gold": 48,
+      "subnoise": 0
+     }
+    }
+   },
+   "delta": {
+    "Delta_T": 10,
+    "Delta_B": 0,
+    "top_changed": 10,
+    "gained": 10,
+    "lost": 0,
+    "margin_direction_changes": 10
+   },
+   "mask0": {
+    "max_spread": 0.0,
+    "same_top": true,
+    "robust_top_switches": 0,
+    "robust_margin_flips": 0,
+    "pass": true
+   },
+   "R488_MAJORITY": false,
+   "RAW_MAJORITY": false,
+   "tiers_R488": {
+    "SCC": false,
+    "STRONG": false,
+    "NEAR_CEILING": false
+   },
+   "tiers_RAW": {
+    "SCC": false,
+    "STRONG": false,
+    "NEAR_CEILING": false
+   },
+   "comparator_B": "TIES",
+   "comparator_T": "IMPROVES",
+   "interpretable": true
+  },
+  "21001|PARAM_FIRST": {
+   "seed": "21001",
+   "representation": "PARAM_FIRST",
+   "sha256": "4d50a6707e05ef6324e9eac5bd075f13686afc1f631a1f0afb2601b275fe93b9",
+   "RAW": {
+    "T": 47,
+    "B": 0,
+    "A0_correct": 0,
+    "B0_correct": 47,
+    "ties": 0
+   },
+   "R488": {
+    "T": 48,
+    "B": 0,
+    "A0_correct": 0,
+    "B0_correct": 48,
+    "ties": 0
+   },
+   "receipt_full": {
+    "RAW": {
+     "T": 47,
+     "B": 0,
+     "A0_correct": 0,
+     "B0_correct": 47,
+     "ties": 0,
+     "top_census": {
+      "B0": 95,
+      "A0": 1
+     },
+     "pair_top_switches": 1,
+     "margin_census": {
+      "gold_directed": 47,
+      "opposite_gold": 49,
+      "subnoise": 0
+     }
+    },
+    "R488": {
+     "T": 48,
+     "B": 0,
+     "A0_correct": 0,
+     "B0_correct": 48,
+     "ties": 0,
+     "top_census": {
+      "B0": 96
+     },
+     "pair_top_switches": 0,
+     "margin_census": {
+      "gold_directed": 48,
+      "opposite_gold": 48,
+      "subnoise": 0
+     }
+    }
+   },
+   "delta": {
+    "Delta_T": 1,
+    "Delta_B": 0,
+    "top_changed": 1,
+    "gained": 1,
+    "lost": 0,
+    "margin_direction_changes": 1
+   },
+   "mask0": {
+    "max_spread": 0.0,
+    "same_top": true,
+    "robust_top_switches": 0,
+    "robust_margin_flips": 0,
+    "pass": true
+   },
+   "R488_MAJORITY": false,
+   "RAW_MAJORITY": false,
+   "tiers_R488": {
+    "SCC": false,
+    "STRONG": false,
+    "NEAR_CEILING": false
+   },
+   "tiers_RAW": {
+    "SCC": false,
+    "STRONG": false,
+    "NEAR_CEILING": false
+   },
+   "comparator_B": "TIES",
+   "comparator_T": "IMPROVES",
+   "interpretable": true
+  },
+  "22001|CANONICAL": {
+   "seed": "22001",
+   "representation": "CANONICAL",
+   "sha256": "a8ba77b5c6bab01b4f9a9bdd4b72d51767cc316fff40cbc3e7fcdea5154aa71a",
+   "RAW": {
+    "T": 95,
+    "B": 47,
+    "A0_correct": 47,
+    "B0_correct": 48,
+    "ties": 0
+   },
+   "R488": {
+    "T": 49,
+    "B": 16,
+    "A0_correct": 16,
+    "B0_correct": 33,
+    "ties": 0
+   },
+   "receipt_full": {
+    "RAW": {
+     "T": 95,
+     "B": 47,
+     "A0_correct": 47,
+     "B0_correct": 48,
+     "ties": 0,
+     "top_census": {
+      "B0": 49,
+      "A0": 47
+     },
+     "pair_top_switches": 47,
+     "margin_census": {
+      "gold_directed": 95,
+      "opposite_gold": 1,
+      "subnoise": 0
+     }
+    },
+    "R488": {
+     "T": 49,
+     "B": 16,
+     "A0_correct": 16,
+     "B0_correct": 33,
+     "ties": 0,
+     "top_census": {
+      "B0": 65,
+      "A0": 31
+     },
+     "pair_top_switches": 31,
+     "margin_census": {
+      "gold_directed": 49,
+      "opposite_gold": 47,
+      "subnoise": 0
+     }
+    }
+   },
+   "delta": {
+    "Delta_T": -46,
+    "Delta_B": -31,
+    "top_changed": 46,
+    "gained": 0,
+    "lost": 46,
+    "margin_direction_changes": 46
+   },
+   "mask0": {
+    "max_spread": 0.0,
+    "same_top": true,
+    "robust_top_switches": 0,
+    "robust_margin_flips": 0,
+    "pass": true
+   },
+   "R488_MAJORITY": false,
+   "RAW_MAJORITY": true,
+   "tiers_R488": {
+    "SCC": true,
+    "STRONG": false,
+    "NEAR_CEILING": false
+   },
+   "tiers_RAW": {
+    "SCC": true,
+    "STRONG": true,
+    "NEAR_CEILING": true
+   },
+   "comparator_B": "WORSENS",
+   "comparator_T": "WORSENS",
+   "interpretable": true
+  },
+  "22001|PARAM_FIRST": {
+   "seed": "22001",
+   "representation": "PARAM_FIRST",
+   "sha256": "f1a1b7e60520580fcdbda65cb0b0d06b8b4cb5513768b74278f9d0f75e881b8b",
+   "RAW": {
+    "T": 44,
+    "B": 4,
+    "A0_correct": 4,
+    "B0_correct": 40,
+    "ties": 0
+   },
+   "R488": {
+    "T": 75,
+    "B": 27,
+    "A0_correct": 27,
+    "B0_correct": 48,
+    "ties": 0
+   },
+   "receipt_full": {
+    "RAW": {
+     "T": 44,
+     "B": 4,
+     "A0_correct": 4,
+     "B0_correct": 40,
+     "ties": 0,
+     "top_census": {
+      "B0": 84,
+      "A0": 12
+     },
+     "pair_top_switches": 12,
+     "margin_census": {
+      "gold_directed": 44,
+      "opposite_gold": 52,
+      "subnoise": 0
+     }
+    },
+    "R488": {
+     "T": 75,
+     "B": 27,
+     "A0_correct": 27,
+     "B0_correct": 48,
+     "ties": 0,
+     "top_census": {
+      "A0": 27,
+      "B0": 69
+     },
+     "pair_top_switches": 27,
+     "margin_census": {
+      "gold_directed": 75,
+      "opposite_gold": 21,
+      "subnoise": 0
+     }
+    }
+   },
+   "delta": {
+    "Delta_T": 31,
+    "Delta_B": 23,
+    "top_changed": 33,
+    "gained": 32,
+    "lost": 1,
+    "margin_direction_changes": 33
+   },
+   "mask0": {
+    "max_spread": 0.0,
+    "same_top": true,
+    "robust_top_switches": 0,
+    "robust_margin_flips": 0,
+    "pass": true
+   },
+   "R488_MAJORITY": true,
+   "RAW_MAJORITY": false,
+   "tiers_R488": {
+    "SCC": true,
+    "STRONG": false,
+    "NEAR_CEILING": false
+   },
+   "tiers_RAW": {
+    "SCC": false,
+    "STRONG": false,
+    "NEAR_CEILING": false
+   },
+   "comparator_B": "IMPROVES",
+   "comparator_T": "IMPROVES",
+   "interpretable": true
+  },
+  "23001|CANONICAL": {
+   "seed": "23001",
+   "representation": "CANONICAL",
+   "sha256": "cebdff300fbb4d69c7f34658e7fc35c92538339002e25e0e19293d68517a0b36",
+   "RAW": {
+    "T": 26,
+    "B": 0,
+    "A0_correct": 0,
+    "B0_correct": 26,
+    "ties": 0
+   },
+   "R488": {
+    "T": 48,
+    "B": 0,
+    "A0_correct": 48,
+    "B0_correct": 0,
+    "ties": 0
+   },
+   "receipt_full": {
+    "RAW": {
+     "T": 26,
+     "B": 0,
+     "A0_correct": 0,
+     "B0_correct": 26,
+     "ties": 0,
+     "top_census": {
+      "B0": 74,
+      "A0": 22
+     },
+     "pair_top_switches": 22,
+     "margin_census": {
+      "gold_directed": 26,
+      "opposite_gold": 70,
+      "subnoise": 0
+     }
+    },
+    "R488": {
+     "T": 48,
+     "B": 0,
+     "A0_correct": 48,
+     "B0_correct": 0,
+     "ties": 0,
+     "top_census": {
+      "A0": 96
+     },
+     "pair_top_switches": 0,
+     "margin_census": {
+      "gold_directed": 48,
+      "opposite_gold": 48,
+      "subnoise": 0
+     }
+    }
+   },
+   "delta": {
+    "Delta_T": 22,
+    "Delta_B": 0,
+    "top_changed": 74,
+    "gained": 48,
+    "lost": 26,
+    "margin_direction_changes": 74
+   },
+   "mask0": {
+    "max_spread": 0.0,
+    "same_top": true,
+    "robust_top_switches": 0,
+    "robust_margin_flips": 0,
+    "pass": true
+   },
+   "R488_MAJORITY": false,
+   "RAW_MAJORITY": false,
+   "tiers_R488": {
+    "SCC": false,
+    "STRONG": false,
+    "NEAR_CEILING": false
+   },
+   "tiers_RAW": {
+    "SCC": false,
+    "STRONG": false,
+    "NEAR_CEILING": false
+   },
+   "comparator_B": "TIES",
+   "comparator_T": "IMPROVES",
+   "interpretable": true
+  },
+  "23001|PARAM_FIRST": {
+   "seed": "23001",
+   "representation": "PARAM_FIRST",
+   "sha256": "d67dadfcae67987d0ebc7b00337caac4ede5fcb18d374e249a7df7f02d79a273",
+   "RAW": {
+    "T": 96,
+    "B": 48,
+    "A0_correct": 48,
+    "B0_correct": 48,
+    "ties": 0
+   },
+   "R488": {
+    "T": 48,
+    "B": 0,
+    "A0_correct": 0,
+    "B0_correct": 48,
+    "ties": 0
+   },
+   "receipt_full": {
+    "RAW": {
+     "T": 96,
+     "B": 48,
+     "A0_correct": 48,
+     "B0_correct": 48,
+     "ties": 0,
+     "top_census": {
+      "A0": 48,
+      "B0": 48
+     },
+     "pair_top_switches": 48,
+     "margin_census": {
+      "gold_directed": 96,
+      "opposite_gold": 0,
+      "subnoise": 0
+     }
+    },
+    "R488": {
+     "T": 48,
+     "B": 0,
+     "A0_correct": 0,
+     "B0_correct": 48,
+     "ties": 0,
+     "top_census": {
+      "B0": 96
+     },
+     "pair_top_switches": 0,
+     "margin_census": {
+      "gold_directed": 48,
+      "opposite_gold": 48,
+      "subnoise": 0
+     }
+    }
+   },
+   "delta": {
+    "Delta_T": -48,
+    "Delta_B": -48,
+    "top_changed": 48,
+    "gained": 0,
+    "lost": 48,
+    "margin_direction_changes": 48
+   },
+   "mask0": {
+    "max_spread": 0.0,
+    "same_top": true,
+    "robust_top_switches": 0,
+    "robust_margin_flips": 0,
+    "pass": true
+   },
+   "R488_MAJORITY": false,
+   "RAW_MAJORITY": true,
+   "tiers_R488": {
+    "SCC": false,
+    "STRONG": false,
+    "NEAR_CEILING": false
+   },
+   "tiers_RAW": {
+    "SCC": true,
+    "STRONG": true,
+    "NEAR_CEILING": true
+   },
+   "comparator_B": "WORSENS",
+   "comparator_T": "WORSENS",
+   "interpretable": true
+  },
+  "24001|CANONICAL": {
+   "seed": "24001",
+   "representation": "CANONICAL",
+   "sha256": "fb1d6c56cad0df5f73bb08113e95a9d2885cbb9f28a8c8de0f6d4b42cfde29d6",
+   "RAW": {
+    "T": 62,
+    "B": 24,
+    "A0_correct": 29,
+    "B0_correct": 33,
+    "ties": 0
+   },
+   "R488": {
+    "T": 34,
+    "B": 0,
+    "A0_correct": 34,
+    "B0_correct": 0,
+    "ties": 0
+   },
+   "receipt_full": {
+    "RAW": {
+     "T": 62,
+     "B": 24,
+     "A0_correct": 29,
+     "B0_correct": 33,
+     "ties": 0,
+     "top_census": {
+      "A0": 44,
+      "B0": 52
+     },
+     "pair_top_switches": 34,
+     "margin_census": {
+      "gold_directed": 62,
+      "opposite_gold": 34,
+      "subnoise": 0
+     }
+    },
+    "R488": {
+     "T": 34,
+     "B": 0,
+     "A0_correct": 34,
+     "B0_correct": 0,
+     "ties": 0,
+     "top_census": {
+      "B0": 14,
+      "A0": 82
+     },
+     "pair_top_switches": 14,
+     "margin_census": {
+      "gold_directed": 34,
+      "opposite_gold": 62,
+      "subnoise": 0
+     }
+    }
+   },
+   "delta": {
+    "Delta_T": -28,
+    "Delta_B": -24,
+    "top_changed": 66,
+    "gained": 19,
+    "lost": 47,
+    "margin_direction_changes": 66
+   },
+   "mask0": {
+    "max_spread": 0.0,
+    "same_top": true,
+    "robust_top_switches": 0,
+    "robust_margin_flips": 0,
+    "pass": true
+   },
+   "R488_MAJORITY": false,
+   "RAW_MAJORITY": false,
+   "tiers_R488": {
+    "SCC": false,
+    "STRONG": false,
+    "NEAR_CEILING": false
+   },
+   "tiers_RAW": {
+    "SCC": true,
+    "STRONG": false,
+    "NEAR_CEILING": false
+   },
+   "comparator_B": "WORSENS",
+   "comparator_T": "WORSENS",
+   "interpretable": true
+  },
+  "24001|PARAM_FIRST": {
+   "seed": "24001",
+   "representation": "PARAM_FIRST",
+   "sha256": "157a07709128199c4c52767afee30740358a25f7c65620ceee1225ed905b8fe6",
+   "RAW": {
+    "T": 96,
+    "B": 48,
+    "A0_correct": 48,
+    "B0_correct": 48,
+    "ties": 0
+   },
+   "R488": {
+    "T": 68,
+    "B": 20,
+    "A0_correct": 20,
+    "B0_correct": 48,
+    "ties": 0
+   },
+   "receipt_full": {
+    "RAW": {
+     "T": 96,
+     "B": 48,
+     "A0_correct": 48,
+     "B0_correct": 48,
+     "ties": 0,
+     "top_census": {
+      "A0": 48,
+      "B0": 48
+     },
+     "pair_top_switches": 48,
+     "margin_census": {
+      "gold_directed": 96,
+      "opposite_gold": 0,
+      "subnoise": 0
+     }
+    },
+    "R488": {
+     "T": 68,
+     "B": 20,
+     "A0_correct": 20,
+     "B0_correct": 48,
+     "ties": 0,
+     "top_census": {
+      "B0": 76,
+      "A0": 20
+     },
+     "pair_top_switches": 20,
+     "margin_census": {
+      "gold_directed": 68,
+      "opposite_gold": 28,
+      "subnoise": 0
+     }
+    }
+   },
+   "delta": {
+    "Delta_T": -28,
+    "Delta_B": -28,
+    "top_changed": 28,
+    "gained": 0,
+    "lost": 28,
+    "margin_direction_changes": 28
+   },
+   "mask0": {
+    "max_spread": 0.0,
+    "same_top": true,
+    "robust_top_switches": 0,
+    "robust_margin_flips": 0,
+    "pass": true
+   },
+   "R488_MAJORITY": false,
+   "RAW_MAJORITY": true,
+   "tiers_R488": {
+    "SCC": true,
+    "STRONG": false,
+    "NEAR_CEILING": false
+   },
+   "tiers_RAW": {
+    "SCC": true,
+    "STRONG": true,
+    "NEAR_CEILING": true
+   },
+   "comparator_B": "WORSENS",
+   "comparator_T": "WORSENS",
+   "interpretable": true
+  }
+ },
+ "seed_pair": {
+  "21001": {
+   "Tmin_RAW": 38,
+   "Bmin_RAW": 0,
+   "Tmin_R488": 48,
+   "Bmin_R488": 0,
+   "Delta_Bmin": 0,
+   "Delta_Tmin": 10,
+   "PAIR_MAJORITY": false,
+   "arm_heterogeneity_R488": {
+    "abs_dT": 0,
+    "abs_dB": 0,
+    "material": false
+   }
+  },
+  "22001": {
+   "Tmin_RAW": 44,
+   "Bmin_RAW": 4,
+   "Tmin_R488": 49,
+   "Bmin_R488": 16,
+   "Delta_Bmin": 12,
+   "Delta_Tmin": 5,
+   "PAIR_MAJORITY": false,
+   "arm_heterogeneity_R488": {
+    "abs_dT": 26,
+    "abs_dB": 11,
+    "material": true
+   }
+  },
+  "23001": {
+   "Tmin_RAW": 26,
+   "Bmin_RAW": 0,
+   "Tmin_R488": 48,
+   "Bmin_R488": 0,
+   "Delta_Bmin": 0,
+   "Delta_Tmin": 22,
+   "PAIR_MAJORITY": false,
+   "arm_heterogeneity_R488": {
+    "abs_dT": 0,
+    "abs_dB": 0,
+    "material": false
+   }
+  },
+  "24001": {
+   "Tmin_RAW": 62,
+   "Bmin_RAW": 24,
+   "Tmin_R488": 34,
+   "Bmin_R488": 0,
+   "Delta_Bmin": -24,
+   "Delta_Tmin": -28,
+   "PAIR_MAJORITY": false,
+   "arm_heterogeneity_R488": {
+    "abs_dT": 34,
+    "abs_dB": 20,
+    "material": true
+   }
+  }
+ },
+ "primary": {
+  "PAIR_MAJORITY_seeds_of_4": 0,
+  "label": "NO PAIR-MAJORITY TRANSFER",
+  "R488_MAJORITY_checkpoints_of_8": 1,
+  "uninterpretable_cells": []
+ },
+ "secondary": {
+  "SCC_of_8": 3,
+  "STRONG_of_8": 0,
+  "NEAR_CEILING_of_8": 0,
+  "RAW_MAJORITY_of_8": 3
+ },
+ "priors": {
+  "1_R488_MAJORITY_ge_6_of_8": {
+   "prior": "MODERATE",
+   "count": 1,
+   "outcome": false
+  },
+  "2_PAIR_MAJORITY_ge_3_of_4": {
+   "prior": "LOW-MODERATE",
+   "count": 0,
+   "outcome": false
+  },
+  "3_SCC_all_8": {
+   "prior": "MODERATE-HIGH",
+   "count": 3,
+   "outcome": false
+  },
+  "4_STRONG_all_8": {
+   "prior": "LOW",
+   "count": 0,
+   "outcome": false
+  },
+  "5_B_IMPROVES_ge_5_of_8": {
+   "prior": "MODERATE",
+   "count": 1,
+   "outcome": false
+  },
+  "6_arm_heterogeneity_ge_2_of_4": {
+   "prior": "MODERATE-HIGH",
+   "count": 2,
+   "outcome": true
+  },
+  "7_identical_B_label_all_8": {
+   "prior": "LOW",
+   "labels": [
+    "IMPROVES",
+    "TIES",
+    "WORSENS"
+   ],
+   "outcome": false
+  }
+ },
+ "semantic_beyond_all_surface_identifiable": false
+}

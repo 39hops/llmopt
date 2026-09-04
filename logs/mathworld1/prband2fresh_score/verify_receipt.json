@@ -1,0 +1,11 @@
+{
+ "verdict": "VERIFIED",
+ "discrepancies": [],
+ "lp_rows": 13824,
+ "lp_ok": 13824,
+ "aggregate_sha256": "9815b527db863bc453612cfa806946f35ace07c7de4faa82a362e1e32a99773a",
+ "primary": {
+  "PAIR_MAJORITY": 0,
+  "R488_MAJORITY": 1
+ }
+}
