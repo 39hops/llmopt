@@ -171,6 +171,12 @@
    "scope": "closed-loop|CLOSED-LOOP|splice|SPLICE",
    "reason": "No standalone wall-cap-sensitivity prereg exists; the rider is PARKED/FUTURE-ELIGIBLE with the assessment's outcome gate, promotion requires its own future prereg.",
    "superseded_by": "2026-08-31-amendment-math-cyber-1-closed-loop-b"
+  },
+  {
+   "pattern": "hundreds of (steepest-ascent )?local maxima",
+   "reason": "Plateau-inflated: on integer-valued atlas fields the strict-ascent fixed-point count includes every interior vertex of a flat floor (137 to 494 of 204 to 526 per B field sit at B = 0). Ruggedness is stated only through the plateau-quotient interior-maximum count.",
+   "superseded_by": "2026-09-04-amendment-math-cyber-1-render-atlas",
+   "scope": "render[- ]atlas|[Cc]ayley|steepest[- ]ascent"
   }
  ]
 }
