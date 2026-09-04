@@ -1,0 +1,41 @@
+{
+ "prereg": "MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-RENDER-ATLAS-FRESH-SEED-0",
+ "seed": 21001,
+ "attempt": 1,
+ "init_path": "checkpoints/svp_forder_init_s21001.pt",
+ "init_sha": "a155aeaa344cc1c87bf10448982eeeb13185db56c0dc5f268111e467bffeb967",
+ "double_build_identical": true,
+ "census_receipt_sha": "49bf9823c93b5bd91e63694b26bef9bed86d04dde298c668c434e85e80fea302",
+ "adopted_instrument": {
+  "path": "scratch/mathworld1_svpforepl.py",
+  "sha256": "bc9174885f7360f6c407d4f03d6eb7f1af771f96f98674d9cb783b10c0a073b9"
+ },
+ "executed_function_source_sha256": {
+  "load_rows": "bf04457b6eba77110932b774ac67a475aeafbc48be9c91410e3257e8db51c671",
+  "state_bytes": "8c55fa7a3ab0eaf792304a7803d3865b6ffe311732e29a7e1ee3ebdc868e4fe1",
+  "make_batch": "6a809d3b07078d5b5473690bb2bb5993c2aa987776492dcc52052ca95225e072",
+  "load_arm_models": "8fab37b960f8a8307260b74a9c6e1e5f8e0f4f714218a9496724757cf10326e5",
+  "run": "4578cccb8ca35d9e1ecc9f7be9a731f2a8cf9265c44f7fd57009cf8bec2da070",
+  "pf_encode": "86aee56611b5ecc28a2267f4661dab4ff00dc4c923e8b6a76ac41b3a0c9b3d54",
+  "pf_decode": "1f63557c6d6b12c98c13f56da5904d574da212ad751f1023c30d79ed6274c9be",
+  "encode": "93f3580d8d93be204c669c9e8f311efc2dc276233f3bff569c8a1e6ee185a952",
+  "ctup": "c1a8bc458ddd7f730fbd63caaeb7b82db451480ecc6949e95b640ec361a4211a",
+  "fsha": "f05ba905621c84df0917cce31760be638645eccfba0d55fba090daabd435fd23"
+ },
+ "start": {
+  "start_commit": "531bfb1b",
+  "start_status_porcelain": " M scripts/INDEX.md\n?? scratch/prband2fresh_train.sh\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_svpfofresh.py": "84e605c3806cff8a1204c307e19439ce789a19459192be0613b091cabcf394ce",
+   "scratch/mathworld1_svpforepl.py": "bc9174885f7360f6c407d4f03d6eb7f1af771f96f98674d9cb783b10c0a073b9",
+   "scratch/mathworld1_svpbirth.py": "c0bed95ec6a4db6faad424fa4780fba3af8d4f6d2cec364c75726da9e532950c",
+   "scratch/mathworld1_svpcode.py": "3b80655cbddc835e6fac99c81335a4d21a4b812ac304b786f8ca07ec96277ca0",
+   "scratch/mathworld1_actiontok.py": "a5a22b38c775f67b303b305fa98d8a7fd3e79ac2f11e151385a2701a6d0c4aec",
+   "scratch/mathworld1_birth.py": "90dbf312bc42c4eeeeefaaa27489351fb0fa615bb3a14463b41fd56ef1b466ad",
+   "llmopt/train/mathnative.py": "f8f5ca114d83d0dd854ebcb25de1a707e41e57822f06b15efecb0a1d87dcab61",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "531bfb1b"
+}

@@ -1,0 +1,213 @@
+{
+ "prereg": "MATH-CYBER-1-PRIOR-RESISTANT-EVAL-V2-RENDER-ATLAS-FRESH-SEED-0",
+ "seeds": [
+  "21001",
+  "22001",
+  "23001",
+  "24001"
+ ],
+ "n_checkpoints": 8,
+ "checkpoints": [
+  {
+   "seed": "21001",
+   "representation": "CANONICAL",
+   "path": "checkpoints/svp_forder_canonical_s21001.pt",
+   "sha256": "8a26cde56b5ecbed764b0cd838ea4d0a3c95a22d36a5b58dff66496cd9908d9d",
+   "attempt": 1,
+   "init_sha": "a155aeaa344cc1c87bf10448982eeeb13185db56c0dc5f268111e467bffeb967",
+   "training_instrument_commit": "531bfb1b",
+   "training_instrument_sha256": "84e605c3806cff8a1204c307e19439ce789a19459192be0613b091cabcf394ce",
+   "adopted_instrument_sha256": "bc9174885f7360f6c407d4f03d6eb7f1af771f96f98674d9cb783b10c0a073b9",
+   "runtime": {
+    "torch": "2.12.1",
+    "device": "mps"
+   },
+   "training_receipt": "logs/mathworld1/prband2fresh_train/train_s21001_receipt.json",
+   "training_receipt_sha256": "a87a3cc43a873276863b7f8de021d170664350de5e46d9b4f79e8604c13b9070",
+   "wall_s": 3476.2
+  },
+  {
+   "seed": "21001",
+   "representation": "PARAM_FIRST",
+   "path": "checkpoints/svp_forder_paramfirst_s21001.pt",
+   "sha256": "4d50a6707e05ef6324e9eac5bd075f13686afc1f631a1f0afb2601b275fe93b9",
+   "attempt": 1,
+   "init_sha": "a155aeaa344cc1c87bf10448982eeeb13185db56c0dc5f268111e467bffeb967",
+   "training_instrument_commit": "531bfb1b",
+   "training_instrument_sha256": "84e605c3806cff8a1204c307e19439ce789a19459192be0613b091cabcf394ce",
+   "adopted_instrument_sha256": "bc9174885f7360f6c407d4f03d6eb7f1af771f96f98674d9cb783b10c0a073b9",
+   "runtime": {
+    "torch": "2.12.1",
+    "device": "mps"
+   },
+   "training_receipt": "logs/mathworld1/prband2fresh_train/train_s21001_receipt.json",
+   "training_receipt_sha256": "a87a3cc43a873276863b7f8de021d170664350de5e46d9b4f79e8604c13b9070",
+   "wall_s": 3476.2
+  },
+  {
+   "seed": "22001",
+   "representation": "CANONICAL",
+   "path": "checkpoints/svp_forder_canonical_s22001.pt",
+   "sha256": "a8ba77b5c6bab01b4f9a9bdd4b72d51767cc316fff40cbc3e7fcdea5154aa71a",
+   "attempt": 1,
+   "init_sha": "fa7ac1a8cd6880270a5b904c62a240386443987976c0df11fc091cb41f64c1dd",
+   "training_instrument_commit": "bc0b67fe",
+   "training_instrument_sha256": "84e605c3806cff8a1204c307e19439ce789a19459192be0613b091cabcf394ce",
+   "adopted_instrument_sha256": "bc9174885f7360f6c407d4f03d6eb7f1af771f96f98674d9cb783b10c0a073b9",
+   "runtime": {
+    "torch": "2.12.1",
+    "device": "mps"
+   },
+   "training_receipt": "logs/mathworld1/prband2fresh_train/train_s22001_receipt.json",
+   "training_receipt_sha256": "5cde1ef25aee49d389091a22fefa1fd477fa77180a2cb5843007d512cb06d3a5",
+   "wall_s": 3496.2
+  },
+  {
+   "seed": "22001",
+   "representation": "PARAM_FIRST",
+   "path": "checkpoints/svp_forder_paramfirst_s22001.pt",
+   "sha256": "f1a1b7e60520580fcdbda65cb0b0d06b8b4cb5513768b74278f9d0f75e881b8b",
+   "attempt": 1,
+   "init_sha": "fa7ac1a8cd6880270a5b904c62a240386443987976c0df11fc091cb41f64c1dd",
+   "training_instrument_commit": "bc0b67fe",
+   "training_instrument_sha256": "84e605c3806cff8a1204c307e19439ce789a19459192be0613b091cabcf394ce",
+   "adopted_instrument_sha256": "bc9174885f7360f6c407d4f03d6eb7f1af771f96f98674d9cb783b10c0a073b9",
+   "runtime": {
+    "torch": "2.12.1",
+    "device": "mps"
+   },
+   "training_receipt": "logs/mathworld1/prband2fresh_train/train_s22001_receipt.json",
+   "training_receipt_sha256": "5cde1ef25aee49d389091a22fefa1fd477fa77180a2cb5843007d512cb06d3a5",
+   "wall_s": 3496.2
+  },
+  {
+   "seed": "23001",
+   "representation": "CANONICAL",
+   "path": "checkpoints/svp_forder_canonical_s23001.pt",
+   "sha256": "cebdff300fbb4d69c7f34658e7fc35c92538339002e25e0e19293d68517a0b36",
+   "attempt": 1,
+   "init_sha": "1d093ec100455d29413275342e3da2114f14261990e4f114c1c28e5f390174f8",
+   "training_instrument_commit": "de21073e",
+   "training_instrument_sha256": "84e605c3806cff8a1204c307e19439ce789a19459192be0613b091cabcf394ce",
+   "adopted_instrument_sha256": "bc9174885f7360f6c407d4f03d6eb7f1af771f96f98674d9cb783b10c0a073b9",
+   "runtime": {
+    "torch": "2.12.1",
+    "device": "mps"
+   },
+   "training_receipt": "logs/mathworld1/prband2fresh_train/train_s23001_receipt.json",
+   "training_receipt_sha256": "b9d23b44eda31f7d794d31a4bb058b991f15ff4eed9cbbea5792061d401b0edb",
+   "wall_s": 3468.2
+  },
+  {
+   "seed": "23001",
+   "representation": "PARAM_FIRST",
+   "path": "checkpoints/svp_forder_paramfirst_s23001.pt",
+   "sha256": "d67dadfcae67987d0ebc7b00337caac4ede5fcb18d374e249a7df7f02d79a273",
+   "attempt": 1,
+   "init_sha": "1d093ec100455d29413275342e3da2114f14261990e4f114c1c28e5f390174f8",
+   "training_instrument_commit": "de21073e",
+   "training_instrument_sha256": "84e605c3806cff8a1204c307e19439ce789a19459192be0613b091cabcf394ce",
+   "adopted_instrument_sha256": "bc9174885f7360f6c407d4f03d6eb7f1af771f96f98674d9cb783b10c0a073b9",
+   "runtime": {
+    "torch": "2.12.1",
+    "device": "mps"
+   },
+   "training_receipt": "logs/mathworld1/prband2fresh_train/train_s23001_receipt.json",
+   "training_receipt_sha256": "b9d23b44eda31f7d794d31a4bb058b991f15ff4eed9cbbea5792061d401b0edb",
+   "wall_s": 3468.2
+  },
+  {
+   "seed": "24001",
+   "representation": "CANONICAL",
+   "path": "checkpoints/svp_forder_canonical_s24001.pt",
+   "sha256": "fb1d6c56cad0df5f73bb08113e95a9d2885cbb9f28a8c8de0f6d4b42cfde29d6",
+   "attempt": 1,
+   "init_sha": "3fd1f769977ebfb1dab196befac1a69c705dbaaebfdd5f8ffb6216d507d78e05",
+   "training_instrument_commit": "de21073e",
+   "training_instrument_sha256": "84e605c3806cff8a1204c307e19439ce789a19459192be0613b091cabcf394ce",
+   "adopted_instrument_sha256": "bc9174885f7360f6c407d4f03d6eb7f1af771f96f98674d9cb783b10c0a073b9",
+   "runtime": {
+    "torch": "2.12.1",
+    "device": "mps"
+   },
+   "training_receipt": "logs/mathworld1/prband2fresh_train/train_s24001_receipt.json",
+   "training_receipt_sha256": "2622da8c0e0d5f9147a60e06a5a525d18f5b84d631a990bece6637c6a3f2fcfa",
+   "wall_s": 3469.4
+  },
+  {
+   "seed": "24001",
+   "representation": "PARAM_FIRST",
+   "path": "checkpoints/svp_forder_paramfirst_s24001.pt",
+   "sha256": "157a07709128199c4c52767afee30740358a25f7c65620ceee1225ed905b8fe6",
+   "attempt": 1,
+   "init_sha": "3fd1f769977ebfb1dab196befac1a69c705dbaaebfdd5f8ffb6216d507d78e05",
+   "training_instrument_commit": "de21073e",
+   "training_instrument_sha256": "84e605c3806cff8a1204c307e19439ce789a19459192be0613b091cabcf394ce",
+   "adopted_instrument_sha256": "bc9174885f7360f6c407d4f03d6eb7f1af771f96f98674d9cb783b10c0a073b9",
+   "runtime": {
+    "torch": "2.12.1",
+    "device": "mps"
+   },
+   "training_receipt": "logs/mathworld1/prband2fresh_train/train_s24001_receipt.json",
+   "training_receipt_sha256": "2622da8c0e0d5f9147a60e06a5a525d18f5b84d631a990bece6637c6a3f2fcfa",
+   "wall_s": 3469.4
+  }
+ ],
+ "attempts": {
+  "21001": [
+   {
+    "receipt": "logs/mathworld1/prband2fresh_train/train_s21001_receipt.json",
+    "attempt": 1,
+    "mode": "production",
+    "checkpoints": {
+     "checkpoints/svp_forder_canonical_s21001.pt": "8a26cde56b5ecbed764b0cd838ea4d0a3c95a22d36a5b58dff66496cd9908d9d",
+     "checkpoints/svp_forder_paramfirst_s21001.pt": "4d50a6707e05ef6324e9eac5bd075f13686afc1f631a1f0afb2601b275fe93b9"
+    }
+   }
+  ],
+  "22001": [
+   {
+    "receipt": "logs/mathworld1/prband2fresh_train/train_s22001_receipt.json",
+    "attempt": 1,
+    "mode": "production",
+    "checkpoints": {
+     "checkpoints/svp_forder_canonical_s22001.pt": "a8ba77b5c6bab01b4f9a9bdd4b72d51767cc316fff40cbc3e7fcdea5154aa71a",
+     "checkpoints/svp_forder_paramfirst_s22001.pt": "f1a1b7e60520580fcdbda65cb0b0d06b8b4cb5513768b74278f9d0f75e881b8b"
+    }
+   }
+  ],
+  "23001": [
+   {
+    "receipt": "logs/mathworld1/prband2fresh_train/train_s23001_receipt.json",
+    "attempt": 1,
+    "mode": "production",
+    "checkpoints": {
+     "checkpoints/svp_forder_canonical_s23001.pt": "cebdff300fbb4d69c7f34658e7fc35c92538339002e25e0e19293d68517a0b36",
+     "checkpoints/svp_forder_paramfirst_s23001.pt": "d67dadfcae67987d0ebc7b00337caac4ede5fcb18d374e249a7df7f02d79a273"
+    }
+   }
+  ],
+  "24001": [
+   {
+    "receipt": "logs/mathworld1/prband2fresh_train/train_s24001_receipt.json",
+    "attempt": 1,
+    "mode": "production",
+    "checkpoints": {
+     "checkpoints/svp_forder_canonical_s24001.pt": "fb1d6c56cad0df5f73bb08113e95a9d2885cbb9f28a8c8de0f6d4b42cfde29d6",
+     "checkpoints/svp_forder_paramfirst_s24001.pt": "157a07709128199c4c52767afee30740358a25f7c65620ceee1225ed905b8fe6"
+    }
+   }
+  ]
+ },
+ "start": {
+  "start_commit": "de21073e",
+  "start_status_porcelain": "",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_prband2freshfreeze.py": "34026165edbb27c21a6f975da4f9c5bba21933baa2a2a483bdd327aaa6b7a870",
+   "scratch/mathworld1_svpfofresh.py": "84e605c3806cff8a1204c307e19439ce789a19459192be0613b091cabcf394ce",
+   "scratch/mathworld1_svpforepl.py": "bc9174885f7360f6c407d4f03d6eb7f1af771f96f98674d9cb783b10c0a073b9"
+  }
+ },
+ "completion_commit": "de21073e"
+}
