@@ -94,7 +94,8 @@ def main():
             chk(abs(float(np.median(cs)) - v["median_cos"]) < 1e-9 and abs(float(np.mean([c < 0 for c in cs])) - v["frac_negative"]) < 1e-9, f"{e['pair']} lag{lag} agg")
             chk(rec["B"]["deltas"][i - int(lag)]["pair"] == v["prev_pair"], f"{e['pair']} lag{lag} prev")
             chk(abs(sum(r["fro_d"] ** 2 for r in rs) ** 0.5 - e["fro_total"]) < 1e-6 * max(1.0, e["fro_total"]), f"{e['pair']} fro_total")
-        exp_cls = "WITHIN" if e["pair"].split("->")[0].split("_")[0:2] == e["pair"].split("->")[1].split("_")[0:2] else "BOUNDARY"
+        a_tag, b_tag = e["pair"].split("->")
+        exp_cls = "WITHIN" if a_tag.rsplit("_", 1)[0] == b_tag.rsplit("_", 1)[0] else "BOUNDARY"
         chk(e["class"] == exp_cls, f"{e['pair']} class")
     Dl = rec["B"]["deltas"]
     agg = {}

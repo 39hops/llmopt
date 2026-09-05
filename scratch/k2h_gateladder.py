@@ -159,17 +159,31 @@ def main():
     tags = [a for a in sys.argv[1:] if not a.startswith("--")]
     if os.path.exists(OUT):
         raise SystemExit(f"REFUSING: {OUT} exists")
-    anc = json.load(open(os.path.join(ROOT, "docs/preregs/k2h-stagecensus-0.ancestry.json")))
-    START = start_provenance(["scratch/k2h_gateladder.py", "scratch/k2h_stagecensus.py"])
+    # tags are MUTABLE on the hub (re-pointed 2026-09-05 19:02 EDT while the
+    # residues run was live), so revisions are the FULL commits recorded in
+    # the locked L66337 receipt, never tag names
+    booked = json.load(open(os.path.join(ROOT, "logs/k2h/stagecensus/receipt.json")))
+    lock = json.load(open(os.path.join(ROOT, "docs/receipts.lock.json")))["receipts"]
+    if K.sha_file(os.path.join(ROOT, "logs/k2h/stagecensus/receipt.json")) != lock["logs/k2h/stagecensus/receipt.json"]["sha256"]:
+        raise SystemExit("REFUSING: booked receipt sha v lock")
+    START = start_provenance(["scratch/k2h_gateladder.py", "scratch/k2h_stagecensus.py", "logs/k2h/stagecensus/receipt.json"])
     os.makedirs(OUT)
     rec = {"prereg": "K2-HORIZON-GATE-LADDER-0", "smoke": False, "start": START, "items_sha256": digest(items), "n_items": len(items), "tags": {}, "gate": {}}
     counters = {"timeout": 0, "empty": 0}
     rows_f = open(os.path.join(OUT, "ladder_rows.jsonl"), "w")
     t0 = time.time()
     for tag in tags:
-        path, commit = K.download(tag, anc["tags"][tag])
+        from huggingface_hub import snapshot_download
+        commit = booked["tags"][tag]["commit"]
+        path = snapshot_download(K.MODEL, revision=commit, allow_patterns=K.ALLOW)
+        if os.path.basename(path) != commit:
+            raise SystemExit(f"REFUSING: {tag} resolved to {os.path.basename(path)}, booked {commit}")
+        idx = json.load(open(os.path.join(path, "model.safetensors.index.json")))
+        shards = {sh: K.sha_file(os.path.join(path, sh)) for sh in sorted(set(idx["weight_map"].values()))}
+        if shards != booked["tags"][tag]["shard_sha256"]:
+            raise SystemExit(f"REFUSING: {tag} shard sha256 v booked receipt")
         model, tok, dev, rope = K.load_model(path)
-        rec["tags"][tag] = {"commit": commit, "rope_parameters": rope, "device": dev}
+        rec["tags"][tag] = {"commit": commit, "shard_sha256": shards, "rope_parameters": rope, "device": dev}
         rec["gate"][tag] = {}
         for tier in TIERS:
             g = run_tier(model, tok, items, tier, 0, tag, rows_f, counters)
