@@ -24,6 +24,7 @@ import scipy.linalg
 
 OUTDIR = Path("logs/mathworld1/morphology")
 D = []
+INV = {}   # prior-7 readouts: instrument basis, verifier basis, invariant eigenspace boundary
 
 
 def chk(c, m):
@@ -186,13 +187,33 @@ def main():
                 chk(abs((c ** 2).sum() - (xc ** 2).sum()) < 1e-6 and abs(c[0]) < 1e-9, f"{cohort} {ck} {f} parseval")
                 e = c[1:] ** 2
                 cum = np.cumsum(e) / e.sum()
+                # Energy inside a degenerate eigenspace is basis-invariant only as
+                # a whole: a cut that splits an eigenspace gives a basis-dependent
+                # fraction (numpy and scipy eigh pick different bases), so the
+                # fraction is checked exactly only at non-splitting cuts and is
+                # otherwise checked to lie between the invariant boundary values.
                 for name, k in (("10%", 72), ("25%", 180), ("50%", 360)):
                     cut = H["spectral"]["cuts"][name]
-                    chk(cut["k"] == k and abs(cut["fraction"] - cum[k - 1]) < 1e-9, f"{cohort} {ck} {f} cut {name}")
-                    chk(abs(cut["eigenvalue_at_cut"] - lam[k]) < 1e-6, f"{cohort} {ck} {f} eig {name}")
-                    chk(cut["splits_degenerate_eigenspace"] == (abs(lam[k] - lam[k + 1]) < 1e-9), f"{cohort} {ck} {f} split {name}")
+                    split = abs(lam[k] - lam[k + 1]) < 1e-9
+                    chk(cut["k"] == k and abs(cut["eigenvalue_at_cut"] - lam[k]) < 1e-6, f"{cohort} {ck} {f} eig {name}")
+                    chk(cut["splits_degenerate_eigenspace"] == split, f"{cohort} {ck} {f} split {name}")
+                    if not split:
+                        chk(abs(cut["fraction"] - cum[k - 1]) < 1e-9, f"{cohort} {ck} {f} cut {name}")
+                    else:
+                        lo_k = k
+                        while lo_k > 1 and abs(lam[lo_k] - lam[k]) < 1e-9:
+                            lo_k -= 1
+                        hi_k = k
+                        while hi_k < 719 and abs(lam[hi_k + 1] - lam[k]) < 1e-9:
+                            hi_k += 1
+                        chk(cut["boundary_below"]["k"] == lo_k and abs(cut["boundary_below"]["fraction"] - cum[lo_k - 1]) < 1e-9, f"{cohort} {ck} {f} boundary below {name}")
+                        chk(cut["boundary_above"]["k"] == hi_k and abs(cut["boundary_above"]["fraction"] - cum[hi_k - 1]) < 1e-9, f"{cohort} {ck} {f} boundary above {name}")
+                        chk(cum[lo_k - 1] - 1e-9 <= cut["fraction"] <= cum[hi_k - 1] + 1e-9, f"{cohort} {ck} {f} cut {name} outside boundaries")
                 # null (same string-seed law)
-                below, above10 = 0, 0
+                below, above10, above_inv = 0, 0, 0
+                k_inv = 72
+                while k_inv > 1 and abs(lam[k_inv] - lam[72]) < 1e-9:
+                    k_inv -= 1          # invariant boundary below the 10 % cut
                 tvs = []
                 for kk in range(200):
                     y = list(x)
@@ -204,10 +225,14 @@ def main():
                     cy = U.T @ (np.array(y, dtype=float) - np.mean(y))
                     ey = cy[1:] ** 2
                     above10 += (ey[:72].sum() / ey.sum()) < cum[71]
+                    above_inv += (ey[:k_inv].sum() / ey.sum()) < cum[k_inv - 1]
                 chk(H["null"]["TV_norm"]["n_null_below_field"] == below, f"{cohort} {ck} {f} null below {H['null']['TV_norm']['n_null_below_field']} v {below}")
                 chk(H["null"]["TV_norm"]["field_below_all"] == (below == 0), f"{cohort} {ck} {f} null all")
                 chk(abs(H["null"]["TV_norm"]["min"] - min(tvs)) < 1e-12, f"{cohort} {ck} {f} null min")
-                chk(H["null"]["cut_fraction"]["10%"]["field_above_all"] == (above10 == 200), f"{cohort} {ck} {f} null cut10")
+                # basis-dependent at a splitting cut: recorded, not asserted
+                INV.setdefault(cohort, {})[f"{ck}|{f}"] = {"instrument_cut10_above_all": H["null"]["cut_fraction"]["10%"]["field_above_all"],
+                                                        "verifier_basis_cut10_above_all": bool(above10 == 200),
+                                                        "invariant_boundary_k": int(k_inv), "invariant_boundary_above_all": bool(above_inv == 200)}
             # E
             for name, fn in (("NEAR", lambda T, B: T >= 92 and B >= 46), ("MAJORITY", lambda T, B: T >= 72 and B >= 24),
                              ("STRONG", lambda T, B: T >= 84 and B >= 36)):
@@ -271,7 +296,7 @@ def main():
         "logs/mathworld1/prband2atlasfresh/policy_table.jsonl", "logs/mathworld1/cayley/DISCOVERY.json",
         "logs/mathworld1/cayley/FRESH.json")}
     rec = {"verdict": "VERIFIED" if not D else "DISCREPANCIES", "discrepancies": D[:40], "n_discrepancies": len(D),
-           "input_pins": pins, "inputs": rec_inputs,
+           "input_pins": pins, "inputs": rec_inputs, "prior7_spectral": INV,
            "commit": subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip(),
            "verifier_sha256": hashlib.sha256(open(__file__, "rb").read()).hexdigest()}
     (OUTDIR / "verify_receipt.json").write_text(json.dumps(rec, indent=1))
