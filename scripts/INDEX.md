@@ -2497,6 +2497,36 @@ Judge-collapsed decoding (spec 2026-07-28 rung 4, pre-reg 2026-07-28). Three arm
 - `greedy_step(prefix, spend, branch=False)` — Greedy decode one Step line. branch=True: at the FIRST
 - `run_chain(cur0, arm, seed0)`
 
+### scratch/k2h_gateladder.py
+K2-HORIZON-GATE-LADDER-0: the frozen multi-difficulty oracle gate ladder for the K2 Horizon lifecycle program (0.9B qualification, 3.7B and 7B transport). Raw completion, one prompt format, string-seeded items, sympy truth, fork-boxed sympy equivalence (never string match). Six tiers of 40 items (two families each, 20 per family):
+
+- `_item(fam, rng)`
+- `make_items()`
+- `make_shots(seed, tier, exclude)`
+- `digest(items)`
+- `run_tier(model, tok, items, tier, seed, tag, rows_f, counters)` — Per-tier gate: tier-specific shot block, same render / parse /
+- `main()`
+
+### scratch/k2h_residues.py
+K2-HORIZON-RESIDUES-0 instrument (prereg in docs/RESULTS.md): the two cheap residues of VERDICT K2-HORIZON-STAGE-DELTA-CENSUS-0 (RESULTS L66337).
+
+- `stage_of(tag)`
+- `cos(a, b)`
+- `rope_override(cfg, mode, yarn)`
+- `load_cell(path, mode, yarn)`
+- `part_a(rec, anc, items, t0)`
+- `fetch(tag, pin, rec)` — Cached tags come from the default cache; others go to a per-tag
+- `load_bf16(path)`
+- `part_b(rec, pins, t0)`
+- `main()`
+
+### scratch/k2h_residuesverify.py
+Independent verifier for K2-HORIZON-RESIDUES-0. Re-reads factorial_rows.jsonl and autocorr_rows.jsonl and recomputes every gate count and digest, every main effect and interaction, the reproduction gate against the locked L66337 receipt, every per-delta lag aggregate (median cosine, fraction negative) from the per-tensor rows, the stage aggregates and the three B bars; pins the instrument and the imported frozen census module against the receipt's start provenance; refuses to overwrite its receipt. Coarse-spacing cosines and whole-model cosines are weight-level primitives with no row stream and are checked for presence and sign-consistency only.
+
+- `chk(c, m)`
+- `sha(p)`
+- `main()`
+
 ### scratch/k2h_stagecensus.py
 K2-HORIZON-STAGE-DELTA-CENSUS-0 instrument (prereg in docs/RESULTS.md): the TRAINING-STAGE / CHECKPOINT-LIFECYCLE census of IFM/K2-Horizon-0.9B. Zero training. For every pair in the frozen ancestry pin (docs/preregs/k2h-stagecensus-0.ancestry.json) it downloads both tags, computes per-tensor weight-delta statistics (normalized Frobenius delta, stable rank before/after, entropy effective rank of the delta, IPR of the delta's top singular vectors, a descriptive Hill alpha of the after-tensor, cosine alignment of consecutive deltas), aggregates them into per-layer and per-module share profiles, and scores every tag on a raw-completion 120-item sympy-verified mathgen gate (one prompt format for all tags, three fixed few-shot seeds, greedy). The rl-mopd_final -> main pair is the registered NO-OP precondition (documented weights unchanged): bit-identical tensors and identical gate token ids, or every reading books behind a failed precondition.
 
