@@ -48,6 +48,17 @@ def main():
         raise SystemExit(D[-1])
     inst = json.load(open(OUTDIR / "decisionatlas_receipt.json"))
     chk(inst.get("smoke") is False and inst["prereg"] == "MATH-CYBER-1-RENDER-ATLAS-DECISION-ATLAS-0", "instrument receipt identity")
+    # instrument source v its own start provenance; every file the verifier reads v the
+    # instrument's entry pins; the morphology files (B8's input) v the receipt lock
+    src_sha = hashlib.sha256(open("scratch/mathworld1_decisionatlas.py", "rb").read()).hexdigest()
+    chk(src_sha == inst["start"]["file_sha256"]["scratch/mathworld1_decisionatlas.py"], "instrument source sha v receipt")
+    for pth, h in inst["pins"].items():
+        chk(hashlib.sha256(open(pth, "rb").read()).hexdigest() == h, f"pin drift {pth}")
+    lock = json.load(open("docs/receipts.lock.json"))["receipts"]
+    for pth in ("logs/mathworld1/morphology/DISCOVERY.json", "logs/mathworld1/morphology/FRESH.json"):
+        chk(hashlib.sha256(open(pth, "rb").read()).hexdigest() == lock[pth]["sha256"], f"morphology file v receipt lock {pth}")
+    if D:
+        raise SystemExit(D[-1])
     man = [json.loads(l) for l in open("logs/mathworld1/prband2atlas/atlas_manifest.jsonl")]
     roles = {m["atlas_index"]: tuple(m["roles"]) for m in man}
     adj = {i: [] for i in range(720)}
@@ -206,6 +217,8 @@ def main():
            "discrepancies": D[:40], "n_discrepancies": len(D), "inputs": inputs,
            "instrument_receipt_sha256": hashlib.sha256((OUTDIR / "decisionatlas_receipt.json").read_bytes()).hexdigest(),
            "commit": subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip(),
+           "status_porcelain": subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True).stdout,
+           "instrument_source_sha256": src_sha,
            "verifier_sha256": hashlib.sha256(open(__file__, "rb").read()).hexdigest()}
     (OUTDIR / "verify_receipt.json").write_text(json.dumps(rec, indent=1))
     print(json.dumps(rec, indent=1)[:1500])
