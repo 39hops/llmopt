@@ -2809,6 +2809,24 @@ MATH-CYBER-1 CYCLE-ESCAPE-DESK-0 (PRE-REG booked at edef875c). CYCLE-ESCAPE cont
 - `recorded_hashes(eid, stage)`
 - `main()`
 
+### scratch/mathworld1_decisionatlas.py
+MATH-CYBER-1-RENDER-ATLAS-DECISION-ATLAS-0 — bank J of L65753 (prereg RESULTS L66047): the state-level decision-boundary atlas of the twelve booked render atlases, read from the untracked sha-anchored chunk streams. For every checkpoint, renderer and frozen state the top action (strict top-1 over the four candidate total-sums, exact tie = TIE) is recovered, gated against the verifier-checked policy tables (T and top_census, 720 / 720), and analysed on the Cayley graph: per-state boundary edges, render-invariant states, correct-set components, SIN_LOW v COS_LOW anatomy, per-edge flip counts, pair-partner co-flip Jaccard, anchor readouts. Streams are re-hashed at entry against the booked aggregates, opened read-only, never rewritten. No model, no logit; torch is never imported (the strict top-1 rule is a verbatim local copy of scratch/mathworld1_prband2score.top1_of, whose module imports torch; the copy is checked against that module's source text at entry).
+
+- `top1_of(scores)` — scores: dict sem->float. Returns (winner or None, tie flag,
+- `check_top1_identity()`
+- `sha_stream(p)`
+- `parse_stream(path, limit=None)` — Returns (states, sums, counts): states[s] = {pair_id, theta, gold};
+- `analyze_ck(ck, states, sums, adj, edges, pol_rows, anchors, smoke=False)`
+- `main()`
+
+### scratch/mathworld1_decisionatlasverify.py
+Independent verifier for MATH-CYBER-1-RENDER-ATLAS-DECISION-ATLAS-0 (prereg RESULTS L66047). Shares no code with scratch/mathworld1_decisionatlas.py: re-hashes the twelve streams, parses them with its own loop and its own strict top-1 (exact float ties = TIE), rebuilds the Cayley graph by inversion distance, recounts per-state boundary edges, invariant states, correct-set components (own DFS), wrong-action census, per-edge flip counts and histogram, zero-flip fraction, theta medians, pair-partner and non-partner Jaccard medians, anchor action strings, and the policy-table T / B / top_census gates, then compares every quantity with the instrument's JSON. Refuses to overwrite its receipt. Writes logs/mathworld1/decisionatlas/verify_receipt.json.
+
+- `chk(c, m)`
+- `inv_dist(p, q)`
+- `med(v)`
+- `main()`
+
 ### scratch/mathworld1_execbench.py
 MATH-CYBER-1 execution pricing under REAL K/length profiles (outside-review ask after SCOREQAL-0: the accepted path is full teacher-forced scoring; SCOREQAL's "full" bench was SERIAL B=1 repeated K times — batching was never priced). RANDOM-WEIGHT mechanics only, no capability claims.
 

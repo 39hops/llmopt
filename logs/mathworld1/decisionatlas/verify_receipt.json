@@ -1,0 +1,15 @@
+{
+ "prereg": "MATH-CYBER-1-RENDER-ATLAS-DECISION-ATLAS-0",
+ "verdict": "VERIFIED",
+ "discrepancies": [],
+ "n_discrepancies": 0,
+ "inputs": {
+  "DISCOVERY": "38c63f095a07d5c32f4ed5bf487a4e42b48d2c67aa5cb1207f55a0bdabae025e",
+  "FRESH": "9b5f48df7ce44ba0a7c4ade6a8fea9fe90afe9c2a91a5f41a516f8141169f6c1"
+ },
+ "instrument_receipt_sha256": "31c5f00d4e35e0d708100cc9644f35a6ad60a2910f286867fdb43b9903c4545c",
+ "commit": "5e77c4e3",
+ "status_porcelain": " M docs/results-index.jsonl\n M scripts/INDEX.md\n",
+ "instrument_source_sha256": "537a0cd34a1adec6cb24e61975ae39dbfc317ce484a2e2871a4002aa425322e4",
+ "verifier_sha256": "2506318e7447965ec86b31c4ed2682d8872a7b98e5d349110532e61b232a58b3"
+}

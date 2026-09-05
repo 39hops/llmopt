@@ -837,6 +837,34 @@
    "source": "results",
    "tracked": false
   },
+  "logs/mathworld1/decisionatlas/DISCOVERY.json": {
+   "bytes": 522277,
+   "exists": true,
+   "sha256": "38c63f095a07d5c32f4ed5bf487a4e42b48d2c67aa5cb1207f55a0bdabae025e",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/decisionatlas/FRESH.json": {
+   "bytes": 1040713,
+   "exists": true,
+   "sha256": "9b5f48df7ce44ba0a7c4ade6a8fea9fe90afe9c2a91a5f41a516f8141169f6c1",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/decisionatlas/decisionatlas_receipt.json": {
+   "bytes": 12962,
+   "exists": true,
+   "sha256": "31c5f00d4e35e0d708100cc9644f35a6ad60a2910f286867fdb43b9903c4545c",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/decisionatlas/verify_receipt.json": {
+   "bytes": 687,
+   "exists": true,
+   "sha256": "2c9550e8290078832d8bd5fc7f776e0624793bd87f595c5655612e1528789114",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/execbench.json": {
    "bytes": 1251,
    "exists": true,

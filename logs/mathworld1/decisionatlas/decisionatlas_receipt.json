@@ -1,0 +1,440 @@
+{
+ "prereg": "MATH-CYBER-1-RENDER-ATLAS-DECISION-ATLAS-0",
+ "smoke": false,
+ "pins": {
+  "logs/mathworld1/prband2atlas/atlas_manifest.jsonl": "687b5e54e0da19bf057431eb4d44b755302c1963d18e13fb6d316fa99dd2f4b2",
+  "logs/mathworld1/prband2atlas/atlas_policies.jsonl": "b4a1c08308ca429d4bd7eb01210dfe469cd11eb9c9c527daf42997cec6d86c71",
+  "logs/mathworld1/prband2atlasscore/policy_table.jsonl": "73dba755a3089a42177ef00a91481e93c2114276938df92958509a8aeda2505e",
+  "logs/mathworld1/prband2atlasscore/aggregate.json": "8df318f742952740ce44c98d57fd8fb2f9632fa283d75f5c4808c4e158e66105",
+  "logs/mathworld1/prband2atlasfresh/policy_table.jsonl": "e42999947102112d03d0aa7529d79daf5896e0cc972ace8aa2acc41b6381d321",
+  "logs/mathworld1/prband2atlasfresh/aggregate.json": "c6d16e8c7b2c68b9d73e9e7e28eb2d6e0b354b3ee64e459ca66460ccad1fa443"
+ },
+ "streams": {
+  "19001|CANONICAL": {
+   "path": "logs/mathworld1/prband2atlasscore/chunk_19001_CANONICAL/scores.jsonl",
+   "sha256": "51fc16091c0a6ee8d6fb4c86bd92a2f2d1d54492e46433be173919f4ae14dd54"
+  },
+  "19001|PARAM_FIRST": {
+   "path": "logs/mathworld1/prband2atlasscore/chunk_19001_PARAM_FIRST/scores.jsonl",
+   "sha256": "70d2a2db77e2e8a2438e39d44453782433b47ff3d6c3053778bc7e4302235bf0"
+  },
+  "20001|CANONICAL": {
+   "path": "logs/mathworld1/prband2atlasscore/chunk_20001_CANONICAL/scores.jsonl",
+   "sha256": "418d06be1e0f1509021f206c06804e1b0ecc7e0808bbb38a4a0cf44030a3f263"
+  },
+  "20001|PARAM_FIRST": {
+   "path": "logs/mathworld1/prband2atlasscore/chunk_20001_PARAM_FIRST/scores.jsonl",
+   "sha256": "51206ce84cfde050e9a409c192a92c2384ccea39961d0f4d5edfca8e58f559aa"
+  },
+  "21001|CANONICAL": {
+   "path": "logs/mathworld1/prband2atlasfresh/chunk_21001_CANONICAL/scores.jsonl",
+   "sha256": "81256428062f26116d4c3c6919c15276584aae3db04efe4be3d1f040625e6364"
+  },
+  "21001|PARAM_FIRST": {
+   "path": "logs/mathworld1/prband2atlasfresh/chunk_21001_PARAM_FIRST/scores.jsonl",
+   "sha256": "fd1db8377255698372bb334f6dc51f9668ef62636672c58c5c8c35448ecd5aef"
+  },
+  "22001|CANONICAL": {
+   "path": "logs/mathworld1/prband2atlasfresh/chunk_22001_CANONICAL/scores.jsonl",
+   "sha256": "086e2ddf8d087c32ce67b24ade1301b62acdb372e0c4859f869f43863e801778"
+  },
+  "22001|PARAM_FIRST": {
+   "path": "logs/mathworld1/prband2atlasfresh/chunk_22001_PARAM_FIRST/scores.jsonl",
+   "sha256": "b0acd34b04e11422308fd6e1fa1f96db742ace5c74f9a0e4f85d05a940ad287b"
+  },
+  "23001|CANONICAL": {
+   "path": "logs/mathworld1/prband2atlasfresh/chunk_23001_CANONICAL/scores.jsonl",
+   "sha256": "458338485b134b978aa868b62b65f66ad7a0bdbafefcf0fdb9917e3cecb8085d"
+  },
+  "23001|PARAM_FIRST": {
+   "path": "logs/mathworld1/prband2atlasfresh/chunk_23001_PARAM_FIRST/scores.jsonl",
+   "sha256": "8591dad73b70b7975ece3bb898263a0a70a96662b88c0417f857b340597834ee"
+  },
+  "24001|CANONICAL": {
+   "path": "logs/mathworld1/prband2atlasfresh/chunk_24001_CANONICAL/scores.jsonl",
+   "sha256": "17dde1bd48b3126754243c54593382e6a5d57dffe191cf8e1d6184d17a0ba471"
+  },
+  "24001|PARAM_FIRST": {
+   "path": "logs/mathworld1/prband2atlasfresh/chunk_24001_PARAM_FIRST/scores.jsonl",
+   "sha256": "ae307f3114cb4f1742596b5a454fefb8185691d70a509eb29511229050e48bae"
+  }
+ },
+ "graph": {
+  "V": 720,
+  "E": 1800,
+  "degree": 5,
+  "diameter": 15
+ },
+ "cohorts": {
+  "DISCOVERY": {
+   "sha256": "38c63f095a07d5c32f4ed5bf487a4e42b48d2c67aa5cb1207f55a0bdabae025e",
+   "checkpoints": [
+    "19001|CANONICAL",
+    "19001|PARAM_FIRST",
+    "20001|CANONICAL",
+    "20001|PARAM_FIRST"
+   ],
+   "bars": {
+    "B1": {
+     "pass": true,
+     "note": "T, B and top_census reproduced 720 / 720 on every checkpoint (gates; the run halts otherwise)"
+    },
+    "B2": {
+     "n_invariant": {
+      "19001|CANONICAL": 0,
+      "19001|PARAM_FIRST": 0,
+      "20001|CANONICAL": 0,
+      "20001|PARAM_FIRST": 0
+     },
+     "fires": true
+    },
+    "B3": {
+     "mean_flip_fraction": {
+      "19001|CANONICAL": 0.18786458333333333,
+      "19001|PARAM_FIRST": 0.11348958333333332,
+      "20001|CANONICAL": 0.12865740740740741,
+      "20001|PARAM_FIRST": 0.09635416666666667
+     },
+     "fires": false
+    },
+    "B4": {
+     "median_boundary_SIN": {
+      "19001|CANONICAL": 0.19055555555555556,
+      "19001|PARAM_FIRST": 0.11416666666666667,
+      "20001|CANONICAL": 0.11805555555555555,
+      "20001|PARAM_FIRST": 0.0961111111111111
+     },
+     "median_boundary_COS": {
+      "19001|CANONICAL": 0.18805555555555556,
+      "19001|PARAM_FIRST": 0.11361111111111111,
+      "20001|CANONICAL": 0.14027777777777778,
+      "20001|PARAM_FIRST": 0.0961111111111111
+     },
+     "per_ck": {
+      "19001|CANONICAL": true,
+      "19001|PARAM_FIRST": true,
+      "20001|CANONICAL": false,
+      "20001|PARAM_FIRST": false
+     },
+     "fires": false
+    },
+    "B5": {
+     "top_wrong_SIN_COS": {
+      "19001|CANONICAL": [
+       "B",
+       "A"
+      ],
+      "19001|PARAM_FIRST": [
+       "B",
+       "A"
+      ],
+      "20001|CANONICAL": [
+       "B",
+       "A"
+      ],
+      "20001|PARAM_FIRST": [
+       "B",
+       "A"
+      ]
+     },
+     "per_ck": {
+      "19001|CANONICAL": true,
+      "19001|PARAM_FIRST": true,
+      "20001|CANONICAL": true,
+      "20001|PARAM_FIRST": true
+     },
+     "fires": true
+    },
+    "B6": {
+     "partner_v_non_partner_median": {
+      "19001|CANONICAL": [
+       0.1742815841176497,
+       0.23231414868105515
+      ],
+      "19001|PARAM_FIRST": [
+       0.13621883656509695,
+       0.18944688644688645
+      ],
+      "20001|CANONICAL": [
+       0.14073086530635157,
+       0.19247112660710394
+      ],
+      "20001|PARAM_FIRST": [
+       0.17897902962838028,
+       0.2108843537414966
+      ]
+     },
+     "per_ck": {
+      "19001|CANONICAL": false,
+      "19001|PARAM_FIRST": false,
+      "20001|CANONICAL": false,
+      "20001|PARAM_FIRST": false
+     },
+     "fires": false
+    },
+    "B7": {
+     "states_fragmented": {
+      "19001|CANONICAL": 51,
+      "19001|PARAM_FIRST": 48,
+      "20001|CANONICAL": 56,
+      "20001|PARAM_FIRST": 34
+     },
+     "fires": false
+    },
+    "B8": {
+     "zero_flip_fraction": {
+      "19001|CANONICAL": 0.38166666666666665,
+      "19001|PARAM_FIRST": 0.6127777777777778,
+      "20001|CANONICAL": 0.5494444444444444,
+      "20001|PARAM_FIRST": 0.685
+     },
+     "zero_deltaT_fraction": {
+      "19001|CANONICAL": 0.392778,
+      "19001|PARAM_FIRST": 0.615556,
+      "20001|CANONICAL": 0.556111,
+      "20001|PARAM_FIRST": 0.696111
+     },
+     "per_ck": {
+      "19001|CANONICAL": true,
+      "19001|PARAM_FIRST": true,
+      "20001|CANONICAL": true,
+      "20001|PARAM_FIRST": true
+     },
+     "fires": true
+    }
+   }
+  },
+  "FRESH": {
+   "sha256": "9b5f48df7ce44ba0a7c4ade6a8fea9fe90afe9c2a91a5f41a516f8141169f6c1",
+   "checkpoints": [
+    "21001|CANONICAL",
+    "21001|PARAM_FIRST",
+    "22001|CANONICAL",
+    "22001|PARAM_FIRST",
+    "23001|CANONICAL",
+    "23001|PARAM_FIRST",
+    "24001|CANONICAL",
+    "24001|PARAM_FIRST"
+   ],
+   "bars": {
+    "B1": {
+     "pass": true,
+     "note": "T, B and top_census reproduced 720 / 720 on every checkpoint (gates; the run halts otherwise)"
+    },
+    "B2": {
+     "n_invariant": {
+      "21001|CANONICAL": 0,
+      "21001|PARAM_FIRST": 0,
+      "22001|CANONICAL": 0,
+      "22001|PARAM_FIRST": 0,
+      "23001|CANONICAL": 0,
+      "23001|PARAM_FIRST": 0,
+      "24001|CANONICAL": 0,
+      "24001|PARAM_FIRST": 0
+     },
+     "fires": true
+    },
+    "B3": {
+     "mean_flip_fraction": {
+      "21001|CANONICAL": 0.24252893518518517,
+      "21001|PARAM_FIRST": 0.23235532407407408,
+      "22001|CANONICAL": 0.19321180555555553,
+      "22001|PARAM_FIRST": 0.14985532407407406,
+      "23001|CANONICAL": 0.08797453703703705,
+      "23001|PARAM_FIRST": 0.15324074074074073,
+      "24001|CANONICAL": 0.15540509259259258,
+      "24001|PARAM_FIRST": 0.0853587962962963
+     },
+     "fires": false
+    },
+    "B4": {
+     "median_boundary_SIN": {
+      "21001|CANONICAL": 0.2288888888888889,
+      "21001|PARAM_FIRST": 0.2494444444444444,
+      "22001|CANONICAL": 0.185,
+      "22001|PARAM_FIRST": 0.15222222222222223,
+      "23001|CANONICAL": 0.07555555555555556,
+      "23001|PARAM_FIRST": 0.14361111111111113,
+      "24001|CANONICAL": 0.1447222222222222,
+      "24001|PARAM_FIRST": 0.08222222222222222
+     },
+     "median_boundary_COS": {
+      "21001|CANONICAL": 0.25583333333333336,
+      "21001|PARAM_FIRST": 0.20750000000000002,
+      "22001|CANONICAL": 0.20861111111111114,
+      "22001|PARAM_FIRST": 0.14722222222222223,
+      "23001|CANONICAL": 0.09361111111111112,
+      "23001|PARAM_FIRST": 0.1636111111111111,
+      "24001|CANONICAL": 0.17138888888888887,
+      "24001|PARAM_FIRST": 0.09027777777777778
+     },
+     "per_ck": {
+      "21001|CANONICAL": false,
+      "21001|PARAM_FIRST": true,
+      "22001|CANONICAL": false,
+      "22001|PARAM_FIRST": true,
+      "23001|CANONICAL": false,
+      "23001|PARAM_FIRST": false,
+      "24001|CANONICAL": false,
+      "24001|PARAM_FIRST": false
+     },
+     "fires": false
+    },
+    "B5": {
+     "top_wrong_SIN_COS": {
+      "21001|CANONICAL": [
+       "B",
+       "A"
+      ],
+      "21001|PARAM_FIRST": [
+       "B",
+       "A"
+      ],
+      "22001|CANONICAL": [
+       "B",
+       "A"
+      ],
+      "22001|PARAM_FIRST": [
+       "B",
+       "A"
+      ],
+      "23001|CANONICAL": [
+       "B",
+       "A"
+      ],
+      "23001|PARAM_FIRST": [
+       "B",
+       "A"
+      ],
+      "24001|CANONICAL": [
+       "B",
+       "A"
+      ],
+      "24001|PARAM_FIRST": [
+       "B",
+       "A"
+      ]
+     },
+     "per_ck": {
+      "21001|CANONICAL": true,
+      "21001|PARAM_FIRST": true,
+      "22001|CANONICAL": true,
+      "22001|PARAM_FIRST": true,
+      "23001|CANONICAL": true,
+      "23001|PARAM_FIRST": true,
+      "24001|CANONICAL": true,
+      "24001|PARAM_FIRST": true
+     },
+     "fires": true
+    },
+    "B6": {
+     "partner_v_non_partner_median": {
+      "21001|CANONICAL": [
+       0.23725212464589235,
+       0.27207558760353406
+      ],
+      "21001|PARAM_FIRST": [
+       0.21089280914202438,
+       0.28958554436825346
+      ],
+      "22001|CANONICAL": [
+       0.19465574203779568,
+       0.21332239189382046
+      ],
+      "22001|PARAM_FIRST": [
+       0.23760376756066412,
+       0.3007310076802073
+      ],
+      "23001|CANONICAL": [
+       0.18164268164268166,
+       0.21252177700348432
+      ],
+      "23001|PARAM_FIRST": [
+       0.12513736263736264,
+       0.2356773350008527
+      ],
+      "24001|CANONICAL": [
+       0.14286140311637963,
+       0.19796121791212556
+      ],
+      "24001|PARAM_FIRST": [
+       0.24195121951219511,
+       0.3035072556066051
+      ]
+     },
+     "per_ck": {
+      "21001|CANONICAL": false,
+      "21001|PARAM_FIRST": false,
+      "22001|CANONICAL": false,
+      "22001|PARAM_FIRST": false,
+      "23001|CANONICAL": false,
+      "23001|PARAM_FIRST": false,
+      "24001|CANONICAL": false,
+      "24001|PARAM_FIRST": false
+     },
+     "fires": false
+    },
+    "B7": {
+     "states_fragmented": {
+      "21001|CANONICAL": 93,
+      "21001|PARAM_FIRST": 96,
+      "22001|CANONICAL": 90,
+      "22001|PARAM_FIRST": 62,
+      "23001|CANONICAL": 48,
+      "23001|PARAM_FIRST": 49,
+      "24001|CANONICAL": 73,
+      "24001|PARAM_FIRST": 5
+     },
+     "fires": false
+    },
+    "B8": {
+     "zero_flip_fraction": {
+      "21001|CANONICAL": 0.25833333333333336,
+      "21001|PARAM_FIRST": 0.2816666666666667,
+      "22001|CANONICAL": 0.2972222222222222,
+      "22001|PARAM_FIRST": 0.5555555555555556,
+      "23001|CANONICAL": 0.6972222222222222,
+      "23001|PARAM_FIRST": 0.4938888888888889,
+      "24001|CANONICAL": 0.43944444444444447,
+      "24001|PARAM_FIRST": 0.7177777777777777
+     },
+     "zero_deltaT_fraction": {
+      "21001|CANONICAL": 0.284444,
+      "21001|PARAM_FIRST": 0.3,
+      "22001|CANONICAL": 0.319444,
+      "22001|PARAM_FIRST": 0.561111,
+      "23001|CANONICAL": 0.699444,
+      "23001|PARAM_FIRST": 0.5,
+      "24001|CANONICAL": 0.443889,
+      "24001|PARAM_FIRST": 0.73
+     },
+     "per_ck": {
+      "21001|CANONICAL": true,
+      "21001|PARAM_FIRST": true,
+      "22001|CANONICAL": true,
+      "22001|PARAM_FIRST": true,
+      "23001|CANONICAL": true,
+      "23001|PARAM_FIRST": true,
+      "24001|CANONICAL": true,
+      "24001|PARAM_FIRST": true
+     },
+     "fires": true
+    }
+   }
+  }
+ },
+ "semantic_beyond_all_surface_identifiable": false,
+ "wall_s": 14.2,
+ "start": {
+  "start_commit": "5afcf45b",
+  "start_status_porcelain": " M docs/results-index.jsonl\n M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_decisionatlas.py": "537a0cd34a1adec6cb24e61975ae39dbfc317ce484a2e2871a4002aa425322e4",
+   "scratch/mathworld1_cayley.py": "cd655f5a86bedbddea2674c164878838d531dbb4d7e557ea0fca3b6e4a7a55bf",
+   "scratch/mathworld1_prband2score.py": "2d7f080dcea434cc85ee8c57361f27a32a807f0ab12f9088b9346134b31b0624",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "5afcf45b"
+}
