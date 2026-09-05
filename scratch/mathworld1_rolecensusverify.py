@@ -45,11 +45,21 @@ def main():
     chk(src_sha == inst["start"]["file_sha256"]["scratch/mathworld1_rolecensus.py"], "instrument source sha v receipt")
     for pth, h in inst["pins"].items():
         chk(hashlib.sha256(open(pth, "rb").read()).hexdigest() == h, f"pin drift {pth}")
+    chk(inst["start"]["start_commit"] == inst["completion_commit"], "instrument start v completion commit")
     if D:
         raise SystemExit(D[-1])
     man = [json.loads(l) for l in open("logs/mathworld1/prband2atlas/atlas_manifest.jsonl")]
     roles = {m["atlas_index"]: tuple(m["roles"]) for m in man}
     pos = {i: {r: roles[i].index(r) for r in ROLES} for i in roles}
+    # B1's second half, recomputed: the minus sign sits at HI_D under SIN_LOW and at LO_D under COS_LOW
+    n_neg = 0
+    for row in map(json.loads, open("logs/mathworld1/prband2atlas/atlas_policies.jsonl")):
+        mp = row["ceilings"]["minus_pos"]["values"]
+        sin = [int(k) for k, v in mp.items() if "SIN_LOW" in v]
+        cos = [int(k) for k, v in mp.items() if "COS_LOW" in v]
+        n_neg += (sin == [pos[row["atlas_index"]]["HI_D"]] and cos == [pos[row["atlas_index"]]["LO_D"]])
+    chk(n_neg == 720, f"negative-bearing role identity {n_neg} / 720")
+    chk(all(sum(pos[i][r] == p for i in roles) == 120 for r in ROLES for p in range(6)), "120 per cell")
     probe_edges = [(i, j) for i in range(720) for j in range(720)
                    if pos[i]["W"] == 0 and pos[j]["W"] == 1 and inv_dist(roles[i], roles[j]) == 1]
     chk(len(probe_edges) == 120, "probe edges")
@@ -126,6 +136,8 @@ def main():
     rec = {"prereg": "MATH-CYBER-1-RENDER-ATLAS-ROLE-CENSUS-0", "verdict": "VERIFIED" if not D else "DISCREPANCIES",
            "discrepancies": D[:40], "n_discrepancies": len(D), "inputs": inputs, "instrument_source_sha256": src_sha,
            "instrument_receipt_sha256": hashlib.sha256((OUTDIR / "rolecensus_receipt.json").read_bytes()).hexdigest(),
+           "B1_recomputed": {"negative_bearing_role_identity": n_neg, "cells_of_120": 36},
+           "instrument_run_commit": inst["start"]["start_commit"],
            "commit": subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip(),
            "status_porcelain": subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True).stdout,
            "verifier_sha256": hashlib.sha256(open(__file__, "rb").read()).hexdigest()}
