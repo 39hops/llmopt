@@ -57,7 +57,7 @@ def main():
     idx = {v: k for k, v in roles.items()}
     edges = sorted({(min(i, idx[tuple(roles[i][:k] + (roles[i][k + 1], roles[i][k]) + roles[i][k + 2:])]),
                      max(i, idx[tuple(roles[i][:k] + (roles[i][k + 1], roles[i][k]) + roles[i][k + 2:])])) for i in roles for k in range(5)})
-    chk(len(edges) == 1800, "edges")
+    chk(len(edges) == 1800 and inst["graph_edges"] == 1800, "edges")
     inputs = {}
     for cohort in ("DISCOVERY", "FRESH"):
         res = json.load(open(OUTDIR / f"{cohort}.json"))
@@ -164,8 +164,13 @@ def main():
             wf += all(t >= 0 for t in ds) and any(t > 0 for t in ds)
             wr += all(t <= 0 for t in ds) and any(t < 0 for t in ds)
         chk(res["agreement"]["bank_D_all_edges"] == {"strict_all": sa, "weak_all_forward": wf, "weak_all_reverse": wr}, f"{cohort} bank D")
-        if cohort == "DISCOVERY":
-            chk((sa, wf, wr) == (3, 256, 477), "bank D v L65907")
+        chk((sa, wf, wr) == ({"DISCOVERY": (3, 256, 477), "FRESH": (0, 327, 412)}[cohort]), f"{cohort} bank D v L65907")
+        # anchors: no anchor may sit on a direct HI_D<->W edge unless the instrument says so
+        for name, a in res["anchors"].items():
+            hit = [{"r": r, "r_prime": rp, "anchor_is_W_first": a == r, "dB": X[cks[0]]["B"][rp] - X[cks[0]]["B"][r]} for r, rp in direct if a in (r, rp)]
+            for ck in cks:
+                got = res["checkpoint"][ck]["anchor_edges"][name]
+                chk(len(got) == len(hit) and all(g["r"] == h["r"] and g["r_prime"] == h["r_prime"] and g["dB"] == X[ck]["B"][h["r_prime"]] - X[ck]["B"][h["r"]] for g, h in zip(got, hit)), f"{ck} anchor edges {name}")
         b = res["bars"]
         chk(b["a"]["fires"] == all(res["checkpoint"][ck]["pairs"]["HI_D<W"]["B"]["direct_mean"] >= res["checkpoint"][ck]["pairs"]["HI_D<W"]["B"]["non_adjacent_mean"] for ck in cks), f"{cohort} bar a")
         chk(b["b"]["fires"] == all(res["checkpoint"][ck]["pairs"]["HI_D<W"]["B"]["direct_sign"]["positive"] + res["checkpoint"][ck]["pairs"]["HI_D<W"]["B"]["direct_sign"]["zero"] >= 100 and res["checkpoint"][ck]["pairs"]["HI_D<W"]["B"]["direct_sign"]["positive"] >= 60 for ck in cks), f"{cohort} bar b")
