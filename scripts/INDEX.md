@@ -2497,6 +2497,44 @@ Judge-collapsed decoding (spec 2026-07-28 rung 4, pre-reg 2026-07-28). Three arm
 - `greedy_step(prefix, spend, branch=False)` — Greedy decode one Step line. branch=True: at the FIRST
 - `run_chain(cur0, arm, seed0)`
 
+### scratch/k2h_stagecensus.py
+K2-HORIZON-STAGE-DELTA-CENSUS-0 instrument (prereg in docs/RESULTS.md): the TRAINING-STAGE / CHECKPOINT-LIFECYCLE census of IFM/K2-Horizon-0.9B. Zero training. For every pair in the frozen ancestry pin (docs/preregs/k2h-stagecensus-0.ancestry.json) it downloads both tags, computes per-tensor weight-delta statistics (normalized Frobenius delta, stable rank before/after, entropy effective rank of the delta, IPR of the delta's top singular vectors, a descriptive Hill alpha of the after-tensor, cosine alignment of consecutive deltas), aggregates them into per-layer and per-module share profiles, and scores every tag on a raw-completion 120-item sympy-verified mathgen gate (one prompt format for all tags, three fixed few-shot seeds, greedy). The rl-mopd_final -> main pair is the registered NO-OP precondition (documented weights unchanged): bit-identical tensors and identical gate token ids, or every reading books behind a failed precondition.
+
+- `sha_file(p)`
+- `_item(fam, tier, rng)`
+- `make_items()`
+- `make_shots(seed, exclude)` — Fixed few-shot block per seed: N_SHOTS worked examples per family
+- `render(shots, item)`
+- `parse_answer(text)`
+- `_check_worker(conn, ans, truth)`
+- `check_boxed(ans, truth, counters)` — Fork-isolated sympy equivalence (never SIGALRM); timeout = reject.
+- `download(tag, pin)`
+- `load_weights(path)`
+- `module_class(name)`
+- `layer_of(name)`
+- `entropy_effrank(s)`
+- `hill_alpha(s)`
+- `ipr(vecs)`
+- `tensor_row(name, A, B, prev_d)`
+- `aggregate(rows, n_layers)`
+- `rankdata(x)`
+- `spearman(a, b)`
+- `load_model(path, force_no_yarn=False)`
+- `run_gate(model, tok, dev, items, seed, tag, rows_f, counters, extra)`
+- `main()`
+
+### scratch/k2h_stagecensusverify.py
+Independent verifier for K2-HORIZON-STAGE-DELTA-CENSUS-0. Shares no aggregation code with scratch/k2h_stagecensus.py: re-reads census.jsonl and gate_rows.jsonl, recomputes every per-pair aggregate (total relative delta, layer profile, depth centroid, class shares, identical counts), every profile Spearman, every gate count and generation digest, the NO-OP precondition and the three bars; re-scores a fixed subset of gate answers with its own fork-boxed sympy check; pins the instrument source against its start provenance and the ancestry pin; refuses to overwrite its receipt.
+
+- `chk(c, m)`
+- `sha(p)`
+- `rank(x)`
+- `spear(a, b)`
+- `_w(conn, ans, truth)`
+- `boxed(ans, truth)`
+- `main()`
+- `finish(rec, rows, g, sub, src)`
+
 ### scratch/k3_expert_demo.py
 K3-D1: the Kimi-K3 single-expert deterministic demo.
 
