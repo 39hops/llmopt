@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 230, library 74, reproduce-pinned 10, results-cited 399, spec-cited 89, cited-but-library 62
+Census: UNCITED 230, library 74, reproduce-pinned 10, results-cited 401, spec-cited 89, cited-but-library 62
 
 ## scratch/
 
@@ -267,7 +267,7 @@ Census: UNCITED 230, library 74, reproduce-pinned 10, results-cited 399, spec-ci
 | mathworld1 | mathworld1_autopsy.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_axfixture.py | results-cited | RESULTS | RESULTS×2 | — | 7 |
 | mathworld1 | mathworld1_birth.py | results-cited | RESULTS | RESULTS×2 | — | 37 |
-| mathworld1 | mathworld1_cayley.py | library | RESULTS | RESULTS×9 | 3 | — |
+| mathworld1 | mathworld1_cayley.py | library | RESULTS | RESULTS×12 | 4 | — |
 | mathworld1 | mathworld1_cayleyverify.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | mathworld1 | mathworld1_census.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_cl1cost.py | results-cited | RESULTS | RESULTS×1 | — | — |
@@ -378,6 +378,8 @@ Census: UNCITED 230, library 74, reproduce-pinned 10, results-cited 399, spec-ci
 | mathworld1 | mathworld1_svptokdesk.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_svptokonset.py | results-cited | RESULTS | RESULTS×1 | — | 2 |
 | mathworld1 | mathworld1_terminal.py | UNCITED | — | — | — | — |
+| mathworld1 | mathworld1_transposition.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
+| mathworld1 | mathworld1_transpositionverify.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | mathworld1 | mathworld1_unprod_probe.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_unprodsem.py | results-cited | RESULTS | RESULTS×2 | — | 15 |
 | mathworld1 | mathworld1_yield.py | UNCITED | — | — | — | — |

@@ -1,0 +1,390 @@
+{
+ "prereg": "MATH-CYBER-1-RENDER-ATLAS-TRANSPOSITION-RESPONSE-0",
+ "smoke": false,
+ "pins": {
+  "logs/mathworld1/prband2atlas/atlas_manifest.jsonl": "687b5e54e0da19bf057431eb4d44b755302c1963d18e13fb6d316fa99dd2f4b2",
+  "logs/mathworld1/prband2atlas/atlas_policies.jsonl": "b4a1c08308ca429d4bd7eb01210dfe469cd11eb9c9c527daf42997cec6d86c71",
+  "logs/mathworld1/prband2atlasscore/policy_table.jsonl": "73dba755a3089a42177ef00a91481e93c2114276938df92958509a8aeda2505e",
+  "logs/mathworld1/prband2atlasscore/aggregate.json": "8df318f742952740ce44c98d57fd8fb2f9632fa283d75f5c4808c4e158e66105",
+  "logs/mathworld1/prband2atlasfresh/policy_table.jsonl": "e42999947102112d03d0aa7529d79daf5896e0cc972ace8aa2acc41b6381d321",
+  "logs/mathworld1/prband2atlasfresh/aggregate.json": "c6d16e8c7b2c68b9d73e9e7e28eb2d6e0b354b3ee64e459ca66460ccad1fa443"
+ },
+ "decision_atlas": {
+  "logs/mathworld1/decisionatlas/DISCOVERY.json": "38c63f095a07d5c32f4ed5bf487a4e42b48d2c67aa5cb1207f55a0bdabae025e",
+  "logs/mathworld1/decisionatlas/FRESH.json": "9b5f48df7ce44ba0a7c4ade6a8fea9fe90afe9c2a91a5f41a516f8141169f6c1"
+ },
+ "graph_edges": 1800,
+ "cohorts": {
+  "DISCOVERY": {
+   "sha256": "3bb4468398a2aec5bd5f8f341f9e71aa6b333e1ec379668233670bec46a44b19",
+   "checkpoints": [
+    "19001|CANONICAL",
+    "19001|PARAM_FIRST",
+    "20001|CANONICAL",
+    "20001|PARAM_FIRST"
+   ],
+   "bars": {
+    "B0": {
+     "pass": true,
+     "identity_pairs": 15,
+     "bank_D": {
+      "strict_all": 3,
+      "weak_all_forward": 256,
+      "weak_all_reverse": 477
+     }
+    },
+    "a": {
+     "direct_v_non": {
+      "19001|CANONICAL": [
+       5.375,
+       8.141666666666667
+      ],
+      "19001|PARAM_FIRST": [
+       3.925,
+       16.479166666666668
+      ],
+      "20001|CANONICAL": [
+       10.391666666666667,
+       20.15
+      ],
+      "20001|PARAM_FIRST": [
+       0.8416666666666667,
+       8.041666666666666
+      ]
+     },
+     "per_ck": {
+      "19001|CANONICAL": false,
+      "19001|PARAM_FIRST": false,
+      "20001|CANONICAL": false,
+      "20001|PARAM_FIRST": false
+     },
+     "fires": false
+    },
+    "b": {
+     "sign": {
+      "19001|CANONICAL": {
+       "positive": 41,
+       "zero": 67,
+       "negative": 12
+      },
+      "19001|PARAM_FIRST": {
+       "positive": 24,
+       "zero": 93,
+       "negative": 3
+      },
+      "20001|CANONICAL": {
+       "positive": 37,
+       "zero": 71,
+       "negative": 12
+      },
+      "20001|PARAM_FIRST": {
+       "positive": 12,
+       "zero": 104,
+       "negative": 4
+      }
+     },
+     "per_ck": {
+      "19001|CANONICAL": false,
+      "19001|PARAM_FIRST": false,
+      "20001|CANONICAL": false,
+      "20001|PARAM_FIRST": false
+     },
+     "fires": false
+    },
+    "c": {
+     "best_slot": {
+      "19001|CANONICAL": 1,
+      "19001|PARAM_FIRST": 3,
+      "20001|CANONICAL": 0,
+      "20001|PARAM_FIRST": 3
+     },
+     "per_ck": {
+      "19001|CANONICAL": false,
+      "19001|PARAM_FIRST": false,
+      "20001|CANONICAL": false,
+      "20001|PARAM_FIRST": false
+     },
+     "fires": false
+    },
+    "d": {
+     "sin_only_cos_only_both": {
+      "19001|CANONICAL": [
+       46,
+       755,
+       150
+      ],
+      "19001|PARAM_FIRST": [
+       7,
+       478,
+       34
+      ],
+      "20001|CANONICAL": [
+       15,
+       1446,
+       24
+      ],
+      "20001|PARAM_FIRST": [
+       7,
+       132,
+       24
+      ]
+     },
+     "per_ck": {
+      "19001|CANONICAL": false,
+      "19001|PARAM_FIRST": false,
+      "20001|CANONICAL": false,
+      "20001|PARAM_FIRST": false
+     },
+     "fires": false
+    }
+   },
+   "agreement": {
+    "direct_HI_D_W": {
+     "all_non_negative_one_positive": 77,
+     "all_zero": 16,
+     "all_non_positive": 20,
+     "mixed": 7
+    },
+    "bank_D_all_edges": {
+     "strict_all": 3,
+     "weak_all_forward": 256,
+     "weak_all_reverse": 477
+    },
+    "HI_D_W_direct_strict_all": 0
+   }
+  },
+  "FRESH": {
+   "sha256": "448cd0c60764ba9665b2c37c6110ba237ea2a99beec0aabf1d84fa58c67e99d4",
+   "checkpoints": [
+    "21001|CANONICAL",
+    "21001|PARAM_FIRST",
+    "22001|CANONICAL",
+    "22001|PARAM_FIRST",
+    "23001|CANONICAL",
+    "23001|PARAM_FIRST",
+    "24001|CANONICAL",
+    "24001|PARAM_FIRST"
+   ],
+   "bars": {
+    "B0": {
+     "pass": true,
+     "identity_pairs": 15,
+     "bank_D": {
+      "strict_all": 0,
+      "weak_all_forward": 327,
+      "weak_all_reverse": 412
+     }
+    },
+    "a": {
+     "direct_v_non": {
+      "21001|CANONICAL": [
+       2.1,
+       1.6041666666666667
+      ],
+      "21001|PARAM_FIRST": [
+       -0.13333333333333333,
+       0.9
+      ],
+      "22001|CANONICAL": [
+       3.1166666666666667,
+       12.1875
+      ],
+      "22001|PARAM_FIRST": [
+       3.5166666666666666,
+       4.020833333333333
+      ],
+      "23001|CANONICAL": [
+       3.6333333333333333,
+       4.341666666666667
+      ],
+      "23001|PARAM_FIRST": [
+       8.958333333333334,
+       15.425
+      ],
+      "24001|CANONICAL": [
+       2.683333333333333,
+       14.95
+      ],
+      "24001|PARAM_FIRST": [
+       0.75,
+       9.995833333333334
+      ]
+     },
+     "per_ck": {
+      "21001|CANONICAL": true,
+      "21001|PARAM_FIRST": false,
+      "22001|CANONICAL": false,
+      "22001|PARAM_FIRST": false,
+      "23001|CANONICAL": false,
+      "23001|PARAM_FIRST": false,
+      "24001|CANONICAL": false,
+      "24001|PARAM_FIRST": false
+     },
+     "fires": false
+    },
+    "b": {
+     "sign": {
+      "21001|CANONICAL": {
+       "positive": 35,
+       "zero": 66,
+       "negative": 19
+      },
+      "21001|PARAM_FIRST": {
+       "positive": 17,
+       "zero": 89,
+       "negative": 14
+      },
+      "22001|CANONICAL": {
+       "positive": 28,
+       "zero": 75,
+       "negative": 17
+      },
+      "22001|PARAM_FIRST": {
+       "positive": 24,
+       "zero": 91,
+       "negative": 5
+      },
+      "23001|CANONICAL": {
+       "positive": 21,
+       "zero": 98,
+       "negative": 1
+      },
+      "23001|PARAM_FIRST": {
+       "positive": 39,
+       "zero": 78,
+       "negative": 3
+      },
+      "24001|CANONICAL": {
+       "positive": 25,
+       "zero": 88,
+       "negative": 7
+      },
+      "24001|PARAM_FIRST": {
+       "positive": 7,
+       "zero": 109,
+       "negative": 4
+      }
+     },
+     "per_ck": {
+      "21001|CANONICAL": false,
+      "21001|PARAM_FIRST": false,
+      "22001|CANONICAL": false,
+      "22001|PARAM_FIRST": false,
+      "23001|CANONICAL": false,
+      "23001|PARAM_FIRST": false,
+      "24001|CANONICAL": false,
+      "24001|PARAM_FIRST": false
+     },
+     "fires": false
+    },
+    "c": {
+     "best_slot": {
+      "21001|CANONICAL": 4,
+      "21001|PARAM_FIRST": 2,
+      "22001|CANONICAL": 0,
+      "22001|PARAM_FIRST": 2,
+      "23001|CANONICAL": 4,
+      "23001|PARAM_FIRST": 0,
+      "24001|CANONICAL": 2,
+      "24001|PARAM_FIRST": 4
+     },
+     "per_ck": {
+      "21001|CANONICAL": true,
+      "21001|PARAM_FIRST": false,
+      "22001|CANONICAL": false,
+      "22001|PARAM_FIRST": false,
+      "23001|CANONICAL": true,
+      "23001|PARAM_FIRST": false,
+      "24001|CANONICAL": false,
+      "24001|PARAM_FIRST": true
+     },
+     "fires": false
+    },
+    "d": {
+     "sin_only_cos_only_both": {
+      "21001|CANONICAL": [
+       671,
+       335,
+       38
+      ],
+      "21001|PARAM_FIRST": [
+       150,
+       173,
+       95
+      ],
+      "22001|CANONICAL": [
+       357,
+       596,
+       19
+      ],
+      "22001|PARAM_FIRST": [
+       158,
+       365,
+       5
+      ],
+      "23001|CANONICAL": [
+       25,
+       557,
+       0
+      ],
+      "23001|PARAM_FIRST": [
+       28,
+       1094,
+       11
+      ],
+      "24001|CANONICAL": [
+       131,
+       375,
+       16
+      ],
+      "24001|PARAM_FIRST": [
+       20,
+       104,
+       4
+      ]
+     },
+     "per_ck": {
+      "21001|CANONICAL": true,
+      "21001|PARAM_FIRST": false,
+      "22001|CANONICAL": false,
+      "22001|PARAM_FIRST": false,
+      "23001|CANONICAL": false,
+      "23001|PARAM_FIRST": false,
+      "24001|CANONICAL": false,
+      "24001|PARAM_FIRST": false
+     },
+     "fires": false
+    }
+   },
+   "agreement": {
+    "direct_HI_D_W": {
+     "all_zero": 13,
+     "all_non_negative_one_positive": 61,
+     "mixed": 37,
+     "all_non_positive": 9
+    },
+    "bank_D_all_edges": {
+     "strict_all": 0,
+     "weak_all_forward": 327,
+     "weak_all_reverse": 412
+    },
+    "HI_D_W_direct_strict_all": 0
+   }
+  }
+ },
+ "semantic_beyond_all_surface_identifiable": false,
+ "wall_s": 0.4,
+ "start": {
+  "start_commit": "2bedfc46",
+  "start_status_porcelain": " M docs/results-index.jsonl\n M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_transposition.py": "460ccd9e63c62f1620aee34e6ebe6b8e880c617935691ecff1907645146a4969",
+   "scratch/mathworld1_cayley.py": "cd655f5a86bedbddea2674c164878838d531dbb4d7e557ea0fca3b6e4a7a55bf",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1",
+   "logs/mathworld1/decisionatlas/DISCOVERY.json": "38c63f095a07d5c32f4ed5bf487a4e42b48d2c67aa5cb1207f55a0bdabae025e",
+   "logs/mathworld1/decisionatlas/FRESH.json": "9b5f48df7ce44ba0a7c4ade6a8fea9fe90afe9c2a91a5f41a516f8141169f6c1"
+  }
+ },
+ "completion_commit": "2bedfc46"
+}

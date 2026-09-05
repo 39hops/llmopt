@@ -2160,6 +2160,34 @@
    "source": "results",
    "tracked": false
   },
+  "logs/mathworld1/transposition/DISCOVERY.json": {
+   "bytes": 428711,
+   "exists": true,
+   "sha256": "3bb4468398a2aec5bd5f8f341f9e71aa6b333e1ec379668233670bec46a44b19",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/transposition/FRESH.json": {
+   "bytes": 860335,
+   "exists": true,
+   "sha256": "448cd0c60764ba9665b2c37c6110ba237ea2a99beec0aabf1d84fa58c67e99d4",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/transposition/transposition_receipt.json": {
+   "bytes": 9201,
+   "exists": true,
+   "sha256": "b1a0f0248439d4c23a88bfbf7630ce7dcfcb339c52ad220f8409de3d6eed4b8e",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/transposition/verify_receipt.json": {
+   "bytes": 733,
+   "exists": true,
+   "sha256": "470add8e0b940ff94771256d9728e9b9f6a801eac987f8e04af4d81e65b9bd8f",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/unprodsem_desk.json": {
    "bytes": 936,
    "exists": true,

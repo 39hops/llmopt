@@ -3783,6 +3783,21 @@ MATH-CYBER-1 TERMINAL-DOMINANCE-0 terminal-miss census (PRE-REG MATH-CYBER-1-TER
 - `census_episode(eid, band, root, rec, outcome, world, scorer, sink, tamper_step=None)` — Replay + terminal census. Returns episode summary.
 - `main()`
 
+### scratch/mathworld1_transposition.py
+MATH-CYBER-1-RENDER-ATLAS-TRANSPOSITION-RESPONSE-0 — bank L (prereg RESULTS L66175; design L66150): matched transposition response of the twelve booked render atlases. For every unordered role pair the 360 matched in-place swaps (other four roles fixed) decompose the bank-G precedence effect exactly into 120 direct adjacent transpositions (Cayley edges) and 240 non-adjacent swaps; the instrument gates that identity, then reports direct v non-adjacent means, sign counts, slot / context / gap dependence, the state-level flip anatomy of the direct HI_D<->W edges from the booked decision matrices, and per-edge checkpoint agreement with the bank-D counts of L65907 reproduced as a gate. Discovery and fresh cohorts separately, never pooled. Graph builder, gates and pins imported from the frozen scratch/mathworld1_cayley.py. No model, no logit; torch is never imported.
+
+- `mean(v)`
+- `matched(roles, idx, X, Y)` — All 360 matched swaps in the orientation 'X before Y': list of
+- `analyze_ck(ck, x, roles, idx, edges, da, anchors)`
+- `main()`
+
+### scratch/mathworld1_transpositionverify.py
+Independent verifier for MATH-CYBER-1-RENDER-ATLAS-TRANSPOSITION-RESPONSE-0 (prereg RESULTS L66175). Shares no code with scratch/mathworld1_transposition.py: own manifest read, own matched-swap construction (swap the two roles in place), own identity check against a directly computed precedence effect, own direct / non-adjacent / slot / gap means and sign counts, own decision-matrix flip and pair-status anatomy, own checkpoint agreement and bank-D counts, own bar recomputation; instrument source checked against its start provenance, inputs against the instrument's entry pins and the receipt lock; refuses to overwrite its receipt.
+
+- `chk(c, m)`
+- `sha(p)`
+- `main()`
+
 ### scratch/mathworld1_unprod_probe.py
 *(no docstring)*
 

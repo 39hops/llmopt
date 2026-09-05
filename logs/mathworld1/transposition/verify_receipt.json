@@ -1,0 +1,16 @@
+{
+ "prereg": "MATH-CYBER-1-RENDER-ATLAS-TRANSPOSITION-RESPONSE-0",
+ "verdict": "VERIFIED",
+ "discrepancies": [],
+ "n_discrepancies": 0,
+ "inputs": {
+  "DISCOVERY": "3bb4468398a2aec5bd5f8f341f9e71aa6b333e1ec379668233670bec46a44b19",
+  "FRESH": "448cd0c60764ba9665b2c37c6110ba237ea2a99beec0aabf1d84fa58c67e99d4"
+ },
+ "instrument_source_sha256": "460ccd9e63c62f1620aee34e6ebe6b8e880c617935691ecff1907645146a4969",
+ "instrument_receipt_sha256": "b1a0f0248439d4c23a88bfbf7630ce7dcfcb339c52ad220f8409de3d6eed4b8e",
+ "instrument_run_commit": "2bedfc46",
+ "commit": "45be1582",
+ "status_porcelain": " M docs/results-index.jsonl\n M scripts/INDEX.md\n",
+ "verifier_sha256": "ecfc6dba75ab21b1b9896553468b7bfe394aff9a0febb6a54e6091dbbd1c1197"
+}
