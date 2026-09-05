@@ -959,6 +959,34 @@
    "source": "results",
    "tracked": true
   },
+  "logs/mathworld1/nestedswap/DISCOVERY.json": {
+   "bytes": 1639396,
+   "exists": true,
+   "sha256": "0037bb1400e22638f5f2149c8c7ac24b13a8e272e3fdf5a0328c6fbd143832e7",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/nestedswap/FRESH.json": {
+   "bytes": 3284640,
+   "exists": true,
+   "sha256": "84360d687c650e12362cf946b1ae712cd1b6d0e362073f5144ce3b7a64b919ab",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/nestedswap/nestedswap_receipt.json": {
+   "bytes": 7456,
+   "exists": true,
+   "sha256": "1eac803acefb6e8ddedb10f111d7fbe8cd1eedb92a69ce7dd00e30a83cdf7c1d",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/nestedswap/verify_receipt.json": {
+   "bytes": 736,
+   "exists": true,
+   "sha256": "19970023e534264c6b4994a8cf08dddc174edd3c7ddbef4478fdd4c49d96ef59",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/pdc_anatomy.json": {
    "bytes": 4134,
    "exists": true,

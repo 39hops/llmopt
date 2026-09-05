@@ -1,0 +1,256 @@
+{
+ "prereg": "MATH-CYBER-1-RENDER-ATLAS-NESTED-SWAP-DECOMPOSITION-0",
+ "smoke": false,
+ "pins": {
+  "logs/mathworld1/prband2atlas/atlas_manifest.jsonl": "687b5e54e0da19bf057431eb4d44b755302c1963d18e13fb6d316fa99dd2f4b2",
+  "logs/mathworld1/prband2atlas/atlas_policies.jsonl": "b4a1c08308ca429d4bd7eb01210dfe469cd11eb9c9c527daf42997cec6d86c71",
+  "logs/mathworld1/prband2atlasscore/policy_table.jsonl": "73dba755a3089a42177ef00a91481e93c2114276938df92958509a8aeda2505e",
+  "logs/mathworld1/prband2atlasscore/aggregate.json": "8df318f742952740ce44c98d57fd8fb2f9632fa283d75f5c4808c4e158e66105",
+  "logs/mathworld1/prband2atlasfresh/policy_table.jsonl": "e42999947102112d03d0aa7529d79daf5896e0cc972ace8aa2acc41b6381d321",
+  "logs/mathworld1/prband2atlasfresh/aggregate.json": "c6d16e8c7b2c68b9d73e9e7e28eb2d6e0b354b3ee64e459ca66460ccad1fa443"
+ },
+ "l66198_receipts": {
+  "logs/mathworld1/transposition/DISCOVERY.json": "3bb4468398a2aec5bd5f8f341f9e71aa6b333e1ec379668233670bec46a44b19",
+  "logs/mathworld1/transposition/FRESH.json": "448cd0c60764ba9665b2c37c6110ba237ea2a99beec0aabf1d84fa58c67e99d4"
+ },
+ "graph_edges": 1800,
+ "cohorts": {
+  "DISCOVERY": {
+   "sha256": "0037bb1400e22638f5f2149c8c7ac24b13a8e272e3fdf5a0328c6fbd143832e7",
+   "checkpoints": [
+    "19001|CANONICAL",
+    "19001|PARAM_FIRST",
+    "20001|CANONICAL",
+    "20001|PARAM_FIRST"
+   ],
+   "bars": {
+    "B0": {
+     "pass": true,
+     "note": "15 cells of 24 per pair, SS identity to 1e-6 and L66198 gap means to 1e-9 are halting gates"
+    },
+    "a": {
+     "position_fraction_B": {
+      "19001|CANONICAL": 0.3329863685374213,
+      "19001|PARAM_FIRST": 0.42798221354927884,
+      "20001|CANONICAL": 0.7881793674147634,
+      "20001|PARAM_FIRST": 0.39400196137632115
+     },
+     "per_ck": {
+      "19001|CANONICAL": false,
+      "19001|PARAM_FIRST": false,
+      "20001|CANONICAL": true,
+      "20001|PARAM_FIRST": false
+     },
+     "fires": false
+    },
+    "b": {
+     "gap5_positive_of_24": {
+      "19001|CANONICAL": 0,
+      "19001|PARAM_FIRST": 14,
+      "20001|CANONICAL": 24,
+      "20001|PARAM_FIRST": 19
+     },
+     "per_ck": {
+      "19001|CANONICAL": false,
+      "19001|PARAM_FIRST": false,
+      "20001|CANONICAL": true,
+      "20001|PARAM_FIRST": true
+     },
+     "fires": false
+    },
+    "c": {
+     "gap5_most_explanatory_position": {
+      "19001|CANONICAL": null,
+      "19001|PARAM_FIRST": 4,
+      "20001|CANONICAL": 1,
+      "20001|PARAM_FIRST": 4
+     },
+     "per_ck": {
+      "19001|CANONICAL": false,
+      "19001|PARAM_FIRST": false,
+      "20001|CANONICAL": true,
+      "20001|PARAM_FIRST": false
+     },
+     "fires": false
+    },
+    "d": {
+     "gap4_cell_means_15_v_04": {
+      "19001|CANONICAL": [
+       28.125,
+       7.5
+      ],
+      "19001|PARAM_FIRST": [
+       38.083333333333336,
+       23.416666666666668
+      ],
+      "20001|CANONICAL": [
+       8.833333333333334,
+       39.583333333333336
+      ],
+      "20001|PARAM_FIRST": [
+       28.833333333333332,
+       4.583333333333333
+      ]
+     },
+     "per_ck": {
+      "19001|CANONICAL": true,
+      "19001|PARAM_FIRST": true,
+      "20001|CANONICAL": false,
+      "20001|PARAM_FIRST": true
+     },
+     "fires": false
+    }
+   }
+  },
+  "FRESH": {
+   "sha256": "84360d687c650e12362cf946b1ae712cd1b6d0e362073f5144ce3b7a64b919ab",
+   "checkpoints": [
+    "21001|CANONICAL",
+    "21001|PARAM_FIRST",
+    "22001|CANONICAL",
+    "22001|PARAM_FIRST",
+    "23001|CANONICAL",
+    "23001|PARAM_FIRST",
+    "24001|CANONICAL",
+    "24001|PARAM_FIRST"
+   ],
+   "bars": {
+    "B0": {
+     "pass": true,
+     "note": "15 cells of 24 per pair, SS identity to 1e-6 and L66198 gap means to 1e-9 are halting gates"
+    },
+    "a": {
+     "position_fraction_B": {
+      "21001|CANONICAL": 0.21084228963541016,
+      "21001|PARAM_FIRST": 0.21829703280653653,
+      "22001|CANONICAL": 0.4299411372835139,
+      "22001|PARAM_FIRST": 0.22300797164069827,
+      "23001|CANONICAL": 0.21773858391458126,
+      "23001|PARAM_FIRST": 0.3163703665847606,
+      "24001|CANONICAL": 0.44089697398238864,
+      "24001|PARAM_FIRST": 0.5433857202739567
+     },
+     "per_ck": {
+      "21001|CANONICAL": false,
+      "21001|PARAM_FIRST": false,
+      "22001|CANONICAL": false,
+      "22001|PARAM_FIRST": false,
+      "23001|CANONICAL": false,
+      "23001|PARAM_FIRST": false,
+      "24001|CANONICAL": false,
+      "24001|PARAM_FIRST": true
+     },
+     "fires": false
+    },
+    "b": {
+     "gap5_positive_of_24": {
+      "21001|CANONICAL": 5,
+      "21001|PARAM_FIRST": 0,
+      "22001|CANONICAL": 22,
+      "22001|PARAM_FIRST": 20,
+      "23001|CANONICAL": 1,
+      "23001|PARAM_FIRST": 23,
+      "24001|CANONICAL": 23,
+      "24001|PARAM_FIRST": 24
+     },
+     "per_ck": {
+      "21001|CANONICAL": false,
+      "21001|PARAM_FIRST": false,
+      "22001|CANONICAL": true,
+      "22001|PARAM_FIRST": true,
+      "23001|CANONICAL": false,
+      "23001|PARAM_FIRST": true,
+      "24001|CANONICAL": true,
+      "24001|PARAM_FIRST": true
+     },
+     "fires": false
+    },
+    "c": {
+     "gap5_most_explanatory_position": {
+      "21001|CANONICAL": 2,
+      "21001|PARAM_FIRST": 1,
+      "22001|CANONICAL": 4,
+      "22001|PARAM_FIRST": 2,
+      "23001|CANONICAL": 1,
+      "23001|PARAM_FIRST": 2,
+      "24001|CANONICAL": 4,
+      "24001|PARAM_FIRST": 3
+     },
+     "per_ck": {
+      "21001|CANONICAL": false,
+      "21001|PARAM_FIRST": true,
+      "22001|CANONICAL": false,
+      "22001|PARAM_FIRST": false,
+      "23001|CANONICAL": true,
+      "23001|PARAM_FIRST": false,
+      "24001|CANONICAL": false,
+      "24001|PARAM_FIRST": false
+     },
+     "fires": false
+    },
+    "d": {
+     "gap4_cell_means_15_v_04": {
+      "21001|CANONICAL": [
+       0.0,
+       7.666666666666667
+      ],
+      "21001|PARAM_FIRST": [
+       11.958333333333334,
+       1.25
+      ],
+      "22001|CANONICAL": [
+       7.333333333333333,
+       27.625
+      ],
+      "22001|PARAM_FIRST": [
+       8.041666666666666,
+       8.75
+      ],
+      "23001|CANONICAL": [
+       22.666666666666668,
+       0.0
+      ],
+      "23001|PARAM_FIRST": [
+       18.25,
+       25.625
+      ],
+      "24001|CANONICAL": [
+       11.958333333333334,
+       24.625
+      ],
+      "24001|PARAM_FIRST": [
+       10.791666666666666,
+       16.791666666666668
+      ]
+     },
+     "per_ck": {
+      "21001|CANONICAL": false,
+      "21001|PARAM_FIRST": true,
+      "22001|CANONICAL": false,
+      "22001|PARAM_FIRST": false,
+      "23001|CANONICAL": true,
+      "23001|PARAM_FIRST": false,
+      "24001|CANONICAL": false,
+      "24001|PARAM_FIRST": false
+     },
+     "fires": false
+    }
+   }
+  }
+ },
+ "semantic_beyond_all_surface_identifiable": false,
+ "wall_s": 0.4,
+ "start": {
+  "start_commit": "304c87c9",
+  "start_status_porcelain": " M docs/results-index.jsonl\n M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_nestedswap.py": "cac9084476949b0314cb5cff4eea494252fe476446d2e41204056dbf7389e216",
+   "scratch/mathworld1_cayley.py": "cd655f5a86bedbddea2674c164878838d531dbb4d7e557ea0fca3b6e4a7a55bf",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1",
+   "logs/mathworld1/transposition/DISCOVERY.json": "3bb4468398a2aec5bd5f8f341f9e71aa6b333e1ec379668233670bec46a44b19",
+   "logs/mathworld1/transposition/FRESH.json": "448cd0c60764ba9665b2c37c6110ba237ea2a99beec0aabf1d84fa58c67e99d4"
+  }
+ },
+ "completion_commit": "304c87c9"
+}

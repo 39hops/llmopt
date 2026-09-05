@@ -1,0 +1,16 @@
+{
+ "prereg": "MATH-CYBER-1-RENDER-ATLAS-NESTED-SWAP-DECOMPOSITION-0",
+ "verdict": "VERIFIED",
+ "discrepancies": [],
+ "n_discrepancies": 0,
+ "inputs": {
+  "DISCOVERY": "0037bb1400e22638f5f2149c8c7ac24b13a8e272e3fdf5a0328c6fbd143832e7",
+  "FRESH": "84360d687c650e12362cf946b1ae712cd1b6d0e362073f5144ce3b7a64b919ab"
+ },
+ "instrument_source_sha256": "cac9084476949b0314cb5cff4eea494252fe476446d2e41204056dbf7389e216",
+ "instrument_receipt_sha256": "1eac803acefb6e8ddedb10f111d7fbe8cd1eedb92a69ce7dd00e30a83cdf7c1d",
+ "instrument_run_commit": "304c87c9",
+ "commit": "304c87c9",
+ "status_porcelain": " M docs/results-index.jsonl\n M scripts/INDEX.md\n",
+ "verifier_sha256": "2823b07dcd2891d3ab699300ab80ffef43efc92e43662e380805555bf71579e7"
+}

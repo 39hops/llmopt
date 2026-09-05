@@ -2915,6 +2915,23 @@ Independent verifier for MATH-CYBER-1-RENDER-ATLAS-MORPHOLOGY-0 (prereg RESULTS 
 - `spearman(x, y)`
 - `main()`
 
+### scratch/mathworld1_nestedswap.py
+MATH-CYBER-1-RENDER-ATLAS-NESTED-SWAP-DECOMPOSITION-0 — bank M (prereg RESULTS L66224): the 360 matched swaps of a role pair (orientation "X before Y", delta = x(r') - x(r), L66198) split exactly into 15 cells of 24 by gap and endpoint slot; sums of squares partitioned into between-gap, between-slot-within-gap and within-cell parts (identity gated), and within each cell by the role occupying each free position; gap-5 interior-order readout and gap-4 outside-role x interior-order tables for HI_D<->W; the nested decomposition on B for all 15 pairs as the frame. Discovery and fresh cohorts separately, never pooled. Graph builder, gates and pins imported from the frozen scratch/mathworld1_cayley.py. No model, no logit; torch is never imported.
+
+- `mean(v)`
+- `ss(v, m=None)`
+- `cells_for(roles, idx, X, Y)` — {(g, s): [(r, r_prime, order_of_r_prime)]} in the orientation X before Y.
+- `decompose(cells, x, X, Y, full=False)`
+- `main()`
+
+### scratch/mathworld1_nestedswapverify.py
+Independent verifier for MATH-CYBER-1-RENDER-ATLAS-NESTED-SWAP-DECOMPOSITION-0 (prereg RESULTS L66224). Shares no code with scratch/mathworld1_nestedswap.py: own manifest read, own matched-swap cells by gap and slot, own sums of squares (total / gap / slot / within and role-at-position within cells), own gap-5 and gap-4 tables, own bar recomputation; instrument source checked against its start provenance, inputs against the instrument's entry pins and the receipt lock; refuses to overwrite its receipt.
+
+- `chk(c, m)`
+- `sha(p)`
+- `mean(v)`
+- `main()`
+
 ### scratch/mathworld1_pdcov.py
 MATH-CYBER-1 PROGRAM-DIET-COVERAGE-0 — census: how much of theta0's EXACT historical birth diet deterministically relabels from (cur, nxt) into the fully-qualified v4 ActionProgram under the pinned engine? Zero model, zero training, zero fresh seeds, zero search evaluation, zero MAGIC.
 
