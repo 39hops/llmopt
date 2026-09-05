@@ -1436,6 +1436,34 @@
    "source": "results",
    "tracked": false
   },
+  "logs/mathworld1/rolecensus/DISCOVERY.json": {
+   "bytes": 91364,
+   "exists": true,
+   "sha256": "6f67aedafa73ac522b8ad7fb7261b2187576d883555cd157b174f0b0994d9e9e",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/rolecensus/FRESH.json": {
+   "bytes": 181830,
+   "exists": true,
+   "sha256": "64d3ac04359286874c108bb9b2dde024d451a5959aeb8b12b59ef5b40289653f",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/rolecensus/rolecensus_receipt.json": {
+   "bytes": 9844,
+   "exists": true,
+   "sha256": "198380332a459b86f93bc244e2b54cc2ed1bcf0c247d5c9b29ad4a803c9eafef",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/rolecensus/verify_receipt.json": {
+   "bytes": 808,
+   "exists": true,
+   "sha256": "3e4a9d9a6c84b66dbfa78cac4e611df9d88728f6d91edaf4701eff507f9f7871",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/scoreqal.json": {
    "bytes": 2136,
    "exists": true,

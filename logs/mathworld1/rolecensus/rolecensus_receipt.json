@@ -1,0 +1,406 @@
+{
+ "prereg": "MATH-CYBER-1-RENDER-ATLAS-ROLE-CENSUS-0",
+ "smoke": false,
+ "pins": {
+  "logs/mathworld1/prband2atlas/atlas_manifest.jsonl": "687b5e54e0da19bf057431eb4d44b755302c1963d18e13fb6d316fa99dd2f4b2",
+  "logs/mathworld1/prband2atlas/atlas_policies.jsonl": "b4a1c08308ca429d4bd7eb01210dfe469cd11eb9c9c527daf42997cec6d86c71",
+  "logs/mathworld1/prband2atlasscore/policy_table.jsonl": "73dba755a3089a42177ef00a91481e93c2114276938df92958509a8aeda2505e",
+  "logs/mathworld1/prband2atlasscore/aggregate.json": "8df318f742952740ce44c98d57fd8fb2f9632fa283d75f5c4808c4e158e66105",
+  "logs/mathworld1/prband2atlasfresh/policy_table.jsonl": "e42999947102112d03d0aa7529d79daf5896e0cc972ace8aa2acc41b6381d321",
+  "logs/mathworld1/prband2atlasfresh/aggregate.json": "c6d16e8c7b2c68b9d73e9e7e28eb2d6e0b354b3ee64e459ca66460ccad1fa443"
+ },
+ "graph_edges": 1800,
+ "cohorts": {
+  "DISCOVERY": {
+   "sha256": "6f67aedafa73ac522b8ad7fb7261b2187576d883555cd157b174f0b0994d9e9e",
+   "checkpoints": [
+    "19001|CANONICAL",
+    "19001|PARAM_FIRST",
+    "20001|CANONICAL",
+    "20001|PARAM_FIRST"
+   ],
+   "bars": {
+    "B1": {
+     "pass": true,
+     "note": "120 per role x position cell (36 / 36) and negative-bearing-role identity 720 / 720 are entry gates"
+    },
+    "B2": {
+     "W_best_position_B": {
+      "19001|CANONICAL": 5,
+      "19001|PARAM_FIRST": 5,
+      "20001|CANONICAL": 5,
+      "20001|PARAM_FIRST": 5
+     },
+     "fires": true
+    },
+    "B3": {
+     "best_first_role_B": {
+      "19001|CANONICAL": "LO_D",
+      "19001|PARAM_FIRST": "HI_D",
+      "20001|CANONICAL": "HI_D",
+      "20001|PARAM_FIRST": "HI_D"
+     },
+     "fires": false,
+     "role": null
+    },
+    "B4": {
+     "dominant_precedence_B": {
+      "19001|CANONICAL": [
+       "HI_D<W",
+       7.2194,
+       true
+      ],
+      "19001|PARAM_FIRST": [
+       "HI_D<W",
+       12.2944,
+       true
+      ],
+      "20001|CANONICAL": [
+       "HI_D<W",
+       16.8972,
+       true
+      ],
+      "20001|PARAM_FIRST": [
+       "HI_D<W",
+       5.6417,
+       true
+      ]
+     },
+     "fires": true,
+     "identical_pair_and_sign": true
+    },
+    "B5": {
+     "r2_36_B": {
+      "19001|CANONICAL": 0.32798096483914674,
+      "19001|PARAM_FIRST": 0.45654757534906065,
+      "20001|CANONICAL": 0.8408174197802788,
+      "20001|PARAM_FIRST": 0.37705370603223576
+     },
+     "r2_W_only_B": {
+      "19001|CANONICAL": 0.16816087178711114,
+      "19001|PARAM_FIRST": 0.35075723201922016,
+      "20001|CANONICAL": 0.05957890118562681,
+      "20001|PARAM_FIRST": 0.2848792610977693
+     },
+     "fires": false
+    },
+    "B6": {
+     "W_second_family_T48_B0": {
+      "19001|CANONICAL": 94,
+      "19001|PARAM_FIRST": 120,
+      "20001|CANONICAL": 92,
+      "20001|PARAM_FIRST": 120
+     },
+     "W_first_family_T48_B0": {
+      "19001|CANONICAL": 120,
+      "19001|PARAM_FIRST": 120,
+      "20001|CANONICAL": 120,
+      "20001|PARAM_FIRST": 120
+     },
+     "fires": false
+    },
+    "B7": {
+     "effect_SIN_HI_D_v_COS_LO_D": {
+      "19001|CANONICAL": [
+       14.3,
+       12.458333333333332
+      ],
+      "19001|PARAM_FIRST": [
+       8.091666666666669,
+       8.916666666666666
+      ],
+      "20001|CANONICAL": [
+       7.024999999999999,
+       12.908333333333333
+      ],
+      "20001|PARAM_FIRST": [
+       8.524999999999999,
+       8.375
+      ]
+     },
+     "fires": false
+    },
+    "B8": {
+     "dominant_adjacency_B": {
+      "19001|CANONICAL": [
+       "LO_L|K",
+       2.1458,
+       false
+      ],
+      "19001|PARAM_FIRST": [
+       "HI_D|W",
+       -5.9146,
+       true
+      ],
+      "20001|CANONICAL": [
+       "HI_D|HI_L",
+       -5.0271,
+       false
+      ],
+      "20001|PARAM_FIRST": [
+       "HI_D|W",
+       -3.3417,
+       true
+      ]
+     },
+     "fires": false
+    },
+    "prior5_W_only_half_of_r2": {
+     "per_ck": {
+      "19001|CANONICAL": true,
+      "19001|PARAM_FIRST": true,
+      "20001|CANONICAL": false,
+      "20001|PARAM_FIRST": true
+     },
+     "all": false
+    }
+   }
+  },
+  "FRESH": {
+   "sha256": "64d3ac04359286874c108bb9b2dde024d451a5959aeb8b12b59ef5b40289653f",
+   "checkpoints": [
+    "21001|CANONICAL",
+    "21001|PARAM_FIRST",
+    "22001|CANONICAL",
+    "22001|PARAM_FIRST",
+    "23001|CANONICAL",
+    "23001|PARAM_FIRST",
+    "24001|CANONICAL",
+    "24001|PARAM_FIRST"
+   ],
+   "bars": {
+    "B1": {
+     "pass": true,
+     "note": "120 per role x position cell (36 / 36) and negative-bearing-role identity 720 / 720 are entry gates"
+    },
+    "B2": {
+     "W_best_position_B": {
+      "21001|CANONICAL": 3,
+      "21001|PARAM_FIRST": 3,
+      "22001|CANONICAL": 5,
+      "22001|PARAM_FIRST": 3,
+      "23001|CANONICAL": 5,
+      "23001|PARAM_FIRST": 5,
+      "24001|CANONICAL": 3,
+      "24001|PARAM_FIRST": 5
+     },
+     "fires": false
+    },
+    "B3": {
+     "best_first_role_B": {
+      "21001|CANONICAL": "LO_L",
+      "21001|PARAM_FIRST": "LO_D",
+      "22001|CANONICAL": "HI_D",
+      "22001|PARAM_FIRST": "HI_D",
+      "23001|CANONICAL": "LO_D",
+      "23001|PARAM_FIRST": "HI_D",
+      "24001|CANONICAL": "HI_D",
+      "24001|PARAM_FIRST": "HI_D"
+     },
+     "fires": false,
+     "role": null
+    },
+    "B4": {
+     "dominant_precedence_B": {
+      "21001|CANONICAL": [
+       "HI_L<W",
+       3.3917,
+       true
+      ],
+      "21001|PARAM_FIRST": [
+       "HI_D<LO_D",
+       -3.3611,
+       false
+      ],
+      "22001|CANONICAL": [
+       "HI_D<LO_D",
+       9.8972,
+       false
+      ],
+      "22001|PARAM_FIRST": [
+       "K<W",
+       5.7528,
+       true
+      ],
+      "23001|CANONICAL": [
+       "LO_D<W",
+       6.6167,
+       true
+      ],
+      "23001|PARAM_FIRST": [
+       "HI_D<W",
+       13.2694,
+       true
+      ],
+      "24001|CANONICAL": [
+       "HI_D<W",
+       10.8611,
+       true
+      ],
+      "24001|PARAM_FIRST": [
+       "HI_L<W",
+       6.9806,
+       true
+      ]
+     },
+     "fires": false,
+     "identical_pair_and_sign": false
+    },
+    "B5": {
+     "r2_36_B": {
+      "21001|CANONICAL": 0.2033747330943111,
+      "21001|PARAM_FIRST": 0.15058555160756804,
+      "22001|CANONICAL": 0.4422060118833857,
+      "22001|PARAM_FIRST": 0.28555291812571326,
+      "23001|CANONICAL": 0.4012597935670944,
+      "23001|PARAM_FIRST": 0.46510874915343214,
+      "24001|CANONICAL": 0.5252545212900617,
+      "24001|PARAM_FIRST": 0.4083503199571994
+     },
+     "r2_W_only_B": {
+      "21001|CANONICAL": 0.04949727953016103,
+      "21001|PARAM_FIRST": 0.032361071997404456,
+      "22001|CANONICAL": 0.07604699205697618,
+      "22001|PARAM_FIRST": 0.09254981562761666,
+      "23001|CANONICAL": 0.1176404023758223,
+      "23001|PARAM_FIRST": 0.1072156355827375,
+      "24001|CANONICAL": 0.1950589777864148,
+      "24001|PARAM_FIRST": 0.2128961447523935
+     },
+     "fires": false
+    },
+    "B6": {
+     "W_second_family_T48_B0": {
+      "21001|CANONICAL": 46,
+      "21001|PARAM_FIRST": 51,
+      "22001|CANONICAL": 51,
+      "22001|PARAM_FIRST": 107,
+      "23001|CANONICAL": 101,
+      "23001|PARAM_FIRST": 85,
+      "24001|CANONICAL": 102,
+      "24001|PARAM_FIRST": 120
+     },
+     "W_first_family_T48_B0": {
+      "21001|CANONICAL": 88,
+      "21001|PARAM_FIRST": 60,
+      "22001|CANONICAL": 120,
+      "22001|PARAM_FIRST": 116,
+      "23001|CANONICAL": 119,
+      "23001|PARAM_FIRST": 120,
+      "24001|CANONICAL": 120,
+      "24001|PARAM_FIRST": 120
+     },
+     "fires": false
+    },
+    "B7": {
+     "effect_SIN_HI_D_v_COS_LO_D": {
+      "21001|CANONICAL": [
+       12.68333333333333,
+       26.775000000000002
+      ],
+      "21001|PARAM_FIRST": [
+       10.916666666666668,
+       20.675
+      ],
+      "22001|CANONICAL": [
+       28.299999999999997,
+       12.500000000000002
+      ],
+      "22001|PARAM_FIRST": [
+       6.291666666666671,
+       12.291666666666668
+      ],
+      "23001|CANONICAL": [
+       13.18333333333333,
+       18.633333333333333
+      ],
+      "23001|PARAM_FIRST": [
+       17.90833333333333,
+       19.2
+      ],
+      "24001|CANONICAL": [
+       10.591666666666669,
+       14.058333333333334
+      ],
+      "24001|PARAM_FIRST": [
+       9.658333333333331,
+       11.558333333333334
+      ]
+     },
+     "fires": false
+    },
+    "B8": {
+     "dominant_adjacency_B": {
+      "21001|CANONICAL": [
+       "HI_L|LO_L",
+       -2.4958,
+       false
+      ],
+      "21001|PARAM_FIRST": [
+       "HI_L|LO_D",
+       -3.6125,
+       false
+      ],
+      "22001|CANONICAL": [
+       "HI_D|K",
+       -3.2771,
+       false
+      ],
+      "22001|PARAM_FIRST": [
+       "HI_D|W",
+       -2.8271,
+       true
+      ],
+      "23001|CANONICAL": [
+       "LO_D|W",
+       -2.1333,
+       true
+      ],
+      "23001|PARAM_FIRST": [
+       "HI_D|LO_D",
+       -5.05,
+       false
+      ],
+      "24001|CANONICAL": [
+       "LO_D|W",
+       6.0896,
+       true
+      ],
+      "24001|PARAM_FIRST": [
+       "HI_D|W",
+       -4.4688,
+       true
+      ]
+     },
+     "fires": false
+    },
+    "prior5_W_only_half_of_r2": {
+     "per_ck": {
+      "21001|CANONICAL": false,
+      "21001|PARAM_FIRST": false,
+      "22001|CANONICAL": false,
+      "22001|PARAM_FIRST": false,
+      "23001|CANONICAL": false,
+      "23001|PARAM_FIRST": false,
+      "24001|CANONICAL": false,
+      "24001|PARAM_FIRST": true
+     },
+     "all": false
+    }
+   }
+  }
+ },
+ "semantic_beyond_all_surface_identifiable": false,
+ "wall_s": 0.4,
+ "start": {
+  "start_commit": "2ef57420",
+  "start_status_porcelain": " M docs/results-index.jsonl\n M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_rolecensus.py": "01c916315ac67f961bc1ed5cab0a0552b4b77d6cbf113d86d2a5cefae1df1182",
+   "scratch/mathworld1_cayley.py": "cd655f5a86bedbddea2674c164878838d531dbb4d7e557ea0fca3b6e4a7a55bf",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "2ef57420"
+}

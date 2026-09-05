@@ -3202,6 +3202,22 @@ MATH-CYBER-1 RETRO-LABELER-QUAL-0 — failure-triggered retrospective-credit lab
 - `label_episode(eid, stage, root, world, scorer, sink, inject_fork_step=None)`
 - `main()`
 
+### scratch/mathworld1_rolecensus.py
+MATH-CYBER-1-RENDER-ATLAS-ROLE-CENSUS-0 — bank G of L65753 (prereg RESULTS L66095): the role-position / order-grammar census of the twelve booked render atlases. Model-free conditioning of the booked T, B, A0_correct and B0_correct on where each of the six structural term roles sits in the rendering: role x position means, W-position and negative-bearing-role censuses, precedence and adjacency effects, an additive role-position least-squares fit, and the local probe of the 120 Cayley edges moving W from position 0 to position 1. Discovery and fresh cohorts separately, never pooled. Graph builder, gates and pins imported from the frozen scratch/mathworld1_cayley.py. No model, no logit; torch is never imported.
+
+- `load_roles()`
+- `design(pos, w_only=False)`
+- `r2(X, y)`
+- `analyze_ck(ck, rows, roles, pos, edges)`
+- `main()`
+
+### scratch/mathworld1_rolecensusverify.py
+Independent verifier for MATH-CYBER-1-RENDER-ATLAS-ROLE-CENSUS-0 (prereg RESULTS L66095). Shares no code with scratch/mathworld1_rolecensus.py: own manifest read, own role-position means, precedence and adjacency effects, own least squares through the normal equations with a pseudo-inverse, own W-first-to-second edge list by inversion distance, own family censuses, own bar recomputation; pins the instrument source against its start provenance and every input against the instrument's entry pins; refuses to overwrite its receipt.
+
+- `chk(c, m)`
+- `inv_dist(p, q)`
+- `main()`
+
 ### scratch/mathworld1_scoreqal.py
 MATH-CYBER-1 cached-scorer qualification + runtime microbench (AMENDMENT MATH-CYBER-1-SUBSTRATE-DESK-0-KV registration). NO TRAINED MODEL: a fresh random-weight MicroLM (seeded birth, BIRTH_SEED=77, stock base vocab) is the instrument — the qualification tests SCORER MECHANICS, not capability.
 

@@ -1,0 +1,20 @@
+{
+ "prereg": "MATH-CYBER-1-RENDER-ATLAS-ROLE-CENSUS-0",
+ "verdict": "VERIFIED",
+ "discrepancies": [],
+ "n_discrepancies": 0,
+ "inputs": {
+  "DISCOVERY": "6f67aedafa73ac522b8ad7fb7261b2187576d883555cd157b174f0b0994d9e9e",
+  "FRESH": "64d3ac04359286874c108bb9b2dde024d451a5959aeb8b12b59ef5b40289653f"
+ },
+ "instrument_source_sha256": "01c916315ac67f961bc1ed5cab0a0552b4b77d6cbf113d86d2a5cefae1df1182",
+ "instrument_receipt_sha256": "198380332a459b86f93bc244e2b54cc2ed1bcf0c247d5c9b29ad4a803c9eafef",
+ "B1_recomputed": {
+  "negative_bearing_role_identity": 720,
+  "cells_of_120": 36
+ },
+ "instrument_run_commit": "2ef57420",
+ "commit": "0af34f08",
+ "status_porcelain": " M docs/results-index.jsonl\n M scripts/INDEX.md\n",
+ "verifier_sha256": "2276e5b579a8f3010d301e9d20d9f0b7818030bee5a4c31523f9695cf08fdb6c"
+}
