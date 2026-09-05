@@ -56,3 +56,4 @@ data/metallicity/manifest.json
 
 # local session-state tool exhaust
 .no-amnesia/
+.venv-k2/

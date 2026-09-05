@@ -1,0 +1,42 @@
+{
+  "prereg": "K2-HORIZON-STAGE-DELTA-CENSUS-0",
+  "model": "IFM/K2-Horizon-0.9B",
+  "frozen_on": "2026-09-05",
+  "sources": {
+    "refs_api": "https://huggingface.co/api/models/IFM/K2-Horizon-0.9B/refs (session, 2026-09-05)",
+    "appendix": "https://huggingface.co/IFM/K2-Horizon-0.9B/raw/main/APPENDIX.md (session, 2026-09-05)",
+    "family_appendix": "https://huggingface.co/IFM/K2-Horizon-3.7B/raw/main/APPENDIX.md (session, 2026-09-05)"
+  },
+  "documented_facts": [
+    "0.9B is the IFM Mobile line, vocabulary 64,256 at every stage; 3.7B/7B/32B/36B/375B share a 250,624 vocabulary and (per the family appendix) one post-training recipe; the blog states 3.7B/7B/32B/36B trained on the same 22T tokens (agent-reported, not session-verified).",
+    "0.9B stages: base 8,192 ctx -> first context extension 40,960 (tags mid_1_*) -> second context extension 131,072 (tags mid_2_*) -> task-arithmetic merge of THREE specialist checkpoints (tag rl_rl-merged; the specialists are not published) -> multi-teacher on-policy distillation mOPD, 500-step schedule, lr 1e-7, checkpoint step 249 selected (tags rl-mopd_249 = rl-mopd_final = rl-mopd_mopd, one commit) -> main (architecture label change only, weights stated unchanged).",
+    "APPENDIX table lists 'Base model = pre-distillation specialist merge, 8K' and names revisions mid1_75k / mid2_47k that do not exist; actual tags are mid_1_75000 / mid_2_47684.",
+    "HF commit chains per branch are upload sequences (one commit per shard), not training ancestry; adjacency below is taken from tag names and appendix text only."
+  ],
+  "tags": {
+    "pretrain_500000": "d01b406c", "pretrain_600000": "6c36f5ef", "pretrain_final": "7ccabd6c",
+    "mid_1_50000": "d936f7cb", "mid_1_75000": "5316b581", "mid_1_final": "78f2fc70",
+    "mid_2_5000": "525d2929", "mid_2_final": "44623d28",
+    "rl_rl-merged": "92959a68", "rl-mopd_final": "d001150d", "main": "ee770e71"
+  },
+  "ladder": ["pretrain_500000", "pretrain_600000", "pretrain_final", "mid_1_50000", "mid_1_75000", "mid_1_final", "mid_2_5000", "mid_2_final", "rl_rl-merged", "rl-mopd_final", "main"],
+  "pairs": [
+    {"a": "pretrain_500000", "b": "pretrain_600000", "class": "WITHIN-STAGE-KNOWN-DOSE", "steps": 100000},
+    {"a": "pretrain_600000", "b": "pretrain_final", "class": "WITHIN-STAGE-UNKNOWN-DOSE", "steps": null, "note": "pretrain_final is a distinct commit from pretrain_600000; step count between them unpublished"},
+    {"a": "pretrain_final", "b": "mid_1_50000", "class": "STAGE-BOUNDARY-INFERRED", "steps": null, "note": "mid_1 tags start at 50000; whether mid_1 step 0 is pretrain_final is not documented"},
+    {"a": "mid_1_50000", "b": "mid_1_75000", "class": "WITHIN-STAGE-KNOWN-DOSE", "steps": 25000},
+    {"a": "mid_1_75000", "b": "mid_1_final", "class": "WITHIN-STAGE-UNKNOWN-DOSE", "steps": null},
+    {"a": "mid_1_final", "b": "mid_2_5000", "class": "STAGE-BOUNDARY-INFERRED", "steps": null},
+    {"a": "mid_2_5000", "b": "mid_2_final", "class": "WITHIN-STAGE-KNOWN-DOSE", "steps": 42684, "note": "mid_2_final = mid_2_47684, same commit"},
+    {"a": "mid_2_final", "b": "rl_rl-merged", "class": "MERGE-NOT-TRAINING", "steps": null, "note": "task-arithmetic merge of three unpublished specialists; not a training delta; the specialists' parent is documented only as 'the base'"},
+    {"a": "rl_rl-merged", "b": "rl-mopd_final", "class": "DISTILL-DOCUMENTED-DOSE", "steps": 249, "note": "mOPD lr 1e-7, OPD weight 0.1, ref-KL 0.01"},
+    {"a": "rl-mopd_final", "b": "main", "class": "RELABEL-NOOP", "steps": 0, "note": "documented weights unchanged; registered NO-OP precondition: every tensor bit-identical"}
+  ],
+  "stage_endpoints_for_profiles": {
+    "PRETRAIN-INTERNAL": ["pretrain_500000", "pretrain_final"],
+    "MID_1-INTERNAL": ["mid_1_50000", "mid_1_final"],
+    "MID_2-INTERNAL": ["mid_2_5000", "mid_2_final"],
+    "DISTILL": ["rl_rl-merged", "rl-mopd_final"],
+    "MERGE": ["mid_2_final", "rl_rl-merged"]
+  }
+}
