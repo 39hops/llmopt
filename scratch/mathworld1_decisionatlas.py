@@ -99,6 +99,8 @@ def analyze_ck(ck, states, sums, adj, edges, pol_rows, anchors, smoke=False):
     for s in S:
         gate("gold_name" in states[s] and states[s]["gold_name"] == ("A0" if states[s]["theta"] == "SIN_LOW" else "B0"), f"GOLD {s}")
     R = sorted({a for a, _ in sums})
+    if smoke:   # a row-limited smoke keeps only renderers whose 96 states are complete
+        R = [a for a in R if all((a, s) in sums and len(sums[(a, s)]) == 4 for s in S)]
     gate(smoke or R == list(range(720)), "720 RENDERERS")
     act = {}
     for r in R:
