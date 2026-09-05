@@ -88,6 +88,7 @@ status — resolve at next housekeeping).
 | 2026-08-07-morning-specs | Three grounded pre-reg designs | PARTIAL [UNVERIFIED] — design 1 (EX-ANAT-3) fired; designs 2-3 unchecked |
 | 2026-08-07-engine-scale | ENGINE-SCALE joint-scaling sweep | COMPLETE-BOOKED 08-09 — VERDICT ENGINE-SCALE-1: neither bar; the schedule is the binder |
 | 2026-08-07-results-hardening | RESULTS HARDENING | LIVE — P0-P4 booked through 08-08; source of truth for the live track |
+| 2026-09-05-next-program-assessment | NEXT PROGRAM ASSESSMENT | ASSESSMENT — K2 Horizon artifacts verified, ranked shortlist, nominated K2-HORIZON-STAGE-DELTA-CENSUS-0, front-surface housekeeping list; nothing preregistered |
 
 Non-spec artifacts here: 2026-08-07-engine-scale-cells.jsonl (30
 pre-registered cells, RESULTS-cited) and engine_scale_cells/ (9 .bin

@@ -66265,3 +66265,46 @@ W first is 0.0 on all four (the booked W-first family); W last is the best W pos
 **Verifier.** `scratch/mathworld1_nestedswapverify.py` (own cells, own sums of squares and identity, own role-at-position splits, own gap-5 and gap-4 tables, own bar recomputation; instrument source and commits checked against the start provenance, inputs against the entry pins and the receipt lock; refuse-if-exists): VERIFIED, 0 discrepancies, commit 304c87c9, run once. Disclosure: the receipt's B0 row is a literal `pass: true` placed after the halting gates, as in the sibling instruments; the verifier recomputes every gate.
 
 **Reading (descriptive, finite partition).** Fixing where HI_D and W sit does not fix what the swap does. With both endpoints pinned (gap 5), the 24 arrangements of the other four roles give the same answer on one discovery checkpoint (near-constant +46.5 on 20001 C), no answer on another (all zero on 19001 C), and a spread from 0 to 48 on the other two, where the role standing next to W matters more than the role standing next to HI_D. At gap 4 the single outside role separates sub-cell means by up to 31 pairs (the cell mean is 0.0 in all six interior orders where K sits after W on 19001 C and 20001 PF; on 19001 C the (1, 5) cell mean is 43.3 with LO_D before HI_D against 20.3 with LO_L). The sum-of-squares identities, which are partition identities on a finite set and not variance estimates, put 57 % to 67 % of the sum of squares inside the cells on three of four discovery checkpoints; the one checkpoint where position dominates is the one whose landscape is "HI_D first or nothing". The bank-G precedence effect, already shown at L66198 to be a separation effect rather than a generator effect, is here shown to be a context effect even at fixed separation: it is an average over interior orders that mostly disagree with one another. Nothing here names a feature the model reads; these are partitions of booked scores over a frozen finite class, twelve realizations on 96 states. semantic_beyond_all_surface_identifiable = false.
+## OBSERVATION NEXT-PROGRAM-ASSESSMENT-2026-09-05-0: ASSESSMENT / RANKING ONLY — the next major program is DATA -> WEIGHTS -> FUNCTION on a real open checkpoint lifecycle, and the smallest rung is a ZERO-TRAINING stage-delta census on K2 Horizon 0.9B; K2 Horizon artifacts were VERIFIED against live endpoints on 2026-09-05 (final BF16 weights at six sizes and 33 to 68 full-safetensors stage tags per size CONFIRMED — 0.9B 34 tags listed by the session, 3.7B@pretrain_100000 tree 200; ~21.6 TB of training data posted in five ungated repos but with NO mixture proportions, NO stage map and NO per-stage token budgets; the two dataset ids every model card names return 401; training code LLM360/xllm returns 404 at every cited commit; logs are private W&B runs and rendered PNGs), so K2 Horizon is a checkpoint-trajectory dataset, not a reproducibility dataset, and no family checked (K2 Horizon, OLMo 3, Pythia, SmolLM3, DCLM, Marin, Apertus) has intermediate checkpoints + data + mixture recipe spanning ~1B to 7B; the lab's largest training to date is a 45M birth (L7742) and its largest fine-tune Qwen2.5-0.5B LoRA r=16 (legacy recipe, CLAUDE.md), so equal-budget continuation on a real model is a NEW capability class here with 0.9B full-parameter on the Mac as the only feasible arm and LoRA at 3.7B/7B as a rank-constrained promotion; ranked shortlist (1) K2-HORIZON-STAGE-DELTA-CENSUS (zero training; per-layer / per-module normalized weight delta, depth location, stable rank, Hill alpha, singular-vector IPR per IFM stage boundary, oracle-verified house gates per tag, 0.9B then 3.7B then 7B with the cross-scale transport bar registered before the larger weights are opened), (2) MOE-TRANSFER of the demand / anti-demand / matched-random / identity-over-aggregates protocol to a second vehicle (Qwen3.5-35B-A3B or gpt-oss-20b; the crest sits on ONE vehicle, FINDINGS L1331), (3) LATENT-BRIDGE RESCUE at d64 of the MERGE-SPACE independent-birth zero (affine residual-stream bridge, random-rotation control, Mac minutes), (4) VERIFIED-MATH REDISCOVERY on finite-certificate 2026 results (Emmerich prime-set unit-distance certificates 2606.03419, DRAT Ramsey, kissing-593) blocked on a data-cutoff desk, (5) K2 DIET SURGERY at 0.9B gated behind (1) and designed as a matched factorial (family mass x sequencing x co-occurrence, SS partition identities as in L66247) rather than a marginal data-family sweep; survey verdicts carried as fences: no paper, repo or protocol for Mostik surfaced in the 2026-09-05 searches; the 2026 spectral phase-transition exponents (2604.22778, 2606.28486) have no code; the unit-distance disproof itself (2605.20695) is an infinite family, not a certificate; front-surface audit booked in the spec (README L98 "a fifth" is 13.9 % by the README's own counts; 182 of 1,384 RESULTS entries are AMENDMENTs and README never says so; "Four results" and "What remains uncertain" are dated 2026-08-04..11; FINDINGS L3784 carries the 4.3 % with its correction inline, liftable bare); full text docs/superpowers/specs/2026-09-05-next-program-assessment.md; nothing preregistered, nothing launched (2026-09-05, Mac)
+
+Artin's ask, in one line: use real current open models to discover
+capability-improving interventions while tracing DATA -> WEIGHTS ->
+FUNCTION; verify K2 Horizon first; rank against MoE transfer, latent
+transfer and verified-math rediscovery; audit the front surface.
+
+VERIFIED BY THE SESSION (live endpoints, 2026-09-05): IFM/K2-Horizon-0.9B
+refs API lists 34 tags (pretrain_500000..600000 at 10k steps, mid_1_50000..
+75000, mid_2_5000..47684, pretrain_final, mid_1_final, mid_2_final,
+rl-mopd_249, rl-mopd_final, rl_rl-merged); IFM/K2-Horizon-3.7B tree at tag
+pretrain_100000 returns 200; github.com/LLM360/xllm returns 404;
+huggingface datasets IFM/K2-Horizon-Pretrain-Data returns 401; arXiv ids
+2604.17177, 2604.22778, 2605.20695, 2606.03419, 2510.03215, 2505.12540
+resolve to the titles cited in the spec; github anthropics/fermats-last-
+theorem and thu-nics/C2C return 200. Not verified by the session: file
+sizes and tag counts at 3.7B/7B/32B beyond the one tree call (agent-
+reported), dataset byte totals (datasets-server, agent-reported), the
+contents of any paper beyond its title.
+
+HOUSE FACTS THE RANKING RESTS ON: Mac 36 GB / 51 GB free disk (streaming
+mandatory above ~13 GB), 3080 10 GB; the ledger has zero Pythia / OLMo /
+checkpoint-lifecycle / IPR entries (grep); the crest is one vehicle
+(Qwen3-30B-A3B 4-bit MLX, L18190); MERGE-SPACE-1/5 independent-birth
+averages gate exactly 0 at d64 (FINDINGS L1263-1304); the render-atlas
+arc's transferable lesson is a hypothesis, not a law: a marginal feature
+effect can be carried by higher-order context (L66198, L66247).
+
+WHAT CHANGES OUR MIND (stated before any rung is preregistered): if at
+0.9B no stage boundary moves the house gate beyond the house resolution floor (7
+of 120) AND the per-layer stage-delta profiles are indistinguishable, the
+cross-scale question is moot and diet surgery moves to OLMo 3 7B (public
+mixture) or is dropped; if the 0.9B profile transports to 3.7B at Spearman 0.7 on the per-layer normalized delta profile,
+registered before the 3.7B weights are opened, diet surgery is armed at
+0.9B. The 64K -> 250K vocab change between 0.9B and 3.7B is the first
+named confound of any transport reading.
+
+NOMINATED, NOT PREREGISTERED: K2-HORIZON-STAGE-DELTA-CENSUS-0 (Mac, 0.9B,
+five tags, ~11 GB download, hours). Bars, priors and the census law are
+drafted in the spec §6 and must be carried verbatim into the prereg or a
+deviation booked. Housekeeping items are listed in spec §7 as six
+separate GOs; no README edit was made.
+
