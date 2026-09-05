@@ -2565,6 +2565,11 @@ Independent verifier for K2-HORIZON-STAGE-DELTA-CENSUS-0. Shares no aggregation 
 - `main()`
 - `finish(rec, rows, g, sub, src)`
 
+### scratch/k2h_tagmove_check.py
+*(no docstring)*
+
+- `sha(p)`
+
 ### scratch/k3_expert_demo.py
 K3-D1: the Kimi-K3 single-expert deterministic demo.
 

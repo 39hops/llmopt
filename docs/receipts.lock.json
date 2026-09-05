@@ -626,6 +626,76 @@
    "source": "results",
    "tracked": true
   },
+  "logs/k2h/gateladder/ladder_rows.jsonl": {
+   "bytes": 228882,
+   "exists": true,
+   "sha256": "bc18f82b89ecce2217170e677bf6a22660976758631ab3398b09b0e1c94babc1",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/k2h/gateladder/receipt.json": {
+   "bytes": 6929,
+   "exists": true,
+   "sha256": "58a5c15f7156a9050632ff3bcadcf384449f8f81a5fea522eff479b28878d254",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/k2h/gateladder_driver.log": {
+   "bytes": 3046,
+   "exists": true,
+   "sha256": "d62b1733343935d870a0e285b65998bed7840fadffffbf6ca3c5038dd49828df",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/k2h/residues/autocorr_rows.jsonl": {
+   "bytes": 5971111,
+   "exists": true,
+   "sha256": "c0ebaf8cbb5a4cd5d64e885478aedc9cf68e554b8a2237e0203739584367c8f3",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/k2h/residues/factorial_rows.jsonl": {
+   "bytes": 814412,
+   "exists": true,
+   "sha256": "a60f9d3f6d85de2888d48219947e9014908042271e7996d35546aee1b824b35f",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/k2h/residues/receipt.json": {
+   "bytes": 117433,
+   "exists": true,
+   "sha256": "3c28adc1a9392fdab8c3496dd4c3123f795bd716d6c03a30cc4c3220ef36f557",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/k2h/residues/refs_after.json": {
+   "bytes": 4513,
+   "exists": true,
+   "sha256": "e32071c4eaf2fd468ffcf5b3214e2ccf77cf6dddd9e1d6918d506a4311ae5d12",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/k2h/residues/tagmove.json": {
+   "bytes": 408,
+   "exists": true,
+   "sha256": "5747e667ec6fc2edcf28ffeefb92b3926b1db5e090de23cfc2efab63e231299e",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/k2h/residues/verify_receipt.json": {
+   "bytes": 609,
+   "exists": true,
+   "sha256": "afd13e1b65a7ab48a6d2214ebe6a33c861aab4658f3f8f7b8984574f13a16c01",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/k2h/residues_driver.log": {
+   "bytes": 71041,
+   "exists": true,
+   "sha256": "7b56da1e45d2cb1b6f16d3b3d13caebc6ec4b8ebc304adba4721f4d8bb65273d",
+   "source": "results",
+   "tracked": true
+  },
   "logs/k2h/stagecensus/census.jsonl": {
    "bytes": 1731383,
    "exists": true,

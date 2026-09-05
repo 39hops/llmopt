@@ -1,0 +1,21 @@
+Fetching 37 files:   0%|          | 0/37 [00:00<?, ?it/s]Fetching 37 files: 100%|██████████| 37/37 [00:00<00:00, 5790.43it/s]
+[ERROR] `cache_position` is part of K2HorizonModel.forward's signature, but not documented. Make sure to add it to the docstring of the function in /Users/artin/.cache/huggingface/modules/transformers_modules/d01b406c051b081c389ec136dddcdd0ad1e5a533/61ad561839604e4f/modeling_k2_horizon.py.
+[ERROR] `cache_position` is part of K2HorizonForCausalLM.forward's signature, but not documented. Make sure to add it to the docstring of the function in /Users/artin/.cache/huggingface/modules/transformers_modules/d01b406c051b081c389ec136dddcdd0ad1e5a533/61ad561839604e4f/modeling_k2_horizon.py.
+Loading weights:   0%|          | 0/255 [00:00<?, ?it/s]Loading weights:  80%|████████  | 204/255 [00:00<00:00, 2037.63it/s]Loading weights: 100%|██████████| 255/255 [00:00<00:00, 2085.36it/s]
+[transformers] The remote code model you are currently using seems to expect `cache_position`. This arg has been removed from the Transformers library, and will stop being created in `generate` even for remote code models in a future release. Please open a PR on the remote code hub repo to remove any usage of `cache_position`.
+[ladder] pretrain_500000 T1 22/40 {'poly_diff': 20, 'expand2': 2} 25s
+[ladder] pretrain_500000 T2 20/40 {'prod_diff': 0, 'poly_int': 20} 51s
+[ladder] pretrain_500000 T3 20/40 {'chain_diff': 20, 'expand3': 0} 81s
+[ladder] pretrain_500000 T4 3/40 {'second_diff': 0, 'xexp_int': 3} 114s
+[ladder] pretrain_500000 T5 0/40 {'definite_int': 0, 'det2': 0} 138s
+[ladder] pretrain_500000 T6 2/40 {'x2exp_int': 0, 'quot_diff': 2} 170s
+Fetching 15 files:   0%|          | 0/15 [00:00<?, ?it/s]Fetching 15 files: 100%|██████████| 15/15 [00:00<00:00, 5605.36it/s]
+[ERROR] `cache_position` is part of K2HorizonModel.forward's signature, but not documented. Make sure to add it to the docstring of the function in /Users/artin/.cache/huggingface/modules/transformers_modules/ee770e713760cf6350e4322cdbbff91a163b7d70/61ad561839604e4f/modeling_k2_horizon.py.
+[ERROR] `cache_position` is part of K2HorizonForCausalLM.forward's signature, but not documented. Make sure to add it to the docstring of the function in /Users/artin/.cache/huggingface/modules/transformers_modules/ee770e713760cf6350e4322cdbbff91a163b7d70/61ad561839604e4f/modeling_k2_horizon.py.
+Loading weights:   0%|          | 0/255 [00:00<?, ?it/s]Loading weights:  58%|█████▊    | 149/255 [00:00<00:00, 1471.49it/s]Loading weights: 100%|██████████| 255/255 [00:00<00:00, 1748.96it/s]
+[ladder] main T1 22/40 {'poly_diff': 20, 'expand2': 2} 193s
+[ladder] main T2 23/40 {'prod_diff': 6, 'poly_int': 17} 218s
+[ladder] main T3 20/40 {'chain_diff': 20, 'expand3': 0} 248s
+[ladder] main T4 9/40 {'second_diff': 1, 'xexp_int': 8} 281s
+[ladder] main T5 1/40 {'definite_int': 1, 'det2': 0} 303s
+[ladder] main T6 0/40 {'x2exp_int': 0, 'quot_diff': 0} 335s

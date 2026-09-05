@@ -1,0 +1,15 @@
+{
+ "prereg": "K2-HORIZON-RESIDUES-0",
+ "verdict": "VERIFIED",
+ "discrepancies": [],
+ "n_discrepancies": 0,
+ "n_factorial_rows": 1440,
+ "n_autocorr_rows": 18360,
+ "receipt_sha256": "3c28adc1a9392fdab8c3496dd4c3123f795bd716d6c03a30cc4c3220ef36f557",
+ "factorial_rows_sha256": "a60f9d3f6d85de2888d48219947e9014908042271e7996d35546aee1b824b35f",
+ "autocorr_rows_sha256": "c0ebaf8cbb5a4cd5d64e885478aedc9cf68e554b8a2237e0203739584367c8f3",
+ "instrument_run_commit": "efd8dbcd",
+ "commit": "30310283",
+ "status_porcelain": "",
+ "verifier_sha256": "9bf00b5e6afc011534b5273991565d59afbddde7c74fe434d24861c73babb5be"
+}
