@@ -2872,6 +2872,31 @@ MATH-CYBER-1 MATCHED-SUBSET-MATERIALIZE-0-CENSOR — amended re-materialization 
 - `alt_edge_exists(cur, nxt, seed)` — ANY current legal edge (any rule) whose child prints nxt,
 - `main()`
 
+### scratch/mathworld1_morphology.py
+MATH-CYBER-1-RENDER-ATLAS-MORPHOLOGY-0 — zero-logit plateau-quotient and morphology analysis of the twelve booked render-atlas fields (definitions frozen at RESULTS L65937 / L65753; prereg L65989). Step P0 (plateau partition, quotient graph, quotient local maxima, quotient steepest ascent) runs first; then banks E (robustness radius), F (distance-to-optimum profile), H (total variation, Dirichlet energy, Laplacian spectrum, 200 string-seeded relabelings as a reference), I (Pareto-front geometry). The four discovery atlases and the eight fresh atlases are analysed separately and never pooled. Graph builder, gates, BFS and component helpers are imported from the frozen scratch/mathworld1_cayley.py (not edited). No model, no logit; torch is never imported.
+
+- `union_find_plateaus(adj, x)` — Plateaus = connected components of equal-value induced subgraphs.
+- `p0(adj, x, vertex_level_list)`
+- `anchor_flow(res, anchors)`
+- `radius(adj, S, v)`
+- `spearman(x, y)`
+- `shell_stats(vals)`
+- `bank_f(adj, opt, B, T)`
+- `tv_q(edges, x)`
+- `spectral(U, lam, x, k_cuts)`
+- `pareto(vecs)`
+- `analyze(cohort, spec, adj, edges, U, lam, cay)`
+- `main()`
+
+### scratch/mathworld1_morphologyverify.py
+Independent verifier for MATH-CYBER-1-RENDER-ATLAS-MORPHOLOGY-0 (prereg RESULTS L65989). Shares no code with scratch/mathworld1_morphology.py: rebuilds the Cayley graph from the manifest by inversion distance, finds plateaus with its own union-find, recounts quotient maxima, interior maxima and classes, re-runs quotient ascent, recomputes radii, the distance profile Spearman, total variation and zero-change fractions, the Laplacian spectrum through scipy.linalg.eigh (with orthonormality, reconstruction and Parseval checks), the 200 string-seeded relabelings, and the Pareto fronts, then compares every quantity with the instrument's JSON. Writes logs/mathworld1/morphology/verify_receipt.json.
+
+- `chk(c, m)`
+- `inv_dist(p, q)`
+- `avg_rank(v)`
+- `spearman(x, y)`
+- `main()`
+
 ### scratch/mathworld1_pdcov.py
 MATH-CYBER-1 PROGRAM-DIET-COVERAGE-0 — census: how much of theta0's EXACT historical birth diet deterministically relabels from (cur, nxt) into the fully-qualified v4 ActionProgram under the pinned engine? Zero model, zero training, zero fresh seeds, zero search evaluation, zero MAGIC.
 

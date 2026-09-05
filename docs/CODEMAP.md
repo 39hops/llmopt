@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 230, library 73, reproduce-pinned 10, results-cited 394, spec-cited 89, cited-but-library 61
+Census: UNCITED 230, library 74, reproduce-pinned 10, results-cited 395, spec-cited 89, cited-but-library 62
 
 ## scratch/
 
@@ -267,7 +267,7 @@ Census: UNCITED 230, library 73, reproduce-pinned 10, results-cited 394, spec-ci
 | mathworld1 | mathworld1_autopsy.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_axfixture.py | results-cited | RESULTS | RESULTS×2 | — | 7 |
 | mathworld1 | mathworld1_birth.py | results-cited | RESULTS | RESULTS×2 | — | 37 |
-| mathworld1 | mathworld1_cayley.py | results-cited | RESULTS | RESULTS×2 | — | — |
+| mathworld1 | mathworld1_cayley.py | library | RESULTS | RESULTS×5 | 1 | — |
 | mathworld1 | mathworld1_cayleyverify.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | mathworld1 | mathworld1_census.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_cl1cost.py | results-cited | RESULTS | RESULTS×1 | — | — |
@@ -283,12 +283,14 @@ Census: UNCITED 230, library 73, reproduce-pinned 10, results-cited 394, spec-ci
 | mathworld1 | mathworld1_longctx_census2.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_matsub.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
 | mathworld1 | mathworld1_matsub2.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| mathworld1 | mathworld1_morphology.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
+| mathworld1 | mathworld1_morphologyverify.py | results-cited | RESULTS | RESULTS×3 | — | — |
 | mathworld1 | mathworld1_pdcov.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_prband.py | results-cited | RESULTS | RESULTS×2 | — | 4 |
 | mathworld1 | mathworld1_prband2atlas.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | mathworld1 | mathworld1_prband2atlasagg.py | results-cited | RESULTS | RESULTS×1 | — | 2 |
 | mathworld1 | mathworld1_prband2atlasfresh.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| mathworld1 | mathworld1_prband2atlasfreshagg.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| mathworld1 | mathworld1_prband2atlasfreshagg.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | mathworld1 | mathworld1_prband2atlasfreshverify.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | mathworld1 | mathworld1_prband2atlasscore.py | results-cited | RESULTS | RESULTS×3 | — | 3 |
 | mathworld1 | mathworld1_prband2atlasverify.py | results-cited | RESULTS | RESULTS×2 | — | 1 |

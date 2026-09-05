@@ -903,6 +903,34 @@
    "source": "results",
    "tracked": false
   },
+  "logs/mathworld1/morphology/DISCOVERY.json": {
+   "bytes": 118579,
+   "exists": true,
+   "sha256": "e28873cbec29ef3d3cd6e25d32aa13c8adc50de652be5a20f82143c32da77453",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/morphology/FRESH.json": {
+   "bytes": 225396,
+   "exists": true,
+   "sha256": "c670f374007a1409ccdfe4777a9e9ef83b0feb99b784aab21e115b42d8496db7",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/morphology/morphology_receipt.json": {
+   "bytes": 7873,
+   "exists": true,
+   "sha256": "a03d83fac5cd663dd84fa1ac705a5dc70f700b0800ae60fb8becc38f64180beb",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/mathworld1/morphology/verify_receipt.json": {
+   "bytes": 5852,
+   "exists": true,
+   "sha256": "d9835ac9a2b1078ec34bffa9fd27fc3f6f829dae2c1c3599d2eda1b568118195",
+   "source": "results",
+   "tracked": true
+  },
   "logs/mathworld1/pdc_anatomy.json": {
    "bytes": 4134,
    "exists": true,

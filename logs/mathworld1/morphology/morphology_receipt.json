@@ -1,0 +1,302 @@
+{
+ "prereg": "MATH-CYBER-1-RENDER-ATLAS-MORPHOLOGY-0",
+ "pins": {
+  "logs/mathworld1/prband2atlas/atlas_manifest.jsonl": "687b5e54e0da19bf057431eb4d44b755302c1963d18e13fb6d316fa99dd2f4b2",
+  "logs/mathworld1/prband2atlas/atlas_policies.jsonl": "b4a1c08308ca429d4bd7eb01210dfe469cd11eb9c9c527daf42997cec6d86c71",
+  "logs/mathworld1/prband2atlasscore/policy_table.jsonl": "73dba755a3089a42177ef00a91481e93c2114276938df92958509a8aeda2505e",
+  "logs/mathworld1/prband2atlasscore/aggregate.json": "8df318f742952740ce44c98d57fd8fb2f9632fa283d75f5c4808c4e158e66105",
+  "logs/mathworld1/prband2atlasfresh/policy_table.jsonl": "e42999947102112d03d0aa7529d79daf5896e0cc972ace8aa2acc41b6381d321",
+  "logs/mathworld1/prband2atlasfresh/aggregate.json": "c6d16e8c7b2c68b9d73e9e7e28eb2d6e0b354b3ee64e459ca66460ccad1fa443",
+  "logs/mathworld1/cayley/DISCOVERY.json": "fc25acd443343fedad44fbed411cb059907a7dcbd39aaacdb2683c1cc0cc64e2",
+  "logs/mathworld1/cayley/FRESH.json": "101475dbd35153974ae53f1d8170b1aea53d223d01a0e322f7a52bf254504307",
+  "logs/mathworld1/cayley/cayley_receipt.json": "07f53a2bfe1ce407d323eac12eccbb3f5800baf6825ff5e0a37ea8653a70bdf9"
+ },
+ "graph": {
+  "V": 720,
+  "E": 1800,
+  "degree": 5,
+  "diameter": 15,
+  "laplacian_eigenvalues_distinct": 67
+ },
+ "cuts": {
+  "10%": 72,
+  "25%": 180,
+  "50%": 360
+ },
+ "n_null": 200,
+ "smoke": false,
+ "cohorts": {
+  "DISCOVERY": {
+   "sha256": "e28873cbec29ef3d3cd6e25d32aa13c8adc50de652be5a20f82143c32da77453",
+   "checkpoints": [
+    "19001|CANONICAL",
+    "19001|PARAM_FIRST",
+    "20001|CANONICAL",
+    "20001|PARAM_FIRST"
+   ],
+   "anchors": {
+    "RAW": 12,
+    "K_FIRST": 480,
+    "LOW_PAIR_FIRST": 300,
+    "R488": 488
+   },
+   "bars": {
+    "B1": {
+     "pass": true
+    },
+    "B2": {
+     "n_flat": 2,
+     "classes": [
+      "RUGGED",
+      "FLAT-WITH-FEW-PEAKS",
+      "INTERMEDIATE",
+      "FLAT-WITH-FEW-PEAKS"
+     ],
+     "fires": "B-MIXED"
+    },
+    "B3": {
+     "n_rugged": 1,
+     "classes": [
+      "RUGGED",
+      "FLAT-WITH-FEW-PEAKS",
+      "INTERMEDIATE",
+      "INTERMEDIATE"
+     ],
+     "fires": false
+    },
+    "B4": {
+     "largest_global_basin_fraction": {
+      "19001|CANONICAL": 0.7680555555555556,
+      "19001|PARAM_FIRST": 0.8625,
+      "20001|CANONICAL": 0.9541666666666667,
+      "20001|PARAM_FIRST": 0.8652777777777778
+     },
+     "fires": false
+    },
+    "B5": {
+     "R488_MAJORITY": {
+      "19001|CANONICAL": {
+       "status": "IN-SET",
+       "radius": 1
+      },
+      "19001|PARAM_FIRST": {
+       "status": "IN-SET",
+       "radius": 1
+      },
+      "20001|CANONICAL": {
+       "status": "IN-SET",
+       "radius": 1
+      },
+      "20001|PARAM_FIRST": {
+       "status": "IN-SET",
+       "radius": 1
+      }
+     },
+     "fires": true
+    },
+    "B6": {
+     "spearman_B_vs_d": {
+      "19001|CANONICAL": -0.288902,
+      "19001|PARAM_FIRST": -0.598392,
+      "20001|CANONICAL": -0.599641,
+      "20001|PARAM_FIRST": -0.484874
+     },
+     "fires": false
+    },
+    "B7": {
+     "field_below_all_200": {
+      "19001|CANONICAL|B": true,
+      "19001|CANONICAL|T": true,
+      "19001|PARAM_FIRST|B": true,
+      "19001|PARAM_FIRST|T": true,
+      "20001|CANONICAL|B": true,
+      "20001|CANONICAL|T": true,
+      "20001|PARAM_FIRST|B": true,
+      "20001|PARAM_FIRST|T": true
+     },
+     "fires": true
+    },
+    "B8": {
+     "B_front_connected": false,
+     "n_components": 11,
+     "fires": "FRONT-DISCONNECTED"
+    },
+    "prior7_low_mode_B": {
+     "field_above_all_200": {
+      "19001|CANONICAL": true,
+      "19001|PARAM_FIRST": true,
+      "20001|CANONICAL": true,
+      "20001|PARAM_FIRST": true
+     },
+     "all": true
+    }
+   }
+  },
+  "FRESH": {
+   "sha256": "c670f374007a1409ccdfe4777a9e9ef83b0feb99b784aab21e115b42d8496db7",
+   "checkpoints": [
+    "21001|CANONICAL",
+    "21001|PARAM_FIRST",
+    "22001|CANONICAL",
+    "22001|PARAM_FIRST",
+    "23001|CANONICAL",
+    "23001|PARAM_FIRST",
+    "24001|CANONICAL",
+    "24001|PARAM_FIRST"
+   ],
+   "anchors": {
+    "RAW": 12,
+    "R488": 488,
+    "R128": 128
+   },
+   "bars": {
+    "B1": {
+     "pass": true
+    },
+    "B2": {
+     "n_flat": 1,
+     "classes": [
+      "RUGGED",
+      "RUGGED",
+      "RUGGED",
+      "INTERMEDIATE",
+      "INTERMEDIATE",
+      "INTERMEDIATE",
+      "INTERMEDIATE",
+      "FLAT-WITH-FEW-PEAKS"
+     ],
+     "fires": "B-MIXED"
+    },
+    "B3": {
+     "n_rugged": 2,
+     "classes": [
+      "RUGGED",
+      "RUGGED",
+      "INTERMEDIATE",
+      "INTERMEDIATE",
+      "INTERMEDIATE",
+      "INTERMEDIATE",
+      "INTERMEDIATE",
+      "FLAT-WITH-FEW-PEAKS"
+     ],
+     "fires": false
+    },
+    "B4": {
+     "largest_global_basin_fraction": {
+      "21001|CANONICAL": 0.6763888888888889,
+      "21001|PARAM_FIRST": 0.7708333333333334,
+      "22001|CANONICAL": 0.75,
+      "22001|PARAM_FIRST": 0.825,
+      "23001|CANONICAL": 0.8805555555555555,
+      "23001|PARAM_FIRST": 0.9125,
+      "24001|CANONICAL": 0.7222222222222222,
+      "24001|PARAM_FIRST": 0.9597222222222223
+     },
+     "fires": false
+    },
+    "B5": {
+     "R488_MAJORITY": {
+      "21001|CANONICAL": {
+       "status": "NOT-IN-SET",
+       "distance_to_set": 2
+      },
+      "21001|PARAM_FIRST": {
+       "status": "NOT-IN-SET",
+       "distance_to_set": 3
+      },
+      "22001|CANONICAL": {
+       "status": "NOT-IN-SET",
+       "distance_to_set": 1
+      },
+      "22001|PARAM_FIRST": {
+       "status": "IN-SET",
+       "radius": 1
+      },
+      "23001|CANONICAL": {
+       "status": "NOT-IN-SET",
+       "distance_to_set": 2
+      },
+      "23001|PARAM_FIRST": {
+       "status": "NOT-IN-SET",
+       "distance_to_set": 1
+      },
+      "24001|CANONICAL": {
+       "status": "NOT-IN-SET",
+       "distance_to_set": 1
+      },
+      "24001|PARAM_FIRST": {
+       "status": "NOT-IN-SET",
+       "distance_to_set": 1
+      }
+     },
+     "fires": false
+    },
+    "B6": {
+     "spearman_B_vs_d": {
+      "21001|CANONICAL": -0.282367,
+      "21001|PARAM_FIRST": -0.357545,
+      "22001|CANONICAL": -0.542619,
+      "22001|PARAM_FIRST": -0.401164,
+      "23001|CANONICAL": -0.383807,
+      "23001|PARAM_FIRST": -0.590641,
+      "24001|CANONICAL": -0.651272,
+      "24001|PARAM_FIRST": -0.521916
+     },
+     "fires": false
+    },
+    "B7": {
+     "field_below_all_200": {
+      "21001|CANONICAL|B": true,
+      "21001|CANONICAL|T": true,
+      "21001|PARAM_FIRST|B": true,
+      "21001|PARAM_FIRST|T": true,
+      "22001|CANONICAL|B": true,
+      "22001|CANONICAL|T": true,
+      "22001|PARAM_FIRST|B": true,
+      "22001|PARAM_FIRST|T": true,
+      "23001|CANONICAL|B": true,
+      "23001|CANONICAL|T": true,
+      "23001|PARAM_FIRST|B": true,
+      "23001|PARAM_FIRST|T": true,
+      "24001|CANONICAL|B": true,
+      "24001|CANONICAL|T": true,
+      "24001|PARAM_FIRST|B": true,
+      "24001|PARAM_FIRST|T": true
+     },
+     "fires": true
+    },
+    "B8": {
+     "B_front_connected": false,
+     "n_components": 27,
+     "fires": "FRONT-DISCONNECTED"
+    },
+    "prior7_low_mode_B": {
+     "field_above_all_200": {
+      "21001|CANONICAL": true,
+      "21001|PARAM_FIRST": true,
+      "22001|CANONICAL": true,
+      "22001|PARAM_FIRST": true,
+      "23001|CANONICAL": true,
+      "23001|PARAM_FIRST": true,
+      "24001|CANONICAL": true,
+      "24001|PARAM_FIRST": true
+     },
+     "all": true
+    }
+   }
+  }
+ },
+ "semantic_beyond_all_surface_identifiable": false,
+ "wall_s": 1.7,
+ "start": {
+  "start_commit": "fb04418c",
+  "start_status_porcelain": " M scripts/INDEX.md\n",
+  "interpreter": "/Users/artin/code/llmopt/.venv/bin/python",
+  "file_sha256": {
+   "scratch/mathworld1_morphology.py": "0c99105761767fe66ca5250c2ff48cc25c5f410c61be00c81fc97f1c146aeddd",
+   "scratch/mathworld1_cayley.py": "cd655f5a86bedbddea2674c164878838d531dbb4d7e557ea0fca3b6e4a7a55bf",
+   "llmopt/lab/provenance.py": "4a5b39a9bb7d145166b6d2d5ff93dc47fc3bd355f5519ad9be8701e94a5001c1"
+  }
+ },
+ "completion_commit": "fb04418c"
+}

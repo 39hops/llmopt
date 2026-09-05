@@ -1,0 +1,171 @@
+{
+ "prereg": "MATH-CYBER-1-RENDER-ATLAS-MORPHOLOGY-0",
+ "verdict": "VERIFIED",
+ "discrepancies": [],
+ "n_discrepancies": 0,
+ "input_pins": {
+  "logs/mathworld1/prband2atlas/atlas_manifest.jsonl": "687b5e54e0da19bf057431eb4d44b755302c1963d18e13fb6d316fa99dd2f4b2",
+  "logs/mathworld1/prband2atlasscore/policy_table.jsonl": "73dba755a3089a42177ef00a91481e93c2114276938df92958509a8aeda2505e",
+  "logs/mathworld1/prband2atlasfresh/policy_table.jsonl": "e42999947102112d03d0aa7529d79daf5896e0cc972ace8aa2acc41b6381d321",
+  "logs/mathworld1/cayley/DISCOVERY.json": "fc25acd443343fedad44fbed411cb059907a7dcbd39aaacdb2683c1cc0cc64e2",
+  "logs/mathworld1/cayley/FRESH.json": "101475dbd35153974ae53f1d8170b1aea53d223d01a0e322f7a52bf254504307"
+ },
+ "inputs": {
+  "morphology_receipt.json": "a03d83fac5cd663dd84fa1ac705a5dc70f700b0800ae60fb8becc38f64180beb",
+  "scratch/mathworld1_morphology.py": "0c99105761767fe66ca5250c2ff48cc25c5f410c61be00c81fc97f1c146aeddd",
+  "DISCOVERY": "e28873cbec29ef3d3cd6e25d32aa13c8adc50de652be5a20f82143c32da77453",
+  "FRESH": "c670f374007a1409ccdfe4777a9e9ef83b0feb99b784aab21e115b42d8496db7"
+ },
+ "prior7_spectral": {
+  "DISCOVERY": {
+   "19001|CANONICAL|B": {
+    "instrument_cut10_above_all": true,
+    "verifier_basis_cut10_above_all": true,
+    "invariant_boundary_k": 68,
+    "invariant_boundary_above_all": true
+   },
+   "19001|CANONICAL|T": {
+    "instrument_cut10_above_all": true,
+    "verifier_basis_cut10_above_all": true,
+    "invariant_boundary_k": 68,
+    "invariant_boundary_above_all": true
+   },
+   "19001|PARAM_FIRST|B": {
+    "instrument_cut10_above_all": true,
+    "verifier_basis_cut10_above_all": true,
+    "invariant_boundary_k": 68,
+    "invariant_boundary_above_all": true
+   },
+   "19001|PARAM_FIRST|T": {
+    "instrument_cut10_above_all": true,
+    "verifier_basis_cut10_above_all": true,
+    "invariant_boundary_k": 68,
+    "invariant_boundary_above_all": true
+   },
+   "20001|CANONICAL|B": {
+    "instrument_cut10_above_all": true,
+    "verifier_basis_cut10_above_all": true,
+    "invariant_boundary_k": 68,
+    "invariant_boundary_above_all": true
+   },
+   "20001|CANONICAL|T": {
+    "instrument_cut10_above_all": true,
+    "verifier_basis_cut10_above_all": true,
+    "invariant_boundary_k": 68,
+    "invariant_boundary_above_all": true
+   },
+   "20001|PARAM_FIRST|B": {
+    "instrument_cut10_above_all": true,
+    "verifier_basis_cut10_above_all": true,
+    "invariant_boundary_k": 68,
+    "invariant_boundary_above_all": true
+   },
+   "20001|PARAM_FIRST|T": {
+    "instrument_cut10_above_all": true,
+    "verifier_basis_cut10_above_all": true,
+    "invariant_boundary_k": 68,
+    "invariant_boundary_above_all": true
+   }
+  },
+  "FRESH": {
+   "21001|CANONICAL|B": {
+    "instrument_cut10_above_all": true,
+    "verifier_basis_cut10_above_all": true,
+    "invariant_boundary_k": 68,
+    "invariant_boundary_above_all": true
+   },
+   "21001|CANONICAL|T": {
+    "instrument_cut10_above_all": true,
+    "verifier_basis_cut10_above_all": true,
+    "invariant_boundary_k": 68,
+    "invariant_boundary_above_all": true
+   },
+   "21001|PARAM_FIRST|B": {
+    "instrument_cut10_above_all": true,
+    "verifier_basis_cut10_above_all": true,
+    "invariant_boundary_k": 68,
+    "invariant_boundary_above_all": true
+   },
+   "21001|PARAM_FIRST|T": {
+    "instrument_cut10_above_all": true,
+    "verifier_basis_cut10_above_all": true,
+    "invariant_boundary_k": 68,
+    "invariant_boundary_above_all": true
+   },
+   "22001|CANONICAL|B": {
+    "instrument_cut10_above_all": true,
+    "verifier_basis_cut10_above_all": true,
+    "invariant_boundary_k": 68,
+    "invariant_boundary_above_all": true
+   },
+   "22001|CANONICAL|T": {
+    "instrument_cut10_above_all": true,
+    "verifier_basis_cut10_above_all": true,
+    "invariant_boundary_k": 68,
+    "invariant_boundary_above_all": true
+   },
+   "22001|PARAM_FIRST|B": {
+    "instrument_cut10_above_all": true,
+    "verifier_basis_cut10_above_all": true,
+    "invariant_boundary_k": 68,
+    "invariant_boundary_above_all": true
+   },
+   "22001|PARAM_FIRST|T": {
+    "instrument_cut10_above_all": true,
+    "verifier_basis_cut10_above_all": true,
+    "invariant_boundary_k": 68,
+    "invariant_boundary_above_all": true
+   },
+   "23001|CANONICAL|B": {
+    "instrument_cut10_above_all": true,
+    "verifier_basis_cut10_above_all": true,
+    "invariant_boundary_k": 68,
+    "invariant_boundary_above_all": true
+   },
+   "23001|CANONICAL|T": {
+    "instrument_cut10_above_all": true,
+    "verifier_basis_cut10_above_all": true,
+    "invariant_boundary_k": 68,
+    "invariant_boundary_above_all": true
+   },
+   "23001|PARAM_FIRST|B": {
+    "instrument_cut10_above_all": true,
+    "verifier_basis_cut10_above_all": true,
+    "invariant_boundary_k": 68,
+    "invariant_boundary_above_all": true
+   },
+   "23001|PARAM_FIRST|T": {
+    "instrument_cut10_above_all": true,
+    "verifier_basis_cut10_above_all": true,
+    "invariant_boundary_k": 68,
+    "invariant_boundary_above_all": true
+   },
+   "24001|CANONICAL|B": {
+    "instrument_cut10_above_all": true,
+    "verifier_basis_cut10_above_all": true,
+    "invariant_boundary_k": 68,
+    "invariant_boundary_above_all": true
+   },
+   "24001|CANONICAL|T": {
+    "instrument_cut10_above_all": true,
+    "verifier_basis_cut10_above_all": true,
+    "invariant_boundary_k": 68,
+    "invariant_boundary_above_all": true
+   },
+   "24001|PARAM_FIRST|B": {
+    "instrument_cut10_above_all": true,
+    "verifier_basis_cut10_above_all": true,
+    "invariant_boundary_k": 68,
+    "invariant_boundary_above_all": true
+   },
+   "24001|PARAM_FIRST|T": {
+    "instrument_cut10_above_all": true,
+    "verifier_basis_cut10_above_all": true,
+    "invariant_boundary_k": 68,
+    "invariant_boundary_above_all": true
+   }
+  }
+ },
+ "commit": "f887c816",
+ "verifier_sha256": "a2d581a71e360ac9997f0d56bac9ba1121d2b6a579608240ace7f6b5bd26763e"
+}
