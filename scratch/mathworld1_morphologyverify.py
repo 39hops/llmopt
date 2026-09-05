@@ -105,10 +105,19 @@ def main():
         L[v, v] += 1
     lam, U = scipy.linalg.eigh(L)
     chk(np.allclose(U.T @ U, np.eye(720), atol=1e-8) and np.allclose(U @ np.diag(lam) @ U.T, L, atol=1e-7), "eigh")
-    rec_inputs = {}
+    # Refuse to overwrite a receipt: the verifier's output is results-cited once booked.
+    chk(not (OUTDIR / "verify_receipt.json").exists(), "REFUSE OVERWRITE verify_receipt.json")
+    if D:
+        raise SystemExit(D[-1])
+    inst = json.load(open(OUTDIR / "morphology_receipt.json"))
+    chk(inst.get("smoke") is False and inst.get("n_null") == 200 and inst["prereg"] == "MATH-CYBER-1-RENDER-ATLAS-MORPHOLOGY-0", "instrument receipt identity")
+    rec_inputs = {"morphology_receipt.json": hashlib.sha256((OUTDIR / "morphology_receipt.json").read_bytes()).hexdigest(),
+                  "scratch/mathworld1_morphology.py": hashlib.sha256(open("scratch/mathworld1_morphology.py", "rb").read()).hexdigest()}
+    chk(rec_inputs["scratch/mathworld1_morphology.py"] == inst["start"]["file_sha256"]["scratch/mathworld1_morphology.py"], "instrument source sha v receipt")
     for cohort in ("DISCOVERY", "FRESH"):
         res = json.load(open(OUTDIR / f"{cohort}.json"))
         rec_inputs[cohort] = hashlib.sha256((OUTDIR / f"{cohort}.json").read_bytes()).hexdigest()
+        chk(inst["cohorts"][cohort]["sha256"] == rec_inputs[cohort], f"{cohort} cohort sha v instrument receipt")
         table = {"DISCOVERY": "logs/mathworld1/prband2atlasscore/policy_table.jsonl",
                  "FRESH": "logs/mathworld1/prband2atlasfresh/policy_table.jsonl"}[cohort]
         rows = {r["atlas_index"]: r for r in map(json.loads, open(table))}
@@ -177,6 +186,7 @@ def main():
                 # H
                 dd = np.array([abs(x[u] - x[v]) for u, v in edges], dtype=float)
                 H = res["H"][ck][f]
+                chk(H["null"]["n"] == 200, f"{cohort} {ck} {f} null n")
                 tvn = dd.sum() / (1800 * (hi - lo))
                 chk(abs(H["TV_norm"] - tvn) < 1e-12, f"{cohort} {ck} {f} TV_norm")
                 chk(abs(H["Q_norm"] - (dd ** 2).sum() / (1800 * np.var(x))) < 1e-9, f"{cohort} {ck} {f} Q_norm")
@@ -295,7 +305,8 @@ def main():
         "logs/mathworld1/prband2atlas/atlas_manifest.jsonl", "logs/mathworld1/prband2atlasscore/policy_table.jsonl",
         "logs/mathworld1/prband2atlasfresh/policy_table.jsonl", "logs/mathworld1/cayley/DISCOVERY.json",
         "logs/mathworld1/cayley/FRESH.json")}
-    rec = {"verdict": "VERIFIED" if not D else "DISCREPANCIES", "discrepancies": D[:40], "n_discrepancies": len(D),
+    rec = {"prereg": "MATH-CYBER-1-RENDER-ATLAS-MORPHOLOGY-0", "verdict": "VERIFIED" if not D else "DISCREPANCIES",
+           "discrepancies": D[:40], "n_discrepancies": len(D),
            "input_pins": pins, "inputs": rec_inputs, "prior7_spectral": INV,
            "commit": subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip(),
            "verifier_sha256": hashlib.sha256(open(__file__, "rb").read()).hexdigest()}
