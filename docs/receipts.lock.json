@@ -626,6 +626,41 @@
    "source": "results",
    "tracked": true
   },
+  "logs/k2h/stagecensus/census.jsonl": {
+   "bytes": 1731383,
+   "exists": true,
+   "sha256": "bb2ab3756127f71f577704283f8184c391dceda1b69165f35780eef7253459df",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/k2h/stagecensus/gate_rows.jsonl": {
+   "bytes": 2102542,
+   "exists": true,
+   "sha256": "c9aca63769b548ae0270b12706d39cdc4e817e23d77880cee5e553c6fdecf1fd",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/k2h/stagecensus/receipt.json": {
+   "bytes": 73129,
+   "exists": true,
+   "sha256": "4faedb9633e06d998f4d067727f6d4ae1594731bdaeff309827020f8ce417950",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/k2h/stagecensus/verify_receipt.json": {
+   "bytes": 721,
+   "exists": true,
+   "sha256": "758f8991cb475c7481c064444e7b1379b7b20ec9b3dc818e85eef09267ac4f00",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/k2h/stagecensus_driver.log": {
+   "bytes": 39678,
+   "exists": true,
+   "sha256": "7675aba8b30192e00eb85570bfd422be76f466fefbe6f6fcfa72d04ead63de15",
+   "source": "results",
+   "tracked": true
+  },
   "logs/lean/leanfull_v2.log": {
    "bytes": 43588,
    "exists": true,

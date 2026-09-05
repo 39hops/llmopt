@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 230, library 74, reproduce-pinned 10, results-cited 403, spec-cited 89, cited-but-library 62
+Census: UNCITED 230, library 74, reproduce-pinned 10, results-cited 405, spec-cited 89, cited-but-library 62
 
 ## scratch/
 
@@ -230,6 +230,8 @@ Census: UNCITED 230, library 74, reproduce-pinned 10, results-cited 403, spec-ci
 | int3 | int3_rider.py | UNCITED | — | — | — | — |
 | jointperm | jointperm_distance.py | UNCITED | — | — | — | — |
 | judge | judge_decode.py | spec-cited | specs | specs×3 | — | — |
+| k2h | k2h_stagecensus.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
+| k2h | k2h_stagecensusverify.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | k3 | k3_expert_demo.py | results-cited | RESULTS, specs | RESULTS×4, specs×3 | — | 4 |
 | keff | keff_probe.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | kv | kv_after_night.sh | UNCITED | — | — | — | — |
@@ -800,7 +802,7 @@ Census: UNCITED 230, library 74, reproduce-pinned 10, results-cited 403, spec-ci
 | render | render_anim.py | library | specs | specs×1 | 1 | — |
 | render | render_gallery.py | spec-cited | specs | specs×6 | — | — |
 | render | render_hero_neurons.py | spec-cited | specs | specs×3 | — | 1 |
-| results | results_query.py | spec-cited | specs | specs×15 | — | 2 |
+| results | results_query.py | spec-cited | specs | specs×16 | — | 2 |
 | rjob | rjob.py | results-cited | RESULTS, specs | RESULTS×3, specs×2 | — | — |
 | sol | sol_enrich_results.py | library | specs | specs×4 | 1 | — |
 | sol | sol_generate_tables.py | spec-cited | specs | specs×3 | — | — |

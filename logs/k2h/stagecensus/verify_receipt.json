@@ -1,0 +1,17 @@
+{
+ "prereg": "K2-HORIZON-STAGE-DELTA-CENSUS-0",
+ "verdict": "VERIFIED",
+ "discrepancies": [],
+ "n_discrepancies": 0,
+ "n_census_rows": 3060,
+ "n_gate_rows": 4080,
+ "rescored_subset": 566,
+ "instrument_source_sha256": "1210b7b474d9d0d5f842c02c017ee35a2377bf8d4828ffafa8015934af0185dc",
+ "receipt_sha256": "4faedb9633e06d998f4d067727f6d4ae1594731bdaeff309827020f8ce417950",
+ "census_sha256": "bb2ab3756127f71f577704283f8184c391dceda1b69165f35780eef7253459df",
+ "gate_rows_sha256": "c9aca63769b548ae0270b12706d39cdc4e817e23d77880cee5e553c6fdecf1fd",
+ "instrument_run_commit": "7d3a9a03",
+ "commit": "7d3a9a03",
+ "status_porcelain": "",
+ "verifier_sha256": "0d2a48f11f9d8d43b02961d7381bab6c49aade7aa37f9fd8a8ffb501f9866568"
+}
