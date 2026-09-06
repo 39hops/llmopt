@@ -2588,6 +2588,7 @@ K2-HORIZON-TRANSPORT-0 instrument (prereg in docs/RESULTS.md): the streaming TRA
 - `shard_list(tag)`
 - `census_shards(shards)` — Smoke censuses only the first SMOKE_SHARDS shards; every shard is
 - `load_shard(path)`
+- `class TagReader` (get, names, close)
 - `tokenizer_homologous(d, tok_dir)` — Ordinary vocab (added-token names excluded) and merges of the tag's
 - `power_sigma_max(W, iters=30)`
 - `tensor_row(name, A, B, structural, prev_d)`
