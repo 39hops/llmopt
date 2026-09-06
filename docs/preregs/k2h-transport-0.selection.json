@@ -1,0 +1,27 @@
+{
+  "prereg": "K2-HORIZON-TRANSPORT-0",
+  "manifest": "docs/preregs/k2h-transport-0.manifest.json",
+  "frozen_on": "2026-09-05",
+  "identity_law": "a checkpoint is (repo, full commit, per-shard sha256); tag names are labels only; every shard is sha256-checked against the manifest before it is opened",
+  "homology_census": {
+    "depth": "36 layers at both sizes (hidden 2560 v 4096, ffn 10240 v 12288, vocab 250,624 both); normalized-depth bins (10) are the registered coordinate regardless",
+    "config_schedule_identical_across_sizes": "pretrain: rope_theta 5e5 / 8,192 positions; mid_1: 1e6 / 32,768; mid_2 onward: 1e7 / 131,072 then 524,288; rope_type default everywhere (no YaRN at any selected tag)",
+    "relabels": "pretrain_final = pretrain_1100000 by shard sha256 at both sizes; the pretraining ladder published is steps 100,000 to 1,100,000 at 100,000-step spacing",
+    "tokenizer": "three tokenizer.json variants across tags differ only in special-token NAMES (same ids), post_processor bos name, and bos/eos names; ordinary vocab and merges identical; one frozen tokenizer per size (the pretrain_final variant, sha 030b626c at both sizes) is used for every tag",
+    "non_homologous_excluded": "rl_merged (7B has sft_2 between sft_1 and rl; parent of the merge undocumented); sft_2_final (7B only)"
+  },
+  "chain": ["pretrain_100000", "pretrain_200000", "pretrain_300000", "pretrain_400000", "pretrain_500000", "pretrain_600000", "pretrain_700000", "pretrain_800000", "pretrain_900000", "pretrain_1000000", "pretrain_1100000", "mid_1_final", "mid_2_final", "mid_3_final", "mid_4_final", "sft_1_final"],
+  "structural_pairs": {
+    "P": {"a": "pretrain_100000", "b": "pretrain_1100000", "dose": "1,000,000 steps", "config_change": "none"},
+    "B1": {"a": "pretrain_1100000", "b": "mid_1_final", "dose": "unpublished", "config_change": "rope_theta 5e5 -> 1e6, positions 8,192 -> 32,768"},
+    "B2": {"a": "mid_1_final", "b": "mid_2_final", "dose": "unpublished", "config_change": "rope_theta 1e6 -> 1e7, positions 32,768 -> 131,072"},
+    "B3": {"a": "mid_2_final", "b": "mid_3_final", "dose": "unpublished", "config_change": "positions 131,072 -> 524,288"},
+    "B4": {"a": "mid_3_final", "b": "mid_4_final", "dose": "unpublished", "config_change": "none"},
+    "B5": {"a": "mid_4_final", "b": "sft_1_final", "dose": "unpublished", "config_change": "none (tokenizer special-token names only)"}
+  },
+  "lag_pairs": "the ten consecutive 100,000-step pretraining pairs; lag 1 only; spacing identical at both sizes and both sizes trained on the same corpus per IFM, so the sign is comparable at this one timescale and no lag index is read as a scale law",
+  "gated_tags": ["pretrain_100000", "pretrain_1100000", "mid_1_final", "mid_2_final", "mid_3_final", "mid_4_final", "sft_1_final"],
+  "gate_control": "common pretraining config (rope_theta 5e5, 8,192 positions) at seed 0 on the five post-pretraining tags; separates weight from config on B1 and B2 where the released config changes",
+  "gate_dtype": "bf16 on mps at both sizes (7B does not fit float32); never compared to the 0.9B float32 numbers",
+  "ladder": "scratch/k2h_gateladder.py, 240 items, digest 2473cd7eac0910c8fa41c23f72f0bc99352d3205407585895750bededea08133; family-level readout law of RESULTS L66427"
+}

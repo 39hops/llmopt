@@ -2507,6 +2507,12 @@ K2-HORIZON-GATE-LADDER-0: the frozen multi-difficulty oracle gate ladder for the
 - `run_tier(model, tok, items, tier, seed, tag, rows_f, counters)` — Per-tier gate: tier-specific shot block, same render / parse /
 - `main()`
 
+### scratch/k2h_manifest.py
+K2-HORIZON-TRANSPORT-0 phase 0: resolve and freeze IMMUTABLE manifests for the 3.7B and 7B checkpoint ladders before any model output. Tags are mutable on the hub (re-pointed 2026-09-05), so every selected checkpoint is frozen as (full commit, config.json sha256, tokenizer sha256s, index sha256, per-shard LFS sha256 from the tree API, byte sizes). Also emits the homology census: per-tag config (layers, hidden, vocab, rope, max_position), relabel identities (tags whose shard-oid sets coincide), and the tag graph per size. No weights are downloaded here.
+
+- `get(url)`
+- `main()`
+
 ### scratch/k2h_residues.py
 K2-HORIZON-RESIDUES-0 instrument (prereg in docs/RESULTS.md): the two cheap residues of VERDICT K2-HORIZON-STAGE-DELTA-CENSUS-0 (RESULTS L66337).
 
@@ -2569,6 +2575,36 @@ Independent verifier for K2-HORIZON-STAGE-DELTA-CENSUS-0. Shares no aggregation 
 *(no docstring)*
 
 - `sha(p)`
+
+### scratch/k2h_transport.py
+K2-HORIZON-TRANSPORT-0 instrument (prereg in docs/RESULTS.md): the streaming TRAINING-STAGE census + frozen gate ladder for one K2 Horizon size (SIZE=3.7B discovery, SIZE=7B prospective), every checkpoint frozen by the immutable manifest docs/preregs/k2h-transport-0.manifest.json (full commit + per-shard LFS sha256): tags are never identifiers here.
+
+- `_load(name, rel)`
+- `sha_file(p)`
+- `tag_dir(tag)`
+- `fetch_small(tag)`
+- `prefetch(tag, shards)` — Download up to PREFETCH_AHEAD shards ahead in threads (disk law:
+- `fetch_shard(tag, shard)`
+- `shard_list(tag)`
+- `census_shards(shards)` — Smoke censuses only the first SMOKE_SHARDS shards; every shard is
+- `load_shard(path)`
+- `tokenizer_homologous(d, tok_dir)` — Ordinary vocab (added-token names excluded) and merges of the tag's
+- `power_sigma_max(W, iters=30)`
+- `tensor_row(name, A, B, structural, prev_d)`
+- `aggregate(rows, L)`
+- `load_model_from_dir(d, tok_dir, common_config=False)`
+- `run_ladder(model, tok, items, seed, tag, rows_f, counters, label)`
+- `gate_tag(tag, tok_dir, items, rec)`
+- `main()`
+
+### scratch/k2h_transportverify.py
+Independent verifier for K2-HORIZON-TRANSPORT-0 (one size per run, SIZE env). Re-reads census.jsonl and gate_rows.jsonl and recomputes every pair aggregate (total relative delta, 36-layer profile, 10-bin normalized-depth profile, centroid, class shares and class order, identical counts, lag-1 median / fraction negative / whole-model cosine from the per-tensor rows, medians of the 2-D statistics), every gate count and digest per (tag, label, seed, tier), re-scores every ninth gate row with its own boxed sympy, checks the tag commits and shard shas against the immutable manifest, the instrument / ladder / census module sources against the receipt's start provenance, and refuses to overwrite its receipt. Bars are adjudicated by the booking against the prereg text, not here: this verifier certifies the numbers.
+
+- `chk(c, m)`
+- `sha(p)`
+- `_w(conn, ans, truth)`
+- `boxed(ans, truth)`
+- `main()`
 
 ### scratch/k3_expert_demo.py
 K3-D1: the Kimi-K3 single-expert deterministic demo.
