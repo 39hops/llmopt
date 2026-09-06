@@ -77,11 +77,13 @@ SEEDS = [0, 1]
 TOKENIZER_TAG = "pretrain_final"
 NBINS = 10
 if SMOKE:
-    CHAIN = ["pretrain_1000000", "pretrain_1100000"]
-    GATED = ["pretrain_1100000"]
+    # the smoke walks the one pair whose two tags use DIFFERENT shard file names
+    # (model-*.safetensors v pytorch_model-*.safetensors), the failure of attempt 1
+    CHAIN = ["mid_4_final", "sft_1_final"]
+    GATED = ["sft_1_final"]
     CONTROL_TAGS = []
     SEEDS = [0]
-    STRUCTURAL = {"pretrain_1000000->pretrain_1100000": "SMOKE"}  # the smoke's P pair re-downloads pretrain_1000000 and exercises the endpoint path
+    STRUCTURAL = {"mid_4_final->sft_1_final": "B5"}
 SMOKE_SHARDS = 2
 
 
@@ -157,6 +159,30 @@ def load_shard(path):
         for n in f.keys():
             out[n] = f.get_tensor(n)
     return out
+
+
+class TagReader:
+    """Tensor-name addressed reader over a tag directory: shard file names
+    differ between tags (sft tags ship pytorch_model-*.safetensors), so the
+    previous tag is always read by tensor name through its own index."""
+
+    def __init__(self, tag):
+        self.dir = tag_dir(tag)
+        self.wmap = json.load(open(os.path.join(self.dir, "model.safetensors.index.json")))["weight_map"]
+        self.handles = {}
+
+    def get(self, name):
+        from safetensors import safe_open
+        shard = self.wmap[name]
+        if shard not in self.handles:
+            self.handles[shard] = safe_open(os.path.join(self.dir, shard), framework="pt")
+        return self.handles[shard].get_tensor(name)
+
+    def names(self):
+        return set(self.wmap)
+
+    def close(self):
+        self.handles.clear()
 
 
 def tokenizer_homologous(d, tok_dir):
@@ -300,8 +326,7 @@ def main():
         raise SystemExit(f"REFUSING: {OUT} exists")
     START = start_provenance(["scratch/k2h_transport.py", "scratch/k2h_gateladder.py", "scratch/k2h_stagecensus.py", MAN_PATH])
     os.makedirs(OUT)
-    shutil.rmtree(SCRATCH, ignore_errors=True)
-    os.makedirs(SCRATCH)
+    os.makedirs(SCRATCH, exist_ok=True)  # leftovers are re-verified by sha256 before use, never trusted
     t0 = time.time()
     items = LAD.make_items()
     rec = {"prereg": PREREG, "smoke": SMOKE, "size": SIZE, "repo": REPO, "start": START, "chain": CHAIN, "gated": GATED, "seeds": SEEDS,
@@ -342,14 +367,15 @@ def main():
         structural = pair in STRUCTURAL
         keep_delta = tag in PRETRAIN and tag != "pretrain_1100000"  # the next pair is a 100k lag pair
         rows, cur_delta = [], {}
+        prev_reader = TagReader(prev_tag)
+        if prev_reader.names() != set(wmap):
+            raise SystemExit(f"REFUSING: tensor sets differ {prev_tag} v {tag}")
         for s in shards:
             rec["tags"][tag]["shard_sha256"][s] = fetch_shard(tag, s)[1]
             if s not in census_shards(shards):
                 continue
-            A = load_shard(os.path.join(tag_dir(prev_tag), s))
             B = load_shard(os.path.join(tag_dir(tag), s))
-            if set(A) != set(B):
-                raise SystemExit(f"REFUSING: tensor sets differ in {s}")
+            A = {n: prev_reader.get(n) for n in B}
             for n in sorted(A):
                 row, d16 = tensor_row(n, A[n], B[n], structural, prev_delta.get(n))
                 if n in prev_delta:
@@ -362,8 +388,7 @@ def main():
                 del d16
             census_f.flush()
             del A, B
-            if prev_tag != held:
-                os.remove(os.path.join(tag_dir(prev_tag), s))
+        prev_reader.close()
         L = L or (1 + max(r["layer"] for r in rows if r["layer"] is not None))
         agg = aggregate(rows, L)
         rec["pairs"][pair] = {"structural": structural, "kind": STRUCTURAL.get(pair, "LAG-PRETRAIN-100k"), **agg}
@@ -384,17 +409,16 @@ def main():
             if first_shards is None:
                 fetch_small(p_first)
                 first_shards, _ = shard_list(p_first)
-            if first_shards != shards:
-                raise SystemExit("REFUSING: shard filenames differ between the endpoint tags")
-            prefetch(p_first, shards)
-            for s in shards:
+            cur_reader = TagReader(tag)
+            prefetch(p_first, first_shards)
+            for s in first_shards:
                 pth, got = fetch_shard(p_first, s)
                 rec["tags"][p_first]["shard_sha256"][s] = got
-                if s in census_shards(shards):
+                if s in census_shards(first_shards):
                     A = load_shard(pth)
-                    B = load_shard(os.path.join(tag_dir(tag), s))
-                    if set(A) != set(B):
+                    if not set(A) <= cur_reader.names():
                         raise SystemExit(f"REFUSING: tensor sets differ in {s} (endpoint pair)")
+                    B = {n: cur_reader.get(n) for n in A}
                     for n in sorted(A):
                         row, _ = tensor_row(n, A[n], B[n], True, None)
                         row.update({"pair": pair, "structural": True, "smoke": SMOKE})
@@ -403,6 +427,7 @@ def main():
                     census_f.flush()
                     del A, B
                 os.remove(pth)
+            cur_reader.close()
             agg = aggregate(rows, L)
             rec["pairs"][pair] = {"structural": True, "kind": "P", **agg}
             rec["timing"][f"pair_{pair}"] = round(time.time() - tp, 1)
