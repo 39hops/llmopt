@@ -2580,6 +2580,9 @@ Independent verifier for K2-HORIZON-STAGE-DELTA-CENSUS-0. Shares no aggregation 
 K2-HORIZON-TRANSPORT-0 instrument (prereg in docs/RESULTS.md): the streaming TRAINING-STAGE census + frozen gate ladder for one K2 Horizon size (SIZE=3.7B discovery, SIZE=7B prospective), every checkpoint frozen by the immutable manifest docs/preregs/k2h-transport-0.manifest.json (full commit + per-shard LFS sha256): tags are never identifiers here.
 
 - `_load(name, rel)`
+- `resolved_tiers()`
+- `resolved_shape()`
+- `assert_registered_shape()`
 - `sha_file(p)`
 - `tag_dir(tag)`
 - `fetch_small(tag)`

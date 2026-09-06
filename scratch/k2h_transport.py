@@ -88,6 +88,35 @@ if os.environ.get("NO_CONTROL") == "1":
     CONTROL_TAGS = []
 OVERLAP_NEXT = os.environ.get("OVERLAP_NEXT") == "1"  # prefetch the next tag's shards during this tag's gate
 HILL = os.environ.get("HILL", "1") == "1"
+DRYRUN = os.environ.get("DRYRUN") == "1"  # exit after the shape check, before any directory or download
+
+# L66495 registered 7B execution shape: for SIZE=7B (non-smoke) the resolved
+# shape must match EXACTLY or the driver refuses before any output or download
+# (Artin, 2026-09-06: a mistyped launch env must not be able to produce a
+# VERIFIED receipt on the wrong shape after a ~7 h run).
+REGISTERED_7B = {"gated": ["pretrain_1100000", "mid_1_final", "mid_2_final", "mid_3_final", "mid_4_final", "sft_1_final"],
+                 "tiers": [1, 2, 4], "seeds": [0, 1], "control_tags": [], "hill": False, "overlap_next": True, "batch": 8}
+
+
+def resolved_tiers():
+    tiers = sorted(LAD.TIERS)
+    if GATE_FAMILIES:
+        tiers = [t for t in tiers if any(f in GATE_FAMILIES for f in LAD.TIERS[t])]
+    return tiers
+
+
+def resolved_shape():
+    return {"gated": list(GATED), "tiers": resolved_tiers(), "seeds": list(SEEDS), "control_tags": list(CONTROL_TAGS),
+            "hill": HILL, "overlap_next": OVERLAP_NEXT, "batch": K.BATCH}
+
+
+def assert_registered_shape():
+    if SIZE == "7B" and not SMOKE:
+        got = resolved_shape()
+        if got != REGISTERED_7B:
+            diff = {k: (got[k], REGISTERED_7B[k]) for k in REGISTERED_7B if got[k] != REGISTERED_7B[k]}
+            raise SystemExit(f"REFUSING: 7B execution shape differs from L66495: {diff}")
+        print("[shape] 7B execution shape matches L66495", flush=True)
 TOKENIZER_TAG = "pretrain_final"
 NBINS = 10
 if SMOKE:
@@ -307,9 +336,7 @@ def load_model_from_dir(d, tok_dir, common_config=False):
 
 
 def run_ladder(model, tok, items, seed, tag, rows_f, counters, label):
-    tiers = [1] if SMOKE else sorted(LAD.TIERS)
-    if GATE_FAMILIES:
-        tiers = [t for t in tiers if any(f in GATE_FAMILIES for f in LAD.TIERS[t])]
+    tiers = [1] if SMOKE else resolved_tiers()
     out = {}
     for tier in tiers:
         sub_items = items if not SMOKE else [it for it in items if it["tier"] == 1][:8]
@@ -343,6 +370,10 @@ def gate_tag(tag, tok_dir, items, rec):
 
 
 def main():
+    assert_registered_shape()
+    if DRYRUN:
+        print(json.dumps({"dryrun": True, "size": SIZE, "shape": resolved_shape()}))
+        return
     if os.path.exists(OUT):
         raise SystemExit(f"REFUSING: {OUT} exists")
     START = start_provenance(["scratch/k2h_transport.py", "scratch/k2h_gateladder.py", "scratch/k2h_stagecensus.py", MAN_PATH])
@@ -353,7 +384,7 @@ def main():
     rec = {"prereg": PREREG, "smoke": SMOKE, "size": SIZE, "repo": REPO, "start": START, "chain": CHAIN, "gated": GATED, "seeds": SEEDS,
            "items_sha256": LAD.digest(items), "n_items": len(items), "tags": {}, "pairs": {}, "gate": {}, "gate_control": {}, "timing": {},
            "device": "mps" if torch.backends.mps.is_available() else "none",
-           "shape": {"gate_tags": GATED, "gate_families": GATE_FAMILIES, "control_tags": CONTROL_TAGS, "overlap_next": OVERLAP_NEXT, "hill": HILL, "batch": K.BATCH},
+           "shape": {**resolved_shape(), "gate_families": GATE_FAMILIES},
            "versions": {"python": sys.version, "torch": torch.__version__, "transformers": __import__("transformers").__version__}}
     if rec["device"] != "mps":
         raise SystemExit("REFUSING: mps unavailable")

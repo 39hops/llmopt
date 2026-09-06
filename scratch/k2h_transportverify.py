@@ -128,6 +128,29 @@ def main():
         chk(got["structural"] == any("effrank_d" in r for r in rs) or got["total_rel_d"] == 0, f"{pair} structural flag")
     # gates
     g = [json.loads(l) for l in open(os.path.join(OUT, "gate_rows.jsonl"))]
+    if SIZE == "7B":
+        # L66495 registered shape and completeness, asserted independently of the driver's own check
+        REG = {"gated": ["pretrain_1100000", "mid_1_final", "mid_2_final", "mid_3_final", "mid_4_final", "sft_1_final"],
+               "tiers": [1, 2, 4], "seeds": [0, 1], "control_tags": [], "hill": False, "overlap_next": True, "batch": 8}
+        chk({k: rec["shape"].get(k) for k in REG} == REG, f"7B shape record v L66495: {rec.get('shape')}")
+        chk(rec["gated"] == REG["gated"] and rec["seeds"] == REG["seeds"], "7B gated/seeds")
+        structural = ["pretrain_100000->pretrain_1100000", "pretrain_1100000->mid_1_final", "mid_1_final->mid_2_final",
+                      "mid_2_final->mid_3_final", "mid_3_final->mid_4_final", "mid_4_final->sft_1_final"]
+        chk(all(p in rec["pairs"] and rec["pairs"][p]["structural"] for p in structural), "7B six structural pairs")
+        lag = [f"pretrain_{s}->pretrain_{s + 100000}" for s in range(100000, 1000001, 100000)]
+        chk(all(p in rec["pairs"] and not rec["pairs"][p]["structural"] for p in lag), "7B ten lag pairs")
+        chk(sum(rec["pairs"][p]["lag1_median_cos"] is not None for p in lag) == 9, "7B nine defined lag-1 cells")
+        chk(len(rec["pairs"]) == 16, f"7B pair count {len(rec['pairs'])}")
+        chk(all("hill_alpha_b" not in r for r in rows), "7B no Hill alpha rows")
+        released = [r for r in g if "|common" not in r["tag"]]
+        chk(len(released) == 1440 and len(g) == 1440, f"7B released gate rows {len(released)} of {len(g)}")
+        chk(rec["gate_control"] == {}, "7B zero control passes")
+        cells = {(r["tag"], r["seed"], r["tier"]) for r in released}
+        need = {(t, sd, ti) for t in REG["gated"] for sd in REG["seeds"] for ti in REG["tiers"]}
+        chk(cells == need, f"7B endpoint/tier cells: missing {sorted(need - cells)} extra {sorted(cells - need)}")
+        chk(all(sum(1 for r in released if (r["tag"], r["seed"], r["tier"]) == c) == 40 for c in need), "7B 40 rows per cell")
+        fams = {(r["tag"], r["seed"], r["family"]) for r in released}
+        chk(all((t, sd, f) in fams for t in REG["gated"] for sd in REG["seeds"] for f in ("expand2", "prod_diff", "xexp_int")), "7B T4 families present")
     for tag, gv in rec["gate"].items():
         for sd, tiers in gv["seeds"].items():
             for tier, got in tiers.items():
