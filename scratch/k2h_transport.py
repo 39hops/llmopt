@@ -36,7 +36,9 @@ import hashlib
 import importlib.util
 import json
 import os
+import resource
 import shutil
+import subprocess
 import sys
 import time
 
@@ -127,7 +129,13 @@ if SMOKE:
     CONTROL_TAGS = []
     SEEDS = [0]
     STRUCTURAL = {"mid_4_final->sft_1_final": "B5"}
-SMOKE_SHARDS = 2
+SMOKE_SHARDS = int(os.environ.get("SMOKE_SHARDS", "2"))
+if SMOKE and os.environ.get("SMOKE_CHAIN"):
+    CHAIN = os.environ["SMOKE_CHAIN"].split(",")
+    GATED = []
+    STRUCTURAL = {}
+if os.environ.get("SCRATCH_DIR"):
+    SCRATCH = os.path.join(ROOT, os.environ["SCRATCH_DIR"])
 
 
 def sha_file(p):
@@ -388,6 +396,11 @@ def main():
            "versions": {"python": sys.version, "torch": torch.__version__, "transformers": __import__("transformers").__version__}}
     if rec["device"] != "mps":
         raise SystemExit("REFUSING: mps unavailable")
+    n_params = MAN["selected"][CHAIN[0]]["bytes"] // 2  # bf16 checkpoints
+    ram = int(subprocess.check_output(["sysctl", "-n", "hw.memsize"]))
+    rec["ram_preflight"] = {"physical_bytes": ram, "delta_copy_bytes_fp16": 2 * n_params, "fraction": 2 * n_params / ram}
+    if 2 * n_params > 0.6 * ram:
+        raise SystemExit(f"REFUSING: one float16 delta copy ({2 * n_params / 1e9:.1f} GB) exceeds 0.6 x physical RAM ({ram / 1e9:.1f} GB)")
     # frozen tokenizer for the size
     tok_dir = fetch_small(TOKENIZER_TAG)
     rec["tokenizer"] = {"tag": TOKENIZER_TAG, "commit": MAN["selected"][TOKENIZER_TAG]["commit"], "tokenizer_sha256": MAN["selected"][TOKENIZER_TAG]["small_sha256"]["tokenizer.json"]}
@@ -423,7 +436,7 @@ def main():
         pair = f"{prev_tag}->{tag}"
         structural = pair in STRUCTURAL
         keep_delta = tag in PRETRAIN and tag != "pretrain_1100000"  # the next pair is a 100k lag pair
-        rows, cur_delta = [], {}
+        rows = []
         prev_reader = TagReader(prev_tag)
         if prev_reader.names() != set(wmap):
             raise SystemExit(f"REFUSING: tensor sets differ {prev_tag} v {tag}")
@@ -440,8 +453,12 @@ def main():
                 row.update({"pair": pair, "structural": structural, "smoke": SMOKE})
                 rows.append(row)
                 census_f.write(json.dumps(row) + "\n")
+                # memory law (7B attempt 1 was killed silently holding two 18 GB float16 deltas):
+                # the previous delta is replaced tensor by tensor, so at most one full copy plus one tensor is resident
                 if keep_delta:
-                    cur_delta[n] = d16
+                    prev_delta[n] = d16
+                elif n in prev_delta:
+                    del prev_delta[n]
                 del d16
             census_f.flush()
             del A, B
@@ -452,13 +469,13 @@ def main():
         rec["timing"][f"pair_{pair}"] = round(time.time() - td, 1)
         print(f"[pair] {SIZE} {pair} rel={agg['total_rel_d']:.4g} centroid={agg['depth_centroid']} lag1={agg['lag1_median_cos']} ident={agg['n_identical']}/{agg['n_tensors']} {round(time.time() - t0)}s", flush=True)
         # lag-1 deltas are kept (float16, RAM) only while the NEXT pair is a 100k-step pretraining pair
-        prev_delta = cur_delta if keep_delta else {}
-        del cur_delta
+        if not keep_delta:
+            prev_delta = {}
         if prev_tag != held:
             shutil.rmtree(tag_dir(prev_tag), ignore_errors=True)
         prev_tag = tag
         # endpoint pair when the last pretraining tag lands: CHAIN[0] is re-downloaded one shard at a time
-        if tag == "pretrain_1100000":
+        if tag == "pretrain_1100000" and not (SMOKE and os.environ.get("SMOKE_CHAIN")):
             tp = time.time()
             pair = f"{p_first}->{tag}"
             rows = []
@@ -500,9 +517,10 @@ def main():
     census_f.close()
     shutil.rmtree(SCRATCH, ignore_errors=True)
     rec["wall_s"] = round(time.time() - t0, 1)
+    rec["peak_rss_bytes"] = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss  # bytes on macOS
     rec["completion_commit"] = completion_commit()
     json.dump(rec, open(os.path.join(OUT, "receipt.json"), "w"), indent=1, default=str)
-    print(json.dumps({"timing": rec["timing"], "wall": rec["wall_s"]}, indent=1))
+    print(json.dumps({"timing": rec["timing"], "wall": rec["wall_s"], "peak_rss_gb": rec["peak_rss_bytes"] / 1e9}, indent=1))
 
 
 if __name__ == "__main__":
