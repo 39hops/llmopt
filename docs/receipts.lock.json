@@ -732,8 +732,44 @@
    "tracked": true
   },
   "logs/k2h/transport_3.7B": {
-   "exists": false,
+   "directory": true,
+   "exists": true,
    "source": "results"
+  },
+  "logs/k2h/transport_3.7B/census.jsonl": {
+   "bytes": 2462760,
+   "exists": true,
+   "sha256": "c6fb9a3bfde3b7f8a30f511635847fb74347a45db2a75246f31fcaf54eb8a6dd",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/k2h/transport_3.7B/gate_rows.jsonl": {
+   "bytes": 2158393,
+   "exists": true,
+   "sha256": "dc053fac2aa81f4c0631d0db76ff6186c492dc889cd21bb32ef575b602403a70",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/k2h/transport_3.7B/receipt.json": {
+   "bytes": 138867,
+   "exists": true,
+   "sha256": "d3bfd5764daf4aed43a7019b86a3714a3c3b2f54c663f03704b4e09c3671abe6",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/k2h/transport_3.7B/verify_receipt.json": {
+   "bytes": 682,
+   "exists": true,
+   "sha256": "940faf490d360cdd0d98cbb6656f7c833b9eefe7a3ff7c9f5d60e2b315be4a7f",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/k2h/transport_3.7B_driver.log": {
+   "bytes": 18322,
+   "exists": true,
+   "sha256": "5aa5a43b45ec91f9bbe06dfcbb2cc7c34d80d26b5efe533e9617e0ed31ac9c06",
+   "source": "results",
+   "tracked": true
   },
   "logs/lean/leanfull_v2.log": {
    "bytes": 43588,

@@ -1,0 +1,17 @@
+{
+ "prereg": "K2-HORIZON-TRANSPORT-0",
+ "size": "3.7B",
+ "verdict": "VERIFIED",
+ "discrepancies": [],
+ "n_discrepancies": 0,
+ "n_census_rows": 5232,
+ "n_gate_rows": 4560,
+ "rescored_subset": 507,
+ "receipt_sha256": "d3bfd5764daf4aed43a7019b86a3714a3c3b2f54c663f03704b4e09c3671abe6",
+ "census_sha256": "c6fb9a3bfde3b7f8a30f511635847fb74347a45db2a75246f31fcaf54eb8a6dd",
+ "gate_rows_sha256": "dc053fac2aa81f4c0631d0db76ff6186c492dc889cd21bb32ef575b602403a70",
+ "instrument_run_commit": "f7724a60",
+ "commit": "f7724a60",
+ "status_porcelain": " M scripts/INDEX.md\n?? scratch/k2h_wallaudit.py\n",
+ "verifier_sha256": "ecb7d1f4f79622372be8ca4b5e7cbe6e5a70570c9a75dca014fc8206c127ca8b"
+}

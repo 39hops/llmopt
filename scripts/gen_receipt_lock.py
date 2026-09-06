@@ -125,7 +125,12 @@ def build() -> dict:
     out = {}
     for rel, src in sorted(cited_paths().items()):
         p = ROOT / rel
-        if not p.is_file():
+        if p.is_dir():
+            # a DIRECTORY citation names a receipt set whose files are
+            # locked individually (a dotted directory name such as
+            # transport_3.7B parses like a file path; 2026-09-06)
+            rec = {"exists": True, "directory": True}
+        elif not p.is_file():
             rec = {"exists": False}
         elif src == "prereg":
             # a prereg-DECLARED receipt whose run may still be

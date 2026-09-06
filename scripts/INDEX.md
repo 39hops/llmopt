@@ -2607,6 +2607,19 @@ Independent verifier for K2-HORIZON-TRANSPORT-0 (one size per run, SIZE env). Re
 - `boxed(ans, truth)`
 - `main()`
 
+### scratch/k2h_wallaudit.py
+K2-HORIZON-TRANSPORT-0 wall-clock audit (Artin GO 2026-09-06, before the 7B prereg is frozen). Three probes, none opening any 7B weight:
+
+- `_load(name, rel)`
+- `write(name, obj)`
+- `gram_stats(d)` — Smaller-side decomposition of delta d (m x n): eigendecompose the
+- `registered_stats(d)`
+- `shapes_for(size)`
+- `svdbench()`
+- `dlprobe()`
+- `batchprobe()` — Ladder at several batch sizes on one booked gated tag re-downloaded
+- `parity3b()` — Recompute the structural rows of one booked 3.7B pair from the
+
 ### scratch/k3_expert_demo.py
 K3-D1: the Kimi-K3 single-expert deterministic demo.
 

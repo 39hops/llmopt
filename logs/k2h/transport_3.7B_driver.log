@@ -1,0 +1,186 @@
+[ERROR] `cache_position` is part of K2HorizonModel.forward's signature, but not documented. Make sure to add it to the docstring of the function in /Users/artin/.cache/huggingface/modules/transformers_modules/pretrain_100000/61ad561839604e4f/modeling_k2_horizon.py.
+[ERROR] `cache_position` is part of K2HorizonForCausalLM.forward's signature, but not documented. Make sure to add it to the docstring of the function in /Users/artin/.cache/huggingface/modules/transformers_modules/pretrain_100000/61ad561839604e4f/modeling_k2_horizon.py.
+Loading weights:   0%|          | 0/327 [00:00<?, ?it/s]Loading weights: 100%|██████████| 327/327 [00:00<00:00, 27134.44it/s]
+[transformers] The remote code model you are currently using seems to expect `cache_position`. This arg has been removed from the Transformers library, and will stop being created in `generate` even for remote code models in a future release. Please open a PR on the remote code hub repo to remove any usage of `cache_position`.
+[gate] 3.7B pretrain_100000 released seed 0 T1 26/40 {'poly_diff': 20, 'expand2': 6}
+[gate] 3.7B pretrain_100000 released seed 0 T2 20/40 {'prod_diff': 0, 'poly_int': 20}
+[gate] 3.7B pretrain_100000 released seed 0 T3 20/40 {'chain_diff': 20, 'expand3': 0}
+[gate] 3.7B pretrain_100000 released seed 0 T4 12/40 {'second_diff': 0, 'xexp_int': 12}
+[gate] 3.7B pretrain_100000 released seed 0 T5 0/40 {'definite_int': 0, 'det2': 0}
+[gate] 3.7B pretrain_100000 released seed 0 T6 0/40 {'x2exp_int': 0, 'quot_diff': 0}
+[gate] 3.7B pretrain_100000 released seed 1 T1 26/40 {'poly_diff': 20, 'expand2': 6}
+[gate] 3.7B pretrain_100000 released seed 1 T2 21/40 {'prod_diff': 1, 'poly_int': 20}
+[gate] 3.7B pretrain_100000 released seed 1 T3 20/40 {'chain_diff': 20, 'expand3': 0}
+[gate] 3.7B pretrain_100000 released seed 1 T4 9/40 {'second_diff': 0, 'xexp_int': 9}
+[gate] 3.7B pretrain_100000 released seed 1 T5 1/40 {'definite_int': 1, 'det2': 0}
+[gate] 3.7B pretrain_100000 released seed 1 T6 2/40 {'x2exp_int': 0, 'quot_diff': 2}
+[pair] 3.7B pretrain_100000->pretrain_200000 rel=0.721 centroid=0.4508871396684362 lag1=None ident=0/327 1595s
+[pair] 3.7B pretrain_200000->pretrain_300000 rel=0.6244 centroid=0.4425342204982445 lag1=-0.004347220063209534 ident=0/327 2086s
+[pair] 3.7B pretrain_300000->pretrain_400000 rel=0.5768 centroid=0.4386972273900672 lag1=-0.016367249190807343 ident=0/327 2587s
+[pair] 3.7B pretrain_400000->pretrain_500000 rel=0.5493 centroid=0.4342953164907243 lag1=-0.042591195553541183 ident=0/327 3169s
+[pair] 3.7B pretrain_500000->pretrain_600000 rel=0.5295 centroid=0.43287608548905354 lag1=-0.07854480296373367 ident=0/327 3666s
+[pair] 3.7B pretrain_600000->pretrain_700000 rel=0.5201 centroid=0.429396545271148 lag1=-0.11459128558635712 ident=0/327 4164s
+[pair] 3.7B pretrain_700000->pretrain_800000 rel=0.5103 centroid=0.42723631580736976 lag1=-0.1441427320241928 ident=0/327 4662s
+[pair] 3.7B pretrain_800000->pretrain_900000 rel=0.499 centroid=0.43147040997707836 lag1=-0.16155242919921875 ident=0/327 5166s
+[pair] 3.7B pretrain_900000->pretrain_1000000 rel=0.4956 centroid=0.4284038182654174 lag1=-0.18906988203525543 ident=0/327 5694s
+[pair] 3.7B pretrain_1000000->pretrain_1100000 rel=0.4905 centroid=0.42597406436562973 lag1=-0.21193988621234894 ident=0/327 6209s
+[pair] 3.7B pretrain_100000->pretrain_1100000 rel=1.239 centroid=0.48590055057057396 6994s
+[ERROR] `cache_position` is part of K2HorizonModel.forward's signature, but not documented. Make sure to add it to the docstring of the function in /Users/artin/.cache/huggingface/modules/transformers_modules/pretrain_1100000/61ad561839604e4f/modeling_k2_horizon.py.
+[ERROR] `cache_position` is part of K2HorizonForCausalLM.forward's signature, but not documented. Make sure to add it to the docstring of the function in /Users/artin/.cache/huggingface/modules/transformers_modules/pretrain_1100000/61ad561839604e4f/modeling_k2_horizon.py.
+Loading weights:   0%|          | 0/327 [00:00<?, ?it/s]Loading weights: 100%|██████████| 327/327 [00:00<00:00, 20110.52it/s]
+[gate] 3.7B pretrain_1100000 released seed 0 T1 25/40 {'poly_diff': 20, 'expand2': 5}
+[gate] 3.7B pretrain_1100000 released seed 0 T2 23/40 {'prod_diff': 3, 'poly_int': 20}
+[gate] 3.7B pretrain_1100000 released seed 0 T3 20/40 {'chain_diff': 20, 'expand3': 0}
+[gate] 3.7B pretrain_1100000 released seed 0 T4 6/40 {'second_diff': 1, 'xexp_int': 5}
+[gate] 3.7B pretrain_1100000 released seed 0 T5 0/40 {'definite_int': 0, 'det2': 0}
+[gate] 3.7B pretrain_1100000 released seed 0 T6 1/40 {'x2exp_int': 1, 'quot_diff': 0}
+[gate] 3.7B pretrain_1100000 released seed 1 T1 23/40 {'poly_diff': 20, 'expand2': 3}
+[gate] 3.7B pretrain_1100000 released seed 1 T2 29/40 {'prod_diff': 9, 'poly_int': 20}
+[gate] 3.7B pretrain_1100000 released seed 1 T3 20/40 {'chain_diff': 20, 'expand3': 0}
+[gate] 3.7B pretrain_1100000 released seed 1 T4 14/40 {'second_diff': 0, 'xexp_int': 14}
+[gate] 3.7B pretrain_1100000 released seed 1 T5 1/40 {'definite_int': 1, 'det2': 0}
+[gate] 3.7B pretrain_1100000 released seed 1 T6 1/40 {'x2exp_int': 1, 'quot_diff': 0}
+[pair] 3.7B pretrain_1100000->mid_1_final rel=0.4419 centroid=0.48683881516980865 lag1=None ident=0/327 8408s
+[ERROR] `cache_position` is part of K2HorizonModel.forward's signature, but not documented. Make sure to add it to the docstring of the function in /Users/artin/.cache/huggingface/modules/transformers_modules/mid_1_final/61ad561839604e4f/modeling_k2_horizon.py.
+[ERROR] `cache_position` is part of K2HorizonForCausalLM.forward's signature, but not documented. Make sure to add it to the docstring of the function in /Users/artin/.cache/huggingface/modules/transformers_modules/mid_1_final/61ad561839604e4f/modeling_k2_horizon.py.
+Loading weights:   0%|          | 0/327 [00:00<?, ?it/s]Loading weights: 100%|██████████| 327/327 [00:00<00:00, 6771.19it/s]
+[gate] 3.7B mid_1_final released seed 0 T1 25/40 {'poly_diff': 20, 'expand2': 5}
+[gate] 3.7B mid_1_final released seed 0 T2 26/40 {'prod_diff': 6, 'poly_int': 20}
+[gate] 3.7B mid_1_final released seed 0 T3 20/40 {'chain_diff': 20, 'expand3': 0}
+[gate] 3.7B mid_1_final released seed 0 T4 10/40 {'second_diff': 2, 'xexp_int': 8}
+[gate] 3.7B mid_1_final released seed 0 T5 2/40 {'definite_int': 1, 'det2': 1}
+[gate] 3.7B mid_1_final released seed 0 T6 3/40 {'x2exp_int': 2, 'quot_diff': 1}
+[gate] 3.7B mid_1_final released seed 1 T1 25/40 {'poly_diff': 20, 'expand2': 5}
+[gate] 3.7B mid_1_final released seed 1 T2 38/40 {'prod_diff': 18, 'poly_int': 20}
+[gate] 3.7B mid_1_final released seed 1 T3 20/40 {'chain_diff': 20, 'expand3': 0}
+[gate] 3.7B mid_1_final released seed 1 T4 10/40 {'second_diff': 0, 'xexp_int': 10}
+[gate] 3.7B mid_1_final released seed 1 T5 1/40 {'definite_int': 0, 'det2': 1}
+[gate] 3.7B mid_1_final released seed 1 T6 4/40 {'x2exp_int': 3, 'quot_diff': 1}
+Loading weights:   0%|          | 0/327 [00:00<?, ?it/s]Loading weights: 100%|██████████| 327/327 [00:00<00:00, 16719.75it/s]
+[gate] 3.7B mid_1_final|common common seed 0 T1 25/40 {'poly_diff': 20, 'expand2': 5}
+[gate] 3.7B mid_1_final|common common seed 0 T2 26/40 {'prod_diff': 6, 'poly_int': 20}
+[gate] 3.7B mid_1_final|common common seed 0 T3 20/40 {'chain_diff': 20, 'expand3': 0}
+[gate] 3.7B mid_1_final|common common seed 0 T4 10/40 {'second_diff': 2, 'xexp_int': 8}
+[gate] 3.7B mid_1_final|common common seed 0 T5 2/40 {'definite_int': 1, 'det2': 1}
+[gate] 3.7B mid_1_final|common common seed 0 T6 3/40 {'x2exp_int': 2, 'quot_diff': 1}
+[pair] 3.7B mid_1_final->mid_2_final rel=0.1322 centroid=0.5264251673894438 lag1=None ident=0/327 10130s
+[ERROR] `cache_position` is part of K2HorizonModel.forward's signature, but not documented. Make sure to add it to the docstring of the function in /Users/artin/.cache/huggingface/modules/transformers_modules/mid_2_final/61ad561839604e4f/modeling_k2_horizon.py.
+[ERROR] `cache_position` is part of K2HorizonForCausalLM.forward's signature, but not documented. Make sure to add it to the docstring of the function in /Users/artin/.cache/huggingface/modules/transformers_modules/mid_2_final/61ad561839604e4f/modeling_k2_horizon.py.
+Loading weights:   0%|          | 0/327 [00:00<?, ?it/s]Loading weights: 100%|██████████| 327/327 [00:00<00:00, 7308.94it/s]
+[gate] 3.7B mid_2_final released seed 0 T1 28/40 {'poly_diff': 20, 'expand2': 8}
+[gate] 3.7B mid_2_final released seed 0 T2 26/40 {'prod_diff': 6, 'poly_int': 20}
+[gate] 3.7B mid_2_final released seed 0 T3 20/40 {'chain_diff': 20, 'expand3': 0}
+[gate] 3.7B mid_2_final released seed 0 T4 16/40 {'second_diff': 1, 'xexp_int': 15}
+[gate] 3.7B mid_2_final released seed 0 T5 1/40 {'definite_int': 1, 'det2': 0}
+[gate] 3.7B mid_2_final released seed 0 T6 2/40 {'x2exp_int': 2, 'quot_diff': 0}
+[gate] 3.7B mid_2_final released seed 1 T1 22/40 {'poly_diff': 20, 'expand2': 2}
+[gate] 3.7B mid_2_final released seed 1 T2 38/40 {'prod_diff': 18, 'poly_int': 20}
+[gate] 3.7B mid_2_final released seed 1 T3 20/40 {'chain_diff': 20, 'expand3': 0}
+[gate] 3.7B mid_2_final released seed 1 T4 11/40 {'second_diff': 0, 'xexp_int': 11}
+[gate] 3.7B mid_2_final released seed 1 T5 0/40 {'definite_int': 0, 'det2': 0}
+[gate] 3.7B mid_2_final released seed 1 T6 3/40 {'x2exp_int': 3, 'quot_diff': 0}
+Loading weights:   0%|          | 0/327 [00:00<?, ?it/s]Loading weights: 100%|██████████| 327/327 [00:00<00:00, 17514.65it/s]
+[gate] 3.7B mid_2_final|common common seed 0 T1 25/40 {'poly_diff': 20, 'expand2': 5}
+[gate] 3.7B mid_2_final|common common seed 0 T2 28/40 {'prod_diff': 8, 'poly_int': 20}
+[gate] 3.7B mid_2_final|common common seed 0 T3 20/40 {'chain_diff': 20, 'expand3': 0}
+[gate] 3.7B mid_2_final|common common seed 0 T4 9/40 {'second_diff': 1, 'xexp_int': 8}
+[gate] 3.7B mid_2_final|common common seed 0 T5 0/40 {'definite_int': 0, 'det2': 0}
+[gate] 3.7B mid_2_final|common common seed 0 T6 2/40 {'x2exp_int': 2, 'quot_diff': 0}
+[pair] 3.7B mid_2_final->mid_3_final rel=0.05547 centroid=0.49980132571078434 lag1=None ident=0/327 11856s
+[ERROR] `cache_position` is part of K2HorizonModel.forward's signature, but not documented. Make sure to add it to the docstring of the function in /Users/artin/.cache/huggingface/modules/transformers_modules/mid_3_final/61ad561839604e4f/modeling_k2_horizon.py.
+[ERROR] `cache_position` is part of K2HorizonForCausalLM.forward's signature, but not documented. Make sure to add it to the docstring of the function in /Users/artin/.cache/huggingface/modules/transformers_modules/mid_3_final/61ad561839604e4f/modeling_k2_horizon.py.
+Loading weights:   0%|          | 0/327 [00:00<?, ?it/s]Loading weights: 100%|██████████| 327/327 [00:00<00:00, 6969.26it/s]
+[gate] 3.7B mid_3_final released seed 0 T1 27/40 {'poly_diff': 20, 'expand2': 7}
+[gate] 3.7B mid_3_final released seed 0 T2 26/40 {'prod_diff': 6, 'poly_int': 20}
+[gate] 3.7B mid_3_final released seed 0 T3 20/40 {'chain_diff': 20, 'expand3': 0}
+[gate] 3.7B mid_3_final released seed 0 T4 11/40 {'second_diff': 1, 'xexp_int': 10}
+[gate] 3.7B mid_3_final released seed 0 T5 0/40 {'definite_int': 0, 'det2': 0}
+[gate] 3.7B mid_3_final released seed 0 T6 3/40 {'x2exp_int': 2, 'quot_diff': 1}
+[gate] 3.7B mid_3_final released seed 1 T1 25/40 {'poly_diff': 20, 'expand2': 5}
+[gate] 3.7B mid_3_final released seed 1 T2 36/40 {'prod_diff': 16, 'poly_int': 20}
+[gate] 3.7B mid_3_final released seed 1 T3 20/40 {'chain_diff': 20, 'expand3': 0}
+[gate] 3.7B mid_3_final released seed 1 T4 13/40 {'second_diff': 1, 'xexp_int': 12}
+[gate] 3.7B mid_3_final released seed 1 T5 0/40 {'definite_int': 0, 'det2': 0}
+[gate] 3.7B mid_3_final released seed 1 T6 1/40 {'x2exp_int': 1, 'quot_diff': 0}
+Loading weights:   0%|          | 0/327 [00:00<?, ?it/s]Loading weights: 100%|██████████| 327/327 [00:00<00:00, 17470.48it/s]
+[gate] 3.7B mid_3_final|common common seed 0 T1 28/40 {'poly_diff': 20, 'expand2': 8}
+[gate] 3.7B mid_3_final|common common seed 0 T2 30/40 {'prod_diff': 10, 'poly_int': 20}
+[gate] 3.7B mid_3_final|common common seed 0 T3 20/40 {'chain_diff': 20, 'expand3': 0}
+[gate] 3.7B mid_3_final|common common seed 0 T4 10/40 {'second_diff': 1, 'xexp_int': 9}
+[gate] 3.7B mid_3_final|common common seed 0 T5 0/40 {'definite_int': 0, 'det2': 0}
+[gate] 3.7B mid_3_final|common common seed 0 T6 3/40 {'x2exp_int': 2, 'quot_diff': 1}
+[pair] 3.7B mid_3_final->mid_4_final rel=0.09891 centroid=0.5473255919254865 lag1=None ident=0/327 13581s
+[ERROR] `cache_position` is part of K2HorizonModel.forward's signature, but not documented. Make sure to add it to the docstring of the function in /Users/artin/.cache/huggingface/modules/transformers_modules/mid_4_final/61ad561839604e4f/modeling_k2_horizon.py.
+[ERROR] `cache_position` is part of K2HorizonForCausalLM.forward's signature, but not documented. Make sure to add it to the docstring of the function in /Users/artin/.cache/huggingface/modules/transformers_modules/mid_4_final/61ad561839604e4f/modeling_k2_horizon.py.
+Loading weights:   0%|          | 0/327 [00:00<?, ?it/s]Loading weights: 100%|██████████| 327/327 [00:00<00:00, 7604.32it/s]
+[gate] 3.7B mid_4_final released seed 0 T1 30/40 {'poly_diff': 20, 'expand2': 10}
+[gate] 3.7B mid_4_final released seed 0 T2 26/40 {'prod_diff': 6, 'poly_int': 20}
+[gate] 3.7B mid_4_final released seed 0 T3 20/40 {'chain_diff': 20, 'expand3': 0}
+[gate] 3.7B mid_4_final released seed 0 T4 14/40 {'second_diff': 2, 'xexp_int': 12}
+[gate] 3.7B mid_4_final released seed 0 T5 0/40 {'definite_int': 0, 'det2': 0}
+[gate] 3.7B mid_4_final released seed 0 T6 2/40 {'x2exp_int': 2, 'quot_diff': 0}
+[gate] 3.7B mid_4_final released seed 1 T1 28/40 {'poly_diff': 20, 'expand2': 8}
+[gate] 3.7B mid_4_final released seed 1 T2 36/40 {'prod_diff': 16, 'poly_int': 20}
+[gate] 3.7B mid_4_final released seed 1 T3 20/40 {'chain_diff': 20, 'expand3': 0}
+[gate] 3.7B mid_4_final released seed 1 T4 16/40 {'second_diff': 1, 'xexp_int': 15}
+[gate] 3.7B mid_4_final released seed 1 T5 0/40 {'definite_int': 0, 'det2': 0}
+[gate] 3.7B mid_4_final released seed 1 T6 5/40 {'x2exp_int': 4, 'quot_diff': 1}
+Loading weights:   0%|          | 0/327 [00:00<?, ?it/s]Loading weights: 100%|██████████| 327/327 [00:00<00:00, 19521.44it/s]
+[gate] 3.7B mid_4_final|common common seed 0 T1 29/40 {'poly_diff': 20, 'expand2': 9}
+[gate] 3.7B mid_4_final|common common seed 0 T2 28/40 {'prod_diff': 8, 'poly_int': 20}
+[gate] 3.7B mid_4_final|common common seed 0 T3 20/40 {'chain_diff': 20, 'expand3': 0}
+[gate] 3.7B mid_4_final|common common seed 0 T4 13/40 {'second_diff': 2, 'xexp_int': 11}
+[gate] 3.7B mid_4_final|common common seed 0 T5 0/40 {'definite_int': 0, 'det2': 0}
+[gate] 3.7B mid_4_final|common common seed 0 T6 2/40 {'x2exp_int': 2, 'quot_diff': 0}
+[pair] 3.7B mid_4_final->sft_1_final rel=0.09408 centroid=0.5672203759506127 lag1=None ident=0/327 15311s
+[ERROR] `cache_position` is part of K2HorizonModel.forward's signature, but not documented. Make sure to add it to the docstring of the function in /Users/artin/.cache/huggingface/modules/transformers_modules/sft_1_final/61ad561839604e4f/modeling_k2_horizon.py.
+[ERROR] `cache_position` is part of K2HorizonForCausalLM.forward's signature, but not documented. Make sure to add it to the docstring of the function in /Users/artin/.cache/huggingface/modules/transformers_modules/sft_1_final/61ad561839604e4f/modeling_k2_horizon.py.
+Loading weights:   0%|          | 0/327 [00:00<?, ?it/s]Loading weights: 100%|██████████| 327/327 [00:00<00:00, 7501.34it/s]
+[gate] 3.7B sft_1_final released seed 0 T1 26/40 {'poly_diff': 20, 'expand2': 6}
+[gate] 3.7B sft_1_final released seed 0 T2 27/40 {'prod_diff': 7, 'poly_int': 20}
+[gate] 3.7B sft_1_final released seed 0 T3 20/40 {'chain_diff': 20, 'expand3': 0}
+[gate] 3.7B sft_1_final released seed 0 T4 9/40 {'second_diff': 2, 'xexp_int': 7}
+[gate] 3.7B sft_1_final released seed 0 T5 0/40 {'definite_int': 0, 'det2': 0}
+[gate] 3.7B sft_1_final released seed 0 T6 2/40 {'x2exp_int': 2, 'quot_diff': 0}
+[gate] 3.7B sft_1_final released seed 1 T1 23/40 {'poly_diff': 20, 'expand2': 3}
+[gate] 3.7B sft_1_final released seed 1 T2 36/40 {'prod_diff': 16, 'poly_int': 20}
+[gate] 3.7B sft_1_final released seed 1 T3 20/40 {'chain_diff': 20, 'expand3': 0}
+[gate] 3.7B sft_1_final released seed 1 T4 17/40 {'second_diff': 1, 'xexp_int': 16}
+[gate] 3.7B sft_1_final released seed 1 T5 1/40 {'definite_int': 0, 'det2': 1}
+[gate] 3.7B sft_1_final released seed 1 T6 4/40 {'x2exp_int': 3, 'quot_diff': 1}
+Loading weights:   0%|          | 0/327 [00:00<?, ?it/s]Loading weights: 100%|██████████| 327/327 [00:00<00:00, 17816.34it/s]
+[gate] 3.7B sft_1_final|common common seed 0 T1 25/40 {'poly_diff': 20, 'expand2': 5}
+[gate] 3.7B sft_1_final|common common seed 0 T2 32/40 {'prod_diff': 12, 'poly_int': 20}
+[gate] 3.7B sft_1_final|common common seed 0 T3 20/40 {'chain_diff': 20, 'expand3': 0}
+[gate] 3.7B sft_1_final|common common seed 0 T4 9/40 {'second_diff': 2, 'xexp_int': 7}
+[gate] 3.7B sft_1_final|common common seed 0 T5 0/40 {'definite_int': 0, 'det2': 0}
+[gate] 3.7B sft_1_final|common common seed 0 T6 3/40 {'x2exp_int': 3, 'quot_diff': 0}
+{
+ "timing": {
+  "download_pretrain_100000": 474.3,
+  "gate_pretrain_100000": 629.1,
+  "pair_pretrain_100000->pretrain_200000": 488.6,
+  "pair_pretrain_200000->pretrain_300000": 489.7,
+  "pair_pretrain_300000->pretrain_400000": 498.9,
+  "pair_pretrain_400000->pretrain_500000": 580.0,
+  "pair_pretrain_500000->pretrain_600000": 495.6,
+  "pair_pretrain_600000->pretrain_700000": 497.0,
+  "pair_pretrain_700000->pretrain_800000": 494.8,
+  "pair_pretrain_800000->pretrain_900000": 502.4,
+  "pair_pretrain_900000->pretrain_1000000": 525.5,
+  "pair_pretrain_1000000->pretrain_1100000": 514.0,
+  "pair_pretrain_100000->pretrain_1100000": 783.6,
+  "gate_pretrain_1100000": 628.9,
+  "pair_pretrain_1100000->mid_1_final": 784.9,
+  "gate_mid_1_final": 941.1,
+  "pair_mid_1_final->mid_2_final": 780.7,
+  "gate_mid_2_final": 941.8,
+  "pair_mid_2_final->mid_3_final": 782.9,
+  "gate_mid_3_final": 943.2,
+  "pair_mid_3_final->mid_4_final": 780.7,
+  "gate_mid_4_final": 949.4,
+  "pair_mid_4_final->sft_1_final": 780.3,
+  "gate_sft_1_final": 948.4
+ },
+ "wall": 16260.9
+}
