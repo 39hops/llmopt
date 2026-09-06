@@ -74,6 +74,20 @@ STRUCTURAL = {"pretrain_1100000->mid_1_final": "B1", "mid_1_final->mid_2_final":
 GATED = ["pretrain_100000", "pretrain_1100000"] + FINALS
 CONTROL_TAGS = FINALS
 SEEDS = [0, 1]
+# 7B execution shape (K2-HORIZON-TRANSPORT-0-PROSPECTIVE-7B): the gate is
+# restricted to the registered candidate families and endpoints and the
+# common-config control passes are dropped, by env, so the 3.7B shape is
+# reproduced when the variables are unset.
+if os.environ.get("GATE_TAGS"):
+    GATED = os.environ["GATE_TAGS"].split(",")
+if os.environ.get("GATE_FAMILIES"):
+    GATE_FAMILIES = os.environ["GATE_FAMILIES"].split(",")
+else:
+    GATE_FAMILIES = None
+if os.environ.get("NO_CONTROL") == "1":
+    CONTROL_TAGS = []
+OVERLAP_NEXT = os.environ.get("OVERLAP_NEXT") == "1"  # prefetch the next tag's shards during this tag's gate
+HILL = os.environ.get("HILL", "1") == "1"
 TOKENIZER_TAG = "pretrain_final"
 NBINS = 10
 if SMOKE:
@@ -125,6 +139,8 @@ def prefetch(tag, shards):
     ex = ThreadPoolExecutor(max_workers=PREFETCH_AHEAD)
     e = MAN["selected"][tag]
     for s in shards:
+        if (tag, s) in _PREFETCH or os.path.exists(os.path.join(tag_dir(tag), s)):
+            continue  # already queued (OVERLAP_NEXT) or already on disk; sha is still checked in fetch_shard
         _PREFETCH[(tag, s)] = ex.submit(hf_hub_download, REPO, s, revision=e["commit"], local_dir=tag_dir(tag))
     ex.shutdown(wait=False)
 
@@ -241,7 +257,8 @@ def tensor_row(name, A, B, structural, prev_d):
             row["ipr_right_d"] = K.ipr(Vh[:k, :].T.numpy())
             row["ipr_left_ratio"] = row["ipr_left_d"] * A.shape[0]
             row["ipr_right_ratio"] = row["ipr_right_d"] * A.shape[1]
-            row["hill_alpha_b"] = K.hill_alpha(torch.linalg.svdvals(B32).numpy())
+            if HILL:  # descriptive only, no bar; HILL=0 drops the after-tensor singular values (1,195 s per 7B pair)
+                row["hill_alpha_b"] = K.hill_alpha(torch.linalg.svdvals(B32).numpy())
     return row, d.half()
 
 
@@ -291,9 +308,13 @@ def load_model_from_dir(d, tok_dir, common_config=False):
 
 def run_ladder(model, tok, items, seed, tag, rows_f, counters, label):
     tiers = [1] if SMOKE else sorted(LAD.TIERS)
+    if GATE_FAMILIES:
+        tiers = [t for t in tiers if any(f in GATE_FAMILIES for f in LAD.TIERS[t])]
     out = {}
     for tier in tiers:
         sub_items = items if not SMOKE else [it for it in items if it["tier"] == 1][:8]
+        # restriction is by TIER only: run_tier builds its shot block from the item set it
+        # is given, so the full ladder is always passed and both families of a kept tier are scored
         g = LAD.run_tier(model, tok, sub_items, tier, seed, tag, rows_f, counters)
         out[tier] = g
         print(f"[gate] {SIZE} {tag} {label} seed {seed} T{tier} {g['correct']}/{g['n']} {g['by_family']}", flush=True)
@@ -332,6 +353,7 @@ def main():
     rec = {"prereg": PREREG, "smoke": SMOKE, "size": SIZE, "repo": REPO, "start": START, "chain": CHAIN, "gated": GATED, "seeds": SEEDS,
            "items_sha256": LAD.digest(items), "n_items": len(items), "tags": {}, "pairs": {}, "gate": {}, "gate_control": {}, "timing": {},
            "device": "mps" if torch.backends.mps.is_available() else "none",
+           "shape": {"gate_tags": GATED, "gate_families": GATE_FAMILIES, "control_tags": CONTROL_TAGS, "overlap_next": OVERLAP_NEXT, "hill": HILL, "batch": K.BATCH},
            "versions": {"python": sys.version, "torch": torch.__version__, "transformers": __import__("transformers").__version__}}
     if rec["device"] != "mps":
         raise SystemExit("REFUSING: mps unavailable")
@@ -361,6 +383,10 @@ def main():
             rec["timing"][f"download_{tag}"] = round(time.time() - td, 1)
             prev_tag = tag
             if tag in GATED:
+                if OVERLAP_NEXT and CHAIN.index(tag) + 1 < len(CHAIN):
+                    nxt = CHAIN[CHAIN.index(tag) + 1]
+                    fetch_small(nxt)
+                    prefetch(nxt, shard_list(nxt)[0])
                 gate_tag(tag, tok_dir, items, rec)
             continue
         pair = f"{prev_tag}->{tag}"
@@ -434,6 +460,11 @@ def main():
             print(f"[pair] {SIZE} {pair} rel={agg['total_rel_d']:.4g} centroid={agg['depth_centroid']} {round(time.time() - t0)}s", flush=True)
             shutil.rmtree(tag_dir(p_first), ignore_errors=True)
         if tag in GATED:
+            if OVERLAP_NEXT and CHAIN.index(tag) + 1 < len(CHAIN):
+                # scheduling overlap: the next tag downloads while this tag's gate runs on mps
+                nxt = CHAIN[CHAIN.index(tag) + 1]
+                fetch_small(nxt)
+                prefetch(nxt, shard_list(nxt)[0])
             gate_tag(tag, tok_dir, items, rec)
     census_f.close()
     shutil.rmtree(SCRATCH, ignore_errors=True)

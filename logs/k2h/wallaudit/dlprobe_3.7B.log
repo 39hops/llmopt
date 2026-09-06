@@ -1,0 +1,4 @@
+workers 3: 0.84 GB in 41 s = 20.7 MB/s sha_ok=True
+workers 6: 0.84 GB in 41 s = 20.7 MB/s sha_ok=True
+workers 9: 0.84 GB in 40 s = 20.7 MB/s sha_ok=True
+wrote /Users/artin/code/llmopt/logs/k2h/wallaudit/dlprobe_3.7B.json

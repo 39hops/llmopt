@@ -1,0 +1,155 @@
+{
+ "size": "3.7B",
+ "tag": "sft_1_final",
+ "commit": "edb30a82a61bf61cba17f80a23f8432567b73338",
+ "batches": {
+  "8": {
+   "wall_s": 152.2,
+   "n_rows": 120,
+   "gen_ids_identical": 120,
+   "correct_identical": 120,
+   "digest_parity": true,
+   "oracle_parity": true,
+   "per_tier": {
+    "1": {
+     "correct": 26,
+     "n": 40,
+     "by_family": {
+      "poly_diff": 20,
+      "expand2": 6
+     },
+     "gen_sha256": "abb2c844ea86c805480d5f252b7a1560189fe7397492621686c1ed3a969b476f"
+    },
+    "2": {
+     "correct": 27,
+     "n": 40,
+     "by_family": {
+      "prod_diff": 7,
+      "poly_int": 20
+     },
+     "gen_sha256": "8c464793e554f45dd9110d9b3aead2a53ad11a91890bd4f453db7f7f30acd685"
+    },
+    "4": {
+     "correct": 9,
+     "n": 40,
+     "by_family": {
+      "second_diff": 2,
+      "xexp_int": 7
+     },
+     "gen_sha256": "1017d851e273ca297c899d5643a8ae54e500be52ad0a32885e1e132bb5e46aea"
+    }
+   }
+  },
+  "16": {
+   "wall_s": 151.1,
+   "n_rows": 120,
+   "gen_ids_identical": 120,
+   "correct_identical": 120,
+   "digest_parity": true,
+   "oracle_parity": true,
+   "per_tier": {
+    "1": {
+     "correct": 26,
+     "n": 40,
+     "by_family": {
+      "poly_diff": 20,
+      "expand2": 6
+     },
+     "gen_sha256": "abb2c844ea86c805480d5f252b7a1560189fe7397492621686c1ed3a969b476f"
+    },
+    "2": {
+     "correct": 27,
+     "n": 40,
+     "by_family": {
+      "prod_diff": 7,
+      "poly_int": 20
+     },
+     "gen_sha256": "8c464793e554f45dd9110d9b3aead2a53ad11a91890bd4f453db7f7f30acd685"
+    },
+    "4": {
+     "correct": 9,
+     "n": 40,
+     "by_family": {
+      "second_diff": 2,
+      "xexp_int": 7
+     },
+     "gen_sha256": "1017d851e273ca297c899d5643a8ae54e500be52ad0a32885e1e132bb5e46aea"
+    }
+   }
+  },
+  "24": {
+   "wall_s": 151.0,
+   "n_rows": 120,
+   "gen_ids_identical": 120,
+   "correct_identical": 120,
+   "digest_parity": true,
+   "oracle_parity": true,
+   "per_tier": {
+    "1": {
+     "correct": 26,
+     "n": 40,
+     "by_family": {
+      "poly_diff": 20,
+      "expand2": 6
+     },
+     "gen_sha256": "abb2c844ea86c805480d5f252b7a1560189fe7397492621686c1ed3a969b476f"
+    },
+    "2": {
+     "correct": 27,
+     "n": 40,
+     "by_family": {
+      "prod_diff": 7,
+      "poly_int": 20
+     },
+     "gen_sha256": "8c464793e554f45dd9110d9b3aead2a53ad11a91890bd4f453db7f7f30acd685"
+    },
+    "4": {
+     "correct": 9,
+     "n": 40,
+     "by_family": {
+      "second_diff": 2,
+      "xexp_int": 7
+     },
+     "gen_sha256": "1017d851e273ca297c899d5643a8ae54e500be52ad0a32885e1e132bb5e46aea"
+    }
+   }
+  },
+  "32": {
+   "wall_s": 151.1,
+   "n_rows": 120,
+   "gen_ids_identical": 120,
+   "correct_identical": 120,
+   "digest_parity": true,
+   "oracle_parity": true,
+   "per_tier": {
+    "1": {
+     "correct": 26,
+     "n": 40,
+     "by_family": {
+      "poly_diff": 20,
+      "expand2": 6
+     },
+     "gen_sha256": "abb2c844ea86c805480d5f252b7a1560189fe7397492621686c1ed3a969b476f"
+    },
+    "2": {
+     "correct": 27,
+     "n": 40,
+     "by_family": {
+      "prod_diff": 7,
+      "poly_int": 20
+     },
+     "gen_sha256": "8c464793e554f45dd9110d9b3aead2a53ad11a91890bd4f453db7f7f30acd685"
+    },
+    "4": {
+     "correct": 9,
+     "n": 40,
+     "by_family": {
+      "second_diff": 2,
+      "xexp_int": 7
+     },
+     "gen_sha256": "1017d851e273ca297c899d5643a8ae54e500be52ad0a32885e1e132bb5e46aea"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,10 @@
+[ERROR] `cache_position` is part of K2HorizonModel.forward's signature, but not documented. Make sure to add it to the docstring of the function in /Users/artin/.cache/huggingface/modules/transformers_modules/sft_1_final/61ad561839604e4f/modeling_k2_horizon.py.
+[ERROR] `cache_position` is part of K2HorizonForCausalLM.forward's signature, but not documented. Make sure to add it to the docstring of the function in /Users/artin/.cache/huggingface/modules/transformers_modules/sft_1_final/61ad561839604e4f/modeling_k2_horizon.py.
+Loading weights:   0%|          | 0/327 [00:00<?, ?it/s]Loading weights: 100%|██████████| 327/327 [00:00<00:00, 38917.70it/s]
+[transformers] The remote code model you are currently using seems to expect `cache_position`. This arg has been removed from the Transformers library, and will stop being created in `generate` even for remote code models in a future release. Please open a PR on the remote code hub repo to remove any usage of `cache_position`.
+B=8: 152 s, gen_ids identical 120/120, oracle identical 120/120
+B=16: 151 s, gen_ids identical 120/120, oracle identical 120/120
+B=24: 151 s, gen_ids identical 120/120, oracle identical 120/120
+B=32: 151 s, gen_ids identical 120/120, oracle identical 120/120
+wrote /Users/artin/code/llmopt/logs/k2h/wallaudit/batchprobe_3.7B_sft_1_final.json
+BATCH_RC=0

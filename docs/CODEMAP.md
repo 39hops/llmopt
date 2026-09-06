@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 230, library 74, reproduce-pinned 10, results-cited 412, spec-cited 89, cited-but-library 62
+Census: UNCITED 230, library 74, reproduce-pinned 10, results-cited 413, spec-cited 89, cited-but-library 62
 
 ## scratch/
 
@@ -230,15 +230,16 @@ Census: UNCITED 230, library 74, reproduce-pinned 10, results-cited 412, spec-ci
 | int3 | int3_rider.py | UNCITED | — | — | — | — |
 | jointperm | jointperm_distance.py | UNCITED | — | — | — | — |
 | judge | judge_decode.py | spec-cited | specs | specs×3 | — | — |
-| k2h | k2h_gateladder.py | results-cited | RESULTS | RESULTS×2 | — | 2 |
+| k2h | k2h_gateladder.py | results-cited | RESULTS | RESULTS×2 | — | 3 |
 | k2h | k2h_manifest.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | k2h | k2h_residues.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
 | k2h | k2h_residuesverify.py | results-cited | RESULTS | RESULTS×2 | — | — |
-| k2h | k2h_stagecensus.py | results-cited | RESULTS | RESULTS×3 | — | 6 |
+| k2h | k2h_stagecensus.py | results-cited | RESULTS | RESULTS×3 | — | 7 |
 | k2h | k2h_stagecensusverify.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | k2h | k2h_tagmove_check.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| k2h | k2h_transport.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
+| k2h | k2h_transport.py | results-cited | RESULTS | RESULTS×2 | — | 2 |
 | k2h | k2h_transportverify.py | results-cited | RESULTS | RESULTS×2 | — | — |
+| k2h | k2h_wallaudit.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | k3 | k3_expert_demo.py | results-cited | RESULTS, specs | RESULTS×4, specs×3 | — | 4 |
 | keff | keff_probe.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | kv | kv_after_night.sh | UNCITED | — | — | — | — |

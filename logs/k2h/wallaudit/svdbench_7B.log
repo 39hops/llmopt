@@ -1,0 +1,15 @@
+q_proj (4096, 4096) registered 9.5s (svd 5.6, svdvals 3.6, power 0.05) candidate 3.2s parity 7.69e-03
+k_proj (1024, 4096) registered 0.4s (svd 0.3, svdvals 0.1, power 0.01) candidate 0.1s parity 1.67e-02
+v_proj (1024, 4096) registered 0.4s (svd 0.3, svdvals 0.1, power 0.01) candidate 0.1s parity 1.58e-02
+o_proj (4096, 4096) registered 9.4s (svd 5.6, svdvals 3.7, power 0.05) candidate 3.2s parity 6.30e-03
+gate_proj (12288, 4096) registered 16.0s (svd 8.9, svdvals 7.9, power 0.17) candidate 3.4s parity 2.93e-03
+up_proj (12288, 4096) registered 17.8s (svd 9.2, svdvals 6.5, power 0.16) candidate 3.3s parity 4.26e-03
+down_proj (4096, 12288) registered 18.7s (svd 12.1, svdvals 6.6, power 0.15) candidate 3.2s parity 7.16e-04
+embed (250624, 4096) registered 177.3s (svd 79.0, svdvals 83.9, power 3.97) candidate 6.5s parity 7.39e-01
+lm_head (250624, 4096) registered 191.1s (svd 80.9, svdvals 85.8, power 3.72) candidate 6.5s parity 6.79e-01
+{
+ "registered_per_structural_pair_s": 2969.8,
+ "candidate_delta_only_per_pair_s": 605.6,
+ "svdvals_after_per_pair_s": 1195.3
+}
+wrote /Users/artin/code/llmopt/logs/k2h/wallaudit/svdbench_7B.json

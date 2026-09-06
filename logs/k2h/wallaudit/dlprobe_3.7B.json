@@ -1,0 +1,44 @@
+{
+ "size": "3.7B",
+ "tag": "pretrain_100000",
+ "commit": "348bf5643a490d7157c17e42a45cd05ee9bd01f1",
+ "n_shards_per_probe": 4,
+ "probes": {
+  "3": {
+   "shards": [
+    "model-00001-of-00036.safetensors",
+    "model-00002-of-00036.safetensors",
+    "model-00003-of-00036.safetensors",
+    "model-00004-of-00036.safetensors"
+   ],
+   "bytes": 838906688,
+   "wall_s": 40.6,
+   "MB_per_s": 20.7,
+   "sha_ok": true
+  },
+  "6": {
+   "shards": [
+    "model-00005-of-00036.safetensors",
+    "model-00006-of-00036.safetensors",
+    "model-00007-of-00036.safetensors",
+    "model-00008-of-00036.safetensors"
+   ],
+   "bytes": 838906688,
+   "wall_s": 40.6,
+   "MB_per_s": 20.7,
+   "sha_ok": true
+  },
+  "9": {
+   "shards": [
+    "model-00009-of-00036.safetensors",
+    "model-00010-of-00036.safetensors",
+    "model-00011-of-00036.safetensors",
+    "model-00012-of-00036.safetensors"
+   ],
+   "bytes": 838906704,
+   "wall_s": 40.5,
+   "MB_per_s": 20.7,
+   "sha_ok": true
+  }
+ }
+}

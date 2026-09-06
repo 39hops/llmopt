@@ -1,0 +1,13 @@
+{
+ "size": "3.7B",
+ "pair": "mid_4_final->sft_1_final",
+ "n_2d": 254,
+ "registered_bit_identical_2d": 254,
+ "registered_worst_rel": 0.0,
+ "candidate_within_1e-6": 124,
+ "candidate_worst_rel": 2.0979837498911547e-05,
+ "registered_s": 733.4,
+ "candidate_s": 245.0
+}
+wrote /Users/artin/code/llmopt/logs/k2h/wallaudit/parity3b_3.7B_mid_4_final_sft_1_final.json
+PARITY_RC=0
