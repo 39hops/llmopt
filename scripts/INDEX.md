@@ -1392,6 +1392,16 @@ Precompute for the expert-atlas animatic (storyboard 2026-08-13).
 
 - `main() -> None`
 
+### scratch/atomtraj_census.py
+ATOM-DIET-TRAJECTORY-1 census (pre-reg RESULTS L66546, sealed by AMENDMENT -SEAL L66822). Loads every snapshot of every birth, computes the literal 59-key P8 / C8 / centroid law against the birth's own step_0, the paired treatment displacements T_s and the six within-arm displacements at every snapshot, the S1 / S1b / S2 / S3 bars at snapshot 15,420, F1 / F2 from the post-hoc gate rows, the descriptive lag tables (delta_h(t) = W[t+h] - W[t], lag_h(t) = cos(delta_h(t), delta_h(t+h)) on grid snapshots) and the per-tensor IPR / effective-rank tables. Writes logs/atomtraj1/census.json (bar inputs and per-snapshot tables) and logs/atomtraj1/census_tensors.json (per-tensor tables, sha256 recorded in census.json). Refuses to overwrite. Bars are evaluated exactly as written in the pre-reg; nothing here is adaptive.
+
+- `l2(a, b)`
+- `cos(a, b)`
+- `objects(sd, sd0)` — P8, C8 (dict), centroid, per-tensor stats for the 40 block 2-D tensors.
+- `flat2d(sd)`
+- `separation(paired, within)`
+- `main()`
+
 ### scratch/atomtraj_pins.py
 ATOM-DIET-TRAJECTORY-1 pin derivation (pre-reg RESULTS 2026-09-07). Zero training. Reproduces every constant the pre-reg freezes from the frozen curric functions, the frozen shard, the pinned torch scheduler and two existing seed-3 stock checkpoints:
 
@@ -1400,6 +1410,22 @@ ATOM-DIET-TRAJECTORY-1 pin derivation (pre-reg RESULTS 2026-09-07). Zero trainin
 - `encode_flagged(rows, tok)`
 - `p8_c8(sd, sd0)`
 - `arm_order()`
+- `main()`
+
+### scratch/atomtraj_qual.py
+ATOM-DIET-TRAJECTORY-1 qualification ladder (pre-reg RESULTS L66546, items 1 to 5), stock-only on the permanently excluded smoke seed 11. Runs, in order, and writes logs/atomtraj1/qual.json:   1. the source-invariant tests (pytest tests/test_atomtraj_source_invariant.py);   2. DRYRUN of both arms at a registered seed (stream digests, counts;      no output);   3. CPU deterministic emission-neutrality probe: SMOKE=1 DEVICE=cpu      SMOKE_STEPS=300, EMIT=1 v EMIT=0, seed 11: final state_digest,      optimizer-state digest and torch RNG digest must be identical;   4. path-isolated mps smoke: SMOKE=1 stock seed 11 capped at 1,100      steps (snapshots 0, 463, 1,028, 1,100), then the post-hoc gate      runner, census and verifier in SMOKE mode;   5. disk preflight (>= 15 GB free). Refuses to run if qual.json exists.
+
+- `run(cmd, env=None, must=True)`
+- `main()`
+
+### scratch/atomtraj_verify.py
+Independent verifier for ATOM-DIET-TRAJECTORY-1 (pre-reg RESULTS L66546, sealed by AMENDMENT -SEAL L66822). Shares no code with scratch/atomtraj_census.py: its own literal key law, its own digest of each snapshot, its own distances, bars and descriptive tables. Checks the instrument sources against the launch commit (git show, never the working tree), recomputes the six stream digests and the counts from the frozen curric functions, checks completeness, the state_digest equality laws, the frozen execution order against recorded start times, the gate dict sums, and every census number within 1e-9 relative. Writes logs/atomtraj1/verify_receipt.json (refuses to overwrite).
+
+- `chk(c, m)`
+- `digest(sd)`
+- `close(a, b, tol=1e-09)`
+- `my_objects(sd, sd0)`
+- `l2(a, b)`
 - `main()`
 
 ### scratch/attractor_census.py
@@ -1467,6 +1493,21 @@ ATOM-DIET-LADDER-1 instrument (pre-reg RESULTS 2026-08-14): paired stock/atoms b
 RULE-ABLATE-1 instrument (thin sibling of the frozen dose driver; RECEIPTS repointed to logs/ruleablate1/ so nothing appends into frozen receipts). Original docstring follows.
 
 - `encode_flagged(rows, tok)` — The trainer's text/encode/filter path (C.encode_with_levels
+- `main()`
+
+### scratch/birth19m_atoms_traj.py
+ATOM-DIET-TRAJECTORY-1 instrument (pre-reg RESULTS L66546, sealed by AMENDMENT -SEAL L66822): paired stock/atoms births at the matched 15,420-step horizon with snapshot emission. Sibling of the results-cited scratch/birth19m_atoms_ladder.py (not edited): the recipe, dose mechanics, no-op precondition and training loop are verbatim. Changes: (i) snapshots saved at the frozen schedule (step 0, 463, then every 1,028 to 15,420); (ii) the arm's three actual token-id batch-stream digests are asserted against the pinned values before the first optimizer step; (iii) unique output paths under checkpoints/atomtraj1/; (iv) non-finite loss aborts; (v) NO gate runs in this file (post-hoc gates: scratch/birth19m_atoms_trajgate.py). Every receipt field is derived from the artifacts this process opened or wrote.
+
+- `sha256_file(p)`
+- `git_head()`
+- `git_dirty()`
+- `now()`
+- `save_snapshot(model, step, record)` — Save the state dict (CPU float32) as step_{n:05d}.pt and record the
+- `main()`
+
+### scratch/birth19m_atoms_trajgate.py
+ATOM-DIET-TRAJECTORY-1 post-hoc gate runner (pre-reg RESULTS L66546). Runs only after ALL registered trainings are complete: loads the saved snapshots at the frozen gate steps (2,056 / 5,140 / 10,280 / 15,420), checks each file's canonical state_digest against the birth receipt, runs the standard 120 gate (llmopt.lab.gate.gate_eval) and appends one row per gated snapshot. No training state is touched. Real mode refuses to run with fewer than six birth rows and refuses if gates.jsonl exists.
+
 - `main()`
 
 ### scratch/birth19m_backsched.py
