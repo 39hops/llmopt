@@ -71,7 +71,10 @@ def main():
     rec = json.load(open(os.path.join(OUT, "receipt.json")))
     chk(rec["smoke"] is False and rec["prereg"] == "K2-HORIZON-TRANSPORT-0" and rec["size"] == SIZE, "identity")
     for f in ("scratch/k2h_transport.py", "scratch/k2h_gateladder.py", "scratch/k2h_stagecensus.py", "docs/preregs/k2h-transport-0.manifest.json"):
-        chk(sha(os.path.join(ROOT, f)) == rec["start"]["file_sha256"][f], f"pin {f}")
+        # the pin is the source at the run's start commit; the working tree may have moved on
+        # (7B-only execution switches landed after the 3.7B run), so the pinned commit is authoritative
+        at_commit = subprocess.run(["git", "show", f"{rec['start']['start_commit']}:{f}"], capture_output=True, cwd=ROOT).stdout
+        chk(hashlib.sha256(at_commit).hexdigest() == rec["start"]["file_sha256"][f], f"pin {f} v start commit {rec['start']['start_commit']}")
     chk(rec["start"]["start_commit"] == rec["completion_commit"], "start v completion commit")
     man = json.load(open(os.path.join(ROOT, "docs/preregs/k2h-transport-0.manifest.json")))["sizes"][SIZE]
     for tag, v in rec["tags"].items():

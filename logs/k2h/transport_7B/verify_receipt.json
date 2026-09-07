@@ -1,0 +1,17 @@
+{
+ "prereg": "K2-HORIZON-TRANSPORT-0",
+ "size": "7B",
+ "verdict": "VERIFIED",
+ "discrepancies": [],
+ "n_discrepancies": 0,
+ "n_census_rows": 5232,
+ "n_gate_rows": 1440,
+ "rescored_subset": 160,
+ "receipt_sha256": "679920898e87fe4241a9f568c780f5f9c482b532c9e80e72490643acdafc8cf1",
+ "census_sha256": "6c542c34a7a2e26be3cfbb70d83fa46d143af313a39ff570fc98371098fb061e",
+ "gate_rows_sha256": "ab1da32615bc184e3548bebbdc21e30df0f8ea89d79506f790309eab5930ece8",
+ "instrument_run_commit": "027b9429",
+ "commit": "027b9429",
+ "status_porcelain": "",
+ "verifier_sha256": "57d162bea52d6762d7831f3f9595c9f2de267952d0d5cd01fcac470087477033"
+}
