@@ -66818,3 +66818,65 @@ if the shard is absent at launch; Mac shares CPU with any granted
 seat, births mps-bound, contention disclosed; snapshots untracked and
 digest-anchored, small receipts force-added and locked; code_commit
 on every receipt row = the launch commit.
+
+## AMENDMENT ATOM-DIET-TRAJECTORY-1-SEAL (target: PRE-REG ATOM-DIET-TRAJECTORY-1 L66546): prereg-auditor folds before any birth; five blockers and six wording fixes, no bar loosened (2026-09-07, Mac)
+
+Timing fence: no instrument beyond scratch/atomtraj_pins.py exists,
+no birth has run, no snapshot or gate value exists. This amendment
+tightens the pre-registration before it is sealed; every change is
+listed and the target entry governs where not amended here.
+
+1. Cost anchors (blockers 1 to 3). The it/s clause is replaced: the
+   L29465 logs run at 5.3 to 5.5 it/s steady state (4.8 to 5.2 only
+   in the first 200 steps), consistent with the four booked walls
+   2,839 / 2,865 / 2,870 / 2,879 s. The gate wall is now measured on
+   this instrument, zero training: llmopt.lab.gate.gate_eval on
+   checkpoints/gallery19m_stock_s3.pt on mps took 66.9 s and
+   reproduced the booked cell exactly (64 / 120 {3:24, 4:6, 5:15,
+   6:8, 7:11} @ 61.02%, weights sha bf2dc94b1d9712cb). The cost line
+   is restated: training 6 x 2,839 to 2,879 s = 4.73 to 4.80 h; 102
+   snapshot saves about 0.1 h; the three pre-training stream digest
+   passes per birth about 0.1 h in total; 24 post-hoc gates at 67 s
+   about 0.45 h; census and verifier under 20 min; qualification about
+   25 min; total about 6.2 h serial (range 6.1 to 6.3 h).
+2. F1 threshold restored to the booked family bar (blocker 5): F1
+   LIFT-REPRODUCES fires iff atoms_total > stock_total at 3 / 3 seeds
+   AND the mean paired delta >= +5, the same clause as L29465. The
+   +4 in the target entry is withdrawn. The registered F1 prior is
+   unchanged (+4 to +7, point +5), so bar 5 sits at the prior's point
+   and is a coin flip on the mean clause, as it was in L29367.
+3. F2 prior registered (blocker 4): F2 fires; atoms L4 mean 10 to 13,
+   point 12 (the house underpriced L4 at L29367; the record L4 is 12 /
+   12 / 12); stock L4 5 to 9, point 7.
+4. Family record (should-fix 2): "2 hits, 8 misses" was the record as
+   of L29465 (2026-08-14). The current ladder family record is 11
+   hits, 21 misses (L30779).
+5. Instrument tense (should-fix 1): scratch/birth19m_atoms_traj.py,
+   scratch/birth19m_atoms_trajgate.py, scratch/atomtraj_census.py,
+   scratch/atomtraj_verify.py and the source-invariant test in tests/
+   do NOT exist at this commit. Every present-tense behavioural
+   sentence about them in the target entry is a specification that
+   those files WILL satisfy; each is verified by the qualification
+   receipt logs/atomtraj1/qual.json and by the verifier receipt, and
+   the files are committed before any birth is launched.
+6. Seed env (should-fix 4): the driver takes SEED {5, 6, 7} and exports
+   BIRTH_SEED in-driver, exactly as the ladder sibling does.
+7. Predicted outcome disclosed (should-fix 5): under the registered
+   priors (S1 NO-FIRE, F1 FIRE) the REFUTED-IF branch is the predicted
+   outcome. If it lands it refutes the trajectory-signature-as-data-
+   lever program at this house scale, not the rung.
+8. Receipt size (should-fix 6): logs/atomtraj1/census.json holds only
+   the bar inputs and per-snapshot P8 / C8 / centroid / lag tables
+   (small text, force-added and locked). The per-tensor IPR and
+   effective-rank tables for 40 tensors x 102 snapshots go to a
+   second receipt, logs/atomtraj1/census_tensors.json (4,080 rows,
+   expected under 1 MB), also force-added and locked, its sha256
+   recorded in census.json and its values recomputed by the verifier.
+9. JSON encodings (should-fix 3): docs/preregs/atom-diet-trajectory-1.json
+   is corrected in the same commit: F1 value 5.0; F2 direction
+   at_or_above; S3 encoded as sign-consistency (direction either); F2
+   prior added; execution order, snapshots, receipts unchanged.
+
+Nothing else in L66546 changes. The pins, the six stream digests, the
+schedule, the 59-key law, the S1 / S1b / S2 / S3 definitions, the
+claim axes, the stopping paragraph and the fences stand as written.

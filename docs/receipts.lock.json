@@ -44,6 +44,10 @@
    "exists": false,
    "source": "prereg"
   },
+  "logs/atomtraj1/census_tensors.json": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/atomtraj1/gates.jsonl": {
    "exists": false,
    "source": "prereg"
