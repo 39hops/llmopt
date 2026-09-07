@@ -1587,7 +1587,9 @@ regime tag on every bullet is the fence.
   with their discovery seeds quarantined; the over-inclusion
   finding is n=3 but scoped to the carriers' rank class only — a
   uniform-random deletion control (pre-registration owed) must run
-  before any "generally over-inclusive" reading. Scope: one
+  before any "generally over-inclusive" reading (that control has
+  since run: VERDICT EX4-UNIF, RESULTS.md#L28597, neither primary
+  bar fires; see the bullet in this section anchored there). Scope: one
   vehicle, mathgen L1-3, drift finding scoped
   to the carriers' rank class.
   ([VERDICT EX-ANAT-3](RESULTS.md#L22353 "id:2026-08-07-verdict-ex-anat-3-neither-bar"); [DESK

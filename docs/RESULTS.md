@@ -66880,3 +66880,110 @@ listed and the target entry governs where not amended here.
 Nothing else in L66546 changes. The pins, the six stream digests, the
 schedule, the 59-key law, the S1 / S1b / S2 / S3 definitions, the
 claim axes, the stopping paragraph and the fences stand as written.
+
+## OBSERVATION WRITER-INVARIANCE-DESK-0: PRICING ONLY — a zero-training learned-update-necessity desk on existing same-init 19M checkpoints is possible at 19 gates (21 min) per specimen and 54 gates (1.0 h) for the cheapest function-matched writer pair; the repository confirms that llmopt has never replaced the credit-assignment law; nothing armed (2026-09-07, Mac, desk)
+
+Question (Artin): the objective constrains behavior while the
+training procedure is a WRITER that selects one implementation among
+many; which mechanisms are task-forced and which are writer
+artifacts. Two banks land in RIFF-LEDGER in this commit (DECLARATIVE
+COMPUTE / LANGUAGE AS A CONTROL PLANE; TRAINING-LAW DEGENERACY /
+WRITER INVARIANCE). This entry prices the zero-training desk from
+artifacts already on disk. No checkpoint was loaded and no gate was
+run; the live ATOM-DIET-TRAJECTORY-1 births were not touched.
+
+Repository inventory (verified line by line): the lab has booked
+variations of the OPTIMIZER (Muon v AdamW, L6052 / L6120 / L6137 /
+L8311), the SCHEDULE (BACKWARD-SCHEDULE-1 L28261; COMP-LADDER-1
+L28315), PRECISION and REPRESENTATION (L13255, L23852, L2281, L2406,
+L7395, L7613), the PLASTICITY LOCUS (control rod L3195; LoRA), the
+INITIALIZATION and POST-HOC TRANSFORMS (MERGE-SPACE-1 / -2 L26770 /
+L26866; LAM-MERGE L14091), DATA and CURRICULUM (L28685 to L29930 arm
+family) and ONLINE UPDATES (L3062). Every one computes the gradient by
+reverse-mode autodiff. No booked, preregistered or coded arm replaces
+the credit-assignment law: zero hits for feedback alignment, DFA,
+synthetic gradients, decoupled neural interfaces, target propagation,
+equilibrium propagation, zeroth-order, MeZO, forward-forward, local
+learning rules, ROME, MEMIT or model editing across docs, specs,
+scratch and llmopt. The only non-gradient weight update in the tree
+(llmopt/train/hebbian_moe.py) is an auxiliary no_grad relaxation
+measured function-neutral (L12950). Two gradient-free writers are
+banked and unrun (RIFF L40 ES-LoRA; RIFF L4401 perturb-and-accept).
+
+Specimens on disk that share an initialization (torch.manual_seed(seed)
+then build_model on CPU, the same law in every birth19m driver; the
+same W_0 regeneration already reproduced two seed-3 specimens at
+L66742). Same init AND function-matched within the 7-solve resolution
+unit, all at 15,420 steps unless noted:
+- seed 2, four different update rules in a 4-solve band: forward
+  OneCycle gallery19m_phase_s2 (64 / 120 {3:23, 4:7, 5:16, 6:8, 7:10};
+  L28502 cites the FINAL file, L28273 / L28685 / L29289 cite the
+  m015300 milestone with the same dict, so the final file's own gate
+  is UNVERIFIED until re-gated, one gate); reversed OneCycle
+  gallery19m_backsched_s2 (62 / 120 {3:21, 4:7, 5:16, 6:7, 7:11},
+  L28272); half-schedule gallery19m_comp50_s2 (60 / 120, 7,710 steps,
+  L28326, horizon-unmatched); plateau-gated data order
+  gallery19m_curric_level_s2 (63 / 120, L28691, an almost-stock stream
+  by its own verdict). Negative controls at the same W_0: curric_rev
+  37, curric_swap 45, comp30 49, curric_cap 54.
+- seed 3, DATA writers within 7 of stock 64: dose1 64, softspeed_soft
+  64 (13,422 steps), dose3p5 66, softspeed_control 62, noheur 68,
+  basicsarith 68, atoms 70, basicscontrol 70, xtermxterm 70; excluded
+  at +8: dose7, ctrl3218, xtermcontrol (all 72).
+- seed 4: stock 64, atoms 70.
+- the pure run-noise pair: stock_s3 v softspeed_control_s3 (64 v 62,
+  same seed, same diet, different runs), the desk's own null.
+Dead classes: MERGE-SPACE checkpoints are absent from disk (msearch_*
+never kept) and were d64 on the 3080 at 11 to 14 / 120, so the
+"same-init parent v function-preserving merge" specimen does not
+exist; the rational-snap family (snap19m_q*) shares W_0 trivially but
+its delta is learned delta plus quantization noise and its base
+mathnative_19m.pt has no recorded birth seed, so it serves only as an
+instrument no-op check (q64 at parity 48 / 120, L7618), not as a
+writer specimen; softnext_s2 files are absent and were 3080-born.
+
+The desk (not preregistered): for a specimen with regenerated W_0,
+delta = W_trained minus W_0 per key; revert ONE module group's delta
+to W_0 and gate the reverted model in-process with
+llmopt.lab.gate.gate_eval (66.9 s per gate on mps, L66834);
+necessity_l = gate(full) minus gate(reverted l). Module groups under
+the frozen 59-key law of scratch/atomtraj_pins.py: the eight blocks
+(7 keys each, 56 keys) PLUS a ninth outside-blocks group (emb.weight,
+head.weight, norm.g), so that the reverts partition the delta, and
+the eight classes (qkv, o, gate, up, down, norms, emb, head). Head is
+untied from emb in this model (asserted in the pins script), so an
+emb revert does not silently revert head. Second desk: swap one
+learned block delta from writer A into writer B at the same W_0 and
+gate the hybrid, both directions.
+
+Price at 66.9 s per gate: 9 group reverts + 8 class reverts + 1
+re-gate of the full model + 1 gate of W_0 = 19 gates = 1,271 s (21.2
+min) per specimen; pairwise block swap = 16 gates = 1,070 s (17.8
+min) per pair. Minimum viable pair (phase_s2 + backsched_s2, both
+necessity legs + swap) = 54 gates = 3,613 s (1.0 h). Seed-2
+four-writer desk (four necessity legs + six pairwise swaps) = 172
+gates = 3.2 h. Seed-3 ten-specimen necessity table = 170 gates = 3.2
+h. Everything = about 342 gates, 6.4 h. All on mps, which is held by
+the live ATOM-DIET-TRAJECTORY-1 run until about 2026-09-08 01:00 UTC;
+no CPU gate wall is on record, so a CPU desk is unpriced until one
+gate is timed there.
+
+Interpretation tree, frozen before any desk value is read: same
+function and the same causal necessity structure across the most
+different writers = evidence the mechanism is task- or
+architecture-constrained rather than optimizer-contingent; same
+function and a different necessity structure = direct evidence of
+writer-contingent mechanism (behavior does not identify one learned
+mechanism); a writer outside the function band = no mechanism
+comparison licensed. STOP for the desk: the two most different
+function-matched writers' necessity profiles differ by less than the
+same-seed rerun pair's profiles differ from each other.
+
+Fences: the function matches above are non-differences at sigma about
+5 on one seed each, never measured equalities; comp50 and
+softspeed_soft are horizon-unmatched; curric_level is a weak fourth
+writer; every specimen was born on mps, which is run-level
+nondeterministic, so the rerun pair bounds what a writer contrast can
+claim; no weight-distance quantity enters any reading; nothing is
+armed, preregistered or launched, and no experiment was run for this
+entry.
