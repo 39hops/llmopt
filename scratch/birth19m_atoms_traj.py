@@ -58,6 +58,7 @@ if SMOKE:
 else:
     assert SEED in DISCOVERY_SEEDS, f"registered seeds are {DISCOVERY_SEEDS}, got {SEED}"
     assert EMIT and not DEVICE_OVERRIDE and not TAG, "EMIT/DEVICE/TAG overrides are smoke-only"
+    assert ORDER_INDEX in tuple(str(i) for i in range(6)) or DRYRUN, f"ORDER_INDEX must be 0..5, got {ORDER_INDEX!r}"
 
 os.environ["ARM"] = "off"       # frozen module import side-effects only
 os.environ["BIRTH_SEED"] = str(SEED)
@@ -180,6 +181,8 @@ def main():
     free = shutil.disk_usage(".").free
     if free < MIN_FREE_BYTES:
         raise SystemExit(f"NOT-RUN: disk free {free / 1024**3:.1f} GB < 15 GB")
+    if not SMOKE and git_dirty():
+        raise SystemExit("REFUSING: registered birth on a dirty tree")
 
     dev = DEVICE_OVERRIDE or ("mps" if torch.backends.mps.is_available() else
                               "cuda" if torch.cuda.is_available() else "cpu")

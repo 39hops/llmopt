@@ -11,7 +11,10 @@ Runs, in order, and writes logs/atomtraj1/qual.json:
      steps (snapshots 0, 463, 1,028, 1,100), then the post-hoc gate
      runner, census and verifier in SMOKE mode;
   5. disk preflight (>= 15 GB free).
-Refuses to run if qual.json exists.
+Refuses to run if qual.json exists. A re-run after a failed attempt
+needs the previous smoke outputs set aside first (rename
+checkpoints/atomtraj1_smoke/ and logs/atomtraj1/smoke.jsonl to an
+_attemptN_* name; the driver's refuse-if-exists guards are unconditional).
 
 Usage: .venv/bin/python scratch/atomtraj_qual.py
 """

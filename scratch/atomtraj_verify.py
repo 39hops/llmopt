@@ -160,19 +160,24 @@ def main():
     for arm, enc, fl in (("stock", enc_stock, [False] * len(enc_stock)), ("atoms", enc_atoms, is_atom)):
         my_streams[arm] = []
         for ep in range(3):
-            st = C.stock_epoch_stream(len(enc), ep)[:spe]
+            raw = C.stock_epoch_stream(len(enc), ep)
+            st = raw[:spe]
             h = hashlib.sha256()
             for a, b in st:
                 for j in range(a, b):
                     h.update(json.dumps(enc[j]).encode())
                 h.update(b"|")
-            my_streams[arm].append((h.hexdigest(), sum(1 for a, b in st for j in range(a, b) if fl[j])))
+            my_streams[arm].append((h.hexdigest(), sum(1 for a, b in st for j in range(a, b) if fl[j]), len(raw) - spe))
         chk([x[0] for x in my_streams[arm]] == PINNED[arm], f"{arm} stream digests v pinned")
+    chk([x[2] for x in my_streams["stock"]] == [0, 0, 0] and [x[2] for x in my_streams["atoms"]] == [187, 187, 187], "dropped counts v pinned")
     shard_sha = hashlib.sha256(shard.read_bytes()).hexdigest()
     for r in births:
         arm = r["arm"]
         chk(r["stream_sha256"] == [x[0] for x in my_streams[arm]], f"{arm} s{r['seed']} receipt stream digests")
-        chk(r["atom_rows_per_epoch"] == [x[1] for x in my_streams[arm]][:len(r["atom_rows_per_epoch"])], f"{arm} s{r['seed']} atom rows")
+        n_ep = len(r["atom_rows_per_epoch"])
+        chk(n_ep == 3 or SMOKE, f"{arm} s{r['seed']} atom_rows_per_epoch length {n_ep}")
+        chk(r["atom_rows_per_epoch"] == [x[1] for x in my_streams[arm]][:n_ep], f"{arm} s{r['seed']} atom rows")
+        chk(r["dropped_per_epoch"] == [x[2] for x in my_streams[arm]], f"{arm} s{r['seed']} dropped counts")
         chk(r["shard_sha256"] == shard_sha, "shard sha in receipt")
     # completeness, equality laws, order
     by = {f"{r['arm']}_s{r['seed']}": r for r in births}
@@ -242,6 +247,7 @@ def main():
                     n1, n2 = float(d1.norm()), float(d2.norm())
                     mine = float((d1 @ d2) / (n1 * n2)) if n1 > 0 and n2 > 0 else None
                     chk(close(mine, census["lag"][key][str(h)].get(str(t))), f"{key} lag {h} t {t}")
+        flats.clear()
         print(f"[verify] {key} checked; discrepancies so far {len(D)}", flush=True)
     if not SMOKE:
         chk("0" not in census["bars_by_step"], "census must not evaluate bars at step 0 (zero delta)")
@@ -264,12 +270,16 @@ def main():
             cb = census["bars_by_step"][str(s)]
             chk(cb["S1"] == s1 and cb["S1b"] == s1b and cb["S2"] == s2 and cb["S3"] == s3, f"step {s} bar booleans v census")
             chk(all(close(T[sd_], cb["T"][str(sd_)]) for sd_ in SEEDS) and all(close(W[(a, x, y)], cb["W"][f"{a}_{x}_{y}"]) for (a, x, y) in W), f"step {s} T/W v census")
+            chk(all(close(Tc[sd_], cb["T_C8"][str(sd_)]) for sd_ in SEEDS) and all(close(Wc[(a, x, y)], cb["W_C8"][f"{a}_{x}_{y}"]) for (a, x, y) in Wc), f"step {s} C8 T/W v census")
+            chk(all(close(c, cb["cosines"][f"{x}_{y}"]) for c, (x, y) in zip(cs, itertools.combinations(SEEDS, 2))), f"step {s} cosines v census")
+            chk({str(k): v for k, v in sg.items()} == cb["centroid_sign"], f"step {s} centroid signs v census")
             if s == FINAL:
                 final_bars = {"S1": s1, "S1b": s1b, "S2": s2, "S3": s3, "T": T, "W": {f"{a}_{x}_{y}": v for (a, x, y), v in W.items()}}
         g = {}
         for r in gates:
             chk(sum(r["solves"].values()) == r["total"] and sorted(r["solves"]) == ["3", "4", "5", "6", "7"], f"gate dict {r['arm']} s{r['seed']} {r['step']}")
-            chk(r["birth_code_commit"] == launch, "gate row birth commit")
+            chk(all(0 <= v <= 24 for v in r["solves"].values()), f"gate level counts within 24 items {r['arm']} s{r['seed']} {r['step']}")
+            chk(r["birth_code_commit"] == launch and r["code_commit"] == launch, "gate row commits v launch commit")
             g[(r["arm"], r["seed"], r["step"])] = r
         deltas = {sd_: g[("atoms", sd_, FINAL)]["total"] - g[("stock", sd_, FINAL)]["total"] for sd_ in SEEDS}
         f1 = all(d > 0 for d in deltas.values()) and sum(deltas.values()) / 3 >= 5

@@ -136,6 +136,7 @@ def main():
                     n1, n2 = float(d1.norm()), float(d2.norm())
                     lag[str(h)][str(t)] = float((d1 @ d2) / (n1 * n2)) if n1 > 0 and n2 > 0 else None
         per[key]["lag"] = lag
+        prev_flat.clear()
         print(f"[census] {key}: {len(r['snapshots'])} snapshots", flush=True)
 
     out = {"prereg": "ATOM-DIET-TRAJECTORY-1", "smoke": SMOKE, "commit": commit, "births": sorted(per),
