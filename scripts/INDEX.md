@@ -1392,6 +1392,16 @@ Precompute for the expert-atlas animatic (storyboard 2026-08-13).
 
 - `main() -> None`
 
+### scratch/atomtraj_pins.py
+ATOM-DIET-TRAJECTORY-1 pin derivation (pre-reg RESULTS 2026-09-07). Zero training. Reproduces every constant the pre-reg freezes from the frozen curric functions, the frozen shard, the pinned torch scheduler and two existing seed-3 stock checkpoints:
+
+- `state_digest(sd)` — Canonical tensor digest: keys sorted, each tensor as float32
+- `stream_digest(enc, stream)`
+- `encode_flagged(rows, tok)`
+- `p8_c8(sd, sd0)`
+- `arm_order()`
+- `main()`
+
 ### scratch/attractor_census.py
 Free-running iteration census (PRE-REG ATTRACTOR-0, 2026-08-10).
 

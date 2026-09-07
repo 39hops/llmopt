@@ -1,0 +1,35 @@
+{
+ "name": "ATOM-DIET-TRAJECTORY-1",
+ "note": "Machine-readable form of PRE-REG ATOM-DIET-TRAJECTORY-1 (RESULTS L66546), written with the prose entry before any birth. Bars, claim axes and receipts mirror the prose; the prose governs on any conflict.",
+ "results_id": "2026-09-07-pre-reg-atom-diet-trajectory-1",
+ "registered": "2026-09-07",
+ "machine": "mac",
+ "arms": {
+  "stock": {"description": "stock enc, 15,420 steps, seeds 5/6/7; the no-op leg of the augmentation path"},
+  "atoms": {"description": "stock rows + frozen shard data/micromodel_atoms_shard0.jsonl (3.5% one-ply atom dose), same 15,420 steps, seeds 5/6/7"}
+ },
+ "execution_order": ["stock_s5", "atoms_s5", "stock_s6", "atoms_s6", "atoms_s7", "stock_s7"],
+ "snapshot_steps": [0, 463, 1028, 2056, 3084, 4112, 5140, 6168, 7196, 8224, 9252, 10280, 11308, 12336, 13364, 14392, 15420],
+ "gate_steps": [2056, 5140, 10280, 15420],
+ "bars": [
+  {"id": 1, "name": "S1-PROFILE-SEPARATES", "metric": "p8_l2_min_paired_over_max_within", "population": "seeds:5,6,7", "aggregation": "min_paired_gt_max_within", "direction": "above", "value": 1.0, "arms": ["stock", "atoms"], "description": "min over seeds of ||P8_atoms - P8_stock|| strictly exceeds the max of the six within-arm P8 displacements at snapshot 15,420"},
+  {"id": 2, "name": "S1b-DIRECTION-REPRODUCES", "metric": "p8_treatment_vector_pairwise_cosine", "population": "seeds:5,6,7", "aggregation": "all_pairs", "direction": "above", "value": 0.0, "arms": ["stock", "atoms"], "description": "all three treatment vectors nonzero and all three pairwise cosines > 0; zero or undefined books NO-FIRE"},
+  {"id": 3, "name": "S2-CLASS-SHARE-SEPARATES", "metric": "c8_l2_min_paired_over_max_within", "population": "seeds:5,6,7", "aggregation": "min_paired_gt_max_within", "direction": "above", "value": 1.0, "arms": ["stock", "atoms"], "description": "the S1 law on the eight-class share vector C8"},
+  {"id": 4, "name": "S3-CENTROID-SIGN", "metric": "centroid_paired_sign", "population": "seeds:5,6,7", "aggregation": "all_same_nonzero", "direction": "above", "value": 0.0, "arms": ["stock", "atoms"], "description": "sign(centroid_atoms - centroid_stock) nonzero and identical at 3/3 seeds"},
+  {"id": 5, "name": "F1-LIFT-REPRODUCES", "metric": "gate120_paired_delta", "population": "seeds:5,6,7", "aggregation": "all_positive_and_mean", "direction": "above", "value": 4.0, "arms": ["stock", "atoms"], "description": "atoms_total > stock_total at 3/3 seeds AND mean paired delta >= +4, final snapshot gate only"},
+  {"id": 6, "name": "F2-L4-REPRODUCES", "metric": "gate120_L4_paired", "population": "seeds:5,6,7", "aggregation": "all_geq", "direction": "above", "value": 0.0, "arms": ["stock", "atoms"], "description": "atoms L4 >= stock L4 at 3/3 seeds"}
+ ],
+ "claim_axes": {"STRUCTURAL": "S1 AND S1b", "FUNCTION": "F1", "JOINT": "STRUCTURAL AND FUNCTION"},
+ "refuted_if": "STRUCTURAL NO-FIRE with FUNCTION FIRE at six births",
+ "registered_prior": {"F1": "fires, mean paired delta +4 to +7, point +5", "S1": "NO-FIRE, point ratio min T_s / max within-arm displacement 0.9", "S1b": "fires", "S2": "NO-FIRE", "S3": "fires, atoms centroid above stock at 3/3"},
+ "stopping": "no outcome-based early stopping; operational fail-closed aborts only (source-invariant, stream digest, shard sha, disk < 15 GB, non-finite loss, existing real path, code_commit drift, state_digest inequality)",
+ "receipts": [
+  "logs/atomtraj1/births.jsonl",
+  "logs/atomtraj1/gates.jsonl",
+  "logs/atomtraj1/census.json",
+  "logs/atomtraj1/qual.json",
+  "logs/atomtraj1/verify_receipt.json",
+  "logs/atomtraj1/smoke.jsonl"
+ ],
+ "pins": "scratch/atomtraj_pins.py"
+}

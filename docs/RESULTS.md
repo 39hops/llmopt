@@ -66542,3 +66542,279 @@ REFUTED-IF resolved: the prospective reading "3.7B lifecycle signatures predict 
 
 **Fences.** Two sizes of one family sharing corpus, schedule and config per IFM (the 22T-token claim is agent-reported, never session-verified); width 2560 v 4096 at equal depth 36, so the normalized-depth coordinate is exact here and untested where depth differs; bf16 gates, two shot seeds, tier-restricted at 7B by registration; B1 and B2 capability cells config-confounded; merge and RL tags excluded; T4 NOT-RESOLVABLE by law; the descriptive Hill alpha is absent at 7B by registration; no cross-device comparison; the 0.9B numbers are never compared to either size.
 
+
+## PRE-REG ATOM-DIET-TRAJECTORY-1: does the randomized atom diet induce a reproducible weight-trajectory anatomy whose paired displacement exceeds observed between-birth variation, while its booked function lift reproduces? (2026-09-07, Mac)
+
+Question. ATOM-DIET-LADDER-1 (L29465) booked a +6 / +6 paired gate
+lift for the 3.5% one-ply atom diet at the matched 15,420-step
+horizon. This rung asks two separately adjudicated questions on six
+fresh births: STRUCTURAL, does the randomized atom diet induce a
+reproducible low-dimensional weight-trajectory anatomy whose paired
+displacement exceeds observed between-birth variation; FUNCTION, does
+the booked lift reproduce under a trajectory-emitting execution. The
+claim axes are frozen as STRUCTURAL = S1 AND S1b, FUNCTION = F1,
+JOINT = STRUCTURAL AND FUNCTION, and all four combinations are
+reported independently. No WEIGHTS -> FUNCTION claim is made by this
+rung; that needs a later intervention on the booked weight locus
+(banked in RIFF-LEDGER, same commit).
+
+Instrument. scratch/birth19m_atoms_traj.py, sibling of the
+results-cited scratch/birth19m_atoms_ladder.py (not edited). Recipe
+verbatim: d 384, 8 blocks, 6 heads, ffn 1536 (18,911,616 parameters,
+59 state-dict keys); AdamW lr 3e-4, weight decay 0.01, grad clip 1.0;
+OneCycleLR max_lr 3e-4, pct_start 0.03, total_steps 15,420; EPOCHS 3,
+BS 32, 5,140 batches per epoch; fp32 on mps; torch.manual_seed(SEED),
+build_model on CPU, then .to(dev); stock enc from C.load_excised_rows
+and C.encode_with_levels; atoms arm = frozen shard
+data/micromodel_atoms_shard0.jsonl (sha256 193ebc5d48c639af..., 6,000
+rows after in-driver gate-band excision) interleaved via
+C.stock_epoch_stream over the augmented length-sorted enc, truncated
+to 5,140 batches per epoch. C.assert_noop(enc_stock) runs in-process
+before training in every arm. Additions, and nothing else: (i)
+snapshot emission at the frozen schedule below; (ii) stream-digest
+assertions before the first optimizer step; (iii) unique output
+paths; (iv) NaN / non-finite loss abort. NO gate runs inside training
+and NO gate runs between births. Post-hoc gate:
+scratch/birth19m_atoms_trajgate.py loads saved snapshots and runs
+llmopt.lab.gate.gate_eval (standard 120 gate) only after all six
+trainings are complete. Census: scratch/atomtraj_census.py.
+Verifier: scratch/atomtraj_verify.py (no shared code with the
+census). Pins: scratch/atomtraj_pins.py (committed with this entry;
+regenerates every digest and constant below from the frozen curric
+functions, the frozen shard, the pinned torch 2.12.1 scheduler and
+two existing checkpoints). The driver, gate, census and verifier are
+committed before any birth is launched.
+
+Arms and execution order. (stock, atoms) x BIRTH_SEED {5, 6, 7}, six
+births, serial on the Mac. Within-pair arm order is counterbalanced
+2:1 by a fixed hash: sha256("ATOM-DIET-TRAJECTORY-1-order") =
+94bd07558e552b26..., atoms-first seed = 5 + (hash mod 3) = 7. Frozen
+execution order: stock_s5, atoms_s5, stock_s6, atoms_s6, atoms_s7,
+stock_s7. Each seed pair is adjacent. Phase 1 trains all six births
+with zero gates between them; phase 2 gates the 24 saved gate
+snapshots; phase 3 runs the census and the verifier. The literal
+execution order and each birth's start and end wall time are recorded
+in the birth receipts and asserted by the verifier. Seeds 5, 6, 7 are
+DISCOVERY seeds; seeds 8, 9, 10 are reserved for the later
+confirmation / locus-intervention rung; seeds 2, 3, 4 (spent by
+ATOM-DIET-1, LADDER-1, DOSE-1, RULE-ABLATE-1) are never reused.
+
+Paths. Snapshots checkpoints/atomtraj1/{arm}_s{seed}/step_{n:05d}.pt;
+final checkpoints/atomtraj1/{arm}_s{seed}/final.pt (untracked; file
+sha256 and canonical state_digest recorded per file in the birth
+receipt). Receipts logs/atomtraj1/births.jsonl (one row per birth,
+streamed at birth end), logs/atomtraj1/gates.jsonl (one row per
+gated snapshot), logs/atomtraj1/census.json,
+logs/atomtraj1/qual.json, logs/atomtraj1/verify_receipt.json (small
+text, force-added and locked at booking). SMOKE=1 writes
+checkpoints/atomtraj1_smoke/ and logs/atomtraj1/smoke.jsonl only;
+refuse-if-exists guards on every real path are unconditional.
+
+Checkpoint schedule (fixed; every step is a function of pinned recipe
+constants, none is placed by any measured value). Snapshot n is saved
+after optimizer step n completes (after sched.step and zero_grad):
+step 0 (after build_model, before any optimizer step); step 463
+(scheduler-derived: under torch 2.12.1 OneCycleLR with the pinned
+arguments the learning rate applied at optimizer step 463 equals
+max_lr and is the unique maximum over the 15,420 steps, reproduced by
+scratch/atomtraj_pins.py); then every 1,028 optimizer steps: 1,028,
+2,056, 3,084, 4,112, 5,140, 6,168, 7,196, 8,224, 9,252, 10,280,
+11,308, 12,336, 13,364, 14,392, 15,420. Epoch boundaries 5,140 and
+10,280 lie on the grid. 17 snapshots per birth, 102 in the rung. The
+final checkpoint is a separate torch.save after the loop. Post-hoc
+gates at snapshots 2,056, 5,140, 10,280 and 15,420 (24 gates; the
+first three descriptive, the last the bar).
+
+Equality law. Scientific identity is the canonical state-dict tensor
+digest state_digest (keys sorted; each tensor as float32 contiguous
+little-endian bytes preceded by its name and shape; defined in
+scratch/atomtraj_pins.py). Required: state_digest(stock step_0) ==
+state_digest(atoms step_0) at each seed (init is CPU-deterministic
+under manual_seed and both arms share it), and
+state_digest(step_15420) == state_digest(final) within each birth.
+File sha256 is recorded separately for artifact integrity only;
+correctness never depends on torch.save archive byte determinism.
+
+Stream identity pins (derived from the frozen curric functions and
+the frozen shard; sha256 over the json-dumped token-id list of every
+row in batch order, one "|" byte after each batch, over the 5,140
+batches the arm actually trains on):
+  stock e0 18a6c14a6e7cd48e871e1645bfef1f6c89297681531ee34cc48740665ea003f7
+  stock e1 a3bf1ab910faf09f1cdd1455dd54a16474eb4cf4433deb96b1e4607c7cd18324
+  stock e2 7ff1b63ea45b343a94ba2092deeaf3da4abbd006085a190f0167781f579d433b
+  atoms e0 29f35e9931effbdb1db45378a2be80a4b0fbe44e1d26bc1e03492faa808699e8
+  atoms e1 b07e1e71ff24c90f8478f536bc95ff2b7aef2dc80761045b285b42da1032f222
+  atoms e2 3fc36a33bcc257eb6941bd237d1a7ff3d0f81758add787ea7a0f2c3517779a35
+The driver computes all three of its arm's digests before the first
+optimizer step and REFUSES on any mismatch. Secondary sanity
+assertions: enc_stock 164,490 sequences, enc_atoms 170,490;
+steps_per_epoch 5,140; steps_total 15,420; stock arm dropped 0 / 0 /
+0 batches and 0 atom rows; atoms arm dropped 187 / 187 / 187 and
+atom_rows_per_epoch [5820, 5706, 5850] (identical to L29465).
+
+Structural law (literal state-dict names; the census and the
+verifier implement exactly this; float64 on CPU). W_0 = the step_0
+snapshot of the SAME birth. D_T = W_T - W_0 per key.
+  P8: for block l in 0..7, e_l = sum over t in {qkv.weight, o.weight,
+  gate.weight, up.weight, down.weight} of ||D_T[blocks.l.t]||_F^2;
+  p_l = e_l / sum_{l=0..7} e_l. The 40 block 2-D tensors only;
+  blocks.*.n1.g, blocks.*.n2.g, norm.g, emb.weight and head.weight are
+  excluded from P8.
+  C8: eight classes partitioning ALL 59 keys: qkv = blocks.*.qkv.weight
+  (8), o = blocks.*.o.weight (8), gate = blocks.*.gate.weight (8), up =
+  blocks.*.up.weight (8), down = blocks.*.down.weight (8), norms =
+  blocks.*.n1.g + blocks.*.n2.g + norm.g (17), emb = emb.weight (1),
+  head = head.weight (1; untied from emb, asserted). Share = class
+  energy / total energy over all 59 keys; the partition is asserted to
+  cover the state dict exactly.
+  centroid = sum_l l * p_l over l = 0..7.
+Distances: Euclidean (L2) on P8 vectors and on C8 vectors, at the same
+snapshot step. Paired treatment displacement at seed s: T_s =
+||p_atoms,s - p_stock,s||. Within-arm birth displacements:
+W_stock(s, s') and W_atoms(s, s') over the three seed pairs of each
+arm (six values).
+
+BARS (evaluated at snapshot 15,420; the same quantities are reported
+at every snapshot descriptively):
+1. S1 PROFILE-SEPARATES fires iff min over s of T_s is strictly
+   greater than the maximum of the six within-arm displacements:
+   every paired treatment displacement exceeds every observed
+   within-arm birth displacement. A strict geometric resolution law
+   at n = 3; no probabilistic interpretation is attached.
+2. S1b DIRECTION-REPRODUCES fires iff all three treatment vectors
+   dp_s = p_atoms,s - p_stock,s are nonzero AND all three pairwise
+   cosines are > 0. Any zero or undefined value books NO-FIRE.
+3. S2 CLASS-SHARE-SEPARATES fires iff the S1 law holds on C8.
+4. S3 CENTROID-SIGN fires iff sign(centroid_atoms,s -
+   centroid_stock,s) is nonzero and identical at 3 / 3 seeds.
+5. F1 LIFT-REPRODUCES fires iff atoms_total > stock_total at 3 / 3
+   seeds AND the mean paired delta >= +4 (snapshot 15,420 gate only).
+6. F2 L4-REPRODUCES fires iff atoms L4 >= stock L4 at 3 / 3 seeds.
+Claim axes: STRUCTURAL fires iff S1 AND S1b; FUNCTION fires iff F1;
+JOINT fires iff STRUCTURAL AND FUNCTION. Readings, one per
+combination: JOINT -> the randomized atom diet induces a reproducible
+low-dimensional weight-trajectory anatomy whose paired displacement
+exceeds observed between-birth variation, under a reproduced function
+lift, at house scale for this diet; STRUCTURAL fires and FUNCTION
+fails -> the structural result stands on its own and is booked as
+not under a reproduced function lift, with FUNCTION-NOT-REPRODUCED
+booked for the trajectory-emitting execution regime; STRUCTURAL fails
+and FUNCTION fires -> the K2-derived macro-trajectory-signature-as-
+data-lever program STOPS at this house scale (the diet moves the
+gate without a paired profile displacement that clears between-birth
+variation); both fail -> both booked, neither program reading is
+drawn. No reading is rescued by any argument that snapshot emission
+"should have been harmless".
+
+REFUTED-IF: STRUCTURAL NO-FIRE with FUNCTION FIRE at six births.
+
+REGISTERED PRIOR. F1 fires, mean paired delta +4 to +7, point +5
+(ladder family record 2 hits, 8 misses). S1: house predicts NO-FIRE
+at the strict law, point ratio min T_s / max within-arm displacement
+0.9 (the fixed-seed anchor below already shows 0.0013 on P8 with
+init held fixed; init variation adds to that; a 3.5% dose is expected
+to move the profile on the same order). S1b fires (direction
+reproduces even where magnitude does not separate). S2 NO-FIRE. S3
+fires with the atoms centroid above the stock centroid at 3 / 3.
+
+Descriptive readouts, no bars: S1 / S1b / S2 / S3 quantities at all
+17 snapshots and the first snapshot at which the S1 law holds, if
+any; per-tensor IPR of the top-k left singular vectors of D_T (k =
+min(16, rank), ratio to uniform) and entropy effective rank of D_T
+for the 40 block 2-D tensors at all 102 snapshots, reported where
+sigma_1 > 0 (benchmarked 2026-09-07: one float64 SVD pass over the
+40 tensors of one snapshot takes 1.25 s on the Mac CPU, 2.1 min for
+102); lag cosines frozen exactly as delta_h(t) = W[t + h] - W[t],
+lag_h(t) = cos(delta_h(t), delta_h(t + h)) over the flattened 40
+block 2-D tensors, for every t with t, t + h, t + 2h all grid
+snapshots (grid = multiples of 1,028; step 0 and step 463 excluded),
+at h in {1,028, 2,056, 3,084, 5,140}; intermediate gates at 2,056 /
+5,140 / 10,280 as per-level dicts. No lag bar: K2 booked
+checkpoint-period dependence (L66404).
+
+Fixed-seed mps run-noise anchor, n = 1 pair (descriptive, recorded
+before launch, zero new training; not a floor). Two same-seed stock
+runs at seed 3 exist on disk: checkpoints/gallery19m_stock_s3.pt
+(file sha256 747f1d143f5f40eb..., state_digest 51fab2caf9d0c206...;
+booked L29465, gate weights sha bf2dc94b1d9712cb) and
+checkpoints/gallery19m_softspeed_control_s3.pt (file sha256
+10156f534877300f..., state_digest 50cf8be144262cc2...; the L29985
+rerun, gate 62 / 120). Against W_0 regenerated by
+torch.manual_seed(3) + build_model on CPU (state_digest
+0e171908fd5046d1...) their final-checkpoint objects differ by P8 L2
+0.001283, C8 L2 0.000618, centroid -0.0036 (4.0363 v 4.0399), total
+block-2-D update energy 0.053% relative. P8 of the booked stock s3:
+[0.0618, 0.0920, 0.1196, 0.1269, 0.1397, 0.1465, 0.1609, 0.1525];
+C8: qkv 0.2396, o 0.0681, gate 0.2395, up 0.2161, down 0.2238, norms
+0.0079, emb 0.0022, head 0.0029. One pair at one seed; the six
+within-arm displacements of this rung (different inits, different
+runs) are the law and this anchor is context only.
+
+Stopping. NO outcome-based early stopping: all six births train and
+all 24 gate snapshots are gated regardless of any bar becoming
+mathematically decided early, so STRUCTURAL and FUNCTION are
+adjudicated on complete and independent data. Only operational
+fail-closed aborts exist, and each books NOT-RUN for the affected
+births: source-invariant test failure, stream-digest or shard-sha
+mismatch, disk preflight below 15 GB, non-finite loss, an existing
+real output path, a code_commit that differs from the launch commit,
+or a state_digest inequality at step_0 across arms or between
+step_15420 and final.
+
+Qualification before launch (all recorded in logs/atomtraj1/qual.json
+and cited at booking): (1) source-invariant test in tests/: the
+sibling's diff against scratch/birth19m_atoms_ladder.py consists only
+of the enumerated emission, digest-assertion, path, NaN-abort and
+no-in-run-gate hunks; (2) DRYRUN=1: the driver reproduces the six
+stream digests, the secondary counts and the shard sha and exits
+before any optimizer step; (3) CPU deterministic emission-neutrality
+probe, 300 steps fp32 on CPU, EMIT=1 v EMIT=0 at one seed: identical
+state_digest, optimizer-state digest and torch RNG state after step
+300, which establishes on CPU that the emission code mutates no training state
+and says nothing about mps trajectory equivalence (it is not cited
+as such); (4) SMOKE=1 path-isolated mps run capped at 1,100 steps
+hitting snapshots 0, 463, 1,028 and the capped final, then one
+post-hoc gate and one census pass on the smoke paths; (5) disk
+preflight >= 15 GB free; (6) prereg-auditor and receipt-auditor
+before booking.
+
+Cost (anchors: L29465 logs at 4.8 to 5.2 it/s; gate about 150 s):
+training 2,839 to 2,879 s per birth, about 4.8 h for six; 17
+snapshot saves under 1 min per birth; 24 post-hoc gates about 1.0 h;
+census and verifier under 20 min; qualification about 25 min; total
+about 6.3 h serial. Disk 102 snapshots plus 6 finals at 75.7 MB = 8.2
+GB of 55 GB free.
+
+Verifier contract (scratch/atomtraj_verify.py): refuses to overwrite
+its receipt; reads the launch commit from births.jsonl and checks the
+driver, gate, census and pin sources by git show <commit>:path, never
+the working tree; recomputes the six stream digests, the shard sha,
+the enc sizes and the dropped and atom-row counts from the frozen
+curric functions; asserts two arms x seeds {5, 6, 7}, 17 snapshots
+per birth with recorded state_digest and file sha equal to the files,
+state_digest equality of stock and atoms step_0 at each seed and of
+step_15420 and final within each birth, the frozen execution order
+against the recorded start times, zero smoke rows in real receipts,
+and code_commit identical on every row; recomputes P8, C8 and
+centroid in float64 for all 102 snapshots from the literal key law
+with the partition asserted, T_s, the six within-arm displacements,
+S1 / S1b / S2 / S3, and F1 / F2 from gates.jsonl (per-level dicts
+summing to totals, 5 levels, 120 items), matching the census within
+1e-9 relative; recomputes the descriptive lag, IPR and effective-rank
+tables within 1e-9 relative; writes verify_receipt.json as VERIFIED
+or DISCREPANCIES with the list.
+
+FENCES. Single device (Mac mps fp32); mps training is run-level
+nondeterministic at fixed seed (L29985), so within-arm displacements
+contain substrate noise and both arms see the same substrate; arm
+order counterbalanced 2:1 within pairs as above, and the residual
+order effect at n = 3 is disclosed, not removed; no cross-run sha
+comparison and no cross-device claim; family-only (19M stock diet +
+atoms shard0 at the 3.5% dose; dose and rule generality owned by the
+dose and rule-ablation rungs); n = 3 paired discovery seeds; no
+WEIGHTS -> FUNCTION, mechanism or scale claim; IPR / effective rank
+and lag readouts descriptive; shard frozen (71M band SPENT); NOT-RUN
+if the shard is absent at launch; Mac shares CPU with any granted
+seat, births mps-bound, contention disclosed; snapshots untracked and
+digest-anchored, small receipts force-added and locked; code_commit
+on every receipt row = the launch commit.

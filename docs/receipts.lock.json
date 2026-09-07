@@ -36,6 +36,30 @@
    "source": "results",
    "tracked": true
   },
+  "logs/atomtraj1/births.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/atomtraj1/census.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/atomtraj1/gates.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/atomtraj1/qual.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/atomtraj1/smoke.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/atomtraj1/verify_receipt.json": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/backsched_gate/gates.jsonl": {
    "bytes": 3266,
    "exists": true,
