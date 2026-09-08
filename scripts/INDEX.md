@@ -5542,6 +5542,44 @@ Weight-FFT euler read (pre-reg 2026-07-26, RESULTS.md).
 - `phase_stat(W)`
 - `fft_stat(W)`
 
+### scratch/writertraj_census.py
+WRITER-TRAJECTORY-CENSUS-0, STAGE 0 (pre-reg RESULTS L67576): the zero-training trajectory-derivative census. Loads the forward (phase19m) and backward (backsched19m) OneCycle milestones of the shared seed-2 initialization and the four same-writer rerun pairs of ATOM-DIET-TRAJECTORY-1 (first run v repair), flattens every checkpoint under the frozen tensor law (GLOBAL, BLOCK 0..7, OUTSIDE, eight CLASSES, sorted-key float64), and computes for each pair at each matched step: cumulative cosine C, velocity cosine V (native grid spacing h), velocity norms and ratio, relative divergence R, acceleration cosine and norms. W_0 for the writer pair is the canonical seed-2 model construction (torch.manual_seed(2) then build_model on CPU); its canonical state digest is recorded, and the step-1 milestone distances are recorded as consistency checks only. Writes logs/writertraj0/census.json (refuses to overwrite) with the S0 bar booleans computed from the sealed laws. No gate runs here.
+
+- `load_model_sd(p)`
+- `flat(sd, keys)`
+- `cos(a, b)`
+- `w0_seed(seed)`
+- `series(paths_by_step, w0)` — paths_by_step: {step: path}. Returns per-set dict of {step: Delta flat} lazily via generator of (step, sd).
+- `pair_census(name, stepsX, pathsX, stepsY, pathsY, w0X, w0Y, sets)` — Compute all pair quantities at common steps. Memory: two flats per set per step.
+- `median(xs)`
+- `nearest(step, grid)` — Nearest grid step; ties broken to the smaller step.
+- `mid_median(pc, key)` — Median of the GLOBAL quantity over the 12 matched times of the 1,028
+- `main()`
+
+### scratch/writertraj_depend.py
+WRITER-TRAJECTORY-CENSUS-0, STAGE 0B (pre-reg RESULTS L67576, sealed by AMENDMENT -SEAL L67810): finished-model learned-update DEPENDENCE profiles and cross-writer component COMPATIBILITY. Specimens: A = checkpoints/gallery19m_phase_s2.pt, B = checkpoints/gallery19m_backsched_s2.pt (shared W_0 = the canonical seed-2 construction), N1 = checkpoints/atomtraj1/stock_s6/step_15420.pt (first run), N2 = /Users/artin/code/llmopt-repair/checkpoints/atomtraj1/stock_s6/step_15420.pt (repair), W_0 = their byte-identical step_00000.pt (seed-6 regeneration recorded as a check). For each specimen: gate(full), gate(W_0) once per seed, and for each of the nine groups (BLOCK 0..7, OUTSIDE) and eight CLASSES, gate(model with that group's delta reverted to W_0); D_l = gate(full) - gate(reverted). Swaps: for each block l, the recipient with block l's delta taken from the donor (A <- B, B <- A, N1 <- N2, N2 <- N1); swap loss = gate(hybrid) - gate(recipient full). Every gate is llmopt.lab.gate.gate_eval on mps (the standard 120). Rows stream to logs/writertraj0/gates.jsonl; bars D-0, D-1, D-2 to logs/writertraj0/depend.json. Refuses to overwrite. Runs only after census.json exists (STAGE 0 preserved first).
+
+- `load_sd(p)`
+- `w0_seed(seed)`
+- `class Gater` (gate)
+- `revert(sd, w0, keys)`
+- `swap(recipient, donor, w0r, w0d, keys)` — Recipient with group keys replaced by W_0(recipient) + delta_donor.
+- `main()`
+
+### scratch/writertraj_verify.py
+Independent verifier for WRITER-TRAJECTORY-CENSUS-0 (pre-reg RESULTS L67576, sealed by AMENDMENT -SEAL L67810). Shares no computation with writertraj_census.py or writertraj_depend.py: its own literal tensor law, its own flatten / cosine / divergence code, its own W_0 regeneration, its own bar evaluation. Recomputes every GLOBAL, BLOCK, OUTSIDE and CLASS quantity at every step for every pair from the checkpoint files, all four S0 bars and the matched-time set, the dependence values from the gate rows (gate dicts summing, five levels, each level <= 24), the swap losses and D-0 / D-1 / D-2, and checks the instrument sources by git show at the census commit. Writes logs/writertraj0/verify_receipt.json (refuses to overwrite).
+
+- `chk(c, m)`
+- `close(a, b, tol=1e-09)`
+- `digest(sd)`
+- `keys_law()`
+- `load(p)`
+- `flat(sd, keys)`
+- `cosf(a, b)`
+- `regen(seed)`
+- `median(xs)`
+- `main()`
+
 ### scratch/xterm_probe.py
 XTERM-DIET-1 probe — sibling of the frozen basics_probe0.py (pre-reg RESULTS 2026-08-16, L30565). Same three arms, same seeds, same sampler, same oracle, PLUS the canonical-form counter the pre-reg pins: sympify silently evaluates (3*4 + 2*5), so a prediction counts as FULLY-EVALUATED only if its text is already sympy-canonical (norm(pred) == norm(sstr(sympify(pred)))). Intermediate-form corrects are counted separately, never inside a bar. All BAR scoring is on the fully-evaluated counts.
 

@@ -5,22 +5,138 @@
  "registered": "2026-09-08",
  "machine": "mac",
  "arms": {
-  "A": {"description": "forward OneCycle, checkpoints/phase19m milestones every 900 steps + gallery19m_phase_s2 final, seed 2"},
-  "B": {"description": "backward OneCycle, checkpoints/backsched19m milestones every 900 steps + gallery19m_backsched_s2 final, seed 2 (shared W_0 with A)"},
-  "NULL": {"description": "four same-writer rerun pairs: ATOM-DIET-TRAJECTORY-1 first run v repair for stock_s6, atoms_s6, atoms_s7, stock_s7 at 16 matched snapshots"}
+  "A": {
+   "description": "forward OneCycle, checkpoints/phase19m milestones every 900 steps + gallery19m_phase_s2 final, seed 2"
+  },
+  "B": {
+   "description": "backward OneCycle, checkpoints/backsched19m milestones every 900 steps + gallery19m_backsched_s2 final, seed 2 (shared W_0 with A)"
+  },
+  "NULL": {
+   "description": "four same-writer rerun pairs: ATOM-DIET-TRAJECTORY-1 first run v repair for stock_s6, atoms_s6, atoms_s7, stock_s7 at 16 matched snapshots"
+  }
  },
  "bars": [
-  {"id": 1, "name": "S0-1-CUMULATIVE-DIVERGENCE-BEYOND-NOISE", "metric": "global_cumulative_cosine_final", "population": "A-B v four null pairs", "aggregation": "writer_below_null_min", "direction": "below", "value": 0.0, "arms": ["A", "B", "NULL"], "description": "C_AB at the final matched time strictly below the minimum of the four null pairs' final global cumulative cosines"},
-  {"id": 2, "name": "S0-2-VELOCITY-DECORRELATION-BEYOND-NOISE", "metric": "global_velocity_cosine_median_mid", "population": "normalized time 0.1 to 0.9", "aggregation": "writer_median_below_null_min_median", "direction": "below", "value": 0.0, "arms": ["A", "B", "NULL"], "description": "median mid-training V_AB strictly below the minimum over null pairs of the same median"},
-  {"id": 3, "name": "S0-3-RELATIVE-DIVERGENCE-BEYOND-NOISE", "metric": "global_relative_divergence_final", "population": "A-B v four null pairs", "aggregation": "writer_above_null_max", "direction": "above", "value": 0.0, "arms": ["A", "B", "NULL"], "description": "R_AB at the final matched time strictly above the maximum of the null pairs' final R"},
-  {"id": 4, "name": "S0-4-BLOCK-UNIFORMITY", "metric": "per_block_cumulative_cosine_final", "population": "blocks 0..7", "aggregation": "count_blocks_satisfying_S0-1_law", "direction": "either", "value": 0.0, "arms": ["A", "B", "NULL"], "description": "descriptive-primary: count of blocks whose C_AB is below the block-wise null minimum"},
-  {"id": 5, "name": "D-1-DEPENDENCE-PROFILE-DIFFERS", "metric": "dependence_profile_l2_9group", "population": "A-B v N1-N2", "aggregation": "writer_above_null", "direction": "above", "value": 0.0, "arms": ["A", "B", "NULL"], "description": "9-group dependence-profile distance A-B strictly greater than N1-N2"},
-  {"id": 6, "name": "D-2-CROSS-WRITER-INCOMPATIBILITY", "metric": "swap_loss_median_cross_v_worst_null", "population": "16 cross-writer swaps v 16 null swaps", "aggregation": "median_cross_below_min_null", "direction": "below", "value": 0.0, "arms": ["A", "B", "NULL"], "description": "median cross-writer swap loss strictly more negative than the most negative same-writer swap loss"},
-  {"id": 7, "name": "D-0-FUNCTION-BAND", "metric": "gate120_full_regate_spread", "population": "A, B, N1, N2", "aggregation": "max_minus_min", "direction": "at_or_below", "value": 7.0, "arms": ["A", "B", "NULL"], "description": "precondition: the four full-model re-gates within 7 solves; else D-1 and D-2 NOT-ADJUDICABLE"}
+  {
+   "id": 1,
+   "name": "S0-1-CUMULATIVE-DIVERGENCE-BEYOND-NOISE",
+   "metric": "global_cumulative_cosine_final",
+   "population": "A-B v four null pairs",
+   "aggregation": "writer_below_null_min",
+   "direction": "below",
+   "value": 0.0,
+   "arms": [
+    "A",
+    "B",
+    "NULL"
+   ],
+   "description": "C_AB at the final matched time strictly below the minimum of the four null pairs' final global cumulative cosines (final matched time = step 15,420 for every family: gallery finals for A and B, step_15420.pt for the null pairs; AMENDMENT -SEAL item 5)"
+  },
+  {
+   "id": 2,
+   "name": "S0-2-VELOCITY-DECORRELATION-BEYOND-NOISE",
+   "metric": "global_velocity_cosine_median_mid",
+   "population": "normalized time 0.1 to 0.9",
+   "aggregation": "writer_median_below_null_min_median",
+   "direction": "below",
+   "value": 0.0,
+   "arms": [
+    "A",
+    "B",
+    "NULL"
+   ],
+   "description": "median mid-training V_AB strictly below the minimum over null pairs of the same median (matched times = the 12 snapshots of the 1,028 grid with t/15,420 in [0.1, 0.9], each matched to the nearest 900-grid milestone, ties to the smaller step; all five medians over that set; -SEAL item 3)"
+  },
+  {
+   "id": 3,
+   "name": "S0-3-RELATIVE-DIVERGENCE-BEYOND-NOISE",
+   "metric": "global_relative_divergence_final",
+   "population": "A-B v four null pairs",
+   "aggregation": "writer_above_null_max",
+   "direction": "above",
+   "value": 0.0,
+   "arms": [
+    "A",
+    "B",
+    "NULL"
+   ],
+   "description": "R_AB at the final matched time strictly above the maximum of the null pairs' final R (final matched time = step 15,420 for every family: gallery finals for A and B, step_15420.pt for the null pairs; AMENDMENT -SEAL item 5)"
+  },
+  {
+   "id": 4,
+   "name": "S0-4-BLOCK-UNIFORMITY",
+   "metric": "per_block_cumulative_cosine_final",
+   "population": "blocks 0..7",
+   "aggregation": "count_blocks_satisfying_S0-1_law",
+   "direction": "either",
+   "value": 0.0,
+   "arms": [
+    "A",
+    "B",
+    "NULL"
+   ],
+   "description": "descriptive, not scored: count of blocks whose C_AB at 15,420 is below the block-wise null minimum, and the block with the smallest C_AB"
+  },
+  {
+   "id": 5,
+   "name": "D-1-DEPENDENCE-PROFILE-DIFFERS",
+   "metric": "dependence_profile_l2_9group",
+   "population": "A-B v N1-N2",
+   "aggregation": "writer_above_null",
+   "direction": "above",
+   "value": 0.0,
+   "arms": [
+    "A",
+    "B",
+    "NULL"
+   ],
+   "description": "9-group dependence-profile distance A-B strictly greater than N1-N2 (single null pair N1 = stock_s6 first run v N2 = stock_s6 repair, loaded from step_15420.pt; A and B from the gallery finals; -SEAL item 6)"
+  },
+  {
+   "id": 6,
+   "name": "D-2-CROSS-WRITER-INCOMPATIBILITY",
+   "metric": "swap_loss_median_cross_v_worst_null",
+   "population": "16 cross-writer swaps v 16 null swaps",
+   "aggregation": "median_cross_below_min_null",
+   "direction": "below",
+   "value": 0.0,
+   "arms": [
+    "A",
+    "B",
+    "NULL"
+   ],
+   "description": "median cross-writer swap loss strictly more negative than the most negative same-writer swap loss (single null pair N1 = stock_s6 first run v N2 = stock_s6 repair, loaded from step_15420.pt; A and B from the gallery finals; -SEAL item 6)"
+  },
+  {
+   "id": 7,
+   "name": "D-0-FUNCTION-BAND",
+   "metric": "gate120_full_regate_spread",
+   "population": "A, B, N1, N2",
+   "aggregation": "max_minus_min",
+   "direction": "at_or_below",
+   "value": 7.0,
+   "arms": [
+    "A",
+    "B",
+    "NULL"
+   ],
+   "description": "precondition: the four full-model re-gates within 7 solves; else D-1 and D-2 NOT-ADJUDICABLE"
+  }
  ],
- "claim_axes": {"TRAJECTORY": "S0-1 AND S0-3", "DEPENDENCE": "D-1", "COMPATIBILITY": "D-2"},
+ "claim_axes": {
+  "TRAJECTORY": "S0-1 AND S0-3",
+  "DEPENDENCE": "D-1",
+  "COMPATIBILITY": "D-2"
+ },
  "refuted_if": "S0-1 NO-FIRE",
- "registered_prior": {"S0-1": "fires; null final cumulative cosine point 0.95", "S0-2": "fires; null median 0.6, writer median 0.1", "S0-3": "fires; null final R point 0.3, writer 1.26 as peeked", "S0-4": "8 of 8 blocks", "D-0": "holds (finals 61 to 65)", "D-1": "NO-FIRE; A-B distance 1.2 times null under the strict law", "D-2": "fires; cross-writer median swap loss -12, same-writer worst -5"},
+ "registered_prior": {
+  "S0-1": "fires; null final cumulative cosine point 0.95",
+  "S0-2": "fires; null median 0.6, writer median 0.1",
+  "S0-3": "fires; null final R point 0.3, writer 1.26 as peeked",
+  "S0-4": "8 of 8 blocks",
+  "D-0": "holds (finals 61 to 65)",
+  "D-1": "NO-FIRE; A-B distance 1.2 times null under the strict law",
+  "D-2": "fires; cross-writer median swap loss -12, same-writer worst -5"
+ },
  "stopping": "no outcome-based stops; operational aborts only (missing milestone, digest mismatch, W_0 regeneration mismatch, gate dict not summing)",
  "receipts": [
   "logs/writertraj0/census.json",
@@ -28,5 +144,19 @@
   "logs/writertraj0/depend.json",
   "logs/writertraj0/verify_receipt.json",
   "logs/writertraj0/smoke.jsonl"
+ ],
+ "tensor_law": "GLOBAL = all 59 keys sorted, float64; BLOCK l = the seven keys blocks.l.* (qkv, o, gate, up, down, n1.g, n2.g; NOT atomtraj_pins.BLOCK2D); OUTSIDE = emb.weight, head.weight, norm.g; CLASSES literal from atomtraj_pins.py",
+ "w0_law": "torch.manual_seed(2) then build_model(len(tok.vocab)=40, d=384, layers=8, heads=6, ffn=1536) on CPU, VOCAB_EXTRA unset; canonical state_digest recorded in census.json; step-1 milestone distances are consistency checks only",
+ "null_scope": "the four ATOM-DIET-TRAJECTORY-1 first-run v repair pairs are a conservative observed same-writer mps rerun envelope across nearby specimens (seeds 6/7, stock/atoms, 1,028 grid), not the seed-2 pair own noise distribution",
+ "scored_priors": [
+  "S0-1",
+  "S0-2",
+  "S0-3",
+  "D-0",
+  "D-1",
+  "D-2"
+ ],
+ "amended_by": [
+  "AMENDMENT WRITER-TRAJECTORY-CENSUS-0-SEAL"
  ]
 }

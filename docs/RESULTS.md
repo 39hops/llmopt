@@ -67806,3 +67806,85 @@ writers AND the null-pair distance is within 20% of the writer
 distance (the desk cannot separate writer from noise at the
 dependence level); in either case the next step is a stronger null
 (three same-writer reruns) before any foreign writer.
+
+## AMENDMENT WRITER-TRAJECTORY-CENSUS-0-SEAL (target: PRE-REG WRITER-TRAJECTORY-CENSUS-0 L67576): prereg-auditor folds plus two Artin folds, registered before any instrument output; no numerical bar, prior, interpretation branch or GO / STOP threshold changes (2026-09-08, Mac)
+
+1. Milestone count: each family holds 17 milestones on the 900 grid
+   (m000900 .. m015300) plus the step-1 milestone m000001, which is
+   used only for the shared-W_0 consistency check; 34 grid milestones
+   are loaded across the two families, 36 files with the step-1 pair.
+   The RIFF bank's "18 milestones per family" is corrected the same
+   way by this entry.
+2. Tensor law provenance: BLOCK l = the seven keys blocks.l.* (qkv,
+   o, gate, up, down, n1.g, n2.g). This is NOT atomtraj_pins.BLOCK2D
+   (the five 2-D tensors P8 used); the norm gains are included so
+   that BLOCK 0..7 plus OUTSIDE (emb.weight, head.weight, norm.g)
+   partition all 59 keys exactly. CLASSES is taken literally from
+   atomtraj_pins.py and partitions the 59 keys (40 + 17 + 1 + 1).
+3. S0-2 matched-time set: the enumerating grid is the 1,028 grid;
+   the matched times are its 12 snapshots with t / 15,420 in [0.1,
+   0.9] (2,056 .. 13,364); each is matched to the nearest 900-grid
+   milestone for the writer pair, ties broken to the smaller step;
+   all five medians (writer and four null pairs) are taken over
+   that same 12-element set. V at a matched time is the velocity of
+   the interval ENDING at that snapshot on each grid, h = the native
+   spacing of that interval.
+4. Shared-W_0 provenance (Artin fold). The shared coordinate address
+   of A and B is licensed by the identical deterministic seed-2
+   model-construction law at their launch code: torch.manual_seed(2)
+   then build_model(len(tok.vocab), d=384, layers=8, heads=6,
+   ffn=1536) on CPU with VOCAB_EXTRA unset (vocab length 40), the
+   same law in scripts/train_mathnative.py that both drivers wrap.
+   The instrument re-derives W_0 from that law and records its
+   canonical state_digest in census.json before any bar is
+   computed. The step-1 milestone distances (session values 0.052
+   forward and 5.5e-6 backward, consistent with one AdamW step of
+   size lr * sqrt(N) = 1.2e-5 * 4,349 = 0.052 and 1.2e-9 * 4,349 =
+   5.2e-6) are CONSISTENCY CHECKS recorded by the instrument, never
+   the proof of a shared W_0.
+5. Final-time bars read at the true final step 15,420 for every
+   family: A and B from checkpoints/gallery19m_phase_s2.pt and
+   checkpoints/gallery19m_backsched_s2.pt (raw 59-key state dicts;
+   the loader accepts both the raw and the {"model", "opt", "step"}
+   shapes), the null pairs from step_15420.pt. The 900 and 1,028
+   milestone grids serve velocity and acceleration; the last
+   writer-pair interval is 15,300 to 15,420 (h = 120) and is
+   reported but excluded from the S0-2 set by item 3. The
+   disclosed peek (C_AB 0.211, R_AB 1.256) was read at 15,300 and
+   is not the 15,420 value; the bars' writer-side values at 15,420
+   are unseen, as are all null values.
+6. Null-pair provenance field is init_state_digest (equal within
+   each pair in both receipts) and the artifact-level confirmation is
+   the byte-identity of step_00000.pt across main and repair for all
+   four cells. For D-1 and D-2, N1 and N2 are loaded from
+   step_15420.pt; A and B from the gallery finals.
+7. Anchor correction: the "exploratory exhaust ... no bars
+   registered" quote is at L28303 to L28306.
+8. Readings wording: "to the same function with the same causal
+   dependence structure" is replaced by "to the same gate-band
+   function level (D-0) with the same learned-update dependence
+   profile within run noise"; the same replacement applies to the
+   RIFF bank. No causal or mechanism claim is drawn from D_l or from
+   swaps.
+9. Priors: six family-record-scored priors are S0-1, S0-2, S0-3,
+   D-0, D-1, D-2; S0-4's "8 / 8" is a descriptive prediction, not
+   scored.
+10. Gate count: 106 distinct gates (two W_0 gates, seeds 2 and 6,
+    shared across their specimen pairs), 1.97 h at 67 s; snapshot
+    loads 136 (eight cells x 17 steps including step_00000).
+11. Noise-null scope (Artin fold): the four ATOM-DIET-TRAJECTORY-1
+    first-run v repair pairs form a conservative OBSERVED SAME-WRITER
+    MPS RERUN ENVELOPE across nearby house specimens (seeds 6 and 7,
+    stock and atoms diets, the 1,028 grid), not an estimate of the
+    seed-2 phase19m writer pair's own noise distribution; every
+    claim in the verdict uses that scope and none extrapolates the
+    envelope to seed 2.
+12. The JSON mirror is updated in the same commit: final matched
+    time 15,420, the S0-2 enumeration, the tensor-law statement, the
+    single-null-pair scope of D-1 / D-2, and the S0-4 descriptive
+    status.
+Everything else in L67576 stands, including C_AB 0.211 and R_AB
+1.256 as disclosed, the S0-1 / S0-2 / S0-3 laws against the unseen
+null extrema, TRAJECTORY = S0-1 AND S0-3, single-null-grade D-1, the
+strict D-2 law, the D-0 <= 7 precondition and the DFA GO / STOP
+ladder.
