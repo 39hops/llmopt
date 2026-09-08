@@ -1,11 +1,5 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
- "_last_accept": {
-  "paths": [
-   "logs/atomtraj1/births.jsonl"
-  ],
-  "reason": "ATOM-DIET-TRAJECTORY-1 births.jsonl was sha-locked by the mid-run hook regeneration at 6f41511f while the driver was still streaming rows (2 of 6 present); the run completed 00:17 UTC and the file now holds all six rows, disclosed in VERDICT L66991"
- },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
    "bytes": 3176,
