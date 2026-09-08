@@ -67157,3 +67157,87 @@ write, keeping births 0 and 1 and the sealed bars, priors, order and
 schedule unchanged; the descriptive values above are the registered
 comparison target for that re-run. Whether to re-run four births or
 all six at a fresh seed set is Artin's call. Nothing is armed.
+
+## AMENDMENT ATOM-DIET-TRAJECTORY-1-REPAIR-0 (target: VERDICT ATOM-DIET-TRAJECTORY-1 L66991, NOT-ADJUDICABLE): procedural provenance-only repair registration — the four births and all 24 gates invalidated by the mid-run commit drift are rerun at the original launch commit ec6de1ae in a detached worktree, the two valid seed-5 births are retained byte-identical, no scientific law changes (2026-09-07, Mac)
+
+Registered BEFORE any repair birth trains. This entry changes no bar,
+prior, claim axis, threshold, seed, schedule, order, key law or
+interpretation tree of PRE-REG L66546 as sealed by AMENDMENT L66822;
+it registers only how the sealed evidence set is completed after the
+sealed abort clause fired.
+
+Cells invalidated, and why. Births order_index 2, 3, 4, 5 (stock_s6,
+atoms_s6, atoms_s7, stock_s7) of the first run carry code_commit
+6f41511f, not the launch commit ec6de1ae, because a documentation-only
+commit landed on the live checkout at 20:45:12 UTC while stock_s6
+trained; under the sealed stopping law they book NOT-RUN. All 24 gate
+rows of the first run were executed at 6f41511f and violate the
+sealed gate provenance law ("code_commit on every receipt row = the
+launch commit"), including the gates of the two valid seed-5
+snapshots, so every gate row is invalid and is rerun.
+
+Cells retained, and why. Births order_index 0 and 1 (stock_s5,
+atoms_s5) trained and wrote their receipts at ec6de1ae before the
+drift; they are valid registered observations and are neither rerun
+nor replaced after their values were seen. Their snapshot
+directories (17 snapshots + final each) and their two original
+receipt rows are copied into the repair namespace byte for byte
+(every file sha256 and state_digest re-checked against the rows
+after the copy: 0 mismatches; the two rows are byte-identical to the
+first-run rows).
+
+The only permitted run commit is ec6de1ae. The repair runs inside a
+detached git worktree at /Users/artin/code/llmopt-repair pinned to
+ec6de1ae (no branch, no commits in that worktree while any registered
+process is live; its `git status --porcelain` is empty; the
+interpreter is the main checkout's venv by absolute path; the
+untracked data files are symlinked, matched by the ignore rules). The
+instrument sources are the ec6de1ae files unchanged:
+scratch/birth19m_atoms_traj.py, scratch/birth19m_atoms_trajgate.py,
+scratch/atomtraj_census.py, scratch/atomtraj_verify.py,
+scratch/atomtraj_pins.py. Every receipt row the repair writes derives
+code_commit from that worktree's HEAD, so the repaired six-birth
+evidence set carries one and only one code_commit. Both dry runs in
+the worktree reproduce the six pinned stream digests.
+
+What runs, in the frozen original order with the original order
+indices: stock_s6 (2), atoms_s6 (3), atoms_s7 (4), stock_s7 (5), each
+with SEED 6 or 7, the original streams, 15,420 steps, the 17-snapshot
+schedule and the same refuse-if-exists guards in a fresh filesystem
+namespace (worktree checkpoints/atomtraj1/ and logs/atomtraj1/), then
+ALL 24 post-hoc gates (stock and atoms x seeds 5, 6, 7 x steps 2,056
+/ 5,140 / 10,280 / 15,420) after the four trainings, then the census
+and the independent verifier, all from the ec6de1ae sources. The
+repair driver is scratch/atomtraj1_repair_driver.sh on main (it
+refuses unless the worktree HEAD is ec6de1ae, the worktree is clean
+and the evidence set holds exactly the two seed-5 rows; marker on
+success only, real rc).
+
+First-run artifacts are immutable and separate: logs/atomtraj1/ on
+main (births.jsonl with six rows, gates.jsonl, census.json,
+census_tensors.json, verify_receipt.json, qual.json, smoke.jsonl,
+locked at 58716787) and checkpoints/atomtraj1/ on main stay as the
+NOT-ADJUDICABLE record and are not overwritten. The repair receipts
+are copied from the worktree to logs/atomtraj1_repair/ on main at
+booking (births.jsonl, gates.jsonl, census.json, census_tensors.json,
+verify_receipt.json), force-added and locked there; the repaired
+snapshots stay untracked in the worktree, digest-anchored.
+
+Adjudication law for the repair verdict, unchanged from L66546 +
+L66822: S1 / S1b / S2 / S3 / F1 (>= +5) / F2 at snapshot 15,420;
+STRUCTURAL = S1 AND S1b, FUNCTION = F1, JOINT = both; REFUTED-IF =
+STRUCTURAL NO-FIRE with FUNCTION FIRE at six births; the registered
+priors of L66546 as amended (F1 +4 to +7 point +5; S1 NO-FIRE, point
+ratio 0.9; S1b fires; S2 NO-FIRE; S3 fires with atoms above at 3 / 3;
+F2 fires, atoms L4 10 to 13 point 12, stock 5 to 9 point 7) stand as
+registered and are adjudicated once, on the repaired set. The
+verifier must read VERIFIED with zero discrepancies; receipt-auditor
+runs before booking; only then does a repair verdict book, citing
+L66991. No outcome-based stop exists; operational aborts only, as
+sealed. The first run's six-birth values quoted descriptively in
+L66991 remain exhaust of the invalid run: they are not bars, not
+calibration data and not a reason to change anything here.
+
+Cost: four births at about 2,855 s each (3.2 h), 24 gates at about
+66 s (26 min), census and verifier under 10 min; about 3.9 h on mps.
+Disk: 4 x 1.3 GB new snapshots in the worktree.
