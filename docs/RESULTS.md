@@ -66987,3 +66987,173 @@ nondeterministic, so the rerun pair bounds what a writer contrast can
 claim; no weight-distance quantity enters any reading; nothing is
 armed, preregistered or launched, and no experiment was run for this
 entry.
+
+## VERDICT ATOM-DIET-TRAJECTORY-1: NOT-ADJUDICABLE at six births under the sealed abort clause — a documentation-only commit (6f41511f) landed while birth 2 trained, so births 2 to 5 carry a code_commit different from the launch commit and book NOT-RUN by the sealed stopping law (instrument sources byte-identical at both commits, disclosed, not excused); the seed-5 pair is the only adjudicable cell (+6, L4 10 v 8); every six-birth quantity is reported DESCRIPTIVELY and shows the REFUTED-IF pattern (function lift +6 / +8 / +6 with the 8-layer profile displacement inside birth spread, S1 ratio 0.447); the four affected births must be re-run at a fixed commit before any bar books (2026-09-07, Mac)
+
+Pre-reg L66546 (69bf8fc8) sealed by AMENDMENT L66822 (34effc3f).
+Instrument commit ec6de1ae (scratch/birth19m_atoms_traj.py,
+birth19m_atoms_trajgate.py, atomtraj_census.py, atomtraj_verify.py,
+atomtraj_qual.py, atomtraj1_driver.sh, tests/test_atomtraj_source_
+invariant.py), qualified at that commit (logs/atomtraj1/qual.json:
+source-invariant tests 5 / 5, both dry runs reproduce the six stream
+digests, CPU emission-neutrality probe identical state / optimizer /
+RNG digests with emission on and off, stock-only mps smoke at the
+excluded seed 11 with snapshots 0 / 463 / 1,028 / 1,100, post-hoc gate,
+census and verifier VERIFIED on the smoke paths, 53.5 GB free). Two
+earlier qualification attempts are set aside by rename (attempt 1
+failed on the step-0 zero-delta division, a descriptive-only defect
+fixed before commit; attempt 2 was the verifier's provenance refusal
+on an uncommitted tree, working as intended). Prereg-auditor on the
+implemented source: two blockers (driver.sh omitted the verifier;
+mark_done was passed a literal 0) and nine should-fixes folded at
+ba4b554d before launch; no bar, prior, schedule, order or key law
+changed.
+
+THE ABORT CLAUSE, and why this entry is NOT-ADJUDICABLE. The sealed
+Stopping paragraph (L66546) reads: "Only operational fail-closed
+aborts exist, and each books NOT-RUN for the affected births: ... a
+code_commit that differs from the launch commit ...", and the FENCES
+read "code_commit on every receipt row = the launch commit." At
+20:45:12 UTC, while birth 2 (stock_s6) was training, the session
+committed 6f41511f to the checkout (the two RIFF banks and
+OBSERVATION WRITER-INVARIANCE-DESK-0, documentation only). The
+driver derives code_commit at receipt-write time, so births 0 and 1
+carry ec6de1ae and births 2 to 5 and all 24 gate rows carry 6f41511f.
+The driver's in-run guard implemented the fence as a dirty-tree
+refusal only (tree_dirty is false on every row) and did not compare
+the running commit to the launch commit, so the run did not abort;
+the independent verifier did fire on it: verify_receipt.json reads
+DISCREPANCIES, n = 25, all of the class "code_commit not unique across
+births" (1) or "gate row commits v launch commit" (24), and ZERO
+discrepancies in stream digests, completeness, equality laws,
+execution order, snapshot digests, P8 / C8 / centroid, T and W, bar
+booleans, cosines, centroid signs, gate dicts, lag, IPR or
+effective-rank tables. `git diff --stat ec6de1ae 6f41511f -- scratch
+tests llmopt scripts` is empty: the instrument is byte-identical at
+both commits. That fact is disclosed, and it is NOT used to override
+the sealed text: a stopping law reworded after the data exist is no
+law, so under the sealed clause births 2, 3, 4, 5 book NOT-RUN, the
+six-birth bars S1 / S1b / S2 / S3 / F1 / F2 and the claim axes are
+NOT-ADJUDICABLE, and REFUTED-IF is not adjudicated. The cause is a
+session error (a commit to the live checkout during a registered
+run), not an instrument defect; the law carried to BOARD is: no
+commit of any kind to the working checkout while a registered run
+whose receipts derive code_commit is live, and the driver's guard
+must compare HEAD to the launch commit at every receipt write, not
+only test for a dirty tree.
+
+What IS adjudicable: the seed-5 pair (births 0 and 1, both at
+ec6de1ae). stock s5 65 / 120 {3:22, 4:8, 5:16, 6:8, 7:11} @ 62.78% sha
+a3191851ce72983f; atoms s5 71 / 120 {3:23, 4:10, 5:18, 6:8, 7:12} @
+63.13% sha 9a7247c277322b49; paired delta +6, L4 10 v 8. At n = 1 no
+sealed bar is defined (every bar is a 3 / 3 or a min-over-max law),
+so this cell is booked as a valid single-seed reading only. The
+seed-5 structural pair (T_5 = 0.02414 on P8) has no within-arm
+comparison inside the adjudicable set.
+
+Execution (all six, for the record). Launched 2026-09-07 18:49:09 UTC
+via rjob (Mac, mps fp32), six births in the frozen order stock_s5,
+atoms_s5, stock_s6, atoms_s6, atoms_s7, stock_s7 (start times
+18:50:13, 19:39:38, 20:28:22, 21:17:43, 22:06:55, 22:55:35 UTC,
+order_index 0 to 5), no gate during or between trainings, 15,420
+steps each, walls 2,862.6 / 2,858.3 / 2,860.6 / 2,854.0 / 2,854.2 /
+2,838.3 s, peak RSS 4.51 to 5.79 GB (4.20 to 5.39 GiB); the 24
+post-hoc gates were written 23:43:56 to 00:09:12 UTC (mean 65.5 s,
+1,571 s total); census then verifier, marker rc 0 at 00:17:07 UTC.
+Total 5.47 h against the 6.2 h projection. The stock and atoms step_0
+snapshots share one canonical state_digest at every seed (e344904c...,
+e2eaa2c7..., a97eae63...) and every birth's step_15420 digest equals
+its final digest (the two FILES' sha256 differ on every birth, as
+torch.save container metadata does; the canonical tensor digest is
+the equality law, per the sealed text, and no cross-run sha is
+compared anywhere). All six stream digests, the dropped counts and
+the atom rows reproduced the pins in every birth.
+
+DESCRIPTIVE six-birth readout (census.json, verifier recomputed
+within 1e-9; NOT a bar adjudication, quoted so that the re-run has a
+registered comparison target and so that nothing measured is hidden):
+- Final gates: stock s5 65 (above); atoms s5 71 (above); stock s6 61
+  / 120 {3:22, 4:6, 5:15, 6:7, 7:11} @ 59.39% sha 5f1bf98ffd0afa68;
+  atoms s6 69 / 120 {3:22, 4:10, 5:16, 6:9, 7:12} @ 62.50% sha
+  d3c08cec9e3a7fd8; stock s7 63 / 120 {3:22, 4:6, 5:16, 6:8, 7:11} @
+  61.45% sha 8cd79f64480c8d0d; atoms s7 69 / 120 {3:22, 4:11, 5:15,
+  6:9, 7:12} @ 62.43% sha 2fa9f7051d90a387. Paired deltas +6 / +8 /
+  +6, mean +6.67; L4 atoms 10 / 10 / 11 v stock 8 / 6 / 6.
+- P8 at 15,420 (blocks 0 to 7): stock s5 [0.063, 0.102, 0.127, 0.138,
+  0.141, 0.133, 0.149, 0.148] centroid 3.928; atoms s5 [0.063, 0.108,
+  0.133, 0.148, 0.147, 0.131, 0.133, 0.138] 3.822; stock s6 [0.061,
+  0.093, 0.118, 0.133, 0.142, 0.147, 0.146, 0.160] 4.026; atoms s6
+  [0.064, 0.096, 0.123, 0.136, 0.144, 0.149, 0.136, 0.152] 3.950;
+  stock s7 [0.067, 0.094, 0.117, 0.134, 0.145, 0.149, 0.144, 0.150]
+  3.969; atoms s7 [0.065, 0.096, 0.117, 0.136, 0.147, 0.144, 0.135,
+  0.161] 3.978.
+- Paired treatment displacements T_s (P8, L2) 0.02414 / 0.01564 /
+  0.01563; within-arm stock 0.02283 (5, 6), 0.02225 (5, 7), 0.01255
+  (6, 7); atoms 0.02976 (5, 6), 0.03496 (5, 7), 0.01185 (6, 7); min T
+  / max W = 0.447. C8: T 0.00322 / 0.00475 / 0.00058; W stock 0.00360
+  / 0.00231 / 0.00138, atoms 0.00236 / 0.00476 / 0.00315. Cosines of
+  the treatment vectors (5, 6) 0.922, (5, 7) 0.265, (6, 7) 0.076,
+  all nonzero. Centroid signs (atoms minus stock) -1 / -1 / +1.
+- Would-be bar values under the sealed definitions (NOT booked): S1
+  false (0.01563 < 0.03496); S1b true; S2 false (0.00058 < 0.00476);
+  S3 false; F1 true (3 / 3 positive, mean 6.67 >= 5); F2 true. This
+  is the REFUTED-IF pattern (STRUCTURAL false, FUNCTION true) and it
+  is the pattern the registered priors predicted; it is recorded
+  here as a descriptive observation and adjudicated by nobody.
+- S1 ratio by snapshot 0.198 (463), 0.313 (1,028), 0.314 (2,056),
+  0.417 (5,140), 0.447 (10,280), 0.447 (15,420); never above 1 at any
+  of the 16 post-init snapshots. S1b holds at every snapshot from 463
+  on. S3 holds at 1,028 / 2,056 / 3,084 / 5,140 only (broken at 4,112
+  and at every snapshot from 6,168 on).
+- Intermediate gates, atoms v stock totals: 2,056 (0.4 epoch): 25 /
+  23 / 23 v 24 / 27 / 23 (deltas +1 / -4 / 0); 5,140 (one epoch): 42
+  / 44 / 49 v 50 / 42 / 50 (-8 / +2 / -1); 10,280 (two epochs): 66 /
+  66 / 64 v 61 / 60 / 58 (+5 / +6 / +6). Mixed at 0.4 epoch, negative
+  on balance at one epoch, positive at 3 / 3 by two epochs.
+- Lag cosines (stock s5, h = 1,028): +0.175 at t = 1,028, +0.084,
+  -0.002, -0.021, -0.063, -0.068, then -0.068, -0.070, -0.072, -0.105
+  at 10,280, -0.085, -0.058, +0.014 at 13,364; at h = 5,140 the
+  cosines are +0.119 to +0.152. All six births in census.json. No
+  claim.
+- Per-tensor IPR and effective-rank tables for 40 tensors x 102
+  snapshots in logs/atomtraj1/census_tensors.json (559,849 bytes,
+  sha256 in census.json).
+- Fixed-seed mps run-noise anchor for context (L66742): the same-seed
+  stock rerun pair differed by P8 L2 0.001283; the within-arm
+  displacements here (different inits) are 9 to 27 times that.
+
+Registered priors: NOT adjudicated (the bars are not adjudicated).
+Recorded for the re-run: the descriptive pattern matches the
+registered F1, S1 (direction), S1b, S2 and F2 priors and misses the S3
+prior and the S1 point ratio (0.9 registered, 0.447 measured); the
+ladder family record stays 11 hits 21 misses (L30779) until a
+sealed adjudication lands.
+
+Provenance and receipts. births.jsonl (6 rows), gates.jsonl (24
+rows), census.json, census_tensors.json, qual.json,
+verify_receipt.json (DISCREPANCIES, n = 25, as described) and
+smoke.jsonl force-added and locked this commit; tree_dirty false on
+every row; 102 snapshots + 6 finals (8.2 GB) untracked and
+digest-anchored in births.jsonl; set-aside qualification attempts
+under logs/atomtraj1/_attempt*_ and checkpoints/_attempt*_ appear in
+no real receipt.
+
+Fences. Single device (Mac mps fp32, run-level nondeterministic;
+counterbalanced 2:1 arm order, residual order effect at n = 3
+disclosed, not removed); no cross-run sha comparison and no
+cross-device claim; family-only (19M stock diet + atoms shard0 at
+the 3.5% dose; dose and rule generality owned by the dose and
+rule-ablation rungs); shard frozen (71M band SPENT); Mac shared CPU
+with no granted seat during this run, births mps-bound; n = 1
+adjudicable pair, three pairs measured; no WEIGHTS -> FUNCTION,
+mechanism or scale claim; IPR / effective rank and lag descriptive;
+seeds 8, 9, 10 remain reserved.
+
+Path to adjudication (assessment, not a nomination): re-run births 2
+to 5 (stock_s6, atoms_s6, atoms_s7, stock_s7, about 3.2 h of
+training plus 16 gates) at one fixed commit with the driver's guard
+extended to compare HEAD to the launch commit at every receipt
+write, keeping births 0 and 1 and the sealed bars, priors, order and
+schedule unchanged; the descriptive values above are the registered
+comparison target for that re-run. Whether to re-run four births or
+all six at a fresh seed set is Artin's call. Nothing is armed.

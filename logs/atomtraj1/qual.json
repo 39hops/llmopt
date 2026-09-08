@@ -1,0 +1,95 @@
+{
+ "prereg": "ATOM-DIET-TRAJECTORY-1",
+ "started_utc": "2026-09-07T18:33:57+00:00",
+ "commit": "ec6de1ae",
+ "smoke_seed": 11,
+ "source_invariant": "5 passed in 0.02s",
+ "dryrun": {
+  "stock": {
+   "dryrun": true,
+   "arm": "stock",
+   "seed": 5,
+   "streams": [
+    "18a6c14a6e7cd48e871e1645bfef1f6c89297681531ee34cc48740665ea003f7",
+    "a3bf1ab910faf09f1cdd1455dd54a16474eb4cf4433deb96b1e4607c7cd18324",
+    "7ff1b63ea45b343a94ba2092deeaf3da4abbd006085a190f0167781f579d433b"
+   ],
+   "dropped": [
+    0,
+    0,
+    0
+   ],
+   "atom_rows": [
+    0,
+    0,
+    0
+   ],
+   "shard_sha256": "193ebc5d48c639afeed7f29fd87e6a1a0c9026ed35affc7aa61988f8d261b036"
+  },
+  "atoms": {
+   "dryrun": true,
+   "arm": "atoms",
+   "seed": 5,
+   "streams": [
+    "29f35e9931effbdb1db45378a2be80a4b0fbe44e1d26bc1e03492faa808699e8",
+    "b07e1e71ff24c90f8478f536bc95ff2b7aef2dc80761045b285b42da1032f222",
+    "3fc36a33bcc257eb6941bd237d1a7ff3d0f81758add787ea7a0f2c3517779a35"
+   ],
+   "dropped": [
+    187,
+    187,
+    187
+   ],
+   "atom_rows": [
+    5820,
+    5706,
+    5850
+   ],
+   "shard_sha256": "193ebc5d48c639afeed7f29fd87e6a1a0c9026ed35affc7aa61988f8d261b036"
+  }
+ },
+ "cpu_probe": {
+  "steps": 300,
+  "emit1_final_state_digest": "423891712a207234297cab85904b9a4cf8e0b300305059cf683e6181924139d6",
+  "emit0_final_state_digest": "423891712a207234297cab85904b9a4cf8e0b300305059cf683e6181924139d6",
+  "state_identical": true,
+  "optimizer_identical": true,
+  "rng_identical": true,
+  "emit1_snapshots": [
+   0,
+   300
+  ],
+  "emit0_snapshots": []
+ },
+ "smoke_train_tail": [
+  "[traj] saved checkpoints/atomtraj1_smoke/stock_s11/final.pt after 1100 steps (206s)",
+  "[traj] receipt appended to logs/atomtraj1/smoke.jsonl (final state_digest 091d1204b8d1b44f)"
+ ],
+ "smoke": {
+  "device": "mps",
+  "steps": 1100,
+  "snapshots": [
+   0,
+   463,
+   1028,
+   1100
+  ],
+  "wall_s": 206.4,
+  "final_eq_last_snapshot": true,
+  "gate_rows": [
+   {
+    "step": 1100,
+    "total": 11,
+    "wall_s": 62.3
+   }
+  ],
+  "verify": {
+   "verdict": "VERIFIED",
+   "n_discrepancies": 0,
+   "discrepancies": []
+  }
+ },
+ "disk_free_gb": 53.5,
+ "ended_utc": "2026-09-07T18:48:54+00:00",
+ "verdict": "QUALIFIED"
+}

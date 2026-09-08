@@ -1,0 +1,73 @@
+{
+ "kind": "verify",
+ "prereg": "ATOM-DIET-TRAJECTORY-1",
+ "smoke": false,
+ "verdict": "DISCREPANCIES",
+ "n_discrepancies": 25,
+ "discrepancies": [
+  "code_commit not unique across births: {'ec6de1ae', '6f41511f'}",
+  "gate row commits v launch commit",
+  "gate row commits v launch commit",
+  "gate row commits v launch commit",
+  "gate row commits v launch commit",
+  "gate row commits v launch commit",
+  "gate row commits v launch commit",
+  "gate row commits v launch commit",
+  "gate row commits v launch commit",
+  "gate row commits v launch commit",
+  "gate row commits v launch commit",
+  "gate row commits v launch commit",
+  "gate row commits v launch commit",
+  "gate row commits v launch commit",
+  "gate row commits v launch commit",
+  "gate row commits v launch commit",
+  "gate row commits v launch commit",
+  "gate row commits v launch commit",
+  "gate row commits v launch commit",
+  "gate row commits v launch commit",
+  "gate row commits v launch commit",
+  "gate row commits v launch commit",
+  "gate row commits v launch commit",
+  "gate row commits v launch commit",
+  "gate row commits v launch commit"
+ ],
+ "launch_commit": "ec6de1ae",
+ "source_sha256_at_launch": {
+  "scratch/birth19m_atoms_traj.py": "d57a7d86be2af4738cb35e652619b0eb092585bf2754ff0cf351b31a20d6760b",
+  "scratch/birth19m_atoms_trajgate.py": "62d486344191aadf140b55a46e8c5b8eb8f50bc325aa1d6f02b3349e773128a8",
+  "scratch/atomtraj_census.py": "33d0be3795ff07a37aaf79c9defea8ad47b42e96e75414beb904cd2244659bee",
+  "scratch/atomtraj_pins.py": "d91b8866bc761f0bc7aab6aaf6fe80b2dcd4d5f6395271b8f394b5e5d92aa63b"
+ },
+ "bars": {
+  "S1": false,
+  "S1b": true,
+  "S2": false,
+  "S3": false,
+  "T": {
+   "5": 0.024143338549616738,
+   "6": 0.01563759654979819,
+   "7": 0.01563407116502825
+  },
+  "W": {
+   "stock_5_6": 0.022829887796364343,
+   "stock_5_7": 0.022249945121574067,
+   "stock_6_7": 0.01255109360690712,
+   "atoms_5_6": 0.029762856091021247,
+   "atoms_5_7": 0.03495760192545611,
+   "atoms_6_7": 0.01185255919020873
+  },
+  "F1": true,
+  "F2": true,
+  "paired_deltas": {
+   "5": 6,
+   "6": 8,
+   "7": 6
+  },
+  "STRUCTURAL": false,
+  "FUNCTION": true,
+  "JOINT": false
+ },
+ "commit": "6f41511f",
+ "status_porcelain": "",
+ "verifier_sha256": "b38a2d94a1f6f9963b50d2295564a9f1b6c4639e8d8eacc2ca31026003718234"
+}

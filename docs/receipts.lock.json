@@ -1,5 +1,11 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
+ "_last_accept": {
+  "paths": [
+   "logs/atomtraj1/births.jsonl"
+  ],
+  "reason": "ATOM-DIET-TRAJECTORY-1 births.jsonl was sha-locked by the mid-run hook regeneration at 6f41511f while the driver was still streaming rows (2 of 6 present); the run completed 00:17 UTC and the file now holds all six rows, disclosed in VERDICT L66991"
+ },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
    "bytes": 3176,
@@ -37,44 +43,53 @@
    "tracked": true
   },
   "logs/atomtraj1/births.jsonl": {
-   "bytes": 8886,
+   "bytes": 26658,
    "exists": true,
-   "local_only": true,
-   "sha256": "8697d7c9246b96edc2ebf3f717fc9a183f63a2d31c848f730c3e16a05b827223",
+   "sha256": "7a2b0aa38d8f2fc40a0dfa9ccab7e4228e1c7462e335140fa8527672a3efab40",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/atomtraj1/census.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 101776,
+   "exists": true,
+   "sha256": "12ac63b3335b37d3c094d169d019ca09187b9644c52fe795dc7a3c5f9a67668a",
+   "source": "results",
+   "tracked": true
   },
   "logs/atomtraj1/census_tensors.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 559849,
+   "exists": true,
+   "sha256": "a095634ee3b1d42b6ae288b32fb066478a11fad09eca125dc5a11d8daf7e3115",
+   "source": "results",
+   "tracked": true
   },
   "logs/atomtraj1/gates.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 11127,
+   "exists": true,
+   "sha256": "110105727a9b2df8ebab92cf2972cf06d757ab4f0c109f6a961b75c08c85f844",
+   "source": "results",
+   "tracked": true
   },
   "logs/atomtraj1/qual.json": {
    "bytes": 2176,
    "exists": true,
-   "local_only": true,
    "sha256": "cd1cd46980d7805395c6354358736d328d5a955b636b10a6567efb1c823edf29",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/atomtraj1/smoke.jsonl": {
    "bytes": 28558,
    "exists": true,
-   "local_only": true,
    "sha256": "2ba53ef8df01160f110a3bfa93a4dc85852c87c33dc033a1c642bb87c7fedbfe",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/atomtraj1/verify_receipt.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 2300,
+   "exists": true,
+   "sha256": "156b4aef019bbd22587662651826e00b87e6d15c4edcc55fb8efe1726577db24",
+   "source": "results",
+   "tracked": true
   },
   "logs/backsched_gate/gates.jsonl": {
    "bytes": 3266,
