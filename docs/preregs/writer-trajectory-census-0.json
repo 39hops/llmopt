@@ -1,0 +1,32 @@
+{
+ "name": "WRITER-TRAJECTORY-CENSUS-0",
+ "note": "Machine-readable form of PRE-REG WRITER-TRAJECTORY-CENSUS-0 (RESULTS L67576), zero-training desk on existing checkpoints; the prose governs on any conflict. A feasibility peek of the global cumulative cosine (0.211) and relative divergence (1.256) at step 15,300 for the writer pair is disclosed in the prose; no null value was read.",
+ "results_id": "2026-09-08-pre-reg-writer-trajectory-census-0",
+ "registered": "2026-09-08",
+ "machine": "mac",
+ "arms": {
+  "A": {"description": "forward OneCycle, checkpoints/phase19m milestones every 900 steps + gallery19m_phase_s2 final, seed 2"},
+  "B": {"description": "backward OneCycle, checkpoints/backsched19m milestones every 900 steps + gallery19m_backsched_s2 final, seed 2 (shared W_0 with A)"},
+  "NULL": {"description": "four same-writer rerun pairs: ATOM-DIET-TRAJECTORY-1 first run v repair for stock_s6, atoms_s6, atoms_s7, stock_s7 at 16 matched snapshots"}
+ },
+ "bars": [
+  {"id": 1, "name": "S0-1-CUMULATIVE-DIVERGENCE-BEYOND-NOISE", "metric": "global_cumulative_cosine_final", "population": "A-B v four null pairs", "aggregation": "writer_below_null_min", "direction": "below", "value": 0.0, "arms": ["A", "B", "NULL"], "description": "C_AB at the final matched time strictly below the minimum of the four null pairs' final global cumulative cosines"},
+  {"id": 2, "name": "S0-2-VELOCITY-DECORRELATION-BEYOND-NOISE", "metric": "global_velocity_cosine_median_mid", "population": "normalized time 0.1 to 0.9", "aggregation": "writer_median_below_null_min_median", "direction": "below", "value": 0.0, "arms": ["A", "B", "NULL"], "description": "median mid-training V_AB strictly below the minimum over null pairs of the same median"},
+  {"id": 3, "name": "S0-3-RELATIVE-DIVERGENCE-BEYOND-NOISE", "metric": "global_relative_divergence_final", "population": "A-B v four null pairs", "aggregation": "writer_above_null_max", "direction": "above", "value": 0.0, "arms": ["A", "B", "NULL"], "description": "R_AB at the final matched time strictly above the maximum of the null pairs' final R"},
+  {"id": 4, "name": "S0-4-BLOCK-UNIFORMITY", "metric": "per_block_cumulative_cosine_final", "population": "blocks 0..7", "aggregation": "count_blocks_satisfying_S0-1_law", "direction": "either", "value": 0.0, "arms": ["A", "B", "NULL"], "description": "descriptive-primary: count of blocks whose C_AB is below the block-wise null minimum"},
+  {"id": 5, "name": "D-1-DEPENDENCE-PROFILE-DIFFERS", "metric": "dependence_profile_l2_9group", "population": "A-B v N1-N2", "aggregation": "writer_above_null", "direction": "above", "value": 0.0, "arms": ["A", "B", "NULL"], "description": "9-group dependence-profile distance A-B strictly greater than N1-N2"},
+  {"id": 6, "name": "D-2-CROSS-WRITER-INCOMPATIBILITY", "metric": "swap_loss_median_cross_v_worst_null", "population": "16 cross-writer swaps v 16 null swaps", "aggregation": "median_cross_below_min_null", "direction": "below", "value": 0.0, "arms": ["A", "B", "NULL"], "description": "median cross-writer swap loss strictly more negative than the most negative same-writer swap loss"},
+  {"id": 7, "name": "D-0-FUNCTION-BAND", "metric": "gate120_full_regate_spread", "population": "A, B, N1, N2", "aggregation": "max_minus_min", "direction": "at_or_below", "value": 7.0, "arms": ["A", "B", "NULL"], "description": "precondition: the four full-model re-gates within 7 solves; else D-1 and D-2 NOT-ADJUDICABLE"}
+ ],
+ "claim_axes": {"TRAJECTORY": "S0-1 AND S0-3", "DEPENDENCE": "D-1", "COMPATIBILITY": "D-2"},
+ "refuted_if": "S0-1 NO-FIRE",
+ "registered_prior": {"S0-1": "fires; null final cumulative cosine point 0.95", "S0-2": "fires; null median 0.6, writer median 0.1", "S0-3": "fires; null final R point 0.3, writer 1.26 as peeked", "S0-4": "8 of 8 blocks", "D-0": "holds (finals 61 to 65)", "D-1": "NO-FIRE; A-B distance 1.2 times null under the strict law", "D-2": "fires; cross-writer median swap loss -12, same-writer worst -5"},
+ "stopping": "no outcome-based stops; operational aborts only (missing milestone, digest mismatch, W_0 regeneration mismatch, gate dict not summing)",
+ "receipts": [
+  "logs/writertraj0/census.json",
+  "logs/writertraj0/gates.jsonl",
+  "logs/writertraj0/depend.json",
+  "logs/writertraj0/verify_receipt.json",
+  "logs/writertraj0/smoke.jsonl"
+ ]
+}

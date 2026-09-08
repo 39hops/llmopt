@@ -4108,6 +4108,26 @@
    "source": "results",
    "tracked": true
   },
+  "logs/writertraj0/census.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/writertraj0/depend.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/writertraj0/gates.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/writertraj0/smoke.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/writertraj0/verify_receipt.json": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/xtermdiet1/arms.jsonl": {
    "bytes": 1163,
    "exists": true,
