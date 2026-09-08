@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 230, library 75, reproduce-pinned 10, results-cited 420, spec-cited 89, cited-but-library 63
+Census: UNCITED 230, library 75, reproduce-pinned 10, results-cited 424, spec-cited 89, cited-but-library 63
 
 ## scratch/
 
@@ -26,7 +26,7 @@ Census: UNCITED 230, library 75, reproduce-pinned 10, results-cited 420, spec-ci
 | atomdose1 | atomdose1_driver.sh | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | atomladder1 | atomladder1_driver.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | atomtraj | atomtraj_census.py | results-cited | RESULTS | RESULTS×4 | — | 4 |
-| atomtraj | atomtraj_pins.py | library | RESULTS | RESULTS×6 | 3 | 1 |
+| atomtraj | atomtraj_pins.py | library | RESULTS | RESULTS×8 | 5 | 2 |
 | atomtraj | atomtraj_qual.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | atomtraj | atomtraj_verify.py | results-cited | RESULTS | RESULTS×5 | — | 3 |
 | atomtraj1 | atomtraj1_driver.sh | results-cited | RESULTS | RESULTS×1 | — | — |
@@ -45,11 +45,11 @@ Census: UNCITED 230, library 75, reproduce-pinned 10, results-cited 420, spec-ci
 | birth19m | birth19m_atoms_rule.py | results-cited | RESULTS, specs | RESULTS×4, specs×1 | — | 3 |
 | birth19m | birth19m_atoms_traj.py | results-cited | RESULTS | RESULTS×4 | — | 5 |
 | birth19m | birth19m_atoms_trajgate.py | results-cited | RESULTS | RESULTS×4 | — | 5 |
-| birth19m | birth19m_backsched.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | — |
-| birth19m | birth19m_curric.py | library | RESULTS, specs | RESULTS×5, specs×1 | 20 | — |
+| birth19m | birth19m_backsched.py | results-cited | RESULTS, specs | RESULTS×3, specs×2 | — | — |
+| birth19m | birth19m_curric.py | library | RESULTS, specs | RESULTS×6, specs×1 | 20 | — |
 | birth19m | birth19m_curric_rev.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 1 |
 | birth19m | birth19m_curric_swap.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
-| birth19m | birth19m_phase.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 2 |
+| birth19m | birth19m_phase.py | results-cited | RESULTS, specs | RESULTS×4, specs×1 | — | 2 |
 | birth19m | birth19m_snaps.py | UNCITED | — | — | — | 1 |
 | birth19m | birth19m_softnext.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 1 |
 | birth19m | birth19m_softspeed.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | 1 |
@@ -415,7 +415,7 @@ Census: UNCITED 230, library 75, reproduce-pinned 10, results-cited 420, spec-ci
 | metabolic | metabolic_hot.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | metabolic | metabolic_v3.py | spec-cited | specs | specs×1 | — | — |
 | metabolic | metabolic_v4.py | UNCITED | — | — | — | — |
-| metabolic | metabolic_v5.py | UNCITED | — | — | — | 2 |
+| metabolic | metabolic_v5.py | results-cited | RESULTS | RESULTS×1 | — | 2 |
 | metallicity | metallicity_diets.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
 | metallicity1 | metallicity1.sh | results-cited | RESULTS | RESULTS×2 | — | — |
 | moe | moe_gt1.py | library | REPRODUCE, RESULTS, specs | REPRODUCE×4, RESULTS×5, specs×4 | 2 | 6 |
@@ -484,7 +484,7 @@ Census: UNCITED 230, library 75, reproduce-pinned 10, results-cited 420, spec-ci
 | pack | pack_rans.py | results-cited | RESULTS, specs | RESULTS×3, specs×2 | — | — |
 | pack | pack_tiered.py | spec-cited | specs | specs×1 | — | — |
 | paper | paper_figs.py | UNCITED | — | — | — | — |
-| phase | phase_portrait_precompute.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| phase | phase_portrait_precompute.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | phase4 | phase4_rewrite.py | spec-cited | specs | specs×1 | — | — |
 | phase4 | phase4_sites.py | spec-cited | specs | specs×3 | — | 1 |
 | phase4 | phase4_unboot.py | UNCITED | — | — | — | — |
@@ -665,6 +665,10 @@ Census: UNCITED 230, library 75, reproduce-pinned 10, results-cited 420, spec-ci
 | vrm | vrm_ab.py | UNCITED | — | — | — | 1 |
 | weight | weight_fft_euler.py | UNCITED | — | — | — | — |
 | wfloor | wfloor_ladder.sh | results-cited | RESULTS | RESULTS×1 | — | — |
+| writertraj | writertraj_census.py | results-cited | RESULTS | RESULTS×1 | — | 2 |
+| writertraj | writertraj_depend.py | results-cited | RESULTS | RESULTS×1 | — | 2 |
+| writertraj | writertraj_verify.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
+| writertraj0 | writertraj0_driver.sh | UNCITED | — | — | — | — |
 | wsl | wsl.sh | results-cited | RESULTS, specs | RESULTS×10, specs×23 | — | 5 |
 | xterm | xterm_probe.py | library | RESULTS, specs | RESULTS×2, specs×1 | 1 | 1 |
 | xtermdiet1 | xtermdiet1_driver.sh | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
@@ -823,7 +827,7 @@ Census: UNCITED 230, library 75, reproduce-pinned 10, results-cited 420, spec-ci
 | sol | sol_enrich_results.py | library | specs | specs×4 | 1 | — |
 | sol | sol_generate_tables.py | spec-cited | specs | specs×3 | — | — |
 | step | step_grpo.py | spec-cited | specs | specs×1 | — | — |
-| step | step_grpo_micro.py | library | RESULTS, specs | RESULTS×5, specs×19 | 95 | 5 |
+| step | step_grpo_micro.py | library | RESULTS, specs | RESULTS×6, specs×19 | 95 | 5 |
 | sweep | sweep_lookup.py | UNCITED | — | — | — | 1 |
 | sweep | sweep_lookup_mlx.py | UNCITED | — | — | — | — |
 | tabula | tabula_rasa_r0.py | UNCITED | — | — | — | — |
@@ -836,7 +840,7 @@ Census: UNCITED 230, library 75, reproduce-pinned 10, results-cited 420, spec-ci
 | train | train_dispatcher.py | UNCITED | — | — | — | — |
 | train | train_magic_estimator.py | library | RESULTS | RESULTS×1 | 7 | 1 |
 | train | train_magic_llm.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| train | train_mathnative.py | library | RESULTS, specs | RESULTS×4, specs×7 | 75 | 31 |
+| train | train_mathnative.py | library | RESULTS, specs | RESULTS×5, specs×7 | 78 | 31 |
 | train | train_nnue.py | library | specs | specs×8 | 1 | 12 |
 | train | train_proposer.py | spec-cited | specs | specs×5 | — | — |
 | train | train_syndrome_decoder.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
