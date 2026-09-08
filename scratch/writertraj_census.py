@@ -86,11 +86,13 @@ def pair_census(name, stepsX, pathsX, stepsY, pathsY, w0X, w0Y, sets):
     out = {"pair": name, "steps": common, "per_set": {}}
     prev = {}   # set -> (step, DeltaX, DeltaY)
     prevv = {}  # set -> (step, vX, vY)
+    w0fX = {sname: flat(w0X, keys) for sname, keys in sets.items()}
+    w0fY = {sname: flat(w0Y, keys) for sname, keys in sets.items()}
     for s in common:
         sdX, sdY = load_model_sd(pathsX[s]), load_model_sd(pathsY[s])
         for sname, keys in sets.items():
-            dX = flat(sdX, keys) - flat(w0X, keys)
-            dY = flat(sdY, keys) - flat(w0Y, keys)
+            dX = flat(sdX, keys) - w0fX[sname]
+            dY = flat(sdY, keys) - w0fY[sname]
             rec = out["per_set"].setdefault(sname, {})
             nX, nY = float(dX.norm()), float(dY.norm())
             r = {"C": cos(dX, dY), "normX": nX, "normY": nY,
@@ -103,8 +105,7 @@ def pair_census(name, stepsX, pathsX, stepsY, pathsY, w0X, w0Y, sets):
                 r["vratio"] = r["vnormX"] / r["vnormY"] if r["vnormY"] > 0 else None
                 if sname in prevv:
                     s1, qX, qY = prevv[sname]
-                    hh = s - s1
-                    aX, aY = (vX - qX) / hh, (vY - qY) / hh
+                    aX, aY = (vX - qX) / h, (vY - qY) / h      # sealed: a(t; h) = [v(t+h) - v(t)] / h
                     r.update({"A": cos(aX, aY), "anormX": float(aX.norm()), "anormY": float(aY.norm())})
                 prevv[sname] = (s, vX, vY)
             prev[sname] = (s, dX, dY)

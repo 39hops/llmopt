@@ -115,8 +115,10 @@ def main():
         assert (OUT / "census.json").exists(), "STAGE 0 census must exist and be preserved before STAGE 0B"
         for f in ("gates.jsonl", "depend.json"):
             assert not (OUT / f).exists(), f"REFUSING: {OUT / f} exists"
+    assert not os.environ.get("VOCAB_EXTRA"), "W_0 law requires VOCAB_EXTRA unset"
     dev = "mps" if torch.backends.mps.is_available() else "cpu"
     G = Gater(dev)
+    tree_dirty = bool(subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True).stdout.strip())
     started = datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
     sds, w0s, digests = {}, {}, {}
     names = ["N1"] if SMOKE else list(SPECIMENS)
@@ -130,6 +132,8 @@ def main():
             w0s[name] = load_sd(spec["w0"])
             digests[name]["w0_matches_seed_regeneration"] = (state_digest(w0s[name]) == state_digest(w0_seed(spec["seed"])))
         digests[name]["w0_state_digest"] = state_digest(w0s[name])
+    if not SMOKE:
+        assert state_digest(w0s["N1"]) == state_digest(w0s["N2"]), "N1 / N2 step_0 digests differ"
     full, w0gate, dep = {}, {}, {}
     for name in names:
         full[name] = G.gate(sds[name], f"{name}/full", {"specimen": name, "op": "full"})
@@ -151,7 +155,7 @@ def main():
                 swaps[f"{rec_name}<-{don_name}/BLOCK{l}"] = t - full[rec_name]
     rec = {"prereg": "WRITER-TRAJECTORY-CENSUS-0", "stage": "0B", "smoke": SMOKE, "commit": G.commit, "device": dev,
            "started_utc": started, "ended_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
-           "specimens": digests, "full": full, "w0_gate": {str(k): v for k, v in w0gate.items()}, "dependence": dep, "swap_loss": swaps}
+           "specimens": digests, "tree_dirty": tree_dirty, "vocab_len": len(G.tok.vocab), "full": full, "w0_gate": {str(k): v for k, v in w0gate.items()}, "dependence": dep, "swap_loss": swaps}
     if not SMOKE:
         band = max(full.values()) - min(full.values())
         d0 = band <= 7

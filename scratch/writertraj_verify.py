@@ -128,7 +128,8 @@ def main():
     chk(sorted(sum([SETS[f"CLASS_{c}"] for c in ("qkv", "o", "gate", "up", "down", "norms", "emb", "head")], [])) == KEYS, "CLASS partition")
     chk({k: len(v) for k, v in SETS.items()} == census["tensor_law"], "tensor law sizes v census")
     commit = census["commit"]
-    chk(not census["tree_dirty"] and depend["commit"] == commit, "commit identity census v depend, clean tree")
+    chk(not census["tree_dirty"] and depend["commit"] == commit and not depend.get("tree_dirty", False), "commit identity census v depend, clean tree")
+    chk(not os.environ.get("VOCAB_EXTRA"), "VOCAB_EXTRA must be unset for the W_0 law")
     src = {}
     for p in SOURCES:
         r = subprocess.run(["git", "show", f"{commit}:{p}"], capture_output=True)
@@ -170,7 +171,7 @@ def main():
                     got.update({"h": s - s0, "V": cosf(vX, vY), "vnormX": float(vX.norm()), "vnormY": float(vY.norm())})
                     if sname in prevv:
                         s1, qX, qY = prevv[sname]
-                        aX, aY = (vX - qX) / (s - s1), (vY - qY) / (s - s1)
+                        aX, aY = (vX - qX) / (s - s0), (vY - qY) / (s - s0)
                         got.update({"A": cosf(aX, aY), "anormX": float(aX.norm()), "anormY": float(aY.norm())})
                     prevv[sname] = (s, vX, vY)
                 prev[sname] = (s, dX, dY)
@@ -180,7 +181,7 @@ def main():
             print(f"[verify] {pair} step {s} ok; discrepancies so far {len(D)}", flush=True)
     if not SMOKE:
         # bars
-        AB = mine["A_B"]; nulls = {p: m for p, m in mine.items() if p.startswith("NULL_")}
+        AB = mine["A_B"]; nulls = {p: mine[p] for p in ["NULL_stock_s6", "NULL_atoms_s6", "NULL_atoms_s7", "NULL_stock_s7"]}
         fA = max(AB["steps"]); chk(fA == T, "writer final step 15,420")
         C_AB = AB["per_set"]["GLOBAL"][fA]["C"]; R_AB = AB["per_set"]["GLOBAL"][fA]["R"]
         C_null = [n["per_set"]["GLOBAL"][max(n["steps"])]["C"] for n in nulls.values()]
@@ -211,6 +212,22 @@ def main():
             chk(sum(r["solves"].values()) == r["total"] and sorted(r["solves"]) == ["3", "4", "5", "6", "7"] and all(0 <= v <= 24 for v in r["solves"].values()), f"gate dict {r['label']}")
             chk(r["code_commit"] == commit and not r["smoke"], f"gate provenance {r['label']}")
         full = {n: g[f"{n}/full"]["total"] for n in ("A", "B", "N1", "N2")}
+        # reconstruct one revert and one swap per specimen from the checkpoints and compare state digests
+        spec_paths = {"A": ("checkpoints/gallery19m_phase_s2.pt", None), "B": ("checkpoints/gallery19m_backsched_s2.pt", None),
+                      "N1": ("checkpoints/atomtraj1/stock_s6/step_15420.pt", "checkpoints/atomtraj1/stock_s6/step_00000.pt"),
+                      "N2": (str(REPAIR / "checkpoints/atomtraj1/stock_s6/step_15420.pt"), str(REPAIR / "checkpoints/atomtraj1/stock_s6/step_00000.pt"))}
+        sds = {n: load(p) for n, (p, _) in spec_paths.items()}
+        w0s = {n: (w0_2 if w is None else load(w)) for n, (_, w) in spec_paths.items()}
+        chk(digest(w0s["N1"]) == digest(w0s["N2"]), "N1 / N2 step_0 digests equal")
+        for n in sds:
+            chk(digest(sds[n]) == g[f"{n}/full"]["state_digest"], f"{n} full digest v gate row")
+            rv = {k: (w0s[n][k].clone() if k in SETS["BLOCK3"] else v.clone()) for k, v in sds[n].items()}
+            chk(digest(rv) == g[f"{n}/revert/BLOCK3"]["state_digest"], f"{n} revert BLOCK3 reconstruction")
+        for rec_n, don_n in (("A", "B"), ("B", "A"), ("N1", "N2"), ("N2", "N1")):
+            hy = {k: v.clone() for k, v in sds[rec_n].items()}
+            for k in SETS["BLOCK5"]:
+                hy[k] = w0s[rec_n][k] + (sds[don_n][k] - w0s[don_n][k])
+            chk(digest(hy) == g[f"{rec_n}<-{don_n}/BLOCK5"]["state_digest"], f"{rec_n}<-{don_n} swap BLOCK5 reconstruction")
         chk(full == depend["full"], "full gates v depend")
         revert_groups = [k for k in SETS if k != "GLOBAL"]      # 8 blocks + OUTSIDE + 8 classes = 17
         chk(len(revert_groups) == 17, "17 revert groups")
