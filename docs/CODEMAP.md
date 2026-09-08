@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 232, library 75, reproduce-pinned 10, results-cited 417, spec-cited 89, cited-but-library 63
+Census: UNCITED 230, library 75, reproduce-pinned 10, results-cited 419, spec-cited 89, cited-but-library 63
 
 ## scratch/
 
@@ -25,11 +25,11 @@ Census: UNCITED 232, library 75, reproduce-pinned 10, results-cited 417, spec-ci
 | atlas | atlas_precompute.py | spec-cited | specs | specs×1 | — | — |
 | atomdose1 | atomdose1_driver.sh | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | atomladder1 | atomladder1_driver.sh | results-cited | RESULTS | RESULTS×1 | — | — |
-| atomtraj | atomtraj_census.py | results-cited | RESULTS | RESULTS×2 | — | 3 |
-| atomtraj | atomtraj_pins.py | library | RESULTS | RESULTS×4 | 3 | 1 |
-| atomtraj | atomtraj_qual.py | UNCITED | — | — | — | — |
-| atomtraj | atomtraj_verify.py | results-cited | RESULTS | RESULTS×3 | — | 1 |
-| atomtraj1 | atomtraj1_driver.sh | UNCITED | — | — | — | — |
+| atomtraj | atomtraj_census.py | results-cited | RESULTS | RESULTS×3 | — | 3 |
+| atomtraj | atomtraj_pins.py | library | RESULTS | RESULTS×5 | 3 | 1 |
+| atomtraj | atomtraj_qual.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| atomtraj | atomtraj_verify.py | results-cited | RESULTS | RESULTS×4 | — | 2 |
+| atomtraj1 | atomtraj1_driver.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | attractor | attractor_census.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | attractor | attractor_census2.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | b768 | b768_after_v5.sh | UNCITED | — | — | — | — |
@@ -42,8 +42,8 @@ Census: UNCITED 232, library 75, reproduce-pinned 10, results-cited 417, spec-ci
 | birth19m | birth19m_atoms_dose.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 2 |
 | birth19m | birth19m_atoms_ladder.py | results-cited | RESULTS | RESULTS×4 | — | 5 |
 | birth19m | birth19m_atoms_rule.py | results-cited | RESULTS, specs | RESULTS×4, specs×1 | — | 3 |
-| birth19m | birth19m_atoms_traj.py | results-cited | RESULTS | RESULTS×2 | — | 4 |
-| birth19m | birth19m_atoms_trajgate.py | results-cited | RESULTS | RESULTS×2 | — | 4 |
+| birth19m | birth19m_atoms_traj.py | results-cited | RESULTS | RESULTS×3 | — | 4 |
+| birth19m | birth19m_atoms_trajgate.py | results-cited | RESULTS | RESULTS×3 | — | 4 |
 | birth19m | birth19m_backsched.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | — |
 | birth19m | birth19m_curric.py | library | RESULTS, specs | RESULTS×5, specs×1 | 20 | — |
 | birth19m | birth19m_curric_rev.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 1 |
