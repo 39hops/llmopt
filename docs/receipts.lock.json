@@ -58,8 +58,11 @@
    "tracked": true
   },
   "logs/atomtraj1/dryrun_stock.json": {
-   "exists": false,
-   "source": "results"
+   "bytes": 391,
+   "exists": true,
+   "sha256": "0ba5a8b3f0a666ea51aa41f3ab5a4cd71f84591369c6745d5113b8e001c08373",
+   "source": "results",
+   "tracked": true
   },
   "logs/atomtraj1/gates.jsonl": {
    "bytes": 11127,
@@ -86,6 +89,76 @@
    "bytes": 2300,
    "exists": true,
    "sha256": "156b4aef019bbd22587662651826e00b87e6d15c4edcc55fb8efe1726577db24",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/atomtraj1_repair/atomtraj1.DONE": {
+   "bytes": 29,
+   "exists": true,
+   "sha256": "d8aa33b4da922754382815a3ab2d7bbff36d49de74de6f9a5b4a0c5ce019b79c",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/atomtraj1_repair/births.jsonl": {
+   "bytes": 26658,
+   "exists": true,
+   "sha256": "44224c75f8760f3dc305220e7fe71ca73fcf13160078c9371d2ef263aa81bfb7",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/atomtraj1_repair/census.json": {
+   "bytes": 101815,
+   "exists": true,
+   "sha256": "ff709ba9fb2171e53900837aa4033f292ba4f4925ad5864ea76f88627629a19c",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/atomtraj1_repair/census_tensors.json": {
+   "bytes": 559791,
+   "exists": true,
+   "sha256": "00f928a7d96092cd3af16b922704d8845482690164113b6e7b251c0ec36f352b",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/atomtraj1_repair/dryrun_atoms.json": {
+   "bytes": 406,
+   "exists": true,
+   "sha256": "bc40d4bf3ad51b0a521cd6d87fff823240e3a834d00dd3afa8382bc13ccd5579",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/atomtraj1_repair/dryrun_stock.json": {
+   "bytes": 391,
+   "exists": true,
+   "sha256": "0ba5a8b3f0a666ea51aa41f3ab5a4cd71f84591369c6745d5113b8e001c08373",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/atomtraj1_repair/gates.jsonl": {
+   "bytes": 11125,
+   "exists": true,
+   "sha256": "3757950c3ae2c42e3c5aebec7e658c8833edfd494ced26b35ab8fb0a417c7673",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/atomtraj1_repair/gates.log": {
+   "bytes": 3277,
+   "exists": true,
+   "sha256": "4966e2956adbdd277c91be5663795d2e738a640c702b9e4f501fc8c4be6d7e0b",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/atomtraj1_repair/qual_inherited_ec6de1ae.json": {
+   "bytes": 2176,
+   "exists": true,
+   "sha256": "cd1cd46980d7805395c6354358736d328d5a955b636b10a6567efb1c823edf29",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/atomtraj1_repair/verify_receipt.json": {
+   "bytes": 1316,
+   "exists": true,
+   "sha256": "462f585f05b55c51c6285efbf9adaa2954576f5506ac430c6b89894ae37ad9b6",
    "source": "results",
    "tracked": true
   },

@@ -67270,3 +67270,172 @@ Disk: 4 x 1.3 GB new snapshots in the worktree.
    with the note that the repair runs the byte-identical ec6de1ae
    sources.
 Nothing else in REPAIR-0 changes.
+
+## VERDICT ATOM-DIET-TRAJECTORY-1-REPAIR: FUNCTION FIRES, STRUCTURAL NO-FIRE, REFUTED-IF TRIGGERS — on the repaired six-birth evidence set (one code_commit ec6de1ae, verifier VERIFIED with 0 discrepancies) the atom diet reproduces its paired gate lift at 3 / 3 seeds (+6 / +3 / +10, mean +6.33 against the +5 clause; L4 10 / 11 / 13 v 8 / 7 / 5) while its paired 8-layer update-energy displacement (0.0146 to 0.0241) stays inside the within-arm birth spread (0.0112 to 0.0344; S1 ratio 0.425, never above 1 at any of 16 snapshots); S1b direction reproduces (cosines 0.90 / 0.30 / 0.10); S2 and S3 no-fire; the registered priors predicted this branch; the K2-derived macro-trajectory-signature-as-data-lever program STOPS at this house scale (2026-09-08, Mac)
+
+Adjudicates PRE-REG L66546 as sealed by AMENDMENT L66822, on the
+evidence set registered by AMENDMENT -REPAIR-0 L67161 and its -FOLDS
+entry L67245, superseding the NOT-ADJUDICABLE VERDICT L66991 (which
+stays as the record of the invalid first run). Receipts, force-added and
+locked this commit: logs/atomtraj1_repair/births.jsonl (six rows),
+logs/atomtraj1_repair/gates.jsonl (24 rows),
+logs/atomtraj1_repair/census.json,
+logs/atomtraj1_repair/census_tensors.json,
+logs/atomtraj1_repair/verify_receipt.json,
+logs/atomtraj1_repair/dryrun_stock.json,
+logs/atomtraj1_repair/dryrun_atoms.json,
+logs/atomtraj1_repair/qual_inherited_ec6de1ae.json (the first run's
+qualification receipt at the byte-identical ec6de1ae sources),
+logs/atomtraj1_repair/atomtraj1.DONE, and the gate / census / verify
+logs at logs/atomtraj1_repair/gates.log, census.log, verify.log. The
+first-run artifacts under logs/atomtraj1/ and checkpoints/atomtraj1/
+are untouched; the repaired snapshots live untracked in the detached
+worktree /Users/artin/code/llmopt-repair, digest-anchored in
+births.jsonl.
+
+Execution. Detached worktree at ec6de1ae, porcelain empty before,
+during and after; interpreter the main checkout's venv by absolute
+path; both dry runs reproduced the six pinned stream digests. Retained
+births 0 and 1 (stock_s5, atoms_s5; started 2026-09-07 18:50:13 and
+19:39:38 UTC at ec6de1ae; rows byte-identical to the first run's,
+every snapshot sha256 and state_digest re-checked, 0 mismatches).
+Rerun births 2 to 5 in the frozen order with their original order
+indices: stock_s6 03:21:21, atoms_s6 04:10:26, atoms_s7 04:59:37,
+stock_s7 05:48:15 UTC (2026-09-08), walls 2,843.5 / 2,853.2 / 2,851.5
+/ 2,833.7 s, no gate during or between trainings, HEAD and clean tree
+re-asserted before each. The 24 gate rows were written 06:36:31 to 07:01:50
+UTC (completion timestamps; mean 65.6 s, 1,574 s total gate wall),
+then census and verifier; marker rc 0 at 07:09:48 UTC
+(logs/atomtraj1_repair/atomtraj1.DONE). Every row carries code_commit ec6de1ae and
+tree_dirty false. Peak RSS 4.51 to 5.70 GB. Stock and atoms step_0
+state_digests equal at every seed (e344904c..., e2eaa2c7...,
+a97eae63...); step_15420 state_digest equals final on every birth.
+Verifier: VERIFIED, 0 discrepancies, launch and run commit ec6de1ae,
+sources checked by git show at that commit.
+
+Measured, snapshot 15,420 (census.json; verifier recomputed within
+1e-9):
+- Final gates (dicts sum; gate-printed weights shas):
+  stock s5 65 / 120 {3:22, 4:8, 5:16, 6:8, 7:11} @ 62.78% sha a3191851ce72983f
+  atoms s5 71 / 120 {3:23, 4:10, 5:18, 6:8, 7:12} @ 63.13% sha 9a7247c277322b49
+  stock s6 64 / 120 {3:21, 4:7, 5:17, 6:9, 7:10} @ 62.01% sha 5edc328af32413d5
+  atoms s6 67 / 120 {3:21, 4:11, 5:16, 6:8, 7:11} @ 62.06% sha 6d3a3cdbfc2baa91
+  stock s7 61 / 120 {3:22, 4:5, 5:15, 6:7, 7:12} @ 61.07% sha 226a47875e8f0ee8
+  atoms s7 71 / 120 {3:22, 4:13, 5:15, 6:9, 7:12} @ 62.79% sha 8997adee982bfcc2
+  Paired deltas +6 / +3 / +10, mean +6.33. L4 atoms 10 / 11 / 13 v
+  stock 8 / 7 / 5. The seed-5 re-gates reproduce the first run's
+  seed-5 cells exactly (same dicts, same weights shas). Both runs
+  gated the same byte-identical seed-5 snapshot files, so this is an
+  instrument-determinism check on one artifact, not a cross-run
+  weight comparison.
+- P8 at 15,420 (blocks 0 to 7): stock s5 [0.063, 0.102, 0.127, 0.138,
+  0.141, 0.133, 0.149, 0.148] centroid 3.928; atoms s5 [0.063, 0.108,
+  0.133, 0.148, 0.147, 0.131, 0.133, 0.138] 3.822; stock s6 [0.062,
+  0.094, 0.118, 0.133, 0.142, 0.146, 0.146, 0.160] 4.019; atoms s6
+  [0.064, 0.096, 0.123, 0.135, 0.144, 0.149, 0.136, 0.153] 3.954;
+  stock s7 [0.068, 0.094, 0.117, 0.133, 0.145, 0.149, 0.145, 0.150]
+  3.966; atoms s7 [0.065, 0.096, 0.118, 0.135, 0.147, 0.144, 0.135,
+  0.160] 3.972.
+- Paired treatment displacements T_s (P8, L2) 0.02414 / 0.01458 /
+  0.01590; within-arm stock 0.02170 (5, 6), 0.02240 (5, 7), 0.01303
+  (6, 7); atoms 0.03061 (5, 6), 0.03435 (5, 7), 0.01115 (6, 7). min T
+  / max W = 0.425.
+- C8: T 0.00322 / 0.00607 / 0.00170; W stock 0.00473 / 0.00278 /
+  0.00214, atoms 0.00237 / 0.00419 / 0.00255.
+- Treatment-vector cosines (5, 6) 0.896, (5, 7) 0.299, (6, 7) 0.098,
+  all vectors nonzero. Centroid signs (atoms minus stock) -1 / -1 /
+  +1.
+
+BARS (sealed text, unchanged):
+1. S1 PROFILE-SEPARATES: NO-FIRE. min T 0.01458 is not greater than
+   max W 0.03435.
+2. S1b DIRECTION-REPRODUCES: FIRES. Three nonzero vectors, all three
+   pairwise cosines > 0 (0.896 / 0.299 / 0.098).
+3. S2 CLASS-SHARE-SEPARATES: NO-FIRE. min T_C8 0.00170 < max W_C8
+   0.00473.
+4. S3 CENTROID-SIGN: NO-FIRE. Signs -1 / -1 / +1.
+5. F1 LIFT-REPRODUCES: FIRES. atoms > stock at 3 / 3; mean +6.33 >=
+   +5.
+6. F2 L4-REPRODUCES: FIRES. 10 >= 8, 11 >= 7, 13 >= 5.
+Claim axes: STRUCTURAL (S1 AND S1b) NO-FIRE; FUNCTION (F1) FIRES;
+JOINT NO-FIRE. REFUTED-IF (STRUCTURAL NO-FIRE with FUNCTION FIRE at
+six births) TRIGGERS. Sealed reading for this branch: the K2-derived
+macro-trajectory-signature-as-data-lever program STOPS at this house
+scale; the diet moves the gate without a paired profile displacement
+that clears between-birth variation.
+
+Registered priors, one adjudication per registered prior (the S1
+point ratio was a descriptive prediction inside the S1 prior and is
+reported, not separately counted): F1 HIT (+4 to +7, point +5;
+measured +6.33). S1 HIT (NO-FIRE predicted; the 0.9 point ratio
+missed at 0.425, the diet's displacement is smaller relative to birth
+spread than priced). S1b HIT. S2 HIT (NO-FIRE). S3 MISS (atoms
+centroid above stock at 3 / 3 predicted; below at seeds 5 and 6,
+above at 7). F2 HIT (atoms L4 10 to 13 point 12, measured 10 / 11 /
+13 mean 11.33; stock 5 to 9 point 7, measured 8 / 7 / 5 mean 6.67).
+Ladder family record 11 hits 21 misses (L30779) becomes 16 hits 22
+misses.
+
+Descriptive readouts (no bars):
+- S1 ratio by snapshot 0.198 (463), 0.313 (1,028), 0.301 (2,056),
+  0.421 (5,140), 0.429 (10,280), 0.425 (15,420); never above 1 at any
+  of the 16 post-init snapshots. S1b holds at every snapshot from 463
+  on. S3 holds at 1,028 / 2,056 / 3,084 only.
+- Intermediate gates, atoms v stock totals: 2,056 (0.4 epoch): 25 /
+  26 / 25 v 24 / 27 / 24 (deltas +1 / -1 / +1); 5,140 (one epoch): 42
+  / 51 / 48 v 50 / 42 / 53 (-8 / +9 / -5); 10,280 (two epochs): 66 /
+  65 / 66 v 61 / 56 / 62 (+5 / +9 / +4). Mixed through one epoch,
+  positive at 3 / 3 by two epochs, as in the invalid first run.
+- Lag cosines (stock s5, h = 1,028, the retained birth): +0.175 at t
+  = 1,028, +0.084, -0.002, -0.021, -0.063, -0.068, -0.068, -0.070,
+  -0.072, -0.105 at 10,280, -0.085, -0.058, +0.014 at 13,364. All six
+  births in census.json. No claim.
+- Per-tensor IPR and effective-rank tables for 40 tensors x 102
+  snapshots in logs/atomtraj1_repair/census_tensors.json (559,791
+  bytes, sha256 in census.json).
+- Fixed-seed mps run-noise anchor for context (L66742): the same-seed
+  stock rerun pair differed by P8 L2 0.001283; the within-arm
+  displacements here (different inits) are 8.7 to 26.8 times that.
+- Disclosure, not reconciliation (per -FOLDS item 4): the invalid
+  first run's seed-6 and seed-7 births (different runs of the same
+  seeds) read paired deltas +8 / +6 and S1 ratio 0.447; the repaired
+  set reads +3 / +10 and 0.425. Both sets no-fire S1 and fire F1; the
+  per-seed function magnitudes moved by 5 and 4 solves between
+  same-seed runs, from an invalid run; no cause is assigned and
+  nothing here enters a bar, prior or reading.
+
+Function reading. With the repaired seeds 5, 6, 7 added to the
+ladder's 3 and 4, the 3.5% one-ply atom diet has lifted the paired
+gate at every matched-horizon seed tried (5 / 5: +6 / +6 at L29465,
++6 / +3 / +10 here) and pinned L4 at 10 to 13 against stock 5 to 8;
+ATOM-DIET-1's seed 2 ran at an unmatched horizon and is not counted.
+The mean +6.33 sits within one resolution unit of the 7-solve bar and
+the seed-6 delta (+3) is under it, so the MAGNITUDE stays
+single-seed-grade while the DIRECTION is five-for-five.
+
+Structural reading. The diet's paired displacement of the 8-layer
+update-energy profile reproduces in direction (S1b, two of three
+cosines weak) and is about 0.4 of the between-birth spread of either
+arm in magnitude. At this dose and scale, where the update energy
+lands does not identify the diet: two stock births differ from each
+other by more than a stock birth differs from its atoms twin. No
+signature transported from the K2 lifecycle (depth profile, class
+share, centroid) separates a randomized data intervention from birth
+variation here. The K2 transport result (L66521) is untouched as an
+observational fact about released checkpoints; what stops is its use
+as a data lever at house scale.
+
+Fences. Single device (Mac mps fp32, run-level nondeterministic;
+counterbalanced 2:1 arm order, residual order effect at n = 3
+disclosed, not removed); no cross-run sha comparison and no
+cross-device claim; family-only (19M stock diet + atoms shard0 at the
+3.5% dose; dose and rule generality owned by the dose and
+rule-ablation rungs); shard frozen (71M band SPENT); Mac shared CPU
+with no granted seat during either run, births mps-bound; n = 3
+paired discovery seeds; no WEIGHTS -> FUNCTION, mechanism or scale
+claim; IPR / effective rank and lag descriptive; seeds 8, 9, 10
+remain reserved; the two retained births and the four rerun births
+are separated by 6.9 h of wall time on the same machine (atoms_s5
+ended 20:27:17 UTC, stock_s6 started 03:21:21 UTC), a fence the
+sealed design did not anticipate and which the repair registration
+accepted. Nothing is armed.

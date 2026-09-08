@@ -1,0 +1,7 @@
+[census] stock_s5: 17 snapshots
+[census] atoms_s5: 17 snapshots
+[census] stock_s6: 17 snapshots
+[census] atoms_s6: 17 snapshots
+[census] atoms_s7: 17 snapshots
+[census] stock_s7: 17 snapshots
+[census] written; bars: {"S1": false, "S1b": true, "S2": false, "S3": false, "F1": true, "F2": true, "STRUCTURAL": false, "FUNCTION": true, "JOINT": false}

@@ -147,6 +147,23 @@
  },
  "stopping": "no outcome-based early stopping; operational fail-closed aborts only (source-invariant, stream digest, shard sha, disk < 15 GB, non-finite loss, existing real path, code_commit drift, state_digest inequality)",
  "receipts": [
+  "logs/atomtraj1_repair/births.jsonl",
+  "logs/atomtraj1_repair/gates.jsonl",
+  "logs/atomtraj1_repair/census.json",
+  "logs/atomtraj1_repair/census_tensors.json",
+  "logs/atomtraj1_repair/verify_receipt.json",
+  "logs/atomtraj1_repair/dryrun_stock.json",
+  "logs/atomtraj1_repair/dryrun_atoms.json",
+  "logs/atomtraj1_repair/qual_inherited_ec6de1ae.json",
+  "logs/atomtraj1_repair/atomtraj1.DONE"
+ ],
+ "pins": "scratch/atomtraj_pins.py",
+ "amended_by": [
+  "AMENDMENT ATOM-DIET-TRAJECTORY-1-SEAL",
+  "AMENDMENT ATOM-DIET-TRAJECTORY-1-REPAIR-0",
+  "AMENDMENT ATOM-DIET-TRAJECTORY-1-REPAIR-0-FOLDS"
+ ],
+ "receipts_first_run_not_adjudicable": [
   "logs/atomtraj1/births.jsonl",
   "logs/atomtraj1/gates.jsonl",
   "logs/atomtraj1/census.json",
@@ -154,7 +171,5 @@
   "logs/atomtraj1/verify_receipt.json",
   "logs/atomtraj1/smoke.jsonl",
   "logs/atomtraj1/census_tensors.json"
- ],
- "pins": "scratch/atomtraj_pins.py",
- "amended_by": "AMENDMENT ATOM-DIET-TRAJECTORY-1-SEAL"
+ ]
 }

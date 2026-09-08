@@ -1,0 +1,13 @@
+[curric] D2 excision: 165028 -> 164896 rows
+[verify] stock_s5 checked; discrepancies so far 0
+[verify] atoms_s5 checked; discrepancies so far 0
+[verify] stock_s6 checked; discrepancies so far 0
+[verify] atoms_s6 checked; discrepancies so far 0
+[verify] atoms_s7 checked; discrepancies so far 0
+[verify] stock_s7 checked; discrepancies so far 0
+{
+ "verdict": "VERIFIED",
+ "n_discrepancies": 0,
+ "discrepancies": [],
+ "launch_commit": "ec6de1ae"
+}
