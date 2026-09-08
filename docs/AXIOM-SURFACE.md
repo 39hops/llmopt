@@ -151,7 +151,11 @@ its receipts never sit next to Metal numbers (both labs' fence).
 ## Capabilities with NO python binding (relay-ask candidates)
 
 - Lean 4 certificate emitter (`sym/print_lean.hpp`) — machine-
-  checkable proofs for EQUIVALENT verdicts, no house consumer yet.
+  checkable proofs for EQUIVALENT verdicts. STALE LISTING corrected
+  2026-09-08: the emitter IS bound (LeanCert / to_lean / sidecar_line,
+  AXIOM-IV7-ACCEPT RESULTS L29417) and IS consumed house-side by
+  scratch/lean_check.py (LEAN-TIER-1 L18619, LEAN-KERNEL-SAMPLE L20365,
+  LEAN-FULL-V2 L22493); kept in this list only as a pointer.
 - RNS/int256/dyadic exact core, fp32limb GEMM + Metal kernels.
   (pyrand and count_ops BOUND at IV6 — see bindings section.)
 - `sym/budget` semantics ANSWERED (relay 2026-08-14-2): cooperative

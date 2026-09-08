@@ -67888,3 +67888,91 @@ Everything else in L67576 stands, including C_AB 0.211 and R_AB
 null extrema, TRAJECTORY = S0-1 AND S0-3, single-null-grade D-1, the
 strict D-2 law, the D-0 <= 7 precondition and the DFA GO / STOP
 ladder.
+
+## AMENDMENT LEAN-FULL-V2-TAXONOMY-PROSE (target: VERDICT LEAN-FULL-V2 L22493): the "173 e / 127 m" split belongs to all 300 failures, not to the 222 atom-split rows; counts re-derived from the labelled receipt, no number in the headline changes (2026-09-08, Mac)
+
+The target entry's atom-split bullet reads "222 atom-split (... 173 e
+/ 127 m, confirming it is not division-specific)". 173 + 127 = 300,
+the whole failure set. Re-derived 2026-09-08 from
+scratch/lean_real_corpus/failures_300_labeled.tsv (300 rows, no
+header): labels atom-split 222 and field_simp 78 (the headline
+taxonomy stands, 222 + 78 = 300, 21,614 + 300 = 21,914); id prefixes
+e 173 and m 127 over ALL 300 rows. The e / m split is therefore a
+property of the failure set as a whole and the parenthetical was
+misplaced inside the atom-split bullet; the reading "the class is
+corpus-real and includes ring-tactic rows" is unaffected. No PASS,
+rate or bar value changes. Surfaced by the 2026-09-08 audit of the
+Lean certificate tier (OBSERVATION VERIFIER-INVARIANCE-AND-LEMMA-
+MEMORY-ASSESSMENT-0, same commit).
+
+## OBSERVATION VERIFIER-INVARIANCE-AND-LEMMA-MEMORY-ASSESSMENT-0: ASSESSMENT AND BANKING ONLY — audit of openai/NavierStokesAndEuler's Comparator verification architecture against the house Lean certificate tier; "use Lean and diff the statement mechanically" is not new, a sandboxed challenge / solution separation with kernel-level statement identity, an axiom whitelist and a second kernel is; three banks (COMPARATOR-LOCKED ORACLE, VERIFIED ENDOGENOUS LEMMA MEMORY, REPRESENTATION-BRIDGE TRANSPORT); one prose defect in LEAN-FULL-V2 amended; nothing armed (2026-09-08, Mac, desk)
+
+External audit (files read 2026-09-08, not the prompt): formalization.yaml
+v0.4 with sorry_count 0, four main declarations, permitted axioms
+propext / Classical.choice / Quot.sound, comparator_config per
+result, automation "agent: GPT-6 Astra / Codex", review
+"self-assessed", Lean 4.34.0-rc2; ComparatorChallenges/NavierStokes.lean
+copied from Google DeepMind's Formal Conjectures at commit 8bf45ed7
+with the upstream definitions and the intentional sorry placeholders
+retained, "neither the proof root nor the submission imports this
+reference"; NavierStokes/ComparatorSolution.lean imports only the
+project's ComparatorR3Theorem and ComparatorTheorem modules, its
+adapters import ComparatorDefinitions and never the challenge;
+NavierStokes/ComparatorBridge.lean translates divergence, gradient,
+Laplacian and time derivative, swaps the (time, space) coordinate
+order and normalizes any positive viscosity to one;
+ComparatorChallenges/NavierStokes.json enables nanoda and names the
+two theorems and the three axioms. Comparator (leanprover/comparator,
+Lean FRO with the AIMO team): sandboxed lake builds under landrun,
+lean4export of both environments, identity of every declaration
+referenced by the named theorem statements, axiom whitelist, kernel
+replay, optional nanoda; limits: identical re-declaration required,
+universe and safety levels must match, definition holes need human
+review, landrun is in the trust base. The repository publishes no
+search logs and no lemma library.
+
+House inventory (every claim file:line verified): the tier is
+PRODUCER (axiom emitter) -> independent house printer
+(scratch/lean_check.py rederive) -> mechanical statement diff
+(ac_equal, string / sympy, tactic copied so that component is
+tautological) -> Lean kernel (lake env lean, 50-row chunks, anonymous
+`example` declarations, import Mathlib.Tactic, PASS iff rc 0,
+failures counted per error line). Booked: L18619 (443 / 443), L20365
+(703 / 1000) + L20492, L22407 (989 / 1000), L22493 (21,614 / 21,914 =
+98.63%, taxonomy 222 + 78 closed, statement diff 15,751 / 21,914),
+L23777. ABSENT: permitted-axiom audit, second kernel, sandboxed
+challenge / solution separation, theorem names, frozen and hashed
+import closure (the LEAN-FULL-V2 mathlib revision is unrecorded), 
+kernel-level statement identity, kernel timeout. So the new residue is
+exactly the Comparator stack, framed as VERIFIER INVARIANCE (same
+claim, different verification stack, same or different verdict), the
+twin of WRITER INVARIANCE.
+
+Corrections made this commit: AMENDMENT LEAN-FULL-V2-TAXONOMY-PROSE
+(the "173 e / 127 m" split belongs to all 300 failures; re-derived
+from the labelled receipt: atom-split 222, field_simp 78, e 173, m 127
+over 300); docs/AXIOM-SURFACE.md's "no house consumer yet" line for
+the Lean emitter replaced with the bound-and-consumed pointer.
+Recorded, not corrected (they belong to a future rung's fences):
+failures counted per error line rather than per row; no subprocess
+timeout; the unexplained 16x kernel-wall spread booked at L18651.
+
+Ranking against the queue: (1) WRITER-TRAJECTORY-CENSUS-0 (live)
+and (2) the DFA foreign-writer rung are not displaced.
+COMPARATOR-LOCKED-ORACLE-0 is a cheap PARALLEL verifier-hardening rung
+(100-certificate smoke, 1,000-certificate qualification, full 21,914
+only if a discrepancy class appears) that needs three tools installed
+(landrun, lean4export, nanoda) and a Comparator build matched to the
+leancheck toolchain v4.33.0-rc2 before it can be priced; it can run
+while the writer program waits on mps. VERIFIED ENDOGENOUS LEMMA
+MEMORY ranks below DFA and at or above the GRPO cross-fostering
+vehicle (3): it needs the same logging law but every admitted datum
+carries a kernel certificate, and the cheapest house vehicle is the
+axiom calculus search with the Lean-eligible ring-identity subset as
+the verifier (a persistent, provenance-logged lemma store plus an
+admission switch are the missing instrument). REPRESENTATION-BRIDGE
+TRANSPORT is partly measured already (AX-ABI-COUNTERBOOK-0 L46773:
+laws transport, state spellings do not) and ranks last; the open
+residue is a state bridge, instrument work. The Hamiltonian writer
+(4) stays below all of these. Nothing armed, preregistered or
+launched.
