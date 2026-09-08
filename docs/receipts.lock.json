@@ -57,6 +57,10 @@
    "source": "results",
    "tracked": true
   },
+  "logs/atomtraj1/dryrun_stock.json": {
+   "exists": false,
+   "source": "results"
+  },
   "logs/atomtraj1/gates.jsonl": {
    "bytes": 11127,
    "exists": true,

@@ -67241,3 +67241,32 @@ calibration data and not a reason to change anything here.
 Cost: four births at about 2,855 s each (3.2 h), 24 gates at about
 66 s (26 min), census and verifier under 10 min; about 3.9 h on mps.
 Disk: 4 x 1.3 GB new snapshots in the worktree.
+
+## AMENDMENT ATOM-DIET-TRAJECTORY-1-REPAIR-0-FOLDS (target: AMENDMENT ATOM-DIET-TRAJECTORY-1-REPAIR-0 L67161): prereg-auditor folds on the repair protocol, registered before any repair birth trains; no scientific change (2026-09-07, Mac)
+
+1. Dry-run receipts now exist in the repair namespace: worktree
+   logs/atomtraj1/dryrun_stock.json and dryrun_atoms.json, written by
+   DRYRUN=1 of the ec6de1ae driver at seed 5, reproducing the six
+   pinned stream digests, dropped 0 / 0 / 0 and 187 / 187 / 187, atom
+   rows 0 and [5820, 5706, 5850]. They are copied to
+   logs/atomtraj1_repair/ at booking.
+2. The phrase "the descriptive values above are the registered
+   comparison target for that re-run" in L66991 is WITHDRAWN. The
+   first run's six-birth values are descriptive exhaust of an invalid
+   run; any comparison between them and the repaired set is
+   disclosure only and enters no bar, prior or reading.
+3. The repair driver re-asserts worktree HEAD = ec6de1ae and a clean
+   tree before every process that writes a receipt (each birth, the
+   gate runner, the census, the verifier), not only once; it also
+   byte-compares the two retained rows against the first two rows of
+   the first-run receipt before starting; mkdir of the receipt and
+   checkpoint directories restored.
+4. Seed-5 re-gate rule: the repaired gate rows are the only gate
+   evidence for every cell including seed 5; any divergence from the
+   first run's published seed-5 totals (65 / 71) is disclosed, never
+   reconciled or averaged.
+5. Qualification is inherited: logs/atomtraj1/qual.json (QUALIFIED at
+   ec6de1ae on main) is copied to logs/atomtraj1_repair/ at booking
+   with the note that the repair runs the byte-identical ec6de1ae
+   sources.
+Nothing else in REPAIR-0 changes.
