@@ -4121,8 +4121,12 @@
    "source": "prereg"
   },
   "logs/writertraj0/smoke.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 11144,
+   "exists": true,
+   "local_only": true,
+   "sha256": "0ace8929b8d8557b8baa86c52c365220615e6a2b0afe3e83aeca76dfd6a52551",
+   "source": "results",
+   "tracked": false
   },
   "logs/writertraj0/verify_receipt.json": {
    "exists": false,
