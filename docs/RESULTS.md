@@ -67439,3 +67439,136 @@ are separated by 6.9 h of wall time on the same machine (atoms_s5
 ended 20:27:17 UTC, stock_s6 started 03:21:21 UTC), a fence the
 sealed design did not anticipate and which the repair registration
 accepted. Nothing is armed.
+
+## OBSERVATION COUPLED-LEARNING-AND-HAMILTONIAN-WRITER-ASSESSMENT-0: ASSESSMENT AND BANKING ONLY — closed-loop data is a function of the current weights in five house loops and has never been cross-replayed; the weights-as-Hamiltonian / imaginary-time writer has never been run and the THEORY row "Training relaxes to a Boltzmann distribution" carries no measured anchor (flagged, not extended); no SCF-like neural writer exists; a k = 2 reduced-space ground-state rung is priced at about 1 h plus 20 gates and ranks below the writer desk and the DFA rung; nothing armed (2026-09-08, Mac, desk)
+
+Question (Artin): can DATA be endogenous to the current weights in a
+closed loop, W_t -> generated experience -> D_{t+1} -> W_{t+1}, and
+could learning be posed as a self-consistent or ground-state problem
+over weights instead of a gradient writer. Two banks land in
+RIFF-LEDGER this commit (COUPLED LEARNING DYNAMICS / ENDOGENOUS DATA
+with the cross-fostering 2 x 2; A WEIGHT-SPACE HAMILTONIAN WRITER,
+HONESTLY PRICED, with the SCF audit), and a CORRECTION row is inserted
+under the Schrodinger dictionary bank (RIFF L75, now L76). This entry
+records the repository audit, every claim verified against the cited
+line or file on 2026-09-08. No experiment ran; the closed
+ATOM-DIET-TRAJECTORY-1 program is not reopened.
+
+1. Is "data is a function of weights" true for each house loop?
+YES (D_{t+1} = G(W_t, ...) in the code): the GRPO mining loop
+(scripts/step_grpo_micro.py: rollouts from the live model, chain root
+advanced by the model's own accepted step, seeds arithmetic in
+SEED_BASE 66,000,000 and cycle); LLMUE / metabolic v5
+(scratch/metabolic_v5.py: live-model rollouts, row weight 1 minus the
+model's own verification rate, own rejects as negatives; loop bound by
+wall clock, `while time.time() - t0 < MINUTES * 60`); practice mining
+and the duo miner (two models inside G); CURRICULUM-1 arm B
+(scratch/birth19m_curric.py: admission when the model's own loss
+plateau ratio drops below 0.02, admit_log persisted in the receipt);
+expert-iteration rounds (docs/LOOP-LOG.md). PARTIAL: the exchange
+(worklist endogenous, trained rows exogenous, 23 rows tracked at
+data/stuck_chains_p1.jsonl); the metallicity diets (endogenous origin,
+frozen with a per-file sha manifest). NO, the control class:
+stock_epoch_stream(n_enc, ep) and every birth19m arm including
+ATOM-DIET-TRAJECTORY-1 (random.Random(ep), no model input, tuple
+identity pinned by assert_noop). Cross-replay of an A-generated
+stream into a B writer or init: never run; RESULTS L28256 already
+names the missing "data-replay arm"; the only "open v closed loop"
+phrase in the ledger (L18213) is inference-time expert residency.
+Provenance state of the endogenous streams: untracked and unsha'd
+except data/stuck_chains_p1.jsonl and data/metallicity/manifest.json;
+the GRPO corpus (98,528 rows) is the SFT by-product, not the trained
+groups; append-mode files carry no cycle, seed or checkpoint field.
+
+2. Has llmopt implemented the weights-as-Hamiltonian / imaginary-time
+writer? NO. llmopt.quantum is a TFIM model-Hamiltonian variational
+engine on a 2^n statevector (RESULTS L1318 rung 1: n = 10, HVA 0.69%
+at criticality with six parameters; L1340 rung 2), consumed only by
+three benches and one test, never by a training script. Zero hits in
+RESULTS, FINDINGS, specs, handoffs and code for SGLD, Langevin,
+stochastic quantization, imaginary time, diffusion Monte Carlo,
+Fokker-Planck or a weight posterior; no entry measures a stationary
+weight distribution, a temperature dependence of weights or an energy
+over weights; the only temperature knob turned on a real objective is
+the search-side Metropolis population (L419: greedy 112, T0 = 1: 108,
+T0 = 5: 103, T0 = 25: 97, monotone null). THEORY row 11 ("Training
+relaxes to a Boltzmann distribution over the oracle-sculpted loss",
+status "direct application") is the only row in its neighbourhood
+with no [ORIGINAL: ...] measured anchor, and the bank that seeded it
+(RIFF L75) borrows "the law we measured four ways" from the GAUGE law
+(L12), whose four legs measure permutation degeneracy only. FLAG, not
+an edit: the row's status should read "frame / unmeasured" or carry
+an explicit measured anchor; the gauge row, not row 11, owns the
+four-to-five-way measurement; the momentum-space bank (RIFF
+2026-08-17) calls training "dissipative, NOT Hamiltonian", and the two
+banks did not name each other until today. The Artin question
+therefore is NOT already answered: the row is a mathematical
+reframing (SGLD stationary density = ground state of a
+Schrodinger-form operator after psi_0 = sqrt(p); gradient descent =
+the zero-temperature Langevin drift, not imaginary-time evolution),
+and the neural-weight application was never run.
+
+3. Was an SCF-like neural writer ever implemented? NO. Zero hits for
+Hartree, Fock, SCF, self-consistent, Fisher, Gauss-Newton, natural
+gradient, K-FAC in RESULTS, THEORY, RIFF and BOARD; the Hessian
+appears only as GPTQ's inverse-Hessian error compensation at
+inference (L2227); Muon's orthogonalized update is the only
+preconditioner variation (L6052 to L8311, a loss, with the
+loss-gate-dissociation reading retracted at L6414). An operator built
+from the Hessian, Fisher, Gauss-Newton or a data covariance and
+solved once per step is Newton / natural gradient / preconditioning,
+not "SCF training"; the two genuinely distinct candidates are the
+data-side self-consistent field (the fixed point of D = G(W), W =
+argmin L(W; D), which the house runs without asking whether it
+converges) and a layer-wise closed-form solve writer iterated to
+self-consistency (banked, ranked below DFA).
+
+4. Cheapest nontrivial reduced-space Hamiltonian rung: k = 2 exact
+eigensolve in the plane spanned by the phase_s2 and backsched_s2
+learned-delta vectors (same W_0, both on disk; RESULTS L28274,
+L28272), V(z) = L(W_0 + z_1 V_1 + z_2 V_2; D) on a registered 256-row
+batch over a 41 x 41 grid (1,681 evaluations, about 14 min on mps),
+H_z with registered epsilon and m, ground state by dense
+diagonalization (milliseconds), one gate of the ground-state weight
+(67 s), then the 19-gate necessity desk (21 min) and the block-swap
+desk against the two parents. STOP: the ground-state weight gates
+below 57 / 120 (the parents' 62 to 64 band minus one resolution
+unit), which licenses no mechanism comparison. Mandatory control: the
+same solve in a random orthogonal plane through W_0. k = 16 over the
+sixteen block deltas by diffusion Monte Carlo (about 51,200 loss
+evaluations, about 1 h on a 32-row batch) with an SGLD baseline is the
+second rung. A full psi over 18,911,616 coordinates is not a
+practical eigenproblem and is not proposed.
+
+5. Cheapest cross-fostered endogenous-data rung: CURRICULUM-1 arm B
+replayed from its own admit_log is the only house stream already
+exactly recoverable (string-seeded shuffles, fixed diet, pinned init;
+it lacks an ADMIT_SCHEDULE replay switch, writes its receipt only at
+the end, and carries no diet sha), one 19M birth (2,850 s) per arm,
+four arms = 3.2 h plus four gates; but that stream is about 83% stock
+(L28729), so it is an instrument demonstration with almost no
+endogenous signal. The scientifically loaded vehicle is the GRPO
+loop, which first needs the logging law (persist the trained groups
+per cycle with seed and source-checkpoint digest; step-count bound,
+not wall clock; the verified-and-distinct guard as one shared symbol
+instead of three inline copies); that is instrument work, not a run.
+
+6. Ranking against the queue: WRITER-INVARIANCE-DESK-0 (the
+zero-training schedule-writer necessity desk, RESULTS L66884) stays
+first; the DFA foreign-writer rung stays second; the endogenous-data
+LOGGING LAW is cheap instrument work that can precede either without
+displacing them; the cross-fostering 2 x 2 on the GRPO loop ranks
+after the logging law and after the writer desk; the k = 2
+reduced-space Hamiltonian rung ranks below the DFA rung (it is a
+demonstration whose basis contains its own parents, informative only
+through the random-basis control and the necessity desk). Neither
+new idea displaces anything.
+
+Maturity: no THEORY law is added; the existing row 11 is flagged as
+overstated rather than extended; both ideas are banked as
+mathematical reframings with priced residues. Fences: this is a
+reading of the code and the ledger, no measurement; the loop census
+is exhaustive over the scripts named, not over every scratch file;
+all costs are anchors from ATOM-DIET-TRAJECTORY-1 (2,850 s per birth,
+67 s per gate) and the SVD bench, not measurements of the proposed
+rungs. Nothing armed, preregistered or launched.
