@@ -63,7 +63,8 @@ def main():
             continue
         if b.get("final") is None:
             row = {"kind": "gate", "phase": "qual", "cell": b["cell"], "mode": b["mode"], "k_bp": b["k_bp"], "s": b["s"], "peak_lr": b["peak_lr"],
-                   "trained": False, "nonfinite_step": b.get("nonfinite_step"), "total": None, "code_commit": commit,
+                   "trained": False, "nonfinite_step": b.get("nonfinite_step"), "total": None, "outdir": b["outdir"], "code_commit": commit,
+                   "tree_dirty": tree_dirty, "qual_path": str(QUAL), "paths_overridden": paths_overridden,
                    "gated_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")}
         else:
             p = Path(b["outdir"]) / "final.pt"
@@ -90,6 +91,7 @@ def main():
     for k in KS:
         hyb = {c: g for c, g in gates.items() if g["mode"] == "hybrid" and g["k_bp"] == k}
         zero = [g for g in gates.values() if g["mode"] == "zero" and g["k_bp"] == k]
+        zero_failed = [r for r in rows if r.get("kind") == "arm_failed" and r.get("mode") == "zero" and r.get("k_bp") == k]
         if not hyb:
             continue
         cells = {(g["s"], g["peak_lr"]): g for g in hyb.values()}
@@ -99,6 +101,7 @@ def main():
                          "complete": all(c in cells for c in CELLS), "stable": [list(c) for c in stable], "floor": [list(c) for c in floor],
                          "zero_credit": [{"gate": z["total"], "solves": z.get("solves"), "cell": z["cell"]} for z in zero],
                          "zero_clears_floor": any(z["total"] is not None and z["total"] >= FLOOR for z in zero),
+                         "zero_control_failed": [{"rc": z["rc"], "utc": z["utc"]} for z in zero_failed],
                          "hybrid_clears_floor": bool(floor)}
     selected = None
     for k in KS:
