@@ -290,7 +290,7 @@ def main():
            "smoke": SMOKE, "emit": EMIT, "device": dev, "tag": TAG,
            "started_utc": started, "ended_utc": now(), "wall_s": round(wall, 1),
            "peak_rss_bytes": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
-           "torch": torch.__version__, "vocab_len": len(tok.vocab),
+           "torch": torch.__version__, "vocab_len": len(tok.vocab), "param_dtype": str(next(model.parameters()).dtype),
            "enc_stock": len(enc_stock), "enc_train": len(enc), "stream_sha256": digests,
            "schedule": schedule, "outdir": str(OUTDIR), "init_state_digest": init_digest,
            "feedback": feedback, "snapshots": snapshots}

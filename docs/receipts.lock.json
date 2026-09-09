@@ -962,7 +962,8 @@
    "source": "prereg"
   },
   "logs/liverun/writerdfa1-qual-c1.jsonl": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/liverun/writerdfa1-qual-c234.jsonl": {
@@ -4188,7 +4189,8 @@
    "tracked": true
   },
   "logs/writerdfa1/qual.jsonl": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/writerdfa1/qual_selection.json": {
