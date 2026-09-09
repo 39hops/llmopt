@@ -74,3 +74,33 @@ def test_frontier_closed_only_when_all_three_complete(tmp_path, monkeypatch):
     rc, sel = _run(tmp_path, monkeypatch, _rows_for(1, 0, 0, 0) + _rows_for(2, 5, 1, 0) + _rows_for(4, 23, 0, 50))
     d = json.loads(sel.read_text())
     assert d["selected"] is None and d["frontier_closed"] is True
+
+
+def test_larger_k_cannot_select_while_smaller_incomplete(tmp_path, monkeypatch):
+    rows = [_birth("h1a", "hybrid", 1, 1.0, 3e-4), _gate("h1a", "hybrid", 1, 1.0, 3e-4, 5)] + _rows_for(2, 40, 30, 0)
+    rc, sel = _run(tmp_path, monkeypatch, rows)
+    assert rc == 3 and not sel.exists()
+
+
+def test_exact_floor_and_unstable_cell(tmp_path, monkeypatch):
+    rows = _rows_for(1, 24, 0, 0)
+    rows[3] = {**rows[3], "trained": False, "total": None, "solves": None}   # second cell UNSTABLE (non-finite)
+    rc, sel = _run(tmp_path, monkeypatch, rows)
+    d = json.loads(sel.read_text())
+    assert d["selected"]["gate"] == 24 and d["per_k"]["1"]["complete"] is True
+
+
+def test_refuses_existing_selection_and_gate_only_writes_nothing(tmp_path, monkeypatch):
+    rows = _rows_for(1, 30, 0, 0)
+    rc, sel = _run(tmp_path, monkeypatch, rows)
+    assert sel.exists()
+    rc2, _ = _run(tmp_path, monkeypatch, rows)
+    assert isinstance(rc2, str) and "REFUSING" in rc2
+    sel.unlink()
+    monkeypatch.setenv("GATE_ONLY", "1")
+    q = tmp_path / "qual.jsonl"
+    q.write_text("".join(json.dumps(r) + "\n" for r in rows))
+    monkeypatch.setenv("CAF_QUAL_PATH", str(q)); monkeypatch.setenv("CAF_SEL_PATH", str(sel))
+    g = runpy.run_path(str(SCRIPT), run_name="not_main")
+    g["main"]()
+    assert not sel.exists()

@@ -45,13 +45,19 @@ GATE_ONLY = os.environ.get("GATE_ONLY") == "1"
 def main():
     if SEL.exists() and not GATE_ONLY:
         raise SystemExit(f"REFUSING: {SEL} exists")
+    if not QUAL.exists():
+        raise SystemExit(f"NOT-RUN: {QUAL} absent (no qualification birth yet)")
     rows = [json.loads(l) for l in QUAL.open()]
     births = [b for b in rows if b.get("kind") == "birth" and b["phase"] == "qual"]
-    gated = {r["cell"] for r in rows if r.get("kind") == "gate"}
+    gated = {r["cell"] for r in rows if r.get("kind") == "gate" and r.get("phase") == "qual"}
     commit = subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip()
+    tree_dirty = bool(subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True).stdout.strip())
+    paths_overridden = bool(os.environ.get("CAF_QUAL_PATH") or os.environ.get("CAF_SEL_PATH"))
+    if tree_dirty and not paths_overridden:
+        raise SystemExit("REFUSING: registered gating on a dirty tree")
     tok = TM.MathTokenizer()
     dev = "mps" if torch.backends.mps.is_available() else "cpu"
-    gates = {r["cell"]: r for r in rows if r.get("kind") == "gate"}
+    gates = {r["cell"]: r for r in rows if r.get("kind") == "gate" and r.get("phase") == "qual"}
     for b in births:
         if b["cell"] in gated:
             continue
@@ -70,7 +76,8 @@ def main():
             solves, valid = gate_eval(m, tok, dev)
             row = {"kind": "gate", "phase": "qual", "cell": b["cell"], "mode": b["mode"], "k_bp": b["k_bp"], "s": b["s"], "peak_lr": b["peak_lr"], "trained": True,
                    "solves": {str(k): int(v) for k, v in solves.items()}, "total": int(sum(solves.values())), "valid_pct": round(float(valid), 2),
-                   "device": dev, "wall_s": round(time.time() - t0, 1), "state_digest": b["final"]["state_digest"], "code_commit": commit,
+                   "device": dev, "wall_s": round(time.time() - t0, 1), "state_digest": b["final"]["state_digest"], "final_file_sha256": b["final"]["file_sha256"],
+                   "outdir": b["outdir"], "code_commit": commit, "tree_dirty": tree_dirty, "qual_path": str(QUAL), "paths_overridden": paths_overridden,
                    "gated_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")}
             del m
         with QUAL.open("a") as f:
@@ -97,6 +104,11 @@ def main():
     for k in KS:
         pk = per_k.get(str(k))
         if pk and pk["floor"]:
+            smaller = [kk for kk in KS if kk < k]
+            if not all(per_k.get(str(kk), {}).get("complete") for kk in smaller):
+                # a larger k cleared while a smaller k is incomplete: the ladder order was violated; no selection
+                print(f"[caf-qual] INCOMPLETE: k={k} clears the floor but a smaller k is not complete ({[kk for kk in smaller if not per_k.get(str(kk), {}).get('complete')]}); qual_selection.json NOT written", flush=True)
+                sys.exit(3)
             cells = {(g["s"], g["peak_lr"]): g for g in gates.values() if g["mode"] == "hybrid" and g["k_bp"] == k}
             best = max(cells[tuple(c)]["total"] for c in pk["floor"])
             tied = [tuple(c) for c in pk["floor"] if cells[tuple(c)]["total"] == best]
@@ -109,7 +121,8 @@ def main():
         # incomplete frontier: no candidate yet and not every k complete -> no selection artifact (Artin fold 2026-09-09)
         print(f"[caf-qual] INCOMPLETE: no hybrid cell at or above {FLOOR} yet and ks complete = {complete_ks}; qual_selection.json NOT written", flush=True)
         sys.exit(3)
-    rec = {"prereg": "CREDIT-ANCHOR-FRONTIER-1", "kind": "selection", "commit": commit, "device": dev, "floor": FLOOR, "per_k": per_k,
+    rec = {"prereg": "CREDIT-ANCHOR-FRONTIER-1", "kind": "selection", "commit": commit, "tree_dirty": tree_dirty, "device": dev, "floor": FLOOR, "per_k": per_k,
+           "qual_path": str(QUAL), "sel_path": str(SEL), "paths_overridden": paths_overridden,
            "selected": selected, "frontier_closed": frontier_closed, "ks_complete": complete_ks,
            "law": "smallest k with a hybrid cell >= 24; best cell = highest gate, ties lr 3e-4 first; zero-credit controls descriptive only",
            "utc": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")}

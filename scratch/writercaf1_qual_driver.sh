@@ -32,9 +32,11 @@ for cell in 1:3e-4 1:1e-4; do
   [ "$rc" -eq 0 ] || { mark_done logs/writercaf1_qual_k${K}.DONE "$rc"; exit "$rc"; }
 done
 echo "=== k=$K zero-credit control LR=3e-4 $(date -u +%Y-%m-%dT%H:%M:%SZ) ==="
+zrc=0
 QUAL=1 MODE=zero K_BP=$K SEED=23 LR=3e-4 .venv/bin/python scratch/birth19m_caf.py \
-  2>&1 | tee "logs/writercaf1/train_qual_k${K}_zero.log" || rc=$?
-[ "$rc" -eq 0 ] || { mark_done logs/writercaf1_qual_k${K}.DONE "$rc"; exit "$rc"; }
+  2>&1 | tee "logs/writercaf1/train_qual_k${K}_zero.log" || zrc=$?
+# the zero-credit control is descriptive: its failure is recorded and never blocks the hybrid gates (F3)
+[ "$zrc" -eq 0 ] || echo "driver: zero-credit control k=$K failed rc=$zrc (recorded; hybrid gates proceed)" | tee -a "logs/writercaf1/train_qual_k${K}_zero.log"
 echo "=== k=$K gates $(date -u +%Y-%m-%dT%H:%M:%SZ) ==="
 GATE_ONLY=1 .venv/bin/python scratch/caf_qualgate.py 2>&1 | tee "logs/writercaf1/qualgate_k${K}.log" || rc=$?
 mark_done logs/writercaf1_qual_k${K}.DONE "$rc"
