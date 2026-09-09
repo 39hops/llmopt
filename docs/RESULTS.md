@@ -69366,3 +69366,42 @@ identities green, leakage 18 / 18, smokes 4 / 4, clean-tree
 prereg-auditor next; a separate Artin GO is required for any seed-23
 birth. Receipts force-added and locked: logs/writercaf1/leakage.json,
 logs/writercaf1/smoke.jsonl, logs/writerdfa1/prune_inventory.json.
+
+## AMENDMENT CREDIT-ANCHOR-FRONTIER-1-INSTRUMENT-0-AUDIT (target: OBSERVATION CREDIT-ANCHOR-FRONTIER-1-INSTRUMENT-0 L69303): clean-tree prereg-auditor folds before any qualification GO; the leakage check count is 17 / 17, not 18 / 18; receipt provenance disclosed and the receipt regenerated from the committed script; try/finally restore, per-k markers, driver-side first-k refusal; nothing scientific changes; no birth (2026-09-09 local, Mac)
+
+B1. The instrument entry books "18 / 18 leakage checks"; the receipt
+holds 17 checks (2 objective identities + 4 per k x 3 k + 2 driver
+identities + 1 freeze law = 17), all passing. Read 17 / 17.
+S2 / S3. The first frozen receipt was produced at 15af52ea on a tree
+whose instrument files were untracked (mtimes precede the run, content
+committed unchanged in 132abd3b), by a version of the smoke script
+that predates the receipt-restore fold. Fold: the smoke was re-run
+from the committed script at 15305c5d after the auditor folds (the
+only dirty file at run time was the hook-regenerated
+docs/receipts.lock.json), receipt logs/writercaf1/leakage.json
+(17 / 17, all pass, code_commit 15305c5d); the earlier receipts are kept as
+logs/writercaf1/leakage_run1_surrogate_check_artifact.json (run 1, six
+false failures from the total - loss construction) and
+logs/writercaf1/leakage_run2_pre_fold.json (run 2, 17 / 17, pre-fold
+script). S4. The sealed-driver fixture runs are wrapped in try /
+finally so the locked logs/writerdfa1/smoke.jsonl is restored
+unconditionally. S5. One completion marker per k
+(logs/writercaf1_qual_k{K}.DONE) and one for the selection. S6. The
+qualification driver refuses a larger k once a smaller k has a hybrid
+cell at or above the floor (the sealed first-k STOP is now mechanical,
+not caller discipline). S7. MODE=zero realises the DFA -> BP cut by
+freeze_lower (requires_grad False on emb and blocks 0..7-k; no graph
+exists below the segment) rather than by a detach; the segment's
+gradients are identical either way (they depend on input values, not
+on graph attachment; the same fact booked as
+bp_segment_block_grads_v_stock 0.0); a code comment states this. N9 /
+N10 / N13. The mirror registers logs/writercaf1/births.jsonl and the
+run-1 artifact and drops the stale "optional" control key; the
+instrument entry's receipt list also covers
+logs/writercaf1/leakage_run1_surrogate_check_artifact.json. N11. The
+smoke sequence prints a real rc. N12. logs/writercaf1/smoke.jsonl also
+holds the one-step CPU fixture rows of the leakage runs (tags
+_fixture_*), path-isolated. S8 (not a QUAL blocker): no discovery or
+post-discovery driver exists yet; both are required before any
+discovery GO. Everything else in L69303 stands; no seed-23 birth and no
+discovery birth are authorized by this entry.

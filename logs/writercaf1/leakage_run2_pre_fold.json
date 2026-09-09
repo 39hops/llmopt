@@ -92,10 +92,9 @@
   }
  },
  "probe_token_digest": "18b2229060ede9cc842181e96390f7f19e15e93d411644708768af04b82f4588",
- "sealed_receipt_restored": "logs/writerdfa1/smoke.jsonl restored to HEAD after the sealed-driver fixture runs; fixture dirs removed",
  "all_pass": true,
  "torch": "2.12.1",
- "code_commit": "15305c5d",
+ "code_commit": "15af52ea",
  "tree_dirty": true,
- "run_utc": "2026-09-09T13:15:06+00:00"
+ "run_utc": "2026-09-09T12:48:03+00:00"
 }

@@ -4172,10 +4172,14 @@
    "source": "results",
    "tracked": true
   },
+  "logs/writercaf1/births.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/writercaf1/leakage.json": {
-   "bytes": 2443,
+   "bytes": 2578,
    "exists": true,
-   "sha256": "40a160ccfb11be3bcfa291af9b516326360b46f2b9a7c53fd84a31a7f4d1c81a",
+   "sha256": "4fb701dd3b36b2a86ae3de3ed9caf6b5076ddb7dfc50a1b6f10504ff8c68d8d2",
    "source": "results",
    "tracked": true
   },
@@ -4183,6 +4187,13 @@
    "bytes": 3790,
    "exists": true,
    "sha256": "a66f92cdecd6b3de9c40a2d89390fb40e736c217fc83895b5df74323fb1c9874",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/writercaf1/leakage_run2_pre_fold.json": {
+   "bytes": 2443,
+   "exists": true,
+   "sha256": "40a160ccfb11be3bcfa291af9b516326360b46f2b9a7c53fd84a31a7f4d1c81a",
    "source": "results",
    "tracked": true
   },
@@ -4195,9 +4206,9 @@
    "source": "prereg"
   },
   "logs/writercaf1/smoke.jsonl": {
-   "bytes": 21424,
+   "bytes": 27543,
    "exists": true,
-   "sha256": "34515b5e5a0a1c507a0fabdde07f5f937355cbe574ff3d675564530c0f492507",
+   "sha256": "e7ba4586f6662bed3b3c7a05e5254f0509d2d569ecf92945c070b39feb474f02",
    "source": "results",
    "tracked": true
   },
