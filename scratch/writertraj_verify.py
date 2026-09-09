@@ -29,7 +29,8 @@ sys.path.insert(0, "scripts")
 import torch  # noqa: E402
 
 SMOKE = os.environ.get("SMOKE") == "1"
-OUT = Path("logs/writertraj0")
+DEPEND_SET = os.environ.get("DEPEND_SET", "main")
+OUT = Path("logs/writertraj0" if DEPEND_SET == "main" else f"logs/writertraj0_{DEPEND_SET}")
 T = 15_420
 REPAIR = Path("/Users/artin/code/llmopt-repair")
 SOURCES = ["scratch/writertraj_census.py", "scratch/writertraj_depend.py", "scratch/atomtraj_pins.py"]
@@ -110,7 +111,66 @@ def median(xs):
     return xs[n // 2] if n % 2 else (xs[n // 2 - 1] + xs[n // 2]) / 2
 
 
+def main_null2():
+    """Null-strengthening verification (PRE-REG WRITER-DEPENDENCE-NULL-2): recompute
+    every dependence value and swap loss from the gate rows, reconstruct one
+    revert and one swap by digest, check dicts and commit identity."""
+    chk(not (OUT / "verify_receipt.json").exists(), "REFUSE OVERWRITE")
+    if D:
+        raise SystemExit(D[-1])
+    depend = json.load(open(OUT / "depend.json")); gates = [json.loads(l) for l in open(OUT / "gates.jsonl")]
+    KEYS, SETS = keys_law()
+    commit = depend["commit"]
+    chk(not depend.get("tree_dirty", False) and not os.environ.get("VOCAB_EXTRA"), "clean tree / VOCAB_EXTRA")
+    src = {}
+    for p in SOURCES:
+        r = subprocess.run(["git", "show", f"{commit}:{p}"], capture_output=True)
+        chk(r.returncode == 0, f"source {p} absent at {commit}"); src[p] = hashlib.sha256(r.stdout).hexdigest()
+    g = {r["label"]: r for r in gates}
+    chk(len(gates) == 53 and len(g) == 53, "53 unique gate rows")
+    for r in gates:
+        chk(sum(r["solves"].values()) == r["total"] and sorted(r["solves"]) == ["3", "4", "5", "6", "7"] and all(0 <= v <= 24 for v in r["solves"].values()), f"gate dict {r['label']}")
+        chk(r["code_commit"] == commit and not r["smoke"], f"gate provenance {r['label']}")
+    a_, b_ = depend["null_strengthening"]["pair"]
+    full = {n: g[f"{n}/full"]["total"] for n in (a_, b_)}
+    chk(full == depend["full"], "full gates")
+    revert_groups = [k for k in SETS if k != "GLOBAL"]
+    dep = {n: {grp: full[n] - g[f"{n}/revert/{grp}"]["total"] for grp in revert_groups} for n in full}
+    for n in full:
+        chk(dep[n] == depend["dependence"][n], f"dependence {n}")
+    groups9 = [f"BLOCK{l}" for l in range(8)] + ["OUTSIDE"]; groups8 = [k for k in SETS if k.startswith("CLASS_")]
+    def dist(x, y, gs):
+        return sum((dep[x][k] - dep[y][k]) ** 2 for k in gs) ** 0.5
+    ns = depend["null_strengthening"]
+    chk(close(dist(a_, b_, groups9), ns["profile_dist_9group"]) and close(dist(a_, b_, groups8), ns["profile_dist_8class"]), "profile distances")
+    swaps = {k: g[k]["total"] - full[k.split("<-")[0]] for k in depend["swap_loss"]}
+    chk(swaps == depend["swap_loss"] and len(swaps) == 16, "swap losses")
+    chk(min(swaps.values()) == ns["swap_min"] and close(statistics.median(list(swaps.values())), ns["swap_median"]), "swap min / median")
+    paths = {a_: ("checkpoints/atomtraj1/stock_s7/step_15420.pt", "checkpoints/atomtraj1/stock_s7/step_00000.pt"),
+             b_: (str(REPAIR / "checkpoints/atomtraj1/stock_s7/step_15420.pt"), str(REPAIR / "checkpoints/atomtraj1/stock_s7/step_00000.pt"))}
+    sds = {n: load(p_) for n, (p_, _) in paths.items()}; w0s = {n: load(w) for n, (_, w) in paths.items()}
+    chk(digest(w0s[a_]) == digest(w0s[b_]) == depend["specimens"][a_]["w0_state_digest"], "step_0 digests equal")
+    for n in sds:
+        chk(digest(sds[n]) == g[f"{n}/full"]["state_digest"], f"{n} full digest")
+        rv = {k: (w0s[n][k].clone() if k in SETS["BLOCK3"] else v.clone()) for k, v in sds[n].items()}
+        chk(digest(rv) == g[f"{n}/revert/BLOCK3"]["state_digest"], f"{n} revert BLOCK3 reconstruction")
+    for rec_n, don_n in ((a_, b_), (b_, a_)):
+        hy = {k: v.clone() for k, v in sds[rec_n].items()}
+        for k in SETS["BLOCK5"]:
+            hy[k] = w0s[rec_n][k] + (sds[don_n][k] - w0s[don_n][k])
+        chk(digest(hy) == g[f"{rec_n}<-{don_n}/BLOCK5"]["state_digest"], f"{rec_n}<-{don_n} swap BLOCK5 reconstruction")
+    rec = {"kind": "verify", "prereg": "WRITER-DEPENDENCE-NULL-2", "verdict": "VERIFIED" if not D else "DISCREPANCIES", "n_discrepancies": len(D),
+           "discrepancies": D[:60], "depend_commit": commit, "source_sha256_at_commit": src, "null_strengthening": ns,
+           "commit": subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip(),
+           "status_porcelain": subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True).stdout,
+           "verifier_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
+    (OUT / "verify_receipt.json").write_text(json.dumps(rec, indent=1))
+    print(json.dumps({k: rec[k] for k in ("verdict", "n_discrepancies", "discrepancies")}, indent=1))
+
+
 def main():
+    if DEPEND_SET != "main":
+        return main_null2()
     if not SMOKE:
         chk(not (OUT / "verify_receipt.json").exists(), "REFUSE OVERWRITE")
         if D:

@@ -1,0 +1,1 @@
+{"event": "stale_recovered", "run_id": "stale-smoke", "pid": 999999, "reason": "interlock qualification: synthetic dead pid 999999", "recovered_utc": "2026-09-09T00:51:37+00:00", "sentinel": "/Users/artin/code/llmopt/.git/liverun.lock"}

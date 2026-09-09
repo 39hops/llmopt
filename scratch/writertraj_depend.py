@@ -42,7 +42,8 @@ from atomtraj_pins import CLASSES, state_digest  # noqa: E402
 from llmopt.lab.gate import gate_eval  # noqa: E402
 
 SMOKE = os.environ.get("SMOKE") == "1"
-OUT = Path("logs/writertraj0")
+DEPEND_SET = os.environ.get("DEPEND_SET", "main")      # main = A, B, N1, N2 (L67576); null2 = N3, N4 (stock_s7 first run v repair)
+OUT = Path("logs/writertraj0" if DEPEND_SET == "main" else f"logs/writertraj0_{DEPEND_SET}")
 REPAIR = Path("/Users/artin/code/llmopt-repair")
 KEYS = sorted(sum(CLASSES.values(), []))
 GROUPS = {f"BLOCK{l}": sorted(k for k in KEYS if k.startswith(f"blocks.{l}.")) for l in range(8)}
@@ -54,7 +55,13 @@ SPECIMENS = {
     "N1": {"path": "checkpoints/atomtraj1/stock_s6/step_15420.pt", "seed": 6, "w0": "checkpoints/atomtraj1/stock_s6/step_00000.pt"},
     "N2": {"path": str(REPAIR / "checkpoints/atomtraj1/stock_s6/step_15420.pt"), "seed": 6, "w0": str(REPAIR / "checkpoints/atomtraj1/stock_s6/step_00000.pt")},
 }
-SWAP_PAIRS = [("A", "B"), ("B", "A"), ("N1", "N2"), ("N2", "N1")]   # (recipient, donor)
+if DEPEND_SET == "null2":
+    SPECIMENS = {
+        "N3": {"path": "checkpoints/atomtraj1/stock_s7/step_15420.pt", "seed": 7, "w0": "checkpoints/atomtraj1/stock_s7/step_00000.pt"},
+        "N4": {"path": str(REPAIR / "checkpoints/atomtraj1/stock_s7/step_15420.pt"), "seed": 7, "w0": str(REPAIR / "checkpoints/atomtraj1/stock_s7/step_00000.pt")},
+    }
+SWAP_PAIRS = [("A", "B"), ("B", "A"), ("N1", "N2"), ("N2", "N1")] if DEPEND_SET == "main" else [("N3", "N4"), ("N4", "N3")]   # (recipient, donor)
+NULL_PAIR = ("N1", "N2") if DEPEND_SET == "main" else ("N3", "N4")
 
 
 def load_sd(p):
@@ -111,7 +118,7 @@ def swap(recipient, donor, w0r, w0d, keys):
 
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
-    if not SMOKE:
+    if not SMOKE and DEPEND_SET == "main":
         assert (OUT / "census.json").exists(), "STAGE 0 census must exist and be preserved before STAGE 0B"
         for f in ("gates.jsonl", "depend.json"):
             assert not (OUT / f).exists(), f"REFUSING: {OUT / f} exists"
@@ -121,7 +128,7 @@ def main():
     tree_dirty = bool(subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True).stdout.strip())
     started = datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
     sds, w0s, digests = {}, {}, {}
-    names = ["N1"] if SMOKE else list(SPECIMENS)
+    names = [NULL_PAIR[0]] if SMOKE else list(SPECIMENS)
     for name in names:
         spec = SPECIMENS[name]
         sds[name] = load_sd(spec["path"])
@@ -133,7 +140,8 @@ def main():
             digests[name]["w0_matches_seed_regeneration"] = (state_digest(w0s[name]) == state_digest(w0_seed(spec["seed"])))
         digests[name]["w0_state_digest"] = state_digest(w0s[name])
     if not SMOKE:
-        assert state_digest(w0s["N1"]) == state_digest(w0s["N2"]), "N1 / N2 step_0 digests differ"
+        a_, b_ = NULL_PAIR
+        assert state_digest(w0s[a_]) == state_digest(w0s[b_]), f"{a_} / {b_} step_0 digests differ"
     full, w0gate, dep = {}, {}, {}
     for name in names:
         full[name] = G.gate(sds[name], f"{name}/full", {"specimen": name, "op": "full"})
@@ -156,7 +164,7 @@ def main():
     rec = {"prereg": "WRITER-TRAJECTORY-CENSUS-0", "stage": "0B", "smoke": SMOKE, "commit": G.commit, "device": dev,
            "started_utc": started, "ended_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
            "specimens": digests, "tree_dirty": tree_dirty, "vocab_len": len(G.tok.vocab), "full": full, "w0_gate": {str(k): v for k, v in w0gate.items()}, "dependence": dep, "swap_loss": swaps}
-    if not SMOKE:
+    if not SMOKE and DEPEND_SET == "main":
         band = max(full.values()) - min(full.values())
         d0 = band <= 7
         def dist(x, y, groups):
@@ -173,6 +181,16 @@ def main():
                        "adjudicable": d0}
         (OUT / "depend.json").write_text(json.dumps(rec, indent=1))
         print("[depend] written; bars:", json.dumps({k: rec["bars"][k] for k in ("D-0", "D-1", "D-2")}), flush=True)
+    elif not SMOKE:
+        a_, b_ = NULL_PAIR
+        def dist(x, y, groups):
+            return sum((dep[x][g] - dep[y][g]) ** 2 for g in groups) ** 0.5
+        null = [v for k, v in swaps.items()]
+        rec["null_strengthening"] = {"pair": [a_, b_], "band": abs(full[a_] - full[b_]),
+                                     "profile_dist_9group": dist(a_, b_, GROUPS), "profile_dist_8class": dist(a_, b_, CLASS_GROUPS),
+                                     "swap_min": min(null), "swap_median": statistics.median(null), "n_swaps": len(null)}
+        (OUT / "depend.json").write_text(json.dumps(rec, indent=1))
+        print("[depend] written; null strengthening:", json.dumps(rec["null_strengthening"]), flush=True)
     else:
         with (OUT / "smoke.jsonl").open("a") as f:
             f.write(json.dumps({"kind": "depend", **rec}) + "\n")

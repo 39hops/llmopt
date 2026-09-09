@@ -989,6 +989,22 @@ Print the oldest uncurated ledger entries (candidates for FINDINGS).
 
 - `main(n: int=20) -> None`
 
+### scripts/liverun.py
+liverun — the mechanical live-run interlock (BOARD live-run law, 2026-09-09). A registered scientific run is wrapped so that, while it is live, an atomic sentinel exists in the shared git directory and the pre-commit hook (scripts/liverun_precommit.sh, installed at .git/hooks/pre-commit) refuses every commit in every checkout that shares that git directory (the main checkout and all its worktrees).
+
+- `git(*args, cwd=None)`
+- `common_dir(cwd=None)`
+- `lock_path(cwd=None)`
+- `now()`
+- `pid_alive(pid)`
+- `receipt(run_id, row, root)`
+- `arm(run_id, worktree, cwd)`
+- `disarm(run_id, lp, rec, rc, cwd)`
+- `cmd_run(a)`
+- `cmd_status(a)`
+- `cmd_recover(a)`
+- `main()`
+
 ### scripts/log_hygiene.py
 Print-only log hygiene planner (reviewer design, handoff 2026-08-11-0).
 
@@ -5578,6 +5594,7 @@ Independent verifier for WRITER-TRAJECTORY-CENSUS-0 (pre-reg RESULTS L67576, sea
 - `cosf(a, b)`
 - `regen(seed)`
 - `median(xs)`
+- `main_null2()` — Null-strengthening verification (PRE-REG WRITER-DEPENDENCE-NULL-2): recompute
 - `main()`
 
 ### scratch/xterm_probe.py

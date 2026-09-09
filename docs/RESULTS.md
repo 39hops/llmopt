@@ -68171,3 +68171,93 @@ intervention; no algorithm, mechanism or scale claim; ATOM-DIET-
 TRAJECTORY-1 is not reopened (its first-run cells serve here only
 as noise specimens). Gate wall inflation (80 s v 67 s) disclosed;
 walls are not a claim.
+
+## AMENDMENT WRITER-TRAJECTORY-CENSUS-0-STOP-READING (target: VERDICT WRITER-TRAJECTORY-CENSUS-0 L67980): wording-only correction of the STOP-clause reading — the sealed clause "the null-pair distance is within 20% of the writer distance" means d_null >= 0.8 x d_writer; the observed d_null / d_writer = 9.64 / 39.37 = 0.245 is far outside, so the STOP clause is comfortably NOT triggered, not "by a narrow margin"; no threshold or adjudicated result changes (2026-09-09, Mac)
+
+The sealed ladder (PRE-REG L67576, unchanged by AMENDMENT L67810)
+reads: "STOP the ladder ... if D-1 fires between the two schedule
+writers AND the null-pair distance is within 20% of the writer
+distance (the desk cannot separate writer from noise at the
+dependence level)". Under the ordinary meaning of "within 20% of X",
+the null distance would have to lie inside [0.8 X, 1.2 X], i.e. be
+close to the writer distance. The verdict at L67980 (and its FINDINGS
+bullet, RIFF fold and BOARD line) read the clause as a RATIO bound
+("9.64 / 39.37 = 24.5%, outside 20% by 4.5 points, a narrow margin"),
+which is not what the sealed text says. The verifier never
+implemented the STOP clause (it is a ladder reading, not a bar), so
+no receipt is affected. Corrected reading: d_null / d_writer = 0.245,
+so the null-pair dependence distance is about one quarter of the
+writer distance and nowhere near "within 20%" of it; the STOP clause
+is NOT triggered, comfortably. The GO conditions (verifier VERIFIED,
+TRAJECTORY fires, D-0 holds) stand as booked. The "narrow margin"
+fence is withdrawn; the recommendation that the DFA pre-reg carry a
+second same-writer dependence pair stands on its own merits (one
+null pair is single-null-grade) and is registered prospectively in
+PRE-REG WRITER-DEPENDENCE-NULL-2 (same commit). No threshold, bar,
+prior or adjudicated result changes. The FINDINGS bullet, the RIFF
+fold and the BOARD line are corrected in place in this commit,
+naming this amendment.
+
+## PRE-REG WRITER-DEPENDENCE-NULL-2: null strengthening only — a second same-writer learned-update dependence pair (stock_s7 first run v stock_s7 repair) under the exact WRITER-TRAJECTORY-CENSUS-0 dependence instrument and tensor law, registered prospectively before any DFA output; not a writer result (2026-09-09, Mac)
+
+Purpose. VERDICT WRITER-TRAJECTORY-CENSUS-0 (L67980) rests its
+DEPENDENCE and COMPATIBILITY readings on ONE same-writer null pair
+(N1 = stock_s6 first run, N2 = stock_s6 repair: 9-group profile
+distance 9.64, 8-class 10.34, same-writer swap losses 0 to -7). This
+entry adds ONE more same-writer pair, chosen prospectively and not by
+result: stock_s7 first run (checkpoints/atomtraj1/stock_s7/step_15420.pt,
+code_commit 6f41511f, receipt logs/atomtraj1/births.jsonl row 6) v
+stock_s7 repair (/Users/artin/code/llmopt-repair/checkpoints/atomtraj1/
+stock_s7/step_15420.pt, code_commit ec6de1ae, logs/atomtraj1_repair/
+births.jsonl row 6). Reasons registered before any value is read: same
+stock diet class as the existing null; an independent seed (7 v 6);
+the next natural same-writer specimen pair on disk; no other pair was
+considered. W_0 = the pair's byte-identical step_00000.pt (state
+digest a97eae63..., seed-7 regeneration recorded as a check).
+
+Instrument. scratch/writertraj_depend.py with DEPEND_SET=null2 (the
+same revert and swap code, the same 17 groups: BLOCK 0..7, OUTSIDE,
+eight CLASSES, the same gate_eval), writing to
+logs/writertraj0_null2/gates.jsonl and depend.json (fresh namespace,
+refuse-if-exists). Gates: 2 full + 1 W_0 (seed 7) + 34 reverts + 16
+swaps (N3 <- N4 and N4 <- N3, blocks 0..7) = 53 gates, about 1.2 h on
+mps at the 80 s wall observed under load, 1.0 h at 67 s. Zero
+training. Run under the liverun interlock (scripts/liverun.py,
+scripts/liverun_precommit.sh installed at .git/hooks/pre-commit)
+after its qualification receipt (logs/liverun/interlock-smoke.jsonl:
+armed, commit refused in the main checkout and in the worktree while
+live, disarmed with rc 0; stale sentinel refused and recovered with a
+receipt). Verifier: scratch/writertraj_verify.py DEPEND_SET=null2
+mode recomputes every dependence value and swap loss from the gate
+rows, reconstructs one revert and one swap by state digest, checks
+gate dicts (sum, five levels, <= 24) and commit identity, and writes
+logs/writertraj0_null2/verify_receipt.json.
+
+Outputs, all DESCRIPTIVE (no bar fires or no-fires here; this entry
+strengthens a null, it does not adjudicate a writer): full gates of
+N3 and N4 and their band; the 9-group and 8-class dependence
+profiles; the 9-group distance d_9(N3, N4) and the 8-class distance
+d_8(N3, N4); the 16 same-writer swap losses, their minimum and median;
+the two-pair null envelope: max(d_9(N1,N2), d_9(N3,N4)),
+max(d_8(...)), min over the 32 same-writer swap losses.
+
+Registered reassessment law (frozen before the value is read): the
+L67980 interpretation of DEPENDENCE stands if d_9(N3, N4) < 0.8 x
+39.37 = 31.5 (the writer distance stays outside the "within 20%"
+band of BOTH null pairs); if d_9(N3, N4) >= 31.5, STOP and reassess
+before any DFA pre-reg is sealed (the one-pair null would have
+under-represented same-writer variation). Likewise for COMPATIBILITY:
+the reading stands if min over the 16 new same-writer swap losses is
+> -11.5 (the cross-writer median); if any same-writer swap loss
+reaches -11.5 or below, the D-2 reading is flagged for reassessment.
+These are reassessment triggers on a null, not bars on a writer.
+Registered expectation (descriptive, not a scored prior): d_9(N3,
+N4) between 6 and 14; same-writer swap losses between 0 and -8.
+
+Fences. One additional pair, seed 7, stock diet, mps, gates at sigma
+about 5; the two null pairs remain an observed same-writer mps rerun
+envelope across nearby specimens, not the seed-2 writer pair's own
+noise; nothing here trains, tunes or reads any DFA quantity; the
+first-run stock_s7 cell is invalid for its own rung (L66991) and
+serves only as a noise specimen. Nothing else launches; DFA needs its
+own sealed pre-reg and Artin GO.

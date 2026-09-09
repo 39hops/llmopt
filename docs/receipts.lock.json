@@ -946,6 +946,17 @@
    "source": "results",
    "tracked": true
   },
+  "logs/liverun/interlock-smoke.jsonl": {
+   "bytes": 537,
+   "exists": true,
+   "sha256": "45f26fbb9e17990df0edd3f72158acc6d334faa5d6f46aa8db65752043e2888c",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/liverun/writertraj0-null2.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/mathworld0/active.jsonl": {
    "bytes": 32725,
    "exists": true,
@@ -4170,6 +4181,18 @@
    "sha256": "1854d91ac896ff047fa3b0c5fcde9b526d8f1aa6c099e49da29384523209e742",
    "source": "results",
    "tracked": true
+  },
+  "logs/writertraj0_null2/depend.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/writertraj0_null2/gates.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/writertraj0_null2/verify_receipt.json": {
+   "exists": false,
+   "source": "prereg"
   },
   "logs/xtermdiet1/arms.jsonl": {
    "bytes": 1163,

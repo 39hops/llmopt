@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 229, library 75, reproduce-pinned 10, results-cited 425, spec-cited 89, cited-but-library 63
+Census: UNCITED 229, library 75, reproduce-pinned 10, results-cited 426, spec-cited 89, cited-but-library 63
 
 ## scratch/
 
@@ -666,8 +666,8 @@ Census: UNCITED 229, library 75, reproduce-pinned 10, results-cited 425, spec-ci
 | weight | weight_fft_euler.py | UNCITED | — | — | — | — |
 | wfloor | wfloor_ladder.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | writertraj | writertraj_census.py | results-cited | RESULTS | RESULTS×2 | — | 2 |
-| writertraj | writertraj_depend.py | results-cited | RESULTS | RESULTS×2 | — | 2 |
-| writertraj | writertraj_verify.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
+| writertraj | writertraj_depend.py | results-cited | RESULTS | RESULTS×3 | — | 2 |
+| writertraj | writertraj_verify.py | results-cited | RESULTS | RESULTS×3 | — | 1 |
 | writertraj0 | writertraj0_driver.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | wsl | wsl.sh | results-cited | RESULTS, specs | RESULTS×10, specs×23 | — | 5 |
 | xterm | xterm_probe.py | library | RESULTS, specs | RESULTS×2, specs×1 | 1 | 1 |
@@ -803,6 +803,7 @@ Census: UNCITED 229, library 75, reproduce-pinned 10, results-cited 425, spec-ci
 | harvest | harvest_champion.py | UNCITED | — | — | — | — |
 | harvest | harvest_frontier.py | spec-cited | specs | specs×1 | — | — |
 | list | list_uncurated.py | spec-cited | specs | specs×6 | — | — |
+| liverun | liverun.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
 | log | log_hygiene.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | 1 |
 | markov | markov_eval.py | UNCITED | — | — | — | — |
 | markov | markov_prior.py | UNCITED | — | — | — | — |

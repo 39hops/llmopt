@@ -1,0 +1,2 @@
+{"event": "armed", "run_id": "interlock-smoke", "pid": 3746, "launch_commit": "ec6de1aec8c435bcfa66d11f41ed0da6f067f4bf", "launch_commit_short": "ec6de1ae", "worktree": "/Users/artin/code/llmopt-repair", "cwd": "/Users/artin/code/llmopt", "started_utc": "2026-09-09T00:49:55+00:00", "dirty_at_arm": false, "sentinel": "/Users/artin/code/llmopt/.git/liverun.lock"}
+{"event": "disarmed", "run_id": "interlock-smoke", "pid": 3746, "rc": 0, "ended_utc": "2026-09-09T00:51:25+00:00", "sentinel": "/Users/artin/code/llmopt/.git/liverun.lock"}

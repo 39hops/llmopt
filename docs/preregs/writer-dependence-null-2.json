@@ -1,0 +1,50 @@
+{
+ "name": "WRITER-DEPENDENCE-NULL-2",
+ "note": "Machine-readable form of PRE-REG WRITER-DEPENDENCE-NULL-2 (RESULTS L68201): null strengthening only, zero training; the prose governs.",
+ "results_id": "2026-09-09-pre-reg-writer-dependence-null-2",
+ "registered": "2026-09-09",
+ "machine": "mac",
+ "arms": {
+  "N3": {
+   "description": "stock_s7 first run, checkpoints/atomtraj1/stock_s7/step_15420.pt (code_commit 6f41511f), W_0 = its step_00000.pt"
+  },
+  "N4": {
+   "description": "stock_s7 repair, /Users/artin/code/llmopt-repair/checkpoints/atomtraj1/stock_s7/step_15420.pt (ec6de1ae), W_0 = its byte-identical step_00000.pt"
+  }
+ },
+ "bars": [],
+ "descriptive_outputs": [
+  "full gates and band",
+  "9-group and 8-class dependence profiles",
+  "d_9(N3,N4)",
+  "d_8(N3,N4)",
+  "16 same-writer swap losses, min and median",
+  "two-pair null envelope"
+ ],
+ "reassessment_law": {
+  "dependence": "L67980 DEPENDENCE reading stands iff d_9(N3,N4) < 31.5 (0.8 x 39.37); else STOP and reassess before any DFA pre-reg is sealed",
+  "compatibility": "D-2 reading flagged iff any same-writer swap loss <= -11.5"
+ },
+ "registered_expectation_descriptive": {
+  "d_9": "6 to 14",
+  "swap_losses": "0 to -8"
+ },
+ "instrument": {
+  "driver": "scratch/writertraj_depend.py DEPEND_SET=null2",
+  "verifier": "scratch/writertraj_verify.py DEPEND_SET=null2",
+  "interlock": "scripts/liverun.py run writertraj0-null2"
+ },
+ "gates": 53,
+ "stopping": "no outcome-based stops; operational aborts only",
+ "receipts": [
+  "logs/writertraj0_null2/gates.jsonl",
+  "logs/writertraj0_null2/depend.json",
+  "logs/writertraj0_null2/verify_receipt.json",
+  "logs/liverun/writertraj0-null2.jsonl"
+ ],
+ "qualification_receipts_already_present_and_tracked": [
+  "logs/writertraj0_null2/smoke.jsonl",
+  "logs/liverun/interlock-smoke.jsonl",
+  "logs/liverun/stale-smoke.jsonl"
+ ]
+}
