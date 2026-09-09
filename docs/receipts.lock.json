@@ -1,11 +1,5 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
- "_last_accept": {
-  "paths": [
-   "logs/writerdfa1/smoke.jsonl"
-  ],
-  "reason": "smoke.jsonl: alignment re-smoked at the sealed 32-row chunk after the prereg-auditor blocker"
- },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
    "bytes": 3176,
