@@ -68640,3 +68640,101 @@ added; operational-abort clause and qualification firewall mirrored;
 census cost 1.7 h; totals 6.9 / 8.6 h; literal thresholds.
 S15. Date convention as noted above.
 Everything else in L68321 stands. Nothing launches without Artin GO.
+
+## AMENDMENT WRITER-DFA-1-PRECISION (target: PRE-REG WRITER-DFA-1 L68321, after AMENDMENT -SEAL L68543): Artin GO of 2026-09-08 with the implementation-precision folds registered before any instrument exists; writer-integrity smoke, exact alignment and effective-rank reductions, the 8 x 5 depth x class census promoted to mandatory on FUNCTION-BAND pass; no scientific threshold changes (2026-09-08 local, Mac)
+
+GO received 2026-09-08 (Mac local) for implementation, smoke, clean-tree
+audit and the sealed qualification ladder if those are clean. Every
+item below is a precision fold on L68321 / L68543; qualification cells,
+selection order, feedback seeds / distribution / scaling, lr values,
+the function band, the T-1 / DEP-DEPTH / DEP-CLASS / COMPAT / ACT-1
+thresholds, the null envelopes, the ladder and the priors are
+unchanged.
+
+P1. Writer-integrity smoke (gradient-leakage invariants), mechanical,
+on a deterministic CPU fixture (float32, torch.manual_seed(11) model
+W_0, the first four rows of the frozen probe batch), receipt
+logs/writerdfa1/leakage.json, run before the probe digest is committed
+and refused as an implementation BLOCKER on any failure:
+  (i) the head / norm cross-entropy loss has NO gradient path to any
+      parameter of blocks 0..7 nor to emb (autograd.grad with
+      allow_unused returns None for every such parameter);
+  (ii) e_t = dL / dlogits_t is detached before any block surrogate
+      (requires_grad False, no grad_fn);
+  (iii) block l's local surrogate S_l = <B_l e, x_{l+1}> reaches the
+      parameters of block l only, plus emb for l = 0 (the registered
+      block-0 path) and nothing else;
+  (iv) replacing B_j for every j != l while the forward state, e and
+      B_l are held fixed leaves block l's parameter gradient
+      bit-identical;
+  (v) the gradient delivered at every block output x_{l+1} by the
+      DFA objective equals B_l e bit-exactly (no block receives the
+      true downstream hidden error), and the BP hidden error at the
+      same point, computed in a separate read-only pass, differs;
+  (vi) head.weight and norm.g receive gradients equal to the stock
+      backprop gradients at the same weights (max abs diff <= 1e-7).
+  BP parity: the driver's BP mode on the same fixture v the stock
+  training step (the birth19m_atoms_traj.py loop lines re-executed in
+  the smoke): every parameter gradient and every parameter after one
+  AdamW + OneCycle step agree to max abs diff <= 1e-7 (frozen before
+  the comparison; bit-exact expected on CPU). A miss is an
+  implementation blocker, never a scientific result.
+P2. Alignment reduction, frozen: for block l and snapshot t,
+delta^DFA_l = B_l e and delta^BP_l = dL / dx_{l+1} (offline,
+torch.autograd.grad, fresh model instance, never updating any arm).
+Eligible entries = the probe positions carrying a label (label !=
+-100); masked positions are EXCLUDED, not zero-filled. The registered
+number is the float64 cosine of the two vectors formed by flattening
+all eligible token x hidden-dimension entries (accumulated over
+32-row chunks as exact dot products and squared norms). Zero norm of
+either vector books NOT-RESOLVABLE for that block / snapshot; no
+epsilon. Receipt logs/writerdfa1/align.json (DFA arm at the 17
+snapshots; the control arm reported alongside descriptively).
+P3. Residual-stream effective rank, frozen: at each block output on
+the frozen 256-row probe batch, teacher-forced, CPU float64: collect
+the residual vectors of every unmasked input token (attention mask 1,
+position 0 included); center by the empirical feature mean; C = (1/N)
+sum (x - mu)(x - mu)^T; lambda_i = eigvalsh(C); eigenvalues with
+lambda_i < 0 and |lambda_i| <= 1e-10 x lambda_max are clamped to 0,
+any more negative eigenvalue books NOT-RESOLVABLE; p_i = lambda_i /
+sum_j lambda_j; effective_rank = exp(-sum_i p_i log p_i) with 0 log 0
+= 0; zero total mass books NOT-RESOLVABLE. Attention entropy per S10
+(L68543) over the same unmasked input tokens with position 0
+excluded. This definition governs the ACT vector in R^16; the ACT
+null envelope and ACT(A, B) are computed by this instrument on the
+existing final checkpoints (A, B, N1, N2, N3, N4) and booked as an
+OBSERVATION before the qualification ladder launches.
+P4. Depth x module-class census PROMOTED: the sealed 8 x 5 table over
+{qkv, o, gate, up, down} x blocks 0..7 (40 block 2-D tensors, norms /
+emb / head excluded) is MANDATORY CONDITIONAL ON FUNCTION-BAND PASS
+for both the DFA and the control specimen (80 gates, about 1.7 h,
+receipt logs/writerdfa1/depthclass.json). Reason registered before
+any DFA output: L67980 showed strong depth-dependence divergence
+while the aggregate module-class dependence stayed inside the null
+envelope, so aggregate class totals can hide depth x class
+redistribution. On band failure the 80 gates are not spent. The full
+40-cell table is booked descriptively for both specimens; no cell bar
+is invented after viewing and no cell is selected; DEP-DEPTH and
+DEP-CLASS remain the adjudicated axes. The successful matched-function
+branch therefore costs the already priced 8.6 h.
+P5. Operational clarifications (no law change): (a) in QUAL mode a
+non-finite loss marks that cell UNSTABLE (receipt row with the step,
+no final checkpoint) and the ladder continues; the NOT-RUN clause for
+non-finite loss applies to the control and discovery births; (b) the
+FUNCTION-BAND is decided mechanically inside the post-discovery
+driver from the two full gates before any revert or swap is
+scheduled (band fail: reverts, swaps and the census are skipped;
+trajectory census, ACT and alignment are still computed and reported
+descriptively); (c) liverun ids: writerdfa1-qual-c1 (first cell,
+then receipt-auditor), writerdfa1-qual-c234, writerdfa1-discovery,
+writerdfa1-post; (d) smoke = seed 11, 300 steps, both modes, stream
+digests asserted, receipts logs/writerdfa1/smoke.jsonl only; (e) probe
+row ids are indices into the length-sorted encoded D2-excised stock
+diet (C.encode_with_levels(C.load_excised_rows(), tok)), digest =
+sha256 of the JSON token lists; (f) the qualification selection is
+written to logs/writerdfa1/qual_selection.json by a selection script
+applying the S5 total order, committed before the seed-2 births; the
+discovery driver refuses (s, lr) that differ from it; (g) receipts
+added to the sealed list: leakage.json, depthclass.json,
+qual_selection.json, band recorded inside depend.json. Everything
+else in L68321 and L68543 stands.
