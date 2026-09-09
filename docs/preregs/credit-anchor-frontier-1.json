@@ -1,0 +1,98 @@
+{
+ "name": "CREDIT-ANCHOR-FRONTIER-1",
+ "note": "Machine-readable form of PRE-REG CREDIT-ANCHOR-FRONTIER-1 (DESIGN ONLY, NOT LAUNCHED; Artin GO required before any birth); the prose governs.",
+ "registered": "2026-09-09 (Mac local)",
+ "machine": "mac",
+ "status": "design-only",
+ "variable": "k = number of TOP blocks receiving exact backprop credit; blocks 0..7-k direct random feedback with the WRITER-DFA-1 B_l law unchanged",
+ "ladder": [
+  1,
+  2,
+  4
+ ],
+ "endpoints": {
+  "k0": "WRITER-DFA-1 (L68802) inaccessible",
+  "k8": "stock BP family"
+ },
+ "qualification": {
+  "seed": 23,
+  "cells_per_k": [
+   [
+    1.0,
+    0.0003
+   ],
+   [
+    1.0,
+    0.0001
+   ]
+  ],
+  "stable": "finite loss and final gate > 0",
+  "floor": "final 120-gate >= 24",
+  "stop_rule": "first k with a cell at or above the floor; candidate = highest gate, ties lr 3e-4 first; frozen before any seed-2 birth",
+  "frontier_closed": "no cell of k = 1, 2, 4 reaches the floor -> FRONTIER-CLOSED, DFA-family births STOP"
+ },
+ "optional_zero_credit_control": "per k, blocks 0..7-k frozen at W_0, blocks 8-k..7 + head/norm BP; one birth at the qualification seed; descriptive; Artin's choice at GO",
+ "discovery": {
+  "seed": 2,
+  "control": "MODE=bp stock recipe",
+  "band": "c - 7 <= g <= c + 7",
+  "band_pass": "licensed candidate writer for the sealed WRITER-DFA-1 observable set under a separate booking with the same literal thresholds"
+ },
+ "thresholds_inherited": {
+  "T-1": "C < 0.7771 AND R > 0.6677",
+  "DEP-DEPTH": "> 9.85",
+  "DEP-CLASS": "> 10.34",
+  "COMPAT": "median < -7",
+  "ACT-1": "> 15.714"
+ },
+ "foreignness": {
+  "k1_k2": "FOREIGN in credit for >= 6 of 8 blocks",
+  "k4": "SEMI-FOREIGN, top half BP; DEP-DEPTH reads the DFA/BP boundary"
+ },
+ "registered_prior": {
+  "k1_misses_floor": 0.75,
+  "k2_reaches_floor": 0.55,
+  "k4_reaches_floor": 0.85,
+  "ladder_stops_at_k2": 0.5,
+  "band_miss_from_below_if_candidate": 0.6,
+  "points": {
+   "k1": 4,
+   "k2": 30,
+   "k4": 48,
+   "band": "c - 12"
+  }
+ },
+ "cost_h": {
+  "qualification_worst": 4.7,
+  "qualification_best": 1.6,
+  "discovery": 1.6,
+  "post": 1.5,
+  "census_on_pass": 1.7
+ },
+ "storage_gb": 10.4,
+ "liverun_ids": [
+  "writercaf1-qual-k1",
+  "writercaf1-qual-k2",
+  "writercaf1-qual-k4",
+  "writercaf1-discovery",
+  "writercaf1-post"
+ ],
+ "receipts": [
+  "logs/writercaf1/leakage.json",
+  "logs/writercaf1/qual.jsonl",
+  "logs/writercaf1/qual_selection.json",
+  "logs/writercaf1/smoke.jsonl"
+ ],
+ "pre_go": [
+  "postmortem booked (L69008)",
+  "K_BP implemented; K_BP = 0 identity test green; generalized leakage smoke per k",
+  "300-step smoke seed 11 for k = 1, 2, 4",
+  "prereg-auditor clean",
+  "Artin GO"
+ ],
+ "does_not_revise": [
+  "VERDICT WRITER-DFA-1 (L68802)",
+  "OBSERVATION WHY-DFA-FAILED-DESCRIPTIVE-0 (L69008)"
+ ],
+ "results_id": "2026-09-09-pre-reg-credit-anchor-frontier-1"
+}

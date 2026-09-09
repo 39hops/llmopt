@@ -69118,3 +69118,104 @@ under the frozen ACT definition; "the loss is insensitive to the
 stream" is read from the BP-norm collapse on the probe, not from a
 Hessian or a perturbation test; nothing here amends VERDICT
 WRITER-DFA-1 (L68802), whose STOP stands.
+
+## PRE-REG CREDIT-ANCHOR-FRONTIER-1: the minimum depth of exact downstream credit that makes the task accessible while the lower stack learns from direct random feedback — a hybrid DFA ladder over k = number of TOP blocks receiving exact backprop credit (k = 1, 2, 4 in that order; k = 0 booked inaccessible at L68802, k = 8 the stock BP family), one qualification seed, a predefined accessibility floor, first-k-that-clears stops the ladder, paired BP control only for a licensed candidate (2026-09-09 local, Mac; DESIGN ONLY, NOT LAUNCHED, Artin GO required before any birth)
+
+Artin direction 2026-09-09: design after WHY-DFA-FAILED-DESCRIPTIVE-0
+is booked (OBSERVATION L69008); do not launch without GO; do not
+tune k after seeing discovery seed 2; if the registered frontier fails,
+stop DFA-family births.
+
+1. The variable. k in {1, 2, 4}: blocks 8-k..7 receive the exact
+backprop credit of the loss through the head, the final norm and each
+other (one BP segment), blocks 0..7-k receive direct random feedback
+delta_l = B_l e_t with the SAME B_l matrices and law as WRITER-DFA-1
+(U(-1, 1) x s / sqrt(40), seeds 31_000_000 + l, per block; P1 leakage
+invariants generalized: the loss reaches head, norm and blocks 8-k..7
+only; x_{8-k} is detached at the segment boundary so no true gradient
+reaches block 7-k or below; blocks 0..7-k receive B_l e bit-exactly
+and nothing else; emb via block 0 as before). head / norm: the true
+gradient (now through the top segment; unchanged definition). k = 1:
+blocks 0..6 DFA, block 7 BP. k = 2: blocks 0..5 DFA, blocks 6..7 BP.
+k = 4: blocks 0..3 DFA, blocks 4..7 BP. Implementation: one integer
+K_BP in the sealed credit module (K_BP = 0 reproduces the sealed
+WRITER-DFA-1 path byte-for-byte on its leakage fixture; a
+source-invariant test pins that), the driver's MODE=hybrid with K_BP
+required; recipe, stream, cadence, gate, device unchanged.
+  Postmortem clause (OBSERVATION WHY-DFA-FAILED-DESCRIPTIVE-0, L69008):
+  under the sealed feedback law the DFA blocks collapse the residual
+  stream to effective rank about 1 within the first 463 steps with no
+  alignment at any scale, so the BP top segment of every k receives a
+  degenerate input from the DFA stack below it; the frontier therefore
+  measures how many exact-credit blocks can build a usable
+  representation on top of (and through their own input gradient,
+  despite) a random-feedback lower stack. The B_l law is kept
+  unchanged: the postmortem identified no implementation-independent
+  magnitude or lr lever (Q >= 0.8 at W_0, collapse at every s and lr).
+  ZERO-CREDIT CONTROL, registered as an OPTIONAL arm per k, Artin's
+  choice at GO: blocks 0..7-k FROZEN at W_0 (no credit at all), blocks
+  8-k..7 plus head / norm BP; it separates "DFA credit harms the lower
+  stack" from "the lower stack contributes nothing", one birth per k
+  at the qualification seed, same floor, descriptive, no bar; if the
+  frozen control clears the floor and the hybrid does not at the same
+  k, the hybrid's DFA credit is read as actively harmful at that k.
+2. Qualification population and firewall. Qualification seed 23 (never
+used; 21 is the DFA qualification seed, 22 held back). Per k, two
+cells (s, lr) in {(1, 3e-4), (1, 1e-4)}, each a full 15,420-step
+birth with 17 snapshots; no other hyperparameter. Ladder order k = 1
+then 2 then 4, both cells of a k before the next k. A cell is STABLE
+iff finite loss and final gate > 0. ACCESSIBILITY FLOOR (predefined):
+final 120-gate >= 24 (one full level's worth of solves, one fifth of
+the gate; the stock births of this recipe gate 61 to 65). The ladder
+STOPS at the first k with a cell at or above the floor; that k and its
+best cell (highest gate; ties lr 3e-4 first) become the CANDIDATE and
+are frozen before any seed-2 birth. If no cell of k = 1, 2, 4 reaches
+the floor, the rung books FRONTIER-CLOSED and DFA-family births STOP.
+3. Discovery (only for a candidate). Paired BP control (MODE=bp, stock
+recipe) then the hybrid arm at seed 2 with the frozen (k, s, lr),
+under the interlock, nothing read until both finish; FUNCTION-BAND
+c - 7 <= g <= c + 7 exactly as sealed for WRITER-DFA-1 (L68321 item 5);
+band miss -> ACCESSIBILITY ONLY (the floor was reached, the band was
+not; reported, no comparison). Band pass -> the hybrid becomes a
+licensed candidate writer for the existing trajectory / dependence /
+compatibility / ACT comparison, run by the sealed WRITER-DFA-1
+post-discovery instruments (DEPEND_SET=dfa, census, 8 x 5 census
+mandatory on pass, ACT, alignment, verifier) under a SEPARATE booking
+that names the bars T-1 / DEP-DEPTH / DEP-CLASS / COMPAT / ACT-1 with
+the same literal thresholds (0.7771 / 0.6677 / 9.85 / 10.34 / -7 /
+15.714), with the interpretation ladder A to E of L68543 B6.
+4. Foreignness downgrade, registered: if the candidate is k = 1 or 2,
+the writer is read as FOREIGN in credit for at least six of eight
+blocks (three quarters of the block parameters); if the candidate is
+k = 4, half the stack is ordinary backprop and the writer is read as
+SEMI-FOREIGN: any later mechanism reading is fenced "top half BP" and
+the depth-dependence axis is expected to be dominated by the BP
+segment (the DEP-DEPTH bar then reads the DFA / BP boundary, not a
+writer difference, and is booked as such).
+5. Priors (scored on direction): k = 1 misses the floor (p 0.75; point
+gate 4); k = 2 reaches the floor (p 0.55; point 30); k = 4 reaches the
+floor (p 0.85; point 48); the ladder stops at k = 2 (p 0.5). If a
+candidate exists: FUNCTION-BAND miss from below (p 0.6; point c - 12).
+Family record continues from 5 hits, 2 misses.
+6. STOP / GO. PRE-GO: postmortem booked (done at L69008; interlock receipt
+logs/liverun/dfapost0.jsonl); K_BP
+implemented with the generalized leakage smoke (per k, fixture receipt
+logs/writercaf1/leakage.json) and the K_BP = 0 identity test green;
+300-step smoke at seed 11 for k = 1, 2, 4; prereg-auditor clean;
+Artin GO. Operational aborts (non-finite loss outside qualification,
+stream mismatch, dirty tree, sentinel conflict, disk < 15 GB) book
+NOT-RUN; qualification non-finite = UNSTABLE cell, ladder continues.
+No outcome-based early stop inside any birth. Every process under the
+liverun interlock (writercaf1-qual-k1, -k2, -k4, -discovery, -post).
+7. Cost. Qualification worst case 6 births x about 47 min = 4.7 h
+(mps; the hybrid step is priced at the stock step's wall, walls
+recorded not adjudicated), best case 2 births 1.6 h; discovery 1.6 h;
+post-discovery 1.5 h (+1.7 h census on band pass). Storage: up to 8
+births x 1.3 GB = 10.4 GB; disk must show >= 15 GB free at each arm.
+8. Fences. One qualification seed, one discovery seed, one
+implementation of hybrid DFA (Launay's hybrid places the true gradient
+in the LAST layer only; k = 2, 4 extend it); the floor 24 is an
+accessibility threshold, not a function match; the frontier answers
+"how much exact credit is needed", not "why"; "dependence" never
+"necessity"; no "faster" claim; nothing here revises L68802 or the
+postmortem.

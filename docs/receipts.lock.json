@@ -968,9 +968,11 @@
    "tracked": true
   },
   "logs/liverun/dfapost0.jsonl": {
+   "bytes": 518,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "64dfb095d3ff57ebf70c4c6ab94129aa75bbcf15d5a4d22077d375223b407465",
+   "source": "results",
+   "tracked": true
   },
   "logs/liverun/interlock-smoke.jsonl": {
    "bytes": 537,
@@ -4169,6 +4171,22 @@
    "sha256": "bf5498e0e68f2268b661a917f2671741fb195b34aa3ca4b5680e9b281f89dec1",
    "source": "results",
    "tracked": true
+  },
+  "logs/writercaf1/leakage.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/writercaf1/qual.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/writercaf1/qual_selection.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/writercaf1/smoke.jsonl": {
+   "exists": false,
+   "source": "prereg"
   },
   "logs/writerdfa1/act.json": {
    "exists": false,
