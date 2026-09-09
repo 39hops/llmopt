@@ -120,7 +120,14 @@
  },
  "storage_gb": 7.7,
  "receipts": [
+  "logs/writerdfa1/probe.json",
+  "logs/writerdfa1/leakage.json",
+  "logs/writerdfa1/smoke.jsonl",
+  "logs/writerdfa1/act_envelope.json",
   "logs/writerdfa1/qual.jsonl",
+  "logs/writerdfa1/qual_selection.json",
+  "logs/liverun/writerdfa1-qual-c1.jsonl",
+  "logs/liverun/writerdfa1-qual-c234.jsonl",
   "logs/writerdfa1/births.jsonl",
   "logs/writerdfa1/gates.jsonl",
   "logs/writerdfa1/depend.json",
@@ -128,19 +135,14 @@
   "logs/writerdfa1/act.json",
   "logs/writerdfa1/align.json",
   "logs/writerdfa1/verify_receipt.json",
-  "logs/writerdfa1/smoke.jsonl",
-  "logs/writerdfa1/probe.json",
-  "logs/writerdfa1/leakage.json",
   "logs/writerdfa1/depthclass.json",
-  "logs/writerdfa1/qual_selection.json",
-  "logs/liverun/writerdfa1-qual-c1.jsonl",
-  "logs/liverun/writerdfa1-qual-c234.jsonl",
   "logs/liverun/writerdfa1-discovery.jsonl",
   "logs/liverun/writerdfa1-post.jsonl"
  ],
  "amended_by": [
   "AMENDMENT WRITER-DFA-1-SEAL",
-  "AMENDMENT WRITER-DFA-1-PRECISION"
+  "AMENDMENT WRITER-DFA-1-PRECISION",
+  "AMENDMENT WRITER-DFA-1-RECEIPTS"
  ],
  "credit_law_detach": "head/norm loss on x_8.detach(); e_t detached; every block input detached; all eight blocks random feedback only; emb gets B_0 e + J_f0^T B_0 e (direct random feedback via the identity path, not backprop)",
  "feedback_scale": "U(-1,1) * s / sqrt(40); 40 = number of output classes",
@@ -219,5 +221,18 @@
   "discovery": "NOT RUN (sealed STOP)",
   "function_band_prior": "miss",
   "conditional_priors": "unscored"
- }
+ },
+ "receipts_not_run": [
+  "logs/writerdfa1/births.jsonl",
+  "logs/writerdfa1/gates.jsonl",
+  "logs/writerdfa1/depend.json",
+  "logs/writerdfa1/census.json",
+  "logs/writerdfa1/act.json",
+  "logs/writerdfa1/align.json",
+  "logs/writerdfa1/verify_receipt.json",
+  "logs/writerdfa1/depthclass.json",
+  "logs/liverun/writerdfa1-discovery.jsonl",
+  "logs/liverun/writerdfa1-post.jsonl"
+ ],
+ "receipts_not_run_reason": "sealed STOP at qualification (DFA-UNSTABLE); no discovery stage"
 }

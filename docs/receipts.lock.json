@@ -969,9 +969,11 @@
    "tracked": true
   },
   "logs/liverun/writerdfa1-qual-c234.jsonl": {
+   "bytes": 542,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "8e96050b3a7d7ec63fca81262dd0c8b934a55c498e01d1ba2ddd9b3bb2dcb4df",
+   "source": "results",
+   "tracked": true
   },
   "logs/liverun/writertraj0-null2.jsonl": {
    "bytes": 536,

@@ -284,6 +284,21 @@ NOT_RUN_ABSENT = {
         "logs/qwenalttok/alttok_observations.json",
         "logs/qwenalttok/alttok_observations_offline.json",
     },
+    "docs/preregs/writer-dfa-1.json": {
+        # VERDICT WRITER-DFA-1: DFA-UNSTABLE, sealed STOP at
+        # qualification; the discovery and post-discovery stages
+        # never ran (AMENDMENT WRITER-DFA-1-RECEIPTS)
+        "logs/writerdfa1/births.jsonl",
+        "logs/writerdfa1/gates.jsonl",
+        "logs/writerdfa1/depend.json",
+        "logs/writerdfa1/census.json",
+        "logs/writerdfa1/act.json",
+        "logs/writerdfa1/align.json",
+        "logs/writerdfa1/verify_receipt.json",
+        "logs/writerdfa1/depthclass.json",
+        "logs/liverun/writerdfa1-discovery.jsonl",
+        "logs/liverun/writerdfa1-post.jsonl",
+    },
 }
 
 

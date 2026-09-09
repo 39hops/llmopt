@@ -68919,3 +68919,21 @@ candidate per the RIFF bank (synthetic gradients / decoupled neural
 interfaces, or a hybrid DFA with true gradient in the last block, or
 a narrower / longer DFA regime) is Artin's choice; (c) the STOP is
 booked in the RIFF bank in place.
+
+## AMENDMENT WRITER-DFA-1-RECEIPTS (target: VERDICT WRITER-DFA-1 L68802): receipt paths cited in full for the lock, and the sealed receipt list split into produced v not-run (2026-09-09 local, Mac)
+
+Bookkeeping only. The verdict's RECEIPTS paragraph names the second
+interlock receipt by short name; the full paths are
+logs/liverun/writerdfa1-qual-c1.jsonl and
+logs/liverun/writerdfa1-qual-c234.jsonl (both force-added and
+sha-locked). Because the sealed STOP fired at qualification, the
+receipts the pre-reg registered for the discovery and post-discovery
+stages were never produced and cannot be: logs/writerdfa1/births.jsonl,
+gates.jsonl, depend.json, census.json, depthclass.json, act.json,
+align.json, verify_receipt.json, logs/liverun/writerdfa1-discovery.jsonl
+and writerdfa1-post.jsonl. The JSON mirror docs/preregs/writer-dfa-1.json
+now lists them under receipts_not_run (sealed STOP, no discovery
+stage) and keeps under receipts only the produced set: probe.json,
+leakage.json, smoke.jsonl, act_envelope.json, qual.jsonl,
+qual_selection.json and the two qualification interlock receipts.
+Nothing else changes.
