@@ -204,5 +204,20 @@
   "writerdfa1-post"
  ],
  "smoke": "seed 11, 300 steps, both modes, stream digests asserted, logs/writerdfa1/smoke.jsonl",
- "probe_row_ids": "indices into C.encode_with_levels(C.load_excised_rows(), tok) (length-sorted); digest = sha256 of JSON token lists"
+ "probe_row_ids": "indices into C.encode_with_levels(C.load_excised_rows(), tok) (length-sorted); digest = sha256 of JSON token lists",
+ "outcome": {
+  "verdict": "DFA-UNSTABLE",
+  "results_line": 68802,
+  "stable_cells": [],
+  "selected": null,
+  "qual_gates": {
+   "S1_lr3e-4": 0,
+   "S1_lr1e-4": 0,
+   "S0.25_lr3e-4": 0,
+   "S4_lr1e-4": 0
+  },
+  "discovery": "NOT RUN (sealed STOP)",
+  "function_band_prior": "miss",
+  "conditional_priors": "unscored"
+ }
 }

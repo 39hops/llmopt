@@ -68798,3 +68798,124 @@ writertraj_verify.py named in L68321 item 10; the dependence
 instrument is the sealed writertraj_depend.py DEPEND_SET=dfa mode.
 Nothing launched; the qualification ladder follows the clean-tree
 prereg-auditor.
+
+## VERDICT WRITER-DFA-1: DFA-UNSTABLE — the sealed qualification ladder STOPS the rung; all four Direct Feedback Alignment cells at seed 21 finish 15,420 steps with finite loss but gate 0 / 120 with 0.0% validity (final loss 3.34 to 3.51 against ln 40 = 3.69 for the uniform prediction), so no cell is STABLE under the frozen law, no (s, lr) is selected, no seed-2 birth is licensed; ACCESSIBILITY ONLY, no mechanism, dependence or compatibility claim; the FUNCTION-BAND prior scores a miss (band never entered), the five conditional priors are unscored (2026-09-09 local, Mac)
+
+Pre-registration: PRE-REG WRITER-DFA-1 (heading L68323; the two
+amendments cite it as L68321), sealed by AMENDMENT
+-SEAL (L68543) and AMENDMENT -PRECISION (L68644); the ACT null
+envelope and calibration were booked before any DFA snapshot was read
+(OBSERVATION -ACT-ENVELOPE-0, L68742) and remain unused by this
+verdict. Every registered process ran under the liverun interlock:
+writerdfa1-qual-c1 (cell 1, launch commit b73681a5, pid 52464, rc 0)
+and writerdfa1-qual-c234 (cells 2 to 4 plus the gates and the
+selection, launch commit be72538f, pid 67257, rc 0); no commit and no
+instrument edit happened while either was live. The receipt-auditor
+ran on the first cell's receipts before cells 2 to 4 were born (no
+blockers; its one should-fix, a recorded parameter dtype, was folded
+at be72538f, so the cell-1 receipt row lacks the param_dtype field
+the other three carry; the driver builds fp32 on mps for all four).
+
+THE SEALED LAW APPLIED (L68321 item 4 and item 12, S5): a cell is
+STABLE iff no non-finite loss and final gate > 0 / 120; "if no cell is
+STABLE, STOP (book DFA-UNSTABLE, accessibility only, no seed-2
+birth)". Measured, all four cells (MODE=dfa, seed 21, W_0 = the seed-21
+construction, init digest 567709d7..., stock stream digests equal to
+the three pins, 17 snapshots each, mps fp32, walls 2,785 to 2,813 s
+per birth at 5.5 it/s, recorded, not adjudicated; gate weights sha as
+printed by gate_eval: 85e3bc37, cf5dedd9, 6d5746bb, 67a5da63 in cell
+order):
+  (s, lr) = (1, 3e-4)     final loss 3.374  gate {3: 0, 4: 0, 5: 0, 6: 0, 7: 0} = 0 / 120  valid 0.0%  final digest c4ccc086  feedback 50aa7d9c
+  (s, lr) = (1, 1e-4)     final loss 3.506  gate {3: 0, 4: 0, 5: 0, 6: 0, 7: 0} = 0 / 120  valid 0.0%  final digest 430d68c2  feedback 50aa7d9c
+  (s, lr) = (0.25, 3e-4)  final loss 3.336  gate {3: 0, 4: 0, 5: 0, 6: 0, 7: 0} = 0 / 120  valid 0.0%  final digest 768433c1  feedback 542db10c
+  (s, lr) = (4, 1e-4)     final loss 3.501  gate {3: 0, 4: 0, 5: 0, 6: 0, 7: 0} = 0 / 120  valid 0.0%  final digest c5b8b5ba  feedback a5531f2e
+Selection (scratch/dfa_qualgate.py, logs/writerdfa1/qual_selection.json):
+stable cells none, selected null, stop DFA-UNSTABLE. The discovery
+births, the FUNCTION-BAND, the dependence desk, the swaps, the 8 x 5
+census, ACT-1 and the alignment diagnostic on the seed-2 arms are
+therefore NOT RUN by the sealed law; no seed-2 DFA specimen exists.
+
+DESCRIPTIVE (no bar): the training loss under DFA never leaves the
+neighborhood of the unigram floor. Logged loss at steps 1,000 / 5,000
+/ 15,400: (1, 3e-4) 3.41 / 3.33 / 3.28; (1, 1e-4) 3.51 / 3.39 / 3.41;
+(0.25, 3e-4) 3.38 / 3.29 / 3.23; (4, 1e-4) 3.50 / 3.40 / 3.40. For
+scale only, the same driver in BP mode at the smoke seed reached loss
+1.25 by step 300 (logs/writerdfa1/smoke.jsonl) and the three registered
+stock births of this recipe (repair set, seeds 5 to 7) gate 65 / 64 / 61
+out of 120 at 15,420 (L67274); the DFA cells are
+not merely below the band, they are at the floor of the gate. The
+feedback scale s spans 16x and the peak lr spans 3x across the four
+cells with no visible effect on the plateau (3.23 to 3.41 at step
+15,400), which is consistent with the credit signal B_l e carrying
+almost no usable direction for this task at this width, but that
+reading is a hypothesis, not a measurement: no alignment readout was
+taken on the qualification arms (the sealed alignment diagnostic is
+defined on the seed-2 arms, which do not exist) and none is booked
+here.
+
+SCORING (S13), adjudicated explicitly: S13 reads "hit iff the band is
+entered" and item 12's DFA-UNSTABLE branch says nothing about scoring,
+so two readings exist (literal: the band was not entered, a MISS;
+conditional: the band was never evaluated, UNSCORED). The literal
+sealed wording governs and this books a MISS; the alternative is
+named here so a later reader can re-adjudicate without a hunt;
+the descriptive point g = c - 9 is moot (no c exists for seed 2; the
+qualification gates are 0). The five conditional priors (T-1,
+DEP-DEPTH, DEP-CLASS, COMPAT, ACT-1) are UNSCORED. Family record: 5
+hits, 2 misses. The sealed alignment expectation (cos rising to 0.2
+to 0.5 by 15,420 in the deepest blocks) is unmeasured.
+
+WHAT THIS DOES AND DOES NOT SAY. It says: under the sealed
+implementation (macro DFA of Launay et al. 2020 with random feedback
+after every block, U(-1, 1) x s / sqrt(40), AdamW, clip 1.0, OneCycle,
+the stock stream, 15,420 steps, no other hyperparameter), the 19M
+house model at d 384 does not reach a non-zero gate at any of the four
+registered cells, so the foreign credit writer is NOT ACCESSIBLE to the
+matched-function comparison at this scale and budget; the
+mechanism-attribution question (is the learned-update dependence
+structure writer-invariant at matched function?) is UNANSWERED by this
+rung, neither refuted nor supported. It does not say that DFA cannot
+train this model under some other feedback law, scale, width,
+normalization, longer horizon or curriculum; that an implementation
+defect explains the plateau (the writer-integrity smoke,
+logs/writerdfa1/leakage.json, produced at 282200dc with the then
+untracked instrument files on a dirty tree and committed unchanged in
+912e50bb, shows the credit path is exactly the registered one: loss
+reaches head and norm only, e detached, the hidden error delivered at
+every block output passes the torch.equal check against B_l e, BP
+parity 0.0); or anything about the
+control writer, which was never born under this driver at seed 2. The
+Launay Table 5 gap (macro DFA perplexity 52.0 v BP 29.8 on
+WikiText-103 with a large Transformer) was the registered reason to
+expect the band to be missed from below at even odds; the measured
+miss is larger than the registered point.
+
+RECEIPTS (force-added and locked): logs/writerdfa1/qual.jsonl (four
+birth rows, four gate rows, one selection row), qual_selection.json,
+logs/liverun/writerdfa1-qual-c1.jsonl, writerdfa1-qual-c234.jsonl,
+plus the pre-launch receipts probe.json, leakage.json, smoke.jsonl,
+act_envelope.json. The 68 qualification snapshots (5.1 GB, untracked,
+digest-anchored in qual.jsonl) stay on disk under
+checkpoints/writerdfa1/ until a handoff decides their fate. Verifier:
+the qualification law was re-applied by hand from the receipt rows
+(four cells, dicts sum to their totals, all zero, no stable cell) and
+the receipt-auditor's cell-1 reconstruction stands; the sealed
+scratch/dfa_verify.py verifies the discovery stage and was not run
+(no discovery artifacts exist).
+
+FENCES: one foreign writer, one implementation, four cells, one
+qualification seed, Mac mps fp32; the qualification cells were
+registered as outside the comparison population and enter no bar;
+gate 0 / 120 at 0.0% validity is a floor reading, not a difference
+measured at sigma; no reading of any DFA quantity beyond the sealed
+qualification numbers was taken.
+
+NEXT (decision for Artin, nothing armed): (a) a DESCRIPTIVE
+alignment / ACT readout on the four qualification arms (zero training,
+CPU, the frozen probe) would say whether B_l e carries any direction at
+all here, and needs its own small pre-reg because the sealed
+diagnostic is defined on seed-2 arms; (b) the next foreign writer
+candidate per the RIFF bank (synthetic gradients / decoupled neural
+interfaces, or a hybrid DFA with true gradient in the last block, or
+a narrower / longer DFA regime) is Artin's choice; (c) the STOP is
+booked in the RIFF bank in place.

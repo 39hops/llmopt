@@ -1,0 +1,65 @@
+{
+ "prereg": "WRITER-DFA-1",
+ "kind": "selection",
+ "commit": "be72538f",
+ "device": "mps",
+ "cells": {
+  "S1_lr0.0003": {
+   "trained": true,
+   "gate": 0,
+   "solves": {
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 0
+   },
+   "stable": false,
+   "final_loss": 3.3744089603424072
+  },
+  "S1_lr0.0001": {
+   "trained": true,
+   "gate": 0,
+   "solves": {
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 0
+   },
+   "stable": false,
+   "final_loss": 3.5059683322906494
+  },
+  "S0.25_lr0.0003": {
+   "trained": true,
+   "gate": 0,
+   "solves": {
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 0
+   },
+   "stable": false,
+   "final_loss": 3.336102247238159
+  },
+  "S4_lr0.0001": {
+   "trained": true,
+   "gate": 0,
+   "solves": {
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 0
+   },
+   "stable": false,
+   "final_loss": 3.5014960765838623
+  }
+ },
+ "stable_cells": [],
+ "selected": null,
+ "stop": "DFA-UNSTABLE",
+ "law": "highest stable final gate; ties lr 3e-4 before 1e-4, then s = 1, 0.25, 4; stable = finite loss and gate > 0",
+ "utc": "2026-09-09T07:39:01+00:00"
+}

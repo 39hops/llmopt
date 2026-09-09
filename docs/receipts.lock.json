@@ -962,12 +962,15 @@
    "source": "prereg"
   },
   "logs/liverun/writerdfa1-qual-c1.jsonl": {
+   "bytes": 538,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "6d699757fa59b61e17030cd9af9520d19b0dcff04d9ee2bf59faf2a7f4ae4f9d",
+   "source": "results",
+   "tracked": true
   },
   "logs/liverun/writerdfa1-qual-c234.jsonl": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/liverun/writertraj0-null2.jsonl": {
@@ -4189,13 +4192,18 @@
    "tracked": true
   },
   "logs/writerdfa1/qual.jsonl": {
+   "bytes": 21611,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "ddd892b7ca2a25a661fcc2a92a1064d9a942cbd92bf2d16f5b8fdb05b52b86bc",
+   "source": "results",
+   "tracked": true
   },
   "logs/writerdfa1/qual_selection.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 1106,
+   "exists": true,
+   "sha256": "17e23333818577f692f0ba6bd6f709fe1fe8e24147cbe36a35a6f1bb55714323",
+   "source": "results",
+   "tracked": true
   },
   "logs/writerdfa1/smoke.jsonl": {
    "bytes": 12254,
