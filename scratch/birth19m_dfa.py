@@ -295,7 +295,7 @@ def main():
            "schedule": schedule, "outdir": str(OUTDIR), "init_state_digest": init_digest,
            "feedback": feedback, "snapshots": snapshots}
     if nonfinite_step is not None:
-        row.update({"stable": False, "nonfinite_step": nonfinite_step, "final": None})
+        row.update({"stable_training": False, "nonfinite_step": nonfinite_step, "final": None})
         write_receipt(row, launch_commit)
         print(f"[dfa] receipt appended to {RECEIPTS} (UNSTABLE at step {nonfinite_step}; no final checkpoint)", flush=True)
         return

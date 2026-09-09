@@ -6,7 +6,7 @@ delta^DFA_l = B_l e and delta^BP_l = dL / dx_{l+1} (torch.autograd.grad,
 read-only). Eligible entries = probe positions carrying a label
 (label != -100); masked positions are excluded. Registered number =
 cosine of the two flattened eligible-entry vectors per block,
-accumulated over 8-row chunks as exact dot products and squared norms;
+accumulated over 32-row chunks as exact dot products and squared norms;
 zero norm of either -> NOT-RESOLVABLE (null), no epsilon. The true
 gradient never updates any arm. Writes logs/writerdfa1/align.json
 (refuses to overwrite). SMOKE=1: the newest smoke DFA birth, 2 chunks,
@@ -35,7 +35,7 @@ from dfa_probe import probe_rows, probe_tensors  # noqa: E402
 
 SMOKE = os.environ.get("SMOKE") == "1"
 OUT = Path("logs/writerdfa1")
-CHUNK = 8
+CHUNK = 32
 
 
 def load_sd(p):

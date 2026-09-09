@@ -1,5 +1,11 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
+ "_last_accept": {
+  "paths": [
+   "logs/writerdfa1/smoke.jsonl"
+  ],
+  "reason": "smoke.jsonl: alignment re-smoked at the sealed 32-row chunk after the prereg-auditor blocker"
+ },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
    "bytes": 3176,
@@ -957,7 +963,15 @@
    "exists": false,
    "source": "prereg"
   },
-  "logs/liverun/writerdfa1-qual.jsonl": {
+  "logs/liverun/writerdfa1-post.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/liverun/writerdfa1-qual-c1.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/liverun/writerdfa1-qual-c234.jsonl": {
    "exists": false,
    "source": "prereg"
   },
@@ -4188,9 +4202,9 @@
    "source": "prereg"
   },
   "logs/writerdfa1/smoke.jsonl": {
-   "bytes": 10314,
+   "bytes": 12254,
    "exists": true,
-   "sha256": "76a7975d45c76956dec1c1b6bfddbec94a87cd1fd3482b58f7371fce6be9d844",
+   "sha256": "334dc9f7748450913f93ea428c5ce470cb1e9abf77f833c5c4c6b99a93086fcd",
    "source": "results",
    "tracked": true
   },

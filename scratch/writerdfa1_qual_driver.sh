@@ -24,5 +24,6 @@ done
 if [ "${GATE:-0}" = "1" ]; then
   echo "=== qualification gates + selection $(date -u +%Y-%m-%dT%H:%M:%SZ) ==="
   .venv/bin/python scratch/dfa_qualgate.py 2>&1 | tee logs/writerdfa1/qualgate.log || rc=$?
+  [ "$rc" -eq 0 ] && git add -f logs/writerdfa1/qual_selection.json logs/writerdfa1/qual.jsonl   # staged for the freeze commit (P5f); committed after disarm
 fi
 mark_done logs/writerdfa1_qual.DONE "$rc"

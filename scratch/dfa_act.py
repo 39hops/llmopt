@@ -174,7 +174,7 @@ def main():
     row_ids, rows, digest, _ = probe_rows(tok)
     commit = subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip()
     rec = {"prereg": "WRITER-DFA-1", "kind": "act", "act_set": ACT_SET, "smoke": SMOKE, "commit": commit, "probe_token_digest": digest,
-           "eig_rel_tol": EIG_REL_TOL, "started_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"), "specimens": {}}
+           "eig_rel_tol": EIG_REL_TOL, "tree_dirty": bool(subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True).stdout.strip()), "started_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"), "specimens": {}}
     if SMOKE:
         births = [json.loads(l) for l in Path("logs/writerdfa1/smoke.jsonl").open() if '"kind": "birth"' in l]
         births = [b for b in births if b.get("final")]

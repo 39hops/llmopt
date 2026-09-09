@@ -129,12 +129,14 @@
   "logs/writerdfa1/align.json",
   "logs/writerdfa1/verify_receipt.json",
   "logs/writerdfa1/smoke.jsonl",
-  "logs/liverun/writerdfa1-qual.jsonl",
-  "logs/liverun/writerdfa1-discovery.jsonl",
   "logs/writerdfa1/probe.json",
   "logs/writerdfa1/leakage.json",
   "logs/writerdfa1/depthclass.json",
-  "logs/writerdfa1/qual_selection.json"
+  "logs/writerdfa1/qual_selection.json",
+  "logs/liverun/writerdfa1-qual-c1.jsonl",
+  "logs/liverun/writerdfa1-qual-c234.jsonl",
+  "logs/liverun/writerdfa1-discovery.jsonl",
+  "logs/liverun/writerdfa1-post.jsonl"
  ],
  "amended_by": [
   "AMENDMENT WRITER-DFA-1-SEAL",
