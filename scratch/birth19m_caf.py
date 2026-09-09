@@ -279,7 +279,10 @@ def main():
                 loss = ob["loss"]
                 ob["total"].backward()
             else:
-                ob = hybrid_objective(model, [], ids[:, :-1], mask[:, :-1], labels, 8)   # zero: BP through the segment, lower stack frozen
+                # zero: forward_hybrid(k_bp=8) attaches nothing by detach; the DFA -> BP cut is realised by
+                # freeze_lower (requires_grad False on emb and blocks 0..7-k), so no graph exists below the
+                # segment and the segment gradients equal those through a detached boundary (same input values)
+                ob = hybrid_objective(model, [], ids[:, :-1], mask[:, :-1], labels, 8)
                 loss = ob["loss"]
                 loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)

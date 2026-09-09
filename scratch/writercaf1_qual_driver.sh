@@ -16,20 +16,25 @@ rc=0
 if [ "${SELECT:-0}" = "1" ]; then
   .venv/bin/python scratch/caf_qualgate.py 2>&1 | tee logs/writercaf1/qualselect.log || rc=$?
   [ "$rc" -eq 0 ] && git add -f logs/writercaf1/qual_selection.json logs/writercaf1/qual.jsonl
-  mark_done logs/writercaf1_qual.DONE "$rc"; exit "$rc"
+  mark_done logs/writercaf1_qual_select.DONE "$rc"; exit "$rc"
 fi
 K="$1"; [ -n "$K" ] || { echo "driver: k required"; exit 3; }
+# sealed STOP: the ladder stops at the first k with a hybrid cell >= 24; refuse a larger k once one exists
+.venv/bin/python -c "import json,sys
+k=int(sys.argv[1]); rows=[json.loads(l) for l in open('logs/writercaf1/qual.jsonl')] if __import__('os').path.exists('logs/writercaf1/qual.jsonl') else []
+cleared=[r['k_bp'] for r in rows if r.get('kind')=='gate' and r.get('mode')=='hybrid' and (r.get('total') or 0)>=24]
+sys.exit(4 if any(c<k for c in cleared) else 0)" "$K" || { echo "driver: a smaller k already cleared the floor; the ladder is stopped"; exit 4; }
 for cell in 1:3e-4 1:1e-4; do
   S="${cell%%:*}"; LR="${cell##*:}"
   echo "=== k=$K hybrid S=$S LR=$LR $(date -u +%Y-%m-%dT%H:%M:%SZ) ==="
   QUAL=1 MODE=hybrid K_BP=$K SEED=23 S=$S LR=$LR .venv/bin/python scratch/birth19m_caf.py \
     2>&1 | tee "logs/writercaf1/train_qual_k${K}_S${S}_lr${LR}.log" || rc=$?
-  [ "$rc" -eq 0 ] || { mark_done logs/writercaf1_qual.DONE "$rc"; exit "$rc"; }
+  [ "$rc" -eq 0 ] || { mark_done logs/writercaf1_qual_k${K}.DONE "$rc"; exit "$rc"; }
 done
 echo "=== k=$K zero-credit control LR=3e-4 $(date -u +%Y-%m-%dT%H:%M:%SZ) ==="
 QUAL=1 MODE=zero K_BP=$K SEED=23 LR=3e-4 .venv/bin/python scratch/birth19m_caf.py \
   2>&1 | tee "logs/writercaf1/train_qual_k${K}_zero.log" || rc=$?
-[ "$rc" -eq 0 ] || { mark_done logs/writercaf1_qual.DONE "$rc"; exit "$rc"; }
+[ "$rc" -eq 0 ] || { mark_done logs/writercaf1_qual_k${K}.DONE "$rc"; exit "$rc"; }
 echo "=== k=$K gates $(date -u +%Y-%m-%dT%H:%M:%SZ) ==="
 GATE_ONLY=1 .venv/bin/python scratch/caf_qualgate.py 2>&1 | tee "logs/writercaf1/qualgate_k${K}.log" || rc=$?
-mark_done logs/writercaf1_qual.DONE "$rc"
+mark_done logs/writercaf1_qual_k${K}.DONE "$rc"

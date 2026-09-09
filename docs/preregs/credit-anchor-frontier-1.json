@@ -31,7 +31,6 @@
   "stop_rule": "first k with a cell at or above the floor; candidate = highest gate, ties lr 3e-4 first; frozen before any seed-2 birth",
   "frontier_closed": "no cell of k = 1, 2, 4 reaches the floor -> FRONTIER-CLOSED, DFA-family births STOP"
  },
- "optional_zero_credit_control": "per k, blocks 0..7-k frozen at W_0, blocks 8-k..7 + head/norm BP; one birth at the qualification seed; descriptive; Artin's choice at GO",
  "discovery": {
   "seed": 2,
   "control": "MODE=bp stock recipe",
@@ -82,7 +81,9 @@
   "logs/writercaf1/qual.jsonl",
   "logs/writercaf1/qual_selection.json",
   "logs/writercaf1/smoke.jsonl",
-  "logs/writerdfa1/prune_inventory.json"
+  "logs/writerdfa1/prune_inventory.json",
+  "logs/writercaf1/births.jsonl",
+  "logs/writercaf1/leakage_run1_surrogate_check_artifact.json"
  ],
  "pre_go": [
   "postmortem booked (L69008)",
