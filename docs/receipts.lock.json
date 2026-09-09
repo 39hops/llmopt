@@ -953,6 +953,14 @@
    "source": "results",
    "tracked": true
   },
+  "logs/liverun/writerdfa1-discovery.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/liverun/writerdfa1-qual.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/liverun/writertraj0-null2.jsonl": {
    "bytes": 536,
    "exists": true,
@@ -4143,6 +4151,10 @@
    "source": "prereg"
   },
   "logs/writerdfa1/gates.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/writerdfa1/probe.json": {
    "exists": false,
    "source": "prereg"
   },

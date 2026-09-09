@@ -2,7 +2,7 @@
  "name": "WRITER-DFA-1",
  "note": "Machine-readable form of PRE-REG WRITER-DFA-1 (design sealed, not launched); the prose governs.",
  "results_id": "2026-09-09-pre-reg-writer-dfa-1-the",
- "registered": "2026-09-09",
+ "registered": "2026-09-08 (Mac local)",
  "machine": "mac",
  "arms": {
   "dfa": {
@@ -78,13 +78,14 @@
    ]
   }
  ],
- "act_observable": "per block: mean attention entropy over heads and unmasked probe tokens (nats) and effective rank of the residual-stream covariance at the block output, on a frozen 256-row probe batch, teacher-forced, CPU float64; vector in R^16",
+ "act_observable": "per block: mean attention entropy over heads and unmasked probe tokens (nats) and effective rank of the residual-stream covariance at the block output, on a frozen 256-row probe batch, teacher-forced, CPU float64; vector in R^16; entropy of the explicitly recomputed causal softmax row (keys <= t, 1/sqrt(d_head) scaling), position 0 excluded; computed offline on snapshots with torch.autograd.grad for the alignment diagnostic",
  "alignment_diagnostic": "cos(B_l e, delta^BP_{l+1}) per block at the 17 snapshots on the probe batch; true gradient never updates the DFA arm; descriptive",
  "interpretation_ladder": {
   "A": "DEP-DEPTH fires, DEP-CLASS no-fire: writer selects depth allocation, ingredient class task/architecture constrained",
   "B": "DEP-DEPTH and DEP-CLASS fire: stronger writer-contingent implementation",
   "C": "DEP-DEPTH, DEP-CLASS, ACT-1 all no-fire: implementation substantially task/architecture constrained under a foreign credit writer",
-  "D": "function band fails: accessibility only"
+  "D": "function band fails: accessibility only",
+  "E": "any other combination: fired/no-fired set booked descriptively, no ladder reading"
  },
  "refuted_if": "band entered AND branch C",
  "registered_prior": {
@@ -103,7 +104,8 @@
   "QUAL: no stable cell -> STOP (DFA-UNSTABLE)",
   "DISCOVERY: ctrl then dfa at seed 2 under liverun; nothing read until both finish",
   "BAND fail -> ACCESSIBILITY ONLY, DFA line stops",
-  "BAND pass -> full observables, verifier, receipt-auditor, prereg-auditor, book once"
+  "BAND pass -> full observables, verifier, receipt-auditor, prereg-auditor, book once",
+  "operational aborts (non-finite loss, stream-digest mismatch, dirty tree, sentinel conflict, disk < 15 GB) book NOT-RUN; no outcome-based early stop inside any birth"
  ],
  "cost_h": {
   "qualification": 3.7,
@@ -111,7 +113,9 @@
   "discovery": 0.9,
   "dependence_and_swaps": 1.2,
   "cpu_observables": 0.3,
-  "optional_depth_x_class": 2.9
+  "total": 6.9,
+  "optional_depth_x_class": 1.7,
+  "total_with_census": 8.6
  },
  "storage_gb": 7.7,
  "receipts": [
@@ -123,6 +127,54 @@
   "logs/writerdfa1/act.json",
   "logs/writerdfa1/align.json",
   "logs/writerdfa1/verify_receipt.json",
-  "logs/writerdfa1/smoke.jsonl"
- ]
+  "logs/writerdfa1/smoke.jsonl",
+  "logs/liverun/writerdfa1-qual.jsonl",
+  "logs/liverun/writerdfa1-discovery.jsonl",
+  "logs/writerdfa1/probe.json"
+ ],
+ "amended_by": [
+  "AMENDMENT WRITER-DFA-1-SEAL"
+ ],
+ "credit_law_detach": "head/norm loss on x_8.detach(); e_t detached; every block input detached; all eight blocks random feedback only; emb gets B_0 e + J_f0^T B_0 e (direct random feedback via the identity path, not backprop)",
+ "feedback_scale": "U(-1,1) * s / sqrt(40); 40 = number of output classes",
+ "adamw_betas": [
+  0.9,
+  0.999
+ ],
+ "thresholds": {
+  "T-1": "C < 0.7771 AND R > 0.6677",
+  "DEP-DEPTH": "> 9.85",
+  "DEP-CLASS": "> 10.34",
+  "COMPAT": "median < -7",
+  "ACT-1": "above both the ACT null envelope and ACT(A,B), both booked as an OBSERVATION before any DFA or control snapshot is read"
+ },
+ "qualification": {
+  "seed": 21,
+  "cells": [
+   [
+    1,
+    0.0003
+   ],
+   [
+    1,
+    0.0001
+   ],
+   [
+    0.25,
+    0.0003
+   ],
+   [
+    4,
+    0.0001
+   ]
+  ],
+  "stable": "finite loss and final gate > 0",
+  "selection": "highest stable final gate; ties: lr 3e-4 before 1e-4, then s = 1, 0.25, 4",
+  "firewall": "frozen before any seed-2 birth; no seed-2 outcome used",
+  "receipt_auditor": "on the first qualification birth before the remaining three"
+ },
+ "driver_seed_law": "MODE=dfa|bp; QUAL=1 seed 21 only; DISCOVERY=1 seed 2 only; SMOKE=1 seed 11 only (checkpoints/writerdfa1_smoke/, logs/writerdfa1/smoke.jsonl); all other seeds refused",
+ "probe_batch": "random.Random(\"writerdfa1-probe\") over the D2-excised stock diet, 256 rows; row ids and token digest committed as logs/writerdfa1/probe.json before any qualification birth",
+ "depth_x_class_census": "8 x 5 cells over the 40 block 2-D tensors, 40 gates per specimen, 80 gates, about 1.7 h, descriptive",
+ "scoring": "FUNCTION-BAND scored on direction (hit iff band entered); band miss leaves the five conditional priors unscored"
 }

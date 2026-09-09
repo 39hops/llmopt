@@ -68539,3 +68539,104 @@ of unmasked label positions; zero at masked positions).
   book once against the ladder. No outcome-based early stop inside
   any birth; operational aborts (non-finite loss, stream-digest
   mismatch, dirty tree, sentinel conflict, disk < 15 GB) book NOT-RUN.
+
+## AMENDMENT WRITER-DFA-1-SEAL (target: PRE-REG WRITER-DFA-1 L68321): prereg-auditor folds, registered before any instrument exists or any qualification birth; six blockers and fifteen should-fixes; no launch (2026-09-08 local, Mac)
+
+Date note: the entries headed 2026-09-09 (L67980 onward) were written
+on the evening of 2026-09-08 Mac local time with UTC dates; ordering
+relative to data is unaffected (every receipt carries UTC
+timestamps). This entry and later ones use the Mac local date.
+
+B1. Block 7 must not receive the true hidden error. The head / norm
+loss is computed on x_8.detach(): logits = head(norm(x_8.detach())),
+L = CE(logits), so head.weight and norm.g receive the true gradient
+and NOTHING flows into block 7 from L; e_t = dL / dlogits_t is
+detached before forming the surrogate S = sum_l <delta_l, x_{l+1}>
+with delta_l = B_l e_t (constant). Every block boundary is detached on
+the input side AND block 7 is detached from the loss on the output
+side; all eight blocks receive random feedback only.
+B2 / B3 / B4. The depth x class census is the 8 x 5 table over the 40
+block 2-D tensors (qkv, o, gate, up, down per block; norms, emb,
+head excluded), 40 gates per specimen, 80 gates for DFA + control,
+about 1.7 h at the measured 75.9 s per gate. Costs restated: 3.7
+(qualification) + 0.8 (control) + 0.9 (DFA) + 1.2 (dependence and
+swaps) + 0.3 (CPU observables) = 6.9 h; with the optional census 8.6
+h. The JSON is corrected in the same commit.
+B5. Literal thresholds, pinned from VERDICT WRITER-DEPENDENCE-NULL-2
+(L68265) and VERDICT WRITER-TRAJECTORY-CENSUS-0 (L67980): T-1 fires
+iff C(DFA, ctrl) at 15,420 < 0.7771 AND R > 0.6677 (the four
+trajectory null pairs' extrema); DEP-DEPTH fires iff the 9-group
+distance > 9.85; DEP-CLASS fires iff the 8-class distance > 10.34;
+COMPAT fires iff the median DFA <-> ctrl swap loss < -7. ACT-1: the
+ACT null envelope (max over the null pairs N1-N2, N3-N4 of the ACT
+distance) and the calibration ACT(A, B) are computed by the ACT
+instrument on the existing snapshots and BOOKED as an OBSERVATION
+before any DFA or control snapshot is read (sequencing law); ACT-1
+then fires iff the DFA-ctrl ACT distance exceeds both booked numbers.
+No envelope is chosen after data lands.
+B6. Ladder completed: (A) DEP-DEPTH fires, DEP-CLASS no-fire; (B)
+DEP-DEPTH and DEP-CLASS fire (ACT-1 reported alongside); (C)
+DEP-DEPTH, DEP-CLASS and ACT-1 all no-fire; (D) FUNCTION-BAND fails;
+(E) any other combination (DEP-DEPTH no-fire with DEP-CLASS fire;
+both no-fire with ACT-1 fire) books the fired / no-fired set
+descriptively with NO ladder reading. Branch C is scoped: within
+these observables, at this scale, one specimen pair.
+S1. emb receives block 0's local credit: with x_1 = x_0 + f_0(x_0)
+and x_0 = emb(ids) attached, emb gets B_0 e + J_{f_0}^T B_0 e; this
+is direct random feedback through the identity path plus the
+within-block term, not backpropagation; the Launay citation for the
+embedding treatment is withdrawn (their embeddings were trained by
+backprop through the first block, which this design does not do).
+S2. Normalization: B_l entries U(-1, 1) times s / sqrt(40), 40 = the
+number of output classes (the loss dimension), stated so; the
+alternative reading (the block width 384) is not used; the s ladder
+spans 16x.
+S3. Citations verified from the paper's pages 7, 8, 16, 18, 19
+(NeurIPS 2020 PDF, read 2026-09-08): Appendix A "Alignment" (cosine
+between the DFA-delivered gradient and the BP gradient, measured at
+the deepest DFA layer); Appendix C "Adapting architectures to DFA"
+(random feedback after every non-linearity, global feedback matrix
+shared across tokens, U(-1, 1) normalized by the square root of the
+output dimension); Appendix D "Weight transport and attention"
+(feedback delivered to the top of the attention layer, W_V trained
+with within-layer transport); Table 5 (macro DFA perplexity 52.0 v
+BP 29.8 on WikiText-103; Adam lr lowered from 1e-4 to 5e-5, beta_2
+0.999). Adam betas pinned: the stock AdamW defaults (0.9, 0.999),
+unchanged for both arms.
+S4. Index convention: delta_l denotes the hidden error at the OUTPUT
+of block l (i.e. at x_{l+1}) for both writers; the alignment
+diagnostic is cos(delta^DFA_l, delta^BP_l) per block.
+S5. Qualification tie-break is a total order: highest stable final
+gate; ties broken by lr 3e-4 before 1e-4, then s = 1, 0.25, 4.
+S6. receipt-auditor runs on the FIRST qualification birth's receipts
+before the remaining three cells are born (new copied driver law).
+S7. Driver seed law, registered: MODE=dfa|bp, qualification seed 21
+only with QUAL=1, discovery seed 2 only with DISCOVERY=1, smoke seed
+11 only with SMOKE=1 (smoke writes checkpoints/writerdfa1_smoke/ and
+logs/writerdfa1/smoke.jsonl only; real paths refuse-if-exists);
+all other seeds refused.
+S8. The frozen 256-row probe batch is drawn by random.Random(
+"writerdfa1-probe") from the D2-excised stock diet, its row-id list
+and token-id digest committed with the instrument
+(logs/writerdfa1/probe.json, sha in the qualification receipt)
+before any qualification birth.
+S9. The alignment diagnostic and ACT run OFFLINE on saved snapshots
+with torch.autograd.grad on a fresh model instance; never inside the
+training loop.
+S10. H_l = entropy (nats) of the explicitly recomputed causal softmax
+attention row over keys <= t, matching SDPA's 1 / sqrt(d_head)
+scaling, averaged over the 6 heads and the unmasked probe tokens
+with position 0 excluded (its entropy is identically zero).
+S11. Ladder wording: "causal DEPTH allocation" -> "DEPTH dependence
+allocation"; "causal implementation" -> "learned-update dependence
+structure"; no causal or mechanism claim is drawn from revert gates.
+S12. Gate count: 18 gates per specimen plus one shared W_0 gate
+(seed 2); 2 x 18 + 1 + 16 swaps = 53.
+S13. Scoring: FUNCTION-BAND is scored on the even-odds direction
+(hit iff the band is entered); the point g = c - 9 is descriptive;
+if the band is missed the five conditional priors are unscored.
+S14. JSON mirror corrected: liverun receipt logs/liverun/writerdfa1-*.jsonl
+added; operational-abort clause and qualification firewall mirrored;
+census cost 1.7 h; totals 6.9 / 8.6 h; literal thresholds.
+S15. Date convention as noted above.
+Everything else in L68321 stands. Nothing launches without Artin GO.
