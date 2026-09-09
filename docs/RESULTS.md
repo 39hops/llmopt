@@ -69299,3 +69299,70 @@ retain per arm final.pt, feedback.pt, step_00000.pt (W_0), step_00463.pt
 (the first measured rank-collapse point, which is also the OneCycle
 peak snapshot) and remove the other 14 snapshots; receipts unchanged.
 Everything else in L69122 stands.
+
+## OBSERVATION CREDIT-ANCHOR-FRONTIER-1-INSTRUMENT-0: implementation, endpoint identities, per-k leakage and path-isolated smokes of the hybrid DFA frontier instrument, booked before any qualification birth; K_BP = 0 reproduces the sealed WRITER-DFA-1 path and K_BP = 8 the stock backprop path bit-exactly through one AdamW step; 18 / 18 leakage checks pass for k = 1, 2, 4 and the zero-credit freeze law; 300-step seed-11 smokes for k = 1, 2, 4 and zero k = 2 complete; WRITER-DFA-1 qualification set pruned after a 0-mismatch digest inventory; no qualification or discovery birth (2026-09-09 local, Mac)
+
+Under the implement / test / smoke GO of AMENDMENT CREDIT-ANCHOR-
+FRONTIER-1-PRECISION (L69223). Nothing launched under the interlock:
+every process here is a smoke or a zero-training check.
+
+Instrument (commit 132abd3b and the fold below): scratch/dfa_credit.py
+extended with forward_hybrid / hybrid_objective / freeze_lower (the
+sealed WRITER-DFA-1 functions above the frontier section are
+byte-identical to the 5568f890 blob, pinned by
+tests/test_caf_source_invariant.py); scratch/birth19m_caf.py, a sibling
+of the frozen birth19m_dfa.py with MODE=bp|dfa|hybrid|zero and K_BP
+(the stock loop lines and both sealed branches survive verbatim; QUAL
+seed 23 with K_BP in {1, 2, 4} and (S, LR) in {(1, 3e-4), (1, 1e-4)}
+for hybrid, LR 3e-4 for zero; every zero birth verifies at its end
+that the 43 frozen tensors are bit-identical to W_0); scratch/
+caf_qualgate.py (floor 24, smallest-k selection, zero controls
+descriptive); scratch/writercaf1_qual_driver.sh (not launched);
+scratch/caf_leakage_smoke.py; scratch/dfa_prune.py.
+
+F1 endpoint identities (logs/writercaf1/leakage.json, fixture of
+L68644 P1, tolerance 1e-7, bit-exact where the ops coincide):
+hybrid_objective(k_bp = 0) equals the sealed dfa_objective in loss, e,
+all eight deltas and all 59 parameter gradients (torch.equal); the new
+driver in MODE=hybrid K_BP=0 equals the sealed driver in MODE=dfa on
+the first stock batch in post-clip gradients and post-step parameters
+(max abs diff 0.0, 0.0). hybrid_objective(k_bp = 8) equals the stock
+forward / backward (logits and all gradients, max abs diff 0.0); the
+new driver in MODE=hybrid K_BP=8 equals the sealed driver in MODE=bp
+(0.0, 0.0). F2 per k in {1, 2, 4}: the loss reaches exactly the
+parameters of blocks 8-k..7, head.weight and norm.g; the surrogate
+reaches exactly the parameters of blocks 0..7-k and emb; the loss has
+no path to the output of block 7-k; the delivered error at every lower
+block output equals B_l e (torch.equal); e detached; head / norm
+gradients equal the stock gradients (0.0). Recorded, not adjudicated:
+the BP-segment block gradients equal the stock gradients at W_0 (max
+abs diff 0.0; the segment's parameter gradients depend on its input
+values, not on whether the input carries a graph). F3 zero k = 2: no
+gradient on the 43 frozen tensors, all 43 equal W_0 after one step,
+all 16 trainable tensors moved. Disclosure: the first leakage run
+reported two false failures per k because the check built the
+surrogate as total - loss (the loss graph then returns zero tensors,
+not None, on the BP blocks); the check was rewritten to use the
+surrogate terms directly and the first receipt is kept as
+logs/writercaf1/leakage_run1_surrogate_check_artifact.json. Second
+disclosure: the sealed driver's fixture runs append rows to the locked
+logs/writerdfa1/smoke.jsonl and write fixture directories; both were
+restored / removed by hand after the first run and the smoke now
+restores them itself.
+
+Smokes (seed 11, 300 steps, mps, logs/writercaf1/smoke.jsonl,
+checkpoints/writercaf1_smoke/): hybrid k = 1 loss 2.94 at step 200
+(4.9 it/s), k = 2 2.90 (4.5 it/s), k = 4 1.53 (4.5 it/s), zero k = 2
+1.14 (10.8 it/s, half the backward), all rc 0, digests read back;
+descriptive only, 300 steps, one seed, no reading enters any bar.
+
+Disposition (L69223 F5): logs/writerdfa1/prune_inventory.json records
+76 files with sha256 and state digest against qual.jsonl, 0
+mismatches; 60 snapshots removed (4.23 GB), 16 files kept (step_00000,
+step_00463, final, feedback per arm; 868 MB remain).
+
+Pre-GO status for the ladder: source invariants green (6 tests),
+identities green, leakage 18 / 18, smokes 4 / 4, clean-tree
+prereg-auditor next; a separate Artin GO is required for any seed-23
+birth. Receipts force-added and locked: logs/writercaf1/leakage.json,
+logs/writercaf1/smoke.jsonl, logs/writerdfa1/prune_inventory.json.

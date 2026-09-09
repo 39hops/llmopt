@@ -147,6 +147,13 @@ def main():
             dp = max(maxdiff(x["params"][n], y["params"][n]) for n in y["params"])
             ok(name, set(x["grads"]) == set(y["grads"]) and dg <= TOL and dp <= TOL, max_abs_diff_grads=dg, max_abs_diff_params=dp, loss_x=x["loss"], loss_y=y["loss"])
         z = run_driver("scratch/birth19m_caf.py", "zero", 2, d / "z2.pt", stamp)
+        # the sealed driver appends its fixture rows to the LOCKED WRITER-DFA-1 smoke receipt and
+        # writes fixture dirs under its smoke root; both are restored / removed here and disclosed
+        import shutil
+        subprocess.run(["git", "checkout", "--", "logs/writerdfa1/smoke.jsonl"], check=True)
+        for fd in Path("checkpoints/writerdfa1_smoke").glob(f"*_fixture_{stamp}"):
+            shutil.rmtree(fd)
+        R["sealed_receipt_restored"] = "logs/writerdfa1/smoke.jsonl restored to HEAD after the sealed-driver fixture runs; fixture dirs removed"
         w0 = fixture_model(tok).state_dict()
         frozen, trainable = freeze_lower(fixture_model(tok), 2)
         frozen_unmoved = all(torch.equal(z["params"][n], w0[n]) for n in frozen)

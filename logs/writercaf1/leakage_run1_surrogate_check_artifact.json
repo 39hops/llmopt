@@ -1,0 +1,158 @@
+{
+ "prereg": "CREDIT-ANCHOR-FRONTIER-1",
+ "amendment": "PRECISION F1/F2/F3",
+ "tol": 1e-07,
+ "fixture_seed": 11,
+ "checks": {
+  "F1_k0_objective_identity": {
+   "pass": true,
+   "n_params": 59
+  },
+  "F1_k8_objective_identity": {
+   "pass": true,
+   "max_abs_diff_logits": 0.0,
+   "max_abs_diff_grads": 0.0
+  },
+  "F2_k1_top_bp_present_surrogate_absent": {
+   "pass": false,
+   "reached_extra": [],
+   "reached_missing": []
+  },
+  "F2_k1_lower_ce_absent_surrogate_local": {
+   "pass": false,
+   "surrogate_extra": [
+    "blocks.7.down.weight",
+    "blocks.7.gate.weight",
+    "blocks.7.n1.g",
+    "blocks.7.n2.g",
+    "blocks.7.o.weight",
+    "blocks.7.qkv.weight",
+    "blocks.7.up.weight",
+    "head.weight",
+    "norm.g"
+   ],
+   "surrogate_missing": []
+  },
+  "F2_k1_boundary_detached_delivered_B_e": {
+   "pass": true
+  },
+  "F2_k1_e_detached_head_norm_true": {
+   "pass": true,
+   "max_abs_diff_head": 0.0,
+   "max_abs_diff_norm": 0.0,
+   "bp_segment_block_grads_v_stock_max_abs_diff": 0.0
+  },
+  "F2_k2_top_bp_present_surrogate_absent": {
+   "pass": false,
+   "reached_extra": [],
+   "reached_missing": []
+  },
+  "F2_k2_lower_ce_absent_surrogate_local": {
+   "pass": false,
+   "surrogate_extra": [
+    "blocks.6.down.weight",
+    "blocks.6.gate.weight",
+    "blocks.6.n1.g",
+    "blocks.6.n2.g",
+    "blocks.6.o.weight",
+    "blocks.6.qkv.weight",
+    "blocks.6.up.weight",
+    "blocks.7.down.weight",
+    "blocks.7.gate.weight",
+    "blocks.7.n1.g",
+    "blocks.7.n2.g",
+    "blocks.7.o.weight",
+    "blocks.7.qkv.weight",
+    "blocks.7.up.weight",
+    "head.weight",
+    "norm.g"
+   ],
+   "surrogate_missing": []
+  },
+  "F2_k2_boundary_detached_delivered_B_e": {
+   "pass": true
+  },
+  "F2_k2_e_detached_head_norm_true": {
+   "pass": true,
+   "max_abs_diff_head": 0.0,
+   "max_abs_diff_norm": 0.0,
+   "bp_segment_block_grads_v_stock_max_abs_diff": 0.0
+  },
+  "F2_k4_top_bp_present_surrogate_absent": {
+   "pass": false,
+   "reached_extra": [],
+   "reached_missing": []
+  },
+  "F2_k4_lower_ce_absent_surrogate_local": {
+   "pass": false,
+   "surrogate_extra": [
+    "blocks.4.down.weight",
+    "blocks.4.gate.weight",
+    "blocks.4.n1.g",
+    "blocks.4.n2.g",
+    "blocks.4.o.weight",
+    "blocks.4.qkv.weight",
+    "blocks.4.up.weight",
+    "blocks.5.down.weight",
+    "blocks.5.gate.weight",
+    "blocks.5.n1.g",
+    "blocks.5.n2.g",
+    "blocks.5.o.weight",
+    "blocks.5.qkv.weight",
+    "blocks.5.up.weight",
+    "blocks.6.down.weight",
+    "blocks.6.gate.weight",
+    "blocks.6.n1.g",
+    "blocks.6.n2.g",
+    "blocks.6.o.weight",
+    "blocks.6.qkv.weight",
+    "blocks.6.up.weight",
+    "blocks.7.down.weight",
+    "blocks.7.gate.weight",
+    "blocks.7.n1.g",
+    "blocks.7.n2.g",
+    "blocks.7.o.weight",
+    "blocks.7.qkv.weight",
+    "blocks.7.up.weight",
+    "head.weight",
+    "norm.g"
+   ],
+   "surrogate_missing": []
+  },
+  "F2_k4_boundary_detached_delivered_B_e": {
+   "pass": true
+  },
+  "F2_k4_e_detached_head_norm_true": {
+   "pass": true,
+   "max_abs_diff_head": 0.0,
+   "max_abs_diff_norm": 0.0,
+   "bp_segment_block_grads_v_stock_max_abs_diff": 0.0
+  },
+  "F1_k0_driver_v_sealed_dfa": {
+   "pass": true,
+   "max_abs_diff_grads": 0.0,
+   "max_abs_diff_params": 0.0,
+   "loss_x": 3.9126029014587402,
+   "loss_y": 3.9126029014587402
+  },
+  "F1_k8_driver_v_sealed_bp": {
+   "pass": true,
+   "max_abs_diff_grads": 0.0,
+   "max_abs_diff_params": 0.0,
+   "loss_x": 3.9126029014587402,
+   "loss_y": 3.9126029014587402
+  },
+  "F3_zero_k2_freeze_law": {
+   "pass": true,
+   "n_frozen": 43,
+   "n_trainable": 16,
+   "loss": 3.9126029014587402
+  }
+ },
+ "probe_token_digest": "18b2229060ede9cc842181e96390f7f19e15e93d411644708768af04b82f4588",
+ "all_pass": false,
+ "torch": "2.12.1",
+ "code_commit": "15af52ea",
+ "tree_dirty": true,
+ "run_utc": "2026-09-09T12:41:15+00:00"
+}
