@@ -289,12 +289,18 @@
    "tracked": true
   },
   "logs/dfapost/postmortem.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 257413,
+   "exists": true,
+   "sha256": "2604a10a560644fb349060cde989139db262e0db17cb636daa1ebfe2d22e6e34",
+   "source": "results",
+   "tracked": true
   },
   "logs/dfapost/rows.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 140296,
+   "exists": true,
+   "sha256": "4f932f0be7380827f7d7a90dd0a49ad91eef5c5b4d7762274e1a8dcd41143d61",
+   "source": "results",
+   "tracked": true
   },
   "logs/dfapost/smoke.jsonl": {
    "bytes": 7782,
@@ -962,7 +968,8 @@
    "tracked": true
   },
   "logs/liverun/dfapost0.jsonl": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/liverun/interlock-smoke.jsonl": {

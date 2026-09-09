@@ -24,5 +24,15 @@
   "logs/liverun/dfapost0.jsonl"
  ],
  "does_not_revise": "VERDICT WRITER-DFA-1 (RESULTS L68802)",
- "results_id": "2026-09-09-pre-reg-why-dfa-failed-descriptive"
+ "results_id": "2026-09-09-pre-reg-why-dfa-failed-descriptive",
+ "outcome": {
+  "observation_id": "2026-09-09-observation-why-dfa-failed-descriptive-0",
+  "results_line": 69008,
+  "max_abs_A": 0.034,
+  "rank_collapse": "1.05 to 1.36 at every block from step 463",
+  "bp_norm_at_15420": "2.8e-5 to 1.2e-9",
+  "outside_share": 0.0,
+  "act_dist_from_w0": "59.0 to 59.7",
+  "expectations_held": 4
+ }
 }

@@ -69004,3 +69004,117 @@ amends L68802; no training, no gate. Booking: an OBSERVATION with the
 curves and tables, then the CREDIT-ANCHOR-FRONTIER design (design only,
 Artin GO before any birth). Cost: CPU only, priced at 68 snapshot
 evaluations x (alignment + ACT), about 2 to 4 h.
+
+## OBSERVATION WHY-DFA-FAILED-DESCRIPTIVE-0: the WRITER-DFA-1 failure co-occurs with NO FEEDBACK ALIGNMENT and RESIDUAL-STREAM RANK COLLAPSE — across all four seed-21 cells, all 17 snapshots and all eight blocks the hidden-credit alignment never exceeds 0.034 in magnitude; the residual-stream effective rank is 20 to 24 at W_0 and 1.0 to 1.4 at every block from step 463 (the OneCycle peak) to 15,420; the true hidden error on the probe falls from 4e-2 to between 3e-5 and 1e-9 while B_l e stays at its fixed scale (Q from 0.76 to 14 at W_0 to 3e1 to 1.8e8 after); at 15,420 the blocks have moved by 410 to 1,530 in L2 each while emb, head and norm together moved 4 to 8 (OUTSIDE share of the update 0.000 after step 0); ACT distance from W_0 59.0 to 59.7 in all cells with the cells within 0.05 to 1.7 of one another at matched steps; descriptive, no bars, does not revise L68802 (2026-09-09 local, Mac; zero training, CPU, frozen probe)
+
+Registered at PRE-REG WHY-DFA-FAILED-DESCRIPTIVE-0 (L68941) before any
+seed-21 quantity was read; instrument scratch/dfa_postmortem.py at
+09f12bea, run under the liverun interlock (dfapost0, pid 43067, rc 0,
+23.7 min wall, CPU only), 68 rows streamed to logs/dfapost/rows.jsonl, tables in
+logs/dfapost/postmortem.json (both force-added and locked), clean
+tree, every snapshot digest and feedback digest checked against
+qual.jsonl, ACT self-check asserted at <= 1e-8 on all 69
+evaluations (68 snapshots plus W_0; the assert is the receipt, rc 0), no
+NOT-RESOLVABLE cell (no zero norm anywhere).
+
+W_0 (seed 21, shared by the four cells): probe loss 3.772 (the
+untrained model sits above the uniform 3.689), attention entropy H_l
+3.33 nats at every block, effective rank r_l 20.1 (block 0) rising to
+24.0 (block 7).
+
+A_l(t), the sealed alignment cos(B_l e, delta^BP_l): max |A| over all
+4 x 17 x 8 = 544 readings is 0.034 (cell (0.25, 3e-4), block 0, step
+3,084); per cell the maxima are 0.023, 0.023, 0.034, 0.023; at W_0 the
+values are the same in all four cells (same weights, same e, s cancels
+in the cosine): -0.004, 0.006, 0.023, -0.001, -0.014, 0.009, -0.021,
+0.001 for blocks 0..7, and they never grow. No block, no cell, no
+step shows alignment; the registered expectation |A| < 0.05 held
+everywhere and the Launay-style "alignment then memorise" dynamics
+did not occur at any scale s.
+
+Q_l(t) = ||B_l e|| / ||delta^BP_l||: at W_0 Q is set by s (3.0 to 3.5
+at s = 1, 0.76 to 0.88 at s = 0.25, 12 to 14 at s = 4) and is therefore
+NOT a magnitude defect at initialization (the s = 0.25 cell starts
+with the feedback slightly smaller than the true error). After the
+first steps Q explodes because the DENOMINATOR collapses: the BP
+hidden-error norm on the probe falls from 4e-2 at W_0 to between 2.7e-3
+and 9.6e-5 by step 463 and to between 2.8e-5 and 1.2e-9 at 15,420
+(per-cell minima over all steps 3.1e-7 at 3,084, 2.3e-9, 1.2e-9, 2.8e-9
+at 14,392), while ||B_l e|| stays at its fixed scale
+(1.2e-1 at s = 1, 3.1e-2 at s = 0.25, 5.0e-1 at s = 4, as the loss
+plateaus). Q at 15,420, blocks 1..7: about 2.9e4 (1, 3e-4), 5.4e7 (1,
+1e-4), 2.6e7 (0.25, 3e-4), 1.8e8 (4, 1e-4); block 0 smaller by 3x to
+200x depending on the cell. Reading: the true gradient at every block output has become
+numerically negligible, i.e. the network reached a state in which the
+loss is insensitive to the residual stream (the probe loss sits at 3.15 to
+3.48 against the uniform 3.689, consistent with a marginal-only fit,
+which is an interpretation: no marginal entropy was computed), and the random feedback
+keeps pushing at full strength with no alignment.
+
+ACT and the rank collapse (the unregistered finding): by step 463 the
+effective rank at every block output is 1.08 to 1.25 in all four cells
+(W_0: 20 to 24) and it stays between 1.05 and 1.36 at every later step
+through 15,420 (1.07 to 1.32 at the end); the
+residual stream on the probe is a one-dimensional line. Attention
+entropy at 463 is 1.4 to 2.4 nats (W_0 3.33) and at 15,420 splits by
+depth: blocks 0 and 1 at 0.50 to 1.04 nats (near-deterministic
+attention), blocks 2..7 at 1.9 to 2.8. ACT distance from W_0 is 59.0
+to 59.7 in all four cells at every step from 463 on (the rank
+coordinates dominate); pairwise ACT distances among the cells at
+matched steps are 0.05 to 1.7 (final: 0.36 between the two lr 1e-4
+cells, 1.0 to 1.6 otherwise; the four final vectors are in
+postmortem.json final_act), so the four cells land on one activation
+configuration. The cross-init anchors of L68742 (null envelope 8.9,
+ACT(A, B) 15.7) are quoted as context only; the seed-21 pairwise
+values share no fence with them and are not compared to them.
+
+U_S(t), learned-update L2 norm: GLOBAL 161 (463) to 3,286 (15,420) at
+(1, 3e-4), 62 to 1,289 at (1, 1e-4), 178 to 3,596 at (0.25, 3e-4), 61
+to 1,277 at (4, 1e-4); per block 1,030 to 1,530 (lr 3e-4) or 410 to
+560 (lr 1e-4) at 15,420, decreasing mildly with depth (block 0 the
+largest); OUTSIDE (emb, head, norm) 4.3 to 7.6, share of the GLOBAL
+squared norm 0.000 at every step after 0 (undefined at step 0). Movement was not suppressed: the
+random-credit blocks moved 200x to 480x more than the parameters
+that carry the true gradient, and they kept moving after the loss had
+plateaued (GLOBAL grows 20.2x to 20.8x from step 463 to 15,420 with
+the probe loss between 3.15 and 3.48 throughout). For scale, the seed-11 smoke DFA arm
+moved GLOBAL by 74 in its first 300 steps (logs/dfapost/smoke.jsonl),
+consistent with the seed-21 rate; the DFA blocks are not slow, they
+are fast and unaligned.
+
+Classification against the registered readings: NOT "feedback too
+weak" (Q >= 0.8 at W_0 and >> 1 after; s spans 16x with the same
+outcome); NOT "movement suppressed" (U in the blocks is huge); it is
+"strong, misdirected, moving" AND, beyond the registered classes,
+"representation collapse": under direct random feedback of the form
+B_l e_t (a per-token vector confined to the 40-dimensional column space
+of B_l) every block output is a near-one-dimensional residual stream by
+step 463 in all four cells, the true error is negligible from then on,
+and no cell in this regime recovered rank by 15,420; whether the
+feedback CAUSES the collapse is not tested here (no zero-credit or BP
+control on this seed) and is exactly what the frontier's optional
+zero-credit control would separate. The four registered
+expectations all held (|A| < 0.05; Q >> 1 after step 0; ACT far from
+W_0 with the cells nearer each other than W_0; U not OUTSIDE); the
+rank collapse and its timing (present at the OneCycle peak, the first
+saved snapshot after step 0) were not registered and are booked as the
+finding of this postmortem, descriptive.
+
+Consequences for the banked next steps (decisions, not launches): (i)
+the OPTIMIZER-REGIME DFA REPAIR bank is NOT released: a magnitude or
+lr lever cannot address "no alignment at any s and a rank-1 stream by
+step 463" (the lr 1e-4 cells collapse as completely as 3e-4); (ii) the
+CREDIT-ANCHOR-FRONTIER must state that its lower DFA stack is expected
+to present a collapsed stream to the BP top segment (observed here
+without a control), so the
+frontier measures how many exact-credit blocks can rebuild a usable
+representation from a degenerate input; a registered ZERO-CREDIT
+control (lower blocks frozen at W_0, k top blocks BP) is proposed in
+that design to separate "DFA credit harms" from "no credit"; (iii) the
+synthetic-gradient family (learned per-token feedback) is unaffected
+in ranking. Fences: one seed, four cells, descriptive throughout, no
+bar fired or scored; the collapse is measured on the frozen probe
+under the frozen ACT definition; "the loss is insensitive to the
+stream" is read from the BP-norm collapse on the probe, not from a
+Hessian or a perturbation test; nothing here amends VERDICT
+WRITER-DFA-1 (L68802), whose STOP stands.
