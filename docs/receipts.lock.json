@@ -288,6 +288,21 @@
    "source": "results",
    "tracked": true
   },
+  "logs/dfapost/postmortem.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/dfapost/rows.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/dfapost/smoke.jsonl": {
+   "bytes": 7782,
+   "exists": true,
+   "sha256": "4e4f587a1d560d2eda23c174598be0f40978ad9007e6bfd0ab91c1239d6ec6b0",
+   "source": "results",
+   "tracked": true
+  },
   "logs/emitterdiv/answerform0.jsonl": {
    "bytes": 59795,
    "exists": true,
@@ -945,6 +960,10 @@
    "sha256": "b173a11a2280024c5190fd7b265f90aa603b4792f396cf6b1e5cb42de8130888",
    "source": "results",
    "tracked": true
+  },
+  "logs/liverun/dfapost0.jsonl": {
+   "exists": false,
+   "source": "prereg"
   },
   "logs/liverun/interlock-smoke.jsonl": {
    "bytes": 537,

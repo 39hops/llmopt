@@ -1,0 +1,28 @@
+{
+ "name": "WHY-DFA-FAILED-DESCRIPTIVE-0",
+ "note": "Machine-readable form of PRE-REG WHY-DFA-FAILED-DESCRIPTIVE-0; the prose governs. Descriptive, no bars.",
+ "registered": "2026-09-09 (Mac local)",
+ "machine": "mac",
+ "specimens": "the four WRITER-DFA-1 qualification arms at seed 21, 17 snapshots each",
+ "quantities": [
+  "A_l(t) sealed alignment cosine",
+  "Q_l(t) magnitude ratio ||B_l e|| / ||delta_BP||",
+  "ACT(t) R^16 distance from W_0, pairwise, final",
+  "U_S(t) learned-update norms GLOBAL / BLOCK0..7 / OUTSIDE"
+ ],
+ "bars": [],
+ "expectations_unscored": {
+  "A": "|A| < 0.05 everywhere",
+  "Q": ">> 1 after step 0",
+  "ACT": "far from W_0, cells closer to each other than to W_0",
+  "U": "not concentrated OUTSIDE"
+ },
+ "receipts": [
+  "logs/dfapost/rows.jsonl",
+  "logs/dfapost/postmortem.json",
+  "logs/dfapost/smoke.jsonl",
+  "logs/liverun/dfapost0.jsonl"
+ ],
+ "does_not_revise": "VERDICT WRITER-DFA-1 (RESULTS L68802)",
+ "results_id": "2026-09-09-pre-reg-why-dfa-failed-descriptive"
+}

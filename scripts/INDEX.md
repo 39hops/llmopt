@@ -1928,6 +1928,12 @@ WRITER-DFA-1 writer-integrity smoke (AMENDMENT -PRECISION L68644 P1): mechanical
 - `maxdiff(a, b)`
 - `main()`
 
+### scratch/dfa_postmortem.py
+WHY-DFA-FAILED-DESCRIPTIVE-0: zero-training postmortem of the four WRITER-DFA-1 qualification arms (seed 21, checkpoints/writerdfa1/qual_*; VERDICT WRITER-DFA-1 RESULTS L68802). CPU, frozen 256-row probe (logs/writerdfa1/probe.json), existing snapshots only. For every cell, every saved snapshot and every block:
+
+- `update_norms(sd, w0)`
+- `main()`
+
 ### scratch/dfa_probe.py
 WRITER-DFA-1 frozen probe batch (AMENDMENT -SEAL S8, -PRECISION P5e): 256 rows drawn by random.Random("writerdfa1-probe") from the length-sorted encoded D2-excised stock diet (C.encode_with_levels(C.load_excised_rows(), tok)); row ids = indices into that list. logs/writerdfa1/probe.json records the row ids, the sha256 of the JSON token lists, the diet size and the commit; it is committed before any qualification birth and every consumer (leakage smoke, ACT, alignment) re-derives the rows and asserts the digest.
 

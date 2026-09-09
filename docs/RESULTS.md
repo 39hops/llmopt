@@ -68937,3 +68937,70 @@ stage) and keeps under receipts only the produced set: probe.json,
 leakage.json, smoke.jsonl, act_envelope.json, qual.jsonl,
 qual_selection.json and the two qualification interlock receipts.
 Nothing else changes.
+
+## PRE-REG WHY-DFA-FAILED-DESCRIPTIVE-0: zero-training postmortem of the four WRITER-DFA-1 qualification arms — hidden-credit alignment A_l(t) and magnitude ratio Q_l(t) per block and snapshot, the frozen ACT observable over time and across cells, and learned-update norms by BLOCK / OUTSIDE; descriptive curves and tables, no bars; does not revise WRITER-DFA-1 (2026-09-09 local, Mac; CPU, frozen probe, existing snapshots only)
+
+Artin GO 2026-09-09 (morning): WRITER-DFA-1 (VERDICT L68802) is a
+clean ACCESSIBILITY negative, not an answer to writer invariance; the
+mechanism-attribution program is NOT parked; the literal FUNCTION-BAND
+MISS stands and the five conditional priors remain UNSCORED;
+checkpoints/writerdfa1/ is retained until this postmortem is booked.
+This entry is registered before any alignment, ACT or update-norm
+quantity of the four seed-21 arms is read (the smoke arm at seed 11 was
+read to qualify the instrument; it enters nothing).
+
+Specimens: the four qualification cells of L68802 (seed 21, shared W_0
+= the seed-21 construction, init digest 567709d7...; (s, lr) in {(1,
+3e-4), (1, 1e-4), (0.25, 3e-4), (4, 1e-4)}), each at its 17 saved
+snapshots (step 0, 463, then every 1,028 to 15,420), feedback matrices
+loaded from each arm's feedback.pt and digest-checked against
+qual.jsonl. Probe: the frozen 256-row batch (probe.json, digest
+18b22290...). Instrument: scratch/dfa_postmortem.py (imports the sealed
+reductions: dfa_align.align_snapshot, dfa_act.act_vector,
+writertraj_census flat / SETS; no new reduction), smoked on the seed-11
+smoke arm (2 snapshots, 2 chunks; logs/dfapost/smoke.jsonl). Rows
+stream to logs/dfapost/rows.jsonl (kill-safe), tables to
+logs/dfapost/postmortem.json; run under the liverun interlock
+(dfapost0).
+
+Quantities, per cell x snapshot x block:
+  A_l(t) = cos(delta^DFA_l, delta^BP_l) under the sealed P2 law
+    (L68644): float64, label positions only, masked excluded, 32-row
+    chunks, zero norm -> null (NOT-RESOLVABLE), no epsilon;
+    delta^BP_l is the read-only offline hidden error.
+  Q_l(t) = ||delta^DFA_l||_2 / ||delta^BP_l||_2 over the same flattened
+    eligible entries; null when the BP norm is zero; no epsilon.
+  ACT(t) in R^16 (P3 / S10 law): distance from the shared W_0 over
+    time, pairwise distances among the four cells at matched steps,
+    final vectors.
+  U_S(t) = ||theta_S(t) - theta_S(0)||_2 for S in {GLOBAL, BLOCK0..7,
+    OUTSIDE} and the OUTSIDE share of the GLOBAL squared norm
+    (existing flatten code; no new invention).
+Readings the tables are meant to separate (descriptive, no threshold;
+no legitimate pre-data null exists for A, Q or U on this seed): A near
+zero with Q small = feedback effectively too weak; A near zero with Q
+large = strong but misdirected feedback; A rising over time = feedback
+alignment occurs while structured function stays inaccessible; U
+concentrated OUTSIDE with the blocks nearly static = movement itself
+suppressed while head / norm learn the marginal token distribution; U
+large in the blocks with ACT far from W_0 = representation movement
+without structured learning.
+
+Registered expectations (descriptive, NOT scored, on the record so the
+reading cannot be reshaped after data): A_l stays below 0.05 in
+magnitude at every block and step for all four cells; Q_l is far above
+1 at every step after step 0 (the BP hidden error shrinks as the head
+fits the marginal while B_l e does not); ACT moves far from W_0 in all
+four cells (representation movement) with the four cells diverging
+from one another by less than each moves from W_0; U is NOT
+concentrated OUTSIDE (the blocks move) — the expected failure class is
+"strong, misdirected, moving" rather than "too weak" or "suppressed".
+
+Fences: one seed, four cells, cross-init anchors (ACT(A, B) 15.714 and
+the null envelope 8.904, L68742) shown as context only under their
+existing fences and never as a same-init null for these arms; the
+qualification arms remain outside every WRITER-DFA-1 bar; nothing here
+amends L68802; no training, no gate. Booking: an OBSERVATION with the
+curves and tables, then the CREDIT-ANCHOR-FRONTIER design (design only,
+Artin GO before any birth). Cost: CPU only, priced at 68 snapshot
+evaluations x (alignment + ACT), about 2 to 4 h.
