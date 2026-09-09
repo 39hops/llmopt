@@ -100,3 +100,69 @@ def bp_hidden_errors(model, ids, attn_mask, labels):
 
 def block_params(model, l):
     return [p for n, p in model.named_parameters() if n.startswith(f"blocks.{l}.")]
+
+
+# ---------------------------------------------------------------------------
+# CREDIT-ANCHOR-FRONTIER-1 (PRE-REG RESULTS L69122, AMENDMENT -PRECISION
+# L69223): hybrid credit with K_BP top blocks on exact backprop. The sealed
+# WRITER-DFA-1 functions above are untouched; hybrid_objective(k_bp=0) is
+# pinned to dfa_objective by an identity test, hybrid_objective(k_bp=8) to
+# the stock path.
+
+def forward_hybrid(model, ids, attn_mask, k_bp):
+    """Blocks 0..7-k_bp: every block input after x_0 detached (DFA law).
+    Boundary: the input of block 8-k_bp (= x_{8-k_bp}, the output of block
+    7-k_bp) is detached. Blocks 8-k_bp..7, norm and head: one attached
+    backprop segment (x_8 NOT detached). k_bp = 0 reproduces the sealed
+    detached forward; k_bp = 8 reproduces the stock forward."""
+    assert 0 <= k_bp <= N_BLOCKS, k_bp
+    m = causal_mask(ids, attn_mask)
+    x = model.emb(ids)
+    x0 = x
+    outs = []
+    first_bp = N_BLOCKS - k_bp
+    for l, b in enumerate(model.blocks):
+        if l == 0:
+            xin = x
+        elif l <= first_bp:
+            xin = x.detach()          # DFA block input, or the DFA -> BP boundary
+        else:
+            xin = x                   # inside the BP segment
+        x, _ = b(xin, m, None)
+        outs.append(x)
+    xf = x.detach() if k_bp == 0 else x
+    logits = model.head(model.norm(xf))
+    return x0, outs, logits
+
+
+def hybrid_objective(model, Bs, ids, attn_mask, labels, k_bp):
+    """total = L + sum_{l < 8-k_bp} <B_l e, x_{l+1}>; total.backward() gives
+    the BP segment (blocks 8-k_bp..7, norm, head) the true gradient of L,
+    every lower block J_{f_l}^T B_l e, and emb B_0 e + J_{f_0}^T B_0 e
+    (k_bp < 8) or the true gradient (k_bp = 8)."""
+    x0, outs, logits = forward_hybrid(model, ids, attn_mask, k_bp)
+    loss = ce_loss(logits, labels)
+    n_dfa = N_BLOCKS - k_bp
+    if n_dfa > 0:
+        e = torch.autograd.grad(loss, logits, retain_graph=True)[0].detach()
+        deltas = [e @ B.t() for B in Bs[:n_dfa]]
+        S = sum((dl * x).sum() for dl, x in zip(deltas, outs[:n_dfa]))
+        total = loss + S
+    else:
+        e, deltas, total = None, [], loss
+    return {"loss": loss, "e": e, "deltas": deltas, "outs": outs, "logits": logits, "x0": x0, "total": total, "k_bp": k_bp}
+
+
+def freeze_lower(model, k_bp):
+    """Zero-credit control: blocks 0..7-k_bp and emb frozen at W_0
+    (requires_grad False); returns the list of trainable parameters
+    (blocks 8-k_bp..7, norm, head) for the optimizer."""
+    first_bp = N_BLOCKS - k_bp
+    frozen, trainable = [], []
+    for n, p in model.named_parameters():
+        if n.startswith("emb.") or any(n.startswith(f"blocks.{l}.") for l in range(first_bp)):
+            p.requires_grad_(False)
+            frozen.append(n)
+        else:
+            trainable.append(n)
+    return frozen, trainable

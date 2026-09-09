@@ -1537,6 +1537,17 @@ BACKWARD-SCHEDULE-1 instrument run (pre-reg RESULTS 2026-08-13): the phase19m re
 - `capture_build(*a, **kw)`
 - `tee_step(self, *a, **kw)`
 
+### scratch/birth19m_caf.py
+CREDIT-ANCHOR-FRONTIER-1 birth driver (pre-reg RESULTS L69122, sealed by AMENDMENT -PRECISION L69223). Sibling of the results-cited WRITER-DFA-1 driver scratch/birth19m_dfa.py (frozen; its bp and dfa branches survive here verbatim) which is itself the stock ATOM-DIET-TRAJECTORY-1 recipe. The credit writer is the only scientific switch:
+
+- `sha256_file(p)`
+- `git_head()`
+- `git_dirty()`
+- `now()`
+- `save_snapshot(model, step, record)` — Save the state dict (CPU float32) as step_{n:05d}.pt and record the
+- `write_receipt(row, launch_commit)`
+- `main()`
+
 ### scratch/birth19m_curric.py
 CURRICULUM-1 instrument run (pre-reg RESULTS 2026-08-13): the phase19m recipe with ONE variable changed — the ORDER rows enter the stream. Two treatment arms over the same D2-excised gen4 diet, same BIRTH_SEED=2 init, same stock OneCycle length and shape (steps_total computed exactly as the trainer's nopack branch computes it):
 
@@ -1624,6 +1635,20 @@ Build the rung-3 paired diets (spec 2026-07-28, 3-arm design).
 ### scratch/build_merged_diet.py
 Build data/merged_diet.jsonl (schedule-law queue item 1): gen-6 cumulative corpus (v22 + l8 + gen4 sidecar) + the L9a shard, with L1-L3 rationed to 45% (the gen-7 lesson). Stable string seed.
 
+
+### scratch/caf_leakage_smoke.py
+CREDIT-ANCHOR-FRONTIER-1 writer-integrity smoke (AMENDMENT -PRECISION L69223 F1 / F2 / F3-freeze), on the WRITER-DFA-1 deterministic CPU float32 fixture (torch.manual_seed(11) W_0; the first four probe rows for the objective checks; the first stock batch of epoch 0 for the one-step driver comparisons). Frozen tolerance TOL = 1e-7 (max abs diff); bit-exact (torch.equal) where the paths execute the same ops. Any failure is an implementation BLOCKER. Writes logs/writercaf1/leakage.json (refuses to overwrite), exit 1 on any failure.
+
+- `ok(name, cond, **info)`
+- `fixture_model(tok)`
+- `maxdiff(a, b)`
+- `run_driver(script, mode, k_bp, dump, stamp, s='1', lr='3e-4')`
+- `main()`
+
+### scratch/caf_qualgate.py
+CREDIT-ANCHOR-FRONTIER-1 qualification gates and the frozen selection (PRE-REG L69122 item 2, AMENDMENT -PRECISION L69223 F3). Reads the QUAL birth rows in logs/writercaf1/qual.jsonl (hybrid cells and zero-credit controls, seed 23), gates every finished arm with gate_eval on mps (120), appends kind=gate rows, and writes logs/writercaf1/qual_selection.json (refuses to overwrite): per k the hybrid cells (1, 3e-4) and (1, 1e-4); STABLE iff final gate > 0; FLOOR iff final gate >= 24; the ladder's candidate = the smallest k with a hybrid cell at or above the floor, its best cell (highest gate, ties lr 3e-4 first); zero-credit controls are gated and reported descriptively and never enter the selection. The script gates whatever k values have both hybrid cells present; the caller decides (per the ladder) whether the next k is born.
+
+- `main()`
 
 ### scratch/cal_dilute.py
 CAL-DK-2 (pre-reg 2026-07-30): diet dilution. Train the dense d64h8 recipe with fraction DILUTE of rows' targets swapped among the corrupted subset (fluent, determined-looking, WRONG rows). Usage: DILUTE=0.1 SEED=1 python scratch/cal_dilute.py Then: CKPT=checkpoints/cal_dilute_10_s1.pt python scratch/cal_dk_probe.py
@@ -1914,6 +1939,9 @@ WRITER-DFA-1 credit machinery (PRE-REG RESULTS L68321, sealed by AMENDMENT -SEAL
 - `dfa_objective(model, Bs, ids, attn_mask, labels)` — Returns dict(loss, e, deltas, outs, logits, x0, total). Only
 - `bp_hidden_errors(model, ids, attn_mask, labels)` — Read-only diagnostic: the true backprop hidden error dL/dx_{l+1} at
 - `block_params(model, l)`
+- `forward_hybrid(model, ids, attn_mask, k_bp)` — Blocks 0..7-k_bp: every block input after x_0 detached (DFA law).
+- `hybrid_objective(model, Bs, ids, attn_mask, labels, k_bp)` — total = L + sum_{l < 8-k_bp} <B_l e, x_{l+1}>; total.backward() gives
+- `freeze_lower(model, k_bp)` — Zero-credit control: blocks 0..7-k_bp and emb frozen at W_0
 
 ### scratch/dfa_depthclass.py
 WRITER-DFA-1 depth x module-class census (PRE-REG L68321 item 6 (viii), B2 of L68543, P4 of L68644: MANDATORY conditional on FUNCTION-BAND pass). For the DFA and the control specimen: the 8 x 5 table D_{l,c} = gate(full) - gate(blocks.{l}.{c}.weight reverted to W_0) over c in {qkv, o, gate, up, down}, 40 gates per specimen, 80 gates, rows appended to logs/writerdfa1/gates.jsonl (op=revert_cell), the table to logs/writerdfa1/depthclass.json (refuses to overwrite). Descriptive: no cell bar, no cell selection. Requires depend.json with band_pass.
@@ -1939,6 +1967,11 @@ WRITER-DFA-1 frozen probe batch (AMENDMENT -SEAL S8, -PRECISION P5e): 256 rows d
 
 - `probe_rows(tok=None, assert_digest=True)` — Returns (row_ids, token_lists, digest). Asserts against probe.json when it exists.
 - `probe_tensors(rows, tok, device='cpu')` — Padded ids / mask exactly as the training loop builds them.
+- `main()`
+
+### scratch/dfa_prune.py
+WRITER-DFA-1 qualification-set disposition (AMENDMENT CREDIT-ANCHOR- FRONTIER-1-PRECISION L69223 F5, Artin GO 2026-09-09): one final digest inventory of every file under checkpoints/writerdfa1/ against the birth receipts in logs/writerdfa1/qual.jsonl (file sha256 and canonical state digest re-read), written to logs/writerdfa1/prune_inventory.json (refuses to overwrite), then removal of every snapshot except step_00000.pt, step_00463.pt, final.pt and feedback.pt per arm. Receipts are untouched. Any digest mismatch aborts before anything is removed.
+
 - `main()`
 
 ### scratch/dfa_qualgate.py
