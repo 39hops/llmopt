@@ -42,8 +42,8 @@ from atomtraj_pins import CLASSES, state_digest  # noqa: E402
 from llmopt.lab.gate import gate_eval  # noqa: E402
 
 SMOKE = os.environ.get("SMOKE") == "1"
-DEPEND_SET = os.environ.get("DEPEND_SET", "main")      # main = A, B, N1, N2 (L67576); null2 = N3, N4 (stock_s7 first run v repair)
-OUT = Path("logs/writertraj0" if DEPEND_SET == "main" else f"logs/writertraj0_{DEPEND_SET}")
+DEPEND_SET = os.environ.get("DEPEND_SET", "main")      # main = A, B, N1, N2 (L67576); null2 = N3, N4 (stock_s7 first run v repair); dfa = DFA v CTRL (WRITER-DFA-1 L68321)
+OUT = Path("logs/writertraj0" if DEPEND_SET == "main" else ("logs/writerdfa1" if DEPEND_SET == "dfa" else f"logs/writertraj0_{DEPEND_SET}"))
 REPAIR = Path("/Users/artin/code/llmopt-repair")
 KEYS = sorted(sum(CLASSES.values(), []))
 GROUPS = {f"BLOCK{l}": sorted(k for k in KEYS if k.startswith(f"blocks.{l}.")) for l in range(8)}
@@ -60,8 +60,16 @@ if DEPEND_SET == "null2":
         "N3": {"path": "checkpoints/atomtraj1/stock_s7/step_15420.pt", "seed": 7, "w0": "checkpoints/atomtraj1/stock_s7/step_00000.pt"},
         "N4": {"path": str(REPAIR / "checkpoints/atomtraj1/stock_s7/step_15420.pt"), "seed": 7, "w0": str(REPAIR / "checkpoints/atomtraj1/stock_s7/step_00000.pt")},
     }
-SWAP_PAIRS = [("A", "B"), ("B", "A"), ("N1", "N2"), ("N2", "N1")] if DEPEND_SET == "main" else [("N3", "N4"), ("N4", "N3")]   # (recipient, donor)
-NULL_PAIR = ("N1", "N2") if DEPEND_SET == "main" else ("N3", "N4")
+if DEPEND_SET == "dfa":
+    # WRITER-DFA-1 discovery specimens from the birth receipts (same W_0 = seed 2); band decided before any revert
+    _births = [json.loads(l) for l in Path("logs/writerdfa1/births.jsonl").open() if '"kind": "birth"' in l] if Path("logs/writerdfa1/births.jsonl").exists() else []
+    _by_mode = {b["mode"]: b for b in _births if b["phase"] == "disc" and b.get("final")}
+    SPECIMENS = {"DFA": {"path": f"{_by_mode['dfa']['outdir']}/step_15420.pt", "seed": 2, "w0": f"{_by_mode['dfa']['outdir']}/step_00000.pt"},
+                 "CTRL": {"path": f"{_by_mode['bp']['outdir']}/step_15420.pt", "seed": 2, "w0": f"{_by_mode['bp']['outdir']}/step_00000.pt"}} if len(_by_mode) == 2 else {}
+SWAP_PAIRS = {"main": [("A", "B"), ("B", "A"), ("N1", "N2"), ("N2", "N1")], "null2": [("N3", "N4"), ("N4", "N3")], "dfa": [("DFA", "CTRL"), ("CTRL", "DFA")]}[DEPEND_SET]   # (recipient, donor)
+NULL_PAIR = {"main": ("N1", "N2"), "null2": ("N3", "N4"), "dfa": ("DFA", "CTRL")}[DEPEND_SET]   # the pair whose step_0 digests must be equal
+BAND = 7                                 # WRITER-DFA-1 FUNCTION-BAND half-width (L68321 item 5)
+THRESH = {"DEP-DEPTH": 9.85, "DEP-CLASS": 10.34, "COMPAT": -7}   # literal, AMENDMENT -SEAL B5
 
 
 def load_sd(p):
@@ -122,6 +130,10 @@ def main():
         assert (OUT / "census.json").exists(), "STAGE 0 census must exist and be preserved before STAGE 0B"
         for f in ("gates.jsonl", "depend.json"):
             assert not (OUT / f).exists(), f"REFUSING: {OUT / f} exists"
+    if not SMOKE and DEPEND_SET == "dfa":
+        assert set(SPECIMENS) == {"DFA", "CTRL"}, "discovery births incomplete"
+        for f in ("gates.jsonl", "depend.json"):
+            assert not (OUT / f).exists(), f"REFUSING: {OUT / f} exists"
     assert not os.environ.get("VOCAB_EXTRA"), "W_0 law requires VOCAB_EXTRA unset"
     dev = "mps" if torch.backends.mps.is_available() else "cpu"
     G = Gater(dev)
@@ -143,8 +155,19 @@ def main():
         a_, b_ = NULL_PAIR
         assert state_digest(w0s[a_]) == state_digest(w0s[b_]), f"{a_} / {b_} step_0 digests differ"
     full, w0gate, dep = {}, {}, {}
+    band_info = None
+    if DEPEND_SET == "dfa" and not SMOKE:
+        # FUNCTION-BAND decided from the two full gates before any revert or swap is scheduled (AMENDMENT -PRECISION P5b)
+        for name in names:
+            full[name] = G.gate(sds[name], f"{name}/full", {"specimen": name, "op": "full"})
+        g_, c_ = full["DFA"], full["CTRL"]
+        band_info = {"g_dfa": g_, "c_ctrl": c_, "half_width": BAND, "band_pass": (c_ - BAND <= g_ <= c_ + BAND), "gap": g_ - c_}
+        print(f"[depend] FUNCTION-BAND: g {g_} c {c_} -> {'PASS' if band_info['band_pass'] else 'FAIL (accessibility only)'}", flush=True)
+        if not band_info["band_pass"]:
+            names = []
     for name in names:
-        full[name] = G.gate(sds[name], f"{name}/full", {"specimen": name, "op": "full"})
+        if name not in full:
+            full[name] = G.gate(sds[name], f"{name}/full", {"specimen": name, "op": "full"})
         seed = SPECIMENS[name]["seed"]
         if seed not in w0gate:
             w0gate[seed] = G.gate(w0s[name], f"W0_seed{seed}", {"specimen": name, "op": "w0", "seed": seed})
@@ -154,7 +177,7 @@ def main():
             t = G.gate(revert(sds[name], w0s[name], keys), f"{name}/revert/{gname}", {"specimen": name, "op": "revert", "group": gname})
             dep[name][gname] = full[name] - t
     swaps = {}
-    if not SMOKE:
+    if not SMOKE and not (band_info and not band_info["band_pass"]):
         for rec_name, don_name in SWAP_PAIRS:
             for l in range(8):
                 keys = GROUPS[f"BLOCK{l}"]
@@ -181,6 +204,21 @@ def main():
                        "adjudicable": d0}
         (OUT / "depend.json").write_text(json.dumps(rec, indent=1))
         print("[depend] written; bars:", json.dumps({k: rec["bars"][k] for k in ("D-0", "D-1", "D-2")}), flush=True)
+    elif not SMOKE and DEPEND_SET == "dfa":
+        rec["prereg"] = "WRITER-DFA-1"
+        rec["band"] = band_info
+        if band_info["band_pass"]:
+            def dist(x, y, groups):
+                return sum((dep[x][g] - dep[y][g]) ** 2 for g in groups) ** 0.5
+            cross = [v for v in swaps.values()]
+            d9, d8 = dist("DFA", "CTRL", GROUPS), dist("DFA", "CTRL", CLASS_GROUPS)
+            med = statistics.median(cross)
+            rec["bars"] = {"profile_dist_9group": d9, "profile_dist_8class": d8, "cross_swap_median": med, "cross_swap_min": min(cross), "n_swaps": len(cross),
+                           "thresholds": THRESH, "DEP-DEPTH": d9 > THRESH["DEP-DEPTH"], "DEP-CLASS": d8 > THRESH["DEP-CLASS"], "COMPAT": med < THRESH["COMPAT"]}
+        else:
+            rec["bars"] = {"ACCESSIBILITY_ONLY": True, "DEP-DEPTH": None, "DEP-CLASS": None, "COMPAT": None}
+        (OUT / "depend.json").write_text(json.dumps(rec, indent=1))
+        print("[depend] written; band:", json.dumps(band_info), "bars:", json.dumps(rec["bars"]), flush=True)
     elif not SMOKE:
         a_, b_ = NULL_PAIR
         def dist(x, y, groups):

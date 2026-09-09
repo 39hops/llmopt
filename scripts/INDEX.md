@@ -1557,6 +1557,17 @@ SWAP-LADDER-1 instrument run (pre-reg RESULTS 2026-08-14): the hard-first ladder
 
 - `main()`
 
+### scratch/birth19m_dfa.py
+WRITER-DFA-1 birth driver (pre-reg RESULTS L68321, sealed by AMENDMENT -SEAL L68543 and -PRECISION L68644). Sibling of the results-cited ATOM-DIET-TRAJECTORY-1 driver scratch/birth19m_atoms_traj.py (stock arm; not edited): the recipe, the pinned stock batch stream, the 17-snapshot cadence, the receipt law and the aborts are verbatim. The only scientific switch is the credit writer:
+
+- `sha256_file(p)`
+- `git_head()`
+- `git_dirty()`
+- `now()`
+- `save_snapshot(model, step, record)` — Save the state dict (CPU float32) as step_{n:05d}.pt and record the
+- `write_receipt(row, launch_commit)`
+- `main()`
+
 ### scratch/birth19m_phase.py
 PHASE-PORTRAIT-1 instrument run: a fresh 19M-class birth with STEP-LEVEL milestone saves INCLUDING optimizer state, so a true per-neuron (angle, angular-velocity) phase portrait exists — position from the weights, momentum from Adam's exp_avg, velocity from adjacent milestones. The pendulum riff's residue (RIFF-LEDGER 2026-08-13), instrument-grade.
 
@@ -1872,6 +1883,80 @@ Deterministic-birth R3a (pre-reg 2026-07-31 late night): pin the wide weight acc
 Determinability census (PRE-REG DATA-CEIL rung A, 2026-08-10).
 
 - `enumerate_moves(cur, expr)` — -> [(rule_name, child_sstr)]; axiom bridge (deadline-walled,
+- `main()`
+
+### scratch/dfa_act.py
+WRITER-DFA-1 ACT observable (PRE-REG L68321 item 6 (vii), S10 of L68543, P3 of L68644): on the frozen 256-row probe batch, teacher-forced, CPU float64, for each block l: H_l = mean over the 6 heads and the unmasked input tokens with position 0 excluded of the entropy (nats) of the explicitly recomputed causal softmax attention row (keys <= t, 1 / sqrt(d_head) scaling, key padding masked); r_l = effective rank of the residual-stream covariance at the block output over the unmasked input tokens (position 0 included): center by the feature mean, C = (1/N) sum (x - mu)(x - mu)^T, lambda = eigvalsh(C) in float64, negative eigenvalues with |lambda| <= 1e-10 lambda_max clamped to 0 (any more negative -> NOT-RESOLVABLE), p = lambda / sum lambda, r = exp(-sum p log p) (0 log 0 = 0); zero mass -> NOT-RESOLVABLE. ACT = (H_0..H_7, r_0..r_7) in R^16; distances are L2. The manual forward is self-checked against the model's own forward in float64 (max abs logit diff recorded, must be <= 1e-8).
+
+- `load_sd(p)`
+- `rope(q, k, pos0=0)` — Verbatim formula of build_model's rope (float32 angle table, as the model computes it).
+- `block_manual(b, x, m)` — Block.forward with the softmax written out; returns (x_out, entropy (B, H, T)).
+- `effective_rank(n, sx, sxx)`
+- `act_vector(sd, tok, rows, n_chunks=None)`
+- `dist(u, v)`
+- `main()`
+
+### scratch/dfa_align.py
+WRITER-DFA-1 alignment diagnostic (PRE-REG L68321 item 3, S4 / S9 of L68543, P2 of L68644): for the DFA arm at each of its 17 snapshots (and the control arm alongside, descriptively, with the DFA arm's feedback matrices), on the frozen 256-row probe batch, CPU float64: delta^DFA_l = B_l e and delta^BP_l = dL / dx_{l+1} (torch.autograd.grad, read-only). Eligible entries = probe positions carrying a label (label != -100); masked positions are excluded. Registered number = cosine of the two flattened eligible-entry vectors per block, accumulated over 8-row chunks as exact dot products and squared norms; zero norm of either -> NOT-RESOLVABLE (null), no epsilon. The true gradient never updates any arm. Writes logs/writerdfa1/align.json (refuses to overwrite). SMOKE=1: the newest smoke DFA birth, 2 chunks, appends kind=align to logs/writerdfa1/smoke.jsonl.
+
+- `load_sd(p)`
+- `align_snapshot(sd, Bs, tok, rows, n_chunks=None)`
+- `main()`
+
+### scratch/dfa_credit.py
+WRITER-DFA-1 credit machinery (PRE-REG RESULTS L68321, sealed by AMENDMENT -SEAL L68543 and AMENDMENT -PRECISION L68644). Shared by the birth driver (scratch/birth19m_dfa.py), the writer-integrity smoke (scratch/dfa_leakage_smoke.py) and the offline diagnostics (scratch/dfa_align.py). Zero side effects at import.
+
+- `build_feedback(s, d=D_MODEL, n_out=N_OUT, n_blocks=N_BLOCKS, seed_base=FEEDBACK_SEED_BASE)` — Eight fixed feedback matrices (CPU float32), U(-1, 1) * s / sqrt(n_out).
+- `feedback_digest(Bs)`
+- `causal_mask(ids, attn_mask)` — The MicroLM.forward mask: causal AND key padding, bool (B, 1, T, T).
+- `forward_blocks(model, ids, attn_mask, detach)`
+- `ce_loss(logits, labels)`
+- `dfa_objective(model, Bs, ids, attn_mask, labels)` — Returns dict(loss, e, deltas, outs, logits, x0, total). Only
+- `bp_hidden_errors(model, ids, attn_mask, labels)` — Read-only diagnostic: the true backprop hidden error dL/dx_{l+1} at
+- `block_params(model, l)`
+
+### scratch/dfa_depthclass.py
+WRITER-DFA-1 depth x module-class census (PRE-REG L68321 item 6 (viii), B2 of L68543, P4 of L68644: MANDATORY conditional on FUNCTION-BAND pass). For the DFA and the control specimen: the 8 x 5 table D_{l,c} = gate(full) - gate(blocks.{l}.{c}.weight reverted to W_0) over c in {qkv, o, gate, up, down}, 40 gates per specimen, 80 gates, rows appended to logs/writerdfa1/gates.jsonl (op=revert_cell), the table to logs/writerdfa1/depthclass.json (refuses to overwrite). Descriptive: no cell bar, no cell selection. Requires depend.json with band_pass.
+
+- `main()`
+
+### scratch/dfa_leakage_smoke.py
+WRITER-DFA-1 writer-integrity smoke (AMENDMENT -PRECISION L68644 P1): mechanical gradient-leakage invariants of the DFA credit path and BP-mode parity of the driver against the stock training step, on a deterministic CPU float32 fixture (torch.manual_seed(11) model, the first four rows of the frozen probe batch for the invariants; the first stock batch of epoch 0 for the one-step parity). Frozen tolerance TOL = 1e-7 (max abs diff) for the head / norm gradient check and the parity checks; everything else is bit-exact (torch.equal). Any failure is an implementation BLOCKER. Writes logs/writerdfa1/leakage.json (refuses to overwrite) and exits non-zero on any failed invariant.
+
+- `ok(name, cond, **info)`
+- `fixture_model(tok)`
+- `maxdiff(a, b)`
+- `main()`
+
+### scratch/dfa_probe.py
+WRITER-DFA-1 frozen probe batch (AMENDMENT -SEAL S8, -PRECISION P5e): 256 rows drawn by random.Random("writerdfa1-probe") from the length-sorted encoded D2-excised stock diet (C.encode_with_levels(C.load_excised_rows(), tok)); row ids = indices into that list. logs/writerdfa1/probe.json records the row ids, the sha256 of the JSON token lists, the diet size and the commit; it is committed before any qualification birth and every consumer (leakage smoke, ACT, alignment) re-derives the rows and asserts the digest.
+
+- `probe_rows(tok=None, assert_digest=True)` — Returns (row_ids, token_lists, digest). Asserts against probe.json when it exists.
+- `probe_tensors(rows, tok, device='cpu')` — Padded ids / mask exactly as the training loop builds them.
+- `main()`
+
+### scratch/dfa_qualgate.py
+WRITER-DFA-1 qualification gates and the frozen selection (PRE-REG L68321 item 4, S5 of L68543, P5f of L68644). Reads the four QUAL birth rows in logs/writerdfa1/qual.jsonl, gates every cell that finished training (final.pt) with llmopt.lab.gate.gate_eval on mps (the standard 120), appends kind=gate rows to qual.jsonl, and writes logs/writerdfa1/qual_selection.json (refuses to overwrite): a cell is STABLE iff it finished with a finite loss and its final gate > 0; selection = the highest stable final gate, ties broken by lr 3e-4 before 1e-4, then s = 1, 0.25, 4; no stable cell -> selected null, stop = "DFA-UNSTABLE". Nothing about seed 2 is read here.
+
+- `main()`
+
+### scratch/dfa_trajcensus.py
+WRITER-DFA-1 trajectory census (PRE-REG L68321 item 6 (i)-(ii), bar T-1 with the literal thresholds of L68543 B5): DFA v CTRL (shared W_0 = seed 2, asserted from both step_00000.pt files and the seed regeneration) at the 17 snapshots under the frozen tensor law of WRITER-TRAJECTORY-CENSUS-0 (scratch/writertraj_census.py pair_census, imported, not re-implemented): cumulative cosine C, relative divergence R, velocity cosine V, per set. T-1 fires iff C_final < 0.7771 AND R_final > 0.6677. Writes logs/writerdfa1/census.json (refuses to overwrite). Zero gates.
+
+- `main()`
+
+### scratch/dfa_verify.py
+Independent verifier for WRITER-DFA-1 (pre-reg RESULTS L68321, sealed L68543 / L68644). Shares no computation with the instruments: its own literal tensor law, flatten / cosine / divergence, W_0 regeneration, feedback regeneration, bar evaluation against the literal thresholds. Checks, from the files: the two discovery birth receipts (17 snapshot file shas and state digests re-read, final == step_15420, shared W_0 == seed-2 regeneration, stream digests == the pinned stock digests, launch commit == code_commit and clean tree, feedback matrices regenerated from the seed law with the frozen s and digest-matched, the DFA (s, lr) == the frozen qualification selection, control lr 3e-4); the qualification receipts (four births, gate dicts, the selection law re-applied); census.json (C and R at 15,420 recomputed, T-1); gates.jsonl (dicts sum, five levels, unique labels, provenance, band recomputed, dependence profiles and distances, swap losses and median, DEP-DEPTH / DEP-CLASS / COMPAT against 9.85 / 10.34 / -7, one revert and one swap reconstructed by digest); depthclass.json when present (80 rows, cells recomputed, one cell reconstructed); act.json (distance and ACT-1 recomputed against act_envelope.json, self-checks, digests); align.json (digests, feedback digest, cosines in [-1, 1]). Writes logs/writerdfa1/verify_receipt.json (refuses to overwrite).
+
+- `chk(c, m)`
+- `close(a, b, tol=1e-09)`
+- `digest(sd)`
+- `sha(p)`
+- `load(p)`
+- `regen(seed)`
+- `feedback(s)`
+- `keys_law()`
+- `flat(sd, keys)`
 - `main()`
 
 ### scratch/distortion_collapse.py

@@ -68738,3 +68738,63 @@ discovery driver refuses (s, lr) that differ from it; (g) receipts
 added to the sealed list: leakage.json, depthclass.json,
 qual_selection.json, band recorded inside depend.json. Everything
 else in L68321 and L68543 stands.
+
+## OBSERVATION WRITER-DFA-1-ACT-ENVELOPE-0: the ACT activation observable's same-writer null envelope and schedule-writer calibration, computed on the six existing final checkpoints and booked BEFORE any DFA or control snapshot is read (sequencing law of AMENDMENT -SEAL B5); ACT null envelope 8.904 (N3-N4; N1-N2 2.876), ACT(A, B) 15.714, so ACT-1 fires iff the DFA-ctrl ACT distance exceeds 15.714 (2026-09-09 local, Mac; zero training, zero gates)
+
+Instrument scratch/dfa_act.py under the frozen definition of AMENDMENT
+-PRECISION P3 (L68644) and S10 (L68543): frozen 256-row probe batch
+(logs/writerdfa1/probe.json, token digest 18b2229060ede9cc...,
+16,146 tokens, lengths 21 to 276), teacher-forced, CPU float64, manual
+forward self-checked against the model forward at every chunk (max abs
+logit difference <= 4.8e-14 on all six specimens, tolerance 1e-8); per
+block the mean causal-softmax attention entropy H_l (nats; 95,232
+head x token terms, position 0 excluded) and the effective rank r_l of
+the centered residual-stream covariance at the block output (16,128
+unmasked tokens; no eigenvalue below the 1e-10 relative clamp, no
+NOT-RESOLVABLE cell). ACT = (H_0..H_7, r_0..r_7); distances L2.
+
+Specimens (final checkpoints; file sha prefix): A phase_s2 e7207b3b, B
+backsched_s2 661e8e43, N1 atomtraj1 stock_s6 first run 7dfed60d, N2
+stock_s6 repair 0fe15be6, N3 stock_s7 first run 5f3e298a, N4 stock_s7
+repair 573932d5.
+  A  H [1.834, 1.705, 1.896, 2.008, 1.887, 1.899, 2.152, 1.973]  r [34.56, 19.73, 13.94, 12.36, 17.53, 21.84, 23.83, 15.05]
+  B  H [2.250, 2.200, 2.059, 2.065, 1.843, 1.936, 2.175, 2.212]  r [31.11, 24.31, 12.93, 12.69, 20.74, 28.84, 36.19, 14.46]
+  N1 H [1.802, 1.711, 1.809, 1.965, 2.080, 1.959, 2.050, 2.075]  r [23.34, 19.52, 12.15, 15.11, 18.12, 18.41, 22.01, 14.79]
+  N2 H [1.806, 1.722, 1.773, 1.974, 2.096, 1.968, 2.060, 2.080]  r [24.36, 20.65, 13.19, 16.25, 19.55, 19.27, 22.82, 15.23]
+  N3 H [1.641, 1.947, 1.856, 1.834, 1.932, 2.033, 2.068, 1.947]  r [40.92, 41.21, 7.99, 12.26, 16.97, 22.23, 19.94, 14.45]
+  N4 H [1.653, 1.951, 1.816, 1.855, 1.931, 2.035, 2.067, 1.963]  r [42.64, 44.35, 9.93, 15.26, 20.91, 26.72, 24.14, 14.96]
+BOOKED NUMBERS (frozen for ACT-1): ACT distance N1-N2 2.876, N3-N4
+8.904, ACT null envelope = max = 8.904; ACT(A, B) = 15.714. ACT-1
+therefore fires iff the DFA-ctrl ACT distance exceeds 15.714 (the
+larger of the two booked numbers). Descriptive readings, no bar: the
+effective-rank coordinates dominate the L2 distance (entropies differ
+by tenths of a nat, ranks by units to tens); the stock_s7 rerun pair
+differs mainly in the block-0 and block-1 effective ranks (40.9 v 42.6
+and 41.2 v 44.4), i.e. the same-writer mps envelope on this observable
+is set by the shallow-block rank coordinates; the schedule pair differs
+most in the block-6 rank (23.8 v 36.2) and the block-0 / block-1
+entropies. Fence: one probe batch, one instrument, six specimens; the
+ACT scale is dominated by the rank coordinates and no rescaling is
+applied (the definition is frozen; a rescaled ACT would need its own
+pre-registration). Receipt logs/writerdfa1/act_envelope.json (commit
+282200dc). Also landed in this commit before any qualification birth:
+the instrument set (scratch/birth19m_dfa.py, dfa_credit.py, dfa_probe.py,
+dfa_leakage_smoke.py, dfa_act.py, dfa_align.py, dfa_trajcensus.py,
+dfa_depthclass.py, dfa_qualgate.py, dfa_verify.py, the three drivers,
+writertraj_depend.py DEPEND_SET=dfa mode, tests/test_dfa_source_invariant.py),
+the probe digest, the writer-integrity smoke receipt
+(logs/writerdfa1/leakage.json: all nine checks pass; head / norm
+gradient and both parity checks at max abs diff 0.0 against the frozen
+1e-7; the delivered hidden error equals B_l e bit-exactly in all eight
+blocks and differs from the BP hidden error by 2.8e-3 to 3.4e-3 max
+abs; the two writers' block gradients differ by 7.1e-3 max abs at
+W_0), and the 300-step smokes at seed 11 in both modes on mps
+(logs/writerdfa1/smoke.jsonl: DFA 5.3 it/s v BP 5.4 it/s, so the DFA
+step is priced at about 1.0 x the stock step here; DFA loss 3.00 v BP
+1.25 at step 300, descriptive). Instrument note: the independent
+verifier is the dedicated scratch/dfa_verify.py (this rung's receipts
+differ from the census rung's) rather than a mode of
+writertraj_verify.py named in L68321 item 10; the dependence
+instrument is the sealed writertraj_depend.py DEPEND_SET=dfa mode.
+Nothing launched; the qualification ladder follows the clean-tree
+prereg-auditor.

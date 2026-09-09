@@ -1,0 +1,134 @@
+{
+ "prereg": "WRITER-DFA-1",
+ "amendment": "PRECISION P1",
+ "tol": 1e-07,
+ "fixture_seed": 11,
+ "checks": {
+  "i_loss_reaches_head_norm_only": {
+   "pass": true,
+   "reached": [
+    "norm.g",
+    "head.weight"
+   ]
+  },
+  "ii_e_detached": {
+   "pass": true,
+   "shape": [
+    4,
+    21,
+    40
+   ]
+  },
+  "iii_surrogate_locality": {
+   "pass": true,
+   "per_block": {
+    "0": {
+     "ok": true,
+     "extra": [],
+     "missing": []
+    },
+    "1": {
+     "ok": true,
+     "extra": [],
+     "missing": []
+    },
+    "2": {
+     "ok": true,
+     "extra": [],
+     "missing": []
+    },
+    "3": {
+     "ok": true,
+     "extra": [],
+     "missing": []
+    },
+    "4": {
+     "ok": true,
+     "extra": [],
+     "missing": []
+    },
+    "5": {
+     "ok": true,
+     "extra": [],
+     "missing": []
+    },
+    "6": {
+     "ok": true,
+     "extra": [],
+     "missing": []
+    },
+    "7": {
+     "ok": true,
+     "extra": [],
+     "missing": []
+    }
+   }
+  },
+  "iv_other_feedback_independence": {
+   "pass": true
+  },
+  "v_delivered_error_is_B_e_not_bp": {
+   "pass": true,
+   "max_abs_diff_v_bp": {
+    "0": 0.003065403550863266,
+    "1": 0.003401525435037911,
+    "2": 0.003120468696579337,
+    "3": 0.003067861427552998,
+    "4": 0.002906802634242922,
+    "5": 0.0030484950402751565,
+    "6": 0.002793264458887279,
+    "7": 0.0029389095143415034
+   },
+   "loss_dfa": 3.8772716522216797,
+   "loss_bp": 3.8772716522216797
+  },
+  "vi_head_norm_true_gradient": {
+   "pass": true,
+   "max_abs_diff_head": 0.0,
+   "max_abs_diff_norm": 0.0,
+   "loss_diff": 0.0
+  },
+  "parity_bp_driver_v_reference": {
+   "pass": true,
+   "max_abs_diff_grads": 0.0,
+   "max_abs_diff_params": 0.0,
+   "driver_loss": 3.9126029014587402,
+   "lr_at_step1": 1.200333502401191e-05,
+   "batch": [
+    83904,
+    83936
+   ]
+  },
+  "parity_dfa_driver_v_reference": {
+   "pass": true,
+   "max_abs_diff_grads": 0.0,
+   "max_abs_diff_params": 0.0,
+   "driver_loss": 3.9126029014587402,
+   "lr_at_step1": 1.200333502401191e-05,
+   "batch": [
+    83904,
+    83936
+   ]
+  },
+  "switch_live_block_grads_differ": {
+   "pass": true,
+   "max_abs_diff_bp_v_dfa_block_grads": 0.007125983014702797
+  }
+ },
+ "probe_token_digest": "18b2229060ede9cc842181e96390f7f19e15e93d411644708768af04b82f4588",
+ "fixture": {
+  "rows": [
+   681,
+   713,
+   926,
+   1759
+  ],
+  "T": 21,
+  "n_labels": 82
+ },
+ "all_pass": true,
+ "torch": "2.12.1",
+ "code_commit": "282200dc",
+ "tree_dirty": true,
+ "run_utc": "2026-09-09T03:59:56+00:00"
+}

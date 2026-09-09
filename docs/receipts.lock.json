@@ -4134,6 +4134,13 @@
    "exists": false,
    "source": "prereg"
   },
+  "logs/writerdfa1/act_envelope.json": {
+   "bytes": 8984,
+   "exists": true,
+   "sha256": "03ea306cb1341d9441e75115bdd9c7c5c6d4fb9f0a0723c594e97d4ed5d7cc0b",
+   "source": "results",
+   "tracked": true
+  },
   "logs/writerdfa1/align.json": {
    "exists": false,
    "source": "prereg"
@@ -4150,21 +4157,42 @@
    "exists": false,
    "source": "prereg"
   },
+  "logs/writerdfa1/depthclass.json": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/writerdfa1/gates.jsonl": {
    "exists": false,
    "source": "prereg"
   },
+  "logs/writerdfa1/leakage.json": {
+   "bytes": 2473,
+   "exists": true,
+   "sha256": "e03835fadd81c307ff9c8b36bbd345addcfc8c5a37aa142524b00d6d61c93f26",
+   "source": "results",
+   "tracked": true
+  },
   "logs/writerdfa1/probe.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 2679,
+   "exists": true,
+   "sha256": "086684e3db7d6c9353abd7cf5c615f614ff82ef72a68dc2745f43ccaa58dfed8",
+   "source": "results",
+   "tracked": true
   },
   "logs/writerdfa1/qual.jsonl": {
    "exists": false,
    "source": "prereg"
   },
-  "logs/writerdfa1/smoke.jsonl": {
+  "logs/writerdfa1/qual_selection.json": {
    "exists": false,
    "source": "prereg"
+  },
+  "logs/writerdfa1/smoke.jsonl": {
+   "bytes": 10314,
+   "exists": true,
+   "sha256": "76a7975d45c76956dec1c1b6bfddbec94a87cd1fd3482b58f7371fce6be9d844",
+   "source": "results",
+   "tracked": true
   },
   "logs/writerdfa1/verify_receipt.json": {
    "exists": false,
