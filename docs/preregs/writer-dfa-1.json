@@ -1,0 +1,128 @@
+{
+ "name": "WRITER-DFA-1",
+ "note": "Machine-readable form of PRE-REG WRITER-DFA-1 (design sealed, not launched); the prose governs.",
+ "results_id": "2026-09-09-pre-reg-writer-dfa-1-the",
+ "registered": "2026-09-09",
+ "machine": "mac",
+ "arms": {
+  "dfa": {
+   "description": "Direct Feedback Alignment writer: blocks 0..7 receive delta_l = B_l e_t (B_l in R^{384x40}, U(-1,1) * s / sqrt(40), seed 31_000_000 + l, fixed), local backward inside each block with detached inputs; head and norm true gradient; emb via block-0 local credit; stock recipe otherwise (AdamW, OneCycle forward, 15,420 steps, pinned stream, 17 snapshots, mps)"
+  },
+  "ctrl": {
+   "description": "paired same-W_0 backprop control under the same driver in BP mode, seed 2"
+  },
+  "qual": {
+   "description": "qualification ladder at seed 21: (s, lr) in {(1, 3e-4), (1, 1e-4), (0.25, 3e-4), (4, 1e-4)}; selection = highest stable final gate, ties to (1, 3e-4); frozen before seed-2 births"
+  }
+ },
+ "function_band": "c - 7 <= g <= c + 7 with c = ctrl final gate; outside -> ACCESSIBILITY ONLY",
+ "bars": [
+  {
+   "id": 1,
+   "name": "T-1-TRAJECTORY",
+   "metric": "cumulative_cosine_and_relative_divergence_final",
+   "aggregation": "C below null min AND R above null max",
+   "direction": "both",
+   "value": 0.0,
+   "arms": [
+    "dfa",
+    "ctrl"
+   ]
+  },
+  {
+   "id": 2,
+   "name": "DEP-DEPTH",
+   "metric": "dependence_profile_l2_9group",
+   "aggregation": "dfa-ctrl above null envelope",
+   "direction": "above",
+   "value": 0.0,
+   "arms": [
+    "dfa",
+    "ctrl"
+   ]
+  },
+  {
+   "id": 3,
+   "name": "DEP-CLASS",
+   "metric": "dependence_profile_l2_8class",
+   "aggregation": "dfa-ctrl above null envelope",
+   "direction": "above",
+   "value": 0.0,
+   "arms": [
+    "dfa",
+    "ctrl"
+   ]
+  },
+  {
+   "id": 4,
+   "name": "COMPAT",
+   "metric": "swap_loss_median_cross_v_worst_null",
+   "aggregation": "median cross below min null",
+   "direction": "below",
+   "value": 0.0,
+   "arms": [
+    "dfa",
+    "ctrl"
+   ]
+  },
+  {
+   "id": 5,
+   "name": "ACT-1",
+   "metric": "act_vector_l2_16",
+   "aggregation": "dfa-ctrl above null envelope AND above ACT(A,B)",
+   "direction": "above",
+   "value": 0.0,
+   "arms": [
+    "dfa",
+    "ctrl"
+   ]
+  }
+ ],
+ "act_observable": "per block: mean attention entropy over heads and unmasked probe tokens (nats) and effective rank of the residual-stream covariance at the block output, on a frozen 256-row probe batch, teacher-forced, CPU float64; vector in R^16",
+ "alignment_diagnostic": "cos(B_l e, delta^BP_{l+1}) per block at the 17 snapshots on the probe batch; true gradient never updates the DFA arm; descriptive",
+ "interpretation_ladder": {
+  "A": "DEP-DEPTH fires, DEP-CLASS no-fire: writer selects depth allocation, ingredient class task/architecture constrained",
+  "B": "DEP-DEPTH and DEP-CLASS fire: stronger writer-contingent implementation",
+  "C": "DEP-DEPTH, DEP-CLASS, ACT-1 all no-fire: implementation substantially task/architecture constrained under a foreign credit writer",
+  "D": "function band fails: accessibility only"
+ },
+ "refuted_if": "band entered AND branch C",
+ "registered_prior": {
+  "FUNCTION-BAND": "even odds; point g = c - 9",
+  "T-1": "fires, C point 0.15",
+  "DEP-DEPTH": "fires, point 45",
+  "DEP-CLASS": "NO-FIRE, point 8",
+  "COMPAT": "fires, point -14",
+  "ACT-1": "fires, point 1.5 x ACT(A,B)"
+ },
+ "go_stop": [
+  "PRE-GO: NULL-2 booked with d_9 < 31.5 and no same-writer swap loss <= -11.5",
+  "instrument committed, source test green, smoke VERIFIED both modes",
+  "prereg-auditor clean",
+  "Artin GO",
+  "QUAL: no stable cell -> STOP (DFA-UNSTABLE)",
+  "DISCOVERY: ctrl then dfa at seed 2 under liverun; nothing read until both finish",
+  "BAND fail -> ACCESSIBILITY ONLY, DFA line stops",
+  "BAND pass -> full observables, verifier, receipt-auditor, prereg-auditor, book once"
+ ],
+ "cost_h": {
+  "qualification": 3.7,
+  "control": 0.8,
+  "discovery": 0.9,
+  "dependence_and_swaps": 1.2,
+  "cpu_observables": 0.3,
+  "optional_depth_x_class": 2.9
+ },
+ "storage_gb": 7.7,
+ "receipts": [
+  "logs/writerdfa1/qual.jsonl",
+  "logs/writerdfa1/births.jsonl",
+  "logs/writerdfa1/gates.jsonl",
+  "logs/writerdfa1/depend.json",
+  "logs/writerdfa1/census.json",
+  "logs/writerdfa1/act.json",
+  "logs/writerdfa1/align.json",
+  "logs/writerdfa1/verify_receipt.json",
+  "logs/writerdfa1/smoke.jsonl"
+ ]
+}

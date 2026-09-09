@@ -954,8 +954,11 @@
    "tracked": true
   },
   "logs/liverun/writertraj0-null2.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 536,
+   "exists": true,
+   "sha256": "4fad08e8647d4ca7075a6c467a451acf3ca58ab61bcb96e4ee96dc9d1dbd3619",
+   "source": "results",
+   "tracked": true
   },
   "logs/mathworld0/active.jsonl": {
    "bytes": 32725,
@@ -4119,6 +4122,42 @@
    "source": "results",
    "tracked": true
   },
+  "logs/writerdfa1/act.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/writerdfa1/align.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/writerdfa1/births.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/writerdfa1/census.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/writerdfa1/depend.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/writerdfa1/gates.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/writerdfa1/qual.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/writerdfa1/smoke.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/writerdfa1/verify_receipt.json": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/writertraj0/census.json": {
    "bytes": 605189,
    "exists": true,
@@ -4183,16 +4222,39 @@
    "tracked": true
   },
   "logs/writertraj0_null2/depend.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 2210,
+   "exists": true,
+   "sha256": "432736d915b23e14a4ebaa3cebe494713f17ac58c13644c901f383b353415a91",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/writertraj0_null2/depend.log": {
+   "bytes": 4104,
+   "exists": true,
+   "sha256": "d3542aa4d779d93425f07566415c4e474caf9d4f14004962185fea884ff93f56",
+   "source": "results",
+   "tracked": true
   },
   "logs/writertraj0_null2/gates.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 20735,
+   "exists": true,
+   "sha256": "af51757c3846ce2cb4666259589d35baed35637b624d99201d5339251c5da9fa",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/writertraj0_null2/verify.log": {
+   "bytes": 72,
+   "exists": true,
+   "sha256": "1b43e363c378af2baf9890c2dbb9ce05abb566931b7268ca203cbf3e372c6548",
+   "source": "results",
+   "tracked": true
   },
   "logs/writertraj0_null2/verify_receipt.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 913,
+   "exists": true,
+   "sha256": "06874efa0e5207eb2dc8ff0cce6cdd0594b55894a1e056364043534a6cdaac27",
+   "source": "results",
+   "tracked": true
   },
   "logs/xtermdiet1/arms.jsonl": {
    "bytes": 1163,

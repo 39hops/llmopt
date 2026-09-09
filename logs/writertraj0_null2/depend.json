@@ -1,0 +1,102 @@
+{
+ "prereg": "WRITER-TRAJECTORY-CENSUS-0",
+ "stage": "0B",
+ "smoke": false,
+ "commit": "db3ba411",
+ "device": "mps",
+ "started_utc": "2026-09-09T00:59:13+00:00",
+ "ended_utc": "2026-09-09T02:06:20+00:00",
+ "specimens": {
+  "N3": {
+   "state_digest": "bcfc59c0ae5b8c875c83f38afd48bb01ec355c73cd1e1d8cae40d9b5bc62749f",
+   "path": "checkpoints/atomtraj1/stock_s7/step_15420.pt",
+   "w0_matches_seed_regeneration": true,
+   "w0_state_digest": "a97eae63e5b46669a38edf9042ea9c19414f5fac58c7ec71f0a5d268124c04b7"
+  },
+  "N4": {
+   "state_digest": "fb109ccd807322f9ca7d34889c9277358a4219124c800b9325eb6531e2fd934c",
+   "path": "/Users/artin/code/llmopt-repair/checkpoints/atomtraj1/stock_s7/step_15420.pt",
+   "w0_matches_seed_regeneration": true,
+   "w0_state_digest": "a97eae63e5b46669a38edf9042ea9c19414f5fac58c7ec71f0a5d268124c04b7"
+  }
+ },
+ "tree_dirty": false,
+ "vocab_len": 40,
+ "full": {
+  "N3": 63,
+  "N4": 61
+ },
+ "w0_gate": {
+  "7": 0
+ },
+ "dependence": {
+  "N3": {
+   "BLOCK0": 47,
+   "BLOCK1": 16,
+   "BLOCK2": 12,
+   "BLOCK3": 12,
+   "BLOCK4": 17,
+   "BLOCK5": 29,
+   "BLOCK6": 7,
+   "BLOCK7": 31,
+   "OUTSIDE": 1,
+   "CLASS_qkv": 63,
+   "CLASS_o": 62,
+   "CLASS_gate": 22,
+   "CLASS_up": 24,
+   "CLASS_down": 60,
+   "CLASS_norms": 1,
+   "CLASS_emb": 0,
+   "CLASS_head": 1
+  },
+  "N4": {
+   "BLOCK0": 42,
+   "BLOCK1": 16,
+   "BLOCK2": 13,
+   "BLOCK3": 18,
+   "BLOCK4": 13,
+   "BLOCK5": 29,
+   "BLOCK6": 4,
+   "BLOCK7": 32,
+   "OUTSIDE": -2,
+   "CLASS_qkv": 61,
+   "CLASS_o": 60,
+   "CLASS_gate": 20,
+   "CLASS_up": 18,
+   "CLASS_down": 60,
+   "CLASS_norms": -1,
+   "CLASS_emb": 0,
+   "CLASS_head": -2
+  }
+ },
+ "swap_loss": {
+  "N3<-N4/BLOCK0": -1,
+  "N3<-N4/BLOCK1": 1,
+  "N3<-N4/BLOCK2": 0,
+  "N3<-N4/BLOCK3": -1,
+  "N3<-N4/BLOCK4": 2,
+  "N3<-N4/BLOCK5": -5,
+  "N3<-N4/BLOCK6": 5,
+  "N3<-N4/BLOCK7": 2,
+  "N4<-N3/BLOCK0": 0,
+  "N4<-N3/BLOCK1": 1,
+  "N4<-N3/BLOCK2": 1,
+  "N4<-N3/BLOCK3": 1,
+  "N4<-N3/BLOCK4": 1,
+  "N4<-N3/BLOCK5": 3,
+  "N4<-N3/BLOCK6": 0,
+  "N4<-N3/BLOCK7": 0
+ },
+ "null_strengthening": {
+  "pair": [
+   "N3",
+   "N4"
+  ],
+  "band": 2,
+  "profile_dist_9group": 9.848857801796104,
+  "profile_dist_8class": 7.810249675906654,
+  "swap_min": -5,
+  "swap_median": 1.0,
+  "n_swaps": 16
+ }
+}

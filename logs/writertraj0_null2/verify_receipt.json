@@ -1,0 +1,28 @@
+{
+ "kind": "verify",
+ "prereg": "WRITER-DEPENDENCE-NULL-2",
+ "verdict": "VERIFIED",
+ "n_discrepancies": 0,
+ "discrepancies": [],
+ "depend_commit": "db3ba411",
+ "source_sha256_at_commit": {
+  "scratch/writertraj_census.py": "43a2485f15a6243e182ca7fa5ef2c6865d6f3b6488575fb39fbe5305d4b68769",
+  "scratch/writertraj_depend.py": "472af03488e8f000930f845a1e34177cfeee0cf4b42d20285e90d06afc86c86b",
+  "scratch/atomtraj_pins.py": "d91b8866bc761f0bc7aab6aaf6fe80b2dcd4d5f6395271b8f394b5e5d92aa63b"
+ },
+ "null_strengthening": {
+  "pair": [
+   "N3",
+   "N4"
+  ],
+  "band": 2,
+  "profile_dist_9group": 9.848857801796104,
+  "profile_dist_8class": 7.810249675906654,
+  "swap_min": -5,
+  "swap_median": 1.0,
+  "n_swaps": 16
+ },
+ "commit": "db3ba411",
+ "status_porcelain": " M docs/receipts.lock.json\n?? docs/preregs/writer-dfa-1.json\n",
+ "verifier_sha256": "aaaf7bbb5c8027243146c50058a929ae34dd161ee0f4e8a0198457c275a0534d"
+}

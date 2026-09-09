@@ -68261,3 +68261,281 @@ noise; nothing here trains, tunes or reads any DFA quantity; the
 first-run stock_s7 cell is invalid for its own rung (L66991) and
 serves only as a noise specimen. Nothing else launches; DFA needs its
 own sealed pre-reg and Artin GO.
+
+## VERDICT WRITER-DEPENDENCE-NULL-2: null strengthening — the second same-writer pair (stock_s7 first run v repair) reads 9-group dependence distance 9.85 (law: stands below 31.5), 8-class 7.81, same-writer swap losses -5 to +5 (law: none <= -11.5); the L67980 DEPENDENCE and COMPATIBILITY readings stand; the two-pair envelope is now 9.85 / 10.34 / -7; verifier VERIFIED 0 discrepancies; first run under the mechanical live-run interlock (2026-09-09, Mac)
+
+Pre-reg L68201 (db3ba411). Zero training. Run under
+scripts/liverun.py as writertraj0-null2 (sentinel armed 00:59:13 UTC
+at db3ba411 on a clean tree, disarmed rc 0 at 02:06:21 UTC; receipt
+logs/liverun/writertraj0-null2.jsonl); no commit was made in either
+checkout while live (the hook was armed; qualification receipts
+logs/liverun/interlock-smoke.jsonl and stale-smoke.jsonl). Disclosure:
+the session EDITED uncommitted files during the run (the DFA pre-reg
+JSON draft and a hook regeneration of docs/receipts.lock.json), which
+the verifier's status_porcelain records; no source file changed, the
+instrument sources were checked by git show at db3ba411, and no
+commit occurred; the live-run law as restated covers commits, and
+this entry adds: no edits to instrument sources either.
+
+Measured (logs/writertraj0_null2/gates.jsonl 53 rows, mean 75.9 s,
+4,021 s total; depend.json; verify_receipt.json VERIFIED, 0
+discrepancies, sources at db3ba411):
+- Full gates N3 (stock_s7 first run) 63 / 120, N4 (stock_s7 repair)
+  61 / 120, band 2; W_0 (seed 7) 0 / 120. step_0 state digests equal
+  and matching the seed-7 regeneration.
+- 9-group dependence, blocks 0..7 then OUTSIDE:
+  N3 47 / 16 / 12 / 12 / 17 / 29 /  7 / 31 /  1
+  N4 42 / 16 / 13 / 18 / 13 / 29 /  4 / 32 / -2
+  Classes qkv / o / gate / up / down / norms / emb / head:
+  N3 63 / 62 / 22 / 24 / 60 / 1 / 0 / 1; N4 61 / 60 / 20 / 18 / 60 /
+  -1 / 0 / -2.
+- d_9(N3, N4) = 9.849; d_8(N3, N4) = 7.810.
+- Same-writer swap losses, blocks 0..7: N3 <- N4: -1 / +1 / 0 / -1 /
+  +2 / -5 / +5 / +2; N4 <- N3: 0 / +1 / +1 / +1 / +1 / +3 / 0 / 0.
+  Minimum -5, median +1.0.
+
+Registered reassessment law (frozen in L68201): d_9(N3, N4) = 9.85 <
+31.5, so the L67980 DEPENDENCE reading STANDS; no same-writer swap
+loss reaches -11.5 (minimum -5), so the D-2 COMPATIBILITY reading
+STANDS. Registered descriptive expectation: d_9 in 6 to 14 (measured
+9.85, inside); swap losses 0 to -8 (measured -5 to +5; the positive
+side was not anticipated: a same-writer block swap can raise the
+recipient's gate by up to 5 solves, inside the gate resolution).
+Two-pair same-writer envelope for the DFA rung: 9-group distance
+max(9.64, 9.85) = 9.85; 8-class max(10.34, 7.81) = 10.34; most
+negative swap loss min(-7, -5) = -7. Descriptive note, no claim: the
+two stock_s7 reruns agree on the depth profile shape (block 0
+largest at 47 / 42, block 6 smallest at 7 / 4) while the seed-6 pair
+put block 1 highest (41 / 39); depth-profile SHAPE varies across
+seeds within one writer, and only the paired distance is the null.
+
+Fences. One additional pair (seed 7, stock diet); descriptive
+outputs only, no writer bar; the envelope is an observed same-writer
+mps rerun envelope across nearby specimens, not the seed-2 pair's own
+noise; gates at sigma about 5. Receipts force-added and locked this
+commit: logs/writertraj0_null2/gates.jsonl,
+logs/writertraj0_null2/depend.json,
+logs/writertraj0_null2/verify_receipt.json,
+logs/writertraj0_null2/depend.log, logs/writertraj0_null2/verify.log,
+logs/liverun/writertraj0-null2.jsonl. PRE-GO gate (a) of PRE-REG
+WRITER-DFA-1 is satisfied. Nothing else launches.
+
+## PRE-REG WRITER-DFA-1: the first FOREIGN credit-assignment writer — Direct Feedback Alignment on the 19M house transformer with architecture, tokenizer, W_0, batch stream, exposure, schedule, AdamW rule, clipping, cadence, gate and device all held fixed; qualification on a reserved seed with a frozen tuning firewall; matched-function precondition against a paired same-W_0 backprop control; trajectory, depth-dependence, module-class-dependence, compatibility and one frozen activation observable, each reported on its own axis (2026-09-09, Mac; DESIGN SEALED, NOT LAUNCHED)
+
+STAGE 1 of the mechanism-attribution program (RIFF 2026-09-08).
+Licensed by VERDICT WRITER-TRAJECTORY-CENSUS-0 (L67980, as read by
+AMENDMENT -STOP-READING L68175: GO conditions met, STOP clause
+comfortably not triggered) and conditional on PRE-REG
+WRITER-DEPENDENCE-NULL-2 (L68201) not triggering its reassessment
+law. Nothing here launches; a separate Artin GO is required.
+
+Prior, frozen from L67980 without upgrade: on a shared W_0 the
+schedule writer pair clears the observed same-writer mps rerun
+envelope in trajectory coordinates (C 0.211 v null min 0.777; R 1.256
+v null max 0.668); the 9-group DEPTH dependence differs strongly
+(39.37 v null 9.64); the global 8-class MODULE-CLASS dependence does
+NOT show the same separation (5.74 v null 10.34); cross-writer block
+swaps are incompatible under the registered median law; this is
+writer-contingent learned-update dependence and component
+compatibility, not a mechanism or algorithm claim. Consequence for
+this rung: depth dependence and module-class dependence are
+reported as two separate axes and are never compressed into one
+"mechanism distance".
+
+1. The DFA local-credit equation for this transformer. The house
+model (llmopt/train/mathnative.py build_model: pre-norm decoder,
+RMSNorm, RoPE, SwiGLU, untied head; d 384, 8 blocks, 6 heads, ffn
+1536, vocab 40) computes, per token t, x_0 = emb(ids); for block l =
+0..7, x_{l+1} = x_l + f_l(x_l) with f_l(x) = o(attn(n1(x))) +
+down(silu(gate(n2(x'))) * up(n2(x'))) where x' = x + o(attn(n1(x)));
+logits = head(norm(x_8)); loss L = masked mean cross-entropy over
+label positions (ignore_index -100). Output error per token: e_t =
+dL / dlogits_t in R^40 (softmax minus one-hot, divided by the number
+of unmasked label positions; zero at masked positions).
+  BACKPROP (the control writer): the hidden error at the output of
+  block l is delta^BP_{l+1,t} = dL / dx_{l+1,t}, obtained by the
+  downstream Jacobian chain through blocks l+1..7, norm and head;
+  parameters of block l receive J_{f_l}^T delta^BP_{l+1}.
+  DFA (the foreign writer): the hidden error at the output of block
+  l is delta_{l,t} = B_l e_t, B_l in R^{384 x 40} fixed; parameters
+  of block l receive, by reverse-mode autodiff INSIDE the block only,
+  the gradient of <delta_l, x_{l+1}> with respect to theta_l computed
+  with x_l DETACHED (the block's input carries no graph to earlier
+  blocks): grad_theta_l = J_{f_l}(x_l)^T delta_l. Within-block
+  transport (through attention's value path and the MLP) is
+  permitted, as in Launay et al. 2020 Appendix D; propagating the
+  true output gradient through any downstream block to determine an
+  earlier block's credit is forbidden and cannot occur by
+  construction (every block boundary is detached).
+2. Treatment of the parameters outside the blocks, frozen:
+  head.weight and norm.g receive the TRUE gradient of L (backprop
+  through head and the final norm only, one layer of transport, the
+  standard DFA convention that the output layer is trained by
+  backprop); emb.weight receives block 0's LOCAL credit: x_0 = emb(ids)
+  is NOT detached from block 0, so emb gets J^T delta_0 through block
+  0's residual identity and f_0 (the Launay convention "embeddings by
+  backpropagation through the first block"); it receives nothing from
+  any later block. Blocks 0..7 ALL receive random feedback, including
+  block 7 (no block receives the true hidden error).
+3. Feedback matrices: B_l in R^{384 x 40}, one independent matrix per
+  block (8 matrices), entries drawn i.i.d. U(-1, 1) from
+  torch.Generator("cpu").manual_seed(31_000_000 + l) at construction,
+  scaled by s / sqrt(40) (Launay: uniform, normalized by the square
+  root of the output dimension), never trained, saved with the
+  checkpoint receipt (sha256) and regenerable from the seed. The same
+  B_l is applied at every token and every batch. delta_l is neither
+  clipped nor normalized; AdamW's parameter-update rule, weight decay
+  0.01, grad clip 1.0 on the assembled parameter gradients, the
+  OneCycle schedule (forward), 15,420 steps, batch stream and order
+  (the six pinned stream digests of L66546, stock arm), the 17
+  snapshot cadence, the gate and the device (mps fp32) are the
+  ATOM-DIET-TRAJECTORY-1 stock recipe unchanged. Token masking and
+  sequence aggregation are inherited from the loss: per-token e_t,
+  masked positions contribute zero. Feedback-alignment diagnostic
+  (descriptive, secondary): at each of the 17 snapshots, on a frozen
+  256-row probe batch (rows registered by digest), compute the true
+  delta^BP_{l+1} by a full backprop pass with NO parameter update and
+  report cos(B_l e, delta^BP_{l+1}) per block, averaged over unmasked
+  tokens (the alignment measure of Launay Appendix A); the true
+  gradient never updates the DFA arm.
+4. Qualification population and tuning firewall. Qualification seed
+  21 (never used by any birth19m specimen; seeds 1 to 7 are spent, 8,
+  9, 10 reserved for ATOM confirmation, 11 the smoke seed, 17 a d64
+  ladder). A small preregistered ladder of four cells, each a full
+  15,420-step DFA birth at seed 21: (s, peak lr) in {(1, 3e-4), (1,
+  1e-4), (0.25, 3e-4), (4, 1e-4)} (Launay reports DFA needing a lower
+  Adam learning rate than backprop; s spans a 16x scale range). A
+  cell is STABLE iff no non-finite loss and final gate > 0 / 120.
+  Selection law, frozen: among stable cells pick the highest final
+  120-gate; ties to the cell closest to the control settings (s = 1,
+  lr 3e-4). The selected (s, lr) is frozen before the seed-2 births
+  and is never revisited on any seed-2 outcome. No other DFA
+  hyperparameter exists. The qualification cells are outside the
+  mechanism-comparison population and enter no bar.
+5. Matched-function band. A paired same-W_0 backprop control is born
+  under the SAME driver in BP mode (delta = the true gradient
+  everywhere; the driver's only switch) at seed 2, so the control
+  and the DFA arm share code, stream, cadence and device; the
+  historical phase_s2 checkpoint is a secondary comparator only. Let
+  c = the control's final 120 gate. FUNCTION-BAND precondition: the
+  DFA final gate g satisfies c - 7 <= g <= c + 7 (one resolution
+  unit, the D-0 law of L67576). If g < c - 7 the rung books
+  ACCESSIBILITY ONLY (DFA did not reach the band; no mechanism or
+  dependence comparison is licensed; the gap and the alignment
+  diagnostic are reported descriptively). If g > c + 7 the band is
+  also missed (reported, no comparison; a DFA advantage is NOT claimed
+  without its own pre-reg). Registered expectation: g below c;
+  probability of entering the band judged even.
+6. Observables, inherited exactly from L67576 and applied to the
+  triple (DFA, BP-control, and the same-writer nulls N1/N2 and, if
+  registered clean, N3/N4): (i) cumulative cosine and relative
+  divergence DFA v BP-control at the 17 snapshots (shared W_0), (ii)
+  velocity cosine over the 12 matched times, (iii) 9-group DEPTH
+  dependence profiles (19 gates each), (iv) 8-class MODULE-CLASS
+  dependence profiles (the same gates), (v) bidirectional block
+  compatibility DFA <-> BP-control (16 gates), (vi) the same-writer
+  null envelope. New, frozen before any DFA output: (vii) the
+  ACTIVATION observable ACT: on the frozen 256-row probe batch,
+  teacher-forced, for each block l the mean over heads and unmasked
+  tokens of the attention entropy H_l (nats) and the effective rank
+  r_l of the residual-stream covariance at the block output
+  (exp of the entropy of the normalized eigenvalue spectrum over the
+  probe tokens); the ACT vector is (H_0..H_7, r_0..r_7) in R^16,
+  computed on CPU in float64 for DFA, BP-control, A, B, N1, N2 (and
+  N3, N4); distances are L2 on that vector. (viii) Depth x class
+  interaction census: the 8 x 8 cell table of dependence D_{l,c} =
+  gate(full) - gate(block l's class-c tensors reverted) is priced at
+  64 gates per specimen; it is registered as DESCRIPTIVE on the DFA
+  and control specimens only if budget allows (128 gates, 2.4 h) and
+  its cell law is frozen here: cells are the 40 block 2-D tensors
+  grouped by (block, class), the two norm gains excluded; no cell is
+  selected after viewing; it enters no bar.
+7. Bars (all conditional on the FUNCTION-BAND precondition; strict
+  laws against the same-writer envelope, which is the max over the
+  registered null pairs of the same quantity):
+  T-1 TRAJECTORY: C(DFA, ctrl) at 15,420 strictly below the null
+      minimum cumulative cosine AND R strictly above the null maximum.
+  DEP-DEPTH: the 9-group distance between DFA and ctrl strictly
+      greater than the null-envelope 9-group distance.
+  DEP-CLASS: the 8-class distance between DFA and ctrl strictly
+      greater than the null-envelope 8-class distance.
+  COMPAT: the median of the 16 DFA <-> ctrl swap losses strictly more
+      negative than the most negative same-writer swap loss.
+  ACT-1: the ACT-vector L2 distance between DFA and ctrl strictly
+      greater than the null-envelope ACT distance, AND greater than
+      the schedule-writer distance ACT(A, B) (both computed by the
+      same code; the schedule pair is the calibration).
+  Interpretation ladder (frozen): MATCHED FUNCTION and (A) DEP-DEPTH
+  fires, DEP-CLASS no-fire = the writer selects the causal DEPTH
+  allocation while the broad ingredient class is task / architecture
+  constrained; (B) DEP-DEPTH and DEP-CLASS both fire = stronger
+  writer-contingent causal implementation; (C) DEP-DEPTH, DEP-CLASS
+  and ACT-1 all NO-FIRE (the DFA specimen reproduces the control's
+  dependence and activation profiles within the envelope) = evidence
+  the implementation is substantially task / architecture constrained
+  even under a foreign credit writer; (D) FUNCTION-BAND fails =
+  accessibility result only. T-1 and COMPAT read alongside as facts.
+  No raw weight-distance mechanism claim; no "DFA is faster" claim
+  (walls are recorded, not adjudicated).
+8. REFUTED-IF (of the house's expectation, not of the program): DFA
+  enters the band AND ladder branch (C) lands, i.e. a foreign credit
+  law reproduces the backprop control's depth dependence,
+  module-class dependence and activation profile within the
+  same-writer envelope.
+9. REGISTERED PRIORS (scored): FUNCTION-BAND: even odds, point g = c
+  - 9 (misses the band from below). Conditional on the band: T-1
+  fires (point C 0.15); DEP-DEPTH fires (point distance 45); DEP-CLASS
+  NO-FIRE (point 8, inside the envelope 10.34); COMPAT fires (point
+  cross median -14); ACT-1 fires on the envelope clause, point ACT
+  distance 1.5 x ACT(A, B). Family record continues from 5 hits, 1
+  miss. Alignment diagnostic expectation (descriptive): cos(B_l e,
+  delta^BP) rising from about 0 at step 0 to 0.2 to 0.5 by 15,420 in
+  the deepest blocks, near 0 in block 0.
+10. Cost and storage. Qualification: 4 DFA births at seed 21 (each
+  about 2,900 to 3,400 s; the DFA step is one forward plus eight
+  detached local backward passes, priced at 1.0 to 1.2 x the stock
+  step) about 3.7 h; BP-control at seed 2 about 0.8 h; DFA discovery
+  at seed 2 about 0.9 h; dependence desk on DFA and ctrl (2 x 18
+  gates + 1 W_0 gate reused) and 16 swaps = 53 gates about 1.2 h;
+  trajectory census, ACT and alignment diagnostics CPU under 20 min;
+  optional depth x class census 128 gates 2.9 h. Total 6.6 h without
+  the optional census, 9.5 h with it. Storage: 6 births x 17
+  snapshots x 75.7 MB = 7.7 GB plus feedback-matrix receipts under 1
+  MB; disk 40 GB free. Instrument: scratch/birth19m_dfa.py (a sibling
+  of the stock ATOM-DIET-TRAJECTORY-1 driver with the credit switch
+  MODE=bp|dfa, the B_l construction, the detached-block forward and
+  the local backward; source-invariant test against the stock driver
+  for the recipe lines), scratch/dfa_align.py (alignment diagnostic),
+  scratch/dfa_act.py (ACT observable), the existing
+  writertraj_depend.py with DEPEND_SET=dfa and writertraj_verify.py
+  with the matching mode; all committed and smoked (seed 11, 300
+  steps, both modes, stream digests asserted) before any
+  qualification birth; every run under the liverun interlock.
+11. Fences. One foreign writer, one discovery seed (2), one
+  qualification seed (21), Mac mps fp32 (run-level nondeterministic;
+  the same-writer envelope is the yardstick); trajectory coordinates
+  licensed by the shared W_0 (construction law; step-1 checks
+  recorded); gates at sigma about 5; "dependence" not "necessity";
+  swaps read as compatibility; the DFA implementation carries
+  within-block weight transport (Launay's macro DFA), so it is a
+  foreign CREDIT law, not a transport-free one; the ACT observable is
+  new and its null envelope is measured in the same run, so ACT-1 is
+  single-instrument-grade; the depth x class census is descriptive;
+  no reading of any DFA quantity before the null-2 reassessment law
+  and the qualification selection are booked. Nothing launches
+  without Artin's GO.
+12. GO / STOP law (complete): PRE-GO gates: (a) WRITER-DEPENDENCE-
+  NULL-2 booked with d_9(N3, N4) < 31.5 and no same-writer swap loss
+  <= -11.5, else STOP and reassess; (b) instrument committed, source
+  test green, smoke VERIFIED on both modes; (c) prereg-auditor clean;
+  (d) Artin GO. QUALIFICATION: run the four cells; if no cell is
+  STABLE, STOP (book DFA-UNSTABLE, accessibility only, no seed-2
+  birth); else freeze the selected cell. DISCOVERY: born the
+  BP-control then the DFA arm at seed 2 under the interlock; no
+  quantity read until both finish. FUNCTION-BAND: fail -> book
+  ACCESSIBILITY ONLY and stop the DFA line (the next foreign writer
+  candidate is decided by Artin); pass -> run the full observable set
+  and the verifier, then receipt-auditor and prereg-auditor, then
+  book once against the ladder. No outcome-based early stop inside
+  any birth; operational aborts (non-finite loss, stream-digest
+  mismatch, dirty tree, sentinel conflict, disk < 15 GB) book NOT-RUN.
