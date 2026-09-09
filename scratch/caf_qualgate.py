@@ -9,7 +9,9 @@ candidate = the smallest k with a hybrid cell at or above the floor,
 its best cell (highest gate, ties lr 3e-4 first); zero-credit controls
 are gated and reported descriptively and never enter the selection.
 The script gates whatever k values have both hybrid cells present; the
-caller decides (per the ladder) whether the next k is born.
+caller decides (per the ladder) whether the next k is born. Selection is
+written ONLY when a candidate exists or every k is complete without one
+(FRONTIER-CLOSED); an incomplete frontier exits 3 with no artifact.
 
 Usage: .venv/bin/python scratch/caf_qualgate.py            (gate + select; refuses if qual_selection.json exists)
        GATE_ONLY=1 .venv/bin/python scratch/caf_qualgate.py (gate new arms, no selection file)
@@ -32,8 +34,8 @@ import train_mathnative as TM  # noqa: E402
 from atomtraj_pins import state_digest  # noqa: E402
 from llmopt.lab.gate import gate_eval  # noqa: E402
 
-QUAL = Path("logs/writercaf1/qual.jsonl")
-SEL = Path("logs/writercaf1/qual_selection.json")
+QUAL = Path(os.environ.get("CAF_QUAL_PATH", "logs/writercaf1/qual.jsonl"))       # override: unit tests only
+SEL = Path(os.environ.get("CAF_SEL_PATH", "logs/writercaf1/qual_selection.json"))
 CELLS = [(1.0, 3e-4), (1.0, 1e-4)]
 FLOOR = 24
 KS = (1, 2, 4)
@@ -103,6 +105,10 @@ def main():
             break
     complete_ks = [k for k in KS if per_k.get(str(k), {}).get("complete")]
     frontier_closed = (selected is None and complete_ks == list(KS))
+    if selected is None and not frontier_closed:
+        # incomplete frontier: no candidate yet and not every k complete -> no selection artifact (Artin fold 2026-09-09)
+        print(f"[caf-qual] INCOMPLETE: no hybrid cell at or above {FLOOR} yet and ks complete = {complete_ks}; qual_selection.json NOT written", flush=True)
+        sys.exit(3)
     rec = {"prereg": "CREDIT-ANCHOR-FRONTIER-1", "kind": "selection", "commit": commit, "device": dev, "floor": FLOOR, "per_k": per_k,
            "selected": selected, "frontier_closed": frontier_closed, "ks_complete": complete_ks,
            "law": "smallest k with a hybrid cell >= 24; best cell = highest gate, ties lr 3e-4 first; zero-credit controls descriptive only",
