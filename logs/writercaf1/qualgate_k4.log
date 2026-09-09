@@ -1,0 +1,6 @@
+[gate] weights sha 6545add0dc04ea11
+[caf-qual] qual_hybrid_k4_s23_S1_lr0.0003: gate 0
+[gate] weights sha 3fcb57247104b1bc
+[caf-qual] qual_hybrid_k4_s23_S1_lr0.0001: gate 0
+[gate] weights sha 49d00b7d65c4084c
+[caf-qual] qual_zero_k4_s23_lr0.0003: gate 62

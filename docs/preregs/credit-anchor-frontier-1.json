@@ -3,7 +3,7 @@
  "note": "Machine-readable form of PRE-REG CREDIT-ANCHOR-FRONTIER-1 (DESIGN ONLY, NOT LAUNCHED; Artin GO required before any birth); the prose governs.",
  "registered": "2026-09-09 (Mac local)",
  "machine": "mac",
- "status": "implement-test-smoke GO (2026-09-09); no birth authorized",
+ "status": "booked FRONTIER-CLOSED 2026-09-09",
  "variable": "k = number of TOP blocks receiving exact backprop credit; blocks 0..7-k direct random feedback with the WRITER-DFA-1 B_l law unchanged",
  "ladder": [
   1,
@@ -116,5 +116,42 @@
   "mode": "zero"
  },
  "driver": "scratch/birth19m_caf.py MODE=bp|dfa|hybrid|zero, K_BP required for hybrid/zero",
- "disposition_writerdfa1": "keep final.pt, feedback.pt, step_00000.pt, step_00463.pt per arm; remove the other 14 snapshots after digest inventory"
+ "disposition_writerdfa1": "keep final.pt, feedback.pt, step_00000.pt, step_00463.pt per arm; remove the other 14 snapshots after digest inventory",
+ "outcome": {
+  "verdict": "FRONTIER-CLOSED",
+  "results_line": 69409,
+  "hybrid_gates": {
+   "k1": [
+    0,
+    0
+   ],
+   "k2": [
+    0,
+    0
+   ],
+   "k4": [
+    0,
+    0
+   ]
+  },
+  "zero_credit_gates": {
+   "k1": 28,
+   "k2": 55,
+   "k4": 62
+  },
+  "selected": null,
+  "discovery": "NOT RUN (sealed STOP)",
+  "priors": {
+   "k1_misses_floor": "hit",
+   "k2_reaches_floor": "miss",
+   "k4_reaches_floor": "miss",
+   "ladder_stops_at_k2": "miss",
+   "band": "unscored"
+  },
+  "family_record": "6 hits, 5 misses"
+ },
+ "receipts_not_run": [
+  "logs/writercaf1/births.jsonl"
+ ],
+ "receipts_not_run_reason": "FRONTIER-CLOSED: no candidate, no discovery stage"
 }

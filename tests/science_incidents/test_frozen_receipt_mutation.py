@@ -284,6 +284,11 @@ NOT_RUN_ABSENT = {
         "logs/qwenalttok/alttok_observations.json",
         "logs/qwenalttok/alttok_observations_offline.json",
     },
+    "docs/preregs/credit-anchor-frontier-1.json": {
+        # VERDICT CREDIT-ANCHOR-FRONTIER-1: FRONTIER-CLOSED, no candidate,
+        # the discovery stage never ran
+        "logs/writercaf1/births.jsonl",
+    },
     "docs/preregs/writer-dfa-1.json": {
         # VERDICT WRITER-DFA-1: DFA-UNSTABLE, sealed STOP at
         # qualification; the discovery and post-discovery stages

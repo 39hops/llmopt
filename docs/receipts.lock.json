@@ -981,6 +981,34 @@
    "source": "results",
    "tracked": true
   },
+  "logs/liverun/writercaf1-qual-k1.jsonl": {
+   "bytes": 538,
+   "exists": true,
+   "sha256": "2a38c952ceb1b64535b015d0926434508e02eb1d08288c9b3b3e61e692a00373",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/liverun/writercaf1-qual-k2.jsonl": {
+   "bytes": 538,
+   "exists": true,
+   "sha256": "d8c9c09d3e722df5dd4b57aecfd40de98ccbbe0caebefccdc05b7dd6fbe0f815",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/liverun/writercaf1-qual-k4.jsonl": {
+   "bytes": 536,
+   "exists": true,
+   "sha256": "df931d7440e026d07e23a9a323d9621ab3e293216f3ddc4f0300a11cf8f58607",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/liverun/writercaf1-qual-select.jsonl": {
+   "bytes": 546,
+   "exists": true,
+   "sha256": "200b5a9ccd6d9e5331d269cf599f7f43bee47996052c788166188da66f0063b3",
+   "source": "results",
+   "tracked": true
+  },
   "logs/liverun/writerdfa1-discovery.jsonl": {
    "exists": false,
    "source": "prereg"
@@ -4198,17 +4226,107 @@
    "tracked": true
   },
   "logs/writercaf1/qual.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 53522,
+   "exists": true,
+   "sha256": "3c5de6c64175c8afa947b0dc7621c7026ea9e427562f81c44474b00a8c70b33d",
+   "source": "results",
+   "tracked": true
   },
   "logs/writercaf1/qual_selection.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 2465,
+   "exists": true,
+   "sha256": "a1a687f01af5023a68f79c82682005462d3846f8b3e9dd661afa01501b41d59f",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/writercaf1/qualgate_k1.log": {
+   "bytes": 254,
+   "exists": true,
+   "sha256": "af5ceb055b5e923d8ee8cdcd5a188e3636540dfa28050ee41e2784225e8ff9a5",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/writercaf1/qualgate_k2.log": {
+   "bytes": 254,
+   "exists": true,
+   "sha256": "70933dc172bca62a99d26ef431e72787994a9074c6967e9224e6fd113e2133b4",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/writercaf1/qualgate_k4.log": {
+   "bytes": 254,
+   "exists": true,
+   "sha256": "5cd63667f5841cd71fd6d2bb62e328631689d3cc9f8523498658b592843af2be",
+   "source": "results",
+   "tracked": true
   },
   "logs/writercaf1/smoke.jsonl": {
    "bytes": 27543,
    "exists": true,
    "sha256": "e7ba4586f6662bed3b3c7a05e5254f0509d2d569ecf92945c070b39feb474f02",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/writercaf1/train_qual_k1_S1_lr1e-4.log": {
+   "bytes": 4011,
+   "exists": true,
+   "sha256": "4e39fa10c6eba303a3139cbde6aa45815173e8f80fb9d1a390e7822a50d5247a",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/writercaf1/train_qual_k1_S1_lr3e-4.log": {
+   "bytes": 4011,
+   "exists": true,
+   "sha256": "625a4d740b75d091725005bd730771def6224798806a3fcb4af791d64011caf1",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/writercaf1/train_qual_k1_zero.log": {
+   "bytes": 4163,
+   "exists": true,
+   "sha256": "d625de6b330fbf9943c0c0131158410ebb53ed2931c92de7218e2ccb964cd732",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/writercaf1/train_qual_k2_S1_lr1e-4.log": {
+   "bytes": 4011,
+   "exists": true,
+   "sha256": "4c959d7c0ca68edfc5c55399fec5765b89ed0f454699ad1eb4be0a3f96cb3306",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/writercaf1/train_qual_k2_S1_lr3e-4.log": {
+   "bytes": 4011,
+   "exists": true,
+   "sha256": "b7ae32de6406fc176c643590277e2411426d36dc97bb2eb5ff35698c244e5d98",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/writercaf1/train_qual_k2_zero.log": {
+   "bytes": 4164,
+   "exists": true,
+   "sha256": "af0453b2ab1aea27845395c2e301d3c6baea8bf928f30db0cca196e3aaf56c5d",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/writercaf1/train_qual_k4_S1_lr1e-4.log": {
+   "bytes": 4011,
+   "exists": true,
+   "sha256": "a7f6f93573204620e0df727505e5917a67a9df74356d51ebc9ae42faaf26c437",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/writercaf1/train_qual_k4_S1_lr3e-4.log": {
+   "bytes": 4011,
+   "exists": true,
+   "sha256": "4b68652925bab5bb9093029a58663ff55da24ce33199c0093da81d0e9b6ae86c",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/writercaf1/train_qual_k4_zero.log": {
+   "bytes": 4088,
+   "exists": true,
+   "sha256": "179c04fb7ec71109c850c1752783588ce4429de7216a80f975e8c8bcac49d043",
    "source": "results",
    "tracked": true
   },

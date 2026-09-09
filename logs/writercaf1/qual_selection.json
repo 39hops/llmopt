@@ -1,0 +1,151 @@
+{
+ "prereg": "CREDIT-ANCHOR-FRONTIER-1",
+ "kind": "selection",
+ "commit": "0c5dfad9",
+ "tree_dirty": false,
+ "device": "mps",
+ "floor": 24,
+ "per_k": {
+  "1": {
+   "cells": {
+    "S1_lr0.0003": {
+     "gate": 0,
+     "solves": {
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0
+     }
+    },
+    "S1_lr0.0001": {
+     "gate": 0,
+     "solves": {
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0
+     }
+    }
+   },
+   "complete": true,
+   "stable": [],
+   "floor": [],
+   "zero_credit": [
+    {
+     "gate": 28,
+     "solves": {
+      "3": 13,
+      "4": 0,
+      "5": 8,
+      "6": 5,
+      "7": 2
+     },
+     "cell": "qual_zero_k1_s23_lr0.0003"
+    }
+   ],
+   "zero_clears_floor": true,
+   "zero_control_failed": [],
+   "hybrid_clears_floor": false
+  },
+  "2": {
+   "cells": {
+    "S1_lr0.0003": {
+     "gate": 0,
+     "solves": {
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0
+     }
+    },
+    "S1_lr0.0001": {
+     "gate": 0,
+     "solves": {
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0
+     }
+    }
+   },
+   "complete": true,
+   "stable": [],
+   "floor": [],
+   "zero_credit": [
+    {
+     "gate": 55,
+     "solves": {
+      "3": 19,
+      "4": 5,
+      "5": 13,
+      "6": 7,
+      "7": 11
+     },
+     "cell": "qual_zero_k2_s23_lr0.0003"
+    }
+   ],
+   "zero_clears_floor": true,
+   "zero_control_failed": [],
+   "hybrid_clears_floor": false
+  },
+  "4": {
+   "cells": {
+    "S1_lr0.0003": {
+     "gate": 0,
+     "solves": {
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0
+     }
+    },
+    "S1_lr0.0001": {
+     "gate": 0,
+     "solves": {
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0
+     }
+    }
+   },
+   "complete": true,
+   "stable": [],
+   "floor": [],
+   "zero_credit": [
+    {
+     "gate": 62,
+     "solves": {
+      "3": 22,
+      "4": 6,
+      "5": 16,
+      "6": 7,
+      "7": 11
+     },
+     "cell": "qual_zero_k4_s23_lr0.0003"
+    }
+   ],
+   "zero_clears_floor": true,
+   "zero_control_failed": [],
+   "hybrid_clears_floor": false
+  }
+ },
+ "qual_path": "logs/writercaf1/qual.jsonl",
+ "sel_path": "logs/writercaf1/qual_selection.json",
+ "paths_overridden": false,
+ "selected": null,
+ "frontier_closed": true,
+ "ks_complete": [
+  1,
+  2,
+  4
+ ],
+ "law": "smallest k with a hybrid cell >= 24; best cell = highest gate, ties lr 3e-4 first; zero-credit controls descriptive only",
+ "utc": "2026-09-09T21:00:39+00:00"
+}

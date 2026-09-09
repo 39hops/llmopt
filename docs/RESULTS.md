@@ -69405,3 +69405,136 @@ _fixture_*), path-isolated. S8 (not a QUAL blocker): no discovery or
 post-discovery driver exists yet; both are required before any
 discovery GO. Everything else in L69303 stands; no seed-23 birth and no
 discovery birth are authorized by this entry.
+
+## VERDICT CREDIT-ANCHOR-FRONTIER-1: FRONTIER-CLOSED — no depth of exact top-block credit k in {1, 2, 4} makes the task accessible while the lower stack learns from direct random feedback: all six hybrid cells at seed 23 gate 0 / 120 at 0.0% validity (loss 3.15 to 3.29 against the uniform 3.69), so no candidate exists and DFA-family births STOP by the sealed law; the registered zero-credit controls (lower stack and emb frozen at W_0, the same top blocks by backprop) gate 28 / 55 / 62 at k = 1 / 2 / 4, so under the sealed interpretation this is evidence that the DFA-trained lower stack is actively harmful at every k (descriptive controls, one seed, no bar); priors: k = 1 miss hit, k = 2 and k = 4 reach-the-floor missed, ladder-stops-at-2 missed, band prior unscored (family 6 hits, 5 misses) (2026-09-09 local, Mac)
+
+Pre-registration: PRE-REG CREDIT-ANCHOR-FRONTIER-1 (L69122), sealed by
+AMENDMENT -PRECISION (L69223, zero-credit control activated) and the
+instrument entries L69303 / L69370; qualification GO 2026-09-09 after
+the selector fold (a larger k is frozen only when every smaller k is
+complete; an incomplete frontier writes no selection) and two clean
+prereg-auditor passes. Every registered process ran under the liverun
+interlock at launch commit 0c5dfad9 with no commit and no edit while
+live: writercaf1-qual-k1 (pid 88122), -k2 (94767), -k4 (1991), each
+"two hybrid cells, then the zero-credit control, then the gates", and
+-qual-select (the selection); interlock receipts
+logs/liverun/writercaf1-qual-k1.jsonl, logs/liverun/writercaf1-qual-k2.jsonl,
+logs/liverun/writercaf1-qual-k4.jsonl, logs/liverun/writercaf1-qual-select.jsonl, all rc 0.
+
+THE SEALED LAW APPLIED (L69122 item 2): STABLE iff finite loss and
+gate > 0; FLOOR iff gate >= 24; the ladder stops at the first k with a
+hybrid cell at or above the floor; "if no cell of k = 1, 2, 4 reaches
+the floor, the rung books FRONTIER-CLOSED and DFA-family births STOP".
+Measured (seed 23, shared W_0 across all nine arms, init digest
+02eb3019..., feedback digest 50aa7d9c... for every hybrid cell (s = 1),
+mps fp32, 17 snapshots each, walls recorded not adjudicated; gate
+weights sha as printed by gate_eval, in the row order below: 22675d31,
+5707b1a8, dda7188d, f21f9d47, d317a405, af3ad882, 6545add0, 3fcb5724,
+49d00b7d):
+  k = 1  hybrid (1, 3e-4)  loss 3.162  gate {3: 0, 4: 0, 5: 0, 6: 0, 7: 0} = 0  valid 0.0%   3,175 s  final 52ea261f
+         hybrid (1, 1e-4)  loss 3.190  gate {3: 0, 4: 0, 5: 0, 6: 0, 7: 0} = 0  valid 0.0%   3,054 s  final 95a9a3ab
+         zero (3e-4)       loss 0.412  gate {3: 13, 4: 0, 5: 8, 6: 5, 7: 2} = 28  valid 21.08%  985 s  final b835cd51  (50 tensors frozen)
+  k = 2  hybrid (1, 3e-4)  loss 3.193  gate {3: 0, 4: 0, 5: 0, 6: 0, 7: 0} = 0  valid 0.0%   3,085 s  final 5eaa919d
+         hybrid (1, 1e-4)  loss 3.153  gate {3: 0, 4: 0, 5: 0, 6: 0, 7: 0} = 0  valid 0.0%   3,068 s  final 4a96c43d
+         zero (3e-4)       loss 0.388  gate {3: 19, 4: 5, 5: 13, 6: 7, 7: 11} = 55  valid 50.67%  1,298 s  final 34e5f7d9  (43 frozen)
+  k = 4  hybrid (1, 3e-4)  loss 3.276  gate {3: 0, 4: 0, 5: 0, 6: 0, 7: 0} = 0  valid 0.0%   2,957 s  final 5b329381
+         hybrid (1, 1e-4)  loss 3.291  gate {3: 0, 4: 0, 5: 0, 6: 0, 7: 0} = 0  valid 0.0%   2,812 s  final 107f15d0
+         zero (3e-4)       loss 0.385  gate {3: 22, 4: 6, 5: 16, 6: 7, 7: 11} = 62  valid 59.43%  1,700 s  final ab5dae34  (29 frozen)
+Every zero birth verified its freeze law at the end (frozen tensors
+bit-identical to step_00000.pt; logged in the train logs cited
+below). No hybrid cell is STABLE under the sealed law (finite loss at every
+cell, gate 0 at every cell). Selection (scratch/caf_qualgate.py,
+logs/writercaf1/qual_selection.json, commit 0c5dfad9, clean tree): no
+hybrid cell at or above 24 at any k, ks complete [1, 2, 4], selected
+null, frontier_closed true, no zero-control failure. FRONTIER-CLOSED.
+No candidate, no seed-2 birth, no discovery, no band, no mechanism
+comparison; DFA-family births STOP.
+
+READING (sealed, L69122 items 1 and 4 and L69223 F3): the hybrid
+writer at every k is not accessible at the floor: adding exact
+backprop credit to the top 1, 2 or 4 blocks (with head and norm) over
+a DFA-trained lower stack does not lift the gate off zero. The
+registered zero-credit control clears the floor at every k (28 at k =
+1, one block by backprop over a frozen random stack; 55 at k = 2; 62
+at k = 4, inside the 61 to 65 of the three registered stock births at
+15,420, L67274). By the sealed interpretation "a frozen-lower control
+that clears the floor while the hybrid at the same k does not is
+evidence that the DFA-trained lower stack is actively harmful at that
+k": this holds at k = 1, 2 and 4. Descriptive: the hybrid losses
+(3.15 to 3.29) sit slightly below the pure-DFA cells of L68802 (3.34 to
+3.51) and above every zero control (0.39 to 0.41); the logged loss at
+steps 1,000 / 5,000 / 15,400 is 3.22 / 3.08 / 3.06 (k = 1), 3.34 /
+3.11 / 3.04 (k = 2), 3.45 / 3.23 / 3.18 (k = 4) for the lr 3e-4 hybrids
+and 0.50 / 0.83 / 0.64, 0.38 / 0.53 / 0.54, 0.32 / 0.44 / 0.51 for the
+zero controls; the frozen-stack controls gain function from k = 1 to k = 2 (28 to
+55, resolved) and read 62 at k = 4 (a 7-solve step at n = 1, at the
+house resolution boundary, direction not claimed), i.e. the random
+lower stack is a usable fixed feature map for the BP segment while the
+DFA-trained lower stack is not. What
+this rung does NOT say: why the DFA stack is harmful (the natural
+hypothesis from OBSERVATION WHY-DFA-FAILED-DESCRIPTIVE-0, L69008, is
+the residual-stream rank collapse under B_l e credit, but no ACT or
+alignment readout was taken on these nine arms and none is booked
+here); anything about the function of a hybrid at k outside {1, 2,
+4}; anything about a DFA regime with a different feedback law (the B_l
+law was kept unchanged by design); anything comparative about walls
+(the hybrid births ran 2,812 to 3,175 s v 2,785 to 2,813 s for pure DFA
+and 985 to 1,700 s for the zero controls, recorded only).
+
+SCORING (L69122 item 5, direction): k = 1 misses the floor (p 0.75,
+point 4): HIT (gate 0). k = 2 reaches the floor (p 0.55, point 30):
+MISS. k = 4 reaches the floor (p 0.85, point 48): MISS. The ladder
+stops at k = 2 (p 0.5): MISS. FUNCTION-BAND miss-from-below if a
+candidate exists: UNSCORED (no candidate). Family record: 5 hits, 2
+misses -> 6 hits, 5 misses. The house expected exact credit in the top
+half of the stack to rescue accessibility; it did not, and the frozen
+controls are evidence that the failure sits in the DFA-trained lower
+stack rather than in the amount of exact credit above it (descriptive,
+one seed; the frontier answers "how much exact credit", not "why").
+
+CONSEQUENCES (decisions for Artin, nothing armed): (i) DFA-family
+births STOP as sealed; the optimizer-regime DFA repair bank stays
+closed (the failure class is unchanged); (ii) the mechanism-attribution
+program is not parked: the next foreign writer is the banked SYNTHETIC
+GRADIENTS / DNI family (RIFF 2026-09-09), whose learned per-token
+feedback is exactly what the fixed B_l e lacks; (iii) a zero-training
+descriptive readout (ACT and alignment on the nine seed-23 arms,
+including the zero controls as within-seed comparators) would test the
+rank-collapse hypothesis for the hybrid stacks and needs its own small
+pre-reg; (iv) the frozen-random-lower-stack result (62 / 120 at k = 4)
+is itself a descriptive finding about this task at 19M (half the
+stack as a fixed random feature map supports a gate inside the stock
+range on one seed); no FUNCTION-BAND test exists for it (the band is
+registered only for a licensed candidate at discovery) and it is
+banked descriptively, not adjudicated.
+
+RECEIPTS (force-added and locked): logs/writercaf1/qual.jsonl (nine
+birth rows, nine gate rows, one selection row),
+logs/writercaf1/qual_selection.json, the four interlock receipts
+above, the nine training logs logs/writercaf1/train_qual_k1_S1_lr3e-4.log,
+logs/writercaf1/train_qual_k1_S1_lr1e-4.log, logs/writercaf1/train_qual_k1_zero.log,
+logs/writercaf1/train_qual_k2_S1_lr3e-4.log, logs/writercaf1/train_qual_k2_S1_lr1e-4.log,
+logs/writercaf1/train_qual_k2_zero.log, logs/writercaf1/train_qual_k4_S1_lr3e-4.log,
+logs/writercaf1/train_qual_k4_S1_lr1e-4.log, logs/writercaf1/train_qual_k4_zero.log (the logged losses
+and the freeze-law lines), the three gate logs
+logs/writercaf1/qualgate_k1.log, logs/writercaf1/qualgate_k2.log, logs/writercaf1/qualgate_k4.log (the
+gate-printed weights shas), plus the pre-launch
+logs/writercaf1/leakage.json, logs/writercaf1/smoke.jsonl and the
+run-1 / run-2 artifacts. Verification: the
+selection law was re-applied by hand from the gate rows (nine dicts
+sum to their totals, six hybrid totals zero, three zero-control totals
+28 / 55 / 62, no floor cell, all three k complete) and the auditor
+below; the 153 qualification snapshots (11 GB, untracked,
+digest-anchored in qual.jsonl) stay under checkpoints/writercaf1/ until
+Artin decides their disposition (the frozen-control arms are the
+natural keep set).
+
+FENCES: one qualification seed (23; the pure-DFA loss range quoted
+for context is seed 21 at s in {0.25, 1, 4}, and the stock 61 to 65
+are seeds 5 to 7, same device, different seeds), two hybrid cells per
+k, one zero control per k, one implementation (Launay-style hybrid with the top k
+blocks exact), Mac mps fp32; the zero controls are descriptive by
+registration and enter no bar; gate 0 / 120 at 0.0% validity is a floor
+reading; the 28 / 55 / 62 readings are single-seed; nothing here
+amends L68802, L69008 or the frontier pre-reg's thresholds; no seed-2
+work was done.
