@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 230, library 75, reproduce-pinned 10, results-cited 424, spec-cited 89, cited-but-library 63
+Census: UNCITED 229, library 75, reproduce-pinned 10, results-cited 425, spec-cited 89, cited-but-library 63
 
 ## scratch/
 
@@ -254,7 +254,7 @@ Census: UNCITED 230, library 75, reproduce-pinned 10, results-cited 424, spec-ci
 | kv | kv_equiv.py | UNCITED | — | — | — | 2 |
 | l9 | l9_probe.py | UNCITED | — | — | — | 3 |
 | lam | lam_merge_review.py | UNCITED | — | — | — | 1 |
-| lean | lean_check.py | reproduce-pinned | REPRODUCE, RESULTS, specs | REPRODUCE×1, RESULTS×7, specs×3 | — | — |
+| lean | lean_check.py | reproduce-pinned | REPRODUCE, RESULTS, specs | REPRODUCE×1, RESULTS×8, specs×3 | — | — |
 | lean | lean_sample_build.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | legacy | legacy_diet_audit.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | len | len_vs_l4.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
@@ -665,10 +665,10 @@ Census: UNCITED 230, library 75, reproduce-pinned 10, results-cited 424, spec-ci
 | vrm | vrm_ab.py | UNCITED | — | — | — | 1 |
 | weight | weight_fft_euler.py | UNCITED | — | — | — | — |
 | wfloor | wfloor_ladder.sh | results-cited | RESULTS | RESULTS×1 | — | — |
-| writertraj | writertraj_census.py | results-cited | RESULTS | RESULTS×1 | — | 2 |
-| writertraj | writertraj_depend.py | results-cited | RESULTS | RESULTS×1 | — | 2 |
-| writertraj | writertraj_verify.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
-| writertraj0 | writertraj0_driver.sh | UNCITED | — | — | — | — |
+| writertraj | writertraj_census.py | results-cited | RESULTS | RESULTS×2 | — | 2 |
+| writertraj | writertraj_depend.py | results-cited | RESULTS | RESULTS×2 | — | 2 |
+| writertraj | writertraj_verify.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
+| writertraj0 | writertraj0_driver.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | wsl | wsl.sh | results-cited | RESULTS, specs | RESULTS×10, specs×23 | — | 5 |
 | xterm | xterm_probe.py | library | RESULTS, specs | RESULTS×2, specs×1 | 1 | 1 |
 | xtermdiet1 | xtermdiet1_driver.sh | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
