@@ -4109,28 +4109,67 @@
    "tracked": true
   },
   "logs/writertraj0/census.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 605189,
+   "exists": true,
+   "sha256": "b85b50f77d73a3603792c1f0558b76b795037033936a0d56a7c8b469eb8a980e",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/writertraj0/census.json.sha256": {
+   "bytes": 95,
+   "exists": true,
+   "sha256": "564ebf5d3de9b2a06022e695afbfdda1590982270f4f28ae769af4f3193e41c2",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/writertraj0/census.log": {
+   "bytes": 4214,
+   "exists": true,
+   "sha256": "e560d8c7b031028b3b9456ad7fd56d194e9f14f96025955a1f616bf8e0b67383",
+   "source": "results",
+   "tracked": true
   },
   "logs/writertraj0/depend.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 3896,
+   "exists": true,
+   "sha256": "c70e328927c9bb16f7befbc9c93ddc1ebea84acd7d507faf1fc4b9e02f56e811",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/writertraj0/depend.log": {
+   "bytes": 7878,
+   "exists": true,
+   "sha256": "a047b60ae36d80c7c8924767b4da8e06901ecdb01a70dad97302dcd44e69ab75",
+   "source": "results",
+   "tracked": true
   },
   "logs/writertraj0/gates.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 41303,
+   "exists": true,
+   "sha256": "53a43947562fd084ceb5f9e8dae80fbc826d4a24c0905e762061062316d7c376",
+   "source": "results",
+   "tracked": true
   },
   "logs/writertraj0/smoke.jsonl": {
-   "bytes": 11144,
+   "bytes": 10741,
    "exists": true,
-   "local_only": true,
-   "sha256": "0ace8929b8d8557b8baa86c52c365220615e6a2b0afe3e83aeca76dfd6a52551",
+   "sha256": "1857935f7d71a085f2d20bd72ee5f072d4c65e1a2b2bbc21811d6db7b65f9b6c",
    "source": "results",
-   "tracked": false
+   "tracked": true
+  },
+  "logs/writertraj0/verify.log": {
+   "bytes": 4838,
+   "exists": true,
+   "sha256": "8ed0540133eb9a2d4505ec099f6e5cafac4df9b7c83b9fd05cbd966d1417f4e6",
+   "source": "results",
+   "tracked": true
   },
   "logs/writertraj0/verify_receipt.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 1246,
+   "exists": true,
+   "sha256": "1854d91ac896ff047fa3b0c5fcde9b526d8f1aa6c099e49da29384523209e742",
+   "source": "results",
+   "tracked": true
   },
   "logs/xtermdiet1/arms.jsonl": {
    "bytes": 1163,

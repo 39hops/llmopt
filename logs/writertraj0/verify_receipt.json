@@ -1,0 +1,48 @@
+{
+ "kind": "verify",
+ "prereg": "WRITER-TRAJECTORY-CENSUS-0",
+ "smoke": false,
+ "verdict": "VERIFIED",
+ "n_discrepancies": 0,
+ "discrepancies": [],
+ "census_commit": "d4f2f557",
+ "source_sha256_at_commit": {
+  "scratch/writertraj_census.py": "43a2485f15a6243e182ca7fa5ef2c6865d6f3b6488575fb39fbe5305d4b68769",
+  "scratch/writertraj_depend.py": "063a20ee6ca7b2a0ed4eafaa68d09aa47e590e0d08f69fea6b01bd2a5a76c1f9",
+  "scratch/atomtraj_pins.py": "d91b8866bc761f0bc7aab6aaf6fe80b2dcd4d5f6395271b8f394b5e5d92aa63b"
+ },
+ "bars": {
+  "S0-1": true,
+  "S0-2": true,
+  "S0-3": true,
+  "S0-4_count": 8,
+  "TRAJECTORY": true,
+  "D-0": true,
+  "D-1": true,
+  "D-2": true,
+  "C_AB_final": 0.21087383265265575,
+  "C_null_final": [
+   0.7771193323685084,
+   0.7810675461470099,
+   0.7953535236254307,
+   0.7961761217127437
+  ],
+  "R_AB_final": 1.2562883174922959,
+  "R_null_final": [
+   0.6676548346738659,
+   0.661713761477427,
+   0.6397602918435288,
+   0.6384733782074002
+  ],
+  "V_AB": 0.020915405061850932,
+  "V_null": [
+   0.30382870189625766,
+   0.30580926605328285,
+   0.3173622420491357,
+   0.32276131375644257
+  ]
+ },
+ "commit": "8009dbb6",
+ "status_porcelain": "",
+ "verifier_sha256": "9ac7cad6dbcedfb9e1b874a835eed1e7c27bf155167655e59d59df55d384dadb"
+}
