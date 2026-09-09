@@ -3,7 +3,7 @@
  "note": "Machine-readable form of PRE-REG CREDIT-ANCHOR-FRONTIER-1 (DESIGN ONLY, NOT LAUNCHED; Artin GO required before any birth); the prose governs.",
  "registered": "2026-09-09 (Mac local)",
  "machine": "mac",
- "status": "design-only",
+ "status": "implement-test-smoke GO (2026-09-09); no birth authorized",
  "variable": "k = number of TOP blocks receiving exact backprop credit; blocks 0..7-k direct random feedback with the WRITER-DFA-1 B_l law unchanged",
  "ladder": [
   1,
@@ -81,7 +81,8 @@
   "logs/writercaf1/leakage.json",
   "logs/writercaf1/qual.jsonl",
   "logs/writercaf1/qual_selection.json",
-  "logs/writercaf1/smoke.jsonl"
+  "logs/writercaf1/smoke.jsonl",
+  "logs/writerdfa1/prune_inventory.json"
  ],
  "pre_go": [
   "postmortem booked (L69008)",
@@ -94,5 +95,25 @@
   "VERDICT WRITER-DFA-1 (L68802)",
   "OBSERVATION WHY-DFA-FAILED-DESCRIPTIVE-0 (L69008)"
  ],
- "results_id": "2026-09-09-pre-reg-credit-anchor-frontier-1"
+ "results_id": "2026-09-09-pre-reg-credit-anchor-frontier-1",
+ "amended_by": [
+  "AMENDMENT CREDIT-ANCHOR-FRONTIER-1-PRECISION"
+ ],
+ "endpoint_identities": {
+  "K_BP=0": "== sealed dfa_objective and MODE=dfa one-step (bit-exact / <= 1e-7)",
+  "K_BP=8": "== stock path and MODE=bp one-step (bit-exact / <= 1e-7)"
+ },
+ "leakage_per_k": "top blocks: CE grad present, surrogate absent; lower blocks: CE grad absent, delivered error == B_l e; boundary x_{8-k} detached; head/norm == stock grad <= 1e-7",
+ "zero_credit_control": {
+  "registered": true,
+  "per_k": "one birth per k reached, after the two hybrid cells",
+  "seed": 23,
+  "lr": 0.0003,
+  "frozen": "blocks 0..7-k and emb at W_0 (requires_grad False, not in optimizer)",
+  "trained": "blocks 8-k..7, head, norm by BP",
+  "floor": ">= 24 descriptive",
+  "mode": "zero"
+ },
+ "driver": "scratch/birth19m_caf.py MODE=bp|dfa|hybrid|zero, K_BP required for hybrid/zero",
+ "disposition_writerdfa1": "keep final.pt, feedback.pt, step_00000.pt, step_00463.pt per arm; remove the other 14 snapshots after digest inventory"
 }

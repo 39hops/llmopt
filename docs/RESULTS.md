@@ -69219,3 +69219,83 @@ accessibility threshold, not a function match; the frontier answers
 "how much exact credit is needed", not "why"; "dependence" never
 "necessity"; no "faster" claim; nothing here revises L68802 or the
 postmortem.
+
+## AMENDMENT CREDIT-ANCHOR-FRONTIER-1-PRECISION (target: PRE-REG CREDIT-ANCHOR-FRONTIER-1 L69122): Artin GO 2026-09-09 to IMPLEMENT, TEST and SMOKE only; two zero-data precision folds registered before any code exists: both endpoint identities (K_BP = 0 reproduces the sealed WRITER-DFA-1 path, K_BP = 8 reproduces stock backprop) and the per-k generalized leakage law; the zero-credit control ACTIVATED with its recipe pinned; artifact disposition of the WRITER-DFA-1 qualification set; no threshold or prior changes; no qualification or discovery birth authorized (2026-09-09 local, Mac)
+
+Credit law as reviewed and confirmed: the top k blocks 8-k..7 form
+one attached true-backprop segment with the head and the final norm;
+x_{8-k} (the output of block 7-k) is detached at the DFA -> BP
+boundary; the lower blocks 0..7-k receive the existing fixed random
+credit B_l e_t only; the BP blocks receive the true credit only, never
+the DFA surrogate in addition; emb receives block 0's local credit as
+sealed (B_0 e + J_{f_0}^T B_0 e); head.weight and norm.g receive the
+true gradient.
+
+F1. Endpoint identities, both required before any frontier birth, on
+the deterministic CPU float32 fixture of AMENDMENT WRITER-DFA-1-
+PRECISION P1 (torch.manual_seed(11) W_0, the first stock batch of
+epoch 0 for the one-step check, the first four probe rows for the
+objective check), frozen tolerance: bit-exact (torch.equal) where the
+two paths execute the same ops, otherwise max abs diff <= 1e-7.
+  K_BP = 0: the hybrid objective must reproduce the sealed
+  dfa_objective (loss, e, every delta_l, the total) and the new driver
+  in MODE=hybrid K_BP=0 must reproduce the sealed driver in MODE=dfa
+  (post-clip parameter gradients and the parameter state after one
+  AdamW + OneCycle step) on the same batch.
+  K_BP = 8: the hybrid objective must reproduce the stock path
+  (logits, loss, all parameter gradients) and the new driver in
+  MODE=hybrid K_BP=8 must reproduce MODE=bp of the sealed driver (the
+  same one-step comparison).
+  Any mismatch blocks the frontier.
+F2. Generalized leakage smoke, for each k in {1, 2, 4}, same fixture,
+receipt logs/writercaf1/leakage.json, refused as an implementation
+blocker on any failure: TOP BP BLOCKS 8-k..7: the true CE gradient is
+present on every parameter (autograd.grad of the loss non-None) and
+the DFA surrogate contributes nothing (autograd.grad of the surrogate
+sum over these parameters is None); LOWER DFA BLOCKS 0..7-k: the true
+downstream CE gradient is absent (None) and the delivered hidden error
+at every block output equals B_l e bit-exactly (the sealed law); the
+boundary tensor x_{8-k} carries no graph into block 7-k (autograd.grad
+of the loss w.r.t. the output of block 7-k is None, and the gradient
+delivered there equals B_{7-k} e); e is detached; emb reached by the
+surrogate of block 0 only; head.weight and norm.g true gradient equal
+to the stock gradient at the same weights (<= 1e-7); the BP segment's
+block gradients differ from the stock gradients (the segment is a
+different function of its detached input) and this difference is
+recorded, not adjudicated.
+F3. ZERO-CREDIT CONTROL, activated (the optional arm of L69122 item
+1 is now REGISTERED): one zero-credit birth for every k the
+qualification ladder actually reaches, run AFTER the two hybrid cells
+of that k; seed 23; lr 3e-4; the feedback scale is irrelevant (no
+feedback); blocks 0..7-k and emb are forward-active and FROZEN exactly
+at W_0 (requires_grad False, excluded from the optimizer; emb has no
+credit path once the boundary is detached and is frozen with the lower
+stack, stated here as the pin); blocks 8-k..7, head and norm train by
+backprop through the same detached boundary; same stream, schedule,
+exposure, cadence, gate and device; the same accessibility floor >= 24
+read descriptively; the control's result never alters the
+first-k-that-clears hybrid progression. Interpretation as sealed: a
+frozen-lower control that clears the floor while the hybrid at the
+same k does not is evidence that the DFA-trained lower stack is
+actively harmful at that k; otherwise the comparison stays
+descriptive, no new bar. Driver MODE=zero with K_BP; receipts
+logs/writercaf1/qual.jsonl (kind=birth, mode zero); a MODE=zero smoke
+on one k establishes the freeze law (the frozen parameters
+bit-identical to W_0 after the smoke, the trained ones changed).
+F4. Sequence under this GO: implement K_BP, MODE=hybrid and MODE=zero
+in a new sibling driver (scratch/birth19m_caf.py; the sealed
+birth19m_dfa.py is results-cited and stays frozen) and the credit
+module's hybrid objective (the sealed dfa_objective kept verbatim and
+re-expressed as the K_BP = 0 case by an identity test); source
+invariants; K_BP = 0 identity; K_BP = 8 identity; generalized leakage
+for k = 1, 2, 4; isolated 300-step seed-11 smokes for k = 1, 2, 4;
+MODE=zero smoke on one k; clean-tree prereg-auditor; report. Smokes
+are not registered processes; every registered process runs under the
+interlock. No seed-23 birth and no discovery birth under this GO.
+F5. Artifact disposition (WRITER-DFA-1 qualification set, 5.1 GB): after
+one final digest inventory against qual.jsonl (every kept and removed
+file's sha and state digest recorded in logs/writerdfa1/prune_inventory.json),
+retain per arm final.pt, feedback.pt, step_00000.pt (W_0), step_00463.pt
+(the first measured rank-collapse point, which is also the OneCycle
+peak snapshot) and remove the other 14 snapshots; receipts unchanged.
+Everything else in L69122 stands.
