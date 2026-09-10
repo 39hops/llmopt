@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 235, library 81, reproduce-pinned 10, results-cited 438, spec-cited 89, cited-but-library 69
+Census: UNCITED 236, library 81, reproduce-pinned 10, results-cited 438, spec-cited 89, cited-but-library 69
 
 ## scratch/
 
@@ -26,7 +26,7 @@ Census: UNCITED 235, library 81, reproduce-pinned 10, results-cited 438, spec-ci
 | atomdose1 | atomdose1_driver.sh | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | atomladder1 | atomladder1_driver.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | atomtraj | atomtraj_census.py | results-cited | RESULTS | RESULTS×4 | — | 4 |
-| atomtraj | atomtraj_pins.py | library | RESULTS | RESULTS×8 | 17 | 3 |
+| atomtraj | atomtraj_pins.py | library | RESULTS | RESULTS×8 | 18 | 3 |
 | atomtraj | atomtraj_qual.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | atomtraj | atomtraj_verify.py | results-cited | RESULTS | RESULTS×5 | — | 3 |
 | atomtraj1 | atomtraj1_driver.sh | results-cited | RESULTS | RESULTS×1 | — | — |
@@ -65,6 +65,7 @@ Census: UNCITED 235, library 81, reproduce-pinned 10, results-cited 438, spec-ci
 | build | build_merged_diet.py | UNCITED | — | — | — | — |
 | caf | caf_actpost.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 1 |
 | caf | caf_leakage_smoke.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
+| caf | caf_prune.py | UNCITED | — | — | — | — |
 | caf | caf_qualgate.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 2 |
 | cal | cal_dilute.py | UNCITED | — | — | — | — |
 | cal | cal_dk_probe.py | UNCITED | — | — | — | 1 |

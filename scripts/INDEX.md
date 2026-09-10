@@ -1579,6 +1579,17 @@ WRITER-DFA-1 birth driver (pre-reg RESULTS L68321, sealed by AMENDMENT -SEAL L68
 - `write_receipt(row, launch_commit)`
 - `main()`
 
+### scratch/birth19m_fb.py
+FROZEN-BACKBONE-1 birth driver. Sibling of the results-cited CREDIT-ANCHOR-FRONTIER-1 driver scratch/birth19m_caf.py (frozen; every branch survives here verbatim; the DFA branches are never selected under the FB law). Two arms per fresh paired seed, same byte-identical W_0 and the exact stock stream:   FULL   MODE=bp: ordinary backprop over all parameters (the stock recipe).   FROZEN MODE=zero K_BP=4: emb + blocks 0..3 frozen exactly at W_0,          blocks 4..7 + norm + head trained by ordinary backprop          (dfa_credit.freeze_lower; the freeze law re-verified at the end). FB=1 seeds 24, 25, 26 only, LR 3e-4, 15,420 steps, 17 snapshots; paths checkpoints/frozenbb1/ and logs/frozenbb1/births.jsonl. SMOKE=1: seed 11, checkpoints/frozenbb1_smoke/, logs/frozenbb1/smoke.jsonl. Everything else (QUAL / DISCOVERY branches, hybrid / dfa modes) is inherited and refused under FB=1.
+
+- `sha256_file(p)`
+- `git_head()`
+- `git_dirty()`
+- `now()`
+- `save_snapshot(model, step, record)` — Save the state dict (CPU float32) as step_{n:05d}.pt and record the
+- `write_receipt(row, launch_commit)`
+- `main()`
+
 ### scratch/birth19m_phase.py
 PHASE-PORTRAIT-1 instrument run: a fresh 19M-class birth with STEP-LEVEL milestone saves INCLUDING optimizer state, so a true per-neuron (angle, angular-velocity) phase portrait exists — position from the weights, momentum from Adam's exp_avg, velocity from adjacent milestones. The pendulum riff's residue (RIFF-LEDGER 2026-08-13), instrument-grade.
 
@@ -2304,6 +2315,11 @@ XTERM-DIET-1 farm: the cross-term-decomposed expand shard (pre-reg RESULTS 2026-
 ### scratch/farmer_probe.py
 FARMER PROBE (pre-reg 2026-07-29: escalation-engine cell 6, Artin's reverse-self-learner riff). A full-reverse d64 birth (sym_birth REV=2, SKIP_GATE) plays farmer: sample predecessor candidates for NOVEL band expressions (gate-band + 50k offset, disjoint from the gate), verify each by FORWARD rule application (fork-boxed verify_wave: cand -> seed must be a valid step), and score verified-distinct-NOVEL yield per 1000 samples + wall time. Novel = candidate absent from the entire gen-4 corpus (cur+nxt). Usage: CKPT=checkpoints/sym_birth_dense_revfarm_ema.pt        .venv/bin/python scratch/farmer_probe.py
 
+
+### scratch/fb_gate.py
+FROZEN-BACKBONE-1 post-hoc gates and the replication law (PRE-REG FROZEN-BACKBONE-1). Reads logs/frozenbb1/births.jsonl (six FB birth rows: FULL and FROZEN at seeds 24, 25, 26), gates every final with llmopt.lab.gate.gate_eval on mps (the standard 120), appends kind=gate rows, computes delta_s = gate_FROZEN_s - gate_FULL_s per seed and writes logs/frozenbb1/replication.json (refuses to overwrite): REPLICATES iff delta_s >= -7 on all three pairs. Individual gates, deltas and the mean are booked descriptively; no averaging rescues a failed pair. Also the frozen ACT vector (scratch/dfa_act.py act_vector) on the six finals, descriptive.
+
+- `main()`
 
 ### scratch/fig_magic_scatter.py
 Gallery: magic-estimator held-out scatter (predicted vs measured).

@@ -1,0 +1,70 @@
+{
+ "name": "FROZEN-BACKBONE-1",
+ "note": "Machine-readable form of PRE-REG FROZEN-BACKBONE-1 (design + instrument sealed, NOT LAUNCHED; Artin GO required); the prose governs.",
+ "registered": "2026-09-10 (Mac local)",
+ "machine": "mac",
+ "status": "sealed, not launched",
+ "seeds": [
+  24,
+  25,
+  26
+ ],
+ "arms": {
+  "FULL": "MODE=bp stock recipe, all parameters",
+  "FROZEN": "MODE=zero K_BP=4: emb + blocks 0..3 frozen at W_0, blocks 4..7 + norm + head by backprop"
+ },
+ "order": [
+  "24:bp",
+  "24:zero",
+  "25:zero",
+  "25:bp",
+  "26:bp",
+  "26:zero"
+ ],
+ "primary": "delta_s = gate_FROZEN_s - gate_FULL_s",
+ "law": "REPLICATES iff delta_s >= -7 on all three pairs; KILLED iff any delta_s < -7; mean descriptive only",
+ "bars": [
+  {
+   "id": 1,
+   "name": "REPLICATES",
+   "metric": "paired_gate_delta_min",
+   "aggregation": "min over three pairs",
+   "direction": "above",
+   "value": -7,
+   "arms": [
+    "FROZEN",
+    "FULL"
+   ]
+  }
+ ],
+ "interpretation_on_replicates": "learning the embedding and bottom four blocks is not required to reach full-BP function at the house gate resolution across these specimens; the frozen lower stack is NOT called irrelevant",
+ "registered_prior": {
+  "REPLICATES": 0.6,
+  "point_deltas": [
+   -3,
+   -4,
+   -2
+  ],
+  "full_gates": "58 to 66",
+  "frozen_gates": "55 to 64"
+ },
+ "refuted_if": "any delta_s < -7",
+ "cost_h": {
+  "births": 3.8,
+  "gates": 0.15
+ },
+ "storage_gb": 7.7,
+ "liverun_ids": [
+  "frozenbb1"
+ ],
+ "receipts": [
+  "logs/frozenbb1/births.jsonl",
+  "logs/frozenbb1/replication.json",
+  "logs/frozenbb1/smoke.jsonl",
+  "logs/liverun/frozenbb1.jsonl"
+ ],
+ "does_not_revise": [
+  "VERDICT CREDIT-ANCHOR-FRONTIER-1 (L69409)"
+ ],
+ "results_id": "2026-09-10-pre-reg-frozen-backbone-1-replicate"
+}

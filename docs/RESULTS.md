@@ -69693,3 +69693,245 @@ RECEIPTS (force-added and sha-locked in the booking commit): logs/dfaharm0/gates
 logs/dfaharm0/harm.json, logs/dfaharm0/act_rows.jsonl,
 logs/dfaharm0/actpost.json, logs/dfaharm0/smoke.jsonl,
 logs/liverun/dfaharm0.jsonl.
+
+## PRE-REG FROZEN-BACKBONE-1: replicate or kill the seed-23 observation that a fixed random lower half is sufficient for near-stock house function — three fresh paired seeds (24, 25, 26), per seed FULL (ordinary backprop over all parameters) v FROZEN (emb + blocks 0..3 frozen exactly at W_0, blocks 4..7 + norm + head by ordinary backprop) on the same byte-identical W_0 and the exact stock stream; primary paired quantity delta_s = gate_FROZEN_s - gate_FULL_s; REPLICATES iff delta_s >= -7 on all three pairs; individual gates and deltas booked, mean descriptive; no averaging rescues a pair (2026-09-10 local, Mac; DESIGN + INSTRUMENT SEALED, NOT LAUNCHED, separate Artin GO for births)
+
+Artin direction 2026-09-10: FROZEN-BACKBONE-1 runs before the
+synthetic-gradient writer; DFA-family training stays CLOSED; nothing
+here authorizes a birth.
+
+Origin: the zero-credit control of CREDIT-ANCHOR-FRONTIER-1 at k = 4
+(VERDICT L69409; bank FROZEN-RANDOM-BACKBONE, RIFF 2026-09-09) gated 62
+/ 120 at seed 23 with emb and blocks 0..3 frozen at W_0, descriptively
+inside the historical stock 61 to 65 (seeds 5 to 7) but on one seed and
+without a same-seed full-backprop partner.
+
+Instrument: scratch/birth19m_fb.py, a sibling of the results-cited
+frontier driver (every branch verbatim; tests/test_fb_source_invariant.py
+pins the stock loop lines, the frontier loop and the literal FB law):
+FB=1, seeds 24 / 25 / 26 only (repo inventory: no birth19m specimen
+exists at these seeds; the svp_forder_*_s24001 files are a different
+family), MODE=bp = FULL (the stock ATOM-DIET-TRAJECTORY-1 recipe: AdamW
+lr 3e-4 wd 0.01 clip 1.0, forward OneCycle pct_start 0.03, 15,420 steps,
+BS 32, the six pinned stock stream digests, 17 snapshots, mps fp32),
+MODE=zero K_BP=4 = FROZEN (dfa_credit.freeze_lower: emb.weight and the
+28 tensors of blocks 0..3 requires_grad False and excluded from the
+optimizer; blocks 4..7, norm.g, head.weight trained by the same stock
+recipe; the driver re-verifies at the end of the birth that the 29
+frozen tensors are bit-identical to step_00000.pt); same W_0 per seed
+(torch.manual_seed(s) then build_model, init digest asserted equal
+across the pair by the gate script), same stream, schedule, cadence,
+gate, device. Order, sealed (counterbalanced 2:1 within pairs like the
+ATOM rung): 24 FULL, 24 FROZEN, 25 FROZEN, 25 FULL, 26 FULL, 26 FROZEN.
+Gates post hoc (scratch/fb_gate.py, gate_eval on mps, the standard 120)
+on the six finals after all births; receipts logs/frozenbb1/births.jsonl
+(birth, gate and replication rows) and logs/frozenbb1/replication.json;
+one liverun process (frozenbb1; receipt logs/liverun/frozenbb1.jsonl).
+Smoked at seed 11 (300 steps, both arms; logs/frozenbb1/smoke.jsonl).
+
+Primary quantity and law: delta_s = gate_FROZEN_s - gate_FULL_s for s
+in {24, 25, 26}. REPLICATES iff delta_s >= -7 on ALL three pairs (one
+resolution unit, the D-0 law of L67576). The three gates per arm, the
+three deltas and the descriptive mean are booked; a failed pair is not
+rescued by the mean or by the other pairs. KILLED iff any delta_s <
+-7. Registered interpretation on REPLICATES, verbatim: "At this task
+/ scale, learning the embedding and bottom four blocks is not required
+to reach full-BP function at the house gate resolution across these
+specimens." Explicitly NOT claimed: that the frozen lower stack is
+irrelevant (the top network may depend strongly on its fixed random
+features); learned-delta dependence desks are NOT the primary
+mechanism comparison here (the frozen arm has zero learned delta in
+the lower package by construction); any mechanism reading. Descriptive
+extras: the frozen ACT vector (P3 / S10 law) on the six finals and the
+within-pair ACT distance; the per-arm logged loss; no bar on them.
+
+REGISTERED PRIOR (scored on direction): REPLICATES, p 0.6; point
+deltas -3 / -4 / -2; FULL gates 58 to 66 (the stock range); FROZEN
+gates 55 to 64. REFUTED-IF (of the seed-23 observation): any pair
+with delta_s < -7. Family record continues from 6 hits, 5 misses.
+
+Cost: six births (FULL about 47 min, FROZEN about 28 min at the
+measured k = 4 zero-control wall) about 3.8 h plus six gates about 8
+min; storage 6 x 17 x 75.7 MB = 7.7 GB (disk 33 GB free; 15 GB guard).
+GO / STOP: instrument committed and smoked (this entry); prereg-auditor
+clean; Artin GO; operational aborts (non-finite loss, stream mismatch,
+dirty tree, sentinel conflict, disk) book NOT-RUN; no outcome-based
+early stop; nothing read until all six births finish; book once with
+the verifier-style hand re-application of the law and the auditor.
+Fences: three seeds, one device, one recipe; the D-0 resolution unit;
+gate comparisons within pairs only; nothing here revises L69409 or the
+FROZEN-RANDOM-BACKBONE bank.
+
+## PRE-REG SYNTHETIC-GRADIENT-WRITER-1 (DESIGN ONLY): the next foreign credit writer after the DFA family — per-block learned feedback hat_delta_l = G_phi_l(stopgrad(h_l), stopgrad(e_t)) with block parameters updated only through J_{f_l}^T hat_delta_l; the true hidden error is computed at the same pre-update state solely as the predictor's training target; canonical DNI / synthetic-gradient literature read in full and separated from the house adaptation; integrity law, predictor family to be assessed, qualification before discovery, accessibility first; nothing armed (2026-09-10 local, Mac; DESIGN, NOT SEALED, NOT LAUNCHED; runs after FROZEN-BACKBONE-1)
+
+Artin direction 2026-09-10: design only, in parallel with
+FROZEN-BACKBONE-1; DFA-family training CLOSED; SG stays the next actual
+foreign-credit writer regardless of the frozen-backbone outcome.
+
+1. CANONICAL LITERATURE (read from the PDFs, not the abstracts).
+Jaderberg et al. 2016, "Decoupled Neural Interfaces using Synthetic
+Gradients" (arXiv 1608.05343v2): a module M_{i+1} attached to the
+output h_i of layer i produces the synthetic gradient hat_delta_i =
+M_{i+1}(h_i) (or M_{i+1}(h_i, c) with context c, the one-hot label in
+"cDNI"); layer i (and all layers below it in the sub-network) update
+with theta_n <- theta_n - alpha hat_delta_i dh_i / dtheta_n; M is
+trained by L2 regression ||hat_delta_i - delta_i||^2 to a target
+delta_i that, in the every-layer setting, is NOT the true gradient
+but the synthetic gradient of the layer above backpropagated one
+layer, delta_i = f'_{i+1}(h_i) hat_delta_{i+1} (Fig. 9; Sect. 2.2;
+"bootstrapped ... Surprisingly, this does not cause errors to compound
+and learning remains stable even with many layers"); the supplement's
+BP(lambda) view makes this the lambda = 0 case. Feed-forward details
+(Appendix C / D.1): MNIST FCN of 256-unit BN-ReLU layers, DNI between
+every layer, synthesizers with two hidden layers of 1024 (DNI) or ZERO
+hidden layers, i.e. linear, for cDNI ("the best results obtained with
+cDNI were with linear synthetic gradient models"); Adam lr 3e-5
+(decayed 10x at 300k and 400k of 500k iterations, batch 256); the
+synthetic-gradient regression loss weighted 1 against the
+classification loss; the final layer of every synthesizer initialised
+to ZERO weights and biases so the initial synthetic gradient is zero;
+inputs scaled to [0, 1]. Table 2: MNIST FCN 3 to 6 layers, backprop
+2.0 / 1.8 / 1.8 / 1.8 % error, DNI 1.9 / 2.2 / 3.4 / 4.3, cDNI 2.2 /
+1.9 / 1.7 / 1.6, "no backprop" 9.3 / 12.6 / 16.2 / 21.4; CIFAR-10 FCN
+backprop 43.5 / 43.0 / 41.7 / 42.0, DNI 42.5 / 45.0 / 46.9 / 49.7,
+cDNI 48.5 / 45.1 / 43.5 / 46.8. Fig. 12: on MNIST the cosine between
+synthetic and true gradient is "on average very slightly positive"
+and the L2 error grows early then falls; Appendix C.1 attributes the
+DNI (no label) degradation with depth to UNDERFITTING of the
+gradient model, largely removed by label conditioning. RNNs: the
+synthetic gradient is scaled by 0.1 before use ("we found that this
+reliably leads to stable training"), Adam 7e-5 / 1e-5. Czarnecki et
+al. 2017, "Understanding Synthetic Gradients and DNIs" (arXiv
+1703.00522v1): the SG module is written SG(h, y), mostly LINEAR, SG(h,
+y) = hA + yB + C, trained by L2 to dL/dh; Proposition 1: every
+critical point of the original problem where SG can produce dL/dh_i
+has a corresponding critical point of the SG system; SG can also
+introduce NEW critical points (supplement A gives a 1-D example);
+Proposition 2 / Corollary 1 / Theorem 1: convergence for linear and
+deep linear models under an epsilon-accuracy condition on SG; Sect. 5:
+deep ReLU / sigmoid MNIST models with a single SG or SG at every
+layer converge, sometimes faster (a linear SG "effectively models the
+loss function to be quadratic"), while the layer-wise representation
+(RDMs, Fig. 3; norm profiles, Fig. 5) is "drastically different":
+layers below the SG "do not learn anything useful" is explicitly
+denied (linear probes reach 100 % train accuracy after two SG
+layers) but the correlation structure no longer saturates at a fixed
+depth; Sect. 6, Table 1: the unified "conspiring networks" view in
+which DFA is the SG that does not train, with a fixed random A,
+target -dL/dp and loss -<t, s>, backprop the SG that equals dL/dh;
+"SG + prop" adds alpha dL_SG / dh back into the main network and
+"heavily stabilises" learning at the cost of no longer being
+unlocked. Neither paper trains a Transformer or an autoregressive
+LM; both use BN-ReLU stacks with a scalar label per example.
+
+2. THE HOUSE ADAPTATION (what differs, stated so no reader confuses it
+with the canonical method). Object, per Artin: e_t = dL / dlogits_t,
+detached (the same per-token output error the DFA rung used; zero at
+masked positions, 1 / N_labels scaling from the mean CE). For block l
+(the house pre-norm decoder block, x_{l+1} = x_l + f_l(x_l)) at each
+token t: hat_delta_{l,t} = G_phi_l(stopgrad(h_{l,t}), stopgrad(e_t))
+where h_{l,t} is the block's OUTPUT residual x_{l+1,t} (the sealed
+S4 index convention: delta_l lives at the output of block l), and
+block l's parameters update only through J_{f_l}(x_l)^T hat_delta_l
+with x_l detached (the sealed within-block transport of the DFA
+rung; no true gradient crosses a block boundary). Differences from
+canonical DNI, each registered as a house choice: (a) the
+synthesizer is conditioned on the OUTPUT ERROR e_t rather than the
+label one-hot (Jaderberg's cDNI conditions on the label; e_t is the
+label-dependent quantity that exists per token here and is what DFA
+projected, so the two foreign writers share the conditioning signal; beyond
+the learned v fixed projection they also differ in the presence of
+an h term, a trained target law, a predictor optimizer and the
+regression loss, all enumerated in items 3 and 4); (b)
+the predictor target is the TRUE hidden error delta^BP_{l,t} = dL /
+dx_{l+1,t} at the same pre-update state (Czarnecki's SG target; NOT
+Jaderberg's bootstrapped every-layer target, which would chain
+synthetic signals and is a second design point to be assessed, not
+sealed); (c) per-token operation on a (batch, T, 384) stream with
+causal attention, which neither paper has; (d) AdamW, clip 1.0,
+OneCycle and the stock stream are inherited unchanged for the block
+parameters; the predictors get their own registered optimizer (below).
+
+3. INTEGRITY LAW (to be smoked mechanically on the WRITER-DFA-1
+fixture before any birth, P1-style): (i) the true hidden BP gradient
+never contributes DIRECTLY to any transformer-block parameter
+gradient (autograd.grad of the true loss over block parameters is
+None: the loss graph reaches head, norm and the predictor targets
+only); (ii) the true BP gradient may update predictor parameters
+only (the predictor regression loss reaches phi_l and nothing else;
+block parameters receive no gradient from the regression loss:
+stopgrad on both predictor inputs); (iii) block gradients come solely
+from the synthetic signal computed at the PRE-teacher-update predictor
+state (hat_delta_l is produced, the block surrogate sum_l
+<hat_delta_l.detach(), x_{l+1}> is backpropagated, and only then is
+the predictor step taken on ||hat_delta_l - delta^BP_l||^2); (iv)
+predictor output used for the model step is computed BEFORE that
+step's predictor target update (same step ordering; asserted by a
+bit-exact check that the block gradients do not change if the
+predictor update is skipped); (v) emb, head and norm: head.weight and
+norm.g take the true gradient of L through the head and final norm
+only (x_8 detached, as sealed for DFA); emb receives block 0's local
+synthetic credit hat_delta_0 + J_{f_0}^T hat_delta_0 (the identity
+path, the DFA convention); these three treatments are FROZEN in the
+pre-reg that seals this design and are not tuning knobs; (vi) same
+W_0, task, stream, schedule, gate and device as the BP control
+wherever possible; the only new parameters are phi_l. Weaker than the
+DFA law by construction: true gradients exist in the process (as
+predictor targets), so the law is "true gradients update only the
+predictors, never the blocks", and the smoke must establish it
+mechanically per block and per step ordering (autograd reachability
+and bit-exact ordering checks, as the DFA P1 smoke did). The true delta^BP_l computation per step costs
+one full backward pass; the step is priced at about 2x the stock step
+(to be measured in the smoke; walls recorded, not adjudicated).
+
+4. PREDICTOR FAMILY TO ASSESS (not sealed): a small per-token map
+G_phi_l : R^384 x R^40 -> R^384, candidates (a) LINEAR (Czarnecki's
+SG(h, y) = hA + yB + C; the "best results" family of Jaderberg's
+cDNI), 384 x 384 + 40 x 384 + 384 = 163k parameters per block, 1.3M
+total (7 % of the model); (b) one-hidden-layer MLP of width 256 with
+ReLU, about 175k per block; (c) the DFA endpoint G = B_l e (fixed,
+no h term) as the k = 0 anchor of this family, already booked
+inaccessible (L68802). Initialisation: the output layer of G at ZERO
+(Jaderberg), so the writer starts as "no credit" to the blocks and
+becomes DFA-like or BP-like only as the predictors learn; this is a
+registered design property (the first steps move only head / norm).
+Normalisation of the target: the sealed alignment desk showed delta^BP
+norms of 4e-2 at W_0 falling to 1e-9 under collapse; the regression
+target is used as-is (no scaling) in the first assessment, with a
+registered fallback of per-token target scaling by a running mean of
+||delta^BP|| if the smoke shows the L2 loss vanishing numerically; a
+synthetic-gradient scale factor (Jaderberg's 0.1 for RNNs) is NOT used
+unless the qualification ladder registers it as a cell. Predictor
+optimizer: AdamW, lr in a two-cell ladder {3e-4, 3e-5} (Jaderberg's
+3e-5 and the stock 3e-4), no weight decay, the same OneCycle shape,
+clip 1.0 on the predictor gradients separately. Delay: none (target
+from the same step); the bootstrapped every-layer target is a named
+second design point, not assessed here.
+
+5. LADDER (to be sealed in the launch pre-reg, mirroring the DFA
+rung): qualification at a reserved seed (27 proposed; 24 to 26 belong
+to FROZEN-BACKBONE-1), cells = {linear, MLP-256} x predictor lr {3e-4,
+3e-5}, STABLE iff finite loss and gate > 0, ACCESSIBILITY FLOOR gate
+>= 24 as in the frontier, selection = highest stable gate with a
+frozen total order, no tuning on discovery; then discovery at seed 2
+with the paired same-W_0 BP control under the same driver, the sealed
+FUNCTION-BAND c +- 7; accessibility first: if SG cannot enter the band,
+ACCESSIBILITY ONLY and no mechanism comparison; if matched function
+succeeds, inherit the writer trajectory / dependence / compatibility /
+ACT instruments with the literal thresholds and add a same-writer SG
+rerun null (a second SG birth at the discovery seed) so the SG
+envelope is measured, not borrowed. Alignment diagnostic: cos(
+hat_delta_l, delta^BP_l) per block over training, now expected to
+rise (Jaderberg Fig. 12: "very slightly positive" on MNIST); the
+predictor regression loss per block is a new descriptive curve.
+
+6. COST (to be measured): each SG birth about 2x the stock wall (two
+backward passes per step) about 95 min; the four-cell ladder about 6.5
+h; discovery 1.6 h + the SG rerun null 1.6 h; post-discovery as the
+DFA rung. Storage 8 births x 1.3 GB.
+
+7. STATUS: design only. Not sealed until (a) FROZEN-BACKBONE-1 books,
+(b) the predictor family and target scaling are fixed after a
+zero-training cost / numerical audit on the DFA fixture, (c) the
+integrity smoke is implemented and passes, (d) prereg-auditor clean,
+(e) Artin GO. Nothing here authorizes SG training.
