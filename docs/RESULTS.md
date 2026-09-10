@@ -70297,3 +70297,127 @@ batch quantities and transport only to a BS-32 mean-CE writer); fp64
 CPU numbers are the reference, the fp32 mps training values differ by
 rounding only; nothing here revises L70024 or L69765 beyond the ARENA
 amendment.
+
+## OBSERVATION SG-PREDICTOR-AUDIT-0: true backprop hidden-error targets on the twelve retained FROZEN-BACKBONE-1 states are numerically HEALTHY (0 nonfinite elements, 0 exact-zero token norms over 15,890 eligible tokens per state, 190,680 across the twelve) but five to six decades below unit scale (element RMS 7.5e-7 to 7.8e-6; per-token-norm dynamic range 5.3 to 6.1 decades on the final states), so the registered normalization TRIGGER FIRES on every arena block; fixed per-block constants booked (arena s_4..7 = 5.46e-6 / 4.48e-6 / 3.56e-6 / 2.44e-6; full-stack s_0..7 = 4.28e-6 .. 1.84e-6); prior 4 hits 3 misses (2026-09-10 local, Mac; zero main-model training; descriptive)
+
+Target: PRE-REG SG-PREDICTOR-AUDIT-0 (L70219). Run sgaudit0 under
+liverun (logs/liverun/sgaudit0.jsonl) at HEAD 7993b468, clean tree,
+13:56:55 to 13:58:27 UTC (92 s). Instrument scratch/sg_target_audit.py
+as committed before the run; the twelve state digests asserted against
+logs/frozenbb1/births.jsonl before each read; probe token digest
+18b2229060ed... (the frozen WRITER-DFA-1 probe, 256 rows, 8 chunks of
+32, 15,890 eligible label positions per state); float64 CPU; the
+masking convention as registered. Receipt logs/sgaudit0/audit.json
+(force-added, locked) carries every reduction; the figures below are
+copied from it.
+
+HEALTH (registered readout): HEALTHY. Every inspected block of every
+state: nonfinite elements 0, exact-zero elements 0, exact-zero
+per-token norms 0 (delta^BP, h and e alike). No masking finding, no
+design-stopping finding.
+
+MAGNITUDES (element RMS of delta^BP per block; per-token-norm median
+q50 and q99 in brackets):
+- FULL step_00463 (probe loss 0.868 to 0.888), blocks 0 to 7: RMS
+  6.8e-6 .. 4.4e-6 across seeds (seed 24: 6.35e-6, 5.92e-6, 5.63e-6,
+  5.24e-6, 4.95e-6, 4.66e-6, 4.42e-6, 4.37e-6), monotone toward the
+  head, block spread 1.45x to 1.55x; q50 6.9e-5 .. 2.9e-5, q99 4.0e-4
+  .. 3.0e-4 (seed 24); dynamic range 2.7 to 3.0 decades at blocks 0 to
+  6, 3.7 to 3.9 at block 7.
+- FULL final (probe loss 0.348 to 0.349): RMS 2.9e-6 .. 7.5e-7 across
+  seeds (seed 24: 2.70e-6, 2.34e-6, 2.06e-6, 1.76e-6, 1.56e-6, 1.25e-6,
+  9.73e-7, 7.59e-7), block spread 3.6x to 3.7x; q50 1.4e-5 at block 0
+  falling to 1.3e-8 to 1.6e-8 at block 7 while q99 stays 2.0e-4 ..
+  6.2e-5 (seed 24); dynamic range 5.3 to 5.7 decades at blocks 0 to 6,
+  6.0 at block 7.
+- FROZEN step_00463 (probe loss 0.885 to 0.898), blocks 4 to 7: RMS
+  7.8e-6 .. 5.4e-6 across seeds (seed 24: 7.84e-6, 6.77e-6, 5.82e-6,
+  5.41e-6), spread 1.38x to 1.45x; dynamic range 2.5 to 2.9 at blocks
+  4 to 6, 3.7 to 3.9 at block 7.
+- FROZEN final (probe loss 0.353 to 0.357): RMS 4.0e-6 .. 1.04e-6
+  across seeds (seed 24: 3.61e-6, 2.82e-6, 2.04e-6, 1.07e-6), spread
+  3.4x to 3.8x; dynamic range 5.3 to 5.5 at blocks 4 to 6, 5.8 to 5.9
+  at block 7.
+- Output error e_t (40-vector): RMS 5.5e-5 at step_00463 and 3.6e-5 at
+  final on every arm; per-token median 1.3e-4 to 1.4e-4 at 463 falling to 1.8e-7
+  to 2.7e-7 at final (dynamic range 3.5 to 3.7 decades at 463, 5.9 to
+  6.1 at final): the confident tokens carry vanishing error, the
+  unresolved tail carries the whole signal.
+- Block output h_{l+1}: element RMS grows toward the head (FULL final
+  seed 24: 1.45 at block 0 to 11.7 at block 7; FROZEN final 1.42 at
+  block 4 to 8.0 at block 7), the pre-norm residual stream; the ratio
+  RMS(delta) / RMS(h) is 1.8e-6 to 1.9e-6 at block 0 down to 6.5e-8 to
+  7.1e-8 at block 7 on the FULL finals.
+Seeds 25 and 26 reproduce every RMS figure above within 24 % (worst:
+FULL final block 6, 9.73e-7 v 1.21e-6); the q01 tails vary by up to
+2.4x across seeds (all twelve states tabulated in audit.json).
+
+REGISTERED TRIGGER: FIRES. Every FROZEN arena block has RMS(delta) <
+1e-3 (max 7.8e-6, 2.1 decades below the trigger), and every arena
+block on the final states has per-token-norm dynamic range above 4
+decades (5.3 to 5.9). Normalization is therefore ADOPTED by the
+sealing amendment per AMENDMENT -ARENA fold 4: the predictor
+regresses delta^BP_l / s_l and hat_delta_l = s_l * G_phi_l(.) is
+de-normalized deterministically before application.
+
+REGISTERED CONSTANTS (geometric mean of RMS_l(delta) over the six
+states of the arm, booked as the fixed per-block constants; audit.json
+normalization_constants):
+- arena (FROZEN, blocks 4..7): s_4 = 5.464e-6, s_5 = 4.479e-6, s_6 =
+  3.564e-6, s_7 = 2.441e-6.
+- full-stack (FULL, blocks 0..7): s_0 = 4.282e-6, s_1 = 3.771e-6, s_2
+  = 3.391e-6, s_3 = 3.063e-6, s_4 = 2.809e-6, s_5 = 2.502e-6, s_6 =
+  2.169e-6, s_7 = 1.837e-6.
+FROZEN v FULL at the same blocks: 1.94x / 1.79x / 1.64x / 1.33x.
+These constants are per-32-row-batch mean-CE quantities and transport
+only to a BS-32 mean-CE writer (the stock recipe); a normalized target
+has element RMS of order 1 at the geometric-mean state and 0.4 to 2.4
+across the two audited points of the trajectory (step 463 and final).
+
+Reading for the predictor design (descriptive; the sealing amendment
+carries the decisions): (i) raw targets are healthy but sit at 1e-6, so an
+unnormalized L2 regression loss would be about 3.8e-10 per token (384
+x (1e-6)^2, arithmetic on the booked RMS) and an AdamW predictor
+optimizer with eps 1e-8 would see gradient components within two
+decades of eps (design arithmetic, not a measurement: no fp32 or
+runtime quantity was measured here); the fixed constants put the
+regressed target at order 1 with no runtime gain. (ii) The per-token dynamic range of five to six
+decades on trained states means an L2 regression is dominated by the
+q99 tail (the unresolved tokens); this is the loss the canonical
+papers use and is kept; a per-token reweighting would be a new design.
+(iii) Block 7 (x_8, the final-norm input) has the smallest target on
+every state and, on the final states, the most skewed (q50 1.3e-8 to
+3.2e-8 v 1.3e-6 to 5.4e-6 at block 6, two decades; at step_00463 the
+two blocks share a decade); the pre-norm stream is largest there and
+s_7 is the smallest constant accordingly.
+
+REGISTERED PRIOR, scored (seven directions in the prose; the JSON
+mirror lists six, omitting the RMS(h) direction): HEALTHY (nonfinite
+0, zero token norms 0): HIT. Trigger fires: HIT. Dynamic range 2 to 4
+decades on the final states: MISS (5.3 to 6.1). RMS(463) / RMS(final)
+1.5x to 5x: MISS by the literal at block 7 (geometric mean over seeds
+5.7x FULL, 5.1x FROZEN; blocks 0 to 6 inside at 2.0x to 4.4x).
+Within-state block spread below 2x: HIT at step_00463 (1.38x to
+1.55x), MISS on the finals (3.4x to 3.7x): scored as a MISS. RMS(h)
+grows toward the head: HIT. FROZEN constants within 2x of FULL at
+blocks 4..7: HIT (1.33x to 1.94x). Seven directions: 4 hits, 3 misses
+(the dynamic-range, trajectory-ratio and block-spread magnitudes on
+trained states were under-predicted; the misses do not touch the
+trigger or the constants). Family record: 11 hits, 8 misses.
+
+NOT read, not chosen: no gate; LINEAR v MLP-256 (prospective, ordered
+ladder per the ARENA amendment); no mechanism. Fences: descriptive;
+probe-scoped (256 rows, one frozen probe); twelve states of one
+recipe on three seeds; fp64 reference values (the fp32 mps training
+values differ by rounding only); constants valid for the BS-32
+mean-CE grain only; nothing here revises L70024 or L69765 beyond the
+ARENA amendment.
+
+RECEIPTS (force-added and locked in the booking commit):
+logs/sgaudit0/audit.json, logs/sgaudit0/audit.jsonl,
+logs/sgaudit0/audit.log, logs/sgaudit0/smoke.jsonl (already locked),
+logs/liverun/sgaudit0.jsonl. Checkpoint disposition per AMENDMENT
+-ARENA fold 7: after this booking is receipt-complete,
+checkpoints/frozenbb1/ is pruned to step_00000 (W_0 anchor) +
+step_00463 + final per arm with a digest inventory written first
+(logs/frozenbb1/prune_inventory.json).

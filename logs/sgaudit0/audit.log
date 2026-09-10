@@ -1,0 +1,14 @@
+[curric] D2 excision: 165028 -> 164896 rows
+[sgaudit] FULL s24 step_00463: loss 0.8799 n_elig 15890 RMS(delta) {'0': '6.348e-06', '1': '5.918e-06', '2': '5.628e-06', '3': '5.241e-06', '4': '4.953e-06', '5': '4.658e-06', '6': '4.421e-06', '7': '4.372e-06'} nonfinite 0
+[sgaudit] FULL s24 final: loss 0.3480 n_elig 15890 RMS(delta) {'0': '2.696e-06', '1': '2.337e-06', '2': '2.064e-06', '3': '1.756e-06', '4': '1.559e-06', '5': '1.252e-06', '6': '9.728e-07', '7': '7.590e-07'} nonfinite 0
+[sgaudit] FROZEN s24 step_00463: loss 0.8983 n_elig 15890 RMS(delta) {'4': '7.843e-06', '5': '6.766e-06', '6': '5.824e-06', '7': '5.414e-06'} nonfinite 0
+[sgaudit] FROZEN s24 final: loss 0.3528 n_elig 15890 RMS(delta) {'4': '3.606e-06', '5': '2.817e-06', '6': '2.038e-06', '7': '1.070e-06'} nonfinite 0
+[sgaudit] FULL s25 step_00463: loss 0.8675 n_elig 15890 RMS(delta) {'0': '6.737e-06', '1': '6.190e-06', '2': '5.698e-06', '3': '5.374e-06', '4': '5.134e-06', '5': '4.811e-06', '6': '4.669e-06', '7': '4.450e-06'} nonfinite 0
+[sgaudit] FULL s25 final: loss 0.3489 n_elig 15890 RMS(delta) {'0': '2.758e-06', '1': '2.314e-06', '2': '2.006e-06', '3': '1.754e-06', '4': '1.509e-06', '5': '1.312e-06', '6': '9.466e-07', '7': '7.503e-07'} nonfinite 0
+[sgaudit] FROZEN s25 step_00463: loss 0.8976 n_elig 15890 RMS(delta) {'4': '7.825e-06', '5': '6.981e-06', '6': '6.375e-06', '7': '5.659e-06'} nonfinite 0
+[sgaudit] FROZEN s25 final: loss 0.3543 n_elig 15890 RMS(delta) {'4': '3.913e-06', '5': '2.938e-06', '6': '1.969e-06', '7': '1.042e-06'} nonfinite 0
+[sgaudit] FULL s26 step_00463: loss 0.8877 n_elig 15890 RMS(delta) {'0': '6.772e-06', '1': '6.135e-06', '2': '5.711e-06', '3': '5.423e-06', '4': '5.160e-06', '5': '4.825e-06', '6': '4.544e-06', '7': '4.381e-06'} nonfinite 0
+[sgaudit] FULL s26 final: loss 0.3479 n_elig 15890 RMS(delta) {'0': '2.864e-06', '1': '2.365e-06', '2': '2.004e-06', '3': '1.756e-06', '4': '1.592e-06', '5': '1.382e-06', '6': '1.205e-06', '7': '7.918e-07'} nonfinite 0
+[sgaudit] FROZEN s26 step_00463: loss 0.8847 n_elig 15890 RMS(delta) {'4': '7.618e-06', '5': '6.656e-06', '6': '6.046e-06', '7': '5.492e-06'} nonfinite 0
+[sgaudit] FROZEN s26 final: loss 0.3565 n_elig 15890 RMS(delta) {'4': '4.034e-06', '5': '3.104e-06', '6': '2.274e-06', '7': '1.127e-06'} nonfinite 0
+[sgaudit] written logs/sgaudit0/audit.json

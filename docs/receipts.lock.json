@@ -1,5 +1,9 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
+ "_last_accept": {
+  "paths": [],
+  "reason": "SG-PREDICTOR-AUDIT-0 booking: prune inventory force-added"
+ },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
    "bytes": 3176,
@@ -780,6 +784,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/frozenbb1/prune_inventory.json": {
+   "bytes": 36063,
+   "exists": true,
+   "sha256": "36842784c498c403da9650d7af6840265a40ee999699a49a753f5dadacce3954",
+   "source": "results",
+   "tracked": true
+  },
   "logs/frozenbb1/replication.json": {
    "bytes": 3936,
    "exists": true,
@@ -1108,8 +1119,11 @@
    "tracked": true
   },
   "logs/liverun/sgaudit0.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 518,
+   "exists": true,
+   "sha256": "49aaa0c0649235f3a1965304a959697b5ddccb4ff5eb50970f3969165761b628",
+   "source": "results",
+   "tracked": true
   },
   "logs/liverun/writercaf1-qual-k1.jsonl": {
    "bytes": 538,
@@ -4202,16 +4216,25 @@
    "tracked": true
   },
   "logs/sgaudit0/audit.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 98550,
+   "exists": true,
+   "sha256": "1d310c41afd20c0d2c7e7dec17214f3e4518addfd374a7697104f80f5e3e3ef4",
+   "source": "results",
+   "tracked": true
   },
   "logs/sgaudit0/audit.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 904,
+   "exists": true,
+   "sha256": "86bfd2312b420ccd0fff224a5a32a0bfe2699166a5c552a2fbe7915a37211deb",
+   "source": "results",
+   "tracked": true
   },
   "logs/sgaudit0/audit.log": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 2325,
+   "exists": true,
+   "sha256": "ac5dd5bebd318961ff706edd1208c04a38bc54f74d11f4c07756c695afbb39f4",
+   "source": "results",
+   "tracked": true
   },
   "logs/sgaudit0/smoke.jsonl": {
    "bytes": 13830,

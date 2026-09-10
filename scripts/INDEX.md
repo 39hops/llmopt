@@ -2322,6 +2322,11 @@ FROZEN-BACKBONE-1 post-hoc gates and the replication law (PRE-REG FROZEN-BACKBON
 - `adjudicate(pair_gates)` — pair_gates: {seed: (gate_full, gate_frozen)} for the three seeds.
 - `main()`
 
+### scratch/fb_prune.py
+FROZEN-BACKBONE-1 artifact disposition (AMENDMENT SYNTHETIC-GRADIENT- WRITER-1-ARENA fold 7, Artin direction 2026-09-10, after OBSERVATION SG-PREDICTOR-AUDIT-0 is booked and receipt-complete): digest inventory of every file under checkpoints/frozenbb1/ against logs/frozenbb1/births.jsonl (file sha256 and canonical state digest re-read), written to logs/frozenbb1/prune_inventory.json (refuses to overwrite); then keep, per arm, step_00463.pt and final.pt, plus one W_0 anchor per seed (step_00000.pt of the FULL arm; the FROZEN arm's step_00000 is the same W_0 by the pair assertion of fb_gate.py and is removed); remove every other snapshot. Any digest mismatch aborts before anything is removed. Usage: .venv/bin/python scratch/fb_prune.py
+
+- `main()`
+
 ### scratch/fig_magic_scatter.py
 Gallery: magic-estimator held-out scatter (predicted vs measured).
 
@@ -5259,6 +5264,25 @@ Series rung 1 probe: greedy next-partial-sum emission on the 142 held-out steps 
 
 - `_equiv(q, pred, gold)`
 - `equiv(pred, gold, deadline=10)`
+
+### scratch/sg_credit.py
+SYNTHETIC-GRADIENT-WRITER-1 credit law (PRE-REG SYNTHETIC-GRADIENT- WRITER-1 L69765, AMENDMENT -ARENA L70126, OBSERVATION SG-PREDICTOR-AUDIT-0 constants). The per-block synthetic hidden error
+
+- `class LinearSG` (forward)
+- `class MLPSG` (forward)
+- `build_predictors(family, sg_blocks, seed, d=D_MODEL, n_out=N_OUT)` — One predictor per SG block, deterministic init from `seed` (the
+- `writer_forward(model, ids, attn_mask, sg_blocks)` — The writer-state forward. Blocks below min(sg_blocks) run attached
+- `teacher_targets(model, ids, attn_mask, sg_blocks=None)` — True hidden errors delta^BP_l = dL/dx_{l+1} for l in sg_blocks from a
+- `sg_step_terms(model, preds, ids, attn_mask, labels, sg_blocks, consts)` — Everything one step needs, in the registered order, WITHOUT stepping
+
+### scratch/sg_integrity_smoke.py
+SYNTHETIC-GRADIENT-WRITER-1 integrity smoke (AMENDMENT -ARENA fold 5, checks (a) to (g)), mechanical, zero main-model training beyond the two in-smoke steps it takes on a COPY of the smoke checkpoint. Runs on the frozenbb1_smoke FROZEN final (seed 11; the arena shape: blocks 0..3 + emb frozen at their checkpoint values, SG blocks 4..7) with the arena constants of OBSERVATION SG-PREDICTOR-AUDIT-0, and on the FULL final in full-stack mode (SG blocks 0..7, full-stack constants), one 32-row probe chunk each.
+
+- `load_model(sd, tok)`
+- `grads_of(params)`
+- `same(a, b)`
+- `run_case(sd, tok, ids, mask, labels, sg_blocks, consts, family, arena)`
+- `main()`
 
 ### scratch/sg_target_audit.py
 SG-PREDICTOR-AUDIT-0: zero-main-model-training audit of the true backprop hidden-error targets delta^BP_l = dL/dx_{l+1} on the retained FROZEN-BACKBONE-1 states (PRE-REG SG-PREDICTOR-AUDIT-0). Nothing trains; no gate is read; predictor capacity is not chosen here.
