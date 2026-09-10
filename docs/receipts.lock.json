@@ -763,6 +763,10 @@
    "exists": false,
    "source": "prereg"
   },
+  "logs/frozenbb1/gate.log": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/frozenbb1/replication.json": {
    "exists": false,
    "source": "prereg"
@@ -773,6 +777,30 @@
    "sha256": "7aca45ee14a2fafb9bc1b0ce11c0d0684735aaeaff8f17d44f062cf3fb89e7c7",
    "source": "results",
    "tracked": true
+  },
+  "logs/frozenbb1/train_s24_bp.log": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/frozenbb1/train_s24_zero.log": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/frozenbb1/train_s25_bp.log": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/frozenbb1/train_s25_zero.log": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/frozenbb1/train_s26_bp.log": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/frozenbb1/train_s26_zero.log": {
+   "exists": false,
+   "source": "prereg"
   },
   "logs/funnel_wall/prec_sweep_step1_d64.log": {
    "bytes": 607,

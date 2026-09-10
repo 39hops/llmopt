@@ -43,15 +43,23 @@ def main():
     if OUT.exists():
         raise SystemExit(f"REFUSING: {OUT} exists")
     rows = [json.loads(l) for l in BIRTHS.open()]
-    births = {(b["seed"], b["arm"]): b for b in rows if b.get("kind") == "birth" and b["phase"] == "fb"}
+    birth_rows = [b for b in rows if b.get("kind") == "birth" and b["phase"] == "fb"]
+    births = {(b["seed"], b["arm"]): b for b in birth_rows}
+    assert len(births) == len(birth_rows), "duplicate FB birth rows: refusing (a rerun belongs at a new path)"
     missing = [(s, a) for s in SEEDS for a in ("FULL", "FROZEN") if (s, a) not in births]
     assert not missing, f"births missing: {missing}"
     commit = subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip()
     tree_dirty = bool(subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True).stdout.strip())
     if tree_dirty:
         raise SystemExit("REFUSING: registered gating on a dirty tree")
+    for s in SEEDS:
+        f_, z_ = births[(s, "FULL")], births[(s, "FROZEN")]
+        assert f_["init_state_digest"] == z_["init_state_digest"], f"seed {s}: W_0 differs across the pair"
+        assert f_["stream_sha256"] == z_["stream_sha256"] and f_["steps"] == z_["steps"] == 15420, f"seed {s}: stream / steps differ across the pair"
+        assert f_["code_commit"] == z_["code_commit"], f"seed {s}: code commits differ across the pair"
     tok = TM.MathTokenizer()
     dev = "mps" if torch.backends.mps.is_available() else "cpu"
+    assert dev == "mps", "FROZEN-BACKBONE-1 gates are sealed on mps"
     _, prows, probe_digest, _ = probe_rows(tok)
     gated = {r["cell"] for r in rows if r.get("kind") == "gate"}
     gates, acts = {}, {}

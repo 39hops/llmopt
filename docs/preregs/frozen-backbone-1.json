@@ -37,7 +37,7 @@
    ]
   }
  ],
- "interpretation_on_replicates": "learning the embedding and bottom four blocks is not required to reach full-BP function at the house gate resolution across these specimens; the frozen lower stack is NOT called irrelevant",
+ "interpretation_on_replicates": "At this task / scale, learning the embedding and bottom four blocks is not required to reach full-BP function at the house gate resolution across these specimens; the frozen lower stack is NOT called irrelevant",
  "registered_prior": {
   "REPLICATES": 0.6,
   "point_deltas": [
@@ -53,7 +53,7 @@
   "births": 3.8,
   "gates": 0.15
  },
- "storage_gb": 7.7,
+ "storage_gb": 8.2,
  "liverun_ids": [
   "frozenbb1"
  ],
@@ -61,10 +61,20 @@
   "logs/frozenbb1/births.jsonl",
   "logs/frozenbb1/replication.json",
   "logs/frozenbb1/smoke.jsonl",
-  "logs/liverun/frozenbb1.jsonl"
+  "logs/liverun/frozenbb1.jsonl",
+  "logs/frozenbb1/train_s24_bp.log",
+  "logs/frozenbb1/train_s24_zero.log",
+  "logs/frozenbb1/train_s25_zero.log",
+  "logs/frozenbb1/train_s25_bp.log",
+  "logs/frozenbb1/train_s26_bp.log",
+  "logs/frozenbb1/train_s26_zero.log",
+  "logs/frozenbb1/gate.log"
  ],
  "does_not_revise": [
   "VERDICT CREDIT-ANCHOR-FRONTIER-1 (L69409)"
  ],
- "results_id": "2026-09-10-pre-reg-frozen-backbone-1-replicate"
+ "results_id": "2026-09-10-pre-reg-frozen-backbone-1-replicate",
+ "amended_by": [
+  "AMENDMENT FROZEN-BACKBONE-1-SEAL"
+ ]
 }

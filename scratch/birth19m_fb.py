@@ -30,12 +30,9 @@ Inherited credit-switch documentation:
             at W_0 (dfa_credit.freeze_lower), blocks 8-k..7 + norm + head
             by backprop through the same detached boundary; LR 3e-4.
 
-Seed law: exactly one of QUAL=1 (seed 23; MODE=hybrid with K_BP in
-{1, 2, 4} and (S, LR) in {(1, 3e-4), (1, 1e-4)}, or MODE=zero with K_BP
-and LR 3e-4), DISCOVERY=1 (seed 2; MODE=bp with LR=3e-4, or MODE=hybrid
-with the (K_BP, S, LR) frozen in logs/writercaf1/qual_selection.json) or
-SMOKE=1 (seed 11 only; checkpoints/writercaf1_smoke/ and
-logs/writercaf1/smoke.jsonl only; SMOKE_STEPS default 300). All other
+Inherited seed law (refused under FB=1): QUAL=1 / DISCOVERY=1 as in the
+frontier driver; SMOKE=1 (seed 11 only; here checkpoints/frozenbb1_smoke/
+and logs/frozenbb1/smoke.jsonl only; SMOKE_STEPS default 300). All other
 seeds refused. Non-finite loss: QUAL books the cell UNSTABLE (receipt
 row, no final checkpoint, rc 0, ladder continues); DISCOVERY / SMOKE
 abort (NOT-RUN). Receipts derive every field from the artifacts this
@@ -46,7 +43,7 @@ Smoke-only extras: DRYRUN=1 (stream assertions only), EMIT=0, DEVICE=cpu,
 TAG=<suffix>, GRADDUMP=<path> (after step 1: post-clip gradients and
 post-step parameters, for the writer-integrity smoke).
 
-Usage: QUAL=1 MODE=hybrid K_BP=1 SEED=23 S=1 LR=3e-4 .venv/bin/python scratch/birth19m_caf.py
+Usage: FB=1 MODE=zero K_BP=4 SEED=24 LR=3e-4 .venv/bin/python scratch/birth19m_fb.py
 """
 import datetime
 import hashlib
@@ -230,6 +227,8 @@ def main():
 
     dev = DEVICE_OVERRIDE or ("mps" if torch.backends.mps.is_available() else
                               "cuda" if torch.cuda.is_available() else "cpu")
+    if FB:
+        assert dev == "mps", "FROZEN-BACKBONE-1 births are sealed on mps"
     torch.manual_seed(SEED)
     model = TM.build_model(len(tok.vocab), d=384, layers=8,
                            heads=6, ffn=1536).to(dev)

@@ -69935,3 +69935,34 @@ DFA rung. Storage 8 births x 1.3 GB.
 zero-training cost / numerical audit on the DFA fixture, (c) the
 integrity smoke is implemented and passes, (d) prereg-auditor clean,
 (e) Artin GO. Nothing here authorizes SG training.
+
+## AMENDMENT FROZEN-BACKBONE-1-SEAL (target: PRE-REG FROZEN-BACKBONE-1 L69697): clean-tree prereg-auditor folds before any birth; the sealed pair-W_0 assertion is now performed by the gate script; device fence, duplicate refusal, mirror and storage corrections; all six sealed cells dry-run through the FB branch; no threshold or prior change; no birth authorized (2026-09-10 local, Mac)
+
+B1. The pre-reg says the init digest is "asserted equal across the pair
+by the gate script"; scratch/fb_gate.py did not assert it. Fold: the gate
+script now asserts, per seed, equal init_state_digest, equal stream
+digests, steps 15,420 and equal code_commit across the FULL / FROZEN
+pair before any gate, and refuses duplicate FB birth rows (a rerun
+belongs at a new path). S2. The FB=1 branch cannot be smoked with
+SMOKE=1 by construction (exactly one phase flag); the six sealed cells
+were dry-run through the FB branch (FB=1 DRYRUN=1: stream digests
+asserted, cell names fb_full_s{24,25,26}_lr0.0003 and
+fb_frozen_s{24,25,26}_lr0.0003, no write), and the seed-11 smokes of both
+arms (300 steps, MODE=bp and MODE=zero K_BP=4, freeze law verified,
+logs/frozenbb1/smoke.jsonl) exercised the shared training path. S3. The
+device is fenced: registered births and the gates assert mps. S4. The
+JSON mirror's interpretation carries the "At this task / scale" prefix.
+S5 / N6. Storage restated: 6 births x (17 snapshots + final) x 75.7 MB =
+8.2 GB; disk 30 GB free at this writing (15 GB guard per birth start);
+gates about 9 min (0.15 h). N9. The six training logs and gate.log are
+registered receipts (logs/frozenbb1/train_s{24,25,26}_{bp,zero}.log,
+logs/frozenbb1/gate.log). N10. Inherited docstring lines in
+birth19m_fb.py corrected to the FB paths. N11. The prior's "FULL gates
+58 to 66" is a prior interval, not the stock range (which is 61 to 65,
+seeds 5 to 7). N12. The law is one-sided: three pairs each at exactly -7
+would book REPLICATES; the booking will state the deltas beside the
+verdict so "replicates" is not read as "equal". N7. The seed-11 smoke
+rows carry code_commit 05cd5715 with the instrument then untracked
+(committed unchanged in 62d94cbb); registered births refuse a dirty
+tree and abort on HEAD drift. Everything else in L69697 stands; a
+separate Artin GO is required for the births.
