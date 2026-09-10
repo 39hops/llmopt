@@ -3,7 +3,7 @@
  "note": "Machine-readable form of PRE-REG SYNTHETIC-GRADIENT-WRITER-1 (L69765) as sealed by AMENDMENT -ARENA (L70126) and AMENDMENT -SEAL; the prose governs. Qualification only; NO seed-27 birth is authorized by the seal (separate Artin GO).",
  "registered": "2026-09-10 (Mac local)",
  "machine": "mac",
- "status": "sealed (qualification), not launched",
+ "status": "sealed (qualification) + SEAL-AUDIT folds, not launched",
  "arena": {
   "frozen": "emb.weight + blocks 0..3 (29 tensors) at W_0, freeze_lower(model, 4), re-verified bit-identical at the end of every birth",
   "sg_blocks": [
@@ -16,7 +16,7 @@
   "model_recipe": "stock: AdamW lr 3e-4 wd 0.01 clip 1.0 OneCycle pct_start 0.03, 15,420 steps, BS 32, pinned stock stream, 17 snapshots, mps fp32"
  },
  "credit_law": {
-  "hat_delta": "hat_delta_l = s_l * G_phi_l(stopgrad(x_{l+1}), stopgrad(e_t)); block l receives J_f_l^T hat_delta_l only (surrogate <hat_delta.detach(), x_{l+1}>, block input detached)",
+  "hat_delta": "hat_delta_l = s_l * G_phi_l(stopgrad(x_{l+1}), stopgrad(e_t)) at eligible label positions (labels != -100) only; delta^BP is exactly zero at ineligible (pad) positions and no credit is applied there; block l receives J_f_l^T hat_delta_l only (surrogate <hat_delta.detach(), x_{l+1}>, block input detached)",
   "constants_arena": {
    "4": 5.463976915041008e-06,
    "5": 4.4793102230019846e-06,
@@ -43,11 +43,12 @@
    "mlp256": "one ReLU hidden layer width 256, output zero-init, 207,488 params per block"
   },
   "predictor_optimizer": "AdamW(PLR, wd 0), OneCycle of the stock shape, clip 1.0 separately; predictor init seed 1000 + birth seed",
-  "first_step_property": "zero-output predictors: SG-block gradients exactly zero at step 0; block motion is AdamW decoupled weight decay only (not credit)"
+  "first_step_property": "zero-output predictors: SG-block gradients exactly zero at step 0; block motion is AdamW decoupled weight decay only (not credit)",
+  "baseline_logged": "the zero-predictor baseline of the FOLD B reduction (G = 0) is logged beside pred_mse at every logged step (sg_log baseline_mse, per block too)"
  },
  "integrity": {
   "law": "structural: the true loss graph contains activations only (parameters enter as detached constants), so true gradients cannot reach any block parameter by construction; true gradients update only the predictors",
-  "smoke": "scratch/sg_integrity_smoke.py checks a..j on the frozenbb1_smoke finals, (arena, full) x (linear, mlp256); receipt logs/sgwriter1/integrity_smoke_seal.jsonl; rerun on the launch commit before the births",
+  "smoke": "scratch/sg_integrity_smoke.py checks a..k on the frozenbb1_smoke finals, (arena, full) x (linear, mlp256); development receipts logs/sgwriter1/integrity_smoke_seal.jsonl (pre-fold) and logs/sgwriter1/integrity_smoke_<commit>.jsonl (per commit, refuse-if-exists, '-dirty' suffix on a dirty tree); the driver reruns it FIRST on the launch commit (logs/sgwriter1/integrity_smoke_<launch commit>.jsonl + logs/sgwriter1/integrity_smoke_launch.log, force-added at booking) and aborts with no birth on any failure",
   "checks": [
    "a teacher logits == writer logits (tol 1e-5, measured 0.0)",
    "b teacher loss reaches no parameter",
@@ -57,8 +58,9 @@
    "f applied hat_delta predates the predictor step",
    "g skipping the predictor step leaves block grads bit-identical",
    "h FOLD A: cached target == pre-step teacher target bit-exactly, != post-step target",
-   "i forced-delta^BP endpoint reproduces the frozen-top BP gradients and one AdamW step (tol grad rel 1e-5, param 1e-6; measured 0.0 / 0.0)",
-   "j zero-output endpoint: zero SG-block gradients, block motion = decoupled weight decay, frozen bit-identical"
+   "j zero-output endpoint: zero SG-block gradients, block motion = decoupled weight decay, frozen bit-identical",
+   "i forced-delta^BP endpoint reproduces the frozen-top BP gradients and one AdamW step (tol grad rel 1e-5, param 1e-6; measured 0.0 / 0.0) -- ARENA cases only (2 of 4); full-stack has no frozen-top reference and records i_note",
+   "k eligibility: delta^BP exactly zero at every ineligible (pad) position and so is the applied credit; credit nonzero at eligible positions; baseline MSE recorded"
   ]
  },
  "ladder": {
@@ -85,8 +87,8 @@
   ],
   "function_match": "c - 7 <= g <= c + 7",
   "stopping": "FIRST FUNCTION-MATCH stops the ladder and freezes the recipe (family, PLR, constants, every writer-law detail); later cells are not born",
-  "no_match": "ACCESSIBILITY-ONLY (each cell's gate booked; STABLE iff finite and g > 0; FLOOR g >= 24 descriptive); no discovery",
-  "unstable_cell": "non-finite loss books the cell UNSTABLE (no final, ladder continues to the next cell)",
+  "no_match": "ACCESSIBILITY-ONLY (each finite cell's gate booked; STABLE iff finite and g > 0; FLOOR g >= 24 descriptive); no discovery; if no cell finished finite: LADDER-UNSTABLE",
+  "unstable_cell": "non-finite loss books the cell UNSTABLE (no final; the freeze law is still verified and recorded; the ladder continues to the next cell)",
   "alignment": "cos(hat_delta_l, delta^BP_l) per block, logged every 200 steps and at snapshots: descriptive only, never a qualification bar"
  },
  "bars": [
@@ -119,15 +121,17 @@
   "linear_3e-4_function_match": 0.35,
   "ladder_matches_some_cell": 0.55,
   "accessibility_only": 0.45,
-  "pred_mse_matched_cell": "at step 1028 below 0.5 x the zero-predictor baseline MSE of that step (the baseline = mean over blocks and eligible positions of (delta^BP / s)^2 with G = 0, logged at step 1 and reconstructible from the targets); p 0.6",
+  "pred_mse_matched_cell": "at step 1028 the logged pred_mse is below 0.5 x the logged baseline_mse of the SAME log row (both computed at the pre-step W of step 1028 under the FOLD B reduction); p 0.6",
   "alignment_matched_cell_final": "cos(hat_delta, delta^BP) above 0.3 on every SG block at the final (p 0.6; descriptive, never a bar)"
  },
  "cost_h": {
-  "control": 0.47,
-  "sg_cell": 0.97,
-  "worst_case": 4.5
+  "control": 0.53,
+  "sg_cell": 1.03,
+  "gates_each_s": "54 to 103",
+  "worst_case": 4.8,
+  "source": "300-step smoke walls at the _seal2 path (SEAL-AUDIT)"
  },
- "storage_gb": 6.9,
+ "storage_gb": 7.0,
  "liverun_ids": [
   "sgwriter1q"
  ],
@@ -141,11 +145,16 @@
   "logs/sgwriter1/train_sg_linear_plr3e-5.log",
   "logs/sgwriter1/train_sg_mlp256_plr3e-4.log",
   "logs/sgwriter1/train_sg_mlp256_plr3e-5.log",
+  "logs/sgwriter1/integrity_smoke_launch.log",
+  "logs/sgwriter1/driver.log",
+  "logs/liverun/sgwriter1q.jsonl",
   "logs/sgwriter1/smoke.jsonl",
   "logs/sgwriter1/smoke_ladder.json",
   "logs/sgwriter1/smoke_selection.json",
-  "logs/sgwriter1/integrity_smoke_seal.jsonl",
-  "logs/liverun/sgwriter1q.jsonl"
+  "logs/sgwriter1/smoke_seal2.jsonl",
+  "logs/sgwriter1/smoke_seal2_ladder.json",
+  "logs/sgwriter1/smoke_seal2_selection.json",
+  "logs/sgwriter1/integrity_smoke_seal.jsonl"
  ],
  "instrument": [
   "scratch/sg_credit.py",
@@ -164,6 +173,11 @@
  ],
  "amended_by": [
   "AMENDMENT SYNTHETIC-GRADIENT-WRITER-1-ARENA",
-  "AMENDMENT SYNTHETIC-GRADIENT-WRITER-1-SEAL"
+  "AMENDMENT SYNTHETIC-GRADIENT-WRITER-1-SEAL",
+  "AMENDMENT SYNTHETIC-GRADIENT-WRITER-1-SEAL-AUDIT"
+ ],
+ "storage_note": "5 x 18 model files x 75.7 MB = 6.81 GB + predictor files (4 SG cells x 18 x 2.6 to 3.3 MB = 0.21 GB) = 7.0 GB decimal; the control has no predictors",
+ "receipts_by_pattern": [
+  "logs/sgwriter1/integrity_smoke_<launch commit>.jsonl (named by the launch commit; force-added at booking)"
  ]
 }

@@ -12,8 +12,9 @@ finished ungated birth with llmopt.lab.gate.gate_eval on mps (the standard
   FIRST MATCH the first cell in the order that is FUNCTION-MATCH is the
                 selection; every later cell is NOT BORN (stop: true).
   no match    when every cell has run without a match: ACCESSIBILITY-ONLY
-                (each cell's gate booked; STABLE iff finite and g > 0;
-                FLOOR g >= 24 descriptive); no discovery.
+                (each finite cell's gate booked; STABLE iff finite and g > 0;
+                FLOOR g >= 24 descriptive); no discovery. If no cell finished
+                finite: LADDER-UNSTABLE (nothing to gate).
   in progress cells not yet run: stop false, next = the next cell.
 
 Writes logs/sgwriter1/ladder.json (rewritten on every call: the current
@@ -42,9 +43,11 @@ os.environ.setdefault("ARM", "off")
 os.environ.setdefault("BIRTH_SEED", "0")
 
 SMOKE = os.environ.get("SMOKE", "0") == "1"
-BIRTHS = Path("logs/sgwriter1/smoke.jsonl" if SMOKE else "logs/sgwriter1/qual.jsonl")
-LADDER_OUT = Path("logs/sgwriter1/smoke_ladder.json" if SMOKE else "logs/sgwriter1/ladder.json")
-SELECTION = Path("logs/sgwriter1/smoke_selection.json" if SMOKE else "logs/sgwriter1/selection.json")
+SMOKE_TAG = os.environ.get("SMOKE_TAG", "")
+assert not SMOKE_TAG or SMOKE, "SMOKE_TAG is smoke-only"
+BIRTHS = Path(f"logs/sgwriter1/smoke{SMOKE_TAG}.jsonl" if SMOKE else "logs/sgwriter1/qual.jsonl")
+LADDER_OUT = Path(f"logs/sgwriter1/smoke{SMOKE_TAG}_ladder.json" if SMOKE else "logs/sgwriter1/ladder.json")
+SELECTION = Path(f"logs/sgwriter1/smoke{SMOKE_TAG}_selection.json" if SMOKE else "logs/sgwriter1/selection.json")
 SEED = 11 if SMOKE else 27
 FLOOR = 24
 BAND = 7
@@ -79,6 +82,9 @@ def adjudicate(control, cells):
         if match:
             st.update({"verdict": "FUNCTION-MATCH", "stop": True, "next": None, "selected": {"family": fam, "plr": plr, "gate": g, "c": c}})
             return st
+    if not any(v["finite"] for v in st["cells"].values()):
+        st.update({"verdict": "LADDER-UNSTABLE", "stop": True, "next": None, "selected": None})
+        return st
     st.update({"verdict": "ACCESSIBILITY-ONLY", "stop": True, "next": None, "selected": None})
     return st
 

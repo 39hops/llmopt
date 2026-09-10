@@ -36,8 +36,15 @@ Asserted per (mode, family):
      exactly zero, head / norm gradients nonzero, and every block motion
      equals AdamW's decoupled weight decay p *= 1 - lr * wd; frozen
      tensors bit-identical after the step.
-Writes one row per case to logs/sgwriter1/integrity_smoke_seal.jsonl (the
-pre-seal receipt logs/sgwriter1/integrity_smoke.jsonl stays frozen).
+ (k) eligibility: delta^BP is exactly zero at every ineligible (pad)
+     position and so is the applied credit, while the credit is nonzero
+     at eligible positions (predictors perturbed); the zero-predictor
+     baseline MSE is recorded.
+Writes one row per case to logs/sgwriter1/integrity_smoke_<HEAD>.jsonl
+(refuses to overwrite; never a tracked path, so a rerun on the launch commit
+leaves the tree clean; the booking force-adds the launch-commit file). The
+pre-seal receipts integrity_smoke.jsonl / integrity_smoke_seal.jsonl stay
+frozen.
 Usage: .venv/bin/python scratch/sg_integrity_smoke.py
 """
 import datetime
@@ -61,7 +68,7 @@ from dfa_credit import block_params, ce_loss, freeze_lower, hybrid_objective  # 
 from dfa_probe import probe_rows, probe_tensors  # noqa: E402
 from sg_credit import build_predictors, run_sg_step, sg_step_terms, true_hidden_errors, writer_forward  # noqa: E402
 
-OUT = Path("logs/sgwriter1/integrity_smoke_seal.jsonl")
+OUT = None   # set in main(): logs/sgwriter1/integrity_smoke_<HEAD>.jsonl, refuse-if-exists (never a tracked path)
 AUDIT = Path("logs/sgaudit0/audit.json")
 SMOKE_BIRTHS = Path("logs/frozenbb1/smoke.jsonl")
 TOL_LOGITS = 1e-5
@@ -239,16 +246,36 @@ def run_case(sd, tok, ids, mask, labels, sg_blocks, consts, family, arena):
     C["j_frozen_bitexact_after_step"] = all(torch.equal(before[n], p.detach()) for n, p in model0.named_parameters() if not p.requires_grad)
     C["j_ok"] = C["j_block_grads_exactly_zero"] and C["j_headnorm_grads_nonzero"] and C["j_block_move_is_pure_decay"] and C["j_frozen_bitexact_after_step"]
 
+    # (k) eligibility: delta^BP is exactly zero at every ineligible position, and so is the applied credit
+    model_k, _, preds_k = fresh(sd, tok, arena, family, sg_blocks)
+    with torch.no_grad():
+        for p in preds_k.parameters():
+            p.add_(torch.randn_like(p) * 1e-2)
+    Tk = sg_step_terms(model_k, preds_k, ids, mask, labels, sg_blocks, consts)
+    inel = ~Tk["elig"]
+    C["k_n_ineligible_positions"] = int(inel.sum())
+    C["k_target_zero_at_ineligible"] = all(float(Tk["targets"][l][inel].abs().max()) == 0.0 for l in sg_blocks) if int(inel.sum()) else True
+    C["k_credit_zero_at_ineligible"] = all(float(Tk["hat_delta"][l][inel].abs().max()) == 0.0 for l in sg_blocks) if int(inel.sum()) else True
+    C["k_credit_nonzero_at_eligible"] = all(float(Tk["hat_delta"][l][Tk["elig"]].abs().max()) > 0.0 for l in sg_blocks)
+    C["k_baseline_mse"] = Tk["baseline_mse"]
+    C["k_ok"] = C["k_target_zero_at_ineligible"] and C["k_credit_zero_at_ineligible"] and C["k_credit_nonzero_at_eligible"] and C["k_n_ineligible_positions"] > 0
+
     keys = ("zero_init_hat_delta", "a_ok", "b_ok", "c_ok", "d_block_grads_bitexact_v_constants", "e_headnorm_grads_bitexact_v_true_ce",
-            "e_frozen_grads_none", "f_ok", "g_block_grads_unchanged_by_pred_step", "h_ok", "i_ok", "j_ok")
+            "e_frozen_grads_none", "f_ok", "g_block_grads_unchanged_by_pred_step", "h_ok", "i_ok", "j_ok", "k_ok")
     rec["failed"] = [k for k in keys if not C[k]]
     rec["ok"] = not rec["failed"]
     return rec
 
 
 def main():
-    OUT.parent.mkdir(parents=True, exist_ok=True)
+    global OUT
     commit = subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip()
+    if subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True).stdout.strip():
+        commit += "-dirty"      # a development run; the launch-commit rerun is on a clean tree
+    OUT = Path(f"logs/sgwriter1/integrity_smoke_{commit}.jsonl")
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    if OUT.exists():
+        raise SystemExit(f"REFUSING: {OUT} exists")
     tok = TM.MathTokenizer()
     _, rows, probe_digest, _ = probe_rows(tok)
     ids, mask, labels = probe_tensors(rows[:32], tok)
@@ -271,7 +298,7 @@ def main():
         c = rec["checks"]
         print(f"[sgsmoke] {rec['mode']} {fam}: ok={rec['ok']} a={c['a_logit_maxdiff']:.1e} h_post-pre={c['h_post_minus_pre_maxabs']:.2e} "
               f"i_rel={c.get('i_forced_grad_rel_maxdiff', float('nan')):.1e} i_p={c.get('i_forced_param_maxdiff_after_step', float('nan')):.1e} "
-              f"pred_loss={c['pred_loss_value']:.3f} failed={rec['failed']}", flush=True)
+              f"pred_loss={c['pred_loss_value']:.3f} k_inel={c['k_n_ineligible_positions']} failed={rec['failed']}", flush=True)
     with OUT.open("a") as f:
         for r in rows_out:
             f.write(json.dumps(r) + "\n")

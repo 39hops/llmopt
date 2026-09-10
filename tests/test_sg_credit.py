@@ -110,6 +110,29 @@ def test_fold_b_elementwise_mse_over_label_positions(sg, tiny):
     gp = torch.autograd.grad(T["pred_loss"], list(preds.parameters()), allow_unused=True)
     assert all(x is not None for x in gp)
     assert set(T["align"]) == {0, 1}
+    # zero predictor: the logged baseline equals the loss itself
+    assert T["baseline_mse"] == pytest.approx(float(T["pred_loss"]), rel=1e-6)
+
+
+def test_credit_only_at_eligible_positions(sg, tiny):
+    import torch
+    model, ids, mask, labels = tiny
+    consts = {"0": 1e-6, "1": 2e-6}
+    preds = sg.build_predictors("linear", [0, 1], seed=1)
+    with torch.no_grad():
+        for p in preds.parameters():
+            p.add_(torch.randn_like(p) * 1e-2)
+    # the training convention (dfa_probe.probe_tensors / the driver): a position is ineligible iff the next
+    # token is pad, so every ineligible position lies downstream of the loss and delta^BP is exactly zero there
+    labels = ids.clone()
+    labels[mask == 0] = -100
+    T = sg.sg_step_terms(model, preds, ids, mask, labels, [0, 1], consts)
+    inel = labels == -100
+    assert int(inel.sum()) == 2
+    for l in (0, 1):
+        assert float(T["targets"][l][inel].abs().max()) == 0.0          # delta^BP is exactly zero there
+        assert float(T["hat_delta"][l][inel].abs().max()) == 0.0        # and so is the applied credit
+        assert float(T["hat_delta"][l][~inel].abs().max()) > 0.0
 
 
 def test_fold_a_targets_cached_before_any_step(sg, tiny):

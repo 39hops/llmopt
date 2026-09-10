@@ -52,15 +52,26 @@ def test_sg_law_literal():
               'consts = audit["normalization_constants"]["arena_frozen_4_7"]', "pred_opt = torch.optim.AdamW(phi, lr=PLR, weight_decay=0.0)",
               "T = sg_step_terms(model, preds, ids[:, :-1], mask[:, :-1], labels, SG_BLOCKS, consts)",
               "run_sg_step(T, model_params, phi, opt, pred_opt, sched, pred_sched, steps_total)",
-              'ROOT = Path("checkpoints/sgwriter1_smoke" if SMOKE else "checkpoints/sgwriter1")',
+              'ROOT = Path(f"checkpoints/sgwriter1_smoke{SMOKE_TAG}" if SMOKE else "checkpoints/sgwriter1")',
               "pred_seed = 1000 + SEED"):
         assert s in src, s
     assert "gate_eval" not in src
 
 
+def test_arena_constants_pinned_to_the_locked_audit_receipt():
+    import json
+    audit = json.loads((ROOT / "logs" / "sgaudit0" / "audit.json").read_text())["normalization_constants"]["arena_frozen_4_7"]
+    mirror = json.loads((ROOT / "docs" / "preregs" / "synthetic-gradient-writer-1.json").read_text())["credit_law"]["constants_arena"]
+    assert mirror == audit
+    assert {k: round(v, 9) for k, v in audit.items()} == {"4": 5.464e-06, "5": 4.479e-06, "6": 3.564e-06, "7": 2.441e-06}
+
+
 def test_fold_b_and_fold_a_literal_in_credit():
     src = CREDIT.read_text()
     assert "L_l = (diff.pow(2).mean(-1) * elig).sum() / n_elig" in src
+    assert "elig = labels != -100" in src
+    assert "hat_delta[l] = float(consts[str(l)]) * g.detach() * credit_mask" in src
+    assert "baseline, baseline_per_block = normalized_mse(zero_g, targets, consts, elig, sg_blocks)" in src
     assert "return tot / len(sg_blocks), per" in src
     assert "loss_T, logits_T, targets = true_hidden_errors(model, ids, attn_mask, labels, sg_blocks)   # 3, cached" in src
     assert 'T["total"].backward()' in src and 'T["pred_loss"].backward()' in src
@@ -72,5 +83,6 @@ def test_ladder_law_literal():
     for s in ("FLOOR = 24", "BAND = 7", 'LADDER = (("linear", 3e-4), ("linear", 3e-5), ("mlp256", 3e-4), ("mlp256", 3e-5))',
               "match = bool(r[\"finite\"] and g is not None and c - BAND <= g <= c + BAND)",
               'st.update({"verdict": "NOT-RESOLVABLE-CONTROL", "stop": True, "next": None, "selected": None})',
-              'st.update({"verdict": "ACCESSIBILITY-ONLY", "stop": True, "next": None, "selected": None})'):
+              'st.update({"verdict": "ACCESSIBILITY-ONLY", "stop": True, "next": None, "selected": None})',
+              'st.update({"verdict": "LADDER-UNSTABLE", "stop": True, "next": None, "selected": None})'):
         assert s in src, s

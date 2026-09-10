@@ -70627,3 +70627,134 @@ seed, one device, one recipe; the D-0 resolution unit; the band is a
 same-W_0 non-inferiority reading, not a claim of identical function;
 nothing here revises L70024, L70301 or the DFA-family closure; nothing
 here authorizes seed-27 births, seed-2 discovery or mechanism work.
+
+## AMENDMENT SYNTHETIC-GRADIENT-WRITER-1-SEAL-AUDIT (target: AMENDMENT -SEAL L70425): clean-tree prereg-auditor blockers and should-fixes folded before any birth — the spliced "control loss 1.039" withdrawn (the SG control smoke's own receipt says final loss 1.249 at step 300, 8.3 it/s); the sealed pre-birth integrity-smoke rerun is now the driver's first step at a per-commit untracked path (a tracked-path append would have dirtied the tree and bricked the launch); synthetic credit is applied at eligible label positions only (delta^BP is exactly zero at pad positions; check (k) added, 168 / 1024 ineligible positions in the probe chunk); the zero-predictor baseline of the FOLD B reduction is logged beside pred_mse and the prior restated against it; check (i) counted for the two arena cases only; LADDER-UNSTABLE label; freeze law verified on the UNSTABLE path; walls, storage and ranges re-derived from receipts; five smokes and the smoke ladder rerun at a new smoke path after the credit fold; NO seed-27 birth authorized (2026-09-10 local, Mac; SEALED, NOT LAUNCHED)
+
+Auditor (Opus 5, clean tree at cb2b441c) on AMENDMENT -SEAL: two
+blockers, six should-fixes, four notes. Every finding was verified
+against the receipts and folded as follows; the sealed law (arena,
+control, band, adequate control, ladder order, first-match stopping,
+alignment descriptive, FOLD A, FOLD B) is unchanged.
+
+B1 (withdrawn number). The SEAL quoted "control loss 1.039 at 8.3
+it/s" for the SG control smoke. The 1.039 was a step-200 loss from a
+FROZEN-BACKBONE-1 smoke log (a different process; mps training is
+run-level nondeterministic at fixed seed, so it does not transport),
+and the SG control smoke's receipt carries no step-200 loss at all.
+Corrected reading from logs/sgwriter1/smoke.jsonl: control final loss
+1.249 at step 300, wall 36.3 s (8.26 it/s). The re-smoke below carries
+its own numbers.
+
+B2 (pre-birth smoke rerun). The SEAL registered "the smoke reruns on
+the launch commit before any birth" but the driver did not run it, and
+a by-hand rerun would have appended to a tracked receipt, dirtied the
+tree and made liverun, the driver, the birth and the gate all refuse.
+Fold: scratch/sg_integrity_smoke.py writes
+logs/sgwriter1/integrity_smoke_<HEAD>.jsonl (refuse-if-exists; "-dirty" suffix on a
+dirty tree; never a tracked path), and scratch/sgwriter1_qual_driver.sh
+runs it FIRST on the launch commit (tee to
+logs/sgwriter1/integrity_smoke_launch.log) and aborts with no birth on any failure;
+the launch-commit file is force-added at booking. The pre-fold
+receipts logs/sgwriter1/integrity_smoke.jsonl and
+logs/sgwriter1/integrity_smoke_seal.jsonl stay frozen.
+
+S5 (credit at pad positions; the one scientific fold). FOLD B trains
+the predictor at eligible label positions only, but the SEAL's
+surrogate applied s_l * G at every position, so once phi is nonzero
+the blocks would have received credit at pad positions where delta^BP
+is exactly zero (padded queries never reach the loss; the last real
+token predicts a pad and is a key only for pad queries). Fold:
+hat_delta_l = s_l * G_phi_l * 1[labels != -100]; the applied credit is
+now zero wherever delta^BP is zero and unchanged elsewhere; the
+forced-delta^BP endpoint (i) is unaffected (delta^BP is already zero
+there). New check (k) in the integrity smoke: on the 32-row probe
+chunk (168 of 1024 positions ineligible) delta^BP is exactly zero at
+every ineligible position on every SG block, so is the applied credit,
+and the credit is nonzero at eligible positions with perturbed
+predictors: PASS in all four cases. tests/test_sg_credit.py pins the
+same on the tiny model under the training convention (and documents
+that an interior -100 inside the attention mask would NOT have zero
+delta^BP, which is why eligibility is defined by the driver's
+next-token-is-pad rule and not by an arbitrary label mask). This is a
+change to the applied credit law relative to the SEAL text; nothing
+had been born under the old law, and the ARENA amendment's "credit in
+delta^BP units, no runtime gain" is preserved.
+
+S4 (prior baseline). The registered prior compared pred_mse at step
+1028 to a zero-predictor baseline "of that step" that was not logged
+(and a snapshot-based reconstruction would be one optimizer step off,
+since snapshots are written after the step). Fold: sg_step_terms
+returns baseline_mse (the FOLD B reduction with G = 0, per block and
+mean over blocks) beside pred_loss at every step; the driver logs both
+in the same sg_log row (every 200 steps, step 1 and every snapshot
+step). Prior restated: on a matched cell the logged pred_mse at step
+1028 is below 0.5 x the logged baseline_mse of the same row (both at
+the pre-step W of step 1028), p 0.6; unchanged otherwise.
+
+S3 (check (i) count). Check (i) is arena-only (the endpoint is the
+FROZEN-BACKBONE-1 arm; full-stack has no frozen-top reference and
+records i_note). Restated: checks (a) to (h), (j), (k) pass in all four
+cases; (i) passes bit-exactly in the two arena cases; eleven checks,
+42 of 42 applicable case-checks pass.
+
+S6 / S7 / S8 (numbers re-derived from receipts). Pre-fold smoke walls
+from logs/sgwriter1/smoke.jsonl: SG cells 4.25 to 4.48 it/s (68.0 /
+67.0 / 70.6 / 69.6 s for 300 steps), 1.84x to 1.94x the control's 8.26
+it/s; SG cell 15,420 steps = 57 to 60.5 min; control 31.1 min; smoke
+gates 56 to 116 s; worst case (control + four cells + five gates) about
+4.6 h. The re-smoke walls are below. Zero-predictor loss at the
+audited FROZEN states: (RMS_l / s_l)^2 spans 0.18 to 5.4 (blocks 4..7,
+six states), not "0.2 to 5.8"; the integrity smoke's zero-predictor
+pred_loss on the seed-11 300-step states is 18.0 (arena) and 23.8
+(full-stack), far above the audited range because those are
+early-training states whose targets are larger than the geometric-mean
+constants, disclosed as the only measured instance of the quantity.
+Storage: 5 x 18 model files x 75.7 MB = 6.81 GB plus predictor files
+(four SG cells x 18 x 2.6 to 3.3 MB = 0.21 GB; the control has no
+predictors) = 7.0 GB decimal (the SEAL's "6.9" was GiB and
+double-counted the control's predictors).
+
+N11 (labels). adjudicate() books LADDER-UNSTABLE when no cell finished
+finite (ACCESSIBILITY-ONLY requires at least one gated cell);
+tests/test_sg_ladder_law.py pins it. The birth driver now verifies the
+freeze law before the UNSTABLE return, so an unstable cell still
+records freeze_law_verified.
+
+N12 (pins). tests/test_sg_source_invariant.py now pins the four arena
+constants to the locked audit receipt and the JSON mirror, the
+eligibility line, the credit mask and the baseline line.
+
+N10 (receipts). logs/sgwriter1/driver.log (the liverun stdout capture)
+and logs/sgwriter1/integrity_smoke_launch.log are registered receipts.
+
+RE-SMOKE after the credit fold (SMOKE_TAG=_seal2: new paths
+logs/sgwriter1/smoke_seal2.jsonl,
+logs/sgwriter1/smoke_seal2_ladder.json,
+logs/sgwriter1/smoke_seal2_selection.json,
+checkpoints/sgwriter1_smoke_seal2/; the
+booked smoke.jsonl is not appended to): all five cells finite, freeze law verified (29 tensors) on
+every cell; control 300 steps in 37.1 s (8.1 it/s), final loss 1.249;
+SG cells 71.1 to 72.3 s (4.15 to 4.22 it/s, 1.9x to 1.95x the control),
+final losses 1.922 / 2.092 / 2.263 / 2.345; step-300 pred_mse v logged
+baseline_mse: LINEAR 3e-4 0.123 v 0.112, LINEAR 3e-5 0.044 v 0.042,
+MLP-256 3e-4 0.042 v 0.042, MLP-256 3e-5 0.008 v 0.008 (the predictors
+have not yet beaten the zero predictor at 300 steps; descriptive,
+mechanics only); alignment logged per block every 200 steps; smoke
+ladder: all five gated 0 / 120 (54 to 103 s each), pair assertions
+pass, NOT-RESOLVABLE-CONTROL with no cell adjudicated. Walls from this
+re-smoke: SG cell 61 to 62 min, control 32 min, gates 1 to 2 min, worst
+case (control + four cells + five gates) about 4.8 h. Integrity
+smoke on the fold (dirty tree, development receipt not registered):
+4/4 cases, (a) 0.0, (h) 3.9e-5 to 5.5e-5, (i) 0.0 / 0.0 arena, (k) 168
+ineligible positions, all checks pass; the launch-commit rerun is the
+driver's first step.
+
+Unchanged and restated: seed 27; control first, c; ADEQUATE-CONTROL c
+>= 24; band c - 7 <= g <= c + 7; order LINEAR 3e-4, LINEAR 3e-5,
+MLP-256 3e-4, MLP-256 3e-5; FIRST FUNCTION-MATCH stops and freezes the
+recipe; alignment descriptive only; FOLD A nine-step order; FOLD B
+reduction; constants s_4..7 from L70301; prior otherwise as sealed;
+family record 11 hits, 8 misses. A SEPARATE Artin GO fires the ladder
+under `.venv/bin/python scripts/liverun.py run sgwriter1q -- bash
+scratch/sgwriter1_qual_driver.sh`. No seed-27 birth, no seed-2
+discovery, no mechanism work is authorized by this entry.

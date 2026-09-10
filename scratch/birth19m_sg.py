@@ -32,7 +32,8 @@ or wrote; HEAD is re-read at the receipt write and must equal the launch
 commit.
 
 Smoke-only extras: DRYRUN=1 (stream assertions only), EMIT=0, DEVICE=cpu,
-TAG=<suffix>.
+TAG=<suffix>, SMOKE_TAG=<suffix> (new smoke receipt / checkpoint paths for a
+rerun; a booked smoke receipt is never appended to).
 
 Usage: SG=1 MODE=sg FAMILY=linear PLR=3e-4 SEED=27 LR=3e-4 .venv/bin/python scratch/birth19m_sg.py
        SG=1 MODE=zero K_BP=4 SEED=27 LR=3e-4 .venv/bin/python scratch/birth19m_sg.py
@@ -76,6 +77,7 @@ EMIT = os.environ.get("EMIT", "1") != "0"
 DEVICE_OVERRIDE = os.environ.get("DEVICE", "")
 SMOKE_STEPS = int(os.environ.get("SMOKE_STEPS", "300"))
 TAG = os.environ.get("TAG", "")
+SMOKE_TAG = os.environ.get("SMOKE_TAG", "")       # smoke-only: a new smoke path per rerun (booked smoke receipts are never appended)
 GRADDUMP = ""
 S = float(os.environ.get("S", "0")) if MODE in ("dfa", "hybrid") else None
 PEAK_LR = float(os.environ.get("LR", "3e-4"))
@@ -116,9 +118,10 @@ STEPS_TOTAL_PIN = 15_420
 SCHEDULE = [0, 463] + list(range(1_028, STEPS_TOTAL_PIN + 1, 1_028))
 PHASE = "smoke" if SMOKE else "sgq"
 CELL = f"{PHASE}_" + ("control" if MODE == "zero" else f"sg_{FAMILY}_plr{PLR:g}") + f"_s{SEED}_lr{PEAK_LR:g}" + TAG
-ROOT = Path("checkpoints/sgwriter1_smoke" if SMOKE else "checkpoints/sgwriter1")
+assert not SMOKE_TAG or SMOKE, "SMOKE_TAG is smoke-only"
+ROOT = Path(f"checkpoints/sgwriter1_smoke{SMOKE_TAG}" if SMOKE else "checkpoints/sgwriter1")
 OUTDIR = ROOT / CELL
-RECEIPTS = Path("logs/sgwriter1/smoke.jsonl" if SMOKE else "logs/sgwriter1/qual.jsonl")
+RECEIPTS = Path(f"logs/sgwriter1/smoke{SMOKE_TAG}.jsonl" if SMOKE else "logs/sgwriter1/qual.jsonl")
 MIN_FREE_BYTES = 15 * 1024 ** 3
 LOG_EVERY = 200
 
@@ -311,6 +314,7 @@ def main():
                 if step % LOG_EVERY == 0 or step == 1 or step in schedule:
                     sg_log.append({"step": step, "loss": float(loss.detach()), "loss_T": float(T["loss_T"]),
                                    "pred_mse": float(T["pred_loss"].detach()), "pred_mse_per_block": {str(k): v for k, v in T["pred_loss_per_block"].items()},
+                                   "baseline_mse": T["baseline_mse"], "baseline_mse_per_block": {str(k): v for k, v in T["baseline_mse_per_block"].items()},
                                    "align": {str(k): v for k, v in T["align"].items()}})
             else:
                 if MODE == "bp":
@@ -350,7 +354,7 @@ def main():
             if step % LOG_EVERY == 0:
                 extra = ""
                 if MODE == "sg":
-                    extra = (f" pred_mse {sg_log[-1]['pred_mse']:.3f} align "
+                    extra = (f" pred_mse {sg_log[-1]['pred_mse']:.3f} (baseline {sg_log[-1]['baseline_mse']:.3f}) align "
                              + " ".join(f"b{k}:{(v if v is not None else float('nan')):.3f}" for k, v in sg_log[-1]["align"].items()))
                 print(f"  step {step}/{steps_total} loss "
                       f"{float(loss.detach()):.3f} "
@@ -380,20 +384,21 @@ def main():
            "enc_stock": len(enc_stock), "enc_train": len(enc), "stream_sha256": digests,
            "schedule": schedule, "outdir": str(OUTDIR), "init_state_digest": init_digest,
            "feedback": feedback, "snapshots": snapshots, "pred_snapshots": pred_snapshots, "sg_log": sg_log}
-    if nonfinite_step is not None:
-        row.update({"stable_training": False, "nonfinite_step": nonfinite_step, "final": None})
-        write_receipt(row, launch_commit)
-        print(f"[sg] receipt appended to {RECEIPTS} (UNSTABLE at step {nonfinite_step}; no final checkpoint)", flush=True)
-        return
-
     if MODE in ("zero", "sg"):
+        # the freeze law is verified on every exit path, UNSTABLE included
         sd_now = model.state_dict()
         w0_back = torch.load(OUTDIR / "step_00000.pt", map_location="cpu") if EMIT else None
         if w0_back is not None:
             for n in frozen_names:
                 if not torch.equal(sd_now[n].detach().to("cpu"), w0_back[n]):
                     raise SystemExit(f"ABORT: frozen tensor {n} moved from W_0")
+            row["freeze_law_verified"] = len(frozen_names)
             print(f"[sg] freeze law verified: {len(frozen_names)} tensors bit-identical to W_0", flush=True)
+    if nonfinite_step is not None:
+        row.update({"stable_training": False, "nonfinite_step": nonfinite_step, "final": None})
+        write_receipt(row, launch_commit)
+        print(f"[sg] receipt appended to {RECEIPTS} (UNSTABLE at step {nonfinite_step}; no final checkpoint)", flush=True)
+        return
     final_p = OUTDIR / "final.pt"
     if final_p.exists():
         raise SystemExit(f"REFUSING: {final_p} exists")

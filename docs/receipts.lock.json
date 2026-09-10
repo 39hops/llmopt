@@ -4243,6 +4243,10 @@
    "source": "results",
    "tracked": true
   },
+  "logs/sgwriter1/driver.log": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/sgwriter1/gate.log": {
    "exists": false,
    "source": "prereg"
@@ -4253,6 +4257,10 @@
    "sha256": "b0f528e40a797601b4f89f3aad19ee9cecbc62610b8c6afc19c1a7662ff2a896",
    "source": "results",
    "tracked": true
+  },
+  "logs/sgwriter1/integrity_smoke_launch.log": {
+   "exists": false,
+   "source": "prereg"
   },
   "logs/sgwriter1/integrity_smoke_seal.jsonl": {
    "bytes": 7252,
@@ -4284,6 +4292,27 @@
    "bytes": 1523,
    "exists": true,
    "sha256": "127c0b14c8a8aa6c01c7d9f57043b2e8eca4d0ad8663fcb889acf7b7b3409379",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/sgwriter1/smoke_seal2.jsonl": {
+   "bytes": 26196,
+   "exists": true,
+   "sha256": "ea16cea7dbc18b7e36d7b7daadc998955e0b16abda84952dadb4e5ed1f9a5e96",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/sgwriter1/smoke_seal2_ladder.json": {
+   "bytes": 1523,
+   "exists": true,
+   "sha256": "1c5d70d30684e0be8be27d4b609158abea08714b3e1c167da7f526f52d62fa3a",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/sgwriter1/smoke_seal2_selection.json": {
+   "bytes": 1523,
+   "exists": true,
+   "sha256": "1c5d70d30684e0be8be27d4b609158abea08714b3e1c167da7f526f52d62fa3a",
    "source": "results",
    "tracked": true
   },

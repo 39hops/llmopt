@@ -70,3 +70,11 @@ def test_in_progress_and_accessibility_only(adj):
     assert cells["linear:0.0003"]["stable"] and cells["linear:0.0003"]["floor"] and not cells["linear:0.0003"]["function_match"]
     assert cells["linear:3e-05"]["finite"] is False and cells["mlp256:0.0003"]["stable"] is False
     assert cells["mlp256:3e-05"]["delta_v_control"] == -12
+
+
+def test_all_unstable_is_ladder_unstable(adj):
+    dead = {"finite": False, "gate": None}
+    st = adj(ok(62), {("linear", 3e-4): dead, ("linear", 3e-5): dead, ("mlp256", 3e-4): dead, ("mlp256", 3e-5): dead})
+    assert st["verdict"] == "LADDER-UNSTABLE" and st["stop"] is True and st["selected"] is None
+    st = adj(ok(62), {("linear", 3e-4): dead, ("linear", 3e-5): dead, ("mlp256", 3e-4): dead, ("mlp256", 3e-5): ok(3)})
+    assert st["verdict"] == "ACCESSIBILITY-ONLY"

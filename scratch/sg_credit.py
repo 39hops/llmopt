@@ -6,7 +6,8 @@ error
     hat_delta_l = s_l * G_phi_l(stopgrad(x_{l+1}), stopgrad(e_t))
 
 replaces the true hidden error delta^BP_l = dL/dx_{l+1} for every SG block
-l in sg_blocks; block parameters receive J_{f_l}^T hat_delta_l only (the
+l in sg_blocks at the eligible label positions (labels != -100; delta^BP is
+exactly zero at the pad positions, so no credit is applied there); block parameters receive J_{f_l}^T hat_delta_l only (the
 surrogate sum_l <hat_delta_l.detach(), x_{l+1}> backpropagated through a
 block whose input is detached); head.weight and norm.g take the true CE
 gradient with x_8 detached (the sealed DFA / frontier treatment); blocks
@@ -39,6 +40,9 @@ is an elementwise MSE, not a hidden-dimension SSE):
   L_phi = mean_l L_l
 gradients reach phi only (both predictor inputs are detached). The applied
 credit stays hat_delta_l = s_l * G_phi_l with no runtime scaling or gain.
+The zero-predictor baseline of the same reduction (G = 0: the mean of
+(delta^BP / s)^2) is returned beside it at every step for the registered
+prior.
 
 Predictor families: LINEAR G(h, e) = h A + e B + C (Czarnecki's SG(h, y);
 Jaderberg's best cDNI family) and MLP-256 (one hidden layer, ReLU); the
@@ -184,19 +188,26 @@ def sg_step_terms(model, preds, ids, attn_mask, labels, sg_blocks, consts):
     outs, logits = writer_forward(model, ids, attn_mask, sg_blocks)               # 1
     loss = ce_loss(logits, labels)
     e = torch.autograd.grad(loss, logits, retain_graph=True)[0].detach()
+    elig = labels != -100
+    credit_mask = elig.unsqueeze(-1).to(outs[sg_blocks[0]].dtype)
     g_out, hat_delta, S = {}, {}, 0.0
     for l in sg_blocks:                                                            # 2
         g = preds[str(l)](outs[l].detach(), e)
         g_out[l] = g
-        hat_delta[l] = float(consts[str(l)]) * g.detach()
+        # credit only at eligible label positions: delta^BP is exactly zero elsewhere (pad positions
+        # never reach the loss), so the applied credit has a BP counterpart everywhere it is nonzero
+        hat_delta[l] = float(consts[str(l)]) * g.detach() * credit_mask
         S = S + (hat_delta[l] * outs[l]).sum()
     total = loss + S
     loss_T, logits_T, targets = true_hidden_errors(model, ids, attn_mask, labels, sg_blocks)   # 3, cached
-    elig = labels != -100
     pred_loss, per_block = normalized_mse(g_out, targets, consts, elig, sg_blocks)
+    zero_g = {l: torch.zeros_like(g_out[l]) for l in sg_blocks}
+    baseline, baseline_per_block = normalized_mse(zero_g, targets, consts, elig, sg_blocks)
     return {"loss": loss, "e": e, "outs": outs, "logits": logits, "g_out": g_out, "hat_delta": hat_delta, "total": total,
             "targets": targets, "loss_T": loss_T, "logits_T": logits_T, "elig": elig,
-            "pred_loss": pred_loss, "pred_loss_per_block": per_block, "align": alignment(hat_delta, targets, elig, sg_blocks)}
+            "pred_loss": pred_loss, "pred_loss_per_block": per_block,
+            "baseline_mse": float(baseline.detach()), "baseline_mse_per_block": baseline_per_block,
+            "align": alignment(hat_delta, targets, elig, sg_blocks)}
 
 
 def run_sg_step(T, model_params, phi, model_opt, pred_opt, model_sched=None, pred_sched=None, steps_total=None, skip_pred_update=False):
