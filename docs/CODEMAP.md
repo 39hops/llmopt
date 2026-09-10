@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 236, library 81, reproduce-pinned 10, results-cited 442, spec-cited 89, cited-but-library 69
+Census: UNCITED 238, library 82, reproduce-pinned 10, results-cited 442, spec-cited 89, cited-but-library 69
 
 ## scratch/
 
@@ -26,7 +26,7 @@ Census: UNCITED 236, library 81, reproduce-pinned 10, results-cited 442, spec-ci
 | atomdose1 | atomdose1_driver.sh | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | atomladder1 | atomladder1_driver.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | atomtraj | atomtraj_census.py | results-cited | RESULTS | RESULTS×4 | — | 4 |
-| atomtraj | atomtraj_pins.py | library | RESULTS | RESULTS×8 | 21 | 3 |
+| atomtraj | atomtraj_pins.py | library | RESULTS | RESULTS×8 | 23 | 3 |
 | atomtraj | atomtraj_qual.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | atomtraj | atomtraj_verify.py | results-cited | RESULTS | RESULTS×5 | — | 3 |
 | atomtraj1 | atomtraj1_driver.sh | results-cited | RESULTS | RESULTS×1 | — | — |
@@ -112,12 +112,12 @@ Census: UNCITED 236, library 81, reproduce-pinned 10, results-cited 442, spec-ci
 | determinability | determinability_census.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | dfa | dfa_act.py | library | RESULTS, specs | RESULTS×3, specs×1 | 3 | 2 |
 | dfa | dfa_align.py | library | RESULTS, specs | RESULTS×2, specs×1 | 2 | 3 |
-| dfa | dfa_credit.py | library | RESULTS, specs | RESULTS×2, specs×3 | 12 | 1 |
+| dfa | dfa_credit.py | library | RESULTS, specs | RESULTS×2, specs×3 | 14 | 1 |
 | dfa | dfa_depthclass.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 2 |
 | dfa | dfa_harm_desk.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 1 |
 | dfa | dfa_leakage_smoke.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 1 |
 | dfa | dfa_postmortem.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 1 |
-| dfa | dfa_probe.py | library | RESULTS, specs | RESULTS×1, specs×1 | 8 | 1 |
+| dfa | dfa_probe.py | library | RESULTS, specs | RESULTS×1, specs×1 | 9 | 1 |
 | dfa | dfa_prune.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | dfa | dfa_qualgate.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 2 |
 | dfa | dfa_trajcensus.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 2 |
@@ -172,7 +172,8 @@ Census: UNCITED 236, library 81, reproduce-pinned 10, results-cited 442, spec-ci
 | farm | farm_dist_rows.py | results-cited | RESULTS, specs | RESULTS×1, specs×4 | — | 1 |
 | farm | farm_xterm.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | — |
 | farmer | farmer_probe.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — |
-| fb | fb_gate.py | results-cited | RESULTS, specs | RESULTS×7, specs×1 | — | 3 |
+| fb | fb_gate.py | results-cited | RESULTS, specs | RESULTS×7, specs×1 | — | 4 |
+| fb | fb_prune.py | UNCITED | — | — | — | — |
 | fig | fig_magic_scatter.py | spec-cited | specs | specs×1 | — | — |
 | fixed | fixed_q_snap.py | UNCITED | — | — | — | 1 |
 | floor | floor_hk1.sh | UNCITED | — | — | — | 1 |
@@ -622,7 +623,9 @@ Census: UNCITED 236, library 81, reproduce-pinned 10, results-cited 442, spec-ci
 | seed | seed_audit.py | spec-cited | specs | specs×2 | — | — |
 | seeds | seeds_ladder_0804.sh | UNCITED | — | — | — | — |
 | series | series_probe.py | spec-cited | specs | specs×5 | — | 15 |
-| sg | sg_target_audit.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
+| sg | sg_credit.py | library | — | — | 1 | 1 |
+| sg | sg_integrity_smoke.py | UNCITED | — | — | — | — |
+| sg | sg_target_audit.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
 | snap | snap_alloc.py | spec-cited | specs | specs×2 | — | 1 |
 | snap | snap_anatomy.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | softnext1 | softnext1_driver.sh | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
@@ -870,7 +873,7 @@ Census: UNCITED 236, library 81, reproduce-pinned 10, results-cited 442, spec-ci
 | train | train_dispatcher.py | UNCITED | — | — | — | — |
 | train | train_magic_estimator.py | library | RESULTS | RESULTS×1 | 7 | 1 |
 | train | train_magic_llm.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| train | train_mathnative.py | library | RESULTS, specs | RESULTS×5, specs×7 | 94 | 31 |
+| train | train_mathnative.py | library | RESULTS, specs | RESULTS×5, specs×7 | 95 | 31 |
 | train | train_nnue.py | library | specs | specs×8 | 1 | 12 |
 | train | train_proposer.py | spec-cited | specs | specs×5 | — | — |
 | train | train_syndrome_decoder.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
