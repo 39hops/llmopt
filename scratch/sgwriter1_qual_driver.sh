@@ -10,9 +10,11 @@
 llmopt_cd
 [ -z "$(git status --porcelain)" ] || { echo "driver: dirty tree"; git status --porcelain; exit 2; }
 mkdir -p logs/sgwriter1
+[ ! -e logs/sgwriter1/driver.log ] || { echo "driver: logs/sgwriter1/driver.log exists (a booked receipt path); refusing"; exit 2; }
+exec > >(tee logs/sgwriter1/driver.log) 2>&1     # the registered driver.log receipt: every line of this run
 rc=0
 echo "=== integrity smoke on the launch commit $(git rev-parse --short HEAD) $(date -u +%Y-%m-%dT%H:%M:%SZ) ==="
-.venv/bin/python scratch/sg_integrity_smoke.py 2>&1 | tee logs/sgwriter1/integrity_smoke_launch.log || rc=$?
+INTEG_TAG=_launch .venv/bin/python scratch/sg_integrity_smoke.py 2>&1 | tee logs/sgwriter1/integrity_smoke_launch.log || rc=$?
 [ "$rc" -eq 0 ] || { echo "driver: integrity smoke failed rc=$rc, no birth"; mark_done logs/sgwriter1q.DONE "$rc"; exit "$rc"; }
 run_gate() {
   .venv/bin/python scratch/sg_qualgate.py 2>&1 | tee -a logs/sgwriter1/gate.log || rc=$?

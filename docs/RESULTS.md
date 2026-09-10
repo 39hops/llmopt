@@ -70758,3 +70758,73 @@ family record 11 hits, 8 misses. A SEPARATE Artin GO fires the ladder
 under `.venv/bin/python scripts/liverun.py run sgwriter1q -- bash
 scratch/sgwriter1_qual_driver.sh`. No seed-27 birth, no seed-2
 discovery, no mechanism work is authorized by this entry.
+
+## AMENDMENT SYNTHETIC-GRADIENT-WRITER-1-SEAL-AUDIT-2 (target: AMENDMENT -SEAL-AUDIT L70631): second clean-tree re-audit (893dd61f) — one blocker folded: the registered receipt logs/sgwriter1/driver.log had no producer (liverun captures nothing; the driver now redirects its whole stdout / stderr through tee into it and refuses if the path exists); the launch integrity-smoke file carries the _launch suffix so a by-hand run at the same commit cannot collide with the refuse-if-exists guard; disclosures: the _seal2 re-smoke receipts were written on a dirty tree at cb2b441c (tree_dirty true in every row, derived), MLP-256 3e-4 was below its baseline at step 300 (3 of 4 cells above, not 4 of 4), the fold-run check (k) values are unreceipted (the 168 / 1024 count was independently recomputed by the auditor; all (a) to (k) values are re-receipted by the driver's launch rerun); tests 22 across four files; disk 25 GiB free; every science fold of -SEAL-AUDIT verified against code and receipts; NO seed-27 birth authorized (2026-09-10 local, Mac; SEALED, NOT LAUNCHED)
+
+Auditor (Opus 5, clean tree at 893dd61f): B-A blocker, five
+should-fixes, five notes; the sealed law, FOLD A, FOLD B and every
+fold of L70631 verified (credit mask reasoning confirmed for the
+driver's right-aligned padding: every ineligible position influences
+only ineligible logits, so delta^BP is exactly zero there; the
+step-1028 sg_log row will carry pred_mse and baseline_mse at the same
+pre-step W; the step-1 rows of all four re-smoke cells log pred_mse ==
+baseline_mse == 21.8735 exactly, the zero-output-layer identity).
+
+B-A. logs/sgwriter1/driver.log was registered as "the liverun stdout
+capture" but scripts/liverun.py captures nothing and the driver did
+not write it. Fold: scratch/sgwriter1_qual_driver.sh now refuses if
+the path exists and then redirects its whole stdout and stderr through
+tee into logs/sgwriter1/driver.log, so every line of the run
+(integrity smoke, births, gates, ladder decisions) lands in the
+receipt; the exec-tee pattern was verified on a three-line script
+(stdout, stderr and a caught non-zero rc all captured).
+
+S-E. The driver's integrity-smoke rerun writes
+logs/sgwriter1/integrity_smoke_<launch commit>_launch.jsonl
+(INTEG_TAG=_launch); a by-hand run at the same commit writes a
+different file, so the refuse-if-exists guard cannot brick the launch.
+A clean-tree run at 893dd61f (4/4 cases, (a) 0.0, (h) 3.9e-5 to
+5.5e-5, (i) 0.0 / 0.0 arena, (k) 168 ineligible) and a dirty-tree
+INTEG_TAG check (file name verified) were development runs, deleted;
+the launch file is the receipt.
+
+S-B (disclosed). The _seal2 re-smoke receipts
+(logs/sgwriter1/smoke_seal2.jsonl and its ladder / selection files)
+were produced on a dirty tree at cb2b441c with the folded code
+uncommitted; every row carries tree_dirty true and code_commit
+cb2b441c (derived). They are mechanics receipts of the folded law
+(credit mask, baseline logging, freeze verification on every path);
+the launch produces the registered receipts on a clean commit.
+
+S-C (corrected). Step-300 pred_mse v baseline_mse: LINEAR 3e-4 0.1232
+v 0.1122, LINEAR 3e-5 0.0438 v 0.0419, MLP-256 3e-5 0.0083 v 0.0081
+(above the zero predictor) and MLP-256 3e-4 0.04220 v 0.04242 (below,
+by 0.5 %); "the predictors have not yet beaten the zero predictor at
+300 steps" holds for three of the four cells; descriptive, mechanics
+only.
+
+S-D (disclosed). The (k) numbers quoted in L70631 came from a
+development run whose file was deleted; the count 168 / 1024
+ineligible positions of the 32-row probe chunk was recomputed
+independently by the auditor from the probe fixture; every (a) to (k)
+value is re-receipted by the launch rerun before any birth.
+
+S-F. docs/preregs/synthetic-gradient-writer-1.json names the
+launch-commit integrity file by pattern (receipts_by_pattern) since
+its name is the launch commit.
+
+N-G. Tests: 22 across tests/test_sg_credit.py (6),
+tests/test_sg_ladder_law.py (6), tests/test_sg_source_invariant.py (6),
+tests/test_sg_target_audit_reductions.py (4). N-H. Disk 25 GiB free
+(the _seal2 smoke checkpoints hold 1.1 GB; storage need 7.0 GB). N-I
+(noted, no action): the control smoke's final state digest is
+bit-identical across the two smoke runs on mps (7e334c20...), an
+instance of reproducibility the house law does not promise; no
+precondition depends on it. N-J / N-K (noted): stop_now fails open if
+ladder.json were missing (the gate always writes it); gate.log appends
+(absent at launch).
+
+Nothing else changes. A SEPARATE Artin GO fires the ladder under
+`.venv/bin/python scripts/liverun.py run sgwriter1q -- bash
+scratch/sgwriter1_qual_driver.sh`; no seed-27 birth, no seed-2
+discovery, no mechanism work is authorized by this entry.

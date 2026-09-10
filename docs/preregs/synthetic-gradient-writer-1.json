@@ -174,10 +174,12 @@
  "amended_by": [
   "AMENDMENT SYNTHETIC-GRADIENT-WRITER-1-ARENA",
   "AMENDMENT SYNTHETIC-GRADIENT-WRITER-1-SEAL",
-  "AMENDMENT SYNTHETIC-GRADIENT-WRITER-1-SEAL-AUDIT"
+  "AMENDMENT SYNTHETIC-GRADIENT-WRITER-1-SEAL-AUDIT",
+  "AMENDMENT SYNTHETIC-GRADIENT-WRITER-1-SEAL-AUDIT-2"
  ],
  "storage_note": "5 x 18 model files x 75.7 MB = 6.81 GB + predictor files (4 SG cells x 18 x 2.6 to 3.3 MB = 0.21 GB) = 7.0 GB decimal; the control has no predictors",
  "receipts_by_pattern": [
-  "logs/sgwriter1/integrity_smoke_<launch commit>.jsonl (named by the launch commit; force-added at booking)"
- ]
+  "logs/sgwriter1/integrity_smoke_<launch commit>_launch.jsonl (the driver's first step; force-added at booking)"
+ ],
+ "disk_free_gib_at_seal_audit_2": 25
 }

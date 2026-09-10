@@ -40,9 +40,10 @@ Asserted per (mode, family):
      position and so is the applied credit, while the credit is nonzero
      at eligible positions (predictors perturbed); the zero-predictor
      baseline MSE is recorded.
-Writes one row per case to logs/sgwriter1/integrity_smoke_<HEAD>.jsonl
+Writes one row per case to logs/sgwriter1/integrity_smoke_<HEAD><INTEG_TAG>.jsonl
 (refuses to overwrite; never a tracked path, so a rerun on the launch commit
-leaves the tree clean; the booking force-adds the launch-commit file). The
+leaves the tree clean; the driver passes INTEG_TAG=_launch so a by-hand run
+at the same commit cannot collide; the booking force-adds the launch file). The
 pre-seal receipts integrity_smoke.jsonl / integrity_smoke_seal.jsonl stay
 frozen.
 Usage: .venv/bin/python scratch/sg_integrity_smoke.py
@@ -272,7 +273,7 @@ def main():
     commit = subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip()
     if subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True).stdout.strip():
         commit += "-dirty"      # a development run; the launch-commit rerun is on a clean tree
-    OUT = Path(f"logs/sgwriter1/integrity_smoke_{commit}.jsonl")
+    OUT = Path(f"logs/sgwriter1/integrity_smoke_{commit}{os.environ.get('INTEG_TAG', '')}.jsonl")   # the driver passes INTEG_TAG=_launch
     OUT.parent.mkdir(parents=True, exist_ok=True)
     if OUT.exists():
         raise SystemExit(f"REFUSING: {OUT} exists")
