@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 238, library 81, reproduce-pinned 10, results-cited 432, spec-cited 89, cited-but-library 69
+Census: UNCITED 234, library 81, reproduce-pinned 10, results-cited 436, spec-cited 89, cited-but-library 69
 
 ## scratch/
 
@@ -46,11 +46,11 @@ Census: UNCITED 238, library 81, reproduce-pinned 10, results-cited 432, spec-ci
 | birth19m | birth19m_atoms_traj.py | results-cited | RESULTS | RESULTS×5 | — | 9 |
 | birth19m | birth19m_atoms_trajgate.py | results-cited | RESULTS | RESULTS×4 | — | 5 |
 | birth19m | birth19m_backsched.py | results-cited | RESULTS, specs | RESULTS×3, specs×2 | — | — |
-| birth19m | birth19m_caf.py | results-cited | RESULTS | RESULTS×1 | — | 4 |
+| birth19m | birth19m_caf.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 4 |
 | birth19m | birth19m_curric.py | library | RESULTS, specs | RESULTS×6, specs×1 | 24 | — |
 | birth19m | birth19m_curric_rev.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 1 |
 | birth19m | birth19m_curric_swap.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
-| birth19m | birth19m_dfa.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 9 |
+| birth19m | birth19m_dfa.py | results-cited | RESULTS, specs | RESULTS×4, specs×1 | — | 9 |
 | birth19m | birth19m_phase.py | results-cited | RESULTS, specs | RESULTS×4, specs×1 | — | 2 |
 | birth19m | birth19m_snaps.py | UNCITED | — | — | — | 1 |
 | birth19m | birth19m_softnext.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 1 |
@@ -63,8 +63,8 @@ Census: UNCITED 238, library 81, reproduce-pinned 10, results-cited 432, spec-ci
 | brute | brute_c_arm_0801.sh | UNCITED | — | — | — | — |
 | build | build_dist_diets.py | UNCITED | — | — | — | — |
 | build | build_merged_diet.py | UNCITED | — | — | — | — |
-| caf | caf_leakage_smoke.py | UNCITED | — | — | — | — |
-| caf | caf_qualgate.py | UNCITED | — | — | — | 1 |
+| caf | caf_leakage_smoke.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
+| caf | caf_qualgate.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 2 |
 | cal | cal_dilute.py | UNCITED | — | — | — | — |
 | cal | cal_dk_probe.py | UNCITED | — | — | — | 1 |
 | calib | calib_dist_birth.sh | spec-cited | specs | specs×4 | — | 1 |
@@ -109,12 +109,12 @@ Census: UNCITED 238, library 81, reproduce-pinned 10, results-cited 432, spec-ci
 | determinability | determinability_census.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | dfa | dfa_act.py | library | RESULTS, specs | RESULTS×3, specs×1 | 1 | 2 |
 | dfa | dfa_align.py | library | RESULTS, specs | RESULTS×2, specs×1 | 1 | 3 |
-| dfa | dfa_credit.py | library | RESULTS, specs | RESULTS×1, specs×2 | 9 | 1 |
+| dfa | dfa_credit.py | library | RESULTS, specs | RESULTS×2, specs×3 | 9 | 1 |
 | dfa | dfa_depthclass.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 2 |
 | dfa | dfa_leakage_smoke.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 1 |
 | dfa | dfa_postmortem.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 1 |
 | dfa | dfa_probe.py | library | RESULTS, specs | RESULTS×1, specs×1 | 5 | 1 |
-| dfa | dfa_prune.py | UNCITED | — | — | — | — |
+| dfa | dfa_prune.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | dfa | dfa_qualgate.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 2 |
 | dfa | dfa_trajcensus.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 2 |
 | dfa | dfa_verify.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 1 |
@@ -681,7 +681,7 @@ Census: UNCITED 238, library 81, reproduce-pinned 10, results-cited 432, spec-ci
 | vrm | vrm_ab.py | UNCITED | — | — | — | 1 |
 | weight | weight_fft_euler.py | UNCITED | — | — | — | — |
 | wfloor | wfloor_ladder.sh | results-cited | RESULTS | RESULTS×1 | — | — |
-| writercaf1 | writercaf1_qual_driver.sh | UNCITED | — | — | — | — |
+| writercaf1 | writercaf1_qual_driver.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | writercaf1 | writercaf1_smoke.sh | UNCITED | — | — | — | — |
 | writerdfa1 | writerdfa1_disc_driver.sh | UNCITED | — | — | — | — |
 | writerdfa1 | writerdfa1_post_driver.sh | UNCITED | — | — | — | — |

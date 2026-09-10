@@ -1636,6 +1636,11 @@ Build the rung-3 paired diets (spec 2026-07-28, 3-arm design).
 Build data/merged_diet.jsonl (schedule-law queue item 1): gen-6 cumulative corpus (v22 + l8 + gen4 sidecar) + the L9a shard, with L1-L3 rationed to 45% (the gen-7 lesson). Stable string seed.
 
 
+### scratch/caf_actpost.py
+DFA-LOWER-HARM-DESK-0, part 2: the frozen ACT observable (entropy H_l and effective rank r_l, scratch/dfa_act.py act_vector) on the nine seed-23 frontier arms at six snapshots (0, 463, 1028, 3084, 8224, 15420), and the sealed alignment A_l / magnitude ratio Q_l (scratch/dfa_align.py align_snapshot) on the three lr 3e-4 hybrids at the same snapshots, defined only for the DFA blocks 0..7-k (the BP segment's entries are reported as null). Emphasis: the DFA -> BP boundary, i.e. r at the output of block 7-k (the BP segment's input) and at the output of block 8-k. Zero training, CPU float64, frozen 256-row probe. Rows stream to logs/dfaharm0/act_rows.jsonl, tables to logs/dfaharm0/actpost.json (refuses to overwrite). SMOKE=1: smoke hybrid k = 2 and zero k = 2 arms, steps 0 and 300, 2 probe chunks, receipt logs/dfaharm0/smoke.jsonl.
+
+- `main()`
+
 ### scratch/caf_leakage_smoke.py
 CREDIT-ANCHOR-FRONTIER-1 writer-integrity smoke (AMENDMENT -PRECISION L69223 F1 / F2 / F3-freeze), on the WRITER-DFA-1 deterministic CPU float32 fixture (torch.manual_seed(11) W_0; the first four probe rows for the objective checks; the first stock batch of epoch 0 for the one-step driver comparisons). Frozen tolerance TOL = 1e-7 (max abs diff); bit-exact (torch.equal) where the paths execute the same ops. Any failure is an implementation BLOCKER. Writes logs/writercaf1/leakage.json (refuses to overwrite), exit 1 on any failure.
 
@@ -1946,6 +1951,14 @@ WRITER-DFA-1 credit machinery (PRE-REG RESULTS L68321, sealed by AMENDMENT -SEAL
 ### scratch/dfa_depthclass.py
 WRITER-DFA-1 depth x module-class census (PRE-REG L68321 item 6 (viii), B2 of L68543, P4 of L68644: MANDATORY conditional on FUNCTION-BAND pass). For the DFA and the control specimen: the 8 x 5 table D_{l,c} = gate(full) - gate(blocks.{l}.{c}.weight reverted to W_0) over c in {qkv, o, gate, up, down}, 40 gates per specimen, 80 gates, rows appended to logs/writerdfa1/gates.jsonl (op=revert_cell), the table to logs/writerdfa1/depthclass.json (refuses to overwrite). Descriptive: no cell bar, no cell selection. Requires depend.json with band_pass.
 
+- `main()`
+
+### scratch/dfa_harm_desk.py
+DFA-LOWER-HARM-DESK-0 transplants (zero training). For each k in {1, 2, 4} on the CREDIT-ANCHOR-FRONTIER-1 seed-23 specimens (VERDICT RESULTS L69409): H = the lr 3e-4 hybrid final (blocks 0..7-k DFA-trained, top k + norm / head BP; gate 0), Z = the same-seed zero-credit control final (emb + blocks 0..7-k frozen at W_0, top k + norm / head BP; gate 28 / 55 / 62), W_0 = the shared seed-23 init (step_00000.pt, digest-checked on both arms). Exact boundary partition of the frontier: LOWER = emb.weight + every tensor of blocks 0..7-k; TOP = blocks 8-k..7 + norm.g + head.weight.   T1  ZERO-TOP <- HYBRID-LOWER : TOP from Z, LOWER from H   T2  HYBRID-TOP <- W0-LOWER   : TOP from H, LOWER from W_0 (= Z's lower, asserted) Each transplant is gated once with llmopt.lab.gate.gate_eval on mps (the standard 120). Endpoints (H full = 0, Z full = 28 / 55 / 62) are fixed observations from qual.jsonl and are not re-gated. Readings registered: COLLAPSE iff T1 gate < 24; RESCUE iff T2 gate > 0. Rows stream to logs/dfaharm0/gates.jsonl, table to logs/dfaharm0/harm.json (refuses to overwrite). SMOKE=1: the seed-11 smoke arms (hybrid k = 2 and zero k = 2, 300 steps) at the 8-prompt proxy tier, receipts logs/dfaharm0/smoke.jsonl.
+
+- `load(p)`
+- `lower_keys(k)`
+- `transplant(top_sd, lower_sd, k)`
 - `main()`
 
 ### scratch/dfa_leakage_smoke.py

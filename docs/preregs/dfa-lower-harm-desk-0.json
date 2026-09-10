@@ -1,0 +1,47 @@
+{
+ "name": "DFA-LOWER-HARM-DESK-0",
+ "note": "Machine-readable form of PRE-REG DFA-LOWER-HARM-DESK-0; the prose governs. Zero training, descriptive readings, no bars.",
+ "registered": "2026-09-09 (Mac local)",
+ "machine": "mac",
+ "specimens": "CREDIT-ANCHOR-FRONTIER-1 seed-23 arms: per k in {1,2,4} the lr 3e-4 hybrid final and the zero-credit control final; W_0 = step_00000.pt",
+ "partition": "LOWER = emb.weight + blocks 0..7-k (all tensors); TOP = blocks 8-k..7 + norm.g + head.weight",
+ "transplants": {
+  "T1": "ZERO-TOP <- HYBRID-LOWER",
+  "T2": "HYBRID-TOP <- W0-LOWER"
+ },
+ "endpoints_fixed": {
+  "hybrid_full": 0,
+  "zero_full": {
+   "k1": 28,
+   "k2": 55,
+   "k4": 62
+  }
+ },
+ "readings": {
+  "COLLAPSE": "gate(T1) < 24",
+  "RESCUE": "gate(T2) > 0"
+ },
+ "trajectory": "ACT (H_l, r_l) on all nine arms at steps 0, 463, 1028, 3084, 8224, 15420; boundary rank at block 7-k output and block 8-k output; alignment A/Q on the lr 3e-4 hybrids' DFA blocks only",
+ "expectations_unscored": {
+  "COLLAPSE_each_k": 0.85,
+  "RESCUE_k4": 0.6,
+  "RESCUE_k2": 0.45,
+  "RESCUE_k1": 0.3,
+  "hybrid_boundary_rank": "< 3 from step 463",
+  "A": "|A| < 0.05"
+ },
+ "bars": [],
+ "receipts": [
+  "logs/dfaharm0/gates.jsonl",
+  "logs/dfaharm0/harm.json",
+  "logs/dfaharm0/act_rows.jsonl",
+  "logs/dfaharm0/actpost.json",
+  "logs/dfaharm0/smoke.jsonl",
+  "logs/liverun/dfaharm0.jsonl"
+ ],
+ "does_not_revise": [
+  "VERDICT CREDIT-ANCHOR-FRONTIER-1 (L69409)",
+  "VERDICT WRITER-DFA-1 (L68802)"
+ ],
+ "results_id": "2026-09-09-pre-reg-dfa-lower-harm-desk"
+}

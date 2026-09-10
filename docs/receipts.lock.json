@@ -288,6 +288,29 @@
    "source": "results",
    "tracked": true
   },
+  "logs/dfaharm0/act_rows.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/dfaharm0/actpost.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/dfaharm0/gates.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/dfaharm0/harm.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/dfaharm0/smoke.jsonl": {
+   "bytes": 7189,
+   "exists": true,
+   "sha256": "daa37e8b846c36bad88b125ab190c00745950060f7012290cd09fe42e35ccee3",
+   "source": "results",
+   "tracked": true
+  },
   "logs/dfapost/postmortem.json": {
    "bytes": 257413,
    "exists": true,
@@ -966,6 +989,10 @@
    "sha256": "b173a11a2280024c5190fd7b265f90aa603b4792f396cf6b1e5cb42de8130888",
    "source": "results",
    "tracked": true
+  },
+  "logs/liverun/dfaharm0.jsonl": {
+   "exists": false,
+   "source": "prereg"
   },
   "logs/liverun/dfapost0.jsonl": {
    "bytes": 518,

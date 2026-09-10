@@ -69538,3 +69538,65 @@ registration and enter no bar; gate 0 / 120 at 0.0% validity is a floor
 reading; the 28 / 55 / 62 readings are single-seed; nothing here
 amends L68802, L69008 or the frontier pre-reg's thresholds; no seed-2
 work was done.
+
+## PRE-REG DFA-LOWER-HARM-DESK-0: zero-training autopsy of the CREDIT-ANCHOR-FRONTIER-1 specimens — two same-init transplants per k (ZERO-TOP <- HYBRID-LOWER; HYBRID-TOP <- W0-LOWER) gated once each against the fixed endpoints (hybrid 0; zero control 28 / 55 / 62), with the frozen ACT / effective-rank trajectory on all nine seed-23 arms and the sealed alignment on the hybrid DFA blocks, emphasis on the DFA -> BP boundary; readings registered before any gate is read; rank collapse stays a hypothesis unless the intervention supports it (2026-09-09 local, Mac; CPU + mps gates, no training)
+
+Artin direction 2026-09-09 (evening): the foreign-writer program is NOT
+parked; DFA-family births stay CLOSED as booked (L69409); synthetic
+gradients / DNI remains the next training writer, not armed; this desk
+first. No training birth is authorized.
+
+Specimens (checkpoints/writercaf1/, VERDICT L69409, all seed 23, shared
+W_0 digest 02eb3019... asserted on every arm from step_00000.pt): for
+each k in {1, 2, 4}, H_k = the lr 3e-4 hybrid final (blocks 0..7-k
+DFA-trained under the B_l law, top k blocks + norm + head by backprop;
+gate 0) and Z_k = the same-seed zero-credit control final (emb + blocks
+0..7-k frozen at W_0, top k + norm + head by backprop; gate 28 / 55 /
+62). Boundary partition exactly as the frontier: LOWER = emb.weight and
+all seven tensors of each of blocks 0..7-k; TOP = blocks 8-k..7, norm.g,
+head.weight. The instrument asserts Z_k's LOWER equals W_0 tensor for
+tensor and H_k's does not.
+
+Transplants (scratch/dfa_harm_desk.py; one 120-gate each on mps, six
+gates, rows to logs/dfaharm0/gates.jsonl, table logs/dfaharm0/harm.json):
+  T1_k  ZERO-TOP <- HYBRID-LOWER: TOP from Z_k, LOWER from H_k.
+  T2_k  HYBRID-TOP <- W0-LOWER:   TOP from H_k, LOWER from W_0.
+The endpoints H_k full = 0 and Z_k full = 28 / 55 / 62 are fixed
+observations (qual.jsonl) and are not re-gated. Readings, registered:
+COLLAPSE_k iff gate(T1_k) < 24 (the floor Z_k cleared); RESCUE_k iff
+gate(T2_k) > 0. Interpretation, registered (Artin): T1 collapse = the
+DFA-mutated lower package is sufficient to destroy a top segment that
+solves on W_0 features; T2 rescue = restoring the lower representation is
+sufficient to recover some function; any other combination is booked
+descriptively with no post-hoc mechanism claim. No bar; single seed;
+the transplant gates are read against the fixed endpoints only.
+
+Trajectory (scratch/caf_actpost.py, CPU float64, frozen probe, rows to
+logs/dfaharm0/act_rows.jsonl, table logs/dfaharm0/actpost.json): the
+frozen ACT vector (H_l, r_l; P3 / S10 law) on all nine arms (six hybrids,
+three zero controls) at steps 0, 463, 1,028, 3,084, 8,224, 15,420; the
+boundary readout r at the output of block 7-k (the BP segment's input)
+and of block 8-k; the ACT distance hybrid (3e-4) v zero at matched k and
+step; the sealed alignment A_l and ratio Q_l (P2 law) on the three lr
+3e-4 hybrids for the DFA blocks 0..7-k only (the BP segment's entries
+are null by definition). Descriptive; no threshold.
+
+Registered expectations (unscored, on the record): COLLAPSE at every k
+(p 0.85 each); RESCUE at k = 4 (p 0.6), at k = 2 (p 0.45), at k = 1 (p
+0.3); r at the boundary input of every hybrid near 1 (< 3) from step
+463 on, r at the zero controls' boundary input equal to W_0's (frozen
+lower stack, same probe); A on the hybrid DFA blocks below 0.05 in
+magnitude everywhere. Rank collapse becomes a supported reading only if
+T1 collapses AND the hybrid boundary rank is near 1 while the zero
+control's is not; otherwise it stays a hypothesis.
+
+Instrument smoked on the seed-11 smoke arms (hybrid k = 2, zero k = 2;
+8-prompt proxy tier, 2 probe chunks; logs/dfaharm0/smoke.jsonl). Run
+under the liverun interlock (dfaharm0; receipt logs/liverun/dfaharm0.jsonl);
+cost about 6 gates x 75 s plus 54 ACT and 18 alignment evaluations on
+CPU, about 2 h. After booking: prune checkpoints/writercaf1/ to the
+finals and step_00463 of the three zero controls and the three lr 3e-4
+hybrids, one canonical W_0 (step_00000.pt of qual_hybrid_k1), the
+feedback artifacts, all receipts (digest inventory first, as L69223 F5);
+retain the 868 MB WRITER-DFA-1 keep set. Nothing here authorizes a
+training birth.
