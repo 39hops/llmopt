@@ -1,0 +1,43 @@
+{
+ "name": "SG-PREDICTOR-AUDIT-0",
+ "note": "Machine-readable form of PRE-REG SG-PREDICTOR-AUDIT-0 (zero-main-model-training audit; the prose governs). No SG birth authorized.",
+ "registered": "2026-09-10 (Mac local)",
+ "machine": "mac",
+ "status": "sealed; Artin GO 2026-09-10 for the audit only",
+ "states": {
+  "arms": ["FULL", "FROZEN"],
+  "seeds": [24, 25, 26],
+  "snapshots": ["step_00463", "final"],
+  "blocks_inspected": {"FULL": [0, 1, 2, 3, 4, 5, 6, 7], "FROZEN": [4, 5, 6, 7]},
+  "digest_assertion": "each state digest asserted against logs/frozenbb1/births.jsonl before it is read",
+  "not_read": ["step_00000 anchors", "any DFA / frontier checkpoint"]
+ },
+ "probe": {"source": "logs/writerdfa1/probe.json", "rows": 256, "chunk_rows": 32, "dtype": "float64", "device": "cpu",
+           "masking": "label positions only (labels != -100); mean CE over eligible tokens of a 32-row chunk"},
+ "reductions": ["rms", "fro", "token_norm_q01_q10_q50_q90_q99", "token_norm_min_max", "dynamic_range_log10", "zero_elements", "zero_token_norms", "nonfinite_elements"],
+ "quantities": ["delta_bp per inspected block", "h per inspected block", "rms_ratio_delta_over_h", "e = dL/dlogits per state", "probe_loss_mean_chunk", "n_eligible"],
+ "constant_rule": "s_l = geometric mean of RMS_l(delta_bp) over the six FROZEN states for l in 4..7 (arena) and over the six FULL states for l in 0..7 (full stack); booked regardless of the trigger",
+ "trigger": {"normalization_adopted_iff": "any FROZEN state with RMS_l(delta) < 1e-3 for some l in 4..7, OR any arena block with per-token-norm dynamic range > 4 decades", "value_rms": 0.001, "value_decades": 4},
+ "health": "HEALTHY iff nonfinite_elements == 0 and zero_token_norms == 0 on every inspected block of every state",
+ "bars": [],
+ "not_adjudicated": ["magnitudes", "gate", "predictor capacity (LINEAR v MLP-256)", "mechanism"],
+ "registered_prior": {
+  "healthy": 0.9,
+  "trigger_fires": 0.95,
+  "dynamic_range_decades_final": "2 to 4",
+  "rms_463_over_final": "1.5x to 5x",
+  "within_state_block_spread": "< 2x",
+  "frozen_v_full_constants": "within 2x at blocks 4..7"
+ },
+ "cost_min": "10 to 20",
+ "liverun_ids": ["sgaudit0"],
+ "receipts": [
+  "logs/sgaudit0/audit.json",
+  "logs/sgaudit0/audit.jsonl",
+  "logs/sgaudit0/smoke.jsonl",
+  "logs/sgaudit0/audit.log",
+  "logs/liverun/sgaudit0.jsonl"
+ ],
+ "instrument": ["scratch/sg_target_audit.py", "tests/test_sg_target_audit_reductions.py"],
+ "does_not_revise": ["VERDICT FROZEN-BACKBONE-1 (L70024)", "PRE-REG SYNTHETIC-GRADIENT-WRITER-1 (L69765) beyond AMENDMENT -ARENA"]
+}

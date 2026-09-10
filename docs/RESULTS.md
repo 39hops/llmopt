@@ -70122,3 +70122,178 @@ cleanest first synthetic-gradient comparison is BP v SG on the top
 four trainable blocks over this same frozen lower backbone; the
 full-stack SG design (L69765) stays on file; nothing here authorizes
 SG training.
+
+## AMENDMENT SYNTHETIC-GRADIENT-WRITER-1-ARENA (target: PRE-REG SYNTHETIC-GRADIENT-WRITER-1 DESIGN L69765): Artin direction 2026-09-10 folded — the TOP-FOUR-OVER-FROZEN-BACKBONE arena is the first SG QUALIFICATION arena (blocks 4..7 receive SG credit; emb + blocks 0..3 stay at W_0; qualifies the credit law / predictor recipe on blocks 4..7 only, never full-stack SG); function comparator = the paired same-W_0 BP-top-over-frozen control at seed 27 with the house band c - 7 <= g_SG <= c + 7 and an adequate-control clause; the runtime running-mean target-scaling fallback is REMOVED (fixed preregistered per-block constants only, credit applied in delta^BP units); teacher-gradient integrity to be resolved by a parameter-detached teacher pass or the law weakened before sealing; LINEAR / MLP-256 stay the prospective capacity rungs; checkpoint retention / prune policy; no SG birth authorized (2026-09-10 local, Mac; DESIGN, NOT SEALED)
+
+Artin direction 2026-09-10 09:45 EDT, folded verbatim in substance:
+
+1. QUALIFICATION INTERPRETATION. The top-four frozen-backbone
+experiment qualifies the SG credit law and predictor recipe on blocks
+4..7. It does NOT qualify or establish full-stack SG. Bottom four
+blocks + embedding remain frozen at W_0 (the FROZEN-BACKBONE-1 law:
+emb.weight and the 28 tensors of blocks 0..3 requires_grad False,
+excluded from every optimizer, re-verified bit-identical at the end of
+the birth). Blocks 4..7 receive SG credit only. Norm / head treatment
+remains as registered in L69765 (true CE gradient through head and
+final norm with x_8 detached). If this arena succeeds, the selected SG
+predictor family, predictor LR, target / loss normalization and every
+writer-law detail are FROZEN before any full-stack run. Full-stack
+seed-2 SG remains the actual full-stack discovery / accessibility
+test; no tuning from its outcome.
+
+2. FUNCTION COMPARATOR. The historical FROZEN gates 59 to 63
+(VERDICT FROZEN-BACKBONE-1 L70024) are NOT the literal SG matching
+band; they are contextual control-sanity evidence only. At
+qualification seed 27 the paired same-W_0 BP-top-over-frozen control
+(MODE=zero K_BP=4 under the FROZEN-BACKBONE-1 driver law) is born
+first and its gate defines c. SG function match: c - 7 <= g_SG <= c +
+7 (the house same-init band). ADEQUATE-CONTROL clause: the seed-27
+frozen-BP control must finish finite and gate >= 24; otherwise the
+arena books NOT-RESOLVABLE-CONTROL and no SG cell is adjudicated.
+
+3. ZERO-MAIN-MODEL-TRAINING PREDICTOR AUDIT: PRE-REG
+SG-PREDICTOR-AUDIT-0 (next entry) registers the exact states, probe,
+reductions and outputs before any retained frozenbb1 checkpoint is
+read. Downstream task-gate outcomes are never used to choose LINEAR v
+MLP-256; predictor capacity stays prospective for qualification.
+
+4. TARGET SCALE. The registered fallback "per-token target scaling by
+a running mean of ||delta^BP||" (L69765 section 4) is REMOVED from the
+design. The synthetic credit applied to a block stays in delta^BP
+units. If the audit's registered trigger fires, the predictor
+regresses a normalized target delta^BP_l / s_l with FIXED
+preregistered per-block constants s_l (derived by the audit's
+registered rule, booked in its observation) and hat_delta_l = s_l *
+G_phi_l(.) is de-normalized deterministically before it is applied;
+otherwise the raw target is regressed. No runtime adaptive gain
+without a separate future design.
+
+5. TEACHER-GRADIENT INTEGRITY. The graph-reachability ambiguity of
+L69765 section 3 is resolved before sealing. Preferred implementation:
+the true hidden-error targets come from a TEACHER PASS whose model
+parameter views are detached / frozen constants (functional_call on
+detached parameter tensors) while activation differentiation stays
+enabled, reproducing the writer-state forward values at the same
+pre-update state and permitting delta^BP_l = dL/dx_{l+1} at every
+required block output. The integrity smoke then asserts mechanically:
+(a) teacher forward logits agree with the writer-state forward under
+the registered tolerance (fp32 atol 1e-6 relative to logit scale,
+recorded); (b) the true teacher loss cannot accumulate
+block-parameter gradients (autograd.grad over block parameters raises
+/ returns None; .grad stays None after the teacher backward); (c) the
+predictor regression loss reaches predictor parameters only; (d)
+block parameters receive model-step gradients solely from the
+detached synthetic-gradient surrogate (bit-exact equality against a
+run in which the teacher pass is replaced by the same hat_delta
+values loaded as constants); (e) head / norm receive their registered
+true CE gradients only; (f) the hat_delta used for the current model
+update was produced before that step's predictor optimizer update;
+(g) skipping the predictor update after hat_delta production leaves
+the current block gradient bit-identical. If a parameter-detached
+teacher pass is NOT used, the integrity law is amended BEFORE sealing
+to the weaker but correct statement that true-gradient targets are
+computed through the model but true gradients are never accumulated
+or applied to block parameters; structural graph isolation is never
+claimed unless implemented.
+
+6. PREDICTOR FAMILY. LINEAR and MLP-256 stay the prospective capacity
+rungs unless the audit reveals a numerical impossibility (not a
+better descriptive fit). The ladder is a minimal-sufficient ORDERED
+ladder (LINEAR before MLP-256; the objective is the simplest foreign
+writer that attains matched function, not the highest gate); exact
+predictor-LR ordering and the stopping / selection law are frozen in
+the sealing amendment before seed 27.
+
+7. CHECKPOINTS. All 8.17 GB of checkpoints/frozenbb1/ are retained
+through SG-PREDICTOR-AUDIT-0 and its booking / verification. After
+the audit is booked and receipt / digest-complete, prune to: one W_0
+(step_00000) anchor per seed, step_00463 + final for every FULL /
+FROZEN arm, all receipts / digests (a digest inventory written first,
+as for the frontier prune).
+
+STATUS: the sealing amendment (constants, LR ordering, selection law,
+integrity smoke receipts) follows the audit's booking; prereg-auditor
+and a separate Artin GO precede any SG birth. No SG training is
+authorized by this entry.
+
+## PRE-REG SG-PREDICTOR-AUDIT-0: zero-main-model-training audit of the true backprop hidden-error targets delta^BP_l = dL/dx_{l+1} on the twelve retained FROZEN-BACKBONE-1 states (FULL and FROZEN, seeds 24 / 25 / 26, step_00463 and final; FULL blocks 0..7, FROZEN blocks 4..7) — per block RMS / norm / per-token-norm quantiles / dynamic range / exact-zero and nonfinite counts of delta^BP, of the block output h and of the output error e; registered normalization-constant rule and trigger; descriptive, no gate read, no capacity choice (2026-09-10 local, Mac; instrument committed and smoked before any retained checkpoint is read; liverun sgaudit0)
+
+Artin GO 2026-09-10 (zero-main-model-training audit only, subject to
+this pre-registration; no SG birth authorized).
+
+Purpose: determine whether raw true-gradient targets are numerically
+healthy for an L2 predictor regression, and if the registered trigger
+fires, book FIXED per-block normalization constants that transport to
+the seed-27 qualification (blocks 4..7 over the frozen backbone) and
+to full-stack discovery (blocks 0..7). Healthy BP-like states only,
+per Artin: never the rank-collapsed DFA fixture.
+
+States (12, exact): checkpoints/frozenbb1/fb_{full,frozen}_s{24,25,26}_
+lr0.0003/{step_00463,final}.pt, each digest asserted against its
+births.jsonl receipt before it is read. FULL states: blocks 0..7
+inspected (delta^BP at x_1 .. x_8). FROZEN states: blocks 4..7
+inspected (x_5 .. x_8; blocks 0..3 sit at W_0 and receive no credit in
+the arena). No other checkpoint is opened (W_0 anchors are not read).
+
+Probe and grain: the frozen WRITER-DFA-1 probe (logs/writerdfa1/
+probe.json; 256 rows, token digest asserted), 32-row chunks = the
+training batch grain, so the mean-CE loss and hence delta^BP carry
+exactly the per-token scale a training step sees; float64 on CPU;
+label positions only (labels != -100; the masking convention of
+dfa_align.align_snapshot and the sealed alignment desk). Instrument:
+scratch/sg_target_audit.py (attached forward, torch.autograd.grad of
+the mean CE over the inspected block outputs and the logits;
+tests/test_sg_target_audit_reductions.py pins the reductions and the
+constant rule); smoked on the two frozenbb1_smoke finals (2 chunks;
+logs/sgaudit0/smoke.jsonl) before this entry was committed.
+
+Reductions, per state and inspected block l, over all eligible tokens
+(about 15.8k per state): for delta^BP_{l,t} in R^384: element RMS,
+Frobenius norm, per-token-norm quantiles q01 / q10 / q50 / q90 / q99,
+min, max, dynamic range log10(q99 / q01), exact-zero element count,
+exact-zero per-token-norm count, nonfinite element count; the same
+for the block output h_{l+1,t}; the ratio RMS(delta) / RMS(h). Per
+state: the same reductions of e_t = dL/dlogits in R^40, the probe loss
+(mean over 8 chunks), n_eligible, state digest.
+
+REGISTERED CONSTANT RULE: s_l = geometric mean of RMS_l(delta^BP) over
+the six FROZEN states for l in 4..7 (arena constants) and over the six
+FULL states for l in 0..7 (full-stack constants); booked regardless of
+the trigger. REGISTERED TRIGGER (normalization ADOPTED by the sealing
+amendment iff it fires on the arena states): any FROZEN state with
+RMS_l(delta) < 1e-3 for some l in 4..7, OR any arena block with
+per-token-norm dynamic range above 4 decades. NUMERICAL-HEALTH
+readout, descriptive: HEALTHY iff nonfinite count 0 and exact-zero
+per-token-norm count 0 on every inspected block of every state;
+otherwise the offending states / blocks are listed and the sealing
+amendment must address them (a nonfinite target is a design-stopping
+finding; an exact-zero token is a masking finding).
+
+NOT adjudicated here: no bar on the magnitudes; no gate is read; no
+predictor is trained; LINEAR v MLP-256 is not chosen (fold 3 of the
+ARENA amendment); no mechanism reading.
+
+REGISTERED PRIOR (descriptive, scored on direction): nonfinite 0 and
+exact-zero token norms 0 everywhere (p 0.9); the trigger FIRES (p
+0.95: mean-CE over about 2k eligible tokens per chunk puts element
+RMS near 1e-5, as the smoke's 300-step states showed at 1.1e-5 to
+1.6e-5; the trigger's 1e-3 is three decades above); per-token-norm
+dynamic range 2 to 4 decades on the final states (confident tokens
+carry small e_t); RMS(delta) at step_00463 above the final's by 1.5x
+to 5x; within a state, RMS(delta) varies across blocks by less than
+2x; RMS(h) grows toward the head (pre-norm residual stream); FROZEN
+arena constants within 2x of the FULL constants at the same blocks.
+
+Cost: 12 states x 8 chunks, fp64 CPU forward + one grad each: about
+10 to 20 min, one liverun process (sgaudit0). Outputs:
+logs/sgaudit0/audit.json (refuses to overwrite) + logs/sgaudit0/
+audit.jsonl (summary row), receipts logs/liverun/sgaudit0.jsonl,
+logs/sgaudit0/smoke.jsonl, logs/sgaudit0/audit.log; force-added and
+locked at booking. Booking: OBSERVATION SG-PREDICTOR-AUDIT-0 with the
+constants table, the trigger and health readouts, the prior scored;
+then the SG sealing amendment. Fences: descriptive; probe-scoped (256
+rows); the CE grain is the 32-row chunk (constants are per-32-row-
+batch quantities and transport only to a BS-32 mean-CE writer); fp64
+CPU numbers are the reference, the fp32 mps training values differ by
+rounding only; nothing here revises L70024 or L69765 beyond the ARENA
+amendment.

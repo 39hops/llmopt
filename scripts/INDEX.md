@@ -5260,6 +5260,17 @@ Series rung 1 probe: greedy next-partial-sum emission on the 142 held-out steps 
 - `_equiv(q, pred, gold)`
 - `equiv(pred, gold, deadline=10)`
 
+### scratch/sg_target_audit.py
+SG-PREDICTOR-AUDIT-0: zero-main-model-training audit of the true backprop hidden-error targets delta^BP_l = dL/dx_{l+1} on the retained FROZEN-BACKBONE-1 states (PRE-REG SG-PREDICTOR-AUDIT-0). Nothing trains; no gate is read; predictor capacity is not chosen here.
+
+- `arena_blocks(arm)`
+- `forward_with_hidden(model, ids, mask)` — Attached forward returning (outs, logits): outs[l] = x_{l+1}.
+- `reduce_vectors(v)` — v: (N, D) float64, one row per eligible token. Returns the registered
+- `audit_state(sd, tok, rows, blocks, n_chunks=None)`
+- `geo_mean(xs)`
+- `constants(states)` — Registered rule: s_l = geometric mean of RMS_l(delta) over the FROZEN
+- `main()`
+
 ### scratch/snap_alloc.py
 Snap allocation (pre-reg 2026-07-29: attention anatomy 1c). Rational snap at Q=16 (below the (16,24] knee) applied to attention-only v gate-only v both, on the d56 EMA crystal. Allocation-of-accuracy read for the bits-portfolio riff. Desk only, MPS.
 
