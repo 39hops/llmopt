@@ -70421,3 +70421,209 @@ logs/liverun/sgaudit0.jsonl. Checkpoint disposition per AMENDMENT
 checkpoints/frozenbb1/ is pruned to step_00000 (W_0 anchor) +
 step_00463 + final per arm with a digest inventory written first
 (logs/frozenbb1/prune_inventory.json).
+
+## AMENDMENT SYNTHETIC-GRADIENT-WRITER-1-SEAL (target: PRE-REG SYNTHETIC-GRADIENT-WRITER-1 L69765 + AMENDMENT -ARENA L70126): the qualification is SEALED — top-four-over-frozen-backbone arena at seed 27, paired frozen-BP control c with ADEQUATE-CONTROL c >= 24, same-W_0 band c - 7 <= g <= c + 7, ordered minimal-sufficient ladder LINEAR 3e-4 / LINEAR 3e-5 / MLP-256 3e-4 / MLP-256 3e-5 with FIRST FUNCTION-MATCH stopping and freezing the recipe, alignment descriptive only; FOLD A (same-pre-update teacher order, nine frozen step semantics, mechanically smoked) and FOLD B (elementwise normalized MSE over label positions and hidden dimensions, mean over blocks); instrument implemented, unit-tested, smoked at 300 steps on all five cell shapes; integrity checks (a) to (j) pass 4/4 with bit-exact endpoints; NO seed-27 birth authorized (2026-09-10 local, Mac; SEALED, NOT LAUNCHED)
+
+Artin GO 2026-09-10 13:08 EDT: finalize SEAL + IMPLEMENT + TEST + SMOKE
+only; no seed-27 qualification birth, no seed-2 full-stack discovery,
+no mechanism work under this GO. Kept verbatim: the arena, the seed-27
+paired frozen-BP control, the band c +- 7, the adequate control c >=
+24, the ordered ladder, FIRST FUNCTION-MATCH stops and freezes the
+recipe, alignment descriptive only.
+
+FOLD A, SAME-PRE-UPDATE TEACHER ORDER (sealed step semantics). The
+target that trains phi_t is delta^BP evaluated at the SAME W_t that
+produced h_t, e_t and hat_delta_t: 1. writer forward at W_t; 2.
+hat_delta_t from phi_t; 3. parameter-detached teacher pass at W_t,
+delta^BP_t CACHED; 4. model synthetic-credit objective backward; 5.
+predictor regression against the cached delta^BP_t, backward; 6. clip
+model and predictor gradients separately (1.0 each); 7. model
+optimizer step; 8. predictor optimizer step; 9. schedulers. Both
+parameter-gradient sets derive from the pre-update pair (W_t, phi_t);
+no teacher target is computed after W has moved. Implementation:
+scratch/sg_credit.py sg_step_terms (steps 1 to 3, the target cached in
+the returned terms) and run_sg_step (steps 4 to 9). Mechanical smoke
+(scratch/sg_integrity_smoke.py check h): a teacher target is computed
+at W_t before a deliberately nonzero model step and again at W_{t+1}
+after it; the fixture changes (max |T_post - T_pre| 3.7e-5 to 5.3e-5
+across the four cases) and the cached target used by the registered
+step equals the PRE-step target bit-exactly and differs from the
+post-step target: PASS in all four cases.
+
+FOLD B, TRUE NORMALIZED MSE REDUCTION. The booked s_l are element-RMS
+scales (L70301), so the predictor regression is the elementwise MSE:
+per SG block L_l = mean over eligible label positions (labels != -100,
+the SG-PREDICTOR-AUDIT-0 convention) AND hidden dimensions of (G_l -
+delta^BP_l / s_l)^2; L_phi = mean_l L_l. The applied credit stays
+hat_delta_l = s_l * G_l with no runtime scaling or gain. The loss is
+O(1) at the audit scale (a zero predictor gives L_l = mean (delta^BP /
+s)^2, about 0.2 to 5.8 across the audited trajectory points) and keeps
+its meaning from four SG blocks to eight. Implementation:
+sg_credit.normalized_mse; tests/test_sg_credit.py pins the reduction
+(and that it is not the hidden-dimension SSE: the SSE / MSE ratio is
+384). Prior re-evaluated under this exact reduction before any data
+(below).
+
+WRITER LAW (frozen; L69765 sections 2 to 4 as amended by L70126):
+arena = emb + blocks 0..3 frozen at W_0 (freeze_lower(model, 4), 29
+tensors, re-verified bit-identical at the end of every birth), SG
+blocks 4..7, head.weight and norm.g by the true CE gradient with x_8
+detached; hat_delta_l = s_l * G_phi_l(stopgrad(x_{l+1}), stopgrad(e_t))
+with the fixed arena constants s_4 = 5.464e-6, s_5 = 4.479e-6, s_6 =
+3.564e-6, s_7 = 2.441e-6 read from the locked audit receipt (its sha
+recorded in every receipt row); block l receives J_{f_l}^T hat_delta_l
+only; the teacher pass is the parameter-detached functional_call
+forward (activation graph only); predictor families LINEAR G = hA + eB
++ C (163,200 parameters per block) and MLP-256 (one ReLU hidden layer,
+207,488 per block; L69765's "about 175k" corrected), output layer
+zero-initialised, predictor init seed 1000 + birth seed; predictor
+optimizer AdamW(PLR, wd 0) with the stock OneCycle shape and its own
+clip 1.0; model recipe the stock one (AdamW 3e-4 wd 0.01 clip 1.0
+OneCycle pct_start 0.03, 15,420 steps, BS 32, the pinned stream, 17
+snapshots, mps fp32) on blocks 4..7 + norm + head. Registered design
+property, corrected from L69765: with zero-output predictors the first
+step's SG-block GRADIENTS are exactly zero; the blocks still move by
+AdamW's decoupled weight decay (p *= 1 - lr wd), the optimizer's own
+motion, not credit; "the first steps move only head / norm" is
+restated as "the first steps carry zero credit to the blocks".
+Predictor snapshots pred_step_{n}.pt and pred_final.pt are written
+beside the model snapshots (digests in the receipt). Per-200-step log
+and at every snapshot: CE loss, teacher loss, predictor MSE per block,
+cos(hat_delta_l, delta^BP_l) per block on the training batch.
+
+INTEGRITY LAW (fold 5 of L70126, resolved with the preferred
+implementation): structural graph isolation IS implemented (the true
+loss graph contains activations only; parameters enter as detached
+constants), so true gradients cannot reach any block parameter by
+construction and update only the predictors. Smoke scratch/
+sg_integrity_smoke.py on the frozenbb1_smoke finals, (arena, full) x
+(LINEAR, MLP-256), one 32-row probe chunk, fp32 CPU (receipt
+logs/sgwriter1/integrity_smoke_seal.jsonl; the pre-seal receipt
+logs/sgwriter1/integrity_smoke.jsonl stays frozen): (a) teacher logits ==
+writer logits, max |diff| 0.0 (tol 1e-5); (b) the teacher loss reaches
+no parameter (autograd.grad all None; .grad all None after backward);
+(c) the predictor loss reaches phi only; (d) SG-block gradients
+bit-identical to a constants-only surrogate; (e) head / norm gradients
+bit-identical to the plain CE with x_8 detached, frozen tensors carry
+no gradient; (f) the applied hat_delta predates the predictor step;
+(g) skipping the predictor step leaves the block gradients
+bit-identical; (h) FOLD A (above); (i) forced-delta^BP endpoint: with
+hat_delta_l := delta^BP_l the SG-block, norm and head gradients equal
+the FROZEN-BACKBONE-1 arm's (hybrid_objective(k = 8) over
+freeze_lower) with relative max difference 0.0 (tol 1e-5) and one
+AdamW step lands with max parameter difference 0.0 (tol 1e-6), arena
+cases; (j) zero-output endpoint: SG-block gradients exactly zero, head
+/ norm gradients nonzero, every block motion equals the decoupled
+weight decay (atol 1e-7), frozen tensors bit-identical. All ten checks
+PASS in all four cases. The smoke reruns on the launch commit before
+any birth and its rows are receipts of the qualification.
+
+LADDER (sealed): seed 27. The CONTROL (MODE=zero K_BP=4, the
+FROZEN-BACKBONE-1 arm) is born and gated first; c = its gate.
+ADEQUATE-CONTROL: finite and c >= 24, else NOT-RESOLVABLE-CONTROL and
+no SG cell is adjudicated (the ladder stops; no cell is born). Cells in
+the frozen order 1. LINEAR PLR 3e-4, 2. LINEAR 3e-5, 3. MLP-256 3e-4,
+4. MLP-256 3e-5, same W_0 / stream / schedule / device / frozen set as
+the control (asserted by the gate script before any gate). A cell is
+FUNCTION-MATCH iff it finished finite and c - 7 <= g <= c + 7. FIRST
+FUNCTION-MATCH stops the ladder, is the selection and freezes the
+recipe (family, PLR, constants, every writer-law detail) for any
+later full-stack pre-reg; later cells are not born. A non-finite cell
+books UNSTABLE (no final; the ladder continues). If all four cells run
+without a match: ACCESSIBILITY-ONLY (each gate booked; STABLE iff
+finite and g > 0; FLOOR g >= 24 descriptive); no discovery follows.
+Selection is by the frozen order, never by the highest gate. The
+alignment diagnostic is descriptive only and never a qualification
+bar. Law code: scratch/sg_qualgate.py adjudicate() (pure; tests/
+test_sg_ladder_law.py: control-first, inadequate control blocks
+everything incl. 0 / 0, inclusive floor and band, first match in
+order with later cells unborn and never overridden, in-progress state,
+accessibility-only). Driver: scratch/sgwriter1_qual_driver.sh (control,
+gate, then each cell followed by its gate; stops on ladder.json
+'stop'; marker on success only; NOT launched).
+
+INTERPRETATION (fold 1, verbatim): a FUNCTION-MATCH qualifies the SG
+credit law and the selected predictor recipe on blocks 4..7 over a
+frozen random backbone. It does NOT qualify or establish full-stack
+SG. Full-stack seed-2 SG remains the actual full-stack discovery /
+accessibility test; no tuning from its outcome. The replicated FROZEN
+59 to 63 (L70024) is contextual control-sanity evidence only, never
+the matching band.
+
+INSTRUMENT (committed with this entry; nothing launched):
+scratch/birth19m_sg.py, a sibling of the results-cited FROZEN-
+BACKBONE-1 driver (the stock loop lines and the zero-control branch
+verbatim, pinned by tests/test_sg_source_invariant.py together with
+the literal SG law, FOLD A / FOLD B lines and the ladder law); SG=1
+seed 27 only, MODE=zero K_BP=4 (control) or MODE=sg FAMILY PLR; paths
+checkpoints/sgwriter1/ and logs/sgwriter1/qual.jsonl; smoke
+path-isolated (seed 11, checkpoints/sgwriter1_smoke/, logs/sgwriter1/
+smoke.jsonl); receipts derive every field from the artifacts opened or
+written (constants + audit sha, predictor seed and digests, frozen
+set, stream digests, HEAD re-read at the receipt write). Required and
+met: seed / W_0 / stream parity between control and every SG cell
+(gate-script assertion); frozen emb + blocks 0..3 bit-identical through
+arena births (end-of-birth verification, smoked); parameter-detached
+teacher cannot reach model params (b); predictor loss reaches phi only
+(c); synthetic surrogate reaches SG blocks only (d, e); head / norm
+true-CE treatment exactly registered (e); pre-update target-order test
+(h); forced-delta^BP endpoint reproduces frozen-top BP block gradients
+and one optimizer step (i, bit-exact); zero-output endpoint has zero SG
+credit gradients with block motion identified as decoupled AdamW weight
+decay (j); 300-step smoke of all five cell shapes at seed 11 (control
++ four SG cells, every one finite with the freeze law verified: control
+loss 1.039 at 8.3 it/s; LINEAR 3e-4 loss 1.923, pred MSE 0.519, cos
+0.10 to 0.12; LINEAR 3e-5 loss 3.080, MSE 0.143, cos 0.01 to 0.14;
+MLP-256 3e-4 loss 2.618, MSE 0.089, cos 0.18 to 0.26; MLP-256 3e-5
+loss 3.049, MSE 0.005, cos 0.12 to 0.22, all at step 200, 4.3 to 4.6
+it/s; a 300-step smoke says nothing about function and is read for
+mechanics only); predictor-loss and alignment
+logging checked in the smoke logs and the smoke receipts (sg_log rows
+every 200 steps and at snapshots); the smoke ladder gate
+(SMOKE=1 sg_qualgate.py on the five smoke births: pair assertions
+pass, all five 300-step finals gate 0 / 120 on mps, and the law books
+NOT-RESOLVABLE-CONTROL with no cell adjudicated, the mechanical
+demonstration that a 0 / 0 pair cannot produce a FUNCTION-MATCH;
+logs/sgwriter1/smoke_ladder.json);
+unit tests tests/test_sg_credit.py (5), tests/test_sg_ladder_law.py
+(5), tests/test_sg_source_invariant.py (5), tests/
+test_sg_target_audit_reductions.py (4); clean-tree prereg-auditor
+(folded below).
+
+REGISTERED PRIOR (re-evaluated under FOLD B before any data; scored
+on direction): control c 55 to 65 (p 0.8; the seed-23 and seeds 24 to
+26 FROZEN arms gated 62 / 63 / 61 / 59). LINEAR 3e-4 FUNCTION-MATCH p
+0.35; the ladder matches at some cell p 0.55; ACCESSIBILITY-ONLY p
+0.45. On a matched cell: the predictor MSE at step 1028 is below 0.5 x
+the zero-predictor baseline of that step (the baseline = the mean over
+blocks and eligible positions of (delta^BP / s)^2 with G = 0, the
+value the step-1 log row carries and which is reconstructible from any
+snapshot's targets), p 0.6; cos(hat_delta, delta^BP) at the final above
+0.3 on every SG block, p 0.6 (descriptive, never a bar). Family record
+continues from 11 hits, 8 misses.
+
+COST (smoke-measured walls, mps): control 28 min (the FROZEN wall);
+SG cell about 58 min (4.3 to 4.6 it/s v the control's 8.3 it/s in the
+300-step smoke: the two extra passes cost 1.8x to 1.9x); gates about
+65 s each; worst case (control + four cells + five gates) about 4.5 h. Storage: up to 5 cells x (18 model +
+18 predictor files) about 6.9 GB; disk 29 GiB free. One liverun
+process (sgwriter1q). Receipts (force-added and locked at booking):
+logs/sgwriter1/qual.jsonl, ladder.json, selection.json, gate.log,
+train_control.log, train_sg_{linear,mlp256}_plr{3e-4,3e-5}.log,
+logs/liverun/sgwriter1q.jsonl; locked with this entry:
+logs/sgwriter1/smoke.jsonl, logs/sgwriter1/smoke_ladder.json,
+logs/sgwriter1/smoke_selection.json,
+logs/sgwriter1/integrity_smoke_seal.jsonl.
+
+GO / STOP: sealed by this entry; a SEPARATE Artin GO fires the seed-27
+ladder under `.venv/bin/python scripts/liverun.py run sgwriter1q --
+bash scratch/sgwriter1_qual_driver.sh`; operational aborts (non-finite
+control, stream mismatch, dirty tree, sentinel conflict, disk) book
+NOT-RUN; no outcome-based early stop beyond the sealed first-match law;
+gates land as each cell finishes (the law needs them to decide the
+next birth) and nothing else is read until the marker; book once
+with the hand re-application of the law and the auditor. Fences: one
+seed, one device, one recipe; the D-0 resolution unit; the band is a
+same-W_0 non-inferiority reading, not a claim of identical function;
+nothing here revises L70024, L70301 or the DFA-family closure; nothing
+here authorizes seed-27 births, seed-2 discovery or mechanism work.

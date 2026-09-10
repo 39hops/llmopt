@@ -1597,6 +1597,19 @@ PHASE-PORTRAIT-1 instrument run: a fresh 19M-class birth with STEP-LEVEL milesto
 - `capture_build(*a, **kw)`
 - `tee_step(self, *a, **kw)`
 
+### scratch/birth19m_sg.py
+SYNTHETIC-GRADIENT-WRITER-1 qualification birth driver. Sibling of the results-cited FROZEN-BACKBONE-1 driver scratch/birth19m_fb.py (frozen; the stock loop lines and the bp / dfa / hybrid / zero branches survive here verbatim; the DFA branches are never selected under the SG law). Arena (AMENDMENT -ARENA L70126, AMENDMENT -SEAL): emb + blocks 0..3 frozen exactly at W_0 (dfa_credit.freeze_lower(model, 4), re-verified at the end), blocks 4..7 credited by the synthetic-gradient law of scratch/sg_credit.py, norm + head by the true CE gradient with x_8 detached.
+
+- `sha256_file(p)`
+- `git_head()`
+- `git_dirty()`
+- `now()`
+- `save_snapshot(model, step, record)` — Save the state dict (CPU float32) as step_{n:05d}.pt and record the
+- `save_pred_snapshot(preds, step, record)`
+- `load_constants()` — The fixed arena constants s_4..7 of OBSERVATION SG-PREDICTOR-AUDIT-0,
+- `write_receipt(row, launch_commit)`
+- `main()`
+
 ### scratch/birth19m_snaps.py
 Gallery instrument run: a fresh 19M-class birth with PER-EPOCH snapshots, so the 113M-style growth render (plot_neurons --displace, the recovered whisper-zoom instrument) exists for the 19M line as [R]-reproducible (Artin's ask 2026-08-08; the frozen crystal-era files have no surviving pair). Also feeds the calibrated internet-vs-native displacement comparison (qwen_displace_extract.py made the internet pair).
 
@@ -5266,22 +5279,33 @@ Series rung 1 probe: greedy next-partial-sum emission on the 142 held-out steps 
 - `equiv(pred, gold, deadline=10)`
 
 ### scratch/sg_credit.py
-SYNTHETIC-GRADIENT-WRITER-1 credit law (PRE-REG SYNTHETIC-GRADIENT- WRITER-1 L69765, AMENDMENT -ARENA L70126, OBSERVATION SG-PREDICTOR-AUDIT-0 constants). The per-block synthetic hidden error
+SYNTHETIC-GRADIENT-WRITER-1 credit law (PRE-REG SYNTHETIC-GRADIENT- WRITER-1 L69765, AMENDMENT -ARENA L70126, OBSERVATION SG-PREDICTOR-AUDIT-0 constants, AMENDMENT -SEAL folds A and B). The per-block synthetic hidden error
 
 - `class LinearSG` (forward)
 - `class MLPSG` (forward)
 - `build_predictors(family, sg_blocks, seed, d=D_MODEL, n_out=N_OUT)` — One predictor per SG block, deterministic init from `seed` (the
-- `writer_forward(model, ids, attn_mask, sg_blocks)` — The writer-state forward. Blocks below min(sg_blocks) run attached
-- `teacher_targets(model, ids, attn_mask, sg_blocks=None)` — True hidden errors delta^BP_l = dL/dx_{l+1} for l in sg_blocks from a
-- `sg_step_terms(model, preds, ids, attn_mask, labels, sg_blocks, consts)` — Everything one step needs, in the registered order, WITHOUT stepping
+- `writer_forward(model, ids, attn_mask, sg_blocks)` — The writer-state forward. Every SG block sees a DETACHED input (block
+- `teacher_targets(model, ids, attn_mask)` — Forward over DETACHED PARAMETER CONSTANTS (functional_call); the
+- `true_hidden_errors(model, ids, attn_mask, labels, sg_blocks)` — delta^BP_l = dL/dx_{l+1} for l in sg_blocks at the CURRENT W via the
+- `normalized_mse(g_out, targets, consts, elig, sg_blocks)` — FOLD B: per block the mean over eligible positions and hidden
+- `alignment(hat_delta, targets, elig, sg_blocks)` — Descriptive: cosine between the applied credit and delta^BP over the
+- `sg_step_terms(model, preds, ids, attn_mask, labels, sg_blocks, consts)` — Steps 1 to 3 of the frozen order at the pre-update pair (W_t, phi_t):
+- `run_sg_step(T, model_params, phi, model_opt, pred_opt, model_sched=None, pred_sched=None, steps_total=None, skip_pred_update=False)` — Steps 4 to 9 of the frozen order on the terms T of sg_step_terms.
 
 ### scratch/sg_integrity_smoke.py
-SYNTHETIC-GRADIENT-WRITER-1 integrity smoke (AMENDMENT -ARENA fold 5, checks (a) to (g)), mechanical, zero main-model training beyond the two in-smoke steps it takes on a COPY of the smoke checkpoint. Runs on the frozenbb1_smoke FROZEN final (seed 11; the arena shape: blocks 0..3 + emb frozen at their checkpoint values, SG blocks 4..7) with the arena constants of OBSERVATION SG-PREDICTOR-AUDIT-0, and on the FULL final in full-stack mode (SG blocks 0..7, full-stack constants), one 32-row probe chunk each.
+SYNTHETIC-GRADIENT-WRITER-1 integrity smoke (AMENDMENT -ARENA fold 5 checks (a) to (g), AMENDMENT -SEAL fold A check (h) and the two endpoint checks (i), (j)); mechanical; the only optimizer steps it takes are on a COPY of a smoke checkpoint. Cases: the frozenbb1_smoke FROZEN final (seed 11; arena shape: emb + blocks 0..3 frozen, SG blocks 4..7, arena constants) and the FULL final in full-stack mode (SG blocks 0..7, full-stack constants), each with LINEAR and MLP-256, one 32-row probe chunk.
 
 - `load_model(sd, tok)`
 - `grads_of(params)`
 - `same(a, b)`
+- `fresh(sd, tok, arena, family, sg_blocks)`
 - `run_case(sd, tok, ids, mask, labels, sg_blocks, consts, family, arena)`
+- `main()`
+
+### scratch/sg_qualgate.py
+SYNTHETIC-GRADIENT-WRITER-1 qualification gates and the sealed ladder law (AMENDMENT -SEAL). Reads logs/sgwriter1/qual.jsonl, gates every finished ungated birth with llmopt.lab.gate.gate_eval on mps (the standard 120), appends kind=gate rows, and applies the pure law adjudicate():
+
+- `adjudicate(control, cells)` — control: None (not run) or {'finite': bool, 'gate': int|None}.
 - `main()`
 
 ### scratch/sg_target_audit.py

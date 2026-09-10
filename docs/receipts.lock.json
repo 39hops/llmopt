@@ -1121,6 +1121,10 @@
    "source": "results",
    "tracked": true
   },
+  "logs/liverun/sgwriter1q.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/liverun/writercaf1-qual-k1.jsonl": {
    "bytes": 538,
    "exists": true,
@@ -4238,6 +4242,77 @@
    "sha256": "16a11c66c6e43dfb0f7b51969321dd1bd231def60b85b9c944dd2f923dcc4780",
    "source": "results",
    "tracked": true
+  },
+  "logs/sgwriter1/gate.log": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/sgwriter1/integrity_smoke.jsonl": {
+   "bytes": 4894,
+   "exists": true,
+   "sha256": "b0f528e40a797601b4f89f3aad19ee9cecbc62610b8c6afc19c1a7662ff2a896",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/sgwriter1/integrity_smoke_seal.jsonl": {
+   "bytes": 7252,
+   "exists": true,
+   "sha256": "68f23d036bba8bbbed314576101671b9d8c46d027266bc14f5509a356dfb17ae",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/sgwriter1/ladder.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/sgwriter1/qual.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/sgwriter1/selection.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/sgwriter1/smoke.jsonl": {
+   "bytes": 23991,
+   "exists": true,
+   "sha256": "9c6c7591cd8b1922ced9d115dd971d30e3d349d90c80b8c4aefad76b489661f3",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/sgwriter1/smoke_ladder.json": {
+   "bytes": 1523,
+   "exists": true,
+   "sha256": "127c0b14c8a8aa6c01c7d9f57043b2e8eca4d0ad8663fcb889acf7b7b3409379",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/sgwriter1/smoke_selection.json": {
+   "bytes": 1523,
+   "exists": true,
+   "sha256": "127c0b14c8a8aa6c01c7d9f57043b2e8eca4d0ad8663fcb889acf7b7b3409379",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/sgwriter1/train_control.log": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/sgwriter1/train_sg_linear_plr3e-4.log": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/sgwriter1/train_sg_linear_plr3e-5.log": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/sgwriter1/train_sg_mlp256_plr3e-4.log": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/sgwriter1/train_sg_mlp256_plr3e-5.log": {
+   "exists": false,
+   "source": "prereg"
   },
   "logs/softnext1/arms.jsonl": {
    "bytes": 555,
