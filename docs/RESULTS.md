@@ -69600,3 +69600,96 @@ hybrids, one canonical W_0 (step_00000.pt of qual_hybrid_k1), the
 feedback artifacts, all receipts (digest inventory first, as L69223 F5);
 retain the 868 MB WRITER-DFA-1 keep set. Nothing here authorizes a
 training birth.
+
+## OBSERVATION DFA-LOWER-HARM-DESK-0: the DFA-trained lower package is SUFFICIENT to destroy a working backprop top segment (ZERO-TOP <- HYBRID-LOWER gates 0 / 120 at k = 1, 2, 4 against zero-control endpoints of 28 / 55 / 62), and restoring W_0 below the failed hybrid top does NOT rescue it (HYBRID-TOP <- W0-LOWER gates 0 / 120 at every k); the registered precondition for the rank-collapse reading is met at every k and the reading is adopted as SUPPORTED: every hybrid's residual stream is rank 1.0 to 1.6 at every block from step 463 on, including the backprop segment, while the zero controls keep W_0's rank 20 to 23 below the boundary and grow to 15 to 63 above it; alignment on the hybrid DFA blocks never exceeds 0.03; descriptive, no bar, single seed (2026-09-09 local, Mac; zero training)
+
+Registered at PRE-REG DFA-LOWER-HARM-DESK-0 (L69542) before any gate
+was read; instrument scratch/dfa_harm_desk.py and scratch/caf_actpost.py
+at c56a87a9, run under the liverun interlock (dfaharm0, pid 54947, rc
+0, 19 min, receipt logs/liverun/dfaharm0.jsonl), clean tree; every
+final, step and W_0 digest asserted against logs/writercaf1/qual.jsonl;
+the zero controls' lower packages asserted tensor-for-tensor equal to
+W_0 and the hybrids' not; each transplant asserted distinct from both
+endpoints.
+
+TRANSPLANTS (six 120-gates on mps, logs/dfaharm0/gates.jsonl,
+logs/dfaharm0/harm.json; endpoints fixed from L69409: hybrid full 0,
+zero full 28 / 55 / 62):
+  k = 1  T1 ZERO-TOP <- HYBRID-LOWER  gate {3: 0, 4: 0, 5: 0, 6: 0, 7: 0} = 0  valid 0.0%  (digest 1c1c628a)   T2 HYBRID-TOP <- W0-LOWER  0  valid 0.0%  (8bb9e8f1)
+  k = 2  T1  0  valid 0.0%  (a7e2f5b7)   T2  0  valid 0.0%  (cd5591ce)
+  k = 4  T1  0  valid 0.0%  (d04db539)   T2  0  valid 0.0%  (a0283040)
+Registered readings: COLLAPSE_k (T1 < 24) TRUE at k = 1, 2, 4 (T1
+minus the zero endpoint: -28, -55, -62); RESCUE_k (T2 > 0) FALSE at k
+= 1, 2, 4. Interpretation as registered: the DFA-mutated lower package
+(emb + blocks 0..7-k, 50 / 43 / 29 tensors) is sufficient to destroy a
+top segment that solves on W_0 features, at every k; restoring the lower
+representation to W_0 under the hybrid's own top is NOT sufficient to
+recover any function; the "no rescue" combination is booked
+descriptively: a top segment trained for 15,420 steps on a collapsed
+input does not compute on W_0 features (no post-hoc mechanism claim
+beyond this sentence). Expectations (all unscored): COLLAPSE at every k held (p 0.85
+each); RESCUE was expected at k = 4 (p 0.6) and leaned toward at k = 2
+(p 0.45) and missed both; the k = 1 lean (p 0.3) held; the hybrid
+boundary-input rank below 3 from step 463 held (max 1.51); |A| below
+0.05 on the hybrid DFA blocks held (max 0.030).
+
+TRAJECTORY (logs/dfaharm0/actpost.json, 54 ACT rows over the nine arms
+at steps 0 / 463 / 1,028 / 3,084 / 8,224 / 15,420, 18 alignment rows on
+the three lr 3e-4 hybrids; frozen probe; ACT self-check at <= 1e-8 asserted
+in-run on every evaluation (rc 0); no NOT-RESOLVABLE cell). W_0 (seed 23): r 20.0 (block 0) to
+23.8 (block 7), H 3.33 at every block. Hybrids (all six): effective rank
+1.0 to 1.6 at EVERY block output from step 463 through 15,420, the
+backprop segment included; at the boundary input (output of block 7-k)
+r = 1.0 to 1.5 and at the first BP block output the same; the true
+hidden error at the boundary at 15,420 is 2.0e-10 / 3.4e-10 / 1.7e-9 (k
+= 1 / 2 / 4); the probe loss (the three lr 3e-4 hybrids; 3.92 at step 0) stays
+3.12 to 3.32 from step 463 on. Zero controls: below
+the boundary r is exactly W_0's (20.0 to 23.2, frozen stack, same
+probe) and H stays 3.33; above the boundary the trained BP blocks move
+the rank to 14.8 to 62.7 (k = 1: block 7 to 15.4; k = 2: block 6 rises
+to 62.7 and block 7 15.2 at 15,420; k = 4: blocks 4 to 7 read 24.3 /
+34.2 / 38.7 / 15.4) with H falling to 1.19 to 2.46 in the trained
+blocks. ACT distance hybrid v zero at matched k: 56 to 58 (k = 1), 61
+to 80 (k = 2), 69 to 95 (k = 4) from step 463 on. Alignment, defined on the
+hybrid DFA blocks 0..7-k only (the BP-segment entries are null by
+construction): max |A| 0.030 over 102 readings; Q from 3.0 to 3.4 at step
+0 to 127 to 3,848 at step 463 and 6.2e8 at 15,420 (the BP hidden error collapses while B_l e stays
+fixed), the same picture as the pure-DFA postmortem (L69008).
+
+THE REGISTERED SUPPORT LAW: "rank collapse becomes a supported reading
+only if T1 collapses AND the hybrid boundary rank is near 1 while the
+zero control's is not; otherwise it stays a hypothesis". The law
+states the precondition; both clauses hold at every k (T1 = 0; hybrid
+boundary input r 1.0 to 1.5 v zero 21.7 to 23.2), so the reading
+leaves "hypothesis" and is adopted here as SUPPORTED, an intervention
+result on one seed, with the adoption stated as the house's reading of
+the registered clause rather than a bar: under the DFA-family recipe
+the lower stack's output is a near-one-dimensional stream by step 463,
+a backprop top segment that solved on W_0 features gates 0 when given
+that stream, and a top segment grown on that stream does not recover on
+W_0 features. It remains fenced: one seed, one probe, six
+transplant gates, no replicate; "sufficient" is the registered word,
+not "necessary"; nothing here isolates what in the DFA-family recipe
+produces the collapse (the hybrids differ from the zero controls in
+feedback rule and in which tensors train; candidate, untested: the
+per-token credit lives in the 40-dimensional column space of B_l); no bar fired or scored; nothing revises
+L68802, L69008 or L69409.
+
+CONSEQUENCES (decisions, nothing armed): (i) DFA-family births stay
+CLOSED and the optimizer-regime repair bank stays closed (the failure
+is in the representation the lower stack produces, at every s and lr
+and under every top-segment size tried); (ii) SYNTHETIC GRADIENTS / DNI
+stays the next training writer (design follows this booking; not
+armed); (iii) FROZEN-RANDOM-BACKBONE is banked in RIFF in the booking
+commit (62 / 120 with the bottom half frozen at W_0, one seed, not replicated;
+candidate paired rung FROZEN-BACKBONE-1, not armed); (iv) the frontier
+snapshot set is pruned after this booking to the finals and step_00463
+of the three zero controls and the three lr 3e-4 hybrids, one canonical
+W_0, the feedback artifacts and all receipts, with a digest inventory
+written first (its path is recorded in the handoff), the 868 MB
+WRITER-DFA-1 keep set retained.
+
+RECEIPTS (force-added and sha-locked in the booking commit): logs/dfaharm0/gates.jsonl,
+logs/dfaharm0/harm.json, logs/dfaharm0/act_rows.jsonl,
+logs/dfaharm0/actpost.json, logs/dfaharm0/smoke.jsonl,
+logs/liverun/dfaharm0.jsonl.

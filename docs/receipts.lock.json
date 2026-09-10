@@ -289,20 +289,32 @@
    "tracked": true
   },
   "logs/dfaharm0/act_rows.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 60281,
+   "exists": true,
+   "sha256": "8d3c05a1b1e67106f4a49b7ba471296d41d51b862a19204ca78f908f44dfbfed",
+   "source": "results",
+   "tracked": true
   },
   "logs/dfaharm0/actpost.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 84990,
+   "exists": true,
+   "sha256": "40928af83816a183eb501ea4795eb0f7cbf0389698854ec7e2769e83ef14c7e4",
+   "source": "results",
+   "tracked": true
   },
   "logs/dfaharm0/gates.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 2437,
+   "exists": true,
+   "sha256": "23133ea78570a5cee968d44758c482cbbec52025ac638d63073dc578f0240eac",
+   "source": "results",
+   "tracked": true
   },
   "logs/dfaharm0/harm.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 3814,
+   "exists": true,
+   "sha256": "ef651c50210d6a991a2e997da2def729bcddb29ea8b79c287e24f0f62d702cf0",
+   "source": "results",
+   "tracked": true
   },
   "logs/dfaharm0/smoke.jsonl": {
    "bytes": 7189,
@@ -991,8 +1003,11 @@
    "tracked": true
   },
   "logs/liverun/dfaharm0.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 518,
+   "exists": true,
+   "sha256": "2c9ae7f6f2d3be0a1853e221317e5d35dfcfde10d88b5627cb41d0b68d9f435b",
+   "source": "results",
+   "tracked": true
   },
   "logs/liverun/dfapost0.jsonl": {
    "bytes": 518,

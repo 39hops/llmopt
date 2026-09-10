@@ -1650,6 +1650,11 @@ CREDIT-ANCHOR-FRONTIER-1 writer-integrity smoke (AMENDMENT -PRECISION L69223 F1 
 - `run_driver(script, mode, k_bp, dump, stamp, s='1', lr='3e-4')`
 - `main()`
 
+### scratch/caf_prune.py
+CREDIT-ANCHOR-FRONTIER-1 artifact disposition (Artin direction 2026-09-09, after DFA-LOWER-HARM-DESK-0 is booked): digest inventory of every file under checkpoints/writercaf1/ against logs/writercaf1/qual.jsonl (file sha256 and canonical state digest re-read), written to logs/writercaf1/prune_inventory.json (refuses to overwrite); then keep, per arm: for the three zero controls and the three lr 3e-4 hybrids final.pt and step_00463.pt (plus feedback.pt where present); one canonical W_0 = qual_hybrid_k1_s23_S1_lr0.0003/step_00000.pt; remove everything else (the lr 1e-4 hybrids entirely, the other snapshots). Any digest mismatch aborts before anything is removed. To be copied into scratch/ and run only after the desk is booked (no repo edits while a run is live).
+
+- `main()`
+
 ### scratch/caf_qualgate.py
 CREDIT-ANCHOR-FRONTIER-1 qualification gates and the frozen selection (PRE-REG L69122 item 2, AMENDMENT -PRECISION L69223 F3). Reads the QUAL birth rows in logs/writercaf1/qual.jsonl (hybrid cells and zero-credit controls, seed 23), gates every finished arm with gate_eval on mps (120), appends kind=gate rows, and writes logs/writercaf1/qual_selection.json (refuses to overwrite): per k the hybrid cells (1, 3e-4) and (1, 1e-4); STABLE iff final gate > 0; FLOOR iff final gate >= 24; the ladder's candidate = the smallest k with a hybrid cell at or above the floor, its best cell (highest gate, ties lr 3e-4 first); zero-credit controls are gated and reported descriptively and never enter the selection. The script gates whatever k values have both hybrid cells present; the caller decides (per the ladder) whether the next k is born. Selection is written ONLY when a candidate exists or every k is complete without one (FRONTIER-CLOSED); an incomplete frontier exits 3 with no artifact.
 

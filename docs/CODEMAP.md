@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 234, library 81, reproduce-pinned 10, results-cited 436, spec-cited 89, cited-but-library 69
+Census: UNCITED 235, library 81, reproduce-pinned 10, results-cited 438, spec-cited 89, cited-but-library 69
 
 ## scratch/
 
@@ -26,7 +26,7 @@ Census: UNCITED 234, library 81, reproduce-pinned 10, results-cited 436, spec-ci
 | atomdose1 | atomdose1_driver.sh | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | atomladder1 | atomladder1_driver.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | atomtraj | atomtraj_census.py | results-cited | RESULTS | RESULTS×4 | — | 4 |
-| atomtraj | atomtraj_pins.py | library | RESULTS | RESULTS×8 | 15 | 3 |
+| atomtraj | atomtraj_pins.py | library | RESULTS | RESULTS×8 | 17 | 3 |
 | atomtraj | atomtraj_qual.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | atomtraj | atomtraj_verify.py | results-cited | RESULTS | RESULTS×5 | — | 3 |
 | atomtraj1 | atomtraj1_driver.sh | results-cited | RESULTS | RESULTS×1 | — | — |
@@ -63,6 +63,7 @@ Census: UNCITED 234, library 81, reproduce-pinned 10, results-cited 436, spec-ci
 | brute | brute_c_arm_0801.sh | UNCITED | — | — | — | — |
 | build | build_dist_diets.py | UNCITED | — | — | — | — |
 | build | build_merged_diet.py | UNCITED | — | — | — | — |
+| caf | caf_actpost.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 1 |
 | caf | caf_leakage_smoke.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | caf | caf_qualgate.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 2 |
 | cal | cal_dilute.py | UNCITED | — | — | — | — |
@@ -107,17 +108,19 @@ Census: UNCITED 234, library 81, reproduce-pinned 10, results-cited 436, spec-ci
 | detbwd | detbwd_r2b.py | library | RESULTS, specs | RESULTS×2, specs×2 | 6 | — |
 | detbwd | detbwd_r3_qw.py | library | RESULTS | RESULTS×1 | 5 | — |
 | determinability | determinability_census.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
-| dfa | dfa_act.py | library | RESULTS, specs | RESULTS×3, specs×1 | 1 | 2 |
-| dfa | dfa_align.py | library | RESULTS, specs | RESULTS×2, specs×1 | 1 | 3 |
-| dfa | dfa_credit.py | library | RESULTS, specs | RESULTS×2, specs×3 | 9 | 1 |
+| dfa | dfa_act.py | library | RESULTS, specs | RESULTS×3, specs×1 | 2 | 2 |
+| dfa | dfa_align.py | library | RESULTS, specs | RESULTS×2, specs×1 | 2 | 3 |
+| dfa | dfa_credit.py | library | RESULTS, specs | RESULTS×2, specs×3 | 10 | 1 |
 | dfa | dfa_depthclass.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 2 |
+| dfa | dfa_harm_desk.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 1 |
 | dfa | dfa_leakage_smoke.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 1 |
 | dfa | dfa_postmortem.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 1 |
-| dfa | dfa_probe.py | library | RESULTS, specs | RESULTS×1, specs×1 | 5 | 1 |
+| dfa | dfa_probe.py | library | RESULTS, specs | RESULTS×1, specs×1 | 6 | 1 |
 | dfa | dfa_prune.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | dfa | dfa_qualgate.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 2 |
 | dfa | dfa_trajcensus.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 2 |
 | dfa | dfa_verify.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 1 |
+| dfaharm0 | dfaharm0_driver.sh | UNCITED | — | — | — | — |
 | dfapost0 | dfapost0_driver.sh | UNCITED | — | — | — | — |
 | distortion | distortion_collapse.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | dual | dual_probe.py | UNCITED | — | — | — | — |
@@ -862,7 +865,7 @@ Census: UNCITED 234, library 81, reproduce-pinned 10, results-cited 436, spec-ci
 | train | train_dispatcher.py | UNCITED | — | — | — | — |
 | train | train_magic_estimator.py | library | RESULTS | RESULTS×1 | 7 | 1 |
 | train | train_magic_llm.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| train | train_mathnative.py | library | RESULTS, specs | RESULTS×5, specs×7 | 89 | 31 |
+| train | train_mathnative.py | library | RESULTS, specs | RESULTS×5, specs×7 | 91 | 31 |
 | train | train_nnue.py | library | specs | specs×8 | 1 | 12 |
 | train | train_proposer.py | spec-cited | specs | specs×5 | — | — |
 | train | train_syndrome_decoder.py | results-cited | RESULTS | RESULTS×1 | — | 1 |

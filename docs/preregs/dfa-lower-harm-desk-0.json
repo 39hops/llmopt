@@ -43,5 +43,30 @@
   "VERDICT CREDIT-ANCHOR-FRONTIER-1 (L69409)",
   "VERDICT WRITER-DFA-1 (L68802)"
  ],
- "results_id": "2026-09-09-pre-reg-dfa-lower-harm-desk"
+ "results_id": "2026-09-09-pre-reg-dfa-lower-harm-desk",
+ "outcome": {
+  "results_line": 69604,
+  "T1_gates": {
+   "k1": 0,
+   "k2": 0,
+   "k4": 0
+  },
+  "T2_gates": {
+   "k1": 0,
+   "k2": 0,
+   "k4": 0
+  },
+  "COLLAPSE": {
+   "k1": true,
+   "k2": true,
+   "k4": true
+  },
+  "RESCUE": {
+   "k1": false,
+   "k2": false,
+   "k4": false
+  },
+  "rank_collapse_reading": "SUPPORTED under the registered law (single seed)",
+  "max_abs_A": 0.03
+ }
 }
