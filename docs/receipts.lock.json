@@ -760,16 +760,32 @@
    "tracked": true
   },
   "logs/frozenbb1/births.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 33199,
+   "exists": true,
+   "sha256": "4778fba99b448136bbc853cd58300e897e39ef06c948aa63234ddb9e62f34dea",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/frozenbb1/driver.log": {
+   "bytes": 25135,
+   "exists": true,
+   "sha256": "640537d0173887d1cd992f1901a853e3ef4a3f7a133c8e33206e1a25addd014c",
+   "source": "results",
+   "tracked": true
   },
   "logs/frozenbb1/gate.log": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 640,
+   "exists": true,
+   "sha256": "7f6153a4815dee852de81fc7f24100b5b3178caf4d0165199a793ea497249297",
+   "source": "results",
+   "tracked": true
   },
   "logs/frozenbb1/replication.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 3936,
+   "exists": true,
+   "sha256": "84f6b0f228b920b02320c83d929dd377028c88083c3dc3ff70b64eaaeffd5425",
+   "source": "results",
+   "tracked": true
   },
   "logs/frozenbb1/smoke.jsonl": {
    "bytes": 4294,
@@ -779,28 +795,46 @@
    "tracked": true
   },
   "logs/frozenbb1/train_s24_bp.log": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 3936,
+   "exists": true,
+   "sha256": "5122e4ec0e34a8ea543ad5acea731fd1870fdc4c81b9bbd5867cfaaf043b331f",
+   "source": "results",
+   "tracked": true
   },
   "logs/frozenbb1/train_s24_zero.log": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 4062,
+   "exists": true,
+   "sha256": "d282bf821a8e3c3a6a0d715a0e7fb620d20d506ef5a7c1651cefba28b229d08f",
+   "source": "results",
+   "tracked": true
   },
   "logs/frozenbb1/train_s25_bp.log": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 3936,
+   "exists": true,
+   "sha256": "8d370453ca5755d76f2dc038df91bb7fb624c4a6fe4eeaf8352200d14a7d2c21",
+   "source": "results",
+   "tracked": true
   },
   "logs/frozenbb1/train_s25_zero.log": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 4062,
+   "exists": true,
+   "sha256": "e9b64f74ea0f1d22d1cab6be6f03caa17e3fd984c0aebfbbd55d93785bb4d37f",
+   "source": "results",
+   "tracked": true
   },
   "logs/frozenbb1/train_s26_bp.log": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 3936,
+   "exists": true,
+   "sha256": "89138f30358eecbbc430f53fb962a29ac87611eb49cd432ce4c267426f8fa990",
+   "source": "results",
+   "tracked": true
   },
   "logs/frozenbb1/train_s26_zero.log": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 4062,
+   "exists": true,
+   "sha256": "bc03bbfa84614fe634925ecb6ec03dde4bf178b7b737b2c48f3884d6b9a1324a",
+   "source": "results",
+   "tracked": true
   },
   "logs/funnel_wall/prec_sweep_step1_d64.log": {
    "bytes": 607,
@@ -1060,8 +1094,11 @@
    "tracked": true
   },
   "logs/liverun/frozenbb1.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 520,
+   "exists": true,
+   "sha256": "7875c1d1fc9a6bef09c31cde26c91c72426c51302bf3342b307b0c3b84f07d63",
+   "source": "results",
+   "tracked": true
   },
   "logs/liverun/interlock-smoke.jsonl": {
    "bytes": 537,

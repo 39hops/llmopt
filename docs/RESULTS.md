@@ -70020,3 +70020,105 @@ prereg-auditor on this entry v the target; if clean, launch
 scratch/frozenbb1_driver.sh` (six births in the sealed order, then
 fb_gate.py); read nothing until all six finish; book once. An auditor
 blocker stops the launch and is reported instead.
+
+## VERDICT FROZEN-BACKBONE-1: REPLICATES — on three fresh paired seeds a lower half frozen exactly at W_0 (emb + blocks 0..3, 29 tensors bit-identical to init) with blocks 4..7 + norm + head trained by the stock backprop recipe gates 63 / 61 / 59 against same-W_0 full-backprop controls at 61 / 64 / 62; delta_s = +2 / -3 / -3, all >= -7 (mean -1.3, descriptive); controls adequate (all FULL >= 24); the seed-23 FROZEN-RANDOM-BACKBONE observation replicates at the house gate resolution (2026-09-10 local, Mac; three paired seeds, one device; prior hit)
+
+Target: PRE-REG FROZEN-BACKBONE-1 (L69697), AMENDMENT -SEAL (L69939),
+AMENDMENT -CONTROL-ADEQUATE (L69970). Run frozenbb1 under the liverun
+interlock (logs/liverun/frozenbb1.jsonl), launched 2026-09-10 02:37
+EDT (armed 06:37:01 UTC) at HEAD 579a135d on a clean tree after the clean-tree
+prereg-auditor reported no blocker; DONE marker rc=0 at 10:38 UTC;
+nothing read until the marker. Six births in the sealed order (24
+FULL, 24 FROZEN, 25 FROZEN, 25 FULL, 26 FULL, 26 FROZEN), then the six
+gates and the law by scratch/fb_gate.py (device mps, code_commit
+579a135d, tree clean at gating).
+
+RESULT (gate_eval, the standard 120, mps; solves dict per level 3..7):
+- seed 24: FULL 61 {3: 20, 4: 6, 5: 16, 6: 8, 7: 11} valid 60.10;
+  FROZEN 63 {3: 20, 4: 7, 5: 15, 6: 9, 7: 12} valid 58.85; delta +2.
+- seed 25: FULL 64 {3: 20, 4: 7, 5: 16, 6: 8, 7: 13} valid 61.06;
+  FROZEN 61 {3: 22, 4: 5, 5: 15, 6: 7, 7: 12} valid 60.44; delta -3.
+- seed 26: FULL 62 {3: 21, 4: 6, 5: 16, 6: 7, 7: 12} valid 60.81;
+  FROZEN 59 {3: 21, 4: 5, 5: 14, 6: 8, 7: 11} valid 57.86; delta -3.
+Each dict sums to its total (61, 63, 64, 61, 62, 59). gate_eval weights shas (gate order FROZEN 24, FULL 24, FROZEN 25,
+FULL 25, FROZEN 26, FULL 26; logs/frozenbb1/gate.log): 1cb53e0595a34049
+/ 9e53a18520ffa7f9 / 7f80017b983a18d6 / 60dbd2daea19702f /
+d5a60b98b58980d5 / 2dbf61402c46df29; final
+state digests 78fdf6d424 / ec476ac1eb / 677026a5d2 / 75ce897841 /
+fe845465aa / e9fc8c1dd1 (FULL 24, FROZEN 24, FULL 25, FROZEN 25, FULL
+26, FROZEN 26), each asserted against its final.pt before gating.
+
+HAND RE-APPLICATION OF THE LAW. CONTROL-ADEQUATE: every FULL arm
+finished finite (stable_training true, final logged loss 0.3847 /
+0.3873 / 0.3846) and gates 61, 64, 62, all >= 24: adequate, the
+REPLICATES / KILLED law is scored. Deltas 63 - 61 = +2, 61 - 64 = -3,
+59 - 62 = -3; min delta -3 >= -7: REPLICATES. No pair fails, so no
+pair is rescued by the mean. Mean delta -1.33 (descriptive only).
+scratch/fb_gate.py adjudicate() agrees (logs/frozenbb1/
+replication.json: CONTROL_ADEQUATE true, full_below_floor [], deltas
+[2, -3, -3], REPLICATES true, verdict REPLICATES).
+
+REGISTERED INTERPRETATION, verbatim: "At this task / scale, learning
+the embedding and bottom four blocks is not required to reach full-BP
+function at the house gate resolution across these specimens."
+Explicitly NOT claimed, as sealed: that the frozen lower stack is
+irrelevant (the trained top depends on its fixed random features in
+an unmeasured way); any learned-delta dependence reading; any
+mechanism reading. Five of the six gates sit inside the historical stock 61 to
+65 and the sixth (FROZEN 26) is two solves below its floor; frozen
+arm 59 to 63 v full arm 61 to 64, descriptive, no bar.
+
+Pair integrity (asserted by fb_gate.py before any gate): per seed the
+FULL and FROZEN rows share init_state_digest (44960ff0ca / 6999c28ca8
+/ 3caad800dd), the three pinned stock stream digests (18a6c14a...,
+a3bf1ab9..., 7ff1b63e...), 15,420 steps and code_commit 579a135d; no
+duplicate rows. FROZEN arms: 29 frozen tensors (emb.weight + the 28
+tensors of blocks 0..3), 30 trainable, freeze law re-verified at the
+end of each birth ("29 tensors bit-identical to W_0" in each zero log);
+FULL arms: 0 frozen, 59 trainable, k_bp 8. Walls: FULL 47.6 / 46.8 /
+46.7 min, FROZEN 28.4 x 3 min (sealed estimates 47 / 28); gates 64 to
+68 s each; total 4.0 h. Storage 7794 MiB = 8.17 GB on disk (sealed 8.2 GB; 17
+snapshots + final per cell, 8175 MB nominal). Descriptive ACT
+distance FROZEN v FULL within pair 41.2 / 27.5 / 33.8 (the P3 / S10
+vector; no bar, no reading here).
+
+REGISTERED PRIOR, scored: REPLICATES p 0.6: HIT. Point deltas -3 / -4
+/ -2 v measured +2 / -3 / -3 (all within one resolution unit; the
+seed-24 sign differs from the prior's; descriptive, not scored). FULL
+gates 58 to 66 predicted, measured 61 / 64 / 62: inside. FROZEN gates
+55 to 64 predicted, measured 63 / 61 / 59: inside. Family record: 7
+hits, 5 misses.
+
+Auditor should-fix carried from the pre-launch audit, disclosed: the
+"finish finite" half of CONTROL-ADEQUATE is enforced by the driver's
+non-finite abort (which books NOT-RUN under the sealed operational
+clause of L69697) and by the gate script's stable_training assertion
+(which aborts gating), not by adjudicate(); only the gate >= 24 half is
+adjudicated. Moot here (every arm finished finite) and no
+adjudication differs; recorded so the two non-adjudication labels
+(NOT-RUN v NOT-RESOLVABLE-CONTROL) are not read as one.
+
+RECEIPTS (force-added and sha-locked in the booking commit):
+logs/frozenbb1/births.jsonl (6 birth, 6 gate, 1 replication rows),
+logs/frozenbb1/replication.json, logs/frozenbb1/smoke.jsonl,
+logs/liverun/frozenbb1.jsonl, logs/frozenbb1/gate.log,
+logs/frozenbb1/train_s24_bp.log, logs/frozenbb1/train_s24_zero.log,
+logs/frozenbb1/train_s25_bp.log, logs/frozenbb1/train_s25_zero.log,
+logs/frozenbb1/train_s26_bp.log, logs/frozenbb1/train_s26_zero.log,
+plus logs/frozenbb1/driver.log (the liverun stdout capture, 25 KB,
+not in the sealed receipt list, force-added here as an extra). Checkpoints
+(checkpoints/frozenbb1/, 8.17 GB, untracked) retained: they are the healthy
+same-W_0 BP-like states Artin directed for the synthetic-gradient
+predictor audit (never the rank-collapsed DFA fixture).
+
+Fences: three seeds, one device (mps), one recipe, one task; the D-0
+resolution unit (deltas within 7 are ties, not directions); gate
+comparisons within pairs only; nothing here revises L69409 or the
+DFA-family closure; REPLICATES is a non-inferiority reading at the
+gate's resolution, not a claim that the frozen and full arms are the
+same function (the ACT distances say they are not). Consequence for
+the SG program (Artin direction 2026-09-10): assess whether the
+cleanest first synthetic-gradient comparison is BP v SG on the top
+four trainable blocks over this same frozen lower backbone; the
+full-stack SG design (L69765) stays on file; nothing here authorizes
+SG training.

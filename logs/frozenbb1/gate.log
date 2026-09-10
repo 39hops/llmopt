@@ -1,0 +1,14 @@
+[curric] D2 excision: 165028 -> 164896 rows
+[gate] weights sha 1cb53e0595a34049
+[fb] fb_frozen_s24_lr0.0003: gate 63 valid 58.85
+[gate] weights sha 9e53a18520ffa7f9
+[fb] fb_full_s24_lr0.0003: gate 61 valid 60.1
+[gate] weights sha 7f80017b983a18d6
+[fb] fb_frozen_s25_lr0.0003: gate 61 valid 60.44
+[gate] weights sha 60dbd2daea19702f
+[fb] fb_full_s25_lr0.0003: gate 64 valid 61.06
+[gate] weights sha d5a60b98b58980d5
+[fb] fb_frozen_s26_lr0.0003: gate 59 valid 57.86
+[gate] weights sha 2dbf61402c46df29
+[fb] fb_full_s26_lr0.0003: gate 62 valid 60.81
+[fb] replication: {"deltas": [2, -3, -3], "CONTROL_ADEQUATE": true, "verdict": "REPLICATES"}
