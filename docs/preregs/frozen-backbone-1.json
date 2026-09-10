@@ -3,7 +3,7 @@
  "note": "Machine-readable form of PRE-REG FROZEN-BACKBONE-1 (design + instrument sealed, NOT LAUNCHED; Artin GO required); the prose governs.",
  "registered": "2026-09-10 (Mac local)",
  "machine": "mac",
- "status": "sealed, not launched",
+ "status": "sealed; conditional GO 2026-09-10 (launch on clean auditor)",
  "seeds": [
   24,
   25,
@@ -22,7 +22,7 @@
   "26:zero"
  ],
  "primary": "delta_s = gate_FROZEN_s - gate_FULL_s",
- "law": "REPLICATES iff delta_s >= -7 on all three pairs; KILLED iff any delta_s < -7; mean descriptive only",
+ "law": "CONTROL-ADEQUATE iff every FULL gate >= 24 (else NOT-RESOLVABLE-CONTROL, unscored); then REPLICATES iff delta_s >= -7 on all three pairs; KILLED iff any delta_s < -7; mean descriptive only",
  "bars": [
   {
    "id": 1,
@@ -75,6 +75,12 @@
  ],
  "results_id": "2026-09-10-pre-reg-frozen-backbone-1-replicate",
  "amended_by": [
-  "AMENDMENT FROZEN-BACKBONE-1-SEAL"
- ]
+  "AMENDMENT FROZEN-BACKBONE-1-SEAL",
+  "AMENDMENT FROZEN-BACKBONE-1-CONTROL-ADEQUATE"
+ ],
+ "control_adequate": {
+  "precondition": "every FULL arm finishes finite and gates >= 24 (house floor)",
+  "on_failure": "NOT-RESOLVABLE-CONTROL: gates and deltas reported descriptively; REPLICATES / KILLED not scored",
+  "changes_threshold": false
+ }
 }

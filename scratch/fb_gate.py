@@ -4,8 +4,15 @@ FULL and FROZEN at seeds 24, 25, 26), gates every final with
 llmopt.lab.gate.gate_eval on mps (the standard 120), appends kind=gate rows,
 computes delta_s = gate_FROZEN_s - gate_FULL_s per seed and writes
 logs/frozenbb1/replication.json (refuses to overwrite):
-REPLICATES iff delta_s >= -7 on all three pairs. Individual gates, deltas
-and the mean are booked descriptively; no averaging rescues a failed pair.
+CONTROL-ADEQUATE precondition (AMENDMENT FROZEN-BACKBONE-1-CONTROL-
+ADEQUATE): every FULL arm must finish finite and gate >= 24 (the house
+floor). If any FULL gate is below 24 the verdict is NOT-RESOLVABLE-CONTROL:
+gates and deltas are reported descriptively and REPLICATES / KILLED is not
+scored. Otherwise the sealed law applies unchanged: REPLICATES iff
+delta_s >= -7 on all three pairs, KILLED iff any delta_s < -7. Individual
+gates, deltas and the mean are booked descriptively; no averaging rescues
+a failed pair. adjudicate() is the pure form of the law (unit-tested in
+tests/test_fb_control_adequate.py).
 Also the frozen ACT vector (scratch/dfa_act.py act_vector) on the six
 finals, descriptive.
 
@@ -37,6 +44,26 @@ BIRTHS = Path("logs/frozenbb1/births.jsonl")
 OUT = Path("logs/frozenbb1/replication.json")
 SEEDS = (24, 25, 26)
 LAW = -7
+FLOOR = 24
+
+
+def adjudicate(pair_gates):
+    """pair_gates: {seed: (gate_full, gate_frozen)} for the three seeds.
+    Returns the verdict dict: CONTROL_ADEQUATE (all FULL gates >= FLOOR),
+    deltas, mean (descriptive) and the verdict string. REPLICATES /
+    KILLED are scored only when the controls are adequate; otherwise
+    the verdict is NOT-RESOLVABLE-CONTROL and REPLICATES is None."""
+    assert sorted(pair_gates) == sorted(SEEDS), sorted(pair_gates)
+    full = {s: int(pair_gates[s][0]) for s in SEEDS}
+    deltas = [int(pair_gates[s][1]) - int(pair_gates[s][0]) for s in SEEDS]
+    adequate = all(full[s] >= FLOOR for s in SEEDS)
+    if not adequate:
+        verdict, rep = "NOT-RESOLVABLE-CONTROL", None
+    else:
+        rep = all(d >= LAW for d in deltas)
+        verdict = "REPLICATES" if rep else "KILLED"
+    return {"CONTROL_ADEQUATE": adequate, "full_below_floor": [s for s in SEEDS if full[s] < FLOOR], "deltas": deltas,
+            "mean_delta_descriptive": sum(deltas) / len(deltas), "REPLICATES": rep, "verdict": verdict}
 
 
 def main():
@@ -95,15 +122,18 @@ def main():
                             "solves_full": gates[(s, "FULL")]["solves"], "solves_frozen": gates[(s, "FROZEN")]["solves"],
                             "act_dist_frozen_v_full": dist(acts[(s, "FROZEN")], acts[(s, "FULL")]),
                             "act_full": acts[(s, "FULL")]["act"], "act_frozen": acts[(s, "FROZEN")]["act"]}
-    deltas = [per_seed[str(s)]["delta"] for s in SEEDS]
+    adj = adjudicate({s: (gates[(s, "FULL")]["total"], gates[(s, "FROZEN")]["total"]) for s in SEEDS})
+    deltas = adj["deltas"]
+    assert deltas == [per_seed[str(s)]["delta"] for s in SEEDS]
     rec = {"prereg": "FROZEN-BACKBONE-1", "kind": "replication", "commit": commit, "device": dev, "probe_token_digest": probe_digest,
-           "law": f"REPLICATES iff delta_s >= {LAW} on all three pairs", "per_seed": per_seed, "deltas": deltas,
-           "mean_delta_descriptive": sum(deltas) / len(deltas), "REPLICATES": all(d >= LAW for d in deltas),
+           "law": f"CONTROL-ADEQUATE iff every FULL gate >= {FLOOR} (else NOT-RESOLVABLE-CONTROL, unscored); then REPLICATES iff delta_s >= {LAW} on all three pairs",
+           "per_seed": per_seed, "deltas": deltas, "mean_delta_descriptive": adj["mean_delta_descriptive"],
+           "CONTROL_ADEQUATE": adj["CONTROL_ADEQUATE"], "full_below_floor": adj["full_below_floor"], "REPLICATES": adj["REPLICATES"], "verdict": adj["verdict"],
            "utc": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")}
     OUT.write_text(json.dumps(rec, indent=1))
     with BIRTHS.open("a") as f:
         f.write(json.dumps({k: v for k, v in rec.items() if k != "per_seed"} | {"per_seed_gates": {s: (v["gate_full"], v["gate_frozen"]) for s, v in per_seed.items()}}) + "\n")
-    print("[fb] replication:", json.dumps({"deltas": deltas, "REPLICATES": rec["REPLICATES"]}))
+    print("[fb] replication:", json.dumps({"deltas": deltas, "CONTROL_ADEQUATE": rec["CONTROL_ADEQUATE"], "verdict": rec["verdict"]}))
 
 
 if __name__ == "__main__":

@@ -69966,3 +69966,57 @@ rows carry code_commit 05cd5715 with the instrument then untracked
 (committed unchanged in 62d94cbb); registered births refuse a dirty
 tree and abort on HEAD drift. Everything else in L69697 stands; a
 separate Artin GO is required for the births.
+
+## AMENDMENT FROZEN-BACKBONE-1-CONTROL-ADEQUATE (target: PRE-REG FROZEN-BACKBONE-1 L69697): zero-data precision fold before launch — CONTROL-ADEQUATE precondition: every FULL arm must finish finite and gate >= 24; if any FULL arm gates below 24 the rung books NOT-RESOLVABLE-CONTROL (gates and deltas descriptive, REPLICATES / KILLED not scored); with all three controls adequate the sealed law delta_s >= -7 applies unchanged; unit test that FULL = 0 / FROZEN = 0 cannot score REPLICATES; conditional GO folded (2026-09-10 local, Mac)
+
+Artin direction 2026-09-10 (conditional GO): add CONTROL-ADEQUATE as a
+control-validity precondition only, leave the registered
+non-inferiority threshold unchanged, add the synthetic unit test, run
+the clean-tree prereg-auditor, and if clean launch the six registered
+births under frozenbb1 with no further confirmation. SG decision: wait
+until this rung books; the zero-training predictor audit uses healthy
+BP-like states, never the rank-collapsed DFA fixture. Nothing
+authorizes SG training.
+
+Precondition, verbatim: every FULL arm must finish finite and gate >=
+24 (the house floor, the D-0 law's floor of L67576). It is a
+control-validity precondition only. If any FULL arm gates below 24 the
+rung books NOT-RESOLVABLE-CONTROL: the six gates and three deltas are
+reported descriptively and the REPLICATES / KILLED law is not
+adjudicated or scored (the registered prior on REPLICATES stays
+unscored in that case). If all three FULL controls are adequate the
+sealed law applies unchanged: REPLICATES iff delta_s >= -7 on all
+three pairs, KILLED iff any delta_s < -7, mean descriptive, no pair
+rescued. The threshold, the seeds, the arms, the order, the recipe,
+the prior and the interpretation are untouched.
+
+Why the fold is needed: delta_s = gate_FROZEN - gate_FULL is
+arithmetically satisfied by a FULL arm that itself failed (0 - 0 = 0 >=
+-7), so without the precondition a broken control could score
+REPLICATES. The precondition cannot rescue a pair either: a frozen arm
+at 0 against an adequate control is KILLED as before.
+
+Instrument (same commit): scratch/fb_gate.py gains FLOOR = 24 and the
+pure function adjudicate({seed: (gate_full, gate_frozen)}) that carries
+the whole law (CONTROL_ADEQUATE, full_below_floor, deltas, descriptive
+mean, REPLICATES in {True, False, None}, verdict in {REPLICATES,
+KILLED, NOT-RESOLVABLE-CONTROL}); main() calls it and writes the
+verdict, CONTROL_ADEQUATE and full_below_floor into
+logs/frozenbb1/replication.json and the replication row of
+births.jsonl. tests/test_fb_control_adequate.py (5 tests): FULL = 0 /
+FROZEN = 0 on every seed gives deltas [0, 0, 0] and
+NOT-RESOLVABLE-CONTROL with REPLICATES None; one FULL at 23 is
+NOT-RESOLVABLE-CONTROL; the floor is inclusive (FULL 24 adequate);
+with adequate controls the sealed law is unchanged (REPLICATES at
+deltas -3 / -4 / -7, KILLED at -3 / -8 / -7 with mean -6); frozen 0
+against adequate controls is KILLED. tests/test_fb_source_invariant.py
+pins FLOOR = 24 and the two literal branches. docs/preregs/
+frozen-backbone-1.json mirrors the precondition (control_adequate,
+law string, amended_by).
+
+Sequence from here (no further confirmation): clean-tree
+prereg-auditor on this entry v the target; if clean, launch
+`.venv/bin/python scripts/liverun.py run frozenbb1 -- bash
+scratch/frozenbb1_driver.sh` (six births in the sealed order, then
+fb_gate.py); read nothing until all six finish; book once. An auditor
+blocker stops the launch and is reported instead.

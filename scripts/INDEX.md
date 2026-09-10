@@ -2317,8 +2317,9 @@ FARMER PROBE (pre-reg 2026-07-29: escalation-engine cell 6, Artin's reverse-self
 
 
 ### scratch/fb_gate.py
-FROZEN-BACKBONE-1 post-hoc gates and the replication law (PRE-REG FROZEN-BACKBONE-1). Reads logs/frozenbb1/births.jsonl (six FB birth rows: FULL and FROZEN at seeds 24, 25, 26), gates every final with llmopt.lab.gate.gate_eval on mps (the standard 120), appends kind=gate rows, computes delta_s = gate_FROZEN_s - gate_FULL_s per seed and writes logs/frozenbb1/replication.json (refuses to overwrite): REPLICATES iff delta_s >= -7 on all three pairs. Individual gates, deltas and the mean are booked descriptively; no averaging rescues a failed pair. Also the frozen ACT vector (scratch/dfa_act.py act_vector) on the six finals, descriptive.
+FROZEN-BACKBONE-1 post-hoc gates and the replication law (PRE-REG FROZEN-BACKBONE-1). Reads logs/frozenbb1/births.jsonl (six FB birth rows: FULL and FROZEN at seeds 24, 25, 26), gates every final with llmopt.lab.gate.gate_eval on mps (the standard 120), appends kind=gate rows, computes delta_s = gate_FROZEN_s - gate_FULL_s per seed and writes logs/frozenbb1/replication.json (refuses to overwrite): CONTROL-ADEQUATE precondition (AMENDMENT FROZEN-BACKBONE-1-CONTROL- ADEQUATE): every FULL arm must finish finite and gate >= 24 (the house floor). If any FULL gate is below 24 the verdict is NOT-RESOLVABLE-CONTROL: gates and deltas are reported descriptively and REPLICATES / KILLED is not scored. Otherwise the sealed law applies unchanged: REPLICATES iff delta_s >= -7 on all three pairs, KILLED iff any delta_s < -7. Individual gates, deltas and the mean are booked descriptively; no averaging rescues a failed pair. adjudicate() is the pure form of the law (unit-tested in tests/test_fb_control_adequate.py). Also the frozen ACT vector (scratch/dfa_act.py act_vector) on the six finals, descriptive.
 
+- `adjudicate(pair_gates)` — pair_gates: {seed: (gate_full, gate_frozen)} for the three seeds.
 - `main()`
 
 ### scratch/fig_magic_scatter.py

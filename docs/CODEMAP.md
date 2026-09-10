@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 237, library 81, reproduce-pinned 10, results-cited 440, spec-cited 89, cited-but-library 69
+Census: UNCITED 236, library 81, reproduce-pinned 10, results-cited 441, spec-cited 89, cited-but-library 69
 
 ## scratch/
 
@@ -172,7 +172,7 @@ Census: UNCITED 237, library 81, reproduce-pinned 10, results-cited 440, spec-ci
 | farm | farm_dist_rows.py | results-cited | RESULTS, specs | RESULTS×1, specs×4 | — | 1 |
 | farm | farm_xterm.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | — |
 | farmer | farmer_probe.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — |
-| fb | fb_gate.py | results-cited | RESULTS | RESULTS×2 | — | 2 |
+| fb | fb_gate.py | results-cited | RESULTS | RESULTS×4 | — | 2 |
 | fig | fig_magic_scatter.py | spec-cited | specs | specs×1 | — | — |
 | fixed | fixed_q_snap.py | UNCITED | — | — | — | 1 |
 | floor | floor_hk1.sh | UNCITED | — | — | — | 1 |
@@ -189,7 +189,7 @@ Census: UNCITED 237, library 81, reproduce-pinned 10, results-cited 440, spec-ci
 | fourier3 | fourier3_algdiet.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | fourier4a | fourier4a_dynamics.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | fp64 | fp64_paired.py | spec-cited | specs | specs×1 | — | — |
-| frozenbb1 | frozenbb1_driver.sh | UNCITED | — | — | — | — |
+| frozenbb1 | frozenbb1_driver.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | fx3 | fx3_house.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — |
 | g19 | g19_bf16_isolation.sh | spec-cited | specs | specs×2 | — | 1 |
 | g19 | g19_fp32_cell.sh | UNCITED | — | — | — | — |
@@ -831,7 +831,7 @@ Census: UNCITED 237, library 81, reproduce-pinned 10, results-cited 440, spec-ci
 | harvest | harvest_champion.py | UNCITED | — | — | — | — |
 | harvest | harvest_frontier.py | spec-cited | specs | specs×1 | — | — |
 | list | list_uncurated.py | spec-cited | specs | specs×6 | — | — |
-| liverun | liverun.py | results-cited | RESULTS | RESULTS×3 | — | 1 |
+| liverun | liverun.py | results-cited | RESULTS | RESULTS×4 | — | 1 |
 | log | log_hygiene.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | 1 |
 | markov | markov_eval.py | UNCITED | — | — | — | — |
 | markov | markov_prior.py | UNCITED | — | — | — | — |

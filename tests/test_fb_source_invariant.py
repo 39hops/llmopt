@@ -47,5 +47,7 @@ def test_fb_law_literal():
 def test_replication_law_literal():
     src = GATE.read_text()
     assert "LAW = -7" in src and "SEEDS = (24, 25, 26)" in src
-    assert '"REPLICATES": all(d >= LAW for d in deltas)' in src
+    assert "FLOOR = 24" in src
+    assert 'rep = all(d >= LAW for d in deltas)' in src
+    assert 'verdict, rep = "NOT-RESOLVABLE-CONTROL", None' in src
     assert "mean_delta_descriptive" in src
