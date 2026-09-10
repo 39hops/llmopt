@@ -624,11 +624,11 @@ Census: UNCITED 236, library 82, reproduce-pinned 10, results-cited 446, spec-ci
 | seed | seed_audit.py | spec-cited | specs | specs×2 | — | — |
 | seeds | seeds_ladder_0804.sh | UNCITED | — | — | — | — |
 | series | series_probe.py | spec-cited | specs | specs×5 | — | 15 |
-| sg | sg_credit.py | library | RESULTS, specs | RESULTS×5, specs×3 | 2 | 2 |
-| sg | sg_integrity_smoke.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 1 |
+| sg | sg_credit.py | library | RESULTS, specs | RESULTS×6, specs×3 | 2 | 2 |
+| sg | sg_integrity_smoke.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 2 |
 | sg | sg_qualgate.py | results-cited | RESULTS | RESULTS×2 | — | 3 |
 | sg | sg_target_audit.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
-| sgwriter1 | sgwriter1_qual_driver.sh | results-cited | RESULTS | RESULTS×2 | — | — |
+| sgwriter1 | sgwriter1_qual_driver.sh | results-cited | RESULTS | RESULTS×4 | — | — |
 | snap | snap_alloc.py | spec-cited | specs | specs×2 | — | 1 |
 | snap | snap_anatomy.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | softnext1 | softnext1_driver.sh | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
@@ -838,7 +838,7 @@ Census: UNCITED 236, library 82, reproduce-pinned 10, results-cited 446, spec-ci
 | harvest | harvest_champion.py | UNCITED | — | — | — | — |
 | harvest | harvest_frontier.py | spec-cited | specs | specs×1 | — | — |
 | list | list_uncurated.py | spec-cited | specs | specs×6 | — | — |
-| liverun | liverun.py | results-cited | RESULTS | RESULTS×5 | — | 1 |
+| liverun | liverun.py | results-cited | RESULTS | RESULTS×6 | — | 1 |
 | log | log_hygiene.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | 1 |
 | markov | markov_eval.py | UNCITED | — | — | — | — |
 | markov | markov_prior.py | UNCITED | — | — | — | — |
