@@ -172,7 +172,7 @@ Census: UNCITED 236, library 81, reproduce-pinned 10, results-cited 441, spec-ci
 | farm | farm_dist_rows.py | results-cited | RESULTS, specs | RESULTS×1, specs×4 | — | 1 |
 | farm | farm_xterm.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | — |
 | farmer | farmer_probe.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — |
-| fb | fb_gate.py | results-cited | RESULTS | RESULTS×4 | — | 3 |
+| fb | fb_gate.py | results-cited | RESULTS | RESULTS×7 | — | 3 |
 | fig | fig_magic_scatter.py | spec-cited | specs | specs×1 | — | — |
 | fixed | fixed_q_snap.py | UNCITED | — | — | — | 1 |
 | floor | floor_hk1.sh | UNCITED | — | — | — | 1 |
