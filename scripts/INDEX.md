@@ -1610,6 +1610,19 @@ SYNTHETIC-GRADIENT-WRITER-1 qualification birth driver. Sibling of the results-c
 - `write_receipt(row, launch_commit)`
 - `main()`
 
+### scratch/birth19m_sg7.py
+SG-BOUNDARY-BLOCK7-1 qualification birth driver. Sibling of the results-cited SYNTHETIC-GRADIENT-WRITER-1 driver scratch/birth19m_sg.py (frozen; the stock loop lines and the bp / dfa / hybrid / zero branches survive here verbatim; the SG-1 branch is replaced by the SG7 branch). Arena: emb + blocks 0..3 frozen exactly at W_0 (dfa_credit.freeze_lower (model, 4), re-verified at the end); blocks 4..6 by EXACT backprop; block 7 by the LOCAL synthetic-credit law of scratch/sg7_credit.py; norm + head by the exact CE gradient (PRE-REG SG-BOUNDARY-BLOCK7-1).
+
+- `sha256_file(p)`
+- `git_head()`
+- `git_dirty()`
+- `now()`
+- `save_snapshot(model, step, record)` — Save the state dict (CPU float32) as step_{n:05d}.pt and record the
+- `save_pred_snapshot(preds, step, record)`
+- `load_constants()` — The fixed arena constant s_7 of OBSERVATION SG-PREDICTOR-AUDIT-0 (block
+- `write_receipt(row, launch_commit)`
+- `main()`
+
 ### scratch/birth19m_snaps.py
 Gallery instrument run: a fresh 19M-class birth with PER-EPOCH snapshots, so the 113M-style growth render (plot_neurons --displace, the recovered whisper-zoom instrument) exists for the 19M line as [R]-reproducible (Artin's ask 2026-08-08; the frozen crystal-era files have no surviving pair). Also feeds the calibrated internet-vs-native displacement comparison (qwen_displace_extract.py made the internet pair).
 
@@ -5277,6 +5290,37 @@ Series rung 1 probe: greedy next-partial-sum emission on the 142 held-out steps 
 
 - `_equiv(q, pred, gold)`
 - `equiv(pred, gold, deadline=10)`
+
+### scratch/sg7_credit.py
+SG-BOUNDARY-BLOCK7-1 credit law (PRE-REG SG-BOUNDARY-BLOCK7-1): a LOCAL boundary writer for block 7 only, over the frozen-random-backbone arena.
+
+- `alibi_slopes(n_heads)`
+- `allowed_mask(arm, key_real)` — [B, T, T] bool: query i may read key j.
+- `class Attn` (forward)
+- `class SeqSG` (forward)
+- `class LocalSG` (forward)
+- `build_local_predictor(mu, sd, seed)`
+- `n_params(m)`
+- `input_stats(model, ids_list, mask_list, labels_list)` — (mu, sd) per feature of [x_8, e] over the eligible tokens of the given
+- `sg7_forward(model, ids, attn_mask)` — Returns (outs, x7, x8_T, x8_L, logits). outs[l] = x_{l+1} for l < 7
+- `sg7_step_terms(model, pred, ids, attn_mask, labels, const7)` — Steps 1 to 3 at the pre-update pair (W_t, phi_t). Returns the dict
+- `forced_total(model, ids, attn_mask, labels)` — The forced-delta^BP endpoint objective: total with hat_delta_7 :=
+
+### scratch/sg7_integrity_smoke.py
+SG-BOUNDARY-BLOCK7-1 integrity smoke: mechanical checks of the SG7 credit law (scratch/sg7_credit.py) on three arena states, one 32-row probe chunk, fp32 CPU; the only optimizer steps are on in-memory copies. States: a fresh seed-11 W_0 (no checkpoint) and the retained seed-27 frozen-BP control at steps 463 and 15,420 (checkpoints/sgwriter1, digests asserted against logs/sgwriter1/qual.jsonl; read-only).
+
+- `grads(params)`
+- `same(a, b)`
+- `fresh(sd, tok, seed, perturb=0.0, mu=None, sdv=None)`
+- `control_grads(model, ids, mask, labels)`
+- `run_state(sd, tok, rows, const7, label)`
+- `main()`
+
+### scratch/sg7_qualgate.py
+SG-BOUNDARY-BLOCK7-1 qualification gate and law (PRE-REG SG-BOUNDARY-BLOCK7-1). Reads logs/sgbb7/qual.jsonl, gates every finished ungated birth with llmopt.lab.gate.gate_eval on mps (the standard 120), appends kind=gate rows, and applies the pure law adjudicate():
+
+- `adjudicate(control, cell)` — control / cell: None (not run) or {'finite': bool, 'gate': int|None}.
+- `main()`
 
 ### scratch/sg_credit.py
 SYNTHETIC-GRADIENT-WRITER-1 credit law (PRE-REG SYNTHETIC-GRADIENT- WRITER-1 L69765, AMENDMENT -ARENA L70126, OBSERVATION SG-PREDICTOR-AUDIT-0 constants, AMENDMENT -SEAL folds A and B). The per-block synthetic hidden error
