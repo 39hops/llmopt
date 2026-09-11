@@ -1,5 +1,9 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
+ "_last_accept": {
+  "paths": [],
+  "reason": "OBSERVATION SG-FAILURE-DESK-0 booking receipts"
+ },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
    "bytes": 3176,
@@ -892,6 +896,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/housekeeping/smoke_prune_inventory_2026-09-11.json": {
+   "bytes": 25008,
+   "exists": true,
+   "sha256": "c7e17fce3e64254722e80c258a076ef818d70fef4862491d19d6c45e8bf89ac3",
+   "source": "results",
+   "tracked": true
+  },
   "logs/k2h/gateladder/ladder_rows.jsonl": {
    "bytes": 228882,
    "exists": true,
@@ -1122,8 +1133,11 @@
    "tracked": true
   },
   "logs/liverun/sgfail0.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 1169,
+   "exists": true,
+   "sha256": "f5f3424479e41e2b242e326f97d5a6d57ae65f8b4a69b79a29c97070bc638edb",
+   "source": "results",
+   "tracked": true
   },
   "logs/liverun/sgwriter1q.jsonl": {
    "bytes": 522,
@@ -4251,16 +4265,32 @@
    "tracked": true
   },
   "logs/sgfail0/desk.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 299035,
+   "exists": true,
+   "sha256": "65e3ed8c8f9effe1f9c4994f76858ed895ea2ea140394c062cbaa1005ba27ac3",
+   "source": "results",
+   "tracked": true
   },
   "logs/sgfail0/desk.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 965,
+   "exists": true,
+   "sha256": "27913d42ecec70cb6ef271eb5d801cc0e66fe09851300ba0ab2c1ceb8ab12010",
+   "source": "results",
+   "tracked": true
   },
   "logs/sgfail0/desk.log": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 13777,
+   "exists": true,
+   "sha256": "3d753f8a11def6de538d50bf26f3f12735b0ab435c72cb6341b339c25243760b",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/sgfail0/labels.json": {
+   "bytes": 47412,
+   "exists": true,
+   "sha256": "bb1301f3fe1e15bcc81a7c9e7bcc03408ef5febccdca222b203b6cccc022680d",
+   "source": "results",
+   "tracked": true
   },
   "logs/sgfail0/smoke.jsonl": {
    "bytes": 23846,

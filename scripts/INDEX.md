@@ -5310,6 +5310,14 @@ SG-FAILURE-DESK-0: zero-main-model-training desk on the retained SYNTHETIC-GRADI
 - `oracle_fits(fit, held)`
 - `main()`
 
+### scratch/sg_failure_labels.py
+SG-FAILURE-DESK-0 descriptive labels, computed from the desk receipt (logs/sgfail0/desk.json) by the sealed thresholds (PRE-REG L70972, AMENDMENT -AUDIT L71096); pure functions over the receipt, no checkpoint is read. Per cell, medians over desk steps >= 463 and blocks 4..7:   linear   = median HELDOUT linear_lstsq held_ratio      GOOD <= 0.5, POOR >= 0.9   richer   = median min(linear_lstsq, rf_ridge_gcv)     GOOD <= 0.5 (while linear > 0.5)   online   = median online_match ratio                   BAD >= 0.9   collapse TARGET: baseline_mse_held < 1e-4 on some block, some step >= 463            RANK:   rank_held[4..7] < 3 on some block, some step >= 463            READOUT: head.weight Frobenius or norm.g L2 outside [0.5x, 2x] of                     the control's at the same step            SG-ONLY: a collapse readout on an SG cell not on the control at that step   branches A: linear GOOD and online BAD;  B: linear not GOOD and richer GOOD;            C: linear POOR and richer POOR;  D: any SG-only collapse. Also the per-lag online prev / next medians, the nonstationarity medians, the block-parameter-gradient cosine range, the MLP coincidence readout (at the first step with baseline_mse_held < 1e-4: rank keys 4..7 and head / norm norms v the control), and the registered-prior inputs. Writes logs/sgfail0/labels.json (refuses to overwrite). Usage: .venv/bin/python scratch/sg_failure_labels.py [desk.json] [labels.json]
+
+- `med(xs)`
+- `steps_ge(states, lo=463)`
+- `labels(rec)`
+- `main()`
+
 ### scratch/sg_integrity_smoke.py
 SYNTHETIC-GRADIENT-WRITER-1 integrity smoke (AMENDMENT -ARENA fold 5 checks (a) to (g), AMENDMENT -SEAL fold A check (h) and the two endpoint checks (i), (j)); mechanical; the only optimizer steps it takes are on a COPY of a smoke checkpoint. Cases: the frozenbb1_smoke FROZEN final (seed 11; arena shape: emb + blocks 0..3 frozen, SG blocks 4..7, arena constants) and the FULL final in full-stack mode (SG blocks 0..7, full-stack constants), each with LINEAR and MLP-256, one 32-row probe chunk.
 

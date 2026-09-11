@@ -71178,3 +71178,168 @@ readouts), the interpretation tree, the registered prior. A SMOKE_TAG
 env gives every smoke rerun a new receipt path (a booked smoke
 receipt is never appended to). No birth is authorized by this entry;
 the desk follows the clean re-audit.
+
+## OBSERVATION SG-FAILURE-DESK-0: on the retained SYNTHETIC-GRADIENT-WRITER-1 states the registered per-token map (x_{l+1}, e_t) -> delta^BP_l is NOT representable by the closed-form oracles even on the healthy frozen-BP control (least-squares HELDOUT ratio 0.31 at step 463 rising to 0.95 to 1.09 from step 3,084 on; the richer random-feature oracle 0.95 median), the online predictors are BAD on all four SG cells (median matching ratio 1.10 to 1.19; on the LINEAR cells no tracking lag: phi_t fits the previous and next snapshots no better), and the two MLP-256 cells show an SG-only representation collapse (effective rank 1.0 at all four SG blocks at step 463 on the 3e-4 cell with the control at 22 to 33, degenerate covariance at 29 of the 32 later block-steps; the 3e-5 cell falls from rank 5.7 to 2.4 and degenerates by step 5,140) that coincides with the target fall (baseline 1e-8 to 1e-17) while head.weight and norm.g at the fall step stay within 9 % of the control's: branch C (formulation) holds on both MLP cells, branch D (SG-only collapse) on both, branch B (richer oracle 0.50 / 0.495 against linear 1.07 / 1.08) at the label edge on the LINEAR cells, branch A on none; prior 4 hits 4 misses (2026-09-11 local, Mac; zero main-model training; descriptive, no bar; keep set proposed, not executed)
+
+Target: PRE-REG SG-FAILURE-DESK-0 (L70972) + AMENDMENT -AUDIT (L71096).
+Run sgfail0 under liverun at HEAD 1e0fcae4, clean tree (a first
+launch seconds earlier was aborted by the operator because it sat
+under the harness's ten-minute task cap: the child had exited, no
+desk.json was written, the stale sentinel was recovered with a
+receipt in logs/liverun/sgfail0.jsonl, and the desk was relaunched
+detached), 14:37:35 to 14:54:45 UTC, 1,030 s; 46 model states and 36
+predictor states read with every digest asserted against
+logs/sgwriter1/qual.jsonl; source_sha256 7df902ea... = the sealed
+instrument (the sha the smoke_audit3 receipt carries); FIT chunks
+{0, 2, 4, 6} (6,740 eligible tokens), HELDOUT {1, 3, 5, 7} (9,150).
+Labels computed by scratch/sg_failure_labels.py (pure function of
+desk.json, unit-tested; logs/sgfail0/labels.json); every figure below
+is copied from desk.json / labels.json.
+
+(1) INSTANTANEOUS REPRESENTABILITY (HELDOUT least-squares ratio,
+median over blocks 4..7; the richer oracle = min(linear, random-
+feature ridge)):
+- CONTROL (frozen-BP): 0.31 (step 463), 0.73 (1,028), 0.87 (2,056),
+  0.95 (3,084), 0.99 (5,140), 1.08 (7,196), 1.09 (10,280), 1.05
+  (12,336), 1.04 (15,420); median 0.99 = POOR; richer 0.95 median
+  (0.31 to 1.04). On the healthy BP reference the target
+  delta^BP_l(t) is explained by [x_{l+1}(t), e(t)] only in the first
+  thousand steps and not at all once the model has trained.
+- LINEAR 3e-4 / 3e-5 cells: linear 0.95 to 1.14 at every step, medians
+  1.07 / 1.08 (worse than predicting zero on HELDOUT); richer 0.08 /
+  0.06 at step 463 rising, with one late dip in each cell, to 0.80 /
+  0.83 at the final,
+  medians 0.503 / 0.495. Branch B holds on the 3e-5 cell by 0.005 and
+  misses on the 3e-4 cell by 0.003: a label-edge reading, reported as
+  such; the richer oracle's early success tracks the low effective
+  rank of those states (4 to 9 at step 463) rather than any
+  representability of the target on healthy states.
+- MLP-256 3e-4 / 3e-5 cells: linear per-step medians 0.96 to 0.99 (3e-4)
+  and 0.83 to 1.12 (3e-5); the richer oracle fits the pre-collapse
+  states (0.44 at step 463 on 3e-4; 0.05 to 0.36 at steps 463 to 3,084
+  on 3e-5) and equals the linear on the collapsed ones; cell medians
+  linear 0.98 / 0.98, richer 0.98 / 0.97; the
+  random-feature GCV sat at the grid floor on 19 and 20 of the 36 fits per cell
+  (degenerate designs), disclosed; branch C holds on both.
+
+(2) ONLINE PREDICTOR TRACKING (phi_t on HELDOUT at W_t, median over
+blocks): LINEAR 3e-4 1.16 / 1.71 / 1.51 / 1.60 / 1.31 / 1.15 / 1.07 /
+1.03 / 1.00 at the nine desk steps (median 1.19); LINEAR 3e-5 1.41 /
+1.57 / 1.28 / 1.18 / 1.12 / 1.13 / 1.07 / 1.03 / 1.00 (median 1.16);
+MLP-256 3e-4 837 / 2.2e5 / 7.7e5 / 4.2e4 / 1.10 / 1.005 / 1.01 / 1.005
+/ 1.002 (median 1.10); MLP-256 3e-5 1.03 / 1.07 / 1.12 / 1.05 / 2.1e4
+/ 6.0e3 / 2.1e5 / 1.47 / 1.002 (median 1.12). Online BAD on all four.
+No tracking lag: phi_t scored on the previous snapshot (lags 565 to
+3,084) gives 1.0 to 2.6 on the LINEAR cells and on the next snapshot
+1.0 to 5.8, at or above the matching ratio at every step; on the MLP
+cells the next-snapshot ratios explode once the next state has
+collapsed (4e18 to 7e24 on 3e-4 from step 463; 17 to 37 on 3e-5 before
+its fall, 2e19 to 3e23 from step 3,084) because the next state's
+target has fallen to 1e-13 while phi_t still emits credit; on the
+collapsed MLP 3e-4 states the previous snapshot fits marginally better
+than the match at three steps (1.01 v 1.10 at 5,140). Target nonstationarity cos(Y_t, Y_next) 0.40 to
+0.81 on the LINEAR cells (median per step 0.40 to 0.81), 0.94 to 1.00
+on the collapsed MLP states (0.47 to 0.75 on 3e-5 before its fall). The applied credit's hidden-error cosine
+cos(hat_delta, delta^BP) stays within [-0.048, 0.093] on every SG block
+of every state (hat / delta RMS per-step medians 0.04 to 0.87 on the
+LINEAR cells).
+
+(3) DYNAMICS AND THE BLOCK-PARAMETER GRADIENT: cos(J^T hat_delta, true
+gradient) per block: LINEAR cells within [-0.38, 0.47] (3e-4: -0.12 to
+0.46; 3e-5: -0.38 to 0.47), mostly 0.0 to 0.3, i.e. the credit that
+reaches the block parameters is weakly aligned with the true gradient
+even though the hidden-error cosine is near zero; MLP-256 3e-4 from
+step 7,196 on: -0.26 to -0.96 (blocks 5..7 -0.74 to -0.96 at every
+late step; block 4 -0.67 / -0.89 then weakening to -0.36 / -0.26 at
+the last two): the credit opposes the true gradient on the collapsed
+state; MLP-256 3e-5 at the final -0.75
+to -0.77 on blocks 4..6. Effective rank of the SG-block outputs
+(HELDOUT): control 16 to 52 (block 4 rising 29 -> 46, block 7 falling
+22 -> 16); LINEAR 3e-4 6.5 to 9.3 at step 463 rising to 27 to 39 at the
+final; LINEAR 3e-5 4.1 to 4.9 rising to 18 to 24; MLP-256 3e-4 1.000 to
+1.001 at all four blocks at step 463 and NOT RESOLVABLE (negative
+eigenvalue beyond the ACT tolerance: a degenerate covariance) at 29 of
+the 32 later block-steps, 1.0 at the other three; MLP-256 3e-5 2.3 to 2.4 at
+step 463, 5.2 to 6.1 at 1,028 to 2,056, 2.4 to 3.8 at 3,084, NOT
+RESOLVABLE from 5,140 on. Target scale (HELDOUT baseline, block 4):
+control 1.5 -> 0.52; LINEAR 0.019 -> 0.091 and 0.0022 -> 0.022; MLP
+3e-4 2.4e-8 at 463, 1e-13 to 1e-17 after; MLP 3e-5 3.1e-3 -> 1.6e-4
+(3,084) -> 3e-14 (5,140) -> 6e-17. head.weight Frobenius: control 3.9
+-> 6.2; LINEAR 3.7 -> 7.6 / 7.8; MLP 3.8 -> 4.2 / 3.7 -> 5.7; norm.g L2
+18.5 to 20.4 on every cell; no READOUT collapse fires (all within
+[0.5x, 2x] of the control). Probe CE (HELDOUT): control 0.92 -> 0.35;
+LINEAR 1.71 -> 0.84 / 1.83 -> 0.93; MLP 2.87 -> 2.98 / 2.37 -> 2.98.
+
+COINCIDENCE READOUT (registered): MLP-256 3e-4, first desk step with
+baseline < 1e-4 = 463: rank 1.000 / 1.001 / 1.001 / 1.001 at blocks
+4..7 v the control's 28.6 / 33.1 / 30.9 / 21.6; head.weight 0.98x and
+norm.g 0.99x the control's; probe CE 2.87 v 0.92. MLP-256 3e-5, first
+step = 5,140: rank NOT RESOLVABLE at all four blocks (2.4 to 3.8 at
+the previous desk step 3,084) v the control's 47.7 / 36.5 / 46.4 /
+17.3; head 1.09x, norm.g 0.96x; CE 3.00 v 0.43. The target fall
+coincides with a representation collapse of the SG-block outputs and
+NOT with a readout collapse (head / norm norms within 9 % of the
+control). Branch D holds on both MLP cells (SG-only TARGET on 36 / 20
+block-steps, SG-only RANK on 7 / 6 resolvable block-steps, READOUT on
+none); the control fires no collapse readout.
+
+BRANCH LABELS (labels.json): control: linear POOR, richer POOR, no
+collapse. LINEAR 3e-4: A no, B no (richer 0.503), C no (richer 0.503 <
+0.9), D no. LINEAR 3e-5: A no, B YES (0.495), C no, D no. MLP-256 3e-4:
+A no, B no, C YES, D YES. MLP-256 3e-5: A no, B no, C YES, D YES.
+Reading under the registered tree, descriptive: branch A (tracking /
+optimizer / timescale failure with SG live) holds nowhere, because the
+linear oracle is not GOOD on any cell, control included; branch C
+holds on the MLP cells and, on the control reference, the linear
+family is POOR at every trained state; branch B on the LINEAR cells is
+a label-edge result whose richer-oracle fits are strongest exactly
+where the states are lowest-rank; branch D holds on both MLP cells.
+What the desk supports descriptively: the current per-token (x_{l+1},
+e_t) -> delta^BP_l formulation is not representable by a linear or a
+2048-feature oracle on healthy states, so the online predictors'
+failure is not a tracking failure; and the MLP cells' target fall is
+supported descriptively as a self-induced representation collapse of
+the credited blocks, not a readout collapse. What it does not establish: why the target is not
+representable (a candidate, untested: delta^BP_l(t) depends on the
+downstream attention over other positions, which (x_{l+1}(t), e(t))
+does not carry; a per-sequence or cross-position predictor input is a
+different formulation), or whether any other SG formulation would
+qualify; no mechanism claim; no birth.
+
+REGISTERED PRIOR, scored: linear median on the LINEAR cells 0.3 to
+0.9: MISS (1.07 / 1.08). Richer within 0.1 of the linear: MISS (0.50 v
+1.07). Online BAD on all four: HIT. MLP target fall coincides with
+rank < 3 at blocks 4..7: HIT on the 3e-4 cell (rank 1.0); on the 3e-5
+cell the rank at the fall step is NOT RESOLVABLE (2.4 to 3.8 one desk
+step earlier), scored as the same HIT direction with the caveat.
+Control collapse none: HIT. Block-parameter-gradient cosine on the
+LINEAR cells within [-0.2, 0.2] at every step >= 1,028: MISS (0.47 and
+0.43 reached on the 3e-5 cell; 0.27 on the 3e-4 cell). Branch A on some cell: MISS. Branch C on some cell:
+HIT. Eight directions: 4 hits, 4 misses. Family record: 16 hits, 14
+misses.
+
+KEEP SET PROPOSED for checkpoints/sgwriter1/ (6.5 GB; not executed
+under this GO): per cell step_00463, step_03084, step_05140,
+step_15420 (= final) with the matching pred_step files, plus the
+control's step_00000 (the shared W_0) and every cell's final.pt (same
+state digest as step_15420, a different file; keep one of the two): 5 x 4 model files + 4 x 4
+predictor files + W_0 = about 1.6 GB, covering the first target-fall
+states of both MLP cells (463; 3,084 -> 5,140), the mid-trajectory and
+the final; the other 12 snapshots per cell removed after a 0-mismatch
+digest inventory. HOUSEKEEPING (Artin GO, executed): the three smoke
+checkpoint trees pruned after a 0-mismatch inventory
+(logs/housekeeping/smoke_prune_inventory_2026-09-11.json).
+
+RECEIPTS (force-added and locked in the booking commit):
+logs/sgfail0/desk.json, logs/sgfail0/desk.jsonl, logs/sgfail0/desk.log,
+logs/sgfail0/labels.json, logs/liverun/sgfail0.jsonl,
+logs/housekeeping/smoke_prune_inventory_2026-09-11.json; already
+locked with the pre-reg and its audit: logs/sgfail0/smoke.jsonl,
+logs/sgfail0/smoke_audit.jsonl, logs/sgfail0/smoke_audit2.jsonl,
+logs/sgfail0/smoke_audit3.jsonl. Fences:
+descriptive; one seed, one probe, nine desk snapshots of seventeen,
+fp64 CPU reference values; the HELDOUT score is an interleaved-
+difficulty generalization readout; the oracles are frozen-state fits,
+not training runs; branch labels are the registered thresholds, not
+bars; nothing here revises L70832; no birth of any kind is
+authorized.
