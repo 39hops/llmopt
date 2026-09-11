@@ -72,18 +72,25 @@ def test_output_zero_init(mod):
     assert mod.n_params(pm) < 1_000_000
 
 
-def _rec(rc, loc, nonfinite=()):
+def _rec(rc, loc, nonfinite=(), fit=0.2, pc=None, rc463=0.1):
     st = {}
+    pc = pc or {"1": 0.4, "3": 0.4, "5": 0.4, "7": 0.8}
     for s in [0, 463] + list(__import__("sg_crosspos_desk").LATE_STEPS):
-        st[str(s)] = {"blocks": {str(l): {"reverse_causal": {"held_ratio": rc, "nonfinite": (s, l) in nonfinite},
-                                          "local": {"held_ratio": loc, "nonfinite": False}} for l in [4, 5, 6, 7]}}
+        st[str(s)] = {"blocks": {str(l): {"reverse_causal": {"held_ratio": rc if s != 463 else rc463, "nonfinite": (s, l) in nonfinite, "fit_ratio": fit, "held_ratio_per_chunk": pc},
+                                          "local": {"held_ratio": loc, "nonfinite": False, "fit_ratio": 0.9}} for l in [4, 5, 6, 7]}}
     return {"states": st}
 
 
 def test_adjudicate_fires_and_no_fire(mod):
     assert mod.adjudicate(_rec(0.5, 1.0))["bar_1"] == "FIRES"
     a = mod.adjudicate(_rec(0.51, 1.0))
-    assert a["bar_1"] == "NO-FIRE" and a["n_late_cells"] == 24 and a["late_median_local"] == 1.0
+    assert a["bar_1"] == "NO-FIRE" and a["n_late_cells"] == 24 and a["late_median_local_paired"] == 1.0 and a["n_paired"] == 24
+    assert abs(a["late_median_gap_rc_minus_local"] + 0.49) < 1e-12 and a["priors"] == {
+        "p2_local_late_median_ge_0.9": True, "p3_rc_below_local_by_0.2": True, "p4_chunk7_worse_in_ge_18_of_24": True,
+        "p5_step463_rc_le_0.3_all_blocks": True, "p6_rc_late_median_fit_ratio_le_0.5": True, "p1_bar_1_fires": False}
+    b = mod.adjudicate(_rec(0.8, 0.9, fit=0.6, pc={"1": 0.9, "3": 0.9, "5": 0.9, "7": 0.7}, rc463=0.31))["priors"]
+    assert b == {"p2_local_late_median_ge_0.9": True, "p3_rc_below_local_by_0.2": False, "p4_chunk7_worse_in_ge_18_of_24": False,
+                 "p5_step463_rc_le_0.3_all_blocks": False, "p6_rc_late_median_fit_ratio_le_0.5": False, "p1_bar_1_fires": False}
 
 
 def test_adjudicate_not_resolvable(mod):
@@ -91,4 +98,4 @@ def test_adjudicate_not_resolvable(mod):
     a = mod.adjudicate(_rec(0.1, 1.0, nonfinite=set(bad)))
     assert a["bar_1"] == "NOT-RESOLVABLE" and a["n_not_resolvable"] == 5
     a = mod.adjudicate(_rec(0.1, 1.0, nonfinite=set(bad[:4])))
-    assert a["bar_1"] == "FIRES" and a["n_not_resolvable"] == 4
+    assert a["bar_1"] == "FIRES" and a["n_not_resolvable"] == 4 and a["n_paired"] == 20

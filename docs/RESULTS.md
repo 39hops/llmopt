@@ -71495,3 +71495,61 @@ docs/preregs/sg-crosspos-representability-0.json.
 bootstrapped targets, MeZO, target propagation, equilibrium
 propagation, seed-2 discovery, mechanism work, or any predictor whose
 input is not the per-block sequence Z_j at j >= i.
+
+## AMENDMENT SG-CROSSPOS-REPRESENTABILITY-0-AUDIT (target: PRE-REG SG-CROSSPOS-REPRESENTABILITY-0 L71347): clean-tree prereg-auditor folds before the desk runs — two motivation misquotes corrected against logs/sgfail0/desk.json (late least-squares range on blocks 4..6 is 0.89 to 1.10, not 0.95 to 1.11; the random-feature late range 0.99 to 1.18 is a blocks-4..6 range, blocks 4..5 alone read 1.07 to 1.18), the FIRES consequence restated at the family level (the bar is an absolute reverse-causal median and the same-position closed-form oracle already reads 0.29 to 0.34 on block 7 late, so a FIRES licenses "the reverse-causal sequence family reaches GOOD", and the paired per-cell gap reverse_causal - local stays the descriptive attribution readout), adjudicate() now computes the paired gap and priors 2..6 from the receipt fields (no hand arithmetic at booking), the smoke provenance reworded (sealed instrument sha, pre-commit dirty tree), two more source shas receipted; no threshold, aggregation, capacity, budget or prior change; nothing read from a retained checkpoint (2026-09-11 local, Mac; no birth authorized)
+
+Auditor (Opus 5, clean worktree at f1b05046): no blocker, five
+should-fixes, six notes. Each verified against the receipt before
+folding.
+
+1. Motivation, least-squares late range (L71361): the receipt's
+   linear_lstsq HELDOUT ratio over the six late steps x blocks 4..6 is
+   0.894 (step 3,084 block 6) to 1.104; the prose said 0.95 to 1.11.
+   Corrected reading: 0.89 to 1.10. The step-463 range 0.05 to 0.53 and
+   the block-7 random-feature range 0.29 to 0.34 verified.
+2. Motivation, random-feature block label (L71363): 0.99 to 1.18 is the
+   blocks-4..6 late range (0.990 to 1.175); blocks 4..5 alone read 1.065
+   to 1.175. Corrected reading: "0.99 to 1.18 on blocks 4..6".
+3. FIRES consequence (L71437): the bar is the absolute reverse_causal
+   median; the local arm carries no consequence. Six of the 24 bar cells
+   (block 7 at every late step) are already GOOD for the same-position
+   closed-form oracle (0.286 to 0.339). A FIRES therefore establishes
+   that the reverse-causal sequence predictor family reaches GOOD on the
+   healthy control's late states, not by itself that cross-position
+   access is what reaches it; that attribution is read from the paired
+   per-cell gap (registered prior 3) and stays descriptive. The
+   licensing consequence (bank a SEQUENCE-SG seed-28 design for a
+   separate GO) is unchanged, as is the NO-FIRE closure. Artin's
+   criterion ("cross-position heldout zero-baseline ratio must reach
+   GOOD on the healthy control") is the bar as sealed.
+4. adjudicate() extended (scratch/sg_crosspos_desk.py): the PAIRED
+   per-cell gap reverse_causal - local (median over the cells where both
+   arms are finite; n_paired receipted), the local median over the same
+   paired set (replacing the unpaired late_median_local), the
+   reverse_causal late median fit_ratio, the count of late cells whose
+   chunk-7 HELDOUT ratio exceeds each of chunks 1 / 3 / 5, the step-463
+   reverse_causal ratios, and the resolved booleans of priors 1..6 are
+   emitted in the receipt's adjudication block. Test extended (both
+   prior polarities on fixtures; n_paired under nonfinite cells). Bar
+   law unchanged (FIRES at 0.5, NO-FIRE at 0.51, NOT-RESOLVABLE at 5).
+5. Smoke provenance (L71480): logs/sgxpos0/smoke.jsonl was written
+   pre-commit on a dirty tree at f2150606 (tree_dirty true, derived);
+   its three instrument shas equal the sealed files' shas (auditor
+   recomputed). The fold-run re-smoke at the extended instrument is
+   logs/sgxpos0/smoke_audit.jsonl (06ceffe0, dirty tree, derived):
+   block 4 reverse_causal held ratio 0.9923082649551898, bit-identical
+   to the sealed smoke's value (the fold touched adjudication and
+   receipt fields only).
+Notes adopted: dfa_probe.py and dfa_credit.py shas now receipted; an
+unused walrus removed; the per-step loss weights the four FIT chunks
+equally (one padded chunk per step, 856 to 2,787 eligible tokens) is
+stated here as part of the fit law; the wall estimate ignores the
+quadratic attention cost of the 275-token HELDOUT chunk in the
+25-epoch evaluations, so the 2 h figure may overshoot (the readout is
+unaffected; the desk runs under nohup + Monitor). Not adopted: folding
+the paired gap into the bar (a bar change against the sealed
+criterion; the gap stays descriptive, item 3).
+
+Receipts: logs/sgxpos0/smoke_audit.jsonl (locked with this entry).
+Nothing scientific beyond items 1 to 3 changes; the desk has not run;
+no retained checkpoint has been opened; no birth authorized.

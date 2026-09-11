@@ -249,28 +249,56 @@ def fit_arm(fit, held, l, arm, seed):
 def adjudicate(rec):
     """BAR-1 over LATE_STEPS x SG_BLOCKS of the control's reverse_causal
     held_ratio: FIRES if the median <= BAR_GOOD; NOT-RESOLVABLE if more than
-    MAX_NONFINITE cells are nonfinite / missing. Descriptive beside it: the
-    local arm's median and the per-cell gap."""
+    MAX_NONFINITE cells are nonfinite / missing. Beside it (descriptive, no
+    consequence): the PAIRED per-cell gap reverse_causal - local over the
+    cells where both arms are finite, the local median over the same
+    paired set, and the registered priors 2..6 computed from the receipt
+    fields (never by hand at booking)."""
     st = rec["states"]
-    rc, loc, bad = [], [], []
+
+    def cell(s, l):
+        return st.get(str(s), {}).get("blocks", {}).get(str(l))
+
+    def ok(a):
+        return a is not None and not a["nonfinite"] and a["held_ratio"] is not None and math.isfinite(a["held_ratio"])
+
+    rc, bad, gaps, loc_paired, fits, chunk7_worse = [], [], [], [], [], 0
     for s in LATE_STEPS:
         for l in SG_BLOCKS:
-            cell = st.get(str(s), {}).get("blocks", {}).get(str(l))
-            r = None if cell is None else cell["reverse_causal"]["held_ratio"]
-            if cell is None or cell["reverse_causal"]["nonfinite"] or r is None or not math.isfinite(r):
+            c = cell(s, l)
+            a = None if c is None else c["reverse_causal"]
+            if not ok(a):
                 bad.append([s, l])
                 continue
-            rc.append(r)
-            lr_ = cell["local"]["held_ratio"]
-            loc.append(lr_ if (lr_ is not None and math.isfinite(lr_) and not cell["local"]["nonfinite"]) else None)
+            rc.append(a["held_ratio"])
+            fits.append(a["fit_ratio"])
+            pc = a.get("held_ratio_per_chunk", {})
+            if all(k in pc and pc[k] is not None for k in ("1", "3", "5", "7")) and all(pc["7"] > pc[k] for k in ("1", "3", "5")):
+                chunk7_worse += 1
+            b = c["local"]
+            if ok(b):
+                gaps.append(a["held_ratio"] - b["held_ratio"])
+                loc_paired.append(b["held_ratio"])
+    s463 = [cell(463, l) for l in SG_BLOCKS]
+    s463_rc = [c["reverse_causal"]["held_ratio"] for c in s463 if c is not None and ok(c["reverse_causal"])]
     out = {"n_late_cells": len(LATE_STEPS) * len(SG_BLOCKS), "n_not_resolvable": len(bad), "not_resolvable_cells": bad,
            "late_median_reverse_causal": statistics.median(rc) if rc else None,
-           "late_median_local": statistics.median([x for x in loc if x is not None]) if any(x is not None for x in loc) else None,
-           "late_min_reverse_causal": min(rc) if rc else None, "late_max_reverse_causal": max(rc) if rc else None}
+           "late_min_reverse_causal": min(rc) if rc else None, "late_max_reverse_causal": max(rc) if rc else None,
+           "n_paired": len(gaps), "late_median_local_paired": statistics.median(loc_paired) if loc_paired else None,
+           "late_median_gap_rc_minus_local": statistics.median(gaps) if gaps else None,
+           "late_median_fit_ratio_reverse_causal": statistics.median(fits) if fits else None,
+           "n_late_cells_chunk7_worse_than_1_3_5": chunk7_worse,
+           "step463_reverse_causal": s463_rc, "n_step463_cells": len(s463_rc)}
+    out["priors"] = {"p2_local_late_median_ge_0.9": (out["late_median_local_paired"] >= 0.9) if out["late_median_local_paired"] is not None else None,
+                     "p3_rc_below_local_by_0.2": (out["late_median_gap_rc_minus_local"] <= -0.2) if out["late_median_gap_rc_minus_local"] is not None else None,
+                     "p4_chunk7_worse_in_ge_18_of_24": chunk7_worse >= 18,
+                     "p5_step463_rc_le_0.3_all_blocks": (len(s463_rc) == len(SG_BLOCKS) and all(v <= 0.3 for v in s463_rc)),
+                     "p6_rc_late_median_fit_ratio_le_0.5": (out["late_median_fit_ratio_reverse_causal"] <= 0.5) if fits else None}
     if len(bad) > MAX_NONFINITE:
         out["bar_1"] = "NOT-RESOLVABLE"
     else:
         out["bar_1"] = "FIRES" if out["late_median_reverse_causal"] <= BAR_GOOD else "NO-FIRE"
+    out["priors"]["p1_bar_1_fires"] = out["bar_1"] == "FIRES"
     return out
 
 
@@ -293,6 +321,7 @@ def main():
            "source_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
            "credit_source_sha256": hashlib.sha256(Path("scratch/sg_credit.py").read_bytes()).hexdigest(),
            "failure_desk_source_sha256": hashlib.sha256(Path("scratch/sg_failure_desk.py").read_bytes()).hexdigest(),
+           "probe_source_sha256": hashlib.sha256(Path("scratch/dfa_probe.py").read_bytes()).hexdigest(), "dfa_credit_source_sha256": hashlib.sha256(Path("scratch/dfa_credit.py").read_bytes()).hexdigest(),
            "probe_token_digest": probe_digest, "cell": CONTROL_CELL if not SMOKE else "random_init_smoke", "fit_chunks": FIT_CHUNKS, "held_chunks": HELD_CHUNKS,
            "desk_steps": DESK_STEPS, "late_steps": LATE_STEPS, "arms": ARMS, "arch": {"d_in": D_IN, "d": D_PRED, "layers": N_LAYERS, "heads": N_HEADS, "ffn": D_FFN, "d_out": D_OUT, "alibi_slopes": alibi_slopes(N_HEADS).tolist(), "n_params": n_params(SeqSG())},
            "fit": {"epochs": EPOCHS, "lr": LR, "wd": WD, "pct_start": PCT_START, "clip": CLIP, "z_clip": Z_CLIP, "seed_base": SEED_BASE, "steps_per_epoch": len(FIT_CHUNKS), "loss": "elementwise MSE over eligible positions x hidden dims"},
@@ -312,7 +341,7 @@ def main():
         held = seq_arrays(model, tok, rows, HELD_CHUNKS, consts)
         srec = {"path": path, "state_digest": digest, "n_fit": sum(c["n_elig"] for c in fit), "n_held": sum(c["n_elig"] for c in held),
                 "probe_ce_fit": sum(c["ce"] for c in fit) / len(fit), "probe_ce_held": sum(c["ce"] for c in held) / len(held),
-                "baseline_mse_held": {str(l): sum(float((c["Y"][l] ** 2)[c["elig"]].sum()) for c in held) / (srec_n := sum(c["n_elig"] for c in held)) / D_OUT for l in SG_BLOCKS}, "blocks": {}}
+                "baseline_mse_held": {str(l): sum(float((c["Y"][l] ** 2)[c["elig"]].sum()) for c in held) / sum(c["n_elig"] for c in held) / D_OUT for l in SG_BLOCKS}, "blocks": {}}
         del model
         for l in SG_BLOCKS:
             brec = {}
@@ -333,7 +362,7 @@ def main():
         OUT.write_text(json.dumps(rec, indent=1))
         with (OUT_DIR / "desk.jsonl").open("a") as f:
             f.write(json.dumps({k: v for k, v in rec.items() if k != "states"} | {"n_states": len(rec["states"])}) + "\n")
-        print(f"[sgxpos] written {OUT}; BAR-1 {rec['adjudication']['bar_1']} (late median rc {rec['adjudication']['late_median_reverse_causal']}, local {rec['adjudication']['late_median_local']})")
+        print(f"[sgxpos] written {OUT}; BAR-1 {rec['adjudication']['bar_1']} (late median rc {rec['adjudication']['late_median_reverse_causal']}, paired gap {rec['adjudication']['late_median_gap_rc_minus_local']})")
 
 
 if __name__ == "__main__":
