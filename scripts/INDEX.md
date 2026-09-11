@@ -5298,8 +5298,7 @@ SG-FAILURE-DESK-0: zero-main-model-training desk on the retained SYNTHETIC-GRADI
 - `rms(v)`
 - `cos_pooled(a, b)`
 - `ratio(y, yhat)`
-- `ridge_fit(X, Y, lam)` — W = (X^T X + lam I)^-1 X^T Y in float64; lam 0 -> least squares by pinv.
-- `rel_lambda(X)`
+- `ridge_fit(X, Y, lam)` — W = (X^T X + lam I)^-1 X^T Y in float64; lam 0 -> least squares by
 - `gcv_ridge(X, Y)` — Ridge with lambda chosen by generalized cross-validation on the FIT
 - `rf_features(HE, gen_seed=RF_SEED, width=RF_WIDTH)`
 - `rf_design(X_lin, mu, sd)` — The richer oracle's design: [X_lin (incl. bias), relu(Z Omega + b)] with
@@ -5336,6 +5335,12 @@ SG-PREDICTOR-AUDIT-0: zero-main-model-training audit of the true backprop hidden
 - `audit_state(sd, tok, rows, blocks, n_chunks=None)`
 - `geo_mean(xs)`
 - `constants(states)` — Registered rule: s_l = geometric mean of RMS_l(delta) over the FROZEN
+- `main()`
+
+### scratch/smoke_prune.py
+Housekeeping prune of the three SMOKE checkpoint trees (Artin GO 2026-09-11, after SG-FAILURE-DESK-0): checkpoints/frozenbb1_smoke/, checkpoints/sgwriter1_smoke/, checkpoints/sgwriter1_smoke_seal2/. For every file under each tree the sha256 (and, for step_/final/pred_ files, the canonical state digest) is re-read and matched against the smoke receipt that booked it (logs/frozenbb1/smoke.jsonl, logs/sgwriter1/smoke.jsonl, logs/sgwriter1/smoke_seal2.jsonl); the inventory is written to logs/housekeeping/smoke_prune_inventory_<date>.json (refuses to overwrite); any mismatch or any file without a receipt row ABORTS before anything is removed; on 0 mismatches every file and the trees are removed. The registered checkpoints/sgwriter1/ and checkpoints/frozenbb1/ keep sets are never touched. Usage: .venv/bin/python scratch/smoke_prune.py
+
+- `expected(b, name)`
 - `main()`
 
 ### scratch/snap_alloc.py

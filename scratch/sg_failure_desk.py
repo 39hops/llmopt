@@ -6,17 +6,21 @@ Distinguishes, per SG cell, snapshot and SG block l in 4..7:
  (1) INSTANTANEOUS REPRESENTABILITY: a deterministic float64 closed-form
      oracle from the registered predictor inputs [h_l, e, 1] to the
      normalized target Y = delta^BP_l / s_l, fitted on the FIT half of the
-     frozen probe (chunks 0..3) and scored on the disjoint HELDOUT half
-     (chunks 4..7): (a) LINEAR least squares (lambda 0, pinv; primary:
-     n_fit of about 8k tokens against d_in 425), (b) LINEAR ridge with
-     lambda chosen by closed-form GCV on the FIT set over the relative grid
-     GCV_GRID_REL (conditioning check), (c) a RICHER frozen-state oracle:
-     ridge on [X, relu(Z Omega + b)] with Z the FIT-standardized [h, e],
+     frozen probe (the even chunks 0, 2, 4, 6) and scored on the disjoint
+     HELDOUT half (the odd chunks 1, 3, 5, 7; the chunks are curriculum /
+     length ordered, so the halves interleave the difficulty ladder):
+     (a) LINEAR least squares (pinv with singular values below 1e-6 of
+     the largest truncated; primary: n_fit 6,740 tokens against d_in 425), (b) LINEAR ridge with lambda chosen by
+     closed-form GCV on the FIT set over the relative grid GCV_GRID_REL on
+     the non-null eigen-directions (conditioning check, for the record),
+     (c) a RICHER frozen-state oracle:
+     ridge on [X, relu(Z Omega + b)] with Z the FIT-standardized [h, e]
+     clipped to [-3, 3],
      RF_WIDTH random features, Omega ~ N(0, 1 / sqrt(d_in)), seed RF_SEED
-     (the richer family contains the linear one), lambda by the same GCV
-     law (a fixed 1e-6 relative ridge overfit 2049 features on
-     the smoke's 2k fit tokens: held ratio 14 to 26). Reported: heldout
-     normalized MSE / zero-
+     (the richer family contains the linear one as a function class; a
+     single shared lambda can still under-use it, so the branch B / C
+     readout is min(linear_lstsq, rf_ridge_gcv)), lambda by the same GCV
+     law. Reported: heldout normalized MSE / zero-
      baseline ratio (sum ||Y - Yhat||^2 / sum ||Y||^2), heldout pooled
      cosine, and the fit-set ratio (under / over-fit readout).
  (2) ONLINE PREDICTOR TRACKING: the saved phi_t (pred_step_t.pt) scored on
@@ -32,7 +36,8 @@ Distinguishes, per SG cell, snapshot and SG block l in 4..7:
      true gradient is the frozen-top backprop gradient of the same state),
      residual effective rank of x_{l+1} for all eight blocks (the P3 / ACT
      law, dfa_act.effective_rank, HELDOUT eligible tokens), output-error
-     RMS, head.weight Frobenius norm, norm.g L2 norm, the probe CE.
+     gradient (dL/dlogits) RMS, head.weight Frobenius norm, norm.g L2 norm,
+     the probe CE.
 Snapshots: DESK_STEPS per cell (step 0 once: the shared W_0, asserted
 equal across the five cells). Every state digest is asserted against
 logs/sgwriter1/qual.jsonl before it is read. Writes logs/sgfail0/desk.json
@@ -42,6 +47,7 @@ chunks 0..1, HELDOUT 2..3, logs/sgfail0/smoke.jsonl only.
 Usage: .venv/bin/python scratch/sg_failure_desk.py
 """
 import datetime
+import hashlib
 import json
 import math
 import os
@@ -68,13 +74,14 @@ from sg_credit import build_predictors, teacher_targets, writer_forward  # noqa:
 SMOKE = os.environ.get("SMOKE", "0") == "1"
 BIRTHS = Path("logs/sgwriter1/smoke_seal2.jsonl" if SMOKE else "logs/sgwriter1/qual.jsonl")
 OUT_DIR = Path("logs/sgfail0")
-OUT = OUT_DIR / ("smoke.jsonl" if SMOKE else "desk.json")
+SMOKE_TAG = os.environ.get("SMOKE_TAG", "")
+assert not SMOKE_TAG or SMOKE, "SMOKE_TAG is smoke-only"
+OUT = OUT_DIR / (f"smoke{SMOKE_TAG}.jsonl" if SMOKE else "desk.json")   # a booked smoke receipt is never appended to: reruns take SMOKE_TAG
 CHUNK = 32
-FIT_CHUNKS = [0, 1] if SMOKE else [0, 1, 2, 3]
-HELD_CHUNKS = [2, 3] if SMOKE else [4, 5, 6, 7]
+FIT_CHUNKS = [0, 2] if SMOKE else [0, 2, 4, 6]      # interleaved: the probe chunks are curriculum / length ordered
+HELD_CHUNKS = [1, 3] if SMOKE else [1, 3, 5, 7]
 DESK_STEPS = [0, 300] if SMOKE else [0, 463, 1028, 2056, 3084, 5140, 7196, 10280, 12336, 15420]
 SG_BLOCKS = [4, 5, 6, 7]
-RIDGE_REL = 1e-6
 RF_WIDTH = 2048
 RF_SEED = 777
 SEED = 11 if SMOKE else 27
@@ -95,31 +102,36 @@ def ratio(y, yhat):
 
 
 def ridge_fit(X, Y, lam):
-    """W = (X^T X + lam I)^-1 X^T Y in float64; lam 0 -> least squares by pinv."""
+    """W = (X^T X + lam I)^-1 X^T Y in float64; lam 0 -> least squares by
+    pinv with singular values below PINV_RTOL of the largest truncated (the
+    same null-direction law as gcv_ridge; the untruncated pinv extrapolated
+    by 100x to 1800x on the interleaved smoke split)."""
     if lam > 0:
         A = X.t() @ X + lam * torch.eye(X.shape[1], dtype=X.dtype)
         return torch.linalg.solve(A, X.t() @ Y)
-    return torch.linalg.pinv(X) @ Y
+    return torch.linalg.pinv(X, rtol=PINV_RTOL) @ Y
 
 
-def rel_lambda(X):
-    return RIDGE_REL * float(torch.trace(X.t() @ X)) / X.shape[1]
-
-
-GCV_GRID_REL = (1e-8, 1e-7, 1e-6, 1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 1.0)
+GCV_GRID_REL = (1e-10, 1e-9, 1e-8, 1e-7, 1e-6, 1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 1.0)
+EIG_NULL_REL = 1e-12       # eigen-directions of X^T X below this fraction of the largest are null and dropped (pinv-like)
+Z_CLIP = 3.0               # standardized inputs of the random features are clipped to [-3, 3] (FIT statistics)
+PINV_RTOL = 1e-6           # least squares: singular values below this fraction of the largest are truncated (= 1e-12 on X^T X eigenvalues)
 
 
 def gcv_ridge(X, Y):
     """Ridge with lambda chosen by generalized cross-validation on the FIT
     set alone (closed form: GCV(lam) = (||Y - X W||^2 / n) / (1 - tr(H) / n)^2,
     tr(H) = sum d_i / (d_i + lam) over the eigenvalues d_i of X^T X), over
-    the relative grid GCV_GRID_REL x tr(X^T X) / d_in. Deterministic; no
-    held-out token is touched. Returns (W, lam, gcv_curve)."""
+    the relative grid GCV_GRID_REL x tr(X^T X) / d_in, on the non-null
+    eigen-directions of X^T X (those above EIG_NULL_REL of the largest; the
+    rest are dropped as pinv does, so lam -> 0 recovers least squares).
+    Deterministic; no held-out token is touched. Returns (W, lam, gcv_curve)."""
     n, d = X.shape
     XtX = X.t() @ X
     XtY = X.t() @ Y
     dvals, V = torch.linalg.eigh(0.5 * (XtX + XtX.t()))
-    dvals = dvals.clamp_min(0)
+    keep = dvals > EIG_NULL_REL * float(dvals.max())
+    dvals, V = dvals[keep], V[:, keep]
     scale = float(torch.trace(XtX)) / d
     best = None
     curve = {}
@@ -147,7 +159,7 @@ def rf_design(X_lin, mu, sd):
     """The richer oracle's design: [X_lin (incl. bias), relu(Z Omega + b)] with
     Z = (X_lin[:, :-1] - mu) / sd standardized by FIT statistics, so the
     richer family CONTAINS the linear one."""
-    Z = (X_lin[:, :-1] - mu) / sd
+    Z = ((X_lin[:, :-1] - mu) / sd).clamp(-Z_CLIP, Z_CLIP)   # bounded features: no extrapolation on heavy-tailed hidden states
     return torch.cat([X_lin, rf_features(Z)], 1)
 
 
@@ -298,13 +310,14 @@ def main():
     assert len(inits) == 1, "W_0 differs across cells"
     consts = next(b["constants"] for b in births if b["mode"] == "sg")
     rec = {"prereg": "SG-FAILURE-DESK-0", "kind": "sg_failure_desk", "smoke": SMOKE, "commit": commit, "tree_dirty": dirty,
+           "source_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(), "credit_source_sha256": hashlib.sha256(Path("scratch/sg_credit.py").read_bytes()).hexdigest(),
            "probe_token_digest": probe_digest, "fit_chunks": FIT_CHUNKS, "held_chunks": HELD_CHUNKS, "desk_steps": DESK_STEPS,
-           "ridge_rel": RIDGE_REL, "rf_width": RF_WIDTH, "rf_seed": RF_SEED, "constants": consts, "dtype": "float64", "device": "cpu",
+           "gcv_grid_rel": list(GCV_GRID_REL), "eig_null_rel": EIG_NULL_REL, "rf_width": RF_WIDTH, "rf_seed": RF_SEED, "constants": consts, "dtype": "float64", "device": "cpu",
            "started_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"), "cells": {}}
     t0 = time.time()
     for cell, b in sorted(cells.items(), key=lambda kv: (kv[1]["mode"] != "zero", kv[0])):
         is_sg = b["mode"] == "sg"
-        steps = [s for s in DESK_STEPS if (s != 0 or b["mode"] == "zero")]
+        steps = [s for s in DESK_STEPS if (s != 0 or b["mode"] == "zero" or SMOKE)]   # step 0 once (control) in the desk; both steps in the smoke
         crec = {"mode": b["mode"], "family": b.get("family"), "plr": b.get("plr"), "outdir": b["outdir"], "states": {}}
         cache = {}
         for step in steps:
@@ -313,7 +326,7 @@ def main():
             held = state_arrays(model, tok, rows, HELD_CHUNKS, consts)
             srec = {"path": path, "state_digest": b["snapshots"][str(step)]["state_digest"], "probe_ce_fit": fit["loss"], "probe_ce_held": held["loss"],
                     "n_fit": fit["n_tokens"], "n_held": held["n_tokens"], "rank_held": held["ranks"],
-                    "e_rms_held": rms(held["E"]), "head_weight_fro": float(sd["head.weight"].double().norm()), "norm_g_l2": float(sd["norm.g"].double().norm()),
+                    "output_grad_rms_held": rms(held["E"]), "head_weight_fro": float(sd["head.weight"].double().norm()), "norm_g_l2": float(sd["norm.g"].double().norm()),
                     "delta_rms_held": {str(l): rms(float(consts[str(l)]) * held["Y"][l]) for l in SG_BLOCKS},
                     "baseline_mse_held": {str(l): float((held["Y"][l] ** 2).mean()) for l in SG_BLOCKS},
                     "oracle": oracle_fits(fit, held)}

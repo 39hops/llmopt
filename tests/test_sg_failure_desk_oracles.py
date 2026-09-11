@@ -21,9 +21,9 @@ def mod():
     spec = importlib.util.spec_from_file_location("sg_failure_desk", ROOT / "scratch" / "sg_failure_desk.py")
     m = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(m)
-    assert m.FIT_CHUNKS == [0, 1, 2, 3] and m.HELD_CHUNKS == [4, 5, 6, 7]
+    assert m.FIT_CHUNKS == [0, 2, 4, 6] and m.HELD_CHUNKS == [1, 3, 5, 7]
     assert m.DESK_STEPS == [0, 463, 1028, 2056, 3084, 5140, 7196, 10280, 12336, 15420]
-    assert m.RIDGE_REL == 1e-6 and m.RF_WIDTH == 2048 and m.RF_SEED == 777 and m.SG_BLOCKS == [4, 5, 6, 7]
+    assert m.EIG_NULL_REL == 1e-12 and m.PINV_RTOL == 1e-6 and m.Z_CLIP == 3.0 and m.RF_WIDTH == 2048 and m.RF_SEED == 777 and m.SG_BLOCKS == [4, 5, 6, 7]
     return m
 
 
@@ -39,18 +39,20 @@ def _linear_problem(mod, n=3000, d_in=64, d_out=16, seed=0):
 
 def test_linear_oracle_recovers_linear_target(mod):
     Xf, Yf, Xh, Yh = _linear_problem(mod)
-    for lam in (0.0, mod.rel_lambda(Xf)):
-        W = mod.ridge_fit(Xf, Yf, lam)
-        r = mod.ratio(Yh, Xh @ W)
-        assert r < 1e-3, (lam, r)
-        assert mod.cos_pooled(Xh @ W, Yh) > 0.999
+    W = mod.ridge_fit(Xf, Yf, 0.0)
+    assert mod.ratio(Yh, Xh @ W) < 1e-3
+    assert mod.cos_pooled(Xh @ W, Yh) > 0.999
 
 
-def test_relative_ridge_law(mod):
+def test_gcv_ridge_matches_least_squares_on_a_rank_deficient_design(mod):
     import torch
-    Xf, _, _, _ = _linear_problem(mod)
-    lam = mod.rel_lambda(Xf)
-    assert lam == pytest.approx(1e-6 * float(torch.trace(Xf.t() @ Xf)) / Xf.shape[1])
+    Xf, Yf, Xh, Yh = _linear_problem(mod)
+    Xf2 = torch.cat([Xf, Xf[:, :5]], 1)     # duplicated columns: X^T X singular
+    Xh2 = torch.cat([Xh, Xh[:, :5]], 1)
+    W, lam, info = mod.gcv_ridge(Xf2, Yf)
+    assert mod.ratio(Yh, Xh2 @ W) < 1e-2, info
+    Wls = mod.ridge_fit(Xf2, Yf, 0.0)
+    assert abs(mod.ratio(Yh, Xh2 @ W) - mod.ratio(Yh, Xh2 @ Wls)) < 1e-2
 
 
 def test_richer_oracle_beats_linear_on_a_nonlinear_target(mod):

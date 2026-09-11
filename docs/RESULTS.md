@@ -71092,3 +71092,89 @@ any birth. Housekeeping GO (separate, same message): after this desk,
 prune checkpoints/sgwriter1_smoke/, sgwriter1_smoke_seal2/ and
 frozenbb1_smoke/ after a 0-mismatch digest inventory against their
 smoke receipts.
+
+## AMENDMENT SG-FAILURE-DESK-0-AUDIT (target: PRE-REG SG-FAILURE-DESK-0 L70972): clean-tree prereg-auditor folds before the desk runs — state count corrected to 46 (control 10 + four SG cells x 9); the FIT / HELDOUT split is now INTERLEAVED by chunk (even chunks FIT, odd HELDOUT: the probe chunks are curriculum / length ordered, so the sealed 0..3 / 4..7 split was a shortest-v-longest extrapolation; FIT 6,740 / HELDOUT 9,150 eligible tokens) with the split policy stated; two unreceipted smoke numbers withdrawn and every smoke-driven oracle correction re-receipted at tagged smoke paths; oracle laws hardened on the smoke (least squares by pinv with 1e-6 singular-value truncation, GCV ridge on the non-null eigen-directions over a grid down to 1e-10, random-feature inputs standardized AND clipped to [-3, 3]); the branch B / C readout is min(linear, richer); the smoke now exercises the prev / next / nonstationarity path; source shas in the receipt; lag read per lag; labels fixed (output-gradient RMS; rank keys 4..7); no threshold, prior or tree change beyond the split and readout law; nothing run on the retained checkpoints yet (2026-09-11 local, Mac)
+
+Auditor (Opus 5, clean tree at f4535fc9): three blockers, six
+should-fixes, four notes. Folds, each verified:
+
+B1 (count). 46 states: the control at the ten desk steps (step 0 =
+the shared W_0) and each SG cell at the nine non-zero steps; 36
+predictor states. Cost re-estimated at 60 to 90 min fp64 CPU.
+
+B2 (split policy; the material fold). The frozen probe's chunks are
+curriculum / length ordered (eligible tokens per chunk 856, 1,123,
+1,325, 1,520, 1,772, 2,177, 2,787, 4,330), so the sealed FIT = chunks
+0..3 / HELDOUT = 4..7 would have fitted the 128 shortest rows and
+scored the 128 longest (4,824 v 11,066 tokens; the sealed "about 7.9k
+per half" was the mean). Fold: FIT = even chunks {0, 2, 4, 6} (6,740
+eligible tokens), HELDOUT = odd chunks {1, 3, 5, 7} (9,150); disjoint;
+each half spans the difficulty ladder. Fence: a HELDOUT score is an
+interleaved-difficulty generalization readout, not iid; the DATA-
+CONTRACT vocabulary (grain = eligible token, label at emit time, split
+by chunk parity) is stated.
+
+B3 (unreceipted numbers). The sealed prose quoted "0.93 v 0.24" and
+"14 to 26" from smoke rows that had been overwritten. Withdrawn as
+numbers; the sealed text's provenance sentence is replaced by the
+receipted sequence below.
+
+SMOKE-DRIVEN ORACLE CORRECTIONS (each row force-added and locked;
+smoke states only, the five sgwriter1_smoke_seal2 cells at steps 0
+and 300; no retained checkpoint opened): (i) logs/sgfail0/
+smoke_audit.jsonl (interleaved split, untruncated pinv): the linear
+least-squares oracle extrapolated on the SG cells' step-300 states
+(held ratio 84 to 1,822; the control 0.44 to 2.8) while the GCV ridge
+on the non-null eigen-directions stayed at 0.05 to 1.08 on the same
+fits; (ii)
+logs/sgfail0/smoke_audit2.jsonl (pinv truncated at 1e-6 of the largest
+singular value): linear held ratios 0.046 to 1.35, but the random-
+feature oracle extrapolated on the heavy-tailed hidden states (held
+ratio 1.03 to 16,452, above the linear on every SG block); (iii) logs/sgfail0/smoke_audit3.jsonl (standardized inputs
+clipped to [-3, 3]): linear 0.046 to 1.35, richer 0.015 to 0.87; the richer
+beats the linear on every SG-cell block and on the control's blocks 4
+and 5, and loses on the control's blocks 6 and 7 (0.27 v 0.18, 0.70 v
+0.046), which is why the branch B / C readout is the min of the two.
+The sealed laws are (iii).
+The first smoke (logs/sgfail0/smoke.jsonl, sealed split, e183ea44
+dirty tree) stays locked as the record of the first version.
+
+S1 (GCV ridge). The ridge solve now drops eigen-directions of X^T X
+below 1e-12 of the largest (pinv-like), so lambda -> 0 recovers least
+squares (tests/test_sg_failure_desk_oracles.py: a rank-deficient
+design gives the least-squares held ratio to within 1e-2); the grid
+runs 1e-10 to 1. It stays a conditioning check for the record; no
+label keys off it.
+
+S2 (richer readout). The richer family contains the linear one as a
+function class, but one shared lambda can under-use it; the branch B
+/ C readout is min(linear_lstsq, rf_ridge_gcv) per block. With the
+clipping fold the richer oracle beat the linear on 18 of the 20
+smoke blocks; the min guards the other two.
+
+S3 (smoke coverage). SG cells now read step 0 too in the smoke, so
+online_prev / online_next / target_nonstationarity_next are exercised
+(logs/sgfail0/smoke_audit.jsonl and later rows carry them).
+
+S4 (binding). desk.json carries source_sha256 of scratch/
+sg_failure_desk.py and scratch/sg_credit.py.
+
+S5 (dirty tree). The lock regen is committed with this entry; the
+desk runs on a clean tree under liverun sgfail0.
+
+S6 (lags). prev / next lags span 565 to 3,084 steps and are read per
+lag, never pooled into one median; prev_step / next_step are recorded.
+
+N1 the dead RIDGE_REL constant is removed (the receipt records the
+GCV grid and the null-direction tolerance); N2 rank keys 4..7 are the
+outputs of blocks 4..7 in every register; N3 "output-error RMS" is
+"output-gradient RMS (dL/dlogits)"; N4 memory about 2 GB per SG cell
+cache, fits.
+
+Unchanged: the states (as counted), the oracle inputs and target, the
+readouts, the online-tracking law, the dynamics list, the descriptive
+thresholds (GOOD <= 0.5, POOR >= 0.9, online BAD >= 0.9, collapse
+readouts), the interpretation tree, the registered prior. A SMOKE_TAG
+env gives every smoke rerun a new receipt path (a booked smoke
+receipt is never appended to). No birth is authorized by this entry;
+the desk follows the clean re-audit.

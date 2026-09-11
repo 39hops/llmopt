@@ -2,7 +2,7 @@
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
  "_last_accept": {
   "paths": [],
-  "reason": "SG-FAILURE-DESK-0 prereg smoke receipt"
+  "reason": "SG-FAILURE-DESK-0-AUDIT tagged smoke receipts"
  },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
@@ -4270,6 +4270,27 @@
    "bytes": 23846,
    "exists": true,
    "sha256": "6374b0b5e9a0cd93b1bb260966853a0ae9ec77b1635c8b8382bde790c4b71831",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/sgfail0/smoke_audit.jsonl": {
+   "bytes": 44391,
+   "exists": true,
+   "sha256": "2092fbc09c092ba188e951d8c3509c56b7703b46342aaaeb45ff190ae998743c",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/sgfail0/smoke_audit2.jsonl": {
+   "bytes": 44370,
+   "exists": true,
+   "sha256": "604c741f5f8d6ae340dd0f94a4d1f0f5302961e2d4e71d3bcf978347c36378aa",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/sgfail0/smoke_audit3.jsonl": {
+   "bytes": 44371,
+   "exists": true,
+   "sha256": "a4df71db7d3f849d9db83c9e683588b80bc2d784c1d68e56788ea6429bed3bb7",
    "source": "results",
    "tracked": true
   },
