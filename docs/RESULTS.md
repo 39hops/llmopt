@@ -71672,3 +71672,196 @@ audit. Checkpoint policy: checkpoints/sgwriter1/ was intact through
 this desk; the approved compact keep set executes after this booking
 (scratch/sgwriter1_keepset_prune.py, digest inventory to
 logs/housekeeping/).
+
+## PRE-REG SG-BOUNDARY-BLOCK7-1: a LOCAL boundary synthetic-gradient writer for block 7 only, over the frozen-random-backbone arena at a fresh seed 28 — paired CONTROL (blocks 4..7 exact BP, norm / head exact CE) v ONE SG7 cell (blocks 4..6 exact BP through the true block-7 Jacobian with DETACHED PARAMETER VIEWS, block 7 credited only by hat_delta_7 = s_7 * G_phi(x_8, e) from the cross-position desk's LOCAL predictor, norm / head exact CE); one prospectively frozen predictor recipe, no ladder; CONTROL-ADEQUATE iff finite and c >= 24; FUNCTION-MATCH iff finite and c - 7 <= g_SG7 <= c + 7; a MISS closes SG credit-writer births completely; a MATCH freezes the specimen for a separate LOCAL-mechanism GO and claims no full-network writer invariance (2026-09-11 local, Mac; DESIGN + PREREG + IMPLEMENTATION + TEST / SMOKE only; SEALED, NOT LAUNCHED; no seed-28 birth authorized)
+
+**Standing.** The top-four SG family is CLOSED at this arena under
+VERDICT SG-CROSSPOS-REPRESENTABILITY-0 (L71557). This rung is a new,
+explicitly LOCAL boundary-writer experiment motivated by that verdict's
+registered block-7 exception (the trained control's delta^BP_7 is a
+function of its local input (x_8, e): HELDOUT ratio 0.10 to 0.12 in both
+desk arms, 0.29 to 0.34 for the closed-form random-feature oracle), not a
+reversal of the verdict.
+
+**Question.** Over the same arena, can a synthetic-gradient writer that
+credits ONLY the top block, from strictly local inputs, train a network
+whose gate matches the paired frozen-BP control's within the registered
+band?
+
+**Instrument** (sealed at commit 3c9b5252: scratch/sg7_credit.py,
+scratch/birth19m_sg7.py, scratch/sg7_qualgate.py,
+scratch/sgbb7_qual_driver.sh, scratch/sg7_integrity_smoke.py;
+tests/test_sg7_credit.py (8), tests/test_sg7_law.py (4),
+tests/test_sg7_source_invariant.py (4); adopt-not-fork of the frozen
+SG-1 driver, whose stock loop lines and zero-control branch survive
+verbatim under the source-invariant test).
+- Arena and pair: seed 28 (fresh, unspent); W_0 = torch.manual_seed(28)
+  build; emb + blocks 0..3 frozen bit-exact at W_0 (freeze_lower(model,
+  4), 29 tensors, re-verified bit-identical on every exit path); pinned
+  stock stream (three epoch digests asserted), 15,420 steps, BS 32,
+  model AdamW lr 3e-4 wd 0.01 clip 1.0 OneCycle pct_start 0.03, mps fp32,
+  17 snapshots at [0, 463, 1,028, ..., 15,420]; both arms share W_0,
+  stream, steps, device, frozen set (asserted by the gate before any
+  gate is read).
+- CONTROL (MODE=zero K_BP=4): the FROZEN-BACKBONE-1 arm: blocks 4..7
+  exact BP, norm / head exact CE (hybrid_objective(k=8) over
+  freeze_lower). Gate c.
+- SG7 cell (MODE=sg7), the one true-CE graph: x_7 = blocks 4..6 with real
+  parameters on the attached input; x_8^T = block 7 with DETACHED
+  PARAMETER VIEWS (torch.func.functional_call over {name: p.detach()})
+  on the ATTACHED x_7; logits = head(norm(x_8^T)); L = CE. So the true
+  block-7 Jacobian carries the exact CE credit into blocks 4..6 and the
+  true CE cannot update any block-7 parameter. A separate LOCAL block-7
+  forward with REAL parameters on the DETACHED input, x_8^L =
+  block_7(x_7.detach()), carries the surrogate S = <hat_delta_7, x_8^L>;
+  total = L + S is the one model backward. norm / head: exact CE.
+- Credit law: hat_delta_7 = s_7 * G_phi(stopgrad(x_8), stopgrad(e)) *
+  1[labels != -100]; s_7 = 2.441e-6 (the block-7 constant of the locked
+  audit receipt logs/sgaudit0/audit.json, arena_frozen_4_7["7"], sha
+  recorded); e = dL/dlogits. Predictor input STRICTLY LOCAL: (x_8, e) at
+  the same position; no cross-position context, downstream weight,
+  attention map, Jacobian or true hidden error of any position.
+- Predictor (the simplest already-measured LOCAL formulation licensed by
+  the cross-position desk: its LOCAL (j == i) arm, which reached 0.10 to
+  0.12 on block 7): sg7_credit.LocalSG = the desk's SeqSG under the
+  j == i mask (a per-token network: in_proj 424 -> 128, two pre-LN
+  blocks whose self-attention reads the token itself only, FFN 128 ->
+  512 -> 128 GELU, final LN, out_proj 128 -> 384 zero-initialised;
+  500,736 parameters; classes verbatim from scratch/sg_crosspos_desk.py,
+  the one delta being device=x.device on two torch.arange calls, guarded
+  by a source-identity test). Input Z = [x_8, e] standardized per
+  feature by (mu, sd) FIXED at W_0 over the eligible tokens of the frozen
+  probe's FIT chunks 0, 2, 4, 6 (6,740 tokens; input_stats, parameter-
+  detached; mu / sd sha256 and summaries in the receipt; buffers in the
+  predictor snapshots), NO clip: the desk's +-5 clip is dropped because
+  the arena's x_8 scale grows about 8x over training (seed-27 control:
+  per-feature sd median 1.04 -> 8.26, max 1.70 -> 25.5) and a W_0-frozen
+  clip would saturate the late states. Seed 1000 + 28 = 1028 (the zero
+  output layer makes the first credit exactly zero regardless).
+- Predictor optimizer, FROZEN before seed 28: AdamW lr PLR7 = 1e-3 (the
+  desk's offline lr), weight decay 0, OneCycle max_lr 1e-3 pct_start
+  0.03 over the 15,420 steps, clip 1.0, one predictor step per model
+  step; FOLD A order (sg7_step_terms steps 1 to 3, sg_credit.run_sg_step
+  steps 4 to 9 unchanged: model backward, predictor backward against
+  the CACHED pre-update target, separate clips, model step, predictor
+  step, schedulers); FOLD B loss on the one block. No FAMILY / PLR knob
+  exists in the driver (asserted).
+- Snapshots: model step_{n:05d}.pt and predictor pred_step_{n:05d}.pt at
+  the 17 steps; checkpoints/sgbb7/; receipts logs/sgbb7/qual.jsonl.
+- Per-200-step log (descriptive): CE loss, teacher loss, predictor MSE
+  v the zero-predictor baseline, cos(hat_delta_7, delta^BP_7).
+
+**Qualification law** (sg7_qualgate.adjudicate, tested):
+- CONTROL-ADEQUATE iff the control finished finite and c >= 24; else
+  NOT-RESOLVABLE-CONTROL and the cell is not adjudicated (born or not).
+- FUNCTION-MATCH iff the SG7 cell finished finite and c - 7 <= g_SG7 <=
+  c + 7 (inclusive).
+- SG7-MISS: finite and outside the band. SG7-UNSTABLE: non-finite loss
+  (the cell books UNSTABLE, no final checkpoint; the freeze law is still
+  verified).
+- One SG7 cell only. No ladder, no second recipe, no outcome-based
+  amendment.
+
+**Consequences (sealed).**
+- MISS or UNSTABLE: SG credit-writer births CLOSE completely. No larger,
+  delayed, bootstrapped, bidirectional or downstream-weight-conditioned
+  SG repair follows.
+- MATCH: the specimen (model + predictor snapshots, the recipe) is
+  frozen and a SEPARATE Artin GO is requested for a LOCAL mechanism
+  comparison centered on block 7. No claim of full-network writer
+  invariance is made from this rung: the SG7 arm shares the exact
+  control gradient on blocks 4..6 / norm / head by construction, so a
+  match certifies block-7 credit only.
+
+**Mechanical preconditions, all met at the sealed commit** (receipts:
+logs/sgbb7/integrity_smoke_3c9b5252_seal.jsonl, three arena states: a
+fresh seed-11 W_0 and the retained seed-27 control at steps 463 and
+15,420, digests asserted; the driver reruns the smoke on the launch
+commit as its first step and refuses to birth on any failure):
+- source invariants (tests: stock loop lines and zero-control branch
+  verbatim; the SG7 law literal; the predictor classes verbatim v the
+  desk);
+- frozen-set verification (29 tensors bit-identical to W_0 on every exit
+  path; check i: frozen tensors bit-exact after a step);
+- NO CE LEAK to block 7 (check b: autograd.grad of the true CE over the
+  block-7 parameters all None; .grad None after loss.backward);
+- EXACT BP to blocks 4..6 / norm / head (checks a, c: SG7 logits and
+  those gradients BIT-IDENTICAL to the control's);
+- FORCED-DELTA ENDPOINT (check f): with hat_delta_7 := delta^BP_7 every
+  trainable gradient and one clipped AdamW update (lr 3e-4, wd 0.01,
+  clip 1.0) reproduce the control under the law "blocks 4..6 / norm /
+  head bit-identical; block 7 within 1e-5 relative to the control's
+  max |g|; parameters within 1e-6 after the step". Measured: block-7
+  relative difference 0.0 and parameter difference 0.0 on all three
+  states (bit-exact);
+- predictor isolation (check e: L_phi reaches phi only; total reaches no
+  phi); block 7 receives J^T hat_delta_7 bit-identically to the
+  constant-loaded surrogate (check d);
+- eligible-position masking (check g: target and credit exactly zero at
+  the 168 ineligible positions of the probe chunk, nonzero at eligible
+  ones);
+- same-pre-update target timing (check h: the cached target equals the
+  pre-step teacher target bit-exactly and differs from the post-step
+  target, max |post - pre| 2.3e-5 / 5.9e-5 / 2.7e-5); the applied credit
+  predates the predictor step (check j);
+- zero-init endpoint (check i: first-step block-7 gradient exactly zero,
+  the other trainables nonzero, block-7 motion pure AdamW decay);
+- input statistics derived at the state (check k; the birth's W_0
+  statistics at seed 11 reproduce the smoke's: x_8 sd median 1.018);
+- 300-step smokes on mps, seed 11, path-isolated (checkpoints/
+  sgbb7_smoke, logs/sgbb7/smoke.jsonl): CONTROL final loss 1.249 at 7.9
+  it/s (bit-consistent with the SG-1 control smoke's 1.249 at the same
+  seed and stream), SG7 final loss 1.468 at 4.2 it/s, freeze law
+  verified 29 / 29 on both; predictor MSE v zero baseline 9.24 v 10.82
+  at step 200 and 2.51 v 3.10 at step 300 with cos(hat_delta_7,
+  delta^BP_7) 0.54 / 0.47 (descriptive; the SG-1 predictors never beat
+  the baseline by more than 4 %); smoke gate exercised the law's
+  NOT-RESOLVABLE-CONTROL path (300-step models gate 0 / 0);
+- clean-tree prereg-auditor (this entry's audit amendment).
+
+**REFUTED-IF.** SG7-MISS or SG7-UNSTABLE refutes the block-7 boundary
+writer at this arena, recipe and seed, and closes SG credit-writer
+births as sealed. A FUNCTION-MATCH does not establish writer invariance
+of any kind; it licenses only the separate LOCAL-mechanism comparison.
+
+**REGISTERED PRIOR** (house, on the record).
+1. CONTROL-ADEQUATE: p 0.95 (FB-1 controls gated 63 / 61 / 59 at seeds
+   24 / 25 / 27; the SG-1 control 59).
+2. SG7 cell finishes finite: p 0.9.
+3. FUNCTION-MATCH: p 0.5 (the desk shows block 7 representable and the
+   smoke predictor beats its baseline early, against one seed of an
+   online, nonstationary fit whose predictor lags the target).
+4. g_SG7 >= 24 (the floor, descriptive): p 0.7.
+5. Predictor MSE below the zero baseline at every logged step >= 1,028:
+   p 0.7 (descriptive).
+6. cos(hat_delta_7, delta^BP_7) >= 0.5 at the final logged step: p 0.5
+   (descriptive).
+
+**FENCES.** One seed (28), one device (mps fp32; mps training is run-
+level nondeterministic at fixed seed, so no cross-run bit-exact
+precondition is registered: the paired arms share the substrate noise);
+the gate is the standard 120 on mps; c +- 7 is the registered band (the
+resolution law's single-seed fence applies: a match at one seed is a
+qualification, not a replicated direction); the SG7 arm's blocks 4..6 /
+norm / head gradients equal the control's by construction, so any gate
+difference is attributable to the block-7 credit alone; the predictor
+recipe was frozen from the desk's offline fit, not tuned online; the
+receipts derive every provenance field from opened artifacts (HEAD
+re-read at the receipt write equals the launch commit). Walls from the
+smoke: control about 33 min (7.9 it/s), SG7 about 61 min (4.2 it/s),
+gates 54 s / 93 s; disk: two cells x 17 model snapshots of 76 MB
+(about 2.6 GB) + 17 predictor snapshots (about 35 MB); refuse-if-exists on every output path; liverun id sgbb7q.
+
+**Receipts.** logs/sgbb7/qual.jsonl, logs/sgbb7/ladder.json,
+logs/sgbb7/selection.json, logs/sgbb7/gate.log,
+logs/sgbb7/train_control.log, logs/sgbb7/train_sg7.log,
+logs/sgbb7/integrity_smoke_launch.log,
+logs/sgbb7/integrity_smoke_launch.jsonl (the launch rerun; force-added
+at booking), logs/sgbb7/driver.log, logs/liverun/sgbb7q.jsonl; sealed
+now: logs/sgbb7/smoke.jsonl, logs/sgbb7/smoke_ladder.json,
+logs/sgbb7/smoke_selection.json, logs/sgbb7/integrity_smoke_3c9b5252_seal.jsonl.
+Machine-readable form: docs/preregs/sg-boundary-block7-1.json.
+
+**Does not authorize:** the seed-28 birth (separate GO after the clean
+auditor), MeZO, target / equilibrium propagation, ROME, seed-2
+discovery, any mechanism run, any second SG7 recipe or ladder.

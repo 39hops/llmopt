@@ -2,7 +2,7 @@
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
  "_last_accept": {
   "paths": [],
-  "reason": "handoff 2026-09-11-1: keep-set prune inventory locked"
+  "reason": "PRE-REG SG-BOUNDARY-BLOCK7-1: sealed smoke + integrity receipts"
  },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
@@ -1131,6 +1131,10 @@
    "sha256": "49aaa0c0649235f3a1965304a959697b5ddccb4ff5eb50970f3969165761b628",
    "source": "results",
    "tracked": true
+  },
+  "logs/liverun/sgbb7q.jsonl": {
+   "exists": false,
+   "source": "prereg"
   },
   "logs/liverun/sgfail0.jsonl": {
    "bytes": 1169,
@@ -4270,6 +4274,74 @@
    "sha256": "16a11c66c6e43dfb0f7b51969321dd1bd231def60b85b9c944dd2f923dcc4780",
    "source": "results",
    "tracked": true
+  },
+  "logs/sgbb7/driver.log": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/sgbb7/gate.log": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/sgbb7/integrity_smoke_3c9b5252_seal.jsonl": {
+   "bytes": 5695,
+   "exists": true,
+   "local_only": true,
+   "sha256": "9bc262f4a539dcbd1e84bab657f5c15fe079414808cb545e01901a9a962d17dc",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/sgbb7/integrity_smoke_launch.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/sgbb7/integrity_smoke_launch.log": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/sgbb7/ladder.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/sgbb7/qual.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/sgbb7/selection.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/sgbb7/smoke.jsonl": {
+   "bytes": 8999,
+   "exists": true,
+   "local_only": true,
+   "sha256": "2653b641cf1f5074fcdd441e5c18a494bb69699efb3666f324799e14633355a0",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/sgbb7/smoke_ladder.json": {
+   "bytes": 686,
+   "exists": true,
+   "local_only": true,
+   "sha256": "73e950fd066186c21bd6567a60cd46099a4bd32ba5b87b2a8df3be68d900679c",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/sgbb7/smoke_selection.json": {
+   "bytes": 686,
+   "exists": true,
+   "local_only": true,
+   "sha256": "73e950fd066186c21bd6567a60cd46099a4bd32ba5b87b2a8df3be68d900679c",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/sgbb7/train_control.log": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/sgbb7/train_sg7.log": {
+   "exists": false,
+   "source": "prereg"
   },
   "logs/sgfail0/desk.json": {
    "bytes": 299035,

@@ -1,0 +1,132 @@
+{
+ "name": "SG-BOUNDARY-BLOCK7-1",
+ "note": "Machine-readable form of PRE-REG SG-BOUNDARY-BLOCK7-1 (LOCAL boundary synthetic-gradient writer for block 7 only over the frozen-random-backbone arena; the prose governs). SEALED, NOT LAUNCHED; no seed-28 birth authorized.",
+ "registered": "2026-09-11 (Mac local)",
+ "machine": "mac",
+ "status": "sealed; Artin GO 2026-09-11 for DESIGN + PREREG + IMPLEMENTATION + TEST/SMOKE only",
+ "standing": "top-four SG family CLOSED under VERDICT SG-CROSSPOS-REPRESENTABILITY-0; this rung is a new LOCAL boundary-writer experiment motivated by its block-7 exception, not a reversal",
+ "arena": {
+  "seed": 28,
+  "frozen": "emb + blocks 0..3 (29 tensors) at W_0, freeze_lower(model, 4), re-verified bit-identical on every exit path",
+  "control": "MODE=zero K_BP=4: blocks 4..7 exact BP, norm / head exact CE (the FROZEN-BACKBONE-1 arm)",
+  "sg7": "MODE=sg7: blocks 4..6 exact BP through the true block-7 Jacobian (block 7 with DETACHED PARAMETER VIEWS on the ATTACHED x_7, functional_call); block 7 credited only by J^T hat_delta_7 from a separate real-parameter block-7 forward on the DETACHED input; norm / head exact CE",
+  "model_recipe": "stock: AdamW lr 3e-4 wd 0.01 clip 1.0 OneCycle pct_start 0.03, 15,420 steps, BS 32, pinned stock stream (3 epoch digests asserted), 17 snapshots, mps fp32",
+  "pair_integrity": "same W_0, stream, steps, device, frozen set (asserted by the gate)"
+ },
+ "credit_law": {
+  "hat_delta_7": "s_7 * G_phi(stopgrad(x_8), stopgrad(e)) * 1[labels != -100]",
+  "s_7": 2.440559644129858e-06,
+  "s_7_source": "logs/sgaudit0/audit.json arena_frozen_4_7['7'] (sha recorded in the receipt)",
+  "input": "strictly local (x_8, e) at the same position; no cross-position context, downstream weights, attention maps, Jacobians or true hidden errors",
+  "fold_a": "sg7_step_terms steps 1..3 (forward, hat from phi_t, teacher target CACHED at W_t); sg_credit.run_sg_step steps 4..9 unchanged",
+  "fold_b": "elementwise MSE over eligible positions x hidden dims of (G - delta^BP_7 / s_7)^2"
+ },
+ "predictor": {
+  "family": "local",
+  "definition": "sg7_credit.LocalSG = the cross-position desk's SeqSG under the j == i mask (per-token: in_proj 424->128, 2 x pre-LN [self-only attention, FFN 128->512->128 GELU], final LN, zero-init out_proj 128->384)",
+  "n_params": 500736,
+  "source": "verbatim classes from scratch/sg_crosspos_desk.py; one delta: device=x.device on two torch.arange calls (source-identity test)",
+  "input_standardization": "Z = ([x_8, e] - mu) / sd with (mu, sd) per feature FIXED at W_0 over eligible tokens of probe FIT chunks [0, 2, 4, 6] (6,740 tokens); NO clip (the arena's x_8 scale grows ~8x over training: seed-27 control sd median 1.04 -> 8.26, max 1.70 -> 25.5)",
+  "seed": 1028,
+  "optimizer": "AdamW lr 1e-3 wd 0, OneCycle max_lr 1e-3 pct_start 0.03 over 15,420 steps, clip 1.0, one predictor step per model step",
+  "frozen": "one recipe; no FAMILY / PLR knob (asserted in the driver); no ladder; no architecture search"
+ },
+ "law": {
+  "floor": 24,
+  "band": 7,
+  "control_adequate": "finite and c >= 24 else NOT-RESOLVABLE-CONTROL (cell not adjudicated)",
+  "function_match": "finite and c - 7 <= g_SG7 <= c + 7",
+  "miss": "SG7-MISS",
+  "unstable": "SG7-UNSTABLE (non-finite loss; no final; freeze law still verified)",
+  "cells": 1,
+  "code": "scratch/sg7_qualgate.adjudicate (tests/test_sg7_law.py)"
+ },
+ "consequences": {
+  "miss_or_unstable": "SG credit-writer births CLOSE completely; no larger / delayed / bootstrapped / bidirectional / downstream-weight-conditioned repair",
+  "match": "freeze the specimen; request a SEPARATE GO for a LOCAL mechanism comparison centered on block 7; no full-network writer-invariance claim"
+ },
+ "bars": [
+  {
+   "id": "CONTROL-ADEQUATE",
+   "text": "control finite and c >= 24"
+  },
+  {
+   "id": "FUNCTION-MATCH",
+   "text": "SG7 finite and c - 7 <= g <= c + 7"
+  }
+ ],
+ "registered_prior": {
+  "control_adequate": "p 0.95",
+  "sg7_finite": "p 0.9",
+  "function_match": "p 0.5",
+  "g_sg7_ge_24": "p 0.7 (descriptive)",
+  "pred_mse_below_baseline_every_logged_step_ge_1028": "p 0.7 (descriptive)",
+  "final_cos_ge_0.5": "p 0.5 (descriptive)"
+ },
+ "preconditions_met_at_seal": [
+  "source invariants (16 tests)",
+  "frozen-set verification",
+  "no CE leak to block 7",
+  "exact BP to blocks 4..6 / norm / head (bit-identical)",
+  "forced-delta endpoint (bit-exact on three arena states)",
+  "predictor isolation",
+  "eligible-position masking",
+  "same-pre-update target timing",
+  "300-step smokes (control 1.249, SG7 1.468; smoke gate NOT-RESOLVABLE-CONTROL path)",
+  "clean prereg auditor (audit amendment)"
+ ],
+ "fences": [
+  "one seed (28), one device (mps fp32; run-level nondeterministic, no cross-run bit-exact precondition)",
+  "gate = standard 120 on mps; band c +- 7; single-seed qualification, not a replicated direction",
+  "blocks 4..6 / norm / head gradients equal the control's by construction: any gate difference is attributable to block-7 credit alone",
+  "predictor recipe frozen from the desk's offline fit"
+ ],
+ "walls": {
+  "control_min": 33,
+  "sg7_min": 61,
+  "gate_s": [
+   54,
+   93
+  ],
+  "disk_gb": 2.6
+ },
+ "liverun_ids": [
+  "sgbb7q"
+ ],
+ "receipts": [
+  "logs/sgbb7/qual.jsonl",
+  "logs/sgbb7/ladder.json",
+  "logs/sgbb7/selection.json",
+  "logs/sgbb7/gate.log",
+  "logs/sgbb7/train_control.log",
+  "logs/sgbb7/train_sg7.log",
+  "logs/sgbb7/integrity_smoke_launch.log",
+  "logs/sgbb7/integrity_smoke_launch.jsonl",
+  "logs/sgbb7/driver.log",
+  "logs/liverun/sgbb7q.jsonl",
+  "logs/sgbb7/smoke.jsonl",
+  "logs/sgbb7/smoke_ladder.json",
+  "logs/sgbb7/smoke_selection.json",
+  "logs/sgbb7/integrity_smoke_3c9b5252_seal.jsonl"
+ ],
+ "instrument": [
+  "scratch/sg7_credit.py",
+  "scratch/birth19m_sg7.py",
+  "scratch/sg7_qualgate.py",
+  "scratch/sgbb7_qual_driver.sh",
+  "scratch/sg7_integrity_smoke.py",
+  "tests/test_sg7_credit.py",
+  "tests/test_sg7_law.py",
+  "tests/test_sg7_source_invariant.py"
+ ],
+ "instrument_commit": "3c9b5252",
+ "does_not_authorize": [
+  "the seed-28 birth (separate GO)",
+  "MeZO",
+  "target / equilibrium propagation",
+  "ROME",
+  "seed-2 discovery",
+  "mechanism runs",
+  "any second SG7 recipe or ladder"
+ ]
+}
