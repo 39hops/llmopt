@@ -13,7 +13,7 @@ mkdir -p logs/sgbb7
 exec > >(tee logs/sgbb7/driver.log) 2>&1     # the registered driver.log receipt: every line of this run
 rc=0
 echo "=== integrity smoke on the launch commit $(git rev-parse --short HEAD) $(date -u +%Y-%m-%dT%H:%M:%SZ) ==="
-INTEG_TAG=_launch .venv/bin/python scratch/sg7_integrity_smoke.py 2>&1 | tee logs/sgbb7/integrity_smoke_launch.log || rc=$?
+INTEG_OUT=logs/sgbb7/integrity_smoke_launch.jsonl .venv/bin/python scratch/sg7_integrity_smoke.py 2>&1 | tee logs/sgbb7/integrity_smoke_launch.log || rc=$?
 [ "$rc" -eq 0 ] || { echo "driver: integrity smoke failed rc=$rc, no birth"; mark_done logs/sgbb7q.DONE "$rc"; exit "$rc"; }
 run_gate() {
   .venv/bin/python scratch/sg7_qualgate.py 2>&1 | tee -a logs/sgbb7/gate.log || rc=$?

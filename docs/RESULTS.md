@@ -71865,3 +71865,89 @@ Machine-readable form: docs/preregs/sg-boundary-block7-1.json.
 **Does not authorize:** the seed-28 birth (separate GO after the clean
 auditor), MeZO, target / equilibrium propagation, ROME, seed-2
 discovery, any mechanism run, any second SG7 recipe or ladder.
+
+## AMENDMENT SG-BOUNDARY-BLOCK7-1-AUDIT (target: PRE-REG SG-BOUNDARY-BLOCK7-1 L71676): clean-tree prereg-auditor folds before any birth — the one blocker (the x_8 scale-drift justification for dropping the desk's input clip was unreceipted and measured on a different token set) is closed by a receipted census on the birth's own FIT tokens (logs/sgbb7/x8_scale_census.json: seed-27 control x_8 per-feature sd median 1.02 -> 7.28, 7.1x; max 1.85 -> 19.5, 10.5x; the prose figures 1.04 -> 8.26 / 1.70 -> 25.5 withdrawn); prior 1's evidence corrected (63 / 61 / 59 are the FB-1 FROZEN arms at seeds 24 / 25 / 26, the same arm as this CONTROL); the 300-step training smokes disclosed as pre-seal runs (cc4da41f, dirty tree) with the integrity smoke rerun clean at the sealed and at the folded instrument commit; the driver now writes the launch integrity receipt at the registered literal path; the block-7 desk ratios fenced as late-state readings with the random-feature figure sourced to SG-FAILURE-DESK-0; a MATCH disclosed as consistent with a dead block-7 writer (no zero-credit reference arm: one cell per the GO; the separate LOCAL-mechanism GO separates the two); pred_final.pt refuse-if-exists and a gate-side HEAD == launch-commit assertion added; instrument commit now 4d00452e (the credit law unchanged since the 3c9b5252 seal); no threshold, band, recipe, seed or consequence change; SEALED, NOT LAUNCHED; no seed-28 birth authorized (2026-09-11 local, Mac)
+
+Auditor (Opus 5, clean worktree at 1599ac6f): one blocker, five
+should-fixes, four notes. Each verified before folding.
+
+BLOCKER 1, x_8 scale drift (L71724-71727 and the sg7_credit.py
+docstring): the figures came from an in-session probe over 64 rows
+(chunks 0..1), not from any receipt, and not from the tokens the birth's
+input statistics use. Folded: scratch/sg7_scale_census.py (added to the instrument list;
+the pre-reg body's list is corrected by this entry) computes input_stats at the retained seed-27 control snapshots 0,
+463, 3,084, 5,140, 15,420 (digests asserted) over the FIT chunks 0, 2,
+4, 6 (6,740 eligible tokens, the birth's own statistic tokens) and
+writes logs/sgbb7/x8_scale_census.json (locked with this entry; the
+receipt ran pre-fold at 1599ac6f on a dirty tree, derived, and its
+source_sha256 equals the census script committed at 4d00452e): x_8
+per-feature sd
+median 1.023 / 1.732 / 4.483 / 5.965 / 7.281 (final / W_0 = 7.1x), max
+1.847 / 3.042 / 8.955 / 13.944 / 19.484 (10.5x); e sd median 7.3e-5 ->
+3.5e-5. The registered reading is now "about 7x (median), 10x (max)";
+the justification for NO clip stands (a W_0-frozen +-5 clip would
+saturate features whose sd grows 7x to 10x). The prose figures 1.04 ->
+8.26 / 1.70 -> 25.5 are withdrawn; the docstring quotes the receipt.
+
+SHOULD-FIX 2, prior 1's evidence (L71796-71798): "FB-1 controls gated
+63 / 61 / 59 at seeds 24 / 25 / 27" misnames both: 63 / 61 / 59 are the
+FB-1 FROZEN arms at seeds 24 / 25 / 26 (VERDICT FROZEN-BACKBONE-1
+L70024; the FULL controls were 61 / 64 / 62), and the SG-1 control 59
+is at seed 27. The FROZEN arm IS this rung's CONTROL, so the evidence
+supports the prior as registered; the seed list and the word "controls"
+are corrected. p 0.95 unchanged.
+
+SHOULD-FIX 3, "preconditions all met at the sealed commit": the two
+300-step training smokes (logs/sgbb7/smoke.jsonl) ran pre-seal at
+cc4da41f on a dirty tree (code_commit / tree_dirty derived, honest);
+only the integrity smoke was rerun clean at the seal
+(logs/sgbb7/integrity_smoke_3c9b5252_seal.jsonl). Disclosed here; the
+driver reruns the integrity smoke on the launch commit as its first
+step and refuses to birth on any failure, and the training smokes
+exercised the driver's paths, not its numerics.
+
+SHOULD-FIX 4, launch receipt path: the driver's rerun would have
+written logs/sgbb7/integrity_smoke_<launch-commit>_launch.jsonl, not
+the registered logs/sgbb7/integrity_smoke_launch.jsonl. Folded the
+other way: the smoke takes INTEG_OUT and the driver passes the
+registered literal path, so the receipt lands where the pre-reg says
+(force-added at booking).
+
+SHOULD-FIX 5, dead-writer disclosure: the SG7 arm receives the
+control's exact gradient on blocks 4..6 / norm / head by construction,
+and no hat_delta_7 := 0 reference arm is registered (one cell only per
+the GO), so a FUNCTION-MATCH is consistent with a dead block-7 writer
+whose credit lies below the 120-gate's resolution in this arena. The
+fence "any gate difference is attributable to the block-7 credit alone"
+licenses attribution of a DIFFERENCE; a MATCH is not by itself evidence
+that the writer works. Disclosed in the json (match_disclosure): the
+separate LOCAL-mechanism GO is what separates a working writer from a
+dead one; the per-200-step predictor MSE v zero baseline and
+cos(hat_delta_7, delta^BP_7) are the descriptive in-run readouts.
+
+SHOULD-FIX 6, desk ratios (L71684-71687): 0.10 to 0.12 in both desk
+arms is the LATE-STATE block-7 reading (steps 3,084 to 15,420; the early
+states read 0.016 to 0.087), and 0.29 to 0.34 is the random-feature
+oracle of SG-FAILURE-DESK-0 (L71182), not of the cross-position desk.
+Corrected reading: "late-state HELDOUT ratio 0.10 to 0.12 in both
+cross-position-desk arms; 0.29 to 0.34 for SG-FAILURE-DESK-0's
+closed-form random-feature oracle on the same late states".
+
+Notes adopted: pred_final.pt now refuses if it exists (7); the gate
+asserts HEAD == every birth's launch_commit before gating (10); the
+disk figure counts final.pt too (about 2.7 GB) (8); the auditor ran on a
+tree dirtied by post-booking index / lock regen, not instrument drift
+(9): the folds are committed at 4d00452e and a second auditor pass runs
+on that clean tree before this amendment books.
+
+Instrument: the credit law is unchanged; the integrity smoke rerun at
+the folded commit (logs/sgbb7/integrity_smoke_4d00452e_seal2.jsonl,
+force-added and locked with this entry) reproduces the seal receipt: forced-delta endpoint block-7
+relative difference 0.0 and parameter difference 0.0 on all three
+states, max |post - pre| target 2.3e-5 / 5.9e-5 / 2.7e-5, 168
+ineligible positions, x_8 sd median 1.018 / 1.732 / 7.281. Tests 16 / 16.
+
+Nothing scientific changes: arena, seed 28, recipe (LOCAL predictor,
+PLR 1e-3, W_0 statistics, no clip), law (floor 24, band 7, one cell),
+priors and consequences stand as sealed. No seed-28 birth is
+authorized by this amendment.

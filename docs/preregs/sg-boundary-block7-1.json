@@ -108,7 +108,7 @@
   "logs/sgbb7/smoke_selection.json",
   "logs/sgbb7/integrity_smoke_3c9b5252_seal.jsonl",
   "logs/sgbb7/x8_scale_census.json",
-  "logs/sgbb7/integrity_smoke_<launch-commit>_launch.jsonl (the driver's INTEG_TAG=_launch rerun; exact name known at launch; force-added at booking)"
+  "logs/sgbb7/integrity_smoke_launch.jsonl"
  ],
  "instrument": [
   "scratch/sg7_credit.py",
@@ -121,7 +121,7 @@
   "tests/test_sg7_source_invariant.py",
   "scratch/sg7_scale_census.py"
  ],
- "instrument_commit": "3c9b5252",
+ "instrument_commit": "4d00452e (audit folds; the credit law sealed at 3c9b5252 is unchanged)",
  "does_not_authorize": [
   "the seed-28 birth (separate GO)",
   "MeZO",

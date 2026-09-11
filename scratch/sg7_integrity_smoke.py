@@ -30,8 +30,9 @@ Asserted per state:
  (j) the applied hat_delta predates the predictor step;
  (k) INPUT STATS derived at the state from the probe FIT chunks (shapes,
      finiteness, sd floor) and the predictor parameter count 500,736.
-Writes logs/sgbb7/integrity_smoke_<HEAD>[-dirty]<INTEG_TAG>.jsonl
-(refuses to overwrite; never a tracked path until booked).
+Writes logs/sgbb7/integrity_smoke_<HEAD>[-dirty]<INTEG_TAG>.jsonl, or the
+path in INTEG_OUT when set (the driver passes the registered
+logs/sgbb7/integrity_smoke_launch.jsonl); refuses to overwrite.
 Usage: .venv/bin/python scratch/sg7_integrity_smoke.py
 """
 import datetime
@@ -224,7 +225,7 @@ def main():
     commit = subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip()
     if subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True).stdout.strip():
         commit += "-dirty"
-    out = Path(f"logs/sgbb7/integrity_smoke_{commit}{os.environ.get('INTEG_TAG', '')}.jsonl")
+    out = Path(os.environ.get("INTEG_OUT") or f"logs/sgbb7/integrity_smoke_{commit}{os.environ.get('INTEG_TAG', '')}.jsonl")   # the driver passes the registered literal path
     out.parent.mkdir(parents=True, exist_ok=True)
     if out.exists():
         raise SystemExit(f"REFUSING: {out} exists")

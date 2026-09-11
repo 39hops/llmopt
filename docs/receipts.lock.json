@@ -1,5 +1,9 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
+ "_last_accept": {
+  "paths": [],
+  "reason": "AMENDMENT SG-BOUNDARY-BLOCK7-1-AUDIT: launch receipt at the registered literal path"
+ },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
    "bytes": 3176,
@@ -4286,13 +4290,16 @@
    "source": "results",
    "tracked": true
   },
-  "logs/sgbb7/integrity_smoke_<launch-commit>_launch.jsonl (the driver's INTEG_TAG=_launch rerun; exact name known at launch; force-added at booking)": {
-   "exists": false,
-   "source": "prereg"
+  "logs/sgbb7/integrity_smoke_4d00452e_seal2.jsonl": {
+   "bytes": 5695,
+   "exists": true,
+   "sha256": "9895a1db47e19805036767762bb4cf9a71701f5079a5dc40ebb4d4464b30c88d",
+   "source": "results",
+   "tracked": true
   },
   "logs/sgbb7/integrity_smoke_launch.jsonl": {
    "exists": false,
-   "source": "results"
+   "source": "prereg"
   },
   "logs/sgbb7/integrity_smoke_launch.log": {
    "exists": false,
@@ -4340,9 +4347,11 @@
    "source": "prereg"
   },
   "logs/sgbb7/x8_scale_census.json": {
+   "bytes": 2602,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "8d88a1d1c25e9e75e00f6c159e568d66608f76ef8d4d74e29b9d038a37ecb674",
+   "source": "results",
+   "tracked": true
   },
   "logs/sgfail0/desk.json": {
    "bytes": 299035,
