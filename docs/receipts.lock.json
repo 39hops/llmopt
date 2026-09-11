@@ -1,9 +1,5 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
- "_last_accept": {
-  "paths": [],
-  "reason": "AMENDMENT SG-CROSSPOS-REPRESENTABILITY-0-AUDIT: fold-run re-smoke receipt"
- },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
    "bytes": 3176,
@@ -4486,10 +4482,9 @@
   "logs/sgxpos0/smoke_audit.jsonl": {
    "bytes": 6323,
    "exists": true,
-   "local_only": true,
    "sha256": "1ca7e805ffabf31bac9e3055b179d08f741fd763713e362ca6e3fb4a43973db8",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/softnext1/arms.jsonl": {
    "bytes": 555,
