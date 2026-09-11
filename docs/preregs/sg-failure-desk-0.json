@@ -1,0 +1,126 @@
+{
+ "name": "SG-FAILURE-DESK-0",
+ "note": "Machine-readable form of PRE-REG SG-FAILURE-DESK-0 (zero-main-model-training desk on the retained SYNTHETIC-GRADIENT-WRITER-1 qualification snapshots; the prose governs). No birth authorized.",
+ "registered": "2026-09-11 (Mac local)",
+ "machine": "mac",
+ "status": "sealed; Artin GO 2026-09-11 for design + prereg + implementation + the desk on a clean auditor",
+ "states": {
+  "cells": [
+   "sgq_control_s27_lr0.0003",
+   "sgq_sg_linear_plr0.0003_s27_lr0.0003",
+   "sgq_sg_linear_plr3e-05_s27_lr0.0003",
+   "sgq_sg_mlp256_plr0.0003_s27_lr0.0003",
+   "sgq_sg_mlp256_plr3e-05_s27_lr0.0003"
+  ],
+  "desk_steps": [
+   0,
+   463,
+   1028,
+   2056,
+   3084,
+   5140,
+   7196,
+   10280,
+   12336,
+   15420
+  ],
+  "step_0": "read once (the control's step_00000.pt); init digests asserted equal across the five cells",
+  "predictors": "pred_step_<n>.pt of every SG cell at every desk step, digest asserted against logs/sgwriter1/qual.jsonl pred_snapshots",
+  "n_states": 41,
+  "digest_assertion": "every model and predictor state digest asserted against logs/sgwriter1/qual.jsonl before it is read"
+ },
+ "probe_split": {
+  "source": "logs/writerdfa1/probe.json (256 rows, digest asserted)",
+  "chunk_rows": 32,
+  "fit_chunks": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "held_chunks": [
+   4,
+   5,
+   6,
+   7
+  ],
+  "eligibility": "labels != -100 (the SG-PREDICTOR-AUDIT-0 / FOLD B convention)",
+  "dtype": "float64",
+  "device": "cpu"
+ },
+ "oracles": {
+  "inputs": "[h_l, e, 1] = [x_{l+1} (384), dL/dlogits (40), bias]: the registered predictor inputs",
+  "target": "Y_l = delta^BP_l / s_l with the sealed arena constants (parameter-detached teacher pass at the snapshot's W)",
+  "linear_ridge": "linear ridge with lambda chosen by closed-form generalized cross-validation on the FIT set alone over the relative grid {1e-8 .. 1} x tr(X^T X)/d_in (conditioning check; secondary)",
+  "linear_lstsq": "lambda 0, pinv (PRIMARY: n_fit about 8k tokens v d_in 425)",
+  "rf_ridge": "richer frozen-state oracle: ridge on [X, relu(Z Omega + b)] with Z = FIT-standardized [h, e], 2048 random features, Omega ~ N(0, 1/sqrt(d_in)), b ~ N(0, 1), torch.Generator seed 777 (the family contains the linear one); lambda by the same FIT-only GCV law",
+  "readouts": [
+   "held_ratio = sum ||Y - Yhat||^2 / sum ||Y||^2 on HELDOUT (zero-baseline ratio)",
+   "held_cos pooled",
+   "fit_ratio (under / over-fit)"
+  ]
+ },
+ "online_tracking": {
+  "match": "phi_t on HELDOUT inputs / targets of W_t: ratio, cos",
+  "prev_next": "phi_t on HELDOUT inputs / targets of the previous and next desk snapshot",
+  "nonstationarity": "cos(Y_t, Y_next) and RMS(Y_next) / RMS(Y_t) per block on HELDOUT"
+ },
+ "dynamics": [
+  "delta^BP element RMS (HELDOUT)",
+  "hat_delta RMS (SG cells) and hat / delta RMS ratio",
+  "hidden-error cosine cos(hat_delta, delta^BP)",
+  "block-parameter-gradient cosine cos(J^T hat_delta, frozen-top BP gradient) per SG block, accumulated over HELDOUT chunks",
+  "residual effective rank of x_{l+1}, all eight blocks (dfa_act.effective_rank law, HELDOUT eligible tokens)",
+  "output-error RMS",
+  "head.weight Frobenius norm",
+  "norm.g L2 norm",
+  "probe CE (FIT and HELDOUT)"
+ ],
+ "thresholds_descriptive": {
+  "GOOD": "median over desk steps >= 463 and blocks 4..7 of linear_lstsq held_ratio <= 0.5",
+  "POOR": "median >= 0.9",
+  "online_bad": "median held ratio of phi_t at its matching W_t >= 0.9",
+  "richer_good": "rf_ridge_gcv median <= 0.5 while linear_lstsq median > 0.5",
+  "collapse_target": "baseline_mse_held < 1e-4 on some block at some desk step >= 463",
+  "collapse_rank": "effective rank of x_{l+1} < 3 on some block 4..7 at some desk step >= 463",
+  "collapse_readout": "head.weight Frobenius norm or norm.g L2 norm outside [0.5x, 2x] of the control's at the same desk step",
+  "sg_only": "a collapse readout that fires on an SG cell and not on the control at the same step"
+ },
+ "interpretation_tree": [
+  "A: linear oracle GOOD and online predictor BAD  => tracking / optimizer / timescale failure; SG remains live",
+  "B: linear oracle POOR (or not GOOD) and rf_ridge GOOD => capacity / context failure of the (h, e) -> delta linear family",
+  "C: linear and rf_ridge oracles POOR => the current (h, e) -> delta^BP SG formulation closes",
+  "D: SG-only target / rank / readout collapse => self-induced bad-basin hypothesis supported descriptively (coincidence readout: at the first desk step where an MLP cell's baseline_mse_held < 1e-4, its rank at blocks 5..8 and its head / norm norms v the control's at the same step)",
+  "branches are descriptive labels; several may hold at once (per cell); none is a bar; nothing here tunes an SG birth"
+ ],
+ "bars": [],
+ "registered_prior": {
+  "rf_ridge_median_held_ratio_linear_cells": "within 0.1 of the linear_lstsq median (the random features do not add representable structure), p 0.6",
+  "online_bad": "true on all four SG cells (p 0.9)",
+  "mlp_target_collapse_coincides_with_rank_below_3": "p 0.6",
+  "control_collapse_none": "p 0.95",
+  "param_grad_cos_linear_cells": "within [-0.2, 0.2] at every desk step >= 1028 (p 0.7)",
+  "branch_A_holds_on_some_cell": "p 0.4",
+  "branch_C_holds_on_some_cell": "p 0.35",
+  "linear_lstsq_median_held_ratio_linear_cells": "0.3 to 0.9 (a partial fit: the teacher target is not a linear function of (x_{l+1}, e) alone)"
+ },
+ "cost_min": "about 40 (41 states, fp64 CPU)",
+ "liverun_ids": [
+  "sgfail0"
+ ],
+ "receipts": [
+  "logs/sgfail0/desk.json",
+  "logs/sgfail0/desk.jsonl",
+  "logs/sgfail0/smoke.jsonl",
+  "logs/sgfail0/desk.log",
+  "logs/liverun/sgfail0.jsonl"
+ ],
+ "instrument": [
+  "scratch/sg_failure_desk.py",
+  "tests/test_sg_failure_desk_oracles.py"
+ ],
+ "does_not_authorize": [
+  "any writer birth (delayed-target, bootstrapped-target, new family, seed-2, MeZO, target-prop, equilibrium-prop, mechanism)"
+ ],
+ "checkpoint_policy": "checkpoints/sgwriter1/ intact through the desk booking; then a compact keep set is proposed (not executed)"
+}

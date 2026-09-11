@@ -70968,3 +70968,127 @@ closure; no seed-2 birth, no mechanism work, no amendment was made
 during or after the run. Program status: the second foreign credit
 writer (synthetic gradients / DNI, in the top-four arena) is
 ACCESSIBILITY-ONLY at qualification; what follows is Artin's decision.
+
+## PRE-REG SG-FAILURE-DESK-0: zero-main-model-training desk on the retained SYNTHETIC-GRADIENT-WRITER-1 qualification snapshots and predictors — distinguish (1) instantaneous predictor representability (deterministic float64 closed-form oracles from the registered inputs [h_l, e] to delta^BP_l / s_l, fitted on a frozen FIT half of the probe and scored on the disjoint HELDOUT half), (2) online predictor tracking / target nonstationarity (each saved phi_t scored on HELDOUT at its own W_t and at the neighbouring desk snapshots), (3) self-extinguishing hidden-error / representation dynamics (delta^BP RMS, hat_delta RMS and ratio, hidden-error cosine, actual block-parameter-gradient cosine, residual effective rank, output-error RMS, head / norm norms, per snapshot and block across the four SG cells and the frozen-BP control); 41 states, prospective interpretation tree, descriptive, no bar (2026-09-11 local, Mac; sealed and committed before any retained checkpoint is read for these analyses; liverun sgfail0; no birth authorized)
+
+Artin GO 2026-09-11 09:53 EDT: design + prereg + implementation, then
+the desk if the prereg auditor is clean; no new writer birth
+(delayed-target, bootstrapped-target, new predictor family, seed-2,
+MeZO, target-prop, equilibrium-prop, mechanism births all excluded);
+checkpoints/sgwriter1/ intact through the desk booking; a compact keep
+set to be proposed after.
+
+STATES (exact; every model and predictor digest asserted against
+logs/sgwriter1/qual.jsonl before it is read): the five seed-27 cells
+sgq_control_s27_lr0.0003, sgq_sg_linear_plr0.0003_s27_lr0.0003,
+sgq_sg_linear_plr3e-05_s27_lr0.0003, sgq_sg_mlp256_plr0.0003_s27_lr0.0003,
+sgq_sg_mlp256_plr3e-05_s27_lr0.0003 at the desk steps 463, 1028, 2056,
+3084, 5140, 7196, 10280, 12336, 15420 (nine of the seventeen
+snapshots) plus step 0 read once from the control (the shared W_0; the
+five init digests asserted equal): 41 model states; the matching
+pred_step_<n>.pt of each SG cell at each desk step (36 predictor
+states, rebuilt by sg_credit.build_predictors from the receipt's
+family and pred_seed and loaded). The final.pt files are the
+step_15420 states (same digest) and are not read separately.
+
+PROBE / SPLIT: the frozen WRITER-DFA-1 probe (256 rows, token digest
+asserted), 32-row chunks; FIT = chunks 0..3 (rows 0..127), HELDOUT =
+chunks 4..7 (rows 128..255), disjoint by construction; eligibility =
+labels != -100 (the audit / FOLD B convention; about 7.9k eligible
+tokens per half); float64 CPU; the parameter-detached teacher pass of
+sg_credit at each state supplies delta^BP_l = dL/dx_{l+1} at blocks
+4..7, e = dL/dlogits and x_{l+1}; s_l = the sealed arena constants.
+
+(1) INSTANTANEOUS REPRESENTABILITY, per SG cell, desk step and block l
+in 4..7 (and on the control, as the BP reference): design X = [x_{l+1}
+(384), e (40), 1], target Y = delta^BP_l / s_l on the FIT tokens.
+Oracles, all closed-form and deterministic: (a) LINEAR least squares
+(pinv; PRIMARY: n_fit about 7.9k v d_in 425); (b) LINEAR ridge with
+lambda chosen by closed-form generalized cross-validation on the FIT
+set alone over the relative grid {1e-8, ..., 1} x tr(X^T X) / d_in
+(conditioning check); (c) the RICHER frozen-state oracle: ridge on [X,
+relu(Z Omega + b)] with Z the FIT-standardized [h, e], 2048 random
+features, Omega ~ N(0, 1 / sqrt(424)), b ~ N(0, 1), torch.Generator
+seed 777, lambda by the same GCV law; the richer family contains the
+linear one. Readouts on HELDOUT: ratio = sum ||Y - Yhat||^2 / sum
+||Y||^2 (the normalized-MSE / zero-baseline ratio), pooled cosine;
+plus the FIT-set ratio. NOT used to tune any SG birth. Smoke-driven
+law corrections before sealing, disclosed: a fixed relative ridge of
+1e-3 over-shrank (held ratio 0.93 v least squares 0.24 on a 300-step
+smoke state); a fixed 1e-6 ridge on raw random features overfit (held
+ratio 14 to 26); the sealed laws are the ones above.
+
+(2) ONLINE PREDICTOR TRACKING, per SG cell, desk step t and block:
+phi_t on the HELDOUT inputs / targets of W_t (ratio_match, cos_match);
+phi_t on the HELDOUT inputs / targets of the previous and the next
+desk snapshot (ratio_prev, ratio_next: lag readout); target
+nonstationarity cos(Y_t, Y_next) and RMS(Y_next) / RMS(Y_t) on HELDOUT.
+
+(3) DYNAMICS, all five cells, per desk step and block: delta^BP element
+RMS (HELDOUT); hat_delta RMS = RMS(s_l G_phi_t) and the ratio hat /
+delta (SG cells); hidden-error cosine cos(hat_delta, delta^BP); the
+ACTUAL block-parameter-gradient cosine cos(J_{f_l}^T hat_delta_l,
+true frozen-top BP gradient of block l) with both gradients
+accumulated over the HELDOUT chunks at the same state; residual
+effective rank of x_{l+1} for all eight blocks (dfa_act.effective_rank,
+the P3 / ACT law, HELDOUT eligible tokens); output-error RMS;
+head.weight Frobenius norm; norm.g L2 norm; probe CE on FIT and
+HELDOUT. Registered coincidence readout for the MLP target fall: at
+the first desk step where an MLP cell's HELDOUT baseline_mse (mean of
+(delta^BP / s)^2) is below 1e-4 on any block, its effective rank at
+blocks 5..8 and its head / norm norms are read against the control's
+at the same step.
+
+DESCRIPTIVE THRESHOLDS (labels, not bars): per cell, medians over desk
+steps >= 463 and blocks 4..7. Linear oracle GOOD iff median HELDOUT
+least-squares ratio <= 0.5; POOR iff >= 0.9. Online predictor BAD iff
+median ratio_match >= 0.9. Richer oracle GOOD iff its median <= 0.5
+while the linear median > 0.5. Collapse readouts: TARGET iff HELDOUT
+baseline_mse < 1e-4 on some block at some desk step >= 463; RANK iff
+effective rank of x_{l+1} < 3 on some block 4..7 at some desk step >=
+463; READOUT iff head.weight Frobenius or norm.g L2 is outside [0.5x,
+2x] of the control's at the same step; SG-ONLY iff a readout fires on
+an SG cell and not on the control at that step.
+
+PROSPECTIVE INTERPRETATION TREE (per cell; several branches may hold;
+none is a bar; nothing here tunes a birth): A. linear oracle GOOD and
+online predictor BAD => tracking / optimizer / timescale failure; SG
+remains live. B. linear oracle not GOOD and richer oracle GOOD =>
+capacity / context failure of the linear (h, e) -> delta family. C.
+linear and richer oracles POOR => the current (h, e) -> delta^BP SG
+formulation closes. D. SG-only TARGET / RANK / READOUT collapse =>
+the self-induced bad-basin hypothesis is supported descriptively.
+
+REGISTERED PRIOR (descriptive, scored on direction): linear
+least-squares median HELDOUT ratio on the LINEAR cells 0.3 to 0.9 (a
+partial fit); the richer oracle's median within 0.1 of the linear
+median (p 0.6); online predictor BAD on all four SG cells (p 0.9); the
+MLP target fall coincides with rank < 3 at blocks 5..8 (p 0.6); no
+collapse readout on the control (p 0.95); block-parameter-gradient
+cosine on the LINEAR cells within [-0.2, 0.2] at every desk step >=
+1028 (p 0.7); branch A holds on some cell (p 0.4); branch C holds on
+some cell (p 0.35).
+
+INSTRUMENT: scratch/sg_failure_desk.py (tests/test_sg_failure_desk_
+oracles.py: linear oracle recovers a linear target, GCV picks a small
+lambda on a clean linear target, the richer oracle beats the linear
+on a quadratic target and contains the linear family, deterministic
+random features, the reductions, the registered constants), smoked on
+the five sgwriter1_smoke_seal2 cells at steps 0 and 300 with FIT
+chunks 0..1 / HELDOUT 2..3 (logs/sgfail0/smoke.jsonl; smoke states
+only, no retained qualification checkpoint was opened). Cost: 41
+states x (two halves of teacher pass + oracles + gradient cosines),
+about 40 min fp64 CPU; one liverun process (sgfail0). Receipts:
+logs/sgfail0/desk.json (refuses to overwrite), logs/sgfail0/desk.jsonl,
+logs/sgfail0/desk.log, logs/sgfail0/smoke.jsonl,
+logs/liverun/sgfail0.jsonl; force-added and locked at booking.
+Booking: OBSERVATION SG-FAILURE-DESK-0 with the per-cell branch
+labels, the prior scored, and a proposed compact keep set for
+checkpoints/sgwriter1/ (not executed under this GO). Fences:
+descriptive; one seed, one probe (256 rows), nine desk snapshots of
+seventeen; fp64 CPU reference values; the oracles are frozen-state
+fits, not training runs; nothing here revises L70832 or authorizes
+any birth. Housekeeping GO (separate, same message): after this desk,
+prune checkpoints/sgwriter1_smoke/, sgwriter1_smoke_seal2/ and
+frozenbb1_smoke/ after a 0-mismatch digest inventory against their
+smoke receipts.

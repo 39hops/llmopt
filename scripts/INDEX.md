@@ -5292,6 +5292,25 @@ SYNTHETIC-GRADIENT-WRITER-1 credit law (PRE-REG SYNTHETIC-GRADIENT- WRITER-1 L69
 - `sg_step_terms(model, preds, ids, attn_mask, labels, sg_blocks, consts)` — Steps 1 to 3 of the frozen order at the pre-update pair (W_t, phi_t):
 - `run_sg_step(T, model_params, phi, model_opt, pred_opt, model_sched=None, pred_sched=None, steps_total=None, skip_pred_update=False)` — Steps 4 to 9 of the frozen order on the terms T of sg_step_terms.
 
+### scratch/sg_failure_desk.py
+SG-FAILURE-DESK-0: zero-main-model-training desk on the retained SYNTHETIC-GRADIENT-WRITER-1 qualification snapshots (PRE-REG SG-FAILURE-DESK-0). Nothing trains; no gate is read; no birth.
+
+- `rms(v)`
+- `cos_pooled(a, b)`
+- `ratio(y, yhat)`
+- `ridge_fit(X, Y, lam)` — W = (X^T X + lam I)^-1 X^T Y in float64; lam 0 -> least squares by pinv.
+- `rel_lambda(X)`
+- `gcv_ridge(X, Y)` — Ridge with lambda chosen by generalized cross-validation on the FIT
+- `rf_features(HE, gen_seed=RF_SEED, width=RF_WIDTH)`
+- `rf_design(X_lin, mu, sd)` — The richer oracle's design: [X_lin (incl. bias), relu(Z Omega + b)] with
+- `state_arrays(model, tok, rows, chunk_ids, consts)` — Per state: for the chunks given, the eligible-position arrays
+- `param_grad_cosines(model, tok, rows, chunk_ids, preds, consts)` — cos(J^T hat_delta, true frozen-top BP gradient) per SG block, gradients
+- `load_state(b, step, tok)`
+- `load_preds(b, step)`
+- `predictor_eval(preds, arrays, consts)` — phi on [h, e] of `arrays` v the targets of `arrays`, per block.
+- `oracle_fits(fit, held)`
+- `main()`
+
 ### scratch/sg_integrity_smoke.py
 SYNTHETIC-GRADIENT-WRITER-1 integrity smoke (AMENDMENT -ARENA fold 5 checks (a) to (g), AMENDMENT -SEAL fold A check (h) and the two endpoint checks (i), (j)); mechanical; the only optimizer steps it takes are on a COPY of a smoke checkpoint. Cases: the frozenbb1_smoke FROZEN final (seed 11; arena shape: emb + blocks 0..3 frozen, SG blocks 4..7, arena constants) and the FULL final in full-stack mode (SG blocks 0..7, full-stack constants), each with LINEAR and MLP-256, one 32-row probe chunk.
 
