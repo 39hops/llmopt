@@ -41,8 +41,8 @@ file. 3080 untouched. No live registered run.
   (predictors that do not beat zero; numerically vanishing targets on
   the MLP cells) are for zero-training desks only if directed.
 - Smoke exhaust: checkpoints/sgwriter1_smoke, sgwriter1_smoke_seal2,
-  frozenbb1_smoke (about 1.1 GB each); disk about 19 GiB free after
-  the run. Prune on a housekeeping gate (Artin GO).
+  frozenbb1_smoke (about 1.1 GB each); disk 26 GiB free after the
+  run. Prune on a housekeeping gate (Artin GO).
 - Index regen quirk persists (act-envelope row); SEAL-AUDIT entries
   carry slug ids ...-seal-b and ...-seal-b-b.
 - The verdict's descriptive paragraph was wrong on first draft in a
