@@ -5362,6 +5362,13 @@ SG-PREDICTOR-AUDIT-0: zero-main-model-training audit of the true backprop hidden
 - `constants(states)` — Registered rule: s_l = geometric mean of RMS_l(delta) over the FROZEN
 - `main()`
 
+### scratch/sgwriter1_keepset_prune.py
+Housekeeping prune of checkpoints/sgwriter1/ to the compact keep set proposed in OBSERVATION SG-FAILURE-DESK-0 and approved with the SG-CROSSPOS-REPRESENTABILITY-0 GO (executes only after that desk is booked and receipt-complete). KEEP per cell: step_00463, step_03084, step_05140, step_15420 and the matching pred_step_ files; the control's step_00000 (the shared W_0). REMOVE everything else (the other 12 snapshots per cell, final.pt / pred_final.pt whose state digests equal step_15420's, the remaining pred_step_ files). Every file under the tree is sha256- and state-digest-matched against logs/sgwriter1/qual.jsonl before anything is removed; any mismatch or unreceipted file ABORTS. The inventory (every file, kept or removed, with its digests) is written to logs/housekeeping/sgwriter1_keepset_prune_<date>.json (refuses to overwrite). Usage: .venv/bin/python scratch/sgwriter1_keepset_prune.py
+
+- `expected(b, name)`
+- `keep(p)`
+- `main()`
+
 ### scratch/smoke_prune.py
 Housekeeping prune of the three SMOKE checkpoint trees (Artin GO 2026-09-11, after SG-FAILURE-DESK-0): checkpoints/frozenbb1_smoke/, checkpoints/sgwriter1_smoke/, checkpoints/sgwriter1_smoke_seal2/. For every file under each tree the sha256 (and, for step_/final/pred_ files, the canonical state digest) is re-read and matched against the smoke receipt that booked it (logs/frozenbb1/smoke.jsonl, logs/sgwriter1/smoke.jsonl, logs/sgwriter1/smoke_seal2.jsonl); the inventory is written to logs/housekeeping/smoke_prune_inventory_<date>.json (refuses to overwrite); any mismatch or any file without a receipt row ABORTS before anything is removed; on 0 mismatches every file and the trees are removed. The registered checkpoints/sgwriter1/ and checkpoints/frozenbb1/ keep sets are never touched. Usage: .venv/bin/python scratch/smoke_prune.py
 

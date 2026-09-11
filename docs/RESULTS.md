@@ -71553,3 +71553,122 @@ criterion; the gap stays descriptive, item 3).
 Receipts: logs/sgxpos0/smoke_audit.jsonl (locked with this entry).
 Nothing scientific beyond items 1 to 3 changes; the desk has not run;
 no retained checkpoint has been opened; no birth authorized.
+
+## VERDICT SG-CROSSPOS-REPRESENTABILITY-0: BAR-1 NO-FIRE — on the healthy seed-27 frozen-BP control's late states the reverse-causal sequence predictor (query i reading Z_j = [x_{l+1,j}, e_j] at j >= i) does NOT represent the true hidden error: late median HELDOUT zero-baseline ratio 1.10 over the 24 registered cells (blocks 4..6 0.93 to 1.285 at every late step, median 1.18; block 7 alone 0.10 to 0.12, GOOD in both arms and already GOOD for the closed-form random-feature oracle), and the paired same-architecture LOCAL (j == i) arm is indistinguishable (paired per-cell gap median -0.008, range -0.076 to +0.023 over all 24 cells), so cross-position access to the per-block sequence adds nothing the same-position input lacks; the fits memorize (FIT ratio 0.19 to 0.34 on blocks 4..6 late against HELDOUT 0.93 to 1.285; no logged epoch of any late block-4..6 fit of either arm reaches HELDOUT 0.80); the SG family CLOSES at this arena under the sealed NO-FIRE clause, with the block-7 exception disclosed; prior 3 hits 3 misses (2026-09-11 local, Mac; liverun sgxpos0 at 577a445d, 39 min, zero main-model training; one seed, one device; no seed-28 design banked; no birth)
+
+**What ran.** scratch/sg_crosspos_desk.py at 577a445d (clean tree,
+liverun sgxpos0 armed 16:03 UTC, disarmed rc 0 at 16:42 UTC; every
+control state digest asserted against logs/sgwriter1/qual.jsonl; the
+four SG cells' states and predictors were not opened). Ten control
+snapshots x blocks 4..7 x two arms = 80 offline fits of the sealed
+500,736-parameter predictor, each the fixed 1,200-step budget (walls
+25.6 to 34.4 s per fit; float32 CPU, 5 torch threads; no nonfinite
+cell). Receipt logs/sgxpos0/desk.json (adjudication block computed by
+sg_crosspos_desk.adjudicate, the AMENDMENT -AUDIT law).
+
+**BAR-1 (licensing): NO-FIRE.** Median over LATE_STEPS {3,084, 5,140,
+7,196, 10,280, 12,336, 15,420} x blocks {4, 5, 6, 7} of the
+reverse_causal HELDOUT ratio = 1.100 (bar: <= 0.5 FIRES); 0 of 24
+cells nonfinite (resolvable). Range 0.103 (block 7, step 3,084) to
+1.285 (block 4, step 7,196).
+
+**Readouts (HELDOUT zero-baseline ratio, reverse_causal / local).**
+
+| step | rc blocks 4..7 | local blocks 4..7 | rc FIT 4..7 | rc held cos 4..7 |
+|---|---|---|---|---|
+| 0 | 0.039 / 0.030 / 0.022 / 0.016 | 0.043 / 0.033 / 0.023 / 0.019 | 0.03 / 0.03 / 0.02 / 0.03 | 0.98 / 0.99 / 0.99 / 0.99 |
+| 463 | 0.422 / 0.333 / 0.190 / 0.043 | 0.468 / 0.357 / 0.200 / 0.043 | 0.22 / 0.18 / 0.11 / 0.03 | 0.76 / 0.82 / 0.90 / 0.98 |
+| 1,028 | 0.998 / 0.895 / 0.668 / 0.075 | 1.032 / 0.915 / 0.681 / 0.075 | 0.34 / 0.29 / 0.23 / 0.02 | 0.37 / 0.45 / 0.61 / 0.96 |
+| 2,056 | 1.187 / 1.094 / 0.873 / 0.087 | 1.235 / 1.142 / 0.882 / 0.086 | 0.35 / 0.29 / 0.22 / 0.02 | 0.22 / 0.30 / 0.46 / 0.96 |
+| 3,084 | 1.197 / 1.165 / 0.931 / 0.103 | 1.245 / 1.142 / 0.932 / 0.118 | 0.34 / 0.29 / 0.24 / 0.02 | 0.16 / 0.23 / 0.40 / 0.95 |
+| 5,140 | 1.178 / 1.148 / 0.988 / 0.117 | 1.206 / 1.159 / 0.997 / 0.122 | 0.31 / 0.28 / 0.21 / 0.01 | 0.10 / 0.15 / 0.31 / 0.94 |
+| 7,196 | 1.285 / 1.239 / 1.011 / 0.107 | 1.329 / 1.275 / 1.062 / 0.111 | 0.29 / 0.25 / 0.20 / 0.01 | 0.09 / 0.15 / 0.29 / 0.95 |
+| 10,280 | 1.199 / 1.227 / 1.039 / 0.119 | 1.275 / 1.233 / 1.062 / 0.115 | 0.29 / 0.25 / 0.19 / 0.01 | 0.08 / 0.12 / 0.26 / 0.94 |
+| 12,336 | 1.234 / 1.210 / 1.042 / 0.108 | 1.229 / 1.204 / 1.062 / 0.119 | 0.30 / 0.25 / 0.20 / 0.01 | 0.07 / 0.12 / 0.26 / 0.94 |
+| 15,420 | 1.228 / 1.185 / 1.053 / 0.108 | 1.212 / 1.178 / 1.054 / 0.116 | 0.30 / 0.25 / 0.20 / 0.01 | 0.08 / 0.12 / 0.25 / 0.94 |
+
+1. Blocks 4..6 on the late states: reverse_causal HELDOUT 0.931 to
+   1.285 (median 1.182), held cosine 0.07 to 0.40, FIT ratio 0.186 to
+   0.342: the predictor memorizes the 128 FIT sequences and predicts
+   worse than zero on HELDOUT. The 25-epoch curves never cross into the
+   GOOD regime at any epoch: the lowest logged HELDOUT ratio of any
+   late block-4..6 reverse_causal fit is 0.805 (step 3,084 block 6 at
+   epoch 50; local arm 0.807), early, before the fit ratio falls,
+   and at step 15,420 block 4 the HELDOUT ratio rises monotonically
+   from 1.003 (epoch 25) to 1.228 (epoch 300) while FIT falls 0.852 to
+   0.296.
+2. Block 7 on the late states: 0.103 to 0.119 (GOOD) in BOTH arms
+   (local 0.111 to 0.122), held cosine 0.94 to 0.95. Block 7 was
+   already GOOD for the closed-form same-position random-feature oracle
+   (SG-FAILURE-DESK-0, 0.29 to 0.34 at every late step; the linear
+   oracle 0.47 to 1.11 over the same steps); the trainable family
+   reads lower (0.10 to 0.12) but the regime label is the same, and it
+   needs no cross-position input. Block 7 is the one SG block whose
+   error is a function of its local input on the trained control.
+3. Paired attribution: gap reverse_causal - local over the 24 late
+   cells median -0.008, range -0.076 to +0.023; the two arms track each
+   other within 0.08 in every cell of every state. Cross-position
+   access to the per-block sequence (j >= i) contributes nothing
+   measurable to representability at this capacity and budget.
+4. Length extrapolation: chunk 7 is the worst HELDOUT chunk for
+   reverse_causal in 19 of the 24 late cells (e.g. block 7 at 15,420:
+   chunks 1 / 3 / 5 / 7 = 0.11 / 0.09 / 0.08 / 0.17; block 4 at 15,420
+   = 1.09 / 1.17 / 1.30 / 1.32). The block-7 GOOD reading holds on every
+   chunk; the block-4..6 failure holds on every chunk (per-chunk
+   minimum 0.849, step 3,084 block 6 chunk 1; every other late
+   block-4..6 chunk above 0.88), so the NO-FIRE is not a length
+   artefact.
+5. Early states (not in the bar): step 0 0.016 to 0.039 (an untrained
+   model's error is nearly a function of the local input), step 463
+   0.043 to 0.422, step 1,028 0.075 to 0.998: the same trained-state
+   drift to about 1 as the closed-form oracles, block by block from
+   block 4 downward in depth from the head.
+
+**Consequence.** The sealed NO-FIRE clause applies: the SG family
+CLOSES at this arena, because neither the same-position input
+(closed-form oracles, SG-FAILURE-DESK-0; the trainable LOCAL family
+here) nor the reverse-causal cross-position input of the same
+per-block sequence represents delta^BP on the healthy control's
+trained states within the registered capacity and budget. One
+narrowing of the sealed sentence is disclosed rather than silently
+applied: the failure is on blocks 4..6; block 7 is GOOD in both arms
+and was already GOOD for the closed-form random-feature oracle, and a
+three-of-four-block failure still fails the family (the bar's median
+is 1.10). No SEQUENCE-SG seed-28 design is
+banked. The information-hole hypothesis (delta^BP_{l,i} needs the
+positions j >= i) is refuted at this capacity and budget: the added
+access changed nothing; what the target needs is not in Z_{j >= i}
+either. The block-7 reading is a descriptive lead, not a license: a
+one-block SG writer at the block below the head is a different design
+with its own pre-reg if ever wanted.
+
+**Registered prior: 3 hits 3 misses.** (1) BAR-1 fires (p 0.45):
+MISS. (2) local late median >= 0.9 (p 0.8): HIT (1.102). (3)
+reverse_causal below local by >= 0.2 (p 0.6): MISS (-0.008). (4) chunk
+7 worse than chunks 1 / 3 / 5 in >= 18 of 24 late cells (p 0.7): HIT
+(19). (5) step 463 reverse_causal <= 0.3 on every block (p 0.6): MISS
+(0.422 on block 4). (6) reverse_causal late median FIT ratio <= 0.5
+(p 0.7): HIT (0.242). Family track record (the count carried by
+OBSERVATION SG-FAILURE-DESK-0, 16 / 14, plus these): 19 hits 17
+misses.
+
+**Fences.** One seed of the control (27), one device (Mac CPU float32
+fits over fp64 targets, deterministic at 5 threads; no cross-run
+bit-exact claim); a fixed family (500,736 parameters, two layers) at a
+fixed 1,200-step budget, 128 FIT sequences: a NO-FIRE is a
+representability failure within this family and budget, not an
+existence proof; a bidirectional (j < i) input, the downstream weights
+as input, or a larger predictor are untested and each a new pre-reg
+(none licensed). HELDOUT is interleaved-difficulty and
+length-extrapolating, not iid. Nothing here scores an SG cell, revises
+L70832 or L71182, or authorizes a birth. Late-state block-7 GOOD
+readings are descriptive.
+
+**Receipts.** logs/sgxpos0/desk.json, logs/sgxpos0/desk.jsonl,
+logs/sgxpos0/desk.log, logs/liverun/sgxpos0.jsonl (locked with this
+entry); the sealed smoke receipts logs/sgxpos0/smoke.jsonl and
+logs/sgxpos0/smoke_audit.jsonl were locked with the pre-reg and its
+audit. Checkpoint policy: checkpoints/sgwriter1/ was intact through
+this desk; the approved compact keep set executes after this booking
+(scratch/sgwriter1_keepset_prune.py, digest inventory to
+logs/housekeeping/).
