@@ -5292,6 +5292,23 @@ SYNTHETIC-GRADIENT-WRITER-1 credit law (PRE-REG SYNTHETIC-GRADIENT- WRITER-1 L69
 - `sg_step_terms(model, preds, ids, attn_mask, labels, sg_blocks, consts)` — Steps 1 to 3 of the frozen order at the pre-update pair (W_t, phi_t):
 - `run_sg_step(T, model_params, phi, model_opt, pred_opt, model_sched=None, pred_sched=None, steps_total=None, skip_pred_update=False)` — Steps 4 to 9 of the frozen order on the terms T of sg_step_terms.
 
+### scratch/sg_crosspos_desk.py
+SG-CROSSPOS-REPRESENTABILITY-0: zero-main-model-training desk on the retained seed-27 frozen-BP control of SYNTHETIC-GRADIENT-WRITER-1 (PRE-REG SG-CROSSPOS-REPRESENTABILITY-0). Nothing in the main model trains; no gate is read; no birth.
+
+- `alibi_slopes(n_heads)`
+- `allowed_mask(arm, key_real)` — [B, T, T] bool: query i may read key j.
+- `class Attn` (forward)
+- `class SeqSG` (forward)
+- `n_params(m)`
+- `seq_arrays(model, tok, rows, chunk_ids, consts)` — Per chunk: full padded sequences H[l] [B, T, 384] (x_{l+1}), E [B, T, 40]
+- `fit_stats(fit, l)`
+- `inputs(c, l, mu, sd)`
+- `sse_ssy(pred, c, l)`
+- `evaluate(pred_model, chunks, l, mu, sd, arm)`
+- `fit_arm(fit, held, l, arm, seed)` — One offline fit. Returns the receipt dict for (block, arm).
+- `adjudicate(rec)` — BAR-1 over LATE_STEPS x SG_BLOCKS of the control's reverse_causal
+- `main()`
+
 ### scratch/sg_failure_desk.py
 SG-FAILURE-DESK-0: zero-main-model-training desk on the retained SYNTHETIC-GRADIENT-WRITER-1 qualification snapshots (PRE-REG SG-FAILURE-DESK-0). Nothing trains; no gate is read; no birth.
 

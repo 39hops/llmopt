@@ -1,0 +1,166 @@
+{
+ "name": "SG-CROSSPOS-REPRESENTABILITY-0",
+ "note": "Machine-readable form of PRE-REG SG-CROSSPOS-REPRESENTABILITY-0 (zero-main-model-training desk on the retained seed-27 frozen-BP control; the prose governs). No birth authorized.",
+ "registered": "2026-09-11 (Mac local)",
+ "machine": "mac",
+ "status": "sealed; Artin GO 2026-09-11 for design + prereg + the desk on a clean auditor; no birth",
+ "states": {
+  "cell": "sgq_control_s27_lr0.0003",
+  "desk_steps": [
+   0,
+   463,
+   1028,
+   2056,
+   3084,
+   5140,
+   7196,
+   10280,
+   12336,
+   15420
+  ],
+  "late_steps": [
+   3084,
+   5140,
+   7196,
+   10280,
+   12336,
+   15420
+  ],
+  "blocks": [
+   4,
+   5,
+   6,
+   7
+  ],
+  "digest_assertion": "every control state digest asserted against logs/sgwriter1/qual.jsonl before it is read (sg_failure_desk.load_state)",
+  "sg_cells_read": false
+ },
+ "probe_split": {
+  "source": "logs/writerdfa1/probe.json (256 rows, digest asserted)",
+  "chunk_rows": 32,
+  "fit_chunks": [
+   0,
+   2,
+   4,
+   6
+  ],
+  "held_chunks": [
+   1,
+   3,
+   5,
+   7
+  ],
+  "fit_tokens": 6740,
+  "held_tokens": 9150,
+  "fit_lengths": [
+   32,
+   44,
+   61,
+   101
+  ],
+  "held_lengths": [
+   39,
+   51,
+   74,
+   275
+  ],
+  "note": "chunk 7 = 4,330 of 9,150 HELDOUT tokens and longer than every FIT sequence; per-chunk ratio receipted beside the pooled one"
+ },
+ "predictor": {
+  "input": "Z_j = [x_{l+1,j} (384), e_j (40)] at every real token j; FIT-standardized per feature, clipped to [-5, 5]; nothing else",
+  "target": "Y_i = delta^BP_{l,i} / s_l at eligible positions (labels != -100), sealed arena constants, parameter-detached teacher pass at the snapshot W",
+  "arch": {
+   "d_in": 424,
+   "d": 128,
+   "layers": 2,
+   "heads": 4,
+   "ffn": 512,
+   "d_out": 384,
+   "position": "fixed ALiBi slopes 2^-2, 2^-4, 2^-6, 2^-8 on |j - i|; no absolute position table",
+   "output_init": "zero",
+   "n_params": 500736
+  },
+  "arms": {
+   "reverse_causal": "query i reads key j iff j >= i and real(j) (PRIMARY)",
+   "local": "query i reads key j == i only (same-position ablation, same everything else)"
+  }
+ },
+ "fit": {
+  "optimizer": "AdamW lr 1e-3 wd 0",
+  "schedule": "OneCycleLR max_lr 1e-3 pct_start 0.05 over 1200 steps",
+  "epochs": 300,
+  "steps_per_epoch": 4,
+  "batch": "one padded FIT chunk per step, fixed order 0,2,4,6",
+  "clip": 1.0,
+  "loss": "elementwise MSE over eligible positions x hidden dims (FOLD B)",
+  "dtype": "float32",
+  "device": "cpu",
+  "deterministic": "torch.use_deterministic_algorithms(True); seed 4242 + block + 100 x arm_index",
+  "stopping_rule": "fixed budget; readout = FINAL state; 25-epoch HELDOUT curve for the record only, selects nothing; nonfinite loss stops the fit and marks the cell nonfinite"
+ },
+ "readouts": [
+  "held_ratio = sum ||Y - G||^2 / sum ||Y||^2 over HELDOUT eligible tokens",
+  "held_cos pooled",
+  "fit_ratio, fit_cos",
+  "held_ratio per HELDOUT chunk",
+  "curve every 25 epochs",
+  "wall"
+ ],
+ "bars": [
+  {
+   "id": "BAR-1",
+   "text": "median over late_steps x blocks of reverse_causal held_ratio <= 0.5 FIRES",
+   "threshold": 0.5,
+   "aggregation": "median over 24 cells",
+   "not_resolvable": "more than 4 of 24 cells nonfinite",
+   "fires": "bank SEQUENCE-SG qualification design (reverse-causal sequence predictor as online writer, seed 28) for a SEPARATE Artin GO; no birth here",
+   "no_fire": "SG family closes at this arena (same-position and reverse-causal cross-position inputs of the per-block sequence both fail on the healthy control's trained states within the registered capacity)",
+   "law": "scratch/sg_crosspos_desk.adjudicate (tested)"
+  }
+ ],
+ "descriptive": [
+  "local late median and per-cell gap reverse_causal - local",
+  "FIT / HELDOUT gap",
+  "per-chunk HELDOUT ratio",
+  "step-463 ratios"
+ ],
+ "refuted_if": "BAR-1 no-fire refutes the information-hole hypothesis at this capacity and budget only; larger predictors, bidirectional input, or downstream weights as input are separate pre-regs",
+ "registered_prior": {
+  "bar_1_fires": "p 0.45",
+  "local_late_median_ge_0.9": "p 0.8",
+  "rc_below_local_by_0.2": "p 0.6",
+  "chunk7_worse_than_1_3_5_in_ge_18_of_24": "p 0.7",
+  "step463_rc_le_0.3_all_blocks": "p 0.6",
+  "rc_late_median_fit_ratio_le_0.5": "p 0.7"
+ },
+ "fences": [
+  "one seed (27), one device (Mac CPU), float32 fits on fp64 targets",
+  "deterministic at fixed thread count; no cross-run bit-exact precondition",
+  "control only; no SG cell state or predictor opened; nothing tunes a birth",
+  "HELDOUT is interleaved-difficulty and length-extrapolating, not iid",
+  "representability within a fixed family at a fixed budget, not an existence proof"
+ ],
+ "cost": "about 2 h single-process (smoke 0.033 s/step at 1,024 padded tokens; 7,616 per epoch full; 80 fits)",
+ "liverun_ids": [
+  "sgxpos0"
+ ],
+ "receipts": [
+  "logs/sgxpos0/desk.json",
+  "logs/sgxpos0/desk.jsonl",
+  "logs/sgxpos0/desk.log",
+  "logs/sgxpos0/smoke.jsonl",
+  "logs/liverun/sgxpos0.jsonl"
+ ],
+ "instrument": [
+  "scratch/sg_crosspos_desk.py",
+  "tests/test_sg_crosspos_desk.py"
+ ],
+ "does_not_authorize": [
+  "any SG birth (seed 28 or other)",
+  "delayed / bootstrapped targets",
+  "MeZO, target propagation, equilibrium propagation",
+  "seed-2 discovery, mechanism work",
+  "any predictor input beyond Z_j at j >= i"
+ ],
+ "checkpoint_policy": "checkpoints/sgwriter1/ intact until this desk is booked and receipt-complete; then the approved keep set executes"
+}

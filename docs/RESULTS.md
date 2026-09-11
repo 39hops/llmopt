@@ -71343,3 +71343,155 @@ difficulty generalization readout; the oracles are frozen-state fits,
 not training runs; branch labels are the registered thresholds, not
 bars; nothing here revises L70832; no birth of any kind is
 authorized.
+
+## PRE-REG SG-CROSSPOS-REPRESENTABILITY-0: is the true hidden error delta^BP_{l,i} representable from the per-block sequence Z_j = [x_{l+1,j}, e_j] at the positions j >= i (a fixed-capacity reverse-causal sequence predictor, offline float32 fit on the FIT half of the frozen probe, scored on the disjoint HELDOUT half) on the retained seed-27 frozen-BP control of SYNTHETIC-GRADIENT-WRITER-1, where the same-position map (x_{l+1,i}, e_i) -> delta^BP_{l,i} was NOT representable once trained (OBSERVATION SG-FAILURE-DESK-0 L71182)? one licensing bar on a prospectively fixed late-state aggregation; paired same-architecture LOCAL (j == i) ablation; ten control snapshots, four SG blocks, two arms; zero main-model training (2026-09-11 local, Mac; sealed and committed before any cross-position number is read from a retained checkpoint; liverun sgxpos0; no birth authorized)
+
+**Motivation.** SG-FAILURE-DESK-0 (L71182) found the registered
+synthetic-gradient input (x_{l+1,i}, e_i) does not represent delta^BP_{l,i}
+even on the healthy frozen-BP control once trained: least-squares HELDOUT
+ratio 0.05 to 0.53 at step 463, 0.95 to 1.11 at steps 3,084 to 15,420
+(blocks 4..6), the 2048-feature random-feature oracle 0.99 to 1.18 on
+blocks 4..5 and 0.29 to 0.34 on block 7 late. The candidate lead named
+there, untested: delta^BP_{l,i} = sum over j >= i of dL_j / dx_{l+1,i}
+runs through the causal downstream attention, so the true hidden error at
+position i depends on the states and output errors at the positions j >= i,
+which the same-position input does not carry. This desk tests that
+information-hole hypothesis and nothing else. Delayed and bootstrapped
+targets are not tested (they do not supply the missing input).
+
+**Instrument** (scratch/sg_crosspos_desk.py, tests/test_sg_crosspos_desk.py,
+sealed at this commit; adopt-not-fork of scratch/sg_failure_desk.py:
+load_state with the qual.jsonl digest assertion, sg_credit.teacher_targets
+for the parameter-detached targets).
+- States: the control cell sgq_control_s27_lr0.0003 at DESK_STEPS 0, 463,
+  1,028, 2,056, 3,084, 5,140, 7,196, 10,280, 12,336, 15,420 (the same ten
+  desk snapshots as SG-FAILURE-DESK-0; every state digest asserted against
+  logs/sgwriter1/qual.jsonl before it is read). The four SG cells are not
+  read (their states are collapsed or at the floor; the question is
+  representability on a healthy state). Blocks 4..7; targets
+  Y_i = delta^BP_{l,i} / s_l with the sealed arena constants
+  (5.464e-6, 4.479e-6, 3.564e-6, 2.441e-6) from the parameter-detached
+  teacher pass at the snapshot's W (fp64 arena copy, as before); inputs
+  and targets cast to float32 for the fit.
+- Probe split: the audited interleaved chunk-parity split of the frozen
+  256-row probe (logs/writerdfa1/probe.json, digest asserted): FIT chunks
+  0, 2, 4, 6 (128 sequences, 6,740 eligible tokens, lengths 32 / 44 / 61 /
+  101), HELDOUT chunks 1, 3, 5, 7 (9,150 eligible tokens, lengths 39 / 51
+  / 74 / 275). Chunk 7 holds 4,330 of the 9,150 HELDOUT tokens (47 %) and
+  is longer than every FIT sequence: the pooled HELDOUT score is a
+  length-extrapolating readout for a sequence model, so the per-chunk
+  ratio is receipted beside the pooled one (descriptive).
+- Predictor input: Z_j = [x_{l+1,j} (384), e_j = dL/dlogits_j (40)] at
+  EVERY real token j of the sequence (e_j is exactly zero at ineligible
+  positions), standardized per feature by FIT eligible-token statistics
+  and clipped to [-5, 5]. Nothing else enters: no downstream block
+  parameter, attention map, Jacobian, true hidden error of any position,
+  label, or token id.
+- Architecture (fixed, no search): input Linear 424 -> 128; two pre-LN
+  layers of (4-head self-attention, d 128, FFN 128 -> 512 -> 128, GELU);
+  final LayerNorm; output Linear 128 -> 384 zero-initialised (the fit
+  starts at exactly the zero predictor); 500,736 parameters (v LINEAR
+  163,200 and MLP-256 207,488). Attention carries a fixed ALiBi distance
+  bias per head (slopes 2^(-2), 2^(-4), 2^(-6), 2^(-8) on |j - i|) and no
+  absolute-position table, so the predictor is defined at the HELDOUT
+  length 275 without a learned position it never saw.
+- Arms (same architecture, capacity, optimizer, schedule, seed, data):
+  reverse_causal, query i may read key j iff j >= i and j is a real
+  token (PRIMARY; tests/test_sg_crosspos_desk.py asserts by Jacobian that
+  output i depends on inputs j >= i and on no j < i); local, query i
+  reads key j == i only (the same-position ablation inside the same
+  trainable family; asserted likewise). A pad query keeps itself so no
+  softmax row is empty; pad positions carry no loss.
+- Offline fit per (snapshot, block, arm): AdamW lr 1e-3, weight decay 0,
+  betas default; OneCycleLR max_lr 1e-3, pct_start 0.05, total steps
+  300 epochs x 4 FIT chunks = 1,200 (one padded chunk per step, fixed
+  chunk order, no shuffling); gradient clip 1.0; loss = elementwise MSE
+  over eligible positions and hidden dims (the FOLD B reduction); float32
+  CPU, torch.use_deterministic_algorithms(True), torch.manual_seed(4242 +
+  block + 100 x arm_index) before the predictor is built. STOPPING RULE:
+  the fixed 1,200-step budget; the readout is the FINAL state. HELDOUT
+  numbers logged every 25 epochs are for the record (the curve) and
+  select nothing. A nonfinite loss stops that fit and marks the cell
+  nonfinite.
+- Readouts per (snapshot, block, arm): held_ratio = sum ||Y - G||^2 /
+  sum ||Y||^2 over HELDOUT eligible tokens (the zero-baseline ratio of
+  SG-FAILURE-DESK-0), held_cos pooled, fit_ratio and fit_cos, held_ratio
+  per HELDOUT chunk, the 25-epoch curve, wall. Per snapshot: probe CE,
+  baseline_mse_held per block, token counts.
+- Cost: the smoke (random-init model, chunk 0, 3 epochs) ran 0.033 s per
+  step at 1,024 padded tokens; the full fit is 7,616 padded tokens per
+  epoch, about 75 to 90 s per fit, 8 fits per state, 10 states: about 2 h
+  single-process on the Mac CPU (nohup + Monitor; liverun sgxpos0).
+
+**BAR-1 (licensing; the only bar).** Over LATE_STEPS = {3,084, 5,140,
+7,196, 10,280, 12,336, 15,420} x blocks {4, 5, 6, 7} (24 cells), the
+MEDIAN of the reverse_causal held_ratio <= 0.5 (the GOOD regime of
+SG-FAILURE-DESK-0) FIRES. Step 463 and 1,028 and 2,056 are receipted and
+never enter the bar (the same-position oracle was already partly good
+there; the late trained states decide). NOT-RESOLVABLE if more than 4 of
+the 24 cells are nonfinite (the median is then taken over the finite
+cells and reported, and no license or closure follows). Law in
+sg_crosspos_desk.adjudicate (tested: FIRES at 0.5, NO-FIRE at 0.51,
+NOT-RESOLVABLE at 5 nonfinite, resolvable at 4).
+- FIRES: cross-position representability is established on the healthy
+  control at this arena; the house BANKS a SEQUENCE-SG qualification
+  design (a reverse-causal sequence predictor as the online synthetic-
+  gradient writer, fresh unspent seed 28) for a SEPARATE Artin GO. This
+  desk licenses the design, not the birth.
+- NO-FIRE: the SG family CLOSES at this arena: neither the same-position
+  input nor the reverse-causal cross-position input of the same per-block
+  sequence represents the true hidden error on the healthy control's
+  trained states within the registered capacity; no seed-28 design is
+  banked.
+- Descriptive beside the bar (no consequence): the local arm's late
+  median and the per-cell gap reverse_causal - local (the trainable
+  same-position family reproduces or does not reproduce the closed-form
+  oracles' about-1 readout); the FIT / HELDOUT gap (memorization
+  readout); the per-chunk HELDOUT ratio (length extrapolation readout);
+  the step-463 ratios.
+
+**REFUTED-IF.** The information-hole hypothesis is refuted at this
+capacity and budget if BAR-1 does not fire (the cross-position input
+does not represent the target any better than GOOD on the trained
+control). It is NOT refuted in general by a NO-FIRE: a larger predictor,
+a bidirectional (j < i) input, or the downstream weights as input could
+still represent it; none of those is licensed by this desk and each
+would be a new pre-reg.
+
+**REGISTERED PRIOR** (house, on the record).
+1. BAR-1 fires: p 0.45 (the hypothesis is the best surviving lead, but
+   128 FIT sequences against 500k parameters is a thin fit and chunk 7
+   extrapolates in length).
+2. local late median >= 0.9: p 0.8 (the trainable same-position family
+   reproduces the closed-form about-1 readout).
+3. reverse_causal late median below local by >= 0.2: p 0.6.
+4. At late steps the reverse_causal HELDOUT ratio on chunk 7 is worse
+   than on each of chunks 1, 3, 5 in at least 18 of the 24 cells: p 0.7.
+5. Step 463, reverse_causal held_ratio <= 0.3 on every block: p 0.6.
+6. reverse_causal late median fit_ratio <= 0.5: p 0.7 (the fit can
+   memorize even where it does not generalize).
+
+**FENCES.** One seed of the control (27), one device (Mac CPU, float32
+fits, fp64 targets); the fit is deterministic at a fixed thread count
+(receipted: torch_threads, torch_version); a different thread count may
+change float32 reduction order, so a bit-exact cross-run reproduction is
+not a precondition. The predictor reads the healthy control only:
+nothing here scores an SG cell, nothing tunes a birth, no SG cell state
+or predictor snapshot is opened. The HELDOUT score is an interleaved-
+difficulty, length-extrapolating generalization readout, not iid. The
+readout is representability within a fixed family at a fixed budget, not
+an existence proof either way. Checkpoints/sgwriter1/ stays intact until
+this desk is booked and receipt-complete; the proposed keep set executes
+after that under the already approved rationale.
+
+**Receipts.** logs/sgxpos0/desk.json, logs/sgxpos0/desk.jsonl,
+logs/sgxpos0/desk.log, logs/sgxpos0/smoke.jsonl (the random-init
+mechanism smoke at this commit: 6 tests + 3-epoch fit of both arms on
+chunk 0 / 1, held ratio 0.992 to 0.996 at zero-init scale, 500,736
+parameters), logs/liverun/sgxpos0.jsonl. Machine-readable form:
+docs/preregs/sg-crosspos-representability-0.json.
+
+**Does not authorize:** any SG birth (seed 28 or other), delayed or
+bootstrapped targets, MeZO, target propagation, equilibrium
+propagation, seed-2 discovery, mechanism work, or any predictor whose
+input is not the per-block sequence Z_j at j >= i.
