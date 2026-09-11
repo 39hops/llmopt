@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 237, library 84, reproduce-pinned 10, results-cited 454, spec-cited 91, cited-but-library 72
+Census: UNCITED 238, library 84, reproduce-pinned 10, results-cited 454, spec-cited 91, cited-but-library 72
 
 ## scratch/
 
@@ -636,7 +636,8 @@ Census: UNCITED 237, library 84, reproduce-pinned 10, results-cited 454, spec-ci
 | sg7 | sg7_integrity_smoke.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 1 |
 | sg7 | sg7_qualgate.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 3 |
 | sg7 | sg7_scale_census.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
-| sgbb7 | sgbb7_qual_driver.sh | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | 1 |
+| sgbb7 | sgbb7_launch.sh | UNCITED | — | — | — | — |
+| sgbb7 | sgbb7_qual_driver.sh | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | 2 |
 | sgwriter1 | sgwriter1_keepset_prune.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | sgwriter1 | sgwriter1_qual_driver.sh | results-cited | RESULTS, specs | RESULTS×7, specs×2 | — | — |
 | sgxpos0 | sgxpos0_launch.sh | spec-cited | specs | specs×1 | — | — |
@@ -850,7 +851,7 @@ Census: UNCITED 237, library 84, reproduce-pinned 10, results-cited 454, spec-ci
 | harvest | harvest_champion.py | UNCITED | — | — | — | — |
 | harvest | harvest_frontier.py | spec-cited | specs | specs×1 | — | — |
 | list | list_uncurated.py | spec-cited | specs | specs×6 | — | — |
-| liverun | liverun.py | results-cited | RESULTS, specs | RESULTS×8, specs×1 | — | 2 |
+| liverun | liverun.py | results-cited | RESULTS, specs | RESULTS×8, specs×1 | — | 3 |
 | log | log_hygiene.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | 1 |
 | markov | markov_eval.py | UNCITED | — | — | — | — |
 | markov | markov_prior.py | UNCITED | — | — | — | — |
