@@ -2,7 +2,7 @@
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
  "_last_accept": {
   "paths": [],
-  "reason": "VERDICT SG-CROSSPOS-REPRESENTABILITY-0: desk receipts + liverun"
+  "reason": "handoff 2026-09-11-1: keep-set prune inventory locked"
  },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
@@ -1149,10 +1149,9 @@
   "logs/liverun/sgxpos0.jsonl": {
    "bytes": 514,
    "exists": true,
-   "local_only": true,
    "sha256": "edbd9ed4592b066de57bc70ea8533c3cde266bb3cb3dcfe2b259a33bf1db22c4",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/liverun/writercaf1-qual-k1.jsonl": {
    "bytes": 538,
@@ -4471,26 +4470,23 @@
   "logs/sgxpos0/desk.json": {
    "bytes": 168371,
    "exists": true,
-   "local_only": true,
    "sha256": "7d37d2f1fa9275a2a850dd0be7e9d749703f7928821041733e0aeb367f6d738d",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/sgxpos0/desk.jsonl": {
    "bytes": 2483,
    "exists": true,
-   "local_only": true,
    "sha256": "42db4b397372274c8b129d9d1fa6b1669993ffcdfe3e4915e36d0628b6218060",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/sgxpos0/desk.log": {
    "bytes": 6068,
    "exists": true,
-   "local_only": true,
    "sha256": "b255a481b392e0079610c81780185df1c77c7c5cbab18747ac4f0a61d89c0464",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/sgxpos0/smoke.jsonl": {
    "bytes": 6136,
