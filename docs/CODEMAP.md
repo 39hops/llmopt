@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 238, library 83, reproduce-pinned 10, results-cited 448, spec-cited 90, cited-but-library 71
+Census: UNCITED 238, library 83, reproduce-pinned 10, results-cited 449, spec-cited 90, cited-but-library 71
 
 ## scratch/
 
@@ -26,7 +26,7 @@ Census: UNCITED 238, library 83, reproduce-pinned 10, results-cited 448, spec-ci
 | atomdose1 | atomdose1_driver.sh | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | atomladder1 | atomladder1_driver.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | atomtraj | atomtraj_census.py | results-cited | RESULTS | RESULTS×4 | — | 4 |
-| atomtraj | atomtraj_pins.py | library | RESULTS | RESULTS×8 | 27 | 3 |
+| atomtraj | atomtraj_pins.py | library | RESULTS | RESULTS×8 | 28 | 3 |
 | atomtraj | atomtraj_qual.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | atomtraj | atomtraj_verify.py | results-cited | RESULTS | RESULTS×5 | — | 3 |
 | atomtraj1 | atomtraj1_driver.sh | results-cited | RESULTS | RESULTS×1 | — | — |
@@ -631,6 +631,7 @@ Census: UNCITED 238, library 83, reproduce-pinned 10, results-cited 448, spec-ci
 | sg | sg_integrity_smoke.py | results-cited | RESULTS, specs | RESULTS×3, specs×3 | — | 2 |
 | sg | sg_qualgate.py | results-cited | RESULTS, specs | RESULTS×4, specs×1 | — | 3 |
 | sg | sg_target_audit.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
+| sgwriter1 | sgwriter1_keepset_prune.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | sgwriter1 | sgwriter1_qual_driver.sh | results-cited | RESULTS, specs | RESULTS×7, specs×2 | — | — |
 | sgxpos0 | sgxpos0_launch.sh | UNCITED | — | — | — | — |
 | smoke | smoke_prune.py | UNCITED | — | — | — | — |
