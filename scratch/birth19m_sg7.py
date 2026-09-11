@@ -427,6 +427,8 @@ def main():
     pred_final_rec = None
     if preds is not None:
         pf = OUTDIR / "pred_final.pt"
+        if pf.exists():
+            raise SystemExit(f"REFUSING: {pf} exists")
         torch.save({k: v.detach().to("cpu") for k, v in preds.state_dict().items()}, pf)
         pred_final_rec = {"file_sha256": sha256_file(pf), "state_digest": state_digest(torch.load(pf, map_location="cpu"))}
     print(f"[sg] saved {final_p} after {step} steps ({wall:.0f}s)", flush=True)

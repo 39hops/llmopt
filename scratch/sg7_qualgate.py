@@ -102,6 +102,9 @@ def main():
     dirty = bool(subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True).stdout.strip())
     if not SMOKE and dirty:
         raise SystemExit("REFUSING: registered gating on a dirty tree")
+    for b in (ctrl_b, cell_b):
+        if b is not None and not SMOKE and b["launch_commit"] != commit:
+            raise SystemExit(f"REFUSING: gate HEAD {commit} != birth launch commit {b['launch_commit']} ({b['cell']})")
     dev = "mps" if torch.backends.mps.is_available() else "cpu"
     assert dev == "mps", "SG-BOUNDARY-BLOCK7-1 gates are sealed on mps"
     tok = TM.MathTokenizer()

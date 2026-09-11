@@ -1,9 +1,5 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
- "_last_accept": {
-  "paths": [],
-  "reason": "PRE-REG SG-BOUNDARY-BLOCK7-1: sealed smoke + integrity receipts"
- },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
    "bytes": 3176,
@@ -4286,14 +4282,17 @@
   "logs/sgbb7/integrity_smoke_3c9b5252_seal.jsonl": {
    "bytes": 5695,
    "exists": true,
-   "local_only": true,
    "sha256": "9bc262f4a539dcbd1e84bab657f5c15fe079414808cb545e01901a9a962d17dc",
    "source": "results",
-   "tracked": false
+   "tracked": true
+  },
+  "logs/sgbb7/integrity_smoke_<launch-commit>_launch.jsonl (the driver's INTEG_TAG=_launch rerun; exact name known at launch; force-added at booking)": {
+   "exists": false,
+   "source": "prereg"
   },
   "logs/sgbb7/integrity_smoke_launch.jsonl": {
    "exists": false,
-   "source": "prereg"
+   "source": "results"
   },
   "logs/sgbb7/integrity_smoke_launch.log": {
    "exists": false,
@@ -4314,26 +4313,23 @@
   "logs/sgbb7/smoke.jsonl": {
    "bytes": 8999,
    "exists": true,
-   "local_only": true,
    "sha256": "2653b641cf1f5074fcdd441e5c18a494bb69699efb3666f324799e14633355a0",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/sgbb7/smoke_ladder.json": {
    "bytes": 686,
    "exists": true,
-   "local_only": true,
    "sha256": "73e950fd066186c21bd6567a60cd46099a4bd32ba5b87b2a8df3be68d900679c",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/sgbb7/smoke_selection.json": {
    "bytes": 686,
    "exists": true,
-   "local_only": true,
    "sha256": "73e950fd066186c21bd6567a60cd46099a4bd32ba5b87b2a8df3be68d900679c",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/sgbb7/train_control.log": {
    "exists": false,
@@ -4341,6 +4337,11 @@
   },
   "logs/sgbb7/train_sg7.log": {
    "exists": false,
+   "source": "prereg"
+  },
+  "logs/sgbb7/x8_scale_census.json": {
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/sgfail0/desk.json": {

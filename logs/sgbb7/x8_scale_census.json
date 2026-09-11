@@ -1,0 +1,77 @@
+{
+ "kind": "sg7_scale_census",
+ "prereg": "SG-BOUNDARY-BLOCK7-1",
+ "commit": "1599ac6f",
+ "tree_dirty": true,
+ "cell": "sgq_control_s27_lr0.0003",
+ "fit_chunks": [
+  0,
+  2,
+  4,
+  6
+ ],
+ "probe_token_digest": "18b2229060ede9cc842181e96390f7f19e15e93d411644708768af04b82f4588",
+ "source_sha256": "cbc51334d3fd65e6c90f3da3d7c2de3c78e068cef11c59db4515061900a15c9c",
+ "states": {
+  "0": {
+   "path": "checkpoints/sgwriter1/sgq_control_s27_lr0.0003/step_00000.pt",
+   "state_digest": "739e06f4cb6bc9b37bfcc6bd371045d38313d43b1b1b530841bd02112a3a4d96",
+   "n_tokens": 6740,
+   "x8_sd_median": 1.0226331949234009,
+   "x8_sd_max": 1.8470799922943115,
+   "x8_mu_abs_max": 1.4641501903533936,
+   "e_sd_median": 7.345476478803903e-05,
+   "e_sd_max": 0.00025041576009243727,
+   "n_sd_floor": 0
+  },
+  "463": {
+   "path": "checkpoints/sgwriter1/sgq_control_s27_lr0.0003/step_00463.pt",
+   "state_digest": "8b6b0c6edcbe38d534e14024dba85927b31ac3c3823e1fe683503769da1a00ce",
+   "n_tokens": 6740,
+   "x8_sd_median": 1.7321206331253052,
+   "x8_sd_max": 3.041790723800659,
+   "x8_mu_abs_max": 1.885414719581604,
+   "e_sd_median": 5.470229734783061e-05,
+   "e_sd_max": 0.00011702405754476786,
+   "n_sd_floor": 8
+  },
+  "3084": {
+   "path": "checkpoints/sgwriter1/sgq_control_s27_lr0.0003/step_03084.pt",
+   "state_digest": "d28edd335f805a34174c5b7bfebc41b97e7fbf0554183c74faf58b72b63a9cc8",
+   "n_tokens": 6740,
+   "x8_sd_median": 4.482758522033691,
+   "x8_sd_max": 8.954733848571777,
+   "x8_mu_abs_max": 3.7130627632141113,
+   "e_sd_median": 4.096714110346511e-05,
+   "e_sd_max": 7.972830644575879e-05,
+   "n_sd_floor": 11
+  },
+  "5140": {
+   "path": "checkpoints/sgwriter1/sgq_control_s27_lr0.0003/step_05140.pt",
+   "state_digest": "c2a21c8220eab16c4c0a24001079eaeb3c68a0860b8ace182fa1e585fbae467a",
+   "n_tokens": 6740,
+   "x8_sd_median": 5.965391159057617,
+   "x8_sd_max": 13.944167137145996,
+   "x8_mu_abs_max": 4.9821038246154785,
+   "e_sd_median": 3.853324233205058e-05,
+   "e_sd_max": 8.086544403340667e-05,
+   "n_sd_floor": 11
+  },
+  "15420": {
+   "path": "checkpoints/sgwriter1/sgq_control_s27_lr0.0003/step_15420.pt",
+   "state_digest": "e0f32905449596a71d1c63de7d003f02e89bb1b297eaea28d1062adde776ac4b",
+   "n_tokens": 6740,
+   "x8_sd_median": 7.28066873550415,
+   "x8_sd_max": 19.48400115966797,
+   "x8_mu_abs_max": 5.918746471405029,
+   "e_sd_median": 3.457385901128873e-05,
+   "e_sd_max": 7.529467256972566e-05,
+   "n_sd_floor": 11
+  }
+ },
+ "utc": "2026-09-11T18:04:32+00:00",
+ "drift": {
+  "x8_sd_median_ratio_final_over_w0": 7.119531002560014,
+  "x8_sd_max_ratio_final_over_w0": 10.548542153535173
+ }
+}

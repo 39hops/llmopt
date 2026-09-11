@@ -36,9 +36,10 @@ classes are verbatim copies guarded by a source-identity test. Input
 Z = [x_8, e] standardized per feature by FIXED constants (mu, sd) computed
 once at W_0 on the frozen probe's FIT chunks (input_stats; recorded in the
 receipt) with NO clip: the desk's +-5 clip is dropped because the arena's
-x_8 scale grows about 8x over training (seed-27 control, per-feature sd
-median 1.04 -> 8.26, max 1.70 -> 25.5) and a W_0-frozen clip would
-saturate the late states.
+x_8 scale grows about 7x over training (seed-27 control on the same FIT
+tokens, logs/sgbb7/x8_scale_census.json: per-feature sd median 1.02 ->
+7.28, max 1.85 -> 19.5) and a W_0-frozen clip would saturate the late
+states.
 
 FOLD A (frozen step order, every gradient from the pre-update pair):
   1 forward (sg7_forward); 2 hat_delta_7 from phi_t; 3 parameter-detached

@@ -5322,6 +5322,11 @@ SG-BOUNDARY-BLOCK7-1 qualification gate and law (PRE-REG SG-BOUNDARY-BLOCK7-1). 
 - `adjudicate(control, cell)` — control / cell: None (not run) or {'finite': bool, 'gate': int|None}.
 - `main()`
 
+### scratch/sg7_scale_census.py
+SG-BOUNDARY-BLOCK7-1 desk census (zero training): the per-feature scale of the LOCAL predictor's inputs x_8 and e = dL/dlogits across the retained seed-27 frozen-BP control snapshots (digests asserted against logs/sgwriter1/qual.jsonl), over the eligible tokens of the frozen probe's FIT chunks 0, 2, 4, 6 (the same tokens the birth's W_0 input statistics use). Receipts the drift that justifies dropping the desk's +-5 input clip for the online predictor. Writes logs/sgbb7/x8_scale_census.json (refuses to overwrite). Usage: .venv/bin/python scratch/sg7_scale_census.py
+
+- `main()`
+
 ### scratch/sg_credit.py
 SYNTHETIC-GRADIENT-WRITER-1 credit law (PRE-REG SYNTHETIC-GRADIENT- WRITER-1 L69765, AMENDMENT -ARENA L70126, OBSERVATION SG-PREDICTOR-AUDIT-0 constants, AMENDMENT -SEAL folds A and B). The per-block synthetic hidden error
 

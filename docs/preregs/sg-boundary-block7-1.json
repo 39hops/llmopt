@@ -26,7 +26,7 @@
   "definition": "sg7_credit.LocalSG = the cross-position desk's SeqSG under the j == i mask (per-token: in_proj 424->128, 2 x pre-LN [self-only attention, FFN 128->512->128 GELU], final LN, zero-init out_proj 128->384)",
   "n_params": 500736,
   "source": "verbatim classes from scratch/sg_crosspos_desk.py; one delta: device=x.device on two torch.arange calls (source-identity test)",
-  "input_standardization": "Z = ([x_8, e] - mu) / sd with (mu, sd) per feature FIXED at W_0 over eligible tokens of probe FIT chunks [0, 2, 4, 6] (6,740 tokens); NO clip (the arena's x_8 scale grows ~8x over training: seed-27 control sd median 1.04 -> 8.26, max 1.70 -> 25.5)",
+  "input_standardization": "Z = ([x_8, e] - mu) / sd with (mu, sd) per feature FIXED at W_0 over eligible tokens of probe FIT chunks [0, 2, 4, 6] (6,740 tokens); NO clip (receipted drift on the same tokens, logs/sgbb7/x8_scale_census.json: seed-27 control x_8 per-feature sd median 1.02 -> 7.28 (7.1x), max 1.85 -> 19.5 (10.5x))",
   "seed": 1028,
   "optimizer": "AdamW lr 1e-3 wd 0, OneCycle max_lr 1e-3 pct_start 0.03 over 15,420 steps, clip 1.0, one predictor step per model step",
   "frozen": "one recipe; no FAMILY / PLR knob (asserted in the driver); no ladder; no architecture search"
@@ -56,7 +56,7 @@
   }
  ],
  "registered_prior": {
-  "control_adequate": "p 0.95",
+  "control_adequate": "p 0.95 (FB-1 FROZEN arms gated 63 / 61 / 59 at seeds 24 / 25 / 26; the SG-1 control 59 at seed 27; all the same arm as this CONTROL)",
   "sg7_finite": "p 0.9",
   "function_match": "p 0.5",
   "g_sg7_ge_24": "p 0.7 (descriptive)",
@@ -101,13 +101,14 @@
   "logs/sgbb7/train_control.log",
   "logs/sgbb7/train_sg7.log",
   "logs/sgbb7/integrity_smoke_launch.log",
-  "logs/sgbb7/integrity_smoke_launch.jsonl",
   "logs/sgbb7/driver.log",
   "logs/liverun/sgbb7q.jsonl",
   "logs/sgbb7/smoke.jsonl",
   "logs/sgbb7/smoke_ladder.json",
   "logs/sgbb7/smoke_selection.json",
-  "logs/sgbb7/integrity_smoke_3c9b5252_seal.jsonl"
+  "logs/sgbb7/integrity_smoke_3c9b5252_seal.jsonl",
+  "logs/sgbb7/x8_scale_census.json",
+  "logs/sgbb7/integrity_smoke_<launch-commit>_launch.jsonl (the driver's INTEG_TAG=_launch rerun; exact name known at launch; force-added at booking)"
  ],
  "instrument": [
   "scratch/sg7_credit.py",
@@ -117,7 +118,8 @@
   "scratch/sg7_integrity_smoke.py",
   "tests/test_sg7_credit.py",
   "tests/test_sg7_law.py",
-  "tests/test_sg7_source_invariant.py"
+  "tests/test_sg7_source_invariant.py",
+  "scratch/sg7_scale_census.py"
  ],
  "instrument_commit": "3c9b5252",
  "does_not_authorize": [
@@ -128,5 +130,9 @@
   "seed-2 discovery",
   "mechanism runs",
   "any second SG7 recipe or ladder"
+ ],
+ "match_disclosure": "a FUNCTION-MATCH is consistent with a dead block-7 writer (credit below the 120-gate's resolution in this arena; no hat_delta_7 := 0 reference arm is registered, one cell only per the GO); the separate LOCAL-mechanism GO is what separates a working writer from a dead one; the descriptive predictor MSE v baseline and alignment logs are the in-run readouts",
+ "amended_by": [
+  "AMENDMENT SG-BOUNDARY-BLOCK7-1-AUDIT"
  ]
 }
