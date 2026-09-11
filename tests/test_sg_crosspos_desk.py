@@ -14,11 +14,18 @@ ROOT = Path(__file__).resolve().parents[1]
 
 @pytest.fixture(scope="module")
 def mod():
-    os.environ["SMOKE"] = "1"
+    prev = os.environ.get("SMOKE")
+    os.environ["SMOKE"] = "1"      # import-time smoke constants; restored below so sibling fixtures see the registered ones
     for p in (str(ROOT), str(ROOT / "scripts"), str(ROOT / "scratch")):
         if p not in sys.path:
             sys.path.insert(0, p)
-    m = importlib.import_module("sg_crosspos_desk")
+    try:
+        m = importlib.import_module("sg_crosspos_desk")
+    finally:
+        if prev is None:
+            del os.environ["SMOKE"]
+        else:
+            os.environ["SMOKE"] = prev
     return m
 
 
