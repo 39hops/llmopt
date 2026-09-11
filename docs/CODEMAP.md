@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 237, library 82, reproduce-pinned 10, results-cited 447, spec-cited 90, cited-but-library 70
+Census: UNCITED 237, library 82, reproduce-pinned 10, results-cited 448, spec-cited 90, cited-but-library 70
 
 ## scratch/
 
@@ -626,6 +626,7 @@ Census: UNCITED 237, library 82, reproduce-pinned 10, results-cited 447, spec-ci
 | series | series_probe.py | spec-cited | specs | specs×5 | — | 15 |
 | sg | sg_credit.py | library | RESULTS, specs | RESULTS×7, specs×4 | 3 | 2 |
 | sg | sg_failure_desk.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
+| sg | sg_failure_labels.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | sg | sg_integrity_smoke.py | results-cited | RESULTS, specs | RESULTS×3, specs×3 | — | 2 |
 | sg | sg_qualgate.py | results-cited | RESULTS, specs | RESULTS×4, specs×1 | — | 3 |
 | sg | sg_target_audit.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
