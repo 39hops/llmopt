@@ -1,0 +1,15 @@
+[gate] weights sha be925cf608afa746
+[sgq] sgq_control_s27_lr0.0003: gate 59 valid 57.49
+[sgq] ladder: {"c": 59, "control_adequate": true, "verdict": null, "stop": false, "next": "linear:0.0003", "selected": null}
+[gate] weights sha 6e0f84664ef377ce
+[sgq] sgq_sg_linear_plr0.0003_s27_lr0.0003: gate 1 valid 0.1
+[sgq] ladder: {"c": 59, "control_adequate": true, "verdict": null, "stop": false, "next": "linear:3e-05", "selected": null}
+[gate] weights sha 242f63fbf25a0248
+[sgq] sgq_sg_linear_plr3e-05_s27_lr0.0003: gate 0 valid 0.0
+[sgq] ladder: {"c": 59, "control_adequate": true, "verdict": null, "stop": false, "next": "mlp256:0.0003", "selected": null}
+[gate] weights sha 5c11f33ccf938328
+[sgq] sgq_sg_mlp256_plr0.0003_s27_lr0.0003: gate 0 valid 0.0
+[sgq] ladder: {"c": 59, "control_adequate": true, "verdict": null, "stop": false, "next": "mlp256:3e-05", "selected": null}
+[gate] weights sha 3d123a065efc48c9
+[sgq] sgq_sg_mlp256_plr3e-05_s27_lr0.0003: gate 0 valid 0.0
+[sgq] ladder: {"c": 59, "control_adequate": true, "verdict": "ACCESSIBILITY-ONLY", "stop": true, "next": null, "selected": null}

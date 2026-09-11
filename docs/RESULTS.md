@@ -70828,3 +70828,143 @@ Nothing else changes. A SEPARATE Artin GO fires the ladder under
 `.venv/bin/python scripts/liverun.py run sgwriter1q -- bash
 scratch/sgwriter1_qual_driver.sh`; no seed-27 birth, no seed-2
 discovery, no mechanism work is authorized by this entry.
+
+## VERDICT SYNTHETIC-GRADIENT-WRITER-1 (qualification): ACCESSIBILITY-ONLY — at seed 27 over the frozen backbone the paired frozen-BP control gates 59 / 120 (ADEQUATE, band 52 to 66) and every sealed SG cell falls outside it: LINEAR 3e-4 gates 1 / 120, LINEAR 3e-5 0, MLP-256 3e-4 0, MLP-256 3e-5 0 (all finite, freeze law verified); no FUNCTION-MATCH, no recipe frozen, no discovery follows; the SG predictors never beat the zero predictor by more than 4 % at any of 93 logged steps per cell (min pred_mse / baseline 0.96 to 1.00) and |cos(hat_delta, delta^BP)| stays at or below 0.23 on every block; on the two MLP cells the logged true-hidden-error scale falls below 1e-4 of the constants' scale from step 463 / 2,800 with the CE loss 0.5 to 0.9 nats below the uniform 3.69, while the two LINEAR cells reach final CE 0.65 / 0.71 (control 0.39) yet gate at the floor; prior 1 hit 2 misses (2026-09-10 local, Mac; one seed, one device; descriptive readings only, no mechanism)
+
+Target: PRE-REG SYNTHETIC-GRADIENT-WRITER-1 (L69765) as sealed by
+AMENDMENT -ARENA (L70126), -SEAL (L70425), -SEAL-AUDIT (L70631),
+-SEAL-AUDIT-2 (L70762). Artin GO 2026-09-10 17:20 EDT (seed-27
+qualification only; no seed-2 discovery, no mechanism / dependence
+work). Run sgwriter1q under liverun at HEAD 919ef324 on a clean tree
+(armed 21:21:16 UTC, disarmed rc 0 02:43:53 UTC, 5.4 h; receipt
+logs/liverun/sgwriter1q.jsonl); the launch-commit integrity smoke ran
+FIRST and passed 4 / 4 cases, checks (a) to (k) ((i) arena cases only)
+(logs/sgwriter1/integrity_smoke_919ef324_launch.jsonl); every birth
+and gate row carries code_commit 919ef324, tree_dirty false, device
+mps; nothing was read until the DONE marker; no amendment, no extra
+cell.
+
+RESULT (gate_eval, the standard 120, mps; solves per level 3..7):
+- CONTROL (MODE=zero K_BP=4, the FROZEN-BACKBONE-1 arm at seed 27):
+  59 {3: 20, 4: 6, 5: 15, 6: 8, 7: 10} valid 57.49; final CE 0.387;
+  wall 28.7 min. ADEQUATE-CONTROL: finite and 59 >= 24. c = 59; the
+  FUNCTION-MATCH band is 52 to 66.
+- LINEAR, PLR 3e-4: 1 {3: 0, 4: 0, 5: 1, 6: 0, 7: 0} valid 0.1; delta
+  v control -58; final CE 0.646 (min logged 0.503); wall 68.3 min.
+- LINEAR, PLR 3e-5: 0 {0, 0, 0, 0, 0} valid 0.0; delta -59; final CE
+  0.710 (min 0.627); wall 64.8 min.
+- MLP-256, PLR 3e-4: 0 {0, 0, 0, 0, 0}; delta -59; final CE 2.992 (min
+  2.186); wall 75.8 min.
+- MLP-256, PLR 3e-5: 0 {0, 0, 0, 0, 0}; delta -59; final CE 2.993 (min
+  1.348); wall 73.0 min.
+Each dict sums to its total. All four cells finished finite
+(stable_training true), the freeze law verified on every cell (29
+tensors bit-identical to W_0), same init digest 739e06f4cb..., same
+stream digests, same constants (s_4..7 5.464e-6 / 4.479e-6 / 3.564e-6
+/ 2.441e-6 from the audit receipt, sha 1d310c41...) on every SG cell.
+
+HAND RE-APPLICATION OF THE LAW: control finite, c = 59 >= 24: adequate,
+the ladder is adjudicated. In the frozen order: LINEAR 3e-4 g = 1, not
+in [52, 66]: no match; LINEAR 3e-5 g = 0: no match; MLP-256 3e-4 g =
+0: no match; MLP-256 3e-5 g = 0: no match. All four cells ran, at
+least one finite (all four): ACCESSIBILITY-ONLY. STABLE (finite and g
+> 0): LINEAR 3e-4 only; FLOOR (g >= 24): none. scratch/sg_qualgate.py
+adjudicate() agrees (logs/sgwriter1/selection.json: verdict
+ACCESSIBILITY-ONLY, selected null, stop true). No recipe is frozen;
+the full-stack seed-2 discovery does NOT follow (the sealed law:
+"no discovery follows").
+
+DESCRIPTIVE READINGS (receipts: the sg_log rows of
+logs/sgwriter1/qual.jsonl, 94 logged rows per cell, 93 after step 1;
+no bar, no mechanism):
+- Predictor regression v the zero predictor: the logged pred_mse /
+  baseline_mse ratio has minimum 0.995 (LINEAR 3e-4), 0.989 (LINEAR
+  3e-5), 0.960 (MLP-256 3e-4), 0.997 (MLP-256 3e-5) over the 93
+  post-step-1 logged rows; the predictor is below the zero predictor on
+  5 / 9 / 22 / 3 of those rows, by at most 0.5 % / 1.1 % / 4.0 % / 0.3 %;
+  on the remaining rows it is above, by up to 5.3x and 4.2x on the
+  LINEAR cells and, on the MLP cells once their targets have fallen
+  numerically, by up to 8.1e6 and 1.2e6. The registered conditional
+  prior on a matched cell (pred_mse at step 1028 below 0.5 x baseline)
+  is unscored (no match); at step 1028 the ratios were 1.07 / 1.04 /
+  2.8e4 (baseline 4.1e-12) / 1.00.
+- Alignment cos(hat_delta_l, delta^BP_l), logged per block: within
+  [-0.126, 0.188] on the LINEAR cells and [-0.218, 0.227] on the MLP
+  cells at every logged step; at the final 0.02 to 0.06 (LINEAR 3e-4),
+  -0.004 to 0.04 (LINEAR 3e-5), 0.075 to 0.076 (MLP 3e-4), 0.012 to
+  0.078 (MLP 3e-5). The conditional prior (cos above 0.3 on every SG
+  block of a matched cell) is unscored.
+- Target scale: the logged baseline_mse (the FOLD B reduction with G
+  = 0: the mean over eligible positions and hidden dimensions of
+  (delta^BP / s)^2, averaged over the four blocks) starts at 20.5 on
+  every cell (step 1, the zero-output identity pred_mse == baseline),
+  is 0.010 / 0.0014 / 1.1e-8 / 0.0013 at step 463 and 0.26 / 0.045 /
+  4.1e-12 / 0.011 at step 1028; on MLP-256 3e-4 it is below 1e-4 on
+  all 91 logged rows from step 463 onward and on MLP-256 3e-5 from
+  step 2,800 with four later rows at or above 1e-4 (steps 3,084 to
+  3,800; 73 of 93 rows below), i.e. the logged true hidden errors at
+  blocks 4..7 fell more than two decades below the audited scale
+  (minimum baseline 1.9e-18 and 1.0e-17) while the CE loss over the
+  rows from step 463 on was 2.81 to 3.20 (MLP 3e-4) and 1.35 to 3.22
+  (MLP 3e-5) against the uniform 3.69 (L68802) and the audited FROZEN
+  states' step-463 probe loss of 0.885 to 0.898 (L70301). On the
+  LINEAR cells the baseline ranges 0.0036 to 2.2 (3e-4) and 0.00049 to
+  0.28 (3e-5) after step 1 and the CE falls to 0.50 to 0.71 with the
+  gate at 1 / 0: the writer reaches a low training loss without
+  reaching the gate's function (the frontier's hybrid signature,
+  L69409, where CE 3.15 to 3.29 gated 0; here the CE is far lower and
+  the gate is still at the floor).
+- The teacher loss equals the writer loss on every logged row (loss_T
+  == loss to the printed precision), the in-run form of integrity
+  check (a).
+- Walls: SG cells 64.8 to 75.8 min (2.3x to 2.6x the control's 28.7
+  min; the sealed estimate was 61 to 62 min), gates 46 to 68 s, total
+  5.4 h (sealed worst case 4.8 h).
+
+REGISTERED PRIOR, scored: control c 55 to 65 (p 0.8): HIT (59). LINEAR
+3e-4 FUNCTION-MATCH (p 0.35): MISS. The ladder matches at some cell (p
+0.55) / ACCESSIBILITY-ONLY (p 0.45), one event: MISS (the house leaned
+toward a match). The two conditional priors (pred_mse at step 1028,
+alignment at the final) are unscored. Three directions: 1 hit, 2
+misses. Family record: 12 hits, 10 misses.
+
+READING (only what the sealed law licenses): at this task and scale,
+over a frozen random backbone with the fixed audited constants, the
+synthetic-gradient credit law with LINEAR or MLP-256 per-token
+predictors at predictor LR 3e-4 or 3e-5 does not reach the frozen-BP
+control's function at the house gate resolution; the writer is
+ACCESSIBILITY-ONLY on blocks 4..7. NOT claimed: anything about
+full-stack SG (never run); why the predictors do not beat the zero
+predictor (mechanism / dependence work is not authorized); that other
+predictor families, LRs, target laws or delays would fail (not run;
+the bootstrapped every-layer target and a delayed target are the named
+second design points of L69765). The descriptive readings above are
+receipts, not findings: the predictors' failure to beat the zero
+predictor and the numerically vanishing targets on the MLP cells are the two
+candidate leads for any future zero-training desk, subject to Artin's
+direction.
+
+RECEIPTS (force-added and sha-locked in the booking commit):
+logs/sgwriter1/qual.jsonl (5 birth, 5 gate, 1 ladder rows),
+logs/sgwriter1/ladder.json, logs/sgwriter1/selection.json,
+logs/sgwriter1/gate.log, logs/sgwriter1/driver.log,
+logs/sgwriter1/train_control.log,
+logs/sgwriter1/train_sg_linear_plr3e-4.log,
+logs/sgwriter1/train_sg_linear_plr3e-5.log,
+logs/sgwriter1/train_sg_mlp256_plr3e-4.log,
+logs/sgwriter1/train_sg_mlp256_plr3e-5.log,
+logs/sgwriter1/integrity_smoke_launch.log,
+logs/sgwriter1/integrity_smoke_919ef324_launch.jsonl,
+logs/liverun/sgwriter1q.jsonl. Checkpoints: checkpoints/sgwriter1/
+(6.5 GB: 5 cells x 18 model files, 4 x 18 predictor files) retained
+untracked pending a handoff decision (candidate keep set: W_0 anchor,
+step_00463, final and pred_final per cell).
+
+Fences: one seed (27), one device (mps), one recipe, one task; the
+D-0 resolution unit; gate comparisons within the seed-27 pair only;
+the historical FROZEN 59 to 63 is context only (the control's 59 sits
+inside it); nothing here revises L70024, L70301 or the DFA-family
+closure; no seed-2 birth, no mechanism work, no amendment was made
+during or after the run. Program status: the second foreign credit
+writer (synthetic gradients / DNI, in the top-four arena) is
+ACCESSIBILITY-ONLY at qualification; what follows is Artin's decision.

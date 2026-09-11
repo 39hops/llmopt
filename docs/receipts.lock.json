@@ -1122,8 +1122,11 @@
    "tracked": true
   },
   "logs/liverun/sgwriter1q.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 522,
+   "exists": true,
+   "sha256": "6221ccbc583ffb72e0570565c09a5baa0bc2b0da00cc937da9e1f949effcde6c",
+   "source": "results",
+   "tracked": true
   },
   "logs/liverun/writercaf1-qual-k1.jsonl": {
    "bytes": 538,
@@ -4244,12 +4247,18 @@
    "tracked": true
   },
   "logs/sgwriter1/driver.log": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 46511,
+   "exists": true,
+   "sha256": "d1585f7d7fb401348795d523c15c7500f70193bbce450ad6b6be1bc018f4832f",
+   "source": "results",
+   "tracked": true
   },
   "logs/sgwriter1/gate.log": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 1101,
+   "exists": true,
+   "sha256": "44e074c8e113e12d313c5ce3ef7f5a878c45abc149c31913e292d3d08846f850",
+   "source": "results",
+   "tracked": true
   },
   "logs/sgwriter1/integrity_smoke.jsonl": {
    "bytes": 4894,
@@ -4258,9 +4267,19 @@
    "source": "results",
    "tracked": true
   },
+  "logs/sgwriter1/integrity_smoke_919ef324_launch.jsonl": {
+   "bytes": 8040,
+   "exists": true,
+   "sha256": "c0037cf68bc668594a7521268838c27b2d0d3926360f979890f59b786bd2568a",
+   "source": "results",
+   "tracked": true
+  },
   "logs/sgwriter1/integrity_smoke_launch.log": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 609,
+   "exists": true,
+   "sha256": "93819d0e38d49865238e82670ed2fe0248dfffd7b787bd56f6b58153ec72666a",
+   "source": "results",
+   "tracked": true
   },
   "logs/sgwriter1/integrity_smoke_seal.jsonl": {
    "bytes": 7252,
@@ -4270,16 +4289,25 @@
    "tracked": true
   },
   "logs/sgwriter1/ladder.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 2122,
+   "exists": true,
+   "sha256": "b3dc3f8f0351165079dc0f32922d59b0a5ed187487298c06c90c07a52d3f45f4",
+   "source": "results",
+   "tracked": true
   },
   "logs/sgwriter1/qual.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 246344,
+   "exists": true,
+   "sha256": "1629243867e9dcb6ced68398b9c4c88b74ab0796e33079fe16716b188394cba9",
+   "source": "results",
+   "tracked": true
   },
   "logs/sgwriter1/selection.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 2122,
+   "exists": true,
+   "sha256": "b3dc3f8f0351165079dc0f32922d59b0a5ed187487298c06c90c07a52d3f45f4",
+   "source": "results",
+   "tracked": true
   },
   "logs/sgwriter1/smoke.jsonl": {
    "bytes": 23991,
@@ -4324,24 +4352,39 @@
    "tracked": true
   },
   "logs/sgwriter1/train_control.log": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 4056,
+   "exists": true,
+   "sha256": "e5c4eb34b3b5f1becdad48f18a717cfb08d0db148f195a52407f1366fee8ce8d",
+   "source": "results",
+   "tracked": true
   },
   "logs/sgwriter1/train_sg_linear_plr3e-4.log": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 10066,
+   "exists": true,
+   "sha256": "a89a56d36c7abff77735ea3bacc03de0669955c45313831cff8e5f4dd59a7bd5",
+   "source": "results",
+   "tracked": true
   },
   "logs/sgwriter1/train_sg_linear_plr3e-5.log": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 10045,
+   "exists": true,
+   "sha256": "64cb05c9e8275033ab4b9c07267ef2c5b50b4ace3cffa4e330e4e3676fd23a1b",
+   "source": "results",
+   "tracked": true
   },
   "logs/sgwriter1/train_sg_mlp256_plr3e-4.log": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 10137,
+   "exists": true,
+   "sha256": "dae0ca478d57b9479d876674db964fa5ba8edbc478ef8b4732f311241a481c8d",
+   "source": "results",
+   "tracked": true
   },
   "logs/sgwriter1/train_sg_mlp256_plr3e-5.log": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 10115,
+   "exists": true,
+   "sha256": "50c5127434bcbffaefc28784a8f65ad1640ecf2822b4b82f0f0855b6e68b68c6",
+   "source": "results",
+   "tracked": true
   },
   "logs/softnext1/arms.jsonl": {
    "bytes": 555,

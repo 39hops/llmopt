@@ -1,0 +1,136 @@
+{
+ "floor": 24,
+ "band": 7,
+ "ladder": [
+  [
+   "linear",
+   0.0003
+  ],
+  [
+   "linear",
+   3e-05
+  ],
+  [
+   "mlp256",
+   0.0003
+  ],
+  [
+   "mlp256",
+   3e-05
+  ]
+ ],
+ "control": {
+  "finite": true,
+  "gate": 59,
+  "cell": "sgq_control_s27_lr0.0003",
+  "solves": {
+   "3": 20,
+   "4": 6,
+   "5": 15,
+   "6": 8,
+   "7": 10
+  },
+  "valid_pct": 57.49
+ },
+ "cells": {
+  "linear:0.0003": {
+   "finite": true,
+   "gate": 1,
+   "stable": true,
+   "floor": false,
+   "function_match": false,
+   "delta_v_control": -58
+  },
+  "linear:3e-05": {
+   "finite": true,
+   "gate": 0,
+   "stable": false,
+   "floor": false,
+   "function_match": false,
+   "delta_v_control": -59
+  },
+  "mlp256:0.0003": {
+   "finite": true,
+   "gate": 0,
+   "stable": false,
+   "floor": false,
+   "function_match": false,
+   "delta_v_control": -59
+  },
+  "mlp256:3e-05": {
+   "finite": true,
+   "gate": 0,
+   "stable": false,
+   "floor": false,
+   "function_match": false,
+   "delta_v_control": -59
+  }
+ },
+ "c": 59,
+ "control_adequate": true,
+ "verdict": "ACCESSIBILITY-ONLY",
+ "stop": true,
+ "next": null,
+ "selected": null,
+ "prereg": "SYNTHETIC-GRADIENT-WRITER-1",
+ "kind": "ladder",
+ "seed": 27,
+ "commit": "919ef324",
+ "device": "mps",
+ "smoke": false,
+ "cell_records": {
+  "linear:0.0003": {
+   "finite": true,
+   "gate": 1,
+   "cell": "sgq_sg_linear_plr0.0003_s27_lr0.0003",
+   "solves": {
+    "3": 0,
+    "4": 0,
+    "5": 1,
+    "6": 0,
+    "7": 0
+   },
+   "valid_pct": 0.1
+  },
+  "linear:3e-05": {
+   "finite": true,
+   "gate": 0,
+   "cell": "sgq_sg_linear_plr3e-05_s27_lr0.0003",
+   "solves": {
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 0
+   },
+   "valid_pct": 0.0
+  },
+  "mlp256:0.0003": {
+   "finite": true,
+   "gate": 0,
+   "cell": "sgq_sg_mlp256_plr0.0003_s27_lr0.0003",
+   "solves": {
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 0
+   },
+   "valid_pct": 0.0
+  },
+  "mlp256:3e-05": {
+   "finite": true,
+   "gate": 0,
+   "cell": "sgq_sg_mlp256_plr3e-05_s27_lr0.0003",
+   "solves": {
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 0
+   },
+   "valid_pct": 0.0
+  }
+ },
+ "utc": "2026-09-11T02:43:53+00:00"
+}

@@ -1,0 +1,6 @@
+[curric] D2 excision: 165028 -> 164896 rows
+[sgsmoke] arena linear: ok=True a=0.0e+00 h_post-pre=4.41e-05 i_rel=0.0e+00 i_p=0.0e+00 pred_loss=18.020 k_inel=168 failed=[]
+[sgsmoke] arena mlp256: ok=True a=0.0e+00 h_post-pre=5.45e-05 i_rel=0.0e+00 i_p=0.0e+00 pred_loss=18.020 k_inel=168 failed=[]
+[sgsmoke] full linear: ok=True a=0.0e+00 h_post-pre=3.94e-05 i_rel=nan i_p=nan pred_loss=23.773 k_inel=168 failed=[]
+[sgsmoke] full mlp256: ok=True a=0.0e+00 h_post-pre=4.16e-05 i_rel=nan i_p=nan pred_loss=23.772 k_inel=168 failed=[]
+[sgsmoke] 4/4 cases ok -> logs/sgwriter1/integrity_smoke_919ef324_launch.jsonl

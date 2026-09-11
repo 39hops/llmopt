@@ -1,0 +1,2 @@
+{"event": "armed", "run_id": "sgwriter1q", "pid": 10105, "launch_commit": "919ef324c63c4d4264343d1df5b9fa0f135fb769", "launch_commit_short": "919ef324", "worktree": "/Users/artin/code/llmopt", "cwd": "/Users/artin/code/llmopt", "started_utc": "2026-09-10T21:21:16+00:00", "dirty_at_arm": false, "sentinel": "/Users/artin/code/llmopt/.git/liverun.lock"}
+{"event": "disarmed", "run_id": "sgwriter1q", "pid": 10105, "rc": 0, "ended_utc": "2026-09-11T02:43:53+00:00", "sentinel": "/Users/artin/code/llmopt/.git/liverun.lock"}

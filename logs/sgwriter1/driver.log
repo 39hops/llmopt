@@ -1,0 +1,502 @@
+=== integrity smoke on the launch commit 919ef324 2026-09-10T21:21:16Z ===
+[curric] D2 excision: 165028 -> 164896 rows
+[sgsmoke] arena linear: ok=True a=0.0e+00 h_post-pre=4.41e-05 i_rel=0.0e+00 i_p=0.0e+00 pred_loss=18.020 k_inel=168 failed=[]
+[sgsmoke] arena mlp256: ok=True a=0.0e+00 h_post-pre=5.45e-05 i_rel=0.0e+00 i_p=0.0e+00 pred_loss=18.020 k_inel=168 failed=[]
+[sgsmoke] full linear: ok=True a=0.0e+00 h_post-pre=3.94e-05 i_rel=nan i_p=nan pred_loss=23.773 k_inel=168 failed=[]
+[sgsmoke] full mlp256: ok=True a=0.0e+00 h_post-pre=4.16e-05 i_rel=nan i_p=nan pred_loss=23.772 k_inel=168 failed=[]
+[sgsmoke] 4/4 cases ok -> logs/sgwriter1/integrity_smoke_919ef324_launch.jsonl
+=== control seed 27 2026-09-10T21:22:05Z ===
+[curric] D2 excision: 165028 -> 164896 rows
+[sg] mode=zero k_bp=4 seed=27 cell=sgq_control_s27_lr0.0003: stock 164490 seq
+[curric] D2 excision: 165028 -> 164896 rows
+164896 rows; charset 42; uncovered chars: [':', 'C', 'H', 'I', 'S', '_', 'a', 'b', 'c', 'e']
+skipped 388 out-of-language rows (strict encode; historically silently mangled)
+164490 sequences, vocab 40
+model: 18.9M params on mps [fast: bf16 + token-budget]
+[curric] NO-OP PASS: 100 tuples + epoch length 5140 match the trainer path
+[sg] stream digests verified stock e0..e2
+[sg] frozen backbone: 29 frozen tensors, 30 trainable
+[sg] steps_total 15420 (5140/epoch) peak lr 0.0003
+[sg] ep0: 5140 batches
+  step 200/15420 loss 1.069 (8.3 it/s)
+  step 400/15420 loss 0.830 (8.3 it/s)
+  step 600/15420 loss 0.721 (8.4 it/s)
+  step 800/15420 loss 0.975 (8.5 it/s)
+  step 1000/15420 loss 0.299 (8.6 it/s)
+  step 1200/15420 loss 0.553 (8.7 it/s)
+  step 1400/15420 loss 0.459 (8.8 it/s)
+  step 1600/15420 loss 0.496 (8.7 it/s)
+  step 1800/15420 loss 0.818 (8.8 it/s)
+  step 2000/15420 loss 0.725 (8.8 it/s)
+  step 2200/15420 loss 0.382 (8.9 it/s)
+  step 2400/15420 loss 0.443 (8.8 it/s)
+  step 2600/15420 loss 0.645 (8.9 it/s)
+  step 2800/15420 loss 0.223 (8.9 it/s)
+  step 3000/15420 loss 0.594 (8.8 it/s)
+  step 3200/15420 loss 0.605 (8.8 it/s)
+  step 3400/15420 loss 0.582 (8.8 it/s)
+  step 3600/15420 loss 0.382 (8.8 it/s)
+  step 3800/15420 loss 0.409 (8.8 it/s)
+  step 4000/15420 loss 0.475 (8.8 it/s)
+  step 4200/15420 loss 0.267 (8.8 it/s)
+  step 4400/15420 loss 0.525 (8.8 it/s)
+  step 4600/15420 loss 0.275 (8.8 it/s)
+  step 4800/15420 loss 0.594 (8.7 it/s)
+  step 5000/15420 loss 0.428 (8.7 it/s)
+[sg] ep1: 5140 batches
+  step 5200/15420 loss 0.380 (8.7 it/s)
+  step 5400/15420 loss 0.379 (8.8 it/s)
+  step 5600/15420 loss 0.376 (8.7 it/s)
+  step 5800/15420 loss 0.305 (8.8 it/s)
+  step 6000/15420 loss 0.373 (8.8 it/s)
+  step 6200/15420 loss 0.318 (8.8 it/s)
+  step 6400/15420 loss 0.367 (8.8 it/s)
+  step 6600/15420 loss 0.731 (8.8 it/s)
+  step 6800/15420 loss 0.379 (8.8 it/s)
+  step 7000/15420 loss 0.673 (8.8 it/s)
+  step 7200/15420 loss 0.351 (8.8 it/s)
+  step 7400/15420 loss 0.601 (8.8 it/s)
+  step 7600/15420 loss 0.417 (8.8 it/s)
+  step 7800/15420 loss 0.325 (8.8 it/s)
+  step 8000/15420 loss 0.338 (8.8 it/s)
+  step 8200/15420 loss 0.430 (8.9 it/s)
+  step 8400/15420 loss 0.451 (8.9 it/s)
+  step 8600/15420 loss 0.374 (8.9 it/s)
+  step 8800/15420 loss 0.347 (8.9 it/s)
+  step 9000/15420 loss 0.266 (8.9 it/s)
+  step 9200/15420 loss 0.345 (8.9 it/s)
+  step 9400/15420 loss 0.637 (8.9 it/s)
+  step 9600/15420 loss 0.355 (8.9 it/s)
+  step 9800/15420 loss 0.279 (8.9 it/s)
+  step 10000/15420 loss 0.392 (8.9 it/s)
+  step 10200/15420 loss 0.400 (8.9 it/s)
+[sg] ep2: 5140 batches
+  step 10400/15420 loss 0.274 (8.9 it/s)
+  step 10600/15420 loss 0.349 (8.9 it/s)
+  step 10800/15420 loss 0.441 (8.9 it/s)
+  step 11000/15420 loss 0.366 (8.9 it/s)
+  step 11200/15420 loss 0.296 (8.9 it/s)
+  step 11400/15420 loss 0.350 (8.9 it/s)
+  step 11600/15420 loss 0.346 (8.9 it/s)
+  step 11800/15420 loss 0.411 (8.9 it/s)
+  step 12000/15420 loss 0.360 (8.9 it/s)
+  step 12200/15420 loss 0.366 (8.9 it/s)
+  step 12400/15420 loss 0.565 (8.9 it/s)
+  step 12600/15420 loss 0.223 (8.9 it/s)
+  step 12800/15420 loss 0.289 (8.9 it/s)
+  step 13000/15420 loss 0.351 (8.9 it/s)
+  step 13200/15420 loss 0.349 (8.9 it/s)
+  step 13400/15420 loss 0.312 (8.9 it/s)
+  step 13600/15420 loss 0.377 (8.9 it/s)
+  step 13800/15420 loss 0.761 (9.0 it/s)
+  step 14000/15420 loss 0.379 (9.0 it/s)
+  step 14200/15420 loss 0.330 (8.9 it/s)
+  step 14400/15420 loss 0.241 (8.9 it/s)
+  step 14600/15420 loss 0.352 (8.9 it/s)
+  step 14800/15420 loss 0.427 (8.9 it/s)
+  step 15000/15420 loss 0.341 (8.9 it/s)
+  step 15200/15420 loss 0.712 (8.9 it/s)
+  step 15400/15420 loss 0.498 (8.9 it/s)
+[sg] freeze law verified: 29 tensors bit-identical to W_0
+[sg] saved checkpoints/sgwriter1/sgq_control_s27_lr0.0003/final.pt after 15420 steps (1724s)
+[sg] receipt appended to logs/sgwriter1/qual.jsonl (final state_digest e0f32905449596a7)
+[gate] weights sha be925cf608afa746
+[sgq] sgq_control_s27_lr0.0003: gate 59 valid 57.49
+[sgq] ladder: {"c": 59, "control_adequate": true, "verdict": null, "stop": false, "next": "linear:0.0003", "selected": null}
+=== sg linear plr 3e-4 seed 27 2026-09-10T21:53:05Z ===
+[curric] D2 excision: 165028 -> 164896 rows
+[sg] mode=sg k_bp=4 seed=27 cell=sgq_sg_linear_plr0.0003_s27_lr0.0003: stock 164490 seq
+[curric] D2 excision: 165028 -> 164896 rows
+164896 rows; charset 42; uncovered chars: [':', 'C', 'H', 'I', 'S', '_', 'a', 'b', 'c', 'e']
+skipped 388 out-of-language rows (strict encode; historically silently mangled)
+164490 sequences, vocab 40
+model: 18.9M params on mps [fast: bf16 + token-budget]
+[curric] NO-OP PASS: 100 tuples + epoch length 5140 match the trainer path
+[sg] stream digests verified stock e0..e2
+[sg] frozen backbone: 29 frozen tensors, 30 trainable
+[sg] predictors linear x 4 (652800 params) plr 0.0003 seed 1027; constants {"4": 5.463976915041008e-06, "5": 4.4793102230019846e-06, "6": 3.5639423549823054e-06, "7": 2.440559644129858e-06} (audit sha 1d310c41afd2)
+[sg] steps_total 15420 (5140/epoch) peak lr 0.0003
+[sg] ep0: 5140 batches
+  step 200/15420 loss 1.879 (4.7 it/s) pred_mse 0.345 (baseline 0.258) align b4:0.118 b5:0.120 b6:0.147 b7:0.156
+  step 400/15420 loss 1.615 (4.8 it/s) pred_mse 0.104 (baseline 0.095) align b4:0.071 b5:0.061 b6:0.065 b7:0.061
+  step 600/15420 loss 1.534 (4.8 it/s) pred_mse 0.088 (baseline 0.055) align b4:-0.046 b5:-0.064 b6:-0.053 b7:-0.062
+  step 800/15420 loss 1.611 (4.8 it/s) pred_mse 0.475 (baseline 0.464) align b4:0.047 b5:0.022 b6:-0.001 b7:0.022
+  step 1000/15420 loss 1.496 (4.8 it/s) pred_mse 0.096 (baseline 0.076) align b4:0.017 b5:0.004 b6:0.015 b7:-0.036
+  step 1200/15420 loss 1.345 (4.8 it/s) pred_mse 0.054 (baseline 0.032) align b4:-0.003 b5:-0.013 b6:-0.024 b7:-0.049
+  step 1400/15420 loss 1.098 (4.9 it/s) pred_mse 0.061 (baseline 0.040) align b4:0.042 b5:0.056 b6:0.069 b7:0.060
+  step 1600/15420 loss 1.110 (4.8 it/s) pred_mse 0.068 (baseline 0.052) align b4:0.003 b5:-0.015 b6:-0.009 b7:-0.021
+  step 1800/15420 loss 1.475 (4.8 it/s) pred_mse 0.019 (baseline 0.007) align b4:-0.002 b5:0.002 b6:-0.008 b7:-0.008
+  step 2000/15420 loss 1.115 (4.9 it/s) pred_mse 0.060 (baseline 0.043) align b4:0.020 b5:0.023 b6:0.036 b7:0.025
+  step 2200/15420 loss 0.911 (4.9 it/s) pred_mse 0.063 (baseline 0.051) align b4:-0.005 b5:-0.001 b6:-0.031 b7:-0.019
+  step 2400/15420 loss 0.984 (4.8 it/s) pred_mse 0.078 (baseline 0.052) align b4:-0.027 b5:-0.025 b6:-0.017 b7:-0.026
+  step 2600/15420 loss 1.273 (4.8 it/s) pred_mse 0.030 (baseline 0.023) align b4:0.066 b5:0.076 b6:0.095 b7:0.085
+  step 2800/15420 loss 1.146 (4.7 it/s) pred_mse 0.021 (baseline 0.008) align b4:0.021 b5:0.009 b6:-0.022 b7:0.004
+  step 3000/15420 loss 1.502 (4.6 it/s) pred_mse 0.019 (baseline 0.004) align b4:0.021 b5:0.037 b6:0.053 b7:0.075
+  step 3200/15420 loss 1.111 (4.5 it/s) pred_mse 0.023 (baseline 0.012) align b4:0.009 b5:0.021 b6:0.005 b7:-0.001
+  step 3400/15420 loss 1.708 (4.5 it/s) pred_mse 0.067 (baseline 0.057) align b4:-0.004 b5:-0.008 b6:-0.011 b7:0.008
+  step 3600/15420 loss 0.808 (4.5 it/s) pred_mse 0.059 (baseline 0.045) align b4:-0.024 b5:-0.006 b6:-0.014 b7:-0.020
+  step 3800/15420 loss 0.795 (4.5 it/s) pred_mse 0.095 (baseline 0.086) align b4:0.072 b5:0.091 b6:0.110 b7:0.085
+  step 4000/15420 loss 1.026 (4.4 it/s) pred_mse 0.070 (baseline 0.057) align b4:-0.015 b5:-0.013 b6:-0.002 b7:-0.032
+  step 4200/15420 loss 0.850 (4.4 it/s) pred_mse 0.049 (baseline 0.039) align b4:0.024 b5:0.018 b6:0.036 b7:0.061
+  step 4400/15420 loss 1.100 (4.4 it/s) pred_mse 0.125 (baseline 0.119) align b4:0.038 b5:0.049 b6:0.046 b7:0.009
+  step 4600/15420 loss 1.095 (4.4 it/s) pred_mse 0.036 (baseline 0.021) align b4:-0.001 b5:-0.007 b6:-0.008 b7:0.003
+  step 4800/15420 loss 1.071 (4.4 it/s) pred_mse 0.044 (baseline 0.031) align b4:-0.016 b5:-0.016 b6:-0.021 b7:-0.026
+  step 5000/15420 loss 1.458 (4.4 it/s) pred_mse 0.034 (baseline 0.020) align b4:0.009 b5:0.012 b6:0.033 b7:0.021
+[sg] ep1: 5140 batches
+  step 5200/15420 loss 0.784 (4.4 it/s) pred_mse 0.073 (baseline 0.063) align b4:0.010 b5:0.021 b6:-0.000 b7:0.011
+  step 5400/15420 loss 0.958 (4.5 it/s) pred_mse 0.081 (baseline 0.065) align b4:0.001 b5:0.010 b6:0.010 b7:0.019
+  step 5600/15420 loss 1.189 (4.4 it/s) pred_mse 0.029 (baseline 0.017) align b4:0.011 b5:0.025 b6:0.019 b7:-0.009
+  step 5800/15420 loss 1.009 (4.4 it/s) pred_mse 0.048 (baseline 0.038) align b4:0.031 b5:0.031 b6:0.065 b7:0.081
+  step 6000/15420 loss 0.827 (4.4 it/s) pred_mse 0.057 (baseline 0.044) align b4:-0.010 b5:-0.010 b6:-0.023 b7:-0.041
+  step 6200/15420 loss 0.736 (4.4 it/s) pred_mse 0.058 (baseline 0.047) align b4:0.016 b5:0.005 b6:0.028 b7:0.048
+  step 6400/15420 loss 1.247 (4.4 it/s) pred_mse 0.059 (baseline 0.045) align b4:0.002 b5:-0.006 b6:-0.008 b7:-0.031
+  step 6600/15420 loss 1.247 (4.3 it/s) pred_mse 0.035 (baseline 0.025) align b4:0.019 b5:0.000 b6:-0.006 b7:0.024
+  step 6800/15420 loss 0.849 (4.3 it/s) pred_mse 0.076 (baseline 0.068) align b4:0.022 b5:0.038 b6:0.038 b7:0.030
+  step 7000/15420 loss 1.096 (4.3 it/s) pred_mse 0.089 (baseline 0.081) align b4:0.008 b5:0.016 b6:0.037 b7:0.028
+  step 7200/15420 loss 0.825 (4.3 it/s) pred_mse 0.063 (baseline 0.056) align b4:0.014 b5:0.030 b6:0.027 b7:0.012
+  step 7400/15420 loss 1.063 (4.2 it/s) pred_mse 0.024 (baseline 0.018) align b4:0.032 b5:0.060 b6:0.070 b7:0.055
+  step 7600/15420 loss 1.174 (4.2 it/s) pred_mse 0.126 (baseline 0.120) align b4:0.003 b5:0.020 b6:0.028 b7:0.045
+  step 7800/15420 loss 0.668 (4.2 it/s) pred_mse 0.076 (baseline 0.067) align b4:0.050 b5:0.047 b6:0.048 b7:0.087
+  step 8000/15420 loss 1.066 (4.2 it/s) pred_mse 0.089 (baseline 0.080) align b4:-0.004 b5:0.023 b6:0.045 b7:0.067
+  step 8200/15420 loss 0.774 (4.2 it/s) pred_mse 0.225 (baseline 0.218) align b4:0.034 b5:0.046 b6:0.068 b7:0.088
+  step 8400/15420 loss 0.964 (4.2 it/s) pred_mse 0.136 (baseline 0.129) align b4:0.009 b5:0.009 b6:0.021 b7:0.027
+  step 8600/15420 loss 0.831 (4.2 it/s) pred_mse 0.068 (baseline 0.063) align b4:0.014 b5:0.019 b6:0.005 b7:0.055
+  step 8800/15420 loss 0.879 (4.2 it/s) pred_mse 0.096 (baseline 0.094) align b4:0.056 b5:0.059 b6:0.070 b7:0.052
+  step 9000/15420 loss 1.094 (4.2 it/s) pred_mse 0.102 (baseline 0.095) align b4:0.025 b5:0.027 b6:0.032 b7:0.011
+  step 9200/15420 loss 0.797 (4.2 it/s) pred_mse 0.073 (baseline 0.068) align b4:0.022 b5:0.035 b6:0.040 b7:0.050
+  step 9400/15420 loss 1.070 (4.2 it/s) pred_mse 0.223 (baseline 0.218) align b4:0.030 b5:0.035 b6:-0.004 b7:0.003
+  step 9600/15420 loss 0.694 (4.2 it/s) pred_mse 0.073 (baseline 0.069) align b4:-0.003 b5:0.020 b6:0.024 b7:0.064
+  step 9800/15420 loss 0.916 (4.2 it/s) pred_mse 0.047 (baseline 0.044) align b4:0.014 b5:0.036 b6:0.047 b7:0.052
+  step 10000/15420 loss 0.800 (4.2 it/s) pred_mse 0.102 (baseline 0.099) align b4:0.031 b5:0.047 b6:0.060 b7:0.036
+  step 10200/15420 loss 0.683 (4.2 it/s) pred_mse 0.208 (baseline 0.206) align b4:0.017 b5:0.025 b6:0.042 b7:0.075
+[sg] ep2: 5140 batches
+  step 10400/15420 loss 0.867 (4.2 it/s) pred_mse 0.045 (baseline 0.042) align b4:0.000 b5:0.014 b6:0.016 b7:0.019
+  step 10600/15420 loss 0.663 (4.1 it/s) pred_mse 0.128 (baseline 0.126) align b4:0.071 b5:0.033 b6:0.034 b7:0.033
+  step 10800/15420 loss 0.675 (4.1 it/s) pred_mse 0.187 (baseline 0.185) align b4:-0.002 b5:-0.001 b6:0.014 b7:0.032
+  step 11000/15420 loss 0.746 (4.1 it/s) pred_mse 0.102 (baseline 0.098) align b4:0.006 b5:0.012 b6:0.027 b7:0.018
+  step 11200/15420 loss 1.277 (4.1 it/s) pred_mse 0.014 (baseline 0.011) align b4:0.011 b5:0.007 b6:0.023 b7:0.034
+  step 11400/15420 loss 0.791 (4.1 it/s) pred_mse 0.070 (baseline 0.068) align b4:0.034 b5:0.044 b6:0.062 b7:0.064
+  step 11600/15420 loss 0.768 (4.1 it/s) pred_mse 0.065 (baseline 0.063) align b4:0.013 b5:0.006 b6:-0.004 b7:-0.017
+  step 11800/15420 loss 0.701 (3.9 it/s) pred_mse 0.161 (baseline 0.162) align b4:0.056 b5:0.076 b6:0.079 b7:0.120
+  step 12000/15420 loss 0.759 (3.9 it/s) pred_mse 0.106 (baseline 0.103) align b4:-0.006 b5:0.000 b6:-0.004 b7:-0.017
+  step 12200/15420 loss 0.722 (3.9 it/s) pred_mse 0.090 (baseline 0.087) align b4:0.007 b5:-0.000 b6:0.001 b7:0.010
+  step 12400/15420 loss 1.046 (3.9 it/s) pred_mse 0.036 (baseline 0.033) align b4:0.001 b5:-0.001 b6:-0.001 b7:0.006
+  step 12600/15420 loss 0.546 (3.9 it/s) pred_mse 0.056 (baseline 0.055) align b4:0.051 b5:0.063 b6:0.085 b7:0.100
+  step 12800/15420 loss 0.958 (3.9 it/s) pred_mse 0.166 (baseline 0.166) align b4:0.024 b5:0.030 b6:0.010 b7:0.046
+  step 13000/15420 loss 0.740 (3.8 it/s) pred_mse 0.080 (baseline 0.079) align b4:0.004 b5:0.025 b6:0.033 b7:0.064
+  step 13200/15420 loss 0.739 (3.7 it/s) pred_mse 0.076 (baseline 0.075) align b4:0.018 b5:0.029 b6:0.036 b7:0.021
+  step 13400/15420 loss 0.797 (3.7 it/s) pred_mse 0.060 (baseline 0.059) align b4:0.037 b5:0.038 b6:0.050 b7:0.043
+  step 13600/15420 loss 0.613 (3.7 it/s) pred_mse 0.192 (baseline 0.190) align b4:-0.012 b5:-0.003 b6:-0.039 b7:-0.073
+  step 13800/15420 loss 1.253 (3.7 it/s) pred_mse 2.220 (baseline 2.217) align b4:-0.035 b5:-0.034 b6:-0.086 b7:0.037
+  step 14000/15420 loss 0.713 (3.7 it/s) pred_mse 0.116 (baseline 0.116) align b4:0.028 b5:0.024 b6:0.019 b7:0.027
+  step 14200/15420 loss 0.793 (3.7 it/s) pred_mse 0.078 (baseline 0.078) align b4:0.011 b5:0.026 b6:0.030 b7:0.034
+  step 14400/15420 loss 0.503 (3.7 it/s) pred_mse 0.065 (baseline 0.065) align b4:0.045 b5:0.074 b6:0.067 b7:0.030
+  step 14600/15420 loss 0.729 (3.8 it/s) pred_mse 0.107 (baseline 0.107) align b4:0.014 b5:0.024 b6:0.028 b7:0.023
+  step 14800/15420 loss 0.710 (3.8 it/s) pred_mse 0.201 (baseline 0.202) align b4:0.033 b5:0.031 b6:0.048 b7:0.047
+  step 15000/15420 loss 0.804 (3.8 it/s) pred_mse 0.167 (baseline 0.167) align b4:0.012 b5:0.007 b6:-0.007 b7:0.011
+  step 15200/15420 loss 1.178 (3.8 it/s) pred_mse 0.034 (baseline 0.034) align b4:0.024 b5:0.028 b6:0.035 b7:0.036
+  step 15400/15420 loss 0.775 (3.8 it/s) pred_mse 0.129 (baseline 0.129) align b4:0.023 b5:0.017 b6:0.040 b7:0.006
+[sg] freeze law verified: 29 tensors bit-identical to W_0
+[sg] saved checkpoints/sgwriter1/sgq_sg_linear_plr0.0003_s27_lr0.0003/final.pt after 15420 steps (4101s)
+[sg] receipt appended to logs/sgwriter1/qual.jsonl (final state_digest a8c8b9980f215748)
+[gate] weights sha 6e0f84664ef377ce
+[sgq] sgq_sg_linear_plr0.0003_s27_lr0.0003: gate 1 valid 0.1
+[sgq] ladder: {"c": 59, "control_adequate": true, "verdict": null, "stop": false, "next": "linear:3e-05", "selected": null}
+=== sg linear plr 3e-5 seed 27 2026-09-10T23:03:42Z ===
+[curric] D2 excision: 165028 -> 164896 rows
+[sg] mode=sg k_bp=4 seed=27 cell=sgq_sg_linear_plr3e-05_s27_lr0.0003: stock 164490 seq
+[curric] D2 excision: 165028 -> 164896 rows
+164896 rows; charset 42; uncovered chars: [':', 'C', 'H', 'I', 'S', '_', 'a', 'b', 'c', 'e']
+skipped 388 out-of-language rows (strict encode; historically silently mangled)
+164490 sequences, vocab 40
+model: 18.9M params on mps [fast: bf16 + token-budget]
+[curric] NO-OP PASS: 100 tuples + epoch length 5140 match the trainer path
+[sg] stream digests verified stock e0..e2
+[sg] frozen backbone: 29 frozen tensors, 30 trainable
+[sg] predictors linear x 4 (652800 params) plr 3e-05 seed 1027; constants {"4": 5.463976915041008e-06, "5": 4.4793102230019846e-06, "6": 3.5639423549823054e-06, "7": 2.440559644129858e-06} (audit sha 1d310c41afd2)
+[sg] steps_total 15420 (5140/epoch) peak lr 0.0003
+[sg] ep0: 5140 batches
+  step 200/15420 loss 2.400 (4.7 it/s) pred_mse 0.045 (baseline 0.044) align b4:0.139 b5:0.134 b6:0.119 b7:0.136
+  step 400/15420 loss 1.944 (4.8 it/s) pred_mse 0.012 (baseline 0.010) align b4:0.079 b5:0.065 b6:0.052 b7:0.031
+  step 600/15420 loss 1.661 (4.8 it/s) pred_mse 0.008 (baseline 0.006) align b4:-0.034 b5:-0.007 b6:-0.001 b7:-0.016
+  step 800/15420 loss 1.572 (4.8 it/s) pred_mse 0.062 (baseline 0.061) align b4:0.005 b5:-0.011 b6:0.019 b7:0.017
+  step 1000/15420 loss 1.604 (4.9 it/s) pred_mse 0.011 (baseline 0.010) align b4:0.050 b5:0.046 b6:0.057 b7:0.051
+  step 1200/15420 loss 1.559 (4.8 it/s) pred_mse 0.008 (baseline 0.006) align b4:0.092 b5:0.080 b6:0.045 b7:0.018
+  step 1400/15420 loss 1.341 (4.9 it/s) pred_mse 0.014 (baseline 0.012) align b4:0.089 b5:0.091 b6:0.084 b7:0.056
+  step 1600/15420 loss 1.275 (4.9 it/s) pred_mse 0.013 (baseline 0.012) align b4:0.041 b5:0.043 b6:0.042 b7:0.022
+  step 1800/15420 loss 1.575 (4.9 it/s) pred_mse 0.003 (baseline 0.001) align b4:-0.010 b5:-0.010 b6:-0.030 b7:-0.010
+  step 2000/15420 loss 1.239 (4.9 it/s) pred_mse 0.009 (baseline 0.008) align b4:0.073 b5:0.061 b6:0.051 b7:0.049
+  step 2200/15420 loss 1.057 (4.9 it/s) pred_mse 0.014 (baseline 0.013) align b4:0.023 b5:0.022 b6:0.012 b7:0.024
+  step 2400/15420 loss 1.159 (4.9 it/s) pred_mse 0.015 (baseline 0.011) align b4:-0.015 b5:-0.025 b6:-0.021 b7:-0.020
+  step 2600/15420 loss 1.467 (4.8 it/s) pred_mse 0.005 (baseline 0.004) align b4:0.088 b5:0.127 b6:0.145 b7:0.134
+  step 2800/15420 loss 1.350 (4.7 it/s) pred_mse 0.003 (baseline 0.001) align b4:0.007 b5:-0.001 b6:-0.003 b7:0.020
+  step 3000/15420 loss 1.547 (4.7 it/s) pred_mse 0.002 (baseline 0.001) align b4:0.020 b5:0.041 b6:0.047 b7:0.028
+  step 3200/15420 loss 1.237 (4.6 it/s) pred_mse 0.005 (baseline 0.003) align b4:0.002 b5:0.014 b6:0.029 b7:0.043
+  step 3400/15420 loss 1.789 (4.5 it/s) pred_mse 0.010 (baseline 0.009) align b4:0.020 b5:0.004 b6:0.015 b7:0.012
+  step 3600/15420 loss 0.935 (4.5 it/s) pred_mse 0.015 (baseline 0.012) align b4:0.004 b5:0.005 b6:-0.014 b7:-0.040
+  step 3800/15420 loss 0.898 (4.5 it/s) pred_mse 0.022 (baseline 0.021) align b4:0.025 b5:0.049 b6:0.061 b7:0.069
+  step 4000/15420 loss 1.123 (4.4 it/s) pred_mse 0.016 (baseline 0.014) align b4:0.010 b5:0.012 b6:0.012 b7:0.006
+  step 4200/15420 loss 1.117 (4.4 it/s) pred_mse 0.010 (baseline 0.009) align b4:0.005 b5:-0.007 b6:-0.008 b7:-0.014
+  step 4400/15420 loss 1.293 (4.4 it/s) pred_mse 0.021 (baseline 0.020) align b4:0.010 b5:0.031 b6:0.047 b7:0.026
+  step 4600/15420 loss 1.203 (4.4 it/s) pred_mse 0.004 (baseline 0.003) align b4:0.025 b5:0.015 b6:0.031 b7:0.020
+  step 4800/15420 loss 1.098 (4.4 it/s) pred_mse 0.007 (baseline 0.005) align b4:0.005 b5:0.005 b6:-0.008 b7:-0.025
+  step 5000/15420 loss 1.506 (4.5 it/s) pred_mse 0.003 (baseline 0.002) align b4:0.014 b5:0.015 b6:0.028 b7:0.034
+[sg] ep1: 5140 batches
+  step 5200/15420 loss 0.892 (4.5 it/s) pred_mse 0.012 (baseline 0.011) align b4:-0.001 b5:0.009 b6:0.007 b7:0.052
+  step 5400/15420 loss 1.100 (4.5 it/s) pred_mse 0.015 (baseline 0.014) align b4:0.018 b5:0.021 b6:0.006 b7:0.028
+  step 5600/15420 loss 1.224 (4.4 it/s) pred_mse 0.004 (baseline 0.002) align b4:0.011 b5:0.002 b6:-0.017 b7:-0.006
+  step 5800/15420 loss 1.098 (4.4 it/s) pred_mse 0.006 (baseline 0.005) align b4:0.050 b5:0.063 b6:0.081 b7:0.082
+  step 6000/15420 loss 0.872 (4.4 it/s) pred_mse 0.008 (baseline 0.006) align b4:0.009 b5:-0.004 b6:-0.000 b7:-0.036
+  step 6200/15420 loss 0.819 (4.4 it/s) pred_mse 0.011 (baseline 0.009) align b4:-0.007 b5:0.009 b6:-0.012 b7:-0.004
+  step 6400/15420 loss 1.287 (4.4 it/s) pred_mse 0.007 (baseline 0.006) align b4:0.016 b5:0.002 b6:0.001 b7:-0.006
+  step 6600/15420 loss 1.343 (4.3 it/s) pred_mse 0.006 (baseline 0.005) align b4:0.014 b5:0.011 b6:0.002 b7:0.023
+  step 6800/15420 loss 0.909 (4.3 it/s) pred_mse 0.009 (baseline 0.008) align b4:0.025 b5:0.036 b6:0.038 b7:0.019
+  step 7000/15420 loss 1.122 (4.3 it/s) pred_mse 0.009 (baseline 0.008) align b4:0.012 b5:0.010 b6:-0.008 b7:-0.012
+  step 7200/15420 loss 0.872 (4.2 it/s) pred_mse 0.006 (baseline 0.005) align b4:0.016 b5:0.029 b6:0.017 b7:-0.005
+  step 7400/15420 loss 1.060 (4.1 it/s) pred_mse 0.004 (baseline 0.003) align b4:0.028 b5:0.026 b6:0.023 b7:0.049
+  step 7600/15420 loss 1.235 (4.1 it/s) pred_mse 0.041 (baseline 0.040) align b4:0.018 b5:0.010 b6:0.035 b7:0.052
+  step 7800/15420 loss 0.741 (4.1 it/s) pred_mse 0.013 (baseline 0.012) align b4:0.014 b5:0.015 b6:0.023 b7:0.079
+  step 8000/15420 loss 1.125 (4.2 it/s) pred_mse 0.008 (baseline 0.007) align b4:0.005 b5:0.046 b6:0.025 b7:0.042
+  step 8200/15420 loss 0.844 (4.2 it/s) pred_mse 0.062 (baseline 0.062) align b4:0.053 b5:0.061 b6:0.107 b7:0.145
+  step 8400/15420 loss 1.041 (4.2 it/s) pred_mse 0.018 (baseline 0.017) align b4:0.005 b5:0.038 b6:0.036 b7:0.030
+  step 8600/15420 loss 0.885 (4.2 it/s) pred_mse 0.018 (baseline 0.018) align b4:0.015 b5:0.036 b6:0.056 b7:0.078
+  step 8800/15420 loss 1.013 (4.1 it/s) pred_mse 0.019 (baseline 0.019) align b4:0.070 b5:0.130 b6:0.099 b7:0.150
+  step 9000/15420 loss 1.193 (4.1 it/s) pred_mse 0.010 (baseline 0.009) align b4:0.022 b5:0.046 b6:0.045 b7:0.017
+  step 9200/15420 loss 0.826 (4.1 it/s) pred_mse 0.008 (baseline 0.008) align b4:0.014 b5:0.043 b6:0.038 b7:0.036
+  step 9400/15420 loss 1.064 (4.1 it/s) pred_mse 0.123 (baseline 0.123) align b4:0.035 b5:0.021 b6:0.014 b7:-0.015
+  step 9600/15420 loss 0.752 (4.1 it/s) pred_mse 0.013 (baseline 0.013) align b4:0.005 b5:0.015 b6:0.005 b7:0.006
+  step 9800/15420 loss 0.997 (4.1 it/s) pred_mse 0.005 (baseline 0.005) align b4:0.002 b5:0.037 b6:0.052 b7:0.017
+  step 10000/15420 loss 0.866 (4.1 it/s) pred_mse 0.014 (baseline 0.014) align b4:0.031 b5:0.020 b6:0.037 b7:0.037
+  step 10200/15420 loss 0.751 (4.1 it/s) pred_mse 0.025 (baseline 0.025) align b4:-0.004 b5:0.035 b6:-0.004 b7:0.038
+[sg] ep2: 5140 batches
+  step 10400/15420 loss 0.998 (4.1 it/s) pred_mse 0.010 (baseline 0.010) align b4:0.018 b5:0.035 b6:0.037 b7:0.033
+  step 10600/15420 loss 0.710 (4.1 it/s) pred_mse 0.028 (baseline 0.027) align b4:0.012 b5:0.015 b6:0.035 b7:0.053
+  step 10800/15420 loss 0.730 (4.1 it/s) pred_mse 0.035 (baseline 0.035) align b4:0.010 b5:-0.020 b6:-0.029 b7:-0.029
+  step 11000/15420 loss 0.830 (4.1 it/s) pred_mse 0.018 (baseline 0.018) align b4:0.007 b5:0.021 b6:0.004 b7:-0.018
+  step 11200/15420 loss 1.333 (4.1 it/s) pred_mse 0.002 (baseline 0.002) align b4:-0.008 b5:0.007 b6:0.004 b7:0.046
+  step 11400/15420 loss 0.887 (4.1 it/s) pred_mse 0.017 (baseline 0.017) align b4:0.009 b5:0.032 b6:0.073 b7:0.082
+  step 11600/15420 loss 0.812 (4.1 it/s) pred_mse 0.009 (baseline 0.009) align b4:0.013 b5:0.020 b6:0.024 b7:0.016
+  step 11800/15420 loss 0.832 (4.0 it/s) pred_mse 0.050 (baseline 0.051) align b4:0.047 b5:0.093 b6:0.123 b7:0.188
+  step 12000/15420 loss 0.852 (4.0 it/s) pred_mse 0.028 (baseline 0.028) align b4:0.036 b5:0.032 b6:0.044 b7:0.016
+  step 12200/15420 loss 0.791 (4.0 it/s) pred_mse 0.017 (baseline 0.017) align b4:0.002 b5:-0.014 b6:0.007 b7:-0.010
+  step 12400/15420 loss 1.075 (3.9 it/s) pred_mse 0.005 (baseline 0.005) align b4:0.007 b5:-0.005 b6:-0.010 b7:0.004
+  step 12600/15420 loss 0.653 (3.9 it/s) pred_mse 0.014 (baseline 0.014) align b4:0.028 b5:0.089 b6:0.061 b7:0.105
+  step 12800/15420 loss 1.093 (3.9 it/s) pred_mse 0.023 (baseline 0.023) align b4:-0.002 b5:0.042 b6:0.030 b7:0.060
+  step 13000/15420 loss 0.819 (3.9 it/s) pred_mse 0.016 (baseline 0.016) align b4:0.020 b5:0.026 b6:0.017 b7:0.074
+  step 13200/15420 loss 0.811 (3.9 it/s) pred_mse 0.018 (baseline 0.018) align b4:0.019 b5:0.016 b6:0.035 b7:0.012
+  step 13400/15420 loss 0.876 (3.9 it/s) pred_mse 0.009 (baseline 0.009) align b4:0.012 b5:0.035 b6:0.040 b7:0.041
+  step 13600/15420 loss 0.675 (3.9 it/s) pred_mse 0.032 (baseline 0.032) align b4:-0.007 b5:-0.020 b6:-0.045 b7:-0.089
+  step 13800/15420 loss 1.522 (3.9 it/s) pred_mse 0.280 (baseline 0.279) align b4:-0.048 b5:-0.093 b6:-0.126 b7:0.038
+  step 14000/15420 loss 0.788 (3.9 it/s) pred_mse 0.020 (baseline 0.020) align b4:0.011 b5:0.012 b6:0.001 b7:0.008
+  step 14200/15420 loss 0.846 (3.9 it/s) pred_mse 0.014 (baseline 0.014) align b4:0.008 b5:0.016 b6:0.023 b7:0.017
+  step 14400/15420 loss 0.627 (3.9 it/s) pred_mse 0.013 (baseline 0.014) align b4:0.065 b5:0.095 b6:0.071 b7:0.034
+  step 14600/15420 loss 0.799 (3.9 it/s) pred_mse 0.016 (baseline 0.016) align b4:-0.002 b5:0.013 b6:0.016 b7:-0.006
+  step 14800/15420 loss 0.772 (3.9 it/s) pred_mse 0.048 (baseline 0.048) align b4:0.014 b5:0.015 b6:0.021 b7:0.030
+  step 15000/15420 loss 0.866 (4.0 it/s) pred_mse 0.026 (baseline 0.026) align b4:0.019 b5:0.029 b6:0.053 b7:0.002
+  step 15200/15420 loss 1.266 (4.0 it/s) pred_mse 0.008 (baseline 0.008) align b4:0.031 b5:0.024 b6:0.034 b7:0.029
+  step 15400/15420 loss 0.833 (4.0 it/s) pred_mse 0.020 (baseline 0.020) align b4:0.009 b5:0.004 b6:0.002 b7:0.025
+[sg] freeze law verified: 29 tensors bit-identical to W_0
+[sg] saved checkpoints/sgwriter1/sgq_sg_linear_plr3e-05_s27_lr0.0003/final.pt after 15420 steps (3885s)
+[sg] receipt appended to logs/sgwriter1/qual.jsonl (final state_digest d28b27bdd53b56d6)
+[gate] weights sha 242f63fbf25a0248
+[sgq] sgq_sg_linear_plr3e-05_s27_lr0.0003: gate 0 valid 0.0
+[sgq] ladder: {"c": 59, "control_adequate": true, "verdict": null, "stop": false, "next": "mlp256:0.0003", "selected": null}
+=== sg mlp256 plr 3e-4 seed 27 2026-09-11T00:10:46Z ===
+[curric] D2 excision: 165028 -> 164896 rows
+[sg] mode=sg k_bp=4 seed=27 cell=sgq_sg_mlp256_plr0.0003_s27_lr0.0003: stock 164490 seq
+[curric] D2 excision: 165028 -> 164896 rows
+164896 rows; charset 42; uncovered chars: [':', 'C', 'H', 'I', 'S', '_', 'a', 'b', 'c', 'e']
+skipped 388 out-of-language rows (strict encode; historically silently mangled)
+164490 sequences, vocab 40
+model: 18.9M params on mps [fast: bf16 + token-budget]
+[curric] NO-OP PASS: 100 tuples + epoch length 5140 match the trainer path
+[sg] stream digests verified stock e0..e2
+[sg] frozen backbone: 29 frozen tensors, 30 trainable
+[sg] predictors mlp256 x 4 (829952 params) plr 0.0003 seed 1027; constants {"4": 5.463976915041008e-06, "5": 4.4793102230019846e-06, "6": 3.5639423549823054e-06, "7": 2.440559644129858e-06} (audit sha 1d310c41afd2)
+[sg] steps_total 15420 (5140/epoch) peak lr 0.0003
+[sg] ep0: 5140 batches
+  step 200/15420 loss 2.429 (4.7 it/s) pred_mse 0.277 (baseline 0.288) align b4:0.215 b5:0.227 b6:0.194 b7:0.191
+  step 400/15420 loss 2.186 (4.7 it/s) pred_mse 0.001 (baseline 0.000) align b4:0.100 b5:-0.008 b6:0.023 b7:0.010
+  step 600/15420 loss 2.999 (4.7 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.005 b5:0.004 b6:0.003 b7:0.005
+  step 800/15420 loss 3.179 (4.7 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.004 b5:0.007 b6:0.024 b7:0.036
+  step 1000/15420 loss 3.138 (4.8 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.003 b5:-0.003 b6:-0.002 b7:-0.006
+  step 1200/15420 loss 3.037 (4.8 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.003 b5:0.003 b6:-0.004 b7:-0.004
+  step 1400/15420 loss 2.978 (4.8 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.001 b5:-0.003 b6:-0.008 b7:-0.011
+  step 1600/15420 loss 2.978 (4.8 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.000 b5:-0.003 b6:-0.008 b7:-0.010
+  step 1800/15420 loss 3.020 (4.8 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.004 b5:0.001 b6:-0.010 b7:-0.017
+  step 2000/15420 loss 2.910 (4.8 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.002 b5:-0.001 b6:-0.008 b7:-0.015
+  step 2200/15420 loss 2.873 (4.9 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.007 b5:0.001 b6:-0.002 b7:-0.007
+  step 2400/15420 loss 2.909 (4.8 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.005 b5:-0.001 b6:-0.001 b7:-0.006
+  step 2600/15420 loss 2.983 (4.8 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.006 b5:0.002 b6:-0.005 b7:-0.012
+  step 2800/15420 loss 3.082 (4.6 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.003 b5:0.008 b6:0.002 b7:0.002
+  step 3000/15420 loss 2.956 (4.6 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.004 b5:0.008 b6:0.000 b7:-0.008
+  step 3200/15420 loss 3.036 (4.4 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.009 b5:-0.001 b6:-0.004 b7:-0.012
+  step 3400/15420 loss 3.203 (4.4 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.005 b5:0.004 b6:0.001 b7:-0.001
+  step 3600/15420 loss 2.914 (4.4 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.003 b5:0.003 b6:0.003 b7:0.002
+  step 3800/15420 loss 2.887 (4.4 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.004 b5:-0.000 b6:-0.001 b7:0.001
+  step 4000/15420 loss 3.063 (4.2 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.005 b5:-0.005 b6:-0.004 b7:-0.005
+  step 4200/15420 loss 3.124 (4.2 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.003 b5:-0.004 b6:0.000 b7:-0.001
+  step 4400/15420 loss 3.146 (4.2 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.004 b5:-0.005 b6:-0.003 b7:0.001
+  step 4600/15420 loss 2.954 (4.3 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.000 b5:0.004 b6:0.004 b7:0.002
+  step 4800/15420 loss 3.010 (4.3 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.001 b5:-0.003 b6:0.003 b7:-0.005
+  step 5000/15420 loss 3.069 (4.3 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.020 b5:-0.002 b6:0.008 b7:0.003
+[sg] ep1: 5140 batches
+  step 5200/15420 loss 3.007 (4.3 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.036 b5:0.017 b6:0.004 b7:0.003
+  step 5400/15420 loss 3.119 (4.3 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.035 b5:0.027 b6:0.010 b7:0.002
+  step 5600/15420 loss 2.952 (4.2 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.084 b5:-0.083 b6:-0.060 b7:-0.001
+  step 5800/15420 loss 3.047 (4.2 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.081 b5:-0.081 b6:-0.077 b7:-0.001
+  step 6000/15420 loss 2.967 (4.2 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.018 b5:0.018 b6:0.017 b7:0.004
+  step 6200/15420 loss 2.894 (4.2 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.039 b5:0.038 b6:0.038 b7:0.008
+  step 6400/15420 loss 3.092 (4.2 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.079 b5:-0.080 b6:-0.079 b7:-0.030
+  step 6600/15420 loss 3.050 (4.2 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.005 b5:0.004 b6:-0.001 b7:-0.011
+  step 6800/15420 loss 2.955 (4.2 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.007 b5:0.008 b6:0.007 b7:0.006
+  step 7000/15420 loss 2.974 (4.2 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.014 b5:-0.012 b6:-0.013 b7:-0.014
+  step 7200/15420 loss 2.937 (4.1 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.010 b5:-0.008 b6:-0.007 b7:-0.006
+  step 7400/15420 loss 3.011 (4.0 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.058 b5:-0.056 b6:-0.057 b7:-0.057
+  step 7600/15420 loss 3.165 (4.0 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.081 b5:-0.086 b6:-0.084 b7:0.004
+  step 7800/15420 loss 2.927 (4.0 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.076 b5:0.075 b6:0.074 b7:0.070
+  step 8000/15420 loss 2.959 (4.0 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.013 b5:-0.013 b6:-0.015 b7:-0.016
+  step 8200/15420 loss 3.090 (4.0 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.107 b5:0.106 b6:0.109 b7:0.115
+  step 8400/15420 loss 3.092 (4.1 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.006 b5:0.001 b6:0.000 b7:0.001
+  step 8600/15420 loss 2.966 (4.1 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.020 b5:-0.018 b6:-0.017 b7:-0.015
+  step 8800/15420 loss 3.063 (4.0 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.038 b5:0.035 b6:0.033 b7:0.032
+  step 9000/15420 loss 2.987 (3.9 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.051 b5:-0.055 b6:-0.057 b7:-0.058
+  step 9200/15420 loss 2.957 (4.0 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.022 b5:0.022 b6:0.021 b7:0.018
+  step 9400/15420 loss 3.004 (4.0 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.002 b5:0.001 b6:-0.001 b7:0.015
+  step 9600/15420 loss 2.901 (4.0 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.007 b5:0.016 b6:0.030 b7:0.048
+  step 9800/15420 loss 2.881 (4.0 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.053 b5:-0.056 b6:-0.059 b7:-0.061
+  step 10000/15420 loss 2.979 (4.0 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.012 b5:0.014 b6:0.014 b7:0.014
+  step 10200/15420 loss 3.042 (4.0 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.086 b5:0.083 b6:0.087 b7:0.091
+[sg] ep2: 5140 batches
+  step 10400/15420 loss 3.039 (4.0 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.067 b5:-0.068 b6:-0.066 b7:-0.065
+  step 10600/15420 loss 3.000 (3.9 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.066 b5:0.065 b6:0.065 b7:0.065
+  step 10800/15420 loss 3.081 (3.9 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.148 b5:0.149 b6:0.151 b7:0.152
+  step 11000/15420 loss 3.064 (3.9 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.016 b5:-0.009 b6:-0.003 b7:0.007
+  step 11200/15420 loss 2.913 (3.9 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.072 b5:-0.067 b6:-0.068 b7:-0.069
+  step 11400/15420 loss 2.939 (3.9 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.001 b5:0.001 b6:-0.000 b7:-0.003
+  step 11600/15420 loss 2.987 (3.9 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.006 b5:-0.004 b6:-0.004 b7:-0.006
+  step 11800/15420 loss 3.101 (3.7 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.124 b5:0.118 b6:0.116 b7:0.114
+  step 12000/15420 loss 2.968 (3.7 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.015 b5:0.013 b6:0.011 b7:0.010
+  step 12200/15420 loss 2.974 (3.7 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.014 b5:0.014 b6:0.016 b7:0.018
+  step 12400/15420 loss 2.968 (3.6 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.067 b5:-0.060 b6:-0.058 b7:-0.056
+  step 12600/15420 loss 3.057 (3.6 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.027 b5:0.024 b6:0.023 b7:0.024
+  step 12800/15420 loss 2.977 (3.6 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.004 b5:0.002 b6:-0.002 b7:-0.008
+  step 13000/15420 loss 2.983 (3.6 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.027 b5:0.027 b6:0.026 b7:0.026
+  step 13200/15420 loss 2.970 (3.5 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.007 b5:0.007 b6:0.005 b7:0.002
+  step 13400/15420 loss 2.968 (3.5 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.036 b5:-0.036 b6:-0.037 b7:-0.037
+  step 13600/15420 loss 2.948 (3.5 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.043 b5:0.050 b6:0.061 b7:0.073
+  step 13800/15420 loss 3.184 (3.5 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.097 b5:0.079 b6:0.075 b7:0.084
+  step 14000/15420 loss 2.962 (3.5 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.005 b5:0.011 b6:0.018 b7:0.021
+  step 14200/15420 loss 2.990 (3.5 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.004 b5:-0.002 b6:-0.000 b7:0.001
+  step 14400/15420 loss 3.074 (3.5 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.005 b5:-0.007 b6:-0.007 b7:-0.007
+  step 14600/15420 loss 2.948 (3.4 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.002 b5:0.000 b6:0.001 b7:0.000
+  step 14800/15420 loss 3.042 (3.4 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.078 b5:0.072 b6:0.072 b7:0.072
+  step 15000/15420 loss 3.003 (3.4 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.050 b5:0.049 b6:0.049 b7:0.051
+  step 15200/15420 loss 3.121 (3.4 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.038 b5:-0.030 b6:-0.029 b7:-0.031
+  step 15400/15420 loss 2.808 (3.4 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.018 b5:-0.010 b6:-0.010 b7:-0.012
+[sg] freeze law verified: 29 tensors bit-identical to W_0
+[sg] saved checkpoints/sgwriter1/sgq_sg_mlp256_plr0.0003_s27_lr0.0003/final.pt after 15420 steps (4550s)
+[sg] receipt appended to logs/sgwriter1/qual.jsonl (final state_digest 6a5e1f6ea731b843)
+[gate] weights sha 5c11f33ccf938328
+[sgq] sgq_sg_mlp256_plr0.0003_s27_lr0.0003: gate 0 valid 0.0
+[sgq] ladder: {"c": 59, "control_adequate": true, "verdict": null, "stop": false, "next": "mlp256:3e-05", "selected": null}
+=== sg mlp256 plr 3e-5 seed 27 2026-09-11T01:28:48Z ===
+[curric] D2 excision: 165028 -> 164896 rows
+[sg] mode=sg k_bp=4 seed=27 cell=sgq_sg_mlp256_plr3e-05_s27_lr0.0003: stock 164490 seq
+[curric] D2 excision: 165028 -> 164896 rows
+164896 rows; charset 42; uncovered chars: [':', 'C', 'H', 'I', 'S', '_', 'a', 'b', 'c', 'e']
+skipped 388 out-of-language rows (strict encode; historically silently mangled)
+164490 sequences, vocab 40
+model: 18.9M params on mps [fast: bf16 + token-budget]
+[curric] NO-OP PASS: 100 tuples + epoch length 5140 match the trainer path
+[sg] stream digests verified stock e0..e2
+[sg] frozen backbone: 29 frozen tensors, 30 trainable
+[sg] predictors mlp256 x 4 (829952 params) plr 3e-05 seed 1027; constants {"4": 5.463976915041008e-06, "5": 4.4793102230019846e-06, "6": 3.5639423549823054e-06, "7": 2.440559644129858e-06} (audit sha 1d310c41afd2)
+[sg] steps_total 15420 (5140/epoch) peak lr 0.0003
+[sg] ep0: 5140 batches
+  step 200/15420 loss 3.073 (4.6 it/s) pred_mse 0.004 (baseline 0.004) align b4:0.190 b5:0.170 b6:0.143 b7:0.112
+  step 400/15420 loss 2.628 (4.7 it/s) pred_mse 0.010 (baseline 0.010) align b4:0.142 b5:0.130 b6:0.127 b7:0.062
+  step 600/15420 loss 2.072 (4.7 it/s) pred_mse 0.007 (baseline 0.007) align b4:0.112 b5:0.070 b6:0.053 b7:0.027
+  step 800/15420 loss 2.426 (4.7 it/s) pred_mse 0.032 (baseline 0.033) align b4:0.053 b5:0.096 b6:0.059 b7:0.056
+  step 1000/15420 loss 1.924 (4.7 it/s) pred_mse 0.003 (baseline 0.003) align b4:0.087 b5:0.075 b6:0.096 b7:0.084
+  step 1200/15420 loss 1.707 (4.7 it/s) pred_mse 0.001 (baseline 0.001) align b4:0.050 b5:0.058 b6:0.065 b7:0.061
+  step 1400/15420 loss 1.530 (4.8 it/s) pred_mse 0.003 (baseline 0.003) align b4:0.063 b5:0.084 b6:0.057 b7:0.078
+  step 1600/15420 loss 1.554 (4.7 it/s) pred_mse 0.002 (baseline 0.002) align b4:0.013 b5:0.044 b6:0.033 b7:0.054
+  step 1800/15420 loss 1.809 (4.8 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.042 b5:0.034 b6:0.039 b7:0.042
+  step 2000/15420 loss 1.745 (4.8 it/s) pred_mse 0.001 (baseline 0.001) align b4:0.035 b5:0.132 b6:0.102 b7:0.072
+  step 2200/15420 loss 1.407 (4.8 it/s) pred_mse 0.001 (baseline 0.001) align b4:-0.021 b5:-0.010 b6:0.015 b7:-0.008
+  step 2400/15420 loss 1.520 (4.7 it/s) pred_mse 0.001 (baseline 0.001) align b4:-0.074 b5:-0.062 b6:-0.058 b7:-0.032
+  step 2600/15420 loss 1.837 (4.7 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.088 b5:0.128 b6:0.095 b7:0.168
+  step 2800/15420 loss 1.576 (4.6 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.020 b5:0.037 b6:0.017 b7:0.020
+  step 3000/15420 loss 1.684 (4.6 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.002 b5:0.007 b6:-0.010 b7:0.031
+  step 3200/15420 loss 1.680 (4.4 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.043 b5:0.041 b6:0.073 b7:0.157
+  step 3400/15420 loss 2.071 (4.4 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.012 b5:-0.036 b6:-0.005 b7:-0.004
+  step 3600/15420 loss 1.375 (4.4 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.020 b5:0.041 b6:0.055 b7:0.084
+  step 3800/15420 loss 1.752 (4.4 it/s) pred_mse 0.001 (baseline 0.001) align b4:0.019 b5:0.042 b6:0.035 b7:0.140
+  step 4000/15420 loss 3.044 (4.3 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.008 b5:0.005 b6:-0.006 b7:-0.008
+  step 4200/15420 loss 3.084 (4.4 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.001 b5:-0.002 b6:-0.002 b7:-0.003
+  step 4400/15420 loss 3.113 (4.4 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.001 b5:0.004 b6:-0.003 b7:-0.002
+  step 4600/15420 loss 2.983 (4.4 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.005 b5:-0.017 b6:0.004 b7:0.012
+  step 4800/15420 loss 3.039 (4.4 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.000 b5:-0.011 b6:0.008 b7:0.010
+  step 5000/15420 loss 3.016 (4.4 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.004 b5:-0.029 b6:0.005 b7:0.014
+[sg] ep1: 5140 batches
+  step 5200/15420 loss 2.958 (4.4 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.001 b5:0.004 b6:-0.003 b7:-0.007
+  step 5400/15420 loss 3.095 (4.4 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.002 b5:-0.005 b6:-0.009 b7:-0.015
+  step 5600/15420 loss 2.999 (4.3 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.005 b5:-0.018 b6:0.001 b7:0.013
+  step 5800/15420 loss 3.048 (4.3 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.001 b5:-0.009 b6:-0.009 b7:-0.002
+  step 6000/15420 loss 2.969 (4.3 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.002 b5:-0.007 b6:-0.007 b7:-0.008
+  step 6200/15420 loss 2.899 (4.3 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.001 b5:-0.006 b6:-0.000 b7:-0.002
+  step 6400/15420 loss 3.144 (4.3 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.004 b5:-0.014 b6:-0.007 b7:0.003
+  step 6600/15420 loss 3.081 (4.2 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.000 b5:-0.011 b6:0.009 b7:0.019
+  step 6800/15420 loss 2.964 (4.3 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.002 b5:-0.005 b6:-0.005 b7:-0.005
+  step 7000/15420 loss 3.002 (4.3 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.001 b5:-0.007 b6:0.008 b7:0.013
+  step 7200/15420 loss 2.949 (4.2 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.005 b5:-0.012 b6:-0.005 b7:-0.006
+  step 7400/15420 loss 3.087 (4.1 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.003 b5:-0.016 b6:0.004 b7:0.011
+  step 7600/15420 loss 3.221 (4.1 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.007 b5:0.008 b6:-0.004 b7:0.010
+  step 7800/15420 loss 2.884 (4.1 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.002 b5:-0.002 b6:0.003 b7:0.002
+  step 8000/15420 loss 2.967 (4.1 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.002 b5:-0.007 b6:-0.006 b7:-0.002
+  step 8200/15420 loss 3.022 (4.2 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.005 b5:0.011 b6:-0.006 b7:-0.015
+  step 8400/15420 loss 3.096 (4.2 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.002 b5:0.005 b6:-0.006 b7:-0.004
+  step 8600/15420 loss 2.978 (4.2 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.003 b5:-0.004 b6:-0.005 b7:-0.006
+  step 8800/15420 loss 3.057 (4.1 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.005 b5:0.011 b6:0.005 b7:0.007
+  step 9000/15420 loss 3.003 (4.1 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.005 b5:-0.007 b6:-0.001 b7:0.001
+  step 9200/15420 loss 2.952 (4.1 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.002 b5:-0.007 b6:-0.004 b7:-0.006
+  step 9400/15420 loss 3.007 (4.1 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.011 b5:0.001 b6:0.010 b7:0.009
+  step 9600/15420 loss 2.911 (4.1 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.000 b5:0.022 b6:0.002 b7:0.001
+  step 9800/15420 loss 3.188 (4.1 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.009 b5:-0.010 b6:0.071 b7:-0.218
+  step 10000/15420 loss 2.983 (4.1 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.017 b5:0.033 b6:0.002 b7:-0.001
+  step 10200/15420 loss 2.992 (4.1 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.028 b5:0.033 b6:-0.018 b7:0.002
+[sg] ep2: 5140 batches
+  step 10400/15420 loss 3.055 (4.1 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.008 b5:-0.024 b6:0.001 b7:-0.003
+  step 10600/15420 loss 2.971 (4.0 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.004 b5:0.011 b6:-0.005 b7:0.005
+  step 10800/15420 loss 3.044 (4.0 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.020 b5:0.030 b6:-0.027 b7:-0.008
+  step 11000/15420 loss 3.073 (4.0 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.006 b5:0.010 b6:-0.004 b7:0.018
+  step 11200/15420 loss 2.910 (4.0 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.005 b5:-0.005 b6:0.016 b7:-0.015
+  step 11400/15420 loss 2.939 (4.0 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.000 b5:0.001 b6:0.005 b7:-0.005
+  step 11600/15420 loss 2.987 (4.0 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.000 b5:0.007 b6:0.006 b7:0.005
+  step 11800/15420 loss 3.098 (3.8 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.008 b5:-0.002 b6:-0.023 b7:0.012
+  step 12000/15420 loss 2.970 (3.8 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.000 b5:0.009 b6:0.002 b7:-0.001
+  step 12200/15420 loss 2.974 (3.8 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.005 b5:0.009 b6:0.001 b7:-0.001
+  step 12400/15420 loss 2.969 (3.7 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.021 b5:-0.007 b6:0.007 b7:-0.004
+  step 12600/15420 loss 3.058 (3.7 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.009 b5:0.003 b6:0.002 b7:0.003
+  step 12800/15420 loss 2.976 (3.7 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.015 b5:-0.006 b6:-0.004 b7:0.004
+  step 13000/15420 loss 2.983 (3.7 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.025 b5:0.012 b6:0.009 b7:-0.001
+  step 13200/15420 loss 2.970 (3.6 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.009 b5:0.008 b6:0.007 b7:0.002
+  step 13400/15420 loss 2.968 (3.6 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.021 b5:-0.005 b6:-0.008 b7:-0.001
+  step 13600/15420 loss 2.948 (3.6 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.100 b5:0.069 b6:0.071 b7:-0.001
+  step 13800/15420 loss 3.185 (3.6 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.161 b5:0.130 b6:0.135 b7:0.015
+  step 14000/15420 loss 2.962 (3.6 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.025 b5:0.024 b6:0.023 b7:-0.001
+  step 14200/15420 loss 2.990 (3.5 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.005 b5:-0.004 b6:-0.004 b7:0.002
+  step 14400/15420 loss 3.075 (3.5 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.001 b5:-0.001 b6:-0.001 b7:-0.001
+  step 14600/15420 loss 2.948 (3.5 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.016 b5:0.017 b6:0.016 b7:-0.001
+  step 14800/15420 loss 3.042 (3.5 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.081 b5:0.078 b6:0.077 b7:0.009
+  step 15000/15420 loss 3.003 (3.5 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.048 b5:0.045 b6:0.045 b7:0.005
+  step 15200/15420 loss 3.120 (3.5 it/s) pred_mse 0.000 (baseline 0.000) align b4:-0.083 b5:-0.083 b6:-0.081 b7:-0.002
+  step 15400/15420 loss 2.808 (3.5 it/s) pred_mse 0.000 (baseline 0.000) align b4:0.007 b5:0.008 b6:0.010 b7:-0.007
+[sg] freeze law verified: 29 tensors bit-identical to W_0
+[sg] saved checkpoints/sgwriter1/sgq_sg_mlp256_plr3e-05_s27_lr0.0003/final.pt after 15420 steps (4381s)
+[sg] receipt appended to logs/sgwriter1/qual.jsonl (final state_digest fa3ac77f4c3379f8)
+[gate] weights sha 3d123a065efc48c9
+[sgq] sgq_sg_mlp256_plr3e-05_s27_lr0.0003: gate 0 valid 0.0
+[sgq] ladder: {"c": 59, "control_adequate": true, "verdict": "ACCESSIBILITY-ONLY", "stop": true, "next": null, "selected": null}
+driver: ladder stopped at mlp256:3e-5
