@@ -2848,12 +2848,20 @@
    "exists": false,
    "source": "prereg"
   },
+  "logs/mezo0/mezo0.DONE": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/mezo0/smoke.jsonl": {
    "bytes": 9211,
    "exists": true,
    "sha256": "b27ddee47d0666d0bf4d297c3ec8b872c09c39a1591ba74061f81352bca3237b",
    "source": "results",
    "tracked": true
+  },
+  "logs/mezo0/smoke_seal.jsonl": {
+   "exists": false,
+   "source": "prereg"
   },
   "logs/microstar/microstar_run.log": {
    "exists": false,
