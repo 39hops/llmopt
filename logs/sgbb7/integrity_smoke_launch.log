@@ -1,0 +1,5 @@
+[curric] D2 excision: 165028 -> 164896 rows
+[sg7smoke] w0_seed11: ok=True f_rel7=0.0e+00 f_p=0.0e+00 h_post-pre=2.27e-05 pred_loss=157.076 baseline=157.029 g_inel=168 x8sd=1.02 failed=[]
+[sg7smoke] control_s27_step463: ok=True f_rel7=0.0e+00 f_p=0.0e+00 h_post-pre=5.94e-05 pred_loss=21.606 baseline=21.589 g_inel=168 x8sd=1.73 failed=[]
+[sg7smoke] control_s27_step15420: ok=True f_rel7=0.0e+00 f_p=0.0e+00 h_post-pre=2.69e-05 pred_loss=0.599 baseline=0.586 g_inel=168 x8sd=7.28 failed=[]
+[sg7smoke] 3/3 states ok -> logs/sgbb7/integrity_smoke_launch.jsonl

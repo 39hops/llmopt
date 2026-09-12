@@ -1,0 +1,204 @@
+=== integrity smoke on the launch commit b067aa89 2026-09-11T18:35:48Z ===
+[curric] D2 excision: 165028 -> 164896 rows
+[sg7smoke] w0_seed11: ok=True f_rel7=0.0e+00 f_p=0.0e+00 h_post-pre=2.27e-05 pred_loss=157.076 baseline=157.029 g_inel=168 x8sd=1.02 failed=[]
+[sg7smoke] control_s27_step463: ok=True f_rel7=0.0e+00 f_p=0.0e+00 h_post-pre=5.94e-05 pred_loss=21.606 baseline=21.589 g_inel=168 x8sd=1.73 failed=[]
+[sg7smoke] control_s27_step15420: ok=True f_rel7=0.0e+00 f_p=0.0e+00 h_post-pre=2.69e-05 pred_loss=0.599 baseline=0.586 g_inel=168 x8sd=7.28 failed=[]
+[sg7smoke] 3/3 states ok -> logs/sgbb7/integrity_smoke_launch.jsonl
+=== control seed 28 2026-09-11T18:36:27Z ===
+[curric] D2 excision: 165028 -> 164896 rows
+[sg] mode=zero k_bp=4 seed=28 cell=sgb7_control_s28_lr0.0003: stock 164490 seq
+[curric] D2 excision: 165028 -> 164896 rows
+164896 rows; charset 42; uncovered chars: [':', 'C', 'H', 'I', 'S', '_', 'a', 'b', 'c', 'e']
+skipped 388 out-of-language rows (strict encode; historically silently mangled)
+164490 sequences, vocab 40
+model: 18.9M params on mps [fast: bf16 + token-budget]
+[curric] NO-OP PASS: 100 tuples + epoch length 5140 match the trainer path
+[sg] stream digests verified stock e0..e2
+[sg] frozen backbone: 29 frozen tensors, 30 trainable
+[sg] steps_total 15420 (5140/epoch) peak lr 0.0003
+[sg] ep0: 5140 batches
+  step 200/15420 loss 1.064 (7.8 it/s)
+  step 400/15420 loss 0.818 (8.1 it/s)
+  step 600/15420 loss 0.705 (8.1 it/s)
+  step 800/15420 loss 1.041 (8.2 it/s)
+  step 1000/15420 loss 0.297 (8.4 it/s)
+  step 1200/15420 loss 0.541 (8.4 it/s)
+  step 1400/15420 loss 0.453 (8.5 it/s)
+  step 1600/15420 loss 0.486 (8.4 it/s)
+  step 1800/15420 loss 0.831 (8.4 it/s)
+  step 2000/15420 loss 0.741 (8.4 it/s)
+  step 2200/15420 loss 0.379 (8.4 it/s)
+  step 2400/15420 loss 0.456 (8.4 it/s)
+  step 2600/15420 loss 0.654 (8.4 it/s)
+  step 2800/15420 loss 0.237 (8.4 it/s)
+  step 3000/15420 loss 0.589 (8.4 it/s)
+  step 3200/15420 loss 0.606 (8.4 it/s)
+  step 3400/15420 loss 0.568 (8.4 it/s)
+  step 3600/15420 loss 0.376 (8.4 it/s)
+  step 3800/15420 loss 0.409 (8.4 it/s)
+  step 4000/15420 loss 0.471 (8.4 it/s)
+  step 4200/15420 loss 0.252 (8.4 it/s)
+  step 4400/15420 loss 0.510 (8.4 it/s)
+  step 4600/15420 loss 0.276 (8.4 it/s)
+  step 4800/15420 loss 0.607 (8.4 it/s)
+  step 5000/15420 loss 0.444 (8.4 it/s)
+[sg] ep1: 5140 batches
+  step 5200/15420 loss 0.386 (8.4 it/s)
+  step 5400/15420 loss 0.373 (8.4 it/s)
+  step 5600/15420 loss 0.381 (8.4 it/s)
+  step 5800/15420 loss 0.311 (8.4 it/s)
+  step 6000/15420 loss 0.369 (8.4 it/s)
+  step 6200/15420 loss 0.319 (8.4 it/s)
+  step 6400/15420 loss 0.347 (8.4 it/s)
+  step 6600/15420 loss 0.738 (8.4 it/s)
+  step 6800/15420 loss 0.379 (8.4 it/s)
+  step 7000/15420 loss 0.696 (8.4 it/s)
+  step 7200/15420 loss 0.357 (8.4 it/s)
+  step 7400/15420 loss 0.593 (8.4 it/s)
+  step 7600/15420 loss 0.397 (8.4 it/s)
+  step 7800/15420 loss 0.334 (8.4 it/s)
+  step 8000/15420 loss 0.347 (8.5 it/s)
+  step 8200/15420 loss 0.425 (8.5 it/s)
+  step 8400/15420 loss 0.442 (8.5 it/s)
+  step 8600/15420 loss 0.374 (8.5 it/s)
+  step 8800/15420 loss 0.346 (8.5 it/s)
+  step 9000/15420 loss 0.264 (8.5 it/s)
+  step 9200/15420 loss 0.340 (8.5 it/s)
+  step 9400/15420 loss 0.632 (8.5 it/s)
+  step 9600/15420 loss 0.349 (8.5 it/s)
+  step 9800/15420 loss 0.285 (8.5 it/s)
+  step 10000/15420 loss 0.393 (8.5 it/s)
+  step 10200/15420 loss 0.396 (8.5 it/s)
+[sg] ep2: 5140 batches
+  step 10400/15420 loss 0.278 (8.5 it/s)
+  step 10600/15420 loss 0.353 (8.5 it/s)
+  step 10800/15420 loss 0.439 (8.5 it/s)
+  step 11000/15420 loss 0.362 (8.5 it/s)
+  step 11200/15420 loss 0.303 (8.5 it/s)
+  step 11400/15420 loss 0.350 (8.5 it/s)
+  step 11600/15420 loss 0.341 (8.5 it/s)
+  step 11800/15420 loss 0.422 (8.5 it/s)
+  step 12000/15420 loss 0.366 (8.5 it/s)
+  step 12200/15420 loss 0.366 (8.5 it/s)
+  step 12400/15420 loss 0.563 (8.5 it/s)
+  step 12600/15420 loss 0.224 (8.5 it/s)
+  step 12800/15420 loss 0.295 (8.5 it/s)
+  step 13000/15420 loss 0.355 (8.5 it/s)
+  step 13200/15420 loss 0.350 (8.5 it/s)
+  step 13400/15420 loss 0.317 (8.5 it/s)
+  step 13600/15420 loss 0.382 (8.5 it/s)
+  step 13800/15420 loss 0.784 (8.5 it/s)
+  step 14000/15420 loss 0.378 (8.5 it/s)
+  step 14200/15420 loss 0.335 (8.5 it/s)
+  step 14400/15420 loss 0.241 (8.5 it/s)
+  step 14600/15420 loss 0.355 (8.5 it/s)
+  step 14800/15420 loss 0.422 (8.5 it/s)
+  step 15000/15420 loss 0.337 (8.5 it/s)
+  step 15200/15420 loss 0.717 (8.5 it/s)
+  step 15400/15420 loss 0.507 (8.5 it/s)
+[sg] freeze law verified: 29 tensors bit-identical to W_0
+[sg] saved checkpoints/sgbb7/sgb7_control_s28_lr0.0003/final.pt after 15420 steps (1806s)
+[sg] receipt appended to logs/sgbb7/qual.jsonl (final state_digest 5600b094df53a469)
+[gate] weights sha 4526c3348bb6e470
+[sgb7] sgb7_control_s28_lr0.0003: gate 64 valid 58.05
+[sgb7] law: {"c": 64, "control_adequate": true, "verdict": null, "stop": false, "next": "sg7", "cell": null}
+=== sg7 cell seed 28 2026-09-11T19:08:53Z ===
+[curric] D2 excision: 165028 -> 164896 rows
+[sg] mode=sg7 k_bp=4 seed=28 cell=sgb7_sg7_local_plr0.001_s28_lr0.0003: stock 164490 seq
+[curric] D2 excision: 165028 -> 164896 rows
+164896 rows; charset 42; uncovered chars: [':', 'C', 'H', 'I', 'S', '_', 'a', 'b', 'c', 'e']
+skipped 388 out-of-language rows (strict encode; historically silently mangled)
+164490 sequences, vocab 40
+model: 18.9M params on mps [fast: bf16 + token-budget]
+[curric] NO-OP PASS: 100 tuples + epoch length 5140 match the trainer path
+[sg] stream digests verified stock e0..e2
+[sg] frozen backbone: 29 frozen tensors, 30 trainable
+[curric] D2 excision: 165028 -> 164896 rows
+[sg] predictor local block 7 (500736 params) plr 0.001 seed 1028; constant s_7 2.4406e-06 (audit sha 1d310c41afd2); input stats x8 sd median 1.027 over 6740 tokens
+[sg] steps_total 15420 (5140/epoch) peak lr 0.0003
+[sg] ep0: 5140 batches
+  step 200/15420 loss 1.214 (4.7 it/s) pred_mse 7.871 (baseline 9.154) align b7:0.532
+  step 400/15420 loss 1.279 (4.6 it/s) pred_mse 0.526 (baseline 0.634) align b7:0.414
+  step 600/15420 loss 0.985 (4.6 it/s) pred_mse 0.079 (baseline 0.097) align b7:0.474
+  step 800/15420 loss 1.463 (4.6 it/s) pred_mse 0.069 (baseline 0.131) align b7:0.711
+  step 1000/15420 loss 0.836 (4.7 it/s) pred_mse 0.006 (baseline 0.010) align b7:0.636
+  step 1200/15420 loss 0.933 (4.7 it/s) pred_mse 0.004 (baseline 0.004) align b7:0.339
+  step 1400/15420 loss 0.788 (4.8 it/s) pred_mse 0.004 (baseline 0.005) align b7:0.565
+  step 1600/15420 loss 0.979 (4.7 it/s) pred_mse 0.005 (baseline 0.007) align b7:0.556
+  step 1800/15420 loss 1.188 (4.7 it/s) pred_mse 0.001 (baseline 0.001) align b7:0.317
+  step 2000/15420 loss 0.887 (4.8 it/s) pred_mse 0.002 (baseline 0.004) align b7:0.596
+  step 2200/15420 loss 0.666 (4.8 it/s) pred_mse 0.002 (baseline 0.003) align b7:0.609
+  step 2400/15420 loss 0.793 (4.7 it/s) pred_mse 0.004 (baseline 0.004) align b7:0.491
+  step 2600/15420 loss 0.894 (4.7 it/s) pred_mse 0.001 (baseline 0.001) align b7:0.421
+  step 2800/15420 loss 0.630 (4.5 it/s) pred_mse 0.001 (baseline 0.000) align b7:0.236
+  step 3000/15420 loss 1.000 (4.5 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.183
+  step 3200/15420 loss 0.781 (4.3 it/s) pred_mse 0.001 (baseline 0.000) align b7:0.278
+  step 3400/15420 loss 1.176 (4.2 it/s) pred_mse 0.001 (baseline 0.001) align b7:0.406
+  step 3600/15420 loss 0.633 (4.3 it/s) pred_mse 0.001 (baseline 0.002) align b7:0.626
+  step 3800/15420 loss 0.627 (4.2 it/s) pred_mse 0.001 (baseline 0.003) align b7:0.774
+  step 4000/15420 loss 0.805 (4.1 it/s) pred_mse 0.001 (baseline 0.002) align b7:0.523
+  step 4200/15420 loss 0.460 (4.1 it/s) pred_mse 0.001 (baseline 0.001) align b7:0.475
+  step 4400/15420 loss 0.847 (4.1 it/s) pred_mse 0.001 (baseline 0.002) align b7:0.568
+  step 4600/15420 loss 0.590 (4.2 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.291
+  step 4800/15420 loss 0.751 (4.2 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.544
+  step 5000/15420 loss 0.874 (4.2 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.135
+[sg] ep1: 5140 batches
+  step 5200/15420 loss 0.515 (4.2 it/s) pred_mse 0.000 (baseline 0.001) align b7:0.547
+  step 5400/15420 loss 0.478 (4.2 it/s) pred_mse 0.000 (baseline 0.001) align b7:0.482
+  step 5600/15420 loss 0.655 (4.1 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.227
+  step 5800/15420 loss 0.450 (4.1 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.417
+  step 6000/15420 loss 0.519 (4.1 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.435
+  step 6200/15420 loss 0.409 (4.0 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.483
+  step 6400/15420 loss 0.662 (4.1 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.294
+  step 6600/15420 loss 0.871 (4.0 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.327
+  step 6800/15420 loss 0.481 (4.0 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.494
+  step 7000/15420 loss 0.830 (4.0 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.435
+  step 7200/15420 loss 0.458 (3.9 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.404
+  step 7400/15420 loss 0.712 (3.8 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.244
+  step 7600/15420 loss 0.619 (3.7 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.359
+  step 7800/15420 loss 0.388 (3.7 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.555
+  step 8000/15420 loss 0.472 (3.8 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.288
+  step 8200/15420 loss 0.456 (3.8 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.366
+  step 8400/15420 loss 0.556 (3.8 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.390
+  step 8600/15420 loss 0.485 (3.8 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.390
+  step 8800/15420 loss 0.428 (3.7 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.558
+  step 9000/15420 loss 0.423 (3.7 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.226
+  step 9200/15420 loss 0.423 (3.7 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.304
+  step 9400/15420 loss 0.838 (3.7 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.481
+  step 9600/15420 loss 0.387 (3.7 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.516
+  step 9800/15420 loss 0.450 (3.7 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.274
+  step 10000/15420 loss 0.459 (3.7 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.342
+  step 10200/15420 loss 0.433 (3.7 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.555
+[sg] ep2: 5140 batches
+  step 10400/15420 loss 0.368 (3.7 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.243
+  step 10600/15420 loss 0.390 (3.6 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.510
+  step 10800/15420 loss 0.447 (3.6 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.697
+  step 11000/15420 loss 0.398 (3.7 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.450
+  step 11200/15420 loss 0.597 (3.7 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.065
+  step 11400/15420 loss 0.427 (3.7 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.393
+  step 11600/15420 loss 0.403 (3.7 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.411
+  step 11800/15420 loss 0.428 (3.6 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.547
+  step 12000/15420 loss 0.407 (3.6 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.293
+  step 12200/15420 loss 0.399 (3.6 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.516
+  step 12400/15420 loss 0.675 (3.5 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.347
+  step 12600/15420 loss 0.242 (3.5 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.339
+  step 12800/15420 loss 0.377 (3.5 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.483
+  step 13000/15420 loss 0.400 (3.5 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.545
+  step 13200/15420 loss 0.397 (3.5 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.570
+  step 13400/15420 loss 0.395 (3.4 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.490
+  step 13600/15420 loss 0.397 (3.5 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.644
+  step 13800/15420 loss 0.955 (3.5 it/s) pred_mse 0.001 (baseline 0.002) align b7:0.483
+  step 14000/15420 loss 0.416 (3.5 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.627
+  step 14200/15420 loss 0.392 (3.5 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.589
+  step 14400/15420 loss 0.282 (3.5 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.579
+  step 14600/15420 loss 0.403 (3.5 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.606
+  step 14800/15420 loss 0.452 (3.5 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.648
+  step 15000/15420 loss 0.421 (3.5 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.627
+  step 15200/15420 loss 0.837 (3.5 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.612
+  step 15400/15420 loss 0.583 (3.5 it/s) pred_mse 0.000 (baseline 0.000) align b7:0.653
+[sg] freeze law verified: 29 tensors bit-identical to W_0
+[sg] saved checkpoints/sgbb7/sgb7_sg7_local_plr0.001_s28_lr0.0003/final.pt after 15420 steps (4345s)
+[sg] receipt appended to logs/sgbb7/qual.jsonl (final state_digest 3863c5885cb83b9f)
+[gate] weights sha 6c3aaeb5a42c1fef
+[sgb7] sgb7_sg7_local_plr0.001_s28_lr0.0003: gate 37 valid 35.62
+[sgb7] law: {"c": 64, "control_adequate": true, "verdict": "SG7-MISS", "stop": true, "next": null, "cell": {"finite": true, "gate": 37, "stable": true, "floor": true, "function_match": false, "delta_v_control": -27}}

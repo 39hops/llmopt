@@ -71951,3 +71951,106 @@ Nothing scientific changes: arena, seed 28, recipe (LOCAL predictor,
 PLR 1e-3, W_0 statistics, no clip), law (floor 24, band 7, one cell),
 priors and consequences stand as sealed. No seed-28 birth is
 authorized by this amendment.
+
+## VERDICT SG-BOUNDARY-BLOCK7-1: SG7-MISS — at seed 28 over the frozen-random-backbone arena the paired frozen-BP CONTROL gates 64 / 120 (ADEQUATE; band 57 to 71) and the one sealed SG7 cell (blocks 4..6 exact BP through the true block-7 Jacobian, block 7 credited only by the LOCAL predictor's hat_delta_7) gates 37 / 120, finite, delta -27, outside the band; SG credit-writer births CLOSE completely as sealed (no larger, delayed, bootstrapped, bidirectional or downstream-weight-conditioned repair follows); descriptively the SG7 cell reaches final CE 0.399 against the control's 0.384 while its predictor beats the zero predictor at 64 of the 87 logged steps from 1,028 on (final MSE ratio 0.58, final cos(hat_delta_7, delta^BP_7) 0.68) and the block-7 target scale falls 2.6e5-fold from step 1 to the final; prior 4 hits 2 misses (2026-09-11 local, Mac; liverun sgbb7q at b067aa89; one seed, one device; no writer-invariance or causal-efficacy claim; no birth follows)
+
+**What ran** (scratch/sgbb7_qual_driver.sh under liverun sgbb7q at
+b067aa89, armed 18:35 UTC, disarmed rc 0 at 20:24 UTC; clean tree at
+launch, at both receipt writes and at both gates; HEAD == launch commit
+asserted at every birth receipt write and by the gate; the driver
+refuses a dirty tree). Launch integrity smoke first:
+logs/sgbb7/integrity_smoke_launch.jsonl, 3 / 3 states ok (forced-delta
+endpoint block-7 relative difference 0.0, parameter difference 0.0; no
+CE leak; exact BP to blocks 4..6 / norm / head). Then the CONTROL
+(MODE=zero K_BP=4, seed 28), its gate, the SG7 cell (MODE=sg7, seed 28,
+the one frozen recipe), its gate, the law. Pair integrity asserted:
+same W_0 (init digest 02b46bd8df63...), same three stream digests,
+15,420 steps, 29 frozen tensors bit-identical to W_0 on both exits.
+
+**Gates** (llmopt.lab.gate.gate_eval, the standard 120, mps).
+- CONTROL sgb7_control_s28_lr0.0003: 64 = {3: 23, 4: 7, 5: 16, 6: 7,
+  7: 11}, valid 58.05 %, gate weights sha 4526c3348bb6e470 (final state
+  digest 5600b094df53...), gate wall 70.5 s. CONTROL-ADEQUATE (64 >=
+  24). Band 57 to 71. Birth: final CE 0.3844, training wall 1,806 s
+  (8.5 it/s).
+- SG7 sgb7_sg7_local_plr0.001_s28_lr0.0003: 37 = {3: 11, 4: 1, 5: 11,
+  6: 5, 7: 9}, valid 35.62 %, gate weights sha 6c3aaeb5a42c1fef (final
+  state digest 3863c5885cb8...), gate wall 72.7 s. Birth: finite, final
+  CE 0.3985, training wall 4,345 s (3.5 it/s), 500,736 predictor
+  parameters, predictor seed 1028, s_7 2.441e-6. delta v control -27.
+  Bar as sealed: FUNCTION-MATCH iff finite and c - 7 <= g_SG7 <= c + 7
+  (inclusive): 57 <= 37 is false. Law (logs/sgbb7/selection.json):
+  SG7-MISS.
+
+**Consequence (sealed).** SG credit-writer births CLOSE completely. No
+larger, delayed, bootstrapped, bidirectional or downstream-weight-
+conditioned SG repair follows. The block-7 boundary writer at this
+arena, recipe and seed does not qualify.
+
+**Descriptive readouts (SG7 cell, per-200-step log; no bar, no
+mechanism claim).**
+1. CE: 3.925 at step 1, 1.214 / 1.357 / 0.967 at steps 200 / 463 /
+   1,028, 0.656 at 3,084, 0.520 at 5,140, 0.394 at 7,196, 0.734 at
+   10,280 (a late excursion), 0.626 at 12,336, 0.398 at the final,
+   against the control's 0.384: the SG7 cell ends within 0.015 nats of
+   the control on the training stream yet gates 27 solves below it.
+   Per level the deficit is -12 / -6 / -5 / -2 / -2 (levels 3 to 7):
+   level 3 carries the largest (11 v 23), then level 4 (1 v 7, the
+   cell's weakest absolute count) and level 5 (11 v 16).
+2. Predictor: MSE v zero baseline 7.87 v 9.15 at step 200, 1.63e-2 v
+   3.81e-2 at 1,028, 1.65e-3 v 3.77e-3 at 3,084, 2.07e-4 v 3.10e-4 at
+   7,196, 9.38e-5 v 1.61e-4 at the final (ratio 0.58); below the
+   baseline at 64 of the 87 logged steps from 1,028 on (ratio range
+   0.41 to 4.39; among the 17 snapshot steps it is above the baseline
+   at six: 463 (1.04), 2,056 (1.13), 4,112 (3.65), 8,224 (1.14), 9,252
+   (1.39), 11,308 (1.14)). cos(hat_delta_7, delta^BP_7) 0.53 at step 200, 0.07 to 0.78
+   over the logged steps from 1,028 on, 0.68 at the final. The LOCAL
+   predictor tracks block 7's error far better than the SG-1
+   predictors tracked blocks 4..7 (seed 27, SG-1's recipe over four
+   blocks: never below 0.96 of the baseline, |cos| <= 0.23; a different
+   seed and credit law, quoted for scale only), as the desk's block-7
+   exception predicted, and the cell still misses by 27 solves.
+3. Target scale: the zero baseline (mean of (delta^BP_7 / s_7)^2 over
+   eligible positions) falls from 41.1 at step 1 to 4.1e-2 at 463,
+   3.8e-2 at 1,028, 3.5e-4 at 5,140 and 1.6e-4 at the final (2.6e5-fold);
+   the sealed constant s_7 was measured on the FB-1 states and is fixed
+   by design, so the applied credit shrinks with the target. Whether
+   this shrinkage, the credit's 0.07 to 0.78 alignment, or the gate's
+   sensitivity to block 7 alone accounts for the 27-solve deficit is
+   the LOCAL-mechanism question this rung does not answer and no
+   longer licenses.
+4. Input statistics at W_0 (seed 28, 6,740 FIT tokens): x_8 sd median
+   1.027, max 1.669, no feature at the sd floor.
+
+**Registered prior: 4 hits 2 misses.** (1) CONTROL-ADEQUATE (p 0.95):
+HIT (64). (2) SG7 finite (p 0.9): HIT. (3) FUNCTION-MATCH (p 0.5):
+MISS (37, band 57 to 71). (4) g_SG7 >= 24 (p 0.7): HIT (37). (5)
+predictor MSE below the baseline at every logged step >= 1,028 (p 0.7):
+MISS (64 of 87). (6) final cos >= 0.5 (p 0.5): HIT (0.68). Family
+track record (19 / 17 after SG-CROSSPOS plus these): 23 hits 19
+misses.
+
+**Fences.** One seed (28), one device (mps fp32, run-level
+nondeterministic at fixed seed: the paired arms share the substrate
+noise; no cross-run bit-exact claim); the standard 120 gate on mps; the
+band c +- 7 is the registered single-seed qualification law, and a 27-
+solve deficit is well outside the resolution law's 1.5-sigma fence
+(about 7 solves); the SG7 arm's blocks 4..6 / norm / head gradients
+equal the control's by construction, so the gate difference is
+attributable to the block-7 credit alone in the sense that block 7 is
+the only trained tensor whose update law differs; this is not a
+mechanism claim and does not say the credit is causally effective or
+ineffective (the dead-writer disclosure of AMENDMENT -AUDIT stands:
+no zero-credit reference arm was registered). Nothing here revises
+L70832, L71182 or L71557. No SG birth of any kind follows.
+
+**Receipts** (locked with this entry): logs/sgbb7/qual.jsonl,
+logs/sgbb7/ladder.json, logs/sgbb7/selection.json, logs/sgbb7/gate.log,
+logs/sgbb7/train_control.log, logs/sgbb7/train_sg7.log,
+logs/sgbb7/integrity_smoke_launch.log,
+logs/sgbb7/integrity_smoke_launch.jsonl, logs/sgbb7/driver.log,
+logs/liverun/sgbb7q.jsonl (logs/sgbb7/launch.out is the launcher's
+duplicate of the same stdout, uncited). Checkpoints: checkpoints/sgbb7 (2.6 GB,
+two cells x 17 snapshots + finals + predictor snapshots) retained;
+checkpoints/sgbb7_smoke (439 MB) prunable after a digest inventory
+(Artin GO).

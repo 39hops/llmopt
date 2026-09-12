@@ -1,0 +1,6 @@
+[gate] weights sha 4526c3348bb6e470
+[sgb7] sgb7_control_s28_lr0.0003: gate 64 valid 58.05
+[sgb7] law: {"c": 64, "control_adequate": true, "verdict": null, "stop": false, "next": "sg7", "cell": null}
+[gate] weights sha 6c3aaeb5a42c1fef
+[sgb7] sgb7_sg7_local_plr0.001_s28_lr0.0003: gate 37 valid 35.62
+[sgb7] law: {"c": 64, "control_adequate": true, "verdict": "SG7-MISS", "stop": true, "next": null, "cell": {"finite": true, "gate": 37, "stable": true, "floor": true, "function_match": false, "delta_v_control": -27}}
