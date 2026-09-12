@@ -72281,3 +72281,105 @@ Tests 4 / 4. Nothing scientific changes: states, batches, K, seeds,
 eps, families, budgets, the FD precondition, BAR-SIGNAL at m = 4 with
 R_LICENSE 0.1 and the verdict law stand as sealed. No birth is
 authorized by this amendment.
+
+## VERDICT MEZO-SIGNAL-DESK-0: PARK — on the healthy frozen-random-backbone control states (seeds 27 and 28, steps 463 to 15,420, two fixed batches, 16 cells) the antithetic zeroth-order estimator is FAITHFUL (vanilla, eps 1e-3, fp32: sign agreement 0.995 and median relative error 2.4e-3 over 1,024 directions) and carries exactly the isotropic signal theory predicts and no more: the ideal-estimator cosine to the BP gradient is 5.8e-4 at m = 4 (0.90 of sqrt(4 / 9.456e6)) rising to 2.6e-3 at m = 64 (1.00 of the reference), the actual (finite-difference) estimator is indistinguishable from the ideal one, and the rank-1 structured family is indistinguishable from vanilla (cosine ratio 0.95 to 1.02 at every m; 19x below its nominal reference); the registered line-optimal descent ratio of the actual estimator at the largest practical budget m = 4 is 1.65e-2 (vanilla) and 1.58e-2 (rank1), pooled medians over 64 virtual steps, six times below R_LICENSE 0.1: BAR-SIGNAL NO-FIRE for both families, the foreign-writer program PARKS as sealed (no MeZO or STRUCTURED-ZO design banked; target / equilibrium propagation and ROME do not follow); fence: every vanilla and 63 of 64 rank-1 m = 4 zeroth-order line searches chose the grid maximum eta = 3 with the descent still near-linear in eta (D(3) / D(1) median 2.7), so the registered grid caps the zeroth-order side of the ratio; prior 7 hits 2 misses (2026-09-12 local, Mac; liverun mezo0 at 000c9583, 34 min, zero training; two seeds, one device, fixed batches; no birth follows)
+
+**What ran** (scratch/mezo_signal_desk.py under liverun mezo0 at
+000c9583, armed 03:39 UTC, disarmed rc 0 at 04:14 UTC, tree clean;
+threads pinned to 5; 1,193 loss evaluations in each of the 16 cells,
+19,088 in all; every state digest asserted). States: the seed-27 control
+(checkpoints/sgwriter1) and the seed-28 control (checkpoints/sgbb7) at
+steps 463, 3,084, 5,140, 15,420; batches: probe chunks 2 and 4. Base
+loss 0.32 to 0.84 across the cells; BP gradient norm 0.29 to 0.77.
+
+**Precondition FD-FAITHFUL: MET.** Vanilla at eps 1e-3, pooled over
+16 x 64 directions: sign agreement 0.9951, median relative error
+2.37e-3 (bar 0.95 / 0.10). By eps (vanilla / rank1): 1e-4 sign 1.000 /
+1.000, relative error 6.3e-4 / 6.6e-4; 1e-3 0.995 / 0.999, 2.4e-3 /
+2.7e-3; 1e-2 0.929 / 0.910, 0.19 / 0.23 (curvature). fp64 reference
+on the first 8 directions: relative error 5e-4 to 7.9e-3 per cell
+(both families), the
+fp32 and fp64 gradients agreeing to 5e-6 or better; the residual at 1e-3 is the
+antithetic truncation term, not rounding.
+
+**BAR-SIGNAL: NO-FIRE, both families.** Pooled median descent ratio R
+of the ACTUAL estimator at m = 4 (64 virtual steps: 16 cells x 4
+direction groups): vanilla 1.65e-2, rank1 1.58e-2 (bar >= 0.1). Per
+state the vanilla median runs 1.15e-2 (step 3,084) to 2.15e-2 (step
+463) with the seed-27 / seed-28 ratio 0.84 to 1.02 at every step; per
+virtual step the range is 3.5e-3 to 4.2e-2 (vanilla), 6.1e-4 to 5.0e-2
+(rank1). At m = 1 / 2: vanilla 3.0e-3 / 8.3e-3, rank1 8.2e-3 / 9.8e-3.
+Every virtual step descended (fraction 1.00; rank1 ideal m = 1: 0.98).
+Ideal and actual ratios agree to better than 0.2 %. Verdict (adjudicate):
+PARK.
+
+**Readouts (descriptive).**
+1. Intrinsic variance follows the isotropic law. Vanilla ideal cosine,
+   pooled medians, v sqrt(m / d): m = 1 2.19e-4 v 3.25e-4 (0.67x), 2
+   3.75e-4 (0.82x), 4 5.82e-4 (0.90x), 8 8.75e-4 (0.95x), 16 1.25e-3
+   (0.96x), 32 1.78e-3 (0.97x), 64 2.61e-3 (1.00x). The shortfall at
+   small m is the median of a skewed distribution (per-group m = 4
+   cosines run 1.1e-4 to 1.2e-3), not a deficit of signal.
+2. Finite differencing costs nothing at eps 1e-3: actual cosines equal
+   the ideal ones to two digits at every m (5.83e-4 v 5.82e-4 at m = 4),
+   and actual R equals ideal R.
+3. The rank-1 structured family buys nothing: its ideal cosine is 0.95x
+   to 1.02x vanilla's at every m (5.64e-4 at m = 4) although its
+   effective dimension is 262x smaller (nominal reference 1.05e-2 at
+   m = 4, 19x above the reading). A rank-1 sign perturbation of a
+   weight matrix is not better aligned with its gradient than an iid
+   one on these states; STRUCTURED-ZO in this form is not a candidate.
+4. The descent ratio is grid-capped on the zeroth-order side: in 64 of
+   64 vanilla (63 of 64 rank1) m = 4 virtual steps the best eta was the
+   registered maximum 3, with D(3) / D(1) median 2.7 (vanilla range
+   2.1 to 2.9; rank1 median 2.7, one step at 0.33): the loss is still nearly linear along the estimated direction
+   at the grid's edge. The BP direction is curvature-limited (best eta
+   0.1 or 0.3; at eta = 3 the BP step raises the loss by 0.9 to 6.5).
+   R is therefore a lower bound of the line-optimal ratio; reaching
+   0.1 by extrapolating the near-linear descent would need a unit-
+   direction step of order 20 (untested, unregistered; a birth uses a
+   fixed lr, not a line search, and the sealed law already favours the
+   zeroth-order side).
+5. Even at the descriptive budget m = 64 (128 loss evaluations per
+   step) the cosine is 2.6e-3, and R was not computed there by design
+   (nothing above m = 4 can license).
+
+**Consequence (sealed).** PARK: the foreign-writer program parks.
+Vanilla MeZO / SPSA and the rank-1 structured family do not carry
+enough directional signal per query at practical budgets under the
+registered threshold on this arena's healthy states; no MeZO or
+STRUCTURED-ZO qualification design is banked; target / equilibrium
+propagation and ROME do not follow automatically.
+
+**Registered prior: 7 hits 2 misses.** (1) FD-FAITHFUL at 1e-3 (p 0.8):
+HIT. (2) vanilla ideal cosine at m = 4 within 2x of 6.5e-4 (p 0.8): HIT
+(5.82e-4). (3a) vanilla actual R at m = 4 below 1e-2 (p 0.95): MISS
+(1.65e-2). (3b) vanilla NO-FIRE (p 0.97): HIT. (4a) rank1 ideal cosine
+at m = 4 at least 3x vanilla's (p 0.4): MISS (0.97x). (4b) rank1 R at
+m = 4 >= 0.1 (p 0.1): did not occur, HIT. (5a) PARK (p 0.85): HIT.
+(5b) NOT-RESOLVABLE-FD (p 0.1): did not occur, HIT. (6) sign agreement
+at 1e-2 below that at 1e-3 (p 0.6): HIT (0.929 v 0.995). Family track
+record (23 / 19 after SG-BOUNDARY-BLOCK7-1): 30 hits 21 misses.
+
+**Fences.** Two seeds of one arena (four within-trajectory snapshots
+each), one device (Mac CPU fp32, threads pinned to 5, deterministic;
+no cross-run bit-exact claim), two fixed probe batches (a fixed-batch
+loss surface, not the stream); the same 64 directions in every cell (a
+paired design: 4 direction groups x 16 cells behind the bar, not 64
+independent draws); the exact gradient is a diagnostic oracle and
+feeds no estimator; the descent ratio is line-optimal on both sides,
+grid-capped on the zeroth-order side (readout 4), and favours the
+zeroth-order step against a fixed-lr birth; R_LICENSE 0.1 is the
+registered judgement threshold, not a calibrated one; the rank-1
+family is the one structured family registered (other structures are
+untested and unlicensed). Nothing here trains, scores a gate, revises
+L71955, or authorizes a birth.
+
+**Receipts** (locked with this entry): logs/mezo0/desk.json,
+logs/mezo0/desk.jsonl, logs/mezo0/desk.log, logs/mezo0/mezo0.DONE,
+logs/liverun/mezo0.jsonl; the smokes logs/mezo0/smoke.jsonl (pre-fold,
+dirty tree, superseded) and logs/mezo0/smoke_seal.jsonl (49a4de8d) were
+locked with the pre-reg and its audit. Disclosure: the run's instrument
+sha (1c7c157d..., at 000c9583) differs from the sealed-smoke sha
+(c1867ce0..., 49a4de8d) by the two-line receipt-path guard folded after
+the second audit pass; the measurement path is byte-identical.

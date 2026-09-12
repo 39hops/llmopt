@@ -1,5 +1,9 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
+ "_last_accept": {
+  "paths": [],
+  "reason": "VERDICT MEZO-SIGNAL-DESK-0: desk receipts + DONE + liverun"
+ },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
    "bytes": 3176,
@@ -1122,8 +1126,11 @@
    "tracked": true
   },
   "logs/liverun/mezo0.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 512,
+   "exists": true,
+   "sha256": "4cf0b656789338f1292fa0aa3c305ee0cf6a12521aa7552d9f008cbe2dcd15bc",
+   "source": "results",
+   "tracked": true
   },
   "logs/liverun/sgaudit0.jsonl": {
    "bytes": 518,
@@ -2837,20 +2844,32 @@
    "source": "results"
   },
   "logs/mezo0/desk.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 949485,
+   "exists": true,
+   "sha256": "1e77ce02b83725e3ebcdc83bd59e329acdcffbeeb503507830596d608785ff3c",
+   "source": "results",
+   "tracked": true
   },
   "logs/mezo0/desk.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 5502,
+   "exists": true,
+   "sha256": "e99fc27a84961e20efadcf4ac2bbe092837ac9ad0fb818d25af1aec169e69b8b",
+   "source": "results",
+   "tracked": true
   },
   "logs/mezo0/desk.log": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 7260,
+   "exists": true,
+   "sha256": "e80fbb51674511f335b6e7a96c708085f4453f79946885fcdde8133916d13b48",
+   "source": "results",
+   "tracked": true
   },
   "logs/mezo0/mezo0.DONE": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 5,
+   "exists": true,
+   "sha256": "8221ac66be71558c921fb44cfb66f7997699aea754d917763882d6d9eddc836e",
+   "source": "results",
+   "tracked": true
   },
   "logs/mezo0/smoke.jsonl": {
    "bytes": 9211,

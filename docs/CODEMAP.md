@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 241, library 84, reproduce-pinned 10, results-cited 455, spec-cited 91, cited-but-library 72
+Census: UNCITED 240, library 84, reproduce-pinned 10, results-cited 456, spec-cited 91, cited-but-library 72
 
 ## scratch/
 
@@ -444,8 +444,8 @@ Census: UNCITED 241, library 84, reproduce-pinned 10, results-cited 455, spec-ci
 | metabolic | metabolic_v5.py | results-cited | RESULTS | RESULTS×1 | — | 2 |
 | metallicity | metallicity_diets.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
 | metallicity1 | metallicity1.sh | results-cited | RESULTS | RESULTS×2 | — | — |
-| mezo | mezo_signal_desk.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
-| mezo0 | mezo0_launch.sh | UNCITED | — | — | — | — |
+| mezo | mezo_signal_desk.py | results-cited | RESULTS | RESULTS×3 | — | 1 |
+| mezo0 | mezo0_launch.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | moe | moe_gt1.py | library | REPRODUCE, RESULTS, specs | REPRODUCE×4, RESULTS×5, specs×4 | 2 | 6 |
 | moe | moe_gt1_arm2.py | library | REPRODUCE, RESULTS, specs | REPRODUCE×6, RESULTS×14, specs×4 | 1 | 15 |
 | morning | morning_run.sh | UNCITED | — | — | — | — |
