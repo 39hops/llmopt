@@ -72205,3 +72205,79 @@ docs/preregs/mezo-signal-desk-0.json.
 **Does not authorize:** any MeZO or STRUCTURED-ZO birth, SG reopening,
 target / equilibrium propagation, ROME, seed-2 discovery, mechanism
 experiments, a third perturbation family, or licensing on any m > 4.
+
+## AMENDMENT MEZO-SIGNAL-DESK-0-AUDIT (target: PRE-REG MEZO-SIGNAL-DESK-0 L72058): clean-tree prereg-auditor folds before the desk runs — the one blocker (the smoke receipt predates the sealed instrument sha) closed by a re-smoke at the folded instrument on a clean tree (logs/mezo0/smoke_seal.jsonl, 49a4de8d: 75 loss evaluations, sign agreement 1.00, median relative error 7.5e-4, vanilla ideal cos 1.95e-4 / 4.48e-4 at m = 1 / 4 v reference 3.25e-4 / 6.50e-4, rank1 2.24e-4 / 4.69e-4 v its nominal 5.3e-3 / 1.05e-2, R about 3.4e-4 / 4.1e-4 at m = 2, verdict PARK on the random W_0, unbooked); threads pinned to 5; the fp64 reference now scores fp64 finite differences against an fp64 gradient (on the smoke: relative error 7.5e-4 in both precisions, fp32 v fp64 gradient 3.3e-7, so the 1e-3 relative error is the antithetic truncation term, not rounding); the eps-wise fidelity pooling registered (by n over all cells x directions, emitted by the law); the paired-directions design disclosed (the same 64 directions in every cell: the pooled bar sees 4 direction groups x 16 cells); R_LICENSE 0.1 stated as a judgement threshold and REFUTED-IF narrowed; prior 4 lowered to p 0.4 before any desk state is read; cost corrected to 1,193 evaluations per cell, 0.8 to 1.6 h; the booked smoke path refuses reruns without SMOKE_TAG; the launcher joins the instrument with its DONE marker under logs/mezo0 and a stale-marker guard; instrument commit f0ac4509; no threshold, budget, family, state, batch or verdict-law change; nothing read from a retained state (2026-09-11 local, Mac; no birth authorized)
+
+Auditor (Opus 5, clean worktree at 332cff47): one blocker, ten
+should-fixes, four notes. Each verified before folding.
+
+BLOCKER B1, smoke provenance: logs/mezo0/smoke.jsonl was written at
+a2926b1e on a dirty tree by a pre-seal version of the instrument
+(source sha 8a60c6f9..., which differed from the sealed file by the
+evaluation counter: the receipt's n_eval 16 v 75 from the sealed
+code). The pre-seal receipt stays as written (locked with the pre-reg,
+its provenance derived and honest); the prose claim "at the sealed
+instrument sha" is withdrawn. The re-smoke logs/mezo0/smoke_seal.jsonl
+(SMOKE_TAG=_seal, commit 49a4de8d, tree clean, source sha
+c1867ce0...) reproduces every quoted number (ideal cos 1.9479e-4 at
+m = 1, reference 3.2520e-4, R 3.4155e-4 at m = 2, sign 1.00, relative
+error 7.46e-4) and now counts 75 evaluations; the priors' smoke basis
+is this receipt.
+
+S2, cost: 1 base + 8 BP-line + 2 families x (384 fp32 FD + 16 fp64 FD
++ 192 virtual) = 1,193 evaluations per cell (the prose said about
+1,180), 19,088 in all; at 0.15 to 0.3 s each about 0.8 to 1.6 h, the
+fp64 legs slower; the prose's "1.5 to 2 h" is withdrawn.
+
+S3, pairing: the perturbation seed carries no cell index, so the same
+64 directions (and the same first 4 groups per m) serve every cell: a
+paired design across states and batches (the same directions scored
+on 8 states x 2 batches), disclosed in the docstring and the json;
+the pooled bar is 4 direction groups x 16 cells, not 64 independent
+draws.
+
+S4, R_LICENSE: 0.1 is a registered judgement threshold; no receipt
+links a one-step line-optimal descent ratio to a multi-step training
+outcome. REFUTED-IF now reads: a NO-FIRE on both families refutes the
+candidate at practical budgets UNDER THIS THRESHOLD on this arena's
+healthy states; it is not a proof about the sealed step budget.
+
+S5, threads: torch.set_num_threads(5) is now called by the instrument
+(receipted; the earlier text claimed a fixed count that only the
+shell environment fixed).
+
+S6, fp64 reference: fidelity_f64_primary now compares fp64 finite
+differences with an fp64 gradient; fidelity_bp32_v_bp64 (fp32 v fp64
+gradient) and fidelity_f32_v_f64_primary (fp32 v fp64 finite
+differences) are emitted beside it. On the smoke the fp64 relative
+error equals the fp32 one (7.5e-4) and the two gradients agree to
+3.3e-7, so the residual is the antithetic truncation term at eps
+1e-3, not rounding.
+
+S7, prior 4: the sealed-sha smoke reads rank1 / vanilla ideal cosine
+1.05x at m = 4 (4.69e-4 v 4.48e-4) on a random W_0, against the
+registered "at least 3x"; the prior is lowered to p 0.4 before any
+desk state is read, and the random-W_0 caveat is stated (the trained
+states may differ).
+
+S8, prior 6: sign agreement per eps is pooled by n over all cells x
+directions, emitted by adjudicate (fd_by_eps) for both families.
+
+S9: the booked smoke path refuses any rerun without SMOKE_TAG.
+
+S10: a test now exercises the by-n pooling over two cells with
+unequal n (11 / 12 v a per-cell mean of 0.75).
+
+S11: scratch/mezo0_launch.sh is in the instrument list; the DONE
+marker lives at logs/mezo0/mezo0.DONE (refused if stale).
+
+Notes adopted: base_loss (from the gradient pass) and base_loss_fwd
+(from the no-grad path) are both receipted and equal on the smoke
+(N1); Pearson is per-cell and not part of the precondition (N2); the
+8 states are 4 snapshots from each of 2 trajectories, so per-state
+spread is within-trajectory (N4).
+
+Tests 4 / 4. Nothing scientific changes: states, batches, K, seeds,
+eps, families, budgets, the FD precondition, BAR-SIGNAL at m = 4 with
+R_LICENSE 0.1 and the verdict law stand as sealed. No birth is
+authorized by this amendment.

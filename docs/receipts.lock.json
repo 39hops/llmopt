@@ -1,5 +1,9 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
+ "_last_accept": {
+  "paths": [],
+  "reason": "AMENDMENT MEZO-SIGNAL-DESK-0-AUDIT: sealed-sha re-smoke receipt"
+ },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
    "bytes": 3176,
@@ -2860,8 +2864,11 @@
    "tracked": true
   },
   "logs/mezo0/smoke_seal.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 9829,
+   "exists": true,
+   "sha256": "e6e5bb491e0a7d29919b40fcfd060be0dc1c375e65bfd20b6e847c4da4824ed7",
+   "source": "results",
+   "tracked": true
   },
   "logs/microstar/microstar_run.log": {
    "exists": false,
