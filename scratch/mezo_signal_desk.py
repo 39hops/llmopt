@@ -287,8 +287,8 @@ def adjudicate(rec):
 
 def main():
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    if OUT.exists() and (not SMOKE or not SMOKE_TAG):
-        raise SystemExit(f"REFUSING: {OUT} exists (a booked smoke receipt is never appended to: rerun with SMOKE_TAG)")
+    if OUT.exists():
+        raise SystemExit(f"REFUSING: {OUT} exists (a booked receipt is never appended to: a smoke rerun takes a NEW SMOKE_TAG)")
     commit = subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip()
     dirty = bool(subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True).stdout.strip())
     if not SMOKE and dirty:
