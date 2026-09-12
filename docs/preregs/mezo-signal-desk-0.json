@@ -53,8 +53,8 @@
  },
  "precision": {
   "primary": "float32 CPU (training dtype)",
-  "reference": "float64 on the first 8 directions at the primary eps",
-  "deterministic": "torch.use_deterministic_algorithms(True); thread count receipted"
+  "reference": "float64 on the first 8 directions at the primary eps: fp64 FD v an fp64 gradient (fidelity_f64_primary), fp32 FD v fp64 FD, fp32 gradient v fp64 gradient",
+  "deterministic": "torch.use_deterministic_algorithms(True); torch.set_num_threads(5) pinned in the instrument; thread count receipted"
  },
  "oracle": "exact BP gradient g of L over theta, one backward per cell; diagnostic only (d_BP, ideal estimators, cosines, the BP virtual step); never an estimator input",
  "perturbations": {
@@ -64,7 +64,8 @@
   "families": {
    "vanilla": "iid Rademacher over all d coordinates (PRIMARY)",
    "rank1": "the ONE secondary structured family: every 2-D tensor gets u v^T (u, v Rademacher; entries +-1; effective dim rows + cols), 1-D tensors Rademacher; d_eff 36,136; a license here is STRUCTURED-ZO, never vanilla MeZO"
-  }
+  },
+  "pairing": "the same K directions (same seeds) in every cell: a paired design across states and batches; the pooled bar sees 4 direction groups x 16 cells, not 64 independent draws"
  },
  "eps": {
   "values": [
@@ -110,7 +111,8 @@
     "only_rank1_fires": "STRUCTURED-ZO-LICENSED (bank a STRUCTURED-ZO design for a separate GO)",
     "neither": "PARK (foreign-writer program parks; TP / EP / ROME do not follow automatically)"
    },
-   "law": "scratch/mezo_signal_desk.adjudicate (tests/test_mezo_signal_desk.py)"
+   "law": "scratch/mezo_signal_desk.adjudicate (tests/test_mezo_signal_desk.py)",
+   "threshold_status": "0.1 is a registered judgement threshold, not a calibrated one: no receipt links a one-step line-optimal descent ratio to a multi-step training outcome"
   }
  ],
  "registered_prior": {
@@ -118,11 +120,11 @@
   "vanilla_ideal_cos_m4_within_2x_of_6.5e-4": "p 0.8",
   "vanilla_actual_R_m4_below_1e-2": "p 0.95",
   "vanilla_no_fire": "p 0.97",
-  "rank1_ideal_cos_m4_ge_3x_vanilla": "p 0.6",
+  "rank1_ideal_cos_m4_ge_3x_vanilla": "p 0.4 (lowered from 0.6 before any desk state is read: the sealed-sha smoke on a random W_0 reads rank1 / vanilla ideal cos 1.05x at m = 4)",
   "rank1_actual_R_m4_ge_0.1": "p 0.1",
   "verdict_park": "p 0.85",
   "not_resolvable_fd": "p 0.1",
-  "sign_agreement_1e-2_below_1e-3": "p 0.6"
+  "sign_agreement_1e-2_below_1e-3": "p 0.6; pooled by n over all cells x directions (adjudication fd_by_eps)"
  },
  "fences": [
   "two seeds (27, 28) of one arena, one device (Mac CPU fp32, deterministic at fixed threads; no cross-run bit-exact claim)",
@@ -132,7 +134,7 @@
   "rank1's isotropic reference is nominal",
   "nothing scores a gate, revises L71955, or authorizes a birth"
  ],
- "cost": "about 1,180 loss evaluations per cell x 16 cells at 0.15 to 0.3 s: about 1.5 to 2 h single-process",
+ "cost": "1,193 loss evaluations per cell (1 base + 8 BP line + 2 families x (384 fp32 FD + 16 fp64 FD + 192 virtual)) x 16 cells = 19,088; about 0.8 to 1.6 h at 0.15 to 0.3 s each, fp64 legs slower; single-process, threads pinned to 5",
  "liverun_ids": [
   "mezo0"
  ],
@@ -141,10 +143,13 @@
   "logs/mezo0/desk.jsonl",
   "logs/mezo0/desk.log",
   "logs/mezo0/smoke.jsonl",
+  "logs/mezo0/smoke_seal.jsonl",
+  "logs/mezo0/mezo0.DONE",
   "logs/liverun/mezo0.jsonl"
  ],
  "instrument": [
   "scratch/mezo_signal_desk.py",
+  "scratch/mezo0_launch.sh",
   "tests/test_mezo_signal_desk.py"
  ],
  "does_not_authorize": [
@@ -156,5 +161,8 @@
   "mechanism experiments",
   "a third perturbation family",
   "licensing on any m > 4"
+ ],
+ "amended_by": [
+  "AMENDMENT MEZO-SIGNAL-DESK-0-AUDIT"
  ]
 }

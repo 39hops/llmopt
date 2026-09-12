@@ -15,7 +15,10 @@ reference for finite-difference fidelity.
 Per (state, batch):
   g        exact BP gradient of L over theta (DIAGNOSTIC ORACLE only).
   Families of fixed perturbations z_k, k < K (perturbation seed
-           PERT_SEED_BASE + 1000 * family_index + k, torch.Generator CPU):
+           PERT_SEED_BASE + 1000 * family_index + k, torch.Generator CPU;
+           the SAME K directions in every cell: a paired design across
+           states and batches, so the pooled bar sees 4 direction groups
+           x 16 cells, not 64 independent draws):
     vanilla  Rademacher +-1 on every coordinate of theta (PRIMARY; vanilla
              full-trainable-vector SPSA / MeZO);
     rank1    the ONE registered secondary structured family: every 2-D
@@ -104,6 +107,7 @@ PERT_SEED_BASE = 5000
 R_LICENSE = 0.1
 FD_SIGN_MIN, FD_RELERR_MAX = 0.95, 0.10
 SMOKE_SEED = 11
+THREADS = 5
 
 
 def rademacher(n, g):
@@ -207,10 +211,14 @@ def run_state_batch(model, ids, mask, labels, label):
         # fp64 reference at the primary eps on the first K_F64 directions
         m64 = model.double()
         ev64 = Evaluator(m64, ids, mask, labels)
+        _, g64 = ev64.grad()                                        # fp64 oracle for the fp64 reference only
+        d_bp64 = [float((g64 * z.double()).sum()) for z in zs[:K_F64]]
         d_fd64 = [(ev64.loss(EPS[0] * z.double()) - ev64.loss(-EPS[0] * z.double())) / (2 * EPS[0]) for z in zs[:K_F64]]
         frec["d_fd64_primary"] = d_fd64
-        frec["fidelity_f64_primary"] = fidelity(d_fd64, d_bp[:K_F64])
-        frec["fidelity_f32_v_f64_primary"] = fidelity(frec["d_fd"][f"{EPS[0]:g}"][:K_F64], d_fd64)
+        frec["d_bp64"] = d_bp64
+        frec["fidelity_f64_primary"] = fidelity(d_fd64, d_bp64)                       # fp64 FD v fp64 gradient
+        frec["fidelity_f32_v_f64_primary"] = fidelity(frec["d_fd"][f"{EPS[0]:g}"][:K_F64], d_fd64)   # fp32 FD v fp64 FD
+        frec["fidelity_bp32_v_bp64"] = fidelity(d_bp[:K_F64], d_bp64)                 # fp32 gradient v fp64 gradient
         model.float()
         n_prev = ev.n_eval + ev64.n_eval
         ev = Evaluator(model, ids, mask, labels)
@@ -246,6 +254,12 @@ def adjudicate(rec):
     rels = [abs(a - b) / abs(b) for f in van for a, b in zip(f["d_fd"][prim], f["d_bp"]) if b != 0]
     rel = statistics.median(rels) if rels else None
     out = {"fd_sign_agreement_pooled": sign, "fd_median_rel_err_pooled": rel, "fd_faithful": bool(sign >= FD_SIGN_MIN and rel is not None and rel <= FD_RELERR_MAX), "families": {}}
+    out["fd_by_eps"] = {}
+    for fam in FAMILIES:
+        fs = [x["families"][fam] for x in sb]
+        out["fd_by_eps"][fam] = {e: {"sign_agreement_pooled": sum(f["fidelity"][e]["sign_agreement"] * f["fidelity"][e]["n"] for f in fs) / sum(f["fidelity"][e]["n"] for f in fs),
+                                     "median_rel_err_pooled": statistics.median([abs(a - b) / abs(b) for f in fs for a, b in zip(f["d_fd"][e], f["d_bp"]) if b != 0])}
+                                 for e in fs[0]["fidelity"]}
     m_lic = str(M_PRACTICAL[-1])
     for fam in FAMILIES:
         fr = {}
@@ -273,13 +287,14 @@ def adjudicate(rec):
 
 def main():
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    if not SMOKE and OUT.exists():
-        raise SystemExit(f"REFUSING: {OUT} exists")
+    if OUT.exists() and (not SMOKE or not SMOKE_TAG):
+        raise SystemExit(f"REFUSING: {OUT} exists (a booked smoke receipt is never appended to: rerun with SMOKE_TAG)")
     commit = subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip()
     dirty = bool(subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True).stdout.strip())
     if not SMOKE and dirty:
         raise SystemExit("REFUSING: registered desk on a dirty tree")
     torch.use_deterministic_algorithms(True)
+    torch.set_num_threads(THREADS)          # pinned: fp32 CPU reductions are thread-count dependent
     tok = TM.MathTokenizer()
     _, rows, probe_digest, _ = probe_rows(tok)
     batches = {c: probe_tensors(rows[c * CHUNK:(c + 1) * CHUNK], tok) for c in BATCH_CHUNKS}

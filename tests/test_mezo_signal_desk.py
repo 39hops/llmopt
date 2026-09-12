@@ -94,3 +94,19 @@ def test_adjudicate_verdicts(mod):
     assert a["verdict"] == "PARK" and a["fd_faithful"] and a["families"]["vanilla"]["bar_signal"] == "NO-FIRE"
     assert mod.adjudicate(_rec(mod, 0.5, 0.5, sign=0.0))["verdict"] == "NOT-RESOLVABLE-FD"
     assert mod.adjudicate(_rec(mod, 0.5, 0.5, rel=0.2))["verdict"] == "NOT-RESOLVABLE-FD"
+
+
+def test_fd_precondition_pools_by_n_over_cells(mod):
+    prim = f"{mod.EPS[0]:g}"
+    def fam(n_ok, n_bad):
+        d_bp = [1.0] * (n_ok + n_bad)
+        d_fd = [1.0] * n_ok + [-1.0] * n_bad
+        return {"d_bp": d_bp, "d_fd": {prim: d_fd}, "fidelity": {prim: {"sign_agreement": n_ok / (n_ok + n_bad), "n": n_ok + n_bad}},
+                "ideal_cos": {str(m): [0.1] for m in mod.M_ALL}, "actual_cos": {str(m): [0.1] for m in mod.M_ALL},
+                "ref_cos_sqrt_m_over_d": {str(m): 0.01 for m in mod.M_ALL},
+                "virtual": {k: {str(m): [{"D": -0.1, "R": 0.5}] for m in mod.M_PRACTICAL} for k in ("ideal", "actual")}}
+    # cell A: 10 directions all right; cell B: 2 directions, 1 wrong -> pooled by n = 11 / 12 = 0.917 (< 0.95), per-cell mean would be 0.75
+    rec = {"state_batches": [{"families": {"vanilla": fam(10, 0), "rank1": fam(10, 0)}}, {"families": {"vanilla": fam(1, 1), "rank1": fam(2, 0)}}]}
+    a = mod.adjudicate(rec)
+    assert abs(a["fd_sign_agreement_pooled"] - 11 / 12) < 1e-12 and not a["fd_faithful"] and a["verdict"] == "NOT-RESOLVABLE-FD"
+    assert abs(a["fd_by_eps"]["vanilla"][prim]["sign_agreement_pooled"] - 11 / 12) < 1e-12
