@@ -1,9 +1,5 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
- "_last_accept": {
-  "paths": [],
-  "reason": "PRE-REG MEZO-SIGNAL-DESK-0: smoke receipt"
- },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
    "bytes": 3176,
