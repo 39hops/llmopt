@@ -4290,6 +4290,22 @@ METALLICITY-1 diet grades — the same cloud at four refinements.
 - `write(name: str, rows: list[dict]) -> str`
 - `main() -> None`
 
+### scratch/mezo_signal_desk.py
+MEZO-SIGNAL-DESK-0: zero-training feasibility desk for a zeroth-order (MeZO / SPSA) credit writer over the frozen-random-backbone arena (PRE-REG MEZO-SIGNAL-DESK-0). Nothing trains; no gate is read; no birth.
+
+- `rademacher(n, g)`
+- `perturbation(family, params, seed)` — A flat +-1 perturbation over the trainable vector. vanilla: iid
+- `effective_dim(family, params)`
+- `class Evaluator` (loss, grad)
+- `pearson(a, b)`
+- `fidelity(d_fd, d_bp)`
+- `cos(a, b)`
+- `estimator(zs, ds, idx)`
+- `virtual_step(ev, w, base_loss)`
+- `run_state_batch(model, ids, mask, labels, label)`
+- `adjudicate(rec)` — Pure. Returns the FD precondition, per-family BAR-SIGNAL and verdict.
+- `main()`
+
 ### scratch/moe_gt1.py
 MOE-GT-1 arm 0: the full-residency oracle run (pre-reg 2026-08-03).
 
@@ -5409,6 +5425,19 @@ SG-PREDICTOR-AUDIT-0: zero-main-model-training audit of the true backprop hidden
 - `audit_state(sd, tok, rows, blocks, n_chunks=None)`
 - `geo_mean(xs)`
 - `constants(states)` — Registered rule: s_l = geometric mean of RMS_l(delta) over the FROZEN
+- `main()`
+
+### scratch/sgbb7_keepset_prune.py
+Housekeeping prune of checkpoints/sgbb7/ (Artin GO 2026-09-11 22:34 EDT, after VERDICT SG-BOUNDARY-BLOCK7-1): KEEP for BOTH cells step_00000 (W_0), step_00463, step_03084, step_05140, step_15420 and final.pt, plus the SG7 cell's matching pred_step_ files and pred_final.pt; REMOVE the other 12 model snapshots per cell and the other predictor snapshots. Every file is sha256- and state-digest-matched against logs/sgbb7/qual.jsonl before anything is removed; any mismatch or unreceipted file ABORTS. Inventory to logs/housekeeping/sgbb7_keepset_prune_<date>.json (refuses to overwrite). Usage: .venv/bin/python scratch/sgbb7_keepset_prune.py
+
+- `expected(b, name)`
+- `keep(p)`
+- `main()`
+
+### scratch/sgbb7_smoke_prune.py
+Housekeeping prune of the three SMOKE checkpoint trees (Artin GO 2026-09-11, after SG-FAILURE-DESK-0): checkpoints/frozenbb1_smoke/, checkpoints/sgwriter1_smoke/, checkpoints/sgwriter1_smoke_seal2/. For every file under each tree the sha256 (and, for step_/final/pred_ files, the canonical state digest) is re-read and matched against the smoke receipt that booked it (logs/frozenbb1/smoke.jsonl, logs/sgwriter1/smoke.jsonl, logs/sgwriter1/smoke_seal2.jsonl); the inventory is written to logs/housekeeping/smoke_prune_inventory_<date>.json (refuses to overwrite); any mismatch or any file without a receipt row ABORTS before anything is removed; on 0 mismatches every file and the trees are removed. The registered checkpoints/sgwriter1/ and checkpoints/frozenbb1/ keep sets are never touched. Usage: .venv/bin/python scratch/smoke_prune.py
+
+- `expected(b, name)`
 - `main()`
 
 ### scratch/sgwriter1_keepset_prune.py

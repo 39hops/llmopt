@@ -1,0 +1,160 @@
+{
+ "name": "MEZO-SIGNAL-DESK-0",
+ "note": "Machine-readable form of PRE-REG MEZO-SIGNAL-DESK-0 (zero-training feasibility desk for a zeroth-order credit writer; the prose governs). No MeZO birth authorized; SG stays CLOSED.",
+ "registered": "2026-09-11 (Mac local)",
+ "machine": "mac",
+ "status": "sealed; Artin GO 2026-09-11 22:34 EDT for DESIGN + PREREG + IMPLEMENTATION + the zero-training desk conditional on clean auditors",
+ "states": {
+  "cells": [
+   {
+    "receipt": "logs/sgwriter1/qual.jsonl",
+    "cell": "sgq_control_s27_lr0.0003",
+    "seed": 27,
+    "steps": [
+     463,
+     3084,
+     5140,
+     15420
+    ]
+   },
+   {
+    "receipt": "logs/sgbb7/qual.jsonl",
+    "cell": "sgb7_control_s28_lr0.0003",
+    "seed": 28,
+    "steps": [
+     463,
+     3084,
+     5140,
+     15420
+    ]
+   }
+  ],
+  "n_states": 8,
+  "arena": "emb + blocks 0..3 frozen (freeze_lower 4); theta = blocks 4..7 + norm + head, d = 9,456,000 in 30 tensors (21 matrices, 9 vectors)",
+  "digest_assertion": "every state digest asserted against its qual.jsonl before it is read"
+ },
+ "batches": {
+  "probe": "logs/writerdfa1/probe.json (digest asserted)",
+  "chunks": [
+   2,
+   4
+  ],
+  "rows": 32,
+  "lengths": [
+   44,
+   61
+  ],
+  "eligible_tokens": [
+   1325,
+   1772
+  ],
+  "loss": "the control's exact CE objective: dfa_credit.hybrid_objective(k=8) over freeze_lower(model, 4)",
+  "n_cells": 16
+ },
+ "precision": {
+  "primary": "float32 CPU (training dtype)",
+  "reference": "float64 on the first 8 directions at the primary eps",
+  "deterministic": "torch.use_deterministic_algorithms(True); thread count receipted"
+ },
+ "oracle": "exact BP gradient g of L over theta, one backward per cell; diagnostic only (d_BP, ideal estimators, cosines, the BP virtual step); never an estimator input",
+ "perturbations": {
+  "K": 64,
+  "seed": "5000 + 1000 * family_index + k (torch.Generator CPU)",
+  "entries": "+-1, no normalization (vanilla MeZO convention)",
+  "families": {
+   "vanilla": "iid Rademacher over all d coordinates (PRIMARY)",
+   "rank1": "the ONE secondary structured family: every 2-D tensor gets u v^T (u, v Rademacher; entries +-1; effective dim rows + cols), 1-D tensors Rademacher; d_eff 36,136; a license here is STRUCTURED-ZO, never vanilla MeZO"
+  }
+ },
+ "eps": {
+  "values": [
+   0.001,
+   0.01,
+   0.0001
+  ],
+  "primary": 0.001,
+  "fp64_reference_eps": 0.001
+ },
+ "readouts": {
+  "fidelity": "per family and eps over the 64 directions: Pearson, median relative error |d_FD - d_BP| / |d_BP|, sign agreement; pooled over 16 cells for the precondition",
+  "ideal_estimator": "g_hat_m = mean over a disjoint group of m directions of d_BP_i z_i; cosine to g per group; m in [1,2,4,8,16,32,64]; reference sqrt(m / d_eff) (nominal for rank1)",
+  "actual_estimator": "same with d_FD at the primary eps (fp32)",
+  "virtual_step": "u = w/||w||; D(u) = min over eta in [1e-3,3e-3,1e-2,3e-2,1e-1,3e-1,1,3] of L(theta - eta u) - L(theta), theta restored; D_BP = D(g/||g||); R = D(u)/D_BP (None if D_BP >= 0); first 4 groups of m in [1,2,4], ideal and actual, per family"
+ },
+ "budgets": {
+  "practical_m": [
+   1,
+   2,
+   4
+  ],
+  "descriptive_m": [
+   8,
+   16,
+   32,
+   64
+  ],
+  "licensing_m": 4,
+  "queries_per_step": "2m loss evaluations"
+ },
+ "precondition": {
+  "id": "FD-FAITHFUL",
+  "text": "vanilla, primary eps, pooled over 16 cells x 64: sign agreement >= 0.95 and median relative error <= 0.10; else NOT-RESOLVABLE-FD (nothing licensed, nothing parked)"
+ },
+ "bars": [
+  {
+   "id": "BAR-SIGNAL",
+   "text": "per family: pooled median over 16 cells x 4 groups of the ACTUAL estimator's descent ratio R at m = 4 >= 0.1 FIRES",
+   "threshold": 0.1,
+   "verdicts": {
+    "vanilla_fires": "MEZO-LICENSED (bank a MeZO qualification design for a separate GO)",
+    "only_rank1_fires": "STRUCTURED-ZO-LICENSED (bank a STRUCTURED-ZO design for a separate GO)",
+    "neither": "PARK (foreign-writer program parks; TP / EP / ROME do not follow automatically)"
+   },
+   "law": "scratch/mezo_signal_desk.adjudicate (tests/test_mezo_signal_desk.py)"
+  }
+ ],
+ "registered_prior": {
+  "fd_faithful_1e-3": "p 0.8",
+  "vanilla_ideal_cos_m4_within_2x_of_6.5e-4": "p 0.8",
+  "vanilla_actual_R_m4_below_1e-2": "p 0.95",
+  "vanilla_no_fire": "p 0.97",
+  "rank1_ideal_cos_m4_ge_3x_vanilla": "p 0.6",
+  "rank1_actual_R_m4_ge_0.1": "p 0.1",
+  "verdict_park": "p 0.85",
+  "not_resolvable_fd": "p 0.1",
+  "sign_agreement_1e-2_below_1e-3": "p 0.6"
+ },
+ "fences": [
+  "two seeds (27, 28) of one arena, one device (Mac CPU fp32, deterministic at fixed threads; no cross-run bit-exact claim)",
+  "two fixed probe batches (a fixed-batch loss surface, not the stream)",
+  "the descent ratio is line-optimal for both sides and favours the zeroth-order step v a fixed-lr birth: NO-FIRE is conservative in the writer's favour",
+  "exact gradient is a diagnostic oracle only",
+  "rank1's isotropic reference is nominal",
+  "nothing scores a gate, revises L71955, or authorizes a birth"
+ ],
+ "cost": "about 1,180 loss evaluations per cell x 16 cells at 0.15 to 0.3 s: about 1.5 to 2 h single-process",
+ "liverun_ids": [
+  "mezo0"
+ ],
+ "receipts": [
+  "logs/mezo0/desk.json",
+  "logs/mezo0/desk.jsonl",
+  "logs/mezo0/desk.log",
+  "logs/mezo0/smoke.jsonl",
+  "logs/liverun/mezo0.jsonl"
+ ],
+ "instrument": [
+  "scratch/mezo_signal_desk.py",
+  "tests/test_mezo_signal_desk.py"
+ ],
+ "does_not_authorize": [
+  "any MeZO or STRUCTURED-ZO birth",
+  "SG reopening",
+  "target / equilibrium propagation",
+  "ROME",
+  "seed-2 discovery",
+  "mechanism experiments",
+  "a third perturbation family",
+  "licensing on any m > 4"
+ ]
+}

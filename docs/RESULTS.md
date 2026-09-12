@@ -72054,3 +72054,154 @@ duplicate of the same stdout, uncited). Checkpoints: checkpoints/sgbb7 (2.6 GB,
 two cells x 17 snapshots + finals + predictor snapshots) retained;
 checkpoints/sgbb7_smoke (439 MB) prunable after a digest inventory
 (Artin GO).
+
+## PRE-REG MEZO-SIGNAL-DESK-0: zero-training feasibility desk for a zeroth-order (MeZO / SPSA) credit writer over the frozen-random-backbone arena — on the retained paired-BP CONTROL states of seeds 27 and 28 (steps 463, 3,084, 5,140, 15,420) and two fixed probe batches, with the exact BP gradient as a diagnostic oracle only: (1) finite-difference fidelity of the antithetic estimate d_FD = [L(theta + eps z) - L(theta - eps z)] / 2 eps against d_BP = <grad, z> over fixed Rademacher perturbations, (2) intrinsic SPSA variance (ideal estimators built from exact d_BP, cosine to the BP gradient v direction count), (3) actual estimator quality from d_FD, (4) non-persistent virtual-step descent along the estimated direction under a registered line law; vanilla full-vector Rademacher SPSA primary, ONE secondary structured family (tensorwise rank-1) registered; practical licensing at m = 1, 2, 4 antithetic pairs only; PARK if neither family reaches the registered descent ratio (2026-09-11 local, Mac; sealed and committed before any retained state is read for these analyses; liverun mezo0; no MeZO birth authorized; SG stays CLOSED)
+
+**Standing.** SG credit writers are CLOSED (VERDICT SG-BOUNDARY-BLOCK7-1
+L71955). Candidate 3 of the foreign-writer program (MeZO-style
+zeroth-order credit) enters ONLY through this zero-training desk, which
+decides whether a realistic antithetic zeroth-order estimator carries
+enough directional signal at a query budget the house would actually
+train with to justify a qualification birth. Nothing here trains a
+model; nothing here licenses target / equilibrium propagation or ROME.
+
+**Instrument** (scratch/mezo_signal_desk.py, tests/test_mezo_signal_desk.py,
+sealed at this commit).
+- States (8): the seed-27 control sgq_control_s27_lr0.0003
+  (checkpoints/sgwriter1, logs/sgwriter1/qual.jsonl) and the seed-28
+  control sgb7_control_s28_lr0.0003 (checkpoints/sgbb7,
+  logs/sgbb7/qual.jsonl), each at steps 463, 3,084, 5,140, 15,420;
+  every state digest asserted against its receipt. The arena as in
+  the controls: emb + blocks 0..3 frozen (freeze_lower(model, 4)); the
+  trainable vector theta = blocks 4..7 + norm + head, d = 9,456,000 in
+  30 tensors (21 matrices, 9 vectors).
+- Batches (2): the frozen probe's chunks 2 and 4 (32 rows each, lengths
+  44 and 61, 1,325 and 1,772 eligible tokens; logs/writerdfa1/probe.json
+  digest asserted). L(theta) = the control's exact CE objective
+  (dfa_credit.hybrid_objective(k=8) over freeze_lower) on the batch.
+  16 (state, batch) cells.
+- Precision: fp32 CPU (the training dtype) for every estimator and
+  virtual step; fp64 on the first K_F64 = 8 directions at the primary
+  eps as a finite-difference reference (descriptive).
+  torch.use_deterministic_algorithms(True); thread count receipted.
+- Oracle: g = the exact BP gradient of L over theta (one backward per
+  cell), used for d_BP, the ideal estimators, the cosines and the BP
+  virtual step; never as an input to any estimator.
+- Perturbations: K = 64 fixed directions per family per cell, seed
+  5000 + 1000 x family_index + k (torch.Generator CPU), entries +-1
+  (no normalization: the vanilla MeZO convention; eps sets the
+  per-coordinate step).
+  * vanilla (PRIMARY): iid Rademacher over all d coordinates.
+  * rank1 (the ONE registered secondary structured family): every 2-D
+    tensor W (rows x cols) is perturbed by u v^T with u, v Rademacher
+    (entries +-1, the same per-entry scale as vanilla; effective
+    dimension rows + cols), every 1-D tensor by Rademacher; d_eff =
+    36,136. If rank1 licenses where vanilla does not, the licensed
+    design is called STRUCTURED-ZO, never vanilla MeZO.
+- eps: EPS = [1e-3 (PRIMARY; MeZO's default), 1e-2, 1e-4]; d_FD at
+  every eps in fp32; d_FD at 1e-3 in fp64 on the first 8 directions.
+- (1) Fidelity per family and eps over the 64 directions of a cell:
+  Pearson correlation, median relative error |d_FD - d_BP| / |d_BP|,
+  sign agreement; pooled over the 16 cells for the precondition.
+- (2) Ideal estimator g_hat_m = (1/m) sum over a group of m directions
+  of d_BP_i z_i, over DISJOINT groups of the 64 directions (64 / m
+  groups), m in M_ALL = {1, 2, 4, 8, 16, 32, 64}; cosine to g per
+  group; median per m pooled over cells; the isotropic reference
+  sqrt(m / d_eff) beside it (for rank1 the reference is nominal: the
+  structured estimator is not isotropic).
+- (3) Actual estimator: the same groups with d_FD_i at the primary eps
+  (fp32).
+- (4) Virtual-step law (non-persistent; theta restored after every
+  evaluation): for a direction w, u = w / ||w||; D(u) = min over
+  ETA_GRID = {1e-3, 3e-3, 1e-2, 3e-2, 1e-1, 3e-1, 1, 3} of
+  L(theta - eta u) - L(theta); D_BP = D(g / ||g||); the descent ratio
+  R(w) = D(u) / D_BP (None if D_BP >= 0). Computed for the first
+  N_VIRTUAL = 4 groups of every m in M_PRACTICAL = {1, 2, 4}, ideal and
+  actual, per family: 16 cells x 2 families x 3 m x 4 groups x 2 kinds
+  = 768 virtual line searches + 16 BP line searches.
+- Query budgets: practical m in {1, 2, 4} antithetic pairs (2m loss
+  evaluations per step, the budget a 15,420-step birth would spend);
+  m in {8, ..., 64} descriptive only and can license nothing.
+
+**Precondition, FD-FAITHFUL.** Over vanilla at the primary eps, pooled
+over the 16 cells x 64 directions: sign agreement >= 0.95 AND median
+relative error <= 0.10. Else NOT-RESOLVABLE-FD: nothing is licensed and
+nothing is parked (the estimator could not be measured at the training
+precision; the other eps values are then read descriptively).
+
+**BAR-SIGNAL (licensing), per family.** FIRES iff the pooled median
+over the 16 cells x 4 groups of the ACTUAL (d_FD, primary eps)
+estimator's descent ratio R at m = 4 (the largest practical budget) is
+>= R_LICENSE = 0.1: one zeroth-order step at the practical budget buys
+at least a tenth of the line-optimal descent of one exact-gradient
+step on the same batch. Below that, a 15,420-step birth (the sealed
+step budget of every paired arm) cannot plausibly reach the control's
+band even under the optimistic line-optimal law, and no larger budget
+can license it (brute-force averaging is not a training recipe).
+- vanilla FIRES: MEZO-LICENSED; the house banks a MeZO qualification
+  design for a SEPARATE Artin GO (no birth here).
+- vanilla NO-FIRE and rank1 FIRES: STRUCTURED-ZO-LICENSED; the house
+  banks a STRUCTURED-ZO design (rank-1 tensorwise perturbations) for a
+  separate GO; it is not called MeZO.
+- neither FIRES: PARK. The foreign-writer program parks; target /
+  equilibrium propagation and ROME do not follow automatically.
+Law in mezo_signal_desk.adjudicate (tested: FIRES inclusive at 0.1,
+verdict order, NOT-RESOLVABLE-FD on either FD failure).
+
+**Descriptive beside the bar (no consequence):** the ideal-estimator
+cosine v m against sqrt(m / d_eff) (does the intrinsic variance follow
+the isotropic law; where does rank1 sit), the actual v ideal gap (what
+finite differencing costs on top of intrinsic variance), R v m for the
+practical budgets (ideal and actual), the eps dependence of fidelity,
+the fp32 v fp64 difference, per-state and per-seed spread, the fraction
+of virtual steps with any descent.
+
+**REFUTED-IF.** BAR-SIGNAL NO-FIRE on both families refutes the
+foreign-writer candidate 3 at practical budgets on this arena's healthy
+states: the antithetic zeroth-order estimator, vanilla or rank-1
+structured, does not carry enough directional signal per query to
+train the top four blocks within the sealed step budget. It does not
+refute zeroth-order optimization in general (other structured families,
+much larger budgets, or different arenas are untested and unlicensed).
+
+**REGISTERED PRIOR** (house, on the record; the smoke on a random
+seed-11 W_0 at K = 8 read ideal cos 1.9e-4 at m = 1 v the reference
+3.3e-4 and R about 3e-4 at m = 2, vanilla; sign agreement 1.00 and
+median relative error 0.001 at eps 1e-3):
+1. FD-FAITHFUL at eps 1e-3 fp32: p 0.8 (antithetic differencing cancels
+   the even terms; the 9.5M-coordinate perturbation's odd terms and
+   fp32 rounding are the risk).
+2. vanilla ideal cosine at m = 4 pooled median within a factor of 2 of
+   sqrt(4 / 9.456e6) = 6.5e-4: p 0.8.
+3. vanilla actual R at m = 4 pooled median < 1e-2: p 0.95; BAR-SIGNAL
+   NO-FIRE for vanilla: p 0.97.
+4. rank1 ideal cosine at m = 4 pooled median above vanilla's by at
+   least 3x: p 0.6; rank1 actual R at m = 4 >= 0.1: p 0.1.
+5. Verdict PARK: p 0.85; NOT-RESOLVABLE-FD: p 0.1.
+6. Sign agreement at eps 1e-2 below that at 1e-3 (curvature): p 0.6.
+
+**FENCES.** Two seeds (27, 28) of one arena, one device (Mac CPU fp32,
+deterministic at a fixed thread count; no cross-run bit-exact claim),
+two probe batches (the loss surface of a fixed batch, not the stream);
+the descent ratio compares one zeroth-order step to one exact-gradient
+step on the same batch under a line-optimal law, which favours the
+zeroth-order side (the birth would use a fixed lr, not a line search):
+a NO-FIRE is therefore conservative in the writer's favour. The exact
+gradient is a diagnostic oracle: no estimator, cosine or virtual step
+feeds any training. The rank1 family's isotropic reference is nominal.
+Nothing here scores a gate, revises L71955, or authorizes a birth.
+Cost from the smoke: about 0.15 to 0.3 s per loss evaluation; about
+1,180 evaluations per cell; 16 cells: about 1.5 to 2 h single-process
+(nohup + Monitor + a detached waiter on the DONE marker; liverun
+mezo0).
+
+**Receipts.** logs/mezo0/desk.json, logs/mezo0/desk.jsonl,
+logs/mezo0/desk.log, logs/mezo0/smoke.jsonl (the random-init mechanism
+smoke at the sealed instrument sha: K 8, one batch, primary eps; sign
+agreement 1.00, relative error 0.001, verdict PARK on the smoke,
+unbooked), logs/liverun/mezo0.jsonl. Machine-readable form:
+docs/preregs/mezo-signal-desk-0.json.
+
+**Does not authorize:** any MeZO or STRUCTURED-ZO birth, SG reopening,
+target / equilibrium propagation, ROME, seed-2 discovery, mechanism
+experiments, a third perturbation family, or licensing on any m > 4.
