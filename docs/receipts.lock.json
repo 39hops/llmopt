@@ -1,5 +1,9 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
+ "_last_accept": {
+  "paths": [],
+  "reason": "CHAIN-DESK seal smoke receipt (clean tree 6267ea97)"
+ },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
    "bytes": 3176,
@@ -231,7 +235,8 @@
    "tracked": true
   },
   "logs/crossfoster1/chain_smoke_seal.jsonl": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/crossfoster1/crossfoster1c.DONE": {
