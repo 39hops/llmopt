@@ -1846,7 +1846,7 @@ VERIFIED-ENDOGENOUS-DATA-CROSSFOSTER-1, donor-library stage (PRE-REG VERIFIED-EN
 - `adjudicate_size(retained)`
 - `adjudicate(retained, overlap_rows, n_rows)` — Pure stage law: DONOR-INACCESSIBLE if fewer than N_RETAIN roots are
 - `sha256_file(p)`
-- `root_order()` — Fixed interleaved order: round-robin over levels 3..7 with level 4
+- `root_order()` — Fixed order in which EVERY prefix carries the population's level
 - `load_donor(name, tok, dev)`
 - `generate_for_root(model, tok, dev, cur, root_index)` — All distinct PASS candidates of one donor for one root, in sampling
 - `teacher_forced_ce(model, tok, rows, dev)` — Mean CE over eligible label positions of the trainer's encoding of
