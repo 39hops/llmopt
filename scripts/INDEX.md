@@ -1840,6 +1840,23 @@ The compression corner (pre-reg 2026-07-28 night): rational- snap (direct, exact
 
 - `snap_sd(sd, Q)`
 
+### scratch/crossfoster_chain.py
+VERIFIED-ENDOGENOUS-DATA-CROSSFOSTER-1, CHAIN-DESK stage (PRE-REG VERIFIED-ENDOGENOUS-DATA-CROSSFOSTER-1-CHAIN-DESK). Zero training. Asks whether ITERATING the verified donor transition law amplifies the small one-step donor difference (OBSERVATION -DONOR: 6.9 % of matched rows) into a materially distinct endogenous history. Donors unchanged:   A = forward OneCycle final, checkpoints/gallery19m_phase_s2.pt   B = backward OneCycle final, checkpoints/gallery19m_backsched_s2.pt (seed-2 W_0; state digests asserted against logs/writertraj0/census.json exactly as in scratch/crossfoster_donor.py, whose loader is reused).
+
+- `adjudicate(n_rows_projected, specific_min_side)` — Pure stage law. CHAIN-INACCESSIBLE if the projection is short of
+- `root_order()`
+- `ply_seeds(root_index, t, w)`
+- `walk_chain(model, tok, dev, root_cur, root_index)` — One donor's verified chain from root_cur under the frozen law.
+- `first_divergence(edges_a, edges_b, l_pair)` — Smallest 1-based ply t <= l_pair with norm(state_A[t]) != norm(state_B[t]); None if none.
+- `project(chains, n_rows)` — Chain-dose projection: retained (root, L_pair) pairs in order; append
+- `readouts(chains, taken, libs)`
+- `main()`
+
+### scratch/crossfoster_chain_determinism_probe.py
+CHAIN-DESK determinism probe (receipted form of the 2026-09-13 /tmp probe): samples 8 texts from donor A on 30 probe roots (band 8,950,000; sample seeds 7,950,000 + 1000 * i + b) with llmopt.lab.gate.sample_wave_lp on the default device, twice within the process, and appends one row {digest, within_process_ mismatch, pid, device} to logs/crossfoster1/chain_determinism_probe.jsonl. Run it twice: two rows with equal digests = cross-process bit-exactness of the sampler's texts. Usage: .venv/bin/python scratch/crossfoster_chain_determinism_probe.py
+
+- `main()`
+
 ### scratch/crossfoster_donor.py
 VERIFIED-ENDOGENOUS-DATA-CROSSFOSTER-1, donor-library stage (PRE-REG VERIFIED-ENDOGENOUS-DATA-CROSSFOSTER-1-DONOR). Zero training. Builds the two matched donor libraries D_A = G(W_A) and D_B = G(W_B) from the two function-matched seed-2 specimens of WRITER-TRAJECTORY-CENSUS-0:   A = forward OneCycle final, checkpoints/gallery19m_phase_s2.pt   B = backward OneCycle final, checkpoints/gallery19m_backsched_s2.pt (both from the seed-2 W_0; state digests asserted against logs/writertraj0/census.json; the census receipts are the shared-W_0 and function-band evidence and are re-read, never recomputed, here).
 

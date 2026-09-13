@@ -72751,3 +72751,238 @@ to produce). logs/crossfoster1/donor.json is 2.6 MB because of its
 tracked as the evidence record of the retention, with donor.jsonl
 (2.9 KB) the same receipt minus the log. The smokes were locked with
 the pre-reg and its audit.
+
+## PRE-REG VERIFIED-ENDOGENOUS-DATA-CROSSFOSTER-1-CHAIN-DESK: zero-training chain feasibility — does ITERATING the verified donor transition law (paired multi-ply verified chains, horizon 12, retained at >= 2 plies, common sampling seeds, each donor walking its own state) amplify the booked 6.9 % one-step donor difference between the unchanged seed-2 donors A (forward OneCycle) and B (backward OneCycle) into a materially distinct endogenous history, measured as the effective donor-specific rows of a frozen 6,000-row matched projection; the licensing bar for any future replay factorial is >= 3,000 min-side donor-specific rows; the disjoint calibration found 12-ply paired completion INACCESSIBLE (0 of 62 pairs reach the horizon, longest paired chain 4), so the sealed accessibility law retains MULTI-PLY pairs only (min length >= 2) on a 24,000-root population (2026-09-13, Mac)
+
+**Program and GO.** VERIFIED-ENDOGENOUS-DATA-CROSSFOSTER-1 (Artin GO
+2026-09-13 13:25 EDT: DESIGN + PREREG + ZERO-TRAINING CHAIN
+FEASIBILITY only; no recipient birth, no live self-training loop, no
+stronger donor pair, no unmatched-dose arm, no foreign-writer
+reopening, no mechanism run). The donor pair is unchanged and the
+booked OBSERVATION -DONOR (RESULTS L72632, DONOR-HISTORIES-DEGENERATE:
+5,588 of 6,000 one-step rows identical) stands and is not reopened.
+Scientific question: under one verified one-step generator the two
+function-matched donors wrote the same data on 93 % of the roots both
+could advance; does iterating that transition law, each donor feeding
+its own verified child back as its next state, turn the small
+per-step difference into a materially different history?
+
+**Donors (asserted, not recomputed; the -DONOR loader is reused).**
+A = checkpoints/gallery19m_phase_s2.pt (state digest 4633efe5d376f911...,
+gate 64 / 120 re-gated at L67980); B = checkpoints/
+gallery19m_backsched_s2.pt (4beeedec5f9f5e91..., 62 / 120); shared
+seed-2 W_0 digest eb4b0bb427f86972... (logs/writertraj0/census.json);
+the driver refuses unless all three prefixes match at load.
+
+**Instrument.** scratch/crossfoster_chain.py (tests/
+test_crossfoster_chain.py, 5 guards; launcher scratch/
+crossfoster1c_launch.sh under liverun id crossfoster1c). Frozen before
+any registered-band chain output exists:
+
+1. Root population (FRESH band): roots (level, seed), seed =
+   8,600,000 + 1000 * level + i, i < N_PER_LEVEL, levels 3..7 with
+   N_PER_LEVEL {3: 3600, 4: 9600, 5: 3600, 6: 3600, 7: 3600}
+   (24,000 roots, the atoms-shard mix x 4), enumerated by the
+   fractional-progress order (every prefix carries the mix). 8.6M is
+   disjoint from the one-step stage's 8.8M / 8.9M bands, from step_grpo's
+   8.7M run-3 gate band and from the 9.9M gate band. The same
+   pre-generation exclusions as -DONOR: gate-band cur, base-diet cur /
+   nxt strings (D2-excised stock rows), duplicate norm(cur), generation
+   failure. Calibration and smokes use 8,650,000 (disjoint).
+2. Horizon H = 12 (the gate's 12 plies).
+3. Paired verified-chain law, identical for A and B and derived from
+   llmopt.lab.gate.gate_eval: from the shared root each donor walks its
+   OWN chain. At ply t the donor at state cur_X samples up to 4 waves
+   of 8 with llmopt.lab.gate.sample_wave_lp (temperature 0.7, max_new
+   120, KV-cached) under the COMMON seeds 100,000,000 + 2000 *
+   root_index + 128 * t + 8 * wave + b (b < 8; the same integers for
+   both donors at the same (root, ply, wave, slot); 100.0M to 148.0M for
+   the 24,000-root population, disjoint from every other band in the
+   repo; smokes use 200M, above the registered span; tested).
+   Within a ply candidates are deduplicated by whitespace-stripped
+   text; a candidate whose norm is in the donor's VISITED set (the root
+   and every earlier state of that donor's own chain: identity and
+   revisit rejection, the gate's law) is rejected before the oracle;
+   llmopt.lab.verify.verify_wave(cur_X, candidates) (sympy, fork-
+   timeboxed 20 s) decides PASS / SOLVED. Child selection: the first
+   PASS candidate in sampling order of the first wave that contains a
+   PASS (later waves of that ply are not sampled; the tie-break is
+   "first in sampling order", as in the gate). A SOLVED child ends the
+   chain (terminal "solved"; its edge is recorded with solved = true);
+   no PASS in 4 waves ends it (terminal "stalled", no edge at that
+   ply); H edges ends it (terminal "horizon"). Canonical state identity
+   = norm(state), canonical edge identity = (norm(cur), norm(nxt)),
+   norm = space removal (tenet_d2_revdiet.norm; single-line candidates).
+4. Paired accessibility: L_pair = min(L_A, L_B) verified edges; a root
+   is RETAINED iff L_pair >= 2 (L_MIN = 2). Each donor contributes
+   exactly its first L_pair edges: matched root support, matched row
+   count, matched ply positions. Ply-0-only pairs (both donors stop
+   after one verified step) are the booked one-step measurement and are
+   excluded; a root is accounted inadequate-A / -B / -both by which
+   donor(s) fall short of L_MIN = 2 edges (tested), and per-donor
+   adequacy is the fraction of generated roots on which that donor
+   reaches >= 2 edges.
+5. Chain-dose projection: retained chains in root order, appended
+   until N_ROWS = 6,000 rows per library (the atoms-shard dose, 3.5 %
+   of the augmented recipient stream); the last chain is truncated at
+   the ply that makes the count exactly 6,000, identically for both
+   donors. Fewer than 6,000 rows from the whole 24,000-root
+   population: CHAIN-INACCESSIBLE (libraries written for the record).
+6. Row schema: the atoms-shard fields {cur, nxt, level, rule:
+   "donor-chain", source: "donor-A" | "donor-B"} plus root_index,
+   root_seed, ply, sample_seed, wave, solved, l_pair; the recipient
+   encoder reads cur / nxt / level only (tested for the -DONOR schema;
+   unchanged here).
+7. Readouts, all descriptive except the bar: first divergence ply t*
+   (smallest t in 1..L_pair with norm(state_A[t]) != norm(state_B[t]));
+   fraction of pairs divergent by ply t among pairs with L_pair >= t,
+   t = 1..12; pair-ever-divergent fraction; endpoint canonical overlap
+   (state at L_pair equal); row-position overlap of the projected
+   libraries (edge t of A equals edge t of B); canonical edge-set
+   overlap; terminal divergence (terminal_A != terminal_B) and solve
+   divergence; L_A / L_B / L_pair histograms, both-reach-horizon
+   fraction; per-donor adequacy (>= 2 edges); projected level and ply
+   mix; solved fraction; the EFFECTIVE DONOR-SPECIFIC ROWS of the
+   projected libraries: rows of D_A_chain whose canonical edge is not
+   in D_B_chain's canonical edge set, and vice versa (the bar reads the
+   smaller side).
+8. Outputs: data/crossfoster1_chain/D_A_chain.jsonl and
+   D_B_chain.jsonl (refuse-if-exists; frozen artifacts, sha-pinned in
+   the receipt), logs/crossfoster1/chain.json (accounting, per-root
+   chain log without edges, readouts, replay), logs/crossfoster1/
+   chain.jsonl, logs/crossfoster1/chain.log, logs/crossfoster1/
+   crossfoster1c.DONE, logs/liverun/crossfoster1c.jsonl. Registered
+   mode refuses a dirty tree and any existing output (chain.json,
+   chain.jsonl, the data directory). Rows of a truncated last chain
+   carry the chain's true l_pair and edges_taken = the truncated count.
+
+**Preconditions.**
+P0 REPLAY-EXACT (the no-op precondition of this desk: the instrument
+wraps the sampler in a chain walker, so the walker must reproduce
+itself bit-for-bit): after the stage, BOTH donors are re-walked
+within the same process on the first 20 retained roots under the same
+seeds and law (40 chains); every edge (cur, nxt, solved), the chain
+length and the terminal must match, and at least one chain must exist.
+Any mismatch books NOT-ADJUDICABLE-REPLAY and no bar reads (an empty
+retention books CHAIN-INACCESSIBLE, P0 not applicable). Pre-seal
+evidence, receipted: scratch/crossfoster_chain_determinism_probe.py run
+twice (logs/crossfoster1/chain_determinism_probe.jsonl, two rows, pids
+17206 / 17282): donor A on 30 probe roots x 8 samples, 240 / 240 texts
+identical on a within-process resample and the SAME cross-process
+digest 89932d8d31d49743 in both rows; the calibration's and the
+mechanism smoke's within-process replays were exact (2 / 2 each). The
+sampler draws on the CPU generator (llmopt/lab/gate.py:74), so the
+only mps surface is the forward logits, which the replay exercises. A
+same-writer null arm is therefore NOT registered: with a bit-exact
+sampler the A-v-A' chain divergence is identically 0, and every A-v-B
+divergence is the writer contrast under common random numbers. P0 is
+a within-process guarantee; the cross-process claim rests on the
+probe receipt (texts, not chains).
+P1 ACCESSIBLE: the projection reaches 6,000 rows (else
+CHAIN-INACCESSIBLE; the stage stops and the program is PARKED pending
+Artin, like a degenerate reading; no redesign under this GO).
+
+**BAR (the only licensing bar).**
+B1 CHAIN-CONTRAST-FIRES iff the min-side effective donor-specific rows
+of the projected 6,000-row libraries >= 3,000 (half the dose,
+inclusive). Rationale, fixed before data: the ATOM-DIET insert of
+6,000 wholly novel rows lifts the gate by +6.33 mean over three paired
+seeds (L67274; +6 / +3 / +10), at the edge of single-seed resolution
+(7 solves); the cross-foster 2 x 2 column contrast lives ONLY on rows
+that differ between D_A_chain and D_B_chain, so at fewer than half the
+dose the contrast is smaller than half of an effect that itself needs
+three seeds; the house does not license a factorial whose data
+contrast is below that. Below 3,000: CHAIN-DEGENERATE. Endpoint or
+state differences that do not become differing rows do not fire
+anything ("aesthetic" divergence is descriptive only).
+
+**Consequences (sealed).** CHAIN-CONTRAST-FIRES: D_A_chain / D_B_chain
+are frozen (sha-locked, tracked) and the house returns for a SEPARATE
+Artin GO on the original 2 x 2 cross-fostered replay (forward /
+backward recipient writer x D_A_chain / D_B_chain), which by the B1
+rationale must be designed at n >= 3 paired seeds per cell, not as a
+single-seed 2 x 2. CHAIN-DEGENERATE or CHAIN-INACCESSIBLE: the program
+VERIFIED-ENDOGENOUS-DATA-CROSSFOSTER-1 is PARKED; no post hoc switch to
+a stronger donor pair, an unmatched-dose library, a different
+retention law, a different horizon or a different generator under
+this GO. Nothing here authorizes a birth.
+
+**Calibration (disjoint band 8,650,000, sample band 130M; SMOKE=1,
+SMOKE_TAG=_calib, SMOKE_PER_LEVEL=30, SMOKE_ROWS=100000, H 12, 4
+waves; receipt logs/crossfoster1/chain_smoke_calib.jsonl; run on the
+uncommitted instrument at b75f9754, tree dirty, source sha
+516041fe...; the sealed file differs from it by the L_MIN and
+N_PER_LEVEL constants, the smoke sample band (200M), the inadequacy
+accounting (now by L_MIN; at L_MIN 1 the two forms coincide, so the
+calibration's accounting stands), the chain.jsonl guard, the
+two-donor replay and the edges_taken row field: nothing in the chain
+law, seed law, selection or projection).
+150 roots processed in 299 s (2.0 s per processed root): excluded-
+diet 33, retained at L_MIN 1: 62 (adequacy A 0.60 / B 0.54; stalled at
+ply 0 both 46, A-only 1, B-only 8). L_pair histogram {1: 42, 2: 4, 3:
+14, 4: 2}: 12-PLY PAIRED COMPLETION IS INACCESSIBLE on this root
+generator (0 of 62 pairs reach the horizon, no pair beyond 4 edges,
+median 1; the donors solve most roots in one verified step: terminal
+solved 57 / 62 A, 54 / 62 B). The GO's natural 500 x 12 = 6,000 target
+is therefore abandoned BEFORE sealing and replaced by the multi-ply
+law above. Divergence at L_MIN 1: first-divergence histogram {None:
+55, 1: 5, 2: 1, 3: 1}; divergent fraction by ply 1 / 2 / 3 / 4 = 0.081
+(62) / 0.10 (20) / 0.125 (16) / 0.0 (2); endpoint overlap 0.887;
+projected 100 rows: 91 identical, donor-specific 9 / 9. On the
+MULTI-PLY subset (20 pairs, 58 rows per library, ply mix 20 / 20 / 16 /
+2, level mix 3: 34, 5: 20, 4: 2, 6: 2): donor-specific 5 / 5 (8.6 %).
+Rows per processed root at L_MIN 2: 58 / 150 = 0.39, so 6,000 rows need
+about 15,500 processed roots, inside the 24,000 population with a
+1.5x margin; expected wall about 8.6 h at 2.0 s per root.
+
+**REGISTERED PRIOR (house, before any registered-band output).**
+(1) P1 ACCESSIBLE (p 0.85): rows reach 6,000 within 12,000 to 20,000
+processed roots. (2) B1 NO-FIRE, CHAIN-DEGENERATE (p 0.85): min-side
+donor-specific rows 300 to 1,200 (calibration 8.6 % of the multi-ply
+rows, about 520 of 6,000). (3) pair-ever-divergent fraction among
+retained pairs 0.08 to 0.25 (p 0.7). (4) divergent fraction by ply 3
+exceeds the fraction by ply 1 by at least 0.03 absolute (iteration is
+VISIBLE but small; p 0.6). (5a) both-reach-horizon fraction 0 (p
+0.75). (5b) L_pair median 3 (p 0.65). (6) projected level mix: levels 3 and 5
+together >= 70 % of rows (p 0.7). (7) wall 6 to 14 h (p 0.7). (8) P0
+replay exact (p 0.95). Family track record entering: 35 hits 22 misses.
+
+**REFUTED-IF (the house prior dies) / what fires.** B1 fires (>= 3,000
+min-side donor-specific rows): iteration on this generator DOES
+separate the histories and the one-step degeneracy was a horizon
+artifact; the house's "identity of the verified history is set by the
+roots and the oracle" reading (L72632) is then narrowed to one-step
+generation. B1 no-fire: the reading extends to iterated generation at
+the depths this generator affords, and the program parks.
+
+**FENCES.** One donor pair (the weakest writer contrast the house
+holds), one device (mps; the walker is bit-exact, P0), one horizon and
+one candidate budget; chains are SHORT on this root generator (the
+horizon is non-binding at calibration: no pair beyond 4 edges), so
+"12-ply" describes the law, not the realized depth, and the multi-ply
+subset is dominated by levels 3 and 5 (calibration 93 % of rows): the
+projected libraries carry that mix, not the atoms shard's 40 / 15 / 15
+/ 15 / 15, and any recipient dose built from them inherits it; the
+tie-break "first PASS in sampling order" means a differing edge may be
+a tie-break artifact rather than a capability difference (descriptive
+readouts do not separate the two; the bar counts rows, which is what a
+recipient would see); common random numbers make ply-t seeds identical
+across donors even after divergence, so post-divergence differences
+are the model -> state -> model loop plus the state-conditioned
+sampling path, not independent noise; the stage measures DATA, not
+models: no gate on any model, no training, no mechanism claim; the
+dose is the -DONOR dose (6,000 rows) so the two libraries are
+comparable to D_A / D_B in size only, not in row content (multi-ply
+edges v first-step edges); wall fence: if the registered run has not
+finished within 24 h it is killed and the stage books NOT-RUN with the
+log (the driver streams a progress line every 100 roots; libraries are
+written only at the end). Nothing here revises L72632 or L67980, and
+nothing authorizes a recipient birth.
+
+**Smokes.** Auditor (Opus 5, on this draft): two blockers folded (the registered sample span is 100.0M to 148.0M, not 124.0M, and the 130M smoke band sat inside it: smoke band moved to 200M, disjointness tested; the inadequate-A / -B accounting tested emptiness instead of L_MIN and would have mis-stated adequacy under L_MIN 2: fixed and tested) and four should-fixes folded (headline wording, receipted determinism probe + two-donor replay + within-process fence, chain.jsonl guard, prior 5 split); notes adopted (space-removal norm, edges_taken field, vacuous-replay clause). Mechanism smoke _mech (SMOKE_PER_LEVEL 2, H 3, 2 waves, 10
+roots; receipt logs/crossfoster1/chain_smoke_mech.jsonl, run before the
+stall-stat rename; replay 2 / 2 exact) and the calibration above, both
+on the dirty pre-seal tree; a clean-tree seal smoke (_seal) on the
+committed instrument is receipted with this entry's commit (or the
+next) before launch. Smoke library directories are deleted after their
+receipts are written (their shas in the receipts are not resolvable).

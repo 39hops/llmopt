@@ -2,7 +2,7 @@
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
  "_last_accept": {
   "paths": [],
-  "reason": "CROSSFOSTER donor: libraries are data artifacts pinned via donor.json, not logs receipts"
+  "reason": "PRE-REG VERIFIED-ENDOGENOUS-DATA-CROSSFOSTER-1-CHAIN-DESK: calibration, mechanism-smoke and determinism-probe receipts"
  },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
@@ -200,6 +200,47 @@
    "sha256": "fba2d30fd1d37d6cd685e5f10b2f21774f1b2617277f78a165b4b6fbe7ab140f",
    "source": "results",
    "tracked": true
+  },
+  "logs/crossfoster1/chain.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/crossfoster1/chain.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/crossfoster1/chain.log": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/crossfoster1/chain_determinism_probe.jsonl": {
+   "bytes": 788,
+   "exists": true,
+   "sha256": "4d0dd0520277c720bb1a92ac8323a49e6afbd899a913a54f55975a495d66f515",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/crossfoster1/chain_smoke_calib.jsonl": {
+   "bytes": 35530,
+   "exists": true,
+   "sha256": "3fcfc347618f7d05c3c2b78f8571349f68d4698beb534d2b6a0fd59f13e71d91",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/crossfoster1/chain_smoke_mech.jsonl": {
+   "bytes": 5227,
+   "exists": true,
+   "sha256": "9fa9d0207009174318ac09eef2dc609127a3dd73a1537101cbd413d3f7f39fed",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/crossfoster1/chain_smoke_seal.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/crossfoster1/crossfoster1c.DONE": {
+   "exists": false,
+   "source": "prereg"
   },
   "logs/crossfoster1/crossfoster1d.DONE": {
    "bytes": 5,
@@ -1159,6 +1200,10 @@
    "sha256": "b173a11a2280024c5190fd7b265f90aa603b4792f396cf6b1e5cb42de8130888",
    "source": "results",
    "tracked": true
+  },
+  "logs/liverun/crossfoster1c.jsonl": {
+   "exists": false,
+   "source": "prereg"
   },
   "logs/liverun/crossfoster1d.jsonl": {
    "bytes": 528,
