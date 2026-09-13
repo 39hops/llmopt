@@ -41,7 +41,7 @@ Census: UNCITED 241, library 84, reproduce-pinned 10, results-cited 457, spec-ci
 | birth19m | birth19m_arith.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 2 |
 | birth19m | birth19m_atoms.py | results-cited | RESULTS, specs | RESULTS×3, specs×2 | — | 1 |
 | birth19m | birth19m_atoms_dose.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 2 |
-| birth19m | birth19m_atoms_ladder.py | results-cited | RESULTS | RESULTS×5 | — | 5 |
+| birth19m | birth19m_atoms_ladder.py | results-cited | RESULTS | RESULTS×5 | — | 6 |
 | birth19m | birth19m_atoms_rule.py | results-cited | RESULTS, specs | RESULTS×4, specs×1 | — | 3 |
 | birth19m | birth19m_atoms_traj.py | results-cited | RESULTS | RESULTS×5 | — | 12 |
 | birth19m | birth19m_atoms_trajgate.py | results-cited | RESULTS | RESULTS×4 | — | 5 |
@@ -98,7 +98,7 @@ Census: UNCITED 241, library 84, reproduce-pinned 10, results-cited 457, spec-ci
 | confluence | confluence.py | UNCITED | — | — | — | — |
 | corner | corner_snap.py | UNCITED | — | — | — | — |
 | cplx | cplx_chain.sh | UNCITED | — | — | — | — |
-| crossfoster | crossfoster_donor.py | results-cited | RESULTS | RESULTS×2 | — | 2 |
+| crossfoster | crossfoster_donor.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 2 |
 | crossfoster1d | crossfoster1d_launch.sh | UNCITED | — | — | — | — |
 | crystal | crystal_recreate_test.py | spec-cited | specs | specs×3 | — | 1 |
 | d2 | d2_verify.py | UNCITED | — | — | — | 1 |

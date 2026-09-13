@@ -150,8 +150,6 @@
   "logs/crossfoster1/donor.log",
   "logs/crossfoster1/crossfoster1d.DONE",
   "logs/liverun/crossfoster1d.jsonl",
-  "data/crossfoster1/D_A.jsonl",
-  "data/crossfoster1/D_B.jsonl",
   "logs/crossfoster1/smoke_calib.jsonl",
   "logs/crossfoster1/smoke_calib2.jsonl",
   "logs/crossfoster1/smoke_seal.jsonl",
@@ -180,5 +178,12 @@
  "instrument_commit": "852da04f (folds; sealed at 55f78979)",
  "amended_by": [
   "AMENDMENT VERIFIED-ENDOGENOUS-DATA-CROSSFOSTER-1-DONOR-AUDIT"
- ]
+ ],
+ "frozen_artifacts": {
+  "note": "the libraries are tracked data artifacts, not logs/ receipts; their sha256 is pinned inside the locked logs/crossfoster1/donor.json (D_A / D_B file_sha256)",
+  "paths": [
+   "data/crossfoster1/D_A.jsonl",
+   "data/crossfoster1/D_B.jsonl"
+  ]
+ }
 }

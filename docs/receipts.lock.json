@@ -1,14 +1,10 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
+ "_last_accept": {
+  "paths": [],
+  "reason": "CROSSFOSTER donor: libraries are data artifacts pinned via donor.json, not logs receipts"
+ },
  "receipts": {
-  "data/crossfoster1/D_A.jsonl": {
-   "exists": false,
-   "source": "prereg"
-  },
-  "data/crossfoster1/D_B.jsonl": {
-   "exists": false,
-   "source": "prereg"
-  },
   "logs/archive/ceiling_probe.log": {
    "bytes": 3176,
    "exists": true,
@@ -206,20 +202,32 @@
    "tracked": true
   },
   "logs/crossfoster1/crossfoster1d.DONE": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 5,
+   "exists": true,
+   "sha256": "8221ac66be71558c921fb44cfb66f7997699aea754d917763882d6d9eddc836e",
+   "source": "results",
+   "tracked": true
   },
   "logs/crossfoster1/donor.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 2646396,
+   "exists": true,
+   "sha256": "fb9e4d2336dfa3a7c2e5e815206580c77891884aef5a745d62e952472e4e4880",
+   "source": "results",
+   "tracked": true
   },
   "logs/crossfoster1/donor.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 2910,
+   "exists": true,
+   "sha256": "726f236edd14986638b9acf2104322ae15359050b1e6e31686f5f1409989d1d1",
+   "source": "results",
+   "tracked": true
   },
   "logs/crossfoster1/donor.log": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 17574,
+   "exists": true,
+   "sha256": "7b5096f0c8806f67624e436775b46eeb4d9035423c063b942d7770cde6f576c5",
+   "source": "results",
+   "tracked": true
   },
   "logs/crossfoster1/smoke_calib.jsonl": {
    "bytes": 3173,
@@ -1153,8 +1161,11 @@
    "tracked": true
   },
   "logs/liverun/crossfoster1d.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 528,
+   "exists": true,
+   "sha256": "cf260794d40f87e8cd3135bf4711f18eafc7a6b6b986013a3bcc2df591e00d33",
+   "source": "results",
+   "tracked": true
   },
   "logs/liverun/dfaharm0.jsonl": {
    "bytes": 518,

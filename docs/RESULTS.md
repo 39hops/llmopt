@@ -72628,3 +72628,126 @@ Nothing scientific changes: donors, population size and band, K = 1,
 N_RETAIN 6,000, 4 waves x 8, exclusions, oracle, canonical identity,
 the stage thresholds and the banked four-cell rung stand as sealed.
 No recipient birth is authorized by this amendment.
+
+## OBSERVATION VERIFIED-ENDOGENOUS-DATA-CROSSFOSTER-1-DONOR: DONOR-HISTORIES-DEGENERATE — the two function-matched seed-2 donors (forward v backward OneCycle, one shared W_0) generate near-identical oracle-verified histories under the sealed identical generation law: on 6,000 retained roots (of 15,900 processed; libraries accessible in size) their first verified next steps coincide canonically on 5,588 rows (93.1 %, above the registered 90 % stop), the two libraries' cross-model teacher-forced CE shows no self-preference beyond 0.003 nats, and even the union of ALL verified rows per donor overlaps 89 to 92 %, with a donor-specific verified row on 1,075 of the 6,000 roots (17.9 %); the stage books and STOPS as sealed: the four-cell cross-fostered replay rung is NOT BANKED as designed (its data contrast would live on 412 of 6,000 rows, 0.24 % of the recipient stream) and any redesign is a new Artin GO; prior 5 hits 1 miss (2026-09-13 local, Mac; liverun crossfoster1d at 656970e8, 14.6 h, zero training; one donor pair, one generator law; the libraries data/crossfoster1/D_A.jsonl and D_B.jsonl are frozen and sha-locked; no recipient birth follows)
+
+**What ran** (scratch/crossfoster_donor.py under liverun crossfoster1d
+at 656970e8, armed 02:12 UTC 09-13, disarmed rc 0 at 16:49 UTC, tree
+clean; the driver's source sha 0c648c78... is the sealed 852da04f
+instrument plus the second audit pass's docstring-only folds; donor
+digests 4633efe5d376f911 (A) / 4beeedec5f9f5e91 (B) and the census
+W_0 digest eb4b0bb427f86972 asserted at load). 15,900 roots processed
+in the registered order out of the 24,000-root population, 390,112
+samples per donor (32 per root on the 12,191 sampled roots), exact
+oracle on every distinct candidate. The receipt's temperature 0.7 and
+max_new 120 are recorded values realized by the frozen sampler's own
+source (llmopt.lab.gate.sample_wave_lp hard-codes both), not knobs the
+driver passes; its per-root log covers the 12,191 sampled roots (the
+3,709 excluded roots are counted in the accounting, not logged per
+root).
+
+**Accounting (15,900 processed).** retained 6,000; excluded as base-
+diet strings 3,117 (19.6 %); excluded as gate-band 39; duplicate roots
+457; generation failures 96; inadequate on both donors 4,981;
+inadequate on A only 373; on B only 837. Per-donor adequacy on the
+12,191 sampled roots: A 0.561, B 0.523. Sampling: distinct candidates
+per sample A 0.39 / B 0.44; PASS per distinct 0.056 / 0.046; PASS per
+sample 0.022 / 0.020; identity rejections 59 / 69. Retained level mix:
+4: 2,957 (49 %), 3: 1,227 (20 %), 7: 890 (15 %), 5: 463 (8 %), 6: 463
+(8 %) (the population's 40 / 15 / 15 / 15 / 15 mix filtered by level-
+dependent adequacy; a recipient dose built from these libraries would
+carry this mix, not the atoms shard's 40 / 15 / 15 / 15 / 15). Wall 52,592 s = 14.6 h (3.3 s per processed root
+against the calibration's 2.1 s; inside the 8 to 16 h fence).
+
+**Stage law: DONOR-HISTORIES-DEGENERATE.** Libraries D_A and D_B: 6,000
+rows each, identical root support, canonical overlap 5,588 rows
+(0.9313 >= 0.9; exact overlap also 5,588). 412 rows differ (6.9 %):
+by level 3: 118 of 1,227 (9.6 %), 4: 191 of 2,957 (6.5 %), 5: 31 of
+463 (6.7 %), 6: 47 of 463 (10.2 %), 7: 25 of 890 (2.8 %). Of the 5,588
+identical rows, 4,273 came from the same sampling seed in both donors
+(the same wave and slot) and 1,315 from different seeds. The
+differing rows, spot-checked (unquantified; no classification is
+receipted), are alternative decompositions of the same integral (a
+sum split one way v another, one donor finishing the integral where
+the other splits it, and in at least one case a zero-term padding that
+the exact-equality identity rejection lets through as distinct);
+SOLVED flags among them A 174 / B 143.
+
+**Descriptive readouts.**
+1. Cross-model teacher-forced CE (eligible positions, the trainer's
+   encoding): A on D_A 0.2907, A on D_B 0.2917, B on D_A 0.3232, B on
+   D_B 0.3204. Each donor scores its own library lower by 0.001 (A)
+   and 0.003 (B) nats: no self-preference beyond the registered 0.01.
+2. Union readout (all distinct PASS rows per donor on the retained
+   roots, unmatched dose): A 7,576 rows, B 7,377 rows, canonical
+   overlap 6,777 (89.5 % of A's union, 91.9 % of B's); a donor-
+   specific verified row exists on 1,075 of the 6,000 roots (17.9 %).
+   Under the most permissive retention the histories would still
+   coincide on about nine rows in ten. The union numbers are receipt-
+   only (the libraries carry the first PASS row per root, so they
+   cannot be recomputed from the frozen libraries).
+3. Novelty v the base diet: 5 of 6,000 nxt strings per library are
+   diet strings (0.08 %); solved fraction A 0.692 / B 0.687; nxt token
+   length median 20 in both.
+4. First-wave rows: A 5,764 / B 5,515 of 6,000 (the first PASS usually
+   arrives in the first 8 samples).
+
+**Consequence (sealed).** The stage stops. The four-cell replay
+factorial (forward / backward writer x D_A / D_B) is NOT BANKED as
+designed (never launched under any outcome): with 412 differing rows in a 6,000-row insert into a
+164,896-row diet, the donor-history contrast would occupy 0.24 % of
+the recipient stream, below anything the 120 gate or the learned-
+update dependence instrument could attribute. The libraries are
+frozen (D_A sha 63c5e0efc7ef..., D_B sha 08b1047578dc...) and locked
+for any redesign, which is a new Artin GO (candidates the pre-reg
+named: a different retention law, multi-ply chains, all-PASS
+unmatched-dose libraries; none licensed here).
+
+**Reading (descriptive, no mechanism claim).** Two models that gate
+within two solves of each other, share an initialization and differ
+only in the direction of one learning-rate schedule produce, under one
+verified one-step generator at temperature 0.7, the same verified
+data on 93 % of the roots where both succeed, and disagree on
+decomposition style rather than on which integrals they can advance.
+The identity of the verified data history is, for this donor pair and
+this generator, almost entirely determined by the root population, the
+oracle and the shared sampling-seed law (4,273 of the 5,588 identical
+rows, 76 %, arrived at the same wave and slot under the same seed),
+not by the writer. This is the smallest writer contrast
+the house holds; a stronger writer contrast or a multi-ply generator
+could separate the histories more, and neither is licensed by this
+entry.
+
+**Registered prior: 5 hits 1 miss.** (1) accessible in size (p 0.9):
+HIT (6,000 retained of 15,900; AMENDMENT -AUDIT expected about
+15,400). (2) canonical
+overlap >= 0.9 (p 0.75): HIT (0.931). (3) per-donor adequacy 0.45 to
+0.65 (p 0.7): HIT (0.561 / 0.523). (4) diet exclusion 15 to 35 % (p
+0.7): HIT (19.6 % of processed, 19.7 % of generated roots). (5) no self-preference beyond 0.01 nats (p 0.6):
+HIT (0.001 / 0.003). (6) donor-specific rows on >= 20 % of roots (p
+0.6): MISS (17.9 %). Family track record (30 / 21 after MEZO-SIGNAL-
+DESK-0): 35 hits 22 misses.
+
+**Fences.** One donor pair (one seed, the weakest writer contrast the
+house holds), one generator law (the 120-gate sampler at temperature
+0.7, one-step rows; PASS rows are not unique per root and "first in
+sampling order" is the frozen tie-break, so the 412 differing rows may
+be tie-break artifacts rather than writer differences), one device (mps; the
+libraries are a single frozen draw identified by sha; a rerun would
+not reproduce them bit-exactly); the diet exclusion removed 19.6 % of
+roots, so the population is the generator's space minus the training
+data; the stage measures data, not models: no gate on any new model,
+no training, no mechanism claim; the DEGENERATE clause was a house
+addition registered before data (AMENDMENT -AUDIT item 5). Nothing
+here revises L67980 or authorizes a birth.
+
+**Receipts** (locked with this entry): logs/crossfoster1/donor.json,
+logs/crossfoster1/donor.jsonl, logs/crossfoster1/donor.log,
+logs/crossfoster1/crossfoster1d.DONE, logs/liverun/crossfoster1d.jsonl,
+data/crossfoster1/D_A.jsonl, data/crossfoster1/D_B.jsonl (tracked,
+1.5 MB each; the frozen libraries are the artifact this stage exists
+to produce). logs/crossfoster1/donor.json is 2.6 MB because of its
+12,191-entry per-root log (root seed, cur, PASS counts, retained flag):
+tracked as the evidence record of the retention, with donor.jsonl
+(2.9 KB) the same receipt minus the log. The smokes were locked with
+the pre-reg and its audit.
