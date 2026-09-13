@@ -1840,6 +1840,18 @@ The compression corner (pre-reg 2026-07-28 night): rational- snap (direct, exact
 
 - `snap_sd(sd, Q)`
 
+### scratch/crossfoster_donor.py
+VERIFIED-ENDOGENOUS-DATA-CROSSFOSTER-1, donor-library stage (PRE-REG VERIFIED-ENDOGENOUS-DATA-CROSSFOSTER-1-DONOR). Zero training. Builds the two matched donor libraries D_A = G(W_A) and D_B = G(W_B) from the two function-matched seed-2 specimens of WRITER-TRAJECTORY-CENSUS-0:   A = forward OneCycle final, checkpoints/gallery19m_phase_s2.pt   B = backward OneCycle final, checkpoints/gallery19m_backsched_s2.pt (both from the seed-2 W_0; state digests asserted against logs/writertraj0/census.json; the census receipts are the shared-W_0 and function-band evidence and are re-read, never recomputed, here).
+
+- `adjudicate_size(retained)`
+- `adjudicate(retained, overlap_rows, n_rows)` — Pure stage law: DONOR-INACCESSIBLE if fewer than N_RETAIN roots are
+- `sha256_file(p)`
+- `root_order()` — Fixed interleaved order: round-robin over levels 3..7 with level 4
+- `load_donor(name, tok, dev)`
+- `generate_for_root(model, tok, dev, cur, root_index)` — All distinct PASS candidates of one donor for one root, in sampling
+- `teacher_forced_ce(model, tok, rows, dev)` — Mean CE over eligible label positions of the trainer's encoding of
+- `main()`
+
 ### scratch/crystal_recreate_test.py
 Provenance falsification test for docs/assets/neurons-19m.png's RIGHT panel (Artin's ask 2026-08-08): recreate it two ways and let the pixels decide.
 

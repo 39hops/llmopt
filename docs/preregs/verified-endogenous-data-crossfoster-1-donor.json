@@ -1,0 +1,167 @@
+{
+ "name": "VERIFIED-ENDOGENOUS-DATA-CROSSFOSTER-1-DONOR",
+ "program": "VERIFIED-ENDOGENOUS-DATA-CROSSFOSTER-1",
+ "note": "Machine-readable form of PRE-REG VERIFIED-ENDOGENOUS-DATA-CROSSFOSTER-1-DONOR (donor-library / zero-training stage; the prose governs). No recipient birth authorized; the foreign-writer program stays parked.",
+ "registered": "2026-09-12 (Mac local)",
+ "machine": "mac",
+ "status": "sealed; Artin GO 2026-09-12 21:30 EDT for DESIGN + PREREG + DONOR-LIBRARY stage on a clean auditor",
+ "donors": {
+  "A": {
+   "path": "checkpoints/gallery19m_phase_s2.pt",
+   "writer": "forward OneCycle, seed 2",
+   "gate": "64 / 120 (RESULTS L28274)",
+   "state_digest_prefix": "4633efe5d376f911"
+  },
+  "B": {
+   "path": "checkpoints/gallery19m_backsched_s2.pt",
+   "writer": "backward OneCycle, seed 2",
+   "gate": "62 / 120 (RESULTS L28272)",
+   "state_digest_prefix": "4beeedec5f9f5e91"
+  },
+  "shared_w0": "seed 2, digest eb4b0bb427f86972... (logs/writertraj0/census.json w0_seed2_state_digest; census artifact paths for step 15420 asserted equal to the donor files)",
+  "function_band": "VERDICT WRITER-TRAJECTORY-CENSUS-0 L67980 (64 v 62 within the c +- 7 band)"
+ },
+ "root_population": {
+  "band": 8800000,
+  "seed_law": "8,800,000 + 1000 * level + 10 + i",
+  "i0": 10,
+  "levels": [
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "n_per_level": {
+   "3": 3600,
+   "4": 9600,
+   "5": 3600,
+   "6": 3600,
+   "7": 3600
+  },
+  "population": 24000,
+  "order": "interleaved 3, 4, 5, 4, 6, 7, i ascending",
+  "generator": "llmopt.lab.gen._gen_isolated(level, seed) -> Integral(sstr(expr), x)",
+  "exclusions": [
+   "generation failure",
+   "norm(cur) in gate band (tenet_d2_revdiet.gate_band_exprs)",
+   "norm(cur) in the D2-excised stock diet's cur or nxt strings",
+   "duplicate norm(cur)"
+  ],
+  "i_lt_10_excluded_because": "the first pre-band-split mechanism smoke touched i < 4 of this band (its receipt was not kept; the exclusion is conservative)",
+  "smoke_band": 8900000
+ },
+ "generation_law": {
+  "sampler": "llmopt.lab.gate.sample_wave_lp (the 120-gate sampler)",
+  "waves": 4,
+  "wave": 8,
+  "samples_per_donor_per_root": 32,
+  "temperature": 0.7,
+  "max_new": 120,
+  "sample_seed_law": "7,700,000 + 1000 * root_index + 8 * wave + b (identical for both donors)",
+  "prompt": "Current: <cur>\\nHints: none\\nStep: ",
+  "dedup": "whitespace-stripped text",
+  "identity_rejection": "norm(candidate) == norm(cur) rejected before the oracle",
+  "oracle": "llmopt.lab.verify.verify_wave (sympy, fork-timeboxed 20 s)",
+  "canonical_row_identity": "(norm(cur), norm(nxt)), norm = whitespace removal"
+ },
+ "retention": {
+  "K": 1,
+  "rule": "a root is retained iff both donors supply >= 1 distinct PASS candidate; each donor contributes its first PASS candidate in sampling order",
+  "n_retain": 6000,
+  "dose": "6,000 rows per library = the booked atoms-shard dose (3.5 % of the stock diet)",
+  "K2_note": "K = 2 inaccessible on the calibration smoke (3 of 75 both-adequate); not registered"
+ },
+ "row_schema": [
+  "cur",
+  "nxt",
+  "level",
+  "rule=donor",
+  "source=donor-A|donor-B",
+  "root_index",
+  "root_seed",
+  "sample_seed",
+  "wave",
+  "solved"
+ ],
+ "exposure_law": "ATOM-DIET law reused unchanged: library interleaved via C.stock_epoch_stream over the augmented length-sorted enc, 5,140 batches per epoch x 3 epochs, in-driver gate-band excision (schema mechanically compatible, tested)",
+ "stage_law": {
+  "DONOR-INACCESSIBLE": "retained < 6,000",
+  "DONOR-HISTORIES-DEGENERATE": "canonical overlap of D_A and D_B >= 0.9 of library size (inclusive)",
+  "DONOR-ACCESSIBLE": "otherwise",
+  "code": "scratch/crossfoster_donor.adjudicate (tests/test_crossfoster_donor.py)"
+ },
+ "descriptive_readouts": [
+  "yield per donor",
+  "adequacy per donor",
+  "retained-root count and level mix",
+  "exact and canonical overlap",
+  "novelty v diet",
+  "solved fraction",
+  "nxt token-length median",
+  "cross-model teacher-forced CE (A/B on D_A/D_B)",
+  "union readout (all PASS rows per donor: sizes, overlap, roots with a donor-specific row)"
+ ],
+ "banked_not_launched": {
+  "rung": "cross-fostered REPLAY factorial: forward / backward writer x D_A / D_B on one fresh recipient W_0 (fresh unspent seed), same architecture, base population, exposure, device, oracle",
+  "mechanism_precondition": "function matching of the four cells",
+  "primary_mechanism_readout": "the causal learned-update dependence instrument (scratch/writertraj_depend.py) with writer main effect, donor-history main effect and interaction frozen before births",
+  "live_loop": "banked only if the replay factorial establishes a causal donor-history effect"
+ },
+ "registered_prior": {
+  "accessible_in_size": "p 0.9",
+  "degenerate_overlap_ge_0.9": "p 0.75",
+  "adequacy_0.45_to_0.65": "p 0.7",
+  "diet_exclusion_15_to_35_pct": "p 0.7",
+  "no_self_preference_ce_within_0.01": "p 0.6",
+  "donor_specific_rows_on_ge_20pct_roots": "p 0.6"
+ },
+ "calibration": {
+  "receipts": [
+   "logs/crossfoster1/smoke_calib.jsonl",
+   "logs/crossfoster1/smoke_calib2.jsonl"
+  ],
+  "band": 8900000,
+  "roots": 100,
+  "waves": 4,
+  "both_adequate": "39 of 75 non-excluded",
+  "diet_excluded": 24,
+  "overlap": "37 of 39",
+  "provenance": "pre-seal, dirty tree"
+ },
+ "fences": [
+  "one donor pair, one seed, the weakest writer contrast",
+  "sampler temperature fixed by the gate function",
+  "mps sampling run-level nondeterministic: the libraries are a single frozen draw identified by sha",
+  "PASS is not unique per root; first-in-order is the frozen tie-break",
+  "measures data, not models; no training, no gate on a new model, no mechanism claim"
+ ],
+ "cost": "about 2.4 s per root; 8 to 16 h single process",
+ "liverun_ids": [
+  "crossfoster1d"
+ ],
+ "receipts": [
+  "logs/crossfoster1/donor.json",
+  "logs/crossfoster1/donor.jsonl",
+  "logs/crossfoster1/donor.log",
+  "logs/crossfoster1/crossfoster1d.DONE",
+  "logs/liverun/crossfoster1d.jsonl",
+  "data/crossfoster1/D_A.jsonl",
+  "data/crossfoster1/D_B.jsonl",
+  "logs/crossfoster1/smoke_calib.jsonl",
+  "logs/crossfoster1/smoke_calib2.jsonl",
+  "logs/crossfoster1/smoke_seal.jsonl"
+ ],
+ "instrument": [
+  "scratch/crossfoster_donor.py",
+  "scratch/crossfoster1d_launch.sh",
+  "tests/test_crossfoster_donor.py"
+ ],
+ "does_not_authorize": [
+  "any recipient birth",
+  "the four-cell rung",
+  "a live verified-memory loop",
+  "changes to K / dose / generator / population after the seal",
+  "any foreign-writer work"
+ ]
+}

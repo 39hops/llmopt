@@ -1,10 +1,14 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
- "_last_accept": {
-  "paths": [],
-  "reason": "VERDICT MEZO-SIGNAL-DESK-0: desk receipts + DONE + liverun"
- },
  "receipts": {
+  "data/crossfoster1/D_A.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "data/crossfoster1/D_B.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/archive/ceiling_probe.log": {
    "bytes": 3176,
    "exists": true,
@@ -200,6 +204,39 @@
    "sha256": "fba2d30fd1d37d6cd685e5f10b2f21774f1b2617277f78a165b4b6fbe7ab140f",
    "source": "results",
    "tracked": true
+  },
+  "logs/crossfoster1/crossfoster1d.DONE": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/crossfoster1/donor.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/crossfoster1/donor.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/crossfoster1/donor.log": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/crossfoster1/smoke_calib.jsonl": {
+   "bytes": 3173,
+   "exists": true,
+   "sha256": "f7db0cfe4bd4665b8f717142333e41acc2a82d4a032815e2343a08e2c071b7d1",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/crossfoster1/smoke_calib2.jsonl": {
+   "exists": true,
+   "pending": true,
+   "source": "prereg"
+  },
+  "logs/crossfoster1/smoke_seal.jsonl": {
+   "exists": true,
+   "pending": true,
+   "source": "prereg"
   },
   "logs/curric1/arms.jsonl": {
    "bytes": 739,
@@ -1096,6 +1133,10 @@
    "sha256": "b173a11a2280024c5190fd7b265f90aa603b4792f396cf6b1e5cb42de8130888",
    "source": "results",
    "tracked": true
+  },
+  "logs/liverun/crossfoster1d.jsonl": {
+   "exists": false,
+   "source": "prereg"
   },
   "logs/liverun/dfaharm0.jsonl": {
    "bytes": 518,
