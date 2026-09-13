@@ -1,5 +1,9 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
+ "_last_accept": {
+  "paths": [],
+  "reason": "CROSSFOSTER donor: full smoke receipt paths cited"
+ },
  "receipts": {
   "data/crossfoster1/D_A.jsonl": {
    "exists": false,
@@ -229,14 +233,32 @@
    "tracked": true
   },
   "logs/crossfoster1/smoke_calib2.jsonl": {
+   "bytes": 16810,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "fe67ec05bab3c7789a3e593ca6791a07bc59f193414b86c605fbcc29c51773e9",
+   "source": "results",
+   "tracked": true
   },
   "logs/crossfoster1/smoke_seal.jsonl": {
+   "bytes": 4773,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "fdc8893d67cf0896b2b8213a873e67d4c64aad5f6d49266b566a441c911ddd8d",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/crossfoster1/smoke_seal2.jsonl": {
+   "bytes": 4848,
+   "exists": true,
+   "sha256": "776c0578fac5d4a64fee349ca2b85590f7d4ec30e3efe997e813562ec5ce0d6c",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/crossfoster1/smoke_seal3.jsonl": {
+   "bytes": 4849,
+   "exists": true,
+   "sha256": "32ebba08b3d869569b1f6d653ab220b2f8f71e83cc6aa876fbade9e09641b163",
+   "source": "results",
+   "tracked": true
   },
   "logs/curric1/arms.jsonl": {
    "bytes": 739,

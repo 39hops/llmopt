@@ -9,17 +9,18 @@
   "A": {
    "path": "checkpoints/gallery19m_phase_s2.pt",
    "writer": "forward OneCycle, seed 2",
-   "gate": "64 / 120 (RESULTS L28274)",
+   "gate": "64 / 120 re-gated on the final file by WRITER-TRAJECTORY-CENSUS-0 (RESULTS L67980; L28274 gates the m015300 milestone)",
    "state_digest_prefix": "4633efe5d376f911"
   },
   "B": {
    "path": "checkpoints/gallery19m_backsched_s2.pt",
    "writer": "backward OneCycle, seed 2",
-   "gate": "62 / 120 (RESULTS L28272)",
+   "gate": "62 / 120 (RESULTS L28272, measured on backsched_s2; re-gated 62 at L67980)",
    "state_digest_prefix": "4beeedec5f9f5e91"
   },
   "shared_w0": "seed 2, digest eb4b0bb427f86972... (logs/writertraj0/census.json w0_seed2_state_digest; census artifact paths for step 15420 asserted equal to the donor files)",
-  "function_band": "VERDICT WRITER-TRAJECTORY-CENSUS-0 L67980 (64 v 62 within the c +- 7 band)"
+  "function_band": "VERDICT WRITER-TRAJECTORY-CENSUS-0 L67980 (64 v 62 within the c +- 7 band)",
+  "digest_assertion": "driver asserts donor state digests start with 4633efe5d376f911 / 4beeedec5f9f5e91 and the census W_0 digest with eb4b0bb427f86972"
  },
  "root_population": {
   "band": 8800000,
@@ -40,7 +41,7 @@
    "7": 3600
   },
   "population": 24000,
-  "order": "interleaved 3, 4, 5, 4, 6, 7, i ascending",
+  "order": "sorted by fractional progress (i + 0.5) / N_PER_LEVEL[level], ties by level then i: every prefix carries the population's level mix (level 4 = 40 %)",
   "generator": "llmopt.lab.gen._gen_isolated(level, seed) -> Integral(sstr(expr), x)",
   "exclusions": [
    "generation failure",
@@ -49,7 +50,8 @@
    "duplicate norm(cur)"
   ],
   "i_lt_10_excluded_because": "the first pre-band-split mechanism smoke touched i < 4 of this band (its receipt was not kept; the exclusion is conservative)",
-  "smoke_band": 8900000
+  "smoke_band": 8900000,
+  "level_mix_note": "atoms shard {4: 2400; 3,5,6,7: 900 each} = level 4 at 2.67x; population = shard mix x 4"
  },
  "generation_law": {
   "sampler": "llmopt.lab.gate.sample_wave_lp (the 120-gate sampler)",
@@ -58,7 +60,7 @@
   "samples_per_donor_per_root": 32,
   "temperature": 0.7,
   "max_new": 120,
-  "sample_seed_law": "7,700,000 + 1000 * root_index + 8 * wave + b (identical for both donors)",
+  "sample_seed_law": "40,000,000 + 1000 * root_index + 8 * wave + b (identical for both donors; disjoint from the smoke sample band 7.9M)",
   "prompt": "Current: <cur>\\nHints: none\\nStep: ",
   "dedup": "whitespace-stripped text",
   "identity_rejection": "norm(candidate) == norm(cur) rejected before the oracle",
@@ -69,7 +71,7 @@
   "K": 1,
   "rule": "a root is retained iff both donors supply >= 1 distinct PASS candidate; each donor contributes its first PASS candidate in sampling order",
   "n_retain": 6000,
-  "dose": "6,000 rows per library = the booked atoms-shard dose (3.5 % of the stock diet)",
+  "dose": "6,000 rows per library = the booked atoms-shard dose (3.5 % of the augmented stream, 3.6 % of the stock diet)",
   "K2_note": "K = 2 inaccessible on the calibration smoke (3 of 75 both-adequate); not registered"
  },
  "row_schema": [
@@ -89,7 +91,8 @@
   "DONOR-INACCESSIBLE": "retained < 6,000",
   "DONOR-HISTORIES-DEGENERATE": "canonical overlap of D_A and D_B >= 0.9 of library size (inclusive)",
   "DONOR-ACCESSIBLE": "otherwise",
-  "code": "scratch/crossfoster_donor.adjudicate (tests/test_crossfoster_donor.py)"
+  "code": "scratch/crossfoster_donor.adjudicate (tests/test_crossfoster_donor.py)",
+  "degenerate_is_house_addition": "the DEGENERATE clause is a house addition beyond the GO's accessible / inaccessible outcomes, registered before data (calibration 37 / 39 overlap)"
  },
  "descriptive_readouts": [
   "yield per donor",
@@ -127,7 +130,8 @@
   "both_adequate": "39 of 75 non-excluded",
   "diet_excluded": 24,
   "overlap": "37 of 39",
-  "provenance": "pre-seal, dirty tree"
+  "provenance": "pre-seal, dirty tree",
+  "expected_processed": 15400
  },
  "fences": [
   "one donor pair, one seed, the weakest writer contrast",
@@ -136,7 +140,7 @@
   "PASS is not unique per root; first-in-order is the frozen tie-break",
   "measures data, not models; no training, no gate on a new model, no mechanism claim"
  ],
- "cost": "about 2.4 s per root; 8 to 16 h single process",
+ "cost": "calibration: 2.1 s per processed root (2.8 s per sampled root); about 15,400 roots processed for 6,000 retained; about 9.6 h (fence 8 to 16 h)",
  "liverun_ids": [
   "crossfoster1d"
  ],
@@ -150,7 +154,9 @@
   "data/crossfoster1/D_B.jsonl",
   "logs/crossfoster1/smoke_calib.jsonl",
   "logs/crossfoster1/smoke_calib2.jsonl",
-  "logs/crossfoster1/smoke_seal.jsonl"
+  "logs/crossfoster1/smoke_seal.jsonl",
+  "logs/crossfoster1/smoke_seal2.jsonl",
+  "logs/crossfoster1/smoke_seal3.jsonl"
  ],
  "instrument": [
   "scratch/crossfoster_donor.py",
@@ -163,5 +169,16 @@
   "a live verified-memory loop",
   "changes to K / dose / generator / population after the seal",
   "any foreign-writer work"
+ ],
+ "smoke_provenance": {
+  "first_smoke": "pre-band-split, touched i < 4 of the 8.8M band, receipt not kept; i0 = 10 excludes it conservatively",
+  "smoke_calib / smoke_calib2": "8.9M band, dirty tree",
+  "smoke_seal": "67af06a0 dirty tree, pre-fold source",
+  "smoke_seal2": "852da04f, regen-dirtied tree, folded source 511fdbc3...",
+  "smoke_seal3": "9a4701f7, clean tree, folded source 511fdbc3..."
+ },
+ "instrument_commit": "852da04f (folds; sealed at 55f78979)",
+ "amended_by": [
+  "AMENDMENT VERIFIED-ENDOGENOUS-DATA-CROSSFOSTER-1-DONOR-AUDIT"
  ]
 }

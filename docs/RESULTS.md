@@ -72513,7 +72513,7 @@ the library as the shard) are built at that GO, not now.
 
 **REGISTERED PRIOR** (house; calibration on the disjoint smoke band,
 100 roots, 4 waves, receipts logs/crossfoster1/smoke_calib.jsonl and
-smoke_calib2.jsonl, pre-seal, dirty tree, disclosed: both-adequate
+logs/crossfoster1/smoke_calib2.jsonl, pre-seal, dirty tree, disclosed: both-adequate
 39 of 75 non-excluded roots, 24 of 100 roots excluded as diet strings,
 canonical overlap 37 of 39 retained rows, teacher-forced CE A / B on
 either library 0.264 / 0.297):
@@ -72550,11 +72550,81 @@ logs/crossfoster1/donor.log, logs/crossfoster1/crossfoster1d.DONE,
 logs/liverun/crossfoster1d.jsonl, data/crossfoster1/D_A.jsonl,
 data/crossfoster1/D_B.jsonl (the libraries: tracked and sha-locked,
 about 1.5 MB each); the smokes logs/crossfoster1/smoke_calib.jsonl,
-smoke_calib2.jsonl (calibration, pre-seal, dirty tree) and
-smoke_seal.jsonl (the sealed instrument, tagged). Machine-readable
+logs/crossfoster1/smoke_calib2.jsonl (calibration, pre-seal, dirty tree) and
+logs/crossfoster1/smoke_seal.jsonl (the sealed instrument, tagged). Machine-readable
 form: docs/preregs/verified-endogenous-data-crossfoster-1-donor.json.
 
 **Does not authorize:** any recipient birth, the four-cell rung, a live
 verified-memory loop, any change to K / dose / generator / population
 after this seal, or any foreign-writer work (target / equilibrium
 propagation, ROME, DFA, SG, zeroth-order stay parked / closed).
+
+## AMENDMENT VERIFIED-ENDOGENOUS-DATA-CROSSFOSTER-1-DONOR-AUDIT (target: PRE-REG VERIFIED-ENDOGENOUS-DATA-CROSSFOSTER-1-DONOR L72387): clean-tree prereg-auditor folds before any registered-band donor output is read — no blocker; donor A's gate re-cited to the census re-gate (64 / 120 at L67980 on the final file; L28274 gates the m015300 milestone), both donor state digests and the shared-W_0 digest now ASSERTED against the sealed prefixes at load, the root order replaced by a fractional-progress sort so every prefix carries the population's level mix (the atoms shard's level 4 is 2.67x the others, not 2x; the old 2:1 interleave under-served level 4 in the consumed prefix), the registered sample-seed band moved to 40.0M (disjoint from every smoke band), the expected wall restated from the calibration (about 15,400 roots processed, about 9.6 h), the DEGENERATE clause marked as a house addition beyond the GO, the smoke provenance completed (the first pre-band-split smoke's receipt was not kept; the tagged re-smokes _seal / _seal2 ran on regen-dirtied trees, _seal3 on the clean folded tree, all at the same source sha), the dose stated as 3.5 % of the augmented stream; K, N_RETAIN, waves, exclusions, oracle, stage thresholds and the banked rung unchanged; instrument commit 852da04f (2026-09-12 local, Mac; no recipient birth authorized)
+
+Auditor (Opus 5, clean worktree at c430441b): no blocker, eight
+should-fixes, seven notes. Each verified before folding.
+
+1. Donor A's gate citation: L28274 (BACKWARD-SCHEDULE-1) gates the
+   phase19m m015300 milestone, not the final file; the final file
+   gallery19m_phase_s2.pt was re-gated by WRITER-TRAJECTORY-CENSUS-0
+   (L68042: "Full re-gates: A 64, B 62"; logs/writertraj0/gates.jsonl).
+   Corrected citation: A 64 / 120 at L67980; B 62 / 120 at L28272
+   (measured on backsched_s2 directly) and re-gated 62 at L67980.
+2. Digests asserted: the driver now refuses unless the loaded donors'
+   state digests start with 4633efe5d376f911 (A) / 4beeedec5f9f5e91
+   (B) and the census W_0 digest starts with eb4b0bb427f86972
+   (previously recorded, not asserted).
+3. Expectation: at the calibration's retention (39 retained of 100
+   processed) 6,000 retained roots need about 15,400 processed (the
+   prose said 12,000 to 14,000); the measured calibration wall is
+   2.1 s per processed root (2.8 s per sampled root), giving about
+   9.6 h, inside the registered 8 to 16 h; the per-root decomposition
+   0.13 + 2 x 4 x 0.28 is about 19 % optimistic and is withdrawn.
+4. Level mix: the shard is {4: 2,400; 3, 5, 6, 7: 900 each} (2.67x),
+   so the population {4: 9,600; others 3,600} is the shard mix x 4 as
+   registered, but the sealed 3, 4, 5, 4, 6, 7 interleave gave level 4
+   only 33 % of any consumed prefix. root_order is now the sort by
+   fractional progress (i + 0.5) / N_PER_LEVEL[level], ties by level
+   then i: every prefix carries the population mix (test: 40 % level 4
+   within 3 points at prefixes 60 / 200 / 300 of 600). A science-
+   neutral change made before any registered-band output exists.
+5. DONOR-HISTORIES-DEGENERATE (canonical overlap >= 0.9) is a HOUSE
+   ADDITION beyond the GO's two outcomes (accessible / inaccessible),
+   motivated by the calibration's 37 / 39 overlap; registered before
+   data, inclusive at 0.9, tested. Stated here as such.
+6. Smoke provenance, complete: the first mechanism smoke (before the
+   smoke band was split off) touched i < 4 of the registered band and
+   its receipt was deleted before sealing; the i < 10 exclusion rests
+   on that recollection and is conservative by 6.
+   logs/crossfoster1/smoke_calib.jsonl and logs/crossfoster1/smoke_calib2.jsonl (calibration, 8.9M band,
+   dirty tree) and logs/crossfoster1/smoke_seal.jsonl (67af06a0, dirty tree) predate the
+   folds; logs/crossfoster1/smoke_seal2.jsonl (852da04f, tree dirtied by the post-commit
+   ledger regen) and logs/crossfoster1/smoke_seal3.jsonl (9a4701f7, CLEAN tree) ran the
+   folded instrument (source sha 511fdbc3... in both, equal to the
+   committed file): 17 roots processed, 6 retained, canonical overlap
+   6 / 6, union rows 6 / 6 with 0 donor-specific roots, adequacy A
+   0.55 / B 0.73, status DEGENERATE on the smoke, unbooked.
+7. Sample seeds: the registered SAMPLE_BAND is now 40,000,000
+   (seeds 40.0M to 64.0M for root_index < 24,000), disjoint from the
+   smoke sample band 7.9M; the root bands were already disjoint
+   (registered roots top out at 8,813,609 < 8,900,000).
+8. Dose: 6,000 rows is 3.5 % of the augmented stream (6,000 /
+   170,490, the booked ATOM-DIET figure) and 3.6 % of the stock diet.
+
+Notes adopted: the dedup key (whitespace-stripped text) and the
+identity rejection (norm) coincide because the sampler stops at a
+newline; the novelty readout counts rows whose canonical nxt is ANY
+diet string (docstring corrected); the recipient's in-driver gate-band
+excision filters nxt as well as cur, so the realized dose can fall
+marginally under 6,000 at recipient time (recorded there); prior 5
+scores the same under either direction of the CE difference; prior 6
+has no calibration support (the union readout postdates the
+calibration; the seal smokes show 0 of 6 donor-specific roots); the
+smoke library directories were deleted (their shas in the smoke
+receipts are not resolvable; the smoke receipts carry the rows'
+counts and readouts). Tests 4 / 4.
+
+Nothing scientific changes: donors, population size and band, K = 1,
+N_RETAIN 6,000, 4 waves x 8, exclusions, oracle, canonical identity,
+the stage thresholds and the banked four-cell rung stand as sealed.
+No recipient birth is authorized by this amendment.
