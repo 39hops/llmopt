@@ -1,6 +1,7 @@
 """VERIFIED-ENDOGENOUS-DATA-CROSSFOSTER-1 donor-stage guards: the root
-order is a fixed interleave with the atoms-shard level mix (level 4 twice
-the others), root seeds follow the registered band law, the sampling seeds
+order is the fractional-progress sort whose every prefix carries the
+population's level mix (level 4 at 40 %), root seeds follow the registered
+band law, the sampling seeds
 are identical for both donors, the stage law (DONOR-INACCESSIBLE /
 DONOR-HISTORIES-DEGENERATE / DONOR-ACCESSIBLE) is pure and inclusive at
 the registered thresholds, and the registered constants are literal."""
