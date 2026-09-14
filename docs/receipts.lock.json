@@ -1,9 +1,5 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
- "_last_accept": {
-  "paths": [],
-  "reason": "CHAIN-DESK seal smoke receipt (clean tree 6267ea97)"
- },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
    "bytes": 3176,
@@ -202,16 +198,25 @@
    "tracked": true
   },
   "logs/crossfoster1/chain.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 4891029,
+   "exists": true,
+   "sha256": "bf87602a17ffca679f449a24c1f54c76c473157d95bf1d9dd031e5f6ebee658f",
+   "source": "results",
+   "tracked": true
   },
   "logs/crossfoster1/chain.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 4448,
+   "exists": true,
+   "sha256": "606a9dd3ee1909e6ca5a50f47a42f20b6b72d000ea3113f134e5680b7e54aca3",
+   "source": "results",
+   "tracked": true
   },
   "logs/crossfoster1/chain.log": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 51168,
+   "exists": true,
+   "sha256": "96caadb1baeb891a61d8e60e8342ff032c054720ca5f14a894e48777a3c20a53",
+   "source": "results",
+   "tracked": true
   },
   "logs/crossfoster1/chain_determinism_probe.jsonl": {
    "bytes": 788,
@@ -235,13 +240,18 @@
    "tracked": true
   },
   "logs/crossfoster1/chain_smoke_seal.jsonl": {
+   "bytes": 7432,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "e7b59034aa037913f11dae173d78bf8df039d01af2479db4c1a6b43b3782df66",
+   "source": "results",
+   "tracked": true
   },
   "logs/crossfoster1/crossfoster1c.DONE": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 5,
+   "exists": true,
+   "sha256": "8221ac66be71558c921fb44cfb66f7997699aea754d917763882d6d9eddc836e",
+   "source": "results",
+   "tracked": true
   },
   "logs/crossfoster1/crossfoster1d.DONE": {
    "bytes": 5,
@@ -1203,8 +1213,11 @@
    "tracked": true
   },
   "logs/liverun/crossfoster1c.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 528,
+   "exists": true,
+   "sha256": "3dfcee7b111bd28df2392e01798cc8836712b43d13f9fb2eee9e54da23d59ccb",
+   "source": "results",
+   "tracked": true
   },
   "logs/liverun/crossfoster1d.jsonl": {
    "bytes": 528,

@@ -72986,3 +72986,157 @@ on the dirty pre-seal tree; a clean-tree seal smoke (_seal) on the
 committed instrument is receipted with this entry's commit (or the
 next) before launch. Smoke library directories are deleted after their
 receipts are written (their shas in the receipts are not resolvable).
+
+## VERDICT VERIFIED-ENDOGENOUS-DATA-CROSSFOSTER-1-CHAIN-DESK: CHAIN-DEGENERATE — iterating the verified donor transition law makes the histories MORE different than one step did but nowhere near the licensing bar: on 2,137 paired multi-ply chains (6,000 projected rows per library, 22,283 roots processed, replay 40 / 40 exact) the min-side effective donor-specific rows are 772 of 6,000 (12.9 %) against the registered >= 3,000; 20.4 % of pairs ever diverge (first divergence at ply 1 / 2 / 3 / 4: 162 / 214 / 57 / 3), the cumulative divergent fraction is 0.076 at ply 1 and 0.176 at ply 2 (214 NEW first divergences at ply 2 among the 1,975 pairs still identical after ply 1: iteration VISIBLE), endpoint canonical overlap 0.837, 12-ply completion never reached (longest paired chain 4); the program VERIFIED-ENDOGENOUS-DATA-CROSSFOSTER-1 is PARKED as sealed; prior 7 hits 2 misses (2026-09-14, Mac)
+
+**What ran** (scratch/crossfoster_chain.py under liverun crossfoster1c
+at 06612fc4, armed 17:58 UTC 09-13, disarmed rc 0 12:32 UTC 09-14,
+tree clean at arm and at exit; source sha 8784ff6c... equal to the
+seal smoke's; donor digests 4633efe5d376f911 / 4beeedec5f9f5e91 and
+the census W_0 digest eb4b0bb427f86972 asserted at load). 22,283 of
+the 24,000 registered roots processed in the fractional-progress
+order until the projection reached 6,000 rows; wall 66,767 s = 18.5 h
+(3.0 s per processed root against the calibration's 2.0 s). Samples
+per donor 391,120 (A) / 405,880 (B), exact oracle on every distinct
+non-visited candidate (distinct 216,709 / 238,471, of which visited-
+rejected 195 / 214 before the oracle; PASS 18,299 / 16,958).
+
+**Accounting (22,283 processed).** excluded-diet 4,449 (20.0 %);
+excluded-band 54; duplicate roots 816; generation failures 118;
+generated and sampled 16,846; inadequate on both donors (fewer than 2
+edges) 13,869; inadequate on A only 291; on B only 549; RETAINED
+2,137 (12.7 % of sampled roots). Per-donor adequacy (>= 2 edges) on
+the sampled roots: A 0.159, B 0.144; by level (generated / A-adequate
+/ B-adequate): 3: 1,788 / 1,032 / 997; 4: 8,621 / 717 / 588; 5: 1,374
+/ 610 / 557; 6: 2,459 / 147 / 117; 7: 2,604 / 180 / 169. Level 4 and
+levels 6 / 7 roots are almost always finished (or stalled) at the
+first verified step by both donors; multi-ply chains live at levels
+3 and 5. Retained level mix 3: 899, 4: 493, 5: 540, 6: 73, 7: 132.
+
+**Chain anatomy (2,137 retained pairs).** L_pair histogram {2: 740,
+3: 1,068, 4: 329}, median 3; L_A {2: 590, 3: 1,179, 4: 368}, L_B {2:
+645, 3: 1,085, 4: 407}; terminals A solved 1,875 / stalled 262, B
+solved 1,817 / stalled 320; both-reach-horizon 0 of 2,137 (no chain
+of either donor exceeded 4 edges anywhere in the run; H = 12 was
+never binding). Terminal divergence (terminal_A != terminal_B) 0.094;
+solve divergence the same 0.094.
+
+**Divergence readouts.** First-divergence histogram {none: 1,701, ply
+1: 162, ply 2: 214, ply 3: 57, ply 4: 3}; pair-ever-divergent 436 /
+2,137 = 0.204. Fraction divergent by ply t among pairs with L_pair >=
+t: t = 1: 0.076 (2,137 eligible), t = 2: 0.176 (2,137), t = 3: 0.153
+(1,397), t = 4: 0.103 (329). Endpoint canonical overlap (state at
+L_pair equal) 0.837. Projected libraries: 6,000 rows each from all
+2,137 retained roots (the 2,137th chain filled the count exactly; no
+truncated chain), row-position overlap 5,227 / 6,000, canonical
+edge-set overlap 5,228, unique canonical edges 6,000 / 6,000;
+EFFECTIVE DONOR-SPECIFIC ROWS 772 (A) / 772 (B), min side 772 = 12.9
+% (bar >= 3,000): CHAIN-DEGENERATE. Specific rows by ply (A): ply 0:
+162 of 2,137 (7.6 %; the one-step stage read 6.9 %), ply 1: 376 of
+2,137 (17.6 %), ply 2: 212 of 1,397 (15.2 %), ply 3: 22 of 329 (6.7
+%). Of the 786 projected rows at or after a pair's first divergence,
+772 are donor-specific (14 re-converge on an identical edge).
+Projected level mix 3: 2,570, 4: 1,101, 5: 1,876, 6: 167, 7: 286 (3 +
+5 = 74.1 %); ply mix 2,137 / 2,137 / 1,397 / 329; solved fraction 0.286
+/ 0.282. P1 ACCESSIBLE: PASS (6,000 of 6,000 rows from 2,137 roots). P0
+REPLAY-EXACT: PASS, 40 / 40 chains (20 roots x both donors)
+reproduced every edge, length and terminal (23.8 s).
+
+**Reading (descriptive, no mechanism claim).** Iteration does what the
+GO asked it to test, and it is visible: of the 1,975 pairs that
+agreed on their first verified step, 214 (10.8 %) fork at the second
+(v 162 of 2,137, 7.6 %, at the first), so the per-step disagreement
+compounds under common random numbers (the post-divergence
+differences are the model -> state -> model loop plus the state-
+conditioned sampling path, not independent noise), and the row-level
+contrast of a multi-ply library (12.9 % canonical-edge specificity
+here) is about twice the one-step stage's row-position contrast (6.9
+% at L72632: a different band, retention law and row kind, so the two
+figures are comparable in size only). It cannot compound further on this root generator because
+the chains end: both donors solve or stall within 2 to 4 verified
+steps on every root, and the horizon never binds. The house's L72632
+reading extends to iterated generation at the depths this generator
+affords: on the roots these donors can advance, the verified history
+is set mainly by the roots, the oracle and the shared sampling seeds,
+with the writer contrast showing at one row in eight after
+iteration. Whether deeper chains (a harder root generator) would
+compound the contrast further is not measured here and not licensed
+by this entry.
+
+**Consequence (sealed).** CHAIN-DEGENERATE: the program
+VERIFIED-ENDOGENOUS-DATA-CROSSFOSTER-1 is PARKED. No stronger donor
+pair, unmatched-dose library, different retention law, horizon or
+generator, and no recipient birth, follow under the GO. The libraries
+data/crossfoster1_chain/D_A_chain.jsonl (sha 802cbc24ad18...) and
+D_B_chain.jsonl (sha a8964bad3069...) are frozen and tracked with
+this entry as the record (1.9 MB each). Revival condition for the program, named for
+the ledger and not banked: a root population whose paired verified
+chains routinely reach 6 or more plies (harder or multi-term roots),
+so the compounding measured at plies 1 to 3 here has room to grow;
+that is a new generator and a new pre-reg.
+
+**Registered prior: 7 hits 2 misses.** (1) accessible within 12,000
+to 20,000 processed roots (p 0.85): MISS (accessible, but at 22,283:
+the realized yield 0.269 rows per processed root v the calibration's
+0.387). (2) NO-FIRE with 300 to 1,200 min-side specific rows (p
+0.85): HIT (772). (3) pair-ever-divergent 0.08 to 0.25 (p 0.7): HIT
+(0.204). (4) divergent fraction by ply 3 exceeds ply 1 by >= 0.03 (p
+0.6): HIT (0.153 v 0.076, +0.077). (5a) both-reach-horizon 0 (p 0.75):
+HIT. (5b) L_pair median 3 (p 0.65): HIT. (6) levels 3 + 5 >= 70 % of
+projected rows (p 0.7): HIT (74.1 %). (7) wall 6 to 14 h (p 0.7): MISS
+(18.5 h; inside the 24 h fence). (8) replay exact (p 0.95): HIT.
+Family track record: 42 hits 24 misses.
+
+**Fences.** One donor pair (the weakest writer contrast the house
+holds), one device (mps; P0 exact within the process, cross-process
+bit-exactness receipted for sampled texts only), one horizon, one
+candidate budget, one tie-break ("first PASS in sampling order": a
+differing edge may be a tie-break artifact rather than a capability
+difference; the bar counts rows because that is what a recipient
+would see); chains are short (2 to 4 edges) on this root generator,
+so "12-ply" names the law, not the realized depth, and nothing here
+speaks to deeper chains; the divergent-fraction-by-ply readout is
+cumulative (first divergence <= t) and cannot fall between plies that
+share a denominator, so its content is the count of NEW first
+divergences per ply (162 / 214 / 57 / 3); common random numbers keep
+the ply-t seeds identical across donors after divergence, so post-
+divergence differences are the model -> state -> model loop plus the
+state-conditioned sampling path, not independent noise; the dose
+equals the -DONOR dose (6,000 rows), so D_A_chain / D_B_chain are
+comparable to D_A / D_B in size only, not in row content (multi-ply
+edges v first-step edges, a different root band and retention law); 35.6 % of the projected rows are first-step
+edges (ply 0) by construction of a chain library; the projected
+libraries are level-skewed (3 + 5 = 74 %) and a recipient dose built
+from them would inherit that mix; the stage measures DATA, not
+models: no gate on any model, no training, no mechanism claim; the
+one-step OBSERVATION L72632 stands and is extended, not revised;
+nothing here revises L67980 or authorizes a birth. Disclosures
+(receipt audit, Opus 5, no blocker): the pre-seal calibration and
+mechanism smokes ran at the 130M sample band that the pre-reg audit
+later moved to 200M, so their sampling seeds overlap the registered
+run's seeds at root indices near 15,000 (different prompts, different
+roots, smoke: true, separate commits and output directories; a
+sampler-RNG coincidence, not data contamination); the determinism
+probe rows carry no commit or source sha and probe donor A only (the
+in-run P0 replay covers both donors within the process); root_seed
+alone is not a unique root key across levels (root_index is).
+
+**Receipts** (locked with this entry): logs/crossfoster1/chain.json
+(4.9 MB: the per-root chain log of 16,846 sampled roots with l_A /
+l_B / terminals / first divergence is the retention and divergence
+evidence and cannot be recomputed from the libraries, which carry
+only the retained edges; force-added under the small-text-receipt
+exception on the same rationale as L72632's donor.json, and named
+here for Artin's eye), logs/crossfoster1/chain.jsonl (the same row
+minus the log), logs/crossfoster1/chain.log,
+logs/crossfoster1/crossfoster1c.DONE, logs/liverun/crossfoster1c.jsonl,
+logs/crossfoster1/chain_smoke_seal.jsonl (run at 6267ea97, locked at
+06612fc4); the pre-seal receipts chain_smoke_calib.jsonl,
+chain_smoke_mech.jsonl and chain_determinism_probe.jsonl were locked
+with the pre-reg; data/crossfoster1_chain/D_A_chain.jsonl and
+D_B_chain.jsonl tracked with this entry as frozen artifacts (shas in
+chain.json). Auditors before booking (Opus 5): prereg-auditor one
+blocker (an unreceipted 10.6 % in the Reading, now 214 / 1,975 = 10.8
+%) and five should-fixes folded (chain.json size, two pre-reg fences
+carried, tracking tense, P1 named, cumulative-readout wording);
+receipt-auditor no blocker, disclosures above.
