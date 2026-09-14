@@ -2,7 +2,7 @@
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
  "_last_accept": {
   "paths": [],
-  "reason": "UPDATE-GEOMETRY-CENSUS-0 seal smoke receipt (clean tree 62ce288d)"
+  "reason": "VERDICT UPDATE-GEOMETRY-CENSUS-0: seal smoke cited by full path"
  },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
@@ -1302,8 +1302,11 @@
    "tracked": true
   },
   "logs/liverun/ugc0.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 510,
+   "exists": true,
+   "sha256": "f38066f0ccbf738af4c460c5994952d6fe9b470c3f46b4ed0569204ccef3f5cc",
+   "source": "results",
+   "tracked": true
   },
   "logs/liverun/writercaf1-qual-k1.jsonl": {
    "bytes": 538,
@@ -4939,16 +4942,25 @@
    "tracked": true
   },
   "logs/ugc0/census.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 742663,
+   "exists": true,
+   "sha256": "9151ece724ea3cee29d6b12720f431c7d38a9d9358df1643eb3cdd500ff00fb8",
+   "source": "results",
+   "tracked": true
   },
   "logs/ugc0/census.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 215352,
+   "exists": true,
+   "sha256": "695b047125d31f816b60d083cc6295a875d43c4bae03acce3e88dbba1c8be65a",
+   "source": "results",
+   "tracked": true
   },
   "logs/ugc0/census.log": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 2531,
+   "exists": true,
+   "sha256": "14e733416c487269f59302484a97f602b74d6752aa4deaf1bd50fac3e6430697",
+   "source": "results",
+   "tracked": true
   },
   "logs/ugc0/smoke_mech.jsonl": {
    "bytes": 24842,
@@ -4965,13 +4977,18 @@
    "tracked": true
   },
   "logs/ugc0/smoke_seal.jsonl": {
+   "bytes": 24872,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "c8c9b7d562d84c6e960382e18bdea19ffef2134dc07701b6f2a5cbc87af14c7c",
+   "source": "results",
+   "tracked": true
   },
   "logs/ugc0/ugc0.DONE": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 5,
+   "exists": true,
+   "sha256": "8221ac66be71558c921fb44cfb66f7997699aea754d917763882d6d9eddc836e",
+   "source": "results",
+   "tracked": true
   },
   "logs/writercaf1/births.jsonl": {
    "exists": false,

@@ -73442,3 +73442,188 @@ prior (5) comparability, mid-grid path binding, SEQ_CAP / BIRTH_BS
 asserted, the reference unit test tightened to 3 x k / d; notes
 adopted (docstring direction clause, rank-deficient S_k definition, the
 null pair's probe diet). Nothing scientific changed.
+
+## VERDICT UPDATE-GEOMETRY-CENSUS-0: RESOLVED / PARTIAL-THIN / RESIDUAL-INDETERMINATE / WRITER-SHARED / LEARNED-DIFFERS-DIFFUSED — on the WRITER-TRAJECTORY-CENSUS-0 pair the FIT-derived top-8 gradient subspace reproduces on HELD batches (raw reliability S_8 0.391 / 0.401 v floor 0.25) but captures only a median 0.252 / 0.266 of a held-out gradient's energy at k = 8 (bar 0.5) and 0.372 / 0.374 at k = 16 (floor 0.25): thin geometry is PARTIAL, not STABLE; mean-centering changes nothing at the finals (centered C_8 0.292 / 0.282; Q = 0.018 / 0.023, the shared mean direction is negligible after training); the two writers' subspaces on the same FIT batches overlap S_8 = 0.645, ABOVE either writer's own FIT-v-HELD reliability (0.39) and below the same-writer rerun pair (0.883): the top gradient directions at the end of training are set by the batches, shared across function-matched models, and only partly reusable across batches; W_0 is a different object (raw C_8 0.935, Q 0.728, participation ratio 1.67: one shared descent direction), and training DIFFUSES it (participation ratio 14, C_8 down by 0.68); descriptively, the finals' capture lives in OUTSIDE (embedding / head / norm, 77 to 80 % of gradient energy, C_8 0.37 to 0.40) while every transformer block reads 0.005 to 0.03 (BLOCK7 0.11 to 0.18), and the observed checkpoint velocity lies almost entirely OUTSIDE the contemporaneous top-16 gradient subspace (own-writer fraction 0.007 / 0.13 on the first interval, 0.023 on B's second, <= 0.0022 on every other); no thin-subspace GO condition fires; the census STOPS as sealed; prior 4 hits 7 misses (2026-09-14, Mac)
+
+**What ran** (scratch/update_geometry_census.py under liverun ugc0 at
+b108cbfe, armed 21:48:30 UTC, disarmed rc 0 21:55:36 UTC 09-14 (426 s
+arm to disarm; the instrument's own wall 394 s = 6.6 min from its
+start record); tree clean at arm (liverun dirty_at_arm false) and at
+the receipt write (tree_dirty false); source sha 79545683...
+equal to the seal smoke's; device mps, float32 gradients, float64
+reductions). Every assertion held: W_0 digest eb4b0bb427f86972...
+equal to the census artifact, A / B final digests 4633efe5d376f911...
+/ 4beeedec5f9f5e91..., mid-grid paths equal to the census A_paths /
+B_paths, no SEQ_CAP / BIRTH_BS, BS 32, d = 18,911,616 over 59 tensors
+(flatten-law digest 562b4de56e30fe14...), state digest identical
+before and after each of the 15 cells, parity <= 4.4e-13 relative on
+every cell (DEBUG-RETENTION never fired; all memmaps deleted).
+Probe: 64 batches x 32 rows drawn as sealed (digest 00eb6c43e4cd995b
+...; level mix of the 2,048 rows 1: 422, 2: 618, 3: 353, 4: 175, 5:
+319, 6: 79, 7: 73, 8: 9; 704 to 7,992 tokens per batch); FIT = the
+first 32, HELD = the last 32.
+
+**Reference (isotropic, identical code).** Raw HELD median C_k 5.1e-8
+/ 1.1e-7 / 2.2e-7 / 3.5e-7 / 7.6e-7 at k = 1 / 2 / 4 / 8 / 16 against
+the analytic floor k / d = 5.3e-8 ... 8.5e-7; Q 0.01563 v 1 / 64 =
+0.015625; two-draw S_k 1.3e-8 ... 7.6e-7; per-group C_8 about 3e-6
+(blocks) and 2.7e-4 (OUTSIDE, d 31,104). Every real cell sits
+five to six orders above the random floor; "near the floor" never
+applies below.
+
+**Ladder (finals, step 15420; thresholds as sealed).**
+0. RESOLUTION: raw S_8(FIT, HELD) A 0.391, B 0.401 >= 0.25: RESOLVED.
+1. THINNESS: raw HELD median C_8 A 0.252, B 0.266 < 0.5 (A's quartiles
+   0.20 / 0.43, min 0.07; B's 0.19 / 0.43, min 0.08); raw HELD median C_16 A 0.372, B 0.374 >=
+   0.25: PARTIAL-THIN.
+2. RESIDUAL: centered HELD median C_8 A 0.292, B 0.282: neither >=
+   0.5 nor (STABLE-THIN and < 0.25): RESIDUAL-INDETERMINATE. At the
+   finals centering is nearly a no-op because the mean gradient is
+   tiny (Q 0.018 / 0.023; mean pairwise cosine 0.022 / 0.032).
+3. WRITER: raw S_8(A, B) 0.645 >= 0.8 x min(self) = 0.313: WRITER-
+   SHARED. Same-writer null pair N3 / N4 (stock_s7 first run v
+   repair) S_8 0.883 (self 0.393 / 0.393). Centered S_8(A, B) 0.626.
+4. LEARNED-v-INIT: W_0 raw HELD median C_8 0.935; finals 0.252 /
+   0.266, both 0.67 to 0.68 below: LEARNED-DIFFERS-DIFFUSED.
+
+**Trajectory (descriptive; raw HELD median C_8 / centered C_8 / Q /
+raw reliability S_8 / raw participation ratio).** W_0: 0.935 / 0.727
+/ 0.728 / 0.645 / 1.67 (top FIT eigenvalue 24.6 of 32: one direction
+carries 77 % of unit-row energy; centered participation ratio 6.6).
+A: 900: 0.433 / 0.282 / 0.178 / 0.410 / 9.6; 3600: 0.316 / 0.277 /
+0.115 / 0.395 / 11.8; 7200: 0.333 / 0.321 / 0.039 / 0.432 / 14.2;
+10800: 0.267 / 0.270 / 0.039 / 0.408 / 14.0; 13500: 0.258 / 0.277 /
+0.021 / 0.398 / 14.3; 15420: 0.252 / 0.292 / 0.018 / 0.391 / 14.1.
+B: 900: 0.720 / 0.656 / 0.135 / 0.663 / 6.9 (loss 1.74, the backward
+schedule's slow start); 3600: 0.444 / 0.313 / 0.191 / 0.396 / 7.7;
+7200: 0.193 / 0.168 / 0.058 / 0.338 / 18.1; 10800: 0.201 / 0.172 /
+0.052 / 0.313 / 17.4; 13500: 0.292 / 0.226 / 0.073 / 0.391 / 12.5;
+15420: 0.266 / 0.282 / 0.023 / 0.401 / 14.1. N3 / N4 at 15420: 0.254
+/ 0.255, centered 0.292 / 0.286, Q 0.017, self 0.393. Writer overlap
+raw S_8(A, B) by state: 0.072 (900), 0.084 (3600), 0.356 (7200),
+0.457 (10800), 0.505 (13500), 0.645 (15420); S_1 0.00 -> 0.81: the two
+writers' top gradient directions are unrelated while B lags and
+converge as the functions converge. Top-8 FIT energy fraction at the
+finals 0.62 (raw), top-16 0.82.
+
+**Groups (secondary descriptive; raw HELD median C_8 at the finals,
+A / B; share of FIT gradient energy).** BLOCK0 0.017 / 0.019 (1.9 %),
+BLOCK1 0.016 / 0.012, BLOCK2 0.025 / 0.025, BLOCK3 0.018 / 0.013,
+BLOCK4 0.013 / 0.005, BLOCK5 0.014 / 0.007, BLOCK6 0.025 / 0.011 (each
+1.7 to 2.4 %), BLOCK7 0.184 / 0.109 (6.9 / 9.2 %), OUTSIDE 0.396 /
+0.367 (80.1 / 76.9 %); Q per block 0.015 to 0.023. At W_0 every group
+reads 0.93 to 0.94 with OUTSIDE at 50 % of the energy. The global
+PARTIAL-THIN reading at the finals is therefore an OUTSIDE (embedding
+/ head / final norm) reading weighted by gradient energy; inside the
+blocks the FIT top-8 subspace captures 0.5 to 2.5 % of a held
+gradient (2e3 to 8e3 above the random 3e-6), with block 7 the only
+block above 0.1.
+
+**Velocity (descriptive only; own-writer / other-writer top-8 fraction
+of ||v||^2).** A: 0 -> 900: 0.007 / 0.007 (W_0 shared); 900 -> 3600:
+0.001 / 0.000; every later interval 0.001 / 0.000.
+B: 0 -> 900: 0.129 / 0.129; 900 -> 3600: 0.023 / 0.000; later 0.001 /
+0.000 (k = 16: <= 0.0022). Cosine of v with the own mean gradient:
+-0.08 (A) and -0.35 (B) on the first interval (descent sign), -0.15 on
+B's second, -0.02 to -0.03 thereafter. The
+checkpoint displacement over hundreds of AdamW steps lies almost
+entirely outside the contemporaneous top-16 task-gradient subspace;
+with unread Adam moments and many steps per interval this is a
+description of where the displacement is, not a criterion.
+
+**Reading (descriptive; the object is the empirical geometry of
+minibatch task-loss gradients).** The narrow hypothesis ("task
+gradients occupy a stable, much thinner geometry") is NOT supported in
+the strong form and not refuted in the weak form on this model. A
+32-batch FIT panel's top-8 directions capture a quarter of a held-out
+batch gradient's energy (top-16: 0.37), reproducibly (reliability
+0.39, N3 / N4 0.88 at the same batches), and five orders above random;
+but three quarters of every held gradient lies outside those
+directions, and inside the transformer blocks nearly all of it does.
+The thinness that exists at the end of training is concentrated in the
+embedding, head and final norm, which hold 77 to 80 % of the gradient
+energy on 31,104 of 18.9 M parameters (the two 40 x 384 tables
+and the final norm; the block norms live in their blocks). The strongest structure is at
+W_0, where one shared descent direction carries 77 % of the energy and
+93.5 % of a held gradient is captured at k = 8; training diffuses that
+into a participation ratio of 14. The two writers reach the same
+gradient geometry as they reach the same function: their overlap on
+the same batches (0.645 at k = 8, 0.81 at k = 1) exceeds either
+writer's own cross-batch reliability, so at this scale the leading
+gradient directions are a property of (model function, batch) more
+than of the writer, and "which batches" matters more than "which
+writer". No thin-subspace GO condition fires; nothing here licenses a
+projected-gradient training rung.
+
+**Consequence (sealed).** PARTIAL-THIN: booked as such; the census
+STOPS (the "freeze and return for a causal GO" branch belongs to a
+STABLE-THIN / RESIDUAL-THIN fire and is not taken; the instrument
+stays as run). Note on the pre-reg heading: it says "seven-axis"
+ladder, counting the GO's seven named outcomes; the sealed ladder
+body registers five axes (0 to 4), all adjudicated here. Banked, still unarmed and now conditioned on this
+reading: PROJECTED-BP-CAUSAL-1 (its condition, a stable reusable thin
+subspace, did not fire at k <= 16 for the global gradient; a future
+pre-reg would have to name the OUTSIDE-weighted structure as its
+target explicitly), DATA-LOCUS-GEOMETRY-1 (the instrument is
+validated: reference floors, parity, reliability), FAILED-WRITER-
+PROJECTION-DESK-0 (descriptive only). No training birth, no market
+analogue, no reopening of parked programs.
+
+**Registered prior: 4 hits 7 misses** (bundled priors score all-or-
+nothing, as registered). (1) RESOLVED: HIT. (2) THINNESS modal STABLE-
+THIN with raw C_8 in 0.4 to 0.7: MISS (PARTIAL-THIN, 0.252 / 0.266).
+(3) MEAN-ONLY with centered C_8 in 0.10 to 0.30: MISS (RESIDUAL-
+INDETERMINATE; the centered values 0.292 / 0.282 were inside the
+range). (4) WRITER-SHARED with S_8(A, B) in 0.6 to 0.9 x min(self):
+MISS (SHARED fired, but the overlap is 1.65 x min(self), above the
+range). (5) W_0 C_8 >= 0.75 and finals >= 0.15 below: HIT (0.935; -0.68
+/ -0.67). (6) Q at W_0 >= 0.7 and finals in 0.2 to 0.5: MISS (0.728;
+finals 0.018 / 0.023, far below). (7) velocity 0 -> 900 own fraction
+>= 0.3 and last interval < 0.2: MISS (0.007 / 0.129; last 0.001).
+(8) N3 / N4 S_8 >= 0.9 x min(self): HIT (0.883 v 0.354). (9) all nine
+groups within 0.15 of the global C_8: MISS (blocks 0.005 to 0.025 v
+global 0.25). (10) reference floors: HIT. (11) wall 20 to 90 min: MISS
+(6.6 min; the cost paragraph over-priced the memmap passes by an
+order of magnitude). Family track record: 46 hits 31 misses.
+
+**Fences.** One writer pair on one W_0 plus one same-writer pair on
+another W_0; one device (mps); one probe population (the stock
+training distribution, gate band excised) at one batch size (32): the
+geometry of batch gradients is batch-size dependent and is read at
+the training grain only; 32 + 32 batches, so every subspace is at most
+32-dimensional and k <= 16 is read against the finite-panel
+reliability and the reference, never enlarged; "thin", "shared" and
+"diffused" name the registered readouts at the registered k, not
+properties of the loss surface; the writer overlap is measured on the
+SAME FIT batches for both writers (the design), so it bounds batch-
+shared structure, and its excess over the cross-batch reliability is
+the reading, not an artifact; groups are column slices of the same
+rows, energy-weighted in the global reading; velocity is descriptive
+(unread AdamW moments, 900 to 3,600 steps per interval); W_0 is one
+random draw; mid-grid states are descriptive; the census measures
+gradients, not training, and no causal claim about what training
+needs is made; nothing here revises L67980 or L68265 and nothing
+authorizes a birth.
+
+**Audits before booking (Opus 5).** prereg-auditor: two blockers
+folded (the OUTSIDE parameter count, 31,104 not 37,248; the headline
+velocity bound, which missed B's second interval at 0.023) and five
+should-fixes (block capture range, random-floor ratio, cosine range,
+wall attribution, exit-cleanliness field); receipt-auditor: no
+blocker, disclosures below.
+
+**Receipts** (locked with this entry): logs/ugc0/census.json (743 KB:
+15 cells with per-k held-capture values, group readouts, pairs,
+velocity, reference, axes), logs/ugc0/census.jsonl (the streamed
+cell / pair / velocity / reference rows), logs/ugc0/census.log,
+logs/ugc0/ugc0.DONE, logs/liverun/ugc0.jsonl; the smokes
+logs/ugc0/smoke_mech.jsonl, logs/ugc0/smoke_mech2.jsonl and
+logs/ugc0/smoke_seal.jsonl were locked with the pre-reg and its seal
+commit. No memmap was retained.
+Disclosures (receipt audit, Opus 5, no blocker): the three smokes'
+per-cell stream files (smoke_*_cells.jsonl) were deleted by the house
+before the pre-reg commit as duplicates of the cell rows the smoke
+receipts carry; the A / B final digest prefixes are asserted literals
+traced to prior booked receipts (the bound census artifact carries
+only the W_0 digest); the N4 path is the repair worktree's absolute
+path, as in writertraj_depend.py.

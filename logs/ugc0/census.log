@@ -1,0 +1,19 @@
+[liverun] armed ugc0 pid 57291 commit b108cbfe worktree /Users/artin/code/llmopt sentinel /Users/artin/code/llmopt/.git/liverun.lock
+[curric] D2 excision: 165028 -> 164896 rows
+[ugc0] cell W0@0: loss 3.8785 Q 0.728 rawC8 0.935 centC8 0.727 rel 0.645 parity 4.6e-14 (16.3s, total 16s)
+[ugc0] cell A@900: loss 0.6198 Q 0.178 rawC8 0.433 centC8 0.282 rel 0.410 parity 3.8e-14 (16.3s, total 33s)
+[ugc0] cell B@900: loss 1.7414 Q 0.135 rawC8 0.720 centC8 0.656 rel 0.663 parity 4.9e-14 (16.7s, total 49s)
+[ugc0] cell A@3600: loss 0.4377 Q 0.115 rawC8 0.316 centC8 0.277 rel 0.395 parity 5.3e-14 (13.6s, total 78s)
+[ugc0] cell B@3600: loss 0.6946 Q 0.191 rawC8 0.444 centC8 0.313 rel 0.396 parity 8.1e-14 (14.9s, total 93s)
+[ugc0] cell A@7200: loss 0.3842 Q 0.039 rawC8 0.333 centC8 0.321 rel 0.432 parity 2.5e-14 (13.8s, total 133s)
+[ugc0] cell B@7200: loss 0.4609 Q 0.058 rawC8 0.193 centC8 0.168 rel 0.338 parity 4.4e-13 (13.7s, total 147s)
+[ugc0] cell A@10800: loss 0.3485 Q 0.039 rawC8 0.267 centC8 0.270 rel 0.408 parity 3.2e-14 (14.2s, total 190s)
+[ugc0] cell B@10800: loss 0.4096 Q 0.052 rawC8 0.201 centC8 0.172 rel 0.313 parity 2.3e-14 (14.0s, total 204s)
+[ugc0] cell A@13500: loss 0.3383 Q 0.021 rawC8 0.258 centC8 0.277 rel 0.398 parity 1.1e-13 (14.1s, total 243s)
+[ugc0] cell B@13500: loss 0.3928 Q 0.073 rawC8 0.292 centC8 0.226 rel 0.391 parity 7.8e-14 (13.4s, total 256s)
+[ugc0] cell A@15420: loss 0.3372 Q 0.018 rawC8 0.252 centC8 0.292 rel 0.391 parity 1.9e-13 (13.8s, total 299s)
+[ugc0] cell B@15420: loss 0.3647 Q 0.023 rawC8 0.266 centC8 0.282 rel 0.401 parity 1.7e-13 (18.5s, total 317s)
+[ugc0] cell N3@15420: loss 0.3380 Q 0.017 rawC8 0.254 centC8 0.292 rel 0.393 parity 3.8e-14 (14.0s, total 360s)
+[ugc0] cell N4@15420: loss 0.3379 Q 0.017 rawC8 0.255 centC8 0.286 rel 0.393 parity 4.2e-14 (13.0s, total 373s)
+[ugc0] written logs/ugc0/census.json: axes {"reliability_S_k": {"A": 0.3911109814679135, "B": 0.40054836440888986}, "resolution": "RESOLVED", "raw_C_k_thin": {"A": 0.2521425997976996, "B": 0.26626597972316607}, "raw_C_k_floor": {"A": 0.37198887586457413, "B": 0.37359001846666196}, "centered_C_k": {"A": 0.29163087692692957, "B": 0.28156820949097405}, "thinness": "PARTIAL-THIN", "residual": "RESIDUAL-INDETERMINATE", "writer_S_k": {"AB": 0.6450546835329608, "self_min": 0.3911109814679135}, "writer": "WRITER-SHARED", "init_delta_C_k": {"W0": 0.9354982284167501, "A": -0.6833556286190505, "B": -0.669232248693584}, "learned_v_init": "LEARNED-DIFFERS-DIFFUSED"} wall 394.4s
+[liverun] disarmed ugc0 rc 0
