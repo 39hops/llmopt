@@ -39,6 +39,38 @@ def test_refusals():
         L.locator("main", "/abs/path")
 
 
+@pytest.mark.parametrize("bad", ["/abs/path", "//host/share/x", "C:\\Users\\a\\x.pt", "C:/Users/a/x.pt", "c:x.pt", "\\\\host\\share\\x",
+                                 "../escape", "a/../../escape", "a/b/../../../c", "", ".", "./", "a\\b"])
+def test_locator_fails_closed_on_path_form(bad):
+    with pytest.raises(ValueError):
+        L.locator("main", bad)
+
+
+def test_valid_nested_relative_round_trip(monkeypatch, tmp_path):
+    monkeypatch.setenv("LLMOPT_WORKTREE_REPAIR", str(tmp_path))
+    (tmp_path / "checkpoints" / "a").mkdir(parents=True)
+    (tmp_path / "checkpoints" / "a" / "b.pt").write_bytes(b"x")
+    loc = L.locator("repair", "./checkpoints//a/b.pt")
+    assert loc["relative_path"] == "checkpoints/a/b.pt"
+    assert L.resolve(loc) == tmp_path / "checkpoints" / "a" / "b.pt"
+
+
+def test_resolve_refuses_escape_through_symlink(monkeypatch, tmp_path):
+    monkeypatch.setenv("LLMOPT_WORKTREE_REPAIR", str(tmp_path / "root"))
+    (tmp_path / "root").mkdir(); (tmp_path / "outside").mkdir()
+    (tmp_path / "root" / "link").symlink_to(tmp_path / "outside")
+    with pytest.raises(ValueError):
+        L.resolve({"worktree_role": "repair", "relative_path": "link/x"})
+    with pytest.raises(ValueError):
+        L.resolve({"worktree_role": "repair", "relative_path": "../outside/x"})
+
+
+def test_repo_relative_wrong_role_raises(monkeypatch, tmp_path):
+    monkeypatch.setenv("LLMOPT_WORKTREE_REPAIR", str(tmp_path))
+    with pytest.raises(ValueError):
+        L.repo_relative(ROOT / "scripts" / "liverun.py", role="repair")
+
+
 def test_repo_relative_and_role_of(monkeypatch):
     monkeypatch.delenv("LLMOPT_WORKTREE_MAIN", raising=False)
     assert L.repo_relative(ROOT / "scripts" / "liverun.py") == os.path.join("scripts", "liverun.py")

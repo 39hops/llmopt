@@ -16,7 +16,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PATTERN = re.compile(r"(/Users/[A-Za-z0-9_.-]+/|/home/[A-Za-z0-9_.-]+/|[A-Za-z]:\\Users\\[A-Za-z0-9_.-]+\\|/mnt/[a-z]/Users/[A-Za-z0-9_.-]+/)")
 # the lint's own pattern text and the locator docstring name the forbidden forms
-SELF = {"tests/test_path_hygiene.py", "llmopt/lab/locator.py"}
+SELF = {"tests/test_path_hygiene.py", "llmopt/lab/locator.py", "tests/test_locator.py"}   # the lint, the locator docstring and its fail-closed tests spell the forbidden forms
 LEGACY_DIRS = ("logs/",)
 LEGACY_FILES = {
     "checkpoints/mathnative_19m_mw1_theta0.json",        # receipt-like artifact of MATHWORLD-1 theta0 (interpreter path recorded at run time)

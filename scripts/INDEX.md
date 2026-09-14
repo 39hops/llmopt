@@ -826,6 +826,12 @@ SUPERSEDED 2026-08-11 by llmopt/lab/figstyle.py + llmopt/lab/figures.py.
 - `grouped_bars(name: str, bins: list[str], series: dict[str, list[tuple[int, int]]], title: str='', png: bool=False) -> Path` — series: label -> [(solved, total) per bin]. Percent bars,
 - `lines(name: str, xs: list, series: dict[str, list[float]], title: str='', xlabel: str='', ylabel: str='', png: bool=False) -> Path` — series: label -> y values over shared xs. Direct end-labels,
 
+### scripts/fold_book.py
+fold_book — the /fold-book chain: fold a draft, lint it, THEN book it, with every stage gated on a real exit code and no partial fold ever reaching the ledger.
+
+- `run(cmd, label)`
+- `main(argv=None)`
+
 ### scripts/gen_catalog.py
 gen_catalog.py — regenerate data/catalog/models.jsonl (EXHAUST, not evidence).
 
@@ -4373,6 +4379,18 @@ The 19M in the crystal's displacement style (Artin's ask 2026-08-08). No trainin
 
 - `verify_deletion_stats()` — The OBSERVATION Q4-DELETION-RENDER numbers, committed
 
+### scratch/onecycle_component_audit.py
+ONECYCLE-SCHEDULER-COMPONENT-AUDIT-0 (Phase 1 of the 2026-09-14 GO): zero-training, mechanical audit of WHAT the two booked writers' schedulers actually changed in the AdamW param groups, under the installed torch.
+
+- `_stock_lr_sequence(opt, max_lr, total_steps, pct_start)` — The stock OneCycle per-step lr values, computed on a dummy
+- `class SequenceLR`
+- `assert_verbatim()`
+- `dummy_adamw()`
+- `table(kind)` — Per-step optimizer fields USED for step s (read before opt.step), s = 1..TOTAL, plus the post-run state.
+- `summarize(rows)`
+- `milestone_parity(paths, rows)`
+- `main()`
+
 ### scratch/oracle_worker.py
 Standalone oracle worker for timeboxed p.check (MOE-GT-6 v3).
 
@@ -6147,9 +6165,10 @@ lab.locator — logical artifact locators instead of machine-local paths.
 
 - `_worktrees(cwd: Path | None=None) -> list[Path]`
 - `worktree(role: str, cwd: Path | None=None) -> Path` — Resolve a role to a directory (environment first, then git, then the axiom sibling rule).
-- `locator(role: str, relative_path: str, commit: str | None=None, digest: str | None=None) -> dict` — The tracked form of an artifact reference.
+- `_check_relative(relative_path: str) -> str` — Fail closed: a locator names an artifact by a plain repo-relative path.
+- `locator(role: str, relative_path: str, commit: str | None=None, digest: str | None=None) -> dict` — The tracked form of an artifact reference (fail-closed on the path form).
 - `resolve(loc: dict | str, cwd: Path | None=None) -> Path` — A locator dict (or a plain repo-relative string, role main) to a runtime path.
-- `repo_relative(path: str | Path, role: str='main', cwd: Path | None=None) -> str` — A runtime path expressed relative to a role's root (for receipts that must name where a run sat).
+- `repo_relative(path: str | Path, role: str='main', cwd: Path | None=None) -> str` — A runtime path expressed relative to a role's root (for receipts that must
 - `role_of(path: str | Path, cwd: Path | None=None) -> str | None` — Which known role's root contains the path, if any.
 
 ### llmopt/lab/merge.py

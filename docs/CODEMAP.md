@@ -862,7 +862,7 @@ Census: UNCITED 233, library 85, reproduce-pinned 10, results-cited 471, spec-ci
 | harvest | harvest_champion.py | UNCITED | — | — | — | — |
 | harvest | harvest_frontier.py | spec-cited | specs | specs×1 | — | — |
 | list | list_uncurated.py | spec-cited | specs | specs×6 | — | — |
-| liverun | liverun.py | results-cited | RESULTS, specs | RESULTS×10, specs×2 | — | 7 |
+| liverun | liverun.py | results-cited | RESULTS, specs | RESULTS×10, specs×2 | — | 8 |
 | log | log_hygiene.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | 1 |
 | markov | markov_eval.py | UNCITED | — | — | — | — |
 | markov | markov_prior.py | UNCITED | — | — | — | — |
