@@ -150,29 +150,10 @@ it like any other build script. Connection details live in gitignored
 `scratch/remote.env.sh` and never enter the repo. Nothing in this lab
 touches a third party's system.
 
-**Windows box (RTX 3080 10GB)**: `torch.compile` needs MSVC — run GPU
-benches via
-`cmd /c "call \"C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Auxiliary\Build\vcvars64.bat\" && python scripts/..."`.
-MSYS LLVM toolchain (clang/llvm-mc/objdump) at `C:\msys64\mingw64\bin`,
-not on PATH — `llmopt/codegen/llvm.py` finds it. transformers 5.12 quirks already
-handled in-tree: no `from_legacy_cache`, `apply_chat_template` returns an
-Encoding (go through `tokenize=False`), `cumulative_length` fills need
-`inference_mode`. StaticCache max_len is bucketed to 512 under compiled
-steps — every distinct length re-captures the CUDA graph (~12 s).
-WSL venv has NO C compiler: torch's `_native` eager router JITs triton
-kernels for aten ops (Qwen RoPE) even WITHOUT torch.compile —
-`TORCH_COMPILE_DISABLE`/`TORCHDYNAMO_DISABLE` don't stop it; set
-`TORCH_DISABLE_NATIVE_JIT=1` (knob lives in `torch/_native/common_utils.py`).
-
-**Mac (36GB, Apple silicon)**: MLX backend in `llmopt/backends/mlx_backend.py`,
-Metal kernels in `llmopt/kernels/metal.py`. Split-K decode (single-head +
-GQA, exp2-domain softmax) landed 2026-07-05 — ties mx.fast sdpa at
-T=32k; see docstring for honest numbers. NOTE: the old bench harness
-timed lazy graph construction (MLX skips dropped unevaluated arrays);
-mx.eval every timed iteration. Flash prefill + MLX kernel
-wiring both SHIPPED (kernels/metal.py + kernels/mlx_integration.py
-docstrings carry the honest numbers). 36GB fits larger teachers for `llmopt/distill/` (logit-KD + GKD
-ready) with 0.5B–3B students.
+Per-machine toolchain quirks (MSVC for torch.compile, MSYS LLVM path,
+transformers 5.12 handling, `TORCH_DISABLE_NATIVE_JIT`, MLX bench rules)
+live in the `machines` skill; read it before any GPU bench or Mac
+kernel work.
 
 ## Navigation — READ THESE BEFORE WORKING (in this order)
 
@@ -202,23 +183,9 @@ RESULTS before a run fires; book verdicts (including honest
 failures) the moment they land; consolidate BOARD + a new handoff
 at natural stopping points, not mid-sprint.
 
-**The rituals below are SKILLS — use them instead of re-deriving
-the steps** (`.claude/skills/`, each carrying the gotchas that
-earned it):
-
-| Skill | Covers |
-|---|---|
-| `/rung` | pre-reg -> driver -> launch -> watcher (the front half) |
-| `/book` | append RESULTS, regen index, link, curate FINDINGS, push |
-| `/riff` | bank an idea in RIFF-LEDGER, or correct a bank in place |
-| `/labstatus` | one-shot sweep of both machines, unbooked results first |
-| `/probe` | measurement-cost triage before any multi-hour run |
-| `/desk` | zero-cost census: price a rung by counting before running it |
-| `/relay` | house -> axiom relay |
-| `/counterbook` | recompute axiom's numbers from their artifacts |
-| `/handoff` | session close: handoff file, BOARD repoint, suite, push |
-| `codemap-check` | (Claude-only) CODEMAP class before touching scratch/scripts |
-
+**The lab rituals are SKILLS — use them instead of re-deriving
+the steps** (`.claude/skills/`, each listed with its description in
+the skill index and carrying the gotchas that earned it).
 Read the skill before improvising a variant of it; where a skill
 and this file disagree, treat the skill as the more recently
 corrected of the two for THIS task, LOG the conflict (handoff or
