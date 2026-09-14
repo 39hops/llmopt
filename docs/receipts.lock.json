@@ -1,9 +1,5 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
- "_last_accept": {
-  "paths": [],
-  "reason": "PRE-REG UPDATE-GEOMETRY-CENSUS-0: mechanism smoke receipts"
- },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
    "bytes": 3176,
@@ -4953,18 +4949,16 @@
   "logs/ugc0/smoke_mech.jsonl": {
    "bytes": 24842,
    "exists": true,
-   "local_only": true,
    "sha256": "28d1e4dc7d49990196f559342b71f13356c96ea3e592e1c01b1e9318cc70fcb2",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/ugc0/smoke_mech2.jsonl": {
    "bytes": 24863,
    "exists": true,
-   "local_only": true,
    "sha256": "6393ea8e9158b003e0b051f714cbbca9369bc9810e735e79b4f568f14cc89588",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/ugc0/smoke_seal.jsonl": {
    "exists": false,
