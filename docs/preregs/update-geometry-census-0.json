@@ -7,8 +7,8 @@
  "status": "sealed; Artin GO 2026-09-14 17:22 EDT for DESIGN + PREREG + IMPLEMENTATION + TEST/SMOKE + ZERO-TRAINING CENSUS; the census run is included on a clean auditor",
  "measured_object": "empirical geometry of minibatch task-loss gradients (not Hessian / Fisher / natural gradient / manifold / intrinsic dimension)",
  "specimens": {
-  "A": {"family": "checkpoints/phase19m/m{step:06d}.pt", "final": "checkpoints/gallery19m_phase_s2.pt", "final_digest_prefix": "4633efe5d376f911", "writer": "forward OneCycle, seed 2"},
-  "B": {"family": "checkpoints/backsched19m/m{step:06d}.pt", "final": "checkpoints/gallery19m_backsched_s2.pt", "final_digest_prefix": "4beeedec5f9f5e91", "writer": "backward OneCycle, seed 2"},
+  "A": {"family": "checkpoints/phase19m/m{step:06d}.pt", "final": "checkpoints/gallery19m_phase_s2.pt", "final_digest_prefix": "4633efe5d376f911", "writer": "stock OneCycle scheduler, seed 2 (LR warm-up / cosine anneal with beta1 cycled 0.95 -> 0.85 -> 0.95; AMENDMENT WRITER-INTERVENTION-SCHEDULER-LAW)"},
+  "B": {"family": "checkpoints/backsched19m/m{step:06d}.pt", "final": "checkpoints/gallery19m_backsched_s2.pt", "final_digest_prefix": "4beeedec5f9f5e91", "writer": "backward SequenceLR scheduler, seed 2 (the stock LR sequence reversed, beta1 fixed at 0.9; AMENDMENT WRITER-INTERVENTION-SCHEDULER-LAW)"},
   "W0": {"construction": "torch.manual_seed(2); build_model(40, d=384, layers=8, heads=6, ffn=1536)", "digest_prefix": "eb4b0bb427f86972", "asserted_against": "the WRITER-TRAJECTORY-CENSUS-0 census artifact's w0_seed2_state_digest"},
   "null_final_only": {"N3": "checkpoints/atomtraj1/stock_s7/step_15420.pt", "N4": {"worktree_role": "repair", "relative_path": "checkpoints/atomtraj1/stock_s7/step_15420.pt", "commit": "ec6de1ae"}, "provenance": "WRITER-DEPENDENCE-NULL-2 L68265 (seed-7 W0)"},
   "function_band": "L67980 / L68042: A 64, B 62 of 120",

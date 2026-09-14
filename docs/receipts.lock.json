@@ -1,5 +1,9 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
+ "_last_accept": {
+  "paths": [],
+  "reason": "AMENDMENT WRITER-INTERVENTION-SCHEDULER-LAW: audit.json untracked sha-anchored (local_only, re-derivable by rerunning the audit)"
+ },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
    "bytes": 3176,
@@ -4435,6 +4439,14 @@
    "sha256": "59fa4dd824ec56cabd28069f796e418dface250d9860747ddf5ed81140838088",
    "source": "results",
    "tracked": true
+  },
+  "logs/schedaudit0/audit.json": {
+   "bytes": 4315133,
+   "exists": true,
+   "local_only": true,
+   "sha256": "459d8d4c411c95343feed822c1e731365ec650e81e4208a5cb0b28843236b226",
+   "source": "results",
+   "tracked": false
   },
   "logs/sgaudit0/audit.json": {
    "bytes": 98550,

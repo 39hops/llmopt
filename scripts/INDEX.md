@@ -4391,6 +4391,27 @@ ONECYCLE-SCHEDULER-COMPONENT-AUDIT-0 (Phase 1 of the 2026-09-14 GO): zero-traini
 - `milestone_parity(paths, rows)`
 - `main()`
 
+### scratch/optimizer_geometry_desk.py
+OPTIMIZER-GEOMETRY-DESK-0 (PRE-REG in RESULTS): zero-training desk on the geometric transformation the actual AdamW writer applies between the task gradient and the parameter write, at stored (W_s, optimizer_state_s) of the WRITER-TRAJECTORY-CENSUS-0 pair. No persistent parameter update, no birth.
+
+- `clip_coef(row_norm)`
+- `virtual_families(gblk, W, m, v, step_next, lr, beta1, beta2, wd, eps=1e-08)` — gblk: (n, d_t) float64 RAW gradients of one tensor; W, m, v: (d_t,) float64 stored state; rows already clipped by the caller.
+- `virtual_step_torch(model_sd, opt_sd, grads, step_next, lr, beta1, beta2, wd, eps=1e-08)` — The same law applied tensor-by-tensor to a torch state dict (float64), returning new params / exp_avg / exp_avg_sq
+- `rel_err(a, b)`
+- `build_opt(model)`
+- `bind_state(model, ckpt, dev)` — Load model + optimizer state from a milestone; assert structure. Returns (opt, step, group_record).
+- `sched_rows(family_kind, s)` — (used_for_step_s, for_step_s_plus_1) from the audited tables: rows are [step, lr, beta1, beta2, wd, last_epoch].
+- `opt_state_digest(opt)`
+- `cosine_gram(K)`
+- `distortion(Kx, Ky)`
+- `family_pass(specs, segs, n, d, deltas=None)` — specs: {"A": {"mm": path, "sd": model_sd(cpu), "opt_sd": opt state dict (cpu), "next": {lr,beta1,beta2,wd}, "step": s, "norms": (n,) raw row norms}, "B": {...}}.
+- `family_geometry(K, Kg, fit, held)`
+- `adjudicate(cells, pairs_late)` — cells: {(spec, s): family_geometry output}; pairs_late: pair overlaps at the late state {family: {"raw": {k: S}}}.
+- `synthetic_parity(seed=0)`
+- `real_parity(tok, dev, batches)` — One real trainer step on the non-target seed-6 model from a saved pre-step state (at Adam step 1 and step 4) v the virtual law.
+- `_real_step(model, tok, batch, dev, opt, sch, return_raw_grads=False)`
+- `main()`
+
 ### scratch/oracle_worker.py
 Standalone oracle worker for timeboxed p.check (MOE-GT-6 v3).
 

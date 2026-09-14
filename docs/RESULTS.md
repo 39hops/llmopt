@@ -73706,3 +73706,110 @@ from this commit on: a new tracked home path fails the suite.
 **Not done here (by the GO).** No git history rewrite; no locked receipt
 edited; no UPDATE-GEOMETRY follow-up, birth, CROSSFOSTER revival or
 foreign-writer work. The scrub is bookkeeping and changes no verdict.
+
+## AMENDMENT WRITER-INTERVENTION-SCHEDULER-LAW (targets: VERDICT WRITER-TRAJECTORY-CENSUS-0 L67980 and VERDICT BACKWARD-SCHEDULE-1 L28261; narrows the causal DESCRIPTION of the forward-v-backward writer pair, changes no measured number): the ONECYCLE-SCHEDULER-COMPONENT-AUDIT-0 (zero training, torch 2.12.1, the booked source segments asserted) shows the stock OneCycleLR that trained specimen A cycles AdamW's beta1 as well as the learning rate (cycle_momentum True by default: beta1 0.95 at step 1, 0.850 at the LR peak, step 463, back to 0.95 at the end; 15,419 distinct values), while the backward writer's SequenceLR (a LambdaLR) sets only lr and leaves beta1 at the AdamW default 0.9 for all 15,420 steps; the two writers therefore differ at EVERY step in beta1 (not only in the LR sequence direction), and the patched writer with REVERSE=0 is LR-equivalent to stock only to floating rounding (1,551 of 15,420 steps differ, by at most 1.81e-16 relative; both figures derived from the receipt's per-step tables) and is NOT optimizer-law equivalent (beta1 0.9 constant v cycled); the serialized milestone param groups equal the reconstructed values used for the just-completed step at all ten geometry milestones (exact); prospective wording: "stock OneCycle scheduler (LR warm-up / cosine anneal with beta1 cycled 0.95 -> 0.85 -> 0.95 inversely to LR) versus backward SequenceLR (the same LR sequence reversed, beta1 fixed at 0.9)" (2026-09-14, Mac)
+
+**What was audited** (scratch/onecycle_component_audit.py, run on the
+clean tree at 4d4ed423; receipt logs/schedaudit0/audit.json, 4.3 MB with
+the three 15,420-row per-step tables). The trainer's optimizer and
+scheduler calls (scripts/train_mathnative.py: AdamW(lr=LR, weight_decay=
+0.01) with the torch defaults betas (0.9, 0.999), eps 1e-8, decoupled
+weight decay; OneCycleLR(max_lr=LR, total_steps, pct_start=0.03) with
+every other argument at its default: cycle_momentum True, base_momentum
+0.85, max_momentum 0.95, div_factor 25, final_div_factor 1e4, cosine
+anneal, two-phase), the per-step order (backward, clip 1.0, opt.step,
+sched.step unless past total_steps - 1, zero_grad), the phase19m tee
+(saves {"model", "opt", "step"} AFTER the AdamW update inside step), and
+the backward writer's _stock_lr_sequence / SequenceLR bodies (byte-equal
+AST segments) are asserted, not remembered. A dummy AdamW built with the
+trainer's constructor call was stepped 15,420 times under each of three
+scheduler laws (STOCK OneCycle; BACKWARD = SequenceLR over the reversed
+stock sequence, REVERSE=1; PATCHED-FORWARD = SequenceLR over the stock
+sequence, REVERSE=0), recording lr / beta1 / beta2 / weight_decay before
+every step (the values USED for step s).
+
+**Mechanical answers.**
+1. Stock OneCycle cycles beta1 on this AdamW: yes. beta1 starts at 0.95,
+   reaches 0.850 at step 463 (the LR maximum, 3.0e-4) and returns to
+   0.95 at step 15,420 (LR 1.2e-9); 15,419 distinct values. beta2 0.999
+   and weight_decay 0.01 are constant. Its param group also carries
+   base_momentum / max_momentum / min_lr / max_lr keys.
+2. SequenceLR leaves beta1 fixed: yes, 0.9 (the AdamW default) at every
+   step, both REVERSE=1 and REVERSE=0; beta2 0.999, weight_decay 0.01.
+3. REVERSE=0 v stock: LR-equivalent to rounding (max relative
+   difference 1.81e-16, 1,551 steps unequal at the last bit because
+   SequenceLR serves seq[i] / base x base; both figures are derived
+   from the receipt's per-step tables, whose boolean
+   q3_reverse0_lr_equivalent_to_stock reads false under exact
+   equality); NOT optimizer-law
+   equivalent: beta1 0.9 constant v 0.95 -> 0.85 -> 0.95. The writer's
+   no-op precondition (100 steps, base lr 1.0, exact LR equality) proved
+   LR equality only, as its text says; it ran on torch.optim.SGD dummy
+   optimizers, which carry no beta to cycle, so it was structurally
+   unable to see the beta1 difference.
+4. Milestone parity at steps 900 / 3600 / 7200 / 10800 / 13500 for A
+   (phase19m) and B (backsched19m): the serialized param group's lr and
+   betas equal the reconstructed values used for step s EXACTLY (float
+   equality), the Adam step counters of all 59 state tensors equal s,
+   eps 1e-8, weight_decay 0.01, amsgrad / maximize false. A at 900 /
+   7200 / 13500: lr 2.994e-4 / 1.733e-4 / 1.203e-5, beta1 0.8502 / 0.8922
+   / 0.9460; B: lr 2.667e-6 / 1.412e-4 / 2.930e-4, beta1 0.9. The values
+   for step s + 1 are the next table row (the milestone is serialized
+   before sched.step()); at 13500 for A: lr 1.2021e-5, beta1 0.94599.
+
+**Reconstruction law (consumed by OPTIMIZER-GEOMETRY-DESK-0).** For a
+milestone at step s: the fields used for step s are table row s
+(1-based; sequence[s - 1]); the fields for the virtual next step s + 1
+are row s + 1 (sequence[s]); Adam step counters are s and advance to
+s + 1 on the virtual step; the scheduler law is the audited table, not
+the serialized group (which equals row s, as verified). Step
+indexing: the backward launch line's "peaks at step 14,957" (L28270)
+is 0-based (seq.index); the audited table's 14,958 is the same step
+1-based. Serialization signature: the stock group carries OneCycle's
+base_momentum / max_momentum / min_lr / max_lr keys, the SequenceLR
+group does not (inert to the update; a checkpoint's writer can be read
+from them).
+
+**What this narrows, prospectively.** The A / B contrast was described
+as "only the OneCycle schedule direction differs" (L28261, L67980,
+L72387, L73187 and the RIFF bank COUPLED LEARNING DYNAMICS). The
+literal intervention is: stock OneCycle scheduler (LR warm-up to 3e-4
+at step 463 then cosine anneal to 1.2e-9, with beta1 cycled 0.95 -> 0.85
+-> 0.95 inversely to LR) versus backward SequenceLR (the identical LR
+sequence reversed in time, beta1 fixed at 0.9). Two optimizer fields
+differ per step, not one. Every measured number stands: trajectory
+divergence (L67980), dependence and compatibility (L67980, L68265),
+the crossfoster donor and chain results (L72632, L72990), and the
+gradient geometry (L73446) are readings on the same two specimens;
+only the name of the variable that produced them is corrected. One
+conclusion widens: BACKWARD-SCHEDULE-1's "one variable (lr
+direction)" (L28275) and its COMMUTES reading now stand for the
+COMPOUND intervention (LR sequence reversed AND beta1 pinned at 0.9
+where stock cycles it); a clean arrow test of LR direction alone would
+need a reversed-sequence arm on a momentum-matched writer, which has
+not been run and is not armed. The
+living docs (FINDINGS bullets for BACKWARD-SCHEDULE-1 and WRITER-
+TRAJECTORY-CENSUS-0, the RIFF bank's honest-breaks line, the writer
+descriptions in docs/preregs/update-geometry-census-0.json and
+writer-dependence-null-2.json) are corrected in place in this commit
+with this entry named; immutable receipts are untouched. Future writer
+descriptions use the wording above.
+
+**Fences.** The audit executed torch 2.12.1; the births' torch version
+(2026-08-13) is not receipted anywhere in the ledger, so the scheduler
+tables are asserted for the installed version only (OneCycle's momentum
+cycling is documented torch behavior across the relevant releases, and
+the real milestones' cycled beta1 in A and constant 0.9 in B confirm
+the law on the booked births directly, 10 / 10 exact); a dummy
+3-parameter AdamW reproduces the scheduler and param-group law, not
+the model's update; the milestone check reads 10 files; B's LR
+sequence is the stock sequence reversed to one ulp (the same
+seq[i] / base x base path); nothing here is a training result.
+
+**Receipts** (locked with this entry): logs/schedaudit0/audit.json
+(instrument source sha 2e45c1344d6c...; the three asserted source shas are in
+the receipt). Auditor (Opus 5): one blocker folded (the births' torch
+version was asserted without a receipt) and five should-fixes
+(BACKWARD-SCHEDULE-1's compound reading, the SGD-dummy no-op, the
+1.81e-16 bound, the group-key signature, derived-figure provenance);
+notes adopted (step indexing, one-ulp reversal, milestone evidence).
