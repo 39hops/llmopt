@@ -2,7 +2,7 @@
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
  "_last_accept": {
   "paths": [],
-  "reason": "OPTIMIZER-GEOMETRY-DESK-0 seal smoke receipt (clean tree 67f5e49e)"
+  "reason": "VERDICT OPTIMIZER-GEOMETRY-DESK-0: lock run receipts after force-add"
  },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
@@ -1267,8 +1267,11 @@
    "tracked": true
   },
   "logs/liverun/ogd0.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 458,
+   "exists": true,
+   "sha256": "9c87d6055e2ee3d6ead23afd715337e14d4e2c316e232a7d31d14e51cd475bbf",
+   "source": "results",
+   "tracked": true
   },
   "logs/liverun/sgaudit0.jsonl": {
    "bytes": 518,
@@ -3042,20 +3045,32 @@
    "tracked": true
   },
   "logs/ogd0/desk.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 150001,
+   "exists": true,
+   "sha256": "a2503034799e7f4a23da44e0cd231b52f2dc6d727bfb64130ece14cbffe502a3",
+   "source": "results",
+   "tracked": true
   },
   "logs/ogd0/desk.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 114186,
+   "exists": true,
+   "sha256": "84ae8f8fb7b0e7c1610423e743ae445d920ac44adb3a53786b5ed7cff2b99d65",
+   "source": "results",
+   "tracked": true
   },
   "logs/ogd0/desk.log": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 2236,
+   "exists": true,
+   "sha256": "04a07e0ea995cf54f739ce804c151f3f8ca97c36c07367443c33a309408110f3",
+   "source": "results",
+   "tracked": true
   },
   "logs/ogd0/ogd0.DONE": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 5,
+   "exists": true,
+   "sha256": "8221ac66be71558c921fb44cfb66f7997699aea754d917763882d6d9eddc836e",
+   "source": "results",
+   "tracked": true
   },
   "logs/ogd0/smoke_mech.jsonl": {
    "bytes": 15413,

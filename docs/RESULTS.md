@@ -74099,3 +74099,210 @@ stated; priors 4 and 7 split into a / b; a disk preflight assert;
 the registered 64-batch probe-digest law is exercised against the
 UGC0 digest in the smoke); notes adopted (object-not-word wording,
 docstring, receipts list).
+
+## VERDICT OPTIMIZER-GEOMETRY-DESK-0: GEOMETRY-NOT-RESOLVED (sealed gate; no other axis adjudicates) — the full AdamW write's FIT-derived top-8 subspace does not reproduce on the HELD panel (raw S_8(FIT, HELD) for u = 0.2495 / 0.590 at step 900, 0.128 / 0.158 at 7200, 0.129 / 0.129 at 13500 for A / B, against the 0.25 floor), and the receipts show why: the counterfactual write is ONE common direction (participation ratio 1.1 to 1.7, Q 0.73 to 0.94 over all 64 rows, held capture flat from k = 1 to k = 16 at 7200 and 13500), the batch-independent carried-history write u_0 is 85 to 96 % of the full write's norm at every state, and the batch-sensitive remainder b = u - u_0 is near-random (held C_8 0.010 to 0.081 at 7200 / 13500, reliability 0.06 to 0.16, participation ratio 26 to 30) while the raw gradient reproduces UPDATE-GEOMETRY-CENSUS-0 (state digests equal, capture and reliability within 1e-11); descriptively, had the gate passed, the ladder would have read HISTORY-DOMINATED (dC_u +0.25 to +0.65 at 3 / 3 states, dC_b -0.11 to -0.32 at 3 / 3) with the b panel UNRESOLVED at 2 / 3 states and the writers' update subspaces unrelated (S_8(A, B) on u 0.002 to 0.005 v raw g 0.07 to 0.51); the distortion enters at g -> mhat (D 1.9 to 3.9), not at the preconditioner (D(mhat -> a) 0.02 to 0.14); the GO ends here; prior 6 hits 6 misses (2026-09-14, Mac)
+
+**What ran** (scratch/optimizer_geometry_desk.py under liverun ogd0 at
+600fa419, armed 23:25:56 UTC, disarmed rc 0 23:30:00 UTC 09-14; the
+instrument's own wall 210 s from its start record; tree clean at arm
+and at the receipt write; source sha 8807b3af... equal to the clean-
+tree seal smoke's; device mps for gradients, float64 for the virtual
+law). Every gate held: probe digest equal to the booked UGC0 digest
+(00eb6c43e4cd995b...); scheduler parity at all six milestones (the
+serialized group equal to the audited row s, read before any target
+gradient); optimizer binding (59 parameters in module order, all step
+counters equal to s, eps 1e-8, weight decay 0.01, no amsgrad /
+maximize); model and optimizer state digests identical before and
+after every cell; disk preflight 33.8 GB free against 11.7 GB needed;
+no memmap retained. The raw-gradient family reproduced the booked
+UPDATE-GEOMETRY-CENSUS-0 cells at all six (state digests equal; delta
+C_8 and delta S_8 within 5e-12 in every cell, float summation order
+only, prior 1).
+
+**Ladder (sealed).** Axis 0: raw S_8(FIT, HELD) of u below 0.25 at A@900
+(0.2495), A@7200 (0.128), B@7200 (0.158), A@13500 (0.129), B@13500
+(0.129): GEOMETRY-NOT-RESOLVED; per the pre-reg no other axis
+adjudicates and the census stops. Everything below is descriptive and
+carries no label.
+
+**Why the gate fired (descriptive).** For every state the counterfactual
+full write u (and the adaptive a, identical to u to D(a -> u) < 1e-5:
+the decoupled decay term's norm is 1e-3 to 3e-3 of the median
+write's) is dominated by
+a single direction: participation ratio 1.13 / 1.71 / 1.58 / 1.39 / 1.23
+/ 1.45 (B900 / A900 / A7200 / B7200 / A13500 / B13500), Q over all 64
+rows 0.73 to 0.94,
+held capture flat across k (A@13500: C_1 = C_2 = C_4 = C_8 = C_16 =
+0.912; A@7200 0.816 to 0.818). That one direction is reproducible
+(S_1(FIT, HELD) 0.98 to 1.00) and the remaining FIT directions are
+not (S_8 about 1 / 8 = 0.125 at three of the four late cells), so the
+top-8 subspace as a whole fails the floor while its first vector
+passes. The common direction is the carried optimizer history: the
+zero-gradient write u_0 = -lr wd W + a_0 has norm 0.90 to 0.96 of the
+median full write at 7200 / 13500 (A: 0.124 / 0.137 at 7200, 7.41e-3 /
+7.73e-3 at 13500; B: 0.104 / 0.112, 0.185 / 0.203) and 0.85 / 0.90 at
+900; the carried first moment beta1 m has norm 0.07 to 0.39 against a
+clipped gradient of median norm 0.41 to 1.00, and after coordinate-
+wise preconditioning the batch-dependent remainder b is 0.26 to 0.52
+of the full write in median norm (||b|| / ||u|| 0.51 / 0.26 / 0.43 /
+0.38 / 0.29 / 0.42 in the order A900 / B900 / A7200 / B7200 / A13500 /
+B13500) but carries almost none of the reusable structure.
+
+**Batch-sensitive write b (descriptive).** Held C_8: A 0.196 / 0.013 /
+0.010, B 0.584 / 0.081 / 0.013 at 900 / 7200 / 13500 (raw g at the same
+cells 0.433 / 0.333 / 0.258 and 0.720 / 0.193 / 0.292); reliability S_8
+0.257 / 0.078 / 0.060 (A), 0.594 / 0.160 / 0.070 (B); participation
+ratio 19 / 30 / 30 (A), 9 / 26 / 30 (B) against 32 rows; Q 0.10 / 0.02
+/ 0.02 (A), 0.14 / 0.05 / 0.03 (B). Under the sealed thresholds dC_b =
+C_8(b) - C_8(g) is -0.24 / -0.32 / -0.25 (A) and -0.14 / -0.11 / -0.28
+(B): below -0.15 for both writers at 13500 only; below +0.05 at all
+three; the b panel is UNRESOLVED (S_8 < 0.25 in both writers) at 7200
+and 13500. Per-batch cos(g_i, b_i) medians -0.50 / -0.36 / -0.36 (A),
+-0.53 / -0.66 / -0.43 (B): the batch-sensitive write is anti-aligned
+with its own gradient (110 to 130 degrees from g, i.e. 50 to 70
+degrees from the descent direction -g), and its structure across
+batches is close to isotropic at the late states.
+
+**Full write u (descriptive).** Held C_8 0.784 / 0.817 / 0.912 (A),
+0.973 / 0.844 / 0.818 (B): dC_u = +0.35 / +0.48 / +0.65 (A), +0.25 /
++0.65 / +0.53 (B), above 0.15 at 3 / 3 states in both writers. Had the
+resolution gate passed, the sealed chain would have read HISTORY-
+DOMINATED (dC_u >= 0.15 at 3 / 3, dC_b < 0.05 at 3 / 3, and no
+BATCH-WRITE-SHARPENED state); it did not, and no label is booked.
+Group readout: the write's C_8 is 0.76 to 0.98 in every one of the
+nine groups (the common direction lives everywhere), while the
+gradient's group C_8 at 13500 is 0.40 / 0.50 in OUTSIDE and 0.02 in
+BLOCK0; OUTSIDE's share of the write's energy is 0.002 (v 0.64 to 0.80
+of the gradient's): the preconditioner equalizes per-coordinate
+scale, so the gradient-energy concentration in embedding / head / norm
+disappears from the write.
+
+**Attribution ladder (descriptive).** D(g -> mhat) 1.90 / 3.46 / 3.85
+(A), 2.29 / 3.92 / 2.91 (B); D(mhat -> a) 0.055 / 0.141 / 0.063 (A),
+0.016 / 0.058 / 0.120 (B); D(a -> u) < 1e-5; D(g -> b) 0.46 / 0.73 /
+0.75 (A), 0.20 / 0.45 / 0.74 (B); D(a -> b) 0.85 to 0.99. The pairwise
+batch-direction geometry is deformed almost entirely at the temporal-
+integration stage (the carried first moment: mhat has Q 0.75 to 0.96
+and participation ratio 1.1 to 1.7 already), the coordinate-wise
+preconditioner changes it little, and the decay term not at all.
+Rotation of the individual directions: median cos(g_i, mhat_i) 0.55 /
+0.47 / 0.35 (A), 0.51 / 0.37 / 0.44 (B); median -cos(g_i, a_i) 0.26 /
+0.17 / 0.11 (A), 0.25 / 0.24 / 0.19 (B) (an unrotated descent update
+would read 1): the write is 75 to 85 degrees from the batch gradient
+at every state.
+
+**Writer overlap (descriptive; the axis did not adjudicate).** S_8(A,
+B) on the same batches: g 0.072 / 0.356 / 0.505; mhat 0.071 / 0.291 /
+0.496; a and u 0.005 / 0.005 / 0.002; b 0.007 / 0.011 / 0.007 at 900 /
+7200 / 13500. The two writers' raw gradients converge (as in
+L73446) and their carried momenta converge with them, but their
+counterfactual writes point along each writer's own history direction
+and are unrelated across writers at every state (S_1 0.000 to 0.003);
+under the writer rule this would read WRITER-UPDATE-ROTATED for both u
+and b, but the rule does not fire after axis 0.
+
+**Velocity (descriptive only).** Own-writer next-grid displacement
+projected on the FIT top-16 subspaces, g / u / b: A 900 -> 3600 0.0010
+/ 0.0047 / 0.0054; 7200 -> 10800 0.0014 / 0.0034 / 0.0093; 13500 -> 15420
+0.0022 / 0.0299 / 0.0065; B 900 -> 3600 0.024 / 0.109 / 0.114; 7200 ->
+10800 0.0009 / 0.0022 / 0.0029; 13500 -> 15420 0.0010 / 0.0033 / 0.0049.
+The update subspaces explain a few times more of the displacement than
+the raw-gradient subspace, but never more than 3 % (11 % on B's first
+interval, where the backward schedule is still near its minimum LR);
+the interval displacement integrates hundreds of steps and is not
+explained by any one-step subspace here.
+
+**Reading (descriptive; no causal claim beyond the algebra of the
+stored optimizer map).** At these states the AdamW writer does not
+compress the batch gradient's geometry into a thinner reusable write;
+it replaces it. The write is one common direction per state, set by
+the carried first moment (the momentum of hundreds of prior batches)
+and equalized in scale by the second-moment preconditioner; the part
+of the write that depends on the current batch is small in norm and
+close to isotropic across batches, less reusable than the raw gradient
+it came from. "Adam writes are coherent" is true and is history, not
+compression: every probe batch inherits the same momentum vector.
+Under the sealed REFUTED-IF, GEOMETRY-NOT-RESOLVED leaves the
+compression hypothesis UNTESTED by the ladder; the replacement
+reading above rests on the non-adjudicated descriptive readouts
+(u_0 / u, -cos(g, u), D(g -> u)), which the receipts carry. The
+resolution gate fired because a one-directional write has no
+reproducible eight-dimensional subspace, which is what the receipts
+show, not a failure of the panel.
+
+**Registered prior: 6 hits 6 misses.** (1) raw g reproduces UGC0
+within 0.02: HIT (0.0000 at six cells). (2) dC_u >= 0.15 at >= 2 states
+both writers: HIT (3 / 3). (3) modal label HISTORY-DOMINATED: MISS (the
+sealed label is GEOMETRY-NOT-RESOLVED, an outcome the four-label prior
+carried no mass for; descriptively the chain would have read
+HISTORY-DOMINATED). (4a) median -cos(g, a) <= 0.5 at every
+state both writers: HIT (0.11 to 0.26). (4b) D(mhat -> a) >= 0.3 at
+every state: MISS (0.016 to 0.141; the preconditioner deforms the
+batch geometry far less than the moment does). (5) ||a_0|| >= 0.5 x
+median ||u|| at 13500 both writers: HIT (0.96 / 0.91). (6) velocity
+13500 -> 15420, u-subspace fraction at k = 16 exceeds g by >= 0.1: MISS
+(+0.028 / +0.002). (7a) WRITER-UPDATE-SHARED on u at 13500: MISS (the
+axis did not read; descriptively S_8 0.002 v 0.5 x min(self) 0.064,
+rotated). (7b) on b: MISS (0.007 v 0.030, rotated). Both scored MISS
+rather than not-scored: the named quantity is receipted and fails the
+registered bar by about 50x. (8) Q(u) >= 0.5 at 13500 both
+writers: HIT (Q over all 64 rows 0.89 / 0.77). (9) scheduler parity at all six milestones:
+HIT. (10) wall 5 to 30 min: MISS (3.5 min; the reviewer's 6 to 12 min
+pricing was itself high). Family track record: 52 hits 37 misses.
+
+**Consequences (sealed).** GEOMETRY-NOT-RESOLVED: booked, the census
+STOPS, the GO ends. No training intervention follows; PROJECTED-BP-
+CAUSAL-1 is not launched; DATA-LOCUS-GEOMETRY-1 and FAILED-WRITER-
+PROJECTION-DESK-0 stay banked. Banked, NOT ARMED, under the pre-reg's
+"possible new banks" clause and on the ladder-independent algebra (u_0
+is 85 to 96 % of the write's norm at every state; D(g -> mhat) 1.9 to
+3.9 v D(mhat -> a) 0.02 to 0.14), not on the HISTORY-DOMINATED label,
+which did not fire: OPTIMIZER-MEMORY-ABLATION-1 (the same gradient
+stream with reset or cross-fostered Adam moments, to test whether the
+carried history direction causally controls function or path); the
+other two possible banks (PRECONDITIONER-CROSS-FOSTER-1, UPDATE-
+SUBSPACE-CAUSAL-1) are NOT banked (the preconditioner stage carried
+little of the deformation, and b is not thin). A re-run of this desk
+with a resolution rule fit to one-directional writes (k = 1 reliability,
+or a residual-after-first-direction panel) would be a new pre-reg.
+
+**Fences.** One writer pair on one W_0; three interior states; one probe
+population at batch size 32 (32 + 32 batches, subspaces at most 32-
+dimensional); the virtual step is one counterfactual AdamW step from
+a stored state under the audited next-step row (float64 law on
+float32 stored state; the real writer's float32 rounding envelope is
+receipted in the smokes, not modeled); u_0 uses zero gradient tensors
+(the moments still decay); a and u coincide to 1e-5 in geometry (the
+decay term's norm is 1e-3 to 3e-3 of the median write's), so every u
+statement is an
+a statement; the resolution gate is the sealed one and fired on the
+k = 8 subspace reliability, which a one-directional family cannot
+pass by construction (a fence on the instrument's design, disclosed,
+not a reason to re-read the ladder); the A@900 cell fired by 0.0005,
+inside the mps run-level nondeterminism envelope and not individually
+reproducible, while the four other firing cells (0.128 to 0.158) are
+far below the floor, so the label does not rest on that cell; velocity is descriptive with
+unequal legs (2,700 / 3,600 / 1,920 steps) at very different LR; the
+writer overlap is read on the same batches by design; nothing here
+revises L73446, L73710 or L67980, and nothing authorizes a birth, a
+projected-update rung or an optimizer ablation.
+
+**Receipts** (locked with this entry): logs/ogd0/desk.json (150 KB),
+logs/ogd0/desk.jsonl, logs/ogd0/desk.log, logs/ogd0/ogd0.DONE,
+logs/liverun/ogd0.jsonl; the smokes logs/ogd0/smoke_mech.jsonl and
+logs/ogd0/smoke_seal.jsonl were locked with the pre-reg and its seal
+commit (their shas are also pinned inside desk.json). No memmap was
+retained; the working directory was removed. Disclosures (receipt
+audit, Opus 5, no blocker): the two smokes' per-cell stream files
+(smoke_*_cells.jsonl) were deleted by the house as duplicates of the
+rows the smoke receipts carry; the mechanism smoke ran at 6282f731
+(dirty), the seal smoke at 67f5e49e and the run at 600fa419 with the
+instrument's source sha byte-identical across all three; the smoke
+rows carry the registered path table as a literal (they opened only
+the seed-6 W_0). Audits before booking (Opus 5): prereg-auditor three
+blockers folded (an unreceipted norm range, a decay fraction that
+matched no receipt quantity, a headline generalization of the flat-
+capture claim) and eight should-fixes (the 0.2495 headline value, the
+A@900 margin fence, the 0.5 x min(self) thresholds, the "exactly"
+wording, the untested-hypothesis clause, the bank's grounding, the
+0.90 low end, the Q variant); receipt-auditor no blocker.
