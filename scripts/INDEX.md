@@ -5755,6 +5755,35 @@ UMOE-1 (pre-reg 2026-07-30): micro-MoE conservation 3-arm. First house MoE birth
 - `probes(model, enc, dev)` — corr / MI / meter on the trained model.
 - `main()`
 
+### scratch/update_geometry_census.py
+UPDATE-GEOMETRY-CENSUS-0 (PRE-REG in RESULTS): zero-training LOSS-GRADIENT GEOMETRY census on the WRITER-TRAJECTORY-CENSUS-0 pair. No training, no optimizer step, no parameter mutation, no generated data, no gate.
+
+- `unit_gram(K, rows_a, rows_b=None)` — Gram of unit-normalized rows: K_ab / sqrt(K_aa K_bb).
+- `centered_gram(K, fit_rows)` — Gram of all rows after subtracting the FIT-panel mean m from every row:
+- `cross_centered(Kxx, Kyy, Kxy, fit_x, fit_y)` — Cross-Gram between X rows centered by X's FIT mean and Y rows centered by Y's FIT mean:
+- `coherent_fraction(K, rows)` — Q = ||mean_i g_i||^2 / mean_i ||g_i||^2 over the given rows.
+- `fit_spectrum(Kff, ks)`
+- `held_capture(Kff, Kfh, Khh_diag, ks)` — C_k(h) = ||P_k h||^2 / ||h||^2, P_k = top-k right singular subspace of the FIT rows.
+- `subspace_overlap(Kxx, Kyy, Kxy, ks)` — S_k = tr(P_X P_Y) / k = ||V_Xk^T V_Yk||_F^2 / k, V_X = X^T U_X L_X^{-1/2}:
+- `projection_fraction(Kff, c, v_norm2, ks)` — ||P_k v||^2 / ||v||^2 for a vector v given c = X_fit v and ||v||^2.
+- `geometry_from_grams(K, fit, held, ks, Kxy_self=None)` — All single-specimen readouts from the full 64 x 64 Gram K (rows: fit then held indices).
+- `pair_overlap_from_grams(KX, KY, KXY, fit_x, fit_y, ks)`
+- `adjudicate(final, w0, pair_final, ks_present)` — Pure ladder. final: {"A": geom, "B": geom} (geometry_from_grams output), w0: geom, pair_final: pair_overlap (raw S_k A/B).
+- `load_sd(p)`
+- `w0_seed(seed)`
+- `build(tok, dev)`
+- `flatten_law(model)` — (offsets, d, segments) for the sorted-key tensor law; segments = [(key, start, end, group)].
+- `probe_batches(tok)`
+- `grad_row(model, tok, batch, dev, segs, d)` — One probe batch: the trainer's CE, backward, gradient flattened under the law. Returns (float32 row, loss, n_labels).
+- `cell_gradients(model, tok, batches, dev, segs, d, path)` — Write the (n, d) float32 memmap; keep row 0 in float64 for the parity check. Returns receipts.
+- `reduce_grams(path, n, d, segs, other=None, vec=None)` — Float64 per-tensor-block reductions over the memmap: K (n x n) global and per group; cross-Gram with `other`
+- `write_reference(path, n, d, seed)` — Synthetic isotropic Gaussian rows (float32) through the identical memmap + reductions.
+- `sha256_file(p)`
+- `parity(direct, K)` — Relative error of the memmap float32 Gram v the float64 direct row-0 inner products.
+- `flat_vec(sd_next, sd_prev)`
+- `specimen_plan()`
+- `main()`
+
 ### scratch/v4flash_anatomy.py
 V4-Flash offline anatomy: streamed experts -> instruments -> lake.
 

@@ -73183,3 +73183,262 @@ D_B_chain.jsonl (sha a8964bad3069...) stay tracked and frozen.
 **Nothing scientific changes.** The verdict, its bar, its prior score
 and its sealed consequence stand; this entry records a decision and a
 receipt relocation.
+
+## PRE-REG UPDATE-GEOMETRY-CENSUS-0: zero-training LOSS-GRADIENT GEOMETRY census — on the WRITER-TRAJECTORY-CENSUS-0 pair (A = seed-2 forward OneCycle, B = seed-2 backward OneCycle, one shared W_0; existing checkpoints only) at seven frozen matched times, do exact task-CE minibatch gradients occupy a stable low-dimensional subspace that generalizes from a FIT panel of 32 frozen stock batches to a HELD panel of 32, is that geometry already present at W_0, is it shared between the two writers, and (descriptively) how much of the observed checkpoint velocity lies in it; raw and mean-centered geometry read separately; an isotropic synthetic reference through the identical code; a seven-axis interpretation ladder with literal thresholds; no training, no optimizer state, no parameter mutation (2026-09-14, Mac)
+
+**Program and GO.** UPDATE-GEOMETRY-CENSUS-0 (Artin GO 2026-09-14
+17:22 EDT: DESIGN + PREREG + IMPLEMENTATION + TEST/SMOKE + ZERO-
+TRAINING CENSUS only; the house chose to include the census run in
+this GO after a clean auditor). No training birth is authorized. The
+foreign-writer program and VERIFIED-ENDOGENOUS-DATA-CROSSFOSTER-1 stay
+PARKED; DFA, SG, MeZO, target / equilibrium propagation, ROME,
+Hamiltonian writers and endogenous-data training are not reopened.
+Hypothesis under test (narrow): successful BP training need not
+follow one unique trajectory, but task-loss gradients may occupy a
+stable, much thinner geometry inside the 18,911,616-dimensional
+parameter space. The measured object is the EMPIRICAL GEOMETRY OF
+MINIBATCH TASK-LOSS GRADIENTS. It is not a Hessian, a Fisher, a
+natural gradient, a manifold or an intrinsic dimension of the loss
+surface, and no such word is used for it.
+
+**Specimens (existing checkpoints; asserted, not recomputed).** A =
+the seed-2 forward-OneCycle family (checkpoints/phase19m/m{step}.pt
+milestones, final checkpoints/gallery19m_phase_s2.pt, state digest
+4633efe5d376f911...); B = the seed-2 backward-OneCycle family
+(checkpoints/backsched19m/m{step}.pt, final checkpoints/
+gallery19m_backsched_s2.pt, 4beeedec5f9f5e91...); W_0 = the canonical
+seed-2 construction (torch.manual_seed(2), build_model d 384 / 8
+blocks / 6 heads / ffn 1536, vocab 40), digest eb4b0bb427f86972...
+asserted equal to logs/writertraj0/census.json's
+w0_seed2_state_digest. Provenance re-read, never recomputed: same
+architecture and task, both exact BP + AdamW, only the OneCycle
+direction differs (L67980), final gate band 64 / 62 (L67980, L68042).
+The milestone files carry the trainer's optimizer state ("opt" key);
+it is NOT read. Every mid-grid milestone path is asserted equal to
+the census artifact's own A_paths / B_paths entry for that step (path
+provenance; the file sha256 is receipted), the finals and W_0 by
+digest.
+Supplemental FINAL-STATE null (no ladder): the provenance-clean same-
+writer pair N3 / N4 = checkpoints/atomtraj1/stock_s7/step_15420.pt v
+the repair worktree's copy (WRITER-DEPENDENCE-NULL-2, L68265; seed-7
+W_0, a different initialization from A / B), at step 15420 only.
+
+**Time grid (frozen; the existing common A / B milestones).** Steps
+{0 (W_0, once), 900, 3600, 7200, 10800, 13500, 15420 (final)} =
+normalized times 0 / 0.058 / 0.233 / 0.467 / 0.700 / 0.876 / 1.0 for
+both writers: seven points, early / mid / late / final present. No
+state is added after any spectrum is read.
+
+**Probe data (frozen before any specimen gradient is read).** The
+D2-excised stock rows (birth19m_curric.load_excised_rows: 164,896
+rows, the training distribution of both writers), encoded and length-
+sorted by the trainer's encode_with_levels (164,490 encodable rows),
+cut into the trainer's BS = 32 slices at the stock_epoch_stream slice
+starts; 64 slices drawn by random.Random("ugc0-probe-v1").sample(
+starts, 64); FIT = the first 32 drawn, HELD = the last 32. The batch
+index tuples and the encoded ids are digested into the receipt
+(smoke: a002858525ae45d9... for the 8-batch smoke draw; the registered
+64-batch digest is written by the run and cannot be tuned). No batch
+is selected on loss, gradient norm, level or geometry. The identical
+batches serve every specimen, state and tensor group.
+
+**Gradient law.** model.eval() (the family has no dropout); zero
+grads; the trainer's CE (mean over eligible label positions, ignore_
+index -100, the trainer's right padding and mask, logits = model(ids[:,
+:-1], mask[:, :-1])); loss.backward(); dL/dtheta read from p.grad for
+the 59 trainable tensors in the WRITER-TRAJECTORY-CENSUS-0 sorted-key
+law (atomtraj_pins.CLASSES; d = 18,911,616, flatten-law digest
+562b4de56e30fe14... over (key, shape)); NO optimizer step, NO Adam
+moments, NO weight decay, NO clipping, NO parameter mutation, NO
+generated data, NO gate. The canonical state digest is asserted
+before and after every cell. Primary GLOBAL geometry = all 59
+tensors; SECONDARY descriptive = the house 9-group partition
+BLOCK0..7 + OUTSIDE (writertraj_depend.GROUPS, literally), read from
+column slices of the same rows.
+
+**Numerics / storage (implementation only).** One (64 x d) float32
+numpy.memmap per specimen-state under logs/ugc0/tmp/ (4.84 GB = 64 x
+18,911,616 x 4 B; rows = probe batches, columns = the flatten law); at
+most FOUR on disk at once (the two writers at the current state plus
+the previous state's pair, which the velocity projection needs; the
+previous pair is deleted after it), a 19.4 GB peak against 31 GiB
+free; float64 per-tensor-block
+accumulation of the 64 x 64 Gram K, the nine group Grams, the A x B
+cross-Gram at each state, the N3 x N4 cross-Gram, and the 64 inner
+products with each velocity vector; never a d x d object. The
+gradients leave the model as float32 (the family trains and evaluates
+in plain fp32, no autocast), so float32 storage loses nothing relative
+to the computed gradient by construction; the PARITY check measures
+something else: row 0 is kept in RAM as float64 and its direct inner
+products with every row are compared to the memmap-derived float64
+Gram (tolerance 1e-4 relative; smoke 4.4e-14), which verifies the
+memmap write / read and the blocked float64 accumulation, not a
+float32-v-float64 gradient difference (none exists here). Memmaps are untracked working artifacts deleted after
+each cell's reductions; DEBUG-RETENTION clause: a cell whose parity
+check fails keeps its memmap and receipts its sha256. Receipt per
+cell: shape, dtype, bytes, flatten-law digest.
+
+**Geometry (pure Gram algebra; tests/test_update_geometry_census.py,
+9 guards, dense-SVD parity on synthetic matrices).**
+A. RAW COHERENCE: Q = ||mean_i g_i||^2 / mean_i ||g_i||^2 on FIT, HELD
+   and all 64 (isotropic expectation 1 / n).
+B. DIRECTION GEOMETRY (raw): rows unit-normalized; FIT Gram spectrum,
+   participation ratio (sum lam)^2 / sum lam^2, top-k energy.
+C. CENTERED RESIDUAL GEOMETRY: the FIT-panel mean subtracted from
+   every row (FIT and HELD) before unit normalization; the same
+   readouts. Raw and centered conclusions are never merged.
+D. HELD-OUT CAPTURE (primary): P_k = the top-k right singular
+   subspace of the FIT rows; C_k(h) = ||P_k h||^2 / ||h||^2 for each
+   HELD row, via Gram / cross-Gram algebra; median, mean, quartiles,
+   min over the 32 HELD rows; raw and centered; k in {1, 2, 4, 8, 16}
+   (frozen).
+E. WRITER SUBSPACE OVERLAP: S_k = tr(P_A P_B) / k from the two FIT
+   panels at each matched state (raw and centered); WITHIN-SPECIMEN
+   reliability S_k(X_FIT, X_HELD) for every cell; the null pair
+   S_k(N3_FIT, N4_FIT) at final.
+F. W_0 BASELINE: the shared W_0 censused once; every learned /
+   writer statement compares trained states to it.
+G. VELOCITY (descriptive only): v = theta_w(s_next) - theta_w(s_prev)
+   from the exact state dicts over the six grid intervals per writer;
+   ||P_k v||^2 / ||v||^2 on the own-writer FIT subspace and on the
+   other writer's FIT subspace at s_prev (W_0 shared at s_prev = 0),
+   plus the cosine of v with the own mean gradient; per group too.
+   Not a causal success criterion (many optimizer steps and unread
+   Adam state per interval).
+H. ISOTROPIC REFERENCE: two independent synthetic Gaussian (64 x d)
+   float32 memmaps (seeds 20260914 / 20260915) through the identical
+   reductions and geometry; analytic floors k / d per group and 1 / n
+   for Q; the two-draw pair overlap as the random S_k floor. Thresholds
+   below were fixed without reading any A / B gradient.
+
+**Interpretation ladder (thresholds literal; adjudicate is pure and
+tested; axes book separately, never one scalar).** Read on the two
+FINAL specimens (step 15420), raw geometry unless stated, at k = 8
+(K_LADDER) and k = 16 (K_FLOOR):
+0. RESOLUTION: GEOMETRY-NOT-RESOLVED if raw reliability S_8(FIT, HELD)
+   < 0.25 (REL_MIN) at either final specimen; then no other axis reads
+   and the census stops.
+1. THINNESS: STABLE-THIN if the raw HELD median C_8 >= 0.5 (C_THIN) in
+   BOTH finals; else NO-THIN-GEOMETRY if the raw HELD median C_16 <
+   0.25 (C_FLOOR) in either; else PARTIAL-THIN.
+2. RESIDUAL: RESIDUAL-THIN if the centered HELD median C_8 >= 0.5 in
+   both; MEAN-ONLY if STABLE-THIN and the centered HELD median C_8 <
+   0.25 in both; else RESIDUAL-INDETERMINATE.
+3. WRITER: WRITER-SHARED if raw S_8(A, B) at final >= 0.8 x min(self_A,
+   self_B) (self = the raw S_8(FIT, HELD) reliabilities); WRITER-
+   ROTATED if < 0.5 x min(self); else WRITER-INDETERMINATE. The N3 /
+   N4 same-writer overlap is reported beside it (no threshold).
+4. LEARNED-v-INIT: LEARNED-DIFFERS-SHARPENED / -DIFFUSED if the raw
+   HELD median C_8 of both finals differs from W_0's by >= 0.15 in the
+   same direction; else INIT-PRESENT (the geometry is already at W_0).
+Every other readout (other k, other states, groups, velocity, Q,
+spectra, centered overlaps, null pair) is descriptive.
+
+**REFUTED-IF (the narrow hypothesis dies).** NO-THIN-GEOMETRY at the
+finals (held capture near the reference floor at k <= 16), or
+GEOMETRY-NOT-RESOLVED (the FIT subspace does not reproduce on HELD).
+MEAN-ONLY refutes the RICH reading (a thin update subspace beyond one
+shared descent direction) while leaving the thin-mean reading.
+
+**REGISTERED PRIOR (house, before any A / B gradient; informed by
+the non-target seed-6 W_0 smoke, disclosed; priors that bundle two
+claims score all-or-nothing).** (1) RESOLVED (raw S_8
+reliability >= 0.25 at both finals): p 0.75. (2) THINNESS at final:
+STABLE-THIN p 0.5, PARTIAL-THIN p 0.35, NO-THIN p 0.15; raw HELD
+median C_8 at final in 0.4 to 0.7 (p 0.6). (3) RESIDUAL: MEAN-ONLY p
+0.55; centered HELD median C_8 at final in 0.10 to 0.30 (p 0.6). (4)
+WRITER-SHARED p 0.5, INDETERMINATE p 0.35, ROTATED p 0.15; raw
+S_8(A, B) at final in 0.6 to 0.9 x min(self) (p 0.5). (5) W_0 raw
+HELD median C_8 >= 0.75 (p 0.7; the seed-6 W_0 smoke read 0.76 at k =
+4 on 4 / 4 batches, i.e. capture onto the whole 4-row FIT span, which
+over-reads the registered 8-of-32 quantity by an unknown amount) and the finals lie >= 0.15 BELOW it: LEARNED-
+DIFFERS-DIFFUSED p 0.55. (6) Q at W_0 >= 0.7 (p 0.7); Q at both finals
+in 0.2 to 0.5 (p 0.6). (7) velocity, first interval 0 -> 900, own-
+subspace fraction at k = 8 >= 0.3 (p 0.55); last interval 13500 ->
+15420 < 0.2 (p 0.6). (8) null pair N3 / N4 raw S_8 >= 0.9 x min(self_
+N3, self_N4) (p 0.7). (9) all nine groups' raw HELD median C_8 at
+final within 0.15 of the global value (p 0.5). (10) reference: raw
+HELD median C_16 <= 5e-6, Q within 0.005 of 1 / 64, two-draw S_8 <=
+1e-5 (p 0.95). (11) wall 20 to 90 min (p 0.7). Family track record
+entering: 42 hits 24 misses.
+
+**Consequences (sealed).** GEOMETRY-NOT-RESOLVED or NO-THIN-GEOMETRY:
+book and stop; no rescue with larger k. STABLE-THIN or RESIDUAL-THIN
+fires: freeze the metric and instrument and STOP; return for a
+separate GO before any causal training intervention. PARTIAL-THIN:
+book as such and stop. Under this GO no projected-gradient training,
+no foreign-writer reopening, no scored DFA / SG / MeZO projection, no
+ATOM-DIET x geometry, no market-data analogue, no task / data change,
+no birth. Banked, not armed: PROJECTED-BP-CAUSAL-1 (only if a stable
+reusable thin subspace fires), DATA-LOCUS-GEOMETRY-1 (after the
+metric is validated; the stock-v-ATOM paired evidence, no new data
+birth), FAILED-WRITER-PROJECTION-DESK-0 (descriptive projection of
+the existing DFA / SG / zeroth-order directions into the healthy
+geometry; those arms are not function-matched, so no writer
+mechanism); the market-manifold toy stays outside this experiment.
+
+**Same-writer null probe diet.** N3 / N4 were trained on the stock
+diet (atomtraj1 stock cells), so the probe distribution is their own
+training distribution too; their W_0 (seed 7) differs from A / B's.
+
+**Instrument and integrity.** scratch/update_geometry_census.py
+(launcher scratch/ugc0_launch.sh under liverun id ugc0; outputs
+logs/ugc0/census.json refuse-if-exists, logs/ugc0/census.jsonl
+streamed per cell / pair / velocity / reference, logs/ugc0/census.log,
+logs/ugc0/ugc0.DONE, logs/liverun/ugc0.jsonl). Before the census:
+state-digest assertions (W_0 v census, A / B finals v the sealed
+prefixes, mid-grid paths v the census artifact's path lists; every
+cell's digest before and after), the trainer's probe knobs asserted
+at their defaults (no SEQ_CAP, no BIRTH_BS, BS 32), shared-W_0 assertion
+(the census W_0 digest), function-band provenance re-read (L67980),
+probe-batch digest, flatten-law digest, no-mutation assertion,
+direct-v-Gram parity (row 0), memmap float32 v direct float64 parity
+(the same measurement, as stated above), centered-v-uncentered and cross-centered unit tests
+against dense algebra, top-k projector test on a known-rank synthetic
+matrix, overlap test on identical / orthogonal / half-overlapping /
+rank-deficient synthetic subspaces, velocity projection v dense,
+ladder purity and inclusivity, isotropic reference floor, literal
+constants; a mechanism smoke on the NON-TARGET canonical seed-6 W_0
+(8 batches 4 / 4, reference, parity 4.4e-14, wall 5 s; receipts
+logs/ugc0/smoke_mech.jsonl before the rank-deficiency fold and
+logs/ugc0/smoke_mech2.jsonl after it, both on the dirty pre-seal tree
+at c0ea6281; a clean-tree seal smoke follows the pre-reg commit). No
+A / B gradient was computed or inspected during development.
+
+**Cost.** Per cell about 1 to 2 min on the Mac (64 backward passes,
+4.84 GB memmap write, one 59-block Gram pass); 15 cells (W_0, 6 x A,
+6 x B, N3, N4) plus 2 reference draws = 17 memmap writes (82 GB); full
+memmap read passes: 17 Gram passes + 7 cross-Gram passes reading two
+files + 24 velocity passes (two per writer per interval) + 2 reference
+reductions, about 58 passes = 280 GB read, each pass converting the
+blocks to float64; expected 30 to 90 min; disk peak 19.4 GB of 31 GiB
+free. Wall fence: killed and NOT-RUN with the log if not finished
+within 4 h.
+
+**FENCES.** One writer pair (the weakest writer contrast the house
+holds) plus one same-writer null pair on a different W_0; one device
+(mps, float32 gradients; nothing compares across devices); one probe
+population (the stock training distribution; the gate band excised)
+and one batch size (the trainer's 32; the geometry of batch gradients
+depends on batch size and is read at the training grain only); 32 +
+32 batches, so any "subspace" is at most 32-dimensional by
+construction and k <= 16 is read against the finite-panel reliability
+S_k(FIT, HELD) and the reference; "low-dimensional" is claimed only at
+the frozen k, never enlarged post hoc; the FIT and HELD panels are
+disjoint batches of one epoch stream, not disjoint rows by
+construction of the trainer's slices (the length-sorted slices do not
+overlap: distinct starts); velocity is descriptive (unread AdamW
+moments, hundreds of steps per interval); the ladder reads the finals
+and W_0 only, mid-grid states are descriptive; the seed-6 smoke
+informed prior (5) and is disclosed; nothing here revises L67980 or
+L68265 and nothing authorizes a birth.
+
+**Audit before sealing (Opus 5 prereg-auditor).** Two blockers folded:
+the memmap peak is four files (19.4 GB), not three, and the m015300
+provenance sentence was wrong (the file exists) and is replaced by the
+census-path assertion; should-fixes folded: parity wording, 15 cells
+and the full read-pass accounting, "manifold" removed from the object,
+prior (5) comparability, mid-grid path binding, SEQ_CAP / BIRTH_BS
+asserted, the reference unit test tightened to 3 x k / d; notes
+adopted (docstring direction clause, rank-deficient S_k definition, the
+null pair's probe diet). Nothing scientific changed.

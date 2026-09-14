@@ -1,0 +1,51 @@
+{
+ "name": "UPDATE-GEOMETRY-CENSUS-0",
+ "program": "UPDATE-GEOMETRY-CENSUS-0",
+ "note": "Machine-readable form of PRE-REG UPDATE-GEOMETRY-CENSUS-0 (zero-training loss-gradient geometry census; the prose governs). No training birth; foreign-writer and CROSSFOSTER programs stay parked; DFA / SG / MeZO / TP-EP / ROME / Hamiltonian / endogenous-data training not reopened.",
+ "registered": "2026-09-14 (Mac local)",
+ "machine": "mac",
+ "status": "sealed; Artin GO 2026-09-14 17:22 EDT for DESIGN + PREREG + IMPLEMENTATION + TEST/SMOKE + ZERO-TRAINING CENSUS; the census run is included on a clean auditor",
+ "measured_object": "empirical geometry of minibatch task-loss gradients (not Hessian / Fisher / natural gradient / manifold / intrinsic dimension)",
+ "specimens": {
+  "A": {"family": "checkpoints/phase19m/m{step:06d}.pt", "final": "checkpoints/gallery19m_phase_s2.pt", "final_digest_prefix": "4633efe5d376f911", "writer": "forward OneCycle, seed 2"},
+  "B": {"family": "checkpoints/backsched19m/m{step:06d}.pt", "final": "checkpoints/gallery19m_backsched_s2.pt", "final_digest_prefix": "4beeedec5f9f5e91", "writer": "backward OneCycle, seed 2"},
+  "W0": {"construction": "torch.manual_seed(2); build_model(40, d=384, layers=8, heads=6, ffn=1536)", "digest_prefix": "eb4b0bb427f86972", "asserted_against": "the WRITER-TRAJECTORY-CENSUS-0 census artifact's w0_seed2_state_digest"},
+  "null_final_only": {"N3": "checkpoints/atomtraj1/stock_s7/step_15420.pt", "N4": "/Users/artin/code/llmopt-repair/checkpoints/atomtraj1/stock_s7/step_15420.pt", "provenance": "WRITER-DEPENDENCE-NULL-2 L68265 (seed-7 W0)"},
+  "function_band": "L67980 / L68042: A 64, B 62 of 120",
+  "optimizer_state_in_milestones": "present (opt key), never read"
+ },
+ "grid": [0, 900, 3600, 7200, 10800, 13500, 15420],
+ "probe": {"rows": "birth19m_curric.load_excised_rows (164,896)", "encoding": "encode_with_levels (length-sorted, 164,490)", "bs": 32, "slices": "stock_epoch_stream starts", "draw": "random.Random('ugc0-probe-v1').sample(starts, 64)", "fit": "first 32 drawn", "held": "last 32 drawn", "digest": "receipted by the run"},
+ "gradient_law": {"mode": "model.eval() (no dropout in family)", "loss": "trainer CE mean over eligible labels, ignore_index -100, logits = model(ids[:, :-1], mask[:, :-1])", "tensors": "59 sorted keys (atomtraj_pins.CLASSES), d 18911616", "flatten_law_digest_prefix": "562b4de56e30fe14",
+                  "forbidden": ["optimizer step", "Adam moments", "weight decay", "clipping", "parameter mutation", "generated data", "gate"], "state_digest": "asserted before and after each cell", "mid_grid_provenance": "paths asserted equal to the census artifact A_paths / B_paths; file sha256 receipted", "knobs_asserted": "no SEQ_CAP, no BIRTH_BS, BS 32"},
+ "groups": "writertraj_depend GROUPS: BLOCK0..7 + OUTSIDE (secondary descriptive)",
+ "storage": {"memmap": "float32 (64 x d) per specimen-state under logs/ugc0/tmp, <= 4 on disk (19.4 GB peak), deleted after reductions", "accumulation": "float64 per tensor block", "parity": "row-0 direct float64 dots v memmap Gram, tol 1e-4", "debug_retention": "parity failure keeps the memmap, sha256 receipted"},
+ "k_list": [1, 2, 4, 8, 16],
+ "thresholds": {"K_LADDER": 8, "C_THIN": 0.5, "K_FLOOR": 16, "C_FLOOR": 0.25, "REL_MIN": 0.25, "SHARED_FRAC": 0.8, "ROTATED_FRAC": 0.5, "INIT_DELTA": 0.15},
+ "ladder": {
+  "0_resolution": "GEOMETRY-NOT-RESOLVED if raw S_8(FIT, HELD) < 0.25 at either final; else RESOLVED",
+  "1_thinness": "STABLE-THIN if raw HELD median C_8 >= 0.5 in both finals; NO-THIN-GEOMETRY if raw HELD median C_16 < 0.25 in either; else PARTIAL-THIN",
+  "2_residual": "RESIDUAL-THIN if centered HELD median C_8 >= 0.5 in both; MEAN-ONLY if STABLE-THIN and centered HELD median C_8 < 0.25 in both; else RESIDUAL-INDETERMINATE",
+  "3_writer": "WRITER-SHARED if raw S_8(A,B) final >= 0.8 x min(self_A, self_B); WRITER-ROTATED if < 0.5 x min(self); else WRITER-INDETERMINATE",
+  "4_learned_v_init": "LEARNED-DIFFERS-SHARPENED / -DIFFUSED if both finals' raw HELD median C_8 differ from W0's by >= 0.15 in the same direction; else INIT-PRESENT"
+ },
+ "reference": {"kind": "two synthetic Gaussian (64 x d) float32 memmaps, seeds 20260914 / 20260915, identical reductions", "analytic_floors": "k / d per group; Q = 1 / n"},
+ "priors": [
+  {"id": 1, "claim": "RESOLVED (raw S_8 reliability >= 0.25 at both finals)", "p": 0.75},
+  {"id": 2, "claim": "THINNESS: STABLE-THIN 0.5 / PARTIAL-THIN 0.35 / NO-THIN 0.15; raw HELD median C_8 at final in 0.4 to 0.7", "p": 0.6},
+  {"id": 3, "claim": "MEAN-ONLY (p 0.55); centered HELD median C_8 at final in 0.10 to 0.30", "p": 0.6},
+  {"id": 4, "claim": "WRITER-SHARED 0.5 / INDETERMINATE 0.35 / ROTATED 0.15; raw S_8(A,B) final in 0.6 to 0.9 x min(self)", "p": 0.5},
+  {"id": 5, "claim": "W0 raw HELD median C_8 >= 0.75 (p 0.7) and finals >= 0.15 below it: LEARNED-DIFFERS-DIFFUSED", "p": 0.55},
+  {"id": 6, "claim": "Q at W0 >= 0.7 (p 0.7); Q at both finals in 0.2 to 0.5", "p": 0.6},
+  {"id": 7, "claim": "velocity own-subspace fraction at k = 8: interval 0->900 >= 0.3 (p 0.55); 13500->15420 < 0.2", "p": 0.6},
+  {"id": 8, "claim": "N3/N4 raw S_8 >= 0.9 x min(self_N3, self_N4)", "p": 0.7},
+  {"id": 9, "claim": "all nine groups' raw HELD median C_8 at final within 0.15 of the global value", "p": 0.5},
+  {"id": 10, "claim": "reference: raw HELD median C_16 <= 5e-6, Q within 0.005 of 1/64, two-draw S_8 <= 1e-5", "p": 0.95},
+  {"id": 11, "claim": "wall 20 to 90 min", "p": 0.7}
+ ],
+ "wall_fence": "killed and NOT-RUN if not finished within 4 h",
+ "consequences": {"not_resolved_or_no_thin": "book and stop; no larger-k rescue", "thin_fires": "freeze metric + instrument, STOP, separate GO before any causal training intervention", "partial": "book and stop"},
+ "banked_not_armed": ["PROJECTED-BP-CAUSAL-1", "DATA-LOCUS-GEOMETRY-1", "FAILED-WRITER-PROJECTION-DESK-0"],
+ "receipts": ["logs/ugc0/census.json", "logs/ugc0/census.jsonl", "logs/ugc0/census.log", "logs/ugc0/ugc0.DONE", "logs/liverun/ugc0.jsonl", "logs/ugc0/smoke_mech.jsonl", "logs/ugc0/smoke_mech2.jsonl", "logs/ugc0/smoke_seal.jsonl"],
+ "instrument": ["scratch/update_geometry_census.py", "scratch/ugc0_launch.sh", "tests/test_update_geometry_census.py"]
+}

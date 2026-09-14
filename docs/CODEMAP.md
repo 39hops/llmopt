@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 241, library 85, reproduce-pinned 10, results-cited 459, spec-cited 91, cited-but-library 73
+Census: UNCITED 241, library 85, reproduce-pinned 10, results-cited 461, spec-cited 91, cited-but-library 73
 
 ## scratch/
 
@@ -26,7 +26,7 @@ Census: UNCITED 241, library 85, reproduce-pinned 10, results-cited 459, spec-ci
 | atomdose1 | atomdose1_driver.sh | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | atomladder1 | atomladder1_driver.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | atomtraj | atomtraj_census.py | results-cited | RESULTS | RESULTS×4 | — | 4 |
-| atomtraj | atomtraj_pins.py | library | RESULTS | RESULTS×8 | 36 | 3 |
+| atomtraj | atomtraj_pins.py | library | RESULTS | RESULTS×8 | 37 | 3 |
 | atomtraj | atomtraj_qual.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | atomtraj | atomtraj_verify.py | results-cited | RESULTS | RESULTS×5 | — | 3 |
 | atomtraj1 | atomtraj1_driver.sh | results-cited | RESULTS | RESULTS×1 | — | — |
@@ -47,7 +47,7 @@ Census: UNCITED 241, library 85, reproduce-pinned 10, results-cited 459, spec-ci
 | birth19m | birth19m_atoms_trajgate.py | results-cited | RESULTS | RESULTS×4 | — | 5 |
 | birth19m | birth19m_backsched.py | results-cited | RESULTS, specs | RESULTS×3, specs×2 | — | — |
 | birth19m | birth19m_caf.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 6 |
-| birth19m | birth19m_curric.py | library | RESULTS, specs | RESULTS×6, specs×1 | 30 | — |
+| birth19m | birth19m_curric.py | library | RESULTS, specs | RESULTS×6, specs×1 | 31 | — |
 | birth19m | birth19m_curric_rev.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 1 |
 | birth19m | birth19m_curric_swap.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | birth19m | birth19m_dfa.py | results-cited | RESULTS, specs | RESULTS×4, specs×1 | — | 9 |
@@ -98,7 +98,7 @@ Census: UNCITED 241, library 85, reproduce-pinned 10, results-cited 459, spec-ci
 | confluence | confluence.py | UNCITED | — | — | — | — |
 | corner | corner_snap.py | UNCITED | — | — | — | — |
 | cplx | cplx_chain.sh | UNCITED | — | — | — | — |
-| crossfoster | crossfoster_chain.py | results-cited | RESULTS | RESULTS×2 | — | 2 |
+| crossfoster | crossfoster_chain.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 2 |
 | crossfoster | crossfoster_chain_determinism_probe.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | crossfoster | crossfoster_donor.py | library | RESULTS, specs | RESULTS×3, specs×1 | 2 | 2 |
 | crossfoster1c | crossfoster1c_launch.sh | results-cited | RESULTS | RESULTS×1 | — | — |
@@ -695,7 +695,9 @@ Census: UNCITED 241, library 85, reproduce-pinned 10, results-cited 459, spec-ci
 | train | train_fp64.py | UNCITED | — | — | — | — |
 | traj | traj_accept.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | tuesday | tuesday_night.sh | UNCITED | — | — | — | — |
+| ugc0 | ugc0_launch.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | umoe | umoe_conserve.py | library | RESULTS | RESULTS×2 | 9 | 3 |
+| update | update_geometry_census.py | results-cited | RESULTS | RESULTS×2 | — | 2 |
 | v4flash | v4flash_anatomy.py | UNCITED | — | — | — | — |
 | v4flash | v4flash_census.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 1 |
 | v4flash | v4flash_f1b.py | library | RESULTS | RESULTS×1 | 2 | — |
@@ -860,7 +862,7 @@ Census: UNCITED 241, library 85, reproduce-pinned 10, results-cited 459, spec-ci
 | harvest | harvest_champion.py | UNCITED | — | — | — | — |
 | harvest | harvest_frontier.py | spec-cited | specs | specs×1 | — | — |
 | list | list_uncurated.py | spec-cited | specs | specs×6 | — | — |
-| liverun | liverun.py | results-cited | RESULTS, specs | RESULTS×8, specs×1 | — | 6 |
+| liverun | liverun.py | results-cited | RESULTS, specs | RESULTS×8, specs×1 | — | 7 |
 | log | log_hygiene.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | 1 |
 | markov | markov_eval.py | UNCITED | — | — | — | — |
 | markov | markov_prior.py | UNCITED | — | — | — | — |
@@ -898,7 +900,7 @@ Census: UNCITED 241, library 85, reproduce-pinned 10, results-cited 459, spec-ci
 | train | train_dispatcher.py | UNCITED | — | — | — | — |
 | train | train_magic_estimator.py | library | RESULTS | RESULTS×1 | 7 | 1 |
 | train | train_magic_llm.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| train | train_mathnative.py | library | RESULTS, specs | RESULTS×5, specs×7 | 108 | 31 |
+| train | train_mathnative.py | library | RESULTS, specs | RESULTS×5, specs×7 | 109 | 31 |
 | train | train_nnue.py | library | specs | specs×8 | 1 | 12 |
 | train | train_proposer.py | spec-cited | specs | specs×5 | — | — |
 | train | train_syndrome_decoder.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
