@@ -1,5 +1,9 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
+ "_last_accept": {
+  "paths": [],
+  "reason": "OPTIMIZER-GEOMETRY-DESK-0 seal smoke receipt (clean tree 67f5e49e)"
+ },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
    "bytes": 3176,
@@ -3056,14 +3060,16 @@
   "logs/ogd0/smoke_mech.jsonl": {
    "bytes": 15413,
    "exists": true,
-   "local_only": true,
    "sha256": "8f7baeb671b90588e31a6a309de6c9a31a59def79994807b0b0b6233ca6f162c",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/ogd0/smoke_seal.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 15496,
+   "exists": true,
+   "sha256": "559c039dd11f77f8e27256d261acd766056523c352f1472cf9211c25d22d9857",
+   "source": "results",
+   "tracked": true
   },
   "logs/opus/f1e_prof2.log": {
    "bytes": 730,
