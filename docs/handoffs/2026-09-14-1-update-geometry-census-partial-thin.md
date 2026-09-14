@@ -41,7 +41,22 @@ file. 3080 untouched. No live registered run. Nothing armed.
   own pre-reg), DATA-LOCUS-GEOMETRY-1 (instrument validated),
   FAILED-WRITER-PROJECTION-DESK-0.
 
+## Also landed (Artin GO 18:15 EDT): PATH-HYGIENE SCRUB
+
+NOTE PATH-HYGIENE-SCRUB-0 (RESULTS, the scrub commit): llmopt/lab/
+locator.py adopted (roles main / repair / axiom; env or git worktree
+resolution); every active instrument, shell script, pre-reg and the
+BOARD scrubbed of machine-local home paths; scripts/liverun.py emits
+worktree role + repo-relative cwd; tests/test_path_hygiene.py is the
+CI lint (allowlist: logs/ receipts, RESULTS at a frozen 5 lines, ten
+legacy docs). Frozen-cited instruments changed bytes (disclosed; their
+receipts pin launch commits). No verdict changed.
+
 ## Conditions that bite next session
+
+- New instruments name artifacts by locator, never by an absolute
+  path; the lint is red otherwise. Windows-box paths come from
+  scratch/remote.env.sh (AXIOM_WSL_QUAL for the poly pipelines).
 
 - Nothing armed. Foreign-writer and CROSSFOSTER programs parked.
 - The instrument is reusable as is (scratch/update_geometry_census.py:

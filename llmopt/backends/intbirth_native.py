@@ -2,7 +2,7 @@
 conventions.
 
 Adopts the axiom-lab `intbirth` extension (pybind11, built at
-$AXIOM_BUILD_DIR, default /Users/artin/code/axiom/build-rel) when the
+$AXIOM_BUILD_DIR, default <axiom sibling checkout>/build-rel) when the
 .so imports; otherwise falls back to pure-numpy implementations with
 identical semantics. The contract is llmopt/intmath.py's (the certified
 integer core, RESULTS 2026-07-31/08-01 R1a/R1b/R2/R3a):

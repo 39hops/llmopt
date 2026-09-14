@@ -98,6 +98,7 @@ import torch  # noqa: E402
 import birth19m_curric as C  # noqa: E402
 import train_mathnative as TM  # noqa: E402
 from atomtraj_pins import CLASSES, state_digest  # noqa: E402
+from llmopt.lab.locator import resolve as _resolve  # noqa: E402
 
 SMOKE = os.environ.get("SMOKE", "0") == "1"
 SMOKE_TAG = os.environ.get("SMOKE_TAG", "")
@@ -109,7 +110,9 @@ A_PATHS = {s: f"checkpoints/phase19m/m{s:06d}.pt" for s in GRID if 0 < s < 15420
 A_PATHS[15420] = "checkpoints/gallery19m_phase_s2.pt"
 B_PATHS = {s: f"checkpoints/backsched19m/m{s:06d}.pt" for s in GRID if 0 < s < 15420}
 B_PATHS[15420] = "checkpoints/gallery19m_backsched_s2.pt"
-NULL_PATHS = {"N3": "checkpoints/atomtraj1/stock_s7/step_15420.pt", "N4": "/Users/artin/code/llmopt-repair/checkpoints/atomtraj1/stock_s7/step_15420.pt"}
+NULL_LOCATORS = {"N3": {"worktree_role": "main", "relative_path": "checkpoints/atomtraj1/stock_s7/step_15420.pt"},
+                 "N4": {"worktree_role": "repair", "relative_path": "checkpoints/atomtraj1/stock_s7/step_15420.pt"}}   # logical locators (llmopt.lab.locator); resolved at runtime, never a home path
+NULL_PATHS = {k: str(_resolve(v)) for k, v in NULL_LOCATORS.items()}
 DIGEST_PREFIX = {"A_final": "4633efe5d376f911", "B_final": "4beeedec5f9f5e91", "W0": "eb4b0bb427f86972"}
 CENSUS = Path("logs/writertraj0/census.json")
 N_FIT = 4 if SMOKE else 32
@@ -444,7 +447,7 @@ def main():
         assert census["artifacts"]["A_paths"][str(s_)] == A_PATHS[s_] and census["artifacts"]["B_paths"][str(s_)] == B_PATHS[s_], f"grid step {s_} v census paths"
     rec = {"prereg": "UPDATE-GEOMETRY-CENSUS-0", "kind": "update_geometry_census", "smoke": SMOKE, "commit": commit, "tree_dirty": dirty, "source_sha256": sha256_file(__file__),
            "device": dev, "torch_version": torch.__version__, "numpy_version": np.__version__, "n_keys": len(KEYS), "d": d, "flatten_law_digest": flat_digest, "groups": {g: len(v) for g, v in GROUPS.items()},
-           "grid": GRID, "paths": {"A": A_PATHS, "B": B_PATHS, "null": NULL_PATHS}, "probe": probe, "n_fit": N_FIT, "n_held": N_HELD, "probe_seed": PROBE_SEED, "bs": TM.BS, "k_list": K_LIST,
+           "grid": GRID, "paths": {"A": A_PATHS, "B": B_PATHS, "null": NULL_LOCATORS}, "probe": probe, "n_fit": N_FIT, "n_held": N_HELD, "probe_seed": PROBE_SEED, "bs": TM.BS, "k_list": K_LIST,
            "thresholds": {"K_THIN": K_THIN, "C_THIN": C_THIN, "K_FLOOR": K_FLOOR, "C_FLOOR": C_FLOOR, "REL_MIN": REL_MIN, "SHARED_FRAC": SHARED_FRAC, "ROTATED_FRAC": ROTATED_FRAC, "INIT_DELTA": INIT_DELTA, "K_LADDER": K_LADDER},
            "parity_tol": PARITY_TOL, "ref_seed": REF_SEED, "census_sha256": sha256_file(CENSUS), "w0_seed2_state_digest_from_census": census["w0_seed2_state_digest"],
            "started_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")}
@@ -489,7 +492,7 @@ def main():
             for kind in ("raw", "centered"):
                 groups[gn][kind] = {"held_capture": gg[kind]["held_capture"], "reliability_fit_held": gg[kind]["reliability_fit_held"],
                                     "participation_ratio": gg[kind]["fit_spectrum"]["participation_ratio"], "topk_energy": gg[kind]["fit_spectrum"]["topk_energy"]}
-        cell = {"specimen": name, "step": step, "path": path, "state_digest": dg_before, "state_digest_after": dg_after, "file_sha256": sha256_file(path) if path else None,
+        cell = {"specimen": name, "step": step, "path": (NULL_LOCATORS[name] if name in NULL_LOCATORS else path), "state_digest": dg_before, "state_digest_after": dg_after, "file_sha256": sha256_file(path) if path else None,
                 "loss_mean": float(np.mean(g["losses"])), "losses": g["losses"], "n_labels": g["n_labels"], "memmap": {"shape": g["shape"], "dtype": g["dtype"], "bytes": g["bytes"]},
                 "parity": par, "geometry": geom, "geometry_groups": groups, "wall_s": round(time.time() - t1, 1)}
         if not par["ok"]:

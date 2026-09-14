@@ -5,7 +5,7 @@ source "$(dirname "$0")/remote.env.sh"
 # actively streamed), then runs the bridge-law pipeline.
 cd ~/code/llmopt
 R="$WSL_REMOTE"; K="-i "$WSL_KEY" -o BatchMode=yes"
-F="/mnt/c/Users/a/Documents/code/axiom/data/qual/poly_chain4.jsonl"
+F="${AXIOM_WSL_QUAL:?set AXIOM_WSL_QUAL in scratch/remote.env.sh}/poly_chain4.jsonl"
 until grep -q GEN8_DONE logs/gen8_rarity.log 2>/dev/null; do sleep 300; done
 echo "[watch] gen-8 done, waiting on poly_chain4 stability"
 while true; do

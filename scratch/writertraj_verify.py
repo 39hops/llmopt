@@ -32,7 +32,8 @@ SMOKE = os.environ.get("SMOKE") == "1"
 DEPEND_SET = os.environ.get("DEPEND_SET", "main")
 OUT = Path("logs/writertraj0" if DEPEND_SET == "main" else f"logs/writertraj0_{DEPEND_SET}")
 T = 15_420
-REPAIR = Path("/Users/artin/code/llmopt-repair")
+from llmopt.lab.locator import worktree as _wt  # noqa: E402
+REPAIR = _wt("repair")   # the repair worktree, resolved at runtime (llmopt.lab.locator), never a literal home path
 SOURCES = ["scratch/writertraj_census.py", "scratch/writertraj_depend.py", "scratch/atomtraj_pins.py"]
 D = []
 

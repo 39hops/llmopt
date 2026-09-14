@@ -39,7 +39,8 @@ sys.path.insert(0, ".")
 sys.path.insert(0, "scripts")
 sys.path.insert(0, "scratch")
 
-AXIOM_DIR = "/Users/artin/code/axiom/build-iv7"
+from llmopt.lab.locator import worktree as _wt
+AXIOM_DIR = str(_wt("axiom") / "build-iv7")   # sibling axiom checkout (AXIOM_DIR env overrides the root)
 AXIOM_SHA = "5a8ae70"
 OUT = Path("data/micromodel_atoms_axiom_shard0.jsonl")
 SEED_BASE = 72_000_000

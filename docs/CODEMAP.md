@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 241, library 85, reproduce-pinned 10, results-cited 461, spec-cited 91, cited-but-library 73
+Census: UNCITED 233, library 85, reproduce-pinned 10, results-cited 471, spec-cited 89, cited-but-library 73
 
 ## scratch/
 
@@ -20,7 +20,7 @@ Census: UNCITED 241, library 85, reproduce-pinned 10, results-cited 461, spec-ci
 | absorb | absorb_1e5.py | UNCITED | — | — | — | — |
 | adjudicate | adjudicate_zx.py | library | — | — | 1 | — |
 | anatomy | anatomy.py | results-cited | RESULTS, specs | RESULTS×5, specs×7 | — | 3 |
-| answerform0 | answerform0_censor0.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
+| answerform0 | answerform0_censor0.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | assets | assets_classify.py | spec-cited | specs | specs×1 | — | — |
 | atlas | atlas_precompute.py | spec-cited | specs | specs×1 | — | — |
 | atomdose1 | atomdose1_driver.sh | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
@@ -30,7 +30,7 @@ Census: UNCITED 241, library 85, reproduce-pinned 10, results-cited 461, spec-ci
 | atomtraj | atomtraj_qual.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | atomtraj | atomtraj_verify.py | results-cited | RESULTS | RESULTS×5 | — | 3 |
 | atomtraj1 | atomtraj1_driver.sh | results-cited | RESULTS | RESULTS×1 | — | — |
-| atomtraj1 | atomtraj1_repair_driver.sh | results-cited | RESULTS | RESULTS×1 | — | — |
+| atomtraj1 | atomtraj1_repair_driver.sh | results-cited | RESULTS | RESULTS×2 | — | — |
 | attractor | attractor_census.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | attractor | attractor_census2.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | b768 | b768_after_v5.sh | UNCITED | — | — | — | — |
@@ -97,7 +97,7 @@ Census: UNCITED 241, library 85, reproduce-pinned 10, results-cited 461, spec-ci
 | complexify | complexify_control.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | confluence | confluence.py | UNCITED | — | — | — | — |
 | corner | corner_snap.py | UNCITED | — | — | — | — |
-| cplx | cplx_chain.sh | UNCITED | — | — | — | — |
+| cplx | cplx_chain.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | crossfoster | crossfoster_chain.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 2 |
 | crossfoster | crossfoster_chain_determinism_probe.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | crossfoster | crossfoster_donor.py | library | RESULTS, specs | RESULTS×3, specs×1 | 2 | 2 |
@@ -117,7 +117,7 @@ Census: UNCITED 241, library 85, reproduce-pinned 10, results-cited 461, spec-ci
 | detbwd | detbwd_r2b.py | library | RESULTS, specs | RESULTS×2, specs×2 | 6 | — |
 | detbwd | detbwd_r3_qw.py | library | RESULTS | RESULTS×1 | 5 | — |
 | determinability | determinability_census.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
-| dfa | dfa_act.py | library | RESULTS, specs | RESULTS×3, specs×1 | 4 | 2 |
+| dfa | dfa_act.py | library | RESULTS, specs | RESULTS×4, specs×1 | 4 | 2 |
 | dfa | dfa_align.py | library | RESULTS, specs | RESULTS×2, specs×1 | 2 | 3 |
 | dfa | dfa_credit.py | library | RESULTS, specs | RESULTS×3, specs×3 | 23 | 1 |
 | dfa | dfa_depthclass.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 2 |
@@ -175,7 +175,7 @@ Census: UNCITED 241, library 85, reproduce-pinned 10, results-cited 461, spec-ci
 | export | export_r2b_ref.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | farm | farm_arith.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 1 |
 | farm | farm_atoms.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | 1 |
-| farm | farm_atoms_axiom.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 2 |
+| farm | farm_atoms_axiom.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 2 |
 | farm | farm_dist_rows.py | results-cited | RESULTS, specs | RESULTS×1, specs×4 | — | 1 |
 | farm | farm_xterm.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | — |
 | farmer | farmer_probe.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — |
@@ -185,9 +185,9 @@ Census: UNCITED 241, library 85, reproduce-pinned 10, results-cited 461, spec-ci
 | fixed | fixed_q_snap.py | UNCITED | — | — | — | 1 |
 | floor | floor_hk1.sh | UNCITED | — | — | — | 1 |
 | floor | floor_hk1_d256.sh | UNCITED | — | — | — | — |
-| fmt | fmt_chain.sh | UNCITED | — | — | — | — |
-| fmt | fmt_chain2.sh | UNCITED | — | — | — | — |
-| fmt | fmt_pp_watcher.sh | UNCITED | — | — | — | — |
+| fmt | fmt_chain.sh | results-cited | RESULTS | RESULTS×1 | — | — |
+| fmt | fmt_chain2.sh | results-cited | RESULTS | RESULTS×1 | — | — |
+| fmt | fmt_pp_watcher.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | format | format_delta_prep.py | UNCITED | — | — | — | 2 |
 | format | format_ladder.py | UNCITED | — | — | — | 3 |
 | fourier | fourier_g9.py | results-cited | RESULTS | RESULTS×1 | — | — |
@@ -305,7 +305,7 @@ Census: UNCITED 241, library 85, reproduce-pinned 10, results-cited 461, spec-ci
 | mathworld0 | mathworld0.py | results-cited | RESULTS | RESULTS×6 | — | 18 |
 | mathworld0 | mathworld0_coldreplay.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | mathworld1 | mathworld1_abv2desk.py | results-cited | RESULTS | RESULTS×2 | — | — |
-| mathworld1 | mathworld1_actionbasis_census.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| mathworld1 | mathworld1_actionbasis_census.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | mathworld1 | mathworld1_actionfinal.py | results-cited | RESULTS | RESULTS×2 | — | 17 |
 | mathworld1 | mathworld1_actionprog.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | mathworld1 | mathworld1_actionprog2.py | results-cited | RESULTS | RESULTS×2 | — | — |
@@ -313,7 +313,7 @@ Census: UNCITED 241, library 85, reproduce-pinned 10, results-cited 461, spec-ci
 | mathworld1 | mathworld1_actionsite.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | mathworld1 | mathworld1_actiontok.py | results-cited | RESULTS | RESULTS×2 | — | 61 |
 | mathworld1 | mathworld1_active.py | results-cited | RESULTS | RESULTS×1 | — | — |
-| mathworld1 | mathworld1_autopsy.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| mathworld1 | mathworld1_autopsy.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | mathworld1 | mathworld1_axfixture.py | results-cited | RESULTS | RESULTS×2 | — | 7 |
 | mathworld1 | mathworld1_birth.py | results-cited | RESULTS | RESULTS×2 | — | 37 |
 | mathworld1 | mathworld1_cayley.py | library | RESULTS | RESULTS×13 | 5 | — |
@@ -431,7 +431,7 @@ Census: UNCITED 241, library 85, reproduce-pinned 10, results-cited 461, spec-ci
 | mathworld1 | mathworld1_terminal.py | UNCITED | — | — | — | — |
 | mathworld1 | mathworld1_transposition.py | results-cited | RESULTS | RESULTS×2 | — | 1 |
 | mathworld1 | mathworld1_transpositionverify.py | results-cited | RESULTS | RESULTS×2 | — | — |
-| mathworld1 | mathworld1_unprod_probe.py | results-cited | RESULTS | RESULTS×1 | — | — |
+| mathworld1 | mathworld1_unprod_probe.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | mathworld1 | mathworld1_unprodsem.py | results-cited | RESULTS | RESULTS×2 | — | 15 |
 | mathworld1 | mathworld1_yield.py | UNCITED | — | — | — | — |
 | mathworld1 | mathworld1_zdpdesk.py | UNCITED | — | — | — | — |
@@ -535,10 +535,10 @@ Census: UNCITED 241, library 85, reproduce-pinned 10, results-cited 461, spec-ci
 | place1 | place1_gravity.py | results-cited | RESULTS, specs | RESULTS×4, specs×1 | — | — |
 | polar | polar_snap.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | poly3 | poly3_pipeline.sh | spec-cited | specs | specs×2 | — | 1 |
-| poly4 | poly4_pipeline.sh | spec-cited | specs | specs×1 | — | 2 |
-| poly4 | poly4_watcher.sh | UNCITED | — | — | — | — |
-| poly5 | poly5_pipeline.sh | spec-cited | specs | specs×1 | — | 2 |
-| poly5 | poly5_watcher.sh | UNCITED | — | — | — | — |
+| poly4 | poly4_pipeline.sh | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 2 |
+| poly4 | poly4_watcher.sh | results-cited | RESULTS | RESULTS×1 | — | — |
+| poly5 | poly5_pipeline.sh | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 2 |
+| poly5 | poly5_watcher.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | practice | practice_mine.py | spec-cited | specs | specs×1 | — | — |
 | prband2fresh | prband2fresh_train.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | prefix | prefix_pair.sh | UNCITED | — | — | — | — |
@@ -697,7 +697,7 @@ Census: UNCITED 241, library 85, reproduce-pinned 10, results-cited 461, spec-ci
 | tuesday | tuesday_night.sh | UNCITED | — | — | — | — |
 | ugc0 | ugc0_launch.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | umoe | umoe_conserve.py | library | RESULTS | RESULTS×2 | 9 | 3 |
-| update | update_geometry_census.py | results-cited | RESULTS | RESULTS×2 | — | 2 |
+| update | update_geometry_census.py | results-cited | RESULTS, specs | RESULTS×4, specs×2 | — | 2 |
 | v4flash | v4flash_anatomy.py | UNCITED | — | — | — | — |
 | v4flash | v4flash_census.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 1 |
 | v4flash | v4flash_f1b.py | library | RESULTS | RESULTS×1 | 2 | — |
@@ -713,7 +713,7 @@ Census: UNCITED 241, library 85, reproduce-pinned 10, results-cited 461, spec-ci
 | v4flash | v4flash_rungd2.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | v4flash | v4flash_s0.py | results-cited | RESULTS | RESULTS×3 | — | — |
 | v4flash | v4flash_twin.py | library | RESULTS | RESULTS×4 | 3 | — |
-| verify | verify_intbirth_prims.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
+| verify | verify_intbirth_prims.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — |
 | vmasm | vmasm.py | library | — | — | 1 | — |
 | vmasm | vmasm_probe.py | UNCITED | — | — | — | — |
 | vrm | vrm_ab.py | UNCITED | — | — | — | 1 |
@@ -725,17 +725,17 @@ Census: UNCITED 241, library 85, reproduce-pinned 10, results-cited 461, spec-ci
 | writerdfa1 | writerdfa1_post_driver.sh | UNCITED | — | — | — | — |
 | writerdfa1 | writerdfa1_qual_driver.sh | UNCITED | — | — | — | — |
 | writertraj | writertraj_census.py | library | RESULTS | RESULTS×2 | 2 | 2 |
-| writertraj | writertraj_depend.py | library | RESULTS, specs | RESULTS×7, specs×1 | 1 | 4 |
-| writertraj | writertraj_verify.py | results-cited | RESULTS | RESULTS×5 | — | 1 |
+| writertraj | writertraj_depend.py | library | RESULTS, specs | RESULTS×9, specs×1 | 1 | 4 |
+| writertraj | writertraj_verify.py | results-cited | RESULTS | RESULTS×6 | — | 1 |
 | writertraj0 | writertraj0_driver.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | wsl | wsl.sh | results-cited | RESULTS, specs | RESULTS×10, specs×23 | — | 5 |
 | xterm | xterm_probe.py | library | RESULTS, specs | RESULTS×2, specs×1 | 1 | 1 |
 | xtermdiet1 | xtermdiet1_driver.sh | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | z1 | z1_gate.sh | UNCITED | — | — | — | — |
 | z1s | z1s_hot_watcher.sh | UNCITED | — | — | — | — |
-| zx | zx_chain.sh | UNCITED | — | — | — | — |
+| zx | zx_chain.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | zx | zx_chain_cuda.sh | UNCITED | — | — | — | — |
-| zx | zx_gate_watcher.sh | UNCITED | — | — | — | — |
+| zx | zx_gate_watcher.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 
 ## scripts/
 
@@ -862,7 +862,7 @@ Census: UNCITED 241, library 85, reproduce-pinned 10, results-cited 461, spec-ci
 | harvest | harvest_champion.py | UNCITED | — | — | — | — |
 | harvest | harvest_frontier.py | spec-cited | specs | specs×1 | — | — |
 | list | list_uncurated.py | spec-cited | specs | specs×6 | — | — |
-| liverun | liverun.py | results-cited | RESULTS, specs | RESULTS×8, specs×1 | — | 7 |
+| liverun | liverun.py | results-cited | RESULTS, specs | RESULTS×10, specs×2 | — | 7 |
 | log | log_hygiene.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | 1 |
 | markov | markov_eval.py | UNCITED | — | — | — | — |
 | markov | markov_prior.py | UNCITED | — | — | — | — |

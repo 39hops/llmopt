@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /Users/artin/code/llmopt
+cd "$(dirname "$0")/.."
 export VOCAB_EXTRA="in(,out(,Z(,X(,P(,H(,:"
 until [ -f logs/zx_chain_done.marker ]; do sleep 120; done
 .venv/bin/python scratch/gate_zx.py checkpoints/tourn_M5_zx.pt real M5_zx > logs/zx_M5_gate.log 2>&1

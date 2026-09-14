@@ -2,7 +2,7 @@
 # fires poly5 after gen-9 A/B completes AND chain5 is fully written
 source "$(dirname "$0")/remote.env.sh"
 cd ~/code/llmopt
-F="/mnt/c/Users/a/Documents/code/axiom/data/qual/poly_chain5.jsonl"
+F="${AXIOM_WSL_QUAL:?set AXIOM_WSL_QUAL in scratch/remote.env.sh}/poly_chain5.jsonl"
 until grep -q GEN9_AB_DONE logs/gen9B_rarity.log 2>/dev/null; do sleep 600; done
 while true; do
   s1=$(ssh -i "$WSL_KEY" -o BatchMode=yes "$WSL_REMOTE" "stat -c %s $F 2>/dev/null" || echo 0)

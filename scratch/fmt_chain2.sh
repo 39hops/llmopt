@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /Users/artin/code/llmopt
+cd "$(dirname "$0")/.."
 export BIRTH_SEED=1
 until [ -f logs/fmt_1p_done.marker ]; do sleep 60; done
 for F in traces delta randpack; do

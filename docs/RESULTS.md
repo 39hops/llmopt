@@ -73627,3 +73627,82 @@ receipts carry; the A / B final digest prefixes are asserted literals
 traced to prior booked receipts (the bound census artifact carries
 only the W_0 digest); the N4 path is the repair worktree's absolute
 path, as in writertraj_depend.py.
+
+## NOTE PATH-HYGIENE-SCRUB-0: repository hygiene only — machine-local absolute home / worktree paths removed from every active instrument, shell script, pre-reg and the live BOARD, a logical artifact locator {worktree_role, relative_path, commit, digest} adopted (llmopt/lab/locator.py; roles main / repair / axiom; runtime resolution by environment or `git worktree list`), scripts/liverun.py now emits worktree role + repo-relative cwd + commit instead of absolute paths, and a mechanical lint (tests/test_path_hygiene.py) forbids newly tracked home paths with an explicit narrow allowlist for immutable legacy receipts under logs/, the append-only ledger at its frozen count, and ten enumerated legacy documents; no history rewrite, no locked receipt mutated, no scientific verdict changed (2026-09-14, Mac; Artin GO 18:15 EDT)
+
+**What changed (tracked source).** llmopt/lab/locator.py (new): worktree(role)
+resolves main / repair / axiom from LLMOPT_WORKTREE_<ROLE> (or AXIOM_DIR),
+else `git worktree list --porcelain` (main = the primary worktree, repair =
+the worktree named *-repair), else the axiom sibling rule; locator(role,
+relative_path, commit, digest) builds the tracked form; resolve(),
+repo_relative(), role_of(). Scrubbed instruments (the repair worktree, now
+_wt("repair")): scratch/update_geometry_census.py (the N3 / N4 entries are
+now locators, emitted as such in future receipts), scratch/writertraj_
+census.py, scratch/writertraj_depend.py, scratch/writertraj_verify.py,
+scratch/dfa_act.py, scratch/atomtraj1_repair_driver.sh. Scrubbed repo-
+root literals: scratch/mathworld1_actionbasis_census.py, scratch/
+mathworld1_autopsy.py, scratch/mathworld1_unprod_probe.py, scratch/
+lean_real_corpus/merge_grep2.py, and the `cd` lines of scratch/cplx_chain.sh,
+fmt_chain.sh, fmt_chain2.sh, fmt_pp_watcher.sh, zx_chain.sh, zx_gate_watcher.sh.
+Scrubbed axiom sibling literals: scratch/answerform0_censor0.py, scratch/
+farm_atoms_axiom.py, scratch/verify_intbirth_prims.py, the docstring of
+llmopt/backends/intbirth_native.py (its code already derived the default).
+Scrubbed the Windows-box WSL form (/mnt/c/Users/<user>/...): scratch/poly3_
+pipeline.sh, poly4_pipeline.sh, poly5_pipeline.sh, poly4_watcher.sh,
+poly5_watcher.sh now require AXIOM_WSL_QUAL from the gitignored
+scratch/remote.env.sh. Docs: docs/BOARD.md line 5, docs/preregs/update-
+geometry-census-0.json and writer-dependence-null-2.json (locator form),
+.claude/skills/counterbook/SKILL.md. scripts/liverun.py: the armed row
+carries worktree_role, worktree_name, cwd_relative (to the worktree) and
+the sentinel relative to the git common dir; the absolute worktree / cwd /
+sentinel fields are gone from new receipts. Behavior of every instrument
+is unchanged on this machine (the resolved paths are the same
+directories); tests 1,175 passed after the scrub.
+
+**Frozen-instrument disclosure.** Six of the scrubbed files are cited by
+booked verdicts (CODEMAP results-cited / library). Their bytes changed,
+so their source_sha256 as it now stands differs from the sha their
+receipts pinned at run time; every such receipt names its launch commit,
+at which the cited bytes are recoverable from git unchanged. No
+scientific field, law, constant or output path was touched; the edits
+replace one literal directory with its runtime resolution.
+
+**Immutable evidence, normalized locators (pointing at the same digest-
+identified artifacts; the receipts themselves are unchanged).**
+- logs/ugc0/census.json (VERDICT UPDATE-GEOMETRY-CENSUS-0 L73446), cell N4
+  and paths.null.N4: {worktree_role: repair, relative_path: checkpoints/
+  atomtraj1/stock_s7/step_15420.pt, commit: ec6de1ae, file sha256
+  573932d50d82e1ed..., state digest fb109ccd807322f9...}; N3 is the main
+  worktree's checkpoints/atomtraj1/stock_s7/step_15420.pt (5f3e298aebbf
+  4bc0..., bcfc59c0ae5b8c87...).
+- logs/writertraj0/depend.json (VERDICT WRITER-TRAJECTORY-CENSUS-0 L67980),
+  specimen N2: {repair, checkpoints/atomtraj1/stock_s6/step_15420.pt,
+  ec6de1ae, state digest b4629e7f89886d76...}; logs/writertraj0_null2/
+  depend.json (L68265), N4: {repair, checkpoints/atomtraj1/stock_s7/
+  step_15420.pt, ec6de1ae, fb109ccd807322f9...}; logs/writerdfa1/
+  act_envelope.json (L68321): the same two repair artifacts.
+- logs/liverun/*.jsonl (21 armed rows before this change): worktree and
+  cwd were the main worktree's absolute path; normalized: {worktree_role:
+  main, cwd_relative: "."} for every one; sentinel = .git/liverun.lock.
+- The remaining receipts under logs/ carrying home paths (335 files in
+  all, mostly mathworld1 / qwen* interpreter and artifact paths recorded
+  at run time) are immutable evidence; the lint allowlists logs/ as a
+  directory and the five lines of docs/RESULTS.md that predate this
+  entry at their frozen count.
+
+**Lint.** tests/test_path_hygiene.py scans `git ls-files` for
+/Users/<user>/, /home/<user>/, <drive>:\Users\<user>\ and /mnt/<drive>/
+Users/<user>/; allowlist = logs/ (immutable receipts), docs/RESULTS.md at
+a frozen count of 5 offending lines (append-only; may not grow), and the
+enumerated legacy documents (checkpoints/mathnative_19m_mw1_theta0.json,
+docs/handoffs/2026-09-09-0-writer-dfa-1-unstable.md, docs/sol/{NOTES,
+RESULTS-SOL,SESSION-NOTES-PRESENT-1}.md, three docs/superpowers/plans
+files, one specs file, scratch/manim_feasibility_2026-08-13.md), each of
+which the lint also checks still needs its entry. tests/test_locator.py
+(5) covers the environment override, the git resolution on this checkout,
+the round trip, refusals and repo_relative. This is a CI-red condition
+from this commit on: a new tracked home path fails the suite.
+
+**Not done here (by the GO).** No git history rewrite; no locked receipt
+edited; no UPDATE-GEOMETRY follow-up, birth, CROSSFOSTER revival or
+foreign-writer work. The scrub is bookkeeping and changes no verdict.

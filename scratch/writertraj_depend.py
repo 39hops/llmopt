@@ -4,7 +4,7 @@ profiles and cross-writer component COMPATIBILITY. Specimens: A =
 checkpoints/gallery19m_phase_s2.pt, B = checkpoints/gallery19m_backsched_s2.pt
 (shared W_0 = the canonical seed-2 construction), N1 =
 checkpoints/atomtraj1/stock_s6/step_15420.pt (first run), N2 =
-/Users/artin/code/llmopt-repair/checkpoints/atomtraj1/stock_s6/step_15420.pt
+<repair worktree>/checkpoints/atomtraj1/stock_s6/step_15420.pt
 (repair), W_0 = their byte-identical step_00000.pt (seed-6 regeneration
 recorded as a check). For each specimen: gate(full), gate(W_0) once per
 seed, and for each of the nine groups (BLOCK 0..7, OUTSIDE) and eight
@@ -44,7 +44,8 @@ from llmopt.lab.gate import gate_eval  # noqa: E402
 SMOKE = os.environ.get("SMOKE") == "1"
 DEPEND_SET = os.environ.get("DEPEND_SET", "main")      # main = A, B, N1, N2 (L67576); null2 = N3, N4 (stock_s7 first run v repair); dfa = DFA v CTRL (WRITER-DFA-1 L68321)
 OUT = Path("logs/writertraj0" if DEPEND_SET == "main" else ("logs/writerdfa1" if DEPEND_SET == "dfa" else f"logs/writertraj0_{DEPEND_SET}"))
-REPAIR = Path("/Users/artin/code/llmopt-repair")
+from llmopt.lab.locator import worktree as _wt  # noqa: E402
+REPAIR = _wt("repair")   # the repair worktree, resolved at runtime (llmopt.lab.locator), never a literal home path
 KEYS = sorted(sum(CLASSES.values(), []))
 GROUPS = {f"BLOCK{l}": sorted(k for k in KEYS if k.startswith(f"blocks.{l}.")) for l in range(8)}
 GROUPS["OUTSIDE"] = sorted(k for k in KEYS if not k.startswith("blocks."))

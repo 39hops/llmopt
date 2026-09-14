@@ -17,7 +17,8 @@ from collections import Counter
 import sympy as sp
 from sympy.parsing.sympy_parser import parse_expr
 
-FARM = '/Users/artin/code/llmopt/data/axiom_parity_farm.jsonl'
+import os as _os
+FARM = _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))), 'data', 'axiom_parity_farm.jsonl')
 OUT = 'parity_out.jsonl'
 
 def is_frac(e):

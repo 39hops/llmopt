@@ -40,7 +40,8 @@ SMOKE = os.environ.get("SMOKE") == "1"
 OUT = Path("logs/writertraj0")
 T_TOTAL = 15_420
 MAIN = Path(".")
-REPAIR = Path("/Users/artin/code/llmopt-repair")
+from llmopt.lab.locator import worktree as _wt  # noqa: E402
+REPAIR = _wt("repair")   # the repair worktree, resolved at runtime (llmopt.lab.locator), never a literal home path
 WRITER_GRID = list(range(900, 15_301, 900))
 NULL_GRID = [463] + list(range(1_028, T_TOTAL + 1, 1_028))
 NULL_CELLS = ["stock_s6", "atoms_s6", "atoms_s7", "stock_s7"]

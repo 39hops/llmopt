@@ -9,7 +9,7 @@
    "description": "stock_s7 first run, checkpoints/atomtraj1/stock_s7/step_15420.pt (code_commit 6f41511f), W_0 = its step_00000.pt"
   },
   "N4": {
-   "description": "stock_s7 repair, /Users/artin/code/llmopt-repair/checkpoints/atomtraj1/stock_s7/step_15420.pt (ec6de1ae), W_0 = its byte-identical step_00000.pt"
+   "description": "stock_s7 repair, {worktree_role: repair, relative_path: checkpoints/atomtraj1/stock_s7/step_15420.pt, commit: ec6de1ae}, W_0 = its byte-identical step_00000.pt"
   }
  },
  "bars": [],

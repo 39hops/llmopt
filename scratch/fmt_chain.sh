@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /Users/artin/code/llmopt
+cd "$(dirname "$0")/.."
 export BIRTH_SEED=1
 .venv/bin/python scratch/format_delta_prep.py > logs/fmt_delta_prep.log 2>&1
 for F in traces skip dechain oneshot randpack delta; do

@@ -8,6 +8,7 @@ one AdamW over the concatenated param list).
 Usage: .venv/bin/python scratch/verify_intbirth_prims.py \
            [axiom_build_dir] [tables.bin]
 """
+from llmopt.lab.locator import worktree as _wt
 import hashlib
 import json
 import sys
@@ -15,9 +16,9 @@ import sys
 import numpy as np
 
 BUILD = sys.argv[1] if len(sys.argv) > 1 else \
-    "/Users/artin/code/axiom/build-rel"
+    str(_wt("axiom") / "build-rel")
 TABLES = sys.argv[2] if len(sys.argv) > 2 else \
-    "/Users/artin/code/axiom/tools/int_adamw/r2b_tables.bin"
+    str(_wt("axiom") / "tools" / "int_adamw" / "r2b_tables.bin")
 sys.path.insert(0, BUILD)
 import intbirth  # noqa: E402
 

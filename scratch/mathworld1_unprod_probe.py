@@ -5,7 +5,9 @@ import multiprocessing as mp
 import sys
 from collections import Counter
 
-sys.path.insert(0, "/Users/artin/code/llmopt")
+import os
+_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # repo root, never a literal home path
+sys.path.insert(0, _ROOT)
 
 
 def sha(t):
@@ -34,7 +36,7 @@ def probe(args):
 
 def main():
     recov = {}
-    for l in open("/Users/artin/code/llmopt/logs/mathworld1/pdc_relabel.jsonl"):
+    for l in open(_ROOT + "/logs/mathworld1/pdc_relabel.jsonl"):
         r = json.loads(l)
         for nxt, cl in r.get("rows", {}).items():
             if (isinstance(cl, dict)
@@ -43,8 +45,8 @@ def main():
                 recov.setdefault(r["cur_sha"], []).append(nxt)
     cur_of = {}
     files = sorted(glob.glob(
-        "/Users/artin/code/llmopt/data/micromodel_chains_shard*.jsonl"))
-    files.append("/Users/artin/code/llmopt/data/step_chains.jsonl")
+        _ROOT + "/data/micromodel_chains_shard*.jsonl"))
+    files.append(_ROOT + "/data/step_chains.jsonl")
     for f in files:
         for l in open(f):
             c = json.loads(l)["cur"]

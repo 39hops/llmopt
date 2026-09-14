@@ -10,7 +10,7 @@ commits and artifacts, never accept tables. Order matters.
 
 ## Steps
 
-1. **Pull**: `git -C /Users/artin/code/axiom pull --ff-only`; note
+1. **Pull**: `git -C "$(.venv/bin/python -c 'from llmopt.lab.locator import worktree; print(worktree("axiom"))')" pull --ff-only`; note
    the commit hash — the booking cites it as the frozen evidence.
 2. **Recompute every load-bearing number** from the committed
    artifact (jsonl, dumps, source): schedules re-evaluated from

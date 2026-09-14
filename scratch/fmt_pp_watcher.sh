@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /Users/artin/code/llmopt
+cd "$(dirname "$0")/.."
 until [ -f logs/fmt_2_done.marker ]; do sleep 120; done
 for C in fmt_oneshot_1p fmt_skip_1p fmt_dechain_1p fmt_randpack_1p fmt_delta_1p fmt_traces_1p fmt_revpairs_1p; do
   .venv/bin/python scratch/gate_pp.py checkpoints/${C}.pt 256 8 1024 4 ${C} > logs/pp_${C}.log 2>&1

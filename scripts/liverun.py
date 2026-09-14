@@ -7,7 +7,10 @@ that git directory (the main checkout and all its worktrees).
 
 Sentinel: <git-common-dir>/liverun.lock, created with O_EXCL (atomic; a
 second registered run cannot arm while one is live), holding
-{run_id, pid, launch_commit, worktree, cwd, started_utc}. Receipts: one
+{run_id, pid, launch_commit, worktree_role, cwd_relative, started_utc}
+(PATH-HYGIENE 2026-09-14: the worktree is named by its locator role and
+the cwd relative to it; no absolute home path enters a tracked receipt;
+the sentinel is named relative to the git common dir). Receipts: one
 JSON line per event in logs/liverun/<run_id>.jsonl (armed, disarmed with
 rc, stale-recovery with reason). The scientific receipts of the wrapped
 run still record their own source commit and digests independently; the
@@ -40,6 +43,21 @@ def lock_path(cwd=None):
     return common_dir(cwd) / "liverun.lock"
 
 
+def sentinel_name(lp):
+    """The sentinel named relative to the git common dir (its parent), never as an absolute home path."""
+    return str(Path(lp.parent.name) / lp.name)
+
+
+def worktree_role(wt):
+    """The locator role of a worktree directory: main for the primary worktree, repair for *-repair, else its name."""
+    try:
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+        from llmopt.lab.locator import role_of
+        return role_of(wt, cwd=wt) or wt.name
+    except Exception:
+        return wt.name
+
+
 def now():
     return datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
 
@@ -63,9 +81,14 @@ def receipt(run_id, row, root):
 
 def arm(run_id, worktree, cwd):
     lp = lock_path(cwd)
+    wt = Path(worktree).resolve()
+    try:
+        cwd_rel = str(Path(cwd).resolve().relative_to(wt))
+    except ValueError:
+        cwd_rel = None
     rec = {"run_id": run_id, "pid": os.getpid(), "launch_commit": git("rev-parse", "HEAD", cwd=worktree),
-           "launch_commit_short": git("rev-parse", "--short", "HEAD", cwd=worktree), "worktree": str(Path(worktree).resolve()),
-           "cwd": str(Path(cwd).resolve()), "started_utc": now(), "dirty_at_arm": bool(git("status", "--porcelain", cwd=worktree))}
+           "launch_commit_short": git("rev-parse", "--short", "HEAD", cwd=worktree), "worktree_role": worktree_role(wt),
+           "worktree_name": wt.name, "cwd_relative": cwd_rel, "started_utc": now(), "dirty_at_arm": bool(git("status", "--porcelain", cwd=worktree))}
     if rec["dirty_at_arm"]:
         raise SystemExit(f"liverun: REFUSING to arm {run_id}: worktree {worktree} is dirty")
     try:
@@ -74,20 +97,20 @@ def arm(run_id, worktree, cwd):
         raise SystemExit(f"liverun: REFUSING to arm {run_id}: sentinel {lp} exists ({lp.read_text().strip()})")
     with os.fdopen(fd, "w") as f:
         json.dump(rec, f)
-    receipt(run_id, {"event": "armed", **rec, "sentinel": str(lp)}, cwd)
+    receipt(run_id, {"event": "armed", **rec, "sentinel": sentinel_name(lp)}, cwd)
     return lp, rec
 
 
 def disarm(run_id, lp, rec, rc, cwd):
     lp.unlink(missing_ok=False)
-    receipt(run_id, {"event": "disarmed", "run_id": run_id, "pid": rec["pid"], "rc": rc, "ended_utc": now(), "sentinel": str(lp)}, cwd)
+    receipt(run_id, {"event": "disarmed", "run_id": run_id, "pid": rec["pid"], "rc": rc, "ended_utc": now(), "sentinel": sentinel_name(lp)}, cwd)
 
 
 def cmd_run(a):
     cwd = os.getcwd()
     wt = a.worktree or cwd
     lp, rec = arm(a.run_id, wt, cwd)
-    print(f"[liverun] armed {a.run_id} pid {rec['pid']} commit {rec['launch_commit_short']} worktree {wt} sentinel {lp}", flush=True)
+    print(f"[liverun] armed {a.run_id} pid {rec['pid']} commit {rec['launch_commit_short']} worktree {rec['worktree_role']}:{rec['worktree_name']} sentinel {sentinel_name(lp)}", flush=True)
     rc = 1
     try:
         rc = subprocess.run(a.command, cwd=wt).returncode
@@ -116,7 +139,7 @@ def cmd_recover(a):
     if pid_alive(rec["pid"]):
         raise SystemExit(f"liverun: REFUSING stale recovery: pid {rec['pid']} is alive")
     lp.unlink()
-    receipt(a.run_id, {"event": "stale_recovered", "run_id": a.run_id, "pid": rec["pid"], "reason": a.reason, "recovered_utc": now(), "sentinel": str(lp)}, os.getcwd())
+    receipt(a.run_id, {"event": "stale_recovered", "run_id": a.run_id, "pid": rec["pid"], "reason": a.reason, "recovered_utc": now(), "sentinel": sentinel_name(lp)}, os.getcwd())
     print(f"[liverun] stale sentinel for {a.run_id} (dead pid {rec['pid']}) removed; receipt written; reason: {a.reason}")
 
 

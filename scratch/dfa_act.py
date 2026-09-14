@@ -46,7 +46,8 @@ from dfa_probe import probe_rows, probe_tensors  # noqa: E402
 SMOKE = os.environ.get("SMOKE") == "1"
 ACT_SET = os.environ.get("ACT_SET", "envelope")
 OUT = Path("logs/writerdfa1")
-REPAIR = Path("/Users/artin/code/llmopt-repair")
+from llmopt.lab.locator import worktree as _wt  # noqa: E402
+REPAIR = _wt("repair")   # the repair worktree, resolved at runtime (llmopt.lab.locator), never a literal home path
 CHUNK = 32
 HEADS = 6
 EIG_REL_TOL = 1e-10

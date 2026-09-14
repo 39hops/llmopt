@@ -48,7 +48,8 @@ sys.path.insert(0, ".")
 sys.path.insert(0, "scripts")
 sys.path.insert(0, "scratch")
 
-AXIOM_DIR = "/Users/artin/code/axiom/build-iv7"
+from llmopt.lab.locator import worktree as _wt
+AXIOM_DIR = str(_wt("axiom") / "build-iv7")   # sibling axiom checkout (AXIOM_DIR env overrides the root)
 AXIOM_SHA = "5a8ae70"
 N_AF = int(os.environ.get("N_AF", "300"))
 N_C = int(os.environ.get("N_C", "200"))

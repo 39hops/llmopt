@@ -1,6 +1,7 @@
 import json, sys, collections, statistics
-sys.path.insert(0,'/Users/artin/code/llmopt')
-import os; os.chdir('/Users/artin/code/llmopt')
+import os; _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, _ROOT)
+os.chdir(_ROOT)
 from scratch.mathworld1_birth import GCTok
 tok=GCTok()
 

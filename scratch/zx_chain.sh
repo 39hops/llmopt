@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /Users/artin/code/llmopt
+cd "$(dirname "$0")/.."
 export VOCAB_EXTRA="in(,out(,Z(,X(,P(,H(,:"
 export SEQ_CAP=1536
 export BIRTH_SEED=1

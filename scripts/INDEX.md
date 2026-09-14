@@ -995,6 +995,8 @@ liverun — the mechanical live-run interlock (BOARD live-run law, 2026-09-09). 
 - `git(*args, cwd=None)`
 - `common_dir(cwd=None)`
 - `lock_path(cwd=None)`
+- `sentinel_name(lp)` — The sentinel named relative to the git common dir (its parent), never as an absolute home path.
+- `worktree_role(wt)` — The locator role of a worktree directory: main for the primary worktree, repair for *-repair, else its name.
 - `now()`
 - `pid_alive(pid)`
 - `receipt(run_id, row, root)`
@@ -5983,7 +5985,7 @@ WRITER-TRAJECTORY-CENSUS-0, STAGE 0 (pre-reg RESULTS L67576): the zero-training 
 - `main()`
 
 ### scratch/writertraj_depend.py
-WRITER-TRAJECTORY-CENSUS-0, STAGE 0B (pre-reg RESULTS L67576, sealed by AMENDMENT -SEAL L67810): finished-model learned-update DEPENDENCE profiles and cross-writer component COMPATIBILITY. Specimens: A = checkpoints/gallery19m_phase_s2.pt, B = checkpoints/gallery19m_backsched_s2.pt (shared W_0 = the canonical seed-2 construction), N1 = checkpoints/atomtraj1/stock_s6/step_15420.pt (first run), N2 = /Users/artin/code/llmopt-repair/checkpoints/atomtraj1/stock_s6/step_15420.pt (repair), W_0 = their byte-identical step_00000.pt (seed-6 regeneration recorded as a check). For each specimen: gate(full), gate(W_0) once per seed, and for each of the nine groups (BLOCK 0..7, OUTSIDE) and eight CLASSES, gate(model with that group's delta reverted to W_0); D_l = gate(full) - gate(reverted). Swaps: for each block l, the recipient with block l's delta taken from the donor (A <- B, B <- A, N1 <- N2, N2 <- N1); swap loss = gate(hybrid) - gate(recipient full). Every gate is llmopt.lab.gate.gate_eval on mps (the standard 120). Rows stream to logs/writertraj0/gates.jsonl; bars D-0, D-1, D-2 to logs/writertraj0/depend.json. Refuses to overwrite. Runs only after census.json exists (STAGE 0 preserved first).
+WRITER-TRAJECTORY-CENSUS-0, STAGE 0B (pre-reg RESULTS L67576, sealed by AMENDMENT -SEAL L67810): finished-model learned-update DEPENDENCE profiles and cross-writer component COMPATIBILITY. Specimens: A = checkpoints/gallery19m_phase_s2.pt, B = checkpoints/gallery19m_backsched_s2.pt (shared W_0 = the canonical seed-2 construction), N1 = checkpoints/atomtraj1/stock_s6/step_15420.pt (first run), N2 = <repair worktree>/checkpoints/atomtraj1/stock_s6/step_15420.pt (repair), W_0 = their byte-identical step_00000.pt (seed-6 regeneration recorded as a check). For each specimen: gate(full), gate(W_0) once per seed, and for each of the nine groups (BLOCK 0..7, OUTSIDE) and eight CLASSES, gate(model with that group's delta reverted to W_0); D_l = gate(full) - gate(reverted). Swaps: for each block l, the recipient with block l's delta taken from the donor (A <- B, B <- A, N1 <- N2, N2 <- N1); swap loss = gate(hybrid) - gate(recipient full). Every gate is llmopt.lab.gate.gate_eval on mps (the standard 120). Rows stream to logs/writertraj0/gates.jsonl; bars D-0, D-1, D-2 to logs/writertraj0/depend.json. Refuses to overwrite. Runs only after census.json exists (STAGE 0 preserved first).
 
 - `load_sd(p)`
 - `w0_seed(seed)`
@@ -6139,6 +6141,16 @@ lab.keepsets — keep-set / coalition algebra. CANONICAL BODY since 2026-08-12 (
 ### llmopt/lab/lake.py
 Moved to llmopt.runs.lake (Phase 5, 2026-08-12). This alias keeps old imports working with full fidelity (privates included).
 
+
+### llmopt/lab/locator.py
+lab.locator — logical artifact locators instead of machine-local paths.
+
+- `_worktrees(cwd: Path | None=None) -> list[Path]`
+- `worktree(role: str, cwd: Path | None=None) -> Path` — Resolve a role to a directory (environment first, then git, then the axiom sibling rule).
+- `locator(role: str, relative_path: str, commit: str | None=None, digest: str | None=None) -> dict` — The tracked form of an artifact reference.
+- `resolve(loc: dict | str, cwd: Path | None=None) -> Path` — A locator dict (or a plain repo-relative string, role main) to a runtime path.
+- `repo_relative(path: str | Path, role: str='main', cwd: Path | None=None) -> str` — A runtime path expressed relative to a role's root (for receipts that must name where a run sat).
+- `role_of(path: str | Path, cwd: Path | None=None) -> str | None` — Which known role's root contains the path, if any.
 
 ### llmopt/lab/merge.py
 Merge API over house .pt state dicts — average / task_vector / shell_graft.

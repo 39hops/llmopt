@@ -7,7 +7,7 @@ source "$(dirname "$0")/remote.env.sh"
 set -e
 cd ~/code/llmopt
 [ -f data/poly_chain5.jsonl ] || scp -i "$WSL_KEY" -o BatchMode=yes \
-  "$WSL_REMOTE":/mnt/c/Users/a/Documents/code/axiom/data/qual/poly_chain5.jsonl data/
+  "$WSL_REMOTE":${AXIOM_WSL_QUAL:?set AXIOM_WSL_QUAL in scratch/remote.env.sh}/poly_chain5.jsonl data/
 wc -l data/poly_chain5.jsonl
 timeout 7200 .venv/bin/python - << 'PYEOF'
 import json

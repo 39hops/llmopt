@@ -2,7 +2,7 @@
 # ATOM-DIET-TRAJECTORY-1 provenance-only REPAIR driver (registration
 # RESULTS 2026-09-07, AMENDMENT ATOM-DIET-TRAJECTORY-1-REPAIR-0 and its
 # -FOLDS entry). Runs INSIDE the detached worktree
-# /Users/artin/code/llmopt-repair, pinned to the original launch commit
+# the repair worktree (git worktree list: *-repair), pinned to the original launch commit
 # ec6de1ae, using that commit's instrument sources unchanged. The
 # worktree already holds the two valid seed-5 births (snapshot dirs and
 # their two original receipt rows, byte-identical to the first two rows
@@ -15,8 +15,9 @@
 # process that writes a receipt. Marker fires on success only with the
 # real rc.
 set -euo pipefail
-WT=/Users/artin/code/llmopt-repair
-MAIN=/Users/artin/code/llmopt
+MAIN="$(cd "$(dirname "$0")/.." && pwd)"
+WT="${LLMOPT_WORKTREE_REPAIR:-$(git -C "$MAIN" worktree list --porcelain | awk '/^worktree .*-repair$/ {sub(/^worktree /, ""); print; exit}')}"
+[ -d "$WT" ] || { echo "repair worktree not found (set LLMOPT_WORKTREE_REPAIR)"; exit 1; }
 PY=$MAIN/.venv/bin/python
 LAUNCH=ec6de1ae
 cd "$WT"

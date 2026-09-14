@@ -9,7 +9,7 @@ import sys
 import time
 from pathlib import Path
 
-REPO = Path("/Users/artin/code/llmopt")
+REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO))
 import os
 os.chdir(REPO)
