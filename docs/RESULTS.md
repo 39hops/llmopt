@@ -73813,3 +73813,289 @@ version was asserted without a receipt) and five should-fixes
 (BACKWARD-SCHEDULE-1's compound reading, the SGD-dummy no-op, the
 1.81e-16 bound, the group-key signature, derived-figure provenance);
 notes adopted (step indexing, one-ulp reversal, milestone evidence).
+
+## PRE-REG OPTIMIZER-GEOMETRY-DESK-0: zero-training desk — what geometric transformation does the actual AdamW writer apply between the minibatch task gradient and the parameter write? At three frozen interior milestones (steps 900, 7200, 13500) of the WRITER-TRAJECTORY-CENSUS-0 pair (A = stock OneCycle scheduler, B = backward SequenceLR scheduler, one shared W_0; existing {model, opt, step} milestones only), on EXACTLY the UPDATE-GEOMETRY-CENSUS-0 probe panel (64 stock batches, FIT 32 / HELD 32, digest asserted), compute for every probe batch ONE counterfactual AdamW step from the identical stored state under the audited next-step scheduler row, and compare the geometry (held-out capture, reliability, participation, coherence, writer overlap, group energy) of the raw gradient g, the first-moment candidate mhat, the adaptive update a, the full write u, and the batch-sensitive write b = u - u_0 (u_0 = the write under a zero gradient tensor); distortion readouts on batch-cosine Grams; a six-outcome sharpening ladder with literal thresholds; no persistent update, no birth (2026-09-14, Mac)
+
+**Program and GO.** OPTIMIZER-GEOMETRY-DESK-0, Phase 2 of the Artin GO
+of 2026-09-14 18:37 EDT (DESIGN + PREREG + IMPLEMENTATION + TEST/SMOKE +
+ZERO-TRAINING DESK; no training birth; the foreign-writer and CROSSFOSTER
+programs stay PARKED; DFA / SG / MeZO / TP / EP / ROME / Hamiltonian
+writers not reopened; DATA-LOCUS-GEOMETRY-1 not run). Phases 0 (locator
+hardening, /fold-book; 4d4ed423) and 1 (AMENDMENT WRITER-INTERVENTION-
+SCHEDULER-LAW, L73710) finished before this seal. Scientific question:
+UPDATE-GEOMETRY-CENSUS-0 (L73446) found the minibatch task-gradient
+geometry reproducible but only PARTIALLY thin (final raw HELD capture
+0.25 / 0.27 at k = 8, 0.37 at k = 16), a negligible mean gradient at the
+finals, substantial writer sharing, and checkpoint displacement mostly
+outside the instantaneous top-16 gradient subspace; the next question is
+what the writer map g -> clip -> Adam moments -> bias correction ->
+coordinate-wise preconditioning -> decoupled decay -> virtual delta W
+does to that geometry. The measured objects are the empirical
+geometries of these vector families; none is a Hessian, Fisher, natural
+gradient, manifold or intrinsic dimension, and no such object is
+claimed.
+
+**Specimens and states (frozen).** A = seed-2 stock-OneCycle writer
+(checkpoints/phase19m/m{step}.pt); B = seed-2 backward-SequenceLR
+writer (checkpoints/backsched19m/m{step}.pt); per the corrected
+intervention wording (L73710): stock OneCycle cycles LR and beta1 (0.95
+-> 0.85 -> 0.95) while SequenceLR serves the reversed LR sequence with
+beta1 fixed at 0.9. Interior states s in {900, 7200, 13500} (early / mid
+/ late; normalized 0.058 / 0.467 / 0.876) for both writers, so a next
+scheduler row exists; the finals are not used for the virtual step. The
+next-grid states for the descriptive velocity are 3600 / 10800 / 15420
+(final files for the last). No state is added after any target read.
+Milestones carry {"model", "opt", "step"} with the Adam state after
+step s and the param-group values used for step s (the tee fires inside
+AdamW.step after the update, before sched.step(); L73710).
+
+**Probe panel.** EXACTLY the UPDATE-GEOMETRY-CENSUS-0 population:
+scratch/update_geometry_census.probe_batches (D2-excised stock rows,
+trainer encoding and slices, random.Random("ugc0-probe-v1").sample of
+64 slices, FIT = first 32, HELD = last 32); the run asserts its digest
+equals the booked logs/ugc0/census.json probe digest (00eb6c43e4cd995b
+...) and refuses otherwise. No new batch selection.
+
+**Scheduler reconstruction law (Phase 1, L73710).** For a milestone at
+step s the serialized param group's lr / beta1 / beta2 / weight_decay
+must equal row s of the audited table (logs/schedaudit0/audit.json,
+"stock" for A, "backward" for B) EXACTLY (float equality; verified
+10 / 10 in Phase 1); the virtual step s + 1 uses row s + 1 with Adam
+step counter s + 1. The gate reads the serialized param group BEFORE
+any target gradient is computed; if it fails at any target milestone
+the run STOPS (no target geometry is computed) and its working
+directory is removed. Next-step
+values: A 901: lr 2.99365e-4, beta1 0.85021; A 7201: lr 1.73230e-4,
+beta1 0.89226; A 13501: lr 1.20213e-5, beta1 0.94599; B 901: lr
+2.67321e-6, beta1 0.9; B 7201: lr 1.41225e-4, beta1 0.9; B 13501: lr
+2.93027e-4, beta1 0.9; beta2 0.999, weight_decay 0.01 throughout.
+
+**Optimizer reconstruction (asserted, not remembered).** AdamW(model.
+parameters(), lr=3e-4, weight_decay=0.01), the trainer's constructor
+call (betas (0.9, 0.999), eps 1e-8, decoupled weight decay, amsgrad /
+maximize false); opt.load_state_dict(ckpt["opt"]) binds the saved state
+to the live parameters by the module's parameter order (recorded as a
+digest); asserted: 59 parameters = the sorted-key set, exp_avg /
+exp_avg_sq shapes, all 59 step counters == s, one param group with the
+fields above. Model state digest and optimizer state digest asserted
+before and after every cell (no mutation).
+
+**Gradient law.** As UPDATE-GEOMETRY-CENSUS-0: model.eval(), the
+trainer's CE on eligible label positions, p.grad, the sorted-key flatten
+law (d = 18,911,616), one float32 memmap of RAW gradients per specimen-
+state (A and B of one state coexist for the same-batch cross-Grams:
+2 x 4.84 GB = 9.7 GB peak on disk; deleted after the reductions).
+
+**Virtual step law (per probe batch, from the IDENTICAL frozen state;
+nothing persists; float64 from the float32 stored state).**
+  c_i    = g_i x min(1, 1.0 / (||g_i|| + 1e-6))     (clip_grad_norm_ 1.0, global)
+  m'_i   = beta1 m + (1 - beta1) c_i;  v'_i = beta2 v + (1 - beta2) c_i^2
+  bc1 = 1 - beta1^(s+1);  bc2 = 1 - beta2^(s+1)
+  mhat_i = m'_i / bc1                                (first-moment candidate)
+  a_i    = - lr (m'_i / bc1) / (sqrt(v'_i / bc2) + eps)   (adaptive update, no decay)
+  u_i    = - lr wd W + a_i                           (full AdamW write; decay first, as torch)
+  u_0    = the same with c = 0 (zero gradient TENSORS; m' = beta1 m, v' = beta2 v)
+  b_i    = u_i - u_0  (= a_i - a_0 identically: the decay term is batch-independent)
+c is a positive scalar multiple of g (same direction) and gets no
+subspace headline; its norm enters the map. The primary families are g,
+u and b; mhat and a are descriptive attribution stages. The families
+are derived per tensor block from the raw memmap and the stored state
+inside the Gram pass (never a persistent update matrix); only the raw
+memmap is stored.
+
+**Mechanical endpoints (passed before sealing; receipt logs/ogd0/
+smoke_mech.jsonl on the non-target seed-6 W_0, dirty pre-seal tree at
+6282f731; a clean-tree seal smoke follows the pre-reg commit).**
+(i) Synthetic: random tensors through a real torch AdamW.step (four
+prior steps, clipping active, lr and betas changed) v the virtual law:
+max relative error 1.1e-7 (float32 torch v float64 law). (ii) Exact-law
+endpoint: one REAL trainer step on the seed-6 19M model in float64 on
+CPU (backward, clip 1.0, AdamW.step) from a saved pre-step state, at
+Adam step 0 -> 1 and 4 -> 5 (three warm-up steps after the first
+trial), v the virtual law on the same raw gradient: realized update
+W_post - W_pre v u at 4.3e-11 and 1.9e-12 of max |u| (steps 1 and 5),
+exp_avg at 5.2e-16 / 2.0e-16 and exp_avg_sq at 8.8e-16 / 2.3e-18 (steps
+1 / 5), step counters advanced by one:
+registered tolerance 1e-9 (PARITY_TOL_PARAM), PASSED. (iii) Rounding
+envelope, descriptive: the same in float32 on mps (the real writer's
+arithmetic): update 1.6e-2 and 9.6e-4 of max |u| (the realized
+W_post - W_pre is quantized at 2^-24 |W| against an update of lr scale;
+exp_avg at 1.0e-7 / 1.6e-7 and exp_avg_sq at 1.6e-7 / 2.2e-7 at steps
+1 / 5): registered envelope 5e-2 (ENVELOPE_TOL),
+PASSED. tests/test_optimizer_geometry_desk.py (6): the virtual law v
+torch AdamW in float64 at Adam steps 0, 4 and 900 with clipping active
+(1e-9), b = u - u_0 = a - a_0, the clip law, distortion identities,
+ladder labels and inclusivity, literal constants.
+
+**Geometry (the validated UPDATE-GEOMETRY-CENSUS-0 Gram machinery, per
+family).** From each family's 64 x 64 Gram: Q = ||mean v_i||^2 / mean
+||v_i||^2; raw (unit-row) FIT spectrum, participation ratio, top-k
+energy; HELD capture C_k, k in {1, 2, 4, 8, 16}; reliability S_k(FIT,
+HELD); centered readouts; per-group energy share and group C_8 under
+the house partition BLOCK0..7 + OUTSIDE (raw norm share is not a
+learning-importance claim); A / B same-batch overlap S_k per family at
+every state. DISTORTION: on unit-row cosine Grams, D(x -> y) = ||K_y -
+K_x||_F / ||K_x||_F for g -> mhat, mhat -> a, a -> u, g -> u, g -> b, a -> b
+(deformation of pairwise batch-direction geometry, no Jacobian claim);
+per-batch cos(g_i, mhat_i), cos(g_i, a_i), cos(g_i, u_i), cos(g_i, b_i)
+(median / min / max; sign convention: a, u and b are DESCENT directions,
+so cos(g, a) is negative for a non-rotated update and the rotation
+readout is 1 + cos, i.e. how far -cos(g, a) falls below 1). DECOMPOSITION (median norms over batches, global
+norms of the batch-independent terms): ||g||, ||c||, ||beta1 m||
+(carried), ||mhat||, ||a||, ||lr wd W|| (decay), ||a_0||, ||u_0||, ||b||,
+||u||; clip coefficient distribution. VELOCITY (descriptive only): the
+own-writer next-grid displacement v = W(next) - W(s) projected on the
+FIT subspaces of g, u and b at k in {1..16}: does update geometry
+explain more of the displacement than raw-gradient geometry? Not a
+bar (hundreds of steps, rotating geometry, changing schedule per
+interval).
+
+**Interpretation ladder (thresholds literal; adjudicate is pure and
+tested; k = 8; a condition "holds at a state" means it holds for BOTH
+writers at that state; a label needs >= 2 of the 3 states).**
+0. RESOLUTION: GEOMETRY-NOT-RESOLVED if raw S_8(FIT, HELD) < 0.25 for g
+   or u at any state for either writer; then no other axis reads.
+   dC_u = median C_8(u) - median C_8(g); dC_b = median C_8(b) - median
+   C_8(g); SHARPEN = 0.15, SMALL = 0.05.
+1. BATCH-WRITE-SHARPENED if dC_b >= 0.15 AND raw S_8(b) >= 0.25 at >= 2
+   states (the strongest reading: the batch-sensitive write geometry
+   itself is materially more reusable than the raw gradient's; an
+   unresolved b panel cannot fire it).
+2. else HISTORY-DOMINATED if dC_u >= 0.15 at >= 2 states AND dC_b <
+   0.05 at >= 2 states (the full write's coherence comes from carried
+   optimizer history / common components).
+3. else WRITE-SHARPENED if dC_u >= 0.15 at >= 2 states.
+4. else OPTIMIZER-DIFFUSES if dC_b <= -0.15 at >= 2 states.
+5. else NO-OPTIMIZER-SHARPENING.
+   B-PANEL axis, reported beside the label and never merged into it:
+   B-UNRESOLVED if raw S_8(b) < 0.25 at >= 2 states, else B-RESOLVED
+   ("b could not be measured" and "b is diffuse" are different
+   readings).
+6. WRITER-UPDATE-SHARED / -ROTATED / -INDETERMINATE for u and for b at
+   the late state (13500): S_8(A, B) >= 0.8 x min(self_A, self_B) /
+   < 0.5 x min(self) / between, self = raw S_8(FIT, HELD) of that family.
+Raw and update conclusions are booked separately; the raw g readouts
+at these states are a reproduction of UPDATE-GEOMETRY-CENSUS-0's
+(same batches, same law) and are reported beside it, with the booked
+UGC0 cell values (C_8 and S_8 of g at A / B x 900 / 7200 / 13500)
+recorded next to the recomputed ones and their differences (a recorded
+reproduction, not a hard gate: mps gradients are run-level
+nondeterministic). Disclosure: the g leg of every dC threshold is a
+reused frozen measurement (C_8(g) at these six cells is already in
+L73446: 0.433 / 0.720 / 0.333 / 0.193 / 0.258 / 0.292 for A900 / B900 /
+A7200 / B7200 / A13500 / B13500), so one side of each comparison was
+known when SHARPEN = 0.15 and SMALL = 0.05 were chosen; the target
+quantities C_8(u) and C_8(b) are unmeasured. At B@900 (C_8(g) 0.72)
+dC_u >= 0.15 needs C_8(u) >= 0.87, so the "2 of 3" count is in
+practice decided by the 7200 and 13500 states there; a label resting
+on exactly two states is booked as single-margin. Because the decay
+term lr wd W is about 1e-5 of a in cosine-Gram terms (smoke D(a -> u)
+4e-6), the u axis is expected to read as the a axis; both are reported.
+Attribution
+(descriptive): the stage with the largest distortion among g -> mhat,
+mhat -> a, a -> u names the dominant transform (temporal integration,
+coordinate-wise preconditioning, or the common decay / baseline).
+
+**REFUTED-IF.** The hypothesis "the writer compresses diverse current
+gradients into a thinner reusable write geometry" is refuted by
+NO-OPTIMIZER-SHARPENING or OPTIMIZER-DIFFUSES; HISTORY-DOMINATED
+refutes the batch-compression reading while leaving the carried-
+history reading; GEOMETRY-NOT-RESOLVED leaves it untested.
+
+**REGISTERED PRIOR (house; Artin's qualitative priors translated;
+before any target read; the seed-6 smoke at a synthetic step-4 state
+read g 0.36 / u 0.76 / b 0.18 at k = 4 on 4 / 4 batches, incomparable
+and disclosed).** (1) raw g reproduces UPDATE-GEOMETRY-CENSUS-0 at the
+three states within 0.02 in median C_8 (same batches; the only
+difference is float summation order): p 0.9. (2) dC_u >= 0.15 at >= 2
+states in both writers (full writes more coherent): p 0.7. (3) label
+HISTORY-DOMINATED: p 0.5; BATCH-WRITE-SHARPENED: p 0.3; WRITE-SHARPENED
+(neither): p 0.1; NO-OPTIMIZER-SHARPENING or OPTIMIZER-DIFFUSES: p 0.1
+(Artin's ~0.65 history-dominated and ~0.35 batch-sharper renormalized
+onto the four exclusive labels; the house scores against 0.5 / 0.3).
+(4a) preconditioning rotates directions materially: median -cos(g_i,
+a_i) <= 0.5 at every state, both writers (an unrotated descent update
+reads -cos = 1): p 0.8; (4b) D(mhat -> a) >= 0.3 at every
+state: p 0.7. (5) the carried history dominates the full write: ||a_0||
+>= 0.5 x median ||u|| at the late state, both writers: p 0.65. (6)
+velocity: the own u-subspace fraction at k = 16 exceeds the g-subspace
+fraction by >= 0.1 absolute on the 13500 -> 15420 interval for both
+writers: p 0.4. (7a) writer overlap on u at 13500 WRITER-UPDATE-SHARED:
+p 0.55; (7b) on b: p 0.45. (8) Q(u) >= 0.5 at the late state, both writers
+(a coherent common write): p 0.6. (9) the scheduler parity assertion
+passes at all six milestones: p 0.95. (10) wall 5 to 30 min: p 0.7.
+Family track record entering: 46 hits 31 misses.
+
+**Consequences (sealed).** The GO ends when the desk is booked. NO-
+OPTIMIZER-SHARPENING or OPTIMIZER-DIFFUSES: book and stop. HISTORY-
+DOMINATED: book and stop; bank (not arm) OPTIMIZER-MEMORY-ABLATION-1.
+BATCH-WRITE-SHARPENED: freeze the metric and instrument and stop; any
+projected-update or optimizer-ablation training needs a separate GO.
+WRITE-SHARPENED (neither sub-label): book and stop. GEOMETRY-NOT-
+RESOLVED: book and stop. PROJECTED-BP-CAUSAL-1 is never launched from
+here. Existing banks kept: DATA-LOCUS-GEOMETRY-1, FAILED-WRITER-
+PROJECTION-DESK-0. Possible new banks, NOT ARMED: OPTIMIZER-MEMORY-
+ABLATION-1 (same gradient, reset / cross-fostered moments), PRE-
+CONDITIONER-CROSS-FOSTER-1 (only with a strong algebraic reason from
+this desk), UPDATE-SUBSPACE-CAUSAL-1 (only if b is stably thin).
+
+**Instrument and cost.** scratch/optimizer_geometry_desk.py (launcher
+scratch/ogd0_launch.sh, liverun id ogd0; outputs logs/ogd0/desk.json
+refuse-if-exists, logs/ogd0/desk.jsonl streamed per cell / pair,
+logs/ogd0/desk.log, logs/ogd0/ogd0.DONE, logs/liverun/ogd0.jsonl, the
+smokes logs/ogd0/smoke_mech.jsonl and logs/ogd0/smoke_seal.jsonl;
+memmaps under logs/ogd0/tmp, untracked, deleted). Receipt fields:
+shape / dtype / bytes of each memmap, flatten-law digest, family law
+string, states and next states with paths and digests, probe digest and
+the UGC0 digest it was asserted against, optimizer state digests, the
+scheduler receipt sha and the used / next rows per milestone, clip
+statistics, parity results (smoke), wall. Cost: per state two 64-
+gradient cells (about 16 s each in UGC0) plus one family pass over two
+memmaps with five float64 families per block (the smoke's 8-row pass
+took 3 s for one specimen; 64 rows x 2 specimens about 60 to 120 s):
+about 1 to 2 min per state after the reviewer's pricing (6 x 16 s
+gradients, one 9.7 GB family pass per state with about 2.3 TFLOP of
+float64 matmul), 6 to 12 min total; RAM peak about 4.5 GB of float64
+blocks (both specimens' families of the largest tensor resident for the
+cross-Gram); disk peak 9.7 GB of 31
+GiB; RAM peak about 4.5 GB of float64 blocks (six (64 x 589,824)
+arrays per specimen at the largest tensor, both specimens resident for
+the cross-Gram, plus transients). Wall fence: killed and
+NOT-RUN if not finished within 2 h.
+
+**Instrument review before sealing (Opus 5 reviewer).** No blocker;
+folded: the unreliable-b leg split out of OPTIMIZER-DIFFUSES into the
+B-PANEL axis and required resolved for BATCH-WRITE-SHARPENED; the UGC0
+reproduction of g recorded per cell; the row-norm read made single-
+pass; the smoke receipt shas and numpy version pinned in the desk
+receipt; notes adopted (u reads as a; the B@900 ceiling; unequal
+velocity legs of 2,700 / 3,600 / 1,920 steps at very different LR, so
+velocity is never compared across states; the smoke exercises k <= 4 on
+4 / 4 batches, plumbing only; smoke cell-stream files are deleted as
+duplicates of the smoke receipt's rows).
+
+**FENCES.** One writer pair on one W_0; three states; one device (mps
+for the gradients, float64 CPU for the virtual law); one probe
+population at batch size 32 (the same 64 batches as UGC0, so every
+subspace is at most 32-dimensional and k <= 16 reads against the
+finite-panel reliability); the virtual step is ONE counterfactual
+AdamW step from a stored state, not a training claim; b = u - u_0 is an
+algebraic decomposition of the stored optimizer map (u_0 uses zero
+gradient tensors, so the moments still decay); the writer overlap is
+measured on the same batches by design; velocity is descriptive; the
+float32 stored moments and parameters are the inputs, the law runs in
+float64 (the real writer's float32 rounding envelope is receipted, not
+modeled); mhat / a / c are attribution stages, not additional
+hypotheses; nothing here revises L73446, L73710 or L67980 and nothing
+authorizes a birth, a projected-gradient rung or an optimizer ablation.
+
+**Pre-reg audit before sealing (Opus 5 prereg-auditor).** Two
+blockers folded (the smoke receipt had been re-run at audit time and
+is re-read here, its values unchanged; the cos(g, a) clause carries
+the descent sign convention) and seven should-fixes (the scheduler
+parity gate now precedes any target gradient and a failed run removes
+its memmaps; RAM peak 4.5 GB; moment labels; the prior renormalization
+stated; priors 4 and 7 split into a / b; a disk preflight assert;
+the registered 64-batch probe-digest law is exercised against the
+UGC0 digest in the smoke); notes adopted (object-not-word wording,
+docstring, receipts list).

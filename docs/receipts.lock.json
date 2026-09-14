@@ -1,9 +1,5 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
- "_last_accept": {
-  "paths": [],
-  "reason": "AMENDMENT WRITER-INTERVENTION-SCHEDULER-LAW: audit.json untracked sha-anchored (local_only, re-derivable by rerunning the audit)"
- },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
    "bytes": 3176,
@@ -1265,6 +1261,10 @@
    "sha256": "4cf0b656789338f1292fa0aa3c305ee0cf6a12521aa7552d9f008cbe2dcd15bc",
    "source": "results",
    "tracked": true
+  },
+  "logs/liverun/ogd0.jsonl": {
+   "exists": false,
+   "source": "prereg"
   },
   "logs/liverun/sgaudit0.jsonl": {
    "bytes": 518,
@@ -3036,6 +3036,34 @@
    "sha256": "cbda36b1b7b743f051c682927b121674f9bea0d9c45d8a9b6cc0ec8d536aafc7",
    "source": "results",
    "tracked": true
+  },
+  "logs/ogd0/desk.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/ogd0/desk.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/ogd0/desk.log": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/ogd0/ogd0.DONE": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/ogd0/smoke_mech.jsonl": {
+   "bytes": 15413,
+   "exists": true,
+   "local_only": true,
+   "sha256": "8f7baeb671b90588e31a6a309de6c9a31a59def79994807b0b0b6233ca6f162c",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/ogd0/smoke_seal.jsonl": {
+   "exists": false,
+   "source": "prereg"
   },
   "logs/opus/f1e_prof2.log": {
    "bytes": 730,
