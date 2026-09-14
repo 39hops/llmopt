@@ -53,10 +53,16 @@ file. 3080 untouched. No live registered run. Nothing armed.
 
 ## Open decisions for Artin
 
-1. Whether to retire the CROSSFOSTER program or bank the deeper-chain
-   generator as a future rung (new pre-reg either way).
-2. chain.json at 4.9 MB force-added as a receipt: keep, or move the
-   per-root log to an untracked sha-anchored stream.
+None. Both decided 17:02 EDT 09-14 (AMENDMENT -CHAIN-DESK-RECEIPT, RESULTS
+L73144): CROSSFOSTER stays PARKED under the booked revival condition, no
+deeper generator designed to rescue it, no new CROSSFOSTER pre-reg;
+chain.json moved to the untracked sha-anchored stream (sha bf87602a...,
+4,891,029 bytes, lock entry local_only), libraries stay tracked.
+
+Note: /usr/bin/git on the Mac is blocked by an Xcode license prompt
+since 09-14 afternoon; the CommandLineTools git
+(/Library/Developer/CommandLineTools/usr/bin) was used until Artin
+accepts the license.
 
 ## Next session: where to start
 

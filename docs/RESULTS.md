@@ -73140,3 +73140,46 @@ blocker (an unreceipted 10.6 % in the Reading, now 214 / 1,975 = 10.8
 %) and five should-fixes folded (chain.json size, two pre-reg fences
 carried, tracking tense, P1 named, cumulative-readout wording);
 receipt-auditor no blocker, disclosures above.
+
+## AMENDMENT VERIFIED-ENDOGENOUS-DATA-CROSSFOSTER-1-CHAIN-DESK-RECEIPT (target: VERDICT VERIFIED-ENDOGENOUS-DATA-CROSSFOSTER-1-CHAIN-DESK L72990): Artin decision 2026-09-14 17:02 EDT — the program stays PARKED under the booked revival condition (a naturally arising root generator whose paired verified chains routinely reach >= 6 plies; no deeper generator is designed to rescue this program); logs/crossfoster1/chain.json (4,891,029 bytes, sha256 bf87602a17ffca679f449a24c1f54c76c473157d95bf1d9dd031e5f6ebee658f) moves from the tracked tree to the untracked sha-anchored receipt stream with its bytes unchanged, its lock entry kept (local_only) and its schema and provenance restated here; chain.jsonl (the same row minus the per-root log) and the frozen libraries D_A_chain / D_B_chain stay tracked; no new CROSSFOSTER pre-reg or experiment (2026-09-14, Mac)
+
+**Decision (Artin, verbatim in substance).** CROSSFOSTER remains
+PARKED with the already-booked revival condition; a deeper generator
+is not to be designed specifically to rescue this program; no new
+CROSSFOSTER pre-reg or experiment.
+
+**Receipt move.** The verdict force-added logs/crossfoster1/chain.json
+(4.9 MB) under the small-text-receipt exception and named it for
+Artin's eye; Artin's decision moves it to the normal untracked stream.
+What was done: (1) the file's identity was recorded before any
+change: 4,891,029 bytes, sha256 bf87602a17ffca679f449a24c1f54c76c473
+157d95bf1d9dd031e5f6ebee658f, equal to the sha the verdict's lock
+entry carried (docs/receipts.lock.json at 3236a404: bytes 4891029,
+tracked true); (2) the tracked copy was removed from the index only
+(git rm --cached); the bytes on the Mac are untouched and the sha
+re-read after the move is the same; (3) the lock entry is regenerated
+with the same sha and byte count, tracked false, local_only true
+(machine-local evidence: verified where present, reported absent in a
+clean clone, never silently green); (4) the RESULTS verdict's citation
+of the path is unchanged (RESULTS is append-only; this entry is the
+correction). Schema of the moved file, for the record: one JSON
+object with the receipt header (prereg, stage, kind, smoke, commit
+06612fc4, tree_dirty false, source_sha256 8784ff6c..., donor_stage_
+source_sha256, device mps, torch_version, donors {path, file_sha256,
+state_digest}, w0_seed2_state_digest_from_census, census_sha256, the
+registered constants and seed law, started_utc / ended_utc), the
+accounting, sampling_stats, readouts, replay, wall_stage_s / wall_s,
+status / law_ignoring_replay, and root_log: 16,846 entries {root_index,
+level, root_seed, cur, l_A, l_B, terminal_A, terminal_B, l_pair,
+retained, first_divergence, endpoint_equal (the last two on retained
+roots)}. logs/crossfoster1/chain.jsonl is this object minus root_log
+and stays tracked, so every booked number except the per-root log
+remains in the repo; the per-root log's aggregates (L histograms,
+first-divergence histogram, per-level adequacy) are in the tracked
+row's readouts and in the verdict text. The libraries
+data/crossfoster1_chain/D_A_chain.jsonl (sha 802cbc24ad18...) and
+D_B_chain.jsonl (sha a8964bad3069...) stay tracked and frozen.
+
+**Nothing scientific changes.** The verdict, its bar, its prior score
+and its sealed consequence stand; this entry records a decision and a
+receipt relocation.
