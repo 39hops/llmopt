@@ -74616,3 +74616,114 @@ this horizon.
 
 Nothing is armed. Stage 0 needs its own Artin GO after the
 implementation lands; Stage 1 needs another after Stage 0 books.
+
+## AMENDMENT OPTIMIZER-MEMORY-ABLATION-1-PRE-INSTRUMENT: like-with-like endpoint envelope, corrected BAR-1 law (a_carry_given_batch, not OGD0's a_0), wording and consequence cleanup, before any instrument exists (2026-09-14, Mac, zero training)
+
+Target: PRE-REG OPTIMIZER-MEMORY-ABLATION-1 (RESULTS L74310). Artin
+GO 2026-09-14 20:12 EDT: IMPLEMENTATION after this narrow amendment;
+no Stage 0, no Stage 1, no Z / E state. Nothing has been run; no
+receipt of the pre-reg exists yet, so nothing sealed is opened here.
+The causal design (anchor 7200, both writers, C / C' / Z / E, CPU
+Stage-1 continuation, identical future stream, horizons 1 / 5 / 20 /
+100 / 900) is accepted unchanged.
+
+### 1. Stage-0 endpoint envelope (P0.d) compares like with like
+
+RETIRED: the mps pairwise reference rho_mps = ||MC_a - MC_b|| /
+||MC_a - W_7200|| with the 5x multiplier (its denominator and its
+object differ from rho_cpu's).
+
+ADOPTED: both substrates are measured against the BOOKED trajectory
+with ONE denominator. For writer w, target W_booked = m008100_w:
+
+  rho_cpu,w   = ||W_C,w(8100)  - W_booked|| / ||W_booked - W_7200,w||
+  rho_mps,j,w = ||MC_j,w(8100) - W_booked|| / ||W_booked - W_7200,w||,
+                j in {a, b}, the two native mps resumes.
+
+The two mps resumes establish the native resume-to-booked envelope
+prospectively: rho_env,w = max_j rho_mps,j,w. Sealed law: P0.d PASSES
+for writer w iff rho_cpu,w <= max(2 x rho_env,w, 0.02) AND rho_cpu,w
+<= 0.25 AND |CE_HELD(W_C,w(8100)) - CE_HELD(W_booked)| <= 0.01. Both
+writers must pass. If rho_env,w > 0.25 the native mps resume itself
+does not reproduce the booked leg and the rung books NOT-ADJUDICABLE.
+Any failure = STOP, no Stage 1. (The 0.02 floor keeps a substrate gap
+that is tiny in absolute terms from failing against an mps envelope
+that happens to be near zero; the 2x factor and the absolute cap are
+the sealed numbers.)
+
+Stated explicitly: Stage 1 is a DETERMINISTIC CPU CONTINUATION FROM AN
+MPS-PRODUCED CHECKPOINT. P0.d tests whether that substrate transfer
+remains sufficiently faithful to the booked native trajectory; it does
+not test CPU-v-CPU determinism (that is P0.a) and it is not a
+treatment readout. The mps resumes are reported descriptively beside
+the Stage-1 numbers and are never compared with Z or E.
+
+### 2. BAR-1 analytic law corrected
+
+The pre-reg's step-1 expectation quoted OGD0's zero-current-gradient
+a_0 / u_0 fractions (0.904 A / 0.930 B) as the prediction. That
+identification is NOT the law: a_0 in OGD0 uses the zero-gradient
+second moment v'_0 = beta2 v (c = 0), whereas the erasure contrast at
+the real step 7201 shares the ACTUAL current-batch denominator.
+
+Law (per tensor, float64; c = the clipped step-7201 gradient on the
+real batch idx_1[2060]; s = 7201; bc1 = 1 - beta1^s, bc2 = 1 -
+beta2^s; lr, beta1 from audit row 7201):
+
+  v'  = beta2 v + (1 - beta2) c^2                (same for C and Z)
+  D   = sqrt(v' / bc2) + eps
+  a_C = -lr (beta1 m + (1 - beta1) c) / (bc1 D)
+  a_Z = -lr ((1 - beta1) c) / (bc1 D)
+  a_carry_given_batch = a_C - a_Z = -lr beta1 m / (bc1 D)
+  u_C = -lr wd W + a_C
+  W_Z(7201) - W_C(7201) = -(a_carry_given_batch)
+  n_Z(1) = ||a_carry_given_batch|| / ||u_C||      (GLOBAL norms)
+
+The registered 0.904 / 0.930 values do NOT use this law (they are
+probe-panel medians of ||u_0|| / ||u|| with the c = 0 denominator, and
+u_0 also carries the decay term). They are retained in the record as
+OGD0's descriptive numbers only. The expected n_Z(1) per writer is
+computed by the instrument's zero-training desk mode on the actual
+batch idx_1[2060] from the stored step-7200 state (one gradient, no
+optimizer step, no Z / E state) and booked by the seal amendment
+BEFORE any Z / E state exists, with the c = 0 approximation reported
+beside it for the record. BAR 1 becomes: |n_Z,w(1) - n_pred,w| <=
+0.02 (float32 continuation v the float64 law) AND n_Z,w(1) in [0.80,
+1.00]; the band is kept as the sanity envelope, the equality is the
+mechanical check. Outside either = INSTRUMENT-FAULT, STOP.
+
+### 3. Wording
+
+exp_avg <- 0 is SELECTIVE FIRST-MOMENT ERASURE with exp_avg_sq,
+optimizer age (the Adam step counter), weights and scheduler state
+preserved. It is never called a full, cold or optimizer restart; the
+pre-reg's "cold restart" sentence is withdrawn and replaced by: the
+erased first moment re-accumulates over about 1 / (1 - beta1) steps
+under the preserved bias correction (1 - beta1^7201 = 1).
+
+### 4. Consequence cleanup
+
+RETIRED: automatic banking of OPTIMIZER-V-RESET-1 from a HARMED / HELPED
+result. A first-moment effect licenses first-moment follow-ups only; a
+variance-state reset needs separate evidence. HARMED / HELPED now
+banks (unarmed) REPEATED-M-ERASURE-1; PERSISTENT-SPECIFIC keeps its
+registered clause (longer-horizon m-memory leg, eventual
+OPTIMIZER-MEMORY-CROSSFOSTER-1). The other clauses are unchanged.
+
+### 5. r = n_Z / (100 n_E)
+
+A LOCAL-RESPONSE DIAGNOSTIC at short horizon only. Late-horizon r is
+reported and is not read as a derivative, a linearity proof, or a
+sensitivity estimate.
+
+### Implementation process (this GO)
+
+Instrument scratch/optimizer_memory_ablation.py + tests + launcher;
+instrument-reviewer; isolated non-target smoke (synthetic anchor on the
+seed-6 W_0, path-isolated receipts and checkpoints); exact
+future-stream assertions; scheduler parity; first-step real-v-
+predicted parity; C / C' deterministic replay test; full clean-tree
+audit; commit and push; then a SEPARATE Stage-0 GO. No Z / E target
+state, no Stage 0, no Stage 1 in this GO. The machine-readable
+pre-reg docs/preregs/optimizer-memory-ablation-1.json is updated in
+this commit to the amended laws.

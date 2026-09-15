@@ -4,32 +4,98 @@
  "note": "Machine-readable form of PRE-REG OPTIMIZER-MEMORY-ABLATION-1 (the prose governs). DESIGN + PRE-REG ONLY (Artin GO 2026-09-14 19:54 EDT). Nothing armed; instrument not yet written; Stage 0 and Stage 1 each need a separate Artin GO.",
  "registered": "2026-09-14 (Mac local)",
  "machine": "mac",
- "status": "design sealed; NOT armed; no instrument yet; Stage 0 GO and Stage 1 GO pending",
+ "status": "design sealed + pre-instrument amendment; IMPLEMENTATION GO 2026-09-14 20:12 EDT; NOT armed; Stage 0 GO and Stage 1 GO pending",
  "standing_decision": "OPTIMIZER-GEOMETRY-DESK-0 stays as booked (L74103 GEOMETRY-NOT-RESOLVED); no post-hoc k = 1 rerun; k = 1 readouts citable descriptively only",
  "framing": "(W_{t+1}, O_{t+1}) = U(W_t, O_t, D_t); O_t = (exp_avg, exp_avg_sq, Adam step, scheduler phase); framing, not a measured law",
  "question": "does erasing Adam's carried first moment at a stored interior state, with the byte-identical future stream, change the writer's PATH, its FUNCTION, neither, or both",
  "specimens": {
-  "A": {"anchor": "checkpoints/phase19m/m007200.pt", "target": "checkpoints/phase19m/m008100.pt", "writer": "stock OneCycle seed 2 (LR falling, beta1 0.892 rising)", "group_7200": {"lr": 1.7326121234e-4, "beta1": 0.8922464315, "beta2": 0.999, "wd": 0.01}, "row_7201": {"lr": 1.73230e-4, "beta1": 0.89226}, "gates": {"7200": 51, "8100": 53}},
-  "B": {"anchor": "checkpoints/backsched19m/m007200.pt", "target": "checkpoints/backsched19m/m008100.pt", "writer": "backward SequenceLR seed 2 (LR rising, beta1 fixed 0.9)", "group_7200": {"lr": 1.4119364217e-4, "beta1": 0.9, "beta2": 0.999, "wd": 0.01}, "row_7201": {"lr": 1.41225e-4, "beta1": 0.9}, "gates": {"7200": 35, "8100": 43}}
+  "A": {
+   "anchor": "checkpoints/phase19m/m007200.pt",
+   "target": "checkpoints/phase19m/m008100.pt",
+   "writer": "stock OneCycle seed 2 (LR falling, beta1 0.892 rising)",
+   "group_7200": {
+    "lr": 0.00017326121234,
+    "beta1": 0.8922464315,
+    "beta2": 0.999,
+    "wd": 0.01
+   },
+   "row_7201": {
+    "lr": 0.00017323,
+    "beta1": 0.89226
+   },
+   "gates": {
+    "7200": 51,
+    "8100": 53
+   }
+  },
+  "B": {
+   "anchor": "checkpoints/backsched19m/m007200.pt",
+   "target": "checkpoints/backsched19m/m008100.pt",
+   "writer": "backward SequenceLR seed 2 (LR rising, beta1 fixed 0.9)",
+   "group_7200": {
+    "lr": 0.00014119364217,
+    "beta1": 0.9,
+    "beta2": 0.999,
+    "wd": 0.01
+   },
+   "row_7201": {
+    "lr": 0.000141225,
+    "beta1": 0.9
+   },
+   "gates": {
+    "7200": 35,
+    "8100": 43
+   }
+  }
  },
  "anchor_step": 7200,
- "leg": {"steps": "7201..8100", "epoch": 1, "epoch_steps": "5141..10280", "slice": "idx_1[2060:2960]", "order_law": "random.Random(1).shuffle(starts), starts = BS-slices of the length-sorted D2-excised enc (n_enc 164490, 5140 per epoch)"},
- "horizons": [1, 5, 20, 100, 900],
+ "leg": {
+  "steps": "7201..8100",
+  "epoch": 1,
+  "epoch_steps": "5141..10280",
+  "slice": "idx_1[2060:2960]",
+  "order_law": "random.Random(1).shuffle(starts), starts = BS-slices of the length-sorted D2-excised enc (n_enc 164490, 5140 per epoch)"
+ },
+ "horizons": [
+  1,
+  5,
+  20,
+  100,
+  900
+ ],
  "arms": {
   "C": "native resume (exp_avg = m_7200)",
   "Cprime": "byte-identical repeat of C (determinism precondition)",
-  "Z": "exp_avg <- 0 on all 59 tensors; exp_avg_sq, step counters, weights, wd, scheduler law, batch order native",
+  "Z": "SELECTIVE FIRST-MOMENT ERASURE: exp_avg <- 0 on all 59 tensors; exp_avg_sq, optimizer age (Adam step counter), weights, wd, scheduler state and future batch order preserved (never called a full / cold / optimizer restart)",
   "E": "exp_avg <- 0.99 x exp_avg (1 % twin on the same axis; chaos / linear-response reference)",
-  "MC_a_MC_b": "Stage 0 only: two native resumes on mps to calibrate substrate noise on the leg (never compared with Stage 1 arms)"
+  "MC_a_MC_b": "Stage 0 only: two native resumes on mps, each measured against the BOOKED m008100 with rho_cpu's denominator; establish the native resume-to-booked envelope; never compared with Stage 1 arms"
  },
- "excluded_from_this_rung": ["v reset", "full optimizer reset", "cross-writer moment swap", "repeated erasure"],
- "device": {"stage1": "cpu float32, torch.use_deterministic_algorithms(True), pinned threads", "stage0_calibration": "mps for MC_a / MC_b only", "gate": "one device for all arms, recorded"},
- "reconstruction_asserts": ["n_enc == 164490 and n_enc // 32 == 5140", "UGC0 probe digest 00eb6c43e4cd995b... reproduces from the reconstructed enc", "no Dropout modules", "param_order_digest 2b3ffa938724eb4d", "all Adam step counters == 7200", "scheduler stepped 7200 times equals the serialized group exactly and its next row equals audit row 7201 exactly", "model + optimizer digests before/after binding"],
+ "excluded_from_this_rung": [
+  "v reset",
+  "full optimizer reset",
+  "cross-writer moment swap",
+  "repeated erasure",
+  "automatic OPTIMIZER-V-RESET-1 banking"
+ ],
+ "device": {
+  "stage1": "cpu float32, torch.use_deterministic_algorithms(True), pinned threads",
+  "stage0_calibration": "mps for MC_a / MC_b only",
+  "gate": "one device for all arms, recorded"
+ },
+ "reconstruction_asserts": [
+  "n_enc == 164490 and n_enc // 32 == 5140",
+  "UGC0 probe digest 00eb6c43e4cd995b... reproduces from the reconstructed enc",
+  "no Dropout modules",
+  "param_order_digest 2b3ffa938724eb4d",
+  "all Adam step counters == 7200",
+  "scheduler stepped 7200 times equals the serialized group exactly and its next row equals audit row 7201 exactly",
+  "model + optimizer digests before/after binding"
+ ],
  "stage0_preconditions": {
   "P0a_determinism": "C and Cprime bit-identical (weights + optimizer state) at h = 1, 5, 20, 100, 900, both writers; else STOP",
   "P0b_scheduler_parity": "exact, both writers; else STOP",
   "P0c_virtual_law_continuity": "native step 7201 update v OGD0 virtual law on batch idx_1[2060]: float64 replay scale error <= 1e-6 expected, float32 outer bar 5e-2; fail outer bar = STOP",
-  "P0d_endpoint_envelope": "rho_cpu = ||W_C(8100) - m008100|| / ||m008100 - m007200||; rho_mps = ||MC_a - MC_b|| / ||MC_a - W_7200|| at 8100; PASS iff rho_cpu <= 5 x rho_mps AND rho_cpu <= 0.25 AND |CE_HELD(W_C(8100)) - CE_HELD(m008100)| <= 0.01, both writers; rho_mps > 0.25 books NOT-ADJUDICABLE; any failure = STOP, no Stage 1",
+  "P0d_endpoint_envelope": "rho_cpu = ||W_C(8100) - W_booked|| / ||W_booked - W_7200||; rho_mps_j = ||MC_j(8100) - W_booked|| / ||W_booked - W_7200|| (j = a, b); rho_env = max_j rho_mps_j; PASS iff rho_cpu <= max(2 x rho_env, 0.02) AND rho_cpu <= 0.25 AND |CE_HELD(W_C(8100)) - CE_HELD(W_booked)| <= 0.01, both writers; rho_env > 0.25 books NOT-ADJUDICABLE; any failure = STOP, no Stage 1. Stage 1 is a deterministic CPU continuation from an mps-produced checkpoint; P0.d tests the faithfulness of that substrate transfer to the booked native trajectory",
   "blind": "no Z or E state exists before P0 passes"
  },
  "readouts": {
@@ -40,35 +106,96 @@
   "gate": "120 gate on C(8100), Z(8100): descriptive only (single state; deltas under 7 solves not read)"
  },
  "bars": {
-  "1_applied": "n_Z(1) in [0.80, 1.00] (analytic: ||a_0|| / ||u|| on the actual batch; panel medians 0.904 A / 0.930 B); outside = INSTRUMENT-FAULT, STOP",
+  "1_applied": "|n_Z(1) - n_pred| <= 0.02 (n_pred from the instrument's zero-training desk mode on the actual batch, booked by the seal amendment before any Z / E state) AND n_Z(1) in [0.80, 1.00]; outside either = INSTRUMENT-FAULT, STOP",
   "2_path": "FORGOTTEN if n_Z(900) <= 0.05; PERSISTENT if n_Z(900) >= 0.25; else INTERMEDIATE",
   "3_sensitivity": "SENSITIVE if n_E(900) >= 0.10 else SPECIFIC",
   "4_function": "NEUTRAL if |dCE_Z(900)| <= max(0.005, 3 x |dCE_E(900)|); HARMED if above positively; HELPED if above negatively",
   "5_transient": "descriptive: dCE_Z(20), argmin_h n_Z(h)",
-  "program_label": "pair (BAR 2 + BAR 3 qualifier, BAR 4) when both writers agree; else MIXED-BY-WRITER; within-writer analysis only; A v B is not a pure-LR contrast"
+  "program_label": "pair (BAR 2 + BAR 3 qualifier, BAR 4) when both writers agree; else MIXED-BY-WRITER; within-writer analysis only; A v B is not a pure-LR contrast",
+  "r_note": "r = n_Z / (100 n_E) is a local-response diagnostic at short horizon; late-horizon r is not a derivative, linearity proof or sensitivity estimate"
  },
  "refuted_if": "FORGOTTEN + FUNCTION-NEUTRAL in both writers",
  "priors": [
-  {"id": 1, "claim": "BAR 1 passes both writers", "p": 0.85},
-  {"id": 2, "claim": "n_Z(20) < n_Z(1) both writers", "p": 0.80},
-  {"id": 3, "claim": "BAR 2 per writer: FORGOTTEN 0.45 / INTERMEDIATE 0.35 / PERSISTENT 0.20", "p": 0.45},
-  {"id": 4, "claim": "BAR 3 SPECIFIC both writers", "p": 0.60},
-  {"id": 5, "claim": "BAR 4 NEUTRAL both writers (HARMED 0.25, HELPED 0.10)", "p": 0.65},
-  {"id": 6, "claim": "dCE_Z(20) > 0.005 in at least one writer", "p": 0.50},
-  {"id": "7a", "claim": "P0a bit-exact", "p": 0.85},
-  {"id": "7b", "claim": "P0d envelope passes both writers", "p": 0.60},
-  {"id": 8, "claim": "Stage 0 <= 1.5 h, Stage 1 <= 3 h", "p": 0.70}
+  {
+   "id": 1,
+   "claim": "BAR 1 passes both writers (|n_Z(1) - n_pred| <= 0.02 and in [0.80, 1.00])",
+   "p": 0.85
+  },
+  {
+   "id": 2,
+   "claim": "n_Z(20) < n_Z(1) both writers",
+   "p": 0.8
+  },
+  {
+   "id": 3,
+   "claim": "BAR 2 per writer: FORGOTTEN 0.45 / INTERMEDIATE 0.35 / PERSISTENT 0.20",
+   "p": 0.45
+  },
+  {
+   "id": 4,
+   "claim": "BAR 3 SPECIFIC both writers",
+   "p": 0.6
+  },
+  {
+   "id": 5,
+   "claim": "BAR 4 NEUTRAL both writers (HARMED 0.25, HELPED 0.10)",
+   "p": 0.65
+  },
+  {
+   "id": 6,
+   "claim": "dCE_Z(20) > 0.005 in at least one writer",
+   "p": 0.5
+  },
+  {
+   "id": "7a",
+   "claim": "P0a bit-exact",
+   "p": 0.85
+  },
+  {
+   "id": "7b",
+   "claim": "P0d envelope passes both writers",
+   "p": 0.6
+  },
+  {
+   "id": 8,
+   "claim": "Stage 0 <= 1.5 h, Stage 1 <= 3 h",
+   "p": 0.7
+  }
  ],
  "consequences": {
   "forgotten_neutral": "book and stop; family closes at this scale; no v reset / swap / repeated erasure banked",
-  "persistent_specific_neutral": "bank unarmed OPTIMIZER-MEMORY-CROSSFOSTER-1 and a 7200 -> 15420 leg",
+  "persistent_specific_neutral": "bank unarmed a longer-horizon m-memory leg (7200 -> 15420) and OPTIMIZER-MEMORY-CROSSFOSTER-1",
   "persistent_sensitive": "bank an epsilon ladder (1e-3, 1e-2, 1e-1) before any further memory rung",
-  "harmed_or_helped": "bank unarmed OPTIMIZER-V-RESET-1 and REPEATED-ERASURE-1",
+  "harmed_or_helped": "bank unarmed REPEATED-M-ERASURE-1 only (first-moment follow-ups); no variance-state reset banked without separate evidence",
   "intermediate": "book, Artin decision",
   "mixed": "book per writer, no program label"
  },
  "wall_fence": "any Stage killed at 2 x its prior wall books NOT-RUN for that Stage",
- "cost": {"stage0_steps": {"cpu": 3600, "mps": 3600}, "stage1_steps": {"cpu": 3600}, "storage_gb": 3.2, "checkpoints": "checkpoints/oma1/ (untracked, sha-anchored)", "receipts": "logs/oma1/"},
- "instrument_planned": ["scratch/optimizer_memory_ablation.py", "scratch/oma1_launch.sh", "tests/test_optimizer_memory_ablation.py"],
- "process": ["instrument + tests + launcher committed before any run", "clean-tree prereg audit before sealing the instrument", "liverun sentinel per Stage", "receipt-auditor on Stage 0 receipts before Stage 1 GO", "/fold-book for every booking", "no commits while a Stage is live"]
+ "cost": {
+  "stage0_steps": {
+   "cpu": 3600,
+   "mps": 3600
+  },
+  "stage1_steps": {
+   "cpu": 3600
+  },
+  "storage_gb": 3.2,
+  "checkpoints": "checkpoints/oma1/ (untracked, sha-anchored)",
+  "receipts": "logs/oma1/"
+ },
+ "instrument_planned": [
+  "scratch/optimizer_memory_ablation.py",
+  "scratch/oma1_launch.sh",
+  "tests/test_optimizer_memory_ablation.py"
+ ],
+ "process": [
+  "instrument + tests + launcher committed before any run",
+  "clean-tree prereg audit before sealing the instrument",
+  "liverun sentinel per Stage",
+  "receipt-auditor on Stage 0 receipts before Stage 1 GO",
+  "/fold-book for every booking",
+  "no commits while a Stage is live"
+ ],
+ "amended_by": "AMENDMENT OPTIMIZER-MEMORY-ABLATION-1-PRE-INSTRUMENT (2026-09-14): P0.d like-with-like envelope, BAR-1 law a_carry_given_batch, wording, consequences, r diagnostic",
+ "bar1_law": "per tensor float64, c = clipped step-7201 gradient on the real batch idx_1[2060], s = 7201: v' = beta2 v + (1-beta2) c^2; D = sqrt(v'/bc2) + eps; a_C = -lr (beta1 m + (1-beta1) c)/(bc1 D); a_Z = -lr (1-beta1) c/(bc1 D); a_carry_given_batch = a_C - a_Z = -lr beta1 m/(bc1 D); u_C = -lr wd W + a_C; n_Z(1) = ||a_carry_given_batch|| / ||u_C|| (GLOBAL). OGD0's 0.904 / 0.930 (c = 0 denominator, u_0 with decay) are descriptive only, not this law"
 }
