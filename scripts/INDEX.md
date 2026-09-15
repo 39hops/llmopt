@@ -2397,6 +2397,21 @@ Gallery: magic-estimator held-out scatter (predicted vs measured).
 - `spearman(a, b)`
 - `main(out: Path) -> None`
 
+### scratch/first_moment_erasure.py
+FIRST-MOMENT-ERASURE-1 instrument (PRE-REG RESULTS L74943): selective first-moment erasure on the reproducible stock-OneCycle writer A ALONE, at the validated A@7200 arena, against the PINNED Stage-0 A control of OPTIMIZER-MEMORY-ABLATION-1 (VERDICT -STAGE-0 L74856). Not a rescue or completion of OMA1: no writer-B code path, no two-writer adjudication.
+
+- `sha256_file(p)`
+- `check_pins(pins=PINS, root='.')` — {path: (expected, actual)} for every mismatch; empty means all pinned sources are byte-identical to the seal.
+- `leg_path_sha(module=OMA, symbols=LEG_PATH_SYMBOLS)`
+- `locked_sha(lock, rel)`
+- `data_file_shas()` — sha256 of every corpus file the trainer's load_rows reads (recorded; the probe digest is the content assertion).
+- `assert_provenance(stage0, desk, lock, anchor_sha_on_disk, threads, torch_version, numpy_version)` — Every registered-mode provenance assertion, pure (no state created): the receipt shas against the source literals AND the
+- `verify_control(stage0, root=None, horizons=HORIZONS)` — {h: {path, receipt_digest, file_digest, status}} for the pinned C snapshots of writer A, read from the Stage-0 receipt's
+- `control_ok(v)`
+- `single_writer_label(adj)`
+- `mode_treat(tok, enc, starts, info, segs, d, held, rec, stream)`
+- `main()`
+
 ### scratch/fixed_q_snap.py
 Fixed-denominator snap (spec addendum 2026-07-27, 'integer twin'): every 2-D weight -> round(w*q)/q for ONE shared q. Unlike best-rational (free denominators), this makes W = P/q with integer P — the forward pass becomes an integer GEMM / q, the road to exact integer inference (ozaki/FX-V1 substrate). Error bound 1/(2q), vs ~1/Q^2 for best-rational. Usage: fixed_q_snap.py <ckpt_in> <q> <ckpt_out>
 

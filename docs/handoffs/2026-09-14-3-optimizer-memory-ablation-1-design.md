@@ -1,4 +1,4 @@
-# Handoff 2026-09-14-3: OPTIMIZER-GEOMETRY-DESK-0 left as booked (Artin decision); PRE-REG OPTIMIZER-MEMORY-ABLATION-1 designed, sealed, Stage 0 run and booked NOT-ADJUDICABLE (A reproducible, B substrate-sensitive); FIRST-MOMENT-ERASURE-1 banked; nothing armed
+# Handoff 2026-09-14-3: OPTIMIZER-GEOMETRY-DESK-0 left as booked (Artin decision); PRE-REG OPTIMIZER-MEMORY-ABLATION-1 designed, sealed, Stage 0 run and booked NOT-ADJUDICABLE (A reproducible, B substrate-sensitive); FIRST-MOMENT-ERASURE-1 banked and its instrument sealed; nothing armed
 
 Seat: Fable 5.1 on the Mac. HEAD at close: the commit carrying this
 file (updated in place after the IMPLEMENTATION GO). 3080 untouched. No
@@ -71,11 +71,28 @@ live registered run. Nothing armed.
 - checkpoints/oma1/ (2.0 GB): A/C is the pinned control (keep); B and
   A's C' / MC snapshots pending a handoff decision.
 
+## FME1 implementation GO (22:24 EDT)
+
+- AMENDMENT FIRST-MOMENT-ERASURE-1-INSTRUMENT (L75065): scratch/first_moment_erasure.py
+  (A only; imports every mechanic from OMA; 14 source pins; leg-path
+  symbol sha 9dfcc6a0 pinned, identical at the Stage-0 and current OMA
+  revisions; receipt-sha literals; control digests + file shas asserted
+  before any treatment state; missing / drifted control refuses), 11
+  tests, launcher (liverun fme1). Smokes: mechanism (fme, fme2) and
+  control refusal (drifted + missing -> refused, nothing created).
+  Review: two blockers folded (receipt nests bind under cells.A.C; the
+  strict OMA-sha equality replaced by the mechanical leg-path law).
+- checkpoints/oma1 pruned to A/C h0001 / h0005 / h0020 / h0100 / h0900
+  (0.53 GB) under logs/oma1/prune_manifest.json; B and A/C' / A/MC
+  payloads removed (19 files, 1.59 GB). Smoke trees deleted.
+- Launch on GO: `bash scratch/fme1_launch.sh` (two CPU legs, about 10
+  min at 3.1 it/s, plus HELD CE and two gates; 0.9 GB).
+
 ## Conditions that bite next session
 
-- Nothing armed. OMA1 is closed. The next candidate GO is the
-  IMPLEMENTATION of FIRST-MOMENT-ERASURE-1's A-only mode (pin assert +
-  Z / E on A), then its run GO.
+- Nothing armed. OMA1 is closed. The next candidate GO is the FME1
+  target run (`bash scratch/fme1_launch.sh`); any change to a pinned
+  shared source or leg-path symbol refuses until re-pinned by amendment.
 - The epsilon twin must stay at 1e-2 (a 1e-6 twin is a numerical no-op
   at float32 W resolution; reasoning in the pre-reg).
 - The scheduler is reconstructed by stepping a fresh scheduler 7,199
@@ -90,10 +107,9 @@ live registered run. Nothing armed.
 
 ## Open decisions for Artin
 
-1. GO for the IMPLEMENTATION (then the run) of FIRST-MOMENT-ERASURE-1.
+1. GO for the FIRST-MOMENT-ERASURE-1 target run.
 2. Whether SCHEDULE-PHASE-SENSITIVITY-CENSUS-0 gets a design GO.
-3. Disposition of the 2.0 GB checkpoints/oma1/ tree beyond the pinned
-   A control.
+3. (done) checkpoints/oma1 pruned to the pinned A control.
 
 ## Next session: where to start
 

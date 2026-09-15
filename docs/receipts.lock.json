@@ -2,7 +2,7 @@
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
  "_last_accept": {
   "paths": [],
-  "reason": "VERDICT OPTIMIZER-MEMORY-ABLATION-1-STAGE-0: lock the Stage-0 receipts after force-add"
+  "reason": "AMENDMENT FIRST-MOMENT-ERASURE-1-INSTRUMENT: lock the FME1 smoke receipts, refusal logs and the OMA1 prune manifest"
  },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
@@ -880,6 +880,34 @@
    "bytes": 582,
    "exists": true,
    "sha256": "5a52cf12bf1a46c03c678cf6e5d4d07f34728702fc5e0f9b1b589bcc70fb47b3",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/fme1/smokefme2_treat.json": {
+   "bytes": 17607,
+   "exists": true,
+   "sha256": "aebf946eb2ccf9064d88961568d091386bc8171ce9f60ce8a32ba5388693fd7b",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/fme1/smokefme2refuse_refusal.log": {
+   "bytes": 227,
+   "exists": true,
+   "sha256": "7044aa002c65839c3efab813319195be8f12e91631ee5fd7a00b271ca1d2ef0e",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/fme1/smokefme_treat.json": {
+   "bytes": 13185,
+   "exists": true,
+   "sha256": "3bd099eaa5e281275c95affd701f0fcbf4a41e129c45a70cd0b58d0960c52128",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/fme1/smokefmerefuse_refusal.log": {
+   "bytes": 227,
+   "exists": true,
+   "sha256": "7044aa002c65839c3efab813319195be8f12e91631ee5fd7a00b271ca1d2ef0e",
    "source": "results",
    "tracked": true
   },
@@ -3139,6 +3167,13 @@
    "bytes": 5,
    "exists": true,
    "sha256": "8221ac66be71558c921fb44cfb66f7997699aea754d917763882d6d9eddc836e",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/oma1/prune_manifest.json": {
+   "bytes": 9305,
+   "exists": true,
+   "sha256": "750ab6347df3ee44475bd4aaa2d5d7395c6cdffbc64de0876b32be025a9af56b",
    "source": "results",
    "tracked": true
   },

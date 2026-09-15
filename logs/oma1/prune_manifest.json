@@ -1,0 +1,282 @@
+{
+ "kind": "oma1_prune_manifest",
+ "decision_source": "Artin 2026-09-14 22:24 EDT (FIRST-MOMENT-ERASURE-1 IMPLEMENTATION GO)",
+ "stage0_receipt": "logs/oma1/stage0.json",
+ "stage0_receipt_sha256": "6f5d368809e470acd1e86ba2e6b030b17f57496546233a711ae2aa870d6c5cf7",
+ "keep": [
+  "checkpoints/oma1/A/C/h0001.pt",
+  "checkpoints/oma1/A/C/h0005.pt",
+  "checkpoints/oma1/A/C/h0020.pt",
+  "checkpoints/oma1/A/C/h0100.pt",
+  "checkpoints/oma1/A/C/h0900.pt"
+ ],
+ "n_files": 24,
+ "bytes_keep": 529636483,
+ "bytes_remove": 1588884643,
+ "files": [
+  {
+   "path": "checkpoints/oma1/A/C/h0001.pt",
+   "bytes": 75660592,
+   "sha256": "8fda1b683d48462a3073652cb1203ac6d94ecee0f4f47fea8590168ec92ad7fc",
+   "state_digest": "97df9d4cf889d20f652836be49f87d23b0da5461b730bfbaee82e2ee645e91f8",
+   "has_opt": false,
+   "step": 7201,
+   "decision": "KEEP",
+   "in_stage0_receipt": true,
+   "matches_receipt": true
+  },
+  {
+   "path": "checkpoints/oma1/A/C/h0005.pt",
+   "bytes": 75660592,
+   "sha256": "f8cf63e82101c37eb7965de0fcebefa3fedf31e220d47e0dce0d66890b573b9d",
+   "state_digest": "08866c06295e2a3cefbebdf2c48863316d621b6dc4244a540f3d472dbb16eb6a",
+   "has_opt": false,
+   "step": 7205,
+   "decision": "KEEP",
+   "in_stage0_receipt": true,
+   "matches_receipt": true
+  },
+  {
+   "path": "checkpoints/oma1/A/C/h0020.pt",
+   "bytes": 75660592,
+   "sha256": "3b7333c884b97abf1b8b54a5f64e07cee19679b8d2374410aae18df2e2a761d1",
+   "state_digest": "fb98dd00034022fa57d70f840ca36efac6d36099d6af67ed88c0c2fd5137fc5a",
+   "has_opt": false,
+   "step": 7220,
+   "decision": "KEEP",
+   "in_stage0_receipt": true,
+   "matches_receipt": true
+  },
+  {
+   "path": "checkpoints/oma1/A/C/h0100.pt",
+   "bytes": 75660592,
+   "sha256": "ce16c877620a23fb599599abd7225f184d2eddba26aa482d041b2dbe49b90f70",
+   "state_digest": "43fb98c1f765984add2370be5a04e2fbc9185b75d146154c25f00878515417da",
+   "has_opt": false,
+   "step": 7300,
+   "decision": "KEEP",
+   "in_stage0_receipt": true,
+   "matches_receipt": true
+  },
+  {
+   "path": "checkpoints/oma1/A/C/h0900.pt",
+   "bytes": 226994115,
+   "sha256": "e97ab72aa5595359398bb5c44396c403caf11e6cfa661a831492e47091be68c0",
+   "state_digest": "72a1917dc9e5cdd1c0389d56ff0c21981992be5cc6d044bb3ca8fef11406c1d1",
+   "has_opt": true,
+   "step": 8100,
+   "decision": "KEEP",
+   "in_stage0_receipt": true,
+   "matches_receipt": true
+  },
+  {
+   "path": "checkpoints/oma1/A/Cprime/h0001.pt",
+   "bytes": 75660592,
+   "sha256": "e5875d9cd461a1ec6fd57d198af574ffbeadc9c62b022f608eafeafad60038e1",
+   "state_digest": "97df9d4cf889d20f652836be49f87d23b0da5461b730bfbaee82e2ee645e91f8",
+   "has_opt": false,
+   "step": 7201,
+   "decision": "REMOVE",
+   "in_stage0_receipt": true,
+   "matches_receipt": true
+  },
+  {
+   "path": "checkpoints/oma1/A/Cprime/h0005.pt",
+   "bytes": 75660592,
+   "sha256": "22f5acc481666fab2a66e3f66890bb5a27e121e4fe85249c4c0a6b59bbee4471",
+   "state_digest": "08866c06295e2a3cefbebdf2c48863316d621b6dc4244a540f3d472dbb16eb6a",
+   "has_opt": false,
+   "step": 7205,
+   "decision": "REMOVE",
+   "in_stage0_receipt": true,
+   "matches_receipt": true
+  },
+  {
+   "path": "checkpoints/oma1/A/Cprime/h0020.pt",
+   "bytes": 75660592,
+   "sha256": "503fd41d4fd60d7b6050d3035714be5ac3d194a62d2f3f3af193f5f22ce44349",
+   "state_digest": "fb98dd00034022fa57d70f840ca36efac6d36099d6af67ed88c0c2fd5137fc5a",
+   "has_opt": false,
+   "step": 7220,
+   "decision": "REMOVE",
+   "in_stage0_receipt": true,
+   "matches_receipt": true
+  },
+  {
+   "path": "checkpoints/oma1/A/Cprime/h0100.pt",
+   "bytes": 75660592,
+   "sha256": "7e37aeca57be597ebd27d814655e6105508e6afbbe92e902190b6b82be75987d",
+   "state_digest": "43fb98c1f765984add2370be5a04e2fbc9185b75d146154c25f00878515417da",
+   "has_opt": false,
+   "step": 7300,
+   "decision": "REMOVE",
+   "in_stage0_receipt": true,
+   "matches_receipt": true
+  },
+  {
+   "path": "checkpoints/oma1/A/Cprime/h0900.pt",
+   "bytes": 75660592,
+   "sha256": "7197b243a871e3db08dab930d23def78e715d58de15ede7d1672ecd56901d127",
+   "state_digest": "72a1917dc9e5cdd1c0389d56ff0c21981992be5cc6d044bb3ca8fef11406c1d1",
+   "has_opt": false,
+   "step": 8100,
+   "decision": "REMOVE",
+   "in_stage0_receipt": true,
+   "matches_receipt": true
+  },
+  {
+   "path": "checkpoints/oma1/A/MC_a/h0900.pt",
+   "bytes": 75660592,
+   "sha256": "647f33c6a3b08cf3efd9d1356ae30328047783db41c765b5f3de5ad4b8754be0",
+   "state_digest": "aeccb9381973c39473a7e104bb23e2d67a8a2c6a8a63569ad6c03fd27954859b",
+   "has_opt": false,
+   "step": 8100,
+   "decision": "REMOVE",
+   "in_stage0_receipt": true,
+   "matches_receipt": true
+  },
+  {
+   "path": "checkpoints/oma1/A/MC_b/h0900.pt",
+   "bytes": 75660592,
+   "sha256": "175c05d7c7d0d4bdf46fceffb0708601ee04925a725bd1c6254f8504e3124a2e",
+   "state_digest": "bac345e9bbc5626968183502cec21aa394e565e1c4aa869e2501bcd2df9b3b7d",
+   "has_opt": false,
+   "step": 8100,
+   "decision": "REMOVE",
+   "in_stage0_receipt": true,
+   "matches_receipt": true
+  },
+  {
+   "path": "checkpoints/oma1/B/C/h0001.pt",
+   "bytes": 75660592,
+   "sha256": "672ff0f3362353439b9ba4aafce2bbd98bd2f798d4f001a93f8215553a0251c7",
+   "state_digest": "353bec05ffdb3328ee34c0b5e9a0a2435c6eb36a4e56a255d6e804e7e783ac7a",
+   "has_opt": false,
+   "step": 7201,
+   "decision": "REMOVE",
+   "in_stage0_receipt": true,
+   "matches_receipt": true
+  },
+  {
+   "path": "checkpoints/oma1/B/C/h0005.pt",
+   "bytes": 75660592,
+   "sha256": "53c9c6f0c1a21d9089e147bedca175dba46eb286e2b8153c5a9bd09ff1674192",
+   "state_digest": "00f582f31e5b7f1362e9be880c9e6984e095a7f1b8f86b5ea4e1f0e984dffb67",
+   "has_opt": false,
+   "step": 7205,
+   "decision": "REMOVE",
+   "in_stage0_receipt": true,
+   "matches_receipt": true
+  },
+  {
+   "path": "checkpoints/oma1/B/C/h0020.pt",
+   "bytes": 75660592,
+   "sha256": "96aa7fb5aa449b5d480cf629cdc3a37c2cb2565e823221695a91fd1290a07c8c",
+   "state_digest": "b11c2b76944cf8d5f8b5687b52807819f55bad752d81d5c61c6b4a9c7e54a4b2",
+   "has_opt": false,
+   "step": 7220,
+   "decision": "REMOVE",
+   "in_stage0_receipt": true,
+   "matches_receipt": true
+  },
+  {
+   "path": "checkpoints/oma1/B/C/h0100.pt",
+   "bytes": 75660592,
+   "sha256": "c80ed99d30fd8db2522ccf12caa9366de74e48294b30b11cf9c0d9dec342dc58",
+   "state_digest": "9cab1a4828fa1c987f6861524a2c9a20fcc8d83e2c9a4efebc95deca458c0a2a",
+   "has_opt": false,
+   "step": 7300,
+   "decision": "REMOVE",
+   "in_stage0_receipt": true,
+   "matches_receipt": true
+  },
+  {
+   "path": "checkpoints/oma1/B/C/h0900.pt",
+   "bytes": 226993987,
+   "sha256": "b8d61c44ed509197a78678d481652fdfadf41506fa56475dbd03bb0d94fbce62",
+   "state_digest": "f312015aabd7a5c9602fa804b5bb4c71b4ff9cee99548885ff6fe53f12ce96cf",
+   "has_opt": true,
+   "step": 8100,
+   "decision": "REMOVE",
+   "in_stage0_receipt": true,
+   "matches_receipt": true
+  },
+  {
+   "path": "checkpoints/oma1/B/Cprime/h0001.pt",
+   "bytes": 75660592,
+   "sha256": "2b8503f4c08f16778b1f45fc6277478b6a5845d81b65653336f673bd32b01c8d",
+   "state_digest": "353bec05ffdb3328ee34c0b5e9a0a2435c6eb36a4e56a255d6e804e7e783ac7a",
+   "has_opt": false,
+   "step": 7201,
+   "decision": "REMOVE",
+   "in_stage0_receipt": true,
+   "matches_receipt": true
+  },
+  {
+   "path": "checkpoints/oma1/B/Cprime/h0005.pt",
+   "bytes": 75660592,
+   "sha256": "5152cdf2f69db6c4b4f081fe12663ed6c46773d19e89dc2a113f5280e4ed000b",
+   "state_digest": "00f582f31e5b7f1362e9be880c9e6984e095a7f1b8f86b5ea4e1f0e984dffb67",
+   "has_opt": false,
+   "step": 7205,
+   "decision": "REMOVE",
+   "in_stage0_receipt": true,
+   "matches_receipt": true
+  },
+  {
+   "path": "checkpoints/oma1/B/Cprime/h0020.pt",
+   "bytes": 75660592,
+   "sha256": "a007f3211e9553f0e22272dcffbd7c19ac0d5c36c41e4a1a11054aa61ffc678e",
+   "state_digest": "b11c2b76944cf8d5f8b5687b52807819f55bad752d81d5c61c6b4a9c7e54a4b2",
+   "has_opt": false,
+   "step": 7220,
+   "decision": "REMOVE",
+   "in_stage0_receipt": true,
+   "matches_receipt": true
+  },
+  {
+   "path": "checkpoints/oma1/B/Cprime/h0100.pt",
+   "bytes": 75660592,
+   "sha256": "a1f30ff3fdf23f8b64d8deda4b11190e9a054edb791c9655e5edcd47efd8189a",
+   "state_digest": "9cab1a4828fa1c987f6861524a2c9a20fcc8d83e2c9a4efebc95deca458c0a2a",
+   "has_opt": false,
+   "step": 7300,
+   "decision": "REMOVE",
+   "in_stage0_receipt": true,
+   "matches_receipt": true
+  },
+  {
+   "path": "checkpoints/oma1/B/Cprime/h0900.pt",
+   "bytes": 75660592,
+   "sha256": "4b128fdcd2beb35b1bc361dc0f4047be91e87497cab7d57b774151dac056a119",
+   "state_digest": "f312015aabd7a5c9602fa804b5bb4c71b4ff9cee99548885ff6fe53f12ce96cf",
+   "has_opt": false,
+   "step": 8100,
+   "decision": "REMOVE",
+   "in_stage0_receipt": true,
+   "matches_receipt": true
+  },
+  {
+   "path": "checkpoints/oma1/B/MC_a/h0900.pt",
+   "bytes": 75660592,
+   "sha256": "a6add08ea1d75dd36c2cb8cb35696d909f7cef3b3a53c34d45d2c8b81aae8617",
+   "state_digest": "151503e7f667014081ec77f0d0f11af31183ea53a424ad9996c576a0c32af56c",
+   "has_opt": false,
+   "step": 8100,
+   "decision": "REMOVE",
+   "in_stage0_receipt": true,
+   "matches_receipt": true
+  },
+  {
+   "path": "checkpoints/oma1/B/MC_b/h0900.pt",
+   "bytes": 75660592,
+   "sha256": "b93f4087db9c9d35566129182860af2d9e7fc01c65274441f112de94636c0501",
+   "state_digest": "e29528eea9e70e2012f4885bb152156dff3269ab208797ca600e6511688cffdb",
+   "has_opt": false,
+   "step": 8100,
+   "decision": "REMOVE",
+   "in_stage0_receipt": true,
+   "matches_receipt": true
+  }
+ ]
+}

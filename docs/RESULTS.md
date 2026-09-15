@@ -75061,3 +75061,131 @@ Machine-readable form: docs/preregs/first-moment-erasure-1.json.
 Receipts under logs/fme1/, snapshots under checkpoints/fme1/.
 
 Nothing armed.
+
+## AMENDMENT FIRST-MOMENT-ERASURE-1-INSTRUMENT: A-only sibling instrument implemented, pinned by exact source shas and a mechanical leg-path successor law; control missing or drifted REFUSES (no silent rerun); OMA1 payloads pruned to the five pinned A controls under a sha manifest; nothing armed (2026-09-14, Mac, zero target training)
+
+Target: PRE-REG FIRST-MOMENT-ERASURE-1 (L74943). Artin GO 2026-09-14
+22:24 EDT: IMPLEMENTATION ONLY. No target treatment run; no Z / E
+state on the registered arena exists. Separate target-run GO required.
+
+### Instrument (thin sibling of the sealed OMA1 mechanics)
+
+scratch/first_moment_erasure.py (+ tests/test_first_moment_erasure.py,
+11 tests; launcher scratch/fme1_launch.sh, liverun id fme1, DONE on
+success only, no follow-up chained). One registered mode (treat, writer
+A only). Every continuation / intervention mechanic is imported from
+scratch/optimizer_memory_ablation.py; nothing is copied.
+
+Pins, mechanical (a mismatch refuses at import, before any state):
+- 14 shared sources by exact SHA256: optimizer_memory_ablation,
+  optimizer_geometry_desk, update_geometry_census,
+  onecycle_component_audit, birth19m_curric, atomtraj_pins,
+  train_mathnative, llmopt/train/mathnative, llmopt/lab/gate,
+  tenet_d2_revdiet (the D2 excision band that defines the row set),
+  step_grpo_micro and bench_step_tokens (imported by the band),
+  llmopt/lab/locator, llmopt/common/device.
+- Successor law made mechanical, replacing the pre-reg's phrase "a
+  successor whose diff touches no code on the leg path": the OMA
+  source that PRODUCED the Stage-0 control and the desk expectation
+  (04353502..., commits 60b30517 / b5e5c1b8) differs from the pinned
+  current source (99b6550d..., commit 4803703d) by one receipt-label
+  comment fold inside mode_stage0; the instrument pins the
+  concatenated source of the 25 leg-path symbols (stream law,
+  scheduler resume, bind, apply_arm, run_leg, readouts, adjudication,
+  snapshot writers) to LEG_PATH_SHA 9dfcc6a0..., which is the value at
+  BOTH revisions, and asserts the receipts' source sha equals the
+  Stage-0-era literal. Any change to a leg-path symbol refuses.
+- Receipt pins as source literals AND lock entries: logs/oma1/
+  stage0.json (6f5d3688...) and logs/oma1/desk_bar1.json (4fc04462...)
+  must equal the literal and docs/receipts.lock.json; a coordinated
+  overwrite plus re-lock cannot move the literal.
+- Arena literals: anchor 7200, leg 900, horizons 1 / 5 / 20 / 100 /
+  900, 8 threads; the treatment run asserts its thread count, torch and
+  numpy versions equal the Stage-0 receipt's (the pinned control cannot
+  move, so the treatment substrate must match it).
+- Anchor: checkpoints/phase19m/m007200.pt file sha a0cdf244... and
+  state digest asserted against the receipt's cells.A.C.bind; the
+  future stream reconstructed and its leg-slices digest asserted equal
+  to the Stage-0 receipt's; n_pred literal 0.894284652673395 asserted
+  equal on both receipts; Stage-0 A verdict PASS asserted; corpus
+  file shas recorded in the receipt (the UGC0 probe digest remains the
+  content assertion).
+- Control pin: the five C snapshots' state digests AND file shas are
+  asserted against the receipt BEFORE any treatment state is created.
+
+Registered deviation from L74943 (this amendment supersedes the
+sentence): a missing or drifted pinned control REFUSES; the instrument
+never reruns the control. A control rerun, if ever needed, is a
+separate booked act under its own amendment. (The pre-reg's "the
+control is rerun under the same law and booked as such" is withdrawn
+in favor of the refusal; refusing is the stricter behavior.)
+
+Single-writer adjudication: OMA.adjudicate on writer A alone and a
+label that carries the fence "[writer A only, one anchor, one seed
+lineage; gate descriptive]"; no program_label, no writer-B path (the
+test checks the AST: WRITERS is only ever subscripted by the WRITER
+name and no string constant "B" exists in the instrument).
+
+### Qualification
+
+- Tests (11): source pins v disk; pin mismatch and missing-file
+  detection; control pin verifies and refuses on MISSING / DRIFTED;
+  the registered-mode provenance block run against the REAL locked
+  receipts (structure, OMA sha at Stage 0, literals v lock, sealed
+  n_pred, thread / version law; wrong anchor sha and wrong thread
+  count refuse); leg-path symbol sha; lock law; sealed literals and
+  thresholds; single-writer label and the no-B AST check, plus an
+  out-of-band n_Z(1) reaching INSTRUMENT-FAULT through OMA.adjudicate;
+  Z / E touch all 59 tensors with exp_avg_sq intact; stream digest and
+  scheduler continuity reuse OMA's tested mechanics; refuse-if-exists.
+- Mechanism smoke (SMOKE_TAG=fme before the review, fme2 after the
+  folds; synthetic seed-6 arena from OMA's smoke machinery, path-
+  isolated: logs/oma1/smokefme*_desk_bar1.json / _stage0.json (+
+  streams), logs/fme1/smokefme_treat.json, logs/fme1/smokefme2_treat.json
+  (+ streams)): control pin OK at every smoke horizon; n_Z(1) = n_pred
+  to 8e-7; 59 tensors touched per arm; snapshots under
+  checkpoints/fme1_smoke only; the ladder returns INSTRUMENT-FAULT on
+  the synthetic anchor because its n_pred 0.795 lies below the real
+  band (expected on a non-target state).
+- Control-refusal smoke (logs/fme1/smokefmerefuse_refusal.log and
+  logs/fme1/smokefme2refuse_refusal.log): with one smoke control
+  snapshot drifted and another removed, the treat mode exits
+  "CONTROL PIN REFUSED ... {1: OK, 2: DRIFTED, 3: MISSING}" and creates
+  no snapshot directory. This is the mechanical proof of the pinned
+  control dependency that the pruning below waited for.
+- Instrument review (Opus, read-only): two blockers, both folded
+  before any real-mode execution: the Stage-0 receipt nests the
+  anchor bind under cells.A.C (the first draft read cells.A.bind, a
+  branch the smoke could not reach); and the strict OMA-sha equality
+  would have refused on the comment-fold successor (replaced by the
+  mechanical leg-path law above). Should-fixes folded: the refusal law
+  registered here; pins extended; receipt-sha literals; thread /
+  version assertion; arena literals; snapshot file sha compared
+  alongside the state digest; gate fence in the label; AST-level
+  single-writer check; a test of the real-mode provenance block. Smoke
+  checkpoint trees deleted after the receipts were read.
+
+### OMA1 payload disposition (Artin, same GO)
+
+logs/oma1/prune_manifest.json (force-added, locked): sha256, bytes,
+state digest, optimizer-payload flag and decision for all 24 Stage-0
+snapshot files, each cross-checked against the Stage-0 receipt's own
+sha / digest entries (24 / 24 match). KEEP: the five registered A/C
+controls (checkpoints/oma1/A/C/h0001, h0005, h0020, h0100, h0900;
+0.53 GB; h0900 carries the C optimizer payload as written by Stage 0
+and is kept as written since its file sha is the pinned value). REMOVE
+(done after the refusal smoke proved the pin dependency, 19 files,
+1.59 GB): A/Cprime x5, A/MC_a and A/MC_b endpoints, all B payloads
+(C x5, Cprime x5, MC_a, MC_b). Each removal was gated on the on-disk
+sha still equaling the manifest's; the keep set was re-verified by
+sha and state digest after the removals. Locked receipts remain. B
+payloads are not retained for the banked schedule-phase census, which
+generates its own prospective resumes.
+
+### Priced run (for the separate target-run GO)
+
+Two 900-step CPU legs at the Stage-0 rate 3.1 it/s (about 10 min),
+HELD-32 CE at ten arm-horizons, two 120 gates; snapshots about 0.9 GB
+under checkpoints/fme1/; disk 30 GiB free. Launch: `bash
+scratch/fme1_launch.sh` (refuses on a dirty tree twice: the
+instrument and liverun). Nothing armed.
