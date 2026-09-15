@@ -1,0 +1,203 @@
+{
+ "name": "FIRST-MOMENT-ERASURE-LADDER-2",
+ "program": "FIRST-MOMENT-ERASURE-LADDER-2",
+ "note": "Machine-readable form of PRE-REG FIRST-MOMENT-ERASURE-LADDER-2 (RESULTS L75924; the prose governs). DESIGN ONLY (Artin decision 2026-09-15 10:19 EDT). No instrument, no launch; implementation and the target run each need a separate Artin GO. FMEL1 (L75795) stays NOT-ADJUDICABLE permanently.",
+ "registered": "2026-09-15 (Mac local)",
+ "machine": "mac",
+ "status": "DESIGN ONLY, unarmed (no instrument written)",
+ "motivation": "mechanical resolution only: the FMEL1 target preflight resolved eps = 1e-2 / 1e-1 / 1 with large margin and failed eps = 1e-3 on the directional-resolution law",
+ "writer": "A only: stock OneCycle seed 2, checkpoints/phase19m/m007200.pt (sha256 a0cdf244fcf44f05...), Adam step 7200, one seed lineage, byte-identical future stream",
+ "continuation": {
+  "steps": "7201..15420",
+  "n_steps": 8220,
+  "full_leg_digest_prefix": "32a6ecb2"
+ },
+ "intervention": "exp_avg <- (1 - eps) exp_avg at the anchor; exp_avg_sq, Adam step counter, weights, wd, scheduler state, batch order preserved; eps = 1 / 1e-2 via OMA.apply_arm (Z / E)",
+ "ladder": [
+  0.01,
+  0.1,
+  1.0
+ ],
+ "arms": [
+  "C",
+  "e1e-2",
+  "e1e-1",
+  "e1"
+ ],
+ "arm_order": [
+  "C",
+  "e1",
+  "e1e-2",
+  "e1e-1"
+ ],
+ "device": "cpu float32, torch.use_deterministic_algorithms(True), 8 threads, arms sequential, one liverun id fmel2",
+ "horizons": [
+  1,
+  5,
+  20,
+  100,
+  300,
+  900,
+  1800,
+  3080,
+  4500,
+  6000,
+  7200,
+  8220
+ ],
+ "terminal_horizon": 8220,
+ "references": {
+  "stage0_C": "logs/oma1/stage0.json cells.A.C.snapshots h = 1/5/20/100/900",
+  "fme1_Z_E": "logs/fme1/treat.json arms.Z/E.snapshots h = 1/5/20/100/900",
+  "fmel1_preflight_h1": "logs/fmel1/ladder.json preflight.arms.{C,e1,e1e-2,e1e-1}.digest",
+  "law": "reference digests only; never resumed as treatment data"
+ },
+ "readouts": {
+  "n_eps": "||dW_eps(h)|| / ||W_C(7200+h) - W_7200||",
+  "R_eps": "||dW_eps|| / (eps ||dW_1||)",
+  "alpha_global": "least-squares slope of ln||dW_eps|| against ln eps over the three eps",
+  "alpha_low": "log10(||dW_1e-1|| / ||dW_1e-2||)",
+  "alpha_high": "log10(||dW_1|| / ||dW_1e-1||)",
+  "cosmin": "min of the three pairwise deviation cosines",
+  "rot_eps": "cos(dW_eps(h), dW_eps(h_prev))",
+  "group_share": "share of ||dW_eps||^2 per BLOCK0..7 / OUTSIDE",
+  "function": "HELD-32 CE per arm, dCE_eps = CE_eps - CE_C",
+  "gate": "120 gate at 15420 on C, e1 and the booked end model, same mps device, descriptive only",
+  "substrate": "descriptive: fresh C(15300) v m015300.pt (d97b19e0 / 6a715beb) in-line; fresh C(15420) v gallery19m_phase_s2.pt (4633efe5 / e7207b3b): rho, CE, gate"
+ },
+ "preflight": {
+  "law": "for every eps: |R_eps(1) - 1| <= 1e-3 AND cos(dW_eps(1), dW_1(1)) >= 0.999 AND |n_1(1) - 0.894284652673395| <= 0.02; failure -> receipt REGIME-UNRESOLVED, stop before any long leg, NOT-ADJUDICABLE, no relaunch without amendment",
+  "expected_from_fmel1": {
+   "R": {
+    "e1e-2": 1.0000131523160467,
+    "e1e-1": 1.0000003339361943,
+    "e1": 1.0
+   },
+   "cos": {
+    "e1e-2": 0.9999855929914413,
+    "e1e-1": 0.9999998649674559,
+    "e1": 1.0
+   },
+   "n_1": 0.8942846429438963
+  },
+  "digest_law": "fresh preflight digests must equal the locked FMEL1 preflight digests; long-leg h = 1 digests must equal the preflight digests; mismatch -> NOT-RUN"
+ },
+ "bars": {
+  "0_qualification": "h in {1,5,20,100,900}: fresh C == Stage-0 C, fresh e1 == FME1 Z, fresh e1e-2 == FME1 E, bit-exact; h = 1: every arm == its locked FMEL1 preflight digest; mismatch -> NOT-RUN; asserted over the complete set, never vacuous",
+  "1_preflight": "see preflight",
+  "2_regime_at_H": "first match wins: FORGOTTEN if all n_eps(H) <= 0.05; REGIME-UNRESOLVED if preflight failed or any of alpha_global / alpha_low / alpha_high / cosmin / n_eps at H is UNDEFINED; MAGNITUDE-SCALED PERSISTENT if 0.80 <= alpha_low(H) <= 1.20 AND 0.80 <= alpha_high(H) <= 1.20 AND cosmin(H) >= 0.90 AND n_1(H) >= 0.25; NONLINEAR DIRECTION-SHARED if cosmin(H) >= 0.90 and a local slope is outside [0.80, 1.20]; TRAJECTORY-SENSITIVE if alpha_global(H) <= 0.20 AND max(alpha_low, alpha_high)(H) <= 0.40 AND cosmin(H) <= 0.50; else INTERMEDIATE with all four quoted",
+  "3_locus": "reported: h_lin = last grid h with both local slopes in [0.80, 1.20] and cosmin >= 0.90; h_dec = first grid h with cosmin <= 0.50; h_curve = first grid h with |alpha_low - alpha_high| > 0.20; UNDEFINED excluded; 'not reached' legal",
+  "4_function": "per arm: NEUTRAL iff |dCE_eps(H)| <= 0.005; HARMED above positively; HELPED above negatively; FUNCTION-NEUTRAL when all three NEUTRAL; no functional inference from path geometry; descriptive over-threshold list + sign pattern",
+  "5_cooled_tail": "descriptive: ||dW_eps(H)|| / ||dW_eps(6000)||",
+  "zero_norm_law": "as AMENDMENT L75568 \u00a74: UNDEFINED = null + reason, never NaN; alpha_global needs three ln, each local slope two, cosmin three cosines",
+  "label": "(BAR 2 regime, BAR 4 function) [writer A only, one anchor, one seed lineage, CPU deterministic, eps >= 1e-2; gate descriptive], h_lin / h_dec / h_curve quoted"
+ },
+ "refuted_if": {
+  "house_reading_generic_late_growth": "BAR 2 books MAGNITUDE-SCALED PERSISTENT",
+  "chaotic_trajectory_sensitivity": "both local slopes in [0.80, 1.20] at H or cosmin(H) >= 0.90",
+  "narrowing_allowed": "amplitude-scaled and direction-shared along the registered first-moment perturbation axis through H, for eps >= 1e-2; never 'content-specific'"
+ },
+ "priors": [
+  {
+   "id": 1,
+   "claim": "BAR 1 preflight passes",
+   "p": 0.95
+  },
+  {
+   "id": 2,
+   "claim": "BAR 0 passes",
+   "p": 0.9
+  },
+  {
+   "id": 3,
+   "claim": "BAR 2: INTERMEDIATE 0.40 / TRAJECTORY-SENSITIVE 0.30 / NONLINEAR DIRECTION-SHARED 0.10 / MAGNITUDE-SCALED PERSISTENT 0.10 / FORGOTTEN 0.10",
+   "p": 0.4
+  },
+  {
+   "id": 4,
+   "claim": "h_lin <= 100",
+   "p": 0.8
+  },
+  {
+   "id": 5,
+   "claim": "h_dec <= 900",
+   "p": 0.7
+  },
+  {
+   "id": 6,
+   "claim": "h_curve reached",
+   "p": 0.6
+  },
+  {
+   "id": 7,
+   "claim": "alpha_global(H) <= 0.50",
+   "p": 0.55
+  },
+  {
+   "id": 8,
+   "claim": "|alpha_low(H) - alpha_high(H)| > 0.20",
+   "p": 0.5
+  },
+  {
+   "id": 9,
+   "claim": "FUNCTION-NEUTRAL (all three arms)",
+   "p": 0.7
+  },
+  {
+   "id": 10,
+   "claim": "n_1(H) >= 0.25",
+   "p": 0.5
+  },
+  {
+   "id": 11,
+   "claim": "BAR 5 ratio in [0.9, 1.1] for every eps",
+   "p": 0.6
+  },
+  {
+   "id": 12,
+   "claim": "wall <= 4 h",
+   "p": 0.7
+  }
+ ],
+ "cost": {
+  "per_arm_min": 44,
+  "arms": 4,
+  "prior_wall_h": 3.3,
+  "kill_h": 7
+ },
+ "storage": {
+  "snapshots": "checkpoints/fmel2/A/<arm>/h<hhhh>.pt: 48 x 75.7 MB model-only + 4 opt blobs at H = about 4.2 GB, untracked, shas + digests in the receipt",
+  "preflight_min_free_gib": 16
+ },
+ "receipts": [
+  "logs/fmel2/ladder.json",
+  "logs/fmel2/ladder.jsonl",
+  "logs/fmel2/ladder.log",
+  "logs/fmel2/fmel2.DONE",
+  "logs/liverun/fmel2.jsonl"
+ ],
+ "stop_law": [
+  "killed and NOT-RUN at 7 h",
+  "BAR 0 mismatch aborts the whole run -> NOT-RUN, partial receipts kept",
+  "pin drift refuses at launch",
+  "preflight failure -> NOT-ADJUDICABLE (REGIME-UNRESOLVED) before any long leg",
+  "live-run law for the whole wall",
+  "one run, no retry, no follow-up launch",
+  "no threshold lowered on account of FMEL1"
+ ],
+ "consequences": {
+  "magnitude_scaled_persistent": "AMENDMENT narrowing the FME1 disclosure (never content-specific); bank OPTIMIZER-MEMORY-CROSSFOSTER-1; census stays banked",
+  "trajectory_sensitive": "book; next lead = generic trajectory amplification; bank matched-norm random-direction control; unbank-for-design SCHEDULE-PHASE-SENSITIVITY-CENSUS-0",
+  "nonlinear_direction_shared": "book; bank a finer ladder inside the decade that left the band",
+  "forgotten": "book; scope FME1 PERSISTENT to h <= 900 in FINDINGS",
+  "intermediate": "book, Artin decision",
+  "regime_unresolved": "book NOT-ADJUDICABLE; no relaunch without amendment",
+  "never": "writer B; a second anchor; reopening OMA1 or FMEL1; a variance-state reset; eps below 1e-2 on float32; float64 master under this GO"
+ },
+ "retention": "checkpoints/fme1 and checkpoints/oma1/A/C kept through this rung",
+ "process": [
+  "instrument scratch/first_moment_erasure_ladder2.py (thin sibling of scratch/first_moment_erasure_ladder.py) + tests + smokes + review + full suite + commit (separate GO)",
+  "Artin GO for the target run: bash scratch/fmel2_launch.sh under liverun fmel2",
+  "receipt-auditor + prereg-auditor before booking; /fold-book"
+ ]
+}
