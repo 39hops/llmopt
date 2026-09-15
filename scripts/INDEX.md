@@ -4435,7 +4435,7 @@ OPTIMIZER-MEMORY-ABLATION-1 instrument (PRE-REG RESULTS L74310, AMENDMENT -PRE-I
 - `run_leg(model, opt, sched, tok, enc, slices, dev, horizons, on_step=None)` — The trainer's loop verbatim (backward, clip 1.0, opt.step, guarded sched.step, zero_grad) over `slices`; snapshots at
 - `held_ce(model, tok, held, dev)`
 - `clipped_grad(model, tok, batch, dev, segs, d)` — The trainer's gradient on one batch (backward from the trainer's loss), flattened under the law in the MODEL's dtype
-- `bar1_law(model, opt, c, segs, step_next, grp, eps=1e-08)` — a_carry_given_batch, u_C, a_C, a_Z per the amended law (float64, GLOBAL). Returns the norms and n_pred plus the c = 0
+- `bar1_law(model, opt, c, segs, step_next, grp, eps=1e-08)` — a_carry_given_batch, u_C, a_C, a_Z per the amended law (float64, GLOBAL). Returns the norms and n_pred plus, for the
 - `virtual_u(model, opt, c, segs, d, step_next, grp, eps=1e-08)` — The native (C) update u_C per tensor under the virtual law, flattened float64 (for P0.c).
 - `readout(W_anchor, W_C, W_X, segs)`
 - `adjudicate(w)` — w: per-writer dict {n_Z: {h: v}, n_E: {h: v}, dCE_Z: {h: v}, dCE_E: {h: v}, n_pred: float, h_end: int}. Pure; literal thresholds; inclusive.
@@ -4449,7 +4449,7 @@ OPTIMIZER-MEMORY-ABLATION-1 instrument (PRE-REG RESULTS L74310, AMENDMENT -PRE-I
 - `mode_desk_bar1(tok, enc, starts, info, segs, d, dev_cpu, rec, stream)`
 - `snapshot_dir(writer, arm)`
 - `save_snap(writer, arm, h, sd, opt=None)`
-- `one_leg(writer, arm, tok, enc, slices, dev, segs, d, stream, rec_cell, keep_opt_at_end=False)`
+- `one_leg(writer, arm, tok, enc, slices, dev, segs, d, stream, rec_cell, keep_opt_at_end=False, horizons=None)`
 - `mode_stage0(tok, enc, starts, info, segs, d, dev_cpu, dev_mps, held, rec, stream)`
 - `mode_stage1(tok, enc, starts, info, segs, d, dev_cpu, held, rec, stream, stage0)`
 - `build_smoke_anchor(tok, enc, starts, info, dev)` — seed-6 W_0 + WARM real steps of the epoch-0 stream under the stock scheduler -> checkpoints/oma1_smoke/*/m000003.pt

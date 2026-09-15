@@ -186,7 +186,9 @@ def resume_sched(kind, opt, anchor, serialized):
         raise SystemExit(f"SCHEDULER PARITY FAILED at anchor {anchor}: reconstructed {got} v serialized {serialized}")
     if sched.last_epoch < TOTAL - 1:
         sched.step()
-    return sched, group_record(opt)
+    nxt = group_record(opt)
+    resume_sched.last = {"reconstructed": got, "serialized": serialized, "next": nxt, "parity": got == serialized}
+    return sched, nxt
 
 
 # ---------------------------------------------------------------- arms
@@ -226,7 +228,7 @@ def flat(sd, segs, d):
 
 
 def sd_equal(sd1, sd2):
-    return all(torch.equal(sd1[k], sd2[k]) for k in sd1) and set(sd1) == set(sd2)
+    return set(sd1) == set(sd2) and all(torch.equal(sd1[k], sd2[k]) for k in sd1)
 
 
 def run_leg(model, opt, sched, tok, enc, slices, dev, horizons, on_step=None):
@@ -279,8 +281,8 @@ def clipped_grad(model, tok, batch, dev, segs, d):
 
 
 def bar1_law(model, opt, c, segs, step_next, grp, eps=1e-8):
-    """a_carry_given_batch, u_C, a_C, a_Z per the amended law (float64, GLOBAL). Returns the norms and n_pred plus the c = 0
-    approximation (OGD0's a_0 / u_0 with the zero-gradient denominator) for the record."""
+    """a_carry_given_batch, u_C, a_C, a_Z per the amended law (float64, GLOBAL). Returns the norms and n_pred plus, for the
+    record, n_c0_approx = ||u_0|| / ||u_C|| with u_0 = decay + a_0 computed at the zero-gradient second moment (OGD0's object)."""
     names = [n for n, _ in model.named_parameters()]
     pidx = {n: i for i, n in enumerate(names)}
     params = opt.param_groups[0]["params"]
@@ -462,13 +464,14 @@ def save_snap(writer, arm, h, sd, opt=None):
     return {"path": str(p), "sha256": UG.sha256_file(str(p)), "state_digest": state_digest(sd)}
 
 
-def one_leg(writer, arm, tok, enc, slices, dev, segs, d, stream, rec_cell, keep_opt_at_end=False):
+def one_leg(writer, arm, tok, enc, slices, dev, segs, d, stream, rec_cell, keep_opt_at_end=False, horizons=None):
+    horizons = HORIZONS if horizons is None else horizons
     model, opt, ck, binfo = bind(writer, tok, dev)
     sched, grp_next = resume_sched(WRITERS[writer]["kind"], opt, ANCHOR, binfo["serialized"])
     touched = apply_arm(opt, arm)
     digest_after_arm = OG.opt_state_digest(opt)
     t0 = time.time()
-    snaps, losses, opt_digest_end = run_leg(model, opt, sched, tok, enc, slices, dev, HORIZONS,
+    snaps, losses, opt_digest_end = run_leg(model, opt, sched, tok, enc, slices, dev, horizons,
                                             on_step=lambda i, l: stream({"writer": writer, "arm": arm, "device": dev, "step": ANCHOR + i, "loss": l}))
     wall = time.time() - t0
     rec_cell.update({"bind": binfo, "group_next": grp_next, "arm": arm, "device": dev, "tensors_touched": touched, "opt_state_digest_after_arm": digest_after_arm,
@@ -528,7 +531,7 @@ def mode_stage0(tok, enc, starts, info, segs, d, dev_cpu, dev_mps, held, rec, st
         snapsM = {}
         for arm in ("MC_a", "MC_b"):
             cm = {}
-            _m, _o, sn, _ = one_leg(w, arm, tok, enc, slices, dev_mps, segs, d, stream, cm)
+            _m, _o, sn, _ = one_leg(w, arm, tok, enc, slices, dev_mps, segs, d, stream, cm, horizons=[LEG])   # only the endpoint enters P0.d
             cell["MC"][arm] = cm; snapsM[arm] = sn
         # P0.d
         tsd, tinfo = load_target(w)
@@ -543,7 +546,7 @@ def mode_stage0(tok, enc, starts, info, segs, d, dev_cpu, dev_mps, held, rec, st
         cell["target"] = tinfo
         cell["p0d"] = {"rho_cpu": rho_cpu, "rho_mps": rho_mps, "rho_env": rho_env, "leg_norm": den, "ce_held_C": ce_c, "ce_held_target": ce_t, "dce": ce_c - ce_t,
                        "mps_pair_distance_over_leg": float(np.linalg.norm(flat(snapsM["MC_a"][LEG], segs, d) - flat(snapsM["MC_b"][LEG], segs, d)) / den), "verdict": p0d(rho_cpu, rho_env, ce_c - ce_t)}
-        cell["p0b_scheduler_parity"] = "PASS"
+        cell["p0b_scheduler_parity"] = dict(resume_sched.last, verdict=("PASS" if resume_sched.last["parity"] else "FAIL"))   # derived from the C leg's own resume
         cell["p0c_verdict"] = "PASS" if (cell["p0c_float32"] <= P0C_OUTER and cell["p0c_exact_float64"] <= P0C_EXACT) else "FAIL"
         cell["p0a_verdict"] = "PASS" if all(cell["p0a_bit_exact"].values()) and cell["p0a_opt_digest_equal"] else "FAIL"
         verdicts[w] = "PASS" if (cell["p0a_verdict"] == "PASS" and cell["p0c_verdict"] == "PASS" and cell["p0d"]["verdict"] == "PASS") else ("NOT-ADJUDICABLE" if cell["p0d"]["verdict"] == "NOT-ADJUDICABLE" else "FAIL")
@@ -556,6 +559,8 @@ def mode_stage0(tok, enc, starts, info, segs, d, dev_cpu, dev_mps, held, rec, st
 
 def mode_stage1(tok, enc, starts, info, segs, d, dev_cpu, held, rec, stream, stage0):
     assert stage0["verdict"] == "PASS", "Stage 0 did not PASS"
+    desk = json.loads(receipt_path("desk-bar1").read_text())
+    assert desk["source_sha256"] == rec["source_sha256"] or SMOKE, "instrument changed since the desk"
     assert stage0["source_sha256"] == rec["source_sha256"], "instrument changed since Stage 0"
     assert stage0["commit"] == rec["commit"] or SMOKE, "code commit changed since Stage 0"
     slices = leg_slices(starts, info["n_enc"], ANCHOR + 1, LEG)
@@ -578,7 +583,10 @@ def mode_stage1(tok, enc, starts, info, segs, d, dev_cpu, held, rec, stream, sta
         for h in HORIZONS:
             mC.load_state_dict(snapsC[h]); ceC[h] = held_ce(mC, tok, held, dev_cpu)[0]
         cell["ce_held_C"] = {str(h): ceC[h] for h in HORIZONS}
-        wrec = {"n_Z": {}, "n_E": {}, "dCE_Z": {}, "dCE_E": {}, "n_pred": stage0["cells"][w]["bar1_law"]["n_pred"], "h_end": LEG}
+        n_pred_desk = desk["cells"][w]["law"]["n_pred"]; n_pred_s0 = stage0["cells"][w]["bar1_law"]["n_pred"]
+        assert abs(n_pred_desk - n_pred_s0) <= 1e-12, (n_pred_desk, n_pred_s0)      # the sealed desk expectation is the one adjudicated
+        cell["n_pred"] = {"desk": n_pred_desk, "stage0": n_pred_s0, "desk_receipt_sha256": UG.sha256_file(receipt_path("desk-bar1"))}
+        wrec = {"n_Z": {}, "n_E": {}, "dCE_Z": {}, "dCE_E": {}, "n_pred": n_pred_desk, "h_end": LEG}
         for arm in ("Z", "E"):
             ca = {}
             model, opt, snaps, _ = one_leg(w, arm, tok, enc, slices, dev_cpu, segs, d, stream, ca, keep_opt_at_end=(arm == "Z"))
@@ -643,7 +651,7 @@ def main():
     dev_mps = "mps" if torch.backends.mps.is_available() else "cpu"
     tok = TM.MathTokenizer()
     assert len(tok.vocab) == 40 and not os.environ.get("VOCAB_EXTRA") and not os.environ.get("SEQ_CAP") and not os.environ.get("BIRTH_BS") and TM.BS == BS
-    OA.assert_verbatim()
+    frozen_shas = OA.assert_verbatim()
     probe_model = UG.build(tok, "cpu")
     segs, d, flat_digest = UG.flatten_law(probe_model)
     assert d == 18_911_616
@@ -652,6 +660,8 @@ def main():
     assert info["n_enc"] == 164_490 and info["steps_per_epoch"] == 5_140 and 3 * info["steps_per_epoch"] == TOTAL, info
     assert info["probe64_digest"] == ugc0["probe"]["digest"], "reconstructed enc v the booked UGC0 probe digest"
     info["flatten_law_digest"] = flat_digest
+    info["frozen_writer_shas"] = frozen_shas
+    assert len(starts) == info["steps_per_epoch"], (len(starts), info["steps_per_epoch"])   # the trainer iterates len(starts) per epoch
     if not SMOKE:
         ep, pos = epoch_position(ANCHOR + 1, info["n_enc"]); ep2, pos2 = epoch_position(TARGET, info["n_enc"])
         assert (ep, pos, ep2, pos2) == (1, 2060, 1, 2959), (ep, pos, ep2, pos2)
