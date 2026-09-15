@@ -2,7 +2,7 @@
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
  "_last_accept": {
   "paths": [],
-  "reason": "PRE-REG FIRST-MOMENT-ERASURE-LADDER-2: planned fmel2 receipts prereg-pending"
+  "reason": "AMENDMENT FIRST-MOMENT-ERASURE-LADDER-2-INSTRUMENT: lock the FMEL2 smoke receipts and the l2a smoke arena receipts; planned fmel2 receipts prereg-pending"
  },
  "receipts": {
   "logs/archive/ceiling_probe.log": {

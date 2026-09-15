@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 233, library 90, reproduce-pinned 10, results-cited 475, spec-cited 90, cited-but-library 78
+Census: UNCITED 233, library 91, reproduce-pinned 10, results-cited 476, spec-cited 90, cited-but-library 79
 
 ## scratch/
 
@@ -182,13 +182,15 @@ Census: UNCITED 233, library 90, reproduce-pinned 10, results-cited 475, spec-ci
 | fb | fb_gate.py | results-cited | RESULTS, specs | RESULTS×7, specs×1 | — | 4 |
 | fb | fb_prune.py | spec-cited | specs | specs×1 | — | — |
 | fig | fig_magic_scatter.py | spec-cited | specs | specs×1 | — | — |
-| first | first_moment_erasure.py | library | RESULTS, specs | RESULTS×7, specs×5 | 1 | 3 |
-| first | first_moment_erasure_ladder.py | results-cited | RESULTS, specs | RESULTS×5, specs×3 | — | 2 |
+| first | first_moment_erasure.py | library | RESULTS, specs | RESULTS×8, specs×5 | 1 | 4 |
+| first | first_moment_erasure_ladder.py | library | RESULTS, specs | RESULTS×9, specs×6 | 1 | 3 |
+| first | first_moment_erasure_ladder2.py | results-cited | RESULTS, specs | RESULTS×4, specs×2 | — | 2 |
 | fixed | fixed_q_snap.py | UNCITED | — | — | — | 1 |
 | floor | floor_hk1.sh | UNCITED | — | — | — | 1 |
 | floor | floor_hk1_d256.sh | UNCITED | — | — | — | — |
 | fme1 | fme1_launch.sh | results-cited | RESULTS, specs | RESULTS×4, specs×2 | — | — |
-| fmel1 | fmel1_launch.sh | results-cited | RESULTS, specs | RESULTS×4, specs×2 | — | — |
+| fmel1 | fmel1_launch.sh | results-cited | RESULTS, specs | RESULTS×5, specs×3 | — | — |
+| fmel2 | fmel2_launch.sh | results-cited | RESULTS, specs | RESULTS×4, specs×2 | — | — |
 | fmt | fmt_chain.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | fmt | fmt_chain2.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | fmt | fmt_pp_watcher.sh | results-cited | RESULTS | RESULTS×1 | — | — |
@@ -872,7 +874,7 @@ Census: UNCITED 233, library 90, reproduce-pinned 10, results-cited 475, spec-ci
 | harvest | harvest_champion.py | UNCITED | — | — | — | — |
 | harvest | harvest_frontier.py | spec-cited | specs | specs×1 | — | — |
 | list | list_uncurated.py | spec-cited | specs | specs×6 | — | — |
-| liverun | liverun.py | results-cited | RESULTS, specs | RESULTS×10, specs×2 | — | 12 |
+| liverun | liverun.py | results-cited | RESULTS, specs | RESULTS×10, specs×2 | — | 13 |
 | log | log_hygiene.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | 1 |
 | markov | markov_eval.py | UNCITED | — | — | — | — |
 | markov | markov_prior.py | UNCITED | — | — | — | — |

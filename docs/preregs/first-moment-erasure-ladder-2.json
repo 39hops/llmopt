@@ -4,7 +4,7 @@
  "note": "Machine-readable form of PRE-REG FIRST-MOMENT-ERASURE-LADDER-2 (RESULTS L75924; the prose governs). DESIGN ONLY (Artin decision 2026-09-15 10:19 EDT). No instrument, no launch; implementation and the target run each need a separate Artin GO. FMEL1 (L75795) stays NOT-ADJUDICABLE permanently.",
  "registered": "2026-09-15 (Mac local)",
  "machine": "mac",
- "status": "DESIGN ONLY, unarmed (no instrument written)",
+ "status": "INSTRUMENT COMMITTED (AMENDMENT L76155); target run needs its own Artin GO: bash scratch/fmel2_launch.sh",
  "motivation": "mechanical resolution only: the FMEL1 target preflight resolved eps = 1e-2 / 1e-1 / 1 with large margin and failed eps = 1e-3 on the directional-resolution law",
  "writer": "A only: stock OneCycle seed 2, checkpoints/phase19m/m007200.pt (sha256 a0cdf244fcf44f05...), Adam step 7200, one seed lineage, byte-identical future stream",
  "continuation": {
@@ -199,5 +199,39 @@
   "instrument scratch/first_moment_erasure_ladder2.py (thin sibling of scratch/first_moment_erasure_ladder.py) + tests + smokes + review + full suite + commit (separate GO)",
   "Artin GO for the target run: bash scratch/fmel2_launch.sh under liverun fmel2",
   "receipt-auditor + prereg-auditor before booking; /fold-book"
+ ],
+ "amendments": [
+  {
+   "name": "FIRST-MOMENT-ERASURE-LADDER-2-INSTRUMENT",
+   "results_line": 76155,
+   "date": "2026-09-15",
+   "summary": "instrument implemented, smoked (full mechanism x2, tampered reference abort, tampered preflight digest NOT-RUN), reviewed and folded; zero target training"
+  }
+ ],
+ "instrument": [
+  "scratch/first_moment_erasure_ladder2.py",
+  "scratch/fmel2_launch.sh",
+  "tests/test_first_moment_erasure_ladder2.py"
+ ],
+ "pins_added": [
+  "scratch/first_moment_erasure_ladder.py (fc4a0927...)",
+  "logs/fmel1/ladder.json (locked sha 9005d254...)"
+ ],
+ "smoke_receipts": [
+  "logs/fmel2/smokel2a_ladder.json",
+  "logs/fmel2/smokel2c_ladder.json",
+  "logs/fmel2/smokel2d_ladder.json",
+  "logs/fmel2/smokel2e_ladder.json",
+  "logs/fmel1/smokel2a_ladder.json",
+  "logs/fme1/smokel2a_treat.json",
+  "logs/oma1/smokel2a_stage0.json",
+  "logs/oma1/smokel2a_desk_bar1.json"
+ ],
+ "launch": "bash scratch/fmel2_launch.sh (liverun fmel2)",
+ "implementation_notes": [
+  "alpha_global independent regression; identity alpha_global == (alpha_low + alpha_high) / 2 recorded every horizon (tol 1e-9), strict in the preflight, REGIME-UNRESOLVED after the legs",
+  "preflight receipt lists identities (R:e1, cos:e1) apart from informative checks (R / cos for e1e-2, e1e-1; n_1)",
+  "reference digests read from the locked receipts only (torch.load forbidden in the test)",
+  "preflight-digest mismatch v the locked FMEL1 preflight -> NOT-RUN before any leg"
  ]
 }

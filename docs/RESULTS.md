@@ -76151,3 +76151,111 @@ alpha_global and the substrate readouts are descriptive.
 2. Artin GO for the target run: `bash scratch/fmel2_launch.sh` under
    liverun fmel2 at the committed HEAD.
 3. receipt-auditor and prereg-auditor before booking; /fold-book.
+
+## AMENDMENT FIRST-MOMENT-ERASURE-LADDER-2-INSTRUMENT (target: PRE-REG FIRST-MOMENT-ERASURE-LADDER-2 L75924): instrument implemented, smoked on the non-target arena, reviewed and folded; zero target training; nothing armed (2026-09-15, Mac)
+
+Artin GO 2026-09-15 11:09 EDT: implementation only, no target run.
+FMEL1 (VERDICT L75795) untouched. What exists after this commit, and
+what was measured (smoke arena only, never the target):
+
+### Instrument
+
+scratch/first_moment_erasure_ladder2.py (mode ladder; thin sibling of
+scratch/first_moment_erasure_ladder.py, importing its leg mechanics:
+one_step, long_leg with in-line BAR 0, apply_eps, cosine, group
+shares, disk preflight), scratch/fmel2_launch.sh (liverun id fmel2,
+DONE on success only, refuses on an existing log), tests/
+test_first_moment_erasure_ladder2.py (11 tests). Pins: the FMEL1 set
+plus scratch/first_moment_erasure_ladder.py (sha fc4a0927...) and the
+locked FMEL1 receipt logs/fmel1/ladder.json (sha 9005d254..., asserted
+equal to the source literal and the lock); the leg-path symbol sha is
+asserted at import through the sibling chain. Registered order: pins,
+locked receipts (Stage-0, desk, FME1, FMEL1), anchor sha / digest,
+first-900-slice digest equal to Stage 0's and the full-leg digest
+equal to FMEL1's, disk preflight (16 GiB), reference digests read from
+the LOCKED RECEIPTS ONLY (Stage-0 C and FME1 Z / E at h = 1 / 5 / 20 /
+100 / 900; the FMEL1 preflight h = 1 digests for every arm, asserted
+consistent with the Stage-0 / FME1 h = 1 digests where both exist),
+the one-step preflight for the four arms (fresh binds; the registered
+law unchanged; every arm's digest must equal its locked FMEL1
+preflight digest, a mismatch books NOT-RUN before any leg), then four
+fresh continuous legs (C, e1, e1e-2, e1e-1) with in-line BAR 0 at the
+qualification horizons and at h = 1 for every arm, model-only
+snapshots at the 12 grid horizons and the optimizer blob at H, HELD-32
+CE, the descriptive substrate readouts (C at 15300 in-line, C at 15420
+against gallery19m_phase_s2.pt, both pinned by digest and sha), gates
+on C / e1 / the booked end model, and the readouts and bars.
+
+Registered readouts implemented: alpha_global is an independent
+least-squares regression over the three ln ||dW||; alpha_low and
+alpha_high are the decade slopes; the log-uniform identity
+alpha_global == (alpha_low + alpha_high) / 2 is computed at every
+horizon (gap recorded; tolerance 1e-9, measured float64 worst case
+about 1e-15 in the review's 200k-draw sweep), raised as an error only
+in the preflight call, and after the legs a violation books
+REGIME-UNRESOLVED as a recorded refusal rather than a crash. The
+preflight receipt lists the construction identities (R_1 = 1,
+cos(e1, e1) = 1) apart from the informative checks (R and cos for
+e1e-2 / e1e-1 and the sealed n_1 endpoint); the law is unchanged.
+Zero-norm / one-missing-decade / non-finite inputs give UNDEFINED
+(null + reason) values, BAR 5 and the substrate rho never divide an
+undefined value, and classification refuses (REGIME-UNRESOLVED)
+rather than falling through; FORGOTTEN stays the first test and uses
+only n. BAR 2 requires BOTH local slopes in [0.80, 1.20] for any
+magnitude-scaled claim; TRAJECTORY-SENSITIVE requires alpha_global
+<= 0.20, both local slopes <= 0.40 and cosmin <= 0.50; BAR 3 reports
+h_lin / h_dec / h_curve; BAR 4 is the absolute 0.005 per arm.
+
+### Smokes (path-isolated: logs/fmel2/smokel2*_ladder.json,
+checkpoints/fmel2_smoke; arena under tag l2a built by the L1 smoke
+pipeline, whose own preflight refuses there by design and supplies
+the h = 1 reference digests)
+
+- smokel2a: the full mechanism on the synthetic arena. The L2 preflight
+  PASSES there (the three resolved amplitudes; n_1 within the smoke
+  desk's tolerance), all four legs ran, BAR 0 3 / 3 qualified arms at
+  every smoke horizon plus h = 1 for every arm, preflight-digest match
+  4 / 4, readouts at the smoke grid, alpha_global 1.00008 / alpha_low
+  0.99998 / alpha_high 1.00018 / cosmin 0.99989 with the identity gap
+  at every horizon, h_lin / h_dec / h_curve, tail ratios, substrate
+  readouts, gates, no NaN; regime MAGNITUDE-SCALED PERSISTENT on that
+  3-step arena (meaningless as science, complete as mechanism).
+- smokel2c: SMOKE-only tampered reference digest: the C leg aborts at
+  the second smoke horizon with BAR 0 mismatch, NOT-RUN, partial
+  receipt, zero snapshots, exit 3.
+- smokel2d: SMOKE-only tampered PREFLIGHT reference digest (e1e-1 at
+  h = 1): NOT-RUN before any leg (substrate-change branch), zero
+  snapshots, exit 3.
+- smokel2e: the full mechanism again on the folded code, reproducing
+  smokel2a's metrics and dCE to the digit.
+- The PREFLIGHT-FAILED early return is unit-tested (pure disposition
+  law) and was exercised on the target arena by FMEL1; the synthetic
+  arena does not fail this rung's three-arm preflight, so no smoke
+  produces it here.
+
+### Review (Opus 5, read-only, before any real-mode execution)
+
+No law-transcription error. Conditional blocker (post-leg block never
+executed) closed by smokel2a / smokel2e; the untested preflight-digest
+NOT-RUN branch closed by smokel2d and the disposition test. Folded
+should-fixes: BAR 5 tail numerator guard (a non-finite norm booked a
+TypeError, now UNDEFINED); the identity assert moved off the post-leg
+path (recorded gap, strict only in the preflight, REGIME-UNRESOLVED
+after the legs); a disagreement between the locked receipts' own
+digests books a NOT-RUN receipt instead of a bare crash; the
+substrate rho guards non-finite / zero denominators; the reused smoke
+arena asserts the L1 preflight receipt shape; OMA.CK_DIR asserted at
+the top of the registered mode; a tautological identity check removed;
+a dead replace in the tests removed. Notes recorded: the NOT-RUN
+labels carry no scope suffix (L1 precedent); the launcher and
+SystemExit(3) catch verified.
+
+### State
+
+Full suite passed (redirected rc) on the folded code; planned fmel2
+receipts declared prereg-pending in the lock; smoke receipts
+force-added and locked; smoke checkpoint trees deleted. Nothing armed;
+the target run is a separate Artin GO: `bash scratch/fmel2_launch.sh`
+at the committed HEAD. checkpoints/fme1 and checkpoints/oma1/A/C
+retained. SCHEDULE-PHASE-SENSITIVITY-CENSUS-0 unarmed. No float64,
+writer-B, second-anchor or follow-up work.
