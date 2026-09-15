@@ -1,8 +1,8 @@
-# Handoff 2026-09-14-3: OPTIMIZER-GEOMETRY-DESK-0 left as booked (Artin decision); PRE-REG OPTIMIZER-MEMORY-ABLATION-1 designed and booked, nothing armed
+# Handoff 2026-09-14-3: OPTIMIZER-GEOMETRY-DESK-0 left as booked (Artin decision); PRE-REG OPTIMIZER-MEMORY-ABLATION-1 designed, amended, instrument sealed and BAR-1 expectations booked; nothing armed
 
 Seat: Fable 5.1 on the Mac. HEAD at close: the commit carrying this
-file. 3080 untouched. No live registered run. Nothing armed. No
-instrument exists yet for the new pre-reg.
+file (updated in place after the IMPLEMENTATION GO). 3080 untouched. No
+live registered run. Nothing armed.
 
 ## What landed (after handoff 2026-09-14-2)
 
@@ -37,20 +37,31 @@ instrument exists yet for the new pre-reg.
   prospectively in RIFF (COUPLED LEARNING DYNAMICS bank), named as
   framing, not a measured law.
 
+## Implementation GO (20:12 EDT) landed after the design
+
+- AMENDMENT -PRE-INSTRUMENT (L74620, b4668083): P0.d like-with-like
+  envelope (rho_cpu <= max(2 rho_env, 0.02), <= 0.25, HELD CE 0.01;
+  Stage 1 = deterministic CPU continuation from an mps checkpoint);
+  BAR-1 law a_carry_given_batch; wording; no automatic v-reset bank.
+- Instrument d745c590, review folds 08a856b3, receipts 60b30517;
+  AMENDMENT -SEAL (L74731): n_pred 0.8943 (A) / 0.9286 (B) from the
+  desk at the sealed commit (zero steps; pre-fold desk bit-identical).
+- Rates: CPU 1.7 it/s, mps 2.7 it/s (8 threads). Storage 3.9 GB.
+- Launch: `bash scratch/oma1_launch.sh stage0` (liverun oma1s0), then
+  `stage1` (oma1s1) only after stage0.json PASS; receipt-auditor on
+  Stage 0 receipts before the Stage 1 GO.
+
 ## Conditions that bite next session
 
-- Nothing armed. The next GO is IMPLEMENTATION: write
-  scratch/optimizer_memory_ablation.py (import UGC0's flatten / probe
-  law and OGD0's bind_state / sched_rows; no copies), tests, launcher;
-  commit before any run; smoke path-isolated (SMOKE_TAG); measure the
-  CPU it/s in the smoke (fence: re-price if under 1 it/s); clean-tree
-  prereg audit; then a separate Stage 0 GO, then a separate Stage 1 GO.
+- Nothing armed. The next GO is Stage 0 (native-state preconditions,
+  60 to 75 min priced); Stage 1 after Stage 0 books PASS.
 - The epsilon twin must stay at 1e-2 (a 1e-6 twin is a numerical no-op
   at float32 W resolution; reasoning in the pre-reg).
-- The scheduler is reconstructed by stepping a fresh scheduler 7,200
-  times AFTER loading the optimizer state; the group must equal the
-  serialized values exactly and the next row must equal audit row 7201.
-- Disk about 31 GiB free; the rung needs about 3.2 GB under
+- The scheduler is reconstructed by stepping a fresh scheduler 7,199
+  times AFTER loading the optimizer state (group = row 7200, asserted
+  equal to the serialized values exactly), then the pending step gives
+  audit row 7201 (asserted).
+- Disk about 31 GiB free; the rung needs about 3.9 GB under
   checkpoints/oma1/.
 - Plugin changes from the doctor pass take effect next session
   (claude-security, claude-md-management, clangd-lsp, ralph-wiggum off;
@@ -58,11 +69,10 @@ instrument exists yet for the new pre-reg.
 
 ## Open decisions for Artin
 
-1. GO for IMPLEMENTATION of OPTIMIZER-MEMORY-ABLATION-1 (instrument,
-   tests, smoke, audit; no continuation training beyond the smoke's
-   path-isolated few steps, which itself needs the GO).
+1. GO for Stage 0 of OPTIMIZER-MEMORY-ABLATION-1 (C / C' / MC_a /
+   MC_b, both writers, 900 steps each; no Z / E).
 2. Whether the Stage 0 mps calibration pair should also be run for
-   writer B or only for A (the pre-reg says both; cost 12 min).
+   writer B or only for A (the pre-reg says both; about 6 min per leg at the measured 2.7 it/s).
 
 ## Next session: where to start
 

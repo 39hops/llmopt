@@ -2,7 +2,7 @@
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
  "_last_accept": {
   "paths": [],
-  "reason": "VERDICT OPTIMIZER-GEOMETRY-DESK-0: lock run receipts after force-add"
+  "reason": "AMENDMENT OPTIMIZER-MEMORY-ABLATION-1-SEAL: lock the desk, pre-fold desk and smoke receipts"
  },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
@@ -1270,6 +1270,21 @@
    "bytes": 458,
    "exists": true,
    "sha256": "9c87d6055e2ee3d6ead23afd715337e14d4e2c316e232a7d31d14e51cd475bbf",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/liverun/oma1bar1.jsonl": {
+   "bytes": 466,
+   "exists": true,
+   "local_only": true,
+   "sha256": "081431440256a7bccd4ae9e1476483dafc50b9b78e45f2e29641163dc42f4df4",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/liverun/oma1bar1_prefold_d745c590.jsonl": {
+   "bytes": 932,
+   "exists": true,
+   "sha256": "823a2964308f9cbedbfc7c397b48f36d7b08af7a5f186076970010df6448f52d",
    "source": "results",
    "tracked": true
   },
@@ -3083,6 +3098,79 @@
    "bytes": 15496,
    "exists": true,
    "sha256": "559c039dd11f77f8e27256d261acd766056523c352f1472cf9211c25d22d9857",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/oma1/desk-bar1.jsonl": {
+   "bytes": 628,
+   "exists": true,
+   "local_only": true,
+   "sha256": "3a05ae163f7aec8c7081391457bdc4e10688bc41e53df8e9f2b98fba4f5ca5fd",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/oma1/desk-bar1.log": {
+   "bytes": 927,
+   "exists": true,
+   "local_only": true,
+   "sha256": "111d7a38b7f1942255fc7f970fbb0af2bb2d0bfd64c8a73918900be6c6ef35ff",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/oma1/desk_bar1.json": {
+   "bytes": 5504,
+   "exists": true,
+   "local_only": true,
+   "sha256": "4fc044625422b23dacaa7d388175a9ab75afa482c56aacda9d8744728a605e4c",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/oma1/desk_bar1_prefold_d745c590.json": {
+   "bytes": 5198,
+   "exists": true,
+   "sha256": "ab7e11fc60c1f36bdb03a70072796a99a6aeef124ae8dd3394d5ef157756915b",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/oma1/smokemech_desk_bar1.json": {
+   "bytes": 5192,
+   "exists": true,
+   "sha256": "31b550e4537c1b60e4a7164543248bdc15de1d429f0eb867f3f5f2ce5b56cded",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/oma1/smokemech_stage0.json": {
+   "bytes": 23260,
+   "exists": true,
+   "sha256": "14d71eab71cb6aac5929a74dfd39462fdb7e220793c2bb3cb1cb4b0610fd4d72",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/oma1/smokemech_stage1.json": {
+   "bytes": 21342,
+   "exists": true,
+   "sha256": "663a2a07214baa0cf810e95390269ebfb32f965be4ed5bb2ae47b41165761fdd",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/oma1/smokeseal_desk_bar1.json": {
+   "bytes": 5503,
+   "exists": true,
+   "sha256": "f99abfceb8151f3a9f8b799a2fc5fa84520a008efa8a7d7f4a15daddb11ceb13",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/oma1/smokeseal_stage0.json": {
+   "bytes": 22418,
+   "exists": true,
+   "sha256": "1e72ebce877623f2cab4e2e3ffa9719dfcbc8cc16729595d6960b845680311d2",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/oma1/smokeseal_stage1.json": {
+   "bytes": 22000,
+   "exists": true,
+   "sha256": "62551f40723552d8af3bee5a4510103b8436d06ac7de6dae1828c11bcb3186cf",
    "source": "results",
    "tracked": true
   },

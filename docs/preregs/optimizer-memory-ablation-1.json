@@ -4,7 +4,7 @@
  "note": "Machine-readable form of PRE-REG OPTIMIZER-MEMORY-ABLATION-1 (the prose governs). DESIGN + PRE-REG ONLY (Artin GO 2026-09-14 19:54 EDT). Nothing armed; instrument not yet written; Stage 0 and Stage 1 each need a separate Artin GO.",
  "registered": "2026-09-14 (Mac local)",
  "machine": "mac",
- "status": "design sealed + pre-instrument amendment; IMPLEMENTATION GO 2026-09-14 20:12 EDT; NOT armed; Stage 0 GO and Stage 1 GO pending",
+ "status": "SEALED (instrument 08a856b3, desk receipt 60b30517); NOT armed; Stage 0 GO and Stage 1 GO pending",
  "standing_decision": "OPTIMIZER-GEOMETRY-DESK-0 stays as booked (L74103 GEOMETRY-NOT-RESOLVED); no post-hoc k = 1 rerun; k = 1 readouts citable descriptively only",
  "framing": "(W_{t+1}, O_{t+1}) = U(W_t, O_t, D_t); O_t = (exp_avg, exp_avg_sq, Adam step, scheduler phase); framing, not a measured law",
  "question": "does erasing Adam's carried first moment at a stored interior state, with the byte-identical future stream, change the writer's PATH, its FUNCTION, neither, or both",
@@ -106,7 +106,7 @@
   "gate": "120 gate on C(8100), Z(8100): descriptive only (single state; deltas under 7 solves not read)"
  },
  "bars": {
-  "1_applied": "|n_Z(1) - n_pred| <= 0.02 (n_pred from the instrument's zero-training desk mode on the actual batch, booked by the seal amendment before any Z / E state) AND n_Z(1) in [0.80, 1.00]; outside either = INSTRUMENT-FAULT, STOP",
+  "1_applied": "|n_Z,A(1) - 0.8943| <= 0.02 and |n_Z,B(1) - 0.9286| <= 0.02, each inside [0.80, 1.00]; outside either = INSTRUMENT-FAULT, STOP",
   "2_path": "FORGOTTEN if n_Z(900) <= 0.05; PERSISTENT if n_Z(900) >= 0.25; else INTERMEDIATE",
   "3_sensitivity": "SENSITIVE if n_E(900) >= 0.10 else SPECIFIC",
   "4_function": "NEUTRAL if |dCE_Z(900)| <= max(0.005, 3 x |dCE_E(900)|); HARMED if above positively; HELPED if above negatively",
@@ -179,15 +179,15 @@
   "stage1_steps": {
    "cpu": 3600
   },
-  "storage_gb": 3.2,
+  "storage_gb": 3.9,
   "checkpoints": "checkpoints/oma1/ (untracked, sha-anchored)",
-  "receipts": "logs/oma1/"
+  "receipts": "logs/oma1/",
+  "measured_rates": {
+   "cpu_it_per_s": 1.7,
+   "mps_it_per_s": 2.7,
+   "threads": 8
+  }
  },
- "instrument_planned": [
-  "scratch/optimizer_memory_ablation.py",
-  "scratch/oma1_launch.sh",
-  "tests/test_optimizer_memory_ablation.py"
- ],
  "process": [
   "instrument + tests + launcher committed before any run",
   "clean-tree prereg audit before sealing the instrument",
@@ -197,5 +197,33 @@
   "no commits while a Stage is live"
  ],
  "amended_by": "AMENDMENT OPTIMIZER-MEMORY-ABLATION-1-PRE-INSTRUMENT (2026-09-14): P0.d like-with-like envelope, BAR-1 law a_carry_given_batch, wording, consequences, r diagnostic",
- "bar1_law": "per tensor float64, c = clipped step-7201 gradient on the real batch idx_1[2060], s = 7201: v' = beta2 v + (1-beta2) c^2; D = sqrt(v'/bc2) + eps; a_C = -lr (beta1 m + (1-beta1) c)/(bc1 D); a_Z = -lr (1-beta1) c/(bc1 D); a_carry_given_batch = a_C - a_Z = -lr beta1 m/(bc1 D); u_C = -lr wd W + a_C; n_Z(1) = ||a_carry_given_batch|| / ||u_C|| (GLOBAL). OGD0's 0.904 / 0.930 (c = 0 denominator, u_0 with decay) are descriptive only, not this law"
+ "bar1_law": "per tensor float64, c = clipped step-7201 gradient on the real batch idx_1[2060], s = 7201: v' = beta2 v + (1-beta2) c^2; D = sqrt(v'/bc2) + eps; a_C = -lr (beta1 m + (1-beta1) c)/(bc1 D); a_Z = -lr (1-beta1) c/(bc1 D); a_carry_given_batch = a_C - a_Z = -lr beta1 m/(bc1 D); u_C = -lr wd W + a_C; n_Z(1) = ||a_carry_given_batch|| / ||u_C|| (GLOBAL). OGD0's 0.904 / 0.930 (c = 0 denominator, u_0 with decay) are descriptive only, not this law",
+ "bar1_n_pred": {
+  "A": 0.894284652673395,
+  "B": 0.928571482163674,
+  "receipt": "logs/oma1/desk_bar1.json",
+  "prefold_receipt": "logs/oma1/desk_bar1_prefold_d745c590.json",
+  "batch_slice": [
+   158464,
+   158496
+  ]
+ },
+ "sealed_by": "AMENDMENT OPTIMIZER-MEMORY-ABLATION-1-SEAL (RESULTS L74731)",
+ "instrument": [
+  "scratch/optimizer_memory_ablation.py",
+  "scratch/oma1_launch.sh",
+  "tests/test_optimizer_memory_ablation.py"
+ ],
+ "receipts": [
+  "logs/oma1/desk_bar1.json",
+  "logs/oma1/desk-bar1.jsonl",
+  "logs/oma1/desk-bar1.log",
+  "logs/liverun/oma1bar1.jsonl",
+  "logs/oma1/smokemech_desk_bar1.json",
+  "logs/oma1/smokemech_stage0.json",
+  "logs/oma1/smokemech_stage1.json",
+  "logs/oma1/smokeseal_desk_bar1.json",
+  "logs/oma1/smokeseal_stage0.json",
+  "logs/oma1/smokeseal_stage1.json"
+ ]
 }

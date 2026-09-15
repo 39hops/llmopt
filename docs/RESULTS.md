@@ -74727,3 +74727,128 @@ audit; commit and push; then a SEPARATE Stage-0 GO. No Z / E target
 state, no Stage 0, no Stage 1 in this GO. The machine-readable
 pre-reg docs/preregs/optimizer-memory-ablation-1.json is updated in
 this commit to the amended laws.
+
+## AMENDMENT OPTIMIZER-MEMORY-ABLATION-1-SEAL: BAR-1 expectations booked from the zero-training desk (n_pred 0.8943 A / 0.9286 B), instrument sealed after smoke and review, nothing armed (2026-09-14, Mac, zero training)
+
+Target: PRE-REG OPTIMIZER-MEMORY-ABLATION-1 (L74310) as amended by
+AMENDMENT -PRE-INSTRUMENT (L74620). Artin GO 2026-09-14 20:12 EDT
+(IMPLEMENTATION only). No Z / E state exists; no Stage 0; no Stage 1.
+
+### BAR-1 expectations (registered before any Z / E state)
+
+Instrument scratch/optimizer_memory_ablation.py, MODE desk-bar1, under
+liverun oma1bar1 at the SEALED commit 60b30517 (clean tree, CPU float32
+bound state, gradient in float64, 8 threads, deterministic algorithms
+on; receipt logs/oma1/desk_bar1.json, stream logs/oma1/desk-bar1.jsonl,
+log logs/oma1/desk-bar1.log, interlock logs/liverun/oma1bar1.jsonl;
+3.0 s). The same desk had run once before the review folds at d745c590
+(kept as logs/oma1/desk_bar1_prefold_d745c590.json with its stream,
+log, DONE marker and logs/liverun/oma1bar1_prefold_d745c590.jsonl); the
+two n_pred values are bit-identical (0.894284652673395 /
+0.928571482163674). The sealed-commit receipt is the one Stage 1
+adjudicates against (the instrument asserts its source sha and its
+n_pred against Stage 0's recompute). Zero optimizer steps (opt_steps_taken
+0; optimizer state digest unchanged after the gradient). The real
+step-7201 batch is enc slice [158464, 158496] (epoch 1, position 2060
+of the random.Random(1) order; the leg's last position 2959 asserted).
+Scheduler parity held exactly at the anchor for both writers and the
+pending step yielded audit row 7201 (A lr 1.7323009e-4 / beta1
+0.8922568; B 1.4122509e-4 / 0.9).
+
+Per the amended law (a_carry_given_batch = -lr beta1 m / (bc1 D), D =
+sqrt(v'/bc2) + eps with the ACTUAL batch v'; GLOBAL float64 norms;
+identity residual 1e-16):
+
+| writer | batch loss | ||g|| (clip 1.0) | ||a_carry|| | ||u_C|| | ||a_Z|| | n_pred | c = 0 approx |
+|---|---|---|---|---|---|---|---|
+| A (stock, step 7201) | 0.3612 | 0.2638 | 0.12409 | 0.13875 | 0.06039 | **0.8943** | 0.8945 |
+| B (backward, step 7201) | 0.5420 | 0.6145 | 0.10431 | 0.11233 | 0.04524 | **0.9286** | 0.9288 |
+
+BAR 1 (sealed): |n_Z,A(1) - 0.8943| <= 0.02 and |n_Z,B(1) - 0.9286| <=
+0.02, each inside [0.80, 1.00]. Both expectations sit inside the band
+registered in the pre-reg, so the band is kept unchanged. For the
+record: on this batch the c = 0 approximation differs from the law by
+0.0002 (v' is dominated by the carried second moment at step 7201);
+the pre-reg's quoted 0.904 / 0.930 were probe-panel MEDIANS over 64
+other batches and are superseded as BAR-1 expectations by the values
+above. The identity W_Z(1) - W_C(1) = -a_carry_given_batch is enforced
+by a test against real torch AdamW steps (float64, 1e-12) and was
+reproduced by the mechanism smoke on the float32 continuation (n_Z(1)
+= n_pred to 1e-4 on the synthetic anchor).
+
+### Instrument seal
+
+- Committed d745c590 before any registered run, review folds at
+  08a856b3, receipts at 60b30517 (the sealed instrument source): instrument (three
+  modes), 12 tests (stream law v a simulation of the trainer's loop
+  including an epoch crossing; target leg positions; scheduler resume
+  v the audited tables for both kinds at five anchors and a refusal on
+  mismatch; BAR-1 law v real step contrasts; apply_arm touches
+  exp_avg only; readout / ladder / P0.d pure and literal; CPU replay
+  bit-exact), launcher scratch/oma1_launch.sh (one liverun id per
+  mode: oma1bar1 / oma1s0 / oma1s1; DONE marker on success only).
+- Mechanism smoke (SMOKE=1 SMOKE_TAG=mech, synthetic seed-6 anchor at
+  step 3 under checkpoints/oma1_smoke, stand-in booked target, LEG 3,
+  smoke writer B on the unreversed SequenceLR path because the
+  reversed sequence's first rows sit at the anneal floor where a
+  float32 update is below weight resolution): receipts
+  logs/oma1/smokemech_desk_bar1.json, logs/oma1/smokemech_stage0.json,
+  logs/oma1/smokemech_stage1.json (+ the three .jsonl streams). All
+  three modes ran end to end: P0.a C = C' bit-exact at every horizon
+  and equal optimizer digests; P0.c float64 replay 4.4e-11 / 4.7e-11
+  (bar 1e-6), float32 continuation 1.8e-2 (bar 5e-2); P0.d PASS with
+  rho 1e-6 (the stand-in target); Stage 1 touched 59 tensors per arm,
+  n_Z(1) = n_pred, the ladder returned INSTRUMENT-FAULT on the smoke
+  anchor exactly because its n_pred (0.795) sits below the real
+  state's [0.80, 1.00] band (correct behavior of the gate on a
+  non-target state, not a defect). Smoke checkpoint tree (3.9 GB)
+  deleted after the receipts were read; the receipts stay. The first
+  smoke attempt wrote its synthetic anchors onto the real milestone
+  directory names (checkpoints/phase19m/m000003.pt, m000006.pt and
+  the backsched pair, created 20:24 EDT, 227 MB each, no booked file
+  touched); they were deleted the same minute, the milestone sets are
+  back at their 19 files each, and the instrument now derives smoke
+  paths from checkpoints/oma1_smoke with an import-time assert.
+- Two defects fixed during the smoke, both before any real run: torch's
+  Optimizer.load_state_dict shares tensors with its source (the C arm
+  mutated the reference state); every copy now deep-copies. The
+  synthetic anchor was saved after its step's sched.step (the milestone
+  tee saves inside opt.step, before it); the smoke anchor now mirrors
+  the tee.
+- Measured rates (smoke, 8 threads): CPU 1.7 it/s, mps 2.7 it/s on the
+  epoch-0 head (the pre-reg assumed the booked birth rate 5.1 it/s for
+  mps; the measured rate replaces it). Priced walls: Stage 0 about 4 x
+  9 min CPU + 4 x 6 min mps + replay / CE / IO = 60 to 75 min (prior
+  1.5 h kept); Stage 1 about 4 x 9 min CPU + HELD CE + four 120 gates
+  (unpriced) under the 3 h prior. Storage about 3.9 GB under
+  checkpoints/oma1/ (31 GiB free at the seal).
+- Instrument review (Opus reviewer, read-only): no blockers; six
+  should-fixes folded at 08a856b3: Stage 1 adjudicates against the
+  sealed desk n_pred (asserted equal to Stage 0's recompute to 1e-12,
+  both recorded with the desk receipt sha; refuses if the instrument
+  changed since the desk); P0.b is a derived receipt field
+  (reconstructed / serialized / next dicts from the C leg's own
+  resume), not a literal; the mps native resumes snapshot only their
+  endpoint (only the endpoint enters P0.d), so storage is the
+  registered 30 snapshots plus the 10 C' horizons needed by P0.a,
+  about 3.9 GB with the four optimizer blobs; the frozen writers'
+  source shas from assert_verbatim are recorded; len(starts) ==
+  steps_per_epoch asserted (the trainer iterates len(starts) per
+  epoch; equal to n_enc // BS = 5,140 here); sd_equal checks key
+  sets first; a docstring named the c = 0 object correctly. Noted and
+  kept: Stage 1 refuses on a commit change (stricter than the
+  pre-reg's "C is rerun" wording; a rerun of Stage 0 at the new commit
+  is the way to proceed in that case); the 120-gate cost in Stage 1 is
+  unmeasured at this size and is the one unpriced term in the Stage-1
+  wall prior; the smoke never exercises a BAR-1 PASS end to end (the
+  synthetic anchor's n_pred 0.795 sits below the band), that branch is
+  covered by the unit test against real AdamW steps.
+- Clean-tree seal smoke at 08a856b3 (SMOKE_TAG=seal): receipts
+  logs/oma1/smokeseal_desk_bar1.json, logs/oma1/smokeseal_stage0.json,
+  logs/oma1/smokeseal_stage1.json (+ streams); P0.c float64 4.3e-11 /
+  4.2e-11, float32 1.8e-2, C = C' bit-exact, 59 tensors touched per
+  arm, same readings as the mechanism smoke.
+
+Nothing armed. Stage 0 (native-state preconditions: C / C' / MC_a /
+MC_b, 900 steps each, both writers) needs its own Artin GO; Stage 1
+another after Stage 0 books PASS.
