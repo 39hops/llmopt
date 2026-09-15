@@ -75694,3 +75694,100 @@ REGIME-UNRESOLVED, absolute function bar, preflight law, refuse-if-
 exists, no writer-B path); path-isolated smoke; instrument review;
 full suite; commit and push; then return for a separate target-run
 GO. Nothing in this amendment launches anything.
+
+## AMENDMENT FIRST-MOMENT-ERASURE-LADDER-1-INSTRUMENT (target: PRE-REG FIRST-MOMENT-ERASURE-LADDER-1 L75312; AMENDMENT -PRE-INSTRUMENT L75568): instrument implemented, smoked on the non-target arena, reviewed and folded; zero target training; nothing armed (2026-09-15, Mac)
+
+Artin GO 2026-09-15 08:51 EDT: implementation only, no target launch.
+What exists after this commit, and what was measured (smoke arena
+only, never the target):
+
+### Instrument
+
+scratch/first_moment_erasure_ladder.py (mode ladder; thin sibling of
+scratch/first_moment_erasure.py), scratch/fmel1_launch.sh (liverun id
+fmel1, DONE marker on success only, refuses on an existing log),
+tests/test_first_moment_erasure_ladder.py (13 tests). The FME1 pin
+set is reused and extended by scratch/first_moment_erasure.py (sha
+173f46ff...) and the locked FME1 receipt logs/fme1/treat.json (sha
+a3d8ae83..., asserted equal to the source literal and the lock); the
+leg-path symbol sha 9dfcc6a0... is asserted at import; the Stage-0 /
+desk provenance block is FME1's. Registered order: pins, locked
+receipts, anchor sha / digest, first-900-slice leg digest equal to
+Stage 0's, disk preflight (refuse below 16 GiB), reference digests
+read from the locked receipts, the one-step preflight for all five
+arms (fresh bind each), then five fresh continuous legs (order C, e1,
+e1e-2, e1e-1, e1e-3) with in-line BAR 0 and the preflight-digest
+assertion at h = 1, model-only snapshots at the 12 grid horizons and
+the optimizer blob at H, HELD-32 CE per horizon, the descriptive
+substrate readouts (C at step 15300 against m015300.pt in-line; C at
+15420 against gallery19m_phase_s2.pt, both pinned by digest AND sha,
+m015300's step asserted), gates on C(H) / e1(H) / the booked end model
+on the same mps device, then the readouts and the amended bars. eps =
+1 and eps = 1e-2 route through OMA.apply_arm (Z / E) so those arms are
+the FME1 float operations exactly (tested bitwise). The receipt's
+writers table carries A only; OMA's source field is renamed
+oma_source_sha256; this instrument's own sha is self_sha256.
+
+### Smokes (path-isolated: logs/fmel1/smokelad*_ladder.json,
+checkpoints/fmel1_smoke; the OMA / FME1 smoke arena under tag lad)
+
+- smokelad: the preflight REFUSES on the synthetic step-3 arena
+  (eps = 1e-3 is not float32-resolvable there: R 1.0119 v the 1e-3
+  tolerance, cos 0.988 v 0.999), status PREFLIGHT-FAILED, label
+  REGIME-UNRESOLVED+FUNCTION-NOT-MEASURED, no snapshot created, exit
+  3. This is the registered stop-before-long-legs path.
+- smokelad2 / smokelad4 (SMOKE-only preflight bypass, ignored outside
+  SMOKE, recorded in the receipt): all five legs ran; BAR 0 in-line
+  3 / 3 arms at every smoke horizon against the smoke Stage-0 C and
+  FME1 Z / E digests; preflight-digest match 5 / 5; snapshots,
+  per-horizon readouts, alpha(H) 0.9993, cosmin(H) 0.9944, R
+  1.0051 / 0.9996 / 0.9996 / 1.0, substrate readouts (rho 7.7e-6
+  against the smoke target, CE equal), gates, no NaN anywhere; the
+  label books REGIME-UNRESOLVED because the preflight failed (a
+  bypassed preflight never becomes a regime). smokelad4 reproduces
+  smokelad2 to the digit on the folded code.
+- smokelad3 (SMOKE-only tampered reference digest): the C leg aborts
+  at h = 2 with "BAR 0 mismatch", status NOT-RUN, partial receipt
+  written, zero snapshots, exit 3.
+
+### Review (Opus 5, read-only, before any real-mode execution)
+
+Blocker 1 (the long-leg path had not been executed when the review
+ran) was closed by smokelad2 / 3 / 4 above. Folded should-fixes: the
+locus guard is split (h_dec needs only cosmin; h_lin needs alpha too);
+non-finite deviation norms book every derived value UNDEFINED (never
+a NaN in the receipt); BAR 0 asserts the full qualification set per
+qualified arm before adjudicating (never vacuously true); the long
+legs assert 59 tensors touched (0 for C); abort / preflight-failure
+paths are unit-tested through a fake leg; the real-mode constants
+(8220 to 15420, the 12-point grid, the substrate pins, no bypass) are
+asserted in a subprocess with SMOKE unset; the refuse test no longer
+leaks global torch state; the substrate files are pinned by sha as
+well as digest; the regime order evaluates FORGOTTEN first as
+registered. Notes recorded, not changed: sched_at_grid stores the
+group AFTER step h (labelled lr_next / beta1_next, one row past the
+pre-reg table; descriptive only); R_1(1) and cos(e1, e1) are
+tautological (the R and cos conditions carry information for three
+arms); free disk 26 GiB at review time.
+
+Disclosure for the GO decision (review finding 2, not a code
+defect): on the synthetic arena the eps = 1e-3 arm missed the
+first-step law (R 1.012, cos 0.988). That arena is a 3-warm-step
+seed-6 state whose exp_avg is tiny; it is not predictive of the
+target anchor, where the sealed first-step deviation for eps = 1 is
+0.124 in norm and eps = 1e-3 gives 1.2e-4 (about ten float32 ulps of
+a typical weight per element). The registered prior "BAR 1 passes:
+0.90" rests on the analytic law, not on a measurement at 1e-3. Under
+AMENDMENT §4 a preflight failure books REGIME-UNRESOLVED for the rung
+with no relaunch without an amendment; the preflight costs about a
+minute, so the failure mode costs the rung's one shot, not the 4 h.
+
+### State
+
+Suite 1237 passed (full run, redirected rc) after the planned fmel1
+receipts were declared in docs/preregs/first-moment-erasure-ladder-1.json
+(prereg-pending in the lock). Smoke receipts force-added and locked;
+smoke checkpoint trees deleted. Nothing armed; the target run is a
+separate Artin GO: `bash scratch/fmel1_launch.sh` at the committed
+HEAD. checkpoints/fme1 and checkpoints/oma1/A/C retained.
+SCHEDULE-PHASE-SENSITIVITY-CENSUS-0 unarmed.

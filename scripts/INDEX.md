@@ -2412,6 +2412,31 @@ FIRST-MOMENT-ERASURE-1 instrument (PRE-REG RESULTS L74943): selective first-mome
 - `mode_treat(tok, enc, starts, info, segs, d, held, rec, stream)`
 - `main()`
 
+### scratch/first_moment_erasure_ladder.py
+FIRST-MOMENT-ERASURE-LADDER-1 instrument (PRE-REG RESULTS L75312, AMENDMENT -PRE-INSTRUMENT L75568): a perturbation-magnitude ladder on the first moment of writer A at the validated A@7200 arena, run as FIVE fresh continuous CPU-deterministic legs 7201..15420 (the full remaining schedule): the native control C and exp_avg <- (1 - eps) exp_avg for eps in {1e-3, 1e-2, 1e-1, 1}. Writer A only; no writer-B code path.
+
+- `undefined(reason)`
+- `apply_eps(opt, eps)` — exp_avg <- (1 - eps) exp_avg on every tensor; eps = 1 and eps = EPS_TWIN go through OMA.apply_arm (Z / E) so the fresh e1 /
+- `cosine(a, b)`
+- `finite_or_none(x)`
+- `horizon_metrics(W0, WC, W, eps_of=None)` — Per-horizon readouts from flats: W0 anchor, WC control, W = {arm: flat} for the four eps arms. Zero-norm law applied;
+- `group_shares(dev, segs)`
+- `preflight_law(m1, n_pred=N_PRED)` — BAR 1 + directional resolution on the one-step metrics dict (horizon_metrics at h = 1). Returns (ok, detail).
+- `regime(mH, preflight_ok)` — BAR 2 at H (first match wins): FORGOTTEN / REGIME-UNRESOLVED / MAGNITUDE-SCALED PERSISTENT / NONLINEAR DIRECTION-SHARED /
+- `locus(metrics_by_h)` — BAR 3: h_lin = last grid h in the two-sided band with cosmin >= COS_SHARED; h_dec = first grid h with cosmin <= COS_DECOR.
+- `function_bar(dce_H)` — BAR 4 per arm, absolute: NEUTRAL iff |dCE| <= CE_ABS, HARMED above positively, HELPED above negatively.
+- `label(reg, func)`
+- `reference_digests(stage0, fme1, horizons=None)` — {fresh arm: {h: locked state digest}} for the three qualified arms, read from the LOCKED receipts (Stage-0 C; FME1 Z / E).
+- `qualify(arm, h, digest, refs)` — BAR 0 for one (arm, h): None when the arm is not a qualified arm or h is not a qualification horizon; else (ok, expected).
+- `disk_preflight(path='.', min_free=MIN_FREE_BYTES)`
+- `load_model_sd(path, step=None)`
+- `assert_fme1_provenance(fme1, lock, stage0, horizons=None)` — The FME1 receipt this rung pins: sha equal to the source literal and the lock; bound to the same Stage-0 receipt and anchor;
+- `one_step(arm, eps, tok, enc, slices, segs, d)` — Preflight: fresh bind, intervention, exactly one step on the first future slice. Returns (flat, digest, binfo, touched, group_next).
+- `class Abort`
+- `long_leg(arm, eps, tok, enc, slices, segs, d, held, refs, preflight_digest, stream, cell, mid)` — One fresh continuous leg with in-line BAR 0 and the preflight-digest assertion; snapshots at GRID (opt at H); HELD-32 CE
+- `mode_ladder(tok, enc, starts, info, segs, d, held, rec, stream)`
+- `main()`
+
 ### scratch/fixed_q_snap.py
 Fixed-denominator snap (spec addendum 2026-07-27, 'integer twin'): every 2-D weight -> round(w*q)/q for ONE shared q. Unlike best-rational (free denominators), this makes W = P/q with integer P — the forward pass becomes an integer GEMM / q, the road to exact integer inference (ozaki/FX-V1 substrate). Error bound 1/(2q), vs ~1/Q^2 for best-rational. Usage: fixed_q_snap.py <ckpt_in> <q> <ckpt_out>
 

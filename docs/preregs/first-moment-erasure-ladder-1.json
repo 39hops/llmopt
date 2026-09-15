@@ -4,7 +4,7 @@
  "note": "Machine-readable form of PRE-REG FIRST-MOMENT-ERASURE-LADDER-1 (RESULTS L75312; the prose governs). DESIGN ONLY (Artin decision 2026-09-15 08:00 EDT). No instrument, no launch; implementation and the target run each need a separate Artin GO.",
  "registered": "2026-09-15 (Mac local)",
  "machine": "mac",
- "status": "AMENDED (L75568) before implementation; GO IMPLEMENTATION 2026-09-15 08:51 EDT; no target launch",
+ "status": "INSTRUMENT COMMITTED (AMENDMENT L75698); target run needs its own Artin GO: bash scratch/fmel1_launch.sh",
  "question": "Does the first-moment perturbation remain magnitude-scaled through the full 7200 -> 15420 continuation of writer A, or does the continuation enter a generic amplification regime in which small initial differences grow and rotate independently of the erased-moment direction?",
  "writer": "A only: stock OneCycle seed 2, checkpoints/phase19m/m007200.pt (sha256 a0cdf244fcf44f05...), Adam step 7200, one seed lineage, byte-identical future stream",
  "continuation": {
@@ -227,11 +227,39 @@
    "results_line": 75568,
    "date": "2026-09-15",
    "summary": "two-sided alpha band [0.80, 1.20]; no content-specificity claim; BAR 4 absolute 0.005; no silent three-point ladder (REGIME-UNRESOLVED); frozen one-step preflight; zero-norm law; descriptive full-leg substrate provenance"
+  },
+  {
+   "name": "FIRST-MOMENT-ERASURE-LADDER-1-INSTRUMENT",
+   "results_line": 75698,
+   "date": "2026-09-15",
+   "summary": "instrument implemented, smoked (preflight refusal, full mechanism x2, tampered-digest abort), reviewed and folded; zero target training"
   }
  ],
  "pins_added": [
   "scratch/first_moment_erasure.py",
   "logs/fme1/treat.json (locked sha a3d8ae834091dbc8...)"
  ],
- "retention": "checkpoints/fme1 and checkpoints/oma1/A/C kept until the ladder result is BOOKED; no pruning mid-live-run even if BAR 0 passes"
+ "retention": "checkpoints/fme1 and checkpoints/oma1/A/C kept until the ladder result is BOOKED; no pruning mid-live-run even if BAR 0 passes",
+ "receipts": [
+  "logs/fmel1/ladder.json",
+  "logs/fmel1/ladder.jsonl",
+  "logs/fmel1/ladder.log",
+  "logs/fmel1/fmel1.DONE",
+  "logs/liverun/fmel1.jsonl"
+ ],
+ "smoke_receipts": [
+  "logs/fmel1/smokelad_ladder.json",
+  "logs/fmel1/smokelad2_ladder.json",
+  "logs/fmel1/smokelad3_ladder.json",
+  "logs/fmel1/smokelad4_ladder.json",
+  "logs/oma1/smokelad_stage0.json",
+  "logs/oma1/smokelad_desk_bar1.json",
+  "logs/fme1/smokelad_treat.json"
+ ],
+ "instrument": [
+  "scratch/first_moment_erasure_ladder.py",
+  "scratch/fmel1_launch.sh",
+  "tests/test_first_moment_erasure_ladder.py"
+ ],
+ "launch": "bash scratch/fmel1_launch.sh (liverun fmel1)"
 }
