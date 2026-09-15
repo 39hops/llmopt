@@ -2,7 +2,7 @@
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
  "_last_accept": {
   "paths": [],
-  "reason": "AMENDMENT OPTIMIZER-MEMORY-ABLATION-1-SEAL: lock the desk, pre-fold desk and smoke receipts"
+  "reason": "AMENDMENT OPTIMIZER-MEMORY-ABLATION-1-SEAL: desk receipts were force-added after the lock was generated; regenerate so they read tracked"
  },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
@@ -1276,10 +1276,9 @@
   "logs/liverun/oma1bar1.jsonl": {
    "bytes": 466,
    "exists": true,
-   "local_only": true,
    "sha256": "081431440256a7bccd4ae9e1476483dafc50b9b78e45f2e29641163dc42f4df4",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/liverun/oma1bar1_prefold_d745c590.jsonl": {
    "bytes": 932,
@@ -3104,26 +3103,23 @@
   "logs/oma1/desk-bar1.jsonl": {
    "bytes": 628,
    "exists": true,
-   "local_only": true,
    "sha256": "3a05ae163f7aec8c7081391457bdc4e10688bc41e53df8e9f2b98fba4f5ca5fd",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/oma1/desk-bar1.log": {
    "bytes": 927,
    "exists": true,
-   "local_only": true,
    "sha256": "111d7a38b7f1942255fc7f970fbb0af2bb2d0bfd64c8a73918900be6c6ef35ff",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/oma1/desk_bar1.json": {
    "bytes": 5504,
    "exists": true,
-   "local_only": true,
    "sha256": "4fc044625422b23dacaa7d388175a9ab75afa482c56aacda9d8744728a605e4c",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/oma1/desk_bar1_prefold_d745c590.json": {
    "bytes": 5198,
