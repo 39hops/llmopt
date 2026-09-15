@@ -1,0 +1,4 @@
+{"event": "armed", "run_id": "oma1bar1", "pid": 44203, "launch_commit": "d745c590acac2b812f297acba304913c4803bbd6", "launch_commit_short": "d745c590", "worktree_role": "main", "worktree_name": "llmopt", "cwd_relative": ".", "started_utc": "2026-09-15T00:32:19+00:00", "dirty_at_arm": false, "sentinel": ".git/liverun.lock"}
+{"event": "disarmed", "run_id": "oma1bar1", "pid": 44203, "rc": 1, "ended_utc": "2026-09-15T00:33:24+00:00", "sentinel": ".git/liverun.lock"}
+{"event": "armed", "run_id": "oma1bar1", "pid": 52846, "launch_commit": "d745c590acac2b812f297acba304913c4803bbd6", "launch_commit_short": "d745c590", "worktree_role": "main", "worktree_name": "llmopt", "cwd_relative": ".", "started_utc": "2026-09-15T00:33:40+00:00", "dirty_at_arm": false, "sentinel": ".git/liverun.lock"}
+{"event": "disarmed", "run_id": "oma1bar1", "pid": 52846, "rc": 0, "ended_utc": "2026-09-15T00:34:46+00:00", "sentinel": ".git/liverun.lock"}
