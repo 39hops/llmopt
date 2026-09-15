@@ -1,7 +1,7 @@
 # Handoff 2026-09-15-2: FIRST-MOMENT-ERASURE-LADDER-1 amended and implemented (instrument committed, smoked, reviewed); nothing armed
 
 Seat: Fable 5.1 on the Mac. HEAD at close: the commit carrying this
-file (plus the codemap follow-up). 3080 untouched. No live registered
+file (codemap regenerated in the same commit). 3080 untouched. No live registered
 run. Nothing armed.
 
 ## What landed (after handoff 2026-09-15-1)
