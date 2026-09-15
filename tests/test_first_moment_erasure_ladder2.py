@@ -226,13 +226,16 @@ def test_real_mode_arena_constants():
     import subprocess
     code = ("import os,sys,json; os.environ.pop('SMOKE', None); os.environ.pop('SMOKE_PREFLIGHT_BYPASS', None); sys.path[:0]=['.','scripts','scratch']; "
             "import first_moment_erasure_ladder2 as L; print(json.dumps([L.LEG_FULL, L.ANCHOR + L.LEG_FULL, L.GRID, L.QUAL, L.H_END, L.TAIL_H, L.LADDER, L.PREFLIGHT_BYPASS, "
-            "str(L.CK_DIR), str(L.RECEIPT), str(L.FMEL1), str(L.FME1), str(L.STAGE0), str(L.END_MODEL), L.END_SHA, L.MID_STEP, L.MID_SHA]))")
-    out = subprocess.run([sys.executable, "-c", code], cwd=ROOT, capture_output=True, text=True)
+            "str(L.CK_DIR), str(L.RECEIPT), str(L.FMEL1), str(L.FME1), str(L.STAGE0), str(L.END_MODEL), L.END_SHA, L.MID_STEP, L.MID_SHA, L.MAX_WALL_S, L.MAX_WALL_S_REAL]))")
+    env = dict(os.environ, SMOKE_MAX_WALL_S="5", FMEL2_MAX_WALL_S="5", MAX_WALL_S="5")      # real mode ignores every such variable
+    env.pop("SMOKE", None)
+    out = subprocess.run([sys.executable, "-c", code], cwd=ROOT, capture_output=True, text=True, env=env)
     assert out.returncode == 0, out.stderr[-2000:]
     v = json.loads(out.stdout.strip().splitlines()[-1])
     assert v[:7] == [8220, 15420, [1, 5, 20, 100, 300, 900, 1800, 3080, 4500, 6000, 7200, 8220], [1, 5, 20, 100, 900], 8220, 6000, [1e-2, 1e-1, 1.0]]
     assert v[7] is False and v[8:13] == ["checkpoints/fmel2", "logs/fmel2/ladder.json", "logs/fmel1/ladder.json", "logs/fme1/treat.json", "logs/oma1/stage0.json"]
-    assert v[13:] == ["checkpoints/gallery19m_phase_s2.pt", "e7207b3bd4df541a", 15300, "6a715beb6394e3b3"]
+    assert v[13:17] == ["checkpoints/gallery19m_phase_s2.pt", "e7207b3bd4df541a", 15300, "6a715beb6394e3b3"]
+    assert v[17:] == [25200, 25200]                                            # the registered 7 h cap, fixed in real mode
 
 
 def test_refuse_if_exists(mod, tmp_path, monkeypatch):
@@ -279,3 +282,47 @@ def test_preflight_disposition_identity_flag_and_bypass_is_smoke_only(mod):
         mod.alpha_regression = real
     # BAR 5 tail and the substrate rho never divide a None / non-finite value
     assert mod.finite(None) is False and mod.finite(float("nan")) is False and mod.finite(1.0) is True
+
+
+def test_wall_limit_fires_during_active_work_and_is_fixed_in_real_mode(mod, tmp_path):
+    """The registered wall cap: the SIGALRM handler raises WallLimit in the main thread while work is in progress; the label
+    carries the limit and the interrupted phase; the SMOKE-only override is honoured under SMOKE and the real value is 25200."""
+    import signal
+    import time as _t
+    assert mod.MAX_WALL_S_REAL == 25200 and isinstance(mod.WallLimit(3), SystemExit) and not isinstance(mod.WallLimit(3), mod.Abort)
+    saved = dict(mod.PHASE); saved_grace = mod.WALL_GRACE_S
+    mod.WALL_GRACE_S = 3600                          # the grace hard-exit must never reach the pytest process
+    mod.PHASE["name"] = "leg:e1"; mod.PHASE["t0"] = _t.time()
+    rec = {}
+    armed = mod.install_wall_limit(1, tmp_path / "r.json", rec)
+    assert armed == 1
+    t0 = _t.time()
+    try:
+        with pytest.raises(mod.WallLimit):
+            while _t.time() - t0 < 10:               # active work: the handler must interrupt this loop, not wait for it
+                sum(range(10000))
+        assert _t.time() - t0 < 5
+        lab = mod.wall_label()
+        assert lab.startswith("NOT-RUN (registered wall limit") and "leg:e1" in lab and "stop law (a)" in lab
+        wr = mod.wall_record()
+        assert wr["real_limit_s"] == 25200 and wr["phase"] == "leg:e1" and wr["hard_exit"] is False and wr["elapsed_s"] >= 1.0
+    finally:
+        signal.alarm(0)
+        signal.signal(signal.SIGALRM, signal.SIG_DFL)
+        mod.PHASE.clear(); mod.PHASE.update(saved); mod.WALL_GRACE_S = saved_grace
+    # SMOKE honours SMOKE_MAX_WALL_S; a real-mode import never does (see test_real_mode_arena_constants)
+    import subprocess
+    code = ("import os,sys,json; os.environ['SMOKE']='1'; os.environ['SMOKE_MAX_WALL_S']='7'; sys.path[:0]=['.','scripts','scratch']; "
+            "import first_moment_erasure_ladder2 as L; print(json.dumps([L.MAX_WALL_S, L.MAX_WALL_S_REAL, L.SMOKE]))")
+    out = subprocess.run([sys.executable, "-c", code], cwd=ROOT, capture_output=True, text=True)
+    assert out.returncode == 0, out.stderr[-1500:]
+    assert json.loads(out.stdout.strip().splitlines()[-1]) == [7, 25200, True]
+    # a refusal keeps its NOT-RUN vocabulary and a crash books CRASHED, both with the phase; the receipt goes to RECEIPT (fresh path)
+    monkeypatch_receipt = tmp_path / "ladder.json"
+    old = mod.RECEIPT; mod.RECEIPT = monkeypatch_receipt
+    try:
+        r = {"status": "RUNNING"}
+        mod._write_receipt(r, _t.time())
+        assert json.loads(monkeypatch_receipt.read_text())["status"] == "RUNNING" and "wall_s" in r and "ended_utc" in r
+    finally:
+        mod.RECEIPT = old

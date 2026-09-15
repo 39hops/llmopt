@@ -21,6 +21,17 @@ registered run. Nothing armed.
   preflight digest NOT-RUN (smokel2d). Opus review folded. Full suite
   passed.
 
+## Wall-cap fold (Artin HOLD 11:41 EDT; AMENDMENT -WALL-CAP L76267)
+
+- The sealed 7 h stop law is now mechanical: MAX_WALL_S = 25200 fixed
+  in real mode (no env var can change it; SMOKE_MAX_WALL_S is SMOKE
+  only), SIGALRM in the main thread, NOT-RUN receipt with the
+  interrupted phase and the reason, exit 3, DONE never written, no
+  further arm, partial stream and completed-arm snapshots kept; a
+  120 s grace hard-exit backstop. Timeout smokes smokel2f / smokel2j
+  fired during the long legs; smokel2h ran the DONE path on the folded
+  main. Tests 12; review folded; full suite passed.
+
 ## Conditions that bite next session
 
 - Nothing armed. Target run = `bash scratch/fmel2_launch.sh` (liverun

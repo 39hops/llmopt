@@ -1,5 +1,9 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
+ "_last_accept": {
+  "paths": [],
+  "reason": "AMENDMENT FIRST-MOMENT-ERASURE-LADDER-2-WALL-CAP: lock the l2f / l2j timeout-smoke receipts, the l2h DONE-path smoke and the l2f arena receipts"
+ },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
    "bytes": 3176,
@@ -928,6 +932,20 @@
    "source": "results",
    "tracked": true
   },
+  "logs/fme1/smokel2f_treat.json": {
+   "bytes": 17606,
+   "exists": true,
+   "sha256": "a02a29c404d5dd4482dca9d7f03b4b1002d6ad91634109768be3570ba3a84939",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/fme1/smokel2f_treat.jsonl": {
+   "bytes": 504,
+   "exists": true,
+   "sha256": "a5d78df2204ba5e4bde6dbbf8c1a0754c21012e9c8a38cbc713be7ddc4634212",
+   "source": "results",
+   "tracked": true
+  },
   "logs/fme1/treat.json": {
    "bytes": 22249,
    "exists": true,
@@ -967,6 +985,13 @@
    "bytes": 14099,
    "exists": true,
    "sha256": "b8597479e4c2e3f7c11cfad6525472a2d929c6e751b0815656aecde4dfc4f047",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/fmel1/smokel2f_ladder.json": {
+   "bytes": 14101,
+   "exists": true,
+   "sha256": "c7c4aeb8d719b090db4116d8cecd01bfb19014d6c60795dfeeb62dc20f2da3b0",
    "source": "results",
    "tracked": true
   },
@@ -1032,6 +1057,48 @@
    "bytes": 1179,
    "exists": true,
    "sha256": "5d34195af221eb23bd90087f3047882cde67e5386b3dd1aefd1455966c60f8c2",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/fmel2/smokel2f_ladder.json": {
+   "bytes": 18484,
+   "exists": true,
+   "sha256": "ac2c7a48714d00ddfe919b91074889421e63eb1ca3145cb525e3e4bb33b9702b",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/fmel2/smokel2f_ladder.jsonl": {
+   "bytes": 287,
+   "exists": true,
+   "sha256": "9e502f2d65a3b18a5a07ec200e48ff9d92917191f833d9543b85f09c405a22e2",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/fmel2/smokel2h_ladder.json": {
+   "bytes": 37851,
+   "exists": true,
+   "sha256": "994d915b287262b9f077933f3edc349c51ed721a7fce0b5266c2f15fe11c967a",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/fmel2/smokel2h_ladder.jsonl": {
+   "bytes": 1179,
+   "exists": true,
+   "sha256": "b42727ebf81f91b280238f1176d6aa4e48948aa02c3c72905206286f5f321930",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/fmel2/smokel2j_ladder.json": {
+   "bytes": 20912,
+   "exists": true,
+   "sha256": "c97a92d5bed84a647455f0e3436f966b6752c3178cd54f9f0b6cb7743de62765",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/fmel2/smokel2j_ladder.jsonl": {
+   "bytes": 578,
+   "exists": true,
+   "sha256": "b5fb475c4de035993621e3f7d54c18652e12c4e33a20edfd27ccf9cc8099c47a",
    "source": "results",
    "tracked": true
   },
@@ -3341,6 +3408,34 @@
    "tracked": true
   },
   "logs/oma1/smokel2a_stage0.jsonl": {
+   "bytes": 2072,
+   "exists": true,
+   "sha256": "a147a8fe4e7abe209c2f89d2bf894824118708d8085ee3764d8b9f9b48970b6e",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/oma1/smokel2f_desk-bar1.jsonl": {
+   "bytes": 640,
+   "exists": true,
+   "sha256": "3911972915008438473369aa3ed75a984a61fab82beff10123823e05fca161ce",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/oma1/smokel2f_desk_bar1.json": {
+   "bytes": 5141,
+   "exists": true,
+   "sha256": "da7342de6f74f0825ac1d792b4f232f0367f1e7ffa3443a5368863a219433fdf",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/oma1/smokel2f_stage0.json": {
+   "bytes": 22127,
+   "exists": true,
+   "sha256": "73a6347a8b2689669b6c8425f31d07a9c9889a7d8c7badd3eee530591783f4d4",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/oma1/smokel2f_stage0.jsonl": {
    "bytes": 2072,
    "exists": true,
    "sha256": "a147a8fe4e7abe209c2f89d2bf894824118708d8085ee3764d8b9f9b48970b6e",

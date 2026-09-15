@@ -184,13 +184,13 @@ Census: UNCITED 233, library 91, reproduce-pinned 10, results-cited 476, spec-ci
 | fig | fig_magic_scatter.py | spec-cited | specs | specs×1 | — | — |
 | first | first_moment_erasure.py | library | RESULTS, specs | RESULTS×8, specs×5 | 1 | 4 |
 | first | first_moment_erasure_ladder.py | library | RESULTS, specs | RESULTS×9, specs×6 | 1 | 3 |
-| first | first_moment_erasure_ladder2.py | results-cited | RESULTS, specs | RESULTS×4, specs×2 | — | 2 |
+| first | first_moment_erasure_ladder2.py | results-cited | RESULTS, specs | RESULTS×5, specs×2 | — | 2 |
 | fixed | fixed_q_snap.py | UNCITED | — | — | — | 1 |
 | floor | floor_hk1.sh | UNCITED | — | — | — | 1 |
 | floor | floor_hk1_d256.sh | UNCITED | — | — | — | — |
 | fme1 | fme1_launch.sh | results-cited | RESULTS, specs | RESULTS×4, specs×2 | — | — |
 | fmel1 | fmel1_launch.sh | results-cited | RESULTS, specs | RESULTS×5, specs×3 | — | — |
-| fmel2 | fmel2_launch.sh | results-cited | RESULTS, specs | RESULTS×4, specs×2 | — | — |
+| fmel2 | fmel2_launch.sh | results-cited | RESULTS, specs | RESULTS×6, specs×2 | — | — |
 | fmt | fmt_chain.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | fmt | fmt_chain2.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | fmt | fmt_pp_watcher.sh | results-cited | RESULTS | RESULTS×1 | — | — |

@@ -4,7 +4,7 @@
  "note": "Machine-readable form of PRE-REG FIRST-MOMENT-ERASURE-LADDER-2 (RESULTS L75924; the prose governs). DESIGN ONLY (Artin decision 2026-09-15 10:19 EDT). No instrument, no launch; implementation and the target run each need a separate Artin GO. FMEL1 (L75795) stays NOT-ADJUDICABLE permanently.",
  "registered": "2026-09-15 (Mac local)",
  "machine": "mac",
- "status": "INSTRUMENT COMMITTED (AMENDMENT L76155); target run needs its own Artin GO: bash scratch/fmel2_launch.sh",
+ "status": "INSTRUMENT COMMITTED + WALL CAP (AMENDMENT L76267); target run needs its own Artin GO: bash scratch/fmel2_launch.sh",
  "motivation": "mechanical resolution only: the FMEL1 target preflight resolved eps = 1e-2 / 1e-1 / 1 with large margin and failed eps = 1e-3 on the directional-resolution law",
  "writer": "A only: stock OneCycle seed 2, checkpoints/phase19m/m007200.pt (sha256 a0cdf244fcf44f05...), Adam step 7200, one seed lineage, byte-identical future stream",
  "continuation": {
@@ -177,7 +177,7 @@
   "logs/liverun/fmel2.jsonl"
  ],
  "stop_law": [
-  "killed and NOT-RUN at 7 h",
+  "killed and NOT-RUN at 7 h: MECHANICAL, MAX_WALL_S = 25200 fixed in real mode inside the instrument (SIGALRM; NOT-RUN receipt with the interrupted phase; exit 3; DONE never written; no further arm; partial stream and completed-arm snapshots retained)",
   "BAR 0 mismatch aborts the whole run -> NOT-RUN, partial receipts kept",
   "pin drift refuses at launch",
   "preflight failure -> NOT-ADJUDICABLE (REGIME-UNRESOLVED) before any long leg",
@@ -206,6 +206,12 @@
    "results_line": 76155,
    "date": "2026-09-15",
    "summary": "instrument implemented, smoked (full mechanism x2, tampered reference abort, tampered preflight digest NOT-RUN), reviewed and folded; zero target training"
+  },
+  {
+   "name": "FIRST-MOMENT-ERASURE-LADDER-2-WALL-CAP",
+   "results_line": 76267,
+   "date": "2026-09-15",
+   "summary": "the sealed 7 h stop law made mechanical: MAX_WALL_S 25200 fixed in real mode (SMOKE-only shorter), SIGALRM -> NOT-RUN receipt with phase + reason, exit 3, no DONE, no further arm; no scientific change"
   }
  ],
  "instrument": [
@@ -225,7 +231,10 @@
   "logs/fmel1/smokel2a_ladder.json",
   "logs/fme1/smokel2a_treat.json",
   "logs/oma1/smokel2a_stage0.json",
-  "logs/oma1/smokel2a_desk_bar1.json"
+  "logs/oma1/smokel2a_desk_bar1.json",
+  "logs/fmel2/smokel2f_ladder.json",
+  "logs/fmel2/smokel2j_ladder.json",
+  "logs/fmel2/smokel2h_ladder.json"
  ],
  "launch": "bash scratch/fmel2_launch.sh (liverun fmel2)",
  "implementation_notes": [

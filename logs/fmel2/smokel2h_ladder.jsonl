@@ -1,0 +1,12 @@
+{"writer": "A", "arm": "C", "eps": 0.0, "device": "cpu", "step": 4, "loss": 3.5603270530700684}
+{"writer": "A", "arm": "C", "eps": 0.0, "device": "cpu", "step": 5, "loss": 3.5047945976257324}
+{"writer": "A", "arm": "C", "eps": 0.0, "device": "cpu", "step": 6, "loss": 3.416149377822876}
+{"writer": "A", "arm": "e1", "eps": 1.0, "device": "cpu", "step": 4, "loss": 3.5603270530700684}
+{"writer": "A", "arm": "e1", "eps": 1.0, "device": "cpu", "step": 5, "loss": 3.5717554092407227}
+{"writer": "A", "arm": "e1", "eps": 1.0, "device": "cpu", "step": 6, "loss": 3.5047218799591064}
+{"writer": "A", "arm": "e1e-2", "eps": 0.01, "device": "cpu", "step": 4, "loss": 3.5603270530700684}
+{"writer": "A", "arm": "e1e-2", "eps": 0.01, "device": "cpu", "step": 5, "loss": 3.5054590702056885}
+{"writer": "A", "arm": "e1e-2", "eps": 0.01, "device": "cpu", "step": 6, "loss": 3.4170212745666504}
+{"writer": "A", "arm": "e1e-1", "eps": 0.1, "device": "cpu", "step": 4, "loss": 3.5603270530700684}
+{"writer": "A", "arm": "e1e-1", "eps": 0.1, "device": "cpu", "step": 5, "loss": 3.511446475982666}
+{"writer": "A", "arm": "e1e-1", "eps": 0.1, "device": "cpu", "step": 6, "loss": 3.424880266189575}

@@ -2449,12 +2449,19 @@ FIRST-MOMENT-ERASURE-LADDER-2 instrument (PRE-REG RESULTS L75924): the resolved-
 - `regime(mH, preflight_ok)` — BAR 2 at H, first match wins: FORGOTTEN / REGIME-UNRESOLVED / MAGNITUDE-SCALED PERSISTENT / NONLINEAR DIRECTION-SHARED /
 - `locus(metrics_by_h)` — BAR 3: h_lin = last grid h with both local slopes in the band and cosmin >= COS_SHARED; h_dec = first h with cosmin <= COS_DECOR;
 - `function_bar(dce_H)`
+- `class WallLimit`
+- `install_wall_limit(limit_s=None, receipt=None, rec=None)` — Arm the registered wall cap: SIGALRM at `limit_s` raises WallLimit (caught by main, which books NOT-RUN and exits 3); a
+- `set_phase(name)`
+- `wall_label()`
+- `wall_record(hard_exit=False)`
 - `preflight_disposition(pf_ok, bypass, digests_match)` — The registered early returns after the one-step preflight: (status, regime, label) or None to proceed to the long legs.
 - `label(reg, func)`
 - `reference_digests(stage0, fme1, fmel1, horizons=None)` — {fresh arm: {h: locked state digest}} read from the LOCKED RECEIPTS only: Stage-0 C and FME1 Z / E at the qualification
 - `assert_fmel1_provenance(fmel1, lock, stage0, fme1)` — The FMEL1 receipt this rung pins: sha equal to the source literal and the lock; bound to the same Stage-0 / FME1 receipts and
 - `mode_ladder(tok, enc, starts, info, segs, d, held, rec, stream)`
 - `main()`
+- `_write_receipt(rec, t0)` — Write the receipt, then disarm the cap (the write itself stays covered by the alarm).
+- `_setup_and_run(rec, armed_s)`
 
 ### scratch/fixed_q_snap.py
 Fixed-denominator snap (spec addendum 2026-07-27, 'integer twin'): every 2-D weight -> round(w*q)/q for ONE shared q. Unlike best-rational (free denominators), this makes W = P/q with integer P — the forward pass becomes an integer GEMM / q, the road to exact integer inference (ozaki/FX-V1 substrate). Error bound 1/(2q), vs ~1/Q^2 for best-rational. Usage: fixed_q_snap.py <ckpt_in> <q> <ckpt_out>

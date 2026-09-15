@@ -76263,3 +76263,76 @@ the target run is a separate Artin GO: `bash scratch/fmel2_launch.sh`
 at the committed HEAD. checkpoints/fme1 and checkpoints/oma1/A/C
 retained. SCHEDULE-PHASE-SENSITIVITY-CENSUS-0 unarmed. No float64,
 writer-B, second-anchor or follow-up work.
+
+## AMENDMENT FIRST-MOMENT-ERASURE-LADDER-2-WALL-CAP (target: PRE-REG FIRST-MOMENT-ERASURE-LADDER-2 L75924; AMENDMENT -INSTRUMENT L76155): the already-sealed 7 h stop law made mechanical in the instrument; no scientific change; nothing armed (2026-09-15, Mac)
+
+Artin HOLD 2026-09-15 11:41 EDT on the FMEL2 target GO for one
+narrow implementation fold: the pre-reg's stop law (a) says "killed
+and booked NOT-RUN at 7 h", but scratch/fmel2_launch.sh launched
+liverun fmel2 with no timeout and the instrument had no wall guard.
+This entry records the enforcement only. No threshold, preflight law,
+classification, horizon, arm, provenance rule, prior or consequence
+changes.
+
+### What the instrument now does
+
+- MAX_WALL_S_REAL = 25200 (7 h), fixed in real mode: the module
+  asserts MAX_WALL_S == MAX_WALL_S_REAL whenever SMOKE is off, and no
+  environment variable is read outside SMOKE. SMOKE may shorten it
+  (SMOKE_MAX_WALL_S) solely to qualify the handler.
+- The cap is armed at the top of main(), before setup, so the whole
+  run (setup, preflight, legs, readouts, gates, adjudication and the
+  receipt write) is inside it (SIGALRM); the interrupted phase is
+  tracked (setup, preflight, leg:<arm>, readouts, gates, adjudication). On the first fire the handler
+  raises WallLimit in the main thread; main books status NOT-RUN,
+  regime NOT-RUN, label "NOT-RUN (registered wall limit 25200 s
+  reached during <phase>; stop law (a), PRE-REG L75924)", records
+  wall_limit {armed_s, fired, limit_s, real_limit_s, phase, elapsed_s},
+  writes the receipt and exits 3. The launcher's DONE marker is gated
+  on a zero exit, so it is never written. No subsequent arm starts.
+  The partial stream (ladder.jsonl) and the snapshots of every
+  completed arm stay on disk for audit. A second alarm 120 s later,
+  reached only if the first could not unwind (a long C call), writes
+  a minimal NOT-RUN receipt itself and hard-exits 4.
+- A registered refusal raised inside the mode (the disk preflight)
+  keeps its NOT-RUN vocabulary in the receipt ("NOT-RUN (refused:
+  ...)"); any other failure leaves a receipt with status CRASHED, the
+  exception text and the phase, then re-raises (previously the partial
+  receipt carried no status). The receipt write itself stays inside
+  the alarm; the cap is disarmed after the write. The grace hard-exit
+  receipt carries wall_s and ended_utc.
+- Receipt law block carries MAX_WALL_S and MAX_WALL_S_REAL.
+
+### Tests and smoke
+
+tests/test_first_moment_erasure_ladder2.py (12): the handler
+interrupts an active loop within the armed second and the label /
+record carry the limit, the phase and stop law (a); a SMOKE import
+honours SMOKE_MAX_WALL_S = 7; a real-mode import with
+SMOKE_MAX_WALL_S, FMEL2_MAX_WALL_S and MAX_WALL_S all set in the
+environment still reports 25200 / 25200; the refusal / crash
+vocabulary and the receipt writer are unit-tested. Smokes
+(path-isolated, fresh l2f arena: logs/fmel1/smokel2f_ladder.json,
+logs/fme1/smokel2f_treat.json, logs/fme1/smokel2f_treat.jsonl,
+logs/oma1/smokel2f_stage0.json, logs/oma1/smokel2f_stage0.jsonl,
+logs/oma1/smokel2f_desk_bar1.json, logs/oma1/smokel2f_desk-bar1.jsonl):
+logs/fmel2/smokel2f_ladder.json (SMOKE_MAX_WALL_S = 12, first cut;
+stream logs/fmel2/smokel2f_ladder.jsonl) and
+logs/fmel2/smokel2j_ladder.json (80 s, the folded code with the cap
+armed at the top of main: the stream encode makes setup about 66 s on
+this arena and the legs run about 73..94 s; stream
+logs/fmel2/smokel2j_ladder.jsonl) both fired during the long legs:
+status NOT-RUN with the wall reason and the phase, exit 3, no DONE
+marker, the partial stream and the completed arm's snapshots
+retained, later arms never started; logs/fmel2/smokel2h_ladder.json
+(stream logs/fmel2/smokel2h_ladder.jsonl) ran the DONE path on the
+folded main to the end. Review (Opus, read-only) on the fold: no
+blocker; folded: the CRASHED label was a no-op once status was
+RUNNING; the disk-preflight refusal was being relabelled CRASHED
+(vocabulary restored); the cap now starts at the top of main rather
+than after setup; the receipt write is covered by the alarm; the
+hard-exit receipt carries wall_s / ended_utc; the smoke-only
+SystemExit catch re-raises a WallLimit; brittle source-substring
+tests replaced by behavioural ones; the active-work test restores
+module state and neutralises the grace hard-exit. Full suite passed. Nothing armed; the target run remains a separate
+Artin GO: `bash scratch/fmel2_launch.sh` at the committed HEAD.

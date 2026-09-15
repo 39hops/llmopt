@@ -56,6 +56,7 @@ import hashlib
 import json
 import math
 import os
+import signal
 import sys
 import time
 from pathlib import Path
@@ -70,6 +71,14 @@ SMOKE = os.environ.get("SMOKE", "0") == "1"
 SMOKE_TAG = os.environ.get("SMOKE_TAG", "")
 MODE = os.environ.get("MODE", "smoke" if SMOKE else "")
 PREFLIGHT_BYPASS = SMOKE and os.environ.get("SMOKE_PREFLIGHT_BYPASS", "0") == "1"
+# Registered whole-run wall cap (PRE-REG L75924 stop law (a): killed and NOT-RUN at 7 h), armed at the top of main() so setup,
+# preflight, legs, readouts and the receipt write are all inside it. Real mode is FIXED at 25200 s: no environment variable
+# extends or disables it. SMOKE may shorten it (SMOKE_MAX_WALL_S) solely to qualify the handler.
+MAX_WALL_S_REAL = 25200
+MAX_WALL_S = int(os.environ["SMOKE_MAX_WALL_S"]) if (SMOKE and os.environ.get("SMOKE_MAX_WALL_S")) else MAX_WALL_S_REAL
+assert SMOKE or MAX_WALL_S == MAX_WALL_S_REAL
+WALL_GRACE_S = 120                    # if the run is still alive this long after the limit fired (stuck in a C call), hard-exit
+PHASE = {"name": "setup"}             # the phase the wall limit interrupted, for the receipt
 
 import first_moment_erasure_ladder as L1  # noqa: E402  (asserts the FME1 / OMA1 pins + leg-path sha at import)
 import numpy as np  # noqa: E402
@@ -305,6 +314,47 @@ def function_bar(dce_H):
     return per, ("FUNCTION-NEUTRAL" if all(v == "NEUTRAL" for v in per.values()) else "FUNCTION-" + ",".join(f"{a}:{v}" for a, v in per.items() if v != "NEUTRAL"))
 
 
+class WallLimit(SystemExit):
+    """Raised in the main thread by the SIGALRM handler when the registered wall cap is reached."""
+
+
+def install_wall_limit(limit_s=None, receipt=None, rec=None):
+    """Arm the registered wall cap: SIGALRM at `limit_s` raises WallLimit (caught by main, which books NOT-RUN and exits 3); a
+    second alarm WALL_GRACE_S later, reached only if the first could not unwind (a long C call), writes a minimal NOT-RUN receipt
+    itself and hard-exits 4. Returns the limit armed."""
+    limit_s = MAX_WALL_S if limit_s is None else limit_s
+    state = {"fired": 0}
+
+    def handler(signum, frame):
+        state["fired"] += 1
+        if state["fired"] == 1:
+            signal.alarm(WALL_GRACE_S)
+            raise WallLimit(3)
+        if receipt is not None and rec is not None:
+            rec.update({"status": "NOT-RUN", "regime": "NOT-RUN", "label": wall_label(), "wall_limit": wall_record(hard_exit=True),
+                        "wall_s": round(time.time() - PHASE.get("t0", time.time()), 1), "ended_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")})
+            receipt.write_text(json.dumps(rec, indent=1) + "\n")
+        os._exit(4)
+
+    signal.signal(signal.SIGALRM, handler)
+    signal.alarm(int(limit_s))
+    return int(limit_s)
+
+
+def set_phase(name):
+    PHASE["name"] = name
+    print(f"[fmel2] phase {name} at {time.time() - PHASE.get('t0', time.time()):.1f} s", flush=True)
+
+
+def wall_label():
+    return f"NOT-RUN (registered wall limit {MAX_WALL_S} s reached during {PHASE['name']}; stop law (a), PRE-REG L75924)"
+
+
+def wall_record(hard_exit=False):
+    return {"limit_s": MAX_WALL_S, "real_limit_s": MAX_WALL_S_REAL, "phase": PHASE["name"], "reason": "registered whole-run wall cap", "hard_exit": hard_exit,
+            "elapsed_s": round(time.time() - PHASE.get("t0", time.time()), 1)}
+
+
 def preflight_disposition(pf_ok, bypass, digests_match):
     """The registered early returns after the one-step preflight: (status, regime, label) or None to proceed to the long legs.
     A failed preflight books REGIME-UNRESOLVED (unless the SMOKE-only bypass is set); a preflight digest that differs from the
@@ -352,6 +402,7 @@ def assert_fmel1_provenance(fmel1, lock, stage0, fme1):
 # ---------------------------------------------------------------- the registered mode
 def mode_ladder(tok, enc, starts, info, segs, d, held, rec, stream):
     assert OMA.CK_DIR == CK_DIR, (OMA.CK_DIR, CK_DIR)          # snapshots land under this rung's tree only
+    set_phase("provenance")
     stage0 = json.loads(STAGE0.read_text()); desk = json.loads(DESK.read_text()); fme1 = json.loads(FME1.read_text()); fmel1 = json.loads(FMEL1.read_text())
     rec["pins"] = {"sources": dict(PINS), "leg_path_symbols": FME.LEG_PATH_SYMBOLS, "leg_path_sha_measured": FME.leg_path_sha(), "leg_path_sha": FME.LEG_PATH_SHA,
                    "stage0_receipt": str(STAGE0), "stage0_sha256": sha256_file(STAGE0), "desk_receipt": str(DESK), "desk_sha256": sha256_file(DESK),
@@ -391,6 +442,7 @@ def mode_ladder(tok, enc, starts, info, segs, d, held, rec, stream):
         refs["e1e-1"][1] = "0" * 64                              # substrate-change smoke: a preflight digest mismatch must book NOT-RUN before any leg
         rec["smoke_tampered_ref"] = "e1e-1@1 (preflight)"
     rec["reference_digests"] = {a: {str(h): v for h, v in hs.items()} for a, hs in refs.items()}
+    set_phase("anchor-and-substrate-load")
     anchor_sd = load_model_sd(OMA.WRITERS[WRITER]["anchor"])
     rec["anchor"] = {"path": OMA.WRITERS[WRITER]["anchor"], "file_sha256": sha256_file(OMA.WRITERS[WRITER]["anchor"]), "state_digest": state_digest(anchor_sd)}
     if not SMOKE:
@@ -407,6 +459,7 @@ def mode_ladder(tok, enc, starts, info, segs, d, held, rec, stream):
     mid = {"h": MID_STEP - ANCHOR, "W": OMA.flat(mid_sd, segs, d), "W0": W0, "digest": mid_dg, "sha256": sha256_file(MID_MODEL), "ce": mid_ce}
     assert 1 <= mid["h"] <= LEG_FULL
     # ---- ONE-STEP PREFLIGHT (no long leg before it passes)
+    set_phase("preflight")
     t0 = time.time()
     pf = {"arms": {}}
     W1 = {}
@@ -437,6 +490,7 @@ def mode_ladder(tok, enc, starts, info, segs, d, held, rec, stream):
     for arm in ARM_ORDER:
         cell = {}
         rec["arms"][arm] = cell
+        set_phase(f"leg:{arm}")
         try:
             snaps = long_leg(arm, ARMS[arm], tok, enc, slices, segs, d, held, refs, pf["arms"][arm]["digest"], stream, cell, mid)
         except Abort:
@@ -448,6 +502,7 @@ def mode_ladder(tok, enc, starts, info, segs, d, held, rec, stream):
         del snaps
         print(f"[fmel2] {arm} leg done {cell['wall_s']} s ({cell['it_per_s']} it/s) loss_last {cell['loss_last']:.4f}", flush=True)
     # ---- readouts per grid horizon from the fresh snapshots
+    set_phase("readouts")
     metrics, dce, ce = {}, {}, {}
     prev_dev = {}
     W_end_C = None
@@ -478,6 +533,7 @@ def mode_ladder(tok, enc, starts, info, segs, d, held, rec, stream):
                             "rho": (end_abs / end_leg if (finite(end_abs) and finite(end_leg) and end_leg > 0) else None), "abs": (end_abs if finite(end_abs) else None),
                             "ce_fresh": rec["arms"]["C"]["ce_held"][str(H_END)], "ce_booked": end_ce}
     rec["substrate_mid"] = rec["arms"]["C"].get("substrate_mid")
+    set_phase("gates")
     dev_gate = "mps" if torch.backends.mps.is_available() else "cpu"
     rec["gate_device"] = dev_gate
     gate = {}
@@ -487,6 +543,7 @@ def mode_ladder(tok, enc, starts, info, segs, d, held, rec, stream):
         gate[name] = {"solves": solves, "total": int(sum(solves.values())), "valid_pct": round(valid, 2)}
     rec["gate"] = gate
     # ---- adjudication
+    set_phase("adjudication")
     mH = metrics[H_END]
     reg = regime(mH, pf["ok"])
     per, func = function_bar(dce[str(H_END)])
@@ -520,6 +577,40 @@ def main():
     if CK_DIR.exists() and any(CK_DIR.rglob("*.pt")):
         raise SystemExit(f"REFUSING: {CK_DIR} holds snapshots")
     assert MODE in ("ladder", "smoke"), MODE
+    t0 = time.time()
+    PHASE["t0"] = t0
+    rec = {"status": "SETUP", "regime": "NOT-RUN", "prereg": "FIRST-MOMENT-ERASURE-LADDER-2"}          # replaced in place once the base record exists
+    armed_s = install_wall_limit(MAX_WALL_S, RECEIPT, rec)
+    try:
+        _setup_and_run(rec, armed_s)
+    except WallLimit:
+        rec.update({"status": "NOT-RUN", "regime": "NOT-RUN", "label": wall_label()})
+        rec["wall_limit"] = dict(rec.get("wall_limit", {}), armed_s=armed_s, fired=True, **wall_record())
+        print(f"[fmel2] WALL LIMIT: {rec['label']}", flush=True)
+    except SystemExit as e:                         # a registered refusal (disk preflight, refuse-if-exists inside the mode): keep its vocabulary
+        if rec.get("status") in (None, "SETUP", "RUNNING"):
+            rec.update({"status": "NOT-RUN", "regime": "NOT-RUN", "label": f"NOT-RUN (refused: {str(e)[:200]}; phase {PHASE['name']})"})
+        _write_receipt(rec, t0)
+        raise
+    except BaseException as e:                      # any other failure: the partial receipt still says what happened, then re-raise
+        if rec.get("status") in (None, "SETUP", "RUNNING"):
+            rec.update({"status": "CRASHED", "regime": "NOT-RUN", "label": f"CRASHED ({type(e).__name__}: {str(e)[:200]}; phase {PHASE['name']})"})
+        _write_receipt(rec, t0)
+        raise
+    _write_receipt(rec, t0)
+    print(f"[fmel2] {rec.get('status')} in {rec['wall_s']} s -> {RECEIPT}", flush=True)
+    if rec.get("status") != "DONE":
+        raise SystemExit(3)
+
+
+def _write_receipt(rec, t0):
+    """Write the receipt, then disarm the cap (the write itself stays covered by the alarm)."""
+    rec["wall_s"] = round(time.time() - t0, 1); rec["ended_utc"] = datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
+    RECEIPT.write_text(json.dumps(rec, indent=1) + "\n")
+    signal.alarm(0)
+
+
+def _setup_and_run(rec, armed_s):
     tok = TM.MathTokenizer()
     assert len(tok.vocab) == 40 and not os.environ.get("VOCAB_EXTRA") and not os.environ.get("SEQ_CAP") and not os.environ.get("BIRTH_BS") and TM.BS == OMA.BS
     OMA.OA.assert_verbatim()
@@ -549,11 +640,12 @@ def main():
                 L1.main()
                 raise SystemExit("L1 smoke did not refuse on the synthetic arena (expected PREFLIGHT-FAILED)")
             except SystemExit as e:
-                if e.code != 3:
+                if isinstance(e, WallLimit) or e.code != 3:
                     raise
             assert FMEL1.exists() and json.loads(FMEL1.read_text())["status"] == "PREFLIGHT-FAILED"
         OMA.CK_DIR = CK_DIR
-    rec = OMA.base_record("fmel2-ladder", tok, info, "cpu", "mps" if torch.backends.mps.is_available() else "cpu")
+    base = OMA.base_record("fmel2-ladder", tok, info, "cpu", "mps" if torch.backends.mps.is_available() else "cpu")
+    rec.clear(); rec.update(base)                       # the same dict object the wall handler holds
     rec["oma_source_sha256"] = rec.pop("source_sha256")
     rec.update({"prereg": "FIRST-MOMENT-ERASURE-LADDER-2", "kind": "first_moment_erasure_ladder2/ladder", "writer": WRITER, "n_pred_literal": N_PRED,
                 "self_sha256": sha256_file(__file__), "l1_source_sha256": sha256_file(L1.__file__), "fme1_source_sha256": sha256_file(FME.__file__), "ck_dir": str(CK_DIR),
@@ -568,20 +660,17 @@ def main():
                                      "each local slope its two, cosmin three cosines; UNDEFINED -> null + reason, never NaN"}})
     rec.pop("eps_twin", None)
     rec["writers"] = {WRITER: rec["writers"][WRITER]}
+    rec["law"]["MAX_WALL_S"] = MAX_WALL_S
+    rec["law"]["MAX_WALL_S_REAL"] = MAX_WALL_S_REAL
+    rec["wall_limit"] = {"armed_s": armed_s, "fired": False, "armed_at": "top of main (whole run)"}
+    rec["status"] = "SETUP"
 
     def stream(row):
         with STREAM.open("a") as f:
             f.write(json.dumps(row) + "\n")
 
-    t0 = time.time()
-    try:
-        rec = mode_ladder(tok, enc, starts, info, segs, d, held, rec, stream)
-    finally:
-        rec["wall_s"] = round(time.time() - t0, 1); rec["ended_utc"] = datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
-        RECEIPT.write_text(json.dumps(rec, indent=1) + "\n")
-    print(f"[fmel2] {rec.get('status')} in {rec['wall_s']} s -> {RECEIPT}", flush=True)
-    if rec.get("status") != "DONE":
-        raise SystemExit(3)
+    out = mode_ladder(tok, enc, starts, info, segs, d, held, rec, stream)
+    assert out is rec
 
 
 if __name__ == "__main__":

@@ -3,7 +3,9 @@
 # writer A only, four fresh continuous CPU legs 7201..15420 (C + eps 1e-2 / 1e-1 / 1)) under the liverun
 # interlock (id fmel2), detached (nohup), stdout/stderr into
 # logs/fmel2/ladder.log (refuses if it exists); writes logs/fmel2/fmel2.DONE on
-# success only. Needs its own Artin GO. Usage: bash scratch/fmel2_launch.sh
+# success only. The registered 7 h wall cap (25200 s, stop law (a)) is enforced
+# INSIDE the instrument (SIGALRM -> NOT-RUN receipt, exit 3), so a timeout never
+# writes the DONE marker. Needs its own Artin GO. Usage: bash scratch/fmel2_launch.sh
 set -eo pipefail
 cd "$(dirname "$0")/.."
 [ -e logs/fmel2/ladder.log ] && { echo "REFUSING: logs/fmel2/ladder.log exists"; exit 1; }
