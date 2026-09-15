@@ -76336,3 +76336,216 @@ SystemExit catch re-raises a WallLimit; brittle source-substring
 tests replaced by behavioural ones; the active-work test restores
 module state and neutralises the grace hard-exit. Full suite passed. Nothing armed; the target run remains a separate
 Artin GO: `bash scratch/fmel2_launch.sh` at the committed HEAD.
+
+## VERDICT FIRST-MOMENT-ERASURE-LADDER-2: INTERMEDIATE + FUNCTION-NEUTRAL on writer A over the resolved amplitude range — the first-moment perturbation is magnitude-scaled and direction-shared only through h = 100 (h_lin 100), decorrelates by h = 900 (h_dec 900, h_curve 900), and settles, as the schedule cools, into a magnitude-insensitive, direction-decorrelated separation (alpha_global(H) 0.220 v the 0.20 TRAJECTORY-SENSITIVE bound; alpha_low 0.246, alpha_high 0.194; cosmin(H) 0.191; n 0.171 / 0.301 / 0.470) with the HELD-32 CE unchanged in every arm (|dCE(H)| <= 4.5e-5) (2026-09-15, Mac)
+
+Pre-registration: PRE-REG FIRST-MOMENT-ERASURE-LADDER-2 (L75924),
+AMENDMENT -INSTRUMENT (L76155), AMENDMENT -WALL-CAP (L76267);
+inherited laws from AMENDMENT L75568. Artin GO 2026-09-15 12:35 EDT.
+Run: `bash scratch/fmel2_launch.sh` under liverun fmel2 at 1a5ccb7d
+(clean tree); wall 11,576.7 s (3.2 h; legs 2,742 / 2,756 / 2,792 /
+2,799 s at 3.0 / 2.98 / 2.94 / 2.94 it/s plus about 190 s of
+per-arm snapshot and held-CE work; setup 65 s; preflight 5.3 s;
+readouts 5 s; gates 225 s), 8 threads, deterministic
+algorithms, torch 2.12.1; the 25,200 s cap armed at the top of main
+and not reached; exit 0, liverun disarmed rc 0, fmel2.DONE written.
+Receipts logs/fmel2/ladder.json, logs/fmel2/ladder.jsonl (32,880
+rows: four arms x steps 7201..15420), logs/fmel2/ladder.log,
+logs/fmel2/fmel2.DONE, logs/liverun/fmel2.jsonl (the 3.3 MB stream
+stays machine-local under the logs doctrine, sha-locked as
+local-only evidence; the other four are force-added and locked);
+snapshots
+checkpoints/fmel2/A/{C,e1,e1e-2,e1e-1}/h{0001..8220}.pt (48 files,
+4.24 GB, the optimizer blob at h8220 only; shas and state digests in
+the receipt). Disk 29 GiB free at launch v the 16 GiB floor.
+
+### Pre-treatment refusals and BAR 0 / BAR 1 (all passed)
+
+16 source pins byte-identical; leg-path symbol sha 9dfcc6a0; Stage-0
+(6f5d3688), desk (4fc04462), FME1 (a3d8ae83) and FMEL1 (9005d254)
+receipt shas equal to the source literals and the lock; anchor
+m007200.pt sha a0cdf244 / digest 9c7c1a6f equal to the Stage-0, FME1
+and FMEL1 binds; first-900-slice digest equal to Stage 0's and the
+full-leg digest 32a6ecb2 equal to FMEL1's; the booked substrate files
+present with the pinned digests and shas.
+
+Preflight (BAR 1): n_1(1) 0.894284643 (residual v the sealed value
+-9.7e-9); R(1) 1.0000132 (e1e-2) / 1.00000033 (e1e-1) / 1 (e1,
+identity); cos to dW_1 0.99998559 / 0.99999986 / 1 (identity); no
+fail; every arm's one-step digest equal to its locked FMEL1 preflight
+digest (4 / 4). Long legs: every arm's h = 1 digest equal to its
+preflight digest; BAR 0 complete and bit-exact: C at h = 1 / 5 / 20 /
+100 / 900 against the locked Stage-0 C, e1 against FME1 Z, e1e-2
+against FME1 E, e1e-1 at h = 1 against FMEL1. Every arm touched 59
+tensors (C 0).
+
+### Measured (writer A; GLOBAL float64 over 59 tensors; the fresh C control)
+
+| h | n(1e-2) | n(1e-1) | n(1) | R(1e-2) | R(1e-1) | alpha_g | alpha_lo | alpha_hi | cosmin | cos 2|1 | cos 2|e1 | cos 1|e1 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 0.00894 | 0.08943 | 0.89428 | 1.00001 | 1.00000 | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000 |
+| 5 | 0.00634 | 0.06339 | 0.63391 | 1.00003 | 1.00003 | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000 |
+| 20 | 0.00445 | 0.04446 | 0.44097 | 1.00877 | 1.00816 | 0.9981 | 0.9997 | 0.9965 | 0.9921 | 0.9999 | 0.9921 | 0.9933 |
+| 100 | 0.00262 | 0.02615 | 0.23344 | 1.12364 | 1.12014 | 0.9747 | 0.9986 | 0.9507 | 0.9026 | 0.9990 | 0.9026 | 0.9135 |
+| 300 | 0.00238 | 0.02379 | 0.20925 | 1.13514 | 1.13705 | 0.9725 | 1.0007 | 0.9442 | 0.6967 | 0.9919 | 0.6967 | 0.7267 |
+| 900 | 0.01611 | 0.14633 | 0.45162 | 3.56794 | 3.24009 | 0.7238 | 0.9581 | 0.4894 | 0.0694 | 0.3830 | 0.0694 | 0.2450 |
+| 1800 | 0.10738 | 0.27922 | 0.51145 | 20.994 | 5.459 | 0.3390 | 0.4150 | 0.2629 | 0.1049 | 0.1796 | 0.1049 | 0.3493 |
+| 3080 | 0.17777 | 0.32318 | 0.50770 | 35.015 | 6.365 | 0.2279 | 0.2596 | 0.1962 | 0.1837 | 0.2967 | 0.1837 | 0.3811 |
+| 4500 | 0.17751 | 0.31182 | 0.48582 | 36.539 | 6.418 | 0.2186 | 0.2447 | 0.1926 | 0.1928 | 0.3146 | 0.1928 | 0.3814 |
+| 6000 | 0.17260 | 0.30360 | 0.47361 | 36.443 | 6.410 | 0.2192 | 0.2453 | 0.1931 | 0.1917 | 0.3119 | 0.1917 | 0.3802 |
+| 7200 | 0.17083 | 0.30125 | 0.47055 | 36.305 | 6.402 | 0.2200 | 0.2463 | 0.1937 | 0.1908 | 0.3114 | 0.1908 | 0.3798 |
+| 8220 | 0.17064 | 0.30097 | 0.47020 | 36.290 | 6.401 | 0.2201 | 0.2465 | 0.1938 | 0.1907 | 0.3113 | 0.1907 | 0.3797 |
+
+(cos a|b = cos(dW_a, dW_b) with 2 = e1e-2, 1 = e1e-1.) The
+log-uniform identity gap |alpha_global - (alpha_low + alpha_high) / 2|
+is <= 4.4e-16 at every horizon; no UNDEFINED value; no NaN. Absolute
+deviations ||dW|| (1e-2 / 1e-1 / 1) and the control leg ||W_C - W_7200||:
+h = 1 0.00124 / 0.0124 / 0.124 (0.139); 100 0.0148 / 0.147 / 1.31
+(5.63); 900 0.214 / 1.95 / 6.01 (13.3); 1800 1.79 / 4.65 / 8.52
+(16.7); 3080 3.43 / 6.23 / 9.79 (19.3); 8220 3.64 / 6.42 / 10.03
+(21.3). Self-rotation cos(dW(h), dW(h_prev)) for 1e-2 / 1e-1 / 1: 0.998
+/ 0.998 / 0.998 (h = 5), 0.912 / 0.911 / 0.908 (20), 0.585 / 0.586 /
+0.649 (100), 0.591 / 0.589 / 0.601 (300), 0.072 / 0.080 / 0.231 (900),
+0.113 / 0.306 / 0.567 (1800), 0.387 / 0.608 / 0.749 (3080), 0.822 /
+0.883 / 0.915 (4500), 0.957 / 0.967 / 0.977 (6000), 0.997 / 0.998 /
+0.998 (7200), 1.000 / 1.000 / 1.000 (8220). cos(dW_eps, W_C - W_7200)
+at H: 0.985 / 0.955 / 0.889. Group share of ||dW||^2 at H, BLOCK0..7 /
+OUTSIDE: e1e-2 0.119 / 0.146 / 0.161 / 0.157 / 0.150 / 0.126 / 0.097 /
+0.042 / 0.000; e1e-1 0.106 / 0.141 / 0.160 / 0.157 / 0.151 / 0.133 /
+0.104 / 0.047 / 0.000; e1 0.104 / 0.140 / 0.161 / 0.160 / 0.151 /
+0.132 / 0.103 / 0.048 / 0.001 (at h = 900: 0.130 / 0.156 / 0.163 /
+0.158 / 0.151 / 0.115 / 0.088 / 0.040; 0.136 / 0.160 / 0.164 / 0.157 /
+0.150 / 0.113 / 0.083 / 0.037; 0.124 / 0.150 / 0.165 / 0.165 / 0.147 /
+0.115 / 0.089 / 0.044; OUTSIDE 0.001 / 0.001 / 0.000).
+
+HELD-32 CE: CE_C 0.40225 (h = 1), 0.40037 (5), 0.40261 (20), 0.39517
+(100), 0.39696 (300), 0.39050 (900), 0.37817 (1800), 0.36754 (3080),
+0.35939 (4500), 0.35168 (6000), 0.35055 (7200), 0.35019 (8220).
+dCE (1e-2 / 1e-1 / 1): +0.00000 / -0.00001 / +0.00001 (1); -0.00002 /
+-0.00017 / -0.00079 (5); -0.00003 / -0.00032 / -0.00221 (20);
+-0.00000 / +0.00001 / -0.00021 (100); +0.00000 / +0.00001 / +0.00028
+(300); +0.00018 / -0.00176 / -0.00135 (900); -0.00000 / -0.00060 /
++0.00061 (1800); -0.00002 / -0.00040 / +0.00004 (3080); +0.00003 /
+-0.00031 / -0.00006 (4500); -0.00003 / -0.00012 / +0.00001 (6000);
++0.00003 / -0.00006 / +0.00005 (7200); +0.00003 / -0.00003 / +0.00005
+(8220). No (eps, h) exceeds 0.005; sign pattern at H + / - / +.
+Scheduler (descriptive; the group after step h): lr 1.732e-4 (h = 1),
+1.450e-4 (900), 7.92e-5 (3080), 1.60e-5 (6000), 3.4e-6 (7200), 1.2e-9
+(8220); beta1 0.8923 -> 0.95.
+
+Descriptive substrate provenance (no threshold): fresh C at 15420 v
+the booked gallery19m_phase_s2.pt: rho 0.03095 (||diff|| 0.660 v the
+booked model's 21.33 displacement from W_7200), CE 0.35019 v 0.35023;
+fresh C at 15300 v m015300.pt in-line: rho 0.03095, CE 0.35019 v
+0.35023 (|dCE| 3.3e-5 at both points; no gate at 15300; the in-line fresh digest at 15300 has no snapshot behind it
+and is not reproducible without a re-run; every grid-horizon digest
+is). Gates on the same mps device (weights shas as printed, in the
+driver's order C / e1 / booked end: 685e9efa2d21b02a, 9836c1493cb11c09,
+59a63ef5b76b21a3): C(15420) 64 / 120 {3:23, 4:7, 5:16, 6:8, 7:10}
+(equal to the booked gate dict of the historical model; validity
+62.08 %), e1(15420) 64 / 120 {3:22, 4:8, 5:16, 6:8, 7:10} (62.01 %),
+booked end model 64 / 120 {3:23, 4:7, 5:16, 6:8, 7:10} (62.01 %). Cooled tail
+||dW(H)|| / ||dW(6000)||: 0.9947 / 0.9974 / 0.9988.
+
+### Adjudication (frozen bars; H = 8220)
+
+- BAR 0: PASS, complete sets, bit-exact. BAR 1: PASS.
+- BAR 2, in the registered order: FORGOTTEN no (n 0.171 / 0.301 /
+  0.470 > 0.05); REGIME-UNRESOLVED no (all defined, identity gap
+  2.8e-17); MAGNITUDE-SCALED PERSISTENT no (alpha_low 0.2465 and
+  alpha_high 0.1938 outside [0.80, 1.20]; cosmin 0.1907 < 0.90; n_1
+  0.470 >= 0.25 holds); NONLINEAR DIRECTION-SHARED no (cosmin
+  0.1907 < 0.90); TRAJECTORY-SENSITIVE no (alpha_global 0.2201 >
+  0.20 by 0.0201, while max(alpha_low, alpha_high) 0.2465 <= 0.40 and
+  cosmin 0.1907 <= 0.50 both hold): INTERMEDIATE, with alpha_global
+  0.2201, alpha_low 0.2465, alpha_high 0.1938, cosmin 0.1907 quoted.
+- BAR 3: h_lin 100 (the last horizon with both local slopes in the
+  band and cosmin >= 0.90: 0.9986 / 0.9507 / 0.9026); h_dec 900
+  (cosmin 0.0694); h_curve 900 (|0.9581 - 0.4894| = 0.469 > 0.20).
+- BAR 4: NEUTRAL / NEUTRAL / NEUTRAL (|dCE(H)| 3.0e-5 / 3.1e-5 /
+  4.5e-5 <= 0.005): FUNCTION-NEUTRAL.
+- BAR 5 (descriptive): 0.9947 / 0.9974 / 0.9988.
+
+Label: INTERMEDIATE + FUNCTION-NEUTRAL [writer A only, one anchor, one
+seed lineage, CPU deterministic, eps >= 1e-2; gate descriptive];
+h_lin 100 / h_dec 900 / h_curve 900. REFUTED-IF: the house reading
+(a magnitude-independent late growth mode) is NOT refuted (no
+MAGNITUDE-SCALED PERSISTENT); the chaotic reading is NOT refuted
+(both local slopes outside the band; cosmin < 0.90). Neither
+registered refutation fired.
+
+### Reading, stated narrowly
+
+- Linear response holds through h = 100 (R within 0.13 of 1 on the
+  two informative arms, both local slopes in the band, cosmin 0.90);
+  the perturbation is a linear, direction-shared perturbation of the
+  writer for the first hundred steps, as FME1 saw for two amplitudes.
+- Between h = 300 and h = 900 the response leaves the linear regime:
+  the two smaller arms grow 10.4x / 9.5x in norm over those 600 steps
+  while the erasure arm grows 3.3x, the pair cosines fall from
+  0.70..0.99 to 0.07..0.38, every arm's deviation rotates away from
+  its h = 300 direction (self-rotation 0.07 / 0.08 / 0.23), and the
+  local slopes split (0.958 v 0.489): h_curve = h_dec = 900.
+- From the epoch boundary (h = 3080) the separation is settled in
+  MAGNITUDE (n 0.178 / 0.323 / 0.508 -> 0.171 / 0.301 / 0.470,
+  alpha_global 0.228 -> 0.220, cosmin 0.184 -> 0.191, tail ratios
+  0.995..0.999) while its DIRECTION keeps turning until the schedule
+  has cooled (self-rotation 0.39 / 0.61 / 0.75 at 3080, 0.82 / 0.88 /
+  0.92 at 4500, 0.96 / 0.97 / 0.98 at 6000, 0.997+ from 7200); the lr
+  falls from 7.9e-5 to 1.6e-5 to 1.2e-9 over the same window, and
+  this design cannot separate the epoch boundary from the cooling. At H the
+  deviations of the 1e-2 and 1 arms differ by 2.8x in norm for a
+  100x difference in amplitude (R(1e-2) 36.3), and are nearly
+  orthogonal (cos 0.19). The ladder ends magnitude-insensitive in
+  slope (0.19..0.25 per decade) and direction-decorrelated; it misses
+  the registered TRAJECTORY-SENSITIVE cell on the global slope alone,
+  by 0.020 above the 0.20 bound, and is booked INTERMEDIATE as
+  registered. The INTERMEDIATE label is a bar outcome, not a claim
+  that the late regime is "partly scaled": the two local slopes
+  (0.2465 and 0.1938) are 0.053 apart, below the registered 0.20
+  curvature gap.
+- Function: the HELD-32 CE of every arm is within 4.5e-5 of the
+  control's at H and within 0.0023 at every horizon; the descriptive
+  gate of the erasure arm equals the control's total (64 / 120, one
+  solve moved between levels) and both equal the booked historical
+  gate. On this arena, at each of the three registered amplitudes, a
+  first-moment perturbation moves the path and not the function. No
+  functional inference is drawn from the path geometry.
+- Substrate (descriptive): the deterministic CPU continuation lands
+  0.031 of the booked model's displacement away from the native mps
+  run at 15300 and 15420 with the CE equal to 3.3e-5, and at 15420
+  the same gate dict. This is a substrate readout, not a precondition, and does not
+  enter any bar. The three-arm separations (n 0.17..0.47) are 5..15x
+  that substrate distance.
+- Not claimed: anything about eps < 1e-2 (FMEL1: NOT-ADJUDICABLE);
+  content or direction specificity (no direction control exists in
+  this family); any second seed, writer or anchor.
+
+### Priors
+
+1 BAR 1 passes (0.95): HIT. 2 BAR 0 passes (0.90): HIT. 3 BAR 2
+INTERMEDIATE (0.40): HIT (the modal cell of the registered
+distribution; TRAJECTORY-SENSITIVE 0.30 was the runner-up and missed
+by 0.020 in alpha_global). 4 h_lin <= 100 (0.80): HIT;
+h_dec <= 900 (0.70): HIT; h_curve reached (0.60): HIT. 5
+alpha_global(H) <= 0.50 (0.55): HIT; |alpha_low - alpha_high|(H) >
+0.20 (0.50): MISS (0.053). 6 FUNCTION-NEUTRAL (0.70): HIT. 7 n_1(H)
+>= 0.25 (0.50): HIT. 8 BAR 5 in [0.9, 1.1] (0.60): HIT. 9 wall <= 4 h
+(0.70): HIT. 11 hits, 1 miss; family (OMA1 / FME1 / FMEL1 / FMEL2)
+19 hits, 4 misses.
+
+### Consequences (as registered; none launched)
+
+INTERMEDIATE: book, Artin decision (the only registered consequence
+of this cell). Proposed for that decision, not registered
+consequences, banked unarmed: (a) a matched-norm random-direction
+perturbation control on the same arena
+(the direction control this family lacks; it would say whether the
+h = 900 decorrelation is specific to the first-moment axis at all);
+(b) SCHEDULE-PHASE-SENSITIVITY-CENSUS-0 stays banked; whether it is
+unbanked for design is Artin's call given that the registered
+TRAJECTORY-SENSITIVE cell was missed by 0.020 on one slope. Never:
+writer B; a second anchor; reopening OMA1 or FMEL1; a variance-state
+reset; eps below 1e-2 on float32; float64 under this rung.
+checkpoints/fmel2 (4.24 GB), checkpoints/fme1 and checkpoints/oma1/A/C
+retained; disposition an Artin decision.

@@ -2,7 +2,7 @@
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
  "_last_accept": {
   "paths": [],
-  "reason": "AMENDMENT FIRST-MOMENT-ERASURE-LADDER-2-WALL-CAP: lock the l2f / l2j timeout-smoke receipts, the l2h DONE-path smoke and the l2f arena receipts"
+  "reason": "VERDICT FIRST-MOMENT-ERASURE-LADDER-2: lock the target-run receipts after force-add (ladder.jsonl stays machine-local, 32,880 rows)"
  },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
@@ -996,20 +996,33 @@
    "tracked": true
   },
   "logs/fmel2/fmel2.DONE": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 5,
+   "exists": true,
+   "sha256": "8221ac66be71558c921fb44cfb66f7997699aea754d917763882d6d9eddc836e",
+   "source": "results",
+   "tracked": true
   },
   "logs/fmel2/ladder.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 75759,
+   "exists": true,
+   "sha256": "0faffc61bd65c96d9581aaddd8b47c2379e27ba0cd5400153e9b6bb61015c917",
+   "source": "results",
+   "tracked": true
   },
   "logs/fmel2/ladder.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 3370446,
+   "exists": true,
+   "local_only": true,
+   "sha256": "4a2bff6a4df7ea109bb9e3b4717ec5638d4bafc0f8ac559858fa50333999c3cb",
+   "source": "results",
+   "tracked": false
   },
   "logs/fmel2/ladder.log": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 2039,
+   "exists": true,
+   "sha256": "726314a769da37076cc9a5be56c2c838bd329c357e65b5bc9dc97e59548d7e0f",
+   "source": "results",
+   "tracked": true
   },
   "logs/fmel2/smokel2a_ladder.json": {
    "bytes": 37570,
@@ -1479,8 +1492,11 @@
    "tracked": true
   },
   "logs/liverun/fmel2.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 458,
+   "exists": true,
+   "sha256": "eceab95dfb512507eef7c46e1a763844373b64f8cf669142325ea833f1fdb0d2",
+   "source": "results",
+   "tracked": true
   },
   "logs/liverun/frozenbb1.jsonl": {
    "bytes": 520,

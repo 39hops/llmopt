@@ -4,7 +4,7 @@
  "note": "Machine-readable form of PRE-REG FIRST-MOMENT-ERASURE-LADDER-2 (RESULTS L75924; the prose governs). DESIGN ONLY (Artin decision 2026-09-15 10:19 EDT). No instrument, no launch; implementation and the target run each need a separate Artin GO. FMEL1 (L75795) stays NOT-ADJUDICABLE permanently.",
  "registered": "2026-09-15 (Mac local)",
  "machine": "mac",
- "status": "INSTRUMENT COMMITTED + WALL CAP (AMENDMENT L76267); target run needs its own Artin GO: bash scratch/fmel2_launch.sh",
+ "status": "BOOKED (VERDICT RESULTS L76340): INTERMEDIATE + FUNCTION-NEUTRAL on writer A; no follow-up armed",
  "motivation": "mechanical resolution only: the FMEL1 target preflight resolved eps = 1e-2 / 1e-1 / 1 with large margin and failed eps = 1e-3 on the directional-resolution law",
  "writer": "A only: stock OneCycle seed 2, checkpoints/phase19m/m007200.pt (sha256 a0cdf244fcf44f05...), Adam step 7200, one seed lineage, byte-identical future stream",
  "continuation": {
@@ -242,5 +242,59 @@
   "preflight receipt lists identities (R:e1, cos:e1) apart from informative checks (R / cos for e1e-2, e1e-1; n_1)",
   "reference digests read from the locked receipts only (torch.load forbidden in the test)",
   "preflight-digest mismatch v the locked FMEL1 preflight -> NOT-RUN before any leg"
- ]
+ ],
+ "result": {
+  "label": "INTERMEDIATE+FUNCTION-NEUTRAL",
+  "commit": "1a5ccb7d",
+  "wall_s": 11576.7,
+  "storage_gb": 4.24,
+  "H": {
+   "n": {
+    "e1e-2": 0.17064,
+    "e1e-1": 0.30097,
+    "e1": 0.4702
+   },
+   "alpha_global": 0.2201,
+   "alpha_low": 0.24646,
+   "alpha_high": 0.19375,
+   "cosmin": 0.19066,
+   "R": {
+    "e1e-2": 36.29,
+    "e1e-1": 6.401
+   },
+   "dCE": {
+    "e1e-2": 3e-05,
+    "e1e-1": -3.1e-05,
+    "e1": 4.5e-05
+   },
+   "tail": {
+    "e1e-2": 0.9947,
+    "e1e-1": 0.9974,
+    "e1": 0.9988
+   }
+  },
+  "locus": {
+   "h_lin": 100,
+   "h_dec": 900,
+   "h_curve": 900
+  },
+  "gate": {
+   "C": 64,
+   "e1": 64,
+   "booked_end": 64
+  },
+  "substrate_rho_15420": 0.03095,
+  "priors": "11 hits / 1 miss (|alpha_low - alpha_high|(H) > 0.20 missed: 0.053)",
+  "receipts": [
+   "logs/fmel2/ladder.json",
+   "logs/fmel2/ladder.jsonl",
+   "logs/fmel2/ladder.log",
+   "logs/fmel2/fmel2.DONE",
+   "logs/liverun/fmel2.jsonl"
+  ],
+  "banked_unarmed": [
+   "matched-norm random-direction perturbation control on the same arena",
+   "SCHEDULE-PHASE-SENSITIVITY-CENSUS-0 (unbanking for design is Artin's call)"
+  ]
+ }
 }

@@ -1,0 +1,26 @@
+[liverun] armed fmel2 pid 4474 commit 1a5ccb7d worktree main:llmopt sentinel .git/liverun.lock
+[curric] D2 excision: 165028 -> 164896 rows
+[curric] D2 excision: 165028 -> 164896 rows
+[fmel2] phase provenance at 64.6 s
+[fmel2] phase anchor-and-substrate-load at 64.7 s
+[fmel2] phase preflight at 73.4 s
+/Users/artin/code/llmopt/scratch/optimizer_memory_ablation.py:183: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  sched.step()
+[fmel2] preflight PASS digests_match_fmel1 True n_1(1) 0.8942846429438963 R {'e1e-2': 1.0000131523160467, 'e1e-1': 1.0000003339361943, 'e1': 1.0} cos {'e1e-2': 0.9999855929914413, 'e1e-1': 0.9999998649674559, 'e1': 1.0}
+[fmel2] phase leg:C at 78.7 s
+[fmel2] C leg done 2741.7 s (3.0 it/s) loss_last 0.3836
+[fmel2] phase leg:e1 at 2863.0 s
+[fmel2] e1 leg done 2756.2 s (2.98 it/s) loss_last 0.3841
+[fmel2] phase leg:e1e-2 at 5670.2 s
+[fmel2] e1e-2 leg done 2791.6 s (2.94 it/s) loss_last 0.3837
+[fmel2] phase leg:e1e-1 at 8506.2 s
+[fmel2] e1e-1 leg done 2798.5 s (2.94 it/s) loss_last 0.3837
+[fmel2] phase readouts at 11347.5 s
+[fmel2] phase gates at 11352.0 s
+[gate] weights sha 685e9efa2d21b02a
+[gate] weights sha 9836c1493cb11c09
+[gate] weights sha 59a63ef5b76b21a3
+[fmel2] phase adjudication at 11576.7 s
+[fmel2] alpha_global(H) 0.22010489348699455 low 0.2464562335104986 high 0.19375355346349044 cosmin(H) 0.1906619515001688 n {'e1e-2': 0.17063548580526863, 'e1e-1': 0.3009716483175848, 'e1': 0.4701962273608846} -> INTERMEDIATE+FUNCTION-NEUTRAL [writer A only, one anchor, one seed lineage, CPU deterministic, eps >= 1e-2; gate descriptive]; gate { C 64, e1 64, booked_end 64 }
+[fmel2] DONE in 11576.7 s -> logs/fmel2/ladder.json
+[liverun] disarmed fmel2 rc 0
