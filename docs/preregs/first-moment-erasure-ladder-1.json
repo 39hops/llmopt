@@ -4,7 +4,7 @@
  "note": "Machine-readable form of PRE-REG FIRST-MOMENT-ERASURE-LADDER-1 (RESULTS L75312; the prose governs). DESIGN ONLY (Artin decision 2026-09-15 08:00 EDT). No instrument, no launch; implementation and the target run each need a separate Artin GO.",
  "registered": "2026-09-15 (Mac local)",
  "machine": "mac",
- "status": "DESIGN ONLY, unarmed (no instrument written)",
+ "status": "AMENDED (L75568) before implementation; GO IMPLEMENTATION 2026-09-15 08:51 EDT; no target launch",
  "question": "Does the first-moment perturbation remain magnitude-scaled through the full 7200 -> 15420 continuation of writer A, or does the continuation enter a generic amplification regime in which small initial differences grow and rotate independently of the erased-moment direction?",
  "writer": "A only: stock OneCycle seed 2, checkpoints/phase19m/m007200.pt (sha256 a0cdf244fcf44f05...), Adam step 7200, one seed lineage, byte-identical future stream",
  "continuation": {
@@ -113,16 +113,19 @@
  "provenance_decision": "uniform continuous rerun of all five arms from 7200; historical Stage-0 C and FME1 Z / E snapshots are reference DIGESTS for an in-line qualification only (read from the locked receipts logs/oma1/stage0.json and logs/fme1/treat.json), never data; dependency set = locked receipts + anchor file; payloads under checkpoints/oma1/A/C and checkpoints/fme1 retained until BAR 0 passes, disposition then an Artin decision",
  "bars": {
   "0_qualification": "at h in {1,5,20,100,900}: fresh C digest == Stage-0 C digest, fresh e1 == FME1 Z digest, fresh e1e-2 == FME1 E digest, bit-exact; any mismatch aborts the run -> NOT-RUN, no control rerun, no relaunch without amendment",
-  "1_first_step": "|n_1(1) - 0.894284652673395| <= 0.02 and |R_eps(1) - 1| <= 1e-3 for every eps; failure -> NOT-ADJUDICABLE (e1e-3 alone failing -> that arm UNRESOLVED, BAR 2 on the remaining three)",
-  "2_regime_at_H": "first match wins: FORGOTTEN if n_eps(H) <= 0.05 for all four; MAGNITUDE-SCALED PERSISTENT if alpha(H) >= 0.80 and cosmin(H) >= 0.90 and n_1(H) >= 0.25; NONLINEAR DIRECTION-SHARED if cosmin(H) >= 0.90 and alpha(H) < 0.80; TRAJECTORY-SENSITIVE if alpha(H) <= 0.20 and cosmin(H) <= 0.50; else INTERMEDIATE with alpha(H) and cosmin(H) quoted",
-  "3_transition_locus": "reported: h_lin = last grid h with alpha(h) >= 0.80 and cosmin(h) >= 0.90; h_dec = first grid h with cosmin(h) <= 0.50; 'not reached' legal",
-  "4_function": "per arm: NEUTRAL if |dCE_eps(H)| <= max(0.005, 3 |dCE_1e-3(H)|); HARMED above positively; HELPED above negatively; FUNCTION-NEUTRAL when all four NEUTRAL; descriptive list of (eps, h) with |dCE| > 0.005",
+  "1_first_step": "|n_1(1) - 0.894284652673395| <= 0.02 and |R_eps(1) - 1| <= 1e-3 for every eps (checked in the one-step preflight); failure -> REGIME-UNRESOLVED, the rung books NOT-ADJUDICABLE, no long leg is run",
+  "2_regime_at_H": "first match wins: FORGOTTEN if n_eps(H) <= 0.05 for all four; REGIME-UNRESOLVED if alpha(H) or cosmin(H) is UNDEFINED (zero-norm law) or the preflight failed; MAGNITUDE-SCALED PERSISTENT if 0.80 <= alpha(H) <= 1.20 and cosmin(H) >= 0.90 and n_1(H) >= 0.25; NONLINEAR DIRECTION-SHARED if cosmin(H) >= 0.90 and alpha(H) outside [0.80, 1.20]; TRAJECTORY-SENSITIVE if alpha(H) <= 0.20 and cosmin(H) <= 0.50; else INTERMEDIATE with alpha(H) and cosmin(H) quoted",
+  "3_transition_locus": "reported: h_lin = last grid h with 0.80 <= alpha(h) <= 1.20 and cosmin(h) >= 0.90; h_dec = first grid h with cosmin(h) <= 0.50; UNDEFINED horizons excluded; 'not reached' legal",
+  "4_function": "per arm: NEUTRAL iff |dCE_eps(H)| <= 0.005; HARMED if dCE > 0.005; HELPED if dCE < -0.005; FUNCTION-NEUTRAL when all four NEUTRAL; scaling / sensitivity of dCE across eps reported descriptively; descriptive list of (eps, h) with |dCE| > 0.005",
   "5_cooled_tail": "descriptive: ||dW_eps(H)|| / ||dW_eps(6000)|| per eps",
-  "label": "(BAR 2 regime, BAR 4 function) [writer A only, one anchor, one seed lineage, CPU deterministic; gate descriptive], h_lin / h_dec quoted"
+  "label": "(BAR 2 regime, BAR 4 function) [writer A only, one anchor, one seed lineage, CPU deterministic; gate descriptive], h_lin / h_dec quoted",
+  "preflight": "one step per arm from a fresh bind on the first future slice BEFORE any long leg: for every eps |R_eps(1) - 1| <= 1e-3 AND cos(dW_eps(1), dW_1(1)) >= 0.999 AND |n_1(1) - n_pred| <= 0.02; failure writes the receipt with label REGIME-UNRESOLVED and stops; on pass the long legs run from a fresh bind and every arm's h = 1 digest is asserted equal to its preflight digest (mismatch -> NOT-RUN)",
+  "zero_norm_law": "||dW|| == 0 -> n = 0, R = 0 if ||dW_1|| > 0 else UNDEFINED, ln||dW|| UNDEFINED, cosine with a zero vector UNDEFINED; alpha over the eps with defined ln, UNDEFINED with fewer than four; cosmin UNDEFINED if any pair UNDEFINED; UNDEFINED stored as JSON null + reason; never NaN",
+  "6_substrate_provenance": "descriptive only, no threshold, no effect on BAR 2 / 4: fresh C(15420) v checkpoints/gallery19m_phase_s2.pt (digest 4633efe5d376f911..., sha e7207b3bd4df541a...): rho_end = ||W_C - W_booked|| / ||W_booked - W_7200||, HELD-32 CE both, 120 gate both on the same mps device; fresh C at step 15300 v checkpoints/phase19m/m015300.pt (digest d97b19e0ff3c84e5..., sha 6a715beb6394e3b3...) in-line: rho_15300 + HELD-32 CE both"
  },
  "refuted_if": {
-  "house_reading_generic_late_growth": "BAR 2 books MAGNITUDE-SCALED PERSISTENT",
-  "chaotic_trajectory_sensitivity": "alpha(H) >= 0.80 or cosmin(H) >= 0.90"
+  "house_reading_generic_late_growth": "BAR 2 books MAGNITUDE-SCALED PERSISTENT (two-sided band)",
+  "chaotic_trajectory_sensitivity": "0.80 <= alpha(H) <= 1.20 or cosmin(H) >= 0.90"
  },
  "priors": [
   {
@@ -200,13 +203,14 @@
   "one run; no retry and no follow-up launch regardless of result"
  ],
  "consequences": {
-  "magnitude_scaled_persistent": "AMENDMENT narrowing the FME1 disclosure (late separation content-specific through H on this arena); bank OPTIMIZER-MEMORY-CROSSFOSTER-1 on reproducible states",
+  "magnitude_scaled_persistent": "AMENDMENT narrowing the FME1 disclosure to: on this arena the late separation remains amplitude-scaled and direction-shared along the registered first-moment perturbation axis through H (never 'content-specific'; that needs a separately pre-registered direction control); bank OPTIMIZER-MEMORY-CROSSFOSTER-1 on reproducible states",
   "nonlinear_direction_shared": "book; bank a finer epsilon ladder between the two epsilons where alpha departs from 1",
   "trajectory_sensitive": "book; bank (not arm) a matched-norm random-direction perturbation control on the same arena and the schedule-phase census",
   "forgotten": "book; scope the FME1 PERSISTENT reading to h <= 900 by an in-place FINDINGS note",
   "intermediate": "book, Artin decision",
   "non_neutral_arm": "named; no functional-importance claim from path divergence in any outcome",
-  "never": "writer B; a second anchor; reopening OMA1; a variance-state reset"
+  "never": "writer B; a second anchor; reopening OMA1; a variance-state reset",
+  "regime_unresolved": "book NOT-ADJUDICABLE (REGIME-UNRESOLVED); no relaunch without an amendment"
  },
  "process": [
   "instrument scratch/first_moment_erasure_ladder.py (thin sibling of scratch/first_moment_erasure.py; pins extended by the FME1 receipt sha; mode ladder; grid + ladder literals; tests; path-isolated smoke; instrument review; clean-tree audit; commit)",
@@ -216,5 +220,18 @@
  "banked_unarmed": [
   "SCHEDULE-PHASE-SENSITIVITY-CENSUS-0",
   "OPTIMIZER-MEMORY-CROSSFOSTER-1"
- ]
+ ],
+ "amendments": [
+  {
+   "name": "FIRST-MOMENT-ERASURE-LADDER-1-PRE-INSTRUMENT",
+   "results_line": 75568,
+   "date": "2026-09-15",
+   "summary": "two-sided alpha band [0.80, 1.20]; no content-specificity claim; BAR 4 absolute 0.005; no silent three-point ladder (REGIME-UNRESOLVED); frozen one-step preflight; zero-norm law; descriptive full-leg substrate provenance"
+  }
+ ],
+ "pins_added": [
+  "scratch/first_moment_erasure.py",
+  "logs/fme1/treat.json (locked sha a3d8ae834091dbc8...)"
+ ],
+ "retention": "checkpoints/fme1 and checkpoints/oma1/A/C kept until the ladder result is BOOKED; no pruning mid-live-run even if BAR 0 passes"
 }

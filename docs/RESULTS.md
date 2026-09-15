@@ -75564,3 +75564,133 @@ points), stated in the verdict.
 2. Artin GO for the target run: `bash scratch/fmel1_launch.sh` under
    liverun fmel1 at the committed HEAD.
 3. receipt-auditor and prereg-auditor before booking; /fold-book.
+
+## AMENDMENT FIRST-MOMENT-ERASURE-LADDER-1-PRE-INSTRUMENT (target: PRE-REG FIRST-MOMENT-ERASURE-LADDER-1 L75312): two-sided linear band, no content-specificity claim, absolute function bar, no silent three-point ladder, frozen one-step preflight, zero-norm law, descriptive full-leg substrate provenance (2026-09-15, Mac, before any instrument code, nothing armed)
+
+Artin decision 2026-09-15 08:51 EDT: GO FMEL1 IMPLEMENTATION after
+this narrow pre-instrument amendment; no target launch. The experiment
+is preserved exactly as designed: writer A only, A@7200, fresh uniform
+C + epsilon in {1e-3, 1e-2, 1e-1, 1} continuous CPU legs through
+15420, same stream, same 12-horizon grid. Nothing has been measured;
+no instrument existed when this was written. The machine-readable
+pre-reg (docs/preregs/first-moment-erasure-ladder-1.json) is updated
+in the same commit. SCHEDULE-PHASE-SENSITIVITY-CENSUS-0 stays
+unarmed. checkpoints/fme1 and the OMA1 A/C payloads are kept until the
+ladder result is BOOKED; no pruning mid-live-run even if BAR 0 passes.
+
+### 1. Linear scaling is a two-sided alpha condition
+
+Wherever the pre-reg used alpha >= 0.80 to mean "linear /
+magnitude-scaled", the condition is 0.80 <= alpha <= 1.20:
+
+- MAGNITUDE-SCALED PERSISTENT: 0.80 <= alpha(H) <= 1.20 and
+  cosmin(H) >= 0.90 and n_1(H) >= 0.25.
+- NONLINEAR DIRECTION-SHARED: cosmin(H) >= 0.90 and alpha(H) outside
+  [0.80, 1.20].
+- h_lin: the last grid horizon with 0.80 <= alpha(h) <= 1.20 and
+  cosmin(h) >= 0.90.
+- TRAJECTORY-SENSITIVE (unchanged): alpha(H) <= 0.20 and
+  cosmin(H) <= 0.50. FORGOTTEN and INTERMEDIATE unchanged; evaluation
+  order unchanged (FORGOTTEN, MAGNITUDE-SCALED PERSISTENT, NONLINEAR
+  DIRECTION-SHARED, TRAJECTORY-SENSITIVE, INTERMEDIATE).
+- REFUTED-IF: the house reading (a magnitude-independent late growth
+  mode) is REFUTED if BAR 2 books MAGNITUDE-SCALED PERSISTENT under the
+  two-sided band. The chaotic reading is REFUTED if
+  0.80 <= alpha(H) <= 1.20 or cosmin(H) >= 0.90.
+
+### 2. No "content-specific" consequence
+
+A scaled ladder tests amplitude dependence along ONE fixed
+first-moment-erasure axis, not content or direction specificity. The
+MAGNITUDE-SCALED PERSISTENT consequence is rewritten: an AMENDMENT
+may narrow the FME1 disclosure to "on this arena the late separation
+remains amplitude-scaled and direction-shared along the registered
+first-moment perturbation axis through H"; the phrase "content-
+specific" is not available to any outcome of this rung. Content
+specificity requires a separately pre-registered direction control
+(a matched-norm perturbation in another direction), which this rung
+does not contain.
+
+### 3. BAR 4 is independent of the smallest treatment
+
+Per arm: NEUTRAL iff |dCE_eps(H)| <= 0.005; otherwise HARMED (dCE > 0)
+or HELPED (dCE < 0). epsilon = 1e-3 is a treatment, not a null or a
+noise floor; the max(0.005, 3 |dCE_1e-3|) form is withdrawn.
+FUNCTION-NEUTRAL when all four arms are NEUTRAL. Any scaling or
+sensitivity of the function across epsilon (dCE_eps(h) against
+epsilon, the sign pattern across arms) is reported descriptively,
+separately from the bar.
+
+### 4. No silent three-point ladder; a frozen one-step preflight
+
+The pre-reg's fence "epsilon = 1e-3 alone failing BAR 1 books that
+arm UNRESOLVED and BAR 2 is adjudicated on the remaining three" is
+WITHDRAWN. If epsilon = 1e-3 (or any arm) cannot resolve the
+registered first-step treatment, BAR 2 books REGIME-UNRESOLVED; the
+alpha / cosmin definitions (four epsilons, six pairs) never change
+post hoc.
+
+One-step preflight, frozen now and mechanical in the instrument:
+before any long leg, every arm is bound from the anchor, the
+intervention applied, and exactly ONE step taken on the first future
+slice (the FME1 BAR-1 mechanic). Preflight passes iff, for every
+epsilon, |R_eps(1) - 1| <= 1e-3 (the registered BAR 1) AND
+cos(dW_eps(1), dW_1(1)) >= 0.999 (directional resolution) AND
+|n_1(1) - 0.894284652673395| <= 0.02. Preflight failure writes the
+receipt with label REGIME-UNRESOLVED and STOPS before any long leg is
+paid for; the rung books NOT-ADJUDICABLE (REGIME-UNRESOLVED) with no
+relaunch without an amendment. When preflight passes, the long legs
+are run from a fresh bind (not resumed from the preflight state) and
+the h = 1 state digest of every long leg is asserted equal to its
+preflight digest (deterministic CPU; a mismatch aborts, NOT-RUN).
+
+Zero-norm law (never a NaN-derived classification): a deviation
+norm of exactly 0 gives n_eps = 0, R_eps = 0 (when ||dW_1|| > 0) and
+R_eps = UNDEFINED (when ||dW_1|| = 0); ln ||dW_eps|| is UNDEFINED at
+0; a cosine with a zero vector is UNDEFINED. alpha(h) is computed by
+least squares over the epsilons with a defined logarithm and is
+UNDEFINED with fewer than four; cosmin(h) is UNDEFINED if any of the
+six pair cosines is UNDEFINED. An UNDEFINED alpha(H) or cosmin(H)
+books BAR 2 REGIME-UNRESOLVED (after the FORGOTTEN test, which uses
+only n_eps and is always defined); an UNDEFINED value at a non-
+terminal horizon is reported as such and excluded from h_lin / h_dec.
+Every UNDEFINED is stored as JSON null with a reason string; no NaN is
+ever written to the receipt.
+
+### 5. Descriptive full-leg substrate provenance
+
+The arena is a deterministic CPU continuation from the booked A@7200
+state (checkpoints/phase19m/m007200.pt, sha a0cdf244..., digest
+9c7c1a6f...). The receipt records, DESCRIPTIVELY, with no acceptance
+threshold and no effect on BAR 2 or BAR 4:
+
+- fresh C at step 15420 against the booked end-of-training writer A
+  model checkpoints/gallery19m_phase_s2.pt (the final file; state
+  digest 4633efe5d376f911..., sha e7207b3bd4df541a...; its 120 gate
+  re-booked 64 / 120 at L67980): rho_end = ||W_C(15420) - W_booked|| /
+  ||W_booked - W_7200||, HELD-32 CE of both, and the 120 gate of both
+  on the same mps device (descriptive);
+- fresh C at step 15300 against the booked milestone
+  checkpoints/phase19m/m015300.pt (state digest d97b19e0ff3c84e5...,
+  sha 6a715beb6394e3b3...), read in-line during the C leg without a
+  grid snapshot: rho_15300 and the HELD-32 CE of both.
+
+This frames how far the CPU continuation lands from the native mps
+run that produced the booked model; it is a substrate readout, not a
+precondition (OMA1 Stage 0 already measured the 900-step version:
+8.2e-5 of the leg on CPU).
+
+### 6. Process (unchanged in substance, restated)
+
+Thin sibling scratch/first_moment_erasure_ladder.py importing the
+OMA1 mechanics; source pins (the FME1 set plus
+scratch/first_moment_erasure.py and the locked FME1 receipt sha
+a3d8ae83...); BAR 0 in-line qualification against the locked Stage-0
+C and FME1 Z / E digests; the preflight law; disk preflight (refuse
+below 16 GB free); tests (pins, qualification refusal on a tampered
+digest, first-step law, alpha / cosmin / R with the zero-norm law on
+synthetic deviations, regime order with the two-sided band and
+REGIME-UNRESOLVED, absolute function bar, preflight law, refuse-if-
+exists, no writer-B path); path-isolated smoke; instrument review;
+full suite; commit and push; then return for a separate target-run
+GO. Nothing in this amendment launches anything.
