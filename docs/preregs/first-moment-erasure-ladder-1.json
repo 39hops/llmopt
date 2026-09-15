@@ -1,0 +1,220 @@
+{
+ "name": "FIRST-MOMENT-ERASURE-LADDER-1",
+ "program": "FIRST-MOMENT-ERASURE-LADDER-1",
+ "note": "Machine-readable form of PRE-REG FIRST-MOMENT-ERASURE-LADDER-1 (RESULTS L75312; the prose governs). DESIGN ONLY (Artin decision 2026-09-15 08:00 EDT). No instrument, no launch; implementation and the target run each need a separate Artin GO.",
+ "registered": "2026-09-15 (Mac local)",
+ "machine": "mac",
+ "status": "DESIGN ONLY, unarmed (no instrument written)",
+ "question": "Does the first-moment perturbation remain magnitude-scaled through the full 7200 -> 15420 continuation of writer A, or does the continuation enter a generic amplification regime in which small initial differences grow and rotate independently of the erased-moment direction?",
+ "writer": "A only: stock OneCycle seed 2, checkpoints/phase19m/m007200.pt (sha256 a0cdf244fcf44f05...), Adam step 7200, one seed lineage, byte-identical future stream",
+ "continuation": {
+  "steps": "7201..15420",
+  "n_steps": 8220,
+  "epochs": "epoch 1 pos 2060..5139 then epoch 2 pos 0..5139"
+ },
+ "intervention": "exp_avg <- (1 - epsilon) exp_avg at the anchor; exp_avg_sq, Adam step counter, weights, wd, scheduler state, batch order preserved",
+ "ladder": [
+  0.001,
+  0.01,
+  0.1,
+  1.0
+ ],
+ "arms": [
+  "C",
+  "e1e-3",
+  "e1e-2",
+  "e1e-1",
+  "e1"
+ ],
+ "arm_order": [
+  "C",
+  "e1",
+  "e1e-2",
+  "e1e-1",
+  "e1e-3"
+ ],
+ "device": "cpu float32, torch.use_deterministic_algorithms(True), 8 threads, arms sequential, one liverun id fmel1",
+ "horizons": [
+  1,
+  5,
+  20,
+  100,
+  300,
+  900,
+  1800,
+  3080,
+  4500,
+  6000,
+  7200,
+  8220
+ ],
+ "lr_beta1_at_horizon": {
+  "1": {
+   "lr": 0.00017323009,
+   "beta1": 0.8922568
+  },
+  "5": {
+   "lr": 0.00017310558,
+   "beta1": 0.8922983
+  },
+  "20": {
+   "lr": 0.00017263853,
+   "beta1": 0.892454
+  },
+  "100": {
+   "lr": 0.00017014389,
+   "beta1": 0.8932855
+  },
+  "300": {
+   "lr": 0.00016388398,
+   "beta1": 0.8953722
+  },
+  "900": {
+   "lr": 0.00014500164,
+   "beta1": 0.9016663
+  },
+  "1800": {
+   "lr": 0.00011692016,
+   "beta1": 0.9110269
+  },
+  "3080": {
+   "lr": 7.9246746e-05,
+   "beta1": 0.9235847
+  },
+  "4500": {
+   "lr": 4.3504813e-05,
+   "beta1": 0.9354987
+  },
+  "6000": {
+   "lr": 1.6014105e-05,
+   "beta1": 0.9446623
+  },
+  "7200": {
+   "lr": 3.4303437e-06,
+   "beta1": 0.9488569
+  },
+  "8220": {
+   "lr": 1.2e-09,
+   "beta1": 0.95
+  }
+ },
+ "terminal_horizon": 8220,
+ "readouts": {
+  "dW": "W_eps(7200+h) - W_C(7200+h), GLOBAL float64 over the 59 trained tensors, fresh fmel1 arms only",
+  "n_eps": "||dW_eps(h)|| / ||W_C(7200+h) - W_7200||",
+  "R_eps": "||dW_eps(h)|| / (eps ||dW_1(h)||)",
+  "alpha": "least-squares slope of ln||dW_eps(h)|| against ln eps over the four epsilons",
+  "cosmin": "min over the 6 epsilon pairs of cos(dW_eps(h), dW_eps'(h))",
+  "rot_eps": "cos(dW_eps(h), dW_eps(h_prev))",
+  "group_share": "share of ||dW_eps(h)||^2 per BLOCK0..7 / OUTSIDE",
+  "function": "HELD-32 CE per arm (UGC0 panel 00eb6c43...), dCE_eps = CE_eps - CE_C",
+  "gate": "120 gate at 15420 on C and e1, same mps device, descriptive only"
+ },
+ "provenance_decision": "uniform continuous rerun of all five arms from 7200; historical Stage-0 C and FME1 Z / E snapshots are reference DIGESTS for an in-line qualification only (read from the locked receipts logs/oma1/stage0.json and logs/fme1/treat.json), never data; dependency set = locked receipts + anchor file; payloads under checkpoints/oma1/A/C and checkpoints/fme1 retained until BAR 0 passes, disposition then an Artin decision",
+ "bars": {
+  "0_qualification": "at h in {1,5,20,100,900}: fresh C digest == Stage-0 C digest, fresh e1 == FME1 Z digest, fresh e1e-2 == FME1 E digest, bit-exact; any mismatch aborts the run -> NOT-RUN, no control rerun, no relaunch without amendment",
+  "1_first_step": "|n_1(1) - 0.894284652673395| <= 0.02 and |R_eps(1) - 1| <= 1e-3 for every eps; failure -> NOT-ADJUDICABLE (e1e-3 alone failing -> that arm UNRESOLVED, BAR 2 on the remaining three)",
+  "2_regime_at_H": "first match wins: FORGOTTEN if n_eps(H) <= 0.05 for all four; MAGNITUDE-SCALED PERSISTENT if alpha(H) >= 0.80 and cosmin(H) >= 0.90 and n_1(H) >= 0.25; NONLINEAR DIRECTION-SHARED if cosmin(H) >= 0.90 and alpha(H) < 0.80; TRAJECTORY-SENSITIVE if alpha(H) <= 0.20 and cosmin(H) <= 0.50; else INTERMEDIATE with alpha(H) and cosmin(H) quoted",
+  "3_transition_locus": "reported: h_lin = last grid h with alpha(h) >= 0.80 and cosmin(h) >= 0.90; h_dec = first grid h with cosmin(h) <= 0.50; 'not reached' legal",
+  "4_function": "per arm: NEUTRAL if |dCE_eps(H)| <= max(0.005, 3 |dCE_1e-3(H)|); HARMED above positively; HELPED above negatively; FUNCTION-NEUTRAL when all four NEUTRAL; descriptive list of (eps, h) with |dCE| > 0.005",
+  "5_cooled_tail": "descriptive: ||dW_eps(H)|| / ||dW_eps(6000)|| per eps",
+  "label": "(BAR 2 regime, BAR 4 function) [writer A only, one anchor, one seed lineage, CPU deterministic; gate descriptive], h_lin / h_dec quoted"
+ },
+ "refuted_if": {
+  "house_reading_generic_late_growth": "BAR 2 books MAGNITUDE-SCALED PERSISTENT",
+  "chaotic_trajectory_sensitivity": "alpha(H) >= 0.80 or cosmin(H) >= 0.90"
+ },
+ "priors": [
+  {
+   "id": 1,
+   "claim": "BAR 0 passes for all three qualified arms",
+   "p": 0.9
+  },
+  {
+   "id": 2,
+   "claim": "BAR 1 passes",
+   "p": 0.9
+  },
+  {
+   "id": 3,
+   "claim": "BAR 2: TRAJECTORY-SENSITIVE 0.35 / INTERMEDIATE 0.35 / NONLINEAR DIRECTION-SHARED 0.10 / MAGNITUDE-SCALED PERSISTENT 0.10 / FORGOTTEN 0.10",
+   "p": 0.35
+  },
+  {
+   "id": 4,
+   "claim": "h_lin <= 100",
+   "p": 0.8
+  },
+  {
+   "id": 5,
+   "claim": "h_dec <= 900",
+   "p": 0.7
+  },
+  {
+   "id": 6,
+   "claim": "alpha(H) <= 0.50",
+   "p": 0.6
+  },
+  {
+   "id": 7,
+   "claim": "FUNCTION-NEUTRAL (all four arms)",
+   "p": 0.7
+  },
+  {
+   "id": 8,
+   "claim": "n_1(H) >= 0.25",
+   "p": 0.5
+  },
+  {
+   "id": 9,
+   "claim": "BAR 5 ratio in [0.9, 1.1] for every eps",
+   "p": 0.6
+  },
+  {
+   "id": 10,
+   "claim": "wall <= 5 h",
+   "p": 0.7
+  }
+ ],
+ "cost": {
+  "per_arm_min": 44,
+  "arms": 5,
+  "prior_wall_h": 4.0,
+  "basis": "FME1: 900 steps in 291 s per arm at 3.1 it/s, 8 threads"
+ },
+ "storage": {
+  "snapshots": "checkpoints/fmel1/A/<arm>/h<hhhh>.pt, model-only float32 (75.7 MB) at the 12 grid horizons x 5 arms = 4.5 GB; optimizer blob at H only for every arm (0.76 GB); ~5.3 GB untracked, shas + digests in the receipt",
+  "receipts": [
+   "logs/fmel1/ladder.json",
+   "logs/fmel1/ladder.jsonl",
+   "logs/fmel1/ladder.log",
+   "logs/liverun/fmel1.jsonl"
+  ],
+  "preflight_min_free_gb": 16
+ },
+ "stop_law": [
+  "killed and NOT-RUN at 8 h (2x prior wall)",
+  "BAR 0 mismatch aborts the whole run -> NOT-RUN, partial receipts kept",
+  "any pin drift refuses at launch, nothing created",
+  "live-run law for the whole wall",
+  "one run; no retry and no follow-up launch regardless of result"
+ ],
+ "consequences": {
+  "magnitude_scaled_persistent": "AMENDMENT narrowing the FME1 disclosure (late separation content-specific through H on this arena); bank OPTIMIZER-MEMORY-CROSSFOSTER-1 on reproducible states",
+  "nonlinear_direction_shared": "book; bank a finer epsilon ladder between the two epsilons where alpha departs from 1",
+  "trajectory_sensitive": "book; bank (not arm) a matched-norm random-direction perturbation control on the same arena and the schedule-phase census",
+  "forgotten": "book; scope the FME1 PERSISTENT reading to h <= 900 by an in-place FINDINGS note",
+  "intermediate": "book, Artin decision",
+  "non_neutral_arm": "named; no functional-importance claim from path divergence in any outcome",
+  "never": "writer B; a second anchor; reopening OMA1; a variance-state reset"
+ },
+ "process": [
+  "instrument scratch/first_moment_erasure_ladder.py (thin sibling of scratch/first_moment_erasure.py; pins extended by the FME1 receipt sha; mode ladder; grid + ladder literals; tests; path-isolated smoke; instrument review; clean-tree audit; commit)",
+  "Artin GO for the target run: bash scratch/fmel1_launch.sh under liverun fmel1 at the committed HEAD",
+  "receipt-auditor + prereg-auditor before booking; /fold-book"
+ ],
+ "banked_unarmed": [
+  "SCHEDULE-PHASE-SENSITIVITY-CENSUS-0",
+  "OPTIMIZER-MEMORY-CROSSFOSTER-1"
+ ]
+}

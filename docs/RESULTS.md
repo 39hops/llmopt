@@ -75308,3 +75308,259 @@ persistence can be separated from generic late growth; it is not
 armed here. Nothing reopens OMA1 or touches writer B. No follow-up
 launches. checkpoints/fme1 (0.87 GB) retained pending a handoff
 decision; the five pinned A/C controls stay.
+
+## PRE-REG FIRST-MOMENT-ERASURE-LADDER-1: does the first-moment perturbation stay magnitude-scaled through the full 7200 -> 15420 continuation of writer A, or does the leg enter a generic amplification regime in which small initial differences grow and rotate independently of the erased-moment direction (2026-09-15, Mac, DESIGN ONLY, nothing armed)
+
+Artin decision 2026-09-15 08:00 EDT: GO DESIGN + PREREG ONLY for the
+longer-horizon / perturbation-magnitude follow-up to
+FIRST-MOMENT-ERASURE-1 (VERDICT L75193). No implementation, no
+training launch. SCHEDULE-PHASE-SENSITIVITY-CENSUS-0 stays banked and
+unarmed. checkpoints/fme1 and the five pinned OMA1 A/C controls stay
+intact until this pre-reg's dependency set is fixed (below); disk
+pressure does not justify pruning them. Machine-readable form:
+docs/preregs/first-moment-erasure-ladder-1.json (the prose governs).
+
+### Question and what the earlier receipts already say
+
+FIRST-MOMENT-ERASURE-1 booked, on writer A at 7200 over 900 steps: the
+epsilon = 1 arm (exp_avg <- 0) and the epsilon = 1e-2 twin have
+collinear, proportional deviations through h = 5 (r 1.00) and h = 20
+(0.99); by h = 900 the twin's deviation has grown faster than the
+erasure's (6.1x v 4.6x from h = 100), the two deviations are nearly
+orthogonal (cos 0.07) with the same group-share profile, and the
+HELD-32 CE is unchanged in every arm. That verdict's disclosure stands
+and is not re-litigated here: the h = 900 separation is NOT attributed
+to the erased content specifically. This rung asks the next question,
+on the same arena and nothing wider: across a ladder of perturbation
+amplitudes and the whole remaining schedule, is the response of the
+continuation to a first-moment perturbation (i) magnitude-scaled and
+persistent, (ii) nonlinear in magnitude but shared in direction,
+(iii) magnitude-insensitive and direction-decorrelating (trajectory
+sensitivity), or (iv) eventually forgotten. Function is a separate
+axis throughout; path divergence is never read as functional
+importance.
+
+### Instrument
+
+- Writer A only: stock OneCycle seed 2, anchor
+  checkpoints/phase19m/m007200.pt (sha256 a0cdf244..., state digest
+  9c7c1a6f..., Adam step 7200), the same seed lineage, the same
+  byte-identical future stream (epoch 1 positions 2060..5139, then
+  epoch 2 positions 0..5139; the trainer's stream law, leg-slices
+  digest recorded in the receipt and asserted equal to the Stage-0
+  digest on the first 900 slices).
+- Continuation: 7201..15420, 8220 steps, the full remaining schedule
+  (OneCycle over 15,420 total steps; lr at the anchor 1.7323e-4,
+  1.45e-4 at h = 900, 7.92e-5 at the epoch boundary h = 3080,
+  1.60e-5 at h = 6000, 1.2e-9 at h = 8220; beta1 under the OneCycle
+  momentum anneal 0.89226 at row 7201, 0.90167 at h = 900, 0.92358 at
+  h = 3080, 0.94466 at h = 6000, 0.95 at h = 8220; all reconstructed
+  from the stock scheduler, row 7201 equal to the Stage-0 parity row).
+  LR and beta1 at every grid horizon are recorded in the receipt
+  descriptively; no bar reads them.
+- Intervention family, applied once at the anchor to exp_avg only:
+  exp_avg <- (1 - epsilon) exp_avg, with exp_avg_sq, the Adam step
+  counter, the weights, weight decay, the scheduler state and the
+  batch order preserved (the FME1 apply_arm mechanic; epsilon = 1 is
+  the FME1 Z arm, epsilon = 1e-2 is the FME1 E arm). Frozen ladder:
+  epsilon in {1e-3, 1e-2, 1e-1, 1} plus the native control C
+  (epsilon = 0). Five arms.
+- Device and determinism: CPU float32,
+  torch.use_deterministic_algorithms(True), 8 threads, the Stage-0
+  torch / numpy law, the same code path as FME1 (every shared source
+  pinned by exact SHA256 as in AMENDMENT L75065, extended by the
+  FME1 receipt sha). Arms run SEQUENTIALLY in one process per arm
+  under one liverun id (fmel1); no arm is paired across devices.
+- Horizon grid (frozen; 12 points): h in {1, 5, 20, 100, 300, 900,
+  1800, 3080, 4500, 6000, 7200, 8220}. The first five are the FME1
+  grid (qualification points, below); 300 sits between the last
+  collinear point and the first decorrelated one; 3080 is the epoch-1
+  boundary; 7200 and 8220 are the last two points of the cooled
+  schedule (lr 3.4e-6 and 1.2e-9). H = 8220 is the terminal horizon
+  for every bar.
+- Readouts at every grid horizon, every epsilon, GLOBAL float64 over
+  the 59 trained tensors, all from the fresh fmel1 arms only:
+  dW_eps(h) = W_eps(7200 + h) - W_C(7200 + h);
+  n_eps(h) = ||dW_eps(h)|| / ||W_C(7200 + h) - W_7200|| (the FME1
+  control-normalized path metric);
+  R_eps(h) = ||dW_eps(h)|| / (epsilon ||dW_1(h)||) (linear-response
+  ratio; 1 under exact magnitude scaling);
+  alpha(h) = least-squares slope of ln ||dW_eps(h)|| against
+  ln epsilon over the four epsilons (1 = magnitude-scaled, 0 =
+  magnitude-insensitive);
+  cosmin(h) = the minimum over the six epsilon pairs of
+  cos(dW_eps(h), dW_eps'(h));
+  rot_eps(h) = cos(dW_eps(h), dW_eps(h_prev)) (self-rotation between
+  consecutive grid points);
+  the per-group share of ||dW_eps(h)||^2 (BLOCK0..7, OUTSIDE);
+  HELD-32 CE for every arm (UGC0 panel 00eb6c43..., the FME1 held_ce)
+  and dCE_eps(h) = CE_eps - CE_C;
+  a descriptive 120 gate at 15420 on C and epsilon = 1 only, both on
+  the same mps device, not read by any bar.
+- First-step law (extension of BAR-1, exact under the sealed
+  a_carry_given_batch law): the first-step deviation for epsilon is
+  -lr beta1 epsilon m / (bc1 D) with D independent of exp_avg, so
+  R_eps(1) = 1 exactly up to float32 rounding, and n_1(1) equals the
+  sealed 0.894284652673395. The epsilon = 1e-3 first-step deviation
+  is about 1.2e-4 in norm (roughly ten float32 ulps of a typical
+  weight per element); BAR 1 checks it is resolved.
+
+### Qualification, provenance and the staged-versus-uniform decision
+
+Decision (registered before implementation): ALL five arms are rerun
+uniformly from 7200 as continuous 8220-step legs in the new
+instrument. No historical continued arm (Stage-0 C, FME1 Z or E) is
+resumed, extended, or used as data in any readout: every number in the
+verdict comes from the fmel1 receipt. The historical snapshots serve
+exactly one purpose, as REFERENCE DIGESTS for an in-line
+qualification: because the leg is CPU-deterministic, the fresh C arm
+must reproduce the pinned Stage-0 C state digests, the fresh
+epsilon = 1 arm the FME1 Z digests, and the fresh epsilon = 1e-2 arm
+the FME1 E digests, bit-exact, at h = 1 / 5 / 20 / 100 / 900. Those
+digests are read from the LOCKED receipts (logs/oma1/stage0.json,
+logs/fme1/treat.json), so the run's dependency set is the locked
+receipts plus the anchor file, not the checkpoint payloads; the
+payloads under checkpoints/oma1/A/C and checkpoints/fme1 are retained
+as fallback evidence until fmel1's qualification passes, and their
+disposition after that is a separate Artin decision. A separate
+h <= 900 qualification stage would cost the same 900 steps per
+qualified arm and add a resume-from-snapshot provenance step; folding
+the check into the first 900 steps of each continuous arm costs
+nothing extra and keeps provenance symmetric across the five arms.
+Arm order: C, then epsilon = 1, 1e-2, 1e-1, 1e-3, so that the three
+qualified arms and their in-line checks land first.
+
+### BARS (numbers on the page; H = 8220)
+
+- BAR 0 (qualification, in-line, per arm): at every h in {1, 5, 20,
+  100, 900}, the fresh C state digest equals the Stage-0 C digest, the
+  fresh epsilon = 1 digest equals the FME1 Z digest, the fresh
+  epsilon = 1e-2 digest equals the FME1 E digest, all bit-exact. Any
+  mismatch aborts the run at that point: the rung books NOT-RUN, no
+  control rerun, no patching, no relaunch without an amendment.
+- BAR 1 (first-step law): |n_1(1) - 0.894284652673395| <= 0.02 and
+  |R_eps(1) - 1| <= 1e-3 for every epsilon. Failure: the intervention
+  is not the registered one; the rung books NOT-ADJUDICABLE.
+- BAR 2 (regime at H; primary), evaluated in this order, first match
+  wins:
+  FORGOTTEN if n_eps(H) <= 0.05 for all four epsilons;
+  MAGNITUDE-SCALED PERSISTENT if alpha(H) >= 0.80 and cosmin(H) >= 0.90
+  and n_1(H) >= 0.25;
+  NONLINEAR DIRECTION-SHARED if cosmin(H) >= 0.90 and alpha(H) < 0.80;
+  TRAJECTORY-SENSITIVE if alpha(H) <= 0.20 and cosmin(H) <= 0.50;
+  INTERMEDIATE otherwise, booked with alpha(H) and cosmin(H) quoted
+  (the "partially scaled, decorrelating" region is INTERMEDIATE by
+  construction, not a fifth label).
+- BAR 3 (transition locus; registered definitions, reported not
+  adjudicated): h_lin = the last grid horizon with alpha(h) >= 0.80 and
+  cosmin(h) >= 0.90 (the end of the linear-response regime); h_dec =
+  the first grid horizon with cosmin(h) <= 0.50 (the onset of
+  direction decorrelation). "Not reached" is a legal value for either.
+- BAR 4 (function; separate axis, per arm): NEUTRAL_eps if
+  |dCE_eps(H)| <= max(0.005, 3 |dCE_1e-3(H)|); HARMED above,
+  positively; HELPED above, negatively. The rung is FUNCTION-NEUTRAL
+  when all four arms are NEUTRAL; otherwise the non-neutral arms are
+  named. Descriptive: every (eps, h) with |dCE_eps(h)| > 0.005.
+- BAR 5 (descriptive, cooled tail): ||dW_eps(H)|| / ||dW_eps(6000)||
+  per epsilon (lr < 1.6e-5 from h = 6000; a ratio near 1 means the
+  cooled schedule freezes the separation, a ratio far from 1 means it
+  is still moving at lr 1e-6..1e-9).
+- Label: (BAR 2 regime, BAR 4 function) [writer A only, one anchor,
+  one seed lineage, CPU deterministic; gate descriptive], with BAR 3's
+  h_lin / h_dec quoted.
+
+### REFUTED-IF
+
+The house reading carried from the FME1 disclosure is that the late
+separation is a magnitude-independent growth mode of the leg. It is
+REFUTED if BAR 2 books MAGNITUDE-SCALED PERSISTENT (the erased
+content's own direction and magnitude persist to H). The opposite
+reading (the leg is trajectory-sensitive in the chaotic sense) is
+REFUTED if alpha(H) >= 0.80 or if cosmin(H) >= 0.90.
+
+### REGISTERED PRIORS (house, on the record)
+
+1. BAR 0 passes for all three qualified arms: 0.90.
+2. BAR 1 passes: 0.90.
+3. BAR 2 at H: TRAJECTORY-SENSITIVE 0.35, INTERMEDIATE 0.35,
+   NONLINEAR DIRECTION-SHARED 0.10, MAGNITUDE-SCALED PERSISTENT 0.10,
+   FORGOTTEN 0.10.
+4. h_lin <= 100: 0.80. h_dec <= 900: 0.70.
+5. alpha(H) <= 0.50: 0.60.
+6. FUNCTION-NEUTRAL (all four arms): 0.70.
+7. n_1(H) >= 0.25: 0.50.
+8. BAR 5 ratio in [0.9, 1.1] for every epsilon: 0.60.
+9. Wall <= 5 h: 0.70.
+
+### Cost, storage, stop law
+
+- Wall: FME1 ran 900 steps in 291 s per arm (3.1 it/s, 8 threads);
+  8220 steps is about 44 min per arm, five arms sequential about
+  3.7 h, plus 12 held-CE evaluations and 12 snapshot writes per arm
+  (seconds each) and two descriptive gates at the end (minutes).
+  Prior wall 4 h. Sequential by law: the machine has 11 cores and the
+  8-thread determinism envelope is pinned, so arms are not run
+  concurrently.
+- Storage: model-only float32 snapshots (75.7 MB) at the 12 grid
+  horizons for the five arms = 60 files, 4.5 GB, under
+  checkpoints/fmel1/A/<arm>/h<hhhh>.pt (path-isolated, refuse-if-
+  exists); the optimizer blob is saved at H only, for every arm
+  (5 x 151 MB, 0.76 GB); about 5.3 GB total, untracked, shas and state
+  digests in the receipt. Receipts: logs/fmel1/ladder.json / .jsonl /
+  .log, logs/liverun/fmel1.jsonl, force-added and locked at booking.
+  Preflight refuses below 16 GB free (3x the plan; 29 GB free now).
+  A pruning manifest for the intermediate snapshots is an Artin
+  decision after booking.
+- Stop law: (a) killed and booked NOT-RUN at 8 h (2x the prior wall);
+  (b) BAR 0 mismatch aborts the whole run, NOT-RUN, partial receipts
+  kept as the record; (c) any pin drift (shared sources, leg-path
+  symbols, locked receipt shas, anchor sha and digest, thread /
+  runtime law) refuses at launch, nothing created; (d) the live-run
+  law holds for the whole wall (no commits to the checkout); (e) one
+  run, no retry and no follow-up launch regardless of result; a
+  second attempt is a separate amendment with its own GO.
+
+### Consequences (as registered)
+
+- MAGNITUDE-SCALED PERSISTENT: the FME1 disclosure is narrowed in an
+  AMENDMENT (the late separation on this arena IS content-specific
+  through H); bank OPTIMIZER-MEMORY-CROSSFOSTER-1 on reproducible
+  states as the next rung.
+- NONLINEAR DIRECTION-SHARED: book; bank a finer epsilon ladder
+  between the two epsilons where alpha departs from 1.
+- TRAJECTORY-SENSITIVE: book; the late growth is generic; bank, not
+  arm, a same-arena control with a random-direction perturbation of
+  matched first-step norm (the direction control this family has
+  lacked) and the schedule-phase census.
+- FORGOTTEN: book; the FME1 PERSISTENT reading is scoped to h <= 900
+  by an in-place FINDINGS note.
+- INTERMEDIATE: book, Artin decision.
+- Any non-NEUTRAL arm: named; no functional-importance claim is made
+  from path divergence in any outcome.
+- Never: writer B; a second anchor; reopening OMA1; a variance-state
+  reset.
+
+### Fences
+
+Writer A only, anchor 7200 only, one seed lineage, one future stream,
+CPU float32 deterministic; no claim beyond this arena. Single seed:
+every direction claim carries the single-seed fence. The 120 gate is
+descriptive and cross-device to nothing. The eight-group share and
+the rotation readouts are descriptive. epsilon = 1e-3 sits near the
+float32 resolution of the weights; BAR 1 is the resolvability check
+and a BAR 1 failure at 1e-3 alone books that arm UNRESOLVED and
+adjudicates BAR 2 on the remaining three epsilons (alpha over three
+points), stated in the verdict.
+
+### Process (each step its own act; none started)
+
+1. Instrument: scratch/first_moment_erasure_ladder.py, a thin sibling
+   of scratch/first_moment_erasure.py importing the OMA1 mechanics,
+   pins extended by the FME1 receipt sha; mode ladder; grid and ladder
+   as literals; tests (pins, in-line qualification refusal on a
+   tampered digest, first-step law, alpha / cosmin / R readouts on
+   synthetic deviations, regime adjudication order, refuse-if-exists);
+   path-isolated smoke; instrument review; clean-tree audit; commit.
+2. Artin GO for the target run: `bash scratch/fmel1_launch.sh` under
+   liverun fmel1 at the committed HEAD.
+3. receipt-auditor and prereg-auditor before booking; /fold-book.
