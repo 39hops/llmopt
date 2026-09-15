@@ -1,0 +1,2 @@
+{"event": "armed", "run_id": "fme1", "pid": 74931, "launch_commit": "f148c3b8d3edc6c3ac3ecd5d0f26165d557c06b8", "launch_commit_short": "f148c3b8", "worktree_role": "main", "worktree_name": "llmopt", "cwd_relative": ".", "started_utc": "2026-09-15T11:11:33+00:00", "dirty_at_arm": false, "sentinel": ".git/liverun.lock"}
+{"event": "disarmed", "run_id": "fme1", "pid": 74931, "rc": 0, "ended_utc": "2026-09-15T11:26:04+00:00", "sentinel": ".git/liverun.lock"}

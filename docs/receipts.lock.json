@@ -2,7 +2,7 @@
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
  "_last_accept": {
   "paths": [],
-  "reason": "AMENDMENT FIRST-MOMENT-ERASURE-1-INSTRUMENT: lock the FME1 smoke receipts, refusal logs and the OMA1 prune manifest"
+  "reason": "VERDICT FIRST-MOMENT-ERASURE-1: lock the target-run receipts after force-add"
  },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
@@ -883,6 +883,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/fme1/fme1.DONE": {
+   "bytes": 5,
+   "exists": true,
+   "sha256": "8221ac66be71558c921fb44cfb66f7997699aea754d917763882d6d9eddc836e",
+   "source": "results",
+   "tracked": true
+  },
   "logs/fme1/smokefme2_treat.json": {
    "bytes": 17607,
    "exists": true,
@@ -908,6 +915,27 @@
    "bytes": 227,
    "exists": true,
    "sha256": "7044aa002c65839c3efab813319195be8f12e91631ee5fd7a00b271ca1d2ef0e",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/fme1/treat.json": {
+   "bytes": 22249,
+   "exists": true,
+   "sha256": "a3d8ae834091dbc8071048aa25a8358ae0563f2ba33aead626e5b7ba10209856",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/fme1/treat.jsonl": {
+   "bytes": 157140,
+   "exists": true,
+   "sha256": "a163568b3ecef48c8c271a9c37d487c7e636f7719873e0bcfd04913210517388",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/fme1/treat.log": {
+   "bytes": 1178,
+   "exists": true,
+   "sha256": "d465b4c256badb0be913e284e95dea0c2be107aa609ff105a16164b32afa30ae",
    "source": "results",
    "tracked": true
   },
@@ -1270,6 +1298,13 @@
    "bytes": 518,
    "exists": true,
    "sha256": "64dfb095d3ff57ebf70c4c6ab94129aa75bbcf15d5a4d22077d375223b407465",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/liverun/fme1.jsonl": {
+   "bytes": 458,
+   "exists": true,
+   "sha256": "7112e2c240c46a7a8592b48e6ec99fdb4ab89a12a4aa8510b9bdfe6d53c3c8cd",
    "source": "results",
    "tracked": true
   },

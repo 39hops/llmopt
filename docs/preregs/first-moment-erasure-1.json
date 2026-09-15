@@ -4,7 +4,7 @@
  "note": "Machine-readable form of PRE-REG FIRST-MOMENT-ERASURE-1 (the prose governs). DESIGN ONLY (Artin decision 2026-09-14 22:08 EDT). Not a rescue or relabel of OPTIMIZER-MEMORY-ABLATION-1 (NOT-ADJUDICABLE). Separate Artin GO required before any treatment state.",
  "registered": "2026-09-14 (Mac local)",
  "machine": "mac",
- "status": "instrument implemented and sealed (AMENDMENT -INSTRUMENT L75065); NOT armed; target-run GO required",
+ "status": "BOOKED (VERDICT RESULTS L75193): PERSISTENT-SPECIFIC + FUNCTION-NEUTRAL on writer A; no follow-up armed",
  "writer": "A only: stock OneCycle seed 2, checkpoints/phase19m/m007200.pt (sha256 a0cdf244fcf44f05...), Adam step 7200",
  "arena_validation": "OMA1 Stage 0 (logs/oma1/stage0.json): native CPU and mps resumes reproduce the booked m008100 to 8.2e-5 / 2.4e-5 of the leg; C = C' bit-exact; scheduler parity exact; P0.c 1.05e-3 float32 / 2.1e-12 float64",
  "leg": {
@@ -129,5 +129,39 @@
   "logs/oma1/smokefme2_desk_bar1.json"
  ],
  "prune_manifest": "logs/oma1/prune_manifest.json",
- "launch": "bash scratch/fme1_launch.sh (liverun fme1)"
+ "launch": "bash scratch/fme1_launch.sh (liverun fme1)",
+ "result": {
+  "label": "PERSISTENT-SPECIFIC+FUNCTION-NEUTRAL",
+  "n_pred": 0.894284652673395,
+  "n_Z": {
+   "1": 0.89428,
+   "5": 0.63391,
+   "20": 0.44097,
+   "100": 0.23344,
+   "900": 0.45162
+  },
+  "n_E": {
+   "1": 0.008943,
+   "5": 0.006339,
+   "20": 0.004448,
+   "100": 0.002623,
+   "900": 0.016113
+  },
+  "dCE_Z_900": -0.001348,
+  "dCE_E_900": 0.00018,
+  "gate": {
+   "C": 53,
+   "Z": 56
+  },
+  "wall_s": 804.7,
+  "commit": "f148c3b8",
+  "receipts": [
+   "logs/fme1/treat.json",
+   "logs/fme1/treat.jsonl",
+   "logs/fme1/treat.log",
+   "logs/fme1/fme1.DONE",
+   "logs/liverun/fme1.jsonl"
+  ],
+  "disclosure": "h = 900 separation not attributable to the erased content specifically (twin grows faster 100 -> 900; deviations nearly orthogonal at 900; same group profile)"
+ }
 }

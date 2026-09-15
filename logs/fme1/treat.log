@@ -1,0 +1,10 @@
+[liverun] armed fme1 pid 74931 commit f148c3b8 worktree main:llmopt sentinel .git/liverun.lock
+[curric] D2 excision: 165028 -> 164896 rows
+[curric] D2 excision: 165028 -> 164896 rows
+/Users/artin/code/llmopt/scratch/optimizer_memory_ablation.py:183: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  sched.step()
+[gate] weights sha 8a08eb1a469df122
+[gate] weights sha 6a62bd2a5c1382e3
+[fme1] A: {'bar1': 'PASS', 'path': 'PERSISTENT', 'sensitivity': 'SPECIFIC', 'function': 'NEUTRAL', 'r': {'1': 0.9999868478569346, '5': 0.9999701515645889, '20': 0.9913028150341125, '100': 0.8899653857871007, '900': 0.2802739858381581}, 'argmin_h_nZ': 100} gate C 53 Z 56 -> PERSISTENT-SPECIFIC+FUNCTION-NEUTRAL [writer A only, one anchor, one seed lineage; gate descriptive]
+[fme1] done in 804.7 s -> logs/fme1/treat.json
+[liverun] disarmed fme1 rc 0

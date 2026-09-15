@@ -75189,3 +75189,122 @@ HELD-32 CE at ten arm-horizons, two 120 gates; snapshots about 0.9 GB
 under checkpoints/fme1/; disk 30 GiB free. Launch: `bash
 scratch/fme1_launch.sh` (refuses on a dirty tree twice: the
 instrument and liverun). Nothing armed.
+
+## VERDICT FIRST-MOMENT-ERASURE-1: PERSISTENT-SPECIFIC + FUNCTION-NEUTRAL on writer A (single writer, one anchor) — the erased first moment is reproduced on the first step exactly (n_Z(1) = 0.894284643 v the sealed 0.894284653), the deviation from the pinned control never decays (n_Z 0.894 / 0.634 / 0.441 / 0.233 / 0.452 at h = 1 / 5 / 20 / 100 / 900), the 1 % twin stays small (n_E(900) 0.016), held CE unchanged (dCE_Z(900) -0.0013); the h = 900 separation is not attributable to the erased content specifically (2026-09-15, Mac)
+
+Pre-registration: PRE-REG FIRST-MOMENT-ERASURE-1 (L74943) + AMENDMENT
+-INSTRUMENT (L75065). Artin GO 2026-09-15 07:11 EDT (target run).
+Run: `bash scratch/fme1_launch.sh` under liverun fme1 at f148c3b8
+(clean tree); wall 804.7 s (13.4 min; Z leg 291 s, E leg 287 s at
+3.1 it/s, 8 threads, deterministic algorithms); receipts
+logs/fme1/treat.json, logs/fme1/treat.jsonl (1,800 rows: writer A,
+arms Z and E, cpu, steps 7201..8100 each), logs/fme1/treat.log,
+logs/fme1/fme1.DONE, logs/liverun/fme1.jsonl; snapshots
+checkpoints/fme1/A/{Z,E}/h{0001,0005,0020,0100,0900}.pt (0.87 GB,
+untracked, shas and digests in the receipt). Receipt-auditor (Opus,
+read-only): no blockers, no should-fixes; every pin, digest, readout
+and CE recomputed from the artifacts to the last digit; one
+disclosure item (below) and three low notes (the receipt inherits
+OMA's writer table with B listed though B was never run; device_mps
+is the gate device only; smoke receipts share logs/fme1/ under their
+own names).
+
+### Pre-treatment refusals (all passed before any Z / E state)
+
+14 shared-source pins byte-identical; leg-path symbol sha 9dfcc6a0
+equal to the pinned value; Stage-0 and desk receipt shas equal to the
+source literals and the lock; OMA source sha at Stage 0 (04353502)
+on both receipts; anchor checkpoints/phase19m/m007200.pt sha a0cdf244
+and state digest 9c7c1a6f equal to the Stage-0 bind; leg-slices
+digest equal to Stage-0's; sealed n_pred 0.894284652673395 on both
+receipts; threads 8, torch 2.12.1 and numpy equal to the Stage-0
+receipt; the five pinned C snapshots OK by state digest and file sha;
+26 corpus file shas recorded. Both arms touched 59 tensors; Z's
+step-8100 optimizer state carries a re-accumulated nonzero exp_avg,
+exp_avg_sq intact, every step counter 8100.
+
+### Measured (writer A; GLOBAL float64; the pinned Stage-0 C control)
+
+| h | n_Z | n_E | r = n_Z / (100 n_E) | dCE_Z | dCE_E | CE_C | leg_cos Z | leg_cos E |
+|---|---|---|---|---|---|---|---|---|
+| 1 | 0.89428 | 0.008943 | 1.0000 | +0.00001 | -0.000001 | 0.40225 | 0.448 | 1.000 |
+| 5 | 0.63391 | 0.006339 | 1.0000 | -0.00079 | -0.000018 | 0.40037 | 0.773 | 1.000 |
+| 20 | 0.44097 | 0.004448 | 0.9913 | -0.00221 | -0.000033 | 0.40261 | 0.898 | 1.000 |
+| 100 | 0.23344 | 0.002623 | 0.8900 | -0.00021 | -0.000000 | 0.39517 | 0.972 | 1.000 |
+| 900 | 0.45162 | 0.016113 | 0.2803 | -0.00135 | +0.00018 | 0.39050 | 0.898 | 0.99987 |
+
+BAR-1 residual n_Z(1) - n_pred = -9.7e-9. Absolute deviations
+||W_Z - W_C||: 0.124 / 0.496 / 0.968 / 1.314 / 6.007; control leg
+||W_C - W_7200||: 0.139 / 0.783 / 2.195 / 5.630 / 13.302. argmin_h
+n_Z = 100. Group share of the Z deviation at h = 900: BLOCK0..7
+0.124 / 0.150 / 0.165 / 0.165 / 0.147 / 0.115 / 0.089 / 0.044,
+OUTSIDE 0.000; E's profile at 900 is the same shape (0.130 / 0.156 /
+0.163 / 0.158 / 0.151 / 0.115 / 0.088 / 0.040). Directional readouts
+(descriptive): cos(Z - C, E - C) = 1.000 / 1.000 / 0.992 / 0.903 /
+0.069 at the five horizons; cos of Z's deviation with its previous-
+horizon deviation 0.998 / 0.908 / 0.649 / 0.141; cos(Z - C, C - W_7200)
+= -0.900 / -0.638 / -0.455 / -0.175 / -0.232.
+
+Descriptive 120 gate at 8100 (same mps device for both, not used in
+any bar): C 53 {3:19, 4:4, 5:14, 6:7, 7:9} (equal to the booked
+m008100 gate), Z 56 {3:21, 4:4, 5:14, 6:7, 7:10}; the +3 is inside the
+7-solve fence and is not read as direction.
+
+### Adjudication (frozen bars)
+
+- BAR 1 (applied): |n_Z(1) - 0.894284652673395| = 9.7e-9 <= 0.02 and
+  0.894 in [0.80, 1.00]: PASS.
+- BAR 2 (path at 900): n_Z(900) = 0.4516 >= 0.25: PERSISTENT.
+- BAR 3 (sensitivity): n_E(900) = 0.0161 < 0.10: SPECIFIC.
+- BAR 4 (function at 900): |dCE_Z(900)| = 0.00135 <= max(0.005,
+  3 x 0.00018) = 0.005: FUNCTION-NEUTRAL.
+- BAR 5 (descriptive): dCE_Z(20) = -0.0022 (no transient CE hit above
+  0.005 at any horizon); argmin_h n_Z = 100.
+
+Label: PERSISTENT-SPECIFIC + FUNCTION-NEUTRAL [writer A only, one
+anchor, one seed lineage; gate descriptive]. REFUTED-IF (FORGOTTEN +
+NEUTRAL) did not trigger.
+
+### Reading, stated narrowly
+
+- The intervention is exactly the sealed one: the first-step contrast
+  equals the analytic a_carry_given_batch to 1e-8, and the Z and E
+  deviations are collinear and proportional (ratio 100.0) through
+  h = 5, still 0.99 at h = 20: at short horizon the erased first
+  moment propagates as a linear perturbation of the writer.
+- The deviation never decays below 0.23 of the control's own
+  displacement and is 0.45 at the leg's end; the function on the
+  HELD-32 panel is unchanged to 0.0013 in CE throughout and the
+  descriptive gate is inside its fence. On writer A at this anchor,
+  erasing the carried first moment moves the path and not the
+  function.
+- What the receipts do NOT settle (auditor disclosure, verified): the
+  h = 900 separation is not attributable to the erased CONTENT
+  specifically. Between h = 100 and 900 the Z deviation grows 4.6x
+  while the 1 % twin's grows 6.1x (r falls 0.89 -> 0.28), the two
+  deviations become nearly orthogonal (cos 0.07) and Z's own
+  deviation rotates away from its h = 100 direction (cos 0.14), while
+  the h = 900 group-share profiles of Z and E are the same shape: a
+  magnitude-independent late growth mode of the CPU float32 leg
+  carries both arms. BAR 2 PERSISTENT is adjudicated at that horizon
+  as registered; it says the deviation does not decay, not that its
+  h = 900 direction is the erased moment's. BAR 3 SPECIFIC is
+  adjudicated as registered (0.016 < 0.10) and says the twin's
+  deviation stays under a tenth of the leg, not that the leg is free
+  of amplification.
+- Priors: BAR 1 (0.90) hit; n_Z(20) < n_Z(1) (0.80) hit; BAR 2
+  PERSISTENT (0.20) hit against the 0.45 FORGOTTEN favorite; BAR 3
+  SPECIFIC (0.75) hit; BAR 4 NEUTRAL (0.65) hit; dCE_Z(20) > 0.005
+  (0.50) miss; wall <= 45 min (0.75) hit. 6 / 1; family 8 / 2.
+
+### Consequences (as registered)
+
+PERSISTENT-SPECIFIC + NEUTRAL: bank, unarmed, a longer-horizon A leg
+(7200 -> 15420) and OPTIMIZER-MEMORY-CROSSFOSTER-1 restricted to
+reproducible states (RIFF, TASK-GRADIENT GEOMETRY). Given the
+disclosure above, any longer-horizon leg is banked WITH a
+magnitude-ladder control (twins at 1e-3 / 1e-2 / 1e-1) so that
+persistence can be separated from generic late growth; it is not
+armed here. Nothing reopens OMA1 or touches writer B. No follow-up
+launches. checkpoints/fme1 (0.87 GB) retained pending a handoff
+decision; the five pinned A/C controls stay.
