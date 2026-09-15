@@ -4413,6 +4413,48 @@ OPTIMIZER-GEOMETRY-DESK-0 (PRE-REG in RESULTS): zero-training desk on the geomet
 - `_real_step(model, tok, batch, dev, opt, sch, return_raw_grads=False)`
 - `main()`
 
+### scratch/optimizer_memory_ablation.py
+OPTIMIZER-MEMORY-ABLATION-1 instrument (PRE-REG RESULTS L74310, AMENDMENT -PRE-INSTRUMENT L74620): selective first-moment erasure at a stored interior milestone of the stock-OneCycle (A) and backward-SequenceLR (B) writers, continued on the byte-identical future stream.
+
+- `receipt_path(mode)`
+- `stream_path(mode)`
+- `epoch_position(step, n_enc, bs=BS)` — 1-based trainer step -> (epoch, position) under the stock nopack loop (E = n_enc // bs steps per epoch).
+- `epoch_order(starts, ep)`
+- `leg_slices(starts, n_enc, first_step, n_steps)` — The (start, end) enc slices consumed by steps first_step .. first_step + n_steps - 1, epoch crossings handled.
+- `future_stream(tok)`
+- `batch_tensors(tok, batch, dev)`
+- `loss_of(model, ids, mask)`
+- `make_sched(kind, opt)`
+- `group_record(opt)`
+- `resume_sched(kind, opt, anchor, serialized)` — Fresh scheduler stepped (anchor - 1) times must equal the serialized group EXACTLY; then the pending step (the tail of
+- `apply_arm(opt, arm)` — C: native. Z: selective first-moment erasure (exp_avg <- 0; exp_avg_sq, step counter, weights untouched).
+- `assert_no_dropout(model)`
+- `sd_cpu(model)`
+- `flat(sd, segs, d)`
+- `sd_equal(sd1, sd2)`
+- `run_leg(model, opt, sched, tok, enc, slices, dev, horizons, on_step=None)` — The trainer's loop verbatim (backward, clip 1.0, opt.step, guarded sched.step, zero_grad) over `slices`; snapshots at
+- `held_ce(model, tok, held, dev)`
+- `clipped_grad(model, tok, batch, dev, segs, d)` — The trainer's gradient on one batch (backward from the trainer's loss), flattened under the law in the MODEL's dtype
+- `bar1_law(model, opt, c, segs, step_next, grp, eps=1e-08)` — a_carry_given_batch, u_C, a_C, a_Z per the amended law (float64, GLOBAL). Returns the norms and n_pred plus the c = 0
+- `virtual_u(model, opt, c, segs, d, step_next, grp, eps=1e-08)` — The native (C) update u_C per tensor under the virtual law, flattened float64 (for P0.c).
+- `readout(W_anchor, W_C, W_X, segs)`
+- `adjudicate(w)` — w: per-writer dict {n_Z: {h: v}, n_E: {h: v}, dCE_Z: {h: v}, dCE_E: {h: v}, n_pred: float, h_end: int}. Pure; literal thresholds; inclusive.
+- `program_label(per_writer)`
+- `p0d(rho_cpu, rho_env, dce)`
+- `git_state()`
+- `now()`
+- `base_record(mode, tok, stream_info, dev_cpu, dev_mps)`
+- `bind(writer, tok, dev)` — Model + optimizer from the anchor milestone (OGD0 bind_state), serialized group captured BEFORE any scheduler exists.
+- `load_target(writer)`
+- `mode_desk_bar1(tok, enc, starts, info, segs, d, dev_cpu, rec, stream)`
+- `snapshot_dir(writer, arm)`
+- `save_snap(writer, arm, h, sd, opt=None)`
+- `one_leg(writer, arm, tok, enc, slices, dev, segs, d, stream, rec_cell, keep_opt_at_end=False)`
+- `mode_stage0(tok, enc, starts, info, segs, d, dev_cpu, dev_mps, held, rec, stream)`
+- `mode_stage1(tok, enc, starts, info, segs, d, dev_cpu, held, rec, stream, stage0)`
+- `build_smoke_anchor(tok, enc, starts, info, dev)` — seed-6 W_0 + WARM real steps of the epoch-0 stream under the stock scheduler -> checkpoints/oma1_smoke/*/m000003.pt
+- `main()`
+
 ### scratch/oracle_worker.py
 Standalone oracle worker for timeboxed p.check (MOE-GT-6 v3).
 

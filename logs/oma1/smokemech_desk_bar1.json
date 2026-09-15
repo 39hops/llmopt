@@ -1,0 +1,185 @@
+{
+ "prereg": "OPTIMIZER-MEMORY-ABLATION-1",
+ "kind": "optimizer_memory_ablation/desk-bar1",
+ "smoke": true,
+ "smoke_tag": "mech",
+ "commit": "b4668083",
+ "tree_dirty": true,
+ "source_sha256": "b5ea639bcc4718c017f125f518f428407116aa5c6cb3b2c6379628dfef07e81c",
+ "ugc0_source_sha256": "c76805379c50a1c54366e32c72e628e1d8f2ee59ebaa067d9e2946a3367ca864",
+ "ogd0_source_sha256": "8807b3af271c44cc40505cc1ec483203a604d47fed78469ab7ad511867e5c9b5",
+ "audit_source_sha256": "2e45c1344d6c086117251c7524636c8561345383398a74e44eccd3969fe32a38",
+ "torch_version": "2.12.1",
+ "numpy_version": "2.5.1",
+ "threads": 8,
+ "deterministic": true,
+ "device_cpu": "cpu",
+ "device_mps": "mps",
+ "anchor": 3,
+ "leg": 3,
+ "target": 6,
+ "horizons": [
+  1,
+  2,
+  3
+ ],
+ "eps_twin": 0.01,
+ "law": {
+  "BAR1_TOL": 0.02,
+  "BAR1_BAND": [
+   0.8,
+   1.0
+  ],
+  "FORGOTTEN": 0.05,
+  "PERSISTENT": 0.25,
+  "SENSITIVE": 0.1,
+  "CE_FLOOR": 0.005,
+  "CE_MULT": 3.0,
+  "ENV_MULT": 2.0,
+  "ENV_FLOOR": 0.02,
+  "ENV_CAP": 0.25,
+  "ENV_CE": 0.01,
+  "P0C_OUTER": 0.05,
+  "P0C_EXACT": 1e-06,
+  "bar1": "n_pred = ||-lr b1 m / (bc1 (sqrt(v'/bc2) + eps))|| / ||u_C||, v' = b2 v + (1 - b2) c^2, c = clipped real batch gradient, s = anchor + 1"
+ },
+ "stream": {
+  "n_enc": 164490,
+  "n_rows": 164896,
+  "steps_per_epoch": 5140,
+  "probe64_digest": "00eb6c43e4cd995b7ca66fde3ae95e7b17745d1b7f9024bd1ae22f32a0ef65f2",
+  "flatten_law_digest": "562b4de56e30fe148db4877b13c087ddab352ac0c36178171a06776fcefc1fd7",
+  "held_panel": {
+   "n": 4,
+   "probe_digest": "a002858525ae45d9ffa9ce5af559e8f277cabbbc1e0eea6671ceaf323d45a347",
+   "ugc0_digest": "00eb6c43e4cd995b7ca66fde3ae95e7b17745d1b7f9024bd1ae22f32a0ef65f2"
+  }
+ },
+ "writers": {
+  "A": {
+   "kind": "stock",
+   "anchor": "checkpoints/oma1_smoke/phase19m/m000003.pt",
+   "target": "checkpoints/oma1_smoke/phase19m/m000006.pt"
+  },
+  "B": {
+   "kind": "forward",
+   "anchor": "checkpoints/oma1_smoke/backsched19m/m000003.pt",
+   "target": "checkpoints/oma1_smoke/backsched19m/m000006.pt"
+  }
+ },
+ "started_utc": "2026-09-15T00:29:42+00:00",
+ "batch_slice": [
+  158496,
+  158528
+ ],
+ "cells": {
+  "A": {
+   "bind": {
+    "path": "checkpoints/oma1_smoke/phase19m/m000003.pt",
+    "file_sha256": "074b8b0e4b7333d3cf5d24273ff9629e97305555c50c1cac7474f495feaa89c2",
+    "state_digest": "bdad370529f6b18bafbb18972c8fd0508b38278a14a58ffc2eb8beb21afc57f1",
+    "opt_state_digest_bound": "bc0ccfb00b56cf33a75832f18c5498895ecfb010e03a5a8c4e27a2e7f05830dd",
+    "group": {
+     "lr": 1.2013339941570019e-05,
+     "beta1": 0.9499953680758437,
+     "beta2": 0.999,
+     "weight_decay": 0.01,
+     "eps": 1e-08,
+     "amsgrad": false,
+     "maximize": false,
+     "decoupled_weight_decay": true,
+     "n_params": 59,
+     "adam_step": 3,
+     "param_order_digest": "2b3ffa938724eb4d"
+    },
+    "serialized": {
+     "lr": 1.2013339941570019e-05,
+     "beta1": 0.9499953680758437,
+     "beta2": 0.999,
+     "wd": 0.01
+    }
+   },
+   "grad_norm": 4.408284673797034,
+   "clip_coef": 0.22684555267006087,
+   "batch_loss": 3.5603270530700684,
+   "law": {
+    "norms": {
+     "carry": 0.03343077234462055,
+     "uC": 0.04205104337434963,
+     "uZ": 0.01459833667081042,
+     "aC": 0.04205106893019834,
+     "aZ": 0.014598360869594977,
+     "a0": 0.0382730126892852,
+     "u0": 0.03827299328862516,
+     "diff": 5.312422194907927e-18
+    },
+    "n_pred": 0.7950045863787701,
+    "n_c0_approx": 0.9101556160666154,
+    "identity_residual": 1.589081502558455e-16,
+    "step_next": 4,
+    "group_next": {
+     "lr": 1.2030014289248826e-05,
+     "beta1": 0.9499895783717885,
+     "beta2": 0.999,
+     "wd": 0.01
+    }
+   },
+   "opt_steps_taken": 0
+  },
+  "B": {
+   "bind": {
+    "path": "checkpoints/oma1_smoke/backsched19m/m000003.pt",
+    "file_sha256": "20c4c1343a5a78cdab5d4627124259575b4565b62ab3ec49a0d15ae1c5545df9",
+    "state_digest": "67b36c9ccd36256bd09ff57eb20a61aafa7a21f785911b1d8170a15d304d399e",
+    "opt_state_digest_bound": "80cfd6bdbb4dcbbf46b8cf685269c930acba2d926fd402dae37ce019c63e158d",
+    "group": {
+     "lr": 1.2013339941570019e-05,
+     "beta1": 0.9,
+     "beta2": 0.999,
+     "weight_decay": 0.01,
+     "eps": 1e-08,
+     "amsgrad": false,
+     "maximize": false,
+     "decoupled_weight_decay": true,
+     "n_params": 59,
+     "adam_step": 3,
+     "param_order_digest": "2b3ffa938724eb4d"
+    },
+    "serialized": {
+     "lr": 1.2013339941570019e-05,
+     "beta1": 0.9,
+     "beta2": 0.999,
+     "wd": 0.01
+    }
+   },
+   "grad_norm": 4.409025481622137,
+   "clip_coef": 0.22680743791588373,
+   "batch_loss": 3.5609641075134277,
+   "law": {
+    "norms": {
+     "carry": 0.03247742650003024,
+     "uC": 0.041939822709769516,
+     "uZ": 0.015748056826078882,
+     "aC": 0.04193984954126736,
+     "aZ": 0.01574808217850555,
+     "a0": 0.03717035927053305,
+     "u0": 0.03717033925248793,
+     "diff": 4.9451324009264015e-18
+    },
+    "n_pred": 0.7743815877520367,
+    "n_c0_approx": 0.8862779299214687,
+    "identity_residual": 1.522636776938529e-16,
+    "step_next": 4,
+    "group_next": {
+     "lr": 1.2030014289248826e-05,
+     "beta1": 0.9,
+     "beta2": 0.999,
+     "wd": 0.01
+    }
+   },
+   "opt_steps_taken": 0
+  }
+ },
+ "wall_s": 3.0,
+ "ended_utc": "2026-09-15T00:29:45+00:00"
+}
