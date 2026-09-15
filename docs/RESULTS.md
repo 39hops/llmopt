@@ -74306,3 +74306,313 @@ capture claim) and eight should-fixes (the 0.2495 headline value, the
 A@900 margin fence, the 0.5 x min(self) thresholds, the "exactly"
 wording, the untested-hypothesis clause, the bank's grounding, the
 0.90 low end, the Q variant); receipt-auditor no blocker.
+
+## PRE-REG OPTIMIZER-MEMORY-ABLATION-1: does Adam's carried first moment control the writer's PATH or its FUNCTION? Zero the exp_avg at a stored interior milestone and continue on the identical future stream (2026-09-14, Mac, DESIGN + PRE-REG ONLY, nothing armed)
+
+Artin GO 2026-09-14 19:54 EDT: DESIGN + PREREG ONLY. No training
+launch. Stage 0 (native-state resume preconditions) and Stage 1 (the
+intervention) each need a SEPARATE Artin GO. The instrument is not
+yet written; it is committed and smoked under the implementation GO
+before any continuation step runs (house law: instrument before run).
+
+**Standing decision recorded here (Artin 2026-09-14):**
+OPTIMIZER-GEOMETRY-DESK-0 stays exactly as booked (VERDICT L74103,
+GEOMETRY-NOT-RESOLVED under the sealed k = 8 gate). No rerun under a
+post-hoc k = 1 resolution gate. The existing k = 1 readouts in
+logs/ogd0/desk.json may be cited descriptively; GEOMETRY-NOT-RESOLVED
+remains the prospective verdict. The low S_8 is compatible with the
+realized near-rank-1 full-write geometry: one stable direction plus
+seven unstable residual directions mechanically depresses a
+normalized 8-dimensional projector overlap.
+
+### Question
+
+OPTIMIZER-GEOMETRY-DESK-0 localized the AdamW write's deformation of
+batch-gradient geometry to the first-moment stage (g -> mhat, D 1.9
+to 3.9), not the preconditioner (0.02 to 0.14), and measured the
+zero-gradient write u_0 (carried first moment plus decay) at 90.4 %
+(A) and 93.0 % (B) of the write's median norm at step 7200 (u 0.1373
+v u_0 0.1241; u 0.1122 v u_0 0.1043; logs/ogd0/desk.json cells
+A@7200 / B@7200, decomposition medians over the 64 probe batches).
+The causal question: if that memory is erased at a stored state and
+the writer continues on the byte-identical future, does the
+trajectory (a) rejoin the native path (memory is coherence without
+consequence), (b) leave for a different path at unchanged function
+(path, not function), or (c) change function (memory is functional)?
+
+Framing, prospective (Artin, this GO): the writer is STATEFUL,
+(W_{t+1}, O_{t+1}) = U(W_t, O_t, D_t), with O_t = (exp_avg m_t,
+exp_avg_sq v_t, Adam step counter, scheduler phase). The earlier bank
+notation W_{t+1} = U(W_t, D_t) is retired in RIFF-LEDGER in the same
+commit; this is framing, not a measured law.
+
+### Specimens and the anchor
+
+- Writer A: stock OneCycle, seed 2, checkpoints/phase19m/m007200.pt
+  (file sha256 a0cdf244fcf44f05...; model state digest 9c7c1a6f...,
+  optimizer state digest 92198260...; Adam step 7200; serialized group
+  lr 1.7326121234e-4, betas (0.8922464315, 0.999), wd 0.01, eps 1e-8,
+  decoupled decay; per logs/ogd0/desk.json info).
+- Writer B: backward SequenceLR, seed 2,
+  checkpoints/backsched19m/m007200.pt (sha256 68bfb9f45377...; state
+  digest 26056d98...; opt digest 8ac6d105...; group lr
+  1.4119364217e-4, betas (0.9, 0.999)).
+- Booked later milestones on the same legs (the resume-control
+  targets): checkpoints/phase19m/m008100.pt and
+  checkpoints/backsched19m/m008100.pt (Adam step 8100). Booked 120
+  gates: A m007200 51 {3:18, 4:4, 5:13, 6:7, 7:9}, A m008100 53
+  {3:19, 4:4, 5:14, 6:7, 7:9}; B m007200 35 {3:12, 4:1, 5:12, 6:6,
+  7:4}, B m008100 43 {3:15, 4:2, 5:11, 6:7, 7:8}
+  (logs/phase19m_gate, logs/backsched_gate; dicts sum as quoted).
+- Anchor step 7200, chosen because it is interior on both writers (A
+  mid-anneal, lr falling, beta1 0.892 rising toward 0.95; B lr rising
+  1.41e-4, beta1 fixed 0.9), the u_0 fraction is measured there, and
+  the leg 7201..8100 stays inside epoch 1 (steps 5141..10280) so no
+  epoch boundary is crossed.
+
+### The intervention (Stage 1)
+
+At the anchor, fork from the byte-identical W_7200, v_7200, Adam step
+counter 7200, scheduler phase 7200 and the identical future minibatch
+order. Per writer w in {A, B}:
+
+- C_w (CONTROL, native): resume with the stored optimizer state
+  unchanged (exp_avg = m_7200).
+- Z_w (TREATMENT, first-moment erasure): exp_avg <- 0 for all 59
+  tensors; NOTHING else changes (exp_avg_sq, step counters, weights,
+  weight decay, future scheduler law, future batch order all native).
+- E_w (EPSILON TWIN, the chaos / linear-response reference): exp_avg
+  <- (1 - 0.01) x exp_avg for all 59 tensors, a 1 % perturbation
+  along the SAME axis as Z (Z is the 100 % point). Sized so its step-1
+  displacement (about 0.01 x ||a_0|| = 1.2e-3 global, 3e-7 per
+  element) sits far above float32 rounding of W (about 3e-9 per
+  element); a 1e-6 twin would be a numerical no-op and is not used.
+- C'_w (DETERMINISM REPEAT): a second byte-identical C_w run; the
+  bit-exact precondition below.
+
+Continue each arm for 900 steps (7201..8100). Consequence of
+preserving the step counter (stated so it is not read as a bug): Adam's
+bias correction at step 7201 is 1 - beta1^7201 = 1, so the re-warming
+first moment of Z gets no warm-up boost; the erased arm writes about
+(1 - beta1) of the native magnitude on its first step and rebuilds
+over about 1 / (1 - beta1) = 9 to 10 steps. That cold restart IS the
+intervention as specified.
+
+NOT in this rung (Artin): v reset, full optimizer reset, cross-writer
+moment swaps, repeated memory erasure. They are banked only if the
+first-moment result gives a reason (consequences below).
+
+### Reconstruction laws (all mechanical, all asserted before any step)
+
+- Future stream: the trainer's own law (scripts/train_mathnative.py,
+  ORDER_SEED 0): enc = encode_with_levels(load_excised_rows()) of the
+  D2-excised gen4 diet, stable length sort; starts = BS-slices of
+  enc; epoch order = random.Random(ep).shuffle(starts); epoch 1 (ep =
+  1) holds steps 5141..10280, so step k uses idx_1[k - 5141]; the leg
+  7201..8100 is idx_1[2060:2960]. Asserts: len(enc) = 164,490 and
+  len(enc) // 32 = 5,140 (3 x 5,140 = 15,420); the UGC0 probe digest
+  00eb6c43e4cd995b... reproduces from the same enc (identity of the
+  reconstructed enc with the census's). No torch RNG is consumed by
+  the trainer after init (no dropout; asserted by scanning the model
+  for Dropout modules and by the bit-exact repeat), so no RNG state
+  needs restoring.
+- Batch tensors, padding, mask, loss (cross_entropy, ignore_index
+  -100), clip_grad_norm_ 1.0, opt.step, sched.step (guarded by
+  last_epoch < total - 1), zero_grad: the trainer's loop verbatim.
+- Scheduler: OGD0's audited reconstruction (logs/schedaudit0/
+  audit.json). Order: build AdamW(lr 3e-4, wd 0.01), load the stored
+  optimizer state (module parameter order, param_order_digest
+  2b3ffa938724eb4d asserted), then construct the writer's scheduler
+  fresh (A: OneCycleLR(max_lr 3e-4, total_steps 15,420, pct_start
+  0.03); B: SequenceLR over the REVERSE = 1 stock sequence) and step it
+  7,200 times on the live optimizer; assert the group now equals the
+  serialized group EXACTLY (A lr 1.7326121234e-4 / beta1 0.8922464315;
+  B 1.4119364217e-4 / 0.9) and that the first in-loop sched.step
+  yields audit row 7201 exactly (A 1.73230e-4 / 0.89226; B 1.41225e-4
+  / 0.9). Mismatch = STOP before any gradient.
+- Optimizer state binding: exp_avg / exp_avg_sq shapes, all step
+  counters = 7200, eps 1e-8, amsgrad / maximize false, decoupled
+  decay; model + optimizer digests recorded before and after binding.
+- Device and determinism: Stage 1 arms run on CPU float32 with
+  torch.use_deterministic_algorithms(True) and a pinned thread count
+  (recorded), because mps float training is run-level
+  nondeterministic (CLAUDE.md, AMENDMENT SOFT-SPEED-1-PRECONDITION)
+  and the epsilon-twin reading needs deterministic replay
+  (RIFF-LEDGER 2026-09-08 derivative distinctions, "never mps").
+  Cross-device comparison is NOT made between arms: every Stage 1
+  contrast is CPU v CPU from the same bound state.
+
+### Stage 0: preconditions (native state only; SEPARATE GO; failure stops the rung)
+
+- P0.a DETERMINISM: C_A and C'_A (and C_B, C'_B) bit-identical in
+  weights and optimizer state at steps 1, 5, 20, 100, 900. Any
+  mismatch = STOP (the harness is not deterministic; no treatment).
+- P0.b SCHEDULER PARITY: as above, exact, both writers.
+- P0.c VIRTUAL-LAW CONTINUITY: the harness's native step 7201 update
+  u_real = W_C(7201) - W_7200 against OGD0's virtual law applied to the
+  actual batch idx_1[2060] from the same bound state, on CPU float64:
+  scale error max|diff| / max|u| <= 1e-6 (the desk's float64 exact
+  endpoint was 4.3e-11; this is the same law on a CPU float32 step, so
+  the float32 envelope 5e-2 from logs/ogd0/smoke_mech.jsonl is the
+  outer bar and 1e-6 the expected reading in float64 replay). Fail
+  the outer bar = STOP.
+- P0.d RESUME-CONTROL ENDPOINT under a frozen deterministic envelope
+  (Artin's requirement): the native CPU continuation must reproduce
+  the booked m008100 up to substrate noise. Substrate noise on this leg
+  is CALIBRATED DISJOINTLY in Stage 0 by an mps native-resume pair per
+  writer (MC_a,w, MC_b,w: the same resume, same state, on mps, 900
+  steps each), rho_mps,w = ||MC_a - MC_b|| / ||MC_a - W_7200|| at step
+  8100 (GLOBAL float64 flatten law of UGC0). The CPU endpoint ratio
+  rho_cpu,w = ||W_C,w(8100) - m008100_w|| / ||m008100_w - m007200_w||.
+  Sealed law: PASS iff rho_cpu,w <= 5 x rho_mps,w AND rho_cpu,w <=
+  0.25 AND |CE_HELD(W_C,w(8100)) - CE_HELD(m008100_w)| <= 0.01, both
+  writers; additionally rho_mps,w <= 0.25 (if the mps pair itself
+  diverges by more than a quarter of the leg, the endpoint is not a
+  reproducible object and the rung books NOT-ADJUDICABLE). Any failure
+  = STOP; no Stage 1. The mps pairs are never compared against Stage 1
+  arms; they calibrate the envelope only and are reported
+  descriptively as the substrate-noise scale.
+- P0 reads NOTHING from a Z or E arm; no treatment state exists before
+  P0 passes.
+
+### Readouts (Stage 1; horizons h in {1, 5, 20, 100, 900} after the anchor)
+
+Flatten law: UGC0's sorted-key float64 law over the 59 tensors
+(GLOBAL, BLOCK0..7, OUTSIDE), digest asserted.
+
+- Displacement of the arm from the control, normalized by the
+  control's own displacement from the anchor:
+  n_X,w(h) = ||W_X,w(7200 + h) - W_C,w(7200 + h)|| /
+             ||W_C,w(7200 + h) - W_7200,w||, X in {Z, E}.
+- Linear-response ratio r_w(h) = n_Z,w(h) / (100 x n_E,w(h)) (1.0 =
+  the erasure propagates exactly as 100 copies of the 1 % twin).
+- Direction: cos between the arm's leg displacement and the control's
+  (cumulative cosine of the two legs from the anchor), and the
+  per-group (OUTSIDE v BLOCK0..7) share of the difference vector.
+- Function: mean cross-entropy on the frozen HELD-32 probe panel of
+  UGC0 (digest 00eb6c43..., batches 32..63, deterministic, no
+  sampling), CE_X,w(h) for X in {C, Z, E}; dCE_X,w(h) = CE_X - CE_C.
+- Later function: the standard 120 gate (gate_eval, one device for all
+  arms, recorded) on C_w(8100) and Z_w(8100), DESCRIPTIVE ONLY under
+  the resolution law (single-state, no seed replication; deltas under
+  7 solves are within instrument sigma and are not read as direction).
+  The booked m008100 gates (53 / 43) are the reference points.
+- Substrate-noise scale from Stage 0 (rho_mps,w) reported beside
+  n_Z,w(900) descriptively.
+
+### BARS (per writer w; literal; the measured number is compared with a number on this page)
+
+- BAR 1 (INTERVENTION APPLIED, mechanical): n_Z,w(1) in [0.80, 1.00].
+  Analytic prediction: Z's step-1 update differs from the control's
+  by exactly -a_0 (same denominator, numerator minus beta1 m), so
+  n_Z(1) = ||a_0|| / ||u|| on the actual batch; the desk's probe-panel
+  medians give 0.904 (A) and 0.930 (B); the actual batch idx_1[2060]
+  is not in the probe panel, hence the band. Outside the band =
+  INSTRUMENT-FAULT, STOP, no reading.
+- BAR 2 (PATH at the leg's end): FORGOTTEN if n_Z,w(900) <= 0.05;
+  PERSISTENT if n_Z,w(900) >= 0.25; INTERMEDIATE otherwise.
+- BAR 3 (SENSITIVITY qualifier): SENSITIVE if n_E,w(900) >= 0.10 (a
+  1 % memory perturbation grows to a tenth of the leg: the leg is
+  perturbation-sensitive and a PERSISTENT reading is attributed to
+  sensitivity, not to the erased content); SPECIFIC otherwise.
+- BAR 4 (FUNCTION at the leg's end): FUNCTION-NEUTRAL if |dCE_Z,w(900)|
+  <= max(0.005, 3 x |dCE_E,w(900)|); FUNCTION-HARMED if dCE_Z,w(900)
+  exceeds that bound positively; FUNCTION-HELPED if it exceeds it
+  negatively. (CE scale at 7200: probe-panel batch losses 0.15 to
+  0.78, panel means 0.384 (A) / 0.461 (B), HELD-32 means 0.402 /
+  0.484; 0.005 is about 1 % of the mean.)
+- BAR 5 (TRANSIENT, descriptive with a prior, not a label): dCE_Z,w(20)
+  and the h at which n_Z,w(h) is minimal.
+
+Program label = the pair (BAR 2 + BAR 3 qualifier, BAR 4) when both
+writers agree; MIXED-BY-WRITER otherwise, reported per writer. The
+A v B contrast is NOT a pure-LR comparison (AMENDMENT
+WRITER-INTERVENTION-SCHEDULER-LAW L73710: LR direction plus beta1
+law); treatment effects are analyzed WITHIN writer only.
+
+REFUTED-IF (the desk's reading "the write's coherence is optimizer
+memory and it matters"): FORGOTTEN + FUNCTION-NEUTRAL in both writers
+= erasing the memory direction changes neither the path beyond a
+short transient nor the function; the carried direction is a
+coherence artifact of temporal integration with no consequence at
+this horizon.
+
+### REGISTERED PRIOR (house)
+
+1. BAR 1 passes both writers: 0.85 (point predictions 0.90 / 0.93).
+2. n_Z,w(20) < n_Z,w(1) both writers (the normalized gap shrinks as the
+   control's own displacement grows): 0.80.
+3. BAR 2: FORGOTTEN 0.45, INTERMEDIATE 0.35, PERSISTENT 0.20 (per
+   writer, same prior for A and B).
+4. BAR 3 SPECIFIC (n_E(900) < 0.10) both writers: 0.60.
+5. BAR 4 FUNCTION-NEUTRAL both writers: 0.65; HARMED 0.25; HELPED 0.10.
+6. Transient CE hit dCE_Z,w(20) > 0.005 in at least one writer: 0.50.
+7. Stage 0: P0.a bit-exact 0.85; P0.d envelope passes both writers
+   0.60 (the CPU-v-mps substrate gap is the risk).
+8. Wall: Stage 0 <= 1.5 h, Stage 1 <= 3 h on the Mac: 0.70.
+
+### FENCES
+
+- One anchor (7200), one seed lineage per writer, two writers: no
+  replication claim; every label is single-state and carries that
+  fence. Gate readings are descriptive.
+- CPU float32 continuation of an mps-born state: the Stage 1 arms are
+  paired on one substrate; the only cross-substrate comparison is the
+  Stage 0 endpoint precondition, whose envelope is calibrated
+  disjointly and sealed as a formula here.
+- Horizon 900 steps (one milestone spacing, 5.8 % of training); a
+  FORGOTTEN reading says nothing about longer horizons or about the
+  final gate; a PERSISTENT reading says nothing about whether the
+  displaced path ends at a different function beyond BAR 4.
+- The epsilon twin is a perturbation on the memory axis, not a
+  Lyapunov estimate; r_w(h) is reported, not adjudicated.
+- Wall fence: any Stage killed if not finished within 2 x its prior
+  wall; books NOT-RUN for that Stage.
+- No historical number changes; OPTIMIZER-GEOMETRY-DESK-0 is not
+  reopened.
+
+### Consequences (pre-registered)
+
+- FORGOTTEN + NEUTRAL (both): book and stop; the memory-ablation
+  family closes at this scale; v reset / moment swap / repeated
+  erasure NOT banked.
+- PERSISTENT-SPECIFIC + NEUTRAL: path-not-function; bank (unarmed)
+  OPTIMIZER-MEMORY-CROSSFOSTER-1 (swap m between writers at the
+  anchor) and a longer-horizon leg (7200 -> 15420) as the next
+  pre-regs; no launch from here.
+- PERSISTENT-SENSITIVE (any function): the leg is
+  perturbation-sensitive; bank a sensitivity ladder (epsilon 1e-3,
+  1e-2, 1e-1) before any further memory rung; nothing armed.
+- HARMED or HELPED (any path label): the memory is functional at this
+  horizon; bank OPTIMIZER-V-RESET-1 and REPEATED-ERASURE-1 (unarmed).
+- INTERMEDIATE: book the numbers, no bank change, Artin decision.
+- MIXED-BY-WRITER: book per writer, no program label, no bank change.
+
+### Cost, storage, process
+
+- Stage 0: 2 writers x (2 CPU native 900-step legs + 2 mps native
+  900-step legs) = 3,600 CPU steps + 3,600 mps steps. The booked mps
+  rate is 5.1 it/s (about 12 min for the mps legs); the CPU rate is
+  measured in the implementation smoke (fence: if under 1 it/s, the
+  CPU legs are re-priced before Stage 1 GO).
+- Stage 1: 2 writers x (Z + E) x 900 steps = 3,600 CPU steps (C legs
+  reused from Stage 0, same code commit; if the commit changes between
+  Stages, C is rerun).
+- Storage: model-only float32 snapshots at the five horizons for C, Z,
+  E per writer (30 x 76 MB = 2.3 GB) plus optimizer state at 8100 for
+  C and Z (4 x 227 MB), under checkpoints/oma1/ (untracked,
+  sha-anchored in the receipts); receipts under logs/oma1/ (desk.json,
+  desk.jsonl, desk.log, stage markers, smoke_*.jsonl path-isolated).
+  Disk today 31 GiB free.
+- Process on the implementation GO: instrument scratch/
+  optimizer_memory_ablation.py (imports UGC0's flatten / probe law and
+  OGD0's bind_state / sched_rows by import, no copies) + tests +
+  launcher committed before any run; clean-tree prereg audit before
+  sealing the instrument; liverun sentinel for every Stage; Stage 0
+  receipts audited (receipt-auditor) before the Stage 1 GO; /fold-book
+  for every booking; no commits while a Stage is live.
+- Machine-readable form: docs/preregs/optimizer-memory-ablation-1.json
+  (the prose governs).
+
+Nothing is armed. Stage 0 needs its own Artin GO after the
+implementation lands; Stage 1 needs another after Stage 0 books.
