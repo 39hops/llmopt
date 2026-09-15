@@ -1,0 +1,8 @@
+[liverun] armed fmel1 pid 84439 commit f9872a27 worktree main:llmopt sentinel .git/liverun.lock
+[curric] D2 excision: 165028 -> 164896 rows
+[curric] D2 excision: 165028 -> 164896 rows
+/Users/artin/code/llmopt/scratch/optimizer_memory_ablation.py:183: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  sched.step()
+[fmel1] preflight FAIL n_1(1) 0.8942846429438963 R {'e1e-3': 1.001260913305832, 'e1e-2': 1.0000131523160467, 'e1e-1': 1.0000003339361943, 'e1': 1.0} cos {'e1e-3': 0.9986938808542296, 'e1e-2': 0.9999855929914413, 'e1e-1': 0.9999998649674559, 'e1': 1.0}
+[fmel1] PREFLIGHT-FAILED in 13.8 s -> logs/fmel1/ladder.json
+[liverun] disarmed fmel1 rc 3

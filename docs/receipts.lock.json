@@ -2,7 +2,7 @@
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
  "_last_accept": {
   "paths": [],
-  "reason": "AMENDMENT FIRST-MOMENT-ERASURE-LADDER-1-INSTRUMENT: lock the FMEL1 smoke receipts and the OMA1 / FME1 smoke arena receipts; planned fmel1 receipts prereg-pending"
+  "reason": "VERDICT FIRST-MOMENT-ERASURE-LADDER-1: lock the preflight-refusal receipts after force-add"
  },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
@@ -939,21 +939,19 @@
    "source": "results",
    "tracked": true
   },
-  "logs/fmel1/fmel1.DONE": {
-   "exists": false,
-   "source": "prereg"
-  },
   "logs/fmel1/ladder.json": {
-   "exists": false,
-   "source": "prereg"
-  },
-  "logs/fmel1/ladder.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 15000,
+   "exists": true,
+   "sha256": "9005d2548b76b0f7cf8c3ae39de1c4a02ff3b9cc7f8a6af29015af3c11919351",
+   "source": "results",
+   "tracked": true
   },
   "logs/fmel1/ladder.log": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 999,
+   "exists": true,
+   "sha256": "767f9b25404c17b161a61096ae5a940ae7f7602e34194942e54232c227340bf2",
+   "source": "results",
+   "tracked": true
   },
   "logs/frozenbb1/births.jsonl": {
    "bytes": 33199,
@@ -1325,8 +1323,11 @@
    "tracked": true
   },
   "logs/liverun/fmel1.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 460,
+   "exists": true,
+   "sha256": "9dbe447f596584578a7006c5c8db1a9a887f14aec6f1b4c2ec61f4be1b039a37",
+   "source": "results",
+   "tracked": true
   },
   "logs/liverun/frozenbb1.jsonl": {
    "bytes": 520,

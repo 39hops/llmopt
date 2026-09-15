@@ -75791,3 +75791,132 @@ smoke checkpoint trees deleted. Nothing armed; the target run is a
 separate Artin GO: `bash scratch/fmel1_launch.sh` at the committed
 HEAD. checkpoints/fme1 and checkpoints/oma1/A/C retained.
 SCHEDULE-PHASE-SENSITIVITY-CENSUS-0 unarmed.
+
+## VERDICT FIRST-MOMENT-ERASURE-LADDER-1: NOT-ADJUDICABLE (REGIME-UNRESOLVED) exactly as sealed — the registered one-step preflight refused before any long leg: the epsilon = 1e-3 arm misses the first-step law by 1.3e-3 in R and by 1.3e-3 in direction (R 1.00126 v the 1e-3 tolerance; cos 0.99869 v 0.999), the other three arms and n_1(1) pass; no target leg ran, nothing to adjudicate (2026-09-15, Mac)
+
+Pre-registration: PRE-REG FIRST-MOMENT-ERASURE-LADDER-1 (L75312),
+AMENDMENT -PRE-INSTRUMENT (L75568, §4 the preflight law), AMENDMENT
+-INSTRUMENT (L75698). Artin GO 2026-09-15 09:47 EDT (target run).
+Run: `bash scratch/fmel1_launch.sh` under liverun fmel1 at f9872a27
+(clean tree); wall 13.8 s (preflight 6.2 s; five fresh binds, one
+step each on the first future slice [158464, 158496], 8 threads,
+deterministic algorithms, torch 2.12.1); exit 3; liverun disarmed rc 3.
+Receipts logs/fmel1/ladder.json, logs/fmel1/ladder.log,
+logs/liverun/fmel1.jsonl (no ladder.jsonl: no long-leg step was
+taken; no fmel1.DONE; no file under checkpoints/fmel1). Disk
+preflight 29.5 GiB free v the 16 GiB floor.
+
+### Pre-treatment refusals (all passed before the preflight)
+
+15 source pins byte-identical (the FME1 set plus
+scratch/first_moment_erasure.py); leg-path symbol sha 9dfcc6a0 equal
+to the pin; Stage-0 (6f5d3688), desk (4fc04462) and FME1 (a3d8ae83)
+receipt shas equal to the source literals and the lock; OMA source
+sha at Stage 0 on both OMA receipts; FME1 bound to the same Stage-0
+receipt and anchor, sealed n_pred on all three receipts; anchor
+checkpoints/phase19m/m007200.pt sha a0cdf244 and state digest
+9c7c1a6f equal to the Stage-0 bind and the FME1 bind; the first 900
+of the 8220 reconstructed slices equal to the Stage-0 leg digest
+(full-leg digest 32a6ecb2; steps 7201..15420 = epoch 1 pos 2060 to
+epoch 2 pos 5139, last slice [14816, 14848]); threads / torch / numpy
+equal to the Stage-0 law; the booked substrate files
+gallery19m_phase_s2.pt and m015300.pt present with the pinned digests
+and shas (step 15300 asserted); reference digests for C / e1 / e1e-2
+at h = 1 / 5 / 20 / 100 / 900 loaded from the locked receipts (never
+used: no long leg ran). Disclosed: the OMA source used by this run
+(99b6550d) is not the file that produced the Stage-0 receipt
+(04353502; commit 4803703d: a comment plus one descriptive receipt
+field inside mode_stage0, outside the pinned leg-path symbols); the
+instrument's guarantee is the leg-path SYMBOL sha (9dfcc6a0, equal at
+both revisions and asserted at import), and the three bit-exact h = 1
+digests below are the measurement that the leg path is the
+registered one.
+
+### The one-step preflight (writer A, A@7200, first future slice; GLOBAL float64)
+
+| arm | eps | tensors touched | ||dW(1)|| | n(1) | R(1) | cos(dW, dW_1) |
+|---|---|---|---|---|---|---|
+| C | 0 | 0 | (leg 0.138754) | | | |
+| e1 | 1 | 59 | 0.124086 | 0.894284643 | 1 (identity) | 1 (identity) |
+| e1e-1 | 1e-1 | 59 | 0.0124086 | 0.0894285 | 1.00000033 | 0.99999986 |
+| e1e-2 | 1e-2 | 59 | 0.00124087 | 0.00894296 | 1.0000132 | 0.99998559 |
+| e1e-3 | 1e-3 | 59 | 0.000124242 | 0.00089541 | 1.0012609 | 0.99869388 |
+
+Pair cosines at h = 1: e1e-2|e1e-1 0.9999868, e1e-2|e1 0.9999856,
+e1e-1|e1 0.9999999, e1e-3|e1e-2 0.9988079, e1e-3|e1e-1 0.9987057,
+e1e-3|e1 0.9986939; alpha(1) 0.99984, cosmin(1) 0.99869; group share
+of every arm's first-step deviation BLOCK0..7 0.112 / 0.128 / 0.125 /
+0.124 / 0.122 / 0.124 / 0.129 / 0.134, OUTSIDE 0.0016 (e1e-3 0.0024);
+no UNDEFINED value. n_1(1) = 0.894284643 v the sealed 0.894284652673395
+(residual -9.7e-9, the FME1 value to the digit). The e1 first-step
+state digest a6e5081d and the e1e-2 digest c6b7b45b equal the locked
+FME1 Z / E h = 1 digests, and the C digest 97df9d4c equals the locked
+Stage-0 C h = 1 digest: the fresh binds reproduce the booked first
+step bit-exact.
+
+Preflight law (AMENDMENT §4): for every eps, |R(1) - 1| <= 1e-3 AND
+cos(dW_eps(1), dW_1(1)) >= 0.999 AND |n_1(1) - n_pred| <= 0.02.
+Fails recorded: "R_e1e-3(1) 1.001260913305832 (tol 0.001)" and
+"cos(dW_e1e-3(1), dW_1(1)) 0.9986938808542296 < 0.999". The
+instrument wrote the receipt with status PREFLIGHT-FAILED, regime
+REGIME-UNRESOLVED, label REGIME-UNRESOLVED+FUNCTION-NOT-MEASURED
+[writer A only, one anchor, one seed lineage, CPU deterministic; gate
+descriptive], and stopped before any long leg.
+
+### Adjudication
+
+NOT-ADJUDICABLE (REGIME-UNRESOLVED), exactly as sealed. BAR 1 failed
+on the eps = 1e-3 arm of the primary four-point ladder; under
+AMENDMENT §4 the ladder is not reduced to three points, alpha /
+cosmin are not redefined, and no relaunch happens without a new
+prospective amendment. BAR 0, BAR 2, BAR 3, BAR 4 and BAR 5 were not
+reached; no HELD-32 CE, no gate, no substrate readout at 15300 /
+15420, no h_lin / h_dec, no cooled-tail ratio exists. The
+FIRST-MOMENT-ERASURE-1 verdict (L75193) and its disclosure are
+untouched.
+
+### Reading, stated narrowly (descriptive; nothing here is a bar)
+
+- What the preflight measured is the float32 resolution of the
+  intervention at this anchor, not the science question. The
+  eps = 1e-3 first-step deviation is 1.24e-4 in norm over 18.9M
+  parameters (about 3e-8 per element against weights of order 1e-2
+  to 1e-1, i.e. roughly ten float32 ulps), and at that scale a
+  component of relative size about 1.3e-3 is not collinear with the
+  analytic direction; its source (float32 rounding in the update
+  path) is inferred, not measured here. The two intermediate arms
+  sit on the analytic law to 1.3e-5 (1e-2) and 3e-7 (1e-1) in R (the
+  eps = 1 row is the definition of R), and the ladder slope over all four is 0.99984: the
+  intervention is linear in eps down to 1e-2 at the first step, and
+  eps = 1e-3 is the arm at which float32 stops resolving it to the
+  registered 1e-3.
+- The registered prior "BAR 1 passes: 0.90" was wrong on this point;
+  the instrument review had flagged the 1e-3 arm as untested on the
+  target anchor (AMENDMENT -INSTRUMENT disclosure), and the
+  preflight did what it was frozen to do: the failure cost 14 s of
+  compute (77 s armed to disarmed) and the rung's one shot, not 4 h.
+- Not claimed: anything about the long-horizon regime. No prediction
+  about alpha(H) or cosmin(H) is updated by this run.
+
+### Priors
+
+Prior 1 (BAR 0 passes, 0.90): its h = 1 point passed (the three
+digests above), the other four horizons unreached; not scored. Prior
+2 (BAR 1 passes, 0.90): MISS. Priors 3 to 10: unresolved, not scored
+(prior 10, wall <= 5 h, is trivially true and is left unscored). Family record (OMA1 / FME1 / FMEL1) 8 hits,
+3 misses on the priors that resolved.
+
+### Consequences (as registered; none launched)
+
+REGIME-UNRESOLVED books NOT-ADJUDICABLE with no relaunch without an
+amendment. Banked, unarmed, for Artin's decision: (a) a re-registered
+ladder with the smallest arm at the resolved scale (eps in {1e-2,
+3e-2, 1e-1, 1}, or {1e-2, 1e-1, 1} declared as a three-point ladder
+PROSPECTIVELY with its own alpha / cosmin definitions and preflight),
+same arena, same code path, everything else unchanged; (b) a
+float64-master variant of the same ladder if the 1e-3 arm is wanted,
+which is a different substrate law and needs its own Stage-0-style
+qualification. Never: relaxing R / cos tolerances after the fact, a
+silent three-point ladder, writer B, a second anchor.
+checkpoints/fme1 and checkpoints/oma1/A/C retained (disposition an
+Artin decision). SCHEDULE-PHASE-SENSITIVITY-CENSUS-0 unarmed.

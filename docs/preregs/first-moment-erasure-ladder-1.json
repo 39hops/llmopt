@@ -4,7 +4,7 @@
  "note": "Machine-readable form of PRE-REG FIRST-MOMENT-ERASURE-LADDER-1 (RESULTS L75312; the prose governs). DESIGN ONLY (Artin decision 2026-09-15 08:00 EDT). No instrument, no launch; implementation and the target run each need a separate Artin GO.",
  "registered": "2026-09-15 (Mac local)",
  "machine": "mac",
- "status": "INSTRUMENT COMMITTED (AMENDMENT L75698); target run needs its own Artin GO: bash scratch/fmel1_launch.sh",
+ "status": "BOOKED (VERDICT RESULTS L75795): NOT-ADJUDICABLE (REGIME-UNRESOLVED), preflight refused on eps = 1e-3; no long leg ran; no relaunch without amendment",
  "question": "Does the first-moment perturbation remain magnitude-scaled through the full 7200 -> 15420 continuation of writer A, or does the continuation enter a generic amplification regime in which small initial differences grow and rotate independently of the erased-moment direction?",
  "writer": "A only: stock OneCycle seed 2, checkpoints/phase19m/m007200.pt (sha256 a0cdf244fcf44f05...), Adam step 7200, one seed lineage, byte-identical future stream",
  "continuation": {
@@ -242,9 +242,7 @@
  "retention": "checkpoints/fme1 and checkpoints/oma1/A/C kept until the ladder result is BOOKED; no pruning mid-live-run even if BAR 0 passes",
  "receipts": [
   "logs/fmel1/ladder.json",
-  "logs/fmel1/ladder.jsonl",
   "logs/fmel1/ladder.log",
-  "logs/fmel1/fmel1.DONE",
   "logs/liverun/fmel1.jsonl"
  ],
  "smoke_receipts": [
@@ -261,5 +259,42 @@
   "scratch/fmel1_launch.sh",
   "tests/test_first_moment_erasure_ladder.py"
  ],
- "launch": "bash scratch/fmel1_launch.sh (liverun fmel1)"
+ "launch": "bash scratch/fmel1_launch.sh (liverun fmel1)",
+ "result": {
+  "label": "REGIME-UNRESOLVED+FUNCTION-NOT-MEASURED",
+  "status": "PREFLIGHT-FAILED",
+  "commit": "f9872a27",
+  "wall_s": 13.8,
+  "preflight": {
+   "n_1": 0.8942846429438963,
+   "R": {
+    "e1e-3": 1.001260913305832,
+    "e1e-2": 1.0000131523160467,
+    "e1e-1": 1.0000003339361943,
+    "e1": 1.0
+   },
+   "cos_to_e1": {
+    "e1e-3": 0.9986938808542296,
+    "e1e-2": 0.9999855929914413,
+    "e1e-1": 0.9999998649674559,
+    "e1": 1.0
+   },
+   "alpha_1": 0.9998352644872174,
+   "cosmin_1": 0.9986938808542296,
+   "fails": [
+    "R_e1e-3(1) 1.001260913305832 (tol 0.001)",
+    "cos(dW_e1e-3(1), dW_1(1)) 0.9986938808542296 < 0.999"
+   ]
+  },
+  "receipts": [
+   "logs/fmel1/ladder.json",
+   "logs/fmel1/ladder.log",
+   "logs/liverun/fmel1.jsonl"
+  ],
+  "priors": "prior 2 MISS; others unresolved",
+  "banked_unarmed": [
+   "re-registered ladder with the smallest arm at the resolved scale",
+   "float64-master ladder variant with its own qualification"
+  ]
+ }
 }
