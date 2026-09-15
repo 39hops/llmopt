@@ -92,7 +92,7 @@ narrows again at k=128.
 </picture>
 
 <!-- llmopt:generated honesty-ledger:start -->
-The 419 curated claims in FINDINGS by maturity: 47 replicated, 102 mechanism-confirmed, 212 single-seed, 53 null, 5 retracted.
+The 420 curated claims in FINDINGS by maturity: 47 replicated, 102 mechanism-confirmed, 213 single-seed, 53 null, 5 retracted.
 <!-- llmopt:generated honesty-ledger:end -->
 
 A fifth of the published record is negative. Nulls and retractions sit beside

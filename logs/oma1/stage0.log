@@ -1,0 +1,9 @@
+[liverun] armed oma1s0 pid 80641 commit b5e5c1b8 worktree main:llmopt sentinel .git/liverun.lock
+[curric] D2 excision: 165028 -> 164896 rows
+[curric] D2 excision: 165028 -> 164896 rows
+/Users/artin/code/llmopt/scratch/optimizer_memory_ablation.py:183: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  sched.step()
+[oma1 stage0] A: P0.a PASS P0.c f32 1.05e-03 f64 2.09e-12 P0.d rho_cpu 0.0001 rho_env 0.0000 dCE +0.0000 -> PASS
+[oma1 stage0] B: P0.a PASS P0.c f32 1.08e-03 f64 2.28e-12 P0.d rho_cpu 0.3301 rho_env 0.2588 dCE -0.0000 -> NOT-ADJUDICABLE
+[oma1] stage0 done in 1913.4 s -> logs/oma1/stage0.json
+[liverun] disarmed oma1s0 rc 0

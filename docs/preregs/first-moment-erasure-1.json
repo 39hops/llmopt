@@ -1,0 +1,47 @@
+{
+ "name": "FIRST-MOMENT-ERASURE-1",
+ "program": "FIRST-MOMENT-ERASURE-1",
+ "note": "Machine-readable form of PRE-REG FIRST-MOMENT-ERASURE-1 (the prose governs). DESIGN ONLY (Artin decision 2026-09-14 22:08 EDT). Not a rescue or relabel of OPTIMIZER-MEMORY-ABLATION-1 (NOT-ADJUDICABLE). Separate Artin GO required before any treatment state.",
+ "registered": "2026-09-14 (Mac local)",
+ "machine": "mac",
+ "status": "design banked; NOT armed; no treatment mode implemented",
+ "writer": "A only: stock OneCycle seed 2, checkpoints/phase19m/m007200.pt (sha256 a0cdf244fcf44f05...), Adam step 7200",
+ "arena_validation": "OMA1 Stage 0 (logs/oma1/stage0.json): native CPU and mps resumes reproduce the booked m008100 to 8.2e-5 / 2.4e-5 of the leg; C = C' bit-exact; scheduler parity exact; P0.c 1.05e-3 float32 / 2.1e-12 float64",
+ "leg": {"steps": "7201..8100", "epoch": 1, "positions": "2060..2959", "first_slice": [158464, 158496], "last_slice": [84128, 84160], "digest_source": "logs/oma1/stage0.json leg_slices_digest"},
+ "control": {"pinned": "checkpoints/oma1/A/C/h{0001,0005,0020,0100,0900}.pt from OMA1 Stage 0 (CPU float32 deterministic, 8 threads); state digests asserted against logs/oma1/stage0.json before use; missing or drifted -> rerun under the same law, booked as a rerun, bit-identity to the receipt asserted"},
+ "provenance_binding": "treatment run uses the sealed instrument source of Stage 0 or a successor whose diff touches no code on the leg path; both source shas and the diff assertion recorded",
+ "arms": {"Z": "exp_avg <- 0 (selective first-moment erasure; exp_avg_sq, optimizer age, weights, wd, scheduler state, batch order preserved)", "E": "exp_avg <- 0.99 exp_avg"},
+ "device": "cpu float32, torch.use_deterministic_algorithms(True), pinned threads",
+ "horizons": [1, 5, 20, 100, 900],
+ "readouts": {"n_X": "||W_X(7200+h) - W_C(7200+h)|| / ||W_C(7200+h) - W_7200||", "function": "HELD-32 CE (UGC0 panel 00eb6c43...)", "gate": "120 gate at 8100 on C and Z, descriptive only", "r": "n_Z / (100 n_E), short-horizon local-response diagnostic only"},
+ "bars": {
+  "1_applied": "|n_Z(1) - 0.894284652673395| <= 0.02 and n_Z(1) in [0.80, 1.00] (sealed A expectation, logs/oma1/desk_bar1.json)",
+  "2_path": "FORGOTTEN if n_Z(900) <= 0.05; PERSISTENT if n_Z(900) >= 0.25; else INTERMEDIATE",
+  "3_sensitivity": "SENSITIVE if n_E(900) >= 0.10 else SPECIFIC",
+  "4_function": "NEUTRAL if |dCE_Z(900)| <= max(0.005, 3 |dCE_E(900)|); HARMED above positively; HELPED above negatively",
+  "5_transient": "descriptive: dCE_Z(20), argmin_h n_Z(h)",
+  "label": "(BAR 2 + BAR 3 qualifier, BAR 4) for writer A; single-writer fence; no two-writer agreement clause"
+ },
+ "refuted_if": "FORGOTTEN + FUNCTION-NEUTRAL on writer A",
+ "priors": [
+  {"id": 1, "claim": "BAR 1 passes", "p": 0.90},
+  {"id": 2, "claim": "n_Z(20) < n_Z(1)", "p": 0.80},
+  {"id": 3, "claim": "BAR 2: FORGOTTEN 0.45 / INTERMEDIATE 0.35 / PERSISTENT 0.20", "p": 0.45},
+  {"id": 4, "claim": "BAR 3 SPECIFIC", "p": 0.75},
+  {"id": 5, "claim": "BAR 4 NEUTRAL (HARMED 0.25, HELPED 0.10)", "p": 0.65},
+  {"id": 6, "claim": "dCE_Z(20) > 0.005", "p": 0.50},
+  {"id": 7, "claim": "wall <= 45 min", "p": 0.75}
+ ],
+ "consequences": {
+  "forgotten_neutral": "book and stop",
+  "persistent_specific_neutral": "bank unarmed a 7200 -> 15420 A leg and OPTIMIZER-MEMORY-CROSSFOSTER-1 restricted to reproducible states",
+  "persistent_sensitive": "bank an epsilon ladder on A",
+  "harmed_or_helped": "bank unarmed REPEATED-M-ERASURE-1 on A; no variance-state reset without separate evidence",
+  "intermediate": "book, Artin decision",
+  "never": "reopen OMA1; touch writer B"
+ },
+ "wall_fence": "killed and NOT-RUN at 2 x the prior wall",
+ "process": ["A-only treatment mode (instrument or thin sibling importing scratch/optimizer_memory_ablation.py)", "tests for the pin assertion and single-writer adjudication", "path-isolated smoke", "clean-tree audit", "liverun id fme1", "receipt-auditor before booking", "/fold-book"],
+ "receipts_planned": ["logs/fme1/"],
+ "checkpoints_planned": ["checkpoints/fme1/"]
+}

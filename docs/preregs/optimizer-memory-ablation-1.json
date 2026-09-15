@@ -4,7 +4,7 @@
  "note": "Machine-readable form of PRE-REG OPTIMIZER-MEMORY-ABLATION-1 (the prose governs). DESIGN + PRE-REG ONLY (Artin GO 2026-09-14 19:54 EDT). Nothing armed; instrument not yet written; Stage 0 and Stage 1 each need a separate Artin GO.",
  "registered": "2026-09-14 (Mac local)",
  "machine": "mac",
- "status": "SEALED (instrument 08a856b3, desk receipt 60b30517); NOT armed; Stage 0 GO and Stage 1 GO pending",
+ "status": "CLOSED NOT-ADJUDICABLE at Stage 0 (VERDICT RESULTS L74856): A PASS, B rho_env 0.2588 > 0.25; no Stage 1, no Z / E state; successor design PRE-REG FIRST-MOMENT-ERASURE-1 (L74943, unarmed)",
  "standing_decision": "OPTIMIZER-GEOMETRY-DESK-0 stays as booked (L74103 GEOMETRY-NOT-RESOLVED); no post-hoc k = 1 rerun; k = 1 readouts citable descriptively only",
  "framing": "(W_{t+1}, O_{t+1}) = U(W_t, O_t, D_t); O_t = (exp_avg, exp_avg_sq, Adam step, scheduler phase); framing, not a measured law",
  "question": "does erasing Adam's carried first moment at a stored interior state, with the byte-identical future stream, change the writer's PATH, its FUNCTION, neither, or both",
@@ -224,6 +224,52 @@
   "logs/oma1/smokemech_stage1.json",
   "logs/oma1/smokeseal_desk_bar1.json",
   "logs/oma1/smokeseal_stage0.json",
-  "logs/oma1/smokeseal_stage1.json"
- ]
+  "logs/oma1/smokeseal_stage1.json",
+  "logs/oma1/stage0.json",
+  "logs/oma1/stage0.jsonl",
+  "logs/oma1/stage0.log",
+  "logs/oma1/oma1s0.DONE",
+  "logs/liverun/oma1s0.jsonl"
+ ],
+ "stage0_result": {
+  "verdict": "NOT-ADJUDICABLE",
+  "A": {
+   "p0a": "PASS",
+   "p0b": "PASS",
+   "p0c_f32": 0.0010486,
+   "p0c_f64": 2.085e-12,
+   "rho_cpu": 8.18e-05,
+   "rho_mps": [
+    1.82e-05,
+    2.44e-05
+   ],
+   "rho_env": 2.44e-05,
+   "dce": 8.4e-07,
+   "p0d": "PASS"
+  },
+  "B": {
+   "p0a": "PASS",
+   "p0b": "PASS",
+   "p0c_f32": 0.0010757,
+   "p0c_f64": 2.279e-12,
+   "rho_cpu": 0.33007,
+   "rho_mps": [
+    0.25877,
+    0.20503
+   ],
+   "rho_env": 0.25877,
+   "mps_pair_over_leg": 0.21681,
+   "dce": -2.6e-05,
+   "p0d": "NOT-ADJUDICABLE"
+  },
+  "receipts": [
+   "logs/oma1/stage0.json",
+   "logs/oma1/stage0.jsonl",
+   "logs/oma1/stage0.log",
+   "logs/oma1/oma1s0.DONE",
+   "logs/liverun/oma1s0.jsonl"
+  ],
+  "commit": "b5e5c1b8",
+  "wall_s": 1913.4
+ }
 }

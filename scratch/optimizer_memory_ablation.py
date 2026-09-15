@@ -546,7 +546,9 @@ def mode_stage0(tok, enc, starts, info, segs, d, dev_cpu, dev_mps, held, rec, st
         cell["target"] = tinfo
         cell["p0d"] = {"rho_cpu": rho_cpu, "rho_mps": rho_mps, "rho_env": rho_env, "leg_norm": den, "ce_held_C": ce_c, "ce_held_target": ce_t, "dce": ce_c - ce_t,
                        "mps_pair_distance_over_leg": float(np.linalg.norm(flat(snapsM["MC_a"][LEG], segs, d) - flat(snapsM["MC_b"][LEG], segs, d)) / den), "verdict": p0d(rho_cpu, rho_env, ce_c - ce_t)}
-        cell["p0b_scheduler_parity"] = dict(resume_sched.last, verdict=("PASS" if resume_sched.last["parity"] else "FAIL"))   # derived from the C leg's own resume
+        cell["p0b_scheduler_parity"] = dict(resume_sched.last, verdict=("PASS" if resume_sched.last["parity"] else "FAIL"), source="last resume of this writer (MC_b)")
+        # provenance: resume_sched.last is overwritten by every resume; per writer the order is the P0.c bind, C, C', MC_a, MC_b, so the
+        # recorded dict is MC_b's resume. Every resume asserts parity or exits, so the dict is identical for all five (receipt audit 2026-09-14).
         cell["p0c_verdict"] = "PASS" if (cell["p0c_float32"] <= P0C_OUTER and cell["p0c_exact_float64"] <= P0C_EXACT) else "FAIL"
         cell["p0a_verdict"] = "PASS" if all(cell["p0a_bit_exact"].values()) and cell["p0a_opt_digest_equal"] else "FAIL"
         verdicts[w] = "PASS" if (cell["p0a_verdict"] == "PASS" and cell["p0c_verdict"] == "PASS" and cell["p0d"]["verdict"] == "PASS") else ("NOT-ADJUDICABLE" if cell["p0d"]["verdict"] == "NOT-ADJUDICABLE" else "FAIL")

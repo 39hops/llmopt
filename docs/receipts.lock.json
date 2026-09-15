@@ -2,7 +2,7 @@
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
  "_last_accept": {
   "paths": [],
-  "reason": "AMENDMENT OPTIMIZER-MEMORY-ABLATION-1-SEAL: desk receipts were force-added after the lock was generated; regenerate so they read tracked"
+  "reason": "VERDICT OPTIMIZER-MEMORY-ABLATION-1-STAGE-0: lock the Stage-0 receipts after force-add"
  },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
@@ -1284,6 +1284,13 @@
    "bytes": 932,
    "exists": true,
    "sha256": "823a2964308f9cbedbfc7c397b48f36d7b08af7a5f186076970010df6448f52d",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/liverun/oma1s0.jsonl": {
+   "bytes": 462,
+   "exists": true,
+   "sha256": "4c6772227424d6057d44ac99d7e644cd0c022e9ac3d115d4032c1807e97215c6",
    "source": "results",
    "tracked": true
   },
@@ -3128,6 +3135,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/oma1/oma1s0.DONE": {
+   "bytes": 5,
+   "exists": true,
+   "sha256": "8221ac66be71558c921fb44cfb66f7997699aea754d917763882d6d9eddc836e",
+   "source": "results",
+   "tracked": true
+  },
   "logs/oma1/smokemech_desk_bar1.json": {
    "bytes": 5192,
    "exists": true,
@@ -3167,6 +3181,27 @@
    "bytes": 22000,
    "exists": true,
    "sha256": "62551f40723552d8af3bee5a4510103b8436d06ac7de6dae1828c11bcb3186cf",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/oma1/stage0.json": {
+   "bytes": 24790,
+   "exists": true,
+   "sha256": "6f5d368809e470acd1e86ba2e6b030b17f57496546233a711ae2aa870d6c5cf7",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/oma1/stage0.jsonl": {
+   "bytes": 648148,
+   "exists": true,
+   "sha256": "078449b51e5ccaa3d8df1fbf01c55d9106802a16239e34b416ac0dac0ac303de",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/oma1/stage0.log": {
+   "bytes": 981,
+   "exists": true,
+   "sha256": "99d70b85eea1a7dd3fd62be39cbbfd606c320e9a1f8274d328d5c337b83dff02",
    "source": "results",
    "tracked": true
   },

@@ -1,4 +1,4 @@
-# Handoff 2026-09-14-3: OPTIMIZER-GEOMETRY-DESK-0 left as booked (Artin decision); PRE-REG OPTIMIZER-MEMORY-ABLATION-1 designed, amended, instrument sealed and BAR-1 expectations booked; nothing armed
+# Handoff 2026-09-14-3: OPTIMIZER-GEOMETRY-DESK-0 left as booked (Artin decision); PRE-REG OPTIMIZER-MEMORY-ABLATION-1 designed, sealed, Stage 0 run and booked NOT-ADJUDICABLE (A reproducible, B substrate-sensitive); FIRST-MOMENT-ERASURE-1 banked; nothing armed
 
 Seat: Fable 5.1 on the Mac. HEAD at close: the commit carrying this
 file (updated in place after the IMPLEMENTATION GO). 3080 untouched. No
@@ -51,10 +51,31 @@ live registered run. Nothing armed.
   `stage1` (oma1s1) only after stage0.json PASS; receipt-auditor on
   Stage 0 receipts before the Stage 1 GO.
 
+## Stage 0 GO (21:24 EDT) and decision (22:08 EDT)
+
+- VERDICT OPTIMIZER-MEMORY-ABLATION-1-STAGE-0 (L74856): NOT-ADJUDICABLE as
+  sealed. A: every precondition passes, native CPU and mps resumes
+  reproduce the booked m008100 to 8e-5 / 2e-5 of the leg. B: two
+  independent native mps resumes end 0.217 of the leg apart, 0.259 /
+  0.205 from the booked state (cap 0.25), CPU 0.330, held CE unchanged
+  to 3e-5. Two-writer Stage 1 closed; no Z / E state ever existed.
+  Receipt-auditor: no blockers; P0.b provenance comment folded.
+- PRE-REG FIRST-MOMENT-ERASURE-1 (L74943, docs/preregs/first-moment-
+  erasure-1.json): writer A only, pinned Stage-0 A control
+  (checkpoints/oma1/A/C/h*.pt, digests in logs/oma1/stage0.json), Z / E
+  law and thresholds unchanged, single-writer fence. NOT armed; its
+  A-only treatment mode is not yet implemented.
+- Banked unarmed: SCHEDULE-PHASE-SENSITIVITY-CENSUS-0 (native mps resume
+  pairs across all stored milestones of both writers; never a single
+  favorable anchor).
+- checkpoints/oma1/ (2.0 GB): A/C is the pinned control (keep); B and
+  A's C' / MC snapshots pending a handoff decision.
+
 ## Conditions that bite next session
 
-- Nothing armed. The next GO is Stage 0 (native-state preconditions,
-  60 to 75 min priced); Stage 1 after Stage 0 books PASS.
+- Nothing armed. OMA1 is closed. The next candidate GO is the
+  IMPLEMENTATION of FIRST-MOMENT-ERASURE-1's A-only mode (pin assert +
+  Z / E on A), then its run GO.
 - The epsilon twin must stay at 1e-2 (a 1e-6 twin is a numerical no-op
   at float32 W resolution; reasoning in the pre-reg).
 - The scheduler is reconstructed by stepping a fresh scheduler 7,199
@@ -69,10 +90,10 @@ live registered run. Nothing armed.
 
 ## Open decisions for Artin
 
-1. GO for Stage 0 of OPTIMIZER-MEMORY-ABLATION-1 (C / C' / MC_a /
-   MC_b, both writers, 900 steps each; no Z / E).
-2. Whether the Stage 0 mps calibration pair should also be run for
-   writer B or only for A (the pre-reg says both; about 6 min per leg at the measured 2.7 it/s).
+1. GO for the IMPLEMENTATION (then the run) of FIRST-MOMENT-ERASURE-1.
+2. Whether SCHEDULE-PHASE-SENSITIVITY-CENSUS-0 gets a design GO.
+3. Disposition of the 2.0 GB checkpoints/oma1/ tree beyond the pinned
+   A control.
 
 ## Next session: where to start
 

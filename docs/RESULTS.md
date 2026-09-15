@@ -74852,3 +74852,212 @@ reproduced by the mechanism smoke on the float32 continuation (n_Z(1)
 Nothing armed. Stage 0 (native-state preconditions: C / C' / MC_a /
 MC_b, 900 steps each, both writers) needs its own Artin GO; Stage 1
 another after Stage 0 books PASS.
+
+## VERDICT OPTIMIZER-MEMORY-ABLATION-1-STAGE-0: NOT-ADJUDICABLE as sealed — writer A's native resume reproduces the booked leg (rho 8e-5), writer B's independent native mps resumes diverge by a quarter of the leg from the booked state and from each other (rho_env 0.259 v the 0.25 cap) at unchanged held function; the two-writer Stage 1 is closed, no Z / E treatment runs under OMA1 (2026-09-14, Mac)
+
+Pre-registration: PRE-REG OPTIMIZER-MEMORY-ABLATION-1 (L74310),
+AMENDMENT -PRE-INSTRUMENT (L74620), AMENDMENT -SEAL (L74731). Artin
+GO 2026-09-14 21:24 EDT for Stage 0 only; decision 22:08 EDT: book
+exactly as sealed. Run: `bash scratch/oma1_launch.sh stage0` under
+liverun oma1s0 at b5e5c1b8 (clean tree; instrument byte-identical to
+the sealed 08a856b3 source, sha 04353502...); wall 1,913 s (31.9 min);
+receipts logs/oma1/stage0.json (the receipt), logs/oma1/stage0.jsonl
+(7,200 per-step rows: 8 arms x 900 steps, steps 7201..8100),
+logs/oma1/stage0.log, logs/oma1/oma1s0.DONE, logs/liverun/oma1s0.jsonl;
+snapshots checkpoints/oma1/{A,B}/{C,Cprime,MC_a,MC_b}/ (2.0 GB,
+untracked, state digests in the receipt). Receipt-auditor (Opus,
+read-only): no blockers; every P0 number recomputed from the snapshot
+files to the last digit; one provenance label folded as a comment
+(the P0.b dict records the writer's last resume, MC_b, not the C leg;
+all five resumes per writer assert parity or exit, so the dict is
+identical; no number changes). No Z or E state exists.
+
+### Preconditions, exactly as sealed
+
+| | A (stock OneCycle) | B (backward SequenceLR) |
+|---|---|---|
+| P0.a C = C' bit-exact at h = 1 / 5 / 20 / 100 / 900; optimizer digests equal | PASS | PASS |
+| P0.b scheduler parity: reconstructed row 7200 = serialized, pending step = audit row 7201 (0.0 difference) | PASS | PASS |
+| P0.c float32 first step v the virtual law (bar 5e-2) | 1.05e-3 | 1.08e-3 |
+| P0.c float64 replay v the law (bar 1e-6) | 2.1e-12 | 2.3e-12 |
+| leg norm ||m008100 - m007200|| | 13.302 | 10.227 |
+| rho_cpu = ||C(8100) - booked|| / leg | 8.2e-5 | 0.3301 |
+| rho_mps a / b (native mps resumes v booked) | 1.8e-5 / 2.4e-5 | 0.2588 / 0.2050 |
+| rho_env = max_j rho_mps,j (cap 0.25) | 2.4e-5 | 0.2588 |
+| mps pair distance over the leg (descriptive) | 2.2e-5 | 0.2168 |
+| HELD-32 CE: C(8100) v booked (bar 0.01) | 0.39050 v 0.39050 (+8e-7) | 0.45550 v 0.45553 (-2.6e-5) |
+| P0.d | PASS (8.2e-5 <= max(2 x 2.4e-5, 0.02)) | NOT-ADJUDICABLE (rho_env > 0.25) |
+| writer verdict | PASS | NOT-ADJUDICABLE |
+
+Stage-0 verdict: NOT-ADJUDICABLE (both writers were required). The
+instrument refuses Stage 1 on this receipt (verdict != PASS). Rates:
+CPU 3.1 it/s, mps 5.0 it/s at this leg (the smoke's 1.7 / 2.7 were on
+the epoch-0 head with shorter sequences).
+
+### What was measured, stated narrowly
+
+- Writer A: the deterministic CPU continuation and both native mps
+  resumes reproduce the booked m008100 to 1e-4 of the leg with the
+  same held function; the reconstructed future stream, scheduler and
+  optimizer binding are validated end to end on this writer.
+- Writer B: from the same stored step-7200 state and the same
+  reconstructed future stream, two independent native mps resumes
+  diverge from each other by 0.217 of the leg and from the booked
+  state by 0.259 / 0.205 over 900 steps; the CPU continuation sits
+  0.330 from the booked state. All four B legs have the same norm
+  (10.14 to 10.23), pairwise cosines 0.95 to 0.98, the difference
+  spread over blocks 2 to 6 (0.1 % in embedding / head / norm), and
+  held CE unchanged to 3e-5. This establishes substrate-level
+  numerical sensitivity of this registered continuation of writer B
+  in parameter space at nearly unchanged function. It does not
+  establish the numerical source of the sensitivity, nor a scheduler
+  or phase cause; the same-stream, same-state mps pair divergence
+  argues against a stream defect, and the receipts cannot separate a
+  defect that would begin after step 7201 (no per-step loss log of the
+  original births exists; no booked milestone lies between 7200 and
+  8100). B's step-7201 batch loss equals the sealed desk value and its
+  first five losses are identical across all four arms.
+
+### Consequences (as sealed and by decision)
+
+- The OPTIMIZER-MEMORY-ABLATION-1 family is NOT-ADJUDICABLE, not
+  partially passed: the two-writer Stage 1 is closed; no Z / E
+  treatment is run under OMA1; BARS 2 to 4 are never read.
+- Priors: 7a (P0.a bit-exact, 0.85) hit; 7b (P0.d passes both
+  writers, 0.60) missed; 8 (Stage 0 <= 1.5 h, 0.70) hit. Family 2 / 1.
+- Writer B is NOT moved to a hand-selected cooling anchor as an OMA1
+  repair. If B's substrate sensitivity is pursued, it is a
+  pre-registered schedule-phase census across multiple frozen anchors
+  (both writers, all stored milestones with a following milestone),
+  not a favorable single anchor chosen after this result; banked in
+  RIFF (TASK-GRADIENT GEOMETRY), unarmed.
+- A single-writer rung on the reproducible writer A is designed and
+  banked, not run: PRE-REG FIRST-MOMENT-ERASURE-1 (next entry). It is
+  not a rescue or relabel of OMA1.
+- The Stage-0 A control snapshots (checkpoints/oma1/A/C/h{0001,0005,
+  0020,0100,0900}.pt, model-only except the opt blob at h0900; state
+  digests in logs/oma1/stage0.json) are retained as the pinned control
+  for that rung; the B snapshots and A's C' / MC snapshots are retained
+  until a handoff decides their fate (2.0 GB total).
+
+## PRE-REG FIRST-MOMENT-ERASURE-1: selective first-moment erasure on the reproducible stock-OneCycle writer A alone, at the validated A@7200 arena, against the pinned Stage-0 A control (2026-09-14, Mac, DESIGN ONLY, nothing armed)
+
+Artin decision 2026-09-14 22:08 EDT: bank and design, do not run. This
+rung is NOT a rescue or relabel of OPTIMIZER-MEMORY-ABLATION-1 (which
+stays NOT-ADJUDICABLE, VERDICT -STAGE-0 above). Its question is
+restricted to writer A. A separate Artin GO is required before any
+treatment state exists; the instrument mode that runs it is written
+and smoked under that GO.
+
+### Question
+
+On the reproducible writer (stock OneCycle, seed 2, stored step-7200
+state, whose native continuation reproduces the booked m008100 to
+1e-4 of the leg on CPU and on mps), does selective first-moment
+erasure change the writer's PATH, its FUNCTION, neither, or both over
+the 900-step leg 7201..8100?
+
+### Arena (reused, validated by OMA1 Stage 0)
+
+- State: checkpoints/phase19m/m007200.pt (sha256 a0cdf244fcf44f05...,
+  state digest 9c7c1a6f..., Adam step 7200; group lr 1.7326121234e-4,
+  beta1 0.8922464315). Next row 7201: lr 1.7323009e-4, beta1 0.8922568
+  (audit table; parity exact at Stage 0).
+- Future stream: the trainer's own law, epoch 1 positions 2060..2959
+  (first slice [158464, 158496], last [84128, 84160]; leg_slices_digest
+  in logs/oma1/stage0.json). No RNG consumed (no Dropout).
+- CONTROL pinned, not rerun: the Stage-0 A C leg (CPU float32,
+  deterministic algorithms, 8 threads) with snapshots
+  checkpoints/oma1/A/C/h0001 / h0005 / h0020 / h0100 / h0900.pt whose
+  state digests are recorded in the locked receipt logs/oma1/stage0.json
+  (and the bit-identical C' leg). The rung asserts each pinned
+  snapshot's state digest against the receipt before use and refuses
+  otherwise; if any pinned file is missing or drifted, the control is
+  rerun under the same law and the rerun is booked as such (the
+  Stage-0 receipt shows C = C' bit-exact, so a rerun is expected to be
+  bit-identical; that expectation is asserted, not assumed).
+- Provenance binding: the treatment run must use the sealed
+  instrument source that produced the Stage-0 A control, or a
+  successor whose diff touches no code on the leg path (stream law,
+  scheduler resume, bind, run_leg, apply_arm, readouts); the run
+  receipt records both source shas and the diff assertion.
+
+### Treatment law (unchanged from OMA1)
+
+Z: exp_avg <- 0 on all 59 tensors (selective first-moment erasure;
+exp_avg_sq, optimizer age, weights, weight decay, scheduler state and
+future batch order preserved). E: exp_avg <- 0.99 x exp_avg (the 1 %
+same-axis twin). Both on CPU float32, deterministic, from the same
+bound state as the pinned control. Horizons 1 / 5 / 20 / 100 / 900.
+
+### Readouts and bars (single writer; all two-writer agreement clauses removed)
+
+Readouts as OMA1: n_X(h) = ||W_X(7200+h) - W_C(7200+h)|| /
+||W_C(7200+h) - W_7200||; leg cosines; group shares; HELD-32 CE per
+arm and horizon (UGC0 panel, digest 00eb6c43...); the 120 gate at 8100
+on C and Z, descriptive only (single state; deltas under 7 solves not
+read as direction; booked m008100 gate 53).
+
+- BAR 1 (applied): |n_Z(1) - 0.8943| <= 0.02 and n_Z(1) in [0.80,
+  1.00] (the sealed A expectation from logs/oma1/desk_bar1.json,
+  n_pred 0.894284652673395; the Stage-0 recompute equals it).
+- BAR 2 (path at 900): FORGOTTEN if n_Z(900) <= 0.05; PERSISTENT if
+  >= 0.25; else INTERMEDIATE.
+- BAR 3 (sensitivity): SENSITIVE if n_E(900) >= 0.10 else SPECIFIC.
+- BAR 4 (function at 900): NEUTRAL if |dCE_Z(900)| <= max(0.005,
+  3 |dCE_E(900)|); HARMED above positively; HELPED above negatively.
+- BAR 5 (descriptive): dCE_Z(20), argmin_h n_Z(h); r = n_Z / (100 n_E)
+  reported at short horizon as a local-response diagnostic only.
+- Label: (BAR 2 + BAR 3 qualifier, BAR 4) for writer A. Scope: one
+  writer, one anchor, one seed lineage; the label carries the
+  single-writer fence and says nothing about the backward writer or
+  about writer-generality.
+
+REFUTED-IF: FORGOTTEN + NEUTRAL (erasing the carried first moment
+changes neither the path beyond a short transient nor the function on
+writer A at this horizon).
+
+### REGISTERED PRIOR (house; OMA1's per-writer priors carried, now for A alone)
+
+BAR 1 passes 0.90 (the identity held to 1e-4 in the smokes and the
+control's first step matched the law to 1.05e-3). n_Z(20) < n_Z(1)
+0.80. BAR 2: FORGOTTEN 0.45 / INTERMEDIATE 0.35 / PERSISTENT 0.20. BAR 3
+SPECIFIC 0.75 (writer A's leg reproduced to 1e-4 under substrate
+noise, so a 1 % twin is expected to stay small; higher than OMA1's
+0.60). BAR 4 NEUTRAL 0.65 / HARMED 0.25 / HELPED 0.10. dCE_Z(20) >
+0.005: 0.50. Wall <= 45 min (two 900-step CPU legs at 3.1 it/s plus
+HELD CE and two gates): 0.75.
+
+### Fences
+
+Single writer, single anchor, no replication; the pinned control is a
+booked artifact of another rung (digest-asserted); horizon 900 steps
+only; the epsilon twin is a perturbation on the memory axis, not a
+Lyapunov estimate; CPU float32 continuation of an mps-born state
+(validated for this writer by Stage 0 P0.d to 8.2e-5 of the leg);
+gate descriptive. Wall fence: killed and NOT-RUN at 2 x the prior
+wall.
+
+### Consequences
+
+FORGOTTEN + NEUTRAL: book and stop; no first-moment follow-up on A.
+PERSISTENT-SPECIFIC + NEUTRAL: bank (unarmed) a longer-horizon A leg
+(7200 -> 15420) and OPTIMIZER-MEMORY-CROSSFOSTER-1 restricted to
+reproducible states. PERSISTENT-SENSITIVE: bank an epsilon ladder on
+A before any further memory rung. HARMED / HELPED: bank (unarmed)
+REPEATED-M-ERASURE-1 on A; no variance-state reset without separate
+evidence. INTERMEDIATE: book, Artin decision. Nothing from this rung
+reopens OMA1 or touches writer B.
+
+### Process on GO
+
+Instrument: an A-only treatment mode of scratch/optimizer_memory_
+ablation.py (or a thin sibling importing it) that binds the pinned
+control from the Stage-0 receipt, asserts digests, runs Z and E, and
+adjudicates the single-writer ladder; tests for the pin assertion and
+the single-writer adjudication; path-isolated smoke; clean-tree audit;
+liverun id fme1; receipt-auditor before booking; /fold-book.
+Machine-readable form: docs/preregs/first-moment-erasure-1.json.
+Receipts under logs/fme1/, snapshots under checkpoints/fme1/.
+
+Nothing armed.
