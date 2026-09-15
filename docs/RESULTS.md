@@ -76206,10 +76206,14 @@ magnitude-scaled claim; TRAJECTORY-SENSITIVE requires alpha_global
 <= 0.20, both local slopes <= 0.40 and cosmin <= 0.50; BAR 3 reports
 h_lin / h_dec / h_curve; BAR 4 is the absolute 0.005 per arm.
 
-### Smokes (path-isolated: logs/fmel2/smokel2*_ladder.json,
-checkpoints/fmel2_smoke; arena under tag l2a built by the L1 smoke
-pipeline, whose own preflight refuses there by design and supplies
-the h = 1 reference digests)
+### Smokes (path-isolated: logs/fmel2/smokel2{a,c,d,e}_ladder.json,
+logs/fmel2/smokel2{a,c,e}_ladder.jsonl, checkpoints/fmel2_smoke; arena
+under tag l2a built by the L1 smoke pipeline, whose own preflight
+refuses there by design and supplies the h = 1 reference digests:
+logs/fmel1/smokel2a_ladder.json, logs/fme1/smokel2a_treat.json,
+logs/fme1/smokel2a_treat.jsonl, logs/oma1/smokel2a_stage0.json,
+logs/oma1/smokel2a_stage0.jsonl, logs/oma1/smokel2a_desk_bar1.json,
+logs/oma1/smokel2a_desk-bar1.jsonl)
 
 - smokel2a: the full mechanism on the synthetic arena. The L2 preflight
   PASSES there (the three resolved amplitudes; n_1 within the smoke
