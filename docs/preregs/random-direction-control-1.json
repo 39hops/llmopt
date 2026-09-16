@@ -1,0 +1,222 @@
+{
+ "name": "RANDOM-DIRECTION-CONTROL-1",
+ "program": "RANDOM-DIRECTION-CONTROL-1",
+ "note": "Machine-readable form of PRE-REG RANDOM-DIRECTION-CONTROL-1 (RESULTS L76553; the prose governs). DESIGN ONLY (Artin decision 2026-09-15 22:05 EDT). No instrument, no launch; implementation and the target run each need a separate Artin GO.",
+ "registered": "2026-09-15 (Mac local)",
+ "machine": "mac",
+ "status": "DESIGN ONLY, unarmed (no instrument written)",
+ "question": "Is the late amplification / decorrelation after a first-moment perturbation specific to the optimizer-memory direction, or does a perturbation of the same first-step write magnitude and locus but unrelated direction amplify comparably?",
+ "writer": "A only: stock OneCycle seed 2, checkpoints/phase19m/m007200.pt (sha256 a0cdf244fcf44f05...), Adam step 7200, one seed lineage, byte-identical future stream",
+ "continuation": {
+  "steps": "7201..15420",
+  "n_steps": 8220,
+  "full_leg_digest_prefix": "32a6ecb2"
+ },
+ "arms": {
+  "C": "native control, rerun fresh (digests asserted == locked FMEL2 C at all 12 horizons)",
+  "M": "the booked FMEL2 eps = 1e-1 arm: checkpoints/fmel2/A/e1e-1/h*.pt as LOCKED COMPARISON VECTORS (digests + shas asserted against logs/fmel2/ladder.json), never resumed",
+  "R1": "random direction, seed 2026091501",
+  "R2": "random direction, seed 2026091502",
+  "R3": "random direction, seed 2026091503"
+ },
+ "arm_order": [
+  "C",
+  "R1",
+  "R2",
+  "R3"
+ ],
+ "seeds": {
+  "R1": 2026091501,
+  "R2": 2026091502,
+  "R3": 2026091503
+ },
+ "construction": {
+  "map": "delta_w = K * delta_m elementwise, K = -lr beta1 / (bc1 D), D = sqrt((beta2 v + (1 - beta2) c^2) / bc2) + 1e-8, c = clipped first-batch gradient; K independent of m and identical across arms",
+  "steps": [
+   "draw g ~ N(0, I) float64 over the 18,911,616 flat coordinates from torch.Generator('cpu').manual_seed(seed)",
+   "LOCUS: rescale per group so the 9 group energy shares equal the locked FMEL2 e1e-1 h = 1 profile p_M",
+   "ORTHOGONALITY: remove the delta_w_M component within each group, re-apply the locus rescale",
+   "MAGNITUDE: scale to ||delta_w_M|| = 0.0124086 (locked FMEL2 e1e-1 abs(1))",
+   "INVERT: delta_m = delta_w / K (float64), added to exp_avg in float32; exp_avg_sq, step, weights, scheduler, stream untouched"
+  ],
+  "p_M": {
+   "BLOCK0": 0.1117,
+   "BLOCK1": 0.1277,
+   "BLOCK2": 0.1255,
+   "BLOCK3": 0.1243,
+   "BLOCK4": 0.1219,
+   "BLOCK5": 0.1243,
+   "BLOCK6": 0.1291,
+   "BLOCK7": 0.1339,
+   "OUTSIDE": 0.0016
+  },
+  "write_norm_target": 0.012408559997086078,
+  "descriptive": "||delta_m_r|| / ||delta_m_M|| recorded, not matched"
+ },
+ "preflight": {
+  "a_magnitude": "| ||dW_r(1)|| / 0.0124086 - 1 | <= 1e-3",
+  "b_orthogonality": "|cos(dW_r(1), dW_M(1))| <= 0.05",
+  "c_locus": "max_G |share_r,G(1) - p_M,G| <= 0.01",
+  "d_independence": "|cos(dW_r(1), dW_r'(1))| <= 0.05 for every pair",
+  "e_untouched": "exp_avg_sq digest, step counters, scheduler group equal to the control's before the first step; fresh C h = 1 digest == locked FMEL2 C h = 1",
+  "failure": "label CONSTRUCTION-UNRESOLVED, stop before any long leg, NOT-ADJUDICABLE, no relaunch without amendment"
+ },
+ "horizons": [
+  1,
+  5,
+  20,
+  100,
+  300,
+  900,
+  1800,
+  3080,
+  4500,
+  6000,
+  7200,
+  8220
+ ],
+ "terminal_horizon": 8220,
+ "readouts": {
+  "G_r": "||dW_r(h)|| / ||dW_r(1)||",
+  "G_M_locked": {
+   "1": 1.0,
+   "5": 4.0,
+   "20": 7.86,
+   "100": 11.86,
+   "300": 16.56,
+   "900": 156.9,
+   "1800": 374.7,
+   "3080": 501.9,
+   "4500": 519.0,
+   "6000": 518.7,
+   "7200": 517.5,
+   "8220": 517.3
+  },
+  "A_r": "G_r(h) / G_M(h)",
+  "n_r": "||dW_r(h)|| / ||W_C(h) - W_7200||",
+  "cos_rM": "cos(dW_r(h), dW_M(h))",
+  "pair_cos": "among R1 / R2 / R3",
+  "rot_r": "cos(dW_r(h), dW_r(h_prev))",
+  "group_share": "share of ||dW_r||^2 per BLOCK0..7 / OUTSIDE",
+  "function": "HELD-32 CE per arm, dCE_r",
+  "gate": "120 gate at 15420 on C, R1, R2, R3, same mps device, descriptive",
+  "tail": "||dW_r(H)|| / ||dW_r(6000)||",
+  "substrate": "fresh C v gallery19m_phase_s2.pt as FMEL2 (expected rho 0.03095 exactly)"
+ },
+ "bars": {
+  "0_qualification": "fresh C == locked FMEL2 C digests at all 12 horizons; M snapshot digests + shas == FMEL2 receipt; every arm h = 1 == preflight digest; mismatch -> NOT-RUN",
+  "1_construction": "see preflight",
+  "2_amplification_at_H": "first match: REGIME-UNRESOLVED if any A_r(H) UNDEFINED or preflight failed; DIRECTION-GENERIC if 0.5 <= A_r(H) <= 2 for all three; MOMENT-SPECIFIC if A_r(H) <= 0.25 for all three; RANDOM-DOMINANT if A_r(H) >= 4 for all three; else MIXED with the three A_r(H) quoted",
+  "3_direction": "reported: DIRECTION-SHARED-LATE if all |cos(dW_r(H), dW_M(H))| >= 0.50; DIRECTION-INDEPENDENT-LATE if all <= 0.25; else MIXED-DIRECTION; h_amp_r = first grid h with G_r >= 10 (h_amp_M = 100); rot_r beside rot_M",
+  "4_function": "per arm NEUTRAL iff |dCE_r(H)| <= 0.005; HARMED / HELPED by sign; FUNCTION-NEUTRAL when all three NEUTRAL; no functional inference from path geometry",
+  "5_descriptive": "cooled tail; substrate rho",
+  "zero_norm_law": "AMENDMENT L75568 \u00a74; UNDEFINED terminal -> REGIME-UNRESOLVED",
+  "label": "(BAR 2, BAR 3, BAR 4) [writer A only, one anchor, one seed lineage, CPU deterministic, write-norm 0.0124 = FMEL2 eps 1e-1; gate descriptive]"
+ },
+ "refuted_if": {
+  "moment_axis_memory": "BAR 2 books DIRECTION-GENERIC",
+  "generic_amplification": "BAR 2 books MOMENT-SPECIFIC"
+ },
+ "priors": [
+  {
+   "id": 1,
+   "claim": "BAR 0 passes",
+   "p": 0.9
+  },
+  {
+   "id": 2,
+   "claim": "BAR 1 construction passes for all three",
+   "p": 0.85
+  },
+  {
+   "id": 3,
+   "claim": "BAR 2: DIRECTION-GENERIC 0.45 / MIXED 0.30 / MOMENT-SPECIFIC 0.15 / RANDOM-DOMINANT 0.10",
+   "p": 0.45
+  },
+  {
+   "id": 4,
+   "claim": "the three A_r(H) within a factor 2 of each other",
+   "p": 0.6
+  },
+  {
+   "id": 5,
+   "claim": "DIRECTION-INDEPENDENT-LATE",
+   "p": 0.65
+  },
+  {
+   "id": 6,
+   "claim": "h_amp_r <= 300 for all r",
+   "p": 0.6
+  },
+  {
+   "id": 7,
+   "claim": "FUNCTION-NEUTRAL (all three)",
+   "p": 0.75
+  },
+  {
+   "id": 8,
+   "claim": "wall <= 4 h",
+   "p": 0.7
+  }
+ ],
+ "cost": {
+  "per_leg_min": 46,
+  "legs": 4,
+  "prior_wall_h": 3.3,
+  "cap_s": 25200
+ },
+ "storage": {
+  "snapshots": "checkpoints/rdc1/A/<arm>/h<hhhh>.pt: 48 x 75.7 MB + 4 opt blobs at H = about 4.2 GB",
+  "preflight_min_free_gib": 16
+ },
+ "receipts": [
+  "logs/rdc1/control.json",
+  "logs/rdc1/control.jsonl",
+  "logs/rdc1/control.log",
+  "logs/rdc1/rdc1.DONE",
+  "logs/liverun/rdc1.jsonl"
+ ],
+ "dependency_graph": {
+  "locked_receipts": [
+   "logs/oma1/stage0.json",
+   "logs/oma1/desk_bar1.json",
+   "logs/fme1/treat.json",
+   "logs/fmel1/ladder.json",
+   "logs/fmel2/ladder.json (0faffc61...)"
+  ],
+  "files": [
+   "checkpoints/phase19m/m007200.pt",
+   "checkpoints/fmel2/A/e1e-1/h*.pt (12 comparison vectors)"
+  ],
+  "digests_only": [
+   "FMEL2 C at 12 horizons"
+  ],
+  "not_needed_but_retained": [
+   "checkpoints/fmel2/A/{C,e1,e1e-2}",
+   "checkpoints/fme1",
+   "checkpoints/oma1/A/C"
+  ]
+ },
+ "stop_law": [
+  "mechanical 25200 s cap (NOT-RUN receipt, exit 3, no DONE)",
+  "BAR 0 mismatch -> NOT-RUN whole run",
+  "pin drift refuses at launch",
+  "construction preflight failure -> NOT-ADJUDICABLE (CONSTRUCTION-UNRESOLVED) before any leg",
+  "live-run law",
+  "one run, no retry, no follow-up",
+  "no threshold moved after any random leg exists"
+ ],
+ "consequences": {
+  "direction_generic": "AMENDMENT re-reading the FME1 / FMEL2 late separations as generic amplification; moment-axis lead closes on this arena; census unbanked for design",
+  "moment_specific": "moment-axis lead stands; bank OPTIMIZER-MEMORY-CROSSFOSTER-1; census stays banked",
+  "random_dominant": "book; bank a random direction WITHOUT locus matching",
+  "mixed": "book, Artin decision",
+  "never": "writer B; second anchor; reopening OMA1 / FMEL1 / FMEL2; variance reset; float64; cross-foster under this rung"
+ },
+ "retention": "checkpoints/fmel2, checkpoints/fme1, checkpoints/oma1/A/C kept until this rung is booked",
+ "process": [
+  "instrument scratch/random_direction_control.py (thin sibling of scratch/first_moment_erasure_ladder2.py) + tests + smokes + review + full suite + commit (separate GO)",
+  "Artin GO for the target run: bash scratch/rdc1_launch.sh under liverun rdc1",
+  "receipt-auditor + prereg-auditor before booking; /fold-book"
+ ]
+}

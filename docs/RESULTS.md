@@ -76549,3 +76549,297 @@ writer B; a second anchor; reopening OMA1 or FMEL1; a variance-state
 reset; eps below 1e-2 on float32; float64 under this rung.
 checkpoints/fmel2 (4.24 GB), checkpoints/fme1 and checkpoints/oma1/A/C
 retained; disposition an Artin decision.
+
+## PRE-REG RANDOM-DIRECTION-CONTROL-1: is the late amplification and decorrelation after a first-moment perturbation specific to the optimizer-memory direction, or does a perturbation of the same first-step write magnitude and anatomical locus but unrelated direction amplify comparably (2026-09-15, Mac, DESIGN ONLY, nothing armed)
+
+Artin decision 2026-09-15 22:05 EDT: GO DESIGN + PREREG ONLY for the
+matched-norm random-direction control; no implementation, no
+training. FIRST-MOMENT-ERASURE-LADDER-2 (VERDICT L76340) stays
+exactly INTERMEDIATE + FUNCTION-NEUTRAL (not relabelled
+TRAJECTORY-SENSITIVE despite alpha_global(H) 0.220 v the 0.20 bar).
+SCHEDULE-PHASE-SENSITIVITY-CENSUS-0 stays banked and unarmed for one
+more rung. checkpoints/fmel2, checkpoints/fme1 and checkpoints/oma1/A/C
+are kept until this pre-reg's dependency graph is fixed (below); no
+pruning. No schedule census, writer B, second anchor, float64,
+variance reset or cross-foster work under this GO. Machine-readable
+form: docs/preregs/random-direction-control-1.json (the prose
+governs).
+
+### Question
+
+FMEL2 booked, on writer A at 7200 over eps in {1e-2, 1e-1, 1}: a
+first-moment perturbation is linear and direction-shared through
+h = 100, decorrelates and curves by h = 900, and settles into a
+magnitude-insensitive, direction-decorrelated separation (decade
+slopes 0.25 / 0.19, cosmin 0.19 at H = 8220), with the function
+unchanged. The eps = 1e-1 arm's deviation grows 517x in norm from
+h = 1 to H. This family has never had a DIRECTION control: every
+perturbation so far lay along the first-moment axis (exp_avg scaled).
+This rung asks whether a perturbation with the SAME first-step write
+magnitude and the SAME anatomical locus (per-group write-energy
+profile) but an UNRELATED direction undergoes comparable
+amplification and decorrelation on the same leg. It does not ask
+about amplitude (FMEL2), about eps < 1e-2 (FMEL1, NOT-ADJUDICABLE),
+or about function beyond the separate absolute bar.
+
+### Arena (unchanged)
+
+Writer A only: stock OneCycle seed 2, anchor
+checkpoints/phase19m/m007200.pt (sha a0cdf244..., digest 9c7c1a6f...,
+Adam step 7200); same seed lineage; same byte-identical future stream
+(first-900 digest equal to Stage 0's, full-leg digest 32a6ecb2...
+equal to FMEL1's and FMEL2's); continuation 7201..15420 (8220 steps);
+CPU float32, torch.use_deterministic_algorithms, 8 threads, the
+Stage-0 torch / numpy law; the 12-horizon grid {1, 5, 20, 100, 300,
+900, 1800, 3080, 4500, 6000, 7200, 8220}, H = 8220; the mechanical
+25,200 s whole-run cap of AMENDMENT L76267 carried verbatim.
+
+### Arms
+
+- C: native control, RERUN FRESH (Artin's preference; the arena is
+  then fully self-contained and its C digests are asserted bit-exact
+  against the locked FMEL2 C digests at all 12 horizons, which is what
+  licenses the next item).
+- M (comparison, NOT rerun): the booked FMEL2 eps = 1e-1 moment-axis
+  arm. Its 12 snapshots checkpoints/fmel2/A/e1e-1/h*.pt are LOCKED
+  COMPARISON VECTORS (digests and shas asserted against
+  logs/fmel2/ladder.json before use); they are never resumed as
+  state. Because the fresh C reproduces the FMEL2 C bit-exactly, the
+  booked M deviations dW_M(h) = W_M(h) - W_C(h) are exactly the
+  deviations M would have against this run's C.
+- R1, R2, R3: three prospectively seeded independent random
+  directions, each applied once at the anchor as an exp_avg
+  perturbation constructed in first-step write space (below), then
+  run as fresh continuous legs.
+Four fresh legs (C, R1, R2, R3), order C, R1, R2, R3, sequential
+under one liverun id (rdc1).
+
+### Intervention construction (exact first-step map, inverted)
+
+At the first step s = 7201, AdamW on this writer computes, with m =
+exp_avg, v = exp_avg_sq, c = the clipped gradient of the first future
+batch (clip 1.0 on the global norm; c does not depend on m), lr /
+beta1 / beta2 / wd from the resumed scheduler group (row 7201:
+lr 1.7323e-4, beta1 0.89226, beta2 0.999, wd 0.01), bc1 = 1 - beta1^s,
+bc2 = 1 - beta2^s, eps_adam = 1e-8:
+  v' = beta2 v + (1 - beta2) c^2;  D = sqrt(v' / bc2) + eps_adam;
+  w' = (1 - lr wd) w - lr (beta1 m + (1 - beta1) c) / (bc1 D).
+D and the decay term are independent of m, so a perturbation
+delta_m of exp_avg changes the first write by EXACTLY
+  delta_w = K * delta_m,   K = -lr beta1 / (bc1 D)   (elementwise),
+the same K for every arm (FME1 / FMEL1 / FMEL2 verified this law on
+the moment axis to 1e-8 in n_1(1)). The moment-axis arm is
+delta_m_M = -0.1 m, delta_w_M = K * delta_m_M with ||delta_w_M|| =
+0.0124086 (the locked FMEL2 e1e-1 first-step deviation norm) and the
+per-group energy profile p_M = (BLOCK0..7, OUTSIDE) = 0.1117 / 0.1277 /
+0.1255 / 0.1243 / 0.1219 / 0.1243 / 0.1291 / 0.1339 / 0.0016 (locked
+FMEL2 metrics.1.group_share.e1e-1).
+
+For random direction r with frozen seed sigma_r:
+  1. draw g ~ N(0, I) in float64 over the 18,911,616 flattened
+     coordinates from torch.Generator("cpu").manual_seed(sigma_r)
+     (the census flatten law; draw order = flat order);
+  2. LOCUS: scale g per group so that the group energy shares equal
+     p_M exactly: g_G <- g_G * sqrt(p_M,G / (||g_G||^2 / ||g||^2)) for
+     each of the 9 groups;
+  3. ORTHOGONALITY: remove the moment-axis component within each
+     group (g_G <- g_G - <g_G, u_G> u_G with u_G the unit delta_w_M
+     restricted to group G), then re-apply step 2 (one pass restores
+     the shares to 1e-12; the projection removes the component along
+     delta_w_M so the global cosine is 0 to float64 rounding, and
+     keeps it near 0 after step 4);
+  4. MAGNITUDE: delta_w_r = g * (0.0124086 / ||g||) (the locked
+     ||delta_w_M||);
+  5. INVERT: delta_m_r = delta_w_r / K elementwise (K is never zero:
+     D >= eps_adam > 0), computed in float64 and cast to the
+     optimizer's float32 when added: exp_avg <- exp_avg + delta_m_r.
+     exp_avg_sq, the Adam step counter, the weights, the scheduler
+     state and the batch stream are untouched (digests asserted equal
+     to the control's before the first step).
+The realized first-step deviation dW_r(1) = W_r(7201) - W_C(7201)
+equals delta_w_r up to float32 rounding of the write; the preflight
+measures it. ||delta_m_r|| / ||delta_m_M|| is recorded descriptively
+(it is not matched and is not a bar: the matching is in write space).
+Frozen seeds: sigma_1 = 2026091501, sigma_2 = 2026091502, sigma_3 =
+2026091503 (R1 / R2 / R3). Three directions, not one; the directions
+are independent draws and are asserted mutually near-orthogonal.
+
+### One-step preflight (frozen; construction law; before any long leg)
+
+C, R1, R2, R3 are bound fresh and take exactly one step on the first
+future slice. From the realized dW_r(1) (GLOBAL float64):
+  (a) magnitude: | ||dW_r(1)|| / 0.0124086 - 1 | <= 1e-3 for every r;
+  (b) orthogonality: |cos(dW_r(1), dW_M(1))| <= 0.05 for every r, with
+      dW_M(1) the locked FMEL2 e1e-1 h = 1 vector (its snapshot minus
+      the fresh C's h = 1 snapshot, the latter asserted equal to the
+      locked FMEL2 C h = 1 digest);
+  (c) locus: max over the 9 groups of |share_r,G(1) - p_M,G| <= 0.01;
+  (d) independence: |cos(dW_r(1), dW_r'(1))| <= 0.05 for every pair;
+  (e) untouched state: after the intervention and before the first
+      step, the exp_avg_sq digest, the step counters and the scheduler
+      group of every R arm equal the control's; the fresh C h = 1
+      digest equals the locked FMEL2 C h = 1 digest.
+Any failure writes the receipt with label CONSTRUCTION-UNRESOLVED and
+stops before any long leg; the rung books NOT-ADJUDICABLE, no
+relaunch without a new prospective amendment. On pass, the long legs
+run from a fresh bind and every arm's h = 1 digest is asserted equal
+to its preflight digest (mismatch -> NOT-RUN).
+
+### Readouts (every grid horizon, GLOBAL float64 over the 59 tensors)
+
+dW_r(h) = W_r(h) - W_C(h) from the fresh arms; dW_M(h) from the locked
+FMEL2 e1e-1 snapshot minus the fresh C snapshot;
+  G_r(h) = ||dW_r(h)|| / ||dW_r(1)||  and  G_M(h) = ||dW_M(h)|| /
+  ||dW_M(1)|| (locked values 1 / 4.00 / 7.86 / 11.86 / 16.56 / 156.9 /
+  374.7 / 501.9 / 519.0 / 518.7 / 517.5 / 517.3);
+  A_r(h) = G_r(h) / G_M(h) (the amplification ratio);
+  n_r(h) = ||dW_r(h)|| / ||W_C(h) - W_7200|| and n_M(h) (locked
+  0.0894 ... 0.301);
+  cos(dW_r(h), dW_M(h)); pairwise cos among R1 / R2 / R3;
+  rot_r(h) = cos(dW_r(h), dW_r(h_prev)) beside the locked rot_M(h);
+  per-group share of ||dW_r(h)||^2; HELD-32 CE per arm and dCE_r;
+  a descriptive 120 gate at 15420 on C and R1 / R2 / R3 on the same
+  mps device (not read by any bar); the cooled tail
+  ||dW_r(H)|| / ||dW_r(6000)||; the descriptive substrate readout of
+  the fresh C against gallery19m_phase_s2.pt as in FMEL2 (expected to
+  reproduce rho 0.03095 exactly, since C is bit-identical).
+Zero-norm / non-finite law as AMENDMENT L75568 §4 (UNDEFINED = null +
+reason, never NaN); an UNDEFINED terminal value books
+REGIME-UNRESOLVED.
+
+### BARS (numbers on the page, chosen on decades before any random
+leg exists; H = 8220)
+
+- BAR 0 (fail-closed, in-line): fresh C digest equals the locked
+  FMEL2 C digest at all 12 horizons; the 12 locked M snapshots'
+  digests and shas equal the FMEL2 receipt before use; every arm's
+  h = 1 digest equals its preflight digest. Mismatch -> NOT-RUN,
+  partial receipt, no relaunch without an amendment.
+- BAR 1: the construction preflight above.
+- BAR 2 (amplification, primary) on A_r(H) for the three directions,
+  first match wins:
+  REGIME-UNRESOLVED if any A_r(H) is UNDEFINED or the preflight failed;
+  DIRECTION-GENERIC if 1/2 <= A_r(H) <= 2 for ALL three r (every
+  random direction amplifies within a factor 2 of the moment axis);
+  MOMENT-SPECIFIC if A_r(H) <= 1/4 for ALL three r (the moment axis
+  amplifies at least 4x more than every random direction);
+  RANDOM-DOMINANT if A_r(H) >= 4 for ALL three r;
+  MIXED otherwise, booked with the three A_r(H) quoted.
+  The factors 2 and 4 are decade-scale bands fixed here; they were
+  not chosen against FMEL2's numbers (FMEL2 contains no random
+  direction to fit).
+- BAR 3 (direction, reported): c_rM(H) = cos(dW_r(H), dW_M(H)) per r;
+  DIRECTION-SHARED-LATE if all three |c_rM(H)| >= 0.50,
+  DIRECTION-INDEPENDENT-LATE if all three |c_rM(H)| <= 0.25, else
+  MIXED-DIRECTION; plus h_amp_r = the first grid h with G_r(h) >= 10
+  (locked h_amp_M = 100) and rot_r(h) beside rot_M(h).
+- BAR 4 (function; separate axis, per arm): NEUTRAL iff |dCE_r(H)| <=
+  0.005; HARMED above positively; HELPED above negatively;
+  FUNCTION-NEUTRAL when all three NEUTRAL; no functional inference
+  from path geometry in any outcome.
+- BAR 5 (descriptive): cooled-tail ratios; the substrate rho.
+- Label: (BAR 2, BAR 3, BAR 4) [writer A only, one anchor, one seed
+  lineage, CPU deterministic, write-norm 0.0124 = FMEL2 eps 1e-1;
+  gate descriptive].
+
+### REFUTED-IF
+
+The moment-axis-memory reading (the late FME1 / FMEL2 separation is a
+property of the erased first-moment content) is REFUTED if BAR 2
+books DIRECTION-GENERIC. The generic-amplification reading (the late
+separation is a property of the leg, not of the direction) is
+REFUTED if BAR 2 books MOMENT-SPECIFIC. MIXED and RANDOM-DOMINANT
+refute neither and are booked as measured.
+
+### REGISTERED PRIORS (house, on the record)
+
+1. BAR 0 passes: 0.90. 2. BAR 1 construction passes for all three
+   directions: 0.85 (the float32 write rounding at 1e-1 amplitude was
+   1.3e-5 in R on the moment axis; the risk is the locus / cosine
+   tolerances on a shaped random vector).
+3. BAR 2: DIRECTION-GENERIC 0.45, MIXED 0.30, MOMENT-SPECIFIC 0.15,
+   RANDOM-DOMINANT 0.10.
+4. The three A_r(H) lie within a factor 2 of each other: 0.60.
+5. BAR 3 DIRECTION-INDEPENDENT-LATE (all |c_rM(H)| <= 0.25): 0.65;
+   h_amp_r <= 300 for all r: 0.60.
+6. FUNCTION-NEUTRAL (all three): 0.75.
+7. Wall <= 4 h: 0.70.
+
+### Cost, storage, dependency graph, stop law
+
+- Wall: four fresh legs at about 46 min (FMEL2 measured 2,742..2,799 s
+  per leg plus about 190 s of snapshot / CE work) = about 3.2 h, plus
+  the preflight (four binds, one step, the construction, about 2 min)
+  and four gates (about 5 min); prior wall 3.3 h. Sequential by the
+  8-thread determinism law.
+- Storage: 48 model-only snapshots (75.7 MB) + 4 optimizer blobs at H
+  = about 4.2 GB under checkpoints/rdc1/A/<arm>/ (path-isolated,
+  refuse-if-exists); receipts logs/rdc1/control.json / .jsonl / .log,
+  logs/rdc1/rdc1.DONE, logs/liverun/rdc1.jsonl, force-added and locked
+  at booking (the stream machine-local, sha-locked). Disk preflight
+  refuses below 16 GiB free (about 25 GiB now after FMEL2's 4.2 GB).
+- Dependency graph (fixed here): the locked receipts logs/oma1/
+  stage0.json, logs/oma1/desk_bar1.json, logs/fme1/treat.json,
+  logs/fmel1/ladder.json, logs/fmel2/ladder.json (sha 0faffc61...);
+  the anchor file; the 12 FMEL2 e1e-1 snapshot FILES (comparison
+  vectors); the FMEL2 C digests (values only; the fresh C reproduces
+  them). Not needed by this rung: checkpoints/fmel2/A/{C,e1,e1e-2},
+  checkpoints/fme1, checkpoints/oma1/A/C (retained anyway until this
+  rung is booked, per the decision above; their disposition is then
+  Artin's).
+- Stop law: (a) the mechanical 25,200 s cap (NOT-RUN receipt with
+  the phase, exit 3, no DONE); (b) BAR 0 mismatch aborts the whole
+  run, NOT-RUN, partial receipts kept; (c) pin drift refuses at
+  launch; (d) construction preflight failure books NOT-ADJUDICABLE
+  (CONSTRUCTION-UNRESOLVED) before any long leg, no tolerance
+  relaxed; (e) live-run law for the whole wall; (f) one run, no
+  retry and no follow-up launch regardless of result; (g) no
+  threshold is moved after any random leg exists.
+
+### Consequences (as registered; none launched)
+
+- DIRECTION-GENERIC: the FME1 / FMEL2 late separations are re-read
+  (AMENDMENT, in-place FINDINGS notes) as generic amplification of any
+  same-magnitude same-locus perturbation on this leg; the moment-axis
+  lead closes on this arena; SCHEDULE-PHASE-SENSITIVITY-CENSUS-0 is
+  unbanked for design (the natural next question is whether the
+  amplification is a schedule-phase property).
+- MOMENT-SPECIFIC: the moment-axis lead stands; bank
+  OPTIMIZER-MEMORY-CROSSFOSTER-1 on reproducible states as the next
+  rung; the census stays banked.
+- RANDOM-DOMINANT: book; bank a locus-only control (the moment
+  profile without the moment direction is already this rung; the
+  next split is a random direction WITHOUT locus matching).
+- MIXED: book, Artin decision, with the three A_r(H) and the
+  direction readouts quoted.
+- Non-neutral arm: named; no functional-importance claim from path
+  divergence. Never: writer B; a second anchor; reopening OMA1 /
+  FMEL1 / FMEL2; a variance-state reset; float64; cross-foster under
+  this rung.
+
+### Fences
+
+Writer A only, anchor 7200 only, one seed lineage, one stream, CPU
+float32 deterministic; one write magnitude (0.0124 = FMEL2 eps 1e-1)
+and one locus profile; three random directions (n = 3 directions,
+single seed lineage: direction claims carry the n = 3 fence, path
+claims the single-seed fence); the 120 gate descriptive and
+cross-device to nothing; the moment-axis comparison rests on the
+bit-exact reproduction of the FMEL2 C (BAR 0) and is void without it.
+
+### Process (each step its own act; none started)
+
+1. Instrument scratch/random_direction_control.py, a thin sibling of
+   scratch/first_moment_erasure_ladder2.py (imports the leg mechanics;
+   adds the construction: OMA.clipped_grad for c, the K map, the
+   shaped draw, the inversion, the preflight law; pins extended by the
+   L2 source and the locked FMEL2 receipt sha); tests (K map exactness
+   on a synthetic optimizer state, shares / cosine / norm of the
+   construction, seed reproducibility, inversion round trip, preflight
+   refusals, BAR 2 / 3 / 4 law, zero-norm law, real-mode constants,
+   no-B); path-isolated smokes (construction preflight, full
+   mechanism, tampered digest, cap); instrument review; full suite;
+   commit. Separate Artin GO.
+2. Artin GO for the target run: `bash scratch/rdc1_launch.sh` under
+   liverun rdc1 at the committed HEAD.
+3. receipt-auditor and prereg-auditor before booking; /fold-book.

@@ -2,7 +2,7 @@
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
  "_last_accept": {
   "paths": [],
-  "reason": "VERDICT FIRST-MOMENT-ERASURE-LADDER-2: lock the target-run receipts after force-add (ladder.jsonl stays machine-local, 32,880 rows)"
+  "reason": "PRE-REG RANDOM-DIRECTION-CONTROL-1: planned rdc1 receipts prereg-pending"
  },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
@@ -1546,6 +1546,10 @@
    "sha256": "4c6772227424d6057d44ac99d7e644cd0c022e9ac3d115d4032c1807e97215c6",
    "source": "results",
    "tracked": true
+  },
+  "logs/liverun/rdc1.jsonl": {
+   "exists": false,
+   "source": "prereg"
   },
   "logs/liverun/sgaudit0.jsonl": {
    "bytes": 518,
@@ -4860,6 +4864,22 @@
    "sha256": "b57cb360dc2a6538725b31a229a3167bf4dcfa6114ae3c9a659e6d065dc55a00",
    "source": "results",
    "tracked": true
+  },
+  "logs/rdc1/control.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/rdc1/control.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/rdc1/control.log": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/rdc1/rdc1.DONE": {
+   "exists": false,
+   "source": "prereg"
   },
   "logs/refactor-2026-08-11/run.marker.json": {
    "bytes": 361,
