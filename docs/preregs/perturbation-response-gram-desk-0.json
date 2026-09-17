@@ -1,0 +1,75 @@
+{
+ "name": "PERTURBATION-RESPONSE-GRAM-DESK-0",
+ "program": "optimizer-memory-ablation / random-direction-control",
+ "registered": "2026-09-17",
+ "machine": "Mac (CPU, numpy float64)",
+ "status": "REGISTERED (design + instrument; run needs its own liverun launch)",
+ "results_line": 77531,
+ "kind": "desk (zero training; descriptive only; no bar, no label)",
+ "question": "How much of the four late deviations (M = locked FMEL2 eps = 1e-1, R1 / R2 / R3 = RDC1 matched random exp_avg directions) is one shared direction, across the 12 horizons and the 11 consecutive windows, globally and per group; and does the moment axis's growth window (300 -> 900) point where the panel's later growth window (900 -> 1800) points.",
+ "inputs": {
+  "rdc1_receipt": "logs/rdc1/control.json",
+  "rdc1_sha256": "f85cc4a5539ea725440e820d107a1520e4e5ff743e351a99751f2fdfbb9f0be5",
+  "fmel2_receipt": "logs/fmel2/ladder.json",
+  "fmel2_sha256": "0faffc61bd65c96d9581aaddd8b47c2379e27ba0cd5400153e9b6bb61015c917",
+  "snapshots": "checkpoints/rdc1/A/{C,R1,R2,R3}/h*.pt (48) + checkpoints/fmel2/A/e1e-1/h*.pt (12)",
+  "optimizer_state_read": false,
+  "training": "none"
+ },
+ "horizons": [
+  1,
+  5,
+  20,
+  100,
+  300,
+  900,
+  1800,
+  3080,
+  4500,
+  6000,
+  7200,
+  8220
+ ],
+ "flat_law": "WRITER-TRAJECTORY-CENSUS-0 sorted-key law, 59 tensors, d = 18911616, groups BLOCK0..7 / OUTSIDE",
+ "readouts": [
+  "normalized 4x4 deviation Gram per horizon: cos matrix, eigenvalues, top/trace, participation rank, effective rank; global, per group, random-only 3x3",
+  "consecutive-window increments D_a(k): norms + the same Gram readouts",
+  "lag matrices cos(D_a(i), D_b(j)) 11x11 for all ordered arm pairs; cos(dev_a(h_i), dev_b(h_j)) 12x12",
+  "named cells per R, global + per group: PRIMARY M(300->900) v R(900->1800); alternatives M(100->300) v R(300->900), M(300->900) v R(1800->3080), M(900->1800) v R(900->1800), M(900->1800) v R(1800->3080), M(300->900) v R(300->900), two-window M(300->1800) v R(900->3080)",
+  "zero-norm law: UNDEFINED = null + reason"
+ ],
+ "bars": [],
+ "labels": [],
+ "consequences": "none (descriptive; informs the census-v-cross-foster choice as a separate Artin decision)",
+ "expectations_scored_no_consequence": {
+  "E1": "global Gram at H: top/trace about 0.43, participation rank about 3.2 (arithmetic from the booked cosines; instrument confirmation)",
+  "E2": "|cos(D_M(300->900), D_R(900->1800))| <= 0.15 for all three R; no named cell exceeds |cos| 0.30",
+  "E3": "random-only window Gram top/trace <= 0.45 in every window through 900->1800; >= 0.50 in the last two windows",
+  "E4": "4-arm Gram participation rank at H in [2.5, 3.5] in every BLOCK group"
+ },
+ "instrument": {
+  "driver": "scratch/perturbation_response_gram_desk.py",
+  "launcher": "scratch/prgd0_launch.sh",
+  "liverun_id": "prgd0",
+  "tests": "tests/test_perturbation_response_gram_desk.py",
+  "receipt": "logs/prgd0/desk.json",
+  "wall_cap_s": 3600,
+  "smokes": {
+   "smokes1": "full mechanism h = 1 / 5 / 20, DONE, locked norms and cosines reproduced exactly",
+   "smokes2": "1 s cap -> NOT-RUN in phase load"
+  }
+ },
+ "stop_law": "missing / drifted snapshot, receipt-sha disagreement, state-digest mismatch or wall cap -> NOT-RUN with reason; no retry without a prospective amendment",
+ "retention": "checkpoints/rdc1, fmel2, fme1, oma1 A/C retained through the desk (Artin 2026-09-17); keep-set proposal after the desk seals the dependency graph",
+ "does_not_revise": [
+  "VERDICT RANDOM-DIRECTION-CONTROL-1 (L77202)",
+  "VERDICT FIRST-MOMENT-ERASURE-LADDER-2 (L76340)",
+  "VERDICT FIRST-MOMENT-ERASURE-1 (L75193)"
+ ],
+ "receipts": [
+  "logs/prgd0/desk.json",
+  "logs/prgd0/desk.log",
+  "logs/prgd0/prgd0.DONE",
+  "logs/liverun/prgd0.jsonl"
+ ]
+}

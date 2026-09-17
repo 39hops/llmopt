@@ -4762,6 +4762,33 @@ Publication PDF figures for the entropy-bound packing paper.
 - `fig_quant_knee()`
 - `fig_symmetry_toll()`
 
+### scratch/perturbation_response_gram_desk.py
+PERTURBATION-RESPONSE-GRAM-DESK-0: zero-training Gram desk on the booked RANDOM-DIRECTION-CONTROL-1 snapshots (C / R1 / R2 / R3) and the locked FIRST-MOMENT-ERASURE-LADDER-2 eps = 1e-1 snapshots (M), writer A, anchor 7200, the 12 registered horizons.
+
+- `class Abort`
+- `class WallLimit`
+- `sha256_file(p)`
+- `git(*args)`
+- `now()`
+- `finite(x)`
+- `segments(sd)` — [(key, start, end, group)] over the 59 registered tensors in sorted-key order, shapes from the state dict itself.
+- `flat(sd, segs, d)`
+- `group_index(segs)`
+- `cosine(a, b)`
+- `gram_stats(vecs, names)` — Normalized Gram of the named vectors: cosine matrix, eigenvalues (descending), top / trace, participation rank
+- `gram_block(vecs_by_arm, gidx)` — Global + per-group + random-only Gram readouts for {arm: vec}.
+- `windows(grid)`
+- `window_vector(dev_of, arm, h_from, h_to)` — dev_arm(h_to) - dev_arm(h_from); None when either horizon is absent from the loaded grid.
+- `lag_matrix(inc_a, inc_b)` — cos(D_a(i), D_b(j)) over all window pairs (rows i = a's windows, columns j = b's windows).
+- `named_cells(dev_of, gidx)` — The registered lag cells: for each R arm, the cosine of the two window vectors globally and per group.
+- `load_receipts()`
+- `snapshot_refs(rdc1, fmel2, grid)` — {arm: {h: {path, sha256, state_digest}}} for C / R1 / R2 / R3 from RDC1 and M from FMEL2's eps = 1e-1 arm; every
+- `verify_files(refs)`
+- `load_flat(ref, arm, h, segs, d)`
+- `install_wall_limit(seconds)`
+- `main()`
+- `finish(rec, t0)`
+
 ### scratch/phase4_rewrite.py
 One-shot Phase 4 rewriter: replace the default-accelerator idiom with pick_device() in the FREE files listed by phase4_sites.py.
 

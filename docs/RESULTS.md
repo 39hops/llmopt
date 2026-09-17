@@ -77491,3 +77491,163 @@ perturbations are smaller than the moment-axis one in state norm
 (0.17) and concentrate their OUTSIDE write on zero-variance
 coordinates; both are descriptive facts of this construction, not
 matched quantities.
+
+## AMENDMENT RANDOM-DIRECTION-CONTROL-1-CONSEQUENCE: Artin decision on the MIXED consequence: no reclassification, no REFUTED-IF amendment, the formal verdict preserved exactly; one scoped synthesis added; the next step is a zero-training Gram desk on the existing snapshots (2026-09-17, Mac, nothing trained, nothing armed)
+
+Target: VERDICT RANDOM-DIRECTION-CONTROL-1 (RESULTS L77202). Artin
+decision 2026-09-17 19:36 EDT, recorded verbatim in substance:
+
+- No reclassification of the verdict and no amendment of the
+  REFUTED-IF clauses. The formal verdict stays exactly
+  MIXED + DIRECTION-INDEPENDENT-LATE + FUNCTION-NEUTRAL.
+- Scoped synthesis (Artin's wording, adopted as the reading of record
+  for this rung, descriptive, fenced to this arena): "On this writer-A
+  arena, large late trajectory amplification is not unique to the
+  carried first-moment direction: all three independently seeded
+  write/locus-matched random optimizer-state perturbations amplify
+  roughly 195 to 286x. The registered moment-axis perturbation
+  amplifies earlier and reaches 517x. Because the random
+  interventions have about 0.17x the raw exp_avg displacement norm of
+  the moment intervention, the excess is not attributable to
+  direction alone."
+- Next step: PERTURBATION-RESPONSE-GRAM-DESK-0 (pre-registered below),
+  zero training, on the booked RDC1 and locked FMEL2 snapshots only.
+- SCHEDULE-PHASE-SENSITIVITY-CENSUS-0 remains banked. Its existing
+  native-resume / substrate question is NOT repurposed. The Gram desk
+  determines whether the next prospective experiment is a new
+  perturbation-phase census or an optimizer-memory cross-foster;
+  neither is designed or armed by this decision.
+- Checkpoint disposition: checkpoints/rdc1, checkpoints/fmel2,
+  checkpoints/fme1 and the oma1 A/C controls are RETAINED through the
+  desk. No pruning. After the desk seals the next dependency graph,
+  the house proposes a manifest-based keep set; FMEL2's non-M arms
+  (eps = 1e-2 and eps = 1) are the likely first candidates, while
+  unique optimizer-bearing historical states stay until the
+  cross-foster question is explicitly closed or superseded.
+
+Nothing in this amendment changes a number, a bar, a band, a label or
+a FINDINGS bullet. The index row carries amends = the verdict id.
+
+## PRE-REG PERTURBATION-RESPONSE-GRAM-DESK-0: normalized deviation Gram matrices, their spectra, consecutive-window increments and lagged cross-cosines across {M, R1, R2, R3} on the booked RDC1 and locked FMEL2 snapshots at all 12 horizons, globally and per group; descriptive only, no bar, no label (2026-09-17, Mac, zero training, design + instrument; run under a separate liverun id)
+
+Artin GO 2026-09-17 19:36 EDT: DESIGN + RUN, zero training only.
+
+### Question
+
+On the writer-A arena at anchor 7200 (VERDICT RANDOM-DIRECTION-CONTROL-1
+L77202, VERDICT FIRST-MOMENT-ERASURE-LADDER-2 L76340), how much of the
+four late deviations (the moment axis M = the locked FMEL2 eps = 1e-1
+arm and the three matched random exp_avg directions R1 / R2 / R3) is
+one shared direction, how does that sharing evolve across the grid and
+across the consecutive growth windows, and does the moment axis's own
+growth window (300 -> 900) point where the random panel's later growth
+window (900 -> 1800) points? Descriptive readouts only. The desk
+informs the choice between a perturbation-phase census and an
+optimizer-memory cross-foster as the next prospective rung; it decides
+nothing by itself and no consequence launches from it.
+
+### Inputs (read only; every file sha- and digest-asserted before any number)
+
+- checkpoints/rdc1/A/{C, R1, R2, R3}/h{0001..8220}.pt: the 48 booked
+  RDC1 snapshots, file sha256 and canonical state digest from the
+  locked receipt logs/rdc1/control.json (sha f85cc4a5...).
+- checkpoints/fmel2/A/e1e-1/h{0001..8220}.pt: the 12 locked FMEL2
+  eps = 1e-1 snapshots (M), from logs/fmel2/ladder.json (sha
+  0faffc61...), the same comparison vectors RDC1 used.
+- The RDC1 receipt's C reference digests are re-asserted equal to
+  FMEL2's C digests at every horizon (the BAR 0 identity), and RDC1's
+  pinned FMEL2 sha equal to the one used here.
+- No optimizer state is read. No anchor continuation. No model is
+  built. Nothing is trained or mutated. The only write is the receipt.
+
+### Flat law
+
+The WRITER-TRAJECTORY-CENSUS-0 sorted-key law: 59 tensors, d =
+18,911,616 float64 coordinates, groups BLOCK0..7 / OUTSIDE (the same
+partition RDC1 and FMEL2 reported group shares on). Deviations
+dev_a(h) = W_a(h) - W_C(h), a in {M, R1, R2, R3}, at every grid
+horizon h in {1, 5, 20, 100, 300, 900, 1800, 3080, 4500, 6000, 7200,
+8220}. Consistency check recorded per horizon: ||dev_a(h)|| and
+cos(dev_r(h), dev_M(h)) re-derived here against the locked RDC1
+metrics (the same deviations; any disagreement beyond 1e-9 relative
+is reported as a finding, not silently accepted).
+
+### Registered readouts (all descriptive)
+
+1. Gram(h): the 4 x 4 normalized Gram (cosine) matrix of the four
+   deviations at every h; eigenvalues descending; top eigenvalue /
+   trace (trace = 4); participation rank (sum l)^2 / sum l^2; effective
+   rank exp(H(l / sum l)); globally and per group; plus the 3 x 3
+   random-only Gram (R1, R2, R3) with the same spectra.
+2. Increments: D_a(k) = dev_a(h_{k+1}) - dev_a(h_k) over the 11
+   consecutive grid windows; norms and the same Gram / spectral
+   readouts (global, per group, random-only).
+3. Lag matrices: cos(D_a(i), D_b(j)) over all 11 x 11 window pairs for
+   every ordered arm pair (16 matrices), and cos(dev_a(h_i),
+   dev_b(h_j)) over all 12 x 12 horizon pairs for every ordered pair.
+4. Named lag cells, reported explicitly, globally and per group, for
+   each R:
+   - PRIMARY: cos(D_M(300 -> 900), D_R(900 -> 1800)).
+   - Adjacent alternatives so no single grid choice is read alone:
+     cos(D_M(100 -> 300), D_R(300 -> 900));
+     cos(D_M(300 -> 900), D_R(1800 -> 3080));
+     cos(D_M(900 -> 1800), D_R(900 -> 1800)) (lag 0);
+     cos(D_M(900 -> 1800), D_R(1800 -> 3080));
+     cos(D_M(300 -> 900), D_R(300 -> 900)) (lag 0);
+     two-window cos(D_M(300 -> 1800), D_R(900 -> 3080)).
+5. Zero-norm law: a cosine with a zero operand is UNDEFINED = null +
+   reason, never NaN; a Gram with a zero-norm row has null spectra +
+   reason. No readout is dropped silently.
+
+### What this desk does NOT do
+
+No FIRE bar, no threshold, no label, no causal verb, no
+reclassification of RDC1 / FMEL2 / FME1, no new training, no
+optimizer mutation, no continuation from any state, no consequence
+launch. Nothing here can amend the RDC1 verdict; a descriptive lead
+becomes a claim only through a later prospective pre-registration.
+
+### Descriptive expectations (house, on the record; scored, no consequence)
+
+- E1 (arithmetic consistency, not a prediction): the global Gram at H
+  = 8220 follows from the booked cosines (to M 0.181 / 0.241 / 0.218;
+  pairwise 0.394 / 0.259 / 0.135): top / trace about 0.43,
+  participation rank about 3.2. Reported to confirm the instrument;
+  the new information is per group and per window.
+- E2: the PRIMARY lag cell |cos(D_M(300 -> 900), D_R(900 -> 1800))| <=
+  0.15 for all three R, and no named cell exceeds |cos| 0.30 for any R.
+- E3: the random-only window Gram has top / trace <= 0.45 in every
+  window up to and including 900 -> 1800 (the panel's growth windows
+  are not one shared direction), and >= 0.50 in the last two windows
+  (6000 -> 7200, 7200 -> 8220; settled deviations move together as
+  the schedule cools).
+- E4: the 4-arm Gram participation rank at H lies in [2.5, 3.5] in
+  every BLOCK group.
+
+### Instrument, receipts, cost, stop law
+
+- scratch/perturbation_response_gram_desk.py (pins RDC1 and FMEL2
+  receipt shas as source literals and against docs/receipts.lock.json;
+  verifies every snapshot's file sha and state digest; refuses if its
+  receipt exists; SMOKE path-isolated to logs/prgd0/smoke<TAG>_desk.json
+  on the first three horizons; mechanical 3600 s wall cap -> NOT-RUN,
+  exit 3). Launcher scratch/prgd0_launch.sh (liverun id prgd0, DONE
+  marker on success only). Tests
+  tests/test_perturbation_response_gram_desk.py.
+- Smokes before this commit: smokes1 (full mechanism on h = 1 / 5 /
+  20: every re-derived norm and cosine equal to the locked RDC1 value
+  to the last digit, 4.4 s) and smokes2 (1 s cap -> NOT-RUN in phase
+  load, no DONE); the drift / missing refusal exercised in-line
+  (R2@1 DRIFTED, M@1 MISSING refused before any load).
+- Receipt logs/prgd0/desk.json (force-added and locked at booking).
+  Expected wall well under 5 min (the smoke took 4.4 s for a quarter
+  of the loads). Peak RAM about 14 GB (48 float64 deviations + 44
+  increments), on a 36 GB machine.
+- Stop law: any missing / drifted snapshot, receipt-sha disagreement,
+  state-digest mismatch or wall cap books NOT-RUN with the reason; no
+  retry without a new prospective amendment. Live-run law applies (no
+  commits while prgd0 is live).
+- Booked as an OBSERVATION with a FINDINGS bullet; the four
+  expectations scored; then the keep-set proposal per the CONSEQUENCE
+  amendment above and the census-v-cross-foster recommendation, each
+  as a separate Artin decision.

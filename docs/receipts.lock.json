@@ -2,7 +2,7 @@
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
  "_last_accept": {
   "paths": [],
-  "reason": "VERDICT RANDOM-DIRECTION-CONTROL-1: real receipts force-added and locked; the 32,880-row stream stays machine-local, sha-locked"
+  "reason": "PRE-REG PERTURBATION-RESPONSE-GRAM-DESK-0: smoke receipts logs/prgd0/smokes1_desk.json and logs/prgd0/smokes2_desk.json force-added and locked; logs/prgd0/desk.json declared by the prereg JSON"
  },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
@@ -1616,6 +1616,10 @@
    "sha256": "4c6772227424d6057d44ac99d7e644cd0c022e9ac3d115d4032c1807e97215c6",
    "source": "results",
    "tracked": true
+  },
+  "logs/liverun/prgd0.jsonl": {
+   "exists": false,
+   "source": "prereg"
   },
   "logs/liverun/rdc1.jsonl": {
    "bytes": 456,
@@ -3812,6 +3816,18 @@
   "logs/pincer/labels_v2.jsonl": {
    "exists": false,
    "source": "results"
+  },
+  "logs/prgd0/desk.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/prgd0/desk.log": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/prgd0/prgd0.DONE": {
+   "exists": false,
+   "source": "prereg"
   },
   "logs/qcudatower/ladder_d.json": {
    "bytes": 1232,

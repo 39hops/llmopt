@@ -374,5 +374,11 @@
    "logs/liverun/rdc1.jsonl"
   ],
   "consequence": "MIXED: book, Artin decision; nothing launched"
+ },
+ "consequence_decision_2026_09_17": {
+  "results_line": 77495,
+  "decision": "no reclassification, no REFUTED-IF amendment; formal verdict preserved exactly: MIXED + DIRECTION-INDEPENDENT-LATE + FUNCTION-NEUTRAL",
+  "scoped_synthesis": "On this writer-A arena, large late trajectory amplification is not unique to the carried first-moment direction: all three independently seeded write/locus-matched random optimizer-state perturbations amplify roughly 195 to 286x. The registered moment-axis perturbation amplifies earlier and reaches 517x. Because the random interventions have about 0.17x the raw exp_avg displacement norm of the moment intervention, the excess is not attributable to direction alone.",
+  "next": "PERTURBATION-RESPONSE-GRAM-DESK-0 (zero training) on the booked RDC1 + locked FMEL2 snapshots; census stays banked and is not repurposed; checkpoints retained through the desk; keep-set proposal afterwards"
  }
 }

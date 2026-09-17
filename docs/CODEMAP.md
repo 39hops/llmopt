@@ -11,7 +11,7 @@ embed its literal filename (path strings, shell invocations —
 catches couplings like llmopt/reproduce.py → detbwd_gravmoe, but
 does not by itself make a file `library`).
 
-Census: UNCITED 233, library 92, reproduce-pinned 10, results-cited 477, spec-cited 90, cited-but-library 80
+Census: UNCITED 233, library 92, reproduce-pinned 10, results-cited 479, spec-cited 90, cited-but-library 80
 
 ## scratch/
 
@@ -26,7 +26,7 @@ Census: UNCITED 233, library 92, reproduce-pinned 10, results-cited 477, spec-ci
 | atomdose1 | atomdose1_driver.sh | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | atomladder1 | atomladder1_driver.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | atomtraj | atomtraj_census.py | results-cited | RESULTS | RESULTS×4 | — | 4 |
-| atomtraj | atomtraj_pins.py | library | RESULTS | RESULTS×8 | 41 | 3 |
+| atomtraj | atomtraj_pins.py | library | RESULTS | RESULTS×8 | 42 | 3 |
 | atomtraj | atomtraj_qual.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | atomtraj | atomtraj_verify.py | results-cited | RESULTS | RESULTS×5 | — | 3 |
 | atomtraj1 | atomtraj1_driver.sh | results-cited | RESULTS | RESULTS×1 | — | — |
@@ -528,6 +528,7 @@ Census: UNCITED 233, library 92, reproduce-pinned 10, results-cited 477, spec-ci
 | pack | pack_rans.py | results-cited | RESULTS, specs | RESULTS×3, specs×2 | — | — |
 | pack | pack_tiered.py | spec-cited | specs | specs×1 | — | — |
 | paper | paper_figs.py | UNCITED | — | — | — | — |
+| perturbation | perturbation_response_gram_desk.py | results-cited | RESULTS | RESULTS×3 | — | 2 |
 | phase | phase_portrait_precompute.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | phase4 | phase4_rewrite.py | spec-cited | specs | specs×1 | — | — |
 | phase4 | phase4_sites.py | spec-cited | specs | specs×3 | — | 1 |
@@ -553,6 +554,7 @@ Census: UNCITED 233, library 92, reproduce-pinned 10, results-cited 477, spec-ci
 | practice | practice_mine.py | spec-cited | specs | specs×1 | — | — |
 | prband2fresh | prband2fresh_train.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | prefix | prefix_pair.sh | UNCITED | — | — | — | — |
+| prgd0 | prgd0_launch.sh | results-cited | RESULTS | RESULTS×3 | — | 1 |
 | probe | probe_int_device_parity.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | prologue | prologue_arms.py | library | — | — | 1 | — |
 | prologue | prologue_gates.sh | UNCITED | — | — | — | — |
@@ -613,12 +615,12 @@ Census: UNCITED 233, library 92, reproduce-pinned 10, results-cited 477, spec-ci
 | qwen | qwen_tower_ladder.py | results-cited | RESULTS | RESULTS×1 | — | 11 |
 | qwen | qwen_tree_adjudicate.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 1 |
 | qwen | qwen_whole0t.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 3 |
-| random | random_direction_control.py | results-cited | RESULTS, specs | RESULTS×5, specs×3 | — | 2 |
+| random | random_direction_control.py | results-cited | RESULTS, specs | RESULTS×5, specs×4 | — | 2 |
 | rank | rank_read.py | spec-cited | specs | specs×2 | — | 1 |
 | rat | rat_deploy.py | results-cited | RESULTS, specs | RESULTS×1, specs×5 | — | 3 |
 | rat | rat_repair.py | UNCITED | — | — | — | 1 |
 | rational | rational_snap.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 6 |
-| rdc1 | rdc1_launch.sh | results-cited | RESULTS, specs | RESULTS×4, specs×2 | — | — |
+| rdc1 | rdc1_launch.sh | results-cited | RESULTS, specs | RESULTS×6, specs×4 | — | — |
 | retention | retention_watcher.sh | UNCITED | — | — | — | — |
 | rev2 | rev2_d768.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | rev3 | rev3_crown.py | results-cited | RESULTS, specs | RESULTS×3, specs×3 | — | — |
@@ -876,7 +878,7 @@ Census: UNCITED 233, library 92, reproduce-pinned 10, results-cited 477, spec-ci
 | harvest | harvest_champion.py | UNCITED | — | — | — | — |
 | harvest | harvest_frontier.py | spec-cited | specs | specs×1 | — | — |
 | list | list_uncurated.py | spec-cited | specs | specs×6 | — | — |
-| liverun | liverun.py | results-cited | RESULTS, specs | RESULTS×10, specs×2 | — | 14 |
+| liverun | liverun.py | results-cited | RESULTS, specs | RESULTS×10, specs×2 | — | 16 |
 | log | log_hygiene.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | 1 |
 | markov | markov_eval.py | UNCITED | — | — | — | — |
 | markov | markov_prior.py | UNCITED | — | — | — | — |
