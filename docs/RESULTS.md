@@ -77198,3 +77198,296 @@ the 1e-3 magnitude tolerance. The run's disk preflight (16 GiB) now
 passes (26.2 GiB free; the run writes about 4.2 GB). Full suite
 green; receipts force-added and locked; nothing armed. Next: Artin GO
 for the target run (`bash scratch/rdc1_launch.sh`, liverun rdc1).
+
+## VERDICT RANDOM-DIRECTION-CONTROL-1: MIXED + DIRECTION-INDEPENDENT-LATE + FUNCTION-NEUTRAL on writer A: three write-norm- and locus-matched random exp_avg directions amplify 195x / 286x / 210x by H = 8220 against the moment axis's 517x (A_r(H) 0.376 / 0.552 / 0.406, one inside the DIRECTION-GENERIC band and two below it, all above the MOMENT-SPECIFIC bound), reach the 10x mark at h = 900 against the moment axis's 100, end 0.18 / 0.24 / 0.22 in cosine to the moment-axis deviation, and leave the HELD-32 CE unchanged (2026-09-17, Mac, liverun rdc1 at 3939fa38, 3.40 h)
+
+Pre-registration: PRE-REG RANDOM-DIRECTION-CONTROL-1 (RESULTS L76553)
+as amended by AMENDMENT -PRE-INSTRUMENT (L76847: exp_avg-space draw
+matched under the exact write metric, derived targets, narrowed
+REFUTED-IF) and AMENDMENT -INSTRUMENT (L77006: instrument, smokes,
+BAR 3 report-only label). Artin GO 2026-09-17 09:12 EDT at HEAD
+3939fa38; launched `bash scratch/rdc1_launch.sh` under liverun rdc1
+(armed 3939fa38, disarmed rc 0); no commit, edit, lock change or
+other registered run while live. One run, no retry. Receipts
+logs/rdc1/control.json (the receipt), logs/rdc1/control.log,
+logs/rdc1/rdc1.DONE, logs/liverun/rdc1.jsonl (force-added and locked
+at this booking); the 32,880-row per-step stream logs/rdc1/control.jsonl
+stays machine-local and sha-locked. Snapshots checkpoints/rdc1/A/{C,R1,R2,R3}/
+(48 model-only + 4 optimizer blobs at H, 3.9 GB, untracked, retained).
+Machine-readable result block appended to
+docs/preregs/random-direction-control-1.json. receipt-auditor and
+prereg-auditor ran before this booking (findings folded below).
+
+### Provenance and BAR 0 (fail-closed; all held)
+
+Commit 3939fa38, tree clean; torch 2.12.1, numpy 2.5.1, 8 threads,
+deterministic; the five locked receipts (Stage-0, desk, FME1, FMEL1,
+FMEL2 0faffc61...) equal to their source literals and the lock; anchor
+m007200.pt sha a0cdf244... / digest 9c7c1a6f...; first-900 and full-leg
+stream digests equal to Stage-0's / FMEL1's / FMEL2's; disk 26.3 GiB
+at the preflight. The 12 comparison-vector files
+checkpoints/fmel2/A/e1e-1/h*.pt: file sha equal to the FMEL2 receipt
+before any state, state digest asserted at every load. Fresh C:
+digest equal to the locked FMEL2 C at all 12 horizons (BAR 0), loss
+0.3836 at H = FMEL2's C; every arm's h = 1 digest equal to its
+preflight digest; every random arm's realized exp_avg delta digest
+equal between the preflight and the leg; ||dW_M(h)|| recomputed from
+the comparison vectors against the fresh C equal to the locked FMEL2
+abs(e1e-1) at every horizon to 0.0 relative, rot_M equal to the locked
+value at every horizon. Wall 12,223.8 s (3.40 h) under the 25,200 s
+cap (armed at the top of main, never fired). Legs C / R1 / R2 / R3
+2,812 / 2,873 / 3,039 / 2,914 s at 2.7 to 2.9 it/s.
+
+### Construction (real anchor; AMENDMENT L76847 §2) and BAR 1
+
+K map: the desk bind (never stepped) gave the clipped step-7201
+gradient, K = -lr beta1 / (bc1 D) and m; ||K (-0.1 m)|| = 0.012408556
+against 0.1 x the locked desk carry norm to 2.5e-15 (an independent
+implementation, sha-locked receipt). ||m|| 0.12529, ||dm_M|| 0.012529.
+Zero-variance coordinates: 1,920, all in OUTSIDE, where K sits at its
+ceiling 1.55e4 (blocks: |K| 0.04 to 44). Per-group write-metric
+effective dimension n_eff = (sum K^2)^2 / sum K^4: BLOCK0..7 1.10M /
+1.15M / 1.17M / 1.15M / 1.18M / 1.10M / 1.01M / 0.64M; OUTSIDE 1,920,
+i.e. the OUTSIDE share of a random write sits entirely on the 1,920
+zero-variance coordinates (OUTSIDE carries 0.16 % of the write energy
+by the locus match, so this is descriptive).
+
+The three shaped draws (seeds 2026091501 / 02 / 03): ||dm_R|| /
+||dm_M|| 0.1705 / 0.1704 / 0.1705 in total (||dm_R|| 0.00214); per
+group 0.215 / 0.381 / 0.472 / 0.509 / 0.551 / 0.444 / 0.458 / 0.219 /
+< 1e-3 (BLOCK0..7, OUTSIDE), the same to three digits across seeds.
+|dm_R| quantiles (identical across seeds to three digits): median
+3.1e-7, 0.9 8.1e-7, 0.99 1.33e-6, 0.999 1.75e-6, max 2.9e-6 to
+3.3e-6. The random exp_avg perturbation is about a sixth of the
+moment-axis one in norm and about 3x to 5x smaller in each block: it
+is a small optimizer-state change producing the same first-step
+write. Descriptive, not matched.
+
+BAR 1 (realized quantities, the authority; targets derived from the
+sha-pinned e1e-1 h = 1 snapshot against the fresh C: ||dW_M(1)||
+0.012408560, shares 0.1117 / 0.1277 / 0.1255 / 0.1243 / 0.1219 /
+0.1243 / 0.1291 / 0.1339 / 0.0016):
+  (a) magnitude ratios 0.99999979 / 0.99999985 / 0.99999984 (tol 1e-3);
+  (b) |cos(dW_r(1), dW_M(1))| 1.6e-7 / 2.2e-8 / 8.9e-8 (<= 0.05);
+  (c) max group share gap 1.1e-7 / 1.3e-7 / 1.6e-7 (<= 0.01);
+  (d) pairwise cos -6.0e-6 / 4.6e-5 / -6.3e-5 (|.| <= 0.05);
+  (e) untouched state equal to the desk bind's for C and every R arm;
+      fresh C h = 1 == locked FMEL2 C h = 1.
+PASS. n_1(1) 0.089428 for every arm = M's 0.089428. Analytic v
+realized: ||dW_r(1) - K dm_r|| / ||K dm_r|| 4.7e-4 / 4.7e-4 / 4.7e-4
+against the realized float32 delta (cos 0.9999999), and M's own
+||dW_M(1) - v_M|| / ||v_M|| 5.4e-4. L76847 §2 expected M's residual
+"at the 1e-6 level"; the measured value is about 500x that. It is a
+DIRECTION residual of the float32 weight write (the norms agree to
+1e-7 and the magnitude law passes at 2e-7), the same for the random
+arms and the moment axis, read by no bar, and three orders inside the
+1e-3 tolerance. The separate 6e-7 desk bound was on the write-space
+image of the exp_avg state rounding, and the matching receipt
+quantity (realized-v-intended exp_avg delta 1.5e-6 in state space;
+the two write residuals differ by 5e-11) does not contradict it.
+
+### Readouts, all 12 horizons (GLOBAL float64 over the 59 tensors)
+
+G_r(h) = ||dW_r(h)|| / ||dW_r(1)||, G_M(h) locked, A_r = G_r / G_M;
+n = ||dW|| / ||W_C(h) - W_7200||:
+  h      G_M     G_R1    G_R2    G_R3   A_R1  A_R2  A_R3   n_M    n_R1   n_R2   n_R3
+  1      1.00    1.00    1.00    1.00   1.000 1.000 1.000  0.0894 0.0894 0.0894 0.0894
+  5      4.00    4.03    4.03    4.03   1.008 1.008 1.008  0.0634 0.0639 0.0639 0.0639
+  20     7.86    8.33    8.33    8.33   1.059 1.059 1.059  0.0445 0.0471 0.0471 0.0471
+  100    11.86   9.29    9.29    9.29   0.783 0.783 0.783  0.0261 0.0205 0.0205 0.0205
+  300    16.56   9.31    9.30    9.30   0.562 0.562 0.562  0.0238 0.0134 0.0134 0.0134
+  900    156.9   11.76   11.86   10.12  0.075 0.076 0.065  0.1463 0.0110 0.0111 0.0094
+  1800   374.7   79.8    153.4   83.8   0.213 0.409 0.224  0.2792 0.0594 0.1143 0.0625
+  3080   501.9   177.7   267.9   190.2  0.354 0.534 0.379  0.3232 0.1144 0.1725 0.1225
+  4500   519.0   195.1   287.3   210.4  0.376 0.554 0.405  0.3118 0.1172 0.1726 0.1264
+  6000   518.7   195.6   287.1   211.1  0.377 0.553 0.407  0.3036 0.1145 0.1680 0.1236
+  7200   517.5   194.7   285.6   210.0  0.376 0.552 0.406  0.3012 0.1134 0.1663 0.1222
+  8220   517.3   194.6   285.5   209.8  0.376 0.552 0.406  0.3010 0.1132 0.1661 0.1221
+Absolute deviation norms at H: R 2.414 / 3.543 / 2.604 v M 6.419
+(control leg 21.33). h_amp (first grid h with G >= 10): R1 / R2 / R3
+900 / 900 / 900 v M 100.
+
+Cosines and rotation (cos_rM = cos(dW_r(h), dW_M(h)); pair = R1|R2 /
+R1|R3 / R2|R3; rot = cos to the previous grid deviation, M's locked
+value in the last column):
+  h     cos_R1M  cos_R2M  cos_R3M   pair                    rot_R1  rot_R2  rot_R3  rot_M
+  1     0.0000   0.0000   0.0000    -0.0000/0.0000/-0.0001  -       -       -       -
+  5    -0.0000   0.0000  -0.0000    -0.0000/0.0000/-0.0001  1.0000  1.0000  1.0000  0.9982
+  20    0.0001   0.0000  -0.0000    -0.0000/0.0000/-0.0001  0.9999  0.9999  0.9999  0.9114
+  100  -0.0009   0.0018  -0.0010     0.0000/0.0000/-0.0001  0.9983  0.9983  0.9983  0.5864
+  300   0.0022   0.0077  -0.0069     0.0009/-0.0006/-0.0007 0.9949  0.9951  0.9954  0.5888
+  900  -0.2105  -0.2359   0.1164     0.2518/-0.0574/-0.0506 0.7833  0.7769  0.9097  0.0797
+  1800  0.0159   0.0828   0.0684     0.4490/-0.2422/-0.1459 0.1312  0.0791  0.1140  0.3065
+  3080  0.1584   0.2290   0.1900     0.3866/0.1829/0.0967   0.3279  0.4197  0.3306  0.6084
+  4500  0.1788   0.2434   0.2174     0.3918/0.2528/0.1360   0.7785  0.8244  0.7741  0.8828
+  6000  0.1815   0.2422   0.2186     0.3935/0.2606/0.1367   0.9473  0.9434  0.9430  0.9674
+  7200  0.1816   0.2415   0.2184     0.3935/0.2596/0.1352   0.9958  0.9965  0.9958  0.9976
+  8220  0.1815   0.2414   0.2182     0.3935/0.2594/0.1350   0.9999  0.9999  0.9999  0.9999
+Leg cosine (deviation from the anchor against the control's
+displacement) 0.986 to 0.994 at H for every arm.
+
+Group shares of ||dW||^2 (BLOCK0..7, OUTSIDE): at h = 1 every random
+arm equals M's profile to 1e-7 (the locus match); at h = 900 R1 0.122
+/ 0.140 / 0.140 / 0.137 / 0.130 / 0.120 / 0.113 / 0.097 / 0.001 (R2,
+R3 within 0.02 per group) v M 0.136 / 0.160 / 0.164 / 0.157 / 0.150 /
+0.113 / 0.083 / 0.037 / 0.001; at H R1 0.114 / 0.146 / 0.162 / 0.158 /
+0.151 / 0.130 / 0.098 / 0.041 / 0.001, R2 0.128 / 0.151 / 0.161 /
+0.154 / 0.146 / 0.123 / 0.095 / 0.042 / 0.000, R3 0.111 / 0.147 /
+0.165 / 0.158 / 0.148 / 0.131 / 0.098 / 0.041 / 0.001 v M 0.106 /
+0.141 / 0.160 / 0.157 / 0.151 / 0.133 / 0.104 / 0.047 / 0.000: the
+late deviation of every arm, random or moment-axis, has the same
+anatomical profile (BLOCK7 falls from 0.134 to about 0.04, BLOCK2..4
+rise), within 0.02 per group.
+
+HELD-32 CE (BAR 4, absolute 0.005): dCE_r(H) +5.3e-5 / +9.0e-5 /
++1.45e-4 (M's locked -3.1e-5); the largest |dCE| at any horizon
+2.4e-4 (R3 at 4500); CE at H 0.350193 (C) / 0.350246 / 0.350283 /
+0.350337. NEUTRAL in every arm at every horizon; FUNCTION-NEUTRAL.
+Descriptive gate at 15420 on mps (120 prompts; read by no bar): C 64
+(23 / 7 / 16 / 8 / 10, valid 62.1 %) = FMEL2's C 64 = the booked
+model 64; R1 65 (23 / 8 / 16 / 8 / 10), R2 64, R3 64 (each 23 / 7 /
+16 / 8 / 10). Differences of 0 to 1 solve are far inside the
+instrument's resolution (about 7 solves at 1.5 sigma); no direction
+is claimed. Cooled tails
+||dW(H)|| / ||dW(6000)|| 0.9947 / 0.9947 / 0.9937 (M 0.9974).
+Substrate (descriptive): the fresh C lands rho 0.030953 / 0.030953 of
+the booked displacement from the native mps model at 15300 / 15420
+with CE 0.350194 v 0.350227 and 0.350193 v 0.350225, identical to
+FMEL2's readouts (the fresh C is the same bit-exact leg).
+
+### Adjudication
+
+- BAR 0: fresh C == locked FMEL2 C at all 12 horizons; every arm's
+  h = 1 == its preflight digest; comparison vectors OK. HELD.
+- BAR 1: PASS (above), all three directions.
+- BAR 2 on A_r(H) = 0.376 / 0.552 / 0.406, first match: not
+  REGIME-UNRESOLVED (all defined, preflight passed); not
+  DIRECTION-GENERIC (R1 and R3 below 1/2); not MOMENT-SPECIFIC (all
+  above 1/4); not RANDOM-DOMINANT: MIXED, with the three A_r(H)
+  quoted. The three lie within a factor 1.47 of each other.
+- BAR 3 (reported, descriptive): |cos_rM(H)| 0.181 / 0.241 / 0.218,
+  all <= 0.25: DIRECTION-INDEPENDENT-LATE (R2 clears the cut by
+  0.0086); h_amp_r 900 / 900 / 900 v h_amp_M 100 (R3's G(900) 10.12
+  clears the 10 mark by 0.12; the grid jumps 300 -> 900, so "one grid
+  horizon later" is the strongest statement); rot_r(H) 0.9999 =
+  rot_M(H) 0.9999; random-v-random cosines at H 0.39 / 0.26 / 0.14.
+  Both boundary readings are single-seed-lineage readings under
+  thresholds fixed before any random leg existed.
+- BAR 4: NEUTRAL / NEUTRAL / NEUTRAL: FUNCTION-NEUTRAL.
+- BAR 5: tails 0.995 / 0.995 / 0.994; substrate rho 0.03095.
+- Label: MIXED+DIRECTION-INDEPENDENT-LATE+FUNCTION-NEUTRAL [writer A
+  only, one anchor, one seed lineage, CPU deterministic, write norm =
+  FMEL2 eps 1e-1, three random directions; gate descriptive].
+
+### REFUTED-IF (narrowed wording of L76847 §5)
+
+Neither fires. MIXED refutes neither the moment-axis-specificity
+reading nor the generic-amplification reading. What the numbers
+support, within the fences: on this leg a perturbation of the same
+first-step write norm and anatomical locus but an unrelated,
+exp_avg-space-isotropic direction is amplified 195x to 286x by H,
+i.e. between 0.38 and 0.55 of the moment axis's 517x; the moment
+axis amplifies 1.8x to 2.7x more than every member of this panel,
+and earlier (its 10x mark at h = 100, the panel's at h = 900; at
+h = 900 the panel sits at 0.07 of the moment axis). Late
+amplification on this arena is therefore largely direction-generic
+in magnitude (within a factor 2.7) with a consistent, registered-band-
+straddling moment-axis excess. Per the interpretation fence: this
+concerns late-amplification specificity, not whether optimizer
+memory caused the initial branch (FME1, L75193, stands as booked);
+and because ||delta m|| is descriptive rather than matched (the
+random exp_avg perturbations are 0.17 of the moment-axis one in
+norm), the moment-axis excess is not converted into an unconditional
+pure-direction claim. No arm harmed or helped the function.
+
+### Time course (descriptive)
+
+The random deviations follow the moment axis's linear phase exactly
+through h = 20 (A 1.00 / 1.01 / 1.06, cos to M 0 by construction,
+rotation 0.9999), then stall at G about 9.3 from h = 100 to 300 while
+the moment axis keeps growing (11.9 -> 16.6) and rotates (rot_M 0.59
+v the panel's 0.995), so A falls to 0.56 by h = 300; the moment axis
+then takes its large step at the epoch boundary (G 157 at h = 900)
+while the panel reaches only 10 to 12 there (A 0.07), and the panel's
+own large growth lands one grid step later (G 80 to 153 at h = 1800,
+A 0.21 to 0.41), after which every arm settles as the schedule cools
+(A frozen at 0.376 / 0.552 / 0.406 from h = 4500, rotation 0.9999 at
+H for all four deviations). R2 is the arm whose h = 1800 jump was
+largest (153 v 80 / 84) and it stays the largest to H. The three
+random deviations end mildly correlated with each other (0.14 to
+0.39) and with the moment axis (0.18 to 0.24), with the same
+anatomical profile as the moment-axis deviation: the late deviation
+of any of these perturbations lives in a shared late subspace of the
+leg, not along the perturbation's own direction.
+
+### Registered priors (L76553; on the record)
+
+1. BAR 0 passes (0.90): HIT. 2. BAR 1 passes for all three (0.85):
+HIT. 3. BAR 2 modal DIRECTION-GENERIC 0.45 / MIXED 0.30 /
+MOMENT-SPECIFIC 0.15 / RANDOM-DOMINANT 0.10: MIXED; the modal prior
+MISSED (its 0.30 alternative occurred). 4. A_r(H) within a factor 2 of
+each other (0.60): HIT (1.47). 5. DIRECTION-INDEPENDENT-LATE (0.65):
+HIT (by 0.009 on R2). 6. h_amp_r <= 300 for all r (0.60): MISSED
+(900 / 900 / 900). 7. FUNCTION-NEUTRAL (0.75): HIT. 8. Wall <= 4 h
+(0.70): HIT (3.40 h). Rung 6 hits / 2 misses; family (OMA1 / FME1 /
+FMEL1 / FMEL2 / RDC1) 25 / 6.
+
+### Auditor notes (receipt-auditor and prereg-auditor, Opus, read-only, before this booking)
+
+Neither auditor found a blocker. receipt-auditor recomputed every
+provenance sha on disk (emitter, L2 / L1 / FME1 / OMA sources, the
+five receipts, the anchor, the 12 comparison vectors with mtimes
+untouched since 09-15), the stream (32,880 rows, 8,220 per arm, steps
+exactly 7201..15420, seeds as registered), the 48 snapshot records
+(12 shas recomputed), BAR 0 and every internal identity (n, dce, G, A,
+rot_M, abs_M v locked to 0.0), the wall / interlock rows. Documentary
+items carried: (1) the receipt lacks a `shares_M_realized` key (an
+inline comment in the as-run source swallowed that dict entry); the
+realized M share vector is nonetheless in the receipt as
+preflight.detail.target_shares (computed from the derived dW_M(1) and
+used by the share law), so no quantity is lost; the as-run source
+stays frozen as the evidence record and the slip is noted for the
+next sibling, not patched. (2) The SMOKE arena of this rung writes its
+FMEL2-smoke receipts beside the booked FMEL2 evidence
+(logs/fmel2/smokerd1_ladder.json, smokerd2_ladder.json / .jsonl,
+distinct names, locked at L77006; the booked files byte-unchanged,
+sha 0faffc61...); the real run cannot reach that directory (asserted).
+(3) n_pred_literal 0.894284652673395 in the receipt is the sealed
+OMA1 desk expectation re-derived and asserted, not a quantity of this
+run; started_utc is the post-provenance timestamp while wall_s counts
+from process start (12,225 s by the liverun clock). prereg-auditor
+recomputed A_r(H), h_amp, the BAR 2 first-match walk, BAR 3 / 4 / 5,
+the gate dict sums (64 / 65 / 64 / 64) and the eight priors (6 / 2)
+and agrees with every label; its folds are in place above: the
+unmet "1e-6 level" expectation stated as measured, the two boundary
+margins quoted, the gate fenced with no direction, and the label
+string noted to differ from the registered format in two benign
+ways (the display numeral 0.0124 dropped after L76847; "three random
+directions" added, a tightening of the registered n = 3 fence).
+
+### Consequences (as registered for MIXED: book, Artin decision; nothing launched)
+
+MIXED is booked as measured with the three A_r(H) quoted. Under the
+registered consequence table the next step is Artin's. Not launched
+and not banked by this entry: any census, cross-foster, writer B,
+second anchor, float64, variance reset or automatic consequence.
+Candidates for Artin's decision only, unbanked here: (i) a fourth
+random seed and a moment-axis rerun are unnecessary (the panel is
+tight, 1.47x); (ii) the h = 100..300 stall and the one-grid-step lag
+of the panel's growth behind the moment axis are the descriptive leads.
+checkpoints/fmel2, checkpoints/fme1, checkpoints/oma1/A/C and
+checkpoints/rdc1 retained; disposition Artin's.
+
+### Fences
+
+Writer A only, anchor 7200 only, one seed lineage, one stream, CPU
+float32 deterministic; one write magnitude (FMEL2 eps 1e-1) and one
+locus profile; three random directions (n = 3 directions, single seed
+lineage; SINGLE-SEED for path claims); the 120 gate descriptive and
+cross-device to nothing (differences of 0 to 1 solve are inside the
+instrument sigma); the moment-axis comparison rests on the bit-exact
+reproduction of the FMEL2 C (BAR 0 held). The random exp_avg
+perturbations are smaller than the moment-axis one in state norm
+(0.17) and concentrate their OUTSIDE write on zero-variance
+coordinates; both are descriptive facts of this construction, not
+matched quantities.

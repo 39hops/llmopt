@@ -1,0 +1,29 @@
+[liverun] armed rdc1 pid 1895 commit 3939fa38 worktree main:llmopt sentinel .git/liverun.lock
+[curric] D2 excision: 165028 -> 164896 rows
+[curric] D2 excision: 165028 -> 164896 rows
+[rdc1] phase provenance at 64.3 s
+[rdc1] phase anchor-and-substrate-load at 64.9 s
+[rdc1] phase construction at 73.0 s
+/Users/artin/code/llmopt/scratch/optimizer_memory_ablation.py:183: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  sched.step()
+[rdc1] construction: ||v_M|| 1.240856e-02 (desk carry x 0.1 rel 2.5e-15); ||dm_R|| / ||dm_M|| {'R1': 0.1705, 'R2': 0.1704, 'R3': 0.1705}; zero-v coords 1920
+[rdc1] phase preflight at 77.6 s
+[rdc1] preflight PASS: magnitude {'R1': 0.999999790091026, 'R2': 0.9999998522777416, 'R3': 0.9999998380416787} cos_M {'R1': 1.596628624089382e-07, 'R2': 2.1894202163083233e-08, 'R3': 8.852146294084517e-08} share_gap {'R1': 1.0697524380209877e-07, 'R2': 1.3305879673075616e-07, 'R3': 1.598035118989538e-07} pair {'R1|R2': -5.966591427480251e-06, 'R1|R3': 4.55547348563887e-05, 'R2|R3': -6.280069725726346e-05}; analytic v realized { R1 4.7e-04, R2 4.7e-04, R3 4.7e-04 }
+[rdc1] phase leg:C at 83.6 s
+[rdc1] C leg done 2812.2 s (2.92 it/s) loss_last 0.3836
+[rdc1] phase leg:R1 at 2937.8 s
+[rdc1] R1 leg done 2873.3 s (2.86 it/s) loss_last 0.3837
+[rdc1] phase leg:R2 at 5860.8 s
+[rdc1] R2 leg done 3039.0 s (2.7 it/s) loss_last 0.3837
+[rdc1] phase leg:R3 at 8942.9 s
+[rdc1] R3 leg done 2914.1 s (2.82 it/s) loss_last 0.3834
+[rdc1] phase readouts at 11907.5 s
+[rdc1] phase gates at 11915.7 s
+[gate] weights sha 685e9efa2d21b02a
+[gate] weights sha 402141fd3fee5ce7
+[gate] weights sha 26789cf9872f5efa
+[gate] weights sha c4bbd72e6059aa0f
+[rdc1] phase adjudication at 12223.7 s
+[rdc1] A(H) {'R1': 0.3760964216618133, 'R2': 0.551959890779871, 'R3': 0.4056076963226348} G_M(H) 517.296264627265 cos_M(H) {'R1': 0.18145528317699536, 'R2': 0.24135720900276128, 'R3': 0.218244614407012} n(H) {'R1': 0.11319433619338938, 'R2': 0.16612425359295827, 'R3': 0.12207639716123021} -> MIXED+DIRECTION-INDEPENDENT-LATE+FUNCTION-NEUTRAL [writer A only, one anchor, one seed lineage, CPU deterministic, write norm = FMEL2 eps 1e-1, three random directions; gate descriptive]; gate { C 64, R1 65, R2 64, R3 64 }
+[rdc1] DONE in 12223.8 s -> logs/rdc1/control.json
+[liverun] disarmed rdc1 rc 0

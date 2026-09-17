@@ -2,7 +2,7 @@
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
  "_last_accept": {
   "paths": [],
-  "reason": "AMENDMENT RANDOM-DIRECTION-CONTROL-1-INSTRUMENT: rd1..rd8 smoke receipts, the rd1 / rd2 smoke arena receipts and the atomtraj1 prune manifest force-added and locked"
+  "reason": "VERDICT RANDOM-DIRECTION-CONTROL-1: real receipts force-added and locked; the 32,880-row stream stays machine-local, sha-locked"
  },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
@@ -1618,8 +1618,11 @@
    "tracked": true
   },
   "logs/liverun/rdc1.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 456,
+   "exists": true,
+   "sha256": "32f6c424dfd4bccf4bc0ddff11549a8497be12dff93fca3b279160025c2d35d4",
+   "source": "results",
+   "tracked": true
   },
   "logs/liverun/sgaudit0.jsonl": {
    "bytes": 518,
@@ -4992,20 +4995,33 @@
    "tracked": true
   },
   "logs/rdc1/control.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 104639,
+   "exists": true,
+   "sha256": "f85cc4a5539ea725440e820d107a1520e4e5ff743e351a99751f2fdfbb9f0be5",
+   "source": "results",
+   "tracked": true
   },
   "logs/rdc1/control.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 3526794,
+   "exists": true,
+   "local_only": true,
+   "sha256": "fd7a4c93b7a9c3312ff58f767a7442198f512089c1f3d283db9bf84bb1cc4c3c",
+   "source": "results",
+   "tracked": false
   },
   "logs/rdc1/control.log": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 2629,
+   "exists": true,
+   "sha256": "c5b58530f64ec1237a0d1f12a8548b699a372c0b5e9db2f68f18b0872eda9c54",
+   "source": "results",
+   "tracked": true
   },
   "logs/rdc1/rdc1.DONE": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 5,
+   "exists": true,
+   "sha256": "8221ac66be71558c921fb44cfb66f7997699aea754d917763882d6d9eddc836e",
+   "source": "results",
+   "tracked": true
   },
   "logs/rdc1/smokerd1_control.json": {
    "bytes": 241,

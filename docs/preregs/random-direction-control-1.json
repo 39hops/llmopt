@@ -4,7 +4,7 @@
  "note": "Machine-readable form of PRE-REG RANDOM-DIRECTION-CONTROL-1 (RESULTS L76553; the prose governs). DESIGN ONLY (Artin decision 2026-09-15 22:05 EDT). No instrument, no launch; implementation and the target run each need a separate Artin GO.",
  "registered": "2026-09-15 (Mac local)",
  "machine": "mac",
- "status": "INSTRUMENT COMMITTED (AMENDMENT -INSTRUMENT), smoked, reviewed; unarmed; target run needs a separate Artin GO",
+ "status": "BOOKED (VERDICT RESULTS L77202): MIXED + DIRECTION-INDEPENDENT-LATE + FUNCTION-NEUTRAL; consequence Artin's decision; nothing armed",
  "question": "Is the late amplification / decorrelation after a first-moment perturbation specific to the optimizer-memory direction, or does a perturbation of the same first-step write magnitude and locus but unrelated direction amplify comparably?",
  "writer": "A only: stock OneCycle seed 2, checkpoints/phase19m/m007200.pt (sha256 a0cdf244fcf44f05...), Adam step 7200, one seed lineage, byte-identical future stream",
  "continuation": {
@@ -263,5 +263,116 @@
   "manifest": "logs/atomtraj1/prune_manifest_main.json",
   "repair_set_verified": "108 / 108 against logs/atomtraj1_repair/births.jsonl",
   "free_gib_after": 26.2
+ },
+ "result": {
+  "label": "MIXED+DIRECTION-INDEPENDENT-LATE+FUNCTION-NEUTRAL",
+  "commit": "3939fa38",
+  "wall_s": 12223.8,
+  "storage_gb": 3.9,
+  "bar0": true,
+  "bar1": {
+   "magnitude": [
+    0.99999979,
+    0.99999985,
+    0.99999984
+   ],
+   "cos_M": [
+    1.6e-07,
+    2.2e-08,
+    8.9e-08
+   ],
+   "share_gap": [
+    1.1e-07,
+    1.3e-07,
+    1.6e-07
+   ],
+   "pair_cos_max_abs": 6.3e-05,
+   "untouched": true,
+   "analytic_v_realized": [
+    0.00047,
+    0.00047,
+    0.00047
+   ],
+   "M_analytic_v_realized": 0.00054
+  },
+  "construction": {
+   "dmR_over_dmM_total": [
+    0.1705,
+    0.1704,
+    0.1705
+   ],
+   "zero_v_coords": 1920,
+   "n_eff_OUTSIDE": 1920,
+   "n_eff_blocks_min_max": [
+    640305,
+    1176812
+   ]
+  },
+  "H": {
+   "A": {
+    "R1": 0.376,
+    "R2": 0.552,
+    "R3": 0.406
+   },
+   "G": {
+    "R1": 194.6,
+    "R2": 285.5,
+    "R3": 209.8
+   },
+   "G_M": 517.3,
+   "n": {
+    "R1": 0.1132,
+    "R2": 0.1661,
+    "R3": 0.1221
+   },
+   "n_M": 0.301,
+   "cos_M": {
+    "R1": 0.181,
+    "R2": 0.241,
+    "R3": 0.218
+   },
+   "pair_cos": {
+    "R1|R2": 0.393,
+    "R1|R3": 0.259,
+    "R2|R3": 0.135
+   },
+   "dCE": {
+    "R1": 5.3e-05,
+    "R2": 9e-05,
+    "R3": 0.000145
+   },
+   "tail": {
+    "R1": 0.9947,
+    "R2": 0.9947,
+    "R3": 0.9937,
+    "M": 0.9974
+   }
+  },
+  "h_amp": {
+   "R1": 900,
+   "R2": 900,
+   "R3": 900,
+   "M": 100
+  },
+  "bar2": "MIXED",
+  "bar3": "DIRECTION-INDEPENDENT-LATE",
+  "bar4": "FUNCTION-NEUTRAL",
+  "gate": {
+   "C": 64,
+   "R1": 65,
+   "R2": 64,
+   "R3": 64
+  },
+  "substrate_rho_15420": 0.03095,
+  "refuted_if": "neither fired",
+  "priors": "6 hits / 2 misses (modal BAR 2 prior DIRECTION-GENERIC missed, MIXED at 0.30 occurred; h_amp_r <= 300 missed: 900)",
+  "receipts": [
+   "logs/rdc1/control.json",
+   "logs/rdc1/control.jsonl",
+   "logs/rdc1/control.log",
+   "logs/rdc1/rdc1.DONE",
+   "logs/liverun/rdc1.jsonl"
+  ],
+  "consequence": "MIXED: book, Artin decision; nothing launched"
  }
 }
