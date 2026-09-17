@@ -184,7 +184,7 @@ Census: UNCITED 233, library 92, reproduce-pinned 10, results-cited 477, spec-ci
 | fig | fig_magic_scatter.py | spec-cited | specs | specs×1 | — | — |
 | first | first_moment_erasure.py | library | RESULTS, specs | RESULTS×8, specs×5 | 1 | 4 |
 | first | first_moment_erasure_ladder.py | library | RESULTS, specs | RESULTS×9, specs×6 | 1 | 4 |
-| first | first_moment_erasure_ladder2.py | library | RESULTS, specs | RESULTS×7, specs×4 | 1 | 3 |
+| first | first_moment_erasure_ladder2.py | library | RESULTS, specs | RESULTS×8, specs×4 | 1 | 3 |
 | fixed | fixed_q_snap.py | UNCITED | — | — | — | 1 |
 | floor | floor_hk1.sh | UNCITED | — | — | — | 1 |
 | floor | floor_hk1_d256.sh | UNCITED | — | — | — | — |
@@ -613,12 +613,12 @@ Census: UNCITED 233, library 92, reproduce-pinned 10, results-cited 477, spec-ci
 | qwen | qwen_tower_ladder.py | results-cited | RESULTS | RESULTS×1 | — | 11 |
 | qwen | qwen_tree_adjudicate.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 1 |
 | qwen | qwen_whole0t.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 3 |
-| random | random_direction_control.py | results-cited | RESULTS | RESULTS×2 | — | 2 |
+| random | random_direction_control.py | results-cited | RESULTS, specs | RESULTS×5, specs×3 | — | 2 |
 | rank | rank_read.py | spec-cited | specs | specs×2 | — | 1 |
 | rat | rat_deploy.py | results-cited | RESULTS, specs | RESULTS×1, specs×5 | — | 3 |
 | rat | rat_repair.py | UNCITED | — | — | — | 1 |
 | rational | rational_snap.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 6 |
-| rdc1 | rdc1_launch.sh | results-cited | RESULTS | RESULTS×1 | — | — |
+| rdc1 | rdc1_launch.sh | results-cited | RESULTS, specs | RESULTS×4, specs×2 | — | — |
 | retention | retention_watcher.sh | UNCITED | — | — | — | — |
 | rev2 | rev2_d768.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — |
 | rev3 | rev3_crown.py | results-cited | RESULTS, specs | RESULTS×3, specs×3 | — | — |

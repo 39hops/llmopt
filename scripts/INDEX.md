@@ -5338,7 +5338,7 @@ RANDOM-DIRECTION-CONTROL-1 instrument (PRE-REG RESULTS L76553, AMENDMENT -PRE-IN
 - `horizon_metrics(W0, WC, W, WM)` — Per-horizon readouts from flats: W0 anchor, WC fresh control, W = {R arm: flat}, WM the locked moment-axis snapshot.
 - `growth(metrics_by_h)` — Fill G_r(h) = ||dW_r(h)|| / ||dW_r(1)||, G_M(h) and A_r(h) = G_r / G_M in place; UNDEFINED when a h = 1 norm is zero / missing.
 - `regime(A_H, preflight_ok)` — BAR 2 at H, first match wins: REGIME-UNRESOLVED / DIRECTION-GENERIC / MOMENT-SPECIFIC / RANDOM-DOMINANT / MIXED.
-- `direction(cosM_H)` — BAR 3 (reported): DIRECTION-SHARED-LATE / DIRECTION-INDEPENDENT-LATE / MIXED-DIRECTION; UNDEFINED -> DIRECTION-UNRESOLVED.
+- `direction(cosM_H)` — BAR 3 (reported, descriptive only): DIRECTION-SHARED-LATE / DIRECTION-INDEPENDENT-LATE / MIXED-DIRECTION; a terminal UNDEFINED
 - `h_amp(G_by_h)` — First grid h with G >= H_AMP_G over {h: G} (UNDEFINED horizons skipped); None = not reached.
 - `label(reg, dirlab, func)`
 - `preflight_disposition(pf_ok, bypass, c_digest_match)` — Early returns after the one-step preflight: a fresh C h = 1 digest differing from the locked FMEL2 C digest is a substrate

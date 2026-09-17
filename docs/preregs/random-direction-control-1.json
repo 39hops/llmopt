@@ -4,7 +4,7 @@
  "note": "Machine-readable form of PRE-REG RANDOM-DIRECTION-CONTROL-1 (RESULTS L76553; the prose governs). DESIGN ONLY (Artin decision 2026-09-15 22:05 EDT). No instrument, no launch; implementation and the target run each need a separate Artin GO.",
  "registered": "2026-09-15 (Mac local)",
  "machine": "mac",
- "status": "AMENDED (-PRE-INSTRUMENT); implementation GO given 2026-09-17, instrument pending; unarmed",
+ "status": "INSTRUMENT COMMITTED (AMENDMENT -INSTRUMENT), smoked, reviewed; unarmed; target run needs a separate Artin GO",
  "question": "Is the late amplification / decorrelation after a first-moment perturbation specific to the optimizer-memory direction, or does a perturbation of the same first-step write magnitude and locus but unrelated direction amplify comparably?",
  "writer": "A only: stock OneCycle seed 2, checkpoints/phase19m/m007200.pt (sha256 a0cdf244fcf44f05...), Adam step 7200, one seed lineage, byte-identical future stream",
  "continuation": {
@@ -115,7 +115,7 @@
   "0_qualification": "fresh C == locked FMEL2 C digests at all 12 horizons; M snapshot digests + shas == FMEL2 receipt; every arm h = 1 == preflight digest; mismatch -> NOT-RUN",
   "1_construction": "see preflight",
   "2_amplification_at_H": "first match: REGIME-UNRESOLVED if any A_r(H) UNDEFINED or preflight failed; DIRECTION-GENERIC if 0.5 <= A_r(H) <= 2 for all three; MOMENT-SPECIFIC if A_r(H) <= 0.25 for all three; RANDOM-DOMINANT if A_r(H) >= 4 for all three; else MIXED with the three A_r(H) quoted",
-  "3_direction": "reported: DIRECTION-SHARED-LATE if all |cos(dW_r(H), dW_M(H))| >= 0.50; DIRECTION-INDEPENDENT-LATE if all <= 0.25; else MIXED-DIRECTION; h_amp_r = first grid h with G_r >= 10 (h_amp_M = 100); rot_r beside rot_M",
+  "3_direction": "reported (descriptive only): DIRECTION-SHARED-LATE if all |cos(dW_r(H), dW_M(H))| >= 0.50; DIRECTION-INDEPENDENT-LATE if all <= 0.25; else MIXED-DIRECTION; a terminal UNDEFINED cosine -> report-only DIRECTION-LATE-UNRESOLVED (no effect on BAR 2, BAR 4, REFUTED-IF or the rung verdict; REGIME-UNRESOLVED reserved for the registered rung-level conditions); h_amp_r = first grid h with G_r >= 10 (h_amp_M = 100); rot_r beside rot_M",
   "4_function": "per arm NEUTRAL iff |dCE_r(H)| <= 0.005; HARMED / HELPED by sign; FUNCTION-NEUTRAL when all three NEUTRAL; no functional inference from path geometry",
   "5_descriptive": "cooled tail; substrate rho",
   "zero_norm_law": "AMENDMENT L75568 \u00a74; UNDEFINED terminal -> REGIME-UNRESOLVED",
@@ -233,7 +233,35 @@
    "results_line": 76847,
    "date": "2026-09-17",
    "summary": "random directions drawn in exp_avg space and matched under the exact first-step write metric (no division by K); h = 1 targets derived from the sha-pinned FMEL2 snapshots; descriptive optimizer-state-scale readouts; REFUTED-IF / consequence wording narrowed; no threshold, band or prior changed"
+  },
+  {
+   "name": "RANDOM-DIRECTION-CONTROL-1-INSTRUMENT",
+   "results_line": 77006,
+   "date": "2026-09-17",
+   "summary": "instrument scratch/random_direction_control.py + rdc1_launch.sh + 13 tests; Opus review folded; smokes rd2 (full mechanism) / rd3 (construction refusal) / rd4 (zero group target) / rd5 (comparison-vector drift) / rd6 (BAR 0 abort) / rd7 + rd8 (wall cap) on a fresh synthetic arena; BAR 3 report-only DIRECTION-LATE-UNRESOLVED added prospectively; disk cleanup with a verified prune manifest"
   }
  ],
- "disk_note_2026_09_17": "15.8 GiB free at the amendment, below the 16 GiB run preflight floor; the run's disk preflight refuses at launch as designed; no pruning under this decision"
+ "disk_note_2026_09_17": "15.8 GiB free at the amendment, below the 16 GiB run preflight floor; the run's disk preflight refuses at launch as designed; no pruning under this decision",
+ "instrument": {
+  "script": "scratch/random_direction_control.py",
+  "launcher": "scratch/rdc1_launch.sh",
+  "tests": "tests/test_random_direction_control.py",
+  "mode": "MODE=control",
+  "smoke_receipts": [
+   "logs/rdc1/smokerd2_control.json",
+   "logs/rdc1/smokerd3_control.json",
+   "logs/rdc1/smokerd4_control.json",
+   "logs/rdc1/smokerd5_control.json",
+   "logs/rdc1/smokerd6_control.json",
+   "logs/rdc1/smokerd7_control.json",
+   "logs/rdc1/smokerd8_control.json",
+   "logs/rdc1/smokerd1_control.json"
+  ],
+  "construction_fail_closed": "zero / non-finite group target norm, zero / non-finite projected write norm, non-finite scale or assembled vector -> CONSTRUCTION-UNRESOLVED before any preflight step; every group asserted present"
+ },
+ "disk_cleanup_2026_09_17": {
+  "manifest": "logs/atomtraj1/prune_manifest_main.json",
+  "repair_set_verified": "108 / 108 against logs/atomtraj1_repair/births.jsonl",
+  "free_gib_after": 26.2
+ }
 }

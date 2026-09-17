@@ -211,8 +211,8 @@ def construct(q, K, m, segs, m_eps=M_EPS):
         idx = np.concatenate([np.arange(a, b) for k, a, b, g in segs if g == grp])
         qg, Kg, vg, dmg = q[idx], K[idx], v_M[idx], dm_M[idx]
         nv2 = float(vg @ vg)
-        if nv2 == 0.0:
-            rec["undefined"][grp] = "moment-axis write is zero in this group"
+        if nv2 == 0.0 or not math.isfinite(nv2):
+            rec["undefined"][grp] = "moment-axis write is zero or non-finite in this group"
             continue
         Kq = Kg * qg
         coef = float(Kq @ vg) / nv2
@@ -223,10 +223,18 @@ def construct(q, K, m, segs, m_eps=M_EPS):
             rec["undefined"][grp] = "projected random write is zero or non-finite in this group"
             continue
         s = math.sqrt(nv2) / nkq
+        if not math.isfinite(s) or not np.all(np.isfinite(qp)):
+            rec["undefined"][grp] = "scale or projected vector non-finite in this group"
+            continue
         dm_R[idx] = s * qp
         rec["groups"][grp] = {"vM_norm": math.sqrt(nv2), "proj_coef": coef, "kq_perp_norm": nkq, "scale": s, "dmR_norm": float(np.linalg.norm(dm_R[idx])),
                               "dmM_norm": float(np.linalg.norm(dmg)), "write_cos_to_M": (cosine(Kg * dm_R[idx], vg))}
     if rec["undefined"]:
+        return None, rec
+    groups_all = sorted(set(s[3] for s in segs))
+    assert sorted(rec["groups"]) == groups_all, ("a group was dropped from the construction", groups_all, sorted(rec["groups"]))
+    if not np.all(np.isfinite(dm_R)):
+        rec["undefined"]["global"] = "assembled dm_R non-finite"
         return None, rec
     rec["dmM_norm_total"] = float(np.linalg.norm(dm_M)); rec["vM_norm_total"] = float(np.linalg.norm(v_M))
     rec["dmR_norm_total"] = float(np.linalg.norm(dm_R)); rec["dmR_over_dmM_total"] = rec["dmR_norm_total"] / rec["dmM_norm_total"] if rec["dmM_norm_total"] > 0 else None
@@ -380,10 +388,12 @@ def regime(A_H, preflight_ok):
 
 
 def direction(cosM_H):
-    """BAR 3 (reported): DIRECTION-SHARED-LATE / DIRECTION-INDEPENDENT-LATE / MIXED-DIRECTION; UNDEFINED -> DIRECTION-UNRESOLVED."""
+    """BAR 3 (reported, descriptive only): DIRECTION-SHARED-LATE / DIRECTION-INDEPENDENT-LATE / MIXED-DIRECTION; a terminal UNDEFINED
+    cosine books the report-only DIRECTION-LATE-UNRESOLVED, with no effect on BAR 2, BAR 4, REFUTED-IF or the rung verdict
+    (REGIME-UNRESOLVED is reserved for the registered rung-level conditions)."""
     vals = [cosM_H.get(a) for a in R_ARMS]
     if any(not finite(v) for v in vals):
-        return "DIRECTION-UNRESOLVED"
+        return "DIRECTION-LATE-UNRESOLVED"
     if all(abs(v) >= SHARED_LATE for v in vals):
         return "DIRECTION-SHARED-LATE"
     if all(abs(v) <= INDEP_LATE for v in vals):
@@ -683,9 +693,16 @@ def mode_control(tok, enc, starts, info, segs, d, held, rec, stream):
     assert con["vM_v_desk_carry_rel"] <= 1e-6, ("K map v the locked desk carry norm", con["vM_v_desk_carry_rel"])
     assert abs(dk["bar1_law"]["n_pred"] - n_pred) <= 1e-9, ("desk bind n_pred v the sealed value", dk["bar1_law"]["n_pred"], n_pred)
     dms = {}
+    m_used = m
+    if SMOKE and os.environ.get("SMOKE_TAMPER_ZERO_GROUP") == "1":
+        m_used = m.copy()
+        for k, a, b, g in segs:
+            if g == "OUTSIDE":
+                m_used[a:b] = 0.0                                # SMOKE only: a zero moment-axis write in one group must refuse the construction
+        rec["smoke_tampered_construction"] = "exp_avg zeroed in group OUTSIDE for the construction (zero group target norm)"
     for arm in R_ARMS:
         q = draw(SEEDS[arm], d)
-        dm, crec = construct(q, K, m, segs)
+        dm, crec = construct(q, K, m_used, segs)
         if SMOKE and dm is not None and os.environ.get("SMOKE_TAMPER_CONSTRUCTION") == "1":
             dm = dm + 0.3 * (-M_EPS * m)                     # SMOKE only: 0.3 dm_M added AFTER the projection, so BAR 1 (a) and (b) must refuse before any leg
             crec["smoke_tampered"] = "0.3 dm_M added after the projection"

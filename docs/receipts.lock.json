@@ -1,5 +1,9 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
+ "_last_accept": {
+  "paths": [],
+  "reason": "AMENDMENT RANDOM-DIRECTION-CONTROL-1-INSTRUMENT: rd1..rd8 smoke receipts, the rd1 / rd2 smoke arena receipts and the atomtraj1 prune manifest force-added and locked"
+ },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
    "bytes": 3176,
@@ -68,6 +72,13 @@
    "bytes": 11127,
    "exists": true,
    "sha256": "110105727a9b2df8ebab92cf2972cf06d757ab4f0c109f6a961b75c08c85f844",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/atomtraj1/prune_manifest_main.json": {
+   "bytes": 77205,
+   "exists": true,
+   "sha256": "ff1af62af1db7f534848c23dcafcd4db27a35b4b60214f7d61b74c2f622c64d0",
    "source": "results",
    "tracked": true
   },
@@ -942,6 +953,34 @@
    "source": "results",
    "tracked": true
   },
+  "logs/fme1/smokerd1_treat.json": {
+   "bytes": 17604,
+   "exists": true,
+   "sha256": "8ab928d261de230cd20b3d3fdb23c13e3bb97422f027622c492d1020e8bee57e",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/fme1/smokerd1_treat.jsonl": {
+   "bytes": 504,
+   "exists": true,
+   "sha256": "3fe0191b11a835910d4db9529fdf74e7431420721d0998119699215f86bbd724",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/fme1/smokerd2_treat.json": {
+   "bytes": 17598,
+   "exists": true,
+   "sha256": "2c1155885623a436fc348317d3aed065e99c9945824b6b1e9f6378b7cdad2f3b",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/fme1/smokerd2_treat.jsonl": {
+   "bytes": 504,
+   "exists": true,
+   "sha256": "3fe0191b11a835910d4db9529fdf74e7431420721d0998119699215f86bbd724",
+   "source": "results",
+   "tracked": true
+  },
   "logs/fme1/treat.json": {
    "bytes": 22249,
    "exists": true,
@@ -988,6 +1027,20 @@
    "bytes": 14101,
    "exists": true,
    "sha256": "c7c4aeb8d719b090db4116d8cecd01bfb19014d6c60795dfeeb62dc20f2da3b0",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/fmel1/smokerd1_ladder.json": {
+   "bytes": 8558,
+   "exists": true,
+   "sha256": "bca55c52b2470c4b8b63d56b3dd208d3c21168ba1c69af278abed5e9304aa29b",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/fmel1/smokerd2_ladder.json": {
+   "bytes": 14102,
+   "exists": true,
+   "sha256": "ceff64c55ccc22f30afd7004560c5d93ce632668616414b5dd9a86978dd98e4f",
    "source": "results",
    "tracked": true
   },
@@ -1108,6 +1161,27 @@
    "bytes": 578,
    "exists": true,
    "sha256": "b5fb475c4de035993621e3f7d54c18652e12c4e33a20edfd27ccf9cc8099c47a",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/fmel2/smokerd1_ladder.json": {
+   "bytes": 244,
+   "exists": true,
+   "sha256": "48f4b9b76d7c8db76cacec6cd290d8507a56a217cbd3802f6a39b3aa80fafe4f",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/fmel2/smokerd2_ladder.json": {
+   "bytes": 37837,
+   "exists": true,
+   "sha256": "ebf5ee7c8bccf364be3015a7bda8bd4a9990ac0de230eb7934d2d396a636b78b",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/fmel2/smokerd2_ladder.jsonl": {
+   "bytes": 1179,
+   "exists": true,
+   "sha256": "5d34195af221eb23bd90087f3047882cde67e5386b3dd1aefd1455966c60f8c2",
    "source": "results",
    "tracked": true
   },
@@ -3479,6 +3553,62 @@
    "source": "results",
    "tracked": true
   },
+  "logs/oma1/smokerd1_desk-bar1.jsonl": {
+   "bytes": 638,
+   "exists": true,
+   "sha256": "c9205c68b96f768a5d8bac54b1abd7abbc67f833a01595dbe8a2e80e9ee4485f",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/oma1/smokerd1_desk_bar1.json": {
+   "bytes": 5139,
+   "exists": true,
+   "sha256": "d9e91a0a169ba38e5d0c85274d018457012696f6cdbfc7a300de2b0f4fc6993f",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/oma1/smokerd1_stage0.json": {
+   "bytes": 22070,
+   "exists": true,
+   "sha256": "5616a8258c0c3378b0e19f86471f0e055c67b51ed29a8709e81b72528b5c97ec",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/oma1/smokerd1_stage0.jsonl": {
+   "bytes": 2072,
+   "exists": true,
+   "sha256": "a147a8fe4e7abe209c2f89d2bf894824118708d8085ee3764d8b9f9b48970b6e",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/oma1/smokerd2_desk-bar1.jsonl": {
+   "bytes": 636,
+   "exists": true,
+   "sha256": "6bc74032f03f3c44734c41f1eeca6856aa5f5f6b3e8d95c49a77ed94d6c88ba9",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/oma1/smokerd2_desk_bar1.json": {
+   "bytes": 5136,
+   "exists": true,
+   "sha256": "e3775d88d7e51d208631547f5a0b43668f695bbe46d24bb26d395a3bb596b363",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/oma1/smokerd2_stage0.json": {
+   "bytes": 22048,
+   "exists": true,
+   "sha256": "53f0c478d0ea6206f0c614d3a5b5300a4518918d096cf47435ba2634719d59a1",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/oma1/smokerd2_stage0.jsonl": {
+   "bytes": 2072,
+   "exists": true,
+   "sha256": "3cfeae90e73644f636e001c53b8e03d8203774edc4022da4be0a0108478e4aeb",
+   "source": "results",
+   "tracked": true
+  },
   "logs/oma1/smokeseal_desk_bar1.json": {
    "bytes": 5503,
    "exists": true,
@@ -4876,6 +5006,90 @@
   "logs/rdc1/rdc1.DONE": {
    "exists": false,
    "source": "prereg"
+  },
+  "logs/rdc1/smokerd1_control.json": {
+   "bytes": 241,
+   "exists": true,
+   "sha256": "500a37e94806941f68e1579a7a7c0a976082b7f970989696c9728a7aa8007baf",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/rdc1/smokerd2_control.json": {
+   "bytes": 56025,
+   "exists": true,
+   "sha256": "241348194c80d152b55ba7fee854764af7af91719629bae3ff65a76f1ca1b4de",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/rdc1/smokerd2_control.jsonl": {
+   "bytes": 1236,
+   "exists": true,
+   "sha256": "29c1fb2a8c0c967b248bbd3c15fde0caa4d125631c9125a65499fbcd866eda0d",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/rdc1/smokerd3_control.json": {
+   "bytes": 33578,
+   "exists": true,
+   "sha256": "407e2bb811551c3dca39eea4f0d2df46924badafb207fae6378f474d6f3a2df7",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/rdc1/smokerd4_control.json": {
+   "bytes": 15472,
+   "exists": true,
+   "sha256": "2636e46e35cf872147a2a2a8e1904ff8de83fbc06bf1ca7681fae9f015a9696c",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/rdc1/smokerd5_control.json": {
+   "bytes": 11841,
+   "exists": true,
+   "sha256": "6038906f781925eb8deaad2a0692488eda5b4fe947c9be9c8a8ada8deb430000",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/rdc1/smokerd6_control.json": {
+   "bytes": 34343,
+   "exists": true,
+   "sha256": "9b6cc1a58f133ecac3c154751a10311252e170490785c983703e2aa5c76f76f8",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/rdc1/smokerd6_control.jsonl": {
+   "bytes": 196,
+   "exists": true,
+   "sha256": "23da92ceee9ec17b71183547425a22eee2b8ccf7aa6fa45c2368ddd938164133",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/rdc1/smokerd7_control.json": {
+   "bytes": 53878,
+   "exists": true,
+   "sha256": "a6cb3149ee3cf4a12880c8744cbc65a3f1de4dceaa37ae33dd134b664af75e38",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/rdc1/smokerd7_control.jsonl": {
+   "bytes": 1236,
+   "exists": true,
+   "sha256": "29c1fb2a8c0c967b248bbd3c15fde0caa4d125631c9125a65499fbcd866eda0d",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/rdc1/smokerd8_control.json": {
+   "bytes": 36339,
+   "exists": true,
+   "sha256": "9ab5bc0ce1ff89e1de1119467d23cbdb34052ff1fd78f3e9cfdf69b73971144b",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/rdc1/smokerd8_control.jsonl": {
+   "bytes": 293,
+   "exists": true,
+   "sha256": "2dd79e813576002b5e588aaad1cb57aee4c67572078fa960a0a23761004a97db",
+   "source": "results",
+   "tracked": true
   },
   "logs/refactor-2026-08-11/run.marker.json": {
    "bytes": 361,

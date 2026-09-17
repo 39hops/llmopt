@@ -77002,3 +77002,199 @@ tampered comparison-vector sha -> NOT-RUN; wall cap), the analytic-v-
 realized check in the smoke receipt, review, full suite, commit and
 push, booked as AMENDMENT -INSTRUMENT. Then return for the separate
 target-run GO.
+
+## AMENDMENT RANDOM-DIRECTION-CONTROL-1-INSTRUMENT: instrument implemented, reviewed and smoked on a fresh non-target arena (full mechanism, construction refusal, zero-group refusal, comparison-vector drift, BAR 0 abort, wall cap twice); BAR 3 report-only label DIRECTION-LATE-UNRESOLVED added prospectively; disk cleanup with a verified prune manifest (2026-09-17, Mac, zero target training, nothing armed)
+
+Target: PRE-REG RANDOM-DIRECTION-CONTROL-1 (RESULTS L76553) as amended
+by AMENDMENT -PRE-INSTRUMENT (L76847). Artin decisions 2026-09-17
+07:23 and 08:00 EDT: implement, smoke the construction path, verify
+analytic K dm against actual first-step writes, tests / review / full
+suite, commit and push; the disk cleanup below; the BAR 3 wording
+fix; the extra fail-closed construction smoke. The target run needs a
+separate GO. Nothing armed.
+
+### 1. Instrument (scratch/random_direction_control.py; launcher scratch/rdc1_launch.sh; tests/test_random_direction_control.py, 13)
+
+Thin sibling of scratch/first_moment_erasure_ladder2.py (L2): pins =
+L2's set + L2's own source (8c274990...) + the locked FMEL2 receipt
+(0faffc61...); a mismatch refuses at import. Registered mode
+MODE=control, in order: provenance (five locked receipt shas against
+the source literals and the lock, anchor, leg digests, disk floor 16
+GiB, the 12 comparison-vector file shas against the FMEL2 receipt
+before any state exists); one desk bind that is never stepped (the
+clipped first-batch gradient c, the exact map K = -lr beta1 / (bc1 D),
+m, the untouched-state digest over exp_avg_sq + step counters +
+group), with ||K (-0.1 m)|| asserted against 0.1 x the locked desk
+receipt's carry norm to 1e-6 (an independent check of the K map on
+the real anchor, executed at run time); the three draws (seeds
+2026091501 / 02 / 03, torch CPU generator, float64, flat order)
+shaped per group exactly as L76847 §2 (q_perp = q - (<K q, v_M> /
+||v_M||^2) dm_M; dm_R = (||v_M|| / ||K q_perp||) q_perp), nothing
+divided by K, every group asserted present in the construction
+record; a zero or non-finite group target norm, a zero or non-finite
+projected write norm, a non-finite scale or a non-finite assembled
+vector each book PREFLIGHT-FAILED / CONSTRUCTION-UNRESOLVED before
+any preflight step, never a silently dropped group; the one-step
+preflight (fresh C h = 1 digest == locked FMEL2 C h = 1, judged first,
+mismatch NOT-RUN; then (a) magnitude to 1e-3, (b) |cos| to dW_M(1)
+<= 0.05, (c) group shares to 0.01, (d) pairwise |cos| <= 0.05, (e)
+untouched-state digest equal to the desk bind's for every arm) with
+the targets DERIVED from the sha-pinned e1e-1 h = 1 snapshot against
+the fresh C; analytic-v-realized residuals per arm (against the
+intended float64 dm_R and against the realized float32 exp_avg
+delta), M's own analytic-v-realized residual, the optimizer-state
+scale (total / per-group ||dm_R|| / ||dm_M||, max and 0.5 / 0.9 /
+0.99 / 0.999 quantiles of |dm_R|), the per-group write-metric
+effective dimension and the zero-variance coordinate count, all
+descriptive; four long legs (C, R1, R2, R3) through long_leg_r =
+L1.long_leg with the intervention call replaced by apply_dm (exp_avg
+<- float32(float64(exp_avg) + dm_R)) and C qualified at all 12 grid
+horizons (BAR 0; the copy's source identity with L1 is guarded by a
+test), every arm's h = 1 digest and realized-delta digest equal to
+its preflight values; readouts per horizon against the comparison
+vectors (digest-asserted at every load, never resumed): G_r, G_M,
+A_r = G_r / G_M, n, cos to M, pairwise, rotation (beside the locked
+rot_M), shares, dCE, ||dW_M(h)|| against the locked FMEL2 abs (an
+identity when C is bit-exact); substrate readouts as FMEL2;
+descriptive gates on C / R1 / R2 / R3; BAR 2 first-match bands
+[1/2, 2] / <= 1/4 / >= 4 with REGIME-UNRESOLVED on any UNDEFINED
+A_r(H) or a failed preflight; BAR 3 reported; BAR 4 absolute 0.005;
+BAR 5 tail. The mechanical 25,200 s cap is L2's (byte-identical
+install_wall_limit), armed at the top of main; in SMOKE it is
+re-armed with the remaining budget after the arena build (L2's
+receipt write disarms the alarm). MODE must agree with the SMOKE
+flag. Refuse-if-exists on the receipt, the stream and any snapshot
+under checkpoints/rdc1 (checkpoints/rdc1_smoke in SMOKE).
+
+Tests: pins and locked receipts; BAR 0 references and comparison-
+vector records read from the receipt with torch.load forbidden;
+the K map exact (1e-9) against a real torch AdamW step in float64
+and K independent of exp_avg; the float32 one-rounding law (realized
+delta = one float32 rounding of the float64 sum, residual non-zero
+and bounded by half an ulp); construction norm / shares /
+orthogonality to 1e-12, zero-K harmlessness (division-free),
+UNDEFINED on a zero group target, a non-finite K, a non-finite draw
+and a zero projected write; preflight law and each refusal (magnitude,
+orthogonality, locus, independence, dead target, dead arm) and the
+disposition order; growth and the zero-norm law (never NaN); BAR 2 /
+3 / 4 bands with boundary cases and a missing arm; the long_leg_r
+source identity against L1 (declared substitutions only) and the
+wall-cap functions against L2; arena literals, no writer-B path, the
+display literal recorded once and never compared, no rounded share
+literal in the source; real-mode constants in a subprocess (25200
+fixed under every override variable, every SMOKE knob guarded by
+`SMOKE and`); refuse-if-exists; the SIGALRM handler interrupting
+active work.
+
+### 2. BAR 3 wording (prospective; Artin 2026-09-17)
+
+A terminal UNDEFINED cosine to the moment-axis deviation books the
+report-only label DIRECTION-LATE-UNRESOLVED in the BAR 3 readout. It
+is descriptive only: no effect on the BAR 2 regime, the BAR 4
+function label, REFUTED-IF or the rung verdict. REGIME-UNRESOLVED
+stays reserved for the registered rung-level conditions (a failed
+preflight, an UNDEFINED terminal A_r(H)).
+
+### 3. Review
+
+Opus reviewer (read-only) on the instrument, tests and launcher: no
+blocker. Folded: the substrate-readout local that shadowed the
+intervention vector inside the leg copy (renamed, added to the
+declared substitutions); a float32 twin of the K-map test (the
+one-rounding law was untested); the desk flats freed before the legs
+(about 0.6 GB); the MODE / SMOKE agreement assert; the display
+literal's source named in a comment. Noted and carried: the BAR 3
+label (§2); the cap is armed after the sub-second refuse-if-exists
+checks (a failure there precedes any artifact and writes no receipt);
+exit 4 on the grace hard-exit is inherited from AMENDMENT L76267.
+
+### 4. Smokes (path-isolated; synthetic non-target arena; receipts named exactly)
+
+Arena rd2 (fresh: OMA smoke anchors + Stage 0 + desk + FME1 + the
+FMEL1 refusal preflight + the FMEL2 smoke ladder, DONE in 304 s,
+whose e1e-1 snapshots are the smoke comparison vectors):
+logs/oma1/smokerd2_desk_bar1.json, logs/oma1/smokerd2_desk-bar1.jsonl,
+logs/oma1/smokerd2_stage0.json, logs/oma1/smokerd2_stage0.jsonl,
+logs/fme1/smokerd2_treat.json, logs/fme1/smokerd2_treat.jsonl,
+logs/fmel1/smokerd2_ladder.json, logs/fmel2/smokerd2_ladder.json,
+logs/fmel2/smokerd2_ladder.jsonl.
+- rd2, full mechanism (logs/rdc1/smokerd2_control.json,
+  logs/rdc1/smokerd2_control.jsonl): DONE in 421.5 s; cap re-armed at
+  24,834 s after the arena build; K map v the smoke desk carry norm
+  rel 1.3e-16; preflight PASS on the realized quantities: magnitude
+  ratios 0.99999922 / 0.99999950 / 0.99999949, |cos| to M 9.7e-7 /
+  1.0e-6 / 5.8e-7, max share gap 1.0e-6 / 6.2e-7 / 6.1e-7, pairwise
+  |cos| 3.1e-4 / 1.5e-3 / 1.0e-3, untouched state equal for every
+  arm, fresh C h = 1 == the smoke FMEL2 C h = 1; realized dW_r(1)
+  against K dm_r: 1.6e-3 relative for every arm (cos 1.0), and the
+  moment-axis arm's own realized-v-analytic residual 1.9e-3 on this
+  arena (float32 write rounding of the synthetic arena; FMEL2's
+  real-arena figure was 3.3e-7); realized exp_avg delta v intended
+  2.4e-6 to 2.5e-6; ||dm_R|| / ||dm_M|| 0.103 (blocks 0.139 to 0.157,
+  OUTSIDE below 1e-3 because 4,224 zero-variance coordinates in
+  OUTSIDE carry K at its ceiling: n_eff 3,079 there v 47,750 to
+  77,536 in the blocks); BAR 0 C bit-exact at all three smoke
+  horizons, ||dW_M(h)|| equal to the locked smoke FMEL2 abs to 0.0
+  and rot_M equal to the locked value; four legs, readouts, gates
+  (n = 2), adjudication ran to DONE (the smoke label is meaningless
+  scientifically and is not read).
+- rd3, construction refusal (logs/rdc1/smokerd3_control.json;
+  SMOKE_TAMPER_CONSTRUCTION adds 0.3 dm_M after the projection):
+  PREFLIGHT-FAILED / CONSTRUCTION-UNRESOLVED, exit 3, zero legs.
+- rd4, zero group target (logs/rdc1/smokerd4_control.json;
+  SMOKE_TAMPER_ZERO_GROUP zeroes exp_avg in OUTSIDE for the
+  construction): PREFLIGHT-FAILED / CONSTRUCTION-UNRESOLVED before
+  any preflight step, the failing group named, exit 3, zero legs.
+- rd5, comparison-vector drift (logs/rdc1/smokerd5_control.json;
+  SMOKE_TAMPER_M): NOT-RUN "comparison-vector snapshot missing or
+  drifted" before any state, exit 3.
+- rd6, BAR 0 abort (logs/rdc1/smokerd6_control.json,
+  logs/rdc1/smokerd6_control.jsonl; SMOKE_TAMPER_REF): NOT-RUN at
+  h = 2 of the C leg, no further arm, exit 3.
+- rd7 and rd8, wall cap (logs/rdc1/smokerd7_control.json,
+  logs/rdc1/smokerd7_control.jsonl, logs/rdc1/smokerd8_control.json,
+  logs/rdc1/smokerd8_control.jsonl; SMOKE_MAX_WALL_S 95 and 81):
+  NOT-RUN with the interrupted phase (gates; leg:R1), exit 3, no DONE
+  marker, the completed-arm snapshots kept, the partial stream kept.
+- rd1 (logs/rdc1/smokerd1_control.json and the partial rd1 arena
+  receipts logs/oma1/smokerd1_desk_bar1.json,
+  logs/oma1/smokerd1_desk-bar1.jsonl, logs/oma1/smokerd1_stage0.json,
+  logs/oma1/smokerd1_stage0.jsonl, logs/fme1/smokerd1_treat.json,
+  logs/fme1/smokerd1_treat.jsonl, logs/fmel1/smokerd1_ladder.json,
+  logs/fmel2/smokerd1_ladder.json): the first attempt, refused by the
+  arena chain's own 16 GiB disk preflight at 13.1 GiB free (NOT-RUN,
+  exit 3); kept as the record of the refusal.
+Smoke checkpoint trees (checkpoints/oma1_smoke, fme1_smoke,
+fmel1_smoke, fmel2_smoke, rdc1_smoke) are exhaust, deleted after
+this booking.
+
+### 5. Disk cleanup (Artin 08:00 EDT; manifest logs/atomtraj1/prune_manifest_main.json)
+
+Before deletion the repaired canonical ATOM-DIET-TRAJECTORY-1 set in
+the repair worktree was verified against the locked repaired receipt
+logs/atomtraj1_repair/births.jsonl: 108 / 108 files (six births x 17
+snapshots + final) present with file sha256 and state digest equal;
+verdict VERIFIED. The manifest then records path / bytes / sha256 /
+state digest for the 108 files of the main-worktree
+checkpoints/atomtraj1 copy (all 108 equal to the first-run receipt
+logs/atomtraj1/births.jsonl shas; 7.61 GB; the first-run
+NOT-ADJUDICABLE record stays in its locked receipts) and per-file
+bytes / sha256 for the deleted exhaust (checkpoints/oma1_smoke 2.25
+GB, fme1_smoke 0.56 GB, writercaf1_smoke 1.48 GB, the attempt-1 and
+attempt-2 atomtraj1_smoke directories 0.63 GB each), then deleted
+them. Free space 13.1 -> 26.2 GiB. Not deleted: logs/qwenteacher_v2,
+logs/mathworld1, logs/opus; checkpoints/fmel2, checkpoints/fme1,
+checkpoints/oma1/A/C stay through the RDC1 booking.
+
+### 6. Fences and what is still owed
+
+The smoke arena is synthetic (seed-6 W_0 + 3 warm steps, grid 1 / 2
+/ 3): it proves the mechanism and the refusals, not the target
+anchor's numbers. On the target anchor the construction preflight is
+the authority and its failure costs the rung's one shot (L76553 stop
+law (d)); the float32 state-rounding bound of L76847 §2 and FMEL2's
+measured write rounding (3.3e-7) leave three orders of margin under
+the 1e-3 magnitude tolerance. The run's disk preflight (16 GiB) now
+passes (26.2 GiB free; the run writes about 4.2 GB). Full suite
+green; receipts force-added and locked; nothing armed. Next: Artin GO
+for the target run (`bash scratch/rdc1_launch.sh`, liverun rdc1).

@@ -193,10 +193,21 @@ def test_construction_law_matches_norm_shares_orthogonality_without_division(mod
     K0 = K.copy(); K0[:200] = 0.0
     dm0, rec0 = mod.construct(q, K0, m, SEGS)
     assert dm0 is not None and np.all(np.isfinite(dm0)) and rec0["undefined"] == {} and abs(np.linalg.norm(K0 * dm0) / np.linalg.norm(K0 * (-0.1 * m)) - 1) < 1e-12
-    # a group with a zero moment-axis write cannot be matched: UNDEFINED with a reason, never NaN
+    # a group with a zero moment-axis write cannot be matched: UNDEFINED with a reason, never NaN, never a silently dropped group
     mz = m.copy(); mz[1200:] = 0.0
     dmz, recz = mod.construct(q, K, mz, SEGS)
     assert dmz is None and "OUTSIDE" in recz["undefined"] and "nan" not in json.dumps(recz).lower()
+    # non-finite group target norm (K non-finite in a group) and non-finite projected write (q non-finite) both fail closed
+    Kn = K.copy(); Kn[1200] = float("inf")
+    dmn, recn = mod.construct(q, Kn, m, SEGS)
+    assert dmn is None and "OUTSIDE" in recn["undefined"] and "nan" not in json.dumps(recn).lower()
+    qn = q.copy(); qn[3] = float("nan")
+    dmq, recq = mod.construct(qn, K, m, SEGS)
+    assert dmq is None and "BLOCK0" in recq["undefined"] and "nan" not in json.dumps(recq).lower()
+    # a random draw whose projected write is exactly zero in a group (q parallel to dm_M there) fails closed
+    qz = q.copy(); qz[1200:] = (-0.1 * m)[1200:]
+    dmp, recp = mod.construct(qz, K, m, SEGS)
+    assert dmp is None and "OUTSIDE" in recp["undefined"]
     # seed reproducibility and independence of the frozen draws
     a, b, c2 = mod.draw(2026091501, 5000), mod.draw(2026091501, 5000), mod.draw(2026091502, 5000)
     assert np.array_equal(a, b) and not np.array_equal(a, c2) and a.dtype == np.float64 and mod.flat_digest(a) == mod.flat_digest(b)
@@ -294,7 +305,7 @@ def test_bar2_bar3_bar4_bands_and_boundaries(mod):
     assert (mod.GENERIC_BAND, mod.SPECIFIC_MAX, mod.DOMINANT_MIN) == ((0.5, 2.0), 0.25, 4.0)
     Dn = mod.direction
     assert Dn(_A(0.5, -0.9, 0.7)) == "DIRECTION-SHARED-LATE" and Dn(_A(0.25, -0.1, 0.0)) == "DIRECTION-INDEPENDENT-LATE"
-    assert Dn(_A(0.3, 0.1, 0.0)) == "MIXED-DIRECTION" and Dn(_A(0.5, 0.2, 0.6)) == "MIXED-DIRECTION" and Dn(_A(0.5, None, 0.6)) == "DIRECTION-UNRESOLVED"
+    assert Dn(_A(0.3, 0.1, 0.0)) == "MIXED-DIRECTION" and Dn(_A(0.5, 0.2, 0.6)) == "MIXED-DIRECTION" and Dn(_A(0.5, None, 0.6)) == "DIRECTION-LATE-UNRESOLVED" and Dn(_A(0.5, float("nan"), 0.6)) == "DIRECTION-LATE-UNRESOLVED"
     assert (mod.SHARED_LATE, mod.INDEP_LATE, mod.H_AMP_G) == (0.50, 0.25, 10.0)
     per, lab = mod.function_bar({"R1": 0.004, "R2": -0.005, "R3": 0.0})
     assert lab == "FUNCTION-NEUTRAL" and all(v == "NEUTRAL" for v in per.values())

@@ -1,0 +1,8 @@
+{
+ "status": "NOT-RUN",
+ "regime": "NOT-RUN",
+ "prereg": "RANDOM-DIRECTION-CONTROL-1",
+ "label": "NOT-RUN (refused: DISK PREFLIGHT REFUSED: 13.1 GiB free < 16 GiB; phase setup)",
+ "wall_s": 331.4,
+ "ended_utc": "2026-09-17T11:47:05+00:00"
+}
