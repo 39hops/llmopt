@@ -5323,6 +5323,42 @@ QWEN-WHOLE-0T compiler (PRE-REG RESULTS L32776 + -0T-ARMS).
 - `enc_s16(W, name)`
 - `main()`
 
+### scratch/random_direction_control.py
+RANDOM-DIRECTION-CONTROL-1 instrument (PRE-REG RESULTS L76553, AMENDMENT -PRE-INSTRUMENT L76847): the family's direction control on writer A at the validated A@7200 arena. FOUR fresh continuous CPU-deterministic legs 7201..15420: the native control C (asserted bit-exact against the locked FMEL2 C at all 12 grid horizons) and three seeded random exp_avg perturbations R1 / R2 / R3, compared against the booked FMEL2 eps = 1e-1 moment-axis arm M, whose 12 snapshots are LOCKED COMPARISON VECTORS (file sha and state digest asserted against logs/fmel2/ladder.json before use; never resumed as state). Writer A only; no writer-B code path.
+
+- `draw(seed, d)` — q ~ N(0, I) in float64 exp_avg coordinates, flat order, from a CPU torch.Generator seeded with the frozen seed.
+- `flat_digest(x)`
+- `k_map(opt, model, c, segs, d, step_next, grp, eps=ADAM_EPS)` — K = -lr beta1 / (bc1 D) elementwise (float64 flat), D = sqrt((beta2 v + (1 - beta2) c^2) / bc2) + eps, from the bound
+- `k_stats(K, zero_v, segs)` — Descriptive: per-group write-metric effective dimension n_eff = (sum K^2)^2 / sum K^4, zero-variance coordinate count, |K| range.
+- `construct(q, K, m, segs, m_eps=M_EPS)` — AMENDMENT L76847 per group: dm_M = -m_eps m, v_M = K dm_M; q_perp = q - (<K q, v_M> / ||v_M||^2) dm_M;
+- `dm_quantiles(dm)`
+- `untouched_digest(opt, model, segs)` — sha256 over exp_avg_sq bytes and the Adam step counters in flatten order plus the group record: the state the intervention
+- `apply_dm(opt, model, dm, segs, d)` — exp_avg <- float32(float64(exp_avg) + dm) on every tensor (dm None = control, nothing touched). Returns (tensors touched,
+- `preflight_law(dev, devM, shares, sharesM)` — BAR 1 on the realized one-step deviations: dev = {arm: flat}, devM the moment-axis flat, shares / sharesM the group shares.
+- `horizon_metrics(W0, WC, W, WM)` — Per-horizon readouts from flats: W0 anchor, WC fresh control, W = {R arm: flat}, WM the locked moment-axis snapshot.
+- `growth(metrics_by_h)` — Fill G_r(h) = ||dW_r(h)|| / ||dW_r(1)||, G_M(h) and A_r(h) = G_r / G_M in place; UNDEFINED when a h = 1 norm is zero / missing.
+- `regime(A_H, preflight_ok)` — BAR 2 at H, first match wins: REGIME-UNRESOLVED / DIRECTION-GENERIC / MOMENT-SPECIFIC / RANDOM-DOMINANT / MIXED.
+- `direction(cosM_H)` — BAR 3 (reported): DIRECTION-SHARED-LATE / DIRECTION-INDEPENDENT-LATE / MIXED-DIRECTION; UNDEFINED -> DIRECTION-UNRESOLVED.
+- `h_amp(G_by_h)` — First grid h with G >= H_AMP_G over {h: G} (UNDEFINED horizons skipped); None = not reached.
+- `label(reg, dirlab, func)`
+- `preflight_disposition(pf_ok, bypass, c_digest_match)` — Early returns after the one-step preflight: a fresh C h = 1 digest differing from the locked FMEL2 C digest is a substrate
+- `reference_digests(fmel2, horizons=None)` — BAR 0 references from the LOCKED FMEL2 receipt only: {"C": {h: state digest}} at every grid horizon, and the M snapshot
+- `verify_m_files(mrefs)` — File sha of every comparison-vector snapshot against the locked receipt (a pure read; digests are asserted when loaded).
+- `load_m(mrefs, h)`
+- `assert_fmel2_provenance(fmel2, lock, stage0, fme1, fmel1, horizons=None)` — The FMEL2 receipt this rung pins: sha equal to the source literal and the lock; bound to the same Stage-0 / FME1 / FMEL1
+- `class WallLimit`
+- `install_wall_limit(limit_s=None, receipt=None, rec=None)` — Arm the registered wall cap: SIGALRM at `limit_s` raises WallLimit (caught by main, which books NOT-RUN and exits 3); a
+- `set_phase(name)`
+- `wall_label()`
+- `wall_record(hard_exit=False)`
+- `desk_bind(tok, enc, slices, segs, d)` — One bind that is never stepped: the clipped first-batch gradient c, the K map, m, the untouched-state digest and the group
+- `one_step_r(dm, tok, enc, slices, segs, d, untouched_ref)` — Preflight: fresh bind, intervention, exactly one step on the first future slice. Returns (flat, digest, binfo, touched, group,
+- `long_leg_r(arm, dm, tok, enc, slices, segs, d, held, refs, preflight_digest, stream, cell, mid)` — L1.long_leg with apply_eps(opt, eps) replaced by apply_dm(opt, model, dm, segs, d) and the C qualification at every grid
+- `mode_control(tok, enc, starts, info, segs, d, held, rec, stream)`
+- `main()`
+- `_write_receipt(rec, t0)`
+- `_setup_and_run(rec, armed_s)`
+
 ### scratch/rank_read.py
 Rank read (pre-reg 2026-07-29: attention anatomy 1b). SVD of all qkv/o weights of the d56 EMA crystal: singular-value decay, then truncation gates at rank r in {48,32,24,16}. Desk only, MPS.
 
