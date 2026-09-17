@@ -4,7 +4,7 @@
  "note": "Machine-readable form of PRE-REG RANDOM-DIRECTION-CONTROL-1 (RESULTS L76553; the prose governs). DESIGN ONLY (Artin decision 2026-09-15 22:05 EDT). No instrument, no launch; implementation and the target run each need a separate Artin GO.",
  "registered": "2026-09-15 (Mac local)",
  "machine": "mac",
- "status": "DESIGN ONLY, unarmed (no instrument written)",
+ "status": "AMENDED (-PRE-INSTRUMENT); implementation GO given 2026-09-17, instrument pending; unarmed",
  "question": "Is the late amplification / decorrelation after a first-moment perturbation specific to the optimizer-memory direction, or does a perturbation of the same first-step write magnitude and locus but unrelated direction amplify comparably?",
  "writer": "A only: stock OneCycle seed 2, checkpoints/phase19m/m007200.pt (sha256 a0cdf244fcf44f05...), Adam step 7200, one seed lineage, byte-identical future stream",
  "continuation": {
@@ -31,15 +31,16 @@
   "R3": 2026091503
  },
  "construction": {
-  "map": "delta_w = K * delta_m elementwise, K = -lr beta1 / (bc1 D), D = sqrt((beta2 v + (1 - beta2) c^2) / bc2) + 1e-8, c = clipped first-batch gradient; K independent of m and identical across arms",
-  "steps": [
-   "draw g ~ N(0, I) float64 over the 18,911,616 flat coordinates from torch.Generator('cpu').manual_seed(seed)",
-   "LOCUS: rescale per group so the 9 group energy shares equal the locked FMEL2 e1e-1 h = 1 profile p_M",
-   "ORTHOGONALITY: remove the delta_w_M component within each group, re-apply the locus rescale",
-   "MAGNITUDE: scale to ||delta_w_M|| = 0.0124086 (locked FMEL2 e1e-1 abs(1))",
-   "INVERT: delta_m = delta_w / K (float64), added to exp_avg in float32; exp_avg_sq, step, weights, scheduler, stream untouched"
+  "map": "delta_w = K * delta_m elementwise, K = -lr beta1 / (bc1 D), D = sqrt((beta2 v + (1 - beta2) c^2) / bc2) + 1e-8, c = clipped first-batch gradient; K independent of exp_avg and identical across arms; never divided by",
+  "reference": "dm_M = -0.1 m (anchor exp_avg, float64); analytic write v_M = K * dm_M",
+  "per_group_steps": [
+   "draw q ~ N(0, I) float64 in EXP_AVG coordinates over the 18,911,616 flat coordinates from torch.Generator('cpu').manual_seed(seed), one draw per seed in flat order; take the group's slice",
+   "project under the write metric: q_perp = q - (<K q, v_M> / ||v_M||^2) * dm_M  (K q_perp orthogonal to v_M within the group, exactly)",
+   "scale under the write metric: dm_R = (||v_M|| / ||K q_perp||) * q_perp  (||K dm_R|| = ||v_M|| within the group)",
+   "apply exp_avg <- float32(float64(exp_avg) + dm_R); exp_avg_sq, step, weights, scheduler, stream untouched"
   ],
-  "p_M": {
+  "targets": "DERIVED at run time: dW_M(1) = W_M(1) - W_C(1) from the sha-pinned FMEL2 e1e-1 h = 1 snapshot and the fresh C h = 1 state (digest == locked FMEL2 C h = 1); its norm and nine group shares are the preflight targets; the rounded L76553 values are display references only",
+  "p_M_display_only": {
    "BLOCK0": 0.1117,
    "BLOCK1": 0.1277,
    "BLOCK2": 0.1255,
@@ -50,13 +51,20 @@
    "BLOCK7": 0.1339,
    "OUTSIDE": 0.0016
   },
-  "write_norm_target": 0.012408559997086078,
-  "descriptive": "||delta_m_r|| / ||delta_m_M|| recorded, not matched"
+  "write_norm_display_only": 0.012408559997086078,
+  "analytic_v_realized": "per arm: ||dW_r(1) - K dm_r|| / ||K dm_r|| with dm_r the realized float32 exp_avg delta (and with the intended float64 dm_R); for M: ||dW_M(1) - v_M|| / ||v_M||; recorded, no bar",
+  "state_rounding_desk_bound": "write-space image of the exp_avg rounding <= 10 * 2^-24 |v_M,i| per coordinate, <= 6e-7 of the matched norm in total (three orders below the 1e-3 tolerance)",
+  "descriptive": [
+   "total and per-group ||dm_R|| / ||dm_M||",
+   "max |dm_R| and the 0.5 / 0.9 / 0.99 / 0.999 quantiles of |dm_R| per arm",
+   "per-group write-metric effective dimension n_eff = (sum K^2)^2 / sum K^4 and the count of coordinates with exp_avg_sq = 0"
+  ],
+  "withdrawn": "L76553's isotropic draw in write space inverted by delta_m = delta_w / K (inverse-preconditions the draw; withdrawn by this amendment)"
  },
  "preflight": {
-  "a_magnitude": "| ||dW_r(1)|| / 0.0124086 - 1 | <= 1e-3",
+  "a_magnitude": "| ||dW_r(1)|| / ||dW_M(1)|| - 1 | <= 1e-3  (||dW_M(1)|| derived from the sha-pinned snapshot)",
   "b_orthogonality": "|cos(dW_r(1), dW_M(1))| <= 0.05",
-  "c_locus": "max_G |share_r,G(1) - p_M,G| <= 0.01",
+  "c_locus": "max_G |share_r,G(1) - share_M,G(1)| <= 0.01  (share_M derived from the sha-pinned snapshot)",
   "d_independence": "|cos(dW_r(1), dW_r'(1))| <= 0.05 for every pair",
   "e_untouched": "exp_avg_sq digest, step counters, scheduler group equal to the control's before the first step; fresh C h = 1 digest == locked FMEL2 C h = 1",
   "failure": "label CONSTRUCTION-UNRESOLVED, stop before any long leg, NOT-ADJUDICABLE, no relaunch without amendment"
@@ -114,8 +122,8 @@
   "label": "(BAR 2, BAR 3, BAR 4) [writer A only, one anchor, one seed lineage, CPU deterministic, write-norm 0.0124 = FMEL2 eps 1e-1; gate descriptive]"
  },
  "refuted_if": {
-  "moment_axis_memory": "BAR 2 books DIRECTION-GENERIC",
-  "generic_amplification": "BAR 2 books MOMENT-SPECIFIC"
+  "moment_axis_specificity": "BAR 2 books DIRECTION-GENERIC: refutes the SPECIFICITY of the late amplification to the first-moment axis; does NOT refute the booked FME1 claim that first-moment erasure causally sets the initial branch; licenses at most 'late amplification is compatible with direction-generic sensitivity within these three locus-matched random controls on this arena'; never 'optimizer memory did not matter', never generalized to arbitrary weight-space directions",
+  "generic_amplification": "BAR 2 books MOMENT-SPECIFIC: specific RELATIVE TO THIS REGISTERED RANDOM-DIRECTION PANEL (three seeds, one locus profile, one write norm), not against all directions"
  },
  "priors": [
   {
@@ -207,8 +215,8 @@
   "no threshold moved after any random leg exists"
  ],
  "consequences": {
-  "direction_generic": "AMENDMENT re-reading the FME1 / FMEL2 late separations as generic amplification; moment-axis lead closes on this arena; census unbanked for design",
-  "moment_specific": "moment-axis lead stands; bank OPTIMIZER-MEMORY-CROSSFOSTER-1; census stays banked",
+  "direction_generic": "AMENDMENT re-reading the FME1 / FMEL2 LATE separations (not the initial branch) as compatible with direction-generic amplification on this arena; census unbanked for design",
+  "moment_specific": "moment-axis lead stands relative to this panel; bank OPTIMIZER-MEMORY-CROSSFOSTER-1; census stays banked",
   "random_dominant": "book; bank a random direction WITHOUT locus matching",
   "mixed": "book, Artin decision",
   "never": "writer B; second anchor; reopening OMA1 / FMEL1 / FMEL2; variance reset; float64; cross-foster under this rung"
@@ -218,5 +226,14 @@
   "instrument scratch/random_direction_control.py (thin sibling of scratch/first_moment_erasure_ladder2.py) + tests + smokes + review + full suite + commit (separate GO)",
   "Artin GO for the target run: bash scratch/rdc1_launch.sh under liverun rdc1",
   "receipt-auditor + prereg-auditor before booking; /fold-book"
- ]
+ ],
+ "amendments": [
+  {
+   "name": "RANDOM-DIRECTION-CONTROL-1-PRE-INSTRUMENT",
+   "results_line": 76847,
+   "date": "2026-09-17",
+   "summary": "random directions drawn in exp_avg space and matched under the exact first-step write metric (no division by K); h = 1 targets derived from the sha-pinned FMEL2 snapshots; descriptive optimizer-state-scale readouts; REFUTED-IF / consequence wording narrowed; no threshold, band or prior changed"
+  }
+ ],
+ "disk_note_2026_09_17": "15.8 GiB free at the amendment, below the 16 GiB run preflight floor; the run's disk preflight refuses at launch as designed; no pruning under this decision"
 }

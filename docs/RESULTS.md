@@ -76843,3 +76843,162 @@ bit-exact reproduction of the FMEL2 C (BAR 0) and is void without it.
 2. Artin GO for the target run: `bash scratch/rdc1_launch.sh` under
    liverun rdc1 at the committed HEAD.
 3. receipt-auditor and prereg-auditor before booking; /fold-book.
+
+## AMENDMENT RANDOM-DIRECTION-CONTROL-1-PRE-INSTRUMENT: the random directions are drawn in exp_avg space and matched under the exact first-step write metric without dividing by K; the h = 1 targets derive from the sha-pinned FMEL2 snapshots; REFUTED-IF and consequence wording narrowed (2026-09-17, Mac, before any instrument; nothing armed)
+
+Target: PRE-REG RANDOM-DIRECTION-CONTROL-1 (RESULTS L76553;
+docs/preregs/random-direction-control-1.json). Artin decision
+2026-09-17 07:23 EDT: HOLD the implementation for this narrow
+amendment; no training and no random target state before it books.
+The arena, the seeds, the horizons, BARs 0 / 2 / 3 / 4 / 5, the cost,
+the stop law and the fresh-C design are accepted as registered; the
+construction section is REPLACED as below; two descriptive readouts
+are added; the REFUTED-IF and consequence prose is narrowed. No
+threshold, band or prior changes. Implementation follows under the
+same decision (its own AMENDMENT -INSTRUMENT); the target run needs a
+separate GO.
+
+### 1. Why the registered construction is withdrawn
+
+L76553 drew each random vector isotropically in first-step WRITE
+space and inverted it through delta_m = delta_w / K. K = -lr beta1 /
+(bc1 D) is strongly coordinate-dependent (D ranges from the eps_adam
+floor 1e-8 upward), so that inversion inverse-preconditions the draw:
+the realized exp_avg perturbation can be arbitrarily anisotropic and
+arbitrarily large in coordinates where K is small while the first
+weight write is perfectly matched. That is not a control on the
+optimizer state; it is a control on the write only. Withdrawn.
+
+### 2. Construction (replacing L76553 "Intervention construction")
+
+Notation as L76553: at s = 7201 the exact first-step map is
+delta_w = K * delta_m elementwise, K = -lr beta1 / (bc1 D),
+D = sqrt((beta2 v + (1 - beta2) c^2) / bc2) + 1e-8, c the clipped
+first-batch gradient, K independent of exp_avg and identical across
+arms. The moment-axis reference is dm_M = -0.1 m (m = the anchor's
+exp_avg in float64) with analytic write v_M = K * dm_M.
+
+For each frozen seed sigma_r (2026091501 / 2026091502 / 2026091503,
+unchanged), and for each of the nine groups G (BLOCK0..7, OUTSIDE),
+restricting every vector to the group's coordinates:
+  1. draw q ~ N(0, I) in float64 EXP_AVG coordinates over the
+     18,911,616 flat coordinates from torch.Generator("cpu")
+     .manual_seed(sigma_r), one draw per seed in flat order (the
+     census flatten law), then take the group's slice;
+  2. project under the write metric:
+       q_perp = q - (<K q, v_M> / ||v_M||^2) * dm_M
+     so that K q_perp is orthogonal to v_M within G (exactly, since
+     K dm_M = v_M);
+  3. scale under the write metric:
+       dm_R = (||v_M|| / ||K q_perp||) * q_perp
+     so that ||K dm_R|| = ||v_M|| within G.
+Assembled over the nine groups, the analytic random write K dm_R has
+the same per-group write norm as the moment-axis write (hence the
+same nine group shares and the same total norm) and is orthogonal to
+it group by group (hence globally); the random measure originates in
+optimizer-state space; nothing is divided by K anywhere (K = 0 is
+harmless to the construction; K is in fact never zero). dm_R is
+computed in float64 and applied as exp_avg <- float32(float64(exp_avg)
++ dm_R) (one rounding); exp_avg_sq, the Adam step counter, the
+weights, the scheduler state and the batch stream are untouched
+(digests asserted equal to the control's before the first step, as
+registered).
+
+Targets are DERIVED, never literals. The instrument computes the
+moment-axis first-step deviation dW_M(1) = W_M(1) - W_C(1) from the
+sha-pinned FMEL2 e1e-1 h = 1 snapshot (file sha and state digest
+asserted against the locked receipt logs/fmel2/ladder.json) and the
+fresh C's h = 1 state (digest asserted equal to the locked FMEL2 C
+h = 1 digest); its norm and its nine group shares are the preflight
+targets. The rounded values in L76553 (0.0124086; 0.1117 / 0.1277 /
+0.1255 / 0.1243 / 0.1219 / 0.1243 / 0.1291 / 0.1339 / 0.0016) are
+display references only and appear in no comparison. The analytic
+v_M used inside the construction and the realized dW_M(1) differ only
+by float32 rounding of the FMEL2 write; the residual
+||dW_M(1) - v_M|| / ||v_M|| is recorded descriptively (expected at
+the 1e-6 level: FMEL2's R(1e-1) at h = 1 was 1 + 3.3e-7).
+
+Analytic v realized, verified in the instrument. For every random
+arm the receipt records ||dW_r(1) - K dm_r|| / ||K dm_r|| with dm_r
+the REALIZED float32 exp_avg delta (new minus old, in float64), so
+the check isolates the write path from the state rounding, and the
+same residual with the intended float64 dm_R. Desk bound on the state
+rounding (stated, not measured): rounding the exp_avg addition loses
+at most half an ulp per coordinate, |err_i| <= 2^-24 |m_i|, whose
+write-space image is |K_i err_i| <= 2^-24 |K_i m_i| = 10 * 2^-24
+|v_M,i|, i.e. at most 6e-7 of the matched write norm in total: three
+orders below the 1e-3 magnitude tolerance. The registered one-step
+preflight remains the authority for every bar.
+
+### 3. Descriptive readouts added (no bar reads them)
+
+- optimizer-state scale: total and per-group ||dm_R|| / ||dm_M||;
+  max |dm_R| and the 0.5 / 0.9 / 0.99 / 0.999 quantiles of |dm_R|,
+  per arm (cheap: one pass over the flat vector);
+- the write-metric effective dimension per group,
+  n_eff,G = (sum K^2)^2 / sum K^4 over G, and the count of
+  coordinates with exp_avg_sq = 0 (where K sits at its eps_adam
+  ceiling lr beta1 / (bc1 1e-8)); an isotropic exp_avg draw puts its
+  write energy where K is large, and these two numbers say how
+  concentrated that is.
+
+### 4. One-step preflight (unchanged law; targets now derived)
+
+  (a) magnitude: | ||dW_r(1)|| / ||dW_M(1)|| - 1 | <= 1e-3 per arm;
+  (b) orthogonality: |cos(dW_r(1), dW_M(1))| <= 0.05 per arm;
+  (c) locus: max_G |share_r,G(1) - share_M,G(1)| <= 0.01 per arm;
+  (d) independence: |cos(dW_r(1), dW_r'(1))| <= 0.05 per pair;
+  (e) untouched state: exp_avg_sq digest, step counters and scheduler
+      group equal to the control's before the first step; fresh C
+      h = 1 digest equal to the locked FMEL2 C h = 1 digest.
+Failure: CONSTRUCTION-UNRESOLVED, stop before any long leg,
+NOT-ADJUDICABLE, no relaunch without a new prospective amendment.
+Tolerances unchanged.
+
+### 5. REFUTED-IF and consequence prose (narrowed; bands unchanged)
+
+- DIRECTION-GENERIC refutes the SPECIFICITY of the late amplification
+  to the first-moment axis. It does not refute the booked FME1 claim
+  that first-moment erasure causally sets the initial branch (n_Z(1)
+  = the analytic 0.8943, linear propagation through h = 20), which
+  this rung does not test. A generic outcome licenses at most: "late
+  amplification is compatible with direction-generic sensitivity
+  within these three locus-matched random controls on this arena."
+  It must not be written as "optimizer memory did not matter", and
+  it must not be generalized to arbitrary weight-space directions
+  (the panel is three exp_avg-space draws under one locus profile
+  and one write norm).
+- MOMENT-SPECIFIC means specific RELATIVE TO THIS REGISTERED
+  RANDOM-DIRECTION PANEL (three seeds, one profile, one norm), not
+  specific against all directions.
+- The consequence list of L76553 stands with those readings
+  substituted: DIRECTION-GENERIC -> an AMENDMENT re-reading the FME1
+  / FMEL2 LATE separations (not the initial branch) as compatible
+  with direction-generic amplification on this arena, census unbanked
+  for design; MOMENT-SPECIFIC -> the moment-axis lead stands relative
+  to this panel, OPTIMIZER-MEMORY-CROSSFOSTER-1 banked; RANDOM-
+  DOMINANT and MIXED as registered.
+
+### 6. Everything else unchanged
+
+Arms (fresh C, R1..R3, M as locked comparison vectors), order,
+grid, BAR 0 (fresh C == locked FMEL2 C at all 12 horizons; M
+snapshots' shas and digests == the FMEL2 receipt), BAR 2 bands
+[1/2, 2] / <= 1/4 / >= 4, BAR 3, BAR 4 (0.005 absolute), BAR 5,
+the zero-norm law, the priors, the 25,200 s mechanical cap, the
+storage layout, the dependency graph, the stop law and the fences.
+Disk at the time of this amendment: 15.8 GiB free, below the
+registered 16 GiB preflight floor; the run's disk preflight would
+refuse at launch as designed; no pruning under this decision
+(disposition is Artin's, to be settled before the run GO).
+
+### Process under this decision
+
+Implementation now: scratch/random_direction_control.py (thin sibling
+of scratch/first_moment_erasure_ladder2.py; pins extended by that
+source and the locked FMEL2 receipt sha), tests, path-isolated smokes
+on a fresh synthetic arena (full mechanism; construction refusal;
+tampered comparison-vector sha -> NOT-RUN; wall cap), the analytic-v-
+realized check in the smoke receipt, review, full suite, commit and
+push, booked as AMENDMENT -INSTRUMENT. Then return for the separate
+target-run GO.
