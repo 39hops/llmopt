@@ -2,7 +2,7 @@
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
  "_last_accept": {
   "paths": [],
-  "reason": "PRE-REG PERTURBATION-RESPONSE-GRAM-DESK-0: smoke receipts logs/prgd0/smokes1_desk.json and logs/prgd0/smokes2_desk.json force-added and locked; logs/prgd0/desk.json declared by the prereg JSON"
+  "reason": "OBSERVATION PERTURBATION-RESPONSE-GRAM-DESK-0: logs/prgd0/desk.log and logs/prgd0/prgd0.DONE cited by full path and sha-locked with logs/prgd0/desk.json and logs/liverun/prgd0.jsonl"
  },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
@@ -1618,8 +1618,11 @@
    "tracked": true
   },
   "logs/liverun/prgd0.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 458,
+   "exists": true,
+   "sha256": "63d20252a72468bdaa31cacc15e0dc24c0c03aad7e19e3c8aa3dddd5505a1c5d",
+   "source": "results",
+   "tracked": true
   },
   "logs/liverun/rdc1.jsonl": {
    "bytes": 456,
@@ -3818,16 +3821,39 @@
    "source": "results"
   },
   "logs/prgd0/desk.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 579950,
+   "exists": true,
+   "sha256": "4c2160b41ee789134936b88d400feba0120c5619a6478c8896fb76b132f4d806",
+   "source": "results",
+   "tracked": true
   },
   "logs/prgd0/desk.log": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 3241,
+   "exists": true,
+   "sha256": "c3f030e365684ce4e43c5a08bc2176d12316e23b78f3d347906eab2c06830199",
+   "source": "results",
+   "tracked": true
   },
   "logs/prgd0/prgd0.DONE": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 5,
+   "exists": true,
+   "sha256": "8221ac66be71558c921fb44cfb66f7997699aea754d917763882d6d9eddc836e",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/prgd0/smokes1_desk.json": {
+   "bytes": 113543,
+   "exists": true,
+   "sha256": "2c70b501dc981590bb4bace5793441bd466a7441f9c1921b39e7841407180bfb",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/prgd0/smokes2_desk.json": {
+   "bytes": 9407,
+   "exists": true,
+   "sha256": "794433066b8bbb1e38bd03b7baa7d16c2b7360a881d637fc6084fbba9a6415ae",
+   "source": "results",
+   "tracked": true
   },
   "logs/qcudatower/ladder_d.json": {
    "bytes": 1232,

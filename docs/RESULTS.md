@@ -77651,3 +77651,229 @@ becomes a claim only through a later prospective pre-registration.
   expectations scored; then the keep-set proposal per the CONSEQUENCE
   amendment above and the census-v-cross-foster recommendation, each
   as a separate Artin decision.
+
+## OBSERVATION PERTURBATION-RESPONSE-GRAM-DESK-0: on the booked writer-A snapshots the four late deviations {M, R1, R2, R3} are four independent directions through h = 300 (Gram top / trace 0.25, participation rank 4.00), acquire one shared component from h = 900 on (top / trace 0.375 at 900, 0.431 at H = 8220, participation rank 3.36, within 0.01 of that in every BLOCK group from h = 3080 on), and their consecutive-window increments are window-local: every lagged cross-cosine between different windows of different arms is |cos| <= 0.09, the registered PRIMARY cell cos(D_M(300 -> 900), D_R(900 -> 1800)) is 0.014 / -0.010 / 0.002, while the SAME-window coupling is substantial and sign-indefinite in the moment axis's growth window (300 -> 900: cos to M -0.34 / -0.38 / +0.28, R1 | R2 0.64), near zero in the panel's growth window (900 -> 1800: 0.02 / 0.10 / 0.07) and uniformly positive from 1800 on (0.21 to 0.38 to M, 0.13 to 0.45 among the random arms); descriptive only, no bar, no label; expectations 2 HIT / 2 MISS of 4 (2026-09-17, Mac, liverun prgd0 at fac6231c, 45 s, zero training)
+
+Pre-registration: PRE-REG PERTURBATION-RESPONSE-GRAM-DESK-0 (RESULTS
+L77531, docs/preregs/perturbation-response-gram-desk-0.json). Artin GO
+2026-09-17 19:36 EDT (design + run). Inputs: the 48 booked RDC1
+snapshots (logs/rdc1/control.json, sha f85cc4a5...) and the 12 locked
+FMEL2 eps = 1e-1 snapshots (logs/fmel2/ladder.json, sha 0faffc61...);
+every file sha and canonical state digest asserted before any number;
+no optimizer state read; nothing trained. Receipt logs/prgd0/desk.json
+(status DONE, commit fac6231c, tree clean, wall 45.1 s, 60 snapshot
+loads); liverun prgd0 armed 23:55:21 UTC, disarmed rc 0 at 23:56:07;
+logs/prgd0/desk.log, logs/prgd0/prgd0.DONE and logs/liverun/prgd0.jsonl
+force-added and locked with the receipt; the two smoke receipts of the pre-reg commit,
+logs/prgd0/smokes1_desk.json and logs/prgd0/smokes2_desk.json, were
+force-added there but carried no lock entry (the lock generator locks
+cited paths only and the pre-reg prose named them by tag, not path;
+receipt-auditor finding), so they are cited here and locked in this
+booking. Flat law: 59 tensors, d = 18,911,616, groups
+BLOCK0..7 / OUTSIDE (7 tensors each, OUTSIDE 3), shape digest
+562b4de5...
+
+### Consistency with the locked readouts
+
+Every re-derived ||dev_a(h)|| and cos(dev_r(h), dev_M(h)) equals the
+locked RDC1 value exactly (maximum relative difference 0.0 over 12
+horizons x 4 arms; the same float64 flats, the same arithmetic).
+Expectation E1 (arithmetic from the booked cosines): top / trace at H
+0.4310 (expected about 0.43: HIT); participation rank 3.363 (the desk
+said about 3.2: the estimate was loose; the exact figure from the
+booked 4 x 4 cosine matrix is 3.36 and the instrument reproduces it).
+
+### Gram by horizon (global; eigenvalues descending, top / trace, participation rank, effective rank; random-only top / trace, PR)
+
+| h | eig | top/tr | PR | eff | RO top/tr | RO PR |
+|---|---|---|---|---|---|---|
+| 1 | 1.000 / 1.000 / 1.000 / 1.000 | 0.2500 | 4.000 | 4.000 | 0.3334 | 3.000 |
+| 5 | 1.000 / 1.000 / 1.000 / 1.000 | 0.2500 | 4.000 | 4.000 | 0.3334 | 3.000 |
+| 20 | 1.000 / 1.000 / 1.000 / 1.000 | 0.2500 | 4.000 | 4.000 | 0.3334 | 3.000 |
+| 100 | 1.002 / 1.000 / 1.000 / 0.998 | 0.2506 | 4.000 | 4.000 | 0.3334 | 3.000 |
+| 300 | 1.011 / 1.000 / 0.999 / 0.990 | 0.2528 | 4.000 | 4.000 | 0.3338 | 3.000 |
+| 900 | 1.499 / 0.981 / 0.780 / 0.740 | 0.3748 | 3.665 | 3.832 | 0.4244 | 2.868 |
+| 1800 | 1.582 / 1.056 / 0.826 / 0.537 | 0.3954 | 3.488 | 3.720 | 0.5266 | 2.526 |
+| 3080 | 1.638 / 0.950 / 0.826 / 0.586 | 0.4096 | 3.469 | 3.721 | 0.4902 | 2.659 |
+| 4500 | 1.720 / 0.895 / 0.817 / 0.569 | 0.4299 | 3.369 | 3.668 | 0.5117 | 2.592 |
+| 6000 | 1.726 / 0.892 / 0.817 / 0.565 | 0.4316 | 3.360 | 3.663 | 0.5138 | 2.584 |
+| 7200 | 1.725 / 0.893 / 0.817 / 0.565 | 0.4312 | 3.362 | 3.664 | 0.5134 | 2.585 |
+| 8220 | 1.724 / 0.894 / 0.817 / 0.565 | 0.4310 | 3.363 | 3.664 | 0.5133 | 2.586 |
+
+Cosine matrices (M, R1, R2, R3): at 900 the off-diagonals are
+-0.21 / -0.24 / +0.12 (M to R), +0.25 / -0.06 / -0.05 (R1|R2, R1|R3,
+R2|R3); at 1800 0.02 / 0.08 / 0.07 and 0.45 / -0.24 / -0.15; at H
+0.18 / 0.24 / 0.22 and 0.39 / 0.26 / 0.14. The top eigenvector
+(unregistered arithmetic on the registered cosine matrix, descriptive)
+is a CONTRAST at 900 (-0.56, +0.55, +0.57, -0.25: M and R3 against
+R1 and R2), a random-panel mode at 1800 (-0.06, -0.66, -0.62, +0.42;
+M almost absent) and a common mode at H (-0.45, -0.56, -0.54, -0.44,
+all one sign). The spectra are settled from h = 4500 on (top / trace
+0.430 to 0.432, the same as the booked norms and cosines).
+
+Per group: from h = 3080 on every BLOCK group is within 0.006 of the
+global top / trace (at H: BLOCK0..7 0.434 / 0.431 / 0.430 /
+0.429 / 0.430 / 0.435 / 0.432 / 0.425, PR 3.34 to 3.39; OUTSIDE 0.464,
+PR 3.18); the onset differs by depth at h = 900 (BLOCK0..4 0.38 to
+0.40, BLOCK5 0.37, BLOCK6 0.35, BLOCK7 0.32, OUTSIDE 0.32: the shared
+component appears first in the lower blocks). Random-only at H: top /
+trace 0.508 to 0.519 in every BLOCK, 0.544 OUTSIDE; PR 2.56 to 2.60
+(OUTSIDE 2.48). Expectation E4 (4-arm PR at H in [2.5, 3.5] in every
+BLOCK): HIT.
+
+### Consecutive-window increments (global)
+
+| window | ||D|| M / R1 / R2 / R3 | top/tr | PR | RO top/tr | RO PR | cos(M, R1 / R2 / R3) | R1|R2 / R1|R3 / R2|R3 |
+|---|---|---|---|---|---|---|---|
+| 1 -> 5 | 0.0372 / 0.0376 / 0.0376 / 0.0376 | 0.250 | 4.00 | 0.333 | 3.00 | 0.000 / 0.000 / 0.000 | 0.000 / 0.000 / 0.000 |
+| 5 -> 20 | 0.0562 / 0.0533 / 0.0533 / 0.0533 | 0.250 | 4.00 | 0.333 | 3.00 | 0.000 / 0.001 / 0.000 | 0.000 / 0.000 / 0.000 |
+| 20 -> 100 | 0.1198 / 0.0135 / 0.0135 / 0.0136 | 0.255 | 4.00 | 0.334 | 3.00 | -0.011 / 0.017 / -0.008 | 0.001 / -0.002 / -0.002 |
+| 100 -> 300 | 0.1681 / 0.0116 / 0.0114 / 0.0110 | 0.306 | 3.93 | 0.388 | 2.96 | 0.031 / 0.084 / -0.083 | 0.102 / -0.070 / -0.073 |
+| 300 -> 900 | 1.9409 / 0.0907 / 0.0926 / 0.0522 | 0.516 | 2.82 | 0.585 | 2.25 | -0.339 / -0.376 / +0.281 | 0.642 / -0.222 / -0.191 |
+| 900 -> 1800 | 4.4567 / 0.9816 / 1.8973 / 1.0334 | 0.398 | 3.47 | 0.530 | 2.51 | 0.021 / 0.097 / 0.067 | 0.458 / -0.246 / -0.146 |
+| 1800 -> 3080 | 5.0175 / 2.0998 / 3.0595 / 2.2426 | 0.436 | 3.34 | 0.504 | 2.62 | 0.207 / 0.286 / 0.236 | 0.382 / 0.227 / 0.133 |
+| 3080 -> 4500 | 3.0734 / 1.5526 / 2.0543 / 1.6872 | 0.489 | 3.05 | 0.564 | 2.41 | 0.259 / 0.297 / 0.315 | 0.394 / 0.396 / 0.242 |
+| 4500 -> 6000 | 1.6429 / 0.7867 / 1.1989 / 0.8828 | 0.517 | 2.88 | 0.583 | 2.33 | 0.303 / 0.384 / 0.329 | 0.424 / 0.404 / 0.292 |
+| 6000 -> 7200 | 0.4487 / 0.2232 / 0.2962 / 0.2405 | 0.487 | 3.05 | 0.567 | 2.39 | 0.274 / 0.300 / 0.267 | 0.450 / 0.358 / 0.233 |
+| 7200 -> 8220 | 0.0721 / 0.0354 / 0.0458 / 0.0351 | 0.483 | 3.09 | 0.555 | 2.44 | 0.282 / 0.293 / 0.288 | 0.393 / 0.363 / 0.235 |
+
+Three regimes in the same-window coupling. (i) Through 100 -> 300 the
+four increments are mutually orthogonal (|cos| <= 0.10). (ii) In the
+moment axis's growth window 300 -> 900 (||D_M|| 1.94, the panel's
+0.05 to 0.09; the panel's stall booked at L77202 is the preceding
+window, h = 100..300) the panel's small
+increments are strongly coupled to M's large one and to each other
+with arm-dependent SIGN (M to R -0.34 / -0.38 / +0.28; R1|R2 +0.64,
+R1|R3 -0.22, R2|R3 -0.19): the window Gram's top eigenvector is the
+contrast (-0.48, +0.57, +0.57, -0.35) with eigenvalue 2.07 of 4, i.e.
+one shared AXIS that R1 and R2 traverse one way and M and R3 the other.
+(iii) In the panel's own growth window 900 -> 1800 the coupling to M
+is near zero (0.02 / 0.10 / 0.07; the top eigenvector is a random-panel
+mode with M weight -0.08) and from 1800 -> 3080 on every pair is
+positive and grows (0.21 to 0.38 to M, 0.13 to 0.45 among the random
+arms), the common mode that the terminal cosine matrix shows.
+Expectation E3 (random-only window top / trace <= 0.45 through 900 ->
+1800; >= 0.50 in the last two windows): the first half MISSES (0.585
+at 300 -> 900, 0.530 at 900 -> 1800), the second half holds (0.567,
+0.555); scored MISS.
+
+### Lag matrices
+
+For every ordered pair of DIFFERENT arms the 11 x 11 window lag matrix
+is diagonal to |cos| <= 0.09 off the diagonal (the largest off-diagonal
+entries, (row window, column window): M|R1 -0.050 at (3080 -> 4500,
+1800 -> 3080), M|R2 -0.073 at (3080 -> 4500, 4500 -> 6000), R1|R2
+-0.081 at (900 -> 1800, 1800 -> 3080)):
+increments are window-local; no arm's later window points where
+another arm's earlier window pointed. The arms' own window
+autocorrelations are also near zero or slightly negative beyond the
+diagonal (M: adjacent windows -0.11 to -0.16 from 300 -> 900 through 3080 ->
+4500, then -0.03 and +0.04, the first two windows 0.70; R1: the first
+three windows 0.87 to 1.00, then -0.03 to -0.20 with a final +0.03): each deviation is a sum of nearly orthogonal window
+steps, which is why the terminal directions rotate away from the
+early ones. The 12 x 12 horizon lag matrices cos(dev_M(h_i),
+dev_R(h_j)) are the running-sum image of the same fact: entries with
+h_i <= 300 or h_j <= 300 are |cos| <= 0.008; the (900, 900) entries
+are the booked -0.21 / -0.24 / +0.12 and the (>= 3080, >= 3080) block
+is flat at the terminal values (0.12 to 0.18 / 0.18 to 0.24 / 0.14 to
+0.22) because both deviations have settled.
+
+### Named cells (global; per-group range over BLOCK0..7 / OUTSIDE)
+
+| cell | R1 | R2 | R3 |
+|---|---|---|---|
+| PRIMARY M 300 -> 900 v R 900 -> 1800 | 0.0136 (0.005 to 0.017) | -0.0096 (-0.033 to 0.006) | 0.0016 (-0.007 to 0.025) |
+| M 100 -> 300 v R 300 -> 900 | 0.0039 (0.002 to 0.011) | 0.0020 (-0.015 to 0.004) | 0.0046 (-0.004 to 0.047) |
+| M 300 -> 900 v R 1800 -> 3080 | -0.0012 (-0.007 to 0.009) | 0.0052 (-0.001 to 0.033) | -0.0015 (-0.003 to 0.021) |
+| M 900 -> 1800 v R 900 -> 1800 (lag 0) | 0.0210 (0.006 to 0.036) | 0.0967 (0.065 to 0.159) | 0.0670 (0.033 to 0.103) |
+| M 900 -> 1800 v R 1800 -> 3080 | -0.0041 (-0.060 to 0.002) | -0.0177 (-0.089 to -0.004) | -0.0112 (-0.050 to -0.004) |
+| M 300 -> 900 v R 300 -> 900 (lag 0) | -0.3394 (-0.360 to -0.288) | -0.3761 (-0.391 to -0.359) | +0.2806 (0.254 to 0.304) |
+| two-window M 300 -> 1800 v R 900 -> 3080 | 0.0073 (-0.043 to 0.014) | 0.0370 (0.023 to 0.061) | 0.0176 (-0.002 to 0.032) |
+
+The PRIMARY cell and every lagged (non-lag-0) alternative are zero to
+within 0.09 in every group (global |cos| <= 0.04): the moment axis's growth direction is NOT where
+the random panel's later growth points, at any of the adjacent grid
+choices. The only named cell above |cos| 0.3 is the lag-0 cell in the moment
+axis's own window, and there the sign differs by arm (the lag-0 900 ->
+1800 cell reaches 0.097 global, 0.159 in one group).
+Expectation E2 (PRIMARY |cos| <= 0.15 for all R: HIT at 0.014 / 0.010
+/ 0.002; no named cell above |cos| 0.30: MISS, the lag-0 300 -> 900
+cell is -0.34 / -0.38 / +0.28): scored MISS.
+
+### Reading (descriptive; changes no verdict)
+
+- The lag hypothesis behind the PRIMARY cell (that the panel, one grid
+  horizon late, reproduces the moment axis's growth direction) is not
+  what the snapshots show. Increments are window-local for every arm,
+  and the moment axis's 300 -> 900 step is orthogonal (|cos| <= 0.02)
+  to the panel's 900 -> 1800 step.
+- What the arms do share is SAME-WINDOW structure: from h = 300 the
+  four legs, on the byte-identical batch stream, respond to the same
+  window with correlated increments. In the 300 -> 900 window that
+  correlation is sign-indefinite (an axis, not a direction): the
+  moment axis and R3 move one way along it, R1 and R2 the other, while
+  the panel's increments there are 21x to 37x smaller than M's. From 1800 on
+  the correlation is uniformly positive and the terminal common mode
+  (top / trace 0.43, one-signed eigenvector) is built in the windows
+  1800 -> 6000 where every arm's increments are large.
+- The shared late component is depth-uniform at H (every BLOCK within
+  0.01 of the global top / trace) and appears earliest in the lower
+  blocks at h = 900; the OUTSIDE group (embedding / head / norm) is the
+  most shared (0.46 at H).
+- None of this attributes the moment-axis excess (517x v 195x to 286x,
+  L77202) to direction or to magnitude; the desk did not vary either.
+  It says where the panel and the moment axis agree (same-window
+  response from h = 300, a common late mode) and where they do not
+  (the growth windows themselves point in arm-specific directions;
+  no lagged reproduction).
+
+### Expectations scored (no consequence): 2 HIT / 2 MISS of 4
+
+E1 HIT on its registered role (an instrument-confirmation line,
+"arithmetic consistency, not a prediction"): top / trace 0.431 v about
+0.43; the PR figure 3.36 v the loose "about 3.2" is recorded as an
+unscored aside of that line, not a second clause.
+E2 MISS (PRIMARY held; the lag-0 300 -> 900 cell exceeded 0.30). E3
+MISS (random-only window top / trace 0.585 and 0.530 in the two growth
+windows, above 0.45; the last-two-windows half held). E4 HIT.
+
+### What the desk recommends for the next prospective rung (Artin decision; nothing designed or armed here)
+
+The window-local, same-window structure is correlated with window
+position (the byte-identical batch stream and schedule phase), not
+with the perturbation's history: every arm's increment in a window is
+correlated with the other arms' increments in the SAME window and with
+nothing else. On that evidence the house recommends a perturbation-PHASE census (the same
+matched perturbation injected at different anchors / phases of the
+schedule, reading same-window coupling and onset) over an
+optimizer-memory cross-foster as the next question; the cross-foster
+would test content, and this desk found the late response correlated
+by window, not by content. This is a recommendation on descriptive
+evidence, not a pre-registration; SCHEDULE-PHASE-SENSITIVITY-CENSUS-0
+stays banked and is not repurposed by it.
+
+### Dependency graph sealed by this desk and keep-set proposal (not executed)
+
+This desk's receipt depends on: checkpoints/rdc1/A/{C, R1, R2, R3}
+(48 files, 3.9 GiB) and checkpoints/fmel2/A/e1e-1 (12 files, about
+1.0 GiB), all sha-locked through logs/rdc1/control.json and
+logs/fmel2/ladder.json. Nothing here depends on checkpoints/fmel2/A/C,
+e1, e1e-2 (about 3.0 GiB), checkpoints/fme1 (0.85 GiB) or the oma1 A/C
+controls (0.49 GiB). Proposal per the CONSEQUENCE amendment (L77495),
+for Artin's decision: (a) first candidates for a manifest-based prune,
+FMEL2's non-M, non-C arms e1 and e1e-2 (about 2.0 GiB; their receipts
+stay locked, the snapshots are reproducible from the pinned
+instrument); (b) keep checkpoints/fmel2/A/C (the locked control every
+sibling qualifies against) and e1e-1 (the comparison vectors), keep
+checkpoints/rdc1 (this desk's inputs), keep checkpoints/fme1 and the
+oma1 A/C controls (unique optimizer-bearing historical states) until
+the cross-foster question is explicitly closed or superseded. No file
+is deleted by this booking.
+
+### Fences
+
+Single writer (A = stock OneCycle seed 2), one anchor (7200), one seed
+lineage, three random directions, one write norm and locus profile,
+CPU float32 deterministic legs; float64 desk arithmetic on the booked
+snapshots. Descriptive: no bar, no label, no causal claim; changes no
+verdict. Expectations scored as a track record only.

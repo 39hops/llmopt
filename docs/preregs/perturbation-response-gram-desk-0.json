@@ -3,7 +3,7 @@
  "program": "optimizer-memory-ablation / random-direction-control",
  "registered": "2026-09-17",
  "machine": "Mac (CPU, numpy float64)",
- "status": "REGISTERED (design + instrument; run needs its own liverun launch)",
+ "status": "BOOKED (OBSERVATION RESULTS L77655); descriptive; expectations 2 HIT / 2 MISS of 4",
  "results_line": 77531,
  "kind": "desk (zero training; descriptive only; no bar, no label)",
  "question": "How much of the four late deviations (M = locked FMEL2 eps = 1e-1, R1 / R2 / R3 = RDC1 matched random exp_avg directions) is one shared direction, across the 12 horizons and the 11 consecutive windows, globally and per group; and does the moment axis's growth window (300 -> 900) point where the panel's later growth window (900 -> 1800) points.",
@@ -70,6 +70,42 @@
   "logs/prgd0/desk.json",
   "logs/prgd0/desk.log",
   "logs/prgd0/prgd0.DONE",
-  "logs/liverun/prgd0.jsonl"
- ]
+  "logs/liverun/prgd0.jsonl",
+  "logs/prgd0/smokes1_desk.json",
+  "logs/prgd0/smokes2_desk.json"
+ ],
+ "outcome": {
+  "results_id": "2026-09-17-observation-perturbation-response-gram-desk-0",
+  "results_line": 77655,
+  "receipt": "logs/prgd0/desk.json",
+  "liverun": "prgd0 at fac6231c, 45.1 s, rc 0",
+  "gram_top_over_trace_by_h": {
+   "1": 0.25,
+   "300": 0.2528,
+   "900": 0.3748,
+   "1800": 0.3954,
+   "4500": 0.4299,
+   "8220": 0.431
+  },
+  "participation_rank_H": 3.363,
+  "primary_cell": {
+   "R1": 0.0136,
+   "R2": -0.0096,
+   "R3": 0.0016
+  },
+  "lag0_300_900": {
+   "R1": -0.3394,
+   "R2": -0.3761,
+   "R3": 0.2806
+  },
+  "max_offdiag_window_lag_abs": 0.09,
+  "expectations": {
+   "E1": "HIT on its instrument-confirmation role (top/trace 0.431; PR 3.36 v the loose 'about 3.2' an unscored aside)",
+   "E2": "MISS (PRIMARY held <= 0.15; lag-0 300->900 cell exceeded 0.30)",
+   "E3": "MISS (random-only window top/trace 0.585 / 0.530 in the growth windows; last two windows >= 0.50 held)",
+   "E4": "HIT"
+  },
+  "recommendation_artin_decision": "perturbation-phase census before optimizer-memory cross-foster (descriptive evidence only; nothing designed or armed)",
+  "keep_set_proposal_not_executed": "prune candidates checkpoints/fmel2/A/e1 and e1e-2 (about 2.0 GiB); keep fmel2 C + e1e-1, rdc1, fme1, oma1 A/C"
+ }
 }
