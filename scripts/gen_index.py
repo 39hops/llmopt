@@ -4,7 +4,9 @@ function/class signatures (AST, no imports executed). Run after adding
 scripts so future sessions grep one file instead of re-reading (or
 re-writing) code that already exists.
 
-    .venv/bin/python scripts/gen_index.py
+    .venv/bin/python scripts/gen_index.py            # write
+    .venv/bin/python scripts/gen_index.py --check    # exit 1 on drift, no write
+    .venv/bin/python scripts/gen_index.py --out PATH
 """
 from __future__ import annotations
 
@@ -43,7 +45,7 @@ def entry(path: Path) -> str | None:
     return "\n".join(lines) + "\n"
 
 
-def main() -> None:
+def render() -> str:
     out = ["# Script index (generated — do not hand-edit)",
            "", "Regenerate: `.venv/bin/python scripts/gen_index.py`", ""]
     for d in DIRS:
@@ -55,9 +57,44 @@ def main() -> None:
             e = entry(f)
             if e:
                 out.append(e)
-    (ROOT / "scripts" / "INDEX.md").write_text("\n".join(out))
-    print(f"wrote scripts/INDEX.md ({len(out)} sections)")
+    return "\n".join(out)
+
+
+def write_if_changed(path: Path, text: str) -> bool:
+    """Atomic write (tmp + os.replace) only when the content differs.
+    Concurrent hook posts and readers never observe a half-written
+    file; an unchanged output keeps its mtime."""
+    import os
+    if path.exists() and path.read_text() == text:
+        return False
+    tmp = path.with_name(path.name + ".tmp")
+    tmp.write_text(text)
+    os.replace(tmp, path)
+    return True
+
+
+def main(argv: list[str] | None = None) -> int:
+    import argparse
+    import sys
+    ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
+    ap.add_argument("--check", action="store_true",
+                    help="exit 1 if a rewrite would change the file; "
+                         "never writes")
+    ap.add_argument("--out", type=Path, default=ROOT / "scripts" / "INDEX.md")
+    a = ap.parse_args(argv)
+    new = render()
+    current = a.out.read_text() if a.out.exists() else None
+    if a.check:
+        if current == new:
+            print(f"[index] current ({a.out.relative_to(ROOT) if a.out.is_relative_to(ROOT) else a.out})")
+            return 0
+        print(f"[index] STALE: {a.out} differs from a regeneration; "
+              "run scripts/gen_index.py", file=sys.stderr)
+        return 1
+    write_if_changed(a.out, new)
+    print(f"wrote {a.out} ({new.count(chr(10))} lines)")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

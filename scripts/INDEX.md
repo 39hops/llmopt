@@ -853,7 +853,9 @@ Generate docs/CODEMAP.md: the move-gate inventory of scratch/ and scripts/ (adop
 - `code_refs(target: Path, code: dict[str, str]) -> tuple[list[str], list[str]]` — (importers, mention-only referrers) for the module.
 - `doc_cites(name: str, docs: dict[str, dict[str, str]]) -> dict[str, int]`
 - `classify(cites: dict[str, int], imports: list[str]) -> str`
-- `main() -> None`
+- `render() -> tuple[str, dict[str, int]]`
+- `write_if_changed(path: Path, text: str) -> bool` — Atomic write (tmp + os.replace) only when the content differs.
+- `main(argv: list[str] | None=None) -> int`
 
 ### scripts/gen_dispatch_labels.py
 Dispatcher-net labels: which brain wins each problem (2026-07-10, chasing the router's oracle ceiling — 127/130 vs threshold's 124).
@@ -891,7 +893,9 @@ Generate scripts/INDEX.md: one entry per python file in scripts/, scratch/, and 
 
 - `sig(fn: ast.FunctionDef) -> str`
 - `entry(path: Path) -> str | None`
-- `main() -> None`
+- `render() -> str`
+- `write_if_changed(path: Path, text: str) -> bool` — Atomic write (tmp + os.replace) only when the content differs.
+- `main(argv: list[str] | None=None) -> int`
 
 ### scripts/gen_lake.py
 Regenerate the Parquet lake (data/lake/) from the lab's jsonl/file exhaust.
@@ -937,6 +941,9 @@ Content-address every receipt path a booked entry cites.
 - `sha256(p: Path) -> str`
 - `cited_paths() -> dict[str, str]` — path -> source. "results" = cited in RESULTS.md prose (absence
 - `build() -> dict`
+- `make_payload(fresh: dict, old_payload: dict, accept: str | None, changed: list[str]) -> dict` — The lock file body. Without --accept the previous `_last_accept`
+- `check_view(fresh: dict, old: dict) -> dict` — The portable subset of a lock: rows the REPOSITORY carries.
+- `write_if_changed(path: Path, text: str) -> bool` — Atomic write (tmp + os.replace) only when the content differs.
 - `main() -> int`
 
 ### scripts/gen_regret_labels.py
@@ -953,6 +960,11 @@ Generate/refresh docs/results-index.jsonl from RESULTS.md.
 - `infer_type(title)`
 - `infer_threads(title)`
 - `extract_files(body: str) -> list[str]` — Sorted unique repo paths cited in an entry body.
+- `load_index(path: Path) -> dict[str, dict]` — Existing index rows keyed by id ({} when the file is absent).
+- `build_entries(results_text: str, old: dict[str, dict]) -> list[dict]` — One row per `## ` entry of RESULTS, merged with the curated
+- `render(entries: list[dict]) -> str`
+- `write_if_changed(path: Path, text: str) -> bool` — Atomic write (tmp + os.replace) only when the content differs.
+- `main(argv: list[str] | None=None) -> int`
 
 ### scripts/gen_scoreboard.py
 Generate docs/SCOREBOARD.md from results-index.jsonl — the curated current-truth view (live, verdict-bearing entries grouped by thread, newest first). NEVER hand-edit SCOREBOARD.md; deepen the index instead and regenerate.

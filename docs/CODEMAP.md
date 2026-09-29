@@ -528,7 +528,7 @@ Census: UNCITED 233, library 92, reproduce-pinned 10, results-cited 479, spec-ci
 | pack | pack_rans.py | results-cited | RESULTS, specs | RESULTS×3, specs×2 | — | — |
 | pack | pack_tiered.py | spec-cited | specs | specs×1 | — | — |
 | paper | paper_figs.py | UNCITED | — | — | — | — |
-| perturbation | perturbation_response_gram_desk.py | results-cited | RESULTS | RESULTS×3 | — | 2 |
+| perturbation | perturbation_response_gram_desk.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 2 |
 | phase | phase_portrait_precompute.py | results-cited | RESULTS | RESULTS×2 | — | — |
 | phase4 | phase4_rewrite.py | spec-cited | specs | specs×1 | — | — |
 | phase4 | phase4_sites.py | spec-cited | specs | specs×3 | — | 1 |
@@ -554,7 +554,7 @@ Census: UNCITED 233, library 92, reproduce-pinned 10, results-cited 479, spec-ci
 | practice | practice_mine.py | spec-cited | specs | specs×1 | — | — |
 | prband2fresh | prband2fresh_train.sh | results-cited | RESULTS | RESULTS×1 | — | — |
 | prefix | prefix_pair.sh | UNCITED | — | — | — | — |
-| prgd0 | prgd0_launch.sh | results-cited | RESULTS | RESULTS×3 | — | 1 |
+| prgd0 | prgd0_launch.sh | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | 1 |
 | probe | probe_int_device_parity.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | prologue | prologue_arms.py | library | — | — | 1 | — |
 | prologue | prologue_gates.sh | UNCITED | — | — | — | — |
@@ -858,20 +858,20 @@ Census: UNCITED 233, library 92, reproduce-pinned 10, results-cited 479, spec-ci
 | figlib | figlib.py | spec-cited | specs | specs×1 | — | — |
 | fold | fold_book.py | spec-cited | specs | specs×1 | — | 1 |
 | gen | gen_catalog.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 1 |
-| gen | gen_codemap.py | results-cited | RESULTS, specs | RESULTS×1, specs×21 | — | 2 |
+| gen | gen_codemap.py | results-cited | RESULTS, specs | RESULTS×1, specs×21 | — | 3 |
 | gen | gen_dispatch_labels.py | UNCITED | — | — | — | 2 |
 | gen | gen_dispatch_labels_v2.py | UNCITED | — | — | — | — |
 | gen | gen_figures_web.py | spec-cited | specs | specs×1 | — | — |
 | gen | gen_frontier.py | UNCITED | — | — | — | — |
-| gen | gen_index.py | spec-cited | specs | specs×10 | — | 2 |
+| gen | gen_index.py | spec-cited | specs | specs×10 | — | 3 |
 | gen | gen_lake.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 1 |
 | gen | gen_magic_labels.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | gen | gen_policy_labels.py | UNCITED | — | — | — | — |
 | gen | gen_proposer_data.py | spec-cited | specs | specs×7 | — | 1 |
 | gen | gen_readme.py | spec-cited | specs | specs×24 | — | 2 |
-| gen | gen_receipt_lock.py | library | — | — | 1 | — |
+| gen | gen_receipt_lock.py | library | — | — | 1 | 3 |
 | gen | gen_regret_labels.py | UNCITED | — | — | — | — |
-| gen | gen_results_index.py | results-cited | RESULTS, specs | RESULTS×4, specs×13 | — | 5 |
+| gen | gen_results_index.py | results-cited | RESULTS, specs | RESULTS×4, specs×13 | — | 7 |
 | gen | gen_scoreboard.py | UNCITED | — | — | — | — |
 | gen | gen_syndrome_labels.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | grow | grow_mathnative.py | library | specs | specs×1 | 1 | 1 |

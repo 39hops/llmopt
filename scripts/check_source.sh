@@ -14,14 +14,14 @@ COV=$($PY -c "import pytest_cov" 2>/dev/null \
     && echo "--cov=llmopt --cov-report=" || true)
 
 echo "== generated docs current =="
-$PY scripts/gen_index.py >/dev/null
-$PY scripts/gen_codemap.py >/dev/null
-$PY scripts/gen_results_index.py >/dev/null
-git diff --quiet -- scripts/INDEX.md docs/CODEMAP.md \
-    docs/results-index.jsonl \
-    || { echo "STALE generated docs (diff above)"; git --no-pager \
-         diff --stat -- scripts/INDEX.md docs/CODEMAP.md \
-         docs/results-index.jsonl; exit 1; }
+# --check never writes: this script is a CHECK and must leave the
+# tree byte-identical (read-only inspection invariant, 2026-09-29).
+# On drift each generator prints what is stale; regenerate by running
+# it without --check and commit the result.
+$PY scripts/gen_index.py --check
+$PY scripts/gen_codemap.py --check
+$PY scripts/gen_results_index.py --check
+$PY scripts/gen_receipt_lock.py --check
 
 echo "== pytest =="
 $PY -m pytest tests/ -q $COV

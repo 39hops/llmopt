@@ -52,5 +52,7 @@ FINDINGS tags, `code_commit`). Write the booking script the way
 The chain does not commit. Continue with `/book` step 5 (commit gated
 on a redirected pytest rc, CODEMAP regen when a new script landed,
 `code_commit` = the parent of the booking commit) and the post-commit
-regen commit. Do not add hooks that pop `needs_link`; re-pop by id in
-the booking script.
+regen commit. Do not add hooks that pop `needs_link`; pop it by id in the
+booking script ONCE for the new row. Since 2026-09-29 the generator
+carries a resolved flag forward (it is a fixed point over its own
+committed output), so a regen never re-adds it.

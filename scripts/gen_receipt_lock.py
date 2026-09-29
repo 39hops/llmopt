@@ -156,28 +156,12 @@ def build() -> dict:
     return out
 
 
-def main() -> int:
-    ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--accept", metavar="REASON",
-                    help="accept changed shas for ALREADY-LOCKED paths")
-    a = ap.parse_args()
-
-    fresh = build()
-    old = (json.loads(LOCK.read_text()).get("receipts", {})
-           if LOCK.exists() else {})
-
-    changed = [k for k, v in fresh.items()
-               if k in old and old[k].get("exists")
-               and old[k].get("sha256")
-               and (not v.get("exists")
-                    or v.get("sha256") != old[k].get("sha256"))]
-    if changed and not a.accept:
-        print("REFUSING: locked receipts changed or vanished — a NEW run "
-              "belongs at a NEW path.\n  " + "\n  ".join(changed))
-        print("\nIf the change is legitimate, re-run with "
-              '--accept "reason" so it lands in a reviewable diff.')
-        return 1
-
+def make_payload(fresh: dict, old_payload: dict, accept: str | None,
+                 changed: list[str]) -> dict:
+    """The lock file body. Without --accept the previous `_last_accept`
+    block is carried forward unchanged, so a plain regeneration is a
+    fixed point over its own output (the block is the reviewable
+    record of WHY a sha was allowed to change)."""
     payload = {
         "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. "
                 "A booked receipt is evidence; changing one silently "
@@ -185,9 +169,90 @@ def main() -> int:
                 "scripts/gen_receipt_lock.py.",
         "receipts": fresh,
     }
-    if a.accept:
-        payload["_last_accept"] = {"reason": a.accept, "paths": changed}
-    LOCK.write_text(json.dumps(payload, indent=1, sort_keys=True) + "\n")
+    if accept:
+        payload["_last_accept"] = {"reason": accept, "paths": changed}
+    elif "_last_accept" in old_payload:
+        payload["_last_accept"] = old_payload["_last_accept"]
+    return payload
+
+
+def check_view(fresh: dict, old: dict) -> dict:
+    """The portable subset of a lock: rows the REPOSITORY carries.
+
+    Machine-local receipts (`local_only`: sha recorded on the machine
+    that holds the bytes) and prereg-declared receipts still
+    `pending` legitimately do not exist on another checkout (CI, the
+    second machine); their absence there is not drift. Rows are
+    compared by the previous lock's classification so a checkout that
+    lacks a file cannot reclassify it.
+    """
+    skip = {k for k, v in old.items()
+            if v.get("local_only") or v.get("pending")}
+    return {k: v for k, v in fresh.items() if k not in skip}
+
+
+def write_if_changed(path: Path, text: str) -> bool:
+    """Atomic write (tmp + os.replace) only when the content differs.
+    Concurrent hook posts and readers never observe a half-written
+    file; an unchanged output keeps its mtime."""
+    import os
+    if path.exists() and path.read_text() == text:
+        return False
+    tmp = path.with_name(path.name + ".tmp")
+    tmp.write_text(text)
+    os.replace(tmp, path)
+    return True
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--accept", metavar="REASON",
+                    help="accept changed shas for ALREADY-LOCKED paths")
+    ap.add_argument("--check", action="store_true",
+                    help="exit 1 if a rewrite would change the lock; "
+                         "never writes")
+    a = ap.parse_args()
+
+    fresh = build()
+    old_payload = json.loads(LOCK.read_text()) if LOCK.exists() else {}
+    old = old_payload.get("receipts", {})
+
+    changed = [k for k, v in fresh.items()
+               if k in old and old[k].get("exists")
+               and old[k].get("sha256")
+               and (not v.get("exists")
+                    or v.get("sha256") != old[k].get("sha256"))]
+    if a.check:
+        # portable, never-writing, never-REFUSING: compare only the rows
+        # every checkout carries, and report rather than advise --accept
+        payload = make_payload(fresh, old_payload, None, [])
+        view_new = dict(payload, receipts=check_view(fresh, old))
+        view_old = dict(old_payload, receipts=check_view(old, old))
+        if view_new == view_old:
+            print(f"[receipt-lock] current ({len(fresh)} paths)")
+            return 0
+        diff = sorted(k for k in set(view_new["receipts"])
+                      | set(view_old["receipts"])
+                      if view_new["receipts"].get(k)
+                      != view_old["receipts"].get(k))
+        import sys
+        print(f"[receipt-lock] STALE: {LOCK.relative_to(ROOT)} differs "
+              "from a regeneration on this checkout; run "
+              "scripts/gen_receipt_lock.py (a changed sha on a locked "
+              "receipt is a frozen-receipt violation, not drift):\n  "
+              + "\n  ".join(diff[:20]), file=sys.stderr)
+        return 1
+
+    if changed and not a.accept:
+        print("REFUSING: locked receipts changed or vanished — a NEW run "
+              "belongs at a NEW path.\n  " + "\n  ".join(changed))
+        print("\nIf the change is legitimate, re-run with "
+              '--accept "reason" so it lands in a reviewable diff.')
+        return 1
+
+    payload = make_payload(fresh, old_payload, a.accept, changed)
+    new = json.dumps(payload, indent=1, sort_keys=True) + "\n"
+    write_if_changed(LOCK, new)
     locked = sum(1 for v in fresh.values()
                  if v.get("exists") and v.get("sha256"))
     live_pending = sum(1 for v in fresh.values()

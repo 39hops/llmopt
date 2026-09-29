@@ -1,7 +1,6 @@
 """SG-FAILURE-DESK-0 label law (scratch/sg_failure_labels.py labels()): the
 sealed thresholds and the four branches on a synthetic desk record, pure."""
 import importlib.util
-import sys
 from pathlib import Path
 
 import pytest

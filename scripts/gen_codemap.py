@@ -152,7 +152,7 @@ def classify(cites: dict[str, int], imports: list[str]) -> str:
     return "UNCITED"
 
 
-def main() -> None:
+def render() -> tuple[str, dict[str, int]]:
     docs = {g: load_texts(ps) for g, ps in DOC_GROUPS.items()}
     code = load_code()
     rows: dict[str, list[tuple]] = defaultdict(list)
@@ -203,10 +203,46 @@ def main() -> None:
                 f"| {fam} | {name} | {cls} | {cited_by} | {cite_s}"
                 f" | {imp_s} | {men_s} |")
         lines.append("")
-    OUT.write_text("\n".join(lines))
-    print(f"[codemap] wrote {OUT.relative_to(ROOT)}: "
+    return "\n".join(lines), dict(tallies)
+
+
+def write_if_changed(path: Path, text: str) -> bool:
+    """Atomic write (tmp + os.replace) only when the content differs.
+    Concurrent hook posts and readers never observe a half-written
+    file; an unchanged output keeps its mtime."""
+    import os
+    if path.exists() and path.read_text() == text:
+        return False
+    tmp = path.with_name(path.name + ".tmp")
+    tmp.write_text(text)
+    os.replace(tmp, path)
+    return True
+
+
+def main(argv: list[str] | None = None) -> int:
+    import argparse
+    import sys
+    ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
+    ap.add_argument("--check", action="store_true",
+                    help="exit 1 if a rewrite would change the file; "
+                         "never writes")
+    ap.add_argument("--out", type=Path, default=OUT)
+    a = ap.parse_args(argv)
+    new, tallies = render()
+    current = a.out.read_text() if a.out.exists() else None
+    if a.check:
+        if current == new:
+            print("[codemap] current: "
+                  + ", ".join(f"{k}={v}" for k, v in sorted(tallies.items())))
+            return 0
+        print(f"[codemap] STALE: {a.out} differs from a regeneration; "
+              "run scripts/gen_codemap.py", file=sys.stderr)
+        return 1
+    write_if_changed(a.out, new)
+    print(f"[codemap] wrote {a.out}: "
           + ", ".join(f"{k}={v}" for k, v in sorted(tallies.items())))
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

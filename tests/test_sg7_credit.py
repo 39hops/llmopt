@@ -181,7 +181,6 @@ def test_predictor_isolation_and_fold_b(sg7, dfa, tiny):
 
 
 def test_eligible_masking_and_zero_init(sg7, dfa, tiny):
-    import torch
     _, ids, mask, labels = tiny
     model, pred0 = _fresh(sg7, dfa, tiny)
     T0 = sg7.sg7_step_terms(model, pred0, ids, mask, labels, 1e-3)
