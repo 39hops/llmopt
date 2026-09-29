@@ -28,10 +28,14 @@ measurement: the bar is written down before the run fires.
 
 ## How a figure is published
 
-Numbers enter `docs/figures.json` once; both renderers
-(`llmopt/figures/figsvg.py` for SVG, `llmopt/figures/figures.py` for
-matplotlib) read from it, and `scripts/gen_readme.py --check` keeps the
-README's generated regions in sync. A number is never typed twice.
+Numbers enter `docs/figures.json` once; the web renderer
+(`llmopt/figures/figsvg.py`, SVG with PNG captured through Chrome) reads
+from it, and `scripts/gen_readme.py --check` keeps the README's
+generated regions and the honesty-ledger counts in sync.
+`llmopt/figures/figures.py` is the matplotlib analysis renderer and does
+not read the file. After any amendment run `scripts/gen_figures_web.py`
+and then `scripts/gen_readme.py`, in that order. A number is never typed
+twice.
 
 ## What is never rewritten
 

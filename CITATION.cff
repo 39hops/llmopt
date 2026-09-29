@@ -4,20 +4,25 @@ message: >-
   (the capacity meter, the deterministic integer training battery,
   the gate protocols, or any booked result), cite it as below AND
   pin the exact commit: every citation must name the git commit
-  sha (and tag, if any) it relies on — the lab is a moving ledger
-  and results are amended in place by dated entries, so an
-  unpinned citation is unverifiable. The verdict-by-verdict ledger
-  (docs/RESULTS.md) is the citable record; name the specific
-  verdict entry plus the commit sha that contains it.
-title: "llmopt: an oracle-verified LLM inference and training optimization lab"
+  sha (and tag, if any) it relies on. The lab is a living ledger:
+  results are never edited in place but are corrected by dated
+  AMENDMENT entries, so an unpinned citation is unverifiable. The
+  verdict-by-verdict ledger (docs/RESULTS.md) is the citable record;
+  name the specific verdict entry plus the commit sha that contains
+  it.
+title: "llmopt: an oracle-verified mathematics and physics ML lab"
 type: software
 authors:
-  - name: "39hops"
+  - given-names: Artin
+    family-names: Azizi
+    alias: 39hops
 repository-code: "https://github.com/39hops/llmopt"
 license: Apache-2.0
 keywords:
-  - LLM inference optimization
-  - deterministic training
-  - integer-exact neural networks
-  - verified search
-  - reproducibility
+  - reproducible-research
+  - symbolic-mathematics
+  - deterministic-computing
+  - fixed-point-arithmetic
+  - mixture-of-experts
+  - quantization
+  - verified-search

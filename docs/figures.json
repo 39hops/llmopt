@@ -1,5 +1,5 @@
 {
-  "_": "Single source for every published figure. Each number is transcribed from the RESULTS verdict named in its `source`, and both renderers (llmopt/lab/figures.py for paper SVG, llmopt/lab/figsvg.py for web) read THIS file — so a corrected number cannot survive in one renderer and not the other. Re-run scripts/gen_readme_figures.py and scripts/gen_figures_web.py after any amendment.",
+  "_": "Single source for every published figure. Each number is transcribed from the RESULTS verdict named in its `source`; the honesty_ledger parts and fence are recounted from docs/FINDINGS.md. llmopt/figures/figsvg.py renders these entries to SVG (PNG via Chrome); llmopt/figures/figures.py is the analysis renderer and does not read this file. After any amendment run scripts/gen_figures_web.py, then scripts/gen_readme.py; order matters, because gen_figures_web.py rewrites this file with escaped non-ASCII and gen_readme.py rewrites it with ensure_ascii=False, which `gen_readme.py --check` in CI expects.",
   "merge_space": {
     "kind": "gate_track",
     "title": "Averaging independently born weights does not degrade a model — it ends it",

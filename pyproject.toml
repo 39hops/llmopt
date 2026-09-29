@@ -9,6 +9,12 @@ description = "Oracle-verified mathematics and physics ML lab: exact integer tra
 readme = "README.md"
 license = { text = "Apache-2.0" }
 authors = [{ name = "Artin Azizi" }]
+# The package itself parses on 3.11 (imports on 3.11 are not exercised
+# by CI, which tests 3.12 only). Two frozen scratch/ experiment drivers,
+# scratch/first_moment_erasure_ladder.py and
+# scratch/first_moment_erasure_ladder2.py, use 3.12-only f-string
+# syntax; they are evidence records kept byte-identical and are not
+# ported, so the full historical test corpus collects only on 3.12.
 requires-python = ">=3.11"
 keywords = [
     "reproducible-research",

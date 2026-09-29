@@ -31,7 +31,7 @@ Census: library 190, reproduce-pinned 9, results-cited 496, spec-cited 80, tool-
 | atomdose1 | atomdose1_driver.sh | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — | — | — |
 | atomladder1 | atomladder1_driver.sh | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
 | atomtraj | atomtraj_census.py | results-cited | RESULTS | RESULTS×10 | — | 4 | — | — |
-| atomtraj | atomtraj_pins.py | library | RESULTS, via:specs | RESULTS×53 | 42 | 5 | — | — |
+| atomtraj | atomtraj_pins.py | library | RESULTS, via:specs, via:TOOLING | RESULTS×53 | 42 | 5 | — | — |
 | atomtraj | atomtraj_qual.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
 | atomtraj | atomtraj_verify.py | results-cited | RESULTS | RESULTS×8 | — | 3 | — | — |
 | atomtraj1 | atomtraj1_driver.sh | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
@@ -50,14 +50,14 @@ Census: library 190, reproduce-pinned 9, results-cited 496, spec-cited 80, tool-
 | birth19m | birth19m_atoms_rule.py | results-cited | RESULTS, specs | RESULTS×6, specs×1 | — | 1 | 2 | — |
 | birth19m | birth19m_atoms_traj.py | library | RESULTS | RESULTS×12 | — | 10 | 2 | — |
 | birth19m | birth19m_atoms_trajgate.py | results-cited | RESULTS | RESULTS×10 | — | 4 | 1 | — |
-| birth19m | birth19m_backsched.py | results-cited | RESULTS, specs | RESULTS×6, specs×2 | — | 1 | — | — |
+| birth19m | birth19m_backsched.py | results-cited | RESULTS, specs, via:TOOLING | RESULTS×6, specs×2 | — | 1 | — | — |
 | birth19m | birth19m_caf.py | library | RESULTS, specs | RESULTS×5, specs×1 | — | 5 | 1 | — |
 | birth19m | birth19m_curric.py | library | RESULTS, specs, via:TOOLING | RESULTS×42, specs×2 | 34 | 2 | — | — |
 | birth19m | birth19m_curric_rev.py | results-cited | RESULTS, specs | RESULTS×5, specs×1 | — | — | 1 | — |
 | birth19m | birth19m_curric_swap.py | results-cited | RESULTS, specs | RESULTS×4, specs×1 | — | — | — | — |
 | birth19m | birth19m_dfa.py | library | RESULTS, specs | RESULTS×6, specs×1 | — | 7 | 2 | — |
 | birth19m | birth19m_fb.py | library | RESULTS, specs | RESULTS×3, specs×2 | — | 4 | 1 | — |
-| birth19m | birth19m_phase.py | results-cited | RESULTS, specs | RESULTS×6, specs×1 | — | 2 | 1 | — |
+| birth19m | birth19m_phase.py | results-cited | RESULTS, specs, via:TOOLING | RESULTS×6, specs×1 | — | 2 | 1 | — |
 | birth19m | birth19m_sg.py | library | RESULTS, specs | RESULTS×4, specs×1 | — | 3 | 1 | — |
 | birth19m | birth19m_sg7.py | library | RESULTS, specs | RESULTS×3, specs×1 | — | 2 | — | — |
 | birth19m | birth19m_snaps.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — | 1 | — |
@@ -187,9 +187,9 @@ Census: library 190, reproduce-pinned 9, results-cited 496, spec-cited 80, tool-
 | fb | fb_gate.py | library | RESULTS, specs | RESULTS×11, specs×2 | 1 | 3 | 1 | — |
 | fb | fb_prune.py | spec-cited | specs | specs×1 | — | — | — | — |
 | fig | fig_magic_scatter.py | spec-cited | specs | specs×1 | — | — | — | — |
-| first | first_moment_erasure.py | library | RESULTS, specs | RESULTS×37, specs×5 | 2 | 5 | — | — |
-| first | first_moment_erasure_ladder.py | library | RESULTS, specs | RESULTS×34, specs×5 | 2 | 5 | — | — |
-| first | first_moment_erasure_ladder2.py | library | RESULTS, specs | RESULTS×22, specs×4 | 2 | 4 | — | — |
+| first | first_moment_erasure.py | library | RESULTS, specs, via:TOOLING | RESULTS×37, specs×5 | 2 | 5 | — | — |
+| first | first_moment_erasure_ladder.py | library | RESULTS, specs, TOOLING | RESULTS×34, specs×5, TOOLING×1 | 2 | 5 | — | — |
+| first | first_moment_erasure_ladder2.py | library | RESULTS, specs, TOOLING | RESULTS×22, specs×4, TOOLING×1 | 2 | 4 | — | — |
 | fixed | fixed_q_snap.py | results-cited | via:RESULTS, via:specs | — | — | 1 | — | quick_exact_3080.sh |
 | floor | floor_hk1.sh | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 1 | — | — |
 | floor | floor_hk1_d256.sh | UNCITED | — | — | — | — | — | — |
@@ -495,9 +495,9 @@ Census: library 190, reproduce-pinned 9, results-cited 496, spec-cited 80, tool-
 | nineteen | nineteen_m_displace.py | results-cited | RESULTS, specs | RESULTS×4, specs×1 | — | — | — | — |
 | ogd0 | ogd0_launch.sh | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
 | oma1 | oma1_launch.sh | results-cited | RESULTS, specs | RESULTS×5, specs×1 | — | — | — | — |
-| onecycle | onecycle_component_audit.py | library | RESULTS, via:specs | RESULTS×32 | 1 | 2 | — | — |
-| optimizer | optimizer_geometry_desk.py | library | RESULTS, specs | RESULTS×35, specs×1 | 2 | 4 | — | — |
-| optimizer | optimizer_memory_ablation.py | library | RESULTS, specs | RESULTS×46, specs×1 | 3 | 3 | 1 | — |
+| onecycle | onecycle_component_audit.py | library | RESULTS, via:specs, via:TOOLING | RESULTS×32 | 1 | 2 | — | — |
+| optimizer | optimizer_geometry_desk.py | library | RESULTS, specs, via:TOOLING | RESULTS×35, specs×1 | 2 | 4 | — | — |
+| optimizer | optimizer_memory_ablation.py | library | RESULTS, specs, via:TOOLING | RESULTS×46, specs×1 | 3 | 3 | 1 | — |
 | oracle | oracle_worker.py | library | REPRODUCE, RESULTS, specs, via:TOOLING | REPRODUCE×1, RESULTS×3, specs×7 | 1 | 2 | 5 | — |
 | ozaki | ozaki_2b_bisect.py | spec-cited | specs, TOOLING | specs×3, TOOLING×1 | — | — | — | — |
 | ozaki | ozaki_2b_check.py | results-cited | RESULTS, specs, TOOLING | RESULTS×1, specs×3, TOOLING×1 | — | — | — | — |
@@ -717,7 +717,7 @@ Census: library 190, reproduce-pinned 9, results-cited 496, spec-cited 80, tool-
 | tuesday | tuesday_night.sh | UNCITED | — | — | — | — | — | — |
 | ugc0 | ugc0_launch.sh | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
 | umoe | umoe_conserve.py | library | RESULTS, via:specs | RESULTS×4 | 9 | 2 | 1 | — |
-| update | update_geometry_census.py | library | RESULTS, specs | RESULTS×37, specs×2 | 4 | 4 | 2 | — |
+| update | update_geometry_census.py | library | RESULTS, specs, via:TOOLING | RESULTS×37, specs×2 | 4 | 4 | 2 | — |
 | v4flash | v4flash_anatomy.py | spec-cited | specs | specs×1 | — | — | — | — |
 | v4flash | v4flash_census.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | — | 1 | — |
 | v4flash | v4flash_f1b.py | library | RESULTS, specs, via:TOOLING | RESULTS×2, specs×1 | 2 | — | — | — |
@@ -866,14 +866,14 @@ Census: library 190, reproduce-pinned 9, results-cited 496, spec-cited 80, tool-
 | gen | gen_codemap.py | library | RESULTS, specs, TOOLING | RESULTS×2, specs×28, TOOLING×13 | — | 7 | 1 | — |
 | gen | gen_dispatch_labels.py | results-cited | RESULTS | RESULTS×1 | — | — | 2 | — |
 | gen | gen_dispatch_labels_v2.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
-| gen | gen_figures_web.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — | — | — |
+| gen | gen_figures_web.py | results-cited | RESULTS, specs, TOOLING | RESULTS×1, specs×1, TOOLING×1 | — | — | — | — |
 | gen | gen_frontier.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
 | gen | gen_index.py | library | RESULTS, specs, TOOLING | RESULTS×1, specs×11, TOOLING×13 | — | 8 | — | — |
 | gen | gen_lake.py | library | RESULTS, specs | RESULTS×3, specs×1 | — | 1 | — | — |
 | gen | gen_magic_labels.py | results-cited | RESULTS, specs, TOOLING | RESULTS×3, specs×1, TOOLING×2 | — | — | — | — |
 | gen | gen_policy_labels.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
 | gen | gen_proposer_data.py | results-cited | RESULTS, specs | RESULTS×1, specs×9 | — | — | 1 | — |
-| gen | gen_readme.py | library | RESULTS, specs, TOOLING | RESULTS×1, specs×22, TOOLING×4 | 1 | 4 | — | — |
+| gen | gen_readme.py | library | RESULTS, specs, TOOLING | RESULTS×1, specs×22, TOOLING×5 | 1 | 4 | — | — |
 | gen | gen_receipt_lock.py | library | RESULTS, specs, TOOLING | RESULTS×1, specs×3, TOOLING×9 | 1 | 9 | — | — |
 | gen | gen_regret_labels.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
 | gen | gen_results_index.py | library | RESULTS, specs, TOOLING | RESULTS×8, specs×20, TOOLING×9 | 1 | 8 | 2 | — |
