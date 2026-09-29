@@ -842,18 +842,21 @@ gen_catalog.py — regenerate data/catalog/models.jsonl (EXHAUST, not evidence).
 - `main(argv=None)`
 
 ### scripts/gen_codemap.py
-Generate docs/CODEMAP.md: the move-gate inventory of scratch/ and scripts/ (adopted from the Grok structure review, 2026-08-06). One row per file: doc citations (RESULTS/REPRODUCE/BOARD/FINDINGS/handoffs/ specs), in-code references (imports + literal path strings), a mechanically derived class, and the filename family. The class ladder is observable-facts-only, no curation:
+Generate docs/CODEMAP.md: the move-gate inventory of scratch/ and scripts/ (adopted from the Grok structure review, 2026-08-06; law upgraded 2026-09-29, curation stage 2). One row per top-level file: how documents cite it, how code reaches it, a mechanically derived class, and the filename family. The class ladder is observable facts only, no curation:
 
 - `_tracked() -> set[str] | None` — Repo-relative paths git knows about, or None if git is unusable.
-- `_is_tracked(f: Path) -> bool`
-- `collect_files(base: str, pat: str) -> list[Path]`
-- `load_texts(paths: list[str]) -> dict[str, str]`
-- `load_code() -> dict[str, str]`
 - `family(name: str) -> str`
-- `code_refs(target: Path, code: dict[str, str]) -> tuple[list[str], list[str]]` — (importers, mention-only referrers) for the module.
-- `doc_cites(name: str, docs: dict[str, dict[str, str]]) -> dict[str, int]`
-- `classify(cites: dict[str, int], imports: list[str]) -> str`
-- `render() -> tuple[str, dict[str, int]]`
+- `_read(p: Path) -> str`
+- `class Repo` (rel, ok, expand, inventory, docs, code)
+- `cite_counter(text: str, names: set[str], stems: dict[str, str], prose: bool=True) -> Counter` — Citations of inventory names in one document: exact filename
+- `_call_name(node: ast.Call) -> str`
+- `_consts(node: ast.AST) -> list[str]`
+- `_prose_nodes(tree: ast.AST) -> set[int]` — ids of string constants that are docstrings or bare expression
+- `py_edges(text: str, names: set[str], stems: dict[str, str]) -> tuple[set[str], set[str], set[str]]` — (imported, invoked, mentioned) inventory names reached by one
+- `_names_in_string(s: str, names: set[str], stems: dict[str, str]) -> set[str]`
+- `sh_edges(text: str, names: set[str], stems: dict[str, str]) -> tuple[set[str], set[str]]` — (invoked, mentioned) for shell-like text (.sh, .cmd, skill docs):
+- `build(root: Path=ROOT, tracked: set[str] | None='auto') -> list[dict]` — One dict per inventory file with every evidence field the map
+- `render(rows: list[dict]) -> tuple[str, dict[str, int]]`
 - `write_if_changed(path: Path, text: str) -> bool` — Atomic write (tmp + os.replace) only when the content differs.
 - `main(argv: list[str] | None=None) -> int`
 

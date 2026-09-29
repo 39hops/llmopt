@@ -8,7 +8,12 @@ user-invocable: false
 
 `docs/CODEMAP.md` is the move gate: one row per top-level file in
 scratch/ and scripts/, class ladder
-`library > reproduce-pinned > results-cited > spec-cited > UNCITED`.
+`library > reproduce-pinned > results-cited > spec-cited > tool-referenced > UNCITED`.
+Since 2026-09-29 the law follows the repository's real reach: dotted
+and dynamic imports, path-literal and shell invocation, tooling
+references (CLAUDE.md, .claude/, jobs/, pyproject), preregs, locked
+receipts that name their emitter, brace / glob / bare-stem citations,
+and citations inherited THROUGH a cited caller (the `via` column).
 
 Before editing any file there:
 
@@ -25,11 +30,15 @@ grep -n "<filename>" docs/CODEMAP.md
   this), or (b) an adoption migration that deletes the guard in the
   same commit. Otherwise extend the adopted `llmopt/lab/` module.
   Never fork a frozen family (no detbwd_r4.py).
-- **library** — imported by other code; edit freely but run the
-  importers' tests.
+- **library** — imported by other code, or invoked by path from
+  llmopt/ or tests/; edit freely but run the importers' tests.
 - **spec-cited** — a spec references it; edit fine, keep the spec
   claim true.
-- **UNCITED** — free.
+- **tool-referenced** — only lab tooling names it (a skill, CLAUDE.md,
+  a jobs/*.cmd); edit fine, keep the tool pointer true.
+- **UNCITED** — no document names it and no code reaches it. Still
+  not automatically disposable: a UNCITED file may be the only run
+  recipe behind a verdict booked by log path.
 
 ## Regen rule
 

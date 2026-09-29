@@ -1,0 +1,1146 @@
+{
+ "_doc": "docs/CODEMAP.md class per inventory file before (commit 9d7f35f5, old law) and after the 2026-09-29 law upgrade (curation stage 2). Only files whose class changed. Demotions are old substring false positives, named in the commit message.",
+ "by_transition": {
+  "UNCITED -> library": [
+   "bench_decoding.py",
+   "bench_prefix_reuse.py",
+   "bench_static.py",
+   "gate_ckpt_cuda.py",
+   "mathworld1_svpchal2.py",
+   "mathworld1_svpgriddesk.py",
+   "mathworld1_svpgriddesk2.py",
+   "qwen_runtime0r.py"
+  ],
+  "UNCITED -> results-cited": [
+   "bench_adaptive_draft.py",
+   "bench_anneal.py",
+   "bench_ansatz_search.py",
+   "bench_ansatz_search_2b.py",
+   "bench_bandit.py",
+   "bench_bestfirst.py",
+   "bench_bestfirst_llm.py",
+   "bench_bestfirst_nnue.py",
+   "bench_commute.py",
+   "bench_compile.py",
+   "bench_control.py",
+   "bench_dispatch_race_v4.py",
+   "bench_distilled_draft.py",
+   "bench_entropy_beam.py",
+   "bench_fib_restarts.py",
+   "bench_flash_prefill.py",
+   "bench_fused.py",
+   "bench_gated.py",
+   "bench_gweight.py",
+   "bench_int4_config_sweep.py",
+   "bench_interference.py",
+   "bench_ksweep.py",
+   "bench_kv_quant_decode.py",
+   "bench_llm_gating.py",
+   "bench_lookup_static.py",
+   "bench_luby.py",
+   "bench_markov.py",
+   "bench_markov_adaptive.py",
+   "bench_mlx_integration.py",
+   "bench_ode_engine.py",
+   "bench_opcap.py",
+   "bench_population.py",
+   "bench_regret_resample.py",
+   "bench_stack_winners.py",
+   "bench_stacked.py",
+   "bench_syndrome_head.py",
+   "bench_temp_race.py",
+   "bench_tree_verify.py",
+   "bench_triton_kernels.py",
+   "birth19m_snaps.py",
+   "brute_c_arm_0801.sh",
+   "ce400.py",
+   "claim_lint.py",
+   "complex_birth.py",
+   "crossfoster1d_launch.sh",
+   "d2_verify.py",
+   "ex4_mask_census.py",
+   "ex5_manifest.py",
+   "ex5_traj_rider.py",
+   "ex5_traj_rider2.py",
+   "export_mb_ref.py",
+   "farm_v22.py",
+   "fixed_q_snap.py",
+   "floor_hk1.sh",
+   "format_delta_prep.py",
+   "format_ladder.py",
+   "gate_zx.py",
+   "gen_dispatch_labels.py",
+   "gen_dispatch_labels_v2.py",
+   "gen_frontier.py",
+   "gen_lab_overview_pdf.py",
+   "gen_policy_labels.py",
+   "gen_regret_labels.py",
+   "gen_scoreboard.py",
+   "greedy_first_gate.py",
+   "harvest_champion.py",
+   "l9_probe.py",
+   "lam_merge_review.py",
+   "make_union_diet.py",
+   "mathworld1_liveness.py",
+   "mathworld1_prband2score_verify.py",
+   "mathworld1_svpgeodesk.py",
+   "mathworld1_svpgriddesk3.py",
+   "mathworld1_svpgriddesk4.py",
+   "mathworld1_zdpdesk.py",
+   "muon_3ep_d256.py",
+   "pincer_dist_report.py",
+   "qwen_alttok_derive.py",
+   "qwen_topset_census.py",
+   "rat_repair.py",
+   "train_dispatcher.py",
+   "train_fp64.py",
+   "train_tf32x3.py",
+   "writercaf1_smoke.sh"
+  ],
+  "UNCITED -> spec-cited": [
+   "anchor_guard.py",
+   "build_merged_diet.py",
+   "duo_mine.py",
+   "emission_wall_pair.py",
+   "int3_rider.py",
+   "markov_prior.py",
+   "ozaki_2b_bisect.py",
+   "ozaki_2b_debug.py",
+   "ozaki_2b_ident.py",
+   "ozaki_cuda.py",
+   "qwen_displace_extract.py",
+   "task_composition.py",
+   "v4flash_anatomy.py"
+  ],
+  "UNCITED -> tool-referenced": [
+   "brute_arms_0801.sh",
+   "brute_b_arms_0801.sh",
+   "cite_lookup.py",
+   "gt6_resume_arms.sh",
+   "synonym_test.py"
+  ],
+  "reproduce-pinned -> library": [
+   "oracle_worker.py"
+  ],
+  "results-cited -> UNCITED": [
+   "margin_census.py"
+  ],
+  "results-cited -> library": [
+   "adjudicate.py",
+   "birth19m_atoms_ladder.py",
+   "birth19m_atoms_traj.py",
+   "birth19m_caf.py",
+   "birth19m_dfa.py",
+   "birth19m_fb.py",
+   "birth19m_sg.py",
+   "birth19m_sg7.py",
+   "caf_qualgate.py",
+   "ckpt_manifest.py",
+   "crossfoster_chain.py",
+   "fb_gate.py",
+   "gate_ckpt.py",
+   "gen_catalog.py",
+   "gen_codemap.py",
+   "gen_lake.py",
+   "gen_results_index.py",
+   "k2h_stagecensus.py",
+   "k3_expert_demo.py",
+   "liverun.py",
+   "log_hygiene.py",
+   "mathworld0.py",
+   "mathworld1_actionfinal.py",
+   "mathworld1_actionsem.py",
+   "mathworld1_actiontok.py",
+   "mathworld1_axfixture.py",
+   "mathworld1_birth.py",
+   "mathworld1_cl1pop.py",
+   "mathworld1_cl1run.py",
+   "mathworld1_matsub.py",
+   "mathworld1_prband.py",
+   "mathworld1_prband2atlasagg.py",
+   "mathworld1_prband2atlasscore.py",
+   "mathworld1_prband2desk.py",
+   "mathworld1_prband2nuis.py",
+   "mathworld1_prband2score.py",
+   "mathworld1_respath.py",
+   "mathworld1_srepr_export.py",
+   "mathworld1_svpadj.py",
+   "mathworld1_svpbirth.py",
+   "mathworld1_svpchal.py",
+   "mathworld1_svpcode.py",
+   "mathworld1_svpdiet.py",
+   "mathworld1_svpdiet2.py",
+   "mathworld1_svpdiet3.py",
+   "mathworld1_svpeval.py",
+   "mathworld1_svpfoheld.py",
+   "mathworld1_svpfohrepl.py",
+   "mathworld1_svpforder.py",
+   "mathworld1_svpforepl.py",
+   "mathworld1_svpnuisdesk.py",
+   "mathworld1_svpp2qual.py",
+   "mathworld1_unprodsem.py",
+   "mezo_signal_desk.py",
+   "obs_from_receipt_0s.py",
+   "p4_arms_0801.sh",
+   "perturbation_response_gram_desk.py",
+   "pincer_r1b_labels.py",
+   "prgd0_launch.sh",
+   "qwen_ble2_adjudicate.py",
+   "qwen_cuda_rung4.py",
+   "qwen_family_probe.py",
+   "qwen_ioattrib_adjudicate.py",
+   "qwen_lband_adjudicate.py",
+   "qwen_model1_score.py",
+   "qwen_model2_adjudicate.py",
+   "qwen_recompose.py",
+   "qwen_residual_census.py",
+   "qwen_stream_probe.py",
+   "qwen_tree_adjudicate.py",
+   "qwen_whole0t.py",
+   "random_direction_control.py",
+   "routedb_replay.py",
+   "routedb_time.py",
+   "sg7_qualgate.py",
+   "sg_crosspos_desk.py",
+   "sg_failure_labels.py",
+   "sg_qualgate.py",
+   "sg_target_audit.py",
+   "sgbb7_qual_driver.sh",
+   "softprompt1.py",
+   "stream_wdistill0s.py",
+   "wsl.sh"
+  ],
+  "results-cited -> spec-cited": [
+   "__init__.py",
+   "qwen_qualify.py"
+  ],
+  "spec-cited -> library": [
+   "ex6med.py",
+   "fold_book.py",
+   "gen_index.py",
+   "gen_readme.py",
+   "qwen_attrib_adjudicate.py",
+   "results_query.py"
+  ],
+  "spec-cited -> results-cited": [
+   "bench_adaptive.py",
+   "bench_derivation.py",
+   "bench_frontier.py",
+   "bench_ladder.py",
+   "bench_metal_kernels.py",
+   "bench_nnue.py",
+   "bench_proposer.py",
+   "bench_rotate_quantize.py",
+   "bench_vge.py",
+   "gate_cplx.py",
+   "gen_figures_web.py",
+   "gen_proposer_data.py",
+   "gt7_draw.py",
+   "harvest_frontier.py",
+   "series_probe.py",
+   "step_grpo.py",
+   "sym_spectrum.py",
+   "train_proposer.py",
+   "train_weight_reader.py"
+  ]
+ },
+ "census_after": "library 190, reproduce-pinned 9, results-cited 496, spec-cited 80, tool-referenced 5, UNCITED 124",
+ "census_before": "UNCITED 233, library 92, reproduce-pinned 10, results-cited 479, spec-cited 90",
+ "demotions": {
+  "__init__.py": "old law substring-matched llmopt/weightspace/__init__.py",
+  "margin_census.py": "old law substring-matched scratch/qwen_margin_census.py",
+  "qwen_qualify.py": "old law substring-matched tests/test_qwen_qualify.py"
+ },
+ "frozen_under_guard_after": 688,
+ "frozen_under_guard_before": 489,
+ "per_file": {
+  "__init__.py": [
+   "results-cited",
+   "spec-cited"
+  ],
+  "adjudicate.py": [
+   "results-cited",
+   "library"
+  ],
+  "anchor_guard.py": [
+   "UNCITED",
+   "spec-cited"
+  ],
+  "bench_adaptive.py": [
+   "spec-cited",
+   "results-cited"
+  ],
+  "bench_adaptive_draft.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_anneal.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_ansatz_search.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_ansatz_search_2b.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_bandit.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_bestfirst.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_bestfirst_llm.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_bestfirst_nnue.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_commute.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_compile.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_control.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_decoding.py": [
+   "UNCITED",
+   "library"
+  ],
+  "bench_derivation.py": [
+   "spec-cited",
+   "results-cited"
+  ],
+  "bench_dispatch_race_v4.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_distilled_draft.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_entropy_beam.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_fib_restarts.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_flash_prefill.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_frontier.py": [
+   "spec-cited",
+   "results-cited"
+  ],
+  "bench_fused.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_gated.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_gweight.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_int4_config_sweep.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_interference.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_ksweep.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_kv_quant_decode.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_ladder.py": [
+   "spec-cited",
+   "results-cited"
+  ],
+  "bench_llm_gating.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_lookup_static.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_luby.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_markov.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_markov_adaptive.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_metal_kernels.py": [
+   "spec-cited",
+   "results-cited"
+  ],
+  "bench_mlx_integration.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_nnue.py": [
+   "spec-cited",
+   "results-cited"
+  ],
+  "bench_ode_engine.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_opcap.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_population.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_prefix_reuse.py": [
+   "UNCITED",
+   "library"
+  ],
+  "bench_proposer.py": [
+   "spec-cited",
+   "results-cited"
+  ],
+  "bench_regret_resample.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_rotate_quantize.py": [
+   "spec-cited",
+   "results-cited"
+  ],
+  "bench_stack_winners.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_stacked.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_static.py": [
+   "UNCITED",
+   "library"
+  ],
+  "bench_syndrome_head.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_temp_race.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_tree_verify.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_triton_kernels.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "bench_vge.py": [
+   "spec-cited",
+   "results-cited"
+  ],
+  "birth19m_atoms_ladder.py": [
+   "results-cited",
+   "library"
+  ],
+  "birth19m_atoms_traj.py": [
+   "results-cited",
+   "library"
+  ],
+  "birth19m_caf.py": [
+   "results-cited",
+   "library"
+  ],
+  "birth19m_dfa.py": [
+   "results-cited",
+   "library"
+  ],
+  "birth19m_fb.py": [
+   "results-cited",
+   "library"
+  ],
+  "birth19m_sg.py": [
+   "results-cited",
+   "library"
+  ],
+  "birth19m_sg7.py": [
+   "results-cited",
+   "library"
+  ],
+  "birth19m_snaps.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "brute_arms_0801.sh": [
+   "UNCITED",
+   "tool-referenced"
+  ],
+  "brute_b_arms_0801.sh": [
+   "UNCITED",
+   "tool-referenced"
+  ],
+  "brute_c_arm_0801.sh": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "build_merged_diet.py": [
+   "UNCITED",
+   "spec-cited"
+  ],
+  "caf_qualgate.py": [
+   "results-cited",
+   "library"
+  ],
+  "ce400.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "cite_lookup.py": [
+   "UNCITED",
+   "tool-referenced"
+  ],
+  "ckpt_manifest.py": [
+   "results-cited",
+   "library"
+  ],
+  "claim_lint.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "complex_birth.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "crossfoster1d_launch.sh": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "crossfoster_chain.py": [
+   "results-cited",
+   "library"
+  ],
+  "d2_verify.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "duo_mine.py": [
+   "UNCITED",
+   "spec-cited"
+  ],
+  "emission_wall_pair.py": [
+   "UNCITED",
+   "spec-cited"
+  ],
+  "ex4_mask_census.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "ex5_manifest.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "ex5_traj_rider.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "ex5_traj_rider2.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "ex6med.py": [
+   "spec-cited",
+   "library"
+  ],
+  "export_mb_ref.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "farm_v22.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "fb_gate.py": [
+   "results-cited",
+   "library"
+  ],
+  "fixed_q_snap.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "floor_hk1.sh": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "fold_book.py": [
+   "spec-cited",
+   "library"
+  ],
+  "format_delta_prep.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "format_ladder.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "gate_ckpt.py": [
+   "results-cited",
+   "library"
+  ],
+  "gate_ckpt_cuda.py": [
+   "UNCITED",
+   "library"
+  ],
+  "gate_cplx.py": [
+   "spec-cited",
+   "results-cited"
+  ],
+  "gate_zx.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "gen_catalog.py": [
+   "results-cited",
+   "library"
+  ],
+  "gen_codemap.py": [
+   "results-cited",
+   "library"
+  ],
+  "gen_dispatch_labels.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "gen_dispatch_labels_v2.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "gen_figures_web.py": [
+   "spec-cited",
+   "results-cited"
+  ],
+  "gen_frontier.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "gen_index.py": [
+   "spec-cited",
+   "library"
+  ],
+  "gen_lab_overview_pdf.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "gen_lake.py": [
+   "results-cited",
+   "library"
+  ],
+  "gen_policy_labels.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "gen_proposer_data.py": [
+   "spec-cited",
+   "results-cited"
+  ],
+  "gen_readme.py": [
+   "spec-cited",
+   "library"
+  ],
+  "gen_regret_labels.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "gen_results_index.py": [
+   "results-cited",
+   "library"
+  ],
+  "gen_scoreboard.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "greedy_first_gate.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "gt6_resume_arms.sh": [
+   "UNCITED",
+   "tool-referenced"
+  ],
+  "gt7_draw.py": [
+   "spec-cited",
+   "results-cited"
+  ],
+  "harvest_champion.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "harvest_frontier.py": [
+   "spec-cited",
+   "results-cited"
+  ],
+  "int3_rider.py": [
+   "UNCITED",
+   "spec-cited"
+  ],
+  "k2h_stagecensus.py": [
+   "results-cited",
+   "library"
+  ],
+  "k3_expert_demo.py": [
+   "results-cited",
+   "library"
+  ],
+  "l9_probe.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "lam_merge_review.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "liverun.py": [
+   "results-cited",
+   "library"
+  ],
+  "log_hygiene.py": [
+   "results-cited",
+   "library"
+  ],
+  "make_union_diet.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "margin_census.py": [
+   "results-cited",
+   "UNCITED"
+  ],
+  "markov_prior.py": [
+   "UNCITED",
+   "spec-cited"
+  ],
+  "mathworld0.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_actionfinal.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_actionsem.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_actiontok.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_axfixture.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_birth.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_cl1pop.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_cl1run.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_liveness.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "mathworld1_matsub.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_prband.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_prband2atlasagg.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_prband2atlasscore.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_prband2desk.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_prband2nuis.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_prband2score.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_prband2score_verify.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "mathworld1_respath.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_srepr_export.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_svpadj.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_svpbirth.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_svpchal.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_svpchal2.py": [
+   "UNCITED",
+   "library"
+  ],
+  "mathworld1_svpcode.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_svpdiet.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_svpdiet2.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_svpdiet3.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_svpeval.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_svpfoheld.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_svpfohrepl.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_svpforder.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_svpforepl.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_svpgeodesk.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "mathworld1_svpgriddesk.py": [
+   "UNCITED",
+   "library"
+  ],
+  "mathworld1_svpgriddesk2.py": [
+   "UNCITED",
+   "library"
+  ],
+  "mathworld1_svpgriddesk3.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "mathworld1_svpgriddesk4.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "mathworld1_svpnuisdesk.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_svpp2qual.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_unprodsem.py": [
+   "results-cited",
+   "library"
+  ],
+  "mathworld1_zdpdesk.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "mezo_signal_desk.py": [
+   "results-cited",
+   "library"
+  ],
+  "muon_3ep_d256.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "obs_from_receipt_0s.py": [
+   "results-cited",
+   "library"
+  ],
+  "oracle_worker.py": [
+   "reproduce-pinned",
+   "library"
+  ],
+  "ozaki_2b_bisect.py": [
+   "UNCITED",
+   "spec-cited"
+  ],
+  "ozaki_2b_debug.py": [
+   "UNCITED",
+   "spec-cited"
+  ],
+  "ozaki_2b_ident.py": [
+   "UNCITED",
+   "spec-cited"
+  ],
+  "ozaki_cuda.py": [
+   "UNCITED",
+   "spec-cited"
+  ],
+  "p4_arms_0801.sh": [
+   "results-cited",
+   "library"
+  ],
+  "perturbation_response_gram_desk.py": [
+   "results-cited",
+   "library"
+  ],
+  "pincer_dist_report.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "pincer_r1b_labels.py": [
+   "results-cited",
+   "library"
+  ],
+  "prgd0_launch.sh": [
+   "results-cited",
+   "library"
+  ],
+  "qwen_alttok_derive.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "qwen_attrib_adjudicate.py": [
+   "spec-cited",
+   "library"
+  ],
+  "qwen_ble2_adjudicate.py": [
+   "results-cited",
+   "library"
+  ],
+  "qwen_cuda_rung4.py": [
+   "results-cited",
+   "library"
+  ],
+  "qwen_displace_extract.py": [
+   "UNCITED",
+   "spec-cited"
+  ],
+  "qwen_family_probe.py": [
+   "results-cited",
+   "library"
+  ],
+  "qwen_ioattrib_adjudicate.py": [
+   "results-cited",
+   "library"
+  ],
+  "qwen_lband_adjudicate.py": [
+   "results-cited",
+   "library"
+  ],
+  "qwen_model1_score.py": [
+   "results-cited",
+   "library"
+  ],
+  "qwen_model2_adjudicate.py": [
+   "results-cited",
+   "library"
+  ],
+  "qwen_qualify.py": [
+   "results-cited",
+   "spec-cited"
+  ],
+  "qwen_recompose.py": [
+   "results-cited",
+   "library"
+  ],
+  "qwen_residual_census.py": [
+   "results-cited",
+   "library"
+  ],
+  "qwen_runtime0r.py": [
+   "UNCITED",
+   "library"
+  ],
+  "qwen_stream_probe.py": [
+   "results-cited",
+   "library"
+  ],
+  "qwen_topset_census.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "qwen_tree_adjudicate.py": [
+   "results-cited",
+   "library"
+  ],
+  "qwen_whole0t.py": [
+   "results-cited",
+   "library"
+  ],
+  "random_direction_control.py": [
+   "results-cited",
+   "library"
+  ],
+  "rat_repair.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "results_query.py": [
+   "spec-cited",
+   "library"
+  ],
+  "routedb_replay.py": [
+   "results-cited",
+   "library"
+  ],
+  "routedb_time.py": [
+   "results-cited",
+   "library"
+  ],
+  "series_probe.py": [
+   "spec-cited",
+   "results-cited"
+  ],
+  "sg7_qualgate.py": [
+   "results-cited",
+   "library"
+  ],
+  "sg_crosspos_desk.py": [
+   "results-cited",
+   "library"
+  ],
+  "sg_failure_labels.py": [
+   "results-cited",
+   "library"
+  ],
+  "sg_qualgate.py": [
+   "results-cited",
+   "library"
+  ],
+  "sg_target_audit.py": [
+   "results-cited",
+   "library"
+  ],
+  "sgbb7_qual_driver.sh": [
+   "results-cited",
+   "library"
+  ],
+  "softprompt1.py": [
+   "results-cited",
+   "library"
+  ],
+  "step_grpo.py": [
+   "spec-cited",
+   "results-cited"
+  ],
+  "stream_wdistill0s.py": [
+   "results-cited",
+   "library"
+  ],
+  "sym_spectrum.py": [
+   "spec-cited",
+   "results-cited"
+  ],
+  "synonym_test.py": [
+   "UNCITED",
+   "tool-referenced"
+  ],
+  "task_composition.py": [
+   "UNCITED",
+   "spec-cited"
+  ],
+  "train_dispatcher.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "train_fp64.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "train_proposer.py": [
+   "spec-cited",
+   "results-cited"
+  ],
+  "train_tf32x3.py": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "train_weight_reader.py": [
+   "spec-cited",
+   "results-cited"
+  ],
+  "v4flash_anatomy.py": [
+   "UNCITED",
+   "spec-cited"
+  ],
+  "writercaf1_smoke.sh": [
+   "UNCITED",
+   "results-cited"
+  ],
+  "wsl.sh": [
+   "results-cited",
+   "library"
+  ]
+ }
+}
