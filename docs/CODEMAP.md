@@ -863,15 +863,15 @@ Census: UNCITED 233, library 92, reproduce-pinned 10, results-cited 479, spec-ci
 | gen | gen_dispatch_labels_v2.py | UNCITED | — | — | — | — |
 | gen | gen_figures_web.py | spec-cited | specs | specs×1 | — | — |
 | gen | gen_frontier.py | UNCITED | — | — | — | — |
-| gen | gen_index.py | spec-cited | specs | specs×10 | — | 3 |
+| gen | gen_index.py | spec-cited | specs | specs×10 | — | 4 |
 | gen | gen_lake.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 1 |
 | gen | gen_magic_labels.py | results-cited | RESULTS | RESULTS×1 | — | — |
 | gen | gen_policy_labels.py | UNCITED | — | — | — | — |
 | gen | gen_proposer_data.py | spec-cited | specs | specs×7 | — | 1 |
-| gen | gen_readme.py | spec-cited | specs | specs×24 | — | 2 |
-| gen | gen_receipt_lock.py | library | — | — | 1 | 3 |
+| gen | gen_readme.py | spec-cited | specs | specs×24 | — | 3 |
+| gen | gen_receipt_lock.py | library | — | — | 1 | 4 |
 | gen | gen_regret_labels.py | UNCITED | — | — | — | — |
-| gen | gen_results_index.py | results-cited | RESULTS, specs | RESULTS×4, specs×13 | — | 7 |
+| gen | gen_results_index.py | results-cited | RESULTS, specs | RESULTS×4, specs×13 | — | 8 |
 | gen | gen_scoreboard.py | UNCITED | — | — | — | — |
 | gen | gen_syndrome_labels.py | results-cited | RESULTS | RESULTS×1 | — | 1 |
 | grow | grow_mathnative.py | library | specs | specs×1 | 1 | 1 |

@@ -26,10 +26,13 @@ metadata, perform ALL of these steps in order:
    target. Heading:
    `## VERDICT|PRE-REG|AMENDMENT <NAME>: <one-line claim> (<date>, <machine>)`
 2. **Regenerate the index**: `.venv/bin/python scripts/gen_results_index.py`.
-   Always run it yourself. The ledger_regen PostToolUse hook now
-   matches `Edit|Write|Bash` and handles heredoc RESULTS appends,
-   but it is BEST-EFFORT (timeouts, hook failures fail open) — the
-   explicit generator step stays.
+   Always run it yourself. The ledger_regen hook (pre/post phases on
+   `Edit|Write|Bash`) regenerates only when a watched SOURCE actually
+   changed between the two phases (mtime/size snapshot, never the
+   command text), so heredoc RESULTS appends are covered and read-only
+   greps run nothing; it is BEST-EFFORT (timeouts, hook failures fail
+   open) — the explicit generator step stays. Verify with
+   `scripts/gen_results_index.py --check`.
 3. **Link**: patch the new rows in place with
    `llmopt.lab.jsonl.read_jsonl` / `write_jsonl` — set `threads`
    (kebab-case program names) and `links` (related entry ids, not

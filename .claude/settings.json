@@ -21,6 +21,12 @@
             "command": ".venv/bin/python .claude/hooks/receipt_freeze.py",
             "timeout": 10,
             "statusMessage": "Checking booked-receipt immutability"
+          },
+          {
+            "type": "command",
+            "command": ".venv/bin/python .claude/hooks/ledger_regen.py pre",
+            "timeout": 15,
+            "statusMessage": "Snapshotting ledger sources"
           }
         ]
       },
@@ -44,6 +50,12 @@
             "command": ".venv/bin/python .claude/hooks/receipt_freeze.py",
             "timeout": 10,
             "statusMessage": "Checking booked-receipt immutability"
+          },
+          {
+            "type": "command",
+            "command": ".venv/bin/python .claude/hooks/ledger_regen.py pre",
+            "timeout": 15,
+            "statusMessage": "Snapshotting ledger sources"
           }
         ]
       }
@@ -54,7 +66,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": ".venv/bin/python .claude/hooks/ledger_regen.py",
+            "command": ".venv/bin/python .claude/hooks/ledger_regen.py post",
             "timeout": 120,
             "statusMessage": "Regenerating ledger surfaces"
           }

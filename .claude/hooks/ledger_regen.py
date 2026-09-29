@@ -1,36 +1,127 @@
 #!/usr/bin/env python3
 """Regenerate whatever a ledger edit just invalidated.
 
-The ledger has four generated surfaces, each derived from a file a
+The ledger has four generated surfaces, each derived from a source a
 session edits by hand:
 
   docs/RESULTS.md   -> docs/results-index.jsonl (gen_results_index.py)
+                       + docs/receipts.lock.json (gen_receipt_lock.py)
                        + the FINDINGS ratchet headroom line
+  docs/preregs/*    -> docs/receipts.lock.json
   docs/FINDINGS.md  -> README's honesty-ledger region and the
                        honesty_ledger figure in docs/figures.json
                        (gen_readme.py owns both)
-  scratch/*.py      -> scripts/INDEX.md (gen_index.py)
-  scripts/*.py
+  scratch/*.py, scripts/*.py, llmopt/{,lab,train,search}/*.py
+                    -> scripts/INDEX.md
 
-This hook fires on Edit|Write AND on Bash. Bash matters because
-RESULTS.md is ~30k lines: the booking ritual appends with a heredoc
-(`cat >> docs/RESULTS.md << 'EOF'`), which is a Bash call, so an
-Edit|Write-only hook never sees the largest and most frequent ledger
-mutation in the repo. For Bash the trigger is a path mentioned in the
-command text — deliberately loose, because the generators are
-idempotent and a spurious regen costs a second.
+INVARIANT (2026-09-29): read-only repository inspection never mutates
+tracked files. The hook therefore never infers "a source changed"
+from a command's TEXT (a `grep` naming docs/RESULTS.md changes
+nothing). It runs in two phases wired in .claude/settings.json:
 
-Never fails a tool call: every generator runs best-effort and the
-hook exits 0 regardless. It is a convenience, not a gate; the gates
-are tests/test_docs_integrity.py and tests/test_gen_readme.py.
+  pre   (PreToolUse, Bash|Edit|Write): snapshot (mtime_ns, size) of
+        every watched source into a state file keyed by tool_use_id.
+  post  (PostToolUse, same matcher): re-snapshot, diff against the
+        pre snapshot, run ONLY the generators whose sources changed,
+        delete the state file. No snapshot -> nothing runs.
+
+Every generator is a fixed point over its own output and writes only
+when the content differs, so a spurious run is harmless; the point of
+the snapshot is that it does not happen at all. The diff is of the
+TREE, not of what this one tool did: a read-only call that overlaps
+another call's real edit will also see the change and regenerate
+(same result the editor's post would write). Posts serialize on a
+lock so two generators never write one file at once.
+LLMOPT_NO_AUTOREGEN=1 disables regeneration entirely (defense in
+depth, not the mechanism). Never fails a tool call: best-effort,
+exit 0 regardless. The gates are scripts/check_source.sh (`--check`
+on every generator) and tests/test_ledger_regen_hook.py.
 """
+from __future__ import annotations
+
+import fcntl
+import hashlib
 import json
+import os
 import subprocess
 import sys
+import tempfile
+import time
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
-PY = str(ROOT / ".venv" / "bin" / "python")
+ROOT = Path(os.environ.get("LLMOPT_HOOK_ROOT")
+            or Path(__file__).resolve().parents[2])
+PY = os.environ.get("LLMOPT_HOOK_PY") or str(ROOT / ".venv" / "bin" / "python")
+LOG = os.environ.get("LLMOPT_HOOK_LOG")  # test seam: record planned runs
+
+# watched sources: (glob relative to ROOT, generator group)
+WATCH = [
+    ("docs/RESULTS.md", "results"),
+    ("docs/preregs/*.json", "preregs"),
+    ("docs/FINDINGS.md", "findings"),
+    ("scratch/*.py", "index"),
+    ("scripts/*.py", "index"),
+    ("llmopt/*.py", "index"),
+    ("llmopt/lab/*.py", "index"),
+    ("llmopt/train/*.py", "index"),
+    ("llmopt/search/*.py", "index"),
+]
+
+GENERATORS = {
+    "results": ["scripts/gen_results_index.py",
+                "scripts/gen_receipt_lock.py",
+                ".claude/hooks/findings_headroom.py"],
+    "preregs": ["scripts/gen_receipt_lock.py"],
+    "findings": ["scripts/gen_readme.py"],
+    "index": ["scripts/gen_index.py"],
+}
+
+NOTES = {
+    "results": "results-index + receipt lock regenerated.",
+    "preregs": "receipt lock regenerated for prereg-declared receipts.",
+    "findings": ("README + figures.json honesty ledger regenerated "
+                 "(counts follow FINDINGS; commit them with the booking "
+                 "or the suite goes red)."),
+    "index": ("INDEX regenerated. If a file is NEW: commit it, then "
+              "rerun gen_codemap.py (tracked files only) or the suite "
+              "goes red."),
+}
+
+
+def snapshot(root: Path = ROOT) -> dict[str, list[int]]:
+    """{relpath: [mtime_ns, size]} for every watched source present."""
+    out: dict[str, list[int]] = {}
+    for pat, _ in WATCH:
+        for p in root.glob(pat):
+            if p.is_file():
+                st = p.stat()
+                out[str(p.relative_to(root))] = [st.st_mtime_ns, st.st_size]
+    return out
+
+
+def changed_sources(before: dict, after: dict) -> set[str]:
+    """Paths added, removed, or with a different (mtime_ns, size)."""
+    return {k for k in set(before) | set(after)
+            if before.get(k) != after.get(k)}
+
+
+def group_of(rel: str) -> str | None:
+    p = Path(rel)
+    for pat, grp in WATCH:
+        if p.match(pat):
+            return grp
+    return None
+
+
+def plan(changed: set[str]) -> list[str]:
+    """Ordered, de-duplicated generator list for the changed sources."""
+    groups = [g for g in GENERATORS if any(group_of(c) == g for c in changed)]
+    out: list[str] = []
+    for g in groups:
+        for gen in GENERATORS[g]:
+            if gen not in out:
+                out.append(gen)
+    return out
 
 
 def run(*args: str) -> str:
@@ -38,6 +129,9 @@ def run(*args: str) -> str:
     either stream — findings_headroom.py writes its warning to stderr
     and exits 2, so stdout alone would drop exactly the message worth
     surfacing."""
+    if LOG:
+        with open(LOG, "a") as f:
+            f.write(" ".join(args) + "\n")
     try:
         r = subprocess.run([PY, *args], cwd=ROOT, capture_output=True,
                            text=True, timeout=120)
@@ -46,49 +140,84 @@ def run(*args: str) -> str:
         return ""
 
 
-def main() -> None:
-    try:
-        data = json.load(sys.stdin)
-    except Exception:
-        return
-    ti = data.get("tool_input") or {}
-    if data.get("tool_name") == "Bash":
-        subject = ti.get("command", "")
-    else:
-        subject = (ti.get("file_path")
-                   or (data.get("tool_response") or {}).get("filePath")
-                   or "")
-    if not subject:
-        return
+STATE_DIR = Path(tempfile.gettempdir()) / "llmopt-ledger-regen"
+STALE_S = 24 * 3600  # a pre whose post never fired (blocked call) leaks
 
+
+def _state_path(data: dict) -> Path | None:
+    """Per-tool-call state file; None when the call cannot be keyed."""
+    key = data.get("tool_use_id")
+    if not key:
+        return None  # no per-call key: fail open, run nothing
+    key = hashlib.sha256(str(key).encode()).hexdigest()[:24]
+    STATE_DIR.mkdir(parents=True, exist_ok=True)
+    return STATE_DIR / f"{key}.json"
+
+
+def _sweep_stale() -> None:
+    cutoff = time.time() - STALE_S
+    for f in STATE_DIR.glob("*.json"):
+        try:
+            if f.stat().st_mtime < cutoff:
+                f.unlink()
+        except OSError:
+            pass
+
+
+def _main(argv: list[str]) -> None:
+    phase = argv[1] if len(argv) > 1 else "post"
+    if phase not in ("pre", "post"):
+        return
+    data = json.load(sys.stdin)
+    if not isinstance(data, dict):
+        return
+    if data.get("tool_name") not in ("Bash", "Edit", "Write"):
+        return
+    state = _state_path(data)
+    if state is None:
+        return
+    if phase == "pre":
+        _sweep_stale()
+        state.write_text(json.dumps(snapshot()))
+        return
+    if os.environ.get("LLMOPT_NO_AUTOREGEN"):
+        state.unlink(missing_ok=True)
+        return
+    if not state.exists():
+        return  # no baseline: cannot prove a change, so run nothing
+    try:
+        before = json.loads(state.read_text())
+    except Exception:
+        before = None
+    state.unlink(missing_ok=True)
+    if before is None:
+        return
+    changed = changed_sources(before, snapshot())
+    if not changed:
+        return
     notes = []
-    if "docs/RESULTS.md" in subject:
-        run("scripts/gen_results_index.py")
-        # a new booking may cite new receipt paths — the lock must
-        # learn them (coverage hole, external review 2026-08-16);
-        # gen_receipt_lock refuses changed shas on its own
-        run("scripts/gen_receipt_lock.py")
-        head = run(".claude/hooks/findings_headroom.py")
-        notes.append("results-index + receipt lock regenerated."
-                     + (f" {head}" if head else ""))
-    if "docs/preregs/" in subject:
-        run("scripts/gen_receipt_lock.py")
-        notes.append("receipt lock regenerated for prereg-declared "
-                     "receipts.")
-    if "docs/FINDINGS.md" in subject:
-        run("scripts/gen_readme.py")
-        notes.append("README + figures.json honesty ledger regenerated "
-                     "(counts follow FINDINGS; commit them with the "
-                     "booking or the suite goes red).")
-    if any(p in subject for p in ("scratch/", "scripts/")) \
-            and ".py" in subject:
-        run("scripts/gen_index.py")
-        notes.append("INDEX regenerated. If this file is NEW: commit it, "
-                     "then rerun gen_codemap.py (tracked files only) or "
-                     "the suite goes red.")
+    groups = [g for g in GENERATORS
+              if any(group_of(c) == g for c in changed)]
+    # serialize generator runs across concurrent posts: two writers on
+    # one output file would race (write_text is not atomic)
+    with open(STATE_DIR / "post.lock", "w") as lk:
+        fcntl.flock(lk, fcntl.LOCK_EX)
+        for gen in plan(changed):
+            out = run(gen)
+            if gen.endswith("findings_headroom.py") and out:
+                notes.append(out)
+    notes = [NOTES[g] for g in groups] + notes
     if notes:
         print(" ".join(notes))
 
 
+def main(argv: list[str]) -> None:
+    try:
+        _main(argv)
+    except Exception:
+        pass  # a hook must never fail the tool call
+
+
 if __name__ == "__main__":
-    main()
+    main(sys.argv)
+    sys.exit(0)
