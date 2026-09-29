@@ -28,7 +28,7 @@ then run the command in [REPRODUCE](REPRODUCE.md).
 | [preregs/](preregs/) | Machine-readable pre-registrations for the later rungs, adjudicated by `scripts/adjudicate.py`. Earlier bars were recorded in prose inside RESULTS. |
 | [receipts.lock.json](receipts.lock.json) | The sha256 of every receipt file a booked entry cites. Small receipts are force-added under `../logs/<run>/`; pinned checkpoints under `../checkpoints/`; large artifacts stay untracked and the lock records that. |
 | [sol/RESULTS-SOL.md](sol/RESULTS-SOL.md) | The evidence record of the SOL adoption branch, named by its own RESULTS entries. |
-| [figures.json](figures.json) | Every published number in a figure, transcribed from the RESULTS entry its `fence` names. Both renderers read this file. |
+| [figures.json](figures.json) | Every published number in a figure, transcribed from the RESULTS entry its `fence` names; the published SVG/PNG renderer (`llmopt/figures/figsvg.py`) reads this file, the matplotlib analysis renderer does not. |
 
 ## 3. Re-run it
 

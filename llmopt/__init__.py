@@ -1,7 +1,7 @@
 """llmopt — an oracle-verified mathematics and physics ML lab.
 
 Every claim this package supports is checked by running something, not
-by inspection: decoding is proved token-identical to eager greedy,
+by inspection: decoding is checked token-identical against eager greedy,
 mathematics answers are accepted by sympy equivalence rather than
 string match, generated assembly is assembled and executed, and weights
 are scored by function rather than by distance to other weights. The
@@ -26,7 +26,7 @@ Research instruments
   weightspace/  weight-reading subjects and readers — predicting what a
                 network computes from its parameters.
   lab/          the adopted instrument layer: the standard gate, the
-                fork-isolated oracle, verified wave checking, run
+                process-isolated oracle, verified wave checking, run
                 receipts and markers, the checkpoint catalog, merge
                 operations, and the Parquet result lake. Modules copied
                 verbatim from frozen experiment scripts are guarded by

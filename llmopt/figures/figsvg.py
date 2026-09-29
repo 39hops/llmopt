@@ -1,14 +1,15 @@
-"""lab.figsvg — web-grade figures as hand-emitted SVG.
+"""lab.figsvg — the PUBLISHED figure renderer: hand-emitted SVG, PNG
+captured through Chrome.
 
-Why a second renderer beside lab/figures.py: matplotlib is the right
-tool for a paper (vector, deterministic, no browser), but it fights
-you on the details that make a figure read as current — rounded
-data-ends, a real type scale, generous whitespace, tuned dark mode.
-This module emits SVG directly, so those are free.
-
-Both renderers read `docs/figures.json`, so a corrected number cannot
-live in one and not the other. Colors come from lab.figstyle, which
-holds the validated palette — nothing here invents a hue.
+Division of labour with lab/figures.py: this module renders anything
+with an audience (README, paper, web) and reads its numbers only from
+`docs/figures.json`, the single source of booked figure values.
+lab/figures.py is the matplotlib ANALYSIS renderer for working plots
+and does not read that file. Matplotlib fights the details that make a
+published figure read as current (rounded data-ends, a real type scale,
+generous whitespace, tuned dark mode); emitting SVG directly makes
+those free. Colors come from lab.figstyle, which holds the validated
+palette; nothing here invents a hue.
 
 THE GATE TRACK. Every capability number in this lab is out of 120, a
 fixed denominator. A bar chart is the wrong form for that: it draws

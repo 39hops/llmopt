@@ -43,7 +43,7 @@ initialization. The rest of the vocabulary is in the
   <img alt="A 30B-class mixture-of-experts masked to 58 of 128 experts per layer. Demand-ranked selection averages 81 of 120 against the paired full model's 66; two random masks and an anti-demand mask at the identical keep fraction score zero." src="docs/assets/web/routing_crest.png">
 </picture>
 
-The score is solves out of 120 generated math problems, each answer checked
+The score is the number solved out of 120 generated math problems, each answer checked
 by symbolic equivalence, never by string match. Masking Qwen3-30B-A3B-4bit
 (the 30B mixture-of-experts model behind every MoE result here, from
 `mlx-community`) to the top 45.3% of its per-layer math-demand experts,
@@ -138,11 +138,12 @@ anatomy: demand ranking, keep-sets, router masking, expert surgery.
 [`weightspace/`](llmopt/weightspace/) — predicting what a network computes
 from its parameters. [`quantum/`](llmopt/quantum/) — model-Hamiltonian
 ground-state instruments. [`lab/`](llmopt/lab/) — the adopted instrument
-layer: the standard gate, the fork-isolated oracle, the checkpoint catalog,
+layer: the standard gate, the process-isolated oracle, the checkpoint catalog,
 merge operations. [`runs/`](llmopt/runs/) — run receipts, completion
 markers, trajectory instruments, the Parquet result lake.
-[`figures/`](llmopt/figures/) — the validated palette and both figure
-renderers, reading every published number from `docs/figures.json`.
+[`figures/`](llmopt/figures/) — the validated palette, the published
+SVG/PNG renderer backed by `docs/figures.json`, and the matplotlib analysis
+renderer for working plots.
 
 **Training and numerics.** [`train/`](llmopt/train/) — closed-system births,
 controlled diets, LoRA, preference objectives.
