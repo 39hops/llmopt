@@ -220,3 +220,99 @@ def test_settings_wires_pre_and_post_phases():
             for h in grp["hooks"] if "ledger_regen" in h["command"]]
     assert pre and all(c.endswith("ledger_regen.py pre") for c in pre)
     assert post and all(c.endswith("ledger_regen.py post") for c in post)
+
+
+# ------------------------------------------------------ portable post lock
+
+
+def _load_hook_with(monkeypatch, *, fcntl_available: bool, msvcrt_fake=None,
+                    backend_env: str | None = None):
+    """Import the hook fresh under a controlled module environment."""
+    import importlib
+    if not fcntl_available:
+        monkeypatch.setitem(sys.modules, "fcntl", None)  # ImportError on import
+    if msvcrt_fake is not None:
+        monkeypatch.setitem(sys.modules, "msvcrt", msvcrt_fake)
+    if backend_env:
+        monkeypatch.setenv("LLMOPT_HOOK_LOCK_BACKEND", backend_env)
+    else:
+        monkeypatch.delenv("LLMOPT_HOOK_LOCK_BACKEND", raising=False)
+    spec = importlib.util.spec_from_file_location("ledger_regen_lock_test", HOOK)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+def test_hook_imports_without_fcntl(monkeypatch):
+    """Native Windows has no fcntl; the hook must still import (its
+    "never fail a tool call" boundary lives inside main)."""
+    mod = _load_hook_with(monkeypatch, fcntl_available=False)
+    assert mod.LOCK_BACKEND == ("msvcrt" if sys.platform == "win32" else "mkdir")
+
+
+def test_lock_backend_prefers_fcntl_then_msvcrt_then_mkdir(monkeypatch, tmp_path):
+    import types
+    assert _load_hook_with(monkeypatch, fcntl_available=True).LOCK_BACKEND == "fcntl"
+    calls = []
+    fake = types.SimpleNamespace(LK_LOCK=1, LK_UNLCK=0,
+                                 locking=lambda fd, mode, n: calls.append(mode))
+    mod = _load_hook_with(monkeypatch, fcntl_available=False, msvcrt_fake=fake)
+    assert mod.LOCK_BACKEND == "msvcrt"
+    with mod.post_lock(tmp_path / "t.lock"):
+        pass
+    assert calls == [1, 0]
+    monkeypatch.setitem(sys.modules, "msvcrt", None)
+    assert _load_hook_with(monkeypatch, fcntl_available=False).LOCK_BACKEND == "mkdir"
+
+
+def test_lock_backend_override_of_an_absent_backend_falls_back(monkeypatch):
+    """An override naming a backend this platform lacks falls back to
+    the default chain instead of leaving post_lock to raise."""
+    mod = _load_hook_with(monkeypatch, fcntl_available=False,
+                          backend_env="fcntl")
+    assert mod.LOCK_BACKEND == "mkdir"
+
+
+def test_lock_backend_bogus_override_is_ignored(monkeypatch):
+    mod = _load_hook_with(monkeypatch, fcntl_available=True,
+                          backend_env="bogus")
+    assert mod.LOCK_BACKEND == ("fcntl" if mod._fcntl is not None else "mkdir")
+
+
+def test_mkdir_lock_reclaims_a_stale_directory_only(monkeypatch, tmp_path):
+    mod = _load_hook_with(monkeypatch, fcntl_available=False, backend_env="mkdir")
+    lock = tmp_path / "post.lock"
+    stale = tmp_path / "post.lock.d"
+    stale.mkdir()
+    os.utime(stale, ns=(1, 1))  # ancient: a killed holder
+    with mod.post_lock(lock):
+        assert stale.exists()  # reclaimed and re-owned
+    assert not stale.exists()
+
+
+@pytest.mark.parametrize("backend", ["fcntl", "mkdir"])
+def test_lock_serializes_concurrent_holders(monkeypatch, tmp_path, backend):
+    """Two holders never overlap, on the POSIX backend and on the
+    dependency-free fallback."""
+    import threading
+    mod = _load_hook_with(monkeypatch, fcntl_available=(backend == "fcntl"),
+                          backend_env=backend)
+    if backend == "fcntl" and mod._fcntl is None:
+        pytest.skip("no fcntl on this platform")
+    assert mod.LOCK_BACKEND == backend
+    lock_path = tmp_path / "post.lock"
+    events = []
+
+    def holder(tag):
+        with mod.post_lock(lock_path):
+            events.append((tag, "in"))
+            time.sleep(0.15)
+            events.append((tag, "out"))
+
+    ts = [threading.Thread(target=holder, args=(i,)) for i in range(3)]
+    for t in ts:
+        t.start()
+    for t in ts:
+        t.join(timeout=10)
+    # strictly alternating in/out pairs: no holder enters while another is in
+    assert [e[1] for e in events] == ["in", "out"] * 3

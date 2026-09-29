@@ -385,6 +385,17 @@ def build(root: Path = ROOT, tracked: set[str] | None = "auto") -> list[dict]:
         tracked = _tracked()
     repo = Repo(root, tracked)
     inv = repo.inventory()
+    # the map is keyed by basename; a name present in both scratch/ and
+    # scripts/ would alias silently, so refuse and name both paths
+    by_name: dict[str, list[str]] = defaultdict(list)
+    for p in inv:
+        by_name[p.name].append(repo.rel(p))
+    dupes = {n: ps for n, ps in by_name.items() if len(ps) > 1}
+    if dupes:
+        raise ValueError("CODEMAP: ambiguous inventory basename(s); the move "
+                         "gate needs one row per name: "
+                         + "; ".join(f"{n} -> {', '.join(sorted(ps))}"
+                                     for n, ps in sorted(dupes.items())))
     names = {p.name for p in inv}
     rel_of = {p.name: repo.rel(p) for p in inv}
     stems = {p.stem: p.name for p in inv
@@ -573,7 +584,12 @@ def main(argv: list[str] | None = None) -> int:
                          "never writes")
     ap.add_argument("--out", type=Path, default=OUT)
     a = ap.parse_args(argv)
-    new, tallies = render(build())
+    try:
+        rows = build()
+    except ValueError as e:  # ambiguous inventory basename: refuse cleanly
+        print(f"[codemap] REFUSING: {e}", file=sys.stderr)
+        return 1
+    new, tallies = render(rows)
     current = a.out.read_text() if a.out.exists() else None
     if a.check:
         if current == new:

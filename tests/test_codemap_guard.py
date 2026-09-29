@@ -54,3 +54,14 @@ def test_real_results_cited_libraries_are_still_frozen():
                  "perturbation_response_gram_desk.py", "anatomy.py"):
         assert mod.is_frozen("scratch" + "/" + name, text), name
     assert not mod.is_frozen("scratch" + "/" + "phase4_unboot.py", text)
+
+
+def test_ambiguous_basename_rows_freeze_rather_than_pick_one():
+    """Two rows with one basename (a future scratch/x.py + scripts/x.py):
+    the guard must not silently take the first; it asks."""
+    mod = _load()
+    table = TABLE + "| a | a_lib.py | UNCITED | — | — | — | — | — | — |\n"
+    assert mod.is_frozen("scripts/a_lib.py", table) is True
+    assert mod.is_frozen("scratch/a_lib.py", table) is True
+    table2 = TABLE + "| b | b_free.py | UNCITED | — | — | — | — | — | — |\n"
+    assert mod.is_frozen("scratch/b_free.py", table2) is True  # ambiguous -> ask

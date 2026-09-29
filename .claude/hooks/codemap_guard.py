@@ -20,17 +20,26 @@ FROZEN = {"results-cited", "reproduce-pinned"}
 FROZEN_GROUPS = {"RESULTS", "REPRODUCE"}
 
 
+AMBIGUOUS = ("ambiguous", "RESULTS")  # a duplicated basename freezes
+
+
 def codemap_row(rel: str, codemap_text: str) -> tuple[str, str] | None:
     """(class, cited-by) for the file, or None when it has no row.
-    Rows look like: | family | file.py | class | cited by | ... |"""
+    Rows look like: | family | file.py | class | cited by | ... |
+    Two rows for one basename (a scratch/x.py + scripts/x.py pair the
+    generator should have refused) return the AMBIGUOUS marker so the
+    guard asks instead of silently taking the first."""
     name = Path(rel).name
+    hits = []
     # cells never contain "|": `[^|\s]+` keeps the separator row
     # (`|---|---|`) from swallowing the first data row of a section
     for m in re.finditer(r"^\|[^|]*\|\s*([^|\s]+)\s*\|\s*([^|\s]+)\s*\|([^|]*)\|",
                          codemap_text, re.M):
         if m.group(1) == name:
-            return m.group(2), m.group(3).strip()
-    return None
+            hits.append((m.group(2), m.group(3).strip()))
+    if len(hits) > 1:
+        return AMBIGUOUS
+    return hits[0] if hits else None
 
 
 def codemap_class(rel: str, codemap_text: str) -> str | None:
@@ -73,17 +82,22 @@ def main() -> None:
         text = codemap.read_text()
         cls = codemap_class(str(rel), text)
         if is_frozen(str(rel), text):
+            reason = (
+                f"{rel} has two CODEMAP rows for its basename (a scratch/ "
+                "+ scripts/ pair the generator refuses); regenerate the "
+                "map and resolve the collision before editing."
+                if cls == "ambiguous" else
+                f"{rel} is CODEMAP class '{cls}' and cited by "
+                "RESULTS/REPRODUCE (evidence record; cited by "
+                "booked verdicts). Legit reasons to edit: "
+                "dual-copy fix landing in both copies same commit, "
+                "or an adoption migration. Otherwise extend the "
+                "adopted lab module instead.")
             print(json.dumps({
                 "hookSpecificOutput": {
                     "hookEventName": "PreToolUse",
                     "permissionDecision": "ask",
-                    "permissionDecisionReason": (
-                        f"{rel} is CODEMAP class '{cls}' and cited by "
-                        "RESULTS/REPRODUCE (evidence record; cited by "
-                        "booked verdicts). Legit reasons to edit: "
-                        "dual-copy fix landing in both copies same commit, "
-                        "or an adoption migration. Otherwise extend the "
-                        "adopted lab module instead."),
+                    "permissionDecisionReason": reason,
                 }
             }))
     except Exception:

@@ -268,3 +268,27 @@ def test_real_helpers_of_cited_callers_are_cited(real_rows, name):
 @pytest.mark.parametrize("name", ["claim_lint.py", "cite_lookup.py"])
 def test_real_tooling_scripts_are_not_uncited(real_rows, name):
     assert real_rows[name]["class"] != "UNCITED", real_rows[name]
+
+
+# ------------------------------------------------ basename identity guard
+
+
+def test_duplicate_top_level_basename_refuses_to_build(tmp_path):
+    """scratch/foo.py and scripts/foo.py would alias silently in a
+    basename-keyed map; the generator must refuse and name both."""
+    root = tmp_path / "repo"
+    _w(root, "scratch/foo.py", "a = 1\n")
+    _w(root, "scripts/foo.py", "b = 2\n")
+    _w(root, "docs/RESULTS.md", "# R\n")
+    mod = _load()
+    with pytest.raises(ValueError, match=r"scratch/foo\.py.*scripts/foo\.py|scripts/foo\.py.*scratch/foo\.py"):
+        mod.build(root, tracked=None)
+
+
+@pytest.mark.docs
+def test_real_inventory_basenames_are_unique():
+    mod = _load()
+    repo = mod.Repo(ROOT, mod._tracked())
+    names = [p.name for p in repo.inventory()]
+    dupes = sorted({n for n in names if names.count(n) > 1})
+    assert not dupes, dupes

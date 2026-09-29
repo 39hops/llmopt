@@ -39,7 +39,7 @@ on every generator) and tests/test_ledger_regen_hook.py.
 """
 from __future__ import annotations
 
-import fcntl
+import contextlib
 import hashlib
 import json
 import os
@@ -48,6 +48,82 @@ import sys
 import tempfile
 import time
 from pathlib import Path
+
+# ---- portable cross-process lock -------------------------------------
+# fcntl.flock on POSIX (macOS / Linux / WSL), msvcrt.locking on native
+# Windows, and a dependency-free mkdir spin lock when neither exists.
+# Importing this hook must succeed on every platform: the "never fail a
+# tool call" boundary lives in main(), below any import.
+try:
+    import fcntl as _fcntl
+except ImportError:  # native Windows
+    _fcntl = None
+try:
+    import msvcrt as _msvcrt
+except ImportError:  # POSIX
+    _msvcrt = None
+
+_AVAILABLE = [b for b, m in (("fcntl", _fcntl), ("msvcrt", _msvcrt))
+              if m is not None] + ["mkdir"]
+_override = os.environ.get("LLMOPT_HOOK_LOCK_BACKEND")
+# an override is honoured only for a backend this platform actually has
+LOCK_BACKEND = _override if _override in _AVAILABLE else _AVAILABLE[0]
+LOCK_STALE_S = 100  # under the hook's 120 s timeout: a killed holder's dir
+
+
+@contextlib.contextmanager
+def _mkdir_lock(path: Path):
+    """Dependency-free fallback: mkdir is atomic everywhere. A directory
+    older than LOCK_STALE_S belongs to a holder the harness killed (the
+    post hook times out at 120 s) and is reclaimed; only the process
+    that created the directory removes it."""
+    d = path.with_name(path.name + ".d")
+    owned = False
+    while not owned:
+        try:
+            os.mkdir(d)
+            owned = True
+        except FileExistsError:
+            try:
+                if time.time() - os.stat(d).st_mtime > LOCK_STALE_S:
+                    os.rmdir(d)
+                    continue
+            except OSError:
+                continue
+            time.sleep(0.05)
+    try:
+        yield
+    finally:
+        with contextlib.suppress(OSError):
+            os.rmdir(d)
+
+
+@contextlib.contextmanager
+def post_lock(path: Path):
+    """Hold an exclusive cross-process lock at `path` for the block."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if LOCK_BACKEND == "fcntl":
+        with open(path, "w") as fh:
+            _fcntl.flock(fh, _fcntl.LOCK_EX)
+            try:
+                yield
+            finally:
+                _fcntl.flock(fh, _fcntl.LOCK_UN)
+    elif LOCK_BACKEND == "msvcrt":
+        with open(path, "a") as fh:  # never truncate a locked file
+            while True:  # msvcrt.locking raises OSError while contended
+                try:
+                    _msvcrt.locking(fh.fileno(), _msvcrt.LK_LOCK, 1)
+                    break
+                except OSError:
+                    time.sleep(0.05)
+            try:
+                yield
+            finally:
+                _msvcrt.locking(fh.fileno(), _msvcrt.LK_UNLCK, 1)
+    else:
+        with _mkdir_lock(path):
+            yield
 
 ROOT = Path(os.environ.get("LLMOPT_HOOK_ROOT")
             or Path(__file__).resolve().parents[2])
@@ -200,8 +276,7 @@ def _main(argv: list[str]) -> None:
               if any(group_of(c) == g for c in changed)]
     # serialize generator runs across concurrent posts: two writers on
     # one output file would race (write_text is not atomic)
-    with open(STATE_DIR / "post.lock", "w") as lk:
-        fcntl.flock(lk, fcntl.LOCK_EX)
+    with post_lock(STATE_DIR / "post.lock"):
         for gen in plan(changed):
             out = run(gen)
             if gen.endswith("findings_headroom.py") and out:
