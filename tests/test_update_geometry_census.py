@@ -13,11 +13,16 @@ from pathlib import Path
 import numpy as np
 import pytest
 
+# Pure-surface / SMOKE tests: the driver chain resolves the `repair`
+# worktree at import; on a checkout without it, use the nonexistent
+# sentinel (tests/conftest.py), never a fallback to main.
+pytestmark = pytest.mark.usefixtures("absent_repair_sentinel")
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
 @pytest.fixture(scope="module")
-def mod():
+def mod(absent_repair_sentinel):
     prev = os.environ.get("SMOKE")
     os.environ["SMOKE"] = "1"
     for p in (str(ROOT), str(ROOT / "scripts"), str(ROOT / "scratch")):

@@ -122,7 +122,7 @@ Census: library 190, reproduce-pinned 9, results-cited 496, spec-cited 80, tool-
 | detbwd | detbwd_r2b.py | library | RESULTS, specs, via:TOOLING | RESULTS×8, specs×5 | 6 | — | — | — |
 | detbwd | detbwd_r3_qw.py | library | RESULTS, specs, via:TOOLING | RESULTS×2, specs×1 | 5 | — | — | — |
 | determinability | determinability_census.py | results-cited | RESULTS | RESULTS×2 | — | — | 1 | — |
-| dfa | dfa_act.py | library | RESULTS, specs | RESULTS×9, specs×1 | 4 | 2 | — | — |
+| dfa | dfa_act.py | library | RESULTS, specs | RESULTS×9, specs×1 | 4 | 2 | 2 | — |
 | dfa | dfa_align.py | library | RESULTS, specs | RESULTS×5, specs×1 | 2 | 2 | 1 | — |
 | dfa | dfa_credit.py | library | RESULTS, specs | RESULTS×6, specs×3 | 23 | 4 | — | — |
 | dfa | dfa_depthclass.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 2 | — | — |
@@ -717,7 +717,7 @@ Census: library 190, reproduce-pinned 9, results-cited 496, spec-cited 80, tool-
 | tuesday | tuesday_night.sh | UNCITED | — | — | — | — | — | — |
 | ugc0 | ugc0_launch.sh | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
 | umoe | umoe_conserve.py | library | RESULTS, via:specs | RESULTS×4 | 9 | 2 | 1 | — |
-| update | update_geometry_census.py | library | RESULTS, specs | RESULTS×37, specs×2 | 4 | 4 | — | — |
+| update | update_geometry_census.py | library | RESULTS, specs | RESULTS×37, specs×2 | 4 | 4 | 2 | — |
 | v4flash | v4flash_anatomy.py | spec-cited | specs | specs×1 | — | — | — | — |
 | v4flash | v4flash_census.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | — | 1 | — |
 | v4flash | v4flash_f1b.py | library | RESULTS, specs, via:TOOLING | RESULTS×2, specs×1 | 2 | — | — | — |
