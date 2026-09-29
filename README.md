@@ -1,8 +1,10 @@
 # llmopt
 
+[![lab checks](https://github.com/39hops/llmopt/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/39hops/llmopt/actions/workflows/ci.yml)
+
 **A mathematics and physics ML lab where nothing counts until an oracle
 agrees.** Answers are checked by symbolic equivalence, not string match.
-Decoding is proved token-identical to eager greedy. Generated assembly is
+Decoding is checked to be token-identical to eager greedy. Generated assembly is
 assembled and run. Weights are scored by what they compute, never by their
 distance to other weights. Every experiment is pre-registered with a
 threshold it can fail, and the failures are published beside the wins.
@@ -27,6 +29,13 @@ stamped in the footer, so the pixels trace to exact artifacts.
 
 ## Four results
 
+Each result names its own scope. In scores, a gate is the fixed problem set
+a model is scored on, so gating N means solving N of its problems; paired
+means the same seed and device on both arms of a comparison, and a claim
+says which arms are paired; a model is born when it is trained from a fresh
+initialization. The rest of the vocabulary is in the
+[glossary](GLOSSARY.md).
+
 **Which experts you keep is the difference between 0 and 81 of 120.**
 
 <picture>
@@ -34,12 +43,15 @@ stamped in the footer, so the pixels trace to exact artifacts.
   <img alt="A 30B-class mixture-of-experts masked to 58 of 128 experts per layer. Demand-ranked selection averages 81 of 120 against the paired full model's 66; two random masks and an anti-demand mask at the identical keep fraction score zero." src="docs/assets/web/routing_crest.png">
 </picture>
 
-Masking a resident 30B-class MoE to the top 45.3% of its per-layer
-math-demand experts **beat the paired full model at all six paired seeds** —
-80, 82, 81 against 63, 73, 63 at the three registered ones, pooled +14.7
-against a +7 bar declared before the run. At the identical keep fraction,
+The score is solves out of 120 generated math problems, each answer checked
+by symbolic equivalence, never by string match. Masking Qwen3-30B-A3B-4bit
+(the 30B mixture-of-experts model behind every MoE result here, from
+`mlx-community`) to the top 45.3% of its per-layer math-demand experts,
+ranked by how often its router selected them on math prompts, **beat the paired full model at all six paired
+seeds**: 80, 82, 81 against 63, 73, 63 at the three registered ones, pooled
++14.7 against a +7 bar declared before the run. At the identical keep fraction,
 random and anti-demand masks score nothing at all. The effect is selection,
-not sparsity — and *why* it happens is still unexplained. Scope: one vehicle,
+not sparsity, and *why* it happens is still unexplained. Scope: one model,
 one keep rule, mathgen L1–3, Mac MLX; the zero-scoring controls ran at their
 own seed and are not paired to those arms.
 
@@ -92,15 +104,15 @@ narrows again at k=128.
 </picture>
 
 <!-- llmopt:generated honesty-ledger:start -->
-The 425 curated claims in FINDINGS by maturity: 47 replicated, 102 mechanism-confirmed, 218 single-seed, 53 null, 5 retracted.
+The 425 curated claims in FINDINGS by maturity: 47 replicated, 102 mechanism-confirmed, 218 single-seed, 53 null, 5 retracted. 58 of 425 (13.6%) are null or retracted; 218 of 425 (51.3%) are single-seed.
 <!-- llmopt:generated honesty-ledger:end -->
 
-A fifth of the published record is negative. Nulls and retractions sit beside
-the wins at the same prominence, because a ledger that only records successes
-cannot be checked. Each claim carries exactly one maturity tag and its scope
+Nulls and retractions sit beside the wins at the same prominence, because a
+ledger that only records successes cannot be checked. Each claim carries exactly one maturity tag and its scope
 fences — device, seed count, format, regime — and those tags are part of the
 claim, not optional reading. The counts above are recounted from the source
-every time the figure is built.
+every time the figure is built. How a claim is made and policed, from
+pre-registration to amendment, is in [METHODS](docs/METHODS.md).
 
 Start with the [curated findings](docs/FINDINGS.md), organized by evidence
 maturity rather than chronology. The [glossary](GLOSSARY.md) defines the
@@ -108,6 +120,9 @@ vocabulary; [RESULTS](docs/RESULTS.md) is the living append-only ledger every
 claim resolves to; [REPRODUCE](docs/REPRODUCE.md) is the walkthrough.
 
 ## What is built
+
+The code and tests behind each system are indexed in
+[ENGINEERING](docs/ENGINEERING.md).
 
 ```bash
 pip install -e ".[dev]"          # core: torch, numpy, sympy
@@ -153,7 +168,8 @@ RJOB_LOCAL=1 python -m llmopt.reproduce gravmoe-rb1
 `PASS` means the final training-trajectory digest exactly matches the
 committed pin. A 1000-step integer birth replays **bit-identically** on a
 second machine, and a 200-step birth is trajectory-identical across Mac CPU,
-an RTX 3080, and an external lab's independent C++ engine.
+an RTX 3080, and a C++ implementation developed independently of this code,
+under the same operator.
 
 Trajectory agreement is not oracle correctness: it certifies the pinned weight
 path and teacher-forced readouts. Free-run symbolic scoring additionally needs
@@ -161,9 +177,14 @@ diet row text that is not committed, so artifact-backed arms run in an
 explicit trajectory-only mode. `python -m llmopt.reproduce --list` shows the
 registry.
 
+Small text receipts, pinned checkpoints and job cards that booked verdicts
+cite are committed under `logs/`, `checkpoints/` and `jobs/`, so a verdict's
+evidence travels with the repository; large artifacts stay untracked and the
+receipt lock records which is which.
+
 ## What remains uncertain
 
-**The crest has no mechanism.** Why masking a deployed MoE to its demand
+**The crest has no mechanism.** Why masking the 30B MoE to its demand
 coalition beats full width on mathematics is unexplained. The two quantities a
 keep rule optimizes — coverage and recall of demanded experts — were measured
 not to predict even the *sign* of the effect.
@@ -171,7 +192,7 @@ not to predict even the *sign* of the effect.
 **The best current candidate is interference removal**, reachable either by
 the demand mask or by deleting a named 80-expert carrier population, 1.3% of
 the bank. Both forms replicated at three fresh paired seeds, with the router
-measured over-inclusive at the carriers' rank class. A same-night control
+measured over-inclusive at the carriers' rank class. A control run in the same session
 complicated it: a matched-size random fill resurrected a dead core about as
 well as the verbal-branch fill, but that random pool was itself ~45%
 verbal-branch experts. Fills that exclude the verbal branch score 0 and 7 of
@@ -198,9 +219,16 @@ Name the exact commit SHA and the exact verdict entry in
 living, so an unpinned citation is not reproducible. Repository metadata is in
 [`CITATION.cff`](CITATION.cff).
 
-The [board](docs/BOARD.md), [theory map](docs/THEORY.md), [idea
-ledger](docs/RIFF-LEDGER.md), [handoffs](docs/handoffs/), and
-[machine-readable index](docs/results-index.jsonl) are living surfaces.
-Charter: mathematics and physics only.
+## Where to go next
+
+- [Findings](docs/FINDINGS.md): every curated claim with its maturity tag and scope.
+- [Engineering](docs/ENGINEERING.md): what is built, with the code and tests to read first.
+- [Reproduce](docs/REPRODUCE.md): the one-command trajectory replay and what it certifies.
+- [The docs map](docs/README.md): which documents are curated, which are the record, which are generated views, and which are the lab's own working notes.
+
+Day-to-day work is carried out by coding agents under mechanical guards
+(pre-registration adjudication, receipt locks, generated-document checks; see
+[CLAUDE.md](CLAUDE.md) and `.claude/`); every claim passes those guards, and
+one human operator runs the lab. Charter: mathematics and physics only.
 
 Licensed under [Apache-2.0](LICENSE).

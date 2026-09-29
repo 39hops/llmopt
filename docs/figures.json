@@ -214,7 +214,7 @@
   },
   "honesty_ledger": {
     "kind": "composition",
-    "title": "A fifth of the published record argues against the lab",
+    "title": "Nulls and retractions are published beside the wins",
     "scope": "One maturity tag per claim; nulls and retractions published beside the wins at the same prominence.",
     "parts": [
       {
@@ -245,7 +245,7 @@
         "label": "Retracted",
         "value": 5,
         "entity": "null",
-        "note": "we were wrong, in writing"
+        "note": "withdrawn in writing"
       }
     ],
     "fence": "docs/FINDINGS.md · 425 curated claims · recounted from the source at build time"

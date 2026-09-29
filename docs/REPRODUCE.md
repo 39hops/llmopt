@@ -1,9 +1,13 @@
-# Reproduce the deterministic gravmoe trajectory
+# Reproduce
 
-This is the external start-here path for the repository's mathematics and
-physics work. It replays one pinned deterministic-birth training trajectory
-from committed inputs and checks its digest. It is not a general model-quality
-benchmark.
+This page covers two reproduction paths. The registry in
+[`llmopt/reproduce.py`](../llmopt/reproduce.py) replays sixteen pinned
+integer-training trajectories from committed inputs on CPU (about 80 seconds
+for the RB1 arm) and checks each digest against its committed pin; that is
+the start-here path, and it is digest-exact, not a correctness check. The second half documents the manual MoE
+ground-truth recipes, which run a 30B model and regenerate measurements
+rather than bytes. Neither is a general model-quality benchmark. For the rest
+of the documentation start at the [docs map](README.md).
 
 ## Quick start
 
@@ -20,9 +24,7 @@ Then run the adopted RB1 reproduction:
 RJOB_LOCAL=1 python -m llmopt.reproduce gravmoe-rb1
 ```
 
-Plan about 80 seconds for an arm. **VERDICT SOL-ADOPTION-1**, at repository
-commit `0dea97283d4a270c4f8b2b1ad48adcf01b42e5f8`, records the exact house RB1
-run as 81.7 seconds.
+Plan about 80 seconds for an arm.
 
 The runner streams training diagnostics. Its success line has this exact
 shape:
@@ -46,10 +48,9 @@ identity.
 
 ## What a fresh clone contains
 
-Repository commit `4ef9cd511369023d69db7332aebf36517de62951` made the
-reproduction artifact-backed. The trajectory and teacher-forced loss reproduce
-from committed window bytes; the runner verifies their contract and SHA before
-using them. The relevant implementation is
+The reproduction is artifact-backed: the trajectory and teacher-forced loss
+reproduce from committed window bytes, and the runner verifies their contract
+and SHA before using them. The relevant implementation is
 [`llmopt/reproduce.py`](../llmopt/reproduce.py), and the artifacts and registry
 live in [`scratch/detbwd_gmoe_ref/`](../scratch/detbwd_gmoe_ref/).
 
@@ -62,9 +63,8 @@ correctness result.
 
 ## The complete pin registry
 
-The command above selects RB1. **VERDICT SOL-ADOPTION-1**, at repository commit
-`0dea97283d4a270c4f8b2b1ad48adcf01b42e5f8`, books `--list` coverage of all
-16 pins, including the other 15:
+The command above selects RB1. The registry lists all 16 pins, including the
+other 15:
 
 ```bash
 python -m llmopt.reproduce --list
@@ -87,6 +87,16 @@ GRAVMOE-P4-DEVICE** at repository commit
 
 Names and digests printed by `--list` come directly from the committed JSON;
 do not copy a digest from prose when the registry can answer it.
+
+## Provenance of the pins
+
+The ledger entries and repository commits behind the quick start:
+
+- **VERDICT SOL-ADOPTION-1**, at repository commit
+  `0dea97283d4a270c4f8b2b1ad48adcf01b42e5f8`, records the exact house RB1
+  run as 81.7 seconds and books `--list` coverage of all 16 pins.
+- Repository commit `4ef9cd511369023d69db7332aebf36517de62951` made the
+  reproduction artifact-backed.
 
 ## What the external close establishes
 

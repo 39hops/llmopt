@@ -35,3 +35,16 @@ def test_figures_json_honesty_ledger_matches_findings():
     assert parts["Null"] == c["NULL"]
     assert parts["Retracted"] == c["RETRACTED"]
     assert str(sum(c.values())) in fig["honesty_ledger"]["fence"]
+
+
+def test_rendered_honesty_asset_matches_figures_json():
+    """The committed SVG (the artifact GitHub renders as PNG) must carry
+    the same title and claim total as figures.json; a stale render
+    survived at HEAD for weeks until 2026-09-29."""
+    import json
+    fig = json.loads((ROOT / "docs" / "figures.json").read_text())["honesty_ledger"]
+    for name in ("honesty_ledger.svg", "honesty_ledger-dark.svg"):
+        svg = (ROOT / "docs" / "assets" / "web" / name).read_text()
+        assert fig["title"] in svg, name
+        total = sum(p["value"] for p in fig["parts"])
+        assert f"{total} curated claims" in svg, name

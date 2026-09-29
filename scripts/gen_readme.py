@@ -45,11 +45,15 @@ def counts() -> dict[str, int]:
 def render() -> str:
     c = counts()
     total = sum(c.values())
+    neg = c["NULL"] + c["RETRACTED"]
     return (f"The {total} curated claims in FINDINGS by maturity: "
             f"{c['REPLICATED']} replicated, "
             f"{c['MECHANISM-CONFIRMED']} mechanism-confirmed, "
             f"{c['SINGLE-SEED']} single-seed, {c['NULL']} null, "
-            f"{c['RETRACTED']} retracted.")
+            f"{c['RETRACTED']} retracted. "
+            f"{neg} of {total} ({100 * neg / total:.1f}%) are null or "
+            f"retracted; {c['SINGLE-SEED']} of {total} "
+            f"({100 * c['SINGLE-SEED'] / total:.1f}%) are single-seed.")
 
 
 # figure part label -> maturity tag, the mapping tests/test_gen_readme.py
