@@ -68,15 +68,21 @@ _AVAILABLE = [b for b, m in (("fcntl", _fcntl), ("msvcrt", _msvcrt))
 _override = os.environ.get("LLMOPT_HOOK_LOCK_BACKEND")
 # an override is honoured only for a backend this platform actually has
 LOCK_BACKEND = _override if _override in _AVAILABLE else _AVAILABLE[0]
-LOCK_STALE_S = 100  # under the hook's 120 s timeout: a killed holder's dir
+# A holder directory can only be ABANDONED once the harness's PostToolUse
+# timeout (.claude/settings.json, 120 s for `ledger_regen.py post`) has
+# killed its process; a live holder may legitimately be that old. The
+# stale threshold therefore stays strictly above that timeout with margin
+# (tests/test_ledger_regen_hook.py reads settings.json and enforces it).
+LOCK_STALE_S = 300
 
 
 @contextlib.contextmanager
 def _mkdir_lock(path: Path):
     """Dependency-free fallback: mkdir is atomic everywhere. A directory
-    older than LOCK_STALE_S belongs to a holder the harness killed (the
-    post hook times out at 120 s) and is reclaimed; only the process
-    that created the directory removes it."""
+    older than LOCK_STALE_S (itself longer than the post hook's harness
+    timeout, so its holder cannot still be running) is an abandoned lock
+    and is reclaimed; only the process that created the directory
+    removes it."""
     d = path.with_name(path.name + ".d")
     owned = False
     while not owned:

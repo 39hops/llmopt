@@ -316,3 +316,54 @@ def test_lock_serializes_concurrent_holders(monkeypatch, tmp_path, backend):
         t.join(timeout=10)
     # strictly alternating in/out pairs: no holder enters while another is in
     assert [e[1] for e in events] == ["in", "out"] * 3
+
+
+def _post_timeout_s() -> int:
+    s = json.loads((ROOT / ".claude" / "settings.json").read_text())
+    outs = [h["timeout"] for grp in s["hooks"]["PostToolUse"] for h in grp["hooks"]
+            if h["command"].endswith("ledger_regen.py post")]
+    assert outs, "post hook not wired"
+    return max(outs)
+
+
+def test_mkdir_stale_threshold_exceeds_the_configured_post_timeout(monkeypatch):
+    """A live post hook cannot be considered stale before the harness's
+    PostToolUse timeout could have killed it; a future timeout change
+    must not silently recreate the reclaim-while-alive bug."""
+    mod = _load_hook_with(monkeypatch, fcntl_available=False, backend_env="mkdir")
+    assert mod.LOCK_STALE_S > _post_timeout_s()
+
+
+def test_mkdir_lock_does_not_reclaim_a_holder_within_the_hook_timeout(monkeypatch, tmp_path):
+    import threading
+    mod = _load_hook_with(monkeypatch, fcntl_available=False, backend_env="mkdir")
+    lock = tmp_path / "post.lock"
+    held = tmp_path / "post.lock.d"
+    held.mkdir()
+    age = _post_timeout_s() - 1  # a holder the harness has NOT killed yet
+    t0 = time.time() - age
+    os.utime(held, (t0, t0))
+    acquired = threading.Event()
+
+    def waiter():
+        with mod.post_lock(lock):
+            acquired.set()
+
+    th = threading.Thread(target=waiter, daemon=True)
+    th.start()
+    assert not acquired.wait(1.0), "reclaimed a lock whose holder may still be alive"
+    held.rmdir()  # the live holder finishes
+    assert acquired.wait(5.0)
+    th.join(5)
+
+
+def test_mkdir_lock_reclaims_a_lock_older_than_the_stale_threshold(monkeypatch, tmp_path):
+    mod = _load_hook_with(monkeypatch, fcntl_available=False, backend_env="mkdir")
+    lock = tmp_path / "post.lock"
+    stale = tmp_path / "post.lock.d"
+    stale.mkdir()
+    t0 = time.time() - (mod.LOCK_STALE_S + 1)
+    os.utime(stale, (t0, t0))
+    with mod.post_lock(lock):
+        assert stale.exists()  # reclaimed and re-owned
+    assert not stale.exists()
