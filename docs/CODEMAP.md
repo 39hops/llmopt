@@ -16,7 +16,7 @@ this also drives `library`; from lab tooling it drives
 comments or plain strings; `via` names the cited caller a file
 inherits its class from when no document names the file itself.
 
-Census: library 190, reproduce-pinned 9, results-cited 496, spec-cited 80, tool-referenced 5, UNCITED 124 (of 904; library rows that are also doc-cited: 185)
+Census: library 191, reproduce-pinned 9, results-cited 495, spec-cited 80, tool-referenced 5, UNCITED 124 (of 904; library rows that are also doc-cited: 186)
 
 ## scratch/
 
@@ -877,7 +877,7 @@ Census: library 190, reproduce-pinned 9, results-cited 496, spec-cited 80, tool-
 | gen | gen_receipt_lock.py | library | RESULTS, specs, TOOLING | RESULTS×1, specs×3, TOOLING×9 | 1 | 9 | — | — |
 | gen | gen_regret_labels.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
 | gen | gen_results_index.py | library | RESULTS, specs, TOOLING | RESULTS×8, specs×20, TOOLING×9 | 1 | 8 | 2 | — |
-| gen | gen_scoreboard.py | results-cited | RESULTS, specs, TOOLING | RESULTS×1, specs×1, TOOLING×2 | — | 1 | — | — |
+| gen | gen_scoreboard.py | library | RESULTS, specs, TOOLING | RESULTS×1, specs×1, TOOLING×2 | — | 2 | — | — |
 | gen | gen_syndrome_labels.py | results-cited | RESULTS | RESULTS×2 | — | — | 1 | — |
 | grow | grow_mathnative.py | library | RESULTS, specs | RESULTS×1, specs×2 | 1 | — | 1 | — |
 | harvest | harvest_champion.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |

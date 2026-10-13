@@ -946,6 +946,8 @@ Content-address every receipt path a booked entry cites.
 - `build() -> dict`
 - `make_payload(fresh: dict, old_payload: dict, accept: str | None, changed: list[str]) -> dict` — The lock file body. Without --accept the previous `_last_accept`
 - `check_view(fresh: dict, old: dict) -> dict` — The portable subset of a lock: rows the REPOSITORY carries.
+- `absent_results_receipts(rows: dict) -> list[str]` — Paths a booked RESULTS entry cites that exist on no checkout:
+- `report_absent(rows: dict) -> None`
 - `write_if_changed(path: Path, text: str) -> bool` — Atomic write (tmp + os.replace) only when the content differs.
 - `main() -> int`
 

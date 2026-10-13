@@ -191,6 +191,25 @@ def check_view(fresh: dict, old: dict) -> dict:
     return {k: v for k, v in fresh.items() if k not in skip}
 
 
+def absent_results_receipts(rows: dict) -> list[str]:
+    """Paths a booked RESULTS entry cites that exist on no checkout:
+    the booked-without-evidence backlog. The identity set is pinned
+    by tests/science_incidents/test_frozen_receipt_mutation.py; this
+    helper only makes it VISIBLE on every --check run, so "current"
+    never reads as "every cited receipt is present"."""
+    return sorted(k for k, v in rows.items()
+                  if not v.get("exists") and v.get("source") == "results")
+
+
+def report_absent(rows: dict) -> None:
+    absent = absent_results_receipts(rows)
+    if absent:
+        print(f"[receipt-lock] WARNING: {len(absent)} results-cited "
+              "receipt(s) exist on no checkout (lock agrees with disk; "
+              "the booked entries stand on prose plus any surviving "
+              "digests):\n  " + "\n  ".join(absent))
+
+
 def write_if_changed(path: Path, text: str) -> bool:
     """Atomic write (tmp + os.replace) only when the content differs.
     Concurrent hook posts and readers never observe a half-written
@@ -230,6 +249,7 @@ def main() -> int:
         view_old = dict(old_payload, receipts=check_view(old, old))
         if view_new == view_old:
             print(f"[receipt-lock] current ({len(fresh)} paths)")
+            report_absent(fresh)
             return 0
         diff = sorted(k for k in set(view_new["receipts"])
                       | set(view_old["receipts"])

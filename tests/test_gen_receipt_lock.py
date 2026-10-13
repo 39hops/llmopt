@@ -64,3 +64,19 @@ def test_check_view_ignores_machine_local_and_pending_rows():
     fresh["logs/a/tracked.log"] = dict(old["logs/a/tracked.log"],
                                        sha256="zz")
     assert mod.check_view(fresh, old) != mod.check_view(old, old)
+
+
+def test_absent_results_receipts_are_listed_and_prereg_pending_is_not():
+    """--check prints the results-cited paths that exist on no
+    checkout (audit 2026-10-13: "current" read as "all present" while
+    seven booked receipts were gone). Prereg-declared paths whose run
+    has not fired are pending, not absent evidence."""
+    mod = _load()
+    rows = {
+        "logs/a/gone.log": {"exists": False, "source": "results"},
+        "logs/b/here.log": {"exists": True, "sha256": "x", "bytes": 1,
+                            "tracked": True, "source": "results"},
+        "logs/c/notyet.jsonl": {"exists": False, "source": "prereg"},
+    }
+    assert mod.absent_results_receipts(rows) == ["logs/a/gone.log"]
+    assert mod.absent_results_receipts({}) == []
