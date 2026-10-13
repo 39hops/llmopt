@@ -877,7 +877,7 @@ Census: library 190, reproduce-pinned 9, results-cited 496, spec-cited 80, tool-
 | gen | gen_receipt_lock.py | library | RESULTS, specs, TOOLING | RESULTS×1, specs×3, TOOLING×9 | 1 | 9 | — | — |
 | gen | gen_regret_labels.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
 | gen | gen_results_index.py | library | RESULTS, specs, TOOLING | RESULTS×8, specs×20, TOOLING×9 | 1 | 8 | 2 | — |
-| gen | gen_scoreboard.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — | — | — |
+| gen | gen_scoreboard.py | results-cited | RESULTS, specs, TOOLING | RESULTS×1, specs×1, TOOLING×2 | — | 1 | — | — |
 | gen | gen_syndrome_labels.py | results-cited | RESULTS | RESULTS×2 | — | — | 1 | — |
 | grow | grow_mathnative.py | library | RESULTS, specs | RESULTS×1, specs×2 | 1 | — | 1 | — |
 | harvest | harvest_champion.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
@@ -903,7 +903,7 @@ Census: library 190, reproduce-pinned 9, results-cited 496, spec-cited 80, tool-
 | render | render_anim.py | library | RESULTS, specs, TOOLING | RESULTS×1, specs×1, TOOLING×4 | 1 | 1 | — | — |
 | render | render_gallery.py | spec-cited | specs | specs×7 | — | — | — | — |
 | render | render_hero_neurons.py | spec-cited | specs | specs×4 | — | — | 1 | — |
-| results | results_query.py | library | RESULTS, specs, TOOLING | RESULTS×2, specs×23, TOOLING×9 | — | 4 | 1 | — |
+| results | results_query.py | library | RESULTS, specs, TOOLING | RESULTS×2, specs×23, TOOLING×9 | — | 5 | — | — |
 | rjob | rjob.py | results-cited | RESULTS, specs, TOOLING | RESULTS×3, specs×3, TOOLING×6 | — | 3 | — | — |
 | sol | sol_enrich_results.py | library | specs | specs×3 | 1 | — | — | — |
 | sol | sol_generate_tables.py | spec-cited | specs | specs×3 | — | — | — | — |

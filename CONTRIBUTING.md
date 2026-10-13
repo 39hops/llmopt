@@ -34,8 +34,9 @@ from it, and `scripts/gen_readme.py --check` keeps the README's
 generated regions and the honesty-ledger counts in sync.
 `llmopt/figures/figures.py` is the matplotlib analysis renderer and does
 not read the file. After any amendment run `scripts/gen_figures_web.py`
-and then `scripts/gen_readme.py`, in that order. A number is never typed
-twice.
+and then `scripts/gen_readme.py`, in that order. A figure number is typed
+once, into `figures.json`, from the RESULTS entry its `fence` names; the
+renderer and README read it from there.
 
 ## What is never rewritten
 

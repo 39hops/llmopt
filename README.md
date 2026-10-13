@@ -79,8 +79,9 @@ corpus limit.**
 The floor descends monotonically across an eight-fold width ladder and never
 approaches the corpus entropy at k=32 — the whole ladder buys about one token
 of effective context. Swapping in the opposite inductive bias, a selective
-state-space model, did not cross the wall either, though that arm gated only
-2 of 120 and so is a weak control. The wall appears to belong to the diet.
+state-space model, did not cross the wall either against its own paired
+twin on a different machine, though that arm gated only 2 of 120 and so is
+a weak control. The wall appears to belong to the diet.
 
 **Effective context is architecture-bound, and width does not fix it.**
 

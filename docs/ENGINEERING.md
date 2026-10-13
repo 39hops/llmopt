@@ -111,7 +111,7 @@ assembles and runs it.
 **Booked measurements**
 
 - The 167-row Phase D battery from the C++ implementation's emission replays 167 of 167 through the house verifier. [Phase D adjudicated](RESULTS.md#L2866 "id:2026-07-20-phase-d-adjudicated-the-c-engine"); `test_lab_verify_gen_battery.py` replays it against the tracked `data/axiom_phaseD_167.jsonl`.
-- The certificate tier: 443 of 443 kernel-checked in Lean. [VERDICT LEAN-TIER-1](RESULTS.md#L18619 "id:2026-08-04-verdict-lean-tier-1-the-certificate").
+- The certificate tier: of a 500-identity corpus, 443 certificates were emitted and all 443 kernel-checked in Lean; the 57 unemitted rows were skipped on the emitter side. The corpus carried zero division rows, so this exercises the `ring` tactic only; the `field_simp` and hypothesis tier is untested. [VERDICT LEAN-TIER-1](RESULTS.md#L18619 "id:2026-08-04-verdict-lean-tier-1-the-certificate"), rescoped by [AMENDMENT GT1-TRAJ-CORR, correction 5](RESULTS.md#L18962 "id:2026-08-04-amendment-gt1-traj-corr-amends-observation").
 
 **Caveats.** `sympy` calls cannot be boxed by a signal alarm inside the
 calling process; only a separate worker process with a parent-owned

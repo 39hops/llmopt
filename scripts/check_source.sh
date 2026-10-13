@@ -22,6 +22,7 @@ $PY scripts/gen_index.py --check
 $PY scripts/gen_codemap.py --check
 $PY scripts/gen_results_index.py --check
 $PY scripts/gen_receipt_lock.py --check
+$PY scripts/gen_scoreboard.py --check
 
 echo "== pytest =="
 $PY -m pytest tests/ -q $COV

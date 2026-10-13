@@ -26,15 +26,16 @@ then run the command in [REPRODUCE](REPRODUCE.md).
 |---|---|
 | [RESULTS.md](RESULTS.md) | The append-only ledger. One `## ` heading per entry: `VERDICT`, `PRE-REG`, `AMENDMENT`, `OBSERVATION`, `RECEIPT`. Verdicts and numbers are not rewritten after booking; a correction is a new dated `AMENDMENT` that names its target. Cite an entry by commit SHA plus its heading. |
 | [preregs/](preregs/) | Machine-readable pre-registrations for the later rungs, adjudicated by `scripts/adjudicate.py`. Earlier bars were recorded in prose inside RESULTS. |
-| [receipts.lock.json](receipts.lock.json) | The sha256 of every receipt file a booked entry cites. Small receipts are force-added under `../logs/<run>/`; pinned checkpoints under `../checkpoints/`; large artifacts stay untracked and the lock records that. |
+| [receipts.lock.json](receipts.lock.json) | The sha256 of every `logs/` receipt path a booked entry cites. Small receipts are force-added under `../logs/<run>/`; large receipt streams stay untracked and the lock records them as local-only. Checkpoints are not in the lock: the sixteen reproduce pins are guarded by their contract digests in `tests/test_reproduce.py`, other checkpoints are tracked by no mechanism beyond their on-disk presence. |
 | [sol/RESULTS-SOL.md](sol/RESULTS-SOL.md) | The evidence record of the SOL adoption branch, named by its own RESULTS entries. |
 | [figures.json](figures.json) | Every published number in a figure, transcribed from the RESULTS entry its `fence` names; the published SVG/PNG renderer (`llmopt/figures/figsvg.py`) reads this file, the matplotlib analysis renderer does not. |
 
 ## 3. Re-run it
 
 [REPRODUCE.md](REPRODUCE.md) and [`../llmopt/reproduce.py`](../llmopt/reproduce.py):
-sixteen pinned integer-training arms replay on CPU in about 80 seconds
-each and are checked against committed trajectory digests. A PASS
+sixteen pinned integer-training arms replay on CPU (80 to 86 seconds
+each on an M3 Pro, measured 2026-10-13) and are checked against committed
+trajectory digests. A PASS
 certifies the pinned weight path and the teacher-forced readouts. It is
 not a symbolic-correctness result and not a capability score.
 
@@ -44,7 +45,7 @@ not a symbolic-correctness result and not a capability score.
 |---|---|
 | [results-index.jsonl](results-index.jsonl) | Generated index of RESULTS entries (id, line, type) with hand-curated thread and link fields. Query with `scripts/results_query.py`. |
 | [CODEMAP.md](CODEMAP.md) | Generated move gate for `scratch/` and `scripts/`: how documents and code reach each file, and its evidence class. |
-| [SCOREBOARD.md](SCOREBOARD.md) | A generated view of live verdicts, frozen at 2026-07-26 and not regenerated since. FINDINGS and the index supersede it. |
+| [SCOREBOARD.md](SCOREBOARD.md) | A generated, partial view: the index rows carrying a hand-curated `verdict` field, grouped by thread. Its header states its coverage; FINDINGS is the curated public layer. |
 | [sol/MATURITY-SUMMARY.md](sol/MATURITY-SUMMARY.md) | A generated branch view whose maturity labels are inferred proposals, not the curated tags. |
 | [claims.deny.json](claims.deny.json) | The claim linter's list of superseded readings. |
 
