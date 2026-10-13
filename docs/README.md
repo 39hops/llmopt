@@ -26,8 +26,9 @@ then run the command in [REPRODUCE](REPRODUCE.md).
 |---|---|
 | [RESULTS.md](RESULTS.md) | The append-only ledger. One `## ` heading per entry: `VERDICT`, `PRE-REG`, `AMENDMENT`, `OBSERVATION`, `RECEIPT`. Verdicts and numbers are not rewritten after booking; a correction is a new dated `AMENDMENT` that names its target. Cite an entry by commit SHA plus its heading. |
 | [preregs/](preregs/) | Machine-readable pre-registrations for the later rungs, adjudicated by `scripts/adjudicate.py`. Earlier bars were recorded in prose inside RESULTS. |
-| [receipts.lock.json](receipts.lock.json) | The sha256 of every `logs/` receipt path a booked entry cites. Small receipts are force-added under `../logs/<run>/`; large receipt streams stay untracked and the lock records them as local-only. Checkpoints are not in the lock: the sixteen reproduce pins are guarded by their contract digests in `tests/test_reproduce.py`, other checkpoints are tracked by no mechanism beyond their on-disk presence. |
+| [receipts.lock.json](receipts.lock.json) | The sha256 of every `logs/` receipt path a booked entry cites. Small receipts are force-added under `../logs/<run>/`; large receipt streams stay untracked and the lock records them as local-only. Checkpoints are not in the lock: the sixteen reproduce pins are guarded by their contract digests in `tests/test_reproduce.py`, the checkpoints and inputs behind the front-page results are classified in [EVIDENCE.md](EVIDENCE.md). |
 | [sol/RESULTS-SOL.md](sol/RESULTS-SOL.md) | The evidence record of the SOL adoption branch, named by its own RESULTS entries. |
+| [EVIDENCE.md](EVIDENCE.md) | Evidence availability for the four front-page results: which receipts, checkpoints and inputs are tracked, local-only or absent, with pinned digests, and whether each chain can be re-run on the Mac. Checked against the checkout by `tests/test_evidence_availability.py`. |
 | [figures.json](figures.json) | Every published number in a figure, transcribed from the RESULTS entry its `fence` names; the published SVG/PNG renderer (`llmopt/figures/figsvg.py`) reads this file, the matplotlib analysis renderer does not. |
 
 ## 3. Re-run it
