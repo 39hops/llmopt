@@ -1,0 +1,37 @@
+[keff] keff_d64: 400 sequences >= 129 tokens
+[keff] keff_d64 k=full  loss 0.4833 (20389 positions)
+[keff] keff_d64 k=   4  loss 2.2529 (20389 positions)
+[keff] keff_d64 k=   8  loss 1.8553 (20389 positions)
+[keff] keff_d64 k=  16  loss 1.5770 (20389 positions)
+[keff] keff_d64 k=  32  loss 1.3943 (20389 positions)
+[keff] keff_d64 k=  64  loss 1.3021 (20389 positions)
+[keff] keff_d64 k= 128  loss 0.6742 (20389 positions)
+[keff] keff_d64 SUMMARY {"losses": {"full": 0.4833, "4": 2.2529, "8": 1.8553, "16": 1.577, "32": 1.3943, "64": 1.3021, "128": 0.6742}, "knee_first_flat": 128}
+[keff] keff_d128: 400 sequences >= 129 tokens
+[keff] keff_d128 k=full  loss 0.2751 (20389 positions)
+[keff] keff_d128 k=   4  loss 2.1089 (20389 positions)
+[keff] keff_d128 k=   8  loss 1.8968 (20389 positions)
+[keff] keff_d128 k=  16  loss 1.6617 (20389 positions)
+[keff] keff_d128 k=  32  loss 1.3110 (20389 positions)
+[keff] keff_d128 k=  64  loss 1.0964 (20389 positions)
+[keff] keff_d128 k= 128  loss 0.4617 (20389 positions)
+[keff] keff_d128 SUMMARY {"losses": {"full": 0.2751, "4": 2.1089, "8": 1.8968, "16": 1.6617, "32": 1.311, "64": 1.0964, "128": 0.4617}, "knee_first_flat": 128}
+[keff] keff_d256: 400 sequences >= 129 tokens
+[keff] keff_d256 k=full  loss 0.1763 (20389 positions)
+[keff] keff_d256 k=   4  loss 2.1120 (20389 positions)
+[keff] keff_d256 k=   8  loss 1.9077 (20389 positions)
+[keff] keff_d256 k=  16  loss 1.5719 (20389 positions)
+[keff] keff_d256 k=  32  loss 1.2432 (20389 positions)
+[keff] keff_d256 k=  64  loss 0.8571 (20389 positions)
+[keff] keff_d256 k= 128  loss 0.3232 (20389 positions)
+[keff] keff_d256 SUMMARY {"losses": {"full": 0.1763, "4": 2.112, "8": 1.9077, "16": 1.5719, "32": 1.2432, "64": 0.8571, "128": 0.3232}, "knee_first_flat": 128}
+[keff] keff_d512: 400 sequences >= 129 tokens
+[keff] keff_d512 k=full  loss 0.1464 (20389 positions)
+[keff] keff_d512 k=   4  loss 2.0495 (20389 positions)
+[keff] keff_d512 k=   8  loss 1.9600 (20389 positions)
+[keff] keff_d512 k=  16  loss 1.5137 (20389 positions)
+[keff] keff_d512 k=  32  loss 1.1282 (20389 positions)
+[keff] keff_d512 k=  64  loss 0.7748 (20389 positions)
+[keff] keff_d512 k= 128  loss 0.2899 (20389 positions)
+[keff] keff_d512 SUMMARY {"losses": {"full": 0.1464, "4": 2.0495, "8": 1.96, "16": 1.5137, "32": 1.1282, "64": 0.7748, "128": 0.2899}, "knee_first_flat": 128}
+LADDER-DONE

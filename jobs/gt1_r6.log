@@ -1,0 +1,24 @@
+Fetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]Fetching 12 files: 100%|██████████| 12/12 [00:00<00:00, 20164.92it/s]
+[gt1-2] === seed 1234 frac 0.453 | keep 58/128 per layer | open-loop recall 0.4478 ===
+[gt1-2]   gate 40/120 acc 0.0%
+[gt1-2]   gate 80/120 acc 0.0%
+[gt1-2]   gate 120/120 acc 0.0%
+[gt1-2] frac 0.453 GATE 0/120 per-level {1: 0, 2: 0, 3: 0} | closed-loop recall 0.4410 (open 0.4478, gap 0.0068) | 674s
+[gt1-2] PROBE TEXT (verbatim): ': (1) (2) (3) (4) (5) (6) (7) (8) (9) (10) (11) (12) (13) (14) (15) (16) (17) (18)'
+[gt1-2] all fractions done
+Fetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]Fetching 12 files: 100%|██████████| 12/12 [00:00<00:00, 187804.66it/s]
+[gt1-2] === seed 1234 frac 0.453 | keep 58/128 per layer | open-loop recall 0.4471 ===
+[gt1-2]   gate 40/120 acc 0.0%
+[gt1-2]   gate 80/120 acc 0.0%
+[gt1-2]   gate 120/120 acc 0.0%
+[gt1-2] frac 0.453 GATE 0/120 per-level {1: 0, 2: 0, 3: 0} | closed-loop recall 0.4534 (open 0.4471, gap 0.0064) | 888s
+[gt1-2] PROBE TEXT (verbatim): 'are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are are'
+[gt1-2] all fractions done
+Fetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]Fetching 12 files: 100%|██████████| 12/12 [00:00<00:00, 39850.87it/s]
+[gt1-2] === seed 1234 frac 0.453 | keep 58/128 per layer | open-loop recall 0.0516 ===
+[gt1-2]   gate 40/120 acc 0.0%
+[gt1-2]   gate 80/120 acc 0.0%
+[gt1-2]   gate 120/120 acc 0.0%
+[gt1-2] frac 0.453 GATE 0/120 per-level {1: 0, 2: 0, 3: 0} | closed-loop recall 0.1268 (open 0.0516, gap 0.0752) | 884s
+[gt1-2] PROBE TEXT (verbatim): '::::::::::......................................................'
+[gt1-2] all fractions done

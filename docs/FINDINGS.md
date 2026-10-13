@@ -1344,7 +1344,10 @@ regime tag on every bullet is the fence.
   selection, not sparsity: at the identical 45.3% keep fraction, two
   random masks and one anti-demand mask each scored 0/120, so WHICH
   experts are kept is the difference between 0 and 82 of 120. Generic
-  sparsity contributed nothing measurable at that fraction. ([VERDICT
+  sparsity contributed nothing measurable at that fraction. The three
+  controls ran at seed 1234 and are not seed-paired to the R5 arms at
+  seeds 111/222/333, so the 0-versus-82 contrast is across seeds (fence
+  back-booked by AMENDMENT FRONT-PAGE-RECEIPTS-2026-10-13). ([VERDICT
   MOE-GT-1-R6](RESULTS.md#L19108 "id:2026-08-04-verdict-moe-gt-1-r6-the").)
 - [SINGLE-SEED] [FORMAT-BOUND] [FREE-RUN-GATED]
   [REGIME-SCOPED: measured deployment artifacts] At one unspent seed the

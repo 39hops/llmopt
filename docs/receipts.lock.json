@@ -890,6 +890,69 @@
    "source": "results",
    "tracked": true
   },
+  "logs/floor_hk1/birth_d128.log": {
+   "bytes": 3491,
+   "exists": true,
+   "sha256": "da1680679e7772615e18395304f6c35ce80fc1246f925eaf06d0d839d22d2d63",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/floor_hk1/birth_d256.log": {
+   "bytes": 3410,
+   "exists": true,
+   "sha256": "fa4a880a7425dab3c3d9cc184215706aabe39571a351552dc4ecbe39e84c7ccb",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/floor_hk1/birth_d512.log": {
+   "bytes": 3414,
+   "exists": true,
+   "sha256": "96f54a5fe49f64a308cfae897df14f95ed7a9203b1087d273c54acf2c1a12730",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/floor_hk1/birth_d64.log": {
+   "bytes": 3490,
+   "exists": true,
+   "sha256": "02b1d4a259182a46aff1493794c281121586d00664b00381c6327ab42d97825d",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/floor_hk1/gate_d128.log": {
+   "bytes": 107,
+   "exists": true,
+   "sha256": "544407c2883e73a691184516eb297960738028de448db120247d260a3e07eaae",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/floor_hk1/gate_d256.log": {
+   "bytes": 107,
+   "exists": true,
+   "sha256": "620c439477cddafd4cc6b558dc715c066b517d48beb0ab3546e5aab9ab10b57b",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/floor_hk1/gate_d512.log": {
+   "bytes": 107,
+   "exists": true,
+   "sha256": "a604816d64db3fe330595251a080241ff816f2f49ff715b960a8cfef665eabdd",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/floor_hk1/gate_d64.log": {
+   "bytes": 106,
+   "exists": true,
+   "sha256": "0c1e66a11bb965a67a1b2ed73aff8d65dad6d9fa53c172ffae918623c8aaa132",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/floor_hk1/keff_ladder.log": {
+   "bytes": 2366,
+   "exists": true,
+   "sha256": "73ed919f1877f8a2fa0c7f99a063df0bd270de52f3f0d97cad00918cac3eedaf",
+   "source": "results",
+   "tracked": true
+  },
   "logs/fme1/fme1.DONE": {
    "bytes": 5,
    "exists": true,

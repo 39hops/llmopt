@@ -77877,3 +77877,89 @@ lineage, three random directions, one write norm and locus profile,
 CPU float32 deterministic legs; float64 desk arithmetic on the booked
 snapshots. Descriptive: no bar, no label, no causal claim; changes no
 verdict. Expectations scored as a track record only.
+
+## AMENDMENT FRONT-PAGE-RECEIPTS-2026-10-13 (targets: VERDICT FLOOR-HK-1 27055, VERDICT KEFF-PROBE-1 27332, VERDICT MOE-GT-1-R6 19108): the surviving receipts behind three front-page results are named, force-added and sha-recorded; one fence back-booked on R6; no measured number changes (2026-10-13, Mac; rehabilitation phase 2A)
+
+WHY. The 2026-10-13 engineering audit traced the four README headline
+chains (routing crest, merge_space, loss_floor, effective_context) and
+found that the arithmetic re-reads correctly from the surviving
+receipts but that three verdicts cite no scanner-visible receipt path,
+so the lock (docs/receipts.lock.json) never froze their evidence and a
+fresh clone cannot verify it. This amendment adds provenance to the
+record. It rewrites no verdict text, changes no number, and creates no
+artifact: every file named below is the original, in place, with the
+sha256 of its bytes as they are today.
+
+(A) VERDICT FLOOR-HK-1 (27055) cited its evidence as rjob tags only
+("rjob floor_hk1 rc=0 births, floor_hk1b rc=0 d256+gates"). The
+receipts those runs wrote are:
+  logs/floor_hk1/birth_d64.log   sha256 02b1d4a259182a46aff1493794c281121586d00664b00381c6327ab42d97825d
+  logs/floor_hk1/birth_d128.log  sha256 da1680679e7772615e18395304f6c35ce80fc1246f925eaf06d0d839d22d2d63
+  logs/floor_hk1/birth_d256.log  sha256 fa4a880a7425dab3c3d9cc184215706aabe39571a351552dc4ecbe39e84c7ccb
+  logs/floor_hk1/birth_d512.log  sha256 96f54a5fe49f64a308cfae897df14f95ed7a9203b1087d273c54acf2c1a12730
+  logs/floor_hk1/gate_d64.log    sha256 0c1e66a11bb965a67a1b2ed73aff8d65dad6d9fa53c172ffae918623c8aaa132
+  logs/floor_hk1/gate_d128.log   sha256 544407c2883e73a691184516eb297960738028de448db120247d260a3e07eaae
+  logs/floor_hk1/gate_d256.log   sha256 620c439477cddafd4cc6b558dc715c066b517d48beb0ab3546e5aab9ab10b57b
+  logs/floor_hk1/gate_d512.log   sha256 a604816d64db3fe330595251a080241ff816f2f49ff715b960a8cfef665eabdd
+Each birth log carries the booked epoch-2 loss verbatim (0.4364 /
+0.3815 / 0.3566 / 0.3478) and ends "saved checkpoints/floorhk_d<w>.pt";
+each gate log opens with the driver's 16-hex weights digest booked in
+the verdict table (07a7afa332f24a27 / 7f55af73bd6a3f1b /
+88ee1c2ba0037bc1 / 7edcb967104464db) and carries the per-level gate
+dict. All eight are small text receipts (106 B to 3.5 KB) and are
+force-added under the logs doctrine's small-text-receipt exception;
+this entry is the citation that lets the lock freeze them.
+The four checkpoints stay untracked (2.1 MB / 8.5 MB / 33.7 MB /
+134.4 MB) and are NOT in the lock, which scans logs/ paths only. Their
+file-level sha256 today, distinct from the driver's weights digest:
+  checkpoints/floorhk_d64.pt   a5f256eeb7f31006f21ede19cac1f5205292e9d3b0c7de9cdc600982555584b0
+  checkpoints/floorhk_d128.pt  52bdcaae2f8b5758aa06f5876dd97ac4b276a23aa2e594d17b2080b9a4b59f7c
+  checkpoints/floorhk_d256.pt  fc23e334a50dd315e2b1e20c2760413c05adcaea03c1f1d5c06b2e80f5627505
+  checkpoints/floorhk_d512.pt  be244829f5c3414e198b317ff28a609084868a10c80aa78028157d14c5474fe3
+A re-birth on mps would not reproduce these bytes (Mac mps float
+training is run-level nondeterministic, AMENDMENT
+SOFT-SPEED-1-PRECONDITION); a tolerance re-run is the only
+reproduction shape, and none was attempted here.
+
+(B) VERDICT KEFF-PROBE-1 (27332) cited no receipt path. Its receipt:
+  logs/floor_hk1/keff_ladder.log  sha256 73ed919f1877f8a2fa0c7f99a063df0bd270de52f3f0d97cad00918cac3eedaf
+All 24 booked losses (four widths x k = 4/8/16/32/64/128) and the four
+"full" values appear in it verbatim; it ends LADDER-DONE. Its inputs
+are the four FLOOR-HK-1 checkpoints above, so the probe is re-runnable
+on this Mac while those files survive (scratch/keff_probe.py, CPU,
+deterministic loss readout); not re-run here.
+
+(C) VERDICT MOE-GT-1-R6 (19108):
+  1. The driver log the verdict cites, jobs/gt1_r6.log (1,935 B,
+     sha256 c7ecd2fb2467f1f927dfbb792490d549c1dd4b750aaa1aa00f9181329b92650b),
+     lives under the gitignored jobs/ tree and outside the lock's
+     logs/ scan. It is force-added in place; its sha is recorded here
+     and pinned by the evidence-availability check
+     (docs/EVIDENCE.md). The lock scope itself is unchanged.
+  2. The three receipt rows (logs/opus/moe_gt1.jsonl, lines 36 to 38,
+     already sha-locked) carry no rule or ruleseed field. Arm identity
+     is read from the driver log's order and from the open-loop recall
+     values the verdict quotes (0.4478 / 0.4471 / 0.0516), which match
+     the rows' open_recall to four places. Any future run of the R6
+     harness derives rule and ruleseed into its receipt rows.
+  3. Fence back-booked from the downstream text (README, figures.json
+     fence, GLOSSARY "paired"): the three controls ran at seed 1234
+     and are NOT seed-paired to the R5 arms at seeds 111/222/333. The
+     verdict's "0/120 vs 82/120" contrast is across seeds. The
+     registered bars (P1, P2) were stated and adjudicated within the
+     control arms at seed 1234 and are unaffected; the R5 pairing
+     claim is unaffected.
+  4. The keep-set the R5/R6 masks read, checkpoints/moe_gt1_arm0.json
+     (182,454 B, sha256 d83a27eb9e206c0ed1d539675299885e570c1e90fe54ed78ba6a81cf252215b1),
+     is untracked and outside the lock; it is the one input that
+     cannot be regenerated without re-running arm 0 on the 30B
+     vehicle. Its sha is recorded here and in docs/EVIDENCE.md.
+
+NOT AMENDED, stated for the record: MERGE-SPACE-1 through -5 and
+MICRO-STAR-1 cite driver logs the lock records as absent on every
+checkout (logs/merge_space{1,2,3,4,5}/driver.log,
+logs/microstar/microstar_run.log) and no parent or merged checkpoint
+of that family is on this Mac; the 3080 was unreachable on
+2026-10-13 and was not checked. Those verdicts stand as booked, on
+their prose and 16-hex digests; docs/EVIDENCE.md classifies them as
+not locally verifiable. No amendment is booked for absence alone.

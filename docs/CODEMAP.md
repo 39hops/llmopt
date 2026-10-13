@@ -191,7 +191,7 @@ Census: library 191, reproduce-pinned 9, results-cited 495, spec-cited 80, tool-
 | first | first_moment_erasure_ladder.py | library | RESULTS, specs, TOOLING | RESULTS×34, specs×5, TOOLING×1 | 2 | 5 | — | — |
 | first | first_moment_erasure_ladder2.py | library | RESULTS, specs, TOOLING | RESULTS×22, specs×4, TOOLING×1 | 2 | 4 | — | — |
 | fixed | fixed_q_snap.py | results-cited | via:RESULTS, via:specs | — | — | 1 | — | quick_exact_3080.sh |
-| floor | floor_hk1.sh | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | 1 | — | — |
+| floor | floor_hk1.sh | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 1 | — | — |
 | floor | floor_hk1_d256.sh | UNCITED | — | — | — | — | — | — |
 | fme1 | fme1_launch.sh | results-cited | RESULTS, specs | RESULTS×8, specs×2 | — | — | — | — |
 | fmel1 | fmel1_launch.sh | results-cited | RESULTS, specs | RESULTS×11, specs×3 | — | — | — | — |
@@ -291,7 +291,7 @@ Census: library 191, reproduce-pinned 9, results-cited 495, spec-cited 80, tool-
 | k2h | k2h_transportverify.py | results-cited | RESULTS | RESULTS×4 | — | — | — | — |
 | k2h | k2h_wallaudit.py | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
 | k3 | k3_expert_demo.py | library | RESULTS, specs | RESULTS×8, specs×4 | — | 1 | 3 | — |
-| keff | keff_probe.py | results-cited | RESULTS, TOOLING | RESULTS×2, TOOLING×2 | — | 1 | — | — |
+| keff | keff_probe.py | results-cited | RESULTS, TOOLING | RESULTS×4, TOOLING×2 | — | 1 | — | — |
 | kv | kv_after_night.sh | UNCITED | — | — | — | — | — | — |
 | kv | kv_equiv.py | UNCITED | — | — | — | 1 | 1 | — |
 | l9 | l9_probe.py | results-cited | via:RESULTS | — | — | 3 | — | hot_chain.sh |
