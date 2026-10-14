@@ -165,6 +165,7 @@ on the floorhk checkpoints and compare within tolerance. One-resident-
   place; corrections are AMENDMENT entries naming their target.
 - Seed arithmetic and digest pins are frozen; add guards and tests.
 - Check `scripts/liverun.py status` before every commit.
-- merge_space artifacts: if recovered from the 3080, force-add the
-  originals, shrink `LEGACY_ABSENT`, update EVIDENCE.md; never re-create.
+- merge_space artifacts: recovered from the 3080 and locked on
+  2026-10-13 (AMENDMENT L77967, commit 9ec50c57); the one remaining
+  legacy-absent receipt is the pincer labels file (Artin decision).
 - Do not push from a rehabilitation session unless Artin says so.
