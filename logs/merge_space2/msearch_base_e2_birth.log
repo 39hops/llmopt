@@ -1,0 +1,33 @@
+165028 rows; charset 42; uncovered chars: [':', 'C', 'H', 'I', 'S', '_', 'a', 'b', 'c', 'e']
+skipped 388 out-of-language rows (strict encode; historically silently mangled)
+164622 sequences, vocab 40
+model: 0.5M params on cuda [fast: bf16 + token-budget]
+resuming at epoch 1
+  ep1 200/5270 loss 0.701 (34.3 it/s)
+  ep1 400/5270 loss 0.692 (37.1 it/s)
+  ep1 600/5270 loss 0.681 (37.4 it/s)
+  ep1 800/5270 loss 0.672 (37.4 it/s)
+  ep1 1000/5270 loss 0.664 (37.7 it/s)
+  ep1 1200/5270 loss 0.655 (37.7 it/s)
+  ep1 1400/5270 loss 0.648 (38.0 it/s)
+  ep1 1600/5270 loss 0.643 (38.2 it/s)
+  ep1 1800/5270 loss 0.637 (38.1 it/s)
+  ep1 2000/5270 loss 0.633 (38.2 it/s)
+  ep1 2200/5270 loss 0.630 (38.4 it/s)
+  ep1 2400/5270 loss 0.627 (38.5 it/s)
+  ep1 2600/5270 loss 0.625 (38.5 it/s)
+  ep1 2800/5270 loss 0.623 (38.5 it/s)
+  ep1 3000/5270 loss 0.621 (38.5 it/s)
+  ep1 3200/5270 loss 0.620 (38.5 it/s)
+  ep1 3400/5270 loss 0.618 (38.6 it/s)
+  ep1 3600/5270 loss 0.617 (38.7 it/s)
+  ep1 3800/5270 loss 0.616 (38.7 it/s)
+  ep1 4000/5270 loss 0.615 (38.7 it/s)
+  ep1 4200/5270 loss 0.614 (38.6 it/s)
+  ep1 4400/5270 loss 0.613 (38.6 it/s)
+  ep1 4600/5270 loss 0.612 (38.7 it/s)
+  ep1 4800/5270 loss 0.611 (38.8 it/s)
+  ep1 5000/5270 loss 0.610 (38.7 it/s)
+  ep1 5200/5270 loss 0.610 (38.7 it/s)
+epoch 1: loss 0.6094 (136s)
+saved checkpoints/msearch_base_e2.pt

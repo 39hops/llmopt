@@ -1,0 +1,8 @@
+msearch_s1w gate: {3: 4, 4: 0, 5: 5, 6: 1, 7: 0} = 10/120 @ 6.57%
+msearch_base_e2 gate: {3: 3, 4: 0, 5: 4, 6: 0, 7: 0} = 7/120 @ 3.88%
+msearch_2a gate: {3: 6, 4: 0, 5: 5, 6: 2, 7: 0} = 13/120 @ 10.56%
+msearch_2b gate: {3: 5, 4: 0, 5: 5, 6: 1, 7: 0} = 11/120 @ 9.49%
+merges done
+msearch_avg_e0 gate: {3: 4, 4: 0, 5: 6, 6: 1, 7: 0} = 11/120 @ 8.30%
+msearch_avg_e2 gate: {3: 5, 4: 0, 5: 5, 6: 1, 7: 0} = 11/120 @ 10.27%
+MERGE-SPACE-2 COMPLETE

@@ -3393,24 +3393,368 @@
    "tracked": false
   },
   "logs/merge_space1/driver.log": {
-   "exists": false,
-   "source": "results"
+   "bytes": 978,
+   "exists": true,
+   "sha256": "a2ac724c7ee526f13f6689eaaa84ed62c7a485563e267250f9078d406060fb08",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space1/msearch_1a_birth.log": {
+   "bytes": 2383,
+   "exists": true,
+   "sha256": "db91a6a2176085c98a8b2064449a702310600bce51225a0daaa0455df5a004a6",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space1/msearch_1a_gate.log": {
+   "bytes": 102,
+   "exists": true,
+   "sha256": "272c83c5053be654ad11454f9979057628d7fd1374bbabde4092e1412c6267cb",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space1/msearch_1b_birth.log": {
+   "bytes": 1915,
+   "exists": true,
+   "sha256": "dc6fc700b1226d865e21f5bf0802b20e51f2a4213344c0b4655e8c2a01d46a05",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space1/msearch_1b_gate.log": {
+   "bytes": 101,
+   "exists": true,
+   "sha256": "67f674ee60179355484e6e4fa08fec54e05b60118f9e841f6d3aa9012ef06152",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space1/msearch_avg_12_gate.log": {
+   "bytes": 104,
+   "exists": true,
+   "sha256": "92220206b34e5212726e1692a3cbb49a16c31b93a82d30c8162a03fe8595c6f5",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space1/msearch_avg_13_gate.log": {
+   "bytes": 104,
+   "exists": true,
+   "sha256": "5f828bdaad18e1e420ea6ca1299c1b11344c7061f7178e0761cef43ff222ea9b",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space1/msearch_avg_14_gate.log": {
+   "bytes": 104,
+   "exists": true,
+   "sha256": "dda5f8d4d6253de572d52eb72c81868b272b62e344f8b61edae51236ad3ecbbe",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space1/msearch_avg_23_gate.log": {
+   "bytes": 104,
+   "exists": true,
+   "sha256": "fa06fb1f23c26842b5ecfa2942f2314e1f709f29f5691a5032b1d76103168f3c",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space1/msearch_avg_24_gate.log": {
+   "bytes": 104,
+   "exists": true,
+   "sha256": "be448ba9687b4dc2ad876678f453c8427fd7dff412cb08a81f4f76d2a7c32187",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space1/msearch_avg_34_gate.log": {
+   "bytes": 104,
+   "exists": true,
+   "sha256": "43b99ff0962446ac838a34e82ff6930abab8b6b9b6a41546e9d8c63020a77f09",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space1/msearch_avg_shared_gate.log": {
+   "bytes": 109,
+   "exists": true,
+   "sha256": "fd64fc0fe45eed1a0c1e72f2570f6447a12f5218af063774dd0017ec83f13a47",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space1/msearch_fork_base_birth.log": {
+   "bytes": 1332,
+   "exists": true,
+   "sha256": "68b0b98712e7648a71c3a62396b99cd9c1ec5571110d710eeb69d8347449397b",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space1/msearch_s1_birth.log": {
+   "bytes": 3399,
+   "exists": true,
+   "sha256": "8623a48dc27949caee95548404b5694e811349a23e67575ff7e140d25102c54b",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space1/msearch_s1_gate.log": {
+   "bytes": 102,
+   "exists": true,
+   "sha256": "d5a1f168d14ed3468c583de16cabb190e6cfa9e5f21778eb29fa147033f124d2",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space1/msearch_s2_birth.log": {
+   "bytes": 3401,
+   "exists": true,
+   "sha256": "52ebb02031235ac9c29ba7dd85153649278f9c329cde3bcf278d70a5a2877e31",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space1/msearch_s2_gate.log": {
+   "bytes": 103,
+   "exists": true,
+   "sha256": "2575053fd751b6792a48bd86e91d0e2c8a3b8b6ac1775599b760d8e9ae8aa8b9",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space1/msearch_s3_birth.log": {
+   "bytes": 3401,
+   "exists": true,
+   "sha256": "5a084b4dc6ff79454024923a05e9bd82e3c965c2759b205430f3483eddae8a62",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space1/msearch_s3_gate.log": {
+   "bytes": 103,
+   "exists": true,
+   "sha256": "39a66cccfbc5a0de5f6dd827b6808649d2ffee534d60c7b55db014182363caf4",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space1/msearch_s4_birth.log": {
+   "bytes": 3401,
+   "exists": true,
+   "sha256": "c3981a8abf889a856cdc5d2938ac2a44d9d276abf7af60df7a43b8ecdbebc27d",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space1/msearch_s4_gate.log": {
+   "bytes": 103,
+   "exists": true,
+   "sha256": "f285919d0daccda60a39e3e6606723e9511166ca0374ec7f73cc9619f667048d",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space1/msearch_tv_gate.log": {
+   "bytes": 100,
+   "exists": true,
+   "sha256": "6e742a28eacf16b3b4fb6aaf0eac2bcebeef95dc5e1b19b00163f4ff8d2aa3c7",
+   "source": "results",
+   "tracked": true
   },
   "logs/merge_space2/driver.log": {
-   "exists": false,
-   "source": "results"
+   "bytes": 440,
+   "exists": true,
+   "sha256": "fedefb2207d0745dcb40e9b6311a836b85150ccf9aaf5f13b4d24a1eaefce75b",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space2/msearch_2a_birth.log": {
+   "bytes": 1345,
+   "exists": true,
+   "sha256": "0f53990441329a2fd5135c0284dbbfe92c4feae3292cce7dc7e50fa3ae00c5d5",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space2/msearch_2a_gate.log": {
+   "bytes": 102,
+   "exists": true,
+   "sha256": "04d60e308fcc7e626c0bf47fce05e15e446135649a39bde03453bc9a6065b0ad",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space2/msearch_2b_birth.log": {
+   "bytes": 1111,
+   "exists": true,
+   "sha256": "0ddeb6d16002b1ba839acdfc180129e08cd9fb59cc90cdb4cbc19975ac43d2e0",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space2/msearch_2b_gate.log": {
+   "bytes": 101,
+   "exists": true,
+   "sha256": "4cf933ab0f4027554dfb37b2ad50ea1bcee78a96494527da48d511bd647cbc7f",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space2/msearch_avg_e0_gate.log": {
+   "bytes": 105,
+   "exists": true,
+   "sha256": "a3eb193b42e7667f005f176e86e7764e01fc3129860709d7fde7eb42fedc2489",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space2/msearch_avg_e2_gate.log": {
+   "bytes": 106,
+   "exists": true,
+   "sha256": "9693c016c567a534b50151e09a8741d132cb39610e15fb8d0d0e66bc09ff0681",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space2/msearch_base_e2_birth.log": {
+   "bytes": 1350,
+   "exists": true,
+   "sha256": "cc85a44c545f1591158fd417cec9ec26afc4bcc118ecb265502a79a431589f30",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space2/msearch_base_e2_gate.log": {
+   "bytes": 105,
+   "exists": true,
+   "sha256": "d22fdfec49824ee15be16d503c6d8d7a9b6f6e0aa8f96027f5606fac77ef939d",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space2/msearch_s1w_birth.log": {
+   "bytes": 2700,
+   "exists": true,
+   "sha256": "5591f624c0a3eb46f0cda4546ce1905e18146d08d1bb5462458ec29dc0353388",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space2/msearch_s1w_gate.log": {
+   "bytes": 102,
+   "exists": true,
+   "sha256": "b994f0f6a98ef1ec74b947b055091e7e58151b81825236f12e446cf880e65767",
+   "source": "results",
+   "tracked": true
   },
   "logs/merge_space3/driver.log": {
-   "exists": false,
-   "source": "results"
+   "bytes": 171,
+   "exists": true,
+   "sha256": "a99d411f845d00238b9e377f049959e69b9e8940be072df47aa5031ed68b2e97",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space3/msearch_avg_ord_gate.log": {
+   "bytes": 106,
+   "exists": true,
+   "sha256": "84623c266a15c342770378b5c109d35debce2f0b32a0c87dc21c7227ba697c4a",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space3/msearch_s1o_birth.log": {
+   "bytes": 3402,
+   "exists": true,
+   "sha256": "49fc3b104605f9cc635978905b055ae415fdb942ae1ad4843f22548294e26064",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space3/msearch_s1o_gate.log": {
+   "bytes": 103,
+   "exists": true,
+   "sha256": "58c71ca14dad66e6693864b8219d76c64f99ad2e9141eac6993382a79a08f7de",
+   "source": "results",
+   "tracked": true
   },
   "logs/merge_space4/driver.log": {
-   "exists": false,
-   "source": "results"
+   "bytes": 377,
+   "exists": true,
+   "sha256": "a60fae1420bd66d5a43128dc2047986b68acf3a279c1568dec5a527e508cd97c",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space4/msearch_pair_a_gate.log": {
+   "bytes": 105,
+   "exists": true,
+   "sha256": "58899c5dde0d59f29fa51dbaa8c4235ee8019da7710433dc487b7313d680b7d0",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space4/msearch_pair_b_gate.log": {
+   "bytes": 106,
+   "exists": true,
+   "sha256": "78b17af50f68667d30c45047b35f2ac4168904376627ca2ff892dbb5b17fc572",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space4/msearch_s1o8_birth.log": {
+   "bytes": 3403,
+   "exists": true,
+   "sha256": "91d945fcd7f209af79194d930f7cde1f5cd7a5a2ab849f44ff1e8f020a9f9b29",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space4/msearch_s1o8_gate.log": {
+   "bytes": 104,
+   "exists": true,
+   "sha256": "ad7ffe191b71a30531532161b08a8c28a4834a546a1d7726481e9f34df970ea3",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space4/msearch_s1o9_birth.log": {
+   "bytes": 3403,
+   "exists": true,
+   "sha256": "81ebe5a1fd3b59a92153a165ccb28351afc0d73a9bcc1a09fa28e85d705fda8b",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space4/msearch_s1o9_gate.log": {
+   "bytes": 103,
+   "exists": true,
+   "sha256": "201c8cc8349f641503efcff3cb70edcb756e6b02a4e9a972ad979636dca61b66",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space4/msearch_soup4_gate.log": {
+   "bytes": 104,
+   "exists": true,
+   "sha256": "189ce084332611faf6e4a9bc03fcf3e5921bd6a783e408b9720482bd27187db9",
+   "source": "results",
+   "tracked": true
   },
   "logs/merge_space5/driver.log": {
-   "exists": false,
-   "source": "results"
+   "bytes": 310,
+   "exists": true,
+   "sha256": "cf6801b728f01d43f7fcf546876295335ba9e3d53d4ce42f1cb5f89da50fa726",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space5/msearch_avg2o_gate.log": {
+   "bytes": 106,
+   "exists": true,
+   "sha256": "92cb86e1805c6c1ff6c1a82493299d1d28ba3e46c7b43bc77343c2fb24cad558",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space5/msearch_avg3o_gate.log": {
+   "bytes": 105,
+   "exists": true,
+   "sha256": "1703854aae5bbffb3d0acc01244c457f2ddc5c9bf0264713721c97f5ea06d9d2",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space5/msearch_s2o_birth.log": {
+   "bytes": 3402,
+   "exists": true,
+   "sha256": "51279fdf40532108355d9bed32021046f1f3f5c3493621d5ce9cbb0396b332fa",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space5/msearch_s2o_gate.log": {
+   "bytes": 104,
+   "exists": true,
+   "sha256": "128b9fe465aad0c1d112411c08bc1ff1f4f0caf4160a482fafa665f2b5cc45f0",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space5/msearch_s3o_birth.log": {
+   "bytes": 3402,
+   "exists": true,
+   "sha256": "a6ebb0d13c3a827b68ae9dfd242c50b7bb2e038c30ab6fb83e70f8fe692aee9d",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/merge_space5/msearch_s3o_gate.log": {
+   "bytes": 104,
+   "exists": true,
+   "sha256": "99745940d5d0cb5483df606c7639100bd4c428882f52963199bc67405609c40f",
+   "source": "results",
+   "tracked": true
   },
   "logs/mezo0/desk.json": {
    "bytes": 949485,
@@ -3455,8 +3799,11 @@
    "tracked": true
   },
   "logs/microstar/microstar_run.log": {
-   "exists": false,
-   "source": "results"
+   "bytes": 14188,
+   "exists": true,
+   "sha256": "11e0f8f431c2063d5eba486b69a7f8dfc29f09370305ea32efaaae51860e409e",
+   "source": "results",
+   "tracked": true
   },
   "logs/mult0/rev_b32.jsonl": {
    "bytes": 5680,

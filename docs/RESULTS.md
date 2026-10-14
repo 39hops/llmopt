@@ -77963,3 +77963,182 @@ of that family is on this Mac; the 3080 was unreachable on
 2026-10-13 and was not checked. Those verdicts stand as booked, on
 their prose and 16-hex digests; docs/EVIDENCE.md classifies them as
 not locally verifiable. No amendment is booked for absence alone.
+
+## AMENDMENT MERGE-SPACE-RECEIPTS-RECOVERED-2026-10-13 (targets: VERDICT MERGE-SPACE-1 26770, VERDICT MERGE-SPACE-2 26866, VERDICT MERGE-SPACE-3 26947, VERDICT MERGE-SPACE-4 27013, VERDICT MERGE-SPACE-5 27158, VERDICT MICRO-STAR-1 26301): the six cited driver logs and the per-arm receipts behind the merge_space chain are recovered from the 3080, verified against the booked text, force-added and sha-locked; no measured number changes (2026-10-13, Mac + 3080; rehabilitation phase 2A follow-up)
+
+WHY. AMENDMENT FRONT-PAGE-RECEIPTS-2026-10-13 (77881) recorded that
+the six verdicts above cite driver logs that existed on no checkout
+(the lock held them as exists:false since it was first built on
+2026-08-16) and that the 3080 was unreachable that day. The 3080 came
+up later the same day (its checkout at 937ffa32). The cited files are
+present there, untouched since the booked session: every file carries
+a 2026-08-11 mtime and the merge sidecars carry timestamps between
+2026-08-11T10:29:21-0400 and 12:18:59-0400, inside the windows the
+verdicts book. This entry records the recovery. It rewrites no verdict
+text, changes no number, and re-creates nothing: every file below is
+the original as written on the 3080, copied byte-for-byte to this Mac
+checkout (103 of 103 sha256 digests identical on both machines before
+the copy, 102 re-hashed in place after it; the 103rd is the pincer
+file named at the end, which was not copied).
+
+(A) The six cited receipts, now tracked and sha-locked (the lock rows
+flip from exists:false to a sha; this is a plain lock update, no
+--accept, because no locked byte changed):
+  logs/merge_space1/driver.log      sha256 a2ac724c7ee526f13f6689eaaa84ed62c7a485563e267250f9078d406060fb08
+  logs/merge_space2/driver.log      sha256 fedefb2207d0745dcb40e9b6311a836b85150ccf9aaf5f13b4d24a1eaefce75b
+  logs/merge_space3/driver.log      sha256 a99d411f845d00238b9e377f049959e69b9e8940be072df47aa5031ed68b2e97
+  logs/merge_space4/driver.log      sha256 a60fae1420bd66d5a43128dc2047986b68acf3a279c1568dec5a527e508cd97c
+  logs/merge_space5/driver.log      sha256 cf6801b728f01d43f7fcf546876295335ba9e3d53d4ce42f1cb5f89da50fa726
+  logs/microstar/microstar_run.log  sha256 11e0f8f431c2063d5eba486b69a7f8dfc29f09370305ea32efaaae51860e409e
+
+Cross-checks performed before this entry was written, all exact:
+  1. Every gate dict and total in the five MERGE-SPACE verdict tables
+     (31 arms: s1-s4, 1a, 1b, the six independent averages, avg_shared,
+     tv, s1w, base_e2, 2a, 2b, avg_e0, avg_e2, s1o, avg_ord, s1o8, s1o9,
+     pair_a, pair_b, soup4, s2o, s3o, avg2o, avg3o) appears verbatim in
+     the driver log of its round.
+  2. All 30 sixteen-hex weight digests the five verdicts book (24 in
+     "sha" form, 6 in the slash-separated list for avg_12 to avg_34)
+     appear as "[gate] weights sha" lines in the per-arm gate logs;
+     no digest in a gate log is missing from the verdicts and no
+     booked digest is missing from the gate logs.
+  3. MICRO-STAR-1: the four birth walls (546 / 424 / 529 / 424 s), the
+     four gate dicts (0, 0, 10, 30 of 120) and the d64 digest
+     a756afb84fcb0a98 appear verbatim in logs/microstar/microstar_run.log.
+     The two OOM-poisoned attempts the verdict names
+     (microstar_run_oomkilled.log, microstar_run_oom2.log; 115 KB and
+     356 KB) remain on the 3080 and were not copied: they are not cited
+     by path and the verdict books them as killed unread.
+  4. Each of the sixteen birth logs ends "saved checkpoints/<name>.pt".
+
+(B) Per-arm receipts behind the driver logs (gate logs open with the
+weights digest and carry the per-level dict; birth logs carry the
+recipe echo, per-epoch losses and the save line), small text, 47
+files, 45 KB together, force-added under the logs doctrine's
+small-text-receipt exception; this entry is the citation that lets the
+lock freeze them:
+  logs/merge_space1/msearch_1a_birth.log         sha256 db91a6a2176085c98a8b2064449a702310600bce51225a0daaa0455df5a004a6
+  logs/merge_space1/msearch_1a_gate.log          sha256 272c83c5053be654ad11454f9979057628d7fd1374bbabde4092e1412c6267cb
+  logs/merge_space1/msearch_1b_birth.log         sha256 dc6fc700b1226d865e21f5bf0802b20e51f2a4213344c0b4655e8c2a01d46a05
+  logs/merge_space1/msearch_1b_gate.log          sha256 67f674ee60179355484e6e4fa08fec54e05b60118f9e841f6d3aa9012ef06152
+  logs/merge_space1/msearch_avg_12_gate.log      sha256 92220206b34e5212726e1692a3cbb49a16c31b93a82d30c8162a03fe8595c6f5
+  logs/merge_space1/msearch_avg_13_gate.log      sha256 5f828bdaad18e1e420ea6ca1299c1b11344c7061f7178e0761cef43ff222ea9b
+  logs/merge_space1/msearch_avg_14_gate.log      sha256 dda5f8d4d6253de572d52eb72c81868b272b62e344f8b61edae51236ad3ecbbe
+  logs/merge_space1/msearch_avg_23_gate.log      sha256 fa06fb1f23c26842b5ecfa2942f2314e1f709f29f5691a5032b1d76103168f3c
+  logs/merge_space1/msearch_avg_24_gate.log      sha256 be448ba9687b4dc2ad876678f453c8427fd7dff412cb08a81f4f76d2a7c32187
+  logs/merge_space1/msearch_avg_34_gate.log      sha256 43b99ff0962446ac838a34e82ff6930abab8b6b9b6a41546e9d8c63020a77f09
+  logs/merge_space1/msearch_avg_shared_gate.log  sha256 fd64fc0fe45eed1a0c1e72f2570f6447a12f5218af063774dd0017ec83f13a47
+  logs/merge_space1/msearch_fork_base_birth.log  sha256 68b0b98712e7648a71c3a62396b99cd9c1ec5571110d710eeb69d8347449397b
+  logs/merge_space1/msearch_s1_birth.log         sha256 8623a48dc27949caee95548404b5694e811349a23e67575ff7e140d25102c54b
+  logs/merge_space1/msearch_s1_gate.log          sha256 d5a1f168d14ed3468c583de16cabb190e6cfa9e5f21778eb29fa147033f124d2
+  logs/merge_space1/msearch_s2_birth.log         sha256 52ebb02031235ac9c29ba7dd85153649278f9c329cde3bcf278d70a5a2877e31
+  logs/merge_space1/msearch_s2_gate.log          sha256 2575053fd751b6792a48bd86e91d0e2c8a3b8b6ac1775599b760d8e9ae8aa8b9
+  logs/merge_space1/msearch_s3_birth.log         sha256 5a084b4dc6ff79454024923a05e9bd82e3c965c2759b205430f3483eddae8a62
+  logs/merge_space1/msearch_s3_gate.log          sha256 39a66cccfbc5a0de5f6dd827b6808649d2ffee534d60c7b55db014182363caf4
+  logs/merge_space1/msearch_s4_birth.log         sha256 c3981a8abf889a856cdc5d2938ac2a44d9d276abf7af60df7a43b8ecdbebc27d
+  logs/merge_space1/msearch_s4_gate.log          sha256 f285919d0daccda60a39e3e6606723e9511166ca0374ec7f73cc9619f667048d
+  logs/merge_space1/msearch_tv_gate.log          sha256 6e742a28eacf16b3b4fb6aaf0eac2bcebeef95dc5e1b19b00163f4ff8d2aa3c7
+  logs/merge_space2/msearch_2a_birth.log         sha256 0f53990441329a2fd5135c0284dbbfe92c4feae3292cce7dc7e50fa3ae00c5d5
+  logs/merge_space2/msearch_2a_gate.log          sha256 04d60e308fcc7e626c0bf47fce05e15e446135649a39bde03453bc9a6065b0ad
+  logs/merge_space2/msearch_2b_birth.log         sha256 0ddeb6d16002b1ba839acdfc180129e08cd9fb59cc90cdb4cbc19975ac43d2e0
+  logs/merge_space2/msearch_2b_gate.log          sha256 4cf933ab0f4027554dfb37b2ad50ea1bcee78a96494527da48d511bd647cbc7f
+  logs/merge_space2/msearch_avg_e0_gate.log      sha256 a3eb193b42e7667f005f176e86e7764e01fc3129860709d7fde7eb42fedc2489
+  logs/merge_space2/msearch_avg_e2_gate.log      sha256 9693c016c567a534b50151e09a8741d132cb39610e15fb8d0d0e66bc09ff0681
+  logs/merge_space2/msearch_base_e2_birth.log    sha256 cc85a44c545f1591158fd417cec9ec26afc4bcc118ecb265502a79a431589f30
+  logs/merge_space2/msearch_base_e2_gate.log     sha256 d22fdfec49824ee15be16d503c6d8d7a9b6f6e0aa8f96027f5606fac77ef939d
+  logs/merge_space2/msearch_s1w_birth.log        sha256 5591f624c0a3eb46f0cda4546ce1905e18146d08d1bb5462458ec29dc0353388
+  logs/merge_space2/msearch_s1w_gate.log         sha256 b994f0f6a98ef1ec74b947b055091e7e58151b81825236f12e446cf880e65767
+  logs/merge_space3/msearch_avg_ord_gate.log     sha256 84623c266a15c342770378b5c109d35debce2f0b32a0c87dc21c7227ba697c4a
+  logs/merge_space3/msearch_s1o_birth.log        sha256 49fc3b104605f9cc635978905b055ae415fdb942ae1ad4843f22548294e26064
+  logs/merge_space3/msearch_s1o_gate.log         sha256 58c71ca14dad66e6693864b8219d76c64f99ad2e9141eac6993382a79a08f7de
+  logs/merge_space4/msearch_pair_a_gate.log      sha256 58899c5dde0d59f29fa51dbaa8c4235ee8019da7710433dc487b7313d680b7d0
+  logs/merge_space4/msearch_pair_b_gate.log      sha256 78b17af50f68667d30c45047b35f2ac4168904376627ca2ff892dbb5b17fc572
+  logs/merge_space4/msearch_s1o8_birth.log       sha256 91d945fcd7f209af79194d930f7cde1f5cd7a5a2ab849f44ff1e8f020a9f9b29
+  logs/merge_space4/msearch_s1o8_gate.log        sha256 ad7ffe191b71a30531532161b08a8c28a4834a546a1d7726481e9f34df970ea3
+  logs/merge_space4/msearch_s1o9_birth.log       sha256 81ebe5a1fd3b59a92153a165ccb28351afc0d73a9bcc1a09fa28e85d705fda8b
+  logs/merge_space4/msearch_s1o9_gate.log        sha256 201c8cc8349f641503efcff3cb70edcb756e6b02a4e9a972ad979636dca61b66
+  logs/merge_space4/msearch_soup4_gate.log       sha256 189ce084332611faf6e4a9bc03fcf3e5921bd6a783e408b9720482bd27187db9
+  logs/merge_space5/msearch_avg2o_gate.log       sha256 92cb86e1805c6c1ff6c1a82493299d1d28ba3e46c7b43bc77343c2fb24cad558
+  logs/merge_space5/msearch_avg3o_gate.log       sha256 1703854aae5bbffb3d0acc01244c457f2ddc5c9bf0264713721c97f5ea06d9d2
+  logs/merge_space5/msearch_s2o_birth.log        sha256 51279fdf40532108355d9bed32021046f1f3f5c3493621d5ce9cbb0396b332fa
+  logs/merge_space5/msearch_s2o_gate.log         sha256 128b9fe465aad0c1d112411c08bc1ff1f4f0caf4160a482fafa665f2b5cc45f0
+  logs/merge_space5/msearch_s3o_birth.log        sha256 a6ebb0d13c3a827b68ae9dfd242c50b7bb2e038c30ab6fb83e70f8fe692aee9d
+  logs/merge_space5/msearch_s3o_gate.log         sha256 99745940d5d0cb5483df606c7639100bd4c428882f52963199bc67405609c40f
+
+(C) Checkpoints and merge sidecars: the sixteen parent births, the
+sixteen merged models and the MICRO-STAR-1 d64 model are now on this
+Mac as byte-identical copies (checkpoints/ is gitignored; 70 MB
+total), originals still on the 3080. They stay untracked and outside
+the lock (logs/ scan only); their file-level sha256 today, distinct
+from the driver's 16-hex weights digest, recorded here and pinned in
+docs/EVIDENCE.md:
+  checkpoints/microstar_d64.pt       sha256 91d02b2b46c962e939f56ae03bb94d8c6a7b3a195fa8393b6c4879c73942f542
+  checkpoints/msearch_1a.pt          sha256 446bbc305b095c5eee24a8c38afbb4444ee3469fa64864e9af31b7cc8bab8908
+  checkpoints/msearch_1b.pt          sha256 fe09b0f45425b0bf4fb675b5cce7762088be24bd1cb9dac399540a52aea7b9cf
+  checkpoints/msearch_2a.pt          sha256 326a62a0e11c1e6e52efaab31e66a1c032efb4cadc442c7a9f075ee915692c9f
+  checkpoints/msearch_2b.pt          sha256 e473e36cd0c594a1b6f04157019d4af5eb44f31074180dc75d4a79284b0e1ee5
+  checkpoints/msearch_avg2o.pt       sha256 b914bd23c3fbe79efbe56311cc5a22ea13dc8ddab0cfd05e31d4c0ec70b6e076
+  checkpoints/msearch_avg3o.pt       sha256 26738d9d413d15192754ece581cc7a91ed15bc361b84d765c61c5b129f252746
+  checkpoints/msearch_avg_12.pt      sha256 e9ece88ab9d88d167fa3314472a7e42b62497677d4481543799ec20b57eae14b
+  checkpoints/msearch_avg_13.pt      sha256 89a0ee002e1b2217b6c53d564739fee6a4b34c4472e8c982c586c859169ecc31
+  checkpoints/msearch_avg_14.pt      sha256 913cf1ff479a6df404810de0e04cc07f7d1ca111bbe6e9fb90f4c9be8d3fccc4
+  checkpoints/msearch_avg_23.pt      sha256 8dbe00ef03f19c5c3eeae3753625c157c66b2db60b968d765e7eed4252cd0465
+  checkpoints/msearch_avg_24.pt      sha256 fcdeb1ef1d80ee8a3b4259bf717367e5ea14a3cd13f843ddfe2fae47b7dfa4d6
+  checkpoints/msearch_avg_34.pt      sha256 09652acfa5f116ec64deb9dfb01b82a7f80e48045e2f2ed016961d450d8ddb6d
+  checkpoints/msearch_avg_e0.pt      sha256 1553a7590d1ae32de75f6c638ea0ca0f557475c20e8d0be53cba71bc077c15af
+  checkpoints/msearch_avg_e2.pt      sha256 8937fa8fea2661953622524000472e5db9484475dac1913762fa80373515dea1
+  checkpoints/msearch_avg_ord.pt     sha256 55768d8b3937b2737e406ef10e15bd5258057e7e72619bef0e28912792e17e65
+  checkpoints/msearch_avg_shared.pt  sha256 1b5de76e9674b269a502945302282d4e9a27120953858de2e23506e2e83083f9
+  checkpoints/msearch_base_e2.pt     sha256 ebdf949a0bdff8e2b1408764f26aef527405539d864ec9e35e95ab2f0744a8ba
+  checkpoints/msearch_fork_base.pt   sha256 3fbb07b3cbd0695cd7c5695bbf3f241cb0e301bf6909eaf38b4e66a3e0c2d91f
+  checkpoints/msearch_pair_a.pt      sha256 d226e8a05f978e22db0871665d6774748ef8e5827bd51e06dc9b77576208a3dd
+  checkpoints/msearch_pair_b.pt      sha256 69c901fb633de453b20cfa2943ac79e5ed5a0755ef767cb9914167f7b6d2bbe3
+  checkpoints/msearch_s1.pt          sha256 7bfc417abe109218fafa878b5635af78fff4aceaeb9fc0eda0b4c0a8d110f04d
+  checkpoints/msearch_s1o.pt         sha256 0b7e6eb313c165019e248b59664a7b754f545e64b75063f4745de560162fd2cd
+  checkpoints/msearch_s1o8.pt        sha256 1c7ce11a64801e4dd0c0b07a9228a7437ca817f9a42b4069de94c73c8a12d9a5
+  checkpoints/msearch_s1o9.pt        sha256 a2c2573675ed3b36c3e467772cca0452fe098d3640098e6151a4cb8182bd03e9
+  checkpoints/msearch_s1w.pt         sha256 d6286e97467bd4e55ac378b60e2cd58afd1be1d85a065d62f88a7de394e9a065
+  checkpoints/msearch_s2.pt          sha256 7a14154f38387deec1644184e3e2b7f64205ab8568460bd6406f74c513e3e5a3
+  checkpoints/msearch_s2o.pt         sha256 57b8f66a7995821036666ba082c549fd6905db7d4ddc6fb49f5c4b7a9fd8718d
+  checkpoints/msearch_s3.pt          sha256 2a03176eaf0635532dc75213f50efa270baf1fd0e934da69e6f78dd26eedab81
+  checkpoints/msearch_s3o.pt         sha256 ffda913192f44abde6ba7550052c6164bb0bc2d87fa10785136424e1e73ab3d7
+  checkpoints/msearch_s4.pt          sha256 26fcda038e279202319c68b9e57e085c92723fd8a5815b6e43c30e9b188bdd5c
+  checkpoints/msearch_soup4.pt       sha256 20002d3e001d2bcfd2c2d211389d6783e741bfa0fd9b75d5bacdcc43880c75ca
+  checkpoints/msearch_tv.pt          sha256 8a98947c041c9e1ecc0c14cd3a413008bdf2eac3c944a292fa828b9514ee0acf
+The sixteen llmopt/lab/merge.py sidecars record op, alpha, the
+inputs with their full sha256, the git commit and the registered
+label of each merge cell. All 33 input digests across the sidecars
+match the parent checkpoint bytes above, so each merged model's
+parentage is verifiable from files, not from prose:
+  checkpoints/msearch_avg2o.pt.merge.json       sha256 7830a46ecaf1293fe83f348c383443c5319da2ea09d4ae8e472cbd5e2c626699
+  checkpoints/msearch_avg3o.pt.merge.json       sha256 3efb8ac8be824e6573e264dc8f4a0de0ab53996892d525152c52b9596dc726a5
+  checkpoints/msearch_avg_12.pt.merge.json      sha256 fea0c0992928c6653473e2e36c2f24a7df0eb93a12f8314f9fbbd3bc0d99f599
+  checkpoints/msearch_avg_13.pt.merge.json      sha256 34cf0a2d02f9f5f1b306e0d4d96114bf320eafdfc441a47ba3fe86949e980f83
+  checkpoints/msearch_avg_14.pt.merge.json      sha256 c035936e4e35d96a37532bd2ea89dbe75d7f40dcc71599befa59dd7176e9c9ca
+  checkpoints/msearch_avg_23.pt.merge.json      sha256 633351cc0a31e1b2b3591301d11a053343cf3ff0bfa5e0ab43887f44578bcb89
+  checkpoints/msearch_avg_24.pt.merge.json      sha256 3b4fd9c1e768a661402594ab5696954f0005ef2b417ad9748f8b9b15b34ae42d
+  checkpoints/msearch_avg_34.pt.merge.json      sha256 ca713cdc85b58b57d4e60af21d4d26733fda77738bddbaabb79a6127f15d9371
+  checkpoints/msearch_avg_e0.pt.merge.json      sha256 0ac72778228a0ff2b803a209b965fcd392a8b9d4815b003bfdbc7750608ffb13
+  checkpoints/msearch_avg_e2.pt.merge.json      sha256 10cd632892b9b41f060f89670b4f3a1a6c4685cedbff4ba948b056cd73ce00f0
+  checkpoints/msearch_avg_ord.pt.merge.json     sha256 7677c121b3f1600c1fc63616568c76e2adcb3881396e19c28127b14be7f9080e
+  checkpoints/msearch_avg_shared.pt.merge.json  sha256 b4a9ce205e25efd42ed433be546161018a3b4e4feb4644be6b92ed872c0ee0c7
+  checkpoints/msearch_pair_a.pt.merge.json      sha256 5994691e55dd27aec3d70fce3fbfe4f9671a3d5dc6be69d7b134e6473997de84
+  checkpoints/msearch_pair_b.pt.merge.json      sha256 0ab1703a2b90db72f90a3b4333e1cfa63b7ca580f56bb576bb3afceb26f76e63
+  checkpoints/msearch_soup4.pt.merge.json       sha256 9bd323be294b3f0c34d8638d51b81cc56684105dbaebe40b15d9b7f16a4e4c52
+  checkpoints/msearch_tv.pt.merge.json          sha256 4f9743a7768d6c72f660e5d897f4deb5a7f78af353839d8a9338b834625990d6
+
+(D) Legacy absent set. tests/science_incidents/test_frozen_receipt_mutation.py
+pinned seven identities as absent since the lock was first built; six
+are recovered by this entry and the set shrinks to one:
+logs/pincer/labels_v2.jsonl (cited at 23161 as WSL-side). That file is
+also present on the 3080 (54,899 B, sha256
+250f161c7d91c5634ade5d0b50479728999d39df85fca04f453a228e69f98626) and
+was deliberately not copied: it is a labels dataset outside the four
+front-page chains this phase covers, and whether a jsonl of that size
+enters the tracked tree is a scope decision, not a recovery.
+
+Re-run shape, unchanged: the chain is 3080-scoped (bf16 births on
+cuda); no Mac re-birth is a valid comparison under house doctrine. The
+gate side of the chain is now re-runnable on either machine against
+the recovered checkpoints, in the same family only; nothing was
+re-run for this entry.

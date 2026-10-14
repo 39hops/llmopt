@@ -88,11 +88,11 @@ def test_locked_receipts_are_unchanged():
 # (older driver logs never force-added). An IDENTITY ratchet, not a
 # count (external-review adoption 2026-08-16): with a count alone,
 # recovering one legacy file would free a slot a NEW booking could
-# silently spend on new uncommitted evidence.
+# silently spend on new uncommitted evidence. Six of the original
+# seven (the merge_space driver logs and the microstar run log) were
+# recovered from the 3080 and locked on 2026-10-13 (AMENDMENT
+# MERGE-SPACE-RECEIPTS-RECOVERED-2026-10-13); the set only shrinks.
 LEGACY_ABSENT = {
-    "logs/merge_space1/driver.log", "logs/merge_space2/driver.log",
-    "logs/merge_space3/driver.log", "logs/merge_space4/driver.log",
-    "logs/merge_space5/driver.log", "logs/microstar/microstar_run.log",
     "logs/pincer/labels_v2.jsonl",
 }
 
