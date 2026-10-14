@@ -19,27 +19,17 @@ README's generated region and the `honesty_ledger` figure in
 docs/figures.json (part values plus the fence's claim total). Both
 have their own test in tests/test_gen_readme.py.
 """
-import json
 import re
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-MATURITY = ("RETRACTED", "NULL", "MECHANISM-CONFIRMED", "REPLICATED",
-            "SINGLE-SEED")
+sys.path.insert(0, str(ROOT))
+from llmopt.figures.spec import FIGURE_PARTS, MATURITY, findings_counts, recount  # noqa: E402
 
 
 def counts() -> dict[str, int]:
-    text = (ROOT / "docs" / "FINDINGS.md").read_text()
-    bullets = re.findall(r"^- \[.*?(?=^- \[|^#|\Z)", text, re.S | re.M)
-    result = {t: 0 for t in MATURITY}
-    for bullet in bullets:
-        head = bullet.split("(")[0]
-        tags = re.findall(r"\[([A-Z][A-Z-]*(?::[^\]]*)?)\]", head)
-        mats = [t for t in tags if t in MATURITY]
-        if len(mats) == 1:
-            result[mats[0]] += 1
-    return result
+    return findings_counts((ROOT / "docs" / "FINDINGS.md").read_text())
 
 
 def render() -> str:
@@ -56,30 +46,14 @@ def render() -> str:
             f"({100 * c['SINGLE-SEED'] / total:.1f}%) are single-seed.")
 
 
-# figure part label -> maturity tag, the mapping tests/test_gen_readme.py
-# asserts; a label renamed in figures.json must be renamed here too.
-FIGURE_PARTS = {"Replicated": "REPLICATED",
-                "Mechanism confirmed": "MECHANISM-CONFIRMED",
-                "Single seed": "SINGLE-SEED",
-                "Null": "NULL",
-                "Retracted": "RETRACTED"}
-
-
 def render_figure(fig_text: str) -> str:
     """Rewrite the honesty_ledger part values and the claim count in
-    its fence string, leaving every other key and the file's
-    formatting untouched."""
-    c = counts()
-    fig = json.loads(fig_text)
-    ledger = fig["honesty_ledger"]
-    for part in ledger["parts"]:
-        tag = FIGURE_PARTS.get(part["label"])
-        if tag is not None:
-            part["value"] = c[tag]
-    ledger["fence"] = re.sub(r"\b\d+ curated claims\b",
-                             f"{sum(c.values())} curated claims",
-                             ledger["fence"])
-    return json.dumps(fig, indent=2, ensure_ascii=False) + "\n"
+    its fence string through the shared serializer
+    (llmopt.figures.spec), leaving every other key untouched."""
+    return recount(fig_text, (ROOT / "docs" / "FINDINGS.md").read_text())
+
+
+__all__ = ["counts", "render", "render_figure", "FIGURE_PARTS", "MATURITY"]
 
 
 def main() -> int:

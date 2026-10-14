@@ -132,7 +132,12 @@ def _fence(c, w, h, pad_x, text):
         else:
             line = trial
     lines.append(line)
-    lines = lines[:2]  # the fence is a footer, not a paragraph
+    if len(lines) > 2:
+        # the fence is a footer, not a paragraph; silently dropping the
+        # third line would crop provenance off the published figure
+        raise ValueError(
+            f"fence needs {len(lines)} lines at width {w}; at most 2 fit "
+            f"({limit} mono characters each). Shorten it: {text!r}")
     y0 = h - 20 - (len(lines) - 1) * (T_FENCE + 5)
     out = [f'<line x1="{pad_x}" y1="{y0 - 20}" x2="{w - pad_x}" '
            f'y2="{y0 - 20}" stroke="{c["grid"]}" stroke-width="1"/>']
@@ -383,6 +388,11 @@ RENDERERS = {"gate_track": gate_track, "curves": curves, "ladder": ladder,
              "composition": composition}
 
 
-def render(name: str, mode: str = "light", width: int = 880) -> str:
-    spec = load(name)
+def render_spec(spec: dict, mode: str = "light", width: int = 880) -> str:
+    """Render one figure's spec dict (the value under its name in
+    docs/figures.json, or any dict of that shape)."""
     return RENDERERS[spec["kind"]](spec, mode=mode, width=width)
+
+
+def render(name: str, mode: str = "light", width: int = 880) -> str:
+    return render_spec(load(name), mode=mode, width=width)

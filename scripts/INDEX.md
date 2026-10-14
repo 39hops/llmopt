@@ -879,9 +879,18 @@ Dispatcher v2 labels: disagreement-oversampled farming.
 Render the web figures: SVG from docs/figures.json, PNG via Chrome.
 
 - `page(svg: str, w: int, h: int) -> str` — Wrap the SVG with @font-face pointing at the vendored files, so
+- `chrome_available() -> bool`
 - `capture(svg: str, w: int, h: int, png: Path) -> bool`
-- `recount_findings() -> None` — Recount FINDINGS by maturity tag and write it back into the spec.
-- `main() -> None`
+- `svg_size(svg: str) -> tuple[int, int]`
+- `png_size(path: Path) -> tuple[int, int] | None` — Width and height from the PNG IHDR chunk, or None if the file is
+- `pixel_diff(a: Path, b: Path) -> tuple[int, int]` — (number of differing pixels, max channel delta) between two PNGs;
+- `pixels_equal(a: Path, b: Path) -> bool`
+- `chrome_version() -> str | None`
+- `capture_record(out: Path) -> dict | None`
+- `figures(spec: dict) -> list[str]`
+- `write(spec_path: Path, out: Path, findings: Path, raster: bool=True) -> int`
+- `check(spec_path: Path, out: Path, findings: Path, raster: bool=True) -> int`
+- `main(argv: list[str] | None=None) -> int`
 
 ### scripts/gen_frontier.py
 Magic-maximizing generation (frontier mining): draw a large candidate pool, score each with the estimator (microseconds), keep the ones predicted HARD-BUT-SOLVABLE, and measure whether selection actually concentrated difficulty.

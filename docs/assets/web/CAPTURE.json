@@ -1,0 +1,6 @@
+{
+  "renderer": "Google Chrome 155.0.8059.40",
+  "scale": 2,
+  "pngs": 12,
+  "note": "PNG pixels are compared exactly by gen_figures_web.py --check against a fresh capture with the local Chrome; a different Chrome version can move anti-aliasing pixels, which the check reports with counts."
+}

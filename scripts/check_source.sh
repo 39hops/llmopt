@@ -23,6 +23,12 @@ $PY scripts/gen_codemap.py --check
 $PY scripts/gen_results_index.py --check
 $PY scripts/gen_receipt_lock.py --check
 $PY scripts/gen_scoreboard.py --check
+# Figures: SVGs are re-rendered and compared; PNG raster content is
+# compared pixel-for-pixel only where Chrome exists (the Mac). On a
+# machine without Chrome the line below reports the raster as NOT
+# verified; a green run there certifies the SVGs and PNG headers, not
+# raster reproducibility (LLMOPT_FIG_NO_RASTER=1 skips Chrome anywhere).
+$PY scripts/gen_figures_web.py --check
 
 echo "== pytest =="
 $PY -m pytest tests/ -q $COV
