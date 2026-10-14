@@ -11,7 +11,24 @@ Phase boundaries follow the audit's P-items (08-rehabilitation-plan).
 Each phase is one reviewable commit set with acceptance criteria that a
 watcher can check from artifacts, never from the claim.
 
-## 2B. Figure-generation determinism and `--check` (P1-H, P0-G)
+## 2B. Figure-generation determinism and `--check` (P1-H, P0-G) — DONE 2026-10-13
+
+Landed in c6af8677, 5923250c, e7ee8c27 (handoff 2026-10-13-2) with
+one addition to the plan below: PNG validation is content-based.
+`gen_figures_web.py --check` re-captures each figure with the local
+Chrome and compares pixels (all four channels) against the committed
+PNG, reporting differing-pixel counts on a mismatch; timestamps are
+not consulted. Without Chrome the check prints "raster: NOT verified"
+and check_source.sh's comment states that a green run there certifies
+SVGs and PNG headers only. `docs/assets/web/CAPTURE.json` records the
+renderer version. Deviation from the acceptance line: the routing_crest
+pair also changed (fence text states the 66.33 to 66 rounding, item 5),
+and all ten August PNGs were re-captured because Chrome 155 renders
+them 48 to 115 anti-aliasing pixels differently; every SVG and value is
+unchanged. Fence ids live in a `fence_ids` key rather than in the
+rendered fence text.
+
+### Original plan
 
 Problem: `scripts/gen_figures_web.py` rewrites `docs/figures.json` with
 `ensure_ascii=True`; `scripts/gen_readme.py` rewrites it with
@@ -39,6 +56,16 @@ Acceptance: running the two generators in either order leaves
 before and after except for the merge_space fence text; `--check` for
 both generators in CI; new tests fail when a figure value is edited by
 one digit (mutation check by hand, recorded in the commit message).
+
+## 2B-x. Selective `jobs/` receipt-lock support (backlog, own phase)
+
+`jobs/gt1_r6.log` is tracked and pinned by `test_evidence_availability`
+only; the lock scans `logs/` paths. RESULTS cites 39 `jobs/*.log`
+paths, most of which probably exist on no checkout. Design before
+code: which citations enter the scan, how the fresh-clone `check_view`
+and the (now empty) LEGACY_ABSENT set absorb a new absent class, and
+whether the recovery operation's allowlist extends to jobs/. One
+commit set with its own tests; not part of 2C.
 
 ## 2C. Generator correctness guards, no seed changes (P0-E, P0-F, P1-K, P1-L)
 
