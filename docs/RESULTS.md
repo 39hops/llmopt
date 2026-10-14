@@ -78142,3 +78142,50 @@ cuda); no Mac re-birth is a valid comparison under house doctrine. The
 gate side of the chain is now re-runnable on either machine against
 the recovered checkpoints, in the same family only; nothing was
 re-run for this entry.
+
+## AMENDMENT PINCER-LABELS-RECOVERED-2026-10-13 (targets: VERDICT HARDENING-P4-1-LABELS 23149, AMENDMENT MERGE-SPACE-RECEIPTS-RECOVERED-2026-10-13 77967): the row-level label record is recovered from the 3080 through the receipt-recovery operation, verified against the booked counts, force-added and sha-locked; the legacy absent set is empty; no measured number changes (2026-10-13, Mac + 3080)
+
+WHY. AMENDMENT MERGE-SPACE-RECEIPTS-RECOVERED-2026-10-13 (77967)
+recorded that logs/pincer/labels_v2.jsonl, the streamed row-level
+record VERDICT HARDENING-P4-1-LABELS (23149) cites as "WSL-side",
+was present on the 3080 (54,899 B, sha256
+250f161c7d91c5634ade5d0b50479728999d39df85fca04f453a228e69f98626)
+and was deliberately not copied pending a scope decision. Artin
+decided to recover it. This entry records the recovery; no verdict
+text or number changes.
+
+Provenance and content, checked before the restore: 300 JSON rows,
+one per sampled gen-4 state, fields i / cur / nxt / cls / names, cur
+and nxt sympy expressions only, names of the form
+<rule>@<Integral(...)>; no paths, hosts or identifiers of any kind.
+Class counts read from the file: unique 203, miss 95, timeout 2,
+ambiguous 0; the verdict books 203u / 0a / 95m / 2 timeout and 67.7%
+recoverable (203 of 300). The file carries the same 2026-08-08 mtime
+as the booked session.
+
+Mechanism: the file was placed through scripts/recover_receipt.py
+(commit c9acaf1d), the one write to a booked receipt path the receipt
+guard allows. The operation refused unless the destination was a
+results-cited receipt the lock classified as absent, nothing existed
+at the path, the source bytes hashed to the digest booked at 77967,
+no registered run was live and the checkout was the primary worktree;
+it re-hashed the written file and appended the record to
+docs/receipt-recoveries.jsonl. The file is force-added under the logs
+doctrine's small-text-receipt exception (a 55 KB jsonl of 300 short
+rows, the row-level receipt of a booked number, not a stream); the
+lock now holds its sha (933 paths, 905 sha-locked, zero results-cited
+receipts absent on every checkout), and LEGACY_ABSENT in
+tests/science_incidents/test_frozen_receipt_mutation.py is empty.
+
+Also inventoried, NOT recovered and NOT to be deleted: the two
+OOM-poisoned MICRO-STAR-1 attempts the verdict (26301) names as
+killed unread, on the 3080 under logs/microstar/:
+  microstar_run_oomkilled.log  115,107 B  mtime 2026-08-11 00:35 EDT
+    sha256 995f5755ce3e1b85b9015ecf02137f6d03653505e6c29fec6efd445b7fd2297b
+  microstar_run_oom2.log       355,745 B  mtime 2026-08-11 01:01 EDT
+    sha256 2a3d71e9a0658a00d73ed82488b8e93401f3e973f9297bb17fc5d9ba9f471df8
+Both open with the d16 birth header and end in CUDACachingAllocator
+OOM warnings (the 43x tripwire the verdict cites). They are
+historical failed-run evidence for the relaunch decision, classified
+remote-only in docs/EVIDENCE.md with their digests; they stay on the
+3080, outside git, and are not disposable logs.

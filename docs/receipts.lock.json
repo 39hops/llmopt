@@ -4227,8 +4227,11 @@
    "tracked": true
   },
   "logs/pincer/labels_v2.jsonl": {
-   "exists": false,
-   "source": "results"
+   "bytes": 54899,
+   "exists": true,
+   "sha256": "250f161c7d91c5634ade5d0b50479728999d39df85fca04f453a228e69f98626",
+   "source": "results",
+   "tracked": true
   },
   "logs/prgd0/desk.json": {
    "bytes": 579950,

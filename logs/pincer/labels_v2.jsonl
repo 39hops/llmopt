@@ -1,0 +1,300 @@
+{"i": 0, "cur": "Integral(-1, x) + Integral(6*x**2, x) + 8", "nxt": "-x + Integral(6*x**2, x) + 8", "cls": "unique", "names": ["i_const@Integral(-1, x)"]}
+{"i": 1, "cur": "-5*x**5 + Integral(3, x) + Integral(2/x, x)", "nxt": "-5*x**5 + 2*log(x) + Integral(3, x)", "cls": "unique", "names": ["i_linear_basis@Integral(2/x, x)"]}
+{"i": 2, "cur": "-5*log(x) + 6*cos(x) + Integral(7*exp(x), x)", "nxt": "7*exp(x) - 5*log(x) + 6*cos(x)", "cls": "unique", "names": ["i_linear_basis@Integral(7*exp(x), x)"]}
+{"i": 3, "cur": "Integral(0, x) + Integral(9, x)", "nxt": "Integral(9, x) + 5", "cls": "miss", "names": []}
+{"i": 4, "cur": "Integral(3*(x**3*(4*x + 7) + 3)/x, x)", "nxt": "Integral(9/x, x) + Integral(21*x**2, x) + Integral(12*x**3, x)", "cls": "unique", "names": ["expand"]}
+{"i": 5, "cur": "Integral(0, x) + Integral(12, x)", "nxt": "Integral(12, x) + 3", "cls": "miss", "names": []}
+{"i": 6, "cur": "Integral(8*x**3, x)", "nxt": "2*x**4", "cls": "unique", "names": ["i_heurisch@Integral(8*x**3, x)"]}
+{"i": 7, "cur": "5*exp(6*x + sin(3*x) + 5) + Integral(-3*(10*x - 3)*(90*x - 27)*sin(5*x**2 - 3*x + 2)*cos(5*x**2 - 3*x + 2)**2 + 90*cos(5*x**2 - 3*x + 2)**3, x)", "nxt": "(90*x - 27)*cos(5*x**2 - 3*x + 2)**3 + 5*exp(6*x + sin(3*x) + 5)", "cls": "miss", "names": []}
+{"i": 8, "cur": "Integral(32*x**3, x)", "nxt": "8*x**4", "cls": "unique", "names": ["i_heurisch@Integral(32*x**3, x)"]}
+{"i": 9, "cur": "2*x**2 + x + Integral(15*x**2, x)", "nxt": "5*x**3 + 2*x**2 + x", "cls": "unique", "names": ["i_heurisch@Integral(15*x**2, x)"]}
+{"i": 10, "cur": "Integral(4*(-(x - 4)*(9*x**2 - 1) + ((x + 2)*exp(x*(x + 4)) - 2*sqrt(3*x**3 - x + 5))*sqrt(3*x**3 - x + 5))/sqrt(3*x**3 - x + 5), x)", "nxt": "(32 - 8*x)*sqrt(3*x**3 - x + 5) + 2*exp(x**2 + 4*x)", "cls": "miss", "names": []}
+{"i": 11, "cur": "Integral(0, x) + Integral(200*exp(5*x), x)", "nxt": "Integral(200*exp(5*x), x) + 2", "cls": "miss", "names": []}
+{"i": 12, "cur": "Integral(2*(12*x**2 - 3)*sin(x)*cos(4*x**3 - 3*x + 3) - 4*(6*x**2 + 9*cos(9*x) - 2)*sin(2*x**3 - 2*x + sin(9*x) + 2) + 2*sin(4*x**3 - 3*x + 3)*cos(x), x)", "nxt": "Integral(-4*(6*x**2 + 9*cos(9*x) - 2)*sin(2*x**3 - 2*x + sin(9*x) + 2), x) + Integral(2*(12*x**2 - 3)*sin(x)*cos(4*x**3 - 3*x + 3) + 2*sin(4*x**3 - 3*x + 3)*cos(x), x)", "cls": "miss", "names": []}
+{"i": 13, "cur": "Integral(4*sin(2*x)*sin(cos(2*x)), x)", "nxt": "4*Integral(sin(2*x)*sin(cos(2*x)), x)", "cls": "unique", "names": ["i_const_factor@Integral(4*sin(2*x)*sin(cos(2*x)), x)"]}
+{"i": 14, "cur": "Integral(3, x) + Integral(16/(4*x**2 + 1), x)", "nxt": "3*x + Integral(16/(4*x**2 + 1), x)", "cls": "unique", "names": ["i_const@Integral(3, x)"]}
+{"i": 15, "cur": "Integral(-40*x**4, x) + Integral(3*exp(x), x)", "nxt": "-8*x**5 + Integral(3*exp(x), x)", "cls": "unique", "names": ["i_heurisch@Integral(-40*x**4, x)"]}
+{"i": 16, "cur": "Integral(12*sin(3*x)*sin(cos(3*x)), x)", "nxt": "12*Integral(sin(3*x)*sin(cos(3*x)), x)", "cls": "unique", "names": ["i_const_factor@Integral(12*sin(3*x)*sin(cos(3*x)), x)"]}
+{"i": 17, "cur": "6*x**2 + 2*x + Integral(18*x**2, x)", "nxt": "6*x**3 + 6*x**2 + 2*x", "cls": "unique", "names": ["i_heurisch@Integral(18*x**2, x)"]}
+{"i": 18, "cur": "Integral(35*(4 - 15*x**2)*sin(x)*sin(5*x**3 - 4*x + 2) + 35*cos(x)*cos(5*x**3 - 4*x + 2), x)", "nxt": "35*sin(x)*cos(5*x**3 - 4*x + 2)", "cls": "miss", "names": []}
+{"i": 19, "cur": "Integral(12*(2*sin(2*x) + cos(2*x))*exp(4*x), x)", "nxt": "6*exp(4*x)*sin(2*x)", "cls": "unique", "names": ["i_linear_basis@Integral((24*sin(2*x) + 12*cos(2*x))*exp(4*x), x)"]}
+{"i": 20, "cur": "2*x**2 + Integral(21*x**2, x)", "nxt": "7*x**3 + 2*x**2", "cls": "unique", "names": ["i_heurisch@Integral(21*x**2, x)"]}
+{"i": 21, "cur": "Integral(9*cos(4*x - 2), x)", "nxt": "9*Integral(cos(4*x - 2), x)", "cls": "unique", "names": ["i_const_factor@Integral(9*cos(4*x - 2), x)"]}
+{"i": 22, "cur": "Integral(26*x, x) - 5", "nxt": "13*x**2 - 5", "cls": "unique", "names": ["i_heurisch@Integral(26*x, x)"]}
+{"i": 23, "cur": "Integral(-11, x) + Integral(5*cos(x), x)", "nxt": "-11*x + Integral(5*cos(x), x)", "cls": "unique", "names": ["i_const@Integral(-11, x)"]}
+{"i": 24, "cur": "Integral(0, x) + Integral(-16*x, x)", "nxt": "Integral(-16*x, x) + 2", "cls": "miss", "names": []}
+{"i": 25, "cur": "Integral(5*(4*sqrt(x)*(5*x - 1) + sqrt(6))*exp(sqrt(6)*sqrt(x) + 5*x**2 - 2*x + 4)/(2*sqrt(x)), x)", "nxt": "5*exp(sqrt(6)*sqrt(x) + 5*x**2 - 2*x + 4)", "cls": "miss", "names": []}
+{"i": 26, "cur": "Integral(3/x, x) + Integral(-54*sin(x), x)", "nxt": "3*log(x) + Integral(-54*sin(x), x)", "cls": "unique", "names": ["i_linear_basis@Integral(3/x, x)"]}
+{"i": 27, "cur": "Integral(-5, x) + Integral(-9*x**2, x)", "nxt": "-5*x + Integral(-9*x**2, x)", "cls": "unique", "names": ["i_const@Integral(-5, x)"]}
+{"i": 28, "cur": "Integral(2*x + 2, x)", "nxt": "Integral(2, x) + Integral(2*x, x)", "cls": "unique", "names": ["i_sum@Integral(2*x + 2, x)"]}
+{"i": 29, "cur": "Integral(3/x, x) + Integral(8*x*cos(x) + 8*sin(x), x)", "nxt": "3*log(x) + Integral(8*x*cos(x) + 8*sin(x), x)", "cls": "unique", "names": ["i_linear_basis@Integral(3/x, x)"]}
+{"i": 30, "cur": "Integral(2*(x + 1)*exp(x**2 + 2*x + 1), x)", "nxt": "exp(x**2 + 2*x + 1)", "cls": "unique", "names": ["i_heurisch@Integral((2*x + 2)*exp(x**2 + 2*x + 1), x)"]}
+{"i": 31, "cur": "4*x + Integral(4/sqrt(1 - x**2), x)", "nxt": "4*x + 4*asin(x)", "cls": "unique", "names": ["i_inverse_trig@Integral(4/sqrt(1 - x**2), x)"]}
+{"i": 32, "cur": "Integral(x**2*(6*log(4*x) + 2), x)", "nxt": "2*x**3*log(4*x)", "cls": "unique", "names": ["i_heurisch@Integral(x**2*(6*log(4*x) + 2), x)"]}
+{"i": 33, "cur": "Integral(0, x) + Integral(4/x, x)", "nxt": "Integral(4/x, x) - 6", "cls": "miss", "names": []}
+{"i": 34, "cur": "Integral(0, x) + Integral(-6*sin(x)*cos(x), x)", "nxt": "Integral(-6*sin(x)*cos(x), x) - 1", "cls": "miss", "names": []}
+{"i": 35, "cur": "Integral(9, x) + Integral(1/x, x) + Integral(-16*x**3, x)", "nxt": "-4*x**4 + Integral(9, x) + Integral(1/x, x)", "cls": "unique", "names": ["i_heurisch@Integral(-16*x**3, x)"]}
+{"i": 36, "cur": "Integral(10*x*exp(2*x + 4) + (36*x**2 - 20*sin(5*x) + 4)*exp(3*x**3 + x + cos(5*x) + 2) + 5*exp(2*x + 4), x)", "nxt": "Integral(4*(9*x**2 - 5*sin(5*x) + 1)*exp(3*x**3 + x + cos(5*x) + 2), x) + Integral(10*x*exp(2*x + 4) + 5*exp(2*x + 4), x)", "cls": "miss", "names": []}
+{"i": 37, "cur": "6*x**2 + Integral(14, x)", "nxt": "6*x**2 + 14*x", "cls": "unique", "names": ["i_const@Integral(14, x)"]}
+{"i": 38, "cur": "Integral(18, x) + 7", "nxt": "18*x + 7", "cls": "unique", "names": ["i_const@Integral(18, x)"]}
+{"i": 39, "cur": "Integral(3, x) + Integral(21/sqrt(1 - 9*x**2), x) + Integral(9*log(5*x)**2 + 18*log(5*x), x)", "nxt": "3*x + Integral(21/sqrt(1 - 9*x**2), x) + Integral(9*log(5*x)**2 + 18*log(5*x), x)", "cls": "unique", "names": ["i_const@Integral(3, x)"]}
+{"i": 40, "cur": "Integral(81*sin(2*x), x)", "nxt": "81*Integral(sin(2*x), x)", "cls": "unique", "names": ["i_const_factor@Integral(81*sin(2*x), x)"]}
+{"i": 41, "cur": "4*sin(5*x**2 + x + sin(3*x)) + Integral(12*x*exp(2*x**3 - 8*x) + (6*x**2 - 8)**2*exp(2*x**3 - 8*x), x)", "nxt": "(6*x**2 - 8)*exp(2*x**3 - 8*x) + 4*sin(5*x**2 + x + sin(3*x))", "cls": "unique", "names": ["i_unprod@Integral(12*x*exp(2*x**3 - 8*x) + (6*x**2 - 8)**2*exp(2*x**3 - 8*x), x)"]}
+{"i": 42, "cur": "2*x + Integral(27/(9*x**2 + 1), x) + Integral(-12*x*sin(x**2 + 3), x)", "nxt": "2*x + 9*atan(3*x) + Integral(-12*x*sin(x**2 + 3), x)", "cls": "unique", "names": ["i_inverse_trig@Integral(27/(9*x**2 + 1), x)"]}
+{"i": 43, "cur": "Integral(0, x) + Integral(-2*x*sin(x) + 2*cos(x), x)", "nxt": "Integral(-2*x*sin(x) + 2*cos(x), x) + 5", "cls": "miss", "names": []}
+{"i": 44, "cur": "Integral(0, x) + Integral(-18*exp(3*x)*sin(3*x) + 18*exp(3*x)*cos(3*x), x)", "nxt": "Integral(-18*exp(3*x)*sin(3*x) + 18*exp(3*x)*cos(3*x), x) + 5", "cls": "miss", "names": []}
+{"i": 45, "cur": "Integral(-4*exp(x) - 54*sin(2*x), x)", "nxt": "Integral(-108*sin(x)*cos(x), x) + Integral(-4*exp(x), x)", "cls": "miss", "names": []}
+{"i": 46, "cur": "2*cos(x) + Integral(28*x**3, x)", "nxt": "7*x**4 + 2*cos(x)", "cls": "unique", "names": ["i_heurisch@Integral(28*x**3, x)"]}
+{"i": 47, "cur": "Integral(0, x) + Integral(-6*sin(x), x)", "nxt": "Integral(-6*sin(x), x) + 8", "cls": "miss", "names": []}
+{"i": 48, "cur": "Integral(2, x) + Integral(10/(4*x**2 + 1), x)", "nxt": "2*x + Integral(10/(4*x**2 + 1), x)", "cls": "unique", "names": ["i_const@Integral(2, x)"]}
+{"i": 49, "cur": "Integral((12*x*(x + 2)*log(x) + 6)*exp(x**2 + 4*x + 1)/x, x)", "nxt": "6*exp(x**2 + 4*x + 1)*log(x)", "cls": "unique", "names": ["i_heurisch@Integral((12*x*(x + 2)*log(x) + 6)*exp(x**2 + 4*x + 1)/x, x)"]}
+{"i": 50, "cur": "Integral(6*x, x) + Integral(18*x**2, x) + Integral(exp(x), x)", "nxt": "3*x**2 + Integral(18*x**2, x) + Integral(exp(x), x)", "cls": "unique", "names": ["i_heurisch@Integral(6*x, x)"]}
+{"i": 51, "cur": "Integral(5, x) + Integral(1/(x**2 + 1), x) + Integral(-14*exp(4*x)*sin(2*x) + 28*exp(4*x)*cos(2*x), x)", "nxt": "5*x + Integral(1/(x**2 + 1), x) + Integral(-14*exp(4*x)*sin(2*x) + 28*exp(4*x)*cos(2*x), x)", "cls": "unique", "names": ["i_const@Integral(5, x)"]}
+{"i": 52, "cur": "8*log(x) + Integral(16*x*log(x) + 8*x, x) + Integral(-8*log(x) - 8, x)", "nxt": "8*x**2*log(x) + 8*log(x) + Integral(-8*log(x) - 8, x)", "cls": "unique", "names": ["i_linear_basis@Integral(16*x*log(x) + 8*x, x)"]}
+{"i": 53, "cur": "2*x**5 + Integral(3, x) + Integral(2/x, x)", "nxt": "2*x**5 + 2*log(x) + Integral(3, x)", "cls": "unique", "names": ["i_linear_basis@Integral(2/x, x)"]}
+{"i": 54, "cur": "Integral(3*exp(x) + 7*sin(x) + 5/x, x)", "nxt": "Integral(5/x, x) + Integral(3*exp(x), x) + Integral(7*sin(x), x)", "cls": "unique", "names": ["i_sum@Integral(3*exp(x) + 7*sin(x) + 5/x, x)"]}
+{"i": 55, "cur": "Integral(25*x**2*(x*(2*x + 3)*cos(x**2 + 3*x + 4) + 3*sin(x**2 + 3*x + 4)), x)", "nxt": "25*x**3*sin(x**2 + 3*x + 4)", "cls": "unique", "names": ["i_linear_basis@Integral(25*x**2*(x*(2*x + 3)*cos(x**2 + 3*x + 4) + 3*sin(x**2 + 3*x + 4)), x)"]}
+{"i": 56, "cur": "Integral(((9*x**2 + 1)*(4*log(5*x)**2 + 8*log(5*x) + 1) + 24)/(9*x**2 + 1), x)", "nxt": "Integral(1, x) + Integral(24/(9*x**2 + 1), x) + Integral(4*log(5*x)**2 + 8*log(5*x), x)", "cls": "miss", "names": []}
+{"i": 57, "cur": "Integral(1, x) + Integral(1/sqrt(1 - x**2), x) + Integral(27*x**2*log(3*x)**2 + 18*x**2*log(3*x), x)", "nxt": "x + Integral(1/sqrt(1 - x**2), x) + Integral(27*x**2*log(3*x)**2 + 18*x**2*log(3*x), x)", "cls": "unique", "names": ["i_const@Integral(1, x)"]}
+{"i": 58, "cur": "Integral(0, x) + Integral(8*x, x) + Integral(15*x**2, x)", "nxt": "Integral(8*x, x) + Integral(15*x**2, x) + 4", "cls": "miss", "names": []}
+{"i": 59, "cur": "Integral(0, x) + Integral(-18*x**2, x)", "nxt": "Integral(-18*x**2, x) + 13", "cls": "miss", "names": []}
+{"i": 60, "cur": "Integral(-3*sin(x - 2), x)", "nxt": "3*Integral(-sin(x - 2), x)", "cls": "miss", "names": []}
+{"i": 61, "cur": "Integral(-72*sin(2*x)*cos(2*x)**2, x) + Integral(-128*x**2*sin(2*x**2 + 5) + 32*cos(2*x**2 + 5), x)", "nxt": "12*cos(2*x)**3 + Integral(-128*x**2*sin(2*x**2 + 5) + 32*cos(2*x**2 + 5), x)", "cls": "unique", "names": ["i_linear_basis@Integral(-72*sin(2*x)*cos(2*x)**2, x)"]}
+{"i": 62, "cur": "4*x + Integral(14*x, x) + 5", "nxt": "7*x**2 + 4*x + 5", "cls": "unique", "names": ["i_heurisch@Integral(14*x, x)"]}
+{"i": 63, "cur": "Integral(0, x) + Integral(18*x, x) + Integral(12*x**2, x)", "nxt": "Integral(18*x, x) + Integral(12*x**2, x) + 3", "cls": "miss", "names": []}
+{"i": 64, "cur": "Integral(9*cos(x), x)", "nxt": "Integral(0, x) + Integral(9*cos(x), x)", "cls": "miss", "names": []}
+{"i": 65, "cur": "Integral(4 + 1/sqrt(1 - x**2), x)", "nxt": "4*x + Integral(1/sqrt(1 - x**2), x)", "cls": "miss", "names": []}
+{"i": 66, "cur": "Integral(5*x**4 + 12*x**3 + 8*exp(x) + 7, x)", "nxt": "Integral(7, x) + Integral(12*x**3, x) + Integral(5*x**4, x) + Integral(8*exp(x), x)", "cls": "unique", "names": ["i_sum@Integral(5*x**4 + 12*x**3 + 8*exp(x) + 7, x)"]}
+{"i": 67, "cur": "5*x**3 + Integral(16, x)", "nxt": "5*x**3 + 16*x", "cls": "unique", "names": ["i_const@Integral(16, x)"]}
+{"i": 68, "cur": "8*x + 2*atan(x) + Integral(27/(9*x**2 + 1), x) + Integral(12*x**2*log(4*x) + 4*x**2, x) + Integral(12*exp(3*x)*sin(x) + 4*exp(3*x)*cos(x), x) + Integral(5*log(2*x) + 5, x) + Integral(7*log(2*x)**2 + 14*log(2*x), x)", "nxt": "8*x + 2*atan(x) + 9*atan(3*x) + Integral(12*x**2*log(4*x) + 4*x**2, x) + Integral(12*exp(3*x)*sin(x) + 4*exp(3*x)*cos(x), x) + Integral(5*log(2*x) + 5, x) + Integral(7*log(2*x)**2 + 14*log(2*x), x)", "cls": "unique", "names": ["i_inverse_trig@Integral(27/(9*x**2 + 1), x)"]}
+{"i": 69, "cur": "Integral(2, x) + Integral(8*x, x) + Integral(21*x**2, x) + 4", "nxt": "2*x + Integral(8*x, x) + Integral(21*x**2, x) + 4", "cls": "unique", "names": ["i_const@Integral(2, x)"]}
+{"i": 70, "cur": "-36*x**6 + Integral(5*sin(x), x)", "nxt": "-36*x**6 - 5*cos(x)", "cls": "unique", "names": ["i_linear_basis@Integral(5*sin(x), x)"]}
+{"i": 71, "cur": "Integral(2*x, x) + 9", "nxt": "x**2 + 9", "cls": "unique", "names": ["i_heurisch@Integral(2*x, x)"]}
+{"i": 72, "cur": "Integral(-(15*x**2 + 7*cos(7*x) + 3)*sin(5*x**3 + 3*x + sin(7*x) + 2), x) + Integral(200*x*sin(5*x + 3) - 40*cos(5*x + 3), x)", "nxt": "-40*x*cos(5*x + 3) + Integral(-(15*x**2 + 7*cos(7*x) + 3)*sin(5*x**3 + 3*x + sin(7*x) + 2), x)", "cls": "unique", "names": ["i_unprod@Integral(200*x*sin(5*x + 3) - 40*cos(5*x + 3), x)"]}
+{"i": 73, "cur": "2*x + 7*asin(x) + Integral(4*log(2*x) + 4, x)", "nxt": "4*x*log(2*x) + 2*x + 7*asin(x)", "cls": "unique", "names": ["i_heurisch@Integral(4*log(2*x) + 4, x)"]}
+{"i": 74, "cur": "-3*x**2 + Integral(-2, x)", "nxt": "-3*x**2 - 2*x", "cls": "unique", "names": ["i_const@Integral(-2, x)"]}
+{"i": 75, "cur": "Integral(5, x) + Integral(10/sqrt(1 - 4*x**2), x)", "nxt": "5*x + Integral(10/sqrt(1 - 4*x**2), x)", "cls": "unique", "names": ["i_const@Integral(5, x)"]}
+{"i": 76, "cur": "Integral(-28*x**3, x) + Integral(-72*exp(x)*sin(x) - 72*exp(x)*cos(x), x)", "nxt": "-7*x**4 + Integral(-72*exp(x)*sin(x) - 72*exp(x)*cos(x), x)", "cls": "unique", "names": ["i_heurisch@Integral(-28*x**3, x)"]}
+{"i": 77, "cur": "Integral(21*sqrt(2)*exp(x)*sin(x + pi/4), x)", "nxt": "Integral(0, x) + Integral(21*exp(x)*sin(x) + 21*exp(x)*cos(x), x)", "cls": "miss", "names": []}
+{"i": 78, "cur": "Integral(6*exp(6*x + 4), x)", "nxt": "exp(6*x + 4)", "cls": "unique", "names": ["i_heurisch@Integral(6*exp(6*x + 4), x)"]}
+{"i": 79, "cur": "Integral(6*(x + 1)*exp(x**2 + 2*x + 2) + 4*log(3*x) + 4, x)", "nxt": "Integral(6*(x + 1)*exp(x**2 + 2*x + 2), x) + Integral(4*log(3*x) + 4, x)", "cls": "miss", "names": []}
+{"i": 80, "cur": "Integral(-20*x*sin(2*x**2), x)", "nxt": "5*cos(2*x**2)", "cls": "unique", "names": ["i_linear_basis@Integral(-20*x*sin(2*x**2), x)"]}
+{"i": 81, "cur": "Integral(-45*sin(3*x + 1), x)", "nxt": "45*Integral(-sin(3*x + 1), x)", "cls": "miss", "names": []}
+{"i": 82, "cur": "Integral((2*x + 1)*cos(x*(x + 1)) - 4*exp(3*x)*sin(2*x) + 6*exp(3*x)*cos(2*x), x)", "nxt": "2*exp(3*x)*cos(2*x) + Integral((2*x + 1)*cos(x**2 + x), x)", "cls": "miss", "names": []}
+{"i": 83, "cur": "Integral(3, x) + Integral(6/sqrt(1 - 9*x**2), x)", "nxt": "3*x + Integral(6/sqrt(1 - 9*x**2), x)", "cls": "unique", "names": ["i_const@Integral(3, x)"]}
+{"i": 84, "cur": "7*sin(9*x + cos(8*x) + 5) + Integral(40*sin(x)*sin(6*x + 2) - 240*cos(x)*cos(6*x + 2), x)", "nxt": "-40*sin(6*x + 2)*cos(x) + 7*sin(9*x + cos(8*x) + 5)", "cls": "unique", "names": ["i_heurisch@Integral(40*sin(x)*sin(6*x + 2) - 240*cos(x)*cos(6*x + 2), x)"]}
+{"i": 85, "cur": "Integral(17/x, x) + Integral(-2*cos(x), x)", "nxt": "-2*sin(x) + Integral(17/x, x)", "cls": "unique", "names": ["i_linear_basis@Integral(-2*cos(x), x)"]}
+{"i": 86, "cur": "Integral(16*x*log(4*x)**2 + 16*x*log(4*x) + 11*exp(3*x)*sin(2*x) + 42*exp(3*x)*cos(2*x), x)", "nxt": "Integral(16*x*log(4*x)**2 + 16*x*log(4*x), x) + Integral(11*exp(3*x)*sin(2*x) + 42*exp(3*x)*cos(2*x), x)", "cls": "miss", "names": []}
+{"i": 87, "cur": "Integral(24*x**2*log(x) + 8*x**2 + 3*cos(x), x)", "nxt": "8*x**3*log(x) + 3*sin(x)", "cls": "unique", "names": ["i_linear_basis@Integral(24*x**2*log(x) + 8*x**2 + 3*cos(x), x)"]}
+{"i": 88, "cur": "Integral(-9*sin(x) + 5*cos(x) + 17, x)", "nxt": "-9*Integral(sin(x), x) + 5*Integral(cos(x), x) + 17*x", "cls": "miss", "names": []}
+{"i": 89, "cur": "Integral((9*x**2 - 1)*cos(3*x**3 - x + 2), x)", "nxt": "sin(3*x**3 - x + 2)", "cls": "unique", "names": ["i_linear_basis@Integral((9*x**2 - 1)*cos(3*x**3 - x + 2), x)"]}
+{"i": 90, "cur": "-4*log(x) + Integral(-3*exp(x), x)", "nxt": "-3*exp(x) - 4*log(x)", "cls": "unique", "names": ["i_linear_basis@Integral(-3*exp(x), x)"]}
+{"i": 91, "cur": "Integral(10*x, x) + Integral(27*x**2, x)", "nxt": "5*x**2 + Integral(27*x**2, x)", "cls": "unique", "names": ["i_heurisch@Integral(10*x, x)"]}
+{"i": 92, "cur": "Integral(8*(-3*sin(3*x) - 3)*exp(-3*x + cos(3*x) + 5), x) + Integral(576*exp(16*x + 8), x)", "nxt": "8*exp(-3*x + cos(3*x) + 5) + Integral(576*exp(16*x + 8), x)", "cls": "miss", "names": []}
+{"i": 93, "cur": "Integral(0, x) + Integral(6, x) + Integral(4*x, x)", "nxt": "Integral(6, x) + Integral(4*x, x) + 9", "cls": "miss", "names": []}
+{"i": 94, "cur": "Integral(27*exp(3*x + 4)*sin(x) + 9*exp(3*x + 4)*cos(x) + 36*sin(3*x - 2), x)", "nxt": "Integral(27*exp(3*x + 4)*sin(x) + 9*exp(3*x + 4)*cos(x), x) + Integral(36*sin(3*x - 2), x)", "cls": "miss", "names": []}
+{"i": 95, "cur": "Integral(9*x*cos(x) + 9*sin(x) - 7*cos(x), x)", "nxt": "Integral(9*x*cos(x) + 9*sin(x), x) + Integral(-7*cos(x), x)", "cls": "miss", "names": []}
+{"i": 96, "cur": "Integral(8*cos(8*x + 1), x)", "nxt": "sin(8*x + 1)", "cls": "unique", "names": ["i_linear_basis@Integral(8*cos(8*x + 1), x)"]}
+{"i": 97, "cur": "Integral(-6*x**4*(x*cos(x) + 5*sin(x)), x)", "nxt": "-6*x**5*sin(x)", "cls": "unique", "names": ["i_linear_basis@Integral(-6*x**4*(x*cos(x) + 5*sin(x)), x)"]}
+{"i": 98, "cur": "-4*exp(x) - log(x) + Integral(2, x)", "nxt": "2*x - 4*exp(x) - log(x)", "cls": "unique", "names": ["i_const@Integral(2, x)"]}
+{"i": 99, "cur": "2*x + Integral(27*x**2, x) + 1", "nxt": "9*x**3 + 2*x + 1", "cls": "unique", "names": ["i_heurisch@Integral(27*x**2, x)"]}
+{"i": 100, "cur": "Integral(14*x - 16*sin(2*x), x)", "nxt": "Integral(14*x, x) + Integral(-32*sin(x)*cos(x), x)", "cls": "timeout", "names": []}
+{"i": 101, "cur": "Integral(14*log(x)*cos(x) + 14*sin(x)/x, x)", "nxt": "14*log(x)*sin(x)", "cls": "timeout", "names": []}
+{"i": 102, "cur": "6*exp(x) + Integral(-18*x**3*cos(x) - 54*x**2*sin(x), x)", "nxt": "-18*x**3*sin(x) + 6*exp(x)", "cls": "unique", "names": ["i_unprod@Integral(-18*x**3*cos(x) - 54*x**2*sin(x), x)"]}
+{"i": 103, "cur": "Integral(0, x) + Integral(10, x)", "nxt": "Integral(10, x) + 8", "cls": "miss", "names": []}
+{"i": 104, "cur": "Integral(-45*x**4 - 15*x**2 - 2*cos(x), x)", "nxt": "Integral(-15*x**2, x) + Integral(-45*x**4, x) + Integral(-2*cos(x), x)", "cls": "unique", "names": ["i_sum@Integral(-45*x**4 - 15*x**2 - 2*cos(x), x)"]}
+{"i": 105, "cur": "Integral(0, x) + Integral(2, x) + Integral(10*x, x) + Integral(24*x**2, x)", "nxt": "Integral(2, x) + Integral(10*x, x) + Integral(24*x**2, x) - 2", "cls": "miss", "names": []}
+{"i": 106, "cur": "Integral(4*sin(x), x) + 8", "nxt": "8 - 4*cos(x)", "cls": "unique", "names": ["i_linear_basis@Integral(4*sin(x), x)"]}
+{"i": 107, "cur": "Integral(10*cos(2*x + 4), x)", "nxt": "10*Integral(cos(2*x + 4), x)", "cls": "unique", "names": ["i_const_factor@Integral(10*cos(2*x + 4), x)"]}
+{"i": 108, "cur": "Integral(14*x + 2, x)", "nxt": "Integral(2, x) + Integral(14*x, x)", "cls": "unique", "names": ["i_sum@Integral(14*x + 2, x)"]}
+{"i": 109, "cur": "3*x**5 + Integral(5, x) + Integral(12*x**2, x) - 5", "nxt": "3*x**5 + 4*x**3 + Integral(5, x) - 5", "cls": "unique", "names": ["i_heurisch@Integral(12*x**2, x)"]}
+{"i": 110, "cur": "Integral(0, x) + Integral(5, x) + Integral(-15*x**2, x)", "nxt": "Integral(5, x) + Integral(-15*x**2, x) + 7", "cls": "miss", "names": []}
+{"i": 111, "cur": "Integral(((4*x**2 + 1)*((6*x + 3)*cos(x**2 + x + 3) + 4) + 16)/(4*x**2 + 1), x)", "nxt": "4*x + 3*sin(x**2 + x + 3) + 8*atan(2*x)", "cls": "unique", "names": ["i_heurisch@Integral(((4*x**2 + 1)*((6*x + 3)*cos(x**2 + x + 3) + 4) + 16)/(4*x**2 + 1), x)"]}
+{"i": 112, "cur": "Integral(15*x**4 + 6*exp(x), x)", "nxt": "3*x**5 + 6*exp(x)", "cls": "unique", "names": ["i_linear_basis@Integral(15*x**4 + 6*exp(x), x)"]}
+{"i": 113, "cur": "Integral(35*x**3*sin(x) - 105*x**2*cos(x) - 4*cos(x), x)", "nxt": "Integral(35*x**3*sin(x) - 105*x**2*cos(x), x) + Integral(-4*cos(x), x)", "cls": "miss", "names": []}
+{"i": 114, "cur": "-6*x + 3*exp(x) + 2*sin(x) + Integral(5/x, x)", "nxt": "-6*x + 3*exp(x) + 5*log(x) + 2*sin(x)", "cls": "unique", "names": ["i_linear_basis@Integral(5/x, x)"]}
+{"i": 115, "cur": "Integral(1, x) + Integral(30*x**2, x)", "nxt": "x + Integral(30*x**2, x)", "cls": "unique", "names": ["i_const@Integral(1, x)"]}
+{"i": 116, "cur": "6*x**3 + Integral(8, x)", "nxt": "6*x**3 + 8*x", "cls": "unique", "names": ["i_const@Integral(8, x)"]}
+{"i": 117, "cur": "3*x**3 + x**2 + Integral(4, x)", "nxt": "3*x**3 + x**2 + 4*x", "cls": "unique", "names": ["i_const@Integral(4, x)"]}
+{"i": 118, "cur": "Integral(0, x) + Integral(-1/x, x)", "nxt": "Integral(-1/x, x) + 5", "cls": "miss", "names": []}
+{"i": 119, "cur": "Integral(0, x) + Integral(6, x) + Integral(-12*x, x)", "nxt": "Integral(6, x) + Integral(-12*x, x) + 7", "cls": "miss", "names": []}
+{"i": 120, "cur": "Integral(7, x) + Integral(-6/x, x) + Integral(-24*x**2, x) + Integral(9*cos(x), x)", "nxt": "-8*x**3 + Integral(7, x) + Integral(-6/x, x) + Integral(9*cos(x), x)", "cls": "unique", "names": ["i_heurisch@Integral(-24*x**2, x)"]}
+{"i": 121, "cur": "Integral(x**2*(135*x**2 + 9), x)", "nxt": "Integral(9*x**2, x) + Integral(135*x**4, x)", "cls": "unique", "names": ["expand"]}
+{"i": 122, "cur": "Integral(6, x) + Integral(36*x, x) + 3", "nxt": "6*x + Integral(36*x, x) + 3", "cls": "unique", "names": ["i_const@Integral(6, x)"]}
+{"i": 123, "cur": "Integral(0, x) + Integral(8, x)", "nxt": "Integral(8, x) + 10", "cls": "miss", "names": []}
+{"i": 124, "cur": "-x + Integral(-72*x**5*sin(x) + 360*x**4*cos(x), x)", "nxt": "72*x**5*cos(x) - x", "cls": "unique", "names": ["i_unprod@Integral(-72*x**5*sin(x) + 360*x**4*cos(x), x)"]}
+{"i": 125, "cur": "Integral(3, x) + Integral(18/(4*x**2 + 1), x) + Integral(-5*exp(2*x)*sin(x) + 10*exp(2*x)*cos(x), x)", "nxt": "3*x + Integral(18/(4*x**2 + 1), x) + Integral(-5*exp(2*x)*sin(x) + 10*exp(2*x)*cos(x), x)", "cls": "unique", "names": ["i_const@Integral(3, x)"]}
+{"i": 126, "cur": "Integral(0, x) + Integral(432*exp(18*x + 9), x)", "nxt": "Integral(432*exp(18*x + 9), x) + 7", "cls": "miss", "names": []}
+{"i": 127, "cur": "Integral(4*(9*x**2 + 7)/(9*x**2 + 1), x)", "nxt": "Integral(4, x) + Integral(24/(9*x**2 + 1), x)", "cls": "miss", "names": []}
+{"i": 128, "cur": "5*x**5 + 3*log(x) + Integral(-6*sin(x), x)", "nxt": "5*x**5 + 3*log(x) + 6*cos(x)", "cls": "unique", "names": ["i_linear_basis@Integral(-6*sin(x), x)"]}
+{"i": 129, "cur": "x + Integral(-1/x, x)", "nxt": "x - log(x)", "cls": "unique", "names": ["i_linear_basis@Integral(-1/x, x)"]}
+{"i": 130, "cur": "Integral(48*x*cos(x) + 48*sin(x), x) + Integral(exp(x), x)", "nxt": "48*x*sin(x) + Integral(exp(x), x)", "cls": "unique", "names": ["i_unprod@Integral(48*x*cos(x) + 48*sin(x), x)"]}
+{"i": 131, "cur": "(9*x**2 + 6)*sin(x**3 + 2*x + 1)**2 + Integral(27*x*(9*x**2 + 3)*sin(3*x**3 + 3*x + 3) - 27*cos(3*x**3 + 3*x + 3), x)", "nxt": "-27*x*cos(3*x**3 + 3*x + 3) + (9*x**2 + 6)*sin(x**3 + 2*x + 1)**2", "cls": "unique", "names": ["i_unprod@Integral(27*x*(9*x**2 + 3)*sin(3*x**3 + 3*x + 3) - 27*cos(3*x**3 + 3*x + 3), x)"]}
+{"i": 132, "cur": "Integral(6*x*(log(x) + 1)*log(x), x)", "nxt": "3*x**2*log(x)**2", "cls": "unique", "names": ["i_heurisch@Integral(6*x*(log(x) + 1)*log(x), x)"]}
+{"i": 133, "cur": "2*x + Integral(6/sqrt(1 - x**2), x) + Integral(12*x*log(4*x)**2 + 12*x*log(4*x), x)", "nxt": "2*x + 6*asin(x) + Integral(12*x*log(4*x)**2 + 12*x*log(4*x), x)", "cls": "unique", "names": ["i_inverse_trig@Integral(6/sqrt(1 - x**2), x)"]}
+{"i": 134, "cur": "Integral(3, x) + Integral(-3/x, x) + Integral(6*exp(x), x) + 2", "nxt": "-3*log(x) + Integral(3, x) + Integral(6*exp(x), x) + 2", "cls": "unique", "names": ["i_linear_basis@Integral(-3/x, x)"]}
+{"i": 135, "cur": "2*x + 2*atan(x) + Integral(12*x*log(4*x) + 6*x, x)", "nxt": "6*x**2*log(4*x) + 2*x + 2*atan(x)", "cls": "unique", "names": ["i_heurisch@Integral(12*x*log(4*x) + 6*x, x)"]}
+{"i": 136, "cur": "Integral(-28*exp(4*x)*sin(4*x) + 28*exp(4*x)*cos(4*x) + 8*log(2*x) + 8, x)", "nxt": "Integral(-28*exp(4*x)*sin(4*x) + 28*exp(4*x)*cos(4*x), x) + Integral(8*log(2*x) + 8, x)", "cls": "miss", "names": []}
+{"i": 137, "cur": "-2*x - exp(x) + Integral(9/x, x)", "nxt": "-2*x - exp(x) + 9*log(x)", "cls": "unique", "names": ["i_linear_basis@Integral(9/x, x)"]}
+{"i": 138, "cur": "Integral(10*x + 2*exp(x) + 5*cos(x) + 9/x, x)", "nxt": "Integral(9/x, x) + Integral(10*x, x) + Integral(2*exp(x), x) + Integral(5*cos(x), x)", "cls": "unique", "names": ["i_sum@Integral(10*x + 2*exp(x) + 5*cos(x) + 9/x, x)"]}
+{"i": 139, "cur": "Integral(2*(21*x*(x + 1)*exp(x) + 1)/x, x)", "nxt": "Integral(2/x, x) + Integral(42*x*exp(x) + 42*exp(x), x)", "cls": "miss", "names": []}
+{"i": 140, "cur": "Integral(12 - 16*x, x)", "nxt": "Integral(0, x) + Integral(12, x) + Integral(-16*x, x)", "cls": "miss", "names": []}
+{"i": 141, "cur": "8*sin(5*x**3 + x + cos(4*x) + 4) + Integral(48*x**2*exp(x**3 + 4), x)", "nxt": "16*exp(x**3 + 4) + 8*sin(5*x**3 + x + cos(4*x) + 4)", "cls": "unique", "names": ["i_heurisch@Integral(48*x**2*exp(x**3 + 4), x)"]}
+{"i": 142, "cur": "7*x**3 - 8*sin(x) + Integral(exp(x), x) + 3", "nxt": "7*x**3 + exp(x) - 8*sin(x) + 3", "cls": "unique", "names": ["i_linear_basis@Integral(exp(x), x)"]}
+{"i": 143, "cur": "Integral(64*(2 - 3*x**2)*sin(x)*sin(x**3 - 2*x + 1) + 64*cos(x)*cos(x**3 - 2*x + 1), x)", "nxt": "64*sin(x)*cos(x**3 - 2*x + 1)", "cls": "miss", "names": []}
+{"i": 144, "cur": "Integral(3*(6*x**2 - 3)*exp(2*x**3 - 3*x + 1)*log(x) + 3*exp(2*x**3 - 3*x + 1)/x, x) + Integral(-50*sin(5*x + 5), x)", "nxt": "10*cos(5*x + 5) + Integral(3*(6*x**2 - 3)*exp(2*x**3 - 3*x + 1)*log(x) + 3*exp(2*x**3 - 3*x + 1)/x, x)", "cls": "unique", "names": ["i_linear_basis@Integral(-50*sin(5*x + 5), x)"]}
+{"i": 145, "cur": "Integral(-15*exp(x) + 7/x, x)", "nxt": "-15*exp(x) + 7*log(x)", "cls": "unique", "names": ["i_linear_basis@Integral(-15*exp(x) + 7/x, x)"]}
+{"i": 146, "cur": "Integral(-5*sin(x), x) - 1", "nxt": "5*cos(x) - 1", "cls": "unique", "names": ["i_linear_basis@Integral(-5*sin(x), x)"]}
+{"i": 147, "cur": "Integral(10/x, x) + Integral(-2*x, x) + Integral(9*exp(x), x)", "nxt": "-x**2 + Integral(10/x, x) + Integral(9*exp(x), x)", "cls": "unique", "names": ["i_heurisch@Integral(-2*x, x)"]}
+{"i": 148, "cur": "Integral(0, x) + Integral(9/x, x) + Integral(-28*x**3, x)", "nxt": "Integral(9/x, x) + Integral(-28*x**3, x) - 7", "cls": "miss", "names": []}
+{"i": 149, "cur": "Integral(3*x**2, x)", "nxt": "Integral(0, x) + Integral(3*x**2, x)", "cls": "miss", "names": []}
+{"i": 150, "cur": "Integral(16*exp(2*x)*sin(2*x) + 16*exp(2*x)*cos(2*x), x) + 8", "nxt": "8*exp(2*x)*sin(2*x) + 8", "cls": "unique", "names": ["i_linear_basis@Integral(16*exp(2*x)*sin(2*x) + 16*exp(2*x)*cos(2*x), x)"]}
+{"i": 151, "cur": "Integral(128*exp(8*x + 2), x)", "nxt": "Integral(0, x) + Integral(128*exp(8*x + 2), x)", "cls": "miss", "names": []}
+{"i": 152, "cur": "Integral(9*exp(x), x) + Integral(3*sin(x), x) + 11", "nxt": "-3*cos(x) + Integral(9*exp(x), x) + 11", "cls": "unique", "names": ["i_linear_basis@Integral(3*sin(x), x)"]}
+{"i": 153, "cur": "Integral(-12*x**2, x)", "nxt": "Integral(0, x) + Integral(-12*x**2, x)", "cls": "miss", "names": []}
+{"i": 154, "cur": "Integral(8, x) + Integral(14*x, x) + Integral(12*x**2, x) + 4", "nxt": "4*x**3 + Integral(8, x) + Integral(14*x, x) + 4", "cls": "unique", "names": ["i_heurisch@Integral(12*x**2, x)"]}
+{"i": 155, "cur": "Integral(0, x) + Integral(54*x**8, x)", "nxt": "Integral(54*x**8, x) + 7", "cls": "miss", "names": []}
+{"i": 156, "cur": "Integral((16*x + 12)*exp(2*x**2 + 3*x + 3), x)", "nxt": "4*exp(2*x**2 + 3*x + 3)", "cls": "unique", "names": ["i_heurisch@Integral((16*x + 12)*exp(2*x**2 + 3*x + 3), x)"]}
+{"i": 157, "cur": "Integral(-15*exp(4*x)*sin(3*x) + 20*exp(4*x)*cos(3*x), x) + Integral(log(x)**2 + 2*log(x), x)", "nxt": "x*log(x)**2 + Integral(-15*exp(4*x)*sin(3*x) + 20*exp(4*x)*cos(3*x), x)", "cls": "unique", "names": ["i_heurisch@Integral(log(x)**2 + 2*log(x), x)"]}
+{"i": 158, "cur": "Integral(-9*sin(x) - 8, x)", "nxt": "Integral(-8, x) + Integral(0, x) + Integral(-9*sin(x), x)", "cls": "miss", "names": []}
+{"i": 159, "cur": "Integral(3 + 18/sqrt(1 - 4*x**2), x)", "nxt": "Integral(3, x) + Integral(18/sqrt(1 - 4*x**2), x)", "cls": "unique", "names": ["i_sum@Integral(3 + 18/sqrt(1 - 4*x**2), x)"]}
+{"i": 160, "cur": "Integral(16*exp(4*x)*sin(4*x) + 16*exp(4*x)*cos(4*x) + 2 + 24/sqrt(1 - 9*x**2), x)", "nxt": "Integral(2, x) + Integral(24/sqrt(1 - 9*x**2), x) + Integral(16*exp(4*x)*sin(4*x) + 16*exp(4*x)*cos(4*x), x)", "cls": "miss", "names": []}
+{"i": 161, "cur": "Integral(3, x) + Integral(27/sqrt(1 - 9*x**2), x)", "nxt": "3*x + Integral(27/sqrt(1 - 9*x**2), x)", "cls": "unique", "names": ["i_const@Integral(3, x)"]}
+{"i": 162, "cur": "Integral(27*x**2 + 7, x)", "nxt": "Integral(0, x) + Integral(7, x) + Integral(27*x**2, x)", "cls": "miss", "names": []}
+{"i": 163, "cur": "Integral(18*x + 8, x)", "nxt": "Integral(0, x) + Integral(8, x) + Integral(18*x, x)", "cls": "miss", "names": []}
+{"i": 164, "cur": "5*x**2 - sin(x) + Integral(7, x)", "nxt": "5*x**2 + 7*x - sin(x)", "cls": "unique", "names": ["i_const@Integral(7, x)"]}
+{"i": 165, "cur": "Integral(0, x) + Integral(1, x)", "nxt": "Integral(1, x) + 2", "cls": "miss", "names": []}
+{"i": 166, "cur": "Integral((24 - 12*x)*sin(x**2 - 4*x + 2), x)", "nxt": "6*cos(x**2 - 4*x + 2)", "cls": "unique", "names": ["i_linear_basis@Integral((24 - 12*x)*sin(x**2 - 4*x + 2), x)"]}
+{"i": 167, "cur": "Integral((9*x*(x*sin(x) - cos(x)) + 4)/x, x)", "nxt": "Integral(4/x, x) + Integral(9*x*sin(x) - 9*cos(x), x)", "cls": "miss", "names": []}
+{"i": 168, "cur": "Integral(27*x**2, x) + Integral(32*x**3, x) + Integral(7*exp(x), x) + 9", "nxt": "7*exp(x) + Integral(27*x**2, x) + Integral(32*x**3, x) + 9", "cls": "unique", "names": ["i_linear_basis@Integral(7*exp(x), x)"]}
+{"i": 169, "cur": "Integral(8*(10*x + 2*cos(2*x) - 1)*cos(5*x**2 - x + sin(2*x)), x)", "nxt": "8*sin(5*x**2 - x + sin(2*x))", "cls": "miss", "names": []}
+{"i": 170, "cur": "4*x**3 + Integral(6, x) + 7", "nxt": "4*x**3 + 6*x + 7", "cls": "unique", "names": ["i_const@Integral(6, x)"]}
+{"i": 171, "cur": "Integral(48*x**3*(x*(3*x + 1)*cos(3*x**2 + 2*x + 3) + 2*sin(3*x**2 + 2*x + 3)), x)", "nxt": "24*x**4*sin(3*x**2 + 2*x + 3)", "cls": "unique", "names": ["i_linear_basis@Integral(48*x**3*(x*(3*x + 1)*cos(3*x**2 + 2*x + 3) + 2*sin(3*x**2 + 2*x + 3)), x)"]}
+{"i": 172, "cur": "Integral(18*exp(3*x)*sin(x) + 6*exp(3*x)*cos(x) + 4 + 2/sqrt(1 - 4*x**2), x)", "nxt": "Integral(4, x) + Integral(2/sqrt(1 - 4*x**2), x) + Integral(18*exp(3*x)*sin(x) + 6*exp(3*x)*cos(x), x)", "cls": "miss", "names": []}
+{"i": 173, "cur": "Integral(-8/x, x) + Integral(6*exp(x), x) + Integral(-9*sin(x), x) + 3", "nxt": "-8*log(x) + Integral(6*exp(x), x) + Integral(-9*sin(x), x) + 3", "cls": "unique", "names": ["i_linear_basis@Integral(-8/x, x)"]}
+{"i": 174, "cur": "Integral(0, x) + Integral(4*exp(x), x) + Integral(5*cos(x), x)", "nxt": "Integral(4*exp(x), x) + Integral(5*cos(x), x) + 9", "cls": "miss", "names": []}
+{"i": 175, "cur": "x**4 + 6*x**3 + 6*cos(x) + Integral(exp(x), x)", "nxt": "x**4 + 6*x**3 + exp(x) + 6*cos(x)", "cls": "unique", "names": ["i_linear_basis@Integral(exp(x), x)"]}
+{"i": 176, "cur": "Integral(2, x) + Integral(16/sqrt(1 - 4*x**2), x) + Integral(-15*exp(2*x)*sin(3*x) + 10*exp(2*x)*cos(3*x), x)", "nxt": "2*x + Integral(16/sqrt(1 - 4*x**2), x) + Integral(-15*exp(2*x)*sin(3*x) + 10*exp(2*x)*cos(3*x), x)", "cls": "unique", "names": ["i_const@Integral(2, x)"]}
+{"i": 177, "cur": "Integral(0, x) + Integral(15, x)", "nxt": "Integral(15, x) + 8", "cls": "miss", "names": []}
+{"i": 178, "cur": "Integral(0, x) + Integral(9, x) + Integral(14*x, x) + Integral(-24*x**2, x)", "nxt": "Integral(9, x) + Integral(14*x, x) + Integral(-24*x**2, x) - 7", "cls": "miss", "names": []}
+{"i": 179, "cur": "Integral(9*x**2 + 2*exp(x) + 5, x)", "nxt": "Integral(5, x) + Integral(9*x**2, x) + Integral(2*exp(x), x)", "cls": "unique", "names": ["i_sum@Integral(9*x**2 + 2*exp(x) + 5, x)"]}
+{"i": 180, "cur": "Integral((36*x + 24*cos(4*x) + 12)*exp(3*x**2 + 2*x + sin(4*x) + 5), x)", "nxt": "6*exp(3*x**2 + 2*x + sin(4*x) + 5)", "cls": "miss", "names": []}
+{"i": 181, "cur": "Integral(3*exp(4 - 4*x), x)", "nxt": "-3*exp(4 - 4*x)/4", "cls": "unique", "names": ["i_heurisch@Integral(3*exp(4 - 4*x), x)"]}
+{"i": 182, "cur": "Integral(8*x - 6, x)", "nxt": "Integral(-6, x) + Integral(8*x, x)", "cls": "unique", "names": ["i_sum@Integral(8*x - 6, x)"]}
+{"i": 183, "cur": "Integral(18*x**2 - 16*x - 7, x)", "nxt": "Integral(-7, x) + Integral(-16*x, x) + Integral(18*x**2, x)", "cls": "unique", "names": ["i_sum@Integral(18*x**2 - 16*x - 7, x)"]}
+{"i": 184, "cur": "Integral(-18*x**2, x) + 9", "nxt": "9 - 6*x**3", "cls": "unique", "names": ["i_heurisch@Integral(-18*x**2, x)"]}
+{"i": 185, "cur": "Integral(960*x**2*exp(12*x**2 + 12) - 9*(-6*x + 2*sin(2*x) + 1)*cos(3*x**2 - x + cos(2*x) + 2) + 40*exp(12*x**2 + 12), x)", "nxt": "Integral(9*(6*x - 2*sin(2*x) - 1)*cos(3*x**2 - x + cos(2*x) + 2), x) + Integral(960*x**2*exp(12*x**2 + 12) + 40*exp(12*x**2 + 12), x)", "cls": "miss", "names": []}
+{"i": 186, "cur": "Integral(-9*exp(4*x)*sin(x) + 36*exp(4*x)*cos(x) + 2 + 1/sqrt(1 - x**2), x)", "nxt": "2*x + Integral(1/sqrt(1 - x**2), x) + Integral(-9*exp(4*x)*sin(x) + 36*exp(4*x)*cos(x), x)", "cls": "miss", "names": []}
+{"i": 187, "cur": "Integral(-60*x*sin(5*x**2 + x + 3) - 32*exp(3*x)*sin(4*x) + 24*exp(3*x)*cos(4*x) - 6*sin(5*x**2 + x + 3) + 4 + 18/sqrt(1 - 9*x**2), x)", "nxt": "Integral(4, x) + Integral(-6*(10*x + 1)*sin(5*x**2 + x + 3), x) + Integral(18/sqrt(1 - 9*x**2), x) + Integral(-32*exp(3*x)*sin(4*x) + 24*exp(3*x)*cos(4*x), x)", "cls": "miss", "names": []}
+{"i": 188, "cur": "Integral(3*exp(x) + 9*cos(x) + 4, x)", "nxt": "Integral(0, x) + Integral(4, x) + Integral(3*exp(x), x) + Integral(9*cos(x), x)", "cls": "miss", "names": []}
+{"i": 189, "cur": "Integral((x**2 + 6)/(x**2 + 1), x)", "nxt": "Integral(1, x) + Integral(5/(x**2 + 1), x)", "cls": "miss", "names": []}
+{"i": 190, "cur": "Integral(7, x) + Integral(3*sin(x), x)", "nxt": "-3*cos(x) + Integral(7, x)", "cls": "unique", "names": ["i_linear_basis@Integral(3*sin(x), x)"]}
+{"i": 191, "cur": "Integral(2 + 18/sqrt(1 - 4*x**2), x)", "nxt": "2*x + 9*asin(2*x)", "cls": "unique", "names": ["i_heurisch@Integral(2 + 18/sqrt(1 - 4*x**2), x)"]}
+{"i": 192, "cur": "Integral(0, x) + Integral(24*x**2, x)", "nxt": "Integral(24*x**2, x) - 9", "cls": "miss", "names": []}
+{"i": 193, "cur": "Integral(4, x) + Integral(4/(x**2 + 1), x)", "nxt": "4*x + Integral(4/(x**2 + 1), x)", "cls": "unique", "names": ["i_const@Integral(4, x)"]}
+{"i": 194, "cur": "Integral(4*x*(x*log(4*x)*cos(x) + 2*log(4*x)*sin(x) + sin(x)), x)", "nxt": "4*x**2*log(4*x)*sin(x)", "cls": "miss", "names": []}
+{"i": 195, "cur": "Integral(18*x*log(5*x)**2 + 18*x*log(5*x), x) + Integral(-8*exp(3*x)*sin(4*x) + 6*exp(3*x)*cos(4*x), x)", "nxt": "2*exp(3*x)*cos(4*x) + Integral(18*x*log(5*x)**2 + 18*x*log(5*x), x)", "cls": "unique", "names": ["i_linear_basis@Integral(-8*exp(3*x)*sin(4*x) + 6*exp(3*x)*cos(4*x), x)"]}
+{"i": 196, "cur": "Integral(4, x) + Integral(24*x**2, x)", "nxt": "4*x + Integral(24*x**2, x)", "cls": "unique", "names": ["i_const@Integral(4, x)"]}
+{"i": 197, "cur": "Integral(-28*(5*x - 2)**2*sin(5*x**2 - 4*x + 4) + (10*x + 15*cos(3*x) + 10)*exp(x**2 + 2*x + sin(3*x) + 2) + 70*cos(5*x**2 - 4*x + 4), x)", "nxt": "Integral(5*(2*x + 3*cos(3*x) + 2)*exp(x**2 + 2*x + sin(3*x) + 2), x) + Integral(-(10*x - 4)*(70*x - 28)*sin(5*x**2 - 4*x + 4) + 70*cos(5*x**2 - 4*x + 4), x)", "cls": "miss", "names": []}
+{"i": 198, "cur": "-8*x**3 + 7*x + Integral(18*x, x) - 6", "nxt": "-8*x**3 + 9*x**2 + 7*x - 6", "cls": "unique", "names": ["i_heurisch@Integral(18*x, x)"]}
+{"i": 199, "cur": "Integral((20*x**2 + 13)/(4*x**2 + 1), x)", "nxt": "Integral(5, x) + Integral(8/(4*x**2 + 1), x)", "cls": "miss", "names": []}
+{"i": 200, "cur": "Integral(6*x**5*cos(x) + 30*x**4*sin(x) + 8, x)", "nxt": "Integral(8, x) + Integral(6*x**5*cos(x) + 30*x**4*sin(x), x)", "cls": "miss", "names": []}
+{"i": 201, "cur": "2*x**5 - x + 2*exp(x) + Integral(8/x, x)", "nxt": "2*x**5 - x + 2*exp(x) + 8*log(x)", "cls": "unique", "names": ["i_linear_basis@Integral(8/x, x)"]}
+{"i": 202, "cur": "6*log(x) + Integral(35*x**4, x) + Integral(-sin(x), x)", "nxt": "7*x**5 + 6*log(x) + Integral(-sin(x), x)", "cls": "unique", "names": ["i_heurisch@Integral(35*x**4, x)"]}
+{"i": 203, "cur": "Integral(5, x) + Integral(-27*x**2, x)", "nxt": "-9*x**3 + Integral(5, x)", "cls": "unique", "names": ["i_heurisch@Integral(-27*x**2, x)"]}
+{"i": 204, "cur": "6*sin(2*x + cos(2*x)) + Integral(24*x*exp(8*x**3 - 16*x + 4) + (12*x**2 - 8)*(24*x**2 - 16)*exp(8*x**3 - 16*x + 4), x)", "nxt": "(12*x**2 - 8)*exp(8*x**3 - 16*x + 4) + 6*sin(2*x + cos(2*x))", "cls": "unique", "names": ["i_unprod@Integral(24*x*exp(8*x**3 - 16*x + 4) + (12*x**2 - 8)*(24*x**2 - 16)*exp(8*x**3 - 16*x + 4), x)"]}
+{"i": 205, "cur": "Integral(-1/x, x) + Integral(-exp(x), x) + 3", "nxt": "-exp(x) + Integral(-1/x, x) + 3", "cls": "unique", "names": ["i_linear_basis@Integral(-exp(x), x)"]}
+{"i": 206, "cur": "Integral(-12*x**2, x) + Integral(sin(x), x)", "nxt": "-cos(x) + Integral(-12*x**2, x)", "cls": "unique", "names": ["i_linear_basis@Integral(sin(x), x)"]}
+{"i": 207, "cur": "Integral(2*(-3*x**2 - 4*cos(4*x) + 1)*sin(x**3 - x + sin(4*x) + 1), x)", "nxt": "2*cos(x**3 - x + sin(4*x) + 1)", "cls": "miss", "names": []}
+{"i": 208, "cur": "Integral(18*x**2 - 2*x + 10, x)", "nxt": "Integral(10, x) + Integral(-2*x, x) + Integral(18*x**2, x)", "cls": "unique", "names": ["i_sum@Integral(18*x**2 - 2*x + 10, x)"]}
+{"i": 209, "cur": "Integral(11, x) + Integral(-14*x, x) - 2", "nxt": "-7*x**2 + Integral(11, x) - 2", "cls": "unique", "names": ["i_heurisch@Integral(-14*x, x)"]}
+{"i": 210, "cur": "Integral((3 - 9*sin(9*x))*exp(3*x + cos(9*x) + 5), x) + Integral(36*x*sin(2*x**3 + 4*x + 4)**2 + 2*(6*x**2 + 4)*(18*x**2 + 12)*sin(2*x**3 + 4*x + 4)*cos(2*x**3 + 4*x + 4), x)", "nxt": "(18*x**2 + 12)*sin(2*x**3 + 4*x + 4)**2 + Integral((3 - 9*sin(9*x))*exp(3*x + cos(9*x) + 5), x)", "cls": "miss", "names": []}
+{"i": 211, "cur": "Integral(-4*sin(4*x + 1), x)", "nxt": "cos(4*x + 1)", "cls": "unique", "names": ["i_linear_basis@Integral(-4*sin(4*x + 1), x)"]}
+{"i": 212, "cur": "Integral(16*x*log(x)**2 + 16*x*log(x) + 3 + 2/sqrt(1 - 4*x**2), x)", "nxt": "3*x + 8*x**2*log(x)**2 + asin(2*x)", "cls": "unique", "names": ["i_heurisch@Integral(16*x*log(x)**2 + 16*x*log(x) + 3 + 2/sqrt(1 - 4*x**2), x)"]}
+{"i": 213, "cur": "Integral(-32*x*exp(x) - 32*exp(x), x) + Integral(7*sin(x), x)", "nxt": "-7*cos(x) + Integral(-32*x*exp(x) - 32*exp(x), x)", "cls": "unique", "names": ["i_linear_basis@Integral(7*sin(x), x)"]}
+{"i": 214, "cur": "Integral(((9*x**2 + 1)*(9*log(5*x)**2 + 18*log(5*x) + 5) + 9)/(9*x**2 + 1), x)", "nxt": "5*x + Integral(9/(9*x**2 + 1), x) + Integral(9*log(5*x)**2 + 18*log(5*x), x)", "cls": "miss", "names": []}
+{"i": 215, "cur": "Integral(-3*(8*x + 3)*sin(x*(4*x + 3)) + 27*exp(3*x)*sin(2*x) + 18*exp(3*x)*cos(2*x), x)", "nxt": "9*exp(3*x)*sin(2*x) + Integral(-3*(8*x + 3)*sin(x*(4*x + 3)), x)", "cls": "miss", "names": []}
+{"i": 216, "cur": "Integral(-28*x**3, x) + Integral(-72*exp(x)*sin(x) - 72*exp(x)*cos(x), x)", "nxt": "-7*x**4 + Integral(-72*exp(x)*sin(x) - 72*exp(x)*cos(x), x)", "cls": "unique", "names": ["i_heurisch@Integral(-28*x**3, x)"]}
+{"i": 217, "cur": "Integral(-6, x) + Integral(0, x)", "nxt": "Integral(-6, x) - 1", "cls": "miss", "names": []}
+{"i": 218, "cur": "Integral(5*(4*x - 5*sin(5*x))*exp(2*x**2 + cos(5*x)), x) + Integral(-12*(3*x**2 + 1)*log(x)*sin(x**3 + x + 2) + 12*cos(x**3 + x + 2)/x, x)", "nxt": "5*exp(2*x**2 + cos(5*x)) + Integral(-12*(3*x**2 + 1)*log(x)*sin(x**3 + x + 2) + 12*cos(x**3 + x + 2)/x, x)", "cls": "miss", "names": []}
+{"i": 219, "cur": "4*x**3 + Integral(6, x)", "nxt": "4*x**3 + 6*x", "cls": "unique", "names": ["i_const@Integral(6, x)"]}
+{"i": 220, "cur": "Integral(2*x + 9*exp(x) - 9*sin(x), x)", "nxt": "Integral(2*x, x) + Integral(9*exp(x), x) + Integral(-9*sin(x), x)", "cls": "unique", "names": ["i_sum@Integral(2*x + 9*exp(x) - 9*sin(x), x)"]}
+{"i": 221, "cur": "Integral(-36*x**3*(x*cos(x) + 4*sin(x)), x)", "nxt": "-36*x**4*sin(x)", "cls": "unique", "names": ["i_linear_basis@Integral(-36*x**3*(x*cos(x) + 4*sin(x)), x)"]}
+{"i": 222, "cur": "Integral(-2, x) + 3", "nxt": "3 - 2*x", "cls": "unique", "names": ["i_const@Integral(-2, x)"]}
+{"i": 223, "cur": "Integral(17*exp(x) - 1, x)", "nxt": "Integral(-1, x) + Integral(17*exp(x), x)", "cls": "unique", "names": ["i_sum@Integral(17*exp(x) - 1, x)"]}
+{"i": 224, "cur": "Integral(4*x*(3*x*log(x)*cos(3*x) + 2*log(x)*sin(3*x) + sin(3*x)), x)", "nxt": "4*x**2*log(x)*sin(3*x)", "cls": "unique", "names": ["i_linear_basis@Integral(4*x*(3*x*log(x)*cos(3*x) + 2*log(x)*sin(3*x) + sin(3*x)), x)"]}
+{"i": 225, "cur": "Integral(-12*exp(6*x + 4), x)", "nxt": "-12*Integral(exp(6*x + 4), x)", "cls": "unique", "names": ["i_const_factor@Integral(-12*exp(6*x + 4), x)"]}
+{"i": 226, "cur": "Integral(6, x) + Integral(2/x, x) + Integral(-7*exp(x), x)", "nxt": "-7*exp(x) + Integral(6, x) + Integral(2/x, x)", "cls": "unique", "names": ["i_linear_basis@Integral(-7*exp(x), x)"]}
+{"i": 227, "cur": "Integral(25*exp(x)*log(x) + 9 + 25*exp(x)/x, x)", "nxt": "Integral(9, x) + Integral(25*exp(x)*log(x) + 25*exp(x)/x, x)", "cls": "miss", "names": []}
+{"i": 228, "cur": "Integral(-7/x, x) + Integral(-15*x**2, x) + 1", "nxt": "-7*log(x) + Integral(-15*x**2, x) + 1", "cls": "unique", "names": ["i_linear_basis@Integral(-7/x, x)"]}
+{"i": 229, "cur": "Integral(1/x, x) + Integral(-exp(x), x) + Integral(-9*sin(x), x)", "nxt": "-exp(x) + Integral(1/x, x) + Integral(-9*sin(x), x)", "cls": "unique", "names": ["i_linear_basis@Integral(-exp(x), x)"]}
+{"i": 230, "cur": "x + 5*asin(2*x) + Integral(21*x**2*log(x) + 7*x**2, x)", "nxt": "7*x**3*log(x) + x + 5*asin(2*x)", "cls": "unique", "names": ["i_linear_basis@Integral(21*x**2*log(x) + 7*x**2, x)"]}
+{"i": 231, "cur": "-2*x**3 - 6*x + Integral(6*x, x)", "nxt": "-2*x**3 + 3*x**2 - 6*x", "cls": "unique", "names": ["i_heurisch@Integral(6*x, x)"]}
+{"i": 232, "cur": "Integral(8, x) + Integral(exp(x), x) + Integral(7*cos(x), x)", "nxt": "7*sin(x) + Integral(8, x) + Integral(exp(x), x)", "cls": "unique", "names": ["i_linear_basis@Integral(7*cos(x), x)"]}
+{"i": 233, "cur": "Integral(21*x**2, x) + Integral(-sin(x), x)", "nxt": "7*x**3 + Integral(-sin(x), x)", "cls": "unique", "names": ["i_heurisch@Integral(21*x**2, x)"]}
+{"i": 234, "cur": "Integral(-3*x**2 + 4*cos(x) + 7, x)", "nxt": "Integral(7, x) + Integral(-3*x**2, x) + Integral(4*cos(x), x)", "cls": "unique", "names": ["i_sum@Integral(-3*x**2 + 4*cos(x) + 7, x)"]}
+{"i": 235, "cur": "Integral((216*x**3*log(x) + 72)*exp(x**3)/x, x)", "nxt": "72*exp(x**3)*log(x)", "cls": "unique", "names": ["i_linear_basis@Integral((216*x**3*log(x) + 72)*exp(x**3)/x, x)"]}
+{"i": 236, "cur": "Integral(4*(-8*x + 9*sin(9*x))*sin(4*x**2 + cos(9*x) + 2), x)", "nxt": "Subs(Integral(-4*sin(u_), u_), u_, 4*x**2 + cos(9*x) + 2)", "cls": "unique", "names": ["i_usub@Integral((-32*x + 36*sin(9*x))*sin(4*x**2 + cos(9*x) + 2), x)"]}
+{"i": 237, "cur": "Integral(-24*sin(x), x) + Integral(2*cos(x), x)", "nxt": "2*sin(x) + Integral(-24*sin(x), x)", "cls": "unique", "names": ["i_linear_basis@Integral(2*cos(x), x)"]}
+{"i": 238, "cur": "Integral(5/x, x)", "nxt": "5*log(x)", "cls": "unique", "names": ["i_linear_basis@Integral(5/x, x)"]}
+{"i": 239, "cur": "Integral(24*x**3 - 7*sin(x) - 3, x)", "nxt": "Integral(-3, x) + Integral(24*x**3, x) + Integral(-7*sin(x), x)", "cls": "unique", "names": ["i_sum@Integral(24*x**3 - 7*sin(x) - 3, x)"]}
+{"i": 240, "cur": "10*x + 3*atan(2*x) + Integral(3/sqrt(1 - 9*x**2), x) + Integral(3/(9*x**2 + 1), x) + Integral(2*x*log(2*x) + x, x)", "nxt": "x**2*log(2*x) + 10*x + 3*atan(2*x) + Integral(3/sqrt(1 - 9*x**2), x) + Integral(3/(9*x**2 + 1), x)", "cls": "unique", "names": ["i_heurisch@Integral(2*x*log(2*x) + x, x)"]}
+{"i": 241, "cur": "Integral(-3, x) + Integral(18*x**2, x) + 4", "nxt": "-3*x + Integral(18*x**2, x) + 4", "cls": "unique", "names": ["i_const@Integral(-3, x)"]}
+{"i": 242, "cur": "-6*x**3 + Integral(9, x)", "nxt": "-6*x**3 + 9*x", "cls": "unique", "names": ["i_const@Integral(9, x)"]}
+{"i": 243, "cur": "Integral(3*exp(3*x)*sin(2*x) + 2*exp(3*x)*cos(2*x), x) + Integral(2*log(3*x)**2 + 4*log(3*x), x)", "nxt": "2*x*log(3*x)**2 + Integral(3*exp(3*x)*sin(2*x) + 2*exp(3*x)*cos(2*x), x)", "cls": "unique", "names": ["i_heurisch@Integral(2*log(3*x)**2 + 4*log(3*x), x)"]}
+{"i": 244, "cur": "Integral(4*x, x) + Integral(33*x**2, x) + 6", "nxt": "2*x**2 + Integral(33*x**2, x) + 6", "cls": "unique", "names": ["i_heurisch@Integral(4*x, x)"]}
+{"i": 245, "cur": "Integral(-39*x**2, x) + 9", "nxt": "9 - 13*x**3", "cls": "unique", "names": ["i_heurisch@Integral(-39*x**2, x)"]}
+{"i": 246, "cur": "Integral(-3, x) + Integral(0, x) + Integral(6*x, x) + Integral(30*x**4, x)", "nxt": "Integral(-3, x) + Integral(6*x, x) + Integral(30*x**4, x) + 9", "cls": "miss", "names": []}
+{"i": 247, "cur": "Integral(16*x*log(2*x)**2 + 16*x*log(2*x), x) + Integral(24*exp(3*x)*sin(2*x) + 16*exp(3*x)*cos(2*x), x)", "nxt": "8*x**2*log(2*x)**2 + Integral(24*exp(3*x)*sin(2*x) + 16*exp(3*x)*cos(2*x), x)", "cls": "unique", "names": ["i_heurisch@Integral(16*x*log(2*x)**2 + 16*x*log(2*x), x)"]}
+{"i": 248, "cur": "Integral(6 - 10*x, x)", "nxt": "Integral(6, x) + Integral(-10*x, x)", "cls": "unique", "names": ["i_sum@Integral(6 - 10*x, x)"]}
+{"i": 249, "cur": "Integral(5, x) + Integral(14/sqrt(1 - 4*x**2), x) + Integral(-3*exp(x)*sin(x) + 3*exp(x)*cos(x), x)", "nxt": "5*x + Integral(14/sqrt(1 - 4*x**2), x) + Integral(-3*exp(x)*sin(x) + 3*exp(x)*cos(x), x)", "cls": "unique", "names": ["i_const@Integral(5, x)"]}
+{"i": 250, "cur": "Integral(5*exp(x) - 10*sin(x) + 8*cos(x), x)", "nxt": "Integral(5*exp(x), x) + Integral(-10*sin(x), x) + Integral(8*cos(x), x)", "cls": "unique", "names": ["i_sum@Integral(5*exp(x) - 10*sin(x) + 8*cos(x), x)"]}
+{"i": 251, "cur": "Integral(0, x) + Integral(-18*exp(2*x)*sin(2*x) + 18*exp(2*x)*cos(2*x), x)", "nxt": "Integral(-18*exp(2*x)*sin(2*x) + 18*exp(2*x)*cos(2*x), x) + 9", "cls": "miss", "names": []}
+{"i": 252, "cur": "Integral(0, x) + Integral(-14*sin(x)**2 + 14*cos(x)**2, x)", "nxt": "Integral(-14*sin(x)**2 + 14*cos(x)**2, x) + 3", "cls": "miss", "names": []}
+{"i": 253, "cur": "Integral(0, x) + Integral(5, x) + Integral(18*x, x) + Integral(27*x**2, x)", "nxt": "Integral(5, x) + Integral(18*x, x) + Integral(27*x**2, x) - 6", "cls": "miss", "names": []}
+{"i": 254, "cur": "Integral(7, x) - 1", "nxt": "7*x - 1", "cls": "unique", "names": ["i_const@Integral(7, x)"]}
+{"i": 255, "cur": "Integral(24*x**2*log(4*x) + 8*x**2 + 9*exp(x)*sin(3*x) + 27*exp(x)*cos(3*x), x)", "nxt": "Integral(24*x**2*log(4*x) + 8*x**2, x) + Integral(9*exp(x)*sin(3*x) + 27*exp(x)*cos(3*x), x)", "cls": "miss", "names": []}
+{"i": 256, "cur": "Integral(2*exp(2*x + 3), x)", "nxt": "exp(2*x + 3)", "cls": "unique", "names": ["i_heurisch@Integral(2*exp(2*x + 3), x)"]}
+{"i": 257, "cur": "-7*sin(x) + Integral(-12*sin(x)**2 + 12*cos(x)**2, x)", "nxt": "12*sin(x)*cos(x) - 7*sin(x)", "cls": "unique", "names": ["i_linear_basis@Integral(-12*sin(x)**2 + 12*cos(x)**2, x)"]}
+{"i": 258, "cur": "Integral(2*x**2*(-x*sin(x) + 3*cos(x) + 12), x)", "nxt": "Integral(24*x**2, x) + Integral(-2*x**3*sin(x) + 6*x**2*cos(x), x)", "cls": "miss", "names": []}
+{"i": 259, "cur": "Integral(-5, x) + 15", "nxt": "15 - 5*x", "cls": "unique", "names": ["i_const@Integral(-5, x)"]}
+{"i": 260, "cur": "Integral(1, x) + Integral(3/(x**2 + 1), x) + Integral(6*exp(x)*sin(x) + 6*exp(x)*cos(x), x)", "nxt": "x + Integral(3/(x**2 + 1), x) + Integral(6*exp(x)*sin(x) + 6*exp(x)*cos(x), x)", "cls": "unique", "names": ["i_const@Integral(1, x)"]}
+{"i": 261, "cur": "Integral(16*x + exp(x) - 3*cos(x), x)", "nxt": "Integral(0, x) + Integral(16*x, x) + Integral(exp(x), x) + Integral(-3*cos(x), x)", "cls": "miss", "names": []}
+{"i": 262, "cur": "Integral(9, x) + Integral(8*exp(x), x)", "nxt": "8*exp(x) + Integral(9, x)", "cls": "unique", "names": ["i_linear_basis@Integral(8*exp(x), x)"]}
+{"i": 263, "cur": "Integral(24*x**2 + 4, x)", "nxt": "Integral(4, x) + Integral(24*x**2, x)", "cls": "unique", "names": ["i_sum@Integral(24*x**2 + 4, x)"]}
+{"i": 264, "cur": "Integral(-10*x, x) + Integral(cos(x), x)", "nxt": "-5*x**2 + Integral(cos(x), x)", "cls": "unique", "names": ["i_heurisch@Integral(-10*x, x)"]}
+{"i": 265, "cur": "Integral(4/x, x) + Integral(-sin(x), x)", "nxt": "4*log(x) + Integral(-sin(x), x)", "cls": "unique", "names": ["i_linear_basis@Integral(4/x, x)"]}
+{"i": 266, "cur": "Integral(17, x)", "nxt": "Integral(0, x) + Integral(17, x)", "cls": "miss", "names": []}
+{"i": 267, "cur": "Integral(12*x - 18, x)", "nxt": "Integral(-18, x) + Integral(0, x) + Integral(12*x, x)", "cls": "miss", "names": []}
+{"i": 268, "cur": "Integral(8*(log(x) + 2)*log(x), x)", "nxt": "8*x*log(x)**2", "cls": "unique", "names": ["i_heurisch@Integral((8*log(x) + 16)*log(x), x)"]}
+{"i": 269, "cur": "Integral(60*x*cos(5*x**3 - 4*x + 5)**2 - 2*(15*x**2 - 4)*(30*x**2 - 8)*sin(5*x**3 - 4*x + 5)*cos(5*x**3 - 4*x + 5), x) + Integral(-36*cos(3*x - 1), x)", "nxt": "-12*sin(3*x - 1) + Integral(60*x*cos(5*x**3 - 4*x + 5)**2 - 2*(15*x**2 - 4)*(30*x**2 - 8)*sin(5*x**3 - 4*x + 5)*cos(5*x**3 - 4*x + 5), x)", "cls": "unique", "names": ["i_linear_basis@Integral(-36*cos(3*x - 1), x)"]}
+{"i": 270, "cur": "2*x**5 + Integral(7, x) - 3", "nxt": "2*x**5 + 7*x - 3", "cls": "unique", "names": ["i_const@Integral(7, x)"]}
+{"i": 271, "cur": "Integral(-3, x) + Integral(0, x) + Integral(2*x, x)", "nxt": "Integral(-3, x) + Integral(2*x, x) - 8", "cls": "miss", "names": []}
+{"i": 272, "cur": "Integral(5*sin(x) + 1, x)", "nxt": "Integral(1, x) + Integral(5*sin(x), x)", "cls": "unique", "names": ["i_sum@Integral(5*sin(x) + 1, x)"]}
+{"i": 273, "cur": "Integral(-6*exp(x) - 9, x)", "nxt": "-6*exp(x) - 9*x", "cls": "unique", "names": ["i_linear_basis@Integral(-6*exp(x) - 9, x)"]}
+{"i": 274, "cur": "Integral(6, x) + Integral(4*x, x)", "nxt": "2*x**2 + Integral(6, x)", "cls": "unique", "names": ["i_heurisch@Integral(4*x, x)"]}
+{"i": 275, "cur": "3*log(x) - 2*sin(x) + Integral(5, x) + Integral(-4*sin(x), x)", "nxt": "3*log(x) - 2*sin(x) + 4*cos(x) + Integral(5, x)", "cls": "unique", "names": ["i_linear_basis@Integral(-4*sin(x), x)"]}
+{"i": 276, "cur": "Integral(8, x) + Integral(-10*x, x)", "nxt": "-5*x**2 + Integral(8, x)", "cls": "unique", "names": ["i_heurisch@Integral(-10*x, x)"]}
+{"i": 277, "cur": "Integral(8, x) + Integral(18*x**2, x)", "nxt": "6*x**3 + Integral(8, x)", "cls": "unique", "names": ["i_heurisch@Integral(18*x**2, x)"]}
+{"i": 278, "cur": "Integral(2, x) + Integral(30*x**2, x)", "nxt": "2*x + Integral(30*x**2, x)", "cls": "unique", "names": ["i_const@Integral(2, x)"]}
+{"i": 279, "cur": "Integral(3, x) + Integral(6/sqrt(1 - 4*x**2), x) + Integral(3*x**2*log(3*x) + x**2, x)", "nxt": "3*x + Integral(6/sqrt(1 - 4*x**2), x) + Integral(3*x**2*log(3*x) + x**2, x)", "cls": "unique", "names": ["i_const@Integral(3, x)"]}
+{"i": 280, "cur": "Integral(6*exp(x) - sin(x) + 8, x)", "nxt": "Integral(0, x) + Integral(8, x) + Integral(6*exp(x), x) + Integral(-sin(x), x)", "cls": "miss", "names": []}
+{"i": 281, "cur": "-8*x**2 + Integral(24*x**2, x)", "nxt": "8*x**3 - 8*x**2", "cls": "unique", "names": ["i_heurisch@Integral(24*x**2, x)"]}
+{"i": 282, "cur": "Integral(3, x) + Integral(18*x, x)", "nxt": "3*x + Integral(18*x, x)", "cls": "unique", "names": ["i_const@Integral(3, x)"]}
+{"i": 283, "cur": "Integral(2, x) + Integral(27*x**2, x) + 6", "nxt": "2*x + Integral(27*x**2, x) + 6", "cls": "unique", "names": ["i_const@Integral(2, x)"]}
+{"i": 284, "cur": "Integral(-162*log(x)/x, x) + 2", "nxt": "2 - 81*log(x)**2", "cls": "unique", "names": ["i_log_power@Integral(-162*log(x)/x, x)"]}
+{"i": 285, "cur": "Integral(-3*(15*x**2 + 7*cos(7*x) + 4)*sin(5*x**3 + 4*x + sin(7*x) + 3), x) + Integral(-4*exp(x)*sin(2*x - 4) - 8*exp(x)*cos(2*x - 4), x)", "nxt": "3*cos(5*x**3 + 4*x + sin(7*x) + 3) + Integral(-4*exp(x)*sin(2*x - 4) - 8*exp(x)*cos(2*x - 4), x)", "cls": "miss", "names": []}
+{"i": 286, "cur": "Integral(8 - 6*x, x)", "nxt": "Integral(8, x) + Integral(-6*x, x)", "cls": "unique", "names": ["i_sum@Integral(8 - 6*x, x)"]}
+{"i": 287, "cur": "Integral(-3*sin(x) - 5*cos(x), x)", "nxt": "Integral(-3*sin(x), x) + Integral(-5*cos(x), x)", "cls": "unique", "names": ["i_sum@Integral(-3*sin(x) - 5*cos(x), x)"]}
+{"i": 288, "cur": "Integral(-17, x) + Integral(0, x) + Integral(4/x, x)", "nxt": "Integral(-17, x) + Integral(4/x, x) + 5", "cls": "miss", "names": []}
+{"i": 289, "cur": "Integral(-8, x) + Integral(-12*x**2, x) + 7", "nxt": "-8*x + Integral(-12*x**2, x) + 7", "cls": "unique", "names": ["i_const@Integral(-8, x)"]}
+{"i": 290, "cur": "8*cos(x) + Integral(-27*x**3*exp(x) - 81*x**2*exp(x), x)", "nxt": "-27*x**3*exp(x) + 8*cos(x)", "cls": "unique", "names": ["i_unprod@Integral(-27*x**3*exp(x) - 81*x**2*exp(x), x)"]}
+{"i": 291, "cur": "x - 7*sin(x) + Integral(-10*x**4, x) + Integral(-5*exp(x), x)", "nxt": "x - 5*exp(x) - 7*sin(x) + Integral(-10*x**4, x)", "cls": "unique", "names": ["i_linear_basis@Integral(-5*exp(x), x)"]}
+{"i": 292, "cur": "Integral(10*x + 6, x)", "nxt": "Integral(6, x) + Integral(10*x, x)", "cls": "unique", "names": ["i_sum@Integral(10*x + 6, x)"]}
+{"i": 293, "cur": "Integral(6*sqrt(2)*exp(x)*sin(x + pi/4), x)", "nxt": "Integral(0, x) + Integral(6*exp(x)*sin(x) + 6*exp(x)*cos(x), x)", "cls": "miss", "names": []}
+{"i": 294, "cur": "3*x + Integral(8/(x**2 + 1), x)", "nxt": "3*x + 8*atan(x)", "cls": "unique", "names": ["i_inverse_trig@Integral(8/(x**2 + 1), x)"]}
+{"i": 295, "cur": "Integral(2, x) - 4", "nxt": "2*x - 4", "cls": "unique", "names": ["i_const@Integral(2, x)"]}
+{"i": 296, "cur": "Integral(18*x, x) + Integral(6*x**2, x) + 15", "nxt": "2*x**3 + Integral(18*x, x) + 15", "cls": "unique", "names": ["i_heurisch@Integral(6*x**2, x)"]}
+{"i": 297, "cur": "Integral(14*x - 4, x)", "nxt": "Integral(-4, x) + Integral(14*x, x)", "cls": "unique", "names": ["i_sum@Integral(14*x - 4, x)"]}
+{"i": 298, "cur": "Integral(0, x) + Integral(18*x, x)", "nxt": "Integral(18*x, x) + 7", "cls": "miss", "names": []}
+{"i": 299, "cur": "-2*x**5 + 3*log(x) + Integral(15*x**2, x)", "nxt": "-2*x**5 + 5*x**3 + 3*log(x)", "cls": "unique", "names": ["i_heurisch@Integral(15*x**2, x)"]}

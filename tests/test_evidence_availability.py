@@ -20,8 +20,8 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 DOC = ROOT / "docs" / "EVIDENCE.md"
 LOCK = ROOT / "docs" / "receipts.lock.json"
-ROW = re.compile(r"^\| `([^`]+)` \| (tracked|local-only|absent) \| ([0-9a-f]{64}|\(locked\)|-) \|$")
-STATUSES = ("tracked", "local-only", "absent")
+ROW = re.compile(r"^\| `([^`]+)` \| (tracked|local-only|remote-only|absent) \| ([0-9a-f]{64}|\(locked\)|-) \|$")
+STATUSES = ("tracked", "local-only", "remote-only", "absent")
 
 
 def _sha(p: Path) -> str:
@@ -96,6 +96,16 @@ def test_pinned_rows_match_git_and_disk():
                 problems.append(f"{path}: local-only evidence absent on the evidence host")
             else:
                 unverifiable.append(path)
+        elif status == "remote-only":
+            # held on the other machine only (historical failed-run
+            # evidence inventoried there, never copied); git must not
+            # carry it, and a copy that does appear here must match
+            if tracked:
+                problems.append(f"{path}: documented remote-only but git tracks it; "
+                                "reclassify as tracked")
+            elif p.is_file() and _sha(p) != sha:
+                problems.append(f"{path}: a local copy exists and its bytes differ "
+                                "from the documented sha")
         else:  # absent
             if tracked or p.is_file():
                 problems.append(f"{path}: documented absent but present; the "

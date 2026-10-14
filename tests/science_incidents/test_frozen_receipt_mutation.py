@@ -88,13 +88,13 @@ def test_locked_receipts_are_unchanged():
 # (older driver logs never force-added). An IDENTITY ratchet, not a
 # count (external-review adoption 2026-08-16): with a count alone,
 # recovering one legacy file would free a slot a NEW booking could
-# silently spend on new uncommitted evidence. Six of the original
-# seven (the merge_space driver logs and the microstar run log) were
-# recovered from the 3080 and locked on 2026-10-13 (AMENDMENT
-# MERGE-SPACE-RECEIPTS-RECOVERED-2026-10-13); the set only shrinks.
-LEGACY_ABSENT = {
-    "logs/pincer/labels_v2.jsonl",
-}
+# silently spend on new uncommitted evidence. All seven (the
+# merge_space driver logs, the microstar run log, the pincer labels
+# record) were recovered from the 3080 and locked on 2026-10-13
+# (AMENDMENTS MERGE-SPACE-RECEIPTS-RECOVERED-2026-10-13 and
+# PINCER-LABELS-RECOVERED-2026-10-13); the set only shrinks, and it
+# is now empty: every results-cited receipt exists on some checkout.
+LEGACY_ABSENT: set[str] = set()
 
 
 def test_cited_but_absent_receipts_are_only_the_legacy_set():

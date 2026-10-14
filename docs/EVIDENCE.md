@@ -15,8 +15,12 @@ Vocabulary, used in every table:
   for `logs/` paths, in [receipts.lock.json](receipts.lock.json).
 - **local-only**: present on the Mac checkout, gitignored, sha256
   pinned here; a fresh clone does not have it.
+- **remote-only**: present on the 3080 checkout only, never copied,
+  sha256 pinned here; historical failed-run evidence inventoried where
+  it lies. Git must not carry it; a copy that appears here must match.
 - **absent**: cited by a booked entry, present on no checkout the lab
-  can reach today.
+  can reach today. Since 2026-10-13 no results-cited receipt is in
+  this class.
 - **re-run here**: whether a meaningful reproduction is possible on
   this Mac now, and in what shape (digest-exact, tolerance, blocked).
 
@@ -32,6 +36,7 @@ deliver the file. Only **tracked** artifacts travel with the repo.
 | merge_space | six independent-pair averages gate exactly zero; same-init merges land in the parent band at n=3 | MERGE-SPACE-1 L26770, -5 L27158 (values also from -3 L26947, -4 L27013) | tracked and locked since AMENDMENT L77967 (recovered from the 3080) | 33 checkpoints and 16 merge sidecars local-only (copies; originals on the 3080) | births 3080-scoped; gate side re-runnable in-family against the recovered checkpoints; not re-run |
 | loss_floor | floor 0.4364 to 0.3478 nats across d64 to d512, never near H_32 = 0.187 | FLOOR-HK-1 L27055 | tracked and locked since AMENDMENT L77881 | four checkpoints local-only | tolerance re-birth only (mps is run-level nondeterministic); not attempted |
 | effective_context | deep positions improve about one nat from k=16 to k=128 at every width; bar 2 did not fire | KEFF-PROBE-1 L27332 | tracked and locked since AMENDMENT L77881 | the four loss_floor checkpoints, local-only | yes while the checkpoints survive: deterministic CPU loss readout, minutes; not re-run this phase |
+| pincer labels (not front-page) | the migrated label prep certifies 67.7% recoverable (203u/95m/2 timeout of 300) | HARDENING-P4-1-LABELS L23149 | tracked and locked since AMENDMENT L78146 (recovered through `scripts/recover_receipt.py`) | none (the row-level record is the artifact) | the file is the readout; class counts re-read from it match the verdict |
 
 The sixteen reproduce pins (`llmopt.reproduce`) are the contrast case:
 driver, window artifact and contract digest are all tracked, and all
@@ -94,6 +99,13 @@ trajectory identity, not any front-page number.
   this Mac, originals on the 3080; the 16 `*.pt.merge.json` sidecars
   name each merge's inputs with full sha256, and all 33 input digests
   match the parent files. File-level sha256 pinned below.
+- Failed-run evidence, remote-only: the two OOM-poisoned MICRO-STAR-1
+  attempts the verdict names as killed unread
+  (`logs/microstar/microstar_run_oomkilled.log`, 115,107 B, and
+  `logs/microstar/microstar_run_oom2.log`, 355,745 B) stay on the 3080,
+  outside git, digests pinned below and in AMENDMENT L78146. They
+  record the relaunch decision (CUDA allocator OOM warnings, the 43x
+  tripwire) and are not disposable logs.
 - Re-run here: a Mac re-birth is not a valid comparison (3080-scoped
   births; cross-device comparison forbidden by house doctrine). The
   gate side is re-runnable on either machine against the recovered
@@ -137,11 +149,29 @@ trajectory identity, not any front-page number.
 - Re-run here: yes, in minutes, while the checkpoints survive; the probe
   is a deterministic loss readout. Not re-run this phase.
 
+## 5. Pincer labels record (HARDENING-P4-1-LABELS), not front-page
+
+- Claim and scope: the fork-per-state label prep reproduces the v1
+  number on v1's exact 300-row sample: 203 unique, 0 ambiguous, 95
+  miss, 2 timeout, 67.7% recoverable; no amendment to the booked 68.0%
+  fires. 3080 CPU, 20 s deadline, probe-tier instrument.
+- Registration and verdict: PRE-REG HARDENING-P4-1 (L23113) before
+  VERDICT HARDENING-P4-1-LABELS (L23149).
+- Receipt: `logs/pincer/labels_v2.jsonl`, 300 JSON rows (fields i,
+  cur, nxt, cls, names; sympy expressions only), tracked and locked
+  since AMENDMENT PINCER-LABELS-RECOVERED-2026-10-13 (L78146). It was
+  the last results-cited receipt absent on every checkout and was
+  restored through `scripts/recover_receipt.py` from the 3080 original
+  (record in `receipt-recoveries.jsonl`); class counts re-read from
+  the file equal the verdict's.
+- Re-run here: the generator and the v2 prep are tracked; a re-run is
+  a CPU job of minutes and was not attempted.
+
 ## Pinned artifacts
 
 The table `tests/test_evidence_availability.py` reads. One row per
-file; status is one of `tracked`, `local-only`, `absent`; sha256 is the
-full digest or `-` for an absent file.
+file; status is one of `tracked`, `local-only`, `remote-only`,
+`absent`; sha256 is the full digest or `-` for an absent file.
 
 | path | status | sha256 |
 |---|---|---|
@@ -168,6 +198,9 @@ full digest or `-` for an absent file.
 | `logs/merge_space4/driver.log` | tracked | (locked) |
 | `logs/merge_space5/driver.log` | tracked | (locked) |
 | `logs/microstar/microstar_run.log` | tracked | (locked) |
+| `logs/microstar/microstar_run_oomkilled.log` | remote-only | 995f5755ce3e1b85b9015ecf02137f6d03653505e6c29fec6efd445b7fd2297b |
+| `logs/microstar/microstar_run_oom2.log` | remote-only | 2a3d71e9a0658a00d73ed82488b8e93401f3e973f9297bb17fc5d9ba9f471df8 |
+| `logs/pincer/labels_v2.jsonl` | tracked | (locked) |
 | `checkpoints/microstar_d64.pt` | local-only | 91d02b2b46c962e939f56ae03bb94d8c6a7b3a195fa8393b6c4879c73942f542 |
 | `checkpoints/msearch_1a.pt` | local-only | 446bbc305b095c5eee24a8c38afbb4444ee3469fa64864e9af31b7cc8bab8908 |
 | `checkpoints/msearch_1b.pt` | local-only | fe09b0f45425b0bf4fb675b5cce7762088be24bd1cb9dac399540a52aea7b9cf |
@@ -222,6 +255,9 @@ full digest or `-` for an absent file.
 than typed twice. The 47 per-arm merge_space logs are tracked and
 locked too; they are not repeated here because the lock already pins
 each one and the amendment lists them with their digests. A `local-only` row whose file is missing is reported
-by the test and fails only on the evidence host (`LLMOPT_FULL=1`); an
-`absent` row whose file reappears fails the test until this page is
-updated, so recovery is a visible, reviewed event.
+by the test and fails only on the evidence host (`LLMOPT_FULL=1`); a
+`remote-only` row fails if git starts carrying the file or a local copy
+with different bytes appears; an `absent` row whose file reappears
+fails the test until this page is updated, so recovery is a visible,
+reviewed event (the operation itself is `scripts/recover_receipt.py`,
+which records every restore in `receipt-recoveries.jsonl`).

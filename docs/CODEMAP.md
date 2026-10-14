@@ -16,7 +16,7 @@ this also drives `library`; from lab tooling it drives
 comments or plain strings; `via` names the cited caller a file
 inherits its class from when no document names the file itself.
 
-Census: library 191, reproduce-pinned 9, results-cited 495, spec-cited 80, tool-referenced 5, UNCITED 124 (of 904; library rows that are also doc-cited: 186)
+Census: library 192, reproduce-pinned 9, results-cited 495, spec-cited 80, tool-referenced 5, UNCITED 124 (of 905; library rows that are also doc-cited: 187)
 
 ## scratch/
 
@@ -874,7 +874,7 @@ Census: library 191, reproduce-pinned 9, results-cited 495, spec-cited 80, tool-
 | gen | gen_policy_labels.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
 | gen | gen_proposer_data.py | results-cited | RESULTS, specs | RESULTS×1, specs×9 | — | — | 1 | — |
 | gen | gen_readme.py | library | RESULTS, specs, TOOLING | RESULTS×1, specs×25, TOOLING×5 | 1 | 4 | — | — |
-| gen | gen_receipt_lock.py | library | RESULTS, specs, TOOLING | RESULTS×1, specs×4, TOOLING×9 | 1 | 9 | — | — |
+| gen | gen_receipt_lock.py | library | RESULTS, specs, TOOLING | RESULTS×1, specs×4, TOOLING×9 | 1 | 10 | — | — |
 | gen | gen_regret_labels.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
 | gen | gen_results_index.py | library | RESULTS, specs, TOOLING | RESULTS×8, specs×20, TOOLING×9 | 1 | 8 | 2 | — |
 | gen | gen_scoreboard.py | library | RESULTS, specs, TOOLING | RESULTS×1, specs×3, TOOLING×2 | — | 2 | — | — |
@@ -900,6 +900,7 @@ Census: library 191, reproduce-pinned 9, results-cited 495, spec-cited 80, tool-
 | plot | plot_identity_crest.py | spec-cited | specs | specs×3 | — | — | — | — |
 | plot | plot_neurons.py | spec-cited | specs | specs×6 | — | — | 1 | — |
 | probe | probe_depth.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
+| recover | recover_receipt.py | library | RESULTS, TOOLING | RESULTS×2, TOOLING×1 | — | 2 | — | — |
 | render | render_anim.py | library | RESULTS, specs, TOOLING | RESULTS×1, specs×1, TOOLING×4 | 1 | 1 | — | — |
 | render | render_gallery.py | spec-cited | specs | specs×7 | — | — | — | — |
 | render | render_hero_neurons.py | spec-cited | specs | specs×4 | — | — | 1 | — |
