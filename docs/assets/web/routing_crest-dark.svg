@@ -21,5 +21,5 @@
 <text x="796" y="304" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="500" fill="#898781">0<tspan fill="#898781">/120</tspan></text>
 <line x1="34" y1="343" x2="846" y2="343" stroke="#232321" stroke-width="1"/>
 <text x="34" y="363" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">VERDICT MOE-GT-1-R5/R6 · RESULTS.md#L18927 · masked v full PAIRED at seeds 111/222/333 (+17/+9/+18, pooled +14.7 v a +7</text>
-<text x="34" y="379" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">bar); controls at seed 1234, NOT seed-paired to those arms · Mac MLX · mathgen L1-3</text>
+<text x="34" y="379" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">bar; full mean 66.33 drawn as 66); controls at seed 1234, NOT seed-paired · Mac MLX · mathgen L1-3</text>
 </svg>

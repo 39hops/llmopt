@@ -16,7 +16,7 @@ this also drives `library`; from lab tooling it drives
 comments or plain strings; `via` names the cited caller a file
 inherits its class from when no document names the file itself.
 
-Census: library 192, reproduce-pinned 9, results-cited 495, spec-cited 80, tool-referenced 5, UNCITED 124 (of 905; library rows that are also doc-cited: 187)
+Census: library 193, reproduce-pinned 9, results-cited 494, spec-cited 80, tool-referenced 5, UNCITED 124 (of 905; library rows that are also doc-cited: 188)
 
 ## scratch/
 
@@ -866,14 +866,14 @@ Census: library 192, reproduce-pinned 9, results-cited 495, spec-cited 80, tool-
 | gen | gen_codemap.py | library | RESULTS, specs, TOOLING | RESULTS×2, specs×28, TOOLING×13 | — | 7 | 1 | — |
 | gen | gen_dispatch_labels.py | results-cited | RESULTS | RESULTS×1 | — | — | 2 | — |
 | gen | gen_dispatch_labels_v2.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
-| gen | gen_figures_web.py | results-cited | RESULTS, specs, TOOLING | RESULTS×1, specs×4, TOOLING×1 | — | — | — | — |
+| gen | gen_figures_web.py | library | RESULTS, specs, TOOLING | RESULTS×1, specs×4, TOOLING×3 | 1 | 2 | 1 | — |
 | gen | gen_frontier.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
 | gen | gen_index.py | library | RESULTS, specs, TOOLING | RESULTS×1, specs×11, TOOLING×13 | — | 8 | — | — |
 | gen | gen_lake.py | library | RESULTS, specs | RESULTS×3, specs×1 | — | 1 | — | — |
 | gen | gen_magic_labels.py | results-cited | RESULTS, specs, TOOLING | RESULTS×3, specs×1, TOOLING×2 | — | — | — | — |
 | gen | gen_policy_labels.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
 | gen | gen_proposer_data.py | results-cited | RESULTS, specs | RESULTS×1, specs×9 | — | — | 1 | — |
-| gen | gen_readme.py | library | RESULTS, specs, TOOLING | RESULTS×1, specs×25, TOOLING×5 | 1 | 4 | — | — |
+| gen | gen_readme.py | library | RESULTS, specs, TOOLING | RESULTS×1, specs×25, TOOLING×5 | 2 | 5 | 2 | — |
 | gen | gen_receipt_lock.py | library | RESULTS, specs, TOOLING | RESULTS×1, specs×4, TOOLING×9 | 1 | 10 | — | — |
 | gen | gen_regret_labels.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
 | gen | gen_results_index.py | library | RESULTS, specs, TOOLING | RESULTS×8, specs×20, TOOLING×9 | 1 | 8 | 2 | — |

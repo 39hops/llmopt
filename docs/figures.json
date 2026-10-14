@@ -1,5 +1,5 @@
 {
-  "_": "Single source for every published figure. Each number is transcribed from the RESULTS verdict named in its `fence`; the honesty_ledger parts and fence are recounted from docs/FINDINGS.md. llmopt/figures/figsvg.py renders these entries to SVG (PNG via Chrome); llmopt/figures/figures.py is the analysis renderer and does not read this file. After any amendment run scripts/gen_figures_web.py, then scripts/gen_readme.py; order matters, because gen_figures_web.py rewrites this file with escaped non-ASCII and gen_readme.py rewrites it with ensure_ascii=False, which `gen_readme.py --check` in CI expects.",
+  "_": "Single source for every published figure. Each number is transcribed from the RESULTS verdict named in its `fence`; the honesty_ledger parts and fence are recounted from docs/FINDINGS.md. llmopt/figures/figsvg.py renders these entries to SVG (PNG via Chrome); llmopt/figures/figures.py is the analysis renderer and does not read this file. After any amendment run scripts/gen_figures_web.py, then scripts/gen_readme.py; order matters, because gen_figures_web.py rewrites this file with escaped non-ASCII and gen_readme.py rewrites it with ensure_ascii=False, which `gen_readme.py --check` in CI expects. Each figure's `fence_ids` lists the results-index ids of every entry its fence cites; tests/test_docs_integrity.py checks them against the index.",
   "merge_space": {
     "kind": "gate_track",
     "title": "Averaging independently born weights does not degrade a model — it ends it",
@@ -42,7 +42,13 @@
         "entity": "soup"
       }
     ],
-    "fence": "VERDICT MERGE-SPACE-1 · RESULTS.md#L26770 (craters, n=1 per cell) · MERGE-SPACE-5 · RESULTS.md#L27158 (same-init holds, n=3 paired seeds) · d64 · RTX 3080"
+    "fence": "VERDICT MERGE-SPACE-1 · RESULTS.md#L26770 (craters, n=1 per cell) · -3 · L26947 (same-init 13) · -4 · L27013 (soup 14) · -5 · L27158 (same-init holds, n=3 paired seeds) · d64 · RTX 3080",
+    "fence_ids": [
+      "2026-08-11-verdict-merge-space-1-r1-independent",
+      "2026-08-11-verdict-merge-space-3-r2b-p",
+      "2026-08-11-verdict-merge-space-4-r2c-soup",
+      "2026-08-11-verdict-merge-space-5-r2d-p"
+    ]
   },
   "ssm_star": {
     "kind": "gate_track",
@@ -61,7 +67,10 @@
         "entity": "ssm"
       }
     ],
-    "fence": "VERDICT SSM-STAR-1 · RESULTS.md#L27282 · d64 · RTX 3080 · n=1"
+    "fence": "VERDICT SSM-STAR-1 · RESULTS.md#L27282 · d64 · RTX 3080 · n=1",
+    "fence_ids": [
+      "2026-08-11-verdict-ssm-star-1-the-house"
+    ]
   },
   "effective_context": {
     "kind": "curves",
@@ -128,7 +137,10 @@
         ]
       }
     ],
-    "fence": "VERDICT KEFF-PROBE-1 · RESULTS.md#L27332 · bar 1 fires, bar 2 does not · 400 fixed rows · Mac CPU · loss only, no gate"
+    "fence": "VERDICT KEFF-PROBE-1 · RESULTS.md#L27332 · bar 1 fires, bar 2 does not · 400 fixed rows · Mac CPU · loss only, no gate",
+    "fence_ids": [
+      "2026-08-11-verdict-keff-probe-1-bar-1"
+    ]
   },
   "loss_floor": {
     "kind": "ladder",
@@ -159,7 +171,10 @@
       "value": 0.187
     },
     "entity": "champion",
-    "fence": "VERDICT FLOOR-HK-1 · RESULTS.md#L27055 · Mac · n=1"
+    "fence": "VERDICT FLOOR-HK-1 · RESULTS.md#L27055 · Mac · n=1",
+    "fence_ids": [
+      "2026-08-11-verdict-floor-hk-1-r3-both"
+    ]
   },
   "routing_crest": {
     "kind": "gate_track",
@@ -210,7 +225,11 @@
         "mask": 81
       }
     ],
-    "fence": "VERDICT MOE-GT-1-R5/R6 · RESULTS.md#L18927 · masked v full PAIRED at seeds 111/222/333 (+17/+9/+18, pooled +14.7 v a +7 bar); controls at seed 1234, NOT seed-paired to those arms · Mac MLX · mathgen L1-3"
+    "fence": "VERDICT MOE-GT-1-R5/R6 · RESULTS.md#L18927 · masked v full PAIRED at seeds 111/222/333 (+17/+9/+18, pooled +14.7 v a +7 bar; full mean 66.33 drawn as 66); controls at seed 1234, NOT seed-paired · Mac MLX · mathgen L1-3",
+    "fence_ids": [
+      "2026-08-04-verdict-moe-gt-1-r5-confirmed",
+      "2026-08-04-verdict-moe-gt-1-r6-the"
+    ]
   },
   "honesty_ledger": {
     "kind": "composition",
@@ -248,6 +267,7 @@
         "note": "withdrawn in writing"
       }
     ],
-    "fence": "docs/FINDINGS.md · 425 curated claims · recounted from the source at build time"
+    "fence": "docs/FINDINGS.md · 425 curated claims · recounted from the source at build time",
+    "fence_ids": []
   }
 }

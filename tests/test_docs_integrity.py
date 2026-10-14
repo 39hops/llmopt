@@ -174,3 +174,40 @@ if __name__ == "__main__":       # standalone report, no pytest needed
           f"(ratchet {MAX_UNCURATED})")
     for row in sorted(stale, key=lambda r: -r["line"])[:10]:
         print(f"  newest uncited: {row['type']:8s} {row['id']}")
+
+
+def test_figure_fences_are_ledger_links():
+    """Every published figure's fence is a citation: each RESULTS line
+    it names (``RESULTS.md#L<n>`` or a bare ``L<n>`` after the first)
+    must be the heading line of an entry whose id is listed in the
+    figure's ``fence_ids``, every listed id must exist in the index,
+    and a fence may not cite a line the ids do not cover. Line numbers
+    in fences are cached like link anchors; when the ledger moves,
+    scripts/anchor_guard.py does not touch figures.json, so this test
+    is what notices.
+    """
+    by_id = {json.loads(r)["id"]: json.loads(r)["line"] for r in INDEX.open()}
+    spec = json.loads((ROOT / "docs/figures.json").read_text())
+    problems = []
+    for name, fig in spec.items():
+        if name.startswith("_"):
+            continue
+        ids = fig.get("fence_ids")
+        if ids is None:
+            problems.append(f"{name}: no fence_ids")
+            continue
+        lines_of_ids = {}
+        for eid in ids:
+            if eid not in by_id:
+                problems.append(f"{name}: fence_ids names {eid}, not in the index")
+            else:
+                lines_of_ids[by_id[eid]] = eid
+        # `RESULTS.md#L<n>` or a bare `· L<n>` after the first; "L1-3"
+        # (a gate level range) is not a line citation
+        cited = {int(n) for n in re.findall(r"(?:#L|·\s+L)(\d+)\b", fig.get("fence", ""))}
+        for n in sorted(cited - set(lines_of_ids)):
+            problems.append(f"{name}: fence cites L{n} but no fence_ids entry "
+                            f"sits on that line (ids cover {sorted(lines_of_ids)})")
+        if "RESULTS.md#L" in fig.get("fence", "") and not ids:
+            problems.append(f"{name}: fence cites RESULTS but fence_ids is empty")
+    assert not problems, "figure fences v ledger:\n  " + "\n  ".join(problems)
