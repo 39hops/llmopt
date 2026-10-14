@@ -1148,6 +1148,19 @@ Depth anatomy: WHERE in the stack does the rewrite decision form?
 
 - `main(ckpt: str, d: int, layers: int, ffn: int, heads: int, n: int) -> None`
 
+### scripts/recover_receipt.py
+Restore ONE booked receipt whose file exists on no checkout.
+
+- `class Refuse`
+- `sha256_file(p: Path) -> str`
+- `git(root: Path, *args: str) -> subprocess.CompletedProcess`
+- `live_run_sentinel(root: Path) -> Path | None` — The liverun sentinel if a registered run is live (any worktree
+- `is_primary_worktree(root: Path) -> bool`
+- `booked_line(results: Path, digest: str) -> int | None`
+- `check(root: Path, source: Path, dest: str, digest: str) -> dict` — Run every refusal check; return the lock row for dest.
+- `restore(root: Path, source: Path, dest: str, digest: str, origin: str) -> dict`
+- `main(argv: list[str] | None=None) -> int`
+
 ### scripts/render_anim.py
 Render driver for the animation triplets (banked repair, 2026-08-13).
 

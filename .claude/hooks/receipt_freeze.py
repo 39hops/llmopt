@@ -37,6 +37,16 @@ from pathlib import Path
 CITE = re.compile(r"\blogs/[A-Za-z0-9_.\-]+/[A-Za-z0-9_.\-]+\.[A-Za-z0-9]+\b")
 MUTATORS = re.compile(r"(^|[;&|]\s*)(mv|rm|cp)\s", re.M)
 REDIRECT_TO = re.compile(r">>?\s*([A-Za-z0-9_.\-/]+)")
+# The ONE write to a booked receipt path the guard lets through: the
+# recovery script, invoked alone, with plain arguments. No shell
+# operator, substitution, redirect or quote-escape may appear anywhere
+# in the command, so nothing can ride along with it; the script itself
+# refuses every destination that is not a currently-absent,
+# results-cited receipt and never overwrites (scripts/recover_receipt.py).
+_ARG = r"(?:--[a-z0-9-]+|\"[^\"\\$`\n]*\"|'[^'\\$`\n]*'|[^\s;&|<>`$()\\\"'{}]+)"
+RECOVER_PREFIX = re.compile(
+    r"[ \t]*(?:\./)?(?:\.venv/bin/python|python3?)[ \t]+scripts/recover_receipt\.py\b")
+RECOVER = re.compile(RECOVER_PREFIX.pattern + rf"(?:[ \t]+{_ARG})*[ \t]*")
 
 
 def deny(reason: str) -> None:
@@ -99,6 +109,14 @@ def main() -> None:
 
         cmd = ti.get("command", "")
         if not cmd:
+            return
+        if RECOVER_PREFIX.match(cmd):
+            if RECOVER.fullmatch(cmd):
+                return  # the explicit recovery operation; the script judges
+            deny("REFUSING: scripts/recover_receipt.py must be invoked "
+                 "alone, with plain arguments: no shell operator, "
+                 "substitution, redirect or second command may ride "
+                 "along with the one write the guard allows.")
             return
         touched = set(CITE.findall(cmd))
         mutating = bool(MUTATORS.search(cmd)) or bool(
