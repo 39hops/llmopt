@@ -6447,7 +6447,8 @@ Typed metrics: a number that knows what population it describes.
 - `class Metric` (relative_to)
 - `class DescriptiveContrast`
 - `cross_population_difference(a: Metric, b: Metric, purpose: str) -> DescriptiveContrast` — Difference two metrics ACROSS populations, descriptively.
-- `adjudicate(observed, bar_value: float, direction: str='below', required_population: str | None=None) -> str` — FIRE / NO-FIRE for a registered bar. Refuses non-evidence.
+- `_finite_real(x, what: str) -> float` — A finite int or float; bool, None, str, NaN and inf are refused.
+- `adjudicate(observed, bar_value: float, direction: str='below', required_population: str | None=None, fence: float | None=None) -> str` — FIRE / NO-FIRE / UNRESOLVED for a registered bar. Refuses non-evidence.
 
 ### llmopt/lab/oracle.py
 lab.oracle — the boxed oracle, v3.2 lineage (spec 2026-08-05-llmopt-lab-extraction module 1). Parent side of the subprocess line-server in lab/oracle_worker.py; behavior ported line-for-line from scratch/moe_gt1_arm2.check_isolated (which stays frozen — booked verdicts cite it).
@@ -6464,11 +6465,22 @@ Standalone oracle worker for timeboxed p.check (MOE-GT-6 v3). CANONICAL BODY sin
 Machine-readable pre-registration: bars a program can adjudicate.
 
 - `class PreregSchemaError`
+- `class RegistrationMismatchError`
+- `class ObservationsContractError`
+- `_no_duplicate_keys(exc)`
+- `registration_digest(doc: dict) -> str` — sha256 over the adjudicable content of a pre-reg: name,
 - `class BarOutcome`
 - `_require(cond: bool, msg: str) -> None`
+- `_validate_fence(fence, where: str) -> None` — {"width": finite nonnegative real, "unit": non-empty str}.
+- `_fence_width(obj: dict) -> float | None`
+- `_fence_reason(observed: float, bar: float, fence: dict) -> str`
+- `_measured(m: dict, where: str) -> float` — The measurement's value as a float, refusing anything that is
 - `validate(doc: dict) -> dict` — Validate a pre-reg document; returns it unchanged on success.
 - `verify_operands(doc: dict, root: str | Path) -> None` — OPERAND-PROVIDER law, v1: every registered operand's provider
 - `load(path: str | Path, operand_root: str | Path | None=None) -> dict` — Load + validate; when the document carries operands, also
+- `load_observations(path: str | Path) -> dict` — Read an observations JSON file, refusing duplicate keys (the
+- `unlocked_receipts(doc: dict, lock: dict) -> list[str]` — Receipt paths the pre-reg declares that docs/receipts.lock.json
+- `check_observations(prereg: dict, obs: dict) -> None` — Observations-side contract: shape, registration identity,
 - `adjudicate_refutation(prereg: dict, obs: dict, bar_outcomes: list | None=None) -> str | None` — Score the structured refutation clause, if the pre-reg has one.
 - `adjudicate_prereg(prereg: dict, obs: dict) -> list[BarOutcome]` — Deterministic adjudication of every bar against observations.
 
