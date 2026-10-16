@@ -1,0 +1,2532 @@
+{
+ "build_seconds": 78.7,
+ "cases": [
+  {
+   "answer": "-27*x**2 + 22*x - 8",
+   "kind": "differentiate",
+   "level": 1,
+   "prompt": "Differentiate with respect to x: -9*x**3 + 11*x**2 - 8*x",
+   "seed": 0
+  },
+  {
+   "answer": "6*x**2 + 7",
+   "kind": "differentiate",
+   "level": 1,
+   "prompt": "Differentiate with respect to x: 2*x**3 + 7*x",
+   "seed": 1
+  },
+  {
+   "answer": "0",
+   "kind": "differentiate",
+   "level": 1,
+   "prompt": "Differentiate with respect to x: 11",
+   "seed": 17
+  },
+  {
+   "answer": "-2*sin(x) - 8/x",
+   "kind": "differentiate",
+   "level": 2,
+   "prompt": "Differentiate with respect to x: -8*log(x) + 2*cos(x)",
+   "seed": 0
+  },
+  {
+   "answer": "9/x",
+   "kind": "differentiate",
+   "level": 2,
+   "prompt": "Differentiate with respect to x: 9*log(x) + 3",
+   "seed": 1
+  },
+  {
+   "answer": "24*x**2 - 3*cos(x) + 7 + 7/x",
+   "kind": "differentiate",
+   "level": 2,
+   "prompt": "Differentiate with respect to x: 8*x**3 + 7*x + 7*log(x) - 3*sin(x)",
+   "seed": 17
+  },
+  {
+   "answer": "-30*x*log(x) - 15*x + cos(x)",
+   "kind": "differentiate",
+   "level": 3,
+   "prompt": "Differentiate with respect to x: -15*x**2*log(x) + sin(x)",
+   "seed": 0
+  },
+  {
+   "answer": "(3*x**2 + 2)*cos(x**3 + 2*x + 5)",
+   "kind": "differentiate",
+   "level": 3,
+   "prompt": "Differentiate with respect to x: sin(x**3 + 2*x + 5)",
+   "seed": 1
+  },
+  {
+   "answer": "-2*x**4*exp(x) - 8*x**3*exp(x)",
+   "kind": "differentiate",
+   "level": 3,
+   "prompt": "Differentiate with respect to x: -2*x**4*exp(x)",
+   "seed": 17
+  },
+  {
+   "answer": "2 - 4*x",
+   "kind": "integrate",
+   "level": 1,
+   "prompt": "Find an antiderivative of: -4",
+   "seed": 0
+  },
+  {
+   "answer": "6*x**3",
+   "kind": "integrate",
+   "level": 1,
+   "prompt": "Find an antiderivative of: 18*x**2",
+   "seed": 1
+  },
+  {
+   "answer": "2*x**3 - 4*x",
+   "kind": "integrate",
+   "level": 1,
+   "prompt": "Find an antiderivative of: 6*x**2 - 4",
+   "seed": 17
+  },
+  {
+   "answer": "7*x**4 + 2*x + 3*sin(x) + cos(x)",
+   "kind": "integrate",
+   "level": 2,
+   "prompt": "Find an antiderivative of: 28*x**3 - sin(x) + 3*cos(x) + 2",
+   "seed": 0
+  },
+  {
+   "answer": "5*exp(x) + 6*log(x)",
+   "kind": "integrate",
+   "level": 2,
+   "prompt": "Find an antiderivative of: 5*exp(x) + 6/x",
+   "seed": 1
+  },
+  {
+   "answer": "4*log(x)",
+   "kind": "integrate",
+   "level": 2,
+   "prompt": "Find an antiderivative of: 4/x",
+   "seed": 17
+  },
+  {
+   "answer": "sin(5*x**3 - 4*x + 4)",
+   "kind": "integrate",
+   "level": 3,
+   "prompt": "Find an antiderivative of: (15*x**2 - 4)*cos(5*x**3 - 4*x + 4)",
+   "seed": 0
+  },
+  {
+   "answer": "sin(5*x + 1)",
+   "kind": "integrate",
+   "level": 3,
+   "prompt": "Find an antiderivative of: 5*cos(5*x + 1)",
+   "seed": 1
+  },
+  {
+   "answer": "sin(2*x + 2)",
+   "kind": "integrate",
+   "level": 3,
+   "prompt": "Find an antiderivative of: 2*cos(2*x + 2)",
+   "seed": 17
+  },
+  {
+   "answer": "5/14",
+   "kind": "limit",
+   "level": 1,
+   "prompt": "Evaluate the limit as x approaches 3 of (5*x - 15) / (3*x**2 - 4*x - 15)",
+   "seed": 0
+  },
+  {
+   "answer": "12",
+   "kind": "limit",
+   "level": 1,
+   "prompt": "Evaluate the limit as x approaches -1 of (-12*x**2 - 12*x) / (4*x**2 + 9*x + 5)",
+   "seed": 1
+  },
+  {
+   "answer": "-1/3",
+   "kind": "limit",
+   "level": 1,
+   "prompt": "Evaluate the limit as x approaches -1 of (x + 1) / (4*x**2 + 5*x + 1)",
+   "seed": 17
+  },
+  {
+   "answer": "13/5",
+   "kind": "limit",
+   "level": 2,
+   "prompt": "Evaluate the limit as x approaches 0 of (8*x**2 + 6*x*exp(x) + 7*x*cos(x)) / (4*x**2 + 5*x)",
+   "seed": 0
+  },
+  {
+   "answer": "3*sin(1)/2 + 3",
+   "kind": "limit",
+   "level": 2,
+   "prompt": "Evaluate the limit as x approaches -1 of (6*x**2 + 3*x*sin(x) + 6*x + 3*sin(x)) / (3*x**2 + 4*x + 1)",
+   "seed": 1
+  },
+  {
+   "answer": "-3/5 + 2*cos(1)/5 + 3*sin(1)/5",
+   "kind": "limit",
+   "level": 2,
+   "prompt": "Evaluate the limit as x approaches 1 of (-3*x**6 + 3*x**5 - 7*x*log(x) + 3*x*sin(x) + 2*x*cos(x) + 7*log(x) - 3*sin(x) - 2*cos(x)) / (x**2 + 3*x - 4)",
+   "seed": 17
+  },
+  {
+   "answer": "4/7 - 9*log(3)/14",
+   "kind": "limit",
+   "level": 3,
+   "prompt": "Evaluate the limit as x approaches 3 of (-9*x*log(x) + 8*x + 27*log(x) - 24) / (4*x**2 - 10*x - 6)",
+   "seed": 0
+  },
+  {
+   "answer": "-2*log(2)/11 + 6*sin(2)/11 + 160/11",
+   "kind": "limit",
+   "level": 3,
+   "prompt": "Evaluate the limit as x approaches 2 of (5*x**6 - 10*x**5 - 2*x*log(x) + 6*x*sin(x) + 4*log(x) - 12*sin(x)) / (4*x**2 - 5*x - 6)",
+   "seed": 1
+  },
+  {
+   "answer": "-1 + log(16) + 4*I*pi",
+   "kind": "limit",
+   "level": 3,
+   "prompt": "Evaluate the limit as x approaches -2 of (8*x*log(x) - 2*x + 16*log(x) - 4) / (x**2 + 6*x + 8)",
+   "seed": 17
+  },
+  {
+   "answer": "Step 1: factor the numerator: 5*x - 15 = (x - (3))*(5)\nStep 2: factor the denominator: 3*x**2 - 4*x - 15 = (x - (3))*(3*x + 5)\nStep 3: cancel the common factor (x - (3)): the limit equals (5)/(3*x + 5) at x = 3\nStep 4: substitute x = 3: (5)/(14)\nAnswer: 5/14",
+   "kind": "limit_traced",
+   "level": 1,
+   "prompt": "Evaluate the limit as x approaches 3 of (5*x - 15) / (3*x**2 - 4*x - 15). Work step by step, then give the final line as 'Answer: <value>'.",
+   "seed": 0
+  },
+  {
+   "answer": "Step 1: factor the numerator: -12*x**2 - 12*x = (x - (-1))*(-12*x)\nStep 2: factor the denominator: 4*x**2 + 9*x + 5 = (x - (-1))*(4*x + 5)\nStep 3: cancel the common factor (x - (-1)): the limit equals (-12*x)/(4*x + 5) at x = -1\nStep 4: substitute x = -1: (12)/(1)\nAnswer: 12",
+   "kind": "limit_traced",
+   "level": 1,
+   "prompt": "Evaluate the limit as x approaches -1 of (-12*x**2 - 12*x) / (4*x**2 + 9*x + 5). Work step by step, then give the final line as 'Answer: <value>'.",
+   "seed": 1
+  },
+  {
+   "answer": "Step 1: factor the numerator: x + 1 = (x - (-1))*(1)\nStep 2: factor the denominator: 4*x**2 + 5*x + 1 = (x - (-1))*(4*x + 1)\nStep 3: cancel the common factor (x - (-1)): the limit equals (1)/(4*x + 1) at x = -1\nStep 4: substitute x = -1: (1)/(-3)\nAnswer: -1/3",
+   "kind": "limit_traced",
+   "level": 1,
+   "prompt": "Evaluate the limit as x approaches -1 of (x + 1) / (4*x**2 + 5*x + 1). Work step by step, then give the final line as 'Answer: <value>'.",
+   "seed": 17
+  },
+  {
+   "answer": "Step 1: factor the numerator: 8*x**2 + 6*x*exp(x) + 7*x*cos(x) = (x - (0))*(8*x + 6*exp(x) + 7*cos(x))\nStep 2: factor the denominator: 4*x**2 + 5*x = (x - (0))*(4*x + 5)\nStep 3: cancel the common factor (x - (0)): the limit equals (8*x + 6*exp(x) + 7*cos(x))/(4*x + 5) at x = 0\nStep 4: substitute x = 0: (13)/(5)\nAnswer: 13/5",
+   "kind": "limit_traced",
+   "level": 2,
+   "prompt": "Evaluate the limit as x approaches 0 of (8*x**2 + 6*x*exp(x) + 7*x*cos(x)) / (4*x**2 + 5*x). Work step by step, then give the final line as 'Answer: <value>'.",
+   "seed": 0
+  },
+  {
+   "answer": "Step 1: factor the numerator: 6*x**2 + 3*x*sin(x) + 6*x + 3*sin(x) = (x - (-1))*(6*x + 3*sin(x))\nStep 2: factor the denominator: 3*x**2 + 4*x + 1 = (x - (-1))*(3*x + 1)\nStep 3: cancel the common factor (x - (-1)): the limit equals (6*x + 3*sin(x))/(3*x + 1) at x = -1\nStep 4: substitute x = -1: (-6 - 3*sin(1))/(-2)\nAnswer: 3*sin(1)/2 + 3",
+   "kind": "limit_traced",
+   "level": 2,
+   "prompt": "Evaluate the limit as x approaches -1 of (6*x**2 + 3*x*sin(x) + 6*x + 3*sin(x)) / (3*x**2 + 4*x + 1). Work step by step, then give the final line as 'Answer: <value>'.",
+   "seed": 1
+  },
+  {
+   "answer": "Step 1: factor the numerator: -3*x**6 + 3*x**5 - 7*x*log(x) + 3*x*sin(x) + 2*x*cos(x) + 7*log(x) - 3*sin(x) - 2*cos(x) = (x - (1))*(-3*x**5 - 7*log(x) + 3*sin(x) + 2*cos(x))\nStep 2: factor the denominator: x**2 + 3*x - 4 = (x - (1))*(x + 4)\nStep 3: cancel the common factor (x - (1)): the limit equals (-3*x**5 - 7*log(x) + 3*sin(x) + 2*cos(x))/(x + 4) at x = 1\nStep 4: substitute x = 1: (-3 + 2*cos(1) + 3*sin(1))/(5)\nAnswer: -3/5 + 2*cos(1)/5 + 3*sin(1)/5",
+   "kind": "limit_traced",
+   "level": 2,
+   "prompt": "Evaluate the limit as x approaches 1 of (-3*x**6 + 3*x**5 - 7*x*log(x) + 3*x*sin(x) + 2*x*cos(x) + 7*log(x) - 3*sin(x) - 2*cos(x)) / (x**2 + 3*x - 4). Work step by step, then give the final line as 'Answer: <value>'.",
+   "seed": 17
+  },
+  {
+   "answer": "Step 1: factor the numerator: -9*x*log(x) + 8*x + 27*log(x) - 24 = (x - (3))*(8 - 9*log(x))\nStep 2: factor the denominator: 4*x**2 - 10*x - 6 = (x - (3))*(4*x + 2)\nStep 3: cancel the common factor (x - (3)): the limit equals (8 - 9*log(x))/(4*x + 2) at x = 3\nStep 4: substitute x = 3: (8 - 9*log(3))/(14)\nAnswer: 4/7 - 9*log(3)/14",
+   "kind": "limit_traced",
+   "level": 3,
+   "prompt": "Evaluate the limit as x approaches 3 of (-9*x*log(x) + 8*x + 27*log(x) - 24) / (4*x**2 - 10*x - 6). Work step by step, then give the final line as 'Answer: <value>'.",
+   "seed": 0
+  },
+  {
+   "answer": "Step 1: factor the numerator: 5*x**6 - 10*x**5 - 2*x*log(x) + 6*x*sin(x) + 4*log(x) - 12*sin(x) = (x - (2))*(5*x**5 - 2*log(x) + 6*sin(x))\nStep 2: factor the denominator: 4*x**2 - 5*x - 6 = (x - (2))*(4*x + 3)\nStep 3: cancel the common factor (x - (2)): the limit equals (5*x**5 - 2*log(x) + 6*sin(x))/(4*x + 3) at x = 2\nStep 4: substitute x = 2: (-2*log(2) + 6*sin(2) + 160)/(11)\nAnswer: -2*log(2)/11 + 6*sin(2)/11 + 160/11",
+   "kind": "limit_traced",
+   "level": 3,
+   "prompt": "Evaluate the limit as x approaches 2 of (5*x**6 - 10*x**5 - 2*x*log(x) + 6*x*sin(x) + 4*log(x) - 12*sin(x)) / (4*x**2 - 5*x - 6). Work step by step, then give the final line as 'Answer: <value>'.",
+   "seed": 1
+  },
+  {
+   "answer": "Step 1: factor the numerator: 8*x*log(x) - 2*x + 16*log(x) - 4 = (x - (-2))*(8*log(x) - 2)\nStep 2: factor the denominator: x**2 + 6*x + 8 = (x - (-2))*(x + 4)\nStep 3: cancel the common factor (x - (-2)): the limit equals (8*log(x) - 2)/(x + 4) at x = -2\nStep 4: substitute x = -2: (-2 + 8*log(2) + 8*I*pi)/(2)\nAnswer: -1 + log(16) + 4*I*pi",
+   "kind": "limit_traced",
+   "level": 3,
+   "prompt": "Evaluate the limit as x approaches -2 of (8*x*log(x) - 2*x + 16*log(x) - 4) / (x**2 + 6*x + 8). Work step by step, then give the final line as 'Answer: <value>'.",
+   "seed": 17
+  },
+  {
+   "answer": "2*(4 - 3*x)",
+   "kind": "second_derivative",
+   "level": 1,
+   "prompt": "Find the second derivative with respect to x of: -x**3 + 4*x**2 + 6*x",
+   "seed": 0
+  },
+  {
+   "answer": "0",
+   "kind": "second_derivative",
+   "level": 1,
+   "prompt": "Find the second derivative with respect to x of: 6*x + 3",
+   "seed": 1
+  },
+  {
+   "answer": "0",
+   "kind": "second_derivative",
+   "level": 1,
+   "prompt": "Find the second derivative with respect to x of: -x",
+   "seed": 17
+  },
+  {
+   "answer": "-(12*x**2 + 5/x**2)",
+   "kind": "second_derivative",
+   "level": 2,
+   "prompt": "Find the second derivative with respect to x of: -x**4 + 5*log(x)",
+   "seed": 0
+  },
+  {
+   "answer": "-7*(sin(x) + x**(-2))",
+   "kind": "second_derivative",
+   "level": 2,
+   "prompt": "Find the second derivative with respect to x of: 7*log(x) + 7*sin(x)",
+   "seed": 1
+  },
+  {
+   "answer": "24*x**2 - 7*sin(x)",
+   "kind": "second_derivative",
+   "level": 2,
+   "prompt": "Find the second derivative with respect to x of: 2*x**4 + 7*sin(x)",
+   "seed": 17
+  },
+  {
+   "answer": "-sin(x + 2)",
+   "kind": "second_derivative",
+   "level": 3,
+   "prompt": "Find the second derivative with respect to x of: sin(x + 2)",
+   "seed": 0
+  },
+  {
+   "answer": "24*exp(x)",
+   "kind": "second_derivative",
+   "level": 3,
+   "prompt": "Find the second derivative with respect to x of: 24*exp(x)",
+   "seed": 1
+  },
+  {
+   "answer": "18*x*cos(x*(3*x**2 - 2)) - (9*x**2 - 2)**2*sin(x*(3*x**2 - 2))",
+   "kind": "second_derivative",
+   "level": 3,
+   "prompt": "Find the second derivative with respect to x of: sin(3*x**3 - 2*x)",
+   "seed": 17
+  },
+  {
+   "answer": "4*x**3*(1 - 4*I) - 4*I",
+   "kind": "cdiff",
+   "level": 1,
+   "prompt": "Differentiate with respect to x (I is the imaginary unit): x**4*(1 - 4*I) - 4*I*x",
+   "seed": 0
+  },
+  {
+   "answer": "8*I*x + 3 + 4*I",
+   "kind": "cdiff",
+   "level": 1,
+   "prompt": "Differentiate with respect to x (I is the imaginary unit): 4*I*x**2 + x*(3 + 4*I)",
+   "seed": 1
+  },
+  {
+   "answer": "3*x**2*(2 - 3*I) + 4*I",
+   "kind": "cdiff",
+   "level": 1,
+   "prompt": "Differentiate with respect to x (I is the imaginary unit): x**3*(2 - 3*I) + 4*I*x",
+   "seed": 17
+  },
+  {
+   "answer": "3*x**2*(-4 + 2*I) + 4*I*(3 - 4*I)*exp(4*I*x)",
+   "kind": "cdiff",
+   "level": 2,
+   "prompt": "Differentiate with respect to x (I is the imaginary unit): x**3*(-4 + 2*I) + (3 - 4*I)*exp(4*I*x)",
+   "seed": 0
+  },
+  {
+   "answer": "4*x**3*(1 + I) + (-1 - 2*I)*(-1 + I)*exp(x*(-1 + I)) + (-4 - 2*I)*(1 + I)*exp(x*(1 + I))",
+   "kind": "cdiff",
+   "level": 2,
+   "prompt": "Differentiate with respect to x (I is the imaginary unit): x**4*(1 + I) + (-1 - 2*I)*exp(x*(-1 + I)) + (-4 - 2*I)*exp(x*(1 + I))",
+   "seed": 1
+  },
+  {
+   "answer": "4*x**3*(-2 + I) + I*(-2 + 2*I)*exp(I*x) + (-2 + I)*(3 - 2*I)*exp(x*(-2 + I))",
+   "kind": "cdiff",
+   "level": 2,
+   "prompt": "Differentiate with respect to x (I is the imaginary unit): x**4*(-2 + I) + (-2 + 2*I)*exp(I*x) + (3 - 2*I)*exp(x*(-2 + I))",
+   "seed": 17
+  },
+  {
+   "answer": "x*(-1 + 3*I)*(2 + 2*I)*(3 + 2*I)*exp(x*(-1 + 3*I)) + (2 + 2*I)*(3 + 2*I)*exp(x*(-1 + 3*I)) + 2 + 3*I",
+   "kind": "cdiff",
+   "level": 3,
+   "prompt": "Differentiate with respect to x (I is the imaginary unit): x*(2 + 2*I)*(3 + 2*I)*exp(x*(-1 + 3*I)) + x*(2 + 3*I)",
+   "seed": 0
+  },
+  {
+   "answer": "2*x*(-4 - 4*I)*(4 - 3*I) + 1 - 3*I",
+   "kind": "cdiff",
+   "level": 3,
+   "prompt": "Differentiate with respect to x (I is the imaginary unit): x**2*(-4 - 4*I)*(4 - 3*I) + x*(1 - 3*I)",
+   "seed": 1
+  },
+  {
+   "answer": "2*x*(-3 + 2*I)*(3 - 3*I) + (1 + 3*I)**2*exp(x*(1 + 3*I))",
+   "kind": "cdiff",
+   "level": 3,
+   "prompt": "Differentiate with respect to x (I is the imaginary unit): x**2*(-3 + 2*I)*(3 - 3*I) + (1 + 3*I)*exp(x*(1 + 3*I))",
+   "seed": 17
+  },
+  {
+   "answer": "x**2*(3 + 3*I) + x*(-2 + 4*I)",
+   "kind": "cint",
+   "level": 1,
+   "prompt": "Find an antiderivative (I is the imaginary unit) of: 6*x*(1 + I) - 2 + 4*I",
+   "seed": 0
+  },
+  {
+   "answer": "-x**3 + 4*I*x**2",
+   "kind": "cint",
+   "level": 1,
+   "prompt": "Find an antiderivative (I is the imaginary unit) of: x*(-3*x + 8*I)",
+   "seed": 1
+  },
+  {
+   "answer": "x**3*(3 + 3*I) + x*(-3 + 3*I)",
+   "kind": "cint",
+   "level": 1,
+   "prompt": "Find an antiderivative (I is the imaginary unit) of: 9*x**2*(1 + I) - 3 + 3*I",
+   "seed": 17
+  },
+  {
+   "answer": "x*(4 - I) + 2*I*x",
+   "kind": "cint",
+   "level": 2,
+   "prompt": "Find an antiderivative (I is the imaginary unit) of: 4 + I",
+   "seed": 0
+  },
+  {
+   "answer": "4*I*x**4 + (-2 - 4*I)*exp(2*I*x) + (1 + I)*exp(x*(2 + I))",
+   "kind": "cint",
+   "level": 2,
+   "prompt": "Find an antiderivative (I is the imaginary unit) of: 16*I*x**3 + (8 - 4*I)*exp(2*I*x) + (1 + 3*I)*exp(x*(2 + I))",
+   "seed": 1
+  },
+  {
+   "answer": "x**2*(-2 + I) + 3*I*exp(x*(-2 + 3*I))",
+   "kind": "cint",
+   "level": 2,
+   "prompt": "Find an antiderivative (I is the imaginary unit) of: (2*x*(-2 + I)*exp(2*x) + (-9 - 6*I)*exp(3*I*x))*exp(-2*x)",
+   "seed": 17
+  },
+  {
+   "answer": "x**4*(-1 - I)*(-1 + I)*exp(x*(-1 + 3*I)) + (1 - 4*I)*exp(4*I*x)",
+   "kind": "cint",
+   "level": 3,
+   "prompt": "Find an antiderivative (I is the imaginary unit) of: 2*(x**4*(-1 + 3*I) + 4*x**3 + 2*(4 + I)*exp(x + I*x))*exp(-x + 3*I*x)",
+   "seed": 0
+  },
+  {
+   "answer": "-8*I*x*exp(I*x) + 3*exp(4*I*x)",
+   "kind": "cint",
+   "level": 3,
+   "prompt": "Find an antiderivative (I is the imaginary unit) of: (8*x + 12*I*exp(3*I*x) - 8*I)*exp(I*x)",
+   "seed": 1
+  },
+  {
+   "answer": "x*(2 - I) - 4*(-1 - I)*exp(2*I*x)*exp(x*(-1 + 3*I))",
+   "kind": "cint",
+   "level": 3,
+   "prompt": "Find an antiderivative (I is the imaginary unit) of: ((2 - I)*exp(x) + (-24 + 16*I)*exp(5*I*x))*exp(-x)",
+   "seed": 17
+  },
+  {
+   "answer": "3*n*(n + 3)/2",
+   "kind": "dsum",
+   "level": 1,
+   "prompt": "Find the closed form of the sum of 3*k + 3 for k from 1 to n:",
+   "seed": 0
+  },
+  {
+   "answer": "2*n*(n + 2)",
+   "kind": "dsum",
+   "level": 1,
+   "prompt": "Find the closed form of the sum of 4*k + 2 for k from 1 to n:",
+   "seed": 1
+  },
+  {
+   "answer": "n*(5*n**2 + 9*n + 13)/3",
+   "kind": "dsum",
+   "level": 1,
+   "prompt": "Find the closed form of the sum of 5*k**2 + k + 3 for k from 1 to n:",
+   "seed": 17
+  },
+  {
+   "answer": "n*(3*n**3 + 26*n**2 + 63*n + 52)/12",
+   "kind": "dsum",
+   "level": 2,
+   "prompt": "Find the closed form of the sum of k**3 + 5*k**2 + 5*k + 1 for k from 1 to n:",
+   "seed": 0
+  },
+  {
+   "answer": "n*(5*n + 17)/2",
+   "kind": "dsum",
+   "level": 2,
+   "prompt": "Find the closed form of the sum of 5*k + 6 for k from 1 to n:",
+   "seed": 1
+  },
+  {
+   "answer": "n*(9*n**3 + 20*n**2 + 27*n + 28)/6",
+   "kind": "dsum",
+   "level": 2,
+   "prompt": "Find the closed form of the sum of 6*k**3 + k**2 + 5*k + 2 for k from 1 to n:",
+   "seed": 17
+  },
+  {
+   "answer": "n*(3*n**3 + 14*n**2 + 17*n + 18)/4",
+   "kind": "dsum",
+   "level": 3,
+   "prompt": "Find the closed form of the sum of 3*k**3 + 6*k**2 + k + 3 for k from 1 to n:",
+   "seed": 0
+  },
+  {
+   "answer": "2*n*(2*n**2 + 6*n + 13)/3",
+   "kind": "dsum",
+   "level": 3,
+   "prompt": "Find the closed form of the sum of 4*k**2 + 4*k + 6 for k from 1 to n:",
+   "seed": 1
+  },
+  {
+   "answer": "3*n*(n + 3)",
+   "kind": "dsum",
+   "level": 3,
+   "prompt": "Find the closed form of the sum of 6*k + 6 for k from 1 to n:",
+   "seed": 17
+  },
+  {
+   "answer": "5**n",
+   "kind": "drec",
+   "level": 1,
+   "prompt": "Solve the recurrence a(n) = 5*a(n-1) with a(0) = 1. Give a(n) in closed form:",
+   "seed": 0
+  },
+  {
+   "answer": "2*2**n",
+   "kind": "drec",
+   "level": 1,
+   "prompt": "Solve the recurrence a(n) = 2*a(n-1) with a(0) = 2. Give a(n) in closed form:",
+   "seed": 1
+  },
+  {
+   "answer": "3*3**n",
+   "kind": "drec",
+   "level": 1,
+   "prompt": "Solve the recurrence a(n) = 3*a(n-1) with a(0) = 3. Give a(n) in closed form:",
+   "seed": 17
+  },
+  {
+   "answer": "2*2**n",
+   "kind": "drec",
+   "level": 2,
+   "prompt": "Solve the recurrence a(n) = 1*a(n-1) + 2*a(n-2) with a(0) = 2, a(1) = 4. Give a(n) in closed form:",
+   "seed": 0
+  },
+  {
+   "answer": "(-1)**n/2 + 3*3**n/2",
+   "kind": "drec",
+   "level": 2,
+   "prompt": "Solve the recurrence a(n) = 2*a(n-1) + 3*a(n-2) with a(0) = 2, a(1) = 4. Give a(n) in closed form:",
+   "seed": 1
+  },
+  {
+   "answer": "-3*(-1)**n/5 + 3*4**n/5",
+   "kind": "drec",
+   "level": 2,
+   "prompt": "Solve the recurrence a(n) = 3*a(n-1) + 4*a(n-2) with a(0) = 0, a(1) = 3. Give a(n) in closed form:",
+   "seed": 17
+  },
+  {
+   "answer": "-2*(-1)**n/5 + 2*4**n/5",
+   "kind": "drec",
+   "level": 3,
+   "prompt": "Solve the recurrence a(n) = 3*a(n-1) + 4*a(n-2) with a(0) = 0, a(1) = 2. Give a(n) in closed form:",
+   "seed": 0
+  },
+  {
+   "answer": "-(-1)**n/3 + 7*2**n/3",
+   "kind": "drec",
+   "level": 3,
+   "prompt": "Solve the recurrence a(n) = 1*a(n-1) + 2*a(n-2) with a(0) = 2, a(1) = 5. Give a(n) in closed form:",
+   "seed": 1
+  },
+  {
+   "answer": "7*(-1)**n/4 + 9*3**n/4",
+   "kind": "drec",
+   "level": 3,
+   "prompt": "Solve the recurrence a(n) = 2*a(n-1) + 3*a(n-2) with a(0) = 4, a(1) = 5. Give a(n) in closed form:",
+   "seed": 17
+  },
+  {
+   "answer": "x**2/2 + x + 1",
+   "kind": "taylor",
+   "level": 1,
+   "prompt": "Find the Taylor polynomial of degree 2 of exp(x) about x = 0:",
+   "seed": 0
+  },
+  {
+   "answer": "x**3/6 + x**2/2 + x + 1",
+   "kind": "taylor",
+   "level": 1,
+   "prompt": "Find the Taylor polynomial of degree 3 of exp(x) about x = 0:",
+   "seed": 1
+  },
+  {
+   "answer": "-x**2/2 + x",
+   "kind": "taylor",
+   "level": 1,
+   "prompt": "Find the Taylor polynomial of degree 2 of log(x + 1) about x = 0:",
+   "seed": 17
+  },
+  {
+   "answer": "-x**4/64 + 5*x**3/48 - 11*x**2/32 + 15*x/16 - 131/192 + log(2)",
+   "kind": "taylor",
+   "level": 2,
+   "prompt": "Find the Taylor polynomial of degree 4 of log(x + 1) about x = 1:",
+   "seed": 0
+  },
+  {
+   "answer": "-x**2*cos(1)/2 - x*sin(1) + x*cos(1) + cos(1)/2 + sin(1)",
+   "kind": "taylor",
+   "level": 2,
+   "prompt": "Find the Taylor polynomial of degree 2 of cos(x) about x = 1:",
+   "seed": 1
+  },
+  {
+   "answer": "-x**3*cos(1)/6 - x**2*sin(1)/2 + x**2*cos(1)/2 + x*cos(1)/2 + x*sin(1) - 5*cos(1)/6 + sin(1)/2",
+   "kind": "taylor",
+   "level": 2,
+   "prompt": "Find the Taylor polynomial of degree 3 of sin(x) about x = 1:",
+   "seed": 17
+  },
+  {
+   "answer": "-2*x**2/9 + 10*x/9 - 8/9 + log(3)",
+   "kind": "taylor",
+   "level": 3,
+   "prompt": "Find the Taylor polynomial of degree 2 of log(2*x + 1) about x = 1:",
+   "seed": 0
+  },
+  {
+   "answer": "-3*x**2/8 + 9*x/4 - 15/8 + 2*log(2)",
+   "kind": "taylor",
+   "level": 3,
+   "prompt": "Find the Taylor polynomial of degree 3 of log(3*x**2 + 1) about x = 1:",
+   "seed": 1
+  },
+  {
+   "answer": "8*x**3/375 - 26*x**2/125 + 122*x/125 - 484/375 + log(5)",
+   "kind": "taylor",
+   "level": 3,
+   "prompt": "Find the Taylor polynomial of degree 3 of log(2*x + 1) about x = 2:",
+   "seed": 17
+  },
+  {
+   "answer": "3/5",
+   "kind": "continuity",
+   "level": 1,
+   "prompt": "Find the constant c that makes f continuous at x = 0, where f(x) = -x**2 + 8*x for x < 0 and f(x) = c*(2*x**3 - 5) + 3 for x >= 0:",
+   "seed": 0
+  },
+  {
+   "answer": "-1/5",
+   "kind": "continuity",
+   "level": 1,
+   "prompt": "Find the constant c that makes f continuous at x = 1, where f(x) = -9*x**3 + 7*x for x < 1 and f(x) = c*(7*x**3 + 3*x) + 0 for x >= 1:",
+   "seed": 1
+  },
+  {
+   "answer": "-1/27",
+   "kind": "continuity",
+   "level": 1,
+   "prompt": "Find the constant c that makes f continuous at x = -1, where f(x) = 6*x**3 + 2*x**2 for x < -1 and f(x) = c*(12*x**3 - 7*x**2 + 8*x) + -5 for x >= -1:",
+   "seed": 17
+  },
+  {
+   "answer": "-6",
+   "kind": "continuity",
+   "level": 2,
+   "prompt": "Find the constant c that makes f continuous at x = 0, where f(x) = 2*x - 7*cos(x) for x < 0 and f(x) = c*(7*x + 2) + 5 for x >= 0:",
+   "seed": 0
+  },
+  {
+   "answer": "(2*cos(1) + 4*exp(-1) + 9)/(-9*sin(1) - 4 + 4*exp(-1))",
+   "kind": "continuity",
+   "level": 2,
+   "prompt": "Find the constant c that makes f continuous at x = -1, where f(x) = -6*x + 4*exp(x) + 2*cos(x) + 5 for x < -1 and f(x) = c*(4*exp(x) + 9*sin(x) - 4) + 2 for x >= -1:",
+   "seed": 1
+  },
+  {
+   "answer": "(5*cos(2) + 163)/(-5*cos(2) + 4*sin(2) + 12*log(2))",
+   "kind": "continuity",
+   "level": 2,
+   "prompt": "Find the constant c that makes f continuous at x = 2, where f(x) = 9*x**4 + 7*x + 5*cos(x) for x < 2 and f(x) = c*(12*log(x) + 4*sin(x) - 5*cos(x)) + -5 for x >= 2:",
+   "seed": 17
+  },
+  {
+   "answer": "-4/3",
+   "kind": "continuity",
+   "level": 3,
+   "prompt": "Find the constant c that makes f continuous at x = 0, where f(x) = 2*x**3 + 6*exp(x) - 7 for x < 0 and f(x) = c*(6*x**3 + 3*x + 3*exp(x)) + 3 for x >= 0:",
+   "seed": 0
+  },
+  {
+   "answer": "3*cos(2)/(9*log(2) + 10*exp(2))",
+   "kind": "continuity",
+   "level": 3,
+   "prompt": "Find the constant c that makes f continuous at x = 2, where f(x) = 3*cos(x) + 2 for x < 2 and f(x) = c*(10*exp(x) + 9*log(x)) + 2 for x >= 2:",
+   "seed": 1
+  },
+  {
+   "answer": "(-3 + 2*sin(2))/(-15 + 4*log(2) + 4*I*pi)",
+   "kind": "continuity",
+   "level": 3,
+   "prompt": "Find the constant c that makes f continuous at x = -2, where f(x) = 4*x - 2*sin(x) + 7 for x < -2 and f(x) = c*(8*x + 4*log(x) + 1) + 2 for x >= -2:",
+   "seed": 17
+  },
+  {
+   "answer": "15",
+   "kind": "definite_integral",
+   "level": 1,
+   "prompt": "Evaluate the definite integral of 21*x**2 + 8 with respect to x from 0 to 1",
+   "seed": 0
+  },
+  {
+   "answer": "44",
+   "kind": "definite_integral",
+   "level": 1,
+   "prompt": "Evaluate the definite integral of 14*x + 9 with respect to x from 2 to 3",
+   "seed": 1
+  },
+  {
+   "answer": "315",
+   "kind": "definite_integral",
+   "level": 1,
+   "prompt": "Evaluate the definite integral of 15*x**2 with respect to x from 1 to 4",
+   "seed": 17
+  },
+  {
+   "answer": "2*(1 - exp(2))*exp(2)",
+   "kind": "definite_integral",
+   "level": 2,
+   "prompt": "Evaluate the definite integral of -2*exp(x) with respect to x from 2 to 4",
+   "seed": 0
+  },
+  {
+   "answer": "3*exp(3) + 483",
+   "kind": "definite_integral",
+   "level": 2,
+   "prompt": "Evaluate the definite integral of 24*x**3 + 3*exp(x) with respect to x from 0 to 3",
+   "seed": 1
+  },
+  {
+   "answer": "16 - 2*E",
+   "kind": "definite_integral",
+   "level": 2,
+   "prompt": "Evaluate the definite integral of 35*x**4 + 14*x - 2*exp(x) with respect to x from 0 to 1",
+   "seed": 17
+  },
+  {
+   "answer": "3*cos(5) - 3*cos(2) + 48",
+   "kind": "definite_integral",
+   "level": 3,
+   "prompt": "Evaluate the definite integral of 2*x - 3*sin(x) + 9 with respect to x from 2 to 5",
+   "seed": 0
+  },
+  {
+   "answer": "cos(2) + 9",
+   "kind": "definite_integral",
+   "level": 3,
+   "prompt": "Evaluate the definite integral of 5 - sin(x) with respect to x from 0 to 2",
+   "seed": 1
+  },
+  {
+   "answer": "7*cos(5) - 7*cos(2)",
+   "kind": "definite_integral",
+   "level": 3,
+   "prompt": "Evaluate the definite integral of -7*sin(x) with respect to x from 2 to 5",
+   "seed": 17
+  },
+  {
+   "answer": "12*x + 13",
+   "kind": "tangent_line",
+   "level": 1,
+   "prompt": "Find the tangent line to f(x) = 5*x**3 + 5*x**2 + 7*x + 8 at x = -1. Give the line as an expression in x.",
+   "seed": 0
+  },
+  {
+   "answer": "10*x + 16",
+   "kind": "tangent_line",
+   "level": 1,
+   "prompt": "Find the tangent line to f(x) = 8*x**3 + 7*x**2 + 7 at x = -1. Give the line as an expression in x.",
+   "seed": 1
+  },
+  {
+   "answer": "22 - 18*x",
+   "kind": "tangent_line",
+   "level": 1,
+   "prompt": "Find the tangent line to f(x) = -3*x**3 - 8*x**2 + 7*x + 8 at x = 1. Give the line as an expression in x.",
+   "seed": 17
+  },
+  {
+   "answer": "10*x + 6",
+   "kind": "tangent_line",
+   "level": 2,
+   "prompt": "Find the tangent line to f(x) = 10*exp(x) - 4 at x = 0. Give the line as an expression in x.",
+   "seed": 0
+  },
+  {
+   "answer": "-7*x*sin(1) + 15*x - 10 + 7*cos(1) + 7*sin(1)",
+   "kind": "tangent_line",
+   "level": 2,
+   "prompt": "Find the tangent line to f(x) = 5*x**3 + 7*cos(x) at x = 1. Give the line as an expression in x.",
+   "seed": 1
+  },
+  {
+   "answer": "-12*x + x*sin(1) + 3*x*cos(1) - 8 - 2*sin(1) + 4*cos(1)",
+   "kind": "tangent_line",
+   "level": 2,
+   "prompt": "Find the tangent line to f(x) = -4*x**3 + 3*sin(x) + cos(x) at x = -1. Give the line as an expression in x.",
+   "seed": 17
+  },
+  {
+   "answer": "-5*x*sin(1) + 5*x - 6 + 5*cos(1) + 5*sin(1)",
+   "kind": "tangent_line",
+   "level": 3,
+   "prompt": "Find the tangent line to f(x) = x**5 + 5*cos(x) - 2 at x = 1. Give the line as an expression in x.",
+   "seed": 0
+  },
+  {
+   "answer": "-2*x*cos(1) + 24*x - 9 - 2*sin(1) + 2*cos(1)",
+   "kind": "tangent_line",
+   "level": 3,
+   "prompt": "Find the tangent line to f(x) = 8*x**3 - 2*sin(x) + 7 at x = 1. Give the line as an expression in x.",
+   "seed": 1
+  },
+  {
+   "answer": "-124*x - 192",
+   "kind": "tangent_line",
+   "level": 3,
+   "prompt": "Find the tangent line to f(x) = 4*x**4 + 4*x at x = -2. Give the line as an expression in x.",
+   "seed": 17
+  },
+  {
+   "answer": "1",
+   "kind": "determinant",
+   "level": 1,
+   "prompt": "Compute the determinant of the matrix [[-2, 1], [1, -1]]",
+   "seed": 0
+  },
+  {
+   "answer": "8",
+   "kind": "determinant",
+   "level": 1,
+   "prompt": "Compute the determinant of the matrix [[-1, -3], [2, -2]]",
+   "seed": 1
+  },
+  {
+   "answer": "10",
+   "kind": "determinant",
+   "level": 1,
+   "prompt": "Compute the determinant of the matrix [[-4, -2], [-3, -4]]",
+   "seed": 17
+  },
+  {
+   "answer": "4",
+   "kind": "determinant",
+   "level": 2,
+   "prompt": "Compute the determinant of the matrix [[-3, 2, -1], [-5, 5, 4], [4, -4, -4]]",
+   "seed": 0
+  },
+  {
+   "answer": "0",
+   "kind": "determinant",
+   "level": 2,
+   "prompt": "Compute the determinant of the matrix [[-2, 4, 0], [3, -5, 0], [-2, 1, 0]]",
+   "seed": 1
+  },
+  {
+   "answer": "58",
+   "kind": "determinant",
+   "level": 2,
+   "prompt": "Compute the determinant of the matrix [[3, -3, 4], [5, 2, -1], [1, 0, 3]]",
+   "seed": 17
+  },
+  {
+   "answer": "-80",
+   "kind": "determinant",
+   "level": 3,
+   "prompt": "Compute the determinant of the matrix [[-5, 5, 0], [-2, 0, -4], [2, 4, 4]]",
+   "seed": 0
+  },
+  {
+   "answer": "96",
+   "kind": "determinant",
+   "level": 3,
+   "prompt": "Compute the determinant of the matrix [[-4, -4, 2], [3, -3, -2], [0, 0, 4]]",
+   "seed": 1
+  },
+  {
+   "answer": "51",
+   "kind": "determinant",
+   "level": 3,
+   "prompt": "Compute the determinant of the matrix [[0, -5, 4], [-2, -5, -5], [1, -2, 1]]",
+   "seed": 17
+  },
+  {
+   "answer": "-1, 4",
+   "kind": "eigenvalues",
+   "level": 1,
+   "prompt": "Find all eigenvalues of the matrix [[84, -340], [20, -81]]. Answer with the eigenvalues separated by commas.",
+   "seed": 0
+  },
+  {
+   "answer": "-2, 5",
+   "kind": "eigenvalues",
+   "level": 1,
+   "prompt": "Find all eigenvalues of the matrix [[145, -105], [196, -142]]. Answer with the eigenvalues separated by commas.",
+   "seed": 1
+  },
+  {
+   "answer": "-4, -2",
+   "kind": "eigenvalues",
+   "level": 1,
+   "prompt": "Find all eigenvalues of the matrix [[14, 6], [-48, -20]]. Answer with the eigenvalues separated by commas.",
+   "seed": 17
+  },
+  {
+   "answer": "3, 6",
+   "kind": "eigenvalues",
+   "level": 2,
+   "prompt": "Find all eigenvalues of the matrix [[15, -18], [6, -6]]. Answer with the eigenvalues separated by commas.",
+   "seed": 0
+  },
+  {
+   "answer": "-3, -1",
+   "kind": "eigenvalues",
+   "level": 2,
+   "prompt": "Find all eigenvalues of the matrix [[-3, 0], [8, -1]]. Answer with the eigenvalues separated by commas.",
+   "seed": 1
+  },
+  {
+   "answer": "-1, 3",
+   "kind": "eigenvalues",
+   "level": 2,
+   "prompt": "Find all eigenvalues of the matrix [[11, -12], [8, -9]]. Answer with the eigenvalues separated by commas.",
+   "seed": 17
+  },
+  {
+   "answer": "1, 2, 3",
+   "kind": "eigenvalues",
+   "level": 3,
+   "prompt": "Find all eigenvalues of the matrix [[-24, 10, -75], [6, -1, 18], [10, -4, 31]]. Answer with the eigenvalues separated by commas.",
+   "seed": 0
+  },
+  {
+   "answer": "-3, -1, 2",
+   "kind": "eigenvalues",
+   "level": 3,
+   "prompt": "Find all eigenvalues of the matrix [[-19, 8, -8], [-102, 43, -41], [-66, 28, -26]]. Answer with the eigenvalues separated by commas.",
+   "seed": 1
+  },
+  {
+   "answer": "-3, 0, 1",
+   "kind": "eigenvalues",
+   "level": 3,
+   "prompt": "Find all eigenvalues of the matrix [[-3, 0, 0], [-9, 0, 0], [-1, -1, 1]]. Answer with the eigenvalues separated by commas.",
+   "seed": 17
+  },
+  {
+   "answer": "[[1, 3], [2, 7]]",
+   "kind": "matrix_inverse",
+   "level": 1,
+   "prompt": "Compute the inverse of the matrix [[7, -3], [-2, 1]]. Answer as a list of rows like [[a, b], [c, d]].",
+   "seed": 0
+  },
+  {
+   "answer": "[[41, -16], [18, -7]]",
+   "kind": "matrix_inverse",
+   "level": 1,
+   "prompt": "Compute the inverse of the matrix [[-7, 16], [-18, 41]]. Answer as a list of rows like [[a, b], [c, d]].",
+   "seed": 1
+  },
+  {
+   "answer": "[[1, 0], [-8, 1]]",
+   "kind": "matrix_inverse",
+   "level": 1,
+   "prompt": "Compute the inverse of the matrix [[1, 0], [8, 1]]. Answer as a list of rows like [[a, b], [c, d]].",
+   "seed": 17
+  },
+  {
+   "answer": "[[3, 1], [-1, 0]]",
+   "kind": "matrix_inverse",
+   "level": 2,
+   "prompt": "Compute the inverse of the matrix [[0, -1], [1, 3]]. Answer as a list of rows like [[a, b], [c, d]].",
+   "seed": 0
+  },
+  {
+   "answer": "[[-8, -3], [3, 1]]",
+   "kind": "matrix_inverse",
+   "level": 2,
+   "prompt": "Compute the inverse of the matrix [[1, 3], [-3, -8]]. Answer as a list of rows like [[a, b], [c, d]].",
+   "seed": 1
+  },
+  {
+   "answer": "[[6, -1], [1, 0]]",
+   "kind": "matrix_inverse",
+   "level": 2,
+   "prompt": "Compute the inverse of the matrix [[0, 1], [-1, 6]]. Answer as a list of rows like [[a, b], [c, d]].",
+   "seed": 17
+  },
+  {
+   "answer": "[[1, 0, 0], [0, 2, -1], [0, -3, 2]]",
+   "kind": "matrix_inverse",
+   "level": 3,
+   "prompt": "Compute the inverse of the matrix [[1, 0, 0], [0, 2, 1], [0, 3, 2]]. Answer as a list of rows like [[a, b], [c, d]].",
+   "seed": 0
+  },
+  {
+   "answer": "[[3, -2, 4], [1, -1, 2], [6, -5, 9]]",
+   "kind": "matrix_inverse",
+   "level": 3,
+   "prompt": "Compute the inverse of the matrix [[1, -2, 0], [3, 3, -2], [1, 3, -1]]. Answer as a list of rows like [[a, b], [c, d]].",
+   "seed": 1
+  },
+  {
+   "answer": "[[1, 0, 0], [0, 1, 0], [2, 0, 1]]",
+   "kind": "matrix_inverse",
+   "level": 3,
+   "prompt": "Compute the inverse of the matrix [[1, 0, 0], [0, 1, 0], [-2, 0, 1]]. Answer as a list of rows like [[a, b], [c, d]].",
+   "seed": 17
+  },
+  {
+   "answer": "2",
+   "kind": "rank",
+   "level": 1,
+   "prompt": "Compute the rank of the matrix [[3, -3, 0], [3, -3, 0], [4, -4, 1]]",
+   "seed": 0
+  },
+  {
+   "answer": "2",
+   "kind": "rank",
+   "level": 1,
+   "prompt": "Compute the rank of the matrix [[1, -10, -1], [2, -4, -2], [-3, -2, 3]]",
+   "seed": 1
+  },
+  {
+   "answer": "1",
+   "kind": "rank",
+   "level": 1,
+   "prompt": "Compute the rank of the matrix [[0, 0, 0], [-2, 0, 3], [-4, 0, 6]]",
+   "seed": 17
+  },
+  {
+   "answer": "2",
+   "kind": "rank",
+   "level": 2,
+   "prompt": "Compute the rank of the matrix [[1, 1, -1], [6, 10, 6], [-2, -4, -4]]",
+   "seed": 0
+  },
+  {
+   "answer": "2",
+   "kind": "rank",
+   "level": 2,
+   "prompt": "Compute the rank of the matrix [[-6, -4, -8], [-4, -4, 2], [3, 2, 4]]",
+   "seed": 1
+  },
+  {
+   "answer": "2",
+   "kind": "rank",
+   "level": 2,
+   "prompt": "Compute the rank of the matrix [[2, 0, 4], [-3, 4, 2], [-6, 8, 4]]",
+   "seed": 17
+  },
+  {
+   "answer": "2",
+   "kind": "rank",
+   "level": 3,
+   "prompt": "Compute the rank of the matrix [[8, 2, 8, -8], [-2, -4, -1, 0], [-4, -1, -4, 4], [-8, -2, -8, 8]]",
+   "seed": 0
+  },
+  {
+   "answer": "2",
+   "kind": "rank",
+   "level": 3,
+   "prompt": "Compute the rank of the matrix [[-4, 3, 2, 3], [2, 2, 4, 2], [4, -3, -2, -3], [-3, 4, 4, 4]]",
+   "seed": 1
+  },
+  {
+   "answer": "2",
+   "kind": "rank",
+   "level": 3,
+   "prompt": "Compute the rank of the matrix [[-12, -4, -14, 0], [-2, 1, -3, -4], [4, 3, 4, -4], [2, 4, 1, -8]]",
+   "seed": 17
+  },
+  {
+   "answer": "3*exp(-2*x)",
+   "kind": "ode_linear1",
+   "level": 1,
+   "prompt": "Solve the differential equation 2*y + y' = 0 with y(0) = 3. Answer with y as an expression in x.",
+   "seed": 0
+  },
+  {
+   "answer": "5*exp(-2*x)",
+   "kind": "ode_linear1",
+   "level": 1,
+   "prompt": "Solve the differential equation 2*y + y' = 0 with y(0) = 5. Answer with y as an expression in x.",
+   "seed": 1
+  },
+  {
+   "answer": "2*exp(x)",
+   "kind": "ode_linear1",
+   "level": 1,
+   "prompt": "Solve the differential equation -y + y' = 0 with y(0) = 2. Answer with y as an expression in x.",
+   "seed": 17
+  },
+  {
+   "answer": "3*x - 1 + exp(-x)",
+   "kind": "ode_linear1",
+   "level": 2,
+   "prompt": "Solve the differential equation y + y' = 3*x + 2 with y(0) = 0. Answer with y as an expression in x.",
+   "seed": 0
+  },
+  {
+   "answer": "5*x + 3*exp(-2*x)",
+   "kind": "ode_linear1",
+   "level": 2,
+   "prompt": "Solve the differential equation 2*y + y' = 10*x + 5 with y(0) = 3. Answer with y as an expression in x.",
+   "seed": 1
+  },
+  {
+   "answer": "x + 4*exp(2*x) + 2",
+   "kind": "ode_linear1",
+   "level": 2,
+   "prompt": "Solve the differential equation -2*y + y' = -2*x - 3 with y(0) = 6. Answer with y as an expression in x.",
+   "seed": 17
+  },
+  {
+   "answer": "4*x + 1 + 4*exp(-2*x)",
+   "kind": "ode_linear1",
+   "level": 3,
+   "prompt": "Solve the differential equation 2*y + y' = 8*x + 6 with y(0) = 5. Answer with y as an expression in x.",
+   "seed": 0
+  },
+  {
+   "answer": "5*x + 4*exp(-2*x)",
+   "kind": "ode_linear1",
+   "level": 3,
+   "prompt": "Solve the differential equation 2*y + y' = 10*x + 5 with y(0) = 4. Answer with y as an expression in x.",
+   "seed": 1
+  },
+  {
+   "answer": "3*x + 2 + exp(-2*x)",
+   "kind": "ode_linear1",
+   "level": 3,
+   "prompt": "Solve the differential equation 2*y + y' = 6*x + 7 with y(0) = 3. Answer with y as an expression in x.",
+   "seed": 17
+  },
+  {
+   "answer": "4*exp(x) + 2*exp(-x)",
+   "kind": "ode_cc2",
+   "level": 1,
+   "prompt": "Solve y'' - (0)*y' + (-1)*y = 0 with y(0) = 6 and y'(0) = 2. Answer with y as an expression in x.",
+   "seed": 0
+  },
+  {
+   "answer": "2*exp(3*x) - 3*exp(-2*x)",
+   "kind": "ode_cc2",
+   "level": 1,
+   "prompt": "Solve y'' - (1)*y' + (-6)*y = 0 with y(0) = -1 and y'(0) = 12. Answer with y as an expression in x.",
+   "seed": 1
+  },
+  {
+   "answer": "-exp(x) + 2*exp(-x)",
+   "kind": "ode_cc2",
+   "level": 1,
+   "prompt": "Solve y'' - (0)*y' + (-1)*y = 0 with y(0) = 1 and y'(0) = -3. Answer with y as an expression in x.",
+   "seed": 17
+  },
+  {
+   "answer": "3*exp(2*x) + exp(x)",
+   "kind": "ode_cc2",
+   "level": 2,
+   "prompt": "Solve y'' - (3)*y' + (2)*y = 0 with y(0) = 4 and y'(0) = 7. Answer with y as an expression in x.",
+   "seed": 0
+  },
+  {
+   "answer": "2*exp(3*x) + 4*exp(2*x)",
+   "kind": "ode_cc2",
+   "level": 2,
+   "prompt": "Solve y'' - (5)*y' + (6)*y = 0 with y(0) = 6 and y'(0) = 14. Answer with y as an expression in x.",
+   "seed": 1
+  },
+  {
+   "answer": "-exp(2*x) + 2*exp(-2*x)",
+   "kind": "ode_cc2",
+   "level": 2,
+   "prompt": "Solve y'' - (0)*y' + (-4)*y = 0 with y(0) = 1 and y'(0) = -6. Answer with y as an expression in x.",
+   "seed": 17
+  },
+  {
+   "answer": "exp(3*x) + exp(x)",
+   "kind": "ode_cc2",
+   "level": 3,
+   "prompt": "Solve y'' - (4)*y' + (3)*y = 0 with y(0) = 2 and y'(0) = 4. Answer with y as an expression in x.",
+   "seed": 0
+  },
+  {
+   "answer": "-exp(3*x) + 3*exp(-2*x)",
+   "kind": "ode_cc2",
+   "level": 3,
+   "prompt": "Solve y'' - (1)*y' + (-6)*y = 0 with y(0) = 2 and y'(0) = -9. Answer with y as an expression in x.",
+   "seed": 1
+  },
+  {
+   "answer": "-3*exp(3*x) + 3*exp(x)",
+   "kind": "ode_cc2",
+   "level": 3,
+   "prompt": "Solve y'' - (4)*y' + (3)*y = 0 with y(0) = 0 and y'(0) = -6. Answer with y as an expression in x.",
+   "seed": 17
+  },
+  {
+   "answer": "3*exp(-x**2)",
+   "kind": "ode_separable",
+   "level": 1,
+   "prompt": "Solve the differential equation y' = -2*x*y with y(0) = 3. Answer with y as an expression in x.",
+   "seed": 0
+  },
+  {
+   "answer": "exp(x**2/2)",
+   "kind": "ode_separable",
+   "level": 1,
+   "prompt": "Solve the differential equation y' = x*y with y(0) = 1. Answer with y as an expression in x.",
+   "seed": 1
+  },
+  {
+   "answer": "5*exp(-x**2)",
+   "kind": "ode_separable",
+   "level": 1,
+   "prompt": "Solve the differential equation y' = -2*x*y with y(0) = 5. Answer with y as an expression in x.",
+   "seed": 17
+  },
+  {
+   "answer": "exp(x**2)",
+   "kind": "ode_separable",
+   "level": 2,
+   "prompt": "Solve the differential equation y' = 2*x*y with y(0) = 1. Answer with y as an expression in x.",
+   "seed": 0
+  },
+  {
+   "answer": "exp(x**2)",
+   "kind": "ode_separable",
+   "level": 2,
+   "prompt": "Solve the differential equation y' = 2*x*y with y(0) = 1. Answer with y as an expression in x.",
+   "seed": 1
+  },
+  {
+   "answer": "5*exp(x**2/2)",
+   "kind": "ode_separable",
+   "level": 2,
+   "prompt": "Solve the differential equation y' = x*y with y(0) = 5. Answer with y as an expression in x.",
+   "seed": 17
+  },
+  {
+   "answer": "2*exp(-x**3/3)",
+   "kind": "ode_separable",
+   "level": 3,
+   "prompt": "Solve the differential equation y' = -x**2*y with y(0) = 2. Answer with y as an expression in x.",
+   "seed": 0
+  },
+  {
+   "answer": "5*exp(-2*x**3/3)",
+   "kind": "ode_separable",
+   "level": 3,
+   "prompt": "Solve the differential equation y' = -2*x**2*y with y(0) = 5. Answer with y as an expression in x.",
+   "seed": 1
+  },
+  {
+   "answer": "5*exp(-x**2/2)",
+   "kind": "ode_separable",
+   "level": 3,
+   "prompt": "Solve the differential equation y' = -x*y with y(0) = 5. Answer with y as an expression in x.",
+   "seed": 17
+  },
+  {
+   "answer": "0",
+   "kind": "modpow",
+   "level": 1,
+   "prompt": "Compute 14^5 mod 28. Answer with a single integer.",
+   "seed": 0
+  },
+  {
+   "answer": "2",
+   "kind": "modpow",
+   "level": 1,
+   "prompt": "Compute 2^9 mod 30. Answer with a single integer.",
+   "seed": 1
+  },
+  {
+   "answer": "1",
+   "kind": "modpow",
+   "level": 1,
+   "prompt": "Compute 16^10 mod 17. Answer with a single integer.",
+   "seed": 17
+  },
+  {
+   "answer": "53",
+   "kind": "modpow",
+   "level": 2,
+   "prompt": "Compute 72^339 mod 83. Answer with a single integer.",
+   "seed": 0
+  },
+  {
+   "answer": "1",
+   "kind": "modpow",
+   "level": 2,
+   "prompt": "Compute 25^276 mod 94. Answer with a single integer.",
+   "seed": 1
+  },
+  {
+   "answer": "162",
+   "kind": "modpow",
+   "level": 2,
+   "prompt": "Compute 81^282 mod 191. Answer with a single integer.",
+   "seed": 17
+  },
+  {
+   "answer": "161",
+   "kind": "modpow",
+   "level": 3,
+   "prompt": "Compute 155^275721 mod 177. Answer with a single integer.",
+   "seed": 0
+  },
+  {
+   "answer": "1",
+   "kind": "modpow",
+   "level": 3,
+   "prompt": "Compute 11^878403 mod 35. Answer with a single integer.",
+   "seed": 1
+  },
+  {
+   "answer": "55",
+   "kind": "modpow",
+   "level": 3,
+   "prompt": "Compute 61^162771 mod 63. Answer with a single integer.",
+   "seed": 17
+  },
+  {
+   "answer": "3",
+   "kind": "lincong",
+   "level": 1,
+   "prompt": "Find the least non-negative integer x with 5*x = 7 (mod 8). Answer with a single integer.",
+   "seed": 0
+  },
+  {
+   "answer": "2",
+   "kind": "lincong",
+   "level": 1,
+   "prompt": "Find the least non-negative integer x with 14*x = 28 (mod 30). Answer with a single integer.",
+   "seed": 1
+  },
+  {
+   "answer": "3",
+   "kind": "lincong",
+   "level": 1,
+   "prompt": "Find the least non-negative integer x with 6*x = 3 (mod 15). Answer with a single integer.",
+   "seed": 17
+  },
+  {
+   "answer": "5",
+   "kind": "lincong",
+   "level": 2,
+   "prompt": "Find the least non-negative integer x with 8*x = 12 (mod 14). Answer with a single integer.",
+   "seed": 0
+  },
+  {
+   "answer": "1",
+   "kind": "lincong",
+   "level": 2,
+   "prompt": "Find the least non-negative integer x with 12*x = 12 (mod 24). Answer with a single integer.",
+   "seed": 1
+  },
+  {
+   "answer": "20",
+   "kind": "lincong",
+   "level": 2,
+   "prompt": "Find the least non-negative integer x with 17*x = 2 (mod 26). Answer with a single integer.",
+   "seed": 17
+  },
+  {
+   "answer": "256",
+   "kind": "lincong",
+   "level": 3,
+   "prompt": "Find the least non-negative integer x with 90*x = 10 (mod 329). Answer with a single integer.",
+   "seed": 0
+  },
+  {
+   "answer": "111",
+   "kind": "lincong",
+   "level": 3,
+   "prompt": "Find the least non-negative integer x with 5*x = 181 (mod 187). Answer with a single integer.",
+   "seed": 1
+  },
+  {
+   "answer": "322",
+   "kind": "lincong",
+   "level": 3,
+   "prompt": "Find the least non-negative integer x with 199*x = 182 (mod 326). Answer with a single integer.",
+   "seed": 17
+  },
+  {
+   "answer": "1",
+   "kind": "gcdlin",
+   "level": 1,
+   "prompt": "Compute gcd(21, 46). Answer with a single integer.",
+   "seed": 0
+  },
+  {
+   "answer": "1",
+   "kind": "gcdlin",
+   "level": 1,
+   "prompt": "Compute gcd(50, 13). Answer with a single integer.",
+   "seed": 1
+  },
+  {
+   "answer": "1",
+   "kind": "gcdlin",
+   "level": 1,
+   "prompt": "Compute gcd(38, 39). Answer with a single integer.",
+   "seed": 17
+  },
+  {
+   "answer": "7",
+   "kind": "gcdlin",
+   "level": 2,
+   "prompt": "Compute gcd(777, 742). Answer with a single integer.",
+   "seed": 0
+  },
+  {
+   "answer": "1",
+   "kind": "gcdlin",
+   "level": 2,
+   "prompt": "Compute gcd(800, 551). Answer with a single integer.",
+   "seed": 1
+  },
+  {
+   "answer": "2",
+   "kind": "gcdlin",
+   "level": 2,
+   "prompt": "Compute gcd(634, 900). Answer with a single integer.",
+   "seed": 17
+  },
+  {
+   "answer": "3",
+   "kind": "gcdlin",
+   "level": 3,
+   "prompt": "Compute gcd(484167, 658068). Answer with a single integer.",
+   "seed": 0
+  },
+  {
+   "answer": "1",
+   "kind": "gcdlin",
+   "level": 3,
+   "prompt": "Compute gcd(261643, 169247). Answer with a single integer.",
+   "seed": 1
+  },
+  {
+   "answer": "1",
+   "kind": "gcdlin",
+   "level": 3,
+   "prompt": "Compute gcd(727163, 825417). Answer with a single integer.",
+   "seed": 17
+  },
+  {
+   "answer": "7",
+   "kind": "order",
+   "level": 1,
+   "prompt": "Find the multiplicative order of 24 modulo 29 (the least k >= 1 with 24^k = 1 mod 29). Answer with a single integer.",
+   "seed": 0
+  },
+  {
+   "answer": "11",
+   "kind": "order",
+   "level": 1,
+   "prompt": "Find the multiplicative order of 8 modulo 23 (the least k >= 1 with 8^k = 1 mod 23). Answer with a single integer.",
+   "seed": 1
+  },
+  {
+   "answer": "4",
+   "kind": "order",
+   "level": 1,
+   "prompt": "Find the multiplicative order of 3 modulo 5 (the least k >= 1 with 3^k = 1 mod 5). Answer with a single integer.",
+   "seed": 17
+  },
+  {
+   "answer": "14",
+   "kind": "order",
+   "level": 2,
+   "prompt": "Find the multiplicative order of 9 modulo 29 (the least k >= 1 with 9^k = 1 mod 29). Answer with a single integer.",
+   "seed": 0
+  },
+  {
+   "answer": "42",
+   "kind": "order",
+   "level": 2,
+   "prompt": "Find the multiplicative order of 20 modulo 43 (the least k >= 1 with 20^k = 1 mod 43). Answer with a single integer.",
+   "seed": 1
+  },
+  {
+   "answer": "4",
+   "kind": "order",
+   "level": 2,
+   "prompt": "Find the multiplicative order of 5 modulo 13 (the least k >= 1 with 5^k = 1 mod 13). Answer with a single integer.",
+   "seed": 17
+  },
+  {
+   "answer": "3",
+   "kind": "order",
+   "level": 3,
+   "prompt": "Find the multiplicative order of 61 modulo 97 (the least k >= 1 with 61^k = 1 mod 97). Answer with a single integer.",
+   "seed": 0
+  },
+  {
+   "answer": "29",
+   "kind": "order",
+   "level": 3,
+   "prompt": "Find the multiplicative order of 102 modulo 233 (the least k >= 1 with 102^k = 1 mod 233). Answer with a single integer.",
+   "seed": 1
+  },
+  {
+   "answer": "7",
+   "kind": "order",
+   "level": 3,
+   "prompt": "Find the multiplicative order of 7 modulo 29 (the least k >= 1 with 7^k = 1 mod 29). Answer with a single integer.",
+   "seed": 17
+  },
+  {
+   "answer": "-6*x*y - 2*y",
+   "kind": "partial",
+   "level": 1,
+   "prompt": "Let f(x, y) = -3*x*y**2 - y**2. Compute the partial derivative of f with respect to y. Answer with an expression in x and y.",
+   "seed": 0
+  },
+  {
+   "answer": "-6*x*y + 6*y**2",
+   "kind": "partial",
+   "level": 1,
+   "prompt": "Let f(x, y) = -3*x**2*y + 6*x*y**2 + 4*y. Compute the partial derivative of f with respect to x. Answer with an expression in x and y.",
+   "seed": 1
+  },
+  {
+   "answer": "10*x*y**2 + 1",
+   "kind": "partial",
+   "level": 1,
+   "prompt": "Let f(x, y) = 5*x**2*y**2 + x. Compute the partial derivative of f with respect to x. Answer with an expression in x and y.",
+   "seed": 17
+  },
+  {
+   "answer": "4*sin(y) + 6",
+   "kind": "partial",
+   "level": 2,
+   "prompt": "Let f(x, y) = 4*x*sin(y) + 6*x + 4*y. Compute the partial derivative of f with respect to x. Answer with an expression in x and y.",
+   "seed": 0
+  },
+  {
+   "answer": "6*x*y + 3*y*cos(x*y) - 3*y",
+   "kind": "partial",
+   "level": 2,
+   "prompt": "Let f(x, y) = 3*x**2*y - 3*x*y + 3*sin(x*y). Compute the partial derivative of f with respect to x. Answer with an expression in x and y.",
+   "seed": 1
+  },
+  {
+   "answer": "12*x*y + 3*x*cos(x*y)",
+   "kind": "partial",
+   "level": 2,
+   "prompt": "Let f(x, y) = 5*x**2 + 6*x*y**2 + 3*sin(x*y). Compute the partial derivative of f with respect to y. Answer with an expression in x and y.",
+   "seed": 17
+  },
+  {
+   "answer": "-4*x*y**2 + 2*x*y*exp(x**2*y) + y*cos(x*y) + 4*y",
+   "kind": "partial",
+   "level": 3,
+   "prompt": "Let f(x, y) = -2*x**2*y**2 + 4*x*y + exp(x**2*y) + sin(x*y). Compute the partial derivative of f with respect to x. Answer with an expression in x and y.",
+   "seed": 0
+  },
+  {
+   "answer": "2*x**2*exp(x**2*y) + x*exp(x*y) + 2*y",
+   "kind": "partial",
+   "level": 3,
+   "prompt": "Let f(x, y) = -4*x + y**2 + exp(x*y) + 2*exp(x**2*y). Compute the partial derivative of f with respect to y. Answer with an expression in x and y.",
+   "seed": 1
+  },
+  {
+   "answer": "-2*x**2*y + 3*x**2*exp(x**2*y) - 6*x**2 + x*cos(y)",
+   "kind": "partial",
+   "level": 3,
+   "prompt": "Let f(x, y) = -x**2*y**2 - 6*x**2*y + x*sin(y) - 3*x + 3*exp(x**2*y). Compute the partial derivative of f with respect to y. Answer with an expression in x and y.",
+   "seed": 17
+  },
+  {
+   "answer": "-2*x",
+   "kind": "mixed_partial",
+   "level": 1,
+   "prompt": "Let f(x, y) = -x**2*y + 6*y**2. Compute the mixed partial d^2 f / dx dy. Answer with an expression in x and y.",
+   "seed": 0
+  },
+  {
+   "answer": "2*(12*x*y + 1)",
+   "kind": "mixed_partial",
+   "level": 1,
+   "prompt": "Let f(x, y) = 6*x**2*y**2 + 2*x*y + 2*x. Compute the mixed partial d^2 f / dx dy. Answer with an expression in x and y.",
+   "seed": 1
+  },
+  {
+   "answer": "16*x*y",
+   "kind": "mixed_partial",
+   "level": 1,
+   "prompt": "Let f(x, y) = 4*x**2*y**2 + 4*x**2. Compute the mixed partial d^2 f / dx dy. Answer with an expression in x and y.",
+   "seed": 17
+  },
+  {
+   "answer": "4*x - cos(x + y)",
+   "kind": "mixed_partial",
+   "level": 2,
+   "prompt": "Let f(x, y) = 2*x**2*y + 6*y + cos(x + y). Compute the mixed partial d^2 f / dx dy. Answer with an expression in x and y.",
+   "seed": 0
+  },
+  {
+   "answer": "-(2*y + cos(x + y))",
+   "kind": "mixed_partial",
+   "level": 2,
+   "prompt": "Let f(x, y) = -x*y**2 + 5*x + cos(x + y). Compute the mixed partial d^2 f / dx dy. Answer with an expression in x and y.",
+   "seed": 1
+  },
+  {
+   "answer": "2*(x*y*exp(x*y) + x + exp(x*y))",
+   "kind": "mixed_partial",
+   "level": 2,
+   "prompt": "Let f(x, y) = x**2*y + 4*x + 2*exp(x*y). Compute the mixed partial d^2 f / dx dy. Answer with an expression in x and y.",
+   "seed": 17
+  },
+  {
+   "answer": "-12*x*y*sin(x**2 + y**2) + 3*cos(y) - 1",
+   "kind": "mixed_partial",
+   "level": 3,
+   "prompt": "Let f(x, y) = -2*x**2 - x*y + 3*x*sin(y) + x + 3*sin(x**2 + y**2). Compute the mixed partial d^2 f / dx dy. Answer with an expression in x and y.",
+   "seed": 0
+  },
+  {
+   "answer": "-2*x**2*y**2*cos(x*y) - 6*x*y*sin(x*y) + 6*y + 2*cos(y) + 2*cos(x*y) - 3",
+   "kind": "mixed_partial",
+   "level": 3,
+   "prompt": "Let f(x, y) = x**2 + 3*x*y**2 + 2*x*y*cos(x*y) - 3*x*y + 2*x*sin(y). Compute the mixed partial d^2 f / dx dy. Answer with an expression in x and y.",
+   "seed": 1
+  },
+  {
+   "answer": "6*x**3*y*exp(x**2*y) + 3*x*y*exp(x*y) + 6*x*exp(x**2*y) + 3*exp(x*y) - 5",
+   "kind": "mixed_partial",
+   "level": 3,
+   "prompt": "Let f(x, y) = -5*x*y - 5*y + 3*exp(x*y) + 3*exp(x**2*y). Compute the mixed partial d^2 f / dx dy. Answer with an expression in x and y.",
+   "seed": 17
+  },
+  {
+   "answer": "0",
+   "kind": "directional",
+   "level": 1,
+   "prompt": "Let f(x, y) = x**2*y**2 + 2*y**2. Compute the directional derivative of f at the point (2, 0) in the direction of the vector (1, -1) (normalize the vector). Answer with an exact expression.",
+   "seed": 0
+  },
+  {
+   "answer": "10*sqrt(2)",
+   "kind": "directional",
+   "level": 1,
+   "prompt": "Let f(x, y) = -5*x**2*y - 5*x. Compute the directional derivative of f at the point (-1, 2) in the direction of the vector (1, -1) (normalize the vector). Answer with an exact expression.",
+   "seed": 1
+  },
+  {
+   "answer": "4",
+   "kind": "directional",
+   "level": 1,
+   "prompt": "Let f(x, y) = -4*x**2 + 4*x. Compute the directional derivative of f at the point (0, 1) in the direction of the vector (1, 0) (normalize the vector). Answer with an exact expression.",
+   "seed": 17
+  },
+  {
+   "answer": "-12/5",
+   "kind": "directional",
+   "level": 2,
+   "prompt": "Let f(x, y) = -6*x**2*y + 3*y. Compute the directional derivative of f at the point (1, 0) in the direction of the vector (3, 4) (normalize the vector). Answer with an exact expression.",
+   "seed": 0
+  },
+  {
+   "answer": "9*sqrt(2)",
+   "kind": "directional",
+   "level": 2,
+   "prompt": "Let f(x, y) = -4*x**2 + 5*x*y**2 + 3*x*y. Compute the directional derivative of f at the point (2, 1) in the direction of the vector (1, 1) (normalize the vector). Answer with an exact expression.",
+   "seed": 1
+  },
+  {
+   "answer": "47*sqrt(5)",
+   "kind": "directional",
+   "level": 2,
+   "prompt": "Let f(x, y) = 5*x**2*y**2 - 3*x + y. Compute the directional derivative of f at the point (2, 2) in the direction of the vector (2, 1) (normalize the vector). Answer with an exact expression.",
+   "seed": 17
+  },
+  {
+   "answer": "sqrt(5)*(-22 - 6*sin(2) + 3*cos(2))/5",
+   "kind": "directional",
+   "level": 3,
+   "prompt": "Let f(x, y) = 3*x*sin(y) + x + 6*y**2. Compute the directional derivative of f at the point (1, -2) in the direction of the vector (2, 1) (normalize the vector). Answer with an exact expression.",
+   "seed": 0
+  },
+  {
+   "answer": "0",
+   "kind": "directional",
+   "level": 3,
+   "prompt": "Let f(x, y) = -2*x*y**2 + 5*x*y + 4*x*sin(y). Compute the directional derivative of f at the point (0, 0) in the direction of the vector (1, 0) (normalize the vector). Answer with an exact expression.",
+   "seed": 1
+  },
+  {
+   "answer": "3",
+   "kind": "directional",
+   "level": 3,
+   "prompt": "Let f(x, y) = -7*x**2 + 3*x*sin(y) + 2*y**2. Compute the directional derivative of f at the point (1, 0) in the direction of the vector (0, 1) (normalize the vector). Answer with an exact expression.",
+   "seed": 17
+  },
+  {
+   "answer": "-3*x/2",
+   "kind": "eom",
+   "level": 1,
+   "prompt": "A particle of mass 2 moves in one dimension with potential energy V(x) = 3*x**2/2. Using Newton's second law (or the Euler-Lagrange equation), give the acceleration x'' as an expression in x.",
+   "seed": 0
+  },
+  {
+   "answer": "-x",
+   "kind": "eom",
+   "level": 1,
+   "prompt": "A particle of mass 1 moves in one dimension with potential energy V(x) = x**2/2. Using Newton's second law (or the Euler-Lagrange equation), give the acceleration x'' as an expression in x.",
+   "seed": 1
+  },
+  {
+   "answer": "-2*x",
+   "kind": "eom",
+   "level": 1,
+   "prompt": "A particle of mass 2 moves in one dimension with potential energy V(x) = 2*x**2. Using Newton's second law (or the Euler-Lagrange equation), give the acceleration x'' as an expression in x.",
+   "seed": 17
+  },
+  {
+   "answer": "-x**3/2 + 3*x**2 - 7*x + 6",
+   "kind": "eom",
+   "level": 2,
+   "prompt": "A particle of mass 4 moves in one dimension with potential energy V(x) = x**4/2 - 4*x**3 + 14*x**2 - 24*x + 16. Using Newton's second law (or the Euler-Lagrange equation), give the acceleration x'' as an expression in x.",
+   "seed": 0
+  },
+  {
+   "answer": "-x**3/4 - 3*x**2/4 - 9*x/4 - 7/4",
+   "kind": "eom",
+   "level": 2,
+   "prompt": "A particle of mass 4 moves in one dimension with potential energy V(x) = x**4/4 + x**3 + 9*x**2/2 + 7*x + 13/4. Using Newton's second law (or the Euler-Lagrange equation), give the acceleration x'' as an expression in x.",
+   "seed": 1
+  },
+  {
+   "answer": "-x**3/4 + 3*x**2/2 - 15*x/4 + 7/2",
+   "kind": "eom",
+   "level": 2,
+   "prompt": "A particle of mass 4 moves in one dimension with potential energy V(x) = x**4/4 - 2*x**3 + 15*x**2/2 - 14*x + 10. Using Newton's second law (or the Euler-Lagrange equation), give the acceleration x'' as an expression in x.",
+   "seed": 17
+  },
+  {
+   "answer": "-2*x**3/3 - 8*x**2/3 - 11*x/3 - 5/3",
+   "kind": "eom",
+   "level": 3,
+   "prompt": "A particle of mass 3 moves in one dimension with potential energy V(x) = x**4/2 + 8*x**3/3 + 11*x**2/2 + 5*x + 5/3. Using Newton's second law (or the Euler-Lagrange equation), give the acceleration x'' as an expression in x.",
+   "seed": 0
+  },
+  {
+   "answer": "-x**3/2 - 13*x**2/4 - 17*x/2 - 8",
+   "kind": "eom",
+   "level": 3,
+   "prompt": "A particle of mass 4 moves in one dimension with potential energy V(x) = x**4/2 + 13*x**3/3 + 17*x**2 + 32*x + 68/3. Using Newton's second law (or the Euler-Lagrange equation), give the acceleration x'' as an expression in x.",
+   "seed": 1
+  },
+  {
+   "answer": "-2*x**3/5 + 9*x**2/5 - 3*x + 2",
+   "kind": "eom",
+   "level": 3,
+   "prompt": "A particle of mass 5 moves in one dimension with potential energy V(x) = x**4/2 - 3*x**3 + 15*x**2/2 - 10*x + 6. Using Newton's second law (or the Euler-Lagrange equation), give the acceleration x'' as an expression in x.",
+   "seed": 17
+  },
+  {
+   "answer": "1",
+   "kind": "small_osc",
+   "level": 1,
+   "prompt": "A particle of mass 3 moves in the potential V(x) = 3*x**2/2, which has a stable equilibrium at x = 0. Find the angular frequency of small oscillations about it. Answer with an exact expression.",
+   "seed": 0
+  },
+  {
+   "answer": "sqrt(15)/3",
+   "kind": "small_osc",
+   "level": 1,
+   "prompt": "A particle of mass 3 moves in the potential V(x) = 5*x**2/2, which has a stable equilibrium at x = 0. Find the angular frequency of small oscillations about it. Answer with an exact expression.",
+   "seed": 1
+  },
+  {
+   "answer": "sqrt(6)",
+   "kind": "small_osc",
+   "level": 1,
+   "prompt": "A particle of mass 1 moves in the potential V(x) = 3*x**2, which has a stable equilibrium at x = 0. Find the angular frequency of small oscillations about it. Answer with an exact expression.",
+   "seed": 17
+  },
+  {
+   "answer": "sqrt(2)",
+   "kind": "small_osc",
+   "level": 2,
+   "prompt": "A particle of mass 3 moves in the potential V(x) = x**4/4 - x**3 + 9*x**2/2 - 7*x + 13/4, which has a stable equilibrium at x = 1. Find the angular frequency of small oscillations about it. Answer with an exact expression.",
+   "seed": 0
+  },
+  {
+   "answer": "sqrt(10)/2",
+   "kind": "small_osc",
+   "level": 2,
+   "prompt": "A particle of mass 2 moves in the potential V(x) = x**4/4 - 2*x**3 + 17*x**2/2 - 18*x + 14, which has a stable equilibrium at x = 2. Find the angular frequency of small oscillations about it. Answer with an exact expression.",
+   "seed": 1
+  },
+  {
+   "answer": "sqrt(5)/5",
+   "kind": "small_osc",
+   "level": 2,
+   "prompt": "A particle of mass 5 moves in the potential V(x) = 3*x**4/4 + x**2/2, which has a stable equilibrium at x = 0. Find the angular frequency of small oscillations about it. Answer with an exact expression.",
+   "seed": 17
+  },
+  {
+   "answer": "sqrt(5)/5",
+   "kind": "small_osc",
+   "level": 3,
+   "prompt": "A particle of mass 5 moves in the potential V(x) = x**4/2 + 3*x**3 + 13*x**2/2 + 6*x + 2, which has a stable equilibrium at x = -2. Find the angular frequency of small oscillations about it. Answer with an exact expression.",
+   "seed": 0
+  },
+  {
+   "answer": "sqrt(15)/5",
+   "kind": "small_osc",
+   "level": 3,
+   "prompt": "A particle of mass 5 moves in the potential V(x) = x**4/4 - 2*x**3/3 + 2*x**2 - 3*x + 17/12, which has a stable equilibrium at x = 1. Find the angular frequency of small oscillations about it. Answer with an exact expression.",
+   "seed": 1
+  },
+  {
+   "answer": "sqrt(30)/5",
+   "kind": "small_osc",
+   "level": 3,
+   "prompt": "A particle of mass 5 moves in the potential V(x) = x**4/4 - x**3/3 + 5*x**2/2 - 5*x + 31/12, which has a stable equilibrium at x = 1. Find the angular frequency of small oscillations about it. Answer with an exact expression.",
+   "seed": 17
+  },
+  {
+   "answer": "6*t",
+   "kind": "kinematics",
+   "level": 1,
+   "prompt": "A particle's position is x(t) = t**3. Compute the acceleration x''(t). Answer with an expression in t.",
+   "seed": 0
+  },
+  {
+   "answer": "2",
+   "kind": "kinematics",
+   "level": 1,
+   "prompt": "A particle's position is x(t) = 2*t. Compute the velocity x'(t). Answer with an expression in t.",
+   "seed": 1
+  },
+  {
+   "answer": "9*t**2",
+   "kind": "kinematics",
+   "level": 1,
+   "prompt": "A particle's position is x(t) = 3*t**3. Compute the velocity x'(t). Answer with an expression in t.",
+   "seed": 17
+  },
+  {
+   "answer": "3*t**2 - 6*sin(3*t)",
+   "kind": "kinematics",
+   "level": 2,
+   "prompt": "A particle's position is x(t) = t**3 + 2*cos(3*t). Compute the velocity x'(t). Answer with an expression in t.",
+   "seed": 0
+  },
+  {
+   "answer": "-12*sin(2*t)",
+   "kind": "kinematics",
+   "level": 2,
+   "prompt": "A particle's position is x(t) = t + 3*sin(2*t). Compute the acceleration x''(t). Answer with an expression in t.",
+   "seed": 1
+  },
+  {
+   "answer": "2*(5 - 6*sin(2*t))",
+   "kind": "kinematics",
+   "level": 2,
+   "prompt": "A particle's position is x(t) = 5*t**2 + 3*sin(2*t). Compute the acceleration x''(t). Answer with an expression in t.",
+   "seed": 17
+  },
+  {
+   "answer": "2*cos(2*t) + 2 - 3*exp(-t)*sin(t) + 3*exp(-t)*cos(t)",
+   "kind": "kinematics",
+   "level": 3,
+   "prompt": "A particle's position is x(t) = 2*t + sin(2*t) + 3*exp(-t)*sin(t). Compute the velocity x'(t). Answer with an expression in t.",
+   "seed": 0
+  },
+  {
+   "answer": "4*t - 12*sin(3*t) - 2*exp(-t)*sin(t) + 2*exp(-t)*cos(t)",
+   "kind": "kinematics",
+   "level": 3,
+   "prompt": "A particle's position is x(t) = 2*t**2 + 4*cos(3*t) + 2*exp(-t)*sin(t). Compute the velocity x'(t). Answer with an expression in t.",
+   "seed": 1
+  },
+  {
+   "answer": "2*t + 6*cos(2*t) - 3*exp(-t)*sin(t) + 3*exp(-t)*cos(t)",
+   "kind": "kinematics",
+   "level": 3,
+   "prompt": "A particle's position is x(t) = t**2 + 3*sin(2*t) + 3*exp(-t)*sin(t). Compute the velocity x'(t). Answer with an expression in t.",
+   "seed": 17
+  },
+  {
+   "answer": "-900*x**4*sin(5*x**3 + 4) + 120*x*cos(5*x**3 + 4) + 49*exp(x)*sin(3*x - 4) + 147*exp(x)*cos(3*x - 4)",
+   "kind": "differentiate",
+   "level": 4,
+   "prompt": "Differentiate with respect to x: 60*x**2*cos(5*x**3 + 4) + 49*exp(x)*sin(3*x - 4)",
+   "seed": 0,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "-(6*x - 2)*(30*x - 10)*sin(3*x**2 - 2*x) - 18*(8*x + 3)*exp(4*x**2 + 3*x + 5) + 30*cos(3*x**2 - 2*x)",
+   "kind": "differentiate",
+   "level": 4,
+   "prompt": "Differentiate with respect to x: (30*x - 10)*cos(3*x**2 - 2*x) - 18*exp(4*x**2 + 3*x + 5)",
+   "seed": 1,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "2 + 4/(x**2 + 1)",
+   "kind": "differentiate",
+   "level": 5,
+   "prompt": "Differentiate with respect to x: 2*x + 4*atan(x)",
+   "seed": 0,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "-8*exp(3*x)*sin(x) + 24*exp(3*x)*cos(x)",
+   "kind": "differentiate",
+   "level": 5,
+   "prompt": "Differentiate with respect to x: 8*exp(3*x)*cos(x)",
+   "seed": 1,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "-3*x*log(4*x)*sin(3*x) + log(4*x)*cos(3*x) + cos(3*x)",
+   "kind": "differentiate",
+   "level": 6,
+   "prompt": "Differentiate with respect to x: x*log(4*x)*cos(3*x)",
+   "seed": 0,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "10*x*log(3*x) + 5*x + 3*log(x) + 10 + 33/(9*x**2 + 1)",
+   "kind": "differentiate",
+   "level": 6,
+   "prompt": "Differentiate with respect to x: 5*x**2*log(3*x) + 3*x*log(x) + 7*x + 11*atan(3*x)",
+   "seed": 1,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "3*x**2 + x*(6*x - 6) - 6*x",
+   "kind": "differentiate",
+   "level": 7,
+   "prompt": "Differentiate with respect to x: x*(3*x**2 - 6*x)",
+   "seed": 0,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "3/(2*sqrt(x + 2))",
+   "kind": "differentiate",
+   "level": 7,
+   "prompt": "Differentiate with respect to x: 3*sqrt(x + 2)",
+   "seed": 1,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "4*cos(log(x + 4))/(x + 4)",
+   "kind": "differentiate",
+   "level": 8,
+   "prompt": "Differentiate with respect to x: 4*sin(log(x + 4))",
+   "seed": 0,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "-4*sin(log(2*x + 2))*cos(log(2*x + 2))/(2*x + 2)",
+   "kind": "differentiate",
+   "level": 8,
+   "prompt": "Differentiate with respect to x: cos(log(2*x + 2))**2",
+   "seed": 1,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "-5*exp(3*x)*sin(x) + 15*exp(3*x)*cos(x)",
+   "kind": "differentiate",
+   "level": 9,
+   "prompt": "Differentiate with respect to x: 5*exp(3*x)*cos(x)",
+   "seed": 0,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "4*x**2*(3 - 4*x)*cos(log(x**2 + 3*x))/(2*x**2 - 3*x + 2)**2 - 4*x**2*(2*x + 3)*sin(log(x**2 + 3*x))/((x**2 + 3*x)*(2*x**2 - 3*x + 2)) + 8*x*cos(log(x**2 + 3*x))/(2*x**2 - 3*x + 2) + 3*(4*x - 3)/(2*x**2 - 3*x + 2)",
+   "kind": "differentiate",
+   "level": 9,
+   "prompt": "Differentiate with respect to x: 4*x**2*cos(log(x**2 + 3*x))/(2*x**2 - 3*x + 2) + 3*log(2*x**2 - 3*x + 2)",
+   "seed": 1,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "(81*x**2 + 27)*cos(3*x**3 + 3*x + 1)**3",
+   "kind": "integrate",
+   "level": 4,
+   "prompt": "Find an antiderivative of: (162*x*cos(3*x**3 + 3*x + 1) - 243*(3*x**2 + 1)**2*sin(3*x**3 + 3*x + 1))*cos(3*x**3 + 3*x + 1)**2",
+   "seed": 0,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "2*sin(5*x**3 - x + sin(5*x) + 4)",
+   "kind": "integrate",
+   "level": 4,
+   "prompt": "Find an antiderivative of: 2*(15*x**2 + 5*cos(5*x) - 1)*cos(5*x**3 - x + sin(5*x) + 4)",
+   "seed": 1,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "7*(x**2 + 3)*sqrt(2*x**3 - 4*x)",
+   "kind": "integrate",
+   "level": 5,
+   "prompt": "Find an antiderivative of: 7*sqrt(2)*(7*x**4 - x**2 - 6)/(2*sqrt(x*(x**2 - 2)))",
+   "seed": 0,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "9*exp(2*x)*sin(3*x)",
+   "kind": "integrate",
+   "level": 5,
+   "prompt": "Find an antiderivative of: (18*sin(3*x) + 27*cos(3*x))*exp(2*x)",
+   "seed": 1,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "9*x**3*log(2*x) + 2*x**2*log(x) + 3*x + 4*exp(3*x)*sin(4*x) + 3*exp(2*x)*cos(3*x) + asin(3*x)",
+   "kind": "integrate",
+   "level": 6,
+   "prompt": "Find an antiderivative of: 27*x**2*log(2*x) + 9*x**2 + 4*x*log(x) + 2*x + 12*exp(3*x)*sin(4*x) + 16*exp(3*x)*cos(4*x) - 9*exp(2*x)*sin(3*x) + 6*exp(2*x)*cos(3*x) + 3 + 3/sqrt(1 - 9*x**2)",
+   "seed": 0,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "6*x*log(4*x)*sin(x)",
+   "kind": "integrate",
+   "level": 6,
+   "prompt": "Find an antiderivative of: 6*x*log(4*x)*cos(x) + 6*log(4*x)*sin(x) + 6*sin(x)",
+   "seed": 1,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "5*log(x**2 + 2*x + 3)*atan(2*x)",
+   "kind": "integrate",
+   "level": 7,
+   "prompt": "Find an antiderivative of: 10*((x + 1)*(4*x**2 + 1)*atan(2*x) + (x**2 + 2*x + 3)*log(x**2 + 2*x + 3))/((4*x**2 + 1)*(x**2 + 2*x + 3))",
+   "seed": 0,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "2*sin(cos(x))",
+   "kind": "integrate",
+   "level": 7,
+   "prompt": "Find an antiderivative of: -2*sin(x)*cos(cos(x))",
+   "seed": 1,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "5*x**2*exp(4*x + 4) + 6*sin(log(2*x**2 + 2*x + 2))",
+   "kind": "integrate",
+   "level": 8,
+   "prompt": "Find an antiderivative of: 2*(2*x + 1)*(5*x*(x**2 + x + 1)*exp(4*x + 4) + 3*cos(log(2*x**2 + 2*x + 2)))/(x**2 + x + 1)",
+   "seed": 0,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "x**2*sqrt(x**3 - 2*x + 1)",
+   "kind": "integrate",
+   "level": 8,
+   "prompt": "Find an antiderivative of: x*(7*x**3 - 10*x + 4)/(2*sqrt(x**3 - 2*x + 1))",
+   "seed": 1,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "(4*x*exp(x) + 4*log(x**2 - 2*x + 3) + 4*sin(log(x**2 - 2*x + 3)))/(x**2 - 2*x + 3)",
+   "kind": "integrate",
+   "level": 9,
+   "prompt": "Find an antiderivative of: 4*(2*x + 2*(1 - x)*(x*exp(x) + log(x**2 - 2*x + 3) + sin(log(x**2 - 2*x + 3))) + 2*(x - 1)*cos(log(x**2 - 2*x + 3)) + (x + 1)*(x**2 - 2*x + 3)*exp(x) - 2)/(x**2 - 2*x + 3)**2",
+   "seed": 0,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "3*x*sqrt(2*x**2 + 2*x + 1)",
+   "kind": "integrate",
+   "level": 9,
+   "prompt": "Find an antiderivative of: 3*(4*x**2 + 3*x + 1)/sqrt(2*x**2 + 2*x + 1)",
+   "seed": 1,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "-8*sin(x + 4)",
+   "kind": "second_derivative",
+   "level": 4,
+   "prompt": "Find the second derivative with respect to x of: 8*sin(x + 4)",
+   "seed": 0,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "-32*(3*x + 2)**3*sin(3*x**2 + 4*x + 4)**4 + 96*(3*x + 2)**3*sin(3*x**2 + 4*x + 4)**2*cos(3*x**2 + 4*x + 4)**2 + 144*(3*x + 2)*sin(3*x**2 + 4*x + 4)**3*cos(3*x**2 + 4*x + 4) - 45*(8*x + 1)**2*log(x)*cos(x*(4*x + 1)) - 360*log(x)*sin(x*(4*x + 1)) - 90*(8*x + 1)*sin(x*(4*x + 1))/x - 45*cos(x*(4*x + 1))/x**2",
+   "kind": "second_derivative",
+   "level": 4,
+   "prompt": "Find the second derivative with respect to x of: (6*x + 4)*sin(3*x**2 + 4*x + 4)**4 + 45*log(x)*cos(4*x**2 + x)",
+   "seed": 1,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "2*(-4*exp(2*x)*sin(2*x) + 7*log(x)**2 + 21*log(x) + 7)",
+   "kind": "second_derivative",
+   "level": 5,
+   "prompt": "Find the second derivative with respect to x of: 7*x**2*log(x)**2 + exp(2*x)*cos(2*x)",
+   "seed": 0,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "5*x*(6*log(5*x) + 5)",
+   "kind": "second_derivative",
+   "level": 5,
+   "prompt": "Find the second derivative with respect to x of: 5*x**3*log(5*x)",
+   "seed": 1,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "54*x*log(x) + 45*x + 32*x/(1 - 4*x**2)**(3/2) + 4*log(3*x)/x + 4/x",
+   "kind": "second_derivative",
+   "level": 6,
+   "prompt": "Find the second derivative with respect to x of: 9*x**3*log(x) + 2*x*log(3*x)**2 + 5*x + 4*asin(2*x)",
+   "seed": 0,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "12*x*(x**2 + 3*x + 1)/sqrt(x**3 + 3*x + 1) - 16*x/(4*x**2 + 1)**2 - 18*x/(x**2 + 1)**2 + 12*(2*x + 3)*(x**2 + 1)/sqrt(x**3 + 3*x + 1) - 9*(x**2 + 1)**2*(x**2 + 3*x + 1)/(x**3 + 3*x + 1)**(3/2) + 8*sqrt(x**3 + 3*x + 1)",
+   "kind": "second_derivative",
+   "level": 6,
+   "prompt": "Find the second derivative with respect to x of: 5*x + 4*(x**2 + 3*x + 1)*sqrt(x**3 + 3*x + 1) + 9*atan(x) + atan(2*x)",
+   "seed": 1,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "36*(sin(3*x)**2 - cos(3*x))*exp(cos(3*x))",
+   "kind": "second_derivative",
+   "level": 7,
+   "prompt": "Find the second derivative with respect to x of: 4*exp(cos(3*x))",
+   "seed": 0,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "-2*(sin(x)**2*sin(cos(x)) + cos(x)*cos(cos(x)))",
+   "kind": "second_derivative",
+   "level": 7,
+   "prompt": "Find the second derivative with respect to x of: 2*sin(cos(x))",
+   "seed": 1,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "6*sqrt(2)*(x**2*(24*x - (6*x**2 - 1)**2/(2*x**3 - x + 2))/(4*sqrt(2*x**3 - x + 2)) + 2*x*(6*x**2 - 1)/sqrt(2*x**3 - x + 2) + 2*sqrt(2*x**3 - x + 2))",
+   "kind": "second_derivative",
+   "level": 8,
+   "prompt": "Find the second derivative with respect to x of: 6*x**2*sqrt(4*x**3 - 2*x + 4)",
+   "seed": 0,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "4*(-sin(log(1 - 2*x)) + cos(log(1 - 2*x))**2 - cos(log(1 - 2*x)))*exp(sin(log(1 - 2*x)))/(2*x - 1)**2",
+   "kind": "second_derivative",
+   "level": 8,
+   "prompt": "Find the second derivative with respect to x of: exp(sin(log(1 - 2*x)))",
+   "seed": 1,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "2*(36*x*sin(log(6*x + 1))/(6*x + 1)**2 - 36*x*cos(log(6*x + 1))/(6*x + 1)**2 + 12*x*sin(log(6*x + 1))/((x + 1)*(6*x + 1)) + 2*x*cos(log(6*x + 1))/(x + 1)**2 - 12*sin(log(6*x + 1))/(6*x + 1) - 2*cos(log(6*x + 1))/(x + 1) - 1/(x + 1))/(x + 1)",
+   "kind": "second_derivative",
+   "level": 9,
+   "prompt": "Find the second derivative with respect to x of: 6*x*cos(log(6*x + 1))/(3*x + 3) + 2*log(3*x + 3)",
+   "seed": 0,
+   "wall_s": 30.0
+  },
+  {
+   "answer": "2*(-15*sin(4*x) + 8*cos(4*x))*exp(x)",
+   "kind": "second_derivative",
+   "level": 9,
+   "prompt": "Find the second derivative with respect to x of: 2*exp(x)*sin(4*x)",
+   "seed": 1,
+   "wall_s": 30.0
+  }
+ ],
+ "contract": "sha256(utf8('\\n'.join(f'{kind}\\t{level}\\t{prompt}\\t{answer}' for each problem in order) + '\\n'))",
+ "datasets": [
+  {
+   "args": {
+    "n": 200,
+    "seed": 0
+   },
+   "count": 200,
+   "exclude_from": null,
+   "first_prompt": "Differentiate with respect to x: -9*x**3 + 11*x**2 - 8*x",
+   "last_prompt": "Evaluate the limit as x approaches 3 of (-3*x**4 + 9*x**3 + 12*x**2 - 36*x) / (x**2 + x - 12)",
+   "name": "default-200-seed0",
+   "sha256": "b7766048f3771224d881db388433d6e6a096e0bdb6a4f107f4165d61a21cdc6e"
+  },
+  {
+   "args": {
+    "n": 100,
+    "seed": 99
+   },
+   "count": 100,
+   "exclude_from": null,
+   "first_prompt": "Differentiate with respect to x: 7*x**2 - 6",
+   "last_prompt": "Differentiate with respect to x: -2*x",
+   "name": "default-100-seed99",
+   "sha256": "bbfbad8fc4e7a68c59d53b366d196cbd47ec52b0e73736b11eb6934ff97b7ba0"
+  },
+  {
+   "args": {
+    "kinds": [
+     "differentiate",
+     "integrate",
+     "limit",
+     "limit_traced",
+     "second_derivative",
+     "cdiff",
+     "cint",
+     "dsum",
+     "drec",
+     "taylor",
+     "continuity",
+     "definite_integral",
+     "tangent_line"
+    ],
+    "n": 60,
+    "seed": 5
+   },
+   "count": 60,
+   "exclude_from": null,
+   "first_prompt": "Differentiate with respect to x: -8*x**3 - 3*x",
+   "last_prompt": "Find the closed form of the sum of 6*k + 3 for k from 1 to n:",
+   "name": "all-kinds-60-seed5",
+   "sha256": "ef1adeecbcc3784371cf5d5faad1dc6fe450d6e8b80b37182c2aeb37a9864dcb"
+  },
+  {
+   "args": {
+    "kinds": [
+     "differentiate",
+     "integrate",
+     "limit",
+     "limit_traced",
+     "second_derivative",
+     "cdiff",
+     "cint",
+     "dsum",
+     "drec",
+     "taylor",
+     "continuity",
+     "definite_integral",
+     "tangent_line"
+    ],
+    "n": 120,
+    "seed": 1
+   },
+   "count": 120,
+   "exclude_from": null,
+   "first_prompt": "Differentiate with respect to x: 2*x**2 - 4*x + 1",
+   "last_prompt": "Evaluate the limit as x approaches 0 of (10*x**3) / (3*x**2 + 3*x)",
+   "name": "all-kinds-120-seed1",
+   "sha256": "9c069cd58fec37007d9a58e171cf6afbb1c113927c7064735adff3a049f29da2"
+  },
+  {
+   "args": {
+    "kinds": [
+     "determinant",
+     "eigenvalues",
+     "matrix_inverse",
+     "rank",
+     "ode_linear1",
+     "ode_cc2",
+     "ode_separable",
+     "modpow",
+     "lincong",
+     "gcdlin",
+     "order",
+     "partial",
+     "mixed_partial",
+     "directional",
+     "eom",
+     "small_osc",
+     "kinematics"
+    ],
+    "n": 51,
+    "seed": 3
+   },
+   "count": 51,
+   "exclude_from": null,
+   "first_prompt": "Compute the determinant of the matrix [[0, -2], [1, 5]]",
+   "last_prompt": "A particle's position is x(t) = 2*t + 4*cos(3*t) + 3*exp(-t)*cos(t). Compute the velocity x'(t). Answer with an expression in t.",
+   "name": "lazy-kinds-51-seed3",
+   "sha256": "8fad6e0e4d7e6f92a67e08ef6c611bb8a0d401b24e3303fc96b2f0d6363f5d24"
+  },
+  {
+   "args": {
+    "n": 30,
+    "seed": 1
+   },
+   "count": 30,
+   "exclude_from": null,
+   "first_prompt": "Differentiate with respect to x: 2*x**2 - 4*x + 1",
+   "last_prompt": "Evaluate the limit as x approaches -1 of (4*x**4 + 4*x**3 + 11*x**2 + 5*x - 6) / (3*x**2 + 5*x + 2)",
+   "name": "default-30-seed1",
+   "sha256": "96c76de7d59a52d5fa52314047d1c5b36341b6b70e33f5eee63651cdd19797c7"
+  },
+  {
+   "args": {
+    "n": 50,
+    "seed": 1
+   },
+   "count": 50,
+   "exclude_from": "default-30-seed1",
+   "first_prompt": "Differentiate with respect to x: -x + 6*cos(x) + 4",
+   "last_prompt": "Find an antiderivative of: -2*sin(2*x + 5)",
+   "name": "default-50-seed1-excl30",
+   "sha256": "73cc41ac729d0a38df81bb7db42afa1621baa0aa511040ebe0a2127631f7f859"
+  },
+  {
+   "args": {
+    "kinds": [
+     "integrate"
+    ],
+    "n": 40,
+    "seed": 7
+   },
+   "count": 40,
+   "exclude_from": null,
+   "first_prompt": "Find an antiderivative of: 3 - 18*x",
+   "last_prompt": "Find an antiderivative of: 11",
+   "name": "integrate-only-40-seed7",
+   "sha256": "ec55d942d80c995df4c20d6ba2cb250983fa6b514ce8c6f5d90c9157c8fa57f6"
+  },
+  {
+   "args": {
+    "kinds": [
+     "differentiate",
+     "integrate"
+    ],
+    "levels": [
+     4
+    ],
+    "n": 12,
+    "seed": 2
+   },
+   "count": 12,
+   "exclude_from": null,
+   "first_prompt": "Differentiate with respect to x: exp(sqrt(3)*sqrt(x) + 4*x**3 + 3*x + 2) + 6*log(x)*cos(5*x**2 + x + 1)",
+   "last_prompt": "Find an antiderivative of: 9*(10*x*sin(5*x**3 + 4*x + 2) + (15*x**2 + 4)**2*cos(5*x**3 + 4*x + 2))*sin(5*x**3 + 4*x + 2)**2",
+   "name": "l4-mixed-12-seed2",
+   "sha256": "7a039d4084cebb235ae9bcaceabab2fcaed29b734d801ebd413c4fe59f8c229c"
+  }
+ ],
+ "retry_cases": [
+  {
+   "answer": "13*x**3 + 9*x - 2",
+   "kind": "integrate",
+   "level": 1,
+   "prompt": "Find an antiderivative of: 39*x**2 + 9",
+   "retried_seed": 1000005,
+   "seed": 2
+  },
+  {
+   "answer": "5*x + 9",
+   "kind": "integrate",
+   "level": 1,
+   "prompt": "Find an antiderivative of: 5",
+   "retried_seed": 1000006,
+   "seed": 3
+  },
+  {
+   "answer": "8*x**2 + 5*log(x) + 5*cos(x)",
+   "kind": "integrate",
+   "level": 2,
+   "prompt": "Find an antiderivative of: 16*x - 5*sin(x) + 5/x",
+   "retried_seed": 1000102,
+   "seed": 99
+  },
+  {
+   "answer": "exp(x) - 2*log(x)",
+   "kind": "integrate",
+   "level": 2,
+   "prompt": "Find an antiderivative of: exp(x) - 2/x",
+   "retried_seed": 1000159,
+   "seed": 156
+  },
+  {
+   "answer": "x**3*(-4 + 2*I) + x*(-3 + I) + x*(2 + 4*I)",
+   "kind": "cint",
+   "level": 1,
+   "prompt": "Find an antiderivative (I is the imaginary unit) of: 6*x**2*(-2 + I) - 1 + 5*I",
+   "retried_seed": 1000198,
+   "seed": 195
+  },
+  {
+   "answer": "x*(-2 - 2*I) + x*(1 + 2*I)",
+   "kind": "cint",
+   "level": 1,
+   "prompt": "Find an antiderivative (I is the imaginary unit) of: -1",
+   "retried_seed": 1000379,
+   "seed": 376
+  },
+  {
+   "answer": "x*(2 - 2*I) + (-1 + 3*I)*exp(x*(-2 + 2*I))",
+   "kind": "cint",
+   "level": 2,
+   "prompt": "Find an antiderivative (I is the imaginary unit) of: 2*(1 - I)*(exp(2*x*(1 - I)) + 1 - 3*I)*exp(-2*x*(1 - I))",
+   "retried_seed": 1001252,
+   "seed": 1249
+  },
+  {
+   "answer": "x**3*(1 - 3*I) + (-3 - 3*I)*exp(x*(2 + 2*I))",
+   "kind": "cint",
+   "level": 2,
+   "prompt": "Find an antiderivative (I is the imaginary unit) of: 3*x**2*(1 - 3*I) - 12*I*exp(2*x*(1 + I))",
+   "retried_seed": 1001742,
+   "seed": 1739
+  },
+  {
+   "answer": "-x**4/64 + 5*x**3/48 - 11*x**2/32 + 15*x/16 - 131/192 + log(2)",
+   "kind": "taylor",
+   "level": 2,
+   "prompt": "Find the Taylor polynomial of degree 4 of log(x + 1) about x = 1:",
+   "retried_seed": 1000003,
+   "seed": 0
+  },
+  {
+   "answer": "-x**2/2 + x",
+   "kind": "taylor",
+   "level": 2,
+   "prompt": "Find the Taylor polynomial of degree 2 of log(x + 1) about x = 0:",
+   "retried_seed": 1000008,
+   "seed": 5
+  },
+  {
+   "answer": "2*x",
+   "kind": "taylor",
+   "level": 3,
+   "prompt": "Find the Taylor polynomial of degree 2 of sin(2*x) about x = 0:",
+   "retried_seed": 1000148,
+   "seed": 145
+  },
+  {
+   "answer": "-8*x**3*sin(2) - 32*x**3*cos(2)/3 + 34*x**2*cos(2) + 16*x**2*sin(2) - 8*x*sin(2) - 32*x*cos(2) + 26*cos(2)/3 + sin(2)",
+   "kind": "taylor",
+   "level": 3,
+   "prompt": "Find the Taylor polynomial of degree 3 of sin(2*x**2) about x = 1:",
+   "retried_seed": 1000164,
+   "seed": 161
+  },
+  {
+   "answer": "177",
+   "kind": "definite_integral",
+   "level": 1,
+   "prompt": "Evaluate the definite integral of 27*x**2 + 6 with respect to x from 2 to 3",
+   "retried_seed": 1000033,
+   "seed": 30
+  },
+  {
+   "answer": "9",
+   "kind": "definite_integral",
+   "level": 1,
+   "prompt": "Evaluate the definite integral of 2*x + 4 with respect to x from 2 to 3",
+   "retried_seed": 1000111,
+   "seed": 108
+  },
+  {
+   "answer": "3*exp(3) + 483",
+   "kind": "definite_integral",
+   "level": 2,
+   "prompt": "Evaluate the definite integral of 24*x**3 + 3*exp(x) with respect to x from 0 to 3",
+   "retried_seed": 1000004,
+   "seed": 1
+  },
+  {
+   "answer": "3*exp(2) + 125",
+   "kind": "definite_integral",
+   "level": 2,
+   "prompt": "Evaluate the definite integral of 32*x**3 + 3*exp(x) with respect to x from 0 to 2",
+   "retried_seed": 1000007,
+   "seed": 4
+  },
+  {
+   "answer": "-7*x*sin(1) + 15*x - 10 + 7*cos(1) + 7*sin(1)",
+   "kind": "tangent_line",
+   "level": 2,
+   "prompt": "Find the tangent line to f(x) = 5*x**3 + 7*cos(x) at x = 1. Give the line as an expression in x.",
+   "retried_seed": 1000004,
+   "seed": 1
+  },
+  {
+   "answer": "-8*x*sin(2) + 4*x*cos(2) + 20*sin(2)",
+   "kind": "tangent_line",
+   "level": 2,
+   "prompt": "Find the tangent line to f(x) = 4*sin(x) + 8*cos(x) at x = 2. Give the line as an expression in x.",
+   "retried_seed": 1000007,
+   "seed": 4
+  },
+  {
+   "answer": "199/4",
+   "kind": "limit",
+   "level": 1,
+   "prompt": "Evaluate the limit as x approaches -3 of (9*x**4 + 32*x**3 + 15*x**2 - x - 3) / (2*x**2 + 8*x + 6)",
+   "retried_seed": 1000011,
+   "seed": 8
+  },
+  {
+   "answer": "-37/3",
+   "kind": "limit",
+   "level": 1,
+   "prompt": "Evaluate the limit as x approaches -2 of (-8*x**4 - 16*x**3 + 15*x**2 + 33*x + 6) / (2*x**2 + 5*x + 2)",
+   "retried_seed": 1000034,
+   "seed": 31
+  },
+  {
+   "answer": "-40/7 + 11*log(2)/7",
+   "kind": "limit",
+   "level": 2,
+   "prompt": "Evaluate the limit as x approaches 2 of (-6*x**4 + 12*x**3 + 4*x**2 + 11*x*log(x) - 8*x - 22*log(x)) / (3*x**2 - 5*x - 2)",
+   "retried_seed": 1000019,
+   "seed": 16
+  },
+  {
+   "answer": "18/7 + 9*exp(3)/7",
+   "kind": "limit",
+   "level": 2,
+   "prompt": "Evaluate the limit as x approaches 3 of (6*x**2 + 9*x*exp(x) - 18*x - 27*exp(x)) / (2*x**2 - 5*x - 3)",
+   "retried_seed": 1000021,
+   "seed": 18
+  }
+ ],
+ "skipped": []
+}
