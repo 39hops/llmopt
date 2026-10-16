@@ -938,6 +938,14 @@ Per-state syndrome-policy labels (the qLDPC decoder, generalized from the root t
 - `_worker(row: dict, q: 'mp.Queue') -> None`
 - `main(labels: Path, out: Path, workers: int, include_unsolved: bool=False) -> None`
 
+### scripts/gen_prereg_adjudication_pins.py
+Freeze the adjudicator's output on every historical pre-registration that has a booked observations document (rehabilitation phase 2D, step 1).
+
+- `_sha(path: Path) -> str`
+- `adjudicate_pair(prereg_rel: str, obs_rel: str) -> dict` — Run both the library path and the CLI on one pair.
+- `build() -> dict`
+- `main() -> int`
+
 ### scripts/gen_proposer_data.py
 Winning-path (state, legal moves, chosen move) triples for proposer SFT. Every row is verifier-approved: it comes from a SOLVED search, so the chosen move provably leads to a solution. Spec: 2026-07-07-move-proposer-design.md.
 
