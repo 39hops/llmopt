@@ -44,7 +44,15 @@ must fail loudly, not vanish):
   arms            {arm_name: {"description": str}}
   bars            [{"id", "name", "metric", "population",
                     "aggregation", "direction", "value",
-                    "arms": [names], "description"?}]
+                    "arms": [names], "description"?, "fence"?}]
+                  fence (optional, forward-only, phase 2D 2026-10-16):
+                  {"width": <finite nonnegative number>, "unit": str}
+                  — a resolution half-width in the bar's own units.
+                  |observed - value| < width books UNRESOLVED with a
+                  "fence:" reason; equality resolves by the comparison
+                  law; width 0 or no fence is the pre-2D comparison.
+                  Conjuncts and refuted_if_predicate accept the same
+                  object. Never retrofitted onto booked pre-regs.
   receipts        [repo-relative path str] — paths the run WILL write
   operands        OPTIONAL [{name, provider}] — what the measurement
                   algebra consumes and the exact frozen artifact or
@@ -66,6 +74,10 @@ Observations document:
   arms               {name: {"admissible": bool, "reason"?: str}}
   measurements       {str(bar_id): {"value", "metric", "population",
                                     "aggregation", "provenance"?}}
+                     value must be a finite int or float; bool, str,
+                     null, NaN and inf raise MetricContractError
+                     (metric_value_invalid) — a pipeline fault, not
+                     an outcome.
                      a bar with no measurement books UNRESOLVED
                      with reason "not-run". Conjunct predicates read
                      their own keys (e.g. "3:twin20260817").
@@ -80,11 +92,13 @@ Observations document:
 from __future__ import annotations
 
 import json
+import math
 import re
 from dataclasses import dataclass
 from pathlib import Path
 
-from llmopt.lab.metrics import (Metric, MetricContractError, adjudicate)
+from llmopt.lab.metrics import (INVALID_VALUE, Metric, MetricContractError,
+                                adjudicate)
 
 DIRECTIONS = ("below", "above")
 MACHINES = ("mac", "wsl", "w11")
@@ -118,7 +132,8 @@ REQUIRED_KEYS = PREREG_KEYS - {"note", "refuted_if_predicate",
 # blocking bar named. Requires refuted_if_predicate.
 BAR_KEYS = {"id", "name", "metric", "population", "aggregation",
             "direction", "value", "arms", "description", "conjuncts",
-            "gate_class"}
+            "gate_class", "fence"}
+FENCE_KEYS = {"width", "unit"}
 # gate_class (optional): "sanity" (identity/provenance/traversal/
 # finiteness/treatment-contract checks — MAY suppress refutation via
 # refutation_precedence) or "range" (a registered scientific
@@ -154,6 +169,44 @@ def _require(cond: bool, msg: str) -> None:
         raise PreregSchemaError(msg)
 
 
+def _validate_fence(fence, where: str) -> None:
+    """{"width": finite nonnegative real, "unit": non-empty str}."""
+    _require(bool(isinstance(fence, dict) and set(fence) == FENCE_KEYS),
+             f"{where}: fence must be an object with keys "
+             f"{sorted(FENCE_KEYS)}, got {fence!r}")
+    w = fence["width"]
+    _require(bool(not isinstance(w, bool) and isinstance(w, (int, float))
+                  and math.isfinite(w) and w >= 0),
+             f"{where}: fence width must be a finite nonnegative "
+             f"number, got {w!r}")
+    _require(bool(isinstance(fence["unit"], str) and fence["unit"]),
+             f"{where}: fence unit must be a non-empty string")
+
+
+def _fence_width(obj: dict) -> float | None:
+    f = obj.get("fence")
+    return None if f is None else float(f["width"])
+
+
+def _fence_reason(observed: float, bar: float, fence: dict) -> str:
+    return (f"fence: |observed {observed!r} - bar {bar!r}| = "
+            f"{abs(observed - bar)!r} < {fence['width']!r} "
+            f"{fence['unit']}")
+
+
+def _measured(m: dict, where: str) -> float:
+    """The measurement's value as a float, refusing anything that is
+    not a finite real number already (bool, str, null, NaN, inf)."""
+    v = m.get("value")
+    if isinstance(v, bool) or not isinstance(v, (int, float)):
+        raise MetricContractError(
+            INVALID_VALUE, f"{where}: value must be a real number, got "
+            f"{type(v).__name__} {v!r}")
+    if not math.isfinite(v):
+        raise MetricContractError(INVALID_VALUE, f"{where}: value is {v!r}")
+    return float(v)
+
+
 def validate(doc: dict) -> dict:
     """Validate a pre-reg document; returns it unchanged on success."""
     _require(isinstance(doc, dict), "pre-reg must be an object")
@@ -171,8 +224,11 @@ def validate(doc: dict) -> dict:
     _require(bool(doc["registered_prior"]), "registered_prior is empty")
     rp = doc.get("refuted_if_predicate")
     if rp is not None:
-        _require(set(rp) == {"measurement", "direction", "value"},
+        _require(bool({"measurement", "direction", "value"} <= set(rp)
+                      <= {"measurement", "direction", "value", "fence"}),
                  f"refuted_if_predicate keys {sorted(rp)}")
+        if "fence" in rp:
+            _validate_fence(rp["fence"], "refuted_if_predicate")
         _require(rp["direction"] in DIRECTIONS,
                  "refuted_if_predicate direction")
         _require(isinstance(rp["value"], (int, float)),
@@ -258,7 +314,7 @@ def validate(doc: dict) -> dict:
         _require(not unknown,
                  f"bar {bar.get('id')}: unknown keys {sorted(unknown)}")
         missing = (BAR_KEYS - {"description", "conjuncts",
-                               "gate_class"}) - set(bar)
+                               "gate_class", "fence"}) - set(bar)
         _require(not missing,
                  f"bar {bar.get('id')}: missing keys {sorted(missing)}")
         if "gate_class" in bar:
@@ -272,6 +328,8 @@ def validate(doc: dict) -> dict:
         _require(isinstance(bar["value"], (int, float)),
                  f"bar {bar['id']}: value must be a number already on "
                  "the page")
+        if "fence" in bar:
+            _validate_fence(bar["fence"], f"bar {bar['id']}")
         _require(bool(isinstance(bar["arms"], list) and bar["arms"]),
                  f"bar {bar['id']}: names no arms")
         for a in bar["arms"]:
@@ -287,8 +345,13 @@ def validate(doc: dict) -> dict:
             _require(bool({"measurement", "direction", "value"}
                           <= set(cj)
                           <= {"measurement", "direction", "value",
-                              "metric", "population", "aggregation"}),
+                              "metric", "population", "aggregation",
+                              "fence"}),
                      f"bar {bar['id']}: conjunct keys {sorted(cj)}")
+            if "fence" in cj:
+                _validate_fence(cj["fence"],
+                                f"bar {bar['id']} conjunct "
+                                f"{cj.get('measurement')!r}")
             _require(cj["direction"] in DIRECTIONS,
                      f"bar {bar['id']}: conjunct direction")
             _require(isinstance(cj["value"], (int, float)),
@@ -363,16 +426,25 @@ def adjudicate_refutation(prereg: dict, obs: dict,
                         f"{by_id[i]})")
         for i in prec.get("applies_only_if_bars_fire", []):
             _require(i in by_id, f"condition bar {i} not adjudicated")
+            if by_id[i] == "UNRESOLVED":
+                # an unresolved condition leaves the refutation
+                # unresolved; only a definite miss reads NOT-REFUTED
+                return (f"UNRESOLVED (condition: bar {i} UNRESOLVED)")
             if by_id[i] != "FIRE":
                 return (f"NOT-REFUTED (condition: bar {i} "
                         f"{by_id[i]})")
     m = obs.get("measurements", {}).get(rp["measurement"])
     if m is None:
         return None
-    metric = Metric(float(m["value"]), m["metric"], m["population"],
+    value = _measured(m, f"refuted_if_predicate {rp['measurement']}")
+    metric = Metric(value, m["metric"], m["population"],
                     m["aggregation"], provenance=m.get("provenance", ""))
     v = adjudicate(metric, bar_value=float(rp["value"]),
-                   direction=rp["direction"])
+                   direction=rp["direction"], fence=_fence_width(rp))
+    if v == "UNRESOLVED":
+        return ("UNRESOLVED ("
+                + _fence_reason(value, float(rp["value"]), rp["fence"])
+                + ")")
     return "REFUTED" if v == "FIRE" else "NOT-REFUTED"
 
 
@@ -385,8 +457,13 @@ def adjudicate_prereg(prereg: dict, obs: dict) -> list[BarOutcome]:
       3. contrast marked inadmissible   -> UNRESOLVED (its reason)
       4. measurement absent             -> UNRESOLVED "not-run"
       5. measurement contract mismatch  -> raise MetricContractError
+         (metric / population / aggregation, or a value that is not
+         a finite real number)
       6. metrics.adjudicate on the bar AND every conjunct
-                                        -> FIRE only if all hold
+                                        -> FIRE only if all hold;
+         a component inside its registered fence, or a conjunct with
+         no measurement, makes the bar UNRESOLVED (its reason named)
+         whatever the other components read.
     """
     validate(prereg)
     outcomes = []
@@ -423,38 +500,51 @@ def adjudicate_prereg(prereg: dict, obs: dict) -> list[BarOutcome]:
                     else f"metric_{key}_mismatch",
                     f"bar {bar['id']} registered {key}={bar[key]!r}, "
                     f"measurement carries {m[key]!r}")
-        metric = Metric(value=float(m["value"]), metric=m["metric"],
+        value = _measured(m, f"bar {bar['id']}")
+        metric = Metric(value=value, metric=m["metric"],
                         population=m["population"],
                         aggregation=m["aggregation"],
                         provenance=m.get("provenance", ""))
         verdict = adjudicate(metric, bar_value=float(bar["value"]),
                              direction=bar["direction"],
-                             required_population=bar["population"])
+                             required_population=bar["population"],
+                             fence=_fence_width(bar))
+        unresolved: list[str] = []
+        if verdict == "UNRESOLVED":
+            unresolved.append(
+                _fence_reason(value, float(bar["value"]), bar["fence"]))
         for cj in bar.get("conjuncts", []):
             cm = obs.get("measurements", {}).get(cj["measurement"])
             if cm is None:
-                outcomes.append(BarOutcome(
-                    bar["id"], bar["name"], "UNRESOLVED",
-                    (f"conjunct {cj['measurement']}: not-run",)))
+                unresolved.append(f"conjunct {cj['measurement']}: not-run")
                 break
             for key in ("metric", "population", "aggregation"):
                 if cm[key] != cj.get(key, bar[key]):
                     raise MetricContractError(
                         f"metric_{key}_mismatch",
                         f"bar {bar['id']} conjunct {cj['measurement']}")
+            cvalue = _measured(cm, f"bar {bar['id']} conjunct "
+                                   f"{cj['measurement']}")
             cv = adjudicate(
-                Metric(float(cm["value"]), cm["metric"],
+                Metric(cvalue, cm["metric"],
                        cm["population"], cm["aggregation"],
                        provenance=cm.get("provenance", "")),
                 bar_value=float(cj["value"]),
                 direction=cj["direction"],
                 required_population=cj.get("population",
-                                           bar["population"]))
-            if cv == "NO-FIRE":
+                                           bar["population"]),
+                fence=_fence_width(cj))
+            if cv == "UNRESOLVED":
+                unresolved.append(
+                    f"conjunct {cj['measurement']}: "
+                    + _fence_reason(cvalue, float(cj["value"]),
+                                    cj["fence"]))
+            elif cv == "NO-FIRE":
                 verdict = "NO-FIRE"
+        if unresolved:
+            outcomes.append(BarOutcome(bar["id"], bar["name"],
+                                       "UNRESOLVED", tuple(unresolved)))
         else:
             outcomes.append(BarOutcome(bar["id"], bar["name"],
                                        verdict, ()))
-            continue
-        continue
     return outcomes

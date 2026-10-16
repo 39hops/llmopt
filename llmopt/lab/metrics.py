@@ -31,6 +31,7 @@ WHAT THIS ENFORCES
 """
 from __future__ import annotations
 
+import math
 from dataclasses import dataclass, field
 
 # Reason codes are shared with the incident table and the bar
@@ -41,6 +42,7 @@ AGGREGATION_MISMATCH = "metric_aggregation_mismatch"
 METRIC_MISMATCH = "metric_identity_mismatch"
 NOT_ADJUDICABLE = "contrast_not_adjudicable"
 UNIT_MISMATCH = "metric_unit_mismatch"
+INVALID_VALUE = "metric_value_invalid"
 
 
 class MetricContractError(TypeError):
@@ -151,13 +153,41 @@ def cross_population_difference(a: Metric, b: Metric,
     return DescriptiveContrast(a.value - b.value, a, b, purpose)
 
 
+def _finite_real(x, what: str) -> float:
+    """A finite int or float; bool, None, str, NaN and inf are refused.
+
+    Every operand of a bar comparison passes through here before any
+    ordering is evaluated, so an undefined measurement cannot read as
+    NO-FIRE (NaN compares False both ways) or as FIRE (inf compares
+    True against any finite bar).
+    """
+    if isinstance(x, bool) or not isinstance(x, (int, float)):
+        raise MetricContractError(
+            INVALID_VALUE, f"{what} must be a real number, got "
+            f"{type(x).__name__} {x!r}")
+    if not math.isfinite(x):
+        raise MetricContractError(INVALID_VALUE, f"{what} is {x!r}")
+    return x
+
+
 def adjudicate(observed, bar_value: float, direction: str = "below",
-               required_population: str | None = None) -> str:
-    """FIRE / NO-FIRE for a registered bar. Refuses non-evidence.
+               required_population: str | None = None,
+               fence: float | None = None) -> str:
+    """FIRE / NO-FIRE / UNRESOLVED for a registered bar. Refuses non-evidence.
 
     Returns "FIRE" or "NO-FIRE"; raises MetricContractError when the
-    input cannot bear a bar at all — a DescriptiveContrast, or a
-    Metric whose population is not the one the bar registered.
+    input cannot bear a bar at all — a DescriptiveContrast, a Metric
+    whose population is not the one the bar registered, or a value
+    (observed, bar, fence) that is not a finite real number.
+
+    fence (optional) is a resolution half-width in the same units as
+    bar_value. When |observed - bar_value| < fence the measurement
+    sits strictly inside the band the registration declared it
+    cannot resolve, and the return is "UNRESOLVED". A difference
+    exactly equal to the fence is resolved by the comparison law
+    (below: observed <= bar fires; above: observed >= bar fires).
+    fence None or 0 leaves the comparison exactly as it was before
+    the field existed.
     """
     if isinstance(observed, DescriptiveContrast):
         raise MetricContractError(
@@ -173,8 +203,17 @@ def adjudicate(observed, bar_value: float, direction: str = "below",
             POPULATION_MISMATCH,
             f"bar registered for {required_population!r}, observed "
             f"{observed.population!r}")
+    if direction not in ("below", "above"):
+        raise MetricContractError(METRIC_MISMATCH, f"direction {direction!r}")
+    value = _finite_real(observed.value, "observed value")
+    bar = _finite_real(bar_value, "bar value")
+    if fence is not None:
+        width = _finite_real(fence, "fence")
+        if width < 0:
+            raise MetricContractError(
+                INVALID_VALUE, f"fence must be nonnegative, got {width!r}")
+        if abs(value - bar) < width:
+            return "UNRESOLVED"
     if direction == "below":
-        return "FIRE" if observed.value <= bar_value else "NO-FIRE"
-    if direction == "above":
-        return "FIRE" if observed.value >= bar_value else "NO-FIRE"
-    raise MetricContractError(METRIC_MISMATCH, f"direction {direction!r}")
+        return "FIRE" if value <= bar else "NO-FIRE"
+    return "FIRE" if value >= bar else "NO-FIRE"

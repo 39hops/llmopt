@@ -9,7 +9,9 @@ metrics (see llmopt/lab/prereg.py for both schemas). Output is one
 line per bar — FIRE / NO-FIRE / UNRESOLVED with the reason chain —
 and the process exits 0 only if every bar reached FIRE or NO-FIRE,
 so a wrapper can tell "cleanly adjudicated" from "something was
-inadmissible" without parsing prose.
+inadmissible" without parsing prose. A refutation clause that reads
+UNRESOLVED (inside its registered fence, or conditioned on an
+unresolved bar) also exits 2.
 
 A MetricContractError here is NOT an outcome: it means the
 measurement handed to a bar is not the registered quantity (wrong
@@ -48,6 +50,8 @@ def main() -> int:
     r = adjudicate_refutation(prereg, obs, bar_outcomes=outcomes)
     if r is not None:
         print(f"REFUTED-IF: {r}")
+        if r.startswith("UNRESOLVED"):
+            unresolved += 1
     return 0 if unresolved == 0 else 2
 
 
