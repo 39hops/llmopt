@@ -738,6 +738,8 @@ Read-only checkpoint inventory, dependency graph, conservative classification, A
 - `_norm_token(tok: str) -> str`
 - `scan_text_for_refs(text: str, source: str) -> list[dict]` — Every reference form in one text: full path tokens (globs and
 - `_read(p: Path) -> str`
+- `log_citation_sets(repo: Path, lock: dict) -> tuple[set[str], set[str]]` — (locked log paths, RESULTS-cited log tokens) so a log mention
+- `_log_is_cited(rel: str, locked: set[str], cited: set[str]) -> str | None`
 - `collect_references(repo: Path) -> dict[str, list[dict]]` — source group -> refs. Groups: results, docs, code, logs.
 - `load_lock(repo: Path) -> dict`
 - `load_evidence_pins(repo: Path) -> dict[str, str]` — path -> sha256 from the EVIDENCE.md pinned table.
@@ -746,7 +748,8 @@ Read-only checkpoint inventory, dependency graph, conservative classification, A
 - `_family(rel: str) -> str`
 - `_is_receipt_name(name: str) -> bool`
 - `build(repo: Path, tracked: set[str] | None=None, age_days: float=14.0, now: float | None=None, extra_trees: dict[str, Path] | None=None, remote_shas: dict[str, dict[str, str]] | None=None, probe_physical: bool=True) -> dict`
-- `_families(inv, classification, groups, edges, copies, now)`
+- `load_codemap_classes(repo: Path) -> dict[str, str]` — basename -> CODEMAP class from docs/CODEMAP.md table rows.
+- `_families(inv, classification, groups, edges, copies, now, dyn_by_family=None)`
 - `_summary(inv, classification, groups, tracked, mismatches, unresolved)`
 - `baseline(repo: Path, tree: str=CKPT) -> dict[str, dict]`
 - `compare_baseline(before: dict, after: dict) -> dict`

@@ -16,7 +16,7 @@ this also drives `library`; from lab tooling it drives
 comments or plain strings; `via` names the cited caller a file
 inherits its class from when no document names the file itself.
 
-Census: library 194, reproduce-pinned 9, results-cited 500, spec-cited 77, tool-referenced 5, UNCITED 123 (of 908; library rows that are also doc-cited: 188)
+Census: library 194, reproduce-pinned 9, results-cited 504, spec-cited 74, tool-referenced 5, UNCITED 122 (of 908; library rows that are also doc-cited: 190)
 
 ## scratch/
 
@@ -75,11 +75,11 @@ Census: library 194, reproduce-pinned 9, results-cited 500, spec-cited 77, tool-
 | caf | caf_leakage_smoke.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — | — | — |
 | caf | caf_prune.py | UNCITED | — | — | — | — | — | — |
 | caf | caf_qualgate.py | library | RESULTS, specs | RESULTS×3, specs×1 | — | 2 | — | — |
-| cal | cal_dilute.py | UNCITED | — | — | — | — | — | — |
+| cal | cal_dilute.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
 | cal | cal_dk_probe.py | UNCITED | — | — | — | — | 1 | — |
 | calib | calib_dist_birth.sh | spec-cited | specs | specs×4 | — | — | 1 | — |
 | calib | calib_probe.py | library | RESULTS, specs | RESULTS×3, specs×14 | 1 | 2 | — | — |
-| calib | calib_snap_gates.sh | spec-cited | specs | specs×5 | — | — | — | — |
+| calib | calib_snap_gates.sh | results-cited | RESULTS, specs | RESULTS×2, specs×5 | — | — | — | — |
 | callspan | callspan_arms.py | UNCITED | — | — | — | — | — | — |
 | capacity | capacity_meter.py | library | RESULTS, specs | RESULTS×6, specs×4 | 4 | 1 | 1 | — |
 | ce | ce_gate_study.py | spec-cited | specs | specs×3 | — | — | — | — |
@@ -91,7 +91,7 @@ Census: library 194, reproduce-pinned 9, results-cited 500, spec-cited 77, tool-
 | checkers0 | checkers0.py | results-cited | RESULTS, specs | RESULTS×4, specs×1 | — | — | — | — |
 | churn | churn_judge_eval.py | reproduce-pinned | REPRODUCE | REPRODUCE×2 | — | — | — | — |
 | ckpt | ckpt_delete_pass.py | UNCITED | — | — | — | — | — | — |
-| ckpt | ckpt_inventory.py | spec-cited | specs, TOOLING | specs×2, TOOLING×2 | — | 1 | 1 | — |
+| ckpt | ckpt_inventory.py | spec-cited | specs, TOOLING | specs×4, TOOLING×2 | — | 1 | 1 | — |
 | ckpt | ckpt_triage_table.py | UNCITED | — | — | — | — | — | — |
 | clade | clade_stream_d256.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
 | closers | closers_chain.sh | UNCITED | — | — | — | — | — | — |
@@ -238,7 +238,7 @@ Census: library 194, reproduce-pinned 9, results-cited 500, spec-cited 77, tool-
 | gen9 | gen9_19m_cuda_control.sh | UNCITED | — | — | — | — | — | — |
 | gen9 | gen9_45m_fp32_control.sh | UNCITED | — | — | — | — | — | — |
 | gen9 | gen9_45m_probes.sh | UNCITED | — | — | — | — | — | — |
-| gen9 | gen9_pipeline.sh | spec-cited | specs | specs×2 | — | — | 1 | — |
+| gen9 | gen9_pipeline.sh | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | — | 1 | — |
 | genpins | genpins_freeze.py | UNCITED | — | — | — | — | 1 | — |
 | gradmap0 | gradmap0_probe.py | library | RESULTS, specs | RESULTS×2, specs×1 | 1 | — | — | — |
 | gradmap0 | gradmap0_rd2.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | — | — | — |
@@ -247,7 +247,7 @@ Census: library 194, reproduce-pinned 9, results-cited 500, spec-cited 77, tool-
 | grav | grav_posthoc.py | UNCITED | — | — | — | — | — | — |
 | grav | grav_probe.py | library | RESULTS | RESULTS×3 | 2 | — | — | — |
 | grav1b | grav1b_distance.py | UNCITED | — | — | — | — | — | — |
-| grav2 | grav2_spacetime.py | library | via:RESULTS | — | 1 | — | — | p3_grav2.py |
+| grav2 | grav2_spacetime.py | library | RESULTS | RESULTS×2 | 1 | — | — | — |
 | greedy | greedy_first_gate.py | results-cited | via:RESULTS | — | — | 1 | — | night_28.sh |
 | grf | grf_analyze.py | results-cited | RESULTS, specs | RESULTS×5, specs×1 | — | 2 | — | — |
 | grf | grf_analyze2.py | results-cited | RESULTS | RESULTS×4 | — | 1 | — | — |
@@ -454,15 +454,15 @@ Census: library 194, reproduce-pinned 9, results-cited 500, spec-cited 77, tool-
 | merge | merge_space4.sh | UNCITED | — | — | — | — | — | — |
 | merge | merge_space5.sh | UNCITED | — | — | — | — | — | — |
 | metabolic | metabolic_d2.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — | — | — |
-| metabolic | metabolic_hot.py | results-cited | RESULTS | RESULTS×1 | — | 1 | — | — |
-| metabolic | metabolic_v3.py | spec-cited | specs | specs×1 | — | — | — | — |
+| metabolic | metabolic_hot.py | results-cited | RESULTS | RESULTS×4 | — | 1 | — | — |
+| metabolic | metabolic_v3.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — | — | — |
 | metabolic | metabolic_v4.py | UNCITED | — | — | — | — | — | — |
 | metabolic | metabolic_v5.py | results-cited | RESULTS, specs | RESULTS×3, specs×2 | — | 2 | — | — |
 | metallicity | metallicity_diets.py | results-cited | RESULTS | RESULTS×3 | — | 1 | — | — |
 | metallicity1 | metallicity1.sh | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
 | mezo | mezo_signal_desk.py | library | RESULTS | RESULTS×6 | 1 | 1 | — | — |
 | mezo0 | mezo0_launch.sh | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
-| moe | moe_gt1.py | library | REPRODUCE, RESULTS, specs, TOOLING | REPRODUCE×4, RESULTS×13, specs×7, TOOLING×8 | 4 | 6 | 2 | — |
+| moe | moe_gt1.py | library | REPRODUCE, RESULTS, specs, TOOLING | REPRODUCE×4, RESULTS×14, specs×7, TOOLING×8 | 4 | 6 | 2 | — |
 | moe | moe_gt1_arm2.py | library | REPRODUCE, RESULTS, specs, TOOLING | REPRODUCE×6, RESULTS×48, specs×7, TOOLING×31 | 16 | 26 | 2 | — |
 | morning | morning_run.sh | UNCITED | — | — | — | — | — | — |
 | mps | mps_sigma_gates.sh | UNCITED | — | — | — | — | — | — |
@@ -645,13 +645,13 @@ Census: library 194, reproduce-pinned 9, results-cited 500, spec-cited 77, tool-
 | run | run_snap_knee.sh | UNCITED | — | — | — | — | — | — |
 | saturation | saturation_s2.py | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
 | saturation | saturation_s2b.py | spec-cited | specs | specs×1 | — | — | — | — |
-| scaffold | scaffold_review.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — | — | — |
+| scaffold | scaffold_review.py | results-cited | RESULTS, specs | RESULTS×4, specs×1 | — | — | — | — |
 | scorer | scorer_s1_battery.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
 | scorer | scorer_s2_data.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — | — | — |
 | scorer | scorer_s2_train.py | spec-cited | specs | specs×1 | — | — | — | — |
 | seed | seed_audit.py | spec-cited | specs | specs×2 | — | — | — | — |
 | seeds | seeds_ladder_0804.sh | UNCITED | — | — | — | — | — | — |
-| series | series_probe.py | results-cited | specs, via:RESULTS | specs×6 | — | 13 | 2 | poly4_pipeline.sh |
+| series | series_probe.py | results-cited | specs, via:RESULTS | specs×6 | — | 13 | 2 | gen9_pipeline.sh |
 | sg | sg_credit.py | library | RESULTS, specs | RESULTS×12, specs×3 | 9 | 4 | — | — |
 | sg | sg_crosspos_desk.py | library | RESULTS, via:specs | RESULTS×12 | 1 | 2 | 1 | — |
 | sg | sg_failure_desk.py | library | RESULTS, via:specs | RESULTS×7 | 2 | 2 | — | — |
@@ -716,7 +716,7 @@ Census: library 194, reproduce-pinned 9, results-cited 500, spec-cited 77, tool-
 | traj | traj_accept.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — | — | — |
 | tuesday | tuesday_night.sh | UNCITED | — | — | — | — | — | — |
 | ugc0 | ugc0_launch.sh | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
-| umoe | umoe_conserve.py | library | RESULTS, via:specs | RESULTS×4 | 9 | 2 | 1 | — |
+| umoe | umoe_conserve.py | library | RESULTS, via:specs | RESULTS×6 | 9 | 2 | 1 | — |
 | update | update_geometry_census.py | library | RESULTS, specs, via:TOOLING | RESULTS×37, specs×2 | 4 | 4 | 2 | — |
 | v4flash | v4flash_anatomy.py | spec-cited | specs | specs×1 | — | — | — | — |
 | v4flash | v4flash_census.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | — | 1 | — |
@@ -738,7 +738,7 @@ Census: library 194, reproduce-pinned 9, results-cited 500, spec-cited 77, tool-
 | vmasm | vmasm_probe.py | UNCITED | — | — | — | — | — | — |
 | vrm | vrm_ab.py | UNCITED | — | — | — | 1 | — | — |
 | weight | weight_fft_euler.py | UNCITED | — | — | — | — | — | — |
-| wfloor | wfloor_ladder.sh | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — | — | — |
+| wfloor | wfloor_ladder.sh | results-cited | RESULTS, specs | RESULTS×3, specs×2 | — | — | — | — |
 | writercaf1 | writercaf1_qual_driver.sh | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
 | writercaf1 | writercaf1_smoke.sh | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
 | writerdfa1 | writerdfa1_disc_driver.sh | UNCITED | — | — | — | — | — | — |
@@ -847,7 +847,7 @@ Census: library 194, reproduce-pinned 9, results-cited 500, spec-cited 77, tool-
 | build | build_gen7_diet.py | UNCITED | — | — | — | — | — | — |
 | calibrate | calibrate_hce.py | spec-cited | specs | specs×9 | — | — | — | — |
 | cite | cite_lookup.py | tool-referenced | TOOLING | TOOLING×3 | — | 1 | 1 | — |
-| ckpt | ckpt_census.py | library | — | — | 1 | — | — | — |
+| ckpt | ckpt_census.py | library | RESULTS, specs | RESULTS×4, specs×2 | 1 | — | — | — |
 | ckpt | ckpt_manifest.py | library | RESULTS, specs | RESULTS×4, specs×4 | 1 | — | 1 | — |
 | claim | claim_lint.py | results-cited | RESULTS, specs, TOOLING | RESULTS×1, specs×7, TOOLING×5 | — | 3 | 1 | — |
 | consolidate | consolidate_mathnative.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
@@ -887,7 +887,7 @@ Census: library 194, reproduce-pinned 9, results-cited 500, spec-cited 77, tool-
 | harvest | harvest_frontier.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — | — | — |
 | list | list_uncurated.py | spec-cited | specs | specs×6 | — | — | — | — |
 | liverun | liverun.py | library | RESULTS, specs, TOOLING | RESULTS×18, specs×5, TOOLING×3 | — | 15 | 1 | — |
-| log | log_hygiene.py | library | RESULTS, specs | RESULTS×3, specs×6 | 1 | 1 | — | — |
+| log | log_hygiene.py | library | RESULTS, specs | RESULTS×3, specs×7 | 2 | 1 | — | — |
 | markov | markov_eval.py | UNCITED | — | — | — | — | — | — |
 | markov | markov_prior.py | spec-cited | specs | specs×3 | — | — | — | — |
 | mine | mine_highways.py | UNCITED | — | — | — | — | 1 | — |

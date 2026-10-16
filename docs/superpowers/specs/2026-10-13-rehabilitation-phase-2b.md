@@ -190,6 +190,22 @@ Acceptance: the sheet lists every file under `checkpoints/`; the sum of
 logical sizes; nothing on disk changed (inventory sha list identical
 before and after).
 
+**DONE 2026-10-16 (phase 2E, print-only).** `scripts/ckpt_census.py`
+(tests/test_ckpt_census.py, 30 cases) inventories checkpoints/, builds
+the reference graph (RESULTS, lock, EVIDENCE pins, MANIFEST, other
+ledgers, handoffs, specs, pre-regs, code, jobs, cited logs, merge and
+sha sidecars), classifies conservatively, probes duplicate groups with
+F_LOG2PHYS_EXT, and writes the family sheet; a baseline manifest hashed
+before and after analysis is identical. Booked as OBSERVATION
+CHECKPOINT-CENSUS-0 (RESULTS L78395): 70.51 GB, FROZEN 46.77,
+ESSENTIAL 4.66, DUPLICATE 0.12 (verified distinct blocks), CANDIDATE
+0.85 (estimate), UNKNOWN 18.10 (loop-parameterized patterns, scripts
+named); 29 frozen pairs on distinct blocks, 2.48 GB clone opportunity;
+container free 57.2 GB. Deviation from item 1: a new script rather
+than an extension of log_hygiene.py, because the logs classifier's
+walk and citation forms are frozen by its own tests; the citation
+builders are reused. Nothing moved or deleted.
+
 ## 2F. Artifact retention and disk reclamation protocol (P2-S, P2-T, P2-R execution)
 
 Requires explicit Artin GO per family and per step; the logs doctrine

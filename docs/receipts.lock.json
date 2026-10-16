@@ -5585,6 +5585,21 @@
    "source": "results",
    "tracked": false
   },
+  "logs/rehab-2e/ckpt_sha_3080.txt": {
+   "bytes": 41994,
+   "exists": true,
+   "local_only": true,
+   "sha256": "e326c9db2a583e67a4f49196268bac5411f18660b68962f62e4374559ee66b05",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/rehab-2e/run4/SHEET.md": {
+   "bytes": 22348,
+   "exists": true,
+   "sha256": "af653c17dc7264008739b153892b657a27105db7cf569aa6872e22fb1f5e5686",
+   "source": "results",
+   "tracked": true
+  },
   "logs/revive/crown_gates.log": {
    "bytes": 596,
    "exists": true,

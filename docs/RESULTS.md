@@ -78391,3 +78391,151 @@ replay. Bounded follow-up, not armed: add the manifest dict to the
 `torch.save` payload in `scripts/train_calculus.py` and read it in
 `llmopt/train/task_vector.py:load_adapter` with a legacy branch for
 the three July files; a test asserts round trip. No retraining.
+
+## OBSERVATION CHECKPOINT-CENSUS-0: the Mac `checkpoints/` tree holds 1,159 files, 70.51 GB logical and allocated (no clones, hard links, symlinks or snapshots); a conservative read-only census classifies 46.77 GB FROZEN, 4.66 GB ESSENTIAL, 0.12 GB DUPLICATE (verified distinct blocks), 0.85 GB CANDIDATE (estimate) and 18.10 GB UNKNOWN (every byte of it reached by a loop-parameterized path pattern in a named script); 29 frozen-with-frozen duplicate groups occupy 2.48 GB of separately allocated blocks; the container has 57.2 GB free, not 13 GiB (2026-10-16, Mac; rehabilitation phase 2E; nothing moved, deleted, cloned, downloaded or trained)
+
+**Instrument.** `scripts/ckpt_census.py` at a43dbd8c, run as
+`--extra-tree repair=~/code/llmopt-repair/checkpoints --remote-shas
+3080=logs/rehab-2e/ckpt_sha_3080.txt`, output logs/rehab-2e/run4/
+(SHEET.md, families.json, duplicates.json, summary.json force-added
+as receipts; inventory.jsonl 1.4 MB, graph.json 1.9 MB,
+baseline_manifest.json, absent_cited.json, copies.json local-only).
+A baseline manifest of every path, size and sha256 was hashed before
+analysis and again after: changed 0, missing 0, added 0. Tests:
+tests/test_ckpt_census.py, 30 synthetic-tree cases.
+
+**Free space, re-measured (read-only).** APFS container disk3: 494.4
+GB ceiling, 437.2 GB in use by volumes, 57.2 GB not allocated. Data
+volume 412.9 GB consumed. `tmutil listlocalsnapshots` on / and on
+/System/Volumes/Data: none. The audit's 13 GiB figure (2026-10-13)
+predates the evidence recovery and the sessions since; the 30B
+vehicle (about 17 GB) fits today without any reclamation. Repository
+bytes outside .git/.venv/.lake: 0.44 GB tracked (3,378 files), 82.09
+GB untracked (52,275 files), of which checkpoints 70.35 GB untracked
+plus 0.16 GB tracked (45 files), logs 8.26 GB, data 1.83 GB. Sized
+separately: scratch/leancheck/.lake 7.75 GB (regenerable Lean cache),
+.venv 1.43 GB, .venv-k2 0.67 GB, .venv_teacher 0.62 GB, .venv-anim
+0.25 GB, .git 0.40 GB, ~/.cache/huggingface 0.27 GB. Sibling trees:
+~/code/llmopt-repair 8.01 GB (7.76 GB checkpoints: the tracked 45
+plus the untracked repaired atomtraj1 snapshots BOARD line 5 says to
+keep), ~/code/llmopt-audit-2026-10-13 5.6 MB. On the 3080 (read-only
+listing): ~/code/llmopt 41.13 GB with 415 checkpoint files / 11.28 GB,
+~/code/llmopt_dump 1.92 GB (a venv and data/, no checkpoints),
+llmopt_wsl_backup empty, 720 GB free on its disk.
+
+**Physical accounting.** For every file logical bytes equal
+`st_blocks * 512`; `nlink` is 1 everywhere; no symlinks. Every
+duplicate group (35 groups, 2.60 GB redundant logical) was probed
+with fcntl F_LOG2PHYS_EXT at logical offsets 0 and mid-file: all 35
+groups sit on distinct device offsets, so none is an APFS clone and
+`du` is not double counting. Files with unique content cannot be
+checked for partial extent sharing this way; their sizes are therefore
+reported as estimates. Snapshot-retained blocks: none (no local
+snapshots exist). Recovery from a future removal: verified only for
+DUPLICATE rows on distinct blocks (0.12 GB); CANDIDATE bytes (0.85 GB)
+are an estimate; UNKNOWN bytes carry no estimate.
+
+**Classification law (most protective wins).** FROZEN: sha-locked,
+pinned in docs/EVIDENCE.md, cited by RESULTS by path, parent
+directory, basename or stem of eight or more characters, confirmed in
+checkpoints/MANIFEST.jsonl, a sha-verified parent of a FROZEN merge
+output, a sidecar of a FROZEN file, named by a locked or RESULTS-cited
+log, or carrying a killed-run receipt name. ESSENTIAL: git-tracked or
+named by a full path literal in code, jobs, README, REPRODUCE,
+FINDINGS, BOARD, EVIDENCE prose, CODEMAP, handoffs, specs or pre-regs.
+DUPLICATE: byte-identical to a FROZEN or ESSENTIAL file, canonical
+copy named, with every unresolved reach kept as a dependency. UNKNOWN:
+under a code path pattern with a literal fragment past checkpoints/
+(for example `checkpoints/mathnative_${name}.pt`), a bare basename in
+code, a symlink, an orphan sidecar, or recent. CANDIDATE: reached by
+nothing the scanner knows and older than 14 days. Generic loaders that
+open any name under checkpoints/ (24 code sites) are listed, not
+applied per file. A mention in an uncited log is a note, not a reach.
+Known limits: a verdict can name a checkpoint by an rjob tag or a
+nickname the scanner does not see; the stem rule is a prose match;
+"CANDIDATE" is a triage queue, never a delete list.
+
+**Result by class.** FROZEN 550 files / 46.77 GB (388 files / 34.34 GB
+by RESULTS path or directory, 84 / 12.10 GB only through a cited or
+locked log naming them, 54 / 0.25 GB EVIDENCE pins, 13 tracked, 11
+MANIFEST). ESSENTIAL 327 / 4.66 GB. DUPLICATE 6 / 0.12 GB: five root
+copies of files whose canonical lives under checkpoints/confirmed/ or
+atomtraj1_smoke/ (cal_dilute_30_s1, grav2_contract_s1, grav2_ctl_s1,
+umoe_gravmoe_s2, one atomtraj1 probe step) and step_lora_grpo_c010.pt
+= step_lora_grpo.pt.wsl; four of the six are still opened by root
+path from scratch/cal_dilute.py, scratch/grav2_spacetime.py,
+scratch/scaffold_review.py or scratch/umoe_conserve.py, so removal
+needs a relink first. CANDIDATE 42 / 0.85 GB: eleven 76 MB 19m-class
+single files (smoke_/smoke4_ mathnative_19m_mw1_active_final,
+vmasm_19m, vmasm2_19m, dual_19m, phys_energy_19m, port_control,
+template_zero, fp64_birth_f32, two _attempt3 atomtraj1 step files),
+the k3_expert_l70_e512 packed weights (6 files, 0.02 GB), ten gt7_*
+and twelve ex1_* small json/pt sidecars, fourier3_algdiet_v1.pt.
+UNKNOWN 234 / 18.10 GB, all by dynamic prefix: `mathnative_` 81 files
+/ 13.64 GB (reached by scratch/calib_snap_gates.sh, spec-cited;
+scratch/wfloor_ladder.sh, results-cited; scratch/gen9_pipeline.sh,
+spec-cited; six UNCITED gate chains for the infixtwin subset; largest
+members mathnative_400m_gen4_ep1 1.68 GB, _200m_gen4_ep1 0.81 GB,
+_110m_gen4_std_3ep 0.45 GB, 34 grpo candidate files at 0.20 GB each),
+`metabolic_` 9 / 1.98 GB (scratch/metabolic_hot.py, jobs/revmetab.cmd),
+`gallery19m_` 7 / 0.53 GB (birth19m_atoms_* drivers, results-cited),
+`metab_v3_` 0.36 GB, `sym_*` 43 / 0.30 GB, `snap19m_q` 0.30 GB,
+`fmt_` 0.27 GB, `seedvar_` 0.23 GB, `cc_` 0.15 GB, `vrm_` 0.15 GB.
+
+**Duplicates, frozen with frozen (clone candidates).** 29 groups,
+2.48 GB, every copy FROZEN, every group on distinct blocks: the
+fmel2/A/C/h*.pt = rdc1/A/C/h*.pt = oma1/A/C/h*.pt triplets, the
+writerdfa1/qual_* step_00000.pt quadruplets, the atomtraj1_smoke
+pair. An APFS clone (`cp -c` into the cited path) keeps paths, bytes,
+shas and mtimes and frees 2.48 GB, but rewrites inodes under cited
+paths and needs its own GO.
+
+**Independent copies.** The 3080 holds byte-identical copies of all
+48 msearch files (merge_space evidence), 6 mathnative, 3 gallery19m, 3
+proposer and 1 quat file; the repair worktree holds the 45 tracked
+files plus 1 mathnative. No other family has a second copy anywhere
+the census can see. 23 RESULTS-cited checkpoint paths are absent from
+the Mac tree: atomtraj1/* (present in the repair worktree, as BOARD
+records), prose fragments (`checkpoints/eval`, `/logs`, `/receipt(s)`,
+`floorhk_d`, `oma1/A/C/h0001` without extension, `phase19m/m000003.pt`
+in a naming example), the `*_smoke` directories that smoke runs
+delete, and `fmel1` (a run the ledger says never fired). No evidence
+gap beyond the known atomtraj1 relocation.
+
+**Family decision sheet (every family in logs/rehab-2e/run4/SHEET.md;
+the rows that carry a decision).**
+
+| family | files | GB | status | proposed action | benefit (confidence) |
+|---|---:|---:|---|---|---:|
+| mathnative (root) | 141 | 20.82 | 34 FROZEN, 26 ESSENTIAL, 81 UNKNOWN by `mathnative_${name}` loops | HOLD; 2F pre-step resolves each loop's name list, then re-census | 0 (none) |
+| fmel2, rdc1, oma1 (A/C/h*.pt) | 101 | 9.01 | all FROZEN; 100 triplet-identical files | keep; clone candidates 2.48 GB with writerdfa1/atomtraj1_smoke | 2.48 lossless (high, needs GO) |
+| phase19m, backsched19m | 38 | 8.32 | all FROZEN (directory cited) | keep | 0 |
+| tourn, svp, crown, rev2, merged, sat, exchange, growdecomp, union, floorhk, warmbirth, p3 | 93 | 11.13 | all FROZEN | keep | 0 |
+| sgwriter1, frozenbb1, writercaf1, sgbb7, writerdfa1, fme1, atomtraj1_smoke | 121 | 7.18 | all FROZEN | keep | 0 |
+| metabolic, metab | 17 | 4.44 | 6 FROZEN, 1 ESSENTIAL, 10 UNKNOWN (metabolic_hot.py, revmetab.cmd, metabolic_v3.py) | HOLD; same pre-step | 0 (none) |
+| gallery19m | 28 | 2.04 | 16 FROZEN, 5 ESSENTIAL, 7 UNKNOWN (birth19m drivers) | HOLD | 0 (none) |
+| _attempt3_QUALIFIED_prefold_atomtraj1_smoke | 9 | 0.68 | 6 FROZEN, 1 DUPLICATE, 2 CANDIDATE | per-row review of the three non-frozen steps | 0.23 (mixed) |
+| fmt, snap19m, sym, seedvar, cc, vrm | 102 | 1.94 | mixed, UNKNOWN by pattern | HOLD | 0 (none) |
+| eleven single 19m files + fp64, phys, smoke | 11 | 0.85 | CANDIDATE | decide: archive off-volume or delete after review | 0.85 (estimate) |
+| confirmed/ and root twins (cal_dilute_30_s1, grav2_*, umoe_gravmoe_s2, step_lora_grpo_c010) | 6 | 0.12 | DUPLICATE, canonical named | relink the four scratch readers to checkpoints/confirmed/, then remove | 0.12 (verified) |
+| msearch, proposer, quat, floorhk, moe_gt1 pins | 60 | 0.33 | FROZEN; 3080 holds 52 identical copies | keep | 0 |
+
+**Savings, separated.** Verified reclaimable today: 0.12 GB (six
+DUPLICATE rows, distinct blocks, after relinking four readers).
+Verified lossless, needs GO: 2.48 GB (clone the 29 frozen pairs).
+Estimate, needs a decision: 0.85 GB CANDIDATE. No estimate: 18.10 GB
+UNKNOWN until the loop name lists are resolved. Outside checkpoints/,
+also decisions rather than facts: .lake 7.75 GB (regenerable), the
+repair worktree's 7.6 GB untracked atomtraj1 snapshots (BOARD: keep
+until a handoff decides), three secondary venvs 1.54 GB.
+
+**Recommended 2F order and approval boundaries.** (1) Resolve the
+dynamic patterns: for each of the 127 dynamic-prefix sites read the
+loop or argument list and emit the exact names it can produce, then
+re-run the census; expected to move most of the 18.10 GB into FROZEN,
+ESSENTIAL or CANDIDATE; read-only. (2) Relink the four scratch readers
+to the confirmed/ canonical paths and remove the six DUPLICATE rows:
+0.12 GB, per-row GO. (3) Clone the 29 frozen pairs: 2.48 GB, one GO,
+sha and mtime check after. (4) Decide the 0.85 GB CANDIDATE list
+family by family. (5) Everything UNKNOWN stays until (1) lands.
+Nothing in this entry authorizes a removal.
