@@ -705,9 +705,61 @@ def _resolve_maker(kind: str):
     return _MAKERS[kind]
 
 
+class DatasetExhausted(RuntimeError):
+    """make_dataset could not find a fresh prompt within its rejection
+    budget: every cell it cycles through is exhausted (or excluded).
+
+    Carries the sampling state at the moment of failure so the
+    exhausted cell is diagnosable without re-running: the requested
+    ``n``, how many rows were ``produced`` (also available as
+    ``partial``), the ``seed``, the number of maker ``attempts`` made,
+    the ``exclude_size``, the cells (kind, level) cycled, per-cell
+    attempt and reject counts, and the rejection cap that fired.
+    """
+
+    def __init__(self, *, n, produced, seed, attempts, exclude_size, cells,
+                 attempts_by_cell, rejects_by_cell, consecutive_rejects,
+                 max_consecutive_rejects, partial):
+        self.n = n
+        self.produced = produced
+        self.seed = seed
+        self.attempts = attempts
+        self.exclude_size = exclude_size
+        self.cells = tuple(cells)
+        self.attempts_by_cell = dict(attempts_by_cell)
+        self.rejects_by_cell = dict(rejects_by_cell)
+        self.consecutive_rejects = consecutive_rejects
+        self.max_consecutive_rejects = max_consecutive_rejects
+        self.partial = list(partial)
+        per_cell = ", ".join(
+            f"{kind} level {level}: {self.rejects_by_cell[(kind, level)]}"
+            f"/{self.attempts_by_cell[(kind, level)]} rejected"
+            for kind, level in self.cells)
+        super().__init__(
+            f"make_dataset exhausted: {consecutive_rejects} consecutive "
+            f"duplicate-or-excluded prompts (cap {max_consecutive_rejects}) "
+            f"after {attempts} attempts; produced {produced} of n={n}, "
+            f"seed={seed}, exclude={exclude_size}; cells [{per_cell}]")
+
+
+def _default_rejection_cap(n_cells: int) -> int:
+    """Rejections in a row that mean the cycled cells are exhausted.
+
+    make_dataset cycles kinds x levels, so one full cycle touches every
+    cell once; 100 full cycles with no fresh prompt is exhaustion. The
+    margin is wide against legitimate near-saturation: the 9000-row
+    integrate-only training shape (train_calculus, 300 excluded)
+    measured 6548 rejects in 15548 attempts with a longest run of 11
+    (2026-10-16), and the default three-kind three-level shape at
+    n=200 measured a longest run of 1.
+    """
+    return 100 * n_cells
+
+
 def make_dataset(
     n: int, *, kinds=("differentiate", "integrate", "limit"),
     levels=(1, 2, 3), seed: int = 0, exclude: frozenset[str] = frozenset(),
+    max_consecutive_rejects: int | None = None,
 ) -> list[Problem]:
     """n unique problems cycling kinds x levels, deterministic per seed.
 
@@ -715,17 +767,59 @@ def make_dataset(
     generate the eval set first, then pass its prompts here so the train
     set provably contains no eval problem (random seeds alone don't
     guarantee it: the low-difficulty space is small enough to collide).
+
+    Item ``i`` (counting rejected attempts) draws seed
+    ``seed * 1_000_000 + i``; this mapping and the makers' own
+    ``seed + 1_000_003`` retries are frozen, so every historical dataset
+    reproduces byte-for-byte (pinned in tests/fixtures/mathgen_pins.json).
+
+    Generation is bounded: when ``max_consecutive_rejects`` attempts in
+    a row (default ``100 * len(kinds) * len(levels)``) yield only
+    duplicate or excluded prompts, ``DatasetExhausted`` is raised with
+    the sampling diagnostics. Nothing is returned partially; the rows
+    produced so far ride on the exception as ``partial``.
     """
+    if not isinstance(n, int) or isinstance(n, bool) or n < 0:
+        raise ValueError(f"n must be a non-negative int, got {n!r}")
+    kinds = tuple(kinds)
+    levels = tuple(levels)
+    if not kinds:
+        raise ValueError("kinds must name at least one problem kind")
+    if not levels:
+        raise ValueError("levels must contain at least one level")
+    makers = {kind: _resolve_maker(kind) for kind in kinds}  # KeyError early
+    cells = tuple((kind, level) for level in levels for kind in kinds)
+    if max_consecutive_rejects is None:
+        max_consecutive_rejects = _default_rejection_cap(len(cells))
+    if not isinstance(max_consecutive_rejects, int) or max_consecutive_rejects < 1:
+        raise ValueError("max_consecutive_rejects must be a positive int, "
+                         f"got {max_consecutive_rejects!r}")
     out = []
     seen = set(exclude)
+    attempts_by_cell = dict.fromkeys(cells, 0)
+    rejects_by_cell = dict.fromkeys(cells, 0)
+    run = 0
     i = 0
     while len(out) < n:
         kind = kinds[i % len(kinds)]
         level = levels[(i // len(kinds)) % len(levels)]
-        p = _resolve_maker(kind)(level, seed * 1_000_000 + i)
+        p = makers[kind](level, seed * 1_000_000 + i)
         i += 1
+        attempts_by_cell[(kind, level)] += 1
         if p.prompt in seen:
+            rejects_by_cell[(kind, level)] += 1
+            run += 1
+            if run >= max_consecutive_rejects:
+                raise DatasetExhausted(
+                    n=n, produced=len(out), seed=seed, attempts=i,
+                    exclude_size=len(exclude), cells=cells,
+                    attempts_by_cell=attempts_by_cell,
+                    rejects_by_cell=rejects_by_cell,
+                    consecutive_rejects=run,
+                    max_consecutive_rejects=max_consecutive_rejects,
+                    partial=out)
             continue
+        run = 0
         seen.add(p.prompt)
         out.append(p)
     return out
