@@ -163,15 +163,55 @@ def test_dynamic_path_prefix_in_code_makes_matches_unknown(repo):
     _w(repo / "checkpoints/run_s2.pt", b"2" * 10)
     _w(repo / "checkpoints/unrelated.pt", b"3" * 10)
     _w(repo / "scratch/drv.py",
-       'p = f"checkpoints/run_s{seed}.pt"\nq = "checkpoints/" + name\n')
+       'p = f"checkpoints/run_s{seed}.pt"\nq = "checkpoints/" + name\n'
+       'r = os.path.join("checkpoints", name)\n')
     inv = run(repo)
     assert cls(inv, "run_s1.pt") == "UNKNOWN"
     assert "dynamic" in why(inv, "run_s1.pt")
     assert cls(inv, "run_s2.pt") == "UNKNOWN"
-    # the bare "checkpoints/" + name form reaches every file: nothing
-    # under the tree may be CANDIDATE while such a construction exists
-    assert cls(inv, "unrelated.pt") == "UNKNOWN"
-    assert any(e["kind"] == "dynamic-prefix" for e in inv["graph"]["unresolved"])
+    # a generic loader ("checkpoints/" + name, os.path.join) reaches
+    # every file by construction and says nothing about any one of
+    # them: it is listed, not applied per file
+    assert cls(inv, "unrelated.pt") == "CANDIDATE"
+    kinds = {e["kind"] for e in inv["graph"]["unresolved"]}
+    assert "dynamic-prefix" in kinds and "generic-loader" in kinds
+    generic = [e for e in inv["graph"]["unresolved"] if e["kind"] == "generic-loader"]
+    assert len(generic) == 1 and generic[0]["source"] == "scratch/drv.py"
+    assert inv["summary"]["generic_loaders"] == 1
+
+
+def test_log_mention_counts_only_when_the_log_is_locked_or_cited(repo):
+    _w(repo / "checkpoints/by_locked.pt", b"1" * 10)
+    _w(repo / "checkpoints/by_cited.pt", b"2" * 10)
+    _w(repo / "checkpoints/by_exhaust.pt", b"3" * 10)
+    _w(repo / "logs/a/run.log", "saved checkpoints/by_locked.pt\n")
+    _w(repo / "logs/b/run.log", "saved checkpoints/by_cited.pt\n")
+    _w(repo / "logs/c/run.log", "saved checkpoints/by_exhaust.pt\n")
+    _w(repo / "docs/receipts.lock.json", json.dumps({"receipts": {
+        "logs/a/run.log": {"exists": True, "sha256": "0" * 64}}}))
+    _w(repo / "docs/RESULTS.md", "receipt logs/b/run.log booked")
+    inv = run(repo)
+    assert cls(inv, "by_locked.pt") == "FROZEN"
+    assert "locked receipt" in why(inv, "by_locked.pt")
+    assert cls(inv, "by_cited.pt") == "FROZEN"
+    assert "cited receipt" in why(inv, "by_cited.pt")
+    assert cls(inv, "by_exhaust.pt") == "UNKNOWN"
+    assert "uncited log" in why(inv, "by_exhaust.pt")
+
+
+def test_absent_cited_paths_are_reported_with_other_tree_presence(repo, tmp_path):
+    _w(repo / "checkpoints/present.pt", b"p" * 10)
+    other = tmp_path / "other" / "checkpoints"
+    _w(other / "gone_dir" / "x.pt", b"x" * 10)
+    _w(repo / "docs/RESULTS.md",
+       "checkpoints/gone_dir/x.pt and checkpoints/never/ were cited")
+    inv = ci.build(repo, tracked=set(), now=2_000_000_000.0,
+                   extra_trees={"other": other})
+    absent = {a["target"]: a for a in inv["absent_cited"]}
+    assert "checkpoints/gone_dir/x.pt" in absent
+    assert absent["checkpoints/gone_dir/x.pt"]["present_in"] == ["other"]
+    assert absent["checkpoints/never"]["present_in"] == []
+    assert all(a["sources"] for a in inv["absent_cited"])
 
 
 def test_job_and_shell_files_are_scanned(repo):

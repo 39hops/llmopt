@@ -26,9 +26,21 @@ Classes (most protective wins):
   CANDIDATE  reached by nothing the scanner knows, older than
              --age-days, not a sidecar, not under a dynamic prefix.
   UNKNOWN    everything else: a bare basename in code, a file under a
-             dynamically constructed path prefix, a symlink, a sidecar
-             whose primary is missing, an unparsable JSON sidecar, a
-             recent uncited file.
+             dynamically constructed path prefix that names at least
+             one literal character past "checkpoints/", a file named
+             only by an uncited log, a symlink, a sidecar whose
+             primary is missing, an unparsable JSON sidecar, a recent
+             uncited file.
+
+Generic loaders ("checkpoints/" + name, os.path.join("checkpoints",
+x), f"checkpoints/{name}") reach every file by construction and
+carry no information about any one of them; they are counted and
+listed (summary.generic_loaders, graph.unresolved kind
+generic-loader) but not applied per file. A log that names a
+checkpoint path counts as a FROZEN reference only when that log is
+itself sha-locked or cited by RESULTS; a mention in uncited log
+exhaust leaves the file UNKNOWN. Cited paths absent from the tree are
+listed (absent_cited) with the other trees they were found in.
 
 Physical storage: for every duplicate group the first and middle
 extents of each copy are read with fcntl F_LOG2PHYS_EXT; equal keys
@@ -53,6 +65,7 @@ import os
 import re
 import struct
 import subprocess
+import sys
 import time
 from pathlib import Path
 
@@ -83,6 +96,9 @@ PATH_TOKEN = re.compile(r"checkpoints/[\w\-./{},*]+")
 DYNAMIC = re.compile(
     r"checkpoints/[\w\-./]*(?:\{|%|\$|\"\s*\+|'\s*\+|\"\s*%|'\s*%|\.format|f\")")
 DYNAMIC_PREFIX = re.compile(r"checkpoints/([\w\-./]*)")
+# os.path.join("checkpoints", x), Path("checkpoints") / x, ROOT / "checkpoints" / x
+JOIN_FORMS = re.compile(
+    r"""join\(\s*["']checkpoints["']|Path\(\s*["']checkpoints["']\s*\)\s*/|/\s*["']checkpoints["']\s*/\s*[A-Za-z_]""")
 
 
 # --------------------------------------------------------------- hashing
@@ -187,15 +203,22 @@ def scan_text_for_refs(text: str, source: str) -> list[dict]:
                 refs.append({"kind": "dir", "target": parent,
                              "source": source})
             else:
-                refs.append({"kind": "dynamic-prefix", "target": "checkpoints",
-                             "source": source})
+                # brace or glob directly under checkpoints/: the DYNAMIC
+                # pass below records the literal fragment, if any
+                pass
             continue
         refs.append({"kind": "path", "target": tok, "source": source})
     for m in DYNAMIC.finditer(text):
         pm = DYNAMIC_PREFIX.match(m.group(0))
-        prefix = "checkpoints/" + (pm.group(1) if pm else "")
-        prefix = prefix.rstrip("/") if prefix != "checkpoints/" else "checkpoints"
-        refs.append({"kind": "dynamic-prefix", "target": prefix,
+        frag = (pm.group(1) if pm else "").rstrip("/")
+        if frag:
+            refs.append({"kind": "dynamic-prefix",
+                         "target": "checkpoints/" + frag, "source": source})
+        else:
+            refs.append({"kind": "generic-loader", "target": "checkpoints",
+                         "source": source})
+    if JOIN_FORMS.search(text):
+        refs.append({"kind": "generic-loader", "target": "checkpoints",
                      "source": source})
     for b in set(re.findall(
             r"(?<![\w/])([\w][\w\-.]*\.(?:%s))\b" % "|".join(BASENAME_EXTS),
@@ -209,6 +232,34 @@ def _read(p: Path) -> str:
         return p.read_text(errors="replace")
     except OSError:
         return ""
+
+
+def log_citation_sets(repo: Path, lock: dict) -> tuple[set[str], set[str]]:
+    """(locked log paths, RESULTS-cited log tokens) so a log mention
+    of a checkpoint can be weighed by the log's own standing."""
+    locked = {p for p, rec in lock.items()
+              if p.startswith("logs/") and rec.get("sha256")}
+    cited: set[str] = set()
+    try:
+        sys.path.insert(0, str(repo / "scripts"))
+        import log_hygiene as lh
+        cited = lh.build_citation_set(repo / "docs/RESULTS.md")
+    except Exception:
+        text = _read(repo / "docs/RESULTS.md")
+        cited = {_norm_token(m.group(0)) for m in re.finditer(r"logs/[\w\-./]+", text)}
+    return locked, cited
+
+
+def _log_is_cited(rel: str, locked: set[str], cited: set[str]) -> str | None:
+    if rel in locked:
+        return "locked receipt"
+    p = Path(rel)
+    for anc in [p, *p.parents]:
+        if str(anc) in ("logs", "."):
+            break
+        if str(anc) in cited:
+            return "cited receipt"
+    return None
 
 
 def collect_references(repo: Path) -> dict[str, list[dict]]:
@@ -350,7 +401,10 @@ def build(repo: Path, tracked: set[str] | None = None, age_days: float = 14.0,
     edges: list[dict] = []
     unresolved: list[dict] = []
     dynamic_prefixes: list[tuple[str, str]] = []
+    generic_loaders: set[str] = set()
     mismatches: list[str] = []
+    locked_logs, cited_logs = log_citation_sets(repo, lock)
+    absent_targets: dict[str, set] = collections.defaultdict(set)
 
     def hit(rel, cls, reason, source, kind):
         hits[rel].append((cls, reason))
@@ -360,6 +414,12 @@ def build(repo: Path, tracked: set[str] | None = None, age_days: float = 14.0,
     def apply_refs(group: str, cls: str, label: str):
         for r in refs[group]:
             k = r["kind"]
+            if group == "logs":
+                standing = _log_is_cited(r["source"], locked_logs, cited_logs)
+                if standing is None:
+                    cls, label = "UNKNOWN", "uncited log"
+                else:
+                    cls, label = "FROZEN", standing
             if k == "stems":
                 for w in r["words"]:
                     for rel in by_stem.get(w, []):
@@ -385,6 +445,7 @@ def build(repo: Path, tracked: set[str] | None = None, age_days: float = 14.0,
                     if not matched and group != "logs":
                         unresolved.append({"kind": "absent-path", "target": t,
                                            "source": r["source"]})
+                        absent_targets[t].add(r["source"])
             elif k == "dir":
                 prefix = t + "/"
                 for rel2 in inv:
@@ -404,11 +465,17 @@ def build(repo: Path, tracked: set[str] | None = None, age_days: float = 14.0,
             elif k == "dynamic-prefix":
                 if group in ("code",):
                     dynamic_prefixes.append((t, r["source"]))
+            elif k == "generic-loader":
+                if group in ("code",):
+                    generic_loaders.add(r["source"])
 
     apply_refs("results", "FROZEN", "RESULTS")
     apply_refs("docs", "ESSENTIAL", "docs")
     apply_refs("code", "ESSENTIAL", "code")
-    apply_refs("logs", "ESSENTIAL", "logs")
+    apply_refs("logs", "UNKNOWN", "uncited log")
+    for src in sorted(generic_loaders):
+        unresolved.append({"kind": "generic-loader", "target": "checkpoints",
+                           "source": src})
 
     for prefix, source in sorted(set(dynamic_prefixes)):
         unresolved.append({"kind": "dynamic-prefix", "target": prefix,
@@ -622,13 +689,34 @@ def build(repo: Path, tracked: set[str] | None = None, age_days: float = 14.0,
                 m[sha_to_rel[osha]].append(opath)
         copies[name] = dict(m)
 
+    # cited paths absent from this tree: present in another tree?
+    other_paths: dict[str, set[str]] = {}
+    for name, path in (extra_trees or {}).items():
+        base = Path(path)
+        other_paths[name] = set()
+        if base.exists():
+            for dp, _, fns in os.walk(base):
+                for fn in fns:
+                    rel = os.path.relpath(os.path.join(dp, fn), base)
+                    other_paths[name].add(f"{CKPT}/{rel}")
+    for name, table in (remote_shas or {}).items():
+        other_paths[name] = set(table)
+    absent_cited = []
+    for t, sources in sorted(absent_targets.items()):
+        present = [n for n, ps in other_paths.items()
+                   if t in ps or any(p.startswith(t + "/") for p in ps)]
+        absent_cited.append({"target": t, "sources": sorted(sources),
+                             "present_in": present})
+
     families = _families(inv, classification, groups, edges, copies, now)
     summary = _summary(inv, classification, groups, tracked, mismatches,
                        unresolved)
+    summary["generic_loaders"] = len(generic_loaders)
+    summary["absent_cited_targets"] = len(absent_cited)
     return {"inventory": inv, "classification": classification,
             "graph": {"edges": edges, "unresolved": unresolved},
             "duplicates": groups, "families": families, "copies": copies,
-            "summary": summary}
+            "absent_cited": absent_cited, "summary": summary}
 
 
 def _families(inv, classification, groups, edges, copies, now):
@@ -765,6 +853,7 @@ def write_outputs(result: dict, out: Path, repo: Path, base_before: dict,
     (out / "duplicates.json").write_text(json.dumps(result["duplicates"], indent=1))
     (out / "families.json").write_text(json.dumps(result["families"], indent=1))
     (out / "copies.json").write_text(json.dumps(result["copies"], indent=1))
+    (out / "absent_cited.json").write_text(json.dumps(result["absent_cited"], indent=1))
     summary = dict(result["summary"])
     summary["baseline_compare"] = compare_baseline(base_before, base_after)
     (out / "summary.json").write_text(json.dumps(summary, indent=1, default=str))
@@ -792,7 +881,10 @@ def write_outputs(result: dict, out: Path, repo: Path, base_before: dict,
                   _gb(s["reclaim_estimate_candidate_alloc"]),
                   _gb(s["reclaim_unknown_class_alloc"])),
               "", f"SHA mismatches: {s['sha_mismatches'] or 'none'}. "
-              f"Unresolved references: {dict(s['unresolved'])}.",
+              f"Unresolved references: {dict(s['unresolved'])}. Generic loaders "
+              f"(code that opens any name under checkpoints/): {s['generic_loaders']}; "
+              f"cited paths absent from this tree: {s['absent_cited_targets']} "
+              f"(absent_cited.json).",
               "", "## Families (by allocated size)", "",
               "| family | files | alloc GB | newest | FROZEN | ESSENTIAL | DUPLICATE | "
               "CANDIDATE | UNKNOWN | dup distinct GB | copies | benefit GB (conf) | action |",
