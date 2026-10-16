@@ -759,7 +759,7 @@ def _default_rejection_cap(n_cells: int) -> int:
 def make_dataset(
     n: int, *, kinds=("differentiate", "integrate", "limit"),
     levels=(1, 2, 3), seed: int = 0, exclude: frozenset[str] = frozenset(),
-    max_consecutive_rejects: int | None = None,
+    max_consecutive_rejects: int | None = None, wall: float | None = None,
 ) -> list[Problem]:
     """n unique problems cycling kinds x levels, deterministic per seed.
 
@@ -778,6 +778,12 @@ def make_dataset(
     duplicate or excluded prompts, ``DatasetExhausted`` is raised with
     the sampling diagnostics. Nothing is returned partially; the rows
     produced so far ride on the exception as ``partial``.
+
+    ``wall`` (seconds, default None) runs every maker call in one
+    reusable CPU-only subprocess (``llmopt.mathgen.isolated``); a maker
+    that exceeds the wall raises ``MakerTimeout`` and a dead worker
+    raises ``MakerCrashed`` — the item is never skipped or replaced.
+    Output is identical to the in-process path.
     """
     if not isinstance(n, int) or isinstance(n, bool) or n < 0:
         raise ValueError(f"n must be a non-negative int, got {n!r}")
@@ -787,13 +793,29 @@ def make_dataset(
         raise ValueError("kinds must name at least one problem kind")
     if not levels:
         raise ValueError("levels must contain at least one level")
-    makers = {kind: _resolve_maker(kind) for kind in kinds}  # KeyError early
+    for kind in kinds:
+        if ":" not in kind:
+            _resolve_maker(kind)  # KeyError before any generation
     cells = tuple((kind, level) for level in levels for kind in kinds)
     if max_consecutive_rejects is None:
         max_consecutive_rejects = _default_rejection_cap(len(cells))
     if not isinstance(max_consecutive_rejects, int) or max_consecutive_rejects < 1:
         raise ValueError("max_consecutive_rejects must be a positive int, "
                          f"got {max_consecutive_rejects!r}")
+    if wall is None:
+        makers = {kind: _resolve_maker(kind) for kind in kinds}
+        return _fill(n, kinds, levels, seed, exclude, max_consecutive_rejects,
+                     cells, makers)
+    from llmopt.mathgen.isolated import MakerWorker
+    with MakerWorker(wall=wall) as worker:
+        makers = {kind: (lambda level, s, _k=kind: worker.make(_k, level, s))
+                  for kind in kinds}
+        return _fill(n, kinds, levels, seed, exclude, max_consecutive_rejects,
+                     cells, makers)
+
+
+def _fill(n, kinds, levels, seed, exclude, max_consecutive_rejects, cells,
+          makers) -> list[Problem]:
     out = []
     seen = set(exclude)
     attempts_by_cell = dict.fromkeys(cells, 0)
