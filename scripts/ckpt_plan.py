@@ -255,8 +255,11 @@ def build_plan(repo: Path, inventory_path: Path, copies: dict) -> dict:
             proposed = "REVIEW: reached only by an unresolved consumer pattern; resolve or decide script"
         elif producer_exact:
             proposed = "REVIEW: produced by a known script, read by nothing exact; regenerable if the script and its inputs stand"
+        elif not matches:
+            proposed = ("REVIEW: no site reaches this file after pattern resolution "
+                        "(census UNKNOWN by prefix only); CANDIDATE queue; per-family GO")
         else:
-            proposed = "REVIEW: reached only by producer or unresolved patterns"
+            proposed = "REVIEW: reached only by producer patterns that did not resolve"
         rows.append({"path": rp, "bytes": r["bytes"], "alloc": r["alloc"],
                      "mtime": time.strftime("%Y-%m-%d", time.localtime(r["mtime"])),
                      "class": r["class"], "family": r["family"],

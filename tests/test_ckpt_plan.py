@@ -144,6 +144,10 @@ def test_plan_rows_name_matches_roles_and_resolution(tmp_path):
          "bytes": 10, "alloc": 10, "mtime": 0, "class": "UNKNOWN",
          "reasons": ["dynamic path prefix"], "family": "root:x",
          "canonical": None, "dependencies": []},
+        {"path": "zzz.pt", "repo_path": "checkpoints/zzz.pt",
+         "bytes": 10, "alloc": 10, "mtime": 0, "class": "UNKNOWN",
+         "reasons": ["dynamic path prefix"], "family": "root:zzz",
+         "canonical": None, "dependencies": []},
         {"path": "keep.pt", "repo_path": "checkpoints/keep.pt",
          "bytes": 10, "alloc": 10, "mtime": 0, "class": "FROZEN",
          "reasons": ["RESULTS path"], "family": "root:keep",
@@ -152,7 +156,7 @@ def test_plan_rows_name_matches_roles_and_resolution(tmp_path):
     plan = cp.build_plan(repo, inv, copies={})
     rows = {r["path"]: r for r in plan["rows"]}
     assert set(rows) == {"checkpoints/x_hot_s2.pt", "checkpoints/x_cool_s2.pt",
-                         "checkpoints/x_warm_s9.pt"}   # FROZEN rows not planned
+                         "checkpoints/x_warm_s9.pt", "checkpoints/zzz.pt"}
     hot = rows["checkpoints/x_hot_s2.pt"]
     kinds = {(m["source"], m["role"], m["match"]) for m in hot["matches"]}
     assert ("scratch/birth.py", "producer", "exact") in kinds
@@ -167,8 +171,12 @@ def test_plan_rows_name_matches_roles_and_resolution(tmp_path):
     assert cool["proposed"].startswith("REVIEW")
     warm = rows["checkpoints/x_warm_s9.pt"]
     assert warm["producer_exact"] == [] and warm["consumer_exact"] == []
-    assert warm["proposed"].startswith("REVIEW")
-    assert plan["summary"]["rows"] == 3
+    assert warm["consumer_pattern"] == ["scratch/any.sh"]
+    assert warm["proposed"].startswith("REVIEW: reached only by an unresolved consumer")
+    zzz = rows["checkpoints/zzz.pt"]
+    assert zzz["matches"] == []
+    assert zzz["proposed"].startswith("REVIEW: no site reaches this file")
+    assert plan["summary"]["rows"] == 4
     assert plan["summary"]["by_proposed"]["KEEP: exact consumer in results-cited script"]["files"] == 1
 
 
