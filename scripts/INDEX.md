@@ -728,6 +728,32 @@ Fetch arXiv METADATA ONLY for a THEORY.md lineage citation.
 - `fetch(query: str, by_id: bool) -> list[dict]`
 - `main() -> int`
 
+### scripts/ckpt_census.py
+Read-only checkpoint inventory, dependency graph, conservative classification, APFS physical-storage probe and family decision sheet (rehabilitation phase 2E).
+
+- `sha256_file(p: Path, bufsize: int=1 << 22) -> str`
+- `extent_key(p: Path)` — (flags, contig, devoffset) of the first and middle logical
+- `git_tracked(repo: Path) -> set[str]`
+- `walk_tree(repo: Path, tree: str=CKPT) -> dict[str, dict]` — rel (inside the tree) -> row. Symlinks are recorded, never
+- `_norm_token(tok: str) -> str`
+- `scan_text_for_refs(text: str, source: str) -> list[dict]` — Every reference form in one text: full path tokens (globs and
+- `_read(p: Path) -> str`
+- `collect_references(repo: Path) -> dict[str, list[dict]]` — source group -> refs. Groups: results, docs, code, logs.
+- `load_lock(repo: Path) -> dict`
+- `load_evidence_pins(repo: Path) -> dict[str, str]` — path -> sha256 from the EVIDENCE.md pinned table.
+- `load_manifest(repo: Path) -> dict[str, dict]`
+- `parse_json_sidecar(repo: Path, rel: str)` — Parents named by a JSON sidecar under checkpoints/: every
+- `_family(rel: str) -> str`
+- `_is_receipt_name(name: str) -> bool`
+- `build(repo: Path, tracked: set[str] | None=None, age_days: float=14.0, now: float | None=None, extra_trees: dict[str, Path] | None=None, remote_shas: dict[str, dict[str, str]] | None=None, probe_physical: bool=True) -> dict`
+- `_families(inv, classification, groups, edges, copies, now)`
+- `_summary(inv, classification, groups, tracked, mismatches, unresolved)`
+- `baseline(repo: Path, tree: str=CKPT) -> dict[str, dict]`
+- `compare_baseline(before: dict, after: dict) -> dict`
+- `_gb(b)`
+- `write_outputs(result: dict, out: Path, repo: Path, base_before: dict, base_after: dict) -> None`
+- `main(argv=None) -> int`
+
 ### scripts/ckpt_manifest.py
 ckpt_manifest.py — checkpoint manifest for the curated tree.
 

@@ -16,7 +16,7 @@ this also drives `library`; from lab tooling it drives
 comments or plain strings; `via` names the cited caller a file
 inherits its class from when no document names the file itself.
 
-Census: library 193, reproduce-pinned 9, results-cited 500, spec-cited 77, tool-referenced 5, UNCITED 123 (of 907; library rows that are also doc-cited: 188)
+Census: library 194, reproduce-pinned 9, results-cited 500, spec-cited 77, tool-referenced 5, UNCITED 123 (of 908; library rows that are also doc-cited: 188)
 
 ## scratch/
 
@@ -847,6 +847,7 @@ Census: library 193, reproduce-pinned 9, results-cited 500, spec-cited 77, tool-
 | build | build_gen7_diet.py | UNCITED | — | — | — | — | — | — |
 | calibrate | calibrate_hce.py | spec-cited | specs | specs×9 | — | — | — | — |
 | cite | cite_lookup.py | tool-referenced | TOOLING | TOOLING×3 | — | 1 | 1 | — |
+| ckpt | ckpt_census.py | library | — | — | 1 | — | — | — |
 | ckpt | ckpt_manifest.py | library | RESULTS, specs | RESULTS×4, specs×4 | 1 | — | 1 | — |
 | claim | claim_lint.py | results-cited | RESULTS, specs, TOOLING | RESULTS×1, specs×7, TOOLING×5 | — | 3 | 1 | — |
 | consolidate | consolidate_mathnative.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
