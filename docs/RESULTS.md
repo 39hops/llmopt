@@ -78189,3 +78189,85 @@ OOM warnings (the 43x tripwire the verdict cites). They are
 historical failed-run evidence for the relaunch decision, classified
 remote-only in docs/EVIDENCE.md with their digests; they stay on the
 3080, outside git, and are not disposable logs.
+
+## OBSERVATION MATHGEN-CALLER-CENSUS-0: of the 20 files calling `llmopt.mathgen.problems.make_dataset` at 66456518 (32 call lines), one trains (scripts/train_calculus.py, guarded by `exclude=`) and the other 19 only evaluate; distinct seeds alone do not separate seed bands (integrate-only, n=2000: 371 shared prompts between seed 0 and seed 1; default kinds: 96), the integrate-only adapter's training set contains 30 of the 97 integrate prompts in the task_arithmetic.py evaluation set, and make_integrate at level 4 exceeded a 15 s wall on 4 of 300 seeds; the phase-2C guards land with every pre-change digest identical (2026-10-16, Mac; rehabilitation phase 2C; zero training)
+
+**What was counted.** Every `make_dataset(` call outside tests/ in
+llmopt/, scripts/ and scratch/ (grep at 66456518: 34 call lines in 21
+files; scratch/tenet_w0.py's 2 calls go to
+`llmopt.weightspace.subjects.make_dataset`, a different function, and
+are excluded, leaving 32 call lines in 20 files).
+Role is read from the call site: TRAIN when the rows feed an optimizer,
+EVAL when they feed a gate, probe or routing census. Guard is whether
+the call passes `exclude=`.
+
+| site | CODEMAP class | role | n / seed | guard |
+|---|---|---|---|---|
+| scripts/train_calculus.py:89 | library | EVAL (300 integrate @99) | 300 / 99 | none needed (eval drawn first) |
+| scripts/train_calculus.py:103 | library | TRAIN (9000 integrate @0) | 9000 / 0 | `exclude=banned` (its eval prompts) |
+| scripts/task_arithmetic.py:63 | spec-cited | EVAL (adapter scaling sweep) | 300 / 99, 3 kinds | none |
+| scripts/task_composition.py:38-39 | spec-cited | EVAL (per-skill, two adapters) | 150 / 99 per kind | none |
+| scripts/eval_pruned_moe.py:66 | spec-cited | EVAL | 120 / 1234 | none |
+| scripts/moe_router_stats.py:50 | results-cited | EVAL (routing census, prompts only) | n / 7 | none |
+| scratch/moe_gt1.py:174, moe_gt1_arm2.py:284 | library | EVAL (gate) | 120 / 1234 | none |
+| scratch/gt7_run.py:53, ex6_phase.py:135 | results-cited | EVAL (gate) | 120 / 1234 | none |
+| scratch/ex6loc.py, ex6med.py (x2), ex6med2.py, ex6depth.py (x3), ex6depth1.py (x4), ex6temporal.py (x3), ex6b43_decomp.py, ex6b43_idcensus.py, ex6b43_knife.py (x3) | results-cited / library | EVAL (gate, per seed loop; seed 7001 probe row) | 120 / seed loop | none |
+| scratch/ex6med_idaudit.py:52, ex6med_idaudit2.py:55 | UNCITED / results-cited | EVAL (identity audit) | 120 / SEED | none |
+
+No evaluation-only site needs a guard: a gate drawn from one seed band
+with no training in the loop cannot be contaminated by itself. The
+one training site is guarded the way the docstring prescribes.
+
+**Seed bands alone do not separate (measured).** `make_dataset` draws
+item i from seed `seed * 1_000_000 + i`; a maker's deterministic retry
+adds 1_000_003, which lands in the next band, and the low cells are
+small (distinct prompts over 600 seeds: drec L1 24, taylor L1 15, taylor
+L2 54, drec L2/L3 75, dsum L1 203, integrate L1 351). Shared prompts
+between a seed-0 and a seed-1 dataset of equal size: integrate-only
+n=500 49, n=2000 371; default three kinds n=500 15, n=2000 96. The 120-
+row gates at seeds 1234 / 7 / 99 share 1 prompt pairwise.
+
+**Historical split check.** train_calculus train (9000 integrate @0,
+exclude = its 300-row eval @99) against that eval: 0 shared prompts.
+task_composition.py's 150 integrate rows @99 are the prefix of that
+eval set: 0 in train. task_arithmetic.py's 300-row three-kind set @99
+holds 97 integrate rows, and 30 of them are in the 9000-row training
+set of checkpoints/int_only_lora.pt (the exclusion covered the
+integrate-only eval, not the three-kind one). The task-arithmetic
+numbers live in spec 2026-07-06-task-arithmetic-design.md and the
+README inventory, not in a RESULTS verdict; nothing is modified here.
+RECOMMENDATION: a separate investigation re-scores the task_arithmetic
+sweep on the 67 clean integrate rows (or on `make_split`) before any
+of its numbers is cited again. Not done in this phase.
+
+**Hang census (isolated worker, 15 s wall, 300 seeds per cell).**
+make_integrate L4: 4 of 300 exceeded 15 s (seeds 31, 158, 268, 277),
+worst finisher 10.6 s, six more above 2 s. L6 / L8 / L9 integrate, cint
+L3, definite_integral L3, taylor L3, ode_cc2 L2, ode_separable L2,
+eigenvalues L3, matrix_inverse L3: none above 15 s, worst 2.7 s (L9
+seed 52). The L4 `simplify(diff(F))` call is the one maker that hangs
+in this sample.
+
+**What landed (commits on main after 66456518).** 1 freeze:
+tests/fixtures/mathgen_pins.json, 9 dataset digests + 306 single-maker
+cases (levels 1 to 9) + 22 retry seeds, contract
+`sha256(utf8('\n'.join(f'{kind}\t{level}\t{prompt}\t{answer}') + '\n'))`
+in llmopt/mathgen/digest.py. 2 bound: `DatasetExhausted` after
+`100 * len(kinds) * len(levels)` consecutive rejects (the 9000-row train
+shape's longest rejection run is 11; n=200 default is 1), carrying n,
+produced, seed, attempts, exclude size, per-cell counts and the
+partial rows; argument validation up front; exclude-all on drec L1
+raises in under 2 s. 3 isolation: llmopt/mathgen/isolated.py
+`MakerWorker`, one CPU-only `python -m` child per `make_dataset(wall=)`
+call (never a fork), typed MakerTimeout / MakerCrashed / MakerFailure,
+parent-death watchdog, 0.16 s overhead on the 200-row default, pinned
+digest reproduced through the worker. 4 `make_split`: eval first,
+train under `exclude=`, 200-case disjointness test. 5 meter: flags for
+constant / single-column / sigma-clamped / float64-fallback, NaN never
+a finite stand-in, ValueError on empty / non-2-D / non-finite, pre-
+change values pinned bit-exact. 6 reproduce: typed input errors before
+launch, pins schema check, AST proof that every environ key the runner
+tree reads (aliases included: detbwd_r2b reads DIM / DHEAD / FFN /
+ACLAMP through `_env = __import__("os").environ`) is in CONTRACT_ENV
+and none of CONTRACT_ENV is dead. No call site changed. No seed
+arithmetic changed. No historical dataset or split modified.
