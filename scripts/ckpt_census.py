@@ -38,7 +38,7 @@ content is unique cannot be checked for partial sharing this way and
 their allocated size is reported as an estimate, never as verified.
 
 Usage:
-    .venv/bin/python scripts/ckpt_inventory.py [--out DIR] [--age-days 14]
+    .venv/bin/python scripts/ckpt_census.py [--out DIR] [--age-days 14]
         [--extra-tree NAME=PATH ...] [--remote-shas NAME=FILE ...]
         [--verify-baseline FILE]
 """

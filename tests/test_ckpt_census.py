@@ -1,4 +1,4 @@
-"""scripts/ckpt_inventory.py on synthetic trees (phase 2E).
+"""scripts/ckpt_census.py on synthetic trees (phase 2E).
 
 Every case builds a small checkpoint tree plus the documents that
 reference it, runs the read-only inventory, and checks the class and
@@ -20,7 +20,7 @@ import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
-import ckpt_inventory as ci  # noqa: E402
+import ckpt_census as ci  # noqa: E402
 
 
 def _w(p: Path, data: bytes | str) -> Path:
