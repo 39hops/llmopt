@@ -78539,3 +78539,18 @@ to the confirmed/ canonical paths and remove the six DUPLICATE rows:
 sha and mtime check after. (4) Decide the 0.85 GB CANDIDATE list
 family by family. (5) Everything UNKNOWN stays until (1) lands.
 Nothing in this entry authorizes a removal.
+
+## AMENDMENT CHECKPOINT-CENSUS-0-FREE-SPACE-CAUSE-2026-10-16 (targets: OBSERVATION CHECKPOINT-CENSUS-0 78395): the 57.2 GB of container free space is explained by Artin deleting `~/qwen/` (the Qwen 27B model parts, about 50 GB) earlier on 2026-10-16, not by the rehabilitation sessions; the census numbers stand unchanged (2026-10-16, Mac)
+
+The target entry attributed the move from 13 GiB free (audit
+2026-10-13) to 57.2 GB free to "the evidence recovery and the
+sessions since". Artin's report after the booking: he deleted
+`~/qwen/`, which held the 27B-parameter Qwen model parts, and that
+deletion accounts for about 50 GB of the change. The rehabilitation
+sessions removed nothing. Every other number in the target (tree
+sizes, classes, duplicate groups, physical probe, sibling trees,
+3080 listing) is unaffected. Consequence for planning: a revisit of
+the 27B measurements (banked in RIFF-LEDGER 2026-10-16) needs that
+download budgeted again; the 30B vehicle and the 27B parts do not
+both fit beside the current 70.5 GB checkpoint tree without the 2F
+decisions.
