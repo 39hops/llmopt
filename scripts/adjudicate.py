@@ -20,13 +20,13 @@ metric, population, or aggregation). Fix the pipeline; never book it.
 from __future__ import annotations
 
 import argparse
-import json
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from llmopt.lab.prereg import (adjudicate_prereg,  # noqa: E402
-                               adjudicate_refutation, load)
+                               adjudicate_refutation, load,
+                               load_observations)
 
 
 def main() -> int:
@@ -35,7 +35,7 @@ def main() -> int:
     ap.add_argument("observations", help="observations JSON")
     a = ap.parse_args()
     prereg = load(a.prereg)
-    obs = json.loads(Path(a.observations).read_text())
+    obs = load_observations(a.observations)
     # bars first: refutation_precedence (if registered) reads bar
     # outcomes, so the refutation line prints after the bars it may
     # depend on

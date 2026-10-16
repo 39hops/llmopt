@@ -33,6 +33,7 @@ from __future__ import annotations
 
 import math
 from dataclasses import dataclass, field
+from fractions import Fraction
 
 # Reason codes are shared with the incident table and the bar
 # schema, so a refusal and its regression fixture speak one
@@ -181,7 +182,8 @@ def adjudicate(observed, bar_value: float, direction: str = "below",
     (observed, bar, fence) that is not a finite real number.
 
     fence (optional) is a resolution half-width in the same units as
-    bar_value. When |observed - bar_value| < fence the measurement
+    bar_value. When |observed - bar_value| < fence (evaluated in exact
+    rational arithmetic on the given values) the measurement
     sits strictly inside the band the registration declared it
     cannot resolve, and the return is "UNRESOLVED". A difference
     exactly equal to the fence is resolved by the comparison law
@@ -212,7 +214,11 @@ def adjudicate(observed, bar_value: float, direction: str = "below",
         if width < 0:
             raise MetricContractError(
                 INVALID_VALUE, f"fence must be nonnegative, got {width!r}")
-        if abs(value - bar) < width:
+        # exact rational arithmetic: a float subtraction can round a
+        # difference that is strictly inside the band up to exactly
+        # the width (observed = bar + width evaluated in float), which
+        # would resolve a measurement the registration says it cannot
+        if abs(Fraction(value) - Fraction(bar)) < Fraction(width):
             return "UNRESOLVED"
     if direction == "below":
         return "FIRE" if value <= bar else "NO-FIRE"

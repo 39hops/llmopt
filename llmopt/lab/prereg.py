@@ -70,6 +70,13 @@ must fail loudly, not vanish):
   registered_prior prose, required
 
 Observations document:
+  registration_sha256 OPTIONAL — registration_digest() of the pre-reg
+                     the measurements were generated against. When
+                     present it must equal the digest of the document
+                     being adjudicated (RegistrationMismatchError
+                     otherwise). Booked observations predate the field
+                     and carry none; schema validity alone never
+                     proves a registration was not edited.
   measurement_valid  bool, plus "measurement_reason" when False
   arms               {name: {"admissible": bool, "reason"?: str}}
   measurements       {str(bar_id): {"value", "metric", "population",
@@ -80,7 +87,12 @@ Observations document:
                      an outcome.
                      a bar with no measurement books UNRESOLVED
                      with reason "not-run". Conjunct predicates read
-                     their own keys (e.g. "3:twin20260817").
+                     their own keys (e.g. "3:twin20260817"). Every
+                     key must be a registered bar id, conjunct key or
+                     the refutation key; arms must all be declared;
+                     a duplicated JSON key is refused at load
+                     (ObservationsContractError). Other top-level keys
+                     are free-form provenance and are ignored.
   contrasts          OPTIONAL {str(bar_id): {"admissible": bool,
                      "reason"?: str}} — the RELATIONAL admissibility
                      the arm gates cannot see (dose mismatch, unpaired
@@ -91,14 +103,15 @@ Observations document:
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import math
 import re
 from dataclasses import dataclass
 from pathlib import Path
 
-from llmopt.lab.metrics import (INVALID_VALUE, Metric, MetricContractError,
-                                adjudicate)
+from llmopt.lab.metrics import (INVALID_VALUE, UNIT_MISMATCH, Metric,
+                                MetricContractError, adjudicate)
 
 DIRECTIONS = ("below", "above")
 MACHINES = ("mac", "wsl", "w11")
@@ -132,8 +145,17 @@ REQUIRED_KEYS = PREREG_KEYS - {"note", "refuted_if_predicate",
 # blocking bar named. Requires refuted_if_predicate.
 BAR_KEYS = {"id", "name", "metric", "population", "aggregation",
             "direction", "value", "arms", "description", "conjuncts",
-            "gate_class", "fence"}
+            "gate_class", "fence", "unit"}
+BAR_OPTIONAL = {"description", "conjuncts", "gate_class", "fence", "unit"}
+# unit (optional, forward-only, phase 2D): the bar's measurement unit as
+# a string. When declared, the measurement must carry an equal "unit"
+# and a fence on the bar must use the same unit. Absent, no check.
 FENCE_KEYS = {"width", "unit"}
+CONJUNCT_KEYS = {"measurement", "direction", "value", "metric",
+                 "population", "aggregation", "fence", "unit"}
+OBS_RESERVED = {"registration_sha256", "measurement_valid",
+                "measurement_reason", "arms", "measurements", "contrasts"}
+_SHA256 = re.compile(r"^[0-9a-f]{64}$")
 # gate_class (optional): "sanity" (identity/provenance/traversal/
 # finiteness/treatment-contract checks — MAY suppress refutation via
 # refutation_precedence) or "range" (a registered scientific
@@ -154,6 +176,54 @@ GATE_CLASSES = ("sanity", "range")
 
 class PreregSchemaError(ValueError):
     """The pre-reg document itself is malformed. Fix the document."""
+
+
+class RegistrationMismatchError(PreregSchemaError):
+    """The observations were generated against a different registration
+    (registration_sha256 does not match). Nothing may be booked."""
+
+
+class ObservationsContractError(ValueError):
+    """The observations document is malformed: duplicate JSON keys, an
+    arm the registration never declared, a measurement keyed to no
+    registered bar, or a bad registration_sha256 field."""
+
+
+def _no_duplicate_keys(exc):
+    def hook(pairs):
+        seen = set()
+        for k, _ in pairs:
+            if k in seen:
+                raise exc(f"duplicate JSON key {k!r}")
+            seen.add(k)
+        return dict(pairs)
+    return hook
+
+
+def registration_digest(doc: dict) -> str:
+    """sha256 over the adjudicable content of a pre-reg: name,
+    results_id, registered, machine, declared arm names, every bar as
+    written, refuted_if_predicate and refutation_precedence. Prose
+    (refuted_if, registered_prior, note, descriptions of arms),
+    receipts and operands are outside the digest: they are not read by
+    the adjudicator. Canonical JSON (sorted keys, fixed separators), so
+    key order and whitespace do not matter.
+
+    An observations document generated against a registration may
+    record this value as "registration_sha256"; adjudication then
+    refuses any document whose digest differs. The digest proves
+    nothing by itself: it is evidence only when the observations file
+    carrying it is itself frozen (sha-locked receipt, git history)."""
+    core = {"name": doc.get("name"), "results_id": doc.get("results_id"),
+            "registered": doc.get("registered"),
+            "machine": doc.get("machine"),
+            "arms": sorted(doc.get("arms") or {}),
+            "bars": doc.get("bars"),
+            "refuted_if_predicate": doc.get("refuted_if_predicate"),
+            "refutation_precedence": doc.get("refutation_precedence")}
+    text = json.dumps(core, sort_keys=True, separators=(",", ":"),
+                      ensure_ascii=True, allow_nan=False)
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
 
 
 @dataclass(frozen=True)
@@ -215,6 +285,10 @@ def validate(doc: dict) -> dict:
     missing = REQUIRED_KEYS - set(doc)
     _require(not missing, f"missing keys {sorted(missing)}")
     _require(bool(doc["name"]), "empty name")
+    _require(bool(isinstance(doc["results_id"], str)
+                  and doc["results_id"].strip()),
+             "results_id must be a non-empty string naming the prose "
+             "pre-registration entry")
     _require(bool(_DATE.match(doc["registered"] or "")),
              f"registered {doc['registered']!r} is not YYYY-MM-DD")
     _require(doc["machine"] in MACHINES,
@@ -313,10 +387,14 @@ def validate(doc: dict) -> dict:
         unknown = set(bar) - BAR_KEYS
         _require(not unknown,
                  f"bar {bar.get('id')}: unknown keys {sorted(unknown)}")
-        missing = (BAR_KEYS - {"description", "conjuncts",
-                               "gate_class", "fence"}) - set(bar)
+        missing = (BAR_KEYS - BAR_OPTIONAL) - set(bar)
         _require(not missing,
                  f"bar {bar.get('id')}: missing keys {sorted(missing)}")
+        _require(type(bar["id"]) is int,
+                 f"bar id {bar['id']!r} must be an int (bools refused)")
+        if "unit" in bar:
+            _require(bool(isinstance(bar["unit"], str) and bar["unit"]),
+                     f"bar {bar['id']}: unit must be a non-empty string")
         if "gate_class" in bar:
             _require(bar["gate_class"] in GATE_CLASSES,
                      f"bar {bar.get('id')}: gate_class "
@@ -325,11 +403,18 @@ def validate(doc: dict) -> dict:
         seen_ids.add(bar["id"])
         _require(bar["direction"] in DIRECTIONS,
                  f"bar {bar['id']}: direction {bar['direction']!r}")
-        _require(isinstance(bar["value"], (int, float)),
-                 f"bar {bar['id']}: value must be a number already on "
-                 "the page")
+        _require(bool(not isinstance(bar["value"], bool)
+                      and isinstance(bar["value"], (int, float))
+                      and math.isfinite(bar["value"])),
+                 f"bar {bar['id']}: value must be a finite number already "
+                 "on the page")
         if "fence" in bar:
             _validate_fence(bar["fence"], f"bar {bar['id']}")
+            if "unit" in bar:
+                _require(bar["fence"]["unit"] == bar["unit"],
+                         f"bar {bar['id']}: fence unit "
+                         f"{bar['fence']['unit']!r} differs from bar unit "
+                         f"{bar['unit']!r}")
         _require(bool(isinstance(bar["arms"], list) and bar["arms"]),
                  f"bar {bar['id']}: names no arms")
         for a in bar["arms"]:
@@ -343,10 +428,7 @@ def validate(doc: dict) -> dict:
             # their own metric/population/aggregation; absent, the
             # bar's triple is inherited (old docs unchanged).
             _require(bool({"measurement", "direction", "value"}
-                          <= set(cj)
-                          <= {"measurement", "direction", "value",
-                              "metric", "population", "aggregation",
-                              "fence"}),
+                          <= set(cj) <= CONJUNCT_KEYS),
                      f"bar {bar['id']}: conjunct keys {sorted(cj)}")
             if "fence" in cj:
                 _validate_fence(cj["fence"],
@@ -381,7 +463,9 @@ def load(path: str | Path, operand_root: str | Path | None = None) -> dict:
     inferred from the prereg path's docs/preregs location, else
     cwd)."""
     path = Path(path)
-    doc = validate(json.loads(path.read_text()))
+    doc = validate(json.loads(
+        path.read_text(),
+        object_pairs_hook=_no_duplicate_keys(PreregSchemaError)))
     if doc.get("operands"):
         if operand_root is None:
             parent = path.resolve().parent
@@ -391,6 +475,71 @@ def load(path: str | Path, operand_root: str | Path | None = None) -> dict:
                             else Path.cwd())
         verify_operands(doc, operand_root)
     return doc
+
+
+def load_observations(path: str | Path) -> dict:
+    """Read an observations JSON file, refusing duplicate keys (the
+    stdlib keeps the last silently) and non-object documents."""
+    obs = json.loads(Path(path).read_text(),
+                     object_pairs_hook=_no_duplicate_keys(
+                         ObservationsContractError))
+    if not isinstance(obs, dict):
+        raise ObservationsContractError("observations must be an object")
+    return obs
+
+
+def unlocked_receipts(doc: dict, lock: dict) -> list[str]:
+    """Receipt paths the pre-reg declares that docs/receipts.lock.json
+    does not hold as existing with a sha256. An empty list means every
+    declared receipt is frozen evidence; anything listed is a path the
+    lock has never seen (or saw as absent)."""
+    rows = lock.get("receipts", {})
+    out = []
+    for rel in doc.get("receipts", []):
+        rec = rows.get(rel) or {}
+        if not (rec.get("exists") and rec.get("sha256")):
+            out.append(rel)
+    return out
+
+
+def check_observations(prereg: dict, obs: dict) -> None:
+    """Observations-side contract: shape, registration identity,
+    declared arms, registered measurement keys. Raises
+    ObservationsContractError or RegistrationMismatchError."""
+    if not isinstance(obs, dict):
+        raise ObservationsContractError("observations must be an object")
+    sha = obs.get("registration_sha256")
+    if "registration_sha256" in obs:
+        if not (isinstance(sha, str) and _SHA256.match(sha)):
+            raise ObservationsContractError(
+                f"registration_sha256 must be a 64-hex sha256, got {sha!r}")
+        actual = registration_digest(prereg)
+        if sha != actual:
+            raise RegistrationMismatchError(
+                f"observations were generated against registration "
+                f"{sha[:12]}, this document digests to {actual[:12]}: "
+                f"the registration or the observations changed")
+    arms = obs.get("arms", {})
+    if not isinstance(arms, dict):
+        raise ObservationsContractError("arms must be an object")
+    # arms the registration never named are ignored: a driver may
+    # record admissibility for every arm it ran, and only the arms a
+    # bar names are read (an arm named by a bar but not declared is
+    # refused by validate()).
+    ms = obs.get("measurements", {})
+    if not isinstance(ms, dict):
+        raise ObservationsContractError("measurements must be an object")
+    registered = {str(b["id"]) for b in prereg["bars"]}
+    registered |= {cj["measurement"] for b in prereg["bars"]
+                   for cj in b.get("conjuncts", [])}
+    rp = prereg.get("refuted_if_predicate")
+    if rp is not None:
+        registered.add(rp["measurement"])
+    stray = set(ms) - registered
+    if stray:
+        raise ObservationsContractError(
+            f"measurements keyed to no registered bar, conjunct or "
+            f"refutation predicate: {sorted(stray)}")
 
 
 def adjudicate_refutation(prereg: dict, obs: dict,
@@ -412,6 +561,7 @@ def adjudicate_refutation(prereg: dict, obs: dict,
     rp = prereg.get("refuted_if_predicate")
     if rp is None:
         return None
+    check_observations(prereg, obs)
     prec = prereg.get("refutation_precedence")
     if prec is not None:
         if bar_outcomes is None:
@@ -466,6 +616,7 @@ def adjudicate_prereg(prereg: dict, obs: dict) -> list[BarOutcome]:
          whatever the other components read.
     """
     validate(prereg)
+    check_observations(prereg, obs)
     outcomes = []
     arm_obs = obs.get("arms", {})
     for bar in prereg["bars"]:
@@ -500,6 +651,11 @@ def adjudicate_prereg(prereg: dict, obs: dict) -> list[BarOutcome]:
                     else f"metric_{key}_mismatch",
                     f"bar {bar['id']} registered {key}={bar[key]!r}, "
                     f"measurement carries {m[key]!r}")
+        if "unit" in bar and m.get("unit") != bar["unit"]:
+            raise MetricContractError(
+                UNIT_MISMATCH,
+                f"bar {bar['id']} registered unit {bar['unit']!r}, "
+                f"measurement carries {m.get('unit')!r}")
         value = _measured(m, f"bar {bar['id']}")
         metric = Metric(value=value, metric=m["metric"],
                         population=m["population"],
@@ -523,6 +679,13 @@ def adjudicate_prereg(prereg: dict, obs: dict) -> list[BarOutcome]:
                     raise MetricContractError(
                         f"metric_{key}_mismatch",
                         f"bar {bar['id']} conjunct {cj['measurement']}")
+            cunit = cj.get("unit", bar.get("unit"))
+            if cunit is not None and cm.get("unit") != cunit:
+                raise MetricContractError(
+                    UNIT_MISMATCH,
+                    f"bar {bar['id']} conjunct {cj['measurement']} "
+                    f"registered unit {cunit!r}, measurement carries "
+                    f"{cm.get('unit')!r}")
             cvalue = _measured(cm, f"bar {bar['id']} conjunct "
                                    f"{cj['measurement']}")
             cv = adjudicate(
