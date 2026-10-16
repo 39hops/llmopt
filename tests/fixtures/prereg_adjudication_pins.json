@@ -1,0 +1,905 @@
+{
+ "contract": "prereg-adjudication-pins-v1",
+ "pairs": [
+  {
+   "observations": "logs/ex5/ex5_observations.json",
+   "observations_sha256": "bc2be9d128ab5f18c23115e2c081eb93ffea9d4d0cf53c063eff208ec278fd39",
+   "outcomes": [
+    {
+     "bar_id": 1,
+     "bar_name": "QUALIFICATION",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 2,
+     "bar_name": "LAYER-GENERIC",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 3,
+     "bar_name": "RANK-FAMILY",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 4,
+     "bar_name": "FAMILY-SEPARATION",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 5,
+     "bar_name": "NAMED-CREST",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 6,
+     "bar_name": "IDENTITY-PREMIUM",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 7,
+     "bar_name": "RANK-TRANSPORT",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 8,
+     "bar_name": "DRAW-SPREAD",
+     "outcome": "FIRE",
+     "reasons": []
+    }
+   ],
+   "prereg": "docs/preregs/ex5-layermatch-0.json",
+   "prereg_sha256": "6ec71fe92f1c82e1411cb4e482b229a0039593b78bde820e222ab7cec1dcf0f2",
+   "refutation": "NOT-REFUTED",
+   "returncode": 0,
+   "stderr": "",
+   "stdout": "BAR 1 QUALIFICATION: FIRE\nBAR 2 LAYER-GENERIC: NO-FIRE\nBAR 3 RANK-FAMILY: NO-FIRE\nBAR 4 FAMILY-SEPARATION: NO-FIRE\nBAR 5 NAMED-CREST: FIRE\nBAR 6 IDENTITY-PREMIUM: FIRE\nBAR 7 RANK-TRANSPORT: NO-FIRE\nBAR 8 DRAW-SPREAD: FIRE\nREFUTED-IF: NOT-REFUTED\n"
+  },
+  {
+   "observations": "logs/ex6/ex6_observations.json",
+   "observations_sha256": "bc5e8233e2f48b49a8b0f3d2782d6626941b9e280245739003a58589c9cf7794",
+   "outcomes": [
+    {
+     "bar_id": 1,
+     "bar_name": "QUALIFICATION",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 2,
+     "bar_name": "ALL-CREST",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 3,
+     "bar_name": "DECODE-SUFFICIENCY",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 4,
+     "bar_name": "DECODE-RECAPTURE",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 5,
+     "bar_name": "PROMPT-SUFFICIENCY",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 6,
+     "bar_name": "PHASE-SEPARATION",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 7,
+     "bar_name": "INTERACTION",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    }
+   ],
+   "prereg": "docs/preregs/ex6-phase-0.json",
+   "prereg_sha256": "f9512fadec23b39e91957adc5bc49691fe5006a422f5532bc1fcfcb654ddaff2",
+   "refutation": "REFUTED",
+   "returncode": 0,
+   "stderr": "",
+   "stdout": "BAR 1 QUALIFICATION: FIRE\nBAR 2 ALL-CREST: FIRE\nBAR 3 DECODE-SUFFICIENCY: NO-FIRE\nBAR 4 DECODE-RECAPTURE: NO-FIRE\nBAR 5 PROMPT-SUFFICIENCY: FIRE\nBAR 6 PHASE-SEPARATION: NO-FIRE\nBAR 7 INTERACTION: NO-FIRE\nREFUTED-IF: REFUTED\n"
+  },
+  {
+   "observations": "logs/ex6b43knife/ex6b43knife_observations.json",
+   "observations_sha256": "927742283ef4d2ee054b9e8162f4edb7d2907f08e6cb3ea7bb1ff59b31c996fe",
+   "outcomes": [
+    {
+     "bar_id": 1,
+     "bar_name": "QUALIFICATION",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 2,
+     "bar_name": "KNIFE-CENSUS",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 3,
+     "bar_name": "D-SUFFICIENCY",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 4,
+     "bar_name": "D-NECESSITY",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 5,
+     "bar_name": "SUM-COMPOSITION",
+     "outcome": "FIRE",
+     "reasons": []
+    }
+   ],
+   "prereg": "docs/preregs/ex6-b43-knife-0.json",
+   "prereg_sha256": "c47b1b833ece2d4ca30bfb8f799e228b3ed41deb39210fd61307744a81e13452",
+   "refutation": "NOT-REFUTED",
+   "returncode": 0,
+   "stderr": "",
+   "stdout": "BAR 1 QUALIFICATION: FIRE\nBAR 2 KNIFE-CENSUS: FIRE\nBAR 3 D-SUFFICIENCY: FIRE\nBAR 4 D-NECESSITY: FIRE\nBAR 5 SUM-COMPOSITION: FIRE\nREFUTED-IF: NOT-REFUTED\n"
+  },
+  {
+   "observations": "logs/ex6depth/ex6depth_observations.json",
+   "observations_sha256": "0ca96427cf1cf3cff29336f2871a6aaedde362eebcaab16feb7b198eb1a31f4a",
+   "outcomes": [
+    {
+     "bar_id": 1,
+     "bar_name": "QUALIFICATION",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 2,
+     "bar_name": "BAND-CENSUS",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 3,
+     "bar_name": "LOCALIZED",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 4,
+     "bar_name": "DISTRIBUTED",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 5,
+     "bar_name": "ADDITIVITY",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    }
+   ],
+   "prereg": "docs/preregs/ex6-depth-0.json",
+   "prereg_sha256": "6a76cdb2bb20e67f6ae26ef6170abb9142f9cf02b79504197350c44af7712132",
+   "refutation": "REFUTED",
+   "returncode": 0,
+   "stderr": "",
+   "stdout": "BAR 1 QUALIFICATION: FIRE\nBAR 2 BAND-CENSUS: FIRE\nBAR 3 LOCALIZED: FIRE\nBAR 4 DISTRIBUTED: NO-FIRE\nBAR 5 ADDITIVITY: NO-FIRE\nREFUTED-IF: REFUTED\n"
+  },
+  {
+   "observations": "logs/ex6depth1/ex6depth1_observations.json",
+   "observations_sha256": "dbead53bc8b00230e911d786b04b8ccc29eb9db0799120271909bf4beb2cd146",
+   "outcomes": [
+    {
+     "bar_id": 1,
+     "bar_name": "QUALIFICATION",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 2,
+     "bar_name": "BAND-CENSUS",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 3,
+     "bar_name": "INERTNESS-CHECK",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 4,
+     "bar_name": "PAIR-CARRIES",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 5,
+     "bar_name": "SINGLE-CARRIES",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 6,
+     "bar_name": "PAIR-NET-INTERACTION",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    }
+   ],
+   "prereg": "docs/preregs/ex6-depth-1.json",
+   "prereg_sha256": "663ec974eb3a74ee1d33e127183e8e29c931dcea8f991a9f167358678479901c",
+   "refutation": "NOT-REFUTED",
+   "returncode": 0,
+   "stderr": "",
+   "stdout": "BAR 1 QUALIFICATION: FIRE\nBAR 2 BAND-CENSUS: FIRE\nBAR 3 INERTNESS-CHECK: FIRE\nBAR 4 PAIR-CARRIES: FIRE\nBAR 5 SINGLE-CARRIES: FIRE\nBAR 6 PAIR-NET-INTERACTION: NO-FIRE\nREFUTED-IF: NOT-REFUTED\n"
+  },
+  {
+   "observations": "logs/ex6temporal/ex6temporal_observations.json",
+   "observations_sha256": "f6745cb66c17e1c2c9e05970a76808969764bd9ff9e3bf7e0ea0b261147c9b04",
+   "outcomes": [
+    {
+     "bar_id": 1,
+     "bar_name": "QUALIFICATION",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 2,
+     "bar_name": "CALL-POSITION-CENSUS",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 3,
+     "bar_name": "Z2-CURVE",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 4,
+     "bar_name": "Z1-SPECIAL",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 5,
+     "bar_name": "EARLY-DECAY-ORDER",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 6,
+     "bar_name": "DOSE-VALIDITY",
+     "outcome": "FIRE",
+     "reasons": []
+    }
+   ],
+   "prereg": "docs/preregs/ex6-temporal-0.json",
+   "prereg_sha256": "386c24ce204952c1799db975372152a57e9293feb68f698d1c3ce36975ebd569",
+   "refutation": "NOT-REFUTED",
+   "returncode": 0,
+   "stderr": "",
+   "stdout": "BAR 1 QUALIFICATION: FIRE\nBAR 2 CALL-POSITION-CENSUS: FIRE\nBAR 3 Z2-CURVE: NO-FIRE\nBAR 4 Z1-SPECIAL: FIRE\nBAR 5 EARLY-DECAY-ORDER: NO-FIRE\nBAR 6 DOSE-VALIDITY: FIRE\nREFUTED-IF: NOT-REFUTED\n"
+  },
+  {
+   "observations": "logs/qwenattrib/attrib_observations.json",
+   "observations_sha256": "9907495c0fd617a0d667f9877c327aa5b46a6e93b58b3f0697a4e28b0fcc5e0e",
+   "outcomes": [
+    {
+     "bar_id": 1,
+     "bar_name": "SANITY-BRACKET-CLEAN",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 2,
+     "bar_name": "L-DOM-X",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 3,
+     "bar_name": "L-DOM-X-FLOOR",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 4,
+     "bar_name": "L-DOM-K",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 5,
+     "bar_name": "L-DOM-K-FLOOR",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 6,
+     "bar_name": "NEAR-ADDITIVE-X",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 7,
+     "bar_name": "NEAR-ADDITIVE-K",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 8,
+     "bar_name": "IO-WINS-ISO-K",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 9,
+     "bar_name": "ATTN-WINS-ISO-K",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 10,
+     "bar_name": "IO-WINS-ISO-X",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 11,
+     "bar_name": "ATTN-WINS-ISO-X",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    }
+   ],
+   "prereg": "docs/preregs/qwen-attn-attrib-1.json",
+   "prereg_sha256": "ff3d7fe8910d6db11e2b2e7e797c2385753b5112805ca4fd2363ef13bd78dff7",
+   "refutation": "NOT-REFUTED",
+   "returncode": 0,
+   "stderr": "",
+   "stdout": "BAR 1 SANITY-BRACKET-CLEAN: FIRE\nBAR 2 L-DOM-X: FIRE\nBAR 3 L-DOM-X-FLOOR: FIRE\nBAR 4 L-DOM-K: FIRE\nBAR 5 L-DOM-K-FLOOR: FIRE\nBAR 6 NEAR-ADDITIVE-X: NO-FIRE\nBAR 7 NEAR-ADDITIVE-K: NO-FIRE\nBAR 8 IO-WINS-ISO-K: FIRE\nBAR 9 ATTN-WINS-ISO-K: NO-FIRE\nBAR 10 IO-WINS-ISO-X: FIRE\nBAR 11 ATTN-WINS-ISO-X: NO-FIRE\nREFUTED-IF: NOT-REFUTED\n"
+  },
+  {
+   "observations": "logs/qwenattrib/ioattrib_observations.json",
+   "observations_sha256": "085db171eef4946201b86a9bff7144d79df0b6e42b17f6864d18740974b8b04d",
+   "outcomes": [
+    {
+     "bar_id": 1,
+     "bar_name": "SANITY-BRACKET-CLEAN",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 2,
+     "bar_name": "D-DOM-X",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 3,
+     "bar_name": "D-DOM-X-FLOOR",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 4,
+     "bar_name": "D-DOM-K",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 5,
+     "bar_name": "D-DOM-K-FLOOR",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 6,
+     "bar_name": "NEAR-ADDITIVE-X",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 7,
+     "bar_name": "NEAR-ADDITIVE-K",
+     "outcome": "FIRE",
+     "reasons": []
+    }
+   ],
+   "prereg": "docs/preregs/qwen-io-attrib-1.json",
+   "prereg_sha256": "2f96dd12ec3d1e42b53a68fc0e0698491dc023afac0ab0d1224fd3c6ed65c2ed",
+   "refutation": "NOT-REFUTED",
+   "returncode": 0,
+   "stderr": "",
+   "stdout": "BAR 1 SANITY-BRACKET-CLEAN: FIRE\nBAR 2 D-DOM-X: FIRE\nBAR 3 D-DOM-X-FLOOR: FIRE\nBAR 4 D-DOM-K: NO-FIRE\nBAR 5 D-DOM-K-FLOOR: FIRE\nBAR 6 NEAR-ADDITIVE-X: FIRE\nBAR 7 NEAR-ADDITIVE-K: FIRE\nREFUTED-IF: NOT-REFUTED\n"
+  },
+  {
+   "observations": "logs/qwenattrib/lband_observations.json",
+   "observations_sha256": "7ccb2a233755c4dd15902efbe1412777d57114d6a2ff6789a0bb97b99565c65d",
+   "outcomes": [
+    {
+     "bar_id": 1,
+     "bar_name": "SANITY-BRACKET-CLEAN",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 2,
+     "bar_name": "BAND-STRUCTURE-B-X",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 3,
+     "bar_name": "BAND-STRUCTURE-F-X",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 4,
+     "bar_name": "BAND-STRUCTURE-B-K",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 5,
+     "bar_name": "CONDITIONING-X",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 6,
+     "bar_name": "CONDITIONING-K",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 7,
+     "bar_name": "BAND-STRUCTURE-F-K",
+     "outcome": "FIRE",
+     "reasons": []
+    }
+   ],
+   "prereg": "docs/preregs/qwen-lband-1.json",
+   "prereg_sha256": "29dc164cfa2dcc20b01df78fb46a4342331ca36f3865ef72decead9bb4da9514",
+   "refutation": null,
+   "returncode": 0,
+   "stderr": "",
+   "stdout": "BAR 1 SANITY-BRACKET-CLEAN: NO-FIRE\nBAR 2 BAND-STRUCTURE-B-X: FIRE\nBAR 3 BAND-STRUCTURE-F-X: FIRE\nBAR 4 BAND-STRUCTURE-B-K: FIRE\nBAR 5 CONDITIONING-X: FIRE\nBAR 6 CONDITIONING-K: FIRE\nBAR 7 BAND-STRUCTURE-F-K: FIRE\n"
+  },
+  {
+   "observations": "logs/qwenattrib/model2_observations.json",
+   "observations_sha256": "13714ec321a20a41383dd49543afd2ee9fab65dc2bd937ea3993265afd64c334",
+   "outcomes": [
+    {
+     "bar_id": 1,
+     "bar_name": "SANITY-TREATMENT",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 2,
+     "bar_name": "CROSSOVER-X",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 3,
+     "bar_name": "CROSSOVER-K",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 4,
+     "bar_name": "TRANSPORT-X",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 5,
+     "bar_name": "TRANSPORT-K",
+     "outcome": "FIRE",
+     "reasons": []
+    }
+   ],
+   "prereg": "docs/preregs/qwen-model2-alloc-1.json",
+   "prereg_sha256": "2873b10d37a49e014d5382bb8c83d040ae6d6822dde778686cf8a9ba09d2d7ea",
+   "refutation": "NOT-REFUTED",
+   "returncode": 0,
+   "stderr": "",
+   "stdout": "BAR 1 SANITY-TREATMENT: FIRE\nBAR 2 CROSSOVER-X: FIRE\nBAR 3 CROSSOVER-K: FIRE\nBAR 4 TRANSPORT-X: FIRE\nBAR 5 TRANSPORT-K: FIRE\nREFUTED-IF: NOT-REFUTED\n"
+  },
+  {
+   "observations": "logs/qwencheapread/census_observations.json",
+   "observations_sha256": "c8a7019fc14efc2e5cb7e8e93ac2cccdfdd3ba2708a2dd6d44dc445a44891cc5",
+   "outcomes": [
+    {
+     "bar_id": 1,
+     "bar_name": "PROPOSAL-VIABLE",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 2,
+     "bar_name": "READOUT-SMALL",
+     "outcome": "FIRE",
+     "reasons": []
+    }
+   ],
+   "prereg": "docs/preregs/qwen-cheap-readout-0.json",
+   "prereg_sha256": "be5e9640b59517ffd64baef12412d090fd26c0c14791813cfc67a4a49614fbd9",
+   "refutation": null,
+   "returncode": 0,
+   "stderr": "",
+   "stdout": "BAR 1 PROPOSAL-VIABLE: FIRE\nBAR 2 READOUT-SMALL: FIRE\n"
+  },
+  {
+   "observations": "logs/qwencycle/impulse_observations.json",
+   "observations_sha256": "949f8b566aa7d61994a09e8fefe3acb093a6333101c7a7d1a715b41fafa789a7",
+   "outcomes": [
+    {
+     "bar_id": 1,
+     "bar_name": "ESCAPE",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 2,
+     "bar_name": "REPAIR",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    }
+   ],
+   "prereg": "docs/preregs/qwen-cycle-impulse-0.json",
+   "prereg_sha256": "273a805cdbdc330afbca3491d211718f1731193be8fa22b9400da3edf73180d0",
+   "refutation": null,
+   "returncode": 0,
+   "stderr": "",
+   "stdout": "BAR 1 ESCAPE: FIRE\nBAR 2 REPAIR: NO-FIRE\n"
+  },
+  {
+   "observations": "logs/qweneffort2/ble2_observations.json",
+   "observations_sha256": "3097bf5e70e4edefa39972b79a17c4c7d1ce2e1ea9ee5351413e177620898096",
+   "outcomes": [
+    {
+     "bar_id": 1,
+     "bar_name": "TERMINATION",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 2,
+     "bar_name": "COMPETENCE",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    }
+   ],
+   "prereg": "docs/preregs/qwen-ble-freegen-2.json",
+   "prereg_sha256": "7a55b6127d620d7123fe64c5689326b3be8164ade3b72d68be6d0bb69282f434",
+   "refutation": null,
+   "returncode": 0,
+   "stderr": "",
+   "stdout": "BAR 1 TERMINATION: NO-FIRE\nBAR 2 COMPETENCE: NO-FIRE\n"
+  },
+  {
+   "observations": "logs/qwenhomeo/homeo_observations.json",
+   "observations_sha256": "278c2f837f0a5507d69be3964b9d3ce730982d71e9eebc149f6502c4ebaf3050",
+   "outcomes": [
+    {
+     "bar_id": 1,
+     "bar_name": "GATE-S-SANITY",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 2,
+     "bar_name": "HOT-AUTHORITY",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 3,
+     "bar_name": "REFRESH-AUTHORITY",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 4,
+     "bar_name": "ANY-AUTHORITY",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 5,
+     "bar_name": "REPAIR",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    }
+   ],
+   "prereg": "docs/preregs/qwen-homeo-actuator-0.json",
+   "prereg_sha256": "02178e5904b39fc5778e4cfadc4ce6407a2ae29e1a74d4d6a9b53a97e703d1e0",
+   "refutation": "REFUTED",
+   "returncode": 0,
+   "stderr": "",
+   "stdout": "BAR 1 GATE-S-SANITY: FIRE\nBAR 2 HOT-AUTHORITY: NO-FIRE\nBAR 3 REFRESH-AUTHORITY: NO-FIRE\nBAR 4 ANY-AUTHORITY: NO-FIRE\nBAR 5 REPAIR: NO-FIRE\nREFUTED-IF: REFUTED\n"
+  },
+  {
+   "observations": "logs/qwenhomeo/homeo_observations_offline.json",
+   "observations_sha256": "17d22fe3ac95b9db6187d8e3eb2a4cc09e7e95594c136f39b5c5a5b780bc5599",
+   "outcomes": [
+    {
+     "bar_id": 1,
+     "bar_name": "GATE-S-SANITY",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 2,
+     "bar_name": "HOT-AUTHORITY",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 3,
+     "bar_name": "REFRESH-AUTHORITY",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 4,
+     "bar_name": "ANY-AUTHORITY",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 5,
+     "bar_name": "REPAIR",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    }
+   ],
+   "prereg": "docs/preregs/qwen-homeo-actuator-0.json",
+   "prereg_sha256": "02178e5904b39fc5778e4cfadc4ce6407a2ae29e1a74d4d6a9b53a97e703d1e0",
+   "refutation": "REFUTED",
+   "returncode": 0,
+   "stderr": "",
+   "stdout": "BAR 1 GATE-S-SANITY: FIRE\nBAR 2 HOT-AUTHORITY: NO-FIRE\nBAR 3 REFRESH-AUTHORITY: NO-FIRE\nBAR 4 ANY-AUTHORITY: NO-FIRE\nBAR 5 REPAIR: NO-FIRE\nREFUTED-IF: REFUTED\n"
+  },
+  {
+   "observations": "logs/qwenhsimpulse/impulse_observations.json",
+   "observations_sha256": "cab8a92cd488970c2ead3f2bc328d0b1e34eab735176c16e2ff65d177748003b",
+   "outcomes": [
+    {
+     "bar_id": 1,
+     "bar_name": "RECONVERGENCE",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 2,
+     "bar_name": "REPAIR",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    }
+   ],
+   "prereg": "docs/preregs/qwen-headswap-impulse-0.json",
+   "prereg_sha256": "d507e99cb0d2ea4b8c440b2f90457ba1bfdda2e03ab07d0e1eb59d5c03f97e05",
+   "refutation": "NOT-REFUTED",
+   "returncode": 0,
+   "stderr": "",
+   "stdout": "BAR 1 RECONVERGENCE: FIRE\nBAR 2 REPAIR: NO-FIRE\nREFUTED-IF: NOT-REFUTED\n"
+  },
+  {
+   "observations": "logs/qwenhsimpulse/impulse_observations_offline.json",
+   "observations_sha256": "a7b288114ffc0c1159328a28043757def5a99c5f05b837195abe188cc610593e",
+   "outcomes": [
+    {
+     "bar_id": 1,
+     "bar_name": "RECONVERGENCE",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 2,
+     "bar_name": "REPAIR",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    }
+   ],
+   "prereg": "docs/preregs/qwen-headswap-impulse-0.json",
+   "prereg_sha256": "d507e99cb0d2ea4b8c440b2f90457ba1bfdda2e03ab07d0e1eb59d5c03f97e05",
+   "refutation": "NOT-REFUTED",
+   "returncode": 0,
+   "stderr": "",
+   "stdout": "BAR 1 RECONVERGENCE: FIRE\nBAR 2 REPAIR: NO-FIRE\nREFUTED-IF: NOT-REFUTED\n"
+  },
+  {
+   "observations": "logs/qwenloopstate/loopstate_observations.json",
+   "observations_sha256": "e15993a602d2bc711ad5929292d80bc7cfbda0c3a4f1261706946284f3e9a006",
+   "outcomes": [
+    {
+     "bar_id": 1,
+     "bar_name": "INTERNAL-ORBIT",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 2,
+     "bar_name": "STUCK-RETRY-POLICY",
+     "outcome": "FIRE",
+     "reasons": []
+    }
+   ],
+   "prereg": "docs/preregs/qwen-loop-state-0.json",
+   "prereg_sha256": "1c30ca677117af1042b4442912b8bf1c0d7844c625d2f74947e991f683fbd984",
+   "refutation": "NOT-REFUTED",
+   "returncode": 0,
+   "stderr": "",
+   "stdout": "BAR 1 INTERNAL-ORBIT: NO-FIRE\nBAR 2 STUCK-RETRY-POLICY: FIRE\nREFUTED-IF: NOT-REFUTED\n"
+  },
+  {
+   "observations": "logs/qwenloopstate1/headswap_observations.json",
+   "observations_sha256": "ffd7343953f8837d511c8e031521a7abd9589fcc9c8f2ebde15c00c6909c687c",
+   "outcomes": [
+    {
+     "bar_id": 1,
+     "bar_name": "STATE-ATTRIBUTION",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 2,
+     "bar_name": "HEAD-AGREEMENT",
+     "outcome": "FIRE",
+     "reasons": []
+    }
+   ],
+   "prereg": "docs/preregs/qwen-loop-state-1-headswap.json",
+   "prereg_sha256": "c21f2fe1859bdeca9154e48c5aef987ef22da37dade7679fde84651621bdf956",
+   "refutation": "NOT-REFUTED",
+   "returncode": 0,
+   "stderr": "",
+   "stdout": "BAR 1 STATE-ATTRIBUTION: FIRE\nBAR 2 HEAD-AGREEMENT: FIRE\nREFUTED-IF: NOT-REFUTED\n"
+  },
+  {
+   "observations": "logs/qwenmips/mips_observations.json",
+   "observations_sha256": "7e8025c2e544d795911c935b0e652c716238dfb31aecd3b8c55a1513cfce0f19",
+   "outcomes": [
+    {
+     "bar_id": 1,
+     "bar_name": "CERTIFIED-EXACT",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 2,
+     "bar_name": "TRAFFIC",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    }
+   ],
+   "prereg": "docs/preregs/qwen-mips-census-0.json",
+   "prereg_sha256": "bd37cb4ddf16824eced57c9fc7fffcc6ea7a791ab0ce963c6d8fdcacab7e4841",
+   "refutation": "REFUTED",
+   "returncode": 0,
+   "stderr": "",
+   "stdout": "BAR 1 CERTIFIED-EXACT: FIRE\nBAR 2 TRAFFIC: NO-FIRE\nREFUTED-IF: REFUTED\n"
+  },
+  {
+   "observations": "logs/qwenmodel1/tree_observations.json",
+   "observations_sha256": "c76b0969b164795baffddb189344cb8224a4185cbb3f676083fe9560acafe109",
+   "outcomes": [
+    {
+     "bar_id": 1,
+     "bar_name": "ALIGN-SANITY",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 2,
+     "bar_name": "UNIFORM-DAMAGE-CLEAN",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 3,
+     "bar_name": "ANOMALY-CLEAN",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 4,
+     "bar_name": "T1X-B-OVER-A",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 5,
+     "bar_name": "T1K-B-OVER-A",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 6,
+     "bar_name": "T1F-B-OVER-A",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 7,
+     "bar_name": "T2X-C-OVER-B",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 8,
+     "bar_name": "T2K-C-OVER-B",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 9,
+     "bar_name": "T2F-C-OVER-B",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 10,
+     "bar_name": "T4X-C-OVER-A",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 11,
+     "bar_name": "T4K-C-OVER-A",
+     "outcome": "FIRE",
+     "reasons": []
+    },
+    {
+     "bar_id": 12,
+     "bar_name": "T4F-C-OVER-A",
+     "outcome": "FIRE",
+     "reasons": []
+    }
+   ],
+   "prereg": "docs/preregs/qwen-model1-tree.json",
+   "prereg_sha256": "083028d6be6216d97cde2ab3b0618bf3ce837ef2a622019a5fa8b66ef3755473",
+   "refutation": null,
+   "returncode": 0,
+   "stderr": "",
+   "stdout": "BAR 1 ALIGN-SANITY: FIRE\nBAR 2 UNIFORM-DAMAGE-CLEAN: NO-FIRE\nBAR 3 ANOMALY-CLEAN: FIRE\nBAR 4 T1X-B-OVER-A: FIRE\nBAR 5 T1K-B-OVER-A: FIRE\nBAR 6 T1F-B-OVER-A: FIRE\nBAR 7 T2X-C-OVER-B: FIRE\nBAR 8 T2K-C-OVER-B: FIRE\nBAR 9 T2F-C-OVER-B: FIRE\nBAR 10 T4X-C-OVER-A: FIRE\nBAR 11 T4K-C-OVER-A: FIRE\nBAR 12 T4F-C-OVER-A: FIRE\n"
+  },
+  {
+   "observations": "logs/qwenrouter/rk_observations.json",
+   "observations_sha256": "d04865e5c7e04547dc365c48d0c63225167ad14ce82be8050a79f57611a89a7b",
+   "outcomes": [
+    {
+     "bar_id": 1,
+     "bar_name": "ROUTER-FAITHFUL",
+     "outcome": "NO-FIRE",
+     "reasons": []
+    }
+   ],
+   "prereg": "docs/preregs/qwen-rk-census-0.json",
+   "prereg_sha256": "a6cb76975084d1d3c95677e0683f52f35bf478a6e5646e1792125915f1db79db",
+   "refutation": "REFUTED",
+   "returncode": 0,
+   "stderr": "",
+   "stdout": "BAR 1 ROUTER-FAITHFUL: NO-FIRE\nREFUTED-IF: REFUTED\n"
+  }
+ ]
+}
