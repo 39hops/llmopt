@@ -198,14 +198,20 @@ def scan_text_for_refs(text: str, source: str) -> list[dict]:
         if tok in ("checkpoints", ""):
             continue
         if any(c in tok for c in "{}*"):
-            parent = str(Path(tok.split("{")[0].split("*")[0]).parent)
+            literal = re.split(r"[{}*]", tok, 1)[0]
+            parent = str(Path(literal).parent)
             if parent not in ("checkpoints", "."):
+                # glob inside a subdirectory: the directory is reached
                 refs.append({"kind": "dir", "target": parent,
                              "source": source})
+            elif literal.rstrip("/") not in ("checkpoints", ""):
+                # glob or brace directly under checkpoints/ with a
+                # literal name fragment: every file starting with it
+                refs.append({"kind": "dynamic-prefix", "target": literal,
+                             "source": source})
             else:
-                # brace or glob directly under checkpoints/: the DYNAMIC
-                # pass below records the literal fragment, if any
-                pass
+                refs.append({"kind": "generic-loader", "target": "checkpoints",
+                             "source": source})
             continue
         refs.append({"kind": "path", "target": tok, "source": source})
     for m in DYNAMIC.finditer(text):
@@ -608,19 +614,25 @@ def build(repo: Path, tracked: set[str] | None = None, age_days: float = 14.0,
         b = best(rel)
         reasons = [r for _, r in hits.get(rel, [])]
         canonical = None
+        deps = sorted({e["source"] for e in edges
+                       if e["file"] == f"{CKPT}/{rel}" and e["class"] == "UNKNOWN"}
+                      | {src for pre, src in dynamic_prefixes
+                         if (CKPT + "/" + rel).startswith(pre)})
+        grp = by_sha.get(row["sha256"], []) if not row["symlink"] else []
+        retained = [o for o in grp if o != rel and best(o) in ("FROZEN", "ESSENTIAL")]
         if b in ("FROZEN", "ESSENTIAL"):
             cls = b
+        elif retained:
+            # a byte-identical retained copy exists: DUPLICATE, with
+            # every unresolved reach (dynamic prefix, bare basename,
+            # uncited log) kept as a dependency a removal would break
+            canonical = min(retained, key=retained_rank)
+            cls = "DUPLICATE"
+            reasons.append(f"byte-identical to retained {CKPT}/{canonical}")
         elif b == "UNKNOWN":
             cls = "UNKNOWN"
         else:
-            grp = by_sha.get(row["sha256"], [])
-            retained = [o for o in grp if o != rel and best(o) in ("FROZEN", "ESSENTIAL")]
-            if retained:
-                canonical = min(retained, key=retained_rank)
-                cls = "DUPLICATE"
-                reasons.append(f"byte-identical to {b or 'retained'} "
-                               f"{CKPT}/{canonical}")
-            elif len(grp) > 1 and rel != min(grp):
+            if len(grp) > 1 and rel != min(grp):
                 canonical = min(grp)
                 cls = "DUPLICATE"
                 reasons.append(f"byte-identical to uncited {CKPT}/{canonical} "
@@ -640,6 +652,7 @@ def build(repo: Path, tracked: set[str] | None = None, age_days: float = 14.0,
                                "MANIFEST, docs, code, jobs or small logs")
         classification[rel] = {"class": cls, "reasons": reasons,
                                "canonical": f"{CKPT}/{canonical}" if canonical else None,
+                               "dependencies": deps,
                                "family": _family(rel)}
 
     # duplicate groups with physical probe
@@ -708,7 +721,14 @@ def build(repo: Path, tracked: set[str] | None = None, age_days: float = 14.0,
         absent_cited.append({"target": t, "sources": sorted(sources),
                              "present_in": present})
 
-    families = _families(inv, classification, groups, edges, copies, now)
+    codemap = load_codemap_classes(repo)
+    dyn_by_family: dict[str, dict[str, str]] = collections.defaultdict(dict)
+    for pre, src in set(dynamic_prefixes):
+        for rel in inv:
+            if (CKPT + "/" + rel).startswith(pre):
+                dyn_by_family[_family(rel)][src] = codemap.get(Path(src).name, "UNCITED")
+    families = _families(inv, classification, groups, edges, copies, now,
+                         dyn_by_family)
     summary = _summary(inv, classification, groups, tracked, mismatches,
                        unresolved)
     summary["generic_loaders"] = len(generic_loaders)
@@ -719,7 +739,19 @@ def build(repo: Path, tracked: set[str] | None = None, age_days: float = 14.0,
             "absent_cited": absent_cited, "summary": summary}
 
 
-def _families(inv, classification, groups, edges, copies, now):
+def load_codemap_classes(repo: Path) -> dict[str, str]:
+    """basename -> CODEMAP class from docs/CODEMAP.md table rows."""
+    out = {}
+    for line in _read(repo / "docs/CODEMAP.md").splitlines():
+        cells = [c.strip() for c in line.strip().strip("|").split("|")]
+        if len(cells) >= 3 and cells[1].endswith((".py", ".sh", ".cmd")):
+            out[cells[1]] = cells[2]
+    return out
+
+
+def _families(inv, classification, groups, edges, copies, now,
+              dyn_by_family=None):
+    dyn_by_family = dyn_by_family or {}
     fam: dict[str, dict] = {}
     producers: dict[str, set] = collections.defaultdict(set)
     for e in edges:
@@ -781,6 +813,7 @@ def _families(inv, classification, groups, edges, copies, now):
                     "duplicate_alloc": dup_by_fam[f],
                     "duplicate_alloc_verified_distinct": dup_verified[f],
                     "independent_copies": copies_here,
+                    "dynamic_sources": dict(sorted(dyn_by_family.get(f, {}).items())),
                     "proposed_action": action,
                     "expected_benefit_bytes": benefit,
                     "benefit_confidence": conf})
@@ -887,16 +920,19 @@ def write_outputs(result: dict, out: Path, repo: Path, base_before: dict,
               f"(absent_cited.json).",
               "", "## Families (by allocated size)", "",
               "| family | files | alloc GB | newest | FROZEN | ESSENTIAL | DUPLICATE | "
-              "CANDIDATE | UNKNOWN | dup distinct GB | copies | benefit GB (conf) | action |",
-              "|---|---:|---:|---|---:|---:|---:|---:|---:|---:|---|---:|---|"]
+              "CANDIDATE | UNKNOWN | dup distinct GB | copies | reached by patterns in | "
+              "benefit GB (conf) | action |",
+              "|---|---:|---:|---|---:|---:|---:|---:|---:|---:|---|---|---:|---|"]
     for fam in result["families"]:
         c = fam["classes"]
         cp = ",".join(f"{k}:{v}" for k, v in fam["independent_copies"].items() if v) or "-"
-        lines.append("| %s | %d | %s | %s | %d | %d | %d | %d | %d | %s | %s | %s (%s) | %s |" % (
+        dyn = collections.Counter(fam["dynamic_sources"].values())
+        dyn_s = ", ".join(f"{k} x{v}" for k, v in sorted(dyn.items())) or "-"
+        lines.append("| %s | %d | %s | %s | %d | %d | %d | %d | %d | %s | %s | %s | %s (%s) | %s |" % (
             fam["family"], fam["files"], _gb(fam["alloc"]), fam["newest"],
             c.get("FROZEN", 0), c.get("ESSENTIAL", 0), c.get("DUPLICATE", 0),
             c.get("CANDIDATE", 0), c.get("UNKNOWN", 0),
-            _gb(fam["duplicate_alloc_verified_distinct"]), cp,
+            _gb(fam["duplicate_alloc_verified_distinct"]), cp, dyn_s,
             _gb(fam["expected_benefit_bytes"]), fam["benefit_confidence"],
             fam["proposed_action"]))
     lines += ["", "## Largest duplicate groups", "",

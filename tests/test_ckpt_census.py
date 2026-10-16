@@ -281,6 +281,33 @@ def test_duplicate_of_a_frozen_file_names_the_canonical_copy(repo):
     assert grp["physical"] in ("distinct", "clone-shared", "unknown")
 
 
+def test_duplicate_under_a_dynamic_prefix_is_duplicate_with_dependency_named(repo):
+    data = b"R" * 100
+    _w(repo / "checkpoints/confirmed/fam/k_s1.pt", data)
+    _w(repo / "checkpoints/k_s1.pt", data)
+    _w(repo / "checkpoints/MANIFEST.jsonl", json.dumps(
+        {"path": "confirmed/fam/k_s1.pt", "sha256": _sha(data), "bytes": 100,
+         "verdict": "confirmed"}) + "\n")
+    _w(repo / "scratch/gate.sh", "for f in checkpoints/k_s*.pt; do echo $f; done\n")
+    inv = run(repo)
+    row = inv["classification"]["k_s1.pt"]
+    assert row["class"] == "DUPLICATE"
+    assert row["canonical"] == "checkpoints/confirmed/fam/k_s1.pt"
+    assert any("dynamic path prefix" in r for r in row["reasons"])
+    assert row["dependencies"] == ["scratch/gate.sh"]
+
+
+def test_family_lists_dynamic_sources_with_codemap_class(repo):
+    _w(repo / "checkpoints/dyn_a1.pt", b"a" * 10)
+    _w(repo / "scratch/sweep.sh", "ls checkpoints/dyn_a*.pt\n")
+    _w(repo / "docs/CODEMAP.md",
+       "| sweep | sweep.sh | results-cited | RESULTS | RESULTS×1 | — | — | — | — |\n")
+    inv = run(repo)
+    fam = next(f for f in inv["families"] if f["family"] == "root:dyn")
+    assert fam["dynamic_sources"] == {"scratch/sweep.sh": "results-cited"}
+    assert fam["classes"] == {"UNKNOWN": 1}
+
+
 def test_two_frozen_duplicates_both_stay_frozen(repo):
     data = b"F" * 100
     _w(repo / "checkpoints/a/h1.pt", data)
