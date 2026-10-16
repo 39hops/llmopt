@@ -845,3 +845,33 @@ def _fill(n, kinds, levels, seed, exclude, max_consecutive_rejects, cells,
         seen.add(p.prompt)
         out.append(p)
     return out
+
+
+def make_split(
+    n_train: int, n_eval: int, *, kinds=("differentiate", "integrate", "limit"),
+    levels=(1, 2, 3), train_seed: int = 0, eval_seed: int = 99,
+    max_consecutive_rejects: int | None = None, wall: float | None = None,
+) -> tuple[list[Problem], list[Problem]]:
+    """(train, eval) with prompt disjointness enforced, not assumed.
+
+    Builds the eval set first with ``eval_seed`` and passes its prompts
+    as ``exclude`` to the train draw with ``train_seed``: the train set
+    provably contains no eval prompt whatever the cell cardinality.
+    Distinct seeds alone do not separate the halves — a maker's
+    ``seed + 1_000_003`` retry lands in the next seed band, and cells
+    such as drec level 1 (24 prompts) or taylor level 1 (15) collide
+    within a handful of draws. The eval set equals
+    ``make_dataset(n_eval, ..., seed=eval_seed)`` exactly, so an existing
+    eval set keeps its identity when a caller migrates to this helper.
+    """
+    if train_seed == eval_seed:
+        raise ValueError("train_seed and eval_seed must differ (they select "
+                         "disjoint seed bands; disjointness itself comes "
+                         "from exclude=)")
+    ev = make_dataset(n_eval, kinds=kinds, levels=levels, seed=eval_seed,
+                      max_consecutive_rejects=max_consecutive_rejects, wall=wall)
+    train = make_dataset(n_train, kinds=kinds, levels=levels, seed=train_seed,
+                         exclude=frozenset(p.prompt for p in ev),
+                         max_consecutive_rejects=max_consecutive_rejects,
+                         wall=wall)
+    return train, ev
