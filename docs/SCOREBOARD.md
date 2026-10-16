@@ -1,6 +1,6 @@
 # SCOREBOARD — generated sample of index-curated verdicts
 
-*Generated from docs/results-index.jsonl by scripts/gen_scoreboard.py. 80 live of 88 entries carrying a hand-curated `verdict` field, out of 1487 ledger entries; the curated field reaches RESULTS line 70832. This is a PARTIAL view, not current truth: docs/FINDINGS.md is the curated public layer, and every entry resolves through docs/RESULTS.md. Full chains: scripts/results_query.py --chain. Never hand-edit this file.*
+*Generated from docs/results-index.jsonl by scripts/gen_scoreboard.py. 80 live of 88 entries carrying a hand-curated `verdict` field, out of 1489 ledger entries; the curated field reaches RESULTS line 70832. This is a PARTIAL view, not current truth: docs/FINDINGS.md is the curated public layer, and every entry resolves through docs/RESULTS.md. Full chains: scripts/results_query.py --chain. Never hand-edit this file.*
 
 ## writer-invariance
 - **2026-09-10** ACCESSIBILITY-ONLY  *(RESULTS L70832)*
