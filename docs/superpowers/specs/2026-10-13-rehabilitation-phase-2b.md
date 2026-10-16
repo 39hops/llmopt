@@ -67,7 +67,17 @@ and the (now empty) LEGACY_ABSENT set absorb a new absent class, and
 whether the recovery operation's allowlist extends to jobs/. One
 commit set with its own tests; not part of 2C.
 
-## 2C. Generator correctness guards, no seed changes (P0-E, P0-F, P1-K, P1-L)
+## 2C. Generator correctness guards, no seed changes (P0-E, P0-F, P1-K, P1-L) — DONE 2026-10-16
+
+Landed on main after 66456518 (handoff 2026-10-13-3): pin freeze
+(tests/fixtures/mathgen_pins.json, 338 checks), `DatasetExhausted`
+after 100 full cycles of rejects, `llmopt/mathgen/isolated.py`
+subprocess worker with `make_dataset(wall=)`, `make_split`, meter
+flags, reproduce input errors and the environ AST proof. Caller
+census booked as OBSERVATION MATHGEN-CALLER-CENSUS-0 (RESULTS L78193);
+it records a potential contamination of the task_arithmetic
+evaluation (30 of 97 integrate rows in the adapter's training set)
+for a separate investigation. Original text follows for the record.
 
 Problem: `llmopt/mathgen/problems.py:make_dataset` loops forever on an
 exhausted cell; its per-item seed `seed * 1_000_000 + i` and the
