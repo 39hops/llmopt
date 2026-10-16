@@ -916,7 +916,7 @@ Census: library 193, reproduce-pinned 9, results-cited 499, spec-cited 77, tool-
 | tabula | tabula_rasa_r0.py | UNCITED | — | — | — | — | — | — |
 | tabula | tabula_rasa_r1.py | UNCITED | — | — | — | — | — | — |
 | tabula | tabula_rasa_r2.py | UNCITED | — | — | — | — | — | — |
-| task | task_arithmetic.py | results-cited | RESULTS, specs | RESULTS×5, specs×2 | — | — | — | — |
+| task | task_arithmetic.py | results-cited | RESULTS, specs | RESULTS×7, specs×2 | — | — | — | — |
 | task | task_composition.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | — | — | — |
 | tournament | tournament_birth.py | library | RESULTS, specs | RESULTS×3, specs×1 | 3 | 6 | — | — |
 | train | train_calculus.py | library | RESULTS, specs | RESULTS×6, specs×9 | 1 | — | 4 | — |
