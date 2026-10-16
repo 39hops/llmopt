@@ -102,6 +102,13 @@ DYNAMIC = re.compile(
     r"checkpoints/[\w\-./]*(?:\{|%|\$|\"\s*\+|'\s*\+|\"\s*%|'\s*%|\.format|f\")")
 DYNAMIC_PREFIX = re.compile(r"checkpoints/([\w\-./]*)")
 # os.path.join("checkpoints", x), Path("checkpoints") / x, ROOT / "checkpoints" / x
+# f"{CKPT}/name.pt", $CKPT/name.pt, os.path.join(X, "checkpoints", "name.pt"),
+# join(CKPT, "name.pt"): a literal basename under a variable root
+VARROOT = re.compile(
+    r"""(?:\{[A-Za-z_]\w*\}|\$\{?[A-Za-z_]\w*\}?)/([\w\-.]+\.(?:%s))\b"""
+    % "|".join(BASENAME_EXTS))
+JOIN_LITERAL = re.compile(
+    r"""join\([^)]*?["']([\w\-.]+\.(?:%s))["']\s*\)""" % "|".join(BASENAME_EXTS))
 JOIN_FORMS = re.compile(
     r"""join\(\s*["']checkpoints["']|Path\(\s*["']checkpoints["']\s*\)\s*/|/\s*["']checkpoints["']\s*/\s*[A-Za-z_]""")
 
@@ -231,9 +238,12 @@ def scan_text_for_refs(text: str, source: str) -> list[dict]:
     if JOIN_FORMS.search(text):
         refs.append({"kind": "generic-loader", "target": "checkpoints",
                      "source": source})
+    varroot = set(VARROOT.findall(text)) | set(JOIN_LITERAL.findall(text))
+    for b in varroot:
+        refs.append({"kind": "varroot", "target": b, "source": source})
     for b in set(re.findall(
             r"(?<![\w/])([\w][\w\-.]*\.(?:%s))\b" % "|".join(BASENAME_EXTS),
-            text)):
+            text)) - varroot:
         refs.append({"kind": "basename", "target": b, "source": source})
     return refs
 
@@ -466,6 +476,14 @@ def build(repo: Path, tracked: set[str] | None = None, age_days: float = 14.0,
                     if (CKPT + "/" + rel2).startswith(prefix):
                         hit(rel2, cls, f"{label} dir {t} in {r['source']}",
                             r["source"], "dir")
+            elif k == "varroot":
+                # a literal basename under a variable root: the code
+                # opens that name; taken as a path reference when the
+                # name exists at the top level of checkpoints/
+                for rel2 in by_base.get(t, []):
+                    if "/" not in rel2:
+                        hit(rel2, cls, f"{label} variable-root path {t!r} in "
+                            f"{r['source']}", r["source"], "path")
             elif k == "basename":
                 for rel2 in by_base.get(t, []):
                     if group == "code":

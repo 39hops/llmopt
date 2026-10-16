@@ -150,6 +150,18 @@ def test_full_path_literal_in_code_is_essential(repo):
     assert "scripts/use.py" in why(inv, "needed.pt")
 
 
+def test_variable_root_path_literal_in_code_is_essential(repo):
+    _w(repo / "checkpoints/mathnative_400m_gen4_ep1.pt", b"m" * 10)
+    _w(repo / "checkpoints/other_root.pt", b"o" * 10)
+    _w(repo / "scratch/bb.py",
+       'CKPT = "checkpoints"\nROWS = [("d1280", f"{CKPT}/mathnative_400m_gen4_ep1.pt", 1280)]\n'
+       'p = os.path.join(ROOT, "checkpoints", "other_root.pt")\n')
+    inv = run(repo)
+    assert cls(inv, "mathnative_400m_gen4_ep1.pt") == "ESSENTIAL"
+    assert "variable-root path" in why(inv, "mathnative_400m_gen4_ep1.pt")
+    assert cls(inv, "other_root.pt") == "ESSENTIAL"
+
+
 def test_bare_basename_in_code_is_unknown_not_candidate(repo):
     _w(repo / "checkpoints/deep/maybe.pt", b"m" * 10)
     _w(repo / "scratch/old.py", 'name = "maybe.pt"\n')

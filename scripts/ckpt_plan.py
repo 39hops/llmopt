@@ -54,12 +54,27 @@ def _hole_name(m) -> str:
     return m.group(2) or m.group(3) or "*"
 
 
+VARROOT = re.compile(r"(?:\{[A-Za-z_]\w*\}|\$\{?[A-Za-z_]\w*\}?)/([\w\-.]+\.(?:pt|bin|npz|npy|json|jsonl|safetensors|pth))\b")
+JOIN_LITERAL = re.compile(r"join\([^)]*?[\"']([\w\-.]+\.(?:pt|bin|npz|npy|json|jsonl|safetensors|pth))[\"']\s*\)")
+
+
 def parse_site(line: str, source: str, lineno: int) -> dict | None:
     """One code line -> {source, line, text, holes, regex, role}, or
-    None when the line carries no dynamic checkpoints/ path."""
+    None when the line carries no dynamic checkpoints/ path. A literal
+    basename under a variable root ({CKPT}/name.pt, join(X, "name.pt"))
+    is an exact site assumed to live at the top level of checkpoints/."""
     m = SITE.search(line)
     if not m:
-        return None
+        vr = VARROOT.search(line) or JOIN_LITERAL.search(line)
+        if not vr:
+            return None
+        literal = "checkpoints/" + vr.group(1)
+        role = ("producer" if PRODUCER.search(line)
+                and not re.search(r"torch\.load|json\.load|gate_ckpt", line)
+                else "consumer")
+        return {"source": source, "line": lineno, "text": literal, "holes": [],
+                "regex": re.compile(re.escape(literal)), "role": role,
+                "generic": False, "exact_literal": literal}
     text = m.group(0).rstrip(".,;:)")
     holes = [_hole_name(h) for h in HOLE.finditer(text)]
     if not holes:
@@ -86,7 +101,8 @@ def parse_site(line: str, source: str, lineno: int) -> dict | None:
     first_hole = HOLE.search(text)
     generic = first_hole is not None and text[:first_hole.start()] == "checkpoints/"
     return {"source": source, "line": lineno, "text": text, "holes": holes,
-            "regex": re.compile(pattern), "role": role, "generic": generic}
+            "regex": re.compile(pattern), "role": role, "generic": generic,
+            "exact_literal": None}
 
 
 def variable_values(text: str) -> dict[str, list[str]]:
@@ -124,6 +140,8 @@ def variable_values(text: str) -> dict[str, list[str]]:
 def expand(site: dict, vals: dict[str, list[str]]) -> list[str] | None:
     """Every exact path the site can produce, or None if a hole is
     unresolved."""
+    if site.get("exact_literal"):
+        return [site["exact_literal"]]
     choices = []
     for h in site["holes"]:
         if h not in vals or h in ("*", "<expr>"):
@@ -163,7 +181,8 @@ def collect_sites(repo: Path) -> list[dict]:
                 continue
             vals = variable_values(text)
             for i, line in enumerate(text.splitlines(), 1):
-                if "checkpoints/" not in line:
+                if "checkpoints/" not in line and not (
+                        VARROOT.search(line) or JOIN_LITERAL.search(line)):
                     continue
                 site = parse_site(line, rel, i)
                 if site is None:

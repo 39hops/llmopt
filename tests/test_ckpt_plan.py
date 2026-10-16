@@ -96,6 +96,14 @@ def test_docstring_line_without_code_is_a_mention():
     assert s2["role"] == "consumer"
 
 
+def test_variable_root_literal_is_an_exact_site():
+    s = cp.parse_site('("d1280-400M", f"{CKPT}/mathnative_400m_gen4_ep1.pt", 1280),',
+                      "scratch/bb.py", 73)
+    assert s["role"] == "consumer" and s["holes"] == []
+    assert s["exact_literal"] == "checkpoints/mathnative_400m_gen4_ep1.pt"
+    assert cp.expand(s, {}) == ["checkpoints/mathnative_400m_gen4_ep1.pt"]
+
+
 def test_expand_site_to_exact_names_when_every_hole_resolves():
     site = cp.parse_site('OUT = f"checkpoints/x_{A}_s{S}.pt"', "s.py", 1)
     names = cp.expand(site, {"A": ["hot", "cool"], "S": ["2", "3"]})
