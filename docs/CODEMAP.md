@@ -113,13 +113,13 @@ Census: library 193, reproduce-pinned 9, results-cited 500, spec-cited 77, tool-
 | day | day_chain.sh | UNCITED | — | — | — | — | — | — |
 | desert | desert_v2.py | spec-cited | specs | specs×1 | — | — | — | — |
 | detbwd | detbwd_diet.py | library | RESULTS, specs, via:TOOLING | RESULTS×9, specs×3 | 2 | 1 | — | — |
-| detbwd | detbwd_gravmoe.py | library | RESULTS, specs, TOOLING | RESULTS×6, specs×33, TOOLING×2 | 1 | 9 | 1 | — |
+| detbwd | detbwd_gravmoe.py | library | RESULTS, specs, TOOLING | RESULTS×6, specs×34, TOOLING×2 | 1 | 9 | 1 | — |
 | detbwd | detbwd_mb.py | library | RESULTS, specs, via:TOOLING | RESULTS×11, specs×8 | 4 | 1 | — | — |
 | detbwd | detbwd_plateau.py | results-cited | RESULTS, specs | RESULTS×2, specs×3 | — | — | — | — |
 | detbwd | detbwd_r1.py | library | RESULTS, via:specs, via:TOOLING | RESULTS×9 | 9 | 1 | — | — |
 | detbwd | detbwd_r1b.py | library | RESULTS, specs, via:TOOLING | RESULTS×4, specs×2 | 1 | — | — | — |
 | detbwd | detbwd_r2_adamw.py | library | RESULTS, specs, via:TOOLING | RESULTS×6, specs×1 | 2 | — | — | — |
-| detbwd | detbwd_r2b.py | library | RESULTS, specs, via:TOOLING | RESULTS×9, specs×6 | 6 | 1 | — | — |
+| detbwd | detbwd_r2b.py | library | RESULTS, specs, via:TOOLING | RESULTS×9, specs×7 | 6 | 1 | — | — |
 | detbwd | detbwd_r3_qw.py | library | RESULTS, specs, via:TOOLING | RESULTS×2, specs×1 | 5 | 1 | — | — |
 | determinability | determinability_census.py | results-cited | RESULTS | RESULTS×2 | — | — | 1 | — |
 | dfa | dfa_act.py | library | RESULTS, specs | RESULTS×9, specs×1 | 4 | 2 | 2 | — |
@@ -498,7 +498,7 @@ Census: library 193, reproduce-pinned 9, results-cited 500, spec-cited 77, tool-
 | onecycle | onecycle_component_audit.py | library | RESULTS, via:specs, via:TOOLING | RESULTS×32 | 1 | 2 | — | — |
 | optimizer | optimizer_geometry_desk.py | library | RESULTS, specs, via:TOOLING | RESULTS×35, specs×1 | 2 | 4 | — | — |
 | optimizer | optimizer_memory_ablation.py | library | RESULTS, specs, via:TOOLING | RESULTS×46, specs×1 | 3 | 3 | 1 | — |
-| oracle | oracle_worker.py | library | REPRODUCE, RESULTS, specs, via:TOOLING | REPRODUCE×1, RESULTS×3, specs×8 | 1 | 2 | 5 | — |
+| oracle | oracle_worker.py | library | REPRODUCE, RESULTS, specs, via:TOOLING | REPRODUCE×1, RESULTS×3, specs×9 | 1 | 2 | 5 | — |
 | ozaki | ozaki_2b_bisect.py | spec-cited | specs, TOOLING | specs×3, TOOLING×1 | — | — | — | — |
 | ozaki | ozaki_2b_check.py | results-cited | RESULTS, specs, TOOLING | RESULTS×1, specs×3, TOOLING×1 | — | — | — | — |
 | ozaki | ozaki_2b_debug.py | spec-cited | specs, TOOLING | specs×3, TOOLING×1 | — | — | — | — |
@@ -762,7 +762,7 @@ Census: library 193, reproduce-pinned 9, results-cited 500, spec-cited 77, tool-
 | family | file | class | cited by | doc citations | imports | invoked by | mentions | via |
 |---|---|---|---|---|---|---|---|---|
 |  | __init__.py | spec-cited | specs | specs×2 | — | — | 1 | — |
-| adjudicate | adjudicate.py | library | RESULTS, specs, TOOLING | RESULTS×16, specs×3, TOOLING×2 | — | 6 | 4 | — |
+| adjudicate | adjudicate.py | library | RESULTS, specs, TOOLING | RESULTS×16, specs×5, TOOLING×2 | — | 6 | 4 | — |
 | anchor | anchor_guard.py | spec-cited | specs | specs×2 | — | — | 1 | — |
 | anim | anim_precompute.py | spec-cited | specs | specs×4 | — | — | 2 | — |
 | arena | arena.py | UNCITED | — | — | — | — | — | — |
@@ -843,7 +843,7 @@ Census: library 193, reproduce-pinned 9, results-cited 500, spec-cited 77, tool-
 | bench | bench_zx_r5.py | library | RESULTS | RESULTS×3 | 2 | — | 1 | — |
 | bench | bench_zx_r6.py | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
 | bench | bench_zx_r7.py | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
-| book | book.py | library | RESULTS, specs, TOOLING | RESULTS×6, specs×6, TOOLING×3 | 1 | 2 | — | — |
+| book | book.py | library | RESULTS, specs, TOOLING | RESULTS×6, specs×7, TOOLING×3 | 1 | 2 | — | — |
 | build | build_gen7_diet.py | UNCITED | — | — | — | — | — | — |
 | calibrate | calibrate_hce.py | spec-cited | specs | specs×9 | — | — | — | — |
 | cite | cite_lookup.py | tool-referenced | TOOLING | TOOLING×3 | — | 1 | 1 | — |
@@ -871,9 +871,9 @@ Census: library 193, reproduce-pinned 9, results-cited 500, spec-cited 77, tool-
 | gen | gen_index.py | library | RESULTS, specs, TOOLING | RESULTS×1, specs×11, TOOLING×13 | — | 8 | — | — |
 | gen | gen_lake.py | library | RESULTS, specs | RESULTS×3, specs×1 | — | 1 | — | — |
 | gen | gen_magic_labels.py | results-cited | RESULTS, specs, TOOLING | RESULTS×3, specs×1, TOOLING×2 | — | — | — | — |
-| gen | gen_mathgen_pins.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — | 1 | — |
+| gen | gen_mathgen_pins.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — | 1 | — |
 | gen | gen_policy_labels.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
-| gen | gen_prereg_adjudication_pins.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
+| gen | gen_prereg_adjudication_pins.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — | — | — |
 | gen | gen_proposer_data.py | results-cited | RESULTS, specs | RESULTS×1, specs×9 | — | — | 1 | — |
 | gen | gen_readme.py | library | RESULTS, specs, TOOLING | RESULTS×1, specs×25, TOOLING×5 | 2 | 5 | 2 | — |
 | gen | gen_receipt_lock.py | library | RESULTS, specs, TOOLING | RESULTS×1, specs×4, TOOLING×9 | 1 | 10 | — | — |
@@ -917,10 +917,10 @@ Census: library 193, reproduce-pinned 9, results-cited 500, spec-cited 77, tool-
 | tabula | tabula_rasa_r0.py | UNCITED | — | — | — | — | — | — |
 | tabula | tabula_rasa_r1.py | UNCITED | — | — | — | — | — | — |
 | tabula | tabula_rasa_r2.py | UNCITED | — | — | — | — | — | — |
-| task | task_arithmetic.py | results-cited | RESULTS, specs | RESULTS×12, specs×5 | — | — | — | — |
-| task | task_composition.py | results-cited | RESULTS, specs | RESULTS×5, specs×1 | — | — | — | — |
+| task | task_arithmetic.py | results-cited | RESULTS, specs | RESULTS×12, specs×6 | — | — | — | — |
+| task | task_composition.py | results-cited | RESULTS, specs | RESULTS×5, specs×2 | — | — | — | — |
 | tournament | tournament_birth.py | library | RESULTS, specs | RESULTS×3, specs×1 | 3 | 6 | — | — |
-| train | train_calculus.py | library | RESULTS, specs | RESULTS×9, specs×9 | 1 | — | 4 | — |
+| train | train_calculus.py | library | RESULTS, specs | RESULTS×9, specs×10 | 1 | — | 4 | — |
 | train | train_dispatcher.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
 | train | train_magic_estimator.py | library | RESULTS, via:specs, via:TOOLING | RESULTS×2 | 7 | — | 1 | — |
 | train | train_magic_llm.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
