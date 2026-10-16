@@ -27,10 +27,9 @@ Classes (most protective wins):
              --age-days, not a sidecar, not under a dynamic prefix.
   UNKNOWN    everything else: a bare basename in code, a file under a
              dynamically constructed path prefix that names at least
-             one literal character past "checkpoints/", a file named
-             only by an uncited log, a symlink, a sidecar whose
-             primary is missing, an unparsable JSON sidecar, a recent
-             uncited file.
+             one literal character past "checkpoints/", a symlink, a
+             sidecar whose primary is missing, an unparsable JSON
+             sidecar, a recent uncited file.
 
 Generic loaders ("checkpoints/" + name, os.path.join("checkpoints",
 x), f"checkpoints/{name}") reach every file by construction and
@@ -39,8 +38,10 @@ listed (summary.generic_loaders, graph.unresolved kind
 generic-loader) but not applied per file. A log that names a
 checkpoint path counts as a FROZEN reference only when that log is
 itself sha-locked or cited by RESULTS; a mention in uncited log
-exhaust leaves the file UNKNOWN. Cited paths absent from the tree are
-listed (absent_cited) with the other trees they were found in.
+exhaust is recorded as a note and changes nothing (nothing reads
+weights out of a log). The census's own output under logs/rehab-2e/
+is never scanned. Cited paths absent from the tree are listed
+(absent_cited) with the other trees they were found in.
 
 Physical storage: for every duplicate group the first and middle
 extents of each copy are read with fcntl F_LOG2PHYS_EXT; equal keys
@@ -79,6 +80,7 @@ RECEIPT_GLOBS = ("*oomkilled*", "*interrupted*", "*poisoned*", "*_oom*")
 STEM_MIN = 8
 CLASSES = ("FROZEN", "ESSENTIAL", "DUPLICATE", "CANDIDATE", "UNKNOWN")
 RANK = {c: i for i, c in enumerate(CLASSES)}
+RANK["NOTE"] = 99   # informational only (mention in an uncited log)
 
 RESULTS_SOURCES = ("docs/RESULTS.md",)
 ESSENTIAL_DOC_SOURCES = ("README.md", "REPRODUCE.md", "docs/FINDINGS.md",
@@ -91,6 +93,9 @@ CODE_DIRS = ("scratch", "scripts", "llmopt", "tests", "jobs")
 CODE_EXTS = (".py", ".sh", ".cmd", ".ps1", ".toml", ".yaml", ".yml", ".txt")
 LOG_TEXT_EXTS = (".log", ".md", ".txt", ".json", ".jsonl")
 LOG_TEXT_MAX = 2 << 20
+# the census writes under logs/rehab-2e/; its own listings must never
+# feed back as references
+LOG_SKIP_DIRS = ("logs/rehab-2e",)
 
 PATH_TOKEN = re.compile(r"checkpoints/[\w\-./{},*]+")
 DYNAMIC = re.compile(
@@ -299,6 +304,9 @@ def collect_references(repo: Path) -> dict[str, list[dict]]:
     logs = repo / "logs"
     if logs.exists():
         for p in sorted(logs.rglob("*")):
+            rel = str(p.relative_to(repo))
+            if any(rel.startswith(d + "/") for d in LOG_SKIP_DIRS):
+                continue
             if (p.is_file() and p.suffix in LOG_TEXT_EXTS
                     and p.stat().st_size <= LOG_TEXT_MAX):
                 refs = scan_text_for_refs(_read(p), str(p.relative_to(repo)))
@@ -423,7 +431,7 @@ def build(repo: Path, tracked: set[str] | None = None, age_days: float = 14.0,
             if group == "logs":
                 standing = _log_is_cited(r["source"], locked_logs, cited_logs)
                 if standing is None:
-                    cls, label = "UNKNOWN", "uncited log"
+                    cls, label = "NOTE", "uncited log"
                 else:
                     cls, label = "FROZEN", standing
             if k == "stems":
@@ -556,7 +564,7 @@ def build(repo: Path, tracked: set[str] | None = None, age_days: float = 14.0,
                 parents_of[rel] = parsed["parents"]
 
     def best(rel) -> str:
-        cs = [c for c, _ in hits.get(rel, [])]
+        cs = [c for c, _ in hits.get(rel, []) if c != "NOTE"]
         return min(cs, key=lambda c: RANK[c]) if cs else "NONE"
 
     # propagate: parents inherit the output's class (verified or not)

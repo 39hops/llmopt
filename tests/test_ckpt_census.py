@@ -195,8 +195,20 @@ def test_log_mention_counts_only_when_the_log_is_locked_or_cited(repo):
     assert "locked receipt" in why(inv, "by_locked.pt")
     assert cls(inv, "by_cited.pt") == "FROZEN"
     assert "cited receipt" in why(inv, "by_cited.pt")
-    assert cls(inv, "by_exhaust.pt") == "UNKNOWN"
+    # an uncited log cannot be a dependency (nothing reads weights out
+    # of a log); the mention is recorded but does not change the class
+    assert cls(inv, "by_exhaust.pt") == "CANDIDATE"
     assert "uncited log" in why(inv, "by_exhaust.pt")
+
+
+def test_the_tools_own_output_directory_is_not_a_reference_source(repo):
+    _w(repo / "checkpoints/q.pt", b"q" * 10)
+    _w(repo / "logs/rehab-2e/run1/SHEET.md", "| checkpoints/q.pt |")
+    _w(repo / "logs/rehab-2e/run1/baseline_manifest.json",
+       json.dumps({"checkpoints/q.pt": {"sha256": "x", "bytes": 10}}))
+    inv = run(repo)
+    assert cls(inv, "q.pt") == "CANDIDATE"
+    assert "rehab-2e" not in why(inv, "q.pt")
 
 
 def test_absent_cited_paths_are_reported_with_other_tree_presence(repo, tmp_path):
