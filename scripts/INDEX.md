@@ -923,6 +923,14 @@ Magic-estimator labels: (root features, ground-truth hardness).
 - `_estimator_order(jobs: list) -> 'tuple[list, dict]'` — Artin's active-labeling move (2026-07-09): the estimator
 - `main(per_level: int, budget: int, out: Path, levels, seed_base: int=700000, guided: bool=False, workers: int=1) -> None`
 
+### scripts/gen_mathgen_pins.py
+Freeze the mathgen generator's observable output into tests/fixtures/mathgen_pins.json (rehabilitation phase 2C, step 1).
+
+- `_isolated(kind: str, level: int, seed: int, wall: float)`
+- `_case(kind, level, seed, prompt, answer, **extra)`
+- `build() -> dict`
+- `main(argv=None) -> int`
+
 ### scripts/gen_policy_labels.py
 Per-state syndrome-policy labels (the qLDPC decoder, generalized from the root to EVERY node of the winning derivation).
 
