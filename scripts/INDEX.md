@@ -6300,6 +6300,10 @@ The certified integer core of the deterministic-birth program.
 ### llmopt/reproduce.py
 One-command reproduction of pinned llmopt results.
 
+- `class ReproduceInputError`
+- `class PinSchemaError`
+- `_require_file(path, what: str, expected_rel: str)`
+- `_load_pins() -> dict`
 - `_arm_env(arm: str, pin: dict) -> dict[str, str]` — Resolve the pin schema plus its declared gravmoe cell contract.
 - `available() -> dict[str, dict]`
 - `_runner_env(spec: dict, base: dict[str, str] | None=None) -> dict[str, str]` — Remove ambient experiment knobs before applying the pinned contract.

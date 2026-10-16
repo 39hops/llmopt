@@ -16,7 +16,7 @@ this also drives `library`; from lab tooling it drives
 comments or plain strings; `via` names the cited caller a file
 inherits its class from when no document names the file itself.
 
-Census: library 193, reproduce-pinned 9, results-cited 495, spec-cited 80, tool-referenced 5, UNCITED 124 (of 906; library rows that are also doc-cited: 188)
+Census: library 193, reproduce-pinned 9, results-cited 499, spec-cited 77, tool-referenced 5, UNCITED 123 (of 906; library rows that are also doc-cited: 188)
 
 ## scratch/
 
@@ -112,15 +112,15 @@ Census: library 193, reproduce-pinned 9, results-cited 495, spec-cited 80, tool-
 | d2 | d2_verify.py | results-cited | via:RESULTS | — | — | 1 | — | night_28.sh |
 | day | day_chain.sh | UNCITED | — | — | — | — | — | — |
 | desert | desert_v2.py | spec-cited | specs | specs×1 | — | — | — | — |
-| detbwd | detbwd_diet.py | library | RESULTS, specs, via:TOOLING | RESULTS×9, specs×3 | 2 | — | — | — |
-| detbwd | detbwd_gravmoe.py | library | RESULTS, specs, TOOLING | RESULTS×6, specs×32, TOOLING×2 | 1 | 8 | 1 | — |
-| detbwd | detbwd_mb.py | library | RESULTS, specs, via:TOOLING | RESULTS×11, specs×8 | 4 | — | — | — |
+| detbwd | detbwd_diet.py | library | RESULTS, specs, via:TOOLING | RESULTS×9, specs×3 | 2 | 1 | — | — |
+| detbwd | detbwd_gravmoe.py | library | RESULTS, specs, TOOLING | RESULTS×6, specs×32, TOOLING×2 | 1 | 9 | 1 | — |
+| detbwd | detbwd_mb.py | library | RESULTS, specs, via:TOOLING | RESULTS×11, specs×8 | 4 | 1 | — | — |
 | detbwd | detbwd_plateau.py | results-cited | RESULTS, specs | RESULTS×2, specs×3 | — | — | — | — |
-| detbwd | detbwd_r1.py | library | RESULTS, via:specs, via:TOOLING | RESULTS×9 | 9 | — | — | — |
+| detbwd | detbwd_r1.py | library | RESULTS, via:specs, via:TOOLING | RESULTS×9 | 9 | 1 | — | — |
 | detbwd | detbwd_r1b.py | library | RESULTS, specs, via:TOOLING | RESULTS×4, specs×2 | 1 | — | — | — |
 | detbwd | detbwd_r2_adamw.py | library | RESULTS, specs, via:TOOLING | RESULTS×6, specs×1 | 2 | — | — | — |
-| detbwd | detbwd_r2b.py | library | RESULTS, specs, via:TOOLING | RESULTS×8, specs×5 | 6 | — | — | — |
-| detbwd | detbwd_r3_qw.py | library | RESULTS, specs, via:TOOLING | RESULTS×2, specs×1 | 5 | — | — | — |
+| detbwd | detbwd_r2b.py | library | RESULTS, specs, via:TOOLING | RESULTS×9, specs×5 | 6 | 1 | — | — |
+| detbwd | detbwd_r3_qw.py | library | RESULTS, specs, via:TOOLING | RESULTS×2, specs×1 | 5 | 1 | — | — |
 | determinability | determinability_census.py | results-cited | RESULTS | RESULTS×2 | — | — | 1 | — |
 | dfa | dfa_act.py | library | RESULTS, specs | RESULTS×9, specs×1 | 4 | 2 | 2 | — |
 | dfa | dfa_align.py | library | RESULTS, specs | RESULTS×5, specs×1 | 2 | 2 | 1 | — |
@@ -157,21 +157,21 @@ Census: library 193, reproduce-pinned 9, results-cited 495, spec-cited 80, tool-
 | ex5 | ex5_traj_rider.py | results-cited | RESULTS | RESULTS×2 | — | 1 | — | — |
 | ex5 | ex5_traj_rider2.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
 | ex6 | ex6_observe.py | results-cited | RESULTS | RESULTS×5 | — | — | — | — |
-| ex6 | ex6_phase.py | results-cited | RESULTS, specs | RESULTS×11, specs×3 | — | 3 | — | — |
+| ex6 | ex6_phase.py | results-cited | RESULTS, specs | RESULTS×12, specs×3 | — | 3 | — | — |
 | ex6 | ex6_run.sh | results-cited | RESULTS | RESULTS×5 | — | 1 | — | — |
-| ex6b43 | ex6b43_decomp.py | results-cited | RESULTS | RESULTS×4 | — | — | — | — |
-| ex6b43 | ex6b43_idcensus.py | results-cited | RESULTS | RESULTS×6 | — | — | — | — |
-| ex6b43 | ex6b43_knife.py | results-cited | RESULTS | RESULTS×6 | — | — | — | — |
-| ex6depth | ex6depth.py | results-cited | RESULTS | RESULTS×9 | — | — | 1 | — |
-| ex6depth1 | ex6depth1.py | results-cited | RESULTS | RESULTS×9 | — | — | — | — |
-| ex6loc | ex6loc.py | results-cited | RESULTS | RESULTS×4 | — | 1 | — | — |
+| ex6b43 | ex6b43_decomp.py | results-cited | RESULTS | RESULTS×5 | — | — | — | — |
+| ex6b43 | ex6b43_idcensus.py | results-cited | RESULTS | RESULTS×7 | — | — | — | — |
+| ex6b43 | ex6b43_knife.py | results-cited | RESULTS | RESULTS×7 | — | — | — | — |
+| ex6depth | ex6depth.py | results-cited | RESULTS | RESULTS×10 | — | — | 1 | — |
+| ex6depth1 | ex6depth1.py | results-cited | RESULTS | RESULTS×10 | — | — | — | — |
+| ex6loc | ex6loc.py | results-cited | RESULTS | RESULTS×6 | — | 1 | — | — |
 | ex6loc | ex6loc_rider.py | results-cited | RESULTS | RESULTS×4 | — | — | — | — |
-| ex6med | ex6med.py | library | RESULTS, specs | RESULTS×1, specs×1 | 4 | 5 | — | — |
-| ex6med | ex6med_idaudit.py | UNCITED | — | — | — | — | 1 | — |
-| ex6med | ex6med_idaudit2.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
+| ex6med | ex6med.py | library | RESULTS, specs | RESULTS×2, specs×1 | 4 | 5 | — | — |
+| ex6med | ex6med_idaudit.py | results-cited | RESULTS | RESULTS×2 | — | — | 1 | — |
+| ex6med | ex6med_idaudit2.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
 | ex6med | ex6med_run.sh | UNCITED | — | — | — | — | — | — |
-| ex6med2 | ex6med2.py | results-cited | RESULTS, specs | RESULTS×4, specs×1 | — | — | — | — |
-| ex6temporal | ex6temporal.py | results-cited | RESULTS | RESULTS×10 | — | — | 3 | — |
+| ex6med2 | ex6med2.py | results-cited | RESULTS, specs | RESULTS×5, specs×1 | — | — | — | — |
+| ex6temporal | ex6temporal.py | results-cited | RESULTS | RESULTS×11 | — | — | 3 | — |
 | exact | exact_twin_d56.py | spec-cited | specs | specs×1 | — | — | — | — |
 | exact1 | exact1_small_cells.py | results-cited | RESULTS, specs | RESULTS×4, specs×2 | — | — | — | — |
 | exchange | exchange_test.py | results-cited | RESULTS, specs, TOOLING | RESULTS×2, specs×1, TOOLING×1 | — | — | — | — |
@@ -270,7 +270,7 @@ Census: library 193, reproduce-pinned 9, results-cited 495, spec-cited 80, tool-
 | gt6 | gt6_resume_arms.sh | tool-referenced | TOOLING | TOOLING×4 | — | 2 | — | — |
 | gt7 | gt7_coverage_rederive.py | results-cited | RESULTS, specs | RESULTS×6, specs×2 | — | — | 1 | — |
 | gt7 | gt7_draw.py | results-cited | RESULTS, specs | RESULTS×2, specs×4 | — | — | 1 | — |
-| gt7 | gt7_run.py | results-cited | RESULTS, specs, TOOLING | RESULTS×25, specs×4, TOOLING×16 | — | 10 | — | — |
+| gt7 | gt7_run.py | results-cited | RESULTS, specs, TOOLING | RESULTS×27, specs×4, TOOLING×16 | — | 10 | — | — |
 | head | head_autopsy.py | library | RESULTS, via:specs | RESULTS×1 | 1 | — | — | — |
 | head | head_census.py | spec-cited | specs | specs×2 | — | — | 1 | — |
 | holdout | holdout_gate.py | spec-cited | specs | specs×1 | — | 1 | — | — |
@@ -462,8 +462,8 @@ Census: library 193, reproduce-pinned 9, results-cited 495, spec-cited 80, tool-
 | metallicity1 | metallicity1.sh | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
 | mezo | mezo_signal_desk.py | library | RESULTS | RESULTS×6 | 1 | 1 | — | — |
 | mezo0 | mezo0_launch.sh | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
-| moe | moe_gt1.py | library | REPRODUCE, RESULTS, specs, TOOLING | REPRODUCE×4, RESULTS×11, specs×7, TOOLING×8 | 4 | 6 | 2 | — |
-| moe | moe_gt1_arm2.py | library | REPRODUCE, RESULTS, specs, TOOLING | REPRODUCE×6, RESULTS×47, specs×7, TOOLING×31 | 16 | 26 | 2 | — |
+| moe | moe_gt1.py | library | REPRODUCE, RESULTS, specs, TOOLING | REPRODUCE×4, RESULTS×13, specs×7, TOOLING×8 | 4 | 6 | 2 | — |
+| moe | moe_gt1_arm2.py | library | REPRODUCE, RESULTS, specs, TOOLING | REPRODUCE×6, RESULTS×48, specs×7, TOOLING×31 | 16 | 26 | 2 | — |
 | morning | morning_run.sh | UNCITED | — | — | — | — | — | — |
 | mps | mps_sigma_gates.sh | UNCITED | — | — | — | — | — | — |
 | muon | muon_3ep_d256.py | results-cited | via:RESULTS | — | — | 1 | — | night_28_mac.sh |
@@ -702,7 +702,7 @@ Census: library 193, reproduce-pinned 9, results-cited 495, spec-cited 80, tool-
 | tenet | tenet_mult_b32.py | results-cited | RESULTS, TOOLING | RESULTS×2, TOOLING×3 | — | 1 | — | — |
 | tenet | tenet_mult_census.py | library | RESULTS, specs, TOOLING | RESULTS×2, specs×1, TOOLING×3 | 1 | 1 | — | — |
 | tenet | tenet_r1b_micro.py | UNCITED | — | — | — | — | — | — |
-| tenet | tenet_w0.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
+| tenet | tenet_w0.py | results-cited | RESULTS | RESULTS×4 | — | — | — | — |
 | tenet | tenet_w1_bridge.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — | 1 | — |
 | tenet | tenet_w1_population.py | UNCITED | — | — | — | — | — | — |
 | tenet | tenet_w1_relational.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — | — | — |
@@ -853,7 +853,7 @@ Census: library 193, reproduce-pinned 9, results-cited 495, spec-cited 80, tool-
 | control | control_round.py | UNCITED | — | — | — | — | — | — |
 | convert | convert_diet_prefix.py | spec-cited | specs | specs×1 | — | — | — | — |
 | eval | eval_mathnative.py | UNCITED | — | — | — | — | — | — |
-| eval | eval_pruned_moe.py | spec-cited | specs | specs×2 | — | — | — | — |
+| eval | eval_pruned_moe.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | — | — | — |
 | eval | eval_ruler.py | spec-cited | specs | specs×1 | — | — | — | — |
 | expert | expert_iter_steps.py | library | specs, via:RESULTS | specs×10 | 4 | — | — | farm_v22.py |
 | expert | expert_loop.py | library | specs, via:RESULTS | specs×16 | 3 | — | — | step_grpo.py |
@@ -890,7 +890,7 @@ Census: library 193, reproduce-pinned 9, results-cited 495, spec-cited 80, tool-
 | markov | markov_prior.py | spec-cited | specs | specs×3 | — | — | — | — |
 | mine | mine_highways.py | UNCITED | — | — | — | — | 1 | — |
 | mine | mine_prior_update.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
-| moe | moe_router_stats.py | results-cited | RESULTS, specs | RESULTS×2, specs×3 | — | — | 4 | — |
+| moe | moe_router_stats.py | results-cited | RESULTS, specs | RESULTS×4, specs×3 | — | — | 4 | — |
 | obs | obs_from_receipt_0s.py | library | RESULTS, specs, TOOLING | RESULTS×2, specs×1, TOOLING×2 | 1 | 2 | 1 | — |
 | obs | obs_from_receipt_0t.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — | — | — |
 | obs | obs_from_receipt_ex6b43knife.py | results-cited | RESULTS | RESULTS×4 | — | — | — | — |
@@ -916,10 +916,10 @@ Census: library 193, reproduce-pinned 9, results-cited 495, spec-cited 80, tool-
 | tabula | tabula_rasa_r0.py | UNCITED | — | — | — | — | — | — |
 | tabula | tabula_rasa_r1.py | UNCITED | — | — | — | — | — | — |
 | tabula | tabula_rasa_r2.py | UNCITED | — | — | — | — | — | — |
-| task | task_arithmetic.py | spec-cited | specs | specs×1 | — | — | — | — |
-| task | task_composition.py | spec-cited | specs | specs×1 | — | — | — | — |
+| task | task_arithmetic.py | results-cited | RESULTS, specs | RESULTS×5, specs×1 | — | — | — | — |
+| task | task_composition.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | — | — | — |
 | tournament | tournament_birth.py | library | RESULTS, specs | RESULTS×3, specs×1 | 3 | 6 | — | — |
-| train | train_calculus.py | library | RESULTS, specs | RESULTS×1, specs×9 | 1 | — | 4 | — |
+| train | train_calculus.py | library | RESULTS, specs | RESULTS×6, specs×9 | 1 | — | 4 | — |
 | train | train_dispatcher.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
 | train | train_magic_estimator.py | library | RESULTS, via:specs, via:TOOLING | RESULTS×2 | 7 | — | 1 | — |
 | train | train_magic_llm.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
