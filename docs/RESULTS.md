@@ -78271,3 +78271,123 @@ tree reads (aliases included: detbwd_r2b reads DIM / DHEAD / FFN /
 ACLAMP through `_env = __import__("os").environ`) is in CONTRACT_ENV
 and none of CONTRACT_ENV is dead. No call site changed. No seed
 arithmetic changed. No historical dataset or split modified.
+
+## OBSERVATION GATE-SEED-COLLISIONS-0: the 120-problem gate in `llmopt/lab/gate.py` draws 120 distinct problem seeds but its sampling seeds `GATE_BAND + i*31 + ply*7 + b` carry no level term, so the five levels reuse one 2,304-slot seed table spanning 798 distinct seeds (11,520 slots in all); every wave's eight seeds are distinct, every collision pairs one uniform stream with a different prompt, and the effect on the solve count is common random numbers across problems, not duplicated samples (2026-10-16, Mac; rehabilitation phase 2D; arithmetic only, frozen mapping unchanged)
+
+**Scope.** `llmopt/lab/gate.py` at 4188bad2: `GATE_LEVELS = (3, 4, 5,
+6, 7)`, `GATE_N = 24`, `B = 8`, 12 plies, `GATE_BAND = 9_900_000`.
+Problem seed for level `lv`, index `i`: `GATE_BAND + 1000 * lv + i`
+(the `_gen_isolated` argument). Sampling seeds for one wave at index
+`i`, ply `ply`: `[GATE_BAND + i * 31 + ply * 7 + b for b in range(8)]`,
+each seeding a fresh CPU `torch.Generator` whose stream feeds
+`torch.multinomial` one token at a time (`sample_wave_lp`). Pure
+arithmetic; no model was run and no code changed.
+
+**Counts.** Problem seeds: 120 of 120 distinct (levels sit 1,000
+apart, indices 0..23). Sampling seeds: the formula ignores `lv`, so
+all five levels use the identical table. Per level: 24 x 12 x 8 =
+2,304 slots over 798 distinct seeds (values 9,900,000..9,900,797);
+multiplicity histogram 1 seed used once: 54, twice: 180, three times:
+366, four times: 198. Across the five levels: 11,520 slots over the
+same 798 seeds. Within one problem: 96 slots over 85 distinct seeds
+(11 collisions: with a ply stride of 7 and 8 members, member b = 7 at
+ply p equals member b = 0 at ply p + 1). Across problems in a level:
+the problem stride 31 is smaller than a problem's 84-wide span, so
+736 of the 798 seeds are used by more than one problem. No sampling
+seed equals a problem seed (problem seeds start at 9,903,000), and
+the problem seeds enter a different generator (the mathgen string
+seed), so the two namespaces never meet.
+
+**What a collision does.** A seed fixes the uniform stream, not the
+sample: the token drawn is `multinomial(softmax(logits / 0.7))`, and
+the logits depend on the prompt and on the model. Inside one wave the
+eight seeds are distinct, so no wave ever contains two draws from the
+same stream. A repeated seed across plies of one problem meets a
+different `cur` (the loop advances only when a new verified step
+exists, otherwise it breaks); across problems or levels it meets a
+different problem. Two slots therefore share random numbers, not
+outputs, which is the common-random-numbers design: the per-problem
+solve probability is estimated without bias, and the 120 indicators
+are correlated through shared uniforms by an amount this entry does
+not measure (it would require a disjoint-seed re-run of the same
+checkpoint, which is a model run and out of this phase's scope).
+Consequences for use: (1) the solve total is unbiased; (2) the
+iid-binomial uncertainty on a single gate total is approximate, which
+is already why the house resolution law fences single-seed gate
+deltas; (3) paired arms share the table by construction, so between-
+arm comparisons on the same problems are unaffected and remain the
+valid shape; (4) a repeated seed is not an invalid experiment, and no
+historical gate total changes.
+
+**Not changed.** The mapping is frozen lineage (every booked 120-gate
+total was drawn from it); this entry adds the fact to the record and
+to the GLOSSARY gate entry. A future gate module may add a level
+term; it would be a new instrument with its own calibration, never a
+re-read of old totals.
+
+## AMENDMENT TASK-ARITHMETIC-OVERLAP-SCOPED-2026-10-16 (targets: OBSERVATION MATHGEN-CALLER-CENSUS-0 78193): the 30-prompt overlap belongs to `checkpoints/int_only_lora.pt`, which no script evaluates on the three-kind set; `scripts/task_arithmetic.py` loads `checkpoints/calculus_lora.pt`, trained with that exact set excluded, and its evaluation is already disjoint (0 of 300 under today's generator and under the generator at 586337ca); the re-score recommendation is withdrawn (2026-10-16, Mac; rehabilitation phase 2D; descriptive audit, no score modified, zero training)
+
+**What the target said.** The census recorded that the 300-row
+three-kind seed-99 set evaluated by `scripts/task_arithmetic.py`
+holds 97 integrate rows, 30 of them inside the 9,000-row training set
+of `checkpoints/int_only_lora.pt`, and recommended a re-score before
+any task-arithmetic number is cited again. The set fact was correct;
+the attribution was not.
+
+**Training manifest, reconstructed.** The adapter checkpoints carry
+no manifest (336 LoRA tensors each, no metadata keys), so the manifest
+is the training script at the commit that wrote each file plus the
+generator. `scripts/train_calculus.py` at 586337ca (2026-07-05 20:49)
+trained `KINDS = ("differentiate", "integrate", "limit_traced")`,
+`OUT = checkpoints/calculus_lora.pt`, eval `make_dataset(300,
+kinds=KINDS, seed=99)`, train `make_dataset(9000, kinds=KINDS, seed=0,
+exclude=<the eval prompts>)`. Commit 7efa71e8 (20:50) switched the
+script to `("differentiate",)` and `diff_only_lora.pt`; 84f7ff26
+(21:01) to `("integrate",)` and `int_only_lora.pt`, which is the
+version still on disk. `scripts/task_arithmetic.py` reads
+`checkpoints/calculus_lora.pt` and builds `make_dataset(300,
+kinds=KINDS, seed=99)` with the same three kinds: the training
+exclusion set and the evaluation set are the same call.
+
+**Overlap, canonical identities.** Identity is `(kind, prompt)` and,
+as a second read, the whitespace-free prompt; both agree everywhere.
+Under today's generator (4188bad2): eval3 (300) against the
+three-kind train set: 0; against the integrate-only train set: 30
+(all integrate; levels 1: 19, 3: 11); against the differentiate-only
+train set: 13. The single-kind evaluation sets used by
+`scripts/task_composition.py` against their own adapters: 0 and 0,
+and the 150-row prefixes: 0. Generator drift since training is ruled
+out: the same six datasets regenerated with the mathgen package
+checked out at 586337ca in a temporary worktree give identical
+digests (`llmopt.mathgen.digest` contract; eval3 ee1d661ab8c805ea,
+three-kind train 90a8eca9a5df1c71, integrate train 54456e7bde7e5b5e,
+differentiate train c1e0ccbe86b3917d, integrate eval b8a22cee25db192c,
+differentiate eval 2a1bd2c400aa4a08) and the same overlaps (0 / 30 /
+13). Exhaust: logs/rehab-2d/task_arith_overlap_current.txt and
+logs/rehab-2d/task_arith_overlap_july5.txt (untracked).
+
+**Which numbers depend on the affected evaluation.** None of the
+adapter-on-eval3 scores is booked in RESULTS; the task-arithmetic
+sweep lives in spec 2026-07-06-task-arithmetic-design.md and the spec
+INDEX line "COMPLETE-BOOKED, transfer complete, addition annihilates";
+the composition result (experiment 4) used the single-kind sets,
+which are disjoint from their adapters' training sets. No published
+number was scored on a contaminated set. Original scores,
+overlapping-subset scores and a separate held-out score are therefore
+not produced here: the existing evaluation is the disjoint one, and
+the only adapters that overlap eval3 were never evaluated on it.
+
+**Correction.** The recommendation in the target ("re-scores the
+task_arithmetic sweep on the 67 clean integrate rows") is withdrawn.
+What stands from the target: the seed-band aliasing numbers, the
+caller census, the hang census, and the general rule that an
+evaluation set must be excluded from every adapter it will be scored
+against, not only from the one trained in the same script.
+
+**Residual and follow-up protocol.** Adapter checkpoints should carry
+their manifest (kinds, levels, seeds, n, and the digest of the
+exclusion set) so this reconstruction is a lookup, not a worktree
+replay. Bounded follow-up, not armed: add the manifest dict to the
+`torch.save` payload in `scripts/train_calculus.py` and read it in
+`llmopt/train/task_vector.py:load_adapter` with a legacy branch for
+the three July files; a test asserts round trip. No retraining.

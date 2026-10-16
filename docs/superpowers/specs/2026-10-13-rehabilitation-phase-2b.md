@@ -140,6 +140,31 @@ byte-identical output when no bar declares a fence; every negative
 fixture produces its named outcome; the observation is booked with the
 arithmetic in the entry.
 
+**DONE 2026-10-16 (phase 2D, commits be866071..).** Historical
+adjudications frozen first: 22 pre-reg/observations pairs over 20
+pre-regs, 106 bars, library outcomes, reason chains, CLI stdout and
+return codes pinned in tests/fixtures/prereg_adjudication_pins.json and
+identical after every change. Fence landed as `"fence": {"width",
+"unit"}` on bars, conjuncts and the refutation predicate; absent or
+zero width is the pre-2D comparison; strictly inside reads UNRESOLVED
+with the arithmetic and unit in the reason; equality resolves by the
+comparison law; the comparison runs in exact rationals. Operands are
+validated before any ordering (NaN read NO-FIRE and +inf read FIRE
+before). UNRESOLVED dominates conjunctions and blocks refutation
+precedence; an unresolved condition bar leaves the refutation
+UNRESOLVED. Registration identity: registration_digest() plus an
+optional observations registration_sha256, refused on mismatch; git
+history shows every booked pre-reg's last edit precedes its
+observations' first commit. Negative controls and a test-only
+reference evaluator in exact arithmetic (tests/reference_adjudicator.py,
+tests/test_adjudicator_reference.py,
+tests/test_adjudicator_negative_controls.py). Gate seed arithmetic
+booked as OBSERVATION GATE-SEED-COLLISIONS-0 (RESULTS L78275); the
+task_arithmetic overlap scoped by AMENDMENT
+TASK-ARITHMETIC-OVERLAP-SCOPED-2026-10-16 (RESULTS L78328): the
+affected adapter is never evaluated on that set, recommendation
+withdrawn. No historical registration received a fence.
+
 ## 2E. Checkpoint classification and physical storage analysis (P2-R prep, non-destructive)
 
 Problem: `checkpoints/` holds about 70 GB; 36.5 GB in 691 files is cited

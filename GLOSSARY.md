@@ -22,7 +22,7 @@ Scope tags may stack: `[DEVICE-SCOPED]` names the measured device, `[FORMAT-BOUN
 
 ## Terms used on the front page and in FINDINGS
 
-- **gate** — Unless qualified as a technical routing or identity gate, a declared evaluation used to accept, reject, or compare a model; capability gates run outputs and oracle-verify them ([`docs/RESULTS.md:14401`](docs/RESULTS.md)).
+- **gate** — Unless qualified as a technical routing or identity gate, a declared evaluation used to accept, reject, or compare a model; capability gates run outputs and oracle-verify them ([`docs/RESULTS.md:14401`](docs/RESULTS.md))). Seed note: the 120-problem gate's sampling seeds carry no level term, so its five levels share one 798-seed table and problems share streams; every wave's eight seeds are distinct and collisions act as common random numbers across prompts, not duplicated samples (OBSERVATION GATE-SEED-COLLISIONS-0, [`docs/RESULTS.md:78275`](docs/RESULTS.md)).
 - **arm** — One treatment or configuration within an experiment ([`docs/RESULTS.md:14167`](docs/RESULTS.md)).
 - **cell** — One named, usually preregistered experiment or comparison that may contain multiple arms; this is not a tensor location ([`docs/RESULTS.md:10184`](docs/RESULTS.md)).
 - **battery** — A fixed, reusable suite of prompts, arms, or checks run as one instrument, so results compare across sessions, devices, or implementations; the deterministic integer battery is the canonical example ([VERDICT TIER-A A1](docs/RESULTS.md#L12848 "id:2026-07-31-verdict-tier-a-a1-gate-pooling")).
