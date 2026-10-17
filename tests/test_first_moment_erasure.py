@@ -171,6 +171,11 @@ def test_stream_and_scheduler_continuity_reuse_oma(mod):
 
 
 def test_refuse_if_exists(mod, tmp_path, monkeypatch):
+    import torch
+    # main() sets process-wide determinism before it refuses; keep the
+    # test from leaking that flag into the session
+    monkeypatch.setattr(torch, "use_deterministic_algorithms", lambda *a, **k: None)
+    monkeypatch.setattr(torch, "set_num_threads", lambda *a, **k: None)
     monkeypatch.setattr(mod, "RECEIPT", tmp_path / "treat.json")
     monkeypatch.setattr(mod, "STREAM", tmp_path / "treat.jsonl")
     monkeypatch.setattr(mod, "OUT_DIR", tmp_path)

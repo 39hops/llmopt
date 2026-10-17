@@ -80,6 +80,10 @@ DOC_GROUPS = {
 }
 # Sha-locked receipts that name their emitter are RESULTS-grade evidence.
 RECEIPT_LOCK = "docs/receipts.lock.json"
+# Storage-triage receipts (checkpoint census and plan sheets) list every
+# file and script they examined; reading them as citations would move
+# hundreds of rows to results-cited because an inventory named them.
+TRIAGE_RECEIPT_PREFIXES = ("logs/rehab-2e/",)
 RECEIPT_MAX_BYTES = 4 << 20
 
 # Code corpus: files whose imports / path literals are dependency edges.
@@ -183,6 +187,8 @@ class Repo:
             except Exception:
                 recs = {}
             for rel, rec in sorted(recs.items()):
+                if rel.startswith(TRIAGE_RECEIPT_PREFIXES):
+                    continue
                 p = self.root / rel
                 if (rec.get("tracked") or self.tracked is None) and self.ok(p) \
                         and p.stat().st_size <= RECEIPT_MAX_BYTES:

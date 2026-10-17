@@ -101,12 +101,27 @@ def synthetic(tmp_path_factory):
     _w(root, "jobs/night.cmd", "bash scratch/job_m.sh\n")
     _w(root, "logs/k/r.json", json.dumps({"emitter": "scratch/emit_k.py",
                                           "keyed_z": 1}))
+    # a storage-triage receipt (checkpoint census sheet) names a script
+    # it merely inventoried; it is sha-locked like any receipt but must
+    # not count as a citation
+    _w(root, "scratch/triaged_v.py", "print('v')\n")
+    _w(root, "logs/rehab-2e/run9/SHEET.md",
+       "| 0.08 | checkpoints/x.pt | UNKNOWN | scratch/triaged_v.py [UNCITED] |\n")
     _w(root, "docs/receipts.lock.json",
        json.dumps({"receipts": {"logs/k/r.json": {"exists": True,
-                                                  "tracked": True}}}))
+                                                  "tracked": True},
+                                "logs/rehab-2e/run9/SHEET.md": {"exists": True,
+                                                                "tracked": True}}}))
     mod = _load()
     rows = {r["file"]: r for r in mod.build(root, tracked=None)}
     return rows
+
+
+def test_triage_receipt_is_not_a_citation(synthetic):
+    """A sha-locked census or plan sheet under logs/rehab-2e/ lists the
+    scripts it examined; that listing must not promote them."""
+    assert synthetic["triaged_v.py"]["class"] == "UNCITED"
+    assert synthetic["emit_k.py"]["class"] == "results-cited"
 
 
 def test_bare_import_is_library(synthetic):
