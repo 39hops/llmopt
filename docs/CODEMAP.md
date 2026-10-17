@@ -188,7 +188,7 @@ Census: library 195, reproduce-pinned 9, results-cited 508, spec-cited 74, tool-
 | fb | fb_prune.py | spec-cited | specs | specs×1 | — | — | — | — |
 | fig | fig_magic_scatter.py | spec-cited | specs | specs×1 | — | — | — | — |
 | first | first_moment_erasure.py | library | RESULTS, specs, via:TOOLING | RESULTS×37, specs×5 | 2 | 5 | — | — |
-| first | first_moment_erasure_ladder.py | library | RESULTS, specs, TOOLING | RESULTS×34, specs×5, TOOLING×1 | 2 | 5 | — | — |
+| first | first_moment_erasure_ladder.py | library | RESULTS, specs, TOOLING | RESULTS×34, specs×6, TOOLING×1 | 2 | 5 | — | — |
 | first | first_moment_erasure_ladder2.py | library | RESULTS, specs, TOOLING | RESULTS×22, specs×4, TOOLING×1 | 2 | 4 | — | — |
 | fixed | fixed_q_snap.py | results-cited | via:RESULTS, via:specs | — | — | 1 | — | quick_exact_3080.sh |
 | floor | floor_hk1.sh | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 1 | — | — |
@@ -296,7 +296,7 @@ Census: library 195, reproduce-pinned 9, results-cited 508, spec-cited 74, tool-
 | kv | kv_equiv.py | UNCITED | — | — | — | 1 | 1 | — |
 | l9 | l9_probe.py | results-cited | via:RESULTS | — | — | 3 | — | hot_chain.sh |
 | lam | lam_merge_review.py | results-cited | via:RESULTS, via:specs | — | — | 1 | — | night31b_cuda.sh |
-| lean | lean_check.py | reproduce-pinned | REPRODUCE, RESULTS, specs, TOOLING | REPRODUCE×1, RESULTS×18, specs×10, TOOLING×4 | — | 2 | — | — |
+| lean | lean_check.py | reproduce-pinned | REPRODUCE, RESULTS, specs, TOOLING | REPRODUCE×1, RESULTS×18, specs×11, TOOLING×4 | — | 2 | — | — |
 | lean | lean_sample_build.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | — | — | — |
 | legacy | legacy_diet_audit.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
 | len | len_vs_l4.py | results-cited | RESULTS, specs | RESULTS×4, specs×1 | — | — | — | — |
@@ -847,7 +847,7 @@ Census: library 195, reproduce-pinned 9, results-cited 508, spec-cited 74, tool-
 | build | build_gen7_diet.py | UNCITED | — | — | — | — | — | — |
 | calibrate | calibrate_hce.py | spec-cited | specs | specs×9 | — | — | — | — |
 | cite | cite_lookup.py | tool-referenced | TOOLING | TOOLING×3 | — | 1 | 1 | — |
-| ckpt | ckpt_census.py | library | RESULTS, specs | RESULTS×7, specs×3 | 1 | 1 | — | — |
+| ckpt | ckpt_census.py | library | RESULTS, specs | RESULTS×7, specs×4 | 1 | 1 | — | — |
 | ckpt | ckpt_manifest.py | library | RESULTS, specs | RESULTS×4, specs×4 | 1 | — | 1 | — |
 | ckpt | ckpt_plan.py | library | RESULTS, specs | RESULTS×4, specs×3 | 1 | — | — | — |
 | claim | claim_lint.py | results-cited | RESULTS, specs, TOOLING | RESULTS×1, specs×7, TOOLING×5 | — | 3 | 1 | — |
@@ -887,7 +887,7 @@ Census: library 195, reproduce-pinned 9, results-cited 508, spec-cited 74, tool-
 | harvest | harvest_champion.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
 | harvest | harvest_frontier.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — | — | — |
 | list | list_uncurated.py | spec-cited | specs | specs×6 | — | — | — | — |
-| liverun | liverun.py | library | RESULTS, specs, TOOLING | RESULTS×20, specs×5, TOOLING×3 | — | 15 | 1 | — |
+| liverun | liverun.py | library | RESULTS, specs, TOOLING | RESULTS×20, specs×6, TOOLING×3 | — | 15 | 1 | — |
 | log | log_hygiene.py | library | RESULTS, specs | RESULTS×3, specs×7 | 2 | 1 | — | — |
 | markov | markov_eval.py | UNCITED | — | — | — | — | — | — |
 | markov | markov_prior.py | spec-cited | specs | specs×3 | — | — | — | — |
