@@ -1,0 +1,14 @@
+# Mac cache reclaim 2026-10-17 (regenerable caches and temp outputs only; no evidence, no venv, no checkpoint)
+free_before_kb 46268280
+remove 2198968KB 526files .cache/selenium
+remove 430024KB 10199files .cache/trunk
+remove 1638068KB 27689files .cache/codex-runtimes
+remove 308740KB 241files Library/Caches/pip
+remove 1430128KB 2914files Library/Caches/com.microsoft.VSCode.ShipIt
+remove 1120788KB 7212files Library/Caches/ms-playwright
+remove 1128376KB 48900files Library/Caches/Google
+remove 2572496KB 56278files /private/var/folders/jw/1nt6cs7n7zd41ql93thvcsf80000gn/T/servo-cli-tests
+remove 90252KB 4149files /private/var/folders/jw/1nt6cs7n7zd41ql93thvcsf80000gn/T/servo-tests
+remove 1172940KB 3827files .elan/toolchains/leanprover--lean4---v4.15.0
+error: Timeout (300s) when waiting for lock on `/Users/artin/.cache/uv` at `.cache/uv/.lock`, is another uv process running? You can set `UV_LOCK_TIMEOUT` to increase the timeout.
+free_after_kb 58462008

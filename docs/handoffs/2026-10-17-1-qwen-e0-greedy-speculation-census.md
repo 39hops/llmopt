@@ -65,3 +65,26 @@ Greedy and sampled acceptance laws are different quantities; the
 recorded teacher token is authoritative and fp16-ambiguous positions
 are never certified; the geometric form is a model, the replay is the
 measurement; accepted/drafted is not an estimate of agreement.
+
+## Addendum (same day, after E0 acceptance)
+
+- OBSERVATION QWEN-E0-SPEC-CENSUS-0-PER-STREAM: per-stream replay
+  3.4267 at k = 4 (k = 1..8 recorded), the deployment-relevant
+  companion; the registered concatenated 3.4695 stands.
+- OBSERVATION MAC-STORAGE-RECLAIM-0: 12.2 GB of verified caches and
+  temp outputs removed (manifest logs/rehab-2e/mac_cache_reclaim_
+  2026-10-17.txt); free 46.3 to 58.5 GB. The vendor restore condition
+  (76 GB plus temporary allocation) is not met; nothing downloaded.
+  Large non-lab trees (servo-evidence 75 GB, CloudStorage 23 GB,
+  Application Support 39 GB, a 5 GB data zip in Downloads, docker
+  4.8 GB, uv cache 5 GB with a live consumer) were left for Artin.
+- OBSERVATION QWEN-DRAFT-DECODE-COST-0: one-layer probe of arm C on
+  Mac CPU: 0.91 s decode per linear layer, 0.81 s per full layer,
+  35 ms of GEMV; about 57 s per draft token if decoded per token.
+  Break-even at k = 4 would need c_d under about 3 to 6 s. Exact
+  speculation is not faster than streamed decoding on this Mac with
+  the current draft path, regardless of teacher timing. Gating item:
+  a fused W4/S16 decode-and-multiply kernel (RIFF L6700, banked).
+- Timing rung prepared, not registered: spec 2026-10-17-timing-rung.md
+  (quantities, break-even law with per-stream yields, three bars, the
+  vendor-restore preconditions with the hub's per-shard LFS sha256).

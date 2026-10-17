@@ -79196,3 +79196,73 @@ The per-stream figure sits 0.5 to 1.8 percent under the concatenated
 one at every k (boundary blocks are truncated and emit no bonus token
 past the stream end). These, not the geometric form, are the inputs to
 the break-even calculation of the timing rung.
+
+## OBSERVATION MAC-STORAGE-RECLAIM-0: fresh allocated-space census of the Mac and a 12.2 GB cache reclaim; free space 46.3 GB before, 58.5 GB after; the 80 GB target for restoring the 56 GB vendor checkpoint is not reached by safe cleanup alone, deficit 21.5 GB (2026-10-17, Mac; caches and temp outputs only, no evidence, no environment, no checkpoint touched)
+
+Census (du allocated blocks, home directory, 2026-10-17 17:00):
+code 111.8 GB (llmopt 91.4: checkpoints 68.9, logs 8.2, scratch 8.2
+of which scratch/leancheck/.lake 7.7 restored earlier today, data 1.8,
+three venvs 3.3; llmopt-repair 8.4 protected; servo 8.7; learning 1.6),
+Library 91.3 GB (Application Support 39.3, CloudStorage 22.7,
+Containers 8.0 of which docker 4.8, Android 4.9, Caches 4.7, Messages
+3.1), servo-evidence 75.4 GB (five dated evidence directories of
+another project, not touched), .cache 10.3 GB, qwen_whole0t 9.2 GB
+(arm C, protected), Downloads 5.0 GB (one 5.07 GB data zip of
+2026-09-25, not an installer, not touched), .elan 4.0 GB.
+
+Removed, each verified regenerable with no running consumer (manifest
+logs/rehab-2e/mac_cache_reclaim_2026-10-17.txt): .cache/selenium 2.20
+GB, .cache/trunk 0.43, .cache/codex-runtimes 1.64, Library/Caches/pip
+0.31, VSCode ShipIt update cache 1.43, ms-playwright browsers 1.12,
+Library/Caches/Google 1.13, temp test outputs under the per-user T
+directory (servo-cli-tests 2.57, servo-tests 0.09), and the unused
+Lean toolchain v4.15.0 1.17 (no reference in the repo or in
+llmopt-repair; the pinned toolchain is v4.33.0-rc2). Total 12.09 GB
+logical; df moved 46.27 GB to 58.46 GB free (12.19 GB). The uv wheel
+cache (5.0 GB) was left in place: a running desktop extension holds
+its lock, so it has an active consumer. Docker's 4.8 GB disk image was
+left in place (needs the daemon to prune; images unknown).
+
+Not reclaimable under the authorization: the 70 GB checkpoint tree,
+logs, receipts, arm C, the teacher arrays, llmopt-repair, the active
+environments, and the two large non-lab trees (servo-evidence 75 GB,
+CloudStorage 23 GB) which are Artin's own data. Consequence for the
+vendor restore: the condition "at least 20 GB free after the 56 GB
+download" needs 76 GB free plus temporary allocation; at 58.5 GB the
+condition fails and the download does not proceed. Options are an
+external volume for the vendor shards or a decision on the non-lab
+trees.
+
+## OBSERVATION QWEN-DRAFT-DECODE-COST-0: the draft side of the speculation cost on this Mac, measured one layer at a time on arm C with the house codec decoder: decoding one linear-attention layer's six compressed matrices (383M parameters, 128 MB) to fp32 takes 0.91 s and one full-attention layer 0.81 s, against 35 ms for the six single-token GEMVs; decoded per token, as the census runtime does, that is about 57 s per draft token, more than the entire streamed bf16 teacher step; the draft cost, not the teacher, decides break-even on this machine (2026-10-17, Mac CPU, 5 threads, instrument probe, not a registered rung)
+
+Setup. .venv_teacher (torch 2.13.0), arm C at ~/qwen_whole0t/C
+(19/19 digests), llmopt.lab.qcodec.decode_entry on layer 0
+(linear-attention) and layer 3 (full-attention), one random fp32
+token vector, wall clock per tensor. Numbers are single-shot and
+single-machine; they are an instrument read, not a verdict.
+
+Layer 0: in_proj_qkv s16 [10240, 5120] decode 103 ms, gemv 6.9 ms;
+in_proj_z s16 [6144, 5120] 101 ms, 6.0 ms; out_proj s16 [5120, 6144]
+66 ms, 1.5 ms; down_proj w4 [5120, 17408] 276 ms, 8.0 ms; gate_proj
+w4 [17408, 5120] 174 ms, 8.7 ms; up_proj w4 [17408, 5120] 188 ms,
+4.5 ms. Layer 3 (full attention, 7 tensors) decode 0.81 s.
+
+Projection, labelled: 48 x 0.91 + 16 x 0.81 = 57 s of decode per
+token if every weight is decoded on every token, plus about 1.7 s of
+fp32 GEMV. The decoded fp32 model (108 GB) does not fit in 39 GB, and
+bf16 (54 GB) does not either, so a resident decoded draft is not an
+option on this Mac; the compressed bytes (9.4 GB) do fit. The draft
+cost therefore equals the decode cost until a fused decode-and-
+multiply kernel exists (W4-GROUP-DOT, RIFF L6700, banked and unbuilt;
+the 3080 Triton kernels of CUDA-RUNG4 are that kernel for CUDA).
+
+Consequence for the timing rung. With the per-stream E0 yield at k = 4
+of 3.43 tokens per block, break-even needs 4 c_d + c_v < 3.43 c_t.
+Even with an optimistic streamed teacher (c_t about 5 to 11 s per
+token, c_v about c_t), 4 c_d must stay under roughly 10 to 25 s, so
+c_d must be under about 3 to 6 s per token; the measured decoder is
+57 s. Exact speculation is not faster than ordinary streamed decoding
+on this Mac with the current CPU draft path, by a factor of about
+five to ten, independent of any teacher timing. The teacher-side
+measurements (c_t, c_v(k)) remain worth having, but they cannot flip
+this conclusion; the gating item is the draft kernel.

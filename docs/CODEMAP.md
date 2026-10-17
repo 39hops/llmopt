@@ -622,7 +622,7 @@ Census: library 195, reproduce-pinned 9, results-cited 509, spec-cited 74, tool-
 | qwen | qwen_topset_census.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
 | qwen | qwen_tower_ladder.py | results-cited | RESULTS, via:specs | RESULTS×18 | — | 11 | — | — |
 | qwen | qwen_tree_adjudicate.py | library | RESULTS, specs | RESULTS×2, specs×1 | — | 1 | — | — |
-| qwen | qwen_whole0t.py | library | RESULTS, specs | RESULTS×3, specs×1 | 1 | 1 | 2 | — |
+| qwen | qwen_whole0t.py | library | RESULTS, specs | RESULTS×4, specs×1 | 1 | 1 | 2 | — |
 | random | random_direction_control.py | library | RESULTS, specs | RESULTS×10, specs×3 | 1 | 2 | — | — |
 | rank | rank_read.py | spec-cited | specs | specs×2 | — | — | 1 | — |
 | rat | rat_deploy.py | results-cited | RESULTS, specs | RESULTS×3, specs×7 | — | 2 | 1 | — |

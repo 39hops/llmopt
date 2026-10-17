@@ -4344,10 +4344,9 @@
   "logs/qwen_e0/C/replay_per_stream.json": {
    "bytes": 3033,
    "exists": true,
-   "local_only": true,
    "sha256": "3e1e31bb30700a777b750ddf6cf94537c8b182e98c0159d86c52dab4244fbe8e",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/qwen_e0/C/summary.json": {
    "bytes": 16685,
@@ -5658,6 +5657,14 @@
    "exists": true,
    "local_only": true,
    "sha256": "db9b2d058339b560b56fe0cbe8f27e5d2c09a444f28929f6ebbb26c3c95886f0",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/rehab-2e/mac_cache_reclaim_2026-10-17.txt": {
+   "bytes": 957,
+   "exists": true,
+   "local_only": true,
+   "sha256": "99c85bee5ad8dc57fe01abdaf03b3f8c3e0287146198cef8fd52b8129e767485",
    "source": "results",
    "tracked": false
   },
