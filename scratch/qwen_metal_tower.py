@@ -70,6 +70,28 @@ def main() -> None:
         handles[sh].seek(e["off"])
         return handles[sh].read(e["len"])
 
+    # Exact HF q/k normalization. mlx-lm writes the GatedDeltaNet l2norm as
+    # mx.fast.rms_norm(x, None, 1e-6) with the 1/sqrt(dk) scale folded in,
+    # which puts eps * dk inside the root instead of eps; against the CPU
+    # oracle that read as a 1e-3 relative hidden-state error by layer 2
+    # and 2e-2 on the logits (localized 2026-10-17, receipts under
+    # logs/qmetal/). The override below is the HF form, x * rsqrt(sum x^2
+    # + 1e-6), with the same scale fold; the source guard in
+    # tests/test_qwen_metal_tower_contract.py pins the two library lines
+    # it replaces.
+    import inspect
+    import textwrap
+    src = textwrap.dedent(inspect.getsource(qwen3_5.GatedDeltaNet.__call__))
+    a_line = "q = (inv_scale**2) * mx.fast.rms_norm(q, None, 1e-6)"
+    b_line = "k = inv_scale * mx.fast.rms_norm(k, None, 1e-6)"
+    if a_line not in src or b_line not in src:
+        raise SystemExit("REFUSING: mlx-lm GatedDeltaNet source changed; re-derive the l2norm override")
+    src = src.replace(a_line, "q = inv_scale * (q * mx.rsqrt((q * q).sum(-1, keepdims=True) + 1e-6))")
+    src = src.replace(b_line, "k = k * mx.rsqrt((k * k).sum(-1, keepdims=True) + 1e-6)")
+    ns: dict = {}
+    exec(compile(src, "qwen3_5_gdn_exact_l2norm", "exec"), vars(qwen3_5), ns)
+    qwen3_5.GatedDeltaNet.__call__ = ns["__call__"]
+
     cfg = json.load(open(os.path.join(vdir, "config.json")))
     args = qwen3_5.ModelArgs.from_dict(cfg)
     if n_layers_env:
@@ -166,28 +188,25 @@ def main() -> None:
         if os.path.exists(dump_hidden):
             raise SystemExit(f"REFUSING: {dump_hidden} exists")
 
-        def wrap(i, layer):
-            orig = layer.__call__
+        class Rec(nn.Module):
+            """Records a module's output under a name (instance __call__
+            cannot be patched: Python dispatches on the type)."""
+            def __init__(self, inner, name):
+                super().__init__()
+                self.inner = inner
+                self.name = name
+                if hasattr(inner, "is_linear"):
+                    self.is_linear = inner.is_linear
 
-            def call(x, *a, **k):
-                y = orig(x, *a, **k)
-                captured[f"layer_{i}"] = y
+            def __call__(self, *a, **k):
+                y = self.inner(*a, **k)
+                captured[self.name] = y
                 return y
-            layer.__call__ = call
-        for i, ly in enumerate(tm.layers):
-            wrap(i, ly)
-        orig_norm = tm.norm.__call__
-        def norm_call(x, *a, **k):
-            y = orig_norm(x, *a, **k)
-            captured["final_norm"] = y
-            return y
-        tm.norm.__call__ = norm_call
-        orig_emb = tm.embed_tokens.__call__
-        def emb_call(x, *a, **k):
-            y = orig_emb(x, *a, **k)
-            captured["embed"] = y
-            return y
-        tm.embed_tokens.__call__ = emb_call
+
+        for i in range(len(tm.layers)):
+            tm.layers[i] = Rec(tm.layers[i], f"layer_{i}")
+        tm.norm = Rec(tm.norm, "final_norm")
+        tm.embed_tokens = Rec(tm.embed_tokens, "embed")
 
     # ---- prefill parity ----
     mx.reset_peak_memory()
@@ -260,6 +279,29 @@ def main() -> None:
           f"({1/np.median(walls_steady):.2f} tok/s), argmax == oracle {dec_ok}/{steps}, "
           f"max |decode - prefill| {max(dec_vs_prefill):.3e}, peak {mx.get_peak_memory()/1e9:.2f} GB, "
           f"rss {resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/1e9:.2f} GB", flush=True)
+    # ---- free-run greedy timing (own tokens, no oracle): steady state ----
+    n_free = int(os.environ.get("FREE_STEPS", "64"))
+    if n_free > 0:
+        cache2 = model.make_cache()
+        mx.reset_peak_memory()
+        lp2 = model(mx.array([ids[:plen]]), cache=cache2)
+        mx.eval(lp2)
+        cur = int(lp2[0, -1].argmax())
+        fw = []
+        for s in range(n_free):
+            t0 = time.time()
+            lz = model(mx.array([[cur]]), cache=cache2)[0, -1]
+            cur = int(lz.argmax())           # forces evaluation
+            fw.append(time.time() - t0)
+        steady = fw[4:]
+        receipt["free_run"] = {"steps": n_free, "median_step_s": float(np.median(steady)),
+                               "p90_step_s": float(np.percentile(steady, 90)), "mean_step_s": float(np.mean(steady)),
+                               "tok_per_s_median": 1.0 / float(np.median(steady)),
+                               "peak_mem_bytes": int(mx.get_peak_memory()),
+                               "context_len_at_end": plen + n_free}
+        print(f"[tower] free run {n_free} steps: median {np.median(steady)*1e3:.0f} ms, p90 {np.percentile(steady,90)*1e3:.0f} ms "
+              f"({1/np.median(steady):.2f} tok/s), peak {mx.get_peak_memory()/1e9:.2f} GB", flush=True)
+    receipt["process_peak_rss_bytes"] = int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)
     os.makedirs(os.path.dirname(out), exist_ok=True)
     json.dump(receipt, open(out, "w"), indent=1)
     print(f"[tower] wrote {out}", flush=True)
