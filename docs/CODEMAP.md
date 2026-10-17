@@ -849,7 +849,7 @@ Census: library 195, reproduce-pinned 9, results-cited 611, spec-cited 39, tool-
 | cite | cite_lookup.py | tool-referenced | TOOLING | TOOLING×3 | — | 1 | 1 | — |
 | ckpt | ckpt_census.py | library | RESULTS, specs | RESULTS×6, specs×2 | 1 | 1 | — | — |
 | ckpt | ckpt_manifest.py | library | RESULTS, specs | RESULTS×6, specs×4 | 1 | — | 1 | — |
-| ckpt | ckpt_plan.py | library | RESULTS, specs | RESULTS×3, specs×1 | 1 | — | — | — |
+| ckpt | ckpt_plan.py | library | RESULTS, specs | RESULTS×3, specs×2 | 1 | — | — | — |
 | claim | claim_lint.py | results-cited | RESULTS, specs, TOOLING | RESULTS×1, specs×7, TOOLING×5 | — | 3 | 1 | — |
 | consolidate | consolidate_mathnative.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
 | control | control_round.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
@@ -922,7 +922,7 @@ Census: library 195, reproduce-pinned 9, results-cited 611, spec-cited 39, tool-
 | task | task_arithmetic.py | results-cited | RESULTS, specs | RESULTS×13, specs×6 | — | — | — | — |
 | task | task_composition.py | results-cited | RESULTS, specs | RESULTS×7, specs×2 | — | — | — | — |
 | tournament | tournament_birth.py | library | RESULTS, specs | RESULTS×4, specs×1 | 3 | 6 | — | — |
-| train | train_calculus.py | library | RESULTS, specs | RESULTS×11, specs×10 | 1 | — | 4 | — |
+| train | train_calculus.py | library | RESULTS, specs | RESULTS×11, specs×11 | 1 | — | 4 | — |
 | train | train_dispatcher.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
 | train | train_magic_estimator.py | library | RESULTS, via:specs, via:TOOLING | RESULTS×3 | 7 | — | 1 | — |
 | train | train_magic_llm.py | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
