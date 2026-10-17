@@ -78554,3 +78554,64 @@ the 27B measurements (banked in RIFF-LEDGER 2026-10-16) needs that
 download budgeted again; the 30B vehicle and the 27B parts do not
 both fit beside the current 70.5 GB checkpoint tree without the 2F
 decisions.
+
+## OBSERVATION CHECKPOINT-PLAN-0: the phase-2F file-by-file plan for every checkpoint the census did not freeze: 278 rows / 16.14 GB, of which 121 files / 10.43 GB (73 of them mathnative_* grpo candidates and gen6 variants) are reached by no code site once the 367 dynamic path sites are resolved (274 to exact names), 18 / 1.99 GB wait on one unresolved pattern in scratch/metabolic_hot.py, 67 / 1.60 GB are reached only by producer patterns, 43 / 0.85 GB are census CANDIDATE, 8 / 0.61 GB have an exact consumer only in uncited gate scripts, 11 / 0.42 GB have an exact consumer in a results-cited script and stay, 6 / 0.12 GB are duplicates with their canonical copy and relink step named; the plan executes nothing (2026-10-16, Mac; rehabilitation phase 2F preparation; nothing moved, deleted, cloned or trained)
+
+**Instrument.** `scripts/ckpt_plan.py` at df8ca8fd over the census
+re-run under logs/rehab-2e/run6/ (same tree, baseline identical
+before and after: changed 0, missing 0, added 0). Receipts
+force-added: logs/rehab-2e/run6/SHEET.md,
+logs/rehab-2e/run6/families.json, logs/rehab-2e/run6/duplicates.json,
+logs/rehab-2e/run6/summary.json, logs/rehab-2e/run6/PLAN.md,
+logs/rehab-2e/run6/plan_summary.json; local-only:
+logs/rehab-2e/run6/inventory.jsonl, logs/rehab-2e/run6/graph.json,
+logs/rehab-2e/run6/plan.jsonl, logs/rehab-2e/run6/plan_sites.json. Tests: tests/test_ckpt_plan.py (13) and
+tests/test_ckpt_census.py (32).
+
+**Census corrections since CHECKPOINT-CENSUS-0 (run4).** Two scanner
+rules changed, both toward the truth of the tree: a literal basename
+under a variable root (`f"{CKPT}/mathnative_400m_gen4_ep1.pt"` in
+scratch/boundary_or_bulk.py; `os.path.join(X, "name.pt")`) is a path
+reference, which moved the three largest mathnative files (1.68, 0.81,
+0.45 GB) and others from UNKNOWN to ESSENTIAL; and RESULTS entries
+headed CHECKPOINT-CENSUS-* / CHECKPOINT-PLAN-* are cut out of the
+citation scan, because run5 had frozen five files only because the
+census booking listed their names. Run6 classes: FROZEN 547 / 46.55
+GB, ESSENTIAL 334 / 7.82, DUPLICATE 6 / 0.12, CANDIDATE 43 / 0.85,
+UNKNOWN 229 / 15.16. Duplicate groups unchanged: 35, all on distinct
+blocks, 29 frozen-with-frozen (2.48 GB clone opportunity).
+
+**What the plan resolves.** Every code site that builds a path under
+checkpoints/ with a hole (f-string, `${VAR}`, `$VAR`, `%`, glob) is
+parsed to an anchored pattern, given a role (producer when the line
+assigns OUT, passes --out, calls torch.save or copies into the path;
+consumer otherwise; prose lines are mentions and do not count), and
+expanded to exact names when every hole is bound to literals in the
+same file (Python lists and tuples, loops over them, os.environ.get
+defaults; shell `for X in a b c` including backslash-continued lists,
+`${X:-default}`, `X=literal`). 367 sites, 274 exact. A site whose
+hole starts right after checkpoints/ (24 generic loaders) counts only
+through exact expansion. The loop in scratch/calib_snap_gates.sh that
+blanketed 13.6 GB in the census resolves to five names.
+
+**Buckets and approval boundaries (every row in run6/PLAN.md).**
+
+| bucket | files | GB | what it means | boundary |
+|---|---:|---:|---|---|
+| no site reaches the file after resolution | 121 | 10.43 | census UNKNOWN by prefix only; 73 mathnative_45m_grpo*/grpo2/grpo3 candidates and gen6 ternary variants, 24 ex2_* json, 6 umoe, 6 ex5, 6 gt6 | CANDIDATE queue; per-family GO after Artin reads the rows; none has a 3080 or repair copy |
+| unresolved consumer pattern | 18 | 1.99 | `checkpoints/metabolic_{TAG}.pt` where TAG is built from a flag plus TAG_SUFFIX; metabolic_late_b95/96/97 and _snap files plus metabolic_hot_snap | hold until the jobs/revmetab.cmd arm list is read as the name set; then re-plan |
+| producer patterns that did not resolve | 67 | 1.60 | sym_* (39), gallery19m_* (7), grav2_* (6), umoe (4), gt5 (3): written by scripts whose name variables come from arguments, read by nothing exact | per-family review; regenerable only if the producing script and its inputs stand |
+| census CANDIDATE | 43 | 0.85 | ex1_* json (12), gt7_* (10), k3_expert_l70_e512 packed weights (7), two smoke 19m files, two _attempt3 atomtraj1 steps, eight single 19m files | per-family GO |
+| exact consumer only in uncited scripts | 8 | 0.61 | mathnative_19m_gen9B_mps_s2, two infixtwin, seedvar_1..3, snap19m_q24/q48; readers are night/gate shell chains classed UNCITED in CODEMAP | decide the scripts first (freeze or retire), then the files |
+| exact consumer in a results-cited script | 11 | 0.42 | snap19m_q16/q64, fmt_* 1p/3e, umoe_channel_s2 | keep |
+| produced by a known script, read by nothing exact | 4 | 0.11 | cc_*, vrm_*, birth19m_curric | per-family review |
+| duplicate of a retained copy | 6 | 0.12 | four root twins of checkpoints/confirmed/ files still opened by scratch/cal_dilute.py, scratch/grav2_spacetime.py, scratch/scaffold_review.py, scratch/umoe_conserve.py; step_lora_grpo_c010 = step_lora_grpo.pt.wsl; one atomtraj1 probe step | relink the four readers, confirm the canonical is the cited copy, then remove; per-row GO |
+
+**Order for 2F execution (unchanged from CHECKPOINT-CENSUS-0, now
+with rows).** (1) duplicates: relink then remove, 0.12 GB verified;
+(2) clone the 29 frozen pairs, 2.48 GB lossless, one GO; (3) the 43
+CANDIDATE rows per family; (4) the 121 no-site rows per family, after
+Artin reads them; (5) metabolic after the arm list is resolved; (6)
+the 67 producer-pattern rows and the 8 uncited-consumer rows after the
+scripts are decided. Free space today 57.2 GB; none of this is needed
+for the 30B vehicle. Nothing in this entry authorizes a removal.

@@ -1,0 +1,1654 @@
+[
+ {
+  "sha256": "7994b51e872a1b98655d39b0a70634c39d7b3956dd0bdd94578c6c31bef4a5fe",
+  "bytes": 226994115,
+  "paths": [
+   "checkpoints/fmel2/A/C/h8220.pt",
+   "checkpoints/rdc1/A/C/h8220.pt"
+  ],
+  "classes": {
+   "checkpoints/fmel2/A/C/h8220.pt": "FROZEN",
+   "checkpoints/rdc1/A/C/h8220.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/fmel2/A/C/h8220.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/fmel2/A/C/h8220.pt": [
+    [
+     0,
+     267317366784,
+     1048576
+    ],
+    [
+     113496064,
+     171225706496,
+     1003520
+    ]
+   ],
+   "checkpoints/rdc1/A/C/h8220.pt": [
+    [
+     0,
+     471367954432,
+     1048576
+    ],
+    [
+     113496064,
+     403090563072,
+     1048576
+    ]
+   ]
+  },
+  "redundant_bytes": 226994115
+ },
+ {
+  "sha256": "76d5d39bd32e532f50ee48ea30e05bdc06d1250baf6a82400be8bd777b4bc786",
+  "bytes": 75664629,
+  "paths": [
+   "checkpoints/_attempt3_QUALIFIED_prefold_atomtraj1_smoke/stock_s11/step_00000.pt",
+   "checkpoints/_attempt3_QUALIFIED_prefold_atomtraj1_smoke/stock_s11_probe_emit1/step_00000.pt",
+   "checkpoints/atomtraj1_smoke/stock_s11/step_00000.pt",
+   "checkpoints/atomtraj1_smoke/stock_s11_probe_emit1/step_00000.pt"
+  ],
+  "classes": {
+   "checkpoints/_attempt3_QUALIFIED_prefold_atomtraj1_smoke/stock_s11/step_00000.pt": "FROZEN",
+   "checkpoints/_attempt3_QUALIFIED_prefold_atomtraj1_smoke/stock_s11_probe_emit1/step_00000.pt": "FROZEN",
+   "checkpoints/atomtraj1_smoke/stock_s11/step_00000.pt": "FROZEN",
+   "checkpoints/atomtraj1_smoke/stock_s11_probe_emit1/step_00000.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/atomtraj1_smoke/stock_s11/step_00000.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/_attempt3_QUALIFIED_prefold_atomtraj1_smoke/stock_s11/step_00000.pt": [
+    [
+     0,
+     425745797120,
+     1048576
+    ],
+    [
+     37830656,
+     481477570560,
+     1048576
+    ]
+   ],
+   "checkpoints/_attempt3_QUALIFIED_prefold_atomtraj1_smoke/stock_s11_probe_emit1/step_00000.pt": [
+    [
+     0,
+     279704145920,
+     1048576
+    ],
+    [
+     37830656,
+     356183965696,
+     1048576
+    ]
+   ],
+   "checkpoints/atomtraj1_smoke/stock_s11/step_00000.pt": [
+    [
+     0,
+     363479179264,
+     1048576
+    ],
+    [
+     37830656,
+     363517009920,
+     1048576
+    ]
+   ],
+   "checkpoints/atomtraj1_smoke/stock_s11_probe_emit1/step_00000.pt": [
+    [
+     0,
+     459139588096,
+     1048576
+    ],
+    [
+     37830656,
+     459193597952,
+     1048576
+    ]
+   ]
+  },
+  "redundant_bytes": 226993887
+ },
+ {
+  "sha256": "454580f4367b25448543db9ed13ca829e6ac1430d75390de5c3858a50980e4de",
+  "bytes": 75664629,
+  "paths": [
+   "checkpoints/writerdfa1/qual_dfa_s21_S0.25_lr0.0003/step_00000.pt",
+   "checkpoints/writerdfa1/qual_dfa_s21_S1_lr0.0001/step_00000.pt",
+   "checkpoints/writerdfa1/qual_dfa_s21_S1_lr0.0003/step_00000.pt",
+   "checkpoints/writerdfa1/qual_dfa_s21_S4_lr0.0001/step_00000.pt"
+  ],
+  "classes": {
+   "checkpoints/writerdfa1/qual_dfa_s21_S0.25_lr0.0003/step_00000.pt": "FROZEN",
+   "checkpoints/writerdfa1/qual_dfa_s21_S1_lr0.0001/step_00000.pt": "FROZEN",
+   "checkpoints/writerdfa1/qual_dfa_s21_S1_lr0.0003/step_00000.pt": "FROZEN",
+   "checkpoints/writerdfa1/qual_dfa_s21_S4_lr0.0001/step_00000.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/writerdfa1/qual_dfa_s21_S0.25_lr0.0003/step_00000.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/writerdfa1/qual_dfa_s21_S0.25_lr0.0003/step_00000.pt": [
+    [
+     0,
+     207697575936,
+     1048576
+    ],
+    [
+     37830656,
+     201189613568,
+     856064
+    ]
+   ],
+   "checkpoints/writerdfa1/qual_dfa_s21_S1_lr0.0001/step_00000.pt": [
+    [
+     0,
+     253670543360,
+     1048576
+    ],
+    [
+     37830656,
+     489125617664,
+     991232
+    ]
+   ],
+   "checkpoints/writerdfa1/qual_dfa_s21_S1_lr0.0003/step_00000.pt": [
+    [
+     0,
+     458785038336,
+     1048576
+    ],
+    [
+     37830656,
+     427927232512,
+     49152
+    ]
+   ],
+   "checkpoints/writerdfa1/qual_dfa_s21_S4_lr0.0001/step_00000.pt": [
+    [
+     0,
+     196166057984,
+     1032192
+    ],
+    [
+     37830656,
+     386526437376,
+     667648
+    ]
+   ]
+  },
+  "redundant_bytes": 226993887
+ },
+ {
+  "sha256": "3f3244c0bff5b40c60497f1367a9fdf9188fad33cb75d87fcb06f847cd046a95",
+  "bytes": 75660464,
+  "paths": [
+   "checkpoints/_attempt3_QUALIFIED_prefold_atomtraj1_smoke/stock_s11_probe_emit0/final.pt",
+   "checkpoints/_attempt3_QUALIFIED_prefold_atomtraj1_smoke/stock_s11_probe_emit1/final.pt",
+   "checkpoints/atomtraj1_smoke/stock_s11_probe_emit0/final.pt",
+   "checkpoints/atomtraj1_smoke/stock_s11_probe_emit1/final.pt"
+  ],
+  "classes": {
+   "checkpoints/_attempt3_QUALIFIED_prefold_atomtraj1_smoke/stock_s11_probe_emit0/final.pt": "ESSENTIAL",
+   "checkpoints/_attempt3_QUALIFIED_prefold_atomtraj1_smoke/stock_s11_probe_emit1/final.pt": "ESSENTIAL",
+   "checkpoints/atomtraj1_smoke/stock_s11_probe_emit0/final.pt": "FROZEN",
+   "checkpoints/atomtraj1_smoke/stock_s11_probe_emit1/final.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/atomtraj1_smoke/stock_s11_probe_emit0/final.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/_attempt3_QUALIFIED_prefold_atomtraj1_smoke/stock_s11_probe_emit0/final.pt": [
+    [
+     0,
+     487034183680,
+     1048576
+    ],
+    [
+     37826560,
+     430443941888,
+     1048576
+    ]
+   ],
+   "checkpoints/_attempt3_QUALIFIED_prefold_atomtraj1_smoke/stock_s11_probe_emit1/final.pt": [
+    [
+     0,
+     407415504896,
+     1048576
+    ],
+    [
+     37826560,
+     446325903360,
+     1048576
+    ]
+   ],
+   "checkpoints/atomtraj1_smoke/stock_s11_probe_emit0/final.pt": [
+    [
+     0,
+     458576523264,
+     1048576
+    ],
+    [
+     37826560,
+     458614349824,
+     1048576
+    ]
+   ],
+   "checkpoints/atomtraj1_smoke/stock_s11_probe_emit1/final.pt": [
+    [
+     0,
+     458501021696,
+     1048576
+    ],
+    [
+     37826560,
+     458538848256,
+     1048576
+    ]
+   ]
+  },
+  "redundant_bytes": 226981392
+ },
+ {
+  "sha256": "8fda1b683d48462a3073652cb1203ac6d94ecee0f4f47fea8590168ec92ad7fc",
+  "bytes": 75660592,
+  "paths": [
+   "checkpoints/fmel2/A/C/h0001.pt",
+   "checkpoints/oma1/A/C/h0001.pt",
+   "checkpoints/rdc1/A/C/h0001.pt"
+  ],
+  "classes": {
+   "checkpoints/fmel2/A/C/h0001.pt": "FROZEN",
+   "checkpoints/oma1/A/C/h0001.pt": "FROZEN",
+   "checkpoints/rdc1/A/C/h0001.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/fmel2/A/C/h0001.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/fmel2/A/C/h0001.pt": [
+    [
+     0,
+     187817631744,
+     1048576
+    ],
+    [
+     37826560,
+     426505482240,
+     1048576
+    ]
+   ],
+   "checkpoints/oma1/A/C/h0001.pt": [
+    [
+     0,
+     212908503040,
+     1048576
+    ],
+    [
+     37826560,
+     273455788032,
+     1048576
+    ]
+   ],
+   "checkpoints/rdc1/A/C/h0001.pt": [
+    [
+     0,
+     296030470144,
+     1048576
+    ],
+    [
+     37826560,
+     316607492096,
+     1048576
+    ]
+   ]
+  },
+  "redundant_bytes": 151321184
+ },
+ {
+  "sha256": "f8cf63e82101c37eb7965de0fcebefa3fedf31e220d47e0dce0d66890b573b9d",
+  "bytes": 75660592,
+  "paths": [
+   "checkpoints/fmel2/A/C/h0005.pt",
+   "checkpoints/oma1/A/C/h0005.pt",
+   "checkpoints/rdc1/A/C/h0005.pt"
+  ],
+  "classes": {
+   "checkpoints/fmel2/A/C/h0005.pt": "FROZEN",
+   "checkpoints/oma1/A/C/h0005.pt": "FROZEN",
+   "checkpoints/rdc1/A/C/h0005.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/fmel2/A/C/h0005.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/fmel2/A/C/h0005.pt": [
+    [
+     0,
+     313736507392,
+     1048576
+    ],
+    [
+     37826560,
+     424610549760,
+     1048576
+    ]
+   ],
+   "checkpoints/oma1/A/C/h0005.pt": [
+    [
+     0,
+     491888246784,
+     1048576
+    ],
+    [
+     37826560,
+     327197859840,
+     540672
+    ]
+   ],
+   "checkpoints/rdc1/A/C/h0005.pt": [
+    [
+     0,
+     315259113472,
+     1048576
+    ],
+    [
+     37826560,
+     349333938176,
+     1048576
+    ]
+   ]
+  },
+  "redundant_bytes": 151321184
+ },
+ {
+  "sha256": "3b7333c884b97abf1b8b54a5f64e07cee19679b8d2374410aae18df2e2a761d1",
+  "bytes": 75660592,
+  "paths": [
+   "checkpoints/fmel2/A/C/h0020.pt",
+   "checkpoints/oma1/A/C/h0020.pt",
+   "checkpoints/rdc1/A/C/h0020.pt"
+  ],
+  "classes": {
+   "checkpoints/fmel2/A/C/h0020.pt": "FROZEN",
+   "checkpoints/oma1/A/C/h0020.pt": "FROZEN",
+   "checkpoints/rdc1/A/C/h0020.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/fmel2/A/C/h0020.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/fmel2/A/C/h0020.pt": [
+    [
+     0,
+     413081128960,
+     1048576
+    ],
+    [
+     37826560,
+     427479633920,
+     1048576
+    ]
+   ],
+   "checkpoints/oma1/A/C/h0020.pt": [
+    [
+     0,
+     58627141632,
+     1048576
+    ],
+    [
+     37826560,
+     63155048448,
+     1048576
+    ]
+   ],
+   "checkpoints/rdc1/A/C/h0020.pt": [
+    [
+     0,
+     330522697728,
+     1048576
+    ],
+    [
+     37826560,
+     377736585216,
+     1048576
+    ]
+   ]
+  },
+  "redundant_bytes": 151321184
+ },
+ {
+  "sha256": "ce16c877620a23fb599599abd7225f184d2eddba26aa482d041b2dbe49b90f70",
+  "bytes": 75660592,
+  "paths": [
+   "checkpoints/fmel2/A/C/h0100.pt",
+   "checkpoints/oma1/A/C/h0100.pt",
+   "checkpoints/rdc1/A/C/h0100.pt"
+  ],
+  "classes": {
+   "checkpoints/fmel2/A/C/h0100.pt": "FROZEN",
+   "checkpoints/oma1/A/C/h0100.pt": "FROZEN",
+   "checkpoints/rdc1/A/C/h0100.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/fmel2/A/C/h0100.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/fmel2/A/C/h0100.pt": [
+    [
+     0,
+     413064343552,
+     1048576
+    ],
+    [
+     37826560,
+     170806083584,
+     1048576
+    ]
+   ],
+   "checkpoints/oma1/A/C/h0100.pt": [
+    [
+     0,
+     66589814784,
+     1048576
+    ],
+    [
+     37826560,
+     72196993024,
+     1048576
+    ]
+   ],
+   "checkpoints/rdc1/A/C/h0100.pt": [
+    [
+     0,
+     363121844224,
+     1048576
+    ],
+    [
+     37826560,
+     389592485888,
+     1048576
+    ]
+   ]
+  },
+  "redundant_bytes": 151321184
+ },
+ {
+  "sha256": "a155aeaa344cc1c87bf10448982eeeb13185db56c0dc5f268111e467bffeb967",
+  "bytes": 76585458,
+  "paths": [
+   "checkpoints/svp_forder_init_s21001.pt",
+   "checkpoints/svp_forder_init_s21001_smoke.pt"
+  ],
+  "classes": {
+   "checkpoints/svp_forder_init_s21001.pt": "FROZEN",
+   "checkpoints/svp_forder_init_s21001_smoke.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/svp_forder_init_s21001.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/svp_forder_init_s21001.pt": [
+    [
+     0,
+     297579237376,
+     1048576
+    ],
+    [
+     38289408,
+     482130972672,
+     1048576
+    ]
+   ],
+   "checkpoints/svp_forder_init_s21001_smoke.pt": [
+    [
+     0,
+     187955937280,
+     1048576
+    ],
+    [
+     38289408,
+     187994226688,
+     1048576
+    ]
+   ]
+  },
+  "redundant_bytes": 76585458
+ },
+ {
+  "sha256": "fa7ac1a8cd6880270a5b904c62a240386443987976c0df11fc091cb41f64c1dd",
+  "bytes": 76585458,
+  "paths": [
+   "checkpoints/svp_forder_init_s22001.pt",
+   "checkpoints/svp_forder_init_s22001_smoke.pt"
+  ],
+  "classes": {
+   "checkpoints/svp_forder_init_s22001.pt": "FROZEN",
+   "checkpoints/svp_forder_init_s22001_smoke.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/svp_forder_init_s22001.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/svp_forder_init_s22001.pt": [
+    [
+     0,
+     150095900672,
+     1048576
+    ],
+    [
+     38289408,
+     486927925248,
+     282624
+    ]
+   ],
+   "checkpoints/svp_forder_init_s22001_smoke.pt": [
+    [
+     0,
+     169543249920,
+     1048576
+    ],
+    [
+     38289408,
+     429373566976,
+     1048576
+    ]
+   ]
+  },
+  "redundant_bytes": 76585458
+ },
+ {
+  "sha256": "1d093ec100455d29413275342e3da2114f14261990e4f114c1c28e5f390174f8",
+  "bytes": 76585458,
+  "paths": [
+   "checkpoints/svp_forder_init_s23001.pt",
+   "checkpoints/svp_forder_init_s23001_smoke.pt"
+  ],
+  "classes": {
+   "checkpoints/svp_forder_init_s23001.pt": "FROZEN",
+   "checkpoints/svp_forder_init_s23001_smoke.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/svp_forder_init_s23001.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/svp_forder_init_s23001.pt": [
+    [
+     0,
+     167045320704,
+     1048576
+    ],
+    [
+     38289408,
+     143339048960,
+     1048576
+    ]
+   ],
+   "checkpoints/svp_forder_init_s23001_smoke.pt": [
+    [
+     0,
+     254446559232,
+     1048576
+    ],
+    [
+     38289408,
+     406651752448,
+     1048576
+    ]
+   ]
+  },
+  "redundant_bytes": 76585458
+ },
+ {
+  "sha256": "3fd1f769977ebfb1dab196befac1a69c705dbaaebfdd5f8ffb6216d507d78e05",
+  "bytes": 76585458,
+  "paths": [
+   "checkpoints/svp_forder_init_s24001.pt",
+   "checkpoints/svp_forder_init_s24001_smoke.pt"
+  ],
+  "classes": {
+   "checkpoints/svp_forder_init_s24001.pt": "FROZEN",
+   "checkpoints/svp_forder_init_s24001_smoke.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/svp_forder_init_s24001.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/svp_forder_init_s24001.pt": [
+    [
+     0,
+     204836966400,
+     1048576
+    ],
+    [
+     38289408,
+     148457357312,
+     733184
+    ]
+   ],
+   "checkpoints/svp_forder_init_s24001_smoke.pt": [
+    [
+     0,
+     250074181632,
+     1048576
+    ],
+    [
+     38289408,
+     142633725952,
+     827392
+    ]
+   ]
+  },
+  "redundant_bytes": 76585458
+ },
+ {
+  "sha256": "291403ff1c4cf8410ca38b7e779c19702bfc25dc9cb7ecdc811e8d0d3c9bfa68",
+  "bytes": 75664629,
+  "paths": [
+   "checkpoints/_attempt3_QUALIFIED_prefold_atomtraj1_smoke/stock_s11_probe_emit1/step_00300.pt",
+   "checkpoints/atomtraj1_smoke/stock_s11_probe_emit1/step_00300.pt"
+  ],
+  "classes": {
+   "checkpoints/_attempt3_QUALIFIED_prefold_atomtraj1_smoke/stock_s11_probe_emit1/step_00300.pt": "DUPLICATE",
+   "checkpoints/atomtraj1_smoke/stock_s11_probe_emit1/step_00300.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/atomtraj1_smoke/stock_s11_probe_emit1/step_00300.pt",
+  "all_retained": false,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/_attempt3_QUALIFIED_prefold_atomtraj1_smoke/stock_s11_probe_emit1/step_00300.pt": [
+    [
+     0,
+     327145836544,
+     1048576
+    ],
+    [
+     37830656,
+     319375081472,
+     1048576
+    ]
+   ],
+   "checkpoints/atomtraj1_smoke/stock_s11_probe_emit1/step_00300.pt": [
+    [
+     0,
+     363199352832,
+     1048576
+    ],
+    [
+     37830656,
+     363237183488,
+     1048576
+    ]
+   ]
+  },
+  "redundant_bytes": 75664629
+ },
+ {
+  "sha256": "269fd869adcbab6f42a4511b893dbf3c7273ebeb8c1c06e915bcdd25cff0a630",
+  "bytes": 75664629,
+  "paths": [
+   "checkpoints/sgbb7/sgb7_control_s28_lr0.0003/step_00000.pt",
+   "checkpoints/sgbb7/sgb7_sg7_local_plr0.001_s28_lr0.0003/step_00000.pt"
+  ],
+  "classes": {
+   "checkpoints/sgbb7/sgb7_control_s28_lr0.0003/step_00000.pt": "FROZEN",
+   "checkpoints/sgbb7/sgb7_sg7_local_plr0.001_s28_lr0.0003/step_00000.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/sgbb7/sgb7_control_s28_lr0.0003/step_00000.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/sgbb7/sgb7_control_s28_lr0.0003/step_00000.pt": [
+    [
+     0,
+     274292928512,
+     1048576
+    ],
+    [
+     37830656,
+     2096529408,
+     1048576
+    ]
+   ],
+   "checkpoints/sgbb7/sgb7_sg7_local_plr0.001_s28_lr0.0003/step_00000.pt": [
+    [
+     0,
+     319909421056,
+     1048576
+    ],
+    [
+     37830656,
+     441695682560,
+     1048576
+    ]
+   ]
+  },
+  "redundant_bytes": 75664629
+ },
+ {
+  "sha256": "8520acf7b06a7fb639bd117b0b5bdd60efa595a629df21689b7781f2105235cb",
+  "bytes": 75660592,
+  "paths": [
+   "checkpoints/fmel2/A/C/h0300.pt",
+   "checkpoints/rdc1/A/C/h0300.pt"
+  ],
+  "classes": {
+   "checkpoints/fmel2/A/C/h0300.pt": "FROZEN",
+   "checkpoints/rdc1/A/C/h0300.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/fmel2/A/C/h0300.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/fmel2/A/C/h0300.pt": [
+    [
+     0,
+     347312013312,
+     1048576
+    ],
+    [
+     37826560,
+     440727621632,
+     344064
+    ]
+   ],
+   "checkpoints/rdc1/A/C/h0300.pt": [
+    [
+     0,
+     366889463808,
+     1048576
+    ],
+    [
+     37826560,
+     408309043200,
+     1048576
+    ]
+   ]
+  },
+  "redundant_bytes": 75660592
+ },
+ {
+  "sha256": "0146a371916b5b79534bce87159b897cc8acf14f39d89ddce3163f943a53af6b",
+  "bytes": 75660592,
+  "paths": [
+   "checkpoints/fmel2/A/C/h0900.pt",
+   "checkpoints/rdc1/A/C/h0900.pt"
+  ],
+  "classes": {
+   "checkpoints/fmel2/A/C/h0900.pt": "FROZEN",
+   "checkpoints/rdc1/A/C/h0900.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/fmel2/A/C/h0900.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/fmel2/A/C/h0900.pt": [
+    [
+     0,
+     486416928768,
+     1048576
+    ],
+    [
+     37826560,
+     394551390208,
+     274432
+    ]
+   ],
+   "checkpoints/rdc1/A/C/h0900.pt": [
+    [
+     0,
+     405040410624,
+     1048576
+    ],
+    [
+     37826560,
+     420733403136,
+     1048576
+    ]
+   ]
+  },
+  "redundant_bytes": 75660592
+ },
+ {
+  "sha256": "94cf232a87d0d3ac95f47c1560a8c5388e2cf5e0ad2b55f0466f54bf019ea7d8",
+  "bytes": 75660592,
+  "paths": [
+   "checkpoints/fmel2/A/C/h1800.pt",
+   "checkpoints/rdc1/A/C/h1800.pt"
+  ],
+  "classes": {
+   "checkpoints/fmel2/A/C/h1800.pt": "FROZEN",
+   "checkpoints/rdc1/A/C/h1800.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/fmel2/A/C/h1800.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/fmel2/A/C/h1800.pt": [
+    [
+     0,
+     402036072448,
+     1048576
+    ],
+    [
+     37826560,
+     220237389824,
+     1048576
+    ]
+   ],
+   "checkpoints/rdc1/A/C/h1800.pt": [
+    [
+     0,
+     456711491584,
+     1048576
+    ],
+    [
+     37826560,
+     435449405440,
+     1048576
+    ]
+   ]
+  },
+  "redundant_bytes": 75660592
+ },
+ {
+  "sha256": "e7bc9182c033dedac0a34c5cb6a60396cf2a348244ae98c3916455e209bc6c33",
+  "bytes": 75660592,
+  "paths": [
+   "checkpoints/fmel2/A/C/h3080.pt",
+   "checkpoints/rdc1/A/C/h3080.pt"
+  ],
+  "classes": {
+   "checkpoints/fmel2/A/C/h3080.pt": "FROZEN",
+   "checkpoints/rdc1/A/C/h3080.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/fmel2/A/C/h3080.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/fmel2/A/C/h3080.pt": [
+    [
+     0,
+     478764642304,
+     1048576
+    ],
+    [
+     37826560,
+     405270130688,
+     1048576
+    ]
+   ],
+   "checkpoints/rdc1/A/C/h3080.pt": [
+    [
+     0,
+     383166427136,
+     1048576
+    ],
+    [
+     37826560,
+     444371337216,
+     1048576
+    ]
+   ]
+  },
+  "redundant_bytes": 75660592
+ },
+ {
+  "sha256": "ee4fd8f37821e17bbe553a1d823707689bbe075e7dea09e4e5a8bb8f302a52de",
+  "bytes": 75660592,
+  "paths": [
+   "checkpoints/fmel2/A/C/h4500.pt",
+   "checkpoints/rdc1/A/C/h4500.pt"
+  ],
+  "classes": {
+   "checkpoints/fmel2/A/C/h4500.pt": "FROZEN",
+   "checkpoints/rdc1/A/C/h4500.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/fmel2/A/C/h4500.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/fmel2/A/C/h4500.pt": [
+    [
+     0,
+     453707878400,
+     1048576
+    ],
+    [
+     37826560,
+     415144632320,
+     1011712
+    ]
+   ],
+   "checkpoints/rdc1/A/C/h4500.pt": [
+    [
+     0,
+     414503051264,
+     1048576
+    ],
+    [
+     37826560,
+     449755037696,
+     1048576
+    ]
+   ]
+  },
+  "redundant_bytes": 75660592
+ },
+ {
+  "sha256": "06a5e8a92e77fcc46a81a2c3b4f3b59ffd622d63aa14ba3b7aba662508857419",
+  "bytes": 75660592,
+  "paths": [
+   "checkpoints/fmel2/A/C/h6000.pt",
+   "checkpoints/rdc1/A/C/h6000.pt"
+  ],
+  "classes": {
+   "checkpoints/fmel2/A/C/h6000.pt": "FROZEN",
+   "checkpoints/rdc1/A/C/h6000.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/fmel2/A/C/h6000.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/fmel2/A/C/h6000.pt": [
+    [
+     0,
+     408555208704,
+     1048576
+    ],
+    [
+     37826560,
+     392364892160,
+     294912
+    ]
+   ],
+   "checkpoints/rdc1/A/C/h6000.pt": [
+    [
+     0,
+     405594292224,
+     1048576
+    ],
+    [
+     37826560,
+     451106357248,
+     1048576
+    ]
+   ]
+  },
+  "redundant_bytes": 75660592
+ },
+ {
+  "sha256": "1ee3f5fc3fc26f64f2e47fb062f76b35ca521900128aed07e8303c3d098b9c3f",
+  "bytes": 75660592,
+  "paths": [
+   "checkpoints/fmel2/A/C/h7200.pt",
+   "checkpoints/rdc1/A/C/h7200.pt"
+  ],
+  "classes": {
+   "checkpoints/fmel2/A/C/h7200.pt": "FROZEN",
+   "checkpoints/rdc1/A/C/h7200.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/fmel2/A/C/h7200.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/fmel2/A/C/h7200.pt": [
+    [
+     0,
+     171248369664,
+     1048576
+    ],
+    [
+     37826560,
+     180160102400,
+     413696
+    ]
+   ],
+   "checkpoints/rdc1/A/C/h7200.pt": [
+    [
+     0,
+     456875114496,
+     1048576
+    ],
+    [
+     37826560,
+     458236289024,
+     1048576
+    ]
+   ]
+  },
+  "redundant_bytes": 75660592
+ },
+ {
+  "sha256": "5721de16417315f3297c7f3486bb9c8208baf1dfbde6fbcbbdd8882e9f7edc41",
+  "bytes": 35301393,
+  "paths": [
+   "checkpoints/step_lora.pt",
+   "checkpoints/step_lora_grpo.pt"
+  ],
+  "classes": {
+   "checkpoints/step_lora.pt": "FROZEN",
+   "checkpoints/step_lora_grpo.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/step_lora.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/step_lora.pt": [
+    [
+     0,
+     322093342720,
+     1048576
+    ],
+    [
+     17649664,
+     322110992384,
+     1048576
+    ]
+   ],
+   "checkpoints/step_lora_grpo.pt": [
+    [
+     0,
+     215620616192,
+     1048576
+    ],
+    [
+     17649664,
+     283030044672,
+     1048576
+    ]
+   ]
+  },
+  "redundant_bytes": 35301393
+ },
+ {
+  "sha256": "f35ff8e544111c219928b5e9b845072c27d3a005d083046dade7366b0fc5a88a",
+  "bytes": 35301393,
+  "paths": [
+   "checkpoints/step_lora_grpo.pt.wsl",
+   "checkpoints/step_lora_grpo_c010.pt"
+  ],
+  "classes": {
+   "checkpoints/step_lora_grpo.pt.wsl": "FROZEN",
+   "checkpoints/step_lora_grpo_c010.pt": "DUPLICATE"
+  },
+  "canonical": "checkpoints/step_lora_grpo.pt.wsl",
+  "all_retained": false,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/step_lora_grpo.pt.wsl": [
+    [
+     0,
+     280956063744,
+     1048576
+    ],
+    [
+     17649664,
+     287175589888,
+     1048576
+    ]
+   ],
+   "checkpoints/step_lora_grpo_c010.pt": [
+    [
+     0,
+     288681164800,
+     1048576
+    ],
+    [
+     17649664,
+     315671371776,
+     1048576
+    ]
+   ]
+  },
+  "redundant_bytes": 35301393
+ },
+ {
+  "sha256": "ecef909d46eb821429e48b470a07dfdedc492c9247de5cff665a57ac5378e219",
+  "bytes": 5094219,
+  "paths": [
+   "checkpoints/confirmed/determinism/p3_tables.pt",
+   "checkpoints/p3_tables.pt"
+  ],
+  "classes": {
+   "checkpoints/confirmed/determinism/p3_tables.pt": "FROZEN",
+   "checkpoints/p3_tables.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/confirmed/determinism/p3_tables.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/confirmed/determinism/p3_tables.pt": [
+    [
+     0,
+     91939930112,
+     1048576
+    ],
+    [
+     2543616,
+     92083142656,
+     552960
+    ]
+   ],
+   "checkpoints/p3_tables.pt": [
+    [
+     0,
+     69439815680,
+     1048576
+    ],
+    [
+     2543616,
+     69442359296,
+     1048576
+    ]
+   ]
+  },
+  "redundant_bytes": 5094219
+ },
+ {
+  "sha256": "4adeba210b8d7f072e44fc5d07324d5d0387b4f429196043f321deb53c5aab6f",
+  "bytes": 3755676,
+  "paths": [
+   "checkpoints/confirmed/scaffold-moe/umoe_lb_s1.pt",
+   "checkpoints/umoe_lb_s1.pt"
+  ],
+  "classes": {
+   "checkpoints/confirmed/scaffold-moe/umoe_lb_s1.pt": "FROZEN",
+   "checkpoints/umoe_lb_s1.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/confirmed/scaffold-moe/umoe_lb_s1.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/confirmed/scaffold-moe/umoe_lb_s1.pt": [
+    [
+     0,
+     92158525440,
+     1048576
+    ],
+    [
+     1875968,
+     92436074496,
+     1048576
+    ]
+   ],
+   "checkpoints/umoe_lb_s1.pt": [
+    [
+     0,
+     334318206976,
+     65536
+    ],
+    [
+     1875968,
+     354495307776,
+     278528
+    ]
+   ]
+  },
+  "redundant_bytes": 3755676
+ },
+ {
+  "sha256": "ca271322608d22753bff98ff3e99cb3271828cd52d548bb1101c4d96530cb074",
+  "bytes": 3755676,
+  "paths": [
+   "checkpoints/confirmed/scaffold-moe/umoe_lb_s2.pt",
+   "checkpoints/umoe_lb_s2.pt"
+  ],
+  "classes": {
+   "checkpoints/confirmed/scaffold-moe/umoe_lb_s2.pt": "FROZEN",
+   "checkpoints/umoe_lb_s2.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/confirmed/scaffold-moe/umoe_lb_s2.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/confirmed/scaffold-moe/umoe_lb_s2.pt": [
+    [
+     0,
+     95028711424,
+     1048576
+    ],
+    [
+     1875968,
+     90173476864,
+     1048576
+    ]
+   ],
+   "checkpoints/umoe_lb_s2.pt": [
+    [
+     0,
+     472628035584,
+     12288
+    ],
+    [
+     1875968,
+     375399444480,
+     225280
+    ]
+   ]
+  },
+  "redundant_bytes": 3755676
+ },
+ {
+  "sha256": "7f687b66124e20d266ff7c21f9c1305ed5f2450e94943f4d9577e33269d67515",
+  "bytes": 3754481,
+  "paths": [
+   "checkpoints/confirmed/scaffold-moe/umoe_gravmoe_s1.pt",
+   "checkpoints/umoe_gravmoe_s1.pt"
+  ],
+  "classes": {
+   "checkpoints/confirmed/scaffold-moe/umoe_gravmoe_s1.pt": "FROZEN",
+   "checkpoints/umoe_gravmoe_s1.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/confirmed/scaffold-moe/umoe_gravmoe_s1.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/confirmed/scaffold-moe/umoe_gravmoe_s1.pt": [
+    [
+     0,
+     147831373824,
+     1048576
+    ],
+    [
+     1875968,
+     148173148160,
+     1048576
+    ]
+   ],
+   "checkpoints/umoe_gravmoe_s1.pt": [
+    [
+     0,
+     267034988544,
+     1048576
+    ],
+    [
+     1875968,
+     267036864512,
+     1048576
+    ]
+   ]
+  },
+  "redundant_bytes": 3754481
+ },
+ {
+  "sha256": "bb366abb4623506387175a032bda34e7b99d6b759aeccccbe811ea50e16a9a61",
+  "bytes": 3754481,
+  "paths": [
+   "checkpoints/confirmed/scaffold-moe/umoe_gravmoe_s2.pt",
+   "checkpoints/umoe_gravmoe_s2.pt"
+  ],
+  "classes": {
+   "checkpoints/confirmed/scaffold-moe/umoe_gravmoe_s2.pt": "FROZEN",
+   "checkpoints/umoe_gravmoe_s2.pt": "DUPLICATE"
+  },
+  "canonical": "checkpoints/confirmed/scaffold-moe/umoe_gravmoe_s2.pt",
+  "all_retained": false,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/confirmed/scaffold-moe/umoe_gravmoe_s2.pt": [
+    [
+     0,
+     149343191040,
+     1048576
+    ],
+    [
+     1875968,
+     95676502016,
+     1048576
+    ]
+   ],
+   "checkpoints/umoe_gravmoe_s2.pt": [
+    [
+     0,
+     89967198208,
+     1048576
+    ],
+    [
+     1875968,
+     87212007424,
+     1048576
+    ]
+   ]
+  },
+  "redundant_bytes": 3754481
+ },
+ {
+  "sha256": "fb02357529c8fb4284f4ea02d2a6d6f2d1e79f09ee6eb1805a5d41a12e4c44d5",
+  "bytes": 2143611,
+  "paths": [
+   "checkpoints/cal_dilute_10_s1.pt",
+   "checkpoints/confirmed/calibration/cal_dilute_10_s1.pt"
+  ],
+  "classes": {
+   "checkpoints/cal_dilute_10_s1.pt": "ESSENTIAL",
+   "checkpoints/confirmed/calibration/cal_dilute_10_s1.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/confirmed/calibration/cal_dilute_10_s1.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/cal_dilute_10_s1.pt": [
+    [
+     0,
+     30947397632,
+     45056
+    ],
+    [
+     1069056,
+     87652884480,
+     794624
+    ]
+   ],
+   "checkpoints/confirmed/calibration/cal_dilute_10_s1.pt": [
+    [
+     0,
+     91030298624,
+     1048576
+    ],
+    [
+     1069056,
+     91031367680,
+     483328
+    ]
+   ]
+  },
+  "redundant_bytes": 2143611
+ },
+ {
+  "sha256": "5b6528f24a30bd770785b2e4dd962b7b6ebfe8f635c0ad12d8f0af7ee08aa244",
+  "bytes": 2143611,
+  "paths": [
+   "checkpoints/cal_dilute_30_s1.pt",
+   "checkpoints/confirmed/calibration/cal_dilute_30_s1.pt"
+  ],
+  "classes": {
+   "checkpoints/cal_dilute_30_s1.pt": "DUPLICATE",
+   "checkpoints/confirmed/calibration/cal_dilute_30_s1.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/confirmed/calibration/cal_dilute_30_s1.pt",
+  "all_retained": false,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/cal_dilute_30_s1.pt": [
+    [
+     0,
+     31594094592,
+     65536
+    ],
+    [
+     1069056,
+     88158420992,
+     815104
+    ]
+   ],
+   "checkpoints/confirmed/calibration/cal_dilute_30_s1.pt": [
+    [
+     0,
+     92990361600,
+     1048576
+    ],
+    [
+     1069056,
+     92991430656,
+     483328
+    ]
+   ]
+  },
+  "redundant_bytes": 2143611
+ },
+ {
+  "sha256": "0373140fb368261bb8b66691d9f0ba96bd2fc8c47c091f2e716c016da3ebdbac",
+  "bytes": 2142844,
+  "paths": [
+   "checkpoints/confirmed/grav-spacetime/grav2_contract_s1.pt",
+   "checkpoints/grav2_contract_s1.pt"
+  ],
+  "classes": {
+   "checkpoints/confirmed/grav-spacetime/grav2_contract_s1.pt": "FROZEN",
+   "checkpoints/grav2_contract_s1.pt": "DUPLICATE"
+  },
+  "canonical": "checkpoints/confirmed/grav-spacetime/grav2_contract_s1.pt",
+  "all_retained": false,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/confirmed/grav-spacetime/grav2_contract_s1.pt": [
+    [
+     0,
+     88418541568,
+     1048576
+    ],
+    [
+     1069056,
+     88419610624,
+     499712
+    ]
+   ],
+   "checkpoints/grav2_contract_s1.pt": [
+    [
+     0,
+     82886086656,
+     1048576
+    ],
+    [
+     1069056,
+     82887155712,
+     753664
+    ]
+   ]
+  },
+  "redundant_bytes": 2142844
+ },
+ {
+  "sha256": "81f137e24251e923ea5b1d9bb05a497c2bab065cb93d463bac4d8e8b7f35fc57",
+  "bytes": 2142519,
+  "paths": [
+   "checkpoints/confirmed/grav-spacetime/grav2_ctl_s1.pt",
+   "checkpoints/grav2_ctl_s1.pt"
+  ],
+  "classes": {
+   "checkpoints/confirmed/grav-spacetime/grav2_ctl_s1.pt": "FROZEN",
+   "checkpoints/grav2_ctl_s1.pt": "DUPLICATE"
+  },
+  "canonical": "checkpoints/confirmed/grav-spacetime/grav2_ctl_s1.pt",
+  "all_retained": false,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/confirmed/grav-spacetime/grav2_ctl_s1.pt": [
+    [
+     0,
+     93065641984,
+     1048576
+    ],
+    [
+     1069056,
+     93066711040,
+     507904
+    ]
+   ],
+   "checkpoints/grav2_ctl_s1.pt": [
+    [
+     0,
+     251719135232,
+     1048576
+    ],
+    [
+     1069056,
+     251720204288,
+     999424
+    ]
+   ]
+  },
+  "redundant_bytes": 2142519
+ },
+ {
+  "sha256": "428c854930e8ab2c8670437ff4c464f59a3d8dffca8e7086b80278b713d4ead1",
+  "bytes": 2141061,
+  "paths": [
+   "checkpoints/confirmed/crystal-math/sym_birth_dense_mps_h8_ema.pt",
+   "checkpoints/sym_birth_dense_mps_h8_ema.pt"
+  ],
+  "classes": {
+   "checkpoints/confirmed/crystal-math/sym_birth_dense_mps_h8_ema.pt": "FROZEN",
+   "checkpoints/sym_birth_dense_mps_h8_ema.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/confirmed/crystal-math/sym_birth_dense_mps_h8_ema.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/confirmed/crystal-math/sym_birth_dense_mps_h8_ema.pt": [
+    [
+     0,
+     168476188672,
+     1048576
+    ],
+    [
+     1069056,
+     168477257728,
+     897024
+    ]
+   ],
+   "checkpoints/sym_birth_dense_mps_h8_ema.pt": [
+    [
+     0,
+     185995100160,
+     1048576
+    ],
+    [
+     1069056,
+     185996169216,
+     946176
+    ]
+   ]
+  },
+  "redundant_bytes": 2141061
+ },
+ {
+  "sha256": "9c7f6250fb1e5a1dc10d97432d6a0b6612ba6d97544a8cdd530cd663871e5f4d",
+  "bytes": 494875,
+  "paths": [
+   "checkpoints/writercaf1/qual_hybrid_k1_s23_S1_lr0.0003/feedback.pt",
+   "checkpoints/writercaf1/qual_hybrid_k2_s23_S1_lr0.0003/feedback.pt",
+   "checkpoints/writercaf1/qual_hybrid_k4_s23_S1_lr0.0003/feedback.pt",
+   "checkpoints/writerdfa1/qual_dfa_s21_S1_lr0.0001/feedback.pt",
+   "checkpoints/writerdfa1/qual_dfa_s21_S1_lr0.0003/feedback.pt"
+  ],
+  "classes": {
+   "checkpoints/writercaf1/qual_hybrid_k1_s23_S1_lr0.0003/feedback.pt": "FROZEN",
+   "checkpoints/writercaf1/qual_hybrid_k2_s23_S1_lr0.0003/feedback.pt": "FROZEN",
+   "checkpoints/writercaf1/qual_hybrid_k4_s23_S1_lr0.0003/feedback.pt": "FROZEN",
+   "checkpoints/writerdfa1/qual_dfa_s21_S1_lr0.0001/feedback.pt": "FROZEN",
+   "checkpoints/writerdfa1/qual_dfa_s21_S1_lr0.0003/feedback.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/writercaf1/qual_hybrid_k1_s23_S1_lr0.0003/feedback.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/writercaf1/qual_hybrid_k1_s23_S1_lr0.0003/feedback.pt": [
+    [
+     0,
+     196209721344,
+     495616
+    ],
+    [
+     245760,
+     196209967104,
+     249856
+    ]
+   ],
+   "checkpoints/writercaf1/qual_hybrid_k2_s23_S1_lr0.0003/feedback.pt": [
+    [
+     0,
+     150352158720,
+     495616
+    ],
+    [
+     245760,
+     150352404480,
+     249856
+    ]
+   ],
+   "checkpoints/writercaf1/qual_hybrid_k4_s23_S1_lr0.0003/feedback.pt": [
+    [
+     0,
+     197795549184,
+     495616
+    ],
+    [
+     245760,
+     197795794944,
+     249856
+    ]
+   ],
+   "checkpoints/writerdfa1/qual_dfa_s21_S1_lr0.0001/feedback.pt": [
+    [
+     0,
+     196193554432,
+     495616
+    ],
+    [
+     245760,
+     196193800192,
+     249856
+    ]
+   ],
+   "checkpoints/writerdfa1/qual_dfa_s21_S1_lr0.0003/feedback.pt": [
+    [
+     0,
+     102516670464,
+     495616
+    ],
+    [
+     245760,
+     102516916224,
+     249856
+    ]
+   ]
+  },
+  "redundant_bytes": 1979500
+ },
+ {
+  "sha256": "f503c81446c97adb01f657d37f490909a0cbd5d752d2bc2ae5613ced9cf56378",
+  "bytes": 525893,
+  "paths": [
+   "checkpoints/confirmed/determinism/k3_silu_tab.pt",
+   "checkpoints/k3_silu_tab.pt"
+  ],
+  "classes": {
+   "checkpoints/confirmed/determinism/k3_silu_tab.pt": "FROZEN",
+   "checkpoints/k3_silu_tab.pt": "ESSENTIAL"
+  },
+  "canonical": "checkpoints/confirmed/determinism/k3_silu_tab.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "extent_keys": {
+   "checkpoints/confirmed/determinism/k3_silu_tab.pt": [
+    [
+     0,
+     85203464192,
+     528384
+    ],
+    [
+     262144,
+     85203726336,
+     266240
+    ]
+   ],
+   "checkpoints/k3_silu_tab.pt": [
+    [
+     0,
+     326181322752,
+     528384
+    ],
+    [
+     262144,
+     326181584896,
+     266240
+    ]
+   ]
+  },
+  "redundant_bytes": 525893
+ }
+]

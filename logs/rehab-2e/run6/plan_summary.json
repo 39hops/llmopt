@@ -1,0 +1,61 @@
+{
+ "rows": 278,
+ "alloc": 16136822784,
+ "sites": 367,
+ "sites_resolved_exact": 274,
+ "by_proposed": {
+  "REVIEW: reached only by producer patterns that did not resolve": {
+   "files": 67,
+   "alloc": 1599344640
+  },
+  "REVIEW: no site reaches this file after pattern resolution (census UNKNOWN by prefix only); CANDIDATE queue; per-family GO": {
+   "files": 121,
+   "alloc": 10426531840
+  },
+  "REVIEW: reached only by an unresolved consumer pattern; resolve or decide script": {
+   "files": 18,
+   "alloc": 1991847936
+  },
+  "REVIEW: no reference found (CANDIDATE); per-family GO": {
+   "files": 43,
+   "alloc": 854102016
+  },
+  "REVIEW: produced by a known script, read by nothing exact; regenerable if the script and its inputs stand": {
+   "files": 4,
+   "alloc": 113647616
+  },
+  "REVIEW: exact consumer only in uncited script(s); decide script first": {
+   "files": 8,
+   "alloc": 605360128
+  },
+  "KEEP: exact consumer in results-cited script": {
+   "files": 11,
+   "alloc": 424824832
+  },
+  "REMOVE after confirming checkpoints/atomtraj1_smoke/stock_s11_probe_emit1/step_00300.pt is the cited copy (per-row GO)": {
+   "files": 1,
+   "alloc": 75665408
+  },
+  "REMOVE after confirming checkpoints/step_lora_grpo.pt.wsl is the cited copy (per-row GO)": {
+   "files": 1,
+   "alloc": 35303424
+  },
+  "RELINK scratch/scaffold_review.py, scratch/umoe_conserve.py to checkpoints/confirmed/scaffold-moe/umoe_gravmoe_s2.pt, then REMOVE (per-row GO)": {
+   "files": 1,
+   "alloc": 3756032
+  },
+  "RELINK scratch/cal_dilute.py to checkpoints/confirmed/calibration/cal_dilute_30_s1.pt, then REMOVE (per-row GO)": {
+   "files": 1,
+   "alloc": 2146304
+  },
+  "RELINK scratch/grav2_spacetime.py to checkpoints/confirmed/grav-spacetime/grav2_contract_s1.pt, then REMOVE (per-row GO)": {
+   "files": 1,
+   "alloc": 2146304
+  },
+  "RELINK scratch/grav2_spacetime.py to checkpoints/confirmed/grav-spacetime/grav2_ctl_s1.pt, then REMOVE (per-row GO)": {
+   "files": 1,
+   "alloc": 2146304
+  }
+ },
+ "executes_nothing": true
+}

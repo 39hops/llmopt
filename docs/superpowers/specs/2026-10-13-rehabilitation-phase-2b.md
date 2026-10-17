@@ -219,6 +219,16 @@ Acceptance: `gen_receipt_lock.py --check` current;
 `test_evidence_availability` green; no RESULTS-cited path deleted; free
 space measured before and after and booked.
 
+**PREPARATION DONE 2026-10-16 (phase 2F, no execution).** Artin's
+scope: analysis and preparation only, no destructive step until a
+file-by-file plan is read. `scripts/ckpt_plan.py` resolves the dynamic
+path sites (367, 274 exact), assigns producer/consumer roles, and
+writes logs/rehab-2e/run6/PLAN.md, one row per non-frozen file with
+matches, CODEMAP classes, copies and a proposed action; booked as
+OBSERVATION CHECKPOINT-PLAN-0 (RESULTS L78558). Execution order and
+boundaries are in that entry. The "26 frozen-with-frozen groups" above
+read 29 on the census (2.48 GB).
+
 ## 2G. Code and documentation consolidation (P2-U, P2-V, P2-W, P2-X)
 
 `.ep` sentinel meanings unified through `runfiles.write_marker`;

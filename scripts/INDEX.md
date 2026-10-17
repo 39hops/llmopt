@@ -737,6 +737,7 @@ Read-only checkpoint inventory, dependency graph, conservative classification, A
 - `walk_tree(repo: Path, tree: str=CKPT) -> dict[str, dict]` — rel (inside the tree) -> row. Symlinks are recorded, never
 - `_norm_token(tok: str) -> str`
 - `scan_text_for_refs(text: str, source: str) -> list[dict]` — Every reference form in one text: full path tokens (globs and
+- `strip_triage_entries(text: str) -> str` — Drop RESULTS entries that are storage-triage bookings (headings
 - `_read(p: Path) -> str`
 - `log_citation_sets(repo: Path, lock: dict) -> tuple[set[str], set[str]]` — (locked log paths, RESULTS-cited log tokens) so a log mention
 - `_log_is_cited(rel: str, locked: set[str], cited: set[str]) -> str | None`
@@ -763,6 +764,19 @@ ckpt_manifest.py — checkpoint manifest for the curated tree.
 - `sha256(path, bufsize=1 << 20)`
 - `scan(base)`
 - `main()`
+
+### scripts/ckpt_plan.py
+Phase 2F preparation: resolve the dynamic checkpoint path sites the census could not evaluate, tell producers from consumers, and write a file-by-file plan for every row the census did not freeze. Executes nothing: no delete, move, clone or relink happens here or anywhere until Artin reads the plan and gives a per-step GO.
+
+- `_hole_name(m) -> str`
+- `parse_site(line: str, source: str, lineno: int) -> dict | None` — One code line -> {source, line, text, holes, regex, role}, or
+- `variable_values(text: str) -> dict[str, list[str]]` — Literal values a variable can take, read from one file.
+- `expand(site: dict, vals: dict[str, list[str]]) -> list[str] | None` — Every exact path the site can produce, or None if a hole is
+- `collect_sites(repo: Path) -> list[dict]`
+- `load_codemap(repo: Path) -> dict[str, str]`
+- `build_plan(repo: Path, inventory_path: Path, copies: dict) -> dict`
+- `render_markdown(plan: dict) -> str`
+- `main(argv=None) -> int`
 
 ### scripts/claim_lint.py
 Lint DRAFT verdict/analysis prose before it books.

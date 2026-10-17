@@ -5600,6 +5600,80 @@
    "source": "results",
    "tracked": true
   },
+  "logs/rehab-2e/run6/PLAN.md": {
+   "bytes": 50306,
+   "exists": true,
+   "sha256": "733f55f4f0b4abcf4afe327e0d9ffbfeaed729508e290c3651ea3f9d73e95467",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/rehab-2e/run6/SHEET.md": {
+   "bytes": 22340,
+   "exists": true,
+   "sha256": "56e4175312b6a797f825f7db37a72ff20f6f01d42c3100220526432193832729",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/rehab-2e/run6/duplicates.json": {
+   "bytes": 33964,
+   "exists": true,
+   "sha256": "eebe1b32ac19a2cb4dd3fae32265b690f907e5f0485ba7189e4f90fd8b841336",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/rehab-2e/run6/families.json": {
+   "bytes": 91563,
+   "exists": true,
+   "sha256": "067a3aef9b7eb9674b1a2e5b964c5abf8d9cd722c04edf20aa7ebe8cb6265024",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/rehab-2e/run6/graph.json": {
+   "bytes": 1921733,
+   "exists": true,
+   "local_only": true,
+   "sha256": "c8a5a5ebb3cc83a3b81eb6f324f10bbefbc3ff64aa78d2a69e19cef534cb37a4",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/rehab-2e/run6/inventory.jsonl": {
+   "bytes": 1428161,
+   "exists": true,
+   "local_only": true,
+   "sha256": "c49df9695b73aa3b19d709dbd9eaad3ed2b6357cfb3f50f8f83a306aa0476488",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/rehab-2e/run6/plan.jsonl": {
+   "bytes": 160340,
+   "exists": true,
+   "local_only": true,
+   "sha256": "058c4457056ab9ad2c9e0c1f497136c2c73295686d9620ee8b966dbd646853f2",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/rehab-2e/run6/plan_sites.json": {
+   "bytes": 68332,
+   "exists": true,
+   "local_only": true,
+   "sha256": "12886be66549074f0a22adb01488a0976c24830157f6f13e2f3717d76bf0e8c4",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/rehab-2e/run6/plan_summary.json": {
+   "bytes": 2011,
+   "exists": true,
+   "sha256": "4737d63f4f6f9f45ba2422cb73b408149ec20f51095e8ced09ae737146e4ec9d",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/rehab-2e/run6/summary.json": {
+   "bytes": 1172,
+   "exists": true,
+   "sha256": "3f455faeada861557a82aea95a6d59a228c35ca0e2de9815c5aa2bd737f755f3",
+   "source": "results",
+   "tracked": true
+  },
   "logs/revive/crown_gates.log": {
    "bytes": 596,
    "exists": true,
