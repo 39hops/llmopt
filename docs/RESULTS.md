@@ -78944,10 +78944,10 @@ present among the 415 checkpoint files already on the 3080
 (`logs/rehab-2e/ckpt_sha_3080.txt`), so before this copy each of
 these weights existed on one machine only.
 
-Destination. `/home/a/archive/llmopt-ckpt-2026-10-17/grpo/` on the
+Destination. `~/archive/llmopt-ckpt-2026-10-17/grpo/` on the
 3080, a directory created for this purpose (the parent
-`/home/a/archive` did not exist before). It is outside
-`/home/a/code/llmopt`. The copy ran with `rsync -a
+`~/archive` did not exist before). It is outside
+`~/code/llmopt`. The copy ran with `rsync -a
 --ignore-existing`, so nothing on the 3080 could be overwritten.
 Free space on the 3080 root volume: 719 GB before, 711 GB after.
 

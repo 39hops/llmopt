@@ -45,7 +45,7 @@ changed, missing, added all empty).
    to 179 / 6.84 GB. (b) Copy-only preservation (OBSERVATION
    CHECKPOINT-ARCHIVE-0): the 52 `*grpo*` checkpoints (8.58 GB) were
    rsync'd with `--ignore-existing` to the new directory
-   `/home/a/archive/llmopt-ckpt-2026-10-17/grpo/` on the 3080
+   `~/archive/llmopt-ckpt-2026-10-17/grpo/` on the 3080
    (outside the git checkout; the parent did not exist before).
    `sha256sum` on the 3080 over all 52 files matched the Mac
    manifest line for line; both manifests are beside the archive
