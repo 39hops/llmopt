@@ -78615,3 +78615,140 @@ Artin reads them; (5) metabolic after the arm list is resolved; (6)
 the 67 producer-pattern rows and the 8 uncited-consumer rows after the
 scripts are decided. Free space today 57.2 GB; none of this is needed
 for the 30B vehicle. Nothing in this entry authorizes a removal.
+
+## OBSERVATION CHECKPOINT-PLAN-1: the 2F plan recomputed under typed name sets (literal versus default versus unresolved), full-extent APFS maps and family lineage: 278 rows / 16.14 GB unchanged in membership, 123 labels changed and none toward removal; reach is exhaustive for 30 files / 1.14 GB, default-only for 4 / 0.01, pattern for 88 / 3.60, and 156 files / 11.39 GB are reached by no named site while 26 generic loaders could open any name by argument; the 29 frozen duplicate pairs (2.48 GB) are verified distinct on 1,610 extents with zero shared bytes; family review finds booked verdict weights referenced only by nickname inside the no-site bucket (Gen-6 reborn 71/120, the series and poly rungs, the MATH-CYBER-1 active arm), so scanner reachability alone is not a retention basis (2026-10-16, Mac; rehabilitation 2F preparation, review round; nothing moved, deleted, relinked, cloned or trained)
+
+**Instruments.** `scripts/ckpt_census.py` and `scripts/ckpt_plan.py`
+at d9107871 over logs/rehab-2e/run7/ (baseline identical before and
+after: changed 0, missing 0, added 0; identical to the first run's
+manifest). Receipts force-added: logs/rehab-2e/run7/SHEET.md,
+logs/rehab-2e/run7/families.json, logs/rehab-2e/run7/duplicates.json,
+logs/rehab-2e/run7/summary.json, logs/rehab-2e/run7/PLAN.md,
+logs/rehab-2e/run7/plan_summary.json. Tests: tests/test_ckpt_plan.py
+22 (eight new adversarial cases: environment override, argparse
+default and required argument, several assignments, aliases,
+generated names, typed expansion, reach classes with and without
+generic loaders), tests/test_ckpt_census.py 34 (two new: full extent
+map coverage and clone detection, group physical status),
+tests/test_gen_codemap_law.py 37 (one new), and
+tests/test_torch_state_isolation.py 4.
+
+**Soundness correction (the review finding).** The earlier resolver
+treated `os.environ.get("SEED", "2")`, `${X:-default}` and argparse
+`default=` as complete value sets. They are one reachable value each;
+an override reaches other names. Every value set is now typed:
+literal (lists, tuples, loops over them, plain assignments with
+union across several assignments, shell for-lists, aliases) can be
+exhaustive; default never is. A site expands "exhaustive" only from
+literal bindings; a default-bound site reaches its default name as
+"default" and every other matching name as "pattern". Sites: 346
+named, 258 exhaustive, 16 default-bound, 72 unresolved; 26 generic
+loaders (code that opens any checkpoints/ name from an argument,
+e.g. the ex*_build.py readers and `"checkpoints/" + name` forms). Per
+file the plan now carries a reach class, and "unreached" is claimed
+only when no named site and no generic loader exists anywhere: zero
+files qualify. Change table against CHECKPOINT-PLAN-0 (run6):
+
+| from (run6) | to (run7) | files |
+|---|---|---:|
+| no site reaches the file | no named site reaches it; 14 to 26 generic loaders could by argument (uncertainty made explicit) | 120 |
+| reached only by producer patterns that did not resolve | reached only by an unresolved consumer pattern | 2 |
+| no site reaches the file | reached only by producer patterns that did not resolve | 1 |
+| every other row | unchanged | 155 |
+
+No row moved to REMOVE or to a smaller boundary; the six DUPLICATE
+rows, the 43 CANDIDATE rows, the 11 KEEP rows and the 8 uncited exact
+consumer rows are as booked. A second self-reference was found and
+closed on the way: the force-added census sheets are sha-locked
+receipts and `scripts/gen_codemap.py` read a locked receipt's text as
+citations, which had moved 409 CODEMAP rows (z1_gate.sh and others
+from UNCITED to results-cited) because an inventory listed them; the
+move gate now ignores receipts under logs/rehab-2e/ and CODEMAP is
+back to results-cited 504.
+
+**APFS accounting, strengthened.** Every copy in every duplicate
+group is walked to a complete extent map (F_LOG2PHYS_EXT until the
+logical size is covered) and maps are compared pairwise for any
+overlapping device range: 35 groups, 1,610 extents, 0 shared bytes.
+The 2.60 GB of redundant logical bytes, including the 29
+frozen-with-frozen groups (2.48 GB), sit on physically distinct
+blocks: verified, not estimated. The `du` total equals the sum of
+file sizes (70.51 GB). What remains unverifiable without a
+destructive experiment: partial extent sharing between files of
+different content (APFS clones later modified); no such operation is
+in the lab's tooling, no local snapshots exist, and container free
+space is 57.2 GB.
+
+**3080 validation at 221d170b (complete).** Generated docs, results
+index, receipt lock (947 paths, 41 results-cited receipts on no
+checkout), scoreboard and figures (raster NOT verified there, no
+Chrome) all current; pytest 1 failed / 2289 passed / 60 skipped: the
+compiler-encoder roundtrip hit CUDA bincount under
+`torch.use_deterministic_algorithms(True)` left set by an earlier
+test. Not qualified at that commit. Fixed locally (below); the host
+can be qualified only after the next push and rerun. RTX 3080,
+driver 610.47, torch 2.13.0+cu130.
+
+**Torch test isolation.** tests/conftest.py now snapshots the
+determinism flag, warn-only mode, intra-op thread count, grad mode
+and default dtype around every test, restores the safely restorable
+ones (determinism, grad mode, dtype), never resets thread counts or
+interop settings (OpenMP pools and interop threads must not be resized
+after work started), and reports a teardown ERROR naming the test
+that changed anything unless it carries `changes_torch_state`.
+tests/test_torch_state_isolation.py reproduces the order dependence
+in subprocess pytester sessions (leaker then a CUDA bincount where
+CUDA exists). On the Mac the guard found one more leaker
+(test_first_moment_erasure::test_refuse_if_exists, a driver main()
+that sets the flag and the thread count before refusing), fixed. CUDA
+validation awaits the 3080 rerun.
+
+**`.lake` (scratch/leancheck/.lake, 7.75 GB).** mathlib 7.04 GB (of
+which .lake build products 6.45 GB: 8,694 .olean, 8,692 .ilean, 8,692
+.c, 8,734 .trace, 60,837 .hash; sources 0.11 GB), batteries 0.49,
+aesop 0.14, proofwidgets 0.03, Qq, plausible, importGraph,
+LeanSearchClient, Cli under 0.02 each. Pinned by
+scratch/leancheck/lake-manifest.json (mathlib rev 9fb10993) and
+lean-toolchain v4.33.0-rc2 (both tracked). Nothing in it is unique:
+every byte derives from public sources at a pinned revision.
+Regeneration: `lake exe cache get` fetches the prebuilt oleans for
+that revision if the community cache still serves it (minutes, a few
+GB of download); otherwise a full mathlib build (hours of CPU). The
+Lean kernel checks booked at RESULTS L20254, L20521, L22310, L22430
+and L22449 ran against this cache; their results are in the ledger,
+Certs.lean is regenerated by scratch/lean_check.py, so the cache is
+required only to re-run a check. It is the simplest reclamation path
+on the volume: 7.75 GB, zero evidence risk, cost measured in
+re-fetch time; a decision for Artin, not taken here.
+
+**Mathnative family lineage (the 10.43 GB bucket; nothing approved).**
+
+| sub-family | files | GB | produced | lineage and evidence | unique | copy elsewhere | defensible call |
+|---|---:|---:|---|---|---|---|---|
+| 45m_grpo3 candidate ladder c004..c022 | 22 | 4.43 | 2026-07-17 03:20-06:29, scripts/step_grpo_micro.py cycles | the consolidated final checkpoints/mathnative_45m_grpo3.pt is FROZEN (receipt logs/archive/consolidate3_45m.log); the ladder itself was read once, 2026-08-13, for the displacement measurement that killed the dense phase-portrait concept (handoff 2026-08-13-2, not booked in RESULTS); the 2026-08-08 triage classed the analogous 19M `mathnative_grpo_c*` candidates DELETE-AFTER-SIGNOFF with step_grpo_micro.py as rebuild path, but RL cycles on mps are run-level nondeterministic, so these weights cannot be regenerated bit for bit | yes | none | KEEP pending an explicit decision: the only complete 12-cycle RL ladder on disk; if retired, book the 08-13 displacement read first |
+| 45m_grpo2, 45m_grpo, 45m_grpo_run1 partial ladders | 12 | 2.43 | 2026-07-16 14:54 to 07-17 02:41 | finals 45m_grpo.pt and 45m_grpo2.pt FROZEN (consolidate receipts); run 1 and 1b booked at L1895 with per-cycle gates in logs/archive/micro_grpo_45m_run1b.log; candidates are the rollback snapshots the entry describes | yes | none | candidate for retirement under the 08-08 precedent, after the booked entry's cited cycles (run1 c010 = cycle-10 best) are named as KEEP rows |
+| v2_grpo c002..c012 | 6 | 0.45 | 2026-07-16 01:21-03:24 | final mathnative_v2_grpo.pt FROZEN (RESULTS basename); runs booked L1784, L1806 | yes | none | same as above |
+| 45m_gen6_reborn.pt | 1 | 0.20 | 2026-07-19 19:20 | VERDICT "Gen-6 reborn: NEW RECORD 71/120" (L2798) names it by nickname only; log logs/gen6_reborn.log present, uncited | yes | none | KEEP: record weights; add the path to the ledger by amendment so the scanner sees it |
+| gen6_ternary_grown(.latent).pt | 2 | 0.44 | 2026-07-20 09:48 | siblings of the load-bearing gen6_ternary(.latent); log logs/gen6_ternary_grown.log present, uncited; no entry names them by stem | yes | none | HOLD: establish which 07-20 entry read them before any call |
+| 45m_ternary_latent_3ep.pt | 1 | 0.20 | 2026-07-18 02:26 | "Extended-training night: ternary reaches parity" (L2397) is the matching entry by date and subject | yes | none | KEEP pending the amendment that names the path |
+| 45m_soup.pt | 1 | 0.20 | 2026-07-17 01:05 | no entry found by stem or nickname before the 07-28 soup verdicts | yes | none | HOLD: lineage unknown |
+| 19m_series, series1b-1e, poly, poly2 | 7 | 0.53 | 2026-07-22/23 | the Series rung 1, 1c, 1d, 1e and Poly pilot, poly2 entries (L3401-L3758) book these runs by nickname | yes | none | KEEP: verdict weights; name the paths by amendment |
+| 19m_infixtwin variants (lm2, lm2z, lm3, lm3z, lmt, int2-style, nf4, int3, p4, m4, m4x, gflip*, tern, sparse) | 19 | 1.43 | 2026-07-25/26 | PTQ and format arms consumed exactly by the race and prologue gate chains (scratch/mac_day_chain.sh, prologue_gates.sh, ptq4_gates.sh, z1_gate.sh, UNCITED in CODEMAP); the base mathnative_19m_infixtwin.pt is load-bearing | yes | none | HOLD: decide the gate-chain scripts first; the arms are the evidence behind whatever those chains booked |
+| 19m_prefix_int3 | 1 | 0.08 | 2026-07-25 04:00 | sibling of infixtwin_int3 | yes | none | same as infixtwin |
+| 19m_mw1_active_final.pt | 1 | 0.08 | 2026-08-23 02:12 | final weights of the MATH-CYBER-1 ACTIVE-EPISODIC arm (pre-reg L42694, amendment L42803); written by scratch/mathworld1_active.py | yes | none | KEEP: registered arm's final weights; name the path by amendment |
+
+Every file in the table has no copy on the 3080 or in the repair
+worktree and cannot be regenerated bit for bit (mps float training is
+run-level nondeterministic, booked 2026-08-15). "Historically unique"
+therefore holds for all 73; the question per family is evidence
+weight, and the table says where each stands.
+
+**Revised execution order.** (1) Amendments naming the verdict
+weights found by nickname (reborn, series, poly, ternary_latent_3ep,
+mw1_active_final, grpo run cycles), so the next census freezes them
+without this table. (2) Duplicates: relink then remove, 0.12 GB,
+per-row GO. (3) Clone the 29 frozen pairs, 2.48 GB verified distinct,
+one GO. (4) The 43 CANDIDATE rows per family. (5) `.lake` 7.75 GB,
+separate decision. (6) GRPO partial ladders after the cited cycles are
+pinned. (7) Everything HOLD stays. Nothing in this entry authorizes a
+removal.

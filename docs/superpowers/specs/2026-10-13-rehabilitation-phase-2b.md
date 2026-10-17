@@ -229,6 +229,17 @@ OBSERVATION CHECKPOINT-PLAN-0 (RESULTS L78558). Execution order and
 boundaries are in that entry. The "26 frozen-with-frozen groups" above
 read 29 on the census (2.48 GB).
 
+**REVIEW ROUND 2026-10-16 (phase 2F preparation, still no execution).**
+Artin's review: defaults are not exhaustive name sets. Resolver now
+types every value set and reports per-file reach (exhaustive, default,
+pattern, unreached, unreached-with-generic-loaders); APFS duplicate
+groups compared on complete extent maps (2.48 GB verified distinct);
+leak-detecting torch guard; `.lake` analysed (7.75 GB regenerable);
+mathnative lineage per sub-family with booked verdict weights found by
+nickname. OBSERVATION CHECKPOINT-PLAN-1 (RESULTS L78619). The next
+approval is per experimental family on evidence retention, not on
+scanner reachability.
+
 ## 2G. Code and documentation consolidation (P2-U, P2-V, P2-W, P2-X)
 
 `.ep` sentinel meanings unified through `runfiles.write_marker`;

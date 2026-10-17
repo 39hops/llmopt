@@ -732,6 +732,8 @@ Fetch arXiv METADATA ONLY for a THEORY.md lineage citation.
 Read-only checkpoint inventory, dependency graph, conservative classification, APFS physical-storage probe and family decision sheet (rehabilitation phase 2E).
 
 - `sha256_file(p: Path, bufsize: int=1 << 22) -> str`
+- `extent_map(p: Path)` — Every physical extent of a file as (logical_offset, device_offset,
+- `shared_bytes(a, b) -> int` — Bytes of device address space two extent maps have in common.
 - `extent_key(p: Path)` — (flags, contig, devoffset) of the first and middle logical
 - `git_tracked(repo: Path) -> set[str]`
 - `walk_tree(repo: Path, tree: str=CKPT) -> dict[str, dict]` — rel (inside the tree) -> row. Symlinks are recorded, never
@@ -770,8 +772,11 @@ Phase 2F preparation: resolve the dynamic checkpoint path sites the census could
 
 - `_hole_name(m) -> str`
 - `parse_site(line: str, source: str, lineno: int) -> dict | None` — One code line -> {source, line, text, holes, regex, role}, or
-- `variable_values(text: str) -> dict[str, list[str]]` — Literal values a variable can take, read from one file.
-- `expand(site: dict, vals: dict[str, list[str]]) -> list[str] | None` — Every exact path the site can produce, or None if a hole is
+- `_typed(values, kind)`
+- `_merge(vals: dict, name: str, values, kind: str) -> None` — Union across multiple assignments; a default anywhere makes the
+- `variable_values(text: str) -> dict[str, dict]` — name -> {"values": [...], "kind": "literal" | "default"}.
+- `expand_typed(site: dict, vals: dict[str, dict]) -> dict | None` — {"names": [...], "kind": "exhaustive" | "default"} or None when a
+- `expand(site: dict, vals: dict[str, dict]) -> list[str] | None` — Every exact path the site can produce, or None if a hole is
 - `collect_sites(repo: Path) -> list[dict]`
 - `load_codemap(repo: Path) -> dict[str, str]`
 - `build_plan(repo: Path, inventory_path: Path, copies: dict) -> dict`
