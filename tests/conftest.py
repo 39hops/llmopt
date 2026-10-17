@@ -54,3 +54,26 @@ def absent_repair_sentinel(tmp_path_factory):
     with pytest.MonkeyPatch.context() as mp:
         mp.setenv("LLMOPT_WORKTREE_REPAIR", str(sentinel))
         yield sentinel
+
+
+@pytest.fixture(autouse=True)
+def _restore_torch_process_state():
+    """torch.use_deterministic_algorithms and set_num_threads are
+    process-wide. Nine scratch drivers set them inside functions that
+    tests call; a later test on a CUDA host then hits a kernel with no
+    deterministic implementation (the codec roundtrip's bincount).
+    Snapshot before each test, restore after."""
+    try:
+        import torch
+    except Exception:
+        yield
+        return
+    det = torch.are_deterministic_algorithms_enabled()
+    warn = torch.is_deterministic_algorithms_warn_only_enabled()
+    threads = torch.get_num_threads()
+    try:
+        yield
+    finally:
+        torch.use_deterministic_algorithms(det, warn_only=warn)
+        if torch.get_num_threads() != threads:
+            torch.set_num_threads(threads)
