@@ -44,6 +44,19 @@ from llmopt.lab.prereg import (ObservationsContractError,
                                validate)
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def _load_or_skip(path):
+    """load() refuses a pre-reg whose operand provider is not on disk;
+    some providers are local-only Mac artifacts, so on another host the
+    pair is skipped with the reason named rather than failed."""
+    from llmopt.lab.prereg import PreregSchemaError, load
+    try:
+        return load(path)
+    except PreregSchemaError as e:
+        if "provider" in str(e):
+            pytest.skip(f"operand provider absent on this host: {e}")
+        raise
 PINS = json.loads((ROOT / "tests/fixtures/prereg_adjudication_pins.json")
                   .read_text())["pairs"]
 PIN_IDS = [f"{p['prereg'].split('/')[-1]}:{p['observations'].split('/')[-1]}"
@@ -54,7 +67,7 @@ RK_OBS = ROOT / "logs/qwenrouter/rk_observations.json"
 
 
 def _pair(pin):
-    return (load(ROOT / pin["prereg"]),
+    return (_load_or_skip(ROOT / pin["prereg"]),
             json.loads((ROOT / pin["observations"]).read_text()))
 
 
@@ -469,7 +482,7 @@ def test_wrong_arm_or_invalid_measurement_never_fires(pin):
 # ----------------------------------------- precedence with unsatisfied bars
 
 def test_refutation_precedence_blocks_when_required_bar_is_not_fire():
-    pins = [p for p in PINS if load(ROOT / p["prereg"]).get(
+    pins = [p for p in PINS if _load_or_skip(ROOT / p["prereg"]).get(
         "refutation_precedence")]
     assert pins, "no booked document registers refutation_precedence"
     for pin in pins:

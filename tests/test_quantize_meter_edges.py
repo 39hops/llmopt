@@ -43,15 +43,22 @@ REGRESSION = [
 @pytest.mark.parametrize("name,w,m_pin,k_pin", REGRESSION, ids=[r[0] for r in REGRESSION])
 def test_ordinary_inputs_keep_their_values(name, w, m_pin, k_pin):
     m, k = meter(w)
-    assert m == m_pin
-    assert k == k_pin
+    # pins were taken on the Mac; other CPUs and CUDA round the float32
+    # reductions differently at the 1e-7 level, so the comparison is a
+    # float32-noise tolerance, not bit identity (never compared across
+    # devices bit-exactly)
+    assert math.isclose(m, m_pin, rel_tol=1e-5)
+    assert math.isclose(k, k_pin, rel_tol=1e-5)
     d = meter_detailed(w)
     assert isinstance(d, MeterResult)
     assert (d.m_bits, d.kurtosis, d.flags) == (m, k, ())
 
 
 def test_group_keeps_its_value():
-    assert meter_group([G, H]) == (3.215525613437138, 98.16854286193848, 4096)
+    m, k, n = meter_group([G, H])
+    assert math.isclose(m, 3.215525613437138, rel_tol=1e-5)
+    assert math.isclose(k, 98.16854286193848, rel_tol=1e-5)
+    assert n == 4096
 
 
 # --- analytical fixtures ---------------------------------------------------

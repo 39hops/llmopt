@@ -194,9 +194,20 @@ def test_readout_and_ladder_pure_and_literal(mod):
 
 
 def test_cpu_replay_is_bit_exact(mod):
-    """Two identical small CPU legs under the instrument's determinism settings give byte-identical weights and optimizer digests."""
+    """Two identical small CPU legs under the instrument's determinism settings give byte-identical weights and optimizer digests.
+    The determinism flag and thread count are process-wide torch state; restored on exit so later tests (CUDA bincount in the codec roundtrip) are not run under them."""
+    prev_det = torch.are_deterministic_algorithms_enabled()
+    prev_threads = torch.get_num_threads()
     torch.use_deterministic_algorithms(True)
     torch.set_num_threads(2)
+    try:
+        _cpu_replay_body(mod)
+    finally:
+        torch.use_deterministic_algorithms(prev_det)
+        torch.set_num_threads(prev_threads)
+
+
+def _cpu_replay_body(mod):
     outs = []
     for _ in range(2):
         torch.manual_seed(5)

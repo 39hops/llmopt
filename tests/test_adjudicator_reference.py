@@ -16,11 +16,23 @@ from pathlib import Path
 import pytest
 
 from llmopt.lab.metrics import Metric, MetricContractError, adjudicate
-from llmopt.lab.prereg import (adjudicate_prereg, adjudicate_refutation,
-                               load)
+from llmopt.lab.prereg import (adjudicate_prereg, adjudicate_refutation)
 from tests import reference_adjudicator as ref
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def _load_or_skip(path):
+    """load() refuses a pre-reg whose operand provider is not on disk;
+    some providers are local-only Mac artifacts, so on another host the
+    pair is skipped with the reason named rather than failed."""
+    from llmopt.lab.prereg import PreregSchemaError, load
+    try:
+        return load(path)
+    except PreregSchemaError as e:
+        if "provider" in str(e):
+            pytest.skip(f"operand provider absent on this host: {e}")
+        raise
 
 
 def prod_predicate(observed, bar, direction, fence=None):
@@ -250,7 +262,7 @@ def test_reference_reproduces_every_historical_pin():
     pins = json.loads((ROOT / "tests/fixtures/prereg_adjudication_pins.json")
                       .read_text())
     for pin in pins["pairs"]:
-        doc = load(ROOT / pin["prereg"])
+        doc = _load_or_skip(ROOT / pin["prereg"])
         obs = json.loads((ROOT / pin["observations"]).read_text())
         want = {o["bar_id"]: o["outcome"] for o in pin["outcomes"]}
         got = {}

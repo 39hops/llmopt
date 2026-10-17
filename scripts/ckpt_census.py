@@ -40,8 +40,10 @@ checkpoint path counts as a FROZEN reference only when that log is
 itself sha-locked or cited by RESULTS; a mention in uncited log
 exhaust is recorded as a note and changes nothing (nothing reads
 weights out of a log). The census's own output under logs/rehab-2e/
-is never scanned. Cited paths absent from the tree are listed
-(absent_cited) with the other trees they were found in.
+is never scanned, and RESULTS entries headed OBSERVATION or AMENDMENT
+CHECKPOINT-CENSUS-* / CHECKPOINT-PLAN-* are cut out of the citation
+scan (they list file names by design). Cited paths absent from the
+tree are listed (absent_cited) with the other trees they were found in.
 
 Physical storage: for every duplicate group the first and middle
 extents of each copy are read with fcntl F_LOG2PHYS_EXT; equal keys
@@ -248,6 +250,18 @@ def scan_text_for_refs(text: str, source: str) -> list[dict]:
     return refs
 
 
+TRIAGE_HEADING = re.compile(r"^## (?:OBSERVATION|AMENDMENT) CHECKPOINT-(?:CENSUS|PLAN)\b", re.M)
+
+
+def strip_triage_entries(text: str) -> str:
+    """Drop RESULTS entries that are storage-triage bookings (headings
+    OBSERVATION / AMENDMENT CHECKPOINT-CENSUS-* or CHECKPOINT-PLAN-*):
+    they list file names by design and must not read back as
+    citations of those files."""
+    parts = re.split(r"(?m)^(?=## )", text)
+    return "".join(p for p in parts if not TRIAGE_HEADING.match(p))
+
+
 def _read(p: Path) -> str:
     try:
         return p.read_text(errors="replace")
@@ -288,7 +302,7 @@ def collect_references(repo: Path) -> dict[str, list[dict]]:
     out: dict[str, list[dict]] = {"results": [], "docs": [], "code": [],
                                   "logs": []}
     for rel in RESULTS_SOURCES:
-        text = _read(repo / rel)
+        text = strip_triage_entries(_read(repo / rel))
         out["results"] += scan_text_for_refs(text, rel)
         # stems: a word of STEM_MIN+ chars that equals a file stem
         out["results"].append({"kind": "stems", "source": rel,

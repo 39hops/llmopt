@@ -84,6 +84,22 @@ def test_directory_citation_in_results_freezes_everything_under_it(repo):
     assert cls(inv, "other/c.pt") == "CANDIDATE"
 
 
+def test_storage_triage_entries_in_results_do_not_cite(repo):
+    """The census's own bookings (OBSERVATION / AMENDMENT CHECKPOINT-*)
+    list file names; reading them back as citations would freeze every
+    file the census ever described."""
+    _w(repo / "checkpoints/listed_only.pt", b"l" * 10)
+    _w(repo / "checkpoints/real_cite.pt", b"r" * 10)
+    _w(repo / "docs/RESULTS.md",
+       "## VERDICT X: used checkpoints/real_cite.pt\n\nbody\n\n"
+       "## OBSERVATION CHECKPOINT-CENSUS-0: the tree\n\n"
+       "CANDIDATE rows: checkpoints/listed_only.pt (listed_only)\n\n"
+       "## AMENDMENT CHECKPOINT-PLAN-0-X (targets: ...)\n\nmore listed_only.pt\n")
+    inv = run(repo)
+    assert cls(inv, "real_cite.pt") == "FROZEN"
+    assert cls(inv, "listed_only.pt") == "CANDIDATE"
+
+
 def test_bare_checkpoints_token_does_not_freeze_the_tree(repo):
     _w(repo / "checkpoints/x.pt", b"x" * 100)
     _w(repo / "docs/RESULTS.md", "everything lives in checkpoints/ now")

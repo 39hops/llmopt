@@ -22,6 +22,19 @@ from pathlib import Path
 import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def _load_or_skip(path):
+    """load() refuses a pre-reg whose operand provider is not on disk;
+    some providers are local-only Mac artifacts, so on another host the
+    pair is skipped with the reason named rather than failed."""
+    from llmopt.lab.prereg import PreregSchemaError, load
+    try:
+        return load(path)
+    except PreregSchemaError as e:
+        if "provider" in str(e):
+            pytest.skip(f"operand provider absent on this host: {e}")
+        raise
 PINS = json.loads((ROOT / "tests" / "fixtures"
                    / "prereg_adjudication_pins.json").read_text())
 PAIRS = PINS["pairs"]
@@ -46,9 +59,8 @@ def test_inputs_unchanged(pin):
 
 @pytest.mark.parametrize("pin", PAIRS, ids=IDS)
 def test_library_outcomes_identical(pin):
-    from llmopt.lab.prereg import (adjudicate_prereg, adjudicate_refutation,
-                                   load)
-    prereg = load(ROOT / pin["prereg"])
+    from llmopt.lab.prereg import adjudicate_prereg, adjudicate_refutation
+    prereg = _load_or_skip(ROOT / pin["prereg"])
     obs = json.loads((ROOT / pin["observations"]).read_text())
     outcomes = adjudicate_prereg(prereg, obs)
     got = [{"bar_id": o.bar_id, "bar_name": o.bar_name,
@@ -61,6 +73,7 @@ def test_library_outcomes_identical(pin):
 
 @pytest.mark.parametrize("pin", PAIRS, ids=IDS)
 def test_cli_output_identical(pin):
+    _load_or_skip(ROOT / pin["prereg"])
     proc = subprocess.run(
         [sys.executable, str(ROOT / "scripts" / "adjudicate.py"),
          str(ROOT / pin["prereg"]), str(ROOT / pin["observations"])],
