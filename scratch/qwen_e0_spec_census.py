@@ -282,6 +282,9 @@ def main() -> None:
     summary["certified_fraction_nonambiguous"] = (
         float(np.mean([r["margin_certified"] for r in nonamb])) if nonamb else None)
     summary["n_nonambiguous"] = len(nonamb)
+    # refutation measurement of PRE-REG QWEN-E0-SPEC-CENSUS-0 (bars 1 and 2 normalized)
+    summary["min_bar12_ratio"] = min(summary["agree_rate_pooled"] / 0.75,
+                                     summary["replay_pooled"][4]["mean_emitted"] / 2.5)
     summary["n_ambiguous"] = int(sum(1 for line in open(os.path.join(out, "positions.jsonl"))
                                     if json.loads(line)["ambiguous"]))
     summary["eos_ids"] = sorted(eos_ids)

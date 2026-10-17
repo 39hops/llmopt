@@ -57,22 +57,11 @@
   "logs/qwen_e0/C/summary.json",
   "logs/qwen_e0/C/positions.jsonl"
  ],
- "refuted_if": "bar 1 NO-FIRE or bar 2 NO-FIRE: this arm has no realistic greedy-speculation path on the Mac; bar 3 alone decides nothing (descriptive strength of the certificate)",
+ "refuted_if": "min_bar12_ratio = min(agree_rate_pooled / 0.75, replay_pooled.4.mean_emitted / 2.5) below 1.0, i.e. bar 1 NO-FIRE or bar 2 NO-FIRE: this arm has no realistic greedy-speculation path on the Mac; bar 3 alone decides nothing",
  "refuted_if_predicate": {
-  "any": [
-   {
-    "bar": 1,
-    "state": "NO-FIRE"
-   },
-   {
-    "bar": 2,
-    "state": "NO-FIRE"
-   }
-  ]
+  "measurement": "min_bar12_ratio",
+  "direction": "below",
+  "value": 1.0
  },
- "refutation_precedence": [
-  2,
-  1
- ],
  "registered_prior": "bar 1 fires near 0.80; bar 2 lands between 2.6 and 3.4 (the independence model at 0.80 gives 3.36, and streams are expected to be positively correlated in failures, which lowers the replay); bar 3 is a coin flip because the sup error of a 2-bit tower was never measured"
 }
