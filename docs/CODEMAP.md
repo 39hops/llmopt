@@ -847,9 +847,9 @@ Census: library 195, reproduce-pinned 9, results-cited 508, spec-cited 74, tool-
 | build | build_gen7_diet.py | UNCITED | — | — | — | — | — | — |
 | calibrate | calibrate_hce.py | spec-cited | specs | specs×9 | — | — | — | — |
 | cite | cite_lookup.py | tool-referenced | TOOLING | TOOLING×3 | — | 1 | 1 | — |
-| ckpt | ckpt_census.py | library | RESULTS, specs | RESULTS×6, specs×2 | 1 | 1 | — | — |
+| ckpt | ckpt_census.py | library | RESULTS, specs | RESULTS×6, specs×3 | 1 | 1 | — | — |
 | ckpt | ckpt_manifest.py | library | RESULTS, specs | RESULTS×4, specs×4 | 1 | — | 1 | — |
-| ckpt | ckpt_plan.py | library | RESULTS, specs | RESULTS×5, specs×2 | 1 | — | — | — |
+| ckpt | ckpt_plan.py | library | RESULTS, specs | RESULTS×5, specs×3 | 1 | — | — | — |
 | claim | claim_lint.py | results-cited | RESULTS, specs, TOOLING | RESULTS×1, specs×7, TOOLING×5 | — | 3 | 1 | — |
 | consolidate | consolidate_mathnative.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
 | control | control_round.py | UNCITED | — | — | — | — | — | — |
@@ -865,7 +865,7 @@ Census: library 195, reproduce-pinned 9, results-cited 508, spec-cited 74, tool-
 | figlib | figlib.py | spec-cited | specs | specs×1 | — | — | — | — |
 | fold | fold_book.py | library | specs, TOOLING | specs×1, TOOLING×2 | — | 2 | — | — |
 | gen | gen_catalog.py | library | RESULTS, specs | RESULTS×3, specs×1 | 1 | 1 | — | — |
-| gen | gen_codemap.py | library | RESULTS, specs, TOOLING | RESULTS×5, specs×28, TOOLING×13 | — | 7 | 1 | — |
+| gen | gen_codemap.py | library | RESULTS, specs, TOOLING | RESULTS×5, specs×29, TOOLING×13 | — | 7 | 1 | — |
 | gen | gen_dispatch_labels.py | results-cited | RESULTS | RESULTS×1 | — | — | 2 | — |
 | gen | gen_dispatch_labels_v2.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
 | gen | gen_figures_web.py | library | RESULTS, specs, TOOLING | RESULTS×3, specs×7, TOOLING×3 | 1 | 2 | 1 | — |
