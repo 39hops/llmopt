@@ -16,7 +16,7 @@ this also drives `library`; from lab tooling it drives
 comments or plain strings; `via` names the cited caller a file
 inherits its class from when no document names the file itself.
 
-Census: library 195, reproduce-pinned 9, results-cited 509, spec-cited 74, tool-referenced 5, UNCITED 118 (of 910; library rows that are also doc-cited: 191)
+Census: library 195, reproduce-pinned 9, results-cited 509, spec-cited 74, tool-referenced 5, UNCITED 120 (of 912; library rows that are also doc-cited: 191)
 
 ## scratch/
 
@@ -586,7 +586,9 @@ Census: library 195, reproduce-pinned 9, results-cited 509, spec-cited 74, tool-
 | qwen | qwen_cuda_rung4.py | library | RESULTS, specs | RESULTS×9, specs×2 | 1 | 4 | 1 | — |
 | qwen | qwen_cycle_impulse.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
 | qwen | qwen_displace_extract.py | spec-cited | specs | specs×1 | — | — | 1 | — |
-| qwen | qwen_e0_spec_census.py | results-cited | RESULTS, specs | RESULTS×2, specs×4 | — | — | — | — |
+| qwen | qwen_e0_preflight.py | UNCITED | — | — | — | — | — | — |
+| qwen | qwen_e0_recompute.py | UNCITED | — | — | — | — | — | — |
+| qwen | qwen_e0_spec_census.py | results-cited | RESULTS, specs | RESULTS×5, specs×4 | — | — | — | — |
 | qwen | qwen_effort_probe.py | results-cited | RESULTS, via:specs | RESULTS×7 | — | 9 | — | — |
 | qwen | qwen_effort_quant.py | results-cited | RESULTS | RESULTS×7 | — | — | 1 | — |
 | qwen | qwen_effort_tower.py | results-cited | RESULTS, via:specs | RESULTS×3 | — | 1 | — | — |
@@ -763,7 +765,7 @@ Census: library 195, reproduce-pinned 9, results-cited 509, spec-cited 74, tool-
 | family | file | class | cited by | doc citations | imports | invoked by | mentions | via |
 |---|---|---|---|---|---|---|---|---|
 |  | __init__.py | spec-cited | specs | specs×2 | — | — | 1 | — |
-| adjudicate | adjudicate.py | library | RESULTS, specs, TOOLING | RESULTS×16, specs×5, TOOLING×2 | — | 6 | 4 | — |
+| adjudicate | adjudicate.py | library | RESULTS, specs, TOOLING | RESULTS×20, specs×5, TOOLING×2 | — | 6 | 4 | — |
 | anchor | anchor_guard.py | spec-cited | specs | specs×2 | — | — | 1 | — |
 | anim | anim_precompute.py | spec-cited | specs | specs×4 | — | — | 2 | — |
 | arena | arena.py | UNCITED | — | — | — | — | — | — |

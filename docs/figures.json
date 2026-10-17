@@ -250,7 +250,7 @@
       },
       {
         "label": "Single seed",
-        "value": 218,
+        "value": 219,
         "entity": "crown",
         "note": "fenced as provisional"
       },
@@ -267,7 +267,7 @@
         "note": "withdrawn in writing"
       }
     ],
-    "fence": "docs/FINDINGS.md · 425 curated claims · recounted from the source at build time",
+    "fence": "docs/FINDINGS.md · 426 curated claims · recounted from the source at build time",
     "fence_ids": []
   }
 }

@@ -79065,3 +79065,107 @@ steps, logs/qwen_e0_smoke/C) is instrument-only: load, traversal
 64 = 48 + 16 once per forward, finite logits, alignment, left padding,
 eos handling, identity pins; its agreement numbers are withheld from
 the console and not read before this registration is committed.
+
+## VERDICT QWEN-E0-SPEC-CENSUS-0: BARS 1 AND 2 FIRE, BAR 3 NO-FIRE, NOT-REFUTED. Arm C agrees with the teacher's greedy token at 0.8291 of the 4,722 teacher-greedy rollout positions and the empirical accepted-prefix replay at k = 4 emits 3.470 tokens per verify block (bar 2.5); only 0.2142 of non-ambiguous positions are margin-certified (bar 0.25), so most agreement is empirical, not a theorem (2026-10-17, Mac CPU, teacher-forced, single arm, no throughput measured)
+
+Registration: PRE-REG QWEN-E0-SPEC-CENSUS-0 (L79012; JSON
+docs/preregs/qwen-e0-spec-census-0.json, registration digest 8df3e0bf,
+frozen at 9c39120c / ad57a657 before any smoke row was read). Run:
+scratch/qwen_e0_spec_census.py at b66cfac7 under liverun
+qwen-e0-spec-census-0 (armed 2026-10-17 19:56 UTC, disarmed 20:26 UTC,
+rc 0), .venv_teacher (torch 2.13.0, transformers 5.15.0), device cpu.
+Receipts: logs/qwen_e0/C/summary.json (sha 5e831c1b), observations.json
+(the mechanical projection), positions.jsonl (4,722 rows, sha f9df9b5a,
+untracked by size), logs/rehab-2e/qwen_e0_recompute_C.txt (independent
+recomputation from the rows, every value equal), qwen_e0_adjudication_C.txt
+(scripts/adjudicate.py output). Identities: arm C 19/19 files on the
+frozen compile chain; teacher rollout array sha 57210b73 (pin 0ca4151,
+revision 1d4bf0f2); vendor config/tokenizer/index digests as in the
+preflight; coverage 24/24 prompts, 4,722/4,722 live positions, 13
+eos-stopped rollouts ending on 248046.
+
+Adjudication (scripts/adjudicate.py):
+  BAR 1 GREEDY-ACCEPT      0.8291 >= 0.75   FIRE  (3,915 / 4,722)
+  BAR 2 REPLAY-K4          3.4695 >= 2.5    FIRE  (1,361 blocks)
+  BAR 3 CERTIFIED-QUARTER  0.2142 >= 0.25   NO-FIRE (1,006 / 4,696)
+  REFUTED-IF min_bar12_ratio 1.1055 below 1.0: NOT-REFUTED.
+Registered prior: bar 1 near 0.80 (observed 0.83); bar 2 in 2.6 to 3.4,
+MISSED on the high side (observed 3.47); bar 3 a coin flip (lost).
+Reading of bar 2 booked: the replay walks the CONCATENATION of the 24
+streams in prompt order (1,361 blocks; the driver and the recompute
+both do this), so a block may span a prompt boundary. Replaying each
+stream separately and pooling the blocks gives 3.4267 over 1,378
+blocks (mean of the 24 per-stream means 3.4852, lowest stream 2.909);
+bar 2 fires under either reading and the refutation measurement is
+unchanged because bar 1 is the binding term.
+
+Replay yield, pooled over the 24 streams in prompt order (emitted per
+block / accepted per block / blocks; the geometric form at alpha =
+0.8291 is the labelled independence MODEL, shown for distance only):
+  k=1 1.827 / 0.827 / 2,585  (model 1.829)
+  k=2 2.504 / 1.504 / 1,886  (2.517)
+  k=3 3.054 / 2.055 / 1,546  (3.086)
+  k=4 3.470 / 2.470 / 1,361  (3.559)
+  k=5 3.836 / 2.836 / 1,231  (3.951)
+  k=6 4.146 / 3.147 / 1,139  (4.276)
+  k=7 4.401 / 3.402 / 1,073  (4.545)
+  k=8 4.562 / 3.563 / 1,035  (4.768)
+k = 4 accepted distribution {0: 261, 1: 212, 2: 155, 3: 92, 4: 641};
+emitted {1: 262, 2: 211, 3: 155, 4: 92, 5: 641}. The replay sits 0.5 to
+4.3 percent under the independence model at every k >= 2 (0.089 at
+k = 4), the direction clustering would give; no interval is attached
+to that gap, so it is a note, not a claim. Three quantities kept apart at k = 4: top-1 agreement 0.829
+(all positions), accepted/drafted 0.618 (drafts past a rejection count
+as drafted and are never evaluated), agreement over evaluated positions
+0.824. The second is not an estimate of the first.
+
+Agreement by teacher logit margin (nats; n, agreement): [0,0.02) 26,
+0.42; [0.02,0.05) 37, 0.54; [0.05,0.1) 47, 0.36; [0.1,0.2) 83, 0.43;
+[0.2,0.5) 243, 0.47; [0.5,1) 379, 0.50; [1,2) 548, 0.63; [2,5) 851,
+0.83; [5,inf) 2,508, 0.985. Shift-aligned sup error of the draft
+logits is flat across bins: median 5.6 to 5.9 nats, p10 4.5, p90 7.1
+to 8.6. So the margin theorem certifies agreement only above about 9
+nats of margin: all 1,006 certified positions lie in the top bin, none
+below 5 nats. Where the teacher is undecided (margin under 1 nat, 815
+positions) the 2-bit arm is a coin flip.
+
+Ambiguity (numerical register): 26 positions have stored fp16 margin
+at or below one ulp at the top logit (6 are exact ties, 4 of those
+also have a recorded token different from the stored argmax; 20 sit
+at exactly one ulp). The pre-reg prose said "4 and 6" because the
+pre-read counted strict ties; the registered rule says "at most one
+ulp" and was applied as written. All 26 stay in bars 1 and 2 with the
+recorded token as teacher token (11 of them agree) and are excluded
+from bar 3; under the tie-only reading bar 3 would be 1,006 / 4,716 =
+0.2133, still NO-FIRE.
+
+Per category (post hoc, descriptive, 2 to 4 prompts each, no
+direction claimed): math 0.903 (611), reasoning 0.851 (817), chat
+0.835 (786), code 0.824 (972), degeneration 0.819 (299), knowledge
+0.803 (725), long 0.750 (512); per prompt 0.727 (long-1) to 0.918
+(math-1).
+
+Instrument notes: the driver changed twice after registration, both
+instrument-only (ad57a657 emits min_bar12_ratio; d855e285 pins the
+rollout array bytes as the manifest does and checks shape); the
+reference module and the prose did not change. Resources: wall 1,812 s for 24 forwards of 111 to 339 tokens (64 to
+73 s each, about 0.9 s per token teacher-forced on CPU including the
+per-forward weight decode); peak RSS 18.71 GB (the 6.5 GB preflight
+figure counted decoded weights only and is superseded).
+
+Reading. Under the greedy law arm C is a credible drafter at the
+acceptance level: 0.83 per position and 3.47 emitted per 4-draft block
+on real teacher-greedy contexts, close to the independence model and
+above the registered bar. The certificate is weak: a 2-bit tower
+perturbs logits by about 6 nats, so only the teacher's most confident
+positions are provably safe; the rest of the agreement is measured,
+not guaranteed, which is acceptable for speculation (the verifier
+restores exactness by theorem) but means no position class can skip
+verification. This entry measures no throughput; the break-even
+question needs a verifier-timing rung with the streamed bf16 teacher
+on the Mac, which is a separate registration.
+
+Fences: teacher-forced (the draft never sees its own output);
+single arm; 24 prompts from evals/qwen_model1/prompts.jsonl; Mac CPU;
+fp16-stored teacher logits; replay is a deterministic walk over
+recorded argmax streams, not a run of a speculative decoder.

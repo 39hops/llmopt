@@ -1,0 +1,30 @@
+[liverun] armed qwen-e0-spec-census-0 pid 96443 commit b66cfac7 worktree main:llmopt sentinel .git/liverun.lock
+[e0] qualified C: {'art_dir': '/Users/artin/qwen_whole0t/C', 'rung0': {'checked': 19, 'unchained': False}, 'conservation': {'keys': 1199}, 'census': {'w4': 192, 's16': 210, 'raw': 449, 'excluded': 348}, 'preflight': {'estimated_peak_bytes': 6504933184, 'available_bytes': 16843980800, 'safety_fraction': 0.8}}
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[e0] chat-1: 318 tokens, 73s, agree 0.883
+[e0] chat-2: 320 tokens, 72s, agree 0.754
+[e0] chat-3: 249 tokens, 69s, agree 0.871
+[e0] chat-4: 151 tokens, 65s, agree 0.852
+[e0] math-1: 320 tokens, 72s, agree 0.918
+[e0] math-2: 167 tokens, 66s, agree 0.910
+[e0] math-3: 196 tokens, 68s, agree 0.872
+[e0] math-4: 202 tokens, 68s, agree 0.899
+[e0] code-1: 270 tokens, 70s, agree 0.877
+[e0] code-2: 339 tokens, 73s, agree 0.828
+[e0] code-3: 322 tokens, 73s, agree 0.828
+[e0] code-4: 324 tokens, 73s, agree 0.773
+[e0] reason-1: 128 tokens, 64s, agree 0.868
+[e0] reason-2: 339 tokens, 73s, agree 0.871
+[e0] reason-3: 332 tokens, 73s, agree 0.895
+[e0] reason-4: 318 tokens, 72s, agree 0.782
+[e0] know-1: 258 tokens, 70s, agree 0.775
+[e0] know-2: 251 tokens, 69s, agree 0.824
+[e0] know-3: 318 tokens, 72s, agree 0.809
+[e0] know-4: 152 tokens, 65s, agree 0.805
+[e0] long-1: 329 tokens, 73s, agree 0.727
+[e0] long-2: 327 tokens, 73s, agree 0.773
+[e0] edge-1: 153 tokens, 66s, agree 0.818
+[e0] edge-2: 276 tokens, 71s, agree 0.820
+[e0] wrote logs/qwen_e0/C: 4722 positions, pooled agree 0.8291, wall 1812s
+[liverun] disarmed qwen-e0-spec-census-0 rc 0
+rc=0

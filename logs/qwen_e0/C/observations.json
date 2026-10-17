@@ -1,0 +1,41 @@
+{
+ "note": "Mechanical projection of logs/qwen_e0/C/summary.json (driver scratch/qwen_e0_spec_census.py at b66cfac7, liverun qwen-e0-spec-census-0, rc 0); every value re-derived from positions.jsonl by scratch/qwen_e0_recompute.py and equal to 4 decimals",
+ "registration_sha256": "8df3e0bff46811efe0c98f9c03b6324ee8c63de5ffc6969bdb6ce152cb432bd4",
+ "measurement_valid": true,
+ "arms": {
+  "C": {
+   "admissible": true,
+   "reason": "artifact chain 19/19 files match the frozen compile digests; traversal 64 layers once per forward (48 linear, 16 full); teacher rollout array sha matches the manifest; coverage 24/24 prompts, 4722/4722 positions, 13 eos-stopped rollouts accounted; finite logits"
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 0.8290978398983482,
+   "metric": "agree_rate_pooled",
+   "population": "positions:all-4722",
+   "aggregation": "mean",
+   "provenance": "3915/4722 positions with draft argmax == recorded teacher token (recompute 0.8291)"
+  },
+  "2": {
+   "value": 3.4695077149155034,
+   "metric": "replay_pooled.4.mean_emitted",
+   "population": "blocks:k=4",
+   "aggregation": "mean",
+   "provenance": "1361 blocks, emitted distribution {1:262, 2:211, 3:155, 4:92, 5:641} (recompute 3.470)"
+  },
+  "3": {
+   "value": 0.21422487223168654,
+   "metric": "certified_fraction_nonambiguous",
+   "population": "positions:non-ambiguous",
+   "aggregation": "mean",
+   "provenance": "1006 certified of 4696 non-ambiguous; 26 ambiguous (4 recorded != fp16 argmax, 26 margin <= one ulp) excluded"
+  },
+  "min_bar12_ratio": {
+   "value": 1.105463786531131,
+   "metric": "min_bar12_ratio",
+   "population": "bars 1 and 2 normalized",
+   "aggregation": "min",
+   "provenance": "min(0.8291/0.75, 3.4695/2.5) = 1.1055"
+  }
+ }
+}

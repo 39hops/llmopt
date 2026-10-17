@@ -4334,12 +4334,17 @@
    "tracked": true
   },
   "logs/qwen_e0/C/positions.jsonl": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/qwen_e0/C/summary.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 16685,
+   "exists": true,
+   "local_only": true,
+   "sha256": "5e831c1ba8fc06b091404b89f0fb0d71dd457746a4bad3472c0f809731f01508",
+   "source": "results",
+   "tracked": false
   },
   "logs/qwenalttok/alttok_observations.json": {
    "exists": false,
@@ -5643,6 +5648,14 @@
    "exists": true,
    "local_only": true,
    "sha256": "db9b2d058339b560b56fe0cbe8f27e5d2c09a444f28929f6ebbb26c3c95886f0",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/rehab-2e/qwen_e0_recompute_C.txt": {
+   "bytes": 3707,
+   "exists": true,
+   "local_only": true,
+   "sha256": "e6509221cdd6641cd0c4738f7102e6e5322ea1d311bdcad1c35d64242e6934a4",
    "source": "results",
    "tracked": false
   },
