@@ -1,0 +1,341 @@
+{
+ "arm": "C",
+ "artifact": "/Users/artin/qwen_whole0t/C",
+ "smoke": true,
+ "device_actual": "cpu",
+ "code_commit": "ad57a657",
+ "teacher": {
+  "dir": "logs/qwenteacher_v2",
+  "code_commit": "0ca4151",
+  "revision": "1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0",
+  "rollout_sha": "57210b73b05a96a210f82bc4685216798d74787f717424f0cd79be0a126b9642"
+ },
+ "artifact_chain": "logs/qwenwhole/artifact_digest_C.txt",
+ "artifact_chain_sha256": "de7e0180bf49f965c17116b7fbe8c34d2b1529c2431cc234f3a6460ad84b24dc",
+ "qualification": {
+  "art_dir": "/Users/artin/qwen_whole0t/C",
+  "rung0": {
+   "checked": 19,
+   "unchained": false
+  },
+  "conservation": {
+   "keys": 1199
+  },
+  "census": {
+   "w4": 192,
+   "s16": 210,
+   "raw": 449,
+   "excluded": 348
+  },
+  "preflight": {
+   "estimated_peak_bytes": 6504933184,
+   "available_bytes": 20724613120,
+   "safety_fraction": 0.8
+  }
+ },
+ "v_live": 248077,
+ "v_record": 248320,
+ "traversal": {
+  "layer_calls": [
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "families": [
+   "linear_attn",
+   "linear_attn",
+   "linear_attn",
+   "full_attn",
+   "linear_attn",
+   "linear_attn",
+   "linear_attn",
+   "full_attn",
+   "linear_attn",
+   "linear_attn",
+   "linear_attn",
+   "full_attn",
+   "linear_attn",
+   "linear_attn",
+   "linear_attn",
+   "full_attn",
+   "linear_attn",
+   "linear_attn",
+   "linear_attn",
+   "full_attn",
+   "linear_attn",
+   "linear_attn",
+   "linear_attn",
+   "full_attn",
+   "linear_attn",
+   "linear_attn",
+   "linear_attn",
+   "full_attn",
+   "linear_attn",
+   "linear_attn",
+   "linear_attn",
+   "full_attn",
+   "linear_attn",
+   "linear_attn",
+   "linear_attn",
+   "full_attn",
+   "linear_attn",
+   "linear_attn",
+   "linear_attn",
+   "full_attn",
+   "linear_attn",
+   "linear_attn",
+   "linear_attn",
+   "full_attn",
+   "linear_attn",
+   "linear_attn",
+   "linear_attn",
+   "full_attn",
+   "linear_attn",
+   "linear_attn",
+   "linear_attn",
+   "full_attn",
+   "linear_attn",
+   "linear_attn",
+   "linear_attn",
+   "full_attn",
+   "linear_attn",
+   "linear_attn",
+   "linear_attn",
+   "full_attn",
+   "linear_attn",
+   "linear_attn",
+   "linear_attn",
+   "full_attn"
+  ]
+ },
+ "n_prompts": 1,
+ "n_positions": 8,
+ "agree_rate_pooled": 0.875,
+ "margin_edges": [
+  0.0,
+  0.02,
+  0.05,
+  0.1,
+  0.2,
+  0.5,
+  1.0,
+  2.0,
+  5.0,
+  "inf"
+ ],
+ "agree_by_teacher_margin_bin": [
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   0
+  ],
+  [
+   2,
+   2
+  ],
+  [
+   6,
+   5
+  ]
+ ],
+ "certified_fraction_nonambiguous": 0.0,
+ "replay_pooled": {
+  "1": {
+   "model_label": "EMPIRICAL REPLAY",
+   "k": 1,
+   "n_positions": 8,
+   "blocks": 5,
+   "rejected_blocks": 1,
+   "mean_emitted": 1.6,
+   "mean_accepted": 0.8
+  },
+  "2": {
+   "model_label": "EMPIRICAL REPLAY",
+   "k": 2,
+   "n_positions": 8,
+   "blocks": 4,
+   "rejected_blocks": 1,
+   "mean_emitted": 2.0,
+   "mean_accepted": 1.25
+  },
+  "3": {
+   "model_label": "EMPIRICAL REPLAY",
+   "k": 3,
+   "n_positions": 8,
+   "blocks": 3,
+   "rejected_blocks": 1,
+   "mean_emitted": 2.6666666666666665,
+   "mean_accepted": 2.0
+  },
+  "4": {
+   "model_label": "EMPIRICAL REPLAY",
+   "k": 4,
+   "n_positions": 8,
+   "blocks": 3,
+   "rejected_blocks": 1,
+   "mean_emitted": 2.6666666666666665,
+   "mean_accepted": 2.0
+  },
+  "5": {
+   "model_label": "EMPIRICAL REPLAY",
+   "k": 5,
+   "n_positions": 8,
+   "blocks": 3,
+   "rejected_blocks": 1,
+   "mean_emitted": 2.6666666666666665,
+   "mean_accepted": 2.0
+  },
+  "6": {
+   "model_label": "EMPIRICAL REPLAY",
+   "k": 6,
+   "n_positions": 8,
+   "blocks": 2,
+   "rejected_blocks": 1,
+   "mean_emitted": 4.0,
+   "mean_accepted": 3.0
+  },
+  "7": {
+   "model_label": "EMPIRICAL REPLAY",
+   "k": 7,
+   "n_positions": 8,
+   "blocks": 2,
+   "rejected_blocks": 1,
+   "mean_emitted": 4.0,
+   "mean_accepted": 3.5
+  },
+  "8": {
+   "model_label": "EMPIRICAL REPLAY",
+   "k": 8,
+   "n_positions": 8,
+   "blocks": 2,
+   "rejected_blocks": 1,
+   "mean_emitted": 4.0,
+   "mean_accepted": 3.5
+  }
+ },
+ "geometric_model_for_reference": {
+  "1": 1.875,
+  "2": 2.640625,
+  "3": 3.310546875,
+  "4": 3.896728515625,
+  "5": 4.409637451171875,
+  "6": 4.858432769775391,
+  "7": 5.251128673553467,
+  "8": 5.5947375893592834
+ },
+ "geometric_model_label": "MODEL ASSUMPTION: independent per-position acceptance with a constant rate; not a measurement",
+ "per_prompt": [
+  {
+   "prompt_id": "chat-1",
+   "category": "chat",
+   "prompt_len": 62,
+   "gen_len": 8,
+   "forward_wall_s": 64.67499208450317,
+   "s_per_position_teacher_forced": 0.9239284583500453,
+   "agree_rate": 0.875,
+   "replay_mean_emitted": {
+    "1": 1.6,
+    "2": 2.0,
+    "3": 2.6666666666666665,
+    "4": 2.6666666666666665,
+    "5": 2.6666666666666665,
+    "6": 4.0,
+    "7": 4.0,
+    "8": 4.0
+   }
+  }
+ ],
+ "wall_s": 64.95869493484497,
+ "peak_rss_bytes": 16397959168,
+ "n_nonambiguous": 8,
+ "min_bar12_ratio": 1.0666666666666667,
+ "n_ambiguous": 0,
+ "eos_ids": [
+  248044,
+  248046
+ ]
+}

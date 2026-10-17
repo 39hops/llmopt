@@ -1,0 +1,4 @@
+[e0] qualified C: {'art_dir': '/Users/artin/qwen_whole0t/C', 'rung0': {'checked': 19, 'unchained': False}, 'conservation': {'keys': 1199}, 'census': {'w4': 192, 's16': 210, 'raw': 449, 'excluded': 348}, 'preflight': {'estimated_peak_bytes': 6504933184, 'available_bytes': 20724613120, 'safety_fraction': 0.8}}
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[e0 smoke] chat-1: 70 tokens, 65s, finite logits, traversal ok, alignment ok (substantive numbers withheld)
+[e0 smoke] wrote logs/qwen_e0_smoke/C: 8 positions, wall 65s, peak rss 16.40 GB; instrument checks passed; agreement withheld until the pre-reg is read

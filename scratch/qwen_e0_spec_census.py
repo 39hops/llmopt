@@ -90,10 +90,11 @@ def main() -> None:
         raise SystemExit(f"REFUSING: teacher code_commit {man['code_commit']}")
     ro = man["records"]["rollouts"]
     rl_path = os.path.join(tdir, "rollout_logits.npy")
-    rl_sha = fsha(rl_path)
-    if rl_sha != ro["sha256"]:
-        raise SystemExit("REFUSING: rollout_logits.npy sha != manifest")
     rollouts = np.load(rl_path, mmap_mode="r")           # [steps, n_prompts, V]
+    # the teacher manifest pins the ARRAY bytes (sha_arr in the scorer), not the .npy file
+    rl_sha = hashlib.sha256(np.ascontiguousarray(rollouts).tobytes()).hexdigest()
+    if rl_sha != ro["sha256"] or list(rollouts.shape) != ro["shape"]:
+        raise SystemExit("REFUSING: rollout_logits array sha/shape != manifest")
     recs = [json.loads(line) for line in open(os.path.join(tdir, "rollout_tokens.jsonl"))]
     input_ids = np.asarray(ro["input_ids"])
     mask = np.asarray(ro["attention_mask"])
