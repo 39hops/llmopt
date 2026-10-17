@@ -1,0 +1,3 @@
+[pf] know-1: pads 25, argmax identical True, max abs 3.855e-04, max rel l2 2.465e-05
+[pf] code-2: pads 0, argmax identical True, max abs 2.422e-04, max rel l2 1.748e-05
+[pf] reconstruction True, pads left only True, pad in prompt False, eos ok True; wrote logs/qwen_e0_preflight/C
