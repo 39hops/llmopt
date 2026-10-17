@@ -79169,3 +79169,30 @@ Fences: teacher-forced (the draft never sees its own output);
 single arm; 24 prompts from evals/qwen_model1/prompts.jsonl; Mac CPU;
 fp16-stored teacher logits; replay is a deterministic walk over
 recorded argmax streams, not a run of a speculative decoder.
+
+## OBSERVATION QWEN-E0-SPEC-CENSUS-0-PER-STREAM: the deployment-relevant companion to REPLAY-K4: replaying each of the 24 rollouts separately, so that no verify block crosses a prompt or eos boundary, yields 3.4267 emitted tokens per block at k = 4 (1,378 blocks) against the registered concatenated 3.4695; per-stream yields for k = 1 to 8 recorded; the registered result is unchanged (2026-10-17, Mac; computed from the frozen E0 rows, no rerun)
+
+Why. The registered bar 2 of PRE-REG QWEN-E0-SPEC-CENSUS-0 walked the
+concatenation of the 24 streams (VERDICT L79069 names both readings).
+A real speculative decoder starts a fresh block at every prompt and
+stops at eos, so the per-stream replay is the physically realizable
+yield and is the one any throughput model should consume. Artin's
+instruction (2026-10-17): keep 3.4695 as the registered value, book
+3.427 as the companion. Source: logs/qwen_e0/C/positions.jsonl (sha
+f9df9b5a), replayed with llmopt.lab.spec_reference.replay_blocks per
+prompt_id in step order; receipt logs/qwen_e0/C/replay_per_stream.json.
+
+Per-stream replay, blocks pooled (emitted per block / accepted per
+block / blocks; range of the 24 per-stream means):
+  k=1 1.8183 / 0.823 / 2,597  (1.741 to 1.925)
+  k=2 2.4866 / 1.494 / 1,899  (2.265 to 2.723)
+  k=3 3.0211 / 2.034 / 1,563  (2.586 to 3.507)
+  k=4 3.4267 / 2.440 / 1,378  (2.909 to 4.063)
+  k=5 3.7806 / 2.796 / 1,249  (3.048 to 4.655)
+  k=6 4.0848 / 3.102 / 1,156  (3.200 to 5.120)
+  k=7 4.3242 / 3.344 / 1,092  (3.368 to 5.818)
+  k=8 4.4801 / 3.501 / 1,054  (3.459 to 6.095)
+The per-stream figure sits 0.5 to 1.8 percent under the concatenated
+one at every k (boundary blocks are truncated and emit no bonus token
+past the stream end). These, not the geometric form, are the inputs to
+the break-even calculation of the timing rung.

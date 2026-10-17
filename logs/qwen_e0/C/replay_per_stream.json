@@ -1,0 +1,137 @@
+{
+ "note": "per-stream accepted-prefix replay of logs/qwen_e0/C/positions.jsonl: each of the 24 rollouts replayed separately (blocks never cross a prompt or eos boundary), blocks pooled",
+ "k": {
+  "1": {
+   "blocks": 2597,
+   "mean_emitted": 1.8182518290335001,
+   "mean_accepted": 0.8228725452445129,
+   "mean_of_stream_means": 1.8207401224956976,
+   "min_stream": 1.7414965986394557,
+   "max_stream": 1.9248120300751879,
+   "emitted_dist": {
+    "1": 472,
+    "2": 2125
+   },
+   "rejected_blocks": 460
+  },
+  "2": {
+   "blocks": 1899,
+   "mean_emitted": 2.486571879936809,
+   "mean_accepted": 1.4939441811479726,
+   "mean_of_stream_means": 2.4981404249183874,
+   "min_stream": 2.265486725663717,
+   "max_stream": 2.723404255319149,
+   "emitted_dist": {
+    "1": 346,
+    "2": 283,
+    "3": 1270
+   },
+   "rejected_blocks": 615
+  },
+  "3": {
+   "blocks": 1563,
+   "mean_emitted": 3.021113243761996,
+   "mean_accepted": 2.0339091490722967,
+   "mean_of_stream_means": 3.0494317537754676,
+   "min_stream": 2.585858585858586,
+   "max_stream": 3.506849315068493,
+   "emitted_dist": {
+    "1": 301,
+    "2": 228,
+    "3": 171,
+    "4": 863
+   },
+   "rejected_blocks": 680
+  },
+  "4": {
+   "blocks": 1378,
+   "mean_emitted": 3.4267053701015966,
+   "mean_accepted": 2.4404934687953554,
+   "mean_of_stream_means": 3.4852448254744566,
+   "min_stream": 2.909090909090909,
+   "max_stream": 4.063492063492063,
+   "emitted_dist": {
+    "1": 284,
+    "2": 207,
+    "3": 157,
+    "4": 97,
+    "5": 633
+   },
+   "rejected_blocks": 726
+  },
+  "5": {
+   "blocks": 1249,
+   "mean_emitted": 3.78062449959968,
+   "mean_accepted": 2.7958366693354684,
+   "mean_of_stream_means": 3.8354281644637767,
+   "min_stream": 3.0476190476190474,
+   "max_stream": 4.654545454545454,
+   "emitted_dist": {
+    "1": 259,
+    "2": 205,
+    "3": 135,
+    "4": 87,
+    "5": 78,
+    "6": 485
+   },
+   "rejected_blocks": 745
+  },
+  "6": {
+   "blocks": 1156,
+   "mean_emitted": 4.08477508650519,
+   "mean_accepted": 3.102076124567474,
+   "mean_of_stream_means": 4.1846658650618505,
+   "min_stream": 3.2,
+   "max_stream": 5.12,
+   "emitted_dist": {
+    "1": 250,
+    "2": 176,
+    "3": 131,
+    "4": 84,
+    "5": 74,
+    "6": 66,
+    "7": 375
+   },
+   "rejected_blocks": 761
+  },
+  "7": {
+   "blocks": 1092,
+   "mean_emitted": 4.324175824175824,
+   "mean_accepted": 3.3443223443223444,
+   "mean_of_stream_means": 4.456258599839209,
+   "min_stream": 3.3684210526315788,
+   "max_stream": 5.818181818181818,
+   "emitted_dist": {
+    "1": 229,
+    "2": 176,
+    "3": 133,
+    "4": 83,
+    "5": 72,
+    "6": 52,
+    "7": 38,
+    "8": 309
+   },
+   "rejected_blocks": 761
+  },
+  "8": {
+   "blocks": 1054,
+   "mean_emitted": 4.480075901328274,
+   "mean_accepted": 3.5009487666034156,
+   "mean_of_stream_means": 4.650278026506296,
+   "min_stream": 3.4594594594594597,
+   "max_stream": 6.095238095238095,
+   "emitted_dist": {
+    "1": 235,
+    "2": 175,
+    "3": 130,
+    "4": 72,
+    "5": 62,
+    "6": 49,
+    "7": 39,
+    "8": 46,
+    "9": 246
+   },
+   "rejected_blocks": 786
+  }
+ }
+}
