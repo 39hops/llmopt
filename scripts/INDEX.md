@@ -5158,6 +5158,14 @@ QWEN-CYCLE-IMPULSE-0 driver: cycle-triggered temperature impulse on BLe xhigh tr
 Extract one gate_proj matrix from HF-cached Qwen2.5-0.5B base and Instruct into plot_neurons-compatible .pt files, so the --displace (central-lattice whisper-zoom) view can render an INTERNET-trained model's post-training displacement next to the closed-system natives' (the chaos-vs-structure tell, Artin's ask 2026-08-08; generator-loss lesson: this adapter is COMMITTED).
 
 
+### scratch/qwen_e0_spec_census.py
+E0: greedy speculative-acceptance census for one compressed arm against the 24 preserved teacher-greedy rollouts (logs/qwenteacher_v2).
+
+- `fsha(p: str) -> str`
+- `git_commit() -> str`
+- `margin_bin(m: float) -> int`
+- `main() -> None`
+
 ### scratch/qwen_effort_probe.py
 QWEN-EFFORT-0 overnight probe: does the reasoning_effort knob change oracle-checked answer quality, and by how much?
 
@@ -6638,6 +6646,27 @@ Streamed big-model weights -> instruments -> lake, as one call each.
 - `v4flash_expert(layer: int, expert: int, proj: str='w1', cache: str=V4FLASH_CACHE)` — One routed expert's projection, exactly dequantized to a
 - `iter_v4flash_experts(sample: int | None=None, seed: int=0, proj: str='w1', cache: str=V4FLASH_CACHE)` — Yield ("L<l>E<e>", W fp32) one expert at a time — stream,
 - `weigh(W, source: str, model: str='', proj: str='') -> dict` — Run the desk instruments on one weight matrix. Returns a flat
+
+### llmopt/lab/spec_reference.py
+Reference definitions for greedy speculative decoding and the quantities the E0 census reports. Pure Python and numpy; no model, no device.
+
+- `greedy(T: Callable[[list], object], prompt: Sequence, n: int, eos=None) -> list` — n tokens of plain greedy decoding under the deterministic next-token
+- `greedy_speculative(T: Callable[[list], object], propose: Callable[[list, int], list], prompt: Sequence, n: int, k: int, eos=None)` — Greedy speculative decoding: the proposer offers up to k tokens, the
+- `emitted_from_tail(tail: Sequence[float]) -> float` — E[emitted] = sum_{j=0}^{k} P(A >= j), where tail[j] = P(A >= j) and
+- `geometric_emitted(alpha: float, k: int) -> float` — (1 - alpha^(k+1)) / (1 - alpha): expected emitted tokens per block
+- `speedup(alpha: float, k: int, c_draft: float, c_verify: float, c_teacher: float=1.0) -> float` — Throughput ratio of speculative over plain decoding under the
+- `replay_blocks(teacher_argmax: Sequence, draft_argmax: Sequence, k: int) -> dict` — Accepted-prefix replay over two argmax streams recorded at the SAME
+- `replay_cost(replay: dict, c_draft: float, c_verify: Callable[[int], float], c_commit: float=0.0, c_rollback: float=0.0, c_overhead_per_block: float=0.0) -> dict` — Charge every component of a speculative round to the replay:
+- `top1_and_margin(z: np.ndarray) -> tuple[int, float]` — (argmax index, top-1 minus top-2). First index wins ties, matching
+- `shift_aligned_sup_error(z: np.ndarray, zp: np.ndarray) -> float` — min over c of max_j |z_j + c - z'_j| = (max(d) - min(d)) / 2 with
+- `worst_case_perturbation(z: np.ndarray, eps: float) -> np.ndarray` — The tightness construction: lower the argmax by eps and raise the
+- `softmax(z: np.ndarray) -> np.ndarray`
+- `probability_margin(p: np.ndarray) -> float` — p_max minus the second largest probability (mu in the flip lemma).
+- `greedy_accept(p: np.ndarray, q: np.ndarray) -> bool` — Greedy law: accept iff the draft argmax equals the teacher argmax.
+- `total_variation(p: np.ndarray, q: np.ndarray) -> float`
+- `sampled_accept_prob(p: np.ndarray, q: np.ndarray) -> float` — Exact-sampling law (teacher p, draft q): acceptance probability is
+- `kl(p: np.ndarray, q: np.ndarray) -> float` — Forward KL(p || q) in nats over the support of p.
+- `position_stats(z_teacher: np.ndarray, z_draft: np.ndarray, teacher_token: int, topk: int=16) -> dict` — One census row for a teacher-greedy position: both logit vectors are
 
 ### llmopt/lab/traj.py
 Moved to llmopt.runs.traj (Phase 5, 2026-08-12). This alias keeps old imports working with full fidelity (privates included).
