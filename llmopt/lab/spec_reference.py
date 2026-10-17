@@ -254,7 +254,9 @@ def position_stats(z_teacher: np.ndarray, z_draft: np.ndarray, teacher_token: in
     margins, raw and shift-aligned sup error, TV, KL(teacher || draft),
     the sampled-law acceptance 1 - TV, the teacher token's rank under the
     draft, the draft's top-k, and whether the margin theorem certifies
-    agreement at this position (sup_err_shift < margin / 2)."""
+    agreement at this position: not ambiguous (teacher_ambiguity) and
+    sup_err_shift < margin_lower / 2, where margin_lower discounts one
+    fp16 ulp from the stored margin."""
     zt = np.asarray(z_teacher, dtype=np.float64)
     zd = np.asarray(z_draft, dtype=np.float64)
     if zt.shape != zd.shape:
@@ -266,10 +268,15 @@ def position_stats(z_teacher: np.ndarray, z_draft: np.ndarray, teacher_token: in
     order = np.argsort(-zd)
     rank = int(np.nonzero(order == teacher_token)[0][0])
     sup_shift = shift_aligned_sup_error(zt, zd)
+    amb = teacher_ambiguity(np.asarray(z_teacher), teacher_token)
     return {
         "teacher_token": int(teacher_token),
         "teacher_argmax": t_arg,
         "teacher_margin_logit": t_margin,
+        "teacher_margin_lower": amb["margin_lower"],
+        "fp16_ulp_at_top": amb["fp16_ulp_at_top"],
+        "ambiguous": amb["ambiguous"],
+        "recorded_equals_fp16_argmax": amb["recorded_equals_fp16_argmax"],
         "teacher_margin_prob": probability_margin(pt),
         "draft_argmax": d_arg,
         "draft_margin_logit": d_margin,
@@ -283,5 +290,27 @@ def position_stats(z_teacher: np.ndarray, z_draft: np.ndarray, teacher_token: in
         "teacher_token_rank_in_draft": rank,
         "draft_topk_ids": [int(i) for i in order[:topk]],
         "draft_topk_logits": [float(zd[i]) for i in order[:topk]],
-        "margin_certified": bool(sup_shift < t_margin / 2.0),
+        "margin_certified": bool((not amb["ambiguous"]) and sup_shift < amb["margin_lower"] / 2.0),
     }
+
+
+# ------------------------------------------ fp16-stored teacher ambiguity
+
+def teacher_ambiguity(z_teacher_fp16: np.ndarray, recorded_token: int) -> dict:
+    """Numerical register. The saved teacher logits are fp16 copies of the
+    fp32 values that produced the recorded greedy token. Each stored value
+    is within half an fp16 ulp of the true one, so the true top-1 margin
+    is at least (stored margin - one ulp at the top logit): that is
+    `margin_lower`. A position is `ambiguous` when the recorded token is
+    not the stored fp16 argmax, or when the stored margin is at most one
+    ulp (the true ordering of the top two cannot be read from the file).
+    Ambiguous positions stay in the agreement analysis and are excluded
+    from margin certification only."""
+    z16 = np.asarray(z_teacher_fp16)
+    z = z16.astype(np.float64)
+    i, m = top1_and_margin(z)
+    top = z[i]
+    ulp = float(np.spacing(np.float16(top))) if z16.dtype == np.float16 else float(np.spacing(np.float16(top)))
+    return {"fp16_argmax": i, "recorded_equals_fp16_argmax": bool(i == int(recorded_token)),
+            "margin_fp16": m, "fp16_ulp_at_top": ulp, "margin_lower": m - ulp,
+            "ambiguous": bool(i != int(recorded_token) or m <= ulp)}

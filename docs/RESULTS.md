@@ -79008,3 +79008,60 @@ numbers above are from the corrected run.
 
 Receipts (force-added small text): `logs/rehab-2e/run8/SHEET.md`,
 `families.json`, `duplicates.json`, `summary.json`.
+
+## PRE-REG QWEN-E0-SPEC-CENSUS-0: does arm C, read teacher-forced at the 24 preserved teacher-greedy rollouts, agree with the teacher often enough and in long enough runs for greedy speculation to have a realistic path on the Mac? (2026-10-17, mac; registered before any smoke output was read)
+
+Registers the E0 census of the QWEN-27B GREEDY SPECULATION bank
+(RIFF-LEDGER 2026-10-17; M0 report in spec 2026-10-17-e0-spec-census.md).
+Mechanical projection: docs/preregs/qwen-e0-spec-census-0.json.
+
+Instrument: scratch/qwen_e0_spec_census.py on the Mac CPU reference
+runtime (.venv_teacher: torch 2.13.0, transformers 5.15.0). Surface:
+the 24 greedy rollouts of logs/qwenteacher_v2 (pin 0ca4151, revision
+1d4bf0f2, 4,722 live positions, rollout_logits.npy sha-checked). Arm C
+(~/qwen_whole0t/C, identity = compile chain
+logs/qwenwhole/artifact_digest_C.txt, 19 files) is run ONCE per prompt
+over prompt + recorded rollout tokens; the draft logit at prompt
+length minus one plus s is compared with rollout step s. Nothing is
+generated, nothing rolls back, no vendor weight is read (only
+config.json, generation_config.json, the tokenizer files and the
+shard index, each digest-pinned).
+
+Law. Greedy only: acceptance at a position is top-1 equality between
+the draft and the teacher at the same teacher-greedy context. The
+teacher token is the RECORDED rollout token. The fp16-stored argmax,
+the stored margin and one fp16 ulp at the top logit are reported per
+position; a position is AMBIGUOUS when the recorded token is not the
+stored argmax or the stored margin is at most one ulp (the preserved
+file has 4 and 6 such positions respectively, 2026-10-17 read).
+Ambiguous positions stay in bars 1 and 2 and are excluded from bar 3.
+Sampled-law acceptance (1 - TV) is reported per position and decides
+nothing.
+
+BARS (all on the pooled 24 streams):
+1. GREEDY-ACCEPT: pooled P(draft argmax = recorded token) >= 0.75.
+2. REPLAY-K4: empirical accepted-prefix replay at k = 4 (streams in
+   prompt order, blocks of four drafts, one bonus teacher token per
+   block, last block truncated by the stream): mean emitted tokens per
+   block >= 2.5. The geometric closed form is reported beside it under
+   its model label and is not the bar.
+3. CERTIFIED-QUARTER: among non-ambiguous positions, the fraction with
+   shift-aligned sup error (max(d) - min(d))/2, d = draft - teacher
+   over the live vocabulary, strictly below (stored margin - one
+   ulp)/2, is >= 0.25. By the margin theorem every such position
+   agrees; the bar measures how much of the agreement is a theorem.
+
+REFUTED-IF: bar 1 NO-FIRE or bar 2 NO-FIRE (precedence 2 then 1): this
+arm has no realistic greedy-speculation path on the Mac and the MTP
+bank does not open on it. Bar 3 alone decides nothing.
+
+Registered prior: bar 1 near 0.80; bar 2 between 2.6 and 3.4 (the
+independence model at 0.80 gives 3.36; failures are expected to
+cluster, which lowers the replay); bar 3 is a coin flip.
+
+Fences: teacher-forced, single arm, 24 prompts, Mac CPU, fp16-stored
+teacher; this entry measures no throughput. Smoke (one prompt, eight
+steps, logs/qwen_e0_smoke/C) is instrument-only: load, traversal
+64 = 48 + 16 once per forward, finite logits, alignment, left padding,
+eos handling, identity pins; its agreement numbers are withheld from
+the console and not read before this registration is committed.

@@ -221,3 +221,50 @@ def test_position_stats_margin_certificate_implies_agreement_on_random_cases():
             n_cert += 1
             assert s["agree"]
     assert n_cert > 20
+
+
+# ---------- ambiguity marking (fp16-stored teacher logits) ----------
+
+def test_teacher_ambiguity_flags_and_margin_lower_bound():
+    z = np.array([10.0, 10.0 - 0.0078125, 0.0], dtype=np.float16)   # one fp16 ulp apart at 10
+    amb = sr.teacher_ambiguity(z, recorded_token=0)
+    assert amb["fp16_ulp_at_top"] == pytest.approx(float(np.spacing(np.float16(10.0))))
+    assert amb["margin_lower"] == pytest.approx(0.0078125 - amb["fp16_ulp_at_top"])
+    assert amb["ambiguous"] is True                      # margin <= one ulp
+    assert amb["recorded_equals_fp16_argmax"] is True
+    z2 = np.array([10.0, 9.0, 0.0], dtype=np.float16)
+    amb2 = sr.teacher_ambiguity(z2, recorded_token=1)     # recorded token differs
+    assert amb2["ambiguous"] is True and amb2["recorded_equals_fp16_argmax"] is False
+    amb3 = sr.teacher_ambiguity(z2, recorded_token=0)
+    assert amb3["ambiguous"] is False and amb3["margin_lower"] < 1.0
+
+
+def test_position_stats_certification_respects_ambiguity_and_lower_bound():
+    rng = np.random.default_rng(6)
+    z_t = rng.normal(size=20).astype(np.float16)
+    z_d = z_t.astype(np.float64) + 0.001
+    tok = int(z_t.astype(np.float64).argmax())
+    s = sr.position_stats(z_t, z_d, tok, topk=4)
+    amb = sr.teacher_ambiguity(z_t, tok)
+    assert s["margin_certified"] == ((not amb["ambiguous"]) and s["sup_err_shift"] < amb["margin_lower"] / 2)
+    # an ambiguous position is never certified even with a tiny perturbation
+    z_tie = np.array([1.0, 1.0, 0.0], dtype=np.float16)
+    s_tie = sr.position_stats(z_tie, z_tie.astype(np.float64), 0, topk=2)
+    assert s_tie["margin_certified"] is False and s_tie["agree"] is True
+
+
+# ---------- accepted/drafted ratio: deterministic sample-path statement ----------
+
+def test_sample_path_accepted_over_drafted_bounded_by_agreement_over_evaluated():
+    rng = random.Random(7)
+    for _ in range(100):
+        n = rng.randrange(5, 200)
+        teacher = [rng.randrange(3) for _ in range(n)]
+        draft = [t if rng.random() < rng.random() else (t + 1) % 3 for t in teacher]
+        r = sr.replay_blocks(teacher, draft, k=rng.randrange(1, 9))
+        acc = sum(r["accepted_per_block"]); drafted = sum(r["drafted_per_block"])
+        evaluated = acc + r["rejected_blocks"]          # one rejected position per rejecting block
+        if evaluated:
+            assert acc / drafted <= acc / evaluated + 1e-12
+        # and agreement over evaluated positions is a sample-path quantity, no model needed
+        assert evaluated <= drafted

@@ -102,8 +102,15 @@ def main() -> None:
         raise SystemExit("REFUSING: unexpected padding side")
     n_prompts = len(recs) if not smoke else 1
 
-    # ---- tokenizer and live vocab ----
+    # ---- tokenizer, eos ids, live vocab (vendor WEIGHTS are never read) ----
+    for f in os.listdir(vdir):
+        if f.endswith(".safetensors"):
+            raise SystemExit("REFUSING: vendor weight shard present; E0 reads config/tokenizer/index only")
     tok = AutoTokenizer.from_pretrained(vdir)
+    gcfg = json.load(open(os.path.join(vdir, "generation_config.json")))
+    eos_ids = gcfg.get("eos_token_id", tok.eos_token_id)
+    eos_ids = set(eos_ids if isinstance(eos_ids, list) else [eos_ids])
+    pad_id = gcfg.get("pad_token_id", tok.pad_token_id)
     v_live = len(tok)
     v_rec = rollouts.shape[2]
     if v_live > v_rec:
@@ -182,11 +189,23 @@ def main() -> None:
     t_all0 = time.time()
     for i in range(n_prompts):
         rec = recs[i]
-        prompt = [int(x) for x in input_ids[i][mask[i] == 1]]
-        gen = [int(x) for x in rec["tokens"][:gen_lengths[i]]]
-        if smoke:
-            gen = gen[:8]
+        # padding: left side only; the prompt is the unmasked tail
+        m_i = mask[i]
+        if m_i.sum() == 0 or (m_i[np.argmax(m_i == 1):] != 1).any():
+            raise SystemExit(f"REFUSING: prompt {i} mask is not left-padded")
+        prompt = [int(x) for x in input_ids[i][m_i == 1]]
+        if pad_id is not None and pad_id in prompt:
+            raise SystemExit(f"REFUSING: pad id inside prompt {i}")
+        gen_full = [int(x) for x in rec["tokens"][:gen_lengths[i]]]
+        if len(gen_full) != gen_lengths[i] or len(rec["tokens"]) != gen_lengths[i]:
+            raise SystemExit(f"REFUSING: rollout {i} token count != gen_length")
+        eos_stop = gen_lengths[i] < ro["steps"]
+        if eos_stop and gen_full[-1] not in eos_ids:
+            raise SystemExit(f"REFUSING: rollout {i} stopped early without eos")
+        gen = gen_full[:8] if smoke else gen_full
         ids = prompt + gen
+        if ids[len(prompt):] != gen:
+            raise SystemExit("REFUSING: alignment")
         t0 = time.time()
         with torch.no_grad():
             lg = model(input_ids=torch.tensor([ids]), use_cache=False).logits[0].float().numpy()
@@ -196,12 +215,24 @@ def main() -> None:
         if lg.shape[1] != v_rec:
             raise SystemExit(f"REFUSING: arm logit width {lg.shape[1]} != record {v_rec}")
         p_len = len(prompt)
+        # traversal: every layer exactly once per forward, 48 linear + 16 full
+        calls = trav["layer_calls"]
+        if any(c != i + 1 for c in calls) or trav["families"].count("linear_attn") != 48 \
+                or trav["families"].count("full_attn") != 16:
+            raise SystemExit(f"REFUSING: traversal {calls[:4]}... families "
+                             f"{trav['families'].count('linear_attn')}/{trav['families'].count('full_attn')}")
         t_stream, d_stream = [], []
         for s, tok_s in enumerate(gen):
-            zt = np.asarray(rollouts[s, i, :v_live], dtype=np.float32)
+            # alignment: logits at p_len-1+s predict ids[p_len+s] == gen[s]
+            if ids[p_len + s] != tok_s:
+                raise SystemExit("REFUSING: alignment")
+            zt16 = rollouts[s, i, :v_live]            # fp16 as stored
+            zt = np.asarray(zt16, dtype=np.float32)
             zd = lg[p_len - 1 + s, :v_live]
             row = sr.position_stats(zt, zd, tok_s, topk=TOPK)
-            row.update({"prompt_id": rec["id"], "category": rec["category"], "step": s})
+            row.update(sr.teacher_ambiguity(np.asarray(zt16), tok_s))
+            row.update({"prompt_id": rec["id"], "category": rec["category"], "step": s,
+                        "eos_stop_rollout": eos_stop})
             rows_f.write(json.dumps(row) + "\n")
             t_stream.append(tok_s)
             d_stream.append(row["draft_argmax"])
@@ -216,8 +247,12 @@ def main() -> None:
                            "s_per_position_teacher_forced": wall / len(ids),
                            "agree_rate": float(np.mean([t == d for t, d in zip(t_stream, d_stream)])),
                            "replay_mean_emitted": {k: r["mean_emitted"] for k, r in replay.items()}})
-        print(f"[e0] {rec['id']}: {len(ids)} tokens, {wall:.0f}s, agree "
-              f"{per_prompt[-1]['agree_rate']:.3f}", flush=True)
+        if smoke:
+            print(f"[e0 smoke] {rec['id']}: {len(ids)} tokens, {wall:.0f}s, finite logits, "
+                  f"traversal ok, alignment ok (substantive numbers withheld)", flush=True)
+        else:
+            print(f"[e0] {rec['id']}: {len(ids)} tokens, {wall:.0f}s, agree "
+                  f"{per_prompt[-1]['agree_rate']:.3f}", flush=True)
     rows_f.close()
     pooled = {k: sr.replay_blocks(t_stream_all, d_stream_all, k) for k in KS}
     peak_rss = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
@@ -231,6 +266,7 @@ def main() -> None:
         "agree_rate_pooled": float(np.mean([t == d for t, d in zip(t_stream_all, d_stream_all)])),
         "margin_edges": MARGIN_EDGES[:-1] + ["inf"],
         "agree_by_teacher_margin_bin": bins.tolist(),
+        "certified_fraction_nonambiguous": None,  # filled below from rows
         "replay_pooled": {k: {kk: v for kk, v in r.items() if kk not in
                               ("accepted_per_block", "emitted_per_block", "drafted_per_block")}
                           for k, r in pooled.items()},
@@ -241,8 +277,22 @@ def main() -> None:
         "peak_rss_bytes": int(peak_rss) if sys.platform == "darwin" else int(peak_rss) * 1024,
     }
     json.dump(summary, open(os.path.join(out, "summary.json"), "w"), indent=1)
-    print(f"[e0] wrote {out}: {summary['n_positions']} positions, pooled agree "
-          f"{summary['agree_rate_pooled']:.4f}, wall {summary['wall_s']:.0f}s", flush=True)
+    rows_all = [json.loads(line) for line in open(os.path.join(out, "positions.jsonl"))]
+    nonamb = [r for r in rows_all if not r["ambiguous"]]
+    summary["certified_fraction_nonambiguous"] = (
+        float(np.mean([r["margin_certified"] for r in nonamb])) if nonamb else None)
+    summary["n_nonambiguous"] = len(nonamb)
+    summary["n_ambiguous"] = int(sum(1 for line in open(os.path.join(out, "positions.jsonl"))
+                                    if json.loads(line)["ambiguous"]))
+    summary["eos_ids"] = sorted(eos_ids)
+    json.dump(summary, open(os.path.join(out, "summary.json"), "w"), indent=1)
+    if smoke:
+        print(f"[e0 smoke] wrote {out}: {summary['n_positions']} positions, wall "
+              f"{summary['wall_s']:.0f}s, peak rss {summary['peak_rss_bytes']/1e9:.2f} GB; "
+              f"instrument checks passed; agreement withheld until the pre-reg is read", flush=True)
+    else:
+        print(f"[e0] wrote {out}: {summary['n_positions']} positions, pooled agree "
+              f"{summary['agree_rate_pooled']:.4f}, wall {summary['wall_s']:.0f}s", flush=True)
 
 
 if __name__ == "__main__":

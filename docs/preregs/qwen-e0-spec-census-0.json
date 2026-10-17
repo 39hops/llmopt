@@ -1,0 +1,78 @@
+{
+ "name": "QWEN-E0-SPEC-CENSUS-0",
+ "note": "Frozen 2026-10-17 BEFORE any smoke output of scratch/qwen_e0_spec_census.py was read. Greedy law only: acceptance is top-1 equality at the same teacher-greedy context. Teacher token = the recorded rollout token; fp16-stored argmax and ulp bound are reported separately and define the ambiguous set, which is excluded from certification only. FENCES: teacher-forced, no generation, no rollback; nothing here measures throughput | single arm, 24 prompts, Mac CPU, fp16-stored teacher logits | ambiguous positions (recorded token != fp16 argmax, or stored margin <= one ulp) stay in bars 1 and 2 and are excluded from bar 3 | smoke (one prompt, 8 steps) is instrument-only; its agreement numbers are not read before this registration is committed",
+ "results_id": "2026-10-17-pre-reg-qwen-e0-spec-census-0",
+ "registered": "2026-10-17",
+ "machine": "mac",
+ "arms": {
+  "C": {
+   "description": "arm C (compile chain logs/qwenwhole/artifact_digest_C.txt), streamed CPU reference, teacher-forced over the 24 preserved greedy rollouts of logs/qwenteacher_v2 (pin 0ca4151, revision 1d4bf0f2)"
+  }
+ },
+ "bars": [
+  {
+   "id": 1,
+   "name": "GREEDY-ACCEPT",
+   "gate_class": "range",
+   "metric": "agree_rate_pooled",
+   "population": "positions:all-4722",
+   "aggregation": "mean",
+   "direction": "above",
+   "value": 0.75,
+   "arms": [
+    "C"
+   ],
+   "description": "pooled P(draft argmax == recorded teacher token) over all live rollout positions >= 0.75 (teacher-forced corpus proxy was 0.829; the bar allows a 0.08 context-distribution loss)"
+  },
+  {
+   "id": 2,
+   "name": "REPLAY-K4",
+   "gate_class": "range",
+   "metric": "replay_pooled.4.mean_emitted",
+   "population": "blocks:k=4",
+   "aggregation": "mean",
+   "direction": "above",
+   "value": 2.5,
+   "arms": [
+    "C"
+   ],
+   "description": "empirical accepted-prefix replay, k = 4, pooled over the 24 streams in prompt order: mean emitted tokens per verify block >= 2.5 (break-even under the August Mac CPU costs needs > 2.02; 2.5 leaves room for cost error)"
+  },
+  {
+   "id": 3,
+   "name": "CERTIFIED-QUARTER",
+   "gate_class": "range",
+   "metric": "certified_fraction_nonambiguous",
+   "population": "positions:non-ambiguous",
+   "aggregation": "mean",
+   "direction": "above",
+   "value": 0.25,
+   "arms": [
+    "C"
+   ],
+   "description": "fraction of non-ambiguous positions where the shift-aligned sup error is below (stored margin - one fp16 ulp)/2 >= 0.25; this is the share of positions where agreement is a theorem, not a coincidence"
+  }
+ ],
+ "receipts": [
+  "logs/qwen_e0/C/summary.json",
+  "logs/qwen_e0/C/positions.jsonl"
+ ],
+ "refuted_if": "bar 1 NO-FIRE or bar 2 NO-FIRE: this arm has no realistic greedy-speculation path on the Mac; bar 3 alone decides nothing (descriptive strength of the certificate)",
+ "refuted_if_predicate": {
+  "any": [
+   {
+    "bar": 1,
+    "state": "NO-FIRE"
+   },
+   {
+    "bar": 2,
+    "state": "NO-FIRE"
+   }
+  ]
+ },
+ "refutation_precedence": [
+  2,
+  1
+ ],
+ "registered_prior": "bar 1 fires near 0.80; bar 2 lands between 2.6 and 3.4 (the independence model at 0.80 gives 3.36, and streams are expected to be positively correlated in failures, which lowers the replay); bar 3 is a coin flip because the sup error of a 2-bit tower was never measured"
+}

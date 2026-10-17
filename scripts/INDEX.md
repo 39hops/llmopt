@@ -6667,6 +6667,7 @@ Reference definitions for greedy speculative decoding and the quantities the E0 
 - `sampled_accept_prob(p: np.ndarray, q: np.ndarray) -> float` — Exact-sampling law (teacher p, draft q): acceptance probability is
 - `kl(p: np.ndarray, q: np.ndarray) -> float` — Forward KL(p || q) in nats over the support of p.
 - `position_stats(z_teacher: np.ndarray, z_draft: np.ndarray, teacher_token: int, topk: int=16) -> dict` — One census row for a teacher-greedy position: both logit vectors are
+- `teacher_ambiguity(z_teacher_fp16: np.ndarray, recorded_token: int) -> dict` — Numerical register. The saved teacher logits are fp16 copies of the
 
 ### llmopt/lab/traj.py
 Moved to llmopt.runs.traj (Phase 5, 2026-08-12). This alias keeps old imports working with full fidelity (privates included).

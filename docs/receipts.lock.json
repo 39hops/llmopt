@@ -4333,6 +4333,14 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qwen_e0/C/positions.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_e0/C/summary.json": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/qwenalttok/alttok_observations.json": {
    "exists": false,
    "source": "prereg"
@@ -5434,6 +5442,13 @@
    "bytes": 1934,
    "exists": true,
    "sha256": "5f97619291835ed675a95e98134da28796d2c8819ca4d61c3d15ed7d2a26a63a",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwenwhole/artifact_digest_C.txt": {
+   "bytes": 1934,
+   "exists": true,
+   "sha256": "de7e0180bf49f965c17116b7fbe8c34d2b1529c2431cc234f3a6460ad84b24dc",
    "source": "results",
    "tracked": true
   },
