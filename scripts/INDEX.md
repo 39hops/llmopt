@@ -5158,6 +5158,16 @@ QWEN-CYCLE-IMPULSE-0 driver: cycle-triggered temperature impulse on BLe xhigh tr
 Extract one gate_proj matrix from HF-cached Qwen2.5-0.5B base and Instruct into plot_neurons-compatible .pt files, so the --displace (central-lattice whisper-zoom) view can render an INTERNET-trained model's post-training displacement next to the closed-system natives' (the chaos-vs-structure tell, Artin's ask 2026-08-08; generator-loss lesson: this adapter is COMMITTED).
 
 
+### scratch/qwen_e0_preflight.py
+E0 preflight (instrument only, no bar is read): on the Mac CPU reference runtime, show that the single-sequence unpadded forward the census uses reproduces the left-padded batched forward the teacher rollouts were generated under, on arm C itself, for two prompts of different lengths; re-derive every prompt from the chat template and compare with the stored input_ids; and account eos on every rollout.
+
+- `main() -> None`
+
+### scratch/qwen_e0_recompute.py
+Independent recomputation of the E0 measurements from the raw rows (logs/qwen_e0/<arm>/positions.jsonl), for comparison with summary.json before adjudication. Reads rows only; writes nothing.
+
+- `main(path='logs/qwen_e0/C')`
+
 ### scratch/qwen_e0_spec_census.py
 E0: greedy speculative-acceptance census for one compressed arm against the 24 preserved teacher-greedy rollouts (logs/qwenteacher_v2).
 
