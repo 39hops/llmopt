@@ -455,3 +455,42 @@ def test_physical_probe_distinguishes_copy_from_clone(tmp_path):
         b = tmp_path / "b.bin"
         if subprocess.run(["cp", "-c", str(a), str(b)]).returncode == 0:
             assert ci.extent_key(b) == ea
+
+
+# ------------------------------------------------- full physical extent maps
+
+def test_extent_map_covers_the_whole_file_and_detects_sharing(tmp_path):
+    import shutil
+    import subprocess
+    a = tmp_path / "a.bin"
+    a.write_bytes(os.urandom(3 << 20))
+    em = ci.extent_map(a)
+    if em is None:
+        pytest.skip("F_LOG2PHYS_EXT unavailable")
+    # the map tiles the file: sorted, contiguous logical coverage
+    covered = sum(length for _, _, length in em)
+    assert covered == a.stat().st_size
+    assert em[0][0] == 0
+    for (lo, _, ln), (lo2, _, _) in zip(em, em[1:]):
+        assert lo + ln == lo2
+    c = tmp_path / "c.bin"
+    c.write_bytes(a.read_bytes())
+    assert ci.shared_bytes(ci.extent_map(a), ci.extent_map(c)) == 0
+    if shutil.which("cp") and sys.platform == "darwin":
+        b = tmp_path / "b.bin"
+        if subprocess.run(["cp", "-c", str(a), str(b)]).returncode == 0:
+            assert ci.shared_bytes(ci.extent_map(a), ci.extent_map(b)) == a.stat().st_size
+
+
+def test_duplicate_groups_report_full_map_physical_status(repo):
+    data = os.urandom(1 << 20)
+    _w(repo / "checkpoints/a/h1.pt", data)
+    _w(repo / "checkpoints/b/h1.pt", data)
+    _w(repo / "docs/RESULTS.md", "checkpoints/a/ and checkpoints/b/ both booked")
+    inv = run(repo)
+    grp = next(g for g in inv["duplicates"] if g["sha256"] == _sha(data))
+    assert grp["physical"] in ("distinct", "clone-shared", "partially-shared", "unknown")
+    if grp["physical"] != "unknown":
+        assert grp["probe"] == "full-extent-map"
+        assert grp["shared_bytes"] == 0 and grp["physical"] == "distinct"
+        assert grp["extents_compared"] >= 2

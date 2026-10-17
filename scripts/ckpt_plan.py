@@ -16,11 +16,26 @@ lists:
   - independent copies on other trees;
   - a proposed action with its approval boundary.
 
-Variable resolution reads the same file only: Python literal lists
-and tuples, loops over those names, os.environ.get defaults, shell
-`for X in a b c` loops and `${X:-default}`. A hole bound to an
-argument, an environment variable without a default, or an
-expression stays unresolved and the match stays "pattern".
+Variable resolution reads the same file only and types every value
+set. kind "literal": Python literal lists and tuples, loops over
+them, plain string or int assignments (several assignments union),
+shell `for X in a b c` loops and `X=literal`; aliases inherit. kind
+"default": os.environ.get(name, default), argparse add_argument
+default=, `${X:-default}`: the default is one reachable value, the
+set is NOT complete because an environment or command-line override
+reaches other names. A hole bound to an argument, a bare environment
+read, or an expression stays unresolved.
+
+Reach classes per file: "exhaustive" (some site expands to exactly
+this name from literal-only bindings), "default" (reached only under
+default configuration), "pattern" (matched by an unresolved site, or
+by a default-bound site under a non-default value), "unreached"
+(no site at all and no generic loader in the repository), and
+"unreached-with-generic-loaders" (no site, but code exists that opens
+any name under checkpoints/ from an argument, so reachability by
+invocation cannot be excluded). Only "unreached" supports a claim that
+nothing can reach the file; the other two unreached forms are explicit
+uncertainty.
 
 Usage:
     .venv/bin/python scripts/ckpt_plan.py --inventory logs/rehab-2e/run4/inventory.jsonl
@@ -49,12 +64,13 @@ def _hole_name(m) -> str:
     g = m.group(1)
     if g is not None:
         g = g.strip()
-        name = re.split(r"[:!\[\.\(\s\+\*]", g, 1)[0]
-        return name if re.fullmatch(r"[A-Za-z_]\w*", name or "") else "<expr>"
+        name = re.split(r"[:!\[\(\s\+\*]", g, 1)[0]
+        return name if re.fullmatch(r"[A-Za-z_]\w*(?:\.[A-Za-z_]\w*)?", name or "") else "<expr>"
     return m.group(2) or m.group(3) or "*"
 
 
 VARROOT = re.compile(r"(?:\{[A-Za-z_]\w*\}|\$\{?[A-Za-z_]\w*\}?)/([\w\-.]+\.(?:pt|bin|npz|npy|json|jsonl|safetensors|pth))\b")
+GENERIC_LOADER = re.compile(r"""["']checkpoints/["']\s*\+|join\(\s*["']checkpoints["']|Path\(\s*["']checkpoints["']\s*\)\s*/""")
 JOIN_LITERAL = re.compile(r"join\([^)]*?[\"']([\w\-.]+\.(?:pt|bin|npz|npy|json|jsonl|safetensors|pth))[\"']\s*\)")
 
 
@@ -105,48 +121,89 @@ def parse_site(line: str, source: str, lineno: int) -> dict | None:
             "exact_literal": None}
 
 
-def variable_values(text: str) -> dict[str, list[str]]:
-    """Literal values a variable can take, read from one file."""
+def _typed(values, kind):
+    return {"values": sorted(set(values)), "kind": kind}
+
+
+def _merge(vals: dict, name: str, values, kind: str) -> None:
+    """Union across multiple assignments; a default anywhere makes the
+    set non-exhaustive."""
+    if name in vals:
+        old = vals[name]
+        kind = "default" if "default" in (old["kind"], kind) else "literal"
+        values = list(old["values"]) + list(values)
+    vals[name] = _typed(values, kind)
+
+
+_LIT_ITEMS = r"[\"']([^\"']+)[\"']|(?<![\w.])(-?\d+)(?![\w.])"
+
+
+def variable_values(text: str) -> dict[str, dict]:
+    """name -> {"values": [...], "kind": "literal" | "default"}."""
     text = re.sub(r"\\\n\s*", " ", text)   # shell line continuations
-    vals: dict[str, list[str]] = {}
+    vals: dict[str, dict] = {}
+    aliases: list[tuple[str, str]] = []
     for m in re.finditer(r"^\s*([A-Za-z_]\w*)\s*=\s*[\[\(]([^\]\)]*)[\]\)]", text, re.M):
-        items = re.findall(r"[\"']([^\"']+)[\"']|(?<![\w.])(-?\d+)(?![\w.])", m.group(2))
-        flat = [a or b for a, b in items]
-        if flat:
-            vals[m.group(1)] = flat
-    for m in re.finditer(r"^\s*([A-Za-z_]\w*)\s*=\s*(?:int\()?\s*os\.environ\.get\(\s*[\"']\w+[\"']\s*,\s*[\"']?([^\"'\)]*)[\"']?\s*\)", text, re.M):
-        vals[m.group(1)] = [m.group(2)]
+        items = [a or b for a, b in re.findall(_LIT_ITEMS, m.group(2))]
+        if items:
+            _merge(vals, m.group(1), items, "literal")
+    for m in re.finditer(r"^\s*([A-Za-z_]\w*)\s*=\s*(?:int\(|str\(|float\()?\s*os\.environ\.get\(\s*[\"']\w+[\"']\s*,\s*[\"']?([^\"'\)]*)[\"']?\s*\)", text, re.M):
+        _merge(vals, m.group(1), [m.group(2)], "default")
     for m in re.finditer(r"^\s*([A-Za-z_]\w*)\s*=\s*(-?\d+|[\"'][^\"']+[\"'])\s*$", text, re.M):
-        vals.setdefault(m.group(1), [m.group(2).strip("\"'")])
+        _merge(vals, m.group(1), [m.group(2).strip("\"'")], "literal")
+    for m in re.finditer(r"^\s*([A-Za-z_]\w*)\s*=\s*([A-Za-z_]\w*)\s*$", text, re.M):
+        aliases.append((m.group(1), m.group(2)))
     for m in re.finditer(r"for\s+([A-Za-z_]\w*)\s+in\s+([A-Za-z_]\w*)\s*:", text):
-        if m.group(2) in vals:
-            vals[m.group(1)] = vals[m.group(2)]
+        aliases.append((m.group(1), m.group(2)))
     for m in re.finditer(r"for\s+([A-Za-z_]\w*)\s+in\s+[\[\(]([^\]\)]*)[\]\)]\s*:", text):
-        items = re.findall(r"[\"']([^\"']+)[\"']|(?<![\w.])(-?\d+)(?![\w.])", m.group(2))
-        flat = [a or b for a, b in items]
-        if flat:
-            vals[m.group(1)] = flat
+        items = [a or b for a, b in re.findall(_LIT_ITEMS, m.group(2))]
+        if items:
+            _merge(vals, m.group(1), items, "literal")
     for m in re.finditer(r"for\s+([A-Za-z_]\w*)\s+in\s+([^;\n]+?)\s*;?\s*do\b", text):
         words = m.group(2).split()
         if words and all(re.fullmatch(r"[\w.\-]+", w) for w in words):
-            vals[m.group(1)] = words
+            _merge(vals, m.group(1), words, "literal")
     for m in re.finditer(r"\$\{([A-Za-z_]\w*):-([^}]*)\}", text):
-        vals.setdefault(m.group(1), [m.group(2)])
+        _merge(vals, m.group(1), [m.group(2)], "default")
     for m in re.finditer(r"^\s*([A-Za-z_]\w*)=([\w.\-]+)\s*$", text, re.M):
-        vals.setdefault(m.group(1), [m.group(2)])
+        _merge(vals, m.group(1), [m.group(2)], "literal")
+    # argparse: add_argument("--tag", default="base") binds a.tag / args.tag
+    for m in re.finditer(r"add_argument\(\s*[\"']--?([\w\-]+)[\"'][^)]*?default\s*=\s*([\"']?[\w.\-]+[\"']?)", text):
+        dest = m.group(1).replace("-", "_")
+        for pre in ("a", "args", "opt", "opts", "cfg"):
+            _merge(vals, f"{pre}.{dest}", [m.group(2).strip("\"'")], "default")
+    for _ in range(3):
+        for dst, src in aliases:
+            if src in vals and dst not in vals:
+                vals[dst] = dict(vals[src])
     return vals
 
 
-def expand(site: dict, vals: dict[str, list[str]]) -> list[str] | None:
+def expand_typed(site: dict, vals: dict[str, dict]) -> dict | None:
+    """{"names": [...], "kind": "exhaustive" | "default"} or None when a
+    hole is unresolved. "default" when any hole is bound only through a
+    default (an override reaches names outside the list)."""
+    if site.get("exact_literal"):
+        return {"names": [site["exact_literal"]], "kind": "exhaustive"}
+    names = expand(site, vals)
+    if names is None:
+        return None
+    kind = "default" if any(vals[h]["kind"] == "default" for h in site["holes"]) else "exhaustive"
+    return {"names": names, "kind": kind}
+
+
+def expand(site: dict, vals: dict[str, dict]) -> list[str] | None:
     """Every exact path the site can produce, or None if a hole is
-    unresolved."""
+    unresolved. Accepts typed value sets; see expand_typed for the
+    exhaustive/default distinction."""
     if site.get("exact_literal"):
         return [site["exact_literal"]]
     choices = []
     for h in site["holes"]:
         if h not in vals or h in ("*", "<expr>"):
             return None
-        choices.append(vals[h])
+        v = vals[h]
+        choices.append(v["values"] if isinstance(v, dict) else v)
     text = site["text"]
     out = set()
     for combo in itertools.product(*choices):
@@ -186,8 +243,17 @@ def collect_sites(repo: Path) -> list[dict]:
                     continue
                 site = parse_site(line, rel, i)
                 if site is None:
+                    if GENERIC_LOADER.search(line):
+                        sites.append({"source": rel, "line": i, "text": line.strip()[:120],
+                                      "holes": ["*"], "regex": re.compile("checkpoints/.*"),
+                                      "role": "generic", "generic": True,
+                                      "exact_literal": None, "exact": None, "kind": None})
                     continue
-                site["exact"] = expand(site, vals)
+                typed = expand_typed(site, vals)
+                site["exact"] = None if typed is None else typed["names"]
+                site["kind"] = None if typed is None else typed["kind"]
+                if site["generic"] and site["exact"] is None:
+                    site["role"] = "generic"
                 sites.append(site)
     return sites
 
@@ -209,6 +275,7 @@ def build_plan(repo: Path, inventory_path: Path, copies: dict) -> dict:
     rows_in = [json.loads(l) for l in Path(inventory_path).read_text().splitlines() if l.strip()]
     sites = collect_sites(repo)
     codemap = load_codemap(repo)
+    generic_sources = sorted({s["source"] for s in sites if s["role"] == "generic"})
     rows = []
     for r in rows_in:
         if r["class"] not in ("UNKNOWN", "CANDIDATE", "DUPLICATE"):
@@ -216,25 +283,39 @@ def build_plan(repo: Path, inventory_path: Path, copies: dict) -> dict:
         rp = r["repo_path"]
         matches = []
         for s in sites:
-            if s["role"] == "mention":
+            if s["role"] in ("mention", "generic"):
                 continue
             if s["exact"] is not None:
                 if rp in s["exact"]:
                     matches.append({"source": s["source"], "line": s["line"],
-                                    "role": s["role"], "match": "exact",
+                                    "role": s["role"],
+                                    "match": "exact" if s["kind"] == "exhaustive" else "default",
+                                    "pattern": s["text"]})
+                elif s["kind"] == "default" and s["regex"].fullmatch(rp):
+                    # an override of the defaulted variable could name
+                    # this file: pattern reach, not exact
+                    matches.append({"source": s["source"], "line": s["line"],
+                                    "role": s["role"], "match": "pattern",
                                     "pattern": s["text"]})
             elif not s["generic"] and s["regex"].fullmatch(rp):
-                # a generic site (hole right after checkpoints/) reaches
-                # every file by construction; it counts only when it
-                # expands to exact names
                 matches.append({"source": s["source"], "line": s["line"],
                                 "role": s["role"], "match": "pattern",
                                 "pattern": s["text"]})
         cm = {m["source"]: codemap.get(Path(m["source"]).name, "UNCITED") for m in matches}
         consumer_exact = sorted({m["source"] for m in matches
-                                 if m["role"] == "consumer" and m["match"] == "exact"})
+                                 if m["role"] == "consumer" and m["match"] in ("exact", "default")})
         producer_exact = sorted({m["source"] for m in matches
-                                 if m["role"] == "producer" and m["match"] == "exact"})
+                                 if m["role"] == "producer" and m["match"] in ("exact", "default")})
+        if any(m["match"] == "exact" for m in matches):
+            reach = "exhaustive"
+        elif any(m["match"] == "default" for m in matches):
+            reach = "default"
+        elif matches:
+            reach = "pattern"
+        elif generic_sources:
+            reach = "unreached-with-generic-loaders"
+        else:
+            reach = "unreached"
         consumer_pattern = sorted({m["source"] for m in matches
                                    if m["role"] == "consumer" and m["match"] == "pattern"})
         cited_consumers = [s for s in consumer_exact
@@ -255,15 +336,19 @@ def build_plan(repo: Path, inventory_path: Path, copies: dict) -> dict:
             proposed = "REVIEW: reached only by an unresolved consumer pattern; resolve or decide script"
         elif producer_exact:
             proposed = "REVIEW: produced by a known script, read by nothing exact; regenerable if the script and its inputs stand"
+        elif not matches and generic_sources:
+            proposed = ("REVIEW: no named site reaches this file after pattern resolution; "
+                        f"{len(generic_sources)} generic loader(s) could open it by argument; "
+                        "CANDIDATE queue; per-family GO")
         elif not matches:
-            proposed = ("REVIEW: no site reaches this file after pattern resolution "
-                        "(census UNKNOWN by prefix only); CANDIDATE queue; per-family GO")
+            proposed = ("REVIEW: no site reaches this file after pattern resolution and no "
+                        "generic loader exists; CANDIDATE queue; per-family GO")
         else:
             proposed = "REVIEW: reached only by producer patterns that did not resolve"
         rows.append({"path": rp, "bytes": r["bytes"], "alloc": r["alloc"],
                      "mtime": time.strftime("%Y-%m-%d", time.localtime(r["mtime"])),
                      "class": r["class"], "family": r["family"],
-                     "canonical": r.get("canonical"),
+                     "canonical": r.get("canonical"), "reach": reach,
                      "matches": matches, "codemap": cm,
                      "consumer_exact": consumer_exact,
                      "producer_exact": producer_exact,
@@ -271,17 +356,24 @@ def build_plan(repo: Path, inventory_path: Path, copies: dict) -> dict:
                      "copies": file_copies, "proposed": proposed})
     rows.sort(key=lambda r: (-r["alloc"], r["path"]))
     by = collections.defaultdict(lambda: {"files": 0, "alloc": 0})
+    by_reach = collections.defaultdict(lambda: {"files": 0, "alloc": 0})
     for r in rows:
         by[r["proposed"]]["files"] += 1
         by[r["proposed"]]["alloc"] += r["alloc"]
-    resolved = sum(1 for s in sites if s["exact"] is not None and s["role"] != "mention")
-    total = sum(1 for s in sites if s["role"] != "mention")
+        by_reach[r["reach"]]["files"] += 1
+        by_reach[r["reach"]]["alloc"] += r["alloc"]
+    named = [s for s in sites if s["role"] not in ("mention", "generic")]
+    exhaustive = sum(1 for s in named if s["kind"] == "exhaustive")
+    default = sum(1 for s in named if s["kind"] == "default")
     return {"rows": rows,
             "summary": {"rows": len(rows), "alloc": sum(r["alloc"] for r in rows),
-                        "sites": total, "sites_resolved_exact": resolved,
-                        "by_proposed": dict(by), "executes_nothing": True},
+                        "sites": len(named), "sites_resolved_exact": exhaustive + default,
+                        "sites_exhaustive": exhaustive, "sites_default_bound": default,
+                        "generic_loaders": generic_sources,
+                        "by_proposed": dict(by), "by_reach": dict(by_reach),
+                        "executes_nothing": True},
             "sites": [{"source": s["source"], "line": s["line"], "text": s["text"],
-                       "role": s["role"], "holes": s["holes"],
+                       "role": s["role"], "holes": s["holes"], "kind": s.get("kind"),
                        "exact_count": None if s["exact"] is None else len(s["exact"])}
                       for s in sites]}
 
@@ -289,18 +381,30 @@ def build_plan(repo: Path, inventory_path: Path, copies: dict) -> dict:
 def render_markdown(plan: dict) -> str:
     s = plan["summary"]
     lines = ["# Checkpoint execution plan (draft; executes nothing)", "",
-             f"Rows: {s['rows']} files, {s['alloc'] / 1e9:.2f} GB allocated. Dynamic sites: "
-             f"{s['sites']}, resolved to exact names: {s['sites_resolved_exact']}.",
+             f"Rows: {s['rows']} files, {s['alloc'] / 1e9:.2f} GB allocated. Named dynamic sites: "
+             f"{s['sites']}; exhaustive name sets {s['sites_exhaustive']}, default-bound "
+             f"(an override reaches other names) {s['sites_default_bound']}, unresolved "
+             f"{s['sites'] - s['sites_resolved_exact']}. Generic loaders (open any name under "
+             f"checkpoints/ from an argument): {len(s['generic_loaders'])}: "
+             + (", ".join(s["generic_loaders"]) or "none") + ".",
              "", "Every action below waits for an explicit GO; this document executes nothing.",
-             "", "| proposed action | files | GB |", "|---|---:|---:|"]
+             "", "| reach | files | GB | meaning |", "|---|---:|---:|---|"]
+    meaning = {"exhaustive": "a site expands to exactly this name from literal-only bindings",
+               "default": "reached only under default configuration (env or CLI default)",
+               "pattern": "matched by an unresolved site, or by an overridable default",
+               "unreached-with-generic-loaders": "no named site; a generic loader could open it by argument",
+               "unreached": "no site and no generic loader: nothing in the repository can name it"}
+    for k, v in sorted(s["by_reach"].items(), key=lambda kv: -kv[1]["alloc"]):
+        lines.append(f"| {k} | {v['files']} | {v['alloc'] / 1e9:.2f} | {meaning.get(k, '')} |")
+    lines += ["", "| proposed action | files | GB |", "|---|---:|---:|"]
     for k, v in sorted(s["by_proposed"].items(), key=lambda kv: -kv[1]["alloc"]):
         lines.append(f"| {k} | {v['files']} | {v['alloc'] / 1e9:.2f} |")
-    lines += ["", "| GB | path | class | consumers (exact) | producers (exact) | consumer patterns | copies | proposed |",
-              "|---:|---|---|---|---|---|---|---|"]
+    lines += ["", "| GB | path | class | reach | consumers (exact or default) | producers (exact or default) | consumer patterns | copies | proposed |",
+              "|---:|---|---|---|---|---|---|---|---|"]
     for r in plan["rows"]:
         fmt = lambda xs: ", ".join(f"{x} [{r['codemap'].get(x, '?')}]" for x in xs) or "-"
         cp_ = ",".join(f"{k}:{len(v)}" for k, v in r["copies"].items()) or "-"
-        lines.append(f"| {r['alloc'] / 1e9:.2f} | {r['path']} | {r['class']} | {fmt(r['consumer_exact'])} | "
+        lines.append(f"| {r['alloc'] / 1e9:.2f} | {r['path']} | {r['class']} | {r['reach']} | {fmt(r['consumer_exact'])} | "
                      f"{fmt(r['producer_exact'])} | {fmt(r['consumer_pattern'])} | {cp_} | {r['proposed']} |")
     return "\n".join(lines) + "\n"
 

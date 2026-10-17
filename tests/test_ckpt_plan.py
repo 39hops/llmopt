@@ -58,9 +58,9 @@ def test_variable_values_resolved_from_literal_assignments(tmp_path):
             'ARMS = ["hot", "cool"]\nLABEL = os.environ["LABEL"]\n'
             'for ARM in ARMS:\n    OUT = f"checkpoints/g_{ARM}_s{SEED}.pt"\n')
     vals = cp.variable_values(py.read_text())
-    assert vals["ARMS"] == ["hot", "cool"]
-    assert vals["ARM"] == ["hot", "cool"]          # loop over a known list
-    assert vals["SEED"] == ["2"]                   # env default is one value
+    assert vals["ARMS"] == {"values": ["cool", "hot"], "kind": "literal"}
+    assert vals["ARM"] == vals["ARMS"]             # loop over a known list
+    assert vals["SEED"] == {"values": ["2"], "kind": "default"}   # a default, not a set
     assert "LABEL" not in vals                     # argument-driven
 
 
@@ -69,8 +69,9 @@ def test_shell_loop_values(tmp_path):
             'for S in 2 3 4; do\n  for A in hot cool; do\n'
             '    --out checkpoints/x_${A}_s$S.pt\n  done\ndone\nF=${F:-fp32}\n')
     vals = cp.variable_values(sh.read_text())
-    assert vals["S"] == ["2", "3", "4"] and vals["A"] == ["hot", "cool"]
-    assert vals["F"] == ["fp32"]
+    assert vals["S"]["values"] == ["2", "3", "4"] and vals["S"]["kind"] == "literal"
+    assert vals["A"]["values"] == ["cool", "hot"]
+    assert vals["F"] == {"values": ["fp32"], "kind": "default"}
 
 
 def test_backslash_continued_shell_loop_resolves(tmp_path):
@@ -78,13 +79,13 @@ def test_backslash_continued_shell_loop_resolves(tmp_path):
             'for name in a_one a_two \\\n            a_three; do\n'
             '  ck=checkpoints/mathnative_${name}.pt\ndone\n')
     vals = cp.variable_values(sh.read_text())
-    assert vals["name"] == ["a_one", "a_two", "a_three"]
+    assert vals["name"]["values"] == ["a_one", "a_three", "a_two"]
 
 
 def test_generic_site_counts_only_through_exact_expansion():
     generic = cp.parse_site("python probe.py checkpoints/$CKPT.pt", "s.sh", 1)
     assert generic["generic"] is True
-    assert cp.expand(generic, {"CKPT": ["m1", "m2"]}) == [
+    assert cp.expand(generic, {"CKPT": {"values": ["m1", "m2"], "kind": "literal"}}) == [
         "checkpoints/m1.pt", "checkpoints/m2.pt"]
 
 
@@ -106,10 +107,11 @@ def test_variable_root_literal_is_an_exact_site():
 
 def test_expand_site_to_exact_names_when_every_hole_resolves():
     site = cp.parse_site('OUT = f"checkpoints/x_{A}_s{S}.pt"', "s.py", 1)
-    names = cp.expand(site, {"A": ["hot", "cool"], "S": ["2", "3"]})
+    lit = lambda *v: {"values": list(v), "kind": "literal"}
+    names = cp.expand(site, {"A": lit("hot", "cool"), "S": lit("2", "3")})
     assert names == ["checkpoints/x_cool_s2.pt", "checkpoints/x_cool_s3.pt",
                      "checkpoints/x_hot_s2.pt", "checkpoints/x_hot_s3.pt"]
-    assert cp.expand(site, {"A": ["hot"]}) is None   # S unresolved
+    assert cp.expand(site, {"A": lit("hot")}) is None   # S unresolved
 
 
 # ---------------------------------------------------------------- plan
@@ -211,3 +213,98 @@ def test_markdown_plan_lists_every_row(tmp_path):
     plan = cp.build_plan(repo, inv, copies={})
     md = cp.render_markdown(plan)
     assert "checkpoints/c.pt" in md and "executes nothing" in md.lower()
+
+
+# ------------------------------------------- soundness of name-set claims
+# A resolved name set is EXHAUSTIVE only when every hole is bound to
+# literals that nothing outside the file can change. Defaults
+# (os.environ.get, argparse default, ${X:-d}) are reachable values, not
+# complete sets; CLI arguments and bare environment reads are unknown.
+
+def test_env_default_is_default_not_exhaustive():
+    vals = cp.variable_values('SEED = int(os.environ.get("SEED", "2"))\n')
+    assert vals["SEED"]["values"] == ["2"]
+    assert vals["SEED"]["kind"] == "default"
+
+
+def test_shell_default_and_bare_env_read():
+    vals = cp.variable_values('F=${F:-fp32}\nARM=$ARM_FROM_OUTSIDE\nX=${X}\n')
+    assert vals["F"] == {"values": ["fp32"], "kind": "default"}
+    assert "ARM" not in vals and "X" not in vals
+
+
+def test_argparse_default_and_required_argument():
+    text = ('ap.add_argument("--tag", default="base")\n'
+            'ap.add_argument("--seed", type=int, required=True)\n'
+            'a = ap.parse_args()\nOUT = f"checkpoints/r_{a.tag}_s{a.seed}.pt"\n')
+    vals = cp.variable_values(text)
+    assert vals["a.tag"] == {"values": ["base"], "kind": "default"}
+    assert "a.seed" not in vals
+    site = cp.parse_site('OUT = f"checkpoints/r_{a.tag}_s{a.seed}.pt"', "s.py", 4)
+    assert site["holes"] == ["a.tag", "a.seed"]
+    assert cp.expand(site, vals) is None
+
+
+def test_multiple_assignments_union_not_last():
+    vals = cp.variable_values('ARM = "hot"\nARM = "cool"\n')
+    assert sorted(vals["ARM"]["values"]) == ["cool", "hot"]
+    assert vals["ARM"]["kind"] == "literal"
+
+
+def test_variable_alias_inherits_values_and_kind():
+    vals = cp.variable_values('ARMS = ["a", "b"]\nNAMES = ARMS\nTAG = os.environ.get("TAG", "t")\nALIAS = TAG\n')
+    assert vals["NAMES"] == {"values": ["a", "b"], "kind": "literal"}
+    assert vals["ALIAS"] == {"values": ["t"], "kind": "default"}
+
+
+def test_generated_name_from_concatenation_is_unresolved():
+    vals = cp.variable_values('A = ["x"]\nB = ["1", "2"]\nname = f"{A}_{B}"\n')
+    assert "name" not in vals
+    site = cp.parse_site('OUT = f"checkpoints/g_{name}.pt"', "s.py", 3)
+    assert cp.expand(site, vals) is None
+
+
+def test_expand_reports_exhaustive_versus_default_resolution():
+    site = cp.parse_site('OUT = f"checkpoints/x_{A}_s{S}.pt"', "s.py", 1)
+    ex = cp.expand_typed(site, {"A": {"values": ["hot"], "kind": "literal"},
+                                "S": {"values": ["2"], "kind": "literal"}})
+    assert ex == {"names": ["checkpoints/x_hot_s2.pt"], "kind": "exhaustive"}
+    de = cp.expand_typed(site, {"A": {"values": ["hot"], "kind": "literal"},
+                                "S": {"values": ["2"], "kind": "default"}})
+    assert de == {"names": ["checkpoints/x_hot_s2.pt"], "kind": "default"}
+    assert cp.expand_typed(site, {"A": {"values": ["hot"], "kind": "literal"}}) is None
+
+
+def test_plan_distinguishes_reach_classes(tmp_path):
+    repo = tmp_path / "repo"
+    _w(repo / "scratch/exh.py", 'for A in ["hot"]:\n    OUT = f"checkpoints/e_{A}.pt"\n')
+    _w(repo / "scratch/dflt.py", 'S = os.environ.get("S", "1")\nsd = torch.load(f"checkpoints/d_s{S}.pt")\n')
+    _w(repo / "scratch/pat.py", 'sd = torch.load(f"checkpoints/p_{sys.argv[1]}.pt")\n')
+    _w(repo / "scratch/gen.py", 'sd = torch.load("checkpoints/" + name)\n')
+    _w(repo / "docs/CODEMAP.md", "")
+    mk = lambda n: {"path": n, "repo_path": f"checkpoints/{n}", "bytes": 1, "alloc": 1,
+                    "mtime": 0, "class": "UNKNOWN", "reasons": [], "family": "root:x",
+                    "canonical": None, "dependencies": []}
+    inv = _inv_rows(tmp_path, [mk("e_hot.pt"), mk("d_s1.pt"), mk("d_s7.pt"),
+                               mk("p_zzz.pt"), mk("nothing.pt")])
+    plan = cp.build_plan(repo, inv, copies={})
+    rows = {r["path"]: r for r in plan["rows"]}
+    assert rows["checkpoints/e_hot.pt"]["reach"] == "exhaustive"
+    assert rows["checkpoints/d_s1.pt"]["reach"] == "default"
+    assert rows["checkpoints/d_s7.pt"]["reach"] == "pattern"      # env override could pick it
+    assert rows["checkpoints/p_zzz.pt"]["reach"] == "pattern"
+    assert rows["checkpoints/nothing.pt"]["reach"] == "unreached-with-generic-loaders"
+    assert plan["summary"]["generic_loaders"] == ["scratch/gen.py"]
+    assert "generic loader" in rows["checkpoints/nothing.pt"]["proposed"].lower()
+    assert plan["summary"]["by_reach"]["unreached-with-generic-loaders"]["files"] == 1
+
+
+def test_plan_without_generic_loaders_reports_unreached(tmp_path):
+    repo = tmp_path / "repo"
+    (repo / "scratch").mkdir(parents=True)
+    _w(repo / "docs/CODEMAP.md", "")
+    inv = _inv_rows(tmp_path, [{"path": "n.pt", "repo_path": "checkpoints/n.pt", "bytes": 1,
+                                "alloc": 1, "mtime": 0, "class": "UNKNOWN", "reasons": [],
+                                "family": "root:n", "canonical": None, "dependencies": []}])
+    plan = cp.build_plan(repo, inv, copies={})
+    assert plan["rows"][0]["reach"] == "unreached"

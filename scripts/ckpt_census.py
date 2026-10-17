@@ -45,12 +45,15 @@ CHECKPOINT-CENSUS-* / CHECKPOINT-PLAN-* are cut out of the citation
 scan (they list file names by design). Cited paths absent from the
 tree are listed (absent_cited) with the other trees they were found in.
 
-Physical storage: for every duplicate group the first and middle
-extents of each copy are read with fcntl F_LOG2PHYS_EXT; equal keys
-mean the copies share blocks (APFS clones) and reclaim nothing when
-one is removed; different keys mean distinct blocks. Files whose
-content is unique cannot be checked for partial sharing this way and
-their allocated size is reported as an estimate, never as verified.
+Physical storage: for every duplicate group the complete extent map
+of each copy is walked with fcntl F_LOG2PHYS_EXT (every physical
+extent until the logical size is covered) and the maps are compared
+pairwise for any overlapping device range: zero shared bytes means
+distinct blocks (removing one copy frees its allocation); full
+overlap means APFS clones (removing one frees nothing); anything
+between is reported as partially shared with the byte count. Files
+whose content is unique are not compared against anything and their
+allocated size is reported as an estimate, never as verified.
 
 Usage:
     .venv/bin/python scripts/ckpt_census.py [--out DIR] [--age-days 14]
@@ -123,6 +126,59 @@ def sha256_file(p: Path, bufsize: int = 1 << 22) -> str:
         for b in iter(lambda: f.read(bufsize), b""):
             h.update(b)
     return h.hexdigest()
+
+
+def extent_map(p: Path):
+    """Every physical extent of a file as (logical_offset, device_offset,
+    length), walked with F_LOG2PHYS_EXT until the logical size is
+    covered. None when the ioctl is unavailable or the walk fails.
+    Complete coverage lets two files be compared for ANY shared block,
+    not only at sampled offsets."""
+    try:
+        size = p.stat().st_size
+        fd = os.open(p, os.O_RDONLY)
+    except OSError:
+        return None
+    try:
+        out = []
+        off = 0
+        guard = 0
+        while off < size and guard < 1_000_000:
+            guard += 1
+            buf = struct.pack("=IqQ", 0, size - off, off)
+            try:
+                res = fcntl.fcntl(fd, 65, buf)      # F_LOG2PHYS_EXT
+            except OSError:
+                return None
+            _flags, contig, devoff = struct.unpack("=IqQ", res)
+            if contig <= 0:
+                return None
+            length = min(contig, size - off)
+            out.append((off, devoff, length))
+            off += length
+        return out if off >= size else None
+    finally:
+        os.close(fd)
+
+
+def shared_bytes(a, b) -> int:
+    """Bytes of device address space two extent maps have in common."""
+    if not a or not b:
+        return 0
+    ia = sorted((d, d + ln) for _, d, ln in a)
+    ib = sorted((d, d + ln) for _, d, ln in b)
+    i = j = 0
+    total = 0
+    while i < len(ia) and j < len(ib):
+        lo = max(ia[i][0], ib[j][0])
+        hi = min(ia[i][1], ib[j][1])
+        if hi > lo:
+            total += hi - lo
+        if ia[i][1] < ib[j][1]:
+            i += 1
+        else:
+            j += 1
+    return total
 
 
 def extent_key(p: Path):
@@ -701,18 +757,28 @@ def build(repo: Path, tracked: set[str] | None = None, age_days: float = 14.0,
         if len(rels) < 2:
             continue
         rels = sorted(rels)
-        keys = {}
+        maps = {}
         if probe_physical:
             for rel in rels:
-                keys[rel] = extent_key(repo / CKPT / rel)
-        if not probe_physical or any(v is None for v in keys.values()):
+                maps[rel] = extent_map(repo / CKPT / rel)
+        size = inv[rels[0]]["bytes"]
+        shared = 0
+        pairs = 0
+        extents = 0
+        if not probe_physical or any(v is None for v in maps.values()):
             physical = "unknown"
-        elif len(set(keys.values())) == 1:
-            physical = "clone-shared"
-        elif len(set(keys.values())) == len(rels):
-            physical = "distinct"
         else:
-            physical = "mixed"
+            extents = sum(len(m) for m in maps.values())
+            for i in range(len(rels)):
+                for j in range(i + 1, len(rels)):
+                    pairs += 1
+                    shared += shared_bytes(maps[rels[i]], maps[rels[j]])
+            if shared == 0:
+                physical = "distinct"
+            elif shared >= size * pairs:
+                physical = "clone-shared"
+            else:
+                physical = "partially-shared"
         retained = [r for r in rels if classification[r]["class"] in ("FROZEN", "ESSENTIAL")]
         canonical = (min(retained, key=retained_rank) if retained else min(rels))
         groups.append({"sha256": sha, "bytes": inv[rels[0]]["bytes"],
@@ -721,7 +787,10 @@ def build(repo: Path, tracked: set[str] | None = None, age_days: float = 14.0,
                        "canonical": f"{CKPT}/{canonical}",
                        "all_retained": len(retained) == len(rels),
                        "physical": physical,
-                       "extent_keys": {f"{CKPT}/{r}": (None if keys.get(r) is None else [list(k) for k in keys[r]]) for r in rels},
+                       "probe": "full-extent-map" if physical != "unknown" else None,
+                       "shared_bytes": shared,
+                       "extents_compared": extents,
+                       "extent_counts": {f"{CKPT}/{r}": (None if maps.get(r) is None else len(maps[r])) for r in rels},
                        "redundant_bytes": inv[rels[0]]["bytes"] * (len(rels) - 1)})
     groups.sort(key=lambda g: -g["redundant_bytes"])
 
@@ -877,7 +946,7 @@ def _summary(inv, classification, groups, tracked, mismatches, unresolved):
          "redundant_bytes_clone_shared": sum(g["redundant_bytes"] for g in groups
                                              if g["physical"] == "clone-shared"),
          "redundant_bytes_unknown_physical": sum(g["redundant_bytes"] for g in groups
-                                                 if g["physical"] in ("unknown", "mixed"))}
+                                                 if g["physical"] in ("unknown", "partially-shared"))}
     for c in CLASSES:
         rels = [r for r, k in classification.items() if k["class"] == c]
         s["by_class"][c] = {"files": len(rels),
