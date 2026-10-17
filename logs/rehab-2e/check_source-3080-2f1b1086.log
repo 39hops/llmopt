@@ -1,0 +1,149 @@
+
+[notice] A new release of pip is available: 25.0.1 -> 26.2.1
+[notice] To update, run: /home/a/code/llmopt/.venv/bin/python -m pip install --upgrade pip
+== generated docs current ==
+[index] current (scripts/INDEX.md)
+[codemap] current: UNCITED=118, library=195, reproduce-pinned=9, results-cited=508, spec-cited=74, tool-referenced=5
+[results-index] current (1493 entries)
+[receipt-lock] current (955 paths)
+[receipt-lock] WARNING: 43 results-cited receipt(s) exist on no checkout (lock agrees with disk; the booked entries stand on prose plus any surviving digests):
+  logs/archive/consolidate3_45m.log
+  logs/archive/micro_grpo_45m_run1b.log
+  logs/ex6depth1/mathbasis_census_scratch.json
+  logs/ex6med/summary2.json
+  logs/mathworld1/cycle_escape_desk.jsonl
+  logs/mathworld1/frontier_desk.jsonl
+  logs/mathworld1/matsub2_receipt.json
+  logs/mathworld1/matsub_receipt.json
+  logs/mathworld1/pdc_relabel.jsonl
+  logs/mathworld1/prband/horizon_census.jsonl
+  logs/mathworld1/prband/qualified_blocks.jsonl
+  logs/mathworld1/prband2atlas/renders.jsonl
+  logs/mathworld1/prband2fresh_score/scores.jsonl
+  logs/mathworld1/regret_lds_desk.jsonl
+  logs/mathworld1/regret_walllift.jsonl
+  logs/mathworld1/retrolabel_qual.jsonl
+  logs/mathworld1/smoke_active_pair.jsonl
+  logs/mathworld1/svpdiet/balanced_grid_train.jsonl
+  logs/mathworld1/svpdiet/combined_train_manifest.jsonl
+  logs/mathworld1/svpdiet/train_blocks.jsonl
+  logs/mathworld1/svpdiet3/covered_calibration.jsonl
+  logs/mathworld1/svpdiet3/eval_blocks.jsonl
+  logs/mathworld1/svpdiet3/heldout_test16.jsonl
+  logs/mathworld1/svpdiet3/pout_attempts.jsonl
+  logs/mathworld1/svpdiet3/pout_robustness.jsonl
+  logs/mathworld1/terminal_census.jsonl
+  logs/opus/gt2_code_traj.jsonl
+  logs/opus/gt2_phys_traj.jsonl
+  logs/opus/gt3_proofs_traj.jsonl
+  logs/opus/gt3_prose_traj.jsonl
+  logs/opus/gt4_dialog_traj.jsonl
+  logs/opus/gt4b_dialog_mathsys_traj.jsonl
+  logs/opus/moe_gt1_traj.jsonl
+  logs/opus/moe_gt1_traj_v2.jsonl
+  logs/qwencheapread/census_arrays_A.npz
+  logs/rehab-2d/task_arith_overlap_current.txt
+  logs/rehab-2d/task_arith_overlap_july5.txt
+  logs/rehab-2e/run6/graph.json
+  logs/rehab-2e/run6/inventory.jsonl
+  logs/rehab-2e/run6/plan.jsonl
+  logs/rehab-2e/run6/plan_sites.json
+  logs/schedaudit0/audit.json
+  logs/sgbb7/launch.out
+[scoreboard] current
+[figures] raster: NOT verified on this machine (no Chrome at /Applications/Google Chrome.app/Contents/MacOS/Google Chrome); PNG existence and header dimensions checked only. Run --check on a machine with Chrome to verify raster content.
+[figures] current (12 SVG renders match; 12 PNG present)
+== pytest ==
+.................................................................ss..... [  3%]
+................s.....................s................................. [  6%]
+..s..................................................................... [  9%]
+.....................................ss................................. [ 12%]
+........ssssss.......................................................... [ 15%]
+........................................................................ [ 18%]
+........................................................................ [ 21%]
+........................................................................ [ 24%]
+.s....s.....................................................ssssssssss.. [ 27%]
+........................................................................ [ 30%]
+.s..........s............s.................................ssssssss..... [ 33%]
+........................................................................ [ 36%]
+..................................................................s..... [ 39%]
+........................................................................ [ 42%]
+........................................................................ [ 45%]
+........................................................................ [ 48%]
+........................................................................ [ 51%]
+........................................................................ [ 54%]
+........................................................................ [ 58%]
+........................................................................ [ 61%]
+........................................................................ [ 64%]
+............................s........................................... [ 67%]
+........s.....................s......................................... [ 70%]
+........................................................................ [ 73%]
+........................................................................ [ 76%]
+............ss..............s........................................... [ 79%]
+........s..................s....s....................................... [ 82%]
+..............s......................................................... [ 85%]
+........................................................................ [ 88%]
+........................................................................ [ 91%]
+........................................................................ [ 94%]
+........sss......................................................sss.... [ 97%]
+......................................................                   [100%]
+=============================== warnings summary ===============================
+tests/test_caf_source_invariant.py::test_k8_identity_with_stock_backprop
+  /home/a/code/llmopt/tests/test_caf_source_invariant.py:107: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+  Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+    assert float((b["logits"] - logits).abs().max()) <= 1e-7 and abs(float(b["loss"]) - float(loss)) <= 1e-7
+
+tests/test_first_moment_erasure.py::test_stream_and_scheduler_continuity_reuse_oma
+tests/test_optimizer_memory_ablation.py::test_scheduler_resume_matches_audited_table[stock-900]
+tests/test_optimizer_memory_ablation.py::test_scheduler_resume_matches_audited_table[stock-7200]
+tests/test_optimizer_memory_ablation.py::test_scheduler_resume_matches_audited_table[backward-7200]
+tests/test_optimizer_memory_ablation.py::test_scheduler_resume_matches_audited_table[backward-13500]
+tests/test_optimizer_memory_ablation.py::test_scheduler_resume_refuses_mismatch
+  /home/a/code/llmopt/scratch/optimizer_memory_ablation.py:183: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+    sched.step()
+
+tests/test_gate_battery.py: 5 warnings
+tests/test_gravmoe_answer_only.py: 6 warnings
+tests/test_lab_adoption.py: 3 warnings
+tests/test_lab_verify_gen_battery.py: 197 warnings
+tests/test_parallel.py: 7 warnings
+  /home/a/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/multiprocessing/popen_fork.py:66: DeprecationWarning: This process (pid=237279) is multi-threaded, use of fork() may lead to deadlocks in the child.
+    self.pid = os.fork()
+
+tests/test_optimizer_memory_ablation.py::test_scheduler_resume_matches_audited_table[stock-1]
+  /home/a/code/llmopt/scratch/optimizer_memory_ablation.py:188: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+    sched.step()
+
+tests/test_weightspace_reader.py::test_forward_shape
+tests/test_weightspace_reader.py::test_reader_overfits_small_set
+  /home/a/code/llmopt/llmopt/weightspace/reader.py:50: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+    self.encoder = nn.TransformerEncoder(enc, n_layers)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+2305 passed, 61 skipped, 228 warnings in 489.02s (0:08:09)
+== ruff (enforced tier) ==
+All checks passed!
+== ruff (scratch, report only) ==
+invalid-syntax: Cannot reuse outer quote character in f-strings on Python 3.11 (syntax was added in Python 3.12)
+   --> scratch/first_moment_erasure_ladder.py:555:128
+    |
+553 |     rec["status"] = "DONE"
+554 |     rec["label"] = label(reg, func)
+555 |     print(f"[fmel1] alpha(H) {mH['alpha']} cosmin(H) {mH['cosmin']} n {mH['n']} -> {rec['label']}; gate {{ {', '.join(f'{k} {v['total…
+    |                                                                                                                                ^
+556 |     return rec
+    |
+
+invalid-syntax: Cannot reuse outer quote character in f-strings on Python 3.11 (syntax was added in Python 3.12)
+   --> scratch/first_moment_erasure_ladder2.py:566:41
+    |
+564 |     rec["label"] = label(reg, func)
+565 |     print(f"[fmel2] alpha_global(H) {mH['alpha_global']} low {mH['alpha_low']} high {mH['alpha_high']} cosmin(H) {mH['cosmin']} n {mH…
+566 |           f"gate {{ {', '.join(f'{k} {v['total']}' for k, v in gate.items())} }}", flush=True)
+    |                                         ^
+567 |     return rec
+    |
+
+Found 2 errors.
+== generated README in sync ==
+== SOURCE TREE GREEN (wheel/core-deps are separate CI jobs) ==

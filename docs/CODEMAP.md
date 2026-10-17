@@ -191,7 +191,7 @@ Census: library 195, reproduce-pinned 9, results-cited 508, spec-cited 74, tool-
 | first | first_moment_erasure_ladder.py | library | RESULTS, specs, TOOLING | RESULTS×34, specs×5, TOOLING×1 | 2 | 5 | — | — |
 | first | first_moment_erasure_ladder2.py | library | RESULTS, specs, TOOLING | RESULTS×22, specs×4, TOOLING×1 | 2 | 4 | — | — |
 | fixed | fixed_q_snap.py | results-cited | via:RESULTS, via:specs | — | — | 1 | — | quick_exact_3080.sh |
-| floor | floor_hk1.sh | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 1 | — | — |
+| floor | floor_hk1.sh | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 1 | — | — |
 | floor | floor_hk1_d256.sh | UNCITED | — | — | — | — | — | — |
 | fme1 | fme1_launch.sh | results-cited | RESULTS, specs | RESULTS×8, specs×2 | — | — | — | — |
 | fmel1 | fmel1_launch.sh | results-cited | RESULTS, specs | RESULTS×11, specs×3 | — | — | — | — |
@@ -296,7 +296,7 @@ Census: library 195, reproduce-pinned 9, results-cited 508, spec-cited 74, tool-
 | kv | kv_equiv.py | UNCITED | — | — | — | 1 | 1 | — |
 | l9 | l9_probe.py | results-cited | via:RESULTS | — | — | 3 | — | hot_chain.sh |
 | lam | lam_merge_review.py | results-cited | via:RESULTS, via:specs | — | — | 1 | — | night31b_cuda.sh |
-| lean | lean_check.py | reproduce-pinned | REPRODUCE, RESULTS, specs, TOOLING | REPRODUCE×1, RESULTS×15, specs×10, TOOLING×4 | — | 2 | — | — |
+| lean | lean_check.py | reproduce-pinned | REPRODUCE, RESULTS, specs, TOOLING | REPRODUCE×1, RESULTS×18, specs×10, TOOLING×4 | — | 2 | — | — |
 | lean | lean_sample_build.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | — | — | — |
 | legacy | legacy_diet_audit.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
 | len | len_vs_l4.py | results-cited | RESULTS, specs | RESULTS×4, specs×1 | — | — | — | — |
@@ -323,7 +323,7 @@ Census: library 195, reproduce-pinned 9, results-cited 508, spec-cited 74, tool-
 | mathworld1 | mathworld1_actionsem.py | library | RESULTS | RESULTS×29 | 10 | 27 | — | — |
 | mathworld1 | mathworld1_actionsite.py | results-cited | RESULTS | RESULTS×4 | — | — | 1 | — |
 | mathworld1 | mathworld1_actiontok.py | library | RESULTS | RESULTS×71 | 49 | 61 | — | — |
-| mathworld1 | mathworld1_active.py | results-cited | RESULTS | RESULTS×7 | — | — | — | — |
+| mathworld1 | mathworld1_active.py | results-cited | RESULTS | RESULTS×8 | — | — | — | — |
 | mathworld1 | mathworld1_autopsy.py | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
 | mathworld1 | mathworld1_axfixture.py | library | RESULTS | RESULTS×6 | 2 | 7 | — | — |
 | mathworld1 | mathworld1_birth.py | library | RESULTS | RESULTS×41 | 13 | 37 | — | — |
@@ -847,9 +847,9 @@ Census: library 195, reproduce-pinned 9, results-cited 508, spec-cited 74, tool-
 | build | build_gen7_diet.py | UNCITED | — | — | — | — | — | — |
 | calibrate | calibrate_hce.py | spec-cited | specs | specs×9 | — | — | — | — |
 | cite | cite_lookup.py | tool-referenced | TOOLING | TOOLING×3 | — | 1 | 1 | — |
-| ckpt | ckpt_census.py | library | RESULTS, specs | RESULTS×6, specs×3 | 1 | 1 | — | — |
+| ckpt | ckpt_census.py | library | RESULTS, specs | RESULTS×7, specs×3 | 1 | 1 | — | — |
 | ckpt | ckpt_manifest.py | library | RESULTS, specs | RESULTS×4, specs×4 | 1 | — | 1 | — |
-| ckpt | ckpt_plan.py | library | RESULTS, specs | RESULTS×5, specs×3 | 1 | — | — | — |
+| ckpt | ckpt_plan.py | library | RESULTS, specs | RESULTS×4, specs×3 | 1 | — | — | — |
 | claim | claim_lint.py | results-cited | RESULTS, specs, TOOLING | RESULTS×1, specs×7, TOOLING×5 | — | 3 | 1 | — |
 | consolidate | consolidate_mathnative.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
 | control | control_round.py | UNCITED | — | — | — | — | — | — |
@@ -865,10 +865,10 @@ Census: library 195, reproduce-pinned 9, results-cited 508, spec-cited 74, tool-
 | figlib | figlib.py | spec-cited | specs | specs×1 | — | — | — | — |
 | fold | fold_book.py | library | specs, TOOLING | specs×1, TOOLING×2 | — | 2 | — | — |
 | gen | gen_catalog.py | library | RESULTS, specs | RESULTS×3, specs×1 | 1 | 1 | — | — |
-| gen | gen_codemap.py | library | RESULTS, specs, TOOLING | RESULTS×5, specs×29, TOOLING×13 | — | 7 | 1 | — |
+| gen | gen_codemap.py | library | RESULTS, specs, TOOLING | RESULTS×4, specs×29, TOOLING×13 | — | 7 | 1 | — |
 | gen | gen_dispatch_labels.py | results-cited | RESULTS | RESULTS×1 | — | — | 2 | — |
 | gen | gen_dispatch_labels_v2.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
-| gen | gen_figures_web.py | library | RESULTS, specs, TOOLING | RESULTS×3, specs×7, TOOLING×3 | 1 | 2 | 1 | — |
+| gen | gen_figures_web.py | library | RESULTS, specs, TOOLING | RESULTS×2, specs×7, TOOLING×3 | 1 | 2 | 1 | — |
 | gen | gen_frontier.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
 | gen | gen_index.py | library | RESULTS, specs, TOOLING | RESULTS×1, specs×11, TOOLING×13 | — | 8 | — | — |
 | gen | gen_lake.py | library | RESULTS, specs | RESULTS×3, specs×1 | — | 1 | — | — |
@@ -887,7 +887,7 @@ Census: library 195, reproduce-pinned 9, results-cited 508, spec-cited 74, tool-
 | harvest | harvest_champion.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
 | harvest | harvest_frontier.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — | — | — |
 | list | list_uncurated.py | spec-cited | specs | specs×6 | — | — | — | — |
-| liverun | liverun.py | library | RESULTS, specs, TOOLING | RESULTS×18, specs×5, TOOLING×3 | — | 15 | 1 | — |
+| liverun | liverun.py | library | RESULTS, specs, TOOLING | RESULTS×20, specs×5, TOOLING×3 | — | 15 | 1 | — |
 | log | log_hygiene.py | library | RESULTS, specs | RESULTS×3, specs×7 | 2 | 1 | — | — |
 | markov | markov_eval.py | UNCITED | — | — | — | — | — | — |
 | markov | markov_prior.py | spec-cited | specs | specs×3 | — | — | — | — |
@@ -904,7 +904,7 @@ Census: library 195, reproduce-pinned 9, results-cited 508, spec-cited 74, tool-
 | plot | plot_identity_crest.py | spec-cited | specs | specs×3 | — | — | — | — |
 | plot | plot_neurons.py | spec-cited | specs | specs×6 | — | — | 1 | — |
 | probe | probe_depth.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
-| recover | recover_receipt.py | library | RESULTS, specs, TOOLING | RESULTS×3, specs×1, TOOLING×1 | — | 2 | — | — |
+| recover | recover_receipt.py | library | RESULTS, specs, TOOLING | RESULTS×2, specs×1, TOOLING×1 | — | 2 | — | — |
 | render | render_anim.py | library | RESULTS, specs, TOOLING | RESULTS×1, specs×1, TOOLING×4 | 1 | 1 | — | — |
 | render | render_gallery.py | spec-cited | specs | specs×7 | — | — | — | — |
 | render | render_hero_neurons.py | spec-cited | specs | specs×4 | — | — | 1 | — |
@@ -913,13 +913,13 @@ Census: library 195, reproduce-pinned 9, results-cited 508, spec-cited 74, tool-
 | sol | sol_enrich_results.py | library | specs | specs×3 | 1 | — | — | — |
 | sol | sol_generate_tables.py | spec-cited | specs | specs×3 | — | — | — | — |
 | step | step_grpo.py | results-cited | RESULTS, specs | RESULTS×1, specs×1 | — | — | — | — |
-| step | step_grpo_micro.py | library | RESULTS, specs, TOOLING | RESULTS×43, specs×26, TOOLING×2 | 95 | 4 | 3 | — |
+| step | step_grpo_micro.py | library | RESULTS, specs, TOOLING | RESULTS×45, specs×26, TOOLING×2 | 95 | 4 | 3 | — |
 | sweep | sweep_lookup.py | UNCITED | — | — | — | — | 1 | — |
 | sweep | sweep_lookup_mlx.py | UNCITED | — | — | — | — | — | — |
 | tabula | tabula_rasa_r0.py | UNCITED | — | — | — | — | — | — |
 | tabula | tabula_rasa_r1.py | UNCITED | — | — | — | — | — | — |
 | tabula | tabula_rasa_r2.py | UNCITED | — | — | — | — | — | — |
-| task | task_arithmetic.py | results-cited | RESULTS, specs | RESULTS×12, specs×6 | — | — | — | — |
+| task | task_arithmetic.py | results-cited | RESULTS, specs | RESULTS×11, specs×6 | — | — | — | — |
 | task | task_composition.py | results-cited | RESULTS, specs | RESULTS×5, specs×2 | — | — | — | — |
 | tournament | tournament_birth.py | library | RESULTS, specs | RESULTS×3, specs×1 | 3 | 6 | — | — |
 | train | train_calculus.py | library | RESULTS, specs | RESULTS×9, specs×11 | 1 | — | 4 | — |

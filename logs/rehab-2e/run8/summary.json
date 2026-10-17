@@ -1,0 +1,57 @@
+{
+ "files": 1159,
+ "bytes": 70505614715,
+ "alloc": 70508163072,
+ "tracked_files": 45,
+ "tracked_bytes": 157742547,
+ "symlinks": 0,
+ "hardlinked": 0,
+ "by_class": {
+  "FROZEN": {
+   "files": 602,
+   "bytes": 55160200031,
+   "alloc": 55161233408
+  },
+  "ESSENTIAL": {
+   "files": 330,
+   "bytes": 7561295470,
+   "alloc": 7562321920
+  },
+  "DUPLICATE": {
+   "files": 5,
+   "bytes": 85848084,
+   "alloc": 85860352
+  },
+  "CANDIDATE": {
+   "files": 43,
+   "bytes": 854023972,
+   "alloc": 854102016
+  },
+  "UNKNOWN": {
+   "files": 179,
+   "bytes": 6844247158,
+   "alloc": 6844645376
+  }
+ },
+ "sha_mismatches": [],
+ "unresolved": {
+  "absent-path": 479,
+  "generic-loader": 26,
+  "dynamic-prefix": 149
+ },
+ "duplicate_groups": 35,
+ "redundant_bytes_logical": 2604479609,
+ "redundant_bytes_distinct_blocks": 2604479609,
+ "redundant_bytes_clone_shared": 0,
+ "redundant_bytes_unknown_physical": 0,
+ "reclaim_verified_duplicate_distinct_blocks": 85860352,
+ "reclaim_estimate_candidate_alloc": 854102016,
+ "reclaim_unknown_class_alloc": 6844645376,
+ "generic_loaders": 26,
+ "absent_cited_targets": 216,
+ "baseline_compare": {
+  "changed": [],
+  "missing": [],
+  "added": []
+ }
+}

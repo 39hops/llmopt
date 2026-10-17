@@ -331,12 +331,21 @@ def log_citation_sets(repo: Path, lock: dict) -> tuple[set[str], set[str]]:
     locked = {p for p, rec in lock.items()
               if p.startswith("logs/") and rec.get("sha256")}
     cited: set[str] = set()
+    # the storage-triage entries name logs by design (lineage tables);
+    # the citation set is built from RESULTS with those entries removed
+    text = strip_triage_entries(_read(repo / "docs/RESULTS.md"))
     try:
         sys.path.insert(0, str(repo / "scripts"))
         import log_hygiene as lh
-        cited = lh.build_citation_set(repo / "docs/RESULTS.md")
+        import tempfile
+        with tempfile.NamedTemporaryFile("w", suffix=".md", delete=False) as fh:
+            fh.write(text)
+            tmp = Path(fh.name)
+        try:
+            cited = lh.build_citation_set(tmp)
+        finally:
+            tmp.unlink(missing_ok=True)
     except Exception:
-        text = _read(repo / "docs/RESULTS.md")
         cited = {_norm_token(m.group(0)) for m in re.finditer(r"logs/[\w\-./]+", text)}
     return locked, cited
 

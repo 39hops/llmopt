@@ -250,6 +250,27 @@ the way RESULTS is (`gen_riff_index.py`, `results_query.py --riff`);
 gif/mp4. Regression coverage per touched module; digests produced by
 touched sha helpers unchanged on a fixture tree.
 
+**EXECUTION ROUND 1 DONE 2026-10-17 (phase 2F, first permitted actions).**
+Artin's decisions and their outcomes are in handoff 2026-10-17-0.
+In brief: the five review-round commits were pushed and the 3080
+qualified at 2f1b1086 (SOURCE TREE GREEN; the CUDA bincount and
+determinism-flag cases PASSED verbosely); the nickname-cited verdict
+weights are named by path and SHA-256 in five append-only
+amendments (RESULTS L78757 to L78820) and census run8 (OBSERVATION
+CHECKPOINT-CENSUS-1) shows 55 files moved toward FROZEN with the
+tree identical to the original baseline; the 52 GRPO checkpoints
+were copied to an isolated archive on the 3080 with every SHA-256
+verified there (OBSERVATION CHECKPOINT-ARCHIVE-0); the mathlib
+compiled-output subtree under scratch/leancheck/.lake was removed
+under the conditional GO after regeneration was established
+(OBSERVATION LAKE-RECLAIM-0, Mac free 55.66 to 62.47 GB). No
+checkpoint was removed, relinked, cloned or replaced; run7 stays
+the decision-sheet baseline. One census defect (a log named only
+inside a triage entry counted as cited) was fixed with a
+regression test. Recommendation recorded in the handoff: return to
+research reproduction next; the remaining storage rows wait for a
+single per-family GO and block nothing.
+
 ## 2H. Mac-native replication (after 2F frees about 40 GB)
 
 Download the 30B vehicle; re-run the crest confirmation at seeds

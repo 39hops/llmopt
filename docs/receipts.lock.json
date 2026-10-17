@@ -5609,6 +5609,28 @@
    "source": "results",
    "tracked": false
   },
+  "logs/rehab-2e/grpo_archive_manifest_3080.sha256": {
+   "bytes": 4895,
+   "exists": true,
+   "sha256": "6e0bfb954d921471d58d681ccbc49138be3c819a85921683a4d9de43b9413370",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/rehab-2e/grpo_archive_manifest_mac.txt": {
+   "bytes": 5973,
+   "exists": true,
+   "sha256": "6b0d5ab66e5c426bdeaecc6fdc7b90257d2c4c50154759a61292ae6cbd00e8a4",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/rehab-2e/lake_build_manifest.txt": {
+   "bytes": 17522001,
+   "exists": true,
+   "local_only": true,
+   "sha256": "db9b2d058339b560b56fe0cbe8f27e5d2c09a444f28929f6ebbb26c3c95886f0",
+   "source": "results",
+   "tracked": false
+  },
   "logs/rehab-2e/run4/SHEET.md": {
    "bytes": 22348,
    "exists": true,
@@ -5729,6 +5751,13 @@
    "bytes": 1172,
    "exists": true,
    "sha256": "70b3a14fa3a03a2d1e51d25793c7fce8bd5ee16870a7ba275583b781f6b55625",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/rehab-2e/run8/SHEET.md": {
+   "bytes": 22012,
+   "exists": true,
+   "sha256": "47d99bf5f170032f8b18f168e41c5eced4026aeaa5547b042495186921cf0a9f",
    "source": "results",
    "tracked": true
   },

@@ -494,3 +494,21 @@ def test_duplicate_groups_report_full_map_physical_status(repo):
         assert grp["probe"] == "full-extent-map"
         assert grp["shared_bytes"] == 0 and grp["physical"] == "distinct"
         assert grp["extents_compared"] >= 2
+
+
+def test_log_cited_only_inside_a_triage_entry_does_not_count(repo):
+    """A storage-triage booking that names a log (the lineage tables
+    do) must not promote that log to a cited receipt; otherwise every
+    checkpoint the log mentions freezes through the census's own text."""
+    _w(repo / "checkpoints/via_triage_log.pt", b"t" * 10)
+    _w(repo / "checkpoints/via_real_log.pt", b"v" * 10)
+    _w(repo / "logs/t/run.log", "saved checkpoints/via_triage_log.pt\n")
+    _w(repo / "logs/v/run.log", "saved checkpoints/via_real_log.pt\n")
+    _w(repo / "docs/RESULTS.md",
+       "## VERDICT Y: receipt logs/v/run.log\n\nbody\n\n"
+       "## OBSERVATION CHECKPOINT-PLAN-1: lineage\n\n"
+       "| family | log logs/t/run.log present, uncited |\n")
+    inv = run(repo)
+    assert cls(inv, "via_real_log.pt") == "FROZEN"
+    assert cls(inv, "via_triage_log.pt") == "CANDIDATE"
+    assert "uncited log" in why(inv, "via_triage_log.pt")

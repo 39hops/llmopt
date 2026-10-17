@@ -1,0 +1,3903 @@
+[
+ {
+  "family": "root:mathnative",
+  "files": 141,
+  "bytes": 20823980393,
+  "alloc": 20824363008,
+  "newest": "2026-08-23",
+  "age_days": 55.5,
+  "classes": {
+   "FROZEN": 87,
+   "ESSENTIAL": 27,
+   "UNKNOWN": 27
+  },
+  "class_alloc": {
+   "FROZEN": 13738098688,
+   "ESSENTIAL": 4703383552,
+   "UNKNOWN": 2382880768
+  },
+  "reference_sources": {
+   "docs": 159,
+   "scratch": 169,
+   "scripts": 12,
+   "llmopt": 1,
+   "tests": 10,
+   "jobs": 9,
+   "logs": 262,
+   "git": 1
+  },
+  "producers_or_consumers": [
+   "jobs/dceil_r_d128_s0.cmd",
+   "jobs/dceil_r_d128_s1.cmd",
+   "jobs/dceil_r_d128_s2.cmd",
+   "jobs/dceil_r_d128_s3.cmd",
+   "jobs/dceil_r_d128_s4.cmd",
+   "jobs/dceil_r_d128_s5.cmd",
+   "jobs/dceil_r_d128_s6.cmd",
+   "jobs/dceil_r_d128_s7.cmd",
+   "jobs/revmetab.cmd",
+   "llmopt/lab/merge.py",
+   "scratch/absorb_1e5.py",
+   "scratch/attractor_census.py",
+   "scratch/attractor_census2.py",
+   "scratch/boundary_or_bulk.py",
+   "scratch/calib_snap_gates.sh",
+   "scratch/ce_gate_study.py",
+   "scratch/champ_cuda_probe.py",
+   "scratch/ckpt_delete_pass.py",
+   "scratch/clade_stream_d256.py",
+   "scratch/complexify_control.py",
+   "scratch/confluence.py",
+   "scratch/corner_snap.py",
+   "scratch/crystal_recreate_test.py",
+   "scratch/distortion_collapse.py",
+   "scratch/duo_mine.py",
+   "scratch/duo_wave.py",
+   "scratch/fmt_pp_watcher.sh",
+   "scratch/format_delta_prep.py",
+   "scratch/fp64_paired.py",
+   "scratch/gate_v2_bench.sh",
+   "scratch/gauge_distance_d256.py",
+   "scratch/gauge_m4x.py",
+   "scratch/gauge_slack_rat.py",
+   "scratch/gen8_pipeline.sh",
+   "scratch/graph_mod_sigma.py",
+   "scratch/graph_modularity_gen8.py",
+   "scratch/grpo_shaped.py",
+   "scratch/int2_regate.sh",
+   "scratch/jointperm_distance.py",
+   "scratch/kv_equiv.py",
+   "scratch/lloydmax_race.py",
+   "scratch/mac_day_chain.sh",
+   "scratch/margin_by_level.py",
+   "scratch/margin_by_ply.py",
+   "scratch/margin_vs_branching.py",
+   "scratch/mass_on_valid.py",
+   "scratch/mathworld1_active.py",
+   "scratch/mathworld1_autopsy.py",
+   "scratch/mathworld1_birth.py",
+   "scratch/mathworld1_cycle.py",
+   "scratch/mathworld1_frontier.py",
+   "scratch/mathworld1_liveness.py",
+   "scratch/mathworld1_matsub.py",
+   "scratch/mathworld1_pdcov.py",
+   "scratch/mathworld1_regret.py",
+   "scratch/mathworld1_regret_walllift.py",
+   "scratch/mathworld1_retrolabel.py",
+   "scratch/mathworld1_terminal.py",
+   "scratch/mathworld1_yield.py",
+   "scratch/matryoshka_r1.py",
+   "scratch/metabolic_hot.py",
+   "scratch/morning_run.sh",
+   "scratch/night_28.sh",
+   "scratch/night_calib.sh",
+   "scratch/night_rat.sh",
+   "scratch/night_rat_s2.sh",
+   "scratch/p2_crown_draws.py",
+   "scratch/p3_stream2x2.py",
+   "scratch/pincer_dist_probe.py",
+   "scratch/pincer_r8.py",
+   "scratch/poly3_pipeline.sh",
+   "scratch/poly4_pipeline.sh",
+   "scratch/poly5_pipeline.sh",
+   "scratch/practice_mine.py",
+   "scratch/prefix_pair.sh",
+   "scratch/prologue_arms.py",
+   "scratch/ptq4_arms.py",
+   "scratch/quat_commutant.py",
+   "scratch/quat_convert.py",
+   "scratch/rot_commutant.py",
+   "scratch/rot_convert.py",
+   "scratch/rot_snap_anatomy.py",
+   "scratch/run_snap_gates.sh",
+   "scratch/run_snap_knee.sh",
+   "scratch/scorer_s2_train.py",
+   "scratch/snap_anatomy.py",
+   "scratch/star_profile.py",
+   "scratch/streaming_birth_d256.py",
+   "scratch/sym_convert.py",
+   "scratch/sym_spectrum.py",
+   "scratch/synonym_test.py",
+   "scratch/ternary_control.py",
+   "scratch/tuesday_night.sh",
+   "scratch/vrm_ab.py",
+   "scratch/z1_gate.sh",
+   "scripts/eval_mathnative.py",
+   "scripts/grow_mathnative.py",
+   "scripts/plot_neurons.py",
+   "scripts/render_gallery.py",
+   "scripts/step_grpo_micro.py",
+   "scripts/train_mathnative.py",
+   "scripts/train_ternary.py",
+   "tests/test_catalog.py",
+   "tests/test_ckpt_census.py",
+   "tests/test_ckpt_plan.py",
+   "tests/test_path_hygiene.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 6
+  },
+  "dynamic_sources": {
+   "scratch/calib_snap_gates.sh": "results-cited",
+   "scratch/gen9_pipeline.sh": "results-cited",
+   "scratch/mac_day_chain.sh": "results-cited",
+   "scratch/mps_sigma_gates.sh": "UNCITED",
+   "scratch/night_gates.sh": "UNCITED",
+   "scratch/prologue_gates.sh": "results-cited",
+   "scratch/ptq4_gates.sh": "results-cited",
+   "scratch/wfloor_ladder.sh": "results-cited",
+   "scratch/z1_gate.sh": "results-cited",
+   "tests/test_ckpt_plan.py": "UNCITED"
+  },
+  "proposed_action": "hold: references of an unresolved form (dynamic path, bare basename, recent)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "none"
+ },
+ {
+  "family": "fmel2",
+  "files": 48,
+  "bytes": 4237042508,
+  "alloc": 4237082624,
+  "newest": "2026-09-15",
+  "age_days": 31.9,
+  "classes": {
+   "FROZEN": 48
+  },
+  "class_alloc": {
+   "FROZEN": 4237082624
+  },
+  "reference_sources": {
+   "docs": 856,
+   "scratch": 84,
+   "tests": 168,
+   "logs": 156
+  },
+  "producers_or_consumers": [
+   "scratch/first_moment_erasure_ladder2.py",
+   "scratch/perturbation_response_gram_desk.py",
+   "scratch/random_direction_control.py",
+   "tests/test_first_moment_erasure_ladder.py",
+   "tests/test_first_moment_erasure_ladder2.py",
+   "tests/test_random_direction_control.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "tests/test_random_direction_control.py": "UNCITED"
+  },
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "rdc1",
+  "files": 48,
+  "bytes": 4237042508,
+  "alloc": 4237082624,
+  "newest": "2026-09-17",
+  "age_days": 30.0,
+  "classes": {
+   "FROZEN": 48
+  },
+  "class_alloc": {
+   "FROZEN": 4237082624
+  },
+  "reference_sources": {
+   "docs": 580,
+   "scratch": 144,
+   "tests": 60,
+   "logs": 240
+  },
+  "producers_or_consumers": [
+   "scratch/perturbation_response_gram_desk.py",
+   "scratch/random_direction_control.py",
+   "tests/test_first_moment_erasure_ladder.py",
+   "tests/test_first_moment_erasure_ladder2.py",
+   "tests/test_random_direction_control.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "backsched19m",
+  "files": 19,
+  "bytes": 4161807545,
+  "alloc": 4161822720,
+  "newest": "2026-08-13",
+  "age_days": 64.9,
+  "classes": {
+   "FROZEN": 19
+  },
+  "class_alloc": {
+   "FROZEN": 4161822720
+  },
+  "reference_sources": {
+   "docs": 217,
+   "scratch": 212,
+   "logs": 116
+  },
+  "producers_or_consumers": [
+   "scratch/birth19m_backsched.py",
+   "scratch/first_moment_erasure_ladder.py",
+   "scratch/gate_backsched.py",
+   "scratch/onecycle_component_audit.py",
+   "scratch/optimizer_geometry_desk.py",
+   "scratch/optimizer_memory_ablation.py",
+   "scratch/update_geometry_census.py",
+   "scratch/writertraj_census.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "scratch/onecycle_component_audit.py": "library",
+   "scratch/optimizer_geometry_desk.py": "library",
+   "scratch/update_geometry_census.py": "library",
+   "scratch/writertraj_census.py": "library"
+  },
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "phase19m",
+  "files": 19,
+  "bytes": 4161809979,
+  "alloc": 4161822720,
+  "newest": "2026-08-13",
+  "age_days": 64.9,
+  "classes": {
+   "FROZEN": 19
+  },
+  "class_alloc": {
+   "FROZEN": 4161822720
+  },
+  "reference_sources": {
+   "docs": 218,
+   "scratch": 250,
+   "tests": 1,
+   "jobs": 1,
+   "logs": 143
+  },
+  "producers_or_consumers": [
+   "jobs/lenvsl4.cmd",
+   "scratch/birth19m_phase.py",
+   "scratch/first_moment_erasure.py",
+   "scratch/first_moment_erasure_ladder.py",
+   "scratch/gate_phase19m.py",
+   "scratch/onecycle_component_audit.py",
+   "scratch/optimizer_geometry_desk.py",
+   "scratch/optimizer_memory_ablation.py",
+   "scratch/phase_portrait_precompute.py",
+   "scratch/update_geometry_census.py",
+   "scratch/writertraj_census.py",
+   "tests/test_first_moment_erasure_ladder.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "scratch/onecycle_component_audit.py": "library",
+   "scratch/optimizer_geometry_desk.py": "library",
+   "scratch/update_geometry_census.py": "library",
+   "scratch/writertraj_census.py": "library"
+  },
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:tourn",
+  "files": 12,
+  "bytes": 3967434624,
+  "alloc": 3967475712,
+  "newest": "2026-08-10",
+  "age_days": 67.6,
+  "classes": {
+   "FROZEN": 12
+  },
+  "class_alloc": {
+   "FROZEN": 3967475712
+  },
+  "reference_sources": {
+   "logs": 12
+  },
+  "producers_or_consumers": [],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "jobs/crowngates.cmd": "UNCITED",
+   "jobs/rev2d768.cmd": "UNCITED",
+   "scratch/closers_chain.sh": "UNCITED",
+   "scratch/rev2_d768.py": "results-cited",
+   "scratch/rev3_crown.py": "results-cited",
+   "scripts/tournament_birth.py": "library"
+  },
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:svp",
+  "files": 48,
+  "bytes": 3675929261,
+  "alloc": 3676033024,
+  "newest": "2026-09-03",
+  "age_days": 43.6,
+  "classes": {
+   "FROZEN": 48
+  },
+  "class_alloc": {
+   "FROZEN": 3676033024
+  },
+  "reference_sources": {
+   "docs": 105,
+   "scratch": 151,
+   "logs": 168
+  },
+  "producers_or_consumers": [
+   "scratch/mathworld1_cl1run.py",
+   "scratch/mathworld1_prband2score.py",
+   "scratch/mathworld1_respath.py",
+   "scratch/mathworld1_respath20.py",
+   "scratch/mathworld1_svpadj.py",
+   "scratch/mathworld1_svpbirth.py",
+   "scratch/mathworld1_svpcalscore.py",
+   "scratch/mathworld1_svpcalscore16.py",
+   "scratch/mathworld1_svpcalscore17.py",
+   "scratch/mathworld1_svpcalscore18.py",
+   "scratch/mathworld1_svpchalscore.py",
+   "scratch/mathworld1_svpdcl.py",
+   "scratch/mathworld1_svpdesign.py",
+   "scratch/mathworld1_svpfhadj.py",
+   "scratch/mathworld1_svpfhbirth.py",
+   "scratch/mathworld1_svpfocal.py",
+   "scratch/mathworld1_svpfoclrepl.py",
+   "scratch/mathworld1_svpfoheld.py",
+   "scratch/mathworld1_svpfohrepl.py",
+   "scratch/mathworld1_svpforder.py",
+   "scratch/mathworld1_svpforepl.py",
+   "scratch/mathworld1_svpfreeact.py",
+   "scratch/mathworld1_svpgbirth.py",
+   "scratch/mathworld1_svpgbirth16.py",
+   "scratch/mathworld1_svpgbirth17.py",
+   "scratch/mathworld1_svpgbirth18.py",
+   "scratch/mathworld1_svpgenadj.py",
+   "scratch/mathworld1_svpheldout16.py",
+   "scratch/mathworld1_svpheldout17.py",
+   "scratch/mathworld1_svpheldout18.py",
+   "scratch/mathworld1_svpnuisdesk.py",
+   "scratch/mathworld1_svppoutscore16.py",
+   "scratch/mathworld1_svprep.py",
+   "scratch/mathworld1_svptokonset.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "scratch/mathworld1_svpbirth.py": "library",
+   "scratch/mathworld1_svpfofresh.py": "results-cited",
+   "scratch/mathworld1_svprep.py": "results-cited"
+  },
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:metabolic",
+  "files": 12,
+  "bytes": 2645361855,
+  "alloc": 2645393408,
+  "newest": "2026-08-07",
+  "age_days": 70.7,
+  "classes": {
+   "FROZEN": 2,
+   "UNKNOWN": 9,
+   "ESSENTIAL": 1
+  },
+  "class_alloc": {
+   "FROZEN": 440893440,
+   "UNKNOWN": 1984053248,
+   "ESSENTIAL": 220446720
+  },
+  "reference_sources": {
+   "docs": 3,
+   "scratch": 7,
+   "logs": 3
+  },
+  "producers_or_consumers": [
+   "scratch/confluence.py",
+   "scratch/hot_chain.sh",
+   "scratch/morning_run.sh"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "jobs/revmetab.cmd": "UNCITED",
+   "scratch/metabolic_hot.py": "results-cited"
+  },
+  "proposed_action": "hold: references of an unresolved form (dynamic path, bare basename, recent)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "none"
+ },
+ {
+  "family": "root:gallery19m",
+  "files": 28,
+  "bytes": 2043033675,
+  "alloc": 2043080704,
+  "newest": "2026-08-16",
+  "age_days": 62.4,
+  "classes": {
+   "FROZEN": 16,
+   "UNKNOWN": 7,
+   "ESSENTIAL": 5
+  },
+  "class_alloc": {
+   "FROZEN": 1135046656,
+   "UNKNOWN": 529686528,
+   "ESSENTIAL": 378347520
+  },
+  "reference_sources": {
+   "docs": 43,
+   "scratch": 36,
+   "scripts": 6,
+   "tests": 9,
+   "logs": 95
+  },
+  "producers_or_consumers": [
+   "scratch/atomtraj_pins.py",
+   "scratch/basics_probe0.py",
+   "scratch/birth19m_atoms.py",
+   "scratch/birth19m_curric_rev.py",
+   "scratch/birth19m_curric_swap.py",
+   "scratch/crossfoster_chain.py",
+   "scratch/crossfoster_donor.py",
+   "scratch/dfa_act.py",
+   "scratch/first_moment_erasure_ladder.py",
+   "scratch/gradmap0_probe.py",
+   "scratch/optimizer_geometry_desk.py",
+   "scratch/update_geometry_census.py",
+   "scratch/writertraj_census.py",
+   "scratch/writertraj_depend.py",
+   "scratch/writertraj_verify.py",
+   "scratch/xterm_probe.py",
+   "scripts/anim_precompute.py",
+   "scripts/render_hero_neurons.py",
+   "tests/test_catalog.py",
+   "tests/test_crossfoster_donor.py",
+   "tests/test_first_moment_erasure_ladder.py",
+   "tests/test_first_moment_erasure_ladder2.py",
+   "tests/test_random_direction_control.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 3
+  },
+  "dynamic_sources": {
+   "scratch/birth19m_arith.py": "results-cited",
+   "scratch/birth19m_atoms_dose.py": "results-cited",
+   "scratch/birth19m_atoms_ladder.py": "library",
+   "scratch/birth19m_atoms_rule.py": "results-cited",
+   "scratch/birth19m_backsched.py": "results-cited",
+   "scratch/birth19m_curric.py": "library",
+   "scratch/birth19m_phase.py": "results-cited",
+   "scratch/birth19m_snaps.py": "results-cited",
+   "scratch/birth19m_softspeed.py": "results-cited",
+   "scratch/birth19m_xterm.py": "results-cited",
+   "scratch/comp_ladder.py": "results-cited",
+   "scratch/xtermdiet1_driver.sh": "results-cited",
+   "tests/test_atomtraj_source_invariant.py": "UNCITED"
+  },
+  "proposed_action": "hold: references of an unresolved form (dynamic path, bare basename, recent)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "none"
+ },
+ {
+  "family": "root:metab",
+  "files": 5,
+  "bytes": 1794661522,
+  "alloc": 1794666496,
+  "newest": "2026-08-07",
+  "age_days": 70.9,
+  "classes": {
+   "FROZEN": 4,
+   "UNKNOWN": 1
+  },
+  "class_alloc": {
+   "FROZEN": 1435734016,
+   "UNKNOWN": 358932480
+  },
+  "reference_sources": {
+   "docs": 9,
+   "scratch": 10,
+   "logs": 24
+  },
+  "producers_or_consumers": [
+   "scratch/ckpt_delete_pass.py",
+   "scratch/d2_verify.py",
+   "scratch/exchange_test.py",
+   "scratch/metabolic_v4.py",
+   "scratch/metabolic_v5.py",
+   "scratch/night_28.sh",
+   "scratch/retention_watcher.sh"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "scratch/metabolic_d2.py": "results-cited",
+   "scratch/metabolic_v3.py": "results-cited"
+  },
+  "proposed_action": "hold: references of an unresolved form (dynamic path, bare basename, recent)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "none"
+ },
+ {
+  "family": "sgwriter1",
+  "files": 37,
+  "bytes": 1636488105,
+  "alloc": 1636519936,
+  "newest": "2026-09-10",
+  "age_days": 36.6,
+  "classes": {
+   "FROZEN": 37
+  },
+  "class_alloc": {
+   "FROZEN": 1636519936
+  },
+  "reference_sources": {
+   "docs": 712,
+   "scratch": 326,
+   "tests": 37,
+   "logs": 246
+  },
+  "producers_or_consumers": [
+   "scratch/atomtraj_census.py",
+   "scratch/birth19m_caf.py",
+   "scratch/birth19m_fb.py",
+   "scratch/birth19m_sg.py",
+   "scratch/birth19m_sg7.py",
+   "scratch/caf_prune.py",
+   "scratch/dfa_harm_desk.py",
+   "scratch/dfa_postmortem.py",
+   "scratch/dfa_prune.py",
+   "scratch/dfa_trajcensus.py",
+   "scratch/dfa_verify.py",
+   "scratch/fb_prune.py",
+   "scratch/mezo_signal_desk.py",
+   "scratch/sg7_integrity_smoke.py",
+   "scratch/sgbb7_smoke_prune.py",
+   "scratch/sgwriter1_keepset_prune.py",
+   "scratch/smoke_prune.py",
+   "scratch/writertraj_census.py",
+   "scratch/writertraj_depend.py",
+   "scratch/writertraj_verify.py",
+   "tests/test_sg_source_invariant.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:crown",
+  "files": 6,
+  "bytes": 1266056658,
+  "alloc": 1266057216,
+  "newest": "2026-08-10",
+  "age_days": 67.9,
+  "classes": {
+   "FROZEN": 6
+  },
+  "class_alloc": {
+   "FROZEN": 1266057216
+  },
+  "reference_sources": {
+   "docs": 2,
+   "tests": 4,
+   "logs": 15
+  },
+  "producers_or_consumers": [
+   "tests/test_catalog.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "jobs/crowngates.cmd": "UNCITED",
+   "scratch/rev3_crown.py": "results-cited"
+  },
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "frozenbb1",
+  "files": 15,
+  "bytes": 1134944445,
+  "alloc": 1134956544,
+  "newest": "2026-09-10",
+  "age_days": 37.3,
+  "classes": {
+   "FROZEN": 15
+  },
+  "class_alloc": {
+   "FROZEN": 1134956544
+  },
+  "reference_sources": {
+   "docs": 177,
+   "scratch": 276,
+   "tests": 15,
+   "logs": 72
+  },
+  "producers_or_consumers": [
+   "scratch/atomtraj_census.py",
+   "scratch/atomtraj_verify.py",
+   "scratch/birth19m_atoms_traj.py",
+   "scratch/birth19m_caf.py",
+   "scratch/birth19m_dfa.py",
+   "scratch/birth19m_fb.py",
+   "scratch/birth19m_sg.py",
+   "scratch/birth19m_sg7.py",
+   "scratch/caf_prune.py",
+   "scratch/caf_qualgate.py",
+   "scratch/dfa_act.py",
+   "scratch/dfa_harm_desk.py",
+   "scratch/dfa_postmortem.py",
+   "scratch/dfa_prune.py",
+   "scratch/dfa_qualgate.py",
+   "scratch/dfa_trajcensus.py",
+   "scratch/dfa_verify.py",
+   "scratch/fb_gate.py",
+   "scratch/fb_prune.py",
+   "scratch/sg7_qualgate.py",
+   "scratch/sg_integrity_smoke.py",
+   "scratch/sg_qualgate.py",
+   "scratch/sgbb7_keepset_prune.py",
+   "scratch/sgbb7_smoke_prune.py",
+   "scratch/sgwriter1_keepset_prune.py",
+   "scratch/smoke_prune.py",
+   "scratch/writertraj_census.py",
+   "scratch/writertraj_depend.py",
+   "scratch/writertraj_verify.py",
+   "tests/test_fb_source_invariant.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "writercaf1",
+  "files": 16,
+  "bytes": 985099812,
+  "alloc": 985112576,
+  "newest": "2026-09-09",
+  "age_days": 37.9,
+  "classes": {
+   "FROZEN": 16
+  },
+  "class_alloc": {
+   "FROZEN": 985112576
+  },
+  "reference_sources": {
+   "docs": 135,
+   "scratch": 252,
+   "logs": 70
+  },
+  "producers_or_consumers": [
+   "scratch/atomtraj_census.py",
+   "scratch/atomtraj_verify.py",
+   "scratch/birth19m_atoms_traj.py",
+   "scratch/birth19m_caf.py",
+   "scratch/birth19m_dfa.py",
+   "scratch/birth19m_fb.py",
+   "scratch/birth19m_sg.py",
+   "scratch/birth19m_sg7.py",
+   "scratch/caf_actpost.py",
+   "scratch/caf_prune.py",
+   "scratch/caf_qualgate.py",
+   "scratch/dfa_act.py",
+   "scratch/dfa_align.py",
+   "scratch/dfa_harm_desk.py",
+   "scratch/dfa_postmortem.py",
+   "scratch/dfa_prune.py",
+   "scratch/dfa_qualgate.py",
+   "scratch/dfa_trajcensus.py",
+   "scratch/dfa_verify.py",
+   "scratch/fb_gate.py",
+   "scratch/fb_prune.py",
+   "scratch/sg7_qualgate.py",
+   "scratch/sg_integrity_smoke.py",
+   "scratch/sg_qualgate.py",
+   "scratch/sgbb7_keepset_prune.py",
+   "scratch/sgbb7_smoke_prune.py",
+   "scratch/sgwriter1_keepset_prune.py",
+   "scratch/smoke_prune.py",
+   "scratch/writertraj_census.py",
+   "scratch/writertraj_depend.py",
+   "scratch/writertraj_verify.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "sgbb7",
+  "files": 18,
+  "bytes": 920065254,
+  "alloc": 920092672,
+  "newest": "2026-09-11",
+  "age_days": 35.9,
+  "classes": {
+   "FROZEN": 18
+  },
+  "class_alloc": {
+   "FROZEN": 920092672
+  },
+  "reference_sources": {
+   "docs": 212,
+   "scratch": 178,
+   "tests": 18,
+   "logs": 84
+  },
+  "producers_or_consumers": [
+   "scratch/atomtraj_census.py",
+   "scratch/atomtraj_verify.py",
+   "scratch/birth19m_atoms_traj.py",
+   "scratch/birth19m_caf.py",
+   "scratch/birth19m_dfa.py",
+   "scratch/birth19m_fb.py",
+   "scratch/birth19m_sg.py",
+   "scratch/birth19m_sg7.py",
+   "scratch/caf_prune.py",
+   "scratch/caf_qualgate.py",
+   "scratch/dfa_act.py",
+   "scratch/dfa_harm_desk.py",
+   "scratch/dfa_postmortem.py",
+   "scratch/dfa_prune.py",
+   "scratch/dfa_qualgate.py",
+   "scratch/dfa_trajcensus.py",
+   "scratch/dfa_verify.py",
+   "scratch/fb_gate.py",
+   "scratch/fb_prune.py",
+   "scratch/mezo_signal_desk.py",
+   "scratch/sg7_qualgate.py",
+   "scratch/sg_integrity_smoke.py",
+   "scratch/sg_qualgate.py",
+   "scratch/sgbb7_keepset_prune.py",
+   "scratch/sgbb7_smoke_prune.py",
+   "scratch/sgwriter1_keepset_prune.py",
+   "scratch/smoke_prune.py",
+   "scratch/writertraj_census.py",
+   "scratch/writertraj_depend.py",
+   "scratch/writertraj_verify.py",
+   "tests/test_sg7_source_invariant.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "writerdfa1",
+  "files": 16,
+  "bytes": 909938388,
+  "alloc": 909950976,
+  "newest": "2026-09-09",
+  "age_days": 38.4,
+  "classes": {
+   "FROZEN": 16
+  },
+  "class_alloc": {
+   "FROZEN": 909950976
+  },
+  "reference_sources": {
+   "docs": 180,
+   "scratch": 256,
+   "logs": 56
+  },
+  "producers_or_consumers": [
+   "scratch/atomtraj_census.py",
+   "scratch/atomtraj_verify.py",
+   "scratch/birth19m_atoms_traj.py",
+   "scratch/birth19m_caf.py",
+   "scratch/birth19m_dfa.py",
+   "scratch/birth19m_fb.py",
+   "scratch/birth19m_sg.py",
+   "scratch/birth19m_sg7.py",
+   "scratch/caf_actpost.py",
+   "scratch/caf_prune.py",
+   "scratch/caf_qualgate.py",
+   "scratch/dfa_act.py",
+   "scratch/dfa_align.py",
+   "scratch/dfa_harm_desk.py",
+   "scratch/dfa_postmortem.py",
+   "scratch/dfa_prune.py",
+   "scratch/dfa_qualgate.py",
+   "scratch/dfa_trajcensus.py",
+   "scratch/dfa_verify.py",
+   "scratch/fb_gate.py",
+   "scratch/fb_prune.py",
+   "scratch/sg7_qualgate.py",
+   "scratch/sg_integrity_smoke.py",
+   "scratch/sg_qualgate.py",
+   "scratch/sgbb7_keepset_prune.py",
+   "scratch/sgbb7_smoke_prune.py",
+   "scratch/sgwriter1_keepset_prune.py",
+   "scratch/smoke_prune.py",
+   "scratch/writertraj_census.py",
+   "scratch/writertraj_depend.py",
+   "scratch/writertraj_verify.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "fme1",
+  "files": 10,
+  "bytes": 907939443,
+  "alloc": 907948032,
+  "newest": "2026-09-15",
+  "age_days": 32.3,
+  "classes": {
+   "FROZEN": 10
+  },
+  "class_alloc": {
+   "FROZEN": 907948032
+  },
+  "reference_sources": {
+   "docs": 412,
+   "scratch": 30,
+   "tests": 46,
+   "logs": 20
+  },
+  "producers_or_consumers": [
+   "scratch/first_moment_erasure.py",
+   "scratch/first_moment_erasure_ladder.py",
+   "tests/test_first_moment_erasure_ladder.py",
+   "tests/test_first_moment_erasure_ladder2.py",
+   "tests/test_perturbation_response_gram_desk.py",
+   "tests/test_random_direction_control.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "scratch/first_moment_erasure.py": "library"
+  },
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:rev2",
+  "files": 3,
+  "bytes": 906926577,
+  "alloc": 906928128,
+  "newest": "2026-08-09",
+  "age_days": 69.2,
+  "classes": {
+   "FROZEN": 3
+  },
+  "class_alloc": {
+   "FROZEN": 906928128
+  },
+  "reference_sources": {
+   "logs": 3
+  },
+  "producers_or_consumers": [],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "jobs/rev2d768.cmd": "UNCITED",
+   "scratch/rev2_d768.py": "results-cited"
+  },
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:merged",
+  "files": 2,
+  "bytes": 717862261,
+  "alloc": 717869056,
+  "newest": "2026-07-23",
+  "age_days": 86.0,
+  "classes": {
+   "FROZEN": 2
+  },
+  "class_alloc": {
+   "FROZEN": 717869056
+  },
+  "reference_sources": {
+   "docs": 4,
+   "scratch": 5,
+   "logs": 15
+  },
+  "producers_or_consumers": [
+   "scratch/ckpt_delete_pass.py",
+   "scratch/margin_census.py",
+   "scratch/p2_crown_draws.py",
+   "scratch/weight_fft_euler.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "_attempt3_QUALIFIED_prefold_atomtraj1_smoke",
+  "files": 9,
+  "bytes": 680969166,
+  "alloc": 680976384,
+  "newest": "2026-09-07",
+  "age_days": 40.0,
+  "classes": {
+   "ESSENTIAL": 3,
+   "FROZEN": 3,
+   "CANDIDATE": 2,
+   "DUPLICATE": 1
+  },
+  "class_alloc": {
+   "ESSENTIAL": 226983936,
+   "FROZEN": 226996224,
+   "CANDIDATE": 151330816,
+   "DUPLICATE": 75665408
+  },
+  "reference_sources": {
+   "docs": 18,
+   "scratch": 102
+  },
+  "producers_or_consumers": [
+   "scratch/atomtraj_census.py",
+   "scratch/atomtraj_verify.py",
+   "scratch/birth19m_atoms_traj.py",
+   "scratch/birth19m_caf.py",
+   "scratch/birth19m_dfa.py",
+   "scratch/birth19m_fb.py",
+   "scratch/birth19m_sg.py",
+   "scratch/birth19m_sg7.py",
+   "scratch/caf_prune.py",
+   "scratch/caf_qualgate.py",
+   "scratch/dfa_act.py",
+   "scratch/dfa_harm_desk.py",
+   "scratch/dfa_postmortem.py",
+   "scratch/dfa_prune.py",
+   "scratch/dfa_qualgate.py",
+   "scratch/dfa_trajcensus.py",
+   "scratch/dfa_verify.py",
+   "scratch/fb_gate.py",
+   "scratch/fb_prune.py",
+   "scratch/sg7_qualgate.py",
+   "scratch/sg_integrity_smoke.py",
+   "scratch/sg_qualgate.py",
+   "scratch/sgbb7_keepset_prune.py",
+   "scratch/sgbb7_smoke_prune.py",
+   "scratch/sgwriter1_keepset_prune.py",
+   "scratch/smoke_prune.py",
+   "scratch/writertraj_census.py",
+   "scratch/writertraj_depend.py",
+   "scratch/writertraj_verify.py"
+  ],
+  "duplicate_alloc": 75665408,
+  "duplicate_alloc_verified_distinct": 75665408,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "mixed: keep FROZEN/ESSENTIAL rows; DUPLICATE rows may be removed after per-row review; CANDIDATE rows need a decision; UNKNOWN rows hold",
+  "expected_benefit_bytes": 226996224,
+  "benefit_confidence": "mixed"
+ },
+ {
+  "family": "atomtraj1_smoke",
+  "files": 9,
+  "bytes": 680969166,
+  "alloc": 680976384,
+  "newest": "2026-09-07",
+  "age_days": 40.0,
+  "classes": {
+   "FROZEN": 9
+  },
+  "class_alloc": {
+   "FROZEN": 680976384
+  },
+  "reference_sources": {
+   "docs": 36,
+   "scratch": 129,
+   "logs": 41
+  },
+  "producers_or_consumers": [
+   "scratch/atomtraj_census.py",
+   "scratch/atomtraj_qual.py",
+   "scratch/atomtraj_verify.py",
+   "scratch/birth19m_atoms_traj.py",
+   "scratch/birth19m_caf.py",
+   "scratch/birth19m_dfa.py",
+   "scratch/birth19m_fb.py",
+   "scratch/birth19m_sg.py",
+   "scratch/birth19m_sg7.py",
+   "scratch/caf_prune.py",
+   "scratch/caf_qualgate.py",
+   "scratch/dfa_act.py",
+   "scratch/dfa_harm_desk.py",
+   "scratch/dfa_postmortem.py",
+   "scratch/dfa_prune.py",
+   "scratch/dfa_qualgate.py",
+   "scratch/dfa_trajcensus.py",
+   "scratch/dfa_verify.py",
+   "scratch/fb_gate.py",
+   "scratch/fb_prune.py",
+   "scratch/sg7_qualgate.py",
+   "scratch/sg_integrity_smoke.py",
+   "scratch/sg_qualgate.py",
+   "scratch/sgbb7_keepset_prune.py",
+   "scratch/sgbb7_smoke_prune.py",
+   "scratch/sgwriter1_keepset_prune.py",
+   "scratch/smoke_prune.py",
+   "scratch/writertraj_census.py",
+   "scratch/writertraj_depend.py",
+   "scratch/writertraj_verify.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:fmt",
+  "files": 15,
+  "bytes": 607471461,
+  "alloc": 607510528,
+  "newest": "2026-07-28",
+  "age_days": 81.5,
+  "classes": {
+   "FROZEN": 4,
+   "UNKNOWN": 8,
+   "ESSENTIAL": 3
+  },
+  "class_alloc": {
+   "FROZEN": 134709248,
+   "UNKNOWN": 269418496,
+   "ESSENTIAL": 203382784
+  },
+  "reference_sources": {
+   "docs": 8,
+   "scratch": 14,
+   "jobs": 2,
+   "logs": 23
+  },
+  "producers_or_consumers": [
+   "jobs/p4indist.cmd",
+   "scratch/fmt_chain2.sh",
+   "scratch/format_delta_prep.py",
+   "scratch/night_28_mac.sh",
+   "scratch/pincer_dist_probe.py",
+   "scratch/pincer_r0.py",
+   "scratch/pincer_r0b.py",
+   "scratch/pincer_r8.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "scratch/fmt_chain.sh": "results-cited",
+   "scratch/fmt_chain2.sh": "results-cited",
+   "scratch/format_ladder.py": "results-cited",
+   "tests/test_ckpt_plan.py": "UNCITED"
+  },
+  "proposed_action": "hold: references of an unresolved form (dynamic path, bare basename, recent)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "none"
+ },
+ {
+  "family": "root:ternary",
+  "files": 3,
+  "bytes": 604718272,
+  "alloc": 604721152,
+  "newest": "2026-07-22",
+  "age_days": 87.5,
+  "classes": {
+   "FROZEN": 1,
+   "ESSENTIAL": 2
+  },
+  "class_alloc": {
+   "FROZEN": 201576448,
+   "ESSENTIAL": 403144704
+  },
+  "reference_sources": {
+   "scratch": 4,
+   "logs": 9
+  },
+  "producers_or_consumers": [
+   "scratch/ternary_gate.py",
+   "scratch/ternary_session2.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "oma1",
+  "files": 5,
+  "bytes": 529636483,
+  "alloc": 529641472,
+  "newest": "2026-09-14",
+  "age_days": 32.7,
+  "classes": {
+   "FROZEN": 5
+  },
+  "class_alloc": {
+   "FROZEN": 529641472
+  },
+  "reference_sources": {
+   "docs": 161,
+   "scratch": 25,
+   "tests": 23,
+   "logs": 20
+  },
+  "producers_or_consumers": [
+   "scratch/first_moment_erasure.py",
+   "scratch/first_moment_erasure_ladder.py",
+   "scratch/first_moment_erasure_ladder2.py",
+   "scratch/optimizer_memory_ablation.py",
+   "scratch/random_direction_control.py",
+   "tests/test_first_moment_erasure_ladder.py",
+   "tests/test_first_moment_erasure_ladder2.py",
+   "tests/test_perturbation_response_gram_desk.py",
+   "tests/test_random_direction_control.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:snap19m",
+  "files": 6,
+  "bytes": 454002691,
+  "alloc": 454017024,
+  "newest": "2026-07-27",
+  "age_days": 81.8,
+  "classes": {
+   "UNKNOWN": 4,
+   "ESSENTIAL": 2
+  },
+  "class_alloc": {
+   "UNKNOWN": 302678016,
+   "ESSENTIAL": 151339008
+  },
+  "reference_sources": {
+   "scratch": 3,
+   "logs": 6
+  },
+  "producers_or_consumers": [
+   "scratch/nineteen_m_displace.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "scratch/distortion_collapse.py": "results-cited",
+   "scratch/run_snap_gates.sh": "spec-cited",
+   "scratch/run_snap_knee.sh": "UNCITED"
+  },
+  "proposed_action": "hold: references of an unresolved form (dynamic path, bare basename, recent)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "none"
+ },
+ {
+  "family": "root:sat",
+  "files": 2,
+  "bytes": 440885343,
+  "alloc": 440889344,
+  "newest": "2026-08-11",
+  "age_days": 67.5,
+  "classes": {
+   "FROZEN": 2
+  },
+  "class_alloc": {
+   "FROZEN": 440889344
+  },
+  "reference_sources": {
+   "docs": 3,
+   "scratch": 5,
+   "logs": 2
+  },
+  "producers_or_consumers": [
+   "scratch/saturation_s2.py",
+   "scratch/saturation_s2b.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:cplx",
+  "files": 5,
+  "bytes": 378464338,
+  "alloc": 378470400,
+  "newest": "2026-07-28",
+  "age_days": 81.5,
+  "classes": {
+   "ESSENTIAL": 2,
+   "FROZEN": 3
+  },
+  "class_alloc": {
+   "ESSENTIAL": 151388160,
+   "FROZEN": 227082240
+  },
+  "reference_sources": {
+   "docs": 4,
+   "scratch": 12,
+   "logs": 10
+  },
+  "producers_or_consumers": [
+   "scratch/capacity_meter.py",
+   "scratch/distortion_collapse.py",
+   "scratch/g5_polar.py",
+   "scratch/night_28_mac.sh",
+   "scratch/polar_snap.py",
+   "scratch/rot_commutant.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "scratch/complex_birth.py": "results-cited"
+  },
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:exchange",
+  "files": 1,
+  "bytes": 358932406,
+  "alloc": 358932480,
+  "newest": "2026-08-07",
+  "age_days": 70.9,
+  "classes": {
+   "FROZEN": 1
+  },
+  "class_alloc": {
+   "FROZEN": 358932480
+  },
+  "reference_sources": {
+   "docs": 3,
+   "scratch": 1,
+   "logs": 5
+  },
+  "producers_or_consumers": [
+   "scratch/exchange_test.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:sym",
+  "files": 52,
+  "bytes": 351751361,
+  "alloc": 351830016,
+  "newest": "2026-08-08",
+  "age_days": 70.6,
+  "classes": {
+   "FROZEN": 8,
+   "UNKNOWN": 43,
+   "ESSENTIAL": 1
+  },
+  "class_alloc": {
+   "FROZEN": 46866432,
+   "UNKNOWN": 302821376,
+   "ESSENTIAL": 2142208
+  },
+  "reference_sources": {
+   "docs": 15,
+   "scratch": 23,
+   "jobs": 4,
+   "logs": 29
+  },
+  "producers_or_consumers": [
+   "jobs/mult0.cmd",
+   "jobs/multb32.cmd",
+   "scratch/cal_dk_probe.py",
+   "scratch/capacity_meter.py",
+   "scratch/corner_snap.py",
+   "scratch/distortion_collapse.py",
+   "scratch/exact_twin_d56.py",
+   "scratch/farmer_probe.py",
+   "scratch/fourier_probe.py",
+   "scratch/head_autopsy.py",
+   "scratch/head_census.py",
+   "scratch/matryoshka_r2.py",
+   "scratch/pack_baselines.py",
+   "scratch/pack_crystal.py",
+   "scratch/pack_decode.py",
+   "scratch/pack_determinism.py",
+   "scratch/rank_read.py",
+   "scratch/snap_alloc.py",
+   "scratch/tenet_d1_revgate.py",
+   "scratch/tenet_mult_census.py",
+   "scratch/tenet_r1b_micro.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "scratch/p3_autopsy.py": "results-cited",
+   "scratch/p3_ffnslack.py": "results-cited",
+   "scratch/sym_birth.py": "library",
+   "scratch/sym_convert.py": "results-cited",
+   "scratch/tenet_w1_population.py": "UNCITED"
+  },
+  "proposed_action": "hold: references of an unresolved form (dynamic path, bare basename, recent)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "none"
+ },
+ {
+  "family": "root:grid",
+  "files": 2,
+  "bytes": 335983216,
+  "alloc": 335986688,
+  "newest": "2026-07-22",
+  "age_days": 87.4,
+  "classes": {
+   "ESSENTIAL": 2
+  },
+  "class_alloc": {
+   "ESSENTIAL": 335986688
+  },
+  "reference_sources": {
+   "scratch": 4,
+   "logs": 5
+  },
+  "producers_or_consumers": [
+   "scratch/night2_mac.sh"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:step",
+  "files": 9,
+  "bytes": 317705355,
+  "alloc": 317726720,
+  "newest": "2026-08-07",
+  "age_days": 70.9,
+  "classes": {
+   "FROZEN": 7,
+   "ESSENTIAL": 2
+  },
+  "class_alloc": {
+   "FROZEN": 247119872,
+   "ESSENTIAL": 70606848
+  },
+  "reference_sources": {
+   "docs": 10,
+   "scratch": 3,
+   "scripts": 23,
+   "logs": 55
+  },
+  "producers_or_consumers": [
+   "scratch/crystal_recreate_test.py",
+   "scripts/arena.py",
+   "scripts/bench_hints_ab.py",
+   "scripts/bench_step_diversity.py",
+   "scripts/bench_syndrome_head.py",
+   "scripts/bench_temp_race.py",
+   "scripts/bench_weight_anatomy.py",
+   "scripts/control_round.py",
+   "scripts/expert_iter_steps.py",
+   "scripts/expert_loop.py",
+   "scripts/step_grpo.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:p3",
+  "files": 10,
+  "bytes": 308160231,
+  "alloc": 308178944,
+  "newest": "2026-08-08",
+  "age_days": 70.5,
+  "classes": {
+   "FROZEN": 10
+  },
+  "class_alloc": {
+   "FROZEN": 308178944
+  },
+  "reference_sources": {
+   "docs": 3,
+   "scratch": 2,
+   "logs": 16
+  },
+  "producers_or_consumers": [
+   "scratch/pack_decode.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "jobs/p3r4.cmd": "UNCITED",
+   "scratch/p3_quat.py": "results-cited",
+   "scratch/p3_stream2x2.py": "results-cited"
+  },
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:seedvar",
+  "files": 3,
+  "bytes": 227000988,
+  "alloc": 227008512,
+  "newest": "2026-07-21",
+  "age_days": 87.7,
+  "classes": {
+   "UNKNOWN": 3
+  },
+  "class_alloc": {
+   "UNKNOWN": 227008512
+  },
+  "reference_sources": {
+   "scratch": 1,
+   "logs": 3
+  },
+  "producers_or_consumers": [
+   "scratch/ckpt_delete_pass.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "scratch/night2_mac_shift2.sh": "UNCITED",
+   "scratch/night_calib.sh": "UNCITED",
+   "tests/test_ckpt_plan.py": "UNCITED"
+  },
+  "proposed_action": "hold: references of an unresolved form (dynamic path, bare basename, recent)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "none"
+ },
+ {
+  "family": "root:fp64",
+  "files": 2,
+  "bytes": 226978414,
+  "alloc": 226979840,
+  "newest": "2026-07-23",
+  "age_days": 86.5,
+  "classes": {
+   "ESSENTIAL": 1,
+   "CANDIDATE": 1
+  },
+  "class_alloc": {
+   "ESSENTIAL": 151314432,
+   "CANDIDATE": 75665408
+  },
+  "reference_sources": {
+   "scratch": 1,
+   "logs": 2
+  },
+  "producers_or_consumers": [
+   "scratch/train_fp64.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "mixed: keep FROZEN/ESSENTIAL rows; DUPLICATE rows may be removed after per-row review; CANDIDATE rows need a decision; UNKNOWN rows hold",
+  "expected_benefit_bytes": 75665408,
+  "benefit_confidence": "mixed"
+ },
+ {
+  "family": "root:growdecomp",
+  "files": 1,
+  "bytes": 220446906,
+  "alloc": 220450816,
+  "newest": "2026-08-11",
+  "age_days": 66.6,
+  "classes": {
+   "FROZEN": 1
+  },
+  "class_alloc": {
+   "FROZEN": 220450816
+  },
+  "reference_sources": {
+   "docs": 1,
+   "scratch": 2,
+   "logs": 2
+  },
+  "producers_or_consumers": [
+   "scratch/grow_decomp1.sh"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:grpo",
+  "files": 1,
+  "bytes": 220446162,
+  "alloc": 220446720,
+  "newest": "2026-07-21",
+  "age_days": 87.9,
+  "classes": {
+   "ESSENTIAL": 1
+  },
+  "class_alloc": {
+   "ESSENTIAL": 220446720
+  },
+  "reference_sources": {
+   "scratch": 4,
+   "logs": 2
+  },
+  "producers_or_consumers": [
+   "scratch/day_chain.sh",
+   "scratch/grpo_shaped.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:union",
+  "files": 1,
+  "bytes": 201601496,
+  "alloc": 201605120,
+  "newest": "2026-08-07",
+  "age_days": 70.9,
+  "classes": {
+   "FROZEN": 1
+  },
+  "class_alloc": {
+   "FROZEN": 201605120
+  },
+  "reference_sources": {
+   "docs": 2,
+   "scratch": 6,
+   "logs": 5
+  },
+  "producers_or_consumers": [
+   "scratch/night_45m_union.sh",
+   "scratch/quick_exact_3080.sh",
+   "scratch/sym45.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:floorhk",
+  "files": 4,
+  "bytes": 178712795,
+  "alloc": 178724864,
+  "newest": "2026-08-11",
+  "age_days": 67.1,
+  "classes": {
+   "FROZEN": 4
+  },
+  "class_alloc": {
+   "FROZEN": 178724864
+  },
+  "reference_sources": {
+   "docs": 16,
+   "scratch": 1,
+   "logs": 4
+  },
+  "producers_or_consumers": [
+   "scratch/floor_hk1_d256.sh"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "scratch/floor_hk1.sh": "results-cited",
+   "scratch/floor_hk1_d256.sh": "UNCITED"
+  },
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:smoke",
+  "files": 3,
+  "bytes": 152913085,
+  "alloc": 152915968,
+  "newest": "2026-08-23",
+  "age_days": 55.5,
+  "classes": {
+   "CANDIDATE": 2,
+   "ESSENTIAL": 1
+  },
+  "class_alloc": {
+   "CANDIDATE": 76460032,
+   "ESSENTIAL": 76455936
+  },
+  "reference_sources": {
+   "scratch": 1
+  },
+  "producers_or_consumers": [
+   "scratch/mathworld1_active.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "mixed: keep FROZEN/ESSENTIAL rows; DUPLICATE rows may be removed after per-row review; CANDIDATE rows need a decision; UNKNOWN rows hold",
+  "expected_benefit_bytes": 76460032,
+  "benefit_confidence": "mixed"
+ },
+ {
+  "family": "root:phys",
+  "files": 2,
+  "bytes": 151340461,
+  "alloc": 151347200,
+  "newest": "2026-07-23",
+  "age_days": 86.0,
+  "classes": {
+   "ESSENTIAL": 1,
+   "CANDIDATE": 1
+  },
+  "class_alloc": {
+   "ESSENTIAL": 75673600,
+   "CANDIDATE": 75673600
+  },
+  "reference_sources": {
+   "docs": 1,
+   "logs": 2
+  },
+  "producers_or_consumers": [],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "mixed: keep FROZEN/ESSENTIAL rows; DUPLICATE rows may be removed after per-row review; CANDIDATE rows need a decision; UNKNOWN rows hold",
+  "expected_benefit_bytes": 75673600,
+  "benefit_confidence": "mixed"
+ },
+ {
+  "family": "root:cc",
+  "files": 2,
+  "bytes": 151334057,
+  "alloc": 151339008,
+  "newest": "2026-07-22",
+  "age_days": 87.4,
+  "classes": {
+   "UNKNOWN": 2
+  },
+  "class_alloc": {
+   "UNKNOWN": 151339008
+  },
+  "reference_sources": {
+   "logs": 2
+  },
+  "producers_or_consumers": [],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "scratch/chain_carry.py": "UNCITED",
+   "tests/test_ckpt_plan.py": "UNCITED"
+  },
+  "proposed_action": "hold: references of an unresolved form (dynamic path, bare basename, recent)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "none"
+ },
+ {
+  "family": "root:vrm",
+  "files": 2,
+  "bytes": 151334187,
+  "alloc": 151339008,
+  "newest": "2026-07-21",
+  "age_days": 88.2,
+  "classes": {
+   "UNKNOWN": 2
+  },
+  "class_alloc": {
+   "UNKNOWN": 151339008
+  },
+  "reference_sources": {},
+  "producers_or_consumers": [],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "scratch/vrm_ab.py": "UNCITED"
+  },
+  "proposed_action": "hold: references of an unresolved form (dynamic path, bare basename, recent)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "none"
+ },
+ {
+  "family": "root:warmbirth",
+  "files": 2,
+  "bytes": 151334642,
+  "alloc": 151339008,
+  "newest": "2026-07-18",
+  "age_days": 90.9,
+  "classes": {
+   "FROZEN": 2
+  },
+  "class_alloc": {
+   "FROZEN": 151339008
+  },
+  "reference_sources": {
+   "logs": 4
+  },
+  "producers_or_consumers": [],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:calib",
+  "files": 3,
+  "bytes": 101024176,
+  "alloc": 101031936,
+  "newest": "2026-07-27",
+  "age_days": 81.6,
+  "classes": {
+   "FROZEN": 1,
+   "ESSENTIAL": 2
+  },
+  "class_alloc": {
+   "FROZEN": 33677312,
+   "ESSENTIAL": 67354624
+  },
+  "reference_sources": {
+   "docs": 2,
+   "scratch": 7,
+   "logs": 8
+  },
+  "producers_or_consumers": [
+   "scratch/calib_dist_birth.sh",
+   "scratch/judge_decode.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "scratch/calib_dist_birth.sh": "spec-cited",
+   "scratch/calib_snap_gates.sh": "results-cited"
+  },
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:smoke4",
+  "files": 1,
+  "bytes": 76455377,
+  "alloc": 76455936,
+  "newest": "2026-08-23",
+  "age_days": 55.5,
+  "classes": {
+   "CANDIDATE": 1
+  },
+  "class_alloc": {
+   "CANDIDATE": 76455936
+  },
+  "reference_sources": {},
+  "producers_or_consumers": [],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "decide: archive off-volume or delete after manual review; nothing reaches these files",
+  "expected_benefit_bytes": 76455936,
+  "benefit_confidence": "estimate"
+ },
+ {
+  "family": "root:vmasm2",
+  "files": 1,
+  "bytes": 75713141,
+  "alloc": 75714560,
+  "newest": "2026-07-23",
+  "age_days": 86.5,
+  "classes": {
+   "CANDIDATE": 1
+  },
+  "class_alloc": {
+   "CANDIDATE": 75714560
+  },
+  "reference_sources": {
+   "logs": 1
+  },
+  "producers_or_consumers": [],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "decide: archive off-volume or delete after manual review; nothing reaches these files",
+  "expected_benefit_bytes": 75714560,
+  "benefit_confidence": "estimate"
+ },
+ {
+  "family": "root:vmasm",
+  "files": 1,
+  "bytes": 75713076,
+  "alloc": 75714560,
+  "newest": "2026-07-22",
+  "age_days": 86.6,
+  "classes": {
+   "CANDIDATE": 1
+  },
+  "class_alloc": {
+   "CANDIDATE": 75714560
+  },
+  "reference_sources": {
+   "logs": 1
+  },
+  "producers_or_consumers": [],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "decide: archive off-volume or delete after manual review; nothing reaches these files",
+  "expected_benefit_bytes": 75714560,
+  "benefit_confidence": "estimate"
+ },
+ {
+  "family": "root:dual",
+  "files": 1,
+  "bytes": 75670003,
+  "alloc": 75673600,
+  "newest": "2026-07-22",
+  "age_days": 86.7,
+  "classes": {
+   "CANDIDATE": 1
+  },
+  "class_alloc": {
+   "CANDIDATE": 75673600
+  },
+  "reference_sources": {
+   "logs": 1
+  },
+  "producers_or_consumers": [],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "decide: archive off-volume or delete after manual review; nothing reaches these files",
+  "expected_benefit_bytes": 75673600,
+  "benefit_confidence": "estimate"
+ },
+ {
+  "family": "root:port",
+  "files": 1,
+  "bytes": 75667191,
+  "alloc": 75669504,
+  "newest": "2026-07-22",
+  "age_days": 86.7,
+  "classes": {
+   "CANDIDATE": 1
+  },
+  "class_alloc": {
+   "CANDIDATE": 75669504
+  },
+  "reference_sources": {
+   "logs": 1
+  },
+  "producers_or_consumers": [],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "decide: archive off-volume or delete after manual review; nothing reaches these files",
+  "expected_benefit_bytes": 75669504,
+  "benefit_confidence": "estimate"
+ },
+ {
+  "family": "root:template",
+  "files": 1,
+  "bytes": 75667256,
+  "alloc": 75669504,
+  "newest": "2026-07-18",
+  "age_days": 90.8,
+  "classes": {
+   "CANDIDATE": 1
+  },
+  "class_alloc": {
+   "CANDIDATE": 75669504
+  },
+  "reference_sources": {
+   "logs": 4
+  },
+  "producers_or_consumers": [],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "decide: archive off-volume or delete after manual review; nothing reaches these files",
+  "expected_benefit_bytes": 75669504,
+  "benefit_confidence": "estimate"
+ },
+ {
+  "family": "root:umoe",
+  "files": 18,
+  "bytes": 71600577,
+  "alloc": 71630848,
+  "newest": "2026-07-31",
+  "age_days": 78.1,
+  "classes": {
+   "UNKNOWN": 11,
+   "FROZEN": 6,
+   "DUPLICATE": 1
+  },
+  "class_alloc": {
+   "UNKNOWN": 46673920,
+   "FROZEN": 21200896,
+   "DUPLICATE": 3756032
+  },
+  "reference_sources": {
+   "docs": 9,
+   "scratch": 7,
+   "logs": 50
+  },
+  "producers_or_consumers": [
+   "scratch/gate_regate.py",
+   "scratch/gate_transcripts.py",
+   "scratch/grav_posthoc.py"
+  ],
+  "duplicate_alloc": 3756032,
+  "duplicate_alloc_verified_distinct": 3756032,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "scratch/basin_probe.py": "UNCITED",
+   "scratch/grav1b_distance.py": "UNCITED",
+   "scratch/grav_probe.py": "library",
+   "scratch/scaffold_review.py": "results-cited",
+   "scratch/umoe_conserve.py": "library"
+  },
+  "proposed_action": "mixed: keep FROZEN/ESSENTIAL rows; DUPLICATE rows may be removed after per-row review; CANDIDATE rows need a decision; UNKNOWN rows hold",
+  "expected_benefit_bytes": 3756032,
+  "benefit_confidence": "mixed"
+ },
+ {
+  "family": "root:msearch",
+  "files": 48,
+  "bytes": 68542197,
+  "alloc": 68681728,
+  "newest": "2026-08-11",
+  "age_days": 67.1,
+  "classes": {
+   "FROZEN": 48
+  },
+  "class_alloc": {
+   "FROZEN": 68681728
+  },
+  "reference_sources": {
+   "docs": 192,
+   "scratch": 56,
+   "logs": 16,
+   "checkpoints": 49
+  },
+  "producers_or_consumers": [
+   "scratch/merge_space1.sh",
+   "scratch/merge_space2.sh",
+   "scratch/merge_space3.sh",
+   "scratch/merge_space4.sh",
+   "scratch/merge_space5.sh"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 48
+  },
+  "dynamic_sources": {
+   "scratch/merge_space1.sh": "UNCITED",
+   "scratch/merge_space2.sh": "UNCITED",
+   "scratch/merge_space4.sh": "UNCITED",
+   "scratch/merge_space5.sh": "UNCITED"
+  },
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:scorer",
+  "files": 2,
+  "bytes": 67349234,
+  "alloc": 67354624,
+  "newest": "2026-07-27",
+  "age_days": 82.5,
+  "classes": {
+   "FROZEN": 1,
+   "UNKNOWN": 1
+  },
+  "class_alloc": {
+   "FROZEN": 33677312,
+   "UNKNOWN": 33677312
+  },
+  "reference_sources": {
+   "docs": 8,
+   "scratch": 2
+  },
+  "producers_or_consumers": [
+   "scratch/e2_logit_check.py",
+   "scratch/e3_battery.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "scratch/scorer_s2_train.py": "spec-cited"
+  },
+  "proposed_action": "hold: references of an unresolved form (dynamic path, bare basename, recent)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "none"
+ },
+ {
+  "family": "root:quat",
+  "files": 2,
+  "bytes": 67344370,
+  "alloc": 67346432,
+  "newest": "2026-07-28",
+  "age_days": 81.2,
+  "classes": {
+   "UNKNOWN": 1,
+   "FROZEN": 1
+  },
+  "class_alloc": {
+   "UNKNOWN": 33673216,
+   "FROZEN": 33673216
+  },
+  "reference_sources": {
+   "docs": 2,
+   "logs": 6
+  },
+  "producers_or_consumers": [],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 1
+  },
+  "dynamic_sources": {
+   "scratch/quat_convert.py": "library"
+  },
+  "proposed_action": "hold: references of an unresolved form (dynamic path, bare basename, recent)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "none"
+ },
+ {
+  "family": "root:rot",
+  "files": 2,
+  "bytes": 67344240,
+  "alloc": 67346432,
+  "newest": "2026-07-28",
+  "age_days": 81.2,
+  "classes": {
+   "UNKNOWN": 1,
+   "FROZEN": 1
+  },
+  "class_alloc": {
+   "UNKNOWN": 33673216,
+   "FROZEN": 33673216
+  },
+  "reference_sources": {
+   "docs": 3
+  },
+  "producers_or_consumers": [],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "scratch/rot_convert.py": "spec-cited"
+  },
+  "proposed_action": "hold: references of an unresolved form (dynamic path, bare basename, recent)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "none"
+ },
+ {
+  "family": "root:proposer",
+  "files": 3,
+  "bytes": 53124693,
+  "alloc": 53133312,
+  "newest": "2026-07-08",
+  "age_days": 101.5,
+  "classes": {
+   "FROZEN": 3
+  },
+  "class_alloc": {
+   "FROZEN": 53133312
+  },
+  "reference_sources": {
+   "scripts": 16,
+   "logs": 10,
+   "git": 3
+  },
+  "producers_or_consumers": [
+   "scripts/bench_adaptive.py",
+   "scripts/bench_bestfirst_llm.py",
+   "scripts/bench_frontier.py",
+   "scripts/bench_fused.py",
+   "scripts/bench_hybrid.py",
+   "scripts/bench_proposer.py",
+   "scripts/bench_record.py",
+   "scripts/harvest_frontier.py",
+   "scripts/tabula_rasa_r1.py",
+   "scripts/tabula_rasa_r2.py",
+   "scripts/train_magic_llm.py",
+   "scripts/train_proposer.py",
+   "scripts/train_value_head.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 3
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "v4flash_sample",
+  "files": 235,
+  "bytes": 50634688,
+  "alloc": 51478528,
+  "newest": "2026-08-03",
+  "age_days": 75.3,
+  "classes": {
+   "ESSENTIAL": 235
+  },
+  "class_alloc": {
+   "ESSENTIAL": 51478528
+  },
+  "reference_sources": {
+   "scratch": 1176,
+   "logs": 11,
+   "checkpoints": 28
+  },
+  "producers_or_consumers": [
+   "scratch/v4flash_rung0.py",
+   "scratch/v4flash_rungA.py",
+   "scratch/v4flash_s0.py",
+   "scratch/v4flash_twin.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:matryoshka",
+  "files": 3,
+  "bytes": 36962610,
+  "alloc": 36966400,
+  "newest": "2026-07-29",
+  "age_days": 80.2,
+  "classes": {
+   "FROZEN": 3
+  },
+  "class_alloc": {
+   "FROZEN": 36966400
+  },
+  "reference_sources": {
+   "docs": 10,
+   "scratch": 7
+  },
+  "producers_or_consumers": [
+   "scratch/matryoshka_r1.py",
+   "scratch/matryoshka_r2.py",
+   "scratch/pack_tiered.py",
+   "scratch/tier_escalate.py",
+   "scratch/tier_retry.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:qwen05",
+  "files": 2,
+  "bytes": 34868708,
+  "alloc": 34873344,
+  "newest": "2026-08-08",
+  "age_days": 69.9,
+  "classes": {
+   "ESSENTIAL": 1,
+   "UNKNOWN": 1
+  },
+  "class_alloc": {
+   "ESSENTIAL": 17436672,
+   "UNKNOWN": 17436672
+  },
+  "reference_sources": {
+   "scratch": 2,
+   "scripts": 1
+  },
+  "producers_or_consumers": [
+   "scratch/crystal_recreate_test.py",
+   "scratch/qwen_displace_extract.py",
+   "scripts/render_gallery.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "scratch/qwen_displace_extract.py": "spec-cited"
+  },
+  "proposed_action": "hold: references of an unresolved form (dynamic path, bare basename, recent)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "none"
+ },
+ {
+  "family": "root:muon3",
+  "files": 1,
+  "bytes": 33674487,
+  "alloc": 33677312,
+  "newest": "2026-07-28",
+  "age_days": 81.5,
+  "classes": {
+   "ESSENTIAL": 1
+  },
+  "class_alloc": {
+   "ESSENTIAL": 33677312
+  },
+  "reference_sources": {
+   "scratch": 2,
+   "logs": 2
+  },
+  "producers_or_consumers": [
+   "scratch/muon_3ep_d256.py",
+   "scratch/night_28_mac.sh"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "confirmed",
+  "files": 11,
+  "bytes": 31354072,
+  "alloc": 31375360,
+  "newest": "2026-07-31",
+  "age_days": 78.4,
+  "classes": {
+   "FROZEN": 11
+  },
+  "class_alloc": {
+   "FROZEN": 31375360
+  },
+  "reference_sources": {
+   "docs": 53,
+   "logs": 22,
+   "checkpoints": 11,
+   "git": 11
+  },
+  "producers_or_consumers": [],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 11
+  },
+  "dynamic_sources": {
+   "scripts/ckpt_manifest.py": "library",
+   "scripts/gen_catalog.py": "library",
+   "tests/test_ckpt_plan.py": "UNCITED"
+  },
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:value",
+  "files": 2,
+  "bytes": 18206324,
+  "alloc": 18206720,
+  "newest": "2026-07-26",
+  "age_days": 82.8,
+  "classes": {
+   "FROZEN": 2
+  },
+  "class_alloc": {
+   "FROZEN": 18206720
+  },
+  "reference_sources": {
+   "scripts": 4,
+   "logs": 7,
+   "git": 2
+  },
+  "producers_or_consumers": [
+   "scripts/bench_fused.py",
+   "scripts/train_value_head.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 2
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:diff",
+  "files": 1,
+  "bytes": 17708345,
+  "alloc": 17711104,
+  "newest": "2026-07-05",
+  "age_days": 103.7,
+  "classes": {
+   "FROZEN": 1
+  },
+  "class_alloc": {
+   "FROZEN": 17711104
+  },
+  "reference_sources": {
+   "docs": 2,
+   "scripts": 1,
+   "logs": 2,
+   "git": 1
+  },
+  "producers_or_consumers": [
+   "scripts/task_composition.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 1
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:int",
+  "files": 1,
+  "bytes": 17708003,
+  "alloc": 17711104,
+  "newest": "2026-07-05",
+  "age_days": 103.7,
+  "classes": {
+   "FROZEN": 1
+  },
+  "class_alloc": {
+   "FROZEN": 17711104
+  },
+  "reference_sources": {
+   "docs": 6,
+   "scripts": 2,
+   "logs": 2,
+   "git": 1
+  },
+  "producers_or_consumers": [
+   "scripts/task_composition.py",
+   "scripts/train_calculus.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 1
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:calculus",
+  "files": 1,
+  "bytes": 17703267,
+  "alloc": 17707008,
+  "newest": "2026-07-05",
+  "age_days": 103.6,
+  "classes": {
+   "FROZEN": 1
+  },
+  "class_alloc": {
+   "FROZEN": 17707008
+  },
+  "reference_sources": {
+   "docs": 6,
+   "scripts": 4,
+   "logs": 2,
+   "git": 1
+  },
+  "producers_or_consumers": [
+   "scripts/bench_regret_resample.py",
+   "scripts/task_arithmetic.py",
+   "scripts/train_calculus.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 1
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "k3_expert_l45_e7",
+  "files": 7,
+  "bytes": 17548312,
+  "alloc": 17551360,
+  "newest": "2026-07-30",
+  "age_days": 79.1,
+  "classes": {
+   "ESSENTIAL": 7
+  },
+  "class_alloc": {
+   "ESSENTIAL": 17551360
+  },
+  "reference_sources": {
+   "scratch": 14,
+   "logs": 28
+  },
+  "producers_or_consumers": [
+   "scratch/k3_expert_demo.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "k3_expert_l70_e512",
+  "files": 7,
+  "bytes": 17548312,
+  "alloc": 17551360,
+  "newest": "2026-07-30",
+  "age_days": 79.1,
+  "classes": {
+   "CANDIDATE": 7
+  },
+  "class_alloc": {
+   "CANDIDATE": 17551360
+  },
+  "reference_sources": {},
+  "producers_or_consumers": [],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "decide: archive off-volume or delete after manual review; nothing reaches these files",
+  "expected_benefit_bytes": 17551360,
+  "benefit_confidence": "estimate"
+ },
+ {
+  "family": "root:grav2",
+  "files": 8,
+  "bytes": 17141452,
+  "alloc": 17170432,
+  "newest": "2026-08-07",
+  "age_days": 70.8,
+  "classes": {
+   "DUPLICATE": 2,
+   "UNKNOWN": 6
+  },
+  "class_alloc": {
+   "DUPLICATE": 4292608,
+   "UNKNOWN": 12877824
+  },
+  "reference_sources": {
+   "logs": 2
+  },
+  "producers_or_consumers": [],
+  "duplicate_alloc": 4292608,
+  "duplicate_alloc_verified_distinct": 4292608,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "scratch/grav2_spacetime.py": "library"
+  },
+  "proposed_action": "mixed: keep FROZEN/ESSENTIAL rows; DUPLICATE rows may be removed after per-row review; CANDIDATE rows need a decision; UNKNOWN rows hold",
+  "expected_benefit_bytes": 4292608,
+  "benefit_confidence": "mixed"
+ },
+ {
+  "family": "root:fourier",
+  "files": 2,
+  "bytes": 4305330,
+  "alloc": 4308992,
+  "newest": "2026-07-31",
+  "age_days": 78.0,
+  "classes": {
+   "UNKNOWN": 2
+  },
+  "class_alloc": {
+   "UNKNOWN": 4308992
+  },
+  "reference_sources": {},
+  "producers_or_consumers": [],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "scratch/fourier_g9.py": "results-cited"
+  },
+  "proposed_action": "hold: references of an unresolved form (dynamic path, bare basename, recent)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "none"
+ },
+ {
+  "family": "root:fourier3",
+  "files": 2,
+  "bytes": 4292726,
+  "alloc": 4300800,
+  "newest": "2026-07-31",
+  "age_days": 78.1,
+  "classes": {
+   "FROZEN": 1,
+   "CANDIDATE": 1
+  },
+  "class_alloc": {
+   "FROZEN": 2150400,
+   "CANDIDATE": 2150400
+  },
+  "reference_sources": {
+   "docs": 1,
+   "scratch": 1,
+   "logs": 1
+  },
+  "producers_or_consumers": [
+   "scratch/fourier3_algdiet.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "mixed: keep FROZEN/ESSENTIAL rows; DUPLICATE rows may be removed after per-row review; CANDIDATE rows need a decision; UNKNOWN rows hold",
+  "expected_benefit_bytes": 2150400,
+  "benefit_confidence": "mixed"
+ },
+ {
+  "family": "root:cal",
+  "files": 2,
+  "bytes": 4287222,
+  "alloc": 4292608,
+  "newest": "2026-07-30",
+  "age_days": 78.9,
+  "classes": {
+   "ESSENTIAL": 1,
+   "DUPLICATE": 1
+  },
+  "class_alloc": {
+   "ESSENTIAL": 2146304,
+   "DUPLICATE": 2146304
+  },
+  "reference_sources": {
+   "scratch": 1,
+   "logs": 12
+  },
+  "producers_or_consumers": [
+   "scratch/cal_dilute.py"
+  ],
+  "duplicate_alloc": 2146304,
+  "duplicate_alloc_verified_distinct": 2146304,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "scratch/cal_dilute.py": "results-cited"
+  },
+  "proposed_action": "mixed: keep FROZEN/ESSENTIAL rows; DUPLICATE rows may be removed after per-row review; CANDIDATE rows need a decision; UNKNOWN rows hold",
+  "expected_benefit_bytes": 2146304,
+  "benefit_confidence": "mixed"
+ },
+ {
+  "family": "root:fourier2",
+  "files": 1,
+  "bytes": 2146428,
+  "alloc": 2150400,
+  "newest": "2026-07-31",
+  "age_days": 78.2,
+  "classes": {
+   "FROZEN": 1
+  },
+  "class_alloc": {
+   "FROZEN": 2150400
+  },
+  "reference_sources": {
+   "docs": 3,
+   "scratch": 2,
+   "logs": 1
+  },
+  "producers_or_consumers": [
+   "scratch/fourier2b_widemod.py",
+   "scratch/rotinstr_control.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:fourier4",
+  "files": 1,
+  "bytes": 2146493,
+  "alloc": 2150400,
+  "newest": "2026-07-31",
+  "age_days": 77.9,
+  "classes": {
+   "FROZEN": 1
+  },
+  "class_alloc": {
+   "FROZEN": 2150400
+  },
+  "reference_sources": {
+   "docs": 1,
+   "scratch": 1,
+   "logs": 1
+  },
+  "producers_or_consumers": [
+   "scratch/fourier4a_dynamics.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:microstar",
+  "files": 1,
+  "bytes": 2143352,
+  "alloc": 2146304,
+  "newest": "2026-08-11",
+  "age_days": 67.5,
+  "classes": {
+   "FROZEN": 1
+  },
+  "class_alloc": {
+   "FROZEN": 2146304
+  },
+  "reference_sources": {
+   "docs": 5,
+   "logs": 1
+  },
+  "producers_or_consumers": [],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 1
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:exact",
+  "files": 1,
+  "bytes": 1645245,
+  "alloc": 1646592,
+  "newest": "2026-07-29",
+  "age_days": 80.2,
+  "classes": {
+   "FROZEN": 1
+  },
+  "class_alloc": {
+   "FROZEN": 1646592
+  },
+  "reference_sources": {
+   "docs": 3,
+   "scratch": 1
+  },
+  "producers_or_consumers": [
+   "scratch/exact_twin_d56.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:packed",
+  "files": 6,
+  "bytes": 1355710,
+  "alloc": 1368064,
+  "newest": "2026-07-30",
+  "age_days": 79.2,
+  "classes": {
+   "UNKNOWN": 6
+  },
+  "class_alloc": {
+   "UNKNOWN": 1368064
+  },
+  "reference_sources": {},
+  "producers_or_consumers": [],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "scratch/pack_crystal.py": "results-cited",
+   "scratch/pack_rans.py": "results-cited",
+   "tests/test_ckpt_plan.py": "UNCITED"
+  },
+  "proposed_action": "hold: references of an unresolved form (dynamic path, bare basename, recent)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "none"
+ },
+ {
+  "family": "root:pred",
+  "files": 4,
+  "bytes": 1253084,
+  "alloc": 1261568,
+  "newest": "2026-07-13",
+  "age_days": 95.8,
+  "classes": {
+   "ESSENTIAL": 2,
+   "FROZEN": 2
+  },
+  "class_alloc": {
+   "ESSENTIAL": 458752,
+   "FROZEN": 802816
+  },
+  "reference_sources": {
+   "docs": 4,
+   "scripts": 4,
+   "logs": 8,
+   "git": 4
+  },
+  "producers_or_consumers": [
+   "scripts/bench_hints_ab.py",
+   "scripts/bench_pred_syndromes.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 4
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:k3",
+  "files": 1,
+  "bytes": 525893,
+  "alloc": 528384,
+  "newest": "2026-07-30",
+  "age_days": 79.1,
+  "classes": {
+   "ESSENTIAL": 1
+  },
+  "class_alloc": {
+   "ESSENTIAL": 528384
+  },
+  "reference_sources": {
+   "scratch": 2,
+   "logs": 4
+  },
+  "producers_or_consumers": [
+   "scratch/k3_expert_demo.py",
+   "scratch/v4flash_rungA.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:gt2",
+  "files": 6,
+  "bytes": 413200,
+  "alloc": 425984,
+  "newest": "2026-08-04",
+  "age_days": 73.6,
+  "classes": {
+   "FROZEN": 5,
+   "UNKNOWN": 1
+  },
+  "class_alloc": {
+   "FROZEN": 389120,
+   "UNKNOWN": 36864
+  },
+  "reference_sources": {
+   "docs": 7,
+   "scratch": 1,
+   "jobs": 6,
+   "logs": 11
+  },
+  "producers_or_consumers": [
+   "jobs/gt2_crossarms.cmd",
+   "jobs/gt2_d4_phys.cmd",
+   "jobs/gt2_d4_phys2.cmd",
+   "jobs/gt2_d4_phys_b.cmd",
+   "jobs/gt2_phys_arm0.cmd",
+   "scratch/gt2_code_arm0.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "llmopt/lab/keepsets.py": "UNCITED",
+   "scratch/gt2_jaccard.py": "library",
+   "tests/test_lab_keepsets.py": "UNCITED"
+  },
+  "proposed_action": "hold: references of an unresolved form (dynamic path, bare basename, recent)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "none"
+ },
+ {
+  "family": "root:ex2",
+  "files": 24,
+  "bytes": 348995,
+  "alloc": 393216,
+  "newest": "2026-08-06",
+  "age_days": 71.6,
+  "classes": {
+   "UNKNOWN": 24
+  },
+  "class_alloc": {
+   "UNKNOWN": 393216
+  },
+  "reference_sources": {},
+  "producers_or_consumers": [],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "scratch/ex2_build.py": "results-cited"
+  },
+  "proposed_action": "hold: references of an unresolved form (dynamic path, bare basename, recent)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "none"
+ },
+ {
+  "family": "root:ex1",
+  "files": 19,
+  "bytes": 280448,
+  "alloc": 323584,
+  "newest": "2026-08-07",
+  "age_days": 71.5,
+  "classes": {
+   "FROZEN": 3,
+   "UNKNOWN": 4,
+   "CANDIDATE": 12
+  },
+  "class_alloc": {
+   "FROZEN": 61440,
+   "UNKNOWN": 65536,
+   "CANDIDATE": 196608
+  },
+  "reference_sources": {
+   "docs": 5,
+   "scratch": 2,
+   "logs": 2
+  },
+  "producers_or_consumers": [
+   "scratch/ex3_build.py",
+   "scratch/ex5_observe.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "scratch/ex1_swap.py": "results-cited"
+  },
+  "proposed_action": "mixed: keep FROZEN/ESSENTIAL rows; DUPLICATE rows may be removed after per-row review; CANDIDATE rows need a decision; UNKNOWN rows hold",
+  "expected_benefit_bytes": 196608,
+  "benefit_confidence": "mixed"
+ },
+ {
+  "family": "root:gt6",
+  "files": 12,
+  "bytes": 161289,
+  "alloc": 188416,
+  "newest": "2026-08-05",
+  "age_days": 73.0,
+  "classes": {
+   "UNKNOWN": 6,
+   "ESSENTIAL": 6
+  },
+  "class_alloc": {
+   "UNKNOWN": 81920,
+   "ESSENTIAL": 106496
+  },
+  "reference_sources": {
+   "scratch": 6,
+   "logs": 6
+  },
+  "producers_or_consumers": [
+   "scratch/gt6_resume_arms.sh"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "scratch/gt7_coverage_rederive.py": "results-cited"
+  },
+  "proposed_action": "hold: references of an unresolved form (dynamic path, bare basename, recent)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "none"
+ },
+ {
+  "family": "root:moe",
+  "files": 1,
+  "bytes": 182454,
+  "alloc": 184320,
+  "newest": "2026-08-04",
+  "age_days": 74.0,
+  "classes": {
+   "FROZEN": 1
+  },
+  "class_alloc": {
+   "FROZEN": 184320
+  },
+  "reference_sources": {
+   "docs": 9,
+   "scratch": 21,
+   "logs": 35
+  },
+  "producers_or_consumers": [
+   "scratch/atlas_precompute.py",
+   "scratch/ex1_swap.py",
+   "scratch/ex2_build.py",
+   "scratch/ex3_build.py",
+   "scratch/ex4_mask_census.py",
+   "scratch/ex5_manifest.py",
+   "scratch/ex5_traj_census.py",
+   "scratch/gt6_recall_ladder.py",
+   "scratch/gt7_coverage_rederive.py",
+   "scratch/gt7_draw.py",
+   "scratch/moe_gt1.py",
+   "scratch/moe_gt1_arm2.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:router",
+  "files": 1,
+  "bytes": 182052,
+  "alloc": 184320,
+  "newest": "2026-07-05",
+  "age_days": 103.6,
+  "classes": {
+   "FROZEN": 1
+  },
+  "class_alloc": {
+   "FROZEN": 184320
+  },
+  "reference_sources": {
+   "docs": 1,
+   "scripts": 4,
+   "llmopt": 1,
+   "logs": 2,
+   "git": 1
+  },
+  "producers_or_consumers": [
+   "llmopt/runs/traj.py",
+   "scripts/eval_pruned_moe.py",
+   "scripts/moe_router_stats.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 1
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:ex5",
+  "files": 6,
+  "bytes": 152886,
+  "alloc": 172032,
+  "newest": "2026-08-20",
+  "age_days": 57.6,
+  "classes": {
+   "UNKNOWN": 6
+  },
+  "class_alloc": {
+   "UNKNOWN": 172032
+  },
+  "reference_sources": {},
+  "producers_or_consumers": [],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "scratch/ex5_build.py": "results-cited"
+  },
+  "proposed_action": "hold: references of an unresolved form (dynamic path, bare basename, recent)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "none"
+ },
+ {
+  "family": "root:gt7",
+  "files": 10,
+  "bytes": 150185,
+  "alloc": 172032,
+  "newest": "2026-08-06",
+  "age_days": 72.0,
+  "classes": {
+   "CANDIDATE": 10
+  },
+  "class_alloc": {
+   "CANDIDATE": 172032
+  },
+  "reference_sources": {},
+  "producers_or_consumers": [],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "decide: archive off-volume or delete after manual review; nothing reaches these files",
+  "expected_benefit_bytes": 172032,
+  "benefit_confidence": "estimate"
+ },
+ {
+  "family": "root:magic",
+  "files": 5,
+  "bytes": 138649,
+  "alloc": 147456,
+  "newest": "2026-07-12",
+  "age_days": 97.5,
+  "classes": {
+   "ESSENTIAL": 4,
+   "FROZEN": 1
+  },
+  "class_alloc": {
+   "ESSENTIAL": 118784,
+   "FROZEN": 28672
+  },
+  "reference_sources": {
+   "docs": 2,
+   "scratch": 3,
+   "scripts": 6,
+   "llmopt": 1,
+   "logs": 10,
+   "git": 5
+  },
+  "producers_or_consumers": [
+   "llmopt/search/engine.py",
+   "scratch/fig_magic_scatter.py",
+   "scripts/bench_budget_alloc.py",
+   "scripts/bench_llm_gating.py",
+   "scripts/expert_iter_steps.py",
+   "scripts/gen_frontier.py",
+   "scripts/gen_magic_labels.py",
+   "scripts/train_magic_estimator.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 5
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:dispatcher",
+  "files": 4,
+  "bytes": 122586,
+  "alloc": 131072,
+  "newest": "2026-07-12",
+  "age_days": 97.2,
+  "classes": {
+   "FROZEN": 1,
+   "ESSENTIAL": 3
+  },
+  "class_alloc": {
+   "FROZEN": 32768,
+   "ESSENTIAL": 98304
+  },
+  "reference_sources": {
+   "docs": 1,
+   "scripts": 3,
+   "llmopt": 2,
+   "logs": 8,
+   "git": 4
+  },
+  "producers_or_consumers": [
+   "llmopt/search/engine.py",
+   "scripts/bench_dispatch_race_v4.py",
+   "scripts/train_dispatcher.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 4
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:ex3",
+  "files": 6,
+  "bytes": 103542,
+  "alloc": 122880,
+  "newest": "2026-08-07",
+  "age_days": 71.2,
+  "classes": {
+   "FROZEN": 5,
+   "ESSENTIAL": 1
+  },
+  "class_alloc": {
+   "FROZEN": 118784,
+   "ESSENTIAL": 4096
+  },
+  "reference_sources": {
+   "docs": 21,
+   "scratch": 27,
+   "logs": 60,
+   "git": 1
+  },
+  "producers_or_consumers": [
+   "scratch/atlas_precompute.py",
+   "scratch/ex3_build.py",
+   "scratch/ex4_mask_census.py",
+   "scratch/ex5_build.py",
+   "scratch/ex5_manifest.py",
+   "scratch/ex5_observe.py",
+   "scratch/ex5_traj_census.py",
+   "scratch/ex5_traj_rider.py",
+   "scratch/ex5_traj_rider2.py",
+   "scratch/ex6_observe.py",
+   "scratch/ex6_phase.py",
+   "scratch/ex6b43_decomp.py",
+   "scratch/ex6b43_idcensus.py",
+   "scratch/ex6b43_knife.py",
+   "scratch/ex6depth.py",
+   "scratch/ex6depth1.py",
+   "scratch/ex6med.py",
+   "scratch/ex6temporal.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 1
+  },
+  "dynamic_sources": {
+   "scratch/ex3_build.py": "library"
+  },
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:syndrome",
+  "files": 2,
+  "bytes": 105672,
+  "alloc": 110592,
+  "newest": "2026-07-10",
+  "age_days": 98.6,
+  "classes": {
+   "ESSENTIAL": 2
+  },
+  "class_alloc": {
+   "ESSENTIAL": 110592
+  },
+  "reference_sources": {
+   "scripts": 4,
+   "llmopt": 1,
+   "logs": 4,
+   "git": 2
+  },
+  "producers_or_consumers": [
+   "llmopt/search/engine.py",
+   "scripts/bench_syndrome_policy.py",
+   "scripts/train_syndrome_decoder.py",
+   "scripts/train_syndrome_policy.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 2
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "v4flash_vendor",
+  "files": 5,
+  "bytes": 80921,
+  "alloc": 94208,
+  "newest": "2026-08-03",
+  "age_days": 75.2,
+  "classes": {
+   "FROZEN": 2,
+   "ESSENTIAL": 3
+  },
+  "class_alloc": {
+   "FROZEN": 12288,
+   "ESSENTIAL": 81920
+  },
+  "reference_sources": {
+   "docs": 4,
+   "scratch": 14
+  },
+  "producers_or_consumers": [
+   "scratch/k2h_transport.py",
+   "scratch/v4flash_f1b.py",
+   "scratch/v4flash_header.py",
+   "scratch/v4flash_rungA.py",
+   "scratch/v4flash_rungd.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:ex4",
+  "files": 3,
+  "bytes": 76447,
+  "alloc": 86016,
+  "newest": "2026-08-13",
+  "age_days": 64.7,
+  "classes": {
+   "FROZEN": 3
+  },
+  "class_alloc": {
+   "FROZEN": 86016
+  },
+  "reference_sources": {
+   "docs": 3,
+   "scratch": 3
+  },
+  "producers_or_consumers": [
+   "scratch/ex4_build.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:gt5",
+  "files": 4,
+  "bytes": 63655,
+  "alloc": 65536,
+  "newest": "2026-08-05",
+  "age_days": 73.2,
+  "classes": {
+   "FROZEN": 1,
+   "UNKNOWN": 3
+  },
+  "class_alloc": {
+   "FROZEN": 16384,
+   "UNKNOWN": 49152
+  },
+  "reference_sources": {
+   "docs": 4,
+   "scratch": 3
+  },
+  "producers_or_consumers": [
+   "scratch/gt5_union_keep.py",
+   "scratch/gt5c_randfill_keep.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {
+   "scratch/gt5c_randfill_keep.py": "reproduce-pinned"
+  },
+  "proposed_action": "hold: references of an unresolved form (dynamic path, bare basename, recent)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "none"
+ },
+ {
+  "family": "root:rule",
+  "files": 1,
+  "bytes": 63913,
+  "alloc": 65536,
+  "newest": "2026-07-10",
+  "age_days": 98.6,
+  "classes": {
+   "ESSENTIAL": 1
+  },
+  "class_alloc": {
+   "ESSENTIAL": 65536
+  },
+  "reference_sources": {
+   "scripts": 2,
+   "logs": 2,
+   "git": 1
+  },
+  "producers_or_consumers": [
+   "scripts/bench_gated.py",
+   "scripts/train_syndrome_policy.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 1
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:gt3",
+  "files": 4,
+  "bytes": 38521,
+  "alloc": 49152,
+  "newest": "2026-08-05",
+  "age_days": 73.5,
+  "classes": {
+   "FROZEN": 1,
+   "ESSENTIAL": 2,
+   "CANDIDATE": 1
+  },
+  "class_alloc": {
+   "FROZEN": 8192,
+   "ESSENTIAL": 36864,
+   "CANDIDATE": 4096
+  },
+  "reference_sources": {
+   "docs": 2,
+   "scratch": 19,
+   "jobs": 3
+  },
+  "producers_or_consumers": [
+   "jobs/gt3_arm0s.cmd",
+   "jobs/gt3_d3_core.cmd",
+   "scratch/ex1_swap.py",
+   "scratch/ex2_build.py",
+   "scratch/ex3_build.py",
+   "scratch/ex5_traj_census.py",
+   "scratch/gt3_probe_arm0.py",
+   "scratch/gt4_dialog_prompts.py",
+   "scratch/gt4_verbal_core.py",
+   "scratch/gt5_union_keep.py",
+   "scratch/gt5c_randfill_keep.py",
+   "scratch/gt6_recall_ladder.py",
+   "scratch/gt6_resume_arms.sh",
+   "scratch/gt7_coverage_rederive.py",
+   "scratch/gt7_draw.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "mixed: keep FROZEN/ESSENTIAL rows; DUPLICATE rows may be removed after per-row review; CANDIDATE rows need a decision; UNKNOWN rows hold",
+  "expected_benefit_bytes": 4096,
+  "benefit_confidence": "mixed"
+ },
+ {
+  "family": "root:nnue",
+  "files": 1,
+  "bytes": 26025,
+  "alloc": 28672,
+  "newest": "2026-07-06",
+  "age_days": 103.3,
+  "classes": {
+   "FROZEN": 1
+  },
+  "class_alloc": {
+   "FROZEN": 28672
+  },
+  "reference_sources": {
+   "docs": 3,
+   "scripts": 19,
+   "logs": 2,
+   "git": 1
+  },
+  "producers_or_consumers": [
+   "scripts/autopsy_int.py",
+   "scripts/bench_anneal.py",
+   "scripts/bench_bandit.py",
+   "scripts/bench_bestfirst_llm.py",
+   "scripts/bench_bestfirst_nnue.py",
+   "scripts/bench_commute.py",
+   "scripts/bench_fused.py",
+   "scripts/bench_interference.py",
+   "scripts/bench_lazy.py",
+   "scripts/bench_magic.py",
+   "scripts/bench_nnue.py",
+   "scripts/bench_opcap.py",
+   "scripts/bench_proposer.py",
+   "scripts/bench_record.py",
+   "scripts/bench_rule_basis.py",
+   "scripts/bench_stack_winners.py",
+   "scripts/markov_eval.py",
+   "scripts/train_nnue.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 1
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:gt4",
+  "files": 1,
+  "bytes": 12614,
+  "alloc": 16384,
+  "newest": "2026-08-05",
+  "age_days": 73.2,
+  "classes": {
+   "FROZEN": 1
+  },
+  "class_alloc": {
+   "FROZEN": 16384
+  },
+  "reference_sources": {
+   "docs": 3,
+   "scratch": 2
+  },
+  "producers_or_consumers": [
+   "scratch/gt4_dialog_prompts.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 0
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:engine",
+  "files": 1,
+  "bytes": 9637,
+  "alloc": 12288,
+  "newest": "2026-07-12",
+  "age_days": 97.4,
+  "classes": {
+   "ESSENTIAL": 1
+  },
+  "class_alloc": {
+   "ESSENTIAL": 12288
+  },
+  "reference_sources": {
+   "scripts": 1,
+   "logs": 2,
+   "git": 1
+  },
+  "producers_or_consumers": [
+   "scripts/bench_engine_regret.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 1
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:zx",
+  "files": 2,
+  "bytes": 1184,
+  "alloc": 8192,
+  "newest": "2026-07-09",
+  "age_days": 100.2,
+  "classes": {
+   "ESSENTIAL": 2
+  },
+  "class_alloc": {
+   "ESSENTIAL": 8192
+  },
+  "reference_sources": {
+   "scripts": 4,
+   "logs": 4,
+   "git": 2
+  },
+  "producers_or_consumers": [
+   "scripts/bench_zx_r3.py",
+   "scripts/bench_zx_r7.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 2
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:MANIFEST",
+  "files": 1,
+  "bytes": 2991,
+  "alloc": 4096,
+  "newest": "2026-07-31",
+  "age_days": 78.4,
+  "classes": {
+   "FROZEN": 1
+  },
+  "class_alloc": {
+   "FROZEN": 4096
+  },
+  "reference_sources": {
+   "docs": 3,
+   "scripts": 9,
+   "llmopt": 1,
+   "tests": 5,
+   "logs": 2,
+   "git": 1
+  },
+  "producers_or_consumers": [
+   "llmopt/lab/catalog.py",
+   "scripts/ckpt_census.py",
+   "scripts/ckpt_manifest.py",
+   "scripts/gen_catalog.py",
+   "tests/test_catalog.py",
+   "tests/test_ckpt_census.py",
+   "tests/test_ckpt_manifest.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 1
+  },
+  "dynamic_sources": {
+   "scripts/ckpt_census.py": "library"
+  },
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:markov",
+  "files": 1,
+  "bytes": 3659,
+  "alloc": 4096,
+  "newest": "2026-07-10",
+  "age_days": 99.4,
+  "classes": {
+   "FROZEN": 1
+  },
+  "class_alloc": {
+   "FROZEN": 4096
+  },
+  "reference_sources": {
+   "docs": 1,
+   "scripts": 6,
+   "llmopt": 1,
+   "logs": 2,
+   "git": 1
+  },
+  "producers_or_consumers": [
+   "llmopt/search/engine.py",
+   "scripts/bench_bandit.py",
+   "scripts/bench_bestfirst.py",
+   "scripts/bench_bestfirst_nnue.py",
+   "scripts/bench_gweight.py",
+   "scripts/mine_prior_update.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 1
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ },
+ {
+  "family": "root:weight",
+  "files": 1,
+  "bytes": 101,
+  "alloc": 4096,
+  "newest": "2026-07-05",
+  "age_days": 103.7,
+  "classes": {
+   "ESSENTIAL": 1
+  },
+  "class_alloc": {
+   "ESSENTIAL": 4096
+  },
+  "reference_sources": {
+   "scripts": 1,
+   "logs": 2,
+   "git": 1
+  },
+  "producers_or_consumers": [
+   "scripts/train_weight_reader.py"
+  ],
+  "duplicate_alloc": 0,
+  "duplicate_alloc_verified_distinct": 0,
+  "independent_copies": {
+   "wsl": 1
+  },
+  "dynamic_sources": {},
+  "proposed_action": "keep (evidence or required)",
+  "expected_benefit_bytes": 0,
+  "benefit_confidence": "high"
+ }
+]

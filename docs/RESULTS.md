@@ -78752,3 +78752,259 @@ one GO. (4) The 43 CANDIDATE rows per family. (5) `.lake` 7.75 GB,
 separate decision. (6) GRPO partial ladders after the cited cycles are
 pinned. (7) Everything HOLD stays. Nothing in this entry authorizes a
 removal.
+
+
+## AMENDMENT GEN6-REBORN-WEIGHTS-PATH-2026-10-17 (targets: Gen-6 reborn: NEW RECORD 71/120 2798): the record weights the entry names only by nickname are `checkpoints/mathnative_45m_gen6_reborn.pt`; path, size and SHA-256 recorded so the checkpoint census freezes the file by citation; the verdict is unchanged (2026-10-17, Mac)
+
+The target books the Gen-6 reborn record (71/120) without a
+checkpoint path. The file on the Mac that matches the entry by
+nickname, date (2026-07-19 19:20) and log (`logs/gen6_reborn.log`)
+is recorded here as evidence identity. Nothing about the measured
+result changes; this entry exists so that `scripts/ckpt_census.py`
+classes the file FROZEN by a RESULTS path citation instead of
+through the lineage table in OBSERVATION CHECKPOINT-PLAN-1.
+
+| path | bytes | sha256 |
+|---|---|---|
+| `checkpoints/mathnative_45m_gen6_reborn.pt` | 201573253 | `0071b8eb48279fb391e5b31320c2f839ff47476f2a1e2938c64501a7eeade5cb` |
+
+## AMENDMENT TERNARY-LATENT-3EP-WEIGHTS-PATH-2026-10-17 (targets: Extended-training night: ternary reaches parity 2397): the three-epoch ternary latent weights are `checkpoints/mathnative_45m_ternary_latent_3ep.pt`; path, size and SHA-256 recorded; verdict unchanged (2026-10-17, Mac)
+
+Same purpose as the Gen-6 amendment above: the entry matches the
+file by date (2026-07-18 02:26) and subject, and names no path. The
+identity is recorded here; the measured numbers stand.
+
+| path | bytes | sha256 |
+|---|---|---|
+| `checkpoints/mathnative_45m_ternary_latent_3ep.pt` | 201573532 | `323bea9e332708c49c0720b53ac19f0761ed0d644d87a1987e454ed2830d3c9b` |
+
+## AMENDMENT SERIES-POLY-WEIGHTS-PATHS-2026-10-17 (targets: Series rung 1 3401; Series rung 1c 3444; Series rung 1d 3481; Poly pilot 3521; poly2 3699; SERIES RUNG 1E 3758; poly3/bridge 3831; poly4/bridge 4163; poly5 knock-3 4327): the 19M series and poly rung weights are recorded by path, size and SHA-256; verdicts unchanged (2026-10-17, Mac)
+
+The series and poly entries book their runs by nickname (series,
+series1b to 1e, poly, poly2 to poly5). The checkpoint files that
+carry those nicknames are recorded here as the evidence identity
+for each rung. `mathnative_19m_series1b.pt` has no entry of its own
+and is listed as part of the series family on the same basis as its
+siblings (same day, same naming scheme); if a later read finds that
+a nickname maps to a different file, an amendment to this entry
+names the correction. No measured number changes.
+
+| path | bytes | sha256 |
+|---|---|---|
+| `checkpoints/mathnative_19m_series.pt` | 75667776 | `a0fa4e6ba8c61897c5064591b501be99cc47c7950ae9c2c8841cd6e8b97dac34` |
+| `checkpoints/mathnative_19m_series1b.pt` | 75667970 | `647779ca7ee475a20a54b7e85be49c3d5879965f17d80047cef2620b23cf4cbf` |
+| `checkpoints/mathnative_19m_series1c.pt` | 75667970 | `5e283938edd64487df15fb4130821493cd2f64c2e74dcb0cd006223dc30e8f70` |
+| `checkpoints/mathnative_19m_series1d.pt` | 75667970 | `54ec6d96455887ab4e87badebf162b2f5a665c28a415382fcc306d7cc70df77b` |
+| `checkpoints/mathnative_19m_series1e.pt` | 75667970 | `f85b022dc219d7d7114469aa17c7f73066452b85fb705f9b1c600c11610cf09d` |
+| `checkpoints/mathnative_19m_poly.pt` | 75667646 | `b5c03091b75c5346a816227621d88be39b88f98362650fbb1a9eb1beeba7da90` |
+| `checkpoints/mathnative_19m_poly2.pt` | 75667711 | `682d16b657495838af806333a9e3b2e0de9c8df92a441bd9c1f7a0756b740711` |
+| `checkpoints/mathnative_19m_poly3.pt` | 75667711 | `eb7963c04c0f6aba87027e64d860e18a4f49c67169340572d2607002d53e8043` |
+| `checkpoints/mathnative_19m_poly4.pt` | 75667711 | `981466db4d480fd180506c9f729dc6bb031a0ee606227c7b52bd5e29c80583e2` |
+| `checkpoints/mathnative_19m_poly5.pt` | 75667711 | `44445ba597993700a1cfa9ed62f89fd581df7b63b99a38e9c4ed83c2d3bf95d9` |
+
+## AMENDMENT MATH-CYBER-1-ACTIVE-EPISODIC-0-WEIGHTS-PATH-2026-10-17 (targets: PRE-REG MATH-CYBER-1-ACTIVE-EPISODIC-0 42694; AMENDMENT MATH-CYBER-1-ACTIVE-EPISODIC-0-WALL 42803): the ACTIVE-EPISODIC arm's final weights are `checkpoints/mathnative_19m_mw1_active_final.pt`, written by `scratch/mathworld1_active.py` on 2026-08-23; path, size and SHA-256 recorded; adjudication unchanged (2026-10-17, Mac)
+
+The registered arm's final weights were never named by path in the
+ledger. Recorded here so the census freezes them. Two smoke-mode
+files with the same stem and a smoke prefix sit beside it on
+isolated paths; they are not evidence and are deliberately not
+named here, so that no citation freezes them.
+
+| path | bytes | sha256 |
+|---|---|---|
+| `checkpoints/mathnative_19m_mw1_active_final.pt` | 76454922 | `7a70123ef7fb983092cbd98b741937cec360c39efeaf02286cfde6247fc54f31` |
+
+## AMENDMENT GRPO-WEIGHTS-PATHS-2026-10-17 (targets: v2-GRPO run 1 1784; v2-GRPO leg 2 1806; 45M-GRPO run 1 1895; Self-distillation consolidation 1974): every mathnative GRPO checkpoint on the Mac (finals, consolidated finals, per-cycle rollback snapshots and the grpo3 candidate ladder) is recorded by path, size and SHA-256; the entries' cycle references are mapped to files by filename only; verdicts unchanged (2026-10-17, Mac)
+
+The GRPO entries cite cycles by number (v2 run 1 cycle-12 best,
+leg 2 cycle-2 best, 45M run 1 cycle-10 best, run 1b cycle-2 and
+cycle-6 gates) and name only the final files
+(`mathnative_v2_grpo.pt`, `mathnative_45m_grpo.pt`). The per-cycle
+files follow the `_cNNN` naming of `scripts/step_grpo_micro.py`.
+This entry records the whole family so that the ladders stay
+frozen by citation: RL cycles on mps are run-level nondeterministic
+(AMENDMENT SOFT-SPEED-1-PRECONDITION), so none of these files can
+be regenerated bit for bit. The mapping from a cited cycle to a
+file is by filename (for example `mathnative_45m_grpo_run1_c010.pt`
+for the run 1 cycle-10 best); no entry's number is re-read here.
+
+| path | bytes | sha256 |
+|---|---|---|
+| `checkpoints/mathnative_45m_grpo.pt` | 201572538 | `0905485672c3088a1c61cf0da1744996a8e6d65ccedd12fdf64843782bb72f2a` |
+| `checkpoints/mathnative_45m_grpo2.pt` | 201572631 | `65a16d9d699f12f946438a2b34e91f761235da6dcf85e1d55e782a939526e038` |
+| `checkpoints/mathnative_45m_grpo2_c004.pt` | 201572631 | `be2968aa025cb759fde1328a48f9c62f73e220d8f2ed219a9dc8d6b614089abb` |
+| `checkpoints/mathnative_45m_grpo2_c006.pt` | 201572631 | `e949e0f3ba896f192b1216d0fa97d1da5e993ddcbde945e1953fa10041251aec` |
+| `checkpoints/mathnative_45m_grpo2_c010.pt` | 201572631 | `0d81cea6f7598f878b31118fffffd32db6025ab8898a225322ccb2fd8c3ef697` |
+| `checkpoints/mathnative_45m_grpo2_c012.pt` | 201572631 | `f8814957ba261b4512732e9d0b9d3ba0a5917a928de6d8a89b3739690046e8a0` |
+| `checkpoints/mathnative_45m_grpo3.pt` | 201572631 | `ab20f20d902c8fd93329a29a431724cf8e957264c3f1923c305cb8228ec25a44` |
+| `checkpoints/mathnative_45m_grpo3_c004.pt` | 201572631 | `2d6651c5e84bd90059b5d4ed5e461658b1cb51ea0354fdea02794a52ab751e5b` |
+| `checkpoints/mathnative_45m_grpo3_c006.pt` | 201572631 | `704c7c25bdfb37756161cbef6160602ac3c832693fb4a4bd869ee632bab45d3e` |
+| `checkpoints/mathnative_45m_grpo3_c008.pt` | 201572631 | `75c78f0ad86a9729d1ca5fcf8e1b701ff3a284c67e7c2c32869bf778a551201e` |
+| `checkpoints/mathnative_45m_grpo3_c010.pt` | 201572631 | `af0345ebf56ef49f16d75c9cf7fee9db00f56f6daaf05d7109a77f920f0e818c` |
+| `checkpoints/mathnative_45m_grpo3_c012.pt` | 201572631 | `9bc14d2e4f5e85c66d3cd66b7cb85905da67c8eb9b1a0dc0bc0da016da79d1fb` |
+| `checkpoints/mathnative_45m_grpo3_c014.pt` | 201572631 | `79dcd8b00b29aa705cf5a381c47952054affa28e4a35a5b92ab3a7bc0cafd83a` |
+| `checkpoints/mathnative_45m_grpo3_c018.pt` | 201572631 | `600d71e159d9c7e31d02df7638bca1bf39ff32edc57e0d9d8c01eb427c3cca50` |
+| `checkpoints/mathnative_45m_grpo3_c020.pt` | 201572631 | `5bdaee8f716cd99c1477bd4c53d3b7cea7d42b5557b651b366df2e0b36b0f2c0` |
+| `checkpoints/mathnative_45m_grpo3_c022.pt` | 201572631 | `e38ee8aead38e571c327cae292badf0851be58ac7ef9cfe6c4e32734d21aa6af` |
+| `checkpoints/mathnative_45m_grpo3_c024.pt` | 201572631 | `d920464dcba88ce092e7c204a8fa491e31ee7dabcd1b887315e6d51a1b3b0fff` |
+| `checkpoints/mathnative_45m_grpo3_cand002.pt` | 201573439 | `f813086736f2d711ed81078ad1303b12f641628c7d790186d3c9028de6c01810` |
+| `checkpoints/mathnative_45m_grpo3_cand004.pt` | 201573439 | `5da8a7b47525c1aad0a2e15835257da1a58d781212368304b6ccf7bfc2d2f293` |
+| `checkpoints/mathnative_45m_grpo3_cand006.pt` | 201573439 | `f0d0871c7d9e1ef1cfccc8d7bc80af36b6d8049ed580a1ce40270ad47b1e47f2` |
+| `checkpoints/mathnative_45m_grpo3_cand008.pt` | 201573439 | `c56004581f045596a4a68308ce456cbba282b7711ebadfc1808e065f176a77bf` |
+| `checkpoints/mathnative_45m_grpo3_cand010.pt` | 201573439 | `67a113d0d2d09ccaa0be7a3d734372f7acc78732ddbafc4a4a14193faec87f73` |
+| `checkpoints/mathnative_45m_grpo3_cand012.pt` | 201573439 | `492a12d8e4db6ec3a9714d7d88dd672530c6523bbf0562a9c044d59fad9223b0` |
+| `checkpoints/mathnative_45m_grpo3_cand014.pt` | 201573439 | `fbbc49066fc9e2d2a1cdf6bb988765aab2ba9acfc053a13b1acfac88f9c80b6a` |
+| `checkpoints/mathnative_45m_grpo3_cand016.pt` | 201573439 | `9635d09f16b167e466db127d75a46d0e12ff905105678873362abd8e5dfd7bea` |
+| `checkpoints/mathnative_45m_grpo3_cand018.pt` | 201573439 | `45d2e14b5f5b492e76771e64940b06ed304798bd77f1f3b77af66fa47decf6c7` |
+| `checkpoints/mathnative_45m_grpo3_cand020.pt` | 201573439 | `7902e5021d6a79a5f7235ae55513024c29019faf462fe4d16d775e09ded3460b` |
+| `checkpoints/mathnative_45m_grpo3_cand022.pt` | 201573439 | `752eecb243d415a53a777551c39d7ec5c82b0d914ac9b5b0845acf6e9f33fca4` |
+| `checkpoints/mathnative_45m_grpo3_cand024.pt` | 201573439 | `c6c347afcc2eba5e00b92748ea914b1b331610a8dd6b2dc789a4150e9d188cf7` |
+| `checkpoints/mathnative_45m_grpo_c002.pt` | 201572538 | `ae2134b2347da9edc27fafb4b412a4f607507128cadd8ae569784fd08f0b97c4` |
+| `checkpoints/mathnative_45m_grpo_c006.pt` | 201572538 | `d51a11c3b5b91819665929b6ca819f14e08d5e033e4a268a267eb12108ee9c33` |
+| `checkpoints/mathnative_45m_grpo_c010.pt` | 201572538 | `a2317b87003ee7db52f50f48f7c4dc97a52fb4596c6d4cff706a803d4efc12ce` |
+| `checkpoints/mathnative_45m_grpo_c012.pt` | 201572538 | `392ca9fe624fa4c94c0b156df60f263136c1f31fb2639f0577ad980769096b43` |
+| `checkpoints/mathnative_45m_grpo_run1_c002.pt` | 201572538 | `f904f03a47cabfcd7b1502dc4132af366e12cfcc899df0ac76694351263e3c9f` |
+| `checkpoints/mathnative_45m_grpo_run1_c004.pt` | 201572538 | `f429fac25f3eab8732857d921f5298279fa927b6ff3321f3471f498764c49722` |
+| `checkpoints/mathnative_45m_grpo_run1_c006.pt` | 201572538 | `4ea15b8b820a7eb07a057e241ff1cf0371635526d92b5b597d4b2f5b8a5f2e06` |
+| `checkpoints/mathnative_45m_grpo_run1_c010.pt` | 201572538 | `c8d7be4c3fa71e6bd3dbf2aaa00cf8fd76b0e25f7c2d7f806fd6668c8ffce6ac` |
+| `checkpoints/mathnative_grpo.pt` | 75667386 | `6e1ac9f04f18ca2bf10c4517ddacc6738eb252a5c2b129f5c23fae321479a4d1` |
+| `checkpoints/mathnative_grpo_c010.pt` | 75667386 | `f2fcdf19e667266988f57c2c42803f6ad7a7c358f04c86fd76591f664c924be0` |
+| `checkpoints/mathnative_grpo_c012.pt` | 75667386 | `ed1fee82f7494e960033cab6eeb1146f8d7719ac5150639d67a49d65d3ca8b43` |
+| `checkpoints/mathnative_v2_grpo.pt` | 75667581 | `a98ecef9e908ca0eb0a62c3cc985434129d2099d9a0910470d864514de53fb4d` |
+| `checkpoints/mathnative_v2_grpo_c002.pt` | 75667581 | `bd6705bbf451876d01b8cda188c37cd0851fb795f68bdb19b16b8b5b23cad5ff` |
+| `checkpoints/mathnative_v2_grpo_c004.pt` | 75667581 | `d3c157c40870bf79dd330fef50a340c9c62bb69832697b43df78bb90034b35c2` |
+| `checkpoints/mathnative_v2_grpo_c006.pt` | 75667581 | `372d8346928587f4135dea1a9780970819434a3c6205ede3297128f5b2d3c288` |
+| `checkpoints/mathnative_v2_grpo_c008.pt` | 75667581 | `60a4b7454faf8ca261c659b27d667019f21a6a5cc582fa1c3d662f63122fe706` |
+| `checkpoints/mathnative_v2_grpo_c010.pt` | 75667581 | `a7eb2882f580b9b1fdc5c8bf53506ab426f428daa35d05d4ad3a13d6cca91ca2` |
+| `checkpoints/mathnative_v2_grpo_c012.pt` | 75667581 | `cbbd58a2480600f634fa926818edc8edd1f813bedf28feb8bc55182db5687564` |
+
+## OBSERVATION LAKE-RECLAIM-0: the mathlib compiled-output subtree under `scratch/leancheck/.lake` was removed under Artin's conditional GO after regeneration was established; 124,659 generated files, 6.53 GB logical, plus 0.54 GB of dependency clones created by the inspection itself; Mac free space 55.66 GB before and 62.47 GB after; sources, manifest, toolchain pin and the other package trees untouched (2026-10-17, Mac)
+
+What was inspected. `scratch/leancheck/.lake/packages/mathlib/.lake/build`
+held 124,659 files and 6,528,234,659 bytes logical (6.93 GB
+allocated by `du`), by extension: 58,162 `.hash`, 8,324 `.trace`,
+8,313 each of `.olean`, `.ilean`, `.c`, 8,303 each of `.sig`,
+`.server`, `.private`, `.ir`, 10 `.json`, 10 `.export`, 1 `.rsp`,
+and no `.lean` source. The full file manifest (size and path per
+line) is `logs/rehab-2e/lake_build_manifest.txt` (untracked, 124,659
+lines). The mathlib source tree beside it is a git checkout at
+`9fb10993c11c9e7abfa291e86fb499b6e1f4da82`, which is the revision
+pinned by the tracked `scratch/leancheck/lake-manifest.json`; the
+toolchain pin `leanprover/lean4:v4.33.0-rc2` is installed under
+`~/.elan/toolchains`. `Certs.lean` is gitignored and regenerated by
+`scratch/lean_check.py`.
+
+Regeneration established. The pinned mathlib `Cache` tool, asked
+for `Mathlib/Tactic/Ring.lean`, resolved it to artifact
+`4dfec71beb181332.ltar`, and the public cache served that artifact
+(`HTTP/1.1 200 OK` from the `mathlib4-master` container). So
+`lake exe cache get` in `scratch/leancheck` restores the compiled
+outputs by download, and `lake build` from the pinned sources is
+the slow fallback. Running the lookup from inside the mathlib
+package directory made lake treat mathlib as a root project and
+clone its own dependencies into `mathlib/.lake/packages` (0.54 GB)
+with a `mathlib/.lake/config`; both were created by that command
+at 13:22 to 13:23 and were removed with the build tree.
+
+What was removed, and what was not. Removed: `mathlib/.lake/build`,
+`mathlib/.lake/packages`, `mathlib/.lake/config` (du, KB:
+6768512	scratch/leancheck/.lake/packages/mathlib/.lake/build; 543656	scratch/leancheck/.lake/packages/mathlib/.lake/packages; 1420	scratch/leancheck/.lake/packages/mathlib/.lake/config). Preconditions at the moment of removal: no live
+registered run (`scripts/liverun.py status`), no `lake` or `lean`
+process. Not removed: `lakefile.toml`, `lake-manifest.json`,
+`lean-toolchain`, `Certs.lean`, the mathlib git source tree, every
+other package under `.lake/packages` (batteries, aesop,
+proofwidgets, Qq, plausible, importGraph, LeanSearchClient, Cli,
+with their own build outputs), and `~/.cache/mathlib`.
+`scratch/leancheck/.lake` is 1.3 GB after the removal.
+
+Measurement. Free space on the Mac data volume: 55.66 GB
+before (55656232 KB), 62.47 GB after (62474672 KB), a
+change of 6.82 GB. Consequence: the next use of
+`scratch/lean_check.py` must be preceded by `lake exe cache get`
+in `scratch/leancheck`; until then the Lean kernel check cannot run
+on this Mac.
+
+## OBSERVATION CHECKPOINT-ARCHIVE-0: copy-only preservation of the GRPO checkpoint families to isolated storage on the 3080; 52 files, 8.58 GB, every SHA-256 verified independently on the destination; Mac originals untouched; no deletion follows (2026-10-17, Mac and 3080)
+
+Authorization. Artin's decision of 2026-10-17: copy-only
+preservation of the unique GRPO checkpoint families to separate
+storage on the 3080, outside the git checkout, with manifests and
+independent SHA-256 verification; Mac originals preserved; no
+Mac-side deletion follows from a successful copy.
+
+Set. Every file under `checkpoints/` on the Mac whose name contains
+`grpo`: the mathnative families (v2_grpo cycles and final, 19M
+`mathnative_grpo` cycles and final, 45M run 1, run 1b, grpo2, grpo3
+cycles, the grpo3 `cand` ladder, and the consolidated finals) and
+the LoRA-era files (`step_lora_grpo.pt`, `step_lora_grpo_c010.pt`,
+`step_lora_grpo.pt.wsl`, `step_lora_pre_grpo_backup.pt`, and the
+shaped-reward LoRA checkpoint listed in the manifest). 52 files,
+8,576 MB. None of the 52 digests was
+present among the 415 checkpoint files already on the 3080
+(`logs/rehab-2e/ckpt_sha_3080.txt`), so before this copy each of
+these weights existed on one machine only.
+
+Destination. `/home/a/archive/llmopt-ckpt-2026-10-17/grpo/` on the
+3080, a directory created for this purpose (the parent
+`/home/a/archive` did not exist before). It is outside
+`/home/a/code/llmopt`. The copy ran with `rsync -a
+--ignore-existing`, so nothing on the 3080 could be overwritten.
+Free space on the 3080 root volume: 719 GB before, 711 GB after.
+
+Verification. `sha256sum` over the 52 destination files, run on the
+3080, written to `MANIFEST_3080.sha256` beside the archive; the Mac
+manifest (`shasum -a 256` over the originals, before the copy) was
+copied beside it as `MANIFEST_mac.txt`. A line-by-line diff of the
+two digest lists on the 3080 was empty: all 52 match. Both
+manifests are kept in the repo as small text receipts,
+`logs/rehab-2e/grpo_archive_manifest_mac.txt` and
+`logs/rehab-2e/grpo_archive_manifest_3080.sha256`.
+
+What did not happen. No Mac checkpoint was deleted, moved, relinked,
+cloned or rewritten; the census after this copy verifies the tree
+against the original baseline with changed, missing and added all
+empty. The archive is a second copy, not a replacement: the Mac
+files remain the evidence record the ledger cites, and the 3080 copy
+is a safeguard against single-disk loss of weights that cannot be
+regenerated (mps RL cycles are run-level nondeterministic).
+
+## OBSERVATION CHECKPOINT-CENSUS-1: census run8 after the path amendments: FROZEN 602 files / 55.16 GB (run7: 547 / 46.55), UNKNOWN 179 / 6.84 GB (run7: 229 / 15.16), CANDIDATE 43 / 0.85 GB unchanged, 55 files moved and all toward FROZEN; tree identical to the original baseline; one census defect fixed (a log named only inside a triage entry counted as a cited receipt) (2026-10-17, Mac)
+
+Purpose. Re-run the read-only census after AMENDMENT
+GEN6-REBORN-WEIGHTS-PATH, TERNARY-LATENT-3EP-WEIGHTS-PATH,
+SERIES-POLY-WEIGHTS-PATHS, MATH-CYBER-1-ACTIVE-EPISODIC-0-WEIGHTS-PATH
+and GRPO-WEIGHTS-PATHS named the nickname-cited verdict weights by
+path, so that the census freezes them by citation rather than by
+the lineage table in OBSERVATION CHECKPOINT-PLAN-1. run7 stays the
+decision-sheet baseline per Artin's instruction; run8 is the check
+that the amendments had the intended effect and nothing else.
+
+Classes (run8 versus run7). FROZEN 602 files / 55.16 GB (547 /
+46.55); ESSENTIAL 330 / 7.56 (334 / 7.82); DUPLICATE 5 / 0.09 (6 /
+0.12); CANDIDATE 43 / 0.85 (43 / 0.85); UNKNOWN 179 / 6.84 (229 /
+15.16). 55 files changed class, every one toward FROZEN: 50 from
+UNKNOWN (8.32 GB, the GRPO cycle files and the nickname-cited
+weights), 4 from ESSENTIAL (0.26 GB: poly3, poly4, poly5 and one
+GRPO file), 1 from DUPLICATE (0.04 GB, a GRPO file whose twin was
+already frozen). No file moved toward CANDIDATE or UNKNOWN. Baseline
+compare against `run-1ac27524/baseline_manifest.json`: changed,
+missing and added all empty, so the tree is byte-identical to the
+first census.
+
+Defect found and fixed in the same pass. The first run8 attempt
+froze `mathnative_gen6_ternary_grown.pt` and its latent twin with
+the reason "cited receipt path in logs/gen6_ternary_grown.log". The
+only text naming that log is the lineage table inside OBSERVATION
+CHECKPOINT-PLAN-1, which is a triage entry and is removed from the
+checkpoint-citation scan, but the log-citation set was built from
+the unstripped RESULTS text. The scan now strips triage entries
+before building the log-citation set; a regression test
+(`test_log_cited_only_inside_a_triage_entry_does_not_count`) fails
+on the old code and passes on the new. The same attempt also froze
+the two smoke-mode files beside the MATH-CYBER-1 arm because the
+draft amendment listed them "for completeness"; the amendment was
+edited before commit to describe them without naming them. The
+numbers above are from the corrected run.
+
+Receipts (force-added small text): `logs/rehab-2e/run8/SHEET.md`,
+`families.json`, `duplicates.json`, `summary.json`.

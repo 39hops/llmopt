@@ -1,0 +1,3 @@
+6768512	scratch/leancheck/.lake/packages/mathlib/.lake/build
+543656	scratch/leancheck/.lake/packages/mathlib/.lake/packages
+1420	scratch/leancheck/.lake/packages/mathlib/.lake/config

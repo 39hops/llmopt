@@ -1,0 +1,40 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.13, pytest-9.1.1, pluggy-1.6.0 -- /home/a/code/llmopt/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /home/a/code/llmopt
+configfile: pyproject.toml
+plugins: anyio-4.14.1
+collecting ... collected 16 items
+
+tests/test_torch_state_isolation.py::test_restores_flag_and_reports_the_leaker PASSED [  6%]
+tests/test_torch_state_isolation.py::test_marked_leaker_is_allowed_but_still_restored PASSED [ 12%]
+tests/test_torch_state_isolation.py::test_thread_count_change_is_reported_not_reset PASSED [ 18%]
+tests/test_torch_state_isolation.py::test_cuda_bincount_after_a_leaker_in_the_same_session PASSED [ 25%]
+tests/test_optimizer_memory_ablation.py::test_leg_slices_match_trainer_loop_across_epochs PASSED [ 31%]
+tests/test_optimizer_memory_ablation.py::test_target_leg_positions PASSED [ 37%]
+tests/test_optimizer_memory_ablation.py::test_scheduler_resume_matches_audited_table[stock-1] PASSED [ 43%]
+tests/test_optimizer_memory_ablation.py::test_scheduler_resume_matches_audited_table[stock-900] PASSED [ 50%]
+tests/test_optimizer_memory_ablation.py::test_scheduler_resume_matches_audited_table[stock-7200] PASSED [ 56%]
+tests/test_optimizer_memory_ablation.py::test_scheduler_resume_matches_audited_table[backward-7200] PASSED [ 62%]
+tests/test_optimizer_memory_ablation.py::test_scheduler_resume_matches_audited_table[backward-13500] PASSED [ 68%]
+tests/test_optimizer_memory_ablation.py::test_scheduler_resume_refuses_mismatch PASSED [ 75%]
+tests/test_optimizer_memory_ablation.py::test_bar1_law_equals_real_step_contrast PASSED [ 81%]
+tests/test_optimizer_memory_ablation.py::test_apply_arm_touches_exp_avg_only PASSED [ 87%]
+tests/test_optimizer_memory_ablation.py::test_readout_and_ladder_pure_and_literal PASSED [ 93%]
+tests/test_optimizer_memory_ablation.py::test_cpu_replay_is_bit_exact PASSED [100%]
+
+=============================== warnings summary ===============================
+tests/test_optimizer_memory_ablation.py::test_scheduler_resume_matches_audited_table[stock-1]
+  /home/a/code/llmopt/scratch/optimizer_memory_ablation.py:188: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+    sched.step()
+
+tests/test_optimizer_memory_ablation.py::test_scheduler_resume_matches_audited_table[stock-900]
+tests/test_optimizer_memory_ablation.py::test_scheduler_resume_matches_audited_table[stock-7200]
+tests/test_optimizer_memory_ablation.py::test_scheduler_resume_matches_audited_table[backward-7200]
+tests/test_optimizer_memory_ablation.py::test_scheduler_resume_matches_audited_table[backward-13500]
+tests/test_optimizer_memory_ablation.py::test_scheduler_resume_refuses_mismatch
+  /home/a/code/llmopt/scratch/optimizer_memory_ablation.py:183: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+    sched.step()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================= 16 passed, 6 warnings in 19.62s ========================

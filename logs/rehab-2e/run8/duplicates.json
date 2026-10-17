@@ -1,0 +1,846 @@
+[
+ {
+  "sha256": "7994b51e872a1b98655d39b0a70634c39d7b3956dd0bdd94578c6c31bef4a5fe",
+  "bytes": 226994115,
+  "paths": [
+   "checkpoints/fmel2/A/C/h8220.pt",
+   "checkpoints/rdc1/A/C/h8220.pt"
+  ],
+  "classes": {
+   "checkpoints/fmel2/A/C/h8220.pt": "FROZEN",
+   "checkpoints/rdc1/A/C/h8220.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/fmel2/A/C/h8220.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 250,
+  "extent_counts": {
+   "checkpoints/fmel2/A/C/h8220.pt": 225,
+   "checkpoints/rdc1/A/C/h8220.pt": 25
+  },
+  "redundant_bytes": 226994115
+ },
+ {
+  "sha256": "76d5d39bd32e532f50ee48ea30e05bdc06d1250baf6a82400be8bd777b4bc786",
+  "bytes": 75664629,
+  "paths": [
+   "checkpoints/_attempt3_QUALIFIED_prefold_atomtraj1_smoke/stock_s11/step_00000.pt",
+   "checkpoints/_attempt3_QUALIFIED_prefold_atomtraj1_smoke/stock_s11_probe_emit1/step_00000.pt",
+   "checkpoints/atomtraj1_smoke/stock_s11/step_00000.pt",
+   "checkpoints/atomtraj1_smoke/stock_s11_probe_emit1/step_00000.pt"
+  ],
+  "classes": {
+   "checkpoints/_attempt3_QUALIFIED_prefold_atomtraj1_smoke/stock_s11/step_00000.pt": "FROZEN",
+   "checkpoints/_attempt3_QUALIFIED_prefold_atomtraj1_smoke/stock_s11_probe_emit1/step_00000.pt": "FROZEN",
+   "checkpoints/atomtraj1_smoke/stock_s11/step_00000.pt": "FROZEN",
+   "checkpoints/atomtraj1_smoke/stock_s11_probe_emit1/step_00000.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/atomtraj1_smoke/stock_s11/step_00000.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 20,
+  "extent_counts": {
+   "checkpoints/_attempt3_QUALIFIED_prefold_atomtraj1_smoke/stock_s11/step_00000.pt": 6,
+   "checkpoints/_attempt3_QUALIFIED_prefold_atomtraj1_smoke/stock_s11_probe_emit1/step_00000.pt": 8,
+   "checkpoints/atomtraj1_smoke/stock_s11/step_00000.pt": 2,
+   "checkpoints/atomtraj1_smoke/stock_s11_probe_emit1/step_00000.pt": 4
+  },
+  "redundant_bytes": 226993887
+ },
+ {
+  "sha256": "454580f4367b25448543db9ed13ca829e6ac1430d75390de5c3858a50980e4de",
+  "bytes": 75664629,
+  "paths": [
+   "checkpoints/writerdfa1/qual_dfa_s21_S0.25_lr0.0003/step_00000.pt",
+   "checkpoints/writerdfa1/qual_dfa_s21_S1_lr0.0001/step_00000.pt",
+   "checkpoints/writerdfa1/qual_dfa_s21_S1_lr0.0003/step_00000.pt",
+   "checkpoints/writerdfa1/qual_dfa_s21_S4_lr0.0001/step_00000.pt"
+  ],
+  "classes": {
+   "checkpoints/writerdfa1/qual_dfa_s21_S0.25_lr0.0003/step_00000.pt": "FROZEN",
+   "checkpoints/writerdfa1/qual_dfa_s21_S1_lr0.0001/step_00000.pt": "FROZEN",
+   "checkpoints/writerdfa1/qual_dfa_s21_S1_lr0.0003/step_00000.pt": "FROZEN",
+   "checkpoints/writerdfa1/qual_dfa_s21_S4_lr0.0001/step_00000.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/writerdfa1/qual_dfa_s21_S0.25_lr0.0003/step_00000.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 305,
+  "extent_counts": {
+   "checkpoints/writerdfa1/qual_dfa_s21_S0.25_lr0.0003/step_00000.pt": 82,
+   "checkpoints/writerdfa1/qual_dfa_s21_S1_lr0.0001/step_00000.pt": 73,
+   "checkpoints/writerdfa1/qual_dfa_s21_S1_lr0.0003/step_00000.pt": 53,
+   "checkpoints/writerdfa1/qual_dfa_s21_S4_lr0.0001/step_00000.pt": 97
+  },
+  "redundant_bytes": 226993887
+ },
+ {
+  "sha256": "3f3244c0bff5b40c60497f1367a9fdf9188fad33cb75d87fcb06f847cd046a95",
+  "bytes": 75660464,
+  "paths": [
+   "checkpoints/_attempt3_QUALIFIED_prefold_atomtraj1_smoke/stock_s11_probe_emit0/final.pt",
+   "checkpoints/_attempt3_QUALIFIED_prefold_atomtraj1_smoke/stock_s11_probe_emit1/final.pt",
+   "checkpoints/atomtraj1_smoke/stock_s11_probe_emit0/final.pt",
+   "checkpoints/atomtraj1_smoke/stock_s11_probe_emit1/final.pt"
+  ],
+  "classes": {
+   "checkpoints/_attempt3_QUALIFIED_prefold_atomtraj1_smoke/stock_s11_probe_emit0/final.pt": "ESSENTIAL",
+   "checkpoints/_attempt3_QUALIFIED_prefold_atomtraj1_smoke/stock_s11_probe_emit1/final.pt": "ESSENTIAL",
+   "checkpoints/atomtraj1_smoke/stock_s11_probe_emit0/final.pt": "FROZEN",
+   "checkpoints/atomtraj1_smoke/stock_s11_probe_emit1/final.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/atomtraj1_smoke/stock_s11_probe_emit0/final.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 16,
+  "extent_counts": {
+   "checkpoints/_attempt3_QUALIFIED_prefold_atomtraj1_smoke/stock_s11_probe_emit0/final.pt": 6,
+   "checkpoints/_attempt3_QUALIFIED_prefold_atomtraj1_smoke/stock_s11_probe_emit1/final.pt": 6,
+   "checkpoints/atomtraj1_smoke/stock_s11_probe_emit0/final.pt": 2,
+   "checkpoints/atomtraj1_smoke/stock_s11_probe_emit1/final.pt": 2
+  },
+  "redundant_bytes": 226981392
+ },
+ {
+  "sha256": "8fda1b683d48462a3073652cb1203ac6d94ecee0f4f47fea8590168ec92ad7fc",
+  "bytes": 75660592,
+  "paths": [
+   "checkpoints/fmel2/A/C/h0001.pt",
+   "checkpoints/oma1/A/C/h0001.pt",
+   "checkpoints/rdc1/A/C/h0001.pt"
+  ],
+  "classes": {
+   "checkpoints/fmel2/A/C/h0001.pt": "FROZEN",
+   "checkpoints/oma1/A/C/h0001.pt": "FROZEN",
+   "checkpoints/rdc1/A/C/h0001.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/fmel2/A/C/h0001.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 47,
+  "extent_counts": {
+   "checkpoints/fmel2/A/C/h0001.pt": 14,
+   "checkpoints/oma1/A/C/h0001.pt": 23,
+   "checkpoints/rdc1/A/C/h0001.pt": 10
+  },
+  "redundant_bytes": 151321184
+ },
+ {
+  "sha256": "f8cf63e82101c37eb7965de0fcebefa3fedf31e220d47e0dce0d66890b573b9d",
+  "bytes": 75660592,
+  "paths": [
+   "checkpoints/fmel2/A/C/h0005.pt",
+   "checkpoints/oma1/A/C/h0005.pt",
+   "checkpoints/rdc1/A/C/h0005.pt"
+  ],
+  "classes": {
+   "checkpoints/fmel2/A/C/h0005.pt": "FROZEN",
+   "checkpoints/oma1/A/C/h0005.pt": "FROZEN",
+   "checkpoints/rdc1/A/C/h0005.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/fmel2/A/C/h0005.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 64,
+  "extent_counts": {
+   "checkpoints/fmel2/A/C/h0005.pt": 19,
+   "checkpoints/oma1/A/C/h0005.pt": 35,
+   "checkpoints/rdc1/A/C/h0005.pt": 10
+  },
+  "redundant_bytes": 151321184
+ },
+ {
+  "sha256": "3b7333c884b97abf1b8b54a5f64e07cee19679b8d2374410aae18df2e2a761d1",
+  "bytes": 75660592,
+  "paths": [
+   "checkpoints/fmel2/A/C/h0020.pt",
+   "checkpoints/oma1/A/C/h0020.pt",
+   "checkpoints/rdc1/A/C/h0020.pt"
+  ],
+  "classes": {
+   "checkpoints/fmel2/A/C/h0020.pt": "FROZEN",
+   "checkpoints/oma1/A/C/h0020.pt": "FROZEN",
+   "checkpoints/rdc1/A/C/h0020.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/fmel2/A/C/h0020.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 66,
+  "extent_counts": {
+   "checkpoints/fmel2/A/C/h0020.pt": 19,
+   "checkpoints/oma1/A/C/h0020.pt": 37,
+   "checkpoints/rdc1/A/C/h0020.pt": 10
+  },
+  "redundant_bytes": 151321184
+ },
+ {
+  "sha256": "ce16c877620a23fb599599abd7225f184d2eddba26aa482d041b2dbe49b90f70",
+  "bytes": 75660592,
+  "paths": [
+   "checkpoints/fmel2/A/C/h0100.pt",
+   "checkpoints/oma1/A/C/h0100.pt",
+   "checkpoints/rdc1/A/C/h0100.pt"
+  ],
+  "classes": {
+   "checkpoints/fmel2/A/C/h0100.pt": "FROZEN",
+   "checkpoints/oma1/A/C/h0100.pt": "FROZEN",
+   "checkpoints/rdc1/A/C/h0100.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/fmel2/A/C/h0100.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 78,
+  "extent_counts": {
+   "checkpoints/fmel2/A/C/h0100.pt": 31,
+   "checkpoints/oma1/A/C/h0100.pt": 37,
+   "checkpoints/rdc1/A/C/h0100.pt": 10
+  },
+  "redundant_bytes": 151321184
+ },
+ {
+  "sha256": "a155aeaa344cc1c87bf10448982eeeb13185db56c0dc5f268111e467bffeb967",
+  "bytes": 76585458,
+  "paths": [
+   "checkpoints/svp_forder_init_s21001.pt",
+   "checkpoints/svp_forder_init_s21001_smoke.pt"
+  ],
+  "classes": {
+   "checkpoints/svp_forder_init_s21001.pt": "FROZEN",
+   "checkpoints/svp_forder_init_s21001_smoke.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/svp_forder_init_s21001.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 8,
+  "extent_counts": {
+   "checkpoints/svp_forder_init_s21001.pt": 5,
+   "checkpoints/svp_forder_init_s21001_smoke.pt": 3
+  },
+  "redundant_bytes": 76585458
+ },
+ {
+  "sha256": "fa7ac1a8cd6880270a5b904c62a240386443987976c0df11fc091cb41f64c1dd",
+  "bytes": 76585458,
+  "paths": [
+   "checkpoints/svp_forder_init_s22001.pt",
+   "checkpoints/svp_forder_init_s22001_smoke.pt"
+  ],
+  "classes": {
+   "checkpoints/svp_forder_init_s22001.pt": "FROZEN",
+   "checkpoints/svp_forder_init_s22001_smoke.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/svp_forder_init_s22001.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 45,
+  "extent_counts": {
+   "checkpoints/svp_forder_init_s22001.pt": 23,
+   "checkpoints/svp_forder_init_s22001_smoke.pt": 22
+  },
+  "redundant_bytes": 76585458
+ },
+ {
+  "sha256": "1d093ec100455d29413275342e3da2114f14261990e4f114c1c28e5f390174f8",
+  "bytes": 76585458,
+  "paths": [
+   "checkpoints/svp_forder_init_s23001.pt",
+   "checkpoints/svp_forder_init_s23001_smoke.pt"
+  ],
+  "classes": {
+   "checkpoints/svp_forder_init_s23001.pt": "FROZEN",
+   "checkpoints/svp_forder_init_s23001_smoke.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/svp_forder_init_s23001.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 68,
+  "extent_counts": {
+   "checkpoints/svp_forder_init_s23001.pt": 40,
+   "checkpoints/svp_forder_init_s23001_smoke.pt": 28
+  },
+  "redundant_bytes": 76585458
+ },
+ {
+  "sha256": "3fd1f769977ebfb1dab196befac1a69c705dbaaebfdd5f8ffb6216d507d78e05",
+  "bytes": 76585458,
+  "paths": [
+   "checkpoints/svp_forder_init_s24001.pt",
+   "checkpoints/svp_forder_init_s24001_smoke.pt"
+  ],
+  "classes": {
+   "checkpoints/svp_forder_init_s24001.pt": "FROZEN",
+   "checkpoints/svp_forder_init_s24001_smoke.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/svp_forder_init_s24001.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 84,
+  "extent_counts": {
+   "checkpoints/svp_forder_init_s24001.pt": 42,
+   "checkpoints/svp_forder_init_s24001_smoke.pt": 42
+  },
+  "redundant_bytes": 76585458
+ },
+ {
+  "sha256": "291403ff1c4cf8410ca38b7e779c19702bfc25dc9cb7ecdc811e8d0d3c9bfa68",
+  "bytes": 75664629,
+  "paths": [
+   "checkpoints/_attempt3_QUALIFIED_prefold_atomtraj1_smoke/stock_s11_probe_emit1/step_00300.pt",
+   "checkpoints/atomtraj1_smoke/stock_s11_probe_emit1/step_00300.pt"
+  ],
+  "classes": {
+   "checkpoints/_attempt3_QUALIFIED_prefold_atomtraj1_smoke/stock_s11_probe_emit1/step_00300.pt": "DUPLICATE",
+   "checkpoints/atomtraj1_smoke/stock_s11_probe_emit1/step_00300.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/atomtraj1_smoke/stock_s11_probe_emit1/step_00300.pt",
+  "all_retained": false,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 10,
+  "extent_counts": {
+   "checkpoints/_attempt3_QUALIFIED_prefold_atomtraj1_smoke/stock_s11_probe_emit1/step_00300.pt": 7,
+   "checkpoints/atomtraj1_smoke/stock_s11_probe_emit1/step_00300.pt": 3
+  },
+  "redundant_bytes": 75664629
+ },
+ {
+  "sha256": "269fd869adcbab6f42a4511b893dbf3c7273ebeb8c1c06e915bcdd25cff0a630",
+  "bytes": 75664629,
+  "paths": [
+   "checkpoints/sgbb7/sgb7_control_s28_lr0.0003/step_00000.pt",
+   "checkpoints/sgbb7/sgb7_sg7_local_plr0.001_s28_lr0.0003/step_00000.pt"
+  ],
+  "classes": {
+   "checkpoints/sgbb7/sgb7_control_s28_lr0.0003/step_00000.pt": "FROZEN",
+   "checkpoints/sgbb7/sgb7_sg7_local_plr0.001_s28_lr0.0003/step_00000.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/sgbb7/sgb7_control_s28_lr0.0003/step_00000.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 32,
+  "extent_counts": {
+   "checkpoints/sgbb7/sgb7_control_s28_lr0.0003/step_00000.pt": 4,
+   "checkpoints/sgbb7/sgb7_sg7_local_plr0.001_s28_lr0.0003/step_00000.pt": 28
+  },
+  "redundant_bytes": 75664629
+ },
+ {
+  "sha256": "8520acf7b06a7fb639bd117b0b5bdd60efa595a629df21689b7781f2105235cb",
+  "bytes": 75660592,
+  "paths": [
+   "checkpoints/fmel2/A/C/h0300.pt",
+   "checkpoints/rdc1/A/C/h0300.pt"
+  ],
+  "classes": {
+   "checkpoints/fmel2/A/C/h0300.pt": "FROZEN",
+   "checkpoints/rdc1/A/C/h0300.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/fmel2/A/C/h0300.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 47,
+  "extent_counts": {
+   "checkpoints/fmel2/A/C/h0300.pt": 37,
+   "checkpoints/rdc1/A/C/h0300.pt": 10
+  },
+  "redundant_bytes": 75660592
+ },
+ {
+  "sha256": "0146a371916b5b79534bce87159b897cc8acf14f39d89ddce3163f943a53af6b",
+  "bytes": 75660592,
+  "paths": [
+   "checkpoints/fmel2/A/C/h0900.pt",
+   "checkpoints/rdc1/A/C/h0900.pt"
+  ],
+  "classes": {
+   "checkpoints/fmel2/A/C/h0900.pt": "FROZEN",
+   "checkpoints/rdc1/A/C/h0900.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/fmel2/A/C/h0900.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 47,
+  "extent_counts": {
+   "checkpoints/fmel2/A/C/h0900.pt": 37,
+   "checkpoints/rdc1/A/C/h0900.pt": 10
+  },
+  "redundant_bytes": 75660592
+ },
+ {
+  "sha256": "94cf232a87d0d3ac95f47c1560a8c5388e2cf5e0ad2b55f0466f54bf019ea7d8",
+  "bytes": 75660592,
+  "paths": [
+   "checkpoints/fmel2/A/C/h1800.pt",
+   "checkpoints/rdc1/A/C/h1800.pt"
+  ],
+  "classes": {
+   "checkpoints/fmel2/A/C/h1800.pt": "FROZEN",
+   "checkpoints/rdc1/A/C/h1800.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/fmel2/A/C/h1800.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 56,
+  "extent_counts": {
+   "checkpoints/fmel2/A/C/h1800.pt": 46,
+   "checkpoints/rdc1/A/C/h1800.pt": 10
+  },
+  "redundant_bytes": 75660592
+ },
+ {
+  "sha256": "e7bc9182c033dedac0a34c5cb6a60396cf2a348244ae98c3916455e209bc6c33",
+  "bytes": 75660592,
+  "paths": [
+   "checkpoints/fmel2/A/C/h3080.pt",
+   "checkpoints/rdc1/A/C/h3080.pt"
+  ],
+  "classes": {
+   "checkpoints/fmel2/A/C/h3080.pt": "FROZEN",
+   "checkpoints/rdc1/A/C/h3080.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/fmel2/A/C/h3080.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 56,
+  "extent_counts": {
+   "checkpoints/fmel2/A/C/h3080.pt": 46,
+   "checkpoints/rdc1/A/C/h3080.pt": 10
+  },
+  "redundant_bytes": 75660592
+ },
+ {
+  "sha256": "ee4fd8f37821e17bbe553a1d823707689bbe075e7dea09e4e5a8bb8f302a52de",
+  "bytes": 75660592,
+  "paths": [
+   "checkpoints/fmel2/A/C/h4500.pt",
+   "checkpoints/rdc1/A/C/h4500.pt"
+  ],
+  "classes": {
+   "checkpoints/fmel2/A/C/h4500.pt": "FROZEN",
+   "checkpoints/rdc1/A/C/h4500.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/fmel2/A/C/h4500.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 56,
+  "extent_counts": {
+   "checkpoints/fmel2/A/C/h4500.pt": 46,
+   "checkpoints/rdc1/A/C/h4500.pt": 10
+  },
+  "redundant_bytes": 75660592
+ },
+ {
+  "sha256": "06a5e8a92e77fcc46a81a2c3b4f3b59ffd622d63aa14ba3b7aba662508857419",
+  "bytes": 75660592,
+  "paths": [
+   "checkpoints/fmel2/A/C/h6000.pt",
+   "checkpoints/rdc1/A/C/h6000.pt"
+  ],
+  "classes": {
+   "checkpoints/fmel2/A/C/h6000.pt": "FROZEN",
+   "checkpoints/rdc1/A/C/h6000.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/fmel2/A/C/h6000.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 65,
+  "extent_counts": {
+   "checkpoints/fmel2/A/C/h6000.pt": 55,
+   "checkpoints/rdc1/A/C/h6000.pt": 10
+  },
+  "redundant_bytes": 75660592
+ },
+ {
+  "sha256": "1ee3f5fc3fc26f64f2e47fb062f76b35ca521900128aed07e8303c3d098b9c3f",
+  "bytes": 75660592,
+  "paths": [
+   "checkpoints/fmel2/A/C/h7200.pt",
+   "checkpoints/rdc1/A/C/h7200.pt"
+  ],
+  "classes": {
+   "checkpoints/fmel2/A/C/h7200.pt": "FROZEN",
+   "checkpoints/rdc1/A/C/h7200.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/fmel2/A/C/h7200.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 80,
+  "extent_counts": {
+   "checkpoints/fmel2/A/C/h7200.pt": 70,
+   "checkpoints/rdc1/A/C/h7200.pt": 10
+  },
+  "redundant_bytes": 75660592
+ },
+ {
+  "sha256": "5721de16417315f3297c7f3486bb9c8208baf1dfbde6fbcbbdd8882e9f7edc41",
+  "bytes": 35301393,
+  "paths": [
+   "checkpoints/step_lora.pt",
+   "checkpoints/step_lora_grpo.pt"
+  ],
+  "classes": {
+   "checkpoints/step_lora.pt": "FROZEN",
+   "checkpoints/step_lora_grpo.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/step_lora.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 7,
+  "extent_counts": {
+   "checkpoints/step_lora.pt": 2,
+   "checkpoints/step_lora_grpo.pt": 5
+  },
+  "redundant_bytes": 35301393
+ },
+ {
+  "sha256": "f35ff8e544111c219928b5e9b845072c27d3a005d083046dade7366b0fc5a88a",
+  "bytes": 35301393,
+  "paths": [
+   "checkpoints/step_lora_grpo.pt.wsl",
+   "checkpoints/step_lora_grpo_c010.pt"
+  ],
+  "classes": {
+   "checkpoints/step_lora_grpo.pt.wsl": "FROZEN",
+   "checkpoints/step_lora_grpo_c010.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/step_lora_grpo.pt.wsl",
+  "all_retained": true,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 42,
+  "extent_counts": {
+   "checkpoints/step_lora_grpo.pt.wsl": 17,
+   "checkpoints/step_lora_grpo_c010.pt": 25
+  },
+  "redundant_bytes": 35301393
+ },
+ {
+  "sha256": "ecef909d46eb821429e48b470a07dfdedc492c9247de5cff665a57ac5378e219",
+  "bytes": 5094219,
+  "paths": [
+   "checkpoints/confirmed/determinism/p3_tables.pt",
+   "checkpoints/p3_tables.pt"
+  ],
+  "classes": {
+   "checkpoints/confirmed/determinism/p3_tables.pt": "FROZEN",
+   "checkpoints/p3_tables.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/confirmed/determinism/p3_tables.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 5,
+  "extent_counts": {
+   "checkpoints/confirmed/determinism/p3_tables.pt": 4,
+   "checkpoints/p3_tables.pt": 1
+  },
+  "redundant_bytes": 5094219
+ },
+ {
+  "sha256": "4adeba210b8d7f072e44fc5d07324d5d0387b4f429196043f321deb53c5aab6f",
+  "bytes": 3755676,
+  "paths": [
+   "checkpoints/confirmed/scaffold-moe/umoe_lb_s1.pt",
+   "checkpoints/umoe_lb_s1.pt"
+  ],
+  "classes": {
+   "checkpoints/confirmed/scaffold-moe/umoe_lb_s1.pt": "FROZEN",
+   "checkpoints/umoe_lb_s1.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/confirmed/scaffold-moe/umoe_lb_s1.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 8,
+  "extent_counts": {
+   "checkpoints/confirmed/scaffold-moe/umoe_lb_s1.pt": 3,
+   "checkpoints/umoe_lb_s1.pt": 5
+  },
+  "redundant_bytes": 3755676
+ },
+ {
+  "sha256": "ca271322608d22753bff98ff3e99cb3271828cd52d548bb1101c4d96530cb074",
+  "bytes": 3755676,
+  "paths": [
+   "checkpoints/confirmed/scaffold-moe/umoe_lb_s2.pt",
+   "checkpoints/umoe_lb_s2.pt"
+  ],
+  "classes": {
+   "checkpoints/confirmed/scaffold-moe/umoe_lb_s2.pt": "FROZEN",
+   "checkpoints/umoe_lb_s2.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/confirmed/scaffold-moe/umoe_lb_s2.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 8,
+  "extent_counts": {
+   "checkpoints/confirmed/scaffold-moe/umoe_lb_s2.pt": 3,
+   "checkpoints/umoe_lb_s2.pt": 5
+  },
+  "redundant_bytes": 3755676
+ },
+ {
+  "sha256": "7f687b66124e20d266ff7c21f9c1305ed5f2450e94943f4d9577e33269d67515",
+  "bytes": 3754481,
+  "paths": [
+   "checkpoints/confirmed/scaffold-moe/umoe_gravmoe_s1.pt",
+   "checkpoints/umoe_gravmoe_s1.pt"
+  ],
+  "classes": {
+   "checkpoints/confirmed/scaffold-moe/umoe_gravmoe_s1.pt": "FROZEN",
+   "checkpoints/umoe_gravmoe_s1.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/confirmed/scaffold-moe/umoe_gravmoe_s1.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 5,
+  "extent_counts": {
+   "checkpoints/confirmed/scaffold-moe/umoe_gravmoe_s1.pt": 3,
+   "checkpoints/umoe_gravmoe_s1.pt": 2
+  },
+  "redundant_bytes": 3754481
+ },
+ {
+  "sha256": "bb366abb4623506387175a032bda34e7b99d6b759aeccccbe811ea50e16a9a61",
+  "bytes": 3754481,
+  "paths": [
+   "checkpoints/confirmed/scaffold-moe/umoe_gravmoe_s2.pt",
+   "checkpoints/umoe_gravmoe_s2.pt"
+  ],
+  "classes": {
+   "checkpoints/confirmed/scaffold-moe/umoe_gravmoe_s2.pt": "FROZEN",
+   "checkpoints/umoe_gravmoe_s2.pt": "DUPLICATE"
+  },
+  "canonical": "checkpoints/confirmed/scaffold-moe/umoe_gravmoe_s2.pt",
+  "all_retained": false,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 6,
+  "extent_counts": {
+   "checkpoints/confirmed/scaffold-moe/umoe_gravmoe_s2.pt": 3,
+   "checkpoints/umoe_gravmoe_s2.pt": 3
+  },
+  "redundant_bytes": 3754481
+ },
+ {
+  "sha256": "fb02357529c8fb4284f4ea02d2a6d6f2d1e79f09ee6eb1805a5d41a12e4c44d5",
+  "bytes": 2143611,
+  "paths": [
+   "checkpoints/cal_dilute_10_s1.pt",
+   "checkpoints/confirmed/calibration/cal_dilute_10_s1.pt"
+  ],
+  "classes": {
+   "checkpoints/cal_dilute_10_s1.pt": "ESSENTIAL",
+   "checkpoints/confirmed/calibration/cal_dilute_10_s1.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/confirmed/calibration/cal_dilute_10_s1.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 5,
+  "extent_counts": {
+   "checkpoints/cal_dilute_10_s1.pt": 3,
+   "checkpoints/confirmed/calibration/cal_dilute_10_s1.pt": 2
+  },
+  "redundant_bytes": 2143611
+ },
+ {
+  "sha256": "5b6528f24a30bd770785b2e4dd962b7b6ebfe8f635c0ad12d8f0af7ee08aa244",
+  "bytes": 2143611,
+  "paths": [
+   "checkpoints/cal_dilute_30_s1.pt",
+   "checkpoints/confirmed/calibration/cal_dilute_30_s1.pt"
+  ],
+  "classes": {
+   "checkpoints/cal_dilute_30_s1.pt": "DUPLICATE",
+   "checkpoints/confirmed/calibration/cal_dilute_30_s1.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/confirmed/calibration/cal_dilute_30_s1.pt",
+  "all_retained": false,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 5,
+  "extent_counts": {
+   "checkpoints/cal_dilute_30_s1.pt": 3,
+   "checkpoints/confirmed/calibration/cal_dilute_30_s1.pt": 2
+  },
+  "redundant_bytes": 2143611
+ },
+ {
+  "sha256": "0373140fb368261bb8b66691d9f0ba96bd2fc8c47c091f2e716c016da3ebdbac",
+  "bytes": 2142844,
+  "paths": [
+   "checkpoints/confirmed/grav-spacetime/grav2_contract_s1.pt",
+   "checkpoints/grav2_contract_s1.pt"
+  ],
+  "classes": {
+   "checkpoints/confirmed/grav-spacetime/grav2_contract_s1.pt": "FROZEN",
+   "checkpoints/grav2_contract_s1.pt": "DUPLICATE"
+  },
+  "canonical": "checkpoints/confirmed/grav-spacetime/grav2_contract_s1.pt",
+  "all_retained": false,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 4,
+  "extent_counts": {
+   "checkpoints/confirmed/grav-spacetime/grav2_contract_s1.pt": 2,
+   "checkpoints/grav2_contract_s1.pt": 2
+  },
+  "redundant_bytes": 2142844
+ },
+ {
+  "sha256": "81f137e24251e923ea5b1d9bb05a497c2bab065cb93d463bac4d8e8b7f35fc57",
+  "bytes": 2142519,
+  "paths": [
+   "checkpoints/confirmed/grav-spacetime/grav2_ctl_s1.pt",
+   "checkpoints/grav2_ctl_s1.pt"
+  ],
+  "classes": {
+   "checkpoints/confirmed/grav-spacetime/grav2_ctl_s1.pt": "FROZEN",
+   "checkpoints/grav2_ctl_s1.pt": "DUPLICATE"
+  },
+  "canonical": "checkpoints/confirmed/grav-spacetime/grav2_ctl_s1.pt",
+  "all_retained": false,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 4,
+  "extent_counts": {
+   "checkpoints/confirmed/grav-spacetime/grav2_ctl_s1.pt": 2,
+   "checkpoints/grav2_ctl_s1.pt": 2
+  },
+  "redundant_bytes": 2142519
+ },
+ {
+  "sha256": "428c854930e8ab2c8670437ff4c464f59a3d8dffca8e7086b80278b713d4ead1",
+  "bytes": 2141061,
+  "paths": [
+   "checkpoints/confirmed/crystal-math/sym_birth_dense_mps_h8_ema.pt",
+   "checkpoints/sym_birth_dense_mps_h8_ema.pt"
+  ],
+  "classes": {
+   "checkpoints/confirmed/crystal-math/sym_birth_dense_mps_h8_ema.pt": "FROZEN",
+   "checkpoints/sym_birth_dense_mps_h8_ema.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/confirmed/crystal-math/sym_birth_dense_mps_h8_ema.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 4,
+  "extent_counts": {
+   "checkpoints/confirmed/crystal-math/sym_birth_dense_mps_h8_ema.pt": 2,
+   "checkpoints/sym_birth_dense_mps_h8_ema.pt": 2
+  },
+  "redundant_bytes": 2141061
+ },
+ {
+  "sha256": "9c7f6250fb1e5a1dc10d97432d6a0b6612ba6d97544a8cdd530cd663871e5f4d",
+  "bytes": 494875,
+  "paths": [
+   "checkpoints/writercaf1/qual_hybrid_k1_s23_S1_lr0.0003/feedback.pt",
+   "checkpoints/writercaf1/qual_hybrid_k2_s23_S1_lr0.0003/feedback.pt",
+   "checkpoints/writercaf1/qual_hybrid_k4_s23_S1_lr0.0003/feedback.pt",
+   "checkpoints/writerdfa1/qual_dfa_s21_S1_lr0.0001/feedback.pt",
+   "checkpoints/writerdfa1/qual_dfa_s21_S1_lr0.0003/feedback.pt"
+  ],
+  "classes": {
+   "checkpoints/writercaf1/qual_hybrid_k1_s23_S1_lr0.0003/feedback.pt": "FROZEN",
+   "checkpoints/writercaf1/qual_hybrid_k2_s23_S1_lr0.0003/feedback.pt": "FROZEN",
+   "checkpoints/writercaf1/qual_hybrid_k4_s23_S1_lr0.0003/feedback.pt": "FROZEN",
+   "checkpoints/writerdfa1/qual_dfa_s21_S1_lr0.0001/feedback.pt": "FROZEN",
+   "checkpoints/writerdfa1/qual_dfa_s21_S1_lr0.0003/feedback.pt": "FROZEN"
+  },
+  "canonical": "checkpoints/writercaf1/qual_hybrid_k1_s23_S1_lr0.0003/feedback.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 5,
+  "extent_counts": {
+   "checkpoints/writercaf1/qual_hybrid_k1_s23_S1_lr0.0003/feedback.pt": 1,
+   "checkpoints/writercaf1/qual_hybrid_k2_s23_S1_lr0.0003/feedback.pt": 1,
+   "checkpoints/writercaf1/qual_hybrid_k4_s23_S1_lr0.0003/feedback.pt": 1,
+   "checkpoints/writerdfa1/qual_dfa_s21_S1_lr0.0001/feedback.pt": 1,
+   "checkpoints/writerdfa1/qual_dfa_s21_S1_lr0.0003/feedback.pt": 1
+  },
+  "redundant_bytes": 1979500
+ },
+ {
+  "sha256": "f503c81446c97adb01f657d37f490909a0cbd5d752d2bc2ae5613ced9cf56378",
+  "bytes": 525893,
+  "paths": [
+   "checkpoints/confirmed/determinism/k3_silu_tab.pt",
+   "checkpoints/k3_silu_tab.pt"
+  ],
+  "classes": {
+   "checkpoints/confirmed/determinism/k3_silu_tab.pt": "FROZEN",
+   "checkpoints/k3_silu_tab.pt": "ESSENTIAL"
+  },
+  "canonical": "checkpoints/confirmed/determinism/k3_silu_tab.pt",
+  "all_retained": true,
+  "physical": "distinct",
+  "probe": "full-extent-map",
+  "shared_bytes": 0,
+  "extents_compared": 2,
+  "extent_counts": {
+   "checkpoints/confirmed/determinism/k3_silu_tab.pt": 1,
+   "checkpoints/k3_silu_tab.pt": 1
+  },
+  "redundant_bytes": 525893
+ }
+]
