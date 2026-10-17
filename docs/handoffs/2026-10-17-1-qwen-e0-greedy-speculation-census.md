@@ -88,3 +88,30 @@ measurement; accepted/drafted is not an estimate of agreement.
 - Timing rung prepared, not registered: spec 2026-10-17-timing-rung.md
   (quantities, break-even law with per-stream yields, three bars, the
   vendor-restore preconditions with the hub's per-shard LFS sha256).
+
+## Addendum 2 (evening): fused Metal kernel and the arm C Metal tower
+
+Artin's GO (2026-10-17 18:08) for the fused W4/S16 decode-and-multiply
+kernel. Delivered, all local (commits 3e7f457f, 295be340, c1aa5fb9 and
+the booking commit after them; nothing pushed after 90fa3347):
+- llmopt/lab/qmetal.py: three kernel generations, v3 default; frozen
+  formats untouched; no decoded matrix; subnormal and overflow handling
+  by split accumulators; tests/test_qmetal.py 108 parity cases against
+  llmopt.lab.qcodec; scripts/bench_qmetal.py with receipts under
+  logs/qmetal/bench_90fa3347*.json.
+- scratch/qwen_metal_tower.py: mlx-lm Qwen3.5 architecture with fused
+  linears, raw tensors decoded once with the sanitizer's conventions,
+  exact HF l2norm for DeltaNet q/k (the one library deviation found,
+  2e-2 on logits before, 5e-5 after; tests/test_qwen_metal_tower_contract.py
+  pins the two lines overridden). scratch/qmetal_oracle_dump.py dumps the
+  CPU oracle's logits and per-layer hidden states (untracked npz under
+  logs/qmetal/, 70 and 164 MB; regenerate in about a minute).
+- Numbers: decode 6.44 tok/s steady (155 ms, p90 157 ms), prefill 8
+  tok/s, peak unified 10.3 GB, RSS 11.7 GB; per-layer parity 6e-7 to
+  2e-5 over 64 layers; CPU census path was 57 s per token.
+- Booked: OBSERVATION QWEN-METAL-TOWER-0 (RESULTS L79270); RIFF
+  W4-GROUP-DOT marked measured.
+
+Open: a real multi-token kernel for prefill (the tile path saves little);
+the verifier-timing rung still needs the vendor bf16 shards and the
+storage decision; no verifier, no MTP, no recompilation done.

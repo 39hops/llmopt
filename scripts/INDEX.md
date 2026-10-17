@@ -498,6 +498,11 @@ The proposer race: full enumeration vs model-proposed top-k vs random-k control,
 - `_check(kind, expr, truth)`
 - `main(n: int, budgets: list[int]) -> None`
 
+### scripts/bench_qmetal.py
+Benchmark the fused Metal decode-and-multiply kernels on real arm C payloads (representative Qwen3.8-27B layer shapes) against the existing CPU path (canonical decode + numpy GEMV) and, as a reference only, mx.quantized_matmul int4 (a DIFFERENT 4-bit format with a different byte count; shown because it is the tuned Metal GEMV on this machine).
+
+- `main() -> None`
+
 ### scripts/bench_quant_schemes.py
 Three-lane 4-bit quantization race on REAL model weights, scored in FUNCTION space (the house law: never score weights by weight distance).
 
@@ -5025,6 +5030,11 @@ qcuda-tower qualification ladder, steps a-c (3080; spec 2026-08-19-qcuda-tower-r
 - `synth_case(R, C, exps, seed)` — exps: explicit uint8 array (len n//128) — edge claims name
 - `main()`
 
+### scratch/qmetal_oracle_dump.py
+Dump the CPU oracle's full fp32 logits for one prompt plus recorded rollout tokens (the census runtime: transformers streamed decode of arm C, scratch/qwen_e0_spec_census.py construction). Receipt for the Metal-path parity check; refuse-if-exists. Env: PROMPT_IDX (default 0), STEPS (default 8), ART_DIR, VENDOR_DIR, TEACHER_DIR, OUT.
+
+- `main() -> None`
+
 ### scratch/quat_commutant.py
 Symmetry ladder S1 cell 1 (pre-reg 2026-07-28): quaternionic anti-commutant mass of FFN gate matrices. Structures I,J,K = left quaternion-unit action on 4-channel groups (I^2=J^2=K^2=-1, IJ=K); P(W) = (W - IWI - JWJ - KWK)/4; anti-mass = 1 - ||P(W)||^2/||W||^2 (0.75 = fully generic, 0 = exactly quaternionic-linear). Synthetic controls run FIRST (must read 0.0 / ~0.75) — instrument fence. Real crystals: adjacent 4-grouping + 20 random-grouping nulls.
 
@@ -5306,6 +5316,11 @@ Teacher margin-bin census (AMENDMENT QWEN-MODEL1-TREE-PINS item 2) — teacher-o
 - `margins(a)`
 - `bins(m)`
 - `main() -> int`
+
+### scratch/qwen_metal_tower.py
+Arm C on Metal: the mlx-lm Qwen3.5 architecture with every w4 / s16 matrix served by the fused decode-and-multiply kernels (llmopt.lab.qmetal), raw tensors decoded once, no decoded weight matrix ever materialized.
+
+- `main() -> None`
 
 ### scratch/qwen_mips_census.py
 QWEN-MIPS-CENSUS-0 driver: exact Cauchy-Schwarz branch-and-bound top-256 over k-means-clustered decoded W4 lm_head rows (PRE-REG in docs/RESULTS.md; machine projection docs/preregs/ qwen-mips-census-0.json). Mac, CPU, plain .venv — no model load.
@@ -6615,6 +6630,17 @@ Reusable CUDA tower: codec dispatch + FusedS16Linear + residency plan.
 - `expected_compressed(manifest: dict) -> dict` — Manifest keys that MUST run compressed: every 2D w4/s16 entry.
 - `verify_routes(model, manifest: dict, name_fn=None, dedicated_routes=None) -> dict` — The executable invariant, as EXACT CONSERVATION (not merely
 - `fused_module(entry: dict, buf: bytes)` — Materialize the fused module for a manifest entry (CUDA).
+
+### llmopt/lab/qmetal.py
+Fused Metal decode-and-multiply for the frozen WHOLE-0T payloads (Apple silicon, mx.fast.metal_kernel). Companion of llmopt.lab.qcuda.
+
+- `require_mlx() -> None`
+- `_kernel(name: str, version: int)`
+- `_check_shape(codec: str, shape, buf_len: int)`
+- `class _Resident` (gemv, gemm, payload_bytes)
+- `class W4Metal`
+- `class S16Metal`
+- `resident(buf: bytes, entry: dict)` — Build the resident form for a manifest entry of codec w4 or s16.
 
 ### llmopt/lab/qrope.py
 RoPE value oracle — exact expectations, no thresholds.

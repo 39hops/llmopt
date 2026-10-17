@@ -4333,6 +4333,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qmetal/tower_C_295be340.json": {
+   "bytes": 1553,
+   "exists": true,
+   "sha256": "b592181b0fc67d77235ae414b8df44f2e3a872be6fe819e509408759fbf2a852",
+   "source": "results",
+   "tracked": true
+  },
   "logs/qwen_e0/C/positions.jsonl": {
    "bytes": 5664189,
    "exists": true,
@@ -5663,10 +5670,9 @@
   "logs/rehab-2e/mac_cache_reclaim_2026-10-17.txt": {
    "bytes": 957,
    "exists": true,
-   "local_only": true,
    "sha256": "99c85bee5ad8dc57fe01abdaf03b3f8c3e0287146198cef8fd52b8129e767485",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/rehab-2e/qwen_e0_recompute_C.txt": {
    "bytes": 3707,

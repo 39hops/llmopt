@@ -79266,3 +79266,95 @@ on this Mac with the current CPU draft path, by a factor of about
 five to ten, independent of any teacher timing. The teacher-side
 measurements (c_t, c_v(k)) remain worth having, but they cannot flip
 this conclusion; the gating item is the draft kernel.
+
+## OBSERVATION QWEN-METAL-TOWER-0: the frozen arm C runs end to end on the M3 Pro through fused Metal decode-and-multiply kernels for its W4 and S16 payloads with no decoded matrix ever materialized: single-token greedy decode 6.44 tokens per second steady (155 ms per token, 64 free-run steps), prefill 8 tokens per second, peak unified memory 10.3 GB; logits match the CPU oracle at 5e-5 relative with 70 of 70 prefill and 8 of 8 decode argmax identical; the 57 s per token CPU projection is retired by a factor of about 370 (2026-10-17, Mac; instrument result, not a registered rung)
+
+Kernels (llmopt/lab/qmetal.py, commit 3e7f457f and after). The frozen
+layouts of llmopt.lab.qcodec are read as they are: w4 is an 8-bit index
+into a per-tensor codebook of four consecutive fp16 weights with a
+power-of-two block-128 scale; s16 is packed nibbles, high nibble first,
+over a 16-entry fp16 level table with the same scale. One simdgroup per
+output row streams 32-bit payload words, rebuilds the scale from the
+exponent byte (bit construction; exponent 255 is inf), multiplies the
+word's partial dot by the scale, and keeps blocks with exponent below
+31 or at 191 and above in second and third accumulators whose remaining
+factors 2^-96 and 2^64 are applied once per row, because the GPU
+flushes subnormal intermediates and treats a subnormal operand as zero.
+The v3 generation holds the codebook in threadgroup memory and compiles
+an activation tile of 1, 2, 4 or 8 per call. Parity suite
+tests/test_qmetal.py (108 cases over three kernel generations) against
+the canonical decode multiplied in float64: golden compiler payloads,
+six shapes per codec, exponent edges 0, 1, 127, 254 and 255, codebook
+boundaries and non-finite entries, the nibble order, partial rows
+against W4Rows and S16Rows, multi-token tiles, refusals. Bound: 1e-5
+relative plus 2e-6 of the row's absolute dot plus one subnormal spacing
+per weight the oracle itself decodes to a subnormal; rows the float32
+oracle overflowed are judged against the exact float64 law; exponent
+255 rows are non-finite in both. Two documented deviations: outputs
+whose true value is below the float32 normal range may read as zero,
+and the oracle's own subnormal rounding is not reproduced.
+
+Kernel benchmark (scripts/bench_qmetal.py, logs/qmetal/bench_90fa3347*.json,
+real arm C payloads, median of 50 evaluated iterations, warmup and first
+call excluded and reported separately): v3 fused GEMV 538 to 558 us on
+the three w4 MLP matrices [17408, 5120] / [5120, 17408] (41 to 43 GB/s,
+28 percent of the 150 GB/s roofline), 398 to 661 us on the s16 attention
+and projection matrices (40 to 48 GB/s, 26 to 32 percent), 9.5 ms on the
+s16 lm_head [248320, 5120] (68 GB/s, 45 percent); against the CPU path
+(canonical decode plus numpy GEMV) 54 to 190 ms per matrix and 2.6 s for
+the head. Reference only, a different format: mx.quantized_matmul int4
+at the same shapes 272 to 519 us and 5.2 ms, holding twice the bytes;
+the fused w4 kernel matches its time at half the traffic. v1 (device
+codebook, eight-row tile for every call) ran at 6 to 19 GB/s; v2 (128-bit
+loads, four rows per threadgroup) was slower still (2 to 7 GB/s), kept in
+the receipts. The multi-token tile path gives little per-token saving
+(450 us per token at T = 8 against 540 us single), so prefill is close to
+sequential cost.
+
+Tower (scratch/qwen_metal_tower.py, receipts logs/qmetal/tower_C_295be340.json,
+layer_parity_C.txt). The mlx-lm Qwen3.5 architecture with every w4 / s16
+matrix replaced by a resident fused linear, raw tensors decoded once
+(conv1d axis moved, the five zero-centered norm families shifted by +1
+as the mlx-lm sanitizer does), embedding rows decoded on demand through
+S16Rows, 9.37 GB of payload resident, float32 throughout. Oracle: the
+census CPU runtime (transformers streamed decode of the same artifact,
+scratch/qmetal_oracle_dump.py) on the chat-1 prompt plus 8 recorded
+rollout tokens, full fp32 logits and per-layer hidden states. First
+run: 69 of 70 prefill argmax identical, logits 2e-2 relative; the
+per-layer comparison showed 8e-5 after layer 0 growing to 1e-3 by layer
+2, independent of the DeltaNet kernel versus ops path, and traced to
+the q/k normalization: mlx-lm writes HF's l2norm as rms_norm with eps
+1e-6 and the 1/sqrt(dk) fold, which places eps times dk inside the
+root. With the exact HF form (x times rsqrt of the sum of squares plus
+1e-6) the per-layer relative error is 6e-7 to 2e-5 across all 64 layers,
+the logits 5e-5 relative (max abs 1e-3), 70 of 70 prefill argmax
+identical, and the teacher-forced decode path (prompt prefill into a
+fresh cache, one token at a time) matches the oracle argmax 8 of 8 with
+decode-versus-prefill logits within 2e-5, which is the DeltaNet
+recurrent and conv state, the KV cache and RoPE offsets behaving.
+tests/test_qwen_metal_tower_contract.py pins the two library lines the
+override replaces and the sanitizer conventions.
+
+Measured throughput (not projected): prefill of 70 tokens 8.6 s; decode
+median 155 ms per token over 8 teacher-forced steps and over 64
+free-run greedy steps (p90 157 ms), 6.44 tokens per second at context
+length 126; peak unified memory 9.7 GB (prefill) to 10.3 GB (free run),
+process RSS 11.7 GB. Against the matmuls-only projection of 190 ms per
+token, the remaining 35 ms is everything else (attention, norms,
+recurrence, launch gaps). Against the CPU census path, 57 s per token.
+
+Reading for the speculation question. The draft side is no longer the
+blocker: c_d is 0.155 s on this machine. Break-even at k = 4 with the
+per-stream E0 yield 3.43 now reads 4 x 0.155 + c_v(4) < 3.43 c_t, so
+any streamed bf16 teacher slower than about 0.3 s per token with a
+verify pass near its own step cost clears it. That makes the
+verifier-timing rung (spec 2026-10-17-timing-rung.md) worth running,
+and it still needs the vendor shards and the storage decision. Not
+done here: no speculative verifier, no retraining, no recompilation of
+arm C, no vendor download; prefill stays slow until a real multi-token
+kernel exists.
+
+Fences: single artifact (arm C), single machine (M3 Pro, 39 GB), one
+prompt for parity (70 positions, per-layer), timing at context 62 to
+126 tokens; float32 activations; kernel bandwidth numbers are medians
+of evaluated iterations with the first call excluded.
