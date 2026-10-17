@@ -1,0 +1,55 @@
+{
+ "arm": "C",
+ "commit": "3e7f457f",
+ "chain_report": {
+  "art_dir": "/Users/artin/qwen_whole0t/C",
+  "rung0": {
+   "checked": 19,
+   "unchained": false
+  },
+  "conservation": {
+   "keys": 1199
+  },
+  "census": {
+   "w4": 192,
+   "s16": 210,
+   "raw": 449,
+   "excluded": 348
+  },
+  "preflight": {
+   "estimated_peak_bytes": 6504933184,
+   "available_bytes": 24088559616,
+   "safety_fraction": 0.8
+  }
+ },
+ "oracle": "logs/qmetal/oracle_C_p0_s8.npz",
+ "n_layers": 64,
+ "fused": 402,
+ "raw": 449,
+ "payload_resident_bytes": 9367009856,
+ "kernel_version": 3,
+ "prefill": {
+  "tokens": 70,
+  "wall_s": 9.180202960968018,
+  "tok_per_s": 7.625103747446861,
+  "argmax_identical": 69,
+  "positions": 70,
+  "max_abs_err": 0.7154054641723633,
+  "max_rel_err": 0.03689331437315492,
+  "median_rel_err": 0.005697990612636122,
+  "peak_mem_bytes": 9685691172
+ },
+ "decode": {
+  "prompt_tokens": 62,
+  "prompt_prefill_s": 7.685870170593262,
+  "steps": 8,
+  "first_step_s": 0.00011181831359863281,
+  "median_step_s": 0.15596628189086914,
+  "p90_step_s": 0.17864842414855958,
+  "tok_per_s_steady": 6.411642233670147,
+  "argmax_matches_oracle": 8,
+  "max_abs_diff_vs_prefill": 2.193450927734375e-05,
+  "peak_mem_bytes": 10043708584,
+  "process_peak_rss_bytes": 11678924800
+ }
+}
