@@ -206,3 +206,52 @@ prompts, Mac CPU.
 Not in E0: any generation, any timing claim for the Mac tower, any
 rollback method, sampled-law acceptance (reported per position as
 1 − TV but not used for a decision).
+
+## 7. Step 1 and Step 2 record (2026-10-17, GO from Artin for these two only)
+
+Step 1. ~/qwen_whole0t/C copied from the 3080 with rsync
+--ignore-existing into an empty Mac path: file set exactly the 19 names
+of logs/qwenwhole/artifact_digest_C.txt, all 19 SHA-256 equal to the
+frozen chain and to the 3080 copy (receipts qwen_whole0t_C_digest_mac
+and _3080 under logs/rehab-2e). ~/qwen_vendor: exactly five files,
+digests equal to the 3080 list; the shard index digest equals the
+teacher manifest's shard_index_sha256 pin. No vendor weight shard
+exists on the Mac and the driver refuses to run if one appears. Mac
+free disk 46.3 GB after the copy, free plus inactive memory 21 GB.
+
+Step 2. SMOKE=1 at commit ad57a657, .venv_teacher, rc 0, 65 s wall,
+peak RSS 16.4 GB (the preflight estimate of 6.5 GB counts decoded
+weights only; the fp32 activations of a 70-token forward and the 248k
+logit rows account for the rest; full-run forwards reach 339 tokens, so
+expect the same order, well inside 39 GB). Instrument checks: 19 files
+chained, conservation 1,199 keys, census 192 w4 / 210 s16 / 449 raw /
+348 excluded, traversal 64 layers once each (48 linear, 16 full), RoPE
+inv_freq check, finite logits, alignment, left padding, pad id absent
+from the prompt, eos set read from generation_config, 8 positions
+written. One refusal before success: the driver hashed the .npy file
+while the teacher manifest pins the array bytes (sha_arr in the MODEL1
+scorer); fixed in the driver, nothing under logs/qwenteacher_v2 touched.
+The 8 smoke positions are not ambiguous (recorded token equals the fp16
+argmax at all 8, margins 2.66 to 13.2 nats, ulp 0.0156 to 0.0313). Read
+after the registration commit, instrument-only, n = 8: shift-aligned sup
+error 4.9 to 9.7 nats at every position, so no position is margin-
+certified, and 7 of 8 agree. These numbers decide nothing.
+
+## 8. The accepted/drafted ratio: two different statements
+
+Deterministic sample path (no model). In a replay or a real run, every
+accepted token sits at a position where the draft equalled the teacher,
+and every rejecting block evaluates exactly one more position where it
+did not. So accepted / drafted <= accepted / (accepted + rejected
+blocks) = agreement over evaluated positions, and drafted positions
+beyond the first rejection are never evaluated at all. This is checked
+in `test_sample_path_accepted_over_drafted_bounded_by_agreement_over_
+evaluated` and holds for any streams.
+
+Expectation under the independence model. `logged_ratio_le` in Lean
+states (E(α,k) − 1)/k <= α where E(α,k) = (1 − α^{k+1})/(1 − α) is the
+EXPECTED emitted count when per-position acceptance is independent with
+constant rate α. It is a theorem about that model's expectation, not
+about any recorded run, and it needs 0 <= α < 1 and k >= 1. Neither
+statement lets the logged ratio stand in for α; the census reports
+agreement at evaluated contexts and the replay separately.
