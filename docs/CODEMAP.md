@@ -16,7 +16,7 @@ this also drives `library`; from lab tooling it drives
 comments or plain strings; `via` names the cited caller a file
 inherits its class from when no document names the file itself.
 
-Census: library 196, reproduce-pinned 9, results-cited 511, spec-cited 74, tool-referenced 5, UNCITED 120 (of 915; library rows that are also doc-cited: 192)
+Census: library 196, reproduce-pinned 9, results-cited 512, spec-cited 74, tool-referenced 5, UNCITED 120 (of 916; library rows that are also doc-cited: 192)
 
 ## scratch/
 
@@ -589,7 +589,7 @@ Census: library 196, reproduce-pinned 9, results-cited 511, spec-cited 74, tool-
 | qwen | qwen_displace_extract.py | spec-cited | specs | specs×1 | — | — | 1 | — |
 | qwen | qwen_e0_preflight.py | UNCITED | — | — | — | — | — | — |
 | qwen | qwen_e0_recompute.py | UNCITED | — | — | — | — | — | — |
-| qwen | qwen_e0_spec_census.py | results-cited | RESULTS, specs | RESULTS×5, specs×4 | — | — | 2 | — |
+| qwen | qwen_e0_spec_census.py | results-cited | RESULTS, specs | RESULTS×5, specs×4 | — | — | 3 | — |
 | qwen | qwen_effort_probe.py | results-cited | RESULTS, via:specs | RESULTS×7 | — | 9 | — | — |
 | qwen | qwen_effort_quant.py | results-cited | RESULTS | RESULTS×7 | — | — | 1 | — |
 | qwen | qwen_effort_tower.py | results-cited | RESULTS, via:specs | RESULTS×3 | — | 1 | — | — |
@@ -606,7 +606,8 @@ Census: library 196, reproduce-pinned 9, results-cited 511, spec-cited 74, tool-
 | qwen | qwen_loop_state_color2.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
 | qwen | qwen_loop_state_headswap.py | results-cited | RESULTS, via:specs | RESULTS×7 | — | 2 | — | — |
 | qwen | qwen_margin_census.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
-| qwen | qwen_metal_tower.py | library | RESULTS, specs | RESULTS×3, specs×1 | — | 1 | — | — |
+| qwen | qwen_metal_qual.py | results-cited | RESULTS, specs | RESULTS×2, specs×2 | — | — | — | — |
+| qwen | qwen_metal_tower.py | library | RESULTS, specs | RESULTS×6, specs×1 | — | 1 | 1 | — |
 | qwen | qwen_mips_census.py | results-cited | RESULTS | RESULTS×5 | — | — | — | — |
 | qwen | qwen_model1_score.py | library | RESULTS, specs | RESULTS×5, specs×2 | — | 3 | 4 | — |
 | qwen | qwen_model2_adjudicate.py | library | RESULTS | RESULTS×2 | 1 | 1 | — | — |
@@ -824,7 +825,7 @@ Census: library 196, reproduce-pinned 9, results-cited 511, spec-cited 74, tool-
 | bench | bench_pred_syndromes.py | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
 | bench | bench_prefix_reuse.py | library | RESULTS, via:TOOLING | RESULTS×1 | 1 | — | — | — |
 | bench | bench_proposer.py | results-cited | RESULTS, specs | RESULTS×1, specs×10 | — | — | 1 | — |
-| bench | bench_qmetal.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | — | — | — |
+| bench | bench_qmetal.py | results-cited | RESULTS, specs | RESULTS×6, specs×1 | — | — | — | — |
 | bench | bench_quant_schemes.py | results-cited | RESULTS | RESULTS×3 | — | — | 1 | — |
 | bench | bench_record.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | — | — | — |
 | bench | bench_regret_resample.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |

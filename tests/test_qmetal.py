@@ -1,8 +1,9 @@
 """Parity of the fused Metal decode-and-multiply kernels (llmopt.lab.qmetal)
 against the canonical decoder llmopt.lab.qcodec, multiplied in float64.
 Skips where mlx is absent. Bit exactness is not expected (different
-accumulation order); the bar is relative error <= 1e-5 per output, with
-non-finite outputs matched exactly (equal_nan)."""
+accumulation order); the bar is |got - ref| <= 1e-5 |ref| + 2e-6 times
+the row's absolute dot, plus one subnormal spacing per oracle-subnormal
+weight, with non-finite outputs matched exactly (equal_nan)."""
 import hashlib
 import json
 import os
@@ -21,7 +22,7 @@ RTOL = 1e-5
 
 @pytest.fixture(autouse=True, params=[1, 2, 3], ids=["v1", "v2", "v3"])
 def _kernel_version(request, monkeypatch):
-    """Every parity case runs under both kernel generations."""
+    """Every parity case runs under all three kernel generations."""
     monkeypatch.setattr(qmetal, "VERSION", request.param)
     monkeypatch.setattr(qmetal._Resident, "version", request.param)
     yield request.param
@@ -141,8 +142,12 @@ def _check(res, buf, shape, dec, x):
     finite = finite & ~tiny
     # float32 accumulation against a float64 oracle: |got - ref| must stay
     # within RTOL of |ref| plus ATOL_COND of the row's absolute dot
-    # sum_c |W_rc x_c| (the cancellation-aware term; fp32 eps 6e-8 times
-    # the log-depth of the reduction stays far below it).
+    # sum_c |W_rc x_c| (the cancellation-aware term). The reduction is
+    # sequential per lane (about C/512 word partials, each of 16 or 64
+    # products) followed by a five-level simd_sum, so the worst-case
+    # rounding factor is about 3.3e-6 of the absolute dot at C = 17408
+    # (4.7e-6 for v2), above ATOL_COND; adversarial cancellation probes
+    # measure 1.8e-8, and the bound is checked empirically, not derived.
     absdot = (np.abs(W[finite]) @ np.abs(np.asarray(x, dtype=np.float64)))
     # weights the oracle decodes BELOW the float32 normal range are rounded
     # to subnormal precision (spacing 2^-149) before the oracle multiplies;
@@ -325,6 +330,5 @@ def test_subnormal_outputs_flush_or_match():
     x = (rng.normal(size=C) * 1e6).astype(np.float32)      # lifts outputs into the normal range
     W = qcodec.dec_w4(buf, (R, C)).astype(np.float64)
     ref = W @ x.astype(np.float64)
-    got = np.asarray(_w4_or_skip(buf, (R, C)).gemv(mx.array(x)), dtype=np.float64)
     assert np.abs(ref).min() > 1.2e-38
-    assert np.allclose(got, ref, rtol=1e-4, atol=0)
+    _check(_w4_or_skip(buf, (R, C)), buf, (R, C), qcodec.dec_w4, x)

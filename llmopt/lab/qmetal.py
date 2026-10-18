@@ -24,17 +24,26 @@ exponent below 31 (scale under 2^-96) or at 191 and above (scale 2^64
 and above, except the infinite 255) go through second and third
 accumulators whose remaining factors 2^-96 and 2^64 are applied once per
 row, so no intermediate is subnormal or infinite unless the true row
-value is; the GPU flushes subnormals to zero. Two documented deviations from decode-then-multiply remain:
-outputs whose TRUE value is below the float32 normal range (about
-1.2e-38) can read as zero, and weights the oracle itself decodes to
-subnormal floats (exponent bytes 0 and 1) carry the oracle's subnormal
-rounding, which the fused path does not reproduce. The tests pin both. A 32-bit word never
+value is; the GPU flushes subnormals to zero. Four documented deviations
+from decode-then-multiply remain: outputs whose TRUE value is below the
+float32 normal range (about 1.2e-38) can read as zero; weights the
+oracle itself decodes to subnormal floats (exponent bytes 0 and 1)
+carry the oracle's subnormal rounding, which the fused path does not
+reproduce; a row whose float32 oracle overflows on one weight can read
+finite here because the scale is applied to the word partial (the tests
+judge such rows against the exact float64 law); and exponent byte 255
+gives inf or nan depending on the signs that meet, while the oracle gives
+its own non-finite value (both non-finite, not necessarily the same one).
+The tests pin all four. Arm C exponent bytes span 111 to 128, so the
+second and third accumulators never fire on the real payload. A 32-bit word never
 crosses a 128-element block, so one exponent serves a whole word.
 Multi-token (prefill) use runs the same decode once per row against a
 tile of up to TT activations.
 
-Parity regime (tests/test_qmetal.py): relative error <= 1e-5 against
-the canonical decode (llmopt.lab.qcodec) multiplied in float64, on the
+Parity regime (tests/test_qmetal.py): |got - ref| <= 1e-5 |ref| + 2e-6
+times the row's absolute dot sum_c |W_rc x_c| (float32 accumulation
+against a float64 oracle; the second term is the cancellation
+allowance) plus one subnormal spacing per oracle-subnormal weight, on the
 committed golden payloads, random payloads with exponent edges, and
 adversarial codebooks (including non-finite entries, which must
 propagate exactly as the oracle propagates them). Bit exactness is not
@@ -326,13 +335,15 @@ def _kernel(name: str, version: int):
 TILE = 8  # activations per launch in the multi-token path
 
 
-def _check_shape(codec: str, shape, buf_len: int):
+def _check_shape(codec: str, shape, buf_len: int, version: int = None):
+    if version is None:
+        version = VERSION
     if len(shape) != 2:
         raise ValueError(f"{codec} expects a 2-d shape, got {shape}")
     R, C = int(shape[0]), int(shape[1])
     if C % BLOCK or (codec == "w4" and C % 16) or (codec == "s16" and C % 8):
         raise ValueError(f"{codec} row width {C} must be a multiple of 128")
-    if VERSION == 2 and codec == "w4" and C % 256:
+    if version == 2 and codec == "w4" and C % 256:
         raise ValueError(f"w4 v2 kernel needs a row width multiple of 256, got {C}")
     if buf_len != expected_len(codec, shape):
         raise ValueError(f"{codec} payload {buf_len} != {expected_len(codec, shape)}")
@@ -398,7 +409,7 @@ class W4Metal(_Resident):
 
     def __init__(self, buf: bytes, shape):
         require_mlx()
-        R, C = _check_shape("w4", shape, len(buf))
+        R, C = _check_shape("w4", shape, len(buf), self.version)
         n = R * C
         nb = n // BLOCK
         self.shape = (R, C)
@@ -416,7 +427,7 @@ class S16Metal(_Resident):
 
     def __init__(self, buf: bytes, shape):
         require_mlx()
-        R, C = _check_shape("s16", shape, len(buf))
+        R, C = _check_shape("s16", shape, len(buf), self.version)
         n = R * C
         nb = n // BLOCK
         self.shape = (R, C)

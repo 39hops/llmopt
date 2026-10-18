@@ -39,6 +39,20 @@ NORM_SHIFT_SUFFIXES = (".input_layernorm.weight", ".post_attention_layernorm.wei
                        "model.norm.weight", ".q_norm.weight", ".k_norm.weight")
 
 
+
+def provenance() -> dict:
+    """Code and library identity of the run: short HEAD, whether the tree was
+    dirty (a dirty tree means HEAD may lack the code that wrote the
+    receipt), mlx and mlx-lm versions. Call it at launch, before any
+    model code loads, so later edits cannot change what it records."""
+    import mlx.core as mx
+    import mlx_lm
+    head = subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip()
+    dirty = subprocess.run(["git", "status", "--porcelain", "--untracked-files=no"], capture_output=True,
+                           text=True).stdout.strip()
+    return {"commit": head, "tree_dirty": bool(dirty), "mlx_version": mx.__version__,
+            "mlx_lm_version": mlx_lm.__version__}
+
 def main() -> None:
     import mlx.core as mx
     import mlx.nn as nn
@@ -51,6 +65,7 @@ def main() -> None:
     arm = os.path.basename(art.rstrip("/"))
     vdir = os.path.expanduser(os.environ.get("VENDOR_DIR", "~/qwen_vendor"))
     commit = subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip()
+    prov = provenance()
     oracle_path = os.environ.get("ORACLE", f"logs/qmetal/oracle_{arm}_p0_s8.npz")
     out = os.environ.get("OUT", f"logs/qmetal/tower_{arm}_{commit}.json")
     if os.path.exists(out):
@@ -74,7 +89,7 @@ def main() -> None:
     # mx.fast.rms_norm(x, None, 1e-6) with the 1/sqrt(dk) scale folded in,
     # which puts eps * dk inside the root instead of eps; against the CPU
     # oracle that read as a 1e-3 relative hidden-state error by layer 2
-    # and 2e-2 on the logits (localized 2026-10-17, receipts under
+    # and 3.7e-2 per-row relative on the logits (localized 2026-10-17, receipts under
     # logs/qmetal/). The override below is the HF form, x * rsqrt(sum x^2
     # + 1e-6), with the same scale fold; the source guard in
     # tests/test_qwen_metal_tower_contract.py pins the two library lines
@@ -177,7 +192,7 @@ def main() -> None:
     plen = int(orc["prompt_len"])
     ref = orc["logits"].astype(np.float64)
     steps = int(os.environ.get("STEPS", str(len(ids) - plen)))
-    receipt = {"arm": arm, "commit": commit, "chain_report": q["report"], "oracle": oracle_path,
+    receipt = {"arm": arm, "commit": commit, "provenance": prov, "chain_report": q["report"], "oracle": oracle_path,
                "n_layers": len(tm.layers), "fused": n_fused, "raw": n_raw,
                "payload_resident_bytes": bytes_resident, "kernel_version": qmetal.VERSION}
 

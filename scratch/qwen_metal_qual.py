@@ -204,6 +204,13 @@ def main() -> None:
     from transformers import AutoTokenizer
 
     smoke = os.environ.get("SMOKE") == "1"
+    # provenance is captured at launch, before any model code loads, so a
+    # mid-run edit or commit cannot change what the receipt says about the
+    # code that ran
+    launch_commit = git_commit()
+    tree_dirty_at_launch = bool(subprocess.run(["git", "status", "--porcelain", "--untracked-files=no"],
+                                               capture_output=True, text=True,
+                                               cwd=os.path.dirname(HERE)).stdout.strip())
     art = os.path.expanduser(os.environ.get("ART_DIR", "~/qwen_whole0t/C"))
     arm = os.path.basename(art.rstrip("/"))
     vdir = os.path.expanduser(os.environ.get("VENDOR_DIR", "~/qwen_vendor"))
@@ -383,8 +390,10 @@ def main() -> None:
                 tot_bl += r["blocks"]
             rps.setdefault(k, {})[name] = tot_em / tot_bl if tot_bl else None
     summary = {
-        "arm": arm, "artifact": art, "smoke": smoke, "device_actual": "metal",
-        "code_commit": git_commit(), "mlx_version": mx.__version__, "mlx_lm_version": mlx_lm.__version__,
+        "arm": arm, "artifact": art, "smoke": smoke,
+        "device_actual": str(mx.default_device()), "embedding_lookup_device": "cpu (numpy row decode)",
+        "code_commit": launch_commit, "tree_dirty_at_launch": tree_dirty_at_launch,
+        "mlx_version": mx.__version__, "mlx_lm_version": mlx_lm.__version__,
         "tower": info,
         "cpu_reference": {"dir": cpu_dir, "code_commit": cpu_summary["code_commit"],
                           "positions_sha256": cpu_pos_sha, "n_positions": len(cpu_rows),

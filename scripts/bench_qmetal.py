@@ -40,6 +40,20 @@ SHAPES = [  # (tensor suffix, layer index) representative of the 64-layer tower
 ROOFLINE_GBS = 150.0
 
 
+
+def provenance() -> dict:
+    """Code and library identity of the run: short HEAD, whether the tree was
+    dirty (a dirty tree means HEAD may lack the code that wrote the
+    receipt), mlx and mlx-lm versions. Call it at launch, before any
+    model code loads, so later edits cannot change what it records."""
+    import mlx.core as mx
+    import mlx_lm
+    head = subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip()
+    dirty = subprocess.run(["git", "status", "--porcelain", "--untracked-files=no"], capture_output=True,
+                           text=True).stdout.strip()
+    return {"commit": head, "tree_dirty": bool(dirty), "mlx_version": mx.__version__,
+            "mlx_lm_version": mlx_lm.__version__}
+
 def main() -> None:
     import mlx.core as mx
     from llmopt.lab import qmetal
@@ -52,6 +66,7 @@ def main() -> None:
     ap.add_argument("--head", action="store_true", help="also time lm_head [248320, 5120]")
     a = ap.parse_args()
     commit = subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip()
+    prov = provenance()
     out = a.out or f"logs/qmetal/bench_{commit}.json"
     if os.path.exists(out):
         raise SystemExit(f"REFUSING: {out} exists")
@@ -139,7 +154,10 @@ def main() -> None:
     per_linear = sum(r["fused_gemv_median_s"] for r in lin)
     per_full = sum(r["fused_gemv_median_s"] for r in full_) + sum(r["fused_gemv_median_s"] for r in mlp)
     proj = 48 * per_linear + 16 * per_full
-    summary = {"commit": commit, "art": a.art, "repeats": a.repeats, "roofline_gbs": ROOFLINE_GBS,
+    summary = {"commit": commit, "provenance": prov, "kernel_version": qmetal.VERSION,
+               "timing_note": "fused_gemv_median_s is synced per-call latency (host dispatch, kernel, mx.eval sync), "
+                              "an upper bound on kernel execution; the tower pipelines launches and runs below the sum of these",
+               "art": a.art, "repeats": a.repeats, "roofline_gbs": ROOFLINE_GBS,
                "rows": rows,
                "projection_labelled": {"note": "PROJECTION from per-layer fused GEMV medians only; excludes attention, norms, "
                                                "DeltaNet recurrence, embedding/head, launch gaps; not a measured token rate",

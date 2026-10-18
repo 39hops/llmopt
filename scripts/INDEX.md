@@ -501,6 +501,7 @@ The proposer race: full enumeration vs model-proposed top-k vs random-k control,
 ### scripts/bench_qmetal.py
 Benchmark the fused Metal decode-and-multiply kernels on real arm C payloads (representative Qwen3.8-27B layer shapes) against the existing CPU path (canonical decode + numpy GEMV) and, as a reference only, mx.quantized_matmul int4 (a DIFFERENT 4-bit format with a different byte count; shown because it is the tuned Metal GEMV on this machine).
 
+- `provenance() -> dict` — Code and library identity of the run: short HEAD, whether the tree was
 - `main() -> None`
 
 ### scripts/bench_quant_schemes.py
@@ -5330,6 +5331,7 @@ Metal-versus-CPU qualification of arm C over the frozen E0 teacher-greedy contex
 ### scratch/qwen_metal_tower.py
 Arm C on Metal: the mlx-lm Qwen3.5 architecture with every w4 / s16 matrix served by the fused decode-and-multiply kernels (llmopt.lab.qmetal), raw tensors decoded once, no decoded weight matrix ever materialized.
 
+- `provenance() -> dict` — Code and library identity of the run: short HEAD, whether the tree was
 - `main() -> None`
 
 ### scratch/qwen_mips_census.py
@@ -6646,7 +6648,7 @@ Fused Metal decode-and-multiply for the frozen WHOLE-0T payloads (Apple silicon,
 
 - `require_mlx() -> None`
 - `_kernel(name: str, version: int)`
-- `_check_shape(codec: str, shape, buf_len: int)`
+- `_check_shape(codec: str, shape, buf_len: int, version: int=None)`
 - `class _Resident` (gemv, gemm, payload_bytes)
 - `class W4Metal`
 - `class S16Metal`

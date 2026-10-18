@@ -79358,3 +79358,212 @@ Fences: single artifact (arm C), single machine (M3 Pro, 39 GB), one
 prompt for parity (70 positions, per-layer), timing at context 62 to
 126 tokens; float32 activations; kernel bandwidth numbers are medians
 of evaluated iterations with the first call excluded.
+
+## AMENDMENT QWEN-METAL-TOWER-0-PROVENANCE: corrections to OBSERVATION QWEN-METAL-TOWER-0 (L79270) from the independent Opus 5.5 review of commits 3e7f457f through 5d72c3cd (2026-10-17, Mac; the observation text above stays as written, this entry names what in it is wrong or under-labelled)
+
+Review scope: codec fidelity, subnormal and overflow handling, the q/k
+normalization override, the mlx-lm source guard, benchmark separation,
+and every number in the observation against logs/qmetal/. Verdict of
+the reviewer, checked line by line by the session model against the
+receipts and the git objects: kernels and tower integration numerically
+sound (codec offsets, nibble order, scale construction and the HF-exact
+l2norm all verified against source; 110 parity and contract tests pass);
+three documentation defects and one provenance defect, corrected here.
+
+1. Receipt commit fields name the parent commit, not the code that
+wrote them (provenance rule). Each receipt records `git rev-parse HEAD`
+at run time, and every run happened in a dirty tree before its code
+was committed: logs/qmetal/bench_90fa3347{,_v2,_v3}.json say 90fa3347,
+a commit with neither llmopt/lab/qmetal.py nor scripts/bench_qmetal.py
+(the code is 3e7f457f); tower_C_3e7f457f.json was written by
+scratch/qwen_metal_tower.py as committed in 295be340; the cited
+tower_C_295be340.json carries the free_run block and the post-fix
+parity, code that landed in c1aa5fb9 (`git show
+295be340:scratch/qwen_metal_tower.py` has no free_run). The receipts
+are not rewritten. The drivers now record a provenance block (commit,
+tree_dirty, mlx and mlx-lm versions) so a future receipt says so
+itself. Library versions for all three receipts: mlx 0.31.2, mlx-lm
+0.31.3; the CPU oracle dump ran in the teacher environment
+(.venv_teacher: transformers 5.15.0, torch 2.13.0; the main .venv has
+transformers 4.57.6, which does not load the qwen3_5 config). The
+untracked localization receipts (tower_C_debug_hidden.json,
+tower_C_debug_l2.json, tower_C_debug_ops.json, the metal_* and oracle_*
+npz files) are large and stay untracked; the three small debug JSON receipts are force-added in this commit; the per-layer localization sentence in the
+observation (8e-5 after layer 0 growing to 1e-3 by layer 2, kernel
+versus ops path identical) is therefore narrative from this session,
+not reproducible from the repo, and the ops-path switch it used was
+never committed.
+
+2. The sentence "Against the matmuls-only projection of 190 ms per
+token, the remaining 35 ms is everything else" is wrong in sign and in
+content. The measured 155 ms is below the 190 ms projection, so there
+is no remainder; the projection also omitted v_proj and lm_head (about
+202 ms with them). The bench medians are synced per-call latencies
+(host dispatch plus kernel plus mx.eval), an upper bound on kernel
+execution; the tower pipelines its launches and runs below their sum.
+The GB/s figures in the observation are therefore conservative, and
+kernel execution was not separated from dispatch in that benchmark.
+scripts/bench_qmetal.py now says so in its receipt.
+
+3. "logits 2e-2 relative" before the l2norm fix and "5e-5 relative"
+after are two different metrics. Same-metric pairs from the receipts:
+per-row max relative error 3.69e-2 before (tower_C_3e7f457f.json) and
+5.14e-5 after (tower_C_295be340.json); global max abs over max abs
+oracle 1.74e-2 before and 2.43e-5 after. The 69 of 70 miss at position
+33 with oracle margin 0.0178 is confirmed.
+
+4. Ranges dropped the smallest matrix. The s16 range "398 to 661 us, 40
+to 48 GB/s" omits k_proj [1024, 5120]: 178 us, 14.9 GB/s, 10 percent of
+roofline (v3 receipt). The CPU range "54 to 190 ms" omits k_proj at 9.4
+ms, and its maximum is 196.5 ms. The mx int4 reference range "272 to 519
+us" mixes receipts; the v3 range is 166 to 503 us.
+
+5. The factor "about 370" is measured Metal (155 ms) against the
+projected CPU decode-only number from OBSERVATION QWEN-DRAFT-DECODE-COST-0
+(57 s, head excluded); the bench receipts' own cpu_tower_decode_s_per_token
+of 47.6 to 48.6 s gives about 310. Neither is a paired full-model
+benchmark; the CPU tower was never timed end to end on the same prompt.
+
+6. Minor: "108 parity cases" is 107 passed plus one refusal skip; the
+8.6 s prefill wall is a cold first call including kernel compilation;
+the CPU decode times in the bench are single samples; the parity bound
+is |got - ref| <= 1e-5 |ref| + 2e-6 times the row's absolute dot plus
+one subnormal spacing per oracle-subnormal weight (not "relative error
+<= 1e-5"), its reduction-order worst case (about 3.3e-6 of the absolute
+dot at C = 17408) is above the 2e-6 allowance and the bound is held
+empirically (adversarial cancellation probes measure 1.8e-8); two more
+deviations from decode-then-multiply beyond the two documented (a
+finite output where the float32 oracle overflowed one weight; inf
+versus nan on exponent 255 rows) are now in the module docstring. Arm
+C exponent bytes span 111 to 128, so the lo and hi accumulator paths
+never fire on the real payload. The `logs/qmetal` receipts were
+force-added under the small-text-receipt exception (logs doctrine
+2026-08-06): each is under 10 KB and a booked observation cites them.
+No numerical tolerance was changed to obtain a pass; one test
+(test_subnormal_outputs_flush_or_match) was tightened from rtol 1e-4 to
+the suite bar.
+
+## OBSERVATION QWEN-METAL-QUAL-0: the Metal decode of arm C is token-identical to the CPU decode of arm C at every one of the 4,722 frozen E0 teacher-greedy positions, including all 15 positions where the CPU draft margin is below 0.02 nats; logits at the CPU top-16 ids within 1.0e-3 absolute (median 4.6e-5, relative max 3.4e-5), margins within 3.0e-4, shift-aligned sup error against the teacher within 6.6e-4 of the CPU value, zero agreement flips, replay yield identical at every k (3.4695 concatenated, 3.4267 per stream at k = 4); cached decode 256 of 256 twice at 154 ms per token; decode stays at 155 to 163 ms per token out to context 4,096 while prefill holds 8.0 to 8.3 tokens per second and its peak unified memory climbs to 31.9 GB at 4,096 (2026-10-17, Mac; instrument qualification, E0 receipts read and unchanged, QWEN-METAL-TOWER-0 unchanged)
+
+Question. QWEN-METAL-TOWER-0 (L79270) showed the Metal tower agreeing with
+the CPU oracle on one prompt (70 prefill and 8 decode positions). Before
+the Metal path can stand in for the CPU arm C runtime anywhere, it has
+to be compared with that runtime on the whole frozen E0 census, position
+by position, and the comparison has to be against the CPU arm C rows,
+not merely against the teacher.
+
+Instrument. scratch/qwen_metal_qual.py at d69c48a9 (liverun
+qwen-metal-qual-0, rc 0, wall 1,912 s, process peak RSS 16.9 GB; mlx
+0.31.2, mlx-lm 0.31.3, kernel generation 3). Same tower construction as
+QWEN-METAL-TOWER-0 (fused W4/S16 linears, sanitizer conventions, exact
+HF l2norm), same context construction as E0 (one teacher-forced forward
+per prompt over prompt plus recorded rollout, 24 prompts, 4,722
+positions), the artifact qualified against the same digest chain E0
+qualified (chain sha equal), the teacher record sha-checked against the
+one E0 read, the CPU rows read from logs/qwen_e0/C/positions.jsonl
+(sha256 f9df9b5a..., unchanged) and consumed in order with prompt id,
+step and teacher token asserted equal per row. The driver refuses on any
+misalignment, on a vendor weight shard in the vendor directory, on a
+smoke or non-cpu reference, and on an existing output path.
+
+Correctness against the CPU arm C rows (all 4,722 positions).
+Argmax identical 4,722 of 4,722; by CPU draft margin bin [0, 0.02) 15 of
+15, [0.02, 0.05) 41 of 41, [0.05, 0.1) 53 of 53, [0.1, 0.2) 127 of 127,
+[0.2, 0.5) 291 of 291, [0.5, 1) 409 of 409, [1, 2) 624 of 624, [2, 5)
+1,052 of 1,052, 5 and above 2,110 of 2,110. Metal logits at the CPU
+top-16 ids against the stored CPU values: max abs 1.02e-3, p99 1.1e-4,
+median 4.6e-5; relative to the CPU top logit max 3.4e-5, median 1.8e-6.
+Logit margin |metal - cpu| max 3.0e-4, median 2.5e-5. Shift-aligned sup
+error against the teacher (the E0 certification radius) |metal - cpu|
+max 6.6e-4, median 7.7e-6, so the E0 certified fraction would be
+unchanged. Agreement with the teacher: Metal 0.8291, CPU 0.8291, zero
+flips in either direction. Accepted-prefix replay from the Metal argmax
+stream equals the CPU replay at every k = 1..8, concatenated (k = 4:
+3.4695) and per stream (k = 4: 3.4267). The frozen CPU record keeps only
+the draft top-16 logits per position, so the full-vocabulary comparison
+is indirect: the teacher-referenced sup error above covers the whole
+live vocabulary at each position, and the two instruments agree on it to
+6.6e-4 nats.
+
+Cached decode cross-check (chat-1 and chat-2, 256 teacher-forced steps
+each, prompt prefill into a fresh cache then one recorded token per
+step). Argmax equal to the same prompt's one-forward logits 256 of 256
+in both; max abs logit difference 2.1e-4 (QWEN-METAL-TOWER-0 measured
+2e-5 over 8 steps; the growth over 256 steps is the recurrent state and
+KV cache accumulating float32 rounding, far below any margin that
+matters at 0.02); median 154 ms per step, p90 155 ms, 6.47 tokens per
+second, context 318 to 320 at the end.
+
+Long-context timing (synthetic contexts, the chat-1 prompt tokens
+repeated, prefill then 16 greedy decode steps, medians of steps 3 to
+16): context 512 prefill 61.7 s (8.3 tokens per second), decode 155 ms,
+peak unified 12.7 GB; 1,024 prefill 123.9 s (8.3), decode 158 ms, 15.5
+GB; 2,048 prefill 249.1 s (8.2), decode 163 ms, 20.9 GB; 4,096 prefill
+513 s (8.0), decode 159 ms, 31.9 GB. The wall budget per length (480 s)
+stopped the ladder after 4,096. Reading: decode cost is flat in context
+(the per-token weight stream dominates; the KV cache of the 16
+attention layers and the DeltaNet state are small), prefill is linear
+at about 8 tokens per second because the multi-token tile saves almost
+nothing per token (the open prefill-kernel residue), and single-shot
+prefill memory grows with the square of the context (the float32
+attention scores of a 4,096-token block), reaching 31.9 GB of the 36 GB
+unified memory at 4,096 (decimal GB; the machine has 36 GiB). Long
+prompts on this machine therefore need chunked prefill before anything
+else.
+
+Prefill over the 24 real contexts (128 to 339 tokens) ran at 8.3 tokens
+per second overall with peak unified memory 10.6 GB.
+
+Deviations and overlap. Two short GPU jobs overlapped the prefill loop
+(a reviewer's 10 s timing probe during chat-1, the first prompt, and a 5
+s parity test run near the code-3 / code-4 boundary); the receipt
+auditor's reconstruction from the disarm time puts chat-1 at 8.17 tokens
+per second against a typical 8.31 to 8.36, and reason-4 (the sixteenth
+prompt) is the slowest at 8.04, about 1.4 s slower than baseline and
+unexplained. Only the per-prompt forward_wall_s fields of those prompts
+are exposed; the overall prefill rate shifts by under 0.3 percent, the
+cached-decode and long-context timings ran after both overlaps, and no
+correctness field can be touched by contention (deterministic kernels
+over fixed inputs; the exposed prompts' logit errors sit inside the
+range of the others). The tree was clean at arm (liverun refuses
+otherwise) and code_commit d69c48a9 equals the launch commit; three
+files were edited in the working tree during the run (docstrings and a
+version argument in llmopt/lab/qmetal.py, provenance recording in the
+two drivers) after the model and kernels were already in memory, so
+they could not reach the run, and they land in the booking commit. The
+device field is a literal ("metal"); the embedding row lookup runs in
+numpy on the CPU, every linear and the recurrence on Metal. The 4,096
+rung was the last requested length, so the wall budget message cut
+nothing. positions.jsonl (2.2 MB) stays untracked; summary.json is
+force-added under the small-text-receipt exception. Memory figures are
+decimal GB (31.9 GB is 29.7 GiB) on a 36 GiB machine.
+
+What this does and does not establish. The Metal path reproduces the
+CPU arm C decision at every census position and its logits to about
+1e-3 absolute, so it can serve as the arm C draft runtime in the timing
+rung in place of the 57 s per token CPU projection, and the measured 155
+ms is a Metal number, not a paired CPU comparison (see the amendment
+above). It says nothing new about arm C against the teacher: agreement
+0.8291 and the replay yields are E0's numbers, reproduced here only
+because the instrument changed and the artifact did not. Fences: single
+artifact (arm C), single machine (M3 Pro, 36 GiB), float32 activations,
+contexts to 4,096 synthetic and 339 real, teacher-forced only (no
+free-run text was compared).
+
+## OBSERVATION QWEN-E0-ERROR-FIELD-0: desk reading of the frozen E0 rows, the flat 5.6-nat shift-aligned sup error against the teacher is the extreme value over the 248,077-token live vocabulary of a per-logit error field whose root mean square is 1.00 nats (p10 0.82, p90 1.30) and flat across teacher-margin bins (0.99 to 1.04); sup over RMS has median 5.72 against about 4.6 for the expected half-range of as many independent Gaussians, so the tails are moderately heavy; agreement with the teacher climbs 0.48, 0.63, 0.77, 0.86, 0.91, 0.97, 0.99 across margin bins [0,1), [1,2), [2,3), [3,4), [4,6), [6,8), 8 and above, far below what a 1-nat Gaussian error on the two leading logits would predict, so the error on the tokens that decide the argmax is larger than the bulk field (2026-10-17, Mac; computed from logs/qwen_e0/C/positions.jsonl and rollout_logits, no rerun; surfaced by the openai/math audit agents B and D, reproduced by the session model)
+
+The quantities: l2_err_shift is the L2 norm of the shift-centred logit
+difference over the live vocabulary (llmopt.lab.spec_reference.
+position_stats), divided by the square root of 248,077; sup_err_shift is
+the half-range (max minus min over 2) of the same difference. Flat RMS
+across margins is why the sup error was flat in E0: no contraction
+argument is needed, the sup is a tail statistic of a stationary error
+field. The margin-binned agreement says the field is not the whole
+story for speculation: the error that matters sits on the few tokens
+competing for the argmax, and agent D's desk check on the draft top-16
+puts its standard deviation near 2 nats (selection-biased; the unbiased
+version on the teacher's top-k is the open census). Consequence for the
+certificate: the sup-norm margin theorem is about 5.7 times looser than
+the typical per-logit error, which is why only 21.3 percent of positions
+certify at the E0 bar. Nothing here changes any E0 number. Fences: desk
+statistics on the frozen rows, single artifact, single teacher record.
