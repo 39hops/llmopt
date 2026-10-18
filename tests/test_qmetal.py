@@ -20,9 +20,9 @@ FX = os.path.join(os.path.dirname(__file__), "fixtures")
 RTOL = 1e-5
 
 
-@pytest.fixture(autouse=True, params=[1, 2, 3], ids=["v1", "v2", "v3"])
+@pytest.fixture(autouse=True, params=[1, 2, 3, 4], ids=["v1", "v2", "v3", "v4"])
 def _kernel_version(request, monkeypatch):
-    """Every parity case runs under all three kernel generations."""
+    """Every parity case runs under all four kernel generations."""
     monkeypatch.setattr(qmetal, "VERSION", request.param)
     monkeypatch.setattr(qmetal._Resident, "version", request.param)
     yield request.param
@@ -332,3 +332,42 @@ def test_subnormal_outputs_flush_or_match():
     ref = W @ x.astype(np.float64)
     assert np.abs(ref).min() > 1.2e-38
     _check(_w4_or_skip(buf, (R, C)), buf, (R, C), qcodec.dec_w4, x)
+
+
+@pytest.mark.parametrize("R", [1, 2, 3, 5, 6, 7, 9, 13])
+def test_w4_rows_not_multiple_of_four(R):
+    """v4 groups four rows per simdgroup; every remainder class must be
+    masked correctly (no read past the payload, no write past the output)
+    and agree with the oracle. Runs under every generation."""
+    rng = np.random.default_rng(900 + R)
+    C = 1280
+    buf = _random_w4(rng, R, C, exp_pool=np.array([120, 127, 130]))
+    x = rng.normal(size=C).astype(np.float32)
+    res = _w4_or_skip(buf, (R, C))
+    _check(res, buf, (R, C), qcodec.dec_w4, x)
+    # multi-token tiles on the same odd row count
+    X = rng.normal(size=(5, C)).astype(np.float32)
+    W = qcodec.dec_w4(buf, (R, C)).astype(np.float64)
+    ref = X.astype(np.float64) @ W.T
+    got = np.asarray(res.gemm(mx.array(X)), dtype=np.float64)
+    assert got.shape == (5, R)
+    absdot = np.abs(X.astype(np.float64)) @ np.abs(W).T
+    assert np.all(np.abs(got - ref) <= RTOL * np.abs(ref) + ATOL_COND * absdot)
+
+
+def test_w4_v4_rows_bit_identical_to_v3():
+    """v4 computes each row by the same float32 operation sequence as v3,
+    so on real-range payloads the outputs are bit-identical, not merely
+    within the parity bound."""
+    if qmetal.VERSION != 4:
+        pytest.skip("checked once, under the v4 parameter")
+    rng = np.random.default_rng(4242)
+    R, C = 37, 5120
+    buf = _random_w4(rng, R, C, exp_pool=np.arange(111, 129))
+    X = rng.normal(size=(8, C)).astype(np.float32)
+    res4 = qmetal.W4Metal(buf, (R, C))
+    res3 = qmetal.W4Metal(buf, (R, C))
+    res3.version = 3
+    g4 = np.asarray(res4.gemm(mx.array(X)))
+    g3 = np.asarray(res3.gemm(mx.array(X)))
+    assert np.array_equal(g4, g3)

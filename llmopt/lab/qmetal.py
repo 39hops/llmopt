@@ -51,6 +51,8 @@ expected for a different accumulation order.
 """
 from __future__ import annotations
 
+import os
+
 import numpy as np
 
 from llmopt.lab.qcodec import BLOCK, expected_len
@@ -313,8 +315,82 @@ _W4_V3_SRC = """
 """
 
 
-VERSION = 3       # kernel generation used by the resident objects (1, 2 or 3)
+# ---- v4: four rows per simdgroup share every activation load. The W4
+# ---- activation-traffic probe (OBSERVATION QWEN-METAL-DECODE-BREAKDOWN-0)
+# ---- showed v3 bound by re-reading the activation vector once per row;
+# ---- here one simdgroup owns ROWS4 consecutive rows, loads each 16-wide
+# ---- activation chunk once per tile row and applies it to ROWS4 index
+# ---- words. Same codebook staging, same scale and exceptional-exponent
+# ---- law, same per-row accumulation and simd_sum order as v3, so each
+# ---- output row is computed by the identical sequence of float32
+# ---- operations. Rows past R (R not a multiple of ROWS4) are masked:
+# ---- their loads are skipped and nothing is written for them.
+_W4_V4_SRC = """
+    constexpr uint SG = 32;
+    constexpr uint NR = ROWS4;
+    uint row0 = threadgroup_position_in_grid.x * NR;
+    uint lane = thread_position_in_threadgroup.x;
+    const uint C4 = (uint)C / 4;                 // index bytes per row
+    threadgroup half4 cb4[256];               // the 2 KB codebook, loaded once per row group
+    for (uint i = lane; i < 256u; i += SG) cb4[i] = ((const device half4*)cb)[i];
+    threadgroup_barrier(metal::mem_flags::mem_threadgroup);
+    const uint nwords = C4 / 4;                  // 16 weights per word
+    const uint blocks_per_row = (uint)C / 128;
+    bool valid[NR];
+    const device uint* ir[NR];
+    for (uint k = 0; k < NR; k++) {
+        valid[k] = (row0 + k) < (uint)R;
+        // a masked row points at row0 (always valid) and is never used
+        ir[k] = (const device uint*)(idx + (valid[k] ? (row0 + k) : row0) * C4);
+    }
+    float acc[NR * TT], lo[NR * TT], hi[NR * TT];
+    for (uint i = 0; i < NR * (uint)TT; i++) { acc[i] = 0.0f; lo[i] = 0.0f; hi[i] = 0.0f; }
+    for (uint j = lane; j < nwords; j += SG) {
+        uint c0 = j * 16;
+        float4 xa[TT], xb[TT], xc[TT], xd[TT];   // the activation chunk, loaded once for NR rows
+        for (uint t = 0; t < (uint)TT; t++) {
+            const device float4* x4 = (const device float4*)(x + t * (uint)C + c0);
+            xa[t] = x4[0]; xb[t] = x4[1]; xc[t] = x4[2]; xd[t] = x4[3];
+        }
+        for (uint k = 0; k < NR; k++) {
+            if (!valid[k]) continue;
+            uint word = ir[k][j];
+            uint e = (uint)exps[(row0 + k) * blocks_per_row + c0 / 128];
+            uint cls = q_class(e);
+            float s = q_scale(e, cls);
+            float4 w0 = (float4)cb4[(word      ) & 0xFFu];
+            float4 w1 = (float4)cb4[(word >>  8) & 0xFFu];
+            float4 w2 = (float4)cb4[(word >> 16) & 0xFFu];
+            float4 w3 = (float4)cb4[(word >> 24) & 0xFFu];
+            for (uint t = 0; t < (uint)TT; t++) {
+                float d = (metal::dot(xa[t], w0) + metal::dot(xb[t], w1)
+                         + metal::dot(xc[t], w2) + metal::dot(xd[t], w3)) * s;
+                uint i = k * (uint)TT + t;
+                if (cls == 0u) acc[i] += d; else if (cls == 1u) lo[i] += d; else hi[i] += d;
+            }
+        }
+    }
+    for (uint k = 0; k < NR; k++) {
+        for (uint t = 0; t < (uint)TT; t++) {
+            uint i = k * (uint)TT + t;
+            float r = metal::simd_sum(acc[i]);
+            float rl = metal::simd_sum(lo[i]);
+            float rh = metal::simd_sum(hi[i]);
+            if (lane == 0 && valid[k]) out[t * (uint)R + row0 + k] = (r + rl * LO_REST) + rh * HI_REST;
+        }
+    }
+"""
+
+
+# Kernel generation used by the resident objects (1, 2, 3 or 4). The
+# environment variable QMETAL_VERSION overrides the default at import so
+# a driver can select the control (v3) or the candidate (v4) without
+# code changes; the receipts record the effective version.
+VERSION = int(os.environ.get("QMETAL_VERSION", "3"))
+if VERSION not in (1, 2, 3, 4):
+    raise ValueError(f"QMETAL_VERSION {VERSION} is not a kernel generation")
 ROWS_V2 = 4       # rows (simdgroups) per threadgroup in v2
+ROWS_V4 = 4       # rows per simdgroup in v4 (share4 of the traffic probe)
 
 _kernels: dict = {}
 
@@ -323,8 +399,8 @@ def _kernel(name: str, version: int):
     key = (name, version)
     if key not in _kernels:
         require_mlx()
-        srcs = {("w4", 1): _W4_SRC, ("w4", 2): _W4_V2_SRC, ("w4", 3): _W4_V3_SRC,
-                ("s16", 1): _S16_SRC, ("s16", 2): _S16_V2_SRC, ("s16", 3): _S16_SRC}
+        srcs = {("w4", 1): _W4_SRC, ("w4", 2): _W4_V2_SRC, ("w4", 3): _W4_V3_SRC, ("w4", 4): _W4_V4_SRC,
+                ("s16", 1): _S16_SRC, ("s16", 2): _S16_V2_SRC, ("s16", 3): _S16_SRC, ("s16", 4): _S16_SRC}
         inputs = ["x", "idx", "cb", "exps"] if name == "w4" else ["x", "codes", "lv", "exps"]
         _kernels[key] = mx.fast.metal_kernel(
             name=f"llmopt_q_{name}_gemv_v{version}", input_names=inputs,
@@ -380,6 +456,11 @@ class _Resident:
                 ntg = (R + rows - 1) // rows
                 grid, tg = (ntg * rows * 32, 1, 1), (rows * 32, 1, 1)
                 template = [("C", C), ("R", R), ("TT", tile), ("ROWS", rows)]
+            elif version == 4 and self.codec == "w4":
+                # one simdgroup per ROWS4 rows; the last group is masked in-kernel
+                ntg = (R + ROWS_V4 - 1) // ROWS_V4
+                grid, tg = (ntg * 32, 1, 1), (32, 1, 1)
+                template = [("C", C), ("R", R), ("TT", tile), ("ROWS4", ROWS_V4)]
             else:
                 grid, tg = (R * 32, 1, 1), (32, 1, 1)
                 template = [("C", C), ("R", R), ("TT", tile)]
