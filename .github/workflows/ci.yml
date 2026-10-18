@@ -32,7 +32,10 @@ jobs:
           # transformers is the [hf] extra so a user install stays lean,
           # but CI exercises those paths — a dozen tests build a small
           # Llama to check decoding, caching, and distillation.
-          pip install pytest pytest-cov numpy sympy transformers
+          # matplotlib is the [figures] extra; check_source.sh regenerates
+          # the web figures through llmopt/lab/figstyle.py, so the gate
+          # needs it even though no test imports it directly
+          pip install pytest pytest-cov numpy sympy transformers "matplotlib>=3.8"
           # --no-deps: the deps above are already pinned to CPU wheels,
           # and pyproject asks for torch>=2.4 which would pull the CUDA
           # build over the top of them
