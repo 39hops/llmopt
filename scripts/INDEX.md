@@ -5036,6 +5036,14 @@ Dump the CPU oracle's full fp32 logits for one prompt plus recorded rollout toke
 
 - `main() -> None`
 
+### scratch/qmetal_traffic_probe.py
+W4 activation-traffic ceiling probe for the fused Metal kernels, TIMING ONLY. Controlled variants of the frozen v3 W4 GEMV source (and the S16 source) remove one memory stream at a time; their outputs are wrong by construction and nothing here makes a numerical claim. The frozen kernels in llmopt.lab.qmetal are not modified; variants are compiled from edited copies of their source strings.
+
+- `provenance() -> dict`
+- `w4_variant(name: str) -> str`
+- `s16_variant(name: str) -> str`
+- `main() -> None`
+
 ### scratch/quat_commutant.py
 Symmetry ladder S1 cell 1 (pre-reg 2026-07-28): quaternionic anti-commutant mass of FFN gate matrices. Structures I,J,K = left quaternion-unit action on 4-channel groups (I^2=J^2=K^2=-1, IJ=K); P(W) = (W - IWI - JWJ - KWK)/4; anti-mass = 1 - ||P(W)||^2/||W||^2 (0.75 = fully generic, 0 = exactly quaternionic-linear). Synthetic controls run FIRST (must read 0.0 / ~0.75) — instrument fence. Real crystals: adjacent 4-grouping + 20 random-grouping nulls.
 
@@ -5317,6 +5325,11 @@ Teacher margin-bin census (AMENDMENT QWEN-MODEL1-TREE-PINS item 2) — teacher-o
 - `margins(a)`
 - `bins(m)`
 - `main() -> int`
+
+### scratch/qwen_metal_breakdown.py
+End-to-end decode breakdown of the arm C Metal tower by ABLATION, not by summing synchronized kernel times. Each configuration replaces one family of modules with a stand-in of negligible cost (a constant output of the right shape, or the identity), then the full teacher-forced decode step is timed end to end under the same pipelined execution the real tower uses. The marginal cost of a family is the end-to-end time of the full tower minus the time with that family removed; because GPU work overlaps and the framework overhead is shared, the marginal costs are not expected to add to the total, and the residual is reported as such. Stand-in outputs make the model's numbers meaningless; nothing here is a correctness claim. Stand-ins keep a cheap data dependence on their input: MLX evaluates lazily and prunes anything the requested logits do not depend on, so a pure constant would silently remove the upstream tower.
+
+- `main() -> None`
 
 ### scratch/qwen_metal_qual.py
 Metal-versus-CPU qualification of arm C over the frozen E0 teacher-greedy contexts. Separate from QWEN-METAL-TOWER-0 (one prompt, 78 positions) and from E0 itself, whose receipts under logs/qwen_e0/C are read, never rewritten.

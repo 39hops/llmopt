@@ -100,3 +100,33 @@ measure, with the I/O bytes per step recorded as the spec asks.
 - Vendor weights absent on the Mac; arm C present at ~/qwen_whole0t/C and
   on the 3080; teacher records at logs/qwenteacher_v2.
 - No speculative verifier, no MTP, no recompression, no new weights.
+
+## Addendum (2026-10-17, late): W4 activation-traffic probe and decode breakdown
+
+Artin's GO after the push: profile the step without summing synced
+kernel times, run the W4 activation-traffic ceiling, decide whether
+sharing activation loads across rows has a realistic advantage, project
+the full-tower effect, do not implement v4. Booked as OBSERVATION
+QWEN-METAL-DECODE-BREAKDOWN-0 with receipts logs/qmetal/
+breakdown_01b8c177.json and traffic_probe_01b8c177.json; drivers
+scratch/qwen_metal_breakdown.py and scratch/qmetal_traffic_probe.py.
+
+Findings: the 154 ms step is 89 percent fused GEMV (W4 72.6, S16 body
+55.8, head 9.5), DeltaNet core 12.1, attention core 1.7, norms 0.8,
+framework floor 4.4; the ablation closes to 1 percent. Pipelined
+per-launch W4 times (371 and 385 us) times 64 layers reproduce the W4
+marginal exactly; the synced bench medians were 45 percent above the
+in-tower cost. W4 is bound by re-reading the activation vector per row:
+no-x variant 50 percent, no-weights variant 96 percent, x-and-reduce
+only 93 percent. share4 probe 60 percent of v3 with bit-equal outputs;
+share8 slower than share4. S16 does not move when its activation loads
+are removed. Projection: about 28 ms off the step, 154 to 126 ms, 1.22x.
+
+Verdict: W4 opportunity demonstrated; smallest justified design is v4 =
+share4 with the TT tile and the v3 per-row reduction order (bit-identical
+outputs, parity suite unchanged). Not implemented. Per Artin's order:
+chunked prefill next, then v4 on GO. Teacher timing HOLD.
+
+Pitfall recorded: MLX lazy pruning. A pure-constant stand-in for lm_head
+made the whole tower dead code (5.8 ms step); stand-ins must keep a data
+dependence. The invalid receipt was deleted.

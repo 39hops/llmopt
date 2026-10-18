@@ -1,0 +1,330 @@
+{
+ "provenance": {
+  "commit": "01b8c177",
+  "tree_dirty": true,
+  "mlx_version": "0.31.2",
+  "mlx_lm_version": "0.31.3"
+ },
+ "arm": "C",
+ "chain_report": {
+  "checked": 19,
+  "unchained": false
+ },
+ "repeats": 50,
+ "queue": 32,
+ "roofline_gbs": 150.0,
+ "kernel_version_baseline": 3,
+ "note": "TIMING ONLY. Variant outputs are wrong by construction (streams removed); no numerical claim. share* are probes of the sharing idea, not parity-fixtured kernels.",
+ "matrices": [
+  {
+   "tensor": "model.language_model.layers.0.mlp.gate_proj.weight",
+   "codec": "w4",
+   "shape": [
+    17408,
+    5120
+   ],
+   "payload_bytes": 22980608,
+   "x_bytes_per_row_pass": 20480,
+   "x_traffic_bytes_if_reread_per_row": 356515840,
+   "variants": [
+    {
+     "variant": "v3",
+     "synced_median_s": 0.0007881669444032013,
+     "synced_p90_s": 0.0013923669117502872,
+     "pipelined_per_launch_s": 0.00037063478157506324,
+     "payload_gbs_synced": 29.15703096049134,
+     "payload_gbs_pipelined": 62.003376753635365,
+     "sanity": {
+      "max_rel_err_vs_oracle": 8.490850632200135e-08,
+      "note": "sanity only for the probe harness; the fixtured parity suite is tests/test_qmetal.py"
+     }
+    },
+    {
+     "variant": "nostage",
+     "synced_median_s": 0.0004987915162928402,
+     "synced_p90_s": 0.000532883289270103,
+     "pipelined_per_launch_s": 0.00035645573370857164,
+     "payload_gbs_synced": 46.07257190498825,
+     "payload_gbs_pipelined": 64.46973867108086,
+     "sanity": null
+    },
+    {
+     "variant": "nox",
+     "synced_median_s": 0.0003222289960831404,
+     "synced_p90_s": 0.0003462794818915427,
+     "pipelined_per_launch_s": 0.00018598828137328383,
+     "payload_gbs_synced": 71.31762901334498,
+     "payload_gbs_pipelined": 123.55944057506106,
+     "sanity": null
+    },
+    {
+     "variant": "noidx",
+     "synced_median_s": 0.0004867499228566885,
+     "synced_p90_s": 0.0005448916461318733,
+     "pipelined_per_launch_s": 0.0003559648284863215,
+     "payload_gbs_synced": 47.212350574457254,
+     "payload_gbs_pipelined": 64.55864782405901,
+     "sanity": null
+    },
+    {
+     "variant": "nocb",
+     "synced_median_s": 0.0003887084894813597,
+     "synced_p90_s": 0.0004150547552853823,
+     "pipelined_per_launch_s": 0.0002491809682396706,
+     "payload_gbs_synced": 59.12041702681161,
+     "payload_gbs_pipelined": 92.22457141227768,
+     "sanity": null
+    },
+    {
+     "variant": "xonly",
+     "synced_median_s": 0.0004888540133833885,
+     "synced_p90_s": 0.0005042076809331775,
+     "pipelined_per_launch_s": 0.00034432681241014507,
+     "payload_gbs_synced": 47.00914254738303,
+     "payload_gbs_pipelined": 66.74068696290382,
+     "sanity": null
+    },
+    {
+     "variant": "empty",
+     "synced_median_s": 0.00016204151324927807,
+     "synced_p90_s": 0.00017236247658729552,
+     "pipelined_per_launch_s": 3.9875638321973383e-05,
+     "payload_gbs_synced": 141.81926309616455,
+     "payload_gbs_pipelined": 576.3069625229443,
+     "sanity": null
+    },
+    {
+     "variant": "share2",
+     "synced_median_s": 0.00041010399581864476,
+     "synced_p90_s": 0.00042687018867582083,
+     "pipelined_per_launch_s": 0.00026107943813258316,
+     "payload_gbs_synced": 56.03604996368392,
+     "payload_gbs_pipelined": 88.02151622652808,
+     "sanity": {
+      "max_rel_err_vs_oracle": 8.490850632200135e-08,
+      "note": "sanity only for the probe harness; the fixtured parity suite is tests/test_qmetal.py"
+     }
+    },
+    {
+     "variant": "share4",
+     "synced_median_s": 0.00037664594128727913,
+     "synced_p90_s": 0.00044534137705340996,
+     "pipelined_per_launch_s": 0.00022153645477374084,
+     "payload_gbs_synced": 61.01382088828087,
+     "payload_gbs_pipelined": 103.7328507557391,
+     "sanity": {
+      "max_rel_err_vs_oracle": 8.490850632200135e-08,
+      "note": "sanity only for the probe harness; the fixtured parity suite is tests/test_qmetal.py"
+     }
+    },
+    {
+     "variant": "share8",
+     "synced_median_s": 0.0003946250071749091,
+     "synced_p90_s": 0.0004600164131261409,
+     "pipelined_per_launch_s": 0.00024306706291099545,
+     "payload_gbs_synced": 58.23403885252091,
+     "payload_gbs_pipelined": 94.5443110423187,
+     "sanity": {
+      "max_rel_err_vs_oracle": 8.490850632200135e-08,
+      "note": "sanity only for the probe harness; the fixtured parity suite is tests/test_qmetal.py"
+     }
+    }
+   ]
+  },
+  {
+   "tensor": "model.language_model.layers.0.mlp.down_proj.weight",
+   "codec": "w4",
+   "shape": [
+    5120,
+    17408
+   ],
+   "payload_bytes": 22980608,
+   "x_bytes_per_row_pass": 69632,
+   "x_traffic_bytes_if_reread_per_row": 356515840,
+   "variants": [
+    {
+     "variant": "v3",
+     "synced_median_s": 0.0005313334404490888,
+     "synced_p90_s": 0.000763321458362043,
+     "pipelined_per_launch_s": 0.00038468229831778444,
+     "payload_gbs_synced": 43.25082189552485,
+     "payload_gbs_pipelined": 59.73918763741974,
+     "sanity": {
+      "max_rel_err_vs_oracle": 5.967588798241373e-08,
+      "note": "sanity only for the probe harness; the fixtured parity suite is tests/test_qmetal.py"
+     }
+    },
+    {
+     "variant": "nostage",
+     "synced_median_s": 0.0004933120217174292,
+     "synced_p90_s": 0.000504516379442066,
+     "pipelined_per_launch_s": 0.00035241537443653215,
+     "payload_gbs_synced": 46.58432592012399,
+     "payload_gbs_pipelined": 65.20886904194546,
+     "sanity": null
+    },
+    {
+     "variant": "nox",
+     "synced_median_s": 0.00032887497218325734,
+     "synced_p90_s": 0.0003564378246665001,
+     "pipelined_per_launch_s": 0.00019224609422963113,
+     "payload_gbs_synced": 69.87642704290259,
+     "payload_gbs_pipelined": 119.53745064152243,
+     "sanity": null
+    },
+    {
+     "variant": "noidx",
+     "synced_median_s": 0.00047679204726591706,
+     "synced_p90_s": 0.00048459996469318867,
+     "pipelined_per_launch_s": 0.00034061587393807713,
+     "payload_gbs_synced": 48.19838781241925,
+     "payload_gbs_pipelined": 67.46781274256702,
+     "sanity": null
+    },
+    {
+     "variant": "nocb",
+     "synced_median_s": 0.0003911249805241823,
+     "synced_p90_s": 0.0004244791460223496,
+     "pipelined_per_launch_s": 0.00024899543859646656,
+     "payload_gbs_synced": 58.7551528138182,
+     "payload_gbs_pipelined": 92.29328910415676,
+     "sanity": null
+    },
+    {
+     "variant": "xonly",
+     "synced_median_s": 0.00048412493197247386,
+     "synced_p90_s": 0.0005063665565103292,
+     "pipelined_per_launch_s": 0.0003457050788711058,
+     "payload_gbs_synced": 47.46834232719628,
+     "payload_gbs_pipelined": 66.47460336724816,
+     "sanity": null
+    },
+    {
+     "variant": "empty",
+     "synced_median_s": 0.00014333304716274142,
+     "synced_p90_s": 0.000148425274528563,
+     "pipelined_per_launch_s": 1.977801730390638e-05,
+     "payload_gbs_synced": 160.3301433612002,
+     "payload_gbs_pipelined": 1161.9267819864365,
+     "sanity": null
+    },
+    {
+     "variant": "share2",
+     "synced_median_s": 0.0004262705333530903,
+     "synced_p90_s": 0.00044199996627867225,
+     "pipelined_per_launch_s": 0.0002841321565938415,
+     "payload_gbs_synced": 53.91085285495116,
+     "payload_gbs_pipelined": 80.87999709533089,
+     "sanity": {
+      "max_rel_err_vs_oracle": 5.967588798241373e-08,
+      "note": "sanity only for the probe harness; the fixtured parity suite is tests/test_qmetal.py"
+     }
+    },
+    {
+     "variant": "share4",
+     "synced_median_s": 0.000414603971876204,
+     "synced_p90_s": 0.0004592963960021734,
+     "pipelined_per_launch_s": 0.00024176823353627697,
+     "payload_gbs_synced": 55.427852984635045,
+     "payload_gbs_pipelined": 95.05222279978231,
+     "sanity": {
+      "max_rel_err_vs_oracle": 5.967588798241373e-08,
+      "note": "sanity only for the probe harness; the fixtured parity suite is tests/test_qmetal.py"
+     }
+    },
+    {
+     "variant": "share8",
+     "synced_median_s": 0.0004221874405629933,
+     "synced_p90_s": 0.000501371268182993,
+     "pipelined_per_launch_s": 0.00024565038984292187,
+     "payload_gbs_synced": 54.432239787510056,
+     "payload_gbs_pipelined": 93.55005711448155,
+     "sanity": {
+      "max_rel_err_vs_oracle": 5.967588798241373e-08,
+      "note": "sanity only for the probe harness; the fixtured parity suite is tests/test_qmetal.py"
+     }
+    }
+   ]
+  },
+  {
+   "tensor": "model.language_model.layers.0.linear_attn.in_proj_qkv.weight",
+   "codec": "s16",
+   "shape": [
+    10240,
+    5120
+   ],
+   "payload_bytes": 26624032,
+   "x_bytes_per_row_pass": 20480,
+   "x_traffic_bytes_if_reread_per_row": 209715200,
+   "variants": [
+    {
+     "variant": "v3",
+     "synced_median_s": 0.0005399164510890841,
+     "synced_p90_s": 0.0007666167686693371,
+     "pipelined_per_launch_s": 0.00039432682933693286,
+     "payload_gbs_synced": 49.31139243172855,
+     "payload_gbs_pipelined": 67.5176782791289,
+     "sanity": {
+      "max_rel_err_vs_oracle": 1.9215173466487613e-07,
+      "note": "sanity only for the probe harness; the fixtured parity suite is tests/test_qmetal.py"
+     }
+    },
+    {
+     "variant": "nox",
+     "synced_median_s": 0.0005405834526754916,
+     "synced_p90_s": 0.0006639622733928263,
+     "pipelined_per_launch_s": 0.00039337306225206703,
+     "payload_gbs_synced": 49.250549324494806,
+     "payload_gbs_pipelined": 67.68138074218146,
+     "sanity": null
+    },
+    {
+     "variant": "nocodes",
+     "synced_median_s": 0.0005118124536238611,
+     "synced_p90_s": 0.0005710256053134799,
+     "pipelined_per_launch_s": 0.0003589498774090316,
+     "payload_gbs_synced": 52.01911718147917,
+     "payload_gbs_pipelined": 74.17200471602698,
+     "sanity": null
+    },
+    {
+     "variant": "empty",
+     "synced_median_s": 0.00017166649922728539,
+     "synced_p90_s": 0.00018784200074151158,
+     "pipelined_per_launch_s": 3.058984475501347e-05,
+     "payload_gbs_synced": 155.09159981616415,
+     "payload_gbs_pipelined": 870.3552506796066,
+     "sanity": null
+    },
+    {
+     "variant": "share2",
+     "synced_median_s": 0.0005550410132855177,
+     "synced_p90_s": 0.0005946006393060088,
+     "pipelined_per_launch_s": 0.0003934850319637917,
+     "payload_gbs_synced": 47.967684121937815,
+     "payload_gbs_pipelined": 67.66212139538241,
+     "sanity": {
+      "max_rel_err_vs_oracle": 1.9215173466487613e-07,
+      "note": "sanity only for the probe harness; the fixtured parity suite is tests/test_qmetal.py"
+     }
+    },
+    {
+     "variant": "share4",
+     "synced_median_s": 0.0005719789769500494,
+     "synced_p90_s": 0.0006678714649751784,
+     "pipelined_per_launch_s": 0.0003901588443113724,
+     "payload_gbs_synced": 46.54722126670936,
+     "payload_gbs_pipelined": 68.23895546182281,
+     "sanity": {
+      "max_rel_err_vs_oracle": 1.9215173466487613e-07,
+      "note": "sanity only for the probe harness; the fixtured parity suite is tests/test_qmetal.py"
+     }
+    }
+   ]
+  }
+ ],
+ "inferred": {
+  "occupancy_and_registers": "not observable from Python/MLX; no compiler statistics are exposed. Inferred only from the timing deltas between variants.",
+  "cache_behaviour": "not measured; the x-reread cost is inferred from the nox delta, the codebook staging cost from the nostage and nocb deltas."
+ }
+}

@@ -79567,3 +79567,119 @@ certificate: the sup-norm margin theorem is about 5.7 times looser than
 the typical per-logit error, which is why only 21.3 percent of positions
 certify at the E0 bar. Nothing here changes any E0 number. Fences: desk
 statistics on the frozen rows, single artifact, single teacher record.
+
+## OBSERVATION QWEN-METAL-DECODE-BREAKDOWN-0: what limits the 154 ms decode step of arm C on Metal, by end-to-end ablation under pipelined execution: the W4 MLP matrices cost 72.6 ms (47 percent), the S16 body matrices 55.8 ms (36 percent), the S16 head 9.5 ms (6 percent), the DeltaNet conv and recurrence core 12.1 ms (8 percent), full attention core 1.7 ms, norms 0.8 ms, framework floor 4.4 ms; the W4 activation-traffic probe shows the W4 kernel is bound by re-reading the activation vector per row (removing the activation loads halves its pipelined time, removing the weight stream saves 4 percent), and a four-rows-per-simdgroup sharing probe runs it in 60 percent of the time with bit-equal outputs, which projects to about 28 ms off the step (154 to about 126 ms, 1.22x, 6.5 to 7.9 tokens per second); S16 is unmoved by removing its activation loads and needs a different fix (2026-10-17, Mac; timing only, nothing numerical claimed, frozen kernels and codec untouched)
+
+Question (Artin's GO): establish what actually limits the measured 155 ms
+per token before authorizing another kernel, without summing
+synchronized kernel times as if they were end-to-end latency.
+
+Instrument 1, breakdown by ablation (scratch/qwen_metal_breakdown.py,
+receipt logs/qmetal/breakdown_01b8c177.json; context 126, 32 steps,
+median of steps 5 to 32, each forced by mx.eval on the logits, the
+tower's own discipline). Each configuration replaces one family of
+modules with a stand-in of negligible cost and the full step is timed
+end to end; the marginal cost of a family is full minus ablated. The
+stand-ins keep a cheap data dependence on their input: a first run with
+pure constants measured 5.8 ms for the no-head configuration because
+MLX's lazy graph pruned the entire tower upstream of a constant logits
+array (receipt discarded, the fix is in the driver docstring). Full step
+154.0, 154.1, 154.2 ms on three separate measurements (p90 154.4 to
+154.5). Marginals: W4 fused linears (192 matrices, the MLP) 72.6 ms;
+S16 fused linears except the head (208) 55.8 ms; lm_head 9.5 ms; all
+fused linears together 136.6 ms (the three family marginals sum to
+137.9, so the families barely overlap on the GPU); DeltaNet conv plus
+recurrence plus gated norm (linears kept) 12.1 ms; full-attention SDPA
+plus RoPE plus q/k norm (linears kept) 1.7 ms; all RMSNorms 0.8 ms;
+skeleton (embedding, residual adds, dispatch of 64 layers with every
+family removed) 4.4 ms. Accounted: 136.6 + 12.1 + 1.7 + 0.8 + 4.4 =
+155.6 against 154.1 measured, so the ablation closes to within 1 percent
+and the step is 89 percent fused GEMV, 8 percent DeltaNet core, 3
+percent framework.
+
+Cross-check against per-kernel timing in the pipelined regime. The
+probe below measures the W4 kernels at 371 us (gate and up) and 385 us
+(down) per launch when 32 launches are queued before one eval; 64 layers
+times (2 x 371 + 385) us = 72.1 ms, equal to the 72.6 ms marginal. The
+synced per-call medians of the earlier benchmark (538 to 558 us) are
+therefore 45 percent above the in-tower cost, which is the dispatch and
+drain the tower never pays between kernels (AMENDMENT
+QWEN-METAL-TOWER-0-PROVENANCE item 2 is now quantified).
+
+Instrument 2, W4 activation-traffic probe (scratch/qmetal_traffic_probe.py,
+receipt logs/qmetal/traffic_probe_01b8c177.json; real arm C payloads
+layer 0 gate_proj [17408, 5120], down_proj [5120, 17408] (w4) and
+in_proj_qkv [10240, 5120] (s16); variants compiled from edited copies of
+the frozen v3 source, outputs wrong by construction except where noted;
+synced median of 50 and pipelined per-launch time over 32 queued
+launches, 10 repeats). Pipelined per-launch times, gate_proj / down_proj:
+v3 371 / 385 us (62 / 60 GB/s of payload); no activation loads (nox)
+186 / 192 us (50 percent of v3: the prediction in the RIFF bank was "at
+most 50 percent", met at the boundary; the falsifier at 85 percent is
+far away); no weight stream (noidx, index words replaced by a hash) 356
+/ 341 us (4 to 11 percent saved: the payload stream is not the limit);
+no codebook gathers (nocb) 249 / 249 us (33 percent: the threadgroup
+gathers are the second cost); activation loads and reduction only
+(xonly) 344 / 346 us (93 percent of v3 with no weights and no codebook:
+the row-by-row re-read of the 20 KB activation vector is the bottleneck,
+about 356 MB of on-chip traffic per gate_proj call against 23 MB of
+payload); codebook read from device memory with no staging (the v1
+loop at tile 1) 356 / 352 us (staging costs 4 percent at tile 1; v3's
+gain over v1 came from the per-call tile, not the staging); empty
+kernel on the same grid 40 / 20 us (launch and drain floor). Sharing
+probes (one simdgroup computes r rows, loads each activation chunk
+once, r accumulator triples, full arithmetic, same per-row reduction
+order): share2 261 / 284 us, share4 222 / 242 us (60 to 63 percent of
+v3, 104 / 95 GB/s of payload), share8 243 / 246 us (slower than four:
+register pressure or occupancy sets in at eight; inferred from the
+timing, no compiler statistics are exposed). The share probes' outputs
+agree with the float64 oracle to the same 8.5e-8 and 6.0e-8 relative
+as v3 on the same inputs (a sanity check of the probe harness, not the
+parity suite). S16 in_proj_qkv: v3 394 us (68 GB/s); no activation
+loads 393 us (unchanged: S16 is not activation-bound); no code stream
+359 us (9 percent); share2 393, share4 390 (nothing, as expected). S16
+is bound by its per-weight work, the runtime-indexed level table and
+nibble unpacking (inferred; the RIFF S16 lookup bank is the next probe
+for that family).
+
+Synced versus pipelined, launch overhead. Synced per-call medians ran
+1.3 to 2.1 times the pipelined per-launch times for the same kernels
+(v3 gate_proj 788 synced against 371 pipelined in this run; the empty
+kernel 162 synced against 40). Launch overhead is therefore about 120
+to 140 us per synced call on this machine and 20 to 40 us per queued
+launch, and it is the pipelined number that the tower pays. Occupancy,
+register counts and cache hit rates are not observable from Python or
+MLX; every statement about them above is inferred from variant deltas
+and is marked so in the receipt.
+
+Projected full-tower effect, from the breakdown and the probe, not from
+isolated kernel ratios. W4 marginal 72.6 ms times the share4 ratio
+(0.60 for gate and up, 0.63 for down, weighted by their 2:1 launch
+count) gives about 44.5 ms, a saving of about 28 ms: 154 to about 126
+ms per token, 1.22x, 6.5 to 7.9 tokens per second. Nothing else in the
+step moves with this change. The remaining 126 ms would be S16 (56 + 9.5
+ms), W4 (44 ms), DeltaNet core (12 ms), framework (4 ms).
+
+Verdict. The W4 opportunity is demonstrated, not inferred: the ceiling
+variant halves the kernel, the sharing probe realizes two thirds of that
+ceiling with bit-equal outputs, and the end-to-end accounting puts the
+projected gain at about 22 percent of the step. The smallest justified
+design, should it be authorized: v4 = the v3 kernel with four rows per
+simdgroup sharing each activation chunk (the share4 probe loop, with
+the per-call tile TT kept for the multi-token path and the same per-row
+accumulation and simd_sum order so that outputs are bit-identical to v3
+and the existing 108-case parity suite applies unchanged), grid R/4
+threadgroups of 32 threads, rows padded or tail-handled for R not
+divisible by 4 (every arm C W4 shape is divisible). No change to the
+codec, the payload layout or the S16 kernel. Expected: gate 222 us, down
+242 us pipelined, step about 126 ms. Not justified by this probe: a
+Strassen-style or multi-token restructuring, and any S16 change (the
+S16 family needs its own lookup probe first).
+
+Fences. Timing only; no numerical claim beyond the sanity checks named;
+single machine, single artifact, context 126, float32 activations; the
+ablation stand-ins change the model's numbers and are valid only as
+timing; marginals are end-to-end deltas under pipelined execution and
+need not add up (here they do to 1 percent). Both receipts are small
+(under 25 KB) and force-added; the invalid first breakdown receipt was
+deleted, not kept.
