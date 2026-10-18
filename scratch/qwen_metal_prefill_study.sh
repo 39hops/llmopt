@@ -12,18 +12,29 @@ set -uo pipefail
 cd "$(dirname "$0")/.."
 LOG=logs/qmetal/prefill_head/study.log
 mkdir -p logs/qmetal/prefill_head
-run() {
+run_stage() {
   local label=$1; shift
   echo "== $label $(date -u +%H:%M:%S)" >> "$LOG"
   TMP=$(mktemp)
   "$@" > "$TMP" 2>&1
   local rc=$?
   grep -v Warning "$TMP" | grep "^\[" >> "$LOG"
-  rm -f "$TMP"
   if [ "$rc" -ne 0 ]; then
+    grep -v Warning "$TMP" | tail -12 >> "$LOG"
     echo "== study FAILED at $label rc=$rc $(date -u +%H:%M:%S)" >> "$LOG"
+    rm -f "$TMP"
     exit "$rc"
   fi
+  rm -f "$TMP"
+}
+# START=<label prefix> skips the stages before it (a rerun after a failed stage)
+START=${START:-kernels}
+started=0
+run() {
+  if [ "$started" -eq 0 ]; then
+    case "$1" in "$START"*) started=1;; *) echo "== skip $1 (START=$START)" >> "$LOG"; return 0;; esac
+  fi
+  run_stage "$@"
 }
 PY=.venv/bin/python
 run kernels env MODE=kernels $PY scratch/qmetal_prefill_kernel_study.py

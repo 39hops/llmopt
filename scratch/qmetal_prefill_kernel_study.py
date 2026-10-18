@@ -38,7 +38,7 @@ Sections (one process, MODE=kernels):
              from the per-shape measurements and the manifest counts.
 MODE=floor (separate process, loads the tower): a 256-token chunk prefill
 with all fused linears replaced by dependence-preserving stand-ins
-(scratch/qwen_metal_breakdown.py ConstLinear), with only the head
+(the ConstLinear shape of scratch/qwen_metal_breakdown.py), with only the head
 replaced, with only the W4 MLP matrices replaced, and the full model, in
 rotating order; the non-matrix floor of chunked prefill and the share of
 the matrices and the head in a chunk. Env: ART_DIR, VENDOR_DIR, REPEATS
@@ -415,7 +415,6 @@ def floor(prov, art, vdir, chunk, rounds, out):
     import mlx.core as mx
     import mlx.nn as nn
     from qwen_metal_qual import build_metal_model
-    from qwen_metal_breakdown import ConstLinear  # noqa: F401  (the dependence-preserving stand-in)
     from qwen_metal_chunked import cache_arrays
     model, info = build_metal_model(art, vdir)
     lm = model.language_model
