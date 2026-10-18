@@ -19,6 +19,11 @@ jobs:
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
+        with:
+          # tests/test_adjudicator_negative_controls.py reads git history
+          # (a pre-reg's last edit must precede its observations); a
+          # shallow clone makes every file share one commit
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"

@@ -20,7 +20,17 @@ def crop(past, length: int):
     if past is None:
         return None
     if hasattr(past, "crop"):  # transformers Cache API (in-place)
-        past.crop(length)
+        # transformers 4.x takes the absolute length and skips layers that
+        # hold no tensors yet (layer-skipping drafts leave some empty);
+        # transformers 5 refuses a positive value and wants the negative
+        # form, "remove this many tokens". Try the absolute form first and
+        # fall back to the negative one only when the library refuses it.
+        try:
+            past.crop(length)
+        except ValueError:
+            cur = int(past.get_seq_length())
+            if length < cur:
+                past.crop(length - cur)
         return past
     return tuple((k[:, :, :length], v[:, :, :length]) for k, v in past)
 

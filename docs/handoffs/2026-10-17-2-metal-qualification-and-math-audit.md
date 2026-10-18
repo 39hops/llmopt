@@ -154,3 +154,20 @@ untouched. QMETAL_VERSION=3 selects the control.
 Next workstream per Artin: chunked prefill design (single-shot prefill
 memory is quadratic in the block, 31.9 GB at 4,096 tokens). Teacher
 timing HOLD.
+
+CI repair, second round (2026-10-18). After the matplotlib fix the
+Linux tests job still failed on two pre-existing environment
+differences, neither touched by the Metal work: (1) the git-history test
+(a pre-reg's last edit precedes its observations) counted 22 same-commit
+pairs instead of 2 because actions/checkout is shallow by default; the
+tests job now checks out with fetch-depth 0. (2) transformers 5.x on the
+runner refuses the absolute form of DynamicCache.crop that the Mac's
+pinned 4.57 accepts; llmopt/decoding/kv.py tries the absolute form and
+falls back to the negative form when the library refuses it, verified
+under 4.57.6 (.venv) and 5.15.0 (.venv_teacher, pytest added to that
+env for the check). Coverage split: Linux CI covers the pure-Python,
+torch-CPU and transformers paths (2,300 tests); MLX and Metal
+qualification (qmetal, the tower, the census) runs only on the Mac and
+skips cleanly on the runner, so a green Actions run is not evidence
+about the kernels and a green Mac gate is not evidence about the Linux
+dependency set. Both are required before a push counts as green.
