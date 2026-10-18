@@ -79683,3 +79683,98 @@ timing; marginals are end-to-end deltas under pipelined execution and
 need not add up (here they do to 1 percent). Both receipts are small
 (under 25 KB) and force-added; the invalid first breakdown receipt was
 deleted, not kept.
+
+## OBSERVATION QWEN-METAL-W4-V4-0: the W4 v4 kernel (four rows per simdgroup sharing every activation load) is bit-identical to v3 on arm C at all 4,722 frozen E0 teacher-greedy positions and across the parity suite, cuts the cached decode step from 154 to 128 ms per token (7.8 tokens per second, 1.21x measured end to end, the 1.22x projection survived), and is slower than v3 for multi-token tiles (prefill 8.3 to 5.5 tokens per second at tile 8), so production dispatch uses v4 for the single-activation tile and v3 for tiles 2 to 8 (2026-10-17 to 18, Mac; kernel 338745a7, qualification under liverun qwen-metal-qual-v4; prior receipts unchanged)
+
+Numerical qualification. (a) Parity suite tests/test_qmetal.py now runs
+every case under generations 1 to 4: golden payloads, six shapes,
+exponent edges 0/1/127/254/255 and mixed pools, adversarial and
+non-finite codebooks, nibble order, partial rows, multi-token tiles T =
+1, 2, 8, 9, 20, refusals, no decoded matrix held, subnormal flush; new
+cases for row counts 1, 2, 3, 5, 6, 7, 9, 13 (every remainder class of
+the four-row grouping, gemv and a 5-row gemm) and a v4-equals-v3
+bit-identity test at tiles 1, 2 and 8 on a 37-row matrix: 179 passed, 4
+skipped (the v2 refusal and the bit-identity test under the other
+parameters). (b) Fresh Metal v4 versus CPU arm C qualification over the
+24 E0 prompts (scratch/qwen_metal_qual.py at 338745a7 with
+QMETAL_VERSION=4, liverun qwen-metal-qual-v4, rc 0, receipts
+logs/qwen_metal_qual/C_v4/, kernel generation 4 recorded, tree clean at
+launch; the v3 receipts under logs/qwen_metal_qual/C/ and the E0
+receipts untouched): argmax identical to the CPU rows 4,722 of 4,722;
+Metal logits at the CPU top-16 ids max abs 1.02e-3, median 4.6e-5;
+margin |metal - cpu| max 3.0e-4; teacher-referenced sup error |metal -
+cpu| max 6.6e-4; agreement 0.8291 with zero flips; replay k = 4 3.4695
+concatenated and 3.4267 per stream, identical at every k. Row by row
+against the v3 qualification: Metal argmax equal at 4,722 of 4,722,
+Metal margin difference exactly 0.0 at every position, top-16 error
+difference exactly 0.0, so v4 reproduced v3 bit for bit on the whole
+census. Cached decode (chat-1, chat-2, 256 teacher-forced steps each):
+256 of 256 argmax equal to the one-forward logits, max abs difference
+2.1e-4 (the v3 values), median step 127.6 and 127.5 ms. Long context
+under the all-v4 build: decode 127 / 131 / 135 / 132 ms at 512 / 1,024
+/ 2,048 / 4,096, peak unified 12.7 / 15.5 / 20.9 / 31.9 GB (unchanged),
+prefill 5.5 / 5.5 / 5.4 / 5.3 tokens per second against v3's 8.3 / 8.3
+/ 8.2 / 8.0: the all-v4 build is slower at the tile-8 prefill path, the
+reason for the per-tile dispatch below.
+
+Performance qualification, A/B alternating v3 and v4 in one process
+(scratch/bench_qmetal_ab.py, receipt logs/qmetal/ab_v3_v4_338745a7.json;
+three rounds in alternating order for the matrices, ABBA for the tower;
+the two versions' outputs compared bit for bit on every input, equal in
+all 18 checks; greedy tokens of the v3 and v4 tower rounds identical at
+both contexts). Layer 0 W4 matrices, pipelined per-launch microseconds
+(synced per-call medians in the receipt, 1.4 to 1.7 times higher): tile
+1 gate / up / down v3 373 / 375 / 388, v4 231 to 239 / 231 to 245 / 244
+to 245 (1.57 to 1.62x); tile 2 v3 601 / 604 / 765, v4 478 / 477 / 507;
+tile 4 v3 1,175 / 1,186 / 1,777, v4 1,308 / 1,314 / 1,096 (mixed); tile
+8 v3 3,567 / 3,576 / 3,394, v4 6,011 / 6,008 / 6,196 (v4 loses by 1.7
+to 1.8x: ROWS4 x TT = 32 accumulator triples spill, inferred). First
+call in process (compile plus launch) v3 2.2 to 6.0 ms, v4 1.3 to 2.4
+ms. Full cached decode, 48 greedy steps, median of steps 5 to 48:
+context 126 v3 154.1 / 154.1 ms, v4 127.4 / 127.3 ms (7.85 tokens per
+second, 1.210x); context 1,024 v3 155.0 / 155.1 ms, v4 128.4 / 128.4 ms
+(7.79 tokens per second, 1.208x); p90 within 0.4 ms of each median;
+peak unified memory identical between versions (10.43 GB at 126, 15.25
+GB at 1,024); prefill with the all-v4 build 23.1 s against 15.2 s at
+126 tokens and 184.8 against 122.3 s at 1,024. The 1.22x projection of
+OBSERVATION QWEN-METAL-DECODE-BREAKDOWN-0 survived as a measured 1.21x.
+
+Shipped dispatch, verified. With the default generation set to 4, W4
+tiles 1 and 2 run the v4 kernel and tiles 4 and 8 the v3 kernel
+(V4_MAX_TILE = 2); S16 is untouched. Check run (receipt
+logs/qmetal/ab_dispatch_check_v4default.json, one round each, ABBA
+tower at context 126, 24 steps): decode v3 155.4 / 155.4 ms, dispatch
+128.5 / 129.0 ms (7.78 tokens per second, 1.207x), prefill 15.4 s under
+both, so the prefill regression of the all-v4 build is gone and the
+decode gain kept.
+
+Stand-in check for the breakdown (scratch/qmetal_dep_check.py, receipt
+logs/qmetal/dep_check_338745a7.json). The ablation stand-in x[..., :1]
+* 0 + c keeps its upstream alive: a dense 8192 x 8192 matmul costs 2.229
+ms alone, 2.232 ms through the stand-in, 0.160 ms as a bare constant; a
+real W4 gemv 0.539 ms alone, 0.547 ms through the stand-in. The
+breakdown's attribution therefore stands, as approximate attribution
+(overlap and shared dispatch), which is also what the measured 1.21x
+against the projected 1.22x says.
+
+Design shipped. llmopt/lab/qmetal.py `_W4_V4_SRC`: ROWS4 = 4 rows per
+simdgroup of 32 lanes, each 16-wide activation chunk loaded once per
+tile row and applied to four index words; the codebook staging, the
+scale and exceptional-exponent law (E_LO, E_HI, LO_REST, HI_REST), the
+per-row accumulation sequence and the simd_sum reduction are the v3
+ones, so each output row is the identical float32 operation sequence
+(the bit-identity test and the two qualification receipts confirm it,
+with a margin difference of exactly 0.0 at every census position). Rows
+past R in the last group are masked in-kernel (loads skipped, no
+writes); grid ceil(R / 4) threadgroups. TT tiles 1, 2, 4, 8 are
+supported and parity-tested; the frozen W4 format, output layout and
+dtype are unchanged; no affine int4 substitution. The generation is
+selected by QMETAL_VERSION at import (default now 4), with v3
+kept as the selectable control.
+
+Fences. Single machine, single artifact, float32 activations;
+qualification teacher-forced on the 24 E0 contexts and synthetic
+contexts to 4,096; the A/B alternated versions in one process (thermal
+drift shared across arms, not eliminated); occupancy, register counts
+and cache traffic are not measured (no counters) and every statement
+about them is inferred from timing deltas.

@@ -1,0 +1,340 @@
+{
+ "provenance": {
+  "commit": "338745a7",
+  "tree_dirty": true,
+  "mlx_version": "0.31.2",
+  "mlx_lm_version": "0.31.3"
+ },
+ "arm": "C",
+ "rounds": 1,
+ "repeats": 30,
+ "queue": 32,
+ "contexts": [
+  126
+ ],
+ "steps": 24,
+ "default_version_at_import": 4,
+ "note": "timing only; v3 and v4 outputs compared bit for bit as a guard, parity lives in the tests and the qualification receipts",
+ "chain_report": {
+  "checked": 19,
+  "unchained": false
+ },
+ "first_call_s_in_process": {
+  "gate_proj_v3": 0.005847958032973111,
+  "gate_proj_v4": 0.001891333027742803,
+  "up_proj_v3": 0.0021849999902769923,
+  "up_proj_v4": 0.001349042053334415,
+  "down_proj_v3": 0.0023893339093774557,
+  "down_proj_v4": 0.001382292015478015
+ },
+ "matrices": [
+  {
+   "tensor": "model.language_model.layers.0.mlp.gate_proj.weight",
+   "shape": [
+    17408,
+    5120
+   ],
+   "payload_bytes": 22980608,
+   "rows": [
+    {
+     "round": 0,
+     "version": 3,
+     "T": 1,
+     "synced_median_s": 0.0005315625458024442,
+     "synced_p90_s": 0.00174254565499723,
+     "pipelined_per_launch_s": 0.00037257553049130365
+    },
+    {
+     "round": 0,
+     "version": 3,
+     "T": 2,
+     "synced_median_s": 0.000810708967037499,
+     "synced_p90_s": 0.0008522253017872572,
+     "pipelined_per_launch_s": 0.0006067578142392449
+    },
+    {
+     "round": 0,
+     "version": 3,
+     "T": 4,
+     "synced_median_s": 0.0014028960140421987,
+     "synced_p90_s": 0.0014313374762423337,
+     "pipelined_per_launch_s": 0.0011857552199217025
+    },
+    {
+     "round": 0,
+     "version": 3,
+     "T": 8,
+     "synced_median_s": 0.003772646014112979,
+     "synced_p90_s": 0.0038371000438928602,
+     "pipelined_per_launch_s": 0.003588187501009088
+    },
+    {
+     "round": 0,
+     "version": 4,
+     "T": 1,
+     "synced_median_s": 0.00039783300599083304,
+     "synced_p90_s": 0.0004085291759110987,
+     "pipelined_per_launch_s": 0.0002306679671164602
+    },
+    {
+     "round": 0,
+     "version": 4,
+     "T": 2,
+     "synced_median_s": 0.0006480420124717057,
+     "synced_p90_s": 0.0007084210985340178,
+     "pipelined_per_launch_s": 0.00048051040721475147
+    },
+    {
+     "round": 0,
+     "version": 4,
+     "T": 4,
+     "synced_median_s": 0.001398832944687456,
+     "synced_p90_s": 0.0014738833764567972,
+     "pipelined_per_launch_s": 0.001174628905573627
+    },
+    {
+     "round": 0,
+     "version": 4,
+     "T": 8,
+     "synced_median_s": 0.0037728335009887815,
+     "synced_p90_s": 0.0038146500126458706,
+     "pipelined_per_launch_s": 0.003599662748456467
+    }
+   ],
+   "bit_identical_T8_every_round": [
+    true,
+    true
+   ]
+  },
+  {
+   "tensor": "model.language_model.layers.0.mlp.up_proj.weight",
+   "shape": [
+    17408,
+    5120
+   ],
+   "payload_bytes": 22980608,
+   "rows": [
+    {
+     "round": 0,
+     "version": 3,
+     "T": 1,
+     "synced_median_s": 0.0005309369880706072,
+     "synced_p90_s": 0.0005553999217227102,
+     "pipelined_per_launch_s": 0.0003753945311473217
+    },
+    {
+     "round": 0,
+     "version": 3,
+     "T": 2,
+     "synced_median_s": 0.0008157085394486785,
+     "synced_p90_s": 0.0008404208114370703,
+     "pipelined_per_launch_s": 0.0006117343764344696
+    },
+    {
+     "round": 0,
+     "version": 3,
+     "T": 4,
+     "synced_median_s": 0.001412916521076113,
+     "synced_p90_s": 0.0014455580967478454,
+     "pipelined_per_launch_s": 0.0012055351544404402
+    },
+    {
+     "round": 0,
+     "version": 3,
+     "T": 8,
+     "synced_median_s": 0.0037941454793326557,
+     "synced_p90_s": 0.003868287231307477,
+     "pipelined_per_launch_s": 0.0036044401240360457
+    },
+    {
+     "round": 0,
+     "version": 4,
+     "T": 1,
+     "synced_median_s": 0.0003948124358430505,
+     "synced_p90_s": 0.0004372418159618974,
+     "pipelined_per_launch_s": 0.00023153124857344665
+    },
+    {
+     "round": 0,
+     "version": 4,
+     "T": 2,
+     "synced_median_s": 0.0006949165253899992,
+     "synced_p90_s": 0.0007264164509251714,
+     "pipelined_per_launch_s": 0.0004813736886717379
+    },
+    {
+     "round": 0,
+     "version": 4,
+     "T": 4,
+     "synced_median_s": 0.0013984584948047996,
+     "synced_p90_s": 0.0014331331592984497,
+     "pipelined_per_launch_s": 0.0012167591230536345
+    },
+    {
+     "round": 0,
+     "version": 4,
+     "T": 8,
+     "synced_median_s": 0.0037933545536361635,
+     "synced_p90_s": 0.003866520244628191,
+     "pipelined_per_launch_s": 0.0036042005303897895
+    }
+   ],
+   "bit_identical_T8_every_round": [
+    true,
+    true
+   ]
+  },
+  {
+   "tensor": "model.language_model.layers.0.mlp.down_proj.weight",
+   "shape": [
+    5120,
+    17408
+   ],
+   "payload_bytes": 22980608,
+   "rows": [
+    {
+     "round": 0,
+     "version": 3,
+     "T": 1,
+     "synced_median_s": 0.0005547499749809504,
+     "synced_p90_s": 0.0005819830112159252,
+     "pipelined_per_launch_s": 0.000386634095775662
+    },
+    {
+     "round": 0,
+     "version": 3,
+     "T": 2,
+     "synced_median_s": 0.0009238750790245831,
+     "synced_p90_s": 0.0010265082470141353,
+     "pipelined_per_launch_s": 0.0007889518128649797
+    },
+    {
+     "round": 0,
+     "version": 3,
+     "T": 4,
+     "synced_median_s": 0.0019791459781117737,
+     "synced_p90_s": 0.0020392252830788494,
+     "pipelined_per_launch_s": 0.0017695794376777485
+    },
+    {
+     "round": 0,
+     "version": 3,
+     "T": 8,
+     "synced_median_s": 0.0036750624421983957,
+     "synced_p90_s": 0.0037570714368484913,
+     "pipelined_per_launch_s": 0.003442584624281153
+    },
+    {
+     "round": 0,
+     "version": 4,
+     "T": 1,
+     "synced_median_s": 0.0004111664602532983,
+     "synced_p90_s": 0.00044812940759584306,
+     "pipelined_per_launch_s": 0.0002472903761372436
+    },
+    {
+     "round": 0,
+     "version": 4,
+     "T": 2,
+     "synced_median_s": 0.0007130415178835392,
+     "synced_p90_s": 0.0007522297906689346,
+     "pipelined_per_launch_s": 0.0005050390645919833
+    },
+    {
+     "round": 0,
+     "version": 4,
+     "T": 4,
+     "synced_median_s": 0.0019756669644266367,
+     "synced_p90_s": 0.0020073118968866764,
+     "pipelined_per_launch_s": 0.0017831927216320764
+    },
+    {
+     "round": 0,
+     "version": 4,
+     "T": 8,
+     "synced_median_s": 0.0036635835422202945,
+     "synced_p90_s": 0.003812941734213382,
+     "pipelined_per_launch_s": 0.003432032561249798
+    }
+   ],
+   "bit_identical_T8_every_round": [
+    true,
+    true
+   ]
+  }
+ ],
+ "tower": {
+  "chain": "logs/qwenwhole/artifact_digest_C.txt",
+  "chain_sha256": "de7e0180bf49f965c17116b7fbe8c34d2b1529c2431cc234f3a6460ad84b24dc",
+  "n_layers": 64,
+  "families": {
+   "linear_attn": 48,
+   "full_attn": 16
+  },
+  "fused": 402,
+  "raw": 449,
+  "payload_resident_bytes": 9367009856,
+  "kernel_version": 4
+ },
+ "w4_residents": 192,
+ "tower_decode": [
+  {
+   "context": 126,
+   "round": 0,
+   "version": 3,
+   "prefill_s": 15.399914667010307,
+   "median_step_s": 0.15541129151824862,
+   "p90_step_s": 0.1587617788463831,
+   "mean_step_s": 0.1562303958577104,
+   "tok_per_s_median": 6.434538895023458,
+   "peak_mem_bytes": 10432891512,
+   "greedy_tokens_same_as_first_round_of_this_version": null
+  },
+  {
+   "context": 126,
+   "round": 1,
+   "version": 4,
+   "prefill_s": 15.38643791701179,
+   "median_step_s": 0.12849602103233337,
+   "p90_step_s": 0.1292765791993588,
+   "mean_step_s": 0.12869543147389778,
+   "tok_per_s_median": 7.782342145430095,
+   "peak_mem_bytes": 10433890936,
+   "greedy_tokens_same_as_first_round_of_this_version": null
+  },
+  {
+   "context": 126,
+   "round": 2,
+   "version": 4,
+   "prefill_s": 15.38022170891054,
+   "median_step_s": 0.12903097894741222,
+   "p90_step_s": 0.13217302091652527,
+   "mean_step_s": 0.1294618083338719,
+   "tok_per_s_median": 7.750076827732658,
+   "peak_mem_bytes": 10433890936,
+   "greedy_tokens_same_as_first_round_of_this_version": true
+  },
+  {
+   "context": 126,
+   "round": 3,
+   "version": 3,
+   "prefill_s": 15.380697541986592,
+   "median_step_s": 0.15537070855498314,
+   "p90_step_s": 0.15611135027138517,
+   "mean_step_s": 0.1554010853928048,
+   "tok_per_s_median": 6.436219602140235,
+   "peak_mem_bytes": 10433890936,
+   "greedy_tokens_same_as_first_round_of_this_version": true
+  },
+  {
+   "context": 126,
+   "greedy_tokens_v3_equal_v4": true
+  }
+ ],
+ "summary": {
+  "ctx126_v3_median_step_s": 0.15539100003661588,
+  "ctx126_v4_median_step_s": 0.1287634999898728,
+  "ctx126_speedup_v3_over_v4": 1.2067938511211431
+ },
+ "process_peak_rss_bytes": 11303731200
+}

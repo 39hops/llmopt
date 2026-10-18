@@ -1599,6 +1599,12 @@ BASIN-1: routing basin radius v usage. CPU. Usage: SEED=1 python scratch/basin_p
 
 - `main()`
 
+### scratch/bench_qmetal_ab.py
+A/B benchmark of the W4 kernel generations v3 (control) and v4 on the same Mac, the same arm C artifact and identical inputs, alternating the two versions to spread thermal and run-order effects across both arms.
+
+- `provenance() -> dict`
+- `main() -> None`
+
 ### scratch/birth19m_arith.py
 BASICS-DIET-1 birth driver (pre-reg RESULTS L30355, amended L30429): stock diet + 6,000 sympy calculus atoms, with or without the 2,545-row arithmetic shard.
 
@@ -5030,6 +5036,11 @@ qcuda-tower qualification ladder, steps a-c (3080; spec 2026-08-19-qcuda-tower-r
 - `_fsha(rel)`
 - `synth_case(R, C, exps, seed)` — exps: explicit uint8 array (len n//128) — edge claims name
 - `main()`
+
+### scratch/qmetal_dep_check.py
+Does the ablation stand-in of scratch/qwen_metal_breakdown.py really keep its upstream work alive? The stand-in returns x[..., :1] * 0.0 + c. MLX evaluates lazily and prunes anything the requested output does not depend on, so the question is whether the multiply by zero is folded away. Three timings of mx.eval on identical shapes, medians of REPEATS:   upstream   y = A @ x          (a large float32 matmul, the upstream work)   standin    z = (A @ x)[..., :1] * 0.0 + c   constant   w = c              (no upstream at all) If standin is within a few percent of upstream and far above constant, the dependence is preserved and the breakdown's attribution stands as approximate (overlap and dispatch sharing remain). A second check runs the real stand-in class on a fused W4 linear from arm C layer 0: the time of eval(standin(res.gemm(x))) against eval(res.gemm(x)). Receipt logs/qmetal/dep_check_<commit>.json (refuse-if-exists).
+
+- `main() -> None`
 
 ### scratch/qmetal_oracle_dump.py
 Dump the CPU oracle's full fp32 logits for one prompt plus recorded rollout tokens (the census runtime: transformers streamed decode of arm C, scratch/qwen_e0_spec_census.py construction). Receipt for the Metal-path parity check; refuse-if-exists. Env: PROMPT_IDX (default 0), STEPS (default 8), ART_DIR, VENDOR_DIR, TEACHER_DIR, OUT.

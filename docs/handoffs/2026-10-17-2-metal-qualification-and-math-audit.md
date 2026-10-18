@@ -130,3 +130,27 @@ chunked prefill next, then v4 on GO. Teacher timing HOLD.
 Pitfall recorded: MLX lazy pruning. A pure-constant stand-in for lm_head
 made the whole tower dead code (5.8 ms step); stand-ins must keep a data
 dependence. The invalid receipt was deleted.
+
+## Addendum (2026-10-18): W4 v4 shipped, CI repaired
+
+GO after the probe: CI fix (matplotlib in the tests job; the figures
+regeneration inside check_source.sh imported it and the runner lacked
+it, confirmed from the Actions log), W4 v4 as a separate selectable
+generation, parity across tiles and row remainders, fresh v4
+qualification on the 24 E0 prompts, A/B v3 versus v4 on matrices and
+full cached decode at contexts 126 and 1,024, stand-in dependence check.
+
+Outcome (OBSERVATION QWEN-METAL-W4-V4-0): v4 reproduces v3 bit for bit
+(margin difference exactly 0.0 at every census position; A/B outputs
+equal in all checks; greedy tokens identical); decode 154 to 128 ms per
+token, 7.8 tokens per second, 1.21x measured against 1.22x projected;
+v4 loses at tiles 4 and 8, so the shipped dispatch (default generation
+4) runs v4 at tiles 1 and 2 and v3 above, verified to keep v3's prefill
+rate. Receipts: logs/qwen_metal_qual/C_v4/summary.json,
+logs/qmetal/ab_v3_v4_338745a7.json, ab_dispatch_check_v4default.json,
+dep_check_338745a7.json. The v3 qualification and the E0 receipts are
+untouched. QMETAL_VERSION=3 selects the control.
+
+Next workstream per Artin: chunked prefill design (single-shot prefill
+memory is quadratic in the block, 31.9 GB at 4,096 tokens). Teacher
+timing HOLD.

@@ -1,0 +1,11 @@
+{
+ "commit": "338745a7",
+ "repeats": 30,
+ "dense_upstream_s": 0.002228958474006504,
+ "dense_standin_s": 0.0022319999407045543,
+ "dense_constant_s": 0.00015954201808199286,
+ "w4_upstream_s": 0.000538687570951879,
+ "w4_standin_s": 0.0005473750061355531,
+ "w4_constant_s": 0.00015662499936297536,
+ "dependence_preserved": true
+}
