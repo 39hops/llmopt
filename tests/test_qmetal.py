@@ -364,10 +364,13 @@ def test_w4_v4_rows_bit_identical_to_v3():
     rng = np.random.default_rng(4242)
     R, C = 37, 5120
     buf = _random_w4(rng, R, C, exp_pool=np.arange(111, 129))
-    X = rng.normal(size=(8, C)).astype(np.float32)
     res4 = qmetal.W4Metal(buf, (R, C))
     res3 = qmetal.W4Metal(buf, (R, C))
     res3.version = 3
-    g4 = np.asarray(res4.gemm(mx.array(X)))
-    g3 = np.asarray(res3.gemm(mx.array(X)))
-    assert np.array_equal(g4, g3)
+    # tiles 1 and 2 run the v4 kernel, 8 dispatches to v3 under version 4;
+    # all three must be bit-identical to the v3 control
+    for T in (1, 2, 8):
+        X = rng.normal(size=(T, C)).astype(np.float32)
+        g4 = np.asarray(res4.gemm(mx.array(X)))
+        g3 = np.asarray(res3.gemm(mx.array(X)))
+        assert np.array_equal(g4, g3), T

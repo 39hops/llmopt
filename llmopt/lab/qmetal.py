@@ -382,15 +382,19 @@ _W4_V4_SRC = """
 """
 
 
-# Kernel generation used by the resident objects (1, 2, 3 or 4). The
+# Kernel generation used by the resident objects (1, 2, 3 or 4; default
+# 4 since OBSERVATION QWEN-METAL-W4-V4-0, v3 kept as the control). The
 # environment variable QMETAL_VERSION overrides the default at import so
-# a driver can select the control (v3) or the candidate (v4) without
-# code changes; the receipts record the effective version.
-VERSION = int(os.environ.get("QMETAL_VERSION", "3"))
+# a driver can select a generation without code changes; the receipts
+# record the effective version.
+VERSION = int(os.environ.get("QMETAL_VERSION", "4"))
 if VERSION not in (1, 2, 3, 4):
     raise ValueError(f"QMETAL_VERSION {VERSION} is not a kernel generation")
 ROWS_V2 = 4       # rows (simdgroups) per threadgroup in v2
 ROWS_V4 = 4       # rows per simdgroup in v4 (share4 of the traffic probe)
+V4_MAX_TILE = 2   # v4 serves tiles 1 and 2; tiles 4 and 8 dispatch to v3 (A/B receipt
+                  # logs/qmetal/ab_v3_v4_338745a7.json: v4 T1 232 vs 374 us, T2 478 vs 601,
+                  # T4 mixed, T8 6000 vs 3560 us pipelined)
 
 _kernels: dict = {}
 
@@ -456,11 +460,17 @@ class _Resident:
                 ntg = (R + rows - 1) // rows
                 grid, tg = (ntg * rows * 32, 1, 1), (rows * 32, 1, 1)
                 template = [("C", C), ("R", R), ("TT", tile), ("ROWS", rows)]
-            elif version == 4 and self.codec == "w4":
+            elif version == 4 and self.codec == "w4" and tile <= V4_MAX_TILE:
                 # one simdgroup per ROWS4 rows; the last group is masked in-kernel
                 ntg = (R + ROWS_V4 - 1) // ROWS_V4
                 grid, tg = (ntg * 32, 1, 1), (32, 1, 1)
                 template = [("C", C), ("R", R), ("TT", tile), ("ROWS4", ROWS_V4)]
+            elif version == 4:
+                # wider tiles and every s16 matrix run the v3 kernel (measured:
+                # v4's ROWS4 x TT accumulators lose to v3 from tile 4 up)
+                version = 3
+                grid, tg = (R * 32, 1, 1), (32, 1, 1)
+                template = [("C", C), ("R", R), ("TT", tile)]
             else:
                 grid, tg = (R * 32, 1, 1), (32, 1, 1)
                 template = [("C", C), ("R", R), ("TT", tile)]
