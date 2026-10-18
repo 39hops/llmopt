@@ -5317,6 +5317,16 @@ Teacher margin-bin census (AMENDMENT QWEN-MODEL1-TREE-PINS item 2) — teacher-o
 - `bins(m)`
 - `main() -> int`
 
+### scratch/qwen_metal_qual.py
+Metal-versus-CPU qualification of arm C over the frozen E0 teacher-greedy contexts. Separate from QWEN-METAL-TOWER-0 (one prompt, 78 positions) and from E0 itself, whose receipts under logs/qwen_e0/C are read, never rewritten.
+
+- `fsha(p: str) -> str`
+- `git_commit() -> str`
+- `margin_bin(m: float) -> int`
+- `quantiles(xs) -> dict`
+- `build_metal_model(art: str, vdir: str)` — Arm C through the mlx-lm Qwen3.5 architecture with fused linears.
+- `main() -> None`
+
 ### scratch/qwen_metal_tower.py
 Arm C on Metal: the mlx-lm Qwen3.5 architecture with every w4 / s16 matrix served by the fused decode-and-multiply kernels (llmopt.lab.qmetal), raw tensors decoded once, no decoded weight matrix ever materialized.
 
