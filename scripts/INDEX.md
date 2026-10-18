@@ -5365,6 +5365,8 @@ Final-position vocabulary projection for the chunked prefill of the arm C Metal 
 - `prefill(model, ids, cache, chunk, head='full', stats=None)` — Chunked prefill with the head applied to every position (full), to the
 - `compare_logits(a, b)`
 - `compare_caches(c1, c2)`
+- `class _Snap`
+- `snapshot_cache(cache)`
 - `decode_after(model, cache, ids_next)`
 - `main() -> None`
 

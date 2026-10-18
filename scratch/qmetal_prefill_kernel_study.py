@@ -39,10 +39,11 @@ Sections (one process, MODE=kernels):
 MODE=floor (separate process, loads the tower): a 256-token chunk prefill
 with all fused linears replaced by dependence-preserving stand-ins
 (the ConstLinear shape of scratch/qwen_metal_breakdown.py), with only the head
-replaced, with only the W4 MLP matrices replaced, and the full model, in
-rotating order; the non-matrix floor of chunked prefill and the share of
+replaced, with only the W4 MLP matrices replaced, and the full model, the
+order rotated each round; the non-matrix floor of chunked prefill and the share of
 the matrices and the head in a chunk. Env: ART_DIR, VENDOR_DIR, REPEATS
-(30), QUEUE (32), CHUNK (256), ROUNDS (3), OUT.
+(30), QUEUE (32), CHUNK (256), ROUNDS (3), OUT, SMOKE (=1 writes
+logs/qmetal/prefill_smoke_<mode>_<commit>.json).
 """
 from __future__ import annotations
 
@@ -148,7 +149,9 @@ def main() -> None:
     repeats = int(os.environ.get("REPEATS", "30"))
     queue = int(os.environ.get("QUEUE", "32"))
     chunk = int(os.environ.get("CHUNK", "256"))
-    out = os.environ.get("OUT", f"logs/qmetal/prefill_{mode}_{prov['commit']}.json")
+    smoke = os.environ.get("SMOKE") == "1"
+    prov["smoke"] = smoke
+    out = os.environ.get("OUT", f"logs/qmetal/{'prefill_smoke' if smoke else 'prefill'}_{mode}_{prov['commit']}.json")
     if os.path.exists(out):
         raise SystemExit(f"REFUSING: {out} exists")
     os.makedirs(os.path.dirname(out), exist_ok=True)
@@ -374,18 +377,30 @@ def main() -> None:
     # decode-once alternative needs a 256-token matmul per shape; measured on
     # the representative matrices only, so the total is projected by payload
     # bytes from the closest measured matrix of the same codec
-    def nearest_alt(codec, nbytes):
+    def nearest_alt(codec, shape, nbytes):
         cands = [a for a in alternatives if a["codec"] == codec and a["slab_note"] is None]
+        same = [a for a in cands if a["shape"] == list(shape)]
+        if same:
+            return same[0]
         return min(cands, key=lambda a: abs(a["payload_bytes"] - nbytes))
+    head_alt = next(a for a in alternatives if a["tensor"] == HEAD_KEY)
+    head_factor = 248320 / HEAD_SLAB_ROWS
     alt_chunk = 0.0
     alt_detail = []
     for row in shapes_measured:
-        a = nearest_alt(row["codec"], row["payload_bytes"])
-        f = row["payload_bytes"] / a["payload_bytes"]
-        per = f * (a["decode_once_pipelined_s"] + a["by_T"][256]["dense_f32_matmul_pipelined_s"])
+        if row["example"] == HEAD_KEY:
+            # the head is projected from its own slab, times the row ratio
+            a, f = head_alt, head_factor
+        else:
+            a = nearest_alt(row["codec"], row["shape"], row["payload_bytes"])
+            f = row["payload_bytes"] / a["payload_bytes"]
+        # the measured combined decode + GEMM launch (not the sum of the two timed apart)
+        per = f * a["by_T"][256]["decode_once_plus_f32_matmul_pipelined_s"]
+        per_summed = f * (a["decode_once_pipelined_s"] + a["by_T"][256]["dense_f32_matmul_pipelined_s"])
         alt_chunk += row["count"] * per
         alt_detail.append({"shape": row["shape"], "codec": row["codec"], "count": row["count"],
                            "scaled_from": a["tensor"], "scale": f, "decode_plus_mm256_s": per,
+                           "decode_plus_mm256_summed_s": per_summed,
                            "fused_chunk_s": launches * row["fused"][8]["pipelined_per_launch_s"]})
     head = next(a for a in alternatives if a["tensor"] == HEAD_KEY)
     head_shape = next(r for r in shapes_measured if r["example"] == HEAD_KEY or r["shape"] == [248320, 5120])
@@ -395,11 +410,14 @@ def main() -> None:
               "decode_once_f32_matmul_time_per_chunk_s_projected": alt_chunk,
               "decode_once_f32_matmul_time_per_token_s_projected": alt_chunk / chunk,
               "head_fused_tile8_per_chunk_s": launches * head_shape["fused"][8]["pipelined_per_launch_s"],
-              "head_slab_decode_plus_mm256_s_times8_projected": 8 * (head["decode_once_pipelined_s"] + head["by_T"][256]["dense_f32_matmul_pipelined_s"]),
+              "head_slab_decode_plus_mm256_s_times8_projected": 8 * head["by_T"][256]["decode_once_plus_f32_matmul_pipelined_s"],
+              "decode_pass_per_chunk_s_projected": sum(x["count"] * x["scale"] * (head_alt if x["shape"] == [248320, 5120] else nearest_alt(x["codec"], x["shape"], 0))["decode_once_pipelined_s"] for x in alt_detail),
               "detail": alt_detail,
               "note": "fused figures are per-launch pipelined times of each distinct shape times its count and the launches "
-                      "per chunk; the decode-once figures scale the measured representative of each codec by payload bytes "
-                      "and are projections, not measurements of every matrix"}
+                      "per chunk, not chunk walls; the decode-once figures take the measured matrix of the same shape where "
+                      "one exists (gate/up, down, qkv, out), otherwise the nearest measured matrix of the codec scaled by "
+                      "payload bytes (z from out_proj, q/k/v from qkv), and the head from its slab times the row ratio; "
+                      "they are projections, not measurements of every matrix"}
     print(f"[study] totals per {chunk}-token chunk: fused tile-8 matrices {fused_chunk:.2f} s ({fused_chunk/chunk*1e3:.1f} ms/token); "
           f"decode-once + f32 matmul projected {alt_chunk:.2f} s ({alt_chunk/chunk*1e3:.1f} ms/token)", flush=True)
     receipt = {"provenance": prov, "arm": arm, "chain_report": q["report"].get("rung0", q["report"]),
@@ -446,8 +464,11 @@ def floor(prov, art, vdir, chunk, rounds, out):
     configs = {"full": [], "no_head": headp, "no_w4_mlp": w4, "no_fused": fused}
     ids = [int(t) for t in np.random.default_rng(1).integers(1000, 100000, size=chunk)]
     results = {k: [] for k in configs}
+    names = list(configs)
     for r in range(rounds):
-        for name, swap in configs.items():
+        order = names[r % len(names):] + names[:r % len(names)]
+        for name in order:
+            swap = configs[name]
             for n, m in swap:
                 set_path(model, n, Const(m.out_features))
             cache = model.make_cache()

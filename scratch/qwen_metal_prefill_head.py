@@ -39,10 +39,13 @@ Modes (MODE env):
           at 256, one process, fresh cache each; per position the argmax
           and the top-1 minus top-2 margin (computed on device per chunk,
           kept on host), the final-position logits, the cache state
-          (conv, recurrent, KV with offsets) and DECODE_STEPS teacher-forced
-          steps, all compared pairwise. No one-shot run at 4,096.
+          after prefill (conv, recurrent, KV with offsets; snapshotted to
+          host before decoding) and again after DECODE_STEPS teacher-forced
+          steps, and the decode logits, all compared pairwise. No one-shot
+          run at 4,096.
 Env: ART_DIR, VENDOR_DIR, CTX, CHUNK, HEAD, ROUNDS (2), DECODE_STEPS (16),
-OUT. Receipts refuse to overwrite.
+OUT, SMOKE (=1 writes under logs/qmetal/prefill_head_smoke/). Receipts
+refuse to overwrite. RSS fields are ru_maxrss, the process peak so far.
 """
 from __future__ import annotations
 
@@ -153,6 +156,20 @@ def compare_caches(c1, c2):
             "bit_identical": kv_k == 0.0 and kv_v == 0.0 and conv == 0.0 and st == 0.0}
 
 
+class _Snap:
+    """Host copy of one cache object's state (offset and arrays) so a cache
+    can be compared as it was after prefill after decode has moved on."""
+    def __init__(self, c):
+        st = c.state
+        self.state = tuple(np.asarray(a) for a in st) if isinstance(st, (list, tuple)) else np.asarray(st)
+        if hasattr(c, "offset"):
+            self.offset = int(c.offset)
+
+
+def snapshot_cache(cache):
+    return [_Snap(c) for c in cache]
+
+
 def decode_after(model, cache, ids_next):
     import mlx.core as mx
     outs = []
@@ -175,15 +192,19 @@ def main() -> None:
     art = os.path.expanduser(os.environ.get("ART_DIR", "~/qwen_whole0t/C"))
     vdir = os.path.expanduser(os.environ.get("VENDOR_DIR", "~/qwen_vendor"))
     dec_steps = int(os.environ.get("DECODE_STEPS", "16"))
+    import mlx_lm
     prov = {"commit": head_cmd, "tree_dirty_at_launch": dirty, "mlx_version": mx.__version__,
-            "kernel_version": qmetal.VERSION, "mode": mode}
-    os.makedirs("logs/qmetal/prefill_head", exist_ok=True)
+            "mlx_lm_version": mlx_lm.__version__, "device": mx.device_info().get("device_name"),
+            "kernel_version": qmetal.VERSION, "mode": mode, "smoke": os.environ.get("SMOKE") == "1"}
+    # SMOKE=1 writes every receipt under its own directory, never on a real path
+    rdir = "logs/qmetal/prefill_head_smoke" if prov["smoke"] else "logs/qmetal/prefill_head"
+    os.makedirs(rdir, exist_ok=True)
 
     if mode == "mem":
         ctx = int(os.environ["CTX"])
         chunk = int(os.environ["CHUNK"])
         head = os.environ.get("HEAD", "full")
-        out = os.environ.get("OUT", f"logs/qmetal/prefill_head/mem_ctx{ctx}_chunk{chunk}_{head}.json")
+        out = os.environ.get("OUT", f"{rdir}/mem_ctx{ctx}_chunk{chunk}_{head}.json")
         if os.path.exists(out):
             raise SystemExit(f"REFUSING: {out} exists")
         model, info = build_metal_model(art, vdir)
@@ -216,19 +237,19 @@ def main() -> None:
                "resident_payload_bytes": info["payload_resident_bytes"],
                "prefill_s": t_pre, "prefill_tok_per_s": ctx / t_pre,
                "peak_unified_bytes": peak, "active_after_prefill_bytes": active,
-               "rss_before_prefill_bytes": int(rss0), "rss_after_bytes": int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss),
+               "peak_rss_before_prefill_bytes": int(rss0), "peak_rss_after_bytes": int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss),
                "decode_median_s": float(np.median(st)), "decode_p90_s": float(np.percentile(st, 90)),
                "decode_steps": dec_steps, "kv_offset_after_prefill": kv_prefill,
                "kv_offset_after_decode": int(cache[FA_LAYER].offset)}
         json.dump(row, open(out, "w"), indent=1)
         print(f"[head mem] ctx {ctx} chunk {chunk} head {head}: prefill {t_pre:.1f}s ({ctx/t_pre:.2f} tok/s), peak {peak/1e9:.2f} GB, "
-              f"active after {active/1e9:.2f} GB, rss {row['rss_after_bytes']/1e9:.2f} GB, decode median {np.median(st)*1e3:.1f} ms, "
+              f"active after {active/1e9:.2f} GB, peak rss {row['peak_rss_after_bytes']/1e9:.2f} GB, decode median {np.median(st)*1e3:.1f} ms, "
               f"kv offset {kv_prefill} then {row['kv_offset_after_decode']}", flush=True)
         return
 
     ctx = int(os.environ.get("CTX", "1024" if mode == "time" else "4096"))
     chunk = int(os.environ.get("CHUNK", "256"))
-    out = os.environ.get("OUT", f"logs/qmetal/prefill_head/{mode}_{head_cmd}.json")
+    out = os.environ.get("OUT", f"{rdir}/{mode}_{head_cmd}.json")
     if os.path.exists(out):
         raise SystemExit(f"REFUSING: {out} exists")
     ids = real_tokens(ctx + dec_steps)
@@ -324,15 +345,19 @@ def main() -> None:
             t = time.perf_counter() - t0
             fin = np.asarray(lg[0, -1], dtype=np.float32)
             del lg
+            peak = int(mx.get_peak_memory())
             kv_prefill = int(cache[FA_LAYER].offset)
+            # the cache state AFTER PREFILL, snapshotted to host before the decode steps mutate it
+            snap = snapshot_cache(cache)
             dec = decode_after(model, cache, nxt)
             runs[label] = {"head": head, "chunk": ch, "n_chunks": -(-ctx // ch), "prefill_s": t, "tok_per_s": ctx / t,
-                           "peak_in_process_bytes": int(mx.get_peak_memory()), "final_logits": fin, "cache": cache,
+                           "peak_in_process_bytes_after_prefill": peak, "final_logits": fin, "cache": snap,
+                           "cache_after_decode": cache,
                            "argmax": (np.concatenate(stats["argmax"]) if "argmax" in stats else None),
                            "margin": (np.concatenate(stats["margin"]) if "margin" in stats else None),
                            "decode": dec, "kv_offset_after_prefill": kv_prefill,
                            "kv_offset_after_decode": int(cache[FA_LAYER].offset)}
-            print(f"[ctx4k] {label}: {t:.1f} s ({ctx/t:.2f} tok/s), peak {runs[label]['peak_in_process_bytes']/1e9:.2f} GB, "
+            print(f"[ctx4k] {label}: {t:.1f} s ({ctx/t:.2f} tok/s), peak {runs[label]['peak_in_process_bytes_after_prefill']/1e9:.2f} GB, "
                   f"kv offset {kv_prefill} then {runs[label]['kv_offset_after_decode']}", flush=True)
         pairs = []
         labels = list(runs)
@@ -341,7 +366,8 @@ def main() -> None:
                 a, b = runs[labels[i]], runs[labels[j]]
                 p = {"pair": [labels[i], labels[j]],
                      "final_logits": compare_logits(a["final_logits"], b["final_logits"]),
-                     "cache": compare_caches(a["cache"], b["cache"]),
+                     "cache_after_prefill": compare_caches(a["cache"], b["cache"]),
+                     "cache_after_decode": compare_caches(a["cache_after_decode"], b["cache_after_decode"]),
                      "decode_after": compare_logits(a["decode"], b["decode"])}
                 if a["argmax"] is not None and b["argmax"] is not None and len(a["argmax"]) == len(b["argmax"]):
                     p["all_positions"] = {"positions": int(len(a["argmax"])),
@@ -352,14 +378,18 @@ def main() -> None:
                                                                      if (a["argmax"] != b["argmax"]).any() else None)}
                 pairs.append(p)
                 print(f"[ctx4k] {labels[i]} vs {labels[j]}: final logits max abs {p['final_logits']['max_abs']:.2e} rel {p['final_logits']['max_rel']:.1e} "
-                      f"argmax {p['final_logits']['argmax_identical']}/1; state rel {p['cache']['state_max_rel']:.1e} kv {max(p['cache']['kv_k_max_abs'], p['cache']['kv_v_max_abs']):.1e} "
-                      f"offsets {p['cache']['kv_offsets_equal']}; decode {p['decode_after']['argmax_identical']}/{dec_steps} max abs {p['decode_after']['max_abs']:.2e}"
+                      f"argmax {p['final_logits']['argmax_identical']}/1; after prefill: state rel {p['cache_after_prefill']['state_max_rel']:.1e} "
+                      f"kv {max(p['cache_after_prefill']['kv_k_max_abs'], p['cache_after_prefill']['kv_v_max_abs']):.1e} "
+                      f"offsets {p['cache_after_prefill']['kv_offsets']}; decode {p['decode_after']['argmax_identical']}/{dec_steps} max abs {p['decode_after']['max_abs']:.2e}"
                       + (f"; all positions argmax {p['all_positions']['argmax_identical']}/{p['all_positions']['positions']}" if "all_positions" in p else ""), flush=True)
         rec = {"provenance": prov, "tower": tower, "context": ctx, "decode_steps": dec_steps,
-               "runs": {k: {kk: vv for kk, vv in v.items() if kk not in ("final_logits", "cache", "argmax", "margin", "decode")}
+               "runs": {k: {kk: vv for kk, vv in v.items() if kk not in ("final_logits", "cache", "cache_after_decode", "argmax", "margin", "decode")}
                         for k, v in runs.items()},
                "pairs": pairs,
-               "note": "real E0 tokens; no one-shot reference at 4,096; margins are top-1 minus top-2 logit computed on device per chunk"}
+               "note": "real E0 tokens; no one-shot reference at 4,096; margins are top-1 minus top-2 logit computed on device per chunk; "
+                       "cache_after_prefill compares host snapshots taken before the decode steps, cache_after_decode the live caches "
+                       "after them; peak_in_process_bytes_after_prefill shares one allocator with the earlier arms' retained caches "
+                       "and is not the memory measurement (the mem receipts are)"}
         json.dump(rec, open(out, "w"), indent=1)
         print(f"[ctx4k] wrote {out}", flush=True)
         return

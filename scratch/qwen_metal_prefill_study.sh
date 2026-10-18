@@ -27,12 +27,20 @@ run_stage() {
   fi
   rm -f "$TMP"
 }
-# START=<label prefix> skips the stages before it (a rerun after a failed stage)
+# START=<label prefix> skips the stages before it (a rerun after a failed
+# stage); ONLY="<prefix> <prefix> ..." runs just the stages whose label
+# starts with one of the prefixes
 START=${START:-kernels}
+ONLY=${ONLY:-}
 started=0
 run() {
   if [ "$started" -eq 0 ]; then
     case "$1" in "$START"*) started=1;; *) echo "== skip $1 (START=$START)" >> "$LOG"; return 0;; esac
+  fi
+  if [ -n "$ONLY" ]; then
+    local hit=0 pfx
+    for pfx in $ONLY; do case "$1" in "$pfx"*) hit=1;; esac; done
+    if [ "$hit" -eq 0 ]; then echo "== skip $1 (ONLY=$ONLY)" >> "$LOG"; return 0; fi
   fi
   run_stage "$@"
 }
