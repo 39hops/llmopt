@@ -1,0 +1,31 @@
+== ctx 512 chunk 0 17:14:02
+[chunked mem] ctx 512 chunk 0: prefill 61.4s (8.33 tok/s), peak 12.42 GB, active after 9.56 GB, rss 11.83 GB, decode median 127.4 ms
+== ctx 512 chunk 64 17:15:15
+[chunked mem] ctx 512 chunk 64: prefill 60.9s (8.41 tok/s), peak 10.10 GB, active after 9.17 GB, rss 11.04 GB, decode median 127.4 ms
+== ctx 512 chunk 128 17:16:26
+[chunked mem] ctx 512 chunk 128: prefill 60.9s (8.41 tok/s), peak 10.56 GB, active after 9.18 GB, rss 11.14 GB, decode median 127.4 ms
+== ctx 512 chunk 256 17:17:36
+[chunked mem] ctx 512 chunk 256: prefill 61.1s (8.39 tok/s), peak 11.34 GB, active after 9.76 GB, rss 11.37 GB, decode median 127.5 ms
+== ctx 512 chunk 512 17:18:47
+[chunked mem] ctx 512 chunk 512: prefill 61.1s (8.38 tok/s), peak 12.42 GB, active after 9.56 GB, rss 11.82 GB, decode median 127.6 ms
+== ctx 1024 chunk 64 17:19:58
+[chunked mem] ctx 1024 chunk 64: prefill 121.8s (8.40 tok/s), peak 10.17 GB, active after 9.21 GB, rss 11.04 GB, decode median 127.8 ms
+== ctx 1024 chunk 128 17:22:10
+[chunked mem] ctx 1024 chunk 128: prefill 121.9s (8.40 tok/s), peak 10.63 GB, active after 9.25 GB, rss 11.18 GB, decode median 128.4 ms
+== ctx 1024 chunk 256 17:24:21
+[chunked mem] ctx 1024 chunk 256: prefill 122.1s (8.39 tok/s), peak 11.41 GB, active after 9.58 GB, rss 11.41 GB, decode median 128.0 ms
+== ctx 1024 chunk 512 17:26:33
+[chunked mem] ctx 1024 chunk 512: prefill 122.2s (8.38 tok/s), peak 13.00 GB, active after 9.63 GB, rss 11.87 GB, decode median 128.0 ms
+== ctx 2048 chunk 128 17:28:45
+[chunked mem] ctx 2048 chunk 128: prefill 243.8s (8.40 tok/s), peak 10.77 GB, active after 9.38 GB, rss 11.18 GB, decode median 129.0 ms
+== ctx 2048 chunk 256 17:32:59
+[chunked mem] ctx 2048 chunk 256: prefill 244.4s (8.38 tok/s), peak 11.54 GB, active after 9.58 GB, rss 11.48 GB, decode median 129.0 ms
+== ctx 2048 chunk 512 17:37:13
+[chunked mem] ctx 2048 chunk 512: prefill 244.6s (8.37 tok/s), peak 13.13 GB, active after 9.76 GB, rss 11.93 GB, decode median 129.4 ms
+== ctx 4096 chunk 256 17:41:27
+[chunked mem] ctx 4096 chunk 256: prefill 489.4s (8.37 tok/s), peak 11.81 GB, active after 9.78 GB, rss 11.54 GB, decode median 131.0 ms
+== ctx 4096 chunk 512 17:49:47
+[chunked mem] ctx 4096 chunk 512: prefill 489.8s (8.36 tok/s), peak 13.40 GB, active after 10.03 GB, rss 12.01 GB, decode median 131.1 ms
+== ctx 4096 chunk 128 17:58:08
+[chunked mem] ctx 4096 chunk 128: prefill 488.3s (8.39 tok/s), peak 11.03 GB, active after 9.67 GB, rss 11.20 GB, decode median 131.5 ms
+== grid done 18:06:28

@@ -79778,3 +79778,126 @@ contexts to 4,096; the A/B alternated versions in one process (thermal
 drift shared across arms, not eliminated); occupancy, register counts
 and cache traffic are not measured (no counters) and every statement
 about them is inferred from timing deltas.
+
+## OBSERVATION QWEN-METAL-CHUNKED-PREFILL-0: chunked prefill for the arm C Metal tower through the model's own cache objects (one forward per chunk, every chunk's logits and cache state evaluated before the next chunk is built) reproduces the qualified one-shot prefill to float32 reduction-order drift only: argmax identical at every position of every case (up to 1,030 tokens, 1 to 17 chunks), per-position logits within 6e-5 relative, DeltaNet recurrent state within 4e-6 relative, conv state and KV cache within 2e-3 absolute with equal offsets, the 16 decode steps after prefill argmax-identical with logits within 7e-5; drift does not grow with the chunk count (chunks 64, 128 and 256 are bit-identical to one another); peak unified memory at 4,096 tokens falls from 31.9 GB (one-shot, frozen QWEN-METAL-QUAL-0) to 11.0 GB with 128-token chunks, 11.8 GB with 256 and 13.4 GB with 512, with prefill throughput unchanged at 8.4 tokens per second and the resumed decode at 127 to 131 ms per token (2026-10-18, Mac; one-shot path kept as the reference; v3/v4 receipts and E0 untouched)
+
+Design (scratch/qwen_metal_chunked.py docstring; mlx-lm 0.31.3
+qwen3_5 inspected before implementation). State lives entirely in the
+cache list the model creates: for each of the 48 Gated DeltaNet layers
+an ArraysCache whose slot 0 holds the last three rows of the layer's
+conv input (rewritten from the chunk's tail on every call) and slot 1
+the recurrent state that gated_delta_update reads in and writes out
+(the kernel is sequential per token, so a chunk boundary is not a
+boundary for the recurrence at all); for each of the 16 full-attention
+layers a KVCache with an offset that feeds RoPE (offset = tokens already
+cached), appends the chunk's keys and values at [offset, offset + S),
+and hands the "causal" mask to the fused attention, which aligns it
+bottom-right so a chunk's queries see every cached key and only their
+own prefix of the chunk. advance(S) moves padding and length
+bookkeeping that is None for a single unpadded prompt, so the SSM mask
+is None. Embedding rows and the fused linears are stateless; the exact
+HF q/k l2norm override is inside the DeltaNet call and runs per chunk
+unchanged. The driver therefore owns nothing but the slicing of the
+token sequence and the evaluation discipline: after each chunk
+mx.eval(logits, every array in every cache), the chunk's logits moved
+to host or dropped, so the lazy graph never spans two chunks and no
+earlier activation can be retained. The one-shot path is the same model
+call with the whole prompt and is kept as the reference. Single prompt,
+unpadded; padded and multi-prompt execution are not implemented (the
+library's lengths and left_padding masks exist but were not exercised).
+The v4/v3 tile dispatch of the fused linears is untouched; no weight,
+format or model change.
+
+Where drift can come from, and what was measured. The DeltaNet
+recurrence and the conv see the same arithmetic per token; what moves
+with the chunk start is the float32 reduction order inside the attention
+kernel (different query lengths select different fused kernels) and
+inside the fused GEMV tiles (a chunk is multiplied in tiles of 8, the
+last tile padded). Measured on real tokens (the 24 E0 teacher records
+concatenated, 6,359 tokens), one-shot against chunked on identical ids
+(receipt logs/qmetal/chunked/boundary_952103c8.json):
+  * Single-chunk cases (length chunk - 1 and chunk, for chunks 64, 128,
+    256, 512): bit-identical logits, caches and 16-step decode (the
+    chunked path IS the one-shot path when the prompt fits one chunk).
+  * Just-after-boundary cases (chunk + 1, two chunks) and 2 chunk + 1
+    (three chunks): all positions argmax-identical (65/65, 129/129,
+    257/257, 513/513, 1025/1025 and the rest); per-position relative
+    logit error 2e-7 to 4.5e-5 (the 4.5e-5 at 1,025 tokens in three
+    512-chunks, 1.2e-3 absolute on logits of magnitude about 30, same
+    order as the Metal-versus-CPU parity of 5e-5); margin difference at
+    most 2.0e-4 nats; recurrent state relative error 3e-7 to 4.2e-6 over
+    all 48 layers; conv state within 1.9e-5 absolute; KV cache within
+    1.6e-3 absolute with offsets equal at all 16 layers; 16 teacher-forced
+    decode steps from the chunked cache against the one-shot cache
+    argmax 16/16 in every case, logits within 2.4e-5.
+  * Chunk-size dependence at a fixed 1,030 tokens: chunks 64 (17
+    chunks), 128 (9) and 256 (5) give bit-identical logits to one
+    another (pairwise max abs 0.0) and 6.0e-5 relative to one-shot;
+    chunk 512 (3 chunks) differs from them by 1.8e-5 relative and from
+    one-shot by 4.5e-5. So the drift does not accumulate with the number
+    of chunks; it is set by which attention kernel a given query length
+    selects (inferred from the pattern, not from the library source),
+    and it stays at the level of the kernel parity. Decode after each:
+    16/16 argmax, logits within 7.0e-5.
+  * CPU oracle spot check: the census prompt 0 (70 tokens) prefilled in
+    64-token chunks against the CPU arm C logits: 70/70 argmax, 5.1e-5
+    relative, the same figures the one-shot path booked in
+    QWEN-METAL-TOWER-0.
+
+Memory and throughput grid (scratch/qwen_metal_chunked_grid.sh, one
+fresh process per configuration, receipts
+logs/qmetal/chunked/mem_ctx<L>_chunk<c>.json and grid.log; peak unified
+memory from mx.get_peak_memory after a reset and clear_cache at the
+start of prefill, so the 9.37 GB resident payload is inside every
+figure; prefill of synthetic tokens; 16 greedy decode steps after). The
+one-shot reference at 512 tokens reran as a calibration of the method:
+12.42 GB against the frozen 12.70 GB of QWEN-METAL-QUAL-0 (that run
+measured from a cold first call that included kernel compilation); the
+one-shot 1,024 / 2,048 / 4,096 peaks are reused from that receipt (15.5
+/ 20.9 / 31.9 GB) and were not rerun near the machine's limit.
+
+  context  chunk   peak unified GB   RSS GB   prefill tok/s   decode ms
+     512   one-shot     12.42        11.83        8.33          127.4
+     512      64        10.10        11.04        8.41          127.4
+     512     128        10.56        11.14        8.41          127.4
+     512     256        11.34        11.37        8.39          127.5
+     512     512        12.42        11.82        8.38          127.6
+   1,024      64        10.17        11.04        8.40          127.8
+   1,024     128        10.63        11.18        8.40          128.4
+   1,024     256        11.41        11.41        8.39          128.0
+   1,024     512        13.00        11.87        8.38          128.0
+   2,048     128        10.77        11.18        8.40          129.0
+   2,048     256        11.54        11.48        8.38          129.0
+   2,048     512        13.13        11.93        8.37          129.4
+   4,096     128        11.03        11.20        8.39          131.5
+   4,096     256        11.81        11.54        8.37          131.0
+   4,096     512        13.40        12.01        8.36          131.1
+
+Reading. Peak memory is set by the chunk, not by the context: at a
+fixed chunk the peak rises by only 0.5 to 1.0 GB from 512 to 4,096
+tokens (the KV cache of the 16 attention layers and the DeltaNet
+states), and at a fixed context it rises with the chunk (the chunk's
+attention scores and the 17,408-wide MLP activations of the chunk).
+Against the one-shot 31.9 GB at 4,096 the 128- and 256-token chunks
+leave 23 to 25 GB of the 36 GiB machine free, and chunk 256 is the
+recommended default (11.8 GB at 4,096, under 20 GB by a wide margin).
+Prefill throughput is identical across chunk sizes and equal to
+one-shot (8.3 to 8.4 tokens per second): the per-token cost is the
+fused GEMV at tiles of 8, which chunking does not change. The decode
+step after prefill is the v4 figure (127 ms at short context, 131 ms at
+4,096) in every row.
+
+Verdict. Chunked prefill is numerically interchangeable with the
+qualified one-shot path at the float32 reduction-order level, with no
+dependence on the chunk count, and it takes the 4,096-token prefill from 31.9 GB to 11.0 to 13.4 GB depending on the chunk, well under the 20 GB engineering target, with chunk 256 recommended. It is a memory change,
+not a speed change: prefill stays at 8.4 tokens per second at every chunk size, so nothing here is a prefill-speed optimization. A dedicated prefill kernel
+(one weight decode reused across many activations, the open residue of
+RIFF L6700) is now the only lever left for prefill speed: the fused GEMV costs about the same per token at tile 8 as at tile 1 (A/B receipt: v3 3,567 us for 8 tokens against 373 us for one), so a prefill of L tokens costs about L decode steps of weight streaming; a kernel that decodes each weight once per tile and reuses it across the 8 activations is justified by that measurement, and chunked prefill gives it a memory-safe home.
+
+Fences. Single machine, single artifact, single unpadded prompt per
+run, float32 activations; drift measured against the Metal one-shot
+path (itself at 5e-5 of the CPU oracle) and the CPU oracle at 70
+tokens; the one-shot 1,024 to 4,096 peaks are the frozen
+QWEN-METAL-QUAL-0 values, not rerun; grid rows are one fresh process
+each with the allocator reset, peak unified memory from
+mx.get_peak_memory after a reset and process RSS from getrusage.

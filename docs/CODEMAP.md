@@ -16,7 +16,7 @@ this also drives `library`; from lab tooling it drives
 comments or plain strings; `via` names the cited caller a file
 inherits its class from when no document names the file itself.
 
-Census: library 197, reproduce-pinned 9, results-cited 515, spec-cited 74, tool-referenced 5, UNCITED 120 (of 920; library rows that are also doc-cited: 193)
+Census: library 197, reproduce-pinned 9, results-cited 517, spec-cited 74, tool-referenced 5, UNCITED 120 (of 922; library rows that are also doc-cited: 193)
 
 ## scratch/
 
@@ -610,7 +610,9 @@ Census: library 197, reproduce-pinned 9, results-cited 515, spec-cited 74, tool-
 | qwen | qwen_loop_state_headswap.py | results-cited | RESULTS, via:specs | RESULTS×7 | — | 2 | — | — |
 | qwen | qwen_margin_census.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
 | qwen | qwen_metal_breakdown.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — | 1 | — |
-| qwen | qwen_metal_qual.py | library | RESULTS, specs | RESULTS×4, specs×2 | 2 | — | — | — |
+| qwen | qwen_metal_chunked.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 1 | — | — |
+| qwen | qwen_metal_chunked_grid.sh | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
+| qwen | qwen_metal_qual.py | library | RESULTS, specs | RESULTS×4, specs×2 | 3 | — | — | — |
 | qwen | qwen_metal_tower.py | library | RESULTS, specs | RESULTS×6, specs×1 | — | 1 | 1 | — |
 | qwen | qwen_mips_census.py | results-cited | RESULTS | RESULTS×5 | — | — | — | — |
 | qwen | qwen_model1_score.py | library | RESULTS, specs | RESULTS×5, specs×2 | — | 3 | 4 | — |

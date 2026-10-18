@@ -171,3 +171,31 @@ qualification (qmetal, the tower, the census) runs only on the Mac and
 skips cleanly on the runner, so a green Actions run is not evidence
 about the kernels and a green Mac gate is not evidence about the Linux
 dependency set. Both are required before a push counts as green.
+
+## Addendum (2026-10-18, afternoon): chunked prefill
+
+Design: no new state; the driver slices the prompt and evaluates each
+chunk's logits plus every cache array before the next chunk
+(scratch/qwen_metal_chunked.py, docstring carries the state ownership
+map: ArraysCache conv tail and recurrent state per DeltaNet layer,
+KVCache offset feeding RoPE and the bottom-right-aligned causal mask per
+attention layer). One-shot path kept as reference. Single unpadded
+prompt only.
+
+Correctness (boundary_952103c8.json): single-chunk cases bit-identical;
+multi-chunk cases argmax-identical at every position, 2e-7 to 6e-5
+relative logits, recurrent state within 4.2e-6 relative, KV within
+1.6e-3 absolute with equal offsets, 16 decode steps after prefill 16/16
+with logits within 7e-5; chunks 64/128/256 bit-identical to one another
+at 1,030 tokens (drift does not grow with chunk count); CPU oracle spot
+check 70/70 at 5.1e-5.
+
+Memory (grid, one process per row): 4,096 tokens 11.0 / 11.8 / 13.4 GB
+at chunks 128 / 256 / 512 against 31.9 GB one-shot; 512 / 1,024 / 2,048
+at chunk 256: 11.3 / 11.4 / 11.5 GB. Throughput 8.4 tokens per second at
+every chunk size (unchanged); decode after prefill 127 to 131 ms.
+Recommended chunk 256.
+
+Not a speed change. The prefill kernel (weight decoded once per tile)
+is the only prefill-speed lever left and is now justified by
+measurement; the decision on the next rung is Artin's.

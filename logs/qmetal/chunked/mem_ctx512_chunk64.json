@@ -1,0 +1,22 @@
+{
+ "provenance": {
+  "commit": "952103c8",
+  "tree_dirty_at_launch": true,
+  "mlx_version": "0.31.2",
+  "kernel_version": 4,
+  "mode": "mem"
+ },
+ "context": 512,
+ "chunk": 64,
+ "resident_payload_bytes": 9367009856,
+ "prefill_s": 60.89423920796253,
+ "prefill_tok_per_s": 8.40802030962973,
+ "peak_unified_bytes": 10100179528,
+ "active_after_prefill_bytes": 9167274540,
+ "rss_before_prefill_bytes": 10872569856,
+ "rss_after_bytes": 11036590080,
+ "decode_median_s": 0.12737979198573157,
+ "decode_p90_s": 0.12757662057410926,
+ "decode_steps": 16,
+ "kv_offset_after_prefill": 528
+}

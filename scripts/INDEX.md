@@ -5342,6 +5342,14 @@ End-to-end decode breakdown of the arm C Metal tower by ABLATION, not by summing
 
 - `main() -> None`
 
+### scratch/qwen_metal_chunked.py
+Chunked prefill for the arm C Metal tower: the prompt is fed to the qualified model in consecutive chunks through the same cache objects the one-shot path and cached decode use, every chunk's outputs and cache state are evaluated before the next chunk is built, and the one-shot path stays available as the reference.
+
+- `cache_arrays(cache)` — Every array a cache list holds (for mx.eval and for comparison).
+- `prefill_oneshot(model, ids, cache)`
+- `prefill_chunked(model, ids, cache, chunk, keep_logits=False)` — Feed ids in consecutive chunks; evaluate each chunk's logits and the
+- `main() -> None`
+
 ### scratch/qwen_metal_qual.py
 Metal-versus-CPU qualification of arm C over the frozen E0 teacher-greedy contexts. Separate from QWEN-METAL-TOWER-0 (one prompt, 78 positions) and from E0 itself, whose receipts under logs/qwen_e0/C are read, never rewritten.
 
