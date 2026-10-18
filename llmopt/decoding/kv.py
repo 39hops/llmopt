@@ -28,9 +28,20 @@ def crop(past, length: int):
         try:
             past.crop(length)
         except ValueError:
-            cur = int(past.get_seq_length())
-            if length < cur:
-                past.crop(length - cur)
+            layers = getattr(past, "layers", None)
+            if layers is None:
+                cur = int(past.get_seq_length())
+                if length < cur:
+                    past.crop(length - cur)
+            else:
+                # per layer, skipping layers that hold no tensors yet: the
+                # library's negative-form crop slices every layer and fails
+                # on an empty one (layer-skipping drafts leave some empty)
+                for layer in layers:
+                    k = getattr(layer, "keys", None)
+                    if k is not None and k.shape[-2] > length:
+                        layer.keys = k[..., :length, :]
+                        layer.values = layer.values[..., :length, :]
         return past
     return tuple((k[:, :, :length], v[:, :, :length]) for k, v in past)
 
