@@ -5047,6 +5047,14 @@ Dump the CPU oracle's full fp32 logits for one prompt plus recorded rollout toke
 
 - `main() -> None`
 
+### scratch/qmetal_prefill_kernel_study.py
+Prefill operator study for the arm C Metal tower: why one fused launch over a tile of 8 activations costs almost eight single-activation launches, what each stream of the fused kernel costs at tile 8, and what the realistic alternatives (decode a matrix once, multiply with the framework GEMM) achieve on the same matrices. TIMING ONLY: the ablation variants compute wrong values by construction, the dense and framework alternatives are references for a design decision, nothing here is a parity claim and no frozen kernel or codec is touched.
+
+- `provenance() -> dict`
+- `ablation_variant(codec: str, name: str) -> str` — Frozen v3 source with one stream removed (scratch/qmetal_traffic_probe
+- `main() -> None`
+- `floor(prov, art, vdir, chunk, rounds, out)`
+
 ### scratch/qmetal_traffic_probe.py
 W4 activation-traffic ceiling probe for the fused Metal kernels, TIMING ONLY. Controlled variants of the frozen v3 W4 GEMV source (and the S16 source) remove one memory stream at a time; their outputs are wrong by construction and nothing here makes a numerical claim. The frozen kernels in llmopt.lab.qmetal are not modified; variants are compiled from edited copies of their source strings.
 
@@ -5348,6 +5356,16 @@ Chunked prefill for the arm C Metal tower: the prompt is fed to the qualified mo
 - `cache_arrays(cache)` — Every array a cache list holds (for mx.eval and for comparison).
 - `prefill_oneshot(model, ids, cache)`
 - `prefill_chunked(model, ids, cache, chunk, keep_logits=False)` — Feed ids in consecutive chunks; evaluate each chunk's logits and the
+- `main() -> None`
+
+### scratch/qwen_metal_prefill_head.py
+Final-position vocabulary projection for the chunked prefill of the arm C Metal tower, and the 4,096-token chunk-size comparison.
+
+- `real_tokens(n: int) -> list[int]` — The E0 teacher records (prompt + rollout) concatenated, first n.
+- `prefill(model, ids, cache, chunk, head='full', stats=None)` — Chunked prefill with the head applied to every position (full), to the
+- `compare_logits(a, b)`
+- `compare_caches(c1, c2)`
+- `decode_after(model, cache, ids_next)`
 - `main() -> None`
 
 ### scratch/qwen_metal_qual.py

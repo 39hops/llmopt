@@ -145,6 +145,7 @@ def main() -> None:
         t_pre = time.perf_counter() - t0
         peak = int(mx.get_peak_memory())
         active = int(mx.get_active_memory())
+        kv_offset_prefill = int(cache[3].offset)   # layer 3 is the first full-attention layer
         cur = int(lg[0, -1].argmax())
         del lg
         walls = []
@@ -159,7 +160,8 @@ def main() -> None:
                "peak_unified_bytes": peak, "active_after_prefill_bytes": active,
                "rss_before_prefill_bytes": int(rss0), "rss_after_bytes": int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss),
                "decode_median_s": float(np.median(st)), "decode_p90_s": float(np.percentile(st, 90)),
-               "decode_steps": dec_steps, "kv_offset_after_prefill": int(cache[3].offset)}
+               "decode_steps": dec_steps, "kv_offset_after_prefill": kv_offset_prefill,
+               "kv_offset_after_decode": int(cache[3].offset)}
         os.makedirs(os.path.dirname(out), exist_ok=True)
         json.dump(row, open(out, "w"), indent=1)
         print(f"[chunked mem] ctx {ctx} chunk {chunk}: prefill {t_pre:.1f}s ({ctx/t_pre:.2f} tok/s), peak {peak/1e9:.2f} GB, "
