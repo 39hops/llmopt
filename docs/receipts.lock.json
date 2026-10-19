@@ -4391,6 +4391,34 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qmetal/prefill_gemm/ab_e8f1a3af.json": {
+   "bytes": 5897,
+   "exists": true,
+   "sha256": "eb7664c0a78469c0abcc8eb03359eb8b14cb8b797ade1e459558d4371c316538",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qmetal/prefill_gemm/bench_9c427901.json": {
+   "bytes": 48349,
+   "exists": true,
+   "sha256": "92a736d6a6c637ffe9937b2981065ab0765dec43b6b507bf6a7795e901d076b0",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qmetal/prefill_gemm/ctx4k_hybrid_ab14f862.json": {
+   "bytes": 10905,
+   "exists": true,
+   "sha256": "520b1bb4e0caf7e0267c6b29c576a203b27faeff4af537171d4e76ca55b4394e",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qmetal/prefill_gemm/floor_hybrid_e8f1a3af.json": {
+   "bytes": 1670,
+   "exists": true,
+   "sha256": "db318ed6b13fb0239db49e4dc774f5aaf7ccba2b98958779dc4878d0b7f62544",
+   "source": "results",
+   "tracked": true
+  },
   "logs/qmetal/prefill_head/ctx4k_7f464353.json": {
    "bytes": 9780,
    "exists": true,
@@ -4452,6 +4480,13 @@
    "bytes": 16685,
    "exists": true,
    "sha256": "5e831c1ba8fc06b091404b89f0fb0d71dd457746a4bad3472c0f809731f01508",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwen_metal_qual/C_gemm/summary.json": {
+   "bytes": 14396,
+   "exists": true,
+   "sha256": "528f7d16d6014fce231cb988aa67c200207317f161bfd39aec89fb8b2049518f",
    "source": "results",
    "tracked": true
   },

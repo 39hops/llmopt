@@ -1,0 +1,454 @@
+{
+ "provenance": {
+  "commit": "ab14f862",
+  "tree_dirty_at_launch": false,
+  "mlx_version": "0.31.2",
+  "mlx_lm_version": "0.31.3",
+  "device": "Apple M3 Pro",
+  "kernel_version": 4,
+  "mode": "ctx4k",
+  "smoke": false,
+  "prefill_gemm": true,
+  "gemm_min_t": {
+   "w4": 16,
+   "s16": 32
+  },
+  "gemm_slab_bytes": 419430400
+ },
+ "tower": {
+  "chain": "logs/qwenwhole/artifact_digest_C.txt",
+  "chain_sha256": "de7e0180bf49f965c17116b7fbe8c34d2b1529c2431cc234f3a6460ad84b24dc",
+  "n_layers": 64,
+  "families": {
+   "linear_attn": 48,
+   "full_attn": 16
+  },
+  "fused": 402,
+  "raw": 449,
+  "payload_resident_bytes": 9367009856,
+  "kernel_version": 4,
+  "prefill_gemm": true,
+  "gemm_min_t": {
+   "w4": 16,
+   "s16": 32
+  },
+  "gemm_slab_bytes": 419430400,
+  "gemm_ineligible_matrices": 0
+ },
+ "context": 4096,
+ "decode_steps": 16,
+ "runs": {
+  "full_c128": {
+   "head": "full",
+   "chunk": 128,
+   "n_chunks": 32,
+   "prefill_s": 121.23018545808736,
+   "tok_per_s": 33.78696472765936,
+   "peak_in_process_bytes_after_prefill": 14528251948,
+   "allocator_cache_after_prefill_bytes": 14026175296,
+   "matrix_calls_by_path_cumulative_after_prefill": {
+    "fused": 0,
+    "gemm": 12832
+   },
+   "prefill_gemm": true,
+   "kv_offset_after_prefill": 4096,
+   "kv_offset_after_decode": 4112
+  },
+  "full_c256": {
+   "head": "full",
+   "chunk": 256,
+   "n_chunks": 16,
+   "prefill_s": 104.63640908303205,
+   "tok_per_s": 39.14507422315787,
+   "peak_in_process_bytes_after_prefill": 16411774508,
+   "allocator_cache_after_prefill_bytes": 15205556416,
+   "matrix_calls_by_path_cumulative_after_prefill": {
+    "fused": 6416,
+    "gemm": 19248
+   },
+   "prefill_gemm": true,
+   "kv_offset_after_prefill": 4096,
+   "kv_offset_after_decode": 4112
+  },
+  "full_c512": {
+   "head": "full",
+   "chunk": 512,
+   "n_chunks": 8,
+   "prefill_s": 103.87198395899031,
+   "tok_per_s": 39.43315458013338,
+   "peak_in_process_bytes_after_prefill": 18802530860,
+   "allocator_cache_after_prefill_bytes": 15381314752,
+   "matrix_calls_by_path_cumulative_after_prefill": {
+    "fused": 12832,
+    "gemm": 22456
+   },
+   "prefill_gemm": true,
+   "kv_offset_after_prefill": 4096,
+   "kv_offset_after_decode": 4112
+  },
+  "final_c256": {
+   "head": "final",
+   "chunk": 256,
+   "n_chunks": 16,
+   "prefill_s": 101.15042341698427,
+   "tok_per_s": 40.49414586347877,
+   "peak_in_process_bytes_after_prefill": 17683793488,
+   "allocator_cache_after_prefill_bytes": 9756072128,
+   "matrix_calls_by_path_cumulative_after_prefill": {
+    "fused": 19264,
+    "gemm": 28856
+   },
+   "prefill_gemm": true,
+   "kv_offset_after_prefill": 4096,
+   "kv_offset_after_decode": 4112
+  }
+ },
+ "pairs": [
+  {
+   "pair": [
+    "full_c128",
+    "full_c256"
+   ],
+   "final_logits": {
+    "positions": 1,
+    "max_abs": 3.4332275390625e-05,
+    "max_rel": 1.61065725374706e-06,
+    "bit_identical": false,
+    "argmax_identical": 1,
+    "margin_abs_diff_max": 0.0,
+    "min_margin_at_mismatch": null
+   },
+   "cache_after_prefill": {
+    "kv_offsets_equal": true,
+    "kv_offsets": [
+     [
+      4096,
+      4096
+     ]
+    ],
+    "kv_k_max_abs": 0.0,
+    "kv_v_max_abs": 0.0,
+    "conv_max_abs": 0.0,
+    "state_max_abs": 0.0,
+    "state_max_rel": 0.0,
+    "bit_identical": true
+   },
+   "cache_after_decode": {
+    "kv_offsets_equal": true,
+    "kv_offsets": [
+     [
+      4112,
+      4112
+     ]
+    ],
+    "kv_k_max_abs": 0.0,
+    "kv_v_max_abs": 0.0,
+    "conv_max_abs": 0.0,
+    "state_max_abs": 0.0,
+    "state_max_rel": 0.0,
+    "bit_identical": true
+   },
+   "decode_after": {
+    "positions": 16,
+    "max_abs": 0.0,
+    "max_rel": 0.0,
+    "bit_identical": true,
+    "argmax_identical": 16,
+    "margin_abs_diff_max": 0.0,
+    "min_margin_at_mismatch": null
+   },
+   "all_positions": {
+    "positions": 4096,
+    "argmax_identical": 4096,
+    "margin_abs_diff_max": 0.0001087188720703125,
+    "margin_abs_diff_median": 0.0,
+    "min_margin_at_mismatch": null
+   }
+  },
+  {
+   "pair": [
+    "full_c128",
+    "full_c512"
+   ],
+   "final_logits": {
+    "positions": 1,
+    "max_abs": 5.054473876953125e-05,
+    "max_rel": 2.3712454013498383e-06,
+    "bit_identical": false,
+    "argmax_identical": 1,
+    "margin_abs_diff_max": 1.52587890625e-05,
+    "min_margin_at_mismatch": null
+   },
+   "cache_after_prefill": {
+    "kv_offsets_equal": true,
+    "kv_offsets": [
+     [
+      4096,
+      4096
+     ]
+    ],
+    "kv_k_max_abs": 0.0020170211791992188,
+    "kv_v_max_abs": 0.005772590637207031,
+    "conv_max_abs": 4.470348358154297e-05,
+    "state_max_abs": 2.6702880859375e-05,
+    "state_max_rel": 5.943008707588303e-06,
+    "bit_identical": false
+   },
+   "cache_after_decode": {
+    "kv_offsets_equal": true,
+    "kv_offsets": [
+     [
+      4112,
+      4112
+     ]
+    ],
+    "kv_k_max_abs": 0.0020170211791992188,
+    "kv_v_max_abs": 0.005772590637207031,
+    "conv_max_abs": 2.5033950805664062e-05,
+    "state_max_abs": 2.6702880859375e-05,
+    "state_max_rel": 6.031912167696372e-06,
+    "bit_identical": false
+   },
+   "decode_after": {
+    "positions": 16,
+    "max_abs": 4.57763671875e-05,
+    "max_rel": 2.0228329860646565e-06,
+    "bit_identical": false,
+    "argmax_identical": 16,
+    "margin_abs_diff_max": 1.33514404296875e-05,
+    "min_margin_at_mismatch": null
+   },
+   "all_positions": {
+    "positions": 4096,
+    "argmax_identical": 4096,
+    "margin_abs_diff_max": 0.0023546218872070312,
+    "margin_abs_diff_median": 2.002716064453125e-05,
+    "min_margin_at_mismatch": null
+   }
+  },
+  {
+   "pair": [
+    "full_c128",
+    "final_c256"
+   ],
+   "final_logits": {
+    "positions": 1,
+    "max_abs": 5.14984130859375e-05,
+    "max_rel": 2.41598588062059e-06,
+    "bit_identical": false,
+    "argmax_identical": 1,
+    "margin_abs_diff_max": 7.62939453125e-06,
+    "min_margin_at_mismatch": null
+   },
+   "cache_after_prefill": {
+    "kv_offsets_equal": true,
+    "kv_offsets": [
+     [
+      4096,
+      4096
+     ]
+    ],
+    "kv_k_max_abs": 0.0,
+    "kv_v_max_abs": 0.0,
+    "conv_max_abs": 0.0,
+    "state_max_abs": 0.0,
+    "state_max_rel": 0.0,
+    "bit_identical": true
+   },
+   "cache_after_decode": {
+    "kv_offsets_equal": true,
+    "kv_offsets": [
+     [
+      4112,
+      4112
+     ]
+    ],
+    "kv_k_max_abs": 0.0,
+    "kv_v_max_abs": 0.0,
+    "conv_max_abs": 0.0,
+    "state_max_abs": 0.0,
+    "state_max_rel": 0.0,
+    "bit_identical": true
+   },
+   "decode_after": {
+    "positions": 16,
+    "max_abs": 0.0,
+    "max_rel": 0.0,
+    "bit_identical": true,
+    "argmax_identical": 16,
+    "margin_abs_diff_max": 0.0,
+    "min_margin_at_mismatch": null
+   }
+  },
+  {
+   "pair": [
+    "full_c256",
+    "full_c512"
+   ],
+   "final_logits": {
+    "positions": 1,
+    "max_abs": 5.054473876953125e-05,
+    "max_rel": 2.3712454013498383e-06,
+    "bit_identical": false,
+    "argmax_identical": 1,
+    "margin_abs_diff_max": 1.52587890625e-05,
+    "min_margin_at_mismatch": null
+   },
+   "cache_after_prefill": {
+    "kv_offsets_equal": true,
+    "kv_offsets": [
+     [
+      4096,
+      4096
+     ]
+    ],
+    "kv_k_max_abs": 0.0020170211791992188,
+    "kv_v_max_abs": 0.005772590637207031,
+    "conv_max_abs": 4.470348358154297e-05,
+    "state_max_abs": 2.6702880859375e-05,
+    "state_max_rel": 5.943008707588303e-06,
+    "bit_identical": false
+   },
+   "cache_after_decode": {
+    "kv_offsets_equal": true,
+    "kv_offsets": [
+     [
+      4112,
+      4112
+     ]
+    ],
+    "kv_k_max_abs": 0.0020170211791992188,
+    "kv_v_max_abs": 0.005772590637207031,
+    "conv_max_abs": 2.5033950805664062e-05,
+    "state_max_abs": 2.6702880859375e-05,
+    "state_max_rel": 6.031912167696372e-06,
+    "bit_identical": false
+   },
+   "decode_after": {
+    "positions": 16,
+    "max_abs": 4.57763671875e-05,
+    "max_rel": 2.0228329860646565e-06,
+    "bit_identical": false,
+    "argmax_identical": 16,
+    "margin_abs_diff_max": 1.33514404296875e-05,
+    "min_margin_at_mismatch": null
+   },
+   "all_positions": {
+    "positions": 4096,
+    "argmax_identical": 4096,
+    "margin_abs_diff_max": 0.0023660659790039062,
+    "margin_abs_diff_median": 1.9073486328125e-05,
+    "min_margin_at_mismatch": null
+   }
+  },
+  {
+   "pair": [
+    "full_c256",
+    "final_c256"
+   ],
+   "final_logits": {
+    "positions": 1,
+    "max_abs": 5.14984130859375e-05,
+    "max_rel": 2.41598588062059e-06,
+    "bit_identical": false,
+    "argmax_identical": 1,
+    "margin_abs_diff_max": 7.62939453125e-06,
+    "min_margin_at_mismatch": null
+   },
+   "cache_after_prefill": {
+    "kv_offsets_equal": true,
+    "kv_offsets": [
+     [
+      4096,
+      4096
+     ]
+    ],
+    "kv_k_max_abs": 0.0,
+    "kv_v_max_abs": 0.0,
+    "conv_max_abs": 0.0,
+    "state_max_abs": 0.0,
+    "state_max_rel": 0.0,
+    "bit_identical": true
+   },
+   "cache_after_decode": {
+    "kv_offsets_equal": true,
+    "kv_offsets": [
+     [
+      4112,
+      4112
+     ]
+    ],
+    "kv_k_max_abs": 0.0,
+    "kv_v_max_abs": 0.0,
+    "conv_max_abs": 0.0,
+    "state_max_abs": 0.0,
+    "state_max_rel": 0.0,
+    "bit_identical": true
+   },
+   "decode_after": {
+    "positions": 16,
+    "max_abs": 0.0,
+    "max_rel": 0.0,
+    "bit_identical": true,
+    "argmax_identical": 16,
+    "margin_abs_diff_max": 0.0,
+    "min_margin_at_mismatch": null
+   }
+  },
+  {
+   "pair": [
+    "full_c512",
+    "final_c256"
+   ],
+   "final_logits": {
+    "positions": 1,
+    "max_abs": 6.29425048828125e-05,
+    "max_rel": 2.9528703107412807e-06,
+    "bit_identical": false,
+    "argmax_identical": 1,
+    "margin_abs_diff_max": 7.62939453125e-06,
+    "min_margin_at_mismatch": null
+   },
+   "cache_after_prefill": {
+    "kv_offsets_equal": true,
+    "kv_offsets": [
+     [
+      4096,
+      4096
+     ]
+    ],
+    "kv_k_max_abs": 0.0020170211791992188,
+    "kv_v_max_abs": 0.005772590637207031,
+    "conv_max_abs": 4.470348358154297e-05,
+    "state_max_abs": 2.6702880859375e-05,
+    "state_max_rel": 5.942996934494127e-06,
+    "bit_identical": false
+   },
+   "cache_after_decode": {
+    "kv_offsets_equal": true,
+    "kv_offsets": [
+     [
+      4112,
+      4112
+     ]
+    ],
+    "kv_k_max_abs": 0.0020170211791992188,
+    "kv_v_max_abs": 0.005772590637207031,
+    "conv_max_abs": 2.5033950805664062e-05,
+    "state_max_abs": 2.6702880859375e-05,
+    "state_max_rel": 6.031900612886712e-06,
+    "bit_identical": false
+   },
+   "decode_after": {
+    "positions": 16,
+    "max_abs": 4.57763671875e-05,
+    "max_rel": 2.0228322247899124e-06,
+    "bit_identical": false,
+    "argmax_identical": 16,
+    "margin_abs_diff_max": 1.33514404296875e-05,
+    "min_margin_at_mismatch": null
+   }
+  }
+ ],
+ "note": "real E0 tokens; no one-shot reference at 4,096; margins are top-1 minus top-2 logit computed on device per chunk; cache_after_prefill compares host snapshots taken before the decode steps, cache_after_decode the live caches after them; peak_in_process_bytes_after_prefill shares one allocator with the earlier arms' retained caches and is not the memory measurement (the mem receipts are)"
+}

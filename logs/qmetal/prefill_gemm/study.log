@@ -1,0 +1,64 @@
+== bench 02:43:08
+[bench] w4 17408x5120 (x128): T8 fused 3.59 / gemm 6.37 ms, T16 fused 7.14 / gemm 6.42 ms, T32 fused 14.24 / gemm 6.54 ms, T64 fused 28.50 / gemm 6.54 ms, T128 fused 57.00 / gemm 9.18 ms, T256 fused 110.68 / gemm 14.91 ms; gemm wins from T=16 (interp 15.080522290483444)
+[bench] parts w4 17408x5120: decode 3.57 ms (1 slab(s)), gemm 11.44 ms, path 14.87 ms
+[bench] numerics w4 17408x5120: decode bitwise True; T256 normal fused 1.60e-08 gemm 3.95e-07 (err/absdot)
+[bench] s16 5120x6144 (x64): T8 fused 0.82 / gemm 2.20 ms, T16 fused 1.66 / gemm 2.21 ms, T32 fused 3.26 / gemm 2.60 ms, T64 fused 6.53 / gemm 2.61 ms, T128 fused 13.21 / gemm 3.34 ms, T256 fused 26.49 / gemm 5.32 ms; gemm wins from T=32 (interp 25.89047446429148)
+[bench] parts s16 5120x6144: decode 1.54 ms (1 slab(s)), gemm 4.01 ms, path 5.28 ms
+[bench] numerics s16 5120x6144: decode bitwise True; T256 normal fused 1.46e-08 gemm 3.25e-07 (err/absdot)
+[bench] w4 5120x17408 (x64): T8 fused 3.37 / gemm 6.25 ms, T16 fused 6.51 / gemm 6.36 ms, T32 fused 12.97 / gemm 7.20 ms, T64 fused 26.13 / gemm 9.70 ms, T128 fused 52.08 / gemm 11.35 ms, T256 fused 103.76 / gemm 20.14 ms; gemm wins from T=16 (interp 15.786790209700868)
+[bench] parts w4 5120x17408: decode 3.61 ms (1 slab(s)), gemm 16.27 ms, path 19.94 ms
+[bench] numerics w4 5120x17408: decode bitwise True; T256 normal fused 9.22e-09 gemm 3.27e-07 (err/absdot)
+[bench] s16 10240x5120 (x48): T8 fused 1.33 / gemm 3.73 ms, T16 fused 2.68 / gemm 3.73 ms, T32 fused 5.27 / gemm 3.78 ms, T64 fused 10.55 / gemm 3.84 ms, T128 fused 21.29 / gemm 5.35 ms, T256 fused 42.36 / gemm 8.78 ms; gemm wins from T=32 (interp 25.25833676462209)
+[bench] parts s16 10240x5120: decode 2.30 ms (1 slab(s)), gemm 6.61 ms, path 8.73 ms
+[bench] numerics s16 10240x5120: decode bitwise True; T256 normal fused 1.55e-08 gemm 3.62e-07 (err/absdot)
+[bench] s16 6144x5120 (x48): T8 fused 0.78 / gemm 2.24 ms, T16 fused 1.61 / gemm 2.25 ms, T32 fused 3.13 / gemm 2.29 ms, T64 fused 6.38 / gemm 2.30 ms, T128 fused 12.86 / gemm 3.27 ms, T256 fused 24.99 / gemm 5.23 ms; gemm wins from T=32 (interp 25.575435285028092)
+[bench] parts s16 6144x5120: decode 1.48 ms (1 slab(s)), gemm 3.97 ms, path 5.25 ms
+[bench] numerics s16 6144x5120: decode bitwise True; T256 normal fused 1.46e-08 gemm 3.04e-07 (err/absdot)
+[bench] s16 1024x5120 (x32): T8 fused 0.14 / gemm 0.35 ms, T16 fused 0.27 / gemm 0.37 ms, T32 fused 0.52 / gemm 0.40 ms, T64 fused 1.11 / gemm 0.42 ms, T128 fused 2.21 / gemm 0.70 ms, T256 fused 4.23 / gemm 0.95 ms; gemm wins from T=32 (interp 25.428099230202527)
+[bench] parts s16 1024x5120: decode 0.46 ms (1 slab(s)), gemm 0.79 ms, path 0.94 ms
+[bench] numerics s16 1024x5120: decode bitwise True; T256 normal fused 1.35e-08 gemm 1.66e-07 (err/absdot)
+[bench] s16 12288x5120 (x16): T8 fused 1.60 / gemm 4.49 ms, T16 fused 3.24 / gemm 4.51 ms, T32 fused 6.36 / gemm 4.56 ms, T64 fused 12.96 / gemm 4.61 ms, T128 fused 25.98 / gemm 6.44 ms, T256 fused 51.44 / gemm 10.63 ms; gemm wins from T=32 (interp 25.319741648147556)
+[bench] parts s16 12288x5120: decode 2.73 ms (1 slab(s)), gemm 7.95 ms, path 10.65 ms
+[bench] numerics s16 12288x5120: decode bitwise True; T256 normal fused 1.85e-08 gemm 3.73e-07 (err/absdot)
+[bench] s16 248320x5120 (x1): T8 fused 32.92 / gemm 91.24 ms, T16 fused 66.30 / gemm 91.81 ms, T32 fused 131.83 / gemm 93.08 ms, T64 fused 264.11 / gemm 94.74 ms, T128 fused 528.04 / gemm 134.86 ms, T256 fused 1055.11 / gemm 219.00 ms; gemm wins from T=32 (interp 25.070816489920205)
+[bench] parts s16 248320x5120: decode 52.74 ms (13 slab(s)), gemm 0.00 ms, path 220.83 ms
+[bench] numerics s16 248320x5120: decode bitwise True; T256 normal fused 1.45e-08 gemm 3.52e-07 (err/absdot)
+[bench] summary {"gemm_wins_from_T": {"w4 [17408, 5120]": 16, "s16 [5120, 6144]": 32, "w4 [5120, 17408]": 16, "s16 [10240, 5120]": 32, "s16 [6144, 5120]": 32, "s16 [1024, 5120]": 32, "s16 [12288, 5120]": 32, "s16 [248320, 5120]": 32}, "crossover_T_interpolated": {"w4 [17408, 5120]": 15.080522290483444, "s16 [5120, 6144]": 25.89047446429148, "w4 [5120, 17408]": 15.786790209700868, "s16 [10240, 5120]": 25.25833676462209, "s16 [6144, 5120]": 25.575435285028092, "s16 [1024, 5120]": 25.428099230202527, "s16 [12288, 5120]": 25.319741648147556, "s16 [248320, 5120]": 25.070816489920205}, "worst_gemm_err_over_absdot": 3.119129916878781e-06, "worst_fused_err_over_absdot": 2.7297250184852643e-07, "decode_bitwise_equal_all": true}; wrote logs/qmetal/prefill_gemm/bench_ab14f862.json
+== skip floor (ONLY=bench mem2 ctx4k_hybrid)
+== skip ab (ONLY=bench mem2 ctx4k_hybrid)
+== skip mem ctx 512 gemm 0 (ONLY=bench mem2 ctx4k_hybrid)
+== skip mem ctx 512 gemm 1 (ONLY=bench mem2 ctx4k_hybrid)
+== skip mem ctx 1024 gemm 0 (ONLY=bench mem2 ctx4k_hybrid)
+== skip mem ctx 1024 gemm 1 (ONLY=bench mem2 ctx4k_hybrid)
+== skip mem ctx 2048 gemm 0 (ONLY=bench mem2 ctx4k_hybrid)
+== skip mem ctx 2048 gemm 1 (ONLY=bench mem2 ctx4k_hybrid)
+== skip mem ctx 4096 gemm 0 (ONLY=bench mem2 ctx4k_hybrid)
+== skip mem ctx 4096 gemm 1 (ONLY=bench mem2 ctx4k_hybrid)
+== skip qual (ONLY=bench mem2 ctx4k_hybrid)
+== mem2 ctx 512 gemm1 02:48:21
+[head mem] ctx 512 chunk 256 head final: prefill 12.8s (40.06 tok/s), peak 11.94 GB, active after 9.26 GB, cache after 4.73 GB (footprint 13.99), peak rss 11.16 GB, decode median 129.2 ms, kv offset 512 then 528
+== mem2 ctx 1024 gemm1 02:48:44
+[head mem] ctx 1024 chunk 256 head final: prefill 25.1s (40.79 tok/s), peak 12.02 GB, active after 9.12 GB, cache after 5.15 GB (footprint 14.27), peak rss 11.19 GB, decode median 128.4 ms, kv offset 1024 then 1040
+== mem2 ctx 2048 gemm1 02:49:19
+[head mem] ctx 2048 chunk 256 head final: prefill 50.2s (40.80 tok/s), peak 12.19 GB, active after 9.26 GB, cache after 6.05 GB (footprint 15.30), peak rss 11.21 GB, decode median 129.5 ms, kv offset 2048 then 2064
+== mem2 ctx 4096 gemm1 02:50:19
+[head mem] ctx 4096 chunk 256 head final: prefill 101.1s (40.51 tok/s), peak 12.52 GB, active after 9.52 GB, cache after 9.76 GB (footprint 19.28), peak rss 11.31 GB, decode median 131.8 ms, kv offset 4096 then 4112
+== mem2 ctx 4096 gemm1_cachelimit 02:52:10
+[head mem] ctx 4096 chunk 256 head final: prefill 104.9s (39.04 tok/s), peak 12.52 GB, active after 9.60 GB, cache after 2.15 GB (footprint 11.75), peak rss 11.19 GB, decode median 131.5 ms, kv offset 4096 then 4112
+== mem2 ctx 1024 gemm0 02:54:06
+[head mem] ctx 1024 chunk 256 head final: prefill 117.9s (8.69 tok/s), peak 11.16 GB, active after 9.32 GB, cache after 2.40 GB (footprint 11.72), peak rss 11.45 GB, decode median 128.3 ms, kv offset 1024 then 1040
+== mem2 ctx 4096 gemm0 02:56:14
+[head mem] ctx 4096 chunk 256 head final: prefill 472.4s (8.67 tok/s), peak 11.56 GB, active after 9.52 GB, cache after 7.21 GB (footprint 16.73), peak rss 11.56 GB, decode median 131.6 ms, kv offset 4096 then 4112
+== ctx4k_hybrid 03:04:16
+[ctx4k] full_c128: 121.2 s (33.79 tok/s), peak 14.53 GB, kv offset 4096 then 4112
+[ctx4k] full_c256: 104.6 s (39.15 tok/s), peak 16.41 GB, kv offset 4096 then 4112
+[ctx4k] full_c512: 103.9 s (39.43 tok/s), peak 18.80 GB, kv offset 4096 then 4112
+[ctx4k] final_c256: 101.2 s (40.49 tok/s), peak 17.68 GB, kv offset 4096 then 4112
+[ctx4k] full_c128 vs full_c256: final logits max abs 3.43e-05 rel 1.6e-06 argmax 1/1; after prefill: state rel 0.0e+00 kv 0.0e+00 offsets [[4096, 4096]]; decode 16/16 max abs 0.00e+00; all positions argmax 4096/4096
+[ctx4k] full_c128 vs full_c512: final logits max abs 5.05e-05 rel 2.4e-06 argmax 1/1; after prefill: state rel 5.9e-06 kv 5.8e-03 offsets [[4096, 4096]]; decode 16/16 max abs 4.58e-05; all positions argmax 4096/4096
+[ctx4k] full_c128 vs final_c256: final logits max abs 5.15e-05 rel 2.4e-06 argmax 1/1; after prefill: state rel 0.0e+00 kv 0.0e+00 offsets [[4096, 4096]]; decode 16/16 max abs 0.00e+00
+[ctx4k] full_c256 vs full_c512: final logits max abs 5.05e-05 rel 2.4e-06 argmax 1/1; after prefill: state rel 5.9e-06 kv 5.8e-03 offsets [[4096, 4096]]; decode 16/16 max abs 4.58e-05; all positions argmax 4096/4096
+[ctx4k] full_c256 vs final_c256: final logits max abs 5.15e-05 rel 2.4e-06 argmax 1/1; after prefill: state rel 0.0e+00 kv 0.0e+00 offsets [[4096, 4096]]; decode 16/16 max abs 0.00e+00
+[ctx4k] full_c512 vs final_c256: final logits max abs 6.29e-05 rel 3.0e-06 argmax 1/1; after prefill: state rel 5.9e-06 kv 5.8e-03 offsets [[4096, 4096]]; decode 16/16 max abs 4.58e-05
+[ctx4k] wrote logs/qmetal/prefill_gemm/ctx4k_hybrid_ab14f862.json
+== study done 03:11:51

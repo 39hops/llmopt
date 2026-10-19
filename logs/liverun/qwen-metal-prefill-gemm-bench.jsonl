@@ -1,0 +1,2 @@
+{"event": "armed", "run_id": "qwen-metal-prefill-gemm-bench", "pid": 22762, "launch_commit": "9c42790174daf419ccd90ae37594d318c82db698", "launch_commit_short": "9c427901", "worktree_role": "main", "worktree_name": "llmopt", "cwd_relative": ".", "started_utc": "2026-10-19T02:00:56+00:00", "dirty_at_arm": false, "sentinel": ".git/liverun.lock"}
+{"event": "disarmed", "run_id": "qwen-metal-prefill-gemm-bench", "pid": 22762, "rc": 0, "ended_utc": "2026-10-19T02:06:09+00:00", "sentinel": ".git/liverun.lock"}

@@ -255,3 +255,42 @@ prefill, keys and values within 3.1e-3 absolute, 4,096 of 4,096 argmax,
 3080 mirrored at 8b40658d this evening (it answered once); the study
 commits still need the fast-forward. Mac gate and Actions results are in
 the booking commit message.
+
+## Addendum (2026-10-19, night): decode-once GEMM prefill, built and qualified
+
+Code: llmopt/lab/qmetal.py decode kernels and `_gemm_decoded` behind
+`_Resident.prefill_gemm` (QMETAL_PREFILL_GEMM, default off), per-codec
+thresholds W4 16 / S16 32 from the measured crossover, `gemm_ok`
+routing of exceptional or nonfinite matrices to the fused kernels,
+`last_path` and call counters; llmopt/lab/qprefill.py (chunked prefill,
+final or full head). Fused kernels untouched (diff e367f1ac..HEAD).
+Tests: 251 in test_qmetal under all four generations, 3 in
+test_qprefill.
+
+Measured (receipts under logs/qmetal/prefill_gemm/ and
+logs/qwen_metal_qual/C_gemm/): census (one-shot, full head) 4,722/4,722
+argmax-identical to the CPU, replay yields equal, error statistics at the v4 level; A/B at
+1,024 real tokens all argmaxes identical, margins within 7.2e-4,
+recurrent state 1.2e-5 relative, decode 16/16; hybrid 4K chunks
+128/256 caches bit-identical, 512 at 5.9e-6; prefill 40.3 to 40.9
+tok/s at 512 to 4,096 (fused 8.67 to 8.69), chunk 6.73 s (fused
+30.56), decode after unchanged; in-use peak 11.9 to 12.5 GB (fused
+11.1 to 11.6); device footprint with the allocator pool 14.0 to 19.3
+GB (fused 11.7 to 16.7), 11.7 GB at 4K with mx.set_cache_limit(2 GiB)
+for 3.6 percent of throughput. GEMM reduction error 3 to 30x the fused
+kernels' per matrix (3.4e-6 of the absolute dot at worst), the test
+bound 1e-5 absdot.
+
+Review trail: Opus 5.5 code review before booking (lazy retention,
+decode arithmetic, signed zero, thresholds, projection methodology);
+its findings drove the counters, the footprint fields, the per-slab
+head timing, the T = 16/32 numerics and the hybrid 4K arm; the three
+chains ran under liverun qwen-metal-prefill-gemm-bench, -study and
+-study-2 (a stage added to the runner while chain 1 was running was
+picked up by bash and killed at rc 143; it reran in chain 2 from the
+committed tree).
+
+Recommendation: hybrid as the prefill default with a 2 GiB cache limit
+in the serving process; fused stays the decode path; the switch keys on
+row count (batched or speculative-verify calls of 16 or more rows would
+need their own qualification). Default not flipped in this commit.

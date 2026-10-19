@@ -152,6 +152,8 @@ def main() -> None:
     smoke = os.environ.get("SMOKE") == "1"
     prov["smoke"] = smoke
     out = os.environ.get("OUT", f"logs/qmetal/{'prefill_smoke' if smoke else 'prefill'}_{mode}_{prov['commit']}.json")
+    if os.environ.get("SMOKE") == "1" and not out.startswith(("/tmp/", "/private/tmp/")) and "_smoke" not in out:
+        raise SystemExit(f"REFUSING: SMOKE=1 with a real receipt path {out}")
     if os.path.exists(out):
         raise SystemExit(f"REFUSING: {out} exists")
     os.makedirs(os.path.dirname(out), exist_ok=True)

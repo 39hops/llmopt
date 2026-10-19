@@ -617,7 +617,7 @@ Census: library 199, reproduce-pinned 9, results-cited 519, spec-cited 74, tool-
 | qwen | qwen_metal_prefill_gemm_study.sh | UNCITED | — | — | — | — | — | — |
 | qwen | qwen_metal_prefill_head.py | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | 2 | 1 | — |
 | qwen | qwen_metal_prefill_study.sh | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
-| qwen | qwen_metal_qual.py | library | RESULTS, specs | RESULTS×4, specs×2 | 5 | 1 | — | — |
+| qwen | qwen_metal_qual.py | library | RESULTS, specs | RESULTS×6, specs×2 | 5 | 1 | — | — |
 | qwen | qwen_metal_tower.py | library | RESULTS, specs | RESULTS×6, specs×1 | — | 1 | 1 | — |
 | qwen | qwen_mips_census.py | results-cited | RESULTS | RESULTS×5 | — | — | — | — |
 | qwen | qwen_model1_score.py | library | RESULTS, specs | RESULTS×5, specs×2 | — | 3 | 4 | — |

@@ -8,9 +8,12 @@ DeltaNet layer, KVCache with offset per attention layer); every chunk's
 outputs and every cache array are evaluated before the next chunk is
 built, so the lazy graph never spans two chunks. The vocabulary head is
 applied to the last hidden position only in the generation path
-(head="final"; bit-identical final logits, caches and decode against the
-full projection, QWEN-METAL-PREFILL-STUDY-0 section 5) and to every
-position in the research path (head="full", the per-position logits for
+(head="final"; on the fused kernels bit-identical final logits, caches
+and decode against the full projection, QWEN-METAL-PREFILL-STUDY-0
+section 5; under the decode-once GEMM path the caches and decode stay
+bit-identical while the final logits differ at the GEMM's reduction
+level, QWEN-METAL-PREFILL-GEMM-0) and to every position in the research
+path (head="full", the per-position logits for
 qualification and E0 comparisons). The body (embedding, layers with
 their caches, final norm) runs over the whole chunk in both.
 

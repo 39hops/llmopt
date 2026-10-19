@@ -80155,3 +80155,319 @@ split law but were not exercised by these matrices; the cache-traffic
 sentence in section 1 is a reading of the kernel source; the
 4,096-token comparison has no one-shot reference and says nothing
 beyond 4,096 tokens.
+
+## OBSERVATION QWEN-METAL-PREFILL-GEMM-0: the decode-once float32 GEMM prefill path for the arm C Metal tower, measured end to end: token-identical to the CPU arm C census at all 4,722 positions of the 24 E0 prompts (one-shot prefill of each context through the GEMM path, full head) with the greedy replay yields equal to the CPU at every k and the logit and margin error statistics at the level of the v4 reference census (top-16 p99 1.3e-4 against 1.1e-4); prefill throughput 40.3 to 40.9 tokens per second at 512, 1,024, 2,048 and 4,096 tokens against 8.67 to 8.69 on the fused path (4.6 to 4.7x), the 256-token chunk 6.73 s against 30.56 s, in-use peak 11.9 to 12.5 GB against 11.1 to 11.6 GB on the chunk-256 generation path and device footprint with the allocator pool 14.0 to 19.3 GB against 11.7 to 16.7 GB, 11.7 GB at 4,096 tokens under a 2 GiB cache limit for 3.6 percent of the throughput (one process per row), the resumed decode 127.7 to 131.7 ms per token in both arms; against the fused control at 1,024 real tokens all 1,024 argmaxes identical, per-position margins within 7.2e-4 nats, final logits within 2.8e-6 relative, recurrent state within 1.2e-5 relative, 16 decode steps 16 of 16 within 3.6e-6 relative; the on-device decode is bit-equal to qcodec's decode on one tensor of each of the eight distinct shapes (head: first 4,096 rows), the GEMM path wins from 16 activations on W4 and 32 on S16 (thresholds set from that), and its reduction error is 2.6 to 30 times the fused kernels' at T of 16 and above (3.4e-6 of the absolute dot at worst, within 3.5e-6 of the largest head output) (2026-10-18, Mac; off by default, QMETAL_PREFILL_GEMM=1; fused kernels, codec, chunk-256 default and every prior receipt untouched)
+
+Design (llmopt/lab/qmetal.py, commits 9c427901 to ab14f862). For
+an activation tile of at least 16 rows (W4) or 32 rows (S16) the
+resident decodes its frozen payload once to float32 on the device, in
+row slabs of at most 400 MiB (one slab for every body matrix; the
+248,320-row head in 12 slabs of 20,480 rows and one of 2,560), multiplies each slab with
+mx.matmul and concatenates; the decoded slab is a temporary referenced
+only by its matmul node and no decoded weight is kept on the resident
+(it holds gemm_ok, last_path and the two call counters). The decode
+kernel (one thread per code word, 16 W4 or 8 S16 weights) writes the
+codebook or level value times the block scale 2^(e-127) by bit
+construction; for the normal exponent class [31, 191) that product is
+an exact float32 normal number or a signed zero, and the tests pin bit
+equality with qcodec's decode including the sign of zero. Any matrix
+with an exceptional block (scale below 2^-96, at 2^64 and above, or
+the infinite 255) or a nonfinite table entry, and every tile below the
+threshold, runs the fused kernels unchanged, so the exceptional-value
+law lives where it always did (arm C has no such matrix: exponent
+bytes 111 to 128, scanned over every W4 and S16 tensor). The switch is
+a class attribute (QMETAL_PREFILL_GEMM at import, default off) and the
+resident records the path of every call (last_path, per-path call
+counters, qmetal.path_counts). The fused kernels v1 to v4 and their
+dispatch are byte-for-byte what QWEN-METAL-W4-V4-0 qualified (git
+diff e367f1ac..HEAD adds the decode sources, module constants,
+path_counts and docstring text, the constructors' eligibility flag,
+the branch at the top of _run and the counter and last_path lines; the
+fused kernel sources, _kernel and the fused tile loop are unchanged;
+tests pin that the switch-off output is bit-identical across a GEMM
+call).
+llmopt/lab/qprefill.py adopts the chunked prefill (final-position head
+for generation, full head for research; tests/test_qprefill.py).
+
+Numerical gates before the model (tests/test_qmetal.py, 252 collected and
+passing under all four kernel generations; and the real-matrix bench
+logs/qmetal/prefill_gemm/bench_9c427901.json, rerun as bench_ab14f862.json
+with T = 16 and 32 added to the numerics and the head slabs timed one at
+a time; the thresholds and crossovers reproduce, 15.1 to 15.8 and 25.1
+to 25.9):
+  * decode_f32 against qcodec's decode cast to float32: bit-equal and
+    sign-of-zero-equal on random payloads over exponent pools
+    {31, 100, 190} and {40, 127, 150} for both codecs, whole matrix and
+    row slabs, on a W4 codebook holding +0.0, -0.0, 1, -1, and on all
+    eight distinct real arm C shapes (the head's first 4,096 rows),
+    decode_bitwise_equal_all true.
+  * exceptional exponents {0}, {30, 100}, {191, 120}, {255, 120} and
+    nonfinite table entries: gemm_ok false, the multi-token output is
+    the fused-only output bit for bit, the fused parity suite unchanged.
+  * GEMM against the float64 oracle on random payloads at T = 16, 64,
+    256 and 40 (C = 768 to 17,408): within 1e-5 |ref| + 1e-5 absdot
+    (the fused regime is 2e-6 absdot); thresholds 15/16 and 31/32
+    pinned; eight-row slabs and one slab each within the bound; 1-d squeeze; nothing
+    held on the resident.
+  * Real matrices (bench numerics, T = 1, 16, 32, 64, 256, normal and
+    heavy-tailed activations, float64 oracle on the decoded weights):
+    fused err/absdot 7e-9 to 2.7e-7, GEMM err/absdot 1.8e-8 to 3.4e-6;
+    the GEMM error is larger than the fused kernel's in 125 of 128
+    cells over the two receipts (the exceptions at T = 1, below the
+    production thresholds), by 1.1 to 5.5x at T = 1 and 2.6 to 30x at
+    T of 16 and above; from T = 16 to T = 256 it moves without a
+    consistent direction (up to 9x higher in some heavy-tailed cells,
+    flat or lower in others; one synthetic draw per cell), so no trend
+    with T is claimed; relative to the largest output the GEMM path is
+    within 5.6e-6 everywhere. In logit units the census top-16 error
+    (max 1.25e-3, below) is 16x below the smallest margin bin edge
+    (0.02).
+So the hybrid does not meet the fused kernels' parity regime (2e-6
+absdot) and is not expected to; the model-level bar is token identity
+against the CPU census, below.
+
+Crossover and parts (bench_9c427901.json; pipelined per-launch times
+of the production resident with the path switched per call, QUEUE 32,
+4 for the head). GEMM over fused, by T = 8 / 16 / 32 / 64 / 128 / 256:
+  W4 17408x5120   1.85 / 0.91 / 0.46 / 0.23 / 0.16 / 0.13   wins from 16 (crossover 15.2)
+  W4 5120x17408   1.85 / 0.98 / 0.56 / 0.37 / 0.22 / 0.19   16 (15.8)
+  S16 10240x5120  2.84 / 1.39 / 0.72 / 0.36 / 0.25 / 0.20   32 (25.3)
+  S16 6144x5120   2.88 / 1.41 / 0.73 / 0.37 / 0.25 / 0.21   32 (25.7)
+  S16 5120x6144   2.70 / 1.33 / 0.80 / 0.39 / 0.24 / 0.21   32 (26.0)
+  S16 12288x5120  2.80 / 1.40 / 0.72 / 0.35 / 0.25 / 0.20   32 (25.3)
+  S16 1024x5120   2.58 / 1.40 / 0.77 / 0.42 / 0.32 / 0.22   32 (26.2)
+  S16 head        2.74 / 1.40 / 0.71 / 0.36 / 0.26 / 0.21   32 (25.2)
+At T = 256: W4 gate 110.7 ms fused against 14.9 ms (decode 3.4 + GEMM
+11.2), W4 down 103.5 against 20.0 (parts 3.4 + 16.5), S16 qkv 42.7 against
+8.7, S16 out 26.1 against 5.3, the head 1,055 against 223 (13 slabs of 20,480
+rows; decode 52.7 ms for all 13 with one slab live at a time in the
+rerun, 50.8 in the first receipt, where the timing held all 13 slabs,
+5.1 GB, at once). Thresholds
+set per codec from this receipt (GEMM_MIN_T_BY_CODEC = {w4: 16,
+s16: 32}).
+
+Full tower, 256-token chunk (MODE floor under the hybrid, three
+rotated rounds; logs/qmetal/prefill_gemm/floor_hybrid_e8f1a3af.json):
+full 6.73 s (38 tokens per second with every position projected), head
+replaced 6.40, W4 MLP replaced 3.77, all fused linears replaced 2.25.
+Matrices 4.49 s (67 percent; the study projected 4.72), W4 MLP 2.97 s,
+full head 0.34 s, floor 2.25 s. Against the fused chunk of 30.56 s
+(prefill_floor_7f464353.json, a separate process and commit, not an
+in-run pair): 4.5x; the study's projection of about 6.9 s and about 37 tokens per
+second was met (6.73 s).
+
+A/B at 1,024 real E0 tokens, chunk 256, same process, the path flipped
+on the resident class between arms, decode steps on the fused path in
+every arm, cache snapshots before decoding
+(logs/qmetal/prefill_gemm/ab_e8f1a3af.json; one round, fixed order
+fused_full, gemm_full, fused_final, gemm_final; the arm's path is the
+flag the driver set, evidenced by the walls and by the bit identities
+below rather than by counters, which did not exist at e8f1a3af):
+  walls: fused full 122.5 s (8.36 tokens per second), GEMM full 26.4
+  (38.8), fused final 118.2 (8.66), GEMM final 25.6 (40.1).
+  fused against GEMM, full head: all 1,024 per-position argmaxes
+  identical, margins within 7.2e-4 nats (median 2.7e-5); final logits
+  within 6.5e-5 absolute (2.8e-6 relative), final margin 5.7e-6;
+  after prefill the recurrent state within 1.2e-5 relative (3.6e-5
+  absolute) over the 48 DeltaNet layers, conv state within 9.5e-5,
+  keys within 1.7e-3 and values within 1.2e-2 absolute, offsets 1,024
+  in both; 16 teacher-forced decode steps 16 of 16 argmax, logits
+  within 1.2e-4 absolute (3.6e-6 relative), margins within 7.2e-5.
+  fused final against GEMM final: the same cache figures (the body is
+  the same computation), final logits within 2.0e-6 relative.
+  fused full against fused final: bit-identical as before. GEMM full
+  against GEMM final: caches and decode bit-identical, final logits
+  3.5e-5 apart (1.5e-6 relative): under the hybrid the full-head arm
+  projects 256 rows through the GEMM and the final-head arm one row
+  through the fused kernel, so the bit identity of
+  QWEN-METAL-PREFILL-STUDY-0 section 5 is a fused-path property and
+  does not transfer. The census below qualifies the one-shot full-head
+  GEMM path at 128 to 339 tokens; the chunked final-head generation
+  path is tied to it by this pair (fused_final against gemm_final) and
+  by the 4,096-token chunk pairs, not by a CPU comparison of its own.
+For scale: against the chunk-512 drift of the fused path at 4,096
+tokens (a different context and pairing) the GEMM path's drift against
+fused is about 7x in the recurrent state (1.2e-5 against 1.6e-6), 3.4x
+in the final logits and 1.1x in the margins.
+
+Prefill throughput, peak memory and resumed decode, one fresh process
+per row, chunk 256, final-position head, synthetic ids
+(logs/qmetal/prefill_gemm/mem_ctx*_chunk256_final_gemm{0,1}.json):
+  tokens   fused s   tok/s   peak GB   GEMM s   tok/s   peak GB   decode ms (fused / GEMM)
+  512        59.0    8.67     11.09     12.7    40.25    11.94     127.7 / 127.7
+  1,024     117.9    8.69     11.16     25.0    40.92    12.02     128.1 / 128.2
+  2,048     235.9    8.68     11.29     50.2    40.79    12.19     129.3 / 129.4
+  4,096     472.3    8.67     11.56    101.0    40.54    12.52     131.3 / 131.7
+Peak RSS 11.15 to 11.55 GB in every row; active memory after prefill
+9.1 to 9.6 GB; KV offsets context then context + 16 in every row. The
+hybrid's in-use peak is 0.85 to 0.97 GB above the fused path's,
+consistent with two to three decoded slabs of 356 MB live at once
+under MLX's scheduling (arithmetic, not observed; no explicit
+evaluation boundary, no `del`, no synchronisation inside the model
+call). The decode step after prefill
+is unchanged (the decode uses the fused kernels at T = 1 in both arms).
+
+Device footprint (the in-use figure above does not count the
+allocator's pool of freed buffers; second chain, mem2 rows, active +
+cache after prefill; logs/qmetal/prefill_gemm/mem2_*.json):
+  tokens   hybrid cache GB   footprint GB   fused cache GB   footprint GB
+  512          4.73            13.99            not run
+  1,024        5.15            14.27            2.40            11.72
+  2,048        6.05            15.30            not run
+  4,096        9.76            19.28            7.21            16.73
+  4,096 with mx.set_cache_limit(2 GiB): hybrid cache 2.15, footprint
+  11.75, prefill 104.9 s (39.0 tokens per second against 40.5
+  unlimited, 3.6 percent), decode 131.5 ms, in-use peak unchanged.
+So the pool, not the in-use peak, is what approaches the 20 GB line at
+4,096 tokens, on the fused path too (16.7 GB footprint, 7.2 GB pool);
+the hybrid adds about 2.6 GB of pool at 4,096 and 2.75 at 1,024 (the
+only shorter context with a fused row); a 2 GiB cache limit caps the
+pool at 2.15 GB (from 9.76) for 3.6 percent of the prefill throughput
+and nothing of the decode (one hybrid process at 4,096; no fused arm
+ran with the limit). Each mem and mem2 row is one process (n = 1). The limit is a
+process-wide MLX setting and belongs to the caller (the drivers take
+CACHE_LIMIT); it is the recommended companion of the hybrid on this
+machine, not part of the resident.
+
+E0 census through the hybrid (scratch/qwen_metal_qual.py with
+QMETAL_PREFILL_GEMM=1, LONG_CTX 512,1024; receipt
+logs/qwen_metal_qual/C_gemm/summary.json, liverun
+qwen-metal-prefill-gemm-study at e8f1a3af, tree clean at arm; the
+per-position rows in positions.jsonl, untracked): every prompt's
+context is prefilled in one call (128 to 339 tokens, prompt plus
+rollout; the cached-decode prompts are 62 and 64), the research path,
+so by the threshold law every body matrix and the full-vocabulary head
+take the GEMM path (gemm_ineligible_matrices 0; the census ran before
+the call counters existed, so this is the design, not a count), and
+compared position by position with the CPU arm C census rows.
+  * argmax identical 4,722 of 4,722 (24 of 24 prompts), including all
+    15 positions with CPU margin under 0.02 and the 41 between 0.02
+    and 0.05 (56 under 0.05), no
+    mismatch list; agreement with the teacher 0.8291 on Metal and on
+    the CPU, no flips.
+  * top-16 logit error against the CPU: max 1.25e-3, p99 1.28e-4,
+    median 3.6e-5 absolute; max 5.1e-5, p99 5.2e-6 relative (the v4
+    reference census QWEN-METAL-W4-V4-0: 1.02e-3, 1.14e-4, 4.6e-5;
+    3.4e-5, 4.5e-6).
+  * margin difference against the CPU: max 2.3e-4 nats, p99 8.6e-5,
+    median 1.7e-5 (v4: 3.0e-4, 1.0e-4, 2.5e-5); sup-error shift
+    against the teacher max 5.7e-4, median 7.2e-6 (v4: 6.6e-4, 7.7e-6).
+  * greedy replay yields equal to the CPU's at every k (k = 4
+    concatenated 3.4695, per stream 3.4267; identical digits to the v4
+    census).
+  * cached decode (fused, T = 1) against the one-shot forward of the
+    whole sequence (now GEMM): 256 of 256 argmax on both chat prompts,
+    max logit difference 1.96e-3 and 4.3e-4 (v4, fused against fused:
+    2.1e-4 and 2.1e-4; the increase is attributed to the two reduction
+    orders meeting across the prefill-decode boundary), 127.6 ms per
+    step.
+  * prefill of the census contexts 31.1 tokens per second overall (the
+    v4 census: 5.5, but that was the all-v4 build before per-tile
+    dispatch; the fused baseline with dispatch is 8.67 to 8.69 in the
+    mem rows); one-shot 512 and 1,024 tokens 34.7 and 38.5 tokens per
+    second with peaks 15.9 and 17.4 GB against the v4 census's 12.7
+    and 15.5 (one-shot full logits, the research path: on it the GEMM
+    costs 2.0 to 3.6 GB more in-use memory, not 0.9); wall 360 s and
+    peak RSS 14.4 GB (the v4 census ran LONG_CTX to 4,096 and is not
+    a like-for-like wall).
+  Process note: while this stage ran, the runner script was edited on
+  disk (a stage added for the second chain); bash reads a running
+  script incrementally, so after the census it ran a stray qual (which
+  the refuse-if-exists guard stopped) and the new stage from a dirty
+  tree, which was killed (rc 143; liverun disarmed with that code;
+  study_chain1.log and liverun_wrapper_chain1.log are the record). The
+  census receipt predates the stray run and the killed stage wrote no
+  receipt; the stage reran in the second chain from a clean tree.
+So the model-level bar is met: token identity with the CPU oracle at
+every census position, the same replay yields, and the error
+statistics at the level of the fused kernels' own census.
+
+Chunk sizes at 4,096 real tokens under the hybrid (MODE ctx4k with
+QMETAL_PREFILL_GEMM=1, second chain at ab14f862; receipt
+logs/qmetal/prefill_gemm/ctx4k_hybrid_ab14f862.json; cache snapshots
+before decoding, decode on the fused path): full head at chunks 128,
+256, 512 and the final head at 256; walls 121.2, 104.6, 103.9 and
+101.2 s (33.8, 39.1, 39.4 and 40.5 tokens per second; chunk 128 is
+slower on the hybrid, consistent with the bench's lower GEMM
+efficiency at T = 128 than at 256, with twice the chunk count not
+separated); the cumulative path counters read as deltas confirm every
+body matrix call took the GEMM (12,832 GEMM calls in the first arm,
+6,416 and 3,208 in the next two, 6,400 plus 16 fused one-row head
+calls in the final-head arm; the fused calls between arms are the 16
+decode steps times 401). No fused arm and no one-shot reference at
+4,096.
+  * 128 against 256: the caches after prefill and after decode and
+    the 16 decode steps are bit-identical (consistent with the body
+    matrices' GEMM giving the same per-row result at M = 128 and 256
+    on this MLX; inferred from the cache identity, not tested per
+    matrix); all 4,096 argmaxes identical; per-position margins
+    within 1.1e-4 (median 0.0) and the final logits 3.4e-5 apart
+    (1.6e-6 relative), attributed by elimination to the head's
+    projection at M = 128 against M = 256.
+  * 256 against the final-head arm at 256: caches and decode
+    bit-identical; final logits 5.1e-5 apart (2.4e-6 relative), the
+    head at M = 256 through the GEMM against one row through the
+    fused kernel (as in the A/B).
+  * 512 against 128 or 256: all 4,096 argmaxes identical, margins
+    within 2.4e-3 nats (median 2.0e-5); final logits within 5.1e-5
+    (2.4e-6 relative); recurrent state within 5.9e-6 relative, conv
+    4.5e-5, keys 2.0e-3 and values 5.8e-3 absolute, offsets 4,096;
+    decode 16 of 16, logits within 4.6e-5 (2.0e-6 relative); 512
+    against the final-head arm 6.3e-5 (3.0e-6 relative).
+Against the fused path's own chunk-512 drift at 4,096 the hybrid's is
+3.7x in the recurrent state (5.9e-6 against 1.6e-6), 3.6x in the
+margins, 2.9x in the final logits, 1.8 to 1.9x in keys and values. M
+and chunk count are confounded at one context (the prior study's
+fence applies); chunk 256 stays the default because it is the
+configuration the A/B and the memory rows qualified, not because it
+is fastest (512 was 39.4 against 39.1).
+
+Verdict. The hybrid is qualified for the generation prefill of
+arm C on this machine: token-identical to the CPU oracle at all 4,722
+census positions (one-shot, full head) with the replay yields equal,
+argmax-identical to the fused path at all 1,024 positions of the
+1,024-token A/B with the chunked final-head path tied to that pair,
+identical across chunks 128, 256 and 512 at all 4,096 positions of the
+hybrid-only 4,096-token run, 4.6 to 4.7x the prefill throughput at
+every context with the decode step unchanged and the in-use peak 0.9
+GB higher on the chunk-256 generation path. Recommendation: make it
+the default for prefill, with two conditions. First, pair it with a
+2 GiB allocator cache limit in the process that runs 4,096-token
+prompts (footprint 19.3 GB without it, 11.7 with, 3.6 percent of the
+throughput); second, keep the fused path as the decode and
+small-tile path it is, and note that the switch keys on the row
+count of a call, so a future batched or speculative-verify call of
+16 or more rows would take the GEMM too and would need its own
+qualification before that is relied on. Two booked bit identities of
+the fused path do not transfer and were not expected to: the
+final-head against full-head identity and the chunk-128 against
+chunk-256 identity of the per-position logits hold for the caches
+and the decode but not for the head's projection, because the head
+runs the GEMM at the chunk's M in the full-head research mode and
+the fused kernel on one row in the generation mode. The research
+(full-logits) mode is for qualification and E0 comparisons and
+stays separate from the generation path. The default flip itself is
+Artin's call and is not made in this commit; a flip is a one-line
+change of PREFILL_GEMM's default plus the chunked-prefill drivers'
+expectations.
+
+Fences. Single machine (Apple M3 Pro, mlx 0.31.2, mlx-lm 0.31.3) and a
+single artifact; float32 activations; the GEMM's numerics depend on
+MLX's matmul kernel selection and may move with the MLX version (the
+census and the tests are the guard); the hybrid switches on the row
+count of any call, so a batched or speculative-verify call of 16 or 32
+rows would also take it (no current qmetal caller does that; the
+census and A/B decode steps are single-row and fused); the census is
+the one-shot full-head research path, the chunked final-head
+generation path is qualified through the A/B pair and the 4,096-token
+chunk pairs; the 4,096-token run has no fused arm and no one-shot
+reference; the A/B is one round in a fixed order; every mem and mem2
+row and the cache-limit arm is one process, the limit tested on the
+hybrid at 4,096 only; the bench numerics are one synthetic draw per
+cell; M and chunk count are confounded at one context; the v4
+comparator census is the all-v4 build with a different LONG_CTX set;
+the mem rows use synthetic ids (as the frozen grid did), the A/B and
+the census real tokens; memory figures are mx.get_peak_memory after a
+reset and ru_maxrss, the allocator cache excluded where noted; the
+first and second chains ran at e8f1a3af and ab14f862, whose qmetal
+difference is the call counters, path_counts and docstrings only.

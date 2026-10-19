@@ -275,6 +275,8 @@ def main() -> None:
     ctx = int(os.environ.get("CTX", "4096" if mode == "ctx4k" else "1024"))
     chunk = int(os.environ.get("CHUNK", "256"))
     out = os.environ.get("OUT", f"{rdir}/{mode}_{head_cmd}.json")
+    if os.environ.get("SMOKE") == "1" and not out.startswith(("/tmp/", "/private/tmp/")) and "_smoke" not in out:
+        raise SystemExit(f"REFUSING: SMOKE=1 with a real receipt path {out}")
     if os.path.exists(out):
         raise SystemExit(f"REFUSING: {out} exists")
     ids = real_tokens(ctx + dec_steps)
