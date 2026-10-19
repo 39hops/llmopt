@@ -31,11 +31,13 @@ run() {
   fi
   rm -f "$TMP"
 }
-run ab_fused   env MODE=ab ARM=fused $PY scratch/qwen_metal_prefill_serve_ab.py
-run ab_gemm    env MODE=ab ARM=gemm  $PY scratch/qwen_metal_prefill_serve_ab.py
-run compare    env MODE=compare      $PY scratch/qwen_metal_prefill_serve_ab.py
-run census     env MODE=census       $PY scratch/qwen_metal_prefill_serve_ab.py
-run disagree   $PY scratch/qwen_e0_disagreement_census.py
-run perm       $PY scratch/mlp_permutation_study.py
-run strassen   $PY scratch/strassen_bench.py
+COMMIT=$(git rev-parse --short HEAD)
+run ab_fused          env MODE=ab ARM=fused $PY scratch/qwen_metal_prefill_serve_ab.py
+run ab_gemm           env MODE=ab ARM=gemm  $PY scratch/qwen_metal_prefill_serve_ab.py
+run ab_gemm_nolimit   env MODE=ab ARM=gemm TAG=_nolimit CACHE_LIMIT=none $PY scratch/qwen_metal_prefill_serve_ab.py
+run compare           env MODE=compare      $PY scratch/qwen_metal_prefill_serve_ab.py
+run census            env MODE=census       $PY scratch/qwen_metal_prefill_serve_ab.py
+run disagree          env CENSUS_RECEIPT=logs/qmetal/prefill_serve/census_$COMMIT.json $PY scratch/qwen_e0_disagreement_census.py
+run perm              $PY scratch/mlp_permutation_study.py
+run strassen          $PY scratch/strassen_bench.py
 echo "== study done $(date -u +%H:%M:%S)" >> "$LOG"

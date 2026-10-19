@@ -150,3 +150,66 @@ def test_serving_config_and_memory_report():
     assert set(rep) >= {"active_bytes", "peak_bytes", "cache_bytes", "footprint_bytes", "rss_peak_bytes"}
     assert rep["footprint_bytes"] == rep["active_bytes"] + rep["cache_bytes"]
     assert all(isinstance(v, int) and v >= 0 for v in rep.values())
+
+
+def test_on_chunk_runs_outside_the_scope_and_head_runs_inside():
+    from llmopt.lab import qmetal
+    seen_head, seen_cb = [], []
+    m, c = _Model(), [_Cache()]
+    inner_head = m.language_model.lm_head
+
+    class _SpyHead:
+        rows = inner_head.rows
+
+        def __call__(self, h):
+            seen_head.append(qmetal.gemm_scope_state())
+            return inner_head(h)
+    m.language_model.lm_head = _SpyHead()
+    qprefill.prefill_chunked(m, list(range(1, 8)), c, chunk=3, head="full", matmul="gemm",
+                             on_chunk=lambda s, lg: seen_cb.append(qmetal.gemm_scope_state()))
+    assert seen_head == [True, True, True]
+    assert seen_cb == [None, None, None]        # a decode or batched call issued by the callback sees no scope
+
+
+def test_exception_inside_prefill_leaves_no_scope():
+    from llmopt.lab import qmetal
+
+    class _Boom:
+        def __call__(self, ids, cache):
+            raise RuntimeError("boom")
+    m = _Model()
+    m.language_model.model = _Boom()
+    with pytest.raises(RuntimeError):
+        qprefill.prefill_chunked(m, [1, 2, 3], [_Cache()], chunk=2, matmul="gemm")
+    assert qmetal.gemm_scope_state() is None
+
+
+def test_scope_is_thread_local():
+    import threading
+    from llmopt.lab import qmetal
+    inside = threading.Event()
+    release = threading.Event()
+    other = {}
+
+    def worker():
+        inside.wait()
+        other["state"] = qmetal.gemm_scope_state()
+        release.set()
+    t = threading.Thread(target=worker)
+    t.start()
+    with qmetal.gemm_scope(True):
+        inside.set()
+        release.wait()
+    t.join()
+    assert other["state"] is None
+
+
+def test_serving_memory_refuses_a_process_wide_gemm_default(monkeypatch):
+    from llmopt.lab import qmetal
+    monkeypatch.setattr(qmetal._Resident, "prefill_gemm", True)
+    with pytest.raises(RuntimeError):
+        qprefill.configure_serving_memory(qprefill.ServingConfig())
+    monkeypatch.setattr(qmetal._Resident, "prefill_gemm", False)
+    monkeypatch.setattr(qmetal, "PREFILL_GEMM", True)
+    with pytest.raises(RuntimeError):
+        qprefill.configure_serving_memory(qprefill.ServingConfig())

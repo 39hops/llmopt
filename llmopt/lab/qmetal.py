@@ -80,6 +80,7 @@ expected for a different accumulation order.
 from __future__ import annotations
 
 import contextlib
+import contextvars
 import os
 
 import numpy as np
@@ -477,15 +478,16 @@ GEMM_MIN_T_BY_CODEC = {"w4": 16, "s16": 32}
 GEMM_MIN_T = int(os.environ["QMETAL_GEMM_MIN_T"]) if "QMETAL_GEMM_MIN_T" in os.environ else None
 GEMM_SLAB_BYTES = int(os.environ.get("QMETAL_GEMM_SLAB_BYTES", str(400 * 1024 * 1024)))
 
-# Explicit dispatch scope for the GEMM path: a stack of booleans, the
-# innermost wins; empty outside any scope. Metal calls in this lab are
-# issued from one thread, so a module-level stack is the scope state.
-_GEMM_SCOPE: list = []
+# Explicit dispatch scope for the GEMM path: a context variable (per
+# thread and per asyncio task), None outside any scope, the innermost
+# scope's value inside; each exit restores the value its own entry saw.
+_GEMM_SCOPE: contextvars.ContextVar = contextvars.ContextVar("qmetal_gemm_scope", default=None)
 
 
 def gemm_scope_state():
-    """None outside any gemm_scope, else the innermost scope's value."""
-    return _GEMM_SCOPE[-1] if _GEMM_SCOPE else None
+    """None outside any gemm_scope, else the innermost scope's value (in
+    the calling thread or task)."""
+    return _GEMM_SCOPE.get()
 
 
 @contextlib.contextmanager
@@ -496,13 +498,17 @@ def gemm_scope(enabled: bool):
     tables still run fused). gemm_scope(False): every call takes the fused
     kernels, whatever the process default or an outer scope says (the
     fused-only control). Outside any scope the resident's prefill_gemm
-    attribute (process default PREFILL_GEMM) decides. The stack is restored
-    on exit, exceptions included."""
-    _GEMM_SCOPE.append(bool(enabled))
+    attribute (process default PREFILL_GEMM) decides. The value is
+    restored on exit, exceptions included, and is local to the thread or
+    task that entered. Two limits: a scope must not span a generator's
+    yield (the caller would run inside it until the generator resumes),
+    and a function traced under mx.compile freezes the path active at
+    trace time, because the choice is made in Python inside _run."""
+    token = _GEMM_SCOPE.set(bool(enabled))
     try:
         yield
     finally:
-        _GEMM_SCOPE.pop()
+        _GEMM_SCOPE.reset(token)
 
 
 # Kernel generation used by the resident objects (1, 2, 3 or 4; default

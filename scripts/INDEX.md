@@ -4536,6 +4536,9 @@ MEZO-SIGNAL-DESK-0: zero-training feasibility desk for a zeroth-order (MeZO / SP
 SwiGLU intermediate-neuron permutation: mechanical companion to scratch/leancheck/MlpPermutation.lean (Phase C of the 2026-10-19 round).
 
 - `git_head()`
+- `git_dirty()`
+- `fit_codebook(Wn, rng, k=256, iters=12, samples=1 << 18)` — k-means codebook over 4-weight vectors of the block-normalised matrix.
+- `quantize_w4_proxy(W, rng)` — Block-128 e8m0 scale, then nearest codebook vector per 4 weights (codebook fitted on this matrix).
 - `silu(t)`
 - `mlp(Wg, Wu, Wd, X, dtype)` — X[N, d] -> [N, d] with gate silu, all in dtype (numpy matmul order).
 - `permute(Wg, Wu, Wd, perm)`
@@ -4545,9 +4548,9 @@ SwiGLU intermediate-neuron permutation: mechanical companion to scratch/leanchec
 - `e8m0(blocks)` — Per-block power-of-two scale: smallest 2^e with max|block| <= 2^e (zero block -> 2^-127).
 - `quantize_block16(W, levels)` — Block-128 along the input dimension, e8m0 scale, nearest of 16 levels (levels in [-1, 1]).
 - `rel_fro(A, B)`
-- `arm_c_levels(art)` — The 16 half levels of an arm C S16 payload (first S16 entry), else uniform.
+- `arm_c_levels(art)` — The 16 half levels of an arm C S16 payload (the first S16 entry in
 - `grouping_perms(Wd, rng, n_random=3)`
-- `grouping_section(name, Wg, Wu, Wd, X, levels, rng)`
+- `grouping_section(name, Wg, Wu, Wd, X, levels, rng, codec)`
 - `sources(rng, art)`
 - `main()`
 
@@ -5992,9 +5995,11 @@ Tensor-class ternary sensitivity profile (PRE-REG STAR-PROFILE-1, 2026-08-10). S
 Bounded test of a small-block bilinear algorithm against the framework GEMM on the prefill shapes (Phase D of the 2026-10-19 round).
 
 - `git_head()`
+- `git_dirty()`
+- `effective_levels(m, k, n, levels)` — Recursion depth the scheme reaches: it stops when a dimension is odd or below 64.
 - `split2(A, lib)`
 - `strassen(A, B, lib, levels)` — A[m, k] @ B[k, n] with Winograd's 7-product scheme, recursing `levels`
-- `temporaries_bytes(m, k, n, levels, itemsize=4)` — Block sums (4 of A's quarter, 4 of B's quarter), 7 quarter products and
+- `temporaries_bytes_model(m, k, n, levels, itemsize=4)` — A counting model, not a measurement: block sums (4 of A's quarter, 4
 - `mult_ratio(levels)`
 - `time_fn(fn, evaluate, rounds)`
 - `main()`
@@ -6759,7 +6764,7 @@ Reusable CUDA tower: codec dispatch + FusedS16Linear + residency plan.
 Fused Metal decode-and-multiply for the frozen WHOLE-0T payloads (Apple silicon, mx.fast.metal_kernel). Companion of llmopt.lab.qcuda.
 
 - `require_mlx() -> None`
-- `gemm_scope_state()` — None outside any gemm_scope, else the innermost scope's value.
+- `gemm_scope_state()` — None outside any gemm_scope, else the innermost scope's value (in
 - `gemm_scope(enabled: bool)` — Scope the decode-once GEMM dispatch to the calls made inside it.
 - `_kernel(name: str, version: int)`
 - `_decode_kernel(name: str)`
@@ -6775,7 +6780,7 @@ Chunked prefill for the fused-linear mlx-lm towers (adopted from scratch/qwen_me
 
 - `class ServingConfig`
 - `configure_serving_memory(cfg: ServingConfig=ServingConfig()) -> int` — Apply cfg.cache_limit_bytes to the MLX allocator cache of this
-- `memory_report() -> dict` — active_bytes (arrays alive on the device), peak_bytes (peak active
+- `memory_report() -> dict` — MLX's own accounting: active_bytes (arrays alive on the device),
 - `_check_ids(ids) -> list`
 - `cache_arrays(cache)` — Every array a cache list holds (for mx.eval and for comparison).
 - `split_body_head(model)`

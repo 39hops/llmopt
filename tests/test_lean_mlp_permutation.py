@@ -28,14 +28,15 @@ def test_mlp_permutation_lean_has_no_sorry_axiom_or_opaque():
                     reason="Lean toolchain or Mathlib build cache absent")
 def test_mlp_permutation_lean_compiles_on_standard_axioms(tmp_path):
     probe = tmp_path / "Probe.lean"
-    probe.write_text(FILE.read_text() + "\n#print axioms MlpPermutation.swiglu_perm_invariant\n"
-                     "#print axioms MlpPermutation.gatedMlp_perm_invariant\n")
+    names = ("swiglu_perm_invariant", "gatedMlp_perm_invariant", "gatedMlp_perm_invariant_fun")
+    probe.write_text(FILE.read_text() + "".join(f"\n#print axioms MlpPermutation.{n}" for n in names) + "\n")
     r = subprocess.run([str(LAKE), "env", "lean", str(probe)], cwd=LEAN_DIR,
                        capture_output=True, text=True, timeout=600)
     out = r.stdout + r.stderr
     assert r.returncode == 0, out
     assert "error" not in out
-    for line in out.splitlines():
-        if "depends on axioms" in line:
-            used = line.split("depends on axioms:", 1)[1].strip(" []")
-            assert set(a.strip() for a in used.split(",")) <= {"propext", "Classical.choice", "Quot.sound"}, line
+    lines = [line for line in out.splitlines() if "depends on axioms" in line]
+    assert len(lines) == 3, out
+    for line in lines:
+        used = line.split("depends on axioms:", 1)[1].strip(" []")
+        assert set(a.strip() for a in used.split(",")) <= {"propext", "Classical.choice", "Quot.sound"}, line

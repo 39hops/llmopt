@@ -615,3 +615,21 @@ def test_gemm_scope_restores_on_exception_and_keeps_small_tiles_fused(monkeypatc
             assert res.last_path == "fused"
         y = res.gemm(mx.array(rng.standard_normal((16, 128)).astype(np.float32))); mx.eval(y)
         assert res.last_path == "gemm"
+
+
+def test_two_d_batch_after_prefill_scope_stays_fused(monkeypatch):
+    """A 2-D call of min_t rows or more reaching _run after a prefill scope
+    has exited dispatches by the process default (fused), on a real
+    resident, through the model-style gemm entry."""
+    _gemm_off(monkeypatch)
+    rng = np.random.default_rng(11)
+    res = _w4_or_skip(_random_w4(rng, 8, 128), (8, 128))
+    x = mx.array(rng.standard_normal((32, 128)).astype(np.float32))
+    with qmetal.gemm_scope(True):
+        y_in = res.gemm(x); mx.eval(y_in)
+        assert res.last_path == "gemm"
+    y_out = res.gemm(x); mx.eval(y_out)
+    assert res.last_path == "fused"
+    y_ctrl = res.gemm(x.reshape(4, 8, 128)); mx.eval(y_ctrl)    # a 3-D batch flattens to 32 rows: still fused
+    assert res.last_path == "fused"
+    assert mx.array_equal(y_ctrl, y_out)

@@ -28,9 +28,12 @@ Sections of the receipt (one JSON, refuse-if-exists):
   families     agreement and KL by prompt family and by step bucket
   evaluable    which corrections the existing evidence can evaluate and
                which need vendor weights or more teacher inference (text)
-Env: E0_DIR (logs/qwen_e0/C), TEACHER_DIR (logs/qwenteacher_v2), DUMP_DIR
-(logs/qmetal/prefill_serve/dump), OUT (logs/qwen_e0/C_disagreement.json),
-SMOKE=1 (first 64 rows, OUT under logs/qwen_e0_smoke/).
+Env: E0_DIR (logs/qwen_e0/C), TEACHER_DIR (logs/qwenteacher_v2),
+CENSUS_RECEIPT (the MODE=census receipt whose dumps are used; the dump
+is opened by the name and sha that receipt records, and every row's
+dump argmax must equal the E0 row's draft_argmax), OUT
+(logs/qwen_e0/C_disagreement.json), SMOKE=1 (first 64 rows, OUT under
+logs/qwen_e0_smoke/, OUT from the environment ignored).
 """
 from __future__ import annotations
 
@@ -49,7 +52,7 @@ sys.path.insert(0, os.path.dirname(HERE))
 SMOKE = os.environ.get("SMOKE") == "1"
 E0_DIR = os.environ.get("E0_DIR", "logs/qwen_e0/C")
 TEACHER_DIR = os.environ.get("TEACHER_DIR", "logs/qwenteacher_v2")
-DUMP_DIR = os.environ.get("DUMP_DIR", "logs/qmetal/prefill_serve/dump")
+CENSUS_RECEIPT = os.environ.get("CENSUS_RECEIPT", "")
 OUT = "logs/qwen_e0_smoke/C_disagreement.json" if SMOKE else os.environ.get("OUT", "logs/qwen_e0/C_disagreement.json")
 MARGIN_EDGES = [0.0, 0.02, 0.05, 0.1, 0.2, 0.5, 1.0, 2.0, 5.0, float("inf")]
 STEP_EDGES = [0, 1, 4, 16, 64, 128, 256]
@@ -85,11 +88,21 @@ def main():
     v_live = int(summary["v_live"])
     teacher = np.load(os.path.join(TEACHER_DIR, "rollout_logits.npy"), mmap_mode="r")
     prompt_index = {pid: i for i, pid in enumerate(ro["prompt_ids"])}
-    dump_logits = os.path.join(DUMP_DIR, "draft_logits_fp16.npy")
-    have_dump = os.path.exists(dump_logits)
-    draft = np.load(dump_logits, mmap_mode="r") if have_dump else None
-    if have_dump and draft.shape[0] < len(rows):
-        raise SystemExit(f"REFUSING: dump has {draft.shape[0]} rows, census needs {len(rows)}")
+    have_dump = bool(CENSUS_RECEIPT)
+    draft, dump_logits, census_rec = None, None, None
+    if have_dump:
+        census_rec = json.load(open(CENSUS_RECEIPT))
+        if census_rec.get("smoke") and not SMOKE:
+            raise SystemExit("REFUSING: the census receipt is a smoke receipt")
+        nm = next(k for k in census_rec["dumps"] if k.startswith("draft_logits"))
+        dump_logits = os.path.join(census_rec["dump_dir"], nm)
+        if sha_file(dump_logits) != census_rec["dumps"][nm]:
+            raise SystemExit("REFUSING: dump sha differs from the census receipt")
+        draft = np.load(dump_logits, mmap_mode="r")
+        if draft.shape[0] != census_rec["n_positions"] or (not SMOKE and draft.shape[0] != len(rows)):
+            raise SystemExit(f"REFUSING: dump has {draft.shape[0]} rows, census needs {len(rows)}")
+        if SMOKE:
+            rows = rows[:draft.shape[0]]          # the smoke census dumps one prompt's first positions only
     if os.path.exists(OUT):
         raise SystemExit(f"REFUSING: {OUT} exists")
 
@@ -115,6 +128,7 @@ def main():
     shift_err_top16 = np.full((n, 16), np.nan)         # draft minus teacher after shift alignment on teacher top-16
     slope = np.full(n, np.nan)
     d_argmax_t_rank = np.full(n, 99, np.int64)
+    dump_argmax_mismatch = 0
     for i, r in enumerate(rows):
         zt = np.asarray(teacher[r["step"], prompt_index[r["prompt_id"]], :v_live], dtype=np.float32)
         order = np.argsort(-zt.astype(np.float64), kind="stable")
@@ -133,6 +147,8 @@ def main():
         d_argmax_t_rank[i] = int(np.where(order == r["draft_argmax"])[0][0]) + 1
         if have_dump:
             zd = np.asarray(draft[i], dtype=np.float32)
+            if int(zd.argmax()) != r["draft_argmax"]:
+                dump_argmax_mismatch += 1
             a = zd[t_top16[i]].astype(np.float64)
             b = zt[t_top16[i]].astype(np.float64)
             shift = float(np.mean(zd.astype(np.float64)) - np.mean(zt.astype(np.float64)))
@@ -175,7 +191,10 @@ def main():
         "teacher_top2_gap_disagree_all": q((t_logit_top1 - t_logit_top2)[dis]),
     }
     # ---- bias ----
-    bias = {"dump_present": have_dump}
+    bias = {"dump_present": have_dump, "dump_rows_whose_argmax_differs_from_e0_row": dump_argmax_mismatch if have_dump else None,
+            "note": "shift alignment subtracts the mean over the live vocabulary of (draft minus teacher); both records are fp16, so about 0.01 to 0.03 of rounding sits inside every per-logit difference"}
+    if have_dump and dump_argmax_mismatch:
+        raise SystemExit(f"REFUSING: {dump_argmax_mismatch} dump rows disagree with the E0 rows' draft_argmax")
     if have_dump:
         e = shift_err_top16
         bias.update({
@@ -208,6 +227,26 @@ def main():
         d = per_prompt.setdefault(r["prompt_id"], {"category": r["category"], "n": 0, "agree": 0})
         d["n"] += 1
         d["agree"] += int(r["agree"])
+    # the first generated position of every rollout (the token after the chat template's "<think>\n")
+    tok = None
+    tpath = os.path.expanduser(os.environ.get("VENDOR_DIR", "~/qwen_vendor")) + "/tokenizer.json"
+    if os.path.exists(tpath):
+        try:
+            from tokenizers import Tokenizer
+            tok = Tokenizer.from_file(tpath)
+        except ImportError:
+            tok = None
+    def s(t):
+        return tok.decode([int(t)]) if tok is not None else None
+    first = [{"prompt_id": r["prompt_id"], "category": r["category"], "teacher_token": r["teacher_token"], "teacher_str": s(r["teacher_token"]),
+              "teacher_margin": r["teacher_margin_logit"], "draft_argmax": r["draft_argmax"], "draft_str": s(r["draft_argmax"]),
+              "draft_margin": r["draft_margin_logit"], "teacher_token_rank_in_draft": r["teacher_token_rank_in_draft"], "agree": r["agree"]}
+             for r in rows if r["step"] == 0]
+    first_pos = {"n": len(first), "agree": int(sum(f["agree"] for f in first)),
+                 "teacher_tokens": dict(collections.Counter(f["teacher_token"] for f in first)),
+                 "draft_tokens": dict(collections.Counter(f["draft_argmax"] for f in first)),
+                 "strings": {str(t): s(t) for t in set(f["teacher_token"] for f in first) | set(f["draft_argmax"] for f in first)},
+                 "rows": first, "tokenizer": tpath if tok is not None else None}
     evaluable = {
         "with_existing_evidence": [
             "disagreement structure, margins, biases, families, positions (this receipt)",
@@ -228,12 +267,15 @@ def main():
            "smoke": SMOKE, "e0_dir": E0_DIR, "e0_rows_sha256": sha_file(os.path.join(E0_DIR, "positions.jsonl")),
            "teacher": {"dir": TEACHER_DIR, "code_commit": man["code_commit"], "revision": man["revision"], "rollout_sha": ro["sha256"],
                        "rollout_sha_verified": sha_file(os.path.join(TEACHER_DIR, "rollout_logits.npy")) == ro["sha256"] if not SMOKE else "skipped"},
-           "dump": {"dir": DUMP_DIR, "present": have_dump, "sha256": sha_file(dump_logits) if have_dump else None},
+           "dump": {"census_receipt": CENSUS_RECEIPT or None, "census_commit": census_rec["code_commit"] if have_dump else None,
+                    "path": dump_logits, "present": have_dump, "sha256": census_rec["dumps"][os.path.basename(dump_logits)] if have_dump else None},
            "n_positions": n, "n_agree": int(agree.sum()), "agree_rate": float(agree.mean()), "v_live": v_live,
            "margins": margins, "top2": top2, "bias": bias, "families": fam, "step_buckets": stepb, "per_prompt": per_prompt,
+           "first_generated_position": first_pos,
            "evaluable": evaluable}
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     json.dump(rec, open(OUT, "w"), indent=1)
+    print(f"[census] first generated position: agree {first_pos['agree']}/{first_pos['n']}, teacher {first_pos['teacher_tokens']}, draft {first_pos['draft_tokens']}")
     print(f"[census] {n} rows, agree {agree.mean():.4f}; disagree {dis.sum()}: teacher-top2 picked {top2['draft_picks_teacher_top2']}, "
           f"swap {top2['swap_of_teacher_top2']}, teacher token outside draft top16 {top2['teacher_token_outside_draft_top16']}; "
           f"dump {have_dump}; wrote {OUT}")

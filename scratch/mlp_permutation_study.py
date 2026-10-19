@@ -18,9 +18,16 @@ Sections:
               permuted weights on Gaussian inputs: the difference is at the
               reduction-order level (reported in ulps of the output) and is
               zero in exact arithmetic
-  grouping    the block-128 e8m0-scaled 16-level codec of the artifact
-              (levels: the arm C S16 table from the artifact when
-              available, else 16 uniform levels) applied to Wg, Wu, Wd
+  grouping    two block-128 e8m0-scaled proxy codecs applied to Wg, Wu,
+              Wd: "s16_proxy" (16 scalar levels per block; the arm C S16
+              table of a named S16 entry when the artifact is present,
+              else 16 uniform levels) and "w4_proxy" (a 256-entry
+              codebook over 4-weight vectors fitted by k-means on the
+              block-normalised matrix, the shape of the artifact's W4
+              codec without its trained codebook or seeds). Arm C's MLP
+              matrices are W4 and its attention and IO matrices S16; the
+              proxies share the artifact's block scale law, which is the
+              part the permutation regroups, and nothing else is claimed
               under identity, random permutations (controls) and
               magnitude-grouping permutations (columns of Wd sorted by
               max-abs or L2 norm); per-matrix relative Frobenius error, the
@@ -36,9 +43,13 @@ Sections:
               the codec's grouping sensitivity on that distribution; it
               says nothing about the information the original compression
               discarded, which is booked as the limitation)
-Env: ART_DIR (~/qwen_whole0t/C), VENDOR_DIR (~/qwen_vendor), OUT
-(logs/qmetal/mlp_perm/study_<commit>.json), SMOKE=1 (small sizes, OUT under
-logs/qmetal/mlp_perm_smoke/). Refuses to overwrite.
+Env: ART_DIR (~/qwen_whole0t/C), OUT (logs/qmetal/mlp_perm/study_<commit>.json;
+ignored under SMOKE), SMOKE=1 (small sizes, logs/qmetal/mlp_perm_smoke/).
+Refuses to overwrite. Limitation booked with the receipt: the decoded
+arm C window is a matrix already quantised on the original block grid,
+so the identity permutation keeps that grid and is favoured; on that
+source the comparison that carries information is sorted against
+random (both leave the grid), never sorted against identity.
 """
 from __future__ import annotations
 
@@ -60,6 +71,41 @@ BLOCK = 128
 
 def git_head():
     return subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip()
+
+
+def git_dirty():
+    return bool(subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True).stdout.strip())
+
+
+def fit_codebook(Wn, rng, k=256, iters=12, samples=1 << 18):
+    """k-means codebook over 4-weight vectors of the block-normalised matrix."""
+    v = Wn.reshape(-1, 4)
+    idx = rng.choice(len(v), min(samples, len(v)), replace=False)
+    S = v[idx]
+    C = S[rng.choice(len(S), k, replace=False)].copy()
+    for _ in range(iters):
+        d = ((S[:, None, :] - C[None, :, :]) ** 2).sum(-1)
+        a = d.argmin(1)
+        for j in range(k):
+            m = a == j
+            if m.any():
+                C[j] = S[m].mean(0)
+    return C
+
+
+def quantize_w4_proxy(W, rng):
+    """Block-128 e8m0 scale, then nearest codebook vector per 4 weights (codebook fitted on this matrix)."""
+    R, C = W.shape
+    Wb = W.reshape(R, C // BLOCK, BLOCK).astype(np.float64)
+    sc = e8m0(Wb)
+    Wn = (Wb / sc).reshape(R, C)
+    cb = fit_codebook(Wn, rng)
+    v = Wn.reshape(-1, 4)
+    out = np.empty_like(v)
+    for lo in range(0, len(v), 1 << 20):
+        d = ((v[lo:lo + (1 << 20), None, :] - cb[None, :, :]) ** 2).sum(-1)
+        out[lo:lo + (1 << 20)] = cb[d.argmin(1)]
+    return (out.reshape(R, C // BLOCK, BLOCK) * sc).reshape(R, C)
 
 
 def silu(t):
@@ -126,8 +172,10 @@ def float_section(rng):
             y = mlp(*permute(Wg, Wu, Wd, perm), X, dtype)
             diffs.append(float(np.abs(y.astype(np.float64) - ref.astype(np.float64)).max()))
             ul.append(float(ulps(y, ref).max()) if dtype is np.float32 else None)
-        out[np.dtype(dtype).name] = {"max_abs_diff_vs_original_order": diffs, "max_ulps_float32": ul,
-                                     "output_scale": float(np.abs(ref).max()), "bit_identical": all(x == 0.0 for x in diffs)}
+        scale = float(np.abs(ref).max())
+        out[np.dtype(dtype).name] = {"max_abs_diff_vs_original_order": diffs, "max_abs_diff_over_output_scale": [x / scale for x in diffs],
+                                     "max_ulps_float32_note": "ulps of the nearest output element; dominated by near-zero outputs, kept for the record",
+                                     "max_ulps_float32": ul, "output_scale": scale, "bit_identical": all(x == 0.0 for x in diffs)}
     return out
 
 
@@ -156,7 +204,8 @@ def rel_fro(A, B):
 
 
 def arm_c_levels(art):
-    """The 16 half levels of an arm C S16 payload (first S16 entry), else uniform."""
+    """The 16 half levels of an arm C S16 payload (the first S16 entry in
+    manifest order, named in the receipt), else 16 uniform levels."""
     try:
         man = json.load(open(os.path.join(art, "manifest.json")))
         name = next(k for k, e in man.items() if e.get("codec") == "s16")
@@ -166,7 +215,7 @@ def arm_c_levels(art):
             n = e["shape"][0] * e["shape"][1]
             f.seek(n // BLOCK, 1)
             lv = np.frombuffer(f.read(32), dtype=np.float16).astype(np.float64)
-        return np.sort(lv), f"arm C S16 table of {name}"
+        return np.sort(lv), f"arm C S16 table of {name} (an attention or IO matrix; the MLP matrices are W4)"
     except (FileNotFoundError, StopIteration, OSError):
         return np.linspace(-1, 1, 16), "uniform 16 levels"
 
@@ -180,14 +229,19 @@ def grouping_perms(Wd, rng, n_random=3):
     return out
 
 
-def grouping_section(name, Wg, Wu, Wd, X, levels, rng):
+def grouping_section(name, Wg, Wu, Wd, X, levels, rng, codec):
     ref64 = mlp(Wg, Wu, Wd, X, np.float64)
-    res = {"source": name, "shapes": {"Wg": list(Wg.shape), "Wd": list(Wd.shape)}, "inputs": int(X.shape[0]), "arms": {}}
+    res = {"source": name, "codec": codec, "shapes": {"Wg": list(Wg.shape), "Wd": list(Wd.shape)}, "inputs": int(X.shape[0]),
+           "input_scale_std": float(X.std()), "arms": {}}
     base_q = None
     for pname, perm in grouping_perms(Wd, rng).items():
         Wg2, Wu2, Wd2 = permute(Wg, Wu, Wd, perm)
         t0 = time.time()
-        Qg, Qu, Qd = quantize_block16(Wg2, levels), quantize_block16(Wu2, levels), quantize_block16(Wd2, levels)
+        if codec == "s16_proxy":
+            Qg, Qu, Qd = quantize_block16(Wg2, levels), quantize_block16(Wu2, levels), quantize_block16(Wd2, levels)
+        else:
+            qrng = np.random.default_rng(7)      # the same codebook seed for every permutation of a source
+            Qg, Qu, Qd = quantize_w4_proxy(Wg2, qrng), quantize_w4_proxy(Wu2, qrng), quantize_w4_proxy(Wd2, qrng)
         tq = time.time() - t0
         inv = np.argsort(perm)
         # the same quantized weights brought back to the original order (identical values, original evaluation order)
@@ -208,7 +262,10 @@ def grouping_section(name, Wg, Wu, Wd, X, levels, rng):
         if base_q is None:
             base_q = arm["rel_fro_err"]
         else:
-            arm["wg_wu_err_equal_to_identity"] = bool(abs(arm["rel_fro_err"]["Wg"] - base_q["Wg"]) < 1e-12 and abs(arm["rel_fro_err"]["Wu"] - base_q["Wu"]) < 1e-12)
+            # row permutation keeps every row's blocks intact: exact for the scalar codec; the W4 proxy refits its
+            # codebook from a sample of the permuted matrix, so its Wg/Wu errors agree to the sampling, not bitwise
+            tol = 1e-12 if codec == "s16_proxy" else 2e-2
+            arm["wg_wu_err_equal_to_identity"] = bool(abs(arm["rel_fro_err"]["Wg"] - base_q["Wg"]) < tol and abs(arm["rel_fro_err"]["Wu"] - base_q["Wu"]) < tol)
         res["arms"][pname] = arm
     ident = res["arms"]["identity"]
     for pname, arm in res["arms"].items():
@@ -242,7 +299,9 @@ def sources(rng, art):
             # a 1,024 x 4,096 window keeps the study bounded: 1,024 hidden rows, 4,096 intermediate neurons
             sel_m = np.arange(4096)
             sel_d = np.arange(1024)
-            out.append(("arm_c_layer0_decoded_window", mats["gate"][np.ix_(sel_m, sel_d)], mats["up"][np.ix_(sel_m, sel_d)], mats["down"][np.ix_(sel_d, sel_m)]))
+            import hashlib
+            shas = {k: hashlib.sha256(mats[k].tobytes()).hexdigest()[:16] for k in mats}
+            out.append((f"arm_c_layer0_decoded_window(decoded_sha16 {shas})", mats["gate"][np.ix_(sel_m, sel_d)], mats["up"][np.ix_(sel_m, sel_d)], mats["down"][np.ix_(sel_d, sel_m)]))
         except Exception as ex:  # noqa: BLE001 - the real-matrix source is optional, its absence is booked
             out.append(("arm_c_layer0_decoded_window_unavailable", None, None, str(ex)))
     return out, d, N
@@ -252,16 +311,19 @@ def main():
     rng = np.random.default_rng(20261019)
     art = os.environ.get("ART_DIR", os.path.expanduser("~/qwen_whole0t/C"))
     out_dir = "logs/qmetal/mlp_perm_smoke" if SMOKE else "logs/qmetal/mlp_perm"
-    out = os.environ.get("OUT", os.path.join(out_dir, f"study_{git_head()}.json"))
+    out = os.path.join(out_dir, f"study_{git_head()}.json") if SMOKE else os.environ.get("OUT", os.path.join(out_dir, f"study_{git_head()}.json"))
     if os.path.exists(out):
         raise SystemExit(f"REFUSING: {out} exists")
     os.makedirs(os.path.dirname(out), exist_ok=True)
     levels, lv_src = arm_c_levels(art)
-    rec = {"code_commit": git_head(), "smoke": SMOKE, "levels": [float(v) for v in levels], "levels_source": lv_src, "block": BLOCK}
+    rec = {"code_commit": git_head(), "tree_dirty": git_dirty(), "smoke": SMOKE, "art_dir_present": os.path.isdir(art),
+           "levels": [float(v) for v in levels], "levels_source": lv_src, "block": BLOCK,
+           "codecs": {"s16_proxy": "block-128 e8m0 scale, nearest of 16 scalar levels",
+                      "w4_proxy": "block-128 e8m0 scale, nearest of 256 k-means 4-vectors fitted per matrix (12 iterations, 262,144 samples)"}}
     rec["exact"] = exact_section(rng)
     print("[perm] exact", rec["exact"]["all_exactly_equal"], flush=True)
     rec["float"] = float_section(rng)
-    print("[perm] float32 max ulps", rec["float"]["float32"]["max_ulps_float32"], "float64 max abs", rec["float"]["float64"]["max_abs_diff_vs_original_order"], flush=True)
+    print("[perm] float32 max abs over scale", rec["float"]["float32"]["max_abs_diff_over_output_scale"], "float64", rec["float"]["float64"]["max_abs_diff_over_output_scale"], flush=True)
     srcs, d, N = sources(rng, art)
     rec["grouping"] = []
     for name, Wg, Wu, Wd in srcs:
@@ -270,11 +332,12 @@ def main():
             continue
         X = rng.standard_normal((N, Wg.shape[1]))
         if name.startswith("arm_c"):
-            X = X * 0.05      # hidden-state scale stand-in; the ratio statistics do not depend on it
-        g = grouping_section(name, Wg, Wu, Wd, X, levels, rng)
-        rec["grouping"].append(g)
-        a = g["arms"]
-        print(f"[perm] {name}: Wd rel err identity {a['identity']['rel_fro_err']['Wd']:.4f}, random {a['random_0']['rel_fro_err']['Wd']:.4f}, "
+            X = X * 0.05      # a hidden-state scale stand-in, recorded in the receipt (the gate is nonlinear, so results depend on it)
+        for codec in ("s16_proxy", "w4_proxy"):
+          g = grouping_section(name, Wg, Wu, Wd, X, levels, rng, codec)
+          rec["grouping"].append(g)
+          a = g["arms"]
+          print(f"[perm] {name} {codec}: Wd rel err identity {a['identity']['rel_fro_err']['Wd']:.4f}, random {a['random_0']['rel_fro_err']['Wd']:.4f}, "
               f"sort maxabs {a['sort_col_maxabs']['rel_fro_err']['Wd']:.4f} (x{a['sort_col_maxabs']['wd_err_ratio_vs_identity']:.3f}), "
               f"sort l2 {a['sort_col_l2']['rel_fro_err']['Wd']:.4f}; output f64 ratio maxabs {a['sort_col_maxabs']['output_err_f64_ratio_vs_identity']:.3f} "
               f"l2 {a['sort_col_l2']['output_err_f64_ratio_vs_identity']:.3f} (Wd-only {a['sort_col_l2']['output_err_wd_only_ratio_vs_identity']:.3f}); order-only f32 diff {a['sort_col_l2']['same_quantized_weights_original_order']['f32_permuted_vs_original_order_max_abs']:.2e}", flush=True)

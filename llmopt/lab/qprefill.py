@@ -59,21 +59,34 @@ class ServingConfig:
 
 def configure_serving_memory(cfg: ServingConfig = ServingConfig()) -> int:
     """Apply cfg.cache_limit_bytes to the MLX allocator cache of this
-    process; returns the previous limit so a caller can restore it."""
+    process; returns the previous limit so a caller can restore it. Refuses
+    to configure a process whose qmetal default has the GEMM path on
+    (QMETAL_PREFILL_GEMM=1 is the research switch, never a serving
+    setting): in a serving process the path is selected per call by
+    prefill_chunked(matmul=cfg.matmul) alone."""
     import mlx.core as mx
+    from llmopt.lab import qmetal
+    if qmetal.PREFILL_GEMM or qmetal._Resident.prefill_gemm:
+        raise RuntimeError("serving refuses a process-wide GEMM default (QMETAL_PREFILL_GEMM / _Resident.prefill_gemm); pass matmul per call")
     return int(mx.set_cache_limit(int(cfg.cache_limit_bytes)))
 
 
 def memory_report() -> dict:
-    """active_bytes (arrays alive on the device), peak_bytes (peak active
-    since the last mx.reset_peak_memory), cache_bytes (allocator pool held
-    for reuse), footprint_bytes = active + cache (what the process holds on
-    the device), rss_peak_bytes (ru_maxrss, the process peak so far)."""
+    """MLX's own accounting: active_bytes (arrays alive on the device),
+    peak_bytes (peak ACTIVE memory since the last mx.reset_peak_memory;
+    the pool is not in it), cache_bytes (allocator pool held for reuse),
+    footprint_bytes = active + cache (what the process holds on the
+    device by that accounting; the OS may report more), and
+    rss_peak_bytes, the process peak RSS so far from ru_maxrss (bytes on
+    macOS; the field is omitted elsewhere because the unit differs)."""
     import mlx.core as mx
+    import sys
     active, cache = int(mx.get_active_memory()), int(mx.get_cache_memory())
-    return {"active_bytes": active, "peak_bytes": int(mx.get_peak_memory()), "cache_bytes": cache,
-            "footprint_bytes": active + cache,
-            "rss_peak_bytes": int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)}
+    out = {"active_bytes": active, "peak_bytes": int(mx.get_peak_memory()), "cache_bytes": cache,
+           "footprint_bytes": active + cache}
+    if sys.platform == "darwin":
+        out["rss_peak_bytes"] = int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)
+    return out
 
 
 def _check_ids(ids) -> list:
@@ -134,10 +147,12 @@ def prefill_chunked(model, ids, cache, chunk: int = 256, head: str = "final", on
         raise ValueError(f"matmul must be one of {MATMUL_PATHS}, got {matmul!r}")
     ids = _check_ids(ids)
     body, lm = split_body_head(model)
-    scope = qmetal.gemm_scope(matmul == "gemm") if matmul is not None else _NoScope()
     last = None
-    with scope:
-        for s in range(0, len(ids), chunk):
+    for s in range(0, len(ids), chunk):
+        # the scope covers this chunk's body and head calls only; on_chunk
+        # runs outside it, so whatever a callback issues (a decode step, a
+        # batched call) dispatches by the process default
+        with (qmetal.gemm_scope(matmul == "gemm") if matmul is not None else _NoScope()):
             h = body(mx.array([ids[s:s + chunk]]), cache)
             if head == "full":
                 lg = lm(h)
@@ -146,10 +161,10 @@ def prefill_chunked(model, ids, cache, chunk: int = 256, head: str = "final", on
             else:
                 lg = None
             mx.eval(lg if lg is not None else h, *cache_arrays(cache))
-            if on_chunk is not None and lg is not None:
-                on_chunk(s, lg)
-            last = lg
-            del h
+        if on_chunk is not None and lg is not None:
+            on_chunk(s, lg)
+        last = lg
+        del h
     return last
 
 

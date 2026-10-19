@@ -31,7 +31,8 @@ Modes (MODE env):
             live position are written to the dump directory for the
             disagreement census (read-only analysis).
 Env: ART_DIR, VENDOR_DIR, CTX (1024), CHUNK (256), DECODE_STEPS (16), ARM,
-CACHE_LIMIT (bytes or none), OUT (logs/qmetal/prefill_serve), SMOKE=1
+TAG (suffix for an extra arm's receipt and dumps), CACHE_LIMIT (bytes or
+none), OUT (logs/qmetal/prefill_serve), SMOKE=1
 (forces OUT to logs/qmetal/prefill_serve_smoke, CTX 64, 2 decode steps,
 census on one prompt and 8 steps). Receipts refuse to overwrite.
 """
@@ -85,6 +86,7 @@ def provenance(mode, arm=None):
     return {"mode": mode, "arm": arm, "code_commit": git_head(), "tree_dirty": git_dirty(), "smoke": SMOKE,
             "device": str(mx.default_device()), "mlx_version": mx.__version__, "mlx_lm_version": mlx_lm.__version__,
             "qmetal_version": qmetal.VERSION, "process_default_prefill_gemm": qmetal.PREFILL_GEMM,
+            "resident_prefill_gemm_attr": bool(qmetal._Resident.prefill_gemm), "gemm_min_t_override": qmetal.GEMM_MIN_T,
             "gemm_min_t_by_codec": qmetal.GEMM_MIN_T_BY_CODEC, "gemm_slab_bytes": qmetal.GEMM_SLAB_BYTES,
             "serving_config": {"chunk": cfg.chunk, "matmul": cfg.matmul, "cache_limit_bytes": cfg.cache_limit_bytes},
             "entry_point": "llmopt.lab.qprefill.prefill_chunked"}
@@ -121,14 +123,16 @@ def mode_ab():
     chunk = int(os.environ.get("CHUNK", "256"))
     steps = 2 if SMOKE else int(os.environ.get("DECODE_STEPS", "16"))
     os.makedirs(DUMP, exist_ok=True)
-    rpath = os.path.join(OUT, f"ab_{arm}_{git_head()}.json")
+    tag = os.environ.get("TAG", "")          # distinguishes extra arms (for example the no-cache-limit control)
+    rpath = os.path.join(OUT, f"ab_{arm}{tag}_{git_head()}.json")
     refuse(rpath)
     cache_limit = apply_cache_limit()
     ids = real_tokens(ctx + steps)
     model, info, load_wall = load_model()
     residents = residents_of(model)
     head_res = model.language_model.lm_head.res
-    body_res = [r for r in residents if r is not head_res][0]
+    body_res = [r for r in residents if r is not head_res and r.gemm_ok][0]
+    commit = git_head()
     mx.reset_peak_memory()
     mem = {"after_load": qprefill.memory_report()}
     cache = make_prompt_cache(model)
@@ -141,6 +145,7 @@ def mode_ab():
     mem["after_prefill"] = qprefill.memory_report()
     final = np.asarray(lg[0, -1], dtype=np.float32)
     snap = snapshot_cache(cache)
+    mx.reset_peak_memory()            # after_decode.peak_bytes is the decode phase's own peak
     t0 = time.time()
     dec = decode_after(model, cache, ids[ctx:ctx + steps])
     decode_wall = time.time() - t0
@@ -154,8 +159,11 @@ def mode_ab():
         mx.eval(y)
         iso[name] = {"rows": 64, "codec": r.codec, "gemm_ok": bool(r.gemm_ok), "path": r.last_path,
                      "scope_state": qmetal.gemm_scope_state()}
-    np.save(os.path.join(DUMP, f"final_{arm}.npy"), final)
-    np.save(os.path.join(DUMP, f"decode_{arm}.npy"), dec)
+    names = {k: f"{k}_{arm}{tag}_{commit}.{ext}" for k, ext in (("final", "npy"), ("decode", "npy"), ("cache", "npz"))}
+    for nm in names.values():
+        refuse(os.path.join(DUMP, nm))
+    np.save(os.path.join(DUMP, names["final"]), final)
+    np.save(os.path.join(DUMP, names["decode"]), dec)
     arrs = {}
     for i, s in enumerate(snap):
         st = s.state if isinstance(s.state, tuple) else (s.state,)
@@ -163,7 +171,7 @@ def mode_ab():
             arrs[f"c{i}_{j}"] = a
         if hasattr(s, "offset"):
             arrs[f"c{i}_offset"] = np.array(s.offset)
-    np.savez(os.path.join(DUMP, f"cache_{arm}.npz"), **arrs)
+    np.savez(os.path.join(DUMP, names["cache"]), **arrs)
     top = np.argsort(-final.astype(np.float64))[:16]
     rec = provenance("ab", arm) | {
         "ctx": ctx, "chunk": chunk, "decode_steps": steps, "cache_limit_bytes_applied": cache_limit,
@@ -176,7 +184,8 @@ def mode_ab():
         "final_argmax": int(final.argmax()), "final_top16_ids": [int(t) for t in top],
         "final_top16_logits": [float(final[t]) for t in top],
         "decode_argmax": [int(a) for a in dec.argmax(-1)],
-        "dumps": {k: sha_file(os.path.join(DUMP, k)) for k in (f"final_{arm}.npy", f"decode_{arm}.npy", f"cache_{arm}.npz")}}
+        "memory_note": "peak_bytes is MLX peak active memory since the last reset (reset after load and again before decode); footprint is MLX active + allocator pool",
+        "dumps": {nm: sha_file(os.path.join(DUMP, nm)) for nm in names.values()}}
     json.dump(rec, open(rpath, "w"), indent=1)
     print(f"[ab {arm}] prefill {prefill_wall:.2f} s ({ctx / prefill_wall:.2f} tok/s), decode {1000 * decode_wall / steps:.1f} ms/token, "
           f"calls prefill {rec['matrix_calls_prefill']} decode {rec['matrix_calls_decode']}, footprint after prefill "
@@ -186,31 +195,44 @@ def mode_ab():
 def mode_compare():
     from qwen_metal_prefill_head import compare_logits
     import glob
-    recs = {}
+    recs, files = {}, {}
+    commit = git_head()
     for arm in ("fused", "gemm"):
-        paths = sorted(glob.glob(os.path.join(OUT, f"ab_{arm}_*.json")))
-        if not paths:
-            raise SystemExit(f"REFUSING: no ab_{arm} receipt under {OUT}")
-        recs[arm] = json.load(open(paths[-1]))
-        for k, h in recs[arm]["dumps"].items():
-            if sha_file(os.path.join(DUMP, k)) != h:
-                raise SystemExit(f"REFUSING: dump {k} does not match its receipt sha")
-    rpath = os.path.join(OUT, f"compare_{git_head()}.json")
+        paths = [p for p in glob.glob(os.path.join(OUT, f"ab_{arm}_{commit}.json"))]
+        if len(paths) != 1:
+            raise SystemExit(f"REFUSING: expected one ab_{arm}_{commit}.json under {OUT}, found {paths}")
+        recs[arm] = json.load(open(paths[0]))
+        files[arm] = {}
+        for nm, h in recs[arm]["dumps"].items():
+            if sha_file(os.path.join(DUMP, nm)) != h:
+                raise SystemExit(f"REFUSING: dump {nm} does not match its receipt sha")
+            files[arm][nm.split("_")[0]] = nm
+    for k in ("code_commit", "ctx", "chunk", "decode_steps", "cache_limit_bytes_applied", "smoke"):
+        if recs["fused"][k] != recs["gemm"][k]:
+            raise SystemExit(f"REFUSING: arms differ in {k}: {recs['fused'][k]} v {recs['gemm'][k]}")
+    rpath = os.path.join(OUT, f"compare_{commit}.json")
     refuse(rpath)
-    f = {a: np.load(os.path.join(DUMP, f"final_{a}.npy")) for a in recs}
-    d = {a: np.load(os.path.join(DUMP, f"decode_{a}.npy")) for a in recs}
-    c = {a: np.load(os.path.join(DUMP, f"cache_{a}.npz")) for a in recs}
-    cache_cmp = {"max_abs_by_array": {}, "offsets_equal": True, "bit_identical": True, "state_max_rel": 0.0}
+    f = {a: np.load(os.path.join(DUMP, files[a]["final"])) for a in recs}
+    d = {a: np.load(os.path.join(DUMP, files[a]["decode"])) for a in recs}
+    c = {a: np.load(os.path.join(DUMP, files[a]["cache"])) for a in recs}
+    # cache classes: DeltaNet caches hold (conv tail, recurrent state), attention caches (keys, values) with an offset
+    cache_cmp = {"offsets_equal": True, "bit_identical": True,
+                 "classes": {k: {"max_abs": 0.0, "max_rel_to_array_max": 0.0, "arrays": 0} for k in ("conv", "state", "kv_k", "kv_v")}}
     for k in c["fused"].files:
-        a, b = c["fused"][k], c["gemm"][k]
         if k.endswith("_offset"):
-            cache_cmp["offsets_equal"] &= bool(int(a) == int(b))
+            cache_cmp["offsets_equal"] &= bool(int(c["fused"][k]) == int(c["gemm"][k]))
             continue
+        a, b = c["fused"][k], c["gemm"][k]
+        ci, j = k[1:].split("_")
+        is_attn = f"c{ci}_offset" in c["fused"].files
+        cls = ("kv_k" if j == "0" else "kv_v") if is_attn else ("conv" if j == "0" else "state")
         dd = float(np.abs(a.astype(np.float64) - b.astype(np.float64)).max())
-        cache_cmp["max_abs_by_array"][k] = dd
-        cache_cmp["bit_identical"] &= dd == 0.0
         den = float(np.abs(a).max()) or 1e-30
-        cache_cmp["state_max_rel"] = max(cache_cmp["state_max_rel"], dd / den)
+        e = cache_cmp["classes"][cls]
+        e["max_abs"] = max(e["max_abs"], dd)
+        e["max_rel_to_array_max"] = max(e["max_rel_to_array_max"], dd / den)
+        e["arrays"] += 1
+        cache_cmp["bit_identical"] &= dd == 0.0
     dec_cmp = compare_logits(d["fused"], d["gemm"])
     dec_cmp["per_step_argmax_equal"] = [bool(x) for x in (d["fused"].argmax(-1) == d["gemm"].argmax(-1))]
     rec = provenance("compare") | {
@@ -221,7 +243,9 @@ def mode_compare():
         "final_logits": compare_logits(f["fused"][None], f["gemm"][None]),
         "cache_after_prefill": cache_cmp, "decode_logits": dec_cmp}
     json.dump(rec, open(rpath, "w"), indent=1)
-    print(f"[compare] final {rec['final_logits']}; cache bit_identical {cache_cmp['bit_identical']} rel {cache_cmp['state_max_rel']:.1e} "
+    cl = cache_cmp["classes"]
+    print(f"[compare] final {rec['final_logits']}; cache bit_identical {cache_cmp['bit_identical']} state rel {cl['state']['max_rel_to_array_max']:.1e} "
+          f"conv abs {cl['conv']['max_abs']:.1e} kv abs {max(cl['kv_k']['max_abs'], cl['kv_v']['max_abs']):.1e} "
           f"offsets {cache_cmp['offsets_equal']}; decode argmax {dec_cmp['argmax_identical']}/{dec_cmp['positions']} max abs {dec_cmp['max_abs']:.2e}; wrote {rpath}")
 
 
@@ -261,8 +285,12 @@ def mode_census():
     rec_head = _RecordingHead()
     model.language_model.lm_head = rec_head
     n_live = sum(gen_lengths) if not SMOKE else min(8, gen_lengths[0])
-    logits_out = np.lib.format.open_memmap(os.path.join(DUMP, "draft_logits_fp16.npy"), mode="w+", dtype=np.float16, shape=(n_live, V_LIVE))
-    hidden_out = np.lib.format.open_memmap(os.path.join(DUMP, "draft_hidden_fp32.npy"), mode="w+", dtype=np.float32, shape=(n_live, 5120))
+    commit = git_head()
+    dump_names = {"logits": f"draft_logits_fp16_{commit}.npy", "hidden": f"draft_hidden_fp32_{commit}.npy"}
+    for nm in dump_names.values():
+        refuse(os.path.join(DUMP, nm))
+    logits_out = np.lib.format.open_memmap(os.path.join(DUMP, dump_names["logits"]), mode="w+", dtype=np.float16, shape=(n_live, V_LIVE))
+    hidden_out = np.lib.format.open_memmap(os.path.join(DUMP, dump_names["hidden"]), mode="w+", dtype=np.float32, shape=(n_live, 5120))
     pos = 0
     agree_e0 = agree_teacher = 0
     topk_max_abs = 0.0
@@ -331,8 +359,7 @@ def mode_census():
         "agree_rate_teacher": agree_teacher / pos, "topk16_logit_max_abs_diff_vs_e0": topk_max_abs,
         "mismatches_vs_e0": mismatches, "per_prompt": per_prompt, "wall_s": wall_all,
         "matrix_calls": {k: counts1[k] - counts0[k] for k in counts0}, "memory_after": mem,
-        "v_live": V_LIVE, "dumps": {"draft_logits_fp16.npy": sha_file(os.path.join(DUMP, "draft_logits_fp16.npy")),
-                                    "draft_hidden_fp32.npy": sha_file(os.path.join(DUMP, "draft_hidden_fp32.npy"))}}
+        "v_live": V_LIVE, "dump_dir": DUMP, "dumps": {nm: sha_file(os.path.join(DUMP, nm)) for nm in dump_names.values()}}
     json.dump(rec, open(rpath, "w"), indent=1)
     print(f"[census] {pos} positions: argmax equal to E0 {agree_e0}/{pos}, teacher agreement {agree_teacher}/{pos} "
           f"({agree_teacher / pos:.4f} v E0 {e0_summary['agree_rate_pooled']:.4f}), top-16 max abs {topk_max_abs:.2e}, "

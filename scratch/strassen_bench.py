@@ -42,6 +42,18 @@ def git_head():
     return subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip()
 
 
+def git_dirty():
+    return bool(subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True).stdout.strip())
+
+
+def effective_levels(m, k, n, levels):
+    """Recursion depth the scheme reaches: it stops when a dimension is odd or below 64."""
+    d = 0
+    while d < levels and min(m, k, n) % 2 == 0 and min(m, k, n) >= 64:
+        m, k, n, d = m // 2, k // 2, n // 2, d + 1
+    return d
+
+
 def split2(A, lib):
     m, n = A.shape
     return A[: m // 2, : n // 2], A[: m // 2, n // 2:], A[m // 2:, : n // 2], A[m // 2:, n // 2:]
@@ -81,13 +93,14 @@ def strassen(A, B, lib, levels):
     return lib.concatenate([top, bot], axis=0)
 
 
-def temporaries_bytes(m, k, n, levels, itemsize=4):
-    """Block sums (4 of A's quarter, 4 of B's quarter), 7 quarter products and
-    the 7 combination sums alive at one level (worst case, no reuse)."""
+def temporaries_bytes_model(m, k, n, levels, itemsize=4):
+    """A counting model, not a measurement: block sums (4 of A's quarter, 4
+    of B's quarter), 7 quarter products, the 7 combination sums and the
+    three concatenation outputs of one level (no reuse), recursively."""
     if levels == 0:
         return 0
     a_q, b_q, c_q = (m // 2) * (k // 2), (k // 2) * (n // 2), (m // 2) * (n // 2)
-    return itemsize * (4 * a_q + 4 * b_q + 14 * c_q) + temporaries_bytes(m // 2, k // 2, n // 2, levels - 1, itemsize)
+    return itemsize * (4 * a_q + 4 * b_q + 14 * c_q + 2 * (2 * c_q) + m * n) + temporaries_bytes_model(m // 2, k // 2, n // 2, levels - 1, itemsize)
 
 
 def mult_ratio(levels):
@@ -108,7 +121,7 @@ def time_fn(fn, evaluate, rounds):
 def main():
     import mlx.core as mx
     out_dir = "logs/qmetal/strassen_smoke" if SMOKE else "logs/qmetal/strassen"
-    out = os.environ.get("OUT", os.path.join(out_dir, f"bench_{git_head()}.json"))
+    out = os.path.join(out_dir, f"bench_{git_head()}.json") if SMOKE else os.environ.get("OUT", os.path.join(out_dir, f"bench_{git_head()}.json"))
     if os.path.exists(out):
         raise SystemExit(f"REFUSING: {out} exists")
     os.makedirs(os.path.dirname(out), exist_ok=True)
@@ -124,10 +137,10 @@ def main():
         for lv in (1, 2):
             y = strassen(A, B, np, lv)
             rel = float(np.linalg.norm(y - ref) / np.linalg.norm(ref))
-            oracle.append({"shape": [m, k, n], "levels": lv, "rel_fro_vs_f64_product": rel, "pass": rel < 1e-12})
+            oracle.append({"shape": [m, k, n], "levels": lv, "effective_levels": effective_levels(m, k, n, lv), "rel_fro_vs_f64_product": rel, "pass": rel < 1e-12})
     if not all(o["pass"] for o in oracle):
         raise SystemExit(f"REFUSING: float64 Strassen oracle failed: {oracle}")
-    rec = {"code_commit": git_head(), "smoke": SMOKE, "rounds": ROUNDS, "mlx_version": mx.__version__,
+    rec = {"code_commit": git_head(), "tree_dirty": git_dirty(), "smoke": SMOKE, "rounds": ROUNDS, "mlx_version": mx.__version__,
            "device": str(mx.default_device()), "oracle_f64": oracle, "shapes": []}
     for (m, k, n) in shapes:
         A32 = rng.standard_normal((m, k)).astype(np.float32)
@@ -143,15 +156,20 @@ def main():
             for lv in (0, 1, 2):
                 if lv and (min(m, k, n) % (2 ** lv)):
                     continue
+                if lib_name == "mlx_f32":
+                    mx.reset_peak_memory()
                 t, y = time_fn(lambda: strassen(A, B, lib, lv) if lv else lib.matmul(A, B), ev, ROUNDS)
+                peak = int(mx.get_peak_memory()) if lib_name == "mlx_f32" else None
                 y64 = np.asarray(y, dtype=np.float64)
                 err = {"max_abs_over_ref_max": float(np.abs(y64 - ref64).max() / ref_scale),
                        "rel_fro": float(np.linalg.norm(y64 - ref64) / np.linalg.norm(ref64))}
+                el = effective_levels(m, k, n, lv)
                 row["arms"][f"{lib_name}_levels{lv}"] = {
-                    "wall_s": t, "tflops_direct_equivalent": 2.0 * m * k * n / t / 1e12, "mult_ratio": mult_ratio(lv),
-                    "temporaries_bytes": temporaries_bytes(m, k, n, lv), "error": err}
-                print(f"[strassen] {m}x{k}x{n} {lib_name} levels {lv}: {t * 1e3:.1f} ms, err max {err['max_abs_over_ref_max']:.2e} fro {err['rel_fro']:.2e}, "
-                      f"temps {temporaries_bytes(m, k, n, lv) / 1e6:.0f} MB", flush=True)
+                    "wall_s": t, "tflops_direct_equivalent": 2.0 * m * k * n / t / 1e12, "levels_requested": lv,
+                    "effective_levels": el, "mult_ratio": mult_ratio(el),
+                    "temporaries_bytes_model": temporaries_bytes_model(m, k, n, el), "mlx_peak_active_bytes": peak, "error": err}
+                print(f"[strassen] {m}x{k}x{n} {lib_name} levels {lv} (effective {el}): {t * 1e3:.1f} ms, err max {err['max_abs_over_ref_max']:.2e} fro {err['rel_fro']:.2e}, "
+                      f"temps model {temporaries_bytes_model(m, k, n, el) / 1e6:.0f} MB" + (f", mlx peak {peak / 1e6:.0f} MB" if peak else ""), flush=True)
             del y
         for lib_name in ("numpy_f32", "mlx_f32"):
             base = row["arms"].get(f"{lib_name}_levels0")
