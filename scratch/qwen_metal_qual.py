@@ -204,6 +204,7 @@ def build_metal_model(art: str, vdir: str):
 def main() -> None:
     import mlx.core as mx
     import mlx_lm
+    from llmopt.lab import qmetal
     from llmopt.lab import spec_reference as sr
     from transformers import AutoTokenizer
 
@@ -492,6 +493,8 @@ def main() -> None:
             break
     summary["long_context"] = longs
     summary["wall_s"] = time.time() - t_start
+    summary["matrix_calls_by_path"] = qmetal.path_counts(
+        [m.res for _, m in model.named_modules() if type(m).__name__ == "QLinear"])
     summary["process_peak_rss_bytes"] = int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)
     json.dump(summary, open(os.path.join(out, "summary.json"), "w"), indent=1)
     print(f"[qual] wrote {out}: {n} positions, argmax identical {ident}/{n}, top16 max abs "

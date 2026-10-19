@@ -538,3 +538,18 @@ def test_gemm_slabs_and_squeeze(monkeypatch):
     y1 = res.gemm(mx.array(X[0]))
     assert y1.shape == (R,)
     assert not any(isinstance(v, mx.array) and v.dtype == mx.float32 for v in vars(res).values())
+
+
+def test_path_counters(monkeypatch):
+    rng = np.random.default_rng(17)
+    R, C = 5, 512
+    res = _w4_or_skip(_random_w4(rng, R, C), (R, C))
+    assert (res.calls_fused, res.calls_gemm) == (0, 0)
+    _gemm_on(monkeypatch, min_t=16)
+    res.gemm(mx.array(rng.normal(size=(16, C)).astype(np.float32)))
+    res.gemm(mx.array(rng.normal(size=(4, C)).astype(np.float32)))
+    res.gemv(mx.array(rng.normal(size=C).astype(np.float32)))
+    assert (res.calls_fused, res.calls_gemm) == (2, 1)
+    other = qmetal.S16Metal(_random_s16(rng, R, C), (R, C))
+    other.gemv(mx.array(rng.normal(size=C).astype(np.float32)))
+    assert qmetal.path_counts([res, other]) == {"fused": 3, "gemm": 1}

@@ -30,8 +30,10 @@ Modes (MODE env):
           teacher-forced steps from each cache; then the isolated head
           time (lm_head on [1, 5120] and [8, 5120], synced and pipelined,
           and the 32-launch chunk equivalent).
-  mem     ONE configuration per process (CTX, CHUNK, HEAD): peak unified
-          memory after a reset, active memory, RSS, prefill wall and
+  mem     ONE configuration per process (CTX, CHUNK, HEAD, optional
+          CACHE_LIMIT bytes for mx.set_cache_limit): peak in-use unified
+          memory after a reset, active and allocator-cache memory after
+          prefill (their sum is the device footprint), RSS, prefill wall and
           tokens per second, KV offset after prefill and after
           DECODE_STEPS greedy steps. Writes
           logs/qmetal/prefill_head/mem_ctx<CTX>_chunk<CHUNK>_<HEAD>.json.
@@ -175,6 +177,10 @@ def snapshot_cache(cache):
     return [_Snap(c) for c in cache]
 
 
+def residents_of(model):
+    return [m.res for _, m in model.named_modules() if type(m).__name__ == "QLinear"]
+
+
 def decode_after(model, cache, ids_next):
     import mlx.core as mx
     outs = []
@@ -217,6 +223,9 @@ def main() -> None:
         model, info = build_metal_model(art, vdir)
         if not hasattr(model.language_model, "lm_head"):
             raise SystemExit("REFUSING: tied embeddings; the final-position path assumes a separate lm_head")
+        cache_limit = int(os.environ["CACHE_LIMIT"]) if "CACHE_LIMIT" in os.environ else None
+        if cache_limit is not None:
+            mx.set_cache_limit(cache_limit)      # bound the allocator's pool of freed buffers
         base = [int(t) for t in np.random.default_rng(1).integers(1000, 100000, size=ctx)]
         rss0 = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
         mx.clear_cache()
@@ -227,6 +236,8 @@ def main() -> None:
         t_pre = time.perf_counter() - t0
         peak = int(mx.get_peak_memory())
         active = int(mx.get_active_memory())
+        cache_mem = int(mx.get_cache_memory())
+        paths_prefill = qmetal.path_counts(residents_of(model))
         kv_prefill = int(cache[FA_LAYER].offset)
         if lg is None:   # control arm: first token from a full call on the last prompt token is not available; use the
             cur = base[-1]  # last prompt token again as a stand-in so the decode loop measures the same step cost
@@ -240,17 +251,24 @@ def main() -> None:
             cur = int(lz.argmax())
             walls.append(time.perf_counter() - t0)
         st = walls[2:]
-        row = {"provenance": prov, "context": ctx, "chunk": chunk, "head": head,
+        row = {"provenance": prov, "context": ctx, "chunk": chunk, "head": head, "cache_limit_bytes": cache_limit,
+               # device footprint = buffers in use + the allocator's pool of freed buffers; peak_unified_bytes
+               # is the peak of the in-use part only
+               "footprint_after_prefill_bytes": active + cache_mem,
+               "footprint_after_decode_bytes": int(mx.get_active_memory()) + int(mx.get_cache_memory()),
                "resident_payload_bytes": info["payload_resident_bytes"],
                "prefill_s": t_pre, "prefill_tok_per_s": ctx / t_pre,
                "peak_unified_bytes": peak, "active_after_prefill_bytes": active,
+               "allocator_cache_after_prefill_bytes": cache_mem,
+               "matrix_calls_by_path_prefill": paths_prefill,
+               "matrix_calls_by_path_total": qmetal.path_counts(residents_of(model)),
                "peak_rss_before_prefill_bytes": int(rss0), "peak_rss_after_bytes": int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss),
                "decode_median_s": float(np.median(st)), "decode_p90_s": float(np.percentile(st, 90)),
                "decode_steps": dec_steps, "kv_offset_after_prefill": kv_prefill,
                "kv_offset_after_decode": int(cache[FA_LAYER].offset)}
         json.dump(row, open(out, "w"), indent=1)
         print(f"[head mem] ctx {ctx} chunk {chunk} head {head}: prefill {t_pre:.1f}s ({ctx/t_pre:.2f} tok/s), peak {peak/1e9:.2f} GB, "
-              f"active after {active/1e9:.2f} GB, peak rss {row['peak_rss_after_bytes']/1e9:.2f} GB, decode median {np.median(st)*1e3:.1f} ms, "
+              f"active after {active/1e9:.2f} GB, cache after {cache_mem/1e9:.2f} GB (footprint {(active+cache_mem)/1e9:.2f}), peak rss {row['peak_rss_after_bytes']/1e9:.2f} GB, decode median {np.median(st)*1e3:.1f} ms, "
               f"kv offset {kv_prefill} then {row['kv_offset_after_decode']}", flush=True)
         return
 
@@ -353,12 +371,16 @@ def main() -> None:
             fin = np.asarray(lg[0, -1], dtype=np.float32)
             del lg
             peak = int(mx.get_peak_memory())
+            cache_mem = int(mx.get_cache_memory())
+            counts = qmetal.path_counts(residents_of(model))
             kv_prefill = int(cache[FA_LAYER].offset)
             # the cache state AFTER PREFILL, snapshotted to host before the decode steps mutate it
             snap = snapshot_cache(cache)
             dec = decode_after(model, cache, nxt)
             runs[label] = {"head": head, "chunk": ch, "n_chunks": -(-ctx // ch), "prefill_s": t, "tok_per_s": ctx / t,
-                           "peak_in_process_bytes_after_prefill": peak, "final_logits": fin, "cache": snap,
+                           "peak_in_process_bytes_after_prefill": peak, "allocator_cache_after_prefill_bytes": cache_mem,
+                           "matrix_calls_by_path_cumulative_after_prefill": counts,
+                           "prefill_gemm": bool(qmetal._Resident.prefill_gemm), "final_logits": fin, "cache": snap,
                            "cache_after_decode": cache,
                            "argmax": (np.concatenate(stats["argmax"]) if "argmax" in stats else None),
                            "margin": (np.concatenate(stats["margin"]) if "margin" in stats else None),
@@ -418,12 +440,16 @@ def main() -> None:
             fin = np.asarray(lg[0, -1], dtype=np.float32)
             del lg
             peak = int(mx.get_peak_memory())
+            cache_mem = int(mx.get_cache_memory())
+            counts_before = qmetal.path_counts(residents_of(model))
             kv_prefill = int(cache[FA_LAYER].offset)
             snap = snapshot_cache(cache)
             qmetal._Resident.prefill_gemm = False          # decode steps on the qualified fused path in every arm
             dec = decode_after(model, cache, nxt)
             runs[label] = {"path": name, "head": head, "chunk": chunk, "prefill_s": t, "tok_per_s": ctx / t,
-                           "peak_in_process_bytes_after_prefill": peak, "final_logits": fin, "cache": snap,
+                           "peak_in_process_bytes_after_prefill": peak, "allocator_cache_after_prefill_bytes": cache_mem,
+                           "matrix_calls_by_path_cumulative_after_prefill": counts_before,
+                           "final_logits": fin, "cache": snap,
                            "argmax": (np.concatenate(stats["argmax"]) if "argmax" in stats else None),
                            "margin": (np.concatenate(stats["margin"]) if "margin" in stats else None),
                            "decode": dec, "kv_offset_after_prefill": kv_prefill,

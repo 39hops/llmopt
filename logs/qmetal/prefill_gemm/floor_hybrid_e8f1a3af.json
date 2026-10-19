@@ -1,0 +1,78 @@
+{
+ "provenance": {
+  "commit": "e8f1a3af",
+  "tree_dirty_at_launch": false,
+  "mlx_version": "0.31.2",
+  "mlx_lm_version": "0.31.3",
+  "device": "Apple M3 Pro",
+  "smoke": false
+ },
+ "tower": {
+  "chain": "logs/qwenwhole/artifact_digest_C.txt",
+  "chain_sha256": "de7e0180bf49f965c17116b7fbe8c34d2b1529c2431cc234f3a6460ad84b24dc",
+  "n_layers": 64,
+  "families": {
+   "linear_attn": 48,
+   "full_attn": 16
+  },
+  "fused": 402,
+  "raw": 449,
+  "payload_resident_bytes": 9367009856,
+  "kernel_version": 4,
+  "prefill_gemm": true,
+  "gemm_min_t": {
+   "w4": 16,
+   "s16": 32
+  },
+  "gemm_slab_bytes": 419430400,
+  "gemm_ineligible_matrices": 0
+ },
+ "chunk": 256,
+ "rounds": 3,
+ "configs": {
+  "full": {
+   "n_replaced": 0
+  },
+  "no_head": {
+   "n_replaced": 1
+  },
+  "no_w4_mlp": {
+   "n_replaced": 192
+  },
+  "no_fused": {
+   "n_replaced": 401
+  }
+ },
+ "walls_s": {
+  "full": [
+   6.788258666987531,
+   6.734650666941889,
+   6.6458874579984695
+  ],
+  "no_head": [
+   6.3584205829538405,
+   6.398766541969962,
+   6.404406249988824
+  ],
+  "no_w4_mlp": [
+   3.7387799579882994,
+   3.767792333033867,
+   3.7774662089068443
+  ],
+  "no_fused": [
+   2.2488787500187755,
+   2.23515199997928,
+   2.2465578330447897
+  ]
+ },
+ "median_s": {
+  "full": 6.734650666941889,
+  "no_head": 6.398766541969962,
+  "no_w4_mlp": 3.767792333033867,
+  "no_fused": 2.2465578330447897
+ },
+ "matrix_share_s": 4.488092833897099,
+ "head_share_s": 0.3358841249719262,
+ "w4_mlp_share_s": 2.9668583339080215,
+ "note": "stand-ins keep a data dependence on their input so the upstream graph is evaluated; the replaced path still runs the embedding, norms, DeltaNet conv and recurrence and attention cores"
+}

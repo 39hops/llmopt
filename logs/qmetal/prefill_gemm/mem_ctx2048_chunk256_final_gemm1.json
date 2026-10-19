@@ -1,0 +1,33 @@
+{
+ "provenance": {
+  "commit": "e8f1a3af",
+  "tree_dirty_at_launch": false,
+  "mlx_version": "0.31.2",
+  "mlx_lm_version": "0.31.3",
+  "device": "Apple M3 Pro",
+  "kernel_version": 4,
+  "mode": "mem",
+  "smoke": false,
+  "prefill_gemm": true,
+  "gemm_min_t": {
+   "w4": 16,
+   "s16": 32
+  },
+  "gemm_slab_bytes": 419430400
+ },
+ "context": 2048,
+ "chunk": 256,
+ "head": "final",
+ "resident_payload_bytes": 9367009856,
+ "prefill_s": 50.21040670806542,
+ "prefill_tok_per_s": 40.78835712101541,
+ "peak_unified_bytes": 12187395652,
+ "active_after_prefill_bytes": 9458205228,
+ "peak_rss_before_prefill_bytes": 10911825920,
+ "peak_rss_after_bytes": 11248238592,
+ "decode_median_s": 0.12940112553769723,
+ "decode_p90_s": 0.13008596232393757,
+ "decode_steps": 16,
+ "kv_offset_after_prefill": 2048,
+ "kv_offset_after_decode": 2064
+}

@@ -21,7 +21,9 @@ Sections (one process):
               activations drawn from the tower's hidden-state statistics
               (normal, unit scale) and a heavy-tailed draw: max abs and
               relative error of the fused output and of the GEMM output
-              against the float64 oracle, the ratio err / absdot (the
+              against the float64 oracle (T = 1 forces the GEMM path below
+              its production threshold, a reference point only), the ratio
+              err / absdot (the
               cancellation-aware term of the parity bound), and whether the
               GEMM path's error is larger or smaller than the fused
               kernel's on that matrix; also the decode_f32 reconstruction
@@ -163,7 +165,18 @@ def main() -> None:
         mx.eval(*xs)
         rows = max(1, min(R, qmetal.GEMM_SLAB_BYTES // (C * 4)))
         slabs = [(r0, min(R, r0 + rows)) for r0 in range(0, R, rows)]
-        t_dec = timed_pipelined(lambda i: [res.decode_f32(a, b) for a, b in slabs], min(q_, 8))
+        # one slab live at a time (the production shape): decode, evaluate, drop, next slab
+        def decode_all_slabs():
+            for a, b in slabs:
+                mx.eval(res.decode_f32(a, b))
+        for _ in range(2):
+            decode_all_slabs()
+        ts = []
+        for _ in range(max(5, repeats // 5)):
+            t0 = time.perf_counter()
+            decode_all_slabs()
+            ts.append(time.perf_counter() - t0)
+        t_dec = float(np.median(ts))
         if not is_head:
             Wd = res.decode_f32(0, R)
             mx.eval(Wd)
@@ -174,8 +187,10 @@ def main() -> None:
         set_path(True)
         t_both = timed_pipelined(lambda i: res.gemm(xs[i]), q_)
         parts.append({"tensor": info["example"], "codec": codec, "shape": [R, C], "slabs": len(slabs), "T": T,
-                      "decode_all_slabs_s": t_dec, "gemm_on_resident_f32_s": t_mm, "decode_plus_gemm_s": t_both,
-                      "dense_f32_bytes_per_slab": rows * C * 4})
+                      "decode_all_slabs_s": t_dec, "decode_timing": "synced per slab, one slab live at a time",
+                      "gemm_on_resident_f32_s": t_mm,
+                      "gemm_on_resident_f32_note": None if t_mm is not None else "not measured: a dense float32 head is 5.1 GB and is not materialised",
+                      "decode_plus_gemm_s": t_both, "rows_per_slab": rows, "dense_f32_bytes_per_slab": rows * C * 4})
         print(f"[bench] parts {codec} {R}x{C}: decode {t_dec*1e3:.2f} ms ({len(slabs)} slab(s)), gemm "
               f"{(t_mm or 0)*1e3:.2f} ms, path {t_both*1e3:.2f} ms", flush=True)
         del xs
@@ -196,7 +211,7 @@ def main() -> None:
                "decode_f32_bitwise_equal": bool(np.array_equal(Wd, W32) and np.array_equal(np.signbit(Wd), np.signbit(W32))),
                "by_T": {}}
         del Wd
-        for T in (1, 64, 256):
+        for T in (1, 16, 32, 64, 256):
             for draw in ("normal", "heavy"):
                 X = rng.normal(size=(T, C)) if draw == "normal" else rng.standard_t(2.0, size=(T, C)) * 3.0
                 X = X.astype(np.float32)

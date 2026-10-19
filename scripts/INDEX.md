@@ -5373,6 +5373,7 @@ Final-position vocabulary projection for the chunked prefill of the arm C Metal 
 - `compare_caches(c1, c2)`
 - `class _Snap`
 - `snapshot_cache(cache)`
+- `residents_of(model)`
 - `decode_after(model, cache, ids_next)`
 - `main() -> None`
 
@@ -6711,6 +6712,7 @@ Fused Metal decode-and-multiply for the frozen WHOLE-0T payloads (Apple silicon,
 - `class _Resident` (decode_f32, gemv, gemm, payload_bytes)
 - `class W4Metal`
 - `class S16Metal`
+- `path_counts(residents) -> dict` — Summed per-path call counters of an iterable of residents (a run's
 - `resident(buf: bytes, entry: dict)` — Build the resident form for a manifest entry of codec w4 or s16.
 
 ### llmopt/lab/qprefill.py

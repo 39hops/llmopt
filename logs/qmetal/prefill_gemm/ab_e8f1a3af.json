@@ -1,0 +1,249 @@
+{
+ "provenance": {
+  "commit": "e8f1a3af",
+  "tree_dirty_at_launch": false,
+  "mlx_version": "0.31.2",
+  "mlx_lm_version": "0.31.3",
+  "device": "Apple M3 Pro",
+  "kernel_version": 4,
+  "mode": "ab",
+  "smoke": false,
+  "prefill_gemm": false,
+  "gemm_min_t": {
+   "w4": 16,
+   "s16": 32
+  },
+  "gemm_slab_bytes": 419430400
+ },
+ "tower": {
+  "chain": "logs/qwenwhole/artifact_digest_C.txt",
+  "chain_sha256": "de7e0180bf49f965c17116b7fbe8c34d2b1529c2431cc234f3a6460ad84b24dc",
+  "n_layers": 64,
+  "families": {
+   "linear_attn": 48,
+   "full_attn": 16
+  },
+  "fused": 402,
+  "raw": 449,
+  "payload_resident_bytes": 9367009856,
+  "kernel_version": 4,
+  "prefill_gemm": false,
+  "gemm_min_t": {
+   "w4": 16,
+   "s16": 32
+  },
+  "gemm_slab_bytes": 419430400,
+  "gemm_ineligible_matrices": 0
+ },
+ "context": 1024,
+ "chunk": 256,
+ "decode_steps": 16,
+ "runs": {
+  "fused_full": {
+   "path": "fused",
+   "head": "full",
+   "chunk": 256,
+   "prefill_s": 122.53161525004543,
+   "tok_per_s": 8.357026861274647,
+   "peak_in_process_bytes_after_prefill": 11408313924,
+   "kv_offset_after_prefill": 1024,
+   "kv_offset_after_decode": 1040
+  },
+  "gemm_full": {
+   "path": "gemm",
+   "head": "full",
+   "chunk": 256,
+   "prefill_s": 26.40685254195705,
+   "tok_per_s": 38.777813386619904,
+   "peak_in_process_bytes_after_prefill": 15025278508,
+   "kv_offset_after_prefill": 1024,
+   "kv_offset_after_decode": 1040
+  },
+  "fused_final": {
+   "path": "fused",
+   "head": "final",
+   "chunk": 256,
+   "prefill_s": 118.19312470802106,
+   "tok_per_s": 8.663786514906372,
+   "peak_in_process_bytes_after_prefill": 12246598212,
+   "kv_offset_after_prefill": 1024,
+   "kv_offset_after_decode": 1040
+  },
+  "gemm_final": {
+   "path": "gemm",
+   "head": "final",
+   "chunk": 256,
+   "prefill_s": 25.56415620900225,
+   "tok_per_s": 40.056084449969255,
+   "peak_in_process_bytes_after_prefill": 13403428420,
+   "kv_offset_after_prefill": 1024,
+   "kv_offset_after_decode": 1040
+  }
+ },
+ "pairs": [
+  {
+   "pair": [
+    "fused_full",
+    "gemm_full"
+   ],
+   "final_logits": {
+    "positions": 1,
+    "max_abs": 6.4849853515625e-05,
+    "max_rel": 2.7773049098503165e-06,
+    "bit_identical": false,
+    "argmax_identical": 1,
+    "margin_abs_diff_max": 5.7220458984375e-06,
+    "min_margin_at_mismatch": null
+   },
+   "cache_after_prefill": {
+    "kv_offsets_equal": true,
+    "kv_offsets": [
+     [
+      1024,
+      1024
+     ]
+    ],
+    "kv_k_max_abs": 0.0016770362854003906,
+    "kv_v_max_abs": 0.012418746948242188,
+    "conv_max_abs": 9.5367431640625e-05,
+    "state_max_abs": 3.555417060852051e-05,
+    "state_max_rel": 1.1637458639903583e-05,
+    "bit_identical": false
+   },
+   "decode_after": {
+    "positions": 16,
+    "max_abs": 0.00011730194091796875,
+    "max_rel": 3.643309243259197e-06,
+    "bit_identical": false,
+    "argmax_identical": 16,
+    "margin_abs_diff_max": 7.2479248046875e-05,
+    "min_margin_at_mismatch": null
+   },
+   "all_positions": {
+    "positions": 1024,
+    "argmax_identical": 1024,
+    "margin_abs_diff_max": 0.0007228851318359375,
+    "margin_abs_diff_median": 2.6702880859375e-05,
+    "min_margin_at_mismatch": null
+   }
+  },
+  {
+   "pair": [
+    "fused_final",
+    "gemm_final"
+   ],
+   "final_logits": {
+    "positions": 1,
+    "max_abs": 4.559755325317383e-05,
+    "max_rel": 1.952792514738504e-06,
+    "bit_identical": false,
+    "argmax_identical": 1,
+    "margin_abs_diff_max": 2.288818359375e-05,
+    "min_margin_at_mismatch": null
+   },
+   "cache_after_prefill": {
+    "kv_offsets_equal": true,
+    "kv_offsets": [
+     [
+      1024,
+      1024
+     ]
+    ],
+    "kv_k_max_abs": 0.0016770362854003906,
+    "kv_v_max_abs": 0.012418746948242188,
+    "conv_max_abs": 9.5367431640625e-05,
+    "state_max_abs": 3.555417060852051e-05,
+    "state_max_rel": 1.1637458639903583e-05,
+    "bit_identical": false
+   },
+   "decode_after": {
+    "positions": 16,
+    "max_abs": 0.00011730194091796875,
+    "max_rel": 3.643309243259197e-06,
+    "bit_identical": false,
+    "argmax_identical": 16,
+    "margin_abs_diff_max": 7.2479248046875e-05,
+    "min_margin_at_mismatch": null
+   }
+  },
+  {
+   "pair": [
+    "fused_full",
+    "fused_final"
+   ],
+   "final_logits": {
+    "positions": 1,
+    "max_abs": 0.0,
+    "max_rel": 0.0,
+    "bit_identical": true,
+    "argmax_identical": 1,
+    "margin_abs_diff_max": 0.0,
+    "min_margin_at_mismatch": null
+   },
+   "cache_after_prefill": {
+    "kv_offsets_equal": true,
+    "kv_offsets": [
+     [
+      1024,
+      1024
+     ]
+    ],
+    "kv_k_max_abs": 0.0,
+    "kv_v_max_abs": 0.0,
+    "conv_max_abs": 0.0,
+    "state_max_abs": 0.0,
+    "state_max_rel": 0.0,
+    "bit_identical": true
+   },
+   "decode_after": {
+    "positions": 16,
+    "max_abs": 0.0,
+    "max_rel": 0.0,
+    "bit_identical": true,
+    "argmax_identical": 16,
+    "margin_abs_diff_max": 0.0,
+    "min_margin_at_mismatch": null
+   }
+  },
+  {
+   "pair": [
+    "gemm_full",
+    "gemm_final"
+   ],
+   "final_logits": {
+    "positions": 1,
+    "max_abs": 3.528594970703125e-05,
+    "max_rel": 1.5111808595956145e-06,
+    "bit_identical": false,
+    "argmax_identical": 1,
+    "margin_abs_diff_max": 2.86102294921875e-05,
+    "min_margin_at_mismatch": null
+   },
+   "cache_after_prefill": {
+    "kv_offsets_equal": true,
+    "kv_offsets": [
+     [
+      1024,
+      1024
+     ]
+    ],
+    "kv_k_max_abs": 0.0,
+    "kv_v_max_abs": 0.0,
+    "conv_max_abs": 0.0,
+    "state_max_abs": 0.0,
+    "state_max_rel": 0.0,
+    "bit_identical": true
+   },
+   "decode_after": {
+    "positions": 16,
+    "max_abs": 0.0,
+    "max_rel": 0.0,
+    "bit_identical": true,
+    "argmax_identical": 16,
+    "margin_abs_diff_max": 0.0,
+    "min_margin_at_mismatch": null
+   }
+  }
+ ],
+ "note": "real E0 tokens; the gemm arms prefill through the decode-once path and decode through the fused path; cache comparison on host snapshots taken before the decode steps; in-process peaks share one allocator"
+}

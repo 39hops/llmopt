@@ -11,7 +11,8 @@ The on-disk formats are those of llmopt.lab.qcodec and are not changed:
 Neither is affine 4-bit quantization: there is no zero point and the
 codebook / level table is per tensor.
 
-Kernels never materialize a decoded matrix. One simdgroup (32 lanes)
+The fused kernels never materialize a decoded matrix (the decode-once
+GEMM path below does, one row slab at a time). One simdgroup (32 lanes)
 owns one output row; each lane streams 32-bit words of the row's
 payload (w4: 4 index bytes = 16 weights; s16: 4 code bytes = 8
 weights), rebuilds the block scale from the exponent byte exactly as
@@ -47,10 +48,13 @@ measured crossovers) a matrix whose blocks are all in the normal
 exponent class and whose table is finite is decoded once to float32 on
 the device, in row slabs of at most GEMM_SLAB_BYTES, and multiplied with
 mx.matmul; the decoded slab is a temporary consumed by its matmul and
-nothing is kept on the resident. The decoded value is the number the
-fused kernels multiply (a half value times a power of two, exact in
-float32 for that class, signed zero preserved; tests pin bit equality
-with qcodec's decode). Every matrix with an exceptional block (below
+nothing is kept on the resident (how many slabs are live at once is
+MLX's scheduling; measured about +0.9 GB over the fused path on the
+tower). The decoded value is qcodec's decoded weight (a half value times
+a power of two, exact in float32 for that class, signed zero preserved;
+tests pin bit equality), where the fused kernels multiply the table value
+by x and apply the scale to the word partial, the same product in exact
+arithmetic. Every matrix with an exceptional block (below
 2^-96, at 2^64 and above, or the infinite 255) or a nonfinite table
 entry, and every tile below the threshold, runs the fused kernels, so the
 exceptional-value semantics above are untouched. The GEMM's blocked
@@ -460,8 +464,8 @@ E_HI = 191
 PREFILL_GEMM = os.environ.get("QMETAL_PREFILL_GEMM", "0") == "1"
 # per-codec thresholds from the measured crossover (logs/qmetal/prefill_gemm/
 # bench_9c427901.json: the GEMM path wins from T = 16 on every W4 shape,
-# interpolated crossover 15 to 16, and from T = 32 on every S16 shape,
-# crossover 25 to 26); QMETAL_GEMM_MIN_T overrides both
+# interpolated crossover 15.2 to 15.8, and from T = 32 on every S16 shape,
+# crossover 25.2 to 26.2); QMETAL_GEMM_MIN_T overrides both
 GEMM_MIN_T_BY_CODEC = {"w4": 16, "s16": 32}
 GEMM_MIN_T = int(os.environ["QMETAL_GEMM_MIN_T"]) if "QMETAL_GEMM_MIN_T" in os.environ else None
 GEMM_SLAB_BYTES = int(os.environ.get("QMETAL_GEMM_SLAB_BYTES", str(400 * 1024 * 1024)))
@@ -534,6 +538,8 @@ class _Resident:
     gemm_min_t = GEMM_MIN_T      # None: the per-codec default of GEMM_MIN_T_BY_CODEC
     gemm_ok = False          # set per matrix: all blocks normal-class, tables finite
     last_path = None         # "fused" or "gemm", the path the last call took
+    calls_fused = 0          # per-resident call counters by path (provenance for a run)
+    calls_gemm = 0
 
     @staticmethod
     def _gemm_eligible(exps: np.ndarray, table: np.ndarray) -> bool:
@@ -582,9 +588,11 @@ class _Resident:
         min_t = self.gemm_min_t if self.gemm_min_t is not None else GEMM_MIN_T_BY_CODEC[self.codec]
         if self.prefill_gemm and self.gemm_ok and T >= min_t:
             self.last_path = "gemm"
+            self.calls_gemm += 1
             y = self._gemm_decoded(x2)
             return y[0] if squeeze else y
         self.last_path = "fused"
+        self.calls_fused += 1
         outs = []
         for t0 in range(0, T, TILE):
             xt = x2[t0:t0 + TILE]
@@ -675,6 +683,17 @@ class S16Metal(_Resident):
 
     def _parts(self):
         return (self.codes, self.lv, self.exps)
+
+
+def path_counts(residents) -> dict:
+    """Summed per-path call counters of an iterable of residents (a run's
+    provenance: how many matrix calls took the fused kernels and how many
+    the decode-once GEMM path)."""
+    fused = gemm = 0
+    for r in residents:
+        fused += int(getattr(r, "calls_fused", 0))
+        gemm += int(getattr(r, "calls_gemm", 0))
+    return {"fused": fused, "gemm": gemm}
 
 
 def resident(buf: bytes, entry: dict):
