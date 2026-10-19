@@ -1,0 +1,38 @@
+== bench 02:00:56
+[bench] w4 17408x5120 (x128): T8 fused 3.59 / gemm 6.66 ms, T16 fused 6.94 / gemm 6.28 ms, T32 fused 13.88 / gemm 6.34 ms, T64 fused 27.83 / gemm 6.37 ms, T128 fused 55.52 / gemm 9.03 ms, T256 fused 110.72 / gemm 14.87 ms; gemm wins from T=16 (interp 15.20640620504439)
+[bench] parts w4 17408x5120: decode 3.37 ms (1 slab(s)), gemm 11.23 ms, path 14.95 ms
+[bench] numerics w4 17408x5120: decode bitwise True; T256 normal fused 1.53e-08 gemm 3.30e-07 (err/absdot)
+[bench] s16 5120x6144 (x64): T8 fused 0.82 / gemm 2.21 ms, T16 fused 1.67 / gemm 2.22 ms, T32 fused 3.26 / gemm 2.62 ms, T64 fused 6.72 / gemm 2.62 ms, T128 fused 13.44 / gemm 3.25 ms, T256 fused 26.06 / gemm 5.34 ms; gemm wins from T=32 (interp 26.034607751455738)
+[bench] parts s16 5120x6144: decode 1.21 ms (1 slab(s)), gemm 4.04 ms, path 5.28 ms
+[bench] numerics s16 5120x6144: decode bitwise True; T256 normal fused 1.37e-08 gemm 2.92e-07 (err/absdot)
+[bench] w4 5120x17408 (x64): T8 fused 3.38 / gemm 6.26 ms, T16 fused 6.51 / gemm 6.38 ms, T32 fused 12.96 / gemm 7.28 ms, T64 fused 26.16 / gemm 9.66 ms, T128 fused 52.06 / gemm 11.51 ms, T256 fused 103.51 / gemm 20.05 ms; gemm wins from T=16 (interp 15.815393931173526)
+[bench] parts w4 5120x17408: decode 3.39 ms (1 slab(s)), gemm 16.50 ms, path 20.20 ms
+[bench] numerics w4 5120x17408: decode bitwise True; T256 normal fused 9.82e-09 gemm 3.50e-07 (err/absdot)
+[bench] s16 10240x5120 (x48): T8 fused 1.32 / gemm 3.74 ms, T16 fused 2.69 / gemm 3.74 ms, T32 fused 5.26 / gemm 3.81 ms, T64 fused 10.79 / gemm 3.84 ms, T128 fused 21.45 / gemm 5.37 ms, T256 fused 42.70 / gemm 8.71 ms; gemm wins from T=32 (interp 25.34519826232652)
+[bench] parts s16 10240x5120: decode 2.07 ms (1 slab(s)), gemm 6.62 ms, path 8.75 ms
+[bench] numerics s16 10240x5120: decode bitwise True; T256 normal fused 1.65e-08 gemm 3.56e-07 (err/absdot)
+[bench] s16 6144x5120 (x48): T8 fused 0.78 / gemm 2.25 ms, T16 fused 1.60 / gemm 2.26 ms, T32 fused 3.12 / gemm 2.28 ms, T64 fused 6.26 / gemm 2.30 ms, T128 fused 12.99 / gemm 3.30 ms, T256 fused 25.03 / gemm 5.29 ms; gemm wins from T=32 (interp 25.66297214737613)
+[bench] parts s16 6144x5120: decode 1.21 ms (1 slab(s)), gemm 3.98 ms, path 5.27 ms
+[bench] numerics s16 6144x5120: decode bitwise True; T256 normal fused 1.46e-08 gemm 3.19e-07 (err/absdot)
+[bench] s16 1024x5120 (x32): T8 fused 0.14 / gemm 0.35 ms, T16 fused 0.27 / gemm 0.38 ms, T32 fused 0.52 / gemm 0.40 ms, T64 fused 1.11 / gemm 0.46 ms, T128 fused 2.23 / gemm 0.72 ms, T256 fused 4.23 / gemm 0.95 ms; gemm wins from T=32 (interp 26.23020615103821)
+[bench] parts s16 1024x5120: decode 0.25 ms (1 slab(s)), gemm 0.81 ms, path 0.95 ms
+[bench] numerics s16 1024x5120: decode bitwise True; T256 normal fused 1.32e-08 gemm 1.60e-07 (err/absdot)
+[bench] s16 12288x5120 (x16): T8 fused 1.60 / gemm 4.50 ms, T16 fused 3.23 / gemm 4.51 ms, T32 fused 6.38 / gemm 4.56 ms, T64 fused 13.06 / gemm 4.57 ms, T128 fused 25.68 / gemm 6.41 ms, T256 fused 51.56 / gemm 10.46 ms; gemm wins from T=32 (interp 25.32738913393863)
+[bench] parts s16 12288x5120: decode 2.46 ms (1 slab(s)), gemm 7.97 ms, path 10.68 ms
+[bench] numerics s16 12288x5120: decode bitwise True; T256 normal fused 1.80e-08 gemm 3.68e-07 (err/absdot)
+[bench] s16 248320x5120 (x1): T8 fused 33.28 / gemm 91.34 ms, T16 fused 65.92 / gemm 92.11 ms, T32 fused 132.62 / gemm 93.57 ms, T64 fused 265.26 / gemm 94.82 ms, T128 fused 527.68 / gemm 136.46 ms, T256 fused 1054.69 / gemm 222.67 ms; gemm wins from T=32 (interp 25.188805591202588)
+[bench] parts s16 248320x5120: decode 50.80 ms (13 slab(s)), gemm 0.00 ms, path 223.89 ms
+[bench] numerics s16 248320x5120: decode bitwise True; T256 normal fused 1.41e-08 gemm 3.48e-07 (err/absdot)
+[bench] summary {"gemm_wins_from_T": {"w4 [17408, 5120]": 16, "s16 [5120, 6144]": 32, "w4 [5120, 17408]": 16, "s16 [10240, 5120]": 32, "s16 [6144, 5120]": 32, "s16 [1024, 5120]": 32, "s16 [12288, 5120]": 32, "s16 [248320, 5120]": 32}, "crossover_T_interpolated": {"w4 [17408, 5120]": 15.20640620504439, "s16 [5120, 6144]": 26.034607751455738, "w4 [5120, 17408]": 15.815393931173526, "s16 [10240, 5120]": 25.34519826232652, "s16 [6144, 5120]": 25.66297214737613, "s16 [1024, 5120]": 26.23020615103821, "s16 [12288, 5120]": 25.32738913393863, "s16 [248320, 5120]": 25.188805591202588}, "worst_gemm_err_over_absdot": 3.4437799866764634e-06, "worst_fused_err_over_absdot": 1.947963674464716e-07, "decode_bitwise_equal_all": true}; wrote logs/qmetal/prefill_gemm/bench_9c427901.json
+== skip floor (ONLY=bench)
+== skip ab (ONLY=bench)
+== skip mem ctx 512 gemm 0 (ONLY=bench)
+== skip mem ctx 512 gemm 1 (ONLY=bench)
+== skip mem ctx 1024 gemm 0 (ONLY=bench)
+== skip mem ctx 1024 gemm 1 (ONLY=bench)
+== skip mem ctx 2048 gemm 0 (ONLY=bench)
+== skip mem ctx 2048 gemm 1 (ONLY=bench)
+== skip mem ctx 4096 gemm 0 (ONLY=bench)
+== skip mem ctx 4096 gemm 1 (ONLY=bench)
+== skip qual (ONLY=bench)
+== study done 02:06:09

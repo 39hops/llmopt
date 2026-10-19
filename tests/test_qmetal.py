@@ -492,6 +492,18 @@ def test_gemm_threshold_and_control(monkeypatch):
     R, C = 9, 512
     buf = _random_w4(rng, R, C)
     res = _w4_or_skip(buf, (R, C))
+    # per-codec defaults (the measured crossovers): W4 16, S16 32
+    monkeypatch.setattr(qmetal._Resident, "prefill_gemm", True)
+    monkeypatch.setattr(qmetal._Resident, "gemm_min_t", None)
+    res.gemm(mx.array(rng.normal(size=(15, C)).astype(np.float32)))
+    assert res.last_path == "fused"
+    res.gemm(mx.array(rng.normal(size=(16, C)).astype(np.float32)))
+    assert res.last_path == "gemm"
+    rs = qmetal.S16Metal(_random_s16(rng, R, C), (R, C))
+    rs.gemm(mx.array(rng.normal(size=(31, C)).astype(np.float32)))
+    assert rs.last_path == "fused"
+    rs.gemm(mx.array(rng.normal(size=(32, C)).astype(np.float32)))
+    assert rs.last_path == "gemm"
     _gemm_on(monkeypatch, min_t=32)
     res.gemm(mx.array(rng.normal(size=(31, C)).astype(np.float32)))
     assert res.last_path == "fused"

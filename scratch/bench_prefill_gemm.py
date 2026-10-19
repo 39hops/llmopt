@@ -57,7 +57,7 @@ def provenance() -> dict:
                            text=True).stdout.strip()
     return {"commit": head, "tree_dirty_at_launch": bool(dirty), "mlx_version": mx.__version__,
             "mlx_lm_version": mlx_lm.__version__, "device": mx.device_info().get("device_name"),
-            "kernel_version": qmetal.VERSION, "gemm_min_t_default": qmetal.GEMM_MIN_T,
+            "kernel_version": qmetal.VERSION, "gemm_min_t_default": (qmetal.GEMM_MIN_T if qmetal.GEMM_MIN_T is not None else dict(qmetal.GEMM_MIN_T_BY_CODEC)),
             "gemm_slab_bytes": qmetal.GEMM_SLAB_BYTES, "smoke": os.environ.get("SMOKE") == "1"}
 
 

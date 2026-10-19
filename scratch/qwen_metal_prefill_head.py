@@ -201,7 +201,7 @@ def main() -> None:
     prov = {"commit": head_cmd, "tree_dirty_at_launch": dirty, "mlx_version": mx.__version__,
             "mlx_lm_version": mlx_lm.__version__, "device": mx.device_info().get("device_name"),
             "kernel_version": qmetal.VERSION, "mode": mode, "smoke": os.environ.get("SMOKE") == "1",
-            "prefill_gemm": bool(qmetal._Resident.prefill_gemm), "gemm_min_t": int(qmetal._Resident.gemm_min_t),
+            "prefill_gemm": bool(qmetal._Resident.prefill_gemm), "gemm_min_t": (qmetal._Resident.gemm_min_t if qmetal._Resident.gemm_min_t is not None else dict(qmetal.GEMM_MIN_T_BY_CODEC)),
             "gemm_slab_bytes": int(qmetal.GEMM_SLAB_BYTES)}
     # SMOKE=1 writes every receipt under its own directory, never on a real path
     rdir = "logs/qmetal/prefill_head_smoke" if prov["smoke"] else "logs/qmetal/prefill_head"

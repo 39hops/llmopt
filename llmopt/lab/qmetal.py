@@ -42,7 +42,8 @@ tile of up to TT activations.
 
 Decode-once GEMM path (OBSERVATION QWEN-METAL-PREFILL-STUDY-0; off by
 default, QMETAL_PREFILL_GEMM=1 switches it on): for activation tiles of
-at least GEMM_MIN_T rows a matrix whose blocks are all in the normal
+at least GEMM_MIN_T_BY_CODEC[codec] rows (16 for W4, 32 for S16, the
+measured crossovers) a matrix whose blocks are all in the normal
 exponent class and whose table is finite is decoded once to float32 on
 the device, in row slabs of at most GEMM_SLAB_BYTES, and multiplied with
 mx.matmul; the decoded slab is a temporary consumed by its matmul and
@@ -51,7 +52,7 @@ fused kernels multiply (a half value times a power of two, exact in
 float32 for that class, signed zero preserved; tests pin bit equality
 with qcodec's decode). Every matrix with an exceptional block (below
 2^-96, at 2^64 and above, or the infinite 255) or a nonfinite table
-entry, and every tile below GEMM_MIN_T, runs the fused kernels, so the
+entry, and every tile below the threshold, runs the fused kernels, so the
 exceptional-value semantics above are untouched. The GEMM's blocked
 float32 reduction is a different order from the fused kernels'; its
 parity bound in the tests is 1e-5 |ref| + 1e-5 times the absolute dot,
@@ -457,7 +458,12 @@ E_HI = 191
 # default until qualified (QMETAL_PREFILL_GEMM=1 switches it on); the
 # resident records the path it took in last_path.
 PREFILL_GEMM = os.environ.get("QMETAL_PREFILL_GEMM", "0") == "1"
-GEMM_MIN_T = int(os.environ.get("QMETAL_GEMM_MIN_T", "32"))
+# per-codec thresholds from the measured crossover (logs/qmetal/prefill_gemm/
+# bench_9c427901.json: the GEMM path wins from T = 16 on every W4 shape,
+# interpolated crossover 15 to 16, and from T = 32 on every S16 shape,
+# crossover 25 to 26); QMETAL_GEMM_MIN_T overrides both
+GEMM_MIN_T_BY_CODEC = {"w4": 16, "s16": 32}
+GEMM_MIN_T = int(os.environ["QMETAL_GEMM_MIN_T"]) if "QMETAL_GEMM_MIN_T" in os.environ else None
 GEMM_SLAB_BYTES = int(os.environ.get("QMETAL_GEMM_SLAB_BYTES", str(400 * 1024 * 1024)))
 
 
@@ -525,7 +531,7 @@ class _Resident:
     codec = ""
     version = VERSION
     prefill_gemm = PREFILL_GEMM
-    gemm_min_t = GEMM_MIN_T
+    gemm_min_t = GEMM_MIN_T      # None: the per-codec default of GEMM_MIN_T_BY_CODEC
     gemm_ok = False          # set per matrix: all blocks normal-class, tables finite
     last_path = None         # "fused" or "gemm", the path the last call took
 
@@ -573,7 +579,8 @@ class _Resident:
         if x2.shape[1] != C:
             raise ValueError(f"x width {x2.shape[1]} != C {C}")
         T = x2.shape[0]
-        if self.prefill_gemm and self.gemm_ok and T >= self.gemm_min_t:
+        min_t = self.gemm_min_t if self.gemm_min_t is not None else GEMM_MIN_T_BY_CODEC[self.codec]
+        if self.prefill_gemm and self.gemm_ok and T >= min_t:
             self.last_path = "gemm"
             y = self._gemm_decoded(x2)
             return y[0] if squeeze else y
