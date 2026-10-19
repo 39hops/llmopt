@@ -129,6 +129,7 @@ def main():
     slope = np.full(n, np.nan)
     d_argmax_t_rank = np.full(n, 99, np.int64)
     dump_argmax_mismatch = 0
+    dump_mismatch_rows = []
     for i, r in enumerate(rows):
         zt = np.asarray(teacher[r["step"], prompt_index[r["prompt_id"]], :v_live], dtype=np.float32)
         order = np.argsort(-zt.astype(np.float64), kind="stable")
@@ -148,7 +149,13 @@ def main():
         if have_dump:
             zd = np.asarray(draft[i], dtype=np.float32)
             if int(zd.argmax()) != r["draft_argmax"]:
+                # the dump is fp16; a float32 near-tie can round to the other order (the census receipt
+                # compares in float32 and reports its own count); recorded with the fp16 gap, never silently
+                top2 = np.sort(zd)[-2:]
                 dump_argmax_mismatch += 1
+                dump_mismatch_rows.append({"row": i, "prompt_id": r["prompt_id"], "step": r["step"], "e0_draft_argmax": r["draft_argmax"],
+                                           "dump_argmax": int(zd.argmax()), "fp16_top2_gap": float(top2[1] - top2[0]),
+                                           "e0_draft_margin": r["draft_margin_logit"]})
             a = zd[t_top16[i]].astype(np.float64)
             b = zt[t_top16[i]].astype(np.float64)
             shift = float(np.mean(zd.astype(np.float64)) - np.mean(zt.astype(np.float64)))
@@ -191,10 +198,11 @@ def main():
         "teacher_top2_gap_disagree_all": q((t_logit_top1 - t_logit_top2)[dis]),
     }
     # ---- bias ----
-    bias = {"dump_present": have_dump, "dump_rows_whose_argmax_differs_from_e0_row": dump_argmax_mismatch if have_dump else None,
-            "note": "shift alignment subtracts the mean over the live vocabulary of (draft minus teacher); both records are fp16, so about 0.01 to 0.03 of rounding sits inside every per-logit difference"}
-    if have_dump and dump_argmax_mismatch:
-        raise SystemExit(f"REFUSING: {dump_argmax_mismatch} dump rows disagree with the E0 rows' draft_argmax")
+    bias = {"dump_present": have_dump, "dump_rows_whose_fp16_argmax_differs_from_e0_row": dump_argmax_mismatch if have_dump else None,
+            "dump_fp16_argmax_mismatch_rows": dump_mismatch_rows,
+            "note": "shift alignment subtracts the mean over the live vocabulary of (draft minus teacher); both records are fp16, so about 0.01 to 0.03 of rounding sits inside every per-logit difference; the census receipt's float32 argmax count is the decision-level comparison, the fp16 dump can flip a near-tie"}
+    if have_dump and any(m["fp16_top2_gap"] > 0.0625 for m in dump_mismatch_rows):
+        raise SystemExit(f"REFUSING: a dump row disagrees with its E0 row beyond fp16 tie resolution: {dump_mismatch_rows}")
     if have_dump:
         e = shift_err_top16
         bias.update({
