@@ -5227,7 +5227,10 @@ Extract one gate_proj matrix from HF-cached Qwen2.5-0.5B base and Instruct into 
 ### scratch/qwen_e0_disagreement_census.py
 E0 disagreement census: where and how the compressed arm C departs from the teacher on the 4,722 preserved teacher-greedy positions (read-only analysis of frozen evidence; nothing is trained, fitted or tuned here).
 
+- `git_head()`
+- `git_dirty()`
 - `sha_file(p)`
+- `sha_array_file(path)` — sha256 of the array's bytes (the teacher manifest hashes a.tobytes(), not the .npy file).
 - `bins(v, edges)`
 - `q(a)`
 - `main()`
@@ -6784,7 +6787,7 @@ Chunked prefill for the fused-linear mlx-lm towers (adopted from scratch/qwen_me
 - `_check_ids(ids) -> list`
 - `cache_arrays(cache)` — Every array a cache list holds (for mx.eval and for comparison).
 - `split_body_head(model)`
-- `prefill_chunked(model, ids, cache, chunk: int=256, head: str='final', on_chunk=None, matmul=None)` — Prefill ids (a list of token ids, one unpadded prompt) into cache in
+- `prefill_chunked(model, ids, cache, chunk: int=256, head: str='final', on_chunk=None, matmul='gemm')` — Prefill ids (a list of token ids, one unpadded prompt) into cache in
 - `class _NoScope`
 
 ### llmopt/lab/qrope.py
