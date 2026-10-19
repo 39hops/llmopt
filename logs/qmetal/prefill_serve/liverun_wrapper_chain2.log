@@ -1,0 +1,2 @@
+[liverun] armed qwen-metal-serve-study-2 pid 99245 commit 39a6115c worktree main:llmopt sentinel .git/liverun.lock
+[liverun] disarmed qwen-metal-serve-study-2 rc 1

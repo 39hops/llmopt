@@ -1,0 +1,1469 @@
+{
+ "code_commit": "d42cb215",
+ "tree_dirty": false,
+ "numpy_version": "2.5.1",
+ "python": "3.12.4",
+ "smoke": false,
+ "e0_dir": "logs/qwen_e0/C",
+ "e0_rows_sha256": "f9df9b5ae2a55b95a2f3a64a6bf8594b2346f77e12272448770e9656f3b041c7",
+ "teacher": {
+  "dir": "logs/qwenteacher_v2",
+  "code_commit": "0ca4151",
+  "revision": "1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0",
+  "rollout_sha": "57210b73b05a96a210f82bc4685216798d74787f717424f0cd79be0a126b9642",
+  "rollout_array_sha256_on_disk": "57210b73b05a96a210f82bc4685216798d74787f717424f0cd79be0a126b9642",
+  "rollout_sha_verified": true
+ },
+ "dump": {
+  "census_receipt": "logs/qmetal/prefill_serve/census_d42cb215.json",
+  "census_commit": "d42cb215",
+  "path": "logs/qmetal/prefill_serve/dump/draft_logits_fp16_d42cb215.npy",
+  "present": true,
+  "sha256": "79162c5ddb7d974a445b3399a5bda75084ae2f4fd4117dd6c24f4ca37a0a1a3a"
+ },
+ "n_positions": 4722,
+ "n_agree": 3915,
+ "agree_rate": 0.8290978398983482,
+ "v_live": 248077,
+ "margins": {
+  "edges": [
+   0.0,
+   0.02,
+   0.05,
+   0.1,
+   0.2,
+   0.5,
+   1.0,
+   2.0,
+   5.0,
+   Infinity
+  ],
+  "teacher_margin": {
+   "agree": {
+    "n": 3915,
+    "mean": 7.896617576628352,
+    "p10": 1.0,
+    "p50": 8.0625,
+    "p90": 14.696874999999999,
+    "min": 0.0,
+    "max": 24.265625
+   },
+   "disagree": {
+    "n": 807,
+    "mean": 1.464267735439901,
+    "p10": 0.140625,
+    "p50": 0.90625,
+    "p90": 3.2093749999999996,
+    "min": 0.0,
+    "max": 14.359375
+   }
+  },
+  "draft_margin": {
+   "agree": {
+    "n": 3915,
+    "mean": 6.105808880441795,
+    "p10": 0.848724365234375,
+    "p50": 5.612924575805664,
+    "p90": 11.894377899169921,
+    "min": 0.004802703857421875,
+    "max": 18.26242733001709
+   },
+   "disagree": {
+    "n": 807,
+    "mean": 1.0687265715191356,
+    "p10": 0.12549476623535163,
+    "p50": 0.7646961212158203,
+    "p90": 2.416413116455078,
+    "min": 0.001262664794921875,
+    "max": 8.924039840698242
+   }
+  },
+  "draft_minus_teacher_margin": {
+   "agree": {
+    "n": 3915,
+    "mean": -1.7908086961865577,
+    "p10": -5.226077651977539,
+    "p50": -1.4979896545410156,
+    "p90": 1.2201103210449218,
+    "min": -14.953975677490234,
+    "max": 7.2760009765625
+   },
+   "disagree": {
+    "n": 807,
+    "mean": -0.3955411639207653,
+    "p10": -2.3882713317871094,
+    "p50": -0.10446357727050781,
+    "p90": 1.4485679626464842,
+    "min": -11.825407028198242,
+    "max": 5.035125732421875
+   }
+  },
+  "disagree_rate_by_teacher_margin_bin": [
+   [
+    26,
+    15
+   ],
+   [
+    37,
+    17
+   ],
+   [
+    47,
+    30
+   ],
+   [
+    83,
+    47
+   ],
+   [
+    243,
+    129
+   ],
+   [
+    379,
+    189
+   ],
+   [
+    548,
+    201
+   ],
+   [
+    851,
+    142
+   ],
+   [
+    2508,
+    37
+   ]
+  ],
+  "disagree_rate_by_draft_margin_bin": [
+   [
+    15,
+    9
+   ],
+   [
+    41,
+    24
+   ],
+   [
+    53,
+    28
+   ],
+   [
+    127,
+    75
+   ],
+   [
+    291,
+    156
+   ],
+   [
+    409,
+    186
+   ],
+   [
+    624,
+    210
+   ],
+   [
+    1052,
+    111
+   ],
+   [
+    2110,
+    8
+   ]
+  ],
+  "joint_teacher_by_draft_bin_total_and_disagree": [
+   [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     4,
+     4
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     8,
+     5
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     6,
+     3
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     6,
+     4
+    ],
+    [
+     11,
+     6
+    ],
+    [
+     7,
+     4
+    ],
+    [
+     9,
+     1
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   [
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     5,
+     5
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     7,
+     5
+    ],
+    [
+     10,
+     6
+    ],
+    [
+     9,
+     4
+    ],
+    [
+     9,
+     6
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   [
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     8,
+     4
+    ],
+    [
+     18,
+     9
+    ],
+    [
+     17,
+     10
+    ],
+    [
+     23,
+     14
+    ],
+    [
+     14,
+     8
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   [
+    [
+     4,
+     2
+    ],
+    [
+     6,
+     3
+    ],
+    [
+     7,
+     4
+    ],
+    [
+     13,
+     9
+    ],
+    [
+     37,
+     20
+    ],
+    [
+     58,
+     34
+    ],
+    [
+     78,
+     43
+    ],
+    [
+     37,
+     14
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   [
+    [
+     3,
+     2
+    ],
+    [
+     7,
+     5
+    ],
+    [
+     15,
+     5
+    ],
+    [
+     36,
+     19
+    ],
+    [
+     70,
+     47
+    ],
+    [
+     79,
+     42
+    ],
+    [
+     106,
+     49
+    ],
+    [
+     62,
+     20
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   [
+    [
+     6,
+     3
+    ],
+    [
+     13,
+     11
+    ],
+    [
+     13,
+     6
+    ],
+    [
+     34,
+     15
+    ],
+    [
+     77,
+     37
+    ],
+    [
+     106,
+     44
+    ],
+    [
+     159,
+     56
+    ],
+    [
+     129,
+     27
+    ],
+    [
+     11,
+     2
+    ]
+   ],
+   [
+    [
+     1,
+     1
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     8,
+     5
+    ],
+    [
+     17,
+     13
+    ],
+    [
+     62,
+     28
+    ],
+    [
+     96,
+     32
+    ],
+    [
+     175,
+     31
+    ],
+    [
+     395,
+     26
+    ],
+    [
+     92,
+     3
+    ]
+   ],
+   [
+    [
+     1,
+     1
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     9,
+     6
+    ],
+    [
+     12,
+     4
+    ],
+    [
+     24,
+     7
+    ],
+    [
+     62,
+     8
+    ],
+    [
+     391,
+     6
+    ],
+    [
+     2003,
+     3
+    ]
+   ]
+  ],
+  "draft_margin_above_1_nat_while_wrong": 329,
+  "draft_margin_above_2_nat_while_wrong": 119,
+  "teacher_margin_above_2_nat_while_wrong": 179,
+  "teacher_margin_above_5_nat_while_wrong": 37
+ },
+ "top2": {
+  "n_disagree": 807,
+  "draft_picks_teacher_top2": 450,
+  "draft_picks_a_teacher_top16_token": 789,
+  "draft_picks_outside_teacher_top16": 18,
+  "teacher_token_rank_in_draft_hist_0based": {
+   "1": 458,
+   "2": 138,
+   "3": 78,
+   "4": 34,
+   "5": 26,
+   "6": 16,
+   "7": 14,
+   "8": 5,
+   "9": 9,
+   "10": 1,
+   "11": 3,
+   "12": 5,
+   "13": 4,
+   "14": 1,
+   "15": 2,
+   "16": 13
+  },
+  "teacher_token_rank_note": "0-based as in the E0 rows: 1 = the draft's second choice; 16 = outside the draft's top-16",
+  "teacher_token_is_draft_second": 458,
+  "teacher_token_is_draft_third": 138,
+  "teacher_token_outside_draft_top16": 13,
+  "swap_of_teacher_top2": 320,
+  "draft_argmax_teacher_rank_hist_disagree": {
+   "1": 3,
+   "2": 450,
+   "3": 157,
+   "4": 72,
+   "5": 29,
+   "6": 23,
+   "7": 17,
+   "8": 9,
+   "9": 8,
+   "10": 5,
+   "11": 3,
+   "12": 4,
+   "13": 5,
+   "14": 1,
+   "15": 3,
+   "17": 18
+  },
+  "teacher_top2_gap_when_swapped": {
+   "n": 320,
+   "mean": 1.367919921875,
+   "p10": 0.125,
+   "p50": 1.0703125,
+   "p90": 2.9953125000000025,
+   "min": 0.0,
+   "max": 9.25
+  },
+  "teacher_top2_gap_disagree_all": {
+   "n": 807,
+   "mean": 1.464267735439901,
+   "p10": 0.140625,
+   "p50": 0.90625,
+   "p90": 3.2093749999999996,
+   "min": 0.0,
+   "max": 14.359375
+  }
+ },
+ "bias": {
+  "dump_present": true,
+  "dump_rows_whose_fp16_argmax_differs_from_e0_row": 1,
+  "dump_fp16_argmax_mismatch_rows": [
+   {
+    "row": 3113,
+    "prompt_id": "reason-4",
+    "step": 179,
+    "e0_draft_argmax": 61446,
+    "dump_argmax": 13,
+    "fp16_top2_gap": 0.0,
+    "e0_draft_margin": 0.005706787109375
+   }
+  ],
+  "note": "shift alignment subtracts the mean over the live vocabulary of (draft minus teacher); both records are fp16, so about 0.01 to 0.03 of rounding sits inside every per-logit difference; the census receipt's float32 argmax count is the decision-level comparison, the fp16 dump can flip a near-tie",
+  "shift_aligned_err_on_teacher_top16": {
+   "all": {
+    "n": 75552,
+    "mean": -1.3807804391912104,
+    "p10": -4.261479478227947,
+    "p50": -1.2784735194922252,
+    "p90": 1.3813466770946539,
+    "min": -18.977140281756117,
+    "max": 16.44949188033342
+   },
+   "rank1": {
+    "n": 4722,
+    "mean": -2.90844013702883,
+    "p10": -5.790597141628666,
+    "p50": -2.7010174349986595,
+    "p90": -0.179568811709638,
+    "min": -15.353475613755649,
+    "max": 6.895781437047383
+   },
+   "rank2": {
+    "n": 4722,
+    "mean": -1.8666402839475085,
+    "p10": -4.787339157307323,
+    "p50": -1.735260602619288,
+    "p90": 0.8968524635926799,
+    "min": -15.171265518125386,
+    "max": 7.063160911492613
+   },
+   "rank3_16": {
+    "n": 66108,
+    "mean": -1.2369576147202164,
+    "p10": -4.030432653891655,
+    "p50": -1.1465530844805363,
+    "p90": 1.481184456077297,
+    "min": -18.977140281756117,
+    "max": 16.44949188033342
+   }
+  },
+  "err_rank1_minus_rank2": {
+   "agree": {
+    "n": 3915,
+    "mean": -0.8303869332694763,
+    "p10": -4.2124999999999995,
+    "p50": -0.703125,
+    "p90": 2.40625,
+    "min": -14.953125,
+    "max": 14.6484375
+   },
+   "disagree": {
+    "n": 807,
+    "mean": -2.067427586741016,
+    "p10": -4.6625,
+    "p50": -1.9140625,
+    "p90": 0.390625,
+    "min": -17.1640625,
+    "max": 6.2265625
+   }
+  },
+  "mean_err_by_teacher_rank": [
+   -2.90844013702883,
+   -1.8666402839475085,
+   -1.5172508526617716,
+   -1.4731833147408695,
+   -1.4065091408275383,
+   -1.3796898640380422,
+   -1.2644929218657635,
+   -1.237293207790007,
+   -1.1912203331189402,
+   -1.177427182737001,
+   -1.1786092961841137,
+   -1.1093676645926271,
+   -1.137787789349417,
+   -1.0768640784863692,
+   -1.0583624251342076,
+   -1.1093485345563607
+  ],
+  "logit_scale_slope_draft_on_teacher_top16": {
+   "agree": {
+    "n": 3915,
+    "mean": 0.888980648493972,
+    "p10": 0.724762613596212,
+    "p50": 0.8817273323302159,
+    "p90": 1.0639844591618013,
+    "min": 0.1831133670002354,
+    "max": 1.7421584159099301
+   },
+   "disagree": {
+    "n": 807,
+    "mean": 0.8240246450368761,
+    "p10": 0.5493782458216607,
+    "p50": 0.8335796646786482,
+    "p90": 1.0895859171951354,
+    "min": -0.029820961680342394,
+    "max": 1.8775084532770214
+   }
+  },
+  "draft_overselected_tokens_in_disagreements": [
+   {
+    "token": 13,
+    "draft_picks": 39,
+    "teacher_frequency": 236
+   },
+   {
+    "token": 11,
+    "draft_picks": 24,
+    "teacher_frequency": 145
+   },
+   {
+    "token": 25,
+    "draft_picks": 24,
+    "teacher_frequency": 76
+   },
+   {
+    "token": 760,
+    "draft_picks": 22,
+    "teacher_frequency": 5
+   },
+   {
+    "token": 14235,
+    "draft_picks": 12,
+    "teacher_frequency": 48
+   },
+   {
+    "token": 30,
+    "draft_picks": 12,
+    "teacher_frequency": 30
+   },
+   {
+    "token": 198,
+    "draft_picks": 10,
+    "teacher_frequency": 118
+   },
+   {
+    "token": 310,
+    "draft_picks": 9,
+    "teacher_frequency": 31
+   },
+   {
+    "token": 466,
+    "draft_picks": 9,
+    "teacher_frequency": 20
+   },
+   {
+    "token": 279,
+    "draft_picks": 9,
+    "teacher_frequency": 93
+   },
+   {
+    "token": 4087,
+    "draft_picks": 9,
+    "teacher_frequency": 23
+   },
+   {
+    "token": 4222,
+    "draft_picks": 9,
+    "teacher_frequency": 11
+   },
+   {
+    "token": 10380,
+    "draft_picks": 9,
+    "teacher_frequency": 4
+   },
+   {
+    "token": 220,
+    "draft_picks": 8,
+    "teacher_frequency": 142
+   },
+   {
+    "token": 318,
+    "draft_picks": 8,
+    "teacher_frequency": 17
+   },
+   {
+    "token": 28320,
+    "draft_picks": 7,
+    "teacher_frequency": 9
+   },
+   {
+    "token": 61446,
+    "draft_picks": 7,
+    "teacher_frequency": 20
+   },
+   {
+    "token": 524,
+    "draft_picks": 6,
+    "teacher_frequency": 10
+   },
+   {
+    "token": 6970,
+    "draft_picks": 6,
+    "teacher_frequency": 12
+   },
+   {
+    "token": 6088,
+    "draft_picks": 5,
+    "teacher_frequency": 4
+   }
+  ],
+  "teacher_tokens_most_missed": [
+   {
+    "token": 13,
+    "missed": 31,
+    "teacher_frequency": 236,
+    "miss_rate": 0.13135593220338984
+   },
+   {
+    "token": 11,
+    "missed": 26,
+    "teacher_frequency": 145,
+    "miss_rate": 0.1793103448275862
+   },
+   {
+    "token": 1596,
+    "missed": 20,
+    "teacher_frequency": 24,
+    "miss_rate": 0.8333333333333334
+   },
+   {
+    "token": 1534,
+    "missed": 15,
+    "teacher_frequency": 24,
+    "miss_rate": 0.625
+   },
+   {
+    "token": 198,
+    "missed": 13,
+    "teacher_frequency": 118,
+    "miss_rate": 0.11016949152542373
+   },
+   {
+    "token": 14235,
+    "missed": 13,
+    "teacher_frequency": 48,
+    "miss_rate": 0.2708333333333333
+   },
+   {
+    "token": 271,
+    "missed": 9,
+    "teacher_frequency": 74,
+    "miss_rate": 0.12162162162162163
+   },
+   {
+    "token": 321,
+    "missed": 8,
+    "teacher_frequency": 39,
+    "miss_rate": 0.20512820512820512
+   },
+   {
+    "token": 25,
+    "missed": 8,
+    "teacher_frequency": 76,
+    "miss_rate": 0.10526315789473684
+   },
+   {
+    "token": 279,
+    "missed": 7,
+    "teacher_frequency": 93,
+    "miss_rate": 0.07526881720430108
+   },
+   {
+    "token": 369,
+    "missed": 7,
+    "teacher_frequency": 38,
+    "miss_rate": 0.18421052631578946
+   },
+   {
+    "token": 318,
+    "missed": 7,
+    "teacher_frequency": 17,
+    "miss_rate": 0.4117647058823529
+   },
+   {
+    "token": 13262,
+    "missed": 6,
+    "teacher_frequency": 7,
+    "miss_rate": 0.8571428571428571
+   },
+   {
+    "token": 694,
+    "missed": 6,
+    "teacher_frequency": 12,
+    "miss_rate": 0.5
+   },
+   {
+    "token": 4087,
+    "missed": 6,
+    "teacher_frequency": 23,
+    "miss_rate": 0.2608695652173913
+   },
+   {
+    "token": 7936,
+    "missed": 6,
+    "teacher_frequency": 7,
+    "miss_rate": 0.8571428571428571
+   },
+   {
+    "token": 17,
+    "missed": 6,
+    "teacher_frequency": 52,
+    "miss_rate": 0.11538461538461539
+   },
+   {
+    "token": 30,
+    "missed": 6,
+    "teacher_frequency": 30,
+    "miss_rate": 0.2
+   },
+   {
+    "token": 310,
+    "missed": 6,
+    "teacher_frequency": 31,
+    "miss_rate": 0.1935483870967742
+   },
+   {
+    "token": 2980,
+    "missed": 5,
+    "teacher_frequency": 8,
+    "miss_rate": 0.625
+   }
+  ]
+ },
+ "families": {
+  "chat": {
+   "n": 786,
+   "agree": 656,
+   "agree_rate": 0.8346055979643766,
+   "kl_mean": 0.30814209573640483,
+   "teacher_margin_p50": 5.734375,
+   "disagree_rate_at_teacher_margin_ge_2": 0.043859649122807015
+  },
+  "code": {
+   "n": 972,
+   "agree": 801,
+   "agree_rate": 0.8240740740740741,
+   "kl_mean": 0.31893815172506557,
+   "teacher_margin_p50": 4.1015625,
+   "disagree_rate_at_teacher_margin_ge_2": 0.046251993620414676
+  },
+  "degeneration": {
+   "n": 299,
+   "agree": 245,
+   "agree_rate": 0.8193979933110368,
+   "kl_mean": 0.40620596833685185,
+   "teacher_margin_p50": 6.28125,
+   "disagree_rate_at_teacher_margin_ge_2": 0.10043668122270742
+  },
+  "knowledge": {
+   "n": 725,
+   "agree": 582,
+   "agree_rate": 0.8027586206896552,
+   "kl_mean": 0.35775763552980244,
+   "teacher_margin_p50": 5.15625,
+   "disagree_rate_at_teacher_margin_ge_2": 0.07471264367816093
+  },
+  "long": {
+   "n": 512,
+   "agree": 384,
+   "agree_rate": 0.75,
+   "kl_mean": 0.4783494040230799,
+   "teacher_margin_p50": 3.171875,
+   "disagree_rate_at_teacher_margin_ge_2": 0.08064516129032258
+  },
+  "math": {
+   "n": 611,
+   "agree": 552,
+   "agree_rate": 0.9034369885433715,
+   "kl_mean": 0.16353785133582766,
+   "teacher_margin_p50": 12.078125,
+   "disagree_rate_at_teacher_margin_ge_2": 0.03766478342749529
+  },
+  "reasoning": {
+   "n": 817,
+   "agree": 695,
+   "agree_rate": 0.8506731946144431,
+   "kl_mean": 0.26893052975552595,
+   "teacher_margin_p50": 5.828125,
+   "disagree_rate_at_teacher_margin_ge_2": 0.031578947368421054
+  }
+ },
+ "step_buckets": {
+  "0-0": {
+   "n": 24,
+   "agree_rate": 0.125,
+   "kl_mean": 4.691315361072493,
+   "teacher_margin_p50": 4.65625
+  },
+  "1-3": {
+   "n": 72,
+   "agree_rate": 0.75,
+   "kl_mean": 0.4721977489898131,
+   "teacher_margin_p50": 6.0
+  },
+  "4-15": {
+   "n": 288,
+   "agree_rate": 0.8784722222222222,
+   "kl_mean": 0.24129252826286635,
+   "teacher_margin_p50": 10.0234375
+  },
+  "16-63": {
+   "n": 1141,
+   "agree_rate": 0.8177037686240141,
+   "kl_mean": 0.31102600074327597,
+   "teacher_margin_p50": 5.15625
+  },
+  "64-127": {
+   "n": 1307,
+   "agree_rate": 0.8148431522570773,
+   "kl_mean": 0.34123432067872883,
+   "teacher_margin_p50": 4.90625
+  },
+  "128-255": {
+   "n": 1890,
+   "agree_rate": 0.8502645502645503,
+   "kl_mean": 0.25430382388665995,
+   "teacher_margin_p50": 6.0546875
+  }
+ },
+ "per_prompt": {
+  "chat-1": {
+   "category": "chat",
+   "n": 256,
+   "agree": 226
+  },
+  "chat-2": {
+   "category": "chat",
+   "n": 256,
+   "agree": 193
+  },
+  "chat-3": {
+   "category": "chat",
+   "n": 186,
+   "agree": 162
+  },
+  "chat-4": {
+   "category": "chat",
+   "n": 88,
+   "agree": 75
+  },
+  "math-1": {
+   "category": "math",
+   "n": 256,
+   "agree": 235
+  },
+  "math-2": {
+   "category": "math",
+   "n": 100,
+   "agree": 91
+  },
+  "math-3": {
+   "category": "math",
+   "n": 117,
+   "agree": 102
+  },
+  "math-4": {
+   "category": "math",
+   "n": 138,
+   "agree": 124
+  },
+  "code-1": {
+   "category": "code",
+   "n": 204,
+   "agree": 179
+  },
+  "code-2": {
+   "category": "code",
+   "n": 256,
+   "agree": 212
+  },
+  "code-3": {
+   "category": "code",
+   "n": 256,
+   "agree": 212
+  },
+  "code-4": {
+   "category": "code",
+   "n": 256,
+   "agree": 198
+  },
+  "reason-1": {
+   "category": "reasoning",
+   "n": 53,
+   "agree": 46
+  },
+  "reason-2": {
+   "category": "reasoning",
+   "n": 256,
+   "agree": 223
+  },
+  "reason-3": {
+   "category": "reasoning",
+   "n": 256,
+   "agree": 229
+  },
+  "reason-4": {
+   "category": "reasoning",
+   "n": 252,
+   "agree": 197
+  },
+  "know-1": {
+   "category": "knowledge",
+   "n": 200,
+   "agree": 155
+  },
+  "know-2": {
+   "category": "knowledge",
+   "n": 187,
+   "agree": 154
+  },
+  "know-3": {
+   "category": "knowledge",
+   "n": 256,
+   "agree": 207
+  },
+  "know-4": {
+   "category": "knowledge",
+   "n": 82,
+   "agree": 66
+  },
+  "long-1": {
+   "category": "long",
+   "n": 256,
+   "agree": 186
+  },
+  "long-2": {
+   "category": "long",
+   "n": 256,
+   "agree": 198
+  },
+  "edge-1": {
+   "category": "degeneration",
+   "n": 88,
+   "agree": 72
+  },
+  "edge-2": {
+   "category": "degeneration",
+   "n": 211,
+   "agree": 173
+  }
+ },
+ "first_generated_position": {
+  "n": 24,
+  "agree": 3,
+  "teacher_tokens": {
+   "1596": 23,
+   "90700": 1
+  },
+  "draft_tokens": {
+   "760": 21,
+   "1596": 3
+  },
+  "strings": {
+   "760": "The",
+   "1596": "We",
+   "90700": "Thinking"
+  },
+  "rows": [
+   {
+    "prompt_id": "chat-1",
+    "category": "chat",
+    "teacher_token": 1596,
+    "teacher_str": "We",
+    "teacher_margin": 6.609375,
+    "draft_argmax": 760,
+    "draft_str": "The",
+    "draft_margin": 3.2073917388916016,
+    "teacher_token_rank_in_draft": 2,
+    "agree": false
+   },
+   {
+    "prompt_id": "chat-2",
+    "category": "chat",
+    "teacher_token": 1596,
+    "teacher_str": "We",
+    "teacher_margin": 4.46875,
+    "draft_argmax": 760,
+    "draft_str": "The",
+    "draft_margin": 6.513702392578125,
+    "teacher_token_rank_in_draft": 3,
+    "agree": false
+   },
+   {
+    "prompt_id": "chat-3",
+    "category": "chat",
+    "teacher_token": 1596,
+    "teacher_str": "We",
+    "teacher_margin": 3.21875,
+    "draft_argmax": 760,
+    "draft_str": "The",
+    "draft_margin": 4.4879302978515625,
+    "teacher_token_rank_in_draft": 3,
+    "agree": false
+   },
+   {
+    "prompt_id": "chat-4",
+    "category": "chat",
+    "teacher_token": 1596,
+    "teacher_str": "We",
+    "teacher_margin": 4.40625,
+    "draft_argmax": 760,
+    "draft_str": "The",
+    "draft_margin": 2.4490299224853516,
+    "teacher_token_rank_in_draft": 1,
+    "agree": false
+   },
+   {
+    "prompt_id": "math-1",
+    "category": "math",
+    "teacher_token": 1596,
+    "teacher_str": "We",
+    "teacher_margin": 5.921875,
+    "draft_argmax": 760,
+    "draft_str": "The",
+    "draft_margin": 0.11160659790039062,
+    "teacher_token_rank_in_draft": 1,
+    "agree": false
+   },
+   {
+    "prompt_id": "math-2",
+    "category": "math",
+    "teacher_token": 1596,
+    "teacher_str": "We",
+    "teacher_margin": 5.625,
+    "draft_argmax": 760,
+    "draft_str": "The",
+    "draft_margin": 2.190126419067383,
+    "teacher_token_rank_in_draft": 1,
+    "agree": false
+   },
+   {
+    "prompt_id": "math-3",
+    "category": "math",
+    "teacher_token": 1596,
+    "teacher_str": "We",
+    "teacher_margin": 7.734375,
+    "draft_argmax": 760,
+    "draft_str": "The",
+    "draft_margin": 0.8510398864746094,
+    "teacher_token_rank_in_draft": 1,
+    "agree": false
+   },
+   {
+    "prompt_id": "math-4",
+    "category": "math",
+    "teacher_token": 1596,
+    "teacher_str": "We",
+    "teacher_margin": 3.359375,
+    "draft_argmax": 760,
+    "draft_str": "The",
+    "draft_margin": 3.2296600341796875,
+    "teacher_token_rank_in_draft": 2,
+    "agree": false
+   },
+   {
+    "prompt_id": "code-1",
+    "category": "code",
+    "teacher_token": 1596,
+    "teacher_str": "We",
+    "teacher_margin": 4.5,
+    "draft_argmax": 760,
+    "draft_str": "The",
+    "draft_margin": 5.204494476318359,
+    "teacher_token_rank_in_draft": 2,
+    "agree": false
+   },
+   {
+    "prompt_id": "code-2",
+    "category": "code",
+    "teacher_token": 1596,
+    "teacher_str": "We",
+    "teacher_margin": 8.25,
+    "draft_argmax": 760,
+    "draft_str": "The",
+    "draft_margin": 4.877202987670898,
+    "teacher_token_rank_in_draft": 3,
+    "agree": false
+   },
+   {
+    "prompt_id": "code-3",
+    "category": "code",
+    "teacher_token": 1596,
+    "teacher_str": "We",
+    "teacher_margin": 5.8125,
+    "draft_argmax": 760,
+    "draft_str": "The",
+    "draft_margin": 2.4714221954345703,
+    "teacher_token_rank_in_draft": 2,
+    "agree": false
+   },
+   {
+    "prompt_id": "code-4",
+    "category": "code",
+    "teacher_token": 1596,
+    "teacher_str": "We",
+    "teacher_margin": 4.8125,
+    "draft_argmax": 760,
+    "draft_str": "The",
+    "draft_margin": 2.6618385314941406,
+    "teacher_token_rank_in_draft": 7,
+    "agree": false
+   },
+   {
+    "prompt_id": "reason-1",
+    "category": "reasoning",
+    "teacher_token": 1596,
+    "teacher_str": "We",
+    "teacher_margin": 6.875,
+    "draft_argmax": 1596,
+    "draft_str": "We",
+    "draft_margin": 2.583343505859375,
+    "teacher_token_rank_in_draft": 0,
+    "agree": true
+   },
+   {
+    "prompt_id": "reason-2",
+    "category": "reasoning",
+    "teacher_token": 1596,
+    "teacher_str": "We",
+    "teacher_margin": 8.4375,
+    "draft_argmax": 1596,
+    "draft_str": "We",
+    "draft_margin": 0.3185005187988281,
+    "teacher_token_rank_in_draft": 0,
+    "agree": true
+   },
+   {
+    "prompt_id": "reason-3",
+    "category": "reasoning",
+    "teacher_token": 1596,
+    "teacher_str": "We",
+    "teacher_margin": 6.96875,
+    "draft_argmax": 1596,
+    "draft_str": "We",
+    "draft_margin": 1.9465560913085938,
+    "teacher_token_rank_in_draft": 0,
+    "agree": true
+   },
+   {
+    "prompt_id": "reason-4",
+    "category": "reasoning",
+    "teacher_token": 1596,
+    "teacher_str": "We",
+    "teacher_margin": 6.25,
+    "draft_argmax": 760,
+    "draft_str": "The",
+    "draft_margin": 5.236335754394531,
+    "teacher_token_rank_in_draft": 9,
+    "agree": false
+   },
+   {
+    "prompt_id": "know-1",
+    "category": "knowledge",
+    "teacher_token": 1596,
+    "teacher_str": "We",
+    "teacher_margin": 1.796875,
+    "draft_argmax": 760,
+    "draft_str": "The",
+    "draft_margin": 1.913309097290039,
+    "teacher_token_rank_in_draft": 1,
+    "agree": false
+   },
+   {
+    "prompt_id": "know-2",
+    "category": "knowledge",
+    "teacher_token": 1596,
+    "teacher_str": "We",
+    "teacher_margin": 2.359375,
+    "draft_argmax": 760,
+    "draft_str": "The",
+    "draft_margin": 4.247289657592773,
+    "teacher_token_rank_in_draft": 5,
+    "agree": false
+   },
+   {
+    "prompt_id": "know-3",
+    "category": "knowledge",
+    "teacher_token": 1596,
+    "teacher_str": "We",
+    "teacher_margin": 4.171875,
+    "draft_argmax": 760,
+    "draft_str": "The",
+    "draft_margin": 5.097774505615234,
+    "teacher_token_rank_in_draft": 1,
+    "agree": false
+   },
+   {
+    "prompt_id": "know-4",
+    "category": "knowledge",
+    "teacher_token": 1596,
+    "teacher_str": "We",
+    "teacher_margin": 2.5,
+    "draft_argmax": 760,
+    "draft_str": "The",
+    "draft_margin": 4.525617599487305,
+    "teacher_token_rank_in_draft": 12,
+    "agree": false
+   },
+   {
+    "prompt_id": "long-1",
+    "category": "long",
+    "teacher_token": 1596,
+    "teacher_str": "We",
+    "teacher_margin": 6.90625,
+    "draft_argmax": 760,
+    "draft_str": "The",
+    "draft_margin": 7.808139801025391,
+    "teacher_token_rank_in_draft": 7,
+    "agree": false
+   },
+   {
+    "prompt_id": "long-2",
+    "category": "long",
+    "teacher_token": 1596,
+    "teacher_str": "We",
+    "teacher_margin": 4.5,
+    "draft_argmax": 760,
+    "draft_str": "The",
+    "draft_margin": 4.9063873291015625,
+    "teacher_token_rank_in_draft": 3,
+    "agree": false
+   },
+   {
+    "prompt_id": "edge-1",
+    "category": "degeneration",
+    "teacher_token": 1596,
+    "teacher_str": "We",
+    "teacher_margin": 3.40625,
+    "draft_argmax": 760,
+    "draft_str": "The",
+    "draft_margin": 3.4702529907226562,
+    "teacher_token_rank_in_draft": 4,
+    "agree": false
+   },
+   {
+    "prompt_id": "edge-2",
+    "category": "degeneration",
+    "teacher_token": 90700,
+    "teacher_str": "Thinking",
+    "teacher_margin": 0.84375,
+    "draft_argmax": 760,
+    "draft_str": "The",
+    "draft_margin": 0.5064010620117188,
+    "teacher_token_rank_in_draft": 2,
+    "agree": false
+   }
+  ],
+  "tokenizer": "/Users/artin/qwen_vendor/tokenizer.json"
+ },
+ "evaluable": {
+  "with_existing_evidence": [
+   "disagreement structure, margins, biases, families, positions (this receipt)",
+   "logit-scale and shift calibration of the draft against the teacher (diagnostic; a global temperature cannot change an argmax, so it cannot recover agreement)",
+   "head-side experiments given a replacement head: the final-norm hidden states of all 4,722 positions are stored (dump), so any head matrix (vendor BF16, higher-precision requantization, low-rank residual) can be scored against the teacher logits without re-running the body",
+   "independent validation sets that are not E0: the teacher's corpus record (356 positions) and prefix record (98 positions) carry full logits; arm C hidden states for them need one CPU or Metal forward each"
+  ],
+  "needs_vendor_weights": [
+   "any restoration or requantization of a matrix (head, embeddings, attention, MLP): the frozen artifact holds only the compressed payloads; the vendor BF16 lm_head is in shard model-00018-of-00018.safetensors (3,392,197,344 bytes; the tensor is 2,542,796,800 bytes) and the embeddings in shard 3 (2,542,796,952 bytes)",
+   "attributing the 17 percent disagreement to body versus head error: needs either the vendor head (teacher logits from draft hidden states) or the teacher's hidden states (not recorded)"
+  ],
+  "needs_more_teacher_inference": [
+   "any held-out evaluation beyond the 24 rollouts, 356 corpus and 98 prefix positions; the teacher is not resident (76 GB vendor restore condition unmet)",
+   "free-run (non teacher-forced) agreement and downstream task deltas"
+  ]
+ }
+}

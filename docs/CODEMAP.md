@@ -16,7 +16,7 @@ this also drives `library`; from lab tooling it drives
 comments or plain strings; `via` names the cited caller a file
 inherits its class from when no document names the file itself.
 
-Census: library 200, reproduce-pinned 9, results-cited 518, spec-cited 74, tool-referenced 5, UNCITED 126 (of 932; library rows that are also doc-cited: 196)
+Census: library 200, reproduce-pinned 9, results-cited 522, spec-cited 74, tool-referenced 5, UNCITED 122 (of 932; library rows that are also doc-cited: 196)
 
 ## scratch/
 
@@ -464,7 +464,7 @@ Census: library 200, reproduce-pinned 9, results-cited 518, spec-cited 74, tool-
 | metallicity1 | metallicity1.sh | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
 | mezo | mezo_signal_desk.py | library | RESULTS | RESULTS×6 | 1 | 1 | — | — |
 | mezo0 | mezo0_launch.sh | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
-| mlp | mlp_permutation_study.py | UNCITED | — | — | — | 1 | — | — |
+| mlp | mlp_permutation_study.py | results-cited | RESULTS | RESULTS×2 | — | 1 | — | — |
 | moe | moe_gt1.py | library | REPRODUCE, RESULTS, specs, TOOLING | REPRODUCE×4, RESULTS×14, specs×7, TOOLING×8 | 4 | 6 | 2 | — |
 | moe | moe_gt1_arm2.py | library | REPRODUCE, RESULTS, specs, TOOLING | REPRODUCE×6, RESULTS×48, specs×7, TOOLING×31 | 16 | 26 | 2 | — |
 | morning | morning_run.sh | UNCITED | — | — | — | — | — | — |
@@ -593,7 +593,7 @@ Census: library 200, reproduce-pinned 9, results-cited 518, spec-cited 74, tool-
 | qwen | qwen_cuda_rung4.py | library | RESULTS, specs | RESULTS×9, specs×2 | 1 | 4 | 1 | — |
 | qwen | qwen_cycle_impulse.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
 | qwen | qwen_displace_extract.py | spec-cited | specs | specs×1 | — | — | 1 | — |
-| qwen | qwen_e0_disagreement_census.py | UNCITED | — | — | — | 1 | — | — |
+| qwen | qwen_e0_disagreement_census.py | results-cited | RESULTS | RESULTS×2 | — | 1 | — | — |
 | qwen | qwen_e0_preflight.py | UNCITED | — | — | — | — | — | — |
 | qwen | qwen_e0_recompute.py | UNCITED | — | — | — | — | — | — |
 | qwen | qwen_e0_spec_census.py | results-cited | RESULTS, specs | RESULTS×5, specs×4 | — | — | 3 | — |
@@ -618,7 +618,7 @@ Census: library 200, reproduce-pinned 9, results-cited 518, spec-cited 74, tool-
 | qwen | qwen_metal_chunked_grid.sh | results-cited | RESULTS | RESULTS×4 | — | — | — | — |
 | qwen | qwen_metal_prefill_gemm_study.sh | UNCITED | — | — | — | — | — | — |
 | qwen | qwen_metal_prefill_head.py | library | RESULTS, specs | RESULTS×2, specs×1 | 1 | 2 | 1 | — |
-| qwen | qwen_metal_prefill_serve_ab.py | UNCITED | — | — | — | 1 | 1 | — |
+| qwen | qwen_metal_prefill_serve_ab.py | results-cited | RESULTS | RESULTS×4 | — | 1 | 1 | — |
 | qwen | qwen_metal_prefill_study.sh | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
 | qwen | qwen_metal_qual.py | library | RESULTS, specs | RESULTS×6, specs×2 | 6 | 1 | — | — |
 | qwen | qwen_metal_serve_study.sh | UNCITED | — | — | — | — | — | — |
@@ -704,7 +704,7 @@ Census: library 200, reproduce-pinned 9, results-cited 518, spec-cited 74, tool-
 | ssm | ssm_star1.sh | UNCITED | — | — | — | — | — | — |
 | stability | stability_atlas.sh | UNCITED | — | — | — | — | — | — |
 | star | star_profile.py | results-cited | RESULTS | RESULTS×7 | — | — | — | — |
-| strassen | strassen_bench.py | UNCITED | — | — | — | 1 | — | — |
+| strassen | strassen_bench.py | results-cited | RESULTS | RESULTS×2 | — | 1 | — | — |
 | stream | stream_wdistill0.py | results-cited | RESULTS | RESULTS×4 | — | — | 1 | — |
 | stream | stream_wdistill0s.py | library | RESULTS, via:specs | RESULTS×1 | 2 | 2 | — | — |
 | stream | stream_wdistill1.py | library | RESULTS, via:specs | RESULTS×8 | 2 | — | 1 | — |

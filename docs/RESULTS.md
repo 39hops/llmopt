@@ -80471,3 +80471,513 @@ the census real tokens; memory figures are mx.get_peak_memory after a
 reset and ru_maxrss, the allocator cache excluded where noted; the
 first and second chains ran at e8f1a3af and ab14f862, whose qmetal
 difference is the call counters, path_counts and docstrings only.
+
+## OBSERVATION QWEN-METAL-SERVE-0: the decode-once GEMM prefill is now the default of the qualified single-prompt chunked-prefill entry point only (llmopt.lab.qprefill.prefill_chunked, whose matmul argument defaults to "gemm" since 835d554d and which enables qmetal.gemm_scope for its own body and head calls per chunk and nothing else; a context-variable scope, fused-only control through matmul="fused", batched and non-integer prompts refused, the process default off, serving memory configured explicitly with a 2 GiB allocator-cache limit), measured through that entry point against the fused-only control at 1,024 real tokens (fused 8.37 tokens per second, GEMM 35.46 with the 2 GiB cache limit and 38.18 without, the 16-step decode 134.6 to 135.5 ms per token in all three arms, all 16 decode argmaxes and the final argmax identical, recurrent state within 1.2e-5 relative, and the device footprint after prefill 11.34 GB under the limit against 14.27 GB without, the peak active memory 12.02 GB in both GEMM arms against 11.16 fused) and recounted on the 24 E0 prompts with the full head: argmax equal to the frozen CPU census rows at 4,722 of 4,722 and teacher agreement 0.8291 reproduced, with the full draft logits and hidden states of every position kept machine-local for the disagreement census (2026-10-19, Mac; fused kernels, codec, chunk-256 default and every prior receipt untouched)
+
+Dispatch. qmetal._Resident._run chooses the GEMM path when (the scope
+value if a gemm_scope is active, else the resident's prefill_gemm
+attribute, whose process default PREFILL_GEMM is off unless the research
+switch QMETAL_PREFILL_GEMM=1 is set) and gemm_ok and the tile has at
+least the per-codec threshold rows (W4 16, S16 32). The scope is a
+contextvars.ContextVar: None outside, the innermost value inside, per
+thread and per task, restored by each exit including on exceptions.
+prefill_chunked enters gemm_scope(True) around each chunk's body and
+head calls when matmul="gemm", gemm_scope(False) when matmul="fused",
+and no scope when matmul=None; its on_chunk callback runs outside, so a
+decode step or a batched call issued between chunks dispatches by the
+process default. Tests (tests/test_qmetal.py, tests/test_qprefill.py):
+a 64-row call outside any scope is fused and the same call inside is
+GEMM and fused again after; gemm_scope(False) overrides an enabling
+default and an outer scope; an exception inside the scope restores the outer state; the
+threshold holds inside (1 and 8 rows fused, 16 GEMM); a 32-row 2-D and
+a 3-D batched call after a scope on a real resident are fused and equal;
+the callback sees no scope while the head sees it; an exception inside
+prefill leaves none; a second thread sees none while the first is
+inside; configure_serving_memory refuses a process whose default has
+the path on; batched (nested) and non-integer prompts are refused.
+Live check in every A/B receipt: after the entry point returns, a
+64-row batch on the head resident and on a W4 body resident, outside
+any scope, takes the fused path.
+
+Serving memory. ServingConfig(chunk=256, matmul="gemm",
+cache_limit_bytes=2 GiB) and configure_serving_memory(cfg) apply the
+MLX allocator-cache limit in the serving process explicitly (the
+library default is never changed at import). memory_report separates
+MLX active memory (arrays alive), peak active since the last reset,
+the allocator pool, their sum (the device footprint by MLX's
+accounting) and the process peak RSS.
+
+A/B through the entry point (scratch/qwen_metal_prefill_serve_ab.py,
+one arm per process, 1,024 real tokens, chunk 256, final-position head,
+16 teacher-forced decode steps with the plain model call; receipts
+ab_fused_d42cb215.json, ab_gemm_d42cb215.json, ab_gemm_nolimit_d42cb215.json,
+compare_d42cb215.json):
+
+  arm                       prefill   tok/s   decode   peak active   footprint after prefill   footprint after decode
+  fused, 2 GiB limit       122.41 s    8.37   135.4 ms   11.16 GB     11.49 GB (pool 2.16)      11.44 GB (pool 1.99)
+  gemm, 2 GiB limit         28.88 s   35.46   135.5 ms   12.02 GB     11.34 GB (pool 2.15)      11.46 GB (pool 2.01)
+  gemm, no limit            26.82 s   38.18   134.6 ms   12.02 GB     14.27 GB (pool 5.15)      14.43 GB (pool 4.98)
+  (active memory after load 8.83 GB in every arm; peak RSS 10.9 GB
+  after load, 11.1 to 11.5 GB after; the 2 GiB limit reads 7.1 percent
+  lower prefill throughput at 1,024 tokens in this run per arm (4.4
+  percent in the superseded chain at 39a6115c, whose figures were 8.41,
+  36.97 and 38.68) and holds the pool at the limit; the two GEMM arms'
+  final logits, caches and decode logits are byte-identical dumps, so
+  the limit is numerically inert;
+  matrix calls: fused arm 1,604 fused and 0 GEMM in prefill, GEMM arms 4
+  fused (the four final-head calls of one row) and 1,600 GEMM, and 6,416
+  fused and 0 GEMM in the 16 decode steps of every arm)
+
+Numerics, fused against GEMM (both under the limit; the no-limit arm
+has the same final argmax): final logits max abs 4.6e-5, 2.0e-6
+relative, argmax identical, margin within 2.3e-5 nats; caches after
+prefill with equal offsets at all 16 attention layers, conv tails
+within 9.5e-5 absolute (3.6e-6 of the array maximum), recurrent states
+within 3.6e-5 absolute (1.2e-5 relative), keys within 1.7e-3 and
+values within 1.2e-2 absolute (1.0e-4 and 1.1e-4 of the array maxima);
+the 16 decode steps 16 of 16 argmax-identical, logits within 1.2e-4
+absolute (3.6e-6 relative), margins within 7.2e-5 nats. The figures
+match the QWEN-METAL-PREFILL-GEMM-0 A/B (state 1.2e-5, decode 16 of
+16) on the new entry point.
+
+E0 recount through the entry point (MODE=census, head="full",
+matmul="gemm", serving config; receipt census_d42cb215.json): argmax equal to the frozen CPU rows at 4,722 of 4,722 positions, the
+teacher token matched at 3,915 (0.8291, the E0 value), the draft top-16
+logits within 1.57e-3 of the CPU rows (every prompt prefilled in chunks
+of 256 through the GEMM path, 14,628 GEMM and 1,011 fused matrix calls,
+the fused ones the sub-threshold last chunks), 215 s for the 24 prompts
+(median 29.6 tokens per second with the full head on every position),
+peak active 14.31 GB (the full-head logits of a 256-token chunk are 254
+MB each; that several are alive during the host copy is the likely
+reason, not measured), footprint 11.03 GB after. The full draft logits (fp16, live vocabulary, 2.34 GB) and
+the final-norm hidden states (fp32, 97 MB) of all 4,722 positions are
+machine-local under logs/qmetal/prefill_serve/dump with their shas in
+the receipt.
+
+Fences. One machine, one artifact, one unpadded prompt per call; the
+A/B is one run per arm (walls vary a few percent between sessions: the
+fused arm's 8.37 tokens per second here against 8.67 in the memory grid
+of QWEN-METAL-PREFILL-GEMM-0, the GEMM arm's 35.5 to 38.2 against 40.8,
+the decode 134.6 to 135.5 ms against 127.7 to 131.7); the census is teacher-forced; the A/B and census drivers pass
+matmul explicitly, so the receipts exercise the scoped path and the
+control, and the argument default itself is pinned by a test rather
+than by a receipt; the default is the entry point's, not a change to
+any historical driver (they keep the research switch).
+
+## OBSERVATION QWEN-E0-DISAGREEMENT-CENSUS-0: the 807 of 4,722 E0 positions where arm C departs from the teacher are, by the frozen rows and the teacher's full logit record, concentrated at low teacher margins under a global flattening, with one deterministic exception: the teacher's own margin at those positions has median 0.91 nats against 8.06 where the two agree, the draft picks the teacher's second choice in 450 of 807 cases and a teacher top-16 token in 789, the teacher's token is the draft's second or third choice in 596, and only 37 disagreements happen where the teacher's margin exceeds 5 nats; the exception is the first generated position of the rollouts, where the teacher opens its reasoning with "We" (23 of 24 prompts, margins 1.8 to 8.4 nats) and the draft says "The" (21 of 24), the lowest of the step buckets (agreement 3 of 24, mean KL 4.7 nats against 0.24 to 0.47 in the other buckets); over the teacher's top-16 tokens the draft's logits are a flattened copy of the teacher's (median slope of draft on teacher 0.88 where they agree and 0.83 where they disagree, the teacher's top-1 logit under-reproduced by 2.9 nats after shift alignment, rank 2 by 1.9, ranks 3 to 16 by 1.1 to 1.5), which lowers the median margin by 1.50 nats where they agree without reordering most positions; prompt families differ by 15 points (math 0.903, reasoning 0.851, chat 0.835, code 0.824, degeneration 0.819, knowledge 0.803, long 0.750) and the endpoints match the teacher's own margin profile (median 12.1 nats in math, 3.2 in long; the order in between is not monotone); nothing is trained, fitted or tuned (2026-10-19, Mac; read-only desk analysis of frozen receipts plus the Metal hybrid's full logits at the same positions, argmax-identical to the CPU rows at 4,722 of 4,722)
+
+Inputs. logs/qwen_e0/C/positions.jsonl (VERDICT QWEN-E0-SPEC-CENSUS-0,
+sha in the receipt), logs/qwenteacher_v2/rollout_logits.npy (fp16,
+[256, 24, 248320], the array bytes hashed on disk and equal to the manifest's sha, refused otherwise), and the
+draft's full logits over the live vocabulary at the same 4,722 positions
+from scratch/qwen_metal_prefill_serve_ab.py MODE=census (the hardened
+entry point, QWEN-METAL-SERVE-0 above; float32 argmax equal to the
+frozen rows at 4,722 of 4,722; the fp16 dump flips one exact tie, row
+3113 of reason-4 at step 179 with an fp16 gap of 0.0, recorded in the
+receipt), so the rows' agree flags and the dump describe the same
+decisions. Driver scratch/qwen_e0_disagreement_census.py, receipt
+logs/qwen_e0/C_disagreement_d42cb215.json (dump from census_d42cb215.json). Shift alignment subtracts the mean of
+(draft minus teacher) over the live vocabulary; both records are fp16,
+so 0.01 to 0.03 of rounding sits inside every per-logit figure.
+
+Margins. Teacher margin (top-1 minus top-2, fp16 record) at the
+3,915 agreeing positions: median 8.06 nats, p10 1.00; at the 807
+disagreeing: median 0.91, p10 0.14, p90 3.21, 179 above 2 nats, 37
+above 5 nats, maximum 14.4. Draft margin: median 5.61 agreeing, 0.76
+disagreeing; 329 disagreements with a draft margin above 1 nat and 119
+above 2 nats (the draft is confidently wrong at 2.5 percent of all
+positions). Disagreement rate by teacher-margin bin [0,0.02) to
+[5,inf): 15/26, 17/37, 30/47, 47/83, 129/243, 189/379, 201/548,
+142/851, 37/2,508; by draft-margin bin: 9/15, 24/41, 28/53, 75/127,
+156/291, 186/409, 210/624, 111/1,052, 8/2,110. The draft's margin is
+below the teacher's by a median 1.50 nats where they agree and 0.10
+where they disagree.
+
+Structure of a disagreement. Of the 807: the draft picks the teacher's
+second choice in 450, a teacher top-16 token in 789, a token outside
+the teacher's top-16 in 18; the teacher's token is the draft's second
+choice in 458, third in 138, within the draft's top-16 in 794, outside
+it in 13 (the rows' rank field is 0-based); in 320 the two models hold the same top-2 set in opposite order
+(teacher gap at those: median 1.07 nats, p90 3.0). The draft argmax's
+rank in the teacher's ordering over the disagreements: 1 in 3 (fp16
+ties in the teacher record), 2 in 450, 3 in 157, 4 in 72, 5 to 16 in
+107, beyond 16 in 18.
+
+The first generated position. Step 0 of every rollout is the token after the chat
+template's "assistant\n<think>\n". The teacher's greedy token is "We"
+(id 1596) on 23 of 24 prompts (margins 1.8 to 8.4 nats, median 4.8)
+and "Thinking" on the degeneration prompt edge-2; the draft's is "The"
+(id 760) on 21 of 24 and "We" on 3 (reason-1 to reason-3). Agreement 3
+of 24 against 0.829 overall; mean KL 4.69 nats against 0.47 at steps 1
+to 3 and 0.24 to 0.34 after. On the 20 prompts where the draft misses
+"We", the teacher's token sits at draft position 2 to 13 (median 3.5). Over the whole census this one position accounts
+for 21 of the 807 disagreements (2.6 percent) but for the first block
+of 21 of the 24 rollouts in the k = 4 replay. Token-level consequence:
+by ratio of draft picks to teacher frequency "The" is the most
+over-selected token in the disagreements (22 picks against a teacher
+frequency of 5) and by miss rate "We" the most missed (20 of 24 teacher
+occurrences); by raw count "." leads both lists (39 picks, 31 misses,
+teacher frequency 236). Whether this is a template-conditioned damage
+(one context) or a general opener bias is not decided by E0; it is
+item 2 of the shortlist.
+
+Flattening, not reordering. On the teacher's top-16 tokens at every
+position, after shift alignment, the draft's logit minus the teacher's
+has mean -2.91 at the teacher's rank 1, -1.87 at rank 2, -1.52 at rank
+3, then -1.47 to -1.06 at ranks 4 to 16 (p50 over all 75,552 pairs
+-1.28, p10 -4.26, p90 +1.38): the top is pulled down most, the rest
+less, so the draft's distribution is the teacher's flattened. The
+ordinary-least-squares slope of draft on teacher over the top-16 has
+median 0.88 where they agree (p10 0.72, p90 1.06) and 0.83 where they
+disagree; the rank-1-minus-rank-2 error is -0.83 nats on average where
+they agree (the margin shrinks but survives) and -2.07 where they
+disagree (it crosses zero). A reading consistent with this (not measured here) is additive
+quantisation noise over many layers acting like a temperature above 1
+plus a per-position jitter of about 1 nat (QWEN-E0-ERROR-FIELD-0's
+flat RMS field); the figures do not show a few tokens being
+systematically promoted: the over-selected list after "The" is
+punctuation (".", ",", ":", "?") and newlines, picked 10 to 39 times
+against teacher frequencies of 30 to 236, with miss rates of 10.5 to
+20 percent on those tokens, around the overall 17 percent.
+
+Families and positions. Agreement by family: math 552/611 (0.903),
+reasoning 695/817 (0.851), chat 656/786 (0.835), code 801/972 (0.824),
+degeneration 245/299 (0.819), knowledge 582/725 (0.803), long 384/512
+(0.750); mean KL 0.16 (math) to 0.48 (long); the teacher's own median
+margin runs 12.1 (math) to 3.2 (long) in the same order, and the
+disagreement rate at teacher margins of 2 nats and above stays at 3 to
+10 percent in every family (math 3.8, reasoning 3.2, chat 4.4, code 4.6,
+knowledge 7.5, long 8.1, degeneration 10.0). By step: 0 to 0 agreement
+0.125 (the opener), 1 to 3 0.75, 4 to 15 0.878, 16 to 63 0.818, 64 to
+127 0.815, 128 to 255 0.850; no drift with position beyond the opener
+and the first steps (steps 1 to 3 are also low at 0.75; that the later
+bins hold the longer rollouts is a hypothesis, not a measured cause). Per prompt the agreement runs from long-1 186/256 (0.727), chat-2 193/256 (0.754), code-4 198/256 (0.773) up to math-4 124/138 (0.899), math-2 91/100 (0.910), math-1 235/256 (0.918); no prompt is below 0.72 and none above 0.92.
+
+What the existing evidence can and cannot evaluate.
+  * Can, now: everything above; a global logit temperature or shift
+    (diagnostic only; monotone rescaling cannot change an argmax, so it
+    recovers no agreement); any replacement HEAD scored against the
+    teacher at all 4,722 positions without re-running the body, because
+    the final-norm hidden states of every position are stored with the
+    dump (97 MB); independent evaluation sets that are not E0, because
+    the teacher's corpus (356 positions) and prefix (98) records carry
+    full logits and only need one arm C forward each for the hidden
+    states.
+  * Cannot without the vendor weights: any restoration or
+    requantisation of a matrix (the artifact holds only compressed
+    payloads); the body-versus-head attribution of the 17 percent
+    (needs the vendor head on the draft's hidden states, or the
+    teacher's hidden states, which were never recorded).
+  * Cannot without more teacher inference: any held-out set beyond
+    the 24 rollouts, 356 corpus and 98 prefix positions; free-run
+    agreement; downstream task deltas (the teacher is not resident;
+    the 76 GB restore condition is unmet).
+
+Vendor inventory (read without downloading: the local copy of
+model.safetensors.index.json whose sha the teacher manifest pins,
+config.json, and one metadata call to the Hugging Face model API for
+file sizes at revision 1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0).
+Qwen/Qwen3.8-27B, 18 safetensors shards, total_size 55,562,855,904
+bytes, 1,199 tensors (text model 64 layers, vision tower, one MTP
+layer). The lm_head.weight (bfloat16 [248320, 5120], 2,542,796,800
+bytes) sits in model-00018-of-00018.safetensors (3,392,197,344 bytes
+by the API listing), which otherwise holds only the MTP block's 15
+tensors (about 849.4 MB including the shard header); embed_tokens.weight is alone in
+model-00003-of-00018.safetensors (2,542,796,952 bytes). Nothing of the
+vendor weights is on either machine (the ~/qwen_vendor directory holds
+the five side files only; the 76 GB restore condition of
+MAC-STORAGE-RECLAIM-0 is unmet at 54 GB free). A head-only experiment
+needs either the 3.39 GB shard or a 2.54 GB HTTP range read of the
+tensor's byte span from the shard's safetensors header (the header is
+read first, 8 bytes plus its JSON), both well inside the free space;
+neither was performed.
+
+Storage budgets (bytes of payload; the arm C head is S16, 645,632,032
+bytes, four bits per weight with a block-128 exponent byte):
+  * restore the original bfloat16 head: 2,542,796,800, +1.77 GiB over
+    the arm C head (the resident arm C payload is 9.37 GB, so +20 percent)
+  * an 8-bit head (int8 per-row or fp8 with block scales): about 1.19
+    GiB, +0.59 GiB; needs the vendor head to requantise
+  * low-rank residual on the head, W_head ~ W_s16 + U V^T with U
+    [248320, r] and V [5120, r] in bfloat16: 7.7 MiB at r = 16, 30.9
+    MiB at r = 64, 123.8 MiB at r = 256 (0.5 MiB per rank); needs the
+    vendor head to fit against (or the teacher's logits and the draft
+    hidden states at enough positions, which fits a correction to the
+    teacher function, not to the matrix)
+  * one MLP matrix (W4 [17408, 5120], 43.2 MiB) restored to bfloat16:
+    170 MiB, +126.8 MiB each, +23.8 GiB for all 192; to 8 bits +41.8 MiB
+    each, +7.84 GiB for all 192. Whole-model precision increases are
+    out of budget and out of scope (no recompression this round).
+
+Ranked shortlist (experiments to justify, not results; each with the
+falsifier that kills it and the independent validation that would
+have to pass before any claim):
+  1. Head-only restoration test, vendor bfloat16 head on the stored
+     hidden states (no body change, no training; 2.54 GB tensor by a
+     range read or the 3.39 GB shard). Prediction to register: if the
+     flattening is a head effect, the slope rises toward 1 and the
+     first-position "We" returns on most prompts; if it is a body
+     effect, agreement moves by under 1 point. Falsifier: agreement on
+     E0 within 1 point of 0.829 and slope within 0.03 of 0.88.
+     Validation: the corpus and prefix records (454 positions the
+     rollouts never touched) must move the same way; the E0 rows
+     themselves are the diagnostic set and are reported as such, never
+     as recovery evidence. Budget: one download of 2.5 to 3.4 GB, one
+     CPU or Metal pass over 4,722 + 454 stored hidden rows (minutes),
+     plus 1.77 GiB of artifact if adopted.
+  2. First-position diagnosis (no weights needed): teacher-forced
+     logits at the "<think>\n" position under varied system prompts
+     and prompt lengths, to tell a template-conditioned bias (a single
+     context the compression damaged) from a general opener bias.
+     Falsifier: the draft prefers "We" once the prompt is varied.
+     Budget: minutes on Metal; teacher side only from the 24 records.
+  3. Low-rank residual on the head fitted to the TEACHER LOGITS on the
+     corpus and prefix records (not E0), evaluated on E0: W ~ W_s16 +
+     U V^T, r in {16, 64, 256} (7.7 to 124 MiB). This fits a correction
+     to the teacher function from 454 positions, which is few; the
+     prediction to register is modest (under 2 points) and the falsifier
+     is no gain on E0 or a loss on held-out corpus halves. Does not need
+     the vendor head but is the weakest of the three on statistical
+     grounds.
+  4. Not shortlisted: whole-model precision increases (+8 to +24 GiB,
+     out of budget and out of scope); any fit on E0 (would make E0
+     unusable as evidence); retraining or distillation.
+Not presumed: that restoring one matrix improves agreement. The
+census shows low-margin disagreements under a flattening of the
+top-16 logits plus one position; the
+head is the cheapest single matrix to test and the only one whose test
+needs no body change, which is why it ranks first, not because the
+evidence points at it.
+
+Fences. Teacher-forced, 24 prompts, one artifact, one teacher record
+(fp16); the disagreement statistics are of the teacher-greedy contexts
+and say nothing about free-run drift; token strings from the vendor
+tokenizer file; the census is descriptive, no correction was applied
+or evaluated.
+
+## OBSERVATION SWIGLU-PERMUTATION-0: the SwiGLU intermediate-neuron permutation (Wg' = P Wg, Wu' = P Wu, Wd' = Wd P^T) is proved in Lean to leave the gated MLP unchanged for every input, every gate function and every commutative semiring (scratch/leancheck/MlpPermutation.lean, no sorry, axioms propext, Classical.choice, Quot.sound), reproduced exactly in rational arithmetic and to float32 reduction-order drift (1.7e-6 of the output scale) in floating point; under the artifact's block-128 power-of-two scale law a permutation leaves the Wg and Wu quantisation untouched (rows move whole) and only regroups the columns of Wd, and on that lever the measurement is a null: on iid Gaussian weights no grouping changes the error, on weights with log-normal per-neuron scales sorting the columns by magnitude halves Wd's Frobenius error under the scalar 16-level proxy (0.223 to 0.117 relative Frobenius, 0.52x) yet leaves the MLP output error unchanged or worse (output error 0.1807 identity, 0.1800 to 0.1802 random, 0.1828 sorted; the reading consistent with this is that the large-activation columns which dominate the output lose their own block scale to larger neighbours) and raises it under the 4-vector codebook proxy (Wd error 1.37x, output error 1.21x), and on a decoded arm C down-projection window every permutation is within 0.35 percent of the identity under the scalar proxy while under the codebook proxy sorted against random is 0.997 to 0.999 (the identity there keeps the original grid); the evaluation-order term is isolated and is at most 4.7e-4 absolute in float32 (1.9e-4 of the output scale) against output errors of 0.17 to 0.56 relative, and 1e-12 in float64; no claim about arm C's own compression is made or possible without the original weights (2026-10-19, Mac; synthetic and decoded-window matrices only; the frozen artifact untouched)
+
+Theorem. gatedMlp act Wg Wu Wd x := Wd *ᵥ (fun j => act ((Wg *ᵥ x) j) *
+(Wu *ᵥ x) j) over Matrix m d R, Matrix d m R with [CommSemiring R], any
+act : R → R, any Fintype index types; P := σ.toPEquiv.toMatrix for σ :
+Equiv.Perm m (the standard permutation matrix, (P * W) i = W (σ i)).
+gatedMlp_perm_invariant: gatedMlp act (P * Wg) (P * Wu) (Wd * Pᵀ) x =
+gatedMlp act Wg Wu Wd x; the function form and the SiLU instance over ℝ
+(silu t = t / (1 + exp(-t))) follow. Proof through the Mathlib lemmas
+PEquiv.toMatrix_toPEquiv_mul (P * W = W.submatrix σ id),
+PEquiv.mul_toMatrix_toPEquiv with PEquiv.toMatrix_symm (Wd * Pᵀ =
+Wd.submatrix id σ) and Equiv.sum_comp. Compiled under Lean
+v4.33.0-rc2 with the pinned Mathlib; tests/test_lean_mlp_permutation.py
+compiles it and checks the three axiom lines when the toolchain is
+present (CI has no Lean and skips). The reviewer found the imports had
+to be narrowed from `import Mathlib` because a CStarMatrix HMul instance
+shadowed the Matrix one under the full import; the narrow imports are
+the recorded form. The theorem is about exact arithmetic; rounding is
+outside it, which is what the mechanical part measures.
+
+Mechanical (scratch/mlp_permutation_study.py, receipt
+logs/qmetal/mlp_perm/study_d42cb215.json).
+  1. Exact: Fractions arithmetic, d = 6, m = 10, 4 inputs, 3 random
+     permutations, a rational gate t^2 / (1 + |t|): permuted equals
+     original exactly in all cases.
+  2. Float: d = 512, m = 2,048, 64 Gaussian inputs: three random permutations give float32 outputs
+     within 1.7e-6 of the output scale (2.49) of the original order
+     and float64 outputs within 4.1e-15; the exact identity holds, the
+     float difference is the reduction order over the permuted sum.
+  3. Grouping. Sources: iid Gaussian (d = 1,024, m = 4,096), the same
+     with log-normal per-neuron scales (sigma 1, applied as sqrt(s) to
+     the rows of Wg and Wu and s to the columns of Wd), and a 1,024 x
+     4,096 window of the decoded arm C layer-0 gate, up and down
+     projections (decoded shas in the receipt; input scale 0.05 for
+     that source, 1.0 for the synthetic ones; 128 Gaussian inputs).
+     Permutations: identity, three random, columns of Wd sorted by
+     max-abs and by L2 norm. Codecs: s16_proxy (block-128 power-of-two
+     scale, nearest of the 16 levels of the arm C lm_head S16 table)
+     and w4_proxy (the same scale, nearest of 256 k-means 4-vectors
+     fitted per matrix). Wg and Wu errors are equal to the identity's
+     under every permutation (to 1e-12 for the scalar codec; the W4
+     proxy refits its codebook from a sample, equal to 2e-2). Wd
+     relative Frobenius error and MLP output error against the
+     unquantised float64 reference:
+       gaussian, s16_proxy:  Wd 0.1005 under every permutation; output
+         0.1746 to 0.1747.
+       gaussian, w4_proxy:   Wd 0.3145 to 0.3155; output 0.519 to 0.524.
+       log-normal, s16_proxy: Wd identity 0.2231, random 0.2227 to
+         0.2254, sorted 0.1165 to 0.1168 (0.52x); output identity
+         0.1807, random 0.1800 to 0.1802, sorted 0.1828 (1.012x); Wd
+         quantised alone: sorted 1.029x the identity.
+       log-normal, w4_proxy: Wd identity 0.2597, random 0.260 to 0.262,
+         sorted 0.355 to 0.357 (1.37x); output identity 0.459, random
+         0.463 to 0.469, sorted 0.554 to 0.557 (1.21x); Wd alone 2.58x.
+       arm C window, s16_proxy: Wd 0.1075 to 0.1078 under every
+         permutation; output 0.1656 to 0.1662.
+       arm C window, w4_proxy: Wd identity 0.2197, random 0.3318 to
+         0.3320, sorted 0.3311 to 0.3313; output identity 0.356, random
+         0.413 to 0.419, sorted 0.413 to 0.418. The identity's advantage
+         here is the grid bias named below (the decoded 4-vectors lie on
+         the original codebook; any column permutation regroups them);
+         sorted against random is 0.9973 to 0.9985 on Wd, a null.
+  4. Order against quantisation. The same quantised weights evaluated in the
+     original and in the permuted order differ by at most 1.1e-5
+     (Gaussian), 4.7e-4 (log-normal) and 1.7e-9 (arm C window, input
+     scale 0.05) absolute in float32 and by 1e-12 or less in float64,
+     against output errors of 0.17 to 0.56 relative; the float32 and
+     float64 evaluations of every quantised arm agree to five digits.
+     So every change in the table above is quantisation, none is
+     evaluation order, and the one apparent gain (Wd's Frobenius error
+     halved under the scalar codec) does not reach the output.
+
+Why the lever is empty here (a reading of the figures, not a measured mechanism). The artifact scales every 128 consecutive
+input weights of a row by one power of two. Permuting the intermediate
+neurons moves rows of Wg and Wu whole (their blocks lie along d, the
+model dimension), so their quantisation is identical up to row order
+(verified: equal error to 1e-12 under the scalar proxy); only Wd's
+blocks, which lie along the intermediate dimension, are regrouped. A
+grouping that minimises Wd's Frobenius error gives small columns finer
+scales, but the output error is weighted by the activations, which
+scale with the same per-neuron factor as the columns, so the columns
+that matter are the large ones, and those lose their own block scale
+to larger neighbours when sorted together. The real-matrix window
+shows no effect at all, consistent with weights whose column scales
+vary little within a layer. A different grouping objective (output-
+weighted) would need activation statistics and the original weights;
+neither is in scope.
+
+Limitation booked. The decoded arm C window is already quantised on its
+original block grid, so the identity permutation is favoured on that
+source; the informative comparison there is sorted against random,
+which is also null. Nothing here restores information the original
+compression discarded, and the receipts never say so.
+
+## OBSERVATION MATMUL-NINE-FOURTHS-RELEVANCE-0: the October 2, 2026 openai/math result omega(C) <= 9/4 (preprint "An Upper Bound of 9/4 for the Matrix Multiplication Exponent", Lean declaration OAI.MatrixMultiplication.complex_omega_le_nine_quarters) is an asymptotic existence theorem over the complex numbers in the straight-line arithmetic cost model whose proof names no finite matrix size, no explicit rank decomposition and no constant, and Strassen-Winograd, the one finite bilinear scheme measured here, run against mx.matmul on the tower's prefill shapes gives a loss of 1.7x to 3.3x at the serving chunk of 256 rows (one level 0.51x to 0.59x of the plain product's speed, two levels 0.30x to 0.32x) with 1.3x to 3.5x the float32 error and 2.1x to 3.8x the peak device memory, and at 1,024 and 4,096 rows a one-level result within the run-to-run spread (0.85x to 1.13x across three chains) at 1.9x the error and 2.5x to 3.1x the peak memory; the result changes nothing for the arm C prefill GEMMs (2026-10-19, Mac; read-only review of the public repository and preprint, bounded local benchmark, no implementation beyond the benchmark)
+
+What the theorem says (read from the preprint text and the Lean
+challenge file lean/ComparatorChallenges/MatrixMultiplication.lean,
+both in github.com/openai/math at the time of reading). The exponent is
+defined as omega(F) = sInf {tau | for every eps > 0 there is a constant
+C such that for every n >= 1 some straight-line program over the field
+F with add, sub and mul gates each of cost 1 computes every n x n
+product in cost at most C n^(tau + eps)}. Theorem 1.1 of the preprint:
+for every eps > 0, two n x n complex matrices can be multiplied in
+O_eps(n^(9/4 + eps)) arithmetic operations; in particular omega(C) <=
+9/4. The Lean statement is over C exactly (the companion declaration
+omega_lt_source_constant in the MatrixFields library is stated for an
+arbitrary field, but at the constant 2.371054886..., the Alman et al.
+and AlphaEvolve regime, not at 9/4). The comparator configuration
+permits only propext, Quot.sound and Classical.choice; the catalogue
+marks the entry "Partial progress" in scope and "unchecked" in review;
+the challenge file holds the three statements with sorry and the
+solution module carries their formal derivations in a separate library that this round did
+not compile (the library is large and the repository recommends
+compiling small portions). The field restriction is therefore real:
+nothing in the catalogue claims 9/4 over the reals, the rationals or a
+finite field, and Remark 5.2 of the preprint says that the coefficients are fixed
+once epsilon is chosen, that the argument is in the complex arithmetic
+model, and that an exact complex rank decomposition implies one over
+an algebraic number field.
+
+What the proof constructs. The argument is spectral: it defines tensor
+characters (additive, multiplicative, restriction-monotone maps on the
+semiring of tensors modulo restriction), argues a "detecting character"
+lemma (for every d and every k below d^nu there is a character with
+lambda(T_d) >= k) by compactness and the Schauder-Tychonoff fixed point
+theorem in Appendix A, and bounds every character on polynomial
+multiplication through two explicit degenerations; the two growth rates
+force the character parameter t <= 3/4, hence lambda(T_d) <= d^(9/4)
+for every character and, letting d grow, nu <= 9/4. The conversion to
+an arithmetic algorithm (Section 5, after Theorem 1.1) reads: the
+definition of nu "supplies a fixed integer u >= 2 and an exact rank
+decomposition of T_u of length r < u^(9/4 + delta)", which is then
+applied recursively. That u, that r and those coefficients are never
+exhibited; the paper states in its introduction that "its proof does
+not specify a competitive finite matrix size", and the detecting
+character "may depend on d". So the three separate questions in the
+GO have three separate answers:
+  1. Precise theorem and field: an upper bound on the asymptotic
+     exponent over C in the exact arithmetic straight-line model;
+     proved (claimed and formalised, not independently compiled here)
+     for C only.
+  2. Explicit finite construction: none. The proof is an existence
+     argument through a fixed-point theorem; no u, r or coefficient
+     table is given, and the paper says no competitive finite size is
+     specified (the paper's words: "its proof does not specify a
+     competitive finite matrix size"). There is nothing to implement.
+  3. Numerically stable finite-precision implementation: not
+     addressed by the preprint (no mention of floating point, error
+     growth or stability); the question is moot without an algorithm.
+     Known fast schemes trade additions for multiplications and their
+     forward error grows with the recursion depth (measured below for
+     Strassen-Winograd).
+  4. Applicability to the tower's prefill GEMMs: the prefill products
+     are [T, 5120] x [5120, 17408], [T, 17408] x [17408, 5120] and
+     [T, 5120] x [5120, 248320] with T the chunk (256 by default). The
+     exponent bound concerns square n x n products as n grows; the
+     rectangular exponent bound in the same catalogue
+     (rectangularOmega C 0.709 < 2.092) is of the same asymptotic,
+     non-constructive kind. Any finite bilinear scheme has to recurse
+     on 2 x 2 (or k x k) blocks of all three dimensions, so with T =
+     256 the recursion depth available on the short side is small and
+     each level costs block additions and temporaries that the
+     framework GEMM does not pay.
+  5. Measured win over mx.matmul: see the benchmark below.
+
+Benchmark (scratch/strassen_bench.py, receipt
+logs/qmetal/strassen/bench_d42cb215.json (chain 4; the chain 1 and chain 3 figures, in study_chain1.log and study_chain2_3.log, agree within 17 percent on the plain product's wall)). Strassen-Winograd, 7 block
+products and 15 block additions per level, one and two levels, against
+the plain product, in numpy float32 (Accelerate, CPU) and in MLX
+float32 on the GPU, every result evaluated inside the timed region
+after one untimed warm-up, median of 5. Oracle first: in float64 the
+Strassen product equals the float64 plain product to under 1e-12
+relative Frobenius on three shapes at both depths (refused otherwise).
+Then:
+
+  shape (M x K x N)      backend  levels   wall      v plain   fro error v plain   MLX peak active
+  2048 x 2048 x 2048     numpy    0 / 1 / 2  11.3 / 24.3 / 42.4 ms   1 / 0.47 / 0.27   1 / 1.87 / 3.52
+                         MLX      0 / 1 / 2   4.5 /  6.0 / 10.9 ms   1 / 0.76 / 0.41   1 / 1.87 / 2.52   50 / 155 / 412 MB
+  4096 x 4096 x 4096     MLX      0 / 1 / 2  34.1 / 37.3 / 46.7 ms   1 / 0.91 / 0.73   1 / 1.87 / 3.51   201 / 621 / 1,237 MB
+  256 x 5120 x 17408     numpy    0 / 1 / 2  42.2 / 85.8 / 171.7 ms  1 / 0.49 / 0.25   1 / 1.87 / 3.50
+    (gate, up)           MLX      0 / 1 / 2  11.6 / 21.8 / 38.5 ms   1 / 0.53 / 0.30   1 / 1.87 / 3.50   380 / 817 / 1,450 MB
+  256 x 17408 x 5120     numpy    0 / 1 / 2  46.4 / 97.6 / 213.9 ms  1 / 0.48 / 0.22   1 / 1.88 / 3.50
+    (down)               MLX      0 / 1 / 2  13.1 / 25.7 / 40.7 ms   1 / 0.51 / 0.32   1 / 1.33 / 1.77   380 / 795 / 1,428 MB
+  256 x 5120 x 248320    MLX      0 / 1 / 2  173.8 / 292.2 / 555.0 ms 1 / 0.59 / 0.31  1 / 1.87 / 3.51   5,345 / 11,517 / 13,855 MB
+    (head)
+  1024 x 5120 x 17408    MLX      0 / 1 / 2  45.3 / 53.3 / 72.4 ms   1 / 0.85 / 0.63   1 / 1.87 / 3.50   449 / 1,129 / 1,789 MB
+  4096 x 5120 x 17408    MLX      0 / 1 / 2  184.4 / 189.7 / 224.6 ms 1 / 0.97 / 0.82  1 / 1.87 / 3.51   726 / 2,268 / 2,562 MB
+  (the two large shapes across the three chains, plain / one level:
+  chain 1 54.7 / 56.8 and 202.3 / 193.8 ms, chain 3 66.0 / 58.2 and
+  234.1 / 215.5 ms, chain 4 45.3 / 53.3 and 184.4 / 189.7 ms, so one
+  level reads 0.85x to 1.13x and the chains bracket the plain product)
+
+Reading. At the shapes the tower runs (256 rows, the
+serving chunk) Strassen-Winograd is slower by 1.7x to 3.3x on the GPU
+and 2.0x to 4.5x on the CPU at every depth, with the float32 error 1.3x
+to 3.5x the plain product's and the device peak 2.1x to 3.8x (the head
+product's one-level temporaries alone exceed 6 GB). Only when the row
+count reaches 1,024 or 4,096 does one level come within the
+measurement spread of the plain product, and there it still costs 1.9x
+the error and 2.5x to 3.1x the memory; nothing in the catalogue
+changes that picture, since no finite algorithm is offered. The multiplication count falls to 7/8 per
+level; the wall does not follow it on this device at these shapes; the
+reading consistent with the figures (not measured here) is that the
+plain GEMM runs near this device's arithmetic rate on the large
+rectangular products (3.4 to 4.2 TFLOPS equivalent) while the block
+additions, concatenations and temporaries are extra memory passes.
+The float32 error grows with the depth, as expected of Winograd's
+scheme. Verdict on practical relevance: none for this tower. An
+exponent of 9/4 is an asymptotic statement about an unspecified
+algorithm over C; an arithmetic-complexity improvement of this kind did
+not translate into a GPU speedup at T = 256 against the framework GEMM
+for the one finite scheme measured, which loses at the serving chunk
+and breaks even only at four to sixteen times its row count.
+The lab's GEMM lever remains what QWEN-METAL-PREFILL-GEMM-0 measured
+(decode once, multiply with the framework GEMM).
+
+Fences. Single reading of the public repository and preprint on
+2026-10-19 (the catalogue is under revision; three manuscripts were
+withdrawn between the October 6 release and this reading per the
+secondary reports); the Lean library was not compiled here and the
+"formalised" status is the repository's own claim; the benchmark is
+one machine, float32, synthetic Gaussian inputs, Strassen-Winograd
+only (no other fast scheme, no mixed precision, no custom kernel);
+numpy was skipped on the products above 34.4 billion multiply-adds
+(the driver's rule) where it would take minutes per round.

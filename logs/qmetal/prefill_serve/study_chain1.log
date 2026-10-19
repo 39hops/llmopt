@@ -1,0 +1,74 @@
+== ab_fused 18:38:10
+[ab fused] prefill 122.24 s (8.38 tok/s), decode 134.6 ms/token, calls prefill {'fused': 1604, 'gemm': 0} decode {'fused': 6416, 'gemm': 0}, footprint after prefill 11.49 GB, peak 11.16 GB, iso {'head': {'rows': 64, 'codec': 's16', 'gemm_ok': True, 'path': 'fused', 'scope_state': None}, 'body': {'rows': 64, 'codec': 'w4', 'gemm_ok': True, 'path': 'fused', 'scope_state': None}}; wrote logs/qmetal/prefill_serve/ab_fused_45874e87.json
+== ab_gemm 18:40:25
+[ab gemm] prefill 30.11 s (34.01 tok/s), decode 136.2 ms/token, calls prefill {'fused': 4, 'gemm': 1600} decode {'fused': 6416, 'gemm': 0}, footprint after prefill 11.34 GB, peak 12.02 GB, iso {'head': {'rows': 64, 'codec': 's16', 'gemm_ok': True, 'path': 'fused', 'scope_state': None}, 'body': {'rows': 64, 'codec': 'w4', 'gemm_ok': True, 'path': 'fused', 'scope_state': None}}; wrote logs/qmetal/prefill_serve/ab_gemm_45874e87.json
+== compare 18:41:08
+[compare] final {'positions': 1, 'max_abs': 4.559755325317383e-05, 'max_rel': 1.952792514738504e-06, 'bit_identical': False, 'argmax_identical': 1, 'margin_abs_diff_max': 2.288818359375e-05, 'min_margin_at_mismatch': None}; cache bit_identical False rel 1.1e-04 offsets True; decode argmax 16/16 max abs 1.17e-04; wrote logs/qmetal/prefill_serve/compare_45874e87.json
+== census 18:41:11
+[census] chat-1: 318 tokens 11.7 s, e0 256/256, teacher 226/256
+[census] chat-2: 320 tokens 10.4 s, e0 256/256, teacher 193/256
+[census] chat-3: 249 tokens 8.2 s, e0 186/186, teacher 162/186
+[census] chat-4: 151 tokens 6.2 s, e0 88/88, teacher 75/88
+[census] math-1: 320 tokens 10.5 s, e0 256/256, teacher 235/256
+[census] math-2: 167 tokens 6.0 s, e0 100/100, teacher 91/100
+[census] math-3: 196 tokens 6.7 s, e0 117/117, teacher 102/117
+[census] math-4: 202 tokens 6.9 s, e0 138/138, teacher 124/138
+[census] code-1: 270 tokens 9.5 s, e0 204/204, teacher 179/204
+[census] code-2: 339 tokens 11.5 s, e0 256/256, teacher 212/256
+[census] code-3: 322 tokens 11.1 s, e0 256/256, teacher 212/256
+[census] code-4: 324 tokens 11.3 s, e0 256/256, teacher 198/256
+[census] reason-1: 128 tokens 4.2 s, e0 53/53, teacher 46/53
+[census] reason-2: 339 tokens 11.4 s, e0 256/256, teacher 223/256
+[census] reason-3: 332 tokens 11.3 s, e0 256/256, teacher 229/256
+[census] reason-4: 318 tokens 10.6 s, e0 252/252, teacher 197/252
+[census] know-1: 258 tokens 8.4 s, e0 200/200, teacher 155/200
+[census] know-2: 251 tokens 9.3 s, e0 187/187, teacher 154/187
+[census] know-3: 318 tokens 11.8 s, e0 256/256, teacher 207/256
+[census] know-4: 152 tokens 6.3 s, e0 82/82, teacher 66/82
+[census] long-1: 329 tokens 11.4 s, e0 256/256, teacher 186/256
+[census] long-2: 327 tokens 11.5 s, e0 256/256, teacher 198/256
+[census] edge-1: 153 tokens 5.6 s, e0 88/88, teacher 72/88
+[census] edge-2: 276 tokens 9.5 s, e0 211/211, teacher 173/211
+[census] 4722 positions: argmax equal to E0 4722/4722, teacher agreement 3915/4722 (0.8291 v E0 0.8291), top-16 max abs 1.57e-03, 223 s, calls {'fused': 1011, 'gemm': 14628}; wrote logs/qmetal/prefill_serve/census_45874e87.json
+== disagree 18:45:05
+[census] 4722 rows, agree 0.8291; disagree 807: teacher-top2 picked 450, swap 320, teacher token outside draft top16 9; dump True; wrote logs/qwen_e0/C_disagreement.json
+== perm 18:46:33
+[perm] exact True
+[perm] float32 max ulps [516054.0, 305653.0, 317417.0] float64 max abs [9.769962616701378e-15, 1.021405182655144e-14, 8.881784197001252e-15]
+[perm] gaussian_iid: Wd rel err identity 0.1005, random 0.1005, sort maxabs 0.1005 (x1.000), sort l2 0.1005; output f64 ratio maxabs 1.000 l2 1.000 (Wd-only 0.999); order-only f32 diff 9.06e-06
+[perm] lognormal_neuron_scales_sigma1: Wd rel err identity 0.2231, random 0.2251, sort maxabs 0.1168 (x0.524), sort l2 0.1165; output f64 ratio maxabs 1.016 l2 1.015 (Wd-only 1.045); order-only f32 diff 3.20e-04
+[perm] arm_c_layer0_decoded_window: Wd rel err identity 0.1078, random 0.1078, sort maxabs 0.1075 (x0.997), sort l2 0.1075; output f64 ratio maxabs 1.002 l2 1.003 (Wd-only 1.003); order-only f32 diff 1.37e-09
+[perm] wrote logs/qmetal/mlp_perm/study_45874e87.json
+== strassen 18:46:47
+[strassen] 2048x2048x2048 numpy_f32 levels 0: 12.2 ms, err max 2.21e-06 fro 8.10e-07, temps 0 MB
+[strassen] 2048x2048x2048 numpy_f32 levels 1: 24.4 ms, err max 4.01e-06 fro 1.52e-06, temps 92 MB
+[strassen] 2048x2048x2048 numpy_f32 levels 2: 42.0 ms, err max 7.66e-06 fro 2.85e-06, temps 115 MB
+[strassen] 2048x2048x2048 mlx_f32 levels 0: 5.3 ms, err max 2.21e-06 fro 8.10e-07, temps 0 MB
+[strassen] 2048x2048x2048 mlx_f32 levels 1: 5.9 ms, err max 4.01e-06 fro 1.52e-06, temps 92 MB
+[strassen] 2048x2048x2048 mlx_f32 levels 2: 10.3 ms, err max 3.96e-06 fro 2.04e-06, temps 115 MB
+[strassen] 4096x4096x4096 mlx_f32 levels 0: 35.7 ms, err max 3.22e-06 fro 1.15e-06, temps 0 MB
+[strassen] 4096x4096x4096 mlx_f32 levels 1: 40.1 ms, err max 6.62e-06 fro 2.15e-06, temps 369 MB
+[strassen] 4096x4096x4096 mlx_f32 levels 2: 48.2 ms, err max 1.01e-05 fro 4.02e-06, temps 461 MB
+[strassen] 256x5120x17408 numpy_f32 levels 0: 42.5 ms, err max 3.36e-06 fro 1.28e-06, temps 0 MB
+[strassen] 256x5120x17408 numpy_f32 levels 1: 86.3 ms, err max 5.61e-06 fro 2.39e-06, temps 424 MB
+[strassen] 256x5120x17408 numpy_f32 levels 2: 175.0 ms, err max 1.05e-05 fro 4.48e-06, temps 530 MB
+[strassen] 256x5120x17408 mlx_f32 levels 0: 12.3 ms, err max 3.36e-06 fro 1.28e-06, temps 0 MB
+[strassen] 256x5120x17408 mlx_f32 levels 1: 20.5 ms, err max 5.61e-06 fro 2.39e-06, temps 424 MB
+[strassen] 256x5120x17408 mlx_f32 levels 2: 39.2 ms, err max 1.05e-05 fro 4.48e-06, temps 530 MB
+[strassen] 256x17408x5120 numpy_f32 levels 0: 49.8 ms, err max 5.21e-06 fro 2.36e-06, temps 0 MB
+[strassen] 256x17408x5120 numpy_f32 levels 1: 99.5 ms, err max 1.07e-05 fro 4.43e-06, temps 393 MB
+[strassen] 256x17408x5120 numpy_f32 levels 2: 217.5 ms, err max 1.55e-05 fro 8.27e-06, temps 491 MB
+[strassen] 256x17408x5120 mlx_f32 levels 0: 12.9 ms, err max 5.21e-06 fro 2.36e-06, temps 0 MB
+[strassen] 256x17408x5120 mlx_f32 levels 1: 27.7 ms, err max 5.19e-06 fro 3.13e-06, temps 393 MB
+[strassen] 256x17408x5120 mlx_f32 levels 2: 41.5 ms, err max 6.27e-06 fro 4.16e-06, temps 491 MB
+[strassen] 256x5120x248320 mlx_f32 levels 0: 187.1 ms, err max 3.90e-06 fro 1.28e-06, temps 0 MB
+[strassen] 256x5120x248320 mlx_f32 levels 1: 305.3 ms, err max 5.22e-06 fro 2.40e-06, temps 5981 MB
+[strassen] 256x5120x248320 mlx_f32 levels 2: 583.7 ms, err max 1.03e-05 fro 4.49e-06, temps 7476 MB
+[strassen] 1024x5120x17408 mlx_f32 levels 0: 54.7 ms, err max 2.95e-06 fro 1.28e-06, temps 0 MB
+[strassen] 1024x5120x17408 mlx_f32 levels 1: 56.8 ms, err max 6.03e-06 fro 2.40e-06, temps 627 MB
+[strassen] 1024x5120x17408 mlx_f32 levels 2: 74.4 ms, err max 1.04e-05 fro 4.49e-06, temps 784 MB
+[strassen] 4096x5120x17408 mlx_f32 levels 0: 202.3 ms, err max 3.54e-06 fro 1.28e-06, temps 0 MB
+[strassen] 4096x5120x17408 mlx_f32 levels 1: 193.8 ms, err max 6.00e-06 fro 2.40e-06, temps 1439 MB
+[strassen] 4096x5120x17408 mlx_f32 levels 2: 227.8 ms, err max 1.12e-05 fro 4.50e-06, temps 1798 MB
+[strassen] wrote logs/qmetal/strassen/bench_45874e87.json
+== study done 18:47:39

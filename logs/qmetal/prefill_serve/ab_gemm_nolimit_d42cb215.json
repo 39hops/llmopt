@@ -1,0 +1,187 @@
+{
+ "mode": "ab",
+ "arm": "gemm",
+ "code_commit": "d42cb215",
+ "tree_dirty": false,
+ "smoke": false,
+ "device": "Device(gpu, 0)",
+ "mlx_version": "0.31.2",
+ "mlx_lm_version": "0.31.3",
+ "qmetal_version": 4,
+ "process_default_prefill_gemm": false,
+ "resident_prefill_gemm_attr": false,
+ "gemm_min_t_override": null,
+ "gemm_min_t_by_codec": {
+  "w4": 16,
+  "s16": 32
+ },
+ "gemm_slab_bytes": 419430400,
+ "serving_config_defaults": {
+  "chunk": 256,
+  "matmul": "gemm",
+  "cache_limit_bytes": 2147483648
+ },
+ "serving_applied": {
+  "matmul": "gemm",
+  "cache_limit_bytes": null
+ },
+ "entry_point": "llmopt.lab.qprefill.prefill_chunked",
+ "ctx": 1024,
+ "chunk": 256,
+ "decode_steps": 16,
+ "cache_limit_bytes_applied": null,
+ "artifact": {
+  "chain": "logs/qwenwhole/artifact_digest_C.txt",
+  "chain_sha256": "de7e0180bf49f965c17116b7fbe8c34d2b1529c2431cc234f3a6460ad84b24dc",
+  "chain_report": {
+   "art_dir": "/Users/artin/qwen_whole0t/C",
+   "rung0": {
+    "checked": 19,
+    "unchained": false
+   },
+   "conservation": {
+    "keys": 1199
+   },
+   "census": {
+    "w4": 192,
+    "s16": 210,
+    "raw": 449,
+    "excluded": 348
+   },
+   "preflight": {
+    "estimated_peak_bytes": 6504933184,
+    "available_bytes": 23409623040,
+    "safety_fraction": 0.8
+   }
+  },
+  "n_layers": 64,
+  "families": {
+   "linear_attn": 48,
+   "full_attn": 16
+  },
+  "fused": 402,
+  "raw": 449,
+  "payload_resident_bytes": 9367009856,
+  "kernel_version": 4,
+  "prefill_gemm": false,
+  "gemm_min_t": {
+   "w4": 16,
+   "s16": 32
+  },
+  "gemm_slab_bytes": 419430400,
+  "gemm_ineligible_matrices": 0
+ },
+ "load_wall_s": 6.3770811557769775,
+ "prefill_wall_s": 26.817000150680542,
+ "prefill_tok_s": 38.1847333499759,
+ "decode_wall_s": 2.1538310050964355,
+ "decode_ms_per_token": 134.61443781852722,
+ "matrix_calls_prefill": {
+  "fused": 4,
+  "gemm": 1600
+ },
+ "matrix_calls_decode": {
+  "fused": 6416,
+  "gemm": 0
+ },
+ "memory": {
+  "after_load": {
+   "active_bytes": 8829764136,
+   "peak_bytes": 0,
+   "cache_bytes": 10540,
+   "footprint_bytes": 8829774676,
+   "rss_peak_bytes": 10913497088
+  },
+  "after_prefill": {
+   "active_bytes": 9122267692,
+   "peak_bytes": 12019357252,
+   "cache_bytes": 5149758760,
+   "footprint_bytes": 14272026452,
+   "rss_peak_bytes": 11109416960
+  },
+  "after_decode": {
+   "active_bytes": 9448899116,
+   "peak_bytes": 9518984896,
+   "cache_bytes": 4979978024,
+   "footprint_bytes": 14428877140,
+   "rss_peak_bytes": 11109416960
+  }
+ },
+ "dispatch_isolation_outside_scope": {
+  "head": {
+   "rows": 64,
+   "codec": "s16",
+   "gemm_ok": true,
+   "path": "fused",
+   "scope_state": null
+  },
+  "body": {
+   "rows": 64,
+   "codec": "w4",
+   "gemm_ok": true,
+   "path": "fused",
+   "scope_state": null
+  }
+ },
+ "final_argmax": 279,
+ "final_top16_ids": [
+  279,
+  488,
+  424,
+  678,
+  4156,
+  567,
+  310,
+  2433,
+  1017,
+  353,
+  821,
+  1727,
+  411,
+  264,
+  660,
+  1004
+ ],
+ "final_top16_logits": [
+  23.349925994873047,
+  23.17144203186035,
+  21.790910720825195,
+  20.218856811523438,
+  19.950870513916016,
+  19.836252212524414,
+  19.7188720703125,
+  19.693439483642578,
+  18.208656311035156,
+  17.41431427001953,
+  17.25616455078125,
+  17.19489288330078,
+  17.03597068786621,
+  16.82113265991211,
+  16.518810272216797,
+  16.119155883789062
+ ],
+ "decode_argmax": [
+  5601,
+  1575,
+  13,
+  271,
+  14055,
+  23187,
+  11,
+  2228,
+  58,
+  7525,
+  3855,
+  60,
+  248046,
+  198,
+  248044,
+  198
+ ],
+ "memory_note": "peak_bytes is MLX peak active memory since the last reset (reset after load and again before decode); footprint is MLX active + allocator pool",
+ "dumps": {
+  "final_gemm_nolimit_d42cb215.npy": "f2c9d91063b3b0a6a1ee8ddbc59a0f770e5b597eb446a73035413c020dd7b173",
+  "decode_gemm_nolimit_d42cb215.npy": "3a00f487a7ddd74ed2c537314ba1cf6a00caf9c34da3e5ce54b0372dedf5e020",
+  "cache_gemm_nolimit_d42cb215.npz": "a7d43759de0f4056e8f9bb82c321fea3aa45fca8f890ca419ff2a80b4e07173e"
+ }
+}

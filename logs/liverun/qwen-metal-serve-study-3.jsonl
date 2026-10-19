@@ -1,0 +1,2 @@
+{"event": "armed", "run_id": "qwen-metal-serve-study-3", "pid": 2140, "launch_commit": "8b24de053a35ab5b17de54e9e2b4b5677c632c91", "launch_commit_short": "8b24de05", "worktree_role": "main", "worktree_name": "llmopt", "cwd_relative": ".", "started_utc": "2026-10-19T19:02:59+00:00", "dirty_at_arm": false, "sentinel": ".git/liverun.lock"}
+{"event": "disarmed", "run_id": "qwen-metal-serve-study-3", "pid": 2140, "rc": 0, "ended_utc": "2026-10-19T19:24:03+00:00", "sentinel": ".git/liverun.lock"}

@@ -4384,6 +4384,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qmetal/mlp_perm/study_d42cb215.json": {
+   "bytes": 35981,
+   "exists": true,
+   "sha256": "55c3dc6b2811a3b6ee3a4fa8f3ae3e87cdd4e3d32e5007bdb8f17618d5e83b0e",
+   "source": "results",
+   "tracked": true
+  },
   "logs/qmetal/prefill_floor_7f464353.json": {
    "bytes": 1528,
    "exists": true,
@@ -4447,6 +4454,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qmetal/strassen/bench_d42cb215.json": {
+   "bytes": 15850,
+   "exists": true,
+   "sha256": "fab35a7a7da1c4440f54dbe6b1ed7ac9e7d07d49c136ca61ab26c38b4cf5c4ab",
+   "source": "results",
+   "tracked": true
+  },
   "logs/qmetal/tower_C_295be340.json": {
    "bytes": 1553,
    "exists": true,
@@ -4480,6 +4494,13 @@
    "bytes": 16685,
    "exists": true,
    "sha256": "5e831c1ba8fc06b091404b89f0fb0d71dd457746a4bad3472c0f809731f01508",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwen_e0/C_disagreement_d42cb215.json": {
+   "bytes": 26785,
+   "exists": true,
+   "sha256": "f2b9a3b214d87fc32a7719d7d819b725a8053bc35f2b2163a6d85c776e9429b3",
    "source": "results",
    "tracked": true
   },
@@ -5544,6 +5565,14 @@
    "sha256": "929036101252a03a038db016ce39b5984a18b686900e71fc738d4f1eec5fbe8c",
    "source": "results",
    "tracked": true
+  },
+  "logs/qwenteacher_v2/rollout_logits.npy": {
+   "bytes": 3051356288,
+   "exists": true,
+   "local_only": true,
+   "sha256": "3ee31270942022f3539996fe52af4501e6e02f45070df9f63e68bef0797db07a",
+   "source": "results",
+   "tracked": false
   },
   "logs/qwenteacher_v2/rollout_tokens.jsonl": {
    "bytes": 47263,

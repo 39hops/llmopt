@@ -1,0 +1,207 @@
+{
+ "mode": "compare",
+ "arm": null,
+ "code_commit": "d42cb215",
+ "tree_dirty": false,
+ "smoke": false,
+ "device": "Device(gpu, 0)",
+ "mlx_version": "0.31.2",
+ "mlx_lm_version": "0.31.3",
+ "qmetal_version": 4,
+ "process_default_prefill_gemm": false,
+ "resident_prefill_gemm_attr": false,
+ "gemm_min_t_override": null,
+ "gemm_min_t_by_codec": {
+  "w4": 16,
+  "s16": 32
+ },
+ "gemm_slab_bytes": 419430400,
+ "serving_config_defaults": {
+  "chunk": 256,
+  "matmul": "gemm",
+  "cache_limit_bytes": 2147483648
+ },
+ "serving_applied": {
+  "matmul": null,
+  "cache_limit_bytes": null
+ },
+ "entry_point": "llmopt.lab.qprefill.prefill_chunked",
+ "arms": {
+  "fused": {
+   "code_commit": "d42cb215",
+   "ctx": 1024,
+   "chunk": 256,
+   "decode_steps": 16,
+   "cache_limit_bytes_applied": 2147483648,
+   "prefill_wall_s": 122.41401696205139,
+   "prefill_tok_s": 8.365055125324758,
+   "decode_ms_per_token": 135.4408711194992,
+   "matrix_calls_prefill": {
+    "fused": 1604,
+    "gemm": 0
+   },
+   "matrix_calls_decode": {
+    "fused": 6416,
+    "gemm": 0
+   },
+   "memory": {
+    "after_load": {
+     "active_bytes": 8829764136,
+     "peak_bytes": 0,
+     "cache_bytes": 10540,
+     "footprint_bytes": 8829774676,
+     "rss_peak_bytes": 10920919040
+    },
+    "after_prefill": {
+     "active_bytes": 9334473260,
+     "peak_bytes": 11155030596,
+     "cache_bytes": 2156630964,
+     "footprint_bytes": 11491104224,
+     "rss_peak_bytes": 11473190912
+    },
+    "after_decode": {
+     "active_bytes": 9448899116,
+     "peak_bytes": 9518968512,
+     "cache_bytes": 1989898676,
+     "footprint_bytes": 11438797792,
+     "rss_peak_bytes": 11473190912
+    }
+   },
+   "dispatch_isolation_outside_scope": {
+    "head": {
+     "rows": 64,
+     "codec": "s16",
+     "gemm_ok": true,
+     "path": "fused",
+     "scope_state": null
+    },
+    "body": {
+     "rows": 64,
+     "codec": "w4",
+     "gemm_ok": true,
+     "path": "fused",
+     "scope_state": null
+    }
+   }
+  },
+  "gemm": {
+   "code_commit": "d42cb215",
+   "ctx": 1024,
+   "chunk": 256,
+   "decode_steps": 16,
+   "cache_limit_bytes_applied": 2147483648,
+   "prefill_wall_s": 28.875483989715576,
+   "prefill_tok_s": 35.46260905495861,
+   "decode_ms_per_token": 135.48992574214935,
+   "matrix_calls_prefill": {
+    "fused": 4,
+    "gemm": 1600
+   },
+   "matrix_calls_decode": {
+    "fused": 6416,
+    "gemm": 0
+   },
+   "memory": {
+    "after_load": {
+     "active_bytes": 8829764136,
+     "peak_bytes": 0,
+     "cache_bytes": 10540,
+     "footprint_bytes": 8829774676,
+     "rss_peak_bytes": 10925768704
+    },
+    "after_prefill": {
+     "active_bytes": 9185968684,
+     "peak_bytes": 12019357252,
+     "cache_bytes": 2150170624,
+     "footprint_bytes": 11336139308,
+     "rss_peak_bytes": 11130454016
+    },
+    "after_decode": {
+     "active_bytes": 9448899116,
+     "peak_bytes": 9518960352,
+     "cache_bytes": 2006895940,
+     "footprint_bytes": 11455795056,
+     "rss_peak_bytes": 11130454016
+    }
+   },
+   "dispatch_isolation_outside_scope": {
+    "head": {
+     "rows": 64,
+     "codec": "s16",
+     "gemm_ok": true,
+     "path": "fused",
+     "scope_state": null
+    },
+    "body": {
+     "rows": 64,
+     "codec": "w4",
+     "gemm_ok": true,
+     "path": "fused",
+     "scope_state": null
+    }
+   }
+  }
+ },
+ "final_logits": {
+  "positions": 1,
+  "max_abs": 4.559755325317383e-05,
+  "max_rel": 1.952792514738504e-06,
+  "bit_identical": false,
+  "argmax_identical": 1,
+  "margin_abs_diff_max": 2.288818359375e-05,
+  "min_margin_at_mismatch": null
+ },
+ "cache_after_prefill": {
+  "offsets_equal": true,
+  "bit_identical": false,
+  "classes": {
+   "conv": {
+    "max_abs": 9.5367431640625e-05,
+    "max_rel_to_array_max": 3.623731215224475e-06,
+    "arrays": 48
+   },
+   "state": {
+    "max_abs": 3.555417060852051e-05,
+    "max_rel_to_array_max": 1.1637458639903583e-05,
+    "arrays": 48
+   },
+   "kv_k": {
+    "max_abs": 0.0016770362854003906,
+    "max_rel_to_array_max": 0.00010232617032684206,
+    "arrays": 16
+   },
+   "kv_v": {
+    "max_abs": 0.012418746948242188,
+    "max_rel_to_array_max": 0.00011138447532728662,
+    "arrays": 16
+   }
+  }
+ },
+ "decode_logits": {
+  "positions": 16,
+  "max_abs": 0.00011730194091796875,
+  "max_rel": 3.643309243259197e-06,
+  "bit_identical": false,
+  "argmax_identical": 16,
+  "margin_abs_diff_max": 7.2479248046875e-05,
+  "min_margin_at_mismatch": null,
+  "per_step_argmax_equal": [
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true
+  ]
+ }
+}
