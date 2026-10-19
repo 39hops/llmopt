@@ -17,7 +17,7 @@ path (head="full", the per-position logits for
 qualification and E0 comparisons). The body (embedding, layers with
 their caches, final norm) runs over the whole chunk in both.
 
-Matrix path. prefill_chunked(matmul="gemm") runs its body and head calls
+Matrix path. prefill_chunked's default matmul="gemm" runs its body and head calls
 inside qmetal.gemm_scope(True), so the fused residents take the decode-once
 float32 GEMM for tiles at or above their per-codec threshold during this
 call only (qualified in QWEN-METAL-PREFILL-GEMM-0 for exactly this entry
@@ -126,7 +126,7 @@ def split_body_head(model):
     return lm.model, lm.lm_head
 
 
-def prefill_chunked(model, ids, cache, chunk: int = 256, head: str = "final", on_chunk=None, matmul=None):
+def prefill_chunked(model, ids, cache, chunk: int = 256, head: str = "final", on_chunk=None, matmul="gemm"):
     """Prefill ids (a list of token ids, one unpadded prompt) into cache in
     chunks of `chunk` tokens. head="final": the head runs on the last
     hidden row of each chunk and the last chunk's [1, 1, V] logits are
@@ -135,8 +135,10 @@ def prefill_chunked(model, ids, cache, chunk: int = 256, head: str = "final", on
     called with each chunk's logits after evaluation, before the next chunk
     is built, so a caller can move them to host. head="none": the body
     only (hidden states evaluated), returns None. matmul: "gemm" (the
-    decode-once GEMM path for this call), "fused" (fused-only control) or
-    None (process default); see the module docstring."""
+    default: the decode-once GEMM path for this call, qualified for this
+    entry point), "fused" (the fused-only control) or None (the process
+    default, fused unless the research switch is set); see the module
+    docstring."""
     import mlx.core as mx
     from llmopt.lab import qmetal
     if head not in ("final", "full", "none"):

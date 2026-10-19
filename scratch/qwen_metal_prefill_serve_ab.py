@@ -88,7 +88,9 @@ def provenance(mode, arm=None):
             "qmetal_version": qmetal.VERSION, "process_default_prefill_gemm": qmetal.PREFILL_GEMM,
             "resident_prefill_gemm_attr": bool(qmetal._Resident.prefill_gemm), "gemm_min_t_override": qmetal.GEMM_MIN_T,
             "gemm_min_t_by_codec": qmetal.GEMM_MIN_T_BY_CODEC, "gemm_slab_bytes": qmetal.GEMM_SLAB_BYTES,
-            "serving_config": {"chunk": cfg.chunk, "matmul": cfg.matmul, "cache_limit_bytes": cfg.cache_limit_bytes},
+            "serving_config_defaults": {"chunk": cfg.chunk, "matmul": cfg.matmul, "cache_limit_bytes": cfg.cache_limit_bytes},
+            "serving_applied": {"matmul": arm if mode == "ab" else ("gemm" if mode == "census" else None),
+                                "cache_limit_bytes": (None if os.environ.get("CACHE_LIMIT", "") == "none" else int(os.environ.get("CACHE_LIMIT") or cfg.cache_limit_bytes)) if mode in ("ab", "census") else None},
             "entry_point": "llmopt.lab.qprefill.prefill_chunked"}
 
 
@@ -124,7 +126,8 @@ def mode_ab():
     steps = 2 if SMOKE else int(os.environ.get("DECODE_STEPS", "16"))
     os.makedirs(DUMP, exist_ok=True)
     tag = os.environ.get("TAG", "")          # distinguishes extra arms (for example the no-cache-limit control)
-    rpath = os.path.join(OUT, f"ab_{arm}{tag}_{git_head()}.json")
+    commit = git_head()
+    rpath = os.path.join(OUT, f"ab_{arm}{tag}_{commit}.json")
     refuse(rpath)
     cache_limit = apply_cache_limit()
     ids = real_tokens(ctx + steps)
@@ -132,7 +135,6 @@ def mode_ab():
     residents = residents_of(model)
     head_res = model.language_model.lm_head.res
     body_res = [r for r in residents if r is not head_res and r.gemm_ok][0]
-    commit = git_head()
     mx.reset_peak_memory()
     mem = {"after_load": qprefill.memory_report()}
     cache = make_prompt_cache(model)
@@ -352,7 +354,8 @@ def mode_census():
     mem = qprefill.memory_report()
     rec = provenance("census") | {
         "cache_limit_bytes_applied": cache_limit, "chunk": chunk, "artifact": info, "load_wall_s": load_wall,
-        "teacher": {"dir": tdir, "code_commit": man["code_commit"], "revision": man["revision"], "rollout_sha": ro["sha256"]},
+        "teacher": {"dir": tdir, "code_commit": man["code_commit"], "revision": man["revision"], "rollout_sha_manifest": ro["sha256"],
+                    "rollout_tokens_sha256": sha_file(os.path.join(tdir, "rollout_tokens.jsonl")), "manifest_sha256": sha_file(os.path.join(tdir, "teacher_manifest.json"))},
         "e0_rows": "logs/qwen_e0/C/positions.jsonl", "e0_rows_sha256": sha_file("logs/qwen_e0/C/positions.jsonl"),
         "e0_agree_rate_pooled": e0_summary["agree_rate_pooled"],
         "n_prompts": n_prompts, "n_positions": pos, "argmax_equal_e0": agree_e0, "argmax_equal_teacher": agree_teacher,

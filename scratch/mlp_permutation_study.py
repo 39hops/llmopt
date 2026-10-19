@@ -316,7 +316,12 @@ def main():
         raise SystemExit(f"REFUSING: {out} exists")
     os.makedirs(os.path.dirname(out), exist_ok=True)
     levels, lv_src = arm_c_levels(art)
+    import hashlib
+    chain = "logs/qwenwhole/artifact_digest_C.txt"
     rec = {"code_commit": git_head(), "tree_dirty": git_dirty(), "smoke": SMOKE, "art_dir_present": os.path.isdir(art),
+           "art_dir": art.replace(os.path.expanduser("~"), "~"),
+           "artifact_manifest_sha256": hashlib.sha256(open(os.path.join(art, "manifest.json"), "rb").read()).hexdigest() if os.path.isdir(art) else None,
+           "artifact_chain_sha256": hashlib.sha256(open(chain, "rb").read()).hexdigest() if os.path.exists(chain) else None,
            "levels": [float(v) for v in levels], "levels_source": lv_src, "block": BLOCK,
            "codecs": {"s16_proxy": "block-128 e8m0 scale, nearest of 16 scalar levels",
                       "w4_proxy": "block-128 e8m0 scale, nearest of 256 k-means 4-vectors fitted per matrix (12 iterations, 262,144 samples)"}}

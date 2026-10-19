@@ -137,6 +137,12 @@ def test_refuses_batched_or_non_integer_prompts():
             qprefill.prefill_chunked(_Model(), bad, [_Cache()], chunk=2)
 
 
+def test_entry_point_default_matmul_is_gemm():
+    import inspect
+    assert inspect.signature(qprefill.prefill_chunked).parameters["matmul"].default == "gemm"
+    assert qprefill.ServingConfig().matmul == "gemm"
+
+
 def test_serving_config_and_memory_report():
     cfg = qprefill.ServingConfig()
     assert cfg.chunk == 256 and cfg.matmul == "gemm" and cfg.cache_limit_bytes == 2 * 1024 ** 3

@@ -32,7 +32,7 @@ Env: E0_DIR (logs/qwen_e0/C), TEACHER_DIR (logs/qwenteacher_v2),
 CENSUS_RECEIPT (the MODE=census receipt whose dumps are used; the dump
 is opened by the name and sha that receipt records, and every row's
 dump argmax must equal the E0 row's draft_argmax), OUT
-(logs/qwen_e0/C_disagreement.json), SMOKE=1 (first 64 rows, OUT under
+(logs/qwen_e0/C_disagreement_<commit>.json), SMOKE=1 (first 64 rows, OUT under
 logs/qwen_e0_smoke/, OUT from the environment ignored).
 """
 from __future__ import annotations
@@ -53,7 +53,15 @@ SMOKE = os.environ.get("SMOKE") == "1"
 E0_DIR = os.environ.get("E0_DIR", "logs/qwen_e0/C")
 TEACHER_DIR = os.environ.get("TEACHER_DIR", "logs/qwenteacher_v2")
 CENSUS_RECEIPT = os.environ.get("CENSUS_RECEIPT", "")
-OUT = "logs/qwen_e0_smoke/C_disagreement.json" if SMOKE else os.environ.get("OUT", "logs/qwen_e0/C_disagreement.json")
+def git_head():
+    return subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip()
+
+
+def git_dirty():
+    return bool(subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True).stdout.strip())
+
+
+OUT = f"logs/qwen_e0_smoke/C_disagreement_{git_head()}.json" if SMOKE else os.environ.get("OUT", f"logs/qwen_e0/C_disagreement_{git_head()}.json")
 MARGIN_EDGES = [0.0, 0.02, 0.05, 0.1, 0.2, 0.5, 1.0, 2.0, 5.0, float("inf")]
 STEP_EDGES = [0, 1, 4, 16, 64, 128, 256]
 
@@ -63,6 +71,16 @@ def sha_file(p):
     with open(p, "rb") as f:
         for b in iter(lambda: f.read(1 << 22), b""):
             h.update(b)
+    return h.hexdigest()
+
+
+def sha_array_file(path):
+    """sha256 of the array's bytes (the teacher manifest hashes a.tobytes(), not the .npy file)."""
+    a = np.load(path, mmap_mode="r")
+    h = hashlib.sha256()
+    step = max(1, (1 << 28) // max(1, a[0].nbytes))
+    for i in range(0, a.shape[0], step):
+        h.update(np.ascontiguousarray(a[i:i + step]).tobytes())
     return h.hexdigest()
 
 
@@ -112,7 +130,7 @@ def main():
     dm = np.array([r["draft_margin_logit"] for r in rows], dtype=np.float64)
     cat = np.array([r["category"] for r in rows])
     step = np.array([r["step"] for r in rows])
-    rank_t_in_d = np.array([r["teacher_token_rank_in_draft"] for r in rows])     # 1-based; >16 means outside top-16
+    rank_t_in_d = np.array([r["teacher_token_rank_in_draft"] for r in rows])     # 0-based (0 = draft argmax); 16 means outside the draft top-16
     kl = np.array([r["kl_teacher_draft"] for r in rows], dtype=np.float64)
     dis = ~agree
 
@@ -183,15 +201,17 @@ def main():
         "teacher_margin_above_5_nat_while_wrong": int((dis & (tm > 5.0)).sum()),
     }
     # ---- top-2 structure ----
-    rk = np.minimum(rank_t_in_d, 17)
+    rk = np.minimum(rank_t_in_d, 16)
     top2 = {
         "n_disagree": int(dis.sum()),
         "draft_picks_teacher_top2": int((dis & d_pick_is_t2).sum()),
         "draft_picks_a_teacher_top16_token": int((dis & (d_argmax_t_rank <= 16)).sum()),
         "draft_picks_outside_teacher_top16": int((dis & (d_argmax_t_rank > 16)).sum()),
-        "teacher_token_rank_in_draft_hist": {str(k): int(v) for k, v in sorted(collections.Counter(rk[dis]).items())},
-        "teacher_token_is_draft_second": int((dis & (rank_t_in_d == 2)).sum()),
-        "teacher_token_outside_draft_top16": int((dis & (rank_t_in_d > 16)).sum()),
+        "teacher_token_rank_in_draft_hist_0based": {str(k): int(v) for k, v in sorted(collections.Counter(rk[dis]).items())},
+        "teacher_token_rank_note": "0-based as in the E0 rows: 1 = the draft's second choice; 16 = outside the draft's top-16",
+        "teacher_token_is_draft_second": int((dis & (rank_t_in_d == 1)).sum()),
+        "teacher_token_is_draft_third": int((dis & (rank_t_in_d == 2)).sum()),
+        "teacher_token_outside_draft_top16": int((dis & (rank_t_in_d >= 16)).sum()),
         "swap_of_teacher_top2": int((dis & d_top2_set_equal).sum()),
         "draft_argmax_teacher_rank_hist_disagree": {str(k): int(v) for k, v in sorted(collections.Counter(np.minimum(d_argmax_t_rank[dis], 17)).items())},
         "teacher_top2_gap_when_swapped": q((t_logit_top1 - t_logit_top2)[dis & d_top2_set_equal]),
@@ -201,7 +221,7 @@ def main():
     bias = {"dump_present": have_dump, "dump_rows_whose_fp16_argmax_differs_from_e0_row": dump_argmax_mismatch if have_dump else None,
             "dump_fp16_argmax_mismatch_rows": dump_mismatch_rows,
             "note": "shift alignment subtracts the mean over the live vocabulary of (draft minus teacher); both records are fp16, so about 0.01 to 0.03 of rounding sits inside every per-logit difference; the census receipt's float32 argmax count is the decision-level comparison, the fp16 dump can flip a near-tie"}
-    if have_dump and any(m["fp16_top2_gap"] > 0.0625 for m in dump_mismatch_rows):
+    if have_dump and any(m["fp16_top2_gap"] > 0.0 for m in dump_mismatch_rows):      # fp16 rounding is monotone: a flip needs an exact fp16 tie
         raise SystemExit(f"REFUSING: a dump row disagrees with its E0 row beyond fp16 tie resolution: {dump_mismatch_rows}")
     if have_dump:
         e = shift_err_top16
@@ -263,7 +283,7 @@ def main():
             "independent validation sets that are not E0: the teacher's corpus record (356 positions) and prefix record (98 positions) carry full logits; arm C hidden states for them need one CPU or Metal forward each",
         ],
         "needs_vendor_weights": [
-            "any restoration or requantization of a matrix (head, embeddings, attention, MLP): the frozen artifact holds only the compressed payloads; the vendor BF16 lm_head is in shard model-00018-of-00018.safetensors (3,392,197,344 bytes; the tensor is 2,543,001,600 bytes) and the embeddings in shard 3 (2,542,796,952 bytes)",
+            "any restoration or requantization of a matrix (head, embeddings, attention, MLP): the frozen artifact holds only the compressed payloads; the vendor BF16 lm_head is in shard model-00018-of-00018.safetensors (3,392,197,344 bytes; the tensor is 2,542,796,800 bytes) and the embeddings in shard 3 (2,542,796,952 bytes)",
             "attributing the 17 percent disagreement to body versus head error: needs either the vendor head (teacher logits from draft hidden states) or the teacher's hidden states (not recorded)",
         ],
         "needs_more_teacher_inference": [
@@ -271,10 +291,14 @@ def main():
             "free-run (non teacher-forced) agreement and downstream task deltas",
         ],
     }
-    rec = {"code_commit": subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip(),
+    import platform
+    rollout_sha_disk = sha_array_file(os.path.join(TEACHER_DIR, "rollout_logits.npy")) if not SMOKE else None
+    if rollout_sha_disk is not None and rollout_sha_disk != ro["sha256"]:
+        raise SystemExit("REFUSING: teacher rollout record differs from the manifest sha")
+    rec = {"code_commit": git_head(), "tree_dirty": git_dirty(), "numpy_version": np.__version__, "python": platform.python_version(),
            "smoke": SMOKE, "e0_dir": E0_DIR, "e0_rows_sha256": sha_file(os.path.join(E0_DIR, "positions.jsonl")),
            "teacher": {"dir": TEACHER_DIR, "code_commit": man["code_commit"], "revision": man["revision"], "rollout_sha": ro["sha256"],
-                       "rollout_sha_verified": sha_file(os.path.join(TEACHER_DIR, "rollout_logits.npy")) == ro["sha256"] if not SMOKE else "skipped"},
+                       "rollout_array_sha256_on_disk": rollout_sha_disk, "rollout_sha_verified": (rollout_sha_disk == ro["sha256"]) if not SMOKE else "skipped"},
            "dump": {"census_receipt": CENSUS_RECEIPT or None, "census_commit": census_rec["code_commit"] if have_dump else None,
                     "path": dump_logits, "present": have_dump, "sha256": census_rec["dumps"][os.path.basename(dump_logits)] if have_dump else None},
            "n_positions": n, "n_agree": int(agree.sum()), "agree_rate": float(agree.mean()), "v_live": v_live,
@@ -284,7 +308,7 @@ def main():
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     json.dump(rec, open(OUT, "w"), indent=1)
     print(f"[census] first generated position: agree {first_pos['agree']}/{first_pos['n']}, teacher {first_pos['teacher_tokens']}, draft {first_pos['draft_tokens']}")
-    print(f"[census] {n} rows, agree {agree.mean():.4f}; disagree {dis.sum()}: teacher-top2 picked {top2['draft_picks_teacher_top2']}, "
+    print(f"[census] {n} rows, agree {agree.mean():.4f}; disagree {dis.sum()}: teacher-top2 picked {top2['draft_picks_teacher_top2']}, teacher token draft-second {top2['teacher_token_is_draft_second']}, "
           f"swap {top2['swap_of_teacher_top2']}, teacher token outside draft top16 {top2['teacher_token_outside_draft_top16']}; "
           f"dump {have_dump}; wrote {OUT}")
 
