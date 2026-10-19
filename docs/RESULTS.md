@@ -79901,3 +79901,257 @@ tokens; the one-shot 1,024 to 4,096 peaks are the frozen
 QWEN-METAL-QUAL-0 values, not rerun; grid rows are one fresh process
 each with the allocator reset, peak unified memory from
 mx.get_peak_memory after a reset and process RSS from getrusage.
+
+## AMENDMENT QWEN-METAL-CHUNKED-PREFILL-0-KV-OFFSET-FIELD: the receipt field named kv_offset_after_prefill in the fifteen logs/qmetal/chunked/mem_*.json receipts of OBSERVATION QWEN-METAL-CHUNKED-PREFILL-0 (L79782) was recorded after the 16 greedy decode steps, not after the prefill, which is why it reads 4,112 for the 4,096-token rows (and 528, 1,040, 2,064 for the others); the value is the context plus the decode steps in every row, so the offsets were correct and the name was wrong; frozen receipts unchanged, the driver now records both fields, and the grid runner stops on a failed configuration (2026-10-18, Mac)
+
+The mem mode of scratch/qwen_metal_chunked.py read cache[3].offset
+when it built the receipt row, after the decode loop. Every row's
+value equals context + 16 (the receipts of the observation say 528,
+1,040, 2,064 and 4,112 for contexts 512, 1,024, 2,048 and 4,096), which
+is the value a correct prefill followed by 16 decode steps produces;
+the observation's correctness claims rest on the boundary receipt,
+whose offsets were compared cache against cache after prefill, not on
+this field. Correction, forward only: the driver now captures
+kv_offset_after_prefill before the first decode step and adds
+kv_offset_after_decode after the loop (commit d6c28b88); the new
+receipts under logs/qmetal/prefill_head/ carry both (1,024 then 1,040;
+4,096 then 4,112). The fifteen frozen receipts keep their original
+field under its original name; read them with this entry. In the same
+commit scratch/qwen_metal_chunked_grid.sh stops at the first
+configuration that exits non-zero, writes a FAILED line with the exit
+code and does not write the "grid done" marker; the booked grid's
+runner did not capture exit codes, but all fifteen refuse-if-exists
+receipts exist and grid.log holds all fifteen final lines (the receipt
+is written before that line), so the marker in the frozen grid.log
+stands. Found by Artin in review of commit 8b40658d.
+
+## OBSERVATION QWEN-METAL-PREFILL-STUDY-0: where the prefill of the arm C Metal tower spends its time and what a faster prefill can reach, by measurement: on the three ablated matrices, removing the activation loads from the frozen tile-8 kernel removes 93 to 94 percent of a W4 launch (3,555 to 261 us) and 67 percent of an S16 launch, while removing the weight streams, the codebook lookups or the reductions removes at most 4 percent, and the 256-token chunk spends 28.4 of its 30.6 s in the matrices and 2.1 s in everything else; decoding a matrix once to float32 (max abs error 0.0 against the numpy decode on four matrices and one eighth of the head; 3.4 ms for a 17408x5120 MLP matrix) and multiplying with the framework GEMM takes 15 ms per 256 activations on that matrix where the fused path takes 111 ms, 4.6x to 7.4x on the five measured matrices, which projects the chunk's matrix time from 28.7 to 4.7 s and the prefill from 8.4 to about 37 tokens per second (projection, floor included) with no new fused kernel; projecting only the final prompt position through the vocabulary head is numerically identical to the full projection (final logits, caches and 16 decode steps bit for bit at 1,024 and 4,096 tokens) and saves 4.5 s of a 122 s 1,024-token prefill (3.7 percent, 8.37 to 8.69 tokens per second); at 4,096 real tokens chunks 128 and 256 are bit-identical to each other in all 4,096 argmaxes and margins, every cache array after prefill and 16 decode steps, and chunk 512 differs from them at the kernel-parity level only (final logits 8.1e-7 relative, recurrent state 1.6e-6 after prefill, 4,096 of 4,096 argmax, 16 of 16 after), so the chunk-256 default stands (2026-10-18, Mac; kernels, codec, chunk-256 default and all prior receipts untouched; timing receipts are timing only)
+
+Drivers and receipts. scratch/qmetal_prefill_kernel_study.py (MODE
+kernels: logs/qmetal/prefill_kernels_7f464353.json; MODE floor:
+logs/qmetal/prefill_floor_7f464353.json) and
+scratch/qwen_metal_prefill_head.py (MODE time:
+logs/qmetal/prefill_head/time_74727fca.json; MODE mem: the five
+mem_ctx*_chunk256_*.json; MODE ctx4k: ctx4k_7f464353.json), run in
+stages by scratch/qwen_metal_prefill_study.sh under liverun. Three
+chains: qwen-metal-prefill-study (d6c28b88) stopped at the floor stage
+on an import error after writing a kernels receipt; -2 (74727fca) ran
+floor through ctx4k; a receipt audit (Opus 5.5, before booking) found
+that the ctx4k cache comparison ran after the decode steps, the floor
+order did not rotate and the projection substituted gate_proj for
+down_proj, so those three stages were rerun as -3 at 7f464353
+(logs/qmetal/prefill_head/study.log; the first two chains' log is
+study_1.log, which has no line for the first arm because the log was
+reset between them) and the superseded receipts were not kept. The
+head and memory receipts of -2 stand (their code did not change). Every
+timing below is a pipelined per-launch time (QUEUE 32 independent
+launches on independent inputs, one eval; 8 for the decode-once
+launches) or an end-to-end wall; nothing is a sum of synced kernel
+times.
+
+1. Why a tile-8 launch costs many single launches. Per distinct fused
+shape, pipelined per-launch time at tiles 1, 2, 4, 8 (us; production
+dispatch: v4 for W4 tiles 1 and 2, v3 above, v3 for every S16 tile):
+  W4 17408x5120 (128 matrices)   236   483  1,172  3,595   tile 8 = 15.3x tile 1
+  W4 5120x17408 (64)             245   505  1,778  3,431   14.0x
+  S16 10240x5120 (48)            407   416    562  1,344    3.3x
+  S16 6144x5120 (48)             244   257    307    775    3.2x
+  S16 5120x6144 (64)             249   256    318    816    3.3x
+  S16 12288x5120 (16)            477   497    679  1,622    3.4x
+  S16 1024x5120 (32)              53    54     67    131    2.5x
+  S16 248320x5120 head (1)     9,313 9,814 19,968 33,473    3.6x
+The W4 ratio compares the v3 tile-8 kernel with the v4 tile-1 kernel;
+v3 against v3 it is 9.6x (3,555 against 371 us in the ablation
+below). Ablation of the frozen v3 source at TT = 8 (one stream removed
+at a time; the variants compute wrong values by construction, so this
+says what removing a stream saves, not what the hardware does):
+  W4 17408x5120: v3 3,555; activation loads removed 261; codebook
+  lookups removed 3,423; index stream removed 3,623; both weight
+  streams removed 3,694; simd reductions removed 3,562; empty kernel
+  of the same grid 42.
+  W4 5120x17408: v3 3,373; no activation loads 215; no codebook 3,266;
+  no index stream 3,373; both weight streams removed 3,336; no
+  reductions 3,375; empty 21.
+  S16 10240x5120: v3 1,320; no activation loads 436; no code stream
+  1,418; no reductions 1,348; empty 32.
+Removing the activation loads removes 92.7 and 93.6 percent of the two
+W4 launches and 67.0 percent of the S16 launch; removing the codebook
+lookups removes 3.7 and 3.2 percent (S16's level lookups were not
+ablated on their own); removing the weight streams or the reductions
+does not shorten any launch (minus 1 to plus 4 percent W4, plus 2 to
+plus 7 percent S16; no noise figure is recorded); the writes were not
+ablated; the empty kernel is 1 to 2 percent. By the kernel source (not
+measured): each row's simdgroup reads the whole [TT, C] activation tile
+again, TT x C x 4 bytes per row, 2.85 GB of on-chip reads per launch at
+TT = 8 for the 17,408-row matrix against 23 MB of weights, and each
+decoded weight is already reused across the TT activations. This
+corrects the sentence in QWEN-METAL-CHUNKED-PREFILL-0 (L79895) "the
+fused GEMV costs about the same per token at tile 8 as at tile 1 ...
+so a prefill of L tokens costs about L decode steps of weight
+streaming; a kernel that decodes each weight once per tile and reuses
+it across the 8 activations is justified by that measurement": the
+weight streaming is not what the tile pays for (removing it saves
+nothing) and the decode is already shared; the activation re-reads
+are.
+
+2. The chunk, end to end (MODE floor; 256 synthetic tokens, fresh
+cache, three rounds with the configuration order rotated each round,
+medians; receipt prefill_floor_7f464353.json): full 30.56 s (8.38
+tokens per second, the qualified figure); head replaced by a
+dependence-preserving stand-in 29.51 s; W4 MLP matrices replaced 9.05
+s; all 401 fused linears replaced 2.13 s. Matrices 28.43 s of the
+chunk (93.0 percent; the per-shape launch times above predict 28.72 s,
+within 1 percent), W4 MLP 21.51 s (70.4 percent), head 1.05 s (3.4
+percent), the rest 2.13 s including the stand-ins themselves
+(embedding, norms, DeltaNet conv and recurrence, attention,
+framework), 8.3 ms per token.
+
+3. Alternatives on the same matrices (us per launch, T activations;
+dense float32 weights resident for the pure GEMM reference; decode once
+= a one-pass Metal kernel writing the frozen payload as float32, one
+thread per code word, under the kernels' value law; framework qmm =
+mx.quantized_matmul with affine 4-bit group-128 weights, a different
+codec, timing reference only; the head is a 31,040-row slab, one
+eighth):
+  W4 gate 17408x5120   T=1   fused 232   f32 mm 2,567   decode+mm 6,057   qmm 369
+                       T=8   fused 3,553  f32 mm 2,890   decode+mm 6,338   qmm 1,311
+                       T=64  fused 27,825 f32 mm 3,151   decode+mm 6,582   qmm 3,058
+                       T=256 fused 110,714 f32 mm 11,277 decode+mm 15,047  qmm 12,213
+  W4 down 5120x17408   T=256 fused 103,517 f32 mm 16,643 decode+mm 20,707  qmm 12,610
+  S16 qkv 10240x5120   T=256 fused 42,466  f32 mm 6,623  decode+mm 8,936   qmm 7,180
+  S16 out 5120x6144    T=256 fused 26,366  f32 mm 3,999  decode+mm 5,488   qmm 4,308
+  head slab 31040x5120 T=256 fused 130,197 f32 mm 22,456 decode+mm 28,105  qmm 22,790
+Decode alone: 3,384 us for the 17408x5120 matrix (356 MB of float32
+written, 105 GB/s), 3,412 for down, 2,075 for qkv, 1,225 for out,
+6,287 for the head slab; max abs error against the numpy decode 0.0 on
+all five (an eighth of the head for the head). The float32 GEMM runs
+at 2.7 to 4.1 TFLOPS at T = 256 (M3 Pro, device name from the
+receipt). The fused path beats decode + GEMM at T = 8 on all five
+matrices and loses from T = 64 on; the crossover lies between 8 and 64
+(near 16 by linear interpolation, not measured). At T = 256 decode +
+GEMM is 4.6x to 7.4x faster than the fused path (gate 7.4, down 5.0,
+qkv 4.8, out 4.8, head slab 4.6) and within 1.2x to 1.6x of the
+framework's affine-4 quantised GEMM (gate 15.0 against 12.2 ms, down
+20.7 against 12.6). Numerics: by construction of the shared value law
+(code reading) the decoded float32 weight is the same number the fused
+kernel multiplies (half codebook value times a power of two); the
+GEMM's reduction order differs, up to 2.9e-6 relative to the float64
+oracle on these matrices against the fused kernel's up to 1.6e-7.
+
+4. Projection for the whole tower per 256-token chunk, from the
+per-shape counts (receipt totals; projections, not measurements of
+every matrix): fused tile 8, 28.72 s (measured 28.43 s in the floor);
+decode once + float32 GEMM, 4.72 s, using the measured combined decode
++ GEMM launch of each shape's own matrix for gate/up, down, qkv and
+out, the nearest measured matrix of the codec scaled by payload for z
+(out_proj) and q/k/v (qkv), and the head slab times eight (0.22 s
+against 1.07 s fused); of the 4.72 s the decode pass is 0.97 s. With
+the 2.13 s floor a chunk would take about 6.9 s, about 37 tokens per
+second against 8.4, about 4.5x; the matrices would fall from 93 to
+about 69 percent of the chunk and the floor would become the next
+limit. Transient memory: one decoded matrix at a time, 356 MB for the
+MLP matrices, the head in slabs (a full float32 head is 5.1 GB and is
+not to be materialised); the per-chunk activations are unchanged.
+
+5. Final-position vocabulary projection (MODE time; 1,024 real E0
+tokens in 256-token chunks, two rounds of full / final / none in
+rotating order, each a fresh cache; receipt
+logs/qmetal/prefill_head/time_74727fca.json). mlx-lm's TextModel is
+body then head, so the driver calls language_model.model on the chunk
+(embedding, the 64 layers with their caches, the final norm) and
+language_model.lm_head on the last hidden row only; every cache array
+is still evaluated per chunk and nothing upstream changes. Walls: full
+122.37 s (8.37 tokens per second), final 117.89 s (8.69), head omitted
+117.85 s (8.69); the two rounds agree within 0.42 s. Full minus final
+4.48 s (3.7 percent of the prefill), full minus none 4.52 s: the whole
+head is 3.7 percent of the prefill and the final-position projection
+removes all of it but a projected 37 ms (4 launches of 9.2 ms; the
+measured 36.6 ms difference of walls is below the round-to-round
+spread). The isolated head: 9.24 ms per single-activation launch, 34.31
+ms per tile-8 launch (pipelined), 128 tile-8 launches per 1,024 tokens
+= 4.39 s projected, 4.48 measured. Parity: the final-position logits
+of the full and the final arms are bit-identical (max abs 0.0; by the
+v3 source the S16 head runs the same per-row operation sequence at
+every tile), the 64 cache objects of the three arms are bit-identical
+after prefill (conv, recurrent state, keys and values, offsets 1,024
+everywhere, compared before decoding) and the 16 teacher-forced decode
+steps after each arm are bit-identical (16 of 16 argmax, max abs 0.0).
+So the final-only path meets the parity bar exactly rather than within
+a tolerance. Per-process memory, one fresh process per row (receipts
+logs/qmetal/prefill_head/mem_ctx*_chunk256_*.json), peak unified
+memory after a reset: 1,024 tokens full 11.41 GB, final 11.16, none
+11.15; 4,096 tokens full 11.81 GB (the frozen chunk-256 figure
+reproduced to the byte), final 11.56. The saving is 253 MB at both
+contexts, matching the chunk's logits array (256 x 248,320 float32,
+254 MB) to within 1 MB; peak RSS (ru_maxrss) 11.4 to 11.5 GB in every
+row; decode after prefill 128.2 to 128.6 ms at 1,024 and 131.4 to
+131.6 ms at 4,096 in every arm; KV offset 1,024 or 4,096 after prefill
+and 16 more after the decode steps in every row (both recorded).
+
+6. Chunk sizes at 4,096 real tokens (MODE ctx4k; the first 4,096 E0
+tokens, one process, fresh cache per arm, no one-shot run; receipt
+logs/qmetal/prefill_head/ctx4k_7f464353.json). Arms: full head at
+chunks 128 (32 chunks), 256 (16) and 512 (8), final-position head at
+256. Walls 489.3, 490.0, 490.4 s for the full arms (8.37, 8.36, 8.35
+tokens per second) and 472.6 s for the final arm (8.67). The cache
+state after prefill is a host snapshot taken before the 16
+teacher-forced decode steps (offsets 4,096 in every arm); the same
+caches were compared again after the steps (offsets 4,112). Pairwise:
+  * 128 against 256: bit-identical in every respect (final logits, all
+    4,096 per-position argmaxes and margins, conv and recurrent state
+    of the 48 DeltaNet layers and keys and values of the 16 attention
+    layers after prefill and again after decode, the 16 decode steps).
+  * 256 against the final-position arm at 256: bit-identical (final
+    logits, caches after prefill and after decode, decode steps), as
+    at 1,024.
+  * 512 against 128 or 256: all 4,096 argmaxes identical; per-position
+    margins within 6.6e-4 nats (median 3.8e-6); final logits within
+    1.7e-5 absolute (8.1e-7 relative), final margin within 1.9e-6;
+    after prefill the recurrent state within 1.6e-6 relative (4.2e-5
+    absolute), the conv state within 6.7e-6, keys within 1.1e-3 and
+    values within 3.1e-3 absolute, offsets equal; after the decode
+    steps the same figures to two digits; decode logits 16 of 16
+    argmax, within 2.0e-5 absolute (9.2e-7 relative), margins within
+    3.8e-6.
+Consistent with the 1,030-token result (QWEN-METAL-CHUNKED-PREFILL-0),
+where 5 chunks of 256 matched one-shot bit for bit against 3 chunks of
+512 that differed: here 8 chunks of 512 differ while 16 of 256 and 32
+of 128 are identical, so the difference goes with the 512 query length
+rather than with the number of chunks (at a fixed context the two are
+confounded; the contrast is across the two contexts). Chunks 64, 128
+and 256 at 1,030 and 128 and 256 at 4,096 are identical to one
+another. The in-process peaks of this run share one allocator across
+four arms whose caches are retained and are not the memory
+measurement; the per-process figures are the mem receipts above and
+the frozen grid.
+
+Verdict. A dedicated fused GEMM kernel is not justified by these
+measurements: the framework GEMM over a once-decoded float32 matrix
+is within 1.2x to 1.6x of the framework's own fused quantised GEMM at
+T = 256 and 4.6x to 7.4x faster than the fused tile-8 path on the five
+measured matrices, the decode kernel is about forty lines of Metal and
+reproduces the numpy decode exactly on them, and the decode pass it
+adds (0.97 s per chunk, projected) is smaller than the 2.13 s
+non-matrix floor. The recommended next rung is a decode-once prefill
+path for multi-token tiles (T above about 16; chunk 256 as the
+default, one matrix decoded at a time, the head in slabs), qualified
+the way v4 was: token identity against the CPU oracle at the 4,722
+census positions and the boundary suite, because the GEMM's reduction
+order is not the fused kernel's. Selective vocabulary projection is
+correct and free but small (3.7 percent of the prefill); it belongs in
+that path, not on its own. The single-activation decode step is
+unaffected by all of this.
+
+Fences. Single machine (Apple M3 Pro per the receipts), single
+artifact, float32 activations; ablation variants and the framework
+affine-4 reference are timing only; the decode-once total is a
+projection from four measured matrices and the head slab (gate, down,
+qkv, out; z and q/k/v scaled by payload), not a measurement of every
+shape, and the "about 37 tokens per second" adds that projection to
+the measured floor; the decode kernel's exactness is shown on four
+matrices and one eighth of the head, and the exceptional-exponent
+classes (scales below 2^-96 or at 2^64 and above) follow the same
+split law but were not exercised by these matrices; the cache-traffic
+sentence in section 1 is a reading of the kernel source; the
+4,096-token comparison has no one-shot reference and says nothing
+beyond 4,096 tokens.

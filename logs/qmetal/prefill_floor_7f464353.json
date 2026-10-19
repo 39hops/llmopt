@@ -1,0 +1,71 @@
+{
+ "provenance": {
+  "commit": "7f464353",
+  "tree_dirty_at_launch": true,
+  "mlx_version": "0.31.2",
+  "mlx_lm_version": "0.31.3",
+  "device": "Apple M3 Pro",
+  "smoke": false
+ },
+ "tower": {
+  "chain": "logs/qwenwhole/artifact_digest_C.txt",
+  "chain_sha256": "de7e0180bf49f965c17116b7fbe8c34d2b1529c2431cc234f3a6460ad84b24dc",
+  "n_layers": 64,
+  "families": {
+   "linear_attn": 48,
+   "full_attn": 16
+  },
+  "fused": 402,
+  "raw": 449,
+  "payload_resident_bytes": 9367009856,
+  "kernel_version": 4
+ },
+ "chunk": 256,
+ "rounds": 3,
+ "configs": {
+  "full": {
+   "n_replaced": 0
+  },
+  "no_head": {
+   "n_replaced": 1
+  },
+  "no_w4_mlp": {
+   "n_replaced": 192
+  },
+  "no_fused": {
+   "n_replaced": 401
+  }
+ },
+ "walls_s": {
+  "full": [
+   30.77880433294922,
+   30.559213000000454,
+   30.55937333405018
+  ],
+  "no_head": [
+   29.6505853330018,
+   29.506564792012796,
+   29.45176054199692
+  ],
+  "no_w4_mlp": [
+   9.227022624923848,
+   9.045928541920148,
+   9.022925916011445
+  ],
+  "no_fused": [
+   2.126249250024557,
+   2.1208979170769453,
+   2.1312132090097293
+  ]
+ },
+ "median_s": {
+  "full": 30.55937333405018,
+  "no_head": 29.506564792012796,
+  "no_w4_mlp": 9.045928541920148,
+  "no_fused": 2.126249250024557
+ },
+ "matrix_share_s": 28.43312408402562,
+ "head_share_s": 1.0528085420373827,
+ "w4_mlp_share_s": 21.51344479213003,
+ "note": "stand-ins keep a data dependence on their input so the upstream graph is evaluated; the replaced path still runs the embedding, norms, DeltaNet conv and recurrence and attention cores"
+}

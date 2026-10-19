@@ -199,3 +199,59 @@ Recommended chunk 256.
 Not a speed change. The prefill kernel (weight decoded once per tile)
 is the only prefill-speed lever left and is now justified by
 measurement; the decision on the next rung is Artin's.
+
+## Addendum (2026-10-18, evening): prefill performance study
+
+Evidence fix: the fifteen frozen grid receipts' kv_offset_after_prefill
+was read after the 16 decode steps (hence 4,112 at 4,096); values are
+context + 16 in every row, name wrong, booked as AMENDMENT
+QWEN-METAL-CHUNKED-PREFILL-0-KV-OFFSET-FIELD; the driver now records
+both offsets and the grid runner stops on a failed configuration.
+
+Process: a receipt audit before booking found the 4K cache comparison
+ran after the decode steps, the floor order did not rotate and the
+projection substituted gate for down; the drivers were fixed
+(7f464353), those three stages rerun under liverun -3 and the
+superseded receipts dropped; the booking cites the rerun receipts
+(kernels and floor at 7f464353, ctx4k at 7f464353) and the unchanged
+head and memory receipts of -2 (74727fca).
+
+Kernel study (scratch/qmetal_prefill_kernel_study.py): at tile 8 the W4
+launch is 3,555 us and 261 us with the activation loads removed (93
+percent); codebook lookups 3 to 4 percent; weight stream, reductions
+within noise; dispatch 1 to 2 percent. S16 at tile 8: 67 percent
+activation loads. By the source: every row re-reads the whole [8, C]
+activation tile; the decoded weight is already shared across the tile,
+so the earlier "weights streamed L times" diagnosis was wrong. The
+256-token chunk: 30.6 s full, 28.4 s matrices (W4 MLP 21.5, head 1.1),
+2.1 s everything else (8.3 ms per token). Decode-once float32 (one-pass
+kernel, max abs error 0.0 against numpy on five matrices, 3.4 ms per 356
+MB) plus the framework GEMM: 15 ms per 256 activations against 111 ms
+fused on the gate matrix, 4.6x to 7.4x on five, within 1.2x to 1.6x of
+mx.quantized_matmul; the crossover with the fused path lies between T =
+8 and 64. Projected chunk 4.7 s matrices + 2.1 s floor = about 6.9 s,
+about 37 tokens per second (about 4.5x, projection). Recommendation: no
+dedicated fused GEMM kernel; implement the decode-once path for
+multi-token tiles and qualify it against the CPU census (GEMM reduction
+order differs; up to 2.9e-6 against 1.6e-7 relative to the float64
+oracle on the study matrices).
+
+Final-position head (scratch/qwen_metal_prefill_head.py): body then head
+is how mlx-lm's TextModel is built, so the head runs on h[:, -1:, :];
+bit-identical final logits, caches and 16 decode steps against the full
+path at 1,024 and 4,096 tokens; 1,024-token prefill 122.4 to 117.9 s
+(3.7 percent, 8.37 to 8.69 tokens per second), matching the isolated
+head (34.3 ms per tile-8 launch); per-process peak 11.41 to 11.16 GB at
+1,024 and 11.81 to 11.56 GB at 4,096 (the 254 MB chunk logits). Small,
+exact, belongs in the decode-once path.
+
+4,096 tokens, real E0 tokens, no one-shot: chunks 128 and 256
+bit-identical (all 4,096 argmaxes and margins, every cache array after
+prefill and after decode, 16 decode steps); chunk 512 differs at kernel
+parity (final logits 8.1e-7 relative, recurrent state 1.6e-6 after
+prefill, keys and values within 3.1e-3 absolute, 4,096 of 4,096 argmax,
+16 of 16 after, margins within 6.6e-4 nats). Chunk 256 stays the default.
+
+3080 mirrored at 8b40658d this evening (it answered once); the study
+commits still need the fast-forward. Mac gate and Actions results are in
+the booking commit message.

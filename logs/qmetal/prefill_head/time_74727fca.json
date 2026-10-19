@@ -1,0 +1,139 @@
+{
+ "provenance": {
+  "commit": "74727fca",
+  "tree_dirty_at_launch": false,
+  "mlx_version": "0.31.2",
+  "kernel_version": 4,
+  "mode": "time"
+ },
+ "tower": {
+  "chain": "logs/qwenwhole/artifact_digest_C.txt",
+  "chain_sha256": "de7e0180bf49f965c17116b7fbe8c34d2b1529c2431cc234f3a6460ad84b24dc",
+  "n_layers": 64,
+  "families": {
+   "linear_attn": 48,
+   "full_attn": 16
+  },
+  "fused": 402,
+  "raw": 449,
+  "payload_resident_bytes": 9367009856,
+  "kernel_version": 4
+ },
+ "context": 1024,
+ "chunk": 256,
+ "rounds": 2,
+ "decode_steps": 16,
+ "walls_s": {
+  "full": [
+   122.57966425002087,
+   122.15852166700643
+  ],
+  "final": [
+   117.89238762494642,
+   117.88002854201477
+  ],
+  "none": [
+   117.85475954203866,
+   117.84451329207513
+  ]
+ },
+ "median_s": {
+  "full": 122.36909295851365,
+  "final": 117.8862080834806,
+  "none": 117.8496364170569
+ },
+ "tok_per_s": {
+  "full": 8.36812609493774,
+  "final": 8.686342674410724,
+  "none": 8.689038262079796
+ },
+ "peak_in_process_bytes": {
+  "full": [
+   11408310852,
+   12538102340
+  ],
+  "final": [
+   11700814404,
+   12284822084
+  ],
+  "none": [
+   11992318532,
+   12283822660
+  ]
+ },
+ "head_saving_full_minus_final_s": 4.482884875033051,
+ "head_share_full_minus_none_s": 4.519456541456748,
+ "isolated_head": {
+  "1": {
+   "synced_median_s": 0.009483395493589342,
+   "pipelined_per_launch_s": 0.009242760374036152
+  },
+  "8": {
+   "synced_median_s": 0.033353750011883676,
+   "pipelined_per_launch_s": 0.03431195055600256
+  },
+  "chunk_equivalent_s": 1.0979824177920818,
+  "per_prompt_full_head_s_projected": 4.391929671168327,
+  "per_prompt_final_head_s_projected": 0.03697104149614461
+ },
+ "parity": {
+  "final_logits_full_vs_final": {
+   "positions": 1,
+   "max_abs": 0.0,
+   "max_rel": 0.0,
+   "bit_identical": true,
+   "argmax_identical": 1,
+   "margin_abs_diff_max": 0.0,
+   "min_margin_at_mismatch": null
+  },
+  "cache_full_vs_final": {
+   "kv_offsets_equal": true,
+   "kv_offsets": [
+    [
+     1024,
+     1024
+    ]
+   ],
+   "kv_k_max_abs": 0.0,
+   "kv_v_max_abs": 0.0,
+   "conv_max_abs": 0.0,
+   "state_max_abs": 0.0,
+   "state_max_rel": 0.0,
+   "bit_identical": true
+  },
+  "cache_full_vs_none": {
+   "kv_offsets_equal": true,
+   "kv_offsets": [
+    [
+     1024,
+     1024
+    ]
+   ],
+   "kv_k_max_abs": 0.0,
+   "kv_v_max_abs": 0.0,
+   "conv_max_abs": 0.0,
+   "state_max_abs": 0.0,
+   "state_max_rel": 0.0,
+   "bit_identical": true
+  },
+  "decode_full_vs_final": {
+   "positions": 16,
+   "max_abs": 0.0,
+   "max_rel": 0.0,
+   "bit_identical": true,
+   "argmax_identical": 16,
+   "margin_abs_diff_max": 0.0,
+   "min_margin_at_mismatch": null
+  },
+  "decode_full_vs_none": {
+   "positions": 16,
+   "max_abs": 0.0,
+   "max_rel": 0.0,
+   "bit_identical": true,
+   "argmax_identical": 16,
+   "margin_abs_diff_max": 0.0,
+   "min_margin_at_mismatch": null
+  }
+ },
+ "note": "in-process peaks share one allocator across arms; the per-process figures are the mem receipts"
+}

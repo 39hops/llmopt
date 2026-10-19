@@ -1,8 +1,10 @@
 {
  "_doc": "sha256 of every receipt path cited by docs/RESULTS.md. A booked receipt is evidence; changing one silently rewrites the record. Regenerate with scripts/gen_receipt_lock.py.",
  "_last_accept": {
-  "paths": [],
-  "reason": "OBSERVATION PERTURBATION-RESPONSE-GRAM-DESK-0: logs/prgd0/desk.log and logs/prgd0/prgd0.DONE cited by full path and sha-locked with logs/prgd0/desk.json and logs/liverun/prgd0.jsonl"
+  "paths": [
+   "logs/qmetal/prefill_head/study.log"
+  ],
+  "reason": "logs/qmetal/prefill_head/study.log is the rerun chain's log (liverun -3 at 7f464353); the first two chains' log is preserved as study_1.log; both named in OBSERVATION QWEN-METAL-PREFILL-STUDY-0"
  },
  "receipts": {
   "logs/archive/ceiling_probe.log": {
@@ -4379,6 +4381,41 @@
    "bytes": 325,
    "exists": true,
    "sha256": "80da7167d3f2933011f6d75f5b19b11cfa1a476389b3a2759045330b09be5e66",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qmetal/prefill_floor_7f464353.json": {
+   "bytes": 1528,
+   "exists": true,
+   "sha256": "ed13a9e2278d6d9627a4be8de5bfaccc9d32d489ec54831077c7b096a07977c8",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qmetal/prefill_head/ctx4k_7f464353.json": {
+   "bytes": 9780,
+   "exists": true,
+   "sha256": "58bcf8677bfdb5122b8db816dcf57c2d0244c49c243086264847cfbbe37bc714",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qmetal/prefill_head/study.log": {
+   "bytes": 7485,
+   "exists": true,
+   "sha256": "14397fed6580f92f33c8e070b7582146ff36544443caeecc1276753daf4659ca",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qmetal/prefill_head/time_74727fca.json": {
+   "bytes": 2922,
+   "exists": true,
+   "sha256": "33ca8de99c53c079a457fa6aa1be96ccc1f91865545aafe6aa1f7abe9fcc1d59",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qmetal/prefill_kernels_7f464353.json": {
+   "bytes": 27919,
+   "exists": true,
+   "sha256": "c9ba0861f1be0d740928db63a8ccf07cf725949d92247aa2f5da80e08db0a6ae",
    "source": "results",
    "tracked": true
   },

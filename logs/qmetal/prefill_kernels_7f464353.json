@@ -1,0 +1,882 @@
+{
+ "provenance": {
+  "commit": "7f464353",
+  "tree_dirty_at_launch": false,
+  "mlx_version": "0.31.2",
+  "mlx_lm_version": "0.31.3",
+  "device": "Apple M3 Pro",
+  "smoke": false
+ },
+ "arm": "C",
+ "chain_report": {
+  "checked": 19,
+  "unchained": false
+ },
+ "repeats": 30,
+ "queue": 32,
+ "kernel_version": 4,
+ "note": "TIMING ONLY; ablation variants compute wrong values by construction; dense, float16 and framework affine-4 figures are references for a design decision, not parity claims",
+ "shapes": [
+  {
+   "codec": "w4",
+   "shape": [
+    17408,
+    5120
+   ],
+   "count": 128,
+   "example": "model.language_model.layers.0.mlp.gate_proj.weight",
+   "payload_bytes": 22980608,
+   "fused": {
+    "1": {
+     "synced_median_s": 0.001052416453603655,
+     "synced_p90_s": 0.0013376034912653267,
+     "pipelined_per_launch_s": 0.0002358066394663183,
+     "payload_gbs_pipelined": 97.45530512631075
+    },
+    "2": {
+     "synced_median_s": 0.000690416491124779,
+     "synced_p90_s": 0.0007266708416864276,
+     "pipelined_per_launch_s": 0.0004829674380744109,
+     "payload_gbs_pipelined": 47.58210634576854
+    },
+    "4": {
+     "synced_median_s": 0.0013968749553896487,
+     "synced_p90_s": 0.0014279878116212786,
+     "pipelined_per_launch_s": 0.0011721530026989058,
+     "payload_gbs_pipelined": 19.605467841729443
+    },
+    "8": {
+     "synced_median_s": 0.003796458011493087,
+     "synced_p90_s": 0.003957891929894686,
+     "pipelined_per_launch_s": 0.00359538475095178,
+     "payload_gbs_pipelined": 6.391696464172996
+    }
+   },
+   "per_activation_s": {
+    "1": 0.0002358066394663183,
+    "2": 0.00024148371903720545,
+    "4": 0.00029303825067472644,
+    "8": 0.0004494230938689725
+   },
+   "tile8_over_tile1_pipelined": 15.247173527806162
+  },
+  {
+   "codec": "s16",
+   "shape": [
+    5120,
+    6144
+   ],
+   "count": 64,
+   "example": "model.language_model.layers.0.linear_attn.out_proj.weight",
+   "payload_bytes": 15974432,
+   "fused": {
+    "1": {
+     "synced_median_s": 0.0003997085150331259,
+     "synced_p90_s": 0.0004158374620601535,
+     "pipelined_per_launch_s": 0.00024926367223088164,
+     "payload_gbs_pipelined": 64.08648262713392
+    },
+    "2": {
+     "synced_median_s": 0.0004190625622868538,
+     "synced_p90_s": 0.0004478332703001797,
+     "pipelined_per_launch_s": 0.00025576106236258056,
+     "payload_gbs_pipelined": 62.45842057597412
+    },
+    "4": {
+     "synced_median_s": 0.0004936044570058584,
+     "synced_p90_s": 0.00051673399284482,
+     "pipelined_per_launch_s": 0.00031829557701712474,
+     "payload_gbs_pipelined": 50.18741432005684
+    },
+    "8": {
+     "synced_median_s": 0.0009494585683569312,
+     "synced_p90_s": 0.0009760957793332637,
+     "pipelined_per_launch_s": 0.000816466155811213,
+     "payload_gbs_pipelined": 19.56533272849301
+    }
+   },
+   "per_activation_s": {
+    "1": 0.00024926367223088164,
+    "2": 0.00012788053118129028,
+    "4": 7.957389425428119e-05,
+    "8": 0.00010205826947640162
+   },
+   "tile8_over_tile1_pipelined": 3.2755120250934815
+  },
+  {
+   "codec": "w4",
+   "shape": [
+    5120,
+    17408
+   ],
+   "count": 64,
+   "example": "model.language_model.layers.0.mlp.down_proj.weight",
+   "payload_bytes": 22980608,
+   "fused": {
+    "1": {
+     "synced_median_s": 0.00042691646376624703,
+     "synced_p90_s": 0.00048225426580756936,
+     "pipelined_per_launch_s": 0.00024507095258741174,
+     "payload_gbs_pipelined": 93.77124362302094
+    },
+    "2": {
+     "synced_median_s": 0.0007212915807031095,
+     "synced_p90_s": 0.0007472124765627086,
+     "pipelined_per_launch_s": 0.0005051145781180821,
+     "payload_gbs_pipelined": 45.49583202611063
+    },
+    "4": {
+     "synced_median_s": 0.001973229052964598,
+     "synced_p90_s": 0.0019982085563242436,
+     "pipelined_per_launch_s": 0.0017784433603083016,
+     "payload_gbs_pipelined": 12.921754222195865
+    },
+    "8": {
+     "synced_median_s": 0.003657250024843961,
+     "synced_p90_s": 0.003773566393647343,
+     "pipelined_per_launch_s": 0.003431239594647195,
+     "payload_gbs_pipelined": 6.697465264696241
+    }
+   },
+   "per_activation_s": {
+    "1": 0.00024507095258741174,
+    "2": 0.00025255728905904107,
+    "4": 0.0004446108400770754,
+    "8": 0.0004289049493308994
+   },
+   "tile8_over_tile1_pipelined": 14.001004845416524
+  },
+  {
+   "codec": "s16",
+   "shape": [
+    10240,
+    5120
+   ],
+   "count": 48,
+   "example": "model.language_model.layers.0.linear_attn.in_proj_qkv.weight",
+   "payload_bytes": 26624032,
+   "fused": {
+    "1": {
+     "synced_median_s": 0.0005645000492222607,
+     "synced_p90_s": 0.0006033000536262989,
+     "pipelined_per_launch_s": 0.0004071992188983131,
+     "payload_gbs_pipelined": 65.38330813116963
+    },
+    "2": {
+     "synced_median_s": 0.0005721459165215492,
+     "synced_p90_s": 0.0006309877731837332,
+     "pipelined_per_launch_s": 0.000416481108914013,
+     "payload_gbs_pipelined": 63.92614558058338
+    },
+    "4": {
+     "synced_median_s": 0.0006997084710747004,
+     "synced_p90_s": 0.0007212332799099386,
+     "pipelined_per_launch_s": 0.0005622024673357373,
+     "payload_gbs_pipelined": 47.35666160657492
+    },
+    "8": {
+     "synced_median_s": 0.001458416460081935,
+     "synced_p90_s": 0.001538204273674637,
+     "pipelined_per_launch_s": 0.0013444987034745282,
+     "payload_gbs_pipelined": 19.80219983194978
+    }
+   },
+   "per_activation_s": {
+    "1": 0.0004071992188983131,
+    "2": 0.0002082405544570065,
+    "4": 0.00014055061683393433,
+    "8": 0.00016806233793431602
+   },
+   "tile8_over_tile1_pipelined": 3.301820438438218
+  },
+  {
+   "codec": "s16",
+   "shape": [
+    6144,
+    5120
+   ],
+   "count": 48,
+   "example": "model.language_model.layers.0.linear_attn.in_proj_z.weight",
+   "payload_bytes": 15974432,
+   "fused": {
+    "1": {
+     "synced_median_s": 0.0003792079514823854,
+     "synced_p90_s": 0.0004036118974909186,
+     "pipelined_per_launch_s": 0.0002436093764117686,
+     "payload_gbs_pipelined": 65.57396203419815
+    },
+    "2": {
+     "synced_median_s": 0.00040185399120673537,
+     "synced_p90_s": 0.0004165960941463709,
+     "pipelined_per_launch_s": 0.00025703254686959554,
+     "payload_gbs_pipelined": 62.149452256350116
+    },
+    "4": {
+     "synced_median_s": 0.00046164600644260645,
+     "synced_p90_s": 0.0004770830273628235,
+     "pipelined_per_launch_s": 0.00030748437529837247,
+     "payload_gbs_pipelined": 51.95201214532917
+    },
+    "8": {
+     "synced_median_s": 0.0009256039629690349,
+     "synced_p90_s": 0.0009403957985341549,
+     "pipelined_per_launch_s": 0.0007748437510599615,
+     "payload_gbs_pipelined": 20.61632681188625
+    }
+   },
+   "per_activation_s": {
+    "1": 0.0002436093764117686,
+    "2": 0.00012851627343479777,
+    "4": 7.687109382459312e-05,
+    "8": 9.685546888249519e-05
+   },
+   "tile8_over_tile1_pipelined": 3.180681148127307
+  },
+  {
+   "codec": "s16",
+   "shape": [
+    1024,
+    5120
+   ],
+   "count": 32,
+   "example": "model.language_model.layers.11.self_attn.k_proj.weight",
+   "payload_bytes": 2662432,
+   "fused": {
+    "1": {
+     "synced_median_s": 0.0001939375069923699,
+     "synced_p90_s": 0.00021781669929623603,
+     "pipelined_per_launch_s": 5.263476487016305e-05,
+     "payload_gbs_pipelined": 50.58314607403607
+    },
+    "2": {
+     "synced_median_s": 0.000197416462469846,
+     "synced_p90_s": 0.0002361507038585842,
+     "pipelined_per_launch_s": 5.4419248044723645e-05,
+     "payload_gbs_pipelined": 48.92445404265638
+    },
+    "4": {
+     "synced_median_s": 0.00021429144544526935,
+     "synced_p90_s": 0.00023207043996080758,
+     "pipelined_per_launch_s": 6.68587199470494e-05,
+     "payload_gbs_pipelined": 39.82176150109643
+    },
+    "8": {
+     "synced_median_s": 0.0002660619793459773,
+     "synced_p90_s": 0.00028850348899140955,
+     "pipelined_per_launch_s": 0.00013080990538583137,
+     "payload_gbs_pipelined": 20.353443358490345
+    }
+   },
+   "per_activation_s": {
+    "1": 5.263476487016305e-05,
+    "2": 2.7209624022361822e-05,
+    "4": 1.671467998676235e-05,
+    "8": 1.635123817322892e-05
+   },
+   "tile8_over_tile1_pipelined": 2.4852377645935544
+  },
+  {
+   "codec": "s16",
+   "shape": [
+    12288,
+    5120
+   ],
+   "count": 16,
+   "example": "model.language_model.layers.11.self_attn.q_proj.weight",
+   "payload_bytes": 31948832,
+   "fused": {
+    "1": {
+     "synced_median_s": 0.0006242705276235938,
+     "synced_p90_s": 0.0006734789116308093,
+     "pipelined_per_launch_s": 0.0004769055940414546,
+     "payload_gbs_pipelined": 66.99194221911952
+    },
+    "2": {
+     "synced_median_s": 0.0006511040264740586,
+     "synced_p90_s": 0.0006832954939454795,
+     "pipelined_per_launch_s": 0.0004967727982148062,
+     "payload_gbs_pipelined": 64.31276453704942
+    },
+    "4": {
+     "synced_median_s": 0.0008364164968952537,
+     "synced_p90_s": 0.0008721828227862716,
+     "pipelined_per_launch_s": 0.000678663391227019,
+     "payload_gbs_pipelined": 47.07610932458979
+    },
+    "8": {
+     "synced_median_s": 0.0017422710079699755,
+     "synced_p90_s": 0.0017726499820128084,
+     "pipelined_per_launch_s": 0.0016216061248996994,
+     "payload_gbs_pipelined": 19.70196801148375
+    }
+   },
+   "per_activation_s": {
+    "1": 0.0004769055940414546,
+    "2": 0.0002483863991074031,
+    "4": 0.00016966584780675475,
+    "8": 0.00020270076561246242
+   },
+   "tile8_over_tile1_pipelined": 3.4002665205867615
+  },
+  {
+   "codec": "s16",
+   "shape": [
+    248320,
+    5120
+   ],
+   "count": 1,
+   "example": "lm_head.weight",
+   "payload_bytes": 645632032,
+   "fused": {
+    "1": {
+     "synced_median_s": 0.0094847705331631,
+     "synced_p90_s": 0.009693083621095866,
+     "pipelined_per_launch_s": 0.009313022139394889,
+     "payload_gbs_pipelined": 69.32572717388061
+    },
+    "2": {
+     "synced_median_s": 0.00995597947621718,
+     "synced_p90_s": 0.010246791562531143,
+     "pipelined_per_launch_s": 0.009813740874960786,
+     "payload_gbs_pipelined": 65.78857545009103
+    },
+    "4": {
+     "synced_median_s": 0.015823250054381788,
+     "synced_p90_s": 0.016142921231221408,
+     "pipelined_per_launch_s": 0.019967675780208083,
+     "payload_gbs_pipelined": 32.33385993977071
+    },
+    "8": {
+     "synced_median_s": 0.03348456253297627,
+     "synced_p90_s": 0.03409764131065458,
+     "pipelined_per_launch_s": 0.03347295182902599,
+     "payload_gbs_pipelined": 19.288171395751892
+    }
+   },
+   "per_activation_s": {
+    "1": 0.009313022139394889,
+    "2": 0.004906870437480393,
+    "4": 0.004991918945052021,
+    "8": 0.0041841189786282484
+   },
+   "tile8_over_tile1_pipelined": 3.5942094121555352
+  }
+ ],
+ "ablation_TT8": [
+  {
+   "tensor": "model.language_model.layers.0.mlp.gate_proj.weight",
+   "codec": "w4",
+   "shape": [
+    17408,
+    5120
+   ],
+   "variants": [
+    {
+     "variant": "v3",
+     "TT8_pipelined_per_launch_s": 0.0035545514365367126,
+     "TT1_pipelined_per_launch_s": 0.0003712714842549758
+    },
+    {
+     "variant": "nox",
+     "TT8_pipelined_per_launch_s": 0.00026114843785762787,
+     "TT1_pipelined_per_launch_s": 0.00018501303202356212
+    },
+    {
+     "variant": "nocb",
+     "TT8_pipelined_per_launch_s": 0.003423106782065588,
+     "TT1_pipelined_per_launch_s": 0.0002484413907950511
+    },
+    {
+     "variant": "noidx",
+     "TT8_pipelined_per_launch_s": 0.003622567717684433,
+     "TT1_pipelined_per_launch_s": 0.0003627838450483978
+    },
+    {
+     "variant": "xonly",
+     "TT8_pipelined_per_launch_s": 0.0036943372342648217,
+     "TT1_pipelined_per_launch_s": 0.0003696197964018211
+    },
+    {
+     "variant": "nosum",
+     "TT8_pipelined_per_launch_s": 0.003561597000953043,
+     "TT1_pipelined_per_launch_s": 0.0003697239535540575
+    },
+    {
+     "variant": "empty",
+     "TT8_pipelined_per_launch_s": 4.188801540294662e-05,
+     "TT1_pipelined_per_launch_s": 4.257096952642314e-05
+    }
+   ]
+  },
+  {
+   "tensor": "model.language_model.layers.0.mlp.down_proj.weight",
+   "codec": "w4",
+   "shape": [
+    5120,
+    17408
+   ],
+   "variants": [
+    {
+     "variant": "v3",
+     "TT8_pipelined_per_launch_s": 0.0033729140777722932,
+     "TT1_pipelined_per_launch_s": 0.0003858671716443496
+    },
+    {
+     "variant": "nox",
+     "TT8_pipelined_per_launch_s": 0.00021469790772243869,
+     "TT1_pipelined_per_launch_s": 0.00018095637460646685
+    },
+    {
+     "variant": "nocb",
+     "TT8_pipelined_per_launch_s": 0.003265813156758668,
+     "TT1_pipelined_per_launch_s": 0.0002463053442625096
+    },
+    {
+     "variant": "noidx",
+     "TT8_pipelined_per_launch_s": 0.003372708984898054,
+     "TT1_pipelined_per_launch_s": 0.00035139842475473415
+    },
+    {
+     "variant": "xonly",
+     "TT8_pipelined_per_launch_s": 0.0033355748746544123,
+     "TT1_pipelined_per_launch_s": 0.0003487910162220942
+    },
+    {
+     "variant": "nosum",
+     "TT8_pipelined_per_launch_s": 0.0033745611872291192,
+     "TT1_pipelined_per_launch_s": 0.0003853919388348004
+    },
+    {
+     "variant": "empty",
+     "TT8_pipelined_per_launch_s": 2.083984509226866e-05,
+     "TT1_pipelined_per_launch_s": 2.1609359464491718e-05
+    }
+   ]
+  },
+  {
+   "tensor": "model.language_model.layers.0.linear_attn.in_proj_qkv.weight",
+   "codec": "s16",
+   "shape": [
+    10240,
+    5120
+   ],
+   "variants": [
+    {
+     "variant": "v3",
+     "TT8_pipelined_per_launch_s": 0.0013204902352299541,
+     "TT1_pipelined_per_launch_s": 0.0003957252665713895
+    },
+    {
+     "variant": "nox",
+     "TT8_pipelined_per_launch_s": 0.00043628320599964354,
+     "TT1_pipelined_per_launch_s": 0.0003881627653754549
+    },
+    {
+     "variant": "nocodes",
+     "TT8_pipelined_per_launch_s": 0.0014176998756738612,
+     "TT1_pipelined_per_launch_s": 0.0003639479218691122
+    },
+    {
+     "variant": "nosum",
+     "TT8_pipelined_per_launch_s": 0.001348162109934492,
+     "TT1_pipelined_per_launch_s": 0.0003947779841837473
+    },
+    {
+     "variant": "empty",
+     "TT8_pipelined_per_launch_s": 3.151239070575684e-05,
+     "TT1_pipelined_per_launch_s": 3.097134322160855e-05
+    }
+   ]
+  }
+ ],
+ "alternatives": [
+  {
+   "tensor": "model.language_model.layers.0.mlp.gate_proj.weight",
+   "codec": "w4",
+   "shape": [
+    17408,
+    5120
+   ],
+   "slab_note": null,
+   "payload_bytes": 22980608,
+   "dense_f32_bytes": 356515840,
+   "decode_max_abs_err_vs_numpy": 0.0,
+   "decode_max_abs_ref": 0.358642578125,
+   "fused_vs_oracle_max_rel": 1.6141583692330904e-07,
+   "dense_decoded_vs_oracle_max_rel": 2.441990741672705e-06,
+   "decode_once_pipelined_s": 0.0033837395676528104,
+   "by_T": {
+    "1": {
+     "fused_pipelined_s": 0.000231841795539367,
+     "dense_f32_matmul_pipelined_s": 0.002567394531070022,
+     "dense_f16_matmul_pipelined_s": 0.0012882975297543453,
+     "framework_affine4_qmm_pipelined_s": 0.0003689095174195245,
+     "decode_once_plus_f32_matmul_pipelined_s": 0.006056640624592546,
+     "flops": 178257920.0,
+     "dense_f32_tflops": 0.0694314480469454
+    },
+    "8": {
+     "fused_pipelined_s": 0.0035529069227777654,
+     "dense_f32_matmul_pipelined_s": 0.0028897558586322702,
+     "dense_f16_matmul_pipelined_s": 0.0024760625001363223,
+     "framework_affine4_qmm_pipelined_s": 0.0013108274852129398,
+     "decode_once_plus_f32_matmul_pipelined_s": 0.006337705744954292,
+     "flops": 1426063360.0,
+     "dense_f32_tflops": 0.4934892183850299
+    },
+    "64": {
+     "fused_pipelined_s": 0.027825009765365394,
+     "dense_f32_matmul_pipelined_s": 0.00315100974876259,
+     "dense_f16_matmul_pipelined_s": 0.002514626952688559,
+     "framework_affine4_qmm_pipelined_s": 0.0030578098903788486,
+     "decode_once_plus_f32_matmul_pipelined_s": 0.006581645808182657,
+     "flops": 11408506880.0,
+     "dense_f32_tflops": 3.6205876178200187
+    },
+    "256": {
+     "fused_pipelined_s": 0.11071422917120799,
+     "dense_f32_matmul_pipelined_s": 0.011277429674009909,
+     "dense_f16_matmul_pipelined_s": 0.009967077483452158,
+     "framework_affine4_qmm_pipelined_s": 0.01221305859144195,
+     "decode_once_plus_f32_matmul_pipelined_s": 0.015046804626763333,
+     "flops": 45634027520.0,
+     "dense_f32_tflops": 4.046491872626675
+    }
+   }
+  },
+  {
+   "tensor": "model.language_model.layers.0.mlp.down_proj.weight",
+   "codec": "w4",
+   "shape": [
+    5120,
+    17408
+   ],
+   "slab_note": null,
+   "payload_bytes": 22980608,
+   "dense_f32_bytes": 356515840,
+   "decode_max_abs_err_vs_numpy": 0.0,
+   "decode_max_abs_ref": 0.77197265625,
+   "fused_vs_oracle_max_rel": 1.3475793333139128e-07,
+   "dense_decoded_vs_oracle_max_rel": 9.297372953015421e-07,
+   "decode_once_pipelined_s": 0.003411588564631529,
+   "by_T": {
+    "1": {
+     "fused_pipelined_s": 0.00024432553254882805,
+     "dense_f32_matmul_pipelined_s": 0.0025860468740575016,
+     "dense_f16_matmul_pipelined_s": 0.00129072785966855,
+     "framework_affine4_qmm_pipelined_s": 0.0003690618268592516,
+     "decode_once_plus_f32_matmul_pipelined_s": 0.005996968742692843,
+     "flops": 178257920.0,
+     "dense_f32_tflops": 0.06893066084309359
+    },
+    "8": {
+     "fused_pipelined_s": 0.0033729668120940914,
+     "dense_f32_matmul_pipelined_s": 0.0028980683764530113,
+     "dense_f16_matmul_pipelined_s": 0.0014244817812141264,
+     "framework_affine4_qmm_pipelined_s": 0.001309794264670927,
+     "decode_once_plus_f32_matmul_pipelined_s": 0.0063071120021049865,
+     "flops": 1426063360.0,
+     "dense_f32_tflops": 0.4920737452528225
+    },
+    "64": {
+     "fused_pipelined_s": 0.026091343748703366,
+     "dense_f32_matmul_pipelined_s": 0.006237257814063923,
+     "dense_f16_matmul_pipelined_s": 0.003000376313138986,
+     "framework_affine4_qmm_pipelined_s": 0.0030885904998285696,
+     "decode_once_plus_f32_matmul_pipelined_s": 0.009741940128151327,
+     "flops": 11408506880.0,
+     "dense_f32_tflops": 1.8290901579017331
+    },
+    "256": {
+     "fused_pipelined_s": 0.10351714973512571,
+     "dense_f32_matmul_pipelined_s": 0.016643020173432888,
+     "dense_f16_matmul_pipelined_s": 0.009946560547177796,
+     "framework_affine4_qmm_pipelined_s": 0.01261002604587702,
+     "decode_once_plus_f32_matmul_pipelined_s": 0.02070683600322809,
+     "flops": 45634027520.0,
+     "dense_f32_tflops": 2.7419318756126496
+    }
+   }
+  },
+  {
+   "tensor": "model.language_model.layers.0.linear_attn.in_proj_qkv.weight",
+   "codec": "s16",
+   "shape": [
+    10240,
+    5120
+   ],
+   "slab_note": null,
+   "payload_bytes": 26624032,
+   "dense_f32_bytes": 209715200,
+   "decode_max_abs_err_vs_numpy": 0.0,
+   "decode_max_abs_ref": 0.38525390625,
+   "fused_vs_oracle_max_rel": 1.6230447072621043e-07,
+   "dense_decoded_vs_oracle_max_rel": 2.5139428708625346e-06,
+   "decode_once_pipelined_s": 0.002074872434604913,
+   "by_T": {
+    "1": {
+     "fused_pipelined_s": 0.00039648046913498547,
+     "dense_f32_matmul_pipelined_s": 0.001536315108751296,
+     "dense_f16_matmul_pipelined_s": 0.0007686354219913483,
+     "framework_affine4_qmm_pipelined_s": 0.00022291471759672277,
+     "decode_once_plus_f32_matmul_pipelined_s": 0.0036116015617153607,
+     "flops": 104857600.0,
+     "dense_f32_tflops": 0.06825266470576298
+    },
+    "8": {
+     "fused_pipelined_s": 0.0013199420463934075,
+     "dense_f32_matmul_pipelined_s": 0.0017099869837693404,
+     "dense_f16_matmul_pipelined_s": 0.0014636412815889344,
+     "framework_affine4_qmm_pipelined_s": 0.0007729309836577158,
+     "decode_once_plus_f32_matmul_pipelined_s": 0.0038391301859519444,
+     "flops": 838860800.0,
+     "dense_f32_tflops": 0.4905656054474118
+    },
+    "64": {
+     "fused_pipelined_s": 0.010661751937732333,
+     "dense_f32_matmul_pipelined_s": 0.0017845611873781309,
+     "dense_f16_matmul_pipelined_s": 0.001485876937294961,
+     "framework_affine4_qmm_pipelined_s": 0.0018035299399343785,
+     "decode_once_plus_f32_matmul_pipelined_s": 0.0039389166195178404,
+     "flops": 6710886400.0,
+     "dense_f32_tflops": 3.760524686665187
+    },
+    "256": {
+     "fused_pipelined_s": 0.04246647004765691,
+     "dense_f32_matmul_pipelined_s": 0.0066234732967132,
+     "dense_f16_matmul_pipelined_s": 0.005877979812794365,
+     "framework_affine4_qmm_pipelined_s": 0.007179555343100219,
+     "decode_once_plus_f32_matmul_pipelined_s": 0.008936099002312403,
+     "flops": 26843545600.0,
+     "dense_f32_tflops": 4.052789887946058
+    }
+   }
+  },
+  {
+   "tensor": "model.language_model.layers.0.linear_attn.out_proj.weight",
+   "codec": "s16",
+   "shape": [
+    5120,
+    6144
+   ],
+   "slab_note": null,
+   "payload_bytes": 15974432,
+   "dense_f32_bytes": 125829120,
+   "decode_max_abs_err_vs_numpy": 0.0,
+   "decode_max_abs_ref": 1.4951171875,
+   "fused_vs_oracle_max_rel": 1.209382183896768e-07,
+   "dense_decoded_vs_oracle_max_rel": 5.931983772303729e-07,
+   "decode_once_pipelined_s": 0.001225494808750227,
+   "by_T": {
+    "1": {
+     "fused_pipelined_s": 0.0002445527188683627,
+     "dense_f32_matmul_pipelined_s": 0.0009301503905589925,
+     "dense_f16_matmul_pipelined_s": 0.00047056054609129205,
+     "framework_affine4_qmm_pipelined_s": 0.00013809959455102216,
+     "decode_once_plus_f32_matmul_pipelined_s": 0.00218811981176259,
+     "flops": 62914560.0,
+     "dense_f32_tflops": 0.06763912657413414
+    },
+    "8": {
+     "fused_pipelined_s": 0.0008211777349060867,
+     "dense_f32_matmul_pipelined_s": 0.0010526542973821051,
+     "dense_f16_matmul_pipelined_s": 0.0005250000012892997,
+     "framework_affine4_qmm_pipelined_s": 0.00046762824968027417,
+     "decode_once_plus_f32_matmul_pipelined_s": 0.002300630250829272,
+     "flops": 503316480.0,
+     "dense_f32_tflops": 0.47814033652997107
+    },
+    "64": {
+     "fused_pipelined_s": 0.006506342451757519,
+     "dense_f32_matmul_pipelined_s": 0.0014908821540302597,
+     "dense_f16_matmul_pipelined_s": 0.0009743762984726345,
+     "framework_affine4_qmm_pipelined_s": 0.0010850820308405673,
+     "decode_once_plus_f32_matmul_pipelined_s": 0.0028074140573153272,
+     "flops": 4026531840.0,
+     "dense_f32_tflops": 2.7007713715770154
+    },
+    "256": {
+     "fused_pipelined_s": 0.02636637954856269,
+     "dense_f32_matmul_pipelined_s": 0.003999479826234165,
+     "dense_f16_matmul_pipelined_s": 0.0035051744835072896,
+     "framework_affine4_qmm_pipelined_s": 0.004308493484131759,
+     "decode_once_plus_f32_matmul_pipelined_s": 0.005487523427291308,
+     "flops": 16106127360.0,
+     "dense_f32_tflops": 4.0270555321603485
+    }
+   }
+  },
+  {
+   "tensor": "lm_head.weight",
+   "codec": "s16",
+   "shape": [
+    31040,
+    5120
+   ],
+   "slab_note": "slab of 31040 rows out of 248320; whole-head figures are slab times 8",
+   "payload_bytes": 80704032,
+   "dense_f32_bytes": 635699200,
+   "decode_max_abs_err_vs_numpy": 0.0,
+   "decode_max_abs_ref": 0.28515625,
+   "fused_vs_oracle_max_rel": 1.597872413085047e-07,
+   "dense_decoded_vs_oracle_max_rel": 2.919049830667139e-06,
+   "decode_once_pipelined_s": 0.006287091127887834,
+   "by_T": {
+    "1": {
+     "fused_pipelined_s": 0.001167498046925175,
+     "dense_f32_matmul_pipelined_s": 0.004617822281943518,
+     "dense_f16_matmul_pipelined_s": 0.0023130455647333292,
+     "framework_affine4_qmm_pipelined_s": 0.0006577259082405362,
+     "decode_once_plus_f32_matmul_pipelined_s": 0.010932078177575022,
+     "flops": 317849600.0,
+     "dense_f32_tflops": 0.06883105944610446
+    },
+    "8": {
+     "fused_pipelined_s": 0.004061552732309792,
+     "dense_f32_matmul_pipelined_s": 0.0051568958260759246,
+     "dense_f16_matmul_pipelined_s": 0.004408530592627358,
+     "framework_affine4_qmm_pipelined_s": 0.0023737903757137246,
+     "decode_once_plus_f32_matmul_pipelined_s": 0.0114743489320972,
+     "flops": 2542796800.0,
+     "dense_f32_tflops": 0.49308671064137233
+    },
+    "64": {
+     "fused_pipelined_s": 0.0326220468741667,
+     "dense_f32_matmul_pipelined_s": 0.005419496750619146,
+     "dense_f16_matmul_pipelined_s": 0.004477281905565178,
+     "framework_affine4_qmm_pipelined_s": 0.0054419153748312965,
+     "decode_once_plus_f32_matmul_pipelined_s": 0.011775526007113513,
+     "flops": 20342374400.0,
+     "dense_f32_tflops": 3.753554128005705
+    },
+    "256": {
+     "fused_pipelined_s": 0.13019652670300275,
+     "dense_f32_matmul_pipelined_s": 0.02245616732761846,
+     "dense_f16_matmul_pipelined_s": 0.017802179047066602,
+     "framework_affine4_qmm_pipelined_s": 0.022789654938605963,
+     "decode_once_plus_f32_matmul_pipelined_s": 0.02810535931348568,
+     "flops": 81369497600.0,
+     "dense_f32_tflops": 3.6234810870831478
+    }
+   }
+  }
+ ],
+ "totals": {
+  "chunk": 256,
+  "launches_per_matrix": 32,
+  "fused_tile8_matrix_time_per_chunk_s": 28.716653464594856,
+  "fused_tile8_matrix_time_per_token_s": 0.11217442759607366,
+  "decode_once_f32_matmul_time_per_chunk_s_projected": 4.7204468981312075,
+  "decode_once_f32_matmul_time_per_token_s_projected": 0.01843924569582503,
+  "head_fused_tile8_per_chunk_s": 1.0711344585288316,
+  "head_slab_decode_plus_mm256_s_times8_projected": 0.22484287450788543,
+  "decode_pass_per_chunk_s_projected": 0.9686718906523797,
+  "detail": [
+   {
+    "shape": [
+     17408,
+     5120
+    ],
+    "codec": "w4",
+    "count": 128,
+    "scaled_from": "model.language_model.layers.0.mlp.gate_proj.weight",
+    "scale": 1.0,
+    "decode_plus_mm256_s": 0.015046804626763333,
+    "decode_plus_mm256_summed_s": 0.01466116924166272,
+    "fused_chunk_s": 0.11505231203045696
+   },
+   {
+    "shape": [
+     5120,
+     6144
+    ],
+    "codec": "s16",
+    "count": 64,
+    "scaled_from": "model.language_model.layers.0.linear_attn.out_proj.weight",
+    "scale": 1.0,
+    "decode_plus_mm256_s": 0.005487523427291308,
+    "decode_plus_mm256_summed_s": 0.005224974634984392,
+    "fused_chunk_s": 0.026126916985958815
+   },
+   {
+    "shape": [
+     5120,
+     17408
+    ],
+    "codec": "w4",
+    "count": 64,
+    "scaled_from": "model.language_model.layers.0.mlp.down_proj.weight",
+    "scale": 1.0,
+    "decode_plus_mm256_s": 0.02070683600322809,
+    "decode_plus_mm256_summed_s": 0.020054608738064417,
+    "fused_chunk_s": 0.10979966702871025
+   },
+   {
+    "shape": [
+     10240,
+     5120
+    ],
+    "codec": "s16",
+    "count": 48,
+    "scaled_from": "model.language_model.layers.0.linear_attn.in_proj_qkv.weight",
+    "scale": 1.0,
+    "decode_plus_mm256_s": 0.008936099002312403,
+    "decode_plus_mm256_summed_s": 0.008698345731318113,
+    "fused_chunk_s": 0.0430239585111849
+   },
+   {
+    "shape": [
+     6144,
+     5120
+    ],
+    "codec": "s16",
+    "count": 48,
+    "scaled_from": "model.language_model.layers.0.linear_attn.out_proj.weight",
+    "scale": 1.0,
+    "decode_plus_mm256_s": 0.005487523427291308,
+    "decode_plus_mm256_summed_s": 0.005224974634984392,
+    "fused_chunk_s": 0.024795000033918768
+   },
+   {
+    "shape": [
+     1024,
+     5120
+    ],
+    "codec": "s16",
+    "count": 32,
+    "scaled_from": "model.language_model.layers.0.linear_attn.out_proj.weight",
+    "scale": 0.16666833600092948,
+    "decode_plus_mm256_s": 0.0009145963983927598,
+    "decode_plus_mm256_summed_s": 0.0008708378280599125,
+    "fused_chunk_s": 0.004185916972346604
+   },
+   {
+    "shape": [
+     12288,
+     5120
+    ],
+    "codec": "s16",
+    "count": 16,
+    "scaled_from": "model.language_model.layers.0.linear_attn.in_proj_qkv.weight",
+    "scale": 1.1999997596156735,
+    "decode_plus_mm256_s": 0.010723316654676743,
+    "decode_plus_mm256_summed_s": 0.010438012786635757,
+    "fused_chunk_s": 0.05189139599679038
+   },
+   {
+    "shape": [
+     248320,
+     5120
+    ],
+    "codec": "s16",
+    "count": 1,
+    "scaled_from": "lm_head.weight",
+    "scale": 8.0,
+    "decode_plus_mm256_s": 0.22484287450788543,
+    "decode_plus_mm256_summed_s": 0.22994606764405034,
+    "fused_chunk_s": 1.0711344585288316
+   }
+  ],
+  "note": "fused figures are per-launch pipelined times of each distinct shape times its count and the launches per chunk, not chunk walls; the decode-once figures take the measured matrix of the same shape where one exists (gate/up, down, qkv, out), otherwise the nearest measured matrix of the codec scaled by payload bytes (z from out_proj, q/k/v from qkv), and the head from its slab times the row ratio; they are projections, not measurements of every matrix"
+ }
+}

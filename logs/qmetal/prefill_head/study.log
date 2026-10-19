@@ -1,0 +1,85 @@
+== kernels 23:59:21
+[study] 8 distinct fused shapes, 401 matrices
+[study] fused w4 17408x5120 (x128): per launch T1 236 us, T8 3595 us (15.25x), 97 GB/s at T1
+[study] fused s16 5120x6144 (x64): per launch T1 249 us, T8 816 us (3.28x), 64 GB/s at T1
+[study] fused w4 5120x17408 (x64): per launch T1 245 us, T8 3431 us (14.00x), 94 GB/s at T1
+[study] fused s16 10240x5120 (x48): per launch T1 407 us, T8 1344 us (3.30x), 65 GB/s at T1
+[study] fused s16 6144x5120 (x48): per launch T1 244 us, T8 775 us (3.18x), 66 GB/s at T1
+[study] fused s16 1024x5120 (x32): per launch T1 53 us, T8 131 us (2.49x), 51 GB/s at T1
+[study] fused s16 12288x5120 (x16): per launch T1 477 us, T8 1622 us (3.40x), 67 GB/s at T1
+[study] fused s16 248320x5120 (x1): per launch T1 9313 us, T8 33473 us (3.59x), 69 GB/s at T1
+[study] ablation w4 17408x5120 v3: TT8 3555 us, TT1 371 us
+[study] ablation w4 17408x5120 nox: TT8 261 us, TT1 185 us
+[study] ablation w4 17408x5120 nocb: TT8 3423 us, TT1 248 us
+[study] ablation w4 17408x5120 noidx: TT8 3623 us, TT1 363 us
+[study] ablation w4 17408x5120 xonly: TT8 3694 us, TT1 370 us
+[study] ablation w4 17408x5120 nosum: TT8 3562 us, TT1 370 us
+[study] ablation w4 17408x5120 empty: TT8 42 us, TT1 43 us
+[study] ablation w4 5120x17408 v3: TT8 3373 us, TT1 386 us
+[study] ablation w4 5120x17408 nox: TT8 215 us, TT1 181 us
+[study] ablation w4 5120x17408 nocb: TT8 3266 us, TT1 246 us
+[study] ablation w4 5120x17408 noidx: TT8 3373 us, TT1 351 us
+[study] ablation w4 5120x17408 xonly: TT8 3336 us, TT1 349 us
+[study] ablation w4 5120x17408 nosum: TT8 3375 us, TT1 385 us
+[study] ablation w4 5120x17408 empty: TT8 21 us, TT1 22 us
+[study] ablation s16 10240x5120 v3: TT8 1320 us, TT1 396 us
+[study] ablation s16 10240x5120 nox: TT8 436 us, TT1 388 us
+[study] ablation s16 10240x5120 nocodes: TT8 1418 us, TT1 364 us
+[study] ablation s16 10240x5120 nosum: TT8 1348 us, TT1 395 us
+[study] ablation s16 10240x5120 empty: TT8 32 us, TT1 31 us
+[study] alt gate_proj 17408x5120 T1: fused 232 us, f32 mm 2567, f16 mm 1288, qmm4 369, decode+mm 6057 (decode alone 3384)
+[study] alt gate_proj 17408x5120 T8: fused 3553 us, f32 mm 2890, f16 mm 2476, qmm4 1311, decode+mm 6338 (decode alone 3384)
+[study] alt gate_proj 17408x5120 T64: fused 27825 us, f32 mm 3151, f16 mm 2515, qmm4 3058, decode+mm 6582 (decode alone 3384)
+[study] alt gate_proj 17408x5120 T256: fused 110714 us, f32 mm 11277, f16 mm 9967, qmm4 12213, decode+mm 15047 (decode alone 3384)
+[study] alt down_proj 5120x17408 T1: fused 244 us, f32 mm 2586, f16 mm 1291, qmm4 369, decode+mm 5997 (decode alone 3412)
+[study] alt down_proj 5120x17408 T8: fused 3373 us, f32 mm 2898, f16 mm 1424, qmm4 1310, decode+mm 6307 (decode alone 3412)
+[study] alt down_proj 5120x17408 T64: fused 26091 us, f32 mm 6237, f16 mm 3000, qmm4 3089, decode+mm 9742 (decode alone 3412)
+[study] alt down_proj 5120x17408 T256: fused 103517 us, f32 mm 16643, f16 mm 9947, qmm4 12610, decode+mm 20707 (decode alone 3412)
+[study] alt in_proj_qkv 10240x5120 T1: fused 396 us, f32 mm 1536, f16 mm 769, qmm4 223, decode+mm 3612 (decode alone 2075)
+[study] alt in_proj_qkv 10240x5120 T8: fused 1320 us, f32 mm 1710, f16 mm 1464, qmm4 773, decode+mm 3839 (decode alone 2075)
+[study] alt in_proj_qkv 10240x5120 T64: fused 10662 us, f32 mm 1785, f16 mm 1486, qmm4 1804, decode+mm 3939 (decode alone 2075)
+[study] alt in_proj_qkv 10240x5120 T256: fused 42466 us, f32 mm 6623, f16 mm 5878, qmm4 7180, decode+mm 8936 (decode alone 2075)
+[study] alt out_proj 5120x6144 T1: fused 245 us, f32 mm 930, f16 mm 471, qmm4 138, decode+mm 2188 (decode alone 1225)
+[study] alt out_proj 5120x6144 T8: fused 821 us, f32 mm 1053, f16 mm 525, qmm4 468, decode+mm 2301 (decode alone 1225)
+[study] alt out_proj 5120x6144 T64: fused 6506 us, f32 mm 1491, f16 mm 974, qmm4 1085, decode+mm 2807 (decode alone 1225)
+[study] alt out_proj 5120x6144 T256: fused 26366 us, f32 mm 3999, f16 mm 3505, qmm4 4308, decode+mm 5488 (decode alone 1225)
+[study] alt lm_head 31040x5120 T1: fused 1167 us, f32 mm 4618, f16 mm 2313, qmm4 658, decode+mm 10932 (decode alone 6287)
+[study] alt lm_head 31040x5120 T8: fused 4062 us, f32 mm 5157, f16 mm 4409, qmm4 2374, decode+mm 11474 (decode alone 6287)
+[study] alt lm_head 31040x5120 T64: fused 32622 us, f32 mm 5419, f16 mm 4477, qmm4 5442, decode+mm 11776 (decode alone 6287)
+[study] alt lm_head 31040x5120 T256: fused 130197 us, f32 mm 22456, f16 mm 17802, qmm4 22790, decode+mm 28105 (decode alone 6287)
+[study] totals per 256-token chunk: fused tile-8 matrices 28.72 s (112.2 ms/token); decode-once + f32 matmul projected 4.72 s (18.4 ms/token)
+[study] wrote logs/qmetal/prefill_kernels_7f464353.json
+== floor 00:02:49
+[floor] 401 fused linears, 192 w4, head 1
+[floor] round 0 full: 30.78 s for 256 tokens
+[floor] round 0 no_head: 29.65 s for 256 tokens
+[floor] round 0 no_w4_mlp: 9.23 s for 256 tokens
+[floor] round 0 no_fused: 2.13 s for 256 tokens
+[floor] round 1 no_head: 29.51 s for 256 tokens
+[floor] round 1 no_w4_mlp: 9.05 s for 256 tokens
+[floor] round 1 no_fused: 2.12 s for 256 tokens
+[floor] round 1 full: 30.56 s for 256 tokens
+[floor] round 2 no_w4_mlp: 9.02 s for 256 tokens
+[floor] round 2 no_fused: 2.13 s for 256 tokens
+[floor] round 2 full: 30.56 s for 256 tokens
+[floor] round 2 no_head: 29.45 s for 256 tokens
+[floor] medians {'full': 30.55937333405018, 'no_head': 29.506564792012796, 'no_w4_mlp': 9.045928541920148, 'no_fused': 2.126249250024557}; matrices 28.43 s, head 1.05 s, w4 mlp 21.51 s of 30.56 s; wrote logs/qmetal/prefill_floor_7f464353.json
+== skip head_time (ONLY=kernels floor ctx4k)
+== skip mem ctx 1024 head full (ONLY=kernels floor ctx4k)
+== skip mem ctx 1024 head final (ONLY=kernels floor ctx4k)
+== skip mem ctx 1024 head none (ONLY=kernels floor ctx4k)
+== skip mem ctx 4096 head full (ONLY=kernels floor ctx4k)
+== skip mem ctx 4096 head final (ONLY=kernels floor ctx4k)
+== ctx4k 00:06:32
+[ctx4k] full_c128: 489.3 s (8.37 tok/s), peak 11.03 GB, kv offset 4096 then 4112
+[ctx4k] full_c256: 490.0 s (8.36 tok/s), peak 13.36 GB, kv offset 4096 then 4112
+[ctx4k] full_c512: 490.4 s (8.35 tok/s), peak 16.63 GB, kv offset 4096 then 4112
+[ctx4k] final_c256: 472.6 s (8.67 tok/s), peak 16.72 GB, kv offset 4096 then 4112
+[ctx4k] full_c128 vs full_c256: final logits max abs 0.00e+00 rel 0.0e+00 argmax 1/1; after prefill: state rel 0.0e+00 kv 0.0e+00 offsets [[4096, 4096]]; decode 16/16 max abs 0.00e+00; all positions argmax 4096/4096
+[ctx4k] full_c128 vs full_c512: final logits max abs 1.72e-05 rel 8.1e-07 argmax 1/1; after prefill: state rel 1.6e-06 kv 3.1e-03 offsets [[4096, 4096]]; decode 16/16 max abs 2.00e-05; all positions argmax 4096/4096
+[ctx4k] full_c128 vs final_c256: final logits max abs 0.00e+00 rel 0.0e+00 argmax 1/1; after prefill: state rel 0.0e+00 kv 0.0e+00 offsets [[4096, 4096]]; decode 16/16 max abs 0.00e+00
+[ctx4k] full_c256 vs full_c512: final logits max abs 1.72e-05 rel 8.1e-07 argmax 1/1; after prefill: state rel 1.6e-06 kv 3.1e-03 offsets [[4096, 4096]]; decode 16/16 max abs 2.00e-05; all positions argmax 4096/4096
+[ctx4k] full_c256 vs final_c256: final logits max abs 0.00e+00 rel 0.0e+00 argmax 1/1; after prefill: state rel 0.0e+00 kv 0.0e+00 offsets [[4096, 4096]]; decode 16/16 max abs 0.00e+00
+[ctx4k] full_c512 vs final_c256: final logits max abs 1.72e-05 rel 8.1e-07 argmax 1/1; after prefill: state rel 1.6e-06 kv 3.1e-03 offsets [[4096, 4096]]; decode 16/16 max abs 2.00e-05
+[ctx4k] wrote logs/qmetal/prefill_head/ctx4k_7f464353.json
+== study done 00:39:15
