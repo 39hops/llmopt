@@ -1,0 +1,75 @@
+== skip bench (START=floor)
+== floor 02:07:15
+[floor] 401 fused linears, 192 w4, head 1
+[floor] round 0 full: 6.79 s for 256 tokens
+[floor] round 0 no_head: 6.36 s for 256 tokens
+[floor] round 0 no_w4_mlp: 3.74 s for 256 tokens
+[floor] round 0 no_fused: 2.25 s for 256 tokens
+[floor] round 1 no_head: 6.40 s for 256 tokens
+[floor] round 1 no_w4_mlp: 3.77 s for 256 tokens
+[floor] round 1 no_fused: 2.24 s for 256 tokens
+[floor] round 1 full: 6.73 s for 256 tokens
+[floor] round 2 no_w4_mlp: 3.78 s for 256 tokens
+[floor] round 2 no_fused: 2.25 s for 256 tokens
+[floor] round 2 full: 6.65 s for 256 tokens
+[floor] round 2 no_head: 6.40 s for 256 tokens
+[floor] medians {'full': 6.734650666941889, 'no_head': 6.398766541969962, 'no_w4_mlp': 3.767792333033867, 'no_fused': 2.2465578330447897}; matrices 4.49 s, head 0.34 s, w4 mlp 2.97 s of 6.73 s; wrote logs/qmetal/prefill_gemm/floor_hybrid_e8f1a3af.json
+== ab 02:08:22
+[ab] fused_full: 122.5 s (8.36 tok/s), peak 11.41 GB, kv offset 1024 then 1040
+[ab] gemm_full: 26.4 s (38.78 tok/s), peak 15.03 GB, kv offset 1024 then 1040
+[ab] fused_final: 118.2 s (8.66 tok/s), peak 12.25 GB, kv offset 1024 then 1040
+[ab] gemm_final: 25.6 s (40.06 tok/s), peak 13.40 GB, kv offset 1024 then 1040
+[ab] fused_full vs gemm_full: final logits max abs 6.48e-05 rel 2.8e-06 margin 5.7e-06; state rel 1.2e-05 kv 1.2e-02 offsets True; decode 16/16 max abs 1.17e-04; all positions argmax 1024/1024 margin 7.2e-04
+[ab] fused_final vs gemm_final: final logits max abs 4.56e-05 rel 2.0e-06 margin 2.3e-05; state rel 1.2e-05 kv 1.2e-02 offsets True; decode 16/16 max abs 1.17e-04
+[ab] fused_full vs fused_final: final logits max abs 0.00e+00 rel 0.0e+00 margin 0.0e+00; state rel 0.0e+00 kv 0.0e+00 offsets True; decode 16/16 max abs 0.00e+00
+[ab] gemm_full vs gemm_final: final logits max abs 3.53e-05 rel 1.5e-06 margin 2.9e-05; state rel 0.0e+00 kv 0.0e+00 offsets True; decode 16/16 max abs 0.00e+00
+[ab] wrote logs/qmetal/prefill_gemm/ab_e8f1a3af.json
+== mem ctx 512 gemm 0 02:13:32
+[head mem] ctx 512 chunk 256 head final: prefill 59.0s (8.67 tok/s), peak 11.09 GB, active after 9.26 GB, peak rss 11.40 GB, decode median 127.7 ms, kv offset 512 then 528
+== mem ctx 512 gemm 1 02:14:42
+[head mem] ctx 512 chunk 256 head final: prefill 12.7s (40.25 tok/s), peak 11.94 GB, active after 9.25 GB, peak rss 11.15 GB, decode median 127.7 ms, kv offset 512 then 528
+== mem ctx 1024 gemm 0 02:15:05
+[head mem] ctx 1024 chunk 256 head final: prefill 117.9s (8.69 tok/s), peak 11.16 GB, active after 9.27 GB, peak rss 11.44 GB, decode median 128.1 ms, kv offset 1024 then 1040
+== mem ctx 1024 gemm 1 02:17:13
+[head mem] ctx 1024 chunk 256 head final: prefill 25.0s (40.92 tok/s), peak 12.02 GB, active after 9.12 GB, peak rss 11.18 GB, decode median 128.2 ms, kv offset 1024 then 1040
+== mem ctx 2048 gemm 0 02:17:47
+[head mem] ctx 2048 chunk 256 head final: prefill 235.9s (8.68 tok/s), peak 11.29 GB, active after 9.26 GB, peak rss 11.49 GB, decode median 129.3 ms, kv offset 2048 then 2064
+== mem ctx 2048 gemm 1 02:21:53
+[head mem] ctx 2048 chunk 256 head final: prefill 50.2s (40.79 tok/s), peak 12.19 GB, active after 9.46 GB, peak rss 11.25 GB, decode median 129.4 ms, kv offset 2048 then 2064
+== mem ctx 4096 gemm 0 02:22:53
+[head mem] ctx 4096 chunk 256 head final: prefill 472.3s (8.67 tok/s), peak 11.56 GB, active after 9.52 GB, peak rss 11.55 GB, decode median 131.3 ms, kv offset 4096 then 4112
+== mem ctx 4096 gemm 1 02:30:56
+[head mem] ctx 4096 chunk 256 head final: prefill 101.0s (40.54 tok/s), peak 12.52 GB, active after 9.59 GB, peak rss 11.27 GB, decode median 131.7 ms, kv offset 4096 then 4112
+== qual 02:32:47
+[qual] built arm C on Metal: 402 fused, 449 raw, 9.37 GB resident, 6s; families {'linear_attn': 48, 'full_attn': 16}
+[qual] chat-1: 318 tok 10s; argmax identical 256/256; top16 max abs 6.86e-04; agree metal 0.883 cpu 0.883
+[qual] chat-2: 320 tok 8s; argmax identical 256/256; top16 max abs 2.50e-04; agree metal 0.754 cpu 0.754
+[qual] chat-3: 249 tok 7s; argmax identical 186/186; top16 max abs 1.82e-04; agree metal 0.871 cpu 0.871
+[qual] chat-4: 151 tok 5s; argmax identical 88/88; top16 max abs 1.66e-04; agree metal 0.852 cpu 0.852
+[qual] math-1: 320 tok 8s; argmax identical 256/256; top16 max abs 2.05e-04; agree metal 0.918 cpu 0.918
+[qual] math-2: 167 tok 5s; argmax identical 100/100; top16 max abs 1.79e-04; agree metal 0.910 cpu 0.910
+[qual] math-3: 196 tok 6s; argmax identical 117/117; top16 max abs 9.06e-05; agree metal 0.872 cpu 0.872
+[qual] math-4: 202 tok 7s; argmax identical 138/138; top16 max abs 1.43e-04; agree metal 0.899 cpu 0.899
+[qual] code-1: 270 tok 9s; argmax identical 204/204; top16 max abs 6.91e-04; agree metal 0.877 cpu 0.877
+[qual] code-2: 339 tok 11s; argmax identical 256/256; top16 max abs 1.64e-04; agree metal 0.828 cpu 0.828
+[qual] code-3: 322 tok 10s; argmax identical 256/256; top16 max abs 1.43e-04; agree metal 0.828 cpu 0.828
+[qual] code-4: 324 tok 10s; argmax identical 256/256; top16 max abs 1.31e-04; agree metal 0.773 cpu 0.773
+[qual] reason-1: 128 tok 4s; argmax identical 53/53; top16 max abs 1.57e-04; agree metal 0.868 cpu 0.868
+[qual] reason-2: 339 tok 12s; argmax identical 256/256; top16 max abs 1.96e-04; agree metal 0.871 cpu 0.871
+[qual] reason-3: 332 tok 10s; argmax identical 256/256; top16 max abs 1.27e-04; agree metal 0.895 cpu 0.895
+[qual] reason-4: 318 tok 11s; argmax identical 252/252; top16 max abs 2.07e-04; agree metal 0.782 cpu 0.782
+[qual] know-1: 258 tok 8s; argmax identical 200/200; top16 max abs 2.27e-04; agree metal 0.775 cpu 0.775
+[qual] know-2: 251 tok 8s; argmax identical 187/187; top16 max abs 1.51e-04; agree metal 0.824 cpu 0.824
+[qual] know-3: 318 tok 11s; argmax identical 256/256; top16 max abs 1.55e-04; agree metal 0.809 cpu 0.809
+[qual] know-4: 152 tok 5s; argmax identical 82/82; top16 max abs 1.74e-04; agree metal 0.805 cpu 0.805
+[qual] long-1: 329 tok 10s; argmax identical 256/256; top16 max abs 1.25e-03; agree metal 0.727 cpu 0.727
+[qual] long-2: 327 tok 12s; argmax identical 256/256; top16 max abs 4.29e-04; agree metal 0.773 cpu 0.773
+[qual] edge-1: 153 tok 5s; argmax identical 88/88; top16 max abs 1.54e-04; agree metal 0.818 cpu 0.818
+[qual] edge-2: 276 tok 11s; argmax identical 211/211; top16 max abs 2.57e-04; agree metal 0.820 cpu 0.820
+[qual] decode chat-1: 256 steps, argmax same 256/256, max |decode - forward| 1.96e-03, median 128 ms
+[qual] decode chat-2: 256 steps, argmax same 256/256, max |decode - forward| 4.34e-04, median 128 ms
+[qual] ctx 512: prefill 15s (34.7 tok/s), decode median 128 ms, peak 15.90 GB
+[qual] ctx 1024: prefill 27s (38.5 tok/s), decode median 131 ms, peak 17.45 GB
+[qual] wrote logs/qwen_metal_qual/C_gemm: 4722 positions, argmax identical 4722/4722, top16 max abs 1.25e-03, replay k4 metal 3.4695 cpu 3.4695, wall 360s
+== ctx4k_hybrid 02:39:06
+== study FAILED at ctx4k_hybrid rc=143 02:39:25
