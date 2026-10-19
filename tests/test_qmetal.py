@@ -553,3 +553,65 @@ def test_path_counters(monkeypatch):
     other = qmetal.S16Metal(_random_s16(rng, R, C), (R, C))
     other.gemv(mx.array(rng.normal(size=C).astype(np.float32)))
     assert qmetal.path_counts([res, other]) == {"fused": 3, "gemm": 1}
+
+
+# ---- scoped GEMM dispatch (the qualified prefill entry point enables the
+# path for its own call only; nothing else inherits it from a row count) ----
+
+def test_gemm_scope_gates_dispatch_not_row_count(monkeypatch):
+    """With the process default off, a 64-row call takes the fused path;
+    inside gemm_scope(True) the same call takes the GEMM path; after the
+    scope exits the next call is fused again."""
+    _gemm_off(monkeypatch)
+    rng = np.random.default_rng(7)
+    res = _w4_or_skip(_random_w4(rng, 24, 256), (24, 256))
+    x = mx.array(rng.standard_normal((64, 256)).astype(np.float32))
+    assert qmetal.gemm_scope_state() is None
+    y0 = res.gemm(x); mx.eval(y0)
+    assert res.last_path == "fused"
+    with qmetal.gemm_scope(True):
+        assert qmetal.gemm_scope_state() is True
+        y1 = res.gemm(x); mx.eval(y1)
+        assert res.last_path == "gemm"
+    assert qmetal.gemm_scope_state() is None
+    y2 = res.gemm(x); mx.eval(y2)
+    assert res.last_path == "fused"
+    assert mx.array_equal(y0, y2)
+    assert res.calls_fused == 2 and res.calls_gemm == 1
+
+
+def test_gemm_scope_false_is_a_fused_only_control(monkeypatch):
+    """gemm_scope(False) forces the fused kernels even when the process
+    default (or an outer scope) has the GEMM path on."""
+    _gemm_on(monkeypatch, min_t=1)
+    rng = np.random.default_rng(8)
+    res = qmetal.S16Metal(_random_s16(rng, 20, 128), (20, 128))
+    x = mx.array(rng.standard_normal((40, 128)).astype(np.float32))
+    with qmetal.gemm_scope(True):
+        with qmetal.gemm_scope(False):
+            y = res.gemm(x); mx.eval(y)
+            assert res.last_path == "fused"
+        assert qmetal.gemm_scope_state() is True
+        y = res.gemm(x); mx.eval(y)
+        assert res.last_path == "gemm"
+    with qmetal.gemm_scope(False):
+        y = res.gemm(x); mx.eval(y)
+        assert res.last_path == "fused"
+
+
+def test_gemm_scope_restores_on_exception_and_keeps_small_tiles_fused(monkeypatch):
+    _gemm_off(monkeypatch)
+    rng = np.random.default_rng(9)
+    res = _w4_or_skip(_random_w4(rng, 16, 128), (16, 128))
+    with pytest.raises(RuntimeError):
+        with qmetal.gemm_scope(True):
+            raise RuntimeError("boom")
+    assert qmetal.gemm_scope_state() is None
+    with qmetal.gemm_scope(True):
+        # the per-codec threshold still applies inside the scope: a decode
+        # step (one row) and an 8-row tile stay on the fused kernels
+        for t in (1, 8):
+            y = res.gemm(mx.array(rng.standard_normal((t, 128)).astype(np.float32))); mx.eval(y)
+            assert res.last_path == "fused"
+        y = res.gemm(mx.array(rng.standard_normal((16, 128)).astype(np.float32))); mx.eval(y)
+        assert res.last_path == "gemm"

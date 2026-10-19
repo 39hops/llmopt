@@ -95,3 +95,58 @@ def test_refuses_bad_arguments():
         qprefill.prefill_chunked(m, [1, 2], c, chunk=0)
     with pytest.raises(ValueError):
         qprefill.split_body_head(object())
+
+
+class _Resident:
+    """Stand-in for a qmetal resident: records the scope state it saw on
+    each call."""
+    def __init__(self):
+        self.seen = []
+
+    def __call__(self):
+        from llmopt.lab import qmetal
+        self.seen.append(qmetal.gemm_scope_state())
+
+
+def test_matmul_argument_scopes_the_gemm_path_to_the_call():
+    from llmopt.lab import qmetal
+    ids = list(range(1, 8))
+    for matmul, expect in (("gemm", True), ("fused", False), (None, None)):
+        m, c = _Model(), [_Cache()]
+        res = _Resident()
+        inner = m.language_model.model
+
+        class _SpyBody:
+            calls = inner.calls
+
+            def __call__(self, ids_, cache):
+                res()
+                return inner(ids_, cache)
+        m.language_model.model = _SpyBody()
+        assert qmetal.gemm_scope_state() is None
+        qprefill.prefill_chunked(m, ids, c, chunk=3, head="final", matmul=matmul)
+        assert res.seen == [expect, expect, expect]
+        assert qmetal.gemm_scope_state() is None
+    with pytest.raises(ValueError):
+        qprefill.prefill_chunked(_Model(), ids, [_Cache()], chunk=3, matmul="auto")
+
+
+def test_refuses_batched_or_non_integer_prompts():
+    for bad in ([[1, 2, 3]], [1, 2.5, 3], "123", [], [1, [2]]):
+        with pytest.raises(ValueError):
+            qprefill.prefill_chunked(_Model(), bad, [_Cache()], chunk=2)
+
+
+def test_serving_config_and_memory_report():
+    cfg = qprefill.ServingConfig()
+    assert cfg.chunk == 256 and cfg.matmul == "gemm" and cfg.cache_limit_bytes == 2 * 1024 ** 3
+    prev = qprefill.configure_serving_memory(cfg)
+    try:
+        assert isinstance(prev, int)
+        assert mx.set_cache_limit(prev) == cfg.cache_limit_bytes      # the limit was applied
+    finally:
+        mx.set_cache_limit(prev)
+    rep = qprefill.memory_report()
+    assert set(rep) >= {"active_bytes", "peak_bytes", "cache_bytes", "footprint_bytes", "rss_peak_bytes"}
+    assert rep["footprint_bytes"] == rep["active_bytes"] + rep["cache_bytes"]
+    assert all(isinstance(v, int) and v >= 0 for v in rep.values())

@@ -4532,6 +4532,25 @@ MEZO-SIGNAL-DESK-0: zero-training feasibility desk for a zeroth-order (MeZO / SP
 - `adjudicate(rec)` — Pure. Returns the FD precondition, per-family BAR-SIGNAL and verdict.
 - `main()`
 
+### scratch/mlp_permutation_study.py
+SwiGLU intermediate-neuron permutation: mechanical companion to scratch/leancheck/MlpPermutation.lean (Phase C of the 2026-10-19 round).
+
+- `git_head()`
+- `silu(t)`
+- `mlp(Wg, Wu, Wd, X, dtype)` — X[N, d] -> [N, d] with gate silu, all in dtype (numpy matmul order).
+- `permute(Wg, Wu, Wd, perm)`
+- `exact_section(rng)`
+- `ulps(a, b)`
+- `float_section(rng)`
+- `e8m0(blocks)` — Per-block power-of-two scale: smallest 2^e with max|block| <= 2^e (zero block -> 2^-127).
+- `quantize_block16(W, levels)` — Block-128 along the input dimension, e8m0 scale, nearest of 16 levels (levels in [-1, 1]).
+- `rel_fro(A, B)`
+- `arm_c_levels(art)` — The 16 half levels of an arm C S16 payload (first S16 entry), else uniform.
+- `grouping_perms(Wd, rng, n_random=3)`
+- `grouping_section(name, Wg, Wu, Wd, X, levels, rng)`
+- `sources(rng, art)`
+- `main()`
+
 ### scratch/moe_gt1.py
 MOE-GT-1 arm 0: the full-residency oracle run (pre-reg 2026-08-03).
 
@@ -5202,6 +5221,14 @@ QWEN-CYCLE-IMPULSE-0 driver: cycle-triggered temperature impulse on BLe xhigh tr
 Extract one gate_proj matrix from HF-cached Qwen2.5-0.5B base and Instruct into plot_neurons-compatible .pt files, so the --displace (central-lattice whisper-zoom) view can render an INTERNET-trained model's post-training displacement next to the closed-system natives' (the chaos-vs-structure tell, Artin's ask 2026-08-08; generator-loss lesson: this adapter is COMMITTED).
 
 
+### scratch/qwen_e0_disagreement_census.py
+E0 disagreement census: where and how the compressed arm C departs from the teacher on the 4,722 preserved teacher-greedy positions (read-only analysis of frozen evidence; nothing is trained, fitted or tuned here).
+
+- `sha_file(p)`
+- `bins(v, edges)`
+- `q(a)`
+- `main()`
+
 ### scratch/qwen_e0_preflight.py
 E0 preflight (instrument only, no bar is read): on the Mac CPU reference runtime, show that the single-sequence unpadded forward the census uses reproduces the left-padded batched forward the teacher rollouts were generated under, on arm C itself, for two prompts of different lengths; re-derive every prompt from the chat template and compare with the stored input_ids; and account eos on every rollout.
 
@@ -5376,6 +5403,21 @@ Final-position vocabulary projection for the chunked prefill of the arm C Metal 
 - `residents_of(model)`
 - `decode_after(model, cache, ids_next)`
 - `main() -> None`
+
+### scratch/qwen_metal_prefill_serve_ab.py
+Final bounded A/B and E0 recount for the hardened prefill entry point (llmopt.lab.qprefill.prefill_chunked with matmul="gemm" against the fused-only control, under the serving memory configuration).
+
+- `sha_file(p)`
+- `refuse(path)`
+- `git_head()`
+- `git_dirty()`
+- `provenance(mode, arm=None)`
+- `load_model()`
+- `apply_cache_limit()`
+- `mode_ab()`
+- `mode_compare()`
+- `mode_census()`
+- `main()`
 
 ### scratch/qwen_metal_qual.py
 Metal-versus-CPU qualification of arm C over the frozen E0 teacher-greedy contexts. Separate from QWEN-METAL-TOWER-0 (one prompt, 78 positions) and from E0 itself, whose receipts under logs/qwen_e0/C are read, never rewritten.
@@ -5944,6 +5986,17 @@ SSM-STAR (pre-reg RESULTS PRE-REG SSM-STAR-1): minimal selective state-space mod
 Tensor-class ternary sensitivity profile (PRE-REG STAR-PROFILE-1, 2026-08-10). Star frame: precision belongs to interfaces/core; traversal tolerates {-1,0,1}.
 
 - `ternary(w)` — absmean ternary — row-scale for 2D (train_ternary.py's form),
+- `main()`
+
+### scratch/strassen_bench.py
+Bounded test of a small-block bilinear algorithm against the framework GEMM on the prefill shapes (Phase D of the 2026-10-19 round).
+
+- `git_head()`
+- `split2(A, lib)`
+- `strassen(A, B, lib, levels)` — A[m, k] @ B[k, n] with Winograd's 7-product scheme, recursing `levels`
+- `temporaries_bytes(m, k, n, levels, itemsize=4)` — Block sums (4 of A's quarter, 4 of B's quarter), 7 quarter products and
+- `mult_ratio(levels)`
+- `time_fn(fn, evaluate, rounds)`
 - `main()`
 
 ### scratch/stream_wdistill0.py
@@ -6706,6 +6759,8 @@ Reusable CUDA tower: codec dispatch + FusedS16Linear + residency plan.
 Fused Metal decode-and-multiply for the frozen WHOLE-0T payloads (Apple silicon, mx.fast.metal_kernel). Companion of llmopt.lab.qcuda.
 
 - `require_mlx() -> None`
+- `gemm_scope_state()` — None outside any gemm_scope, else the innermost scope's value.
+- `gemm_scope(enabled: bool)` — Scope the decode-once GEMM dispatch to the calls made inside it.
 - `_kernel(name: str, version: int)`
 - `_decode_kernel(name: str)`
 - `_check_shape(codec: str, shape, buf_len: int, version: int=None)`
@@ -6718,9 +6773,14 @@ Fused Metal decode-and-multiply for the frozen WHOLE-0T payloads (Apple silicon,
 ### llmopt/lab/qprefill.py
 Chunked prefill for the fused-linear mlx-lm towers (adopted from scratch/qwen_metal_chunked.py and scratch/qwen_metal_prefill_head.py, OBSERVATIONS QWEN-METAL-CHUNKED-PREFILL-0 and QWEN-METAL-PREFILL-STUDY-0).
 
+- `class ServingConfig`
+- `configure_serving_memory(cfg: ServingConfig=ServingConfig()) -> int` — Apply cfg.cache_limit_bytes to the MLX allocator cache of this
+- `memory_report() -> dict` — active_bytes (arrays alive on the device), peak_bytes (peak active
+- `_check_ids(ids) -> list`
 - `cache_arrays(cache)` — Every array a cache list holds (for mx.eval and for comparison).
 - `split_body_head(model)`
-- `prefill_chunked(model, ids, cache, chunk: int=256, head: str='final', on_chunk=None)` — Prefill ids (a list of token ids, one unpadded prompt) into cache in
+- `prefill_chunked(model, ids, cache, chunk: int=256, head: str='final', on_chunk=None, matmul=None)` — Prefill ids (a list of token ids, one unpadded prompt) into cache in
+- `class _NoScope`
 
 ### llmopt/lab/qrope.py
 RoPE value oracle — exact expectations, no thresholds.

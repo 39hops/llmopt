@@ -41,8 +41,14 @@ crosses a 128-element block, so one exponent serves a whole word.
 Multi-token (prefill) use runs the same decode once per row against a
 tile of up to TT activations.
 
-Decode-once GEMM path (OBSERVATION QWEN-METAL-PREFILL-STUDY-0; off by
-default, QMETAL_PREFILL_GEMM=1 switches it on): for activation tiles of
+Decode-once GEMM path (OBSERVATION QWEN-METAL-PREFILL-STUDY-0, qualified
+in QWEN-METAL-PREFILL-GEMM-0; off outside an explicit scope): the
+qualified single-prompt chunked prefill (llmopt.lab.qprefill) enables it
+for its own call through gemm_scope(True), and gemm_scope(False) is the
+fused-only control; the process default PREFILL_GEMM (QMETAL_PREFILL_GEMM=1,
+the research switch of the study drivers) applies only outside any scope,
+so a batched or speculative-verify call never inherits the prefill path
+from its row count alone. Inside an enabling scope, for activation tiles of
 at least GEMM_MIN_T_BY_CODEC[codec] rows (16 for W4, 32 for S16, the
 measured crossovers) a matrix whose blocks are all in the normal
 exponent class and whose table is finite is decoded once to float32 on
@@ -73,6 +79,7 @@ expected for a different accumulation order.
 """
 from __future__ import annotations
 
+import contextlib
 import os
 
 import numpy as np
@@ -470,6 +477,33 @@ GEMM_MIN_T_BY_CODEC = {"w4": 16, "s16": 32}
 GEMM_MIN_T = int(os.environ["QMETAL_GEMM_MIN_T"]) if "QMETAL_GEMM_MIN_T" in os.environ else None
 GEMM_SLAB_BYTES = int(os.environ.get("QMETAL_GEMM_SLAB_BYTES", str(400 * 1024 * 1024)))
 
+# Explicit dispatch scope for the GEMM path: a stack of booleans, the
+# innermost wins; empty outside any scope. Metal calls in this lab are
+# issued from one thread, so a module-level stack is the scope state.
+_GEMM_SCOPE: list = []
+
+
+def gemm_scope_state():
+    """None outside any gemm_scope, else the innermost scope's value."""
+    return _GEMM_SCOPE[-1] if _GEMM_SCOPE else None
+
+
+@contextlib.contextmanager
+def gemm_scope(enabled: bool):
+    """Scope the decode-once GEMM dispatch to the calls made inside it.
+    gemm_scope(True): residents take the GEMM path for tiles at or above
+    the per-codec threshold (matrices with exceptional blocks or nonfinite
+    tables still run fused). gemm_scope(False): every call takes the fused
+    kernels, whatever the process default or an outer scope says (the
+    fused-only control). Outside any scope the resident's prefill_gemm
+    attribute (process default PREFILL_GEMM) decides. The stack is restored
+    on exit, exceptions included."""
+    _GEMM_SCOPE.append(bool(enabled))
+    try:
+        yield
+    finally:
+        _GEMM_SCOPE.pop()
+
 
 # Kernel generation used by the resident objects (1, 2, 3 or 4; default
 # 4 since OBSERVATION QWEN-METAL-W4-V4-0, v3 kept as the control). The
@@ -586,7 +620,9 @@ class _Resident:
             raise ValueError(f"x width {x2.shape[1]} != C {C}")
         T = x2.shape[0]
         min_t = self.gemm_min_t if self.gemm_min_t is not None else GEMM_MIN_T_BY_CODEC[self.codec]
-        if self.prefill_gemm and self.gemm_ok and T >= min_t:
+        scope = gemm_scope_state()
+        allowed = self.prefill_gemm if scope is None else scope
+        if allowed and self.gemm_ok and T >= min_t:
             self.last_path = "gemm"
             self.calls_gemm += 1
             y = self._gemm_decoded(x2)
