@@ -193,7 +193,11 @@ def build_metal_model(art: str, vdir: str):
             "n_layers": len(tm.layers), "families": {"linear_attn": fams.count("linear_attn"),
                                                      "full_attn": fams.count("full_attn")},
             "fused": n_fused, "raw": n_raw, "payload_resident_bytes": bytes_resident,
-            "kernel_version": qmetal.VERSION}
+            "kernel_version": qmetal.VERSION,
+            "prefill_gemm": bool(qmetal._Resident.prefill_gemm), "gemm_min_t": int(qmetal._Resident.gemm_min_t),
+            "gemm_slab_bytes": int(qmetal.GEMM_SLAB_BYTES),
+            "gemm_ineligible_matrices": sum(1 for _, m in model.named_modules()
+                                            if type(m).__name__ == "QLinear" and not m.res.gemm_ok)}
     return model, info
 
 

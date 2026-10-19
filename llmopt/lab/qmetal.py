@@ -40,6 +40,23 @@ crosses a 128-element block, so one exponent serves a whole word.
 Multi-token (prefill) use runs the same decode once per row against a
 tile of up to TT activations.
 
+Decode-once GEMM path (OBSERVATION QWEN-METAL-PREFILL-STUDY-0; off by
+default, QMETAL_PREFILL_GEMM=1 switches it on): for activation tiles of
+at least GEMM_MIN_T rows a matrix whose blocks are all in the normal
+exponent class and whose table is finite is decoded once to float32 on
+the device, in row slabs of at most GEMM_SLAB_BYTES, and multiplied with
+mx.matmul; the decoded slab is a temporary consumed by its matmul and
+nothing is kept on the resident. The decoded value is the number the
+fused kernels multiply (a half value times a power of two, exact in
+float32 for that class, signed zero preserved; tests pin bit equality
+with qcodec's decode). Every matrix with an exceptional block (below
+2^-96, at 2^64 and above, or the infinite 255) or a nonfinite table
+entry, and every tile below GEMM_MIN_T, runs the fused kernels, so the
+exceptional-value semantics above are untouched. The GEMM's blocked
+float32 reduction is a different order from the fused kernels'; its
+parity bound in the tests is 1e-5 |ref| + 1e-5 times the absolute dot,
+and the resident records the path it took in last_path.
+
 Parity regime (tests/test_qmetal.py): |got - ref| <= 1e-5 |ref| + 2e-6
 times the row's absolute dot sum_c |W_rc x_c| (float32 accumulation
 against a float64 oracle; the second term is the cancellation
@@ -382,6 +399,68 @@ _W4_V4_SRC = """
 """
 
 
+# ---- decode-once float32 path (multi-token prefill). One thread per code
+# ---- word writes 16 (W4) or 8 (S16) float32 weights of rows [R0, R0 + RS):
+# ---- the codebook or level value times the block scale, the same number
+# ---- the fused kernels multiply. Only matrices whose blocks are all in the
+# ---- normal class (E_LO <= e < E_HI) and whose tables are finite take this
+# ---- path, so no split-accumulator law is needed here: a half value times
+# ---- a power of two in that class is an exact float32 normal number (or a
+# ---- signed zero). The resident routes every other matrix to the fused
+# ---- kernels, which keep the exceptional-value semantics.
+_W4_DECODE_SRC = """
+    uint gid = thread_position_in_grid.x;
+    const uint C4 = (uint)C / 4;
+    const uint nwords_row = C4 / 4;
+    if (gid >= (uint)RS * nwords_row) return;
+    uint r = gid / nwords_row;
+    uint j = gid - r * nwords_row;
+    uint row = (uint)R0 + r;
+    uint word = ((const device uint*)(idx + row * C4))[j];
+    uint c0 = j * 16;
+    float s = as_type<float>(((uint)exps[row * ((uint)C / 128) + c0 / 128]) << 23);
+    const device half4* cb4 = (const device half4*)cb;
+    device float4* o = (device float4*)(out + r * (uint)C + c0);
+    o[0] = (float4)cb4[(word      ) & 0xFFu] * s;
+    o[1] = (float4)cb4[(word >>  8) & 0xFFu] * s;
+    o[2] = (float4)cb4[(word >> 16) & 0xFFu] * s;
+    o[3] = (float4)cb4[(word >> 24) & 0xFFu] * s;
+"""
+
+_S16_DECODE_SRC = """
+    uint gid = thread_position_in_grid.x;
+    const uint C2 = (uint)C / 2;
+    const uint nwords_row = C2 / 4;
+    if (gid >= (uint)RS * nwords_row) return;
+    uint r = gid / nwords_row;
+    uint j = gid - r * nwords_row;
+    uint row = (uint)R0 + r;
+    uint word = ((const device uint*)(codes + row * C2))[j];
+    uint c0 = j * 8;
+    float s = as_type<float>(((uint)exps[row * ((uint)C / 128) + c0 / 128]) << 23);
+    float lvf[16];
+    for (uint i = 0; i < 16u; i++) lvf[i] = (float)lv[i];
+    uint b0 = word & 0xFFu, b1 = (word >> 8) & 0xFFu, b2 = (word >> 16) & 0xFFu, b3 = (word >> 24) & 0xFFu;
+    device float4* o = (device float4*)(out + r * (uint)C + c0);
+    o[0] = float4(lvf[b0 >> 4], lvf[b0 & 0xFu], lvf[b1 >> 4], lvf[b1 & 0xFu]) * s;
+    o[1] = float4(lvf[b2 >> 4], lvf[b2 & 0xFu], lvf[b3 >> 4], lvf[b3 & 0xFu]) * s;
+"""
+
+E_LO = 31          # the kernels' normal exponent class is E_LO <= e < E_HI
+E_HI = 191
+
+# Multi-token prefill path (OBSERVATION QWEN-METAL-PREFILL-STUDY-0): for
+# activation tiles of at least GEMM_MIN_T rows the resident decodes the
+# matrix once to float32 (row slabs of at most GEMM_SLAB_BYTES) and
+# multiplies with the framework GEMM; smaller tiles and every matrix with
+# exceptional blocks or nonfinite tables run the fused kernels. Off by
+# default until qualified (QMETAL_PREFILL_GEMM=1 switches it on); the
+# resident records the path it took in last_path.
+PREFILL_GEMM = os.environ.get("QMETAL_PREFILL_GEMM", "0") == "1"
+GEMM_MIN_T = int(os.environ.get("QMETAL_GEMM_MIN_T", "32"))
+GEMM_SLAB_BYTES = int(os.environ.get("QMETAL_GEMM_SLAB_BYTES", str(400 * 1024 * 1024)))
+
+
 # Kernel generation used by the resident objects (1, 2, 3 or 4; default
 # 4 since OBSERVATION QWEN-METAL-W4-V4-0, v3 kept as the control). The
 # environment variable QMETAL_VERSION overrides the default at import so
@@ -412,6 +491,17 @@ def _kernel(name: str, version: int):
     return _kernels[key]
 
 
+def _decode_kernel(name: str):
+    key = (name, "decode")
+    if key not in _kernels:
+        require_mlx()
+        inputs = ["idx", "cb", "exps"] if name == "w4" else ["codes", "lv", "exps"]
+        _kernels[key] = mx.fast.metal_kernel(
+            name=f"llmopt_q_{name}_decode_f32", input_names=inputs, output_names=["out"],
+            header=_HEADER, source=_W4_DECODE_SRC if name == "w4" else _S16_DECODE_SRC)
+    return _kernels[key]
+
+
 TILE = 8  # activations per launch in the multi-token path
 
 
@@ -434,6 +524,44 @@ class _Resident:
     """Payload parts as device arrays; shared gemv / gemm driver."""
     codec = ""
     version = VERSION
+    prefill_gemm = PREFILL_GEMM
+    gemm_min_t = GEMM_MIN_T
+    gemm_ok = False          # set per matrix: all blocks normal-class, tables finite
+    last_path = None         # "fused" or "gemm", the path the last call took
+
+    @staticmethod
+    def _gemm_eligible(exps: np.ndarray, table: np.ndarray) -> bool:
+        return bool(((exps >= E_LO) & (exps < E_HI)).all()) and bool(np.isfinite(table.astype(np.float32)).all())
+
+    def decode_f32(self, r0: int, r1: int) -> "mx.array":
+        """Rows [r0, r1) of the matrix as a float32 device array, decoded by
+        the kernels' value law (codebook or level value times the block
+        scale). A temporary: nothing is kept on the resident. Only valid
+        for matrices with gemm_ok (normal exponent class, finite tables)."""
+        R, C = self.shape
+        if not (0 <= r0 < r1 <= R):
+            raise ValueError(f"row range [{r0},{r1}) outside [0,{R})")
+        if not self.gemm_ok:
+            raise ValueError("decode_f32 is defined for normal-class matrices only; this one routes to the fused kernels")
+        rs = r1 - r0
+        nwords = rs * (C // (16 if self.codec == "w4" else 8))
+        (o,) = _decode_kernel(self.codec)(
+            inputs=list(self._parts()), template=[("C", C), ("R0", r0), ("RS", rs)],
+            grid=(nwords, 1, 1), threadgroup=(256, 1, 1),
+            output_shapes=[(rs, C)], output_dtypes=[mx.float32])
+        return o
+
+    def _gemm_decoded(self, x2) -> "mx.array":
+        """y[T, R] = x2 W^T through row slabs of at most GEMM_SLAB_BYTES of
+        decoded float32 weights; each slab is a temporary consumed by its
+        matmul."""
+        R, C = self.shape
+        rows = max(1, min(R, GEMM_SLAB_BYTES // (C * 4)))
+        outs = []
+        for r0 in range(0, R, rows):
+            r1 = min(R, r0 + rows)
+            outs.append(mx.matmul(x2, self.decode_f32(r0, r1).T))
+        return outs[0] if len(outs) == 1 else mx.concatenate(outs, axis=1)
 
     def _run(self, x) -> "mx.array":
         R, C = self.shape
@@ -445,6 +573,11 @@ class _Resident:
         if x2.shape[1] != C:
             raise ValueError(f"x width {x2.shape[1]} != C {C}")
         T = x2.shape[0]
+        if self.prefill_gemm and self.gemm_ok and T >= self.gemm_min_t:
+            self.last_path = "gemm"
+            y = self._gemm_decoded(x2)
+            return y[0] if squeeze else y
+        self.last_path = "fused"
         outs = []
         for t0 in range(0, T, TILE):
             xt = x2[t0:t0 + TILE]
@@ -504,8 +637,11 @@ class W4Metal(_Resident):
         n = R * C
         nb = n // BLOCK
         self.shape = (R, C)
-        self.exps = mx.array(np.frombuffer(buf, np.uint8, nb, 0))
-        self.cb = mx.array(np.frombuffer(buf, np.float16, 1024, nb))
+        exps = np.frombuffer(buf, np.uint8, nb, 0)
+        cb = np.frombuffer(buf, np.float16, 1024, nb)
+        self.gemm_ok = self._gemm_eligible(exps, cb)
+        self.exps = mx.array(exps)
+        self.cb = mx.array(cb)
         self.idx = mx.array(np.frombuffer(buf, np.uint8, n // 4, nb + 2048))
         mx.eval(self.exps, self.cb, self.idx)
 
@@ -522,8 +658,11 @@ class S16Metal(_Resident):
         n = R * C
         nb = n // BLOCK
         self.shape = (R, C)
-        self.exps = mx.array(np.frombuffer(buf, np.uint8, nb, 0))
-        self.lv = mx.array(np.frombuffer(buf, np.float16, 16, nb))
+        exps = np.frombuffer(buf, np.uint8, nb, 0)
+        lv = np.frombuffer(buf, np.float16, 16, nb)
+        self.gemm_ok = self._gemm_eligible(exps, lv)
+        self.exps = mx.array(exps)
+        self.lv = mx.array(lv)
         self.codes = mx.array(np.frombuffer(buf, np.uint8, n // 2, nb + 32))
         mx.eval(self.exps, self.lv, self.codes)
 

@@ -374,3 +374,155 @@ def test_w4_v4_rows_bit_identical_to_v3():
         g4 = np.asarray(res4.gemm(mx.array(X)))
         g3 = np.asarray(res3.gemm(mx.array(X)))
         assert np.array_equal(g4, g3), T
+
+
+# ---------------- decode-once float32 GEMM prefill path ----------------
+# Off by default (QMETAL_PREFILL_GEMM); the tests switch it on per case.
+
+def _gemm_on(monkeypatch, min_t=1):
+    monkeypatch.setattr(qmetal._Resident, "prefill_gemm", True)
+    monkeypatch.setattr(qmetal._Resident, "gemm_min_t", min_t)
+
+
+def _gemm_off(monkeypatch):
+    monkeypatch.setattr(qmetal._Resident, "prefill_gemm", False)
+
+
+RTOL_GEMM = 1e-5
+ATOL_COND_GEMM = 1e-5     # the framework GEMM's blocked float32 reduction, bound checked empirically
+
+
+@pytest.mark.parametrize("codec", ["w4", "s16"])
+@pytest.mark.parametrize("pool", [None, [31, 100, 190], [40, 127, 150]])
+def test_decode_f32_matches_canonical_decoder_bitwise(codec, pool):
+    """The on-device float32 decode equals qcodec's decode cast to float32,
+    bit for bit including the sign of zero, over the whole normal exponent
+    class [E_LO, E_HI), whole matrix and row slabs alike."""
+    rng = np.random.default_rng(11 if codec == "w4" else 12)
+    R, C = 37, 1024
+    ep = None if pool is None else np.array(pool)
+    buf = _random_w4(rng, R, C, exp_pool=ep) if codec == "w4" else _random_s16(rng, R, C, exp_pool=ep)
+    res = _w4_or_skip(buf, (R, C)) if codec == "w4" else qmetal.S16Metal(buf, (R, C))
+    assert res.gemm_ok
+    dec = qcodec.dec_w4 if codec == "w4" else qcodec.dec_s16
+    ref = dec(buf, (R, C)).astype(np.float32)
+    got = np.asarray(res.decode_f32(0, R))
+    assert got.dtype == np.float32 and got.shape == (R, C)
+    assert np.array_equal(got, ref)
+    assert np.array_equal(np.signbit(got), np.signbit(ref))
+    slab = np.asarray(res.decode_f32(5, 20))
+    assert np.array_equal(slab, ref[5:20]) and np.array_equal(np.signbit(slab), np.signbit(ref[5:20]))
+
+
+def test_decode_f32_keeps_signed_zero_and_routes_nonfinite_tables_to_fused(monkeypatch):
+    rng = np.random.default_rng(13)
+    R, C = 4, 512
+    cb = rng.normal(size=(256, 4)).astype(np.float16)
+    cb[0] = [0.0, -0.0, 1.0, -1.0]
+    buf = _random_w4(rng, R, C, cb=cb)
+    res = _w4_or_skip(buf, (R, C))
+    assert res.gemm_ok
+    got = np.asarray(res.decode_f32(0, R))
+    ref = qcodec.dec_w4(buf, (R, C)).astype(np.float32)
+    assert np.array_equal(got, ref) and np.array_equal(np.signbit(got), np.signbit(ref))
+    assert (np.signbit(got) & (got == 0)).any()        # a negative zero survived the decode
+    cb2 = cb.copy()
+    cb2[1] = [np.inf, 1.0, np.nan, 2.0]
+    buf2 = _random_w4(rng, R, C, cb=cb2)
+    res2 = _w4_or_skip(buf2, (R, C))
+    assert not res2.gemm_ok                              # nonfinite table entries stay on the fused law
+    _gemm_on(monkeypatch)
+    X = rng.normal(size=(16, C)).astype(np.float32)
+    res2.gemm(mx.array(X))
+    assert res2.last_path == "fused"
+
+
+@pytest.mark.parametrize("pool", [[0], [30, 100], [191, 120], [255, 120]])
+def test_exceptional_exponents_route_to_fused(pool, monkeypatch):
+    """Blocks below 2^-96 or at 2^64 and above (and the infinite scale 255)
+    keep the fused kernels' split-accumulator law: such a matrix is never
+    sent through the float32 decode, and its multi-token output is the
+    fused-only output bit for bit."""
+    rng = np.random.default_rng(14)
+    R, C = 8, 512
+    buf = _random_w4(rng, R, C, exp_pool=np.array(pool))
+    res = _w4_or_skip(buf, (R, C))
+    assert not res.gemm_ok
+    X = rng.normal(size=(16, C)).astype(np.float32)
+    _gemm_off(monkeypatch)
+    y0 = np.asarray(res.gemm(mx.array(X)))
+    _gemm_on(monkeypatch)
+    y1 = np.asarray(res.gemm(mx.array(X)))
+    assert res.last_path == "fused"
+    assert np.array_equal(y0, y1, equal_nan=True)
+    bs = _random_s16(rng, R, C, exp_pool=np.array(pool))
+    assert not qmetal.S16Metal(bs, (R, C)).gemm_ok
+
+
+@pytest.mark.parametrize("T,R,C", [(16, 33, 768), (64, 70, 1024), (256, 17, 5120), (40, 6, 17408)])
+def test_gemm_path_matches_oracle_and_fused(T, R, C, monkeypatch):
+    """The decode-once GEMM output agrees with the float64 oracle within the
+    GEMM bound and with the fused output within both bounds; the fused
+    control is bit-identical to the path with the switch off."""
+    rng = np.random.default_rng(200 + T)
+    X = rng.normal(size=(T, C)).astype(np.float32)
+    X64 = X.astype(np.float64)
+    for codec, dec in (("w4", qcodec.dec_w4), ("s16", qcodec.dec_s16)):
+        buf = _random_w4(rng, R, C) if codec == "w4" else _random_s16(rng, R, C)
+        res = _w4_or_skip(buf, (R, C)) if codec == "w4" else qmetal.S16Metal(buf, (R, C))
+        W64 = dec(buf, (R, C)).astype(np.float64)
+        ref = X64 @ W64.T
+        absdot = np.abs(X64) @ np.abs(W64).T
+        _gemm_off(monkeypatch)
+        y_fused = np.asarray(res.gemm(mx.array(X)), dtype=np.float64)
+        assert res.last_path == "fused"
+        _gemm_on(monkeypatch)
+        y = np.asarray(res.gemm(mx.array(X)), dtype=np.float64)
+        assert res.last_path == "gemm"
+        assert y.shape == (T, R)
+        assert np.isfinite(y).all()
+        assert (np.abs(y - ref) <= RTOL_GEMM * np.abs(ref) + ATOL_COND_GEMM * absdot).all()
+        assert (np.abs(y - y_fused) <= RTOL_GEMM * np.abs(ref) + (ATOL_COND_GEMM + ATOL_COND) * absdot).all()
+        _gemm_off(monkeypatch)
+        assert np.array_equal(np.asarray(res.gemm(mx.array(X))), y_fused)
+
+
+def test_gemm_threshold_and_control(monkeypatch):
+    rng = np.random.default_rng(15)
+    R, C = 9, 512
+    buf = _random_w4(rng, R, C)
+    res = _w4_or_skip(buf, (R, C))
+    _gemm_on(monkeypatch, min_t=32)
+    res.gemm(mx.array(rng.normal(size=(31, C)).astype(np.float32)))
+    assert res.last_path == "fused"
+    res.gemm(mx.array(rng.normal(size=(32, C)).astype(np.float32)))
+    assert res.last_path == "gemm"
+    res.gemv(mx.array(rng.normal(size=C).astype(np.float32)))
+    assert res.last_path == "fused"
+    _gemm_off(monkeypatch)
+    res.gemm(mx.array(rng.normal(size=(256, C)).astype(np.float32)))
+    assert res.last_path == "fused"
+
+
+def test_gemm_slabs_and_squeeze(monkeypatch):
+    """Row slabs (bounded temporaries) give the same output as one slab,
+    the 1-d input still squeezes, and no decoded matrix stays on the
+    resident afterwards."""
+    rng = np.random.default_rng(16)
+    R, C = 37, 1024
+    buf = _random_w4(rng, R, C)
+    res = _w4_or_skip(buf, (R, C))
+    X = rng.normal(size=(8, C)).astype(np.float32)
+    _gemm_on(monkeypatch)
+    y_one = np.asarray(res.gemm(mx.array(X)), dtype=np.float64)
+    monkeypatch.setattr(qmetal, "GEMM_SLAB_BYTES", C * 4 * 8)        # eight-row slabs
+    y_slab = np.asarray(res.gemm(mx.array(X)), dtype=np.float64)
+    assert res.last_path == "gemm"
+    W64 = qcodec.dec_w4(buf, (R, C)).astype(np.float64)
+    ref = X.astype(np.float64) @ W64.T
+    absdot = np.abs(X.astype(np.float64)) @ np.abs(W64).T
+    for y in (y_one, y_slab):
+        assert (np.abs(y - ref) <= RTOL_GEMM * np.abs(ref) + ATOL_COND_GEMM * absdot).all()
+    y1 = res.gemm(mx.array(X[0]))
+    assert y1.shape == (R,)
+    assert not any(isinstance(v, mx.array) and v.dtype == mx.float32 for v in vars(res).values())

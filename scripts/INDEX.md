@@ -1599,6 +1599,12 @@ BASIN-1: routing basin radius v usage. CPU. Usage: SEED=1 python scratch/basin_p
 
 - `main()`
 
+### scratch/bench_prefill_gemm.py
+Fused tiles against the decode-once float32 GEMM path on the real arm C matrices: the measured crossover per distinct shape, the per-matrix decode and GEMM times, and the numerics of the new reduction order against the fused kernel and the float64 oracle. Both paths are the production resident (llmopt/lab/qmetal.py) with the switch set per call, so the timings are the times a tower would see.
+
+- `provenance() -> dict`
+- `main() -> None`
+
 ### scratch/bench_qmetal_ab.py
 A/B benchmark of the W4 kernel generations v3 (control) and v4 on the same Mac, the same arm C artifact and identical inputs, alternating the two versions to spread thermal and run-order effects across both arms.
 
@@ -6700,11 +6706,19 @@ Fused Metal decode-and-multiply for the frozen WHOLE-0T payloads (Apple silicon,
 
 - `require_mlx() -> None`
 - `_kernel(name: str, version: int)`
+- `_decode_kernel(name: str)`
 - `_check_shape(codec: str, shape, buf_len: int, version: int=None)`
-- `class _Resident` (gemv, gemm, payload_bytes)
+- `class _Resident` (decode_f32, gemv, gemm, payload_bytes)
 - `class W4Metal`
 - `class S16Metal`
 - `resident(buf: bytes, entry: dict)` — Build the resident form for a manifest entry of codec w4 or s16.
+
+### llmopt/lab/qprefill.py
+Chunked prefill for the fused-linear mlx-lm towers (adopted from scratch/qwen_metal_chunked.py and scratch/qwen_metal_prefill_head.py, OBSERVATIONS QWEN-METAL-CHUNKED-PREFILL-0 and QWEN-METAL-PREFILL-STUDY-0).
+
+- `cache_arrays(cache)` — Every array a cache list holds (for mx.eval and for comparison).
+- `split_body_head(model)`
+- `prefill_chunked(model, ids, cache, chunk: int=256, head: str='final', on_chunk=None)` — Prefill ids (a list of token ids, one unpadded prompt) into cache in
 
 ### llmopt/lab/qrope.py
 RoPE value oracle — exact expectations, no thresholds.

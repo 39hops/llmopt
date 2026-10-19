@@ -35,6 +35,11 @@ Modes (MODE env):
           tokens per second, KV offset after prefill and after
           DECODE_STEPS greedy steps. Writes
           logs/qmetal/prefill_head/mem_ctx<CTX>_chunk<CHUNK>_<HEAD>.json.
+  ab      CTX (1,024) real tokens in CHUNK chunks: the fused-only control
+          against the decode-once GEMM path (qmetal._Resident.prefill_gemm
+          switched per arm; decode steps always on the fused path), with
+          the full head (per-position argmax and margins) and the final
+          head: final logits, caches after prefill, 16 decode steps, walls.
   ctx4k   CTX (4,096) real tokens: full at chunks 128, 256, 512 and final
           at 256, one process, fresh cache each; per position the argmax
           and the top-1 minus top-2 margin (computed on device per chunk,
@@ -195,7 +200,9 @@ def main() -> None:
     import mlx_lm
     prov = {"commit": head_cmd, "tree_dirty_at_launch": dirty, "mlx_version": mx.__version__,
             "mlx_lm_version": mlx_lm.__version__, "device": mx.device_info().get("device_name"),
-            "kernel_version": qmetal.VERSION, "mode": mode, "smoke": os.environ.get("SMOKE") == "1"}
+            "kernel_version": qmetal.VERSION, "mode": mode, "smoke": os.environ.get("SMOKE") == "1",
+            "prefill_gemm": bool(qmetal._Resident.prefill_gemm), "gemm_min_t": int(qmetal._Resident.gemm_min_t),
+            "gemm_slab_bytes": int(qmetal.GEMM_SLAB_BYTES)}
     # SMOKE=1 writes every receipt under its own directory, never on a real path
     rdir = "logs/qmetal/prefill_head_smoke" if prov["smoke"] else "logs/qmetal/prefill_head"
     os.makedirs(rdir, exist_ok=True)
@@ -247,7 +254,7 @@ def main() -> None:
               f"kv offset {kv_prefill} then {row['kv_offset_after_decode']}", flush=True)
         return
 
-    ctx = int(os.environ.get("CTX", "1024" if mode == "time" else "4096"))
+    ctx = int(os.environ.get("CTX", "4096" if mode == "ctx4k" else "1024"))
     chunk = int(os.environ.get("CHUNK", "256"))
     out = os.environ.get("OUT", f"{rdir}/{mode}_{head_cmd}.json")
     if os.path.exists(out):
@@ -392,6 +399,67 @@ def main() -> None:
                        "and is not the memory measurement (the mem receipts are)"}
         json.dump(rec, open(out, "w"), indent=1)
         print(f"[ctx4k] wrote {out}", flush=True)
+        return
+    if mode == "ab":
+        # fused-only control against the decode-once GEMM path, same ids,
+        # same process, the path switched on the resident class between arms
+        arms = [("fused", False, "full"), ("gemm", True, "full"), ("fused", False, "final"), ("gemm", True, "final")]
+        runs = {}
+        for name, on, head in arms:
+            label = f"{name}_{head}"
+            qmetal._Resident.prefill_gemm = on
+            mx.clear_cache()
+            mx.reset_peak_memory()
+            cache = model.make_cache()
+            stats: dict = {}
+            t0 = time.perf_counter()
+            lg = prefill(model, ids, cache, chunk, head, stats=stats if head == "full" else None)
+            t = time.perf_counter() - t0
+            fin = np.asarray(lg[0, -1], dtype=np.float32)
+            del lg
+            peak = int(mx.get_peak_memory())
+            kv_prefill = int(cache[FA_LAYER].offset)
+            snap = snapshot_cache(cache)
+            qmetal._Resident.prefill_gemm = False          # decode steps on the qualified fused path in every arm
+            dec = decode_after(model, cache, nxt)
+            runs[label] = {"path": name, "head": head, "chunk": chunk, "prefill_s": t, "tok_per_s": ctx / t,
+                           "peak_in_process_bytes_after_prefill": peak, "final_logits": fin, "cache": snap,
+                           "argmax": (np.concatenate(stats["argmax"]) if "argmax" in stats else None),
+                           "margin": (np.concatenate(stats["margin"]) if "margin" in stats else None),
+                           "decode": dec, "kv_offset_after_prefill": kv_prefill,
+                           "kv_offset_after_decode": int(cache[FA_LAYER].offset)}
+            print(f"[ab] {label}: {t:.1f} s ({ctx/t:.2f} tok/s), peak {peak/1e9:.2f} GB, kv offset {kv_prefill} then "
+                  f"{runs[label]['kv_offset_after_decode']}", flush=True)
+            del cache
+        qmetal._Resident.prefill_gemm = qmetal.PREFILL_GEMM
+        pairs = []
+        for a_l, b_l in (("fused_full", "gemm_full"), ("fused_final", "gemm_final"), ("fused_full", "fused_final"), ("gemm_full", "gemm_final")):
+            a, b = runs[a_l], runs[b_l]
+            p = {"pair": [a_l, b_l], "final_logits": compare_logits(a["final_logits"], b["final_logits"]),
+                 "cache_after_prefill": compare_caches(a["cache"], b["cache"]),
+                 "decode_after": compare_logits(a["decode"], b["decode"])}
+            if a["argmax"] is not None and b["argmax"] is not None and len(a["argmax"]) == len(b["argmax"]):
+                p["all_positions"] = {"positions": int(len(a["argmax"])),
+                                      "argmax_identical": int((a["argmax"] == b["argmax"]).sum()),
+                                      "margin_abs_diff_max": float(np.abs(a["margin"] - b["margin"]).max()),
+                                      "margin_abs_diff_median": float(np.median(np.abs(a["margin"] - b["margin"]))),
+                                      "min_margin_at_mismatch": (float(np.minimum(a["margin"], b["margin"])[a["argmax"] != b["argmax"]].min())
+                                                                 if (a["argmax"] != b["argmax"]).any() else None)}
+            pairs.append(p)
+            print(f"[ab] {a_l} vs {b_l}: final logits max abs {p['final_logits']['max_abs']:.2e} rel {p['final_logits']['max_rel']:.1e} "
+                  f"margin {p['final_logits']['margin_abs_diff_max']:.1e}; state rel {p['cache_after_prefill']['state_max_rel']:.1e} "
+                  f"kv {max(p['cache_after_prefill']['kv_k_max_abs'], p['cache_after_prefill']['kv_v_max_abs']):.1e} offsets "
+                  f"{p['cache_after_prefill']['kv_offsets_equal']}; decode {p['decode_after']['argmax_identical']}/{dec_steps} max abs "
+                  f"{p['decode_after']['max_abs']:.2e}" + (f"; all positions argmax {p['all_positions']['argmax_identical']}/{p['all_positions']['positions']} "
+                  f"margin {p['all_positions']['margin_abs_diff_max']:.1e}" if "all_positions" in p else ""), flush=True)
+        rec = {"provenance": prov, "tower": tower, "context": ctx, "chunk": chunk, "decode_steps": dec_steps,
+               "runs": {k: {kk: vv for kk, vv in v.items() if kk not in ("final_logits", "cache", "argmax", "margin", "decode")}
+                        for k, v in runs.items()},
+               "pairs": pairs,
+               "note": "real E0 tokens; the gemm arms prefill through the decode-once path and decode through the fused path; "
+                       "cache comparison on host snapshots taken before the decode steps; in-process peaks share one allocator"}
+        json.dump(rec, open(out, "w"), indent=1)
+        print(f"[ab] wrote {out}", flush=True)
         return
     raise SystemExit(f"unknown MODE {mode}")
 
