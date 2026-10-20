@@ -81139,3 +81139,233 @@ disagreement receipt stay unchanged (its bare-Infinity boundary is
 left as booked; the exporter now writes strict JSON for future
 receipts). No recompression, fine-tuning, adapter, speculative verifier
 or large vendor restore.
+
+## VERDICT QWEN-HEAD-RESTORE-0: NULL. Replacing only arm C's S16 lm_head with the vendor's BF16 lm_head on the same frozen hidden states leaves E0 agreement where it was (3,915 to 3,913 of 4,722; 53 corrected, 55 broken; bar 1 NO-FIRE), moves the top-16 slope by 0.0085 of the registered 0.03 (bar 2 NO-FIRE), leaves the validation KL unchanged (+0.4 percent against a registered -10; bar 4 NO-FIRE), and fires bar 3 at a net of exactly five of 454 validation positions whose block-bootstrap interval includes zero (FIRE-AT-LOW-RESOLUTION, not VALIDATED); the registered refutation clause reads NOT-REFUTED because bar 3 fired, so its consequences are not booked; head-only replacement recovers no E0 agreement, and the session's judgement, outside the registration, is that it is not worth the +1.90 GB net it would cost (2026-10-19, mac, single arm, teacher-forced, one pass)
+
+Registration: PRE-REG QWEN-HEAD-RESTORE-0 (L80985; JSON
+docs/preregs/qwen-head-restore-0.json, digest ceeeb654, pinned in the
+driver and matched at score time). Run: scratch/qwen_head_restore.py
+through scratch/qwen_head_restore_study.sh under liverun
+qwen-head-restore-0 at eb2d9cb0 (armed 2026-10-20 02:11 UTC, disarmed
+02:48 UTC, rc 0; every JSON stage receipt code_commit eb2d9cb0, tree
+clean).
+Receipts: logs/qwen_head_restore/preflight.json,
+logs/qwen_head_restore/opener.json, logs/qwen_head_restore/corpus.json,
+logs/qwen_head_restore/fetch.json, logs/qwen_head_restore/score.json,
+logs/qwen_head_restore/observations.json,
+logs/qwen_head_restore/adjudication.txt,
+logs/qwen_head_restore/study.log,
+logs/qwen_head_restore/liverun_wrapper.log,
+logs/liverun/qwen-head-restore-0.jsonl (force-added in the booking
+commit); per-position
+arrays and the corpus and prefix hidden states machine-local under
+logs/qwen_head_restore/dump (shas in score.json and corpus.json).
+Mechanical adjudication (scripts/adjudicate.py): BAR 1 NO-FIRE, BAR 2
+NO-FIRE, BAR 3 FIRE, BAR 4 NO-FIRE, REFUTED-IF NOT-REFUTED.
+
+Instrument checks (preflight.json, corpus.json, fetch.json). The E0
+dump is the census dump (shas 01612fb6 hidden, 79162c5d logits, shapes
+[4722, 5120] float32 and [4722, 248077] float16), and it corresponds to
+the states fed to lm_head: the S16 head decoded to float32 reproduces
+the production argmax at 4,721 of 4,722 rows, the one exception the
+known fp16 tie (row 3113, gap 0.0), maximum absolute difference 0.0153
+against the fp16 dump; Metal decode slabs equal the CPU codec bit for
+bit on three row ranges; a float64 CPU oracle matches the device logits
+to 7.2e-5 at four sampled rows (eight per set in the score stage). Teacher record shas match the manifest (rollout, corpus,
+prefix). The corpus and prefix hidden states, through the qualified
+entry point (prefill_chunked, matmul="gemm", head="full", chunk 256,
+the 2 GiB serving limit; GEMM above the per-codec row threshold and
+fused below it, 1,378 GEMM and 1,830 fused matrix calls on these short
+sequences), reproduce the CPU score receipt's top-1 agreement exactly (295
+of 356 and 79 of 98; logs/qwenmodel1/score_C.json); token lists equal
+a fresh tokenization of the frozen eval payload; the corpus splits into
+the five registered paragraphs (71, 83, 63, 85, 54 positions). Fetch:
+one shard, model-00018-of-00018.safetensors, 3,392,197,344 bytes,
+sha256
+1d3479509e21494658f9b64d317f5ea8e55c4025d28c702d6c4d0b356ce8ea06
+(revision 1d4bf0f2) equal to the vendor's LFS metadata (pinned in the
+driver and re-read from the hub), header 1,752 bytes, 16 tensors
+(lm_head.weight BF16 [248320, 5120], data span 2,542,796,800 bytes, and
+15 mtp.* tensors, never instantiated), 145 s, stored outside the
+repository; no other shard. The arm C head payload read for the S16 arm is
+arm C's own artifact file of the same shard name (model-00018-of-00018
+.safetensors.bin under the artifact directory), not the vendor shard.
+The S16 head's relative Frobenius error against the vendor head is
+0.1076 (maximum row 0.245), agreeing with the compile-time decode
+fixture (0.1077) to 6e-5.
+
+Primary contrast, BF16 head against S16 head on identical hidden rows,
+float32, live vocabulary (score.json, bf16_f32 against s16_f32):
+
+  set        n     S16   BF16  corrected broken  net  points  bootstrap 95 (points)
+  E0         4,722 3,915 3,913   53       55     -2   -0.042  [-0.54, +0.40]
+  corpus       356   295   296    5        4     +1   +0.281  [-1.91, +2.26]
+  prefix        98    79    83    4        0     +4   +4.082  [+1.02, +7.87]
+  validation   454   374   379    9        4     +5   +1.101  [-0.78, +3.41]
+
+Bar 1 (E0 agreement delta at least +1.0 point, net 48): -0.042 points,
+NO-FIRE. The 24 per-prompt nets run from -7 (code-4) to +4 (long-2),
+sign test over prompts (8 up, 7 down, 9 tied) p = 1.0; 158 of 4,722 argmaxes change: 53 to the
+teacher token, 55 away from it, 50 between two non-teacher tokens (one
+of the 53, row 4234, is an exact fp16
+teacher tie where the recorded token and the stored argmax differ; E0
+agreement is scored against the recorded token, as registered). Bar 2 (median per-position slope on the
+teacher's top-16, BF16 minus S16, at least +0.03): 0.8747 to 0.8832,
++0.0085, NO-FIRE; the shift-aligned bias at the teacher's rank 1 moves
+from -2.91 to -2.62 nats, ranks 2 to 4 from -1.87, -1.52, -1.47 to
+-1.66, -1.33, -1.30: the head swap closes 6.8 percent of the
+median slope's gap to 1 and 10 to 13 percent of the rank-1 to rank-4
+shift-aligned bias (bias ranks are 1-based, the census convention; the
+teacher-rank counts below are 0-based). Bar 3 (validation agreement
+delta at least +1.0 point with neither subset net negative): +1.101
+points at a net of exactly five, corpus +1 and prefix +4, conjuncts
+hold, FIRE. The five net positions are four prefix corrections with no
+prefix break (prefixes 3, 4 and 5: the binary_search definition, the
+capitals sentence, the equation step; the 98-position prefix set
+carries four of the five) and one corpus net (+1, -3, 0, +1, +2 by
+paragraph; the Python paragraph loses three); the block sign test over
+the eleven units (6 up, 1 down, 4 tied) gives p = 0.125 and the 95
+percent block bootstrap of the pooled delta is [-0.78, +3.41] points,
+which includes zero (the prefix subset's own interval [+1.02, +7.87]
+is a subset reading, not the registered bar). Two of the five corpus
+corrections (rows 336 and 340) carry BF16 top-1 margins of 0.0022 and
+0.0040 nats; the BF16_H16 control reproduces all nine corrections and
+the same net of five. By the registered hand rule this is FIRE-AT-LOW-RESOLUTION and
+does not make VALIDATED. Bar 4 (validation mean KL down at least 10
+percent): 0.2718 to 0.2728, +0.36 percent, NO-FIRE (corpus +0.47
+percent, prefix -0.44 percent; 238 of 454 positions lower). On E0 the
+mean KL moves 0.3172 to 0.3114 (-1.8 percent, 2,783 of 4,722 lower) and
+the teacher-token cross-entropy 0.529 to 0.522 nats: a small
+calibration gain on the diagnostic set that the validation set does
+not show (E0 is the diagnostic set and none of its readings is
+evidence of recovery). The secondary next-real-token cross-entropy
+moves 1.3126 to 1.3122 nats on the corpus (355 terms) and 1.5116 to
+1.5079 on the prefixes (92 terms).
+
+Verdict class. VALIDATED needs bars 1 and 3 FIRE and a bar 3 bootstrap
+interval excluding zero: bar 1 is NO-FIRE, so VALIDATED fails on its
+first condition; the interval through zero is a second, independent
+failure. E0-ONLY needs bar 1 FIRE: no. CALIBRATION-ONLY needs bar 4
+FIRE: no. NULL. The registration did not name the cell bar 1 NO-FIRE
+with bar 3 FIRE; it falls to "NULL otherwise", and the mechanical
+refutation clause, registered as "bars 1 and 3 both NO-FIRE", reads
+NOT-REFUTED because bar 3 fired at the minimum net that clears it (a
+net of four would read 0.881 points, NO-FIRE). The registration's
+refuted consequences ("not worthwhile", the move to body-side error,
+no low-rank fitting on E0) are therefore not booked as registered
+consequences. The registered null held in its own words: improvement
+under 1 point on E0 (-0.04) and slope movement under 0.03 (+0.0085).
+What the result shows: head-only restoration does not recover teacher
+decisions at the registered resolution on either set, and it is not
+refuted. The registration's own resolution sentence applies: the paired
+net noise is about the square root of the discordant count, here
+sqrt(13) = 3.6, so the net of five is 1.4 sigma. The serving cost was
+not measured (the runtime stage was registered for VALIDATED only; the
+runner gates it on an explicit RUNTIME=1 and no code gate reads the
+verdict class, so a later run of that stage needs a registration of its
+own).
+Session judgement, outside the registration: the registered question
+(does head-only replacement improve teacher agreement) is answered not
+on E0 (net -2 of 4,722) and by a net of five of 454 validation
+positions at low resolution; a lever that leaves E0 and the validation
+KL unchanged, for a BF16 head of 2.54 GB against the 0.65 GB S16 head
+it would replace (+1.90 GB net, arithmetic, unmeasured), is not worth
+pursuing; attention moves upstream of the head as a session decision.
+
+Controls. BF16_H16 (hidden rounded to bfloat16 before the product)
+sits within one position of BF16 on every set (E0 3,914 against 3,913,
+corpus 296, prefix 83; slope within 0.0004 and KL within 0.0002):
+rounding the hidden rows to bfloat16 moves at most one position on any
+set. S16_PROD (the production fp16 Metal logits) against S16 float32:
+4,721 of 4,722 argmaxes equal, the one difference the fp16 tie at row
+3113; slope within 0.00005 and KL within 0.00004: the serving path adds
+nothing to the question. Teacher-rank
+counts on E0 (S16 then BF16): rank 0 3,915 / 3,913, rank 1 458 / 465,
+rank 2 138 / 143, ranks 3 to 15 198 / 191, 16 and beyond 13 / 10. By
+teacher-margin bin the two heads sit within five positions of each
+other in every bin except 0.5 to 1.0 nats, which loses 12 (the 1.0 to
+2.0 bin gains 5, the 2.0 to 5.0 bin 4).
+Families: degeneration 245 to 239, every other family within two.
+
+Registered prior against outcome: bar 1 was placed between 0 and +2
+points with P(FIRE) 0.4 (observed -0.04: below the registered range,
+no fire); bar 2 under 0.03 in magnitude with P 0.25 (0.0085, as
+registered); bar 3 within -1 and +1.5 with P
+0.3 (+1.10, fired at its threshold); bar 4 P 0.4 (+0.36 percent, no
+fire); the opener flips on fewer than half the prompts (one of 24
+flips); the controls within 0.2 and 0.1 points (within one position).
+The registered reading that the flattening is mostly upstream of the
+head is consistent with these descriptives; it was not a registered
+test and bar 3 does not confirm it.
+
+Opener (opener.json, Phase 1, compressed model alone; the teacher
+record exists for the teacher template only). Under the teacher's
+exact template (rebuilt prompt ids equal the recorded ids on all 24
+prompts; recompute equals E0 on 24 of 24) the draft opens with "The"
+on 21 prompts and "We" on 3 (reason-1, -2, -3), agreement with the
+teacher 3 of 24; z(We) minus z(The) averages -4.67 nats where the
+teacher's averages +6.82. Draft-only conditions, no teacher record and
+no agreement claimed: enable_thinking off (the answer's first token,
+not the think opener) spreads over "To" 7, "The" 7 and ten prompts over nine other tokens;
+reasoning effort low keeps "The" on 19; no system block (reasoning
+effort medium renders the same prompt as the raw template, recorded as
+a duplicate) gives "The" on 23 with the gap at -11.67; 64, 256 and
+1,024 tokens of neutral filler before the user message give "The" on
+24 of 24 at gaps -4.24, -5.20, -4.40. The template tokens before the
+opener are predicted correctly (24 of 24 for "<think>", 24 of 24 for
+its newline under the system prompt, 22 of 24 without). The head swap
+moves z(We) minus z(The) toward the teacher on all 24 step-0 rows, by
++0.32 nats on average (2.8 percent of the 11.49-nat mean gap to the
+teacher) and flips one prompt (math-1, which sat at -0.11); agreement
+3 to 4 of 24. Under every draft-only variant tested the compressed
+model still ranks "The" above "We" on 19 to 24 of 24 prompts, with the
+gap between -4.24 and -11.67 nats and largest without the system block,
+and the filler conditions turn the three "We" prompts to "The"; the
+three lengths and five template variants tested do not license a
+general invariance, and no teacher record exists for them. On the
+measured contrast the opener gap is overwhelmingly upstream of the
+head.
+
+Reading (session, descriptive). The S16 head is a 10.8 percent-error
+copy of the vendor head, and restoring it exactly changes 3.3 percent
+of E0 argmaxes in near-equal numbers toward and away from the teacher
+(53 and 55). By elimination, the E0 disagreement sits upstream of
+lm_head; this is a hypothesis, untested here, because no body
+component was restored. On the prefix set the vendor head corrects 4
+of 19 disagreements with no break (a subset reading). An 8-bit head
+and a low-rank head residual both approximate the vendor head that
+this run substituted exactly; that substitution recovered nothing on
+net on E0, so both are deprioritised; neither was tested.
+
+Fences. Single arm C, one teacher pass with fp16-stored logits, Mac
+(Metal body, float32 head products, float64 statistics), teacher-
+forced, no generation, no throughput; the validation set is one
+raw-text document plus six snippets without the chat template, and
+was the MODEL-1 selection surface for the compression arms; topical
+overlaps with E0 prompts were disclosed at registration (prefix 3, the
+binary_search definition, is one of the corrected prefixes; corpus
+paragraph 4 differentiates where E0 math-4 asks for a derivative); the
+bars are exact counts, the bootstrap and sign test are descriptive;
+the hidden states are the qualified entry point's (argmax-identical to
+the CPU E0 rows at 4,722 of 4,722 in the census; equal to the CPU
+score receipt's agreement counts on the corpus and prefixes, with no
+per-position check there). The vendor shard stays outside the
+repository; nothing else was retrieved. Frozen arm C, the E0 rows, the
+Metal and prefill receipts and the booked disagreement receipt are
+unchanged; the disagreement census script's exporter change is
+disclosed in the registration.
+
+Next (Artin's call, a session decision). If the elimination reading
+holds, the error sits upstream of the head. The bounded probe that
+follows is layer-group restoration: one vendor shard at a time (shard
+18 was 3.39 GB; the other sizes are in the vendor index, not
+receipted), each deleted after its receipt, the tensors it holds
+swapped to BF16 in the Metal model (shards need not align with whole
+layers; the group is whatever the shard holds), E0 and validation
+agreement re-measured in the same registration shape (paired counts,
+block units, the same controls); falsifiers: no group moves E0
+agreement by one point, and no group moves the validation set by one
+point with a bootstrap interval excluding zero, which would argue
+against single-shard restoration and leave cross-shard combinations
+open. Not next: whole-model recompression, fine-tuning, adapters, a
+speculative verifier, the full teacher restore.

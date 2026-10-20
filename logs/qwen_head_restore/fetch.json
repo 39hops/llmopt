@@ -1,0 +1,72 @@
+{
+ "mode": "fetch",
+ "code_commit": "eb2d9cb0",
+ "tree_dirty": false,
+ "smoke": false,
+ "numpy_version": "2.5.1",
+ "python": "3.12.4",
+ "v_live": 248077,
+ "artifact_dir_basename": "C",
+ "artifact_chain": "logs/qwenwhole/artifact_digest_C.txt",
+ "census_receipt": "logs/qmetal/prefill_serve/census_d42cb215.json",
+ "teacher_dir": "logs/qwenteacher_v2",
+ "mlx_version": "0.31.2",
+ "device": "Device(gpu, 0)",
+ "vendor_metadata": {
+  "size": 3392197344,
+  "lfs_sha256": "1d3479509e21494658f9b64d317f5ea8e55c4025d28c702d6c4d0b356ce8ea06",
+  "lfs_size": 3392197344
+ },
+ "repo": "Qwen/Qwen3.8-27B",
+ "revision": "1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0",
+ "shard": "model-00018-of-00018.safetensors",
+ "dest_role": "VENDOR_SHARD_DIR (outside the repository)",
+ "download": {
+  "skipped": false,
+  "wall_s": 145.44510626792908
+ },
+ "size_bytes": 3392197344,
+ "sha256": "1d3479509e21494658f9b64d317f5ea8e55c4025d28c702d6c4d0b356ce8ea06",
+ "header_bytes": 1752,
+ "tensor_names": [
+  "lm_head.weight",
+  "mtp.fc.weight",
+  "mtp.layers.0.input_layernorm.weight",
+  "mtp.layers.0.mlp.down_proj.weight",
+  "mtp.layers.0.mlp.gate_proj.weight",
+  "mtp.layers.0.mlp.up_proj.weight",
+  "mtp.layers.0.post_attention_layernorm.weight",
+  "mtp.layers.0.self_attn.k_norm.weight",
+  "mtp.layers.0.self_attn.k_proj.weight",
+  "mtp.layers.0.self_attn.o_proj.weight",
+  "mtp.layers.0.self_attn.q_norm.weight",
+  "mtp.layers.0.self_attn.q_proj.weight",
+  "mtp.layers.0.self_attn.v_proj.weight",
+  "mtp.norm.weight",
+  "mtp.pre_fc_norm_embedding.weight",
+  "mtp.pre_fc_norm_hidden.weight"
+ ],
+ "lm_head_entry": {
+  "dtype": "BF16",
+  "shape": [
+   248320,
+   5120
+  ],
+  "data_offsets": [
+   0,
+   2542796800
+  ]
+ },
+ "checks": {
+  "size_ok": true,
+  "sha256_ok": true,
+  "head_dtype_bf16": true,
+  "head_shape_ok": true,
+  "head_bytes_ok": true,
+  "only_head_and_mtp": true,
+  "data_end_ok": true
+ },
+ "ok": true,
+ "whole_file_sha_verified": true,
+ "wall_s": 146.77087211608887
+}

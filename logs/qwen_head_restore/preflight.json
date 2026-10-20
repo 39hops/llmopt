@@ -1,0 +1,117 @@
+{
+ "mode": "preflight",
+ "code_commit": "eb2d9cb0",
+ "tree_dirty": false,
+ "smoke": false,
+ "numpy_version": "2.5.1",
+ "python": "3.12.4",
+ "v_live": 248077,
+ "artifact_dir_basename": "C",
+ "artifact_chain": "logs/qwenwhole/artifact_digest_C.txt",
+ "census_receipt": "logs/qmetal/prefill_serve/census_d42cb215.json",
+ "teacher_dir": "logs/qwenteacher_v2",
+ "mlx_version": "0.31.2",
+ "device": "Device(gpu, 0)",
+ "artifact_qualification": {
+  "rung0": {
+   "checked": 19,
+   "unchained": false
+  },
+  "conservation": {
+   "keys": 1199
+  }
+ },
+ "head_entry": {
+  "codec": "s16",
+  "len": 645632032,
+  "levels": 16,
+  "off": 0,
+  "shape": [
+   248320,
+   5120
+  ],
+  "shard": "model-00018-of-00018.safetensors"
+ },
+ "decode_parity": [
+  {
+   "rows": [
+    0,
+    2048
+   ],
+   "bit_equal": true,
+   "max_abs_diff": 0.0
+  },
+  {
+   "rows": [
+    123904,
+    124928
+   ],
+   "bit_equal": true,
+   "max_abs_diff": 0.0
+  },
+  {
+   "rows": [
+    246272,
+    248320
+   ],
+   "bit_equal": true,
+   "max_abs_diff": 0.0
+  }
+ ],
+ "correspondence": {
+  "positions": 4722,
+  "argmax_equal_production": 4721,
+  "mismatches": [
+   {
+    "row": 3113,
+    "prod_argmax": 13,
+    "recompute_argmax": 61446,
+    "fp16_top2_gap": 0.0,
+    "recompute_gap": -0.0057125091552734375
+   }
+  ],
+  "mismatches_beyond_near_tie": 0,
+  "near_tie_gap": 0.05,
+  "max_abs_diff_f32_recompute_vs_fp16_dump": 0.01529693603515625
+ },
+ "cpu_oracle": {
+  "rows": [
+   0,
+   1573,
+   3147,
+   4721
+  ],
+  "max_abs_diff": 7.2479248046875e-05,
+  "argmax_equal": 4
+ },
+ "storage": {
+  "free_bytes": 52759281664,
+  "shard_bytes": 3392197344,
+  "head_bytes": 2542796800,
+  "dest_role": "VENDOR_SHARD_DIR (outside the repository)",
+  "shard_already_present": false
+ },
+ "checks": {
+  "hidden_shape_ok": true,
+  "logits_shape_ok": true,
+  "hidden_sha_ok": true,
+  "logits_sha_ok": true,
+  "census_argmax_equal_e0": true,
+  "e0_rows_sha_ok": true,
+  "e0_rows_count_ok": true,
+  "e0_row_order_ok": true,
+  "teacher_rollout_sha_ok": true,
+  "teacher_corpus_sha_ok": true,
+  "teacher_prefix_sha_ok": true,
+  "decode_parity_bit_equal": true,
+  "correspondence_ok": true,
+  "cpu_oracle_argmax_ok": true,
+  "dest_outside_repo": true,
+  "dest_not_vendor_dir": true,
+  "no_shard_in_vendor_dir": true,
+  "free_bytes_ok": true
+ },
+ "ok": true,
+ "wall_s": 20.69093894958496,
+ "rss_peak_bytes": 7433289728
+}

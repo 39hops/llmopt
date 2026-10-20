@@ -1,0 +1,2 @@
+{"event": "armed", "run_id": "qwen-head-restore-0", "pid": 67430, "launch_commit": "eb2d9cb0a69c89a1221f3f539163411011f256af", "launch_commit_short": "eb2d9cb0", "worktree_role": "main", "worktree_name": "llmopt", "cwd_relative": ".", "started_utc": "2026-10-20T02:11:40+00:00", "dirty_at_arm": false, "sentinel": ".git/liverun.lock"}
+{"event": "disarmed", "run_id": "qwen-head-restore-0", "pid": 67430, "rc": 0, "ended_utc": "2026-10-20T02:48:35+00:00", "sentinel": ".git/liverun.lock"}

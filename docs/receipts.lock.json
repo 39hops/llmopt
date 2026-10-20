@@ -1705,6 +1705,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/liverun/qwen-head-restore-0.jsonl": {
+   "bytes": 488,
+   "exists": true,
+   "sha256": "d74fe8b712e90d4c54170b8af31db4111a78ae0234246ed6fbf3919152e0b483",
+   "source": "results",
+   "tracked": true
+  },
   "logs/liverun/rdc1.jsonl": {
    "bytes": 456,
    "exists": true,
@@ -4505,32 +4512,67 @@
    "tracked": true
   },
   "logs/qwen_head_restore/adjudication.txt": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 149,
+   "exists": true,
+   "sha256": "ae1cf2d59d98816dd854b154c546f2fc2433ca40c36c1545417f2bb69cb382ef",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_head_restore/corpus.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 2358,
+   "exists": true,
+   "sha256": "fbffe1789189e5e1f6c8ffb332519d1be5f432936e18a34171521e8625b4e89f",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_head_restore/fetch.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 1954,
+   "exists": true,
+   "sha256": "3e739c0b3b14594fee5e59d1dde7a437c475b5a4de1fcd9575b6afa7bdfbd42f",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwen_head_restore/liverun_wrapper.log": {
+   "bytes": 154,
+   "exists": true,
+   "sha256": "56a42bec1c9c9147da4b6ed3dbf2e720074d0732c3f3928cdec747f6857d444d",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_head_restore/observations.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 4437,
+   "exists": true,
+   "sha256": "f716ae8f90ba8a49fae11f791e730846921e7d9cd7ba332d84807f5257ec25d6",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_head_restore/opener.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 198812,
+   "exists": true,
+   "sha256": "f71bd63eac1052affebb26c128e4991639f2c6b03946864e7f4f59afac7c9759",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_head_restore/preflight.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 2345,
+   "exists": true,
+   "sha256": "2eff379da47d9616bcb275a877cf02626f39919e66898ca9fe47e7d34e2a154d",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_head_restore/score.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 51508,
+   "exists": true,
+   "sha256": "f1a562d7ede8d6c8a3677e57ffbffe5c5f8c8e63ae1cf917d6bf6ba6d91f966c",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwen_head_restore/study.log": {
+   "bytes": 3982,
+   "exists": true,
+   "sha256": "83526cdb2c55e6e967249ec40d7ad5e2a76029ebf09ddb72617fecc6342c46a7",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_metal_qual/C_gemm/summary.json": {
    "bytes": 14396,

@@ -1,0 +1,104 @@
+{
+ "mode": "corpus",
+ "code_commit": "eb2d9cb0",
+ "tree_dirty": false,
+ "smoke": false,
+ "numpy_version": "2.5.1",
+ "python": "3.12.4",
+ "v_live": 248077,
+ "artifact_dir_basename": "C",
+ "artifact_chain": "logs/qwenwhole/artifact_digest_C.txt",
+ "census_receipt": "logs/qmetal/prefill_serve/census_d42cb215.json",
+ "teacher_dir": "logs/qwenteacher_v2",
+ "mlx_version": "0.31.2",
+ "device": "Device(gpu, 0)",
+ "serving_applied": {
+  "chunk": 256,
+  "matmul": "gemm",
+  "cache_limit_bytes": 2147483648
+ },
+ "load_wall_s": 7.048499822616577,
+ "provenance": {
+  "corpus_txt_sha_ok": true,
+  "prefixes_jsonl_sha_ok": true,
+  "corpus_retokenize_equal": true,
+  "prefix_retokenize_equal": true,
+  "prefix_bounds_ok": true,
+  "corpus_len_ok": true,
+  "teacher_corpus_sha_ok": true,
+  "teacher_prefix_sha_ok": true,
+  "cpu_score_receipt": {
+   "path": "logs/qwenmodel1/score_C.json",
+   "code_commit": "232737a",
+   "device_actual": "cpu",
+   "expected_agree_corpus": 295,
+   "expected_agree_prefix": 79
+  },
+  "metal_agree_corpus": 295,
+  "metal_agree_prefix": 79,
+  "agree_within_tolerance": true
+ },
+ "n_corpus": 356,
+ "n_prefix": 98,
+ "prefix_bounds": [
+  14,
+  9,
+  29,
+  13,
+  17,
+  16
+ ],
+ "corpus_blocks": {
+  "paragraph_break_token": 271,
+  "n_blocks": 5,
+  "block_sizes": [
+   71,
+   83,
+   63,
+   85,
+   54
+  ]
+ },
+ "prefix_blocks": {
+  "n_blocks": 6,
+  "block_sizes": [
+   14,
+   9,
+   29,
+   13,
+   17,
+   16
+  ]
+ },
+ "walls_s": {
+  "corpus": 10.483464241027832,
+  "prefixes": [
+   1.91656494140625,
+   1.0776560306549072,
+   2.3972890377044678,
+   1.8924243450164795,
+   1.917738914489746,
+   1.8148961067199707
+  ]
+ },
+ "matrix_calls": {
+  "fused": 1830,
+  "gemm": 1378
+ },
+ "dump_dir": "logs/qwen_head_restore/dump",
+ "dumps": {
+  "corpus_hidden_fp32.npy": "3be43ddddffd954da611bbe186e16d5dc1bd54bf9633c48dc606a4add31dcd42",
+  "prefix_hidden_fp32.npy": "876817211e1cf2f1eba015ece980567864fefc7830a5b97db7fc34a1b1d74af9",
+  "corpus_native_logits_fp16.npy": "69edc710bced24114c5675295a423b2a8e4e6975db04dd0cd45af0fa362ab8b0",
+  "prefix_native_logits_fp16.npy": "e45efe0fa4c94416df8da5910c5687a831df7393f0f59a80103a62506dd95a4c"
+ },
+ "memory_after": {
+  "active_bytes": 8830091820,
+  "peak_bytes": 14323221036,
+  "cache_bytes": 2163112246,
+  "footprint_bytes": 10993204066,
+  "rss_peak_bytes": 11791990784
+ },
+ "wall_s": 21.921998977661133,
+ "ok": true
+}

@@ -1,0 +1,89 @@
+{
+ "note": "Mechanical projection of logs/qwen_head_restore/score.json (driver scratch/qwen_head_restore.py at eb2d9cb0); primary contrast bf16_f32 against s16_f32 on identical hidden rows, float32 arithmetic, live vocabulary",
+ "registration_sha256": "ceeeb65490e0279abd77e646df1b2c6409881c5b450ebd781a92870b8b00b5ff",
+ "measurement_valid": true,
+ "arms": {
+  "S16": {
+   "admissible": true,
+   "reason": "decode parity (preflight) and float64 CPU oracle {'e0': {'rows': [0, 674, 1348, 2023, 2697, 3372, 4046, 4721], 'max_abs_diff': 7.2479248046875e-05, 'argmax_equal': 8, 'recorded_argmax_equal': 8}, 'corpus': {'rows': [0, 50, 101, 152, 202, 253, 304, 355], 'max_abs_diff': 5.626678466796875e-05, 'argmax_equal': 8, 'recorded_argmax_equal': 8}, 'prefix': {'rows': [0, 13, 27, 41, 55, 69, 83, 97], 'max_abs_diff': 6.4849853515625e-05, 'argmax_equal': 8, 'recorded_argmax_equal': 8}}"
+  },
+  "BF16": {
+   "admissible": true,
+   "reason": "vendor shard sha verified at fetch; header BF16 [248320, 5120]; CPU oracle {'e0': {'rows': [0, 674, 1348, 2023, 2697, 3372, 4046, 4721], 'max_abs_diff': 3.62396240234375e-05, 'argmax_equal': 8}, 'corpus': {'rows': [0, 50, 101, 152, 202, 253, 304, 355], 'max_abs_diff': 4.9591064453125e-05, 'argmax_equal': 8}, 'prefix': {'rows': [0, 13, 27, 41, 55, 69, 83, 97], 'max_abs_diff': 5.435943603515625e-05, 'argmax_equal': 8}}"
+  },
+  "BF16_H16": {
+   "admissible": true,
+   "reason": "vendor shard sha verified at fetch; header BF16 [248320, 5120]; CPU oracle {'e0': {'rows': [0, 674, 1348, 2023, 2697, 3372, 4046, 4721], 'max_abs_diff': 3.62396240234375e-05, 'argmax_equal': 8}, 'corpus': {'rows': [0, 50, 101, 152, 202, 253, 304, 355], 'max_abs_diff': 4.9591064453125e-05, 'argmax_equal': 8}, 'prefix': {'rows': [0, 13, 27, 41, 55, 69, 83, 97], 'max_abs_diff': 5.435943603515625e-05, 'argmax_equal': 8}}; hidden rounded to bf16 before the float32 product"
+  },
+  "S16_PROD": {
+   "admissible": true,
+   "reason": "the census receipt's fp16 production logits of the same positions"
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": -0.042354934349851756,
+   "metric": "delta_agree_points_e0",
+   "population": "positions:e0-4722",
+   "aggregation": "paired_difference_points",
+   "provenance": "E0 paired counts {'n': 4722, 'a_right': 3915, 'b_right': 3913, 'corrected': 53, 'broken': 55, 'both_right': 3860, 'both_wrong': 754, 'net': -2, 'delta_points': -0.042354934349851756}"
+  },
+  "2": {
+   "value": 0.008513186315683097,
+   "metric": "delta_median_slope_e0",
+   "population": "positions:e0-4722",
+   "aggregation": "paired_difference_of_medians",
+   "provenance": "slope medians {'s16_f32': 0.8747298334339129, 'bf16_f32': 0.883243019749596, 'delta': 0.008513186315683097}"
+  },
+  "3": {
+   "value": 1.1013215859030836,
+   "metric": "delta_agree_points_validation",
+   "population": "positions:corpus-356+prefix-98",
+   "aggregation": "paired_difference_points",
+   "provenance": "validation paired counts {'n': 454, 'a_right': 374, 'b_right': 379, 'corrected': 9, 'broken': 4, 'both_right': 370, 'both_wrong': 71, 'net': 5, 'delta_points': 1.1013215859030836}"
+  },
+  "3:corpus": {
+   "value": 1,
+   "metric": "delta_agree_net_corpus",
+   "population": "positions:corpus-356",
+   "aggregation": "paired_net_count"
+  },
+  "3:prefix": {
+   "value": 4,
+   "metric": "delta_agree_net_prefix",
+   "population": "positions:prefix-98",
+   "aggregation": "paired_net_count"
+  },
+  "4": {
+   "value": 0.003558511527656627,
+   "metric": "rel_delta_mean_kl_validation",
+   "population": "positions:corpus-356+prefix-98",
+   "aggregation": "ratio_of_means_minus_one",
+   "provenance": "validation KL means {'s16_f32': 0.27180299469499725, 'bf16_f32': 0.272770208784871, 'rel_delta': 0.003558511527656627}"
+  },
+  "max_bar13_ratio": {
+   "value": 1.1013215859030836,
+   "metric": "max_bar13_ratio",
+   "population": "bars:1,3",
+   "aggregation": "max_of_ratios"
+  }
+ },
+ "contrasts": {
+  "1": {
+   "admissible": true,
+   "reason": "same hidden rows (sha-pinned), same vocabulary slice, same float32 arithmetic"
+  },
+  "2": {
+   "admissible": true,
+   "reason": "same hidden rows (sha-pinned), same vocabulary slice, same float32 arithmetic"
+  },
+  "3": {
+   "admissible": true,
+   "reason": "same hidden rows (sha-pinned), same vocabulary slice, same float32 arithmetic"
+  },
+  "4": {
+   "admissible": true,
+   "reason": "same hidden rows (sha-pinned), same vocabulary slice, same float32 arithmetic"
+  }
+ }
+}

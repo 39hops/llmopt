@@ -1,0 +1,2 @@
+[liverun] armed qwen-head-restore-0 pid 67430 commit eb2d9cb0 worktree main:llmopt sentinel .git/liverun.lock
+[liverun] disarmed qwen-head-restore-0 rc 0

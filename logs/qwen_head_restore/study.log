@@ -1,0 +1,39 @@
+== preflight 02:11:40 eb2d9cb0
+[hr] preflight ok=True checks={'hidden_shape_ok': True, 'logits_shape_ok': True, 'hidden_sha_ok': True, 'logits_sha_ok': True, 'census_argmax_equal_e0': True, 'e0_rows_sha_ok': True, 'e0_rows_count_ok': True, 'e0_row_order_ok': True, 'teacher_rollout_sha_ok': True, 'teacher_corpus_sha_ok': True, 'teacher_prefix_sha_ok': True, 'decode_parity_bit_equal': True, 'correspondence_ok': True, 'cpu_oracle_argmax_ok': True, 'dest_outside_repo': True, 'dest_not_vendor_dir': True, 'no_shard_in_vendor_dir': True, 'free_bytes_ok': True} correspondence 4721/4722 (beyond near-tie 0), max abs f32-vs-fp16 0.0153, cpu oracle max abs 7.25e-05; wrote logs/qwen_head_restore/preflight.json
+== opener 02:12:01 eb2d9cb0
+[hr] opener teacher_template: {'The': 21, 'We': 3} mean z(We)-z(The) -4.67, teacher agree 3/24
+[hr] opener no_think: {'To': 7, 'The': 7, 'A': 2, 'Subject': 1, '```': 1, '###': 1, 'Based': 1, 'No': 1, 'Here': 1, 'sea': 1, 'Red': 1} mean z(We)-z(The) -5.63 (draft only)
+[hr] opener effort_low: {'The': 19, 'I': 1, 'Let': 2, 'Classic': 1, '</think>': 1} mean z(We)-z(The) -8.23 (draft only)
+[hr] opener effort_medium_no_system: {'The': 23, 'Let': 1} mean z(We)-z(The) -11.67 (draft only)
+[hr] opener raw_no_system_think: {'The': 23, 'Let': 1} mean z(We)-z(The) -11.67 (draft only)
+[hr] opener filler_64: {'The': 24} mean z(We)-z(The) -4.24 (draft only)
+[hr] opener filler_256: {'The': 24} mean z(We)-z(The) -5.20 (draft only)
+[hr] opener filler_1024: {'The': 24} mean z(We)-z(The) -4.40 (draft only)
+[hr] opener wrote logs/qwen_head_restore/opener.json
+== corpus 02:36:04 eb2d9cb0
+[hr] corpus: hidden (356, 5120) + prefixes (98, 5120); Metal top-1 agreement corpus 295/356 (cpu receipt 295), prefix 79/98 (cpu receipt 79); provenance {'corpus_txt_sha_ok': True, 'prefixes_jsonl_sha_ok': True, 'corpus_retokenize_equal': True, 'prefix_retokenize_equal': True, 'prefix_bounds_ok': True, 'corpus_len_ok': True, 'teacher_corpus_sha_ok': True, 'teacher_prefix_sha_ok': True, 'cpu_score_receipt': {'path': 'logs/qwenmodel1/score_C.json', 'code_commit': '232737a', 'device_actual': 'cpu', 'expected_agree_corpus': 295, 'expected_agree_prefix': 79}, 'metal_agree_corpus': 295, 'metal_agree_prefix': 79, 'agree_within_tolerance': True}; wrote logs/qwen_head_restore/corpus.json
+== fetch 02:36:36 eb2d9cb0
+[hr] fetch: 3392197344 bytes sha 1d3479509e21 ok=True checks={'size_ok': True, 'sha256_ok': True, 'head_dtype_bf16': True, 'head_shape_ok': True, 'head_bytes_ok': True, 'only_head_and_mtp': True, 'data_end_ok': True}; wrote logs/qwen_head_restore/fetch.json
+== score 02:39:03 eb2d9cb0
+[hr] arm s16_f32
+[hr]   e0: agree 3915/4722, mean KL 0.3172
+[hr]   corpus: agree 295/356, mean KL 0.3035
+[hr]   prefix: agree 79/98, mean KL 0.1565
+[hr] arm s16_prod (E0 production fp16 logits)
+[hr]   e0: agree 3914/4722, mean KL 0.3171
+[hr] arm bf16_f32
+[hr]   e0: agree 3913/4722, mean KL 0.3114
+[hr]   corpus: agree 296/356, mean KL 0.3050
+[hr]   prefix: agree 83/98, mean KL 0.1558
+[hr] arm bf16_h16
+[hr]   e0: agree 3914/4722, mean KL 0.3114
+[hr]   corpus: agree 296/356, mean KL 0.3050
+[hr]   prefix: agree 83/98, mean KL 0.1559
+[hr] score: E0 {'n': 4722, 'a_right': 3915, 'b_right': 3913, 'corrected': 53, 'broken': 55, 'both_right': 3860, 'both_wrong': 754, 'net': -2, 'delta_points': -0.042354934349851756} slope {'s16_f32': 0.8747298334339129, 'bf16_f32': 0.883243019749596, 'delta': 0.008513186315683097}; validation {'n': 454, 'a_right': 374, 'b_right': 379, 'corrected': 9, 'broken': 4, 'both_right': 370, 'both_wrong': 71, 'net': 5, 'delta_points': 1.1013215859030836} KL {'s16_f32': 0.27180299469499725, 'bf16_f32': 0.272770208784871, 'rel_delta': 0.003558511527656627}; wrote logs/qwen_head_restore/score.json and logs/qwen_head_restore/observations.json
+== adjudicate 02:48:35 eb2d9cb0
+BAR 1 E0-AGREEMENT-DIAGNOSTIC: NO-FIRE
+BAR 2 E0-SLOPE: NO-FIRE
+BAR 3 VALIDATION-AGREEMENT: FIRE
+BAR 4 VALIDATION-KL: NO-FIRE
+REFUTED-IF: NOT-REFUTED
+== done 02:48:35
