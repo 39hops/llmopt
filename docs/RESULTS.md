@@ -81369,3 +81369,216 @@ point with a bootstrap interval excluding zero, which would argue
 against single-shard restoration and leave cross-shard combinations
 open. Not next: whole-model recompression, fine-tuning, adapters, a
 speculative verifier, the full teacher restore.
+
+## PRE-REG QWEN-LAYER-RESTORE-0: does restoring one contiguous pair of arm C's compressed decoder layers (22, gated DeltaNet; 23, full attention; the pair complete in vendor shard 7) to the vendor's BF16 weights, inside an otherwise compressed tower, improve teacher agreement? One-layer oracle against the vendor PyTorch implementation first; E0 diagnostic, corpus and prefix records as the validation set; a sensitivity instrument at nine residual-stream boundaries; registered before the shard is retrieved (2026-10-20, mac)
+
+Registers the bounded layer-restoration feasibility pilot Artin's GO
+of 2026-10-20 asked for after VERDICT QWEN-HEAD-RESTORE-0 (L81143,
+NULL: the head is not where the disagreement lives, so by elimination
+the error sits upstream, a hypothesis this pilot is the first test
+of). Plan: docs/superpowers/specs/2026-10-20-layer-restore-pilot.md
+(target, storage, memory, runtime, validation). Mechanical projection:
+docs/preregs/qwen-layer-restore-0.json (registration digest ca108cd6,
+pinned in the driver, which refuses a summary against any other).
+Driver: scratch/qwen_layer_restore.py (stages preflight, capture,
+oracle_mlx, fetch, score, summarize, sensitivity), the torch half of
+the oracle scratch/qwen_layer_restore_torch.py (runs in the teacher
+environment, transformers 5.15.0), runner
+scratch/qwen_layer_restore_study.sh, lab helpers
+llmopt/lab/layer_restore.py (index coverage, the mlx-lm load
+conventions, boundary statistics; tests/test_layer_restore.py). Smoke
+(SMOKE=1: one rollout of 8 steps, 32 corpus tokens, one prefix, the
+restored weights stood in by the decoded arm C tensors and labelled
+so, no download) exercised every stage including both oracle halves,
+all five arms, summarize, adjudicate and sensitivity before this
+registration; the adjudicator read the stand-in as inadmissible (every
+bar UNRESOLVED, refutation unadjudicated). Its numbers are instrument
+checks, not evidence. An Opus code review of the driver, the lab
+module, the runner and this registration preceded it.
+
+Target, chosen on architecture and cost, never on an E0 outcome. The
+vendor index (revision 1d4bf0f2) splits the 64-layer text stack over
+17 shards with eight layers straddling a boundary (4, 21, 29, 37, 45,
+53, 61 DeltaNet; 15 full attention); the cheapest tier of shards (2,108,759,344 bytes;
+shards 7, 9, 11, 13, 15, 17) each hold one DeltaNet and one
+full-attention layer complete plus part of a straddling layer. Shard 7
+(layers 22 and 23 complete, part of 21) is the mid-stack member of
+that tier: both layer families in one contiguous group, every tensor
+inside the shard (14 for the DeltaNet layer, 11 for the attention
+layer; 766.5 and 744.5 MB BF16; arm C holds 128.6 and 122.2 MB), 22
+layers upstream so the pair runs on inputs the compressed body
+produced, 40 downstream for the propagation instrument. The partial
+layer 21 is not restored. Alternatives by position (shard 17: 62 and
+63; shard 2: 5, 6, 7) are not selected; a second candidate is justified
+only by this verdict and is Artin's call.
+
+Sets. E0: the 24 teacher-greedy rollouts (prompt plus generated
+tokens, 6,359 tokens, 4,722 scored positions in the frozen row order of
+logs/qwen_e0/C/positions.jsonl, teacher logits
+logs/qwenteacher_v2/rollout_logits.npy indexed [step, prompt]) re-run
+through the tower exactly as the Metal census did (prefill_chunked,
+chunk 256, GEMM path, head full, fresh cache per rollout). E0 is the
+DIAGNOSTIC set: the disagreement was characterised on it and it is
+never reported as independent evidence of recovery. Validation: the
+teacher's corpus record (356 positions) and prefix record (98), the
+same frozen sets, independence limitations and block units as the head
+registration (five paragraphs, six snippets; the MODEL-1 selection
+surface, independent of E0 and of this substitution, not of arm C's
+selection), each sequence prefilled from a fresh cache. Block units: E0
+by prompt (24), corpus by paragraph (5), prefixes by prefix (6).
+
+Arms (same contexts, same tokenizer ids, float32 activations
+throughout, live vocabulary 248,077). CONTROL: arm C as served, every
+W4 and S16 matrix through the fused residents. GROUP: layers 22 and 23
+replaced by the vendor BF16 tensors widened exactly to float32 and
+installed as dense float32 modules with the mlx-lm load conventions
+(conv1d to [D, K, 1], the five zero-centred norm families plus one);
+every other layer, the embedding and the head stay compressed; the
+registered contrast is GROUP against CONTROL. L22 and L23: one layer
+restored, the other compressed; diagnostic, reported, never
+adjudicated. DENSE_C: the same machinery holding the decoded arm C
+tensors, no weight change; a precondition, not an arm of the
+hypothesis. Nothing is trained, calibrated, biased or selected; the
+cache is rebuilt from the first token of every sequence, never patched
+behind an advanced state.
+
+One-layer oracle (a precondition, before any restored-layer score).
+The capture stage records the compressed tower's residual stream
+entering layer 22, leaving 22 and leaving 23 on the validation contexts
+(float32, dumped). The mlx side builds standalone dense float32 layers
+from the tower's class (mlx-lm qwen3_5.DecoderLayer with the exact
+l2norm override the tower applies) and runs the captured inputs one
+shot and in chunks of 256 with the cache carried. The torch side
+builds the vendor Qwen3_5DecoderLayer (eager attention, additive causal
+mask, text position ids on all three rotary axes, no cache object: the
+chunked gated delta rule from a zero state, the depthwise convolution
+with zero history) from the SAME values in the vendor layout, never the
+mlx load conventions. Semantics checked by construction: zero-centred
+RMSNorm, l2norm with eps inside the root, conv1d layout and initial
+state, gated-norm order, the per-head query and gate split, partial
+rotary (64 of 256 dims, not interleaved), q/k norm before rotary,
+attention scale. Registered tolerance (float32 both sides, different
+reduction orders): relative L2 of the output difference at most 1e-4
+and the maximum absolute difference at most 1e-3 of the reference row
+RMS, per layer, all 454 positions pooled, for torch against mlx and for
+chunked against one shot. Run twice: on the decoded arm C tensors
+before the download (the machinery; smoke readings 5e-7 and 4e-5) and
+on the vendor tensors after it (the gate). A violation makes the
+measurement invalid and stops the pilot before any restoration is
+scored.
+
+Measurements per position (as in the head registration): argmax,
+top-2 margin, teacher-token rank, logsumexp, the teacher token's logit
+and cross-entropy, forward KL(teacher || candidate) in float64, the
+candidate's logits at the teacher's top-16 (slope and shift-aligned
+per-rank bias), the top-8, the live-vocabulary mean logit, z(We) minus
+z(The); the next real token's cross-entropy on the corpus and
+prefixes. Teacher token: the recorded rollout token on E0, the
+teacher's fp16-stored argmax on the corpus and prefixes. Paired
+reporting: corrected, newly broken, unchanged right, unchanged wrong;
+per-block nets with an exact two-sided sign test and a 10,000-draw
+percentile block bootstrap of the delta in points (seed 0); teacher
+margin bins and prompt families on E0; the 24 opener positions with
+the relative logit change. Per arm: peak and footprint memory, E0
+prefill tokens per second, the number of fused residents left.
+
+BARS (GROUP against CONTROL):
+1. E0-AGREEMENT-DIAGNOSTIC: paired agreement delta on the 4,722 E0
+   positions at least +1.0 point (net at least 48 positions).
+2. VALIDATION-AGREEMENT (decisive): paired agreement delta pooled over
+   the 454 corpus and prefix positions at least +1.0 point (net at
+   least 5), with neither the corpus nor the prefix net negative.
+3. VALIDATION-KL: mean forward KL over the 454 validation positions,
+   GROUP over CONTROL minus one, at most -0.10. A calibration reading.
+
+Preconditions (measurement invalid, every bar UNRESOLVED, refutation
+unadjudicated if any fails): CONTROL's E0 argmaxes equal to the frozen
+E0 rows' draft argmax beyond fp16 near-ties (margin 0.05) and its top-8
+logits against the pinned census dump recorded; both oracle halves
+within tolerance on the vendor weights; DENSE_C argmax equal to CONTROL wherever the CONTROL
+margin exceeds 0.01 and its teacher top-16 logits within 0.01; the
+shard sha equal to the pin at every stage that reads it; every score
+receipt ok (the vendor's raw tensors byte-equal to arm C's raw copies).
+
+Registered null: improvement under 1 point on E0 and under 1 point on
+the validation set. Verdict classes: VALIDATED iff bar 2 FIRES with
+the 95 percent block-bootstrap interval of its delta excluding zero
+(bar 1 is diagnostic, reported beside it and never required: the
+validation set decides); LOW-RESOLUTION (bar 2 FIRE with an interval
+through zero) is inconclusive, neither validated nor refuted, and
+selects no further layer on this set; E0-ONLY (1 FIRE, 2 NO-FIRE) is
+not a validated recovery; CALIBRATION-ONLY (3 FIRE, 1 and 2 NO-FIRE)
+is a calibration result; NULL otherwise. REFUTED-IF: bar 1 NO-FIRE and
+bar 2 not a resolved FIRE (the refutation ratio counts a bar 2 that
+fails on a conjunct, or fires with an interval through zero, as
+NO-FIRE; the noise-level fire that blocked the head-restore refutation
+cannot block this one): restoring this pair recovers no measurable
+teacher agreement at this resolution, the pair is not a worthwhile
+selective-precision target, and no further layer is selected from this
+result. A null or harmful result is booked
+without expanding the scope. Multiplicity: three vendor arms are
+contrasted with CONTROL on the one validation set; only GROUP is
+adjudicated; L22 and L23 are diagnostic readings and no claim rests on
+them. Resolution, from the one previous pass on this set (the head
+restoration: 13 discordant positions, bootstrap interval [-0.78,
++3.41], half-width about 2.1 points; one net position is 0.22 points):
+the +1.0 bar sits inside the set's own noise band, which is why only a
+resolved fire counts; the sensitivity instrument is an observation
+under every class.
+
+Sensitivity instrument (observation, never a bar): on every E0
+rollout and the validation contexts, CONTROL and GROUP are captured at
+nine boundaries (the input of layer 22, the outputs of 23, 27, 31, 39,
+47, 55 and 63, the final norm). Reported: the per-tensor weight
+reconstruction error of the pair (relative Frobenius of the decoded
+arm C tensor against BF16, 25 tensors), the local activation
+difference at the output of 23 (relative L2 per position, median and
+quantiles), its evolution through the downstream boundaries (ratio of
+each boundary's median row difference to the local one), and the final
+response (argmax flips, teacher KL, top-16 logit movement). This
+separates weight error, local difference, propagation and prediction
+change for one pair inside an otherwise compressed network; it does
+not identify the source of all compression error and is not read as
+one.
+
+Registered prior: the head restore recovered nothing; this pair is 2 of
+64 layers, about 3 percent of the body's weights; the compile-time
+decode fixture (logs/qwenmodel1/score_C.json) measured two S16 matrices
+against the vendor, lm_head at relative L2 error 0.108 and layer 0's
+in_proj_z at 0.101 (no other body matrix and no W4 matrix measured
+there). Bar 1 between -0.5 and +0.5 points with corrected and broken
+counts of the same order (tens each), P FIRE 0.15; bar 2 between -1
+and +1.5 points, P FIRE 0.2, and if it fires the interval includes zero
+with probability 0.7; bar 3 P 0.3. The single-layer arms move E0 by
+less than the pair. DENSE_C flips no decided argmax. Sensitivity: the
+local output difference of the pair (median row relative L2) between
+0.02 and 0.15; the ratio of the final-norm difference to the local one
+between 0.3 and 2; E0 argmax flips between 1 and 4 percent of
+positions. The opener flips "The" to "We" on fewer than half of the 24
+prompts.
+
+Retrieval (separately authorized by Artin, after this registration and
+the preflight receipt): exactly model-00007-of-00018.safetensors of
+Qwen/Qwen3.8-27B at revision 1d4bf0f2 (2,108,759,344 bytes; vendor LFS
+sha256 80b0c490..., read from the hub metadata 2026-10-20 and pinned in
+the driver, re-read at fetch and required equal), whole-file download
+with sha256 verification to VENDOR_SHARD_DIR outside the repository and
+never the config/tokenizer directory; the header must carry the 25
+target tensors as BF16 at the manifest shapes and the index's name set
+for the shard. The head shard of the previous study stays where it is.
+No other shard, no teacher restore. Memory, projected from the census
+peak (14.3 GB) plus the pair held as float32 (1.53 and 1.49 GB) minus
+the residents released: about 17.1 GB (smoke: 13.8 GB control, 16.5 GB
+with the pair dense). Runtime from the census (215 s per E0 pass):
+about 20 to 25 minutes for the five arms (dense arms ran 1.4x slower
+in smoke) plus a minute each for capture, the oracle halves and
+sensitivity.
+
+Fences: single arm C, one pair, one teacher pass (fp16-stored logits),
+Mac, teacher-forced, no generation; the bars are exact paired counts on
+fixed sets, the bootstrap and sign test are descriptive; a +1.0-point
+bar on 454 positions is a net of five positions and is read as such.
+Frozen and unchanged: arm C, the E0 rows, the Metal and prefill
+receipts, the head-restoration receipts, the teacher records. No
+recompression, fine-tuning, adapters, speculative verifier or full
+teacher restore; no second shard without a separate GO.

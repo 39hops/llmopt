@@ -16,7 +16,7 @@ this also drives `library`; from lab tooling it drives
 comments or plain strings; `via` names the cited caller a file
 inherits its class from when no document names the file itself.
 
-Census: library 200, reproduce-pinned 9, results-cited 524, spec-cited 74, tool-referenced 5, UNCITED 122 (of 934; library rows that are also doc-cited: 196)
+Census: library 200, reproduce-pinned 9, results-cited 527, spec-cited 74, tool-referenced 5, UNCITED 122 (of 937; library rows that are also doc-cited: 196)
 
 ## scratch/
 
@@ -609,6 +609,9 @@ Census: library 200, reproduce-pinned 9, results-cited 524, spec-cited 74, tool-
 | qwen | qwen_hsimpulse_adjudicate.py | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
 | qwen | qwen_hsimpulse_color.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
 | qwen | qwen_ioattrib_adjudicate.py | library | RESULTS, specs | RESULTS×2, specs×1 | 1 | 1 | — | — |
+| qwen | qwen_layer_restore.py | results-cited | RESULTS | RESULTS×4 | — | 1 | 1 | — |
+| qwen | qwen_layer_restore_study.sh | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
+| qwen | qwen_layer_restore_torch.py | results-cited | RESULTS | RESULTS×2 | — | 1 | 1 | — |
 | qwen | qwen_lband_adjudicate.py | library | RESULTS | RESULTS×2 | 1 | 1 | — | — |
 | qwen | qwen_loop_state.py | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
 | qwen | qwen_loop_state_adjudicate.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
@@ -619,10 +622,10 @@ Census: library 200, reproduce-pinned 9, results-cited 524, spec-cited 74, tool-
 | qwen | qwen_metal_chunked.py | library | RESULTS, specs | RESULTS×4, specs×1 | 2 | 1 | 1 | — |
 | qwen | qwen_metal_chunked_grid.sh | results-cited | RESULTS | RESULTS×4 | — | — | — | — |
 | qwen | qwen_metal_prefill_gemm_study.sh | UNCITED | — | — | — | — | — | — |
-| qwen | qwen_metal_prefill_head.py | library | RESULTS, specs | RESULTS×2, specs×1 | 2 | 2 | 1 | — |
+| qwen | qwen_metal_prefill_head.py | library | RESULTS, specs | RESULTS×2, specs×1 | 3 | 2 | 1 | — |
 | qwen | qwen_metal_prefill_serve_ab.py | results-cited | RESULTS, specs | RESULTS×4, specs×1 | — | 1 | 1 | — |
 | qwen | qwen_metal_prefill_study.sh | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
-| qwen | qwen_metal_qual.py | library | RESULTS, specs | RESULTS×6, specs×2 | 7 | 1 | — | — |
+| qwen | qwen_metal_qual.py | library | RESULTS, specs | RESULTS×6, specs×2 | 8 | 1 | — | — |
 | qwen | qwen_metal_serve_study.sh | UNCITED | — | — | — | — | — | — |
 | qwen | qwen_metal_tower.py | library | RESULTS, specs | RESULTS×6, specs×1 | — | 1 | 1 | — |
 | qwen | qwen_mips_census.py | results-cited | RESULTS | RESULTS×5 | — | — | — | — |
@@ -786,7 +789,7 @@ Census: library 200, reproduce-pinned 9, results-cited 524, spec-cited 74, tool-
 | family | file | class | cited by | doc citations | imports | invoked by | mentions | via |
 |---|---|---|---|---|---|---|---|---|
 |  | __init__.py | spec-cited | specs | specs×2 | — | — | 1 | — |
-| adjudicate | adjudicate.py | library | RESULTS, specs, TOOLING | RESULTS×21, specs×5, TOOLING×2 | — | 7 | 4 | — |
+| adjudicate | adjudicate.py | library | RESULTS, specs, TOOLING | RESULTS×21, specs×5, TOOLING×2 | — | 8 | 4 | — |
 | anchor | anchor_guard.py | spec-cited | specs | specs×2 | — | — | 1 | — |
 | anim | anim_precompute.py | spec-cited | specs | specs×4 | — | — | 2 | — |
 | arena | arena.py | UNCITED | — | — | — | — | — | — |
@@ -912,7 +915,7 @@ Census: library 200, reproduce-pinned 9, results-cited 524, spec-cited 74, tool-
 | harvest | harvest_champion.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
 | harvest | harvest_frontier.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — | — | — |
 | list | list_uncurated.py | spec-cited | specs | specs×6 | — | — | — | — |
-| liverun | liverun.py | library | RESULTS, specs, TOOLING | RESULTS×20, specs×7, TOOLING×3 | — | 16 | 1 | — |
+| liverun | liverun.py | library | RESULTS, specs, TOOLING | RESULTS×20, specs×7, TOOLING×3 | — | 17 | 1 | — |
 | log | log_hygiene.py | library | RESULTS, specs | RESULTS×3, specs×7 | 2 | 1 | — | — |
 | markov | markov_eval.py | UNCITED | — | — | — | — | — | — |
 | markov | markov_prior.py | spec-cited | specs | specs×3 | — | — | — | — |
