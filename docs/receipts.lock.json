@@ -4504,6 +4504,34 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qwen_head_restore/adjudication.txt": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_head_restore/corpus.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_head_restore/fetch.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_head_restore/observations.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_head_restore/opener.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_head_restore/preflight.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_head_restore/score.json": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/qwen_metal_qual/C_gemm/summary.json": {
    "bytes": 14396,
    "exists": true,
@@ -5558,6 +5586,14 @@
    "sha256": "8ff336b7f254196f079723ad354e4a6302b5ef29ac82d0ebe0b7d9f9ae82a6cb",
    "source": "results",
    "tracked": true
+  },
+  "logs/qwenteacher_v2/corpus_logits.npy": {
+   "bytes": 176803968,
+   "exists": true,
+   "local_only": true,
+   "sha256": "030ae5684f339276ec8c98e8c386db3440df52dc367736f48d5dec0231532afa",
+   "source": "results",
+   "tracked": false
   },
   "logs/qwenteacher_v2/margin_census.json": {
    "bytes": 1010,

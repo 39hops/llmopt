@@ -49,6 +49,8 @@ import numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
 
+from llmopt.lab.strict_json import write_strict  # noqa: E402
+
 SMOKE = os.environ.get("SMOKE") == "1"
 E0_DIR = os.environ.get("E0_DIR", "logs/qwen_e0/C")
 TEACHER_DIR = os.environ.get("TEACHER_DIR", "logs/qwenteacher_v2")
@@ -306,7 +308,9 @@ def main():
            "first_generated_position": first_pos,
            "evaluable": evaluable}
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
-    json.dump(rec, open(OUT, "w"), indent=1)
+    # strict JSON: the open margin-bin boundary is written as the string "inf",
+    # never as a bare Infinity constant (llmopt.lab.strict_json)
+    write_strict(rec, OUT, overwrite=True)
     print(f"[census] first generated position: agree {first_pos['agree']}/{first_pos['n']}, teacher {first_pos['teacher_tokens']}, draft {first_pos['draft_tokens']}")
     print(f"[census] {n} rows, agree {agree.mean():.4f}; disagree {dis.sum()}: teacher-top2 picked {top2['draft_picks_teacher_top2']}, teacher token draft-second {top2['teacher_token_is_draft_second']}, "
           f"swap {top2['swap_of_teacher_top2']}, teacher token outside draft top16 {top2['teacher_token_outside_draft_top16']}; "

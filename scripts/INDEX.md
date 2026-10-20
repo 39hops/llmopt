@@ -5280,6 +5280,53 @@ QWEN-FAMILY-PROBE-0: cheapest acceptable RATE per non-FFN family.
 - `probe_tensor(fam, name)` — Two passes over row-chunks so 1.27B-param tensors fit VRAM:
 - `main()`
 
+### scratch/qwen_head_restore.py
+QWEN-HEAD-RESTORE-0: does replacing only arm C's compressed S16 lm_head with the vendor's original BF16 lm_head improve teacher agreement when every preceding layer stays compressed? Head-only substitution on the frozen arm C final-norm hidden states; nothing is trained, fitted, calibrated or selected on any outcome.
+
+- `git_head()`
+- `git_dirty()`
+- `sha_file(p)`
+- `sha_array_file(path)` — sha256 of the array's bytes (the teacher manifest hashes a.tobytes()).
+- `refuse(path)`
+- `receipt_path(mode)`
+- `require_clean_tree()` — A real receipt records code_commit; the tree must be that commit.
+- `repo_root()`
+- `provenance(mode)`
+- `rss_peak_bytes()`
+- `load_manifest()`
+- `head_payload(man)`
+- `teacher_manifest()`
+- `e0_rows()`
+- `census_receipt()`
+- `dump_paths(rec)`
+- `s16_head_device(buf, entry)` — Arm C's head decoded to float32 on the device through the kernels'
+- `s16_head_f32(buf, entry)` — The decoded head only; the resident's device payload is released.
+- `s16_rows_cpu(buf, entry, r0, r1)`
+- `vendor_shard_path()`
+- `bf16_head_host()`
+- `logits_chunks(W, hidden, round_hidden_bf16=False)` — Yields (start, logits[n, V_LIVE] float32 host) for CHUNK_ROWS of hidden rows.
+- `mode_preflight()`
+- `load_model()`
+- `serving()`
+- `mode_opener()`
+- `class _RecordingHead`
+- `corpus_blocks(tokens, nl2)` — Block of each position: the number of paragraph breaks at or before it.
+- `mode_corpus()`
+- `vendor_metadata()`
+- `mode_fetch()`
+- `teacher_side(zt, teacher_token)`
+- `class _Set`
+- `build_sets(pre, cor)`
+- `correspondence(sets, arms_s16)` — The float32 recompute of the S16 head on the stored hidden rows against the
+- `score_arm(sets, W, round_hidden=False, prod=False)`
+- `q(a)`
+- `bins(x, edges)`
+- `summarize(sets, arms, tside_by_set)` — Paired summaries of every arm against the primary reference s16_f32; the primary contrast is bf16_f32 v s16_f32.
+- `observations(summ, rec, prereg_path)`
+- `mode_score()`
+- `mode_runtime()` — Serving cost of a resident bfloat16 head against the S16 head: 1,024-token
+- `main()`
+
 ### scratch/qwen_headswap_impulse.py
 QWEN-HEADSWAP-IMPULSE-0 driver: single vendor-top1 token injected at each of the 5 registered vendor/BLe disagreement points on BLe greedy xhigh replays (PRE-REG in docs/RESULTS.md; frozen injection table in docs/preregs/qwen-headswap-impulse-0.params.json).
 
@@ -6638,6 +6685,24 @@ lab.locator — logical artifact locators instead of machine-local paths.
 - `repo_relative(path: str | Path, role: str='main', cwd: Path | None=None) -> str` — A runtime path expressed relative to a role's root (for receipts that must
 - `role_of(path: str | Path, cwd: Path | None=None) -> str | None` — Which known role's root contains the path, if any.
 
+### llmopt/lab/logit_stats.py
+Per-position and paired statistics for a head-substitution study.
+
+- `log_softmax64(z) -> np.ndarray`
+- `position_stats(z_cand, z_teacher, teacher_token: int, top_ids, k_top: int=8) -> dict`
+- `slope_on_teacher(z_cand_top, z_teacher_top) -> float`
+- `paired_counts(agree_a, agree_b) -> dict`
+- `_binom_two_sided(k: int, n: int) -> float` — Exact two-sided sign-test p-value: P(X <= min(k, n-k)) + P(X >= max(k, n-k)) under X ~ Bin(n, 1/2).
+- `block_deltas(agree_a, agree_b, blocks) -> dict`
+- `block_bootstrap_delta_points(agree_a, agree_b, blocks, n_boot: int=10000, seed: int=0) -> dict` — Percentile bootstrap of the paired agreement delta (points of the
+- `bf16_bits_to_f32(u16) -> np.ndarray`
+- `f32_to_bf16_bits(x, chunk: int=1 << 24) -> np.ndarray` — Round to nearest even in the bf16 grid; NaN payloads keep the quiet
+- `round_to_bf16(x) -> np.ndarray`
+- `safetensors_header(path)` — (header dict, byte offset of the data section).
+- `read_bf16_bits(path, name: str, expect_shape=None) -> np.ndarray` — The named BF16 tensor of a safetensors file as its raw uint16 bits,
+- `read_bf16_tensor(path, name: str, expect_shape=None) -> np.ndarray` — The named BF16 tensor as float32 (an exact widening).
+- `s16_row_slice_payload(buf: bytes, shape, r0: int, r1: int) -> bytes` — The S16 payload of rows [r0, r1) of a [R, C] matrix, in the same
+
 ### llmopt/lab/merge.py
 Merge API over house .pt state dicts — average / task_vector / shell_graft.
 
@@ -6852,6 +6917,13 @@ Reference definitions for greedy speculative decoding and the quantities the E0 
 - `kl(p: np.ndarray, q: np.ndarray) -> float` — Forward KL(p || q) in nats over the support of p.
 - `position_stats(z_teacher: np.ndarray, z_draft: np.ndarray, teacher_token: int, topk: int=16) -> dict` — One census row for a teacher-greedy position: both logit vectors are
 - `teacher_ambiguity(z_teacher_fp16: np.ndarray, recorded_token: int) -> dict` — Numerical register. The saved teacher logits are fp16 copies of the
+
+### llmopt/lab/strict_json.py
+Receipts that a strict JSON parser accepts.
+
+- `strictify(obj)` — A copy of obj with non-finite floats as strings and numpy values as
+- `dumps_strict(obj, indent=1) -> str`
+- `write_strict(obj, path, indent=1, overwrite=False) -> None` — Write obj as strict JSON; refuses an existing path unless overwrite.
 
 ### llmopt/lab/traj.py
 Moved to llmopt.runs.traj (Phase 5, 2026-08-12). This alias keeps old imports working with full fidelity (privates included).

@@ -1,0 +1,147 @@
+{
+ "name": "QWEN-HEAD-RESTORE-0",
+ "note": "Machine-readable form of PRE-REG QWEN-HEAD-RESTORE-0; the prose governs on any conflict. Registered before any vendor weight byte was retrieved and before any stage of scratch/qwen_head_restore.py produced a real receipt. E0 (4,722 positions) is the diagnostic set; the corpus (356) and prefix (98) records are the validation set; nothing is fitted, calibrated or selected on any outcome. Bar 2 (slope) is reported separately and never counts as success on its own; bar 4 (KL) is a calibration reading, not a recovery of teacher decisions. The bootstrap clause of VALIDATED is a hand rule stated here before any score exists; the adjudicator scores the four bars and the refutation ratio only. Smoke exercised every stage including runtime (stand-in head, labelled) before this registration.",
+ "results_id": "2026-10-19-pre-reg-qwen-head-restore-0",
+ "registered": "2026-10-19",
+ "machine": "mac",
+ "arms": {
+  "S16": {
+   "description": "arm C's compressed S16 lm_head (block-128 e8m0 scales, 16 fp16 levels) decoded to float32 by the kernels' decode path, applied in float32 to arm C's final-norm hidden states (the frozen E0 dump of logs/qmetal/prefill_serve/census_d42cb215.json and the corpus/prefix states of the corpus stage)"
+  },
+  "BF16": {
+   "description": "the vendor's original lm_head.weight (Qwen/Qwen3.8-27B revision 1d4bf0f2, shard model-00018-of-00018, BF16 [248320, 5120]) widened exactly to float32, applied in float32 to the same hidden rows"
+  },
+  "BF16_H16": {
+   "description": "control: the vendor head with the hidden rows rounded to bfloat16 before the float32 product (evaluation-precision sensitivity)"
+  },
+  "S16_PROD": {
+   "description": "control: the production fp16 Metal logits of the same E0 positions (the census dump), the path the serving runtime takes"
+  }
+ },
+ "bars": [
+  {
+   "id": 1,
+   "name": "E0-AGREEMENT-DIAGNOSTIC",
+   "gate_class": "range",
+   "metric": "delta_agree_points_e0",
+   "population": "positions:e0-4722",
+   "aggregation": "paired_difference_points",
+   "direction": "above",
+   "value": 1.0,
+   "arms": [
+    "S16",
+    "BF16"
+   ],
+   "description": "paired teacher top-1 agreement of BF16 minus S16 over the 4,722 E0 positions, in percentage points (corrected minus newly broken, over 4,722): at least +1.0 point, i.e. a net of at least 48 positions. Diagnostic only: E0 is the set the disagreement was characterised on and is never reported as independent evidence of recovery."
+  },
+  {
+   "id": 2,
+   "name": "E0-SLOPE",
+   "gate_class": "range",
+   "metric": "delta_median_slope_e0",
+   "population": "positions:e0-4722",
+   "aggregation": "paired_difference_of_medians",
+   "direction": "above",
+   "value": 0.03,
+   "arms": [
+    "S16",
+    "BF16"
+   ],
+   "description": "median over E0 positions of the centered least-squares slope of candidate logits on teacher logits over the teacher's top-16 (the census statistic), BF16 median minus S16 median: at least +0.03 (toward 1). Reported separately; never a success metric alone."
+  },
+  {
+   "id": 3,
+   "name": "VALIDATION-AGREEMENT",
+   "gate_class": "range",
+   "metric": "delta_agree_points_validation",
+   "population": "positions:corpus-356+prefix-98",
+   "aggregation": "paired_difference_points",
+   "direction": "above",
+   "value": 1.0,
+   "arms": [
+    "S16",
+    "BF16"
+   ],
+   "conjuncts": [
+    {
+     "measurement": "3:corpus",
+     "metric": "delta_agree_net_corpus",
+     "population": "positions:corpus-356",
+     "aggregation": "paired_net_count",
+     "direction": "above",
+     "value": 0
+    },
+    {
+     "measurement": "3:prefix",
+     "metric": "delta_agree_net_prefix",
+     "population": "positions:prefix-98",
+     "aggregation": "paired_net_count",
+     "direction": "above",
+     "value": 0
+    }
+   ],
+   "description": "paired teacher top-1 agreement of BF16 minus S16 pooled over the 454 corpus and prefix positions, in points: at least +1.0 (a net of at least 5 positions), with neither the corpus nor the prefix net negative. This is the decisive bar: a head that improves E0 but not this set is not a validated recovery."
+  },
+  {
+   "id": 4,
+   "name": "VALIDATION-KL",
+   "gate_class": "range",
+   "metric": "rel_delta_mean_kl_validation",
+   "population": "positions:corpus-356+prefix-98",
+   "aggregation": "ratio_of_means_minus_one",
+   "direction": "below",
+   "value": -0.1,
+   "arms": [
+    "S16",
+    "BF16"
+   ],
+   "description": "mean forward KL(teacher || candidate) over the 454 validation positions, BF16 over S16 minus one: at most -0.10 (a ten percent reduction). A calibration reading: it can fire while greedy agreement is unchanged, and then it is not a recovery of teacher decisions."
+  }
+ ],
+ "receipts": [
+  "logs/qwen_head_restore/preflight.json",
+  "logs/qwen_head_restore/opener.json",
+  "logs/qwen_head_restore/corpus.json",
+  "logs/qwen_head_restore/fetch.json",
+  "logs/qwen_head_restore/score.json",
+  "logs/qwen_head_restore/observations.json",
+  "logs/qwen_head_restore/adjudication.txt"
+ ],
+ "operands": [
+  {
+   "name": "E0 final-norm hidden states and production fp16 logits (4,722 rows)",
+   "provider": "logs/qmetal/prefill_serve/census_d42cb215.json"
+  },
+  {
+   "name": "E0 rows (teacher token, margins, draft argmax, family, step)",
+   "provider": "logs/qwen_e0/C/positions.jsonl"
+  },
+  {
+   "name": "teacher records (rollout, corpus, prefix logits and token lists)",
+   "provider": "logs/qwenteacher_v2/teacher_manifest.json"
+  },
+  {
+   "name": "arm C CPU top-1 agreement on the corpus and prefixes (reconstruction cross-check)",
+   "provider": "logs/qwenmodel1/score_C.json"
+  },
+  {
+   "name": "eval payload texts",
+   "provider": "evals/qwen_model1/corpus.txt"
+  },
+  {
+   "name": "eval payload prefixes",
+   "provider": "evals/qwen_model1/prefixes.jsonl"
+  },
+  {
+   "name": "driver",
+   "provider": "scratch/qwen_head_restore.py"
+  }
+ ],
+ "refuted_if": "bar 1 NO-FIRE and bar 3 NO-FIRE: max_bar13_ratio = max(delta_agree_points_e0 / 1.0, v / 1.0) below 1.0, where v is delta_agree_points_validation when both conjunct nets (corpus, prefix) are at least 0 and min(delta_agree_points_validation, 0) otherwise, so a bar 3 that fails on a conjunct counts as NO-FIRE in the ratio. Refuted means: the head-only hypothesis, that a substantial part of arm C's teacher disagreement is lm_head quantisation error, is refuted at the registered resolution; head-only restoration is not worthwhile and attention moves to compressed-body error. Verdict classes: VALIDATED iff bars 1 and 3 FIRE and the 95 percent block-bootstrap interval of the bar 3 delta excludes zero (a FIRE whose interval includes zero is reported as FIRE-AT-LOW-RESOLUTION and does not make VALIDATED); E0-ONLY (bar 1 FIRE, bar 3 NO-FIRE) is not a validated recovery; CALIBRATION-ONLY (bar 4 FIRE, bars 1 and 3 NO-FIRE) is a calibration result; NULL otherwise. The runtime stage (resident bf16 head cost) runs only on VALIDATED.",
+ "refuted_if_predicate": {
+  "measurement": "max_bar13_ratio",
+  "direction": "below",
+  "value": 1.0
+ },
+ "registered_prior": "The compile-time decode fixture (logs/qwenmodel1/score_C.json) puts the S16 head at relative L2 error 0.108 against the vendor head, so the head is not a precise copy; still the registered reading of the E0 census is that the top-16 flattening (slope 0.88, top-1 under-reproduced by 2.9 nats) is mostly body-side, because the same flattening appears at every teacher margin and the head is a linear map applied to an already-shifted state. Prior: bar 1 between 0 and +2 points, probability of FIRE 0.4; bar 2 delta under 0.03 in magnitude, probability 0.25; bar 3 within -1 and +1.5 points, probability of FIRE 0.3; bar 4 probability 0.4. The opener: the head swap flips 'The' to 'We' on fewer than half of the 24 prompts. Controls: BF16_H16 within 0.2 points of BF16 on every set; S16_PROD within 0.1 points of S16 on E0 (fp16 near-ties only)."
+}

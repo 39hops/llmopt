@@ -80981,3 +80981,161 @@ one machine, float32, synthetic Gaussian inputs, Strassen-Winograd
 only (no other fast scheme, no mixed precision, no custom kernel);
 numpy was skipped on the products above 34.4 billion multiply-adds
 (the driver's rule) where it would take minutes per round.
+
+## PRE-REG QWEN-HEAD-RESTORE-0: does replacing only arm C's compressed S16 lm_head with the vendor's original BF16 lm_head improve teacher agreement when every preceding layer stays compressed? Head-only substitution on the frozen final-norm hidden states; E0 diagnostic, corpus and prefix records as the validation set; registered before any vendor weight byte is retrieved (2026-10-19, mac)
+
+Registers the head-only restoration test ranked first in OBSERVATION
+QWEN-E0-DISAGREEMENT-CENSUS-0 (L80567; RIFF bank L9256). Artin's GO
+2026-10-19 evening. Mechanical projection:
+docs/preregs/qwen-head-restore-0.json (registration digest ceeeb654, pinned in the driver, which refuses a score against any other).
+Driver: scratch/qwen_head_restore.py, stages preflight, opener,
+corpus, fetch, score, adjudicate (runtime only on a validated result),
+runner scratch/qwen_head_restore_study.sh under liverun. Smoke
+(SMOKE=1, 64 E0 rows, 2 prompts, 32 corpus tokens, one prefix, the
+vendor head stood in by the S16 head rounded to bfloat16, no download)
+exercised every stage, runtime included, before this registration; the
+adjudicator read the stand-in as inadmissible (every bar UNRESOLVED).
+Its numbers are instrument checks, not evidence. An Opus code review of
+the driver, the lab modules and this text preceded the registration
+(the refutation ratio now folds bar 3's conjuncts; the runner's smoke
+isolation and exit codes; bounded bf16 conversions; the shift
+statistic; a pinned digest; refusals on a dirty tree).
+
+Central question. Arm C disagrees with the teacher's greedy token at
+807 of 4,722 E0 positions (agreement 0.8291). The compile-time decode
+fixture of logs/qwenmodel1/score_C.json puts the S16 head at relative
+L2 error 0.108 against the vendor head. If a substantial part of the
+disagreement is head quantisation error, the vendor BF16 head applied to
+the SAME arm C hidden states recovers it; if the error is body-side, it
+does not.
+
+Sets. E0: the 4,722 final-norm hidden states written by the census
+stage of OBSERVATION QWEN-METAL-SERVE-0 (logs/qmetal/prefill_serve/
+census_d42cb215.json, dump shas in that receipt; the production fp16
+logits of the same rows beside them). E0 is the DIAGNOSTIC set: the
+disagreement was characterised on it, and it is never reported as
+independent evidence of recovery. Validation: the teacher's corpus
+record (356 positions, logs/qwenteacher_v2/corpus_logits.npy) and
+prefix record (98 positions, prefix_logits.npy), whose arm C hidden
+states the corpus stage reconstructs through the qualified Metal body
+(prefill_chunked, matmul="gemm", head="full") and cross-checks against
+the CPU score receipt's top-1 agreement counts (295 of 356 and 79 of
+98, logs/qwenmodel1/score_C.json; tolerance two positions per set for
+fp16 near-ties). Independence disclosed before any score is read: the
+corpus is ONE raw-text document of five topical paragraphs (information
+theory, a Python merge, Westphalia, a derivative, fiction); the prefixes
+are six raw-text snippets of 9 to 29 tokens; neither uses the chat
+template or the think opener, so the validation set tests the head in a
+different context regime from E0 (raw next-token prediction, no system
+prompt); topical overlaps with E0 prompts exist (prefix 3 is a
+binary_search definition, E0 chat-1 asks about binary search; corpus
+paragraph 4 differentiates x^2 e^x, E0 math-4 asks for a derivative) but
+no text is shared; the corpus and prefix records were the MODEL-1
+selection surface for the compression arms, so they are independent of
+E0 and of the head substitution, not of arm C's selection. Block units:
+E0 by prompt (24), corpus by paragraph (5), prefixes by prefix (6).
+
+Arms (identical hidden rows, float32 arithmetic, live vocabulary
+248,077, same tokenizer ids). S16: arm C's head decoded to float32 by
+the kernels' decode path (slabs; parity against the CPU codec row for
+row is a preflight check). BF16: the vendor lm_head.weight widened
+exactly to float32. Controls: BF16_H16 (hidden rounded to bfloat16
+before the product, evaluation-precision sensitivity) and S16_PROD
+(the production fp16 Metal logits of the E0 rows). Weight change is
+BF16 against S16; evaluation precision is BF16_H16 against BF16;
+production path is S16_PROD against S16. Nothing is trained,
+calibrated, biased or selected.
+
+Measurements per position: argmax, top-2 margin, teacher-token rank
+(logits strictly above the teacher token's), logsumexp, the teacher
+token's logit and cross-entropy, forward KL(teacher || candidate) over
+the live vocabulary in float64, the candidate's logits at the teacher's
+top-16 (slope and per-rank shift-aligned bias, the census statistics),
+the top-8, the live-vocabulary mean logit (the census's shift
+alignment), and z(We) minus z(The). Teacher token: the recorded rollout
+token on E0, the teacher's fp16-stored argmax on the corpus and
+prefixes (the corpus and prefix next real tokens give a secondary
+cross-entropy). Paired reporting: corrected, newly broken, unchanged
+right, unchanged wrong; per-block nets with an exact two-sided sign test
+over blocks and a 10,000-draw percentile block bootstrap of the
+delta in points (seed 0); teacher-margin-bin and family breakdowns on
+E0; the 24 opener positions with the actual relative logit change
+under both heads.
+
+BARS (BF16 against S16):
+1. E0-AGREEMENT-DIAGNOSTIC: paired agreement delta on the 4,722 E0
+   positions at least +1.0 point (net at least 48 positions).
+2. E0-SLOPE: median per-position top-16 slope, BF16 minus S16, at
+   least +0.03. Reported separately; never a success metric alone.
+3. VALIDATION-AGREEMENT (decisive): paired agreement delta pooled over
+   the 454 corpus and prefix positions at least +1.0 point (net at
+   least 5), with neither the corpus nor the prefix net negative.
+4. VALIDATION-KL: mean forward KL over the 454 validation positions,
+   BF16 over S16 minus one, at most -0.10. A calibration reading.
+
+Registered null: improvement under 1 point on E0 and slope movement
+under 0.03, reported separately. Verdict classes: VALIDATED iff bars 1
+and 3 FIRE and the 95 percent block-bootstrap interval of the bar 3
+delta excludes zero (a FIRE whose interval includes zero is reported as
+FIRE-AT-LOW-RESOLUTION and does not make VALIDATED; the paired net
+noise on 454 positions is about the square root of the discordant
+count, so a net of five is near one sigma); on VALIDATED the runtime
+stage measures the resident bf16 head (decode step, prefill, memory;
+bfloat16 product, the BF16_H16 numerics); E0-ONLY (1 FIRE, 3 NO-FIRE) is not a
+validated recovery; CALIBRATION-ONLY (4 FIRE, 1 and 3 NO-FIRE) is a
+calibration result, not a recovery of teacher decisions; NULL
+otherwise. REFUTED-IF: bars 1 and 3 both NO-FIRE (the refutation
+ratio counts a bar 3 that fails on a conjunct as NO-FIRE): the head-only
+hypothesis is refuted at this resolution, head-only restoration is not
+worthwhile, and attention moves to compressed-body error; no low-rank
+fitting on E0 follows.
+
+Registered prior: the census reading (median slope 0.88 where the
+models agree, 0.83 where they disagree) is that the top-16 flattening is
+mostly body-side (it appears at every teacher margin, and the head is
+a linear map on an already-shifted state). Bar 1 between 0 and +2
+points (P FIRE 0.4); bar 2 under 0.03 in magnitude (P 0.25); bar 3
+within -1 and +1.5 points (P 0.3); bar 4 P 0.4; the opener flips on
+fewer than half of the 24 prompts. Controls: BF16_H16 within 0.2
+points of BF16 on every set; S16_PROD within 0.1 points of S16 on E0.
+
+Retrieval (Phase 2, after the preflight receipt): the single pinned
+shard model-00018-of-00018.safetensors of Qwen/Qwen3.8-27B at revision
+1d4bf0f2 (3,392,197,344 bytes; vendor LFS sha256 1d347950..., read
+from the hub metadata 2026-10-19 and pinned in the driver, re-read at
+run time and required equal), the only shard holding lm_head.weight
+(BF16 [248320, 5120], 2,542,796,800 bytes; the rest is the MTP block,
+never instantiated). Whole-file download with sha256 verification, to
+VENDOR_SHARD_DIR outside the repository and never the config/tokenizer
+directory (the E0 and Metal drivers refuse a shard there). No other
+shard, no teacher restore. The fetch receipt records size, sha256, the
+safetensors header entry and the tensor-name set.
+
+Phase 1 (before the fetch, no weights): the opener stage runs the
+compressed model under the teacher's exact template (teacher record
+exists; the rebuilt prompt ids must equal the recorded ones) and under
+template and length variations (enable_thinking off, reasoning effort
+low and medium, no system block, 64/256/1,024 tokens of neutral filler
+before the user message); only the teacher-template condition carries
+a teacher comparison, every other condition is draft-only and claims no
+agreement. The preflight stage checks the dump's shape and shas, its
+correspondence to the states fed to lm_head (the decoded S16 head on the
+dump must reproduce the production argmax except at fp16 near-ties with
+gap at most 0.05), the teacher record shas, decode parity, a float64 CPU
+oracle, and the fetch destination and free space.
+
+Housekeeping disclosed: scratch/qwen_e0_disagreement_census.py, a
+results-cited file, now writes its receipt through
+llmopt.lab.strict_json (Artin's instruction of 2026-10-19: future JSON
+must pass a strict parser); the change touches the exporter line and
+an import only, and the booked receipt is byte-unchanged.
+
+Fences: single arm C, one teacher pass (fp16-stored logits), Mac,
+teacher-forced, no generation; the bars are exact paired counts on
+fixed sets, the bootstrap and sign test are descriptive; a +1.0-point
+bar on 454 positions is a net of five positions and is read as such.
+Frozen arm C, the E0 rows, the Metal and prefill receipts and the booked
+disagreement receipt stay unchanged (its bare-Infinity boundary is
+left as booked; the exporter now writes strict JSON for future
+receipts). No recompression, fine-tuning, adapter, speculative verifier
+or large vendor restore.
