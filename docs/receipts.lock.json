@@ -4574,6 +4574,70 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qwen_layer_restore/adjudication.txt": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_layer_restore/capture.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_layer_restore/fetch.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_layer_restore/observations.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_layer_restore/oracle_mlx_armc.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_layer_restore/oracle_mlx_vendor.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_layer_restore/oracle_torch_armc.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_layer_restore/oracle_torch_vendor.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_layer_restore/preflight.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_layer_restore/score_control.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_layer_restore/score_dense_c.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_layer_restore/score_group.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_layer_restore/score_l22.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_layer_restore/score_l23.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_layer_restore/sensitivity.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_layer_restore/summary.json": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/qwen_metal_qual/C_gemm/summary.json": {
    "bytes": 14396,
    "exists": true,

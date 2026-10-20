@@ -1,0 +1,152 @@
+{
+ "name": "QWEN-LAYER-RESTORE-0",
+ "note": "Machine-readable form of PRE-REG QWEN-LAYER-RESTORE-0; the prose governs on any conflict. Registered before vendor shard model-00007-of-00018 is retrieved and before any stage of scratch/qwen_layer_restore.py scores a restored layer. The candidate (layers 22 and 23, the pair complete in that shard) was chosen on architecture and cost (spec docs/superpowers/specs/2026-10-20-layer-restore-pilot.md), never on an E0 outcome. E0 (4,722 positions) is the diagnostic set; the corpus (356) and prefix (98) records are the validation set; nothing is fitted, calibrated or selected on any outcome; a null or harmful result is booked without expanding to another layer. Preconditions, not bars: the one-layer oracle on the vendor weights within its registered tolerance in both halves (mlx one shot against chunk 256 with the cache carried; torch against mlx), the DENSE_C parity, the shard sha; a failed precondition makes the measurement invalid and every bar UNRESOLVED. Bar 3 (KL) is a calibration reading and never counts as recovery on its own. The bootstrap clause of VALIDATED is a hand rule stated here before any score exists; the adjudicator scores the three bars and the refutation ratio only. The single-layer arms L22 and L23 are reported and never adjudicated (three contrasts on one validation set, disclosed as multiplicity). Smoke exercised every stage with a labelled stand-in (the decoded arm C tensors as the restored weights) before this registration.",
+ "results_id": "2026-10-20-pre-reg-qwen-layer-restore-0",
+ "registered": "2026-10-20",
+ "machine": "mac",
+ "arms": {
+  "CONTROL": {
+   "description": "arm C as served: every W4 and S16 matrix through the fused residents of llmopt.lab.qmetal, prefill_chunked with the GEMM path, chunk 256, a fresh cache per sequence, head full, live vocabulary 248,077"
+  },
+  "DENSE_C": {
+   "description": "control for the swap machinery: layers 22 and 23 replaced by dense float32 modules holding the decoded arm C tensors (no weight change); argmax must equal CONTROL wherever the CONTROL margin exceeds 0.01 and the teacher top-16 logits must agree within 0.01"
+  },
+  "GROUP": {
+   "description": "layers 22 (gated DeltaNet) and 23 (full attention) replaced by the vendor's BF16 tensors (Qwen/Qwen3.8-27B revision 1d4bf0f2, shard model-00007-of-00018, 25 tensors) widened exactly to float32 and installed with the mlx-lm load conventions; every other layer, the embedding and the head stay compressed; the registered contrast is GROUP against CONTROL"
+  },
+  "L22": {
+   "description": "diagnostic: only layer 22 restored (same bytes); reported, never adjudicated"
+  },
+  "L23": {
+   "description": "diagnostic: only layer 23 restored (same bytes); reported, never adjudicated"
+  }
+ },
+ "bars": [
+  {
+   "id": 1,
+   "name": "E0-AGREEMENT-DIAGNOSTIC",
+   "gate_class": "range",
+   "metric": "delta_agree_points_e0",
+   "population": "positions:e0-4722",
+   "aggregation": "paired_difference_points",
+   "direction": "above",
+   "value": 1.0,
+   "arms": [
+    "CONTROL",
+    "GROUP"
+   ],
+   "description": "paired teacher top-1 agreement of GROUP minus CONTROL over the 4,722 E0 positions, in percentage points (corrected minus newly broken, over 4,722): at least +1.0 point, i.e. a net of at least 48 positions. Diagnostic only: E0 is the set the disagreement was characterised on and is never reported as independent evidence of recovery."
+  },
+  {
+   "id": 2,
+   "name": "VALIDATION-AGREEMENT",
+   "gate_class": "range",
+   "metric": "delta_agree_points_validation",
+   "population": "positions:corpus-356+prefix-98",
+   "aggregation": "paired_difference_points",
+   "direction": "above",
+   "value": 1.0,
+   "arms": [
+    "CONTROL",
+    "GROUP"
+   ],
+   "conjuncts": [
+    {
+     "measurement": "2:corpus",
+     "metric": "delta_agree_net_corpus",
+     "population": "positions:corpus-356",
+     "aggregation": "paired_net_count",
+     "direction": "above",
+     "value": 0
+    },
+    {
+     "measurement": "2:prefix",
+     "metric": "delta_agree_net_prefix",
+     "population": "positions:prefix-98",
+     "aggregation": "paired_net_count",
+     "direction": "above",
+     "value": 0
+    }
+   ],
+   "description": "paired teacher top-1 agreement of GROUP minus CONTROL pooled over the 454 corpus and prefix positions, in points: at least +1.0 (a net of at least 5 positions), with neither the corpus nor the prefix net negative. The decisive bar: a pair that improves E0 but not this set is not a validated recovery. Uncertainty on block units (five corpus paragraphs, six prefix snippets): exact two-sided sign test on block deltas and a 10,000-draw percentile block bootstrap (seed 0). Resolution, from the one previous pass on this set (VERDICT QWEN-HEAD-RESTORE-0: 13 discordant positions, bootstrap interval [-0.78, +3.41], half-width about 2.1 points): the +1.0 bar sits inside the set's own noise band, so a FIRE whose bootstrap interval includes zero is FIRE-AT-LOW-RESOLUTION, inconclusive, not validated, counts as NO-FIRE in the refutation ratio, and selects no further layer on this set."
+  },
+  {
+   "id": 3,
+   "name": "VALIDATION-KL",
+   "gate_class": "range",
+   "metric": "rel_delta_mean_kl_validation",
+   "population": "positions:corpus-356+prefix-98",
+   "aggregation": "ratio_of_means_minus_one",
+   "direction": "below",
+   "value": -0.1,
+   "arms": [
+    "CONTROL",
+    "GROUP"
+   ],
+   "description": "mean forward KL(teacher || candidate) over the 454 validation positions, GROUP over CONTROL minus one: at most -0.10 (a ten percent reduction). A calibration reading: it can fire while greedy agreement is unchanged, and then it is not a recovery of teacher decisions."
+  }
+ ],
+ "receipts": [
+  "logs/qwen_layer_restore/preflight.json",
+  "logs/qwen_layer_restore/capture.json",
+  "logs/qwen_layer_restore/oracle_mlx_armc.json",
+  "logs/qwen_layer_restore/oracle_torch_armc.json",
+  "logs/qwen_layer_restore/fetch.json",
+  "logs/qwen_layer_restore/oracle_mlx_vendor.json",
+  "logs/qwen_layer_restore/oracle_torch_vendor.json",
+  "logs/qwen_layer_restore/score_control.json",
+  "logs/qwen_layer_restore/score_dense_c.json",
+  "logs/qwen_layer_restore/score_l22.json",
+  "logs/qwen_layer_restore/score_l23.json",
+  "logs/qwen_layer_restore/score_group.json",
+  "logs/qwen_layer_restore/summary.json",
+  "logs/qwen_layer_restore/observations.json",
+  "logs/qwen_layer_restore/adjudication.txt",
+  "logs/qwen_layer_restore/sensitivity.json"
+ ],
+ "operands": [
+  {
+   "name": "E0 rows (teacher token, margins, draft argmax, family, step) in rollout order",
+   "provider": "logs/qwen_e0/C/positions.jsonl"
+  },
+  {
+   "name": "the Metal census receipt (E0 contexts, chunk 256, GEMM prefill; its dump shas pin the compressed control's hidden states and logits)",
+   "provider": "logs/qmetal/prefill_serve/census_d42cb215.json"
+  },
+  {
+   "name": "teacher records (rollout, corpus, prefix logits and token lists)",
+   "provider": "logs/qwenteacher_v2/teacher_manifest.json"
+  },
+  {
+   "name": "eval payload texts",
+   "provider": "evals/qwen_model1/corpus.txt"
+  },
+  {
+   "name": "eval payload prefixes",
+   "provider": "evals/qwen_model1/prefixes.jsonl"
+  },
+  {
+   "name": "driver (mlx side)",
+   "provider": "scratch/qwen_layer_restore.py"
+  },
+  {
+   "name": "driver (torch side of the oracle)",
+   "provider": "scratch/qwen_layer_restore_torch.py"
+  },
+  {
+   "name": "runner",
+   "provider": "scratch/qwen_layer_restore_study.sh"
+  },
+  {
+   "name": "plan (target, storage, memory, runtime, validation)",
+   "provider": "docs/superpowers/specs/2026-10-20-layer-restore-pilot.md"
+  }
+ ],
+ "refuted_if": "bar 1 NO-FIRE and bar 2 not a resolved FIRE: max_bar12_ratio = max(delta_agree_points_e0 / 1.0, v / 1.0) below 1.0, where v is delta_agree_points_validation when both conjunct nets (corpus, prefix) are at least 0 AND the 95 percent block-bootstrap interval of the bar 2 delta excludes zero (ci95_low above 0), and min(delta_agree_points_validation, 0) otherwise, so a bar 2 that fails on a conjunct or fires with an interval through zero (FIRE-AT-LOW-RESOLUTION) counts as NO-FIRE in the ratio; the noise-level fire that blocked the head-restore refutation cannot block this one. Refuted means: restoring this pair (layers 22 and 23) to the vendor weights recovers no measurable teacher agreement at the registered resolution; the pair is not a worthwhile selective-precision target and no further layer is selected from this result. Verdict classes: VALIDATED iff bar 2 FIRE with the 95 percent block-bootstrap interval of its delta excluding zero (bar 1 is diagnostic and is reported beside it, never required: the validation set decides); LOW-RESOLUTION (bar 2 FIRE with an interval through zero) is inconclusive, neither validated nor refuted; E0-ONLY (bar 1 FIRE, bar 2 NO-FIRE) is not a validated recovery; CALIBRATION-ONLY (bar 3 FIRE, bars 1 and 2 NO-FIRE) is a calibration result; NULL otherwise. The sensitivity receipt is an observation under every class.",
+ "refuted_if_predicate": {
+  "measurement": "max_bar12_ratio",
+  "direction": "below",
+  "value": 1.0
+ },
+ "registered_prior": "The head restoration recovered nothing, so the teacher disagreement sits upstream of the head by elimination; this pair is 2 of 64 layers, about 3 percent of the body's weights, and the compile-time decode fixture (logs/qwenmodel1/score_C.json) measured two S16 matrices against the vendor, lm_head at relative L2 error 0.108 and layer 0's in_proj_z at 0.101 (no other body matrix and no W4 matrix was measured there). Prior on GROUP minus CONTROL: bar 1 between -0.5 and +0.5 points with corrected and broken counts of the same order (tens each), probability of FIRE 0.15; bar 2 between -1 and +1.5 points, probability of FIRE 0.2, and if it fires the interval includes zero with probability 0.7; bar 3 probability 0.3. The single-layer arms move E0 by less than the pair. DENSE_C flips no decided argmax. Sensitivity: the local output difference of the pair (out23, relative L2 per row) median between 0.02 and 0.15; the ratio of the final-norm difference to the local one between 0.3 and 2; E0 argmax flips between 1 and 4 percent of positions. The opener: the pair flips 'The' to 'We' on fewer than half of the 24 prompts."
+}

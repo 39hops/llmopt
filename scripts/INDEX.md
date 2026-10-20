@@ -5382,6 +5382,72 @@ QWEN-IO-ATTRIB-1 observations builder + registered resolution.
 - `resolution(outcomes: dict, meas: dict) -> tuple`
 - `main()`
 
+### scratch/qwen_layer_restore.py
+QWEN-LAYER-RESTORE-0: one bounded layer-restoration pilot on arm C.
+
+- `git_head()`
+- `git_dirty()`
+- `sha_file(p)`
+- `sha_array_file(path)`
+- `refuse(path)`
+- `receipt_path(name)`
+- `require_clean_tree()`
+- `repo_root()`
+- `provenance(mode)`
+- `rss_peak_bytes()`
+- `load_manifest()`
+- `vendor_index()`
+- `target_names(idx)`
+- `payload(e)`
+- `armc_tensor(man, name)` — The arm C tensor decoded to float32 in the vendor layout (no load conventions applied).
+- `vendor_shard_path()`
+- `vendor_tensor(name, expect_shape)`
+- `source_tensors(source, man, names)` — {vendor name: float32 array in the vendor layout} for one layer from
+- `vendor_ready()` — The fetch receipt says ok and the shard on disk still has the pinned sha.
+- `l2norm_override()` — The tower's exact-l2norm override of mlx-lm's GatedDeltaNet (the same
+- `load_model()`
+- `serving()`
+- `set_path(root, path, value)`
+- `install_dense(model, tensors)` — Install {vendor name: float32 array (vendor layout)} into the tower:
+- `_tap_class()`
+- `class _RecordingHead`
+- `install_taps(model, boundaries)` — Taps for the named boundaries (inNN: input of layer NN; outNN: output;
+- `drain(store, rows)` — Move the stored chunk arrays to host as float32 [rows, D] and clear.
+- `teacher_manifest()`
+- `e0_rows()`
+- `validation_contexts(tok=None)` — corpus ids (356), prefix ids (6 lists), with the retokenisation and
+- `corpus_blocks(tokens, nl2)`
+- `e0_contexts(tman)` — [(prompt_id, prompt ids, generated ids)] in E0 row order.
+- `mode_preflight()`
+- `vendor_metadata()`
+- `run_prefill(model, ids, store=None, chunk=CHUNK)` — One sequence through prefill_chunked with a fresh cache; returns the
+- `mode_capture()`
+- `dense_layer(L, tensors)` — A standalone mlx-lm DecoderLayer for layer L holding the given vendor
+- `layer_forward(layer, L, x_np, chunk=None)` — Run one standalone layer over [n, D] float32 rows from a zero state:
+- `mode_oracle_mlx()`
+- `mode_fetch()`
+- `census_dump_ok(cen, l_name)`
+- `teacher_side(zt, teacher_token)`
+- `new_stats(n)`
+- `fill_stats(arr, i, z, zt, teacher_token, next_token=None)`
+- `mode_score()`
+- `q(a)`
+- `bins(x, edges)`
+- `load_scores()`
+- `contrast(ra, rb, blocks, set_name)`
+- `mode_summarize()`
+- `observations(summ, rec)`
+- `mode_sensitivity()`
+- `main()`
+
+### scratch/qwen_layer_restore_torch.py
+QWEN-LAYER-RESTORE-0, the torch half of the one-layer oracle.
+
+- `git_head()`
+- `git_dirty()`
+- `sha_file(p)`
+- `main()`
+
 ### scratch/qwen_lband_adjudicate.py
 QWEN-LBAND-1 observations builder + registered resolution.
 
@@ -6673,6 +6739,18 @@ lab.keepsets — keep-set / coalition algebra. CANONICAL BODY since 2026-08-12 (
 ### llmopt/lab/lake.py
 Moved to llmopt.runs.lake (Phase 5, 2026-08-12). This alias keeps old imports working with full fidelity (privates included).
 
+
+### llmopt/lab/layer_restore.py
+Pure-numpy helpers of a layer-restoration study on the Qwen3.5 arm C tower (scratch/qwen_layer_restore.py, QWEN-LAYER-RESTORE-0).
+
+- `_layer_of(name: str)`
+- `layer_tensor_map(weight_map: dict, layer: int) -> dict` — {tensor name: shard file} for exactly the given decoder layer.
+- `shard_coverage(weight_map: dict) -> dict` — {shard: {"complete": [layers whose every tensor is in this shard],
+- `sanitize_vendor_tensor(name: str, arr: np.ndarray) -> np.ndarray` — The conventions mlx-lm's Qwen3.5 sanitizer applies to vendor
+- `mlx_param_path(name: str) -> str` — Vendor tensor name -> the mlx-lm Model parameter path (the tower's
+- `boundary_stats(a, b) -> dict` — Difference statistics of two [n, d] activation matrices (a is the
+- `rel_frobenius(a, b) -> float`
+- `causal_additive_mask(n: int) -> np.ndarray`
 
 ### llmopt/lab/locator.py
 lab.locator — logical artifact locators instead of machine-local paths.
