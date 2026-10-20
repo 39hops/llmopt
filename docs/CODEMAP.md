@@ -593,7 +593,7 @@ Census: library 200, reproduce-pinned 9, results-cited 524, spec-cited 74, tool-
 | qwen | qwen_cuda_rung4.py | library | RESULTS, specs | RESULTS×9, specs×2 | 1 | 4 | 1 | — |
 | qwen | qwen_cycle_impulse.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
 | qwen | qwen_displace_extract.py | spec-cited | specs | specs×1 | — | — | 1 | — |
-| qwen | qwen_e0_disagreement_census.py | results-cited | RESULTS | RESULTS×4 | — | 1 | 1 | — |
+| qwen | qwen_e0_disagreement_census.py | results-cited | RESULTS, specs | RESULTS×4, specs×1 | — | 1 | 1 | — |
 | qwen | qwen_e0_preflight.py | UNCITED | — | — | — | — | — | — |
 | qwen | qwen_e0_recompute.py | UNCITED | — | — | — | — | — | — |
 | qwen | qwen_e0_spec_census.py | results-cited | RESULTS, specs | RESULTS×5, specs×4 | — | — | 3 | — |
@@ -601,7 +601,7 @@ Census: library 200, reproduce-pinned 9, results-cited 524, spec-cited 74, tool-
 | qwen | qwen_effort_quant.py | results-cited | RESULTS | RESULTS×7 | — | — | 1 | — |
 | qwen | qwen_effort_tower.py | results-cited | RESULTS, via:specs | RESULTS×3 | — | 1 | — | — |
 | qwen | qwen_family_probe.py | library | RESULTS, via:specs | RESULTS×2 | 1 | 1 | — | — |
-| qwen | qwen_head_restore.py | results-cited | RESULTS | RESULTS×6 | — | 1 | — | — |
+| qwen | qwen_head_restore.py | results-cited | RESULTS | RESULTS×7 | — | 1 | — | — |
 | qwen | qwen_head_restore_study.sh | results-cited | RESULTS | RESULTS×4 | — | — | — | — |
 | qwen | qwen_headswap_impulse.py | results-cited | RESULTS, specs | RESULTS×5, specs×1 | — | — | — | — |
 | qwen | qwen_homeo_actuator.py | results-cited | RESULTS | RESULTS×8 | — | 3 | — | — |
