@@ -1,0 +1,496 @@
+{
+ "mode": "score",
+ "smoke": false,
+ "code_commit": "221c1c0c",
+ "tree_dirty": false,
+ "started_utc": "2026-10-21T16:48:56Z",
+ "driver": "scratch/qwen_layer_restore.py",
+ "art_role": "ART_DIR (arm C)",
+ "vendor_role": "VENDOR_DIR (config, tokenizer)",
+ "vendor_shard_role": "VENDOR_SHARD_DIR (outside the repository)",
+ "repo": "Qwen/Qwen3.8-27B",
+ "revision": "1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0",
+ "shard": "model-00007-of-00018.safetensors",
+ "layers": [
+  22,
+  23
+ ],
+ "census_receipt": "logs/qmetal/prefill_serve/census_d42cb215.json",
+ "teacher_dir": "logs/qwenteacher_v2",
+ "arm": "group",
+ "serving_applied": {
+  "chunk": 256,
+  "matmul": "gemm",
+  "cache_limit_bytes": 2147483648
+ },
+ "vendor_shard_check": "fetch receipt ok; shard sha re-verified at stage start",
+ "weights": "vendor",
+ "layers_installed": [
+  22,
+  23
+ ],
+ "install_wall_s": 1.260957956314087,
+ "installed": {
+  "22": {
+   "tensors": {
+    "model.language_model.layers.22.input_layernorm.weight": [
+     5120
+    ],
+    "model.language_model.layers.22.linear_attn.A_log": [
+     48
+    ],
+    "model.language_model.layers.22.linear_attn.conv1d.weight": [
+     10240,
+     1,
+     4
+    ],
+    "model.language_model.layers.22.linear_attn.dt_bias": [
+     48
+    ],
+    "model.language_model.layers.22.linear_attn.in_proj_a.weight": [
+     48,
+     5120
+    ],
+    "model.language_model.layers.22.linear_attn.in_proj_b.weight": [
+     48,
+     5120
+    ],
+    "model.language_model.layers.22.linear_attn.in_proj_qkv.weight": [
+     10240,
+     5120
+    ],
+    "model.language_model.layers.22.linear_attn.in_proj_z.weight": [
+     6144,
+     5120
+    ],
+    "model.language_model.layers.22.linear_attn.norm.weight": [
+     128
+    ],
+    "model.language_model.layers.22.linear_attn.out_proj.weight": [
+     5120,
+     6144
+    ],
+    "model.language_model.layers.22.mlp.down_proj.weight": [
+     5120,
+     17408
+    ],
+    "model.language_model.layers.22.mlp.gate_proj.weight": [
+     17408,
+     5120
+    ],
+    "model.language_model.layers.22.mlp.up_proj.weight": [
+     17408,
+     5120
+    ],
+    "model.language_model.layers.22.post_attention_layernorm.weight": [
+     5120
+    ]
+   },
+   "bytes_f32": 1533092736
+  },
+  "23": {
+   "tensors": {
+    "model.language_model.layers.23.input_layernorm.weight": [
+     5120
+    ],
+    "model.language_model.layers.23.mlp.down_proj.weight": [
+     5120,
+     17408
+    ],
+    "model.language_model.layers.23.mlp.gate_proj.weight": [
+     17408,
+     5120
+    ],
+    "model.language_model.layers.23.mlp.up_proj.weight": [
+     17408,
+     5120
+    ],
+    "model.language_model.layers.23.post_attention_layernorm.weight": [
+     5120
+    ],
+    "model.language_model.layers.23.self_attn.k_norm.weight": [
+     256
+    ],
+    "model.language_model.layers.23.self_attn.k_proj.weight": [
+     1024,
+     5120
+    ],
+    "model.language_model.layers.23.self_attn.o_proj.weight": [
+     5120,
+     6144
+    ],
+    "model.language_model.layers.23.self_attn.q_norm.weight": [
+     256
+    ],
+    "model.language_model.layers.23.self_attn.q_proj.weight": [
+     12288,
+     5120
+    ],
+    "model.language_model.layers.23.self_attn.v_proj.weight": [
+     1024,
+     5120
+    ]
+   },
+   "bytes_f32": 1489020928
+  }
+ },
+ "raw_tensors_equal_arm_c": {
+  "model.language_model.layers.22.input_layernorm.weight": true,
+  "model.language_model.layers.22.linear_attn.A_log": true,
+  "model.language_model.layers.22.linear_attn.conv1d.weight": true,
+  "model.language_model.layers.22.linear_attn.dt_bias": true,
+  "model.language_model.layers.22.linear_attn.in_proj_a.weight": true,
+  "model.language_model.layers.22.linear_attn.in_proj_b.weight": true,
+  "model.language_model.layers.22.linear_attn.norm.weight": true,
+  "model.language_model.layers.22.post_attention_layernorm.weight": true,
+  "model.language_model.layers.23.input_layernorm.weight": true,
+  "model.language_model.layers.23.post_attention_layernorm.weight": true,
+  "model.language_model.layers.23.self_attn.k_norm.weight": true,
+  "model.language_model.layers.23.self_attn.q_norm.weight": true
+ },
+ "fused_residents_after_install": 388,
+ "artifact": {
+  "chain": "logs/qwenwhole/artifact_digest_C.txt",
+  "chain_sha256": "de7e0180bf49f965c17116b7fbe8c34d2b1529c2431cc234f3a6460ad84b24dc",
+  "chain_report": {
+   "art_dir": "/Users/artin/qwen_whole0t/C",
+   "rung0": {
+    "checked": 19,
+    "unchained": false
+   },
+   "conservation": {
+    "keys": 1199
+   },
+   "census": {
+    "w4": 192,
+    "s16": 210,
+    "raw": 449,
+    "excluded": 348
+   },
+   "preflight": {
+    "estimated_peak_bytes": 6504933184,
+    "available_bytes": 24388829184,
+    "safety_fraction": 0.8
+   }
+  },
+  "n_layers": 64,
+  "families": {
+   "linear_attn": 48,
+   "full_attn": 16
+  },
+  "fused": 402,
+  "raw": 449,
+  "payload_resident_bytes": 9367009856,
+  "kernel_version": 4,
+  "prefill_gemm": false,
+  "gemm_min_t": {
+   "w4": 16,
+   "s16": 32
+  },
+  "gemm_slab_bytes": 419430400,
+  "gemm_ineligible_matrices": 0
+ },
+ "load_wall_s": 6.042024850845337,
+ "provenance": {
+  "corpus_txt_sha_ok": true,
+  "prefixes_jsonl_sha_ok": true,
+  "prefix_bounds_ok": true,
+  "corpus_len_ok": true,
+  "corpus_retokenize_equal": true,
+  "prefix_retokenize_equal": true
+ },
+ "sets": {
+  "e0": 4722,
+  "corpus": 356,
+  "prefix": 98
+ },
+ "agree_teacher": {
+  "e0": 3907,
+  "corpus": 295,
+  "prefix": 81
+ },
+ "mean_kl": {
+  "e0": 0.3073257549130113,
+  "corpus": 0.2731757727296677,
+  "prefix": 0.1527934992734019
+ },
+ "per_prompt": [
+  {
+   "prompt_id": "chat-1",
+   "prompt_len": 62,
+   "gen_len": 256,
+   "wall_s": 11.296741008758545,
+   "tok_s": 28.149711474614623,
+   "agree_teacher": 226
+  },
+  {
+   "prompt_id": "chat-2",
+   "prompt_len": 64,
+   "gen_len": 256,
+   "wall_s": 10.875893115997314,
+   "tok_s": 29.422870985125172,
+   "agree_teacher": 192
+  },
+  {
+   "prompt_id": "chat-3",
+   "prompt_len": 63,
+   "gen_len": 186,
+   "wall_s": 7.59177303314209,
+   "tok_s": 32.798662303652094,
+   "agree_teacher": 158
+  },
+  {
+   "prompt_id": "chat-4",
+   "prompt_len": 63,
+   "gen_len": 88,
+   "wall_s": 5.910830974578857,
+   "tok_s": 25.54632346101872,
+   "agree_teacher": 78
+  },
+  {
+   "prompt_id": "math-1",
+   "prompt_len": 64,
+   "gen_len": 256,
+   "wall_s": 10.338454008102417,
+   "tok_s": 30.952403497583944,
+   "agree_teacher": 235
+  },
+  {
+   "prompt_id": "math-2",
+   "prompt_len": 67,
+   "gen_len": 100,
+   "wall_s": 6.121178150177002,
+   "tok_s": 27.28232962720926,
+   "agree_teacher": 90
+  },
+  {
+   "prompt_id": "math-3",
+   "prompt_len": 79,
+   "gen_len": 117,
+   "wall_s": 7.267379999160767,
+   "tok_s": 26.969829570303737,
+   "agree_teacher": 104
+  },
+  {
+   "prompt_id": "math-4",
+   "prompt_len": 64,
+   "gen_len": 138,
+   "wall_s": 7.442205905914307,
+   "tok_s": 27.14249008341344,
+   "agree_teacher": 125
+  },
+  {
+   "prompt_id": "code-1",
+   "prompt_len": 66,
+   "gen_len": 204,
+   "wall_s": 9.556209087371826,
+   "tok_s": 28.2538815895934,
+   "agree_teacher": 179
+  },
+  {
+   "prompt_id": "code-2",
+   "prompt_len": 83,
+   "gen_len": 256,
+   "wall_s": 10.903959035873413,
+   "tok_s": 31.089625234716035,
+   "agree_teacher": 212
+  },
+  {
+   "prompt_id": "code-3",
+   "prompt_len": 66,
+   "gen_len": 256,
+   "wall_s": 10.535093069076538,
+   "tok_s": 30.56451403786461,
+   "agree_teacher": 210
+  },
+  {
+   "prompt_id": "code-4",
+   "prompt_len": 68,
+   "gen_len": 256,
+   "wall_s": 11.774720907211304,
+   "tok_s": 27.51657576882095,
+   "agree_teacher": 200
+  },
+  {
+   "prompt_id": "reason-1",
+   "prompt_len": 75,
+   "gen_len": 53,
+   "wall_s": 4.044498920440674,
+   "tok_s": 31.647925371693162,
+   "agree_teacher": 46
+  },
+  {
+   "prompt_id": "reason-2",
+   "prompt_len": 83,
+   "gen_len": 256,
+   "wall_s": 10.913804054260254,
+   "tok_s": 31.06158020746852,
+   "agree_teacher": 223
+  },
+  {
+   "prompt_id": "reason-3",
+   "prompt_len": 76,
+   "gen_len": 256,
+   "wall_s": 10.716740131378174,
+   "tok_s": 30.979569899984575,
+   "agree_teacher": 230
+  },
+  {
+   "prompt_id": "reason-4",
+   "prompt_len": 66,
+   "gen_len": 252,
+   "wall_s": 9.962558269500732,
+   "tok_s": 31.91951217726091,
+   "agree_teacher": 198
+  },
+  {
+   "prompt_id": "know-1",
+   "prompt_len": 58,
+   "gen_len": 200,
+   "wall_s": 7.262794017791748,
+   "tok_s": 35.52351882319318,
+   "agree_teacher": 158
+  },
+  {
+   "prompt_id": "know-2",
+   "prompt_len": 64,
+   "gen_len": 187,
+   "wall_s": 7.245826959609985,
+   "tok_s": 34.64062851612873,
+   "agree_teacher": 154
+  },
+  {
+   "prompt_id": "know-3",
+   "prompt_len": 62,
+   "gen_len": 256,
+   "wall_s": 9.94302487373352,
+   "tok_s": 31.98221909713414,
+   "agree_teacher": 205
+  },
+  {
+   "prompt_id": "know-4",
+   "prompt_len": 70,
+   "gen_len": 82,
+   "wall_s": 5.228192090988159,
+   "tok_s": 29.073147534499082,
+   "agree_teacher": 67
+  },
+  {
+   "prompt_id": "long-1",
+   "prompt_len": 73,
+   "gen_len": 256,
+   "wall_s": 10.656330108642578,
+   "tok_s": 30.873668199633936,
+   "agree_teacher": 179
+  },
+  {
+   "prompt_id": "long-2",
+   "prompt_len": 71,
+   "gen_len": 256,
+   "wall_s": 10.74497938156128,
+   "tok_s": 30.432817820119993,
+   "agree_teacher": 199
+  },
+  {
+   "prompt_id": "edge-1",
+   "prompt_len": 65,
+   "gen_len": 88,
+   "wall_s": 5.304266929626465,
+   "tok_s": 28.84470220482937,
+   "agree_teacher": 71
+  },
+  {
+   "prompt_id": "edge-2",
+   "prompt_len": 65,
+   "gen_len": 211,
+   "wall_s": 10.16520380973816,
+   "tok_s": 27.1514477393552,
+   "agree_teacher": 168
+  }
+ ],
+ "walls_s": {
+  "e0": 409.425733089447,
+  "corpus": 11.77122974395752,
+  "prefixes": [
+   1.9086151123046875,
+   1.0966229438781738,
+   2.468230962753296,
+   1.9037220478057861,
+   1.9604661464691162,
+   1.8567190170288086
+  ],
+  "validation": 41.532036781311035
+ },
+ "matrix_calls": {
+  "fused": 2748,
+  "gemm": 15488
+ },
+ "memory": {
+  "active_bytes": 11599892812,
+  "peak_bytes": 17149645132,
+  "cache_bytes": 2059944485,
+  "footprint_bytes": 13659837297,
+  "rss_peak_bytes": 11365875712,
+  "mx_peak_bytes": 17149645132
+ },
+ "capture": true,
+ "boundaries": [
+  "in22",
+  "out23",
+  "out27",
+  "out31",
+  "out39",
+  "out47",
+  "out55",
+  "out63",
+  "final_norm"
+ ],
+ "dump_dir": "logs/qwen_layer_restore/dump",
+ "dumps": {
+  "score_npz": {
+   "file": "score_group.npz",
+   "sha256": "a36229942e5c44cd3a182f34d1e892765ca9d7e9bfaea80fb04d70e64f819b74"
+  },
+  "in22": {
+   "file": "capture_group_in22.npy",
+   "sha256": "e9e1370c1c691a0e12c86b56a502a2ab3532cd4dc1742e681d295d71588939e4"
+  },
+  "out23": {
+   "file": "capture_group_out23.npy",
+   "sha256": "46c51f892e0ca458e48f1316a7240786712e1e8df19423b8fbf48365025f3b2c"
+  },
+  "out27": {
+   "file": "capture_group_out27.npy",
+   "sha256": "9d1c09e4fdc9497d88d2c712f857c436bfccfcf35cc09eda7d95a0487f48186d"
+  },
+  "out31": {
+   "file": "capture_group_out31.npy",
+   "sha256": "c56275693670beec22f372e04a0b8cd317ab83815b796b6c631a91bfeaa83304"
+  },
+  "out39": {
+   "file": "capture_group_out39.npy",
+   "sha256": "07ba13db4f5510c1784476669f12af3f93d25c0a46c4ffce9c4992f06fca433c"
+  },
+  "out47": {
+   "file": "capture_group_out47.npy",
+   "sha256": "6eb8eccf7341ebc8659c26332f1f49ec34af10648ced90af62271a0a5947b0ed"
+  },
+  "out55": {
+   "file": "capture_group_out55.npy",
+   "sha256": "f615a6889902f7db15dfeb60fa2d79c78451deca406b5736b2b912681928780d"
+  },
+  "out63": {
+   "file": "capture_group_out63.npy",
+   "sha256": "8d3f6a00090db462dddd66be40e5f5ab9f95860a92e2a56cf00c9331acfe16c9"
+  },
+  "final_norm": {
+   "file": "capture_group_final_norm.npy",
+   "sha256": "d051bf299b48185d19ded9ca376e5f1f338a27cfe108ddd19917fec3c5c37930"
+  }
+ },
+ "e0_rows_sha256": "f9df9b5ae2a55b95a2f3a64a6bf8594b2346f77e12272448770e9656f3b041c7",
+ "wall_s": 451.44860196113586,
+ "control_vs_census": null,
+ "teacher_token_convention": "E0: the recorded rollout token of the E0 row; corpus and prefixes: the teacher's fp16-stored argmax over the live vocabulary",
+ "ok": true
+}

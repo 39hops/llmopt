@@ -1,0 +1,347 @@
+{
+ "mode": "preflight",
+ "smoke": false,
+ "code_commit": "221c1c0c",
+ "tree_dirty": false,
+ "started_utc": "2026-10-21T16:14:57Z",
+ "driver": "scratch/qwen_layer_restore.py",
+ "art_role": "ART_DIR (arm C)",
+ "vendor_role": "VENDOR_DIR (config, tokenizer)",
+ "vendor_shard_role": "VENDOR_SHARD_DIR (outside the repository)",
+ "repo": "Qwen/Qwen3.8-27B",
+ "revision": "1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0",
+ "shard": "model-00007-of-00018.safetensors",
+ "layers": [
+  22,
+  23
+ ],
+ "census_receipt": "logs/qmetal/prefill_serve/census_d42cb215.json",
+ "teacher_dir": "logs/qwenteacher_v2",
+ "artifact_report": {
+  "art_dir": "/Users/artin/qwen_whole0t/C",
+  "rung0": {
+   "checked": 19,
+   "unchained": false
+  },
+  "conservation": {
+   "keys": 1199
+  },
+  "census": {
+   "w4": 192,
+   "s16": 210,
+   "raw": 449,
+   "excluded": 348
+  },
+  "preflight": {
+   "estimated_peak_bytes": 6504933184,
+   "available_bytes": 20872740864,
+   "safety_fraction": 0.8
+  }
+ },
+ "shard_coverage_target": {
+  "complete": [
+   22,
+   23
+  ],
+  "partial": [
+   21
+  ]
+ },
+ "n_layers_straddling": 8,
+ "straddling_layers": [
+  4,
+  15,
+  21,
+  29,
+  37,
+  45,
+  53,
+  61
+ ],
+ "target_tensors": {
+  "22": {
+   "model.language_model.layers.22.input_layernorm.weight": {
+    "codec": "raw",
+    "shape": [
+     5120
+    ],
+    "dtype": "BF16",
+    "len": 10240
+   },
+   "model.language_model.layers.22.linear_attn.A_log": {
+    "codec": "raw",
+    "shape": [
+     48
+    ],
+    "dtype": "BF16",
+    "len": 96
+   },
+   "model.language_model.layers.22.linear_attn.conv1d.weight": {
+    "codec": "raw",
+    "shape": [
+     10240,
+     1,
+     4
+    ],
+    "dtype": "BF16",
+    "len": 81920
+   },
+   "model.language_model.layers.22.linear_attn.dt_bias": {
+    "codec": "raw",
+    "shape": [
+     48
+    ],
+    "dtype": "BF16",
+    "len": 96
+   },
+   "model.language_model.layers.22.linear_attn.in_proj_a.weight": {
+    "codec": "raw",
+    "shape": [
+     48,
+     5120
+    ],
+    "dtype": "BF16",
+    "len": 491520
+   },
+   "model.language_model.layers.22.linear_attn.in_proj_b.weight": {
+    "codec": "raw",
+    "shape": [
+     48,
+     5120
+    ],
+    "dtype": "BF16",
+    "len": 491520
+   },
+   "model.language_model.layers.22.linear_attn.in_proj_qkv.weight": {
+    "codec": "s16",
+    "shape": [
+     10240,
+     5120
+    ],
+    "dtype": null,
+    "len": 26624032
+   },
+   "model.language_model.layers.22.linear_attn.in_proj_z.weight": {
+    "codec": "s16",
+    "shape": [
+     6144,
+     5120
+    ],
+    "dtype": null,
+    "len": 15974432
+   },
+   "model.language_model.layers.22.linear_attn.norm.weight": {
+    "codec": "raw",
+    "shape": [
+     128
+    ],
+    "dtype": "BF16",
+    "len": 256
+   },
+   "model.language_model.layers.22.linear_attn.out_proj.weight": {
+    "codec": "s16",
+    "shape": [
+     5120,
+     6144
+    ],
+    "dtype": null,
+    "len": 15974432
+   },
+   "model.language_model.layers.22.mlp.down_proj.weight": {
+    "codec": "w4",
+    "shape": [
+     5120,
+     17408
+    ],
+    "dtype": null,
+    "len": 22980608
+   },
+   "model.language_model.layers.22.mlp.gate_proj.weight": {
+    "codec": "w4",
+    "shape": [
+     17408,
+     5120
+    ],
+    "dtype": null,
+    "len": 22980608
+   },
+   "model.language_model.layers.22.mlp.up_proj.weight": {
+    "codec": "w4",
+    "shape": [
+     17408,
+     5120
+    ],
+    "dtype": null,
+    "len": 22980608
+   },
+   "model.language_model.layers.22.post_attention_layernorm.weight": {
+    "codec": "raw",
+    "shape": [
+     5120
+    ],
+    "dtype": "BF16",
+    "len": 10240
+   }
+  },
+  "23": {
+   "model.language_model.layers.23.input_layernorm.weight": {
+    "codec": "raw",
+    "shape": [
+     5120
+    ],
+    "dtype": "BF16",
+    "len": 10240
+   },
+   "model.language_model.layers.23.mlp.down_proj.weight": {
+    "codec": "w4",
+    "shape": [
+     5120,
+     17408
+    ],
+    "dtype": null,
+    "len": 22980608
+   },
+   "model.language_model.layers.23.mlp.gate_proj.weight": {
+    "codec": "w4",
+    "shape": [
+     17408,
+     5120
+    ],
+    "dtype": null,
+    "len": 22980608
+   },
+   "model.language_model.layers.23.mlp.up_proj.weight": {
+    "codec": "w4",
+    "shape": [
+     17408,
+     5120
+    ],
+    "dtype": null,
+    "len": 22980608
+   },
+   "model.language_model.layers.23.post_attention_layernorm.weight": {
+    "codec": "raw",
+    "shape": [
+     5120
+    ],
+    "dtype": "BF16",
+    "len": 10240
+   },
+   "model.language_model.layers.23.self_attn.k_norm.weight": {
+    "codec": "raw",
+    "shape": [
+     256
+    ],
+    "dtype": "BF16",
+    "len": 512
+   },
+   "model.language_model.layers.23.self_attn.k_proj.weight": {
+    "codec": "s16",
+    "shape": [
+     1024,
+     5120
+    ],
+    "dtype": null,
+    "len": 2662432
+   },
+   "model.language_model.layers.23.self_attn.o_proj.weight": {
+    "codec": "s16",
+    "shape": [
+     5120,
+     6144
+    ],
+    "dtype": null,
+    "len": 15974432
+   },
+   "model.language_model.layers.23.self_attn.q_norm.weight": {
+    "codec": "raw",
+    "shape": [
+     256
+    ],
+    "dtype": "BF16",
+    "len": 512
+   },
+   "model.language_model.layers.23.self_attn.q_proj.weight": {
+    "codec": "s16",
+    "shape": [
+     12288,
+     5120
+    ],
+    "dtype": null,
+    "len": 31948832
+   },
+   "model.language_model.layers.23.self_attn.v_proj.weight": {
+    "codec": "s16",
+    "shape": [
+     1024,
+     5120
+    ],
+    "dtype": null,
+    "len": 2662432
+   }
+  }
+ },
+ "bytes": {
+  "bf16": {
+   "22": 766546368,
+   "23": 744510464
+  },
+  "f32_installed": {
+   "22": 1533092736,
+   "23": 1489020928
+  },
+  "arm_c_compressed": {
+   "22": 128600608,
+   "23": 122211456
+  }
+ },
+ "shard_pins": {
+  "bytes": 2108759344,
+  "sha256": "80b0c49033e9a0d5762562aa12f4acdb7f54da586f3d0110f28c48d91cf07892"
+ },
+ "hub_metadata": {
+  "size": 2108759344,
+  "lfs_sha256": "80b0c49033e9a0d5762562aa12f4acdb7f54da586f3d0110f28c48d91cf07892",
+  "lfs_size": 2108759344
+ },
+ "storage": {
+  "dest_role": "VENDOR_SHARD_DIR",
+  "free_bytes_at_dest": 51396132864,
+  "shard_already_present": false
+ },
+ "memory": {
+  "census_peak_bytes": 14307983916,
+  "projected_peak_bytes": 17079285516,
+  "budget_bytes": 25769803776
+ },
+ "tolerances": {
+  "oracle_rel_l2": 0.0001,
+  "oracle_max_abs_over_rms": 0.001,
+  "parity_margin": 0.01,
+  "parity_logit_abs": 0.01
+ },
+ "checks": {
+  "targets_complete_in_shard": true,
+  "targets_in_one_shard": true,
+  "family_ok": true,
+  "no_excluded_target": true,
+  "hub_metadata_equals_pins": true,
+  "dest_outside_repo": true,
+  "dest_not_vendor_dir": true,
+  "free_bytes_ok": true,
+  "memory_projection_ok": true,
+  "census_dump_shas_pinned": true,
+  "census_dump_present": true,
+  "e0_rows_count_ok": true,
+  "teacher_rollout_sha_ok": true,
+  "teacher_corpus_sha_ok": true,
+  "teacher_prefix_sha_ok": true,
+  "validation_corpus_txt_sha_ok": true,
+  "validation_prefixes_jsonl_sha_ok": true,
+  "validation_prefix_bounds_ok": true,
+  "validation_corpus_len_ok": true,
+  "head_shard_present": true
+ },
+ "ok": true,
+ "wall_s": 13.647973775863647
+}

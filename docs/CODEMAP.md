@@ -609,9 +609,9 @@ Census: library 200, reproduce-pinned 9, results-cited 527, spec-cited 74, tool-
 | qwen | qwen_hsimpulse_adjudicate.py | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
 | qwen | qwen_hsimpulse_color.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
 | qwen | qwen_ioattrib_adjudicate.py | library | RESULTS, specs | RESULTS×2, specs×1 | 1 | 1 | — | — |
-| qwen | qwen_layer_restore.py | results-cited | RESULTS, specs | RESULTS×5, specs×1 | — | 1 | 1 | — |
-| qwen | qwen_layer_restore_study.sh | results-cited | RESULTS, specs | RESULTS×3, specs×2 | — | — | — | — |
-| qwen | qwen_layer_restore_torch.py | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 1 | 1 | — |
+| qwen | qwen_layer_restore.py | results-cited | RESULTS, specs | RESULTS×20, specs×1 | — | 1 | 1 | — |
+| qwen | qwen_layer_restore_study.sh | results-cited | RESULTS, specs | RESULTS×5, specs×2 | — | — | — | — |
+| qwen | qwen_layer_restore_torch.py | results-cited | RESULTS, specs | RESULTS×7, specs×1 | — | 1 | 1 | — |
 | qwen | qwen_lband_adjudicate.py | library | RESULTS | RESULTS×2 | 1 | 1 | — | — |
 | qwen | qwen_loop_state.py | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
 | qwen | qwen_loop_state_adjudicate.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
@@ -789,7 +789,7 @@ Census: library 200, reproduce-pinned 9, results-cited 527, spec-cited 74, tool-
 | family | file | class | cited by | doc citations | imports | invoked by | mentions | via |
 |---|---|---|---|---|---|---|---|---|
 |  | __init__.py | spec-cited | specs | specs×2 | — | — | 1 | — |
-| adjudicate | adjudicate.py | library | RESULTS, specs, TOOLING | RESULTS×21, specs×5, TOOLING×2 | — | 8 | 4 | — |
+| adjudicate | adjudicate.py | library | RESULTS, specs, TOOLING | RESULTS×23, specs×5, TOOLING×2 | — | 8 | 4 | — |
 | anchor | anchor_guard.py | spec-cited | specs | specs×2 | — | — | 1 | — |
 | anim | anim_precompute.py | spec-cited | specs | specs×4 | — | — | 2 | — |
 | arena | arena.py | UNCITED | — | — | — | — | — | — |

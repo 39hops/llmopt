@@ -1,0 +1,386 @@
+{
+ "mode": "score",
+ "smoke": false,
+ "code_commit": "221c1c0c",
+ "tree_dirty": false,
+ "started_utc": "2026-10-21T16:18:11Z",
+ "driver": "scratch/qwen_layer_restore.py",
+ "art_role": "ART_DIR (arm C)",
+ "vendor_role": "VENDOR_DIR (config, tokenizer)",
+ "vendor_shard_role": "VENDOR_SHARD_DIR (outside the repository)",
+ "repo": "Qwen/Qwen3.8-27B",
+ "revision": "1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0",
+ "shard": "model-00007-of-00018.safetensors",
+ "layers": [
+  22,
+  23
+ ],
+ "census_receipt": "logs/qmetal/prefill_serve/census_d42cb215.json",
+ "teacher_dir": "logs/qwenteacher_v2",
+ "arm": "control",
+ "serving_applied": {
+  "chunk": 256,
+  "matmul": "gemm",
+  "cache_limit_bytes": 2147483648
+ },
+ "weights": null,
+ "layers_installed": [],
+ "install_wall_s": 9.5367431640625e-07,
+ "installed": {},
+ "raw_tensors_equal_arm_c": {},
+ "fused_residents_after_install": 401,
+ "artifact": {
+  "chain": "logs/qwenwhole/artifact_digest_C.txt",
+  "chain_sha256": "de7e0180bf49f965c17116b7fbe8c34d2b1529c2431cc234f3a6460ad84b24dc",
+  "chain_report": {
+   "art_dir": "/Users/artin/qwen_whole0t/C",
+   "rung0": {
+    "checked": 19,
+    "unchained": false
+   },
+   "conservation": {
+    "keys": 1199
+   },
+   "census": {
+    "w4": 192,
+    "s16": 210,
+    "raw": 449,
+    "excluded": 348
+   },
+   "preflight": {
+    "estimated_peak_bytes": 6504933184,
+    "available_bytes": 21522841600,
+    "safety_fraction": 0.8
+   }
+  },
+  "n_layers": 64,
+  "families": {
+   "linear_attn": 48,
+   "full_attn": 16
+  },
+  "fused": 402,
+  "raw": 449,
+  "payload_resident_bytes": 9367009856,
+  "kernel_version": 4,
+  "prefill_gemm": false,
+  "gemm_min_t": {
+   "w4": 16,
+   "s16": 32
+  },
+  "gemm_slab_bytes": 419430400,
+  "gemm_ineligible_matrices": 0
+ },
+ "load_wall_s": 5.967210054397583,
+ "provenance": {
+  "corpus_txt_sha_ok": true,
+  "prefixes_jsonl_sha_ok": true,
+  "prefix_bounds_ok": true,
+  "corpus_len_ok": true,
+  "corpus_retokenize_equal": true,
+  "prefix_retokenize_equal": true
+ },
+ "sets": {
+  "e0": 4722,
+  "corpus": 356,
+  "prefix": 98
+ },
+ "agree_teacher": {
+  "e0": 3915,
+  "corpus": 295,
+  "prefix": 79
+ },
+ "mean_kl": {
+  "e0": 0.3171515650568183,
+  "corpus": 0.3035421810740659,
+  "prefix": 0.15650571560837248
+ },
+ "per_prompt": [
+  {
+   "prompt_id": "chat-1",
+   "prompt_len": 62,
+   "gen_len": 256,
+   "wall_s": 12.017565965652466,
+   "tok_s": 26.461265193707213,
+   "agree_teacher": 226
+  },
+  {
+   "prompt_id": "chat-2",
+   "prompt_len": 64,
+   "gen_len": 256,
+   "wall_s": 9.738903045654297,
+   "tok_s": 32.857910023325545,
+   "agree_teacher": 193
+  },
+  {
+   "prompt_id": "chat-3",
+   "prompt_len": 63,
+   "gen_len": 186,
+   "wall_s": 7.2225799560546875,
+   "tok_s": 34.475215437561666,
+   "agree_teacher": 162
+  },
+  {
+   "prompt_id": "chat-4",
+   "prompt_len": 63,
+   "gen_len": 88,
+   "wall_s": 5.6734089851379395,
+   "tok_s": 26.61539127455108,
+   "agree_teacher": 75
+  },
+  {
+   "prompt_id": "math-1",
+   "prompt_len": 64,
+   "gen_len": 256,
+   "wall_s": 11.012110948562622,
+   "tok_s": 29.058915360979782,
+   "agree_teacher": 235
+  },
+  {
+   "prompt_id": "math-2",
+   "prompt_len": 67,
+   "gen_len": 100,
+   "wall_s": 5.3965959548950195,
+   "tok_s": 30.945433268636965,
+   "agree_teacher": 91
+  },
+  {
+   "prompt_id": "math-3",
+   "prompt_len": 79,
+   "gen_len": 117,
+   "wall_s": 6.196984767913818,
+   "tok_s": 31.628284938641595,
+   "agree_teacher": 102
+  },
+  {
+   "prompt_id": "math-4",
+   "prompt_len": 64,
+   "gen_len": 138,
+   "wall_s": 6.847990989685059,
+   "tok_s": 29.497702363257645,
+   "agree_teacher": 124
+  },
+  {
+   "prompt_id": "code-1",
+   "prompt_len": 66,
+   "gen_len": 204,
+   "wall_s": 9.135787963867188,
+   "tok_s": 29.554100978248705,
+   "agree_teacher": 179
+  },
+  {
+   "prompt_id": "code-2",
+   "prompt_len": 83,
+   "gen_len": 256,
+   "wall_s": 10.486935138702393,
+   "tok_s": 32.32593655975891,
+   "agree_teacher": 212
+  },
+  {
+   "prompt_id": "code-3",
+   "prompt_len": 66,
+   "gen_len": 256,
+   "wall_s": 10.226607084274292,
+   "tok_s": 31.486493745823815,
+   "agree_teacher": 212
+  },
+  {
+   "prompt_id": "code-4",
+   "prompt_len": 68,
+   "gen_len": 256,
+   "wall_s": 10.365628004074097,
+   "tok_s": 31.25715102574155,
+   "agree_teacher": 198
+  },
+  {
+   "prompt_id": "reason-1",
+   "prompt_len": 75,
+   "gen_len": 53,
+   "wall_s": 4.073023080825806,
+   "tok_s": 31.42628889155423,
+   "agree_teacher": 46
+  },
+  {
+   "prompt_id": "reason-2",
+   "prompt_len": 83,
+   "gen_len": 256,
+   "wall_s": 10.779608964920044,
+   "tok_s": 31.448265062601415,
+   "agree_teacher": 223
+  },
+  {
+   "prompt_id": "reason-3",
+   "prompt_len": 76,
+   "gen_len": 256,
+   "wall_s": 10.695289134979248,
+   "tok_s": 31.04170404465126,
+   "agree_teacher": 229
+  },
+  {
+   "prompt_id": "reason-4",
+   "prompt_len": 66,
+   "gen_len": 252,
+   "wall_s": 9.953792095184326,
+   "tok_s": 31.947623273531033,
+   "agree_teacher": 197
+  },
+  {
+   "prompt_id": "know-1",
+   "prompt_len": 58,
+   "gen_len": 200,
+   "wall_s": 7.242837190628052,
+   "tok_s": 35.62139990304379,
+   "agree_teacher": 155
+  },
+  {
+   "prompt_id": "know-2",
+   "prompt_len": 64,
+   "gen_len": 187,
+   "wall_s": 7.261698961257935,
+   "tok_s": 34.5649139876379,
+   "agree_teacher": 154
+  },
+  {
+   "prompt_id": "know-3",
+   "prompt_len": 62,
+   "gen_len": 256,
+   "wall_s": 9.974321842193604,
+   "tok_s": 31.881866760584078,
+   "agree_teacher": 207
+  },
+  {
+   "prompt_id": "know-4",
+   "prompt_len": 70,
+   "gen_len": 82,
+   "wall_s": 5.365977764129639,
+   "tok_s": 28.326617567461053,
+   "agree_teacher": 66
+  },
+  {
+   "prompt_id": "long-1",
+   "prompt_len": 73,
+   "gen_len": 256,
+   "wall_s": 11.429190874099731,
+   "tok_s": 28.78593975935458,
+   "agree_teacher": 186
+  },
+  {
+   "prompt_id": "long-2",
+   "prompt_len": 71,
+   "gen_len": 256,
+   "wall_s": 11.271273851394653,
+   "tok_s": 29.011805081777744,
+   "agree_teacher": 198
+  },
+  {
+   "prompt_id": "edge-1",
+   "prompt_len": 65,
+   "gen_len": 88,
+   "wall_s": 5.595983028411865,
+   "tok_s": 27.34104074711986,
+   "agree_teacher": 72
+  },
+  {
+   "prompt_id": "edge-2",
+   "prompt_len": 65,
+   "gen_len": 211,
+   "wall_s": 9.63673210144043,
+   "tok_s": 28.64041431210332,
+   "agree_teacher": 173
+  }
+ ],
+ "walls_s": {
+  "e0": 404.5880289077759,
+  "corpus": 11.463440179824829,
+  "prefixes": [
+   2.065135955810547,
+   1.2682912349700928,
+   3.058995246887207,
+   2.0552258491516113,
+   2.462440252304077,
+   2.2844901084899902
+  ],
+  "validation": 44.60773706436157
+ },
+ "matrix_calls": {
+  "fused": 2841,
+  "gemm": 16006
+ },
+ "memory": {
+  "active_bytes": 8829764140,
+  "peak_bytes": 14379516460,
+  "cache_bytes": 2147498214,
+  "footprint_bytes": 10977262354,
+  "rss_peak_bytes": 11258757120,
+  "mx_peak_bytes": 14379516460
+ },
+ "capture": true,
+ "boundaries": [
+  "in22",
+  "out23",
+  "out27",
+  "out31",
+  "out39",
+  "out47",
+  "out55",
+  "out63",
+  "final_norm"
+ ],
+ "dump_dir": "logs/qwen_layer_restore/dump",
+ "dumps": {
+  "score_npz": {
+   "file": "score_control.npz",
+   "sha256": "771be7ec7d8935390c0dfeaff3cc452cd1158dec6a29b8b58076c937d79d117d"
+  },
+  "in22": {
+   "file": "capture_control_in22.npy",
+   "sha256": "e9e1370c1c691a0e12c86b56a502a2ab3532cd4dc1742e681d295d71588939e4"
+  },
+  "out23": {
+   "file": "capture_control_out23.npy",
+   "sha256": "3a1456f8f97f510407321f45cc51d449908d51e7f08efc96c9ee8e99f02127ab"
+  },
+  "out27": {
+   "file": "capture_control_out27.npy",
+   "sha256": "c11f44fa30a36cfee954b8f5da5279c61124558f7eb80c9f8e8947a09d3dfc56"
+  },
+  "out31": {
+   "file": "capture_control_out31.npy",
+   "sha256": "2f8bfda7df8d56efc615de7a20d6e75e4afed4ce25be970e212a28f97fb93929"
+  },
+  "out39": {
+   "file": "capture_control_out39.npy",
+   "sha256": "4275e48450f1fc0c904d6020e1f221d1e486ef15642f6740257029c251a100dd"
+  },
+  "out47": {
+   "file": "capture_control_out47.npy",
+   "sha256": "1bc7c33cfe728ba29b41d8ccc3113c5007117d3b341b26ddf585c063b65484a0"
+  },
+  "out55": {
+   "file": "capture_control_out55.npy",
+   "sha256": "6ab93c8dfcb418c5f914a0dc82d4365349c24d615b5a05a6fd846d96cb627476"
+  },
+  "out63": {
+   "file": "capture_control_out63.npy",
+   "sha256": "71e2100c4143fde5873c179359d48043c5e31205e6aff15fd939c0b1033af072"
+  },
+  "final_norm": {
+   "file": "capture_control_final_norm.npy",
+   "sha256": "acf690cf7e9c12310aeeadf046f4e215d3f53554435d5c20943c8af95f090924"
+  }
+ },
+ "e0_rows_sha256": "f9df9b5ae2a55b95a2f3a64a6bf8594b2346f77e12272448770e9656f3b041c7",
+ "wall_s": 453.9830057621002,
+ "control_vs_census": {
+  "receipt": "logs/qmetal/prefill_serve/census_d42cb215.json",
+  "dump": "draft_logits_fp16_d42cb215.npy",
+  "dump_sha256_pinned": true,
+  "dump_sha256_on_disk_ok": false,
+  "argmax_mismatches_vs_e0_rows": [],
+  "beyond_near_tie": 0,
+  "top8_logit_max_abs_diff_vs_dump": 0.01529693603515625,
+  "near_tie_gap": 0.05,
+  "ok": true
+ },
+ "teacher_token_convention": "E0: the recorded rollout token of the E0 row; corpus and prefixes: the teacher's fp16-stored argmax over the live vocabulary",
+ "ok": true
+}

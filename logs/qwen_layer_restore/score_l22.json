@@ -1,0 +1,400 @@
+{
+ "mode": "score",
+ "smoke": false,
+ "code_commit": "221c1c0c",
+ "tree_dirty": false,
+ "started_utc": "2026-10-21T16:33:40Z",
+ "driver": "scratch/qwen_layer_restore.py",
+ "art_role": "ART_DIR (arm C)",
+ "vendor_role": "VENDOR_DIR (config, tokenizer)",
+ "vendor_shard_role": "VENDOR_SHARD_DIR (outside the repository)",
+ "repo": "Qwen/Qwen3.8-27B",
+ "revision": "1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0",
+ "shard": "model-00007-of-00018.safetensors",
+ "layers": [
+  22,
+  23
+ ],
+ "census_receipt": "logs/qmetal/prefill_serve/census_d42cb215.json",
+ "teacher_dir": "logs/qwenteacher_v2",
+ "arm": "l22",
+ "serving_applied": {
+  "chunk": 256,
+  "matmul": "gemm",
+  "cache_limit_bytes": 2147483648
+ },
+ "vendor_shard_check": "fetch receipt ok; shard sha re-verified at stage start",
+ "weights": "vendor",
+ "layers_installed": [
+  22
+ ],
+ "install_wall_s": 0.8016541004180908,
+ "installed": {
+  "22": {
+   "tensors": {
+    "model.language_model.layers.22.input_layernorm.weight": [
+     5120
+    ],
+    "model.language_model.layers.22.linear_attn.A_log": [
+     48
+    ],
+    "model.language_model.layers.22.linear_attn.conv1d.weight": [
+     10240,
+     1,
+     4
+    ],
+    "model.language_model.layers.22.linear_attn.dt_bias": [
+     48
+    ],
+    "model.language_model.layers.22.linear_attn.in_proj_a.weight": [
+     48,
+     5120
+    ],
+    "model.language_model.layers.22.linear_attn.in_proj_b.weight": [
+     48,
+     5120
+    ],
+    "model.language_model.layers.22.linear_attn.in_proj_qkv.weight": [
+     10240,
+     5120
+    ],
+    "model.language_model.layers.22.linear_attn.in_proj_z.weight": [
+     6144,
+     5120
+    ],
+    "model.language_model.layers.22.linear_attn.norm.weight": [
+     128
+    ],
+    "model.language_model.layers.22.linear_attn.out_proj.weight": [
+     5120,
+     6144
+    ],
+    "model.language_model.layers.22.mlp.down_proj.weight": [
+     5120,
+     17408
+    ],
+    "model.language_model.layers.22.mlp.gate_proj.weight": [
+     17408,
+     5120
+    ],
+    "model.language_model.layers.22.mlp.up_proj.weight": [
+     17408,
+     5120
+    ],
+    "model.language_model.layers.22.post_attention_layernorm.weight": [
+     5120
+    ]
+   },
+   "bytes_f32": 1533092736
+  }
+ },
+ "raw_tensors_equal_arm_c": {
+  "model.language_model.layers.22.input_layernorm.weight": true,
+  "model.language_model.layers.22.linear_attn.A_log": true,
+  "model.language_model.layers.22.linear_attn.conv1d.weight": true,
+  "model.language_model.layers.22.linear_attn.dt_bias": true,
+  "model.language_model.layers.22.linear_attn.in_proj_a.weight": true,
+  "model.language_model.layers.22.linear_attn.in_proj_b.weight": true,
+  "model.language_model.layers.22.linear_attn.norm.weight": true,
+  "model.language_model.layers.22.post_attention_layernorm.weight": true
+ },
+ "fused_residents_after_install": 395,
+ "artifact": {
+  "chain": "logs/qwenwhole/artifact_digest_C.txt",
+  "chain_sha256": "de7e0180bf49f965c17116b7fbe8c34d2b1529c2431cc234f3a6460ad84b24dc",
+  "chain_report": {
+   "art_dir": "/Users/artin/qwen_whole0t/C",
+   "rung0": {
+    "checked": 19,
+    "unchained": false
+   },
+   "conservation": {
+    "keys": 1199
+   },
+   "census": {
+    "w4": 192,
+    "s16": 210,
+    "raw": 449,
+    "excluded": 348
+   },
+   "preflight": {
+    "estimated_peak_bytes": 6504933184,
+    "available_bytes": 24648122368,
+    "safety_fraction": 0.8
+   }
+  },
+  "n_layers": 64,
+  "families": {
+   "linear_attn": 48,
+   "full_attn": 16
+  },
+  "fused": 402,
+  "raw": 449,
+  "payload_resident_bytes": 9367009856,
+  "kernel_version": 4,
+  "prefill_gemm": false,
+  "gemm_min_t": {
+   "w4": 16,
+   "s16": 32
+  },
+  "gemm_slab_bytes": 419430400,
+  "gemm_ineligible_matrices": 0
+ },
+ "load_wall_s": 6.00040602684021,
+ "provenance": {
+  "corpus_txt_sha_ok": true,
+  "prefixes_jsonl_sha_ok": true,
+  "prefix_bounds_ok": true,
+  "corpus_len_ok": true,
+  "corpus_retokenize_equal": true,
+  "prefix_retokenize_equal": true
+ },
+ "sets": {
+  "e0": 4722,
+  "corpus": 356,
+  "prefix": 98
+ },
+ "agree_teacher": {
+  "e0": 3910,
+  "corpus": 298,
+  "prefix": 79
+ },
+ "mean_kl": {
+  "e0": 0.311674654103366,
+  "corpus": 0.26818893160640594,
+  "prefix": 0.15281851069175797
+ },
+ "per_prompt": [
+  {
+   "prompt_id": "chat-1",
+   "prompt_len": 62,
+   "gen_len": 256,
+   "wall_s": 11.886466979980469,
+   "tok_s": 26.753113480699085,
+   "agree_teacher": 224
+  },
+  {
+   "prompt_id": "chat-2",
+   "prompt_len": 64,
+   "gen_len": 256,
+   "wall_s": 9.747008085250854,
+   "tok_s": 32.830587314708715,
+   "agree_teacher": 193
+  },
+  {
+   "prompt_id": "chat-3",
+   "prompt_len": 63,
+   "gen_len": 186,
+   "wall_s": 7.102771997451782,
+   "tok_s": 35.05673560820088,
+   "agree_teacher": 160
+  },
+  {
+   "prompt_id": "chat-4",
+   "prompt_len": 63,
+   "gen_len": 88,
+   "wall_s": 5.224216938018799,
+   "tok_s": 28.903853303087438,
+   "agree_teacher": 79
+  },
+  {
+   "prompt_id": "math-1",
+   "prompt_len": 64,
+   "gen_len": 256,
+   "wall_s": 9.741387605667114,
+   "tok_s": 32.84952954893592,
+   "agree_teacher": 238
+  },
+  {
+   "prompt_id": "math-2",
+   "prompt_len": 67,
+   "gen_len": 100,
+   "wall_s": 5.471593141555786,
+   "tok_s": 30.52127518979151,
+   "agree_teacher": 91
+  },
+  {
+   "prompt_id": "math-3",
+   "prompt_len": 79,
+   "gen_len": 117,
+   "wall_s": 6.33271598815918,
+   "tok_s": 30.95038532700313,
+   "agree_teacher": 103
+  },
+  {
+   "prompt_id": "math-4",
+   "prompt_len": 64,
+   "gen_len": 138,
+   "wall_s": 6.393504858016968,
+   "tok_s": 31.594564246980653,
+   "agree_teacher": 122
+  },
+  {
+   "prompt_id": "code-1",
+   "prompt_len": 66,
+   "gen_len": 204,
+   "wall_s": 8.79940128326416,
+   "tok_s": 30.683905791808918,
+   "agree_teacher": 179
+  },
+  {
+   "prompt_id": "code-2",
+   "prompt_len": 83,
+   "gen_len": 256,
+   "wall_s": 10.691097974777222,
+   "tok_s": 31.708623454745208,
+   "agree_teacher": 212
+  },
+  {
+   "prompt_id": "code-3",
+   "prompt_len": 66,
+   "gen_len": 256,
+   "wall_s": 10.325600862503052,
+   "tok_s": 31.184625891295905,
+   "agree_teacher": 215
+  },
+  {
+   "prompt_id": "code-4",
+   "prompt_len": 68,
+   "gen_len": 256,
+   "wall_s": 10.451180696487427,
+   "tok_s": 31.00128199954425,
+   "agree_teacher": 197
+  },
+  {
+   "prompt_id": "reason-1",
+   "prompt_len": 75,
+   "gen_len": 53,
+   "wall_s": 4.007122039794922,
+   "tok_s": 31.943124948236125,
+   "agree_teacher": 46
+  },
+  {
+   "prompt_id": "reason-2",
+   "prompt_len": 83,
+   "gen_len": 256,
+   "wall_s": 10.81398606300354,
+   "tok_s": 31.348292667009794,
+   "agree_teacher": 218
+  },
+  {
+   "prompt_id": "reason-3",
+   "prompt_len": 76,
+   "gen_len": 256,
+   "wall_s": 10.746553182601929,
+   "tok_s": 30.893626482720943,
+   "agree_teacher": 229
+  },
+  {
+   "prompt_id": "reason-4",
+   "prompt_len": 66,
+   "gen_len": 252,
+   "wall_s": 9.942026853561401,
+   "tok_s": 31.98542959940679,
+   "agree_teacher": 197
+  },
+  {
+   "prompt_id": "know-1",
+   "prompt_len": 58,
+   "gen_len": 200,
+   "wall_s": 7.206600904464722,
+   "tok_s": 35.80051170034415,
+   "agree_teacher": 154
+  },
+  {
+   "prompt_id": "know-2",
+   "prompt_len": 64,
+   "gen_len": 187,
+   "wall_s": 7.208775281906128,
+   "tok_s": 34.818674488301035,
+   "agree_teacher": 155
+  },
+  {
+   "prompt_id": "know-3",
+   "prompt_len": 62,
+   "gen_len": 256,
+   "wall_s": 9.891964197158813,
+   "tok_s": 32.14730600130321,
+   "agree_teacher": 205
+  },
+  {
+   "prompt_id": "know-4",
+   "prompt_len": 70,
+   "gen_len": 82,
+   "wall_s": 5.33172607421875,
+   "tok_s": 28.508591380001146,
+   "agree_teacher": 68
+  },
+  {
+   "prompt_id": "long-1",
+   "prompt_len": 73,
+   "gen_len": 256,
+   "wall_s": 10.745076894760132,
+   "tok_s": 30.61867339082867,
+   "agree_teacher": 187
+  },
+  {
+   "prompt_id": "long-2",
+   "prompt_len": 71,
+   "gen_len": 256,
+   "wall_s": 10.787359952926636,
+   "tok_s": 30.3132556461402,
+   "agree_teacher": 200
+  },
+  {
+   "prompt_id": "edge-1",
+   "prompt_len": 65,
+   "gen_len": 88,
+   "wall_s": 5.356176853179932,
+   "tok_s": 28.56515088913929,
+   "agree_teacher": 70
+  },
+  {
+   "prompt_id": "edge-2",
+   "prompt_len": 65,
+   "gen_len": 211,
+   "wall_s": 9.105683088302612,
+   "tok_s": 30.310740811368287,
+   "agree_teacher": 168
+  }
+ ],
+ "walls_s": {
+  "e0": 399.56671690940857,
+  "corpus": 10.840950012207031,
+  "prefixes": [
+   1.9455430507659912,
+   1.1123781204223633,
+   2.4857139587402344,
+   1.9214658737182617,
+   1.9811692237854004,
+   1.8853299617767334
+  ],
+  "validation": 40.93983006477356
+ },
+ "matrix_calls": {
+  "fused": 2799,
+  "gemm": 15766
+ },
+ "memory": {
+  "active_bytes": 10233145804,
+  "peak_bytes": 15719328204,
+  "cache_bytes": 2163362505,
+  "footprint_bytes": 12396508309,
+  "rss_peak_bytes": 11191812096,
+  "mx_peak_bytes": 15719328204
+ },
+ "capture": false,
+ "boundaries": [],
+ "dump_dir": "logs/qwen_layer_restore/dump",
+ "dumps": {
+  "score_npz": {
+   "file": "score_l22.npz",
+   "sha256": "160d0c16824adc36effa5bb28b59ed9311175674b792ad0c305275cf219e120d"
+  }
+ },
+ "e0_rows_sha256": "f9df9b5ae2a55b95a2f3a64a6bf8594b2346f77e12272448770e9656f3b041c7",
+ "wall_s": 440.51546812057495,
+ "control_vs_census": null,
+ "teacher_token_convention": "E0: the recorded rollout token of the E0 row; corpus and prefixes: the teacher's fp16-stored argmax over the live vocabulary",
+ "ok": true
+}

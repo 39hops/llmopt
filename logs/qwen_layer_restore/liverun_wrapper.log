@@ -1,0 +1,3 @@
+[liverun] armed qwen-layer-restore-0 pid 24168 commit 221c1c0c worktree main:llmopt sentinel .git/liverun.lock
+[liverun] disarmed qwen-layer-restore-0 rc 0
+rc=0

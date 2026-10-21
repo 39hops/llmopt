@@ -1,0 +1,83 @@
+{
+ "note": "Mechanical projection of logs/qwen_layer_restore/summary.json (driver scratch/qwen_layer_restore.py at 221c1c0c); primary contrast group (layers 22 and 23 at the 'vendor' weights, float32) against control (arm C as served), same contexts, fresh cache per sequence, live vocabulary; set sizes {'e0': 4722, 'corpus': 356, 'prefix': 98}",
+ "registration_sha256": "ca108cd641ee525921e05957f462c552e8602aa167fa5f5cbc20cbed630d4f88",
+ "measurement_valid": true,
+ "arms": {
+  "CONTROL": {
+   "admissible": true,
+   "reason": "arm C as served through prefill_chunked (GEMM path), the production prefill"
+  },
+  "DENSE_C": {
+   "admissible": true,
+   "reason": "swap machinery with no weight change: {'e0': {'n': 4722, 'n_decided': 4717, 'argmax_flips_beyond_margin': 0, 'argmax_flips_total': 0, 'z_top16_max_abs_diff': 2.86102294921875e-05, 'kl_mean_control': 0.3171515650568183, 'kl_mean_dense_c': 0.31715156467252725}, 'corpus': {'n': 356, 'n_decided': 355, 'argmax_flips_beyond_margin': 0, 'argmax_flips_total': 0, 'z_top16_max_abs_diff': 0.0, 'kl_mean_control': 0.3035421810740659, 'kl_mean_dense_c': 0.3035421810740659}, 'prefix': {'n': 98, 'n_decided': 96, 'argmax_flips_beyond_margin': 0, 'argmax_flips_total': 0, 'z_top16_max_abs_diff': 4.9114227294921875e-05, 'kl_mean_control': 0.15650571560837248, 'kl_mean_dense_c': 0.15650568245583182}, 'ok': True, 'rule': 'argmax equal wherever the control margin exceeds 0.01; teacher top-16 logits within 0.01'}"
+  },
+  "GROUP": {
+   "admissible": true,
+   "reason": "DENSE_C parity, both oracle halves within tolerance on the vendor weights, group at the vendor weights, every score receipt ok"
+  },
+  "L22": {
+   "admissible": true,
+   "reason": "diagnostic single-layer arm, same bytes; never adjudicated"
+  },
+  "L23": {
+   "admissible": true,
+   "reason": "diagnostic single-layer arm, same bytes; never adjudicated"
+  }
+ },
+ "contrasts": {
+  "1": {
+   "admissible": true,
+   "reason": "DENSE_C parity, both oracle halves within tolerance on the vendor weights, group at the vendor weights, every score receipt ok"
+  },
+  "2": {
+   "admissible": true,
+   "reason": "DENSE_C parity, both oracle halves within tolerance on the vendor weights, group at the vendor weights, every score receipt ok"
+  },
+  "3": {
+   "admissible": true,
+   "reason": "DENSE_C parity, both oracle halves within tolerance on the vendor weights, group at the vendor weights, every score receipt ok"
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": -0.16941973739940702,
+   "metric": "delta_agree_points_e0",
+   "population": "positions:e0-4722",
+   "aggregation": "paired_difference_points",
+   "provenance": "E0 paired counts {'n': 4722, 'a_right': 3915, 'b_right': 3907, 'corrected': 63, 'broken': 71, 'both_right': 3844, 'both_wrong': 744, 'net': -8, 'delta_points': -0.16941973739940702}"
+  },
+  "2": {
+   "value": 0.44052863436123346,
+   "metric": "delta_agree_points_validation",
+   "population": "positions:corpus-356+prefix-98",
+   "aggregation": "paired_difference_points",
+   "provenance": "validation paired counts {'n': 454, 'a_right': 374, 'b_right': 376, 'corrected': 6, 'broken': 4, 'both_right': 370, 'both_wrong': 74, 'net': 2, 'delta_points': 0.44052863436123346}; bootstrap {'delta_points': 0.44052863436123346, 'n_blocks': 11, 'n_boot': 10000, 'seed': 0, 'ci95_low': -0.5119672704996936, 'ci95_high': 1.7369727047146402}"
+  },
+  "2:corpus": {
+   "value": 0,
+   "metric": "delta_agree_net_corpus",
+   "population": "positions:corpus-356",
+   "aggregation": "paired_net_count"
+  },
+  "2:prefix": {
+   "value": 2,
+   "metric": "delta_agree_net_prefix",
+   "population": "positions:prefix-98",
+   "aggregation": "paired_net_count"
+  },
+  "3": {
+   "value": -0.09055403133522377,
+   "metric": "rel_delta_mean_kl_validation",
+   "population": "positions:corpus-356+prefix-98",
+   "aggregation": "ratio_of_means_minus_one",
+   "provenance": "validation KL means {'control': 0.27180303214094265, 'arm': 0.2471901718514429, 'rel_delta': -0.09055403133522377}"
+  },
+  "max_bar12_ratio": {
+   "value": 0.0,
+   "metric": "max_bar12_ratio",
+   "population": "bars:1,2",
+   "aggregation": "max_of_ratios",
+   "provenance": "bar 2 resolved (conjuncts and bootstrap interval excluding zero): False; bootstrap {'delta_points': 0.44052863436123346, 'n_blocks': 11, 'n_boot': 10000, 'seed': 0, 'ci95_low': -0.5119672704996936, 'ci95_high': 1.7369727047146402}"
+  }
+ }
+}

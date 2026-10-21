@@ -1,0 +1,436 @@
+{
+ "mode": "score",
+ "smoke": false,
+ "code_commit": "221c1c0c",
+ "tree_dirty": false,
+ "started_utc": "2026-10-21T16:25:59Z",
+ "driver": "scratch/qwen_layer_restore.py",
+ "art_role": "ART_DIR (arm C)",
+ "vendor_role": "VENDOR_DIR (config, tokenizer)",
+ "vendor_shard_role": "VENDOR_SHARD_DIR (outside the repository)",
+ "repo": "Qwen/Qwen3.8-27B",
+ "revision": "1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0",
+ "shard": "model-00007-of-00018.safetensors",
+ "layers": [
+  22,
+  23
+ ],
+ "census_receipt": "logs/qmetal/prefill_serve/census_d42cb215.json",
+ "teacher_dir": "logs/qwenteacher_v2",
+ "arm": "dense_c",
+ "serving_applied": {
+  "chunk": 256,
+  "matmul": "gemm",
+  "cache_limit_bytes": 2147483648
+ },
+ "weights": "armc",
+ "layers_installed": [
+  22,
+  23
+ ],
+ "install_wall_s": 2.48671293258667,
+ "installed": {
+  "22": {
+   "tensors": {
+    "model.language_model.layers.22.input_layernorm.weight": [
+     5120
+    ],
+    "model.language_model.layers.22.linear_attn.A_log": [
+     48
+    ],
+    "model.language_model.layers.22.linear_attn.conv1d.weight": [
+     10240,
+     1,
+     4
+    ],
+    "model.language_model.layers.22.linear_attn.dt_bias": [
+     48
+    ],
+    "model.language_model.layers.22.linear_attn.in_proj_a.weight": [
+     48,
+     5120
+    ],
+    "model.language_model.layers.22.linear_attn.in_proj_b.weight": [
+     48,
+     5120
+    ],
+    "model.language_model.layers.22.linear_attn.in_proj_qkv.weight": [
+     10240,
+     5120
+    ],
+    "model.language_model.layers.22.linear_attn.in_proj_z.weight": [
+     6144,
+     5120
+    ],
+    "model.language_model.layers.22.linear_attn.norm.weight": [
+     128
+    ],
+    "model.language_model.layers.22.linear_attn.out_proj.weight": [
+     5120,
+     6144
+    ],
+    "model.language_model.layers.22.mlp.down_proj.weight": [
+     5120,
+     17408
+    ],
+    "model.language_model.layers.22.mlp.gate_proj.weight": [
+     17408,
+     5120
+    ],
+    "model.language_model.layers.22.mlp.up_proj.weight": [
+     17408,
+     5120
+    ],
+    "model.language_model.layers.22.post_attention_layernorm.weight": [
+     5120
+    ]
+   },
+   "bytes_f32": 1533092736
+  },
+  "23": {
+   "tensors": {
+    "model.language_model.layers.23.input_layernorm.weight": [
+     5120
+    ],
+    "model.language_model.layers.23.mlp.down_proj.weight": [
+     5120,
+     17408
+    ],
+    "model.language_model.layers.23.mlp.gate_proj.weight": [
+     17408,
+     5120
+    ],
+    "model.language_model.layers.23.mlp.up_proj.weight": [
+     17408,
+     5120
+    ],
+    "model.language_model.layers.23.post_attention_layernorm.weight": [
+     5120
+    ],
+    "model.language_model.layers.23.self_attn.k_norm.weight": [
+     256
+    ],
+    "model.language_model.layers.23.self_attn.k_proj.weight": [
+     1024,
+     5120
+    ],
+    "model.language_model.layers.23.self_attn.o_proj.weight": [
+     5120,
+     6144
+    ],
+    "model.language_model.layers.23.self_attn.q_norm.weight": [
+     256
+    ],
+    "model.language_model.layers.23.self_attn.q_proj.weight": [
+     12288,
+     5120
+    ],
+    "model.language_model.layers.23.self_attn.v_proj.weight": [
+     1024,
+     5120
+    ]
+   },
+   "bytes_f32": 1489020928
+  }
+ },
+ "raw_tensors_equal_arm_c": {},
+ "fused_residents_after_install": 388,
+ "artifact": {
+  "chain": "logs/qwenwhole/artifact_digest_C.txt",
+  "chain_sha256": "de7e0180bf49f965c17116b7fbe8c34d2b1529c2431cc234f3a6460ad84b24dc",
+  "chain_report": {
+   "art_dir": "/Users/artin/qwen_whole0t/C",
+   "rung0": {
+    "checked": 19,
+    "unchained": false
+   },
+   "conservation": {
+    "keys": 1199
+   },
+   "census": {
+    "w4": 192,
+    "s16": 210,
+    "raw": 449,
+    "excluded": 348
+   },
+   "preflight": {
+    "estimated_peak_bytes": 6504933184,
+    "available_bytes": 22112944128,
+    "safety_fraction": 0.8
+   }
+  },
+  "n_layers": 64,
+  "families": {
+   "linear_attn": 48,
+   "full_attn": 16
+  },
+  "fused": 402,
+  "raw": 449,
+  "payload_resident_bytes": 9367009856,
+  "kernel_version": 4,
+  "prefill_gemm": false,
+  "gemm_min_t": {
+   "w4": 16,
+   "s16": 32
+  },
+  "gemm_slab_bytes": 419430400,
+  "gemm_ineligible_matrices": 0
+ },
+ "load_wall_s": 6.478564023971558,
+ "provenance": {
+  "corpus_txt_sha_ok": true,
+  "prefixes_jsonl_sha_ok": true,
+  "prefix_bounds_ok": true,
+  "corpus_len_ok": true,
+  "corpus_retokenize_equal": true,
+  "prefix_retokenize_equal": true
+ },
+ "sets": {
+  "e0": 4722,
+  "corpus": 356,
+  "prefix": 98
+ },
+ "agree_teacher": {
+  "e0": 3915,
+  "corpus": 295,
+  "prefix": 79
+ },
+ "mean_kl": {
+  "e0": 0.31715156467252725,
+  "corpus": 0.3035421810740659,
+  "prefix": 0.15650568245583182
+ },
+ "per_prompt": [
+  {
+   "prompt_id": "chat-1",
+   "prompt_len": 62,
+   "gen_len": 256,
+   "wall_s": 11.326243162155151,
+   "tok_s": 28.076388211631077,
+   "agree_teacher": 226
+  },
+  {
+   "prompt_id": "chat-2",
+   "prompt_len": 64,
+   "gen_len": 256,
+   "wall_s": 9.911256074905396,
+   "tok_s": 32.28652328035571,
+   "agree_teacher": 193
+  },
+  {
+   "prompt_id": "chat-3",
+   "prompt_len": 63,
+   "gen_len": 186,
+   "wall_s": 7.199116945266724,
+   "tok_s": 34.58757537807641,
+   "agree_teacher": 162
+  },
+  {
+   "prompt_id": "chat-4",
+   "prompt_len": 63,
+   "gen_len": 88,
+   "wall_s": 5.494999647140503,
+   "tok_s": 27.479528607172455,
+   "agree_teacher": 75
+  },
+  {
+   "prompt_id": "math-1",
+   "prompt_len": 64,
+   "gen_len": 256,
+   "wall_s": 10.128246068954468,
+   "tok_s": 31.594808994706167,
+   "agree_teacher": 235
+  },
+  {
+   "prompt_id": "math-2",
+   "prompt_len": 67,
+   "gen_len": 100,
+   "wall_s": 6.279070138931274,
+   "tok_s": 26.596294722776285,
+   "agree_teacher": 91
+  },
+  {
+   "prompt_id": "math-3",
+   "prompt_len": 79,
+   "gen_len": 117,
+   "wall_s": 6.918887138366699,
+   "tok_s": 28.328255119690905,
+   "agree_teacher": 102
+  },
+  {
+   "prompt_id": "math-4",
+   "prompt_len": 64,
+   "gen_len": 138,
+   "wall_s": 6.948000907897949,
+   "tok_s": 29.07311076634749,
+   "agree_teacher": 124
+  },
+  {
+   "prompt_id": "code-1",
+   "prompt_len": 66,
+   "gen_len": 204,
+   "wall_s": 9.543162822723389,
+   "tok_s": 28.29250689898095,
+   "agree_teacher": 179
+  },
+  {
+   "prompt_id": "code-2",
+   "prompt_len": 83,
+   "gen_len": 256,
+   "wall_s": 11.579968214035034,
+   "tok_s": 29.274691755123186,
+   "agree_teacher": 212
+  },
+  {
+   "prompt_id": "code-3",
+   "prompt_len": 66,
+   "gen_len": 256,
+   "wall_s": 11.424142122268677,
+   "tok_s": 28.185923857891858,
+   "agree_teacher": 212
+  },
+  {
+   "prompt_id": "code-4",
+   "prompt_len": 68,
+   "gen_len": 256,
+   "wall_s": 10.562388896942139,
+   "tok_s": 30.674878870801617,
+   "agree_teacher": 198
+  },
+  {
+   "prompt_id": "reason-1",
+   "prompt_len": 75,
+   "gen_len": 53,
+   "wall_s": 4.0193400382995605,
+   "tok_s": 31.846024168224453,
+   "agree_teacher": 46
+  },
+  {
+   "prompt_id": "reason-2",
+   "prompt_len": 83,
+   "gen_len": 256,
+   "wall_s": 10.856185913085938,
+   "tok_s": 31.226436495654777,
+   "agree_teacher": 223
+  },
+  {
+   "prompt_id": "reason-3",
+   "prompt_len": 76,
+   "gen_len": 256,
+   "wall_s": 10.839871883392334,
+   "tok_s": 30.627668257652942,
+   "agree_teacher": 229
+  },
+  {
+   "prompt_id": "reason-4",
+   "prompt_len": 66,
+   "gen_len": 252,
+   "wall_s": 10.491994857788086,
+   "tok_s": 30.30882156446658,
+   "agree_teacher": 197
+  },
+  {
+   "prompt_id": "know-1",
+   "prompt_len": 58,
+   "gen_len": 200,
+   "wall_s": 7.354075193405151,
+   "tok_s": 35.082589341942594,
+   "agree_teacher": 155
+  },
+  {
+   "prompt_id": "know-2",
+   "prompt_len": 64,
+   "gen_len": 187,
+   "wall_s": 7.241697072982788,
+   "tok_s": 34.6603838120248,
+   "agree_teacher": 154
+  },
+  {
+   "prompt_id": "know-3",
+   "prompt_len": 62,
+   "gen_len": 256,
+   "wall_s": 10.05770993232727,
+   "tok_s": 31.617535417072567,
+   "agree_teacher": 207
+  },
+  {
+   "prompt_id": "know-4",
+   "prompt_len": 70,
+   "gen_len": 82,
+   "wall_s": 5.2961530685424805,
+   "tok_s": 28.700076835549417,
+   "agree_teacher": 66
+  },
+  {
+   "prompt_id": "long-1",
+   "prompt_len": 73,
+   "gen_len": 256,
+   "wall_s": 11.211286067962646,
+   "tok_s": 29.345429061894148,
+   "agree_teacher": 186
+  },
+  {
+   "prompt_id": "long-2",
+   "prompt_len": 71,
+   "gen_len": 256,
+   "wall_s": 10.560755968093872,
+   "tok_s": 30.96369246557079,
+   "agree_teacher": 198
+  },
+  {
+   "prompt_id": "edge-1",
+   "prompt_len": 65,
+   "gen_len": 88,
+   "wall_s": 5.24044132232666,
+   "tok_s": 29.196014341034697,
+   "agree_teacher": 72
+  },
+  {
+   "prompt_id": "edge-2",
+   "prompt_len": 65,
+   "gen_len": 211,
+   "wall_s": 8.919609069824219,
+   "tok_s": 30.94306015425396,
+   "agree_teacher": 173
+  }
+ ],
+ "walls_s": {
+  "e0": 403.281662940979,
+  "corpus": 10.679868936538696,
+  "prefixes": [
+   1.9166510105133057,
+   1.084050178527832,
+   2.4484400749206543,
+   1.8782439231872559,
+   1.9672260284423828,
+   1.8408708572387695
+  ],
+  "validation": 40.37927794456482
+ },
+ "matrix_calls": {
+  "fused": 2748,
+  "gemm": 15488
+ },
+ "memory": {
+  "active_bytes": 11599892812,
+  "peak_bytes": 17086075212,
+  "cache_bytes": 2055750133,
+  "footprint_bytes": 13655642945,
+  "rss_peak_bytes": 13644922880,
+  "mx_peak_bytes": 17086075212
+ },
+ "capture": false,
+ "boundaries": [],
+ "dump_dir": "logs/qwen_layer_restore/dump",
+ "dumps": {
+  "score_npz": {
+   "file": "score_dense_c.npz",
+   "sha256": "8ccabb3ee10f8afd4a8027d4568b90737c1d3973cb63f414e21ccdf55ea8f68b"
+  }
+ },
+ "e0_rows_sha256": "f9df9b5ae2a55b95a2f3a64a6bf8594b2346f77e12272448770e9656f3b041c7",
+ "wall_s": 443.6701989173889,
+ "control_vs_census": null,
+ "teacher_token_convention": "E0: the recorded rollout token of the E0 row; corpus and prefixes: the teacher's fp16-stored argmax over the live vocabulary",
+ "ok": true
+}

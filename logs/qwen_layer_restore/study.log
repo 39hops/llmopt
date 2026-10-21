@@ -1,0 +1,226 @@
+== preflight 16:14:57 221c1c0c
+[lr] preflight ok=True checks={'targets_complete_in_shard': True, 'targets_in_one_shard': True, 'family_ok': True, 'no_excluded_target': True, 'hub_metadata_equals_pins': True, 'dest_outside_repo': True, 'dest_not_vendor_dir': True, 'free_bytes_ok': True, 'memory_projection_ok': True, 'census_dump_shas_pinned': True, 'census_dump_present': True, 'e0_rows_count_ok': True, 'teacher_rollout_sha_ok': True, 'teacher_corpus_sha_ok': True, 'teacher_prefix_sha_ok': True, 'validation_corpus_txt_sha_ok': True, 'validation_prefixes_jsonl_sha_ok': True, 'validation_prefix_bounds_ok': True, 'validation_corpus_len_ok': True, 'head_shard_present': True} projected peak 17.1 GB; wrote logs/qwen_layer_restore/preflight.json
+== capture 16:15:11 221c1c0c
+[lr] capture corpus: 356 tokens 13.8 s
+[lr] capture prefix0: 14 tokens 2.0 s
+[lr] capture prefix1: 9 tokens 1.2 s
+[lr] capture prefix2: 29 tokens 2.7 s
+[lr] capture prefix3: 13 tokens 2.0 s
+[lr] capture prefix4: 17 tokens 2.2 s
+[lr] capture prefix5: 16 tokens 2.0 s
+[lr] capture: 21 dumps; wrote logs/qwen_layer_restore/capture.json
+== oracle_mlx_armc 16:15:50 221c1c0c
+[lr] oracle_mlx armc corpus layer 22: fused-vs-dense rel 2.18e-07, chunk-vs-one-shot rel 2.18e-07
+[lr] oracle_mlx armc corpus layer 23: fused-vs-dense rel 0.00e+00, chunk-vs-one-shot rel 0.00e+00
+[lr] oracle_mlx armc prefix0 layer 22: fused-vs-dense rel 3.39e-07, chunk-vs-one-shot rel 0.00e+00
+[lr] oracle_mlx armc prefix0 layer 23: fused-vs-dense rel 3.73e-07, chunk-vs-one-shot rel 0.00e+00
+[lr] oracle_mlx armc prefix1 layer 22: fused-vs-dense rel 3.06e-07, chunk-vs-one-shot rel 0.00e+00
+[lr] oracle_mlx armc prefix1 layer 23: fused-vs-dense rel 3.15e-07, chunk-vs-one-shot rel 0.00e+00
+[lr] oracle_mlx armc prefix2 layer 22: fused-vs-dense rel 3.67e-07, chunk-vs-one-shot rel 0.00e+00
+[lr] oracle_mlx armc prefix2 layer 23: fused-vs-dense rel 3.25e-07, chunk-vs-one-shot rel 0.00e+00
+[lr] oracle_mlx armc prefix3 layer 22: fused-vs-dense rel 2.95e-07, chunk-vs-one-shot rel 0.00e+00
+[lr] oracle_mlx armc prefix3 layer 23: fused-vs-dense rel 3.83e-07, chunk-vs-one-shot rel 0.00e+00
+[lr] oracle_mlx armc prefix4 layer 22: fused-vs-dense rel 3.42e-07, chunk-vs-one-shot rel 0.00e+00
+[lr] oracle_mlx armc prefix4 layer 23: fused-vs-dense rel 2.72e-07, chunk-vs-one-shot rel 0.00e+00
+[lr] oracle_mlx armc prefix5 layer 22: fused-vs-dense rel 2.83e-07, chunk-vs-one-shot rel 0.00e+00
+[lr] oracle_mlx armc prefix5 layer 23: fused-vs-dense rel 2.45e-07, chunk-vs-one-shot rel 0.00e+00
+[lr] oracle_mlx armc: pooled {"22": {"one_shot_vs_fused": 2.6e-07, "chunk_vs_one_shot": 1.8e-07}, "23": {"one_shot_vs_fused": 1.8e-07, "chunk_vs_one_shot": 0.0}}; chunk split ok=True; wrote logs/qwen_layer_restore/oracle_mlx_armc.json
+== oracle_torch_armc 16:16:01 221c1c0c
+[lr] oracle_torch armc corpus layer 22: torch-vs-mlx rel 2.85e-07 max/rms 1.04e-05 (0.7 s)
+[lr] oracle_torch armc corpus layer 23: torch-vs-mlx rel 4.00e-07 max/rms 1.61e-05 (0.3 s)
+[lr] oracle_torch armc prefix0 layer 22: torch-vs-mlx rel 4.75e-07 max/rms 4.08e-05 (0.4 s)
+[lr] oracle_torch armc prefix0 layer 23: torch-vs-mlx rel 4.75e-07 max/rms 8.06e-06 (0.1 s)
+[lr] oracle_torch armc prefix1 layer 22: torch-vs-mlx rel 3.62e-07 max/rms 1.28e-05 (0.4 s)
+[lr] oracle_torch armc prefix1 layer 23: torch-vs-mlx rel 4.08e-07 max/rms 6.24e-06 (0.1 s)
+[lr] oracle_torch armc prefix2 layer 22: torch-vs-mlx rel 4.96e-07 max/rms 1.50e-05 (0.4 s)
+[lr] oracle_torch armc prefix2 layer 23: torch-vs-mlx rel 5.15e-07 max/rms 1.19e-05 (0.1 s)
+[lr] oracle_torch armc prefix3 layer 22: torch-vs-mlx rel 3.87e-07 max/rms 1.36e-05 (0.4 s)
+[lr] oracle_torch armc prefix3 layer 23: torch-vs-mlx rel 4.63e-07 max/rms 4.77e-06 (0.1 s)
+[lr] oracle_torch armc prefix4 layer 22: torch-vs-mlx rel 3.89e-07 max/rms 1.17e-05 (0.4 s)
+[lr] oracle_torch armc prefix4 layer 23: torch-vs-mlx rel 4.19e-07 max/rms 9.56e-06 (0.1 s)
+[lr] oracle_torch armc prefix5 layer 22: torch-vs-mlx rel 3.76e-07 max/rms 1.40e-05 (0.4 s)
+[lr] oracle_torch armc prefix5 layer 23: torch-vs-mlx rel 3.79e-07 max/rms 9.94e-06 (0.1 s)
+[lr] oracle_torch armc: {"22": {"rel_l2": 3.3613416893466487e-07, "max_abs_over_row_rms": 4.0811669241155867e-05, "ok": true}, "23": {"rel_l2": 4.160084480037941e-07, "max_abs_over_row_rms": 1.610354616635414e-05, "ok": true}}; wrote logs/qwen_layer_restore/oracle_torch_armc.json
+== fetch 16:16:10 221c1c0c
+[lr] fetch: 2108759344 bytes sha 80b0c49033e9 ok=True checks={'size_ok': True, 'sha256_ok': True, 'targets_present': True, 'targets_bf16': True, 'targets_shape_ok': True, 'index_names_equal_header': True, 'data_end_ok': True}; wrote logs/qwen_layer_restore/fetch.json
+== oracle_mlx_vendor 16:17:53 221c1c0c
+[lr] oracle_mlx vendor corpus layer 22: fused-vs-dense rel 1.03e-01, chunk-vs-one-shot rel 2.49e-07
+[lr] oracle_mlx vendor corpus layer 23: fused-vs-dense rel 1.10e-01, chunk-vs-one-shot rel 0.00e+00
+[lr] oracle_mlx vendor prefix0 layer 22: fused-vs-dense rel 8.88e-02, chunk-vs-one-shot rel 0.00e+00
+[lr] oracle_mlx vendor prefix0 layer 23: fused-vs-dense rel 9.21e-02, chunk-vs-one-shot rel 0.00e+00
+[lr] oracle_mlx vendor prefix1 layer 22: fused-vs-dense rel 7.53e-02, chunk-vs-one-shot rel 0.00e+00
+[lr] oracle_mlx vendor prefix1 layer 23: fused-vs-dense rel 8.25e-02, chunk-vs-one-shot rel 0.00e+00
+[lr] oracle_mlx vendor prefix2 layer 22: fused-vs-dense rel 9.81e-02, chunk-vs-one-shot rel 0.00e+00
+[lr] oracle_mlx vendor prefix2 layer 23: fused-vs-dense rel 1.02e-01, chunk-vs-one-shot rel 0.00e+00
+[lr] oracle_mlx vendor prefix3 layer 22: fused-vs-dense rel 8.09e-02, chunk-vs-one-shot rel 0.00e+00
+[lr] oracle_mlx vendor prefix3 layer 23: fused-vs-dense rel 9.18e-02, chunk-vs-one-shot rel 0.00e+00
+[lr] oracle_mlx vendor prefix4 layer 22: fused-vs-dense rel 7.51e-02, chunk-vs-one-shot rel 0.00e+00
+[lr] oracle_mlx vendor prefix4 layer 23: fused-vs-dense rel 8.24e-02, chunk-vs-one-shot rel 0.00e+00
+[lr] oracle_mlx vendor prefix5 layer 22: fused-vs-dense rel 7.73e-02, chunk-vs-one-shot rel 0.00e+00
+[lr] oracle_mlx vendor prefix5 layer 23: fused-vs-dense rel 7.70e-02, chunk-vs-one-shot rel 0.00e+00
+[lr] oracle_mlx vendor: pooled {"22": {"one_shot_vs_fused": 0.09757406, "chunk_vs_one_shot": 2.1e-07}, "23": {"one_shot_vs_fused": 0.10360193, "chunk_vs_one_shot": 0.0}}; chunk split ok=True; wrote logs/qwen_layer_restore/oracle_mlx_vendor.json
+== oracle_torch_vendor 16:18:02 221c1c0c
+[lr] oracle_torch vendor corpus layer 22: torch-vs-mlx rel 3.20e-07 max/rms 1.20e-05 (0.7 s)
+[lr] oracle_torch vendor corpus layer 23: torch-vs-mlx rel 4.36e-07 max/rms 1.38e-05 (0.3 s)
+[lr] oracle_torch vendor prefix0 layer 22: torch-vs-mlx rel 5.29e-07 max/rms 1.61e-05 (0.4 s)
+[lr] oracle_torch vendor prefix0 layer 23: torch-vs-mlx rel 5.44e-07 max/rms 2.24e-05 (0.1 s)
+[lr] oracle_torch vendor prefix1 layer 22: torch-vs-mlx rel 4.24e-07 max/rms 8.72e-06 (0.4 s)
+[lr] oracle_torch vendor prefix1 layer 23: torch-vs-mlx rel 4.75e-07 max/rms 2.22e-05 (0.1 s)
+[lr] oracle_torch vendor prefix2 layer 22: torch-vs-mlx rel 5.85e-07 max/rms 3.37e-05 (0.4 s)
+[lr] oracle_torch vendor prefix2 layer 23: torch-vs-mlx rel 5.89e-07 max/rms 1.47e-05 (0.1 s)
+[lr] oracle_torch vendor prefix3 layer 22: torch-vs-mlx rel 4.38e-07 max/rms 8.66e-06 (0.4 s)
+[lr] oracle_torch vendor prefix3 layer 23: torch-vs-mlx rel 5.24e-07 max/rms 1.39e-05 (0.1 s)
+[lr] oracle_torch vendor prefix4 layer 22: torch-vs-mlx rel 4.56e-07 max/rms 3.35e-05 (0.4 s)
+[lr] oracle_torch vendor prefix4 layer 23: torch-vs-mlx rel 4.63e-07 max/rms 1.04e-05 (0.1 s)
+[lr] oracle_torch vendor prefix5 layer 22: torch-vs-mlx rel 4.33e-07 max/rms 2.46e-05 (0.4 s)
+[lr] oracle_torch vendor prefix5 layer 23: torch-vs-mlx rel 4.16e-07 max/rms 8.48e-06 (0.1 s)
+[lr] oracle_torch vendor: {"22": {"rel_l2": 3.8294622130848715e-07, "max_abs_over_row_rms": 3.373745347004032e-05, "ok": true}, "23": {"rel_l2": 4.606862883267407e-07, "max_abs_over_row_rms": 2.2389492059233317e-05, "ok": true}}; wrote logs/qwen_layer_restore/oracle_torch_vendor.json
+== score_control 16:18:10 221c1c0c
+[lr] control chat-1: 318 tokens 12.0 s, teacher 226/256
+[lr] control chat-2: 320 tokens 9.7 s, teacher 193/256
+[lr] control chat-3: 249 tokens 7.2 s, teacher 162/186
+[lr] control chat-4: 151 tokens 5.7 s, teacher 75/88
+[lr] control math-1: 320 tokens 11.0 s, teacher 235/256
+[lr] control math-2: 167 tokens 5.4 s, teacher 91/100
+[lr] control math-3: 196 tokens 6.2 s, teacher 102/117
+[lr] control math-4: 202 tokens 6.8 s, teacher 124/138
+[lr] control code-1: 270 tokens 9.1 s, teacher 179/204
+[lr] control code-2: 339 tokens 10.5 s, teacher 212/256
+[lr] control code-3: 322 tokens 10.2 s, teacher 212/256
+[lr] control code-4: 324 tokens 10.4 s, teacher 198/256
+[lr] control reason-1: 128 tokens 4.1 s, teacher 46/53
+[lr] control reason-2: 339 tokens 10.8 s, teacher 223/256
+[lr] control reason-3: 332 tokens 10.7 s, teacher 229/256
+[lr] control reason-4: 318 tokens 10.0 s, teacher 197/252
+[lr] control know-1: 258 tokens 7.2 s, teacher 155/200
+[lr] control know-2: 251 tokens 7.3 s, teacher 154/187
+[lr] control know-3: 318 tokens 10.0 s, teacher 207/256
+[lr] control know-4: 152 tokens 5.4 s, teacher 66/82
+[lr] control long-1: 329 tokens 11.4 s, teacher 186/256
+[lr] control long-2: 327 tokens 11.3 s, teacher 198/256
+[lr] control edge-1: 153 tokens 5.6 s, teacher 72/88
+[lr] control edge-2: 276 tokens 9.6 s, teacher 173/211
+[lr] score control (None): agree {'e0': 3915, 'corpus': 295, 'prefix': 79}, KL {'e0': 0.3171515650568183, 'corpus': 0.3035421810740659, 'prefix': 0.15650571560837248}, peak 14.4 GB, 454 s; wrote logs/qwen_layer_restore/score_control.json
+== score_dense_c 16:25:57 221c1c0c
+[lr] dense_c chat-1: 318 tokens 11.3 s, teacher 226/256
+[lr] dense_c chat-2: 320 tokens 9.9 s, teacher 193/256
+[lr] dense_c chat-3: 249 tokens 7.2 s, teacher 162/186
+[lr] dense_c chat-4: 151 tokens 5.5 s, teacher 75/88
+[lr] dense_c math-1: 320 tokens 10.1 s, teacher 235/256
+[lr] dense_c math-2: 167 tokens 6.3 s, teacher 91/100
+[lr] dense_c math-3: 196 tokens 6.9 s, teacher 102/117
+[lr] dense_c math-4: 202 tokens 6.9 s, teacher 124/138
+[lr] dense_c code-1: 270 tokens 9.5 s, teacher 179/204
+[lr] dense_c code-2: 339 tokens 11.6 s, teacher 212/256
+[lr] dense_c code-3: 322 tokens 11.4 s, teacher 212/256
+[lr] dense_c code-4: 324 tokens 10.6 s, teacher 198/256
+[lr] dense_c reason-1: 128 tokens 4.0 s, teacher 46/53
+[lr] dense_c reason-2: 339 tokens 10.9 s, teacher 223/256
+[lr] dense_c reason-3: 332 tokens 10.8 s, teacher 229/256
+[lr] dense_c reason-4: 318 tokens 10.5 s, teacher 197/252
+[lr] dense_c know-1: 258 tokens 7.4 s, teacher 155/200
+[lr] dense_c know-2: 251 tokens 7.2 s, teacher 154/187
+[lr] dense_c know-3: 318 tokens 10.1 s, teacher 207/256
+[lr] dense_c know-4: 152 tokens 5.3 s, teacher 66/82
+[lr] dense_c long-1: 329 tokens 11.2 s, teacher 186/256
+[lr] dense_c long-2: 327 tokens 10.6 s, teacher 198/256
+[lr] dense_c edge-1: 153 tokens 5.2 s, teacher 72/88
+[lr] dense_c edge-2: 276 tokens 8.9 s, teacher 173/211
+[lr] score dense_c (armc): agree {'e0': 3915, 'corpus': 295, 'prefix': 79}, KL {'e0': 0.31715156467252725, 'corpus': 0.3035421810740659, 'prefix': 0.15650568245583182}, peak 17.1 GB, 444 s; wrote logs/qwen_layer_restore/score_dense_c.json
+== score_l22 16:33:38 221c1c0c
+[lr] l22 chat-1: 318 tokens 11.9 s, teacher 224/256
+[lr] l22 chat-2: 320 tokens 9.7 s, teacher 193/256
+[lr] l22 chat-3: 249 tokens 7.1 s, teacher 160/186
+[lr] l22 chat-4: 151 tokens 5.2 s, teacher 79/88
+[lr] l22 math-1: 320 tokens 9.7 s, teacher 238/256
+[lr] l22 math-2: 167 tokens 5.5 s, teacher 91/100
+[lr] l22 math-3: 196 tokens 6.3 s, teacher 103/117
+[lr] l22 math-4: 202 tokens 6.4 s, teacher 122/138
+[lr] l22 code-1: 270 tokens 8.8 s, teacher 179/204
+[lr] l22 code-2: 339 tokens 10.7 s, teacher 212/256
+[lr] l22 code-3: 322 tokens 10.3 s, teacher 215/256
+[lr] l22 code-4: 324 tokens 10.5 s, teacher 197/256
+[lr] l22 reason-1: 128 tokens 4.0 s, teacher 46/53
+[lr] l22 reason-2: 339 tokens 10.8 s, teacher 218/256
+[lr] l22 reason-3: 332 tokens 10.7 s, teacher 229/256
+[lr] l22 reason-4: 318 tokens 9.9 s, teacher 197/252
+[lr] l22 know-1: 258 tokens 7.2 s, teacher 154/200
+[lr] l22 know-2: 251 tokens 7.2 s, teacher 155/187
+[lr] l22 know-3: 318 tokens 9.9 s, teacher 205/256
+[lr] l22 know-4: 152 tokens 5.3 s, teacher 68/82
+[lr] l22 long-1: 329 tokens 10.7 s, teacher 187/256
+[lr] l22 long-2: 327 tokens 10.8 s, teacher 200/256
+[lr] l22 edge-1: 153 tokens 5.4 s, teacher 70/88
+[lr] l22 edge-2: 276 tokens 9.1 s, teacher 168/211
+[lr] score l22 (vendor): agree {'e0': 3910, 'corpus': 298, 'prefix': 79}, KL {'e0': 0.311674654103366, 'corpus': 0.26818893160640594, 'prefix': 0.15281851069175797}, peak 15.7 GB, 441 s; wrote logs/qwen_layer_restore/score_l22.json
+== score_l23 16:41:15 221c1c0c
+[lr] l23 chat-1: 318 tokens 12.5 s, teacher 225/256
+[lr] l23 chat-2: 320 tokens 9.9 s, teacher 193/256
+[lr] l23 chat-3: 249 tokens 7.2 s, teacher 161/186
+[lr] l23 chat-4: 151 tokens 5.3 s, teacher 77/88
+[lr] l23 math-1: 320 tokens 9.8 s, teacher 236/256
+[lr] l23 math-2: 167 tokens 5.6 s, teacher 91/100
+[lr] l23 math-3: 196 tokens 6.4 s, teacher 102/117
+[lr] l23 math-4: 202 tokens 6.5 s, teacher 124/138
+[lr] l23 code-1: 270 tokens 8.9 s, teacher 178/204
+[lr] l23 code-2: 339 tokens 10.8 s, teacher 212/256
+[lr] l23 code-3: 322 tokens 11.9 s, teacher 212/256
+[lr] l23 code-4: 324 tokens 10.5 s, teacher 197/256
+[lr] l23 reason-1: 128 tokens 4.0 s, teacher 46/53
+[lr] l23 reason-2: 339 tokens 10.8 s, teacher 225/256
+[lr] l23 reason-3: 332 tokens 10.8 s, teacher 231/256
+[lr] l23 reason-4: 318 tokens 10.0 s, teacher 197/252
+[lr] l23 know-1: 258 tokens 8.2 s, teacher 156/200
+[lr] l23 know-2: 251 tokens 7.9 s, teacher 155/187
+[lr] l23 know-3: 318 tokens 10.0 s, teacher 209/256
+[lr] l23 know-4: 152 tokens 5.3 s, teacher 65/82
+[lr] l23 long-1: 329 tokens 10.7 s, teacher 182/256
+[lr] l23 long-2: 327 tokens 10.5 s, teacher 197/256
+[lr] l23 edge-1: 153 tokens 5.3 s, teacher 71/88
+[lr] l23 edge-2: 276 tokens 8.9 s, teacher 172/211
+[lr] score l23 (vendor): agree {'e0': 3914, 'corpus': 295, 'prefix': 80}, KL {'e0': 0.31495244599383826, 'corpus': 0.2975916855039167, 'prefix': 0.15588709978180096}, peak 15.7 GB, 443 s; wrote logs/qwen_layer_restore/score_l23.json
+== score_group 16:48:54 221c1c0c
+[lr] group chat-1: 318 tokens 11.3 s, teacher 226/256
+[lr] group chat-2: 320 tokens 10.9 s, teacher 192/256
+[lr] group chat-3: 249 tokens 7.6 s, teacher 158/186
+[lr] group chat-4: 151 tokens 5.9 s, teacher 78/88
+[lr] group math-1: 320 tokens 10.3 s, teacher 235/256
+[lr] group math-2: 167 tokens 6.1 s, teacher 90/100
+[lr] group math-3: 196 tokens 7.3 s, teacher 104/117
+[lr] group math-4: 202 tokens 7.4 s, teacher 125/138
+[lr] group code-1: 270 tokens 9.6 s, teacher 179/204
+[lr] group code-2: 339 tokens 10.9 s, teacher 212/256
+[lr] group code-3: 322 tokens 10.5 s, teacher 210/256
+[lr] group code-4: 324 tokens 11.8 s, teacher 200/256
+[lr] group reason-1: 128 tokens 4.0 s, teacher 46/53
+[lr] group reason-2: 339 tokens 10.9 s, teacher 223/256
+[lr] group reason-3: 332 tokens 10.7 s, teacher 230/256
+[lr] group reason-4: 318 tokens 10.0 s, teacher 198/252
+[lr] group know-1: 258 tokens 7.3 s, teacher 158/200
+[lr] group know-2: 251 tokens 7.2 s, teacher 154/187
+[lr] group know-3: 318 tokens 9.9 s, teacher 205/256
+[lr] group know-4: 152 tokens 5.2 s, teacher 67/82
+[lr] group long-1: 329 tokens 10.7 s, teacher 179/256
+[lr] group long-2: 327 tokens 10.7 s, teacher 199/256
+[lr] group edge-1: 153 tokens 5.3 s, teacher 71/88
+[lr] group edge-2: 276 tokens 10.2 s, teacher 168/211
+[lr] score group (vendor): agree {'e0': 3907, 'corpus': 295, 'prefix': 81}, KL {'e0': 0.3073257549130113, 'corpus': 0.2731757727296677, 'prefix': 0.1527934992734019}, peak 17.1 GB, 451 s; wrote logs/qwen_layer_restore/score_group.json
+== summarize 16:56:43 221c1c0c
+[lr] summarize: valid=True (DENSE_C parity, both oracle halves within tolerance on the vendor weights, group at the vendor weights, every score receipt ok); group E0 {'n': 4722, 'a_right': 3915, 'b_right': 3907, 'corrected': 63, 'broken': 71, 'both_right': 3844, 'both_wrong': 744, 'net': -8, 'delta_points': -0.16941973739940702}; validation {'n': 454, 'a_right': 374, 'b_right': 376, 'corrected': 6, 'broken': 4, 'both_right': 370, 'both_wrong': 74, 'net': 2, 'delta_points': 0.44052863436123346}; wrote logs/qwen_layer_restore/summary.json and logs/qwen_layer_restore/observations.json
+== sensitivity 16:56:43 221c1c0c
+[lr] sensitivity in22: e0 rel 0.000e+00 (median row 0.000e+00), validation rel 0.000e+00
+[lr] sensitivity out23: e0 rel 1.279e-01 (median row 1.150e-01), validation rel 1.412e-01
+[lr] sensitivity out27: e0 rel 1.052e-01 (median row 9.122e-02), validation rel 1.168e-01
+[lr] sensitivity out31: e0 rel 9.490e-02 (median row 8.143e-02), validation rel 1.103e-01
+[lr] sensitivity out39: e0 rel 9.468e-02 (median row 7.766e-02), validation rel 1.118e-01
+[lr] sensitivity out47: e0 rel 9.675e-02 (median row 6.745e-02), validation rel 1.116e-01
+[lr] sensitivity out55: e0 rel 1.133e-01 (median row 7.261e-02), validation rel 1.574e-01
+[lr] sensitivity out63: e0 rel 1.098e-01 (median row 7.497e-02), validation rel 1.084e-01
+[lr] sensitivity final_norm: e0 rel 1.257e-01 (median row 7.715e-02), validation rel 1.168e-01
+[lr] sensitivity: wrote logs/qwen_layer_restore/sensitivity.json
+== adjudicate 16:56:56 221c1c0c
+BAR 1 E0-AGREEMENT-DIAGNOSTIC: NO-FIRE
+BAR 2 VALIDATION-AGREEMENT: NO-FIRE
+BAR 3 VALIDATION-KL: NO-FIRE
+REFUTED-IF: REFUTED
+== done 16:56:56
