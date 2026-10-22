@@ -82856,3 +82856,118 @@ no W4 measurement exists in this entry; the W4 payload-rate and
 variant figures are BREAKDOWN-0's share4 probe figures (receipt
 logs/qmetal/traffic_probe_01b8c177.json), run against v3 before v4
 existed, not re-measured on the shipped v4.
+
+## PRE-REG LOSSLESS-BF16-FEASIBILITY-0: can the original Qwen3.8-27B BF16 weight values be stored reversibly in substantially less than 16 bits per parameter, enough for the 26.9 B-parameter text model (53.79 GB in BF16) to fit below roughly 28 to 30 GB on the 36 GB Mac, and is a Metal-compatible decoder plausible? Evidence: the exact bit patterns of the two retained, sha-verified vendor shards only (layers 21 part, 22, 23; lm_head); no download; registered before the full census and encoder benchmark run (2026-10-22, mac)
+
+Track B of Artin's GO of 2026-10-22. A new research question, not an
+arm C replacement: arm C (W4 and S16 at about 4 to 5 bits per weight,
+9.37 GB resident) stays the qualified serving model whatever this
+reads. Machine projection docs/preregs/lossless-bf16-feasibility-0.json
+(bars 1 to 3, the refutation predicate, receipts, operands). Drivers,
+all written and smoke-tested before this registration:
+scratch/bf16_entropy_census.py (B1: the information-theoretic baseline
+on the exact uint16 patterns, no float conversion), scratch/
+bf16_lossless_bench.py with scratch/bf16_huff.c (B2: reversible
+encoders with byte-equal round trips), scratch/bf16_lossless_obs.py
+(the observations adapter), scratch/bf16_lossless_study.sh (the
+runner). Smoke receipts under logs/bf16_lossless/smoke/ (two layer-21
+tensors and 32 M elements of lm_head) exist and were read; they are not
+evidence, and the bars are the GO's stated design target, not a value
+tuned on them.
+
+Inputs and budget. The two shards are read through the pinned-file
+helper immediately before every pass (model-00007-of-00018:
+2,108,759,344 bytes, sha256 80b0c490...; model-00018-of-00018:
+3,392,197,344 bytes, sha256 1d347950...). Shard 7 holds 30 BF16
+tensors: layer 21's out_proj and MLP, all of layer 22 (a DeltaNet layer:
+in_proj_qkv, in_proj_z, in_proj_a, in_proj_b, out_proj, conv1d, A_log,
+dt_bias, norm, the MLP) and all of layer 23 (a full-attention layer:
+q, k, v, o projections, q and k norms, the MLP). Shard 18 holds lm_head
+[248320, 5120] and 15 mtp.* tensors (not in the text model; excluded
+from the budget, reported by the census only). The text-model budget
+comes from the pinned arm C manifest shapes under the digest chain
+(logs/qwenwhole/artifact_digest_C.txt; the visual tower and the MTP
+head excluded): 26,895,998,464 parameters, 53.79 GB (50.10 GiB) in BF16;
+by class: MLP 17.11 B parameters (34.23 GB), DeltaNet projections 5.54 B
+(11.07 GB), attention projections 1.68 B (3.36 GB), lm_head 1.27 B (2.54
+GB), the embedding 1.27 B (2.54 GB, not sampled; it takes lm_head's
+figure as a declared stand-in, the same shape), DeltaNet gate
+projections 0.024 B (0.05 GB), small tensors 0.003 B (0.005 GB, taken at
+16 bits). The vendor index's total_size of 55.56 GB includes the visual
+tower and the MTP head.
+
+B1 census, per tensor and pooled per class: n, raw bytes, distinct
+16-bit patterns, H16 (the zeroth-order entropy of the 16-bit pattern,
+the weight-level figure), H_exp (the exponent byte's entropy, which is
+NOT the weight's), the sign bit's and the 7-bit mantissa's marginal
+entropies, H(sign, mantissa | exponent) = H16 - H_exp (a DFloat11-style
+coder stores these 8 bits raw, so H_exp + 8 is its floor), the high and
+low byte entropies (what a byte-plane coder sees), the first-order
+conditional entropy of the exponent given the previous exponent in
+memory order, and block-adaptive entropies at tiles 256, 1,024, 4,096,
+16,384 and 65,536 elements (the exponent byte) and 4,096 and 65,536
+(the full 16-bit pattern), each with its own per-block dictionary cost
+(distinct symbols x (symbol width + log2 tile) bits) and a 64-bit offset
+per block. B2 benchmark, per tensor of shard 7 and lm_head: raw;
+zstd at levels 3 and 19 (single-threaded, deterministic); the two byte
+planes compressed separately; 16 bit planes (bitshuffle) compressed as
+one stream; DFloat11-style: the exponent byte under a canonical Huffman
+code from the tensor's own histogram (scratch/bf16_huff.c, blocks of
+65,536 elements with a 64-bit offset each), sign and mantissa raw at one
+byte per weight; rANS on the exponent with a static model
+(constriction); rANS on the full 16-bit pattern with a 65,536-way static
+model. Every pair proves exact recovery by comparing the recovered bytes
+with the original bytes (a mismatch stops the run); compressed bytes
+include every dictionary, offset table and header; compression and
+decompression wall and throughput on the raw byte count and the
+process's peak RSS are recorded. xz, brotli and any ANS-with-context
+coder are out of scope for this bounded round; no Metal decoder is
+implemented.
+
+Bars (the adjudicator's words govern). Measurement: the class-weighted
+extrapolation, sum over classes of the class's text-model parameter
+count times the best EXACT compressor's achieved bits per weight on the
+class's sampled tensors (fewest compressed bytes including metadata
+among methods exact on every tensor of the class), in GB of 1e9 bytes.
+BAR 1 RESIDENCY-30GB: that figure below 30.0 GB (the GO's initial design
+target). BAR 2 RESIDENCY-28GB: below 28.0 GB (the tighter end, leaving
+about 8 GB for macOS, activations, recurrent state, KV cache, decoder
+scratch and the allocator). BAR 3 ENTROPY-FLOOR-30GB: the same
+extrapolation with the class's parameter-weighted mean H16 (no
+dictionary cost) below 30.0 GB, that is whether ANY static per-tensor
+symbol coder could reach the target. REFUTED-IF (a NEGATIVE feasibility
+verdict, no download proposed): the best-exact extrapolation is above
+32.0 GB, or bar 3 reads NO-FIRE. Reported alongside, not adjudicated:
+ranges (the best sampled class figure applied everywhere, the worst
+applied everywhere, each single method with its own per-class figures),
+the achieved throughputs and memory, the reading on a Metal decoder and
+on whether lossless BF16 inference would be materially slower than arm
+C, the block-adaptive entropies against their dictionary costs, the
+Lean-formalizable properties (B4) and the lossy Hadamard and lattice
+note (a separate future arm, not an entropy coder).
+
+Registered prior. DFloat11 reports about 30 percent size reduction on
+BF16 LLM weights (about 11 bits per weight) by entropy-coding the
+exponent and keeping sign and mantissa raw; the smoke census read H16
+10.48 to 10.50 bits per weight, H_exp 2.56 to 2.58 and H(sign,
+mantissa | exponent) 7.92 on two layer-21 tensors and the first 32 M
+elements of lm_head. Prior: the text model extrapolates to 34 to 37 GB
+under any exact coder on these statistics, above the 30 GB bar and the
+32 GB refutation line, and the H16 floor itself extrapolates to about
+35 GB; expected outcome all three bars NO-FIRE and REFUTED, a NEGATIVE
+feasibility verdict for full lossless BF16 residency on this machine.
+If instead a class reads well below 10 bits per weight (block-adaptive
+or 16-bit-pattern coding finding structure the smoke did not show), the
+extrapolation and the bars say so. Nothing is tuned after the receipts
+are read; the sampled tensors are not a random sample of the 64 layers
+and the ranges carry that.
+
+Receipts (small text, force-added): logs/bf16_lossless/
+entropy_<commit>.json, logs/bf16_lossless/bench_<commit>.json,
+logs/bf16_lossless/observations.json, logs/bf16_lossless/
+adjudication.txt, logs/bf16_lossless/study_<commit>.log; the commit is
+the one this chain runs at and is named in the verdict. Fences: one
+machine; two shards; exact-bytes recovery is the correctness claim and
+the only one; throughput is single-process CPU wall on this Mac, not a
+GPU decoder's; no model is loaded, decoded or served from any
+compressed form in this round.

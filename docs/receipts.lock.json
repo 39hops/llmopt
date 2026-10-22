@@ -212,6 +212,22 @@
    "source": "results",
    "tracked": true
   },
+  "logs/bf16_lossless/adjudication.txt": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/bf16_lossless/bench_1cee6a56.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/bf16_lossless/entropy_1cee6a56.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/bf16_lossless/observations.json": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/checkers0/probe.jsonl": {
    "bytes": 18091,
    "exists": true,

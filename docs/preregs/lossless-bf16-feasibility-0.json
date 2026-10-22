@@ -1,0 +1,68 @@
+{
+ "name": "LOSSLESS-BF16-FEASIBILITY-0",
+ "note": "Machine-readable form of PRE-REG LOSSLESS-BF16-FEASIBILITY-0; the prose governs on any conflict. Track B of Artin's GO of 2026-10-22: can the original Qwen3.8-27B BF16 weight values be stored reversibly in substantially less than 16 bits per parameter, and is a Metal-compatible decoder plausible. Registered before the census and the encoder benchmark run on the full tensors (smoke runs on two tensors and 32 M elements of lm_head exist under logs/bf16_lossless/smoke/ and were read; the bars are the GO's stated design target of 28 to 30 GB, not tuned on them). Evidence: only the two retained sha-verified vendor shards (layers 21 part, 22, 23 and lm_head); no download. The text-model BF16 budget is computed from the pinned arm C manifest shapes (26,895,998,464 parameters, 53.79 GB, excluding the visual tower and the MTP head). Measurement: the achieved bits per weight of the best EXACT compressor per architectural class (the compressor whose recovered bytes equal the original bytes on every tensor of that class), weighted by each class's parameter count in the text model; classes without a sampled tensor (the embedding) take the sampled class nearest in shape (lm_head), and the small tensors take 16 bits. Bars are on that class-weighted extrapolation; the ranges and alternative weightings are reported alongside. Preconditions (measurement validity): both shard pins verified immediately before reading; every compressor row exact; the census and the benchmark on the same tensors. Decision rule: bar 1 NO-FIRE or the refutation firing books a NEGATIVE feasibility verdict and no download is proposed; bar 1 FIRE books a positive feasibility reading that still requires a decoder and a loader before any resident model exists.",
+ "results_id": "2026-10-22-pre-reg-lossless-bf16-feasibility-0",
+ "registered": "2026-10-22",
+ "machine": "mac",
+ "arms": {
+  "RAW": {
+   "description": "the original BF16 bytes, 16 bits per weight, 53.79 GB for the text model"
+  },
+  "BEST_EXACT": {
+   "description": "per class, the exact compressor with the fewest compressed bytes including all metadata among those benchmarked (zstd, byteplane+zstd, bitshuffle+zstd, DFloat11-style exponent Huffman, rANS on the exponent, rANS on the 16-bit pattern)"
+  }
+ },
+ "bars": [
+  {
+   "id": 1,
+   "name": "RESIDENCY-30GB",
+   "metric": "extrapolated_text_model_gb_class_weighted",
+   "population": "text-model:26895998464-params",
+   "aggregation": "sum_over_classes_of_params_times_best_exact_bits_per_weight",
+   "direction": "below",
+   "value": 30.0,
+   "arms": ["RAW", "BEST_EXACT"],
+   "description": "the class-weighted extrapolated compressed size of the text model's weights, with every dictionary, offset table and header, is below 30.0 GB (the GO's initial design target: original-weight storage below roughly 28 to 30 GB)."
+  },
+  {
+   "id": 2,
+   "name": "RESIDENCY-28GB",
+   "metric": "extrapolated_text_model_gb_class_weighted",
+   "population": "text-model:26895998464-params",
+   "aggregation": "sum_over_classes_of_params_times_best_exact_bits_per_weight",
+   "direction": "below",
+   "value": 28.0,
+   "arms": ["RAW", "BEST_EXACT"],
+   "description": "the same figure below 28.0 GB, the tighter end of the target, leaving about 8 GB of the 36 GB machine for macOS, activations, state, cache and decoder scratch."
+  },
+  {
+   "id": 3,
+   "name": "ENTROPY-FLOOR-30GB",
+   "metric": "entropy_floor_text_model_gb_class_weighted",
+   "population": "text-model:26895998464-params",
+   "aggregation": "sum_over_classes_of_params_times_H16_bits_per_weight",
+   "direction": "below",
+   "value": 30.0,
+   "arms": ["RAW", "BEST_EXACT"],
+   "description": "the class-weighted zeroth-order 16-bit entropy (H16, no dictionary cost) extrapolated to the text model is below 30.0 GB: whether ANY static per-tensor symbol coder, however good, could reach the target."
+  }
+ ],
+ "receipts": [
+  "logs/bf16_lossless/entropy_1cee6a56.json",
+  "logs/bf16_lossless/bench_1cee6a56.json",
+  "logs/bf16_lossless/observations.json",
+  "logs/bf16_lossless/adjudication.txt"
+ ],
+ "operands": [
+  {"name": "the vendor index (the text model's tensor inventory)", "provider": "scratch/qwen_layer_restore.py"},
+  {"name": "the arm C manifest shapes (the BF16 byte budget) via the digest chain", "provider": "logs/qwenwhole/artifact_digest_C.txt"},
+  {"name": "the census driver", "provider": "scratch/bf16_entropy_census.py"},
+  {"name": "the benchmark driver", "provider": "scratch/bf16_lossless_bench.py"},
+  {"name": "the Huffman codec", "provider": "scratch/bf16_huff.c"},
+  {"name": "the observations adapter", "provider": "scratch/bf16_lossless_obs.py"},
+  {"name": "the pinned-file helpers", "provider": "llmopt/lab/hash.py"}
+ ],
+ "refuted_if": "Feasibility is REFUTED (a NEGATIVE verdict, no download proposed) if the class-weighted extrapolation under the best exact compressor is above 32.0 GB, or if the class-weighted H16 entropy floor itself extrapolates above 30.0 GB (bar 3 NO-FIRE): then no static symbol coder on these statistics fits the target, whatever its implementation.",
+ "refuted_if_predicate": {"measurement": "extrapolated_text_model_gb_class_weighted", "direction": "above", "value": 32.0},
+ "registered_prior": "DFloat11 (NeurIPS 2025) reports about 30 percent size reduction on BF16 LLM weights (about 11 bits per weight) from exponent entropy coding with sign and mantissa kept raw; the smoke census on two layer-21 tensors and 32 M elements of lm_head read H16 10.48 to 10.50 bits per weight, H_exp 2.56 to 2.58 and H(sign, mantissa | exponent) 7.92 (the 8 raw bits are within 0.08 bits of incompressible). Prior: the text model extrapolates to 34 to 37 GB under any exact coder on these statistics (10.5 to 11 bits per weight of 53.79 GB), above the 30 GB bar and above the 32 GB refutation line; the entropy floor itself (bar 3) extrapolates to about 35 GB. Expected outcome: all three bars NO-FIRE, REFUTED, a NEGATIVE feasibility verdict: lossless BF16 residency of the full text model is not plausible on this 36 GB machine. Reported alongside, not adjudicated: achieved compression and decompression throughput, the Metal decoder reading (the DFloat11 design decodes exponents by table lookup in threadgroup memory at tens of GB/s on CUDA; its Metal analogue is plausible in principle but would run the decode on every weight read, so a lossless BF16 tower would be bound by 10.5 bits per weight of traffic plus decode against arm C's 4 to 5 bits), and the block-adaptive entropies at several tiles with their dictionary costs."
+}

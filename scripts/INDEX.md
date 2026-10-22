@@ -1635,6 +1635,44 @@ Serving-path guard for the kernel generation 5 default flip (Artin's GO of 2026-
 - `mode_compare()`
 - `main()`
 
+### scratch/bf16_entropy_census.py
+Track B1 of the GO of 2026-10-22 (LOSSLESS-BF16-FEASIBILITY-0): the information-theoretic baseline of the ORIGINAL Qwen3.8-27B BF16 weights, measured on the exact 16-bit patterns of the two retained, sha-verified vendor shards (model-00007-of-00018: layers 21 (part), 22 and 23; model-00018-of-00018: lm_head and the MTP tensors). No float32 conversion anywhere: every statistic is a function of the uint16 bit pattern. No download, no write to the shards.
+
+- `classify(name: str) -> str`
+- `safetensors_header(path: str)`
+- `tensor_view(path: str, hdr: dict, base: int, name: str) -> np.ndarray`
+- `H_bits(counts: np.ndarray) -> float`
+- `block_entropy_bits(sym: np.ndarray, tile: int, nsym: int, width_bits: int) -> tuple[float, float]` — (sum of per-block zeroth-order entropies in bits, sum of dictionary
+- `census_tensor(mm: np.ndarray, n_limit: int | None=None) -> dict`
+- `main() -> None`
+
+### scratch/bf16_lossless_bench.py
+Track B2 of the GO of 2026-10-22 (LOSSLESS-BF16-FEASIBILITY-0): practical REVERSIBLE encodings of the original BF16 weights, measured on the exact bytes of the two retained, sha-verified vendor shards, with every compressor/decompressor pair proved exact by comparing the recovered bytes with the original bytes (never a float tolerance). Deterministic: single-threaded zstd, static models built from the tensor's own histogram, fixed block sizes, no randomness.
+
+- `rss_bytes() -> int`
+- `build_huff_lib() -> ctypes.CDLL`
+- `huffman_lengths(counts: np.ndarray, max_len: int=56) -> np.ndarray` — Code lengths of a Huffman code for the 256 symbols (zero for unused
+- `run_zstd(data: bytes, level: int) -> tuple[bytes, float]`
+- `run_unzstd(comp: bytes) -> tuple[bytes, float]`
+- `method_zstd(u: np.ndarray, level: int) -> dict`
+- `method_byteplane(u: np.ndarray, level: int) -> dict`
+- `method_bitshuffle(u: np.ndarray, level: int) -> dict`
+- `split_exp_sm(u: np.ndarray)`
+- `join_exp_sm(ex: np.ndarray, sm: np.ndarray) -> np.ndarray`
+- `method_dfloat11(u: np.ndarray, lib) -> dict`
+- `_rans_streams(sym: np.ndarray, probs: np.ndarray)`
+- `_rans_decode(model, streams, n)`
+- `_probs(counts: np.ndarray) -> np.ndarray`
+- `method_rans_exp(u: np.ndarray) -> dict`
+- `method_rans_16(u: np.ndarray) -> dict`
+- `main() -> None`
+
+### scratch/bf16_lossless_obs.py
+Observations adapter for PRE-REG LOSSLESS-BF16-FEASIBILITY-0: derives the registered measurements from the census receipt (scratch/bf16_entropy_census.py) and the benchmark receipt (scratch/bf16_lossless_bench.py) in committed code, with the text-model parameter budget read from the pinned arm C manifest (the digest chain is checked), and writes the observations document the adjudicator reads.
+
+- `budget() -> dict`
+- `main(entropy_path: str, bench_path: str, prereg_path: str) -> None`
+
 ### scratch/birth19m_arith.py
 BASICS-DIET-1 birth driver (pre-reg RESULTS L30355, amended L30429): stock diet + 6,000 sympy calculus atoms, with or without the 2,545-row arithmetic shard.
 
@@ -5134,6 +5172,17 @@ W4 activation-traffic ceiling probe for the fused Metal kernels, TIMING ONLY. Co
 - `provenance() -> dict`
 - `w4_variant(name: str) -> str`
 - `s16_variant(name: str) -> str`
+- `main() -> None`
+
+### scratch/qmetal_w4_probe.py
+W4 T = 1 bottleneck probe for the fused Metal kernels, TIMING plus a bit-identity guard, in the shape of the S16 lookup probe (scratch/qmetal_s16_probe.py). The shipped W4 kernel under generations 4 and 5 at tiles 1 and 2 is v4 (llmopt.lab.qmetal._W4_V4_SRC): one simdgroup owns ROWS4 = 4 consecutive rows, stages the 2 KB codebook as half4 in threadgroup memory once per row group, loads each 16-wide activation chunk once for the four rows, and per index word gathers four half4 codebook entries, scales the word's partial dot by the block's power-of-two scale and accumulates per exponent class; simd_sum per row. The generation 3 probe (OBSERVATION QWEN-METAL-DECODE-BREAKDOWN-0) measured v3 (one row per simdgroup) and the share4 variant that became v4; nothing has measured v4's own composition. This probe compiles controlled variants of a skeleton that reproduces v4's per-row operation sequence exactly and times each on real arm C W4 matrices at a T = 1 decode workload with REAL one-token activations captured from the qualified tower (the input to each probed matrix at one decode step of a real prompt). The frozen kernels are not modified.
+
+- `provenance() -> dict`
+- `rows_source(cb: str, nr: int, *, exp='dev', x_load=X_DEV, word_expr='ir[k][j]') -> str`
+- `u2_source(nr: int=4) -> str` — 64-bit index loads: a lane owns two consecutive words (32 weights) per
+- `variant_source(name: str) -> str`
+- `share_of(name: str) -> int`
+- `capture_activations(art: str, vdir: str, paths: list[str]) -> dict` — Build the qualified tower, run a real prompt (prefill then one decode
 - `main() -> None`
 
 ### scratch/quat_commutant.py
