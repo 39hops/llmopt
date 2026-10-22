@@ -5083,6 +5083,17 @@ Prefill operator study for the arm C Metal tower: why one fused launch over a ti
 - `main() -> None`
 - `floor(prov, art, vdir, chunk, rounds, out)`
 
+### scratch/qmetal_s16_probe.py
+S16 lookup probe for the fused Metal kernels, TIMING plus a bit-identity guard. The shipped S16 kernel (llmopt.lab.qmetal._S16_SRC, the kernel every generation 1 to 4 runs for S16) expands the 16-entry level table into a per-lane float array and indexes it at run time with each nibble; the decode breakdown (OBSERVATION QWEN-METAL-DECODE-BREAKDOWN-0) left that family unexplained: unmoved by removing its activation loads, 9 percent from its code stream. This probe compiles controlled variants of the frozen source and times each on real arm C S16 matrices at a T = 1 decode workload. The frozen kernels are not modified.
+
+- `provenance() -> dict`
+- `single_row(table: str, *, word_expr='cr[j]', exp_expr='(uint)exps[row * blocks_per_row + c0 / 128]', x_load='const device float4* x4 = (const device float4*)(x + c0);\n        float4 xa = x4[0], xb = x4[1];', uniform=False) -> str`
+- `share_rows(table: str, nr: int, uniform=False) -> str`
+- `u4_rows(table: str) -> str` — 128-bit code loads: lane owns four consecutive words (32 weights) per
+- `variant_source(name: str) -> str`
+- `share_of(name: str) -> int`
+- `main() -> None`
+
 ### scratch/qmetal_traffic_probe.py
 W4 activation-traffic ceiling probe for the fused Metal kernels, TIMING ONLY. Controlled variants of the frozen v3 W4 GEMV source (and the S16 source) remove one memory stream at a time; their outputs are wrong by construction and nothing here makes a numerical claim. The frozen kernels in llmopt.lab.qmetal are not modified; variants are compiled from edited copies of their source strings.
 
@@ -6718,6 +6729,11 @@ lab.hash — ONE digest semantics for the lab package (grok-seat cross-check ado
 
 - `sha256_file(path: str | Path, chunk: int=CHUNK) -> str` — Streaming file sha256, hex. Chunk size never changes the digest.
 - `git_sha(short: bool=False) -> str` — HEAD of THIS repo (anchored to this file, never the caller's
+- `class PinMismatch`
+- `sha256_array_payload(path: str | Path, rows_per_chunk: int | None=None) -> str` — ARRAY PAYLOAD digest of an .npy file: sha256 of the array's contiguous
+- `pinned_file_check(path: str | Path, pinned_file_sha256: str, pinned_size_bytes: int | None=None) -> dict` — FILE-digest check of a pinned file. Every field names its kind:
+- `pinned_array_payload_check(path: str | Path, pinned_array_payload_sha256: str) -> dict` — ARRAY-PAYLOAD-digest check of a pinned .npy array: array_payload_sha256
+- `require_pinned_file(path: str | Path, pinned_file_sha256: str, pinned_size_bytes: int | None=None) -> dict` — pinned_file_check that REFUSES (PinMismatch) unless ok: the fresh
 
 ### llmopt/lab/jsonl.py
 lab.jsonl — one jsonl read/write semantics (grok-seat cross-check adoption, 2026-08-11: 40+ hand-rolled open/loads loops across scripts/ and scratch/, each with its own blank-line, encoding, and partial-write behavior).
