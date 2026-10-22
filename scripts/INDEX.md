@@ -6750,7 +6750,7 @@ lab.hash — ONE digest semantics for the lab package (grok-seat cross-check ado
 - `sha256_file(path: str | Path, chunk: int=CHUNK) -> str` — Streaming file sha256, hex. Chunk size never changes the digest.
 - `git_sha(short: bool=False) -> str` — HEAD of THIS repo (anchored to this file, never the caller's
 - `class PinMismatch`
-- `sha256_array_payload(path: str | Path, rows_per_chunk: int | None=None) -> str` — ARRAY PAYLOAD digest of an .npy file: sha256 of the array's contiguous
+- `sha256_array_payload(path: str | Path, rows_per_chunk: int | None=None) -> str` — ARRAY PAYLOAD digest of an .npy file: sha256 of the array's element
 - `pinned_file_check(path: str | Path, pinned_file_sha256: str, pinned_size_bytes: int | None=None) -> dict` — FILE-digest check of a pinned file. Every field names its kind:
 - `pinned_array_payload_check(path: str | Path, pinned_array_payload_sha256: str) -> dict` — ARRAY-PAYLOAD-digest check of a pinned .npy array: array_payload_sha256
 - `require_pinned_file(path: str | Path, pinned_file_sha256: str, pinned_size_bytes: int | None=None) -> dict` — pinned_file_check that REFUSES (PinMismatch) unless ok: the fresh

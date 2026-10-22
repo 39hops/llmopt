@@ -1,0 +1,2 @@
+{"event": "armed", "run_id": "qwen-s16-study-1", "pid": 83231, "launch_commit": "3d10cf654ed2a391105b5d32a30815d24b9776b2", "launch_commit_short": "3d10cf65", "worktree_role": "main", "worktree_name": "llmopt", "cwd_relative": ".", "started_utc": "2026-10-22T16:58:49+00:00", "dirty_at_arm": false, "sentinel": ".git/liverun.lock"}
+{"event": "disarmed", "run_id": "qwen-s16-study-1", "pid": 83231, "rc": 0, "ended_utc": "2026-10-22T17:41:13+00:00", "sentinel": ".git/liverun.lock"}

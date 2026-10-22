@@ -67,14 +67,17 @@ class PinMismatch(ValueError):
 
 
 def sha256_array_payload(path: str | Path, rows_per_chunk: int | None = None) -> str:
-    """ARRAY PAYLOAD digest of an .npy file: sha256 of the array's contiguous
-    element bytes, header excluded, streamed over the leading axis. The
+    """ARRAY PAYLOAD digest of an .npy file: sha256 of the array's element
+    bytes in C order (np.ascontiguousarray), header excluded, streamed over
+    the leading axis; an empty array digests the empty byte string. The
     chunking never changes the digest. Not comparable with sha256_file."""
     import numpy as np
     a = np.load(path, mmap_mode="r")
     h = hashlib.sha256()
     if a.ndim == 0:
         h.update(np.ascontiguousarray(a).tobytes())
+        return h.hexdigest()
+    if a.shape[0] == 0:
         return h.hexdigest()
     if rows_per_chunk is None:
         row_bytes = max(1, a[0].nbytes) if a.ndim > 1 else a.itemsize
@@ -98,7 +101,7 @@ def pinned_file_check(path: str | Path, pinned_file_sha256: str, pinned_size_byt
     rec["size_bytes"] = p.stat().st_size
     rec["size_ok"] = True if pinned_size_bytes is None else rec["size_bytes"] == int(pinned_size_bytes)
     rec["file_sha256"] = sha256_file(p)
-    rec["file_sha256_ok"] = rec["file_sha256"] == pinned_file_sha256
+    rec["file_sha256_ok"] = rec["file_sha256"] == str(pinned_file_sha256).lower()
     rec["ok"] = bool(rec["size_ok"] and rec["file_sha256_ok"])
     return rec
 
@@ -114,7 +117,7 @@ def pinned_array_payload_check(path: str | Path, pinned_array_payload_sha256: st
     if not p.is_file():
         return rec
     rec["array_payload_sha256"] = sha256_array_payload(p)
-    rec["array_payload_sha256_ok"] = rec["array_payload_sha256"] == pinned_array_payload_sha256
+    rec["array_payload_sha256_ok"] = rec["array_payload_sha256"] == str(pinned_array_payload_sha256).lower()
     rec["ok"] = bool(rec["array_payload_sha256_ok"])
     return rec
 

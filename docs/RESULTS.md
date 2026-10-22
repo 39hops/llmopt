@@ -81997,3 +81997,481 @@ candidate, one A/B, one census: nothing is tuned after the A/B is read.
 No new vendor download, retraining, adapter fitting, recompression,
 speculative verification or full-teacher restoration is part of this
 registration.
+
+## OBSERVATION QWEN-METAL-DECODE-BREAKDOWN-1: the cached-decode step of arm C on the current runtime (W4 v4 dispatch, the shipped S16 kernel, kernel generation 4) is 130.9 ms per token at context 126, of which the S16 matrices are half (body 55.9 ms, head 9.9 ms, 50 percent), W4 48.2 ms, the DeltaNet core 14.7 ms, attention core 1.6 ms, norms 2.2 ms and the framework skeleton 4.6 ms; inside the S16 kernel the run-time-indexed per-lane level table is 41 to 51 percent of the launch (removing it leaves 0.49 to 0.59 of the shipped time on six real matrices), the activation loads are at most 7 percent, the code stream 8 to 14 percent, the exponent stream 6 to 14 percent, and the launch floor 3 to 25 percent; reading the level from the device table instead runs at 0.52 to 0.63 of the shipped kernel with bit-identical rows, as fast as threadgroup staging with two or four rows sharing each activation load, while simd_shuffle lookups are 1.10 to 1.18 times slower and 128-bit code loads 0.71 to 0.79 (2026-10-22, Mac; timing only beyond the stated bit-identity checks; frozen kernels, codec and receipts untouched)
+
+Phase B of Artin's GO of 2026-10-22: repeat the per-operation decode
+breakdown on the current qualified runtime and recheck the old S16
+contribution as a hypothesis, then phase C's bounded S16 kernel
+alternatives measured as isolated operator time and pipelined launch
+time on representative body matrices and the vocabulary head.
+
+Instrument 1, the breakdown by ablation (scratch/qwen_metal_breakdown.py
+exactly as frozen for OBSERVATION QWEN-METAL-DECODE-BREAKDOWN-0, receipt
+logs/qmetal/breakdown_c1c19f3f.json, clean tree at launch, kernel
+generation 4, context 126, 32 steps, median of steps 5 to 32, each step
+forced by mx.eval on its logits). Full step 130.4, 132.5 and 130.9 ms on
+three separate measurements (p90 132.2 to 134.9), median 130.9. Marginal
+costs (full minus the configuration with one family replaced by a
+near-constant stand-in that keeps a data dependence): W4 fused linears
+(192 matrices) 48.2 ms; S16 fused linears except the head (208) 55.9 ms;
+the head 9.9 ms; all fused linears together 112.5 ms (the three family
+marginals sum to 114.0, so the families barely overlap); DeltaNet conv
+plus recurrence plus gated norm 14.7 ms; attention core 1.6 ms; norms
+2.2 ms; skeleton 4.6 ms. Accounted 112.5 + 14.7 + 1.6 + 2.2 + 4.6 =
+135.6 against 130.9 measured, within 4 percent (the first breakdown
+closed to 1 percent; the DeltaNet and norm marginals are larger here
+by 2.6 and 1.4 ms, the three full-step repeats span 2.1 ms, and the
+difference is unexplained). Against the first breakdown: W4 72.6 to 48.2 ms
+(the v4 kernel, as OBSERVATION QWEN-METAL-W4-V4-0 measured), S16 body
+55.8 to 55.9, head 9.5 to 9.9, so the S16 family is unchanged in
+absolute terms and has moved from 42 to 50 percent of the step. The old
+S16 contribution is confirmed as a current measurement, not carried
+over.
+
+Instrument 2, the S16 lookup probe (scratch/qmetal_s16_probe.py;
+receipt logs/qmetal/s16_probe_3d10cf65.json on a clean tree, the
+record cited below, and the first run
+logs/qmetal/s16_probe_c1c19f3f.json, the selection record, whose
+tree_dirty flag most plausibly came from scripts/INDEX.md regenerated
+by the index hook for drivers written while the chain ran (the receipt
+holds only the flag; git cannot show what was dirty at that minute;
+the check made: git diff c1c19f3f 3d10cf65 leaves the probe driver
+unchanged and adds the v5 kernel to llmopt/lab/qmetal.py without
+touching the shipped S16 source, the header or the resident the probe
+uses); the two receipts agree within 9 percent on every variant
+(out_proj loads-and-reduction 115 against 126 us, in_proj_z byte table
+with two rows 136 against 146, the in_proj_qkv baseline 397 against
+418; no spread statistic exists in either receipt), and the clean
+re-run's higher in_proj_qkv baseline is where the upper ends of the
+ratios below come from). The registration prose quoted the first
+receipt's ranges without k_proj ("0.98 on every shape" for the
+no-activation variant; k_proj read 1.03) and the candidate's device-
+table ratio as 0.53 to 0.56 where the clean re-run reads 0.52 on
+in_proj_qkv; the per-shape figures below are the record. Real arm C payloads: layer 0
+in_proj_qkv [10240, 5120], in_proj_z [6144, 5120], out_proj [5120,
+6144], layer 3 q_proj [12288, 5120] and k_proj [1024, 5120], lm_head
+[248320, 5120]; T = 1 float32 activation; synced median of 50 single
+launches and pipelined per-launch time over 32 launches queued on
+independent inputs before one eval (the tower's regime, the number
+quoted below); the artifact digest chain checked at launch. The shipped
+kernel's pipelined time and payload rate: 418 us (64 GB/s), 243 (66),
+243 (66), 475 (67), 51 (52), 9,402 us (69 GB/s). Diagnostic variants,
+outputs wrong by construction, as a ratio of the shipped time on the
+six matrices in that order: no activation loads 0.93, 1.02, 0.98, 0.98,
+1.01, 0.99; no code stream 0.86, 0.91, 0.90, 0.91, 0.92, 0.90; no
+exponent stream 0.86, 0.91, 0.91, 0.92, 0.94, 0.92; the level table
+replaced by arithmetic on the nibbles 0.49, 0.54, 0.53, 0.52, 0.59,
+0.52; activation loads and reduction only 0.45, 0.50, 0.47, 0.46, 0.59,
+0.45; the empty kernel 0.07, 0.09, 0.08, 0.07, 0.25, 0.03. The first
+probe's reading that S16 is not activation-bound holds, and the cost it
+could not place is placed: the shipped source copies the sixteen half
+levels into a per-lane float array and indexes that array with each
+nibble at run time, and that lookup is 41 to 51 percent of the launch on every shape
+(dynamic indexing of a register array compiles to addressable storage;
+inferred from the deltas, compiler statistics are not exposed).
+
+Candidates, outputs real, each checked against the shipped kernel bit
+for bit on the same input and against the float64 canonical decode
+within the parity bound; ratio of the shipped pipelined time on the six
+matrices: the level read from the device table per nibble 0.52, 0.56,
+0.56, 0.55, 0.63, 0.54 (bit-identical); a sixteen-entry threadgroup
+table 0.57, 0.62, 0.61, 0.60, 0.69, 0.61 (bit-identical); a 256-entry
+byte-to-level-pair table in threadgroup memory, the W4 v3 codebook
+pattern, 0.61, 0.65, 0.65, 0.64, 0.74, 0.64 (bit-identical); the same
+byte table with two rows per simdgroup sharing each activation load
+0.52, 0.56, 0.56, 0.55, 0.66, 0.55 and with four rows 0.53, 0.55, 0.55,
+0.54, 0.59, 0.54 (bit-identical); simd_shuffle lookups from a level
+held per lane 1.10, 1.16, 1.16, 1.16, 1.13, 1.18 (bit-identical, slower;
+inferred: eight shuffles per word cost more than the table); 128-bit code loads
+with a lane owning four consecutive words 0.71, 0.74, 0.75, 0.73, 0.79,
+0.73 (a different summation order, within the parity bound, not
+bit-identical). With the byte table, sharing two or four rows brings it to the
+device-table read's level (0.61 to 0.74 to 0.52 to 0.66); a
+device-table-plus-sharing variant was not measured, and the
+no-activation variant says the loads are cheap. The simplest
+candidate, the device-table read, is within 4.0 to 5.3 percent of the
+no-table floor on every shape but k_proj (7.6 percent); the
+simd_shuffle variant with four shared rows reads 1.10 to 1.19. Payload rate of that candidate: 117 to 123 GB/s on
+the four large body shapes and 127 GB/s on the head, against a 150
+GB/s roofline; the k_proj matrix (2.7 MB payload) carries the launch floor at
+25 percent of the shipped time and 40 percent of the candidate's (82
+GB/s).
+
+Projection, the product of the two instruments and not a measurement:
+S16 body and head 65.8 ms of the 130.9 ms step at 0.52 to 0.56 of their
+time is about 30 ms off the step, 130.9 to about 101 ms, 23 percent.
+The candidate is registered as the S16 v5 kernel in PRE-REG
+QWEN-METAL-S16-V5-0 against the 5 percent end-to-end hurdle, which
+settles whether the projection transfers to the pipelined tower.
+
+Fences. Timing only; single machine, artifact, context and dtype;
+marginals are end-to-end deltas under pipelined execution and need not
+add up; the ablation stand-ins make the model's numbers meaningless and
+are valid as timing only; the candidates' bit-identity checks are one
+input per matrix and the parity suite is the numerical claim; the
+probe's T = 1 result says nothing about multi-token tiles (the A/B
+driver measures tiles 2 to 8 separately). Receipts are small text
+files force-added under logs/qmetal/; the first probe receipt is kept
+as the selection record with its tree_dirty flag disclosed.
+
+## VERDICT QWEN-METAL-S16-V5-0: BARS 1 AND 2 FIRE, NOT-REFUTED. The S16 v5 kernel (each nibble reads its level from the device table) cuts the whole-model cached-decode step of arm C from 129.5 to 102.7 ms at context 126 (20.7 percent, worst pairing of rounds 12.2) and from 134.4 to 105.1 ms at context 1,024 (21.8 percent, worst pairing 18.1), 7.7 to 9.7 tokens per second, with every compared output bit-identical to the shipped kernel: greedy tokens and per-step logits equal at both contexts over 48 steps, the generation 5 census argmax-identical to the CPU rows at 4,722 of 4,722 with margins and top-16 errors equal to the generation 4 census at every row, cached decode 256 of 256 twice, peak unified memory within 0.002 percent (equal at 1,024); the device-table read is slower than the shipped kernel at tile 8 on every measured shape (1.16 to 1.20) and at tile 4 on the body shapes (1.08 to 1.14; 0.88 on the head), so generation 5 dispatches v5 for tiles 1 and 2 only; default generation stays 4, the flip is Artin's call (2026-10-22, Mac; kernel 52acf77d, run at 3d10cf65 under liverun qwen-s16-study-1; prior receipts untouched)
+
+Registration: PRE-REG QWEN-METAL-S16-V5-0 (L81836),
+docs/preregs/qwen-metal-s16-v5-0.json; the observations carry the
+registration digest and the adjudicator (scripts/adjudicate.py)
+scored the bars from them: BAR 1 DECODE-SPEEDUP-126 FIRE (20.70
+against 5.0, conjunct worst pairing 12.21 against 5.0), BAR 2
+DECODE-SPEEDUP-1024 FIRE (21.81, conjunct 18.06), REFUTED-IF
+NOT-REFUTED (the smaller improvement 20.70 against 5.0). Measurement
+valid, both arms admissible; the CANDIDATE admissibility reasons read
+from the receipts by the adapter (scratch/qmetal_s16_obs.py): bit
+identity on every A/B check, greedy tokens equal at both contexts,
+zero logit difference, every round reproducing its version's first
+round, census argmax identical 4,722 of 4,722, cached decode
+argmax-identical to the one-forward logits, top-16 max abs error
+1.019e-3 within 1.1e-3, candidate peak memory within one percent of
+the control. Receipts: logs/qmetal/s16_v5/ab.json,
+logs/qmetal/s16_v5/observations.json,
+logs/qmetal/s16_v5/adjudication.txt,
+logs/qwen_metal_qual/C_v5/summary.json (positions.jsonl, 2.2 MB, kept
+machine-local like the generation 4 census rows; sha256
+b2ec44f16916476abd891dd6c0601ed1982732f7ff5b185de23233e305646287,
+byte-identical to logs/qwen_metal_qual/C_v4/positions.jsonl);
+the parity suite re-run at 3d10cf65 after the chain,
+logs/qmetal/s16_v5/parity_3d10cf65.txt (330 passed, 15 skipped,
+generations 1 to 5); liverun receipt
+logs/liverun/qwen-s16-study-1.jsonl (armed at 3d10cf65, tree clean, rc
+0, 16:58 to 17:41 UTC); chain log logs/qmetal/s16_study/
+study_3d10cf65.log.
+
+Full cached decode (scratch/bench_qmetal_ab_s16.py; one process, the
+arm C tower built once, the version attribute switched on all 401
+residents between rounds, prompt prefill through prefill_chunked with
+the GEMM path so the cache state is the same arrays under both
+versions; 48 greedy steps per round, median of steps 5 to 48; eight
+rounds per context in the order control, candidate, candidate,
+control, twice). Context 126, control round medians 132.3, 129.4,
+128.9, 129.6 ms (p90 133.4 to 136.0), candidate 103.5, 113.2, 101.9,
+101.1 ms (p90 105.1 to 108.6 in three rounds and 132.0 in the second,
+whose maximum step was 157 ms; the slow round is kept and is the
+reason the worst pairing reads 12.2 rather than 20): per-version
+medians 129.5 and 102.7 ms, 20.7 percent, 7.72 to 9.74 tokens per
+second. Context 1,024, control 137.0, 131.0, 139.3, 131.9 ms,
+candidate 103.5, 102.8, 106.7, 107.3 ms: medians 134.4 and 105.1 ms,
+21.8 percent, 7.44 to 9.51 tokens per second; worst pairing 18.1.
+Peak unified memory per round 12.32 to 12.47 GB at 126 and 12.84 to
+12.94 GB at 1,024 under both versions (the growth follows round order,
+not the arm: active bytes rise 9.75 to 9.85 GB over the first rounds
+while the allocator cache stays at 4.61 GB; the registered check is the
+per-arm maximum, 12,466,898,092 control against 12,466,701,484
+candidate at 126 and equal at 1,024); allocator footprint after the
+last round 14.46 and 16.17 GB (active 9.85 and 10.08, cache 4.61 and
+6.09), process peak RSS 11.9 GB, one process holding both arms so the
+footprint is not split by arm (reported, not adjudicated); prefill 3.7
+to 4.3 s at 126 and 26.0 to 29.1 s at 1,024 with no version pattern. Numerical guard
+inside the A/B: the control's and the candidate's first-round greedy
+tokens equal at every step of both contexts, the maximum absolute
+difference of their per-step logits 0.0 at every step, and every later
+round reproduces its version's first round with a zero logit
+difference (the adapter checks the token equality; the logit field was
+read by hand, 0.0 in all twelve later rounds). Two receipt notes from
+the audits, inert for the measurement: the driver's part 1 leaves the
+tile cap lifted after its last cap-lifted call, so part 2 ran with the
+global cap at 8 while the receipt's s16_v5_max_tile field reports the
+production value 2; no S16 call above tile 2 occurs in part 2 (decode
+at tile 1, prefill on the GEMM path at chunks of 126 and 256 rows with
+no GEMM-ineligible matrix, the head at one row), so the dispatch that
+ran is the production dispatch; the driver restores the cap after
+part 1 since the run (fix in the booking commit). The receipt's
+tower.kernel_version field reads the import default 4; the rounds
+switch the version on every resident, as the per-round rows record.
+
+Matrices (same driver, part 1; real payloads in_proj_qkv, in_proj_z,
+out_proj, q_proj and lm_head; the registration named the five probe
+shapes and the head, and the driver carries four of the five, k_proj
+[1024, 5120] omitted by oversight: the probe measured it at 0.63, no
+bar reads part 1, and the omission is recorded here; three rounds
+alternating order; medians
+over rounds of the pipelined per-launch time, with the candidate as it
+dispatches and with the tile cap lifted, label 55). Tile 1: v4 400,
+262, 244, 473, 9,351 us; v5 225, 143, 141, 264, 5,109 us (0.56, 0.55,
+0.58, 0.56, 0.55); tile 2: 0.79, 0.79, 0.80, 0.77, 0.80; tile 4 with
+the cap lifted 1.10, 1.14, 1.13, 1.08, 0.88; tile 8 with the cap
+lifted 1.20, 1.20, 1.19, 1.16, 1.20 (as dispatched, tiles 4 and 8 run
+the shipped kernel and read 0.98 to 1.04). Outputs of the control, the
+candidate and the cap-lifted candidate bit-identical at tiles 1, 2 and
+8 on every matrix in every version pass of every round (45 of 45
+checks per tile, 135 of 135). First call in process (compile plus
+launch) v4 1.0 to 18.1 ms, v5 0.9 to 5.7 ms. The per-kernel ratio at
+tile 1 (0.55 to 0.58) matches the probe's 0.52 to 0.56 on the same
+shapes within 0.02 on four of them and 0.04 on in_proj_qkv (logs/qmetal/s16_probe_3d10cf65.json, OBSERVATION
+QWEN-METAL-DECODE-BREAKDOWN-1), and the breakdown's projection of 23
+percent off the step landed at 20.7 and 21.8.
+
+Census (scratch/qwen_metal_qual.py, changed since the generation 4
+qualification only to record the GEMM settings and the matrix-call
+path counts, 702532b6; QMETAL_VERSION=5, receipts logs/qwen_metal_qual/C_v5/;
+the 24 E0 prompts through the one-shot fused prefill with the full
+head, 4,722 positions against the frozen CPU rows, kernel generation 5
+recorded, tree clean at launch, wall 1,966 s). Argmax identical to the
+CPU rows 4,722 of 4,722; Metal logits at the CPU top-16 ids max abs
+1.02e-3, p99 1.1e-4, median 4.6e-5; margin |metal - cpu| max 3.0e-4;
+teacher-referenced sup error difference max 6.6e-4; agreement 0.8291
+with zero flips; replay k = 4 3.4695 concatenated, identical to the
+CPU at every k. Row by row against the generation 4 census
+(logs/qwen_metal_qual/C_v4/): Metal argmax equal at 4,722 of 4,722,
+margin difference exactly 0.0 at every position, top-16 error
+difference exactly 0.0, sup error difference exactly 0.0, so
+generation 5 reproduced generation 4 bit for bit on the whole census.
+Cached decode (chat-1, chat-2, 256 teacher-forced steps each): 256 of
+256 argmax equal to the one-forward logits in both, max abs difference
+2.08e-4 and 2.13e-4 (the generation 4 values to the digit), median
+step 102.2 and 102.5 ms (127.6 and 127.5 in the generation 4 receipt
+of 2026-10-17; a cross-run comparison, reported, not adjudicated), peak
+10.24 and 10.28 GB. Long context (synthetic tokens, 16 steps; reported,
+not adjudicated): decode 105.5 / 106.6 / 130.2 / 107.5 ms at 512 /
+1,024 / 2,048 / 4,096 with p90 110.9 / 112.5 / 161.6 / 123.2 and peak
+unified 12.70 / 15.46 / 20.94 / 31.92 GB (equal to the generation 4
+peaks at 512 to 2,048; 31.92 against 31.93 GB at 4,096); the 2,048
+reading is a 16-step median with a p90 of 162 ms and is reported as
+measured, not explained (the A/B at 1,024 over 48 steps and eight
+rounds shows no such excursion, and the 4,096 reading is back at 107).
+One-shot fused prefill (reported, not adjudicated, and cross-run): 8.05
+/ 7.99 / 8.02 / 7.76 tokens per second at 512 / 1,024 / 2,048 / 4,096.
+The C_v4 receipt read 5.5 / 5.5 / 5.4 / 5.3 because it was the all-v4
+build before the W4 tile dispatch; the dispatched generation 4 has no
+census prefill figure of its own, and the generation 3 census read 8.3
+/ 8.3 / 8.2 / 8.0 (OBSERVATION QWEN-METAL-W4-V4-0), so the fused
+tile-8 prefill under generation 5 reads 2 to 4 percent below the last
+same-path census, unpaired and five days apart; the changed code is
+not on that path (tile 8 runs the shipped S16 kernel), so no mechanism
+is known and the difference is left unresolved rather than called a
+regression or its absence; no in-run paired measurement of the fused
+prefill exists in this chain, the A/B's paired prefill being the GEMM
+path. Matrix calls by path 243,006 fused, 0 GEMM (the census is the
+fused-only reference, as before). What the census exercises: its
+one-forward prefill runs tile-8 fused calls, which generation 5
+dispatches to the shipped S16 kernel, so the 4,722-row identity
+re-verifies the shipped kernel plus the tile-1 and tile-2 remainders;
+the v5 kernel's own numerical evidence is the cached decode (512
+single-token steps argmax-identical to the one-forward logits), the
+A/B's 135 bit checks on real matrices and the zero cross-version logit
+difference over 96 decode steps.
+
+Tile cap. The device-table read loses to the per-lane array once each
+lookup serves several activations (the mechanism is inferred from the
+tile pattern, not isolated): the cap-lifted candidate at tile 4
+is 1.08 to 1.14 times the shipped kernel on the body shapes (0.88 on
+the head) and 1.16 to 1.20 at tile 8 on every shape, the same pattern
+the W4 v4 kernel showed and the same remedy (S16_V5_MAX_TILE = 2). The
+registration's JSON prior sentence said S16 tiles 2 to 8 below the GEMM
+threshold would also run v5; the prose, which governs, and the cap say
+tiles 4 and 8 run the shipped kernel, and that is what ran. Under the GEMM
+prefill path (tiles of 32 and above on S16) and the fused tile-8 path
+the changed code is not on the path except for tail tiles of one or
+two rows; S16 tiles 1 and 2 are the decode step and a
+speculative-verify or chunk-tail call of one or two rows.
+
+Both bars FIRE with their reproducibility conjuncts under the
+registered law, every precondition met, the refutation clause not
+fired; prefill throughput, the long-context decode and the allocator
+footprint are reported, not adjudicated: the fused census prefill
+reads 2 to 4 percent below the generation 3 census with no paired
+measurement and no mechanism (unresolved), and the 2,048-token
+long-context decode reads 130 ms median and 162 p90 over 14 timed
+steps against 135 and 139 in the generation 4 receipt (a single-sample
+excursion, unresolved); both are named, neither is adjudicated. The
+registered prior (15 to 25 percent at both contexts) HELD at 20.7 and
+21.8. Nothing was tuned after the A/B was read: one candidate, one A/B,
+one census. The
+registered hurdle for proposing a default flip is met; the flip itself
+is Artin's call, and until then generation 5 is selectable with
+QMETAL_VERSION=5 and nothing in the serving path changes. Fences. One
+machine (M3 Pro, 36 GB), one artifact, one process per A/B, float32
+activations; timing is pipelined end-to-end latency under the tower's
+own discipline and not a claim about isolated kernel time; bit
+identity with the shipped kernel is the numerical claim and the parity
+suite plus the census are its evidence, so no new numerical regime is
+introduced; two ctx-126 candidate rounds had maximum steps of 157 and
+159 ms (one of them moved its median to 113.2) and both are in the
+spread, not removed; the decode step after this change is 102 to 108
+ms except the 2,048-token long-context reading, of which the W4 matrices (48 ms), the S16 matrices at about 0.55
+of 66 ms (about 36 ms), the DeltaNet core (15 ms), attention and norms
+(4 ms) and the framework (5 ms) are the projected composition, about
+108, a projection and not a new breakdown. No
+further S16 tuning follows from this entry; the thread's next question,
+if any, is Artin's.
+
+## OBSERVATION QWEN-LAYER-RESTORE-0-PROPAGATION: a counterfactual perturbation-propagation analysis for the selected pair (layers 22 and 23) on the captures VERDICT QWEN-LAYER-RESTORE-0 booked: the hidden-state perturbation the vendor weights inject at the pair's output (row median 0.115 relative L2 on E0, 0.140 on the corpus and prefix sets) ends smaller at the final norm for most rows (median per-row ratio final norm over out23 0.66 on E0, 0.54 corpus, 0.34 prefix; 10 to 25 percent of E0 rows end larger than they left the pair) while the tail widens (E0 p99 0.23 to 0.48, maximum 0.34 to 1.13, rows above 0.5 relative from none to 0.9 percent, minimum cosine 0.96 to 0.53); the step-0 and step-1 medians of the rollouts (24 rows each) are 0.35 and 0.64 at the final norm, 4.6 and 8.4 times the E0 median of 0.077, with one broken and one corrected flip among those 48 rows; 161 of the 192 E0 flips sit at control margins under 0.5 nats (median 0.19) and the final-norm perturbation barely separates flipped from unflipped rows (medians 0.089 against 0.077); per-position KL improves at 54 percent of E0 rows (mean -0.010, p1 -0.49, p99 +0.39), largest under 0.5 nats of teacher margin and near zero above 4; the corpus's 10 percent KL reduction is mostly one row (-7.03 of the -10.81 nat sum, 65 percent) (2026-10-22, Mac; descriptive, no model run, no vendor bytes, no fit or selection; NOT a 64-layer quantization-error census, NOT an independent validation set, NOT a proof of distributed compression error)
+
+What this is. Phase E of Artin's GO of 2026-10-22: the distribution,
+not only the aggregate, of the activation perturbation that restoring
+layers 22 and 23 to the vendor BF16 weights injects, read off the
+CONTROL and GROUP captures the layer-restore verdict already booked
+(logs/qwen_layer_restore/score_control.json and score_group.json with
+their dumps: nine boundaries in22, out23, out27, out31, out39, out47,
+out55, out63 and the final norm for 5,176 rows, the 4,722 E0 positions
+then the 356 corpus and 98 prefix positions, each row the hidden state
+at the predicting position; the per-position score arrays with the
+teacher token, margins, KL and argmax of each arm; for one sentence
+below, the L22 arm's score array logs/qwen_layer_restore/dump/
+score_l22.npz, read off-receipt). Driver
+scratch/qwen_layer_restore_propagation.py, receipt
+logs/qwen_layer_restore_propagation/propagation.json with
+logs/qwen_layer_restore_propagation/flips.jsonl; every input file's
+digest is re-checked against the booked receipt before it is read
+(file digests, lab.hash.pinned_file_check; the receipt records the ok
+flags, the pinned digests being the booked receipts' own fields), the
+in22 captures of the two arms are identical as the construction
+requires, and nothing is fitted, calibrated or selected on any
+outcome. Relative L2 of a row is the norm of GROUP minus CONTROL over
+the norm of CONTROL; cosine is between the two rows; row numbers are
+indices within their set. The verdict's "0.67 of the local one" is a
+ratio of medians; the 0.66 here is the median of per-row ratios.
+
+What this is not. One pair was intervened on; the other 62 layers were
+never restored, so nothing here is a census of where the compression
+error lives. E0 is the set the disagreement was characterised on and
+the corpus and prefix records are the same 454 positions the verdict
+used, so nothing here is independent validation. The perturbation
+described is what THIS intervention does to THIS tower's residual
+stream; it is not evidence that the compression error is distributed
+across layers, and it is not evidence that it is concentrated anywhere.
+
+Distribution at the pair's output. E0 row relative L2 at out23: p5
+0.074, p25 0.094, median 0.115, p75 0.144, p90 0.171, p99 0.226,
+maximum 0.337, no row above 0.5, cosine p0.1 0.969 and minimum 0.958
+(pooled 0.128 as the verdict reported). Corpus median 0.140 (p99
+0.255, maximum 0.331), prefix median 0.140 (p99 0.220, maximum 0.243;
+six prefix rows sit below 0.05). Teacher-margin bins on E0 show the
+same out23 median (0.111 to 0.122) at every confidence level, so the
+pair perturbs confident and unconfident positions alike.
+
+Propagation through the downstream tower, all eight boundaries in
+order out23, out27, out31, out39, out47, out55, out63, final norm.
+Pooled relative L2: E0 0.128, 0.105, 0.095, 0.095, 0.097, 0.113,
+0.110, 0.126; corpus 0.149, 0.121, 0.114, 0.119, 0.121, 0.172, 0.117,
+0.126; prefix 0.122, 0.105, 0.098, 0.089, 0.077, 0.096, 0.073, 0.075.
+The curves are not monotone: the E0 minimum is at out31 and out39
+(0.095) and the corpus peak is at out55 (0.172, its largest value at
+any boundary), with the final norm at 0.126, 0.126 and 0.075 against
+0.128, 0.149 and 0.122 at out23. Per row, two movements separate. The
+bulk ends smaller: E0 row medians 0.115, 0.091, 0.081, 0.078, 0.067,
+0.073, 0.075, 0.077 (minimum at out47); the median per-row ratio of
+the final-norm perturbation to the out23 perturbation is 0.66 on E0
+(p5 0.36, p25 0.49, p75 0.93, p90 1.36, p95 1.81: between 10 and 25
+percent of E0 rows end larger than they left the pair), 0.54 on the
+corpus (p90 0.98) and 0.34 on the prefix (p95 0.84). The tail widens:
+E0 p99 0.226, 0.195, 0.202, 0.302, 0.397, 0.486, 0.472, 0.480;
+maximum 0.337, 0.284, 0.363, 0.543, 0.671, 0.976, 0.868, 1.131; rows
+above 0.2 relative 3.0, 0.8, 1.1, 3.0, 4.0, 5.2, 5.0, 5.3 percent;
+rows above 0.5 none at the first three, then 0.02, 0.49, 0.91, 0.95,
+0.93 percent; cosine p0.1 0.969, 0.968, 0.947, 0.916, 0.820, 0.632,
+0.708, 0.699 (minimum 0.958 to 0.529). The corpus tail does the same
+(maximum 0.331 at out23, 2.614 at out55, 1.230 at the final norm;
+cosine p0.1 0.956 to 0.456), the prefix tail is smaller (maximum
+0.243 to 0.588). The local and final perturbations of a row are
+weakly related over all rows (Spearman 0.25 on E0, 0.12 corpus, 0.54
+prefix), and the extreme tail is not independent of the local move:
+12 of the 20 E0 rows with the largest final-norm perturbation are
+above the out23 p95 of 0.188 (their out23 values 0.198 to 0.241),
+three above the p99.
+
+Where the tail is. On E0 the largest final-norm perturbations are
+dominated by the first generated positions: median final-norm relative
+L2 by rollout step 0.353 at step 0 (24 rows), 0.644 at step 1 (24),
+0.167 at steps 2 to 7 (144), 0.104 at 8 to 31, 0.077 at 32 to 127,
+0.069 at 128 and later, while the out23 medians at those steps are
+0.156, 0.205, 0.147, 0.118, 0.115, 0.111. The opener region the
+disagreement census named (the "We" against "The" miss) is where the
+pair's perturbation is largest at the final norm; the 48 step-0 and
+step-1 rows carry two flips with a net of zero: row 2422 broken ("We"
+to "The" at step 0, the opener flip the verdict booked, KL +1.10) and
+row 3830 corrected (" are" to " need" at step 1), with mean KL changes
+of +0.066 at step 0 and -0.035 at step 1; row 698 (teacher "We",
+control "The") stays "The" under GROUP with a KL worsening of +1.40
+nats. Of the twenty E0 rows with the largest final-norm perturbation
+(0.65 to 1.13 relative, cosine 0.53 to 0.79), eighteen are unchanged
+decisions at teacher margins of 7.9 to 17 nats, one is the corrected
+row 3830 (margin 11.4) and one (row 4511, step 0) is unchanged at a
+margin of 0.8; thirteen of the twenty are a rollout's first or second
+generated position. On the corpus the five largest (0.41 to 1.23) are
+unchanged decisions on digits, bracketed index tokens and " out" at
+teacher margins of 7.5 to 11.3 nats, the largest of them (row 125, a
+digit) at a control margin of 0.40 that falls to 0.19 under GROUP; on
+the prefix the two largest (0.30 and 0.59) are unchanged digits. The
+tail is mostly a large hidden-state move at confident positions whose
+logits keep their ranking.
+
+Perturbation against outcome. The final-norm perturbation barely
+separates the rows whose argmax changed from those that did not: E0
+medians 0.089 (192 changed) against 0.077 (4,530 unchanged), corrected
+0.085, broken 0.086; corpus 0.080 against 0.074; prefix 0.050 against
+0.046. By quintile of final-norm perturbation on E0 (944 or 945 rows
+each) the changed count rises 20, 31, 38, 45, 58 with corrected minus
+broken +1, -5, 0, -4, 0 and the mean KL change -0.0003, -0.007,
+-0.009, -0.011, -0.021: more movement, more flips in both directions,
+a slightly larger KL gain, the net decision change between -5 and +1
+per quintile. Spearman of the final-norm perturbation with the
+absolute KL change 0.18 (E0), with the signed KL change -0.03, with
+the control KL 0.12, with the teacher margin -0.04 and the control
+margin -0.06.
+
+The flips. E0: 192 argmax changes, 63 corrected, 71 broken, 58 where
+both arms are wrong and GROUP changed to a different wrong token;
+control top-2 margin median 0.19 nats (161 of 192 under 0.5, 31 at or
+above 0.5, 7 at or above 1, one above 2), teacher margin median 1.08.
+By control margin: 25 of 56 rows under 0.05 nats changed (9 corrected,
+10 broken), 77 of 180 in 0.05 to 0.2 (24, 25), 59 of 291 in 0.2 to 0.5
+(18, 25), 24 of 409 in 0.5 to 1 (11, 8), 6 of 624 in 1 to 2 (1, 2),
+and 1 of 3,162 above 2 nats (0, 1). By teacher margin: under 0.5 nats
+43 changed (11 corrected, 17 broken), 0.5 to 1 48 (9, 18), 1 to 2 49
+(20, 18), 2 to 4 33 (16, 7), 4 to 8 8 (3, 5), above 8 11 (4, 6); net
+gains in the 1 to 2 (+2) and 2 to 4 (+9) bins, net losses in the
+others (-6, -9, -2, -2). Corpus: 10 changes (4 corrected, 4 broken, 2
+both wrong), control margin median 0.10 nats, the corrected row 236 at
+1.47; prefix: 2 changes, both corrected, at control margins 0.05 and
+0.22. Per E0 prompt the net ranges from -7 to +3 over the 24
+rollouts.
+
+KL and the teacher token. E0 per-position KL change GROUP minus
+CONTROL: mean -0.0098 (the -3.1 percent the verdict booked), median
+0.0, p25 -0.007, p75 +0.002, p5 -0.179, p95 +0.120, p1 -0.491, p99
++0.385, minimum -4.41, maximum +1.51; 54.0 percent of rows improve,
+46.0 worsen; the teacher-token log-probability rises at 52.5 percent
+of rows (mean +0.011 nats). By teacher margin the mean KL change is
+-0.041 under 0.5 nats (the bin's sum -17.8 of the E0 total -46.4),
+-0.010, -0.019, -0.016 in the next three bins (sums -3.9, -10.6,
+-10.3), +0.001 in 4 to 8 and -0.002 above 8 (sums +0.6 and -4.5):
+the per-row gain is largest at the unconfident positions and near
+zero above 4 nats. Corpus: mean -0.030 (the -10.0 percent the verdict
+booked), 59.8 percent of rows improve, but the sum of -10.81 nats over
+356 rows contains one row of -7.03 (row 236, a corrected digit "2"
+whose KL falls from 7.14 to 0.11 nats at a control top-2 margin of
+1.47); without that row the corpus mean change is -0.0107, a 3.5
+percent reduction against the full-set control mean (3.7 against the
+remaining rows' own control mean), in line with E0. The same row is
+-7.11 of the L22 arm's corpus sum of -12.59 (score_l22.npz,
+off-receipt): the L22 pooled validation KL of -10.5 percent becomes
+-5.0 percent without it, and GROUP's -9.1 becomes -3.6. Prefix: mean
+-0.0037 (-2.4 percent), 44.9 percent of rows improve, the largest
+single change -0.35. This entry does not reopen the verdict (the bar
+was adjudicated as registered) and records what the aggregate was
+made of.
+
+What follows and what does not. Follows, within this pair: the
+restoration moves the residual stream by about a tenth of its norm at
+the pair's output; for most rows that perturbation is smaller at the
+final norm than at out23 while a tail of 10 to 25 percent of rows ends
+larger, most of all at the first generated positions; the decision
+flips it produces are mostly near-tie positions in both directions,
+and the KL gain is small, broad, largest at unconfident positions, and
+on the corpus mostly one row. Does not follow: anything about the
+other 62 layers, any statement that the compression error is
+distributed or concentrated, any expectation about another pair, and
+any claim about an independent set. Fences: descriptive statistics on
+booked arrays; Spearman on 98 prefix rows is coarse; the step-0 and
+step-1 medians rest on 24 rows each; the token renderings are the
+vendor tokenizer's single-token decode and are cosmetic, the ids are
+the record.

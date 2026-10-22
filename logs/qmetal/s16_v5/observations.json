@@ -1,0 +1,49 @@
+{
+ "note": "Mechanical projection of logs/qmetal/s16_v5/ab.json (driver scratch/bench_qmetal_ab_s16.py at 3d10cf65) and logs/qwen_metal_qual/C_v5/summary.json (scratch/qwen_metal_qual.py at 3d10cf65, kernel generation 5); adapter scratch/qmetal_s16_obs.py",
+ "registration_sha256": "4457bfbc63971a7516afe0f79c78d33ac8d2ef607396df3c8385a54337a84109",
+ "measurement_valid": true,
+ "arms": {
+  "CONTROL": {
+   "admissible": true,
+   "reason": "generation 4 as shipped (W4 v4 dispatch, the original S16 kernel)"
+  },
+  "CANDIDATE": {
+   "admissible": true,
+   "reason": "bit identity on every A/B check True; greedy tokens equal at both contexts True; zero logit difference True; rounds reproduce their first round True; census argmax identical 4722/4722 True; cached decode argmax identical to one forward True; top-16 max abs error 1.019e-03 within 1.1e-3 True; candidate peak memory within one percent of control True"
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 20.703431119132716,
+   "metric": "improvement_percent_ctx126",
+   "population": "steps:ctx126-48x4rounds",
+   "aggregation": "percent_change_of_median_of_round_medians",
+   "provenance": "control round medians [132.27, 129.45, 128.9, 129.57] ms, candidate [103.45, 113.16, 101.94, 101.1] ms; medians 129.51 and 102.70 ms; peak bytes control 12466898092 candidate 12466701484"
+  },
+  "1:worst": {
+   "value": 12.210143653973288,
+   "metric": "improvement_percent_worst_pairing_ctx126",
+   "population": "steps:ctx126-48x4rounds",
+   "aggregation": "percent_change_worst_pairing"
+  },
+  "2": {
+   "value": 21.807136235319394,
+   "metric": "improvement_percent_ctx1024",
+   "population": "steps:ctx1024-48x4rounds",
+   "aggregation": "percent_change_of_median_of_round_medians",
+   "provenance": "control round medians [136.98, 131.0, 139.27, 131.89] ms, candidate [103.54, 102.83, 106.7, 107.34] ms; medians 134.44 and 105.12 ms; peak bytes control 12939728484 candidate 12939728484"
+  },
+  "2:worst": {
+   "value": 18.058119486458683,
+   "metric": "improvement_percent_worst_pairing_ctx1024",
+   "population": "steps:ctx1024-48x4rounds",
+   "aggregation": "percent_change_worst_pairing"
+  },
+  "min_improvement_percent": {
+   "value": 20.703431119132716,
+   "metric": "min_improvement_percent",
+   "population": "steps:ctx126+ctx1024",
+   "aggregation": "min_over_contexts"
+  }
+ }
+}

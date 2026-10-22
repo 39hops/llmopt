@@ -387,7 +387,14 @@ def test_s16_v5_rows_bit_identical_to_shipped():
         pytest.skip("checked once, under the v5 parameter")
     rng = np.random.default_rng(5151)
     R, C = 37, 5120
-    for pool in (np.arange(111, 129), np.array([0, 1, 30, 31, 127, 190, 191, 254]), np.array([120, 255])):
+    # pools: the real range; FINITE rows through the second accumulator
+    # (exponents 20 to 30, scale 2^-107 to 2^-97) and the third (191 to 200,
+    # scale 2^64 to 2^73) mixed with normal blocks; the overflow and
+    # infinite-scale edges, whose rows are non-finite in both kernels
+    pools = (np.arange(111, 129), np.r_[np.arange(20, 31), np.arange(111, 129)],
+             np.r_[np.arange(191, 201), np.arange(111, 129)],
+             np.array([0, 1, 30, 31, 127, 190, 191, 254]), np.array([120, 255]))
+    for pool in pools:
         buf = _random_s16(rng, R, C, exp_pool=pool)
         res5 = qmetal.S16Metal(buf, (R, C))
         res3 = qmetal.S16Metal(buf, (R, C))
@@ -397,7 +404,10 @@ def test_s16_v5_rows_bit_identical_to_shipped():
             X = rng.normal(size=(T, C)).astype(np.float32)
             g5 = np.asarray(res5.gemm(mx.array(X)))
             g3 = np.asarray(res3.gemm(mx.array(X)))
-            assert np.array_equal(g5, g3, equal_nan=True), (pool[:3], T)
+            # bit-level equality (NaN payloads and signed zeros included)
+            assert np.array_equal(g5.view(np.uint32), g3.view(np.uint32)), (pool[:3], T)
+            if pool[0] in (20, 191):
+                assert np.isfinite(g3).all(), "the split-accumulator pool must give finite rows"
 
 
 def test_generation_5_dispatches_w4_as_generation_4():

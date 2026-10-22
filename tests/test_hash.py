@@ -45,8 +45,14 @@ def test_pinned_file_check_names_its_semantics(tmp_path):
     # the payload digest is the WRONG kind of pin for a file check: not ok, and said so
     wrong = lh.pinned_file_check(p, lh.sha256_array_payload(p), p.stat().st_size)
     assert not wrong["ok"] and not wrong["file_sha256_ok"] and wrong["size_ok"]
+    assert lh.pinned_file_check(p, lh.sha256_file(p).upper(), None)["ok"]
     short = lh.pinned_file_check(p, lh.sha256_file(p), p.stat().st_size + 1)
     assert not short["ok"] and short["file_sha256_ok"] and not short["size_ok"]
+
+
+def test_array_payload_digest_of_an_empty_array(tmp_path):
+    p = _npy(tmp_path, np.zeros((0, 7), dtype=np.float32))
+    assert lh.sha256_array_payload(p) == hashlib.sha256(b"").hexdigest()
 
 
 def test_pinned_array_payload_check_names_its_semantics(tmp_path):

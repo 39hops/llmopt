@@ -595,11 +595,12 @@ V4_MAX_TILE = 2   # v4 serves tiles 1 and 2; tiles 4 and 8 dispatch to v3 (A/B r
                   # logs/qmetal/ab_v3_v4_338745a7.json: v4 T1 232 vs 374 us, T2 478 vs 601,
                   # T4 mixed, T8 6000 vs 3560 us pipelined)
 S16_V5_MAX_TILE = 2   # generation 5 serves S16 tiles 1 and 2 with the v5 kernel; tiles 4 and
-                      # 8 dispatch to the shipped S16 kernel (the A/B smoke read v5 at 0.44 to
-                      # 0.62 of the shipped kernel at T = 1, 0.69 to 0.87 at T = 2, and 1.04 to
-                      # 1.25 at T = 4 and 8: the device-table reads lose to the per-lane array
-                      # once each lookup serves several activations; the A/B receipt records
-                      # both dispatches)
+                      # 8 dispatch to the shipped S16 kernel (A/B receipt logs/qmetal/s16_v5/
+                      # ab.json, cap lifted: v5 at 0.55 to 0.58 of the shipped kernel at T = 1,
+                      # 0.77 to 0.80 at T = 2, 1.08 to 1.14 at T = 4 on the body shapes and
+                      # 0.88 on the head, 1.16 to 1.20 at T = 8 on every shape: the device-table
+                      # reads lose to the per-lane array once each lookup serves several
+                      # activations)
 
 _kernels: dict = {}
 

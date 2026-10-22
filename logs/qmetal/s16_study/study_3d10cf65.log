@@ -1,0 +1,192 @@
+== skip breakdown (ONLY=s16_probe ab qual adjudicate)
+== s16_probe 16:58:49 3d10cf65
+[s16] in_proj_qkv  v3           : synced      880 us  pipelined      418 us ( 63.6 GB/s)  bit=Y rel 1.5e-07
+[s16] in_proj_qkv  nox          : synced      547 us  pipelined      390 us ( 68.3 GB/s)
+[s16] in_proj_qkv  nocodes      : synced      511 us  pipelined      360 us ( 73.9 GB/s)
+[s16] in_proj_qkv  notable      : synced      353 us  pipelined      206 us (129.4 GB/s)
+[s16] in_proj_qkv  noexp        : synced      508 us  pipelined      362 us ( 73.6 GB/s)
+[s16] in_proj_qkv  xonly        : synced      321 us  pipelined      189 us (140.8 GB/s)
+[s16] in_proj_qkv  empty        : synced      153 us  pipelined       29 us (915.3 GB/s)
+[s16] in_proj_qkv  cmem         : synced      363 us  pipelined      217 us (122.9 GB/s)  bit=Y rel 1.5e-07
+[s16] in_proj_qkv  tg16         : synced      391 us  pipelined      239 us (111.6 GB/s)  bit=Y rel 1.5e-07
+[s16] in_proj_qkv  tg256        : synced      409 us  pipelined      256 us (103.9 GB/s)  bit=Y rel 1.5e-07
+[s16] in_proj_qkv  shuf         : synced      647 us  pipelined      462 us ( 57.6 GB/s)  bit=Y rel 1.5e-07
+[s16] in_proj_qkv  tg256_u4     : synced      437 us  pipelined      298 us ( 89.3 GB/s)  bit=n rel 9.7e-08
+[s16] in_proj_qkv  tg256_share2 : synced      379 us  pipelined      219 us (121.4 GB/s)  bit=Y rel 1.5e-07
+[s16] in_proj_qkv  tg256_share4 : synced      373 us  pipelined      224 us (119.1 GB/s)  bit=Y rel 1.5e-07
+[s16] in_proj_qkv  shuf_share4  : synced      671 us  pipelined      459 us ( 58.1 GB/s)  bit=Y rel 1.5e-07
+[s16] in_proj_z    v3           : synced      403 us  pipelined      243 us ( 65.6 GB/s)  bit=Y rel 1.7e-07
+[s16] in_proj_z    nox          : synced      389 us  pipelined      248 us ( 64.4 GB/s)
+[s16] in_proj_z    nocodes      : synced      365 us  pipelined      221 us ( 72.4 GB/s)
+[s16] in_proj_z    notable      : synced      285 us  pipelined      131 us (122.2 GB/s)
+[s16] in_proj_z    noexp        : synced      370 us  pipelined      222 us ( 72.0 GB/s)
+[s16] in_proj_z    xonly        : synced      259 us  pipelined      121 us (132.0 GB/s)
+[s16] in_proj_z    empty        : synced      143 us  pipelined       22 us (732.3 GB/s)
+[s16] in_proj_z    cmem         : synced      284 us  pipelined      136 us (117.5 GB/s)  bit=Y rel 1.7e-07
+[s16] in_proj_z    tg16         : synced      300 us  pipelined      150 us (106.6 GB/s)  bit=Y rel 1.7e-07
+[s16] in_proj_z    tg256        : synced      311 us  pipelined      159 us (100.7 GB/s)  bit=Y rel 1.7e-07
+[s16] in_proj_z    shuf         : synced      444 us  pipelined      283 us ( 56.4 GB/s)  bit=Y rel 1.7e-07
+[s16] in_proj_z    tg256_u4     : synced      323 us  pipelined      179 us ( 89.1 GB/s)  bit=n rel 1.4e-07
+[s16] in_proj_z    tg256_share2 : synced      294 us  pipelined      136 us (117.4 GB/s)  bit=Y rel 1.7e-07
+[s16] in_proj_z    tg256_share4 : synced      287 us  pipelined      134 us (119.3 GB/s)  bit=Y rel 1.7e-07
+[s16] in_proj_z    shuf_share4  : synced      448 us  pipelined      285 us ( 56.1 GB/s)  bit=Y rel 1.7e-07
+[s16] out_proj     v3           : synced      428 us  pipelined      243 us ( 65.7 GB/s)  bit=Y rel 2.0e-07
+[s16] out_proj     nox          : synced      372 us  pipelined      239 us ( 66.9 GB/s)
+[s16] out_proj     nocodes      : synced      341 us  pipelined      219 us ( 72.8 GB/s)
+[s16] out_proj     notable      : synced      264 us  pipelined      130 us (122.9 GB/s)
+[s16] out_proj     noexp        : synced      362 us  pipelined      221 us ( 72.2 GB/s)
+[s16] out_proj     xonly        : synced      234 us  pipelined      115 us (138.5 GB/s)
+[s16] out_proj     empty        : synced      128 us  pipelined       19 us (837.9 GB/s)
+[s16] out_proj     cmem         : synced      258 us  pipelined      136 us (117.0 GB/s)  bit=Y rel 2.0e-07
+[s16] out_proj     tg16         : synced      277 us  pipelined      147 us (108.3 GB/s)  bit=Y rel 2.0e-07
+[s16] out_proj     tg256        : synced      283 us  pipelined      158 us (101.0 GB/s)  bit=Y rel 2.0e-07
+[s16] out_proj     shuf         : synced      437 us  pipelined      283 us ( 56.5 GB/s)  bit=Y rel 2.0e-07
+[s16] out_proj     tg256_u4     : synced      317 us  pipelined      182 us ( 87.7 GB/s)  bit=n rel 2.7e-07
+[s16] out_proj     tg256_share2 : synced      293 us  pipelined      136 us (117.5 GB/s)  bit=Y rel 2.0e-07
+[s16] out_proj     tg256_share4 : synced      283 us  pipelined      134 us (118.8 GB/s)  bit=Y rel 2.0e-07
+[s16] out_proj     shuf_share4  : synced      450 us  pipelined      279 us ( 57.2 GB/s)  bit=Y rel 2.0e-07
+[s16] q_proj       v3           : synced      748 us  pipelined      475 us ( 67.2 GB/s)  bit=Y rel 1.7e-07
+[s16] q_proj       nox          : synced      654 us  pipelined      465 us ( 68.7 GB/s)
+[s16] q_proj       nocodes      : synced      579 us  pipelined      431 us ( 74.1 GB/s)
+[s16] q_proj       notable      : synced      395 us  pipelined      247 us (129.4 GB/s)
+[s16] q_proj       noexp        : synced      610 us  pipelined      438 us ( 73.0 GB/s)
+[s16] q_proj       xonly        : synced      363 us  pipelined      217 us (147.1 GB/s)
+[s16] q_proj       empty        : synced      175 us  pipelined       32 us (995.8 GB/s)
+[s16] q_proj       cmem         : synced      412 us  pipelined      259 us (123.4 GB/s)  bit=Y rel 1.7e-07
+[s16] q_proj       tg16         : synced      435 us  pipelined      283 us (112.9 GB/s)  bit=Y rel 1.7e-07
+[s16] q_proj       tg256        : synced      455 us  pipelined      304 us (105.1 GB/s)  bit=Y rel 1.7e-07
+[s16] q_proj       shuf         : synced      741 us  pipelined      553 us ( 57.8 GB/s)  bit=Y rel 1.7e-07
+[s16] q_proj       tg256_u4     : synced      495 us  pipelined      346 us ( 92.4 GB/s)  bit=n rel 1.4e-07
+[s16] q_proj       tg256_share2 : synced      410 us  pipelined      260 us (122.9 GB/s)  bit=Y rel 1.7e-07
+[s16] q_proj       tg256_share4 : synced      484 us  pipelined      257 us (124.4 GB/s)  bit=Y rel 1.7e-07
+[s16] q_proj       shuf_share4  : synced      747 us  pipelined      563 us ( 56.7 GB/s)  bit=Y rel 1.7e-07
+[s16] k_proj       v3           : synced      199 us  pipelined       51 us ( 51.9 GB/s)  bit=Y rel 9.0e-08
+[s16] k_proj       nox          : synced      188 us  pipelined       52 us ( 51.5 GB/s)
+[s16] k_proj       nocodes      : synced      175 us  pipelined       47 us ( 56.5 GB/s)
+[s16] k_proj       notable      : synced      154 us  pipelined       30 us ( 88.5 GB/s)
+[s16] k_proj       noexp        : synced      173 us  pipelined       48 us ( 55.2 GB/s)
+[s16] k_proj       xonly        : synced      153 us  pipelined       30 us ( 88.0 GB/s)
+[s16] k_proj       empty        : synced      145 us  pipelined       13 us (204.8 GB/s)
+[s16] k_proj       cmem         : synced      158 us  pipelined       32 us ( 82.2 GB/s)  bit=Y rel 9.0e-08
+[s16] k_proj       tg16         : synced      164 us  pipelined       35 us ( 75.5 GB/s)  bit=Y rel 9.0e-08
+[s16] k_proj       tg256        : synced      180 us  pipelined       38 us ( 70.0 GB/s)  bit=Y rel 9.0e-08
+[s16] k_proj       shuf         : synced      202 us  pipelined       58 us ( 46.1 GB/s)  bit=Y rel 9.0e-08
+[s16] k_proj       tg256_u4     : synced      152 us  pipelined       41 us ( 65.7 GB/s)  bit=n rel 1.2e-07
+[s16] k_proj       tg256_share2 : synced      158 us  pipelined       34 us ( 79.1 GB/s)  bit=Y rel 9.0e-08
+[s16] k_proj       tg256_share4 : synced      172 us  pipelined       30 us ( 87.5 GB/s)  bit=Y rel 9.0e-08
+[s16] k_proj       shuf_share4  : synced      194 us  pipelined       57 us ( 46.5 GB/s)  bit=Y rel 9.0e-08
+[s16] lm_head      v3           : synced     9568 us  pipelined     9402 us ( 68.7 GB/s)  bit=Y rel 1.2e-07
+[s16] lm_head      nox          : synced     9363 us  pipelined     9312 us ( 69.3 GB/s)
+[s16] lm_head      nocodes      : synced     8587 us  pipelined     8421 us ( 76.7 GB/s)
+[s16] lm_head      notable      : synced     4937 us  pipelined     4857 us (132.9 GB/s)
+[s16] lm_head      noexp        : synced     8681 us  pipelined     8680 us ( 74.4 GB/s)
+[s16] lm_head      xonly        : synced     4364 us  pipelined     4213 us (153.3 GB/s)
+[s16] lm_head      empty        : synced      558 us  pipelined      295 us (2186.9 GB/s)
+[s16] lm_head      cmem         : synced     5158 us  pipelined     5075 us (127.2 GB/s)  bit=Y rel 1.2e-07
+[s16] lm_head      tg16         : synced     5667 us  pipelined     5720 us (112.9 GB/s)  bit=Y rel 1.2e-07
+[s16] lm_head      tg256        : synced     6166 us  pipelined     6055 us (106.6 GB/s)  bit=Y rel 1.2e-07
+[s16] lm_head      shuf         : synced    11154 us  pipelined    11111 us ( 58.1 GB/s)  bit=Y rel 1.2e-07
+[s16] lm_head      tg256_u4     : synced     6963 us  pipelined     6894 us ( 93.7 GB/s)  bit=n rel 1.3e-07
+[s16] lm_head      tg256_share2 : synced     5233 us  pipelined     5121 us (126.1 GB/s)  bit=Y rel 1.2e-07
+[s16] lm_head      tg256_share4 : synced     5179 us  pipelined     5062 us (127.5 GB/s)  bit=Y rel 1.2e-07
+[s16] lm_head      shuf_share4  : synced    11023 us  pipelined    10962 us ( 58.9 GB/s)  bit=Y rel 1.2e-07
+[s16] wrote logs/qmetal/s16_probe_3d10cf65.json
+== ab 16:59:48 3d10cf65
+[ab] round 0 v4 in_proj_qkv: T1 pipelined 426 us synced 548 us
+[ab] round 0 v4 in_proj_z: T1 pipelined 245 us synced 396 us
+[ab] round 0 v4 out_proj: T1 pipelined 244 us synced 369 us
+[ab] round 0 v4 q_proj: T1 pipelined 473 us synced 667 us
+[ab] round 0 v4 lm_head: T1 pipelined 9497 us synced 9475 us
+[ab] round 0 v5 in_proj_qkv: T1 pipelined 225 us synced 387 us
+[ab] round 0 v5 in_proj_z: T1 pipelined 159 us synced 293 us
+[ab] round 0 v5 out_proj: T1 pipelined 141 us synced 263 us
+[ab] round 0 v5 q_proj: T1 pipelined 264 us synced 408 us
+[ab] round 0 v5 lm_head: T1 pipelined 5175 us synced 5251 us
+[ab] round 0 v55 in_proj_qkv: T1 pipelined 222 us synced 374 us
+[ab] round 0 v55 in_proj_z: T1 pipelined 141 us synced 277 us
+[ab] round 0 v55 out_proj: T1 pipelined 141 us synced 291 us
+[ab] round 0 v55 q_proj: T1 pipelined 266 us synced 406 us
+[ab] round 0 v55 lm_head: T1 pipelined 5082 us synced 5230 us
+[ab] round 1 v55 in_proj_qkv: T1 pipelined 222 us synced 378 us
+[ab] round 1 v55 in_proj_z: T1 pipelined 141 us synced 275 us
+[ab] round 1 v55 out_proj: T1 pipelined 140 us synced 294 us
+[ab] round 1 v55 q_proj: T1 pipelined 265 us synced 415 us
+[ab] round 1 v55 lm_head: T1 pipelined 5014 us synced 5221 us
+[ab] round 1 v5 in_proj_qkv: T1 pipelined 222 us synced 377 us
+[ab] round 1 v5 in_proj_z: T1 pipelined 143 us synced 294 us
+[ab] round 1 v5 out_proj: T1 pipelined 141 us synced 267 us
+[ab] round 1 v5 q_proj: T1 pipelined 264 us synced 403 us
+[ab] round 1 v5 lm_head: T1 pipelined 5077 us synced 5238 us
+[ab] round 1 v4 in_proj_qkv: T1 pipelined 397 us synced 561 us
+[ab] round 1 v4 in_proj_z: T1 pipelined 273 us synced 399 us
+[ab] round 1 v4 out_proj: T1 pipelined 245 us synced 404 us
+[ab] round 1 v4 q_proj: T1 pipelined 505 us synced 674 us
+[ab] round 1 v4 lm_head: T1 pipelined 9351 us synced 9505 us
+[ab] round 2 v4 in_proj_qkv: T1 pipelined 400 us synced 566 us
+[ab] round 2 v4 in_proj_z: T1 pipelined 262 us synced 393 us
+[ab] round 2 v4 out_proj: T1 pipelined 244 us synced 398 us
+[ab] round 2 v4 q_proj: T1 pipelined 473 us synced 659 us
+[ab] round 2 v4 lm_head: T1 pipelined 9342 us synced 9520 us
+[ab] round 2 v5 in_proj_qkv: T1 pipelined 225 us synced 359 us
+[ab] round 2 v5 in_proj_z: T1 pipelined 140 us synced 284 us
+[ab] round 2 v5 out_proj: T1 pipelined 141 us synced 279 us
+[ab] round 2 v5 q_proj: T1 pipelined 265 us synced 411 us
+[ab] round 2 v5 lm_head: T1 pipelined 5109 us synced 5236 us
+[ab] round 2 v55 in_proj_qkv: T1 pipelined 223 us synced 363 us
+[ab] round 2 v55 in_proj_z: T1 pipelined 181 us synced 286 us
+[ab] round 2 v55 out_proj: T1 pipelined 167 us synced 300 us
+[ab] round 2 v55 q_proj: T1 pipelined 264 us synced 417 us
+[ab] round 2 v55 lm_head: T1 pipelined 5008 us synced 5272 us
+[ab] tower ctx 126 round 0 v4: median 132.3 ms (7.56 tok/s) p90 136.0 prefill 3.9s peak 12.32 GB
+[ab] tower ctx 126 round 1 v5: median 103.5 ms (9.67 tok/s) p90 108.6 prefill 3.8s peak 12.37 GB
+[ab] tower ctx 126 round 2 v5: median 113.2 ms (8.84 tok/s) p90 132.0 prefill 4.3s peak 12.42 GB
+[ab] tower ctx 126 round 3 v4: median 129.4 ms (7.73 tok/s) p90 134.4 prefill 3.7s peak 12.47 GB
+[ab] tower ctx 126 round 4 v4: median 128.9 ms (7.76 tok/s) p90 133.4 prefill 3.7s peak 12.46 GB
+[ab] tower ctx 126 round 5 v5: median 101.9 ms (9.81 tok/s) p90 105.1 prefill 3.7s peak 12.47 GB
+[ab] tower ctx 126 round 6 v5: median 101.1 ms (9.89 tok/s) p90 107.0 prefill 3.7s peak 12.47 GB
+[ab] tower ctx 126 round 7 v4: median 129.6 ms (7.72 tok/s) p90 134.9 prefill 3.7s peak 12.47 GB
+[ab] tower ctx 1024 round 0 v4: median 137.0 ms (7.30 tok/s) p90 138.4 prefill 28.5s peak 12.84 GB
+[ab] tower ctx 1024 round 1 v5: median 103.5 ms (9.66 tok/s) p90 108.4 prefill 29.1s peak 12.84 GB
+[ab] tower ctx 1024 round 2 v5: median 102.8 ms (9.72 tok/s) p90 107.1 prefill 26.0s peak 12.89 GB
+[ab] tower ctx 1024 round 3 v4: median 131.0 ms (7.63 tok/s) p90 135.7 prefill 26.0s peak 12.94 GB
+[ab] tower ctx 1024 round 4 v4: median 139.3 ms (7.18 tok/s) p90 142.6 prefill 28.2s peak 12.94 GB
+[ab] tower ctx 1024 round 5 v5: median 106.7 ms (9.37 tok/s) p90 108.7 prefill 28.0s peak 12.94 GB
+[ab] tower ctx 1024 round 6 v5: median 107.3 ms (9.32 tok/s) p90 110.6 prefill 28.5s peak 12.94 GB
+[ab] tower ctx 1024 round 7 v4: median 131.9 ms (7.58 tok/s) p90 134.9 prefill 27.2s peak 12.94 GB
+[ab] {"ctx126_v4_median_step_s": 0.1295107397600077, "ctx126_v4_spread_s": 0.003366541350260377, "ctx126_v5_median_step_s": 0.10269757296191528, "ctx126_v5_spread_s": 0.012058000662364066, "ctx126_speedup_control_over_candidate": 1.2610886121723237, "ctx126_improvement_percent": 20.703431119132716, "ctx126_improvement_percent_worst_pairing": 12.210143653973288, "ctx1024_v4_median_step_s": 0.1344355417531915, "ctx1024_v4_spread_s": 0.00827652052976191, "ctx1024_v5_median_step_s": 0.10511900001438335, "ctx1024_v5_spread_s": 0.004510396043770015, "ctx1024_speedup_control_over_candidate": 1.2788890850825902, "ctx1024_improvement_percent": 21.807136235319394, "ctx1024_improvement_percent_worst_pairing": 18.058119486458683}; wrote logs/qmetal/s16_v5/ab.json
+== qual 17:08:08 3d10cf65
+[qual] built arm C on Metal: 402 fused, 449 raw, 9.37 GB resident, 7s; families {'linear_attn': 48, 'full_attn': 16}
+[qual] chat-1: 318 tok 41s; argmax identical 256/256; top16 max abs 3.00e-04; agree metal 0.883 cpu 0.883
+[qual] chat-2: 320 tok 41s; argmax identical 256/256; top16 max abs 2.78e-04; agree metal 0.754 cpu 0.754
+[qual] chat-3: 249 tok 31s; argmax identical 186/186; top16 max abs 1.69e-04; agree metal 0.871 cpu 0.871
+[qual] chat-4: 151 tok 19s; argmax identical 88/88; top16 max abs 1.64e-04; agree metal 0.852 cpu 0.852
+[qual] math-1: 320 tok 41s; argmax identical 256/256; top16 max abs 1.02e-03; agree metal 0.918 cpu 0.918
+[qual] math-2: 167 tok 21s; argmax identical 100/100; top16 max abs 1.07e-04; agree metal 0.910 cpu 0.910
+[qual] math-3: 196 tok 25s; argmax identical 117/117; top16 max abs 8.58e-05; agree metal 0.872 cpu 0.872
+[qual] math-4: 202 tok 25s; argmax identical 138/138; top16 max abs 1.02e-04; agree metal 0.899 cpu 0.899
+[qual] code-1: 270 tok 34s; argmax identical 204/204; top16 max abs 2.52e-04; agree metal 0.877 cpu 0.877
+[qual] code-2: 339 tok 44s; argmax identical 256/256; top16 max abs 1.96e-04; agree metal 0.828 cpu 0.828
+[qual] code-3: 322 tok 39s; argmax identical 256/256; top16 max abs 1.18e-04; agree metal 0.828 cpu 0.828
+[qual] code-4: 324 tok 39s; argmax identical 256/256; top16 max abs 1.83e-04; agree metal 0.773 cpu 0.773
+[qual] reason-1: 128 tok 16s; argmax identical 53/53; top16 max abs 1.21e-04; agree metal 0.868 cpu 0.868
+[qual] reason-2: 339 tok 42s; argmax identical 256/256; top16 max abs 1.98e-04; agree metal 0.871 cpu 0.871
+[qual] reason-3: 332 tok 40s; argmax identical 256/256; top16 max abs 1.56e-04; agree metal 0.895 cpu 0.895
+[qual] reason-4: 318 tok 40s; argmax identical 252/252; top16 max abs 1.67e-04; agree metal 0.782 cpu 0.782
+[qual] know-1: 258 tok 31s; argmax identical 200/200; top16 max abs 1.17e-04; agree metal 0.775 cpu 0.775
+[qual] know-2: 251 tok 31s; argmax identical 187/187; top16 max abs 1.56e-04; agree metal 0.824 cpu 0.824
+[qual] know-3: 318 tok 39s; argmax identical 256/256; top16 max abs 1.76e-04; agree metal 0.809 cpu 0.809
+[qual] know-4: 152 tok 19s; argmax identical 82/82; top16 max abs 1.86e-04; agree metal 0.805 cpu 0.805
+[qual] long-1: 329 tok 41s; argmax identical 256/256; top16 max abs 6.72e-04; agree metal 0.727 cpu 0.727
+[qual] long-2: 327 tok 42s; argmax identical 256/256; top16 max abs 8.72e-04; agree metal 0.773 cpu 0.773
+[qual] edge-1: 153 tok 20s; argmax identical 88/88; top16 max abs 1.55e-04; agree metal 0.818 cpu 0.818
+[qual] edge-2: 276 tok 35s; argmax identical 211/211; top16 max abs 1.54e-04; agree metal 0.820 cpu 0.820
+[qual] decode chat-1: 256 steps, argmax same 256/256, max |decode - forward| 2.08e-04, median 102 ms
+[qual] decode chat-2: 256 steps, argmax same 256/256, max |decode - forward| 2.13e-04, median 102 ms
+[qual] ctx 512: prefill 64s (8.0 tok/s), decode median 106 ms, peak 12.70 GB
+[qual] ctx 1024: prefill 128s (8.0 tok/s), decode median 107 ms, peak 15.46 GB
+[qual] ctx 2048: prefill 255s (8.0 tok/s), decode median 130 ms, peak 20.94 GB
+[qual] ctx 4096: prefill 528s (7.8 tok/s), decode median 108 ms, peak 31.92 GB
+[qual] prefill wall 528s over budget 480s; longer contexts skipped
+[qual] wrote logs/qwen_metal_qual/C_v5: 4722 positions, argmax identical 4722/4722, top16 max abs 1.02e-03, replay k4 metal 3.4695 cpu 3.4695, wall 1966s
+== adjudicate 17:41:12 3d10cf65
+== DONE 17:41:13

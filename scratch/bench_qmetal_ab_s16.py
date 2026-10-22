@@ -181,6 +181,7 @@ def main() -> None:
                             "bit_identical_every_round": m["bit"]} for m in mats]
     for m in mats:
         m["res"].version = qmetal.VERSION
+    qmetal.S16_V5_MAX_TILE = cap   # the last part-1 call lifts the cap; the tower runs under the production cap
     del mats
 
     # ---- part 2: full tower cached decode ----
