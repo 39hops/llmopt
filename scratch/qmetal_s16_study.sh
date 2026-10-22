@@ -7,12 +7,15 @@
 #   s16_probe   scratch/qmetal_s16_probe.py (S16 lookup diagnostics and
 #               candidates on real matrices and the head; receipt
 #               logs/qmetal/s16_probe_<commit>.json)
-#   ab          scratch/bench_qmetal_ab_s16.py (control generation against
-#               the candidate generation, matrices and the full cached
-#               decode, ABBA; receipt logs/qmetal/ab_s16_<commit>.json)
+#   ab          scratch/bench_qmetal_ab_s16.py (generation 4 against
+#               generation 5, matrices and the full cached decode, ABBA
+#               twice per context; receipt logs/qmetal/s16_v5/ab.json)
 #   qual        scratch/qwen_metal_qual.py under QMETAL_VERSION=5 (the E0
 #               census, cached decode and long context; receipts under
 #               logs/qwen_metal_qual/C_v5/)
+#   adjudicate  scratch/qmetal_s16_obs.py (observations from the two
+#               receipts) then scripts/adjudicate.py against
+#               docs/preregs/qwen-metal-s16-v5-0.json
 # ONLY="a b" runs a subset. Every receipt refuses to overwrite. Run under
 # scripts/liverun.py (clean tree, no commits while live). Timing stages
 # must not share the GPU with anything else.
@@ -41,6 +44,19 @@ run() {
 }
 run breakdown  $PY scratch/qwen_metal_breakdown.py
 run s16_probe  $PY scratch/qmetal_s16_probe.py
-run ab         $PY scratch/bench_qmetal_ab_s16.py
+run ab         env OUT=logs/qmetal/s16_v5/ab.json $PY scratch/bench_qmetal_ab_s16.py
 run qual       env QMETAL_VERSION=5 OUT=logs/qwen_metal_qual/C_v5 $PY scratch/qwen_metal_qual.py
+adjudicate() {
+  if [ -e logs/qmetal/s16_v5/observations.json ] || [ -e logs/qmetal/s16_v5/adjudication.txt ]; then
+    echo "REFUSING: observations or adjudication exists"; return 3; fi
+  $PY scratch/qmetal_s16_obs.py logs/qmetal/s16_v5/ab.json logs/qwen_metal_qual/C_v5/summary.json \
+      docs/preregs/qwen-metal-s16-v5-0.json > logs/qmetal/s16_v5/observations.json || return $?
+  $PY scripts/adjudicate.py docs/preregs/qwen-metal-s16-v5-0.json logs/qmetal/s16_v5/observations.json \
+      > logs/qmetal/s16_v5/adjudication.txt
+  rc=$?
+  cat logs/qmetal/s16_v5/adjudication.txt
+  # exit 2 (UNRESOLVED) is an honest outcome, booked as such; only a contract error stops the chain
+  [ "$rc" -eq 0 ] || [ "$rc" -eq 2 ]
+}
+run adjudicate adjudicate
 echo "== DONE $(date -u +%H:%M:%S)" >> "$LOG"

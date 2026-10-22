@@ -20,9 +20,9 @@ FX = os.path.join(os.path.dirname(__file__), "fixtures")
 RTOL = 1e-5
 
 
-@pytest.fixture(autouse=True, params=[1, 2, 3, 4], ids=["v1", "v2", "v3", "v4"])
+@pytest.fixture(autouse=True, params=[1, 2, 3, 4, 5], ids=["v1", "v2", "v3", "v4", "v5"])
 def _kernel_version(request, monkeypatch):
-    """Every parity case runs under all four kernel generations."""
+    """Every parity case runs under all five kernel generations."""
     monkeypatch.setattr(qmetal, "VERSION", request.param)
     monkeypatch.setattr(qmetal._Resident, "version", request.param)
     yield request.param
@@ -374,6 +374,46 @@ def test_w4_v4_rows_bit_identical_to_v3():
         g4 = np.asarray(res4.gemm(mx.array(X)))
         g3 = np.asarray(res3.gemm(mx.array(X)))
         assert np.array_equal(g4, g3), T
+
+
+def test_s16_v5_rows_bit_identical_to_shipped():
+    """v5 reads each level from the device table instead of a per-lane
+    array; the value and the per-row float32 operation sequence are the
+    shipped kernel's, so outputs are bit-identical across the exponent
+    classes (normal, the split accumulators, the infinite scale) and at
+    every tile, including rows the oracle sends through the split
+    accumulators."""
+    if qmetal.VERSION != 5:
+        pytest.skip("checked once, under the v5 parameter")
+    rng = np.random.default_rng(5151)
+    R, C = 37, 5120
+    for pool in (np.arange(111, 129), np.array([0, 1, 30, 31, 127, 190, 191, 254]), np.array([120, 255])):
+        buf = _random_s16(rng, R, C, exp_pool=pool)
+        res5 = qmetal.S16Metal(buf, (R, C))
+        res3 = qmetal.S16Metal(buf, (R, C))
+        res3.version = 3
+        assert res5.version == 5
+        for T in (1, 2, 8, 9):
+            X = rng.normal(size=(T, C)).astype(np.float32)
+            g5 = np.asarray(res5.gemm(mx.array(X)))
+            g3 = np.asarray(res3.gemm(mx.array(X)))
+            assert np.array_equal(g5, g3, equal_nan=True), (pool[:3], T)
+
+
+def test_generation_5_dispatches_w4_as_generation_4():
+    """Generation 5 changes the S16 kernel only: a W4 resident under
+    version 5 returns the bits of version 4 at tiles 1, 2 and 8."""
+    if qmetal.VERSION != 5:
+        pytest.skip("checked once, under the v5 parameter")
+    rng = np.random.default_rng(4545)
+    R, C = 37, 5120
+    buf = _random_w4(rng, R, C, exp_pool=np.arange(111, 129))
+    res5 = qmetal.W4Metal(buf, (R, C))
+    res4 = qmetal.W4Metal(buf, (R, C))
+    res4.version = 4
+    for T in (1, 2, 8):
+        X = rng.normal(size=(T, C)).astype(np.float32)
+        assert np.array_equal(np.asarray(res5.gemm(mx.array(X))), np.asarray(res4.gemm(mx.array(X)))), T
 
 
 # ---------------- decode-once float32 GEMM prefill path ----------------

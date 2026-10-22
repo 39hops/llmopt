@@ -1,0 +1,66 @@
+{
+ "name": "QWEN-METAL-S16-V5-0",
+ "note": "Machine-readable form of PRE-REG QWEN-METAL-S16-V5-0; the prose governs on any conflict. Registered after the S16 lookup probe (per-kernel timing on isolated matrices) and the parity suite, and BEFORE the end-to-end A/B and the qualification census run. The candidate was chosen on the probe's per-kernel timing and on simplicity (no threadgroup memory, no row grouping), never on any end-to-end number. The bars are the GO's provisional practical hurdle: a reproducible whole-model cached-decode improvement of at least 5 percent, with no numerical or memory regression. Preconditions (arm admissibility, never bars): the parity suite green under generation 5; bit identity with the shipped kernel on every A/B check; greedy tokens and logits equal between the versions at both contexts; the generation 5 census argmax-identical to the CPU rows at all 4,722 positions with the cached decode argmax-identical to the one-forward logits; peak unified memory within one percent of the control. A failed precondition makes CANDIDATE inadmissible and every bar UNRESOLVED. A NO-FIRE on either bar books a null and the candidate is not promoted; a FIRE on both books the measured gain and leaves the default flip to Artin. Nothing is tuned after the A/B is read: one candidate, one A/B, one census.",
+ "results_id": "2026-10-22-pre-reg-qwen-metal-s16-v5",
+ "registered": "2026-10-22",
+ "machine": "mac",
+ "arms": {
+  "CONTROL": {
+   "description": "kernel generation 4 as shipped (QMETAL_VERSION=4): W4 v4 for tiles 1 and 2, v3 above, the original S16 kernel with the per-lane level array"
+  },
+  "CANDIDATE": {
+   "description": "kernel generation 5 (QMETAL_VERSION=5): the same W4 dispatch, the S16 v5 kernel that reads each level from the device table (llmopt.lab.qmetal._S16_V5_SRC); bit-identical output rows by construction and by test"
+  }
+ },
+ "bars": [
+  {
+   "id": 1,
+   "name": "DECODE-SPEEDUP-126",
+   "metric": "improvement_percent_ctx126",
+   "population": "steps:ctx126-48x4rounds",
+   "aggregation": "percent_change_of_median_of_round_medians",
+   "direction": "above",
+   "value": 5.0,
+   "arms": ["CONTROL", "CANDIDATE"],
+   "conjuncts": [
+    {"measurement": "1:worst", "metric": "improvement_percent_worst_pairing_ctx126", "population": "steps:ctx126-48x4rounds", "aggregation": "percent_change_worst_pairing", "direction": "above", "value": 5.0}
+   ],
+   "description": "full arm C cached decode at context 126 (scratch/bench_qmetal_ab_s16.py: prompt prefill through prefill_chunked, 48 greedy single-token steps, median of steps 5 to 48 per round, rounds in the order control, candidate, candidate, control, repeated twice): 100 x (control - candidate) / control of the per-version medians of the four round medians, at least 5.0 percent; conjunct: the worst pairing (slowest candidate round against fastest control round) is also at least 5.0 percent, so the gain is reproducible against the run-to-run spread and not a favourable draw."
+  },
+  {
+   "id": 2,
+   "name": "DECODE-SPEEDUP-1024",
+   "metric": "improvement_percent_ctx1024",
+   "population": "steps:ctx1024-48x4rounds",
+   "aggregation": "percent_change_of_median_of_round_medians",
+   "direction": "above",
+   "value": 5.0,
+   "arms": ["CONTROL", "CANDIDATE"],
+   "conjuncts": [
+    {"measurement": "2:worst", "metric": "improvement_percent_worst_pairing_ctx1024", "population": "steps:ctx1024-48x4rounds", "aggregation": "percent_change_worst_pairing", "direction": "above", "value": 5.0}
+   ],
+   "description": "the same contrast at context 1,024 (the decode step must improve with a populated cache, not only at the short context)."
+  }
+ ],
+ "receipts": [
+  "logs/qmetal/s16_v5/ab.json",
+  "logs/qmetal/s16_v5/observations.json",
+  "logs/qmetal/s16_v5/adjudication.txt",
+  "logs/qwen_metal_qual/C_v5/summary.json"
+ ],
+ "operands": [
+  {"name": "the arm C artifact digest chain", "provider": "logs/qwenwhole/artifact_digest_C.txt"},
+  {"name": "the CPU reference rows of E0 (the census the qualification compares against)", "provider": "logs/qwen_e0/C/summary.json"},
+  {"name": "teacher records", "provider": "logs/qwenteacher_v2/teacher_manifest.json"},
+  {"name": "the S16 lookup probe that chose the candidate", "provider": "scratch/qmetal_s16_probe.py"},
+  {"name": "A/B driver", "provider": "scratch/bench_qmetal_ab_s16.py"},
+  {"name": "qualification driver", "provider": "scratch/qwen_metal_qual.py"},
+  {"name": "observations adapter", "provider": "scratch/qmetal_s16_obs.py"},
+  {"name": "runner", "provider": "scratch/qmetal_s16_study.sh"},
+  {"name": "the kernels", "provider": "llmopt/lab/qmetal.py"},
+  {"name": "the parity suite", "provider": "tests/test_qmetal.py"}
+ ],
+ "refuted_if": "The candidate's promotion case is REFUTED if either bar is NO-FIRE: the whole-model cached-decode improvement at context 126 or at context 1,024 is below 5.0 percent, or is not reproduced by the worst pairing of rounds. The refutation books a null (the kernel stays selectable, not default) and the S16 lookup thread stops without further tuning.",
+ "refuted_if_predicate": {"measurement": "min_improvement_percent", "direction": "below", "value": 5.0},
+ "registered_prior": "From the probe (pipelined per-launch time, real matrices, T = 1): the S16 v5 kernel runs at 0.53 to 0.56 of the shipped kernel on every arm C S16 shape and at 0.53 on the head; from the breakdown on the same runtime (logs/qmetal/breakdown_c1c19f3f.json): S16 body 55.9 ms and head 9.9 ms of a 130.9 ms step. Projection, the product of the two instruments and not a measurement: about 30 ms off the step, 130.9 to about 101 ms, 23 percent. Prior: the end-to-end improvement lands between 15 and 25 percent at both contexts (the W4 v4 projection of 22 percent landed at 21); the 5 percent hurdle is four times below the projection, so a NO-FIRE would mean the per-kernel gain does not transfer to the pipelined tower, which would itself be a finding about the step's composition. Peak memory is expected unchanged (no new buffers); prefill is expected unchanged (the GEMM path and the tile-8 fused path do not use the changed code at the measured tiles, except S16 tiles 2 to 8 below the GEMM threshold, which also run v5 and are expected no slower)."
+}

@@ -1611,6 +1611,12 @@ A/B benchmark of the W4 kernel generations v3 (control) and v4 on the same Mac, 
 - `provenance() -> dict`
 - `main() -> None`
 
+### scratch/bench_qmetal_ab_s16.py
+A/B benchmark of the S16 kernel generations: the CONTROL generation (the shipped kernels, QMETAL_VERSION 4: W4 v4 dispatch, the original S16 kernel) against the CANDIDATE generation (QMETAL_VERSION 5: the same W4 dispatch, the S16 v5 kernel) on the same Mac, the same arm C artifact and identical inputs, alternating the two so that thermal and run-order effects fall on both arms. Modelled on scratch/bench_qmetal_ab.py (the W4 v3 against v4 receipt); the S16 version is switched on EVERY resident, which changes nothing for the W4 residents (generation 5 dispatches W4 exactly as generation 4).
+
+- `provenance() -> dict`
+- `main() -> None`
+
 ### scratch/birth19m_arith.py
 BASICS-DIET-1 birth driver (pre-reg RESULTS L30355, amended L30429): stock diet + 6,000 sympy calculus atoms, with or without the 2,545-row arithmetic shard.
 
@@ -5083,6 +5089,11 @@ Prefill operator study for the arm C Metal tower: why one fused launch over a ti
 - `main() -> None`
 - `floor(prov, art, vdir, chunk, rounds, out)`
 
+### scratch/qmetal_s16_obs.py
+Observations adapter for PRE-REG QWEN-METAL-S16-V5-0: derives every registered measurement from the A/B receipt and the qualification summary in committed code (never hand-typed), refusing partial or smoke inputs, and writes the observations document the adjudicator reads.
+
+- `main(ab_path: str, qual_path: str, prereg_path: str) -> None`
+
 ### scratch/qmetal_s16_probe.py
 S16 lookup probe for the fused Metal kernels, TIMING plus a bit-identity guard. The shipped S16 kernel (llmopt.lab.qmetal._S16_SRC, the kernel every generation 1 to 4 runs for S16) expands the 16-entry level table into a per-lane float array and indexes it at run time with each nibble; the decode breakdown (OBSERVATION QWEN-METAL-DECODE-BREAKDOWN-0) left that family unexplained: unmoved by removing its activation loads, 9 percent from its code stream. This probe compiles controlled variants of the frozen source and times each on real arm C S16 matrices at a T = 1 decode workload. The frozen kernels are not modified.
 
@@ -5450,6 +5461,15 @@ QWEN-LAYER-RESTORE-0: one bounded layer-restoration pilot on arm C.
 - `observations(summ, rec)`
 - `mode_sensitivity()`
 - `main()`
+
+### scratch/qwen_layer_restore_propagation.py
+Counterfactual perturbation-propagation analysis for the SELECTED PAIR (layers 22 and 23) of VERDICT QWEN-LAYER-RESTORE-0, on the captures that verdict already booked. No vendor bytes are read, no model runs, nothing is fitted or selected on any outcome: every statistic below is a descriptive summary of the booked CONTROL and GROUP arrays.
+
+- `q(x, qs=QS) -> dict`
+- `rank(x)`
+- `spearman(a, b) -> float`
+- `bin_index(x, edges)`
+- `main() -> None`
 
 ### scratch/qwen_layer_restore_torch.py
 QWEN-LAYER-RESTORE-0, the torch half of the one-layer oracle.

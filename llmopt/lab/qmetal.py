@@ -41,6 +41,15 @@ crosses a 128-element block, so one exponent serves a whole word.
 Multi-token (prefill) use runs the same decode once per row against a
 tile of up to TT activations.
 
+S16 v5 (generation 5, selectable, not the default): the shipped S16
+kernel's per-lane level array, indexed at run time by each nibble, is
+replaced by reads of the device level table; the value, the per-word
+arithmetic, the class accumulation and the row reduction are unchanged,
+so v5 output rows are bit-identical to the shipped kernel's (tested) and
+the parity regime below applies unchanged; generation 5 runs it for tiles
+1 and 2 and the shipped kernel for tiles 4 and 8 (S16_V5_MAX_TILE). W4 is
+untouched by generation 5.
+
 Decode-once GEMM path (OBSERVATION QWEN-METAL-PREFILL-STUDY-0, qualified
 in QWEN-METAL-PREFILL-GEMM-0; off outside an explicit scope): the
 qualified single-prompt chunked prefill (llmopt.lab.qprefill) enables it
@@ -412,6 +421,62 @@ _W4_V4_SRC = """
 """
 
 
+# ---- S16 v5: the level table is read from device memory per nibble.
+# ---- The shipped S16 kernel copies the 16 half levels into a per-lane
+# ---- float array and indexes that array with each nibble at run time;
+# ---- the S16 lookup probe (scratch/qmetal_s16_probe.py, receipt
+# ---- logs/qmetal/s16_probe_<commit>.json) measured that run-time-indexed
+# ---- array at half the kernel's pipelined time on every arm C S16 shape
+# ---- (removing it: 0.52 of v3; the activation loads: 0.98; the code
+# ---- stream: 0.90), and reading the level straight from the 32-byte
+# ---- device table instead ran at 0.53 to 0.56 of v3, the same as the
+# ---- threadgroup-staged and row-sharing variants and within a few
+# ---- percent of the no-table floor. Same word-to-lane assignment, same
+# ---- per-word dot, scale and class accumulation, same simd_sum per row
+# ---- as the shipped kernel, and (float)lv[i] is the value lvf[i] held,
+# ---- so every output row is the identical sequence of float32
+# ---- operations (bit identity with the shipped kernel is tested). No
+# ---- threadgroup memory, no barrier, no row grouping: every row count
+# ---- and tile the shipped kernel accepts runs unchanged.
+_S16_V5_SRC = """
+    constexpr uint SG = 32;
+    uint row = threadgroup_position_in_grid.x;
+    uint lane = thread_position_in_threadgroup.x;
+    const uint C2 = (uint)C / 2;                 // code bytes per row
+    const device uint* cr = (const device uint*)(codes + row * C2);
+    const uint nwords = C2 / 4;                  // 8 weights per word
+    const uint blocks_per_row = (uint)C / 128;
+    float acc[TT], lo[TT], hi[TT];
+    for (uint t = 0; t < (uint)TT; t++) { acc[t] = 0.0f; lo[t] = 0.0f; hi[t] = 0.0f; }
+    for (uint j = lane; j < nwords; j += SG) {
+        uint word = cr[j];
+        uint c0 = j * 8;
+        uint e = (uint)exps[row * blocks_per_row + c0 / 128];
+        uint cls = q_class(e);
+        float s = q_scale(e, cls);
+        // byte b holds elements 2b (HIGH nibble) and 2b+1 (LOW nibble);
+        // each nibble reads its level from the device table
+        uint b0 = word & 0xFFu, b1 = (word >> 8) & 0xFFu;
+        uint b2 = (word >> 16) & 0xFFu, b3 = (word >> 24) & 0xFFu;
+        float4 w0 = float4((float)lv[b0 >> 4], (float)lv[b0 & 0xFu],
+                           (float)lv[b1 >> 4], (float)lv[b1 & 0xFu]);
+        float4 w1 = float4((float)lv[b2 >> 4], (float)lv[b2 & 0xFu],
+                           (float)lv[b3 >> 4], (float)lv[b3 & 0xFu]);
+        for (uint t = 0; t < (uint)TT; t++) {
+            const device float4* x4 = (const device float4*)(x + t * (uint)C + c0);
+            float d = (metal::dot(x4[0], w0) + metal::dot(x4[1], w1)) * s;
+            if (cls == 0u) acc[t] += d; else if (cls == 1u) lo[t] += d; else hi[t] += d;
+        }
+    }
+    for (uint t = 0; t < (uint)TT; t++) {
+        float r = metal::simd_sum(acc[t]);
+        float rl = metal::simd_sum(lo[t]);
+        float rh = metal::simd_sum(hi[t]);
+        if (lane == 0) out[t * (uint)R + row] = (r + rl * LO_REST) + rh * HI_REST;
+    }
+"""
+
+
 # ---- decode-once float32 path (multi-token prefill). One thread per code
 # ---- word writes 16 (W4) or 8 (S16) float32 weights of rows [R0, R0 + RS):
 # ---- the codebook or level value times the block scale, the same number
@@ -511,19 +576,30 @@ def gemm_scope(enabled: bool):
         _GEMM_SCOPE.reset(token)
 
 
-# Kernel generation used by the resident objects (1, 2, 3 or 4; default
-# 4 since OBSERVATION QWEN-METAL-W4-V4-0, v3 kept as the control). The
-# environment variable QMETAL_VERSION overrides the default at import so
-# a driver can select a generation without code changes; the receipts
-# record the effective version.
+# Kernel generation used by the resident objects (1 to 5; default 4
+# since OBSERVATION QWEN-METAL-W4-V4-0, v3 kept as the control).
+# Generation 5 dispatches W4 exactly as generation 4 and runs the S16 v5
+# kernel (device-table lookups) for S16 tiles 1 and 2 in place of the
+# shipped S16 kernel (which keeps tiles 4 and 8); it is selectable
+# (QMETAL_VERSION=5) and not the default until its qualification is
+# booked and the flip is decided. The environment
+# variable QMETAL_VERSION overrides the default at import so a driver can
+# select a generation without code changes; the receipts record the
+# effective version.
 VERSION = int(os.environ.get("QMETAL_VERSION", "4"))
-if VERSION not in (1, 2, 3, 4):
+if VERSION not in (1, 2, 3, 4, 5):
     raise ValueError(f"QMETAL_VERSION {VERSION} is not a kernel generation")
 ROWS_V2 = 4       # rows (simdgroups) per threadgroup in v2
 ROWS_V4 = 4       # rows per simdgroup in v4 (share4 of the traffic probe)
 V4_MAX_TILE = 2   # v4 serves tiles 1 and 2; tiles 4 and 8 dispatch to v3 (A/B receipt
                   # logs/qmetal/ab_v3_v4_338745a7.json: v4 T1 232 vs 374 us, T2 478 vs 601,
                   # T4 mixed, T8 6000 vs 3560 us pipelined)
+S16_V5_MAX_TILE = 2   # generation 5 serves S16 tiles 1 and 2 with the v5 kernel; tiles 4 and
+                      # 8 dispatch to the shipped S16 kernel (the A/B smoke read v5 at 0.44 to
+                      # 0.62 of the shipped kernel at T = 1, 0.69 to 0.87 at T = 2, and 1.04 to
+                      # 1.25 at T = 4 and 8: the device-table reads lose to the per-lane array
+                      # once each lookup serves several activations; the A/B receipt records
+                      # both dispatches)
 
 _kernels: dict = {}
 
@@ -533,7 +609,8 @@ def _kernel(name: str, version: int):
     if key not in _kernels:
         require_mlx()
         srcs = {("w4", 1): _W4_SRC, ("w4", 2): _W4_V2_SRC, ("w4", 3): _W4_V3_SRC, ("w4", 4): _W4_V4_SRC,
-                ("s16", 1): _S16_SRC, ("s16", 2): _S16_V2_SRC, ("s16", 3): _S16_SRC, ("s16", 4): _S16_SRC}
+                ("s16", 1): _S16_SRC, ("s16", 2): _S16_V2_SRC, ("s16", 3): _S16_SRC, ("s16", 4): _S16_SRC,
+                ("s16", 5): _S16_V5_SRC}   # W4 under generation 5 dispatches as generation 4 (see _run)
         inputs = ["x", "idx", "cb", "exps"] if name == "w4" else ["x", "codes", "lv", "exps"]
         _kernels[key] = mx.fast.metal_kernel(
             name=f"llmopt_q_{name}_gemv_v{version}", input_names=inputs,
@@ -645,6 +722,8 @@ class _Resident:
             if tt < tile:
                 xt = mx.concatenate([xt, mx.zeros((tile - tt, C), mx.float32)], axis=0)
             version = self.version
+            if version == 5 and self.codec == "w4":
+                version = 4            # generation 5 changes the S16 kernel only
             if version == 2:
                 rows = ROWS_V2
                 ntg = (R + rows - 1) // rows
@@ -659,6 +738,13 @@ class _Resident:
                 # wider tiles and every s16 matrix run the v3 kernel (measured:
                 # v4's ROWS4 x TT accumulators lose to v3 from tile 4 up)
                 version = 3
+                grid, tg = (R * 32, 1, 1), (32, 1, 1)
+                template = [("C", C), ("R", R), ("TT", tile)]
+            elif version == 5:
+                # s16 only (w4 was mapped to 4 above): the device-table kernel for
+                # tiles up to S16_V5_MAX_TILE, the shipped S16 kernel above it
+                if tile > S16_V5_MAX_TILE:
+                    version = 3
                 grid, tg = (R * 32, 1, 1), (32, 1, 1)
                 template = [("C", C), ("R", R), ("TT", tile)]
             else:
