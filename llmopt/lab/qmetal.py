@@ -41,14 +41,15 @@ crosses a 128-element block, so one exponent serves a whole word.
 Multi-token (prefill) use runs the same decode once per row against a
 tile of up to TT activations.
 
-S16 v5 (generation 5, selectable, not the default): the shipped S16
-kernel's per-lane level array, indexed at run time by each nibble, is
-replaced by reads of the device level table; the value, the per-word
-arithmetic, the class accumulation and the row reduction are unchanged,
-so v5 output rows are bit-identical to the shipped kernel's (tested) and
-the parity regime below applies unchanged; generation 5 runs it for tiles
-1 and 2 and the shipped kernel for tiles 4 and 8 (S16_V5_MAX_TILE). W4 is
-untouched by generation 5.
+S16 v5 (generation 5, the default since VERDICT
+QWEN-METAL-S16-V5-DEFAULT-0; QMETAL_VERSION=4 selects the qualified
+generation 4 control): the shipped S16 kernel's per-lane level array,
+indexed at run time by each nibble, is replaced by reads of the device
+level table; the value, the per-word arithmetic, the class accumulation
+and the row reduction are unchanged, so v5 output rows are bit-identical
+to the shipped kernel's (tested) and the parity regime below applies
+unchanged; generation 5 runs it for tiles 1 and 2 and the shipped kernel
+for tiles 4 and 8 (S16_V5_MAX_TILE). W4 is untouched by generation 5.
 
 Decode-once GEMM path (OBSERVATION QWEN-METAL-PREFILL-STUDY-0, qualified
 in QWEN-METAL-PREFILL-GEMM-0; off outside an explicit scope): the
@@ -576,17 +577,17 @@ def gemm_scope(enabled: bool):
         _GEMM_SCOPE.reset(token)
 
 
-# Kernel generation used by the resident objects (1 to 5; default 4
-# since OBSERVATION QWEN-METAL-W4-V4-0, v3 kept as the control).
-# Generation 5 dispatches W4 exactly as generation 4 and runs the S16 v5
-# kernel (device-table lookups) for S16 tiles 1 and 2 in place of the
-# shipped S16 kernel (which keeps tiles 4 and 8); it is selectable
-# (QMETAL_VERSION=5) and not the default until its qualification is
-# booked and the flip is decided. The environment
-# variable QMETAL_VERSION overrides the default at import so a driver can
-# select a generation without code changes; the receipts record the
-# effective version.
-VERSION = int(os.environ.get("QMETAL_VERSION", "4"))
+# Kernel generation used by the resident objects (1 to 5; default 5
+# since VERDICT QWEN-METAL-S16-V5-DEFAULT-0, generation 4 kept as the
+# qualified control under QMETAL_VERSION=4; generation 4 was the default
+# from OBSERVATION QWEN-METAL-W4-V4-0, with v3 as its control).
+# Generation 5 dispatches W4 exactly as generation 4 (v4 for tiles 1 and
+# 2, v3 above) and runs the S16 v5 kernel (device-table lookups) for S16
+# tiles 1 and 2 in place of the shipped S16 kernel, which keeps tiles 4
+# and 8. The environment variable QMETAL_VERSION overrides the default at
+# import so a driver can select a generation without code changes; the
+# receipts record the effective version.
+VERSION = int(os.environ.get("QMETAL_VERSION", "5"))
 if VERSION not in (1, 2, 3, 4, 5):
     raise ValueError(f"QMETAL_VERSION {VERSION} is not a kernel generation")
 ROWS_V2 = 4       # rows (simdgroups) per threadgroup in v2
