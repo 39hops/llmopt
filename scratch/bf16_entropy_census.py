@@ -27,7 +27,8 @@ Marginal exponent entropy is reported as the exponent's entropy, never
 as the weight's; the weight-level figures are H16 and the block 16-bit
 figures. The sampled tensors are the two shards' tensors and nothing
 else; the receipt says which layers they come from.
-Receipt logs/bf16_lossless/entropy_<commit>.json (refuse-if-exists).
+Receipt logs/bf16_lossless/entropy.json (OUT; refuse-if-exists; the commit is
+recorded inside).
 Env: SHARD_DIR (~/qwen_vendor_shards/1d4bf0f2), CHUNK (67108864
 elements), SMOKE=1 (first 2 tensors of shard 7, the first 32 M elements
 of lm_head, receipt under logs/bf16_lossless/smoke/).
@@ -186,7 +187,7 @@ def main() -> None:
     from llmopt.lab.hash import require_pinned_file
     head = subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip()
     dirty = bool(subprocess.run(["git", "status", "--porcelain", "--untracked-files=no"], capture_output=True, text=True).stdout.strip())
-    out = f"logs/bf16_lossless/{'smoke/' if SMOKE else ''}entropy_{head}.json"
+    out = "logs/bf16_lossless/smoke/entropy.json" if SMOKE else os.environ.get("OUT", "logs/bf16_lossless/entropy.json")
     if os.path.exists(out):
         raise SystemExit(f"REFUSING: {out} exists")
     receipt = {"commit": head, "tree_dirty": dirty, "smoke": SMOKE, "shard_dir_basename": os.path.basename(SHARD_DIR),

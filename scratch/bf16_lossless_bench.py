@@ -36,7 +36,8 @@ the process so far, and exact (bytes-equal) recovery.
 Tensors: every tensor of shard 7 and lm_head from shard 18 (the mtp.*
 tensors are not in the text model and are skipped); SMOKE=1 runs the
 first two tensors of shard 7 and the first 32 M elements of lm_head.
-Receipt logs/bf16_lossless/bench_<commit>.json (refuse-if-exists). Env:
+Receipt logs/bf16_lossless/bench.json (OUT; refuse-if-exists; the commit is
+recorded inside). Env:
 SHARD_DIR, LEVELS ("3,19"), BLOCK (65536), CHUNK (67108864), SMOKE=1.
 Entropy figures are the census's (scratch/bf16_entropy_census.py), not
 this driver's; this driver measures achieved bytes.
@@ -270,7 +271,7 @@ def main() -> None:
     from llmopt.lab.hash import require_pinned_file
     head = subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip()
     dirty = bool(subprocess.run(["git", "status", "--porcelain", "--untracked-files=no"], capture_output=True, text=True).stdout.strip())
-    out = f"logs/bf16_lossless/{'smoke/' if SMOKE else ''}bench_{head}.json"
+    out = "logs/bf16_lossless/smoke/bench.json" if SMOKE else os.environ.get("OUT", "logs/bf16_lossless/bench.json")
     if os.path.exists(out):
         raise SystemExit(f"REFUSING: {out} exists")
     zv = subprocess.run([ZSTD, "--version"], capture_output=True, text=True).stdout.strip()

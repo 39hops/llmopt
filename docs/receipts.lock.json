@@ -216,11 +216,11 @@
    "exists": false,
    "source": "prereg"
   },
-  "logs/bf16_lossless/bench_1cee6a56.json": {
+  "logs/bf16_lossless/bench.json": {
    "exists": false,
    "source": "prereg"
   },
-  "logs/bf16_lossless/entropy_1cee6a56.json": {
+  "logs/bf16_lossless/entropy.json": {
    "exists": false,
    "source": "prereg"
   },

@@ -82962,11 +82962,13 @@ extrapolation and the bars say so. Nothing is tuned after the receipts
 are read; the sampled tensors are not a random sample of the 64 layers
 and the ranges carry that.
 
-Receipts (small text, force-added): logs/bf16_lossless/
-entropy_<commit>.json, logs/bf16_lossless/bench_<commit>.json,
-logs/bf16_lossless/observations.json, logs/bf16_lossless/
-adjudication.txt, logs/bf16_lossless/study_<commit>.log; the commit is
-the one this chain runs at and is named in the verdict. Fences: one
+Receipts (small text, force-added): logs/bf16_lossless/entropy.json,
+logs/bf16_lossless/bench.json, logs/bf16_lossless/observations.json,
+logs/bf16_lossless/adjudication.txt, logs/bf16_lossless/study_<commit>
+.log; each receipt records the commit the chain ran at, named in the
+verdict (the receipt names were fixed from commit-suffixed to plain in
+the commit after a38c28d4, before the chain ran, so the registered
+paths exist as declared). Fences: one
 machine; two shards; exact-bytes recovery is the correctness claim and
 the only one; throughput is single-process CPU wall on this Mac, not a
 GPU decoder's; no model is loaded, decoded or served from any

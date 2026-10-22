@@ -3,10 +3,10 @@
 # per stage, in order; a failed stage stops the chain with a FAILED line.
 #   census      scratch/bf16_entropy_census.py (exact BF16 bit-pattern
 #               entropies of the two retained shards; receipt
-#               logs/bf16_lossless/entropy_<commit>.json)
+#               logs/bf16_lossless/entropy.json)
 #   bench       scratch/bf16_lossless_bench.py (exact reversible encoders
 #               with byte-equal round trips; receipt
-#               logs/bf16_lossless/bench_<commit>.json)
+#               logs/bf16_lossless/bench.json)
 #   adjudicate  scratch/bf16_lossless_obs.py then scripts/adjudicate.py
 #               against docs/preregs/lossless-bf16-feasibility-0.json
 # ONLY="a b" runs a subset. Every receipt refuses to overwrite. Run under
@@ -42,7 +42,7 @@ run bench  $PY scratch/bf16_lossless_bench.py
 adjudicate() {
   if [ -e logs/bf16_lossless/observations.json ] || [ -e logs/bf16_lossless/adjudication.txt ]; then
     echo "REFUSING: observations or adjudication exists"; return 3; fi
-  $PY scratch/bf16_lossless_obs.py logs/bf16_lossless/entropy_$COMMIT.json logs/bf16_lossless/bench_$COMMIT.json \
+  $PY scratch/bf16_lossless_obs.py logs/bf16_lossless/entropy.json logs/bf16_lossless/bench.json \
       docs/preregs/lossless-bf16-feasibility-0.json > logs/bf16_lossless/observations.json || return $?
   $PY scripts/adjudicate.py docs/preregs/lossless-bf16-feasibility-0.json logs/bf16_lossless/observations.json \
       > logs/bf16_lossless/adjudication.txt

@@ -48,8 +48,8 @@
   }
  ],
  "receipts": [
-  "logs/bf16_lossless/entropy_1cee6a56.json",
-  "logs/bf16_lossless/bench_1cee6a56.json",
+  "logs/bf16_lossless/entropy.json",
+  "logs/bf16_lossless/bench.json",
   "logs/bf16_lossless/observations.json",
   "logs/bf16_lossless/adjudication.txt"
  ],
