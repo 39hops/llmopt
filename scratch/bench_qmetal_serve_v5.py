@@ -28,10 +28,11 @@ Modes (MODE env):
             per-step trace kept; median, p90, mean, min, max of steps
             5..STEPS; MLX peak active memory of the decode phase (reset
             after prefill), the memory report after prefill and after
-            decode (active, peak, allocator pool, footprint, peak RSS);
+            decode (active, peak, allocator pool, footprint, process-lifetime peak RSS);
             system memory pressure (memory_pressure's free percentage)
-            and the thermal signal pmset -g therm reports (CPU speed and
-            scheduler limits) before and after each round; the matrix
+            and whatever pmset -g therm reports (CPU speed and scheduler
+            limits when a warning level exists, otherwise its note lines)
+            before and after each round; the matrix
             path counts of the prefill and of the decode; the set of
             Metal kernels compiled so far (the dispatch witness: which
             (codec, generation) kernels the process has actually run).
@@ -258,7 +259,8 @@ def mode_ab():
     steps = 6 if SMOKE else int(os.environ.get("STEPS", "48"))
     abba = 1 if SMOKE else int(os.environ.get("ABBA_REPEATS", "2"))
     chunk = int(os.environ.get("CHUNK", "256"))
-    out = os.environ.get("OUT", os.path.join(OUT_DIR, "ab.json"))
+    # SMOKE writes to the smoke directory whatever OUT says (path isolation)
+    out = os.path.join(OUT_DIR, "ab.json") if SMOKE else os.environ.get("OUT", os.path.join(OUT_DIR, "ab.json"))
     refuse(out)
     cfg, prev_limit = apply_serving(chunk)
     ids = real_tokens(max(contexts) + steps)

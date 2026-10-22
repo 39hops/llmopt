@@ -82568,3 +82568,291 @@ decode (identical inputs by construction, not a generation-quality
 claim); the numerical claim is bit identity with the shipped kernel and
 lives in tests/test_qmetal.py and the qualification receipts, the
 comparisons here are guards on it.
+
+## VERDICT QWEN-METAL-S16-V5-DEFAULT-0: BARS 1, 2 AND 3 FIRE, NOT-REFUTED. Through the actual serving configuration (prefill_chunked, chunk 256, GEMM backend, final-position head, 2 GiB allocator-cache limit, fresh caches, identical real tokens, teacher-forced decode) generation 5 cuts the arm C cached-decode step from 128.4 to 101.1 ms at context 1,024 (21.2 percent, worst pairing of rounds 20.3) and from 129.3 to 102.0 ms at 2,048 (21.1 percent, worst pairing 21.0), p90 by 20.9 and 21.0 percent, with decode-phase peak active memory and the device footprint equal between generations at both contexts (ratios 1.000), prefill throughput unchanged (38.0 to 39.3 tokens per second at 1,024 and 38.9 to 39.2 at 2,048, candidate against control -0.1 and +0.3 percent), and every compared output bit-identical (final logits, every cache array after prefill, all 48 decode steps' logits, at both contexts, and every later round against its generation's first); the 2,048-token census reading (130 ms median, 162 p90) does not reproduce in either generation on the serving path, where generation 5 shows no latency or memory regression; the default kernel generation is 5 from commit 9f33e767 with QMETAL_VERSION=4 the qualified control (2026-10-22, Mac; guard run at f45b3b15 under liverun qwen-s16-default-0)
+
+Resolves PRE-REG QWEN-METAL-S16-V5-DEFAULT-0 (L82479, docs/preregs/
+qwen-metal-s16-v5-default-0.json, registered at 3a38ef08 before the
+run; git diff 3a38ef08 f45b3b15 touches docs/CODEMAP.md only) and item
+1 of Artin's conditional GO of 2026-10-22. Receipts:
+logs/qmetal/s16_v5_default/ab.json (the guard, driver
+scratch/bench_qmetal_serve_v5.py MODE=ab at f45b3b15, clean tree),
+logs/qmetal/s16_v5_default/observations.json (adapter
+scratch/qmetal_serve_v5_obs.py), logs/qmetal/s16_v5_default/
+adjudication.txt, logs/qmetal/s16_v5_default/guard_f45b3b15.log,
+logs/liverun/qwen-s16-default-0.jsonl. Same artifact as the registered
+A/B and the census: chain sha256 de7e0180bf49 (19 of 19 checked).
+
+Bars as registered, with the measured value beside each. BAR 1
+SERVE-DECODE-1024: "100 x (control - candidate) / control of the
+per-generation medians of the four round medians at 1,024 is at least
+5.0 percent, with the worst pairing (slowest candidate round against
+fastest control round) above zero": measured 21.22, worst pairing
+20.28. BAR 2 SERVE-DECODE-2048: the same at 2,048: measured 21.09, worst
+pairing 21.03. BAR 3 SERVE-MEMORY-2048: "the candidate's largest
+decode-phase peak active memory over the control's at 2,048 is below
+1.01, and the footprint after decode likewise below 1.01": measured
+9,377,073,788 over 9,377,073,788 = 1.000 and 11,428,679,420 over
+11,428,679,420 = 1.000. REFUTED-IF: "the worst pairing at either
+context is below zero, or bar 3 reads NO-FIRE": the smaller worst
+pairing is 20.28. Decision rule as registered: "the default flips to
+generation 5 unless the refutation fires or bar 3 is NO-FIRE".
+Adjudication (scripts/adjudicate.py, the four lines joined):
+"BAR 1 SERVE-DECODE-1024: FIRE / BAR 2 SERVE-DECODE-2048: FIRE / BAR 3
+SERVE-MEMORY-2048: FIRE / REFUTED-IF: NOT-REFUTED". Both arms
+admissible: resident_versions reads [4] in the eight control rounds and
+[5] in the eight candidate rounds (the value the driver set, read back);
+the compiled-kernel set after the first control round at 1,024 is s16:3,
+w4:4 and the two decode kernels, and s16:5 appears only after the first
+candidate round, so the shipped S16 kernel ran the control and the v5
+kernel the candidate at tile 1 (the only fused tile in these rounds);
+the set is cumulative, so later rounds rest on the set version and on
+the 27 ms separation present in all 16 rounds; the fresh-process release
+receipts (OBSERVATION QWEN-METAL-S16-V5-RELEASE-0) are the per-generation
+witnesses (s16:5 only in the default process, s16:3 only under
+QMETAL_VERSION=4). The receipt's tower.kernel_version field reads 4: it
+is the module default at build time, not a per-round value.
+
+Measured (one process, the tower built once in 6.0 s, serving
+configuration applied through qprefill.configure_serving_memory, real
+tokens from the teacher records, rounds control, candidate, candidate,
+control, twice per context, 48 teacher-forced steps per round, median of
+steps 5 to 48). Context 1,024: control round medians 131.0, 128.3,
+128.5, 128.0 ms, candidate 101.2, 102.0, 101.1, 100.8; per-generation
+medians 128.4 and 101.1; p90 by round control 134.7, 128.8, 129.3,
+128.8, candidate 102.4, 103.3, 101.7, 101.5; maximum of steps 5 to 48
+136.8 ms in the first control round and 109.7 in the second candidate
+round, the rest 129 to 131 and 102 to 104. Context 2,048: control
+129.3, 129.3, 129.3, 129.8, candidate 102.1, 101.8, 102.0, 102.1;
+medians 129.3 and 102.0; p90 129.8 to 130.4 against 102.3 to 102.9;
+maximum of steps 5 to 48 130.7 and 103.2 (over steps 3 to 48, the
+census window, 132.1 and 104.5). The first decode step after prefill is
+outside both windows and reads 138.4 to 149.9 ms in generation 4 and
+112.7 to 122.2 in generation 5 at 1,024, 144.1 to 147.2 and 118.8 to
+126.5 at 2,048. Prefill through the entry point: 38.0 to 39.3 tokens
+per second at 1,024 and 38.9 to 39.2 at 2,048 (round medians, candidate
+against control -0.1 and +0.3 percent). Memory: decode-phase peak
+active 9.23 GB at 1,024 and 9.38 GB at 2,048 in every round of both
+generations, footprint after decode 11.29 and 11.43 GB (active 9.16
+plus pool 2.14 GB under the limit) in every round, peak active during
+prefill 12.02 and 12.19 GB. System free memory 92 percent before the
+first round (after the tower build), 63 to 65 before and after every
+round thereafter; pmset recorded no thermal or performance warning
+level at any of the 32 readings; power and temperature were not read
+(powermetrics needs root). Bit identity: the first rounds of the two
+generations agree exactly on the final logits (max abs 0.0), on every
+cache array after prefill (128 arrays at each context: conv tails,
+recurrent states, keys, values; offsets 1,024 and 2,048 equal) and on
+all 48 decode steps' logits (max abs 0.0, 48 of 48 argmax) at both
+contexts; every later round of each generation reproduces its first
+round with zero difference on all three; the per-round sha256 of the
+final logits, the decode logits and the cache is the same in all eight
+rounds at each context.
+
+Reading of the 2,048 excursion. The census's long-context rung read 130
+ms median and 162 p90 over steps 3 to 16 at 2,048 (after a one-shot
+fused prefill without a cache limit, synthetic repeated tokens, greedy
+decode, in one process after the 512 and 1,024 rungs, commit 3d10cf65,
+unpaired). On the serving path at 2,048 generation 5 reads 102 ms in all
+four rounds with p90 at most 102.9 and no step above 104.5 from step 3
+on, and generation 4 reads 129.3 to 129.8 with no step above 132.1: no
+excursion in either arm. The guard does not recreate the census
+conditions, so it neither explains that reading nor attributes it to a
+kernel; its mechanism is not identified here, and the untested
+differences are the one-shot fused prefill without a cache limit, the
+synthetic repeated tokens, greedy rather than teacher-forced decode, the
+step window and the census's run order within one process. The 4,096
+one-shot qualification was not repeated.
+
+Decision. Generation 5 is the default from commit 9f33e767:
+llmopt/lab/qmetal.py reads QMETAL_VERSION with default 5; QMETAL_VERSION=4
+is the explicit fallback to the qualified generation 4 control. The
+flip is process-wide, so it also covers the one-shot fused path without
+a cache limit on which the census reading was taken; that path is
+covered by the generation 5 census only (unpaired). Preserved unchanged
+(git show 9f33e767: in llmopt/lab/qmetal.py the default value, a comment
+and the docstring, _run and _kernel untouched, plus the new test file): W4 v4 at tiles 1 and 2 and v3 above
+(V4_MAX_TILE), S16 v5 at tiles 1 and 2 and the shipped S16 kernel above
+(S16_V5_MAX_TILE), the prefill GEMM scope and its thresholds, every
+codec format, the compressed weights, the exceptional-value semantics
+and the parity suite. tests/test_qmetal_default.py pins in fresh
+subprocesses that an import with QMETAL_VERSION unset defaults the
+module and the resident class to 5, that QMETAL_VERSION=4 selects 4, and
+that a resident built without the variable compiles and runs the s16:5
+kernel while the same resident under QMETAL_VERSION=4 compiles and runs
+s16:3, with bit-identical output on the golden payload (W4 dispatch is
+not separately asserted there; test_generation_5_dispatches_w4_as_
+generation_4 covers it). The release smoke on the promoted build is
+booked separately (OBSERVATION QWEN-METAL-S16-V5-RELEASE-0).
+
+Post-run audit (Opus receipt and pre-reg audits, no blocker on the
+measurement): the SMOKE mode of the driver let an OUT variable override
+the smoke directory (inert here, no OUT was set; fixed after the run in
+the commit that books this entry and disclosed), the adapter did not
+refuse a dirty tree and its reproduction checks could pass vacuously
+(the receipt is clean and every later round carries the field; the
+adapter fixed likewise, and the fixed adapter reproduces the booked
+observations document byte for byte), and the release stage wrote its
+receipts and about 2.2 GB (2.0 GiB) of untracked dumps into the same
+directory as the guard receipts (nothing overwritten; the receipts are force-added by
+file name).
+
+Fences. One machine (M3 Pro, 36 GB), one artifact, one process, float32
+activations; timing is pipelined end-to-end latency under the serving
+discipline, teacher-forced (identical inputs by construction, not a
+generation-quality claim); the guard covers the serving configuration
+only; the numerical claim is bit identity with the shipped kernel
+(tests/test_qmetal.py and the generation 5 census), and the comparisons
+here are guards on it; the two maximum steps above the pack (136.8
+control, 109.7 candidate, both at 1,024) are in the spread and not
+removed; no power or temperature figure exists in the receipt; the
+dispatch witness beyond the first two rounds is the set version and the
+latency separation, as stated above.
+
+## OBSERVATION QWEN-METAL-S16-V5-RELEASE-0: release smoke of the promoted build (kernel generation 5 the default from 9f33e767) through the serving configuration on one real prompt at 512, 1,024 and 2,048 tokens: a fresh process with QMETAL_VERSION unset builds every resident at generation 5 and compiles and runs s16:5 (never s16:3), the same prompt under QMETAL_VERSION=4 builds every resident at 4 and runs s16:3 (never s16:5), and the two processes agree bit for bit on the final logits, every cache array after prefill and all 48 decode steps at every context; decode 101.2 / 102.9 / 102.6 ms against 128.5 / 129.0 / 129.8 (21.2, 20.2, 20.9 percent, single rounds, reported not adjudicated), prefill 38.3 to 38.7 tokens per second in both (within 0.5 percent), decode-phase peak active 9.15 / 9.23 / 9.38 GB and footprint 11.22 / 11.29 / 11.43 GB equal in both (2026-10-22, Mac; run at 9f33e767 under liverun qwen-s16-default-1; the existing E0 census is the numerical qualification and was not re-run)
+
+Item 3 of Artin's conditional GO of 2026-10-22, booked separately from
+VERDICT QWEN-METAL-S16-V5-DEFAULT-0 as directed. Driver
+scratch/bench_qmetal_serve_v5.py MODE=release (receipts
+logs/qmetal/s16_v5_default/release_v5_default.json and
+logs/qmetal/s16_v5_default/release_v4_env.json) and MODE=compare
+(logs/qmetal/s16_v5_default/compare_v4_env_vs_v5_default.json), runner
+scratch/qmetal_serve_v5_guard.sh (log
+logs/qmetal/s16_v5_default/guard_9f33e767.log), liverun receipt
+logs/liverun/qwen-s16-default-1.jsonl; clean tree at 9f33e767, the
+commit that flipped the default. Serving configuration as in the guard
+(ServingConfig applied: chunk 256, matmul gemm, 2 GiB cache limit, head
+final); real tokens (the teacher records concatenated, 2,096 ids, the
+same sha as the guard); one round per context, fresh cache, 48
+teacher-forced decode steps; the runner refuses to start the release
+stage with QMETAL_VERSION set in its environment and runs the default
+process with the variable unset explicitly.
+
+Dispatch, as recorded. Default process: qmetal_version_env null,
+module default 5, every resident at 5 (all_residents_at_module_default
+true), compiled kernels after the first round and at exit s16:5,
+s16:decode, w4:4, w4:decode. Control process: env 4, module default 4,
+every resident at 4, compiled kernels s16:3, s16:decode, w4:4,
+w4:decode. In both: W4 runs the v4 kernel (tile 1) and never v3 (no
+fused W4 call above tile 2 occurs on this path), the prefill body takes
+the GEMM path (800 / 1,600 / 3,200 matrix calls at 512 / 1,024 / 2,048,
+400 body matrices per chunk) with the final-position head fused (2 / 4
+/ 8 calls, one per chunk), and the decode takes the fused path only
+(19,248 calls = 401 fused linears x 48 steps: 192 W4, 208 S16 body and
+the head; the receipt's tower.fused of 402 also counts the embedding). Correctness: the compare
+stage reads the two processes' dumps and finds the final logits (max
+abs 0.0, argmax 74,060 / 279 / 696), every cache array after prefill
+(keys equal, no array differs) and all 48 decode logits (max abs 0.0,
+48 of 48 argmax) bit-identical at every context, and the per-round
+sha256 of all three equal between the processes. Timing (one round
+each, not a paired A/B; the guard is the registered comparison):
+decode median 101.2 / 102.9 / 102.6 ms against 128.5 / 129.0 / 129.8,
+p90 101.9 / 104.3 / 105.3 against 130.1 / 130.7 / 131.1, maximum of
+steps 5 to 48 103.2 / 105.5 / 112.4 against 131.9 / 134.1 / 132.2;
+prefill 38.7 / 38.3 / 38.3 against 38.7 / 38.4 / 38.5 tokens per second
+(+0.1, -0.4, -0.5 percent). Memory: decode-phase peak active 9.15 /
+9.23 / 9.38 GB, footprint after decode 11.22 / 11.29 / 11.43 GB, peak
+active during prefill 11.94 / 12.02 / 12.19 GB, equal between the
+processes at every context; system free memory 64 percent after every
+round; no thermal warning level recorded.
+
+Numerical qualification. The integration change is the default value
+of QMETAL_VERSION (git show 9f33e767: in llmopt/lab/qmetal.py the
+default, a comment and the docstring, the dispatch code untouched, plus
+the new test file), so the qualified numerical
+path is the generation 5 path the census of VERDICT QWEN-METAL-S16-V5-0
+already covered (logs/qwen_metal_qual/C_v5/summary.json: 4,722 of 4,722
+argmax-identical to the CPU rows, byte-identical to the generation 4
+census); that census is the immutable historical evidence and no new
+census was run. The release dumps (final logits, decode logits and
+cache arrays per process and context, about 2.2 GB, 2.0 GiB, under
+logs/qmetal/s16_v5_default/dump/) are machine-local and untracked;
+their sha256 values are in the receipts.
+
+Fences. One machine, one artifact, one prompt, one round per context,
+teacher-forced; the timing columns are single rounds and are reported,
+not adjudicated; the serving configuration only (the one-shot fused
+path is covered by the census alone); no power or temperature figure.
+
+## OBSERVATION QWEN-METAL-DECODE-BREAKDOWN-2: the cached-decode step of arm C under the promoted default (kernel generation 5) is 100.2 ms per token at context 126, with ablation marginals (end-to-end deltas, overlapping, not a partition) of W4 43.6 ms (44 percent), S16 body 28.6 ms (29 percent), head 3.8 ms (4 percent), all fused linears together 82.1 ms (82 percent), DeltaNet core 12.6 ms (13 percent), attention core 0.7 ms, norms 1.3 ms and the framework skeleton 4.5 ms; against the generation 4 breakdown of the same day the S16 body marginal about halved (55.9 to 28.6), the head 9.9 to 3.8, and the W4 marginal read 48.2 to 43.6 with the W4 kernel unchanged (2026-10-22, Mac; same frozen instrument, same ablation design, timing only; a projection follows, labelled as such)
+
+Item 5 of Artin's conditional GO of 2026-10-22: the whole-model profile
+with S16 v5 active before any next target is named.
+scratch/qwen_metal_breakdown.py exactly as frozen for OBSERVATIONS
+QWEN-METAL-DECODE-BREAKDOWN-0 and -1, run with QMETAL_VERSION unset at
+9f33e767 (the promoted default; the receipt records kernel_version 5),
+clean tree, under liverun qwen-s16-default-1; receipt
+logs/qmetal/breakdown_9f33e767.json; context 126, 32 steps, median of
+steps 5 to 32, each step forced by mx.eval on its logits; the same
+ablation stand-ins as before (a constant output of the right shape
+keeping a data dependence, or the identity), timing only, outputs
+meaningless by construction.
+
+Measured. Full step 100.2 ms (three full-step measurements 99.5, 100.2
+and 101.5, a 2.1 ms spread; the breakdown of the generation 4 runtime
+read 130.9 at c1c19f3f with the same instrument, repeats 130.4, 130.9,
+132.5). Marginals (full minus the configuration with one family
+replaced): W4 fused linears 43.6 ms (48.2 under generation 4); S16 fused
+linears except the head 28.6 ms (55.9); the head 3.8 ms (9.9); all fused
+linears together 82.1 ms (112.5; the three family marginals sum to 76.1,
+6.1 ms below the joint marginal, where under generation 4 the family sum
+exceeded the joint marginal by 1.5 ms); DeltaNet conv plus recurrence
+plus gated norm 12.6 ms (14.7); attention core 0.7 ms (1.6); norms 1.3
+ms (2.2); skeleton 4.5 ms (4.6). Accounted 82.1 + 12.6 + 0.7 + 1.3 + 4.5
+= 101.2 against 100.2 measured, 1.0 ms over (1 percent), inside the 2.1
+ms spread between full-step repeats. The S16 family (body plus head)
+fell from 65.8 to 32.5 ms, 0.49 of its generation 4 marginal, consistent
+within the roughly 2 ms resolution of each marginal with the probe's
+0.52 to 0.56 device-table ratio on the five larger matrices (0.63 on
+k_proj); the whole step fell by 30.8 ms against the 33.3 ms the S16
+family gave up, and the 2.5 ms difference is about the size of the
+spread between full-step repeats and is not attributed. The W4 marginal
+moved from 48.2 to 43.6 ms with the W4 kernel byte-unchanged (git diff
+c1c19f3f 9f33e767 on llmopt/lab/qmetal.py adds the S16 v5 source and its
+generation 5 dispatch, the default and comments; the W4 sources and the
+W4 dispatch are unchanged): a marginal is an end-to-end delta under
+pipelined execution and depends on what else is in flight, so a change
+in overlap is the candidate reading (a hypothesis; the W4 kernel's
+isolated cost was not re-measured, and the 4.6 ms shift is about twice
+the repeat spread). The W4 launches are the same 192 per step
+(families.w4); no W4 payload rate was measured in this run.
+
+Projection (arithmetic on this receipt and the booked probes, not a
+measurement). The step is now 100 ms: W4 44 (the largest family), S16
+32, DeltaNet 13, framework and norms 6. What is known about the W4
+kernel is the generation 3 probe (OBSERVATION QWEN-METAL-DECODE-
+BREAKDOWN-0, RESULTS L79609 onward, on gate_proj and down_proj at T =
+1, diagnostic variants with wrong outputs, pipelined per-launch time):
+removing the activation loads halved the v3 launch and an
+activation-plus-reduction-only variant ran at 93 percent of it;
+removing the codebook gathers saved 33 percent and removing the weight
+stream 4 to 11 percent (savings under pipelined execution, not shares
+that add); the share4 probe that became v4 ran at 60 to 63 percent of
+v3 (95 to 104 GB/s of payload against the 150 GB/s roofline), and
+share8 was slower than share4. No probe has measured the v4 kernel's
+own composition: the 33 percent codebook figure is v3's, and under v4
+the activation traffic that dominated v3 is a quarter of what it was,
+so the table traffic may now be the largest term, or the weight stream
+may be, and this entry does not know which. The S16 device-table result
+does not transfer by analogy: W4's codebook is per tensor like S16's
+but 2 KB (256 entries of four weights, indexed per byte) and already
+staged in threadgroup memory once per row group, where S16's was a
+32-byte, 16-level table indexed per nibble from a per-lane register
+array, so the access pattern and the cost class differ. If a W4 T = 1
+probe found 41 to 51 percent of the v4 launch in table traffic as the
+S16 probe did for the S16 kernel, the step would read about 80 ms; if
+v4 is already near its achievable payload rate (the share4 probe read
+95 to 104 of 150 GB/s), the other measured candidates are the DeltaNet
+core (13 ms) and the 401 fused-linear launches per step (the S16
+probe's empty-kernel floor is 3 to 25 percent of launch time across the
+six probed S16 matrices, 25 percent on k_proj and 3 on the head; W4's
+empty kernel read 40 and 20 us against 371 and 385 us under v3, 5 to
+11 percent), with S16 at 32 ms and W4 itself not excluded.
+
+Fences. Timing only; single machine, artifact, context and dtype;
+marginals are end-to-end deltas and need not add up (the family sum is
+6.1 ms below the joint marginal here); the projection is labelled and
+no W4 measurement exists in this entry; the W4 payload-rate and
+variant figures are BREAKDOWN-0's share4 probe figures (receipt
+logs/qmetal/traffic_probe_01b8c177.json), run against v3 before v4
+existed, not re-measured on the shipped v4.

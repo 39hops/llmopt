@@ -1,0 +1,62 @@
+{
+ "note": "Mechanical projection of logs/qmetal/s16_v5_default/ab.json (driver scratch/bench_qmetal_serve_v5.py at f45b3b15, serving configuration {'chunk': 256, 'matmul': 'gemm', 'cache_limit_bytes': 2147483648, 'previous_cache_limit_bytes': 36721970380, 'head': 'final'}); adapter scratch/qmetal_serve_v5_obs.py",
+ "registration_sha256": "578b5be97acc5bb82f69a6c21b6af2ecc2b1f10d6ab258ee5a3ebe53b7d11b7e",
+ "measurement_valid": true,
+ "arms": {
+  "CONTROL": {
+   "admissible": true,
+   "reason": "generation 4 as shipped; every resident at version 4 in every control round True"
+  },
+  "CANDIDATE": {
+   "admissible": true,
+   "reason": "every resident at version 5 in every candidate round True; first rounds bit-identical to the control on final logits, cache and decode logits at both contexts True; later rounds reproduce their first round bit for bit True"
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 21.223512954837616,
+   "metric": "improvement_percent_ctx1024",
+   "population": "steps:ctx1024-48x4rounds-serving",
+   "aggregation": "percent_change_of_median_of_round_medians",
+   "provenance": "control round medians [130.95, 128.26, 128.45, 127.98] ms, candidate [101.17, 102.03, 101.06, 100.81] ms; medians 128.36 and 101.12 ms; p90 by round control [134.7, 128.8, 129.3, 128.8] candidate [102.4, 103.3, 101.7, 101.5]"
+  },
+  "1:worst": {
+   "value": 20.278015088849948,
+   "metric": "improvement_percent_worst_pairing_ctx1024",
+   "population": "steps:ctx1024-48x4rounds-serving",
+   "aggregation": "percent_change_worst_pairing"
+  },
+  "2": {
+   "value": 21.08605650591508,
+   "metric": "improvement_percent_ctx2048",
+   "population": "steps:ctx2048-48x4rounds-serving",
+   "aggregation": "percent_change_of_median_of_round_medians",
+   "provenance": "control round medians [129.27, 129.34, 129.27, 129.8] ms, candidate [102.06, 101.77, 102.02, 102.09] ms; medians 129.30 and 102.04 ms; p90 by round control [130.1, 129.8, 129.9, 130.4] candidate [102.9, 102.3, 102.6, 102.7]"
+  },
+  "2:worst": {
+   "value": 21.026148469458537,
+   "metric": "improvement_percent_worst_pairing_ctx2048",
+   "population": "steps:ctx2048-48x4rounds-serving",
+   "aggregation": "percent_change_worst_pairing"
+  },
+  "3": {
+   "value": 1.0,
+   "metric": "decode_peak_active_ratio_ctx2048",
+   "population": "steps:ctx2048-48x4rounds-serving",
+   "aggregation": "ratio_of_max_over_rounds",
+   "provenance": "decode-phase peak active bytes control 9377073788 candidate 9377073788; footprint after decode control 11428679420 candidate 11428679420"
+  },
+  "3:footprint": {
+   "value": 1.0,
+   "metric": "footprint_after_decode_ratio_ctx2048",
+   "population": "steps:ctx2048-48x4rounds-serving",
+   "aggregation": "ratio_of_max_over_rounds"
+  },
+  "min_worst_pairing_percent": {
+   "value": 20.278015088849948,
+   "metric": "min_worst_pairing_percent",
+   "population": "steps:ctx1024+ctx2048-serving",
+   "aggregation": "min_over_contexts"
+  }
+ }
+}

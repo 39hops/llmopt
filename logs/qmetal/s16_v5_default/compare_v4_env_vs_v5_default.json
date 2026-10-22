@@ -1,0 +1,396 @@
+{
+ "a": {
+  "path": "logs/qmetal/s16_v5_default/release_v4_env.json",
+  "tag": "v4_env",
+  "commit": "9f33e767",
+  "effective_generation": {
+   "module_default": 4,
+   "resident_versions": [
+    4
+   ],
+   "all_residents_at_module_default": true,
+   "s16_v5_max_tile": 2,
+   "v4_max_tile": 2
+  }
+ },
+ "b": {
+  "path": "logs/qmetal/s16_v5_default/release_v5_default.json",
+  "tag": "v5_default",
+  "commit": "9f33e767",
+  "effective_generation": {
+   "module_default": 5,
+   "resident_versions": [
+    5
+   ],
+   "all_residents_at_module_default": true,
+   "s16_v5_max_tile": 2,
+   "v4_max_tile": 2
+  }
+ },
+ "per_context": {
+  "512": {
+   "final_logits": {
+    "positions": 1,
+    "max_abs": 0.0,
+    "max_rel": 0.0,
+    "bit_identical": true,
+    "argmax_identical": 1,
+    "margin_abs_diff_max": 0.0,
+    "min_margin_at_mismatch": null
+   },
+   "cache_after_prefill": {
+    "keys_equal": true,
+    "max_abs_by_key_nonzero": {},
+    "bit_identical": true
+   },
+   "decode_logits": {
+    "per_step_max_abs": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "max_abs": 0.0,
+    "bit_identical": true,
+    "argmax_identical_steps": 48,
+    "steps": 48
+   },
+   "sha_equal": {
+    "final_logits": true,
+    "decode_logits": true,
+    "cache_after_prefill": true
+   },
+   "prefill_tok_per_s": {
+    "v4_env": 38.661653003716474,
+    "v5_default": 38.717754434743206,
+    "change_percent_b_vs_a": 0.1451087231612667
+   },
+   "decode_median_ms": {
+    "v4_env": 128.47835395950824,
+    "v5_default": 101.18443751707673,
+    "improvement_percent_b_vs_a": 21.243980484863286
+   },
+   "decode_p90_ms": {
+    "v4_env": 130.08617535233498,
+    "v5_default": 101.91575789358467
+   },
+   "decode_peak_active_bytes": {
+    "v4_env": 9145560200,
+    "v5_default": 9145560200
+   },
+   "footprint_after_decode_bytes": {
+    "v4_env": 11217670000,
+    "v5_default": 11217670000
+   },
+   "resident_versions": {
+    "v4_env": [
+     4
+    ],
+    "v5_default": [
+     5
+    ]
+   },
+   "compiled_kernels": {
+    "v4_env": [
+     "s16:3",
+     "s16:decode",
+     "w4:4",
+     "w4:decode"
+    ],
+    "v5_default": [
+     "s16:5",
+     "s16:decode",
+     "w4:4",
+     "w4:decode"
+    ]
+   }
+  },
+  "1024": {
+   "final_logits": {
+    "positions": 1,
+    "max_abs": 0.0,
+    "max_rel": 0.0,
+    "bit_identical": true,
+    "argmax_identical": 1,
+    "margin_abs_diff_max": 0.0,
+    "min_margin_at_mismatch": null
+   },
+   "cache_after_prefill": {
+    "keys_equal": true,
+    "max_abs_by_key_nonzero": {},
+    "bit_identical": true
+   },
+   "decode_logits": {
+    "per_step_max_abs": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "max_abs": 0.0,
+    "bit_identical": true,
+    "argmax_identical_steps": 48,
+    "steps": 48
+   },
+   "sha_equal": {
+    "final_logits": true,
+    "decode_logits": true,
+    "cache_after_prefill": true
+   },
+   "prefill_tok_per_s": {
+    "v4_env": 38.42636504906312,
+    "v5_default": 38.278993701474604,
+    "change_percent_b_vs_a": -0.38351623267085666
+   },
+   "decode_median_ms": {
+    "v4_env": 128.9705210365355,
+    "v5_default": 102.85997902974486,
+    "improvement_percent_b_vs_a": 20.245356688443476
+   },
+   "decode_p90_ms": {
+    "v4_env": 130.65131620969623,
+    "v5_default": 104.30583776906133
+   },
+   "decode_peak_active_bytes": {
+    "v4_env": 9226078844,
+    "v5_default": 9226078844
+   },
+   "footprint_after_decode_bytes": {
+    "v4_env": 11294986028,
+    "v5_default": 11294986028
+   },
+   "resident_versions": {
+    "v4_env": [
+     4
+    ],
+    "v5_default": [
+     5
+    ]
+   },
+   "compiled_kernels": {
+    "v4_env": [
+     "s16:3",
+     "s16:decode",
+     "w4:4",
+     "w4:decode"
+    ],
+    "v5_default": [
+     "s16:5",
+     "s16:decode",
+     "w4:4",
+     "w4:decode"
+    ]
+   }
+  },
+  "2048": {
+   "final_logits": {
+    "positions": 1,
+    "max_abs": 0.0,
+    "max_rel": 0.0,
+    "bit_identical": true,
+    "argmax_identical": 1,
+    "margin_abs_diff_max": 0.0,
+    "min_margin_at_mismatch": null
+   },
+   "cache_after_prefill": {
+    "keys_equal": true,
+    "max_abs_by_key_nonzero": {},
+    "bit_identical": true
+   },
+   "decode_logits": {
+    "per_step_max_abs": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "max_abs": 0.0,
+    "bit_identical": true,
+    "argmax_identical_steps": 48,
+    "steps": 48
+   },
+   "sha_equal": {
+    "final_logits": true,
+    "decode_logits": true,
+    "cache_after_prefill": true
+   },
+   "prefill_tok_per_s": {
+    "v4_env": 38.459443125366235,
+    "v5_default": 38.28322655828243,
+    "change_percent_b_vs_a": -0.4581880359249944
+   },
+   "decode_median_ms": {
+    "v4_env": 129.79991652537137,
+    "v5_default": 102.6195214362815,
+    "improvement_percent_b_vs_a": 20.940225399742108
+   },
+   "decode_p90_ms": {
+    "v4_env": 131.14047872368246,
+    "v5_default": 105.30000808648765
+   },
+   "decode_peak_active_bytes": {
+    "v4_env": 9377073788,
+    "v5_default": 9377073788
+   },
+   "footprint_after_decode_bytes": {
+    "v4_env": 11428679420,
+    "v5_default": 11428679420
+   },
+   "resident_versions": {
+    "v4_env": [
+     4
+    ],
+    "v5_default": [
+     5
+    ]
+   },
+   "compiled_kernels": {
+    "v4_env": [
+     "s16:3",
+     "s16:decode",
+     "w4:4",
+     "w4:decode"
+    ],
+    "v5_default": [
+     "s16:5",
+     "s16:decode",
+     "w4:4",
+     "w4:decode"
+    ]
+   }
+  }
+ },
+ "all_bit_identical": true
+}

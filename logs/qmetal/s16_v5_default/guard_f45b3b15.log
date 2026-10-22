@@ -1,0 +1,22 @@
+== ab 21:02:56 f45b3b15
+[serve-ab] ctx 1024 round 0 v4: median 131.0 ms p90 134.7 max 136.8 prefill 38.0 tok/s decode peak 9.23 GB footprint 11.29 GB free 64% therm None
+[serve-ab] ctx 1024 round 1 v5: median 101.2 ms p90 102.4 max 103.8 prefill 38.7 tok/s decode peak 9.23 GB footprint 11.29 GB free 63% therm None
+[serve-ab] ctx 1024 round 2 v5: median 102.0 ms p90 103.3 max 109.7 prefill 39.3 tok/s decode peak 9.23 GB footprint 11.29 GB free 63% therm None
+[serve-ab] ctx 1024 round 3 v4: median 128.3 ms p90 128.8 max 129.2 prefill 39.0 tok/s decode peak 9.23 GB footprint 11.29 GB free 64% therm None
+[serve-ab] ctx 1024 round 4 v4: median 128.5 ms p90 129.3 max 130.5 prefill 39.2 tok/s decode peak 9.23 GB footprint 11.29 GB free 64% therm None
+[serve-ab] ctx 1024 round 5 v5: median 101.1 ms p90 101.7 max 102.2 prefill 39.0 tok/s decode peak 9.23 GB footprint 11.29 GB free 64% therm None
+[serve-ab] ctx 1024 round 6 v5: median 100.8 ms p90 101.5 max 102.4 prefill 39.1 tok/s decode peak 9.23 GB footprint 11.29 GB free 64% therm None
+[serve-ab] ctx 1024 round 7 v4: median 128.0 ms p90 128.8 max 129.0 prefill 39.3 tok/s decode peak 9.23 GB footprint 11.29 GB free 64% therm None
+[serve-ab] ctx 2048 round 0 v4: median 129.3 ms p90 130.1 max 130.5 prefill 39.0 tok/s decode peak 9.38 GB footprint 11.43 GB free 64% therm None
+[serve-ab] ctx 2048 round 1 v5: median 102.1 ms p90 102.9 max 103.1 prefill 39.2 tok/s decode peak 9.38 GB footprint 11.43 GB free 64% therm None
+[serve-ab] ctx 2048 round 2 v5: median 101.8 ms p90 102.3 max 102.8 prefill 39.2 tok/s decode peak 9.38 GB footprint 11.43 GB free 64% therm None
+[serve-ab] ctx 2048 round 3 v4: median 129.3 ms p90 129.8 max 130.4 prefill 39.1 tok/s decode peak 9.38 GB footprint 11.43 GB free 64% therm None
+[serve-ab] ctx 2048 round 4 v4: median 129.3 ms p90 129.9 max 130.3 prefill 39.1 tok/s decode peak 9.38 GB footprint 11.43 GB free 64% therm None
+[serve-ab] ctx 2048 round 5 v5: median 102.0 ms p90 102.6 max 103.0 prefill 39.2 tok/s decode peak 9.38 GB footprint 11.43 GB free 64% therm None
+[serve-ab] ctx 2048 round 6 v5: median 102.1 ms p90 102.7 max 103.2 prefill 39.2 tok/s decode peak 9.38 GB footprint 11.43 GB free 64% therm None
+[serve-ab] ctx 2048 round 7 v4: median 129.8 ms p90 130.4 max 130.7 prefill 38.9 tok/s decode peak 9.38 GB footprint 11.43 GB free 64% therm None
+[serve-ab] {"ctx1024_v4_median_step_s": 0.12835906248074025, "ctx1024_v4_spread_s": 0.002972436952404678, "ctx1024_v4_decode_peak_active_bytes_max": 9226078844, "ctx1024_v4_footprint_after_decode_bytes_max": 11294986028, "ctx1024_v4_prefill_peak_active_bytes_max": 12019357252, "ctx1024_v5_median_step_s": 0.10111676022643223, "ctx1024_v5_spread_s": 0.0012234585592523217, "ctx1024_v5_decode_peak_active_bytes_max": 9226078844, "ctx1024_v5_footprint_after_decode_bytes_max": 11294986028, "ctx1024_v5_prefill_peak_active_bytes_max": 12019357252, "ctx1024_improvement_percent": 21.223512954837616, "ctx1024_improvement_percent_worst_pairing": 20.278015088849948, "ctx1024_p90_improvement_percent": 20.933219173773256, "ctx1024_decode_peak_active_ratio_candidate_over_control": 1.0, "ctx1024_footprint_ratio_candidate_over_control": 1.0, "ctx1024_prefill_change_percent_candidate_vs_control": -0.11093496637861423, "ctx2048_v4_median_step_s": 0.12930345826316625, "ctx2048_v4_spread_s": 0.0005349379498511553, "ctx2048_v4_decode_peak_active_bytes_max": 9377073788, "ctx2048_v4_footprint_after_decode_bytes_max": 11428679420, "ctx2048_v4_prefill_peak_active_bytes_max": 12187395652, "ctx2048_v5_median_step_s": 0.10203845798969269, "ctx2048_v5_spread_s": 0.00031210400629788637, "ctx2048_v5_decode_peak_active_bytes_max": 9377073788, "ctx2048_v5_footprint_after_decode_bytes_max": 11428679420, "ctx2048_v5_prefill_peak_active_bytes_max": 12187395652, "ctx2048_improvement_percent": 21.08605650591508, "ctx2048_improvement_percent_worst_pairing": 21.026148469458537, "ctx2048_p90_improvement_percent": 21.04830680005387, "ctx2048_decode_peak_active_ratio_candidate_over_control": 1.0, "ctx2048_footprint_ratio_candidate_over_control": 1.0, "ctx2048_prefill_change_percent_candidate_vs_control": 0.29596250601780444}; wrote logs/qmetal/s16_v5_default/ab.json
+== adjudicate 21:15:11 f45b3b15
+== skip release (ONLY=ab adjudicate)
+== skip profile (ONLY=ab adjudicate)
+== DONE 21:15:11

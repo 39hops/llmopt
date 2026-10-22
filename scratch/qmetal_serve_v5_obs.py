@@ -50,6 +50,10 @@ def main(ab_path: str, prereg_path: str) -> None:
         raise SystemExit(f"REFUSING: A/B versions {vc}/{vk} are not the registered 4 against 5")
     if ab["provenance"].get("smoke") or ab["provenance"]["mode"] != "ab":
         raise SystemExit("REFUSING: the receipt is a smoke run or not the ab mode")
+    if ab["provenance"].get("tree_dirty"):
+        raise SystemExit("REFUSING: the receipt was written on a dirty tree")
+    if sorted(ab["contexts"]) != [1024, 2048] or ab["serving_applied"].get("head") != "final":
+        raise SystemExit(f"REFUSING: contexts {ab['contexts']} or head {ab['serving_applied'].get('head')} are not the registered ones")
     if ab["serving_applied"]["cache_limit_bytes"] != 2 * 1024 ** 3 or ab["serving_applied"]["chunk"] != 256 \
             or ab["serving_applied"]["matmul"] != "gemm":
         raise SystemExit(f"REFUSING: serving configuration {ab['serving_applied']} is not the registered one")
@@ -98,12 +102,15 @@ def main(ab_path: str, prereg_path: str) -> None:
                                              "aggregation": "min_over_contexts"}
     ctrl_versions = all(r["resident_versions"] == [vc] for r in rows if r["version"] == vc)
     cand_versions = all(r["resident_versions"] == [vk] for r in rows if r["version"] == vk)
-    bit = all(cross[c]["final_logits"]["bit_identical"] and cross[c]["cache_after_prefill"]["bit_identical"]
-              and cross[c]["decode_logits"]["bit_identical"] for c in cross)
-    repro = all(r["vs_first_round_of_this_version"]["final_logits_max_abs"] == 0.0
-                and r["vs_first_round_of_this_version"]["cache_bit_identical"]
-                and r["vs_first_round_of_this_version"]["decode_logits_max_abs"] == 0.0
-                for r in rows if "vs_first_round_of_this_version" in r)
+    bit = set(cross) == {"1024", "2048"} and all(
+        cross[c]["final_logits"]["bit_identical"] and cross[c]["cache_after_prefill"]["bit_identical"]
+        and cross[c]["decode_logits"]["bit_identical"] for c in cross)
+    later = [r for r in rows if "vs_first_round_of_this_version" in r]
+    # every round after a version's first carries the field: 3 per version per context
+    repro = len(later) == 2 * 2 * 3 and all(
+        r["vs_first_round_of_this_version"]["final_logits_max_abs"] == 0.0
+        and r["vs_first_round_of_this_version"]["cache_bit_identical"]
+        and r["vs_first_round_of_this_version"]["decode_logits_max_abs"] == 0.0 for r in later)
     obs = {"note": f"Mechanical projection of {ab_path} (driver scratch/bench_qmetal_serve_v5.py at {ab['provenance']['commit']}, "
                    f"serving configuration {ab['serving_applied']}); adapter scratch/qmetal_serve_v5_obs.py",
            "registration_sha256": registration_digest(prereg),

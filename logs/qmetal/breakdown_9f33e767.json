@@ -1,0 +1,143 @@
+{
+ "commit": "9f33e767",
+ "tree_dirty_at_launch": false,
+ "mlx_version": "0.31.2",
+ "arm": "C",
+ "tower": {
+  "chain": "logs/qwenwhole/artifact_digest_C.txt",
+  "chain_sha256": "de7e0180bf49f965c17116b7fbe8c34d2b1529c2431cc234f3a6460ad84b24dc",
+  "chain_report": {
+   "art_dir": "/Users/artin/qwen_whole0t/C",
+   "rung0": {
+    "checked": 19,
+    "unchained": false
+   },
+   "conservation": {
+    "keys": 1199
+   },
+   "census": {
+    "w4": 192,
+    "s16": 210,
+    "raw": 449,
+    "excluded": 348
+   },
+   "preflight": {
+    "estimated_peak_bytes": 6504933184,
+    "available_bytes": 25701269504,
+    "safety_fraction": 0.8
+   }
+  },
+  "n_layers": 64,
+  "families": {
+   "linear_attn": 48,
+   "full_attn": 16
+  },
+  "fused": 402,
+  "raw": 449,
+  "payload_resident_bytes": 9367009856,
+  "kernel_version": 5,
+  "prefill_gemm": false,
+  "gemm_min_t": {
+   "w4": 16,
+   "s16": 32
+  },
+  "gemm_slab_bytes": 419430400,
+  "gemm_ineligible_matrices": 0
+ },
+ "context": 126,
+ "steps": 32,
+ "families": {
+  "w4": 192,
+  "s16_body": 208,
+  "head": 1
+ },
+ "configs": {
+  "full": {
+   "median_s": 0.10016162495594472,
+   "p90_s": 0.10168335458729416,
+   "mean_s": 0.10056947774553139,
+   "steps_timed": 28
+  },
+  "full_repeat": {
+   "median_s": 0.10154841700568795,
+   "p90_s": 0.10385427109431475,
+   "mean_s": 0.10184463244929377,
+   "steps_timed": 28
+  },
+  "no_w4": {
+   "median_s": 0.05656568694394082,
+   "p90_s": 0.0572078918106854,
+   "mean_s": 0.05656615464249626,
+   "steps_timed": 28
+  },
+  "no_s16_body": {
+   "median_s": 0.07154300063848495,
+   "p90_s": 0.0739471081411466,
+   "mean_s": 0.07196009682957083,
+   "steps_timed": 28
+  },
+  "no_head": {
+   "median_s": 0.09631770802661777,
+   "p90_s": 0.09748488732147961,
+   "mean_s": 0.09630647605185264,
+   "steps_timed": 28
+  },
+  "no_linears": {
+   "median_s": 0.018026916426606476,
+   "p90_s": 0.018715462484396993,
+   "mean_s": 0.018119248578191867,
+   "steps_timed": 28
+  },
+  "no_deltanet_core": {
+   "median_s": 0.08756612509023398,
+   "p90_s": 0.0880362669704482,
+   "mean_s": 0.08730432590735811,
+   "steps_timed": 28
+  },
+  "no_attention_core": {
+   "median_s": 0.09944031247869134,
+   "p90_s": 0.09999995892867446,
+   "mean_s": 0.09954351195899237,
+   "steps_timed": 28
+  },
+  "no_norms": {
+   "median_s": 0.09890333353541791,
+   "p90_s": 0.09920202523935587,
+   "mean_s": 0.09892079910995173,
+   "steps_timed": 28
+  },
+  "skeleton": {
+   "median_s": 0.0044561875984072685,
+   "p90_s": 0.004551858850754797,
+   "mean_s": 0.004444433135047022,
+   "steps_timed": 28
+  },
+  "full_final": {
+   "median_s": 0.09947677061427385,
+   "p90_s": 0.09997142148204148,
+   "mean_s": 0.09954404769398804,
+   "steps_timed": 28
+  }
+ },
+ "full_median_s": 0.10016162495594472,
+ "marginal_s": {
+  "no_w4": 0.0435959380120039,
+  "no_s16_body": 0.028618624317459762,
+  "no_head": 0.0038439169293269515,
+  "no_linears": 0.08213470852933824,
+  "no_deltanet_core": 0.012595499865710735,
+  "no_attention_core": 0.0007213124772533774,
+  "no_norms": 0.0012582914205268025
+ },
+ "marginal_fraction_of_full": {
+  "no_w4": 0.4352558979667035,
+  "no_s16_body": 0.2857244411724294,
+  "no_head": 0.03837714225400863,
+  "no_linears": 0.82002172554074,
+  "no_deltanet_core": 0.12575175244262227,
+  "no_attention_core": 0.007201485374969115,
+  "no_norms": 0.012562609892563662
+ },
+ "skeleton_s": 0.0044561875984072685,
+ "note": "marginal costs are end-to-end deltas under pipelined execution; they need not sum to the full time (overlap, shared dispatch). Stand-ins make the outputs meaningless; timing only."
+}

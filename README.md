@@ -105,7 +105,7 @@ narrows again at k=128.
 </picture>
 
 <!-- llmopt:generated honesty-ledger:start -->
-The 429 curated claims in FINDINGS by maturity: 47 replicated, 102 mechanism-confirmed, 222 single-seed, 53 null, 5 retracted. 58 of 429 (13.5%) are null or retracted; 222 of 429 (51.7%) are single-seed.
+The 430 curated claims in FINDINGS by maturity: 47 replicated, 102 mechanism-confirmed, 223 single-seed, 53 null, 5 retracted. 58 of 430 (13.5%) are null or retracted; 223 of 430 (51.9%) are single-seed.
 <!-- llmopt:generated honesty-ledger:end -->
 
 Nulls and retractions sit beside the wins at the same prominence, because a
