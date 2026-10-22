@@ -17,14 +17,28 @@ qualified tower (the input to each probed matrix at one decode step of
 a real prompt). The frozen kernels are not modified.
 
 Diagnostics (outputs WRONG by construction, timing only):
-  v4        the skeleton (baseline; bit-identical to the shipped resident
-            call, checked as a guard that the harness feeds real inputs)
+  shipped   the shipped kernel itself through the resident call (res.gemv,
+            generation 5 dispatching W4 at tile 1 to v4; the dispatch is
+            witnessed by instrumenting the kernel lookup during that call,
+            which must ask for w4:4 only, recorded in the receipt), the
+            anchor of the skeleton timing
+  v4        the skeleton (baseline of the ratios; bit-identical to the
+            shipped resident call, checked as a guard that the harness feeds
+            real inputs; the skeleton drops v4's row mask and TT loop, so
+            its time is compared with the shipped row)
   nox       activation loads replaced by a constant
   noidx     index words replaced by a hash of the lane counter
-  nocb      codebook gathers replaced by arithmetic on the index bytes (the
-            unpacking stays, the staged table and its gathers go)
+  nocb      codebook gathers replaced by a cost-matched stand-in: each index
+            byte is bit-cast to a half4 and converted (one bitcast and one
+            conversion per byte, as the gather's load and conversion; the
+            unpacking stays, the staged table and its gathers go). The first
+            run (receipt w4_probe_7dd4c367.json) used four scalar
+            int-to-float conversions and a multiply per byte and read 1.27
+            to 1.37 of v4: the replacement cost more than the gather, which
+            is kept on record as a null reading of that variant
   noexp     exponent byte replaced by a constant (no exps stream, no class)
-  xonly     noidx plus nocb: activation loads and the reduction only
+  xonly     noidx plus nocb plus noexp: activation loads, the class-free
+            scale and the reduction only
   empty     each simdgroup writes one value per row (launch and drain floor)
 Candidates (outputs REAL; each gather returns the same float32 values as
 the shipped kernel and the per-row float32 operation sequence is kept,
@@ -85,7 +99,8 @@ sys.path.insert(0, HERE)
 
 SMOKE = os.environ.get("SMOKE") == "1"
 MATS = ["mlp.gate_proj", "mlp.up_proj", "mlp.down_proj"]
-DIAGNOSTICS = ["v4", "nox", "noidx", "nocb", "noexp", "xonly", "empty"]
+DIAGNOSTICS = ["shipped", "v4", "nox", "noidx", "nocb", "noexp", "xonly", "empty"]
+W4_V4_PIN = "c86ddc27691e23eefa6dff202c5e083023058f47d2eeda64950b1b82487f7dfb"   # sha256(_W4_V4_SRC + _HEADER) at 7dd4c367
 CANDIDATES = ["cmem", "tgf32", "tgexp", "tgf32_tgexp", "cmem_tgexp", "cmem_tgexp_share8", "share2", "share8", "u2"]
 ROOFLINE_GBS = 150.0
 
@@ -117,7 +132,7 @@ CB = {
               "    for (uint i = lane; i < 256u; i += SG) cbf[i] = (float4)((const device half4*)cb)[i];\n"
               "    threadgroup_barrier(metal::mem_flags::mem_threadgroup);\n",
               "cbf[{b}]"),
-    "nocb": ("", "(float4((float)({b}), (float)(({b}) >> 2), (float)(({b}) >> 4), (float)(({b}) >> 6)) * 0.001f)"),
+    "nocb": ("", "(float4)as_type<half4>(uint2(({b}) * 0x00010001u, ({b}) * 0x00010001u))"),
 }
 EXP_DEV = "(uint)exps[(row0 + k) * blocks_per_row + c0 / 128]"
 EXP_TG_SETUP = ("    threadgroup uchar et[NR * MAXB];\n"
@@ -244,7 +259,8 @@ def variant_source(name: str) -> str:
         src = rows_source("tgh", 4)
         return src.replace(f"uint e = {EXP_DEV};", "uint e = 120u;")
     if name == "xonly":
-        return rows_source("nocb", 4, word_expr="j * 2654435761u + (row0 + k)")
+        src = rows_source("nocb", 4, word_expr="j * 2654435761u + (row0 + k)")
+        return src.replace(f"uint e = {EXP_DEV};", "uint e = 120u;")
     if name == "empty":
         return EMPTY
     if name == "cmem":
@@ -312,11 +328,14 @@ def capture_activations(art: str, vdir: str, paths: list[str]) -> dict:
         raise SystemExit(f"REFUSING: capture incomplete or non-finite: {bad} / {sorted(out)}")
     meta = {"prompt_tokens": n_prompt, "decode_token": int(ids[n_prompt]),
             "tower_kernel_version": info["kernel_version"], "chain_sha256": info["chain_sha256"],
+            "prefill_path": {"prefill_gemm": info["prefill_gemm"], "gemm_min_t": info["gemm_min_t"],
+                             "call": "model(ids[:n_prompt]) one shot, then one cached decode step; fused kernels at every tile"},
             "x_stats": {k: {"rms": float(np.sqrt((v.astype(np.float64) ** 2).mean())), "max_abs": float(np.abs(v).max()),
                             "zero_fraction": float((v == 0).mean())} for k, v in out.items()}}
     del model, cache, lp, lz, mods
     gc.collect()
     mx.clear_cache()
+    meta["active_bytes_after_release"] = int(mx.get_active_memory())
     return {"x": out, "meta": meta}
 
 
@@ -336,8 +355,10 @@ def main() -> None:
            else os.environ.get("OUT", f"logs/qmetal/w4_probe_{prov['commit']}.json"))
     if os.path.exists(out):
         raise SystemExit(f"REFUSING: {out} exists")
-    if qmetal.ROWS_V4 != 4 or "threadgroup half4 cb4[256];" not in qmetal._W4_V4_SRC or "xa[t] = x4[0];" not in qmetal._W4_V4_SRC:
-        raise SystemExit("REFUSING: qmetal._W4_V4_SRC changed; re-derive the probe skeleton")
+    import hashlib
+    src_sha = hashlib.sha256((qmetal._W4_V4_SRC + qmetal._HEADER).encode()).hexdigest()
+    if qmetal.ROWS_V4 != 4 or src_sha != W4_V4_PIN:
+        raise SystemExit(f"REFUSING: qmetal._W4_V4_SRC or _HEADER changed ({src_sha[:12]} != pin); re-derive the probe skeleton")
     chain = f"logs/qwenwhole/artifact_digest_{arm}.txt"
     q = qartifact.qualify_artifact(art, os.path.join(vdir, "model.safetensors.index.json"), chain)
     MAN = q["manifest"]
@@ -395,6 +416,10 @@ def main() -> None:
                "queue": queue, "roofline_gbs": ROOFLINE_GBS, "kernel_version_baseline": qmetal.VERSION,
                "shipped_w4_dispatch_at_tile_1": "v4 (ROWS4 = 4) under generations 4 and 5",
                "workload": "T = 1 decode GEMV, captured float32 activations of one real decode step, one launch per matrix",
+               "pipelined_inputs": "xs[0] is the captured vector (every parity and synced row); xs[1..QUEUE-1] are per-launch "
+                                   "permutations of its 16-element blocks (same value multiset), rng default_rng(0), one set per "
+                                   "matrix shared by every variant",
+               "w4_v4_source_sha256": src_sha, "variant_order": "rotated by one per matrix (recorded per matrix)",
                "activations": cap["meta"], "layers": layers,
                "diagnostics": DIAGNOSTICS, "candidates": CANDIDATES,
                "note": "Diagnostic variants' outputs are wrong by construction (a stream removed); candidates' "
@@ -425,11 +450,32 @@ def main() -> None:
         absdot = np.abs(W) @ np.abs(x0.astype(np.float64))
         del W
         t_dec = time.time() - t0
-        y_ship = np.asarray(res.gemv(xs[0]), dtype=np.float32)
+        # dispatch witness: the (codec, generation) kernels the shipped call asks
+        # _kernel for (the process-wide compiled set also holds w4:3 from the
+        # tile-8 prefill of the activation capture, so the call is instrumented)
+        asked = []
+        orig_kernel = qmetal._kernel
+
+        def spy(kname, kver):
+            asked.append(f"{kname}:{kver}")
+            return orig_kernel(kname, kver)
+        qmetal._kernel = spy
+        try:
+            y_ship = np.asarray(res.gemv(xs[0]), dtype=np.float32)
+        finally:
+            qmetal._kernel = orig_kernel
+        dispatch = {"last_path": res.last_path, "kernels_asked_by_shipped_call": asked,
+                    "compiled_kernels_in_process": sorted(f"{k[0]}:{k[1]}" for k in qmetal._kernels),
+                    "resident_version": int(res.version)}
+        if dispatch["last_path"] != "fused" or asked != ["w4:4"]:
+            raise SystemExit(f"REFUSING: the shipped call did not dispatch to the v4 kernel: {dispatch}")
         rows = []
-        for v in DIAGNOSTICS + CANDIDATES:
+        order = DIAGNOSTICS + CANDIDATES
+        rot = tensors.index((name, short, path)) % len(order)
+        order = order[rot:] + order[:rot]
+        for v in order:
             try:
-                o = launch(v, res, xs[0])
+                o = res.gemv(xs[0]) if v == "shipped" else launch(v, res, xs[0])
                 mx.eval(o)
             except Exception as ex:
                 rows.append({"variant": v, "error": str(ex)[:400]})
@@ -437,7 +483,7 @@ def main() -> None:
                 continue
             got = np.asarray(o, dtype=np.float32)
             check = None
-            if v == "v4" or v in CANDIDATES:
+            if v in ("v4", "shipped") or v in CANDIDATES:
                 g64 = got.astype(np.float64)
                 err = np.abs(g64 - ref)
                 bound = 1e-5 * np.abs(ref) + 2e-6 * absdot
@@ -445,8 +491,12 @@ def main() -> None:
                          "max_rel_err_vs_oracle": float(err.max() / max(np.abs(ref).max(), 1e-30)),
                          "within_parity_bound": bool((err <= bound).all()),
                          "n_rows_differing_from_shipped": int((got != y_ship).sum())}
-            med, p90 = timed_synced(lambda v=v: launch(v, res, xs[0]))
-            pipe, pipe_p90 = timed_pipelined(lambda i, v=v: launch(v, res, xs[i]))
+            if v == "shipped":
+                med, p90 = timed_synced(lambda: res.gemv(xs[0]))
+                pipe, pipe_p90 = timed_pipelined(lambda i: res.gemv(xs[i]))
+            else:
+                med, p90 = timed_synced(lambda v=v: launch(v, res, xs[0]))
+                pipe, pipe_p90 = timed_pipelined(lambda i, v=v: launch(v, res, xs[i]))
             row = {"variant": v, "class": "candidate" if v in CANDIDATES else "diagnostic",
                    "synced_median_s": med, "synced_p90_s": p90,
                    "pipelined_per_launch_s": pipe, "pipelined_per_launch_p90_s": pipe_p90,
@@ -467,12 +517,14 @@ def main() -> None:
                     deltas[r["variant"]] = {"pipelined_ratio_to_v4": r["pipelined_per_launch_s"] / b,
                                             "pipelined_delta_us": (b - r["pipelined_per_launch_s"]) * 1e6}
         receipt["matrices"].append({"tensor": name, "short": short, "shape": [R, C], "payload_bytes": nbytes,
-                                    "x_bytes": C * 4, "cpu_decode_s": t_dec, "variants": rows, "relative_to_v4": deltas})
+                                    "x_bytes": C * 4, "cpu_decode_s": t_dec, "shipped_dispatch": dispatch,
+                                    "variant_order": order, "variants": rows, "relative_to_v4": deltas})
         del res, xs
     receipt["inferred"] = {
         "occupancy_registers_cache": "not observable from Python/MLX; inferred only from the deltas between variants "
-                                     "(nox: activation traffic; noidx: index stream; nocb: staged codebook gathers; "
-                                     "noexp: exponent stream and class; xonly: loads plus reduction floor; empty: launch)"}
+                                     "(nox: activation traffic; noidx: index stream and the gather address pattern; nocb: the "
+                                     "staged codebook gathers against a cost-matched bitcast stand-in; noexp: exponent stream and "
+                                     "class; xonly: loads plus scale and reduction; empty: launch)"}
     os.makedirs(os.path.dirname(out), exist_ok=True)
     json.dump(receipt, open(out, "w"), indent=1)
     print(f"[w4] wrote {out}", flush=True)
