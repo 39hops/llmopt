@@ -4384,6 +4384,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qmetal/breakdown_c1c19f3f.json": {
+   "bytes": 3525,
+   "exists": true,
+   "sha256": "9561d2427a553d996e7d4e46be23d4cb4b649b6f276dde1790204ab6ee40e46a",
+   "source": "results",
+   "tracked": true
+  },
   "logs/qmetal/chunked/boundary_952103c8.json": {
    "bytes": 20902,
    "exists": true,
@@ -4467,6 +4474,25 @@
    "sha256": "c9ba0861f1be0d740928db63a8ccf07cf725949d92247aa2f5da80e08db0a6ae",
    "source": "results",
    "tracked": true
+  },
+  "logs/qmetal/s16_probe_c1c19f3f.json": {
+   "bytes": 57746,
+   "exists": true,
+   "sha256": "63e8755cc7153f3446b9791a1cffd79719e4cac262a4168ad496438581976ff2",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qmetal/s16_v5/ab.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qmetal/s16_v5/adjudication.txt": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qmetal/s16_v5/observations.json": {
+   "exists": false,
+   "source": "prereg"
   },
   "logs/qmetal/strassen/bench_d42cb215.json": {
    "bytes": 15850,
@@ -4713,6 +4739,10 @@
    "sha256": "528f7d16d6014fce231cb988aa67c200207317f161bfd39aec89fb8b2049518f",
    "source": "results",
    "tracked": true
+  },
+  "logs/qwen_metal_qual/C_v5/summary.json": {
+   "exists": false,
+   "source": "prereg"
   },
   "logs/qwenalttok/alttok_observations.json": {
    "exists": false,
