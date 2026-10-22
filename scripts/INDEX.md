@@ -1617,6 +1617,24 @@ A/B benchmark of the S16 kernel generations: the CONTROL generation (the shipped
 - `provenance() -> dict`
 - `main() -> None`
 
+### scratch/bench_qmetal_serve_v5.py
+Serving-path guard for the kernel generation 5 default flip (Artin's GO of 2026-10-22, item 1 and item 3): generation 4 (the qualified control) against generation 5 (the S16 v5 kernel) through the ACTUAL serving configuration, on the same Mac, the same arm C artifact and identical real-token inputs. The earlier A/B (scratch/bench_qmetal_ab_s16.py) measured greedy decode at contexts 126 and 1,024 without the serving memory configuration; the qualification census's 2,048-token reading (130 ms median, 162 p90 over 16 steps after a one-shot fused prefill) was not a paired serving-path comparison. This driver is.
+
+- `refuse(path)`
+- `sha_bytes(b: bytes) -> str`
+- `sha_array(a) -> str`
+- `provenance(mode: str) -> dict`
+- `system_signals() -> dict` — Memory pressure and the thermal limits macOS exposes without root.
+- `apply_serving(chunk: int)`
+- `load_tower()`
+- `compiled_kernels() -> list`
+- `one_round(model, residents, ids, ctx, steps, cfg, keep_arrays: bool)` — Fresh cache, serving prefill of ids[:ctx], STEPS teacher-forced
+- `cross(a, b) -> dict`
+- `mode_ab()`
+- `mode_release()`
+- `mode_compare()`
+- `main()`
+
 ### scratch/birth19m_arith.py
 BASICS-DIET-1 birth driver (pre-reg RESULTS L30355, amended L30429): stock diet + 6,000 sympy calculus atoms, with or without the 2,545-row arithmetic shard.
 
@@ -5104,6 +5122,11 @@ S16 lookup probe for the fused Metal kernels, TIMING plus a bit-identity guard. 
 - `variant_source(name: str) -> str`
 - `share_of(name: str) -> int`
 - `main() -> None`
+
+### scratch/qmetal_serve_v5_obs.py
+Observations adapter for PRE-REG QWEN-METAL-S16-V5-DEFAULT-0: derives every registered measurement from the serving-path A/B receipt (scratch/bench_qmetal_serve_v5.py, MODE=ab) in committed code, refusing partial or smoke inputs, and writes the observations document the adjudicator reads.
+
+- `main(ab_path: str, prereg_path: str) -> None`
 
 ### scratch/qmetal_traffic_probe.py
 W4 activation-traffic ceiling probe for the fused Metal kernels, TIMING ONLY. Controlled variants of the frozen v3 W4 GEMV source (and the S16 source) remove one memory stream at a time; their outputs are wrong by construction and nothing here makes a numerical claim. The frozen kernels in llmopt.lab.qmetal are not modified; variants are compiled from edited copies of their source strings.

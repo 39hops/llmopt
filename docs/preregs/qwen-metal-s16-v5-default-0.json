@@ -1,0 +1,79 @@
+{
+ "name": "QWEN-METAL-S16-V5-DEFAULT-0",
+ "note": "Machine-readable form of PRE-REG QWEN-METAL-S16-V5-DEFAULT-0; the prose governs on any conflict. The serving-path guard of Artin's conditional GO of 2026-10-22 (item 1): before the default kernel generation flips from 4 to 5, generation 4 and generation 5 are compared through the actual serving configuration (prefill_chunked, chunk 256, GEMM backend, final-position head, explicit 2 GiB allocator-cache limit, fresh caches, identical real tokens, teacher-forced decode) at contexts 1,024 and 2,048 in paired, order-balanced rounds. The question is whether the 2,048-token reading of the generation 5 census (130 ms median, 162 p90 over 16 steps after a one-shot fused prefill, unpaired) is a regression of generation 5 on the serving path. Registered before the guard runs. Preconditions (arm admissibility, never bars): every resident at the arm's generation in every round; the first rounds of the two generations bit-identical on the final logits, the cache after prefill and every decode step's logits at both contexts; every later round reproducing its first round bit for bit. Decision rule (prose): the default flips to generation 5 unless the refutation clause fires (a reproducible latency regression at either context, the worst pairing below zero) or bar 3 reads NO-FIRE (a memory regression above one percent at 2,048); bars 1 and 2 record whether the registered 5 percent gain reproduces on the serving path and a NO-FIRE there without a regression is booked as such and does not by itself hold the flip. Nothing is tuned after the receipt is read.",
+ "results_id": "2026-10-22-pre-reg-qwen-metal-s16-v5-b",
+ "registered": "2026-10-22",
+ "machine": "mac",
+ "arms": {
+  "CONTROL": {
+   "description": "kernel generation 4 as qualified (every resident's version set to 4 in the control rounds): W4 v4 for tiles 1 and 2, v3 above, the original S16 kernel"
+  },
+  "CANDIDATE": {
+   "description": "kernel generation 5 (every resident's version set to 5 in the candidate rounds): the same W4 dispatch, the S16 v5 kernel for S16 tiles 1 and 2, the shipped S16 kernel above"
+  }
+ },
+ "bars": [
+  {
+   "id": 1,
+   "name": "SERVE-DECODE-1024",
+   "metric": "improvement_percent_ctx1024",
+   "population": "steps:ctx1024-48x4rounds-serving",
+   "aggregation": "percent_change_of_median_of_round_medians",
+   "direction": "above",
+   "value": 5.0,
+   "arms": ["CONTROL", "CANDIDATE"],
+   "conjuncts": [
+    {"measurement": "1:worst", "metric": "improvement_percent_worst_pairing_ctx1024", "population": "steps:ctx1024-48x4rounds-serving", "aggregation": "percent_change_worst_pairing", "direction": "above", "value": 0.0}
+   ],
+   "description": "serving-path cached decode at context 1,024 (scratch/bench_qmetal_serve_v5.py MODE=ab: 1,024 real tokens prefilled through prefill_chunked(chunk 256, head final, matmul gemm) under the 2 GiB cache limit, then 48 teacher-forced single-token steps, median of steps 5 to 48 per round, rounds in the order control, candidate, candidate, control, repeated twice): 100 x (control - candidate) / control of the per-generation medians of the four round medians, at least 5.0 percent; conjunct: the worst pairing (slowest candidate round against fastest control round) above zero."
+  },
+  {
+   "id": 2,
+   "name": "SERVE-DECODE-2048",
+   "metric": "improvement_percent_ctx2048",
+   "population": "steps:ctx2048-48x4rounds-serving",
+   "aggregation": "percent_change_of_median_of_round_medians",
+   "direction": "above",
+   "value": 5.0,
+   "arms": ["CONTROL", "CANDIDATE"],
+   "conjuncts": [
+    {"measurement": "2:worst", "metric": "improvement_percent_worst_pairing_ctx2048", "population": "steps:ctx2048-48x4rounds-serving", "aggregation": "percent_change_worst_pairing", "direction": "above", "value": 0.0}
+   ],
+   "description": "the same contrast at context 2,048, the context of the unexplained census reading."
+  },
+  {
+   "id": 3,
+   "name": "SERVE-MEMORY-2048",
+   "metric": "decode_peak_active_ratio_ctx2048",
+   "population": "steps:ctx2048-48x4rounds-serving",
+   "aggregation": "ratio_of_max_over_rounds",
+   "direction": "below",
+   "value": 1.01,
+   "arms": ["CONTROL", "CANDIDATE"],
+   "conjuncts": [
+    {"measurement": "3:footprint", "metric": "footprint_after_decode_ratio_ctx2048", "population": "steps:ctx2048-48x4rounds-serving", "aggregation": "ratio_of_max_over_rounds", "direction": "below", "value": 1.01}
+   ],
+   "description": "no memory regression at 2,048: the candidate's largest decode-phase peak active memory over the control's below 1.01, and the device footprint after decode (active plus allocator pool under the 2 GiB limit) likewise below 1.01."
+  }
+ ],
+ "receipts": [
+  "logs/qmetal/s16_v5_default/ab.json",
+  "logs/qmetal/s16_v5_default/observations.json",
+  "logs/qmetal/s16_v5_default/adjudication.txt"
+ ],
+ "operands": [
+  {"name": "the arm C artifact digest chain", "provider": "logs/qwenwhole/artifact_digest_C.txt"},
+  {"name": "the real tokens (teacher records)", "provider": "logs/qwenteacher_v2/teacher_manifest.json"},
+  {"name": "the registered generation 5 A/B this guard extends", "provider": "logs/qmetal/s16_v5/ab.json"},
+  {"name": "the generation 5 census whose 2,048 reading is in question", "provider": "logs/qwen_metal_qual/C_v5/summary.json"},
+  {"name": "guard driver", "provider": "scratch/bench_qmetal_serve_v5.py"},
+  {"name": "observations adapter", "provider": "scratch/qmetal_serve_v5_obs.py"},
+  {"name": "runner", "provider": "scratch/qmetal_serve_v5_guard.sh"},
+  {"name": "the kernels", "provider": "llmopt/lab/qmetal.py"},
+  {"name": "the serving entry point", "provider": "llmopt/lab/qprefill.py"},
+  {"name": "the parity suite", "provider": "tests/test_qmetal.py"}
+ ],
+ "refuted_if": "The flip is HELD (the guard REFUTES the promotion) if generation 5 shows a reproducible latency regression on the serving path: the worst pairing of rounds at context 1,024 or 2,048 is below zero (the slowest candidate round slower than the fastest control round), or bar 3 reads NO-FIRE (decode-phase peak active memory or the footprint after decode above 1.01 of the control at 2,048). A HOLD books the failure and the default stays 4.",
+ "refuted_if_predicate": {"measurement": "min_worst_pairing_percent", "direction": "below", "value": 0.0},
+ "registered_prior": "From VERDICT QWEN-METAL-S16-V5-0 (greedy decode, no cache limit): 20.7 percent at 126 and 21.8 at 1,024 with worst pairings 12.2 and 18.1; from the generation 5 census long-context rung (one-shot fused prefill, 16 steps, unpaired): 106.6 ms at 1,024 and 130.2 at 2,048 against the generation 4 census's 135 and 139 at 2,048, so even the excursion read faster than the generation 4 census at the same context. Prior: both contexts land between 15 and 25 percent on the serving path, worst pairings well above zero, memory ratios at 1.00 (the kernels allocate nothing new), and the 2,048 census reading does not reproduce as a generation 5 effect (it was a 16-step median after a 2,048-token one-shot prefill under no cache limit; the most plausible mechanisms are allocator state after the large prefill or a transient on the machine, neither specific to the kernel). The 2 GiB cache limit is expected to cost prefill a few percent in both arms equally (QWEN-METAL-SERVE-0) and decode nothing."
+}

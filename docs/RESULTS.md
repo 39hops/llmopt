@@ -82475,3 +82475,96 @@ booked arrays; Spearman on 98 prefix rows is coarse; the step-0 and
 step-1 medians rest on 24 rows each; the token renderings are the
 vendor tokenizer's single-token decode and are cosmetic, the ids are
 the record.
+
+## PRE-REG QWEN-METAL-S16-V5-DEFAULT-0: before the default kernel generation flips from 4 to 5, does generation 5 reproduce its cached-decode gain through the actual serving configuration (chunked GEMM prefill under the 2 GiB allocator-cache limit, final-position head, fresh caches, identical real tokens) at contexts 1,024 and 2,048 in paired, order-balanced rounds, with no latency or memory regression at 2,048? Control: generation 4 as qualified; candidate: generation 5; registered before the guard runs (2026-10-22, mac)
+
+Registers item 1 of Artin's conditional GO of 2026-10-22 (promote
+generation 5 as the default only after a serving-path guard at 1,024 and
+2,048 resolves the 2,048-token reading of the generation 5 census). The
+question is narrow: VERDICT QWEN-METAL-S16-V5-0 measured greedy decode
+at 126 and 1,024 without the serving memory configuration, and the
+census's long-context rung (one-shot fused prefill, 16 steps, no cache
+limit, unpaired) read 130 ms median and 162 p90 at 2,048 against 106.6
+at 1,024 and 107.5 at 4,096. That reading was not a paired serving-path
+comparison and is not classified as a generation 5 regression; this
+guard measures the same contrast the way the model is served. Mechanical
+projection: docs/preregs/qwen-metal-s16-v5-default-0.json (bars 1 to 3,
+the refutation predicate on the smaller worst pairing, receipts,
+operands). Driver scratch/bench_qmetal_serve_v5.py (MODE=ab), adapter
+scratch/qmetal_serve_v5_obs.py, runner scratch/qmetal_serve_v5_guard.sh,
+all written and smoke-tested (contexts 64 and 96, six steps, one ABBA)
+before this registration; the smoke receipts live under
+logs/qmetal/s16_v5_default_smoke/ and are not evidence.
+
+Design. One process, the arm C tower built once; the serving
+configuration applied through qprefill.configure_serving_memory
+(ServingConfig: chunk 256, matmul gemm, 2 GiB cache limit); real tokens
+(the E0 teacher records concatenated, as qwen_metal_prefill_head
+.real_tokens returns them); per context the rounds run control,
+candidate, candidate, control, twice (four rounds per generation), each
+round on a fresh cache: prefill_chunked(head final, matmul gemm) over
+the first 1,024 or 2,048 tokens, timed, then 48 teacher-forced
+single-token decode steps on the tokens that follow, each timed with
+mx.eval on its logits, the full per-step trace kept. The generation is
+switched on every resident between rounds (generation 5 dispatches W4
+exactly as generation 4). Recorded per round: median, p90, mean, min and
+max of steps 5 to 48; prefill wall and throughput; the decode-phase MLX
+peak active memory (reset after prefill); the memory report after
+prefill and after decode (active, peak, allocator pool, footprint, peak
+RSS); the system free-memory percentage (memory_pressure) and pmset's
+thermal lines before and after each round (powermetrics needs root and
+is not read; no power or temperature figure is recorded); matrix path
+counts of the prefill and of the decode; the set of Metal kernels
+compiled so far (the dispatch witness). Compared: the first rounds of
+the two generations on the final logits, the cache after prefill (every
+conv tail, recurrent state, key and value array and offset) and every
+decode step's logits; every later round of a generation against its
+first. The compared arrays are host copies so no round's buffers stay
+on the device into the next round's memory readings (the first smoke
+read a 0.19 GB climb per round from zero-copy views; fixed before this
+registration, the second smoke flat).
+
+Bars (the adjudicator's words govern). BAR 1 SERVE-DECODE-1024: 100 x
+(control - candidate) / control of the per-generation medians of the
+four round medians at 1,024 is at least 5.0 percent, with the worst
+pairing (slowest candidate round against fastest control round) above
+zero. BAR 2 SERVE-DECODE-2048: the same at 2,048. BAR 3
+SERVE-MEMORY-2048: the candidate's largest decode-phase peak active
+memory over the control's at 2,048 is below 1.01, and the footprint
+after decode (active plus pool under the limit) likewise below 1.01.
+Preconditions (arm admissibility, never bars): every resident at the
+arm's generation in every round; the first rounds bit-identical across
+generations on final logits, cache and decode logits at both contexts;
+later rounds reproducing their first round bit for bit. REFUTED-IF (the
+flip is HELD): the worst pairing at either context is below zero (a
+reproducible latency regression), or bar 3 reads NO-FIRE (a memory
+regression at 2,048). Decision rule: the default flips to generation 5
+unless the refutation fires or bar 3 is NO-FIRE; a NO-FIRE on bar 1 or
+2 without a regression is booked as a smaller-than-registered gain on
+the serving path and does not by itself hold the flip. Nothing is tuned
+after the receipt is read; the high-memory 4,096 one-shot qualification
+is not repeated.
+
+Registered prior. Both contexts land between 15 and 25 percent (the
+registered A/B read 20.7 and 21.8 with worst pairings 12.2 and 18.1),
+worst pairings well above zero, memory ratios at 1.00 (the v5 kernel
+allocates nothing the shipped kernel does not), and the 2,048 census
+reading does not reproduce as a generation 5 effect: even that
+excursion read faster than the generation 4 census at the same context
+(130 against 135 ms), and its most plausible mechanisms (allocator
+state after a 2,048-token one-shot fused prefill under no cache limit,
+or a transient on the machine) are not kernel-specific. The cache limit
+is expected to cost prefill a few percent in both arms equally and
+decode nothing (OBSERVATION QWEN-METAL-SERVE-0). If the worst pairing at
+2,048 reads below zero, the flip is held and the failure booked.
+
+Receipts (small text, force-added under logs/qmetal/s16_v5_default/):
+logs/qmetal/s16_v5_default/ab.json,
+logs/qmetal/s16_v5_default/observations.json,
+logs/qmetal/s16_v5_default/adjudication.txt. Fences: one machine (M3
+Pro, 36 GB), one artifact, one process, float32 activations; timing is
+pipelined end-to-end latency under the serving discipline; teacher-forced
+decode (identical inputs by construction, not a generation-quality
+claim); the numerical claim is bit identity with the shipped kernel and
+lives in tests/test_qmetal.py and the qualification receipts, the
+comparisons here are guards on it.
