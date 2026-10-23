@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import sys
 
+import os
 import pytest
 
 from llmopt.lab import qbattery
@@ -79,7 +80,8 @@ def test_code_sandbox_passes_correct_code_and_isolates():
     assert qbattery.score(t, [wrong], [{}])["status"] == "fail"
     net = "```python\nimport socket\nsocket.create_connection(('1.1.1.1', 53), timeout=2)\ndef reverse_words(s):\n    return ' '.join(reversed(s.split()))\n```"
     assert qbattery.score(t, [net], [{}])["status"] == "fail"
-    r = qbattery.run_code_sandboxed("import os\nprint(os.path.exists('/Users'))\nopen('/Users/artin/.zshrc').read()", [], 5)
+    home_file = os.path.join(os.path.expanduser("~"), ".zshrc")     # a real file under the user's home, resolved on the host
+    r = qbattery.run_code_sandboxed(f"import os\nprint(os.path.exists('/Users'))\nopen({home_file!r}).read()", [], 5)
     assert r["status"] == "fail" and "PermissionError" in (r.get("stdout", "") + r.get("stderr", ""))
     r = qbattery.run_code_sandboxed("open('/tmp/qbat_probe', 'w').write('x')", [], 5)
     assert r["status"] == "fail"
@@ -93,3 +95,11 @@ def test_code_without_sandbox_is_hold(monkeypatch):
     monkeypatch.setattr(qbattery, "sandbox_available", lambda: False)
     t = _task("code", 0)
     assert qbattery.score(t, ["```python\ndef reverse_words(s):\n    return s\n```"], [{}])["status"] == "hold"
+
+
+@pytest.mark.skipif(not qbattery.sandbox_available(), reason="no sandbox on this platform")
+def test_code_candidate_syntax_error_is_a_model_failure_not_a_harness_error():
+    # a reply cut off by the token budget leaves an unterminated function; the
+    # harness must still start, so the verdict is fail (the candidate's), not error
+    r = qbattery.run_code_sandboxed("def f(n):\n    return (n +", ["assert f(1) == 2"], 5)
+    assert r["status"] == "fail" and "SyntaxError" in r.get("stdout", "") + r.get("stderr", "")

@@ -84289,3 +84289,168 @@ not exist; a stub incremental equality that the stub never exercised)
 are corrected by (i). No validator rule for the scored kinds changed
 except the two task-level fixes and the rounding tolerance; no prompt
 was edited after reading a model output.
+
+## OBSERVATION QWEN-INFERENCE-BASELINE-0: the arm C local inference entry point, measured for a user and scored on the frozen battery once: cold load 8.8 s to a ready engine at 9.0 GB active; first token after 13.9, 27.7 and 62.6 s for 501, 1,008 and 2,023-token prompts (prefill 36.0, 36.4 and 32.3 tokens per second), decode 9.5, 8.9 and 8.1 tokens per second, peak 11.9 to 12.2 GB; a six-turn session holds 9.024 GB active on every turn in both modes (4 MB growth over the session), incremental cache reuse answers each later turn in 2.1 to 2.3 s against 3.9 to 7.8 s for full replay with identical tokens on all six turns and the measured cache offset equal to the accounting on every turn; greedy parity with the direct qualified path identical over a 1,004-token prompt; the battery passes 33 of 45 scored tasks of 46 (one row booked error that is in truth a model failure, so 33 of 46 on the honest count): arithmetic 7 of 10, structured JSON 1 of 8 (every schema, count, name and sku right, the summed or averaged number wrong in 7), sandboxed code 7 of 8, constrained instructions 6 of 8, two-turn retention 6 of 6, termination 6 of 6; zero plumbing failures (2026-10-23, Mac, commit 3ed19ee6)
+
+Artin's GO of 2026-10-23 (QWEN-INFERENCE-BASELINE-0, phases D and E:
+user-facing performance and the first usefulness results); the freeze
+record is OBSERVATION QWEN-INFERENCE-BASELINE-0-FREEZE and AMENDMENT
+QWEN-INFERENCE-BASELINE-0-FREEZE-V2. The chain (scratch/qwen_inference_
+study.sh: the live tests, scratch/qwen_serve_perf.py, scratch/qwen_
+battery_run.py) ran once under liverun qwen-inference-1 at 3ed19ee6
+with a clean tree (logs/liverun/qwen-inference-1.jsonl, rc 0; log
+logs/qwen_serve/study_3ed19ee6.log). Receipts: logs/qwen_serve/
+perf_v2.json and logs/qwen_battery/results_v2.json (collection
+scratch/evalsets/qwen_battery_v2.json, sha256 67b13e2b4936366a...,
+every task's prompt ids, generated ids, text, stop reason, timings and
+memory recorded). The first chain at 66a18c38 (liverun qwen-inference-0)
+wrote logs/qwen_serve/perf.json and logs/qwen_battery/results.json
+against the superseded v1 collection; its performance numbers were read
+and agree with these (they carried the replay cache leak named in the
+amendment), its battery receipt was never read and is not booked; both
+are kept as the record. An Opus receipt audit ran before this booking: provenance derived
+(the collection sha, the chain sha, the stop ids, the rules), every
+prompt id sequence re-rendered equal, every non-code verdict
+reproduced from the stored text, the summary recomputed from the rows;
+its findings are folded in below (the code-08 classification, the
+filler, the warm cold load, the peak growth).
+
+Performance (perf_v2.json; one process, the serving defaults: kernel
+generation 5, chunk-256 GEMM prefill with the final-position head,
+fused cached decode, the 2 GiB allocator-cache limit, context cap
+8,192, greedy). Cold load from the driver's first line (before the
+heavy imports) to a ready Engine: 8.8 s (the artifact verified under
+its digest chain, the tower built, the tokenizer loaded); the first
+generation after load, a 15-token prompt, reaches its first token in
+1.92 s (the kernel compilation is in that number) and decodes at 9.5
+tokens per second. Three prompts built from a short task text followed by filler
+decoded from real teacher-record tokens with every special token
+removed, padded to the targets (64-token budget). The receipt audit
+found that this filler is still a chat-transcript pastiche (role
+words, the teacher's system text and reasoning traces survive the
+special-token strip), and the 1,008 and 2,023-token replies continue
+a request embedded in the filler's tail rather than the leading task
+text; the timings, token counts and memory are measurements of real
+prompts of those lengths and stand, the reply texts are not evidence
+of instruction following. The cold load was measured 27 s after the
+live-test stage had loaded the same artifact, so it is a warm-page-
+cache load (the battery stage's later load took 10.0 s); no load from
+disk was measured.
+
+  prompt tokens   first token   prefill tok/s   decode tok/s (steady from step 5)   stop        total s   peak GB   active GB   footprint GB
+  501             13.9 s        36.0            9.51 (9.51)                          budget      20.6      11.89     9.09        11.20
+  1,008           27.7 s        36.4            8.90 (8.91)                          stop token  33.3      11.98     9.16        11.29
+  2,023           62.6 s        32.3            8.13 (8.20)                          budget      70.4      12.15     9.29        11.20
+
+The decode figures cover 63 steps at the two budget stops and 50 at
+the stop-token stop. The per-call peak grows with the prompt (11.9 to
+12.2 GB here, 11.2 to 11.9 GB across the replay turns) while active
+memory and the footprint stay flat: per-chunk prefill scratch, not
+retention. The 1,024-token prefill matches OBSERVATION QWEN-METAL-SERVE-0 (35.46
+tokens per second through the same entry point under the same limit)
+and the decode rate matches the generation-5 release at these contexts.
+Repeated turns: a six-turn conversation (the copper, tin and bronze
+questions, transcript 48 to 217 tokens) run twice from a fresh engine
+state, once as full-transcript replay and once with incremental cache
+reuse. Active memory after every turn is 9.024 GB in both modes, the
+footprint 11.08 to 11.17 GB, the growth over the session 4 MB in both
+(the 0.19 GB per turn seen in the first chain was the retained-cache
+leak the amendment fixed). First-token latency per turn: replay 2.1,
+3.9, 5.0, 6.2, 6.7, 7.8 s (it re-prefills the whole transcript);
+incremental 2.7 (the fresh first turn), then 2.1, 2.3, 2.2, 2.3, 2.2 s.
+The two modes produce identical token ids on all six turns; the
+incremental path was taken on turns 2 to 6 (the template's rendering
+of the transcript had the fed sequence as an exact prefix, the un-fed
+stop token of the previous turn fed exactly once as the first new
+token); the KV cache's own offset equals the accounted token count on
+every turn in both modes (48, 99, 128, 154, 193, 217). Parity: a
+1,004-token prompt through the Engine against the direct
+prefill_chunked plus cached-decode loop, identical ids, both stopping
+on a stop token. Tokenizer: three round trips exact; the rendered
+prompt with enable_thinking False ends in the empty think block the
+pinned template emits; eos <|im_end|> 248046.
+
+Battery (results_v2.json; 46 tasks, 52 turns, greedy, enable_thinking
+False, no system prompt, 384 tokens per turn, a fresh replay session
+per task; 2,240 generated tokens, 49 turns ended on a stop token and 3
+on the budget; 419 s wall; the sandbox available). Pass 33 of 45
+scored, 0.733; one row (code-08) booked error and 0 holds. By kind:
+arithmetic 7 of 10, JSON 1 of 8, code 7 of 8 (plus the error row),
+instructions 6 of 8, two-turn 6 of 6, termination 6 of 6. The failures,
+each traceable by id to its prompt, token ids and text in the receipt:
+arith-03 (413 times 685) answered 281955 for 282905; arith-04 (52754
+mod 67) and arith-05 (gcd of 396 and 252) ignored "answer with the
+number only", wrote their working and ran to the 384-token budget (the
+mod working reached the right remainder 25 and kept going; the frozen
+last-integer rule scored an intermediate); json-01, -03, -05 and -07
+(order totals) and json-02, -04 and -08 (roster means) returned the
+exact schema with the item count, the costliest sku, the top-scorer
+list and the count all correct in all 8 tasks and the summed or
+averaged number wrong in 7 (totals off by 3 to 78, means off by 0.2 to
+5.1; json-06 right); code-08 (fib_mod) chose a matrix-power method with
+commentary, hit the budget mid-function without a closing fence, and
+the whole reply ran as code: a SyntaxError, a model failure (the budget),
+but the harness at 3ed19ee6 compiled the candidate inside its own file
+so its start sentinel never printed and the row was booked error (the
+classification only; corrected below); instruct-06 wrote 18 words for a
+20 to 40 band; instruct-08 wrote "orbits" where the rule required the
+whole word "orbit" (the frozen rule stands; this is the one fail that
+a reader would call the validator's strictness rather than the model's
+comprehension). The successes: every two-turn task recalled its code
+word or number or continued its running sum (9097, 173, meadow, 114,
+1594, 141); every termination task stopped on a stop token with the
+exact repetition count or range; seven code tasks (reverse words,
+balanced brackets, two-sum, run-length encoding, primality, transpose,
+anagram groups) passed their hidden tests in the sandbox; the direct
+arithmetic (sums, differences, a product, a percentage, a modulus)
+answered with the number alone in 2 to 6 tokens.
+
+Plumbing against model: no plumbing failure. No turn was refused by the
+context cap, no exception was raised, no stop token was emitted or
+continued past, and the Engine refuses on any difference between the
+KV cache's offset and the accounting on entry and on exit, so every one
+of the 52 turns had a verified cache state. The 13 non-passes are the
+model's at this decoding mode: multi-operand arithmetic without a
+scratchpad (the JSON aggregates and one product), the harder arithmetic
+spending its budget on working it was told not to show, one under-length
+answer, one word form. The one classification defect (a candidate
+syntax error booked as a harness error) is corrected at this commit:
+the harness now runs the candidate from its own file after the start
+sentinel, and tests/test_qbattery.py pins a budget-cut function booking
+fail, not error (RED observed, then GREEN); the receipt is not rescored
+and its row stays error, so the booked tally is 33 of 45 scored, and
+the honest count that a reader should carry is 33 of 46.
+
+Limitations. 46 hand-seeded tasks in one run at one decoding mode
+(greedy, thinking off, 384 tokens) validate the system and locate gross
+weaknesses; they are not a capability claim and compare to no public
+benchmark and no BF16 teacher run (none was run; the teacher agreement
+of the compression line is a different measure). The 384-token budget
+truncated three replies and the budget rule, not the model's final
+answer, decided two of the arithmetic fails. The instruction kind has
+eight items, so one fail moves its rate by 12.5 points. The sandbox
+limits CPU time, file size and process count but not memory (macOS
+refuses to lower RLIMIT_DATA). The incremental and replay modes are
+token-equal where observed (six turns here, two in the live test) and
+not equivalent by construction (fused decode against GEMM prefill for
+the same tokens, the recurrent state within 1.2e-5 relative per
+QWEN-METAL-PREFILL-GEMM-0), so the CLI keeps replay as its default and
+incremental behind a flag with the mechanical prefix check on every
+turn.
+
+Recommendation for the next engineering priority. The user-facing wall
+is the first token: a 2,048-token prompt waits 63 s and a 512-token one
+14 s, against a decode that is already at 8 to 9.5 tokens per second.
+Two steps, in order. First, zero-kernel: make incremental cache reuse
+the chat default (the prefix check already refuses on any mismatch and
+falls back to replay), which cuts a later turn's first token from 7.8 s
+to 2.2 s at a 217-token transcript and grows with the transcript on
+the replay path only; and record the measured cache offset in every
+receipt row (the battery runner records the accounting only). Second,
+kernel work on prefill (the GEMM path's 32 to 36 tokens per second is
+the ceiling here; out of this round's boundaries). On quality, the
+failures cluster in exactly the multi-step arithmetic that the model's
+own reasoning scaffold addresses, so the next measurement, not
+engineering, is the same frozen v2 collection under enable_thinking
+True with a larger budget, booked as a separately versioned run, before
+any prompt or validator is touched.

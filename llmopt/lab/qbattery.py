@@ -294,9 +294,15 @@ def run_code_sandboxed(code: str, tests: list, time_limit_s: int = 10) -> dict:
         "    resource.setrlimit(r, (v, v))\n"
         f"_lim('RLIMIT_CPU', {time_limit_s}); _lim('RLIMIT_FSIZE', 1 << 20); _lim('RLIMIT_NPROC', 1)\n"   # macOS refuses to lower RLIMIT_DATA; memory is not limited
         f"sys.stdout = sys.stderr = open({os.path.join(d, 'out.txt')!r}, 'w', buffering=1)\n"
-        "print('QBAT-START')\n")
+        "print('QBAT-START')\n"
+        # the candidate is compiled and run from its own file after the start
+        # sentinel, so a syntax error (a reply cut off by the budget) is the
+        # candidate's failure, not a harness error
+        f"exec(compile(open({os.path.join(d, 'cand.py')!r}).read(), 'cand.py', 'exec'), globals())\n")
+    with open(os.path.join(d, "cand.py"), "w") as f:
+        f.write(code + "\n")
     with open(prog, "w") as f:
-        f.write(harness + code + "\n\n" + "\n".join(tests) + f"\nprint('ALL-TESTS-PASSED-{nonce}')\n")
+        f.write(harness + "\n".join(tests) + f"\nprint('ALL-TESTS-PASSED-{nonce}')\n")
     # allow-default with explicit denials (a deny-default profile aborts this
     # interpreter at start-up): no network, no writes outside the task dir, no
     # reads under /Users, /Volumes or /private/etc (home, secrets, keys), no

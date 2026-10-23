@@ -61,7 +61,7 @@ def main() -> None:
                 replies.append(r.text)
                 results.append({"prompt_ids": r.prompt_ids, "generated_ids": r.generated_ids, "text": r.text, "stop_reason": r.stop_reason,
                                 "stop_token_id": r.stop_token_id, "n_prompt": r.n_prompt, "n_generated": r.n_generated,
-                                "cache_tokens": r.cache_tokens, "timings": r.timings, "memory": r.memory})
+                                "cache_tokens": r.cache_tokens, "cache_offset_measured": r.cache_offset_measured, "timings": r.timings, "memory": r.memory})
         except Exception as e:  # noqa: BLE001 - plumbing failures are the point of recording
             err = f"{type(e).__name__}: {e}"
             tb = traceback.format_exc()[-600:]
@@ -80,7 +80,7 @@ def main() -> None:
         by_kind[r["kind"]][r["verdict"]["status"]] += 1
     n_pass = sum(1 for r in rows if r["verdict"]["status"] == "pass")
     n_scored = sum(1 for r in rows if r["verdict"]["status"] in ("pass", "fail"))
-    receipt = {"commit": head, "tree_dirty": dirty, "smoke": SMOKE, "collection": COLLECTION, "collection_sha256": coll_sha,
+    receipt = {"commit": head, "tree_dirty": dirty, "smoke": SMOKE, "collection": os.path.relpath(COLLECTION, os.path.dirname(HERE)), "collection_sha256": coll_sha,
                "collection_version": coll["version"], "rules": rules, "sandbox_available": qbattery.sandbox_available(),
                "engine": {"load_s": eng.load_s, "kernel_version": eng.info.get("kernel_version"), "chain_sha256": eng.info.get("chain_sha256"),
                           "stop_ids": sorted(eng.stop_ids), "context_cap": eng.context_cap, "cache_limit_bytes": eng.cfg.cache_limit_bytes},

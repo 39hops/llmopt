@@ -1754,6 +1754,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/liverun/qwen-inference-1.jsonl": {
+   "bytes": 482,
+   "exists": true,
+   "sha256": "b61d1479cea2ee6972102f66ebc9551d9555c3545448878212e7c87f3f9b906d",
+   "source": "results",
+   "tracked": true
+  },
   "logs/liverun/qwen-layer-restore-0.jsonl": {
    "bytes": 490,
    "exists": true,
@@ -4695,18 +4702,23 @@
   "logs/qwen_battery/results.json": {
    "bytes": 120474,
    "exists": true,
-   "local_only": true,
    "sha256": "d5d7b0ad4e6a63779cdb7355b0138191960b46406be97d3a30c19552b3ab9d1e",
    "source": "results",
-   "tracked": false
+   "tracked": true
+  },
+  "logs/qwen_battery/results_v2.json": {
+   "bytes": 123096,
+   "exists": true,
+   "sha256": "6952636f34c6fbd5576ee66a51013de9d51af354e9a42c05d168da2545c064e0",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_battery/smoke/results.json": {
    "bytes": 15499,
    "exists": true,
-   "local_only": true,
    "sha256": "84367b4d52924f167937a20c32414fb6083c9247f2675243e5dc9ac6b6a7699d",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/qwen_e0/C/positions.jsonl": {
    "bytes": 5664189,
@@ -5071,6 +5083,20 @@
    "bytes": 10802,
    "exists": true,
    "sha256": "5ea70709a5b422c3366e098ac9fd23b6a55ac619e6b1c01806c30ecfdf7837b3",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwen_serve/perf.json": {
+   "bytes": 11417,
+   "exists": true,
+   "sha256": "8ee122764e45e51ef9c360806482fb4afadb1b7e92b9395194d03c607c4068f8",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwen_serve/study_3ed19ee6.log": {
+   "bytes": 7855,
+   "exists": true,
+   "sha256": "af673004991b371775141b57cd1adcc4bdeaf0b61d8b0150ff65e0037f150f15",
    "source": "results",
    "tracked": true
   },

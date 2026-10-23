@@ -1,0 +1,70 @@
+== live 13:21:14 66a18c38
+3 passed, 6 deselected in 26.81s
+== perf 13:21:42 66a18c38
+[perf] cold first generation: first token 1.89s, total 2.10s
+[perf] 505 prompt tokens: first token 13.96s, prefill 36.2 tok/s, decode 9.35 tok/s over 63 steps, total 20.70s, peak 11.90 GB, footprint 11.20 GB, stop max_tokens
+[perf] 1017 prompt tokens: first token 27.35s, prefill 37.2 tok/s, decode 9.38 tok/s over 43 steps, total 31.94s, peak 11.98 GB, footprint 11.30 GB, stop stop_token
+[perf] 2041 prompt tokens: first token 54.99s, prefill 37.1 tok/s, decode 9.42 tok/s over 63 steps, total 61.68s, peak 12.15 GB, footprint 11.20 GB, stop max_tokens
+[perf] replay      turn 1: fresh           prompt   22 gen  26 cache   48 active 9.02 GB footprint 11.17 GB  'Copper is a naturally occurring chemical element w'
+[perf] replay      turn 2: fresh           prompt   67 gen  32 cache   99 active 9.22 GB footprint 11.26 GB  'Tin is a post-transition metal with the atomic num'
+[perf] replay      turn 3: fresh           prompt  127 gen   1 cache  128 active 9.41 GB footprint 11.56 GB  'Tin'
+[perf] replay      turn 4: fresh           prompt  152 gen   2 cache  154 active 9.60 GB footprint 11.75 GB  'Bronze'
+[perf] replay      turn 5: fresh           prompt  180 gen  13 cache  193 active 9.79 GB footprint 11.94 GB  'Bronze was first used in the 14th century BCE'
+[perf] replay      turn 6: fresh           prompt  216 gen   1 cache  217 active 9.99 GB footprint 12.13 GB  'bye'
+[perf] incremental turn 1: fresh           prompt   22 gen  26 cache   48 active 9.22 GB footprint 11.36 GB  'Copper is a naturally occurring chemical element w'
+[perf] incremental turn 2: incremental     prompt   19 gen  32 cache   99 active 9.02 GB footprint 11.17 GB  'Tin is a post-transition metal with the atomic num'
+[perf] incremental turn 3: incremental     prompt   28 gen   1 cache  128 active 9.02 GB footprint 11.17 GB  'Tin'
+[perf] incremental turn 4: incremental     prompt   24 gen   2 cache  154 active 9.02 GB footprint 11.17 GB  'Bronze'
+[perf] incremental turn 5: incremental     prompt   26 gen  13 cache  193 active 9.02 GB footprint 11.17 GB  'Bronze was first used in the 14th century BCE'
+[perf] incremental turn 6: incremental     prompt   23 gen   1 cache  217 active 9.02 GB footprint 11.17 GB  'bye'
+[perf] parity on 1013 prompt tokens: identical True
+[perf] cold load 8.7s; wrote logs/qwen_serve/perf.json
+== battery 13:25:50 66a18c38
+[battery] arith-01     pass  'expected 148710, last integer in reply 148710'  | '148710'
+[battery] arith-02     pass  'expected 68978, last integer in reply 68978'  | '68978'
+[battery] arith-03     fail  'expected 282905, last integer in reply 281955'  | '281955'
+[battery] arith-04     fail  'expected 25, last integer in reply 52729'  | '52754 ÷ 67 = 785 remainder 49\n\n785 × 67 = 52595\n52754 - 5259'
+[battery] arith-05     fail  'expected 36, last integer in reply 3'  | 'To find the greatest common divisor (GCD) of 396 and 252, we'
+[battery] arith-06     fail  'expected 866, last integer in reply None'  | '866.4'
+[battery] arith-07     pass  'expected 113733, last integer in reply 113733'  | '113733'
+[battery] arith-08     pass  'expected 38469, last integer in reply 38469'  | '38469'
+[battery] arith-09     pass  'expected 148000, last integer in reply 148000'  | '148000'
+[battery] arith-10     pass  'expected 39, last integer in reply 39'  | '39'
+[battery] json-01      fail  'total: 544.59 != 466.7'  | '{"total": 544.59, "n_items": 3, "costliest_sku": "A-26"}'
+[battery] json-02      fail  'mean: 75.3 != 70.2'  | '{"mean": 75.3, "top": ["eli"], "count": 4}'
+[battery] json-03      fail  'total: 54.41 != 57.43'  | '{"total": 54.41, "n_items": 2, "costliest_sku": "D-47"}'
+[battery] json-04      fail  'mean: 79.8 != 79.6'  | '{"mean": 79.8, "top": ["cy"], "count": 5}'
+[battery] json-05      fail  'total: 257.41 != 299.87'  | '{"total": 257.41, "n_items": 3, "costliest_sku": "A-92"}'
+[battery] json-06      pass  'schema and values match'  | '{"mean": 56.3, "top": ["eli"], "count": 3}'
+[battery] json-07      fail  'total: 554.44 != 530.8'  | '{"total": 554.44, "n_items": 3, "costliest_sku": "B-12"}'
+[battery] json-08      fail  'mean: 68.8 != 69.0'  | '{"mean": 68.8, "top": ["cy"], "count": 4}'
+[battery] code-01      pass  '{"status": "pass", "returncode": 0, "stderr": ""}'  | '```python\ndef reverse_words(s):\n    # Split the string into '
+[battery] code-02      pass  '{"status": "pass", "returncode": 0, "stderr": ""}'  | "```python\ndef balanced(s):\n    stack = []\n    matching = {')"
+[battery] code-03      pass  '{"status": "pass", "returncode": 0, "stderr": ""}'  | '```python\ndef two_sum(nums, target):\n    n = len(nums)\n    b'
+[battery] code-04      pass  '{"status": "pass", "returncode": 0, "stderr": ""}'  | '```python\ndef rle(s):\n    result = []\n    for char in s:\n   '
+[battery] code-05      pass  '{"status": "pass", "returncode": 0, "stderr": ""}'  | '```python\ndef is_prime(n):\n    if n < 2:\n        return Fals'
+[battery] code-06      pass  '{"status": "pass", "returncode": 0, "stderr": ""}'  | '```python\ndef transpose(m):\n    if not m:\n        return []\n'
+[battery] code-07      pass  '{"status": "pass", "returncode": 0, "stderr": ""}'  | '```python\ndef group_anagrams(words):\n    from collections im'
+[battery] code-08      fail  '{"status": "fail", "returncode": 1, "stderr": "  File \\"/private/var/folders/jw/1nt6cs7n7z'  | '```python\ndef fib_mod(n, m):\n    if n == 0:\n        return 0'
+[battery] instruct-01  pass  '3 non-empty lines, wanted 3'  | 'Pacific\nAtlantic\nIndian'
+[battery] instruct-02  pass  'include True, exclude present False'  | 'The rugged peak is crowned by a massive glacier that slowly '
+[battery] instruct-03  pass  'all letters upper'  | 'THE RAIN FALLS HEAVILY ON THE ROOF.'
+[battery] instruct-04  pass  "last word 'done'"  | 'Try to keep your bedroom cool and dark to improve the qualit'
+[battery] instruct-05  pass  '5 lines, numbered True'  | '1. Carrot\n2. Broccoli\n3. Cabbage\n4. Spinach\n5. Cucumber'
+[battery] instruct-06  fail  '18 words, band 20 to 40'  | 'A compiler translates source code into machine code, optimiz'
+[battery] instruct-07  pass  '4 non-empty lines, wanted 4'  | 'Red\nBlue\nGreen\nYellow'
+[battery] instruct-08  fail  'include False, exclude present False'  | 'A satellite orbits the Earth to collect data or communicate '
+[battery] twoturn-01   pass  "turn 2 reply '9097', expected 9097"  | '9097'
+[battery] twoturn-02   pass  "turn 2 reply '173', expected 173"  | '173'
+[battery] twoturn-03   pass  "turn 2 reply 'meadow', expected meadow"  | 'meadow'
+[battery] twoturn-04   pass  "turn 2 reply '114', expected 114"  | '114'
+[battery] twoturn-05   pass  "turn 2 reply '1594', expected 1594"  | '1594'
+[battery] twoturn-06   pass  "turn 2 reply '141', expected 141"  | '141'
+[battery] degen-01     pass  '6 tokens'  | 'amber amber amber amber amber amber'
+[battery] degen-02     pass  'numbers [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]'  | '11,12,13,14,15,16,17,18,19,20'
+[battery] degen-03     pass  '1 lines; expected jupiter'  | 'The largest planet in the solar system is Jupiter.'
+[battery] degen-04     pass  '8 tokens'  | 'delta delta delta delta delta delta delta delta'
+[battery] degen-05     pass  'numbers [4, 5, 6, 7, 8, 9, 10, 11, 12, 13]'  | '4,5,6,7,8,9,10,11,12,13'
+[battery] degen-06     fail  '1 lines; expected jupiter'  | 'The capital of France is Paris.'
+[battery] pass 31/46 scored of 46 tasks; by kind {'arith': {'pass': 6, 'fail': 4}, 'json': {'fail': 7, 'pass': 1}, 'code': {'pass': 7, 'fail': 1}, 'instruct': {'pass': 6, 'fail': 2}, 'twoturn': {'pass': 6}, 'degen': {'pass': 5, 'fail': 1}}; wrote logs/qwen_battery/results.json
+== DONE 13:32:32
