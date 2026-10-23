@@ -6,6 +6,7 @@ import json
 import sys
 
 import os
+import collections
 import pytest
 
 from llmopt.lab import qbattery
@@ -127,3 +128,91 @@ def test_format_ok_is_the_contract_of_the_task_kind():
     assert qbattery.format_ok({"kind": "arith"}, "148710") and not qbattery.format_ok({"kind": "arith"}, "The answer is 148710")
     assert qbattery.format_ok({"kind": "json"}, ' {"a": 1} ') and not qbattery.format_ok({"kind": "json"}, 'Here: {"a": 1}')
     assert qbattery.format_ok({"kind": "code"}, "x") is None
+
+
+# ---------------------------------------------------------------- v3 validator branches (QWEN-LOW-RELEASE-0)
+
+def test_v3_instruct_checks():
+    ck = lambda c, p, text: qbattery.check_instruct({"check": c, "params": p}, [text])[0]  # noqa: E731
+    assert ck("sentences", {"n": 2}, "Rain falls. Rivers rise.") and not ck("sentences", {"n": 2}, "Rain falls. Rivers rise. Seas fill.")
+    assert ck("starts_with", {"word": "indeed"}, "Indeed, the sky is blue.") and not ck("starts_with", {"word": "indeed"}, "The sky, indeed, is blue.")
+    assert ck("no_commas", {}, "The sky is blue and wide.") and not ck("no_commas", {}, "The sky, blue and wide.")
+    assert ck("bullets", {"n": 3}, "- a\n- b\n- c") and not ck("bullets", {"n": 3}, "- a\n- b") and not ck("bullets", {"n": 3}, "1. a\n2. b\n3. c")
+    assert ck("alphabetical", {"n": 3}, "apple\nbanana\ncherry") and not ck("alphabetical", {"n": 3}, "banana\napple\ncherry")
+    assert ck("ends_question", {}, "What time is it?") and not ck("ends_question", {}, "It is noon.")
+    assert ck("exact_words", {"n": 4}, "one two three four") and not ck("exact_words", {"n": 4}, "one two three")
+    assert ck("all_lower", {}, "all quiet here.") and not ck("all_lower", {}, "All quiet here.")
+    assert ck("include_two", {"words": ["river", "bridge"]}, "A river under a bridge.") and not ck("include_two", {"words": ["river", "bridge"]}, "A river.")
+
+
+def test_v3_degen_checks():
+    ok = lambda c, p, text, extra={}: qbattery.check_degen({"check": c, "params": p, **extra}, [text], [{"stop_reason": "stop_token"}])[0]  # noqa: E731
+    assert ok("repeat_phrase", {"phrase": "blue sky", "n": 3}, "blue sky, blue sky, blue sky") and not ok("repeat_phrase", {"phrase": "blue sky", "n": 3}, "blue sky, blue sky")
+    assert ok("countdown", {"a": 10, "b": 5}, "10, 9, 8, 7, 6, 5") and not ok("countdown", {"a": 10, "b": 5}, "10 9 8 7 6")
+    assert ok("hyphen_spell", {"word": "river"}, "R-I-V-E-R") and ok("hyphen_spell", {"word": "river"}, "r-i-v-e-r") and not ok("hyphen_spell", {"word": "river"}, "RIVER")
+    assert ok("one_word", {}, "Tokyo", {"expected": "tokyo"}) and not ok("one_word", {}, "It is Tokyo.", {"expected": "tokyo"})
+    assert ok("letters", {"n": 4}, "a, b, c, d") and ok("letters", {"n": 4}, "A,B,C,D") and not ok("letters", {"n": 4}, "a, b, c")
+
+
+def test_v3_json_dict_values_compare_case_insensitively():
+    t = {"schema": {"rows_per_category": "dict", "total_qty": "integer"}, "expected": {"rows_per_category": {"tools": 2, "paint": 1}, "total_qty": 9}}
+    assert qbattery.check_json(t, ['{"rows_per_category": {"Tools": 2, "paint": 1}, "total_qty": 9}'])[0]
+    assert not qbattery.check_json(t, ['{"rows_per_category": {"tools": 1, "paint": 1}, "total_qty": 9}'])[0]
+    assert not qbattery.check_json(t, ['{"rows_per_category": [2, 1], "total_qty": 9}'])[0]
+
+
+def test_v3_collection_builds_disjoint_from_v2_and_its_code_references_pass():
+    from llmopt.lab import qbattery3
+    c = qbattery3.build()
+    assert c["version"] == 3 and len(c["tasks"]) == 60
+    kinds = collections.Counter(t["kind"] for t in c["tasks"])
+    assert kinds == {"arith": 12, "json": 12, "code": 12, "instruct": 10, "twoturn": 8, "degen": 6}
+    v2 = qbattery.build()
+    assert not ({t["turns"][0] for t in c["tasks"]} & {t["turns"][0] for t in v2["tasks"]})       # no shared prompt text
+    ov = qbattery3.overlap_report(c, v2)
+    assert ov["shared_prompts"] == 0 and ov["shared_code_functions"] == 0
+    assert qbattery3.build() == c                                                                   # deterministic
+    for t in c["tasks"]:
+        if t["kind"] == "code":
+            ns = {}
+            exec(t["reference"], ns)                                                                # the reference solution passes the hidden tests
+            for a in t["tests"]:
+                exec(a, ns)
+
+
+def test_v3_validator_edge_cases_from_the_prefreeze_review():
+    ck = lambda c, p, text: qbattery.check_instruct({"check": c, "params": p}, [text])[0]  # noqa: E731
+    assert not ck("alphabetical", {"n": 5}, "1. apple\n2. banana\n3. cherry\n4. date\n5. fig")      # numbering is not 'nothing else'
+    assert not ck("alphabetical", {"n": 3}, "apple\napple\napple") and ck("alphabetical", {"n": 3}, "apple\nbanana\ncherry")
+    assert ck("exact_words", {"n": 12}, "The ever-changing sea stretches endlessly, whispering secrets to the moonlit shore tonight.")
+    assert ck("ends_question", {}, "**Want to grab lunch tomorrow?**") and ck("ends_question", {}, 'She asked, "Lunch?"')
+    assert ck("sentences", {"n": 2}, "Light scatters, e.g. blue light. It is bright.")
+    dg = lambda c, p, text: qbattery.check_degen({"check": c, "params": p}, [text], [{"stop_reason": "stop_token"}])[0]  # noqa: E731
+    assert dg("letters", {"n": 6}, "a, b, c, d, e, f.") and dg("hyphen_spell", {"word": "river"}, "r - i - v - e - r")
+    assert dg("repeat_phrase", {"phrase": "red door", "n": 2}, "'red door', 'red door'")
+
+
+def test_v3_frozen_file_equals_the_generator_and_its_recorded_sha():
+    import hashlib
+    from llmopt.lab import qbattery3
+    path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "scratch", "evalsets", "qwen_battery_v3.json")
+    frozen = json.load(open(path))
+    assert frozen == qbattery3.build()
+    ov = json.load(open(path.replace("qwen_battery_v3.json", "qwen_battery_v3_overlap.json")))
+    assert ov["v3_sha256"] == hashlib.sha256(open(path, "rb").read()).hexdigest() and ov["shared_prompts"] == 0
+    assert len(ov["near_relatives_of_v2_families"]) >= 10                                           # the independence caveat is on the record
+
+
+def test_lowchat_addressing_checks():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("lowchat", os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "scratch", "qwen_lowchat.py"))
+    lc = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(lc)
+    a = lambda check, text: lc.addressed(check, text)[0]  # noqa: E731
+    assert a(("exact", "done"), "Done.") and not a(("exact", "done"), "Not done yet.")
+    assert a(("yes_no", "yes"), "Yes, Python's sort is stable.") and not a(("yes_no", "yes"), "No, it is not stable.")
+    assert a(("re", [r"\bles\b", r"\bjour\b"]), "Jour 1 : Lisbonne") and not a(("re", [r"\bles\b", r"\bjour\b"]), "A possible two-line plan for Sintra.")
+    assert a(("number", 440), "The new total is 440.") and not a(("number", 440), "The total is 400.")
+    assert a(("lines", 2), "one\ntwo") and not a(("lines", 2), "one")
+    assert a(("min_words", 3), "a b c d") and not a(("min_words", 3), "a b") and not a(("any", ["x"]), "")
+    assert len(lc.CONVERSATIONS) == 4 and all(len(c["turns"]) == 8 for c in lc.CONVERSATIONS) and lc.CONVERSATIONS[0]["name"] == "travel"

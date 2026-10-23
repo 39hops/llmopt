@@ -1,0 +1,128 @@
+{
+ "shared_prompts": 0,
+ "shared_code_functions": 0,
+ "families_v3": {
+  "arith": [
+   "diff_prod",
+   "digit_sum",
+   "lcm",
+   "mean",
+   "pct_change",
+   "prod_mod",
+   "quotient",
+   "range",
+   "square",
+   "sum3"
+  ],
+  "json": [
+   "inventory",
+   "invoice",
+   "readings",
+   "roster2"
+  ],
+  "code": [
+   "bsearch",
+   "caesar",
+   "chunk",
+   "count_vowels",
+   "diag_sum",
+   "flatten",
+   "is_palindrome",
+   "merge_intervals",
+   "roman_to_int",
+   "running_max",
+   "second_largest",
+   "top_words"
+  ],
+  "instruct": [
+   "all_lower",
+   "alphabetical",
+   "bullets",
+   "ends_question",
+   "exact_words",
+   "include_two",
+   "no_commas",
+   "sentences",
+   "starts_with"
+  ],
+  "twoturn": [
+   "first_word",
+   "list_len",
+   "pair",
+   "product"
+  ],
+  "degen": [
+   "countdown",
+   "hyphen_spell",
+   "letters",
+   "one_word",
+   "repeat_phrase"
+  ]
+ },
+ "families_v2": {
+  "arith": [
+   "sum",
+   "diff",
+   "prod",
+   "mod",
+   "gcd",
+   "pct"
+  ],
+  "json": [
+   "order",
+   "roster"
+  ],
+  "code": [
+   "reverse_words",
+   "balanced",
+   "two_sum",
+   "rle",
+   "is_prime",
+   "transpose",
+   "group_anagrams",
+   "fib_mod"
+  ],
+  "instruct": [
+   "all_caps",
+   "ends_with",
+   "include_exclude",
+   "lines",
+   "numbered",
+   "word_band"
+  ],
+  "twoturn": [
+   "recall",
+   "continue_sum"
+  ],
+  "degen": [
+   "count",
+   "one_line",
+   "repeat"
+  ]
+ },
+ "shared_families": {
+  "arith": [],
+  "json": [],
+  "code": [],
+  "instruct": [],
+  "twoturn": [],
+  "degen": []
+ },
+ "near_relatives_of_v2_families": {
+  "all_lower": "mirrors v2 all_caps",
+  "starts_with": "mirrors v2 ends_with",
+  "include_two": "a two-word form of v2 include_exclude",
+  "bullets": "a dash form of v2 numbered and lines",
+  "countdown": "the descending form of v2 count (same comma-separated digits contract)",
+  "repeat_phrase": "a comma-separated two-word form of v2 repeat",
+  "one_word": "a one-word form of v2 one_line (capital and planet facts)",
+  "pair": "a recall task like v2's code word and number",
+  "product": "a two-number recall with an operation, near v2's continue-a-sum",
+  "invoice": "its subtotal is v2's order total (sum of qty times price) before the discount step",
+  "roster2": "a two-score form of v2 roster"
+ },
+ "independence_note": "the family names are all new and no prompt template or instance repeats, but eleven v3 families are near relatives of a v2 family (listed); since the low-effort candidate was selected on v2, v3 is a fresh-instance confirmation of moderate structural independence, not an unrelated benchmark",
+ "shared_structure_note": "the kinds, the reply contracts ('Answer with the number only', 'Return ONLY a JSON object', 'Reply with a single Python code block', 'Reply only: noted.') and the validators are shared with v2 by design; every task family, prompt template and instance is new",
+ "v3_sha256": "f45d1f6e37cafff69801b88813cb46d52437a9c2a0f3cfbfd5c08bfb467ffa50",
+ "v2_sha256": "67b13e2b4936366af38cb5619dd2c04f6af3082a0950bb632bb04dc44bd88f1f"
+}

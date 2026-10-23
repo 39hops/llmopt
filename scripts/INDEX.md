@@ -5677,6 +5677,16 @@ QWEN-LOOP-STATE-1-HEADSWAP driver: vendor lm_head v BLe s16 lm_head on the IDENT
 - `vendor_top1(Wv, h)` — argmax over the full vocab, chunked over head rows.
 - `main()`
 
+### scratch/qwen_lowchat.py
+QWEN-LOW-RELEASE-0, phase 4: the deep-conversation reliability gate. Four eight-turn conversations with fixed user turns, each run under two configurations at identical 768-token budgets: NOTHINK (enable_thinking False) and LOW (enable_thinking True, reasoning_effort low). The conversations: the previously exposed travel transcript (a regression diagnostic, its user turns unchanged from scratch/qwen_incr_perf.py) and three new preregistered ones (planning with revisions, a programming discussion, follow-up factual questions). Every turn carries a mechanical check of whether the reply ADDRESSES the turn (a required word or number, a line or sentence count, a format), so success is never non-empty text alone.
+
+- `addressed(check, final: str) -> tuple`
+- `sha(ids)`
+- `margin(rec, stop_ids)`
+- `run(eng, conv, cfg, mode)`
+- `longest_empty_run(rows)`
+- `main() -> None`
+
 ### scratch/qwen_margin_census.py
 Teacher margin-bin census (AMENDMENT QWEN-MODEL1-TREE-PINS item 2) — teacher-only per-bin position counts, booked once with the teacher lock, before any arm scores.
 
@@ -5810,6 +5820,13 @@ QWEN-ATTN-ATTRIB-1 recomposer: build arm F/L/Q as a KEY-LEVEL byte recomposition
 - `compose(base_man: dict, donor_man: dict, promote: set, read_base, read_donor, write_shard) -> dict` — Pure core: returns the new manifest. read_*(entry) -> bytes;
 - `_sha(p)`
 - `main()`
+
+### scratch/qwen_release_obs.py
+Observations adapter for PRE-REG QWEN-LOW-RELEASE-0: derives the nine registered measurements from the three v3 battery receipts (arms A, B, C written by scratch/qwen_battery_run.py with COLLECTION=qwen_battery_v3.json) and the conversation receipt (scratch/qwen_lowchat.py), in committed code. Every battery verdict is RECOMPUTED from the stored replies with the committed validators (qbattery.score for A and B; qbattery.score_thinking for C, the final answer after the last </think>), the code tasks re-run in the sandbox; rows whose status differs from the stored verdict are listed. The honest count is pass rows over all 60 tasks (error and hold rows are non-passes; a hold invalidates the measurement). Evaluator errors are listed apart from model failures.
+
+- `rescore(r, tasks_by_id, thinking)`
+- `battery_summary(r, tasks_by_id, status, thinking)`
+- `main(a_path, b_path, c_path, chat_path, prereg_path)`
 
 ### scratch/qwen_residual_census.py
 QWEN-RESIDUAL-STRUCTURE-0: weight-space census of R = W_vendor - decode(A).
@@ -7113,6 +7130,18 @@ The functional-quality battery for the local Qwen3.8-27B arm C (QWEN-INFERENCE-B
 - `format_ok(task: dict, final: str) -> Optional[bool]` — Output-format compliance of a final answer under the task's contract:
 - `score_thinking(task: dict, replies: list, results: list) -> dict` — The frozen validators applied to the final answers of thinking-mode
 - `score(task: dict, replies: list, results: list) -> dict`
+
+### llmopt/lab/qbattery3.py
+The v3 confirmation collection for QWEN-LOW-RELEASE-0: 60 fresh tasks whose families and prompt templates differ from the exposed v2 battery (llmopt.lab.qbattery, which keeps its own generators frozen). The kinds and validators are shared with v2 (qbattery.score dispatches by kind; the new instruction and termination checks are the v3 branches of check_instruct and check_degen); the task families are new:
+
+- `gen_arith(r: random.Random, n: int) -> list`
+- `gen_json(r: random.Random, n: int) -> list`
+- `gen_code(r: random.Random, n: int) -> list`
+- `gen_instruct(r: random.Random, n: int) -> list`
+- `gen_twoturn(r: random.Random, n: int) -> list`
+- `gen_degen(r: random.Random, n: int) -> list`
+- `build(seed: str=SEED) -> dict`
+- `overlap_report(v3: dict, v2: dict) -> dict` — Template-level and family-level overlap with v2, stated explicitly.
 
 ### llmopt/lab/qcodec.py
 Canonical WHOLE-0T payload decoders (the one shared decode path).

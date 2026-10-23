@@ -35,7 +35,7 @@ SMOKE = os.environ.get("SMOKE") == "1"
 THINK = os.environ.get("THINK") == "1"                       # QWEN-THINKING-BATTERY-0: enable_thinking True through the pinned template
 BUDGET = int(os.environ["BUDGET"]) if os.environ.get("BUDGET") else None   # overrides the frozen per-turn budget
 assert BUDGET in (None, 384, 768), "only the registered budgets"
-assert BUDGET is None or THINK, "a budget override belongs to a thinking configuration"
+# a budget override without THINK is the equal-budget no-thinking control of QWEN-LOW-RELEASE-0 (v3 arm B)
 EFFORT = os.environ.get("EFFORT")                                # QWEN-EFFORT-AND-DEEPCHAT-0: the template's reasoning_effort (thinking only)
 assert EFFORT in (None, "low", "medium", "xhigh") and (EFFORT is None or THINK), "EFFORT is low, medium or xhigh under THINK=1" 
 OUT = os.environ.get("OUT", "logs/qwen_battery/smoke/results.json") if SMOKE else os.environ.get("OUT", "logs/qwen_battery/results.json")
@@ -58,7 +58,7 @@ def main() -> None:
     tasks = coll["tasks"]
     thinking = True if THINK else rules["enable_thinking"]
     budget = BUDGET or rules["max_tokens_per_turn"]
-    exec_cfg = {"name": (f"v{coll['version']}-think-{budget}" + (f"-{EFFORT}" if EFFORT else "")) if THINK else f"v{coll['version']}-frozen",
+    exec_cfg = {"name": (f"v{coll['version']}-think-{budget}" + (f"-{EFFORT}" if EFFORT else "")) if THINK else (f"v{coll['version']}-nothink-{budget}" if BUDGET else f"v{coll['version']}-frozen"),
                 "enable_thinking": thinking, "reasoning_effort": EFFORT, "reasoning_effort_effective": (EFFORT or "xhigh") if THINK else None,
                 "max_tokens_per_turn": budget, "scoring": "score_thinking (final answer after the last </think>)" if THINK else "score"}
     if SMOKE:

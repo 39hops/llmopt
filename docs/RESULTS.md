@@ -85082,3 +85082,112 @@ implicated and no correction is proposed. Not measured here: whether
 thinking mode (any effort) or the tight per-turn budgets of the frozen
 conversation drive the shortening; both are the next diagnostic's
 variables.
+
+## OBSERVATION QWEN-LOW-RELEASE-0-FREEZE: the independent confirmation collection for the conditional promotion of thinking at low effort is frozen at this commit BEFORE any candidate output is read: scratch/evalsets/qwen_battery_v3.json (60 tasks: 12 arithmetic, 12 structured-data, 12 code, 10 instruction, 8 two-turn, 6 termination; seed qwen-battery-v3-seed-23; sha256 recorded by every scoring receipt), its generators llmopt/lab/qbattery3.py, the validators (the shared kinds of llmopt/lab/qbattery.py with the v3 instruction and termination branches and dict-valued JSON), the reference solutions every code task is built against, the sandbox profile unchanged, the rules unchanged (greedy, no system prompt, context cap 8,192), and the overlap report scratch/evalsets/qwen_battery_v3_overlap.json: zero shared prompts, zero shared code functions, zero shared task-family names with v2, and eleven v3 families named as near relatives of a v2 family; what IS shared is the kinds, the reply contracts and the validators, by design (2026-10-23)
+
+Artin's conditional GO QWEN-LOW-RELEASE-0 (2026-10-23): confirm the
+low-effort result on tasks the exposed v2 battery did not shape, test
+deeper conversations under the candidate configuration, and move the
+default only if both gates pass. Overlap at the template and family
+levels, stated explicitly (the report file carries the lists): the v3
+arithmetic families are a three-term sum, a difference of two products,
+an integer quotient, a least common multiple, an exact percent change,
+the range of six numbers, a square, a digit sum, an integer mean and a
+product modulo m (v2: sum, difference, product, modulus, gcd,
+percentage); structured data is an invoice with a percent discount, an
+inventory CSV with categories (counts per category, a dict-valued
+answer), key-value readings (argmax and argmin keys, a mean) and a
+two-score roster (best average, a count above a cut) (v2: order totals
+and a costliest sku, roster means and tops); the twelve code functions
+are new (palindrome ignoring non-alphanumerics, second largest distinct,
+flatten, caesar, roman to int, merge intervals, vowel count, top-k word
+frequency, binary search lowest index, diagonal sum, chunk, running
+maximum) and each carries a reference solution the build asserts
+against its own hidden tests; the instruction constraints are new (an
+exact sentence count, a required first word, no commas, dash bullets, an
+alphabetical list, a closing question mark, an exact word count, lower
+case, two required words); the two-turn families are new (the length of
+a remembered list, the product of two remembered numbers, the first
+word of a remembered sentence, the animal of a remembered pair); the
+termination checks are new (a phrase repeated comma-separated, a
+countdown, a hyphen spelling, a one-word answer, the first N letters).
+Changing a seed on the same families would have been a weaker
+confirmation; none of these is a v2 family under a new seed. Stated
+plainly, as the pre-freeze review asked: eleven v3 families are near
+relatives of a v2 family (lower case mirrors capitals, a first word
+mirrors a last word, two required words extend include-and-exclude,
+dash bullets stand near numbered lists, a countdown is the descending
+form of the count-up with the same comma contract, a repeated phrase
+near a repeated word, a one-word answer near a one-line answer, the
+two recall families near v2's code-word recall, the invoice subtotal is
+v2's order total before the discount step, the two-score roster near
+the roster), so v3 is a fresh-instance confirmation of moderate
+structural independence from the battery that selected the candidate,
+not an unrelated benchmark. Secondary constraints in the instruction
+prompts ("one sentence" where the scored constraint is another) are
+not enforced, as in v2. The three
+arms share the collection, the tokenizer, the chat template, the
+weights, kernel generation 5 and the serving settings and differ only
+in the execution configuration recorded apart from the frozen rules:
+A no thinking at 384 (the historical practical configuration), B no
+thinking at 768 (the equal-budget control), C thinking with
+reasoning_effort low at 768 (the candidate, scored on the final answer
+after the last </think>). The code evaluation keeps its restricted
+boundary (sandbox-exec, no network, no writes outside the task
+directory, no reads under the user's home, CPU, file-size and process
+limits, no memory limit on macOS); it is not suitable for arbitrary
+untrusted code and no new task needs more than it. The reliability
+gate's conversations (scratch/qwen_lowchat.py: the exposed travel
+transcript's user turns verbatim, and three new eight-turn
+conversations on planning with revisions, a programming discussion and
+follow-up factual questions) carry a mechanical addressing check per
+turn, fixed here. An Opus review of validator correctness, task
+difficulty, sandbox safety and the registration ran before this freeze
+and its repairs are in this commit: a fence that made bar 7's own
+threshold unresolvable, the alphabetical check passing numbered or
+repeated lines, the word count splitting hyphenated words, trailing
+punctuation and markdown failing correct terminations and questions,
+conversation checks that an echo or an English reply could pass, bar
+9's coupling to a budget-cut turn, the adapter's missing tokenizer check
+and its counting of evaluator errors as model failures, and a prior
+that cited thinking-off evidence for a thinking-low claim. Disclosed: a smoke of the runner on
+the first task of each v3 kind and of the conversation driver on two
+planning turns were read before the freeze (logs/qwen_battery/smoke/
+results_v3.json, logs/qwen_serve/smoke/lowchat.json, not evidence) to
+qualify the drivers; no task, validator, check or bar was changed after
+them except as the review directed before any arm ran.
+
+## PRE-REG QWEN-LOW-RELEASE-0: the conditional promotion of enable_thinking True, reasoning_effort low, 768 tokens as the chat default, decided by nine bars registered before any arm runs (docs/preregs/qwen-low-release-0.json): the quality gate on the frozen v3 collection, C against the equal-budget control B on paired task outcomes (arithmetic plus structured data up by at least 5 of 24; code down by at most 1 of 12; the instruction, two-turn and termination kinds down by at most 1 of 24; at most 4 unclosed think blocks of 68 turns with no kind holding more than 2; at most 14,000 generated tokens and 1,700 s), and the reliability gate on four eight-turn conversations under the candidate at 768 tokens (no two consecutive empty completions; at least 28 of 32 turns addressing their request (27 or fewer holds); no empty turn on the exposed travel transcript; every later turn after a closed turn reused, the turn after a budget cut falling back by template design and reported apart, and replay token-equal); all nine FIRE promotes, anything else HOLDS with the failing bar named, no other budget or effort searched; one pass per arm, no retries; conditional on greedy decoding; a deployment smoke decision, not a general claim (2026-10-23)
+
+Receipts: logs/qwen_battery/results_v3_A.json, results_v3_B.json,
+results_v3_C.json (scratch/qwen_battery_run.py with COLLECTION=
+qwen_battery_v3.json and the arm's BUDGET, THINK, EFFORT),
+logs/qwen_serve/lowchat_v1.json (scratch/qwen_lowchat.py), observations
+by scratch/qwen_release_obs.py (every battery verdict recomputed from
+the stored replies with the committed validators, code re-run in the
+sandbox, rows that change listed; evaluator errors apart from model
+failures; a hold invalidates the measurement), adjudication in
+logs/qwen_release/adjudicate_1/. Reported either way: paired task-level
+outcomes A > B > C, per-kind counts, final-answer presence, unterminated
+blocks by kind, tokens and time with the ratios against A and B,
+first-token latency, memory, context refusals; for the conversations
+per turn the reply length, the exact stop token, the first-token stop
+margin, reasoning termination, the addressing check, the prompt sha256
+and markers, the mode, the measured offsets, time and memory, with the
+no-thinking configuration alongside. If promoted: Session and the CLI
+default to thinking at low effort with a 768-token budget, explicit
+overrides kept (--no-thinking, --reasoning-effort xhigh/medium/low,
+--max-tokens, --replay), the prefix check and the accounting unchanged,
+subprocess-level tests of the actual defaults with no flags, booked as a
+separate release verdict without rewriting the effort-study verdict. If
+held: the current defaults stay and the HOLD names the failing bar and
+its value. The structured refutation predicate encodes bar 1 only; the prose
+rule (all nine FIRE) governs. Every fence is a rounding fence, not a
+noise fence: one greedy pass per arm on 60 tasks is a deployment smoke
+decision at the lab's single-seed floor, and the booking will say so.
+An evaluator or plumbing error in any arm invalidates the measurement
+rather than counting as a model failure. Registered prior: as in the
+JSON (a FIRE on all nine expected, bar 1 or bar 7 the likeliest HOLD;
+bar 1 needs headroom and cannot fire if B already passes 20 of 24; B
+expected to equal A except where the 384 budget cut a reply; no
+low-effort conversation has been run before this).

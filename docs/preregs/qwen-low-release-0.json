@@ -1,0 +1,283 @@
+{
+ "name": "QWEN-LOW-RELEASE-0",
+ "note": "Machine-readable form of PRE-REG QWEN-LOW-RELEASE-0; the prose governs on any conflict. Artin's conditional GO QWEN-LOW-RELEASE-0 (2026-10-23): the chat default moves to enable_thinking True, reasoning_effort low, 768 tokens ONLY if both gates pass. Quality gate (bars 1 to 5): the fresh v3 confirmation collection (scratch/evalsets/qwen_battery_v3.json, 60 tasks in new families, frozen before any candidate output) scored once per arm under A (no thinking, 384), B (no thinking, 768, the equal-budget control) and C (thinking, low, 768, the candidate); the bars compare C with B on paired task outcomes. Reliability gate (bars 6 to 9): four eight-turn conversations (the exposed travel transcript and three new ones) under C's configuration at 768 tokens, every turn checked for addressing the request, no persistent empty completions. Decision rule: all nine bars FIRE promotes the default (booked as a separate release verdict); any other reading HOLDS the current defaults with the failing evidence named; no other budget or effort is searched in this round. Conclusions conditional on greedy decoding; a 60-task set supports a deployment smoke decision, not a general claim. The structured refuted_if_predicate encodes bar 1 only; the prose decision rule (all nine FIRE) governs, and the adjudication text is read against it.",
+ "results_id": "2026-10-23-pre-reg-qwen-low-release-0",
+ "registered": "2026-10-23",
+ "machine": "mac",
+ "arms": {
+  "A": {
+   "description": "no thinking, 384 tokens per turn: the historical practical baseline configuration, on v3"
+  },
+  "B": {
+   "description": "no thinking, 768 tokens per turn: the equal-budget control, on v3"
+  },
+  "C": {
+   "description": "enable_thinking True, reasoning_effort low, 768 tokens per turn: the promotion candidate, on v3; scored on the final answer after the last </think> (the amended thinking scorer)"
+  },
+  "CHAT-NOTHINK": {
+   "description": "the four conversations under enable_thinking False at 768 tokens, incremental sessions (comparison)"
+  },
+  "CHAT-LOW": {
+   "description": "the four conversations under enable_thinking True, reasoning_effort low, 768 tokens, incremental sessions plus a replay session for token equality (the gate)"
+  }
+ },
+ "bars": [
+  {
+   "id": 1,
+   "name": "ARITH-JSON-GAIN",
+   "metric": "arith_json_gain_c_minus_b",
+   "population": "tasks:24",
+   "aggregation": "count_difference",
+   "unit": "tasks",
+   "direction": "above",
+   "value": 4.5,
+   "fence": {
+    "width": 0.4,
+    "unit": "tasks"
+   },
+   "arms": [
+    "B",
+    "C"
+   ],
+   "description": "C passes at least 5 more of the 24 arithmetic and structured-data tasks than B (the equal-budget no-thinking control); A is reported alongside."
+  },
+  {
+   "id": 2,
+   "name": "CODE-LOSS",
+   "metric": "code_loss_b_minus_c",
+   "population": "tasks:12",
+   "aggregation": "count_difference",
+   "unit": "tasks",
+   "direction": "below",
+   "value": 1.5,
+   "fence": {
+    "width": 0.4,
+    "unit": "tasks"
+   },
+   "arms": [
+    "B",
+    "C"
+   ],
+   "description": "C loses at most 1 of the 12 coding passes against B."
+  },
+  {
+   "id": 3,
+   "name": "OTHER-LOSS",
+   "metric": "other_loss_b_minus_c",
+   "population": "tasks:24",
+   "aggregation": "count_difference",
+   "unit": "tasks",
+   "direction": "below",
+   "value": 1.5,
+   "fence": {
+    "width": 0.4,
+    "unit": "tasks"
+   },
+   "arms": [
+    "B",
+    "C"
+   ],
+   "description": "C loses at most 1 of the 24 instruction, two-turn and termination passes against B (no material regression)."
+  },
+  {
+   "id": 4,
+   "name": "TERMINATION",
+   "metric": "unterminated_turns_c",
+   "population": "turns:68",
+   "aggregation": "count",
+   "unit": "turns",
+   "direction": "below",
+   "value": 4.5,
+   "fence": {
+    "width": 0.4,
+    "unit": "turns"
+   },
+   "arms": [
+    "C"
+   ],
+   "conjuncts": [
+    {
+     "measurement": "4:cat",
+     "metric": "unterminated_max_per_kind_c",
+     "population": "kinds:6",
+     "aggregation": "max_over_kinds",
+     "unit": "turns",
+     "direction": "below",
+     "value": 2.5,
+     "fence": {
+      "width": 0.4,
+      "unit": "turns"
+     }
+    }
+   ],
+   "description": "at most 4 of C's 68 turns leave the think block unclosed, and no single kind holds more than 2 of them (no systematic concentration)."
+  },
+  {
+   "id": 5,
+   "name": "COST",
+   "metric": "generated_tokens_c",
+   "population": "turns:68",
+   "aggregation": "sum",
+   "unit": "tokens",
+   "direction": "below",
+   "value": 14000.0,
+   "fence": {
+    "width": 500.0,
+    "unit": "tokens"
+   },
+   "arms": [
+    "A",
+    "B",
+    "C"
+   ],
+   "conjuncts": [
+    {
+     "measurement": "5:time",
+     "metric": "task_time_s_c",
+     "population": "turns:68",
+     "aggregation": "sum",
+     "unit": "s",
+     "direction": "below",
+     "value": 1700.0,
+     "fence": {
+      "width": 60.0,
+      "unit": "s"
+     }
+    }
+   ],
+   "description": "C generates at most 14,000 tokens over the 68 turns and spends at most 1,700 s (the registered practical limit; v2 low ran 153 tokens per turn); the ratios against A and B are reported."
+  },
+  {
+   "id": 6,
+   "name": "NO-COLLAPSE",
+   "metric": "longest_empty_run_low",
+   "population": "conversations:4",
+   "aggregation": "max_over_conversations",
+   "unit": "turns",
+   "direction": "below",
+   "value": 1.5,
+   "fence": {
+    "width": 0.4,
+    "unit": "turns"
+   },
+   "arms": [
+    "CHAT-LOW"
+   ],
+   "description": "no conversation under low has two or more consecutive empty completions (an empty final answer after the think block, or no final answer)."
+  },
+  {
+   "id": 7,
+   "name": "ADDRESSED",
+   "metric": "addressed_turns_low",
+   "population": "chat-turns:32",
+   "aggregation": "count",
+   "unit": "turns",
+   "direction": "above",
+   "value": 27.5,
+   "fence": {
+    "width": 0.4,
+    "unit": "turns"
+   },
+   "arms": [
+    "CHAT-LOW"
+   ],
+   "description": "at least 28 of the 32 turns under low pass their registered addressing check (a required word, number or pattern, a line, word or sentence count, an exact phrase, a yes-or-no); 27 or fewer holds."
+  },
+  {
+   "id": 8,
+   "name": "TRAVEL-REGRESSION",
+   "metric": "travel_empty_turns_low",
+   "population": "travel-turns:8",
+   "aggregation": "count",
+   "unit": "turns",
+   "direction": "below",
+   "value": 0.5,
+   "arms": [
+    "CHAT-LOW"
+   ],
+   "description": "the exposed travel transcript produces no empty completion under low (it produced three under no-thinking at 48 to 96-token budgets)."
+  },
+  {
+   "id": 9,
+   "name": "CHAT-ACCOUNTING",
+   "metric": "later_fallbacks_low",
+   "population": "chat-later-turns:28",
+   "aggregation": "count",
+   "unit": "turns",
+   "direction": "below",
+   "value": 0.5,
+   "arms": [
+    "CHAT-LOW"
+   ],
+   "conjuncts": [
+    {
+     "measurement": "9:replay",
+     "metric": "replay_token_mismatch_turns_low",
+     "population": "chat-turns:32",
+     "aggregation": "count",
+     "unit": "turns",
+     "direction": "below",
+     "value": 0.5
+    }
+   ],
+   "description": "every later turn under low that follows a CLOSED turn reused the cache (the pinned template re-renders an unclosed turn with a close the model never emitted, so the turn after a budget cut falls back by design and is reported apart), and the incremental session's generated ids equal the replay session's on all 32 turns."
+  }
+ ],
+ "receipts": [
+  "logs/qwen_battery/results_v3_A.json",
+  "logs/qwen_battery/results_v3_B.json",
+  "logs/qwen_battery/results_v3_C.json",
+  "logs/qwen_serve/lowchat_v1.json",
+  "logs/qwen_release/adjudicate_1/observations.json",
+  "logs/qwen_release/adjudicate_1/adjudication.txt"
+ ],
+ "operands": [
+  {
+   "name": "the frozen v3 collection",
+   "provider": "scratch/evalsets/qwen_battery_v3.json"
+  },
+  {
+   "name": "the overlap report against v2",
+   "provider": "scratch/evalsets/qwen_battery_v3_overlap.json"
+  },
+  {
+   "name": "the v3 generators",
+   "provider": "llmopt/lab/qbattery3.py"
+  },
+  {
+   "name": "the validators and the thinking scorer",
+   "provider": "llmopt/lab/qbattery.py"
+  },
+  {
+   "name": "the engine",
+   "provider": "llmopt/lab/qserve.py"
+  },
+  {
+   "name": "the scoring runner",
+   "provider": "scratch/qwen_battery_run.py"
+  },
+  {
+   "name": "the conversation driver",
+   "provider": "scratch/qwen_lowchat.py"
+  },
+  {
+   "name": "the observations adapter",
+   "provider": "scratch/qwen_release_obs.py"
+  },
+  {
+   "name": "the chain",
+   "provider": "scratch/qwen_low_release_study.sh"
+  }
+ ],
+ "refuted_if": "The promotion is HELD if any of the nine bars reads other than FIRE; the quality gate fails on bars 1 to 5 and the reliability gate on bars 6 to 9; the failing bar and its measured value are the HOLD's evidence. No other budget or effort is tried in this round.",
+ "refuted_if_predicate": {
+  "measurement": "arith_json_gain_c_minus_b",
+  "direction": "below",
+  "value": 4.5,
+  "fence": {
+   "width": 0.4,
+   "unit": "tasks"
+  }
+ },
+ "registered_prior": "On v2 low gained 7 arithmetic and JSON passes over the no-thinking baseline at 384 (15 against 8), kept code at 7 of 8, left 2 of 52 blocks unclosed and spent 153 tokens per turn. On fresh families the gain is expected smaller but above the bar (5 to 9 of 24), with the caveat that bar 1 needs headroom: if B already passes 20 or more of 24 the bar cannot fire however good C is; code within one of B (B expected 9 to 11 of 12 at 768 tokens; C 8 to 11), the other kinds within one of B, unterminated 1 to 4 (the two-turn and code kinds likeliest), tokens 9,000 to 12,000 and time 1,100 to 1,500 s. B against A: 768 tokens is expected to recover the one or two no-thinking replies the 384 budget cut and change nothing else (identical greedy prefixes). Reliability: low closed its block on 50 of 52 v2 battery turns; no low-effort conversation has been run before this (the earlier reuse evidence, 24 of 24, was thinking-off, and the earlier thinking conversation ran at the template's default effort with a 256-token budget and was cut once); the travel transcript is expected non-empty on all eight turns under low (the shortening came with thinking off at 48 to 96-token budgets; the factual conversation's one-word turns are the designed stress), addressed on 28 to 32 of 32, no fallback after a closed turn, replay token-equal. The weakest bars are expected to be 7 (the addressing checks are strict) and 1 (fresh families, headroom). Expected outcome: a FIRE on all nine with bar 1 or bar 7 the likeliest HOLD. Every fence is a rounding fence, not a noise fence: one greedy pass per arm on 60 tasks is a deployment smoke decision at the lab's single-seed floor."
+}

@@ -1,0 +1,816 @@
+{
+ "collection": "qwen_battery_v3",
+ "version": 3,
+ "seed": "qwen-battery-v3-seed-23",
+ "rules": {
+  "decoding": "greedy",
+  "enable_thinking": false,
+  "system": null,
+  "max_tokens_per_turn": 384,
+  "context_cap": 8192,
+  "code_time_limit_s": 10,
+  "code_sandbox": "sandbox-exec: no network, no writes outside the task's temp dir, no reads under /Users, /Volumes or /private/etc, no exec but the interpreter, empty environment; CPU 10 s, 1 MiB file-size and one-process limits inside the sandboxed process; memory is NOT limited (macOS refuses to lower RLIMIT_DATA)"
+ },
+ "tasks": [
+  {
+   "id": "arith-01",
+   "kind": "arith",
+   "family": "sum3",
+   "turns": [
+    "What is 28961 + 24918 + 99816? Answer with the number only."
+   ],
+   "expected": 153695
+  },
+  {
+   "id": "arith-02",
+   "kind": "arith",
+   "family": "diff_prod",
+   "turns": [
+    "What is 95 * 64 - 39 * 70? Answer with the number only."
+   ],
+   "expected": 3350
+  },
+  {
+   "id": "arith-03",
+   "kind": "arith",
+   "family": "quotient",
+   "turns": [
+    "What is the integer quotient of 15196 divided by 22 (ignore the remainder)? Answer with the number only."
+   ],
+   "expected": 690
+  },
+  {
+   "id": "arith-04",
+   "kind": "arith",
+   "family": "lcm",
+   "turns": [
+    "What is the least common multiple of 28 and 8? Answer with the number only."
+   ],
+   "expected": 56
+  },
+  {
+   "id": "arith-05",
+   "kind": "arith",
+   "family": "pct_change",
+   "turns": [
+    "A price goes from 245 to 343. What is the percent change (a positive or negative whole number)? Answer with the number only."
+   ],
+   "expected": 40
+  },
+  {
+   "id": "arith-06",
+   "kind": "arith",
+   "family": "range",
+   "turns": [
+    "What is the range (largest minus smallest) of these numbers: 1857, 1704, 3169, 5889, 4681, 5962? Answer with the number only."
+   ],
+   "expected": 4258
+  },
+  {
+   "id": "arith-07",
+   "kind": "arith",
+   "family": "square",
+   "turns": [
+    "What is 830 squared? Answer with the number only."
+   ],
+   "expected": 688900
+  },
+  {
+   "id": "arith-08",
+   "kind": "arith",
+   "family": "digit_sum",
+   "turns": [
+    "What is the sum of the digits of 26796452? Answer with the number only."
+   ],
+   "expected": 41
+  },
+  {
+   "id": "arith-09",
+   "kind": "arith",
+   "family": "mean",
+   "turns": [
+    "What is the mean (average) of these five numbers: 227, 222, 197, 226, 243? Answer with the number only."
+   ],
+   "expected": 223
+  },
+  {
+   "id": "arith-10",
+   "kind": "arith",
+   "family": "prod_mod",
+   "turns": [
+    "What is (678 * 209) mod 72 (the remainder when the product is divided by 72)? Answer with the number only."
+   ],
+   "expected": 6
+  },
+  {
+   "id": "arith-11",
+   "kind": "arith",
+   "family": "sum3",
+   "turns": [
+    "What is 4635 + 32635 + 75488? Answer with the number only."
+   ],
+   "expected": 112758
+  },
+  {
+   "id": "arith-12",
+   "kind": "arith",
+   "family": "diff_prod",
+   "turns": [
+    "What is 63 * 86 - 19 * 76? Answer with the number only."
+   ],
+   "expected": 3974
+  },
+  {
+   "id": "json-01",
+   "kind": "json",
+   "family": "invoice",
+   "turns": [
+    "Here is an invoice as JSON:\n{\"lines\": [{\"item\": \"hinge-8\", \"qty\": 2, \"price\": 25.05}, {\"item\": \"hinge-4\", \"qty\": 4, \"price\": 29.35}], \"discount_percent\": 25}\nReturn ONLY a JSON object {\"subtotal\": <number>, \"discount\": <number>, \"total\": <number>} where subtotal is the sum of qty times price, discount is discount_percent of the subtotal, and total is subtotal minus discount, each rounded to 2 decimals."
+   ],
+   "expected": {
+    "subtotal": 167.5,
+    "discount": 41.88,
+    "total": 125.62
+   },
+   "schema": {
+    "subtotal": "number",
+    "discount": "number",
+    "total": "number"
+   },
+   "tol": {
+    "subtotal": 0.011,
+    "discount": 0.011,
+    "total": 0.021
+   }
+  },
+  {
+   "id": "json-02",
+   "kind": "json",
+   "family": "inventory",
+   "turns": [
+    "Here is an inventory as CSV:\nproduct,category,qty\nP256,glass,12\nP991,glass,10\nP220,glass,31\nP705,glass,1\nP173,wood,3\nReturn ONLY a JSON object {\"rows_per_category\": {<category>: <integer count of rows>}, \"total_qty\": <integer>, \"largest_row\": <product with the largest qty>}."
+   ],
+   "expected": {
+    "rows_per_category": {
+     "glass": 4,
+     "wood": 1
+    },
+    "total_qty": 57,
+    "largest_row": "P220"
+   },
+   "schema": {
+    "rows_per_category": "dict",
+    "total_qty": "integer",
+    "largest_row": "string"
+   },
+   "tol": {}
+  },
+  {
+   "id": "json-03",
+   "kind": "json",
+   "family": "readings",
+   "turns": [
+    "Here are temperature readings, one per line as key=value:\ntemp_fri=6\ntemp_sun=-1\ntemp_tue=15\ntemp_sat=9\ntemp_thu=5\ntemp_mon=0\nReturn ONLY a JSON object {\"max_key\": <the key of the largest value, e.g. temp_mon>, \"min_key\": <the key of the smallest value>, \"mean\": <number, the mean rounded to 1 decimal>}."
+   ],
+   "expected": {
+    "max_key": "temp_tue",
+    "min_key": "temp_sun",
+    "mean": 5.666666666666667
+   },
+   "schema": {
+    "max_key": "string",
+    "min_key": "string",
+    "mean": "number"
+   },
+   "tol": {
+    "mean": 0.051
+   }
+  },
+  {
+   "id": "json-04",
+   "kind": "json",
+   "family": "roster2",
+   "turns": [
+    "Here is a roster with two scores per student as CSV:\nname,s1,s2\nkai,34,93\nmia,59,71\nlee,32,35\nReturn ONLY a JSON object {\"best_avg_name\": <the name with the highest average of s1 and s2>, \"n_above\": <integer, how many students have an average strictly above 70>, \"count\": <integer, number of students>}."
+   ],
+   "expected": {
+    "best_avg_name": "mia",
+    "n_above": 0,
+    "count": 3
+   },
+   "schema": {
+    "best_avg_name": "string",
+    "n_above": "integer",
+    "count": "integer"
+   },
+   "tol": {}
+  },
+  {
+   "id": "json-05",
+   "kind": "json",
+   "family": "invoice",
+   "turns": [
+    "Here is an invoice as JSON:\n{\"lines\": [{\"item\": \"bracket-6\", \"qty\": 7, \"price\": 5.42}, {\"item\": \"bracket-9\", \"qty\": 9, \"price\": 25.99}], \"discount_percent\": 5}\nReturn ONLY a JSON object {\"subtotal\": <number>, \"discount\": <number>, \"total\": <number>} where subtotal is the sum of qty times price, discount is discount_percent of the subtotal, and total is subtotal minus discount, each rounded to 2 decimals."
+   ],
+   "expected": {
+    "subtotal": 271.85,
+    "discount": 13.59,
+    "total": 258.26
+   },
+   "schema": {
+    "subtotal": "number",
+    "discount": "number",
+    "total": "number"
+   },
+   "tol": {
+    "subtotal": 0.011,
+    "discount": 0.011,
+    "total": 0.021
+   }
+  },
+  {
+   "id": "json-06",
+   "kind": "json",
+   "family": "inventory",
+   "turns": [
+    "Here is an inventory as CSV:\nproduct,category,qty\nP529,paint,35\nP173,wire,34\nP182,glass,12\nP320,glass,9\nP942,glass,13\nP507,glass,25\nReturn ONLY a JSON object {\"rows_per_category\": {<category>: <integer count of rows>}, \"total_qty\": <integer>, \"largest_row\": <product with the largest qty>}."
+   ],
+   "expected": {
+    "rows_per_category": {
+     "paint": 1,
+     "wire": 1,
+     "glass": 4
+    },
+    "total_qty": 128,
+    "largest_row": "P529"
+   },
+   "schema": {
+    "rows_per_category": "dict",
+    "total_qty": "integer",
+    "largest_row": "string"
+   },
+   "tol": {}
+  },
+  {
+   "id": "json-07",
+   "kind": "json",
+   "family": "readings",
+   "turns": [
+    "Here are temperature readings, one per line as key=value:\ntemp_sun=17\ntemp_thu=23\ntemp_sat=6\ntemp_wed=7\nReturn ONLY a JSON object {\"max_key\": <the key of the largest value, e.g. temp_mon>, \"min_key\": <the key of the smallest value>, \"mean\": <number, the mean rounded to 1 decimal>}."
+   ],
+   "expected": {
+    "max_key": "temp_thu",
+    "min_key": "temp_sat",
+    "mean": 13.25
+   },
+   "schema": {
+    "max_key": "string",
+    "min_key": "string",
+    "mean": "number"
+   },
+   "tol": {
+    "mean": 0.051
+   }
+  },
+  {
+   "id": "json-08",
+   "kind": "json",
+   "family": "roster2",
+   "turns": [
+    "Here is a roster with two scores per student as CSV:\nname,s1,s2\nola,43,100\nmia,40,96\nlee,72,34\nReturn ONLY a JSON object {\"best_avg_name\": <the name with the highest average of s1 and s2>, \"n_above\": <integer, how many students have an average strictly above 70>, \"count\": <integer, number of students>}."
+   ],
+   "expected": {
+    "best_avg_name": "ola",
+    "n_above": 1,
+    "count": 3
+   },
+   "schema": {
+    "best_avg_name": "string",
+    "n_above": "integer",
+    "count": "integer"
+   },
+   "tol": {}
+  },
+  {
+   "id": "json-09",
+   "kind": "json",
+   "family": "invoice",
+   "turns": [
+    "Here is an invoice as JSON:\n{\"lines\": [{\"item\": \"bracket-9\", \"qty\": 8, \"price\": 14.26}, {\"item\": \"bolt-1\", \"qty\": 7, \"price\": 2.14}, {\"item\": \"screw-8\", \"qty\": 5, \"price\": 21.49}], \"discount_percent\": 25}\nReturn ONLY a JSON object {\"subtotal\": <number>, \"discount\": <number>, \"total\": <number>} where subtotal is the sum of qty times price, discount is discount_percent of the subtotal, and total is subtotal minus discount, each rounded to 2 decimals."
+   ],
+   "expected": {
+    "subtotal": 236.51,
+    "discount": 59.13,
+    "total": 177.38
+   },
+   "schema": {
+    "subtotal": "number",
+    "discount": "number",
+    "total": "number"
+   },
+   "tol": {
+    "subtotal": 0.011,
+    "discount": 0.011,
+    "total": 0.021
+   }
+  },
+  {
+   "id": "json-10",
+   "kind": "json",
+   "family": "inventory",
+   "turns": [
+    "Here is an inventory as CSV:\nproduct,category,qty\nP682,wood,21\nP535,glass,32\nP522,glass,20\nP683,paint,26\nP162,paint,34\nP463,wood,23\nReturn ONLY a JSON object {\"rows_per_category\": {<category>: <integer count of rows>}, \"total_qty\": <integer>, \"largest_row\": <product with the largest qty>}."
+   ],
+   "expected": {
+    "rows_per_category": {
+     "wood": 2,
+     "glass": 2,
+     "paint": 2
+    },
+    "total_qty": 156,
+    "largest_row": "P162"
+   },
+   "schema": {
+    "rows_per_category": "dict",
+    "total_qty": "integer",
+    "largest_row": "string"
+   },
+   "tol": {}
+  },
+  {
+   "id": "json-11",
+   "kind": "json",
+   "family": "readings",
+   "turns": [
+    "Here are temperature readings, one per line as key=value:\ntemp_thu=27\ntemp_sat=29\ntemp_wed=12\ntemp_tue=-1\nReturn ONLY a JSON object {\"max_key\": <the key of the largest value, e.g. temp_mon>, \"min_key\": <the key of the smallest value>, \"mean\": <number, the mean rounded to 1 decimal>}."
+   ],
+   "expected": {
+    "max_key": "temp_sat",
+    "min_key": "temp_tue",
+    "mean": 16.75
+   },
+   "schema": {
+    "max_key": "string",
+    "min_key": "string",
+    "mean": "number"
+   },
+   "tol": {
+    "mean": 0.051
+   }
+  },
+  {
+   "id": "json-12",
+   "kind": "json",
+   "family": "roster2",
+   "turns": [
+    "Here is a roster with two scores per student as CSV:\nname,s1,s2\nmia,95,100\njon,70,67\nkai,70,30\nlee,96,69\npip,80,65\nReturn ONLY a JSON object {\"best_avg_name\": <the name with the highest average of s1 and s2>, \"n_above\": <integer, how many students have an average strictly above 70>, \"count\": <integer, number of students>}."
+   ],
+   "expected": {
+    "best_avg_name": "mia",
+    "n_above": 3,
+    "count": 5
+   },
+   "schema": {
+    "best_avg_name": "string",
+    "n_above": "integer",
+    "count": "integer"
+   },
+   "tol": {}
+  },
+  {
+   "id": "code-01",
+   "kind": "code",
+   "name": "is_palindrome",
+   "tests": [
+    "assert is_palindrome('A man, a plan, a canal: Panama') is True",
+    "assert is_palindrome('race a car') is False",
+    "assert is_palindrome('') is True",
+    "assert is_palindrome('No lemon, no melon!') is True"
+   ],
+   "reference": "def is_palindrome(s):\n    t = [c.lower() for c in s if c.isalnum()]\n    return t == t[::-1]\n",
+   "turns": [
+    "Write a Python function is_palindrome(s) that returns True if s reads the same forwards and backwards after removing every non-alphanumeric character and ignoring case, else False. Reply with a single Python code block containing only the function (and any helpers), no prints and no tests."
+   ]
+  },
+  {
+   "id": "code-02",
+   "kind": "code",
+   "name": "second_largest",
+   "tests": [
+    "assert second_largest([3, 1, 4, 4, 2]) == 3",
+    "assert second_largest([5]) is None",
+    "assert second_largest([2, 2, 2]) is None",
+    "assert second_largest([-1, -5, -3]) == -3"
+   ],
+   "reference": "def second_largest(xs):\n    u = sorted(set(xs))\n    return u[-2] if len(u) >= 2 else None\n",
+   "turns": [
+    "Write a Python function second_largest(xs) that returns the second largest DISTINCT value in a list of integers, or None if there is no such value. Reply with a single Python code block containing only the function (and any helpers), no prints and no tests."
+   ]
+  },
+  {
+   "id": "code-03",
+   "kind": "code",
+   "name": "flatten",
+   "tests": [
+    "assert flatten([1, [2, [3, [4]]], 5]) == [1, 2, 3, 4, 5]",
+    "assert flatten([]) == []",
+    "assert flatten([[], [[]], 1]) == [1]",
+    "assert flatten(['a', ['b']]) == ['a', 'b']"
+   ],
+   "reference": "def flatten(x):\n    out = []\n    for v in x:\n        if isinstance(v, list):\n            out.extend(flatten(v))\n        else:\n            out.append(v)\n    return out\n",
+   "turns": [
+    "Write a Python function flatten(x) that flattens arbitrarily nested lists into one flat list, preserving order; non-list items are kept as they are. Reply with a single Python code block containing only the function (and any helpers), no prints and no tests."
+   ]
+  },
+  {
+   "id": "code-04",
+   "kind": "code",
+   "name": "caesar",
+   "tests": [
+    "assert caesar('abc XYZ', 3) == 'def ABC'",
+    "assert caesar('Hello, World!', 0) == 'Hello, World!'",
+    "assert caesar('def', -3) == 'abc'",
+    "assert caesar('a', 27) == 'b'"
+   ],
+   "reference": "def caesar(s, k):\n    out = []\n    for c in s:\n        if 'a' <= c <= 'z':\n            out.append(chr((ord(c) - 97 + k) % 26 + 97))\n        elif 'A' <= c <= 'Z':\n            out.append(chr((ord(c) - 65 + k) % 26 + 65))\n        else:\n            out.append(c)\n    return ''.join(out)\n",
+   "turns": [
+    "Write a Python function caesar(s, k) that shifts every ASCII letter of s by k positions (wrapping within a-z and A-Z, case preserved) and leaves other characters unchanged; k may be negative or larger than 26. Reply with a single Python code block containing only the function (and any helpers), no prints and no tests."
+   ]
+  },
+  {
+   "id": "code-05",
+   "kind": "code",
+   "name": "roman_to_int",
+   "tests": [
+    "assert roman_to_int('III') == 3",
+    "assert roman_to_int('IV') == 4",
+    "assert roman_to_int('MCMXCIV') == 1994",
+    "assert roman_to_int('LVIII') == 58"
+   ],
+   "reference": "def roman_to_int(s):\n    v = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}\n    t = 0\n    for i, c in enumerate(s):\n        if i + 1 < len(s) and v[c] < v[s[i + 1]]:\n            t -= v[c]\n        else:\n            t += v[c]\n    return t\n",
+   "turns": [
+    "Write a Python function roman_to_int(s) that converts a valid Roman numeral string (I V X L C D M, subtractive forms allowed) to an integer. Reply with a single Python code block containing only the function (and any helpers), no prints and no tests."
+   ]
+  },
+  {
+   "id": "code-06",
+   "kind": "code",
+   "name": "merge_intervals",
+   "tests": [
+    "assert merge_intervals([[1, 3], [2, 6], [8, 10], [15, 18]]) == [[1, 6], [8, 10], [15, 18]]",
+    "assert merge_intervals([[1, 4], [4, 5]]) == [[1, 5]]",
+    "assert merge_intervals([]) == []",
+    "assert merge_intervals([[5, 6], [1, 2]]) == [[1, 2], [5, 6]]"
+   ],
+   "reference": "def merge_intervals(iv):\n    out = []\n    for a, b in sorted(iv):\n        if out and a <= out[-1][1]:\n            out[-1][1] = max(out[-1][1], b)\n        else:\n            out.append([a, b])\n    return out\n",
+   "turns": [
+    "Write a Python function merge_intervals(iv) that merges overlapping or touching closed intervals given as a list of [start, end] pairs and returns the merged list sorted by start. Reply with a single Python code block containing only the function (and any helpers), no prints and no tests."
+   ]
+  },
+  {
+   "id": "code-07",
+   "kind": "code",
+   "name": "count_vowels",
+   "tests": [
+    "assert count_vowels('Hello World') == 3",
+    "assert count_vowels('') == 0",
+    "assert count_vowels('AEIOU aeiou') == 10",
+    "assert count_vowels('rhythm') == 0"
+   ],
+   "reference": "def count_vowels(s):\n    return sum(1 for c in s.lower() if c in 'aeiou')\n",
+   "turns": [
+    "Write a Python function count_vowels(s) that returns the number of vowels (a, e, i, o, u, either case) in s. Reply with a single Python code block containing only the function (and any helpers), no prints and no tests."
+   ]
+  },
+  {
+   "id": "code-08",
+   "kind": "code",
+   "name": "top_words",
+   "tests": [
+    "assert top_words('a b a c b a', 2) == [('a', 3), ('b', 2)]",
+    "assert top_words('Dog dog cat. Cat bird', 3) == [('cat', 2), ('dog', 2), ('bird', 1)]",
+    "assert top_words('', 2) == []",
+    "assert top_words('x y', 5) == [('x', 1), ('y', 1)]"
+   ],
+   "reference": "import re\nfrom collections import Counter\ndef top_words(text, k):\n    c = Counter(w for w in re.findall(r'[A-Za-z]+', text.lower()))\n    return sorted(c.items(), key=lambda kv: (-kv[1], kv[0]))[:k]\n",
+   "turns": [
+    "Write a Python function top_words(text, k) that returns the k most frequent lower-cased words (letters only, split on non-letters) as a list of (word, count) tuples, most frequent first, ties broken alphabetically. Reply with a single Python code block containing only the function (and any helpers), no prints and no tests."
+   ]
+  },
+  {
+   "id": "code-09",
+   "kind": "code",
+   "name": "bsearch",
+   "tests": [
+    "assert bsearch([1, 3, 5, 7], 5) == 2",
+    "assert bsearch([1, 3, 5, 7], 4) == -1",
+    "assert bsearch([], 1) == -1",
+    "assert bsearch([2, 2, 2, 3], 2) == 0"
+   ],
+   "reference": "def bsearch(xs, t):\n    lo, hi = 0, len(xs)\n    while lo < hi:\n        mid = (lo + hi) // 2\n        if xs[mid] < t:\n            lo = mid + 1\n        else:\n            hi = mid\n    return lo if lo < len(xs) and xs[lo] == t else -1\n",
+   "turns": [
+    "Write a Python function bsearch(xs, t) that returns the index of t in the sorted list xs using binary search, or -1 if absent; if t occurs more than once return the lowest index. Reply with a single Python code block containing only the function (and any helpers), no prints and no tests."
+   ]
+  },
+  {
+   "id": "code-10",
+   "kind": "code",
+   "name": "diag_sum",
+   "tests": [
+    "assert diag_sum([[1, 2], [3, 4]]) == 5",
+    "assert diag_sum([[7]]) == 7",
+    "assert diag_sum([]) == 0",
+    "assert diag_sum([[1, 0, 0], [0, 2, 0], [0, 0, 3]]) == 6"
+   ],
+   "reference": "def diag_sum(m):\n    return sum(m[i][i] for i in range(len(m)))\n",
+   "turns": [
+    "Write a Python function diag_sum(m) that returns the sum of the main diagonal of a square list-of-lists matrix m; diag_sum([]) returns 0. Reply with a single Python code block containing only the function (and any helpers), no prints and no tests."
+   ]
+  },
+  {
+   "id": "code-11",
+   "kind": "code",
+   "name": "chunk",
+   "tests": [
+    "assert chunk([1, 2, 3, 4, 5], 2) == [[1, 2], [3, 4], [5]]",
+    "assert chunk([], 3) == []",
+    "assert chunk([1, 2, 3], 3) == [[1, 2, 3]]",
+    "assert chunk([1, 2], 5) == [[1, 2]]"
+   ],
+   "reference": "def chunk(xs, n):\n    return [xs[i:i + n] for i in range(0, len(xs), n)]\n",
+   "turns": [
+    "Write a Python function chunk(xs, n) that splits the list xs into consecutive chunks of length n (the last chunk may be shorter); chunk([], n) returns []. Reply with a single Python code block containing only the function (and any helpers), no prints and no tests."
+   ]
+  },
+  {
+   "id": "code-12",
+   "kind": "code",
+   "name": "running_max",
+   "tests": [
+    "assert running_max([1, 3, 2, 5, 4]) == [1, 3, 3, 5, 5]",
+    "assert running_max([]) == []",
+    "assert running_max([2, 2, 1]) == [2, 2, 2]",
+    "assert running_max([-3, -1, -2]) == [-3, -1, -1]"
+   ],
+   "reference": "def running_max(xs):\n    out, m = [], None\n    for v in xs:\n        m = v if m is None or v > m else m\n        out.append(m)\n    return out\n",
+   "turns": [
+    "Write a Python function running_max(xs) that returns a list where element i is the maximum of xs[0..i]. Reply with a single Python code block containing only the function (and any helpers), no prints and no tests."
+   ]
+  },
+  {
+   "id": "instruct-01",
+   "kind": "instruct",
+   "check": "sentences",
+   "params": {
+    "n": 2
+   },
+   "turns": [
+    "Describe a lighthouse in exactly two sentences."
+   ]
+  },
+  {
+   "id": "instruct-02",
+   "kind": "instruct",
+   "check": "starts_with",
+   "params": {
+    "word": "indeed"
+   },
+   "turns": [
+    "Agree that reading is useful in one sentence that begins with the word Indeed."
+   ]
+  },
+  {
+   "id": "instruct-03",
+   "kind": "instruct",
+   "check": "no_commas",
+   "params": {},
+   "turns": [
+    "Explain what a thermostat does in one or two sentences without using any commas."
+   ]
+  },
+  {
+   "id": "instruct-04",
+   "kind": "instruct",
+   "check": "bullets",
+   "params": {
+    "n": 4
+   },
+   "turns": [
+    "List four tools found in a kitchen as a bullet list: four lines, each starting with '- ', nothing else."
+   ]
+  },
+  {
+   "id": "instruct-05",
+   "kind": "instruct",
+   "check": "alphabetical",
+   "params": {
+    "n": 5
+   },
+   "turns": [
+    "List five fruits in alphabetical order, one per line, lower case, nothing else."
+   ]
+  },
+  {
+   "id": "instruct-06",
+   "kind": "instruct",
+   "check": "ends_question",
+   "params": {},
+   "turns": [
+    "Write one sentence inviting a friend to lunch; it must end with a question mark."
+   ]
+  },
+  {
+   "id": "instruct-07",
+   "kind": "instruct",
+   "check": "exact_words",
+   "params": {
+    "n": 12
+   },
+   "turns": [
+    "Describe the sea in exactly 12 words."
+   ]
+  },
+  {
+   "id": "instruct-08",
+   "kind": "instruct",
+   "check": "all_lower",
+   "params": {},
+   "turns": [
+    "Write one sentence about autumn entirely in lower-case letters."
+   ]
+  },
+  {
+   "id": "instruct-09",
+   "kind": "instruct",
+   "check": "include_two",
+   "params": {
+    "words": [
+     "river",
+     "bridge"
+    ]
+   },
+   "turns": [
+    "Write two sentences about a town. Use both the word 'river' and the word 'bridge'."
+   ]
+  },
+  {
+   "id": "instruct-10",
+   "kind": "instruct",
+   "check": "sentences",
+   "params": {
+    "n": 3
+   },
+   "turns": [
+    "Explain why the sky looks blue in exactly three sentences."
+   ]
+  },
+  {
+   "id": "twoturn-01",
+   "kind": "twoturn",
+   "family": "list_len",
+   "turns": [
+    "Remember this list: cobalt, tulip, maple, falcon, copper. Reply only: noted.",
+    "How many items were in the list I gave you? Reply with the number only."
+   ],
+   "expected": "5"
+  },
+  {
+   "id": "twoturn-02",
+   "kind": "twoturn",
+   "family": "product",
+   "turns": [
+    "Remember two numbers: 10 and 4. Reply only: noted.",
+    "Multiply the two numbers I gave you and reply with the product only."
+   ],
+   "expected": "40"
+  },
+  {
+   "id": "twoturn-03",
+   "kind": "twoturn",
+   "family": "first_word",
+   "turns": [
+    "Remember this sentence: Bicycles drift over the quiet harbour at dusk. Reply only: noted.",
+    "What was the first word of the sentence I asked you to remember? Reply with that one word only."
+   ],
+   "expected": "bicycles"
+  },
+  {
+   "id": "twoturn-04",
+   "kind": "twoturn",
+   "family": "pair",
+   "turns": [
+    "My favourite colour is teal and my favourite animal is the lynx. Reply only: noted.",
+    "Which animal did I say was my favourite? Reply with that one word only."
+   ],
+   "expected": "lynx"
+  },
+  {
+   "id": "twoturn-05",
+   "kind": "twoturn",
+   "family": "list_len",
+   "turns": [
+    "Remember this list: willow, maple, granite. Reply only: noted.",
+    "How many items were in the list I gave you? Reply with the number only."
+   ],
+   "expected": "3"
+  },
+  {
+   "id": "twoturn-06",
+   "kind": "twoturn",
+   "family": "product",
+   "turns": [
+    "Remember two numbers: 3 and 9. Reply only: noted.",
+    "Multiply the two numbers I gave you and reply with the product only."
+   ],
+   "expected": "27"
+  },
+  {
+   "id": "twoturn-07",
+   "kind": "twoturn",
+   "family": "first_word",
+   "turns": [
+    "Remember this sentence: Meteors drift over the quiet harbour at dusk. Reply only: noted.",
+    "What was the first word of the sentence I asked you to remember? Reply with that one word only."
+   ],
+   "expected": "meteors"
+  },
+  {
+   "id": "twoturn-08",
+   "kind": "twoturn",
+   "family": "pair",
+   "turns": [
+    "My favourite colour is indigo and my favourite animal is the heron. Reply only: noted.",
+    "Which animal did I say was my favourite? Reply with that one word only."
+   ],
+   "expected": "heron"
+  },
+  {
+   "id": "degen-01",
+   "kind": "degen",
+   "check": "repeat_phrase",
+   "params": {
+    "phrase": "red door",
+    "n": 7
+   },
+   "turns": [
+    "Write the phrase 'red door' exactly 7 times, separated by commas, nothing else."
+   ]
+  },
+  {
+   "id": "degen-02",
+   "kind": "degen",
+   "check": "countdown",
+   "params": {
+    "a": 16,
+    "b": 9
+   },
+   "turns": [
+    "Count down from 16 to 9 in digits, separated by commas, nothing else."
+   ]
+  },
+  {
+   "id": "degen-03",
+   "kind": "degen",
+   "check": "hyphen_spell",
+   "params": {
+    "word": "river"
+   },
+   "turns": [
+    "Spell the word river with its letters separated by hyphens, nothing else."
+   ]
+  },
+  {
+   "id": "degen-04",
+   "kind": "degen",
+   "check": "one_word",
+   "params": {},
+   "turns": [
+    "Which planet is closest to the Sun? Answer with exactly one word."
+   ],
+   "expected": "mercury"
+  },
+  {
+   "id": "degen-05",
+   "kind": "degen",
+   "check": "letters",
+   "params": {
+    "n": 6
+   },
+   "turns": [
+    "Write the first 6 letters of the English alphabet in lower case, separated by commas, nothing else."
+   ]
+  },
+  {
+   "id": "degen-06",
+   "kind": "degen",
+   "check": "repeat_phrase",
+   "params": {
+    "phrase": "green hill",
+    "n": 4
+   },
+   "turns": [
+    "Write the phrase 'green hill' exactly 4 times, separated by commas, nothing else."
+   ]
+  }
+ ]
+}

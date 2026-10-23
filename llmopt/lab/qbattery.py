@@ -246,7 +246,7 @@ def check_json(task, replies) -> tuple[bool, str]:
             return False, f"missing key {k}"
         v = obj[k]
         ok = {"number": isinstance(v, (int, float)) and not isinstance(v, bool), "integer": isinstance(v, int) and not isinstance(v, bool),
-              "string": isinstance(v, str), "list": isinstance(v, list)}[ty]
+              "string": isinstance(v, str), "list": isinstance(v, list), "dict": isinstance(v, dict)}[ty]
         if not ok:
             return False, f"key {k} is not {ty}"
     exp = task["expected"]
@@ -260,6 +260,9 @@ def check_json(task, replies) -> tuple[bool, str]:
                 return False, f"{k}: {gv} != {ev}"
         elif isinstance(ev, str):
             if str(gv).strip().lower() != ev.lower():
+                return False, f"{k}: {gv} != {ev}"
+        elif isinstance(ev, dict):          # v3: a mapping of string keys to integers, keys compared case-insensitively
+            if not isinstance(gv, dict) or {str(a).strip().lower(): b for a, b in gv.items()} != {str(a).lower(): b for a, b in ev.items()}:
                 return False, f"{k}: {gv} != {ev}"
         elif gv != ev:
             return False, f"{k}: {gv} != {ev}"
@@ -369,6 +372,39 @@ def check_instruct(task, replies) -> tuple[bool, str]:
     if c == "word_band":
         n = len(re.findall(r"[A-Za-z0-9']+", t))
         return p["lo"] <= n <= p["hi"], f"{n} words, band {p['lo']} to {p['hi']}"
+    # ---- v3 constraints (QWEN-LOW-RELEASE-0 collection; the v2 branches above are unchanged)
+    if c == "sentences":
+        plain = re.sub(r"[\"\u201c\u201d\u2019'*_]", "", t)                    # quotes and markdown marks do not end sentences
+        plain = re.sub(r"\b(e\.g|i\.e|etc|vs|Mr|Mrs|Dr)\.", lambda m: m.group(0).replace(".", ""), plain)
+        n = len([x for x in re.split(r"(?<=[.!?])\s+", plain) if x.strip()])
+        return n == p["n"], f"{n} sentences, wanted {p['n']}"
+    if c == "starts_with":
+        first = re.sub(r"[^a-z]", "", t.split()[0].lower()) if t.split() else ""
+        return first == p["word"], f"first word {first!r}"
+    if c == "no_commas":
+        return "," not in t and bool(t), "no commas" if "," not in t else "comma present"
+    if c == "bullets":
+        lines = [ln.strip() for ln in t.splitlines() if ln.strip()]
+        ok = len(lines) == p["n"] and all(re.match(r"-\s*\S", ln) for ln in lines)
+        return ok, f"{len(lines)} lines, dash bullets {ok}"
+    if c == "alphabetical":
+        lines = [ln.strip() for ln in t.splitlines() if ln.strip()]
+        plain = all(re.fullmatch(r"[a-z][a-z ]*", ln) for ln in lines)       # lower-case words only: no numbering, bullets or capitals
+        ok = len(lines) == p["n"] and plain and lines == sorted(lines) and len(set(lines)) == len(lines)
+        return ok, f"{len(lines)} lines, plain lower {plain}, alphabetical {lines == sorted(lines)}, distinct {len(set(lines)) == len(lines)}"
+    if c == "ends_question":
+        tt = t.rstrip("\"'\u201d\u2019*_ ")
+        return tt.endswith("?"), f"ends with {tt[-1:]!r}"
+    if c == "exact_words":
+        n = len([w for w in t.split() if re.search(r"[A-Za-z0-9]", w)])    # whitespace tokens with a letter or digit: a hyphenated compound is one word
+        return n == p["n"], f"{n} words, wanted {p['n']}"
+    if c == "all_lower":
+        letters = [ch for ch in t if ch.isalpha()]
+        return bool(letters) and all(ch.islower() for ch in letters), "all letters lower" if letters else "no letters"
+    if c == "include_two":
+        low = t.lower()
+        have = [w for w in p["words"] if re.search(r"\b" + re.escape(w) + r"\b", low)]
+        return len(have) == len(p["words"]), f"present {have}"
     raise ValueError(c)
 
 
@@ -401,6 +437,26 @@ def check_degen(task, replies, results) -> tuple[bool, str]:
         lines = [ln for ln in t.splitlines() if ln.strip()]
         ok = len(lines) == 1 and task["expected"] in t.lower()
         return ok, f"{len(lines)} lines; expected {task['expected']}"
+    # ---- v3 checks
+    if c == "repeat_phrase":
+        parts = [x.strip().strip(".\"'\u201c\u201d\u2019").lower() for x in t.split(",") if x.strip()]
+        ok = len(parts) == p["n"] and all(x == p["phrase"] for x in parts)
+        return ok, f"{len(parts)} comma-separated parts"
+    if c == "countdown":
+        nums = [int(x) for x in re.findall(r"-?\d+", t)]
+        ok = nums == list(range(p["a"], p["b"] - 1, -1)) and "," in t
+        return ok, f"numbers {nums[:12]}"
+    if c == "hyphen_spell":
+        got = re.sub(r"\s*-\s*", "-", t.strip().strip(".\"'\u201c\u201d")).lower()
+        return got == "-".join(p["word"]), f"got {t[:30]!r}"
+    if c == "one_word":
+        words = re.findall(r"[A-Za-z']+", t)
+        ok = len(words) == 1 and words[0].lower() == task["expected"]
+        return ok, f"{len(words)} words; expected {task['expected']}"
+    if c == "letters":
+        parts = [x.strip().strip(".").lower() for x in t.split(",") if x.strip()]
+        ok = parts == [chr(ord("a") + i) for i in range(p["n"])]
+        return ok, f"letters {parts[:8]}"
     raise ValueError(c)
 
 
