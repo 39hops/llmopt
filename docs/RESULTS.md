@@ -84142,3 +84142,101 @@ development half of this collection and the bar read on the evaluation
 half once.
 
 ## AMENDMENT QWEN-MLP-COUPLED-0-COUNT (amends PRE-REG QWEN-MLP-COUPLED-0; clerical): the collection holds 44 hand-written prompts (6 chat, 6 math, 6 code, 6 reasoning, 6 knowledge, 4 long_context, 4 degeneration, 6 out-of-domain), not "forty", plus the 4 seeded arithmetic prompts, 48 in all as the registration's counts (21 development, 27 evaluation) already said; nothing else in the registration changes (2026-10-23)
+
+## OBSERVATION QWEN-INFERENCE-BASELINE-0-FREEZE: the local inference entry point for arm C, its conversation abstraction and the first functional-quality battery (qwen_battery_v1: 46 tasks across seeded arithmetic, structured JSON, sandboxed Python with hidden tests, constrained instruction following, two-turn retention and termination behaviour) are frozen at this commit BEFORE any task is scored: the collection's sha256, its task generators and seed, every validator, the sandbox profile, the time limits and the decoding rules (greedy, the pinned chat template with enable_thinking False, no system prompt, 384 output tokens per turn, context cap 8,192) are committed here, and the scoring run that follows reads them once and changes nothing (2026-10-23, Mac)
+
+Artin's GO of 2026-10-23 (QWEN-INFERENCE-BASELINE-0, phases A to C):
+turn the qualified arm C into a usable local inference program and
+establish an independent, mechanically scored functional baseline;
+freeze before scoring. This entry is the freeze record; the
+measurements come in OBSERVATION QWEN-INFERENCE-BASELINE-0.
+
+Phase A, the entry point. llmopt/lab/qtower.py adopts the qualified
+tower construction verbatim from scratch/qwen_metal_qual.py (the frozen
+record of the census and the serving receipts: fused W4/S16 linears,
+the sanitizer conventions, the host-decoded embedding, the exact HF
+l2norm on the DeltaNet q and k installed under the mlx-lm source guard
+that REFUSES if the vendor source changed); tests/test_qtower_adoption.py
+pins the two bodies equal and the guard present. llmopt/lab/qserve.py:
+Engine (verifies the artifact under its digest chain, refuses any kernel
+generation but 5, applies the explicit 2 GiB allocator-cache limit,
+loads the pinned tokenizer, serves chunk-256 GEMM prefill with the
+final-position head and fused cached decode; stop tokens the template's
+<|im_end|> and <|endoftext|>, never continued past; a context cap of
+8,192 tokens that refuses rather than truncates), GenerationResult (ids,
+text, stop reason and stop token, timings, memory, and the exact cache
+accounting: the first token comes from the prefill's final logits, each
+later token from feeding the previous one, so after a stop token every
+emitted token has been fed and after a budget stop the last one has
+not; both counts recorded), Session (full-transcript replay as the
+reference; an incremental mode that reuses the cache only when the
+template's rendering of the whole transcript has the fed token
+sequence as an exact prefix, checked every turn, else replays and says
+so). scripts/qwen_chat.py is the command-line face (one prompt or an
+interactive loop, --no-thinking and --thinking pass the template's own
+control, --json writes the receipts). No model, codec, kernel or
+default changes.
+
+Phase B, the conversation tests (tests/test_qserve.py). On a
+deterministic stub model whose next token is a fixed function of the
+fed sequence: the first token comes from the prefill and every later
+token is fed exactly once in order; a budget stop leaves the last token
+unfed and the cache one short; a stop token is neither emitted nor fed;
+the context cap refuses without truncating; empty, malformed and
+ill-typed inputs are refused; a replay session's fresh cache holds
+exactly that turn's feed and a new session repeats turn one unchanged;
+reset clears everything; incremental equals replay token for token when
+the prefix holds. On the real tower (LLMOPT_QWEN_LIVE=1, run on this
+Mac): one turn stops on a stop token with the cache at prompt plus
+generated; a two-turn session recalls a fact from turn one ("teal");
+incremental and replay sessions produce identical ids over two turns.
+All pass at this commit (16 passed, 3 live tests passed when run live).
+
+Phase C, the battery (llmopt/lab/qbattery.py; the frozen collection
+scratch/evalsets/qwen_battery_v1.json, version 1, seed
+qwen-battery-v1-seed-11, sha256 recorded by the scoring receipt). 46
+tasks: 10 seeded integer arithmetic (sum, difference, product,
+modulus, gcd, percentage; the last integer in the reply must equal the
+expected value), 8 structured JSON tasks (seeded orders and rosters;
+the first JSON object must parse, match a key-and-type schema and equal
+the values computed from the seed, numbers within 0.011), 8 short
+Python functions with hidden tests (reverse words, balanced brackets,
+two-sum, run-length encoding, primality, transpose, anagram groups,
+Fibonacci modulo; the reply's code block runs against the tests in the
+sandbox), 8 constrained instructions (exact line counts, a required and
+a forbidden word, all capitals, a required last word, a numbered list,
+a word-count band), 6 two-turn tasks (a code word or number given in
+turn one and asked for in turn two; an addition continued in turn two),
+6 termination tasks (repeat a word exactly N times, count a range,
+answer in one line; the stop reason must be a stop token). The
+collection shares no prompt, by normalised containment, with the 24
+MODEL-1 prompts, the MODEL-2 prompt, either corpus, or the 44
+coupled-MLP prompts (checked at freeze: 0 overlaps against 126 texts).
+The code sandbox is macOS sandbox-exec with an explicit profile: no
+network, no writes outside the task's own temporary directory, no reads
+under /Users, /Volumes or /private/etc, no execution of anything but
+the interpreter, an emptied environment, a 10 s CPU limit and a 1 MiB
+file-size limit; tests/test_qbattery.py shows a correct solution
+passing and home reads, a network connection, writes to /tmp and an
+infinite loop failing; a platform without the sandbox books the code
+tasks HOLD. Scoring rules: greedy decoding; the pinned chat template
+with enable_thinking False (the template's own control; thinking mode
+spends the budget on a reasoning scaffold, so the baseline measures the
+direct-answer mode; the thinking mode is reported separately only if
+measured); no system message; 384 output tokens per turn; context cap
+8,192; a fresh replay session per task; pass or fail by the committed
+validators, with plumbing failures (exceptions, context refusals,
+sandbox failures) recorded as error apart from model failures.
+
+Disclosed: a smoke run of one task per kind on the real engine was
+read before this freeze (logs/qwen_battery/smoke/results.json, not
+evidence; five of six passed, the JSON order task failed on its
+arithmetic) and nothing in the collection, the validators or the rules
+was changed after it; the performance driver's smoke was likewise read.
+
+What this battery is not: 46 tasks written and seeded in one sitting
+validate the system and expose gross weaknesses; they do not establish
+general capability or standing against any public benchmark, and the
+entry that scores them will say so. No prompt or rule changes after the
+scoring run; any iteration belongs to a separately versioned
+collection.

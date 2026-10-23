@@ -4692,6 +4692,14 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qwen_battery/smoke/results.json": {
+   "bytes": 15499,
+   "exists": true,
+   "local_only": true,
+   "sha256": "84367b4d52924f167937a20c32414fb6083c9247f2675243e5dc9ac6b6a7699d",
+   "source": "results",
+   "tracked": false
+  },
   "logs/qwen_e0/C/positions.jsonl": {
    "bytes": 5664189,
    "exists": true,

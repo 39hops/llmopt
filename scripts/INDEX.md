@@ -1227,6 +1227,12 @@ Depth anatomy: WHERE in the stack does the rewrite decision form?
 
 - `main(ckpt: str, d: int, layers: int, ffn: int, heads: int, n: int) -> None`
 
+### scripts/qwen_chat.py
+Local greedy chat with the qualified Qwen3.8-27B arm C on this Mac (QWEN-INFERENCE-BASELINE-0): the command-line face of llmopt.lab.qserve.
+
+- `_report(res, load_s=None)`
+- `main() -> int`
+
 ### scripts/recover_receipt.py
 Restore ONE booked receipt whose file exists on no checkout.
 
@@ -5211,6 +5217,11 @@ QWEN-ATTN-ATTRIB-1 observations builder + deterministic reading.
 - `resolution(outcomes: dict, meas: dict) -> tuple`
 - `main()`
 
+### scratch/qwen_battery_run.py
+QWEN-INFERENCE-BASELINE-0, phase E: score the frozen battery (scratch/evalsets/qwen_battery_v1.json) ONCE on the local arm C engine (llmopt.lab.qserve) under the collection's frozen rules (greedy, enable_thinking False, no system prompt, 384 output tokens per turn, context cap 8,192), each task in a fresh replay session, every turn's prompt ids, generated ids, text, stop reason, timings and memory recorded, every verdict by the committed validators (llmopt.lab.qbattery.score; code tasks in the sandbox, HOLD when the sandbox is unavailable). Plumbing failures (an exception, a context refusal, a sandbox failure) are recorded as "error" apart from model failures. Receipt logs/qwen_battery/results.json (refuse-if-exists; OUT overrides). SMOKE=1 scores the first task of each kind into logs/qwen_battery/smoke/results.json.
+
+- `main() -> None`
+
 ### scratch/qwen_ble2_adjudicate.py
 QWEN-BLE-FREEGEN-2 adjudicator: fail-closed row gate, then bars.
 
@@ -5806,6 +5817,11 @@ QWEN-RUNTIME-0R minimal CPU reference: decode a WHOLE-0T artifact per layer and 
 - `decode(name)` — SINGLE decode path: llmopt.lab.qcodec (the canonical module
 - `build()`
 - `main()`
+
+### scratch/qwen_serve_perf.py
+QWEN-INFERENCE-BASELINE-0, phase D: the user-facing performance and reliability of the local arm C engine (llmopt.lab.qserve), measured as a user sees it, not as isolated kernel time.
+
+- `main() -> None`
 
 ### scratch/qwen_stream_probe.py
 QWEN-STREAM-PROBE-0: does the 0S codec ranking transport to a DENSE model's FFN? Descriptive, single layer, 3080.
@@ -7029,6 +7045,29 @@ WHOLE-0T artifact qualification as a LIBRARY, not a workflow.
 - `qualify_artifact(art_dir: str, vendor_index: str, chain_path: str | None=None, allow_unchained: bool=False, preflight: bool=True) -> dict` — Full ladder; returns the manifest + a report dict. The ONLY
 - `load_manifest_verified(art_dir: str, vendor_index: str, chain_path: str | None=None, **kw) -> dict`
 
+### llmopt/lab/qbattery.py
+The functional-quality battery for the local Qwen3.8-27B arm C (QWEN-INFERENCE-BASELINE-0): task generators (seeded, versioned), validators (programs, never a text match where several answers are right) and an isolated code runner. The frozen collection a run scores is scratch/evalsets/qwen_battery_v1.json, written by scratch/qwen_battery_gen.py from these generators; a run records the collection's sha256 and never edits it.
+
+- `gen_arith(r: random.Random, n: int) -> list`
+- `gen_json(r: random.Random, n: int) -> list`
+- `gen_code(r: random.Random, n: int) -> list`
+- `gen_instruct(r: random.Random, n: int) -> list`
+- `gen_twoturn(r: random.Random, n: int) -> list`
+- `gen_degen(r: random.Random, n: int) -> list`
+- `build(seed: str=SEED) -> dict`
+- `_last_int(text: str) -> Optional[int]`
+- `_first_json(text: str)`
+- `_code_block(text: str) -> Optional[str]`
+- `check_arith(task, replies) -> tuple[bool, str]`
+- `check_json(task, replies) -> tuple[bool, str]`
+- `sandbox_available() -> bool`
+- `run_code_sandboxed(code: str, tests: list, time_limit_s: int=10) -> dict` — Run the candidate code plus the tests in a deny-default macOS sandbox:
+- `check_code(task, replies) -> tuple[Optional[bool], str]`
+- `check_instruct(task, replies) -> tuple[bool, str]`
+- `check_twoturn(task, replies) -> tuple[bool, str]`
+- `check_degen(task, replies, results) -> tuple[bool, str]`
+- `score(task: dict, replies: list, results: list) -> dict`
+
 ### llmopt/lab/qcodec.py
 Canonical WHOLE-0T payload decoders (the one shared decode path).
 
@@ -7120,6 +7159,22 @@ X/K scoring core for the Qwen artifact tree (lab adoption).
 - `sha_arr(a: np.ndarray) -> str`
 - `fsha(p: str) -> str`
 - `teacher_receipt_block(man_t: dict, teacher_dir: str) -> dict` — Teacher provenance block for a scorer receipt, with the renamed
+
+### llmopt/lab/qserve.py
+Local inference for the qualified Qwen3.8-27B arm C (QWEN-INFERENCE- BASELINE-0): a library entry point that loads the frozen artifact under its digest chain, serves greedy generation on the qualified Metal path (generation 5 kernels, chunk-256 GEMM prefill with the final-position head, fused cached decode, the explicit 2 GiB allocator-cache limit) and keeps exact token accounting across turns.
+
+- `class InputError`
+- `class ContextLimitError`
+- `class GenerationResult`
+- `_check_ids(ids) -> list`
+- `class Engine` (render_chat, generate_ids, chat)
+- `class Session` (reset, ask)
+
+### llmopt/lab/qtower.py
+The qualified arm C Metal tower, ADOPTED verbatim from scratch/qwen_metal_qual.py (build_metal_model, fsha, NORM_SHIFT_SUFFIXES; the construction of scratch/qwen_metal_tower.py frozen as the QWEN-METAL-TOWER-0 record and qualified in OBSERVATION QWEN-METAL-QUAL-0): the mlx-lm qwen3_5 architecture with the fused W4/S16 linears (llmopt.lab.qmetal) in place of every quantised nn.Linear, raw tensors with the sanitizer conventions (the +1 norm shift, the conv1d axis), the host-decoded embedding, and the exact HF l2norm on the DeltaNet q and k installed by rewriting mlx-lm's GatedDeltaNet.__call__ source under a guard that REFUSES if the vendor source changed. Nothing here changes numerical semantics; the scratch original stays in place as the frozen record and tests/test_qtower_adoption.py pins the two bodies equal.
+
+- `fsha(p: str) -> str`
+- `build_metal_model(art: str, vdir: str)` — Arm C through the mlx-lm Qwen3.5 architecture with fused linears.
 
 ### llmopt/lab/runfiles.py
 Moved to llmopt.runs.runfiles (Phase 5, 2026-08-12). This alias keeps old imports working with full fidelity (privates included).
