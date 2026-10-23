@@ -1,6 +1,6 @@
 # SCOREBOARD — generated sample of index-curated verdicts
 
-*Generated from docs/results-index.jsonl by scripts/gen_scoreboard.py. 92 live of 100 entries carrying a hand-curated `verdict` field, out of 1556 ledger entries; the curated field reaches RESULTS line 85010. This is a PARTIAL view, not current truth: docs/FINDINGS.md is the curated public layer, and every entry resolves through docs/RESULTS.md. Full chains: scripts/results_query.py --chain. Never hand-edit this file.*
+*Generated from docs/results-index.jsonl by scripts/gen_scoreboard.py. 92 live of 100 entries carrying a hand-curated `verdict` field, out of 1558 ledger entries; the curated field reaches RESULTS line 85010. This is a PARTIAL view, not current truth: docs/FINDINGS.md is the curated public layer, and every entry resolves through docs/RESULTS.md. Full chains: scripts/results_query.py --chain. Never hand-edit this file.*
 
 ## QWEN-EFFORT-AND-DEEPCHAT
 - **2026-10-23** DIAGNOSED: every bar FIRE; the empty completions are decided <|im_end|> stops (2.1 to 10.0 logits) after shrinking replies, mechanism 1 with 5; template, accounting and the two Metal paths excluded; no serving defect  *(RESULTS L85010)*
