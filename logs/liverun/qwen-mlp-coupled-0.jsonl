@@ -1,0 +1,2 @@
+{"event": "armed", "run_id": "qwen-mlp-coupled-0", "pid": 14204, "launch_commit": "610bc1f6db524e9f075c328e324b19d6ed31187e", "launch_commit_short": "610bc1f6", "worktree_role": "main", "worktree_name": "llmopt", "cwd_relative": ".", "started_utc": "2026-10-23T11:49:51+00:00", "dirty_at_arm": false, "sentinel": ".git/liverun.lock"}
+{"event": "disarmed", "run_id": "qwen-mlp-coupled-0", "pid": 14204, "rc": 0, "ended_utc": "2026-10-23T12:02:14+00:00", "sentinel": ".git/liverun.lock"}

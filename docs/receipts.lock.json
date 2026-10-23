@@ -1761,6 +1761,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/liverun/qwen-mlp-coupled-0.jsonl": {
+   "bytes": 486,
+   "exists": true,
+   "sha256": "d5a893a9cc563424bf87b2b708b86d6867c3b624e10fd2a266cbeb016a98c753",
+   "source": "results",
+   "tracked": true
+  },
   "logs/liverun/qwen-s16-default-0.jsonl": {
    "bytes": 486,
    "exists": true,
@@ -5010,24 +5017,46 @@
    "tracked": true
   },
   "logs/qwen_mlp/adjudicate_1/adjudication.txt": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 94,
+   "exists": true,
+   "sha256": "32fb267960f1b20cb413bd5dd71bced2aa6713c9abb5da22b824beb3b5ebd09d",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_mlp/adjudicate_1/observations.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 2419,
+   "exists": true,
+   "sha256": "4776bbfee7169c59666df022673bac62f407bec512a6aa1d988a62f41c284062",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_mlp/capture.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 77614,
+   "exists": true,
+   "sha256": "8644f2cd4c16e0a3a433a287d50cfa34b062360b6a68a40cf82737c680252105",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_mlp/dev.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 46876,
+   "exists": true,
+   "sha256": "6800199a7960f02433ba3887688af9443baa7a06bde9f7a58a89788b97299f91",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_mlp/eval.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 58916,
+   "exists": true,
+   "sha256": "adcf3868bf2496e7fa017fcf6cbaf2bb602bbc2ffc2b93b74fb84a36eb53c74b",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwen_mlp/study_610bc1f6.log": {
+   "bytes": 10802,
+   "exists": true,
+   "sha256": "5ea70709a5b422c3366e098ac9fd23b6a55ac619e6b1c01806c30ecfdf7837b3",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenalttok/alttok_observations.json": {
    "exists": false,

@@ -1,0 +1,104 @@
+== capture 11:49:51 610bc1f6
+[mlpcap] chat-A1    chat          eval   31 tok, free 48: '\n\n<think>\nThe user is asking for practical advice on meeting'
+[mlpcap] chat-A2    chat          dev    28 tok, free 48: '\n\nOf course. Here are a few options, ranging from very casua'
+[mlpcap] chat-A3    chat          eval   29 tok, free 48: '\n\nGood luck with your interview tomorrow! Here are three com'
+[mlpcap] chat-A4    chat          dev    26 tok, free 48: '\n\n<think>\nThe user wants a weekend routine for someone who s'
+[mlpcap] chat-A5    chat          eval   26 tok, free 48: '\n\n<think>\nThe user is asking for a dinner menu for 6 people,'
+[mlpcap] chat-A6    chat          dev    25 tok, free 48: '\n\n<think>\nThe user is asking for advice on how to politely d'
+[mlpcap] math-A1    math          eval   23 tok, free 48: '\n\nLet the width be \\( w \\) and the length be \\( l \\). Given '
+[mlpcap] math-A2    math          dev    31 tok, free 48: '\n\nStep : 3(x - 4) + 7 = 2x + 11\nStep 2: 3x - 12 + 7 = 2x + 1'
+[mlpcap] math-A3    math          eval   23 tok, free 48: '\n\nThe sum of the interior angles of a regular octagon is 108'
+[mlpcap] math-A4    math          dev    37 tok, free 48: '\n\nLet the speed be \\( x \\) km/h. The time taken to travel 18'
+[mlpcap] math-A5    math          eval   31 tok, free 48: '\n\nTo find the derivative of f(x) = x^3 e^{2x}, we use the pr'
+[mlpcap] math-A6    math          dev    24 tok, free 48: '\n\nTo solve this problem, we can treat the two particular boo'
+[mlpcap] code-A1    code          eval   29 tok, free 48: '\n\ndef second_largest(lst):\n    # Convert to a set to remove '
+[mlpcap] code-A2    code          dev    51 tok, free 48: '\nprint(mean([1, 2, 3, 4, 5]))\n\nThe function `mean` is intend'
+[mlpcap] code-A3    code          eval   23 tok, free 48: '\n\n<think>\nThe user wants a bash one-liner that lists the fiv'
+[mlpcap] code-A4    code          dev    27 tok, free 48: '\n\n## Answer\n\nA debounce function delays execution of a funct'
+[mlpcap] code-A5    code          eval   27 tok, free 48: '\n\n\nSELECT customer_id, MAX(order_date) AS most_recent_order,'
+[mlpcap] code-A6    code          dev    23 tok, free 48: '\n\nfn binary_search(mut lo: usize, mut hi: usize, arr: &[i64]'
+[mlpcap] reason-A1  reasoning     eval   43 tok, free 48: '\n\nSince all labels are wrong, the box labeled "Apples" must '
+[mlpcap] reason-A2  reasoning     dev    38 tok, free 48: "\n\nNo, it does not follow. Here's a small example: Suppose th"
+[mlpcap] reason-A3  reasoning     eval   49 tok, free 48: '\n\nLet the cost of the ball be \\( x \\). Then the cost of the '
+[mlpcap] reason-A4  reasoning     dev    38 tok, free 48: '\n\nTo leave exactly 4 litres in the 5-litre jug, you can use '
+[mlpcap] reason-A5  reasoning     eval   39 tok, free 48: "\n\nLet's solve this step by step.\n\nThe positions are: 1, 2, 3"
+[mlpcap] reason-A6  reasoning     dev    34 tok, free 48: '\n\nThe classic riddle of the Wolf, Goat, and Cabbage (often c'
+[mlpcap] know-A1    knowledge     eval   23 tok, free 48: '\n\n<think>\nThe user asks me to explain why the sky is blue an'
+[mlpcap] know-A2    knowledge     dev    23 tok, free 48: '\n\nMainstream historians generally attribute the fall of the '
+[mlpcap] know-A3    knowledge     eval   21 tok, free 48: '\n\nmRNA vaccines are like a tiny instruction manual. They con'
+[mlpcap] know-A4    knowledge     dev    21 tok, free 48: ' Additionally, what is the difference between weather and cl'
+[mlpcap] know-A5    knowledge     eval   24 tok, free 48: '\n\nThe novel begins with the arrival of the wealthy and charm'
+[mlpcap] know-A6    knowledge     dev    22 tok, free 48: '\n\nPublic-key cryptography allows two strangers to communicat'
+[mlpcap] long-A1    long_context  eval  329 tok, free 48: '\n\n- **Q3 Launch Date**: Engineering load testing slipped by '
+[mlpcap] long-A2    long_context  dev   261 tok, free 48: '\n\n<think>\nLet me work through each question carefully based '
+[mlpcap] long-A3    long_context  eval  200 tok, free 48: '\n\nThe air tasted of wet stone and old rust, a sharp metallic'
+[mlpcap] long-A4    long_context  dev   288 tok, free 48: '\n- Travel: 1, 5, 6, 12, 13, 18 → 68.50 + 31.75 + 236.00 + '
+[mlpcap] edge-A1    degeneration  eval   16 tok, free 48: '\n\necho echo echo echo echo echo echo echo echo echo echo ech'
+[mlpcap] edge-A2    degeneration  dev    15 tok, free 48: '\n\n<think>\n\n</think>\n\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n'
+[mlpcap] edge-A3    degeneration  eval   20 tok, free 48: '\n\nHere are five different ways to express the same sentence '
+[mlpcap] edge-A4    degeneration  dev    16 tok, free 48: '\n\nApple\nApricot\nAvocado\nBanana\nBlueberry\nCherry\nCoconut\nClem'
+[mlpcap] ood-A1     ood           eval   21 tok, free 48: '\n\n<think>\nThe user is asking me to explain in French, in thr'
+[mlpcap] ood-A2     ood           eval   15 tok, free 48: '\n\n<think>\nThe user is asking me to explain in German, briefl'
+[mlpcap] ood-A3     ood           eval  140 tok, free 48: '<|im_end|>\n<|im_start|><think>\nThe user wants me to compute '
+[mlpcap] ood-A4     ood           eval   61 tok, free 48: '<|im_end|>\n<|im_start|><think>\nThe user wants me to:\n1. Find'
+[mlpcap] ood-A5     ood           eval   48 tok, free 48: ' na na na na na na na na na na na na na na na na na na na na'
+[mlpcap] ood-A6     ood           eval   32 tok, free 48: ' the the the the the the the the the the the the the the the'
+[mlpcap] math-M1    math          eval   18 tok, free 48: "\n\n3471<|endoftext|><|endoftext|>The user's request is to com"
+[mlpcap] math-M2    math          dev    18 tok, free 48: '\n\nTo calculate $9257 \\times 8818$, we can break down the mul'
+[mlpcap] math-M3    math          eval   17 tok, free 48: '\n\n5574 + 898 = 6472. The number is 6472.\n\nCompute 5574 + 898'
+[mlpcap] math-M4    math          dev    18 tok, free 48: '\n\nTo calculate $9069 \\times 6211$, we can break down the mul'
+[mlpcap] wrote logs/qwen_mlp/capture.json: {'dev': {'prompts': 21, 'prefill_positions': 1064, 'freerun_positions': 1008}, 'eval': {'prompts': 27, 'prefill_positions': 1358, 'freerun_positions': 1296}}
+== dev 11:56:18 610bc1f6
+[mlp] chat-A2    chat          out ratio prefill 0.987 freerun 0.967  gate ratio 0.791
+[mlp] chat-A4    chat          out ratio prefill 0.982 freerun 0.983  gate ratio 0.784
+[mlp] chat-A6    chat          out ratio prefill 0.990 freerun 0.965  gate ratio 0.784
+[mlp] math-A2    math          out ratio prefill 0.968 freerun 0.951  gate ratio 0.779
+[mlp] math-A4    math          out ratio prefill 0.970 freerun 0.953  gate ratio 0.796
+[mlp] math-A6    math          out ratio prefill 0.990 freerun 0.972  gate ratio 0.834
+[mlp] code-A2    code          out ratio prefill 0.970 freerun 0.973  gate ratio 0.747
+[mlp] code-A4    code          out ratio prefill 1.005 freerun 1.002  gate ratio 0.728
+[mlp] code-A6    code          out ratio prefill 0.985 freerun 0.961  gate ratio 0.759
+[mlp] reason-A2  reasoning     out ratio prefill 0.969 freerun 0.959  gate ratio 0.818
+[mlp] reason-A4  reasoning     out ratio prefill 0.993 freerun 0.982  gate ratio 0.841
+[mlp] reason-A6  reasoning     out ratio prefill 1.018 freerun 1.009  gate ratio 0.828
+[mlp] know-A2    knowledge     out ratio prefill 0.976 freerun 1.001  gate ratio 0.796
+[mlp] know-A4    knowledge     out ratio prefill 0.990 freerun 0.992  gate ratio 0.794
+[mlp] know-A6    knowledge     out ratio prefill 1.034 freerun 1.103  gate ratio 0.787
+[mlp] long-A2    long_context  out ratio prefill 0.969 freerun 0.950  gate ratio 0.745
+[mlp] long-A4    long_context  out ratio prefill 0.968 freerun 0.947  gate ratio 0.696
+[mlp] edge-A2    degeneration  out ratio prefill 0.986 freerun 0.955  gate ratio 0.820
+[mlp] edge-A4    degeneration  out ratio prefill 1.004 freerun 1.001  gate ratio 0.769
+[mlp] math-M2    math          out ratio prefill 0.962 freerun 0.967  gate ratio 0.778
+[mlp] math-M4    math          out ratio prefill 0.966 freerun 0.967  gate ratio 0.781
+[mlp] dev: out ratio 0.9830 CI [0.9755196435720963, 0.9932129421765463] gate 0.7549 prod 0.9667 prefill 0.9808 freerun 0.9861 maxcat 1.0190; wrote logs/qwen_mlp/dev.json
+== eval 11:59:10 610bc1f6
+[mlp] chat-A1    chat          out ratio prefill 0.974 freerun 0.970  gate ratio 0.787
+[mlp] chat-A3    chat          out ratio prefill 0.981 freerun 1.003  gate ratio 0.764
+[mlp] chat-A5    chat          out ratio prefill 0.983 freerun 0.975  gate ratio 0.781
+[mlp] math-A1    math          out ratio prefill 0.967 freerun 0.950  gate ratio 0.766
+[mlp] math-A3    math          out ratio prefill 0.954 freerun 0.955  gate ratio 0.783
+[mlp] math-A5    math          out ratio prefill 0.995 freerun 0.986  gate ratio 0.785
+[mlp] code-A1    code          out ratio prefill 0.979 freerun 0.981  gate ratio 0.755
+[mlp] code-A3    code          out ratio prefill 0.980 freerun 0.971  gate ratio 0.735
+[mlp] code-A5    code          out ratio prefill 0.953 freerun 0.955  gate ratio 0.756
+[mlp] reason-A1  reasoning     out ratio prefill 1.006 freerun 1.004  gate ratio 0.830
+[mlp] reason-A3  reasoning     out ratio prefill 0.965 freerun 0.961  gate ratio 0.801
+[mlp] reason-A5  reasoning     out ratio prefill 0.972 freerun 0.961  gate ratio 0.792
+[mlp] know-A1    knowledge     out ratio prefill 0.975 freerun 0.968  gate ratio 0.786
+[mlp] know-A3    knowledge     out ratio prefill 0.986 freerun 1.000  gate ratio 0.790
+[mlp] know-A5    knowledge     out ratio prefill 0.976 freerun 0.971  gate ratio 0.766
+[mlp] long-A1    long_context  out ratio prefill 0.972 freerun 0.951  gate ratio 0.724
+[mlp] long-A3    long_context  out ratio prefill 0.981 freerun 0.977  gate ratio 0.766
+[mlp] edge-A1    degeneration  out ratio prefill 0.988 freerun 0.965  gate ratio 0.781
+[mlp] edge-A3    degeneration  out ratio prefill 0.986 freerun 0.972  gate ratio 0.770
+[mlp] ood-A1     ood           out ratio prefill 0.998 freerun 0.999  gate ratio 0.801
+[mlp] ood-A2     ood           out ratio prefill 0.989 freerun 0.996  gate ratio 0.782
+[mlp] ood-A3     ood           out ratio prefill 0.981 freerun 0.949  gate ratio 0.741
+[mlp] ood-A4     ood           out ratio prefill 0.962 freerun 0.960  gate ratio 0.754
+[mlp] ood-A5     ood           out ratio prefill 0.953 freerun 0.894  gate ratio 0.714
+[mlp] ood-A6     ood           out ratio prefill 0.942 freerun 0.893  gate ratio 0.725
+[mlp] math-M1    math          out ratio prefill 0.966 freerun 0.966  gate ratio 0.782
+[mlp] math-M3    math          out ratio prefill 0.966 freerun 0.966  gate ratio 0.775
+[mlp] eval: out ratio 0.9758 CI [0.9717635651661458, 0.9800593226878632] gate 0.7494 prod 0.9558 prefill 0.9769 freerun 0.9744 maxcat 0.9818; wrote logs/qwen_mlp/eval.json
+== adjudicate 12:02:14 610bc1f6
+== DONE 12:02:14

@@ -83996,3 +83996,149 @@ collection is 48 prompts written in one sitting and is a fresh set, not
 a benchmark; the free-running continuations are the arm C model's own
 and are 48 tokens long; the measures say nothing about full-model KL,
 teacher agreement, benchmark accuracy or runtime.
+
+## VERDICT QWEN-MLP-COUPLED-0: NULL, REFUTED (bar 1 NO-FIRE, bar 3 NO-FIRE, bar 2 FIRE). The activation-weighted W4 gate representation reproduces its local gain on a fresh, balanced collection (gate_proj output error 0.749 of arm C's on the 54 evaluation blocks, interval 0.739 to 0.760; the old split read 0.744) and loses almost all of it through the coupled operation: the gated product silu(g) * u reads 0.956 of the control's error and the complete MLP output 0.976 (interval 0.972 to 0.980), a 2.4 percent reduction against the registered 10, the same on the prompt's own tokens (0.977) and on the model's free-running continuations (0.974), on every category (0.968 to 0.982) and on the out-of-domain group (0.976), at unchanged storage; the gate change moves the gate toward the reference (direction cosine 0.69) while the candidate's complete-output error keeps the control's direction (cosine 0.82) and the down projection passes the gated-product change at 0.97 of an isotropic direction's gain (no special cancellation), consistent with the registered reading that the up and down branches carry most of the output error; this gate candidate does not buy a 10 percent MLP improvement, and a linear extrapolation says removing ALL gate error would reach about 10 percent (unmeasured); representation research closes for now (2026-10-23, Mac; chain at 610bc1f6 under liverun qwen-mlp-coupled-0; arm C, the kernels, the default and every prior receipt untouched; no complete-model arm built)
+
+Resolves PRE-REG QWEN-MLP-COUPLED-0 (RESULTS tail before this entry,
+registered at 610bc1f6 before the evaluation half was read;
+docs/preregs/qwen-mlp-coupled-0.json). Receipts: logs/qwen_mlp/
+capture.json, logs/qwen_mlp/dev.json, logs/qwen_mlp/eval.json,
+logs/qwen_mlp/adjudicate_1/observations.json, logs/qwen_mlp/
+adjudicate_1/adjudication.txt, logs/qwen_mlp/study_610bc1f6.log,
+logs/liverun/qwen-mlp-coupled-0.jsonl (the activation dumps
+machine-local, sha256 per file in the capture receipt). Collection
+scratch/evalsets/mlp_coupled_v1.json (version 1, sha256 0ba386b3...),
+drivers scratch/qwen_mlp_capture.py, scratch/qwen_mlp_coupled.py,
+scratch/qwen_mlp_obs.py, scratch/qwen_mlp_study.sh, the candidate's
+quantiser scratch/qwen_geometry_quant.py (unchanged).
+
+Adjudication (scripts/adjudicate.py, the four lines joined): "BAR 1
+MLP-OUT: NO-FIRE / BAR 2 GATE-REPRODUCES: FIRE / BAR 3 FREERUN: NO-FIRE
+/ REFUTED-IF: REFUTED". Bars as registered with the measured value
+beside each. BAR 1, "the pooled squared error of the candidate's
+COMPLETE MLP output against the BF16 reference over every evaluation
+block (prompt x distribution) is at most 0.90 of the control's (a 10
+percent reduction), with the paired bootstrap-over-blocks 95 percent
+upper bound of the ratio below 1.0 (the interval excludes no
+improvement), no category's pooled ratio above 1.05 (no major category
+regression), and the candidate gate's storage within 0.001 bits per
+weight of the control's (unchanged effective storage)": measured
+0.9758; the conjuncts would have held (upper bound 0.9801, largest
+category ratio 0.9818, bits excess 0.0000) and the bar's own value did
+not. BAR 2, "the gate output error ratio on the new collection's eval split is at most 0.85 (the old evaluation read 0.744): whether the local gate gain reproduces on fresh contexts; a diagnostic, not part of the decision": measured 0.7494. BAR 3, "the complete-output ratio on the free-running distribution alone (the model's own continuations) is at most 0.90: whether the gain holds on the distribution a deployed model actually produces; a diagnostic": measured 0.9744. REFUTED-IF, bar 1 above 0.90: 0.9758. Decision rule as
+registered: bar 1 NO-FIRE "books a NULL and closes representation
+research for now"; no further rotation, codebook or layer is tried.
+Measurement valid: both receipts clean-tree non-smoke runs at 610bc1f6
+on the same capture; the evaluation receipt on the evaluation half
+(27 prompts, 54 blocks, 2,654 positions); the candidate fit on the 21
+development prompts (2,072 positions, prefill and free-running) only,
+disjoint from the evaluation prompts, its codebook sha256 e76394b6...
+identical in the development and evaluation runs; the shard pin
+checked; every block present. The registered prior PARTLY HELD: in direction (bar 1 NO-FIRE, bar 2 FIRE, bar 3 following bar 1; the prose prior called bar 1 a coin flip, the JSON's note more likely NO-FIRE), on the gate ratio (0.72 to 0.85 expected, 0.749), on free-running like prefill (0.974 against 0.977) and on the numerical floor (1e-6 expected, 1.7e-6 to 2.7e-6); WRONG on the complete-output range (0.85 to 0.97 expected, 0.976 measured, above it) and on the out-of-domain group being the likeliest regression (it read 0.976; the largest category was chat at 0.982). Disclosed, carried forward: the two-prompt smoke under logs/qwen_mlp/smoke/ was read after the bars were drafted and moved nothing.
+
+1. Does the 26 percent local gate improvement survive as a meaningful
+full-MLP improvement? No. The candidate is the same W4 layout as arm
+C's gate_proj (2.0627 bits per weight, codebook and assignment weighted
+by the development inputs' per-channel RMS; relative Frobenius 0.3477
+against the control's 0.3455, worse in weight space as before). On the
+evaluation half its gate output g = W_g x has 0.749 of the control's
+squared error; the gated product p = silu(g) * (W_u x) has 0.956 and the complete output y = W_d p 0.976 (the design does not decompose the error by branch; the registered reading, that the up branch's error is untouched by the candidate and the branches' errors combine in the product, is consistent with these ratios and not measured). Stage by stage the candidate
+moves the gate toward the reference (cosine between its gate change
+and the control's gate error 0.69, median over blocks) and the down
+projection passes the gated-product change at 0.53 of ||W_d||_F / sqrt(5120) (median over blocks), which is 0.97 of what an isotropic direction in the 17,408-wide input receives (sqrt(5120 / 17408) = 0.54): no special cancellation or amplification of the gate change by down_proj; the candidate's complete-output error vector has cosine 0.82 with the control's, so the error the candidate leaves points where the control's did. In absolute terms the control's complete MLP output has a
+relative squared error of 0.205 against the BF16 MLP on these inputs
+(relative RMS 0.45; mean cosine to the reference 0.888), and the
+candidate 0.200 (0.893): three 2-bit matrices compound into an MLP
+output that is already far from the reference, and a gate-only change of 25 percent of one branch's error is a 2.4 percent change of the whole; a linear extrapolation (0.024 over 0.251) says removing all of the gate's error would give about 10 percent, unmeasured and with the nonlinearity ignored. Per-position tails move with it: the 99th-percentile relative error (median over blocks) 0.506 to 0.495, the maximum over all positions 0.564 to 0.544.
+The numerical floor is five orders below: the reference MLP in float32
+differs from float64 by 2.7e-6 (numpy), 2.7e-6 (torch) and 1.7e-6 (mlx)
+relative on 16 positions, torch against mlx 2.4e-6, the same formula in
+all three (y = W_down(silu(W_gate x) * (W_up x)), mlx_lm Qwen3NextMLP).
+
+2. What changes between development, balanced evaluation and
+out-of-domain inputs? Almost nothing at the complete-MLP level. The
+development half reads 0.983 (interval 0.976 to 0.993) and the
+evaluation half 0.976 (0.972 to 0.980), the candidate fit on the former
+and scored on both; the prompt's own tokens 0.977 (0.972 to 0.982) and
+the model's free-running continuations 0.974 (0.967 to 0.982); by
+category on the evaluation half chat 0.982, code 0.968, degeneration
+0.976, knowledge 0.980, long_context 0.975, math 0.968, reasoning
+0.981, out-of-domain 0.976 (interval 0.959 to 0.986; non-English,
+structured data and adversarial repetition); by category and
+distribution 0.965 to 0.987; per block 0.893 to 1.006 (the two blocks under 0.90 are the two adversarial-repetition prompts' free-running blocks, a pattern; the four above 1.0 come from three prompts). On the development half, which the candidate was fit on, knowledge read 1.019 (know-A6 free-running 1.103) and free-running 0.986 against prefill 0.981, the reverse of the evaluation half's order. The gate ratio
+is 0.755 on development and 0.749 on evaluation. The free-running continuations the arm C model wrote are recorded in the capture receipt: the degeneration prompts were partly followed (edge-A2 counted in digits, not words; edge-A4 broke alphabetical order), the non-English prompts opened an English reasoning scaffold planning an answer in the prompt's language with no answer text within 48 tokens, and five prompts' continuations (edge-A1, edge-A4, math-M1, ood-A3, ood-A4) emitted an end-of-sequence or end-of-turn token and continued into template text, because decoding did not stop at those tokens; those positions are in the free-running blocks as captured. The
+previous study's development-to-evaluation shift on down_proj
+(OBSERVATION QWEN-LOSSY-GEOMETRY-0-SPLIT) has no analogue here: with
+every category in both halves and the weighting fit on both
+distributions, the gate candidate's gain is stable across categories,
+distributions and the out-of-domain group, and what it fails to do is
+reach the output, not transfer.
+
+3. Is there a justified targeted representation follow-up? Not from
+this result. The mechanism reading says the complete-MLP error at 2
+bits is a sum over three branches of which the gate is the only one a
+gate-only candidate can touch, and the other two branches' errors remain; a follow-up would have to weight all three matrices (up_proj by the same input RMS, down_proj by the gated product's channel RMS, which the previous study found category-dependent on E0 and this collection did not test), or change the layout, and both were outside this GO. Representability, for the record: the
+candidate IS the existing W4 format (identical layout, bits and
+exponent slots; a different codebook and index assignment for one
+tensor), the Metal decoder and the generation 5 kernels would consume it unchanged and the parity suite and census would apply unchanged (by format identity: an fp16 codebook, the block-128 power-of-two scale, the same byte count; no candidate payload was serialised, decoded through qcodec or run on Metal in this round). A
+targeted mixed-model test (one layer's gate_proj swapped inside arm C,
+E0 and the validation records as the registered bars) would require a
+registered prediction of a full-model effect that this result does not
+support: restoring layers 22 and 23 entirely to BF16, which removes all of this MLP's 0.205 relative error and the rest of both layers' error, gave no E0 gain (VERDICT QWEN-LAYER-RESTORE-0, 3,915 to 3,907 of 4,722), so a 2.4 percent change of one layer's MLP output error has no registered path to a full-model effect. No such test is proposed.
+
+4. Status of the quality-evaluation surfaces (an inventory and a
+design; a deliverable, not an authorisation).Three surfaces exist for the Qwen3.8-27B line.
+MODEL-1 (evals/qwen_model1/, frozen 2026-08-17 before any compressed artifact existed): corpus.txt (32 lines, 356 scored positions in the teacher's record), prefixes.jsonl (6 prefixes, 98 positions) and prompts.jsonl (24 prompts: chat, math, code, reasoning, knowledge, long, degeneration). MODEL-2's SPEC names it the DEVELOPMENT surface: every marginal of the
+MODEL-2 allocation design was measured on it, and it selected that
+policy. E0 is this surface's 24 prompts rolled out greedily by the
+locked teacher (logs/qwenteacher_v2; 4,722 scored positions), so E0 is
+a development-surface quantity by descent; it has since been the set of the disagreement census and a REGISTERED BAR (bar 1, E0 agreement) of both the head restore and the layer restore (both nulls), and the quantization and kernel work has read it as a bit-identity census (which does not consume it). The corpus and prefix records of the same surface served as the "validation" bars of the same two restores; so development-surface records have been read as adjudicating bars twice, E0 included. MODEL-2
+(evals/qwen_model2/, frozen 2026-08-18, disjointness asserted at
+freeze): the HELD-OUT surface, same instrument contract, read once, by VERDICT QWEN-MODEL2-ALLOC-1, to adjudicate the P_X against P_K allocation contrast on arms composed from FLe, with arm C scored on it as one of that verdict's four arms (X 0.395, K 0.200), an unregistered P_X-against-C contrast and a post-hoc fourth-pick observation reading those receipts; no selection or decision has used it since, so it remains reserved for one more registered question with the caveat that its arm C and FLe scores exist and are known. The new collection of this study
+(scratch/evalsets/mlp_coupled_v1.json, 48 prompts, no teacher pass) is
+a local-fidelity surface only: it measures a layer's MLP against the
+BF16 MLP on identical inputs and has no quality reading of its own.
+What none of these measures is whether the served model is USEFUL independently of matching the teacher's tokens: apart from the BLe free-generation screens (VERDICT QWEN-BLE-FREEGEN-2: termination and correctness bars on free generation, on the BLe artifact, not arm C), every quality bar in the line is teacher agreement, excess cross-entropy or KL on the teacher's records, and the only mechanically scored items on arm C's collections are the four arithmetic prompts added here, which score nothing in this study.
+
+A stronger battery, proposed and not started: (i) mechanically scored
+arithmetic and unit conversion at several digit lengths (exact string
+match on the number, generated from seeds, thousands of items at zero
+authoring cost), (ii) constrained structured output (JSON and CSV tasks
+with a schema validator and a field-value checker, like the two ood
+prompts here but scored), (iii) code tasks with unit tests (small
+functions with hidden tests run in a sandbox; pass rate), (iv)
+reasoning puzzles with a single checkable answer (the river-crossing
+and seating-order kind, scored by a verifier of the stated solution,
+not of the prose), (v) consistency (the same question in paraphrases
+and languages; agreement of the mechanically extracted answer), (vi)
+degeneration (repetition rate, distinct-n, length and termination
+statistics of free-running continuations on neutral and adversarial
+prompts, scored without a teacher), and (vii) instruction following with
+mechanical checks (word counts, forbidden words, formats). Each item is
+scored by a program, each generator is seeded and versioned, the
+development and evaluation halves are drawn from the same generators
+with a registered split and a reserved third draw, and the teacher is
+scored on the same battery once so that arm C's gap to it is a
+quality number rather than an agreement number. The house laws apply
+unchanged: pre-registration before any candidate is scored, no
+selection against the reserved draw, farm-auditor on the generated
+items, and the bio and chemistry charter (no domain content).
+
+5. Recommendation: CLOSE quantization and representation research for
+now. The registered outcome is NULL; a mixed-model GO is not proposed.
+The qualified serving model stays arm C on the generation 5 runtime (100 ms per token at context 126), and the open quality question (whether arm C's 83
+percent teacher agreement and 0.45 relative MLP output error cost
+anything a user would notice) is a measurement question for the
+battery of section 4, not a representation question.
+
+Fences. One layer (22), one candidate, one local operation; the collection is 44 written prompts plus 4 seeded arithmetic items (the registration's "forty" is corrected by the amendment that follows), a fresh set and not a benchmark; the free-running
+continuations are 48 tokens of the arm C model's own greedy output per
+prompt; the reference is the BF16 MLP on inputs produced by the
+compressed model (the inputs themselves carry arm C's upstream error,
+which is the deployed condition and not the BF16 model's); the measures
+are local to one MLP and say nothing about full-model KL, teacher
+agreement, benchmark accuracy or runtime; the candidate was fit on the
+development half of this collection and the bar read on the evaluation
+half once.
+
+## AMENDMENT QWEN-MLP-COUPLED-0-COUNT (amends PRE-REG QWEN-MLP-COUPLED-0; clerical): the collection holds 44 hand-written prompts (6 chat, 6 math, 6 code, 6 reasoning, 6 knowledge, 4 long_context, 4 degeneration, 6 out-of-domain), not "forty", plus the 4 seeded arithmetic prompts, 48 in all as the registration's counts (21 development, 27 evaluation) already said; nothing else in the registration changes (2026-10-23)

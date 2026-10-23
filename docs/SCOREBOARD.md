@@ -1,6 +1,9 @@
 # SCOREBOARD — generated sample of index-curated verdicts
 
-*Generated from docs/results-index.jsonl by scripts/gen_scoreboard.py. 87 live of 95 entries carrying a hand-curated `verdict` field, out of 1538 ledger entries; the curated field reaches RESULTS line 83603. This is a PARTIAL view, not current truth: docs/FINDINGS.md is the curated public layer, and every entry resolves through docs/RESULTS.md. Full chains: scripts/results_query.py --chain. Never hand-edit this file.*
+*Generated from docs/results-index.jsonl by scripts/gen_scoreboard.py. 88 live of 96 entries carrying a hand-curated `verdict` field, out of 1542 ledger entries; the curated field reaches RESULTS line 84000. This is a PARTIAL view, not current truth: docs/FINDINGS.md is the curated public layer, and every entry resolves through docs/RESULTS.md. Full chains: scripts/results_query.py --chain. Never hand-edit this file.*
+
+## qwen-mlp-coupled
+- **2026-10-23** NO-FIRE  *(RESULTS L84000)*
 
 ## qwen-lossy-geometry
 - **2026-10-23** NO-FIRE  *(RESULTS L83603)*

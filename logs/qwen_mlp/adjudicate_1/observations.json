@@ -1,0 +1,61 @@
+{
+ "note": "Mechanical projection of logs/qwen_mlp/eval.json (commit 610bc1f6) with logs/qwen_mlp/dev.json as the candidate identity check; adapter scratch/qwen_mlp_obs.py",
+ "registration_sha256": "d93f7c7db1d8a244d0b26ad0fca8388d2ee21f9eef90a2499333d7e09731be0c",
+ "measurement_valid": true,
+ "arms": {
+  "CONTROL": {
+   "admissible": true,
+   "reason": "arm C gate, up and down through the canonical decoder"
+  },
+  "CANDIDATE": {
+   "admissible": true,
+   "reason": "E_awq gate fit on the dev split, codebook identical in dev and eval runs, up and down unchanged"
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 0.9758303798590287,
+   "metric": "mlp_out_ratio",
+   "population": "eval-blocks:54",
+   "aggregation": "pooled_sse_candidate_over_control",
+   "provenance": "control rel MSE 2.05411e-01, candidate 2.00446e-01; by category {\"chat\": 0.9818, \"code\": 0.9679, \"degeneration\": 0.9757, \"knowledge\": 0.9799, \"long_context\": 0.9752, \"math\": 0.9679, \"ood\": 0.9756, \"reasoning\": 0.9811}; by distribution {\"prefill\": 0.9769, \"freerun\": 0.9744}"
+  },
+  "1:ci": {
+   "value": 0.9800593226878632,
+   "metric": "mlp_out_ci_upper",
+   "population": "eval-blocks:54",
+   "aggregation": "paired_boot95_upper_over_blocks"
+  },
+  "1:cat": {
+   "value": 0.9818260147541877,
+   "metric": "mlp_out_max_category_ratio",
+   "population": "eval-blocks:54",
+   "aggregation": "max_over_categories_of_pooled_ratio"
+  },
+  "1:bits": {
+   "value": 0.0,
+   "metric": "gate_bits_excess",
+   "population": "tensor:22.mlp.gate_proj",
+   "aggregation": "bits_per_weight_minus_control"
+  },
+  "2": {
+   "value": 0.749360865959072,
+   "metric": "gate_ratio",
+   "population": "eval-blocks:54",
+   "aggregation": "pooled_sse_candidate_over_control"
+  },
+  "3": {
+   "value": 0.9743551273630134,
+   "metric": "freerun_ratio",
+   "population": "eval-blocks:27-freerun",
+   "aggregation": "pooled_sse_candidate_over_control"
+  },
+  "mlp_out_ratio": {
+   "value": 0.9758303798590287,
+   "metric": "mlp_out_ratio",
+   "population": "eval-blocks:54",
+   "aggregation": "pooled_sse_candidate_over_control",
+   "provenance": "control rel MSE 2.05411e-01, candidate 2.00446e-01; by category {\"chat\": 0.9818, \"code\": 0.9679, \"degeneration\": 0.9757, \"knowledge\": 0.9799, \"long_context\": 0.9752, \"math\": 0.9679, \"ood\": 0.9756, \"reasoning\": 0.9811}; by distribution {\"prefill\": 0.9769, \"freerun\": 0.9744}"
+  }
+ }
+}
