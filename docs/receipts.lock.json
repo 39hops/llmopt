@@ -4749,14 +4749,18 @@
    "tracked": true
   },
   "logs/qwen_battery/think_adjudicate_1/adjudication.txt": {
+   "bytes": 193,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "453d435cf7b02360ff3ed822cc33aa9eb2bcd263a353035f9dfabdf65ff648a4",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_battery/think_adjudicate_1/observations.json": {
+   "bytes": 5726,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "cfd12746c7de32e48312c6ed75625afd59d2bd0e211f50b79378d4b201bc53f2",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_e0/C/positions.jsonl": {
    "bytes": 5664189,
@@ -5132,14 +5136,18 @@
    "tracked": true
   },
   "logs/qwen_serve/incr_adjudicate_1/adjudication.txt": {
+   "bytes": 123,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "c298509c10baf3aae5b2120ed7b964ba69125e3d08f3d29e6c4e57b9ab8ac100",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_serve/incr_adjudicate_1/observations.json": {
+   "bytes": 2159,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "e6dc8de100940d7e8f18ffdf2fab748907f31aca73053d28c207bd02e8913127",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_serve/incr_v1.json": {
    "bytes": 180395,

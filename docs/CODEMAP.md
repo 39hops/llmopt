@@ -627,7 +627,7 @@ Census: library 202, reproduce-pinned 9, results-cited 554, spec-cited 75, tool-
 | qwen | qwen_homeo_adjudicate.py | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
 | qwen | qwen_hsimpulse_adjudicate.py | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
 | qwen | qwen_hsimpulse_color.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
-| qwen | qwen_incr_obs.py | results-cited | RESULTS | RESULTS×5 | — | — | — | — |
+| qwen | qwen_incr_obs.py | results-cited | RESULTS | RESULTS×6 | — | — | — | — |
 | qwen | qwen_incr_perf.py | results-cited | RESULTS | RESULTS×5 | — | 1 | 1 | — |
 | qwen | qwen_inference_study.sh | UNCITED | — | — | — | — | — | — |
 | qwen | qwen_ioattrib_adjudicate.py | library | RESULTS, specs | RESULTS×2, specs×1 | 1 | 1 | — | — |
@@ -670,7 +670,7 @@ Census: library 202, reproduce-pinned 9, results-cited 554, spec-cited 75, tool-
 | qwen | qwen_stream_probe.py | library | RESULTS, via:specs | RESULTS×2 | 2 | 3 | — | — |
 | qwen | qwen_teacher_pass.py | library | RESULTS | RESULTS×2 | 2 | 1 | — | — |
 | qwen | qwen_teacher_sidecar.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
-| qwen | qwen_think_obs.py | results-cited | RESULTS | RESULTS×8 | — | — | — | — |
+| qwen | qwen_think_obs.py | results-cited | RESULTS | RESULTS×9 | — | — | — | — |
 | qwen | qwen_topset_census.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
 | qwen | qwen_tower_ladder.py | results-cited | RESULTS, via:specs | RESULTS×18 | — | 11 | — | — |
 | qwen | qwen_tree_adjudicate.py | library | RESULTS, specs | RESULTS×2, specs×1 | — | 1 | — | — |

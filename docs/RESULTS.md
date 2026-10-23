@@ -84788,3 +84788,5 @@ fence; if low closes the code blocks while keeping the arithmetic
 recovery, thinking at low effort becomes the chat default and the
 budget question closes. No forced close of a think block (a token the
 model did not emit) is proposed: that invents template behaviour.
+
+## AMENDMENT QWEN-CHAT-DEFAULT-0-RECEIPT-PATHS (amends VERDICT QWEN-CHAT-DEFAULT-0 and VERDICT QWEN-THINKING-BATTERY-0): the adjudication receipts cited by directory are named by full path so the lock freezes them: logs/qwen_serve/incr_adjudicate_1/observations.json, logs/qwen_serve/incr_adjudicate_1/adjudication.txt, logs/qwen_battery/think_adjudicate_1/observations.json, logs/qwen_battery/think_adjudicate_1/adjudication.txt; the receipt-lock guard caught the directory citations in the source gate after the booking commit had already been made on a chain that keyed on the log tail instead of the gate's exit code (the pipeline-exit-code lesson, fired again); nothing in either verdict changes (2026-10-23)
