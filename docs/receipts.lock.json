@@ -213,20 +213,32 @@
    "tracked": true
   },
   "logs/bf16_lossless/adjudication.txt": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 114,
+   "exists": true,
+   "sha256": "a0d68b6c807759c10040d15e4b1ea297be9998943d54aa31b0c624ab5867fc33",
+   "source": "results",
+   "tracked": true
   },
   "logs/bf16_lossless/bench.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 142981,
+   "exists": true,
+   "sha256": "9f944c088ff60b521f7e4594a6c81c87f3441d82335f10d8358d3688ff5fb363",
+   "source": "results",
+   "tracked": true
   },
   "logs/bf16_lossless/entropy.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 209679,
+   "exists": true,
+   "sha256": "b3174a94e9b9b9e7ee1a02ca79830d7dc3f2adf06e799217e44632f68c483fbe",
+   "source": "results",
+   "tracked": true
   },
   "logs/bf16_lossless/observations.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 8741,
+   "exists": true,
+   "sha256": "c8a4f8948e69facf08fb3b973d96fc9e02c4da0a7c95f33d0f1388e4fc5cdba2",
+   "source": "results",
+   "tracked": true
   },
   "logs/checkers0/probe.jsonl": {
    "bytes": 18091,
@@ -1616,6 +1628,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/liverun/bf16-lossless-0.jsonl": {
+   "bytes": 478,
+   "exists": true,
+   "sha256": "5fddb9c7b47b477ee1becbfb855b485e4ff3bc3cdcf48e98a3d52f7c710136aa",
+   "source": "results",
+   "tracked": true
+  },
   "logs/liverun/crossfoster1c.jsonl": {
    "bytes": 528,
    "exists": true,
@@ -1753,6 +1772,13 @@
    "bytes": 482,
    "exists": true,
    "sha256": "4885535c17e3a71e48622b88e0d0c9d4ea7842ea82a660068d3621bac767c391",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/liverun/qwen-w4-probe-0.jsonl": {
+   "bytes": 478,
+   "exists": true,
+   "sha256": "cc021ae83cb3f965f70591f98844a2707dc1b9f69b39cbe2b49e98d4e26c8c17",
    "source": "results",
    "tracked": true
   },
@@ -4635,6 +4661,20 @@
    "bytes": 11148,
    "exists": true,
    "sha256": "62ed53373cb9a4deaf4bea39b6369cc481b73e870c03946a3d9e50763f85d374",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qmetal/w4_probe_39ba1b51.json": {
+   "bytes": 70726,
+   "exists": true,
+   "sha256": "688d201d42a602035466105b7667c4ad37ffc47837aad4f6c2472c0688fe115d",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qmetal/w4_probe_7dd4c367.json": {
+   "bytes": 62905,
+   "exists": true,
+   "sha256": "e20aada01aeea519f5d1f93dc3a5521debb92bbc507a72b36dc2b08fc865616e",
    "source": "results",
    "tracked": true
   },

@@ -1,0 +1,195 @@
+{
+ "note": "Mechanical projection of logs/bf16_lossless/entropy.json (census at 7dd4c367) and logs/bf16_lossless/bench.json (benchmark at 7dd4c367); budget from the pinned arm C manifest (26895998464 text-model parameters, chain rung0 {'checked': 19, 'unchained': False}); adapter scratch/bf16_lossless_obs.py",
+ "registration_sha256": "eddfbc1bbf666cec46b2ccecb3a36abb9bc08a2aece8703e10d22544a535214e",
+ "measurement_valid": true,
+ "arms": {
+  "RAW": {
+   "admissible": true,
+   "reason": "the original bytes"
+  },
+  "BEST_EXACT": {
+   "admissible": true,
+   "reason": "every benchmark row exact and both pins verified"
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 35.37695343390476,
+   "metric": "extrapolated_text_model_gb_class_weighted",
+   "population": "text-model:26895998464-params",
+   "aggregation": "sum_over_classes_of_params_times_best_exact_bits_per_weight",
+   "provenance": "{\"lm_head\": {\"params\": 1271398400, \"bits_per_weight\": 10.508565057184278, \"source\": \"lm_head:rans-16\"}, \"embed\": {\"params\": 1271398400, \"bits_per_weight\": 10.508565057184278, \"source\": \"lm_head:rans-16\"}, \"small\": {\"params\": 2645504, \"bits_per_weight\": 16.0, \"source\": \"16 bits (small tensors, not compressed)\"}, \"deltanet_gate_proj\": {\"params\": 23592960, \"bits_per_weight\": 10.636393229166666, \"source\": \"deltanet_gate_proj:rans-exp\"}, \"deltanet_proj\": {\"params\": 5536481280, \"bits_per_weight\": 10.552828107561384, \"source\": \"deltanet_proj:rans-16\"}, \"mlp\": {\"params\": 17112760320, \"bits_per_weight\": 10.508718134063521, \"source\": \"mlp:rans-16\"}, \"attention_proj\": {\"params\": 1677721600, \"bits_per_weight\": 10.57535400390625, \"source\": \"attention_proj:rans-exp\"}}"
+  },
+  "2": {
+   "value": 35.37695343390476,
+   "metric": "extrapolated_text_model_gb_class_weighted",
+   "population": "text-model:26895998464-params",
+   "aggregation": "sum_over_classes_of_params_times_best_exact_bits_per_weight",
+   "provenance": "{\"lm_head\": {\"params\": 1271398400, \"bits_per_weight\": 10.508565057184278, \"source\": \"lm_head:rans-16\"}, \"embed\": {\"params\": 1271398400, \"bits_per_weight\": 10.508565057184278, \"source\": \"lm_head:rans-16\"}, \"small\": {\"params\": 2645504, \"bits_per_weight\": 16.0, \"source\": \"16 bits (small tensors, not compressed)\"}, \"deltanet_gate_proj\": {\"params\": 23592960, \"bits_per_weight\": 10.636393229166666, \"source\": \"deltanet_gate_proj:rans-exp\"}, \"deltanet_proj\": {\"params\": 5536481280, \"bits_per_weight\": 10.552828107561384, \"source\": \"deltanet_proj:rans-16\"}, \"mlp\": {\"params\": 17112760320, \"bits_per_weight\": 10.508718134063521, \"source\": \"mlp:rans-16\"}, \"attention_proj\": {\"params\": 1677721600, \"bits_per_weight\": 10.57535400390625, \"source\": \"attention_proj:rans-exp\"}}"
+  },
+  "3": {
+   "value": 35.249118113272466,
+   "metric": "entropy_floor_text_model_gb_class_weighted",
+   "population": "text-model:26895998464-params",
+   "aggregation": "sum_over_classes_of_params_times_H16_bits_per_weight",
+   "provenance": "{\"lm_head\": {\"params\": 1271398400, \"bits_per_weight\": 10.500303400867368, \"source\": \"lm_head:H16\"}, \"embed\": {\"params\": 1271398400, \"bits_per_weight\": 10.500303400867368, \"source\": \"lm_head:H16\"}, \"small\": {\"params\": 2645504, \"bits_per_weight\": 16.0, \"source\": \"16 bits (small tensors, not compressed)\"}, \"deltanet_gate_proj\": {\"params\": 23592960, \"bits_per_weight\": 10.517173492052969, \"source\": \"deltanet_gate_proj:H16\"}, \"deltanet_proj\": {\"params\": 5536481280, \"bits_per_weight\": 10.489045787198938, \"source\": \"deltanet_proj:H16\"}, \"mlp\": {\"params\": 17112760320, \"bits_per_weight\": 10.478553031184891, \"source\": \"mlp:H16\"}, \"attention_proj\": {\"params\": 1677721600, \"bits_per_weight\": 10.498151500789952, \"source\": \"attention_proj:H16\"}}"
+  },
+  "extrapolated_text_model_gb_class_weighted": {
+   "value": 35.37695343390476,
+   "metric": "extrapolated_text_model_gb_class_weighted",
+   "population": "text-model:26895998464-params",
+   "aggregation": "sum_over_classes_of_params_times_best_exact_bits_per_weight"
+  }
+ },
+ "per_class": {
+  "deltanet_proj": {
+   "sampled_params": 146800640,
+   "tensors": 4,
+   "bits_per_weight_by_method": {
+    "raw": 16.0,
+    "zstd-3": 12.449672099522182,
+    "byteplane+zstd-3": 11.362003380911691,
+    "bitshuffle+zstd-3": 11.875073405674526,
+    "zstd-19": 12.444902638026646,
+    "byteplane+zstd-19": 10.698439843314034,
+    "bitshuffle+zstd-19": 11.833192879813058,
+    "dfloat11": 10.604786791120256,
+    "rans-exp": 10.567951093401227,
+    "rans-16": 10.552828107561384
+   },
+   "best_method": "rans-16",
+   "best_bits_per_weight": 10.552828107561384
+  },
+  "mlp": {
+   "sampled_params": 802160640,
+   "tensors": 9,
+   "bits_per_weight_by_method": {
+    "raw": 16.0,
+    "zstd-3": 12.455489204755796,
+    "byteplane+zstd-3": 11.348937679116244,
+    "bitshuffle+zstd-3": 12.01013405993094,
+    "zstd-19": 12.454334363750384,
+    "byteplane+zstd-19": 10.69461985070721,
+    "bitshuffle+zstd-19": 11.995756819980597,
+    "dfloat11": 10.605005690630744,
+    "rans-exp": 10.557533094618055,
+    "rans-16": 10.508718134063521
+   },
+   "best_method": "rans-16",
+   "best_bits_per_weight": 10.508718134063521
+  },
+  "small (norms, conv, A_log, dt_bias)": {
+   "sampled_params": 67296,
+   "tensors": 11,
+   "bits_per_weight_by_method": {
+    "raw": 16.0,
+    "zstd-3": 12.728007608178793,
+    "byteplane+zstd-3": 11.266167379933428,
+    "bitshuffle+zstd-3": 11.903471231573942,
+    "zstd-19": 12.734070375653827,
+    "byteplane+zstd-19": 10.925344745601521,
+    "bitshuffle+zstd-19": 11.58987161198288,
+    "dfloat11": 11.363409415121255,
+    "rans-exp": 12.317165953399904,
+    "rans-16": 353.3128863528293
+   },
+   "best_method": "byteplane+zstd-19",
+   "best_bits_per_weight": 10.925344745601521
+  },
+  "deltanet_gate_proj": {
+   "sampled_params": 491520,
+   "tensors": 2,
+   "bits_per_weight_by_method": {
+    "raw": 16.0,
+    "zstd-3": 12.477197265625,
+    "byteplane+zstd-3": 11.318603515625,
+    "bitshuffle+zstd-3": 12.0521484375,
+    "zstd-19": 12.489908854166666,
+    "byteplane+zstd-19": 10.727522786458334,
+    "bitshuffle+zstd-19": 11.948990885416666,
+    "dfloat11": 10.645491536458334,
+    "rans-exp": 10.636393229166666,
+    "rans-16": 19.058203125
+   },
+   "best_method": "rans-exp",
+   "best_bits_per_weight": 10.636393229166666
+  },
+  "attention_proj": {
+   "sampled_params": 104857600,
+   "tensors": 4,
+   "bits_per_weight_by_method": {
+    "raw": 16.0,
+    "zstd-3": 12.452565994262695,
+    "byteplane+zstd-3": 11.363393936157227,
+    "bitshuffle+zstd-3": 11.886906661987304,
+    "zstd-19": 12.45259521484375,
+    "byteplane+zstd-19": 10.699829635620118,
+    "bitshuffle+zstd-19": 11.843447189331055,
+    "dfloat11": 10.610001373291016,
+    "rans-exp": 10.57535400390625,
+    "rans-16": 10.584797058105469
+   },
+   "best_method": "rans-exp",
+   "best_bits_per_weight": 10.57535400390625
+  },
+  "lm_head": {
+   "sampled_params": 1271398400,
+   "tensors": 1,
+   "bits_per_weight_by_method": {
+    "raw": 16.0,
+    "zstd-3": 12.449775931761437,
+    "byteplane+zstd-3": 11.355425377285357,
+    "bitshuffle+zstd-3": 11.957970247563628,
+    "zstd-19": 12.449980405827159,
+    "byteplane+zstd-19": 10.691205249275129,
+    "bitshuffle+zstd-19": 11.941854820644732,
+    "dfloat11": 10.604433757349389,
+    "rans-exp": 10.575810521705863,
+    "rans-16": 10.508565057184278
+   },
+   "best_method": "rans-16",
+   "best_bits_per_weight": 10.508565057184278
+  }
+ },
+ "h16_by_class": {
+  "deltanet_proj": 10.489045787198938,
+  "mlp": 10.478553031184891,
+  "small (norms, conv, A_log, dt_bias)": 10.466303974563912,
+  "deltanet_gate_proj": 10.517173492052969,
+  "attention_proj": 10.498151500789952,
+  "lm_head": 10.500303400867368,
+  "mtp (not in the text model budget)": 10.550803843918228
+ },
+ "budget": {
+  "params_by_class": {
+   "lm_head": 1271398400,
+   "embed": 1271398400,
+   "small": 2645504,
+   "deltanet_gate_proj": 23592960,
+   "deltanet_proj": 5536481280,
+   "mlp": 17112760320,
+   "attention_proj": 1677721600
+  },
+  "total_params": 26895998464,
+  "chain_rung0": {
+   "checked": 19,
+   "unchained": false
+  }
+ },
+ "ranges": {
+  "best_sampled_class_everywhere_gb": 35.329793704609045,
+  "worst_sampled_class_everywhere_gb": 36.73100693704612,
+  "per_method_class_weighted_gb": {
+   "bitshuffle+zstd-19": 40.16933996238095,
+   "bitshuffle+zstd-3": 40.2436187064762,
+   "byteplane+zstd-19": 35.95981225104762,
+   "byteplane+zstd-3": 38.17071095038095,
+   "dfloat11": 35.656644943428574,
+   "rans-16": 35.40377071390476,
+   "rans-exp": 35.513213233904764,
+   "raw": 53.791996928,
+   "zstd-19": 41.86447121085715,
+   "zstd-3": 41.870133671809526
+  }
+ }
+}

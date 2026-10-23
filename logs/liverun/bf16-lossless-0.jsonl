@@ -1,0 +1,2 @@
+{"event": "armed", "run_id": "bf16-lossless-0", "pid": 8617, "launch_commit": "7dd4c367ff825d064721e05584de5e19ace2202d", "launch_commit_short": "7dd4c367", "worktree_role": "main", "worktree_name": "llmopt", "cwd_relative": ".", "started_utc": "2026-10-22T22:52:35+00:00", "dirty_at_arm": false, "sentinel": ".git/liverun.lock"}
+{"event": "disarmed", "run_id": "bf16-lossless-0", "pid": 8617, "rc": 0, "ended_utc": "2026-10-22T23:53:56+00:00", "sentinel": ".git/liverun.lock"}

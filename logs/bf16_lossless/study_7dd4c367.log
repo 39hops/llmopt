@@ -1,0 +1,439 @@
+== census 22:52:35 7dd4c367
+[census] model-00007 model.language_model.layers.21.linear_attn.out_proj.weight [5120, 6144] ...
+[census]   n 31,457,280 distinct 5,435 H16 10.499 H_exp 2.575 H(sm|exp) 7.924 block16@4096 10.077+9.409 (2s)
+[census] model-00007 model.language_model.layers.21.mlp.down_proj.weight [5120, 17408] ...
+[census]   n 89,128,960 distinct 5,513 H16 10.483 H_exp 2.560 H(sm|exp) 7.923 block16@4096 10.060+9.320 (5s)
+[census] model-00007 model.language_model.layers.21.mlp.gate_proj.weight [17408, 5120] ...
+[census]   n 89,128,960 distinct 5,545 H16 10.471 H_exp 2.549 H(sm|exp) 7.922 block16@4096 10.057+9.305 (5s)
+[census] model-00007 model.language_model.layers.21.mlp.up_proj.weight [17408, 5120] ...
+[census]   n 89,128,960 distinct 5,481 H16 10.474 H_exp 2.552 H(sm|exp) 7.922 block16@4096 10.061+9.318 (5s)
+[census] model-00007 model.language_model.layers.21.post_attention_layernorm.weight [5120] ...
+[census]   n 5,120 distinct 1,571 H16 10.152 H_exp 2.926 H(sm|exp) 7.226 block16@4096 10.056+9.769 (0s)
+[census] model-00007 model.language_model.layers.22.input_layernorm.weight [5120] ...
+[census]   n 5,120 distinct 853 H16 8.374 H_exp 1.846 H(sm|exp) 6.528 block16@4096 8.361+5.305 (0s)
+[census] model-00007 model.language_model.layers.22.linear_attn.A_log [48] ...
+[census]   n 48 distinct 42 H16 5.319 H_exp 1.664 H(sm|exp) 3.655 block16@4096 0.000+0.000 (0s)
+[census] model-00007 model.language_model.layers.22.linear_attn.conv1d.weight [10240, 1, 4] ...
+[census]   n 40,960 distinct 3,149 H16 11.078 H_exp 3.205 H(sm|exp) 7.873 block16@4096 10.532+12.221 (0s)
+[census] model-00007 model.language_model.layers.22.linear_attn.dt_bias [48] ...
+[census]   n 48 distinct 44 H16 5.418 H_exp 2.419 H(sm|exp) 3.000 block16@4096 0.000+0.000 (0s)
+[census] model-00007 model.language_model.layers.22.linear_attn.in_proj_a.weight [48, 5120] ...
+[census]   n 245,760 distinct 3,272 H16 10.517 H_exp 2.601 H(sm|exp) 7.916 block16@4096 10.096+9.536 (0s)
+[census] model-00007 model.language_model.layers.22.linear_attn.in_proj_b.weight [48, 5120] ...
+[census]   n 245,760 distinct 3,204 H16 10.517 H_exp 2.600 H(sm|exp) 7.917 block16@4096 10.090+9.500 (0s)
+[census] model-00007 model.language_model.layers.22.linear_attn.in_proj_qkv.weight [10240, 5120] ...
+[census]   n 52,428,800 distinct 5,372 H16 10.483 H_exp 2.561 H(sm|exp) 7.922 block16@4096 10.066+9.346 (3s)
+[census] model-00007 model.language_model.layers.22.linear_attn.in_proj_z.weight [6144, 5120] ...
+[census]   n 31,457,280 distinct 5,056 H16 10.486 H_exp 2.564 H(sm|exp) 7.923 block16@4096 10.062+9.322 (2s)
+[census] model-00007 model.language_model.layers.22.linear_attn.norm.weight [128] ...
+[census]   n 128 distinct 44 H16 5.066 H_exp 0.273 H(sm|exp) 4.793 block16@4096 0.000+0.000 (0s)
+[census] model-00007 model.language_model.layers.22.linear_attn.out_proj.weight [5120, 6144] ...
+[census]   n 31,457,280 distinct 5,372 H16 10.492 H_exp 2.569 H(sm|exp) 7.923 block16@4096 10.072+9.382 (2s)
+[census] model-00007 model.language_model.layers.22.mlp.down_proj.weight [5120, 17408] ...
+[census]   n 89,128,960 distinct 5,956 H16 10.485 H_exp 2.562 H(sm|exp) 7.923 block16@4096 10.063+9.334 (5s)
+[census] model-00007 model.language_model.layers.22.mlp.gate_proj.weight [17408, 5120] ...
+[census]   n 89,128,960 distinct 5,613 H16 10.480 H_exp 2.556 H(sm|exp) 7.924 block16@4096 10.060+9.321 (5s)
+[census] model-00007 model.language_model.layers.22.mlp.up_proj.weight [17408, 5120] ...
+[census]   n 89,128,960 distinct 5,689 H16 10.478 H_exp 2.556 H(sm|exp) 7.922 block16@4096 10.064+9.335 (5s)
+[census] model-00007 model.language_model.layers.22.post_attention_layernorm.weight [5120] ...
+[census]   n 5,120 distinct 1,358 H16 9.790 H_exp 2.618 H(sm|exp) 7.171 block16@4096 9.729+8.545 (0s)
+[census] model-00007 model.language_model.layers.23.input_layernorm.weight [5120] ...
+[census]   n 5,120 distinct 1,606 H16 10.206 H_exp 2.801 H(sm|exp) 7.405 block16@4096 10.281+10.603 (0s)
+[census] model-00007 model.language_model.layers.23.mlp.down_proj.weight [5120, 17408] ...
+[census]   n 89,128,960 distinct 5,524 H16 10.485 H_exp 2.562 H(sm|exp) 7.923 block16@4096 10.061+9.322 (5s)
+[census] model-00007 model.language_model.layers.23.mlp.gate_proj.weight [17408, 5120] ...
+[census]   n 89,128,960 distinct 5,453 H16 10.474 H_exp 2.551 H(sm|exp) 7.922 block16@4096 10.058+9.311 (5s)
+[census] model-00007 model.language_model.layers.23.mlp.up_proj.weight [17408, 5120] ...
+[census]   n 89,128,960 distinct 5,393 H16 10.477 H_exp 2.555 H(sm|exp) 7.922 block16@4096 10.063+9.334 (5s)
+[census] model-00007 model.language_model.layers.23.post_attention_layernorm.weight [5120] ...
+[census]   n 5,120 distinct 1,313 H16 9.602 H_exp 2.506 H(sm|exp) 7.095 block16@4096 9.553+8.237 (0s)
+[census] model-00007 model.language_model.layers.23.self_attn.k_norm.weight [256] ...
+[census]   n 256 distinct 101 H16 5.879 H_exp 1.484 H(sm|exp) 4.394 block16@4096 0.000+0.000 (0s)
+[census] model-00007 model.language_model.layers.23.self_attn.k_proj.weight [1024, 5120] ...
+[census]   n 5,242,880 distinct 4,514 H16 10.526 H_exp 2.598 H(sm|exp) 7.929 block16@4096 10.085+9.474 (0s)
+[census] model-00007 model.language_model.layers.23.self_attn.o_proj.weight [5120, 6144] ...
+[census]   n 31,457,280 distinct 5,345 H16 10.501 H_exp 2.577 H(sm|exp) 7.925 block16@4096 10.076+9.404 (2s)
+[census] model-00007 model.language_model.layers.23.self_attn.q_norm.weight [256] ...
+[census]   n 256 distinct 101 H16 5.952 H_exp 1.203 H(sm|exp) 4.749 block16@4096 0.000+0.000 (0s)
+[census] model-00007 model.language_model.layers.23.self_attn.q_proj.weight [12288, 5120] ...
+[census]   n 62,914,560 distinct 5,455 H16 10.491 H_exp 2.567 H(sm|exp) 7.924 block16@4096 10.064+9.339 (4s)
+[census] model-00007 model.language_model.layers.23.self_attn.v_proj.weight [1024, 5120] ...
+[census]   n 5,242,880 distinct 4,434 H16 10.540 H_exp 2.612 H(sm|exp) 7.928 block16@4096 10.095+9.502 (0s)
+[census] model-00018 lm_head.weight [248320, 5120] ...
+[census]   n 1,271,398,400 distinct 6,740 H16 10.500 H_exp 2.574 H(sm|exp) 7.926 block16@4096 10.066+9.359 (73s)
+[census] model-00018 mtp.fc.weight [5120, 10240] ...
+[census]   n 52,428,800 distinct 5,995 H16 10.532 H_exp 2.603 H(sm|exp) 7.929 block16@4096 10.088+9.473 (3s)
+[census] model-00018 mtp.layers.0.input_layernorm.weight [5120] ...
+[census]   n 5,120 distinct 1,635 H16 10.297 H_exp 2.882 H(sm|exp) 7.416 block16@4096 10.123+10.083 (0s)
+[census] model-00018 mtp.layers.0.mlp.down_proj.weight [5120, 17408] ...
+[census]   n 89,128,960 distinct 5,958 H16 10.544 H_exp 2.614 H(sm|exp) 7.930 block16@4096 10.114+9.606 (5s)
+[census] model-00018 mtp.layers.0.mlp.gate_proj.weight [17408, 5120] ...
+[census]   n 89,128,960 distinct 5,636 H16 10.531 H_exp 2.602 H(sm|exp) 7.929 block16@4096 10.070+9.377 (5s)
+[census] model-00018 mtp.layers.0.mlp.up_proj.weight [17408, 5120] ...
+[census]   n 89,128,960 distinct 5,644 H16 10.510 H_exp 2.583 H(sm|exp) 7.927 block16@4096 10.069+9.369 (5s)
+[census] model-00018 mtp.layers.0.post_attention_layernorm.weight [5120] ...
+[census]   n 5,120 distinct 375 H16 7.790 H_exp 1.203 H(sm|exp) 6.587 block16@4096 7.776+2.440 (0s)
+[census] model-00018 mtp.layers.0.self_attn.k_norm.weight [256] ...
+[census]   n 256 distinct 138 H16 6.709 H_exp 1.249 H(sm|exp) 5.460 block16@4096 0.000+0.000 (0s)
+[census] model-00018 mtp.layers.0.self_attn.k_proj.weight [1024, 5120] ...
+[census]   n 5,242,880 distinct 4,596 H16 10.590 H_exp 2.656 H(sm|exp) 7.934 block16@4096 10.092+9.504 (0s)
+[census] model-00018 mtp.layers.0.self_attn.o_proj.weight [5120, 6144] ...
+[census]   n 31,457,280 distinct 5,676 H16 10.586 H_exp 2.652 H(sm|exp) 7.934 block16@4096 10.144+9.788 (2s)
+[census] model-00018 mtp.layers.0.self_attn.q_norm.weight [256] ...
+[census]   n 256 distinct 140 H16 6.755 H_exp 1.202 H(sm|exp) 5.553 block16@4096 0.000+0.000 (0s)
+[census] model-00018 mtp.layers.0.self_attn.q_proj.weight [12288, 5120] ...
+[census]   n 62,914,560 distinct 5,736 H16 10.644 H_exp 2.705 H(sm|exp) 7.939 block16@4096 10.078+9.420 (4s)
+[census] model-00018 mtp.layers.0.self_attn.v_proj.weight [1024, 5120] ...
+[census]   n 5,242,880 distinct 4,424 H16 10.542 H_exp 2.613 H(sm|exp) 7.929 block16@4096 10.091+9.487 (0s)
+[census] model-00018 mtp.norm.weight [5120] ...
+[census]   n 5,120 distinct 194 H16 6.370 H_exp 0.399 H(sm|exp) 5.971 block16@4096 6.271+1.244 (0s)
+[census] model-00018 mtp.pre_fc_norm_embedding.weight [5120] ...
+[census]   n 5,120 distinct 212 H16 7.369 H_exp 1.010 H(sm|exp) 6.359 block16@4096 7.310+1.408 (0s)
+[census] model-00018 mtp.pre_fc_norm_hidden.weight [5120] ...
+[census]   n 5,120 distinct 585 H16 7.732 H_exp 0.988 H(sm|exp) 6.744 block16@4096 7.733+3.698 (0s)
+[census] wrote logs/bf16_lossless/entropy.json
+== bench 22:55:15 7dd4c367
+[bench] model.language_model.layers.21.linear_attn.out_proj.weight [5120, 6144] n 31,457,280
+[bench]   raw                    16.000 bits/w  ratio 1.0000  c 62914560000.0 MB/s  d 62914560000.0 MB/s  exact True
+[bench]   zstd-3                 12.456 bits/w  ratio 0.7785  c   237.5 MB/s  d   282.1 MB/s  exact True
+[bench]   byteplane+zstd-3       11.369 bits/w  ratio 0.7106  c   195.7 MB/s  d   261.5 MB/s  exact True
+[bench]   bitshuffle+zstd-3      11.888 bits/w  ratio 0.7430  c   129.6 MB/s  d   112.6 MB/s  exact True
+[bench]   zstd-19                12.452 bits/w  ratio 0.7783  c     4.0 MB/s  d   244.2 MB/s  exact True
+[bench]   byteplane+zstd-19      10.706 bits/w  ratio 0.6691  c     3.0 MB/s  d   264.2 MB/s  exact True
+[bench]   bitshuffle+zstd-19     11.846 bits/w  ratio 0.7404  c    10.1 MB/s  d   108.4 MB/s  exact True
+[bench]   dfloat11               10.611 bits/w  ratio 0.6632  c   364.9 MB/s  d   310.2 MB/s  exact True
+[bench]   rans-exp               10.577 bits/w  ratio 0.6610  c   239.7 MB/s  d    87.6 MB/s  exact True
+[bench]   rans-16                10.572 bits/w  ratio 0.6608  c   289.0 MB/s  d    54.3 MB/s  exact True
+[bench] model.language_model.layers.21.mlp.down_proj.weight [5120, 17408] n 89,128,960
+[bench]   raw                    16.000 bits/w  ratio 1.0000  c 178257920000.0 MB/s  d 178257920000.0 MB/s  exact True
+[bench]   zstd-3                 12.461 bits/w  ratio 0.7788  c   231.5 MB/s  d   279.7 MB/s  exact True
+[bench]   byteplane+zstd-3       11.353 bits/w  ratio 0.7096  c   195.9 MB/s  d   260.6 MB/s  exact True
+[bench]   bitshuffle+zstd-3      12.016 bits/w  ratio 0.7510  c   128.4 MB/s  d   111.3 MB/s  exact True
+[bench]   zstd-19                12.461 bits/w  ratio 0.7788  c     3.9 MB/s  d   264.4 MB/s  exact True
+[bench]   byteplane+zstd-19      10.702 bits/w  ratio 0.6689  c     2.9 MB/s  d   282.2 MB/s  exact True
+[bench]   bitshuffle+zstd-19     11.999 bits/w  ratio 0.7499  c    10.1 MB/s  d   118.9 MB/s  exact True
+[bench]   dfloat11               10.612 bits/w  ratio 0.6633  c   383.7 MB/s  d   291.9 MB/s  exact True
+[bench]   rans-exp               10.562 bits/w  ratio 0.6601  c   251.4 MB/s  d    89.5 MB/s  exact True
+[bench]   rans-16                10.513 bits/w  ratio 0.6571  c   307.0 MB/s  d    57.5 MB/s  exact True
+[bench] model.language_model.layers.21.mlp.gate_proj.weight [17408, 5120] n 89,128,960
+[bench]   raw                    16.000 bits/w  ratio 1.0000  c 178257920000.0 MB/s  d 178257920000.0 MB/s  exact True
+[bench]   zstd-3                 12.446 bits/w  ratio 0.7779  c   241.0 MB/s  d   295.6 MB/s  exact True
+[bench]   byteplane+zstd-3       11.341 bits/w  ratio 0.7088  c   202.3 MB/s  d   271.7 MB/s  exact True
+[bench]   bitshuffle+zstd-3      12.003 bits/w  ratio 0.7502  c   137.6 MB/s  d   119.5 MB/s  exact True
+[bench]   zstd-19                12.446 bits/w  ratio 0.7779  c     4.2 MB/s  d   283.2 MB/s  exact True
+[bench]   byteplane+zstd-19      10.683 bits/w  ratio 0.6677  c     3.1 MB/s  d   284.9 MB/s  exact True
+[bench]   bitshuffle+zstd-19     11.992 bits/w  ratio 0.7495  c    10.3 MB/s  d   119.1 MB/s  exact True
+[bench]   dfloat11               10.594 bits/w  ratio 0.6621  c   388.9 MB/s  d   302.6 MB/s  exact True
+[bench]   rans-exp               10.551 bits/w  ratio 0.6594  c   256.6 MB/s  d    89.1 MB/s  exact True
+[bench]   rans-16                10.502 bits/w  ratio 0.6564  c   309.8 MB/s  d    57.5 MB/s  exact True
+[bench] model.language_model.layers.21.mlp.up_proj.weight [17408, 5120] n 89,128,960
+[bench]   raw                    16.000 bits/w  ratio 1.0000  c 178257920000.0 MB/s  d 178257920000.0 MB/s  exact True
+[bench]   zstd-3                 12.457 bits/w  ratio 0.7785  c   245.7 MB/s  d   297.7 MB/s  exact True
+[bench]   byteplane+zstd-3       11.348 bits/w  ratio 0.7092  c   202.8 MB/s  d   273.4 MB/s  exact True
+[bench]   bitshuffle+zstd-3      12.010 bits/w  ratio 0.7506  c   139.9 MB/s  d   117.5 MB/s  exact True
+[bench]   zstd-19                12.444 bits/w  ratio 0.7777  c     4.1 MB/s  d   290.4 MB/s  exact True
+[bench]   byteplane+zstd-19      10.694 bits/w  ratio 0.6684  c     3.1 MB/s  d   280.4 MB/s  exact True
+[bench]   bitshuffle+zstd-19     11.998 bits/w  ratio 0.7499  c    10.2 MB/s  d   118.3 MB/s  exact True
+[bench]   dfloat11               10.604 bits/w  ratio 0.6628  c   379.0 MB/s  d   298.0 MB/s  exact True
+[bench]   rans-exp               10.553 bits/w  ratio 0.6596  c   256.3 MB/s  d    89.3 MB/s  exact True
+[bench]   rans-16                10.504 bits/w  ratio 0.6565  c   312.2 MB/s  d    57.5 MB/s  exact True
+[bench] model.language_model.layers.21.post_attention_layernorm.weight [5120] n 5,120
+[bench]   raw                    16.000 bits/w  ratio 1.0000  c 10240000.0 MB/s  d 10240000.0 MB/s  exact True
+[bench]   zstd-3                 12.709 bits/w  ratio 0.7943  c     0.8 MB/s  d     1.1 MB/s  exact True
+[bench]   byteplane+zstd-3       11.333 bits/w  ratio 0.7083  c     0.6 MB/s  d     0.6 MB/s  exact True
+[bench]   bitshuffle+zstd-3      12.052 bits/w  ratio 0.7532  c     1.2 MB/s  d     1.2 MB/s  exact True
+[bench]   zstd-19                12.758 bits/w  ratio 0.7974  c     0.8 MB/s  d     1.1 MB/s  exact True
+[bench]   byteplane+zstd-19      10.947 bits/w  ratio 0.6842  c     0.4 MB/s  d     0.6 MB/s  exact True
+[bench]   bitshuffle+zstd-19     11.894 bits/w  ratio 0.7434  c     0.7 MB/s  d     1.0 MB/s  exact True
+[bench]   dfloat11               11.408 bits/w  ratio 0.7130  c   105.4 MB/s  d   194.3 MB/s  exact True
+[bench]   rans-exp               12.581 bits/w  ratio 0.7863  c   148.7 MB/s  d    88.1 MB/s  exact True
+[bench]   rans-16                419.812 bits/w  ratio 26.2383  c    35.0 MB/s  d    57.3 MB/s  exact True
+[bench] model.language_model.layers.22.input_layernorm.weight [5120] n 5,120
+[bench]   raw                    16.000 bits/w  ratio 1.0000  c 10240000.0 MB/s  d 10240000.0 MB/s  exact True
+[bench]   zstd-3                 11.427 bits/w  ratio 0.7142  c     1.2 MB/s  d     1.1 MB/s  exact True
+[bench]   byteplane+zstd-3       10.259 bits/w  ratio 0.6412  c     0.6 MB/s  d     0.6 MB/s  exact True
+[bench]   bitshuffle+zstd-3      11.217 bits/w  ratio 0.7011  c     1.2 MB/s  d     1.2 MB/s  exact True
+[bench]   zstd-19                11.420 bits/w  ratio 0.7138  c     0.8 MB/s  d     1.1 MB/s  exact True
+[bench]   byteplane+zstd-19       9.713 bits/w  ratio 0.6070  c     0.4 MB/s  d     0.6 MB/s  exact True
+[bench]   bitshuffle+zstd-19     10.938 bits/w  ratio 0.6836  c     0.8 MB/s  d     1.1 MB/s  exact True
+[bench]   dfloat11               10.328 bits/w  ratio 0.6455  c   104.9 MB/s  d   233.4 MB/s  exact True
+[bench]   rans-exp               11.500 bits/w  ratio 0.7188  c   137.5 MB/s  d    87.6 MB/s  exact True
+[bench]   rans-16                418.038 bits/w  ratio 26.1273  c    36.8 MB/s  d    56.9 MB/s  exact True
+[bench] model.language_model.layers.22.linear_attn.A_log [48] n 48
+[bench]   raw                    16.000 bits/w  ratio 1.0000  c 96000.0 MB/s  d 96000.0 MB/s  exact True
+[bench]   zstd-3                 18.167 bits/w  ratio 1.1354  c     0.0 MB/s  d     0.0 MB/s  exact True
+[bench]   byteplane+zstd-3       22.000 bits/w  ratio 1.3750  c     0.0 MB/s  d     0.0 MB/s  exact True
+[bench]   bitshuffle+zstd-3      17.167 bits/w  ratio 1.0729  c     0.0 MB/s  d     0.0 MB/s  exact True
+[bench]   zstd-19                17.333 bits/w  ratio 1.0833  c     0.0 MB/s  d     0.0 MB/s  exact True
+[bench]   byteplane+zstd-19      19.167 bits/w  ratio 1.1979  c     0.0 MB/s  d     0.0 MB/s  exact True
+[bench]   bitshuffle+zstd-19     16.667 bits/w  ratio 1.0417  c     0.0 MB/s  d     0.0 MB/s  exact True
+[bench]   dfloat11               57.833 bits/w  ratio 3.6146  c     1.2 MB/s  d     9.8 MB/s  exact True
+[bench]   rans-exp               186.667 bits/w  ratio 11.6667  c     2.8 MB/s  d    10.4 MB/s  exact True
+[bench]   rans-16                43702.000 bits/w  ratio 2731.3750  c     0.4 MB/s  d    22.8 MB/s  exact True
+[bench] model.language_model.layers.22.linear_attn.conv1d.weight [10240, 1, 4] n 40,960
+[bench]   raw                    16.000 bits/w  ratio 1.0000  c 81920000.0 MB/s  d 81920000.0 MB/s  exact True
+[bench]   zstd-3                 13.043 bits/w  ratio 0.8152  c     8.9 MB/s  d     9.2 MB/s  exact True
+[bench]   byteplane+zstd-3       11.428 bits/w  ratio 0.7142  c     4.6 MB/s  d     4.7 MB/s  exact True
+[bench]   bitshuffle+zstd-3      12.028 bits/w  ratio 0.7517  c     7.0 MB/s  d     8.4 MB/s  exact True
+[bench]   zstd-19                13.041 bits/w  ratio 0.8151  c     4.6 MB/s  d     8.3 MB/s  exact True
+[bench]   byteplane+zstd-19      11.199 bits/w  ratio 0.7000  c     2.4 MB/s  d     4.5 MB/s  exact True
+[bench]   bitshuffle+zstd-19     11.662 bits/w  ratio 0.7289  c     4.0 MB/s  d     8.2 MB/s  exact True
+[bench]   dfloat11               11.318 bits/w  ratio 0.7074  c   339.4 MB/s  d   113.5 MB/s  exact True
+[bench]   rans-exp               11.412 bits/w  ratio 0.7133  c   271.7 MB/s  d    94.2 MB/s  exact True
+[bench]   rans-16                62.291 bits/w  ratio 3.8932  c   100.3 MB/s  d    58.0 MB/s  exact True
+[bench] model.language_model.layers.22.linear_attn.dt_bias [48] n 48
+[bench]   raw                    16.000 bits/w  ratio 1.0000  c 96000.0 MB/s  d 96000.0 MB/s  exact True
+[bench]   zstd-3                 18.167 bits/w  ratio 1.1354  c     0.0 MB/s  d     0.0 MB/s  exact True
+[bench]   byteplane+zstd-3       23.000 bits/w  ratio 1.4375  c     0.0 MB/s  d     0.0 MB/s  exact True
+[bench]   bitshuffle+zstd-3      17.667 bits/w  ratio 1.1042  c     0.0 MB/s  d     0.0 MB/s  exact True
+[bench]   zstd-19                18.167 bits/w  ratio 1.1354  c     0.0 MB/s  d     0.0 MB/s  exact True
+[bench]   byteplane+zstd-19      19.667 bits/w  ratio 1.2292  c     0.0 MB/s  d     0.0 MB/s  exact True
+[bench]   bitshuffle+zstd-19     16.833 bits/w  ratio 1.0521  c     0.0 MB/s  d     0.0 MB/s  exact True
+[bench]   dfloat11               58.500 bits/w  ratio 3.6562  c     1.4 MB/s  d    10.5 MB/s  exact True
+[bench]   rans-exp               187.333 bits/w  ratio 11.7083  c     2.7 MB/s  d     8.9 MB/s  exact True
+[bench]   rans-16                43702.000 bits/w  ratio 2731.3750  c     0.4 MB/s  d    23.8 MB/s  exact True
+[bench] model.language_model.layers.22.linear_attn.in_proj_a.weight [48, 5120] n 245,760
+[bench]   raw                    16.000 bits/w  ratio 1.0000  c 491520000.0 MB/s  d 491520000.0 MB/s  exact True
+[bench]   zstd-3                 12.476 bits/w  ratio 0.7798  c    44.3 MB/s  d    44.8 MB/s  exact True
+[bench]   byteplane+zstd-3       11.324 bits/w  ratio 0.7078  c    23.5 MB/s  d    25.2 MB/s  exact True
+[bench]   bitshuffle+zstd-3      12.051 bits/w  ratio 0.7532  c    34.1 MB/s  d    39.5 MB/s  exact True
+[bench]   zstd-19                12.493 bits/w  ratio 0.7808  c    13.7 MB/s  d    39.7 MB/s  exact True
+[bench]   byteplane+zstd-19      10.732 bits/w  ratio 0.6707  c     6.1 MB/s  d    23.0 MB/s  exact True
+[bench]   bitshuffle+zstd-19     11.925 bits/w  ratio 0.7453  c    14.1 MB/s  d    36.5 MB/s  exact True
+[bench]   dfloat11               10.649 bits/w  ratio 0.6655  c   288.1 MB/s  d   374.8 MB/s  exact True
+[bench]   rans-exp               10.637 bits/w  ratio 0.6648  c   225.8 MB/s  d    88.7 MB/s  exact True
+[bench]   rans-16                19.058 bits/w  ratio 1.1912  c   192.4 MB/s  d    55.0 MB/s  exact True
+[bench] model.language_model.layers.22.linear_attn.in_proj_b.weight [48, 5120] n 245,760
+[bench]   raw                    16.000 bits/w  ratio 1.0000  c 491520000.0 MB/s  d 491520000.0 MB/s  exact True
+[bench]   zstd-3                 12.478 bits/w  ratio 0.7799  c    36.4 MB/s  d    42.6 MB/s  exact True
+[bench]   byteplane+zstd-3       11.313 bits/w  ratio 0.7071  c    24.0 MB/s  d    23.4 MB/s  exact True
+[bench]   bitshuffle+zstd-3      12.053 bits/w  ratio 0.7533  c    33.5 MB/s  d    40.3 MB/s  exact True
+[bench]   zstd-19                12.486 bits/w  ratio 0.7804  c    13.9 MB/s  d    37.9 MB/s  exact True
+[bench]   byteplane+zstd-19      10.723 bits/w  ratio 0.6702  c     6.0 MB/s  d    23.9 MB/s  exact True
+[bench]   bitshuffle+zstd-19     11.973 bits/w  ratio 0.7483  c    14.5 MB/s  d    34.5 MB/s  exact True
+[bench]   dfloat11               10.642 bits/w  ratio 0.6652  c   280.9 MB/s  d   332.5 MB/s  exact True
+[bench]   rans-exp               10.636 bits/w  ratio 0.6647  c   236.3 MB/s  d    92.6 MB/s  exact True
+[bench]   rans-16                19.058 bits/w  ratio 1.1911  c   278.9 MB/s  d    58.0 MB/s  exact True
+[bench] model.language_model.layers.22.linear_attn.in_proj_qkv.weight [10240, 5120] n 52,428,800
+[bench]   raw                    16.000 bits/w  ratio 1.0000  c 104857600000.0 MB/s  d 104857600000.0 MB/s  exact True
+[bench]   zstd-3                 12.445 bits/w  ratio 0.7778  c   234.0 MB/s  d   277.2 MB/s  exact True
+[bench]   byteplane+zstd-3       11.358 bits/w  ratio 0.7099  c   194.2 MB/s  d   251.8 MB/s  exact True
+[bench]   bitshuffle+zstd-3      11.871 bits/w  ratio 0.7419  c   137.0 MB/s  d   117.2 MB/s  exact True
+[bench]   zstd-19                12.442 bits/w  ratio 0.7776  c     4.2 MB/s  d   280.7 MB/s  exact True
+[bench]   byteplane+zstd-19      10.694 bits/w  ratio 0.6684  c     3.2 MB/s  d   266.9 MB/s  exact True
+[bench]   bitshuffle+zstd-19     11.829 bits/w  ratio 0.7393  c    10.5 MB/s  d   113.8 MB/s  exact True
+[bench]   dfloat11               10.601 bits/w  ratio 0.6626  c   379.8 MB/s  d   336.7 MB/s  exact True
+[bench]   rans-exp               10.563 bits/w  ratio 0.6602  c   244.9 MB/s  d    85.9 MB/s  exact True
+[bench]   rans-16                10.530 bits/w  ratio 0.6581  c   294.0 MB/s  d    56.2 MB/s  exact True
+[bench] model.language_model.layers.22.linear_attn.in_proj_z.weight [6144, 5120] n 31,457,280
+[bench]   raw                    16.000 bits/w  ratio 1.0000  c 62914560000.0 MB/s  d 62914560000.0 MB/s  exact True
+[bench]   zstd-3                 12.449 bits/w  ratio 0.7781  c   227.6 MB/s  d   268.8 MB/s  exact True
+[bench]   byteplane+zstd-3       11.360 bits/w  ratio 0.7100  c   187.2 MB/s  d   245.7 MB/s  exact True
+[bench]   bitshuffle+zstd-3      11.862 bits/w  ratio 0.7413  c   134.2 MB/s  d   115.6 MB/s  exact True
+[bench]   zstd-19                12.438 bits/w  ratio 0.7774  c     4.3 MB/s  d   267.8 MB/s  exact True
+[bench]   byteplane+zstd-19      10.695 bits/w  ratio 0.6685  c     3.4 MB/s  d   255.7 MB/s  exact True
+[bench]   bitshuffle+zstd-19     11.821 bits/w  ratio 0.7388  c    10.9 MB/s  d   116.8 MB/s  exact True
+[bench]   dfloat11               10.603 bits/w  ratio 0.6627  c   360.2 MB/s  d   337.0 MB/s  exact True
+[bench]   rans-exp               10.565 bits/w  ratio 0.6603  c   245.2 MB/s  d    85.0 MB/s  exact True
+[bench]   rans-16                10.560 bits/w  ratio 0.6600  c   256.5 MB/s  d    55.4 MB/s  exact True
+[bench] model.language_model.layers.22.linear_attn.norm.weight [128] n 128
+[bench]   raw                    16.000 bits/w  ratio 1.0000  c 256000.0 MB/s  d 256000.0 MB/s  exact True
+[bench]   zstd-3                 10.625 bits/w  ratio 0.6641  c     0.0 MB/s  d     0.0 MB/s  exact True
+[bench]   byteplane+zstd-3       10.438 bits/w  ratio 0.6523  c     0.0 MB/s  d     0.0 MB/s  exact True
+[bench]   bitshuffle+zstd-3       9.562 bits/w  ratio 0.5977  c     0.0 MB/s  d     0.0 MB/s  exact True
+[bench]   zstd-19                10.562 bits/w  ratio 0.6602  c     0.0 MB/s  d     0.0 MB/s  exact True
+[bench]   byteplane+zstd-19      10.188 bits/w  ratio 0.6367  c     0.0 MB/s  d     0.0 MB/s  exact True
+[bench]   bitshuffle+zstd-19      9.562 bits/w  ratio 0.5977  c     0.0 MB/s  d     0.0 MB/s  exact True
+[bench]   dfloat11               27.000 bits/w  ratio 1.6875  c     4.3 MB/s  d    28.1 MB/s  exact True
+[bench]   rans-exp               74.500 bits/w  ratio 4.6562  c     7.4 MB/s  d    22.6 MB/s  exact True
+[bench]   rans-16                16391.250 bits/w  ratio 1024.4531  c     0.9 MB/s  d    37.7 MB/s  exact True
+[bench] model.language_model.layers.22.linear_attn.out_proj.weight [5120, 6144] n 31,457,280
+[bench]   raw                    16.000 bits/w  ratio 1.0000  c 62914560000.0 MB/s  d 62914560000.0 MB/s  exact True
+[bench]   zstd-3                 12.452 bits/w  ratio 0.7782  c   229.8 MB/s  d   271.5 MB/s  exact True
+[bench]   byteplane+zstd-3       11.364 bits/w  ratio 0.7102  c   189.1 MB/s  d   247.6 MB/s  exact True
+[bench]   bitshuffle+zstd-3      11.882 bits/w  ratio 0.7426  c   134.9 MB/s  d   117.1 MB/s  exact True
+[bench]   zstd-19                12.450 bits/w  ratio 0.7781  c     4.4 MB/s  d   263.9 MB/s  exact True
+[bench]   byteplane+zstd-19      10.702 bits/w  ratio 0.6688  c     3.3 MB/s  d   252.7 MB/s  exact True
+[bench]   bitshuffle+zstd-19     11.840 bits/w  ratio 0.7400  c    10.9 MB/s  d   114.0 MB/s  exact True
+[bench]   dfloat11               10.606 bits/w  ratio 0.6629  c   356.7 MB/s  d   333.9 MB/s  exact True
+[bench]   rans-exp               10.571 bits/w  ratio 0.6607  c   251.1 MB/s  d    89.0 MB/s  exact True
+[bench]   rans-16                10.565 bits/w  ratio 0.6603  c   305.9 MB/s  d    57.5 MB/s  exact True
+[bench] model.language_model.layers.22.mlp.down_proj.weight [5120, 17408] n 89,128,960
+[bench]   raw                    16.000 bits/w  ratio 1.0000  c 178257920000.0 MB/s  d 178257920000.0 MB/s  exact True
+[bench]   zstd-3                 12.464 bits/w  ratio 0.7790  c   240.6 MB/s  d   291.5 MB/s  exact True
+[bench]   byteplane+zstd-3       11.356 bits/w  ratio 0.7098  c   201.2 MB/s  d   268.5 MB/s  exact True
+[bench]   bitshuffle+zstd-3      12.023 bits/w  ratio 0.7515  c   136.2 MB/s  d   117.3 MB/s  exact True
+[bench]   zstd-19                12.466 bits/w  ratio 0.7791  c     4.2 MB/s  d   294.5 MB/s  exact True
+[bench]   byteplane+zstd-19      10.707 bits/w  ratio 0.6692  c     3.2 MB/s  d   286.8 MB/s  exact True
+[bench]   bitshuffle+zstd-19     12.000 bits/w  ratio 0.7500  c    10.2 MB/s  d   119.8 MB/s  exact True
+[bench]   dfloat11               10.615 bits/w  ratio 0.6634  c   405.2 MB/s  d   290.7 MB/s  exact True
+[bench]   rans-exp               10.563 bits/w  ratio 0.6602  c   257.8 MB/s  d    81.7 MB/s  exact True
+[bench]   rans-16                10.515 bits/w  ratio 0.6572  c   314.1 MB/s  d    57.5 MB/s  exact True
+[bench] model.language_model.layers.22.mlp.gate_proj.weight [17408, 5120] n 89,128,960
+[bench]   raw                    16.000 bits/w  ratio 1.0000  c 178257920000.0 MB/s  d 178257920000.0 MB/s  exact True
+[bench]   zstd-3                 12.449 bits/w  ratio 0.7780  c   241.6 MB/s  d   289.5 MB/s  exact True
+[bench]   byteplane+zstd-3       11.346 bits/w  ratio 0.7091  c   198.7 MB/s  d   270.8 MB/s  exact True
+[bench]   bitshuffle+zstd-3      12.000 bits/w  ratio 0.7500  c   139.6 MB/s  d   118.5 MB/s  exact True
+[bench]   zstd-19                12.449 bits/w  ratio 0.7781  c     4.2 MB/s  d   293.3 MB/s  exact True
+[bench]   byteplane+zstd-19      10.686 bits/w  ratio 0.6679  c     3.2 MB/s  d   283.0 MB/s  exact True
+[bench]   bitshuffle+zstd-19     11.990 bits/w  ratio 0.7494  c    10.2 MB/s  d   115.3 MB/s  exact True
+[bench]   dfloat11               10.598 bits/w  ratio 0.6624  c   374.6 MB/s  d   288.2 MB/s  exact True
+[bench]   rans-exp               10.558 bits/w  ratio 0.6599  c   247.2 MB/s  d    85.0 MB/s  exact True
+[bench]   rans-16                10.510 bits/w  ratio 0.6569  c   299.1 MB/s  d    55.4 MB/s  exact True
+[bench] model.language_model.layers.22.mlp.up_proj.weight [17408, 5120] n 89,128,960
+[bench]   raw                    16.000 bits/w  ratio 1.0000  c 178257920000.0 MB/s  d 178257920000.0 MB/s  exact True
+[bench]   zstd-3                 12.461 bits/w  ratio 0.7788  c   240.2 MB/s  d   287.4 MB/s  exact True
+[bench]   byteplane+zstd-3       11.352 bits/w  ratio 0.7095  c   201.1 MB/s  d   266.9 MB/s  exact True
+[bench]   bitshuffle+zstd-3      12.015 bits/w  ratio 0.7509  c   139.4 MB/s  d   118.7 MB/s  exact True
+[bench]   zstd-19                12.461 bits/w  ratio 0.7788  c     4.2 MB/s  d   295.6 MB/s  exact True
+[bench]   byteplane+zstd-19      10.700 bits/w  ratio 0.6687  c     3.2 MB/s  d   288.4 MB/s  exact True
+[bench]   bitshuffle+zstd-19     11.999 bits/w  ratio 0.7499  c    10.3 MB/s  d   118.5 MB/s  exact True
+[bench]   dfloat11               10.610 bits/w  ratio 0.6631  c   386.2 MB/s  d   297.7 MB/s  exact True
+[bench]   rans-exp               10.558 bits/w  ratio 0.6598  c   257.5 MB/s  d    89.0 MB/s  exact True
+[bench]   rans-16                10.508 bits/w  ratio 0.6568  c   313.2 MB/s  d    55.7 MB/s  exact True
+[bench] model.language_model.layers.22.post_attention_layernorm.weight [5120] n 5,120
+[bench]   raw                    16.000 bits/w  ratio 1.0000  c 10240000.0 MB/s  d 10240000.0 MB/s  exact True
+[bench]   zstd-3                 12.291 bits/w  ratio 0.7682  c     0.7 MB/s  d     1.1 MB/s  exact True
+[bench]   byteplane+zstd-3       11.047 bits/w  ratio 0.6904  c     0.6 MB/s  d     0.5 MB/s  exact True
+[bench]   bitshuffle+zstd-3      11.783 bits/w  ratio 0.7364  c     1.0 MB/s  d     1.1 MB/s  exact True
+[bench]   zstd-19                12.358 bits/w  ratio 0.7724  c     0.7 MB/s  d     1.0 MB/s  exact True
+[bench]   byteplane+zstd-19      10.477 bits/w  ratio 0.6548  c     0.4 MB/s  d     0.5 MB/s  exact True
+[bench]   bitshuffle+zstd-19     11.525 bits/w  ratio 0.7203  c     0.8 MB/s  d     1.0 MB/s  exact True
+[bench]   dfloat11               11.122 bits/w  ratio 0.6951  c   103.3 MB/s  d   207.4 MB/s  exact True
+[bench]   rans-exp               12.275 bits/w  ratio 0.7672  c   145.9 MB/s  d    87.8 MB/s  exact True
+[bench]   rans-16                419.450 bits/w  ratio 26.2156  c    13.6 MB/s  d    57.0 MB/s  exact True
+[bench] model.language_model.layers.23.input_layernorm.weight [5120] n 5,120
+[bench]   raw                    16.000 bits/w  ratio 1.0000  c 10240000.0 MB/s  d 10240000.0 MB/s  exact True
+[bench]   zstd-3                 12.692 bits/w  ratio 0.7933  c     1.1 MB/s  d     1.1 MB/s  exact True
+[bench]   byteplane+zstd-3       11.137 bits/w  ratio 0.6961  c     0.6 MB/s  d     0.6 MB/s  exact True
+[bench]   bitshuffle+zstd-3      11.969 bits/w  ratio 0.7480  c     1.1 MB/s  d     1.1 MB/s  exact True
+[bench]   zstd-19                12.628 bits/w  ratio 0.7893  c     0.8 MB/s  d     1.0 MB/s  exact True
+[bench]   byteplane+zstd-19      10.856 bits/w  ratio 0.6785  c     0.4 MB/s  d     0.5 MB/s  exact True
+[bench]   bitshuffle+zstd-19     11.700 bits/w  ratio 0.7312  c     0.7 MB/s  d     1.0 MB/s  exact True
+[bench]   dfloat11               11.306 bits/w  ratio 0.7066  c   103.0 MB/s  d   224.2 MB/s  exact True
+[bench]   rans-exp               12.456 bits/w  ratio 0.7785  c   143.3 MB/s  d    88.5 MB/s  exact True
+[bench]   rans-16                419.869 bits/w  ratio 26.2418  c    34.8 MB/s  d    56.2 MB/s  exact True
+[bench] model.language_model.layers.23.mlp.down_proj.weight [5120, 17408] n 89,128,960
+[bench]   raw                    16.000 bits/w  ratio 1.0000  c 178257920000.0 MB/s  d 178257920000.0 MB/s  exact True
+[bench]   zstd-3                 12.461 bits/w  ratio 0.7788  c   241.0 MB/s  d   292.5 MB/s  exact True
+[bench]   byteplane+zstd-3       11.354 bits/w  ratio 0.7096  c   201.9 MB/s  d   271.4 MB/s  exact True
+[bench]   bitshuffle+zstd-3      12.015 bits/w  ratio 0.7510  c   139.9 MB/s  d   118.3 MB/s  exact True
+[bench]   zstd-19                12.460 bits/w  ratio 0.7787  c     4.2 MB/s  d   291.3 MB/s  exact True
+[bench]   byteplane+zstd-19      10.704 bits/w  ratio 0.6690  c     3.1 MB/s  d   288.1 MB/s  exact True
+[bench]   bitshuffle+zstd-19     11.998 bits/w  ratio 0.7499  c    10.3 MB/s  d   120.4 MB/s  exact True
+[bench]   dfloat11               10.614 bits/w  ratio 0.6633  c   387.7 MB/s  d   295.4 MB/s  exact True
+[bench]   rans-exp               10.564 bits/w  ratio 0.6602  c   257.9 MB/s  d    89.0 MB/s  exact True
+[bench]   rans-16                10.516 bits/w  ratio 0.6572  c   315.5 MB/s  d    57.5 MB/s  exact True
+[bench] model.language_model.layers.23.mlp.gate_proj.weight [17408, 5120] n 89,128,960
+[bench]   raw                    16.000 bits/w  ratio 1.0000  c 178257920000.0 MB/s  d 178257920000.0 MB/s  exact True
+[bench]   zstd-3                 12.445 bits/w  ratio 0.7778  c   243.6 MB/s  d   295.0 MB/s  exact True
+[bench]   byteplane+zstd-3       11.341 bits/w  ratio 0.7088  c   204.7 MB/s  d   278.6 MB/s  exact True
+[bench]   bitshuffle+zstd-3      12.000 bits/w  ratio 0.7500  c   140.5 MB/s  d   117.8 MB/s  exact True
+[bench]   zstd-19                12.444 bits/w  ratio 0.7777  c     4.2 MB/s  d   292.3 MB/s  exact True
+[bench]   byteplane+zstd-19      10.681 bits/w  ratio 0.6676  c     3.1 MB/s  d   286.9 MB/s  exact True
+[bench]   bitshuffle+zstd-19     11.990 bits/w  ratio 0.7493  c    10.2 MB/s  d   117.8 MB/s  exact True
+[bench]   dfloat11               10.593 bits/w  ratio 0.6621  c   385.8 MB/s  d   300.1 MB/s  exact True
+[bench]   rans-exp               10.553 bits/w  ratio 0.6596  c   257.5 MB/s  d    89.1 MB/s  exact True
+[bench]   rans-16                10.504 bits/w  ratio 0.6565  c   315.1 MB/s  d    57.5 MB/s  exact True
+[bench] model.language_model.layers.23.mlp.up_proj.weight [17408, 5120] n 89,128,960
+[bench]   raw                    16.000 bits/w  ratio 1.0000  c 178257920000.0 MB/s  d 178257920000.0 MB/s  exact True
+[bench]   zstd-3                 12.457 bits/w  ratio 0.7786  c   237.5 MB/s  d   283.8 MB/s  exact True
+[bench]   byteplane+zstd-3       11.350 bits/w  ratio 0.7094  c   202.9 MB/s  d   279.5 MB/s  exact True
+[bench]   bitshuffle+zstd-3      12.008 bits/w  ratio 0.7505  c   140.9 MB/s  d   119.6 MB/s  exact True
+[bench]   zstd-19                12.458 bits/w  ratio 0.7786  c     4.2 MB/s  d   288.3 MB/s  exact True
+[bench]   byteplane+zstd-19      10.695 bits/w  ratio 0.6684  c     3.1 MB/s  d   287.7 MB/s  exact True
+[bench]   bitshuffle+zstd-19     11.997 bits/w  ratio 0.7498  c    10.3 MB/s  d   118.3 MB/s  exact True
+[bench]   dfloat11               10.605 bits/w  ratio 0.6628  c   374.7 MB/s  d   278.0 MB/s  exact True
+[bench]   rans-exp               10.556 bits/w  ratio 0.6598  c   247.4 MB/s  d    85.9 MB/s  exact True
+[bench]   rans-16                10.507 bits/w  ratio 0.6567  c   298.4 MB/s  d    56.9 MB/s  exact True
+[bench] model.language_model.layers.23.post_attention_layernorm.weight [5120] n 5,120
+[bench]   raw                    16.000 bits/w  ratio 1.0000  c 10240000.0 MB/s  d 10240000.0 MB/s  exact True
+[bench]   zstd-3                 12.030 bits/w  ratio 0.7519  c     0.7 MB/s  d     1.0 MB/s  exact True
+[bench]   byteplane+zstd-3       10.900 bits/w  ratio 0.6813  c     0.5 MB/s  d     0.5 MB/s  exact True
+[bench]   bitshuffle+zstd-3      11.633 bits/w  ratio 0.7271  c     1.0 MB/s  d     0.9 MB/s  exact True
+[bench]   zstd-19                12.088 bits/w  ratio 0.7555  c     0.7 MB/s  d     1.0 MB/s  exact True
+[bench]   byteplane+zstd-19      10.270 bits/w  ratio 0.6419  c     0.4 MB/s  d     0.5 MB/s  exact True
+[bench]   bitshuffle+zstd-19     11.416 bits/w  ratio 0.7135  c     0.7 MB/s  d     1.0 MB/s  exact True
+[bench]   dfloat11               11.028 bits/w  ratio 0.6893  c    96.8 MB/s  d   196.0 MB/s  exact True
+[bench]   rans-exp               12.162 bits/w  ratio 0.7602  c   143.6 MB/s  d    87.9 MB/s  exact True
+[bench]   rans-16                419.262 bits/w  ratio 26.2039  c    35.8 MB/s  d    56.5 MB/s  exact True
+[bench] model.language_model.layers.23.self_attn.k_norm.weight [256] n 256
+[bench]   raw                    16.000 bits/w  ratio 1.0000  c 512000.0 MB/s  d 512000.0 MB/s  exact True
+[bench]   zstd-3                 12.094 bits/w  ratio 0.7559  c     0.1 MB/s  d     0.1 MB/s  exact True
+[bench]   byteplane+zstd-3       13.375 bits/w  ratio 0.8359  c     0.0 MB/s  d     0.0 MB/s  exact True
+[bench]   bitshuffle+zstd-3      10.312 bits/w  ratio 0.6445  c     0.1 MB/s  d     0.1 MB/s  exact True
+[bench]   zstd-19                12.031 bits/w  ratio 0.7520  c     0.0 MB/s  d     0.1 MB/s  exact True
+[bench]   byteplane+zstd-19      11.281 bits/w  ratio 0.7051  c     0.0 MB/s  d     0.0 MB/s  exact True
+[bench]   bitshuffle+zstd-19     10.281 bits/w  ratio 0.6426  c     0.0 MB/s  d     0.1 MB/s  exact True
+[bench]   dfloat11               18.625 bits/w  ratio 1.1641  c     7.5 MB/s  d    48.0 MB/s  exact True
+[bench]   rans-exp               42.625 bits/w  ratio 2.6641  c    13.3 MB/s  d    35.7 MB/s  exact True
+[bench]   rans-16                8199.000 bits/w  ratio 512.4375  c     2.0 MB/s  d    44.8 MB/s  exact True
+[bench] model.language_model.layers.23.self_attn.k_proj.weight [1024, 5120] n 5,242,880
+[bench]   raw                    16.000 bits/w  ratio 1.0000  c 10485760000.0 MB/s  d 10485760000.0 MB/s  exact True
+[bench]   zstd-3                 12.468 bits/w  ratio 0.7793  c   196.9 MB/s  d   212.1 MB/s  exact True
+[bench]   byteplane+zstd-3       11.374 bits/w  ratio 0.7108  c   142.6 MB/s  d   169.5 MB/s  exact True
+[bench]   bitshuffle+zstd-3      11.912 bits/w  ratio 0.7445  c   122.4 MB/s  d   106.8 MB/s  exact True
+[bench]   zstd-19                12.470 bits/w  ratio 0.7794  c     6.3 MB/s  d   208.5 MB/s  exact True
+[bench]   byteplane+zstd-19      10.719 bits/w  ratio 0.6699  c     6.0 MB/s  d   179.5 MB/s  exact True
+[bench]   bitshuffle+zstd-19     11.876 bits/w  ratio 0.7423  c    15.8 MB/s  d   103.6 MB/s  exact True
+[bench]   dfloat11               10.631 bits/w  ratio 0.6644  c   340.3 MB/s  d   315.5 MB/s  exact True
+[bench]   rans-exp               10.601 bits/w  ratio 0.6626  c   241.1 MB/s  d    85.6 MB/s  exact True
+[bench]   rans-16                10.933 bits/w  ratio 0.6833  c   248.4 MB/s  d    56.1 MB/s  exact True
+[bench] model.language_model.layers.23.self_attn.o_proj.weight [5120, 6144] n 31,457,280
+[bench]   raw                    16.000 bits/w  ratio 1.0000  c 62914560000.0 MB/s  d 62914560000.0 MB/s  exact True
+[bench]   zstd-3                 12.459 bits/w  ratio 0.7787  c   227.2 MB/s  d   264.2 MB/s  exact True
+[bench]   byteplane+zstd-3       11.372 bits/w  ratio 0.7107  c   184.8 MB/s  d   242.3 MB/s  exact True
+[bench]   bitshuffle+zstd-3      11.883 bits/w  ratio 0.7427  c   137.4 MB/s  d   117.2 MB/s  exact True
+[bench]   zstd-19                12.457 bits/w  ratio 0.7786  c     4.4 MB/s  d   265.6 MB/s  exact True
+[bench]   byteplane+zstd-19      10.709 bits/w  ratio 0.6693  c     3.3 MB/s  d   250.8 MB/s  exact True
+[bench]   bitshuffle+zstd-19     11.842 bits/w  ratio 0.7401  c    11.0 MB/s  d   116.5 MB/s  exact True
+[bench]   dfloat11               10.615 bits/w  ratio 0.6635  c   353.2 MB/s  d   334.4 MB/s  exact True
+[bench]   rans-exp               10.579 bits/w  ratio 0.6612  c   243.9 MB/s  d    84.9 MB/s  exact True
+[bench]   rans-16                10.575 bits/w  ratio 0.6609  c   254.9 MB/s  d    55.2 MB/s  exact True
+[bench] model.language_model.layers.23.self_attn.q_norm.weight [256] n 256
+[bench]   raw                    16.000 bits/w  ratio 1.0000  c 512000.0 MB/s  d 512000.0 MB/s  exact True
+[bench]   zstd-3                 11.812 bits/w  ratio 0.7383  c     0.0 MB/s  d     0.1 MB/s  exact True
+[bench]   byteplane+zstd-3       12.625 bits/w  ratio 0.7891  c     0.0 MB/s  d     0.0 MB/s  exact True
+[bench]   bitshuffle+zstd-3      10.000 bits/w  ratio 0.6250  c     0.1 MB/s  d     0.1 MB/s  exact True
+[bench]   zstd-19                11.938 bits/w  ratio 0.7461  c     0.0 MB/s  d     0.1 MB/s  exact True
+[bench]   byteplane+zstd-19      11.188 bits/w  ratio 0.6992  c     0.0 MB/s  d     0.0 MB/s  exact True
+[bench]   bitshuffle+zstd-19      9.969 bits/w  ratio 0.6230  c     0.0 MB/s  d     0.0 MB/s  exact True
+[bench]   dfloat11               18.469 bits/w  ratio 1.1543  c     8.0 MB/s  d    49.3 MB/s  exact True
+[bench]   rans-exp               42.375 bits/w  ratio 2.6484  c    14.0 MB/s  d    37.0 MB/s  exact True
+[bench]   rans-16                8199.125 bits/w  ratio 512.4453  c     1.9 MB/s  d    44.8 MB/s  exact True
+[bench] model.language_model.layers.23.self_attn.q_proj.weight [12288, 5120] n 62,914,560
+[bench]   raw                    16.000 bits/w  ratio 1.0000  c 125829120000.0 MB/s  d 125829120000.0 MB/s  exact True
+[bench]   zstd-3                 12.445 bits/w  ratio 0.7778  c   238.1 MB/s  d   284.2 MB/s  exact True
+[bench]   byteplane+zstd-3       11.355 bits/w  ratio 0.7097  c   194.5 MB/s  d   260.5 MB/s  exact True
+[bench]   bitshuffle+zstd-3      11.888 bits/w  ratio 0.7430  c   140.0 MB/s  d   117.2 MB/s  exact True
+[bench]   zstd-19                12.445 bits/w  ratio 0.7778  c     4.2 MB/s  d   286.2 MB/s  exact True
+[bench]   byteplane+zstd-19      10.690 bits/w  ratio 0.6681  c     3.2 MB/s  d   273.3 MB/s  exact True
+[bench]   bitshuffle+zstd-19     11.841 bits/w  ratio 0.7401  c    10.5 MB/s  d   118.8 MB/s  exact True
+[bench]   dfloat11               10.602 bits/w  ratio 0.6626  c   377.2 MB/s  d   337.5 MB/s  exact True
+[bench]   rans-exp               10.568 bits/w  ratio 0.6605  c   252.9 MB/s  d    89.2 MB/s  exact True
+[bench]   rans-16                10.531 bits/w  ratio 0.6582  c   306.6 MB/s  d    57.5 MB/s  exact True
+[bench] model.language_model.layers.23.self_attn.v_proj.weight [1024, 5120] n 5,242,880
+[bench]   raw                    16.000 bits/w  ratio 1.0000  c 10485760000.0 MB/s  d 10485760000.0 MB/s  exact True
+[bench]   zstd-3                 12.491 bits/w  ratio 0.7807  c   173.9 MB/s  d   211.3 MB/s  exact True
+[bench]   byteplane+zstd-3       11.401 bits/w  ratio 0.7126  c   140.4 MB/s  d   175.2 MB/s  exact True
+[bench]   bitshuffle+zstd-3      11.874 bits/w  ratio 0.7421  c   118.8 MB/s  d   104.8 MB/s  exact True
+[bench]   zstd-19                12.494 bits/w  ratio 0.7809  c     6.4 MB/s  d   205.6 MB/s  exact True
+[bench]   byteplane+zstd-19      10.741 bits/w  ratio 0.6713  c     6.0 MB/s  d   177.6 MB/s  exact True
+[bench]   bitshuffle+zstd-19     11.846 bits/w  ratio 0.7404  c    15.8 MB/s  d   105.2 MB/s  exact True
+[bench]   dfloat11               10.649 bits/w  ratio 0.6655  c   363.6 MB/s  d   323.6 MB/s  exact True
+[bench]   rans-exp               10.615 bits/w  ratio 0.6635  c   243.2 MB/s  d    85.9 MB/s  exact True
+[bench]   rans-16                10.947 bits/w  ratio 0.6842  c   250.4 MB/s  d    56.0 MB/s  exact True
+[bench] lm_head.weight [248320, 5120] n 1,271,398,400
+[bench]   raw                    16.000 bits/w  ratio 1.0000  c 2542796800000.0 MB/s  d 2542796800000.0 MB/s  exact True
+[bench]   zstd-3                 12.450 bits/w  ratio 0.7781  c   250.5 MB/s  d   290.3 MB/s  exact True
+[bench]   byteplane+zstd-3       11.355 bits/w  ratio 0.7097  c   206.6 MB/s  d   283.7 MB/s  exact True
+[bench]   bitshuffle+zstd-3      11.958 bits/w  ratio 0.7474  c   123.2 MB/s  d    94.2 MB/s  exact True
+[bench]   zstd-19                12.450 bits/w  ratio 0.7781  c     4.1 MB/s  d   302.3 MB/s  exact True
+[bench]   byteplane+zstd-19      10.691 bits/w  ratio 0.6682  c     3.1 MB/s  d   302.8 MB/s  exact True
+[bench]   bitshuffle+zstd-19     11.942 bits/w  ratio 0.7464  c     9.7 MB/s  d   108.8 MB/s  exact True
+[bench]   dfloat11               10.604 bits/w  ratio 0.6628  c   365.8 MB/s  d   299.6 MB/s  exact True
+[bench]   rans-exp               10.576 bits/w  ratio 0.6610  c   245.5 MB/s  d    85.4 MB/s  exact True
+[bench]   rans-16                10.509 bits/w  ratio 0.6568  c   295.8 MB/s  d    56.1 MB/s  exact True
+[bench] wrote logs/bf16_lossless/bench.json
+== adjudicate 23:53:50 7dd4c367
+== DONE 23:53:56

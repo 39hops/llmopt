@@ -82973,3 +82973,416 @@ machine; two shards; exact-bytes recovery is the correctness claim and
 the only one; throughput is single-process CPU wall on this Mac, not a
 GPU decoder's; no model is loaded, decoded or served from any
 compressed form in this round.
+
+## OBSERVATION QWEN-METAL-W4-T1-0: NULL. The shipped W4 v4 kernel at T = 1 runs real arm C MLP matrices at 92 to 96 GB/s of payload (239 to 249 us pipelined per 23.0 MB launch; a TT = 1 skeleton of its operation sequence, row mask and tile loop folded away and launched directly, 96 to 102 GB/s, 225 to 240 us) with captured one-token activations, and no separately removable stream of it exceeds about a fifth: the index stream 14 to 21 percent, the exponent stream 12 to 15, the codebook gathers 7 to 19, the activation loads 4 to 12, the launch floor 6 to 9, and the index stream, the codebook table and the exponent stream removed together 59 to 62; of nine candidate variants (eight keeping the kernel's float32 operation sequence, bit-identical to it; the 64-bit-load variant changing the summation order, within the parity bound) none is faster than the skeleton by more than run-to-run drift on the gate and up matrices that carry two thirds of the W4 bytes, and the best (device codebook reads with staged exponents) is 3 to 5 percent faster on down_proj in both runs and 1 to 4 percent slower on gate and up in this run (2 to 7 in the first), pooled within 0.1 percent of the skeleton, so none of the measured candidates reaches the promotion hurdle stated in the GO (5 percent whole-model cached decode, about an 11.5 percent uniform W4 kernel gain with the family at 43.6 of the 100.2 ms step) and no end-to-end hurdle was registered, no A/B run and no kernel changed; the S16 device-table strategy does not transfer to W4 in its direct form (2026-10-22, Mac; probe at 39ba1b51 under liverun qwen-w4-probe-1, the first run at 7dd4c367 under qwen-w4-probe-0 kept as the selection record; nothing shipped)
+
+Track A of Artin's GO of 2026-10-22: the W4 T = 1 bottleneck
+investigation in the S16 probe's shape, on the qualified generation 5
+baseline (VERDICT QWEN-METAL-S16-V5-DEFAULT-0), with the promotion
+hurdle stated in the GO (at least 5 percent whole-model cached-decoding
+improvement, no meaningful memory or accuracy regression, to be
+registered before any final A/B) and the instruction to book a null
+and stop if no candidate clears it. Driver scratch/qmetal_w4_probe.py
+(new). Two receipts: logs/qmetal/w4_probe_7dd4c367.json (the first
+run, liverun qwen-w4-probe-0; its codebook stand-in cost more than the
+gathers it replaced and its loads-only variant kept the exponent
+stream, so those two rows are null readings; it reproduced the best two
+candidates, cmem_tgexp then cmem, and the two slowest, the float4
+stagings, on every matrix, with middle ranks swapping on five of six) and
+logs/qmetal/w4_probe_39ba1b51.json (the record quoted below, liverun
+qwen-w4-probe-1, after the receipt audit's repairs: a cost-matched
+gather stand-in, the loads-only variant without the exponent stream,
+the shipped kernel timed as its own row, the shipped call's kernel
+lookup instrumented as the dispatch witness, the kernel source pinned
+by sha256, the pipelined inputs disclosed, the variant order rotated
+per matrix). Liverun receipts logs/liverun/qwen-w4-probe-0.jsonl and
+qwen-w4-probe-1.jsonl; smoke receipts under logs/qmetal/smoke/ are not
+evidence. The frozen W4 codebook, payload, exceptional-value handling
+and decoder semantics are untouched: every variant except empty and u2 is a compiled copy of a
+skeleton that reproduces _W4_V4_SRC's per-row float32 operation
+sequence at TT = 1 (word j of a row on lane j mod 32 in increasing j,
+the word's four codebook dots summed then scaled by the block's
+power-of-two scale, per-class accumulation, one simd_sum per class per
+row); the driver refuses to run unless sha256(_W4_V4_SRC + _HEADER)
+equals its pin (c86ddc27...) and ROWS_V4 is 4, and bit identity with
+the shipped call on all six matrices is the operative guard.
+
+Workload. Six real arm C W4 matrices: layers 0 and 32, mlp.gate_proj
+and mlp.up_proj [17408, 5120] and mlp.down_proj [5120, 17408], each a
+22,980,608-byte payload (192 such matrices make the W4 family, 64
+layers x 3, equal payloads). Activations are REAL: the qualified tower
+was built, a 96-token real prompt (the E0 teacher records) prefilled
+in one shot on the fused kernels and one cached decode step run with
+the six modules recording their input; the captured float32 vectors
+(gate and up share the post-norm hidden state: rms 0.089, max 0.90 at
+layer 0 and rms 0.68, max 26.2 at layer 32; down_proj sees the SwiGLU
+product: rms 0.0039, max 0.23 and rms 0.12, max 4.2) are the x of every
+parity row and of the synced timings; the pipelined queue uses the
+captured vector in its first launch and per-launch permutations of its
+16-element blocks (the same value multiset) in the other 31, queued
+back to back as in the tower but on one matrix repeated, so last-level
+cache reuse of the payload is not excluded; the tower
+was released before timing (12 bytes of active device memory after
+release). Per variant: synced median and p90 of 50 single launches
+after 5 warm-ups, pipelined per-launch time as the median over 10
+rounds of 32 queued launches (the figure quoted),
+payload GB/s, and for the shipped kernel, the skeleton and the
+candidates the maximum relative error against the float64 canonical
+decode (dec_w4) with the parity bound and bit identity with the
+shipped resident call. The shipped call is res.gemv under the module
+default (generation 5), and the instrumented kernel lookup asked for
+w4:4 only on every matrix (the process also holds w4:3 and s16:3 from the capture's tile-8
+prefill and s16:5 from its decode step, by the dispatch rules, which is
+why the lookup is instrumented rather than the compiled set read).
+
+Baseline. The shipped kernel pipelined 240 / 240 / 249 us on layer 0
+gate / up / down and 239 / 241 / 247 on layer 32 (95.9 / 95.8 / 92.2
+and 96.3 / 95.3 / 93.0 GB/s of payload; synced medians 394 to 431 us,
+dispatch plus kernel plus drain). The skeleton (the v4 sequence at TT = 1 with
+the row mask and the tile loop folded away, launched directly rather
+than through res.gemv; R is a multiple of 4 on every arm C W4 matrix) 225 / 229 / 240 and 225 / 229 / 236 us (102.2 / 100.5
+/ 95.9 and 102.4 / 100.5 / 97.2 GB/s, 64 to 68 percent of the 150 GB/s
+roofline; synced 372 to 413), 3.9 to 6.2 percent faster than the
+shipped call on every matrix (the split between the kernel edits and
+the call wrapper is not measured), the only gain on every matrix and
+below the hurdle (about 1.7 to 2.7 percent of the step if it held
+across the family; not pursued, see the null). Both bit-identical to
+each other on all six matrices, maximum relative error against the
+oracle 3.1e-8 to 1.3e-7, within the parity bound. The float64 decode
+plus reference products took 0.28 to 0.31 s per matrix. All ratios
+below are pipelined time over the skeleton's pipelined time.
+
+Decomposition (diagnostic variants, outputs wrong by construction, on
+the six matrices in the order above): no activation loads 0.957,
+0.954, 0.878, 0.961, 0.952, 0.891 (4 to 5 percent on the 5,120-wide
+inputs, 11 to 12 on the 17,408-wide down_proj input; the total
+activation traffic is the same 89 MB per launch on both shapes, and
+why the down_proj share is larger is not measured, the 68 KB vector
+per row group against 20 KB being a hypothesis); no index stream (words hashed, which also changes the
+gather address pattern) 0.854, 0.841, 0.790, 0.855, 0.846, 0.801 (14
+to 21 percent); the codebook gathers replaced by a stand-in meant to
+match the gather's load and conversion (an integer multiply, a bitcast
+and a half4-to-float4 conversion per byte; no table, no staging, no
+barrier; not separately calibrated) 0.879, 0.933, 0.808, 0.884, 0.875,
+0.819 (7 to 19 percent); no exponent stream and no class law 0.861,
+0.858, 0.853, 0.872, 0.875, 0.863 (12 to 15 percent); the index hashed,
+the gather stand-in in place and the exponent constant together
+(what remains: the activation loads, the unpacking and stand-in
+arithmetic, the dots, the accumulation and the reduction) 0.410,
+0.398, 0.376, 0.407, 0.398, 0.384;
+the empty kernel on the same grid 0.084, 0.081, 0.058, 0.085, 0.086,
+0.056 (13 to 20 us, 6 to 9 percent). The separately removed streams
+sum to 50 to 73 percent of the launch with the launch floor counted
+(42 to 67 without) and are not expected to add (each was removed alone
+under pipelined execution); the index stream, the codebook table and
+the exponent stream removed together account for 59 to 62 percent. No
+separately removable stream exceeds about 21 percent. The first run's codebook stand-in
+(three shifts, four integer-to-float conversions and a float4 multiply
+per byte) read 1.27 to 1.37 of the skeleton and its loads-only variant
+the same within 0.4 percent on every matrix, so the replacement
+arithmetic set both (inferred); those rows are superseded by the cost-matched stand-in and recorded as such. Against
+the generation 3 probe (OBSERVATION QWEN-METAL-DECODE-BREAKDOWN-0,
+layer 0 gate and down with synthetic activations: removing the
+activation loads halved v3), the 4 to 12 percent read here is
+consistent with v4's four-row sharing having reduced the activation
+term, a cross-run reading.
+
+Candidates (outputs real; ratio to the skeleton, same order): device
+codebook reads instead of threadgroup staging (cmem) 1.059, 1.065,
+0.996, 1.057, 1.042, 1.012; the codebook staged as float4 (tgf32)
+1.509, 1.460, 1.815, 1.670, 1.486, 1.677; the four rows' exponents
+staged in threadgroup memory (tgexp) 1.082, 1.080, 1.004, 1.082,
+1.065, 1.017; both (tgf32_tgexp) 1.601, 1.616, 1.501, 1.619, 1.578,
+1.502; device codebook reads with staged exponents (cmem_tgexp) 1.033,
+1.011, 0.950, 1.036, 1.008, 0.970; the same with eight rows per
+simdgroup 1.102, 1.080, 1.033, 1.106, 1.084, 1.057; two rows per
+simdgroup 1.161, 1.157, 1.174, 1.180, 1.218, 1.196; eight rows 1.090,
+1.072, 1.003, 1.095, 1.097, 1.019; 64-bit index loads with a lane
+owning two consecutive words (u2) 1.101, 1.082, 1.161, 1.109, 1.106,
+1.180. The eight sequence-keeping candidates are bit-identical to the
+shipped kernel on all six matrices (0 rows differing); u2 differs on
+every matrix (its summation order) and is within the parity bound
+(maximum relative error 2.0e-8 to 1.2e-7), as expected. The S16 device-table result does not transfer
+in its direct form: cmem is 1 to 6 percent slower on five of six
+(0.4 percent faster on L0.down_proj in both runs, below the drift), a float4 staging costs 1.46 to 1.82 times
+(4 KB of threadgroup memory per 32-thread group against 2 KB; read as
+an occupancy effect, inferred, compiler statistics are not exposed),
+and the only candidate below the skeleton by more than 1 percent
+anywhere, cmem_tgexp, is 5.0 and 3.0 percent faster on the two
+down_proj matrices and 0.8 to 3.6 percent slower on the four gate and
+up matrices (the first run: 5.2 and 2.6 faster, 2.1 to 6.7 slower); pooled over the six launches it is within 0.1 percent of the
+skeleton (1,384 against 1,383 us; 1,387 against 1,373, 1.0 percent
+slower, in the first run; the matrices carry equal bytes, so the
+pooled time is the byte-weighted figure).
+
+Null against the hurdle. The W4 family's marginal is 43.6 ms of the
+100.2 ms step (OBSERVATION QWEN-METAL-DECODE-BREAKDOWN-2), and 64 times
+the per-layer sum of the three shipped pipelined times is 46.6 ms at
+layer 0 and 46.5 at layer 32 (44.4 and 44.1 for the skeleton), 7
+percent above the marginal; the hurdle arithmetic assumes a kernel
+ratio carries proportionally to the marginal (an assumption:
+BREAKDOWN-2 records the marginal moving 4.6 ms with the W4 kernel
+unchanged). A 5 percent whole-model
+gain needs 5.0 ms off the family, an 11.5 percent uniform W4 kernel
+improvement; the best candidate's pooled change is within 0.1 percent,
+the skeleton itself (no row mask) is a 3.9 to 6.2 percent gain, and the
+largest separately removable stream (the index bytes, which cannot be
+removed) is worth 14 to 21 percent. None of the nine measured
+candidates, nor the skeleton, reaches the hurdle, so no end-to-end
+hurdle was registered, no A/B or census run, and no kernel changed: the
+W4 decode lever is NULL for these candidates at this probe's
+resolution. Of the step's other terms, the S16 family is 32.5 ms (body plus head
+marginals) after generation 5 and the DeltaNet core (conv, recurrence, gated norm) 12.6
+ms; an extrapolation of the W4-grid empty-kernel floor to all 401
+fused launches would be 5 to 8 ms per step and is not a bound (the
+S16 probe's own floor read 3 to 25 percent of its launches).
+
+Fences. Timing only beyond the stated bit-identity and parity checks;
+one machine, artifact, dtype and T = 1; six matrices of one family
+(the MLP, the whole W4 family of arm C) at two layers, two runs (the
+first with two superseded diagnostic rows); between the runs the same
+ratio moved by up to about 4 points (14 on L0.up_proj for the tgexp
+pair), so deltas under about 3 percent carry no individual direction;
+pipelined per-launch time is the figure, synced medians carry dispatch
+and drain; register pressure,
+occupancy and cache behaviour are inferred from deltas only; the
+noidx reading mixes the index stream with the gather address pattern;
+the hurdle arithmetic uses BREAKDOWN-2's marginal, an end-to-end delta,
+cross-checked against the summed kernel times above.
+
+## VERDICT LOSSLESS-BF16-FEASIBILITY-0: NEGATIVE, REFUTED, ALL THREE BARS NO-FIRE. Every sampled text-model matrix of the original Qwen3.8-27B BF16 weights carries 10.47 to 10.54 bits of zeroth-order entropy per weight (exponent byte 2.55 to 2.61 bits, sign 1.00, mantissa 6.97 of 7 bits, the previous exponent in memory order worth at most 0.001 bits, no block-level structure worth more than 0.005 bits at any tile from 256 to 65,536), and the best EXACT coders measured (static rANS on the 16-bit pattern, or on the exponent with sign and mantissa raw, by class) achieve 10.51 to 10.64 bits per weight per class with byte-identical recovery on every tensor, so the 53.79 GB text model extrapolates to 35.38 GB (class-weighted best exact; 35.33 to 36.73 GB across the sampled-class range; 35.25 GB at the entropy floor itself) against the registered 30 and 28 GB bars and the 32 GB refutation line: full lossless BF16 residency is not plausible on this 36 GB machine, no download is proposed, and the question is closed for static per-tensor symbol coders (2026-10-22, Mac; chain at 7dd4c367 under liverun bf16-lossless-0; 5.50 GB of weights censused and 4.65 GB benchmarked from two shards, nothing written to them; no model loaded from any compressed form)
+
+Resolves PRE-REG LOSSLESS-BF16-FEASIBILITY-0 (RESULTS tail before this
+entry, docs/preregs/lossless-bf16-feasibility-0.json, registered at
+a38c28d4; the chain ran at 7dd4c367 on a clean tree). Two disclosures
+on the registration: the smoke receipts (two layer-21 tensors and 32 M
+elements of lm_head, written on a dirty tree at 1cee6a56) were read
+before the bars were written, and the bars are the GO's stated target
+rather than a value tuned on them; and the commit 7dd4c367, after
+registration and before the chain, replaced the commit-suffixed
+receipt names in the JSON and in the prose entry's Receipts paragraph
+by plain names (the receipts the chain writes), an in-place edit of a
+registered entry's receipt list and nothing else (the registration
+digest the adapter checks covers the bars, arms and refutation, which
+are unchanged; the edit is disclosed here rather than as an
+amendment). Receipts: logs/bf16_lossless/entropy.json
+(scratch/bf16_entropy_census.py, 2.7 min), logs/bf16_lossless/bench.json
+(scratch/bf16_lossless_bench.py with scratch/bf16_huff.c, 58.6 min),
+logs/bf16_lossless/observations.json (scratch/bf16_lossless_obs.py),
+logs/bf16_lossless/adjudication.txt, logs/bf16_lossless/study_7dd4c367
+.log, logs/liverun/bf16-lossless-0.jsonl. Both shard pins verified
+immediately before each pass (model-00007: 2,108,759,344 bytes,
+80b0c490...; model-00018: 3,392,197,344 bytes, 1d347950...).
+
+Adjudication (scripts/adjudicate.py, the four lines joined): "BAR 1
+RESIDENCY-30GB: NO-FIRE / BAR 2 RESIDENCY-28GB: NO-FIRE / BAR 3
+ENTROPY-FLOOR-30GB: NO-FIRE / REFUTED-IF: REFUTED". Bars as registered
+(the JSON's words) with the measured value beside each: BAR 1, "the
+class-weighted extrapolated compressed size of the text model's
+weights, with every dictionary, offset table and header, is below 30.0
+GB": measured 35.38 GB. BAR 2, "the same figure below 28.0 GB": 35.38.
+BAR 3, "the class-weighted zeroth-order 16-bit entropy (H16, no
+dictionary cost) extrapolated to the text model is below 30.0 GB":
+35.25. REFUTED-IF, "the class-weighted extrapolation under the best
+exact compressor is above 32.0 GB, or ... bar 3 NO-FIRE": both
+disjuncts hold (35.38 above 32.0; bar 3 NO-FIRE), the adjudicator's
+line scoring the first (the registered predicate). Measurement valid:
+both pins ok, every one of the 310 compressor rows exact (31 tensors x
+10 methods), both receipts clean-tree non-smoke runs at the same commit
+on the same 31 tensors, every budget class with a sampled figure or its
+declared stand-in (the embedding takes lm_head's; the small tensors 16
+bits). The registered prior (34 to 37 GB under any exact coder, bar 3
+at about 35 GB, all bars NO-FIRE) HELD for the entropy coders and for
+byte planes plus zstd 19 (35.4 to 36.0 GB); the other zstd arrangements
+read 38.2 to 41.9 GB, above the prior's upper edge, and the bars were
+not close for any method.
+
+B1, the information-theoretic baseline (exact uint16 patterns, no float
+conversion; 46 tensors, 2.750 billion parameters, 2.326 billion in the
+text model and 0.425 billion in the excluded MTP head). Per class,
+parameter-weighted mean H16 (the weight-level zeroth-order entropy) and
+pooled static-model H16: MLP (9 tensors, 802 M parameters) 10.479 and
+10.479 bits; DeltaNet projections (4, 147 M) 10.489 and 10.489;
+attention projections (4, 105 M) 10.498 and 10.499; lm_head (1,271 M)
+10.500; DeltaNet gate projections (2, 0.49 M) 10.517 and 10.532; small
+tensors (11, 67 K) 10.466 and 11.199; MTP (15, 425 M, excluded) 10.551
+and 10.586. Across the 18 text-model matrices the per-tensor H16 spans
+10.471 to 10.540 (k_proj and v_proj, the 1,024-row matrices, the
+highest at 10.526 and 10.540). Components on those 18: the exponent
+byte H_exp 2.549 to 2.612 bits (26 to 37 distinct exponent values per
+matrix, range 87 to 127); the sign bit 1.000 on every matrix; the
+7-bit mantissa marginal 6.972 (6.9719 to 6.9723) on every matrix,
+within 0.03 bits of 7; H(sign, mantissa | exponent) 7.917 to 7.929,
+within 0.084 bits of the 8 raw bits, so the DFloat11 split (entropy-
+code the exponent, keep the rest verbatim) gives up at most 0.08 bits
+per weight against the full 16-bit model, and the mantissa is within
+0.03 bits of incompressible under either. The high byte (sign and the
+top 7 exponent bits) reads 2.64 bits and the low byte 7.97, which is
+why byte-plane splitting helps zstd and bit-plane shuffling does not.
+The first-order conditional entropy of the exponent given the previous
+exponent in memory order is within 0.001 bits of H_exp on every text-
+model matrix (the only context measured; the small tensors and the MTP
+matrices show larger gaps and are not the question). Block-adaptive
+coding of the exponent with a per-block dictionary and a 64-bit offset
+per block reads, in total bits per weight at tiles 256 / 1,024 / 4,096
+/ 16,384 / 65,536: 3.40 / 2.82 / 2.63 / 2.58 / 2.56 (MLP; the DeltaNet,
+attention and lm_head classes within 0.01 of it; the gate projections
+up to 0.05 higher): the per-block entropies fall below the static
+entropy by at most 0.005 bits (k_proj and v_proj at tile 65,536) and
+the dictionaries plus offsets cost 0.88 to 0.91 bits at tile 256, so no
+tile pays for itself; the full 16-bit pattern with per-block
+dictionaries at 4,096 and 65,536 reads 19.4 and 11.7 bits per weight,
+worse than raw at the small tile and worse than the static coder at
+the large one. (The small class's tile figures are not cited: tensors
+shorter than a tile contribute no whole tile.) Distinct 16-bit patterns
+per matrix 4,434 to 6,740 of 65,536; the most frequent pattern of a
+matrix (0x3c81 or 0xbc81, plus or minus 0.0157, or 0x3c02 or 0xbc02,
+plus or minus 0.0079) is 0.17 to 0.19 percent of it; no zero patterns.
+
+B2, achieved exact compression (31 tensors: all 30 of shard 7 and
+lm_head; every method recovered every tensor's bytes exactly). Bits
+per weight on the 16 matrices of at least 31 M parameters, minimum to
+maximum, with compression and decompression throughput on the raw
+bytes: zstd level 3 12.45 to 12.46 (227 to 250 MB/s, 264 to 298); byte
+planes plus zstd 3 11.34 to 11.37 (185 to 207, 242 to 284); bit planes
+plus zstd 3 11.86 to 12.02 (123 to 141, 94 to 120); zstd 19 12.44 to
+12.47 (3.9 to 4.4, 244 to 302); byte planes plus zstd 19 10.68 to 10.71
+(2.9 to 3.4, 251 to 303); bit planes plus zstd 19 11.82 to 12.00 (9.7
+to 11.0, 108 to 120); DFloat11-style canonical Huffman on the exponent
+with raw sign and mantissa 10.59 to 10.62 (353 to 405, 278 to 337; code
+lengths up to 30 bits on lm_head; 155 KB of metadata on lm_head at
+65,536-element blocks); static rANS on the exponent with raw sign and
+mantissa 10.55 to 10.58 (240 to 258, 82 to 89); static rANS on the
+16-bit pattern 10.50 to 10.58 (255 to 315, 54 to 58; 417 KB of metadata
+on lm_head). On k_proj and v_proj (5.2 M parameters each) the same
+coders read 10.60 to 10.74, except rANS-16 at 10.93 and 10.95, where
+its 256 KB dictionary is 0.4 bits per weight. The exponent-modelling
+coders sit 0.03 to 0.14 bits above the H16 floor (rANS-16 on k and v
+0.41); the three general-purpose zstd arrangements sit 0.2 to 2.0 bits
+above it; nothing is below the floor. On the 11 small tensors (48 to
+40,960 elements) dictionaries dominate every modelled coder and the
+class's best total is byte planes plus zstd 19 at 10.9 bits (raw is
+best on A_log and dt_bias); they are 0.005 GB of the budget. The
+process's peak RSS reached 25.7 GB (the running maximum, recorded per
+row; it rose from 24.7 during bit planes plus zstd 19 on lm_head), a
+property of this single-process benchmark holding several full copies
+of lm_head, not of a decoder. Single-threaded zstd at level 19 took
+614 s to compress lm_head and 828 s with byte planes; the Huffman coder
+7.0 s to compress and 8.5 s to decompress it.
+
+B3, residency. The text-model budget from the pinned manifest:
+26,895,998,464 parameters, 53.79 GB; the per-class extrapolation under
+each class's best exact coder: MLP 17.11 B x 10.509 bits (rANS-16) =
+22.48 GB, DeltaNet projections 5.54 B x 10.553 (rANS-16) = 7.30,
+attention 1.68 B x 10.575 (rANS on the exponent) = 2.22, lm_head 1.27 B
+x 10.509 (rANS-16) = 1.67, the embedding at lm_head's figure 1.67,
+DeltaNet gates 0.024 B x 10.636 (rANS on the exponent) = 0.03, small
+tensors at 16 bits 0.005: 35.38 GB. Ranges: the best sampled class
+figure applied everywhere 35.33 GB, the worst (the small class's 10.93)
+applied everywhere 36.73; by method with its own per-class figures:
+rANS-16 35.40, rANS on the exponent 35.51, DFloat11-style 35.66, byte
+planes plus zstd 19 35.96, byte planes plus zstd 3 38.17, bit planes
+plus zstd 40.2, zstd alone 41.9, raw 53.79. The entropy floor (class-
+weighted H16, no dictionaries) 35.25 GB. Against the machine: 36 GB of
+unified memory, of which macOS and the runtime take several GB (the
+generation 5 serving process holds a 9.37 GB resident model at an 11.2
+to 11.4 GB device footprint), so even the floor leaves no room for the
+model, let alone activations, the recurrent state, a KV cache and
+decoder scratch. The target of 28 to 30 GB would need 8.3 to 8.9 bits
+per weight; the sign and mantissa alone are 7.92 bits that no coder
+here moved, which would require the exponent to code in 0.4 to 1.0
+bits where it carries 2.56 and where the one context measured removed
+at most 0.001. Decoder viability: the DFloat11 design (exponent lookup
+from a staged table, sign and mantissa verbatim) is simple enough for a
+Metal kernel, and this driver's CPU Huffman coder already decodes at
+278 to 337 MB/s on one core, but a lossless BF16 tower would read 10.5
+bits per weight per token, 35.3 GB at the 150 GB/s roofline, a 235 ms
+per token traffic floor before any decode work, against arm C's 9.37
+GB and measured 100 ms step; lossless BF16 inference would be
+materially slower than arm C even if it fit, which it does not (a
+projection from the roofline, not a measurement). Sampling: the
+sampled tensors are layers 21 to 23 and lm_head, 2.33 B of the 26.9 B
+parameters; the class best-exact figures span 0.13 bits (0.07 without
+the 0.49 M-parameter gates) and the per-tensor H16 within the largest
+class 0.05, so for the unsampled layers to bring the extrapolation to
+the 32 GB refutation line they would have to average 1.0 bit per
+weight below every sampled matrix, and 1.6 bits for the 30 GB bar; the
+embedding (2.54 GB raw, the one unsampled large tensor) would have to
+code below 0 bits per weight to close the 3.4 GB gap to the refutation
+line alone (5.4 GB to bar 1).
+
+B4, formal methods. elan's Lean (leanprover/lean4:v4.33.0-rc2, the
+toolchain scratch/leancheck pins) is installed on this Mac but not on
+PATH; one small property was proved this round, nothing more:
+scratch/leancheck/BF16Split.lean (standalone, core BitVec, no Mathlib;
+checked with lean +leanprover/lean4:v4.33.0-rc2 on the file) states
+the DFloat11-style split of a 16-bit pattern into the exponent byte and
+the sign-plus-mantissa byte exactly as scratch/bf16_lossless_bench.py
+computes it, and proves join_split (every u : BitVec 16 is
+reconstructed bit for bit, by bv_decide) and split_injective (from
+it); the proofs depend on propext, Classical.choice, Quot.sound and
+bv_decide's native-reflection axiom for its SAT certificate, which is
+recorded here and is the usual cost of that tactic. The benchmark
+checks the same identity empirically on the patterns present in each
+tensor (4,434 to 6,740 distinct), the theorem on all 65,536. The
+remaining properties worth a development of the same size, not
+started: prefix-freeness and completeness of the canonical code from a
+length vector with Kraft sum at most 1 (at least two symbols; the
+single-symbol case is refused by the C encoder), which is the property
+scratch/bf16_huff.c's per-length first_code and count test relies on;
+decode(encode(xs)) = xs for every symbol list under a prefix-free code
+(induction on the list) with the block version by concatenation;
+bounded bitstream and offset validity (a monotone offset table keeps
+every block's read inside its span, and the decoder's run-past-span
+refusal is reachable only on a malformed stream) and the block
+decoding and concatenation invariant (independent per-block decoding
+from the offsets equals whole-stream decoding, the licence for a GPU to
+decode blocks in parallel). The first two are universally quantified
+over lists and streams and are inductive proofs, not finite checks.
+None of them says anything about compression ratio or speed.
+
+Lossy transforms, a separate note (not part of this verdict). QuIP#,
+QuaRot and SpinQuant apply orthogonal (randomised Hadamard or learned
+rotation) transforms to weights and activations before quantisation so
+that the quantiser sees flatter, incoherent distributions, and QuIP#
+adds lattice (E8) codebooks; these are LOSSY methods that change the
+stored values and recover the function only approximately, and they
+are not entropy coders: a rotation does not reduce the information in
+a BF16 tensor (an orthogonal map of generic BF16 values produces values
+that are no longer representable in BF16 exactly), so they cannot help
+bit-exact storage. A rotated-and-requantised model is numerically close
+to the original in function (equivalent up to the quantiser's error on
+a flattened distribution) and bit-identical to it in neither weights
+nor logits; the house distinction is between numerical equivalence of
+the transformed model (measured against the oracle, like arm C) and
+exact bitwise equivalence of BF16 weights (what this track asks). A
+future lossy arm in this family would be a new compression of the same
+vendor weights with arm C's qualification shape (E0 census, cached
+decode, replay) as its bar, competing with arm C's 4 to 5 bits per
+weight rather than with BF16; it is banked in the RIFF ledger as a
+separate idea, not started.
+
+Next experiment. None is justified for lossless residency: the
+mantissa is within 0.03 bits of uniform, the sign exactly balanced,
+and the exponent carries 2.56 bits of which a 28 to 30 GB fit would
+have to remove 1.6 to 2.2 while the one context measured removes
+0.001; context coders beyond that one, xz, brotli and tile-adaptive
+16-bit models with shared dictionaries were out of this round's scope
+and would have to find 1.6 bits per weight that no static coder sees.
+The question is closed for static per-tensor symbol coders; no
+download, no loader, no Metal entropy decoder.
+
+Fences. Two shards (layers 21 part, 22, 23; lm_head), not a random
+sample of the 64 layers; exact-bytes recovery is the only correctness
+claim; throughputs are single-process CPU figures on this Mac, not a
+GPU decoder's; the budget is the text model under the pinned manifest
+(the visual tower and the MTP head excluded); the Metal decoder and
+inference-speed readings are projections from the roofline and the
+measured arm C step, not measurements; the 36 GB residency arithmetic
+uses the serving footprint of generation 5 as its reference, not a
+measured lossless process; the observations adapter carries the
+text-model population string as a literal that equals the manifest
+count it also computes, checks the benchmark tensors as a subset of the
+census tensors (equal in fact) and records the rANS library's version
+as unknown (constriction 0.5.0 by the environment's package metadata,
+read after the run).
