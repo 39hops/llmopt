@@ -16,7 +16,7 @@ this also drives `library`; from lab tooling it drives
 comments or plain strings; `via` names the cited caller a file
 inherits its class from when no document names the file itself.
 
-Census: library 201, reproduce-pinned 9, results-cited 544, spec-cited 74, tool-referenced 5, UNCITED 122 (of 955; library rows that are also doc-cited: 197)
+Census: library 201, reproduce-pinned 9, results-cited 544, spec-cited 75, tool-referenced 4, UNCITED 122 (of 955; library rows that are also doc-cited: 197)
 
 ## scratch/
 
@@ -47,7 +47,7 @@ Census: library 201, reproduce-pinned 9, results-cited 544, spec-cited 74, tool-
 | bench | bench_qmetal_ab.py | results-cited | RESULTS | RESULTS×2 | — | — | 1 | — |
 | bench | bench_qmetal_ab_s16.py | results-cited | RESULTS | RESULTS×9 | — | 2 | 1 | — |
 | bench | bench_qmetal_serve_v5.py | results-cited | RESULTS, specs | RESULTS×10, specs×1 | — | 2 | — | — |
-| bf16 | bf16_entropy_census.py | library | RESULTS | RESULTS×6 | 2 | 1 | 1 | — |
+| bf16 | bf16_entropy_census.py | library | RESULTS, via:specs | RESULTS×6 | 2 | 1 | 1 | — |
 | bf16 | bf16_lossless_bench.py | results-cited | RESULTS | RESULTS×7 | — | 1 | 1 | — |
 | bf16 | bf16_lossless_obs.py | results-cited | RESULTS | RESULTS×7 | — | 1 | — | — |
 | bf16 | bf16_lossless_study.sh | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
@@ -613,11 +613,11 @@ Census: library 201, reproduce-pinned 9, results-cited 544, spec-cited 74, tool-
 | qwen | qwen_effort_quant.py | results-cited | RESULTS | RESULTS×7 | — | — | 1 | — |
 | qwen | qwen_effort_tower.py | results-cited | RESULTS, via:specs | RESULTS×3 | — | 1 | — | — |
 | qwen | qwen_family_probe.py | library | RESULTS, via:specs | RESULTS×2 | 1 | 1 | — | — |
-| qwen | qwen_geometry_capture.py | results-cited | RESULTS | RESULTS×6 | — | 1 | 1 | — |
-| qwen | qwen_geometry_obs.py | results-cited | RESULTS | RESULTS×10 | — | 1 | — | — |
-| qwen | qwen_geometry_quant.py | results-cited | RESULTS | RESULTS×6 | — | 1 | 1 | — |
+| qwen | qwen_geometry_capture.py | results-cited | RESULTS, specs | RESULTS×6, specs×1 | — | 1 | 1 | — |
+| qwen | qwen_geometry_obs.py | results-cited | RESULTS, specs | RESULTS×10, specs×1 | — | 1 | — | — |
+| qwen | qwen_geometry_quant.py | results-cited | RESULTS, specs | RESULTS×6, specs×1 | — | 1 | 1 | — |
 | qwen | qwen_geometry_study.sh | results-cited | RESULTS | RESULTS×6 | — | — | — | — |
-| qwen | qwen_geometry_transform.py | results-cited | RESULTS | RESULTS×7 | — | 1 | 1 | — |
+| qwen | qwen_geometry_transform.py | results-cited | RESULTS, specs | RESULTS×7, specs×1 | — | 1 | 1 | — |
 | qwen | qwen_head_restore.py | results-cited | RESULTS | RESULTS×7 | — | 1 | — | — |
 | qwen | qwen_head_restore_study.sh | results-cited | RESULTS | RESULTS×4 | — | — | — | — |
 | qwen | qwen_headswap_impulse.py | results-cited | RESULTS, specs | RESULTS×5, specs×1 | — | — | — | — |
@@ -892,7 +892,7 @@ Census: library 201, reproduce-pinned 9, results-cited 544, spec-cited 74, tool-
 | book | book.py | library | RESULTS, specs, TOOLING | RESULTS×6, specs×7, TOOLING×3 | 1 | 2 | — | — |
 | build | build_gen7_diet.py | UNCITED | — | — | — | — | — | — |
 | calibrate | calibrate_hce.py | spec-cited | specs | specs×9 | — | — | — | — |
-| cite | cite_lookup.py | tool-referenced | TOOLING | TOOLING×3 | — | 1 | 1 | — |
+| cite | cite_lookup.py | spec-cited | specs, TOOLING | specs×1, TOOLING×3 | — | 1 | 1 | — |
 | ckpt | ckpt_census.py | library | RESULTS, specs | RESULTS×7, specs×4 | 1 | 1 | — | — |
 | ckpt | ckpt_manifest.py | library | RESULTS, specs | RESULTS×4, specs×4 | 1 | — | 1 | — |
 | ckpt | ckpt_plan.py | library | RESULTS, specs | RESULTS×4, specs×3 | 1 | — | — | — |
