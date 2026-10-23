@@ -1,0 +1,152 @@
+{
+ "note": "Mechanical projection of logs/qwen_serve/deepchat_v1.json (commit b638a497); adapter scratch/qwen_deepchat_obs.py",
+ "registration_sha256": "16de74acb24cf48fe5c778612e202b20603006b0d15417ec92a4350d52820f00",
+ "measurement_valid": true,
+ "arms": {
+  "REPLAY": {
+   "admissible": true,
+   "reason": "full-transcript replay sessions on the frozen conversations"
+  },
+  "INCREMENTAL": {
+   "admissible": true,
+   "reason": "incremental sessions on the same conversations"
+  },
+  "RECONSTRUCTION": {
+   "admissible": true,
+   "reason": "the transcript re-rendered outside Session; the fused prefill path on the stop-chosen turns"
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 3,
+   "metric": "travel_empty_turns",
+   "population": "travel-turns:8",
+   "aggregation": "count",
+   "unit": "turns",
+   "provenance": "empty replay turns [['travel', 5], ['travel', 6], ['travel', 7], ['debug', 7]]; stop tokens chosen {'248046': 4}"
+  },
+  "2": {
+   "value": 0,
+   "metric": "chatml_reconstruction_mismatch_turns",
+   "population": "turns:24",
+   "aggregation": "count",
+   "unit": "turns",
+   "provenance": "hand-built ChatML tokenised without the template; mismatches []; in-run (template) reconstruction mismatches 0"
+  },
+  "2:reuse": {
+   "value": 0,
+   "metric": "incremental_later_fallback_turns",
+   "population": "later-turns:21",
+   "aggregation": "count",
+   "unit": "turns",
+   "provenance": "fallbacks []"
+  },
+  "3": {
+   "value": 0,
+   "metric": "incremental_first_argmax_mismatch_turns",
+   "population": "turns:24",
+   "aggregation": "count",
+   "unit": "turns",
+   "provenance": "replay vs incremental max abs top-16 logit diff 8.583e-05"
+  },
+  "3:gen": {
+   "value": 0,
+   "metric": "incremental_generated_mismatch_turns",
+   "population": "turns:24",
+   "aggregation": "count",
+   "unit": "turns"
+  },
+  "3:offset": {
+   "value": 0,
+   "metric": "replay_vs_incremental_offset_mismatch_turns",
+   "population": "turns:24",
+   "aggregation": "count",
+   "unit": "turns",
+   "provenance": "mismatches []; within-session mismatches abort the run (counted 0)"
+  },
+  "4": {
+   "value": 6.4849853515625e-05,
+   "metric": "gemm_vs_fused_max_abs_diff",
+   "population": "stop-chosen-turns",
+   "aggregation": "max",
+   "unit": "logit",
+   "provenance": "4 stop-chosen turns; per-turn max abs diff over the shared top-16 [6.5e-05, 3.8e-05, 3.1e-05, 2.3e-05]; an empty intersection reads 99"
+  },
+  "4:argmax": {
+   "value": 0,
+   "metric": "gemm_vs_fused_argmax_mismatch_turns",
+   "population": "stop-chosen-turns",
+   "aggregation": "count",
+   "unit": "turns"
+  },
+  "5": {
+   "value": 2.136564254760742,
+   "metric": "min_stop_margin",
+   "population": "stop-chosen-turns",
+   "aggregation": "min",
+   "unit": "logit",
+   "provenance": "margins [['Name one restaurant style I sh', 2.292], ['Give me a two-line summary of ', 4.643], ['Translate that summary into Fr', 9.963], ['What is one risk of accepting ', 2.137]]; counterfactual single-turn non-empty 4 of 4; empties-removed non-empty 1 of 2"
+  },
+  "chatml_reconstruction_mismatch_turns": {
+   "value": 0,
+   "metric": "chatml_reconstruction_mismatch_turns",
+   "population": "turns:24",
+   "aggregation": "count",
+   "unit": "turns",
+   "provenance": "hand-built ChatML tokenised without the template; mismatches []; in-run (template) reconstruction mismatches 0"
+  }
+ },
+ "diagnostics": {
+  "empty_replay_turns": [
+   [
+    "travel",
+    5
+   ],
+   [
+    "travel",
+    6
+   ],
+   [
+    "travel",
+    7
+   ],
+   [
+    "debug",
+    7
+   ]
+  ],
+  "travel_empty_turns": 3,
+  "stop_tokens_chosen": {
+   "248046": 4
+  },
+  "reconstruction_mismatch_turns": 0,
+  "incremental_first_argmax_mismatch_turns": 0,
+  "incremental_generated_mismatch_turns": 0,
+  "offset_mismatch_turns": 0,
+  "gemm_vs_fused_max_abs_diff": 6.4849853515625e-05,
+  "gemm_vs_fused_argmax_mismatch_turns": 0,
+  "replay_vs_incremental_max_abs_diff": 8.58306884765625e-05,
+  "stop_margins": [
+   [
+    "Name one restaurant style I sh",
+    2.292
+   ],
+   [
+    "Give me a two-line summary of ",
+    4.643
+   ],
+   [
+    "Translate that summary into Fr",
+    9.963
+   ],
+   [
+    "What is one risk of accepting ",
+    2.137
+   ]
+  ],
+  "min_stop_margin": 2.136564254760742,
+  "counterfactual_single_turn_nonempty": 4,
+  "counterfactual_empties_removed_nonempty": 1,
+  "counterfactual_empties_removed_rows": 2
+ }
+}

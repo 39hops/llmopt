@@ -1,0 +1,178 @@
+{
+ "name": "QWEN-DEEPCHAT-0",
+ "note": "Machine-readable form of PRE-REG QWEN-DEEPCHAT-0; the prose governs on any conflict. Study B of Artin's GO QWEN-EFFORT-AND-DEEPCHAT-0 (2026-10-23): a bounded, read-only diagnostic of the empty completions of the frozen eight-turn thinking-off travel conversation (VERDICT QWEN-CHAT-DEFAULT-0: turns 5 to 7 empty in both modes), with the debug and recipe conversations as fixed controls. The bars are diagnostic sanity gates that classify the mechanism; none changes a default. Counterfactuals (the user turn alone; the empty assistant turns removed) are labelled and are never a baseline. No retry, no EOS suppression, no forced continuation, no dropped messages. AMENDED by AMENDMENT QWEN-DEEPCHAT-0-ADAPTER (registered while the chain was live, before any receipt was read): bar 2 is measured against a hand-built ChatML rendering of the user texts and the decoded replies tokenised WITHOUT the chat template (the in-run reconstruction used the template itself and could only detect nondeterminism), with the conjunct 2:reuse (later incremental turns that fell back); bar 3's offset conjunct compares the incremental session's measured offset with replay's on every turn (within-session mismatches abort the run and cannot be counted); the 4:argmax conjunct carries its own unit; the adapter emits the registered refutation key. Bars, values and priors otherwise unchanged.",
+ "results_id": "2026-10-23-pre-reg-qwen-deepchat-0-a",
+ "registered": "2026-10-23",
+ "machine": "mac",
+ "arms": {
+  "REPLAY": {
+   "description": "full-transcript replay Sessions on the three frozen conversations (the reference), with the prefill's top-16 first-token logits and both stop ids' logits recorded per turn"
+  },
+  "INCREMENTAL": {
+   "description": "incremental Sessions on the same conversations (the promoted default)"
+  },
+  "RECONSTRUCTION": {
+   "description": "the prompt re-rendered outside Session from the stored messages (template check); the fused prefill path on every stop-chosen turn (numerical check); the counterfactual single-turn and empties-removed prompts"
+  }
+ },
+ "bars": [
+  {
+   "id": 1,
+   "name": "REPRODUCES",
+   "metric": "travel_empty_turns",
+   "population": "travel-turns:8",
+   "aggregation": "count",
+   "unit": "turns",
+   "direction": "above",
+   "value": 1.5,
+   "arms": [
+    "REPLAY"
+   ],
+   "gate_class": "range",
+   "description": "the travel conversation again produces at least 2 empty replay completions (3 were observed); fewer reads as a non-reproducing behaviour and the mechanism bars below are then about whatever stops occurred."
+  },
+  {
+   "id": 2,
+   "name": "TEMPLATE",
+   "metric": "chatml_reconstruction_mismatch_turns",
+   "population": "turns:24",
+   "aggregation": "count",
+   "unit": "turns",
+   "direction": "below",
+   "value": 0.5,
+   "arms": [
+    "REPLAY",
+    "RECONSTRUCTION"
+   ],
+   "gate_class": "sanity",
+   "description": "a ChatML rendering of the transcript built by hand from the user texts and the decoded replies (no chat template) and tokenised equals the session's prompt sha256 on every replay turn, and no later incremental turn fell back (mechanism 2, malformed rendering, excluded when FIRE; the earlier in-run reconstruction is kept in the receipt but is circular).",
+   "conjuncts": [
+    {
+     "measurement": "2:reuse",
+     "metric": "incremental_later_fallback_turns",
+     "population": "later-turns:21",
+     "aggregation": "count",
+     "unit": "turns",
+     "direction": "below",
+     "value": 0.5
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "name": "ACCOUNTING",
+   "metric": "incremental_first_argmax_mismatch_turns",
+   "population": "turns:24",
+   "aggregation": "count",
+   "unit": "turns",
+   "direction": "below",
+   "value": 0.5,
+   "arms": [
+    "REPLAY",
+    "INCREMENTAL"
+   ],
+   "gate_class": "sanity",
+   "conjuncts": [
+    {
+     "measurement": "3:gen",
+     "metric": "incremental_generated_mismatch_turns",
+     "population": "turns:24",
+     "aggregation": "count",
+     "unit": "turns",
+     "direction": "below",
+     "value": 0.5
+    },
+    {
+     "measurement": "3:offset",
+     "metric": "replay_vs_incremental_offset_mismatch_turns",
+     "population": "turns:24",
+     "aggregation": "count",
+     "unit": "turns",
+     "direction": "below",
+     "value": 0.5
+    }
+   ],
+   "description": "the incremental session's first-token argmax, generated ids and measured KV offsets after each turn agree with replay's on every turn (mechanism 3, token or cache accounting, excluded when FIRE)."
+  },
+  {
+   "id": 4,
+   "name": "NUMERICAL",
+   "metric": "gemm_vs_fused_max_abs_diff",
+   "population": "stop-chosen-turns",
+   "aggregation": "max",
+   "unit": "logit",
+   "direction": "below",
+   "value": 0.05,
+   "arms": [
+    "REPLAY",
+    "RECONSTRUCTION"
+   ],
+   "gate_class": "sanity",
+   "conjuncts": [
+    {
+     "measurement": "4:argmax",
+     "metric": "gemm_vs_fused_argmax_mismatch_turns",
+     "population": "stop-chosen-turns",
+     "aggregation": "count",
+     "unit": "turns",
+     "direction": "below",
+     "value": 0.5
+    }
+   ],
+   "description": "on every turn whose replay first token was a stop id, the fused prefill path agrees with the GEMM path on the argmax and within 0.05 of every shared top-16 logit (the qualified contract: top-16 p99 1.3e-4 against the CPU census; mechanism 4, backend inconsistency, excluded when FIRE). The population is every turn whose replay first token was a stop id (4 expected from the previous run: 3 travel, 1 debug); the adapter records the count in the provenance."
+  },
+  {
+   "id": 5,
+   "name": "DECIDED-STOP",
+   "metric": "min_stop_margin",
+   "population": "stop-chosen-turns",
+   "aggregation": "min",
+   "unit": "logit",
+   "direction": "above",
+   "value": 0.5,
+   "arms": [
+    "REPLAY"
+   ],
+   "gate_class": "range",
+   "description": "the chosen stop token beats the best non-stop token by more than 0.5 logits on every stop-chosen turn: a decided stop (mechanism 1, immediate stop predicted by the model) rather than a near tie that a kernel path could flip. The margins themselves are the finding."
+  }
+ ],
+ "receipts": [
+  "logs/qwen_serve/deepchat_v1.json",
+  "logs/qwen_serve/deepchat_adjudicate_1/observations.json",
+  "logs/qwen_serve/deepchat_adjudicate_1/adjudication.txt"
+ ],
+ "operands": [
+  {
+   "name": "the arm C artifact digest chain",
+   "provider": "logs/qwenwhole/artifact_digest_C.txt"
+  },
+  {
+   "name": "the engine with the first-token logits record",
+   "provider": "llmopt/lab/qserve.py"
+  },
+  {
+   "name": "the frozen conversations",
+   "provider": "scratch/qwen_incr_perf.py"
+  },
+  {
+   "name": "the diagnostic driver",
+   "provider": "scratch/qwen_deepchat_diag.py"
+  },
+  {
+   "name": "the observations adapter",
+   "provider": "scratch/qwen_deepchat_obs.py"
+  },
+  {
+   "name": "the chain",
+   "provider": "scratch/qwen_effort_study.sh"
+  }
+ ],
+ "refuted_if": "The serving path is implicated (and the study stops to propose the smallest separately authorised correction) if bar 2, bar 3 or bar 4 reads NO-FIRE. With all three FIRE and bar 5 FIRE, the empty completions are the model's own decided stops (mechanism 1) and are booked as a quality and reliability limitation of thinking-off multi-turn chat, not an inference correctness bug; the counterfactuals then say whether the deterioration follows the accumulated empty turns (mechanism 5).",
+ "refuted_if_predicate": {
+  "measurement": "chatml_reconstruction_mismatch_turns",
+  "direction": "above",
+  "value": 0.5
+ },
+ "registered_prior": "The previous run showed the empty turns in BOTH modes with identical ids, the measured offsets equal to the accounting, and 32 of 32 turns token-equal, so bars 2 and 3 are expected FIRE (0 mismatches); the GEMM and fused paths differed by 1.2e-5 relative in the recurrent state and 1.3e-4 at the p99 top-16 logit in the census, so bar 4 is expected FIRE with a difference near 1e-3 or below; bar 1 is expected FIRE (greedy decoding on the same prompts reproduces the same ids). The stop is expected to be <|im_end|> (the chat turn end, 248046) rather than <|endoftext|>, chosen by a margin of 1 to 5 logits (bar 5 FIRE); the single-turn counterfactual is expected to answer non-empty on every stop-chosen prompt, and removing the empty assistant turns is expected to restore a non-empty reply on some but not all of them (the deterioration following the transcript's accumulated short answers rather than the empty messages alone). Mechanism 1 with 5 is the expected classification."
+}

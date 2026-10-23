@@ -59,6 +59,10 @@ def main() -> int:
     a = ap.parse_args()
     if not a.prompt and not a.interactive:
         ap.error("give --prompt or --interactive")
+    if a.thinking and a.no_thinking:
+        ap.error("--thinking and --no-thinking exclude each other")
+    if a.reasoning_effort and a.no_thinking:
+        ap.error("--reasoning-effort has no effect with --no-thinking (the template ignores it)")
     from llmopt.lab import qserve
     thinking = True if a.thinking else (False if a.no_thinking else None)
     kw = {"context_cap": a.context_cap} if a.context_cap else {}

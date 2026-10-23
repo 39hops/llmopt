@@ -1,0 +1,125 @@
+== template 21:19:18 b638a497
+12 passed, 18 deselected in 82.08s (0:01:22)
+== low 21:20:40 b638a497
+[battery] arith-01     pass  'expected 148710, last integer in reply 148710'  | 'Thinking: I need to add 64905 and 83805.\n  64905\n+ 83805\n---'
+[battery] arith-02     fail  'turn 1: thinking did not terminate within the budget; no final answer'  | "Thinking: 85002 minus 16024.\n85002 - 16024 = 68978.\nLet's ch"
+[battery] arith-03     pass  'expected 282905, last integer in reply 282905'  | '413 × 685:\n413 × 600 = 247,800\n413 × 80 = 33,040\n413 × 5 = 2'
+[battery] arith-04     pass  'expected 25, last integer in reply 25'  | 'Let me compute 52754 mod 67.\n\nI need to find 52754 / 67 and '
+[battery] arith-05     pass  'expected 36, last integer in reply 36'  | 'GCD of 396 and 252.\n\n396 = 2 × 198 = 2 × 2 × 99 = 2 × 2 × 3 '
+[battery] arith-06     pass  'expected 1083, last integer in reply 1083'  | 'Simple calculation: 7220 × 0.15 = 7220 × 15 / 100 = 108300 /'
+[battery] arith-07     pass  'expected 113733, last integer in reply 113733'  | 'Thinking: I need to add 83404 and 30329.\n  83404\n+ 30329\n---'
+[battery] arith-08     pass  'expected 38469, last integer in reply 38469'  | 'Thinking: I need to subtract 47970 from 86439.\n  86439\n- 479'
+[battery] arith-09     pass  'expected 148000, last integer in reply 148000'  | 'Thinking: 740 multiplied by 200 is 740 * 2 * 100 = 1480 * 10'
+[battery] arith-10     pass  'expected 39, last integer in reply 39'  | 'Let me calculate 27899 mod 70.\n\n70 × 398 = 70 × 400 - 70 × 2'
+[battery] json-01      pass  'schema and values match'  | 'B-97: 3 * 42.75 = 128.25\nD-20: 3 * 47.27 = 141.81\nA-26: 4 * '
+[battery] json-02      pass  'schema and values match'  | 'Let me calculate the mean, find the top names, and count the'
+[battery] json-03      fail  'total: 57.53 != 57.43'  | '- A-42: qty * unit = 7 * 2.77 = 19.49\n- D-47: qty * unit = 3'
+[battery] json-04      pass  'schema and values match'  | 'Let me calculate the mean, find the top names, and count the'
+[battery] json-05      fail  'total: 295.87 != 299.87'  | '- C-99: 1 * 2.95 = 2.95\n- A-92: 8 * 26.72 = 213.76\n- B-50: 7'
+[battery] json-06      pass  'schema and values match'  | 'The scores are: hal=54, gus=56, eli=59\nMean: (54+56+59)/3 = '
+[battery] json-07      pass  'schema and values match'  | '1. A-49: 6 * 16.97 = 101.82\n2. B-12: 9 * 46.74 = 420.66\n3. D'
+[battery] json-08      pass  'schema and values match'  | 'Let me calculate the mean, find the top names, and count the'
+[battery] code-01      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | 'The user wants a Python function that reverses the order of '
+[battery] code-02      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | 'I need to write a Python function that checks if brackets in'
+[battery] code-03      fail  'turn 1: thinking did not terminate within the budget; no final answer'  | 'I need to find the lexicographically smallest pair (i, j) wh'
+[battery] code-04      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | 'The user wants a Python function that performs run-length en'
+[battery] code-05      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | 'The user wants a Python function `is_prime(n)` that:\n- Retur'
+[battery] code-06      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | 'The user wants a Python function that transposes a matrix (l'
+[battery] code-07      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | 'The user wants a Python function that groups anagrams. Let m'
+[battery] code-08      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | 'The user wants a Python function `fib_mod(n, m)` that comput'
+[battery] instruct-01  pass  '3 non-empty lines, wanted 3'  | 'The user wants me to name three oceans, one per line, exactl'
+[battery] instruct-02  pass  'include True, exclude present False'  | 'The user wants me to describe a mountain in two sentences. C'
+[battery] instruct-03  pass  'all letters upper'  | 'The user wants me to write one sentence about rain, and the '
+[battery] instruct-04  pass  "last word 'done'"  | 'The user wants a two-sentence tip about sleep, and the reply'
+[battery] instruct-05  pass  '5 lines, numbered True'  | 'The user wants a simple numbered list of five vegetables, on'
+[battery] instruct-06  pass  '25 words, band 20 to 40'  | 'The user wants me to explain what a compiler does in 20-40 w'
+[battery] instruct-07  pass  '4 non-empty lines, wanted 4'  | 'The user wants exactly four lines, each containing one color'
+[battery] instruct-08  fail  'include False, exclude present False'  | 'A satellite orbits around a celestial body, typically the Ea'
+[battery] twoturn-01   pass  "turn 2 reply '9097', expected 9097"  | 'The user is asking me to recall the ticket number from the p'
+[battery] twoturn-02   fail  "turn 2 reply '', expected 173"  | '163 + 10 = 173\n</think>\n\n'
+[battery] twoturn-03   pass  "turn 2 reply 'meadow', expected meadow"  | 'The user is asking me to recall the code word I was told to '
+[battery] twoturn-04   pass  "turn 2 reply '114', expected 114"  | 'The number I just gave was 104. Now I need to add 10 to it.\n'
+[battery] twoturn-05   pass  "turn 2 reply '1594', expected 1594"  | 'The user is asking me to recall the ticket number I was told'
+[battery] twoturn-06   pass  "turn 2 reply '141', expected 141"  | 'The number I just gave was 131. Adding 10 to it: 131 + 10 = '
+[battery] degen-01     pass  '6 tokens'  | 'The user wants me to write the word "amber" exactly 6 times,'
+[battery] degen-02     pass  'numbers [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]'  | 'The user wants me to count from 11 to 20 in digits, separate'
+[battery] degen-03     pass  '1 lines; expected jupiter'  | 'The user is asking for the largest planet in the solar syste'
+[battery] degen-04     pass  '8 tokens'  | 'The user wants me to write the word "delta" exactly 8 times,'
+[battery] degen-05     pass  'numbers [4, 5, 6, 7, 8, 9, 10, 11, 12, 13]'  | 'The user wants me to count from 4 to 13 in digits, separated'
+[battery] degen-06     pass  '1 lines; expected paris'  | 'The user is asking for the capital of France and wants a one'
+[battery] pass 40/46 scored of 46 tasks; by kind {'arith': {'pass': 9, 'fail': 1}, 'json': {'pass': 6, 'fail': 2}, 'code': {'pass': 7, 'fail': 1}, 'instruct': {'pass': 7, 'fail': 1}, 'twoturn': {'pass': 5, 'fail': 1}, 'degen': {'pass': 6}}; wrote logs/qwen_battery/results_v2_think768_low.json
+== medium 21:37:07 b638a497
+[battery] arith-01     pass  'expected 148710, last integer in reply 148710'  | 'The user is asking me to add two numbers: 64905 + 83805.\n\nLe'
+[battery] arith-02     fail  'turn 1: thinking did not terminate within the budget; no final answer'  | 'The user is asking me to subtract 16024 from 85002.\n\n85002 -'
+[battery] arith-03     pass  'expected 282905, last integer in reply 282905'  | 'Let me calculate 413 * 685.\n\n413 * 685 = 413 * (600 + 80 + 5'
+[battery] arith-04     pass  'expected 25, last integer in reply 25'  | 'I need to find 52754 mod 67, which is the remainder when 527'
+[battery] arith-05     pass  'expected 36, last integer in reply 36'  | "Let me find the GCD of 396 and 252.\n\nI'll use the Euclidean "
+[battery] arith-06     pass  'expected 1083, last integer in reply 1083'  | 'The user is asking me to calculate 15 percent of 7220.\n\n15% '
+[battery] arith-07     pass  'expected 113733, last integer in reply 113733'  | 'The user is asking me to add two numbers: 83404 + 30329.\n\nLe'
+[battery] arith-08     pass  'expected 38469, last integer in reply 38469'  | 'The user is asking me to subtract 47970 from 86439.\n\n86439 -'
+[battery] arith-09     pass  'expected 148000, last integer in reply 148000'  | 'The user is asking me to calculate 740 * 200.\n\n740 * 200 = 7'
+[battery] arith-10     pass  'expected 39, last integer in reply 39'  | 'I need to find 27899 mod 70, which is the remainder when 278'
+[battery] json-01      pass  'schema and values match'  | 'Let me calculate the values:\n\n1. B-97: qty=3, unit=42.75, co'
+[battery] json-02      fail  'mean: 72.8 != 70.25'  | 'The user wants me to calculate the mean, find the top names '
+[battery] json-03      pass  'schema and values match'  | 'Let me calculate the values:\n\nItem 1: A-42, qty=7, unit=2.77'
+[battery] json-04      pass  'schema and values match'  | 'The user wants me to calculate the mean, find the top names '
+[battery] json-05      fail  'total: 295.87 != 299.87'  | 'Let me calculate the values:\n\n1. C-99: qty=1, unit=2.95, cos'
+[battery] json-06      pass  'schema and values match'  | 'The user wants me to calculate the mean, find the top names '
+[battery] json-07      pass  'schema and values match'  | 'Let me calculate the quantities and costs for each item:\n\n1.'
+[battery] json-08      pass  'schema and values match'  | 'Let me calculate the mean, top names, and count from the CSV'
+[battery] code-01      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | 'The user wants a Python function that reverses the order of '
+[battery] code-02      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | 'The user wants a Python function that checks if brackets in '
+[battery] code-03      fail  'turn 1: thinking did not terminate within the budget; no final answer'  | 'The user wants a Python function `two_sum(nums, target)` tha'
+[battery] code-04      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | 'The user wants me to write a Python function that performs r'
+[battery] code-05      fail  'turn 1: thinking did not terminate within the budget; no final answer'  | 'The user wants a Python function `is_prime(n)` that returns '
+[battery] code-06      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | 'The user wants a Python function that transposes a rectangul'
+[battery] code-07      fail  'turn 1: thinking did not terminate within the budget; no final answer'  | 'The user wants a Python function that groups anagrams. Let m'
+[battery] code-08      fail  '{"status": "fail", "returncode": 1, "timed_out": false, "stderr": ""}'  | 'The user wants a Python function that computes the n-th Fibo'
+[battery] instruct-01  pass  '3 non-empty lines, wanted 3'  | 'The user wants me to name three oceans, one per line, exactl'
+[battery] instruct-02  pass  'include True, exclude present False'  | 'The user wants me to describe a mountain in two sentences. C'
+[battery] instruct-03  pass  'all letters upper'  | 'The user wants me to write one sentence about rain, and the '
+[battery] instruct-04  pass  "last word 'done'"  | 'The user wants a two-sentence tip about sleep, and the reply'
+[battery] instruct-05  pass  '5 lines, numbered True'  | 'The user wants a simple numbered list of five vegetables, on'
+[battery] instruct-06  pass  '24 words, band 20 to 40'  | 'The user wants me to explain what a compiler does in 20-40 w'
+[battery] instruct-07  pass  '4 non-empty lines, wanted 4'  | 'The user wants exactly four lines, each containing one colou'
+[battery] instruct-08  fail  'include False, exclude present False'  | 'The user wants me to describe what a satellite does in one s'
+[battery] twoturn-01   pass  "turn 2 reply '9097', expected 9097"  | 'The user is asking me to recall the ticket number from the p'
+[battery] twoturn-02   pass  "turn 2 reply '173', expected 173"  | 'The user asks me to add 10 to the number I just gave (163) a'
+[battery] twoturn-03   pass  "turn 2 reply 'meadow', expected meadow"  | 'The user is asking me to recall the code word I was told to '
+[battery] twoturn-04   pass  "turn 2 reply '114', expected 114"  | 'The user asks me to add 10 to the number I just gave (104) a'
+[battery] twoturn-05   pass  "turn 2 reply '1594', expected 1594"  | 'The user is asking me to recall the ticket number I was told'
+[battery] twoturn-06   pass  "turn 2 reply '141', expected 141"  | 'The user is asking me to add 10 to the number I previously g'
+[battery] degen-01     pass  '6 tokens'  | 'The user wants me to write the word "amber" exactly 6 times,'
+[battery] degen-02     pass  'numbers [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]'  | 'The user wants me to count from 11 to 20 in digits, separate'
+[battery] degen-03     pass  '1 lines; expected jupiter'  | 'The user is asking for the largest planet in the solar syste'
+[battery] degen-04     pass  '8 tokens'  | 'The user wants me to write the word "delta" exactly 8 times,'
+[battery] degen-05     pass  'numbers [4, 5, 6, 7, 8, 9, 10, 11, 12, 13]'  | 'The user wants me to count from 4 to 13 in digits, separated'
+[battery] degen-06     pass  '1 lines; expected paris'  | 'The user is asking for the capital of France and wants a one'
+[battery] pass 38/46 scored of 46 tasks; by kind {'arith': {'pass': 9, 'fail': 1}, 'json': {'pass': 6, 'fail': 2}, 'code': {'pass': 4, 'fail': 4}, 'instruct': {'pass': 7, 'fail': 1}, 'twoturn': {'pass': 6}, 'degen': {'pass': 6}}; wrote logs/qwen_battery/results_v2_think768_medium.json
+== deepchat 22:00:32 b638a497
+[deepchat] travel  turn 1 replay gen  94 stop stop_token argmax 9857 margin +12.911 inc fres gen  94 recon True empties 0
+[deepchat] travel  turn 2 replay gen  91 stop stop_token argmax 9857 margin +6.194 inc incr gen  91 recon True empties 0
+[deepchat] travel  turn 3 replay gen   3 stop stop_token argmax 13512 margin +1.523 inc incr gen   3 recon True empties 0
+[deepchat] travel  turn 4 replay gen   1 stop stop_token argmax 9857 margin +0.197 inc incr gen   1 recon True empties 0
+[deepchat] travel  turn 5 replay gen   0 stop stop_token argmax 248046 margin +2.292 inc incr gen   0 recon True empties 0
+[deepchat] travel  turn 6 replay gen   0 stop stop_token argmax 248046 margin +4.643 inc incr gen   0 recon True empties 1
+[deepchat] travel  turn 7 replay gen   0 stop stop_token argmax 248046 margin +9.963 inc incr gen   0 recon True empties 2
+[deepchat] travel  turn 8 replay gen   2 stop stop_token argmax 18112 margin +2.515 inc incr gen   2 recon True empties 3
+[deepchat] debug   turn 1 replay gen  72 stop stop_token argmax 16 margin +12.775 inc fres gen  72 recon True empties 0
+[deepchat] debug   turn 2 replay gen   9 stop stop_token argmax 71093 margin +6.279 inc incr gen   9 recon True empties 0
+[deepchat] debug   turn 3 replay gen  19 stop stop_token argmax 71093 margin +4.754 inc incr gen  19 recon True empties 0
+[deepchat] debug   turn 4 replay gen  15 stop stop_token argmax 9175 margin +0.029 inc incr gen  15 recon True empties 0
+[deepchat] debug   turn 5 replay gen  24 stop stop_token argmax 71093 margin +3.317 inc incr gen  24 recon True empties 0
+[deepchat] debug   turn 6 replay gen   8 stop stop_token argmax 25128 margin +3.436 inc incr gen   8 recon True empties 0
+[deepchat] debug   turn 7 replay gen   0 stop stop_token argmax 248046 margin +2.137 inc incr gen   0 recon True empties 0
+[deepchat] debug   turn 8 replay gen   1 stop stop_token argmax 10128 margin +4.917 inc incr gen   1 recon True empties 1
+[deepchat] recipe  turn 1 replay gen  22 stop stop_token argmax 5844 margin +12.359 inc fres gen  22 recon True empties 0
+[deepchat] recipe  turn 2 replay gen  85 stop stop_token argmax 16 margin +12.199 inc incr gen  85 recon True empties 0
+[deepchat] recipe  turn 3 replay gen  14 stop stop_token argmax 9947 margin +4.917 inc incr gen  14 recon True empties 0
+[deepchat] recipe  turn 4 replay gen  12 stop stop_token argmax 2064 margin +0.345 inc incr gen  12 recon True empties 0
+[deepchat] recipe  turn 5 replay gen  38 stop stop_token argmax 5844 margin +5.981 inc incr gen  38 recon True empties 0
+[deepchat] recipe  turn 6 replay gen   3 stop stop_token argmax 15529 margin +7.675 inc incr gen   3 recon True empties 0
+[deepchat] recipe  turn 7 replay gen  20 stop stop_token argmax 5844 margin +7.213 inc incr gen  20 recon True empties 0
+[deepchat] recipe  turn 8 replay gen   2 stop stop_token argmax 268 margin +4.751 inc incr gen   2 recon True empties 0
+[deepchat] summary {"travel_empty_turns": 3, "stop_tokens_chosen": {"248046": 4}, "reconstruction_mismatch_turns": 0, "incremental_first_argmax_mismatch_turns": 0, "incremental_generated_mismatch_turns": 0, "offset_mismatch_turns": 0, "gemm_vs_fused_max_abs_diff": 6.4849853515625e-05, "gemm_vs_fused_argmax_mismatch_turns": 0, "replay_vs_incremental_max_abs_diff": 8.58306884765625e-05, "min_stop_margin": 2.136564254760742, "counterfactual_single_turn_nonempty": 4, "counterfactual_empties_removed_nonempty": 1, "counterfactual_empties_removed_rows": 2}; wrote logs/qwen_serve/deepchat_v1.json
+== DONE 22:09:55

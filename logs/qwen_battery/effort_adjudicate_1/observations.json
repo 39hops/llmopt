@@ -1,0 +1,2852 @@
+{
+ "note": "Mechanical projection of logs/qwen_battery/results_v2.json, logs/qwen_battery/results_v2_think768.json, logs/qwen_battery/results_v2_think768_low.json, logs/qwen_battery/results_v2_think768_medium.json; adapter scratch/qwen_effort_obs.py; thinking verdicts recomputed under the amended scorer",
+ "registration_sha256": "57246c29eb50b150b86aa4534bd0eb5c6e6b4b0ba58cfd196cbd6d751e6e6413",
+ "measurement_valid": true,
+ "arms": {
+  "BASELINE": {
+   "admissible": true,
+   "reason": "the frozen v2 no-thinking receipt, verdicts as stored (historical control)"
+  },
+  "XHIGH768": {
+   "admissible": true,
+   "reason": "the frozen xhigh 768 receipt of QWEN-THINKING-BATTERY-0 (historical control)"
+  },
+  "LOW": {
+   "admissible": true,
+   "reason": "enable_thinking True, reasoning_effort low, 768 tokens, one run"
+  },
+  "MEDIUM": {
+   "admissible": true,
+   "reason": "enable_thinking True, reasoning_effort medium, 768 tokens, one run"
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 15,
+   "metric": "arith_json_pass_low",
+   "population": "tasks:18",
+   "aggregation": "count",
+   "unit": "tasks",
+   "provenance": "baseline 8/7/18, xhigh768 16/2/18 (arith+json/code/other)"
+  },
+  "2": {
+   "value": 7,
+   "metric": "code_pass_low",
+   "population": "tasks:8",
+   "aggregation": "count",
+   "unit": "tasks",
+   "provenance": "baseline 8/7/18, xhigh768 16/2/18 (arith+json/code/other)"
+  },
+  "3": {
+   "value": 18,
+   "metric": "other_pass_low",
+   "population": "tasks:20",
+   "aggregation": "count",
+   "unit": "tasks",
+   "provenance": "baseline 8/7/18, xhigh768 16/2/18 (arith+json/code/other)"
+  },
+  "4": {
+   "value": 2,
+   "metric": "unterminated_turns_low",
+   "population": "turns:52",
+   "aggregation": "count",
+   "unit": "turns",
+   "provenance": "xhigh768 8"
+  },
+  "5": {
+   "value": 7957,
+   "metric": "generated_tokens_low",
+   "population": "turns:52",
+   "aggregation": "sum",
+   "unit": "tokens",
+   "provenance": "xhigh768 14721; baseline 2240"
+  },
+  "5:time": {
+   "value": 977.4,
+   "metric": "task_time_s_low",
+   "population": "turns:52",
+   "aggregation": "sum",
+   "unit": "s",
+   "provenance": "xhigh768 1792.2; baseline 419.0"
+  },
+  "6": {
+   "value": 15,
+   "metric": "arith_json_pass_medium",
+   "population": "tasks:18",
+   "aggregation": "count",
+   "unit": "tasks",
+   "provenance": "baseline 8/7/18, xhigh768 16/2/18 (arith+json/code/other)"
+  },
+  "7": {
+   "value": 4,
+   "metric": "code_pass_medium",
+   "population": "tasks:8",
+   "aggregation": "count",
+   "unit": "tasks",
+   "provenance": "baseline 8/7/18, xhigh768 16/2/18 (arith+json/code/other)"
+  },
+  "8": {
+   "value": 19,
+   "metric": "other_pass_medium",
+   "population": "tasks:20",
+   "aggregation": "count",
+   "unit": "tasks",
+   "provenance": "baseline 8/7/18, xhigh768 16/2/18 (arith+json/code/other)"
+  },
+  "9": {
+   "value": 4,
+   "metric": "unterminated_turns_medium",
+   "population": "turns:52",
+   "aggregation": "count",
+   "unit": "turns",
+   "provenance": "xhigh768 8"
+  },
+  "10": {
+   "value": 12421,
+   "metric": "generated_tokens_medium",
+   "population": "turns:52",
+   "aggregation": "sum",
+   "unit": "tokens",
+   "provenance": "xhigh768 14721; baseline 2240"
+  },
+  "10:time": {
+   "value": 1396.1,
+   "metric": "task_time_s_medium",
+   "population": "turns:52",
+   "aggregation": "sum",
+   "unit": "s",
+   "provenance": "xhigh768 1792.2; baseline 419.0"
+  },
+  "arith_json_pass_low": {
+   "value": 15,
+   "metric": "arith_json_pass_low",
+   "population": "tasks:18",
+   "aggregation": "count",
+   "unit": "tasks",
+   "provenance": "baseline 8/7/18, xhigh768 16/2/18 (arith+json/code/other)"
+  }
+ },
+ "diagnostics": {
+  "BASELINE": {
+   "passes": 33,
+   "by_kind": {
+    "arith": {
+     "pass": 7,
+     "fail": 3
+    },
+    "json": {
+     "fail": 7,
+     "pass": 1
+    },
+    "code": {
+     "pass": 7,
+     "error": 1
+    },
+    "instruct": {
+     "pass": 6,
+     "fail": 2
+    },
+    "twoturn": {
+     "pass": 6
+    },
+    "degen": {
+     "pass": 6
+    }
+   },
+   "arith_json": 8,
+   "code": 7,
+   "other": 18,
+   "unterminated_turns": 0,
+   "generated_tokens": 2240,
+   "reasoning_tokens": 0,
+   "answer_tokens": 2240,
+   "stop_reasons": {
+    "stop_token": 49,
+    "max_tokens": 3
+   },
+   "first_token_s_median": 2.89,
+   "task_time_s": 419.0,
+   "wall_s": 419.4,
+   "peak_bytes_max": 11726096304,
+   "active_bytes_max": 9057731116,
+   "errors": [
+    "code-08"
+   ],
+   "context_refusals": 0,
+   "rows_changed_by_amended_scorer": []
+  },
+  "XHIGH768": {
+   "passes": 36,
+   "by_kind": {
+    "arith": {
+     "pass": 9,
+     "fail": 1
+    },
+    "json": {
+     "pass": 7,
+     "fail": 1
+    },
+    "code": {
+     "pass": 2,
+     "fail": 6
+    },
+    "instruct": {
+     "pass": 6,
+     "fail": 2
+    },
+    "twoturn": {
+     "pass": 6
+    },
+    "degen": {
+     "pass": 6
+    }
+   },
+   "arith_json": 16,
+   "code": 2,
+   "other": 18,
+   "unterminated_turns": 8,
+   "generated_tokens": 14721,
+   "reasoning_tokens": 14091,
+   "answer_tokens": 630,
+   "stop_reasons": {
+    "stop_token": 44,
+    "max_tokens": 8
+   },
+   "first_token_s_median": 3.76,
+   "task_time_s": 1792.2,
+   "wall_s": 1792.4,
+   "peak_bytes_max": 11822549232,
+   "active_bytes_max": 9124872752,
+   "errors": [],
+   "context_refusals": 0,
+   "rows_changed_by_amended_scorer": []
+  },
+  "LOW": {
+   "passes": 40,
+   "by_kind": {
+    "arith": {
+     "pass": 9,
+     "fail": 1
+    },
+    "json": {
+     "pass": 6,
+     "fail": 2
+    },
+    "code": {
+     "pass": 7,
+     "fail": 1
+    },
+    "instruct": {
+     "pass": 7,
+     "fail": 1
+    },
+    "twoturn": {
+     "pass": 5,
+     "fail": 1
+    },
+    "degen": {
+     "pass": 6
+    }
+   },
+   "arith_json": 15,
+   "code": 7,
+   "other": 18,
+   "unterminated_turns": 2,
+   "generated_tokens": 7957,
+   "reasoning_tokens": 6988,
+   "answer_tokens": 969,
+   "stop_reasons": {
+    "stop_token": 50,
+    "max_tokens": 2
+   },
+   "first_token_s_median": 3.25,
+   "task_time_s": 977.4,
+   "wall_s": 977.8,
+   "peak_bytes_max": 11793598608,
+   "active_bytes_max": 9125839532,
+   "errors": [],
+   "context_refusals": 0,
+   "rows_changed_by_amended_scorer": []
+  },
+  "MEDIUM": {
+   "passes": 38,
+   "by_kind": {
+    "arith": {
+     "pass": 9,
+     "fail": 1
+    },
+    "json": {
+     "pass": 6,
+     "fail": 2
+    },
+    "code": {
+     "pass": 4,
+     "fail": 4
+    },
+    "instruct": {
+     "pass": 7,
+     "fail": 1
+    },
+    "twoturn": {
+     "pass": 6
+    },
+    "degen": {
+     "pass": 6
+    }
+   },
+   "arith_json": 15,
+   "code": 4,
+   "other": 19,
+   "unterminated_turns": 4,
+   "generated_tokens": 12421,
+   "reasoning_tokens": 11605,
+   "answer_tokens": 816,
+   "stop_reasons": {
+    "stop_token": 47,
+    "max_tokens": 5
+   },
+   "first_token_s_median": 2.4,
+   "task_time_s": 1396.1,
+   "wall_s": 1396.4,
+   "peak_bytes_max": 11721377696,
+   "active_bytes_max": 9125839532,
+   "errors": [],
+   "context_refusals": 0,
+   "rows_changed_by_amended_scorer": []
+  },
+  "per_task": {
+   "arith-01": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "expected 148710, last integer in reply 148710",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 6,
+     "reasoning_tokens": null,
+     "answer_tokens": 6,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.35,
+     "total_s": 4.3,
+     "format_ok": true
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "expected 148710, last integer in reply 148710",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 357,
+     "reasoning_tokens": 350,
+     "answer_tokens": 7,
+     "stop_reason": "stop_token",
+     "first_token_s": 4.56,
+     "total_s": 45.5,
+     "format_ok": true
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "expected 148710, last integer in reply 148710",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 56,
+     "reasoning_tokens": 49,
+     "answer_tokens": 7,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.79,
+     "total_s": 8.4,
+     "format_ok": true
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "expected 148710, last integer in reply 148710",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 370,
+     "reasoning_tokens": 363,
+     "answer_tokens": 7,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.29,
+     "total_s": 39.2,
+     "format_ok": true
+    }
+   },
+   "arith-02": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "expected 68978, last integer in reply 68978",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 5,
+     "reasoning_tokens": null,
+     "answer_tokens": 5,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.98,
+     "total_s": 3.6,
+     "format_ok": true
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "expected 68978, last integer in reply 68978",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 159,
+     "reasoning_tokens": 153,
+     "answer_tokens": 6,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.62,
+     "total_s": 20.4,
+     "format_ok": true
+    },
+    "LOW": {
+     "status": "fail",
+     "why": "turn 1: thinking did not terminate within the budget; no final answer",
+     "final_answer_present": false,
+     "thinking_terminated": false,
+     "generated": 768,
+     "reasoning_tokens": null,
+     "answer_tokens": null,
+     "stop_reason": "max_tokens",
+     "first_token_s": 2.77,
+     "total_s": 80.0,
+     "format_ok": null
+    },
+    "MEDIUM": {
+     "status": "fail",
+     "why": "turn 1: thinking did not terminate within the budget; no final answer",
+     "final_answer_present": false,
+     "thinking_terminated": false,
+     "generated": 768,
+     "reasoning_tokens": null,
+     "answer_tokens": null,
+     "stop_reason": "max_tokens",
+     "first_token_s": 2.2,
+     "total_s": 79.0,
+     "format_ok": null
+    }
+   },
+   "arith-03": {
+    "BASELINE": {
+     "status": "fail",
+     "why": "expected 282905, last integer in reply 281955",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 6,
+     "reasoning_tokens": null,
+     "answer_tokens": 6,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.91,
+     "total_s": 3.7,
+     "format_ok": true
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "expected 282905, last integer in reply 282905",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 205,
+     "reasoning_tokens": 198,
+     "answer_tokens": 7,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.59,
+     "total_s": 25.1,
+     "format_ok": true
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "expected 282905, last integer in reply 282905",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 112,
+     "reasoning_tokens": 105,
+     "answer_tokens": 7,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.72,
+     "total_s": 14.0,
+     "format_ok": true
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "expected 282905, last integer in reply 282905",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 229,
+     "reasoning_tokens": 222,
+     "answer_tokens": 7,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.16,
+     "total_s": 25.0,
+     "format_ok": true
+    }
+   },
+   "arith-04": {
+    "BASELINE": {
+     "status": "fail",
+     "why": "expected 25, last integer in reply 52729",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 384,
+     "reasoning_tokens": null,
+     "answer_tokens": 384,
+     "stop_reason": "max_tokens",
+     "first_token_s": 3.1,
+     "total_s": 48.2,
+     "format_ok": false
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "expected 25, last integer in reply 25",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 505,
+     "reasoning_tokens": 502,
+     "answer_tokens": 3,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.88,
+     "total_s": 57.0,
+     "format_ok": true
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "expected 25, last integer in reply 25",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 492,
+     "reasoning_tokens": 489,
+     "answer_tokens": 3,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.46,
+     "total_s": 53.2,
+     "format_ok": true
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "expected 25, last integer in reply 25",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 261,
+     "reasoning_tokens": 258,
+     "answer_tokens": 3,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.41,
+     "total_s": 28.5,
+     "format_ok": true
+    }
+   },
+   "arith-05": {
+    "BASELINE": {
+     "status": "fail",
+     "why": "expected 36, last integer in reply 3",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 384,
+     "reasoning_tokens": null,
+     "answer_tokens": 384,
+     "stop_reason": "max_tokens",
+     "first_token_s": 3.03,
+     "total_s": 47.4,
+     "format_ok": false
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "expected 36, last integer in reply 36",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 197,
+     "reasoning_tokens": 194,
+     "answer_tokens": 3,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.64,
+     "total_s": 24.4,
+     "format_ok": true
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "expected 36, last integer in reply 36",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 161,
+     "reasoning_tokens": 158,
+     "answer_tokens": 3,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.81,
+     "total_s": 19.5,
+     "format_ok": true
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "expected 36, last integer in reply 36",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 140,
+     "reasoning_tokens": 137,
+     "answer_tokens": 3,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.38,
+     "total_s": 16.4,
+     "format_ok": true
+    }
+   },
+   "arith-06": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "expected 1083, last integer in reply 1083",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 4,
+     "reasoning_tokens": null,
+     "answer_tokens": 4,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.68,
+     "total_s": 3.2,
+     "format_ok": true
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "expected 1083, last integer in reply 1083",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 176,
+     "reasoning_tokens": 171,
+     "answer_tokens": 5,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.57,
+     "total_s": 22.1,
+     "format_ok": true
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "expected 1083, last integer in reply 1083",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 56,
+     "reasoning_tokens": 51,
+     "answer_tokens": 5,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.69,
+     "total_s": 8.8,
+     "format_ok": true
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "expected 1083, last integer in reply 1083",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 130,
+     "reasoning_tokens": 125,
+     "answer_tokens": 5,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.29,
+     "total_s": 15.3,
+     "format_ok": true
+    }
+   },
+   "arith-07": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "expected 113733, last integer in reply 113733",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 6,
+     "reasoning_tokens": null,
+     "answer_tokens": 6,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.39,
+     "total_s": 4.1,
+     "format_ok": true
+    },
+    "XHIGH768": {
+     "status": "fail",
+     "why": "turn 1: thinking did not terminate within the budget; no final answer",
+     "final_answer_present": false,
+     "thinking_terminated": false,
+     "generated": 768,
+     "reasoning_tokens": null,
+     "answer_tokens": null,
+     "stop_reason": "max_tokens",
+     "first_token_s": 3.62,
+     "total_s": 84.7,
+     "format_ok": null
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "expected 113733, last integer in reply 113733",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 56,
+     "reasoning_tokens": 49,
+     "answer_tokens": 7,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.77,
+     "total_s": 8.7,
+     "format_ok": true
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "expected 113733, last integer in reply 113733",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 326,
+     "reasoning_tokens": 319,
+     "answer_tokens": 7,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.2,
+     "total_s": 34.7,
+     "format_ok": true
+    }
+   },
+   "arith-08": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "expected 38469, last integer in reply 38469",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 5,
+     "reasoning_tokens": null,
+     "answer_tokens": 5,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.73,
+     "total_s": 3.3,
+     "format_ok": true
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "expected 38469, last integer in reply 38469",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 338,
+     "reasoning_tokens": 332,
+     "answer_tokens": 6,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.59,
+     "total_s": 41.7,
+     "format_ok": true
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "expected 38469, last integer in reply 38469",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 54,
+     "reasoning_tokens": 48,
+     "answer_tokens": 6,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.77,
+     "total_s": 8.6,
+     "format_ok": true
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "expected 38469, last integer in reply 38469",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 629,
+     "reasoning_tokens": 623,
+     "answer_tokens": 6,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.2,
+     "total_s": 65.1,
+     "format_ok": true
+    }
+   },
+   "arith-09": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "expected 148000, last integer in reply 148000",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 6,
+     "reasoning_tokens": null,
+     "answer_tokens": 6,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.67,
+     "total_s": 3.4,
+     "format_ok": true
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "expected 148000, last integer in reply 148000",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 130,
+     "reasoning_tokens": 123,
+     "answer_tokens": 7,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.58,
+     "total_s": 17.3,
+     "format_ok": true
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "expected 148000, last integer in reply 148000",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 54,
+     "reasoning_tokens": 47,
+     "answer_tokens": 7,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.66,
+     "total_s": 8.3,
+     "format_ok": true
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "expected 148000, last integer in reply 148000",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 126,
+     "reasoning_tokens": 119,
+     "answer_tokens": 7,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.16,
+     "total_s": 14.7,
+     "format_ok": true
+    }
+   },
+   "arith-10": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "expected 39, last integer in reply 39",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 2,
+     "reasoning_tokens": null,
+     "answer_tokens": 2,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.02,
+     "total_s": 3.3,
+     "format_ok": true
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "expected 39, last integer in reply 39",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 135,
+     "reasoning_tokens": 132,
+     "answer_tokens": 3,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.9,
+     "total_s": 18.2,
+     "format_ok": true
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "expected 39, last integer in reply 39",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 96,
+     "reasoning_tokens": 93,
+     "answer_tokens": 3,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.47,
+     "total_s": 13.4,
+     "format_ok": true
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "expected 39, last integer in reply 39",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 142,
+     "reasoning_tokens": 139,
+     "answer_tokens": 3,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.4,
+     "total_s": 16.6,
+     "format_ok": true
+    }
+   },
+   "json-01": {
+    "BASELINE": {
+     "status": "fail",
+     "why": "total: 544.59 != 466.7",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 29,
+     "reasoning_tokens": null,
+     "answer_tokens": 29,
+     "stop_reason": "stop_token",
+     "first_token_s": 5.41,
+     "total_s": 8.5,
+     "format_ok": true
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "schema and values match",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 391,
+     "reasoning_tokens": 361,
+     "answer_tokens": 30,
+     "stop_reason": "stop_token",
+     "first_token_s": 6.51,
+     "total_s": 47.8,
+     "format_ok": true
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "schema and values match",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 156,
+     "reasoning_tokens": 127,
+     "answer_tokens": 29,
+     "stop_reason": "stop_token",
+     "first_token_s": 5.62,
+     "total_s": 21.4,
+     "format_ok": true
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "schema and values match",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 258,
+     "reasoning_tokens": 229,
+     "answer_tokens": 29,
+     "stop_reason": "stop_token",
+     "first_token_s": 5.09,
+     "total_s": 30.9,
+     "format_ok": true
+    }
+   },
+   "json-02": {
+    "BASELINE": {
+     "status": "fail",
+     "why": "mean: 75.3 != 70.25",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 21,
+     "reasoning_tokens": null,
+     "answer_tokens": 21,
+     "stop_reason": "stop_token",
+     "first_token_s": 4.07,
+     "total_s": 6.5,
+     "format_ok": true
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "schema and values match",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 276,
+     "reasoning_tokens": 254,
+     "answer_tokens": 22,
+     "stop_reason": "stop_token",
+     "first_token_s": 4.0,
+     "total_s": 33.0,
+     "format_ok": true
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "schema and values match",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 139,
+     "reasoning_tokens": 117,
+     "answer_tokens": 22,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.69,
+     "total_s": 17.8,
+     "format_ok": true
+    },
+    "MEDIUM": {
+     "status": "fail",
+     "why": "mean: 72.8 != 70.25",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 327,
+     "reasoning_tokens": 310,
+     "answer_tokens": 17,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.5,
+     "total_s": 36.1,
+     "format_ok": true
+    }
+   },
+   "json-03": {
+    "BASELINE": {
+     "status": "fail",
+     "why": "total: 54.41 != 57.43",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 28,
+     "reasoning_tokens": null,
+     "answer_tokens": 28,
+     "stop_reason": "stop_token",
+     "first_token_s": 5.85,
+     "total_s": 10.0,
+     "format_ok": true
+    },
+    "XHIGH768": {
+     "status": "fail",
+     "why": "total: 57.41 != 57.43",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 139,
+     "reasoning_tokens": 110,
+     "answer_tokens": 29,
+     "stop_reason": "stop_token",
+     "first_token_s": 5.74,
+     "total_s": 20.4,
+     "format_ok": true
+    },
+    "LOW": {
+     "status": "fail",
+     "why": "total: 57.53 != 57.43",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 138,
+     "reasoning_tokens": 109,
+     "answer_tokens": 29,
+     "stop_reason": "stop_token",
+     "first_token_s": 5.18,
+     "total_s": 19.2,
+     "format_ok": true
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "schema and values match",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 171,
+     "reasoning_tokens": 142,
+     "answer_tokens": 29,
+     "stop_reason": "stop_token",
+     "first_token_s": 4.67,
+     "total_s": 21.8,
+     "format_ok": true
+    }
+   },
+   "json-04": {
+    "BASELINE": {
+     "status": "fail",
+     "why": "mean: 79.8 != 79.6",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 21,
+     "reasoning_tokens": null,
+     "answer_tokens": 21,
+     "stop_reason": "stop_token",
+     "first_token_s": 4.48,
+     "total_s": 6.9,
+     "format_ok": true
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "schema and values match",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 207,
+     "reasoning_tokens": 185,
+     "answer_tokens": 22,
+     "stop_reason": "stop_token",
+     "first_token_s": 4.89,
+     "total_s": 26.7,
+     "format_ok": true
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "schema and values match",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 140,
+     "reasoning_tokens": 118,
+     "answer_tokens": 22,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.73,
+     "total_s": 17.9,
+     "format_ok": true
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "schema and values match",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 186,
+     "reasoning_tokens": 169,
+     "answer_tokens": 17,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.61,
+     "total_s": 22.2,
+     "format_ok": true
+    }
+   },
+   "json-05": {
+    "BASELINE": {
+     "status": "fail",
+     "why": "total: 257.41 != 299.87",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 29,
+     "reasoning_tokens": null,
+     "answer_tokens": 29,
+     "stop_reason": "stop_token",
+     "first_token_s": 6.35,
+     "total_s": 9.9,
+     "format_ok": true
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "schema and values match",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 220,
+     "reasoning_tokens": 190,
+     "answer_tokens": 30,
+     "stop_reason": "stop_token",
+     "first_token_s": 6.45,
+     "total_s": 29.7,
+     "format_ok": true
+    },
+    "LOW": {
+     "status": "fail",
+     "why": "total: 295.87 != 299.87",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 153,
+     "reasoning_tokens": 123,
+     "answer_tokens": 30,
+     "stop_reason": "stop_token",
+     "first_token_s": 5.67,
+     "total_s": 21.2,
+     "format_ok": true
+    },
+    "MEDIUM": {
+     "status": "fail",
+     "why": "total: 295.87 != 299.87",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 219,
+     "reasoning_tokens": 189,
+     "answer_tokens": 30,
+     "stop_reason": "stop_token",
+     "first_token_s": 5.17,
+     "total_s": 27.3,
+     "format_ok": true
+    }
+   },
+   "json-06": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "schema and values match",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 21,
+     "reasoning_tokens": null,
+     "answer_tokens": 21,
+     "stop_reason": "stop_token",
+     "first_token_s": 4.29,
+     "total_s": 6.7,
+     "format_ok": true
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "schema and values match",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 126,
+     "reasoning_tokens": 104,
+     "answer_tokens": 22,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.91,
+     "total_s": 17.4,
+     "format_ok": true
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "schema and values match",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 110,
+     "reasoning_tokens": 88,
+     "answer_tokens": 22,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.63,
+     "total_s": 14.7,
+     "format_ok": true
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "schema and values match",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 162,
+     "reasoning_tokens": 140,
+     "answer_tokens": 22,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.46,
+     "total_s": 19.8,
+     "format_ok": true
+    }
+   },
+   "json-07": {
+    "BASELINE": {
+     "status": "fail",
+     "why": "total: 554.44 != 530.8",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 29,
+     "reasoning_tokens": null,
+     "answer_tokens": 29,
+     "stop_reason": "stop_token",
+     "first_token_s": 6.31,
+     "total_s": 9.8,
+     "format_ok": true
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "schema and values match",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 433,
+     "reasoning_tokens": 404,
+     "answer_tokens": 29,
+     "stop_reason": "stop_token",
+     "first_token_s": 7.61,
+     "total_s": 54.4,
+     "format_ok": true
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "schema and values match",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 160,
+     "reasoning_tokens": 131,
+     "answer_tokens": 29,
+     "stop_reason": "stop_token",
+     "first_token_s": 5.63,
+     "total_s": 21.8,
+     "format_ok": true
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "schema and values match",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 231,
+     "reasoning_tokens": 202,
+     "answer_tokens": 29,
+     "stop_reason": "stop_token",
+     "first_token_s": 5.18,
+     "total_s": 28.8,
+     "format_ok": true
+    }
+   },
+   "json-08": {
+    "BASELINE": {
+     "status": "fail",
+     "why": "mean: 68.8 != 69.0",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 21,
+     "reasoning_tokens": null,
+     "answer_tokens": 21,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.91,
+     "total_s": 6.1,
+     "format_ok": true
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "schema and values match",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 147,
+     "reasoning_tokens": 125,
+     "answer_tokens": 22,
+     "stop_reason": "stop_token",
+     "first_token_s": 4.01,
+     "total_s": 19.4,
+     "format_ok": true
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "schema and values match",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 128,
+     "reasoning_tokens": 106,
+     "answer_tokens": 22,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.66,
+     "total_s": 16.6,
+     "format_ok": true
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "schema and values match",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 211,
+     "reasoning_tokens": 189,
+     "answer_tokens": 22,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.6,
+     "total_s": 25.1,
+     "format_ok": true
+    }
+   },
+   "code-01": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "{\"status\": \"pass\", \"returncode\": 0, \"timed_out\": false, \"stderr\": \"\"}",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 66,
+     "reasoning_tokens": null,
+     "answer_tokens": 66,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.69,
+     "total_s": 9.6,
+     "format_ok": null
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "{\"status\": \"pass\", \"returncode\": 0, \"timed_out\": false, \"stderr\": \"\"}",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 587,
+     "reasoning_tokens": 559,
+     "answer_tokens": 28,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.76,
+     "total_s": 65.6,
+     "format_ok": null
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "{\"status\": \"pass\", \"returncode\": 0, \"timed_out\": false, \"stderr\": \"\"}",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 161,
+     "reasoning_tokens": 138,
+     "answer_tokens": 23,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.88,
+     "total_s": 20.3,
+     "format_ok": null
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "{\"status\": \"pass\", \"returncode\": 0, \"timed_out\": false, \"stderr\": \"\"}",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 307,
+     "reasoning_tokens": 284,
+     "answer_tokens": 23,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.81,
+     "total_s": 34.0,
+     "format_ok": null
+    }
+   },
+   "code-02": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "{\"status\": \"pass\", \"returncode\": 0, \"timed_out\": false, \"stderr\": \"\"}",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 104,
+     "reasoning_tokens": null,
+     "answer_tokens": 104,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.38,
+     "total_s": 14.9,
+     "format_ok": null
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "{\"status\": \"pass\", \"returncode\": 0, \"timed_out\": false, \"stderr\": \"\"}",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 710,
+     "reasoning_tokens": 610,
+     "answer_tokens": 100,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.78,
+     "total_s": 78.6,
+     "format_ok": null
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "{\"status\": \"pass\", \"returncode\": 0, \"timed_out\": false, \"stderr\": \"\"}",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 183,
+     "reasoning_tokens": 95,
+     "answer_tokens": 88,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.84,
+     "total_s": 22.5,
+     "format_ok": null
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "{\"status\": \"pass\", \"returncode\": 0, \"timed_out\": false, \"stderr\": \"\"}",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 677,
+     "reasoning_tokens": 570,
+     "answer_tokens": 107,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.81,
+     "total_s": 71.8,
+     "format_ok": null
+    }
+   },
+   "code-03": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "{\"status\": \"pass\", \"returncode\": 0, \"timed_out\": false, \"stderr\": \"\"}",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 86,
+     "reasoning_tokens": null,
+     "answer_tokens": 86,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.65,
+     "total_s": 12.6,
+     "format_ok": null
+    },
+    "XHIGH768": {
+     "status": "fail",
+     "why": "turn 1: thinking did not terminate within the budget; no final answer",
+     "final_answer_present": false,
+     "thinking_terminated": false,
+     "generated": 768,
+     "reasoning_tokens": null,
+     "answer_tokens": null,
+     "stop_reason": "max_tokens",
+     "first_token_s": 3.92,
+     "total_s": 84.8,
+     "format_ok": null
+    },
+    "LOW": {
+     "status": "fail",
+     "why": "turn 1: thinking did not terminate within the budget; no final answer",
+     "final_answer_present": false,
+     "thinking_terminated": false,
+     "generated": 768,
+     "reasoning_tokens": null,
+     "answer_tokens": null,
+     "stop_reason": "max_tokens",
+     "first_token_s": 3.59,
+     "total_s": 80.6,
+     "format_ok": null
+    },
+    "MEDIUM": {
+     "status": "fail",
+     "why": "turn 1: thinking did not terminate within the budget; no final answer",
+     "final_answer_present": false,
+     "thinking_terminated": false,
+     "generated": 768,
+     "reasoning_tokens": null,
+     "answer_tokens": null,
+     "stop_reason": "max_tokens",
+     "first_token_s": 3.51,
+     "total_s": 81.8,
+     "format_ok": null
+    }
+   },
+   "code-04": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "{\"status\": \"pass\", \"returncode\": 0, \"timed_out\": false, \"stderr\": \"\"}",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 74,
+     "reasoning_tokens": null,
+     "answer_tokens": 74,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.63,
+     "total_s": 11.3,
+     "format_ok": null
+    },
+    "XHIGH768": {
+     "status": "fail",
+     "why": "turn 1: thinking did not terminate within the budget; no final answer",
+     "final_answer_present": false,
+     "thinking_terminated": false,
+     "generated": 768,
+     "reasoning_tokens": null,
+     "answer_tokens": null,
+     "stop_reason": "max_tokens",
+     "first_token_s": 3.92,
+     "total_s": 84.6,
+     "format_ok": null
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "{\"status\": \"pass\", \"returncode\": 0, \"timed_out\": false, \"stderr\": \"\"}",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 172,
+     "reasoning_tokens": 93,
+     "answer_tokens": 79,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.56,
+     "total_s": 20.7,
+     "format_ok": null
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "{\"status\": \"pass\", \"returncode\": 0, \"timed_out\": false, \"stderr\": \"\"}",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 419,
+     "reasoning_tokens": 344,
+     "answer_tokens": 75,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.5,
+     "total_s": 46.1,
+     "format_ok": null
+    }
+   },
+   "code-05": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "{\"status\": \"pass\", \"returncode\": 0, \"timed_out\": false, \"stderr\": \"\"}",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 87,
+     "reasoning_tokens": null,
+     "answer_tokens": 87,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.87,
+     "total_s": 12.8,
+     "format_ok": null
+    },
+    "XHIGH768": {
+     "status": "fail",
+     "why": "turn 1: thinking did not terminate within the budget; no final answer",
+     "final_answer_present": false,
+     "thinking_terminated": false,
+     "generated": 768,
+     "reasoning_tokens": null,
+     "answer_tokens": null,
+     "stop_reason": "max_tokens",
+     "first_token_s": 3.72,
+     "total_s": 89.2,
+     "format_ok": null
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "{\"status\": \"pass\", \"returncode\": 0, \"timed_out\": false, \"stderr\": \"\"}",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 197,
+     "reasoning_tokens": 109,
+     "answer_tokens": 88,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.66,
+     "total_s": 23.4,
+     "format_ok": null
+    },
+    "MEDIUM": {
+     "status": "fail",
+     "why": "turn 1: thinking did not terminate within the budget; no final answer",
+     "final_answer_present": false,
+     "thinking_terminated": false,
+     "generated": 768,
+     "reasoning_tokens": null,
+     "answer_tokens": null,
+     "stop_reason": "max_tokens",
+     "first_token_s": 2.76,
+     "total_s": 80.8,
+     "format_ok": null
+    }
+   },
+   "code-06": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "{\"status\": \"pass\", \"returncode\": 0, \"timed_out\": false, \"stderr\": \"\"}",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 30,
+     "reasoning_tokens": null,
+     "answer_tokens": 30,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.85,
+     "total_s": 7.0,
+     "format_ok": null
+    },
+    "XHIGH768": {
+     "status": "fail",
+     "why": "turn 1: thinking did not terminate within the budget; no final answer",
+     "final_answer_present": false,
+     "thinking_terminated": false,
+     "generated": 768,
+     "reasoning_tokens": null,
+     "answer_tokens": null,
+     "stop_reason": "max_tokens",
+     "first_token_s": 3.73,
+     "total_s": 84.5,
+     "format_ok": null
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "{\"status\": \"pass\", \"returncode\": 0, \"timed_out\": false, \"stderr\": \"\"}",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 349,
+     "reasoning_tokens": 315,
+     "answer_tokens": 34,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.72,
+     "total_s": 38.6,
+     "format_ok": null
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "{\"status\": \"pass\", \"returncode\": 0, \"timed_out\": false, \"stderr\": \"\"}",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 279,
+     "reasoning_tokens": 245,
+     "answer_tokens": 34,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.81,
+     "total_s": 31.1,
+     "format_ok": null
+    }
+   },
+   "code-07": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "{\"status\": \"pass\", \"returncode\": 0, \"timed_out\": false, \"stderr\": \"\"}",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 134,
+     "reasoning_tokens": null,
+     "answer_tokens": 134,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.53,
+     "total_s": 17.6,
+     "format_ok": null
+    },
+    "XHIGH768": {
+     "status": "fail",
+     "why": "turn 1: thinking did not terminate within the budget; no final answer",
+     "final_answer_present": false,
+     "thinking_terminated": false,
+     "generated": 768,
+     "reasoning_tokens": null,
+     "answer_tokens": null,
+     "stop_reason": "max_tokens",
+     "first_token_s": 3.83,
+     "total_s": 84.6,
+     "format_ok": null
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "{\"status\": \"pass\", \"returncode\": 0, \"timed_out\": false, \"stderr\": \"\"}",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 511,
+     "reasoning_tokens": 447,
+     "answer_tokens": 64,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.45,
+     "total_s": 54.6,
+     "format_ok": null
+    },
+    "MEDIUM": {
+     "status": "fail",
+     "why": "turn 1: thinking did not terminate within the budget; no final answer",
+     "final_answer_present": false,
+     "thinking_terminated": false,
+     "generated": 768,
+     "reasoning_tokens": null,
+     "answer_tokens": null,
+     "stop_reason": "max_tokens",
+     "first_token_s": 3.3,
+     "total_s": 80.1,
+     "format_ok": null
+    }
+   },
+   "code-08": {
+    "BASELINE": {
+     "status": "error",
+     "why": "validator RuntimeError: the sandboxed interpreter did not start the harness",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 384,
+     "reasoning_tokens": null,
+     "answer_tokens": 384,
+     "stop_reason": "max_tokens",
+     "first_token_s": 3.63,
+     "total_s": 47.7,
+     "format_ok": null
+    },
+    "XHIGH768": {
+     "status": "fail",
+     "why": "turn 1: thinking did not terminate within the budget; no final answer",
+     "final_answer_present": false,
+     "thinking_terminated": false,
+     "generated": 768,
+     "reasoning_tokens": null,
+     "answer_tokens": null,
+     "stop_reason": "max_tokens",
+     "first_token_s": 3.93,
+     "total_s": 84.7,
+     "format_ok": null
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "{\"status\": \"pass\", \"returncode\": 0, \"timed_out\": false, \"stderr\": \"\"}",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 589,
+     "reasoning_tokens": 538,
+     "answer_tokens": 51,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.56,
+     "total_s": 62.5,
+     "format_ok": null
+    },
+    "MEDIUM": {
+     "status": "fail",
+     "why": "{\"status\": \"fail\", \"returncode\": 1, \"timed_out\": false, \"stderr\": \"\"}",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 768,
+     "reasoning_tokens": 723,
+     "answer_tokens": 45,
+     "stop_reason": "max_tokens",
+     "first_token_s": 3.4,
+     "total_s": 80.2,
+     "format_ok": null
+    }
+   },
+   "instruct-01": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "3 non-empty lines, wanted 3",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 5,
+     "reasoning_tokens": null,
+     "answer_tokens": 5,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.28,
+     "total_s": 2.8,
+     "format_ok": null
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "3 non-empty lines, wanted 3",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 98,
+     "reasoning_tokens": 92,
+     "answer_tokens": 6,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.49,
+     "total_s": 13.9,
+     "format_ok": null
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "3 non-empty lines, wanted 3",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 52,
+     "reasoning_tokens": 46,
+     "answer_tokens": 6,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.57,
+     "total_s": 7.8,
+     "format_ok": null
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "3 non-empty lines, wanted 3",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 52,
+     "reasoning_tokens": 46,
+     "answer_tokens": 6,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.1,
+     "total_s": 7.3,
+     "format_ok": null
+    }
+   },
+   "instruct-02": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "include True, exclude present False",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 36,
+     "reasoning_tokens": null,
+     "answer_tokens": 36,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.55,
+     "total_s": 6.3,
+     "format_ok": null
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "include True, exclude present False",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 157,
+     "reasoning_tokens": 124,
+     "answer_tokens": 33,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.71,
+     "total_s": 20.2,
+     "format_ok": null
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "include True, exclude present False",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 257,
+     "reasoning_tokens": 217,
+     "answer_tokens": 40,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.25,
+     "total_s": 28.9,
+     "format_ok": null
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "include True, exclude present False",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 468,
+     "reasoning_tokens": 429,
+     "answer_tokens": 39,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.38,
+     "total_s": 49.2,
+     "format_ok": null
+    }
+   },
+   "instruct-03": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "all letters upper",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 14,
+     "reasoning_tokens": null,
+     "answer_tokens": 14,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.13,
+     "total_s": 3.6,
+     "format_ok": null
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "all letters upper",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 69,
+     "reasoning_tokens": 58,
+     "answer_tokens": 11,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.94,
+     "total_s": 10.2,
+     "format_ok": null
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "all letters upper",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 102,
+     "reasoning_tokens": 88,
+     "answer_tokens": 14,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.49,
+     "total_s": 12.7,
+     "format_ok": null
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "all letters upper",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 107,
+     "reasoning_tokens": 92,
+     "answer_tokens": 15,
+     "stop_reason": "stop_token",
+     "first_token_s": 1.9,
+     "total_s": 12.6,
+     "format_ok": null
+    }
+   },
+   "instruct-04": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "last word 'done'",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 28,
+     "reasoning_tokens": null,
+     "answer_tokens": 28,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.45,
+     "total_s": 5.4,
+     "format_ok": null
+    },
+    "XHIGH768": {
+     "status": "fail",
+     "why": "turn 1: thinking did not terminate within the budget; no final answer",
+     "final_answer_present": false,
+     "thinking_terminated": false,
+     "generated": 768,
+     "reasoning_tokens": null,
+     "answer_tokens": null,
+     "stop_reason": "max_tokens",
+     "first_token_s": 3.57,
+     "total_s": 89.6,
+     "format_ok": null
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "last word 'done'",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 226,
+     "reasoning_tokens": 203,
+     "answer_tokens": 23,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.63,
+     "total_s": 25.2,
+     "format_ok": null
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "last word 'done'",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 258,
+     "reasoning_tokens": 235,
+     "answer_tokens": 23,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.28,
+     "total_s": 28.0,
+     "format_ok": null
+    }
+   },
+   "instruct-05": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "5 lines, numbered True",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 24,
+     "reasoning_tokens": null,
+     "answer_tokens": 24,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.49,
+     "total_s": 5.0,
+     "format_ok": null
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "5 lines, numbered True",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 137,
+     "reasoning_tokens": 112,
+     "answer_tokens": 25,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.62,
+     "total_s": 18.1,
+     "format_ok": null
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "5 lines, numbered True",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 55,
+     "reasoning_tokens": 30,
+     "answer_tokens": 25,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.73,
+     "total_s": 8.2,
+     "format_ok": null
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "5 lines, numbered True",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 54,
+     "reasoning_tokens": 29,
+     "answer_tokens": 25,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.22,
+     "total_s": 7.6,
+     "format_ok": null
+    }
+   },
+   "instruct-06": {
+    "BASELINE": {
+     "status": "fail",
+     "why": "18 words, band 20 to 40",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 21,
+     "reasoning_tokens": null,
+     "answer_tokens": 21,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.39,
+     "total_s": 4.6,
+     "format_ok": null
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "23 words, band 20 to 40",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 463,
+     "reasoning_tokens": 437,
+     "answer_tokens": 26,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.61,
+     "total_s": 52.4,
+     "format_ok": null
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "25 words, band 20 to 40",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 274,
+     "reasoning_tokens": 245,
+     "answer_tokens": 29,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.61,
+     "total_s": 30.0,
+     "format_ok": null
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "24 words, band 20 to 40",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 579,
+     "reasoning_tokens": 550,
+     "answer_tokens": 29,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.14,
+     "total_s": 60.1,
+     "format_ok": null
+    }
+   },
+   "instruct-07": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "4 non-empty lines, wanted 4",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 7,
+     "reasoning_tokens": null,
+     "answer_tokens": 7,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.42,
+     "total_s": 3.2,
+     "format_ok": null
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "4 non-empty lines, wanted 4",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 40,
+     "reasoning_tokens": 32,
+     "answer_tokens": 8,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.57,
+     "total_s": 7.8,
+     "format_ok": null
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "4 non-empty lines, wanted 4",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 42,
+     "reasoning_tokens": 34,
+     "answer_tokens": 8,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.64,
+     "total_s": 6.8,
+     "format_ok": null
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "4 non-empty lines, wanted 4",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 40,
+     "reasoning_tokens": 32,
+     "answer_tokens": 8,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.28,
+     "total_s": 6.3,
+     "format_ok": null
+    }
+   },
+   "instruct-08": {
+    "BASELINE": {
+     "status": "fail",
+     "why": "include False, exclude present False",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 13,
+     "reasoning_tokens": null,
+     "answer_tokens": 13,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.54,
+     "total_s": 3.9,
+     "format_ok": null
+    },
+    "XHIGH768": {
+     "status": "fail",
+     "why": "include False, exclude present False",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 622,
+     "reasoning_tokens": 612,
+     "answer_tokens": 10,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.68,
+     "total_s": 71.3,
+     "format_ok": null
+    },
+    "LOW": {
+     "status": "fail",
+     "why": "include False, exclude present False",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 101,
+     "reasoning_tokens": 85,
+     "answer_tokens": 16,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.23,
+     "total_s": 13.3,
+     "format_ok": null
+    },
+    "MEDIUM": {
+     "status": "fail",
+     "why": "include False, exclude present False",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 184,
+     "reasoning_tokens": 171,
+     "answer_tokens": 13,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.38,
+     "total_s": 20.8,
+     "format_ok": null
+    }
+   },
+   "twoturn-01": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "turn 2 reply '9097', expected 9097",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 7,
+     "reasoning_tokens": null,
+     "answer_tokens": 4,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.45,
+     "total_s": 6.8,
+     "format_ok": null
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "turn 2 reply '9097', expected 9097",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 148,
+     "reasoning_tokens": 98,
+     "answer_tokens": 5,
+     "stop_reason": "stop_token",
+     "first_token_s": 5.23,
+     "total_s": 25.0,
+     "format_ok": null
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "turn 2 reply '9097', expected 9097",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 112,
+     "reasoning_tokens": 48,
+     "answer_tokens": 5,
+     "stop_reason": "stop_token",
+     "first_token_s": 4.89,
+     "total_s": 19.4,
+     "format_ok": null
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "turn 2 reply '9097', expected 9097",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 119,
+     "reasoning_tokens": 49,
+     "answer_tokens": 5,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.74,
+     "total_s": 18.1,
+     "format_ok": null
+    }
+   },
+   "twoturn-02": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "turn 2 reply '173', expected 173",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 6,
+     "reasoning_tokens": null,
+     "answer_tokens": 3,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.87,
+     "total_s": 5.9,
+     "format_ok": null
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "turn 2 reply '173', expected 173",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 103,
+     "reasoning_tokens": 45,
+     "answer_tokens": 4,
+     "stop_reason": "stop_token",
+     "first_token_s": 5.3,
+     "total_s": 20.1,
+     "format_ok": null
+    },
+    "LOW": {
+     "status": "fail",
+     "why": "turn 2 reply '', expected 173",
+     "final_answer_present": false,
+     "thinking_terminated": true,
+     "generated": 32,
+     "reasoning_tokens": 14,
+     "answer_tokens": 1,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.5,
+     "total_s": 9.4,
+     "format_ok": null
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "turn 2 reply '173', expected 173",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 84,
+     "reasoning_tokens": 42,
+     "answer_tokens": 4,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.72,
+     "total_s": 14.2,
+     "format_ok": null
+    }
+   },
+   "twoturn-03": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "turn 2 reply 'meadow', expected meadow",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 5,
+     "reasoning_tokens": null,
+     "answer_tokens": 2,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.5,
+     "total_s": 6.6,
+     "format_ok": null
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "turn 2 reply 'meadow', expected meadow",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 126,
+     "reasoning_tokens": 80,
+     "answer_tokens": 3,
+     "stop_reason": "stop_token",
+     "first_token_s": 5.27,
+     "total_s": 22.4,
+     "format_ok": null
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "turn 2 reply 'meadow', expected meadow",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 117,
+     "reasoning_tokens": 55,
+     "answer_tokens": 3,
+     "stop_reason": "stop_token",
+     "first_token_s": 4.9,
+     "total_s": 20.0,
+     "format_ok": null
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "turn 2 reply 'meadow', expected meadow",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 151,
+     "reasoning_tokens": 83,
+     "answer_tokens": 3,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.74,
+     "total_s": 21.3,
+     "format_ok": null
+    }
+   },
+   "twoturn-04": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "turn 2 reply '114', expected 114",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 6,
+     "reasoning_tokens": null,
+     "answer_tokens": 3,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.13,
+     "total_s": 6.1,
+     "format_ok": null
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "turn 2 reply '114', expected 114",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 108,
+     "reasoning_tokens": 45,
+     "answer_tokens": 4,
+     "stop_reason": "stop_token",
+     "first_token_s": 5.39,
+     "total_s": 20.3,
+     "format_ok": null
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "turn 2 reply '114', expected 114",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 79,
+     "reasoning_tokens": 37,
+     "answer_tokens": 4,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.72,
+     "total_s": 14.2,
+     "format_ok": null
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "turn 2 reply '114', expected 114",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 84,
+     "reasoning_tokens": 42,
+     "answer_tokens": 4,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.74,
+     "total_s": 14.2,
+     "format_ok": null
+    }
+   },
+   "twoturn-05": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "turn 2 reply '1594', expected 1594",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 7,
+     "reasoning_tokens": null,
+     "answer_tokens": 4,
+     "stop_reason": "stop_token",
+     "first_token_s": 4.11,
+     "total_s": 7.9,
+     "format_ok": null
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "turn 2 reply '1594', expected 1594",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 148,
+     "reasoning_tokens": 98,
+     "answer_tokens": 5,
+     "stop_reason": "stop_token",
+     "first_token_s": 6.24,
+     "total_s": 27.0,
+     "format_ok": null
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "turn 2 reply '1594', expected 1594",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 112,
+     "reasoning_tokens": 48,
+     "answer_tokens": 5,
+     "stop_reason": "stop_token",
+     "first_token_s": 4.88,
+     "total_s": 19.3,
+     "format_ok": null
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "turn 2 reply '1594', expected 1594",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 118,
+     "reasoning_tokens": 48,
+     "answer_tokens": 5,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.73,
+     "total_s": 17.9,
+     "format_ok": null
+    }
+   },
+   "twoturn-06": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "turn 2 reply '141', expected 141",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 6,
+     "reasoning_tokens": null,
+     "answer_tokens": 3,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.84,
+     "total_s": 6.1,
+     "format_ok": null
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "turn 2 reply '141', expected 141",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 170,
+     "reasoning_tokens": 62,
+     "answer_tokens": 4,
+     "stop_reason": "stop_token",
+     "first_token_s": 6.49,
+     "total_s": 27.9,
+     "format_ok": null
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "turn 2 reply '141', expected 141",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 76,
+     "reasoning_tokens": 34,
+     "answer_tokens": 4,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.71,
+     "total_s": 13.9,
+     "format_ok": null
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "turn 2 reply '141', expected 141",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 82,
+     "reasoning_tokens": 61,
+     "answer_tokens": 4,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.35,
+     "total_s": 13.6,
+     "format_ok": null
+    }
+   },
+   "degen-01": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "6 tokens",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 6,
+     "reasoning_tokens": null,
+     "answer_tokens": 6,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.29,
+     "total_s": 3.0,
+     "format_ok": null
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "6 tokens",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 73,
+     "reasoning_tokens": 66,
+     "answer_tokens": 7,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.53,
+     "total_s": 11.3,
+     "format_ok": null
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "6 tokens",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 55,
+     "reasoning_tokens": 48,
+     "answer_tokens": 7,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.58,
+     "total_s": 8.1,
+     "format_ok": null
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "6 tokens",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 55,
+     "reasoning_tokens": 48,
+     "answer_tokens": 7,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.11,
+     "total_s": 7.6,
+     "format_ok": null
+    }
+   },
+   "degen-02": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "numbers [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 29,
+     "reasoning_tokens": null,
+     "answer_tokens": 29,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.44,
+     "total_s": 5.5,
+     "format_ok": null
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "numbers [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 171,
+     "reasoning_tokens": 141,
+     "answer_tokens": 30,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.58,
+     "total_s": 21.6,
+     "format_ok": null
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "numbers [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 92,
+     "reasoning_tokens": 62,
+     "answer_tokens": 30,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.62,
+     "total_s": 11.8,
+     "format_ok": null
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "numbers [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 111,
+     "reasoning_tokens": 81,
+     "answer_tokens": 30,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.27,
+     "total_s": 13.3,
+     "format_ok": null
+    }
+   },
+   "degen-03": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "1 lines; expected jupiter",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 10,
+     "reasoning_tokens": null,
+     "answer_tokens": 10,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.17,
+     "total_s": 3.2,
+     "format_ok": null
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "1 lines; expected jupiter",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 43,
+     "reasoning_tokens": 40,
+     "answer_tokens": 3,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.77,
+     "total_s": 7.5,
+     "format_ok": null
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "1 lines; expected jupiter",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 35,
+     "reasoning_tokens": 31,
+     "answer_tokens": 4,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.54,
+     "total_s": 6.1,
+     "format_ok": null
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "1 lines; expected jupiter",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 35,
+     "reasoning_tokens": 31,
+     "answer_tokens": 4,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.01,
+     "total_s": 5.5,
+     "format_ok": null
+    }
+   },
+   "degen-04": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "8 tokens",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 8,
+     "reasoning_tokens": null,
+     "answer_tokens": 8,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.28,
+     "total_s": 3.1,
+     "format_ok": null
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "8 tokens",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 130,
+     "reasoning_tokens": 121,
+     "answer_tokens": 9,
+     "stop_reason": "stop_token",
+     "first_token_s": 4.24,
+     "total_s": 19.3,
+     "format_ok": null
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "8 tokens",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 59,
+     "reasoning_tokens": 50,
+     "answer_tokens": 9,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.6,
+     "total_s": 8.5,
+     "format_ok": null
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "8 tokens",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 59,
+     "reasoning_tokens": 50,
+     "answer_tokens": 9,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.11,
+     "total_s": 8.0,
+     "format_ok": null
+    }
+   },
+   "degen-05": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "numbers [4, 5, 6, 7, 8, 9, 10, 11, 12, 13]",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 23,
+     "reasoning_tokens": null,
+     "answer_tokens": 23,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.39,
+     "total_s": 4.8,
+     "format_ok": null
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "numbers [4, 5, 6, 7, 8, 9, 10, 11, 12, 13]",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 288,
+     "reasoning_tokens": 264,
+     "answer_tokens": 24,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.91,
+     "total_s": 36.0,
+     "format_ok": null
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "numbers [4, 5, 6, 7, 8, 9, 10, 11, 12, 13]",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 89,
+     "reasoning_tokens": 65,
+     "answer_tokens": 24,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.63,
+     "total_s": 11.5,
+     "format_ok": null
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "numbers [4, 5, 6, 7, 8, 9, 10, 11, 12, 13]",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 98,
+     "reasoning_tokens": 74,
+     "answer_tokens": 24,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.16,
+     "total_s": 11.9,
+     "format_ok": null
+    }
+   },
+   "degen-06": {
+    "BASELINE": {
+     "status": "pass",
+     "why": "1 lines; expected paris",
+     "final_answer_present": true,
+     "thinking_terminated": null,
+     "generated": 7,
+     "reasoning_tokens": null,
+     "answer_tokens": 7,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.12,
+     "total_s": 2.9,
+     "format_ok": null
+    },
+    "XHIGH768": {
+     "status": "pass",
+     "why": "1 lines; expected paris",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 45,
+     "reasoning_tokens": 37,
+     "answer_tokens": 8,
+     "stop_reason": "stop_token",
+     "first_token_s": 3.3,
+     "total_s": 8.8,
+     "format_ok": null
+    },
+    "LOW": {
+     "status": "pass",
+     "why": "1 lines; expected paris",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 31,
+     "reasoning_tokens": 23,
+     "answer_tokens": 8,
+     "stop_reason": "stop_token",
+     "first_token_s": 2.49,
+     "total_s": 5.6,
+     "format_ok": null
+    },
+    "MEDIUM": {
+     "status": "pass",
+     "why": "1 lines; expected paris",
+     "final_answer_present": true,
+     "thinking_terminated": true,
+     "generated": 43,
+     "reasoning_tokens": 35,
+     "answer_tokens": 8,
+     "stop_reason": "stop_token",
+     "first_token_s": 1.89,
+     "total_s": 6.2,
+     "format_ok": null
+    }
+   }
+  },
+  "transitions": {
+   "arith-01": "p > p > p > p",
+   "arith-02": "p > p > f > f",
+   "arith-03": "f > p > p > p",
+   "arith-04": "f > p > p > p",
+   "arith-05": "f > p > p > p",
+   "arith-06": "p > p > p > p",
+   "arith-07": "p > f > p > p",
+   "arith-08": "p > p > p > p",
+   "arith-09": "p > p > p > p",
+   "arith-10": "p > p > p > p",
+   "json-01": "f > p > p > p",
+   "json-02": "f > p > p > f",
+   "json-03": "f > f > f > p",
+   "json-04": "f > p > p > p",
+   "json-05": "f > p > f > f",
+   "json-06": "p > p > p > p",
+   "json-07": "f > p > p > p",
+   "json-08": "f > p > p > p",
+   "code-01": "p > p > p > p",
+   "code-02": "p > p > p > p",
+   "code-03": "p > f > f > f",
+   "code-04": "p > f > p > p",
+   "code-05": "p > f > p > f",
+   "code-06": "p > f > p > p",
+   "code-07": "p > f > p > f",
+   "code-08": "e > f > p > f",
+   "instruct-01": "p > p > p > p",
+   "instruct-02": "p > p > p > p",
+   "instruct-03": "p > p > p > p",
+   "instruct-04": "p > f > p > p",
+   "instruct-05": "p > p > p > p",
+   "instruct-06": "f > p > p > p",
+   "instruct-07": "p > p > p > p",
+   "instruct-08": "f > f > f > f",
+   "twoturn-01": "p > p > p > p",
+   "twoturn-02": "p > p > f > p",
+   "twoturn-03": "p > p > p > p",
+   "twoturn-04": "p > p > p > p",
+   "twoturn-05": "p > p > p > p",
+   "twoturn-06": "p > p > p > p",
+   "degen-01": "p > p > p > p",
+   "degen-02": "p > p > p > p",
+   "degen-03": "p > p > p > p",
+   "degen-04": "p > p > p > p",
+   "degen-05": "p > p > p > p",
+   "degen-06": "p > p > p > p"
+  }
+ }
+}

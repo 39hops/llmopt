@@ -5337,8 +5337,9 @@ QWEN-EFFORT-AND-DEEPCHAT-0, study B: a bounded, read-only diagnostic of the empt
 - `main() -> None`
 
 ### scratch/qwen_deepchat_obs.py
-Observations adapter for PRE-REG QWEN-DEEPCHAT-0 (study B of the GO QWEN-EFFORT-AND-DEEPCHAT-0): derives the registered diagnostic measurements from the receipt of scratch/qwen_deepchat_diag.py in committed code.
+Observations adapter for PRE-REG QWEN-DEEPCHAT-0 as amended by AMENDMENT QWEN-DEEPCHAT-0-ADAPTER (study B of the GO QWEN-EFFORT-AND-DEEPCHAT-0): derives the registered diagnostic measurements from the receipt of scratch/qwen_deepchat_diag.py in committed code. Bar 2 re-renders every replay turn's transcript as a ChatML string built BY HAND from the user texts and the decoded replies (the thinking-off form: an empty think block opens each assistant turn), tokenises it with the pinned tokenizer WITHOUT the chat template, and compares the sha256 of the ids with the session's recorded prompt sha256; the conjunct counts later incremental turns that fell back. Bar 3's offset conjunct compares the incremental session's measured offset with replay's on each turn.
 
+- `chatml_sha(tok, turns, k)` — sha256 of the ids of a hand-built thinking-off ChatML transcript up to the user turn k (0-based).
 - `main(receipt_path, prereg_path)`
 
 ### scratch/qwen_displace_extract.py

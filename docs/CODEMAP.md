@@ -606,17 +606,17 @@ Census: library 203, reproduce-pinned 9, results-cited 557, spec-cited 75, tool-
 | qwen | qwen_cuda_rung3.py | UNCITED | — | — | — | — | — | — |
 | qwen | qwen_cuda_rung4.py | library | RESULTS, specs | RESULTS×9, specs×2 | 1 | 4 | 1 | — |
 | qwen | qwen_cycle_impulse.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
-| qwen | qwen_deepchat_diag.py | results-cited | RESULTS | RESULTS×3 | — | 1 | 1 | — |
-| qwen | qwen_deepchat_obs.py | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
+| qwen | qwen_deepchat_diag.py | results-cited | RESULTS | RESULTS×6 | — | 1 | 1 | — |
+| qwen | qwen_deepchat_obs.py | results-cited | RESULTS | RESULTS×7 | — | — | — | — |
 | qwen | qwen_displace_extract.py | spec-cited | specs | specs×1 | — | — | 1 | — |
 | qwen | qwen_e0_disagreement_census.py | results-cited | RESULTS, specs | RESULTS×4, specs×1 | — | 1 | 1 | — |
 | qwen | qwen_e0_preflight.py | UNCITED | — | — | — | — | — | — |
 | qwen | qwen_e0_recompute.py | UNCITED | — | — | — | — | — | — |
 | qwen | qwen_e0_spec_census.py | results-cited | RESULTS, specs | RESULTS×5, specs×4 | — | — | 3 | — |
-| qwen | qwen_effort_obs.py | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
+| qwen | qwen_effort_obs.py | results-cited | RESULTS | RESULTS×6 | — | — | — | — |
 | qwen | qwen_effort_probe.py | results-cited | RESULTS, via:specs | RESULTS×7 | — | 9 | — | — |
 | qwen | qwen_effort_quant.py | results-cited | RESULTS | RESULTS×7 | — | — | 1 | — |
-| qwen | qwen_effort_study.sh | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
+| qwen | qwen_effort_study.sh | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
 | qwen | qwen_effort_tower.py | results-cited | RESULTS, via:specs | RESULTS×3 | — | 1 | — | — |
 | qwen | qwen_family_probe.py | library | RESULTS, via:specs | RESULTS×2 | 1 | 1 | — | — |
 | qwen | qwen_geometry_capture.py | results-cited | RESULTS, specs | RESULTS×7, specs×1 | — | 1 | 1 | — |
@@ -632,7 +632,7 @@ Census: library 203, reproduce-pinned 9, results-cited 557, spec-cited 75, tool-
 | qwen | qwen_hsimpulse_adjudicate.py | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
 | qwen | qwen_hsimpulse_color.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
 | qwen | qwen_incr_obs.py | results-cited | RESULTS | RESULTS×6 | — | — | — | — |
-| qwen | qwen_incr_perf.py | library | RESULTS | RESULTS×8 | 1 | 1 | 1 | — |
+| qwen | qwen_incr_perf.py | library | RESULTS | RESULTS×11 | 1 | 1 | 1 | — |
 | qwen | qwen_inference_study.sh | UNCITED | — | — | — | — | — | — |
 | qwen | qwen_ioattrib_adjudicate.py | library | RESULTS, specs | RESULTS×2, specs×1 | 1 | 1 | — | — |
 | qwen | qwen_layer_restore.py | results-cited | RESULTS, specs | RESULTS×21, specs×1 | — | 1 | 1 | — |

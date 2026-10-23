@@ -444,17 +444,23 @@ def test_reasoning_effort_routes_to_the_template_and_incompatible_configurations
     assert engine.render_chat([{"role": "user", "content": "hi"}], enable_thinking=False) == off
 
 
-def test_session_prefix_check_and_fallback_hold_under_each_effort(engine):
+def test_session_prefix_check_and_fallback_hold_under_each_effort(engine, monkeypatch):
+    # the stub closes its think block on the second generated token (as in
+    # test_thinking_on_with_a_closed_block_reuses_the_cache), so reuse is exercised under every effort
+    import sys
+    orig = _rule
+    monkeypatch.setattr(sys.modules[__name__], "_rule", lambda t, c: THINK_CLOSE if c in (10, 11) else orig(t, c))
     for effort in (None, "xhigh", "medium", "low"):
         a = qserve.Session(engine, enable_thinking=True, reasoning_effort=effort)
         b = qserve.Session(engine, mode="replay", enable_thinking=True, reasoning_effort=effort)
         ra, rb = a.ask("hello", 6), b.ask("hello", 6)
-        assert ra.generated_ids == rb.generated_ids
+        assert ra.generated_ids == rb.generated_ids and THINK_CLOSE in ra.generated_ids, (effort, ra.generated_ids)
         ra2, rb2 = a.ask("more", 6), b.ask("more", 6)
         assert ra2.generated_ids == rb2.generated_ids and a.cache[0].fed == a.fed_ids
-        assert ra2.mode == ("incremental" if THINK_CLOSE in ra.generated_ids else "replay-fallback")
+        assert ra2.mode == "incremental", (effort, ra2.mode, ra2.note)
     a = qserve.Session(engine, enable_thinking=True, reasoning_effort="low")
     a.ask("hello", 6)
+    assert a.ask("again", 6).mode == "incremental"              # control: the same effort reuses
     a.reasoning_effort = "medium"                               # the rendering's leading tokens change: fallback, never a guess
     r = a.ask("more", 6)
     assert r.mode == "replay-fallback" and a.cache[0].fed == a.fed_ids

@@ -4707,12 +4707,18 @@
    "tracked": true
   },
   "logs/qwen_battery/effort_adjudicate_1/adjudication.txt": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 342,
+   "exists": true,
+   "sha256": "b1077f3166ffbe0114517a646f828282eafeb0865b7300f120084b5586cfec59",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_battery/effort_adjudicate_1/observations.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 74897,
+   "exists": true,
+   "sha256": "1418b8da869df08f9d873cb095b55955debbbc5944e2667d08225782ac374276",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_battery/results.json": {
    "bytes": 120474,
@@ -4743,12 +4749,18 @@
    "tracked": true
   },
   "logs/qwen_battery/results_v2_think768_low.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 235736,
+   "exists": true,
+   "sha256": "2bc214871adf274bb5ad4352af9c8e410ca9876ab2a6337a5f0cea7d295197e2",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_battery/results_v2_think768_medium.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 278656,
+   "exists": true,
+   "sha256": "65e04aab3682050434df0abb9b3984a441ff4dbfa398df6633c85fea99e6449e",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_battery/smoke/results.json": {
    "bytes": 15499,
@@ -4760,10 +4772,9 @@
   "logs/qwen_battery/smoke/results_low.json": {
    "bytes": 27723,
    "exists": true,
-   "local_only": true,
    "sha256": "f4a24e6ed1d5fb61da0edf947feb9c8c17f8c4e6a16d5d108359ea0af25c3665",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/qwen_battery/smoke/results_think384.json": {
    "bytes": 40041,
@@ -5160,16 +5171,32 @@
    "tracked": true
   },
   "logs/qwen_serve/deepchat_adjudicate_1/adjudication.txt": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 138,
+   "exists": true,
+   "sha256": "c5842013aa06ad6e2c46ba17c1e98a6d32af68f46daa9411cc8b8cbf44d35807",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_serve/deepchat_adjudicate_1/observations.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 4353,
+   "exists": true,
+   "sha256": "81b5bb96a8f796da39955a2a22ae74dceafb746d19788220314ddc398f06eb95",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_serve/deepchat_v1.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 145029,
+   "exists": true,
+   "sha256": "fc6df92d28c3df7be899ec06e8622cbf13ef3c3e5e4a8c04751760de1ac82042",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwen_serve/effort_b638a497.log": {
+   "bytes": 16790,
+   "exists": true,
+   "sha256": "0e5d111495c51e526ffa7066fba56e0dddca4170310b8c9e7d3872fb3fe9a111",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_serve/incr_adjudicate_1/adjudication.txt": {
    "bytes": 123,

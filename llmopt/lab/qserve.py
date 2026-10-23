@@ -204,8 +204,10 @@ class Engine:
             kw["reasoning_effort"] = reasoning_effort
         try:
             ids = self.tokenizer.apply_chat_template(messages, add_generation_prompt=True, tokenize=True, **kw)
-        except ValueError as e:        # jinja TemplateError is a ValueError: the template refused the conversation or a control
-            raise InputError(f"the chat template refused: {e}") from e
+        except Exception as e:         # jinja2.TemplateError (not a ValueError) or a tokenizer ValueError: the template refused the conversation or a control
+            if type(e).__module__.startswith("jinja2") or isinstance(e, ValueError):
+                raise InputError(f"the chat template refused: {e}") from e
+            raise
         if hasattr(ids, "input_ids"):
             ids = ids["input_ids"]
         return [int(t) for t in ids]

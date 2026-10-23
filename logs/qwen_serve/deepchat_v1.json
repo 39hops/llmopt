@@ -1,0 +1,7151 @@
+{
+ "commit": "b638a497",
+ "tree_dirty": false,
+ "smoke": false,
+ "engine": {
+  "load_s": 8.640491249971092,
+  "kernel_version": 5,
+  "chain_sha256": "de7e0180bf49f965c17116b7fbe8c34d2b1529c2431cc234f3a6460ad84b24dc",
+  "stop_ids": [
+   248044,
+   248046
+  ],
+  "context_cap": 8192,
+  "cache_limit_bytes": 2147483648,
+  "matmul": "gemm",
+  "chunk": 256,
+  "tokenizer_files_sha256": {
+   "tokenizer.json": "0997f410c57a1f4e53b09e4be8f4a172d90edd9564368fb0847030937229b9f3",
+   "tokenizer_config.json": "b11349aafa7cdc6a320767cf7ceb29ed82f7eda5d65e8e0819e76f0ce947bf27",
+   "config.json": "191e0af232104ed8b65258cf3fb2b842e288008baca7633c11b82a1ac7203aab"
+  }
+ },
+ "conversations": [
+  {
+   "name": "travel",
+   "thinking": false,
+   "turns": [
+    {
+     "turn": 1,
+     "user": "I am planning three days in Lisbon in October. Suggest a rough outline, one line per day.",
+     "budget": 96,
+     "replay": {
+      "mode": "fresh",
+      "note": "",
+      "prompt_len": 33,
+      "prompt_sha256": "ac76750ee84a02278773e070803f5de859aa45b651a6f572529f723ee33cc4b9",
+      "prompt_tail": [
+       791,
+       1834,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 2,
+        "positions": [
+         0,
+         26
+        ]
+       },
+       "im_end": {
+        "count": 1,
+        "positions": [
+         24
+        ]
+       },
+       "think": {
+        "count": 1,
+        "positions": [
+         29
+        ]
+       },
+       "think_close": {
+        "count": 1,
+        "positions": [
+         31
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        9857,
+        332,
+        12,
+        16,
+        35,
+        3367,
+        34072,
+        25382,
+        1860,
+        8160,
+        9947,
+        36539,
+        39181,
+        9,
+        32,
+        50
+       ],
+       "logits": [
+        24.267051696777344,
+        18.352210998535156,
+        18.1468505859375,
+        17.14495277404785,
+        16.97287940979004,
+        16.8306941986084,
+        16.117033004760742,
+        15.91865348815918,
+        15.899806022644043,
+        15.810053825378418,
+        15.650603294372559,
+        15.623620986938477,
+        15.52795124053955,
+        15.518210411071777,
+        15.415708541870117,
+        15.334807395935059
+       ],
+       "stop_logits": {
+        "248044": 2.6969153881073,
+        "248046": 11.355585098266602
+       }
+      },
+      "argmax": 9857,
+      "argmax_is_stop": false,
+      "margin": 12.911466598510742,
+      "best_non_stop": 9857,
+      "generated_ids": [
+       9857,
+       220,
+       16,
+       25,
+       42594,
+       279,
+       17496,
+       4593,
+       314,
+       63550,
+       308,
+       321,
+       279,
+       13912,
+       44838,
+       11,
+       1179,
+       4517,
+       41564,
+       6001,
+       494,
+       279,
+       13860,
+       327,
+       48151,
+       401,
+       15521,
+       22299,
+       13,
+       198,
+       9857,
+       220,
+       17,
+       25,
+       18435,
+       279,
+       7580,
+       16157,
+       9014,
+       310,
+       1436,
+       279,
+       21262,
+       321,
+       279,
+       8143,
+       3064,
+       23352,
+       3028,
+       51773,
+       11,
+       1179,
+       1831,
+       264,
+       14882,
+       310,
+       279,
+       12000,
+       350,
+       10629,
+       28053,
+       13,
+       198,
+       9857,
+       220,
+       18,
+       25,
+       769,
+       1065,
+       1472,
+       279,
+       55890,
+       30946,
+       314,
+       73207,
+       53,
+       321,
+       279,
+       189390,
+       2899,
+       2436,
+       16953,
+       11,
+       1179,
+       6052,
+       440,
+       264,
+       2136,
+       3487,
+       6990,
+       303,
+       279,
+       2981,
+       13
+      ],
+      "text": "Day 1: Explore the historic heart of Alfam and the Baixa, then enjoy sunset views from the Miradouro de Santa Maria.\nDay 2: Visit the Bel\u00e9m district to see the Tower and the Jer\u00f3nimos Monastery, then take a boat to the Tagus River islands.\nDay 3: Stroll through the trendy neighborhoods of LXV and the Jardim da Bo\u00e7a, then finish with a local food tour in the market.",
+      "n_generated": 94,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 127,
+      "cache_offset_measured": 127,
+      "first_token_s": 2.4110967500600964,
+      "active_bytes": 9025176236,
+      "footprint_bytes": 11171621924,
+      "peak_bytes": 11442588556
+     },
+     "incremental": {
+      "mode": "fresh",
+      "note": "",
+      "prompt_len": 33,
+      "prompt_sha256": "ac76750ee84a02278773e070803f5de859aa45b651a6f572529f723ee33cc4b9",
+      "prompt_tail": [
+       791,
+       1834,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 2,
+        "positions": [
+         0,
+         26
+        ]
+       },
+       "im_end": {
+        "count": 1,
+        "positions": [
+         24
+        ]
+       },
+       "think": {
+        "count": 1,
+        "positions": [
+         29
+        ]
+       },
+       "think_close": {
+        "count": 1,
+        "positions": [
+         31
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        9857,
+        332,
+        12,
+        16,
+        35,
+        3367,
+        34072,
+        25382,
+        1860,
+        8160,
+        9947,
+        36539,
+        39181,
+        9,
+        32,
+        50
+       ],
+       "logits": [
+        24.267051696777344,
+        18.352210998535156,
+        18.1468505859375,
+        17.14495277404785,
+        16.97287940979004,
+        16.8306941986084,
+        16.117033004760742,
+        15.91865348815918,
+        15.899806022644043,
+        15.810053825378418,
+        15.650603294372559,
+        15.623620986938477,
+        15.52795124053955,
+        15.518210411071777,
+        15.415708541870117,
+        15.334807395935059
+       ],
+       "stop_logits": {
+        "248044": 2.6969153881073,
+        "248046": 11.355585098266602
+       }
+      },
+      "argmax": 9857,
+      "argmax_is_stop": false,
+      "margin": 12.911466598510742,
+      "best_non_stop": 9857,
+      "generated_ids": [
+       9857,
+       220,
+       16,
+       25,
+       42594,
+       279,
+       17496,
+       4593,
+       314,
+       63550,
+       308,
+       321,
+       279,
+       13912,
+       44838,
+       11,
+       1179,
+       4517,
+       41564,
+       6001,
+       494,
+       279,
+       13860,
+       327,
+       48151,
+       401,
+       15521,
+       22299,
+       13,
+       198,
+       9857,
+       220,
+       17,
+       25,
+       18435,
+       279,
+       7580,
+       16157,
+       9014,
+       310,
+       1436,
+       279,
+       21262,
+       321,
+       279,
+       8143,
+       3064,
+       23352,
+       3028,
+       51773,
+       11,
+       1179,
+       1831,
+       264,
+       14882,
+       310,
+       279,
+       12000,
+       350,
+       10629,
+       28053,
+       13,
+       198,
+       9857,
+       220,
+       18,
+       25,
+       769,
+       1065,
+       1472,
+       279,
+       55890,
+       30946,
+       314,
+       73207,
+       53,
+       321,
+       279,
+       189390,
+       2899,
+       2436,
+       16953,
+       11,
+       1179,
+       6052,
+       440,
+       264,
+       2136,
+       3487,
+       6990,
+       303,
+       279,
+       2981,
+       13
+      ],
+      "text": "Day 1: Explore the historic heart of Alfam and the Baixa, then enjoy sunset views from the Miradouro de Santa Maria.\nDay 2: Visit the Bel\u00e9m district to see the Tower and the Jer\u00f3nimos Monastery, then take a boat to the Tagus River islands.\nDay 3: Stroll through the trendy neighborhoods of LXV and the Jardim da Bo\u00e7a, then finish with a local food tour in the market.",
+      "n_generated": 94,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 127,
+      "cache_offset_measured": 127,
+      "first_token_s": 2.3571906669531018,
+      "active_bytes": 9025176236,
+      "footprint_bytes": 11171668836,
+      "peak_bytes": 11442588556
+     },
+     "reconstruction_equal_to_replay_prompt": true,
+     "reconstruction_len": 33,
+     "replay_vs_incremental_generated_equal": true,
+     "replay_vs_incremental_first_logits": {
+      "argmax_equal": true,
+      "common_top16": 16,
+      "max_abs_diff_common": 0.0,
+      "stop_logit_abs_diff": 0.0
+     },
+     "empty_assistant_turns_in_history": 0
+    },
+    {
+     "turn": 2,
+     "user": "Swap day two for a day trip to Sintra. Keep the same format.",
+     "budget": 96,
+     "replay": {
+      "mode": "fresh",
+      "note": "",
+      "prompt_len": 157,
+      "prompt_sha256": "8480018b4adb8636512bd5f1868f745588c488fc309e08c793edf507245fbdba",
+      "prompt_tail": [
+       1788,
+       3443,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 4,
+        "positions": [
+         0,
+         26,
+         129,
+         150
+        ]
+       },
+       "im_end": {
+        "count": 3,
+        "positions": [
+         24,
+         127,
+         148
+        ]
+       },
+       "think": {
+        "count": 2,
+        "positions": [
+         29,
+         153
+        ]
+       },
+       "think_close": {
+        "count": 2,
+        "positions": [
+         31,
+         155
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        9857,
+        248046,
+        760,
+        16,
+        5870,
+        248058,
+        40,
+        8160,
+        271,
+        32013,
+        17848,
+        16271,
+        19932,
+        32,
+        332,
+        47518
+       ],
+       "logits": [
+        24.591670989990234,
+        18.397239685058594,
+        18.353647232055664,
+        15.540630340576172,
+        15.196955680847168,
+        14.197969436645508,
+        14.091201782226562,
+        14.070615768432617,
+        14.04960823059082,
+        13.872029304504395,
+        13.84661865234375,
+        13.703654289245605,
+        13.672904968261719,
+        13.444478988647461,
+        13.428839683532715,
+        13.424976348876953
+       ],
+       "stop_logits": {
+        "248044": 7.880675315856934,
+        "248046": 18.397239685058594
+       }
+      },
+      "argmax": 9857,
+      "argmax_is_stop": false,
+      "margin": 6.194431304931641,
+      "best_non_stop": 9857,
+      "generated_ids": [
+       9857,
+       220,
+       16,
+       25,
+       42594,
+       279,
+       17496,
+       4593,
+       314,
+       63550,
+       308,
+       321,
+       279,
+       13912,
+       44838,
+       11,
+       1179,
+       4517,
+       41564,
+       6001,
+       494,
+       279,
+       13860,
+       327,
+       48151,
+       401,
+       15521,
+       22299,
+       13,
+       198,
+       9857,
+       220,
+       17,
+       25,
+       11440,
+       264,
+       1834,
+       8151,
+       310,
+       17106,
+       2103,
+       310,
+       12804,
+       279,
+       29308,
+       314,
+       17106,
+       2103,
+       321,
+       279,
+       230037,
+       29308,
+       11,
+       1179,
+       4517,
+       279,
+       2136,
+       16078,
+       13,
+       198,
+       9857,
+       220,
+       18,
+       25,
+       769,
+       1065,
+       1472,
+       279,
+       55890,
+       30946,
+       314,
+       73207,
+       53,
+       321,
+       279,
+       189390,
+       2899,
+       2436,
+       16953,
+       11,
+       1179,
+       6052,
+       440,
+       264,
+       2136,
+       3487,
+       6990,
+       303,
+       279,
+       2981,
+       13
+      ],
+      "text": "Day 1: Explore the historic heart of Alfam and the Baixa, then enjoy sunset views from the Miradouro de Santa Maria.\nDay 2: Take a day trip to Sintra to explore the Palace of Sintra and the Pena Palace, then enjoy the local atmosphere.\nDay 3: Stroll through the trendy neighborhoods of LXV and the Jardim da Bo\u00e7a, then finish with a local food tour in the market.",
+      "n_generated": 91,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 248,
+      "cache_offset_measured": 248,
+      "first_token_s": 4.9752825000323355,
+      "active_bytes": 9217589932,
+      "footprint_bytes": 11363520860,
+      "peak_bytes": 11904173952
+     },
+     "incremental": {
+      "mode": "incremental",
+      "note": "",
+      "prompt_len": 30,
+      "prompt_sha256": "156510cd212701036c7dbd70243f4138d84f045b1edbf5d7c060c8289cae2f87",
+      "prompt_tail": [
+       1788,
+       3443,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 2,
+        "positions": [
+         2,
+         23
+        ]
+       },
+       "im_end": {
+        "count": 2,
+        "positions": [
+         0,
+         21
+        ]
+       },
+       "think": {
+        "count": 1,
+        "positions": [
+         26
+        ]
+       },
+       "think_close": {
+        "count": 1,
+        "positions": [
+         28
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        9857,
+        248046,
+        760,
+        16,
+        5870,
+        248058,
+        40,
+        8160,
+        271,
+        32013,
+        17848,
+        16271,
+        19932,
+        32,
+        332,
+        47518
+       ],
+       "logits": [
+        24.59164047241211,
+        18.397247314453125,
+        18.353675842285156,
+        15.54061508178711,
+        15.196949005126953,
+        14.197957992553711,
+        14.091217994689941,
+        14.070646286010742,
+        14.04964542388916,
+        13.872025489807129,
+        13.846641540527344,
+        13.703643798828125,
+        13.672904014587402,
+        13.4444580078125,
+        13.428840637207031,
+        13.42497444152832
+       ],
+       "stop_logits": {
+        "248044": 7.880663871765137,
+        "248046": 18.397247314453125
+       }
+      },
+      "argmax": 9857,
+      "argmax_is_stop": false,
+      "margin": 6.194393157958984,
+      "best_non_stop": 9857,
+      "generated_ids": [
+       9857,
+       220,
+       16,
+       25,
+       42594,
+       279,
+       17496,
+       4593,
+       314,
+       63550,
+       308,
+       321,
+       279,
+       13912,
+       44838,
+       11,
+       1179,
+       4517,
+       41564,
+       6001,
+       494,
+       279,
+       13860,
+       327,
+       48151,
+       401,
+       15521,
+       22299,
+       13,
+       198,
+       9857,
+       220,
+       17,
+       25,
+       11440,
+       264,
+       1834,
+       8151,
+       310,
+       17106,
+       2103,
+       310,
+       12804,
+       279,
+       29308,
+       314,
+       17106,
+       2103,
+       321,
+       279,
+       230037,
+       29308,
+       11,
+       1179,
+       4517,
+       279,
+       2136,
+       16078,
+       13,
+       198,
+       9857,
+       220,
+       18,
+       25,
+       769,
+       1065,
+       1472,
+       279,
+       55890,
+       30946,
+       314,
+       73207,
+       53,
+       321,
+       279,
+       189390,
+       2899,
+       2436,
+       16953,
+       11,
+       1179,
+       6052,
+       440,
+       264,
+       2136,
+       3487,
+       6990,
+       303,
+       279,
+       2981,
+       13
+      ],
+      "text": "Day 1: Explore the historic heart of Alfam and the Baixa, then enjoy sunset views from the Miradouro de Santa Maria.\nDay 2: Take a day trip to Sintra to explore the Palace of Sintra and the Pena Palace, then enjoy the local atmosphere.\nDay 3: Stroll through the trendy neighborhoods of LXV and the Jardim da Bo\u00e7a, then finish with a local food tour in the market.",
+      "n_generated": 91,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 248,
+      "cache_offset_measured": 248,
+      "first_token_s": 2.283398832892999,
+      "active_bytes": 9025176236,
+      "footprint_bytes": 11171143772,
+      "peak_bytes": 11249837440
+     },
+     "reconstruction_equal_to_replay_prompt": true,
+     "reconstruction_len": 157,
+     "replay_vs_incremental_generated_equal": true,
+     "replay_vs_incremental_first_logits": {
+      "argmax_equal": true,
+      "common_top16": 16,
+      "max_abs_diff_common": 3.719329833984375e-05,
+      "stop_logit_abs_diff": 1.1444091796875e-05
+     },
+     "empty_assistant_turns_in_history": 0
+    },
+    {
+     "turn": 3,
+     "user": "What should I pack for that weather? Five items, one per line.",
+     "budget": 64,
+     "replay": {
+      "mode": "fresh",
+      "note": "",
+      "prompt_len": 277,
+      "prompt_sha256": "74f7942c637e62e68a499f69e2fe2e2a0d0168d828e450b18de0612388834f27",
+      "prompt_tail": [
+       791,
+       1500,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 6,
+        "positions": [
+         0,
+         26,
+         129,
+         150,
+         250,
+         270
+        ]
+       },
+       "im_end": {
+        "count": 5,
+        "positions": [
+         24,
+         127,
+         148,
+         248,
+         268
+        ]
+       },
+       "think": {
+        "count": 3,
+        "positions": [
+         29,
+         153,
+         273
+        ]
+       },
+       "think_close": {
+        "count": 3,
+        "positions": [
+         31,
+         155,
+         275
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        13512,
+        32,
+        248046,
+        248068,
+        16,
+        91062,
+        89882,
+        8915,
+        29108,
+        760,
+        57044,
+        1057,
+        38903,
+        6375,
+        4009,
+        49512
+       ],
+       "logits": [
+        20.21933364868164,
+        19.122522354125977,
+        18.69673728942871,
+        18.108592987060547,
+        17.068235397338867,
+        16.193727493286133,
+        16.1666259765625,
+        15.981420516967773,
+        15.904960632324219,
+        15.261911392211914,
+        15.17859172821045,
+        14.893665313720703,
+        14.82684326171875,
+        14.761651039123535,
+        14.607672691345215,
+        14.453330993652344
+       ],
+       "stop_logits": {
+        "248044": 7.611395359039307,
+        "248046": 18.69673728942871
+       }
+      },
+      "argmax": 13512,
+      "argmax_is_stop": false,
+      "margin": 1.5225963592529297,
+      "best_non_stop": 13512,
+      "generated_ids": [
+       13512,
+       4612,
+       25372
+      ],
+      "text": "Lightweight jacket",
+      "n_generated": 3,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 280,
+      "cache_offset_measured": 280,
+      "first_token_s": 8.480258374940604,
+      "active_bytes": 9251193516,
+      "footprint_bytes": 11380630576,
+      "peak_bytes": 12080548412
+     },
+     "incremental": {
+      "mode": "incremental",
+      "note": "",
+      "prompt_len": 29,
+      "prompt_sha256": "9be590e49322b3df5f66697c8bffcfcd7574f32abaf045af160aaea3f94e416f",
+      "prompt_tail": [
+       791,
+       1500,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 2,
+        "positions": [
+         2,
+         22
+        ]
+       },
+       "im_end": {
+        "count": 2,
+        "positions": [
+         0,
+         20
+        ]
+       },
+       "think": {
+        "count": 1,
+        "positions": [
+         25
+        ]
+       },
+       "think_close": {
+        "count": 1,
+        "positions": [
+         27
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        13512,
+        32,
+        248046,
+        248068,
+        16,
+        91062,
+        89882,
+        8915,
+        29108,
+        760,
+        57044,
+        1057,
+        38903,
+        6375,
+        4009,
+        49512
+       ],
+       "logits": [
+        20.21932601928711,
+        19.122512817382812,
+        18.69676971435547,
+        18.108562469482422,
+        17.068233489990234,
+        16.19371795654297,
+        16.166614532470703,
+        15.981427192687988,
+        15.904953002929688,
+        15.261905670166016,
+        15.178590774536133,
+        14.893654823303223,
+        14.826850891113281,
+        14.761636734008789,
+        14.607675552368164,
+        14.453313827514648
+       ],
+       "stop_logits": {
+        "248044": 7.611437797546387,
+        "248046": 18.69676971435547
+       }
+      },
+      "argmax": 13512,
+      "argmax_is_stop": false,
+      "margin": 1.5225563049316406,
+      "best_non_stop": 13512,
+      "generated_ids": [
+       13512,
+       4612,
+       25372
+      ],
+      "text": "Lightweight jacket",
+      "n_generated": 3,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 280,
+      "cache_offset_measured": 280,
+      "first_token_s": 2.275729708140716,
+      "active_bytes": 9057682092,
+      "footprint_bytes": 11193380208,
+      "peak_bytes": 11283966036
+     },
+     "reconstruction_equal_to_replay_prompt": true,
+     "reconstruction_len": 277,
+     "replay_vs_incremental_generated_equal": true,
+     "replay_vs_incremental_first_logits": {
+      "argmax_equal": true,
+      "common_top16": 16,
+      "max_abs_diff_common": 3.24249267578125e-05,
+      "stop_logit_abs_diff": 4.2438507080078125e-05
+     },
+     "empty_assistant_turns_in_history": 0
+    },
+    {
+     "turn": 4,
+     "user": "Which of those days needs an early start, and why? Two sentences.",
+     "budget": 64,
+     "replay": {
+      "mode": "fresh",
+      "note": "",
+      "prompt_len": 309,
+      "prompt_sha256": "552c8923d4a9a9740a982adba47f61853105dde1f7df2eeda89f72d4e427e72d",
+      "prompt_tail": [
+       8771,
+       22157,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 8,
+        "positions": [
+         129,
+         150,
+         250,
+         270,
+         282,
+         302
+        ]
+       },
+       "im_end": {
+        "count": 7,
+        "positions": [
+         127,
+         148,
+         248,
+         268,
+         280,
+         300
+        ]
+       },
+       "think": {
+        "count": 4,
+        "positions": [
+         29,
+         153,
+         273,
+         305
+        ]
+       },
+       "think_close": {
+        "count": 4,
+        "positions": [
+         31,
+         155,
+         275,
+         307
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        9857,
+        248046,
+        760,
+        46659,
+        248069,
+        248068,
+        248058,
+        2064,
+        5870,
+        19932,
+        32,
+        248045,
+        40,
+        1358,
+        47518,
+        1860
+       ],
+       "logits": [
+        23.479801177978516,
+        23.283130645751953,
+        19.625774383544922,
+        18.10519790649414,
+        15.997702598571777,
+        15.886115074157715,
+        15.809916496276855,
+        15.365439414978027,
+        15.25106430053711,
+        14.917129516601562,
+        14.42202377319336,
+        14.270528793334961,
+        14.237408638000488,
+        13.862955093383789,
+        13.859161376953125,
+        13.663043022155762
+       ],
+       "stop_logits": {
+        "248044": 12.141763687133789,
+        "248046": 23.283130645751953
+       }
+      },
+      "argmax": 9857,
+      "argmax_is_stop": false,
+      "margin": 0.1966705322265625,
+      "best_non_stop": 9857,
+      "generated_ids": [
+       9857
+      ],
+      "text": "Day",
+      "n_generated": 1,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 310,
+      "cache_offset_measured": 310,
+      "first_token_s": 9.028314291965216,
+      "active_bytes": 9283650220,
+      "footprint_bytes": 11312816189,
+      "peak_bytes": 12113054268
+     },
+     "incremental": {
+      "mode": "incremental",
+      "note": "",
+      "prompt_len": 29,
+      "prompt_sha256": "032370e34add68c1a1876451be7d6e0fbc28631283fab685755cb8e4f8b476a6",
+      "prompt_tail": [
+       8771,
+       22157,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 2,
+        "positions": [
+         2,
+         22
+        ]
+       },
+       "im_end": {
+        "count": 2,
+        "positions": [
+         0,
+         20
+        ]
+       },
+       "think": {
+        "count": 1,
+        "positions": [
+         25
+        ]
+       },
+       "think_close": {
+        "count": 1,
+        "positions": [
+         27
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        9857,
+        248046,
+        760,
+        46659,
+        248069,
+        248068,
+        248058,
+        2064,
+        5870,
+        19932,
+        32,
+        248045,
+        40,
+        1358,
+        47518,
+        1860
+       ],
+       "logits": [
+        23.47978973388672,
+        23.283100128173828,
+        19.625762939453125,
+        18.105207443237305,
+        15.997665405273438,
+        15.886115074157715,
+        15.809890747070312,
+        15.365429878234863,
+        15.251045227050781,
+        14.917140007019043,
+        14.422012329101562,
+        14.270523071289062,
+        14.237405776977539,
+        13.86296272277832,
+        13.859143257141113,
+        13.663034439086914
+       ],
+       "stop_logits": {
+        "248044": 12.141764640808105,
+        "248046": 23.283100128173828
+       }
+      },
+      "argmax": 9857,
+      "argmax_is_stop": false,
+      "margin": 0.19668960571289062,
+      "best_non_stop": 9857,
+      "generated_ids": [
+       9857
+      ],
+      "text": "Day",
+      "n_generated": 1,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 310,
+      "cache_offset_measured": 310,
+      "first_token_s": 2.2828002909664065,
+      "active_bytes": 9057682092,
+      "footprint_bytes": 11199829829,
+      "peak_bytes": 11279871904
+     },
+     "reconstruction_equal_to_replay_prompt": true,
+     "reconstruction_len": 309,
+     "replay_vs_incremental_generated_equal": true,
+     "replay_vs_incremental_first_logits": {
+      "argmax_equal": true,
+      "common_top16": 16,
+      "max_abs_diff_common": 3.719329833984375e-05,
+      "stop_logit_abs_diff": 3.0517578125e-05
+     },
+     "empty_assistant_turns_in_history": 0
+    },
+    {
+     "turn": 5,
+     "user": "Name one restaurant style I should try and one dish. One sentence.",
+     "budget": 48,
+     "replay": {
+      "mode": "fresh",
+      "note": "",
+      "prompt_len": 338,
+      "prompt_sha256": "adc958487e7477f62b90751c110cbb1d24a4de081f4cf7e366cbd966b9454337",
+      "prompt_tail": [
+       3648,
+       11316,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 10,
+        "positions": [
+         250,
+         270,
+         282,
+         302,
+         312,
+         331
+        ]
+       },
+       "im_end": {
+        "count": 9,
+        "positions": [
+         248,
+         268,
+         280,
+         300,
+         310,
+         329
+        ]
+       },
+       "think": {
+        "count": 5,
+        "positions": [
+         29,
+         153,
+         273,
+         305,
+         334
+        ]
+       },
+       "think_close": {
+        "count": 5,
+        "positions": [
+         31,
+         155,
+         275,
+         307,
+         336
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        248046,
+        20796,
+        248068,
+        32,
+        760,
+        40,
+        2523,
+        1485,
+        51,
+        623,
+        248058,
+        35,
+        81760,
+        47,
+        50,
+        25382
+       ],
+       "logits": [
+        23.81437873840332,
+        21.522727966308594,
+        18.9073486328125,
+        16.832660675048828,
+        16.447086334228516,
+        16.069049835205078,
+        15.479734420776367,
+        15.112070083618164,
+        14.522235870361328,
+        14.401290893554688,
+        14.197457313537598,
+        14.155000686645508,
+        14.128630638122559,
+        14.023353576660156,
+        13.859834671020508,
+        13.810989379882812
+       ],
+       "stop_logits": {
+        "248044": 11.034011840820312,
+        "248046": 23.81437873840332
+       }
+      },
+      "argmax": 248046,
+      "argmax_is_stop": true,
+      "margin": 2.2916507720947266,
+      "best_non_stop": 20796,
+      "generated_ids": [],
+      "text": "",
+      "n_generated": 0,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 338,
+      "cache_offset_measured": 338,
+      "first_token_s": 10.011538250138983,
+      "active_bytes": 9281077932,
+      "footprint_bytes": 11426185192,
+      "peak_bytes": 12113054268
+     },
+     "incremental": {
+      "mode": "incremental",
+      "note": "",
+      "prompt_len": 28,
+      "prompt_sha256": "f657ff88c6a229e1ab2d14dbbbda1a5ce3259f9580a7994b8cf491586e93176e",
+      "prompt_tail": [
+       3648,
+       11316,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 2,
+        "positions": [
+         2,
+         21
+        ]
+       },
+       "im_end": {
+        "count": 2,
+        "positions": [
+         0,
+         19
+        ]
+       },
+       "think": {
+        "count": 1,
+        "positions": [
+         24
+        ]
+       },
+       "think_close": {
+        "count": 1,
+        "positions": [
+         26
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        248046,
+        20796,
+        248068,
+        32,
+        760,
+        40,
+        2523,
+        1485,
+        51,
+        623,
+        248058,
+        35,
+        81760,
+        47,
+        50,
+        25382
+       ],
+       "logits": [
+        23.814407348632812,
+        21.522743225097656,
+        18.90740966796875,
+        16.832653045654297,
+        16.447097778320312,
+        16.069059371948242,
+        15.479736328125,
+        15.11208438873291,
+        14.522226333618164,
+        14.401288986206055,
+        14.197490692138672,
+        14.155008316040039,
+        14.128618240356445,
+        14.023329734802246,
+        13.859831809997559,
+        13.810989379882812
+       ],
+       "stop_logits": {
+        "248044": 11.034015655517578,
+        "248046": 23.814407348632812
+       }
+      },
+      "argmax": 248046,
+      "argmax_is_stop": true,
+      "margin": 2.2916641235351562,
+      "best_non_stop": 20796,
+      "generated_ids": [],
+      "text": "",
+      "n_generated": 0,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 338,
+      "cache_offset_measured": 338,
+      "first_token_s": 2.17049662489444,
+      "active_bytes": 9055109804,
+      "footprint_bytes": 11200475464,
+      "peak_bytes": 11281254188
+     },
+     "reconstruction_equal_to_replay_prompt": true,
+     "reconstruction_len": 338,
+     "replay_vs_incremental_generated_equal": true,
+     "replay_vs_incremental_first_logits": {
+      "argmax_equal": true,
+      "common_top16": 16,
+      "max_abs_diff_common": 6.103515625e-05,
+      "stop_logit_abs_diff": 2.86102294921875e-05
+     },
+     "empty_assistant_turns_in_history": 0,
+     "fused_first_logits_topk": {
+      "ids": [
+       248046,
+       20796,
+       248068,
+       32,
+       760,
+       40,
+       2523,
+       1485,
+       51,
+       623,
+       248058,
+       35,
+       81760,
+       47,
+       50,
+       25382
+      ],
+      "logits": [
+       23.814414978027344,
+       21.522743225097656,
+       18.907413482666016,
+       16.832656860351562,
+       16.44709014892578,
+       16.069061279296875,
+       15.479724884033203,
+       15.11208438873291,
+       14.522233009338379,
+       14.401284217834473,
+       14.197484970092773,
+       14.155004501342773,
+       14.128622055053711,
+       14.023326873779297,
+       13.859829902648926,
+       13.810985565185547
+      ],
+      "stop_logits": {
+       "248044": 11.034024238586426,
+       "248046": 23.814414978027344
+      }
+     },
+     "gemm_vs_fused_first_logits": {
+      "argmax_equal": true,
+      "common_top16": 16,
+      "max_abs_diff_common": 6.4849853515625e-05,
+      "stop_logit_abs_diff": 3.62396240234375e-05
+     },
+     "counterfactual_single_turn": {
+      "label": "COUNTERFACTUAL",
+      "argmax": 20796,
+      "argmax_is_stop": false,
+      "margin": 10.295633316040039,
+      "text": "Try the vibrant Peruvian style and savor a ceviche, which features fresh fish marinated in citrus with a tangy kick.",
+      "n_generated": 27,
+      "stop_reason": "stop_token"
+     }
+    },
+    {
+     "turn": 6,
+     "user": "Give me a two-line summary of the whole plan.",
+     "budget": 64,
+     "replay": {
+      "mode": "fresh",
+      "note": "",
+      "prompt_len": 363,
+      "prompt_sha256": "92e6f79353b6ff13561dffa0f3f407a0a8afb9ee8aa2f7b45acffc42810a3d39",
+      "prompt_tail": [
+       4220,
+       3019,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 12,
+        "positions": [
+         282,
+         302,
+         312,
+         331,
+         340,
+         356
+        ]
+       },
+       "im_end": {
+        "count": 11,
+        "positions": [
+         280,
+         300,
+         310,
+         329,
+         338,
+         354
+        ]
+       },
+       "think": {
+        "count": 6,
+        "positions": [
+         29,
+         153,
+         273,
+         305,
+         334,
+         359
+        ]
+       },
+       "think_close": {
+        "count": 6,
+        "positions": [
+         31,
+         155,
+         275,
+         307,
+         336,
+         361
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        248046,
+        32,
+        9857,
+        43,
+        760,
+        19041,
+        248068,
+        49537,
+        1919,
+        11280,
+        6528,
+        3020,
+        48320,
+        248058,
+        42498,
+        40
+       ],
+       "logits": [
+        23.575031280517578,
+        18.931720733642578,
+        18.17957878112793,
+        17.83781623840332,
+        17.782878875732422,
+        17.496091842651367,
+        16.94002342224121,
+        16.22343635559082,
+        15.686821937561035,
+        15.645463943481445,
+        14.532843589782715,
+        14.231033325195312,
+        13.9788818359375,
+        13.923151969909668,
+        13.64968490600586,
+        13.64666748046875
+       ],
+       "stop_logits": {
+        "248044": 8.229497909545898,
+        "248046": 23.575031280517578
+       }
+      },
+      "argmax": 248046,
+      "argmax_is_stop": true,
+      "margin": 4.643310546875,
+      "best_non_stop": 32,
+      "generated_ids": [],
+      "text": "",
+      "n_generated": 0,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 363,
+      "cache_offset_measured": 363,
+      "first_token_s": 10.048617416992784,
+      "active_bytes": 9472443052,
+      "footprint_bytes": 11617584360,
+      "peak_bytes": 12304419388
+     },
+     "incremental": {
+      "mode": "incremental",
+      "note": "",
+      "prompt_len": 25,
+      "prompt_sha256": "c3f86aeec219fe593329a830788c285bfae65ec5ac6d3df5550a8907af65e3e0",
+      "prompt_tail": [
+       4220,
+       3019,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 2,
+        "positions": [
+         2,
+         18
+        ]
+       },
+       "im_end": {
+        "count": 2,
+        "positions": [
+         0,
+         16
+        ]
+       },
+       "think": {
+        "count": 1,
+        "positions": [
+         21
+        ]
+       },
+       "think_close": {
+        "count": 1,
+        "positions": [
+         23
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        248046,
+        32,
+        9857,
+        43,
+        760,
+        19041,
+        248068,
+        49537,
+        1919,
+        11280,
+        6528,
+        3020,
+        48320,
+        248058,
+        42498,
+        40
+       ],
+       "logits": [
+        23.574996948242188,
+        18.931739807128906,
+        18.179576873779297,
+        17.83783721923828,
+        17.782880783081055,
+        17.496097564697266,
+        16.939998626708984,
+        16.223430633544922,
+        15.68682861328125,
+        15.645429611206055,
+        14.5328369140625,
+        14.231064796447754,
+        13.978887557983398,
+        13.923148155212402,
+        13.649679183959961,
+        13.64666748046875
+       ],
+       "stop_logits": {
+        "248044": 8.229515075683594,
+        "248046": 23.574996948242188
+       }
+      },
+      "argmax": 248046,
+      "argmax_is_stop": true,
+      "margin": 4.643257141113281,
+      "best_non_stop": 32,
+      "generated_ids": [],
+      "text": "",
+      "n_generated": 0,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 363,
+      "cache_offset_measured": 363,
+      "first_token_s": 2.100116582820192,
+      "active_bytes": 9248047788,
+      "footprint_bytes": 11377885320,
+      "peak_bytes": 11465069011
+     },
+     "reconstruction_equal_to_replay_prompt": true,
+     "reconstruction_len": 363,
+     "replay_vs_incremental_generated_equal": true,
+     "replay_vs_incremental_first_logits": {
+      "argmax_equal": true,
+      "common_top16": 16,
+      "max_abs_diff_common": 3.4332275390625e-05,
+      "stop_logit_abs_diff": 3.4332275390625e-05
+     },
+     "empty_assistant_turns_in_history": 1,
+     "fused_first_logits_topk": {
+      "ids": [
+       248046,
+       32,
+       9857,
+       43,
+       760,
+       19041,
+       248068,
+       49537,
+       1919,
+       11280,
+       6528,
+       3020,
+       48320,
+       248058,
+       42498,
+       40
+      ],
+      "logits": [
+       23.574993133544922,
+       18.931739807128906,
+       18.179576873779297,
+       17.837825775146484,
+       17.78287124633789,
+       17.496112823486328,
+       16.94000244140625,
+       16.223438262939453,
+       15.6868257522583,
+       15.645454406738281,
+       14.532845497131348,
+       14.231058120727539,
+       13.97889232635498,
+       13.923145294189453,
+       13.649678230285645,
+       13.646663665771484
+      ],
+      "stop_logits": {
+       "248044": 8.229493141174316,
+       "248046": 23.574993133544922
+      }
+     },
+     "gemm_vs_fused_first_logits": {
+      "argmax_equal": true,
+      "common_top16": 16,
+      "max_abs_diff_common": 3.814697265625e-05,
+      "stop_logit_abs_diff": 3.814697265625e-05
+     },
+     "counterfactual_single_turn": {
+      "label": "COUNTERFACTUAL",
+      "argmax": 760,
+      "argmax_is_stop": false,
+      "margin": 10.470724105834961,
+      "text": "The plan aims to achieve the stated objective through a series of coordinated steps.\nIt involves executing these steps sequentially to ensure success and meet the final goal.",
+      "n_generated": 31,
+      "stop_reason": "stop_token"
+     },
+     "counterfactual_empties_removed": {
+      "label": "COUNTERFACTUAL",
+      "removed": 1,
+      "prompt_len": 354,
+      "argmax": 248046,
+      "argmax_is_stop": true,
+      "margin": 2.7144031524658203,
+      "text": "",
+      "n_generated": 0,
+      "stop_reason": "stop_token"
+     }
+    },
+    {
+     "turn": 7,
+     "user": "Translate that summary into French.",
+     "budget": 96,
+     "replay": {
+      "mode": "fresh",
+      "note": "",
+      "prompt_len": 383,
+      "prompt_sha256": "563b513b706b568c86d69b42b7ca30464ce0b753eeded428d0927b9bc3073799",
+      "prompt_tail": [
+       1083,
+       8323,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 14,
+        "positions": [
+         312,
+         331,
+         340,
+         356,
+         365,
+         376
+        ]
+       },
+       "im_end": {
+        "count": 13,
+        "positions": [
+         310,
+         329,
+         338,
+         354,
+         363,
+         374
+        ]
+       },
+       "think": {
+        "count": 7,
+        "positions": [
+         153,
+         273,
+         305,
+         334,
+         359,
+         379
+        ]
+       },
+       "think_close": {
+        "count": 7,
+        "positions": [
+         155,
+         275,
+         307,
+         336,
+         361,
+         381
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        248046,
+        248068,
+        41,
+        1358,
+        248058,
+        248069,
+        248045,
+        89263,
+        28783,
+        212747,
+        26623,
+        1237,
+        49537,
+        241649,
+        2229,
+        51
+       ],
+       "logits": [
+        26.345205307006836,
+        16.381729125976562,
+        15.535252571105957,
+        14.995213508605957,
+        14.882831573486328,
+        13.718056678771973,
+        13.235831260681152,
+        12.74368953704834,
+        12.716439247131348,
+        12.296135902404785,
+        12.221938133239746,
+        12.039407730102539,
+        11.984912872314453,
+        11.799723625183105,
+        11.753826141357422,
+        11.710714340209961
+       ],
+       "stop_logits": {
+        "248044": 10.431581497192383,
+        "248046": 26.345205307006836
+       }
+      },
+      "argmax": 248046,
+      "argmax_is_stop": true,
+      "margin": 9.963476181030273,
+      "best_non_stop": 248068,
+      "generated_ids": [],
+      "text": "",
+      "n_generated": 0,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 383,
+      "cache_offset_measured": 383,
+      "first_token_s": 10.387666292022914,
+      "active_bytes": 9696314036,
+      "footprint_bytes": 11843469956,
+      "peak_bytes": 12528290364
+     },
+     "incremental": {
+      "mode": "incremental",
+      "note": "",
+      "prompt_len": 20,
+      "prompt_sha256": "d4b65f7b3349d5335cbfcaaa9c03571f84c3e59bff1fe64334040b663ed43d89",
+      "prompt_tail": [
+       1083,
+       8323,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 2,
+        "positions": [
+         2,
+         13
+        ]
+       },
+       "im_end": {
+        "count": 2,
+        "positions": [
+         0,
+         11
+        ]
+       },
+       "think": {
+        "count": 1,
+        "positions": [
+         16
+        ]
+       },
+       "think_close": {
+        "count": 1,
+        "positions": [
+         18
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        248046,
+        248068,
+        41,
+        1358,
+        248058,
+        248069,
+        248045,
+        89263,
+        28783,
+        212747,
+        26623,
+        1237,
+        49537,
+        241649,
+        2229,
+        51
+       ],
+       "logits": [
+        26.345169067382812,
+        16.381710052490234,
+        15.535223960876465,
+        14.995193481445312,
+        14.882835388183594,
+        13.718042373657227,
+        13.235787391662598,
+        12.743682861328125,
+        12.716443061828613,
+        12.296106338500977,
+        12.221948623657227,
+        12.039422988891602,
+        11.984872817993164,
+        11.799727439880371,
+        11.753847122192383,
+        11.710721969604492
+       ],
+       "stop_logits": {
+        "248044": 10.431585311889648,
+        "248046": 26.345169067382812
+       }
+      },
+      "argmax": 248046,
+      "argmax_is_stop": true,
+      "margin": 9.963459014892578,
+      "best_non_stop": 248068,
+      "generated_ids": [],
+      "text": "",
+      "n_generated": 0,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 383,
+      "cache_offset_measured": 383,
+      "first_token_s": 1.974132667062804,
+      "active_bytes": 9471918764,
+      "footprint_bytes": 11565783112,
+      "peak_bytes": 11674085448
+     },
+     "reconstruction_equal_to_replay_prompt": true,
+     "reconstruction_len": 383,
+     "replay_vs_incremental_generated_equal": true,
+     "replay_vs_incremental_first_logits": {
+      "argmax_equal": true,
+      "common_top16": 16,
+      "max_abs_diff_common": 4.38690185546875e-05,
+      "stop_logit_abs_diff": 3.62396240234375e-05
+     },
+     "empty_assistant_turns_in_history": 2,
+     "fused_first_logits_topk": {
+      "ids": [
+       248046,
+       248068,
+       41,
+       1358,
+       248058,
+       248069,
+       248045,
+       89263,
+       28783,
+       212747,
+       26623,
+       1237,
+       49537,
+       241649,
+       2229,
+       51
+      ],
+      "logits": [
+       26.345203399658203,
+       16.381736755371094,
+       15.535236358642578,
+       14.995226860046387,
+       14.88284683227539,
+       13.718057632446289,
+       13.235827445983887,
+       12.743669509887695,
+       12.716445922851562,
+       12.29610824584961,
+       12.221952438354492,
+       12.039411544799805,
+       11.984882354736328,
+       11.799732208251953,
+       11.75384521484375,
+       11.710708618164062
+      ],
+      "stop_logits": {
+       "248044": 10.431604385375977,
+       "248046": 26.345203399658203
+      }
+     },
+     "gemm_vs_fused_first_logits": {
+      "argmax_equal": true,
+      "common_top16": 16,
+      "max_abs_diff_common": 3.0517578125e-05,
+      "stop_logit_abs_diff": 2.288818359375e-05
+     },
+     "counterfactual_single_turn": {
+      "label": "COUNTERFACTUAL",
+      "argmax": 40,
+      "argmax_is_stop": false,
+      "margin": 11.896328926086426,
+      "text": "I'd be happy to help! However, I don't see any summary in your message. Could you please provide the text you'd like translated?",
+      "n_generated": 30,
+      "stop_reason": "stop_token"
+     },
+     "counterfactual_empties_removed": {
+      "label": "COUNTERFACTUAL",
+      "removed": 2,
+      "prompt_len": 365,
+      "argmax": 9857,
+      "argmax_is_stop": false,
+      "margin": 0.15990447998046875,
+      "text": "Day 2 needs an early start because Sintra is located about 30 minutes away from",
+      "n_generated": 19,
+      "stop_reason": "stop_token"
+     }
+    },
+    {
+     "turn": 8,
+     "user": "Thanks. Reply with just: safe travels.",
+     "budget": 16,
+     "replay": {
+      "mode": "fresh",
+      "note": "",
+      "prompt_len": 406,
+      "prompt_sha256": "4bf78a85e1b805ba8791f6b61d4a8692162b1963a8231f6256e91b7e934feb81",
+      "prompt_tail": [
+       5902,
+       33060,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 16,
+        "positions": [
+         340,
+         356,
+         365,
+         376,
+         385,
+         399
+        ]
+       },
+       "im_end": {
+        "count": 15,
+        "positions": [
+         338,
+         354,
+         363,
+         374,
+         383,
+         397
+        ]
+       },
+       "think": {
+        "count": 8,
+        "positions": [
+         273,
+         305,
+         334,
+         359,
+         379,
+         402
+        ]
+       },
+       "think_close": {
+        "count": 8,
+        "positions": [
+         275,
+         307,
+         336,
+         361,
+         381,
+         404
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        18112,
+        5902,
+        248046,
+        24845,
+        21600,
+        32939,
+        56024,
+        40,
+        248058,
+        53269,
+        51105,
+        80898,
+        218940,
+        760,
+        38493,
+        96520
+       ],
+       "logits": [
+        20.593120574951172,
+        18.741790771484375,
+        18.078479766845703,
+        17.930208206176758,
+        13.857860565185547,
+        13.728654861450195,
+        13.059362411499023,
+        12.763386726379395,
+        12.514296531677246,
+        12.473043441772461,
+        12.26692008972168,
+        11.739717483520508,
+        11.691429138183594,
+        11.436820030212402,
+        10.993285179138184,
+        10.871397018432617
+       ],
+       "stop_logits": {
+        "248044": 8.129060745239258,
+        "248046": 18.078479766845703
+       }
+      },
+      "argmax": 18112,
+      "argmax_is_stop": false,
+      "margin": 2.5146408081054688,
+      "best_non_stop": 18112,
+      "generated_ids": [
+       18112,
+       33060
+      ],
+      "text": "safe travels",
+      "n_generated": 2,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 408,
+      "cache_offset_measured": 408,
+      "first_token_s": 11.412582125049084,
+      "active_bytes": 9700459180,
+      "footprint_bytes": 11846062428,
+      "peak_bytes": 12529863228
+     },
+     "incremental": {
+      "mode": "incremental",
+      "note": "",
+      "prompt_len": 23,
+      "prompt_sha256": "8cfc7e3d625c49e66575674c57a5bb2cd29085c12c240d4145465b9611362f8d",
+      "prompt_tail": [
+       5902,
+       33060,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 2,
+        "positions": [
+         2,
+         16
+        ]
+       },
+       "im_end": {
+        "count": 2,
+        "positions": [
+         0,
+         14
+        ]
+       },
+       "think": {
+        "count": 1,
+        "positions": [
+         19
+        ]
+       },
+       "think_close": {
+        "count": 1,
+        "positions": [
+         21
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        18112,
+        5902,
+        248046,
+        24845,
+        21600,
+        32939,
+        56024,
+        40,
+        248058,
+        53269,
+        51105,
+        80898,
+        218940,
+        760,
+        38493,
+        96520
+       ],
+       "logits": [
+        20.593093872070312,
+        18.741832733154297,
+        18.07843589782715,
+        17.93017578125,
+        13.857892990112305,
+        13.7286376953125,
+        13.059325218200684,
+        12.763386726379395,
+        12.514267921447754,
+        12.472999572753906,
+        12.266899108886719,
+        11.73968505859375,
+        11.691391944885254,
+        11.436786651611328,
+        10.993234634399414,
+        10.871360778808594
+       ],
+       "stop_logits": {
+        "248044": 8.129050254821777,
+        "248046": 18.07843589782715
+       }
+      },
+      "argmax": 18112,
+      "argmax_is_stop": false,
+      "margin": 2.514657974243164,
+      "best_non_stop": 18112,
+      "generated_ids": [
+       18112,
+       33060
+      ],
+      "text": "safe travels",
+      "n_generated": 2,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 408,
+      "cache_offset_measured": 408,
+      "first_token_s": 2.0401618748437613,
+      "active_bytes": 9476063916,
+      "footprint_bytes": 11621017692,
+      "peak_bytes": 11685309818
+     },
+     "reconstruction_equal_to_replay_prompt": true,
+     "reconstruction_len": 406,
+     "replay_vs_incremental_generated_equal": true,
+     "replay_vs_incremental_first_logits": {
+      "argmax_equal": true,
+      "common_top16": 16,
+      "max_abs_diff_common": 5.054473876953125e-05,
+      "stop_logit_abs_diff": 4.38690185546875e-05
+     },
+     "empty_assistant_turns_in_history": 3
+    }
+   ]
+  },
+  {
+   "name": "debug",
+   "thinking": false,
+   "turns": [
+    {
+     "turn": 1,
+     "user": "My Python script prints 'KeyError: user_id' when reading a JSON file. What are the three most likely causes? One line each.",
+     "budget": 96,
+     "replay": {
+      "mode": "fresh",
+      "note": "",
+      "prompt_len": 41,
+      "prompt_sha256": "af721861e8c0527c054fcefcfbb2bd27030a4711fe9a1b9f5062b8e36d8518d4",
+      "prompt_tail": [
+       1500,
+       1754,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 2,
+        "positions": [
+         0,
+         34
+        ]
+       },
+       "im_end": {
+        "count": 1,
+        "positions": [
+         32
+        ]
+       },
+       "think": {
+        "count": 1,
+        "positions": [
+         37
+        ]
+       },
+       "think_close": {
+        "count": 1,
+        "positions": [
+         39
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        16,
+        760,
+        12,
+        1206,
+        8160,
+        62262,
+        37405,
+        32,
+        12934,
+        4350,
+        332,
+        2064,
+        9,
+        27775,
+        1536,
+        2592
+       ],
+       "logits": [
+        25.17251968383789,
+        22.26658058166504,
+        18.924802780151367,
+        16.848731994628906,
+        16.132915496826172,
+        15.385807037353516,
+        15.197731018066406,
+        15.107797622680664,
+        15.082219123840332,
+        15.035417556762695,
+        14.980188369750977,
+        14.968796730041504,
+        14.890970230102539,
+        14.862924575805664,
+        14.773776054382324,
+        14.75338363647461
+       ],
+       "stop_logits": {
+        "248044": 3.21537446975708,
+        "248046": 12.397668838500977
+       }
+      },
+      "argmax": 16,
+      "argmax_is_stop": false,
+      "margin": 12.774850845336914,
+      "best_non_stop": 16,
+      "generated_ids": [
+       16,
+       13,
+       561,
+       4566,
+       999,
+       5435,
+       264,
+       23283,
+       5759,
+       1332,
+       279,
+       1328,
+       369,
+       524,
+       506,
+       279,
+       1844,
+       2119,
+       11,
+       21998,
+       18539,
+       2528,
+       13,
+       198,
+       17,
+       13,
+       561,
+       4566,
+       999,
+       369,
+       76531,
+       466,
+       57739,
+       11,
+       13969,
+       279,
+       6518,
+       310,
+       460,
+       449,
+       1576,
+       1973,
+       279,
+       3481,
+       1328,
+       13,
+       198,
+       18,
+       13,
+       561,
+       1328,
+       803,
+       303,
+       279,
+       1970,
+       1503,
+       524,
+       2353,
+       279,
+       4880,
+       1328,
+       303,
+       279,
+       4566,
+       4016,
+       310,
+       1105,
+       25598,
+       466,
+       41019,
+       11461,
+       13
+      ],
+      "text": "1. The JSON file contains a nested structure where the key is not at the top level, requiring deeper access.\n2. The JSON file is malformed or truncated, causing the parser to return an object without the expected key.\n3. The key name in the code does not match the actual key in the JSON due to case sensitivity or spelling differences.",
+      "n_generated": 72,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 113,
+      "cache_offset_measured": 113,
+      "first_token_s": 2.4297448340803385,
+      "active_bytes": 9443639980,
+      "footprint_bytes": 11466668644,
+      "peak_bytes": 11883105740
+     },
+     "incremental": {
+      "mode": "fresh",
+      "note": "",
+      "prompt_len": 41,
+      "prompt_sha256": "af721861e8c0527c054fcefcfbb2bd27030a4711fe9a1b9f5062b8e36d8518d4",
+      "prompt_tail": [
+       1500,
+       1754,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 2,
+        "positions": [
+         0,
+         34
+        ]
+       },
+       "im_end": {
+        "count": 1,
+        "positions": [
+         32
+        ]
+       },
+       "think": {
+        "count": 1,
+        "positions": [
+         37
+        ]
+       },
+       "think_close": {
+        "count": 1,
+        "positions": [
+         39
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        16,
+        760,
+        12,
+        1206,
+        8160,
+        62262,
+        37405,
+        32,
+        12934,
+        4350,
+        332,
+        2064,
+        9,
+        27775,
+        1536,
+        2592
+       ],
+       "logits": [
+        25.17251968383789,
+        22.26658058166504,
+        18.924802780151367,
+        16.848731994628906,
+        16.132915496826172,
+        15.385807037353516,
+        15.197731018066406,
+        15.107797622680664,
+        15.082219123840332,
+        15.035417556762695,
+        14.980188369750977,
+        14.968796730041504,
+        14.890970230102539,
+        14.862924575805664,
+        14.773776054382324,
+        14.75338363647461
+       ],
+       "stop_logits": {
+        "248044": 3.21537446975708,
+        "248046": 12.397668838500977
+       }
+      },
+      "argmax": 16,
+      "argmax_is_stop": false,
+      "margin": 12.774850845336914,
+      "best_non_stop": 16,
+      "generated_ids": [
+       16,
+       13,
+       561,
+       4566,
+       999,
+       5435,
+       264,
+       23283,
+       5759,
+       1332,
+       279,
+       1328,
+       369,
+       524,
+       506,
+       279,
+       1844,
+       2119,
+       11,
+       21998,
+       18539,
+       2528,
+       13,
+       198,
+       17,
+       13,
+       561,
+       4566,
+       999,
+       369,
+       76531,
+       466,
+       57739,
+       11,
+       13969,
+       279,
+       6518,
+       310,
+       460,
+       449,
+       1576,
+       1973,
+       279,
+       3481,
+       1328,
+       13,
+       198,
+       18,
+       13,
+       561,
+       1328,
+       803,
+       303,
+       279,
+       1970,
+       1503,
+       524,
+       2353,
+       279,
+       4880,
+       1328,
+       303,
+       279,
+       4566,
+       4016,
+       310,
+       1105,
+       25598,
+       466,
+       41019,
+       11461,
+       13
+      ],
+      "text": "1. The JSON file contains a nested structure where the key is not at the top level, requiring deeper access.\n2. The JSON file is malformed or truncated, causing the parser to return an object without the expected key.\n3. The key name in the code does not match the actual key in the JSON due to case sensitivity or spelling differences.",
+      "n_generated": 72,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 113,
+      "cache_offset_measured": 113,
+      "first_token_s": 2.4331499999389052,
+      "active_bytes": 9443639980,
+      "footprint_bytes": 11466537572,
+      "peak_bytes": 11882712524
+     },
+     "reconstruction_equal_to_replay_prompt": true,
+     "reconstruction_len": 41,
+     "replay_vs_incremental_generated_equal": true,
+     "replay_vs_incremental_first_logits": {
+      "argmax_equal": true,
+      "common_top16": 16,
+      "max_abs_diff_common": 0.0,
+      "stop_logit_abs_diff": 0.0
+     },
+     "empty_assistant_turns_in_history": 0
+    },
+    {
+     "turn": 2,
+     "user": "The key exists but is spelled 'userId'. What is the smallest fix? Show one line of code.",
+     "budget": 64,
+     "replay": {
+      "mode": "fresh",
+      "note": "",
+      "prompt_len": 148,
+      "prompt_sha256": "7e2c2b8e85493235704351a0258d4bc993e2c3b21476a76f893df9b6f18bcfdd",
+      "prompt_tail": [
+       314,
+       1970,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 4,
+        "positions": [
+         0,
+         34,
+         115,
+         141
+        ]
+       },
+       "im_end": {
+        "count": 3,
+        "positions": [
+         32,
+         113,
+         139
+        ]
+       },
+       "think": {
+        "count": 2,
+        "positions": [
+         37,
+         144
+        ]
+       },
+       "think_close": {
+        "count": 2,
+        "positions": [
+         39,
+         146
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        71093,
+        673,
+        63,
+        846,
+        22386,
+        3936,
+        67,
+        1302,
+        5865,
+        760,
+        9947,
+        25128,
+        16,
+        2329,
+        331,
+        2592
+       ],
+       "logits": [
+        19.815723419189453,
+        19.5303897857666,
+        19.229270935058594,
+        19.118595123291016,
+        18.932342529296875,
+        18.372066497802734,
+        17.416934967041016,
+        17.387001037597656,
+        17.323261260986328,
+        17.04250717163086,
+        16.381366729736328,
+        16.010780334472656,
+        15.899908065795898,
+        15.756563186645508,
+        15.675285339355469,
+        15.614238739013672
+       ],
+       "stop_logits": {
+        "248044": 5.427870273590088,
+        "248046": 13.537086486816406
+       }
+      },
+      "argmax": 71093,
+      "argmax_is_stop": false,
+      "margin": 6.278636932373047,
+      "best_non_stop": 71093,
+      "generated_ids": [
+       71093,
+       12305,
+       198,
+       673,
+       659,
+       13119,
+       642,
+       198,
+       71093
+      ],
+      "text": "```python\ndata['userId']\n```",
+      "n_generated": 9,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 157,
+      "cache_offset_measured": 157,
+      "first_token_s": 5.058922374853864,
+      "active_bytes": 9636004524,
+      "footprint_bytes": 11778903920,
+      "peak_bytes": 12301092664
+     },
+     "incremental": {
+      "mode": "incremental",
+      "note": "",
+      "prompt_len": 35,
+      "prompt_sha256": "60b0936b683242b86d63fa90a8e22fe86d85e9399b8901925fffb28610a43d78",
+      "prompt_tail": [
+       314,
+       1970,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 2,
+        "positions": [
+         2,
+         28
+        ]
+       },
+       "im_end": {
+        "count": 2,
+        "positions": [
+         0,
+         26
+        ]
+       },
+       "think": {
+        "count": 1,
+        "positions": [
+         31
+        ]
+       },
+       "think_close": {
+        "count": 1,
+        "positions": [
+         33
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        71093,
+        673,
+        63,
+        846,
+        22386,
+        3936,
+        67,
+        1302,
+        5865,
+        760,
+        9947,
+        25128,
+        16,
+        2329,
+        331,
+        2592
+       ],
+       "logits": [
+        19.815711975097656,
+        19.53038215637207,
+        19.229280471801758,
+        19.11858558654785,
+        18.93236541748047,
+        18.372051239013672,
+        17.416927337646484,
+        17.387004852294922,
+        17.32326889038086,
+        17.042476654052734,
+        16.381376266479492,
+        16.010787963867188,
+        15.899909973144531,
+        15.756576538085938,
+        15.675277709960938,
+        15.614227294921875
+       ],
+       "stop_logits": {
+        "248044": 5.42791748046875,
+        "248046": 13.537124633789062
+       }
+      },
+      "argmax": 71093,
+      "argmax_is_stop": false,
+      "margin": 6.278587341308594,
+      "best_non_stop": 71093,
+      "generated_ids": [
+       71093,
+       12305,
+       198,
+       673,
+       659,
+       13119,
+       642,
+       198,
+       71093
+      ],
+      "text": "```python\ndata['userId']\n```",
+      "n_generated": 9,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 157,
+      "cache_offset_measured": 157,
+      "first_token_s": 2.4477410421241075,
+      "active_bytes": 9443558060,
+      "footprint_bytes": 11385671536,
+      "peak_bytes": 12098413900
+     },
+     "reconstruction_equal_to_replay_prompt": true,
+     "reconstruction_len": 148,
+     "replay_vs_incremental_generated_equal": true,
+     "replay_vs_incremental_first_logits": {
+      "argmax_equal": true,
+      "common_top16": 16,
+      "max_abs_diff_common": 3.0517578125e-05,
+      "stop_logit_abs_diff": 4.7206878662109375e-05
+     },
+     "empty_assistant_turns_in_history": 0
+    },
+    {
+     "turn": 3,
+     "user": "How would I make the code tolerate both spellings? Short snippet.",
+     "budget": 96,
+     "replay": {
+      "mode": "fresh",
+      "note": "",
+      "prompt_len": 185,
+      "prompt_sha256": "886426e6974afcbe3e313e7cf6c0e34248ee2c573d99c110ed61cac2c6ae838a",
+      "prompt_tail": [
+       10382,
+       41643,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 6,
+        "positions": [
+         0,
+         34,
+         115,
+         141,
+         159,
+         178
+        ]
+       },
+       "im_end": {
+        "count": 5,
+        "positions": [
+         32,
+         113,
+         139,
+         157,
+         176
+        ]
+       },
+       "think": {
+        "count": 3,
+        "positions": [
+         37,
+         144,
+         181
+        ]
+       },
+       "think_close": {
+        "count": 3,
+        "positions": [
+         39,
+         146,
+         183
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        71093,
+        9947,
+        248046,
+        760,
+        673,
+        8160,
+        1206,
+        12305,
+        248058,
+        784,
+        63,
+        331,
+        3840,
+        16,
+        32,
+        29292
+       ],
+       "logits": [
+        23.080753326416016,
+        18.326810836791992,
+        18.326675415039062,
+        16.855716705322266,
+        16.13779067993164,
+        15.88477897644043,
+        15.783330917358398,
+        15.022981643676758,
+        15.010979652404785,
+        14.966382026672363,
+        14.957696914672852,
+        14.84854507446289,
+        14.806516647338867,
+        14.80321216583252,
+        14.77815055847168,
+        14.717199325561523
+       ],
+       "stop_logits": {
+        "248044": 8.649587631225586,
+        "248046": 18.326675415039062
+       }
+      },
+      "argmax": 71093,
+      "argmax_is_stop": false,
+      "margin": 4.754077911376953,
+      "best_non_stop": 71093,
+      "generated_ids": [
+       71093,
+       12305,
+       198,
+       846,
+       816,
+       283,
+       795,
+       652,
+       482,
+       846,
+       816,
+       504,
+       795,
+       652,
+       482,
+       13119,
+       3661,
+       198,
+       71093
+      ],
+      "text": "```python\nuser_id = data.get('user_id', data.get('userId'))\n```",
+      "n_generated": 19,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 204,
+      "cache_offset_measured": 204,
+      "first_token_s": 5.530050582950935,
+      "active_bytes": 9635971756,
+      "footprint_bytes": 11780804956,
+      "peak_bytes": 12390991968
+     },
+     "incremental": {
+      "mode": "incremental",
+      "note": "",
+      "prompt_len": 28,
+      "prompt_sha256": "3a3a2708b62ade76dd4a6aa6d02e0b54bda9b713ea799c6165e662a88a3ac8b6",
+      "prompt_tail": [
+       10382,
+       41643,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 2,
+        "positions": [
+         2,
+         21
+        ]
+       },
+       "im_end": {
+        "count": 2,
+        "positions": [
+         0,
+         19
+        ]
+       },
+       "think": {
+        "count": 1,
+        "positions": [
+         24
+        ]
+       },
+       "think_close": {
+        "count": 1,
+        "positions": [
+         26
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        71093,
+        9947,
+        248046,
+        760,
+        673,
+        8160,
+        1206,
+        12305,
+        248058,
+        784,
+        63,
+        331,
+        3840,
+        16,
+        32,
+        29292
+       ],
+       "logits": [
+        23.080778121948242,
+        18.326828002929688,
+        18.32667350769043,
+        16.8557071685791,
+        16.137775421142578,
+        15.884778022766113,
+        15.783330917358398,
+        15.022980690002441,
+        15.010970115661621,
+        14.966386795043945,
+        14.95768928527832,
+        14.84854507446289,
+        14.806510925292969,
+        14.803203582763672,
+        14.778155326843262,
+        14.717211723327637
+       ],
+       "stop_logits": {
+        "248044": 8.649596214294434,
+        "248046": 18.32667350769043
+       }
+      },
+      "argmax": 71093,
+      "argmax_is_stop": false,
+      "margin": 4.7541046142578125,
+      "best_non_stop": 71093,
+      "generated_ids": [
+       71093,
+       12305,
+       198,
+       846,
+       816,
+       283,
+       795,
+       652,
+       482,
+       846,
+       816,
+       504,
+       795,
+       652,
+       482,
+       13119,
+       3661,
+       198,
+       71093
+      ],
+      "text": "```python\nuser_id = data.get('user_id', data.get('userId'))\n```",
+      "n_generated": 19,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 204,
+      "cache_offset_measured": 204,
+      "first_token_s": 2.210735083092004,
+      "active_bytes": 9443623596,
+      "footprint_bytes": 11588398428,
+      "peak_bytes": 11666744800
+     },
+     "reconstruction_equal_to_replay_prompt": true,
+     "reconstruction_len": 185,
+     "replay_vs_incremental_generated_equal": true,
+     "replay_vs_incremental_first_logits": {
+      "argmax_equal": true,
+      "common_top16": 16,
+      "max_abs_diff_common": 2.47955322265625e-05,
+      "stop_logit_abs_diff": 8.58306884765625e-06
+     },
+     "empty_assistant_turns_in_history": 0
+    },
+    {
+     "turn": 4,
+     "user": "Should I log a warning when the old spelling is used? One sentence.",
+     "budget": 48,
+     "replay": {
+      "mode": "fresh",
+      "note": "",
+      "prompt_len": 233,
+      "prompt_sha256": "f2a8395036f4f6e7a9c182ce10f6d75b4ce4f2b6ae408c9573efe0b1ff778289",
+      "prompt_tail": [
+       3648,
+       11316,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 8,
+        "positions": [
+         115,
+         141,
+         159,
+         178,
+         206,
+         226
+        ]
+       },
+       "im_end": {
+        "count": 7,
+        "positions": [
+         113,
+         139,
+         157,
+         176,
+         204,
+         224
+        ]
+       },
+       "think": {
+        "count": 4,
+        "positions": [
+         37,
+         144,
+         181,
+         229
+        ]
+       },
+       "think_close": {
+        "count": 4,
+        "positions": [
+         39,
+         146,
+         183,
+         231
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        9175,
+        248046,
+        2665,
+        7179,
+        248068,
+        9405,
+        248058,
+        2064,
+        9542,
+        2132,
+        7081,
+        32,
+        248069,
+        760,
+        1358,
+        33430
+       ],
+       "logits": [
+        22.480335235595703,
+        22.451343536376953,
+        17.99659538269043,
+        16.495803833007812,
+        14.987519264221191,
+        14.969352722167969,
+        14.949478149414062,
+        14.544472694396973,
+        14.475540161132812,
+        14.049747467041016,
+        13.283817291259766,
+        13.211730003356934,
+        13.10804557800293,
+        13.046924591064453,
+        12.973857879638672,
+        12.943377494812012
+       ],
+       "stop_logits": {
+        "248044": 12.012258529663086,
+        "248046": 22.451343536376953
+       }
+      },
+      "argmax": 9175,
+      "argmax_is_stop": false,
+      "margin": 0.02899169921875,
+      "best_non_stop": 9175,
+      "generated_ids": [
+       9175,
+       11,
+       8132,
+       264,
+       9663,
+       8346,
+       3627,
+       18989,
+       795,
+       4562,
+       1973,
+       43957,
+       279,
+       3638,
+       13
+      ],
+      "text": "Yes, logging a warning helps track legacy data issues without crashing the application.",
+      "n_generated": 15,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 248,
+      "cache_offset_measured": 248,
+      "first_token_s": 6.728385458001867,
+      "active_bytes": 9636037292,
+      "footprint_bytes": 11781607772,
+      "peak_bytes": 12425464204
+     },
+     "incremental": {
+      "mode": "incremental",
+      "note": "",
+      "prompt_len": 29,
+      "prompt_sha256": "cbdc61e4433bdae1508ec330eef896d8fd324467e698f350be8542b13c849d57",
+      "prompt_tail": [
+       3648,
+       11316,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 2,
+        "positions": [
+         2,
+         22
+        ]
+       },
+       "im_end": {
+        "count": 2,
+        "positions": [
+         0,
+         20
+        ]
+       },
+       "think": {
+        "count": 1,
+        "positions": [
+         25
+        ]
+       },
+       "think_close": {
+        "count": 1,
+        "positions": [
+         27
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        9175,
+        248046,
+        2665,
+        7179,
+        248068,
+        9405,
+        248058,
+        2064,
+        9542,
+        2132,
+        7081,
+        32,
+        248069,
+        760,
+        1358,
+        33430
+       ],
+       "logits": [
+        22.480356216430664,
+        22.45134735107422,
+        17.996604919433594,
+        16.495807647705078,
+        14.987516403198242,
+        14.96937370300293,
+        14.949481964111328,
+        14.544483184814453,
+        14.475555419921875,
+        14.049753189086914,
+        13.283817291259766,
+        13.211749076843262,
+        13.10801887512207,
+        13.046921730041504,
+        12.973859786987305,
+        12.94337272644043
+       ],
+       "stop_logits": {
+        "248044": 12.0122652053833,
+        "248046": 22.45134735107422
+       }
+      },
+      "argmax": 9175,
+      "argmax_is_stop": false,
+      "margin": 0.029008865356445312,
+      "best_non_stop": 9175,
+      "generated_ids": [
+       9175,
+       11,
+       8132,
+       264,
+       9663,
+       8346,
+       3627,
+       18989,
+       795,
+       4562,
+       1973,
+       43957,
+       279,
+       3638,
+       13
+      ],
+      "text": "Yes, logging a warning helps track legacy data issues without crashing the application.",
+      "n_generated": 15,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 248,
+      "cache_offset_measured": 248,
+      "first_token_s": 2.322941750055179,
+      "active_bytes": 9443639980,
+      "footprint_bytes": 11588853724,
+      "peak_bytes": 11665533516
+     },
+     "reconstruction_equal_to_replay_prompt": true,
+     "reconstruction_len": 233,
+     "replay_vs_incremental_generated_equal": true,
+     "replay_vs_incremental_first_logits": {
+      "argmax_equal": true,
+      "common_top16": 16,
+      "max_abs_diff_common": 2.6702880859375e-05,
+      "stop_logit_abs_diff": 6.67572021484375e-06
+     },
+     "empty_assistant_turns_in_history": 0
+    },
+    {
+     "turn": 5,
+     "user": "Write a one-line pytest assertion for the new behaviour.",
+     "budget": 48,
+     "replay": {
+      "mode": "fresh",
+      "note": "",
+      "prompt_len": 273,
+      "prompt_sha256": "e01d56a8978c23b9ba20babe3351226c74b8be81218c45e4d4329701b2c03ab0",
+      "prompt_tail": [
+       491,
+       16501,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 10,
+        "positions": [
+         159,
+         178,
+         206,
+         226,
+         250,
+         266
+        ]
+       },
+       "im_end": {
+        "count": 9,
+        "positions": [
+         157,
+         176,
+         204,
+         224,
+         248,
+         264
+        ]
+       },
+       "think": {
+        "count": 5,
+        "positions": [
+         37,
+         144,
+         181,
+         229,
+         269
+        ]
+       },
+       "think_close": {
+        "count": 5,
+        "positions": [
+         39,
+         146,
+         183,
+         231,
+         271
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        71093,
+        248046,
+        2138,
+        63,
+        760,
+        248058,
+        464,
+        25868,
+        12305,
+        32743,
+        40,
+        1302,
+        52451,
+        16,
+        8272,
+        727
+       ],
+       "logits": [
+        23.38363265991211,
+        20.066471099853516,
+        19.421735763549805,
+        18.70571517944336,
+        16.0968017578125,
+        15.850443840026855,
+        15.406049728393555,
+        15.13923168182373,
+        15.061626434326172,
+        14.919412612915039,
+        14.712244987487793,
+        14.709392547607422,
+        14.613851547241211,
+        14.48128890991211,
+        14.466367721557617,
+        13.954912185668945
+       ],
+       "stop_logits": {
+        "248044": 11.196063041687012,
+        "248046": 20.066471099853516
+       }
+      },
+      "argmax": 71093,
+      "argmax_is_stop": false,
+      "margin": 3.3171615600585938,
+      "best_non_stop": 71093,
+      "generated_ids": [
+       71093,
+       12305,
+       198,
+       2138,
+       795,
+       652,
+       482,
+       846,
+       816,
+       504,
+       795,
+       652,
+       482,
+       13119,
+       3661,
+       606,
+       359,
+       13290,
+       16,
+       17,
+       18,
+       6,
+       198,
+       71093
+      ],
+      "text": "```python\nassert data.get('user_id', data.get('userId')) == 'abc123'\n```",
+      "n_generated": 24,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 297,
+      "cache_offset_measured": 297,
+      "first_token_s": 8.723053292138502,
+      "active_bytes": 9669608108,
+      "footprint_bytes": 11762193984,
+      "peak_bytes": 12499012156
+     },
+     "incremental": {
+      "mode": "incremental",
+      "note": "",
+      "prompt_len": 25,
+      "prompt_sha256": "f40e73b4734a2c9711f0b9e11bd747e255736f3c78507065b4138c3d74d261e0",
+      "prompt_tail": [
+       491,
+       16501,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 2,
+        "positions": [
+         2,
+         18
+        ]
+       },
+       "im_end": {
+        "count": 2,
+        "positions": [
+         0,
+         16
+        ]
+       },
+       "think": {
+        "count": 1,
+        "positions": [
+         21
+        ]
+       },
+       "think_close": {
+        "count": 1,
+        "positions": [
+         23
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        71093,
+        248046,
+        2138,
+        63,
+        760,
+        248058,
+        464,
+        25868,
+        12305,
+        32743,
+        40,
+        1302,
+        52451,
+        16,
+        8272,
+        727
+       ],
+       "logits": [
+        23.383655548095703,
+        20.06647300720215,
+        19.421730041503906,
+        18.705734252929688,
+        16.096790313720703,
+        15.85045051574707,
+        15.406044960021973,
+        15.139227867126465,
+        15.061625480651855,
+        14.919419288635254,
+        14.712230682373047,
+        14.709367752075195,
+        14.613866806030273,
+        14.481281280517578,
+        14.466367721557617,
+        13.95491886138916
+       ],
+       "stop_logits": {
+        "248044": 11.196056365966797,
+        "248046": 20.06647300720215
+       }
+      },
+      "argmax": 71093,
+      "argmax_is_stop": false,
+      "margin": 3.3171825408935547,
+      "best_non_stop": 71093,
+      "generated_ids": [
+       71093,
+       12305,
+       198,
+       2138,
+       795,
+       652,
+       482,
+       846,
+       816,
+       504,
+       795,
+       652,
+       482,
+       13119,
+       3661,
+       606,
+       359,
+       13290,
+       16,
+       17,
+       18,
+       6,
+       198,
+       71093
+      ],
+      "text": "```python\nassert data.get('user_id', data.get('userId')) == 'abc123'\n```",
+      "n_generated": 24,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 297,
+      "cache_offset_measured": 297,
+      "first_token_s": 2.1429855830501765,
+      "active_bytes": 9476063916,
+      "footprint_bytes": 11617839360,
+      "peak_bytes": 11694442820
+     },
+     "reconstruction_equal_to_replay_prompt": true,
+     "reconstruction_len": 273,
+     "replay_vs_incremental_generated_equal": true,
+     "replay_vs_incremental_first_logits": {
+      "argmax_equal": true,
+      "common_top16": 16,
+      "max_abs_diff_common": 2.47955322265625e-05,
+      "stop_logit_abs_diff": 6.67572021484375e-06
+     },
+     "empty_assistant_turns_in_history": 0
+    },
+    {
+     "turn": 6,
+     "user": "Summarise the changes as a commit message title, under 60 characters.",
+     "budget": 32,
+     "replay": {
+      "mode": "fresh",
+      "note": "",
+      "prompt_len": 328,
+      "prompt_sha256": "5d31fe308581b997bc8f04c840999e4f84167e0244727d7c04c3f31c1d32e184",
+      "prompt_tail": [
+       15,
+       5587,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 12,
+        "positions": [
+         206,
+         226,
+         250,
+         266,
+         299,
+         321
+        ]
+       },
+       "im_end": {
+        "count": 11,
+        "positions": [
+         204,
+         224,
+         248,
+         264,
+         297,
+         319
+        ]
+       },
+       "think": {
+        "count": 6,
+        "positions": [
+         37,
+         144,
+         181,
+         229,
+         269,
+         324
+        ]
+       },
+       "think_close": {
+        "count": 6,
+        "positions": [
+         39,
+         146,
+         183,
+         231,
+         271,
+         326
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        25128,
+        6781,
+        51,
+        7666,
+        16156,
+        18044,
+        2143,
+        5565,
+        248046,
+        84796,
+        19951,
+        9947,
+        22637,
+        7935,
+        43164,
+        84199
+       ],
+       "logits": [
+        20.67047882080078,
+        20.540510177612305,
+        20.308387756347656,
+        20.209421157836914,
+        18.73993682861328,
+        18.273000717163086,
+        17.52680206298828,
+        17.35395622253418,
+        17.234416961669922,
+        17.227008819580078,
+        16.68659019470215,
+        16.022600173950195,
+        15.926151275634766,
+        15.802474021911621,
+        15.682235717773438,
+        15.08049201965332
+       ],
+       "stop_logits": {
+        "248044": 8.654214859008789,
+        "248046": 17.234416961669922
+       }
+      },
+      "argmax": 25128,
+      "argmax_is_stop": false,
+      "margin": 3.4360618591308594,
+      "best_non_stop": 25128,
+      "generated_ids": [
+       25128,
+       1156,
+       816,
+       1328,
+       11256,
+       321,
+       884,
+       31686
+      ],
+      "text": "Fix user_id key handling and add fallback",
+      "n_generated": 8,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 336,
+      "cache_offset_measured": 336,
+      "first_token_s": 10.049827500013635,
+      "active_bytes": 9702032044,
+      "footprint_bytes": 11804246364,
+      "peak_bytes": 12531436092
+     },
+     "incremental": {
+      "mode": "incremental",
+      "note": "",
+      "prompt_len": 31,
+      "prompt_sha256": "04115a64052fa4061c99fff864e828cebf59d77e57a2bf8c801d1cfe6b94d1e7",
+      "prompt_tail": [
+       15,
+       5587,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 2,
+        "positions": [
+         2,
+         24
+        ]
+       },
+       "im_end": {
+        "count": 2,
+        "positions": [
+         0,
+         22
+        ]
+       },
+       "think": {
+        "count": 1,
+        "positions": [
+         27
+        ]
+       },
+       "think_close": {
+        "count": 1,
+        "positions": [
+         29
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        25128,
+        6781,
+        51,
+        7666,
+        16156,
+        18044,
+        2143,
+        5565,
+        248046,
+        84796,
+        19951,
+        9947,
+        22637,
+        7935,
+        43164,
+        84199
+       ],
+       "logits": [
+        20.670488357543945,
+        20.540515899658203,
+        20.308385848999023,
+        20.209436416625977,
+        18.739957809448242,
+        18.273006439208984,
+        17.526824951171875,
+        17.353965759277344,
+        17.234420776367188,
+        17.227006912231445,
+        16.686599731445312,
+        16.02261734008789,
+        15.926159858703613,
+        15.802482604980469,
+        15.682266235351562,
+        15.080486297607422
+       ],
+       "stop_logits": {
+        "248044": 8.654210090637207,
+        "248046": 17.234420776367188
+       }
+      },
+      "argmax": 25128,
+      "argmax_is_stop": false,
+      "margin": 3.436067581176758,
+      "best_non_stop": 25128,
+      "generated_ids": [
+       25128,
+       1156,
+       816,
+       1328,
+       11256,
+       321,
+       884,
+       31686
+      ],
+      "text": "Fix user_id key handling and add fallback",
+      "n_generated": 8,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 336,
+      "cache_offset_measured": 336,
+      "first_token_s": 2.339411749970168,
+      "active_bytes": 9476063916,
+      "footprint_bytes": 11618582136,
+      "peak_bytes": 11704516812
+     },
+     "reconstruction_equal_to_replay_prompt": true,
+     "reconstruction_len": 328,
+     "replay_vs_incremental_generated_equal": true,
+     "replay_vs_incremental_first_logits": {
+      "argmax_equal": true,
+      "common_top16": 16,
+      "max_abs_diff_common": 3.0517578125e-05,
+      "stop_logit_abs_diff": 4.76837158203125e-06
+     },
+     "empty_assistant_turns_in_history": 0
+    },
+    {
+     "turn": 7,
+     "user": "What is one risk of accepting both spellings? One sentence.",
+     "budget": 48,
+     "replay": {
+      "mode": "fresh",
+      "note": "",
+      "prompt_len": 363,
+      "prompt_sha256": "ecfb9b549b9b29463dd4ed2cb1c205dd97f444c09d207204a4034b81f6247f14",
+      "prompt_tail": [
+       3648,
+       11316,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 14,
+        "positions": [
+         250,
+         266,
+         299,
+         321,
+         338,
+         356
+        ]
+       },
+       "im_end": {
+        "count": 13,
+        "positions": [
+         248,
+         264,
+         297,
+         319,
+         336,
+         354
+        ]
+       },
+       "think": {
+        "count": 7,
+        "positions": [
+         144,
+         181,
+         229,
+         269,
+         324,
+         359
+        ]
+       },
+       "think_close": {
+        "count": 7,
+        "positions": [
+         146,
+         183,
+         231,
+         271,
+         326,
+         361
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        248046,
+        2064,
+        16156,
+        26677,
+        760,
+        32,
+        12322,
+        20003,
+        3833,
+        2592,
+        44,
+        2523,
+        7666,
+        15947,
+        248058,
+        35
+       ],
+       "logits": [
+        23.17397689819336,
+        21.037412643432617,
+        19.409223556518555,
+        19.025238037109375,
+        18.37892723083496,
+        17.461082458496094,
+        16.670093536376953,
+        16.49456024169922,
+        16.28626823425293,
+        16.010887145996094,
+        15.786747932434082,
+        15.467336654663086,
+        15.428072929382324,
+        15.361536026000977,
+        15.202530860900879,
+        15.158275604248047
+       ],
+       "stop_logits": {
+        "248044": 11.615293502807617,
+        "248046": 23.17397689819336
+       }
+      },
+      "argmax": 248046,
+      "argmax_is_stop": true,
+      "margin": 2.136564254760742,
+      "best_non_stop": 2064,
+      "generated_ids": [],
+      "text": "",
+      "n_generated": 0,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 363,
+      "cache_offset_measured": 363,
+      "first_token_s": 10.25965683395043,
+      "active_bytes": 9699459756,
+      "footprint_bytes": 11844601064,
+      "peak_bytes": 12531436092
+     },
+     "incremental": {
+      "mode": "incremental",
+      "note": "",
+      "prompt_len": 27,
+      "prompt_sha256": "f4bb889b2cffc9a652bfc3bb7dd207842c6cf81c8704a8ce424a555e6cdc94cc",
+      "prompt_tail": [
+       3648,
+       11316,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 2,
+        "positions": [
+         2,
+         20
+        ]
+       },
+       "im_end": {
+        "count": 2,
+        "positions": [
+         0,
+         18
+        ]
+       },
+       "think": {
+        "count": 1,
+        "positions": [
+         23
+        ]
+       },
+       "think_close": {
+        "count": 1,
+        "positions": [
+         25
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        248046,
+        2064,
+        16156,
+        26677,
+        760,
+        32,
+        12322,
+        20003,
+        3833,
+        2592,
+        44,
+        2523,
+        7666,
+        15947,
+        248058,
+        35
+       ],
+       "logits": [
+        23.173988342285156,
+        21.03741455078125,
+        19.409221649169922,
+        19.025230407714844,
+        18.378921508789062,
+        17.461090087890625,
+        16.67010498046875,
+        16.494543075561523,
+        16.286283493041992,
+        16.010875701904297,
+        15.786752700805664,
+        15.467344284057617,
+        15.428058624267578,
+        15.36153793334961,
+        15.202527046203613,
+        15.158266067504883
+       ],
+       "stop_logits": {
+        "248044": 11.615306854248047,
+        "248046": 23.173988342285156
+       }
+      },
+      "argmax": 248046,
+      "argmax_is_stop": true,
+      "margin": 2.1365737915039062,
+      "best_non_stop": 2064,
+      "generated_ids": [],
+      "text": "",
+      "n_generated": 0,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 363,
+      "cache_offset_measured": 363,
+      "first_token_s": 2.180234083207324,
+      "active_bytes": 9473491628,
+      "footprint_bytes": 11618595000,
+      "peak_bytes": 11691995073
+     },
+     "reconstruction_equal_to_replay_prompt": true,
+     "reconstruction_len": 363,
+     "replay_vs_incremental_generated_equal": true,
+     "replay_vs_incremental_first_logits": {
+      "argmax_equal": true,
+      "common_top16": 16,
+      "max_abs_diff_common": 1.71661376953125e-05,
+      "stop_logit_abs_diff": 1.33514404296875e-05
+     },
+     "empty_assistant_turns_in_history": 0,
+     "fused_first_logits_topk": {
+      "ids": [
+       248046,
+       2064,
+       16156,
+       26677,
+       760,
+       32,
+       12322,
+       20003,
+       3833,
+       2592,
+       44,
+       2523,
+       7666,
+       15947,
+       248058,
+       35
+      ],
+      "logits": [
+       23.173999786376953,
+       21.037416458129883,
+       19.409217834472656,
+       19.025232315063477,
+       18.378925323486328,
+       17.461090087890625,
+       16.67011260986328,
+       16.494544982910156,
+       16.286279678344727,
+       16.010868072509766,
+       15.786766052246094,
+       15.467344284057617,
+       15.428067207336426,
+       15.361547470092773,
+       15.202530860900879,
+       15.158271789550781
+      ],
+      "stop_logits": {
+       "248044": 11.615304946899414,
+       "248046": 23.173999786376953
+      }
+     },
+     "gemm_vs_fused_first_logits": {
+      "argmax_equal": true,
+      "common_top16": 16,
+      "max_abs_diff_common": 2.288818359375e-05,
+      "stop_logit_abs_diff": 2.288818359375e-05
+     },
+     "counterfactual_single_turn": {
+      "label": "COUNTERFACTUAL",
+      "argmax": 16156,
+      "argmax_is_stop": false,
+      "margin": 11.284682273864746,
+      "text": "Accepting both spellings can create confusion and inconsistency in user data, leading to potential errors in search results or automated processing systems.",
+      "n_generated": 26,
+      "stop_reason": "stop_token"
+     }
+    },
+    {
+     "turn": 8,
+     "user": "Reply with just: done.",
+     "budget": 16,
+     "replay": {
+      "mode": "fresh",
+      "note": "",
+      "prompt_len": 383,
+      "prompt_sha256": "16b870ee2221d810248e4297f809e3adb8ba26f01dae67cbc017fb612f1d48ba",
+      "prompt_tail": [
+       25,
+       2725,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 16,
+        "positions": [
+         299,
+         321,
+         338,
+         356,
+         365,
+         376
+        ]
+       },
+       "im_end": {
+        "count": 15,
+        "positions": [
+         297,
+         319,
+         336,
+         354,
+         363,
+         374
+        ]
+       },
+       "think": {
+        "count": 8,
+        "positions": [
+         181,
+         229,
+         269,
+         324,
+         359,
+         379
+        ]
+       },
+       "think_close": {
+        "count": 8,
+        "positions": [
+         183,
+         231,
+         271,
+         326,
+         361,
+         381
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        10128,
+        2725,
+        248046,
+        16936,
+        30758,
+        760,
+        33098,
+        39157,
+        91035,
+        23619,
+        248058,
+        2064,
+        40,
+        33586,
+        32,
+        271
+       ],
+       "logits": [
+        22.894882202148438,
+        18.820201873779297,
+        17.978240966796875,
+        16.6560115814209,
+        14.551637649536133,
+        13.654195785522461,
+        12.533246040344238,
+        12.208101272583008,
+        12.206113815307617,
+        12.094400405883789,
+        11.922162055969238,
+        11.82921028137207,
+        11.801528930664062,
+        11.344123840332031,
+        11.330376625061035,
+        11.061054229736328
+       ],
+       "stop_logits": {
+        "248044": 9.20395278930664,
+        "248046": 17.978240966796875
+       }
+      },
+      "argmax": 10128,
+      "argmax_is_stop": false,
+      "margin": 4.9166412353515625,
+      "best_non_stop": 10128,
+      "generated_ids": [
+       10128
+      ],
+      "text": "done",
+      "n_generated": 1,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 384,
+      "cache_offset_measured": 384,
+      "first_token_s": 10.210938125150278,
+      "active_bytes": 9700459180,
+      "footprint_bytes": 11848823120,
+      "peak_bytes": 12529863228
+     },
+     "incremental": {
+      "mode": "incremental",
+      "note": "",
+      "prompt_len": 20,
+      "prompt_sha256": "f9bbc20fc52765e209e5b5bee094c406933df8cb79ad91680bc2b97da7512ade",
+      "prompt_tail": [
+       25,
+       2725,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 2,
+        "positions": [
+         2,
+         13
+        ]
+       },
+       "im_end": {
+        "count": 2,
+        "positions": [
+         0,
+         11
+        ]
+       },
+       "think": {
+        "count": 1,
+        "positions": [
+         16
+        ]
+       },
+       "think_close": {
+        "count": 1,
+        "positions": [
+         18
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        10128,
+        2725,
+        248046,
+        16936,
+        30758,
+        760,
+        33098,
+        39157,
+        91035,
+        23619,
+        248058,
+        2064,
+        40,
+        33586,
+        32,
+        271
+       ],
+       "logits": [
+        22.894874572753906,
+        18.820201873779297,
+        17.97820281982422,
+        16.656005859375,
+        14.551612854003906,
+        13.654216766357422,
+        12.533251762390137,
+        12.208109855651855,
+        12.206117630004883,
+        12.09438705444336,
+        11.922142028808594,
+        11.829218864440918,
+        11.801521301269531,
+        11.344114303588867,
+        11.330389022827148,
+        11.061014175415039
+       ],
+       "stop_logits": {
+        "248044": 9.203926086425781,
+        "248046": 17.97820281982422
+       }
+      },
+      "argmax": 10128,
+      "argmax_is_stop": false,
+      "margin": 4.9166717529296875,
+      "best_non_stop": 10128,
+      "generated_ids": [
+       10128
+      ],
+      "text": "done",
+      "n_generated": 1,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 384,
+      "cache_offset_measured": 384,
+      "first_token_s": 1.9375366668682545,
+      "active_bytes": 9476063916,
+      "footprint_bytes": 11625538384,
+      "peak_bytes": 11675641992
+     },
+     "reconstruction_equal_to_replay_prompt": true,
+     "reconstruction_len": 383,
+     "replay_vs_incremental_generated_equal": true,
+     "replay_vs_incremental_first_logits": {
+      "argmax_equal": true,
+      "common_top16": 16,
+      "max_abs_diff_common": 4.00543212890625e-05,
+      "stop_logit_abs_diff": 3.814697265625e-05
+     },
+     "empty_assistant_turns_in_history": 1
+    }
+   ]
+  },
+  {
+   "name": "recipe",
+   "thinking": false,
+   "turns": [
+    {
+     "turn": 1,
+     "user": "Give me a simple lentil soup recipe: ingredients only, one per line, at most eight.",
+     "budget": 96,
+     "replay": {
+      "mode": "fresh",
+      "note": "",
+      "prompt_len": 32,
+      "prompt_sha256": "79778b3c39e4aa9c417b36f51587933c4ddb7b6cb17036d15550a294a21810ae",
+      "prompt_tail": [
+       1379,
+       7810,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 2,
+        "positions": [
+         0,
+         25
+        ]
+       },
+       "im_end": {
+        "count": 1,
+        "positions": [
+         23
+        ]
+       },
+       "think": {
+        "count": 1,
+        "positions": [
+         28
+        ]
+       },
+       "think_close": {
+        "count": 1,
+        "positions": [
+         30
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        5844,
+        27336,
+        12,
+        1114,
+        18978,
+        16,
+        43,
+        12615,
+        184006,
+        46776,
+        12865,
+        1860,
+        46213,
+        75,
+        62284,
+        25433
+       ],
+       "logits": [
+        20.402572631835938,
+        19.610515594482422,
+        19.148042678833008,
+        18.88258934020996,
+        18.779390335083008,
+        18.229686737060547,
+        17.869354248046875,
+        17.136993408203125,
+        17.124954223632812,
+        16.674362182617188,
+        16.663713455200195,
+        15.555773735046387,
+        15.491971015930176,
+        15.127309799194336,
+        14.705598831176758,
+        14.598773956298828
+       ],
+       "stop_logits": {
+        "248044": 1.8560044765472412,
+        "248046": 8.043930053710938
+       }
+      },
+      "argmax": 5844,
+      "argmax_is_stop": false,
+      "margin": 12.358642578125,
+      "best_non_stop": 5844,
+      "generated_ids": [
+       5844,
+       46213,
+       8405,
+       198,
+       27336,
+       198,
+       1860,
+       289,
+       198,
+       42475,
+       407,
+       198,
+       8585,
+       4489,
+       198,
+       84596,
+       702,
+       198,
+       21887,
+       15463,
+       198,
+       45742
+      ],
+      "text": "Red lentils\nWater\nOnion\nGarlic\nCarrot\nCelery\nBay leaf\nSalt",
+      "n_generated": 22,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 54,
+      "cache_offset_measured": 54,
+      "first_token_s": 2.210319417063147,
+      "active_bytes": 9443558060,
+      "footprint_bytes": 11585926748,
+      "peak_bytes": 11863131972
+     },
+     "incremental": {
+      "mode": "fresh",
+      "note": "",
+      "prompt_len": 32,
+      "prompt_sha256": "79778b3c39e4aa9c417b36f51587933c4ddb7b6cb17036d15550a294a21810ae",
+      "prompt_tail": [
+       1379,
+       7810,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 2,
+        "positions": [
+         0,
+         25
+        ]
+       },
+       "im_end": {
+        "count": 1,
+        "positions": [
+         23
+        ]
+       },
+       "think": {
+        "count": 1,
+        "positions": [
+         28
+        ]
+       },
+       "think_close": {
+        "count": 1,
+        "positions": [
+         30
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        5844,
+        27336,
+        12,
+        1114,
+        18978,
+        16,
+        43,
+        12615,
+        184006,
+        46776,
+        12865,
+        1860,
+        46213,
+        75,
+        62284,
+        25433
+       ],
+       "logits": [
+        20.402572631835938,
+        19.610515594482422,
+        19.148042678833008,
+        18.88258934020996,
+        18.779390335083008,
+        18.229686737060547,
+        17.869354248046875,
+        17.136993408203125,
+        17.124954223632812,
+        16.674362182617188,
+        16.663713455200195,
+        15.555773735046387,
+        15.491971015930176,
+        15.127309799194336,
+        14.705598831176758,
+        14.598773956298828
+       ],
+       "stop_logits": {
+        "248044": 1.8560044765472412,
+        "248046": 8.043930053710938
+       }
+      },
+      "argmax": 5844,
+      "argmax_is_stop": false,
+      "margin": 12.358642578125,
+      "best_non_stop": 5844,
+      "generated_ids": [
+       5844,
+       46213,
+       8405,
+       198,
+       27336,
+       198,
+       1860,
+       289,
+       198,
+       42475,
+       407,
+       198,
+       8585,
+       4489,
+       198,
+       84596,
+       702,
+       198,
+       21887,
+       15463,
+       198,
+       45742
+      ],
+      "text": "Red lentils\nWater\nOnion\nGarlic\nCarrot\nCelery\nBay leaf\nSalt",
+      "n_generated": 22,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 54,
+      "cache_offset_measured": 54,
+      "first_token_s": 2.227386042010039,
+      "active_bytes": 9443558060,
+      "footprint_bytes": 11585926748,
+      "peak_bytes": 11863131972
+     },
+     "reconstruction_equal_to_replay_prompt": true,
+     "reconstruction_len": 32,
+     "replay_vs_incremental_generated_equal": true,
+     "replay_vs_incremental_first_logits": {
+      "argmax_equal": true,
+      "common_top16": 16,
+      "max_abs_diff_common": 0.0,
+      "stop_logit_abs_diff": 0.0
+     },
+     "empty_assistant_turns_in_history": 0
+    },
+    {
+     "turn": 2,
+     "user": "Now the steps, numbered, at most six.",
+     "budget": 128,
+     "replay": {
+      "mode": "fresh",
+      "note": "",
+      "prompt_len": 78,
+      "prompt_sha256": "ec4b9ce48f5a574eb55c3ada7c2499fa24cc9600e8e635aae1d7f5d235abb47d",
+      "prompt_tail": [
+       1379,
+       4590,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 4,
+        "positions": [
+         0,
+         25,
+         56,
+         71
+        ]
+       },
+       "im_end": {
+        "count": 3,
+        "positions": [
+         23,
+         54,
+         69
+        ]
+       },
+       "think": {
+        "count": 2,
+        "positions": [
+         28,
+         74
+        ]
+       },
+       "think_close": {
+        "count": 2,
+        "positions": [
+         30,
+         76
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        16,
+        2143,
+        78320,
+        50,
+        1191,
+        16860,
+        9894,
+        36418,
+        1106,
+        44,
+        62346,
+        4272,
+        18528,
+        17,
+        18,
+        40781
+       ],
+       "logits": [
+        24.335540771484375,
+        18.242382049560547,
+        17.520877838134766,
+        17.446815490722656,
+        16.7128963470459,
+        16.537561416625977,
+        15.454544067382812,
+        15.34442138671875,
+        15.12797737121582,
+        15.114355087280273,
+        15.055310249328613,
+        15.005846977233887,
+        14.831192970275879,
+        14.803804397583008,
+        14.683919906616211,
+        14.419713020324707
+       ],
+       "stop_logits": {
+        "248044": 7.107702732086182,
+        "248046": 12.136773109436035
+       }
+      },
+      "argmax": 16,
+      "argmax_is_stop": false,
+      "margin": 12.19876766204834,
+      "best_non_stop": 16,
+      "generated_ids": [
+       16,
+       13,
+       326,
+       90608,
+       36092,
+       11,
+       29634,
+       11,
+       71670,
+       11,
+       321,
+       66686,
+       303,
+       264,
+       3229,
+       13,
+       198,
+       17,
+       13,
+       2604,
+       2919,
+       321,
+       22002,
+       15463,
+       11,
+       1179,
+       4300,
+       310,
+       264,
+       42244,
+       13,
+       198,
+       18,
+       13,
+       2604,
+       279,
+       2438,
+       46213,
+       8405,
+       321,
+       7698,
+       8364,
+       310,
+       264,
+       59731,
+       13,
+       198,
+       19,
+       13,
+       12155,
+       2980,
+       279,
+       46213,
+       8405,
+       513,
+       26688,
+       321,
+       279,
+       18594,
+       369,
+       11702,
+       11,
+       883,
+       220,
+       17,
+       15,
+       4276,
+       13,
+       198,
+       20,
+       13,
+       10466,
+       279,
+       22002,
+       15463,
+       13,
+       198,
+       21,
+       13,
+       13855,
+       440,
+       11679,
+       321,
+       8418,
+       13
+      ],
+      "text": "1. Saut\u00e9 onion, garlic, carrot, and celery in a pot.\n2. Add water and bay leaf, then bring to a boil.\n3. Add the red lentils and reduce heat to a simmer.\n4. Cook until the lentils are tender and the soup is thick, about 20 minutes.\n5. Remove the bay leaf.\n6. Season with salt and serve.",
+      "n_generated": 85,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 163,
+      "cache_offset_measured": 163,
+      "first_token_s": 3.4828760831151158,
+      "active_bytes": 9635971756,
+      "footprint_bytes": 11780785756,
+      "peak_bytes": 12170403176
+     },
+     "incremental": {
+      "mode": "incremental",
+      "note": "",
+      "prompt_len": 24,
+      "prompt_sha256": "4cd17b477d136a1203974b1935d45f916cce9c211b5b5454b6bd43075ea6be44",
+      "prompt_tail": [
+       1379,
+       4590,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 2,
+        "positions": [
+         2,
+         17
+        ]
+       },
+       "im_end": {
+        "count": 2,
+        "positions": [
+         0,
+         15
+        ]
+       },
+       "think": {
+        "count": 1,
+        "positions": [
+         20
+        ]
+       },
+       "think_close": {
+        "count": 1,
+        "positions": [
+         22
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        16,
+        2143,
+        78320,
+        50,
+        1191,
+        16860,
+        9894,
+        36418,
+        1106,
+        44,
+        62346,
+        4272,
+        18528,
+        17,
+        18,
+        40781
+       ],
+       "logits": [
+        24.335548400878906,
+        18.242380142211914,
+        17.520893096923828,
+        17.446826934814453,
+        16.712888717651367,
+        16.537548065185547,
+        15.454544067382812,
+        15.344428062438965,
+        15.127985000610352,
+        15.114358901977539,
+        15.055309295654297,
+        15.00583267211914,
+        14.831185340881348,
+        14.803840637207031,
+        14.683935165405273,
+        14.419696807861328
+       ],
+       "stop_logits": {
+        "248044": 7.107734680175781,
+        "248046": 12.136791229248047
+       }
+      },
+      "argmax": 16,
+      "argmax_is_stop": false,
+      "margin": 12.19875717163086,
+      "best_non_stop": 16,
+      "generated_ids": [
+       16,
+       13,
+       326,
+       90608,
+       36092,
+       11,
+       29634,
+       11,
+       71670,
+       11,
+       321,
+       66686,
+       303,
+       264,
+       3229,
+       13,
+       198,
+       17,
+       13,
+       2604,
+       2919,
+       321,
+       22002,
+       15463,
+       11,
+       1179,
+       4300,
+       310,
+       264,
+       42244,
+       13,
+       198,
+       18,
+       13,
+       2604,
+       279,
+       2438,
+       46213,
+       8405,
+       321,
+       7698,
+       8364,
+       310,
+       264,
+       59731,
+       13,
+       198,
+       19,
+       13,
+       12155,
+       2980,
+       279,
+       46213,
+       8405,
+       513,
+       26688,
+       321,
+       279,
+       18594,
+       369,
+       11702,
+       11,
+       883,
+       220,
+       17,
+       15,
+       4276,
+       13,
+       198,
+       20,
+       13,
+       10466,
+       279,
+       22002,
+       15463,
+       13,
+       198,
+       21,
+       13,
+       13855,
+       440,
+       11679,
+       321,
+       8418,
+       13
+      ],
+      "text": "1. Saut\u00e9 onion, garlic, carrot, and celery in a pot.\n2. Add water and bay leaf, then bring to a boil.\n3. Add the red lentils and reduce heat to a simmer.\n4. Cook until the lentils are tender and the soup is thick, about 20 minutes.\n5. Remove the bay leaf.\n6. Season with salt and serve.",
+      "n_generated": 85,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 163,
+      "cache_offset_measured": 163,
+      "first_token_s": 2.1049749578814954,
+      "active_bytes": 9443558060,
+      "footprint_bytes": 11587624648,
+      "peak_bytes": 11654663128
+     },
+     "reconstruction_equal_to_replay_prompt": true,
+     "reconstruction_len": 78,
+     "replay_vs_incremental_generated_equal": true,
+     "replay_vs_incremental_first_logits": {
+      "argmax_equal": true,
+      "common_top16": 16,
+      "max_abs_diff_common": 3.62396240234375e-05,
+      "stop_logit_abs_diff": 3.1948089599609375e-05
+     },
+     "empty_assistant_turns_in_history": 0
+    },
+    {
+     "turn": 3,
+     "user": "I have no cumin. What is a substitute? One line.",
+     "budget": 32,
+     "replay": {
+      "mode": "fresh",
+      "note": "",
+      "prompt_len": 191,
+      "prompt_sha256": "f509091cc4c5d825f868d45a5686b5d5fa184f9446c59dc8d61d22caabc72de4",
+      "prompt_tail": [
+       3648,
+       1500,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 6,
+        "positions": [
+         0,
+         25,
+         56,
+         71,
+         165,
+         184
+        ]
+       },
+       "im_end": {
+        "count": 5,
+        "positions": [
+         23,
+         54,
+         69,
+         163,
+         182
+        ]
+       },
+       "think": {
+        "count": 3,
+        "positions": [
+         28,
+         74,
+         187
+        ]
+       },
+       "think_close": {
+        "count": 3,
+        "positions": [
+         30,
+         76,
+         189
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        9947,
+        34,
+        8585,
+        29711,
+        32,
+        10266,
+        37,
+        14004,
+        222329,
+        35,
+        248046,
+        5591,
+        87465,
+        38,
+        2523,
+        3928
+       ],
+       "logits": [
+        20.511507034301758,
+        18.527851104736328,
+        18.129470825195312,
+        18.094898223876953,
+        17.97296905517578,
+        17.464763641357422,
+        17.137279510498047,
+        16.52362823486328,
+        16.407608032226562,
+        16.40753936767578,
+        15.59446907043457,
+        15.466663360595703,
+        15.046463966369629,
+        14.97606086730957,
+        14.95248794555664,
+        14.536043167114258
+       ],
+       "stop_logits": {
+        "248044": 9.34977912902832,
+        "248046": 15.59446907043457
+       }
+      },
+      "argmax": 9947,
+      "argmax_is_stop": false,
+      "margin": 4.9170379638671875,
+      "best_non_stop": 9947,
+      "generated_ids": [
+       9947,
+       264,
+       2526,
+       3202,
+       314,
+       1766,
+       72,
+       7942,
+       466,
+       281,
+       2580,
+       300,
+       18483,
+       13
+      ],
+      "text": "Use a small amount of coriander or fennel seeds.",
+      "n_generated": 14,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 205,
+      "cache_offset_measured": 205,
+      "first_token_s": 5.70823762496002,
+      "active_bytes": 9635971756,
+      "footprint_bytes": 11781787504,
+      "peak_bytes": 12404377744
+     },
+     "incremental": {
+      "mode": "incremental",
+      "note": "",
+      "prompt_len": 28,
+      "prompt_sha256": "8395e08ad90f318b9345c1dec80dee18ca38c321945c12b330e58849c0caa696",
+      "prompt_tail": [
+       3648,
+       1500,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 2,
+        "positions": [
+         2,
+         21
+        ]
+       },
+       "im_end": {
+        "count": 2,
+        "positions": [
+         0,
+         19
+        ]
+       },
+       "think": {
+        "count": 1,
+        "positions": [
+         24
+        ]
+       },
+       "think_close": {
+        "count": 1,
+        "positions": [
+         26
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        9947,
+        34,
+        8585,
+        29711,
+        32,
+        10266,
+        37,
+        14004,
+        222329,
+        35,
+        248046,
+        5591,
+        87465,
+        38,
+        2523,
+        3928
+       ],
+       "logits": [
+        20.511484146118164,
+        18.527847290039062,
+        18.129451751708984,
+        18.094898223876953,
+        17.972959518432617,
+        17.464725494384766,
+        17.137258529663086,
+        16.523635864257812,
+        16.40760612487793,
+        16.407541275024414,
+        15.594511032104492,
+        15.466650009155273,
+        15.046463012695312,
+        14.976045608520508,
+        14.952463150024414,
+        14.536026000976562
+       ],
+       "stop_logits": {
+        "248044": 9.349809646606445,
+        "248046": 15.594511032104492
+       }
+      },
+      "argmax": 9947,
+      "argmax_is_stop": false,
+      "margin": 4.916973114013672,
+      "best_non_stop": 9947,
+      "generated_ids": [
+       9947,
+       264,
+       2526,
+       3202,
+       314,
+       1766,
+       72,
+       7942,
+       466,
+       281,
+       2580,
+       300,
+       18483,
+       13
+      ],
+      "text": "Use a small amount of coriander or fennel seeds.",
+      "n_generated": 14,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 205,
+      "cache_offset_measured": 205,
+      "first_token_s": 2.241341750137508,
+      "active_bytes": 9443623596,
+      "footprint_bytes": 11588349276,
+      "peak_bytes": 11666761208
+     },
+     "reconstruction_equal_to_replay_prompt": true,
+     "reconstruction_len": 191,
+     "replay_vs_incremental_generated_equal": true,
+     "replay_vs_incremental_first_logits": {
+      "argmax_equal": true,
+      "common_top16": 16,
+      "max_abs_diff_common": 4.1961669921875e-05,
+      "stop_logit_abs_diff": 4.1961669921875e-05
+     },
+     "empty_assistant_turns_in_history": 0
+    },
+    {
+     "turn": 4,
+     "user": "How long does it keep in the fridge? One sentence.",
+     "budget": 32,
+     "replay": {
+      "mode": "fresh",
+      "note": "",
+      "prompt_len": 231,
+      "prompt_sha256": "7c0c42bad319d8ebe108c270b5a797ab6817c7ec3f59af18c08c18787d0ad894",
+      "prompt_tail": [
+       3648,
+       11316,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 8,
+        "positions": [
+         56,
+         71,
+         165,
+         184,
+         207,
+         224
+        ]
+       },
+       "im_end": {
+        "count": 7,
+        "positions": [
+         54,
+         69,
+         163,
+         182,
+         205,
+         222
+        ]
+       },
+       "think": {
+        "count": 4,
+        "positions": [
+         28,
+         74,
+         187,
+         227
+        ]
+       },
+       "think_close": {
+        "count": 4,
+        "positions": [
+         30,
+         76,
+         189,
+         229
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        2064,
+        248046,
+        43,
+        760,
+        1919,
+        5844,
+        5247,
+        674,
+        32,
+        248068,
+        623,
+        2248,
+        7525,
+        15893,
+        2381,
+        18844
+       ],
+       "logits": [
+        21.905309677124023,
+        21.5599365234375,
+        19.524072647094727,
+        18.919523239135742,
+        17.545595169067383,
+        17.30885124206543,
+        16.69864273071289,
+        16.6143798828125,
+        16.510440826416016,
+        16.386926651000977,
+        16.321237564086914,
+        15.264065742492676,
+        15.230405807495117,
+        14.817451477050781,
+        14.558103561401367,
+        14.48190689086914
+       ],
+       "stop_logits": {
+        "248044": 10.294534683227539,
+        "248046": 21.5599365234375
+       }
+      },
+      "argmax": 2064,
+      "argmax_is_stop": false,
+      "margin": 0.34537315368652344,
+      "best_non_stop": 2064,
+      "generated_ids": [
+       2064,
+       13205,
+       364,
+       685,
+       310,
+       220,
+       18,
+       2756,
+       303,
+       279,
+       43447,
+       13
+      ],
+      "text": "It keeps for up to 3 days in the refrigerator.",
+      "n_generated": 12,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 243,
+      "cache_offset_measured": 243,
+      "first_token_s": 6.579365957994014,
+      "active_bytes": 9636037292,
+      "footprint_bytes": 11781787504,
+      "peak_bytes": 12420272196
+     },
+     "incremental": {
+      "mode": "incremental",
+      "note": "",
+      "prompt_len": 26,
+      "prompt_sha256": "c3a04bad34cbb2d59ad40071d1f2d52390c69f164d20f2552897d4f8ce771e0a",
+      "prompt_tail": [
+       3648,
+       11316,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 2,
+        "positions": [
+         2,
+         19
+        ]
+       },
+       "im_end": {
+        "count": 2,
+        "positions": [
+         0,
+         17
+        ]
+       },
+       "think": {
+        "count": 1,
+        "positions": [
+         22
+        ]
+       },
+       "think_close": {
+        "count": 1,
+        "positions": [
+         24
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        2064,
+        248046,
+        43,
+        760,
+        1919,
+        5844,
+        5247,
+        674,
+        32,
+        248068,
+        623,
+        2248,
+        7525,
+        15893,
+        2381,
+        18844
+       ],
+       "logits": [
+        21.905298233032227,
+        21.559925079345703,
+        19.524072647094727,
+        18.919525146484375,
+        17.545578002929688,
+        17.308835983276367,
+        16.69866371154785,
+        16.61440658569336,
+        16.510427474975586,
+        16.386924743652344,
+        16.321231842041016,
+        15.26405143737793,
+        15.230400085449219,
+        14.817365646362305,
+        14.558086395263672,
+        14.481907844543457
+       ],
+       "stop_logits": {
+        "248044": 10.29452896118164,
+        "248046": 21.559925079345703
+       }
+      },
+      "argmax": 2064,
+      "argmax_is_stop": false,
+      "margin": 0.34537315368652344,
+      "best_non_stop": 2064,
+      "generated_ids": [
+       2064,
+       13205,
+       364,
+       685,
+       310,
+       220,
+       18,
+       2756,
+       303,
+       279,
+       43447,
+       13
+      ],
+      "text": "It keeps for up to 3 days in the refrigerator.",
+      "n_generated": 12,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 243,
+      "cache_offset_measured": 243,
+      "first_token_s": 2.1238594171591103,
+      "active_bytes": 9443574444,
+      "footprint_bytes": 11590051036,
+      "peak_bytes": 11660994940
+     },
+     "reconstruction_equal_to_replay_prompt": true,
+     "reconstruction_len": 231,
+     "replay_vs_incremental_generated_equal": true,
+     "replay_vs_incremental_first_logits": {
+      "argmax_equal": true,
+      "common_top16": 16,
+      "max_abs_diff_common": 8.58306884765625e-05,
+      "stop_logit_abs_diff": 1.1444091796875e-05
+     },
+     "empty_assistant_turns_in_history": 0
+    },
+    {
+     "turn": 5,
+     "user": "Double the recipe: list only the ingredient amounts that change.",
+     "budget": 96,
+     "replay": {
+      "mode": "fresh",
+      "note": "",
+      "prompt_len": 269,
+      "prompt_sha256": "786b1749ab334eba1f1d970dd72b73ff929f47e7126108b0de69606f83f31bfb",
+      "prompt_tail": [
+       421,
+       2222,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 10,
+        "positions": [
+         165,
+         184,
+         207,
+         224,
+         245,
+         262
+        ]
+       },
+       "im_end": {
+        "count": 9,
+        "positions": [
+         163,
+         182,
+         205,
+         222,
+         243,
+         260
+        ]
+       },
+       "think": {
+        "count": 5,
+        "positions": [
+         28,
+         74,
+         187,
+         227,
+         265
+        ]
+       },
+       "think_close": {
+        "count": 5,
+        "positions": [
+         30,
+         76,
+         189,
+         229,
+         267
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        5844,
+        1860,
+        16,
+        17,
+        27336,
+        19,
+        760,
+        23,
+        43,
+        8839,
+        17848,
+        18,
+        12189,
+        248046,
+        40,
+        7144
+       ],
+       "logits": [
+        21.582862854003906,
+        20.490589141845703,
+        19.781963348388672,
+        19.7816162109375,
+        19.694622039794922,
+        19.18294334411621,
+        18.255210876464844,
+        17.528554916381836,
+        17.010652542114258,
+        16.7000732421875,
+        16.493980407714844,
+        16.045101165771484,
+        15.889537811279297,
+        15.601957321166992,
+        15.180734634399414,
+        15.138506889343262
+       ],
+       "stop_logits": {
+        "248044": 9.851092338562012,
+        "248046": 15.601957321166992
+       }
+      },
+      "argmax": 5844,
+      "argmax_is_stop": false,
+      "margin": 5.980905532836914,
+      "best_non_stop": 5844,
+      "generated_ids": [
+       5844,
+       46213,
+       8405,
+       25,
+       220,
+       17,
+       24569,
+       198,
+       27336,
+       25,
+       220,
+       19,
+       24569,
+       198,
+       1860,
+       289,
+       25,
+       220,
+       17,
+       198,
+       42475,
+       407,
+       25,
+       220,
+       19,
+       81378,
+       198,
+       8585,
+       4489,
+       25,
+       220,
+       17,
+       198,
+       84596,
+       702,
+       25,
+       220,
+       53027
+      ],
+      "text": "Red lentils: 2 cups\nWater: 4 cups\nOnion: 2\nGarlic: 4 cloves\nCarrot: 2\nCelery:  stalk",
+      "n_generated": 38,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 307,
+      "cache_offset_measured": 307,
+      "first_token_s": 8.431714207865298,
+      "active_bytes": 9669542572,
+      "footprint_bytes": 11691331812,
+      "peak_bytes": 12498946620
+     },
+     "incremental": {
+      "mode": "incremental",
+      "note": "",
+      "prompt_len": 26,
+      "prompt_sha256": "5b26301fa08178e88c47912545c1312ebdc11c46c2f5218a249005999f7ee825",
+      "prompt_tail": [
+       421,
+       2222,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 2,
+        "positions": [
+         2,
+         19
+        ]
+       },
+       "im_end": {
+        "count": 2,
+        "positions": [
+         0,
+         17
+        ]
+       },
+       "think": {
+        "count": 1,
+        "positions": [
+         22
+        ]
+       },
+       "think_close": {
+        "count": 1,
+        "positions": [
+         24
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        5844,
+        1860,
+        16,
+        17,
+        27336,
+        19,
+        760,
+        23,
+        43,
+        8839,
+        17848,
+        18,
+        12189,
+        248046,
+        40,
+        7144
+       ],
+       "logits": [
+        21.582843780517578,
+        20.4905948638916,
+        19.781963348388672,
+        19.781604766845703,
+        19.694637298583984,
+        19.18292999267578,
+        18.255231857299805,
+        17.52853775024414,
+        17.01062774658203,
+        16.700109481811523,
+        16.494007110595703,
+        16.045093536376953,
+        15.889575958251953,
+        15.60193920135498,
+        15.18075942993164,
+        15.138504028320312
+       ],
+       "stop_logits": {
+        "248044": 9.851064682006836,
+        "248046": 15.60193920135498
+       }
+      },
+      "argmax": 5844,
+      "argmax_is_stop": false,
+      "margin": 5.980904579162598,
+      "best_non_stop": 5844,
+      "generated_ids": [
+       5844,
+       46213,
+       8405,
+       25,
+       220,
+       17,
+       24569,
+       198,
+       27336,
+       25,
+       220,
+       19,
+       24569,
+       198,
+       1860,
+       289,
+       25,
+       220,
+       17,
+       198,
+       42475,
+       407,
+       25,
+       220,
+       19,
+       81378,
+       198,
+       8585,
+       4489,
+       25,
+       220,
+       17,
+       198,
+       84596,
+       702,
+       25,
+       220,
+       53027
+      ],
+      "text": "Red lentils: 2 cups\nWater: 4 cups\nOnion: 2\nGarlic: 4 cloves\nCarrot: 2\nCelery:  stalk",
+      "n_generated": 38,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 307,
+      "cache_offset_measured": 307,
+      "first_token_s": 2.1260050418786705,
+      "active_bytes": 9475539628,
+      "footprint_bytes": 11621447772,
+      "peak_bytes": 11697252152
+     },
+     "reconstruction_equal_to_replay_prompt": true,
+     "reconstruction_len": 269,
+     "replay_vs_incremental_generated_equal": true,
+     "replay_vs_incremental_first_logits": {
+      "argmax_equal": true,
+      "common_top16": 16,
+      "max_abs_diff_common": 3.814697265625e-05,
+      "stop_logit_abs_diff": 2.765655517578125e-05
+     },
+     "empty_assistant_turns_in_history": 0
+    },
+    {
+     "turn": 6,
+     "user": "Suggest one side dish. One line.",
+     "budget": 32,
+     "replay": {
+      "mode": "fresh",
+      "note": "",
+      "prompt_len": 330,
+      "prompt_sha256": "ccd7d578fbcaeb6454ef92c9dc316f82e01e2a3397f8dadddeaf384151d48207",
+      "prompt_tail": [
+       3648,
+       1500,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 12,
+        "positions": [
+         207,
+         224,
+         245,
+         262,
+         309,
+         323
+        ]
+       },
+       "im_end": {
+        "count": 11,
+        "positions": [
+         205,
+         222,
+         243,
+         260,
+         307,
+         321
+        ]
+       },
+       "think": {
+        "count": 6,
+        "positions": [
+         28,
+         74,
+         187,
+         227,
+         265,
+         326
+        ]
+       },
+       "think_close": {
+        "count": 6,
+        "positions": [
+         30,
+         76,
+         189,
+         229,
+         267,
+         328
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        15529,
+        32,
+        53784,
+        6262,
+        91986,
+        42475,
+        50,
+        34,
+        16835,
+        1206,
+        15716,
+        20265,
+        15893,
+        58384,
+        37,
+        1106
+       ],
+       "logits": [
+        20.877323150634766,
+        20.124446868896484,
+        19.77698516845703,
+        18.554370880126953,
+        18.466350555419922,
+        18.0576171875,
+        17.122671127319336,
+        17.078746795654297,
+        16.21829605102539,
+        16.02422332763672,
+        15.96255111694336,
+        15.840422630310059,
+        15.817761421203613,
+        15.769556999206543,
+        15.71033763885498,
+        15.677362442016602
+       ],
+       "stop_logits": {
+        "248044": 7.366545677185059,
+        "248046": 13.202710151672363
+       }
+      },
+      "argmax": 15529,
+      "argmax_is_stop": false,
+      "margin": 7.674612998962402,
+      "best_non_stop": 15529,
+      "generated_ids": [
+       15529,
+       44781,
+       15530
+      ],
+      "text": "Crusty bread",
+      "n_generated": 3,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 333,
+      "cache_offset_measured": 333,
+      "first_token_s": 10.252997833071277,
+      "active_bytes": 9701507756,
+      "footprint_bytes": 11826644316,
+      "peak_bytes": 12530911804
+     },
+     "incremental": {
+      "mode": "incremental",
+      "note": "",
+      "prompt_len": 23,
+      "prompt_sha256": "5764ab3742c557b9a5b7f28b5618eb5ea81d0bd5b8510107e8364efd5ad9a6c2",
+      "prompt_tail": [
+       3648,
+       1500,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 2,
+        "positions": [
+         2,
+         16
+        ]
+       },
+       "im_end": {
+        "count": 2,
+        "positions": [
+         0,
+         14
+        ]
+       },
+       "think": {
+        "count": 1,
+        "positions": [
+         19
+        ]
+       },
+       "think_close": {
+        "count": 1,
+        "positions": [
+         21
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        15529,
+        32,
+        53784,
+        6262,
+        91986,
+        42475,
+        50,
+        34,
+        16835,
+        1206,
+        15716,
+        20265,
+        15893,
+        58384,
+        37,
+        1106
+       ],
+       "logits": [
+        20.877321243286133,
+        20.12445068359375,
+        19.776988983154297,
+        18.55436134338379,
+        18.466358184814453,
+        18.057607650756836,
+        17.122663497924805,
+        17.07874298095703,
+        16.21829605102539,
+        16.024215698242188,
+        15.96255874633789,
+        15.840421676635742,
+        15.8177490234375,
+        15.769538879394531,
+        15.710345268249512,
+        15.677362442016602
+       ],
+       "stop_logits": {
+        "248044": 7.366535186767578,
+        "248046": 13.202685356140137
+       }
+      },
+      "argmax": 15529,
+      "argmax_is_stop": false,
+      "margin": 7.674635887145996,
+      "best_non_stop": 15529,
+      "generated_ids": [
+       15529,
+       44781,
+       15530
+      ],
+      "text": "Crusty bread",
+      "n_generated": 3,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 333,
+      "cache_offset_measured": 333,
+      "first_token_s": 2.056522750062868,
+      "active_bytes": 9475539628,
+      "footprint_bytes": 11619031608,
+      "peak_bytes": 11684620392
+     },
+     "reconstruction_equal_to_replay_prompt": true,
+     "reconstruction_len": 330,
+     "replay_vs_incremental_generated_equal": true,
+     "replay_vs_incremental_first_logits": {
+      "argmax_equal": true,
+      "common_top16": 16,
+      "max_abs_diff_common": 1.811981201171875e-05,
+      "stop_logit_abs_diff": 2.47955322265625e-05
+     },
+     "empty_assistant_turns_in_history": 0
+    },
+    {
+     "turn": 7,
+     "user": "Write the shopping list for the doubled recipe, one item per line.",
+     "budget": 96,
+     "replay": {
+      "mode": "fresh",
+      "note": "",
+      "prompt_len": 361,
+      "prompt_sha256": "b208e04270898fb2d5945e709585d0d2f529385cf0fec7b0a6c125c9db47a07a",
+      "prompt_tail": [
+       791,
+       1500,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 14,
+        "positions": [
+         245,
+         262,
+         309,
+         323,
+         335,
+         354
+        ]
+       },
+       "im_end": {
+        "count": 13,
+        "positions": [
+         243,
+         260,
+         307,
+         321,
+         333,
+         352
+        ]
+       },
+       "think": {
+        "count": 7,
+        "positions": [
+         74,
+         187,
+         227,
+         265,
+         326,
+         357
+        ]
+       },
+       "think_close": {
+        "count": 7,
+        "positions": [
+         76,
+         189,
+         229,
+         267,
+         328,
+         359
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        5844,
+        17,
+        16,
+        1114,
+        248046,
+        12,
+        11280,
+        19,
+        33,
+        15529,
+        23,
+        43,
+        35,
+        7144,
+        9,
+        32
+       ],
+       "logits": [
+        23.155059814453125,
+        20.263151168823242,
+        16.835256576538086,
+        16.005687713623047,
+        15.942543983459473,
+        15.870637893676758,
+        15.616728782653809,
+        15.558563232421875,
+        15.194894790649414,
+        14.749312400817871,
+        14.377037048339844,
+        14.253735542297363,
+        14.197089195251465,
+        13.878292083740234,
+        13.788572311401367,
+        13.729272842407227
+       ],
+       "stop_logits": {
+        "248044": 9.198556900024414,
+        "248046": 15.942543983459473
+       }
+      },
+      "argmax": 5844,
+      "argmax_is_stop": false,
+      "margin": 7.212515830993652,
+      "best_non_stop": 5844,
+      "generated_ids": [
+       5844,
+       46213,
+       8405,
+       198,
+       1860,
+       880,
+       198,
+       42475,
+       407,
+       198,
+       8585,
+       86159,
+       198,
+       84596,
+       702,
+       198,
+       21887,
+       10583,
+       198,
+       45742
+      ],
+      "text": "Red lentils\nOnions\nGarlic\nCarrots\nCelery\nBay leaves\nSalt",
+      "n_generated": 20,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 381,
+      "cache_offset_measured": 381,
+      "first_token_s": 10.3747728751041,
+      "active_bytes": 9701507756,
+      "footprint_bytes": 11846373232,
+      "peak_bytes": 12530911804
+     },
+     "incremental": {
+      "mode": "incremental",
+      "note": "",
+      "prompt_len": 28,
+      "prompt_sha256": "402463b6cab66646d4793577bcbbdee4d1a19606f2ee113365999e514b2f127a",
+      "prompt_tail": [
+       791,
+       1500,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 2,
+        "positions": [
+         2,
+         21
+        ]
+       },
+       "im_end": {
+        "count": 2,
+        "positions": [
+         0,
+         19
+        ]
+       },
+       "think": {
+        "count": 1,
+        "positions": [
+         24
+        ]
+       },
+       "think_close": {
+        "count": 1,
+        "positions": [
+         26
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        5844,
+        17,
+        16,
+        1114,
+        248046,
+        12,
+        11280,
+        19,
+        33,
+        15529,
+        23,
+        43,
+        35,
+        7144,
+        9,
+        32
+       ],
+       "logits": [
+        23.15502166748047,
+        20.26314926147461,
+        16.83523941040039,
+        16.00567626953125,
+        15.942596435546875,
+        15.870641708374023,
+        15.616706848144531,
+        15.558542251586914,
+        15.194869995117188,
+        14.749273300170898,
+        14.3770112991333,
+        14.253711700439453,
+        14.197078704833984,
+        13.87825870513916,
+        13.788568496704102,
+        13.729254722595215
+       ],
+       "stop_logits": {
+        "248044": 9.198596954345703,
+        "248046": 15.942596435546875
+       }
+      },
+      "argmax": 5844,
+      "argmax_is_stop": false,
+      "margin": 7.212425231933594,
+      "best_non_stop": 5844,
+      "generated_ids": [
+       5844,
+       46213,
+       8405,
+       198,
+       1860,
+       880,
+       198,
+       42475,
+       407,
+       198,
+       8585,
+       86159,
+       198,
+       84596,
+       702,
+       198,
+       21887,
+       10583,
+       198,
+       45742
+      ],
+      "text": "Red lentils\nOnions\nGarlic\nCarrots\nCelery\nBay leaves\nSalt",
+      "n_generated": 20,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 381,
+      "cache_offset_measured": 381,
+      "first_token_s": 2.2083355840295553,
+      "active_bytes": 9475572396,
+      "footprint_bytes": 11619247816,
+      "peak_bytes": 11700220280
+     },
+     "reconstruction_equal_to_replay_prompt": true,
+     "reconstruction_len": 361,
+     "replay_vs_incremental_generated_equal": true,
+     "replay_vs_incremental_first_logits": {
+      "argmax_equal": true,
+      "common_top16": 16,
+      "max_abs_diff_common": 5.245208740234375e-05,
+      "stop_logit_abs_diff": 5.245208740234375e-05
+     },
+     "empty_assistant_turns_in_history": 0
+    },
+    {
+     "turn": 8,
+     "user": "Reply with just: enjoy.",
+     "budget": 16,
+     "replay": {
+      "mode": "fresh",
+      "note": "",
+      "prompt_len": 401,
+      "prompt_sha256": "89dd429206a64cef00f92a0daf807bfaf83c731c7ccab8438c1f7cbc28f2690b",
+      "prompt_tail": [
+       25,
+       4517,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 16,
+        "positions": [
+         309,
+         323,
+         335,
+         354,
+         383,
+         394
+        ]
+       },
+       "im_end": {
+        "count": 15,
+        "positions": [
+         307,
+         321,
+         333,
+         352,
+         381,
+         392
+        ]
+       },
+       "think": {
+        "count": 8,
+        "positions": [
+         187,
+         227,
+         265,
+         326,
+         357,
+         397
+        ]
+       },
+       "think_close": {
+        "count": 8,
+        "positions": [
+         189,
+         229,
+         267,
+         328,
+         359,
+         399
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        268,
+        37422,
+        4517,
+        248046,
+        1642,
+        923,
+        21953,
+        40,
+        760,
+        73,
+        3628,
+        5328,
+        42709,
+        99141,
+        32,
+        31009
+       ],
+       "logits": [
+        22.598987579345703,
+        21.060054779052734,
+        18.317596435546875,
+        17.847766876220703,
+        17.0134220123291,
+        14.914670944213867,
+        13.9226713180542,
+        13.702095031738281,
+        13.343860626220703,
+        13.107368469238281,
+        12.73933219909668,
+        12.414787292480469,
+        12.405843734741211,
+        12.294241905212402,
+        12.274615287780762,
+        12.261857032775879
+       ],
+       "stop_logits": {
+        "248044": 9.524604797363281,
+        "248046": 17.847766876220703
+       }
+      },
+      "argmax": 268,
+      "argmax_is_stop": false,
+      "margin": 4.751220703125,
+      "best_non_stop": 268,
+      "generated_ids": [
+       268,
+       3987
+      ],
+      "text": "enjoy",
+      "n_generated": 2,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 403,
+      "cache_offset_measured": 403,
+      "first_token_s": 11.450368084013462,
+      "active_bytes": 9701540524,
+      "footprint_bytes": 11846668636,
+      "peak_bytes": 12530944572
+     },
+     "incremental": {
+      "mode": "incremental",
+      "note": "",
+      "prompt_len": 20,
+      "prompt_sha256": "42407f5afe23b986124f64c87ae70037d59f1cd89ba0ffa04ce00d7555a8c3f1",
+      "prompt_tail": [
+       25,
+       4517,
+       13,
+       248046,
+       198,
+       248045,
+       74455,
+       198,
+       248068,
+       271,
+       248069,
+       271
+      ],
+      "markers": {
+       "im_start": {
+        "count": 2,
+        "positions": [
+         2,
+         13
+        ]
+       },
+       "im_end": {
+        "count": 2,
+        "positions": [
+         0,
+         11
+        ]
+       },
+       "think": {
+        "count": 1,
+        "positions": [
+         16
+        ]
+       },
+       "think_close": {
+        "count": 1,
+        "positions": [
+         18
+        ]
+       }
+      },
+      "first_logits_topk": {
+       "ids": [
+        268,
+        37422,
+        4517,
+        248046,
+        1642,
+        923,
+        21953,
+        40,
+        760,
+        73,
+        3628,
+        5328,
+        42709,
+        99141,
+        32,
+        31009
+       ],
+       "logits": [
+        22.598995208740234,
+        21.060049057006836,
+        18.317588806152344,
+        17.847801208496094,
+        17.01342010498047,
+        14.914668083190918,
+        13.922672271728516,
+        13.702079772949219,
+        13.343850135803223,
+        13.10735034942627,
+        12.739325523376465,
+        12.414749145507812,
+        12.405827522277832,
+        12.294233322143555,
+        12.27462387084961,
+        12.261846542358398
+       ],
+       "stop_logits": {
+        "248044": 9.524615287780762,
+        "248046": 17.847801208496094
+       }
+      },
+      "argmax": 268,
+      "argmax_is_stop": false,
+      "margin": 4.751194000244141,
+      "best_non_stop": 268,
+      "generated_ids": [
+       268,
+       3987
+      ],
+      "text": "enjoy",
+      "n_generated": 2,
+      "stop_reason": "stop_token",
+      "stop_token_id": 248046,
+      "cache_tokens": 403,
+      "cache_offset_measured": 403,
+      "first_token_s": 1.9036595828365535,
+      "active_bytes": 9475539628,
+      "footprint_bytes": 11620508528,
+      "peak_bytes": 11675150544
+     },
+     "reconstruction_equal_to_replay_prompt": true,
+     "reconstruction_len": 401,
+     "replay_vs_incremental_generated_equal": true,
+     "replay_vs_incremental_first_logits": {
+      "argmax_equal": true,
+      "common_top16": 16,
+      "max_abs_diff_common": 3.814697265625e-05,
+      "stop_logit_abs_diff": 3.4332275390625e-05
+     },
+     "empty_assistant_turns_in_history": 0
+    }
+   ]
+  }
+ ],
+ "summary": {
+  "empty_replay_turns": [
+   [
+    "travel",
+    5
+   ],
+   [
+    "travel",
+    6
+   ],
+   [
+    "travel",
+    7
+   ],
+   [
+    "debug",
+    7
+   ]
+  ],
+  "travel_empty_turns": 3,
+  "stop_tokens_chosen": {
+   "248046": 4
+  },
+  "reconstruction_mismatch_turns": 0,
+  "incremental_first_argmax_mismatch_turns": 0,
+  "incremental_generated_mismatch_turns": 0,
+  "offset_mismatch_turns": 0,
+  "gemm_vs_fused_max_abs_diff": 6.4849853515625e-05,
+  "gemm_vs_fused_argmax_mismatch_turns": 0,
+  "replay_vs_incremental_max_abs_diff": 8.58306884765625e-05,
+  "stop_margins": [
+   [
+    "Name one restaurant style I sh",
+    2.292
+   ],
+   [
+    "Give me a two-line summary of ",
+    4.643
+   ],
+   [
+    "Translate that summary into Fr",
+    9.963
+   ],
+   [
+    "What is one risk of accepting ",
+    2.137
+   ]
+  ],
+  "min_stop_margin": 2.136564254760742,
+  "counterfactual_single_turn_nonempty": 4,
+  "counterfactual_empties_removed_nonempty": 1,
+  "counterfactual_empties_removed_rows": 2
+ },
+ "wall_s": 553.8783868327737
+}

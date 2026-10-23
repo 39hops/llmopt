@@ -118,6 +118,14 @@ def main(base_path, xhigh_path, low_path, med_path, prereg_path):
         eff = cfg.get("reasoning_effort_effective", "xhigh" if cfg.get("enable_thinking") else None)
         if cfg.get("enable_thinking") is not think or cfg.get("max_tokens_per_turn") != budget or eff != effort:
             reasons.append(f"{nm}: execution config {cfg} is not thinking={think} budget={budget} effort={effort}")
+    for nm, r in recs.items():
+        if sum(len(t["results"]) for t in r.get("tasks", [])) != 52:
+            reasons.append(f"{nm}: {sum(len(t['results']) for t in r.get('tasks', []))} turns, not 52")
+    if len({r.get("engine", {}).get("chain_sha256") for r in recs.values()}) != 1:
+        reasons.append("the receipts are not on the same artifact chain")
+    tsh = {json.dumps(r.get("engine", {}).get("tokenizer_files_sha256"), sort_keys=True) for r in recs.values() if r.get("engine", {}).get("tokenizer_files_sha256")}
+    if len(tsh) > 1:
+        reasons.append("the receipts disagree on the tokenizer file shas")
     valid = not reasons
     meas, diag = {}, {}
     if valid:
@@ -128,9 +136,13 @@ def main(base_path, xhigh_path, low_path, med_path, prereg_path):
             diag[nm] = summary(r, tasks_by_id, st[nm], think)
             diag[nm]["rows_changed_by_amended_scorer"] = changed
             tasks[nm] = per_task(r, tasks_by_id, st[nm], why, think)
+            if any(s == "hold" for s in st[nm].values()):
+                reasons.append(f"{nm}: a code row recomputed as hold (sandbox unavailable at adapter time)")
+        if reasons:
+            valid, meas = False, {}
         diag["per_task"] = {i: {nm: tasks[nm][i] for nm in recs} for i in tasks_by_id}
         diag["transitions"] = {i: " > ".join(tasks[nm][i]["status"][0] for nm in ("BASELINE", "XHIGH768", "LOW", "MEDIUM")) for i in tasks_by_id}
-        for arm, base_id in (("LOW", 1), ("MEDIUM", 6)):
+        for arm, base_id in ((("LOW", 1), ("MEDIUM", 6)) if valid else ()):
             d, a = diag[arm], arm.lower()
             ctrl = f"baseline {diag['BASELINE']['arith_json']}/{diag['BASELINE']['code']}/{diag['BASELINE']['other']}, xhigh768 {diag['XHIGH768']['arith_json']}/{diag['XHIGH768']['code']}/{diag['XHIGH768']['other']} (arith+json/code/other)"
             meas[str(base_id)] = {"value": d["arith_json"], "metric": f"arith_json_pass_{a}", "population": "tasks:18", "aggregation": "count", "unit": "tasks", "provenance": ctrl}
@@ -142,7 +154,8 @@ def main(base_path, xhigh_path, low_path, med_path, prereg_path):
                                       "provenance": f"xhigh768 {diag['XHIGH768']['generated_tokens']}; baseline {diag['BASELINE']['generated_tokens']}"}
             meas[f"{base_id + 4}:time"] = {"value": d["task_time_s"], "metric": f"task_time_s_{a}", "population": "turns:52", "aggregation": "sum", "unit": "s",
                                            "provenance": f"xhigh768 {diag['XHIGH768']['task_time_s']}; baseline {diag['BASELINE']['task_time_s']}"}
-        meas["arith_json_pass_low"] = dict(meas["1"])
+        if valid:
+            meas["arith_json_pass_low"] = dict(meas["1"])
     obs = {"note": f"Mechanical projection of {base_path}, {xhigh_path}, {low_path}, {med_path}; adapter scratch/qwen_effort_obs.py; thinking verdicts recomputed under the amended scorer",
            "registration_sha256": registration_digest(prereg),
            "measurement_valid": valid, **({} if valid else {"measurement_reason": "; ".join(reasons)}),

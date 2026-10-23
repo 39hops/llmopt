@@ -1,6 +1,10 @@
 # SCOREBOARD — generated sample of index-curated verdicts
 
-*Generated from docs/results-index.jsonl by scripts/gen_scoreboard.py. 90 live of 98 entries carrying a hand-curated `verdict` field, out of 1553 ledger entries; the curated field reaches RESULTS line 84666. This is a PARTIAL view, not current truth: docs/FINDINGS.md is the curated public layer, and every entry resolves through docs/RESULTS.md. Full chains: scripts/results_query.py --chain. Never hand-edit this file.*
+*Generated from docs/results-index.jsonl by scripts/gen_scoreboard.py. 92 live of 100 entries carrying a hand-curated `verdict` field, out of 1556 ledger entries; the curated field reaches RESULTS line 85010. This is a PARTIAL view, not current truth: docs/FINDINGS.md is the curated public layer, and every entry resolves through docs/RESULTS.md. Full chains: scripts/results_query.py --chain. Never hand-edit this file.*
+
+## QWEN-EFFORT-AND-DEEPCHAT
+- **2026-10-23** DIAGNOSED: every bar FIRE; the empty completions are decided <|im_end|> stops (2.1 to 10.0 logits) after shrinking replies, mechanism 1 with 5; template, accounting and the two Metal paths excluded; no serving defect  *(RESULTS L85010)*
+- **2026-10-23** GO on low: reasoning_effort low at 768 fires all five bars (40 of 46, arith+JSON 15 of 18, code 7 of 8, 0.54 of xhigh tokens); medium misses code and cost; low RECOMMENDED as default, not flipped  *(RESULTS L84903)*
 
 ## QWEN-CHAT-DEFAULT-AND-THINKING
 - **2026-10-23** MIXED: thinking at 768 tokens 36 of 46 against 33, arithmetic plus JSON 16 of 18 against 8 (FIRE), code 2 of 8 against 7 (NO-FIRE), 384 UNRESOLVED by fence; tokens 4.7x and 6.6x  *(RESULTS L84666)*

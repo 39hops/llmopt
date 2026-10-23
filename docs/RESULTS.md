@@ -84871,3 +84871,214 @@ empty turn among the three, margins 12.9, 6.2 and 1.5 logits for the
 chosen non-stop tokens, the reconstruction equal on all three; the
 stop-chosen branch (fused re-prefill, counterfactuals) was exercised
 separately on a one-turn prompt.
+
+## AMENDMENT QWEN-DEEPCHAT-0-ADAPTER (amends PRE-REG QWEN-DEEPCHAT-0 and, for its adapter only, PRE-REG QWEN-EFFORT-0): drafted while the registered chain was live and before any receipt was read, from the independent Opus audit of the registered code: (1) the deep-chat adapter emitted an unregistered refutation key and the 4:argmax conjunct inherited the bar's logit unit, so no valid receipt could have been adjudicated; (2) bar 2's in-run reconstruction applied the chat template to the session's own messages and could detect only nondeterminism, so bar 2 is now measured against a ChatML transcript built by hand from the user texts and the decoded replies and tokenised without the template, with a conjunct counting later incremental turns that fell back; (3) bar 3's offset conjunct counted within-session mismatches, which abort the run and can never be counted, so it now compares the incremental session's measured offset with replay's on every turn; (4) the effort adapter now requires 52 turns per receipt, one artifact chain and one tokenizer across the four receipts, and invalidates the measurement if a code row recomputes as hold; the amended executable registration is docs/preregs/qwen-deepchat-0a.json (bars, values and priors otherwise unchanged); the effort registration JSON is unchanged (2026-10-23)
+
+Also from the audit, booked here and carried into the verdicts rather
+than changed: the second counterfactual (the empty assistant turns
+removed, their user turns kept) leaves consecutive user messages in the
+rendering and is confounded; mechanism 5 is reported from the
+counterfactuals and not adjudicated, as registered; bar 4 compares the
+two Metal prefill paths and cannot see a numerical fault both share
+(the CPU census contract is cited for scale, not re-run); the receipt
+stores each prompt's sha256, length, tail and marker positions and the
+hand-built ChatML check recovers the full rendering from the recorded
+texts; the structured refutation predicates of both registrations
+encode one clause each of their prose conditions, and the verdicts
+read the prose condition; the effort study's controls are historical
+receipts from an earlier commit (generation code unchanged in the
+diff; the first-token logits record adds to total time after the
+first token and not to first-token latency); the fences cover run-to-
+run noise, not task sampling, on an exposed battery. Code repairs
+landing with this amendment: template refusals (jinja2 TemplateError,
+not a ValueError) now surface as InputError and the CLI refuses
+--reasoning-effort with --no-thinking at argument parsing; the stub
+effort test now exercises reuse under every effort and a real
+mid-session effort change (the first version's trajectories never
+closed the think block, so every turn fell back and the test pinned
+nothing). The prose claim of PRE-REG QWEN-EFFORT-0 that "an unsupported
+value is refused by the template and surfaces as InputError" is
+corrected: the Engine refuses the value before the template is called.
+
+## VERDICT QWEN-EFFORT-0: reasoning_effort low at 768 tokens fires all five of its bars (adjudicated against docs/preregs/qwen-effort-0.json; logs/qwen_battery/effort_adjudicate_1/observations.json and logs/qwen_battery/effort_adjudicate_1/adjudication.txt): on the byte-identical v2 battery, honest passes 40 of 46 against 33 without thinking, 36 at xhigh 768 and 38 at medium; arithmetic plus JSON 15 of 18 (baseline 8, xhigh 16, medium 15), code 7 of 8 (baseline 7, xhigh 2, medium 4), the instruction, two-turn and termination kinds 18 of 20 (baseline 18, xhigh 18, medium 19), 2 unterminated think blocks of 52 turns (xhigh 8, medium 4), 7,957 generated tokens and 977 s of task time (0.54 and 0.55 of xhigh's 14,721 and 1,792; 3.6x and 2.3x the no-thinking baseline); medium fires three bars, misses code (4 of 8) and cost (12,421 tokens, 1,396 s) and is unresolved on termination; low QUALIFIES for a RECOMMENDED default change to thinking at low effort, not implemented in this round; conclusions conditional on greedy decoding on an exposed battery (2026-10-23, Mac, commit b638a497 for the receipts)
+
+The adjudicator's lines, verbatim:
+  BAR 1 ARITH-JSON-LOW: FIRE
+  BAR 2 CODE-LOW: FIRE
+  BAR 3 OTHER-LOW: FIRE
+  BAR 4 TERMINATION-LOW: FIRE
+  BAR 5 COST-LOW: FIRE
+  BAR 6 ARITH-JSON-MEDIUM: FIRE
+  BAR 7 CODE-MEDIUM: NO-FIRE
+  BAR 8 OTHER-MEDIUM: FIRE
+  BAR 9 TERMINATION-MEDIUM: UNRESOLVED [fence: |observed 4.0 - bar 4.5| = 0.5 < 1.0 turns]
+  BAR 10 COST-MEDIUM: NO-FIRE
+  REFUTED-IF: NOT-REFUTED
+The structured predicate encodes bar 1 under low only; the prose
+condition (NULL if neither arm fires all five) is also not met, since
+low fires all five.
+
+Receipts: logs/qwen_battery/results_v2_think768_low.json and
+logs/qwen_battery/results_v2_think768_medium.json (scratch/qwen_battery_
+run.py with THINK=1 BUDGET=768 and EFFORT low or medium, a fresh replay
+session per task, under liverun qwen-effort-0 at b638a497, clean tree;
+log logs/qwen_serve/effort_b638a497.log, record logs/liverun/qwen-
+effort-0.jsonl); the historical controls logs/qwen_battery/results_v2.
+json (no thinking, 384) and results_v2_think768.json (xhigh, 768, from
+7ae6a556; generation code unchanged between the commits, the first-
+token logits record added after the first token); observations by
+scratch/qwen_effort_obs.py (every thinking receipt's verdicts recomputed
+from the stored replies under the amended scorer, no row changed in any
+of the three; 52 turns, one artifact chain and one tokenizer across the
+four receipts; the code tasks re-run in the sandbox at adapter time).
+The execution configurations are recorded apart from the frozen rules
+(v2-think-768-low, v2-think-768-medium: enable_thinking True, the
+template's reasoning_effort, 768 tokens; the same collection sha256,
+greedy decoding, no system prompt, context cap 8,192 as every earlier
+run). The template semantics were verified before the run
+(tests/test_qtemplate.py, 12 passed in the chain's first stage with the
+live serve tests): low injects the brief-reasoning system instruction,
+medium injects no instruction at all, omitted equals xhigh.
+
+By kind (honest count; no thinking, xhigh 768, low 768, medium 768):
+  arithmetic    7,  9,  9,  9 of 10
+  JSON          1,  7,  6,  6 of 8
+  code          7,  2,  7,  4 of 8
+  instructions  6,  6,  7,  7 of 8
+  two-turn      6,  6,  5,  6 of 6
+  termination   6,  6,  6,  6 of 6
+  total        33, 36, 40, 38 of 46
+Unterminated think blocks 0, 8, 2, 4 of 52 turns; thinking replies with
+no final answer (an unclosed block, or a closed block followed by
+nothing) 8, 3, 4 for xhigh, low and medium; output
+format compliance of the final answer on the 18 arithmetic and JSON
+tasks 16, 17, 17, 17; generated tokens 2,240, 14,721, 7,957, 12,421
+(reasoning 0, 14,091, 6,988, 11,605; answers 2,240, 630, 969, 816);
+budget stops 3, 8, 2, 5; median first-token latency 2.9, 3.8, 3.3, 2.4
+s (medium has no system message; low's is shorter than xhigh's); task
+time 419, 1,792, 977, 1,396 s; peak active 11.7, 11.8, 11.8, 11.7 GB;
+context refusals 0 everywhere. Median reasoning length by kind at low:
+arithmetic 72 tokens, JSON 117, code 226, instructions 86, two-turn 42,
+termination 49, against xhigh's 196, 187, 768 (the budget), 118, 71,
+93 and medium's 240, 189, 646, 131, 48, 49.
+
+Per-task transitions (baseline > xhigh > low > medium; rows that change
+only): arith-02 p>p>f>f (a plain five-digit subtraction whose think
+block never closes at 768 under low and medium: both keep re-verifying);
+arith-03, -04, -05 f>p>p>p; arith-07 p>f>p>p (the sum xhigh never
+closed, low closes in 49 tokens); json-01, -04, -07, -08 f>p>p>p;
+json-02 f>p>p>f (medium's mean 72.8 for 70.25); json-03 f>f>f>p (low
+57.53 for 57.43; medium right); json-05 f>p>f>f (295.87 for 299.87 under
+both); code-03 p>f>f>f (two-sum never closes at any effort); code-04 and
+code-06 p>f>p>p; code-05 and code-07 p>f>p>f (medium unclosed); code-08
+e>f>p>f (low's matrix-power fib_mod closes at 538 tokens and passes the
+hidden tests; medium's closes at 723 and FAILS the tests, the first
+genuine code failure in this series); instruct-04 p>f>p>p; instruct-06
+f>p>p>p; twoturn-02 p>p>f>p (low closed its block after 14 tokens and
+emitted an EMPTY final answer: no valid final answer, a fail, the only
+two-turn miss in any configuration). instruct-08 ("orbits" for "orbit")
+fails in all four.
+
+Interpretation (study A3). Low improves code completion by making the
+thinking shorter: the median code reasoning falls from the budget (768)
+to 226 tokens, 7 of 8 blocks close and all 7 that close pass their
+hidden tests (the baseline's seven minus code-03, plus code-08, which
+the baseline had cut mid-function). It gives back
+one point of the arithmetic and JSON recovery (15 of 18 against xhigh's
+16, still 7 above the baseline's 8): the two JSON misses are arithmetic
+slips of 0.10 and 4.00 inside closed blocks and the arithmetic miss is
+an unclosed block on a plain subtraction, so low does not trade
+accuracy for brevity on the tasks it closes, it loses the few it does
+not close. Medium (no instruction) sits between low and xhigh on every
+count except first-token latency and the two-turn kind, and its code
+kind does not recover (4 of 8, three unclosed, one wrong). Both arms
+and the controls run greedy; the vendor recommends sampling for
+ordinary generation, so every statement here is conditional on greedy
+decoding and the one-run fences cover run-to-run noise, not task
+sampling: a 40 against 33 on 46 exposed tasks that have now been read
+under four configurations is a recommendation-grade result, not a
+general effect.
+
+Recommendation (not implemented): flip the chat default to
+enable_thinking True with reasoning_effort low at a 768-token budget,
+under a separate GO, after one confirmation on a fresh prompt set this
+battery did not shape. The current configurable behaviour (thinking off
+by CLI flag, effort by --reasoning-effort, default unchanged at the
+template's xhigh when thinking is on) is retained. No model, kernel or
+default changed in this round.
+
+## VERDICT QWEN-DEEPCHAT-0: the empty completions are the model's own decided stops, mechanism 1 with 5 (adjudicated against the amended docs/preregs/qwen-deepchat-0a.json; logs/qwen_serve/deepchat_adjudicate_1/observations.json and logs/qwen_serve/deepchat_adjudicate_1/adjudication.txt; every bar FIRE): the travel conversation reproduces its three consecutive empty turns (5, 6, 7) and the debug control its one (turn 7), all on <|im_end|> chosen as the first token by 2.1 to 10.0 logits over the best non-stop token; a ChatML transcript built by hand and tokenised without the chat template matches the session's prompt on all 24 turns and no later incremental turn fell back; the incremental session's first-token argmax, generated ids and measured KV offsets equal replay's on every turn (top-16 logits within 8.6e-5); the fused prefill path agrees with GEMM on every stop-chosen turn (argmax equal, shared top-16 within 6.5e-5); the same four user turns asked alone are answered with 26 to 31 tokens at margins of 10 to 12 logits, and the replies shorten monotonically with depth (94, 91, 3, 1, 0, 0, 0, 2 tokens) before the stops; a quality and reliability limitation of thinking-off multi-turn chat, not an inference correctness bug; no serving defect, no correction proposed (2026-10-23, Mac, commit b638a497 for the receipt)
+
+The adjudicator's lines, verbatim:
+  BAR 1 REPRODUCES: FIRE
+  BAR 2 TEMPLATE: FIRE
+  BAR 3 ACCOUNTING: FIRE
+  BAR 4 NUMERICAL: FIRE
+  BAR 5 DECIDED-STOP: FIRE
+  REFUTED-IF: NOT-REFUTED
+The structured predicate encodes bar 2 only; the prose condition (the
+serving path implicated if bar 2, 3 or 4 reads NO-FIRE) is not met.
+
+Receipt logs/qwen_serve/deepchat_v1.json (scratch/qwen_deepchat_diag.py
+on the unchanged conversations of scratch/qwen_incr_perf.py, kernel
+generation 5, GEMM chunk-256 prefill, the 2 GiB cache limit, under
+liverun qwen-effort-0 at b638a497, clean tree; 554 s); observations by
+scratch/qwen_deepchat_obs.py against the amended registration
+(AMENDMENT QWEN-DEEPCHAT-0-ADAPTER, registered while the chain was live
+and before the receipt was read).
+
+Measured. Bar 1: empty replay completions on travel turns 5, 6 and 7
+and debug turn 7; four stop-chosen turns, every one <|im_end|>
+(248046), never <|endoftext|> (248044, 8 to 13 logits below). Bar 2:
+the hand-built thinking-off ChatML (user text, the empty think block,
+the decoded reply, <|im_end|>, per turn) tokenised without the template
+equals the session's recorded prompt sha256 on all 24 turns (the
+circular in-run reconstruction also 0); 0 of 21 later incremental turns
+fell back. Bar 3: 0 of 24 first-token argmax mismatches, 0 generated-id
+mismatches, 0 offset mismatches between the incremental and replay
+sessions; the replay-against-incremental top-16 logits differ by at
+most 8.6e-5 (the two kernel paths for the earlier tokens). Bar 4: on
+the four stop-chosen prompts the fused path's top-16 agree with GEMM's
+within 6.5e-5, 3.8e-5, 3.1e-5 and 2.3e-5 with the same argmax; this
+compares the two Metal prefill paths and cannot see a fault both share
+(the CPU census contract, top-16 p99 1.3e-4, is cited for scale and was
+not re-run). Bar 5: the stop margins are 2.29 (travel 5), 4.64 (travel
+6), 9.96 (travel 7) and 2.14 logits (debug 7), the smallest 2.14; the
+margin GROWS with each consecutive empty turn of travel. Near ties did
+occur elsewhere (travel turn 4 "Day" by 0.20, debug turn 4 by 0.03,
+recipe turn 4 by 0.35) and the two modes agreed on all of them.
+
+Counterfactuals (labelled, never a baseline). CF1, the user turn alone
+as a fresh single-turn conversation: all four answered, 27, 31, 30 and
+26 tokens, by margins of 10.3 to 11.9 logits. CF2, the transcript with
+its empty assistant turns removed and their user turns kept (confounded:
+it leaves consecutive user messages, an unusual rendering): travel
+turn 6 with one empty removed still stops (margin 2.71); travel turn 7
+with two removed answers 19 tokens by a near tie (0.16). The
+deterioration therefore does not rest on the empty messages alone: the
+transcript of progressively shorter answers (94, 91, 3, 1 tokens before
+the first empty turn; turn 2 restates turn 1's "Day 1: Explore..."
+verbatim instead of swapping day two) carries it, and the empty turns
+then reinforce it.
+
+Classification. (1) Immediate stop predicted by the model: YES, decided
+by 2 to 10 logits, <|im_end|> every time. (2) Malformed template
+rendering: excluded on this evidence (hand-built ChatML equal on 24 of
+24; the template's own rendering of empty content is the empty think
+block followed by <|im_end|>, which is what the model is then asked to
+continue). (3) Token or cache accounting: excluded (argmax, ids and
+offsets equal between modes on every turn; within-session mismatches
+would have aborted the run). (4) Numerical or backend inconsistency:
+excluded between the two Metal paths (6.5e-5 at the top-16); not
+tested against a CPU reference. (5) Behavioural deterioration as the
+conversation grows: YES, the replies shorten monotonically with depth
+in thinking-off mode under 48 to 96-token budgets, the single-turn
+counterfactual answers every prompt, and removing the empties recovers
+one of two. The finding is booked as a quality and reliability
+limitation of thinking-off multi-turn chat on arm C under greedy
+decoding (also the model's documented setting is sampling, not used
+here), not as an inference correctness bug; the serving path is not
+implicated and no correction is proposed. Not measured here: whether
+thinking mode (any effort) or the tight per-turn budgets of the frozen
+conversation drive the shortening; both are the next diagnostic's
+variables.
