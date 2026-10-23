@@ -16,7 +16,7 @@ this also drives `library`; from lab tooling it drives
 comments or plain strings; `via` names the cited caller a file
 inherits its class from when no document names the file itself.
 
-Census: library 202, reproduce-pinned 9, results-cited 549, spec-cited 75, tool-referenced 4, UNCITED 124 (of 963; library rows that are also doc-cited: 198)
+Census: library 202, reproduce-pinned 9, results-cited 554, spec-cited 75, tool-referenced 4, UNCITED 123 (of 967; library rows that are also doc-cited: 198)
 
 ## scratch/
 
@@ -590,7 +590,7 @@ Census: library 202, reproduce-pinned 9, results-cited 549, spec-cited 75, tool-
 | quick | quick_exact_3080.sh | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — | — | — |
 | qwen | qwen_alttok_derive.py | results-cited | RESULTS, specs | RESULTS×3, specs×2 | — | 1 | — | — |
 | qwen | qwen_attrib_adjudicate.py | library | specs | specs×2 | 1 | 1 | 1 | — |
-| qwen | qwen_battery_run.py | UNCITED | — | — | — | 1 | — | — |
+| qwen | qwen_battery_run.py | results-cited | RESULTS | RESULTS×1 | — | 2 | 1 | — |
 | qwen | qwen_ble2_adjudicate.py | library | RESULTS, specs | RESULTS×5, specs×2 | 1 | 1 | — | — |
 | qwen | qwen_ble2_autopsy.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
 | qwen | qwen_blem_perf.py | results-cited | RESULTS | RESULTS×4 | — | 1 | — | — |
@@ -598,6 +598,7 @@ Census: library 202, reproduce-pinned 9, results-cited 549, spec-cited 75, tool-
 | qwen | qwen_blem_perf3.py | results-cited | RESULTS | RESULTS×4 | — | — | — | — |
 | qwen | qwen_capacity27b.py | results-cited | RESULTS | RESULTS×4 | — | — | — | — |
 | qwen | qwen_census_night.sh | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
+| qwen | qwen_chat_default_study.sh | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
 | qwen | qwen_cheap_readout.py | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
 | qwen | qwen_cuda_rung0.py | UNCITED | — | — | — | — | — | — |
 | qwen | qwen_cuda_rung1.py | UNCITED | — | — | — | — | — | — |
@@ -626,6 +627,8 @@ Census: library 202, reproduce-pinned 9, results-cited 549, spec-cited 75, tool-
 | qwen | qwen_homeo_adjudicate.py | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
 | qwen | qwen_hsimpulse_adjudicate.py | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
 | qwen | qwen_hsimpulse_color.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
+| qwen | qwen_incr_obs.py | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
+| qwen | qwen_incr_perf.py | results-cited | RESULTS | RESULTS×3 | — | 1 | 1 | — |
 | qwen | qwen_inference_study.sh | UNCITED | — | — | — | — | — | — |
 | qwen | qwen_ioattrib_adjudicate.py | library | RESULTS, specs | RESULTS×2, specs×1 | 1 | 1 | — | — |
 | qwen | qwen_layer_restore.py | results-cited | RESULTS, specs | RESULTS×21, specs×1 | — | 1 | 1 | — |
@@ -667,6 +670,7 @@ Census: library 202, reproduce-pinned 9, results-cited 549, spec-cited 75, tool-
 | qwen | qwen_stream_probe.py | library | RESULTS, via:specs | RESULTS×2 | 2 | 3 | — | — |
 | qwen | qwen_teacher_pass.py | library | RESULTS | RESULTS×2 | 2 | 1 | — | — |
 | qwen | qwen_teacher_sidecar.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
+| qwen | qwen_think_obs.py | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
 | qwen | qwen_topset_census.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
 | qwen | qwen_tower_ladder.py | results-cited | RESULTS, via:specs | RESULTS×18 | — | 11 | — | — |
 | qwen | qwen_tree_adjudicate.py | library | RESULTS, specs | RESULTS×2, specs×1 | — | 1 | — | — |
@@ -940,7 +944,7 @@ Census: library 202, reproduce-pinned 9, results-cited 549, spec-cited 75, tool-
 | harvest | harvest_champion.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
 | harvest | harvest_frontier.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — | — | — |
 | list | list_uncurated.py | spec-cited | specs | specs×6 | — | — | — | — |
-| liverun | liverun.py | library | RESULTS, specs, TOOLING | RESULTS×20, specs×8, TOOLING×3 | — | 23 | 1 | — |
+| liverun | liverun.py | library | RESULTS, specs, TOOLING | RESULTS×20, specs×8, TOOLING×3 | — | 24 | 1 | — |
 | log | log_hygiene.py | library | RESULTS, specs | RESULTS×3, specs×7 | 2 | 1 | — | — |
 | markov | markov_eval.py | UNCITED | — | — | — | — | — | — |
 | markov | markov_prior.py | spec-cited | specs | specs×3 | — | — | — | — |
