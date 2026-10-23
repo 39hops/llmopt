@@ -647,7 +647,7 @@ Census: library 202, reproduce-pinned 9, results-cited 547, spec-cited 75, tool-
 | qwen | qwen_metal_serve_study.sh | UNCITED | — | — | — | — | — | — |
 | qwen | qwen_metal_tower.py | library | RESULTS, specs | RESULTS×6, specs×1 | — | 1 | 1 | — |
 | qwen | qwen_mips_census.py | results-cited | RESULTS | RESULTS×5 | — | — | — | — |
-| qwen | qwen_mlp_capture.py | results-cited | RESULTS | RESULTS×5 | — | 1 | — | — |
+| qwen | qwen_mlp_capture.py | results-cited | RESULTS, specs | RESULTS×5, specs×1 | — | 1 | — | — |
 | qwen | qwen_mlp_coupled.py | results-cited | RESULTS | RESULTS×5 | — | 1 | 1 | — |
 | qwen | qwen_mlp_obs.py | results-cited | RESULTS | RESULTS×6 | — | 1 | — | — |
 | qwen | qwen_mlp_study.sh | results-cited | RESULTS | RESULTS×4 | — | — | — | — |
