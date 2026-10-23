@@ -1740,6 +1740,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/liverun/qwen-geometry-1.jsonl": {
+   "bytes": 480,
+   "exists": true,
+   "sha256": "a1f629b84b460c431f5841d3cfaa57c1e3d04d0581cf5c8d4a23f46ca19ab5e8",
+   "source": "results",
+   "tracked": true
+  },
   "logs/liverun/qwen-head-restore-0.jsonl": {
    "bytes": 488,
    "exists": true,
@@ -4707,29 +4714,75 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qwen_geometry/adjudicate_1/adjudication.txt": {
+   "bytes": 109,
+   "exists": true,
+   "sha256": "f6c9c71a71eaa25f182ff883eb7bf5d88e5342d7f0c872b8a750c3f4d10429d9",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwen_geometry/adjudicate_1/observations.json": {
+   "bytes": 2650,
+   "exists": true,
+   "sha256": "dc01991e5fc96a318f1fa388d02bf458c85bd4f3521b96a842424937a75d97d0",
+   "source": "results",
+   "tracked": true
+  },
   "logs/qwen_geometry/adjudication.txt": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 0,
+   "exists": true,
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_geometry/capture.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 33748,
+   "exists": true,
+   "sha256": "9ba40eb275e375755e65d764f47476850628a3a9657532e724783c117ae3362e",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_geometry/dev.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 48310,
+   "exists": true,
+   "sha256": "2fea041bee7a72fd4cefbb955310c4f267ea30c63b1132a32a930c134a075512",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_geometry/eval.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 48347,
+   "exists": true,
+   "sha256": "24e124ac4b3f3af75acd7d6bca12c3eed1adf3dba4291bc3520a9685af039169",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_geometry/observations.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 2700,
+   "exists": true,
+   "sha256": "1ce3884944c21a60bfa91ee239c78437acb5b123269adb02c8598667908c0a30",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwen_geometry/study_26d278f0.log": {
+   "bytes": 7838,
+   "exists": true,
+   "sha256": "2f0d7f36db7b796a8a5f4cf524b877defb37baec5a29231c3068a08078d587c2",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwen_geometry/study_eac8232f.log": {
+   "bytes": 180,
+   "exists": true,
+   "sha256": "fec253731e00be9107f552863dd378eb125163acba78c700b1f74d5a9dc13db5",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_geometry/transform.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 4805,
+   "exists": true,
+   "sha256": "a846e44a97d783c1b969433f1e071447ea615007dad30adde35ee8480ddcaeac",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_head_restore/adjudication.txt": {
    "bytes": 149,

@@ -256,7 +256,7 @@
       },
       {
         "label": "Null",
-        "value": 55,
+        "value": 56,
         "entity": "random",
         "note": "the idea did not work"
       },
@@ -267,7 +267,7 @@
         "note": "withdrawn in writing"
       }
     ],
-    "fence": "docs/FINDINGS.md · 432 curated claims · recounted from the source at build time",
+    "fence": "docs/FINDINGS.md · 433 curated claims · recounted from the source at build time",
     "fence_ids": []
   }
 }

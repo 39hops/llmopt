@@ -1,0 +1,6 @@
+== skip capture (ONLY=adjudicate)
+== skip transform (ONLY=adjudicate)
+== skip dev (ONLY=adjudicate)
+== skip eval (ONLY=adjudicate)
+== adjudicate 04:13:55 eac8232f
+== DONE 04:13:55

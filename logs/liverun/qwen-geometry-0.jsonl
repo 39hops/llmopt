@@ -1,0 +1,2 @@
+{"event": "armed", "run_id": "qwen-geometry-0", "pid": 65892, "launch_commit": "26d278f0d3490c2a385c54f1ed6e42d55b6780c3", "launch_commit_short": "26d278f0", "worktree_role": "main", "worktree_name": "llmopt", "cwd_relative": ".", "started_utc": "2026-10-23T03:39:08+00:00", "dirty_at_arm": false, "sentinel": ".git/liverun.lock"}
+{"event": "disarmed", "run_id": "qwen-geometry-0", "pid": 65892, "rc": 1, "ended_utc": "2026-10-23T04:12:05+00:00", "sentinel": ".git/liverun.lock"}

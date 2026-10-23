@@ -1,0 +1,194 @@
+{
+ "commit": "26d278f0",
+ "tree_dirty": false,
+ "repeats": 50,
+ "queue": 32,
+ "step_ms_reference": 100.2,
+ "w4_launch_us_reference": 240.0,
+ "rows": [
+  {
+   "C": 5120,
+   "T": 1,
+   "block": 128,
+   "impl": "matmul",
+   "synced_median_us": 171.31248023360968,
+   "synced_p90_us": 178.80010418593884,
+   "pipelined_us": 30.239560146583244,
+   "f32_vs_f64_rel": 1.444430453659604e-07
+  },
+  {
+   "C": 5120,
+   "T": 1,
+   "block": 128,
+   "impl": "butterfly",
+   "synced_median_us": 352.14610397815704,
+   "synced_p90_us": 382.6619824394584,
+   "pipelined_us": 161.48177746799774,
+   "f32_vs_f64_rel": 7.658599247135993e-08
+  },
+  {
+   "C": 5120,
+   "T": 1,
+   "block": 1024,
+   "impl": "matmul",
+   "synced_median_us": 252.20855604857206,
+   "synced_p90_us": 263.7291559949517,
+   "pipelined_us": 37.731104384874925,
+   "f32_vs_f64_rel": 4.0918573859448057e-07
+  },
+  {
+   "C": 5120,
+   "T": 1,
+   "block": 1024,
+   "impl": "butterfly",
+   "synced_median_us": 386.7915365844965,
+   "synced_p90_us": 398.32505863159895,
+   "pipelined_us": 206.99740707641467,
+   "f32_vs_f64_rel": 8.726906172606007e-08
+  },
+  {
+   "C": 5120,
+   "T": 256,
+   "block": 128,
+   "impl": "matmul",
+   "synced_median_us": 709.6665212884545,
+   "synced_p90_us": 754.8785535618663,
+   "pipelined_us": 184.78385754860938,
+   "f32_vs_f64_rel": 2.031697216024696e-07
+  },
+  {
+   "C": 5120,
+   "T": 256,
+   "block": 128,
+   "impl": "butterfly",
+   "synced_median_us": 1833.166927099228,
+   "synced_p90_us": 1856.3956022262573,
+   "pipelined_us": 1660.6666576990392,
+   "f32_vs_f64_rel": 7.657269737466516e-08
+  },
+  {
+   "C": 5120,
+   "T": 256,
+   "block": 1024,
+   "impl": "matmul",
+   "synced_median_us": 969.5830522105098,
+   "synced_p90_us": 1203.8420652970674,
+   "pipelined_us": 739.5370957965497,
+   "f32_vs_f64_rel": 5.733666107203982e-07
+  },
+  {
+   "C": 5120,
+   "T": 256,
+   "block": 1024,
+   "impl": "butterfly",
+   "synced_median_us": 2290.582866407931,
+   "synced_p90_us": 2330.8205883949995,
+   "pipelined_us": 2109.2050774313975,
+   "f32_vs_f64_rel": 8.634162112201274e-08
+  },
+  {
+   "C": 17408,
+   "T": 1,
+   "block": 128,
+   "impl": "matmul",
+   "synced_median_us": 173.04194625467062,
+   "synced_p90_us": 183.9337171986699,
+   "pipelined_us": 13.766286429017782,
+   "f32_vs_f64_rel": 2.0718926549031976e-07
+  },
+  {
+   "C": 17408,
+   "T": 1,
+   "block": 128,
+   "impl": "butterfly",
+   "synced_median_us": 344.83347553759813,
+   "synced_p90_us": 359.2754015699029,
+   "pipelined_us": 152.96418860089034,
+   "f32_vs_f64_rel": 7.581721952466332e-08
+  },
+  {
+   "C": 17408,
+   "T": 1,
+   "block": 1024,
+   "impl": "matmul",
+   "synced_median_us": 205.666059628129,
+   "synced_p90_us": 217.74617489427328,
+   "pipelined_us": 44.88671766011976,
+   "f32_vs_f64_rel": 4.0976236986706417e-07
+  },
+  {
+   "C": 17408,
+   "T": 1,
+   "block": 1024,
+   "impl": "butterfly",
+   "synced_median_us": 410.79195216298103,
+   "synced_p90_us": 435.23390777409077,
+   "pipelined_us": 214.18556571006775,
+   "f32_vs_f64_rel": 8.519519314782926e-08
+  },
+  {
+   "C": 17408,
+   "T": 256,
+   "block": 128,
+   "impl": "matmul",
+   "synced_median_us": 888.3544942364097,
+   "synced_p90_us": 990.6410938128828,
+   "pipelined_us": 593.6334528087173,
+   "f32_vs_f64_rel": 2.0301468265630292e-07
+  },
+  {
+   "C": 17408,
+   "T": 256,
+   "block": 128,
+   "impl": "butterfly",
+   "synced_median_us": 6985.604064539075,
+   "synced_p90_us": 7063.616020604968,
+   "pipelined_us": 6904.395188030321,
+   "f32_vs_f64_rel": 7.65882324765794e-08
+  },
+  {
+   "C": 17408,
+   "T": 256,
+   "block": 1024,
+   "impl": "matmul",
+   "synced_median_us": 2716.8539818376303,
+   "synced_p90_us": 2758.979145437479,
+   "pipelined_us": 2487.5683448044583,
+   "f32_vs_f64_rel": 5.740721195393171e-07
+  },
+  {
+   "C": 17408,
+   "T": 256,
+   "block": 1024,
+   "impl": "butterfly",
+   "synced_median_us": 8879.312546923757,
+   "synced_p90_us": 8961.75797097385,
+   "pipelined_us": 8844.417967338813,
+   "f32_vs_f64_rel": 8.63142937779833e-08
+  }
+ ],
+ "projection": {
+  "transforms_per_layer": 4,
+  "per_layer_us_best_impl": 104.48496686876751,
+  "per_step_ms_unfused_mlx_ops": 6.687037879601121,
+  "per_step_fraction_of_step": 0.06673690498603913,
+  "per_transform_over_w4_launch": {
+   "5120": 0.12599816727743018,
+   "17408": 0.05735952678757409
+  },
+  "best_impl": {
+   "5120": {
+    "block": 128,
+    "impl": "matmul",
+    "pipelined_us": 30.239560146583244
+   },
+   "17408": {
+    "block": 128,
+    "impl": "matmul",
+    "pipelined_us": 13.766286429017782
+   }
+  },
+  "metadata_bits_per_rotated_matrix": "one sign bit per input channel (5,120 or 17,408 bits), shareable by matrices with the same input; the Hadamard is implicit",
+  "note": "unfused MLX ops; a fused Metal rotation inside the GEMV kernel would cost arithmetic, not launches, and is not measured here"
+ }
+}

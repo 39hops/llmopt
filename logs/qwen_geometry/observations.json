@@ -1,0 +1,63 @@
+{
+ "note": "Mechanical projection of logs/qwen_geometry/eval.json (commit 26d278f0) and logs/qwen_geometry/transform.json (commit 26d278f0); adapter scratch/qwen_geometry_obs.py",
+ "registration_sha256": "c0a9fba75017cb238c864e7c15443772db32117430c5a4b48bf6684b2645df75",
+ "measurement_valid": true,
+ "arms": {
+  "CONTROL": {
+   "admissible": true,
+   "reason": "arm C payload through the canonical decoder"
+  },
+  "CANDIDATES": {
+   "admissible": true,
+   "reason": "all four candidates on all three tensors, eval split, awq fit on dev only"
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 0.949079063521515,
+   "metric": "best_w4_ratio",
+   "population": "eval-prompts:12",
+   "aggregation": "min_over_candidates_of_max_over_w4_tensors",
+   "provenance": "best D_higgs; scores {\"B_refit\": 1.0056, \"C_rht\": 0.9579, \"D_higgs\": 0.9491, \"E_awq\": 0.9865}; gate ratios {\"B_refit\": 1.0056, \"C_rht\": 0.8931, \"D_higgs\": 0.89, \"E_awq\": 0.7439}; down ratios {\"B_refit\": 0.9864, \"C_rht\": 0.9579, \"D_higgs\": 0.9491, \"E_awq\": 0.9865}"
+  },
+  "1:ci": {
+   "value": 0.9521752692960689,
+   "metric": "best_w4_ci_upper",
+   "population": "eval-prompts:12",
+   "aggregation": "max_over_w4_tensors_of_boot95_upper"
+  },
+  "1:bits": {
+   "value": 0.00019531250000026645,
+   "metric": "best_w4_bits_excess",
+   "population": "eval-prompts:12",
+   "aggregation": "max_over_w4_tensors_of_bits_minus_control"
+  },
+  "2": {
+   "value": 0.8637277968284343,
+   "metric": "best_s16_ratio",
+   "population": "eval-prompts:12",
+   "aggregation": "min_over_candidates",
+   "provenance": "best C_rht; ratios {\"B_refit\": 1.1948, \"C_rht\": 0.8637, \"D_higgs\": 0.8965, \"E_awq\": 1.0644}"
+  },
+  "3": {
+   "value": 6.687037879601121,
+   "metric": "transform_step_ms",
+   "population": "decode-step:64-layers",
+   "aggregation": "64_times_best_impl_per_layer_sum",
+   "provenance": "{\"5120\": {\"block\": 128, \"impl\": \"matmul\", \"pipelined_us\": 30.239560146583244}, \"17408\": {\"block\": 128, \"impl\": \"matmul\", \"pipelined_us\": 13.766286429017782}}"
+  },
+  "best_w4_ratio": {
+   "value": 0.949079063521515,
+   "metric": "best_w4_ratio",
+   "population": "eval-prompts:12",
+   "aggregation": "min_over_candidates_of_max_over_w4_tensors",
+   "provenance": "best D_higgs; scores {\"B_refit\": 1.0056, \"C_rht\": 0.9579, \"D_higgs\": 0.9491, \"E_awq\": 0.9865}; gate ratios {\"B_refit\": 1.0056, \"C_rht\": 0.8931, \"D_higgs\": 0.89, \"E_awq\": 0.7439}; down ratios {\"B_refit\": 0.9864, \"C_rht\": 0.9579, \"D_higgs\": 0.9491, \"E_awq\": 0.9865}"
+  },
+  "best_candidate": {
+   "value": 2,
+   "metric": "best_candidate_index",
+   "population": "eval-prompts:12",
+   "aggregation": "argmin"
+  }
+ }
+}

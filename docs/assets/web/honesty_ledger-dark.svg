@@ -2,10 +2,10 @@
 <rect width="880" height="369" fill="#0f0f0e"/>
 <text x="34" y="44" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="19" font-weight="600" fill="#ffffff">Nulls and retractions are published beside the wins</text>
 <text x="34" y="74" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#c3c2b7">One maturity tag per claim; nulls and retractions published beside the wins at the same prominence.</text>
-<rect x="34.0" y="105" width="86.3" height="30" rx="4" fill="#3987e5"/>
-<rect x="122.3" y="105" width="189.7" height="30" rx="4" fill="#199e70"/>
-<rect x="314.1" y="105" width="417.2" height="30" rx="4" fill="#c98500"/>
-<rect x="733.2" y="105" width="101.4" height="30" rx="4" fill="#d55181"/>
+<rect x="34.0" y="105" width="86.1" height="30" rx="4" fill="#3987e5"/>
+<rect x="122.1" y="105" width="189.3" height="30" rx="4" fill="#199e70"/>
+<rect x="313.4" y="105" width="416.2" height="30" rx="4" fill="#c98500"/>
+<rect x="731.6" y="105" width="103.0" height="30" rx="4" fill="#d55181"/>
 <rect x="836.6" y="105" width="7.4" height="30" rx="4" fill="#e66767"/>
 <rect x="34" y="166" width="10" height="10" rx="3" fill="#3987e5"/>
 <text x="54" y="175" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#ffffff">Replicated</text>
@@ -21,12 +21,12 @@
 <text x="364" y="227" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#898781">fenced as provisional</text>
 <rect x="34" y="244" width="10" height="10" rx="3" fill="#d55181"/>
 <text x="54" y="253" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#ffffff">Null</text>
-<text x="264" y="253" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#ffffff">55<tspan fill="#898781">  13%</tspan></text>
+<text x="264" y="253" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#ffffff">56<tspan fill="#898781">  13%</tspan></text>
 <text x="364" y="253" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#898781">the idea did not work</text>
 <rect x="34" y="270" width="10" height="10" rx="3" fill="#e66767"/>
 <text x="54" y="279" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#ffffff">Retracted</text>
 <text x="264" y="279" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#ffffff">5<tspan fill="#898781">  1%</tspan></text>
 <text x="364" y="279" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#898781">withdrawn in writing</text>
 <line x1="34" y1="329" x2="846" y2="329" stroke="#232321" stroke-width="1"/>
-<text x="34" y="349" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">docs/FINDINGS.md · 432 curated claims · recounted from the source at build time</text>
+<text x="34" y="349" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#898781">docs/FINDINGS.md · 433 curated claims · recounted from the source at build time</text>
 </svg>

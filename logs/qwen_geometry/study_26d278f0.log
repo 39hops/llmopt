@@ -1,0 +1,96 @@
+== capture 03:39:08 26d278f0
+[capture] 22.mlp.gate_proj.weight w4 [17408, 5120] rel Frobenius (arm C) 0.3455 exps [121, 125] bits/w 2.0627
+[capture] 22.mlp.up_proj.weight w4 [17408, 5120] rel Frobenius (arm C) 0.3459 exps [121, 125] bits/w 2.0627
+[capture] 22.mlp.down_proj.weight w4 [5120, 17408] rel Frobenius (arm C) 0.3490 exps [121, 127] bits/w 2.0627
+[capture] 22.linear_attn.in_proj_qkv.weight s16 [10240, 5120] rel Frobenius (arm C) 0.1008 exps [122, 126] bits/w 4.0625
+[capture] prompt 0 (dev) 318 positions in 9.4s
+[capture] prompt 1 (dev) 320 positions in 9.1s
+[capture] prompt 2 (dev) 249 positions in 6.7s
+[capture] prompt 3 (dev) 151 positions in 4.9s
+[capture] prompt 4 (dev) 320 positions in 9.1s
+[capture] prompt 5 (dev) 167 positions in 5.2s
+[capture] prompt 6 (dev) 196 positions in 6.0s
+[capture] prompt 7 (dev) 202 positions in 6.0s
+[capture] prompt 8 (dev) 270 positions in 8.4s
+[capture] prompt 9 (dev) 339 positions in 10.1s
+[capture] prompt 10 (dev) 322 positions in 9.8s
+[capture] prompt 11 (dev) 324 positions in 9.8s
+[capture] prompt 12 (eval) 128 positions in 3.8s
+[capture] prompt 13 (eval) 339 positions in 10.1s
+[capture] prompt 14 (eval) 332 positions in 10.0s
+[capture] prompt 15 (eval) 318 positions in 9.3s
+[capture] prompt 16 (eval) 258 positions in 6.7s
+[capture] prompt 17 (eval) 251 positions in 6.7s
+[capture] prompt 18 (eval) 318 positions in 9.3s
+[capture] prompt 19 (eval) 152 positions in 4.9s
+[capture] prompt 20 (eval) 329 positions in 9.9s
+[capture] prompt 21 (eval) 327 positions in 9.9s
+[capture] prompt 22 (eval) 153 positions in 5.0s
+[capture] prompt 23 (eval) 276 positions in 8.5s
+[capture] wrote logs/qwen_geometry/capture.json
+== transform 03:42:35 26d278f0
+[xform] C=5120 T=1 b=128 matmul    synced     171 us pipelined      30 us rel 1.4e-07
+[xform] C=5120 T=1 b=128 butterfly synced     352 us pipelined     161 us rel 7.7e-08
+[xform] C=5120 T=1 b=1024 matmul    synced     252 us pipelined      38 us rel 4.1e-07
+[xform] C=5120 T=1 b=1024 butterfly synced     387 us pipelined     207 us rel 8.7e-08
+[xform] C=5120 T=256 b=128 matmul    synced     710 us pipelined     185 us rel 2.0e-07
+[xform] C=5120 T=256 b=128 butterfly synced    1833 us pipelined    1661 us rel 7.7e-08
+[xform] C=5120 T=256 b=1024 matmul    synced     970 us pipelined     740 us rel 5.7e-07
+[xform] C=5120 T=256 b=1024 butterfly synced    2291 us pipelined    2109 us rel 8.6e-08
+[xform] C=17408 T=1 b=128 matmul    synced     173 us pipelined      14 us rel 2.1e-07
+[xform] C=17408 T=1 b=128 butterfly synced     345 us pipelined     153 us rel 7.6e-08
+[xform] C=17408 T=1 b=1024 matmul    synced     206 us pipelined      45 us rel 4.1e-07
+[xform] C=17408 T=1 b=1024 butterfly synced     411 us pipelined     214 us rel 8.5e-08
+[xform] C=17408 T=256 b=128 matmul    synced     888 us pipelined     594 us rel 2.0e-07
+[xform] C=17408 T=256 b=128 butterfly synced    6986 us pipelined    6904 us rel 7.7e-08
+[xform] C=17408 T=256 b=1024 matmul    synced    2717 us pipelined    2488 us rel 5.7e-07
+[xform] C=17408 T=256 b=1024 butterfly synced    8879 us pipelined    8844 us rel 8.6e-08
+[xform] per step 6.7 ms (7 percent) as unfused ops; wrote logs/qwen_geometry/transform.json
+== dev 03:42:46 26d278f0
+[geom] 22.mlp.gate_proj A_control  bits/w 2.0627 relF 0.3455 out relMSE 5.441e-02 meas/iso 1.23 row p50 0.286 p99 0.461
+[geom] 22.mlp.gate_proj B_refit    bits/w 2.0627 relF 0.3432 out relMSE 5.465e-02 meas/iso 1.25 row p50 0.284 p99 0.462
+[geom] 22.mlp.gate_proj C_rht      bits/w 2.0627 relF 0.3418 out relMSE 4.827e-02 meas/iso 1.11 row p50 0.286 p99 0.478
+[geom] 22.mlp.gate_proj D_higgs    bits/w 2.0627 relF 0.3401 out relMSE 4.805e-02 meas/iso 1.12 row p50 0.285 p99 0.472
+[geom] 22.mlp.gate_proj E_awq      bits/w 2.0627 relF 0.3487 out relMSE 3.945e-02 meas/iso 0.88 row p50 0.266 p99 0.373
+[geom] 22.mlp.down_proj A_control  bits/w 2.0627 relF 0.3490 out relMSE 9.773e-02 meas/iso 1.02 row p50 0.320 p99 0.396
+[geom] 22.mlp.down_proj B_refit    bits/w 2.0627 relF 0.3457 out relMSE 9.647e-02 meas/iso 1.03 row p50 0.318 p99 0.390
+[geom] 22.mlp.down_proj C_rht      bits/w 2.0629 relF 0.3420 out relMSE 9.362e-02 meas/iso 1.02 row p50 0.316 p99 0.382
+[geom] 22.mlp.down_proj D_higgs    bits/w 2.0629 relF 0.3397 out relMSE 9.280e-02 meas/iso 1.02 row p50 0.314 p99 0.379
+[geom] 22.mlp.down_proj E_awq      bits/w 2.0627 relF 0.3642 out relMSE 7.644e-02 meas/iso 0.73 row p50 0.284 p99 0.346
+[geom] 22.linear_attn.in_proj_qkv A_control  bits/w 4.0625 relF 0.1008 out relMSE 9.373e-03 meas/iso 1.17 row p50 0.109 p99 0.225
+[geom] 22.linear_attn.in_proj_qkv B_refit    bits/w 4.0625 relF 0.1035 out relMSE 1.123e-02 meas/iso 1.33 row p50 0.106 p99 0.200
+[geom] 22.linear_attn.in_proj_qkv C_rht      bits/w 4.0626 relF 0.1011 out relMSE 8.073e-03 meas/iso 1.00 row p50 0.112 p99 0.298
+[geom] 22.linear_attn.in_proj_qkv D_higgs    bits/w 4.0626 relF 0.1024 out relMSE 8.398e-03 meas/iso 1.01 row p50 0.115 p99 0.309
+[geom] 22.linear_attn.in_proj_qkv E_awq      bits/w 4.0625 relF 0.1172 out relMSE 9.876e-03 meas/iso 0.91 row p50 0.112 p99 0.187
+[geom] wrote logs/qwen_geometry/dev.json
+== eval 03:57:29 26d278f0
+[geom] 22.mlp.gate_proj A_control  bits/w 2.0627 relF 0.3455 out relMSE 5.287e-02 meas/iso 1.22 row p50 0.280 p99 0.447
+[geom] 22.mlp.gate_proj B_refit    bits/w 2.0627 relF 0.3432 out relMSE 5.316e-02 meas/iso 1.25 row p50 0.278 p99 0.442
+[geom] 22.mlp.gate_proj C_rht      bits/w 2.0627 relF 0.3418 out relMSE 4.722e-02 meas/iso 1.12 row p50 0.279 p99 0.454
+[geom] 22.mlp.gate_proj D_higgs    bits/w 2.0627 relF 0.3401 out relMSE 4.705e-02 meas/iso 1.12 row p50 0.278 p99 0.456
+[geom] 22.mlp.gate_proj E_awq      bits/w 2.0627 relF 0.3487 out relMSE 3.933e-02 meas/iso 0.89 row p50 0.262 p99 0.369
+[geom] 22.mlp.down_proj A_control  bits/w 2.0627 relF 0.3490 out relMSE 9.836e-02 meas/iso 1.02 row p50 0.320 p99 0.405
+[geom] 22.mlp.down_proj B_refit    bits/w 2.0627 relF 0.3457 out relMSE 9.702e-02 meas/iso 1.03 row p50 0.318 p99 0.401
+[geom] 22.mlp.down_proj C_rht      bits/w 2.0629 relF 0.3420 out relMSE 9.421e-02 meas/iso 1.02 row p50 0.316 p99 0.390
+[geom] 22.mlp.down_proj D_higgs    bits/w 2.0629 relF 0.3397 out relMSE 9.335e-02 meas/iso 1.02 row p50 0.314 p99 0.386
+[geom] 22.mlp.down_proj E_awq      bits/w 2.0627 relF 0.3642 out relMSE 9.703e-02 meas/iso 0.93 row p50 0.318 p99 0.402
+[geom] 22.linear_attn.in_proj_qkv A_control  bits/w 4.0625 relF 0.1008 out relMSE 9.140e-03 meas/iso 1.17 row p50 0.108 p99 0.217
+[geom] 22.linear_attn.in_proj_qkv B_refit    bits/w 4.0625 relF 0.1035 out relMSE 1.092e-02 meas/iso 1.32 row p50 0.105 p99 0.192
+[geom] 22.linear_attn.in_proj_qkv C_rht      bits/w 4.0626 relF 0.1011 out relMSE 7.894e-03 meas/iso 1.00 row p50 0.111 p99 0.283
+[geom] 22.linear_attn.in_proj_qkv D_higgs    bits/w 4.0626 relF 0.1024 out relMSE 8.194e-03 meas/iso 1.02 row p50 0.114 p99 0.289
+[geom] 22.linear_attn.in_proj_qkv E_awq      bits/w 4.0625 relF 0.1172 out relMSE 9.728e-03 meas/iso 0.92 row p50 0.112 p99 0.182
+[geom] wrote logs/qwen_geometry/eval.json
+== adjudicate 04:12:05 26d278f0
+== FAILED adjudicate rc=1 04:12:05
+Traceback (most recent call last):
+  File "/Users/artin/code/llmopt/scripts/adjudicate.py", line 59, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/Users/artin/code/llmopt/scripts/adjudicate.py", line 42, in main
+    outcomes = adjudicate_prereg(prereg, obs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/artin/code/llmopt/llmopt/lab/prereg.py", line 619, in adjudicate_prereg
+    check_observations(prereg, obs)
+  File "/Users/artin/code/llmopt/llmopt/lab/prereg.py", line 540, in check_observations
+    raise ObservationsContractError(
+llmopt.lab.prereg.ObservationsContractError: measurements keyed to no registered bar, conjunct or refutation predicate: ['best_candidate']

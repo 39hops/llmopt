@@ -83575,3 +83575,235 @@ prompts (a fixed, small, English-text distribution); the measures are
 local to one linear map and say nothing about full-model KL or teacher
 agreement, which the design does not measure; the transform cost is of
 unfused MLX operations; nothing is run inside the complete model.
+
+## AMENDMENT QWEN-LOSSY-GEOMETRY-0-RECEIPTS (amends PRE-REG QWEN-LOSSY-GEOMETRY-0, the Receipts paragraph and the receipts list of docs/preregs/qwen-lossy-geometry-0.json; clerical): the adjudication receipts of the registered chain are logs/qwen_geometry/adjudicate_1/observations.json and logs/qwen_geometry/adjudicate_1/adjudication.txt, written by the re-run adjudicate stage at eac8232f under liverun qwen-geometry-1 from the unchanged eval and transform receipts; the registered paths logs/qwen_geometry/observations.json and logs/qwen_geometry/adjudication.txt hold the first chain's FAILED adjudicate stage (an observations document carrying an unregistered measurement key, which the adjudicator refused with a contract error, and an empty adjudication file) and stay in place as that failed record, neither read as evidence nor deleted (2026-10-23)
+
+The chain at 26d278f0 under liverun qwen-geometry-0 ran capture,
+transform, dev and eval to completion (rc 0 each) and failed at the
+adjudicate stage: scratch/qwen_geometry_obs.py emitted a convenience
+key, best_candidate, inside the measurements map, and
+llmopt.lab.prereg.check_observations refuses measurements keyed to no
+registered bar (ObservationsContractError, rc 1 in
+logs/qwen_geometry/study_26d278f0.log), a pipeline bug and never an
+outcome. At eac8232f the registered adapter and runner were edited
+only to move the non-bar key out of the measurements (into a
+best_candidates field) and to write the adjudication into a per-run
+directory; the pre-registration text and JSON are untouched (the
+registration digest the adapter embeds, c0a9fba7..., is the same in
+the failed and the valid observations documents). The stage was re-run
+alone under liverun qwen-geometry-1 on the same eval.json (sha256
+24e124ac...) and transform.json (a846e44a...), both written at 26d278f0
+and not rewritten (their modification times predate the re-run; every
+registered measurement is identical in the failed and the valid
+observations documents). No bar, arm, refutation predicate or prior
+changed. This amendment is the linked correction of the registered
+receipt paths; the lock regenerated in the booking commit sha-locks
+both the valid and the failed records.
+
+## VERDICT QWEN-LOSSY-GEOMETRY-0: NULL, REFUTED, ALL THREE BARS NO-FIRE. At arm C's bitrate on layer 22 of the original Qwen3.8-27B, with real captured activations and a blocked evaluation split of 12 teacher rollouts (3,181 positions), the input-basis randomised Hadamard rotation and the HIGGS-style data-free grid cut the activation-weighted output error of the W4 MLP matrices by 11 percent on gate_proj and 4 to 5 percent on down_proj (ratios 0.893 and 0.890 on gate, 0.958 and 0.949 on down; each bootstrap bound within 0.006 of its point), a refit codebook moves it within 1.5 percent (1.006, 0.986), and the development-activation-weighted assignment cuts gate_proj's error by 26 percent (0.744, interval 0.732 to 0.754) but does not transfer to down_proj (0.987, interval 0.961 to 1.006, against 0.782 on the development prompts it was fit on), so the best candidate by the worse of the two tensors (the data-free grid, 0.949, interval upper 0.952) misses the registered 0.85 bar; on the S16 in_proj_qkv the rotation reads 0.864 (bar 0.85, NO-FIRE) and a refit Lloyd-Max is worse than arm C's levels (1.195); the rotation is exact in the reals for any orthogonal H (Lean, standard axioms; the block Hadamard's orthogonality checked to 1.1e-16) and costs 1.0e-6 to 2.3e-6 relative in float32, equal to the unrotated product to two digits, with 6.7 ms per decode step as unfused MLX operations (bar 5.0 ms, NO-FIRE) and one sign bit per input channel of metadata; the HIGGS-style isotropic error model under-predicts the unweighted candidates' output error by 2 to 25 percent on W4 (to 32 on S16) and over-predicts the activation-weighted one by 7 to 11; the registered outcome is NULL and the thread stops; recommendation HOLD, no mixed-model test (2026-10-23, Mac; chain at 26d278f0 under liverun qwen-geometry-0, adjudication at eac8232f under qwen-geometry-1; nothing recompressed, no kernel or default changed, arm C and every prior receipt untouched)
+
+Resolves PRE-REG QWEN-LOSSY-GEOMETRY-0 (registered at 26d278f0 before
+the evaluation split was read; docs/preregs/qwen-lossy-geometry-0.json;
+the receipt paths corrected by the amendment above). Receipts:
+logs/qwen_geometry/capture.json, logs/qwen_geometry/transform.json,
+logs/qwen_geometry/dev.json, logs/qwen_geometry/eval.json,
+logs/qwen_geometry/adjudicate_1/observations.json,
+logs/qwen_geometry/adjudicate_1/adjudication.txt,
+logs/qwen_geometry/study_26d278f0.log,
+logs/qwen_geometry/study_eac8232f.log, logs/liverun/qwen-geometry-0
+.jsonl, logs/liverun/qwen-geometry-1.jsonl, and the failed stage's
+record logs/qwen_geometry/observations.json and
+logs/qwen_geometry/adjudication.txt; the activation dumps are
+machine-local with sha256 in the capture receipt. Drivers
+scratch/qwen_geometry_capture.py, scratch/qwen_geometry_quant.py,
+scratch/qwen_geometry_transform.py, scratch/qwen_geometry_obs.py,
+scratch/qwen_geometry_study.sh; the Lean file
+scratch/leancheck/InputRotation.lean.
+
+Adjudication (scripts/adjudicate.py, the four lines joined): "BAR 1
+W4-FIDELITY: NO-FIRE / BAR 2 S16-COMPARISON: NO-FIRE / BAR 3
+TRANSFORM-BUDGET: NO-FIRE / REFUTED-IF: REFUTED". Bars as registered
+(the JSON's words, in full) with the measured value beside each. BAR
+1: "the best candidate (by the worse of gate_proj and down_proj) has a
+pooled relative output MSE on the evaluation prompts at most 0.85 of
+the control's on BOTH W4 tensors (a 15 percent reduction of the
+activation-weighted output error), with the bootstrap-over-prompts 95
+percent upper bound of the ratio below 0.95 on both and its storage
+within 0.02 bits per weight of the control's (the sign vector
+included)": measured 0.9491 (D_higgs; its interval upper bound 0.9522;
+bits excess 0.0002). BAR 2: "the same contrast on the S16 in_proj_qkv
+(the 4-bit scalar codec against its refit, rotated, data-free and
+activation-weighted scalar analogues): a comparison, not part of the
+GO/HOLD rule": measured 0.8637 (C_rht). BAR 3: "the projected
+per-decode-step cost of rotating every linear map's input as unfused
+MLX operations on this Mac (one transform per distinct input vector
+per layer, four per layer, the cheapest measured implementation at T =
+1) is below 5.0 ms, 5 percent of the 100.2 ms step": measured 6.687
+ms. REFUTED-IF, bar 1 above 0.85: 0.9491. Decision rule as registered:
+"bar 1 NO-FIRE books a NULL and the thread stops"; HOLD was defined
+only for a FIRE with a rotated best candidate above the transform
+budget, so the registered outcome is NULL, and the GO/HOLD
+recommendation the GO asked for is HOLD (no mixed-model test). The
+registration digest in the valid observations document equals the
+committed pre-registration's. Measurement valid: the fidelity receipt
+a clean-tree non-smoke run at 26d278f0 on the evaluation split
+(prompts 12 to 23), the transform receipt clean-tree (it carries no
+smoke mode), every candidate on every tensor, the awq fit on prompts 0
+to 11 only (disjoint). The registered prior: HELD on B within a few
+percent of A (1.006, 0.986), on the rotation's gain being small (4 to
+11 percent on W4), on E being the largest reduction on an MLP input
+and shrinking from the development smoke, and on the outcome (bar 1
+NO-FIRE, bar 3 NO-FIRE); WRONG on D trailing B (D beat B on every
+tensor, and matched or beat C by 0.3 to 0.9 points on W4 while trailing
+it by 3.3 on S16) and on E's down_proj gain (1.3 percent against the
+5 to 25 expected); partly wrong on the isotropic model deviating
+materially from 1 (rotated candidates within 0 to 2 percent on
+down_proj and in_proj_qkv, 12 on gate_proj; unrotated up to 32) and on
+bar 3's magnitude (25 ms projected from an ad hoc measurement, 6.7
+measured: the batched block-128 matmul pipelines at 30 and 14 us).
+
+1. The transformation. In the reals, (W Hᵀ)(H x) = W x for any H with
+Hᵀ H = 1, its batch form, and the fact that a sign flip composed with
+an orthogonal matrix is orthogonal, are theorems
+(scratch/leancheck/InputRotation.lean, Mathlib; the file prints the
+axioms of each, propext, Classical.choice, Quot.sound, when checked);
+the specific normalised block-128 Hadamard's orthogonality is not
+proved there and is checked numerically to 1.1e-16, and the Sylvester
+Hadamard is symmetric, which is why W' = (W diag s) H and the stored
+form W Hᵀ-with-signs coincide. Numerically, on each tensor's original
+weights with 64 positions of one evaluation prompt: the float64
+rotated product differs from the plain one by 2.0e-15 to 4.3e-15
+relative; the float32 plain product differs from float64 by 1.0e-6
+(gate), 2.3e-6 (down) and 1.1e-6 (qkv) relative, and the float32
+ROTATED product by the same figures to two digits (down_proj 2.28e-6
+against 2.28e-6): the rotation adds no float32 error beyond the
+ordinary evaluation-order difference, about five orders below the
+quantisation error in relative norm (0.10 to 0.31). The rotated
+Frobenius norm equals the plain one to 1e-12. Incoherence (max over
+RMS) falls from 20.9 to 7.6 (gate), 46.6 to 16.0 (down), 16.0 to 6.9
+(qkv). The placement is the input side of a dense linear map only (x'
+= H(s * x) immediately before the map, W' stored); no rotation was
+moved through SiLU, the gating product, a normalisation or the
+DeltaNet state, and this verdict makes no claim about such placements.
+
+2. Fidelity at equal effective bitrate (evaluation split, 3,181
+positions of 12 prompts; bits per weight count indices, block
+exponents, codebook and the sign vector; W4 control 2.0627, rotated
+candidates 2.0627 to 2.0629; S16 control 4.0625, rotated 4.0626).
+gate_proj [17408, 5120], control relative Frobenius 0.3455 and output
+rel MSE 0.0529: B refit 0.3432 and 0.0532 (ratio 1.006, interval 1.002
+to 1.009); C rht 0.3418 and 0.0472 (0.893, 0.887 to 0.898); D higgs
+0.3401 and 0.0471 (0.890, 0.884 to 0.896); E awq 0.3487 and 0.0393
+(0.744, 0.732 to 0.754). down_proj [5120, 17408], control 0.3490 and
+0.0984: B 0.3457 and 0.0970 (0.986, 0.983 to 0.989); C 0.3420 and
+0.0942 (0.958, 0.954 to 0.961); D 0.3397 and 0.0933 (0.949, 0.946 to
+0.952); E 0.3642 and 0.0970 (0.987, 0.961 to 1.006; per-prompt ratios
+0.84 to 1.05, against 0.782 on the development prompts and 0.64 on the
+registration's disclosed two-prompt smoke that scored it on its own
+fit set). in_proj_qkv [10240, 5120] (S16), control 0.1008 and 0.00914:
+B Lloyd-Max 0.1035 and 0.01092 (1.195, 1.188 to 1.202; arm C's 16
+levels, chosen by its own level search, beat a tensor-wide Lloyd-Max
+from quantile initialisation on this tensor); C 0.1011 and 0.00789
+(0.864, 0.861 to 0.866); D 0.1024 and 0.00819 (0.897, 0.894 to 0.899);
+E 0.1172 and 0.00973 (1.064, 1.058 to 1.070). Every candidate's
+codebook or level table was bit-identical between the development and
+evaluation runs (sha256 equal; CPU fits, deterministic). Distributions:
+per-row relative error medians 0.26 to 0.32 on W4 and 0.10 to 0.11 on
+S16 with 99th percentiles 0.37 to 0.46 (W4) and 0.18 to 0.29 (S16);
+per-position relative error medians 0.19 to 0.31 (W4) and 0.09 to 0.11
+(S16), the 99.9th percentile 0.05 to 0.06 above the median on every
+gate_proj candidate and within 0.03 on down_proj (A to D) and
+in_proj_qkv, with E on down_proj the widest tail (0.384 against a
+median of 0.310, maximum 0.437); the lowest-5-percent cancellation
+positions (||W x|| / (||W||_F ||x||) below 0.008 to 0.02) carry a
+median relative error 0.01 to 0.04 above the rest on every candidate,
+a small and uniform penalty. Weight-MSE surrogate against activation-
+weighted error: Frobenius error ranks D < C < B < A < E on both W4
+tensors, while output error ranks E < D < C < A < B on gate_proj and D
+< C < B, E (0.09702, 0.09703) < A on down_proj. The surrogate
+disagrees with the output error on E (the worst weight error and the
+best output error on gate_proj: 0.3487 against 0.3401 for D, 0.0393
+against 0.0471) and on A against B on gate_proj, and the rotation
+separates B from C at near-equal weight error (0.3432 against 0.3418,
+output 0.0532 against 0.0472, 12 percent apart); C and D, within 0.002
+of each other in weight error, are within 0.4 percent in output error
+on gate_proj and 0.9 on down_proj. Neither measure says anything about
+full-model KL or teacher agreement, which this design does not touch.
+
+3. Transform and decoder overhead on Apple Metal (scratch/
+qwen_geometry_transform.py; MLX operations, no fused kernel). One token:
+the sign flip plus block-128 Hadamard as a batched matmul pipelines at
+30 us on a 5,120-wide input and 14 us on 17,408 (synced medians 171 and
+173 us, dispatch and drain included), the butterfly at 161 and 153 us
+(seven dependent elementwise passes), block 1,024 at 38 and 45 us;
+float32 against float64 1.4e-7 to 4.1e-7 relative on the matmul rows,
+7.6e-8 to 8.7e-8 on the one-token butterfly rows, up to 5.7e-7 at T =
+256. At T = 256 the batched matmul is 185 and 594 us (6 and 43 times
+the one-token figure) and the butterfly 1,661 and 6,904 us. Projection:
+one transform per distinct input vector per layer (four per layer, 256 per step, the cheapest implementation each; the
+out_proj and o_proj inputs are 6,144 wide, 48 x 128 and 24 x 256, and
+were projected at the 5,120-wide figure) is 104 us per layer, 6.7 ms per step, 6.7
+percent of the 100.2 ms step, 13 and 6 percent of the 240 us shipped W4
+launch of OBSERVATION QWEN-METAL-W4-T1-0 per transform; above the
+registered 5 ms budget. A fused rotation inside the GEMV kernel would
+trade those launches for arithmetic on the activation chunk and is not
+measured; the decoder side is unchanged by any candidate (the same
+codec layout), and the sign vector is 5,120 or 17,408 bits per rotated
+matrix, shareable by matrices with the same input.
+
+4. HIGGS's error model at the W4 operating point. The isotropic
+prediction of the output error from the weight error, ||dW||_F^2
+mean||x||^2 / C against sum||W x||^2 / n, reads measured over predicted
+1.22 (A), 1.25 (B), 1.12 (C), 1.12 (D) and 0.89 (E) on gate_proj; 1.02,
+1.03, 1.02, 1.02 and 0.93 on down_proj; 1.17, 1.32, 1.00, 1.02 and 0.92
+on in_proj_qkv. On the rotated candidates the isotropic local
+prediction is within 0 to 12 percent (the rotation makes the weight
+error closer to isotropic, which is what incoherence processing is
+for); on the unrotated control and refit it under-predicts by 2 to 32
+percent (the weight error is aligned with the activation directions);
+on the activation-weighted candidate it over-predicts by 7 to 11
+percent (that candidate buys output error with weight error by
+construction). The linearity theorem itself (the relation between
+layer-wise L2 error and perplexity) was not tested: no model was run,
+and one ratio per candidate tests the isotropic premise, not
+linearity; nothing here extends a 3-to-8-bit result to 2 bits.
+
+5. Recommendation: HOLD, no mixed-model test; the registered outcome
+is NULL. No candidate improves the local fidelity-cost frontier at the
+registered resolution: the rotation's reliable gain is 4 to 11 percent
+of output error on W4 (bar 15) at a 6.7 ms per-step cost unless fused;
+the activation-weighted assignment's 26 percent on gate_proj does not
+reproduce on down_proj across prompts and its weight error is the worst
+of the set. Banked as the conditions any future registration would
+have to meet before a candidate went inside the complete model: (a)
+for E, that a per-channel weighting fit on one set of contexts
+transfers to held-out contexts on EVERY MLP down projection (it did not
+here) and on the attention and DeltaNet projections (it was worse on
+in_proj_qkv), with the weighting's source and the split registered; (b)
+for C or D, a fused rotation whose per-step cost is measured below the
+budget, and a demonstration that a 4 to 11 percent local output-error
+reduction moves full-model KL or teacher agreement at all (VERDICT
+QWEN-LAYER-RESTORE-0 moved a 0.13 relative L2 residual-stream
+difference at layer 23's output to no E0 gain, a different quantity
+from a per-matrix output error but the lab's only measured local-to-
+global transfer); (c) for any candidate, the exceptional-value,
+signed-zero and nonfinite semantics of the codec under the new
+assignment, the parity suite, and the census. None is started.
+
+Fences. One layer (22), two W4 matrices measured (up_proj not
+measured; it shares gate_proj's input and codec layout with its own
+codebook, arm C error 0.3459, and its result is inferred, not read)
+and one S16 comparison; one set of 24 English teacher rollouts split
+12 and 12 by prompt index; the development split was read before
+registration and the bars were not moved by it; the smoke (two
+development prompts, E scored on its own fit set) is disclosed and not
+evidence, and the smoke receipt on disk holds gate_proj only (a later
+one-tensor re-smoke overwrote the first); the rotated candidates'
+intervals are over prompts for one sign draw per tensor, and sign-seed
+variance is not measured; the measures are local to a linear map; the
+transform cost is of unfused MLX operations on this Mac, with the
+6,144-wide out_proj and o_proj inputs projected at the 5,120-wide
+figure (a slight under-estimate of the per-step cost); the isotropic model is HIGGS's local
+premise, not its perplexity conclusion; the adjudication receipts are
+at the amended paths and the registered paths hold the failed stage's
+outputs.
