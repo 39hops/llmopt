@@ -22,6 +22,10 @@ class _Cache:
         self.fed: list = []
 
     @property
+    def offset(self):
+        return len(self.fed)
+
+    @property
     def state(self):
         return (mx.array([len(self.fed)]),)
 
@@ -80,9 +84,15 @@ class _Tok:
         return " ".join(str(i) for i in ids)
 
     def apply_chat_template(self, messages, add_generation_prompt=True, tokenize=True, **kw):
+        # user text encodes byte-wise; an assistant turn re-encodes the ids its
+        # decode printed (invertible), followed by the stop token, as the real
+        # template renders a past turn verbatim and closes it with <|im_end|>
         ids = []
         for m in messages:
-            ids += [1] + [int(c) % 50 + 2 for c in m["content"].encode()] + [STOP]
+            if m["role"] == "assistant":
+                ids += [1] + [int(x) for x in m["content"].split()] + [STOP]
+            else:
+                ids += [1] + [int(c) % 50 + 2 for c in m["content"].encode()] + [STOP]
         return ids + [1]
 
 
@@ -157,9 +167,9 @@ def test_session_replay_accounting_and_isolation(engine):
     s = qserve.Session(engine, mode="replay")
     r1 = s.ask("hello", max_tokens=3)
     r2 = s.ask("again", max_tokens=3)
-    assert r1.mode == "fresh" and r2.mode == "fresh"
-    assert r2.cache[0].fed == r2.prompt_ids + r2.generated_ids[: r2.fed_generated]   # a fresh cache holds exactly this turn's feed
-    assert s.fed_ids == r2.cache[0].fed and r2.cache_tokens == len(s.fed_ids)
+    assert r1.mode == "fresh" and r2.mode == "fresh" and r2.cache is None and s.cache is None   # replay keeps no cache
+    assert r2.cache_offset_measured == r2.n_prompt + r2.fed_generated == r2.cache_tokens         # the fresh cache held exactly this turn's feed
+    assert s.fed_ids == r2.prompt_ids + r2.generated_ids[: r2.fed_generated] and r2.cache_tokens == len(s.fed_ids)
     t = qserve.Session(engine, mode="replay")
     assert t.messages == [] and t.ask("hello", max_tokens=3).generated_ids == r1.generated_ids   # isolation: a new session repeats turn 1
     s.reset()
@@ -174,11 +184,30 @@ def test_session_incremental_equals_replay_when_prefix_holds(engine):
     ra1, rb1 = a.ask("hello", 3), b.ask("hello", 3)
     ra2, rb2 = a.ask("more", 3), b.ask("more", 3)
     assert ra1.generated_ids == rb1.generated_ids
-    if ra2.mode == "incremental":
-        assert a.cache[0].fed == b.cache[0].fed              # the same token sequence fed exactly once overall
-        assert ra2.generated_ids == rb2.generated_ids
-    else:
-        assert ra2.mode == "replay-fallback" and ra2.note
+    assert ra2.mode == "incremental", (ra2.mode, ra2.note)   # the stub's template is invertible, so the prefix must hold
+    assert ra2.generated_ids == rb2.generated_ids
+    assert a.cache[0].fed == a.fed_ids and ra2.cache_offset_measured == len(a.fed_ids)   # one cache, every token fed exactly once
+    assert b.cache is None                                    # replay holds no cache between turns
+
+
+def test_immediate_stop_and_budget_of_one(engine):
+    for seed in range(2, 60):
+        exp, reason, fed = _expected([seed], 1)
+        if reason == "stop_token" and not exp:
+            r = engine.generate_ids([seed], max_tokens=1)
+            assert r.n_generated == 0 and r.fed_generated == 0 and r.cache_tokens == 1 and not r.last_token_in_cache
+            break
+    r = engine.generate_ids([3, 5, 8], max_tokens=1)
+    assert r.n_generated == 1 and r.fed_generated == 0 and r.cache_tokens == 3 and r.cache_offset_measured == 3
+
+
+def test_refused_turn_leaves_the_session_unchanged(engine):
+    s = qserve.Session(engine, mode="incremental")
+    s.ask("hello", max_tokens=3)
+    n = len(s.messages)
+    with pytest.raises(qserve.ContextLimitError):
+        s.ask("x" * 200, max_tokens=3)
+    assert len(s.messages) == n and s.cache is None
 
 
 LIVE = os.environ.get("LLMOPT_QWEN_LIVE") == "1" and os.path.exists(os.path.expanduser("~/qwen_whole0t/C/manifest.json"))
@@ -208,6 +237,9 @@ def test_live_two_turns_refer_back(live_engine):
 def test_live_incremental_matches_replay(live_engine):
     a = qserve.Session(live_engine, mode="incremental", enable_thinking=False)
     b = qserve.Session(live_engine, mode="replay", enable_thinking=False)
-    for q in ("Name one prime number below ten. One word.", "And one above ten. One word."):
+    for i, q in enumerate(("Name one prime number below ten. One word.", "And one above ten. One word.")):
         ra, rb = a.ask(q, 12), b.ask(q, 12)
         assert ra.generated_ids == rb.generated_ids, (ra.mode, ra.note, ra.text, rb.text)
+        if i == 1:
+            assert ra.mode == "incremental", (ra.mode, ra.note)
+            assert ra.cache_offset_measured == ra.cache_tokens == len(a.fed_ids)

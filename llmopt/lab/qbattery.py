@@ -2,8 +2,10 @@
 (QWEN-INFERENCE-BASELINE-0): task generators (seeded, versioned),
 validators (programs, never a text match where several answers are
 right) and an isolated code runner. The frozen collection a run scores is
-scratch/evalsets/qwen_battery_v1.json, written by scratch/qwen_battery_gen.py
-from these generators; a run records the collection's sha256 and never
+scratch/evalsets/qwen_battery_v2.json, written from these generators
+(v1, the first freeze, is kept as a record of its three audit-found
+defects: a wrong expected answer, a non-integer percentage, a rounding
+tie); a run records the collection's sha256 and never
 edits it.
 
 Kinds and their checks:
@@ -45,10 +47,10 @@ import sys
 import tempfile
 from typing import Optional
 
-VERSION = 1
+VERSION = 2            # v1 (same seed) had three mis-specified tasks found by audit before any result was read
 SEED = "qwen-battery-v1-seed-11"
 RULES = {"decoding": "greedy", "enable_thinking": False, "system": None, "max_tokens_per_turn": 384, "context_cap": 8192,
-         "code_time_limit_s": 10, "code_sandbox": "sandbox-exec: no network, no writes outside the task's temp dir, no reads under /Users, /Volumes or /private/etc, no exec but the interpreter, empty environment; CPU 10 s and 1 MiB file-size limits"}
+         "code_time_limit_s": 10, "code_sandbox": "sandbox-exec: no network, no writes outside the task's temp dir, no reads under /Users, /Volumes or /private/etc, no exec but the interpreter, empty environment; CPU 10 s, 1 MiB file-size and one-process limits inside the sandboxed process; memory is NOT limited (macOS refuses to lower RLIMIT_DATA)"}
 
 _NUM = re.compile(r"-?\d[\d,]*(?:\.\d+)?")
 
@@ -77,7 +79,8 @@ def gen_arith(r: random.Random, n: int) -> list:
             a, b = g * r.randint(10, 99), g * r.randint(10, 99)
             q, ans = f"What is the greatest common divisor of {a} and {b}?", math.gcd(a, b)
         else:
-            p, v = r.choice([5, 10, 12, 15, 20, 25, 40]), r.randint(10, 999) * 20
+            p, v = r.choice([5, 10, 15, 20, 25, 40, 50]), r.randint(10, 999) * 20
+            assert (v * p) % 100 == 0
             q, ans = f"What is {p} percent of {v}?", v * p // 100
         out.append({"id": f"arith-{i + 1:02d}", "kind": "arith", "turns": [q + " Answer with the number only."], "expected": ans})
     return out
@@ -101,9 +104,12 @@ def gen_json(r: random.Random, n: int) -> list:
             top = max(scores.values())
             q = ("Here is a roster as CSV:\nname,score\n" + "\n".join(f"{k},{v}" for k, v in scores.items()) +
                  "\nReturn ONLY a JSON object {\"mean\": <number>, \"top\": [<names with the highest score, alphabetical>], \"count\": <integer>} with mean rounded to 1 decimal.")
-            exp = {"mean": round(sum(scores.values()) / len(scores), 1), "top": sorted(k for k, v in scores.items() if v == top), "count": len(scores)}
+            exp = {"mean": sum(scores.values()) / len(scores), "top": sorted(k for k, v in scores.items() if v == top), "count": len(scores)}
             schema = {"mean": "number", "top": "list", "count": "integer"}
-        out.append({"id": f"json-{i + 1:02d}", "kind": "json", "turns": [q], "expected": exp, "schema": schema})
+            tol = {"mean": 0.051}      # any rounding of the exact mean to one decimal is accepted
+        if i % 2 == 0:
+            tol = {"total": 0.011}
+        out.append({"id": f"json-{i + 1:02d}", "kind": "json", "turns": [q], "expected": exp, "schema": schema, "tol": tol})
     return out
 
 
@@ -177,15 +183,15 @@ def gen_degen(r: random.Random, n: int) -> list:
             a = r.randint(3, 20)
             specs.append({"check": "count", "params": {"a": a, "b": a + 9}, "turns": [f"Count from {a} to {a + 9} in digits, separated by commas, nothing else."]})
         else:
-            specs.append({"check": "one_line", "params": {}, "turns": [r.choice(["What is the capital of France? One line.", "Name the largest planet of the solar system. One line."])],
-                          "expected": "paris" if "France" in specs[-1]["turns"][0] else "jupiter"} if specs else {"check": "one_line", "params": {}, "turns": ["What is the capital of France? One line."], "expected": "paris"})
+            q, exp = r.choice([("What is the capital of France? One line.", "paris"), ("Name the largest planet of the solar system. One line.", "jupiter")])
+            specs.append({"check": "one_line", "params": {}, "turns": [q], "expected": exp})
     return [{"id": f"degen-{i + 1:02d}", "kind": "degen", **s} for i, s in enumerate(specs)]
 
 
 def build(seed: str = SEED) -> dict:
     r = random.Random(seed)
     tasks = gen_arith(r, 10) + gen_json(r, 8) + gen_code(r, 8) + gen_instruct(r, 8) + gen_twoturn(r, 6) + gen_degen(r, 6)
-    return {"collection": "qwen_battery_v1", "version": VERSION, "seed": seed, "rules": RULES, "tasks": tasks}
+    return {"collection": f"qwen_battery_v{VERSION}", "version": VERSION, "seed": seed, "rules": RULES, "tasks": tasks}
 
 
 # ---------------------------------------------------------------- validators
@@ -220,7 +226,7 @@ def _first_json(text: str):
 
 
 def _code_block(text: str) -> Optional[str]:
-    m = re.search(r"```(?:python)?\s*\n(.*?)```", text, re.S)
+    m = re.search(r"```(?:python3?|py)?[ \t]*\n(.*?)```", text, re.S)
     if m:
         return m.group(1)
     return text if "def " in text else None
@@ -247,7 +253,7 @@ def check_json(task, replies) -> tuple[bool, str]:
     for k, ev in exp.items():
         gv = obj[k]
         if isinstance(ev, float):
-            if abs(float(gv) - ev) > 0.011:
+            if abs(float(gv) - ev) > task.get("tol", {}).get(k, 0.011):
                 return False, f"{k}: {gv} != {ev}"
         elif isinstance(ev, list):
             if [str(x).lower() for x in gv] != [str(x).lower() for x in ev]:
@@ -270,11 +276,27 @@ def run_code_sandboxed(code: str, tests: list, time_limit_s: int = 10) -> dict:
     place, no network, CPU and file-size limits. Returns the outcome."""
     if not sandbox_available():
         return {"status": "hold", "reason": "no sandbox on this platform"}
+    import secrets
     py = os.path.realpath(sys.executable)
     d = os.path.realpath(tempfile.mkdtemp(prefix="qbat_"))
     prog = os.path.join(d, "task.py")
+    nonce = secrets.token_hex(8)
+    # the harness: resource limits set INSIDE the sandboxed process (no preexec
+    # hook in the multithreaded runner), stdout bound to a file in the task dir
+    # under the file-size limit, a start sentinel (a run without it is a
+    # harness or sandbox failure, not the candidate's), the candidate, the
+    # tests, and a per-run nonce printed only after every test passed
+    harness = (
+        "import resource, sys\n"
+        "def _lim(name, v):\n"
+        "    r = getattr(resource, name); h = resource.getrlimit(r)[1]\n"
+        "    v = v if h == resource.RLIM_INFINITY else min(v, h)\n"
+        "    resource.setrlimit(r, (v, v))\n"
+        f"_lim('RLIMIT_CPU', {time_limit_s}); _lim('RLIMIT_FSIZE', 1 << 20); _lim('RLIMIT_NPROC', 1)\n"   # macOS refuses to lower RLIMIT_DATA; memory is not limited
+        f"sys.stdout = sys.stderr = open({os.path.join(d, 'out.txt')!r}, 'w', buffering=1)\n"
+        "print('QBAT-START')\n")
     with open(prog, "w") as f:
-        f.write(code + "\n\n" + "\n".join(tests) + "\nprint('ALL-TESTS-PASSED')\n")
+        f.write(harness + code + "\n\n" + "\n".join(tests) + f"\nprint('ALL-TESTS-PASSED-{nonce}')\n")
     # allow-default with explicit denials (a deny-default profile aborts this
     # interpreter at start-up): no network, no writes outside the task dir, no
     # reads under /Users, /Volumes or /private/etc (home, secrets, keys), no
@@ -284,28 +306,35 @@ def run_code_sandboxed(code: str, tests: list, time_limit_s: int = 10) -> dict:
                "(deny file-read* (subpath \"/Users\") (subpath \"/Volumes\") (subpath \"/private/etc\"))"
                f"(allow file-read* (subpath \"{d}\"))(deny process-exec)(allow process-exec (literal \"{py}\"))")
 
-    def limits():
-        import resource
-        resource.setrlimit(resource.RLIMIT_CPU, (time_limit_s, time_limit_s))
-        resource.setrlimit(resource.RLIMIT_FSIZE, (1 << 20, 1 << 20))
     try:
-        p = subprocess.run(["/usr/bin/sandbox-exec", "-p", profile, py, "-I", "-B", prog], capture_output=True, text=True,
-                           timeout=time_limit_s + 2, preexec_fn=limits, cwd=d, env={})
-        ok = p.returncode == 0 and "ALL-TESTS-PASSED" in p.stdout
-        return {"status": "pass" if ok else "fail", "returncode": p.returncode, "stdout": p.stdout[-800:], "stderr": p.stderr[-800:]}
+        p = subprocess.run(["/usr/bin/sandbox-exec", "-p", profile, py, "-I", "-B", prog], stdout=subprocess.DEVNULL, stderr=subprocess.PIPE,
+                           text=True, timeout=time_limit_s + 2, cwd=d, env={})
+        rc, err = p.returncode, p.stderr[-800:]
+        timed_out = False
     except subprocess.TimeoutExpired:
-        return {"status": "fail", "reason": "timeout"}
+        rc, err, timed_out = None, "wall timeout", True
+    try:
+        with open(os.path.join(d, "out.txt"), errors="replace") as f:
+            out = f.read(1 << 20)
+    except OSError:
+        out = ""
+    if "QBAT-START" not in out:
+        return {"status": "error", "reason": "the sandboxed interpreter did not start the harness", "returncode": rc, "stderr": err}
+    ok = rc == 0 and f"ALL-TESTS-PASSED-{nonce}" in out
+    return {"status": "pass" if ok else "fail", "returncode": rc, "timed_out": timed_out, "stdout": out[-800:], "stderr": err}
 
 
 def check_code(task, replies) -> tuple[Optional[bool], str]:
     code = _code_block(replies[0])
     if code is None:
         return False, "no code block"
-    if "import os" in code or "import subprocess" in code or "open(" in code:
-        return False, "disallowed host access in code"
+    if re.search(r"^\s*(?:import|from)\s+(?:os|subprocess|socket|shutil|pathlib|ctypes|multiprocessing)\b", code, re.M) or re.search(r"\bopen\(", code):
+        return False, "disallowed host access in code (defence in depth; the sandbox is the guard)"
     res = run_code_sandboxed(code, task["tests"], RULES["code_time_limit_s"])
     if res["status"] == "hold":
         return None, res["reason"]
+    if res["status"] == "error":
+        raise RuntimeError(res["reason"])
     return res["status"] == "pass", json.dumps({k: v for k, v in res.items() if k != "stdout"})[:300]
 
 

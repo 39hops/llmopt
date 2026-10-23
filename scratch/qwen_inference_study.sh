@@ -6,9 +6,10 @@
 #   perf      scratch/qwen_serve_perf.py (cold load, first generation, 512 /
 #             1,024 / 2,048-token prompts, repeated turns in both modes,
 #             parity against the direct qualified path, tokenizer round trips;
-#             receipt logs/qwen_serve/perf.json)
+#             receipt logs/qwen_serve/perf_<TAG>.json, TAG default v2; the
+#             first chain wrote perf.json and results.json with the v1 battery)
 #   battery   scratch/qwen_battery_run.py (the frozen battery scored ONCE;
-#             receipt logs/qwen_battery/results.json)
+#             receipt logs/qwen_battery/results_<TAG>.json)
 # ONLY="a b" runs a subset. Every receipt refuses to overwrite. Run under
 # scripts/liverun.py (clean tree, no commits while live).
 set -uo pipefail
@@ -35,6 +36,6 @@ run() {
   rm -f "$TMP"
 }
 run live    env LLMOPT_QWEN_LIVE=1 $PY -m pytest tests/test_qserve.py -q -p no:cacheprovider -k live
-run perf    $PY scratch/qwen_serve_perf.py
-run battery $PY scratch/qwen_battery_run.py
+run perf    env OUT=logs/qwen_serve/perf_${TAG:-v2}.json $PY scratch/qwen_serve_perf.py
+run battery env OUT=logs/qwen_battery/results_${TAG:-v2}.json $PY scratch/qwen_battery_run.py
 echo "== DONE $(date -u +%H:%M:%S)" >> "$LOG"

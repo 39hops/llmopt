@@ -84240,3 +84240,52 @@ general capability or standing against any public benchmark, and the
 entry that scores them will say so. No prompt or rule changes after the
 scoring run; any iteration belongs to a separately versioned
 collection.
+
+## AMENDMENT QWEN-INFERENCE-BASELINE-0-FREEZE-V2 (amends OBSERVATION QWEN-INFERENCE-BASELINE-0-FREEZE): the independent code and cache-correctness audit, read after the v1 chain had run and BEFORE any battery result was read, found three mis-specified tasks in qwen_battery_v1 (degen-06 expected "jupiter" for the capital of France, a generator indexing bug; arith-06 asked for 12 percent of 7,220 whose answer is not an integer; json-02's expected mean sat on a rounding tie) and repairs in the entry point and the drivers; the collection is re-frozen as qwen_battery_v2 (same seed and generators with the three defects fixed, 46 tasks, sha256 recorded by the scoring receipt), the repaired code is committed here, and the v2 chain runs after this commit; the v1 scoring receipt (logs/qwen_battery/results.json) was never read and is not booked (2026-10-23)
+
+Found by the audit (Opus) of llmopt/lab/qserve.py, qbattery.py,
+qtower.py, the tests and the drivers at 66a18c38, and repaired at this
+commit: (a) the three task defects above (generator fixes: the
+one-line task's expected answer now derives from the question drawn;
+the percentage task draws only exact cases; the JSON mean is compared
+against the exact mean within 0.051, so any rounding to one decimal
+passes); (b) a replay session retained every turn's cache object (the
+v1 performance receipt's replay memory growth of about 0.19 GB per turn
+was this leak, not replay); the session now holds no cache in replay
+mode and one in incremental mode; (c) a refused or failed turn left its
+user message in the transcript; the transcript is now updated only
+after a successful turn and the incremental cache is discarded on any
+exception; (d) the accounting check compared two quantities computed
+from the same arithmetic; generate_ids now reads the KV cache's own
+offset and refuses on any mismatch, both on entry (the claimed cache
+length) and after generation (the accounted one), and the result
+records the measured offset; (e) a thinking-mode assistant turn was
+stored as plain content although the pinned template re-renders past
+turns from reasoning_content and content, so the session now splits a
+generated text at its last </think>; (f) the template's own injected
+system message under thinking mode and the non-equivalence by
+construction of incremental and replay (fused decode against GEMM
+prefill for the same tokens; token-equal where observed) are now stated
+in the module; (g) the performance driver's filler text carried the
+teacher records' special tokens into the user content (chat structure
+inside the prompt), now stripped; its cold load now starts before the
+heavy imports; its decode throughput reports a steady state from step
+5; its parity reference loop no longer takes one extra step after a
+budget stop; (h) the code sandbox harness sets its CPU, file-size and
+process limits inside the sandboxed process (no pre-exec hook in the
+multithreaded runner), bounds the candidate's output to a file under
+the file-size limit, prints a start sentinel so a harness or sandbox
+failure books error rather than a model failure, and ends with a
+per-run nonce the tests must reach; memory is NOT limited (macOS
+refuses to lower RLIMIT_DATA) and this is stated in the rules; the
+static import filter is a regex on import lines and open calls and is
+defence in depth only; (i) the tests now pin an invertible stub
+template so the incremental path is exercised, an immediate stop and a
+budget of one, a refused turn leaving the session unchanged, and in the
+sandbox an infinite loop and a spoofed pass marker both failing; the
+live incremental test asserts the incremental path was taken. The v1
+freeze entry's two overclaims (an infinite-loop sandbox test that did
+not exist; a stub incremental equality that the stub never exercised)
+are corrected by (i). No validator rule for the scored kinds changed
+except the two task-level fixes and the rounding tolerance; no prompt
+was edited after reading a model output.

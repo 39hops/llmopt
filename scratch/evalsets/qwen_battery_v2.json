@@ -1,0 +1,590 @@
+{
+ "collection": "qwen_battery_v2",
+ "version": 2,
+ "seed": "qwen-battery-v1-seed-11",
+ "rules": {
+  "decoding": "greedy",
+  "enable_thinking": false,
+  "system": null,
+  "max_tokens_per_turn": 384,
+  "context_cap": 8192,
+  "code_time_limit_s": 10,
+  "code_sandbox": "sandbox-exec: no network, no writes outside the task's temp dir, no reads under /Users, /Volumes or /private/etc, no exec but the interpreter, empty environment; CPU 10 s, 1 MiB file-size and one-process limits inside the sandboxed process; memory is NOT limited (macOS refuses to lower RLIMIT_DATA)"
+ },
+ "tasks": [
+  {
+   "id": "arith-01",
+   "kind": "arith",
+   "turns": [
+    "What is 64905 + 83805? Answer with the number only."
+   ],
+   "expected": 148710
+  },
+  {
+   "id": "arith-02",
+   "kind": "arith",
+   "turns": [
+    "What is 85002 - 16024? Answer with the number only."
+   ],
+   "expected": 68978
+  },
+  {
+   "id": "arith-03",
+   "kind": "arith",
+   "turns": [
+    "What is 413 * 685? Answer with the number only."
+   ],
+   "expected": 282905
+  },
+  {
+   "id": "arith-04",
+   "kind": "arith",
+   "turns": [
+    "What is 52754 mod 67 (the remainder of 52754 divided by 67)? Answer with the number only."
+   ],
+   "expected": 25
+  },
+  {
+   "id": "arith-05",
+   "kind": "arith",
+   "turns": [
+    "What is the greatest common divisor of 396 and 252? Answer with the number only."
+   ],
+   "expected": 36
+  },
+  {
+   "id": "arith-06",
+   "kind": "arith",
+   "turns": [
+    "What is 15 percent of 7220? Answer with the number only."
+   ],
+   "expected": 1083
+  },
+  {
+   "id": "arith-07",
+   "kind": "arith",
+   "turns": [
+    "What is 83404 + 30329? Answer with the number only."
+   ],
+   "expected": 113733
+  },
+  {
+   "id": "arith-08",
+   "kind": "arith",
+   "turns": [
+    "What is 86439 - 47970? Answer with the number only."
+   ],
+   "expected": 38469
+  },
+  {
+   "id": "arith-09",
+   "kind": "arith",
+   "turns": [
+    "What is 740 * 200? Answer with the number only."
+   ],
+   "expected": 148000
+  },
+  {
+   "id": "arith-10",
+   "kind": "arith",
+   "turns": [
+    "What is 27899 mod 70 (the remainder of 27899 divided by 70)? Answer with the number only."
+   ],
+   "expected": 39
+  },
+  {
+   "id": "json-01",
+   "kind": "json",
+   "turns": [
+    "Here is an order as JSON:\n{\"items\": [{\"sku\": \"B-97\", \"qty\": 3, \"unit\": 42.75}, {\"sku\": \"D-20\", \"qty\": 3, \"unit\": 47.27}, {\"sku\": \"A-26\", \"qty\": 4, \"unit\": 49.16}]}\nReturn ONLY a JSON object {\"total\": <number>, \"n_items\": <integer>, \"costliest_sku\": <string>} where total is the sum of qty times unit rounded to 2 decimals, n_items is the number of line items and costliest_sku is the sku with the largest qty times unit."
+   ],
+   "expected": {
+    "total": 466.7,
+    "n_items": 3,
+    "costliest_sku": "A-26"
+   },
+   "schema": {
+    "total": "number",
+    "n_items": "integer",
+    "costliest_sku": "string"
+   },
+   "tol": {
+    "total": 0.011
+   }
+  },
+  {
+   "id": "json-02",
+   "kind": "json",
+   "turns": [
+    "Here is a roster as CSV:\nname,score\nava,57\ngus,73\neli,78\ndee,73\nReturn ONLY a JSON object {\"mean\": <number>, \"top\": [<names with the highest score, alphabetical>], \"count\": <integer>} with mean rounded to 1 decimal."
+   ],
+   "expected": {
+    "mean": 70.25,
+    "top": [
+     "eli"
+    ],
+    "count": 4
+   },
+   "schema": {
+    "mean": "number",
+    "top": "list",
+    "count": "integer"
+   },
+   "tol": {
+    "mean": 0.051
+   }
+  },
+  {
+   "id": "json-03",
+   "kind": "json",
+   "turns": [
+    "Here is an order as JSON:\n{\"items\": [{\"sku\": \"A-42\", \"qty\": 7, \"unit\": 2.77}, {\"sku\": \"D-47\", \"qty\": 3, \"unit\": 12.68}]}\nReturn ONLY a JSON object {\"total\": <number>, \"n_items\": <integer>, \"costliest_sku\": <string>} where total is the sum of qty times unit rounded to 2 decimals, n_items is the number of line items and costliest_sku is the sku with the largest qty times unit."
+   ],
+   "expected": {
+    "total": 57.43,
+    "n_items": 2,
+    "costliest_sku": "D-47"
+   },
+   "schema": {
+    "total": "number",
+    "n_items": "integer",
+    "costliest_sku": "string"
+   },
+   "tol": {
+    "total": 0.011
+   }
+  },
+  {
+   "id": "json-04",
+   "kind": "json",
+   "turns": [
+    "Here is a roster as CSV:\nname,score\nben,86\neli,74\nfay,49\ncy,100\ndee,89\nReturn ONLY a JSON object {\"mean\": <number>, \"top\": [<names with the highest score, alphabetical>], \"count\": <integer>} with mean rounded to 1 decimal."
+   ],
+   "expected": {
+    "mean": 79.6,
+    "top": [
+     "cy"
+    ],
+    "count": 5
+   },
+   "schema": {
+    "mean": "number",
+    "top": "list",
+    "count": "integer"
+   },
+   "tol": {
+    "mean": 0.051
+   }
+  },
+  {
+   "id": "json-05",
+   "kind": "json",
+   "turns": [
+    "Here is an order as JSON:\n{\"items\": [{\"sku\": \"C-99\", \"qty\": 1, \"unit\": 2.95}, {\"sku\": \"A-92\", \"qty\": 8, \"unit\": 26.72}, {\"sku\": \"B-50\", \"qty\": 7, \"unit\": 11.88}]}\nReturn ONLY a JSON object {\"total\": <number>, \"n_items\": <integer>, \"costliest_sku\": <string>} where total is the sum of qty times unit rounded to 2 decimals, n_items is the number of line items and costliest_sku is the sku with the largest qty times unit."
+   ],
+   "expected": {
+    "total": 299.87,
+    "n_items": 3,
+    "costliest_sku": "A-92"
+   },
+   "schema": {
+    "total": "number",
+    "n_items": "integer",
+    "costliest_sku": "string"
+   },
+   "tol": {
+    "total": 0.011
+   }
+  },
+  {
+   "id": "json-06",
+   "kind": "json",
+   "turns": [
+    "Here is a roster as CSV:\nname,score\nhal,54\ngus,56\neli,59\nReturn ONLY a JSON object {\"mean\": <number>, \"top\": [<names with the highest score, alphabetical>], \"count\": <integer>} with mean rounded to 1 decimal."
+   ],
+   "expected": {
+    "mean": 56.333333333333336,
+    "top": [
+     "eli"
+    ],
+    "count": 3
+   },
+   "schema": {
+    "mean": "number",
+    "top": "list",
+    "count": "integer"
+   },
+   "tol": {
+    "mean": 0.051
+   }
+  },
+  {
+   "id": "json-07",
+   "kind": "json",
+   "turns": [
+    "Here is an order as JSON:\n{\"items\": [{\"sku\": \"A-49\", \"qty\": 6, \"unit\": 16.97}, {\"sku\": \"B-12\", \"qty\": 9, \"unit\": 46.74}, {\"sku\": \"D-74\", \"qty\": 2, \"unit\": 4.16}]}\nReturn ONLY a JSON object {\"total\": <number>, \"n_items\": <integer>, \"costliest_sku\": <string>} where total is the sum of qty times unit rounded to 2 decimals, n_items is the number of line items and costliest_sku is the sku with the largest qty times unit."
+   ],
+   "expected": {
+    "total": 530.8,
+    "n_items": 3,
+    "costliest_sku": "B-12"
+   },
+   "schema": {
+    "total": "number",
+    "n_items": "integer",
+    "costliest_sku": "string"
+   },
+   "tol": {
+    "total": 0.011
+   }
+  },
+  {
+   "id": "json-08",
+   "kind": "json",
+   "turns": [
+    "Here is a roster as CSV:\nname,score\nben,65\ndee,65\ncy,89\ngus,57\nReturn ONLY a JSON object {\"mean\": <number>, \"top\": [<names with the highest score, alphabetical>], \"count\": <integer>} with mean rounded to 1 decimal."
+   ],
+   "expected": {
+    "mean": 69.0,
+    "top": [
+     "cy"
+    ],
+    "count": 4
+   },
+   "schema": {
+    "mean": "number",
+    "top": "list",
+    "count": "integer"
+   },
+   "tol": {
+    "mean": 0.051
+   }
+  },
+  {
+   "id": "code-01",
+   "kind": "code",
+   "name": "reverse_words",
+   "tests": [
+    "assert reverse_words('a b  c') == 'c b a'",
+    "assert reverse_words('hello') == 'hello'",
+    "assert reverse_words('  one two ') == 'two one'",
+    "assert reverse_words('') == ''"
+   ],
+   "turns": [
+    "Write a Python function reverse_words(s) that returns the words of s in reverse order joined by single spaces, treating any whitespace run as a separator. Reply with a single Python code block containing only the function (and any helpers), no prints and no tests."
+   ]
+  },
+  {
+   "id": "code-02",
+   "kind": "code",
+   "name": "balanced",
+   "tests": [
+    "assert balanced('a(b[c]{d})') is True",
+    "assert balanced('(]') is False",
+    "assert balanced('') is True",
+    "assert balanced('((') is False",
+    "assert balanced('{[()]}x') is True"
+   ],
+   "turns": [
+    "Write a Python function balanced(s) that returns True if the brackets ()[]{} in s are balanced and properly nested, ignoring other characters, else False. Reply with a single Python code block containing only the function (and any helpers), no prints and no tests."
+   ]
+  },
+  {
+   "id": "code-03",
+   "kind": "code",
+   "name": "two_sum",
+   "tests": [
+    "assert two_sum([2, 7, 11, 15], 9) == (0, 1)",
+    "assert two_sum([3, 3], 6) == (0, 1)",
+    "assert two_sum([1, 2], 7) is None",
+    "assert two_sum([1, 4, 2, 3], 5) == (0, 1)"
+   ],
+   "turns": [
+    "Write a Python function two_sum(nums, target) that returns a tuple (i, j) with i < j and nums[i] + nums[j] == target, the lexicographically smallest such pair, or None. Reply with a single Python code block containing only the function (and any helpers), no prints and no tests."
+   ]
+  },
+  {
+   "id": "code-04",
+   "kind": "code",
+   "name": "rle",
+   "tests": [
+    "assert rle('aaab') == [('a', 3), ('b', 1)]",
+    "assert rle('') == []",
+    "assert rle('abc') == [('a', 1), ('b', 1), ('c', 1)]",
+    "assert rle('zz') == [('z', 2)]"
+   ],
+   "turns": [
+    "Write a Python function rle(s) that run-length encodes s as pairs, e.g. rle('aaab') returns [('a', 3), ('b', 1)]; rle('') returns []. Reply with a single Python code block containing only the function (and any helpers), no prints and no tests."
+   ]
+  },
+  {
+   "id": "code-05",
+   "kind": "code",
+   "name": "is_prime",
+   "tests": [
+    "assert is_prime(2) and is_prime(97) and is_prime(7919)",
+    "assert not is_prime(1) and not is_prime(0) and not is_prime(-7)",
+    "assert not is_prime(91) and not is_prime(1000)",
+    "assert is_prime(2_147_483_647)"
+   ],
+   "turns": [
+    "Write a Python function is_prime(n) that returns True for prime integers n >= 2 and False otherwise (including n < 2). Reply with a single Python code block containing only the function (and any helpers), no prints and no tests."
+   ]
+  },
+  {
+   "id": "code-06",
+   "kind": "code",
+   "name": "transpose",
+   "tests": [
+    "assert transpose([[1, 2, 3], [4, 5, 6]]) == [[1, 4], [2, 5], [3, 6]]",
+    "assert transpose([[1]]) == [[1]]",
+    "assert transpose([]) == []",
+    "assert transpose([[1, 2]]) == [[1], [2]]"
+   ],
+   "turns": [
+    "Write a Python function transpose(m) that returns the transpose of a rectangular list-of-lists matrix m (a list of lists); transpose([]) returns []. Reply with a single Python code block containing only the function (and any helpers), no prints and no tests."
+   ]
+  },
+  {
+   "id": "code-07",
+   "kind": "code",
+   "name": "group_anagrams",
+   "tests": [
+    "assert group_anagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat']) == [['eat', 'tea', 'ate'], ['tan', 'nat'], ['bat']]",
+    "assert group_anagrams([]) == []",
+    "assert group_anagrams(['a']) == [['a']]"
+   ],
+   "turns": [
+    "Write a Python function group_anagrams(words) that groups anagrams: return a list of groups (each a list of the original words in input order), groups ordered by first appearance. Reply with a single Python code block containing only the function (and any helpers), no prints and no tests."
+   ]
+  },
+  {
+   "id": "code-08",
+   "kind": "code",
+   "name": "fib_mod",
+   "tests": [
+    "assert fib_mod(0, 10) == 0 and fib_mod(1, 10) == 1",
+    "assert fib_mod(10, 1000) == 55",
+    "assert fib_mod(50, 10**9 + 7) == 12586269025 % (10**9 + 7)",
+    "assert fib_mod(10**6, 1000) == 875"
+   ],
+   "turns": [
+    "Write a Python function fib_mod(n, m) that returns the n-th Fibonacci number (fib(0)=0, fib(1)=1) modulo m, efficient enough for n up to 10**6. Reply with a single Python code block containing only the function (and any helpers), no prints and no tests."
+   ]
+  },
+  {
+   "id": "instruct-01",
+   "kind": "instruct",
+   "check": "lines",
+   "params": {
+    "n": 3
+   },
+   "turns": [
+    "Name three oceans, one per line, exactly three lines, nothing else."
+   ]
+  },
+  {
+   "id": "instruct-02",
+   "kind": "instruct",
+   "check": "include_exclude",
+   "params": {
+    "include": "glacier",
+    "exclude": "ice"
+   },
+   "turns": [
+    "Describe a mountain in two sentences. You must use the word 'glacier' and you must not use the word 'ice'."
+   ]
+  },
+  {
+   "id": "instruct-03",
+   "kind": "instruct",
+   "check": "all_caps",
+   "params": {},
+   "turns": [
+    "Write one sentence about rain entirely in capital letters."
+   ]
+  },
+  {
+   "id": "instruct-04",
+   "kind": "instruct",
+   "check": "ends_with",
+   "params": {
+    "word": "done"
+   },
+   "turns": [
+    "Give a two-sentence tip about sleep. The reply must end with the single word: done"
+   ]
+  },
+  {
+   "id": "instruct-05",
+   "kind": "instruct",
+   "check": "numbered",
+   "params": {
+    "n": 5
+   },
+   "turns": [
+    "List five vegetables as a numbered list, 1. to 5., one per line, nothing else."
+   ]
+  },
+  {
+   "id": "instruct-06",
+   "kind": "instruct",
+   "check": "word_band",
+   "params": {
+    "lo": 20,
+    "hi": 40
+   },
+   "turns": [
+    "Explain what a compiler does in between 20 and 40 words."
+   ]
+  },
+  {
+   "id": "instruct-07",
+   "kind": "instruct",
+   "check": "lines",
+   "params": {
+    "n": 4
+   },
+   "turns": [
+    "Give four colours, one per line, exactly four lines, no numbering, no extra text."
+   ]
+  },
+  {
+   "id": "instruct-08",
+   "kind": "instruct",
+   "check": "include_exclude",
+   "params": {
+    "include": "orbit",
+    "exclude": "planet"
+   },
+   "turns": [
+    "In one sentence, say what a satellite does. Use the word 'orbit' and do not use the word 'planet'."
+   ]
+  },
+  {
+   "id": "twoturn-01",
+   "kind": "twoturn",
+   "turns": [
+    "Remember two things for later: the code word is lantern and the ticket number is 9097. Reply only: noted.",
+    "What was the ticket number? Reply with the number only."
+   ],
+   "expected": "9097"
+  },
+  {
+   "id": "twoturn-02",
+   "kind": "twoturn",
+   "turns": [
+    "Compute 82 + 81 and reply with the number only.",
+    "Now add 10 to the number you just gave and reply with the number only."
+   ],
+   "expected": "173",
+   "expected_turn1": "163"
+  },
+  {
+   "id": "twoturn-03",
+   "kind": "twoturn",
+   "turns": [
+    "Remember two things for later: the code word is meadow and the ticket number is 4031. Reply only: noted.",
+    "What was the code word? Reply with that one word only."
+   ],
+   "expected": "meadow"
+  },
+  {
+   "id": "twoturn-04",
+   "kind": "twoturn",
+   "turns": [
+    "Compute 31 + 73 and reply with the number only.",
+    "Now add 10 to the number you just gave and reply with the number only."
+   ],
+   "expected": "114",
+   "expected_turn1": "104"
+  },
+  {
+   "id": "twoturn-05",
+   "kind": "twoturn",
+   "turns": [
+    "Remember two things for later: the code word is lantern and the ticket number is 1594. Reply only: noted.",
+    "What was the ticket number? Reply with the number only."
+   ],
+   "expected": "1594"
+  },
+  {
+   "id": "twoturn-06",
+   "kind": "twoturn",
+   "turns": [
+    "Compute 74 + 57 and reply with the number only.",
+    "Now add 10 to the number you just gave and reply with the number only."
+   ],
+   "expected": "141",
+   "expected_turn1": "131"
+  },
+  {
+   "id": "degen-01",
+   "kind": "degen",
+   "check": "repeat",
+   "params": {
+    "word": "amber",
+    "n": 6
+   },
+   "turns": [
+    "Write the word amber exactly 6 times separated by single spaces, then stop."
+   ]
+  },
+  {
+   "id": "degen-02",
+   "kind": "degen",
+   "check": "count",
+   "params": {
+    "a": 11,
+    "b": 20
+   },
+   "turns": [
+    "Count from 11 to 20 in digits, separated by commas, nothing else."
+   ]
+  },
+  {
+   "id": "degen-03",
+   "kind": "degen",
+   "check": "one_line",
+   "params": {},
+   "turns": [
+    "Name the largest planet of the solar system. One line."
+   ],
+   "expected": "jupiter"
+  },
+  {
+   "id": "degen-04",
+   "kind": "degen",
+   "check": "repeat",
+   "params": {
+    "word": "delta",
+    "n": 8
+   },
+   "turns": [
+    "Write the word delta exactly 8 times separated by single spaces, then stop."
+   ]
+  },
+  {
+   "id": "degen-05",
+   "kind": "degen",
+   "check": "count",
+   "params": {
+    "a": 4,
+    "b": 13
+   },
+   "turns": [
+    "Count from 4 to 13 in digits, separated by commas, nothing else."
+   ]
+  },
+  {
+   "id": "degen-06",
+   "kind": "degen",
+   "check": "one_line",
+   "params": {},
+   "turns": [
+    "What is the capital of France? One line."
+   ],
+   "expected": "paris"
+  }
+ ]
+}

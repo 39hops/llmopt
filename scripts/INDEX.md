@@ -5218,7 +5218,7 @@ QWEN-ATTN-ATTRIB-1 observations builder + deterministic reading.
 - `main()`
 
 ### scratch/qwen_battery_run.py
-QWEN-INFERENCE-BASELINE-0, phase E: score the frozen battery (scratch/evalsets/qwen_battery_v1.json) ONCE on the local arm C engine (llmopt.lab.qserve) under the collection's frozen rules (greedy, enable_thinking False, no system prompt, 384 output tokens per turn, context cap 8,192), each task in a fresh replay session, every turn's prompt ids, generated ids, text, stop reason, timings and memory recorded, every verdict by the committed validators (llmopt.lab.qbattery.score; code tasks in the sandbox, HOLD when the sandbox is unavailable). Plumbing failures (an exception, a context refusal, a sandbox failure) are recorded as "error" apart from model failures. Receipt logs/qwen_battery/results.json (refuse-if-exists; OUT overrides). SMOKE=1 scores the first task of each kind into logs/qwen_battery/smoke/results.json.
+QWEN-INFERENCE-BASELINE-0, phase E: score the frozen battery (scratch/evalsets/qwen_battery_v2.json by default; COLLECTION names another file; v1 is the superseded first freeze kept as a record) ONCE on the local arm C engine (llmopt.lab.qserve) under the collection's frozen rules (greedy, enable_thinking False, no system prompt, 384 output tokens per turn, context cap 8,192), each task in a fresh replay session, every turn's prompt ids, generated ids, text, stop reason, timings and memory recorded, every verdict by the committed validators (llmopt.lab.qbattery.score; code tasks in the sandbox, HOLD when the sandbox is unavailable). Plumbing failures (an exception, a context refusal, a sandbox failure) are recorded as "error" apart from model failures. Receipt logs/qwen_battery/results.json (refuse-if-exists; OUT overrides). SMOKE=1 scores the first task of each kind into logs/qwen_battery/smoke/results.json.
 
 - `main() -> None`
 
@@ -7046,7 +7046,7 @@ WHOLE-0T artifact qualification as a LIBRARY, not a workflow.
 - `load_manifest_verified(art_dir: str, vendor_index: str, chain_path: str | None=None, **kw) -> dict`
 
 ### llmopt/lab/qbattery.py
-The functional-quality battery for the local Qwen3.8-27B arm C (QWEN-INFERENCE-BASELINE-0): task generators (seeded, versioned), validators (programs, never a text match where several answers are right) and an isolated code runner. The frozen collection a run scores is scratch/evalsets/qwen_battery_v1.json, written by scratch/qwen_battery_gen.py from these generators; a run records the collection's sha256 and never edits it.
+The functional-quality battery for the local Qwen3.8-27B arm C (QWEN-INFERENCE-BASELINE-0): task generators (seeded, versioned), validators (programs, never a text match where several answers are right) and an isolated code runner. The frozen collection a run scores is scratch/evalsets/qwen_battery_v2.json, written from these generators (v1, the first freeze, is kept as a record of its three audit-found defects: a wrong expected answer, a non-integer percentage, a rounding tie); a run records the collection's sha256 and never edits it.
 
 - `gen_arith(r: random.Random, n: int) -> list`
 - `gen_json(r: random.Random, n: int) -> list`
@@ -7166,6 +7166,8 @@ Local inference for the qualified Qwen3.8-27B arm C (QWEN-INFERENCE- BASELINE-0)
 - `class InputError`
 - `class ContextLimitError`
 - `class GenerationResult`
+- `cache_offset(cache) -> Optional[int]` — The token offset the first KV cache object reports (the DeltaNet
+- `split_thinking(text: str) -> tuple` — (reasoning_content, content): the pinned template renders a past
 - `_check_ids(ids) -> list`
 - `class Engine` (render_chat, generate_ids, chat)
 - `class Session` (reset, ask)

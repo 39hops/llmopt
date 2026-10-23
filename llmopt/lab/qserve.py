@@ -32,6 +32,17 @@ the template's rendering of the full transcript has the previously fed
 token sequence as an exact prefix (checked mechanically every turn) and
 falls back to a full replay, recorded in the result, when it does not.
 
+Template disclosure: with thinking on (enable_thinking True or not
+given) the pinned template prepends its own system message ("Reasoning
+effort is set to xhigh...") and opens the assistant turn with <think>;
+with enable_thinking False it opens with an empty think block. A past
+assistant turn is re-rendered from reasoning_content and content, so
+Session splits a generated text at its last </think> when storing it.
+Incremental mode and replay are token-equal where observed (the live
+tests and the serving receipts) and are not bit-equivalent by
+construction: earlier generated tokens entered the cache through the
+fused decode path in one and the GEMM prefill path in the other.
+
 Stop semantics: the tokenizer's eos token (<|im_end|>, the end of the
 assistant turn) and <|endoftext|> stop generation; decoding never
 continues past them. Context: prompt tokens plus the output budget must
@@ -72,13 +83,37 @@ class GenerationResult:
     n_prompt: int
     n_generated: int
     fed_generated: int               # generated tokens fed back into the cache
-    cache_tokens: int                # tokens the cache holds after generation
+    cache_tokens: int                # tokens the cache holds after generation (by accounting)
+    cache_offset_measured: Optional[int]   # the KV cache's own offset after generation (None if no KV layer)
     last_token_in_cache: bool
     timings: dict
     memory: dict
     mode: str = "fresh"              # "fresh" | "incremental" | "replay-fallback"
     note: str = ""
     cache: object = dataclasses.field(default=None, repr=False, compare=False)   # the cache object after generation
+
+
+def cache_offset(cache) -> Optional[int]:
+    """The token offset the first KV cache object reports (the DeltaNet
+    ArraysCache objects carry no offset); None when none does."""
+    for c in cache or []:
+        if hasattr(c, "offset"):
+            return int(c.offset)
+    return None
+
+
+def split_thinking(text: str) -> tuple:
+    """(reasoning_content, content): the pinned template renders a past
+    assistant turn as <think>\n{reasoning}\n</think>\n\n{content}, so a
+    generated text that carries a </think> is split at its last one and the
+    opening <think> (which the generation prompt supplied) is stripped."""
+    if "</think>" in text:
+        head, _, tail = text.rpartition("</think>")
+        head = head.strip()
+        if head.startswith("<think>"):
+            head = head[len("<think>"):].strip()
+        return head, tail.strip()
+    return "", text
 
 
 def _check_ids(ids) -> list:
@@ -121,8 +156,15 @@ class Engine:
         if tokenizer is None:
             from transformers import AutoTokenizer
             self.tokenizer = AutoTokenizer.from_pretrained(self.vendor_dir)
+            import hashlib
+            self.tokenizer_files_sha256 = {}
+            for fn in ("tokenizer.json", "tokenizer_config.json", "config.json"):
+                p = os.path.join(self.vendor_dir, fn)
+                if os.path.exists(p):
+                    self.tokenizer_files_sha256[fn] = hashlib.sha256(open(p, "rb").read()).hexdigest()
         else:
             self.tokenizer = tokenizer
+            self.tokenizer_files_sha256 = {}
         self.previous_cache_limit = qprefill.configure_serving_memory(self.cfg)
         self.load_s = time.perf_counter() - t0
         eos = self.tokenizer.eos_token_id
@@ -169,6 +211,10 @@ class Engine:
         if cache is None:
             cache = self.model.make_cache()
             cache_tokens = 0
+        else:
+            off = cache_offset(cache)
+            if off is not None and off != cache_tokens:
+                raise RuntimeError(f"cache offset {off} does not match the claimed {cache_tokens} tokens")
         mx.reset_peak_memory()
         t0 = time.perf_counter()
         lg = qprefill.prefill_chunked(self.model, ids, cache, chunk=self.cfg.chunk, head="final", matmul=self.cfg.matmul)
@@ -192,15 +238,21 @@ class Engine:
             step_walls.append(time.perf_counter() - ts)
         t_decode = time.perf_counter() - t1
         fed = len(generated) if stop_reason == "stop_token" else len(generated) - 1
+        measured = cache_offset(cache)
+        if measured is not None and measured != cache_tokens + len(ids) + fed:
+            raise RuntimeError(f"cache offset {measured} != accounted {cache_tokens + len(ids) + fed}")
         mem = qprefill.memory_report()
         text = self.tokenizer.decode(generated, skip_special_tokens=True) if generated else ""
+        steady = step_walls[4:]
         timings = {"prefill_s": t_prefill, "first_token_s": t_prefill, "decode_s": t_decode, "decode_steps": len(step_walls),
                    "decode_tok_per_s": (len(step_walls) / t_decode) if step_walls and t_decode > 0 else None,
+                   "decode_steady_tok_per_s": (len(steady) / sum(steady)) if steady and sum(steady) > 0 else None,
                    "prefill_tok_per_s": len(ids) / t_prefill if t_prefill > 0 else None,
                    "total_s": time.perf_counter() - t0}
         return GenerationResult(prompt_ids=ids, generated_ids=generated, text=text, stop_reason=stop_reason, stop_token_id=stop_tok,
                                 n_prompt=len(ids), n_generated=len(generated), fed_generated=fed,
-                                cache_tokens=cache_tokens + len(ids) + fed, last_token_in_cache=(stop_reason == "stop_token" and bool(generated)),
+                                cache_tokens=cache_tokens + len(ids) + fed, cache_offset_measured=measured,
+                                last_token_in_cache=(stop_reason == "stop_token" and bool(generated)),
                                 timings=timings, memory=mem, mode=mode, cache=cache)
 
     def chat(self, messages: list, max_tokens: int = DEFAULT_MAX_TOKENS, enable_thinking: Optional[bool] = None) -> GenerationResult:
@@ -229,19 +281,32 @@ class Session:
     def ask(self, user: str, max_tokens: int = DEFAULT_MAX_TOKENS) -> GenerationResult:
         if not isinstance(user, str) or not user.strip():
             raise InputError("user text must be a non-empty string")
-        self.messages.append({"role": "user", "content": user})
-        full = self.engine.render_chat(self.messages, self.enable_thinking)
-        extends = self.cache is not None and len(full) > len(self.fed_ids) and full[: len(self.fed_ids)] == self.fed_ids
-        if self.mode == "incremental" and extends:
-            res = self.engine.generate_ids(full[len(self.fed_ids):], max_tokens, cache=self.cache, cache_tokens=len(self.fed_ids), mode="incremental")
-        else:
-            res = self.engine.generate_ids(full, max_tokens, mode=("fresh" if self.mode == "replay" or self.cache is None else "replay-fallback"))
-            if res.mode == "replay-fallback":
-                res.note = "the rendered transcript does not extend the fed token sequence; replayed into a fresh cache"
-        self.cache = res.cache
+        trial = self.messages + [{"role": "user", "content": user}]
+        try:
+            full = self.engine.render_chat(trial, self.enable_thinking)
+            extends = self.cache is not None and len(full) > len(self.fed_ids) and full[: len(self.fed_ids)] == self.fed_ids
+            if self.mode == "incremental" and extends:
+                res = self.engine.generate_ids(full[len(self.fed_ids):], max_tokens, cache=self.cache, cache_tokens=len(self.fed_ids), mode="incremental")
+            else:
+                res = self.engine.generate_ids(full, max_tokens, mode=("fresh" if self.mode == "replay" or self.cache is None else "replay-fallback"))
+                if res.mode == "replay-fallback":
+                    res.note = "the rendered transcript does not extend the fed token sequence; replayed into a fresh cache"
+        except Exception:
+            # a refused or failed turn leaves the transcript as it was and, in
+            # incremental mode, discards the cache (it may be partly fed)
+            self.cache = None
+            raise
+        self.messages = trial
         self.fed_ids = full + res.generated_ids[: res.fed_generated]
-        if res.cache_tokens != len(self.fed_ids):
-            raise RuntimeError(f"cache accounting mismatch: {res.cache_tokens} != {len(self.fed_ids)}")
-        self.messages.append({"role": "assistant", "content": res.text})
-        self.turns.append(res)
+        if res.cache_tokens != len(self.fed_ids) or (res.cache_offset_measured is not None and res.cache_offset_measured != len(self.fed_ids)):
+            raise RuntimeError(f"cache accounting mismatch: {res.cache_tokens} / {res.cache_offset_measured} != {len(self.fed_ids)}")
+        # replay mode holds no cache between turns; incremental holds exactly one
+        self.cache = res.cache if self.mode == "incremental" else None
+        reasoning, content = split_thinking(res.text)
+        msg = {"role": "assistant", "content": content}
+        if reasoning:
+            msg["reasoning_content"] = reasoning
+        self.messages.append(msg)
+        res.cache = None if self.mode == "replay" else res.cache
+        self.turns.append(dataclasses.replace(res, cache=None))
         return res

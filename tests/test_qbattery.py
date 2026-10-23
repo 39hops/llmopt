@@ -80,8 +80,12 @@ def test_code_sandbox_passes_correct_code_and_isolates():
     net = "```python\nimport socket\nsocket.create_connection(('1.1.1.1', 53), timeout=2)\ndef reverse_words(s):\n    return ' '.join(reversed(s.split()))\n```"
     assert qbattery.score(t, [net], [{}])["status"] == "fail"
     r = qbattery.run_code_sandboxed("import os\nprint(os.path.exists('/Users'))\nopen('/Users/artin/.zshrc').read()", [], 5)
-    assert r["status"] == "fail" and "PermissionError" in r.get("stderr", "")
+    assert r["status"] == "fail" and "PermissionError" in (r.get("stdout", "") + r.get("stderr", ""))
     r = qbattery.run_code_sandboxed("open('/tmp/qbat_probe', 'w').write('x')", [], 5)
+    assert r["status"] == "fail"
+    r = qbattery.run_code_sandboxed("while True:\n    pass", [], 2)
+    assert r["status"] == "fail" and (r.get("timed_out") or r.get("returncode") not in (0, None))
+    r = qbattery.run_code_sandboxed("print('ALL-TESTS-PASSED-0000')", ["assert False"], 5)
     assert r["status"] == "fail"
 
 

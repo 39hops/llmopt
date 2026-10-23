@@ -1,5 +1,6 @@
 """QWEN-INFERENCE-BASELINE-0, phase E: score the frozen battery
-(scratch/evalsets/qwen_battery_v1.json) ONCE on the local arm C engine
+(scratch/evalsets/qwen_battery_v2.json by default; COLLECTION names
+another file; v1 is the superseded first freeze kept as a record) ONCE on the local arm C engine
 (llmopt.lab.qserve) under the collection's frozen rules (greedy,
 enable_thinking False, no system prompt, 384 output tokens per turn,
 context cap 8,192), each task in a fresh replay session, every turn's
@@ -28,7 +29,7 @@ sys.path.insert(0, os.path.dirname(HERE))
 
 SMOKE = os.environ.get("SMOKE") == "1"
 OUT = "logs/qwen_battery/smoke/results.json" if SMOKE else os.environ.get("OUT", "logs/qwen_battery/results.json")
-COLLECTION = os.path.join(HERE, "evalsets", "qwen_battery_v1.json")
+COLLECTION = os.path.join(HERE, "evalsets", os.environ.get("COLLECTION", "qwen_battery_v2.json"))
 
 
 def main() -> None:
