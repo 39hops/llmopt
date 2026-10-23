@@ -11,7 +11,8 @@
 #   eval        MODE=eval (the registered comparison on the evaluation
 #               split; receipt logs/qwen_geometry/eval.json)
 #   adjudicate  scratch/qwen_geometry_obs.py then scripts/adjudicate.py
-#               against docs/preregs/qwen-lossy-geometry-0.json
+#               against docs/preregs/qwen-lossy-geometry-0.json, into
+#               logs/qwen_geometry/adjudicate_<ADJ_TAG>/ (default 1)
 # ONLY="a b" runs a subset (the registration commit sits between dev and
 # eval). Every receipt refuses to overwrite. Run under scripts/liverun.py.
 set -uo pipefail
@@ -43,14 +44,19 @@ run transform $PY scratch/qwen_geometry_transform.py
 run dev       env MODE=dev $PY scratch/qwen_geometry_quant.py
 run eval      env MODE=eval $PY scratch/qwen_geometry_quant.py
 adjudicate() {
-  if [ -e logs/qwen_geometry/observations.json ] || [ -e logs/qwen_geometry/adjudication.txt ]; then
-    echo "REFUSING: observations or adjudication exists"; return 3; fi
+  # a new run belongs at a NEW path (receipt doctrine): ADJ_TAG names the
+  # adjudication directory; the first chain's adjudicate stage failed on an
+  # adapter contract error and its outputs stay in place as the failed record
+  local d=logs/qwen_geometry/adjudicate_${ADJ_TAG:-1}
+  if [ -e "$d/observations.json" ] || [ -e "$d/adjudication.txt" ]; then
+    echo "REFUSING: $d/observations.json or adjudication.txt exists"; return 3; fi
+  mkdir -p "$d"
   $PY scratch/qwen_geometry_obs.py logs/qwen_geometry/eval.json logs/qwen_geometry/transform.json \
-      docs/preregs/qwen-lossy-geometry-0.json > logs/qwen_geometry/observations.json || return $?
-  $PY scripts/adjudicate.py docs/preregs/qwen-lossy-geometry-0.json logs/qwen_geometry/observations.json \
-      > logs/qwen_geometry/adjudication.txt
+      docs/preregs/qwen-lossy-geometry-0.json > "$d/observations.json" || return $?
+  $PY scripts/adjudicate.py docs/preregs/qwen-lossy-geometry-0.json "$d/observations.json" \
+      > "$d/adjudication.txt"
   rc=$?
-  cat logs/qwen_geometry/adjudication.txt
+  cat "$d/adjudication.txt"
   [ "$rc" -eq 0 ] || [ "$rc" -eq 2 ]
 }
 run adjudicate adjudicate

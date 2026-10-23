@@ -53,6 +53,7 @@ def main(eval_path, xform_path, prereg_path):
                 reasons.append(f"{sh} lacks {c}")
     valid = not reasons
     meas = {}
+    best_note = None
     if valid:
         g, d, q = by_short["22.mlp.gate_proj"], by_short["22.mlp.down_proj"], by_short["22.linear_attn.in_proj_qkv"]
         score = {c: max(g["bootstrap_vs_control"][c]["ratio_candidate_over_control"], d["bootstrap_vs_control"][c]["ratio_candidate_over_control"]) for c in CANDS}
@@ -74,8 +75,9 @@ def main(eval_path, xform_path, prereg_path):
         meas["3"] = {"value": xf["projection"]["per_step_ms_unfused_mlx_ops"], "metric": "transform_step_ms", "population": "decode-step:64-layers",
                      "aggregation": "64_times_best_impl_per_layer_sum", "provenance": json.dumps(xf["projection"]["best_impl"])}
         meas["best_w4_ratio"] = dict(meas["1"])
-        meas["best_candidate"] = {"value": CANDS.index(best), "metric": "best_candidate_index", "population": pop, "aggregation": "argmin"}
+        best_note = {"best_w4_candidate": best, "best_s16_candidate": best16}
     obs = {"note": f"Mechanical projection of {eval_path} (commit {ev.get('commit')}) and {xform_path} (commit {xf.get('commit')}); adapter scratch/qwen_geometry_obs.py",
+           "best_candidates": best_note if valid else None,
            "registration_sha256": registration_digest(prereg),
            "measurement_valid": valid, **({} if valid else {"measurement_reason": "; ".join(reasons)}),
            "arms": {"CONTROL": {"admissible": True, "reason": "arm C payload through the canonical decoder"},
