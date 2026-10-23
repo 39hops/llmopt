@@ -5218,7 +5218,7 @@ QWEN-ATTN-ATTRIB-1 observations builder + deterministic reading.
 - `main()`
 
 ### scratch/qwen_battery_run.py
-QWEN-INFERENCE-BASELINE-0, phase E: score the frozen battery (scratch/evalsets/qwen_battery_v2.json by default; COLLECTION names another file; v1 is the superseded first freeze kept as a record) ONCE on the local arm C engine (llmopt.lab.qserve) under the collection's frozen rules (greedy, enable_thinking False, no system prompt, 384 output tokens per turn, context cap 8,192), each task in a fresh replay session, every turn's prompt ids, generated ids, text, stop reason, timings and memory recorded, every verdict by the committed validators (llmopt.lab.qbattery.score; code tasks in the sandbox, HOLD when the sandbox is unavailable). Plumbing failures (an exception, a context refusal, a sandbox failure) are recorded as "error" apart from model failures. Receipt logs/qwen_battery/results.json (refuse-if-exists; OUT overrides). SMOKE=1 scores the first task of each kind into logs/qwen_battery/smoke/results.json.
+QWEN-INFERENCE-BASELINE-0, phase E: score the frozen battery (scratch/evalsets/qwen_battery_v2.json by default; COLLECTION names another file; v1 is the superseded first freeze kept as a record) ONCE on the local arm C engine (llmopt.lab.qserve) under the collection's frozen rules (greedy, enable_thinking False, no system prompt, 384 output tokens per turn, context cap 8,192), each task in a fresh replay session, every turn's prompt ids, generated ids, text, stop reason, timings and memory recorded, every verdict by the committed validators (llmopt.lab.qbattery.score; code tasks in the sandbox, HOLD when the sandbox is unavailable). Plumbing failures (an exception, a context refusal, a sandbox failure) are recorded as "error" apart from model failures. Receipt logs/qwen_battery/results.json (refuse-if-exists; OUT overrides). THINK=1 enables the pinned template's thinking control and scores the final answer after the last </think> (qbattery.score_thinking; an unclosed block is a fail with no final answer); BUDGET=N overrides the per-turn budget; both are recorded in execution_config and the frozen rules are copied unchanged. SMOKE=1 scores the first task of each kind into logs/qwen_battery/smoke/results.json.
 
 - `main() -> None`
 
@@ -5515,6 +5515,17 @@ QWEN-HEADSWAP-IMPULSE-0 tail-period color producer (descriptive, gates nothing).
 
 - `tail_period(ids, cap=400, window=800)`
 - `main()`
+
+### scratch/qwen_incr_obs.py
+Observations adapter for PRE-REG QWEN-CHAT-DEFAULT-0: derives the registered measurements from the incremental-against-replay receipt (scratch/qwen_incr_perf.py) in committed code.
+
+- `main(receipt_path, prereg_path)`
+
+### scratch/qwen_incr_perf.py
+QWEN-CHAT-DEFAULT-0, part A: the registered comparison of incremental cache reuse against full-transcript replay on realistic multi-turn conversations, both modes from a fresh engine state per conversation, one process, the serving defaults (kernel generation 5, the 2 GiB cache limit, chunk-256 GEMM prefill, fused cached decode, greedy).
+
+- `run_conversation(eng, spec, mode)`
+- `main() -> None`
 
 ### scratch/qwen_ioattrib_adjudicate.py
 QWEN-IO-ATTRIB-1 observations builder + registered resolution.
@@ -5852,6 +5863,12 @@ QWEN-MODEL-1 teacher-baseline pass (frozen procedure, SPEC.md).
 Teacher v2d SIDECAR: cached-v-uncached gate on the locked rollout record (AMENDMENT QWEN-MODEL1-TREE-PINS item 3).
 
 - `main() -> int`
+
+### scratch/qwen_think_obs.py
+Observations adapter for PRE-REG QWEN-THINKING-BATTERY-0: derives the registered measurements from the three battery receipts (the frozen no-thinking baseline logs/qwen_battery/results_v2.json and the two thinking configurations written by scratch/qwen_battery_run.py under THINK=1 with BUDGET 384 and 768) in committed code. The honest count is pass rows over all 46 tasks (error and hold rows are non-passes).
+
+- `counts(r)`
+- `main(base_path, t384_path, t768_path, prereg_path)`
 
 ### scratch/qwen_topset_census.py
 TOPSET-OVERLAP census (observation-only, gates nothing; the banked spec of 2026-08-20, run per its own text): BLe v vendor top-set geometry at the five frozen loop-state h, BEFORE any alternate-token redesign is chosen. Reuses the frozen qwen_alttok_derive machinery by import (never edited); logits recomputed the identical chunked way.
@@ -7066,6 +7083,9 @@ The functional-quality battery for the local Qwen3.8-27B arm C (QWEN-INFERENCE-B
 - `check_instruct(task, replies) -> tuple[bool, str]`
 - `check_twoturn(task, replies) -> tuple[bool, str]`
 - `check_degen(task, replies, results) -> tuple[bool, str]`
+- `split_final(text: str) -> tuple` — (reasoning, final) at the LAST </think> of a thinking-mode reply;
+- `format_ok(task: dict, final: str) -> Optional[bool]` — Output-format compliance of a final answer under the task's contract:
+- `score_thinking(task: dict, replies: list, results: list) -> dict` — The frozen validators applied to the final answers of thinking-mode
 - `score(task: dict, replies: list, results: list) -> dict`
 
 ### llmopt/lab/qcodec.py

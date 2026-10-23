@@ -74,6 +74,9 @@ class _Model:
         return self.language_model.lm_head(self.language_model.model(ids, cache))
 
 
+THINK_OPEN, THINK_CLOSE, DROPPED = 60, 59, 58     # <think>, </think>, and a special token decode drops
+
+
 class _Tok:
     eos_token_id = STOP
 
@@ -81,19 +84,26 @@ class _Tok:
         return STOP - 1 if t == qserve.ENDOFTEXT else -1
 
     def decode(self, ids, skip_special_tokens=True):
-        return " ".join(str(i) for i in ids)
+        names = {THINK_OPEN: "<think>", THINK_CLOSE: "</think>"}
+        return " ".join(names.get(i, str(i)) for i in ids if not (skip_special_tokens and i == DROPPED))
 
-    def apply_chat_template(self, messages, add_generation_prompt=True, tokenize=True, **kw):
-        # user text encodes byte-wise; an assistant turn re-encodes the ids its
-        # decode printed (invertible), followed by the stop token, as the real
-        # template renders a past turn verbatim and closes it with <|im_end|>
+    @staticmethod
+    def _enc(text):
+        names = {"<think>": THINK_OPEN, "</think>": THINK_CLOSE}
+        return [names.get(x) if x in names else int(x) for x in text.split()] if text else []
+
+    def apply_chat_template(self, messages, add_generation_prompt=True, tokenize=True, enable_thinking=None, **kw):
+        # mirrors the pinned template: user text encodes byte-wise; a past
+        # assistant turn renders <think> reasoning </think> content <|im_end|>
+        # (invertible through decode); the generation prompt opens a think block
+        # (thinking on or unset) or an empty one (thinking off)
         ids = []
         for m in messages:
             if m["role"] == "assistant":
-                ids += [1] + [int(x) for x in m["content"].split()] + [STOP]
+                ids += [1, THINK_OPEN] + self._enc(m.get("reasoning_content", "")) + [THINK_CLOSE] + self._enc(m["content"]) + [STOP]
             else:
                 ids += [1] + [int(c) % 50 + 2 for c in m["content"].encode()] + [STOP]
-        return ids + [1]
+        return ids + ([1, THINK_OPEN, THINK_CLOSE] if enable_thinking is False else [1, THINK_OPEN])
 
 
 @pytest.fixture
@@ -179,8 +189,8 @@ def test_session_replay_accounting_and_isolation(engine):
 def test_session_incremental_equals_replay_when_prefix_holds(engine):
     """the stub's template renders history verbatim, so the prefix check holds
     and the incremental cache must produce the same tokens as a replay."""
-    a = qserve.Session(engine, mode="incremental")
-    b = qserve.Session(engine, mode="replay")
+    a = qserve.Session(engine, mode="incremental", enable_thinking=False)
+    b = qserve.Session(engine, mode="replay", enable_thinking=False)
     ra1, rb1 = a.ask("hello", 3), b.ask("hello", 3)
     ra2, rb2 = a.ask("more", 3), b.ask("more", 3)
     assert ra1.generated_ids == rb1.generated_ids
@@ -208,6 +218,126 @@ def test_refused_turn_leaves_the_session_unchanged(engine):
     with pytest.raises(qserve.ContextLimitError):
         s.ask("x" * 200, max_tokens=3)
     assert len(s.messages) == n and s.cache is None
+
+
+def _pair(engine, thinking=False):
+    return qserve.Session(engine, mode="incremental", enable_thinking=thinking), qserve.Session(engine, mode="replay", enable_thinking=thinking)
+
+
+def _same(a, b, q, n):
+    ra, rb = a.ask(q, n), b.ask(q, n)
+    assert ra.generated_ids == rb.generated_ids and ra.stop_reason == rb.stop_reason, (ra.mode, ra.note, ra.text, rb.text)
+    assert ra.cache_offset_measured == ra.cache_tokens == len(a.fed_ids)
+    return ra, rb
+
+
+def _find(kind, budget=40):
+    """a one-token user text whose stub trajectory ends the given way."""
+    for c in range(33, 127):
+        exp, reason, _ = _expected([1, c % 50 + 2, STOP, 1, THINK_OPEN, THINK_CLOSE], budget)
+        if kind == "stop" and reason == "stop_token" and exp:
+            return chr(c)
+        if kind == "empty" and reason == "stop_token" and not exp:
+            return chr(c)
+        if kind == "budget" and reason == "max_tokens":
+            return chr(c)
+    pytest.skip(f"no {kind} trajectory in the stub")
+
+
+def test_incremental_after_stop_token_feeds_the_stop_exactly_once(engine):
+    a, b = _pair(engine)
+    q = _find("stop")
+    ra, _ = _same(a, b, q, 40)
+    assert ra.stop_reason == "stop_token" and ra.last_token_in_cache
+    n_fed = len(a.fed_ids)
+    ra2, _ = _same(a, b, "next", 3)
+    assert ra2.mode == "incremental" and ra2.prompt_ids[0] == STOP           # the un-fed stop token is the first new id
+    assert a.cache[0].fed == a.fed_ids and a.fed_ids[:n_fed] == a.fed_ids[:n_fed] and a.cache[0].fed.count(STOP) == a.fed_ids.count(STOP)
+
+
+def test_incremental_after_budget_stop_feeds_the_last_token_once(engine):
+    a, b = _pair(engine)
+    ra, _ = _same(a, b, _find("budget", 3), 3)
+    assert ra.stop_reason == "max_tokens" and not ra.last_token_in_cache
+    last = ra.generated_ids[-1]
+    ra2, _ = _same(a, b, "next", 3)
+    assert ra2.mode == "incremental" and ra2.prompt_ids[0] == last             # the un-fed last token is fed first, once
+    assert a.cache[0].fed == a.fed_ids
+
+
+def test_incremental_after_empty_completion(engine):
+    a, b = _pair(engine)
+    ra, _ = _same(a, b, _find("empty"), 40)
+    assert ra.n_generated == 0 and ra.stop_reason == "stop_token"
+    ra2, _ = _same(a, b, "next", 3)
+    assert ra2.mode == "incremental" and a.cache[0].fed == a.fed_ids
+
+
+def test_thinking_on_and_off_both_modes(engine):
+    # thinking off: the generation prompt's empty think block equals the past
+    # turn's rendering, so the cache is reused; thinking on (True or unset)
+    # with a reply that never closed its think block: the template re-renders
+    # the turn with a </think> the model never emitted, so the prefix breaks
+    # and the turn is replayed, never continued from the cache
+    for thinking in (True, False, None):
+        a, b = _pair(engine, thinking)
+        ra, _ = _same(a, b, "hello", 6)
+        ra2, _ = _same(a, b, "more", 6)
+        assert a.cache[0].fed == a.fed_ids
+        closed = THINK_CLOSE in ra.generated_ids
+        if thinking is False or closed:
+            assert ra2.mode == "incremental", (thinking, ra2.mode)
+        else:
+            assert ra2.mode == "replay-fallback", (thinking, ra2.mode)
+
+
+def test_changed_rendering_forces_replay_fallback_never_a_guess(engine):
+    a, b = _pair(engine, False)
+    _same(a, b, "hello", 3)
+    a.system = b.system = None
+    a.messages.insert(0, {"role": "system", "content": "be brief"})   # the transcript's rendering changed: no longer extends the fed ids
+    b.messages.insert(0, {"role": "system", "content": "be brief"})
+    ra2, _ = _same(a, b, "more", 3)
+    assert ra2.mode == "replay-fallback" and ra2.note and a.cache[0].fed == a.fed_ids == ra2.prompt_ids + ra2.generated_ids[: ra2.fed_generated]
+    ra3, _ = _same(a, b, "again", 3)
+    assert ra3.mode == "incremental"                        # the fresh cache is reused from here
+
+
+def test_dropped_special_token_in_generation_falls_back(engine, monkeypatch):
+    # a generated special token that decode drops cannot be re-rendered, so
+    # the next turn's rendering does not extend the fed ids: replay, not reuse
+    a, b = _pair(engine)
+    orig = _rule
+    import sys
+    monkeypatch.setattr(sys.modules[__name__], "_rule", lambda t, c: DROPPED if c == 10 else orig(t, c))   # the first decode step emits it
+    ra, _ = _same(a, b, "hello", 4)
+    assert DROPPED in ra.generated_ids and "58" not in ra.text
+    ra2, _ = _same(a, b, "more", 3)
+    assert ra2.mode == "replay-fallback" and a.cache[0].fed == a.fed_ids
+
+
+def test_cap_refusal_then_recovery_in_incremental_mode(engine):
+    a, b = _pair(engine)
+    _same(a, b, "hello", 3)
+    for s in (a, b):
+        with pytest.raises(qserve.ContextLimitError):
+            s.ask("x" * 200, 3)
+    assert a.cache is None and len(a.messages) == 2
+    ra, _ = _same(a, b, "more", 3)
+    assert ra.mode == "fresh" and ra.prompt_ids == engine.render_chat(a.messages[:-1], False)   # the discarded cache is rebuilt from the whole transcript
+    ra2, _ = _same(a, b, "again", 3)
+    assert ra2.mode == "incremental"
+
+
+def test_reset_and_isolation_in_incremental_mode(engine):
+    a, b = _pair(engine)
+    r1, _ = _same(a, b, "hello", 3)
+    _same(a, b, "more", 3)
+    c = qserve.Session(engine, mode="incremental", enable_thinking=False)
+    assert c.ask("hello", 3).generated_ids == r1.generated_ids and c.cache[0].fed == c.fed_ids and len(c.fed_ids) < len(a.fed_ids)
+    a.reset()
+    assert a.cache is None and a.fed_ids == [] and a.messages == []
+    assert a.ask("hello", 3).generated_ids == r1.generated_ids and a.ask("hello", 3).mode == "incremental"
 
 
 LIVE = os.environ.get("LLMOPT_QWEN_LIVE") == "1" and os.path.exists(os.path.expanduser("~/qwen_whole0t/C/manifest.json"))
@@ -243,3 +373,29 @@ def test_live_incremental_matches_replay(live_engine):
         if i == 1:
             assert ra.mode == "incremental", (ra.mode, ra.note)
             assert ra.cache_offset_measured == ra.cache_tokens == len(a.fed_ids)
+
+
+def test_live_thinking_on_two_turns_both_modes(live_engine):
+    # the pinned template re-renders a past turn from reasoning_content and
+    # content; whether that rendering extends the fed ids is measured here,
+    # and the two modes must agree token for token either way
+    a = qserve.Session(live_engine, mode="incremental", enable_thinking=True)
+    b = qserve.Session(live_engine, mode="replay", enable_thinking=True)
+    for i, q in enumerate(("What is 6 times 7? Answer briefly.", "Add 10 to that. Answer briefly.")):
+        ra, rb = a.ask(q, 256), b.ask(q, 256)
+        assert ra.generated_ids == rb.generated_ids and ra.stop_reason == rb.stop_reason, (ra.mode, ra.note, ra.text[-80:], rb.text[-80:])
+        assert ra.cache_offset_measured == ra.cache_tokens == len(a.fed_ids)
+        if i == 1:
+            assert ra.mode in ("incremental", "replay-fallback"), ra.mode
+            assert ("</think>" in a.messages[1].get("content", "") + a.messages[1].get("reasoning_content", "")) is False  # the split moved the tags out of the stored turn
+
+
+def test_live_budget_stop_then_follow_up_incremental(live_engine):
+    a = qserve.Session(live_engine, mode="incremental", enable_thinking=False)
+    b = qserve.Session(live_engine, mode="replay", enable_thinking=False)
+    ra, rb = a.ask("Write one long sentence about rivers.", 6), b.ask("Write one long sentence about rivers.", 6)
+    assert ra.stop_reason == rb.stop_reason == "max_tokens" and ra.generated_ids == rb.generated_ids and not ra.last_token_in_cache
+    ra2, rb2 = a.ask("Now say only: done", 8), b.ask("Now say only: done", 8)
+    assert ra2.generated_ids == rb2.generated_ids, (ra2.mode, ra2.note, ra2.text, rb2.text)
+    assert ra2.mode == "incremental" and ra2.prompt_ids[0] == ra.generated_ids[-1]   # the un-fed last token fed exactly once
+    assert ra2.cache_offset_measured == ra2.cache_tokens == len(a.fed_ids)

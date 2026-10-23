@@ -103,3 +103,22 @@ def test_code_candidate_syntax_error_is_a_model_failure_not_a_harness_error():
     # harness must still start, so the verdict is fail (the candidate's), not error
     r = qbattery.run_code_sandboxed("def f(n):\n    return (n +", ["assert f(1) == 2"], 5)
     assert r["status"] == "fail" and "SyntaxError" in r.get("stdout", "") + r.get("stderr", "")
+
+
+def test_thinking_scores_the_final_answer_after_the_closed_think_block():
+    t = {"id": "arith-x", "kind": "arith", "turns": ["What is 2 + 2? Answer with the number only."], "expected": 4}
+    res = [{"stop_reason": "stop_token"}]
+    assert qbattery.score_thinking(t, ["Let me add. 2 + 2 = 5, no, 4.\n</think>\n\n4"], res)["status"] == "pass"
+    # the number only appears inside the reasoning: no final answer, fail, never a search of the hidden text
+    v = qbattery.score_thinking(t, ["Let me add. 2 + 2 = 4 so the answer is 4 and"], [{"stop_reason": "max_tokens"}])
+    assert v["status"] == "fail" and "did not terminate" in v["why"]
+    # a closed block with a wrong final answer fails on the final answer
+    assert qbattery.score_thinking(t, ["2 + 2 = 4\n</think>\n\n5"], res)["status"] == "fail"
+    assert qbattery.split_final("a\n</think>\n\nb</think>c") == ("a\n</think>\n\nb", "c")
+    assert qbattery.split_final("no close") == (None, None)
+
+
+def test_format_ok_is_the_contract_of_the_task_kind():
+    assert qbattery.format_ok({"kind": "arith"}, "148710") and not qbattery.format_ok({"kind": "arith"}, "The answer is 148710")
+    assert qbattery.format_ok({"kind": "json"}, ' {"a": 1} ') and not qbattery.format_ok({"kind": "json"}, 'Here: {"a": 1}')
+    assert qbattery.format_ok({"kind": "code"}, "x") is None

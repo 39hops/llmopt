@@ -404,6 +404,43 @@ def check_degen(task, replies, results) -> tuple[bool, str]:
     raise ValueError(c)
 
 
+def split_final(text: str) -> tuple:
+    """(reasoning, final) at the LAST </think> of a thinking-mode reply;
+    (None, None) when the block never closed: there is no final answer and
+    the hidden reasoning is never searched for one."""
+    if "</think>" not in text:
+        return None, None
+    head, _, tail = text.rpartition("</think>")
+    return head, tail.strip()
+
+
+def format_ok(task: dict, final: str) -> Optional[bool]:
+    """Output-format compliance of a final answer under the task's contract:
+    arithmetic asks for the number only, JSON for only a JSON object; the
+    other kinds have no format contract beyond their validators (None)."""
+    t = final.strip()
+    if task["kind"] == "arith":
+        return re.fullmatch(r"-?[\d,]+(?:\.\d+)?", t) is not None
+    if task["kind"] == "json":
+        return t.startswith("{") and t.endswith("}")
+    return None
+
+
+def score_thinking(task: dict, replies: list, results: list) -> dict:
+    """The frozen validators applied to the final answers of thinking-mode
+    replies: each reply is cut at its last </think>; a reply whose block
+    never closed fails with no final answer."""
+    finals = []
+    for i, r in enumerate(replies):
+        _, final = split_final(r)
+        if final is None:
+            return {"status": "fail", "why": f"turn {i + 1}: thinking did not terminate within the budget; no final answer", "final_answers": finals}
+        finals.append(final)
+    v = score(task, finals, results)
+    v["final_answers"] = finals
+    return v
+
+
 def score(task: dict, replies: list, results: list) -> dict:
     kind = task["kind"]
     if kind == "arith":

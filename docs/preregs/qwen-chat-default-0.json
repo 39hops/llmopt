@@ -1,0 +1,37 @@
+{
+ "name": "QWEN-CHAT-DEFAULT-0",
+ "note": "Machine-readable form of PRE-REG QWEN-CHAT-DEFAULT-0; the prose governs on any conflict. Part A of Artin's GO QWEN-CHAT-DEFAULT-AND-THINKING-0 (2026-10-23): may incremental cache reuse become the default of Session and of the interactive CLI? The incremental mode reuses the cache only when the pinned template's rendering of the whole transcript has the fed token sequence as an exact prefix, the KV cache's measured offset equals the accounting on entry and exit, the context cap refuses rather than truncates, and any mismatch replays into a fresh cache. Five fixed conversations (three eight-turn thinking-off, one four-turn thinking-on, one with a budget-cut turn) run in both modes from fresh state. Decision rule: every bar FIRE promotes incremental to the default with replay kept as an explicit option (--replay); any NO-FIRE holds the default at replay.",
+ "results_id": "2026-10-23-pre-reg-qwen-chat-default-0",
+ "registered": "2026-10-23",
+ "machine": "mac",
+ "arms": {
+  "REPLAY": {"description": "Session mode replay: the whole transcript re-rendered and re-prefilled into a fresh cache every turn; the reference"},
+  "INCREMENTAL": {"description": "Session mode incremental: the cache kept across turns when the rendering extends the fed ids exactly, else replay-fallback; the same Engine, kernels and template"}
+ },
+ "bars": [
+  {"id": 1, "name": "TOKEN-EQUAL", "metric": "token_mismatch_turns", "population": "turns:32", "aggregation": "count", "direction": "below", "value": 0.5, "arms": ["REPLAY", "INCREMENTAL"],
+   "description": "no turn of any conversation produces different generated ids or a different stop reason between the two modes (including the thinking-on conversation, whether its later turns reuse the cache or fall back)."},
+  {"id": 2, "name": "LATER-TURN-TTFT", "metric": "ttft_ratio_later_median", "population": "later-thinking-off-turns:24", "aggregation": "median_of_per_turn_ratio", "direction": "below", "value": 0.6, "arms": ["REPLAY", "INCREMENTAL"],
+   "description": "the median over the later turns (2 and on) of the thinking-off conversations of incremental first-token latency over replay's is below 0.6."},
+  {"id": 3, "name": "MEMORY-FLAT", "metric": "active_growth_mb_excess_max", "population": "conversations:5", "aggregation": "max_over_conversations_of_incremental_growth_minus_replay_growth", "direction": "below", "value": 32.0, "arms": ["REPLAY", "INCREMENTAL"],
+   "description": "the largest growth of active memory from the first to the last turn of an incremental conversation, in excess of the same conversation's replay growth, is below 32 MB: the cache itself grows with the transcript in both modes (replay's last turn holds a fresh cache of the whole transcript), so retention beyond the one live cache would show as excess of hundreds of MB."},
+  {"id": 4, "name": "ACCOUNTING", "metric": "offset_mismatch_turns", "population": "turns:64", "aggregation": "count", "direction": "below", "value": 0.5, "arms": ["REPLAY", "INCREMENTAL"],
+   "conjuncts": [{"measurement": "4:reuse", "metric": "later_thinking_off_reuse_fraction", "population": "later-thinking-off-turns:24", "aggregation": "fraction", "direction": "above", "value": 0.89}],
+   "description": "no turn in either mode has a measured KV offset different from the accounting, and at least 90 percent of the later thinking-off turns were taken through the incremental path (the reuse actually engages on ordinary conversations)."}
+ ],
+ "receipts": [
+  "logs/qwen_serve/incr_v1.json",
+  "logs/qwen_serve/incr_adjudicate_1/observations.json",
+  "logs/qwen_serve/incr_adjudicate_1/adjudication.txt"
+ ],
+ "operands": [
+  {"name": "the arm C artifact digest chain", "provider": "logs/qwenwhole/artifact_digest_C.txt"},
+  {"name": "the engine", "provider": "llmopt/lab/qserve.py"},
+  {"name": "the comparison driver", "provider": "scratch/qwen_incr_perf.py"},
+  {"name": "the observations adapter", "provider": "scratch/qwen_incr_obs.py"},
+  {"name": "the runner", "provider": "scratch/qwen_chat_default_study.sh"}
+ ],
+ "refuted_if": "The promotion is HELD if bar 1 or bar 4 reads NO-FIRE (a correctness defect: a token difference or an accounting mismatch), or if bar 2 or bar 3 reads NO-FIRE (no latency benefit, or memory retention). Any NO-FIRE keeps replay as the default.",
+ "refuted_if_predicate": {"measurement": "token_mismatch_turns", "direction": "above", "value": 0.5},
+ "registered_prior": "On the six-turn session of QWEN-INFERENCE-BASELINE-0 the two modes were token-equal on every turn, the incremental later-turn first token was 2.1 to 2.3 s against replay's 3.9 to 7.8 s (ratios 0.28 to 0.54, falling as the transcript grows), active memory was 9.024 GB on every turn in both modes, and the measured offset equalled the accounting on all twelve turns. Expected here: bar 1 FIRE with zero mismatches (the two paths differ only in which kernel fed earlier tokens, the recurrent state within 1.2e-5 relative; a near-tie flip remains possible on any one turn and would read as a NO-FIRE to be understood, not a defect of the prefix check); bar 2 FIRE near 0.4; bar 3 FIRE with the excess within a few MB of zero (the smoke run read -2.8 MB on a two-turn thinking conversation whose cache alone grew 64 MB); bar 4 FIRE with every thinking-off later turn reused. The thinking-on conversation is expected to fall back on its later turns when the generated reasoning's whitespace around </think> re-tokenises differently from the template's rendering, and to reuse when it does not; either is correct behaviour and both modes must still agree."
+}

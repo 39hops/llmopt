@@ -1,0 +1,20 @@
+{
+ "note": "Retrospective mechanism annotation of the 13 non-passes of logs/qwen_battery/results_v2.json (OBSERVATION QWEN-INFERENCE-BASELINE-0, commit 3ed19ee6), part C of the GO QWEN-CHAT-DEFAULT-AND-THINKING-0. Hand-annotated from the recorded replies; the frozen scores are not changed by this file. Mechanisms: wrong_calculation, correct_calculation_wrong_final_answer, incorrect_format, budget_exhaustion, code_test_failure, evaluator_or_sandbox_failure. A row may carry more than one.",
+ "receipt": "logs/qwen_battery/results_v2.json",
+ "rows": [
+  {"id": "arith-03", "mechanisms": ["wrong_calculation"], "evidence": "413 * 685 answered 281955 for 282905; number-only format kept; stopped on a stop token after 6 tokens"},
+  {"id": "arith-04", "mechanisms": ["correct_calculation_wrong_final_answer", "incorrect_format", "budget_exhaustion"], "evidence": "the working reached 'So remainder is 25.' then kept verifying; 384 tokens exhausted mid-verification after '52729'; the number-only contract was not met; the frozen last-integer rule scored 52729"},
+  {"id": "arith-05", "mechanisms": ["incorrect_format", "budget_exhaustion"], "evidence": "Euclidean algorithm reached 36 as a remainder, then started a prime factorisation and exhausted 384 tokens mid-factorisation after '3'; no final answer line; the number-only contract was not met"},
+  {"id": "json-01", "mechanisms": ["wrong_calculation"], "evidence": "order total 544.59 for 466.70; schema, item count and costliest sku right"},
+  {"id": "json-02", "mechanisms": ["wrong_calculation"], "evidence": "roster mean 75.3 for 70.25; top list and count right"},
+  {"id": "json-03", "mechanisms": ["wrong_calculation"], "evidence": "order total 54.41 for 57.43; schema, count and sku right"},
+  {"id": "json-04", "mechanisms": ["wrong_calculation"], "evidence": "roster mean 79.8 for 79.6; top list and count right"},
+  {"id": "json-05", "mechanisms": ["wrong_calculation"], "evidence": "order total 257.41 for 299.87; schema, count and sku right"},
+  {"id": "json-07", "mechanisms": ["wrong_calculation"], "evidence": "order total 554.44 for 530.80; schema, count and sku right"},
+  {"id": "json-08", "mechanisms": ["wrong_calculation"], "evidence": "roster mean 68.8 for 69.0; top list and count right"},
+  {"id": "code-08", "mechanisms": ["budget_exhaustion", "evaluator_or_sandbox_failure"], "evidence": "a matrix-power fib_mod with commentary exhausted 384 tokens mid-function without a closing fence (a model failure by budget); the harness at 3ed19ee6 compiled the candidate inside its own file, so the row was booked error instead of fail (the classification defect, fixed at 182d3d80 without rescoring)"},
+  {"id": "instruct-06", "mechanisms": ["incorrect_format"], "evidence": "18 words for a 20 to 40 word band; content on topic; stopped on a stop token"},
+  {"id": "instruct-08", "mechanisms": ["incorrect_format"], "evidence": "wrote 'orbits' where the whole-word rule required 'orbit'; the forbidden word absent; one sentence as asked"}
+ ],
+ "totals": {"wrong_calculation": 8, "correct_calculation_wrong_final_answer": 1, "incorrect_format": 4, "budget_exhaustion": 3, "code_test_failure": 0, "evaluator_or_sandbox_failure": 1, "rows": 13}
+}
