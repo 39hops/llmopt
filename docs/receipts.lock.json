@@ -4707,6 +4707,30 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qwen_geometry/adjudication.txt": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_geometry/capture.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_geometry/dev.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_geometry/eval.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_geometry/observations.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_geometry/transform.json": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/qwen_head_restore/adjudication.txt": {
    "bytes": 149,
    "exists": true,

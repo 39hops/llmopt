@@ -83386,3 +83386,192 @@ count it also computes, checks the benchmark tensors as a subset of the
 census tensors (equal in fact) and records the rANS library's version
 as unknown (constriction 0.5.0 by the environment's package metadata,
 read after the run).
+
+## PRE-REG QWEN-LOSSY-GEOMETRY-0: at arm C's effective bitrate, does an input-basis randomised Hadamard rotation, a refit codebook, a HIGGS-style data-free Gaussian grid, or a development-activation-weighted assignment reconstruct layer 22's W4 MLP matrices (gate_proj, down_proj; the S16 in_proj_qkv as a comparison) more faithfully than the arm C codec, measured as the activation-weighted output error on a blocked evaluation set of real captured activations, and what does the rotation cost on Metal? A bounded LOCAL representation study, not a recompression or a deployment; registered after the drivers' development-split smoke and before the evaluation split is read (2026-10-22, mac)
+
+Artin's GO of 2026-10-22 (after the W4 null and the lossless-BF16
+negative): a representation and reconstruction experiment on existing
+original tensors only, with a registered improvement threshold,
+uncertainty method and budget before the final comparison, and a NULL
+booked if nothing improves the local fidelity-cost frontier. Machine
+projection docs/preregs/qwen-lossy-geometry-0.json (bars 1 to 3, the
+refutation predicate, receipts, operands). The frozen arm C artifact,
+codec, kernels and teacher receipts are unchanged; no model is
+recompressed, no full-model arm is built, no candidate is selected by
+teacher agreement on E0.
+
+Grounding (abstract-level, arXiv metadata only; the methods are
+described from the lab's reading of the papers' public descriptions
+and are not claims about sections not read). QuIP# (Tseng, Chee, Sun,
+Kuleshov, De Sa, ICML 2024, arXiv 2402.04396): three parts, (i) a
+MATHEMATICAL transformation, incoherence processing by a randomised
+Hadamard transform applied to the weight matrix's bases, exact in the
+reals and inverted at inference by transforming the activations; (ii)
+a QUANTIZATION algorithm, vector quantisation with E8-lattice
+codebooks (8-dimensional, hardware-efficient, the optimal 8-dimensional
+unit-ball packing); (iii) an OPTIONAL fine-tuning step for fidelity.
+QTIP (Tseng, Sun, Hou, De Sa, NeurIPS 2024, arXiv 2406.11235): the same
+incoherence processing, then trellis-coded quantisation (a stateful
+decoder that separates codebook size from bitrate and dimension) with
+"bitshift" trellis codes from lookup-only to computed lookup-free; a
+quantisation algorithm with a decoder design, no transformation beyond
+QuIP#'s. HIGGS (Malinovskii, Panferov, Ilin, Guo, Richtarik, Alistarh,
+NAACL 2025, arXiv 2411.17525): a "linearity theorem" relating the
+layer-wise L2 reconstruction error to the model's perplexity increase
+(a statement about small perturbations, stated by its authors for the
+medium-bitwidth regime), and from it (i) a DATA-FREE quantisation
+method, Hadamard rotations plus MSE-optimal grids for the resulting
+near-Gaussian weights, and (ii) a dynamic-programming allocation of
+per-layer bitwidths under a compression constraint; its GPU kernels are
+a COMPUTATIONAL implementation, not part of the mathematics. What
+transfers here by construction and what does not: the rotation is a
+theorem (scratch/leancheck/InputRotation.lean proves (W Hᵀ)(H x) = W x
+for Hᵀ H = 1, the batch form, and that a sign flip composed with an
+orthogonal matrix is orthogonal; standard axioms); incoherence is a
+property of the rotated matrix measured here, not assumed; the E8 and
+trellis codebooks are OPTIONAL follow-ups and not built; HIGGS's
+linearity theorem is NOT invoked at our operating point (arm C's W4
+sits at relative Frobenius error 0.35, far outside a small-perturbation
+regime), and its local analogue, the isotropic prediction of the
+output error from the weight error, is MEASURED against the activation-
+weighted error rather than assumed; nothing in the papers' CUDA
+kernels or Llama results is taken to transfer to Qwen3.8-27B on Metal.
+Rotations are placed on the INPUT side of a dense linear map only
+(x' = H(s * x) immediately before the map, W' = (W diag s) H stored);
+no rotation is moved through SiLU, a normalisation, the gating product
+or the DeltaNet recurrence, so no further correctness argument is
+needed or offered.
+
+Tensors (scratch/qwen_geometry_capture.py, smoke-tested; the full
+receipt logs/qwen_geometry/capture.json): from vendor shard 7
+(2,108,759,344 bytes, sha256 80b0c490..., the pin checked before every
+read) the original BF16 values of layer 22's mlp.gate_proj and
+mlp.up_proj [17408, 5120] and mlp.down_proj [5120, 17408] (W4 in arm C:
+K = 256, width 4, block-128 power-of-two scale as one exponent byte, a
+2 KB fp16 codebook per tensor, 2.0627 bits per weight of payload) and
+linear_attn.in_proj_qkv [10240, 5120] (S16: 16 fp16 levels, the same
+scale, 4.0625 bits per weight); the arm C payloads of the same tensors
+read under the digest chain (19 of 19), their manifest entries,
+lengths and exponent ranges checked (exponents 121 to 127, 5 to 7
+distinct values per tensor), and the canonical decoder's output
+compared with the originals: arm C's relative Frobenius error 0.3455
+(gate), 0.3459 (up), 0.3490 (down), 0.1008 (qkv), the control's
+figures. up_proj shares gate_proj's input and codec and is reported
+through gate_proj.
+
+Activations and the split. The qualified tower (generation 5) runs the
+24 teacher rollouts (prompt plus recorded continuation, teacher-forced,
+58 to 83 prompt tokens and 53 to 256 generated) through the serving
+prefill path, and the input of each selected module is recorded at
+EVERY position (float32, machine-local dumps, sha256 in the receipt).
+The 24 records are split BY PROMPT INDEX before any candidate exists:
+0 to 11 the development set (used for candidate E's fit and for the
+drivers' development), 12 to 23 the blocked evaluation set, read once
+after this registration. No candidate is fit on the evaluation
+prompts.
+
+Candidates (scratch/qwen_geometry_quant.py; deterministic seeds; CPU
+fits). A control: the arm C payload through the canonical decoder. B
+refit: the same layout, the codebook refit by k-means++ and 30 Lloyd
+iterations over every 4-vector of the tensor (arm C fit on a 2^20
+sample), nearest assignment. C rht: the input basis rotated by a
+sign-randomised block-128 normalised Hadamard (one sign bit per input
+channel stored; the Hadamard implicit), then B on the rotated weights.
+D higgs: C's rotation, the block scale the power of two nearest the
+block RMS, and a DATA-FREE codebook: 256 four-dimensional centroids fit
+by k-means on synthetic Gaussian vectors whose standard deviation is
+spread as a power-of-two scale leaves it (no tensor-specific codebook).
+E awq: B's layout with the codebook and the assignment weighted by the
+development prompts' per-input-channel RMS (the activation-weighted
+weight error minimised, the AWQ/GPTQ idea restricted to the
+assignment). On the S16 tensor the scalar analogues (Lloyd-Max 16
+levels; rotated; data-free; weighted). Storage counts indices or codes,
+block exponents, codebook or levels, the sign vector and padding; every
+candidate is compared at bits per weight within 0.02 of the control's.
+
+Measures, per tensor and candidate, on the split named: relative
+Frobenius weight error; the pooled relative output MSE, the sum over
+every captured position of ||W_hat x - W x||^2 over the sum of ||W x||^2
+with the reference computed in float64 from the original BF16 values
+(the activation-weighted output fidelity, the primary measure), per
+prompt for the bootstrap; the per-row and per-position relative error
+distributions with their tails; cancellation cases (positions in the
+lowest 5 percent of ||W x|| / (||W||_F ||x||)) against the rest; the
+same products in float32 (the evaluation-order effect of the rotation
+against the quantisation error); the rotation's own exactness on the
+unquantised weights in float64 and float32; the incoherence (max over
+RMS) before and after rotation; and the HIGGS-style isotropic prediction
+||dW||_F^2 mean||x||^2 / C of the output error against the measured
+value (the ratio measured over predicted). Uncertainty: the ratio of a
+candidate's pooled output error to the control's is bootstrapped over
+the 12 evaluation prompts (2,000 resamples, 95 percent interval).
+
+Transform cost (scratch/qwen_geometry_transform.py, receipt
+logs/qwen_geometry/transform.json): the one-token and 256-token block
+Hadamard with sign flip as MLX operations on this Mac (blocks 128 and
+1,024, matmul and butterfly implementations, synced and pipelined),
+checked against float64; projected to the decode step as one transform
+per distinct input vector per layer (four per layer: gate and up share,
+in_proj_qkv/z/a/b share, q/k/v share; out_proj, o_proj and down_proj
+their own), 256 per step, with the cheapest measured implementation;
+metadata one sign bit per input channel per rotated matrix. A fused
+Metal rotation is not built in this phase.
+
+Bars (the adjudicator's words govern; scratch/qwen_geometry_obs.py
+derives them). BAR 1 W4-FIDELITY: the best candidate, chosen as the
+one whose WORSE ratio over the two W4 tensors is smallest (the
+registered multiplicity control over the four looks), has a pooled
+relative output MSE on the evaluation prompts at most 0.85 of the
+control's on both W4 tensors, with the bootstrap 95 percent upper
+bound of the ratio below 0.95 on both and its storage within 0.02 bits
+per weight of the control's. BAR 2 S16-COMPARISON: the same contrast
+on in_proj_qkv at 0.85, a comparison and not part of the decision.
+BAR 3 TRANSFORM-BUDGET: the projected per-step cost of rotating every
+input as unfused MLX operations below 5.0 ms (5 percent of the 100.2 ms
+step). REFUTED-IF: bar 1 NO-FIRE (a NULL, the thread stops). Decision
+rule for the GO/HOLD recommendation on a later, separately authorised
+mixed-model test: bar 1 FIRE with an unrotated best candidate, or a
+rotated one with bar 3 FIRE, is a GO recommendation; bar 1 FIRE with a
+rotated best candidate and bar 3 NO-FIRE is a HOLD (the gain exists but
+the transform cost as unfused operations is disproportionate, and a
+fused kernel would have to be built and measured first); bar 1 NO-FIRE
+is a NULL. A lower Frobenius error alone recommends nothing.
+
+Registered prior. arm C's W4 codec is already a tensor-fitted
+4-dimensional k-means codebook with a block-128 power-of-two scale
+(scratch/qwen_whole0t.py), so B is expected within a few percent of A.
+Disclosed: the drivers' smoke on two DEVELOPMENT prompts of 32 positions
+was read before this registration (B 0.99 to 1.00 of the control on W4,
+C and D 0.90 to 0.96, E 0.64 to 0.72 with E fit and scored on the same
+two prompts, which the registered design forbids; on S16 B 1.20, C 0.86,
+D 0.90, E 0.92); the bars were drafted before that smoke and were not
+moved by it. Prior from the literature at this operating point:
+incoherence processing gains most where the quantiser is a fixed grid
+on heavy-tailed weights and least where the codebook is already fit to
+the tensor; at 2 bits with a tensor-fitted VQ the rotation's gain is
+expected small (0 to 15 percent of output error) and may be negative
+because the max-based power-of-two block scale is flattened by the
+rotation; D is expected to trail B; E is the candidate most likely to
+reduce OUTPUT error at equal or worse weight error, by 5 to 25 percent,
+because the captured inputs have strongly non-uniform channel RMS, and
+its gain is expected to shrink on the blocked evaluation prompts
+relative to the development smoke. Prior on the isotropic error model:
+at relative Frobenius 0.35 the measured-over-isotropic ratio is expected
+to deviate materially from 1 (the development smoke read 0.5 to 1.3).
+Prior on bar 3: the one-token block-128 Hadamard measured 87 to 116 us
+as MLX ops, so 256 transforms project to about 25 ms, five times the
+budget: NO-FIRE unless fused. Expected outcome: bar 1 a marginal FIRE
+by E or a NO-FIRE; if E fires, GO rests on an unrotated candidate; a
+rotated FIRE is a HOLD.
+
+Receipts (small text, force-added): logs/qwen_geometry/capture.json,
+logs/qwen_geometry/transform.json, logs/qwen_geometry/dev.json,
+logs/qwen_geometry/eval.json, logs/qwen_geometry/observations.json,
+logs/qwen_geometry/adjudication.txt, logs/qwen_geometry/study_<commit>
+.log (the activation dumps are machine-local, sha256 in the capture
+receipt). Fences: one layer (22), three matrices and one comparison
+tensor; the activation contexts are the 24 teacher rollouts of E0's
+prompts (a fixed, small, English-text distribution); the measures are
+local to one linear map and say nothing about full-model KL or teacher
+agreement, which the design does not measure; the transform cost is of
+unfused MLX operations; nothing is run inside the complete model.

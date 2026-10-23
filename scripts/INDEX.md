@@ -5374,6 +5374,43 @@ QWEN-FAMILY-PROBE-0: cheapest acceptable RATE per non-FFN family.
 - `probe_tensor(fam, name)` — Two passes over row-chunks so 1.27B-param tensors fit VRAM:
 - `main()`
 
+### scratch/qwen_geometry_capture.py
+QWEN-LOSSY-GEOMETRY-0, stage 1: the frozen inputs of the local representation study. For the selected layer-22 matrices (mlp.gate_proj [17408, 5120] and mlp.down_proj [5120, 17408], both W4; linear_attn. in_proj_qkv [10240, 5120], S16; gate_proj and up_proj share an input and up_proj is reported through gate_proj's captures) this driver:   1. verifies vendor shard 7's pin (sha256 and size) and reads the      ORIGINAL BF16 tensors from it (exact uint16 patterns widened to      float32, which is exact for BF16);   2. reads the arm C payloads of the same tensors from the artifact under      the digest chain, checks the manifest entries (codec, shape, length      formula), the exponent-scale range and the canonical decoder output      (llmopt.lab.qcodec.decode_entry) against the original (relative      Frobenius error of arm C, the control's figure);   3. builds the qualified tower (generation 5 default) and runs the 24      teacher rollouts (prompt plus recorded continuation, teacher-forced)      through the serving prefill path (prefill_chunked, chunk 256, GEMM),      recording the input of each selected module at EVERY position;      prompts are split by index into a development set (0 to 11) and a      blocked evaluation set (12 to 23) before any candidate is built;   4. writes the captures as float32 .npy files under DUMP (machine-local,      untracked; sha256 in the receipt) and the receipt      logs/qwen_geometry/capture.json (refuse-if-exists). Nothing in the artifact, the shards or the kernels is modified. Env: ART_DIR, VENDOR_DIR, SHARD_DIR, OUT_DIR (logs/qwen_geometry), SMOKE=1 (2 prompts, 32 tokens each, OUT_DIR logs/qwen_geometry/smoke).
+
+- `sha_file(p)`
+- `bf16_to_f32(u16: np.ndarray) -> np.ndarray`
+- `main() -> None`
+
+### scratch/qwen_geometry_obs.py
+Observations adapter for PRE-REG QWEN-LOSSY-GEOMETRY-0: derives the registered measurements from the eval receipt (scratch/qwen_geometry_quant.py MODE=eval) and the transform receipt (scratch/qwen_geometry_transform.py) in committed code.
+
+- `main(eval_path, xform_path, prereg_path)`
+
+### scratch/qwen_geometry_quant.py
+QWEN-LOSSY-GEOMETRY-0, stage 2: local representation candidates and their reconstruction fidelity, at arm C's effective bitrate, on the frozen captures of scratch/qwen_geometry_capture.py. No kernel, no model, no artifact is changed; everything here is numpy and torch on the captured tensors and activations.
+
+- `bf16_to_f32(u16: np.ndarray) -> np.ndarray`
+- `hadamard(b: int) -> np.ndarray`
+- `rotate_rows(W: np.ndarray, s: np.ndarray, H: np.ndarray) -> np.ndarray` — (W diag s) H_blk along the last axis, float64.
+- `rotate_x(X: np.ndarray, s: np.ndarray, H: np.ndarray) -> np.ndarray`
+- `e8m0_max(Wb: np.ndarray) -> np.ndarray` — arm C's block scale: the power of two at or above the block's max |w| (float64).
+- `e8m0_rms(Wb: np.ndarray) -> np.ndarray` — the power of two nearest the block's RMS (the HIGGS-style normalisation under the one-byte scale).
+- `_assign(V: torch.Tensor, Cb: torch.Tensor, wdiag: torch.Tensor | None=None, chunk: int=1 << 18) -> torch.Tensor` — nearest centroid (optionally under a diagonal metric wdiag [d]).
+- `kmeans(V: torch.Tensor, k: int, seed: int, iters: int, wdiag: torch.Tensor | None=None) -> torch.Tensor` — k-means++ on a 2^18 sample, then `iters` Lloyd iterations over all of V; centroids rounded to fp16.
+- `gaussian_codebook(d: int, k: int, seed: int, scale_spread: bool) -> torch.Tensor` — data-free: k-means on 2^20 synthetic d-vectors ~ N(0, sigma^2 I) with sigma = 2^u,
+- `lloyd_max(v: torch.Tensor, levels: int, seed: int, iters: int, w: torch.Tensor | None=None) -> torch.Tensor` — 16-level scalar quantiser by Lloyd iterations (optionally weighted); levels rounded to fp16.
+- `quantize_vq(Wn: np.ndarray, Cb: np.ndarray, d: int, wdiag: np.ndarray | None=None) -> tuple[np.ndarray, np.ndarray]`
+- `candidate_w4(W: np.ndarray, how: str, seed: int, s: np.ndarray | None, H: np.ndarray, xw: np.ndarray | None) -> dict` — returns reconstruction in the ORIGINAL basis (float64) plus storage and the rotated reconstruction if any.
+- `candidate_s16(W: np.ndarray, how: str, seed: int, s: np.ndarray | None, H: np.ndarray, xw: np.ndarray | None) -> dict`
+- `fidelity(W: np.ndarray, rec: dict, Xs: list[np.ndarray], s, H, want32: bool) -> dict` — per-prompt sums in float64; row and position distributions pooled.
+- `bootstrap_ratio(cand: list[dict], ctrl: list[dict], boot: int, seed: int) -> dict`
+- `main() -> None`
+
+### scratch/qwen_geometry_transform.py
+QWEN-LOSSY-GEOMETRY-0, stage 3: what the input rotation costs on Apple Metal as it would be placed in the serving decode step, measured, not assumed. The rotation x' = H_blk (s * x) is a sign flip and a block Walsh-Hadamard transform of the activation vector right before a fused linear launch; it is exact in the reals (scratch/leancheck/InputRotation.lean) and this driver measures its float32 wall on this Mac as MLX operations (no fused Metal kernel is built in this phase): block sizes 128 and 1024, two implementations (a batched matmul against the dense block Hadamard, and the butterfly), one token (T = 1) and the prefill tile (T = 256), synced median of REPEATS and pipelined per-call time over QUEUE queued calls. Then the step-level projection: one transform per DISTINCT input vector per layer when every linear map is rotated (gate and up share theirs; in_proj_qkv, in_proj_z, in_proj_a, in_proj_b share theirs; q, k, v share theirs; out_proj, o_proj and down_proj have their own), 4 per layer, 256 per decode step, against the measured 100.2 ms step and a 240 us W4 launch; and the metadata: one sign bit per input channel per rotated matrix (shareable by matrices with the same input) and nothing else (the Hadamard is implicit). Receipt logs/qwen_geometry/transform.json (refuse-if-exists). Env: REPEATS (50), QUEUE (32), OUT.
+
+- `main() -> None`
+
 ### scratch/qwen_head_restore.py
 QWEN-HEAD-RESTORE-0: does replacing only arm C's compressed S16 lm_head with the vendor's original BF16 lm_head improve teacher agreement when every preceding layer stays compressed? Head-only substitution on the frozen arm C final-norm hidden states; nothing is trained, fitted, calibrated or selected on any outcome.
 

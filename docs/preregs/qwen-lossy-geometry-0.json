@@ -1,0 +1,77 @@
+{
+ "name": "QWEN-LOSSY-GEOMETRY-0",
+ "note": "Machine-readable form of PRE-REG QWEN-LOSSY-GEOMETRY-0; the prose governs on any conflict. A bounded LOCAL representation study (Artin's GO of 2026-10-22): at arm C's effective bitrate, do an input-basis randomised Hadamard rotation, a refit codebook, a HIGGS-style data-free Gaussian grid, or a development-activation-weighted assignment reconstruct layer 22's W4 MLP matrices (gate_proj, down_proj) more faithfully than the arm C codec, measured as the pooled relative output MSE on REAL captured activations of a blocked evaluation set of 12 teacher-rollout prompts (positions 12 to 23 of the 24 records), with the S16 in_proj_qkv as a comparison; and what the rotation costs on Metal. Registered after the drivers were built and smoke-tested on the development split (prompts 0 to 11) and BEFORE the evaluation split is read. Candidates B (refit), C (rht), D (higgs), E (awq) are four looks; the bar takes the best of them by the worse of its two W4 tensors and asks its bootstrap interval to clear 0.95, which is the registered multiplicity control; no candidate is selected by teacher agreement on E0 and no full-model arm is built. Decision rule: bar 1 NO-FIRE books a NULL and the thread stops; bar 1 FIRE with the best candidate unrotated, or rotated with bar 3 FIRE, is a GO recommendation for a later separately authorised mixed-model test; bar 1 FIRE with a rotated best candidate and bar 3 NO-FIRE is a HOLD (the fidelity gain exists but the transform cost as unfused ops is disproportionate and a fused kernel would have to be built and measured first).",
+ "results_id": "2026-10-22-pre-reg-qwen-lossy-geometry-0",
+ "registered": "2026-10-22",
+ "machine": "mac",
+ "arms": {
+  "CONTROL": {
+   "description": "candidate A: the arm C payload of each tensor through the canonical decoder (llmopt.lab.qcodec.decode_entry), 2.0627 bits per weight on W4, 4.0625 on S16"
+  },
+  "CANDIDATES": {
+   "description": "B refit (same layout, codebook refit by k-means++ and 30 Lloyd iterations over the whole tensor), C rht (sign-randomised block-128 Hadamard input rotation then B on the rotated weights, one sign bit per input channel), D higgs (the rotation, a power-of-two RMS block scale and a data-free Gaussian-optimal 256-entry codebook), E awq (B's layout with the codebook and assignment weighted by the development prompts' per-input-channel RMS); on S16 the scalar analogues (Lloyd-Max 16 levels)"
+  }
+ },
+ "bars": [
+  {
+   "id": 1,
+   "name": "W4-FIDELITY",
+   "metric": "best_w4_ratio",
+   "population": "eval-prompts:12",
+   "aggregation": "min_over_candidates_of_max_over_w4_tensors",
+   "direction": "below",
+   "value": 0.85,
+   "arms": ["CONTROL", "CANDIDATES"],
+   "conjuncts": [
+    {"measurement": "1:ci", "metric": "best_w4_ci_upper", "population": "eval-prompts:12", "aggregation": "max_over_w4_tensors_of_boot95_upper", "direction": "below", "value": 0.95},
+    {"measurement": "1:bits", "metric": "best_w4_bits_excess", "population": "eval-prompts:12", "aggregation": "max_over_w4_tensors_of_bits_minus_control", "direction": "below", "value": 0.02}
+   ],
+   "description": "the best candidate (by the worse of gate_proj and down_proj) has a pooled relative output MSE on the evaluation prompts at most 0.85 of the control's on BOTH W4 tensors (a 15 percent reduction of the activation-weighted output error), with the bootstrap-over-prompts 95 percent upper bound of the ratio below 0.95 on both and its storage within 0.02 bits per weight of the control's (the sign vector included)."
+  },
+  {
+   "id": 2,
+   "name": "S16-COMPARISON",
+   "metric": "best_s16_ratio",
+   "population": "eval-prompts:12",
+   "aggregation": "min_over_candidates",
+   "direction": "below",
+   "value": 0.85,
+   "arms": ["CONTROL", "CANDIDATES"],
+   "description": "the same contrast on the S16 in_proj_qkv (the 4-bit scalar codec against its refit, rotated, data-free and activation-weighted scalar analogues): a comparison, not part of the GO/HOLD rule."
+  },
+  {
+   "id": 3,
+   "name": "TRANSFORM-BUDGET",
+   "metric": "transform_step_ms",
+   "population": "decode-step:64-layers",
+   "aggregation": "64_times_best_impl_per_layer_sum",
+   "direction": "below",
+   "value": 5.0,
+   "arms": ["CONTROL", "CANDIDATES"],
+   "description": "the projected per-decode-step cost of rotating every linear map's input as unfused MLX operations on this Mac (one transform per distinct input vector per layer, four per layer, the cheapest measured implementation at T = 1) is below 5.0 ms, 5 percent of the 100.2 ms step; the budget a rotated candidate must meet to be recommended without a fused kernel."
+  }
+ ],
+ "receipts": [
+  "logs/qwen_geometry/capture.json",
+  "logs/qwen_geometry/transform.json",
+  "logs/qwen_geometry/dev.json",
+  "logs/qwen_geometry/eval.json",
+  "logs/qwen_geometry/observations.json",
+  "logs/qwen_geometry/adjudication.txt"
+ ],
+ "operands": [
+  {"name": "the arm C artifact digest chain", "provider": "logs/qwenwhole/artifact_digest_C.txt"},
+  {"name": "the teacher rollouts (activation contexts)", "provider": "logs/qwenteacher_v2/teacher_manifest.json"},
+  {"name": "the capture driver", "provider": "scratch/qwen_geometry_capture.py"},
+  {"name": "the candidate and fidelity driver", "provider": "scratch/qwen_geometry_quant.py"},
+  {"name": "the transform cost driver", "provider": "scratch/qwen_geometry_transform.py"},
+  {"name": "the observations adapter", "provider": "scratch/qwen_geometry_obs.py"},
+  {"name": "the runner", "provider": "scratch/qwen_geometry_study.sh"},
+  {"name": "the rotation identity in Lean", "provider": "scratch/leancheck/InputRotation.lean"},
+  {"name": "the canonical decoder", "provider": "llmopt/lab/qcodec.py"},
+  {"name": "the arm C compiler (the control's construction)", "provider": "scratch/qwen_whole0t.py"}
+ ],
+ "refuted_if": "The local representation case is REFUTED (a NULL, the thread stops) if bar 1 reads NO-FIRE: no candidate reduces the activation-weighted output error on both W4 tensors by 15 percent with its interval clear of 0.95 at matched storage. Bar 3 NO-FIRE with a rotated best candidate is not a refutation but a HOLD.",
+ "refuted_if_predicate": {"measurement": "best_w4_ratio", "direction": "above", "value": 0.85},
+ "registered_prior": "arm C's W4 codec is already a tensor-fitted 4-dimensional k-means codebook with a block-128 power-of-two scale (scratch/qwen_whole0t.py), so B (a longer fit of the same thing) is expected within a few percent of A; the development-split smoke of the drivers was read before this registration and is disclosed in the prose entry. Prior from the literature at this operating point: incoherence processing (QuIP#, HIGGS) gains the most where the quantiser is a fixed grid on heavy-tailed weights and least where the codebook is already fit to the tensor; at 2 bits with a tensor-fitted VQ the rotation's gain is expected small (0 to 15 percent of output MSE) and may be negative because the block-128 power-of-two scale is chosen on the max, which the rotation flattens; D (data-free grid) is expected to trail B; E (activation-weighted) is the candidate most likely to reduce OUTPUT error at equal weight error, by 5 to 25 percent on the MLP inputs, because the captured inputs have strongly non-uniform channel RMS. Prior on the HIGGS isotropic error model: at relative Frobenius 0.35 the measured-over-isotropic ratio is expected to deviate from 1 materially (the linearity theorem is a small-perturbation statement at 3 to 8 bits). Prior on bar 3: the one-token block-128 Hadamard measured 87 to 116 us as MLX ops, so 256 transforms per step project to about 25 ms, five times the budget: NO-FIRE unless fused. Expected outcome: bar 1 NO-FIRE or a marginal FIRE by E; if E fires, GO for a later mixed-model test would rest on an unrotated candidate; a rotated FIRE would be a HOLD."
+}
