@@ -1,0 +1,75 @@
+{
+ "name": "QWEN-MLP-COUPLED-0",
+ "note": "Machine-readable form of PRE-REG QWEN-MLP-COUPLED-0; the prose governs on any conflict. One bounded mechanism experiment (Artin's GO of 2026-10-23): does the development-activation-weighted W4 gate representation (E_awq, the best unrotated candidate of QWEN-LOSSY-GEOMETRY-0, 0.744 of arm C's gate output error on the old evaluation split) survive the complete gated MLP of layer 22 (silu, the elementwise product with up_proj's output, down_proj) as a reduction of the COMPLETE MLP output error against the original BF16 MLP, on a NEW versioned prompt collection (scratch/evalsets/mlp_coupled_v1.json: chat, math, code, reasoning, knowledge, long_context, degeneration, balanced dev/eval per category; ood eval-only), with inputs captured from the unchanged arm C model in two labelled distributions (prefill of the prompt's own tokens; the model's own free-running continuation)? Candidate frozen before the eval split is read: E_awq gate calibrated on the dev split's inputs (prefill and freerun together), arm C's up and down unchanged, the exact W4 layout (no storage change). Control: arm C's full MLP. Reference: the original BF16 full MLP on the same inputs. Decision rule: bar 1 FIRE is a targeted mixed-model GO proposal (a proposal only, scoped in the verdict); bar 1 NO-FIRE books a NULL and closes representation research for now; no further rotation, codebook or layer is tried either way.",
+ "results_id": "2026-10-23-pre-reg-qwen-mlp-coupled-0",
+ "registered": "2026-10-23",
+ "machine": "mac",
+ "arms": {
+  "CONTROL": {
+   "description": "arm C's layer-22 gate, up and down payloads through the canonical decoder; the complete MLP y = down(silu(gate x) * up x) on the captured inputs"
+  },
+  "CANDIDATE": {
+   "description": "the same MLP with gate_proj replaced by E_awq (scratch/qwen_geometry_quant.candidate_w4 how='awq', W4 layout, codebook and assignment weighted by the dev split's per-input-channel RMS), up and down unchanged"
+  }
+ },
+ "bars": [
+  {
+   "id": 1,
+   "name": "MLP-OUT",
+   "metric": "mlp_out_ratio",
+   "population": "eval-blocks:54",
+   "aggregation": "pooled_sse_candidate_over_control",
+   "direction": "below",
+   "value": 0.90,
+   "arms": ["CONTROL", "CANDIDATE"],
+   "conjuncts": [
+    {"measurement": "1:ci", "metric": "mlp_out_ci_upper", "population": "eval-blocks:54", "aggregation": "paired_boot95_upper_over_blocks", "direction": "below", "value": 1.0},
+    {"measurement": "1:cat", "metric": "mlp_out_max_category_ratio", "population": "eval-blocks:54", "aggregation": "max_over_categories_of_pooled_ratio", "direction": "below", "value": 1.05},
+    {"measurement": "1:bits", "metric": "gate_bits_excess", "population": "tensor:22.mlp.gate_proj", "aggregation": "bits_per_weight_minus_control", "direction": "below", "value": 0.001}
+   ],
+   "description": "the pooled squared error of the candidate's COMPLETE MLP output against the BF16 reference over every evaluation block (prompt x distribution) is at most 0.90 of the control's (a 10 percent reduction), with the paired bootstrap-over-blocks 95 percent upper bound of the ratio below 1.0 (the interval excludes no improvement), no category's pooled ratio above 1.05 (no major category regression), and the candidate gate's storage within 0.001 bits per weight of the control's (unchanged effective storage)."
+  },
+  {
+   "id": 2,
+   "name": "GATE-REPRODUCES",
+   "metric": "gate_ratio",
+   "population": "eval-blocks:54",
+   "aggregation": "pooled_sse_candidate_over_control",
+   "direction": "below",
+   "value": 0.85,
+   "arms": ["CONTROL", "CANDIDATE"],
+   "description": "the gate output error ratio on the new collection's eval split is at most 0.85 (the old evaluation read 0.744): whether the local gate gain reproduces on fresh contexts; a diagnostic, not part of the decision."
+  },
+  {
+   "id": 3,
+   "name": "FREERUN",
+   "metric": "freerun_ratio",
+   "population": "eval-blocks:27-freerun",
+   "aggregation": "pooled_sse_candidate_over_control",
+   "direction": "below",
+   "value": 0.90,
+   "arms": ["CONTROL", "CANDIDATE"],
+   "description": "the complete-output ratio on the free-running distribution alone (the model's own continuations) is at most 0.90: whether the gain holds on the distribution a deployed model actually produces; a diagnostic."
+  }
+ ],
+ "receipts": [
+  "logs/qwen_mlp/capture.json",
+  "logs/qwen_mlp/dev.json",
+  "logs/qwen_mlp/eval.json",
+  "logs/qwen_mlp/adjudicate_1/observations.json",
+  "logs/qwen_mlp/adjudicate_1/adjudication.txt"
+ ],
+ "operands": [
+  {"name": "the arm C artifact digest chain", "provider": "logs/qwenwhole/artifact_digest_C.txt"},
+  {"name": "the prompt collection", "provider": "scratch/evalsets/mlp_coupled_v1.json"},
+  {"name": "the capture driver", "provider": "scratch/qwen_mlp_capture.py"},
+  {"name": "the coupled-MLP driver", "provider": "scratch/qwen_mlp_coupled.py"},
+  {"name": "the candidate's quantiser", "provider": "scratch/qwen_geometry_quant.py"},
+  {"name": "the observations adapter", "provider": "scratch/qwen_mlp_obs.py"},
+  {"name": "the runner", "provider": "scratch/qwen_mlp_study.sh"},
+  {"name": "the canonical decoder", "provider": "llmopt/lab/qcodec.py"}
+ ],
+ "refuted_if": "The coupled hypothesis is REFUTED (a NULL; representation research closes for now) if bar 1 reads NO-FIRE: the candidate does not reduce the complete MLP output error by 10 percent with its interval clear of 1.0, or it regresses a category by more than 5 percent, or its storage changed.",
+ "refuted_if_predicate": {"measurement": "mlp_out_ratio", "direction": "above", "value": 0.90},
+ "registered_prior": "The gate error enters the output through silu(g) * u and then down_proj; a 26 percent reduction of the gate's own output error reduces the gated product's error by less (the up branch's error is untouched and the two branches' errors add) and the down projection's error adds on top, so the complete-output ratio is expected between 0.85 and 0.97 with the point estimate near 0.92, a coin flip against the 0.90 bar. On the new collection the gate ratio itself is expected to land between 0.72 and 0.85 (the old split's 0.744 was on E0's reasoning, knowledge, long and edge prompts; the new split is balanced). The free-running distribution is expected to behave like the prefill one (the same model generates both); the ood prompts (non-English, structured, repetition) are the likeliest category regression. Prior on the numerical floor: float32 MLP evaluation against float64 at 1e-6 relative, five orders below the quantisation error. Expected outcome: bar 1 close to its threshold and more likely NO-FIRE than FIRE; bar 2 FIRE; bar 3 following bar 1."
+}

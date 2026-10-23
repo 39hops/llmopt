@@ -5704,6 +5704,27 @@ QWEN-MIPS-CENSUS-0 driver: exact Cauchy-Schwarz branch-and-bound top-256 over k-
 - `topk_ids_tie(z_row)`
 - `main()`
 
+### scratch/qwen_mlp_capture.py
+QWEN-MLP-COUPLED-0, stage 1: a NEW, versioned, reproducible evaluation collection and the frozen inputs of layer 22's MLP captured from the unchanged arm C model (generation 5 default) on it.
+
+- `sha_file(p)`
+- `arithmetic_prompts(seed: str, n: int) -> list[dict]`
+- `assign_splits(prompts: list[dict]) -> None`
+- `main() -> None`
+
+### scratch/qwen_mlp_coupled.py
+QWEN-MLP-COUPLED-0, stage 2: the complete gated MLP of layer 22 under three weight sets on identical captured inputs, with the vendor's MLP semantics (y = down(silu(gate x) * up x), mlx_lm Qwen3NextMLP; float32 in the tower) verified against PyTorch and MLX evaluations.
+
+- `bf16_to_f32(u16)`
+- `silu64(g)`
+- `mlp64(Wg, Wu, Wd, X)`
+- `main() -> None`
+
+### scratch/qwen_mlp_obs.py
+Observations adapter for PRE-REG QWEN-MLP-COUPLED-0: derives the registered measurements from the eval receipt (scratch/qwen_mlp_coupled.py MODE=eval) and the dev receipt (the candidate's identity check) in committed code.
+
+- `main(eval_path, dev_path, prereg_path)`
+
 ### scratch/qwen_model1_score.py
 QWEN-MODEL1-TREE scorer: X/K for one artifact arm v the locked teacher.
 

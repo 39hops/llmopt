@@ -5009,6 +5009,26 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qwen_mlp/adjudicate_1/adjudication.txt": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_mlp/adjudicate_1/observations.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_mlp/capture.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_mlp/dev.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_mlp/eval.json": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/qwenalttok/alttok_observations.json": {
    "exists": false,
    "source": "prereg"

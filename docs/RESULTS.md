@@ -83807,3 +83807,192 @@ figure (a slight under-estimate of the per-step cost); the isotropic model is HI
 premise, not its perplexity conclusion; the adjudication receipts are
 at the amended paths and the registered paths hold the failed stage's
 outputs.
+
+## OBSERVATION QWEN-LOSSY-GEOMETRY-0-SPLIT: the development and evaluation halves of QWEN-LOSSY-GEOMETRY-0 were not interchangeable samples: the 24 E0 rollouts are ordered by category, so prompts 0 to 11 (development) are the chat, math and code records and prompts 12 to 23 (evaluation) are the reasoning, knowledge, long-context and edge records; the two halves differ in layer 22's activation statistics (MLP input RMS by prompt 0.46 to 0.55 against 0.48 to 0.53, medians 0.490 and 0.518; down_proj input RMS 0.073 to 0.105 against 0.082 to 0.105, medians 0.083 and 0.095), so the verdict's transfer reading for the activation-weighted candidate (0.78 of the control on its fit prompts, 0.99 on the held-out ones, on down_proj) is a frozen out-of-domain test across categories, not an IID generalisation test, and the candidate's gate_proj gain (0.72 to 0.76 on both halves) held across that shift while its down_proj gain did not (2026-10-23; a retrospective reading of the booked receipts, nothing re-run; the verdict and its registered bars stand as booked)
+
+Item 1 of Artin's GO of 2026-10-23: record the evaluation-distribution
+issue of the geometry study without modifying its frozen verdict or
+reinterpreting a failed registered bar. Source receipts, unchanged:
+logs/qwen_geometry/capture.json (per-prompt record ids and activation
+statistics), logs/qwen_geometry/dev.json and logs/qwen_geometry/eval.json
+(per-prompt ratios), and logs/qwenteacher_v2/rollout_tokens.jsonl (the
+record ids and categories).
+
+The split. The registration split the 24 records "by prompt index
+before any candidate exists, 0 to 11 development, 12 to 23 evaluation",
+and the records are ordered by category: chat-1 to chat-4, math-1 to
+math-4, code-1 to code-4 (indices 0 to 11), then reason-1 to reason-4,
+know-1 to know-4, long-1, long-2, edge-1, edge-2 (12 to 23). The
+development set therefore contained no reasoning, knowledge,
+long-context or edge record and the evaluation set no chat, math or
+code record. That is a legitimate frozen test of transfer across
+categories, which is what the verdict's awq result measured, and it is
+not a test of generalisation within a distribution; the verdict's
+sentence "does not transfer to down_proj across prompts" is correct
+and its "across prompts" means across these categories.
+
+Activation statistics by half (capture.json, per-prompt RMS and
+maximum over positions of the captured float32 inputs). MLP input (the
+shared gate_proj and up_proj input, the post-attention RMSNorm output):
+development prompts RMS 0.463 to 0.546 (median 0.490; math 0.46 to
+0.49, chat 0.50 to 0.55, code 0.48 to 0.49), evaluation 0.480 to 0.530
+(median 0.518; reasoning 0.49 to 0.52, knowledge 0.52 to 0.53, long 0.52,
+edge 0.48 to 0.51). down_proj input (the SwiGLU product): development
+0.073 to 0.105 (median 0.083), evaluation 0.082 to 0.105 (median 0.095);
+its per-prompt maximum 7.4 to 31.9 against 7.4 to 32.8. The halves
+overlap in range and differ in centre by 6 percent (MLP input) and 14
+percent (down_proj input), with the development half's lower values
+coming from the math records and the evaluation half's higher ones from
+knowledge and long-context.
+
+What this means for the booked readings. The awq candidate weights the
+assignment by the per-input-channel RMS of the development inputs. On
+gate_proj its ratio to the control was 0.70 to 0.76 on the development
+prompts and 0.70 to 0.77 on the evaluation prompts, the same on both
+halves and in every category, so the gate_proj gain is not sensitive to
+this shift. On down_proj its ratio was 0.64 to 0.85 on the development
+prompts and 0.84 to 1.05 on the evaluation prompts, every evaluation
+prompt worse than every development prompt but one, so the down_proj
+weighting fit on chat, math and code inputs does not carry to
+reasoning, knowledge, long and edge inputs; whether it would carry to
+unseen chat, math and code prompts is NOT measured by that design and
+is not claimed here either way. The booked bar (the worse of the two
+tensors at 0.85 with the interval under 0.95) was missed by every
+candidate, and nothing in this observation changes that; a different
+split of the same 24 prompts would not be fresh validation and is not
+made. The next study (QWEN-MLP-COUPLED-0) uses a new collection with
+every category in both halves and an out-of-domain group labelled
+separately, which is the shape this reading calls for.
+
+Fences. Twenty-four prompts of one teacher-record set; per-prompt RMS
+and maxima are coarse summaries of the activation distribution; the
+category shift and the RMS shift are confounded (both move together
+between the halves) and no causal attribution between them is made.
+
+## PRE-REG QWEN-MLP-COUPLED-0: does the development-activation-weighted W4 gate representation (E_awq, 0.744 of arm C's gate_proj output error on the old split) survive the complete gated MLP of layer 22, silu, the elementwise product with up_proj's output and down_proj, as at least a 10 percent reduction of the COMPLETE MLP output error against the original BF16 MLP, on a new versioned prompt collection with balanced development and evaluation halves and a separately labelled out-of-domain group, at unchanged storage? One bounded mechanism experiment, registered before the evaluation half is read; a FIRE is a targeted mixed-model GO proposal, a NO-FIRE closes representation research for now (2026-10-23, mac)
+
+Artin's GO of 2026-10-23 after accepting VERDICT QWEN-LOSSY-GEOMETRY-0
+(NULL). The candidate's local gain was measured on an independent
+linear map; the question here is whether it survives the nonlinear
+coupled operation the model actually runs. Machine projection
+docs/preregs/qwen-mlp-coupled-0.json (bars 1 to 3, the refutation
+predicate, receipts, operands). Nothing in arm C, the vendor shards,
+E0, the kernels or the generation 5 default changes; no kernel and no
+complete-model arm is built; no further rotation, codebook or layer is
+tried whatever the outcome.
+
+Arms, on identical captured inputs x (layer 22's MLP input, the
+post-attention RMSNorm output shared by gate_proj and up_proj), with
+the vendor's MLP semantics y = W_down (silu(W_gate x) * (W_up x))
+(mlx_lm Qwen3NextMLP; float32 in the tower; verified in the driver
+against PyTorch and MLX float32 evaluations of the same formula on a
+subset, differences at rounding only). REFERENCE: the original BF16
+gate, up and down weights from vendor shard 7 (pin checked; exact in
+float32). CONTROL: arm C's three payloads through the canonical
+decoder. CANDIDATE: gate_proj replaced by E_awq as built by
+scratch/qwen_geometry_quant.candidate_w4 with how="awq" (the arm C W4
+layout: one byte selects four weights from a 256-entry fp16 codebook,
+block-128 power-of-two scale, no other metadata; codebook and
+assignment weighted by the per-input-channel RMS of the DEVELOPMENT
+split's captured inputs, prefill and free-running together), up and
+down the unchanged arm C decodes; its gate output flows through silu,
+the product and down_proj as the model's would. The candidate's
+storage is the control's by construction (checked as a bar conjunct).
+The candidate is fit once on the development split and its codebook
+sha256 is recorded; the evaluation run must reproduce it.
+
+The collection (scratch/evalsets/mlp_coupled_v1.json, version 1,
+sha256 recorded in the capture receipt; frozen here). Forty hand-written
+prompts across chat (6), math (6), code (6), reasoning (6), knowledge
+(6), long_context (4), degeneration (4), and an out-of-domain group (6:
+two non-English, two raw structured data, two adversarial repetition),
+plus four mechanically checkable arithmetic prompts generated from the
+seed "mlp-coupled-v1-arith-7" (answers recorded; the study's target
+remains the BF16 MLP on identical inputs, so no teacher run is needed).
+None of these is an E0 prompt. Split, frozen before capture: within
+each in-domain category the prompts sorted by id alternate (even index
+evaluation, odd index development), so every category is in both
+halves; the out-of-domain group is evaluation-only and broken out
+separately. Counts: development 21 prompts, evaluation 27 (21 in-domain
+plus 6 out-of-domain). Tokenisation: the vendor tokenizer on the raw
+text, no chat template.
+
+Captures (scratch/qwen_mlp_capture.py; receipt
+logs/qwen_mlp/capture.json): from the unchanged arm C model (generation
+5 default) two labelled distributions per prompt, PREFILL (the input at
+every position of the prompt's own tokens through the serving prefill
+path, teacher-forced-style) and FREERUN (the input at each of 48 greedy
+decode steps the model generates after the prompt with its cache, its
+own continuation; the generated ids and text recorded). A block is one
+prompt in one distribution: 42 development blocks, 54 evaluation blocks
+(27 free-running).
+
+Measures (scratch/qwen_mlp_coupled.py; float64 from the float32
+inputs; receipts logs/qwen_mlp/dev.json and logs/qwen_mlp/eval.json).
+Per block: squared error against the reference of the control and the
+candidate at three stages (gate output g, gated product p = silu(g) *
+u, complete output y) and the reference's energy; mean cosine of y to
+the reference; the per-position relative error of y with its 99th
+percentile and maximum; the cosine between the candidate's and the
+control's output-error vectors (error direction); the cosine between
+the candidate's gate change and the control's gate error (does the
+weighting move the gate toward the reference); and the down projection's
+gain on the candidate's gated-product change, ||W_down dp|| / ||dp||
+relative to ||W_down||_F / sqrt(dim) (cancellation or amplification
+between the branches). Pooled: the ratio of summed squared errors
+candidate over control at each stage, by split, category, distribution
+and the out-of-domain group; the primary ratio bootstrapped over blocks
+PAIRED (the same resampled blocks for both arms; 2,000 resamples, 95
+percent interval). Numerical floor: the reference MLP in float32
+against float64 on a subset, and torch against mlx float32.
+
+Bars (the adjudicator's words govern; scratch/qwen_mlp_obs.py derives
+them from the evaluation receipt with the development receipt as the
+candidate's identity check). BAR 1 MLP-OUT: the pooled squared error of
+the candidate's complete MLP output against the reference over every
+evaluation block is at most 0.90 of the control's (a 10 percent
+reduction), with the paired bootstrap 95 percent upper bound of the
+ratio below 1.0 (the interval excludes no improvement), no category's
+pooled ratio above 1.05 (no major category regression; the
+out-of-domain group is a category), and the candidate gate's storage
+within 0.001 bits per weight of the control's. BAR 2 GATE-REPRODUCES:
+the gate output error ratio on the evaluation blocks at most 0.85
+(whether the old 0.744 reproduces on fresh contexts; a diagnostic). BAR
+3 FREERUN: the complete-output ratio on the free-running blocks alone
+at most 0.90 (a diagnostic). REFUTED-IF: bar 1 NO-FIRE (a NULL;
+representation research closes for now). Decision: bar 1 FIRE is a
+targeted mixed-model GO PROPOSAL, scoped in the verdict (it would not
+show full-model teacher agreement, benchmark accuracy or runtime), with
+what such a test would require; nothing is implemented or promoted
+without a separate GO. No optimisation against the evaluation results.
+
+Registered prior. The gate error enters the output through silu(g) * u
+and down_proj: the up branch's error is untouched by the candidate and
+the branches' errors add in the product, and down_proj's own error adds
+on top, so a 26 percent reduction of the gate's error becomes a smaller
+reduction of the complete output's; expected complete-output ratio 0.85
+to 0.97, point estimate near 0.92, a coin flip against 0.90. The gate
+ratio itself is expected 0.72 to 0.85 on the new evaluation half (the
+old 0.744 was read on E0's reasoning, knowledge, long and edge records
+only; the new halves are balanced). The free-running blocks are
+expected to behave like the prefill blocks (the same model generates
+both from the same prompts); the out-of-domain group (non-English,
+structured, repetition) is the likeliest category regression and the
+likeliest reason for a conjunct failure. The numerical floor is
+expected at 1e-6 relative, five orders below the quantisation error.
+Disclosed: the drivers were smoke-tested on two prompts of the
+collection with 24 tokens and 4 free steps (receipts under logs/qwen_mlp/smoke/, not evidence); the smoke's
+complete-output ratio (0.96 on those two prompts, the candidate fit on
+the same two prompts' inputs) was read after the bars and this prior
+were drafted and moved neither.
+
+Receipts (small text, force-added): logs/qwen_mlp/capture.json,
+logs/qwen_mlp/dev.json, logs/qwen_mlp/eval.json,
+logs/qwen_mlp/adjudicate_1/observations.json,
+logs/qwen_mlp/adjudicate_1/adjudication.txt, logs/qwen_mlp/study_<commit>
+.log (the activation dumps machine-local, sha256 in the capture
+receipt). Fences: one layer, one candidate, one local operation; the
+collection is 48 prompts written in one sitting and is a fresh set, not
+a benchmark; the free-running continuations are the arm C model's own
+and are 48 tokens long; the measures say nothing about full-model KL,
+teacher agreement, benchmark accuracy or runtime.
