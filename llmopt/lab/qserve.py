@@ -60,6 +60,7 @@ from typing import Iterable, Optional
 
 CACHE_LIMIT_BYTES = 2 * 1024 ** 3
 DEFAULT_CONTEXT_CAP = 8192
+REASONING_EFFORTS = ("xhigh", "medium", "low")   # the pinned template's values; xhigh is its default
 DEFAULT_MAX_TOKENS = 512
 REQUIRED_KERNEL_GENERATION = 5
 ENDOFTEXT = "<|endoftext|>"
@@ -85,6 +86,7 @@ class GenerationResult:
     fed_generated: int               # generated tokens fed back into the cache
     cache_tokens: int                # tokens the cache holds after generation (by accounting)
     cache_offset_measured: Optional[int]   # the KV cache's own offset after generation (None if no KV layer)
+    first_logits_topk: Optional[dict]      # the prefill's final-position logits: top-16 ids and values, and the stop ids' values (a diagnostic record)
     last_token_in_cache: bool
     timings: dict
     memory: dict
@@ -177,10 +179,14 @@ class Engine:
             raise RuntimeError("no stop token ids")
 
     # ---- templates ----
-    def render_chat(self, messages: list, enable_thinking: Optional[bool] = None) -> list:
+    def render_chat(self, messages: list, enable_thinking: Optional[bool] = None, reasoning_effort: Optional[str] = None) -> list:
         """Token ids of the conversation rendered by the pinned tokenizer's chat
-        template with the generation prompt appended; enable_thinking is passed
-        through only when given (the template's own control)."""
+        template with the generation prompt appended; enable_thinking and
+        reasoning_effort are passed through only when given (the template's
+        own controls: effort xhigh, the default, injects its detailed reasoning
+        instruction as a system message, low injects a brief one, medium
+        injects none). reasoning_effort with enable_thinking False is refused
+        (the template would silently ignore it), as is any unsupported value."""
         if not isinstance(messages, list) or not messages:
             raise InputError("messages must be a non-empty list")
         for m in messages:
@@ -188,8 +194,18 @@ class Engine:
                 raise InputError(f"malformed message {m!r}")
             if m["role"] == "user" and not m["content"].strip():
                 raise InputError("empty user message")
+        if reasoning_effort is not None:
+            if reasoning_effort not in REASONING_EFFORTS:
+                raise InputError(f"reasoning_effort {reasoning_effort!r} is not one of {REASONING_EFFORTS}")
+            if enable_thinking is False:
+                raise InputError("reasoning_effort has no effect with enable_thinking False; the template would ignore it")
         kw = {} if enable_thinking is None else {"enable_thinking": bool(enable_thinking)}
-        ids = self.tokenizer.apply_chat_template(messages, add_generation_prompt=True, tokenize=True, **kw)
+        if reasoning_effort is not None:
+            kw["reasoning_effort"] = reasoning_effort
+        try:
+            ids = self.tokenizer.apply_chat_template(messages, add_generation_prompt=True, tokenize=True, **kw)
+        except ValueError as e:        # jinja TemplateError is a ValueError: the template refused the conversation or a control
+            raise InputError(f"the chat template refused: {e}") from e
         if hasattr(ids, "input_ids"):
             ids = ids["input_ids"]
         return [int(t) for t in ids]
@@ -224,6 +240,13 @@ class Engine:
         mx.eval(lg)
         cur = int(lg[0, -1].argmax())
         t_prefill = time.perf_counter() - t0
+        row = lg[0, -1].astype(mx.float32)
+        top = mx.argpartition(-row, 16)[:16]
+        topv = row[top]
+        order = mx.argsort(-topv)
+        top_ids = [int(i) for i in top[order].tolist()]
+        top_vals = [float(v) for v in topv[order].tolist()]
+        first_logits_topk = {"ids": top_ids, "logits": top_vals, "stop_logits": {int(t): float(row[t].item()) for t in sorted(stops)}}
         generated: list = []
         step_walls: list = []
         stop_reason, stop_tok = "max_tokens", None
@@ -255,11 +278,12 @@ class Engine:
         return GenerationResult(prompt_ids=ids, generated_ids=generated, text=text, stop_reason=stop_reason, stop_token_id=stop_tok,
                                 n_prompt=len(ids), n_generated=len(generated), fed_generated=fed,
                                 cache_tokens=cache_tokens + len(ids) + fed, cache_offset_measured=measured,
-                                last_token_in_cache=(stop_reason == "stop_token" and bool(generated)),
+                                last_token_in_cache=(stop_reason == "stop_token" and bool(generated)), first_logits_topk=first_logits_topk,
                                 timings=timings, memory=mem, mode=mode, cache=cache)
 
-    def chat(self, messages: list, max_tokens: int = DEFAULT_MAX_TOKENS, enable_thinking: Optional[bool] = None) -> GenerationResult:
-        return self.generate_ids(self.render_chat(messages, enable_thinking), max_tokens)
+    def chat(self, messages: list, max_tokens: int = DEFAULT_MAX_TOKENS, enable_thinking: Optional[bool] = None,
+             reasoning_effort: Optional[str] = None) -> GenerationResult:
+        return self.generate_ids(self.render_chat(messages, enable_thinking, reasoning_effort), max_tokens)
 
 
 class Session:
@@ -269,10 +293,13 @@ class Session:
     into a fresh cache and says so; mode "replay" (the reference) re-renders
     and re-prefills the whole transcript into a fresh cache each turn."""
 
-    def __init__(self, engine: Engine, system: Optional[str] = None, mode: str = "incremental", enable_thinking: Optional[bool] = None):
+    def __init__(self, engine: Engine, system: Optional[str] = None, mode: str = "incremental", enable_thinking: Optional[bool] = None,
+                 reasoning_effort: Optional[str] = None):
         if mode not in ("replay", "incremental"):
             raise ValueError(mode)
-        self.engine, self.mode, self.enable_thinking = engine, mode, enable_thinking
+        if reasoning_effort is not None and (reasoning_effort not in REASONING_EFFORTS or enable_thinking is False):
+            raise InputError(f"reasoning_effort {reasoning_effort!r} needs enable_thinking True (or unset) and one of {REASONING_EFFORTS}")
+        self.engine, self.mode, self.enable_thinking, self.reasoning_effort = engine, mode, enable_thinking, reasoning_effort
         self.system = system
         self.reset()
 
@@ -287,7 +314,7 @@ class Session:
             raise InputError("user text must be a non-empty string")
         trial = self.messages + [{"role": "user", "content": user}]
         try:
-            full = self.engine.render_chat(trial, self.enable_thinking)
+            full = self.engine.render_chat(trial, self.enable_thinking, self.reasoning_effort)
             extends = self.cache is not None and len(full) > len(self.fed_ids) and full[: len(self.fed_ids)] == self.fed_ids
             if self.mode == "incremental" and extends:
                 res = self.engine.generate_ids(full[len(self.fed_ids):], max_tokens, cache=self.cache, cache_tokens=len(self.fed_ids), mode="incremental")

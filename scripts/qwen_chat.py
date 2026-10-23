@@ -48,6 +48,8 @@ def main() -> int:
     ap.add_argument("--max-tokens", type=int, default=512)
     ap.add_argument("--no-thinking", action="store_true", help="pass enable_thinking=False to the pinned chat template")
     ap.add_argument("--thinking", action="store_true", help="pass enable_thinking=True to the pinned chat template")
+    ap.add_argument("--reasoning-effort", choices=("xhigh", "medium", "low"), default=None,
+                    help="the pinned template's reasoning_effort (thinking on; omitted = the template's xhigh); refused with --no-thinking")
     ap.add_argument("--replay", action="store_true", help="re-prefill the whole transcript every turn (the reference) instead of reusing the cache")
     ap.add_argument("--incremental", action="store_true", help=argparse.SUPPRESS)   # the former opt-in; now the default
     ap.add_argument("--context-cap", type=int, default=None)
@@ -64,9 +66,9 @@ def main() -> int:
     print(f"[qwen_chat] loaded {eng.info.get('fused')} fused tensors, kernel generation {eng.info.get('kernel_version')}, "
           f"chain {eng.info.get('chain_sha256', '')[:12]}, in {eng.load_s:.1f}s; stop ids {sorted(eng.stop_ids)}; "
           f"cache limit {eng.cfg.cache_limit_bytes >> 20} MiB; context cap {eng.context_cap}", file=sys.stderr)
-    sess = qserve.Session(eng, system=a.system, mode="replay" if a.replay else "incremental", enable_thinking=thinking)
+    sess = qserve.Session(eng, system=a.system, mode="replay" if a.replay else "incremental", enable_thinking=thinking, reasoning_effort=a.reasoning_effort)
     receipts = {"load_s": eng.load_s, "kernel_version": eng.info.get("kernel_version"), "chain_sha256": eng.info.get("chain_sha256"),
-                "thinking": thinking, "mode": sess.mode, "turns": []}
+                "thinking": thinking, "reasoning_effort": a.reasoning_effort, "mode": sess.mode, "turns": []}
 
     def turn(text):
         try:

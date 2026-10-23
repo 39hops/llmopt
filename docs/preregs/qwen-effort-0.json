@@ -1,0 +1,48 @@
+{
+ "name": "QWEN-EFFORT-0",
+ "note": "Machine-readable form of PRE-REG QWEN-EFFORT-0; the prose governs on any conflict. Study A of Artin's GO QWEN-EFFORT-AND-DEEPCHAT-0 (2026-10-23): the frozen 46-task v2 battery (prompts, validators, greedy decoding, context cap unchanged; the amended thinking scorer of QWEN-THINKING-BATTERY-0-RULES) under two NEW execution configurations, enable_thinking True with the pinned template's reasoning_effort low and medium at 768 tokens, one pass each, against the historical controls (no thinking 384; thinking xhigh 768). The battery has been exposed to model-selection research (two thinking configurations already read) and is not an independent holdout. Decision rule: an arm qualifies for a RECOMMENDED default change (no flip in this round) only when all five of its bars read FIRE; bars are reported individually; no composite score selects an arm. All conclusions are conditional on greedy decoding (the vendor recommends sampling for ordinary generation; sampling is deliberately not used, for comparability).",
+ "results_id": "2026-10-23-pre-reg-qwen-effort-0-the",
+ "registered": "2026-10-23",
+ "machine": "mac",
+ "arms": {
+  "BASELINE": {"description": "historical control: logs/qwen_battery/results_v2.json, enable_thinking False, 384 tokens (33 of 46; arithmetic plus JSON 8 of 18; code 7 of 8; other 18 of 20; 2,240 tokens; 419 s)"},
+  "XHIGH768": {"description": "historical control: logs/qwen_battery/results_v2_think768.json, enable_thinking True, effort xhigh (the template default), 768 tokens (36 of 46; 16 of 18; 2 of 8; 18 of 20; 8 unterminated turns; 14,721 tokens; 1,792 s)"},
+  "LOW": {"description": "enable_thinking True, reasoning_effort low (the template injects its brief-reasoning system instruction), 768 tokens, a fresh replay session per task, one pass"},
+  "MEDIUM": {"description": "enable_thinking True, reasoning_effort medium (the template injects no reasoning instruction; the think block opens as with xhigh), 768 tokens, one pass"}
+ },
+ "bars": [
+  {"id": 1, "name": "ARITH-JSON-LOW", "metric": "arith_json_pass_low", "population": "tasks:18", "aggregation": "count", "unit": "tasks", "direction": "above", "value": 13.5, "fence": {"width": 1.0, "unit": "tasks"}, "arms": ["BASELINE", "XHIGH768", "LOW"], "description": "arithmetic plus JSON at least 14 of 18 under low (one-run fence: 13 and 14 unresolved)."},
+  {"id": 2, "name": "CODE-LOW", "metric": "code_pass_low", "population": "tasks:8", "aggregation": "count", "unit": "tasks", "direction": "above", "value": 5.5, "fence": {"width": 1.0, "unit": "tasks"}, "arms": ["BASELINE", "XHIGH768", "LOW"], "description": "code at least 6 of 8 under low (5 and 6 unresolved)."},
+  {"id": 3, "name": "OTHER-LOW", "metric": "other_pass_low", "population": "tasks:20", "aggregation": "count", "unit": "tasks", "direction": "above", "value": 16.5, "fence": {"width": 1.0, "unit": "tasks"}, "arms": ["BASELINE", "XHIGH768", "LOW"], "description": "instruction, two-turn and termination together at least 17 of 20 under low, no meaningful regression from the controls' 18 (16 and 17 unresolved)."},
+  {"id": 4, "name": "TERMINATION-LOW", "metric": "unterminated_turns_low", "population": "turns:52", "aggregation": "count", "unit": "turns", "direction": "below", "value": 4.5, "fence": {"width": 1.0, "unit": "turns"}, "arms": ["XHIGH768", "LOW"], "description": "at most 4 of 52 turns with an unclosed think block under low, substantially fewer than xhigh's 8 (4 and 5 unresolved)."},
+  {"id": 5, "name": "COST-LOW", "metric": "generated_tokens_low", "population": "turns:52", "aggregation": "sum", "unit": "tokens", "direction": "below", "value": 8832.0, "fence": {"width": 500.0, "unit": "tokens"}, "arms": ["XHIGH768", "LOW"],
+   "conjuncts": [{"measurement": "5:time", "metric": "task_time_s_low", "population": "turns:52", "aggregation": "sum", "unit": "s", "direction": "below", "value": 1075.0, "fence": {"width": 60.0, "unit": "s"}}],
+   "description": "generated tokens under low at most 0.6 of xhigh's 14,721 (8,832) and task time at most 0.6 of xhigh's 1,792 s (1,075 s): a clearly reduced cost."},
+  {"id": 6, "name": "ARITH-JSON-MEDIUM", "metric": "arith_json_pass_medium", "population": "tasks:18", "aggregation": "count", "unit": "tasks", "direction": "above", "value": 13.5, "fence": {"width": 1.0, "unit": "tasks"}, "arms": ["BASELINE", "XHIGH768", "MEDIUM"], "description": "as bar 1, under medium."},
+  {"id": 7, "name": "CODE-MEDIUM", "metric": "code_pass_medium", "population": "tasks:8", "aggregation": "count", "unit": "tasks", "direction": "above", "value": 5.5, "fence": {"width": 1.0, "unit": "tasks"}, "arms": ["BASELINE", "XHIGH768", "MEDIUM"], "description": "as bar 2, under medium."},
+  {"id": 8, "name": "OTHER-MEDIUM", "metric": "other_pass_medium", "population": "tasks:20", "aggregation": "count", "unit": "tasks", "direction": "above", "value": 16.5, "fence": {"width": 1.0, "unit": "tasks"}, "arms": ["BASELINE", "XHIGH768", "MEDIUM"], "description": "as bar 3, under medium."},
+  {"id": 9, "name": "TERMINATION-MEDIUM", "metric": "unterminated_turns_medium", "population": "turns:52", "aggregation": "count", "unit": "turns", "direction": "below", "value": 4.5, "fence": {"width": 1.0, "unit": "turns"}, "arms": ["XHIGH768", "MEDIUM"], "description": "as bar 4, under medium."},
+  {"id": 10, "name": "COST-MEDIUM", "metric": "generated_tokens_medium", "population": "turns:52", "aggregation": "sum", "unit": "tokens", "direction": "below", "value": 8832.0, "fence": {"width": 500.0, "unit": "tokens"}, "arms": ["XHIGH768", "MEDIUM"],
+   "conjuncts": [{"measurement": "10:time", "metric": "task_time_s_medium", "population": "turns:52", "aggregation": "sum", "unit": "s", "direction": "below", "value": 1075.0, "fence": {"width": 60.0, "unit": "s"}}],
+   "description": "as bar 5, under medium."}
+ ],
+ "receipts": [
+  "logs/qwen_battery/results_v2_think768_low.json",
+  "logs/qwen_battery/results_v2_think768_medium.json",
+  "logs/qwen_battery/effort_adjudicate_1/observations.json",
+  "logs/qwen_battery/effort_adjudicate_1/adjudication.txt"
+ ],
+ "operands": [
+  {"name": "the frozen collection", "provider": "scratch/evalsets/qwen_battery_v2.json"},
+  {"name": "the no-thinking control", "provider": "logs/qwen_battery/results_v2.json"},
+  {"name": "the xhigh 768 control", "provider": "logs/qwen_battery/results_v2_think768.json"},
+  {"name": "the validators and the amended thinking scorer", "provider": "llmopt/lab/qbattery.py"},
+  {"name": "the engine with the reasoning_effort routing", "provider": "llmopt/lab/qserve.py"},
+  {"name": "the scoring runner", "provider": "scratch/qwen_battery_run.py"},
+  {"name": "the observations adapter", "provider": "scratch/qwen_effort_obs.py"},
+  {"name": "the chain", "provider": "scratch/qwen_effort_study.sh"}
+ ],
+ "refuted_if": "The practical objective (strong arithmetic and JSON WITHOUT losing most of the code performance, at a termination and cost clearly better than xhigh) is NULL for this round if neither arm reads FIRE on all five of its bars; the configurable behaviour is retained and no default change is recommended. Bar 1 NO-FIRE (fewer than 13 of 18 under low) reads as low sacrificing arithmetic accuracy; bar 2 NO-FIRE (4 or fewer of 8) as low not recovering code.",
+ "refuted_if_predicate": {"measurement": "arith_json_pass_low", "direction": "below", "value": 13.5, "fence": {"width": 1.0, "unit": "tasks"}},
+ "registered_prior": "The low instruction asks for brief thinking; under greedy decoding the model followed the xhigh instruction into 8 unterminated blocks of 52 at 768 tokens (6 of them code), so low is expected to close more blocks (2 to 5 unterminated), recover part of code (4 to 6 of 8) and give back part of the arithmetic and JSON recovery (12 to 15 of 18), at roughly half the tokens (6,000 to 9,000) and time; medium (no instruction) is expected between low and xhigh on every count (unterminated 4 to 7, code 2 to 5, arithmetic and JSON 14 to 16, tokens 9,000 to 13,000). Expected outcome: neither arm fires all five bars; the likeliest full pass is low failing bar 1 or bar 2 at the fence. The instruction kinds are expected unchanged (17 to 19 of 20). First-token latency: low near xhigh (a system message of similar length), medium below both (no system message)."
+}

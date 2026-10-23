@@ -35,7 +35,9 @@ SMOKE = os.environ.get("SMOKE") == "1"
 THINK = os.environ.get("THINK") == "1"                       # QWEN-THINKING-BATTERY-0: enable_thinking True through the pinned template
 BUDGET = int(os.environ["BUDGET"]) if os.environ.get("BUDGET") else None   # overrides the frozen per-turn budget
 assert BUDGET in (None, 384, 768), "only the registered budgets"
-assert BUDGET is None or THINK, "a budget override belongs to a thinking configuration" 
+assert BUDGET is None or THINK, "a budget override belongs to a thinking configuration"
+EFFORT = os.environ.get("EFFORT")                                # QWEN-EFFORT-AND-DEEPCHAT-0: the template's reasoning_effort (thinking only)
+assert EFFORT in (None, "low", "medium", "xhigh") and (EFFORT is None or THINK), "EFFORT is low, medium or xhigh under THINK=1" 
 OUT = os.environ.get("OUT", "logs/qwen_battery/smoke/results.json") if SMOKE else os.environ.get("OUT", "logs/qwen_battery/results.json")
 assert not SMOKE or "/smoke/" in OUT, "a smoke receipt stays under a smoke/ path"
 COLLECTION = os.path.join(HERE, "evalsets", os.environ.get("COLLECTION", "qwen_battery_v2.json"))
@@ -56,7 +58,8 @@ def main() -> None:
     tasks = coll["tasks"]
     thinking = True if THINK else rules["enable_thinking"]
     budget = BUDGET or rules["max_tokens_per_turn"]
-    exec_cfg = {"name": f"v{coll['version']}-think-{budget}" if THINK else f"v{coll['version']}-frozen", "enable_thinking": thinking,
+    exec_cfg = {"name": (f"v{coll['version']}-think-{budget}" + (f"-{EFFORT}" if EFFORT else "")) if THINK else f"v{coll['version']}-frozen",
+                "enable_thinking": thinking, "reasoning_effort": EFFORT, "reasoning_effort_effective": (EFFORT or "xhigh") if THINK else None,
                 "max_tokens_per_turn": budget, "scoring": "score_thinking (final answer after the last </think>)" if THINK else "score"}
     if SMOKE:
         seen, keep = set(), []
@@ -70,7 +73,7 @@ def main() -> None:
     rows = []
     t_all = time.perf_counter()
     for task in tasks:
-        sess = qserve.Session(eng, system=rules["system"], mode="replay", enable_thinking=thinking)
+        sess = qserve.Session(eng, system=rules["system"], mode="replay", enable_thinking=thinking, reasoning_effort=EFFORT)
         replies, results, err = [], [], None
         try:
             for turn in task["turns"]:

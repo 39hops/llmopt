@@ -92,14 +92,18 @@ class _Tok:
         names = {"<think>": THINK_OPEN, "</think>": THINK_CLOSE}
         return [names.get(x) if x in names else int(x) for x in text.split()] if text else []
 
-    def apply_chat_template(self, messages, add_generation_prompt=True, tokenize=True, enable_thinking=None, **kw):
+    EFFORT_TOKEN = {"low": 57, "medium": 56}      # xhigh and an omitted effort render alike (no extra token), as the pinned template does
+
+    def apply_chat_template(self, messages, add_generation_prompt=True, tokenize=True, enable_thinking=None, reasoning_effort=None, **kw):
+        if reasoning_effort not in (None, "xhigh", "low", "medium"):
+            raise ValueError(f"Unexpected reasoning effort {reasoning_effort}")
         # mirrors the STRUCTURE of the pinned template (not its whitespace,
         # trims, BPE merges or injected reasoning system message, which only
         # the live tests see): user text encodes byte-wise; a past assistant
         # turn renders <think> reasoning </think> content <|im_end|>
         # (invertible through decode); the generation prompt opens a think
         # block (thinking on or unset) or an empty one (thinking off)
-        ids = []
+        ids = [self.EFFORT_TOKEN[reasoning_effort]] if (reasoning_effort in self.EFFORT_TOKEN and enable_thinking is not False) else []
         for m in messages:
             if m["role"] == "assistant":
                 ids += [1, THINK_OPEN] + self._enc(m.get("reasoning_content", "")) + [THINK_CLOSE] + self._enc(m["content"]) + [STOP]
@@ -423,3 +427,43 @@ def test_incremental_is_the_default_session_mode(engine):
     s = qserve.Session(engine, enable_thinking=False)
     assert s.mode == "incremental"
     assert qserve.Session(engine, mode="replay", enable_thinking=False).mode == "replay"
+
+
+def test_reasoning_effort_routes_to_the_template_and_incompatible_configurations_are_refused(engine):
+    # the stub template prefixes a system token per effort (xhigh and None render alike, as the pinned template does)
+    base = engine.render_chat([{"role": "user", "content": "hi"}])
+    assert engine.render_chat([{"role": "user", "content": "hi"}], enable_thinking=True, reasoning_effort="xhigh") == base
+    low = engine.render_chat([{"role": "user", "content": "hi"}], enable_thinking=True, reasoning_effort="low")
+    med = engine.render_chat([{"role": "user", "content": "hi"}], enable_thinking=True, reasoning_effort="medium")
+    assert low != base and med != base and low != med
+    off = engine.render_chat([{"role": "user", "content": "hi"}], enable_thinking=False)
+    with pytest.raises(qserve.InputError):
+        engine.render_chat([{"role": "user", "content": "hi"}], enable_thinking=False, reasoning_effort="low")    # the template would ignore it
+    with pytest.raises(qserve.InputError):
+        engine.render_chat([{"role": "user", "content": "hi"}], enable_thinking=True, reasoning_effort="high")
+    assert engine.render_chat([{"role": "user", "content": "hi"}], enable_thinking=False) == off
+
+
+def test_session_prefix_check_and_fallback_hold_under_each_effort(engine):
+    for effort in (None, "xhigh", "medium", "low"):
+        a = qserve.Session(engine, enable_thinking=True, reasoning_effort=effort)
+        b = qserve.Session(engine, mode="replay", enable_thinking=True, reasoning_effort=effort)
+        ra, rb = a.ask("hello", 6), b.ask("hello", 6)
+        assert ra.generated_ids == rb.generated_ids
+        ra2, rb2 = a.ask("more", 6), b.ask("more", 6)
+        assert ra2.generated_ids == rb2.generated_ids and a.cache[0].fed == a.fed_ids
+        assert ra2.mode == ("incremental" if THINK_CLOSE in ra.generated_ids else "replay-fallback")
+    a = qserve.Session(engine, enable_thinking=True, reasoning_effort="low")
+    a.ask("hello", 6)
+    a.reasoning_effort = "medium"                               # the rendering's leading tokens change: fallback, never a guess
+    r = a.ask("more", 6)
+    assert r.mode == "replay-fallback" and a.cache[0].fed == a.fed_ids
+    with pytest.raises(qserve.InputError):
+        qserve.Session(engine, enable_thinking=False, reasoning_effort="low")
+
+
+def test_first_token_logits_record_matches_the_first_token(engine):
+    r = engine.generate_ids([3, 5, 8], max_tokens=2)
+    assert r.first_logits_topk["ids"][0] == r.generated_ids[0] and len(r.first_logits_topk["ids"]) == 16
+    assert set(r.first_logits_topk["stop_logits"]) == set(engine.stop_ids)
+    assert r.first_logits_topk["logits"] == sorted(r.first_logits_topk["logits"], reverse=True)

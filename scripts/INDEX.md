@@ -5325,6 +5325,22 @@ QWEN-CYCLE-IMPULSE-0 driver: cycle-triggered temperature impulse on BLe xhigh tr
 - `run_one(model, tok, ep, it, temp, seed, eos)`
 - `main()`
 
+### scratch/qwen_deepchat_diag.py
+QWEN-EFFORT-AND-DEEPCHAT-0, study B: a bounded, read-only diagnostic of the empty completions seen in the eight-turn thinking-off travel conversation of VERDICT QWEN-CHAT-DEFAULT-0 (three consecutive immediate stops on turns 5 to 7 in both modes). The frozen conversations are the travel transcript and two fixed controls (debug, recipe) exactly as in scratch/qwen_incr_perf.CONVERSATIONS; no prompt is adapted to an output.
+
+- `sha(ids)`
+- `markers(ids)`
+- `margin(rec, stop_ids)`
+- `row_of(r, eng)`
+- `fused_first_logits(eng, ids)` — the same prompt through the fused (non-GEMM) prefill path: top-16 on the final position.
+- `compare_topk(a, b)`
+- `main() -> None`
+
+### scratch/qwen_deepchat_obs.py
+Observations adapter for PRE-REG QWEN-DEEPCHAT-0 (study B of the GO QWEN-EFFORT-AND-DEEPCHAT-0): derives the registered diagnostic measurements from the receipt of scratch/qwen_deepchat_diag.py in committed code.
+
+- `main(receipt_path, prereg_path)`
+
 ### scratch/qwen_displace_extract.py
 Extract one gate_proj matrix from HF-cached Qwen2.5-0.5B base and Instruct into plot_neurons-compatible .pt files, so the --displace (central-lattice whisper-zoom) view can render an INTERNET-trained model's post-training displacement next to the closed-system natives' (the chaos-vs-structure tell, Artin's ask 2026-08-08; generator-loss lesson: this adapter is COMMITTED).
 
@@ -5357,6 +5373,14 @@ E0: greedy speculative-acceptance census for one compressed arm against the 24 p
 - `git_commit() -> str`
 - `margin_bin(m: float) -> int`
 - `main() -> None`
+
+### scratch/qwen_effort_obs.py
+Observations adapter for PRE-REG QWEN-EFFORT-0 (study A of the GO QWEN-EFFORT-AND-DEEPCHAT-0): derives the registered measurements from the two effort receipts (scratch/qwen_battery_run.py under THINK=1 BUDGET=768 with EFFORT low and medium) against the historical controls (the frozen no-thinking baseline logs/qwen_battery/results_v2.json and the xhigh 768 receipt logs/qwen_battery/results_v2_think768.json), in committed code. Every thinking receipt's verdicts are recomputed from its stored replies and token ids with the committed amended scorer (qbattery.score_thinking); the baseline's are read as stored. The honest count is pass rows over all 46 tasks (error and hold rows are non-passes). Reasoning tokens count to the LAST </think>; an unterminated turn is one with no </think> id.
+
+- `rescored(r, tasks_by_id, thinking)`
+- `per_task(r, tasks_by_id, status, why, thinking)`
+- `summary(r, tasks_by_id, status, thinking)`
+- `main(base_path, xhigh_path, low_path, med_path, prereg_path)`
 
 ### scratch/qwen_effort_probe.py
 QWEN-EFFORT-0 overnight probe: does the reasoning_effort knob change oracle-checked answer quality, and by how much?

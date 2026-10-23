@@ -4706,6 +4706,14 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qwen_battery/effort_adjudicate_1/adjudication.txt": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_battery/effort_adjudicate_1/observations.json": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/qwen_battery/results.json": {
    "bytes": 120474,
    "exists": true,
@@ -4734,12 +4742,28 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qwen_battery/results_v2_think768_low.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_battery/results_v2_think768_medium.json": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/qwen_battery/smoke/results.json": {
    "bytes": 15499,
    "exists": true,
    "sha256": "84367b4d52924f167937a20c32414fb6083c9247f2675243e5dc9ac6b6a7699d",
    "source": "results",
    "tracked": true
+  },
+  "logs/qwen_battery/smoke/results_low.json": {
+   "bytes": 27723,
+   "exists": true,
+   "local_only": true,
+   "sha256": "f4a24e6ed1d5fb61da0edf947feb9c8c17f8c4e6a16d5d108359ea0af25c3665",
+   "source": "results",
+   "tracked": false
   },
   "logs/qwen_battery/smoke/results_think384.json": {
    "bytes": 40041,
@@ -5134,6 +5158,18 @@
    "sha256": "e7c8ff819655b3288e80e9021b9259380a9c31d35723993e9ac17fbdc367c418",
    "source": "results",
    "tracked": true
+  },
+  "logs/qwen_serve/deepchat_adjudicate_1/adjudication.txt": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_serve/deepchat_adjudicate_1/observations.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_serve/deepchat_v1.json": {
+   "exists": false,
+   "source": "prereg"
   },
   "logs/qwen_serve/incr_adjudicate_1/adjudication.txt": {
    "bytes": 123,

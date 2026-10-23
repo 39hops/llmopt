@@ -84790,3 +84790,84 @@ budget question closes. No forced close of a think block (a token the
 model did not emit) is proposed: that invents template behaviour.
 
 ## AMENDMENT QWEN-CHAT-DEFAULT-0-RECEIPT-PATHS (amends VERDICT QWEN-CHAT-DEFAULT-0 and VERDICT QWEN-THINKING-BATTERY-0): the adjudication receipts cited by directory are named by full path so the lock freezes them: logs/qwen_serve/incr_adjudicate_1/observations.json, logs/qwen_serve/incr_adjudicate_1/adjudication.txt, logs/qwen_battery/think_adjudicate_1/observations.json, logs/qwen_battery/think_adjudicate_1/adjudication.txt; the receipt-lock guard caught the directory citations in the source gate after the booking commit had already been made on a chain that keyed on the log tail instead of the gate's exit code (the pipeline-exit-code lesson, fired again); nothing in either verdict changes (2026-10-23)
+
+## PRE-REG QWEN-EFFORT-0: the frozen 46-task v2 battery (prompts, validators, greedy decoding, context cap and the amended thinking scorer unchanged) under two NEW execution configurations, enable_thinking True with the pinned template's reasoning_effort low and medium at 768 tokens, one pass each, against the historical controls (no thinking at 384: 33 of 46; thinking xhigh at 768: 36 of 46); five bars per arm (arithmetic plus JSON at least 14 of 18, code at least 6 of 8, the instruction, two-turn and termination kinds at least 17 of 20, at most 4 unterminated think blocks of 52 turns, generated tokens and task time at most 0.6 of xhigh's), each with a one-run fence, reported individually; an arm qualifies for a RECOMMENDED default change only when all five fire, no composite selects an arm, no flip in this round; the battery is an exposed surface, not a holdout; conclusions conditional on greedy decoding (docs/preregs/qwen-effort-0.json; registered before either arm runs) (2026-10-23)
+
+Study A of Artin's GO QWEN-EFFORT-AND-DEEPCHAT-0. Template semantics,
+verified mechanically on the pinned tokenizer in fresh subprocesses
+(tests/test_qtemplate.py, ids and sha256 pinned): an omitted effort,
+enable_thinking True and reasoning_effort xhigh render the same 60 ids
+for the probe message (the detailed reasoning instruction as a system
+message, then the open think block); low renders 48 ids (the brief
+instruction); medium renders 18 ids (no system message at all, the
+think block opens as before); enable_thinking False renders its 20 ids
+whatever effort is passed, because the template ignores the control
+there, so the Engine refuses that combination instead; an unsupported
+value is refused by the template and surfaces as InputError. These are
+prompt-level controls: no token budget is enforced by them. Routing:
+Engine.render_chat, Engine.chat, Session and the CLI
+(--reasoning-effort) pass the argument only when given; the default
+(omitted, the template's xhigh) is unchanged; the stub tests pin that
+each configuration renders apart, that the prefix check and the
+fallback hold under each, and that changing the effort mid-session
+falls back to replay. The runner (scratch/qwen_battery_run.py, EFFORT)
+records the effective configuration in execution_config apart from the
+frozen rules (reasoning_effort_effective xhigh when thinking is on and
+no effort is given).
+
+Receipts logs/qwen_battery/results_v2_think768_low.json and
+results_v2_think768_medium.json; adapter scratch/qwen_effort_obs.py
+(every thinking receipt's verdicts recomputed from the stored replies
+under the amended scorer, the baseline's as stored; per-task transitions
+baseline > xhigh > low > medium, final-answer presence, termination,
+tokens, reasoning accounting to the last close, first-token latency,
+task time, memory in the diagnostics); adjudication in
+logs/qwen_battery/effort_adjudicate_1/. Bars as in the JSON. Refuted
+(NULL for the round) if neither arm fires all five; a configuration that
+computes the right answer inside its think block and emits no final
+answer remains a failure. Registered prior: as in the JSON (low expected
+to close more blocks, recover part of code, give back part of the
+arithmetic recovery at about half the cost; medium between low and
+xhigh; neither arm expected to fire all five). Disclosed: a smoke of the
+runner under low on the first task of each kind
+(logs/qwen_battery/smoke/results_low.json, not evidence) was read before
+this registration: six of six passed, every think block closed; the bars
+and priors above were written before it and are unchanged by it.
+
+## PRE-REG QWEN-DEEPCHAT-0: a bounded, read-only diagnostic of the empty completions of the frozen eight-turn thinking-off travel conversation (three consecutive immediate stops on turns 5 to 7 in both modes under VERDICT QWEN-CHAT-DEFAULT-0), with the debug and recipe conversations as fixed controls: per turn the rendered ids and template markers, the prefill's top-16 first-token logits with both stop ids' logits, the chosen stop and its margin over the best non-stop token, counts, stop reasons, budgets, modes, measured cache offsets, memory and the engine's versions; replay against incremental against an independent re-rendering of the transcript; the fused prefill path against the GEMM path on every stop-chosen turn; labelled counterfactuals (the user turn alone; the empty assistant turns removed); bars that classify the mechanism (reproduction, template, accounting, numerical, a decided stop), none changing a default (docs/preregs/qwen-deepchat-0.json; registered before the run) (2026-10-23)
+
+Study B of the same GO. Driver scratch/qwen_deepchat_diag.py on the
+unchanged conversations of scratch/qwen_incr_perf.py; the Engine now
+records the prefill's top-16 final-position logits and the stop ids'
+logits on every result (a diagnostic record; generation unchanged, the
+stub test pins the record's argmax equal to the first token). Receipt
+logs/qwen_serve/deepchat_v1.json; adapter scratch/qwen_deepchat_obs.py;
+adjudication in logs/qwen_serve/deepchat_adjudicate_1/. The five
+mechanisms and how the bars separate them: (1) an immediate stop
+predicted by the model: bar 5, the chosen stop's margin over the best
+non-stop token above 0.5 logits on every stop-chosen turn; (2) a
+malformed rendering: bar 2, the independent re-rendering equal to the
+session's prompt on every turn; (3) token or cache accounting: bar 3,
+the incremental first-token argmax, generated ids and measured offsets
+equal to replay's; (4) numerical or backend inconsistency: bar 4, the
+fused path within 0.05 of every shared top-16 logit and on the same
+argmax as the GEMM path on the stop-chosen turns; (5) behavioural
+deterioration with depth: the counterfactuals, reported not
+adjudicated (a non-empty single-turn answer to the same user text; a
+non-empty answer when the empty assistant turns are removed). No retry,
+no EOS suppression, no forced continuation, no dropped messages in the
+measured arms; the counterfactuals are labelled COUNTERFACTUAL in the
+receipt and are never a baseline. Refuted (the serving path implicated,
+the study stops and proposes the smallest separately authorised
+correction) if bar 2, 3 or 4 reads NO-FIRE. Registered prior: as in the
+JSON (bars 2 to 4 FIRE; the stop <|im_end|> by 1 to 5 logits; the
+single-turn counterfactual non-empty everywhere; removing the empties
+restoring some replies; mechanism 1 with 5 expected). The population of
+bars 4 and 5 is every stop-chosen turn the run finds (4 expected) and
+the adapter records the count in the provenance. Disclosed: a smoke of
+the driver on the first three travel turns (logs/qwen_serve/smoke/
+deepchat.json, not evidence) was read before this registration: no
+empty turn among the three, margins 12.9, 6.2 and 1.5 logits for the
+chosen non-stop tokens, the reconstruction equal on all three; the
+stop-chosen branch (fused re-prefill, counterfactuals) was exercised
+separately on a one-turn prompt.
