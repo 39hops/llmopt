@@ -1,6 +1,6 @@
 # SCOREBOARD — generated sample of index-curated verdicts
 
-*Generated from docs/results-index.jsonl by scripts/gen_scoreboard.py. 90 live of 98 entries carrying a hand-curated `verdict` field, out of 1550 ledger entries; the curated field reaches RESULTS line 84666. This is a PARTIAL view, not current truth: docs/FINDINGS.md is the curated public layer, and every entry resolves through docs/RESULTS.md. Full chains: scripts/results_query.py --chain. Never hand-edit this file.*
+*Generated from docs/results-index.jsonl by scripts/gen_scoreboard.py. 90 live of 98 entries carrying a hand-curated `verdict` field, out of 1551 ledger entries; the curated field reaches RESULTS line 84666. This is a PARTIAL view, not current truth: docs/FINDINGS.md is the curated public layer, and every entry resolves through docs/RESULTS.md. Full chains: scripts/results_query.py --chain. Never hand-edit this file.*
 
 ## QWEN-CHAT-DEFAULT-AND-THINKING
 - **2026-10-23** MIXED: thinking at 768 tokens 36 of 46 against 33, arithmetic plus JSON 16 of 18 against 8 (FIRE), code 2 of 8 against 7 (NO-FIRE), 384 UNRESOLVED by fence; tokens 4.7x and 6.6x  *(RESULTS L84666)*
