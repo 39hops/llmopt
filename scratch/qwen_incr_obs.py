@@ -39,8 +39,9 @@ def main(receipt_path, prereg_path):
         reasons.append(f"conversations {names} are not the registered five")
     if any(len(c["replay"]) != len(c["incremental"]) for c in r.get("conversations", [])):
         reasons.append("a conversation has unequal turn counts between modes")
-    if r.get("summary", {}).get("budget_stop_turns", 0) < 1:
-        reasons.append("the budget-cut turn did not stop on the budget")
+    convs = r.get("conversations", [])
+    if not (len(convs) == 5 and convs[4]["replay"][1]["stop_reason"] == "max_tokens" and convs[4]["incremental"][1]["stop_reason"] == "max_tokens"):
+        reasons.append("the registered budget-cut turn (conversation 5, turn 2) did not stop on the budget in both modes")
     valid = not reasons
     meas = {}
     if valid:

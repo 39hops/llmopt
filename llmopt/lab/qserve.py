@@ -94,12 +94,15 @@ class GenerationResult:
 
 
 def cache_offset(cache) -> Optional[int]:
-    """The token offset the first KV cache object reports (the DeltaNet
-    ArraysCache objects carry no offset); None when none does."""
-    for c in cache or []:
-        if hasattr(c, "offset"):
-            return int(c.offset)
-    return None
+    """The token offset the KV cache objects report (every KV layer must
+    agree; the DeltaNet ArraysCache objects carry no offset and are not
+    checked); None when no object carries one."""
+    offs = [int(c.offset) for c in (cache or []) if hasattr(c, "offset")]
+    if not offs:
+        return None
+    if len(set(offs)) != 1:
+        raise RuntimeError(f"KV layers disagree on their offset: {sorted(set(offs))}")
+    return offs[0]
 
 
 def split_thinking(text: str) -> tuple:
@@ -260,12 +263,13 @@ class Engine:
 
 
 class Session:
-    """A conversation against one Engine. mode "replay" (the reference)
-    re-renders and re-prefills the whole transcript into a fresh cache each
-    turn; mode "incremental" keeps the cache across turns when the rendered
-    transcript extends the fed token sequence exactly, else replays."""
+    """A conversation against one Engine. mode "incremental" (the default
+    since VERDICT QWEN-CHAT-DEFAULT-0) keeps the cache across turns when the
+    rendered transcript extends the fed token sequence exactly, else replays
+    into a fresh cache and says so; mode "replay" (the reference) re-renders
+    and re-prefills the whole transcript into a fresh cache each turn."""
 
-    def __init__(self, engine: Engine, system: Optional[str] = None, mode: str = "replay", enable_thinking: Optional[bool] = None):
+    def __init__(self, engine: Engine, system: Optional[str] = None, mode: str = "incremental", enable_thinking: Optional[bool] = None):
         if mode not in ("replay", "incremental"):
             raise ValueError(mode)
         self.engine, self.mode, self.enable_thinking = engine, mode, enable_thinking
@@ -291,9 +295,9 @@ class Session:
                 res = self.engine.generate_ids(full, max_tokens, mode=("fresh" if self.mode == "replay" or self.cache is None else "replay-fallback"))
                 if res.mode == "replay-fallback":
                     res.note = "the rendered transcript does not extend the fed token sequence; replayed into a fresh cache"
-        except Exception:
-            # a refused or failed turn leaves the transcript as it was and, in
-            # incremental mode, discards the cache (it may be partly fed)
+        except BaseException:
+            # a refused, failed or interrupted turn leaves the transcript as it
+            # was and discards the cache (it may be partly fed)
             self.cache = None
             raise
         self.messages = trial

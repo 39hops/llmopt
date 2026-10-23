@@ -116,6 +116,11 @@ def test_thinking_scores_the_final_answer_after_the_closed_think_block():
     assert qbattery.score_thinking(t, ["2 + 2 = 4\n</think>\n\n5"], res)["status"] == "fail"
     assert qbattery.split_final("a\n</think>\n\nb</think>c") == ("a\n</think>\n\nb", "c")
     assert qbattery.split_final("no close") == (None, None)
+    assert qbattery.split_final("a</think>\n<think>more and") == (None, None)      # reopened and never closed: no final answer
+    # a two-turn task scores turn 2 only, so an unclosed turn 1 is not a fail by itself
+    t2 = {"id": "twoturn-x", "kind": "twoturn", "turns": ["Remember 7.", "What was it?"], "expected": "7"}
+    v = qbattery.score_thinking(t2, ["thinking forever about 7", "ok\n</think>\n\n7"], [{"stop_reason": "max_tokens"}, {"stop_reason": "stop_token"}])
+    assert v["status"] == "pass", v
 
 
 def test_format_ok_is_the_contract_of_the_task_kind():

@@ -411,6 +411,8 @@ def split_final(text: str) -> tuple:
     if "</think>" not in text:
         return None, None
     head, _, tail = text.rpartition("</think>")
+    if "<think>" in tail:
+        return None, None          # a block reopened after the close and never closed again: no final answer
     return head, tail.strip()
 
 
@@ -431,11 +433,12 @@ def score_thinking(task: dict, replies: list, results: list) -> dict:
     replies: each reply is cut at its last </think>; a reply whose block
     never closed fails with no final answer."""
     finals = []
+    scored = {len(replies) - 1} if task["kind"] == "twoturn" else set(range(len(replies)))   # the validators read only these turns
     for i, r in enumerate(replies):
         _, final = split_final(r)
-        if final is None:
+        if final is None and i in scored:
             return {"status": "fail", "why": f"turn {i + 1}: thinking did not terminate within the budget; no final answer", "final_answers": finals}
-        finals.append(final)
+        finals.append(final if final is not None else "")
     v = score(task, finals, results)
     v["final_answers"] = finals
     return v

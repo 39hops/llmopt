@@ -11,10 +11,12 @@ renders the pinned tokenizer's chat template, decodes greedily to the
 output-token budget or a stop token, and prints the text, the token ids
 and the timings (cold load, time to first token, prefill and decode
 throughput, total), peak and held memory and the stop reason. --json
-writes the full receipt. Sessions are full-transcript replays by default
-(--incremental switches to cache reuse with the mechanical prefix check,
-falling back to replay when the rendered transcript does not extend the
-fed tokens). Nothing in the model, codec, kernels or defaults changes.
+writes the full receipt. Sessions reuse the cache across turns by default
+(VERDICT QWEN-CHAT-DEFAULT-0: the mechanical prefix check on the rendered
+transcript every turn, the KV offset checked against the accounting, a
+replay into a fresh cache whenever the rendering does not extend the fed
+tokens); --replay re-prefills the whole transcript every turn, the
+reference. Nothing in the model, codec or kernels changes.
 """
 from __future__ import annotations
 
@@ -46,7 +48,8 @@ def main() -> int:
     ap.add_argument("--max-tokens", type=int, default=512)
     ap.add_argument("--no-thinking", action="store_true", help="pass enable_thinking=False to the pinned chat template")
     ap.add_argument("--thinking", action="store_true", help="pass enable_thinking=True to the pinned chat template")
-    ap.add_argument("--incremental", action="store_true", help="reuse the cache across turns when the rendered transcript extends it")
+    ap.add_argument("--replay", action="store_true", help="re-prefill the whole transcript every turn (the reference) instead of reusing the cache")
+    ap.add_argument("--incremental", action="store_true", help=argparse.SUPPRESS)   # the former opt-in; now the default
     ap.add_argument("--context-cap", type=int, default=None)
     ap.add_argument("--json", default=None, help="write the turn receipts (ids, text, timings, memory) to this file")
     ap.add_argument("--art-dir", default=None)
@@ -61,7 +64,7 @@ def main() -> int:
     print(f"[qwen_chat] loaded {eng.info.get('fused')} fused tensors, kernel generation {eng.info.get('kernel_version')}, "
           f"chain {eng.info.get('chain_sha256', '')[:12]}, in {eng.load_s:.1f}s; stop ids {sorted(eng.stop_ids)}; "
           f"cache limit {eng.cfg.cache_limit_bytes >> 20} MiB; context cap {eng.context_cap}", file=sys.stderr)
-    sess = qserve.Session(eng, system=a.system, mode="incremental" if a.incremental else "replay", enable_thinking=thinking)
+    sess = qserve.Session(eng, system=a.system, mode="replay" if a.replay else "incremental", enable_thinking=thinking)
     receipts = {"load_s": eng.load_s, "kernel_version": eng.info.get("kernel_version"), "chain_sha256": eng.info.get("chain_sha256"),
                 "thinking": thinking, "mode": sess.mode, "turns": []}
 

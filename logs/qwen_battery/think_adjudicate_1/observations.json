@@ -1,0 +1,209 @@
+{
+ "note": "Mechanical projection of logs/qwen_battery/results_v2.json, logs/qwen_battery/results_v2_think384.json, logs/qwen_battery/results_v2_think768.json (commits 3ed19ee6, 7ae6a556, 7ae6a556); adapter scratch/qwen_think_obs.py; thinking verdicts recomputed under the amended scorer",
+ "registration_sha256": "30f78642e92c3e132ea01d02624f680f86cd40b36a6bb3e691f928363de717de",
+ "measurement_valid": true,
+ "arms": {
+  "BASELINE": {
+   "admissible": true,
+   "reason": "the frozen v2 no-thinking receipt of QWEN-INFERENCE-BASELINE-0, verdicts as stored"
+  },
+  "THINK384": {
+   "admissible": true,
+   "reason": "enable_thinking True through the pinned template, 384 tokens per turn, one run, recomputed under the amended scorer"
+  },
+  "THINK768": {
+   "admissible": true,
+   "reason": "enable_thinking True through the pinned template, 768 tokens per turn, one run, recomputed under the amended scorer"
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 30,
+   "metric": "think384_pass",
+   "population": "tasks:46",
+   "aggregation": "count",
+   "unit": "tasks",
+   "provenance": "baseline {'arith': {'pass': 7, 'fail': 3}, 'json': {'fail': 7, 'pass': 1}, 'code': {'pass': 7, 'error': 1}, 'instruct': {'pass': 6, 'fail': 2}, 'twoturn': {'pass': 6}, 'degen': {'pass': 6}} total 33; think384 {'arith': {'pass': 8, 'fail': 2}, 'json': {'fail': 3, 'pass': 5}, 'code': {'fail': 8}, 'instruct': {'pass': 5, 'fail': 3}, 'twoturn': {'pass': 6}, 'degen': {'pass': 6}} total 30; think768 {'arith': {'pass': 9, 'fail': 1}, 'json': {'pass': 7, 'fail': 1}, 'code': {'pass': 2, 'fail': 6}, 'instruct': {'pass': 6, 'fail': 2}, 'twoturn': {'pass': 6}, 'degen': {'pass': 6}} total 36"
+  },
+  "2": {
+   "value": 36,
+   "metric": "think768_pass",
+   "population": "tasks:46",
+   "aggregation": "count",
+   "unit": "tasks",
+   "provenance": "baseline {'arith': {'pass': 7, 'fail': 3}, 'json': {'fail': 7, 'pass': 1}, 'code': {'pass': 7, 'error': 1}, 'instruct': {'pass': 6, 'fail': 2}, 'twoturn': {'pass': 6}, 'degen': {'pass': 6}} total 33; think384 {'arith': {'pass': 8, 'fail': 2}, 'json': {'fail': 3, 'pass': 5}, 'code': {'fail': 8}, 'instruct': {'pass': 5, 'fail': 3}, 'twoturn': {'pass': 6}, 'degen': {'pass': 6}} total 30; think768 {'arith': {'pass': 9, 'fail': 1}, 'json': {'pass': 7, 'fail': 1}, 'code': {'pass': 2, 'fail': 6}, 'instruct': {'pass': 6, 'fail': 2}, 'twoturn': {'pass': 6}, 'degen': {'pass': 6}} total 36"
+  },
+  "3": {
+   "value": 16,
+   "metric": "think768_arith_json_pass",
+   "population": "tasks:18",
+   "aggregation": "count",
+   "unit": "tasks",
+   "provenance": "baseline arith+json 8; think384 13"
+  },
+  "4": {
+   "value": 20,
+   "metric": "think768_other_pass",
+   "population": "tasks:28",
+   "aggregation": "count",
+   "unit": "tasks",
+   "provenance": "baseline other 25; think384 17"
+  },
+  "think768_arith_json_pass": {
+   "value": 16,
+   "metric": "think768_arith_json_pass",
+   "population": "tasks:18",
+   "aggregation": "count",
+   "unit": "tasks",
+   "provenance": "baseline arith+json 8; think384 13"
+  }
+ },
+ "diagnostics": {
+  "baseline": {
+   "passes": 33,
+   "by_kind": {
+    "arith": {
+     "pass": 7,
+     "fail": 3
+    },
+    "json": {
+     "fail": 7,
+     "pass": 1
+    },
+    "code": {
+     "pass": 7,
+     "error": 1
+    },
+    "instruct": {
+     "pass": 6,
+     "fail": 2
+    },
+    "twoturn": {
+     "pass": 6
+    },
+    "degen": {
+     "pass": 6
+    }
+   },
+   "errors": [
+    "code-08"
+   ],
+   "format_final_answer_arith_json": {
+    "True": 16,
+    "False": 2
+   },
+   "generated_tokens": 2240,
+   "reasoning_tokens": 0,
+   "answer_tokens": 2240,
+   "unterminated_thinking_turns": 0,
+   "turns": 52,
+   "stop_reasons": {
+    "stop_token": 49,
+    "max_tokens": 3
+   },
+   "first_token_s_median": 2.8856609789654613,
+   "task_total_s_sum": 419.0,
+   "peak_bytes_max": 11726096304,
+   "active_bytes_max": 9057731116,
+   "context_refusals": 0,
+   "wall_s": 419.4,
+   "rows_changed_by_amended_scorer": []
+  },
+  "think384": {
+   "passes": 30,
+   "by_kind": {
+    "arith": {
+     "pass": 8,
+     "fail": 2
+    },
+    "json": {
+     "fail": 3,
+     "pass": 5
+    },
+    "code": {
+     "fail": 8
+    },
+    "instruct": {
+     "pass": 5,
+     "fail": 3
+    },
+    "twoturn": {
+     "pass": 6
+    },
+    "degen": {
+     "pass": 6
+    }
+   },
+   "errors": [],
+   "format_final_answer_arith_json": {
+    "True": 14,
+    "no_final": 3,
+    "False": 1
+   },
+   "generated_tokens": 10626,
+   "reasoning_tokens": 10199,
+   "answer_tokens": 427,
+   "unterminated_thinking_turns": 14,
+   "turns": 52,
+   "stop_reasons": {
+    "stop_token": 37,
+    "max_tokens": 15
+   },
+   "first_token_s_median": 3.7195554794743657,
+   "task_total_s_sum": 1341.0,
+   "peak_bytes_max": 11824220400,
+   "active_bytes_max": 9091285548,
+   "context_refusals": 0,
+   "wall_s": 1341.1,
+   "rows_changed_by_amended_scorer": []
+  },
+  "think768": {
+   "passes": 36,
+   "by_kind": {
+    "arith": {
+     "pass": 9,
+     "fail": 1
+    },
+    "json": {
+     "pass": 7,
+     "fail": 1
+    },
+    "code": {
+     "pass": 2,
+     "fail": 6
+    },
+    "instruct": {
+     "pass": 6,
+     "fail": 2
+    },
+    "twoturn": {
+     "pass": 6
+    },
+    "degen": {
+     "pass": 6
+    }
+   },
+   "errors": [],
+   "format_final_answer_arith_json": {
+    "True": 17,
+    "no_final": 1
+   },
+   "generated_tokens": 14721,
+   "reasoning_tokens": 14091,
+   "answer_tokens": 630,
+   "unterminated_thinking_turns": 8,
+   "turns": 52,
+   "stop_reasons": {
+    "stop_token": 44,
+    "max_tokens": 8
+   },
+   "first_token_s_median": 3.7593998960219324,
+   "task_total_s_sum": 1792.2,
+   "peak_bytes_max": 11822549232,
+   "active_bytes_max": 9124872752,
+   "context_refusals": 0,
+   "wall_s": 1792.4,
+   "rows_changed_by_amended_scorer": []
+  }
+ }
+}

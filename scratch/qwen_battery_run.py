@@ -33,7 +33,9 @@ sys.path.insert(0, os.path.dirname(HERE))
 
 SMOKE = os.environ.get("SMOKE") == "1"
 THINK = os.environ.get("THINK") == "1"                       # QWEN-THINKING-BATTERY-0: enable_thinking True through the pinned template
-BUDGET = int(os.environ["BUDGET"]) if os.environ.get("BUDGET") else None   # overrides the frozen per-turn budget (registered values only)
+BUDGET = int(os.environ["BUDGET"]) if os.environ.get("BUDGET") else None   # overrides the frozen per-turn budget
+assert BUDGET in (None, 384, 768), "only the registered budgets"
+assert BUDGET is None or THINK, "a budget override belongs to a thinking configuration" 
 OUT = os.environ.get("OUT", "logs/qwen_battery/smoke/results.json") if SMOKE else os.environ.get("OUT", "logs/qwen_battery/results.json")
 assert not SMOKE or "/smoke/" in OUT, "a smoke receipt stays under a smoke/ path"
 COLLECTION = os.path.join(HERE, "evalsets", os.environ.get("COLLECTION", "qwen_battery_v2.json"))
@@ -74,7 +76,7 @@ def main() -> None:
             for turn in task["turns"]:
                 r = sess.ask(turn, max_tokens=budget)
                 replies.append(r.text)
-                close = r.generated_ids.index(THINK_CLOSE_ID) + 1 if THINK_CLOSE_ID in r.generated_ids else None
+                close = (len(r.generated_ids) - r.generated_ids[::-1].index(THINK_CLOSE_ID)) if THINK_CLOSE_ID in r.generated_ids else None   # the LAST close
                 results.append({"prompt_ids": r.prompt_ids, "generated_ids": r.generated_ids, "text": r.text, "stop_reason": r.stop_reason,
                                 "stop_token_id": r.stop_token_id, "n_prompt": r.n_prompt, "n_generated": r.n_generated,
                                 "cache_tokens": r.cache_tokens, "cache_offset_measured": r.cache_offset_measured, "timings": r.timings, "memory": r.memory,
@@ -85,8 +87,8 @@ def main() -> None:
         if err is None:
             try:
                 verdict = (qbattery.score_thinking if THINK else qbattery.score)(task, replies, results)
-                final = (verdict.get("final_answers") or replies)[-1] if THINK else replies[-1]
-                verdict["format_ok"] = qbattery.format_ok(task, final)
+                final = (verdict.get("final_answers") or [None])[-1] if THINK else replies[-1]
+                verdict["format_ok"] = qbattery.format_ok(task, final) if final else None   # None: no final answer to judge
             except Exception as e:  # noqa: BLE001
                 verdict = {"status": "error", "why": f"validator {type(e).__name__}: {e}"}
         else:
@@ -102,6 +104,7 @@ def main() -> None:
     receipt = {"commit": head, "tree_dirty": dirty, "smoke": SMOKE, "collection": os.path.relpath(COLLECTION, os.path.dirname(HERE)), "execution_config": exec_cfg, "collection_sha256": coll_sha,
                "collection_version": coll["version"], "rules": rules, "sandbox_available": qbattery.sandbox_available(),
                "engine": {"load_s": eng.load_s, "kernel_version": eng.info.get("kernel_version"), "chain_sha256": eng.info.get("chain_sha256"),
+                          "tokenizer_files_sha256": getattr(eng, "tokenizer_files_sha256", {}),
                           "stop_ids": sorted(eng.stop_ids), "context_cap": eng.context_cap, "cache_limit_bytes": eng.cfg.cache_limit_bytes},
                "summary": {"pass": n_pass, "scored": n_scored, "tasks": len(rows), "pass_rate_of_scored": (n_pass / n_scored) if n_scored else None,
                            "by_kind": {k: dict(v) for k, v in by_kind.items()},

@@ -1,0 +1,135 @@
+{
+ "name": "QWEN-THINKING-BATTERY-0",
+ "note": "Machine-readable form of PRE-REG QWEN-THINKING-BATTERY-0; the prose governs on any conflict. Part B of Artin's GO QWEN-CHAT-DEFAULT-AND-THINKING-0 (2026-10-23): the frozen 46-task v2 battery (prompts, expected answers and validators byte-identical to QWEN-INFERENCE-BASELINE-0) scored under two new execution configurations with the pinned template's own thinking control enabled: the same 384-token budget as the no-thinking baseline (the controlled comparison) and a 768-token budget (practical usefulness). One run each, no prompt tuning, no retries, budgets fixed here. A reply whose think block closed is scored on the text after its last </think> by the frozen validators; a reply whose think block never closed has no final answer and fails (the hidden reasoning is never searched). Decision rule: bar 3 FIRE reads as thinking recovering the arithmetic and JSON failures; bar 3 NO-FIRE reads as verbosity without recovery at this budget. AMENDED by AMENDMENT QWEN-THINKING-BATTERY-0-RULES (drafted while the chain was live, before any thinking verdict was read): the two-turn kind requires closure on the scored second turn only; a reopened unclosed block is no final answer; format compliance on the final answer only; reasoning tokens to the last close; a fence of one run on every bar (3 tasks; 2 on the 18-task bar). Bars, budgets, prompts, validators and priors unchanged from docs/preregs/qwen-thinking-battery-0.json.",
+ "results_id": "2026-10-23-pre-reg-qwen-thinking-battery-0",
+ "registered": "2026-10-23",
+ "machine": "mac",
+ "arms": {
+  "BASELINE": {
+   "description": "the frozen no-thinking receipt logs/qwen_battery/results_v2.json: enable_thinking False, 384 tokens per turn; 33 passes of 46 on the honest count"
+  },
+  "THINK384": {
+   "description": "enable_thinking True (the template's own control: its reasoning system message and an open think block), 384 tokens per turn, a fresh replay session per task"
+  },
+  "THINK768": {
+   "description": "the same with 768 tokens per turn"
+  }
+ },
+ "bars": [
+  {
+   "id": 1,
+   "name": "THINK-384",
+   "metric": "think384_pass",
+   "population": "tasks:46",
+   "aggregation": "count",
+   "direction": "above",
+   "value": 32.5,
+   "arms": [
+    "BASELINE",
+    "THINK384"
+   ],
+   "description": "at the baseline's own 384-token budget, thinking passes at least as many tasks as the baseline (33 of 46).",
+   "fence": {
+    "width": 3.0,
+    "unit": "tasks"
+   },
+   "unit": "tasks"
+  },
+  {
+   "id": 2,
+   "name": "THINK-768",
+   "metric": "think768_pass",
+   "population": "tasks:46",
+   "aggregation": "count",
+   "direction": "above",
+   "value": 32.5,
+   "arms": [
+    "BASELINE",
+    "THINK768"
+   ],
+   "description": "at 768 tokens, thinking passes at least as many tasks as the baseline.",
+   "fence": {
+    "width": 3.0,
+    "unit": "tasks"
+   },
+   "unit": "tasks"
+  },
+  {
+   "id": 3,
+   "name": "ARITH-JSON-RECOVERY",
+   "metric": "think768_arith_json_pass",
+   "population": "tasks:18",
+   "aggregation": "count",
+   "direction": "above",
+   "value": 11.5,
+   "arms": [
+    "BASELINE",
+    "THINK768"
+   ],
+   "description": "at 768 tokens, arithmetic plus JSON pass at least 12 of 18 (the baseline passed 8: the ten failures were multi-operand arithmetic and the JSON aggregates); the question of the GO.",
+   "fence": {
+    "width": 2.0,
+    "unit": "tasks"
+   },
+   "unit": "tasks"
+  },
+  {
+   "id": 4,
+   "name": "NO-REGRESSION-768",
+   "metric": "think768_other_pass",
+   "population": "tasks:28",
+   "aggregation": "count",
+   "direction": "above",
+   "value": 24.5,
+   "arms": [
+    "BASELINE",
+    "THINK768"
+   ],
+   "description": "at 768 tokens, code, instruction, two-turn and termination together pass at least 25 of 28 (the baseline's count).",
+   "fence": {
+    "width": 3.0,
+    "unit": "tasks"
+   },
+   "unit": "tasks"
+  }
+ ],
+ "receipts": [
+  "logs/qwen_battery/results_v2_think384.json",
+  "logs/qwen_battery/results_v2_think768.json",
+  "logs/qwen_battery/think_adjudicate_1/observations.json",
+  "logs/qwen_battery/think_adjudicate_1/adjudication.txt"
+ ],
+ "operands": [
+  {
+   "name": "the frozen collection",
+   "provider": "scratch/evalsets/qwen_battery_v2.json"
+  },
+  {
+   "name": "the baseline receipt",
+   "provider": "logs/qwen_battery/results_v2.json"
+  },
+  {
+   "name": "the validators and the thinking mapping",
+   "provider": "llmopt/lab/qbattery.py"
+  },
+  {
+   "name": "the scoring runner",
+   "provider": "scratch/qwen_battery_run.py"
+  },
+  {
+   "name": "the observations adapter",
+   "provider": "scratch/qwen_think_obs.py"
+  },
+  {
+   "name": "the chain",
+   "provider": "scratch/qwen_chat_default_study.sh"
+  }
+ ],
+ "refuted_if": "The claim that thinking recovers the arithmetic and JSON failures is REFUTED at this budget if bar 3 reads NO-FIRE (fewer than 12 of 18 at 768 tokens). Bars 1, 2 and 4 are reported either way; a bar 4 NO-FIRE names a regression of the kinds the baseline already passed.",
+ "refuted_if_predicate": {
+  "measurement": "think768_arith_json_pass",
+  "direction": "below",
+  "value": 11.5
+ },
+ "registered_prior": "The template's thinking mode prepends a system message asking for careful reasoning at xhigh effort and opens a think block; the baseline's two budget-exhausted arithmetic replies spent 384 tokens on working. Expected: at 384 tokens many think blocks never close (the termination tasks, the JSON tasks and the longer code tasks are the likeliest), so bar 1 is expected NO-FIRE with 15 to 30 passes and a budget-exhaustion rate above a third; at 768 tokens most blocks close and the arithmetic and JSON aggregates are expected to improve (bar 3 near its threshold, 10 to 14 of 18) while the termination and instruction kinds risk regressions through exhausted budgets and longer answers (bar 4 a coin flip); bar 2 is expected near the baseline, 30 to 36. Reasoning tokens are expected to dominate generated tokens in both configurations, and first-token latency to be unchanged (the prompt grows only by the system message). Any thinking reply that closes its block and then answers in the wrong format is a format failure of the final answer, scored as the frozen rules score it."
+}

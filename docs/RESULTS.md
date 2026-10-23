@@ -84554,3 +84554,237 @@ block never closed within 384 tokens, the JSON task's block closed at 361
 tokens and its answer was cut by the budget, 1,008 of 1,444 generated
 tokens were reasoning; the bars and budgets above were fixed before that
 smoke and are unchanged by it.
+
+## AMENDMENT QWEN-THINKING-BATTERY-0-RULES (amends PRE-REG QWEN-THINKING-BATTERY-0): drafted while the registered chain was live and before any thinking verdict was read, from the independent Opus review of the registered code: (1) the two-turn kind scores the second turn's final answer, as the registration says, so an unclosed think block on turn one is not by itself a fail (the committed score_thinking failed the task on any unclosed turn; corrected to the registered rule); (2) a final answer that reopens a think block after the close and never closes it is no final answer; (3) format compliance is judged on the final answer only (none when there is no final answer) and is derived for the baseline too; reasoning tokens count to the LAST close; (4) a fence of one run: a bar whose measured count lies within 3 tasks of its threshold (2 for the 18-task bar) reads UNRESOLVED rather than FIRE or NO-FIRE; the amended executable registration is docs/preregs/qwen-thinking-battery-0a.json and the adjudication runs against it; the receipts' stored two-turn verdicts were computed by the pre-amendment code and the adapter recomputes every verdict from the stored replies with the committed amended scorer, reporting any row that changed (2026-10-23)
+
+Why before the read: the chain qwen-chat-default-0 (7ae6a556) was armed
+before the review landed; the review named one scoring rule stricter
+than the registration (two-turn closure on both turns), one unregistered
+case (a reopened block), two bookkeeping defects (format judged on raw
+reasoning when no final answer existed; reasoning tokens counted to the
+first close) and the absence of a statistical fence on bars whose
+thresholds sit at the baseline's own count. All four are fixed in code
+and registration here, with the amended JSON carrying the fences, and
+nothing else of the registration moves: the same prompts, validators,
+budgets, bars and priors. The adapter (scratch/qwen_think_obs.py)
+reads the receipts' stored replies and token ids and recomputes the
+verdicts with the committed amended scorer, so the booked counts come
+from the registered rule and the receipts stay as written; the number
+of rows whose status changed under the amended rule is reported in the
+verdict. Also from the review, not affecting the registration: the
+incremental comparison's bar 4 primary (offset mismatches) is a guard
+that fails closed (the Engine raises on any mismatch, so a mismatch
+would end the chain with no receipt and book UNRESOLVED), only its reuse
+conjunct can read NO-FIRE; the offset check reads the KV layers (every
+one must agree; the DeltaNet recurrent states carry no offset and are
+not checked); the memory bar detects the retention of a whole extra
+cache and nothing finer (active memory is sampled once per turn and the
+KV cache grows in allocation steps); the stub template mirrors the
+structure of the pinned template and not its whitespace, trims, merges
+or injected system message, which only the live tests and the serving
+receipts see; thinking mode changes two things at once (the injected
+reasoning system message and the open think block), and the pinned
+template renders past reasoning into later turns, so a two-turn task's
+second prompt carries turn one's reasoning.
+
+## VERDICT QWEN-CHAT-DEFAULT-0: GO, every bar FIRE (adjudicated against docs/preregs/qwen-chat-default-0.json in logs/qwen_serve/incr_adjudicate_1/): over the five registered conversations (32 turns) the incremental and replay sessions produced identical generated ids and stop reasons on every turn; the later-turn first-token latency median ratio is 0.256 (incremental 2.0 to 2.5 s on every later turn against replay's 3.5 to 12.1 s growing with the transcript); the active-memory growth of an incremental conversation in excess of replay's is 0 MB; the measured KV offset equalled the accounting on all 64 turns and 24 of 24 later thinking-off turns reused the cache; incremental cache reuse is PROMOTED to the default of Session and of the CLI at this commit, with --replay as the explicit reference option; the thinking-on conversation fell back once, on the turn after a reply whose think block the budget cut (the template re-renders a close the model never emitted), and reused again after it, both modes agreeing throughout (2026-10-23, Mac, commit 7ae6a556 for the receipts)
+
+The adjudicator's lines, verbatim:
+  BAR 1 TOKEN-EQUAL: FIRE
+  BAR 2 LATER-TURN-TTFT: FIRE
+  BAR 3 MEMORY-FLAT: FIRE
+  BAR 4 ACCOUNTING: FIRE
+  REFUTED-IF: NOT-REFUTED
+
+Receipts: logs/qwen_serve/incr_v1.json (scratch/qwen_incr_perf.py under
+liverun qwen-chat-default-0 at 7ae6a556, clean tree, log
+logs/qwen_serve/chatdefault_7ae6a556.log, record
+logs/liverun/qwen-chat-default-0.jsonl), observations by
+scratch/qwen_incr_obs.py. The live stage before it: 5 live tests passed
+on the real tower (one turn, two turns recalling a fact, incremental
+equal to replay over two turns, thinking on in both modes over two
+turns, a six-token budget stop then an incremental follow-up with the
+un-fed last token fed exactly once).
+
+Measured (bar 1): token_mismatch_turns 0 of 32. (Bar 2): the per-turn
+ratios over the 24 later thinking-off turns run from 0.98 (the first
+later turn of the budget-cut conversation, a 26-token transcript) down
+to 0.16; replay's later first-token latency 3.5 to 12.1 s rises with
+the transcript (it re-prefills everything), incremental's stays at 2.0
+to 2.5 s (it prefills the new user turn only); the median ratio 0.256.
+(Bar 3): active memory after the last turn minus after the first turn
+is 32.0 to 32.5 MB on the three eight-turn conversations and 67.1 MB on
+the thinking conversation in BOTH modes (the KV cache's own growth with
+the transcript, allocated in steps), 0 MB on the budget-cut one; the
+excess of incremental over replay is 0 on every conversation. (Bar 4):
+offset_mismatch_turns 0 of 64 (a guard that fails closed: the Engine
+raises on any mismatch, so a mismatch would have ended the chain with
+no receipt and booked UNRESOLVED; the measured number is the count the
+guard let through); later_thinking_off_reuse_fraction 24 of 24. The
+thinking-on conversation (train arrival times, 256-token budget): turn 1
+closed its think block and stopped on a stop token (152 tokens); turn 2
+reused the cache and was cut by the budget inside its reasoning (256
+tokens, no close); turn 3 therefore fell back to replay, as the
+registration predicted (the pinned template renders the stored turn
+with a </think> the model never emitted, so the rendering does not
+extend the fed ids), and answered "80"; turn 4 reused again ("ok").
+Replay and incremental agreed token for token on all four.
+
+Observed on the side, equally in both modes and so a model behaviour,
+not a cache one: the eight-turn travel conversation (thinking off, 48
+to 96-token budgets) produced a one-token reply ("Day") on turn 4 and
+EMPTY completions (an immediate <|im_end|>) on turns 5, 6 and 7 before
+answering turn 8 ("safe travels"); the debug conversation produced an
+empty turn 7 and the budget-cut conversation an empty turn 3. The
+cache handled every empty completion correctly (the stop token fed once
+as the first new id of the next turn); the behaviour itself, the model
+abandoning a multi-turn thinking-off conversation after a few turns, is
+booked as a finding for the usefulness track and is not measured here.
+
+What the promotion means and does not mean. Session(engine) and
+scripts/qwen_chat.py now reuse the cache by default; --replay (and
+mode="replay") is the reference and stays; the prefix check, the
+measured-offset check (every KV layer must agree; the DeltaNet
+recurrent states carry no offset and are not checked), the context-cap
+refusal and the fallback are unchanged and any interrupt or exception
+mid-turn discards the cache (the Opus review's finding: a KeyboardInterrupt
+after the DeltaNet layers had advanced but before the first KV layer
+would have left a corrupted recurrent state behind an unchanged offset;
+now caught). The two modes are token-equal where observed (32 turns
+here, 6 in the serving receipt, 4 in the live tests) and are not
+bit-equivalent by construction: in incremental mode earlier generated
+tokens entered the cache through the fused decode kernel, in replay
+through the chunk-256 GEMM prefill, with the recurrent state within
+1.2e-5 relative between the two paths (QWEN-METAL-PREFILL-GEMM-0); a
+near-tie could flip a token on some turn of some conversation, and the
+house reads that as a numerical fact of the two kernels, not as a
+cache defect. The memory bar detects the retention of a whole extra
+cache and nothing finer. Replay always ran before incremental in each
+conversation (an order confound for the latency ratio in the direction
+of a warmer incremental run; the ratio is 0.26 against a 0.6 bar).
+
+## VERDICT QWEN-THINKING-BATTERY-0: thinking recovers the arithmetic and JSON failures and costs the code kind and most of the budget (adjudicated against the amended docs/preregs/qwen-thinking-battery-0a.json in logs/qwen_battery/think_adjudicate_1/): on the byte-identical v2 battery the honest pass count is 33 of 46 without thinking (the frozen baseline), 30 of 46 with thinking at the same 384-token budget (UNRESOLVED inside the one-run fence) and 36 of 46 at 768 tokens (FIRE); arithmetic plus JSON at 768 pass 16 of 18 against the baseline's 8 (FIRE: 9 of the baseline's 10 failures recovered, one new loss), the other four kinds 20 of 28 against 25 (NO-FIRE: code falls from 7 to 2 because the think block never closes within the budget on 6 of 8 code tasks, 8 of 8 at 384); generated tokens rise 4.7x and 6.6x (10,626 and 14,721 against 2,240, of which 96 percent reasoning), total task time 3.2x and 4.3x (1,341 and 1,792 s against 419), first-token latency 2.9 to 3.7 s (the template's injected reasoning system message), peak memory unchanged (11.8 against 11.7 GB), no context refusal; thinking did not terminate on 14 of 52 turns at 384 and 8 of 52 at 768; the amended two-turn rule changed no row; the retrospective mechanism classification of the baseline's 13 non-passes (part C) is booked below, scores unchanged (2026-10-23, Mac, commit 7ae6a556 for the receipts)
+
+The adjudicator's lines, verbatim:
+  BAR 1 THINK-384: UNRESOLVED [fence: |observed 30.0 - bar 32.5| = 2.5 < 3.0 tasks]
+  BAR 2 THINK-768: FIRE
+  BAR 3 ARITH-JSON-RECOVERY: FIRE
+  BAR 4 NO-REGRESSION-768: NO-FIRE
+  REFUTED-IF: NOT-REFUTED
+
+Receipts: logs/qwen_battery/results_v2_think384.json and
+logs/qwen_battery/results_v2_think768.json (scratch/qwen_battery_run.py
+with THINK=1 and the registered budget, a fresh replay session per task,
+under liverun qwen-chat-default-0 at 7ae6a556, clean tree; the frozen
+baseline logs/qwen_battery/results_v2.json read as stored), observations
+by scratch/qwen_think_obs.py (the thinking verdicts recomputed from the
+stored replies under the amended scorer; rows changed by the amendment:
+none in either configuration; code tasks re-run in the sandbox).
+Execution configurations recorded in the receipts (v2-think-384,
+v2-think-768: enable_thinking True through the pinned template, which
+prepends its reasoning system message and opens the think block; the
+frozen rules copied unchanged; the collection sha256 equal to the
+committed one in all three).
+
+By kind (honest count; baseline, 384, 768):
+  arithmetic   7, 8, 9 of 10
+  JSON         1, 5, 7 of 8
+  code         7, 0, 2 of 8
+  instructions 6, 5, 6 of 8
+  two-turn     6, 6, 6 of 6
+  termination  6, 6, 6 of 6
+  total        33, 30, 36 of 46
+
+Arithmetic and JSON (the question). At 768 tokens every baseline failure
+but one passes: arith-03 (the product), arith-04 (the modulus whose
+working the baseline exhausted its budget on) and arith-05 (the gcd)
+all answer with the number alone after a closed think block; six of the
+seven JSON aggregates are now right (the order totals 466.70, 299.87
+and 530.80 and the roster means 70.25, 79.6 and 69.0); json-03 still
+misses by 0.02 (57.41 for 57.43, the same slip at both budgets). The
+one new loss is arith-07, a plain five-digit sum the baseline answered
+in six tokens, whose think block never closed at either budget (the
+model keeps re-verifying). At 384 tokens the recovery is partial (13 of
+18: two arithmetic and one JSON block unclosed, json-01's block closed
+at 361 tokens and the budget cut the answer mid-object). Output-format
+compliance of the final answer on these 18 tasks: baseline 16 compliant
+(the two budget-exhausted workings were not), 384 tokens 14 compliant,
+1 cut, 3 with no final answer, 768 tokens 17 compliant and 1 with no
+final answer; with thinking, once the block closes the model answers
+in the asked format.
+
+Code, instructions, two-turn, termination. Code collapses: the median
+reasoning length on the code tasks equals the budget at both budgets
+(the model plans, writes and re-reads the function inside the think
+block and never closes it); 0 of 8 at 384, 2 of 8 at 768 (the two that
+closed passed their hidden tests), against 7 of 8 without thinking.
+Instructions: 5 and 6 of 8 (instruct-04 unclosed at both budgets;
+instruct-06 unclosed at 384 and right at 768; instruct-08 "orbits" for
+"orbit" again at 768, the one validator-strictness fail of the
+baseline, reproduced). Two-turn and termination 6 of 6 in every
+configuration: the retention tasks recall through a transcript that
+now carries turn one's reasoning (the pinned template renders past
+reasoning into later turns), and every termination task still stops on
+a stop token after a closed block.
+
+Cost. Generated tokens 2,240 (baseline) against 10,626 (384: 10,199
+reasoning, 427 answer) and 14,721 (768: 14,091 reasoning, 630 answer);
+budget stops 3, 15 and 8 of 52 turns; unterminated think blocks 0, 14
+and 8; median first-token latency 2.9 s against 3.7 and 3.8 s (the
+injected system message adds prompt tokens); total task time 419 s
+against 1,341 and 1,792 s; peak active 11.73 against 11.82 GB; context
+refusals 0 in all three. Median reasoning tokens by kind at 768:
+arithmetic 198, JSON 190, code 768 (the budget), instructions 124,
+two-turn 80, termination 121.
+
+Reading. Thinking improves the specific arithmetic and JSON failures
+(9 of 10 recovered at 768, with the final answers in the asked format)
+and is not only verbosity; but it is also verbosity at 4.7 to 6.6x the
+tokens and 3.2 to 4.3x the time, and on code it is a loss at both
+budgets because the block never closes. The 384-token comparison is
+unresolved by its fence (30 against 33, one run) and reads as the
+budget deciding: the same reasoning that recovers arithmetic exhausts
+384 tokens on 14 turns. Bar 4's NO-FIRE is the code kind alone (the
+other three kinds together 18 of 22 against 18 of 22). Thinking
+changes two things at once (the reasoning system message and the open
+block); this measurement does not separate them.
+
+Limitations. One run per configuration, 46 tasks, greedy; the
+validators were written for direct answers and read the final answer
+after the last </think> (no row's status changed under the amended
+two-turn rule); the stub-level mapping tests cover the split, the
+reopened block and the two-turn rule; the real template's rendering of
+past reasoning into later turns is not measured for its effect on the
+two-turn tasks beyond their 6 of 6. Budgets were fixed at registration
+and nothing was tuned after a score was read.
+
+Part C, the retrospective mechanism classification of the baseline's
+13 non-passes (scratch/evalsets/qwen_battery_v2_failure_mechanisms.json,
+hand-annotated from the stored replies, scores unchanged): wrong
+calculation 8 (arith-03 and the seven JSON aggregates); correct
+calculation but wrong final answer 1 (arith-04: the working reached
+"So remainder is 25." and kept verifying, the frozen last-integer rule
+scored an intermediate; it also exhausted the budget and broke the
+number-only format, so it carries three mechanisms); incorrect format
+4 (arith-04, arith-05 which reached 36 as a remainder and started a
+factorisation, instruct-06 at 18 words, instruct-08 "orbits"); budget
+exhaustion 3 (arith-04, arith-05, code-08); genuine code or test
+failure 0; evaluator or sandbox infrastructure failure 1 (code-08's
+error classification under the pre-fix harness, the reply itself a
+budget-cut syntax error). Read against part B: the eight wrong
+calculations and the two budget-exhausted workings are exactly the
+rows thinking at 768 recovers, and the two format fails of the
+instruction kind are the rows it does not.
+
+The single next justified improvement, from these measurements: the
+failures that remain at 768 tokens are all unterminated think blocks
+(8 of the 10), and the pinned template carries its own control for
+that, reasoning_effort ("low" instructs brief thinking, "medium" the
+intermediate; "xhigh" is the default the receipts used). The next
+measurement, not a code change, is the same frozen battery under
+enable_thinking True with reasoning_effort low (and medium) at 768
+tokens, registered as its own versioned configuration with the same
+fence; if low closes the code blocks while keeping the arithmetic
+recovery, thinking at low effort becomes the chat default and the
+budget question closes. No forced close of a think block (a token the
+model did not emit) is proposed: that invents template behaviour.

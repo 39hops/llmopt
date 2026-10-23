@@ -590,7 +590,7 @@ Census: library 202, reproduce-pinned 9, results-cited 554, spec-cited 75, tool-
 | quick | quick_exact_3080.sh | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — | — | — |
 | qwen | qwen_alttok_derive.py | results-cited | RESULTS, specs | RESULTS×3, specs×2 | — | 1 | — | — |
 | qwen | qwen_attrib_adjudicate.py | library | specs | specs×2 | 1 | 1 | 1 | — |
-| qwen | qwen_battery_run.py | results-cited | RESULTS | RESULTS×1 | — | 2 | 1 | — |
+| qwen | qwen_battery_run.py | results-cited | RESULTS | RESULTS×4 | — | 2 | 1 | — |
 | qwen | qwen_ble2_adjudicate.py | library | RESULTS, specs | RESULTS×5, specs×2 | 1 | 1 | — | — |
 | qwen | qwen_ble2_autopsy.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
 | qwen | qwen_blem_perf.py | results-cited | RESULTS | RESULTS×4 | — | 1 | — | — |
@@ -598,7 +598,7 @@ Census: library 202, reproduce-pinned 9, results-cited 554, spec-cited 75, tool-
 | qwen | qwen_blem_perf3.py | results-cited | RESULTS | RESULTS×4 | — | — | — | — |
 | qwen | qwen_capacity27b.py | results-cited | RESULTS | RESULTS×4 | — | — | — | — |
 | qwen | qwen_census_night.sh | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
-| qwen | qwen_chat_default_study.sh | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
+| qwen | qwen_chat_default_study.sh | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
 | qwen | qwen_cheap_readout.py | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
 | qwen | qwen_cuda_rung0.py | UNCITED | — | — | — | — | — | — |
 | qwen | qwen_cuda_rung1.py | UNCITED | — | — | — | — | — | — |
@@ -627,8 +627,8 @@ Census: library 202, reproduce-pinned 9, results-cited 554, spec-cited 75, tool-
 | qwen | qwen_homeo_adjudicate.py | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
 | qwen | qwen_hsimpulse_adjudicate.py | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
 | qwen | qwen_hsimpulse_color.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
-| qwen | qwen_incr_obs.py | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
-| qwen | qwen_incr_perf.py | results-cited | RESULTS | RESULTS×3 | — | 1 | 1 | — |
+| qwen | qwen_incr_obs.py | results-cited | RESULTS | RESULTS×5 | — | — | — | — |
+| qwen | qwen_incr_perf.py | results-cited | RESULTS | RESULTS×5 | — | 1 | 1 | — |
 | qwen | qwen_inference_study.sh | UNCITED | — | — | — | — | — | — |
 | qwen | qwen_ioattrib_adjudicate.py | library | RESULTS, specs | RESULTS×2, specs×1 | 1 | 1 | — | — |
 | qwen | qwen_layer_restore.py | results-cited | RESULTS, specs | RESULTS×21, specs×1 | — | 1 | 1 | — |
@@ -670,7 +670,7 @@ Census: library 202, reproduce-pinned 9, results-cited 554, spec-cited 75, tool-
 | qwen | qwen_stream_probe.py | library | RESULTS, via:specs | RESULTS×2 | 2 | 3 | — | — |
 | qwen | qwen_teacher_pass.py | library | RESULTS | RESULTS×2 | 2 | 1 | — | — |
 | qwen | qwen_teacher_sidecar.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
-| qwen | qwen_think_obs.py | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
+| qwen | qwen_think_obs.py | results-cited | RESULTS | RESULTS×8 | — | — | — | — |
 | qwen | qwen_topset_census.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
 | qwen | qwen_tower_ladder.py | results-cited | RESULTS, via:specs | RESULTS×18 | — | 11 | — | — |
 | qwen | qwen_tree_adjudicate.py | library | RESULTS, specs | RESULTS×2, specs×1 | — | 1 | — | — |
@@ -961,7 +961,7 @@ Census: library 202, reproduce-pinned 9, results-cited 554, spec-cited 75, tool-
 | plot | plot_identity_crest.py | spec-cited | specs | specs×3 | — | — | — | — |
 | plot | plot_neurons.py | spec-cited | specs | specs×6 | — | — | 1 | — |
 | probe | probe_depth.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
-| qwen | qwen_chat.py | results-cited | RESULTS, specs | RESULTS×4, specs×1 | — | — | — | — |
+| qwen | qwen_chat.py | results-cited | RESULTS, specs | RESULTS×7, specs×2 | — | — | — | — |
 | recover | recover_receipt.py | library | RESULTS, specs, TOOLING | RESULTS×2, specs×1, TOOLING×1 | — | 2 | — | — |
 | render | render_anim.py | library | RESULTS, specs, TOOLING | RESULTS×1, specs×1, TOOLING×4 | 1 | 1 | — | — |
 | render | render_gallery.py | spec-cited | specs | specs×7 | — | — | — | — |

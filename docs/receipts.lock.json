@@ -1740,6 +1740,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/liverun/qwen-chat-default-0.jsonl": {
+   "bytes": 486,
+   "exists": true,
+   "sha256": "de35eaaac6fe6e7e87f1bf66fcb40753d31cb88621205639d671f44af59803af",
+   "source": "results",
+   "tracked": true
+  },
   "logs/liverun/qwen-geometry-1.jsonl": {
    "bytes": 480,
    "exists": true,
@@ -4714,12 +4721,18 @@
    "tracked": true
   },
   "logs/qwen_battery/results_v2_think384.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 278408,
+   "exists": true,
+   "sha256": "68c544712814b34e77e1e6440e0254cbab001d6372bf57edc2d7f0316bc570fb",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_battery/results_v2_think768.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 337411,
+   "exists": true,
+   "sha256": "7a4e90fc606f6c7f248382391b3d07ae6d5f105cdc24c4383ea4ceee9b624ade",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_battery/smoke/results.json": {
    "bytes": 15499,
@@ -4731,17 +4744,18 @@
   "logs/qwen_battery/smoke/results_think384.json": {
    "bytes": 40041,
    "exists": true,
-   "local_only": true,
    "sha256": "55fc2378aeaf688034a9a239e573e8d6a0e82cf9fffaea55c4d4e9d8077c344c",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/qwen_battery/think_adjudicate_1/adjudication.txt": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/qwen_battery/think_adjudicate_1/observations.json": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/qwen_e0/C/positions.jsonl": {
@@ -5110,17 +5124,29 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qwen_serve/chatdefault_7ae6a556.log": {
+   "bytes": 14657,
+   "exists": true,
+   "sha256": "e7c8ff819655b3288e80e9021b9259380a9c31d35723993e9ac17fbdc367c418",
+   "source": "results",
+   "tracked": true
+  },
   "logs/qwen_serve/incr_adjudicate_1/adjudication.txt": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/qwen_serve/incr_adjudicate_1/observations.json": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/qwen_serve/incr_v1.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 180395,
+   "exists": true,
+   "sha256": "c1fa145cf058560e73e6f3cfef48c34b69d0b1ece52ebb29ca7863b2f6b5e807",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_serve/perf.json": {
    "bytes": 11417,

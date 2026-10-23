@@ -1,0 +1,58 @@
+{
+ "note": "Mechanical projection of logs/qwen_serve/incr_v1.json (commit 7ae6a556); adapter scratch/qwen_incr_obs.py",
+ "registration_sha256": "1201d7ef29583b92572efb303a3779a8dc40662c5ec99f8673c833ef13b5a28f",
+ "measurement_valid": true,
+ "arms": {
+  "REPLAY": {
+   "admissible": true,
+   "reason": "full-transcript replay into a fresh cache every turn (the reference)"
+  },
+  "INCREMENTAL": {
+   "admissible": true,
+   "reason": "cache reuse under the exact rendered-token prefix check with replay fallback"
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 0,
+   "metric": "token_mismatch_turns",
+   "population": "turns:32",
+   "aggregation": "count",
+   "provenance": "per conversation [[], [], [], [], []]"
+  },
+  "2": {
+   "value": 0.2559070749337944,
+   "metric": "ttft_ratio_later_median",
+   "population": "later-thinking-off-turns:24",
+   "aggregation": "median_of_per_turn_ratio",
+   "provenance": "replay later TTFT s [5.28, 8.98, 9.53, 10.58, 10.65, 10.9, 12.12, 5.18, 5.82, 6.9, 8.92, 10.7, 10.58, 11.08, 3.66, 5.81, 6.82, 8.74, 10.44, 10.55, 12.07, 3.54, 3.69, 3.97]; incremental [2.4, 2.44, 2.45, 2.32, 2.27, 2.03, 2.13, 2.54, 2.28, 2.41, 2.24, 2.43, 2.3, 1.99, 2.19, 2.28, 2.23, 2.23, 2.16, 2.27, 1.98, 2.13, 2.17, 1.98]"
+  },
+  "3": {
+   "value": 0.0,
+   "metric": "active_growth_mb_excess_max",
+   "population": "conversations:5",
+   "aggregation": "max_over_conversations_of_incremental_growth_minus_replay_growth",
+   "provenance": "incremental max growth 67.1 MB, replay max growth 67.1 MB; per conversation [-1.0, -1.0, -1.6, 0.0, 0.0]"
+  },
+  "4": {
+   "value": 0,
+   "metric": "offset_mismatch_turns",
+   "population": "turns:64",
+   "aggregation": "count"
+  },
+  "4:reuse": {
+   "value": 1.0,
+   "metric": "later_thinking_off_reuse_fraction",
+   "population": "later-thinking-off-turns:24",
+   "aggregation": "fraction",
+   "provenance": "thinking conversation later modes [['incremental', 'replay-fallback', 'incremental']]"
+  },
+  "token_mismatch_turns": {
+   "value": 0,
+   "metric": "token_mismatch_turns",
+   "population": "turns:32",
+   "aggregation": "count",
+   "provenance": "per conversation [[], [], [], [], []]"
+  }
+ }
+}

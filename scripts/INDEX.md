@@ -5865,9 +5865,10 @@ Teacher v2d SIDECAR: cached-v-uncached gate on the locked rollout record (AMENDM
 - `main() -> int`
 
 ### scratch/qwen_think_obs.py
-Observations adapter for PRE-REG QWEN-THINKING-BATTERY-0: derives the registered measurements from the three battery receipts (the frozen no-thinking baseline logs/qwen_battery/results_v2.json and the two thinking configurations written by scratch/qwen_battery_run.py under THINK=1 with BUDGET 384 and 768) in committed code. The honest count is pass rows over all 46 tasks (error and hold rows are non-passes).
+Observations adapter for PRE-REG QWEN-THINKING-BATTERY-0 as amended by AMENDMENT QWEN-THINKING-BATTERY-0-RULES: derives the registered measurements from the three battery receipts (the frozen no-thinking baseline logs/qwen_battery/results_v2.json and the two thinking configurations written by scratch/qwen_battery_run.py under THINK=1 with BUDGET 384 and 768) in committed code. The baseline's stored verdicts are the booked ones and are read as stored; each thinking receipt's verdicts are RECOMPUTED from its stored replies and token ids with the committed amended scorer (qbattery.score_thinking: the final answer after the last </think>, a reopened block no final answer, the two-turn kind scored on its second turn), the code tasks re-run in the sandbox, and every row whose status differs from the stored one is listed. The honest count is pass rows over all 46 tasks (error and hold rows are non-passes).
 
-- `counts(r)`
+- `rescored(r, tasks_by_id, thinking)` — (status by task id, changed rows) with the thinking receipts recomputed under the amended scorer.
+- `diagnostics(r, tasks_by_id, status, thinking)`
 - `main(base_path, t384_path, t768_path, prereg_path)`
 
 ### scratch/qwen_topset_census.py
@@ -7186,7 +7187,7 @@ Local inference for the qualified Qwen3.8-27B arm C (QWEN-INFERENCE- BASELINE-0)
 - `class InputError`
 - `class ContextLimitError`
 - `class GenerationResult`
-- `cache_offset(cache) -> Optional[int]` — The token offset the first KV cache object reports (the DeltaNet
+- `cache_offset(cache) -> Optional[int]` — The token offset the KV cache objects report (every KV layer must
 - `split_thinking(text: str) -> tuple` — (reasoning_content, content): the pinned template renders a past
 - `_check_ids(ids) -> list`
 - `class Engine` (render_chat, generate_ids, chat)
