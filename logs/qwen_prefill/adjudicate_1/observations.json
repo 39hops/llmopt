@@ -1,0 +1,227 @@
+{
+ "note": "Mechanical projection of logs/qwen_prefill/heldout.json (commit f9567077); adapter scratch/qwen_prefill_obs.py",
+ "registration_sha256": "3cadc54945d1617382d9f62b504edbe221f8003f4502151e70012007bc939762",
+ "measurement_valid": true,
+ "arms": {
+  "PROD": {
+   "admissible": true,
+   "reason": "the qualified serving path: chunk 256, GEMM prefill, final head, 2 GiB cache limit"
+  },
+  "CAND512": {
+   "admissible": true,
+   "reason": "the same path with chunk 512, a diagnostic in this process only"
+  },
+  "CAND1024": {
+   "admissible": true,
+   "reason": "the same path with chunk 1,024, a diagnostic in this process only"
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 0.9485822290059714,
+   "metric": "ttft_ratio_1024_cand512",
+   "population": "heldout-1024:6v6",
+   "aggregation": "median_ratio",
+   "unit": "ratio",
+   "provenance": "{\"512\": {\"ttft\": 12.625, \"prod\": 13.248, \"spread_pct\": 0.7, \"top16_diff\": 5.626678466796875e-05}, \"1024\": {\"ttft\": 25.489, \"prod\": 26.871, \"spread_pct\": 0.3, \"top16_diff\": 1.33514404296875e-05}, \"2048\": {\"ttft\": 49.44, \"prod\": 52.31, \"spread_pct\": 0.2, \"top16_diff\": 7.343292236328125e-05}}"
+  },
+  "2": {
+   "value": 0.9451418663824442,
+   "metric": "ttft_ratio_2048_cand512",
+   "population": "heldout-2048:6v6",
+   "aggregation": "median_ratio",
+   "unit": "ratio"
+  },
+  "3": {
+   "value": 0.9529676815829295,
+   "metric": "ttft_ratio_512_cand512",
+   "population": "heldout-512:6v6",
+   "aggregation": "median_ratio",
+   "unit": "ratio"
+  },
+  "4": {
+   "value": 0,
+   "metric": "parity_mismatches_cand512",
+   "population": "heldout-runs:18",
+   "aggregation": "count",
+   "unit": "runs",
+   "provenance": "top-16 max abs diff by length [5.626678466796875e-05, 1.33514404296875e-05, 7.343292236328125e-05]"
+  },
+  "5": {
+   "value": 1.063271334070169,
+   "metric": "peak_ratio_cand512",
+   "population": "heldout-lengths:3",
+   "aggregation": "max_ratio",
+   "unit": "ratio",
+   "provenance": "footprint ratios [1.0, 1.0, 1.0] (flattened by the 2 GiB pool cap); transient ratios [1.22, 1.238, 1.219]"
+  },
+  "5:e2e": {
+   "value": 0.9466131492225824,
+   "metric": "e2e_ratio_2048_cand512",
+   "population": "heldout-2048:6v6",
+   "aggregation": "median_ratio",
+   "unit": "ratio"
+  },
+  "5:decode": {
+   "value": 1.0067423363613093,
+   "metric": "decode_s_ratio_cand512",
+   "population": "heldout-lengths:3",
+   "aggregation": "max_median_ratio",
+   "unit": "ratio",
+   "provenance": "the 16 greedy decode steps after the prefill, candidate over production: a slower decode after a faster prefill would be a hidden cost"
+  },
+  "6": {
+   "value": 0.9528634856558567,
+   "metric": "ttft_ratio_1024_cand1024",
+   "population": "heldout-1024:6v6",
+   "aggregation": "median_ratio",
+   "unit": "ratio",
+   "provenance": "{\"512\": {\"ttft\": 12.595, \"prod\": 13.221, \"spread_pct\": 0.4, \"top16_diff\": 5.626678466796875e-05}, \"1024\": {\"ttft\": 25.6, \"prod\": 26.866, \"spread_pct\": 0.2, \"top16_diff\": 2.09808349609375e-05}, \"2048\": {\"ttft\": 50.309, \"prod\": 52.305, \"spread_pct\": 0.2, \"top16_diff\": 5.7220458984375e-05}}"
+  },
+  "7": {
+   "value": 0.9618314498077905,
+   "metric": "ttft_ratio_2048_cand1024",
+   "population": "heldout-2048:6v6",
+   "aggregation": "median_ratio",
+   "unit": "ratio"
+  },
+  "8": {
+   "value": 0.9526278123821789,
+   "metric": "ttft_ratio_512_cand1024",
+   "population": "heldout-512:6v6",
+   "aggregation": "median_ratio",
+   "unit": "ratio"
+  },
+  "9": {
+   "value": 0,
+   "metric": "parity_mismatches_cand1024",
+   "population": "heldout-runs:18",
+   "aggregation": "count",
+   "unit": "runs",
+   "provenance": "top-16 max abs diff by length [5.626678466796875e-05, 2.09808349609375e-05, 5.7220458984375e-05]"
+  },
+  "10": {
+   "value": 1.2635602571404456,
+   "metric": "peak_ratio_cand1024",
+   "population": "heldout-lengths:3",
+   "aggregation": "max_ratio",
+   "unit": "ratio",
+   "provenance": "footprint ratios [1.0, 1.0, 1.0] (flattened by the 2 GiB pool cap); transient ratios [1.22, 1.993, 1.94]"
+  },
+  "10:e2e": {
+   "value": 0.9628198969242172,
+   "metric": "e2e_ratio_2048_cand1024",
+   "population": "heldout-2048:6v6",
+   "aggregation": "median_ratio",
+   "unit": "ratio"
+  },
+  "10:decode": {
+   "value": 0.9987651242282802,
+   "metric": "decode_s_ratio_cand1024",
+   "population": "heldout-lengths:3",
+   "aggregation": "max_median_ratio",
+   "unit": "ratio",
+   "provenance": "the 16 greedy decode steps after the prefill, candidate over production: a slower decode after a faster prefill would be a hidden cost"
+  },
+  "ttft_ratio_1024_cand512": {
+   "value": 0.9485822290059714,
+   "metric": "ttft_ratio_1024_cand512",
+   "population": "heldout-1024:6v6",
+   "aggregation": "median_ratio",
+   "unit": "ratio",
+   "provenance": "{\"512\": {\"ttft\": 12.625, \"prod\": 13.248, \"spread_pct\": 0.7, \"top16_diff\": 5.626678466796875e-05}, \"1024\": {\"ttft\": 25.489, \"prod\": 26.871, \"spread_pct\": 0.3, \"top16_diff\": 1.33514404296875e-05}, \"2048\": {\"ttft\": 49.44, \"prod\": 52.31, \"spread_pct\": 0.2, \"top16_diff\": 7.343292236328125e-05}}"
+  }
+ },
+ "diagnostics": {
+  "CAND512:512": {
+   "n": 6,
+   "ttft_median_s": 12.624557291972451,
+   "prod_ttft_median_s": 13.247623750474304,
+   "ttft_ratio": 0.9529676815829295,
+   "e2e_ratio": 0.9582764961180236,
+   "prod_spread_pct": 0.7174340089009111,
+   "parity_mismatches": 0,
+   "prod_self_mismatches": 0,
+   "top16_max_abs_diff": 5.626678466796875e-05,
+   "footprint_ratio": 0.9998420612835197,
+   "peak_ratio": 1.0569935403813433,
+   "transient_ratio": 1.2201903524453919,
+   "decode_s_ratio": 0.998339009181279
+  },
+  "CAND1024:512": {
+   "n": 6,
+   "ttft_median_s": 12.594614271074533,
+   "prod_ttft_median_s": 13.22091808298137,
+   "ttft_ratio": 0.9526278123821789,
+   "e2e_ratio": 0.9577613991769213,
+   "prod_spread_pct": 0.44823538505556754,
+   "parity_mismatches": 0,
+   "prod_self_mismatches": 0,
+   "top16_max_abs_diff": 5.626678466796875e-05,
+   "footprint_ratio": 1.0000175517354597,
+   "peak_ratio": 1.0569935403813433,
+   "transient_ratio": 1.2201903524453919,
+   "decode_s_ratio": 0.9987651242282802
+  },
+  "CAND512:1024": {
+   "n": 6,
+   "ttft_median_s": 25.488945145974867,
+   "prod_ttft_median_s": 26.870569958584383,
+   "ttft_ratio": 0.9485822290059714,
+   "e2e_ratio": 0.9512893932207367,
+   "prod_spread_pct": 0.26955094374083066,
+   "parity_mismatches": 0,
+   "prod_self_mismatches": 0,
+   "top16_max_abs_diff": 1.33514404296875e-05,
+   "footprint_ratio": 0.9996969075085932,
+   "peak_ratio": 1.063271334070169,
+   "transient_ratio": 1.238425636529905,
+   "decode_s_ratio": 1.0067423363613093
+  },
+  "CAND1024:1024": {
+   "n": 6,
+   "ttft_median_s": 25.59985212504398,
+   "prod_ttft_median_s": 26.866232687490992,
+   "ttft_ratio": 0.9528634856558567,
+   "e2e_ratio": 0.9549982052664688,
+   "prod_spread_pct": 0.16310002380739486,
+   "parity_mismatches": 0,
+   "prod_self_mismatches": 0,
+   "top16_max_abs_diff": 2.09808349609375e-05,
+   "footprint_ratio": 0.9999271143661923,
+   "peak_ratio": 1.2635602571404456,
+   "transient_ratio": 1.9931752348228673,
+   "decode_s_ratio": 0.9860906948303774
+  },
+  "CAND512:2048": {
+   "n": 6,
+   "ttft_median_s": 49.440038833068684,
+   "prod_ttft_median_s": 52.30964852112811,
+   "ttft_ratio": 0.9451418663824442,
+   "e2e_ratio": 0.9466131492225824,
+   "prod_spread_pct": 0.2151522276754427,
+   "parity_mismatches": 0,
+   "prod_self_mismatches": 0,
+   "top16_max_abs_diff": 7.343292236328125e-05,
+   "footprint_ratio": 1.0000057519120957,
+   "peak_ratio": 1.0599102721875848,
+   "transient_ratio": 1.2192949932233854,
+   "decode_s_ratio": 0.9930937829896807
+  },
+  "CAND1024:2048": {
+   "n": 6,
+   "ttft_median_s": 50.308915354078636,
+   "prod_ttft_median_s": 52.30533412494697,
+   "ttft_ratio": 0.9618314498077905,
+   "e2e_ratio": 0.9628198969242172,
+   "prod_spread_pct": 0.18549143710298294,
+   "parity_mismatches": 0,
+   "prod_self_mismatches": 0,
+   "top16_max_abs_diff": 5.7220458984375e-05,
+   "footprint_ratio": 1.000005746300442,
+   "peak_ratio": 1.2567457236579618,
+   "transient_ratio": 1.9397896166022348,
+   "decode_s_ratio": 0.9958869824073906
+  }
+ }
+}

@@ -85633,3 +85633,136 @@ footprint to the per-run peak; warm-ups per variant; the frozen prompts
 read rather than regenerated; the slab variant dropped as a no-op; the
 microbenchmark isolating the matmul; the prior's arithmetic and parity
 citation corrected; the TTFT definition and the pool clearing stated).
+
+## VERDICT QWEN-PREFILL-WALL-0: NULL on the chunk-size hurdle, as registered (adjudicated against docs/preregs/qwen-prefill-wall-0.json; logs/qwen_prefill/adjudicate_1/observations.json and logs/qwen_prefill/adjudicate_1/adjudication.txt): on the held-out prompts chunk 512 cuts the prefill-to-first-logits latency by 5 percent at every length (ratios 0.953, 0.949 and 0.945 at 510, 1,029 and 2,040 tokens) and chunk 1,024 by 4 to 5 percent (0.953, 0.953, 0.962), against a 10 percent bar fenced at 13; parity holds everywhere (0 argmax or 16-step decode mismatches in 36 runs, top-16 logits within 1.3e-4), peak memory grows 6 percent at chunk 512 and 26 percent at chunk 1,024, the decode after the prefill is unchanged, and production's own ABBA spread is 0.2 to 0.7 percent; the baseline of the released path is 39 tokens per second at every length (13.0, 26.2, 52.6 and 105.0 s for 512, 1,017, 2,052 and 4,096 tokens, 98 percent of it GPU completion, peak 11.9 to 12.5 GB, cold load 8.0 s, no compile penalty on the first prefill); the decomposition at 1,017 tokens agrees by both methods: the W4 MLP projections 48 percent of the chunk time (12.6 s marginal, 12.5 s additive), the DeltaNet recurrence 34 percent (9.0 s marginal, 8.6 s additive), the S16 body projections 20 to 25 percent, the attention core, the norms and the head under 1 percent each, and the framework's dispatch 2 percent; the strongest measured hypothesis is the DeltaNet recurrence, a third of the first-token wall that no chunk size or matmul precision touches, and the receipt audit found its cause: the tower is never put in evaluation mode, so mlx-lm's GatedDeltaNet runs its Python reference loop (use_kernel = not training) instead of the Metal recurrence kernel the same module ships, which a one-chunk microbenchmark on random operands times at 2.3 ms against the loop's 42.5 ms per layer (a projected 0.44 s against 8.2 s for the 1,017-token prompt, matching the measured 9.0 s); the recommendation is a bounded GO to QUALIFY the existing kernel path on the prefill and decode (a numerical change needing its own parity receipts), not a default change and not a new kernel; the qualified kernels and the serving defaults are unchanged (2026-10-24, Mac, commit f9567077 for the receipts)
+
+The adjudicator's lines, verbatim:
+  BAR 1 TTFT-1024-512: NO-FIRE
+  BAR 2 TTFT-2048-512: NO-FIRE
+  BAR 3 NO-REGRESSION-512-512: FIRE
+  BAR 4 PARITY-512: FIRE
+  BAR 5 PEAK-E2E-DECODE-512: UNRESOLVED [conjunct 5:e2e: fence: |observed 0.9466131492225824 - bar 0.95| = 0.003386850777417516 < 0.03 ratio; conjunct 5:decode: fence: |observed 1.0067423363613093 - bar 1.02| = 0.013257663638690742 < 0.02 ratio]
+  BAR 6 TTFT-1024-1024: NO-FIRE
+  BAR 7 TTFT-2048-1024: NO-FIRE
+  BAR 8 NO-REGRESSION-512-1024: FIRE
+  BAR 9 PARITY-1024: FIRE
+  BAR 10 PEAK-E2E-DECODE-1024: UNRESOLVED [conjunct 10:e2e: fence: |observed 0.9628198969242172 - bar 0.95| = 0.012819896924217256 < 0.03 ratio]
+  REFUTED-IF: REFUTED
+The registered rule (NULL if neither candidate fires all five) and the
+structured predicate agree.
+
+Receipts (scratch/qwen_prefill_wall.py under liverun qwen-prefill-wall-0
+at f9567077, clean tree, record logs/liverun/qwen-prefill-wall-0.jsonl,
+log logs/qwen_prefill/study_f9567077.log): logs/qwen_prefill/baseline.json,
+logs/qwen_prefill/decomp.json, logs/qwen_prefill/design.json,
+logs/qwen_prefill/heldout.json; observations by scratch/qwen_prefill_obs.py
+(the held-out prompts' sha256s equal to the frozen file; production
+self-consistent; spread under the 10 percent validity floor). An Opus
+receipt and methodology audit ran before this booking. Part 1, the CLI's
+operational accounting (scripts/qwen_chat.py summarize_turns: turns,
+reuses, fallbacks with reasons, first-token latency by mode, replayed
+prompt tokens and their cost, token totals, memory), landed with the
+registration and is pinned by tests/test_qchat_summary.py; it is derived
+from the recorded turns only.
+
+Part 2, the baseline (development prompts, warm, allocator pool emptied
+before every run, A B C C B A twice, n = 4 per length; the serving path never empties the pool; the receipt's "warm-pool pair", 52.9 and 52.7 s at 2,052 tokens, is NOT a warm-pool measurement, because the driver empties the pool at the end of every run whatever the flag, as the receipt audit found; the pool refills within the first chunk, so a clear can cost at most that chunk, and no warm-pool claim is booked):
+  tokens   first logits   tokens/s   spread   GPU side   CPU issue   peak    transient
+  512      13.0 s         39.4       0.4%     12.7 s     0.23 s      11.9 GB   3.1 GB
+  1,017    26.2 s         38.9       0.3%     25.7 s     0.47 s      12.0 GB   3.2 GB
+  2,052    52.6 s         39.0       0.6%     51.9 s     1.05 s      12.2 GB   3.4 GB
+  4,096    105.0 s        39.0       (n=2)    (preflight: 8.8 GB active plus 4 GB under 30 GB)   12.5 GB
+The cost is linear in tokens at 39 tokens per second through the
+chunk-256 GEMM path (QWEN-METAL-SERVE-0 measured 35.5 at 1,024 real
+tokens under the same limit in its own harness). The CPU issue time (graph
+construction plus the host-side embedding decode) is 2 percent; the
+rest is GPU completion. Cold load to a ready Engine 8.0 s (timed from after the imports); the first prefill of the process 12.98 s against 12.98 s warm: no measurable first-prefill cost on this path. The 16 greedy decode steps after the prefill
+take 1.6 to 1.7 s at every length. "First logits" here excludes the
+template rendering, the session's prefix check, the cache allocation,
+the host argmax and detokenisation, and the thinking block of the
+released default; a later turn under incremental reuse prefills only
+its new tokens.
+
+Part 3, the decomposition (1,017 tokens, chunk 256, GEMM scope, full
+path 26.2 s). MARGINAL, full minus the path with one family replaced by
+a near-free stand-in that keeps a data dependence; these do not add:
+  family (what the stand-in removes)                       marginal     share of full
+  W4 MLP projections (192 matrices)                        12.58 s      48.0%
+  DeltaNet core (conv, recurrence, gated norm, b and a)     9.15 s      34.9%
+  DeltaNet recurrence alone (gated_delta_update)            9.03 s      34.5%
+  S16 body projections (208 matrices)                       5.22 s      19.9%
+  attention core (norms, rope, scores, softmax, gate)       0.12 s       0.5%
+  norms                                                     0.04 s       0.1%
+  head (final position per chunk)                          -0.04 s       0%
+  all linears together (W4, S16, head)                     17.49 s      66.7%
+ADDITIVE, every family's inputs evaluated before its timed call and its
+output after, inner calls subtracted (the pre-registration smoke showed
+that without the input evaluation the recurrence's cost landed on the
+out_proj linear that first forced it): W4 MLP 12.50 s, DeltaNet core
+8.57 s, S16 body 6.55 s, norms 0.34 s, attention core 0.22 s, head 0.04
+s; sum 28.21 s against a synchronised wall of 28.59 s (untimed
+residual 0.38 s: the host embedding decode, residual adds, chunk-end
+evaluation) and an unsynchronised wall of 26.22 s (serialisation
+penalty 2.37 s: what forcing every call costs over the pipelined path).
+The two methods agree on the ranking and within 0.1 to 1.3 s on each
+family: the W4 MLP matmuls are half of the first-token wall, the
+DeltaNet recurrence a third, the S16 body projections a fifth to a
+quarter, and everything else (attention, norms, head, dispatch) under 3
+percent together. The recurrence finding is new: QWEN-METAL-PREFILL-STUDY-0
+measured the matrices (28.4 of a 30.6 s fused-path chunk) and booked
+"everything else" at 2.1 s; the GEMM path cut the matrices to about
+17.5 s per 1,017 tokens and left the recurrence's 9 s standing as the
+second family. The recurrence stand-in replaces gated_delta_update alone (the state carried unchanged; it also drops the cheap sigmoid, gate and head-repeat elementwise work around it), so the 9.0 s is the recurrence call's own cost, not the convolution's or the norm's (their share is the 0.1 s between the two DeltaNet rows). WHY it costs 9 s: the receipt audit traced the call. llmopt/lab/qtower.py builds qwen3_5.Model and never calls .eval(); an MLX module starts in training mode; GatedDeltaNet passes use_kernel = not self.training, so every prefill and every decode step of arm C since the tower was built has run gated_delta_ops, mlx-lm's Python reference loop over the tokens of the chunk, not gated_delta_kernel, the Metal recurrence kernel in the same module. The arithmetic agrees: 9.03 s over 1,017 tokens and 48 layers is 185 us per token-layer, the same per-step cost the decode breakdown booked for the DeltaNet core (12.1 ms per step over 48 layers, 252 us), so the prefill gets no batching from the chunk, as a per-token loop predicts. A one-chunk microbenchmark on random operands of the real shapes (B 1, S 256, 48 value heads of 128, 16 key heads of 128; this session, not a receipt) times the loop at 42.5 ms and the kernel at 2.3 ms per layer-chunk, a projected 8.2 s against 0.44 s for the 1,017-token prompt; the two paths' outputs were not compared (random gates produced non-finite values), so NOTHING here is a parity claim: the kernel path is a different arithmetic and every qualification receipt of arm C (the census, the serving verdicts, the decode breakdowns) was taken on the loop path.
+
+Part 4, the design space (development prompts, each variant paired with
+production in ABBA blocks, two per length, warm-ups discarded):
+  variant      ratio at 512 / 1,017 / 2,052   parity (argmax, 16 decode)   top-16 diff   peak ratio   transient ratio
+  chunk 128    1.161 / 1.149 / 1.158          equal                        0             0.98         0.93
+  chunk 512    0.942 / 0.947 / 0.943          equal                        1.2e-4        1.06         1.23
+  chunk 1,024  0.941 / 0.954 / 0.949          equal                        1.2e-4        1.06 / 1.26  1.24 / 2.0
+Halving the chunk costs 15 percent; doubling it buys 5 to 6 percent and
+quadrupling it buys no more (the GEMM decode is 14 percent of the chunk
+by the earlier projection and only half of it is recoverable per
+doubling, while the chunk's attention and output temporaries grow).
+The decode after the prefill is unchanged in every variant (ratios
+0.99 to 1.01). The throwaway microbenchmark on the 17408x5120 gate
+matrix of layer 0 (the matmul alone on pre-decoded, pre-cast weights,
+seeded random rows; decode alone 3.6 ms): float16 runs at 0.89 of
+float32 at 256, 512 and 1,024 rows (10.3 against 11.6 ms at 256) with a
+relative error of 3.5e-4 against the float32 product and no weight
+flushed or non-finite in float16; an 11 percent matmul saving on half
+the wall is a 5 percent lever at a real numerical cost, not a design.
+
+Part 5, the hurdle (held-out prompts, read once; production spread 0.2
+to 0.7 percent): chunk 512 ratios 0.953, 0.949, 0.945 and chunk 1,024
+0.953, 0.953, 0.962 at 510, 1,029 and 2,040 tokens; end-to-end
+(prefill plus 16 decode steps) 0.947 to 0.963; decode ratios 0.986 to
+1.007; peak ratios 1.06 (chunk 512) and 1.26 (chunk 1,024); parity 0
+mismatches of 36 candidate runs, top-16 within 7.3e-5. The latency bars
+read NO-FIRE at the 13 percent effective threshold; the memory bars read as stated above; the registered expectation (about 7 percent at chunk 512 from the decode share) was slightly optimistic and the measured 5 percent is real (ten times the spread) but below any bar. Chunk 1,024 buys nothing over 512 and doubles the transient memory; its peak ratio of 1.264 at 1,029 tokens is a NO-FIRE of bar 10's own primary (1.20 plus the 0.02 fence), which the conjunct law reports as UNRESOLVED because its end-to-end conjunct sits inside its fence; bar 5's primary, 1.063, would have fired and both of its conjuncts sit inside their fences.
+
+Interpretation and recommendation. The user-facing first-token wall of
+the released path is a 39 tokens per second prefill, linear in the
+prompt, almost entirely GPU completion; a 2,048-token prompt waits 53
+s. Half of that time is the W4 MLP float32 GEMM (already the decode-once
+path; float16 would buy about a tenth of it at 3.5e-4 relative error),
+a fifth to a quarter the S16 body projections, and a third the DeltaNet
+recurrence of mlx-lm's gated_delta_update kernel, which no chunk size,
+dispatch threshold or matmul precision touches. Chunk size is a NULL
+lever at the registered bar: 5 percent for a 6 percent peak-memory
+cost, within the registered noise of nothing else. The strongest measured optimisation hypothesis is therefore the recurrence, and it needs no new kernel: the Metal kernel exists in mlx-lm and the released path does not call it. Its ceiling is about 9 of the 26 s at 1,017 tokens (a 34 percent first-token reduction if the recurrence became free; the microbenchmark projects the kernel at a twentieth of the loop), and the decode step carries the same loop (12 percent of the step by QWEN-METAL-DECODE-BREAKDOWN-0). Recommendation: a bounded GO to qualify the kernel path (the tower in evaluation mode, or use_kernel passed explicitly under the existing source guard), with the census and serving receipts as the oracle: argmax agreement on the frozen E0 positions and the held-out prompts, the recurrent state compared against the loop path at every layer, the near-tie margins read where they differ, and the same held-out hurdle for latency; not a default change until that parity is booked, not a chunk change, not a new kernel. The mode flag is one line; the qualification is the work. The W4 GEMM half of the wall is the second target and
+needs a different lever than precision (fewer bytes per decoded row or
+a fused decode-and-multiply); the fp16 microbenchmark closes the
+precision question for now.
+
+Post-run code corrections, disclosed and not affecting any booked number: the driver's warm-pool flag now controls the pool clear at the end of a run as well as the start; its family definitions are derived from the recorded members (the receipt's s16_body definition listed in_proj_b and in_proj_a, which are not QLinear and are charged to the DeltaNet core, as its gdn_core definition says); the first-prefill comment no longer claims a compilation cost. Limitations. One machine, one session, one process per stage; the
+prompts are plain prose rendered with thinking off; the development
+decomposition is at one length and one chunk; the marginal costs are
+stand-in replacements and do not sum (the sum of the three linear
+families' marginals, 27.4 s, exceeds the full 26.2 s, which is the
+overlap the method cannot see); the additive method serialises the GPU
+and inflates the total by 9 percent; the microbenchmark is one matrix
+with random activations and does not verify MLX's float16 accumulation
+dtype; the memory preflight is a fixed 30 GB figure, not the device's
+working-set limit; nothing here is a kernel measurement, which the
+implementation GO would be.

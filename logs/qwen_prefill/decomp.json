@@ -1,0 +1,184 @@
+{
+ "commit": "f9567077",
+ "tree_dirty": false,
+ "smoke": false,
+ "stage": "decomp",
+ "cold_load_s": 8.499873916152865,
+ "process_to_ready_s": 8.54728762502782,
+ "engine": {
+  "kernel_version": 5,
+  "chain_sha256": "de7e0180bf49f965c17116b7fbe8c34d2b1529c2431cc234f3a6460ad84b24dc",
+  "cache_limit_bytes": 2147483648,
+  "chunk": 256,
+  "matmul": "gemm",
+  "tokenizer_files_sha256": {
+   "tokenizer.json": "0997f410c57a1f4e53b09e4be8f4a172d90edd9564368fb0847030937229b9f3",
+   "tokenizer_config.json": "b11349aafa7cdc6a320767cf7ceb29ed82f7eda5d65e8e0819e76f0ce947bf27",
+   "config.json": "191e0af232104ed8b65258cf3fb2b842e288008baca7633c11b82a1ac7203aab"
+  },
+  "gemm_min_t_by_codec": {
+   "w4": 16,
+   "s16": 32
+  },
+  "gemm_slab_bytes": 419430400
+ },
+ "prompt": {
+  "tokens": 1017,
+  "sha256": "a471f99c8fc361567c72fb886831a004cf064d3494f667ad1786a385c41a41f2",
+  "chunk": 256
+ },
+ "families": {
+  "w4_mlp": 192,
+  "s16_body": 208,
+  "head": 1,
+  "head_codec": "s16"
+ },
+ "family_members": {
+  "w4_mlp": [
+   "down_proj",
+   "gate_proj",
+   "up_proj"
+  ],
+  "s16_body": [
+   "in_proj_qkv",
+   "in_proj_z",
+   "k_proj",
+   "o_proj",
+   "out_proj",
+   "q_proj",
+   "v_proj"
+  ],
+  "head": [
+   "lm_head"
+  ]
+ },
+ "family_definitions": {
+  "w4_mlp": "every W4-codec linear (all are MLP gate, up and down projections)",
+  "s16_body": "every S16-codec body linear (attention q, k, v, o; DeltaNet in_proj_qkv, in_proj_z, in_proj_b, in_proj_a, out_proj)",
+  "head": "the vocabulary head (final position only)",
+  "gdn_core": "the DeltaNet block minus in_proj_qkv, in_proj_z and out_proj: in_proj_b, in_proj_a, the convolution, the recurrence, the gated norm and the cache writes",
+  "gdn_recurrence": "gated_delta_update alone (the state carried unchanged)",
+  "attn_core": "the attention block minus q, k, v, o: q_norm, k_norm, rope, the score matmul and softmax, the output gate",
+  "norms": "every RMSNorm (input and post-attention layer norms, the attention q and k norms, the final norm)"
+ },
+ "marginal": {
+  "full": {
+   "median_s": 26.214325208449736,
+   "runs": [
+    26.254531792132184,
+    26.185145291034132,
+    26.20610258402303,
+    26.222547832876444
+   ],
+   "marginal_s": 0.0,
+   "marginal_pct_of_full": 0.0
+  },
+  "no_w4_mlp": {
+   "median_s": 13.63653060386423,
+   "runs": [
+    13.589237875072286,
+    13.646688416833058,
+    13.68064216687344,
+    13.626372790895402
+   ],
+   "marginal_s": 12.577794604585506,
+   "marginal_pct_of_full": 47.98061557781877
+  },
+  "no_s16_body": {
+   "median_s": 20.991864645970054,
+   "runs": [
+    21.029098958009854,
+    20.993047541938722,
+    20.92428058409132,
+    20.990681750001386
+   ],
+   "marginal_s": 5.222460562479682,
+   "marginal_pct_of_full": 19.922162866875215
+  },
+  "no_head": {
+   "median_s": 26.24964577087667,
+   "runs": [
+    26.23991349991411,
+    26.233948708046228,
+    26.259378041839227,
+    26.27014720789157
+   ],
+   "marginal_s": -0.035320562426932156,
+   "marginal_pct_of_full": -0.1347376373264309
+  },
+  "no_gdn_core": {
+   "median_s": 17.063702500076033,
+   "runs": [
+    17.070414083078504,
+    17.04280141601339,
+    17.07511950004846,
+    17.056990917073563
+   ],
+   "marginal_s": 9.150622708373703,
+   "marginal_pct_of_full": 34.90695501642803
+  },
+  "no_gdn_recurrence": {
+   "median_s": 17.180469354614615,
+   "runs": [
+    17.177053875057027,
+    17.194010166916996,
+    17.174014125019312,
+    17.183884834172204
+   ],
+   "marginal_s": 9.03385585383512,
+   "marginal_pct_of_full": 34.461523544856355
+  },
+  "no_attn_core": {
+   "median_s": 26.09605677088257,
+   "runs": [
+    26.048298165900633,
+    26.131475207861513,
+    26.068530583987013,
+    26.123582957778126
+   ],
+   "marginal_s": 0.11826843756716698,
+   "marginal_pct_of_full": 0.45115957258760636
+  },
+  "no_norms": {
+   "median_s": 26.177977374987677,
+   "runs": [
+    26.174307540990412,
+    26.21126916608773,
+    26.16847712500021,
+    26.18164720898494
+   ],
+   "marginal_s": 0.0363478334620595,
+   "marginal_pct_of_full": 0.13865637651562895
+  },
+  "no_all_linears": {
+   "median_s": 8.729167478973977,
+   "runs": [
+    8.737306708004326,
+    8.751723665976897,
+    8.719232417177409,
+    8.721028249943629
+   ],
+   "marginal_s": 17.48515772947576,
+   "marginal_pct_of_full": 66.70077368171094
+  }
+ },
+ "marginal_note": "marginal cost = full minus the path with the family replaced by a near-free stand-in; GPU work overlaps and dispatch is shared, so these do NOT add to the full time",
+ "additive_synchronous": {
+  "exclusive_s": {
+   "w4_mlp": 12.49468584312126,
+   "s16_body": 6.548330626450479,
+   "head": 0.039816084085032344,
+   "gdn_core": 8.565243204357103,
+   "attn_core": 0.21488405345007777,
+   "norms": 0.34243411337956786,
+   "embed_other": 0.0
+  },
+  "sum_s": 28.20539392484352,
+  "synchronised_wall_s": 28.58560779108666,
+  "unsynchronised_wall_s": 26.218411792069674,
+  "untimed_residual_s": 0.3802138662431389,
+  "serialisation_penalty_s": 2.3671959990169853,
+  "note": "inputs evaluated before each timed call, outputs after; the untimed residual (synchronised wall minus the sum) is the host-side embedding decode, the residual adds, the chunk-end evaluation and anything in no family; the serialisation penalty (synchronised minus unsynchronised wall) is what forcing every call costs over the pipelined path; neither is overlap alone"
+ },
+ "wall_s": 845.9807803749572
+}

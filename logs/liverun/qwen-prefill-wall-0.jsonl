@@ -1,0 +1,2 @@
+{"event": "armed", "run_id": "qwen-prefill-wall-0", "pid": 95683, "launch_commit": "f95670772f2d95ea5bbfff7ac098bea38a7c50e3", "launch_commit_short": "f9567077", "worktree_role": "main", "worktree_name": "llmopt", "cwd_relative": ".", "started_utc": "2026-10-24T03:58:32+00:00", "dirty_at_arm": false, "sentinel": ".git/liverun.lock"}
+{"event": "disarmed", "run_id": "qwen-prefill-wall-0", "pid": 95683, "rc": 0, "ended_utc": "2026-10-24T06:02:38+00:00", "sentinel": ".git/liverun.lock"}

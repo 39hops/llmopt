@@ -192,9 +192,11 @@ def run_prefill(eng, ids, chunk, matmul="gemm", decode=0, instrument=False, clea
                                "argmax_equal": int(lg2[0, -1].argmax()) == ids_top[0],
                                "note": "issue_s is graph construction plus the host-side embedding decode; complete_s is measured from the same start and includes it; the GPU-side time is complete minus issue"}
         del cache2
+        mx.clear_cache()
     else:
         del cache
-    mx.clear_cache()
+    if clear_pool:
+        mx.clear_cache()      # a warm-pool run (clear_pool False) leaves the pool for the next run
     return row
 
 
@@ -213,7 +215,7 @@ def stage_baseline(eng, receipt):
     prompts = {t: fixed_prompt(eng, f"{seed}-{t}", t) for t in (TARGETS if not SMOKE else [256])}
     receipt["prompts"] = {str(t): {"tokens": len(p), "sha256": sha(p)} for t, p in prompts.items()}
     first = min(prompts)
-    receipt["first_prefill_of_process"] = run_prefill(eng, prompts[first], 256)        # kernel compilation and first touch land here
+    receipt["first_prefill_of_process"] = run_prefill(eng, prompts[first], 256)        # any compilation or first-touch cost would land here (the first run measured none)
     receipt["warmup"] = run_prefill(eng, prompts[first], 256)
     order = (list(prompts) + list(prompts)[::-1]) * (1 if SMOKE else 2)
     receipt["runs"] = []
@@ -285,7 +287,7 @@ def stage_decomp(eng, receipt):
     receipt["families"] = {k: len(v) for k, v in fam.items()}
     receipt["families"]["head_codec"] = head_mod.res.codec
     receipt["family_members"] = {k: sorted({n for _, n, _ in v}) for k, v in fam.items()}
-    receipt["family_definitions"] = {"w4_mlp": "every W4-codec linear (all are MLP gate, up and down projections)", "s16_body": "every S16-codec body linear (attention q, k, v, o; DeltaNet in_proj_qkv, in_proj_z, in_proj_b, in_proj_a, out_proj)",
+    receipt["family_definitions"] = {"w4_mlp": "every W4-codec linear: " + ", ".join(receipt["family_members"]["w4_mlp"]), "s16_body": "every S16-codec body linear: " + ", ".join(receipt["family_members"]["s16_body"]) + " (in_proj_b and in_proj_a are plain linears and belong to the DeltaNet core)",
                                      "head": "the vocabulary head (final position only)", "gdn_core": "the DeltaNet block minus in_proj_qkv, in_proj_z and out_proj: in_proj_b, in_proj_a, the convolution, the recurrence, the gated norm and the cache writes",
                                      "gdn_recurrence": "gated_delta_update alone (the state carried unchanged)", "attn_core": "the attention block minus q, k, v, o: q_norm, k_norm, rope, the score matmul and softmax, the output gate",
                                      "norms": "every RMSNorm (input and post-attention layer norms, the attention q and k norms, the final norm)"}

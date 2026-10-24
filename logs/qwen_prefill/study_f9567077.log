@@ -1,0 +1,209 @@
+== tests 03:58:32 f9567077
+7 passed in 1.22s
+== baseline 03:58:34 f9567077
+[prefill] baseline 512 ttft 13.01s (39.4 tok/s) issue 0.23s complete 12.95s peak 11.94 GB decode16 1.62s
+[prefill] baseline 1024 ttft 26.19s (38.8 tok/s) issue 0.47s complete 26.18s peak 11.98 GB decode16 1.64s
+[prefill] baseline 2048 ttft 52.88s (38.8 tok/s) issue 1.05s complete 52.91s peak 12.19 GB decode16 1.66s
+[prefill] baseline 2048 ttft 52.59s (39.0 tok/s) issue 0.97s complete 52.51s peak 12.19 GB decode16 1.65s
+[prefill] baseline 1024 ttft 26.16s (38.9 tok/s) issue 0.49s complete 26.13s peak 11.98 GB decode16 1.63s
+[prefill] baseline 512 ttft 12.96s (39.5 tok/s) issue 0.26s complete 12.95s peak 11.94 GB decode16 1.62s
+[prefill] baseline 512 ttft 12.98s (39.4 tok/s) issue 0.22s complete 12.93s peak 11.94 GB decode16 1.63s
+[prefill] baseline 1024 ttft 26.12s (38.9 tok/s) issue 0.48s complete 26.12s peak 11.98 GB decode16 1.64s
+[prefill] baseline 2048 ttft 52.59s (39.0 tok/s) issue 0.98s complete 52.56s peak 12.19 GB decode16 1.65s
+[prefill] baseline 2048 ttft 52.63s (39.0 tok/s) issue 1.07s complete 52.61s peak 12.19 GB decode16 1.65s
+[prefill] baseline 1024 ttft 26.17s (38.9 tok/s) issue 0.47s complete 26.12s peak 11.98 GB decode16 1.64s
+[prefill] baseline 512 ttft 12.98s (39.4 tok/s) issue 0.23s complete 12.95s peak 11.94 GB decode16 1.62s
+[prefill] baseline 4096 ttft 104.95s (39.0 tok/s) peak 12.52 GB
+[prefill] baseline 4096 ttft 104.98s (39.0 tok/s) peak 12.52 GB
+[prefill] baseline wrote logs/qwen_prefill/baseline.json in 1318s
+== decomp 04:20:32 f9567077
+[prefill] decomp marginal full           26.255s
+[prefill] decomp marginal no_w4_mlp      13.589s
+[prefill] decomp marginal no_s16_body    21.029s
+[prefill] decomp marginal no_head        26.240s
+[prefill] decomp marginal no_gdn_core    17.070s
+[prefill] decomp marginal no_gdn_recurrence 17.177s
+[prefill] decomp marginal no_attn_core   26.048s
+[prefill] decomp marginal no_norms       26.174s
+[prefill] decomp marginal no_all_linears 8.737s
+[prefill] decomp marginal no_all_linears 8.752s
+[prefill] decomp marginal no_norms       26.211s
+[prefill] decomp marginal no_attn_core   26.131s
+[prefill] decomp marginal no_gdn_recurrence 17.194s
+[prefill] decomp marginal no_gdn_core    17.043s
+[prefill] decomp marginal no_head        26.234s
+[prefill] decomp marginal no_s16_body    20.993s
+[prefill] decomp marginal no_w4_mlp      13.647s
+[prefill] decomp marginal full           26.185s
+[prefill] decomp marginal full           26.206s
+[prefill] decomp marginal no_w4_mlp      13.681s
+[prefill] decomp marginal no_s16_body    20.924s
+[prefill] decomp marginal no_head        26.259s
+[prefill] decomp marginal no_gdn_core    17.075s
+[prefill] decomp marginal no_gdn_recurrence 17.174s
+[prefill] decomp marginal no_attn_core   26.069s
+[prefill] decomp marginal no_norms       26.168s
+[prefill] decomp marginal no_all_linears 8.719s
+[prefill] decomp marginal no_all_linears 8.721s
+[prefill] decomp marginal no_norms       26.182s
+[prefill] decomp marginal no_attn_core   26.124s
+[prefill] decomp marginal no_gdn_recurrence 17.184s
+[prefill] decomp marginal no_gdn_core    17.057s
+[prefill] decomp marginal no_head        26.270s
+[prefill] decomp marginal no_s16_body    20.991s
+[prefill] decomp marginal no_w4_mlp      13.626s
+[prefill] decomp marginal full           26.223s
+[prefill] decomp additive {"w4_mlp": 12.495, "s16_body": 6.548, "head": 0.04, "gdn_core": 8.565, "attn_core": 0.215, "norms": 0.342, "embed_other": 0.0} sum 28.21s sync wall 28.59s unsync 26.22s
+[prefill] decomp wrote logs/qwen_prefill/decomp.json in 846s
+== design 04:34:39 f9567077
+[prefill] design 512 prod_chunk256      ttft 12.98s peak 11.94 GB footprint 11.20 GB argmax 760
+[prefill] design 512 chunk128           ttft 14.99s peak 11.71 GB footprint 11.20 GB argmax 760
+[prefill] design 512 chunk128           ttft 15.04s peak 11.71 GB footprint 11.20 GB argmax 760
+[prefill] design 512 prod_chunk256      ttft 12.95s peak 11.94 GB footprint 11.20 GB argmax 760
+[prefill] design 512 prod_chunk256      ttft 12.93s peak 11.94 GB footprint 11.20 GB argmax 760
+[prefill] design 512 chunk128           ttft 15.02s peak 11.71 GB footprint 11.20 GB argmax 760
+[prefill] design 512 chunk128           ttft 15.03s peak 11.71 GB footprint 11.20 GB argmax 760
+[prefill] design 512 prod_chunk256      ttft 12.92s peak 11.94 GB footprint 11.20 GB argmax 760
+[prefill] design 512 prod_chunk256      ttft 12.92s peak 11.94 GB footprint 11.20 GB argmax 760
+[prefill] design 512 chunk512           ttft 12.21s peak 12.67 GB footprint 11.20 GB argmax 760
+[prefill] design 512 chunk512           ttft 12.25s peak 12.67 GB footprint 11.20 GB argmax 760
+[prefill] design 512 prod_chunk256      ttft 12.96s peak 11.94 GB footprint 11.20 GB argmax 760
+[prefill] design 512 prod_chunk256      ttft 12.95s peak 11.94 GB footprint 11.20 GB argmax 760
+[prefill] design 512 chunk512           ttft 12.21s peak 12.67 GB footprint 11.20 GB argmax 760
+[prefill] design 512 chunk512           ttft 12.19s peak 12.67 GB footprint 11.20 GB argmax 760
+[prefill] design 512 prod_chunk256      ttft 12.96s peak 11.94 GB footprint 11.20 GB argmax 760
+[prefill] design 512 prod_chunk256      ttft 12.99s peak 11.94 GB footprint 11.20 GB argmax 760
+[prefill] design 512 chunk1024          ttft 12.20s peak 12.67 GB footprint 11.20 GB argmax 760
+[prefill] design 512 chunk1024          ttft 12.24s peak 12.67 GB footprint 11.20 GB argmax 760
+[prefill] design 512 prod_chunk256      ttft 12.94s peak 11.94 GB footprint 11.20 GB argmax 760
+[prefill] design 512 prod_chunk256      ttft 12.96s peak 11.94 GB footprint 11.20 GB argmax 760
+[prefill] design 512 chunk1024          ttft 12.18s peak 12.67 GB footprint 11.20 GB argmax 760
+[prefill] design 512 chunk1024          ttft 12.18s peak 12.67 GB footprint 11.20 GB argmax 760
+[prefill] design 512 prod_chunk256      ttft 12.89s peak 11.94 GB footprint 11.20 GB argmax 760
+[prefill] design 1024 prod_chunk256      ttft 26.14s peak 11.98 GB footprint 11.27 GB argmax 760
+[prefill] design 1024 chunk128           ttft 30.02s peak 11.77 GB footprint 11.27 GB argmax 760
+[prefill] design 1024 chunk128           ttft 30.00s peak 11.77 GB footprint 11.27 GB argmax 760
+[prefill] design 1024 prod_chunk256      ttft 26.12s peak 11.98 GB footprint 11.27 GB argmax 760
+[prefill] design 1024 prod_chunk256      ttft 26.10s peak 11.98 GB footprint 11.27 GB argmax 760
+[prefill] design 1024 chunk128           ttft 30.03s peak 11.77 GB footprint 11.27 GB argmax 760
+[prefill] design 1024 chunk128           ttft 30.02s peak 11.77 GB footprint 11.27 GB argmax 760
+[prefill] design 1024 prod_chunk256      ttft 26.15s peak 11.98 GB footprint 11.27 GB argmax 760
+[prefill] design 1024 prod_chunk256      ttft 26.11s peak 11.98 GB footprint 11.27 GB argmax 760
+[prefill] design 1024 chunk512           ttft 24.81s peak 12.69 GB footprint 11.27 GB argmax 760
+[prefill] design 1024 chunk512           ttft 24.73s peak 12.69 GB footprint 11.27 GB argmax 760
+[prefill] design 1024 prod_chunk256      ttft 26.24s peak 11.98 GB footprint 11.27 GB argmax 760
+[prefill] design 1024 prod_chunk256      ttft 26.18s peak 11.98 GB footprint 11.27 GB argmax 760
+[prefill] design 1024 chunk512           ttft 24.83s peak 12.69 GB footprint 11.27 GB argmax 760
+[prefill] design 1024 chunk512           ttft 24.76s peak 12.69 GB footprint 11.27 GB argmax 760
+[prefill] design 1024 prod_chunk256      ttft 26.14s peak 11.98 GB footprint 11.27 GB argmax 760
+[prefill] design 1024 prod_chunk256      ttft 26.11s peak 11.98 GB footprint 11.27 GB argmax 760
+[prefill] design 1024 chunk1024          ttft 24.89s peak 15.13 GB footprint 11.27 GB argmax 760
+[prefill] design 1024 chunk1024          ttft 24.92s peak 15.13 GB footprint 11.27 GB argmax 760
+[prefill] design 1024 prod_chunk256      ttft 26.06s peak 11.98 GB footprint 11.27 GB argmax 760
+[prefill] design 1024 prod_chunk256      ttft 26.11s peak 11.98 GB footprint 11.27 GB argmax 760
+[prefill] design 1024 chunk1024          ttft 24.88s peak 15.13 GB footprint 11.27 GB argmax 760
+[prefill] design 1024 chunk1024          ttft 24.99s peak 15.13 GB footprint 11.27 GB argmax 760
+[prefill] design 1024 prod_chunk256      ttft 26.13s peak 11.98 GB footprint 11.27 GB argmax 760
+[prefill] design 2048 prod_chunk256      ttft 52.50s peak 12.19 GB footprint 11.43 GB argmax 760
+[prefill] design 2048 chunk128           ttft 60.81s peak 11.93 GB footprint 11.44 GB argmax 760
+[prefill] design 2048 chunk128           ttft 60.83s peak 11.93 GB footprint 11.09 GB argmax 760
+[prefill] design 2048 prod_chunk256      ttft 52.59s peak 12.19 GB footprint 11.43 GB argmax 760
+[prefill] design 2048 prod_chunk256      ttft 52.49s peak 12.19 GB footprint 11.44 GB argmax 760
+[prefill] design 2048 chunk128           ttft 60.78s peak 11.93 GB footprint 11.44 GB argmax 760
+[prefill] design 2048 chunk128           ttft 60.80s peak 11.93 GB footprint 11.44 GB argmax 760
+[prefill] design 2048 prod_chunk256      ttft 52.54s peak 12.19 GB footprint 11.43 GB argmax 760
+[prefill] design 2048 prod_chunk256      ttft 52.57s peak 12.19 GB footprint 11.43 GB argmax 760
+[prefill] design 2048 chunk512           ttft 49.54s peak 12.97 GB footprint 11.32 GB argmax 760
+[prefill] design 2048 chunk512           ttft 49.59s peak 12.97 GB footprint 11.32 GB argmax 760
+[prefill] design 2048 prod_chunk256      ttft 52.50s peak 12.19 GB footprint 11.44 GB argmax 760
+[prefill] design 2048 prod_chunk256      ttft 52.54s peak 12.19 GB footprint 11.43 GB argmax 760
+[prefill] design 2048 chunk512           ttft 49.47s peak 12.97 GB footprint 11.32 GB argmax 760
+[prefill] design 2048 chunk512           ttft 49.58s peak 12.97 GB footprint 11.32 GB argmax 760
+[prefill] design 2048 prod_chunk256      ttft 52.59s peak 12.19 GB footprint 11.43 GB argmax 760
+[prefill] design 2048 prod_chunk256      ttft 52.54s peak 12.19 GB footprint 11.43 GB argmax 760
+[prefill] design 2048 chunk1024          ttft 49.76s peak 15.32 GB footprint 11.44 GB argmax 760
+[prefill] design 2048 chunk1024          ttft 49.83s peak 15.32 GB footprint 11.44 GB argmax 760
+[prefill] design 2048 prod_chunk256      ttft 52.61s peak 12.19 GB footprint 11.43 GB argmax 760
+[prefill] design 2048 prod_chunk256      ttft 52.51s peak 12.19 GB footprint 11.43 GB argmax 760
+[prefill] design 2048 chunk1024          ttft 50.04s peak 15.32 GB footprint 11.44 GB argmax 760
+[prefill] design 2048 chunk1024          ttft 49.87s peak 15.32 GB footprint 11.44 GB argmax 760
+[prefill] design 2048 prod_chunk256      ttft 52.53s peak 12.19 GB footprint 11.32 GB argmax 760
+[prefill] microbench T=256 matmul fp32 11.6 ms fp16 10.3 ms (decode alone 3.6) rel err 3.82e-04
+[prefill] microbench T=512 matmul fp32 22.9 ms fp16 20.3 ms (decode alone 3.6) rel err 3.51e-04
+[prefill] microbench T=1024 matmul fp32 45.2 ms fp16 40.1 ms (decode alone 3.6) rel err 3.52e-04
+[prefill] design wrote logs/qwen_prefill/design.json in 2717s
+== heldout 05:19:56 f9567077
+[prefill] heldout 512 PROD      ttft 13.26s e2e 14.88s footprint 11.20 GB
+[prefill] heldout 512 CAND512   ttft 12.64s e2e 14.26s footprint 11.20 GB
+[prefill] heldout 512 CAND512   ttft 12.57s e2e 14.19s footprint 11.20 GB
+[prefill] heldout 512 PROD      ttft 13.22s e2e 14.84s footprint 11.20 GB
+[prefill] heldout 512 PROD      ttft 13.24s e2e 14.86s footprint 11.20 GB
+[prefill] heldout 512 CAND512   ttft 12.68s e2e 14.29s footprint 11.20 GB
+[prefill] heldout 512 CAND512   ttft 12.61s e2e 14.24s footprint 11.20 GB
+[prefill] heldout 512 PROD      ttft 13.26s e2e 14.89s footprint 11.20 GB
+[prefill] heldout 512 PROD      ttft 13.27s e2e 14.89s footprint 11.20 GB
+[prefill] heldout 512 CAND512   ttft 12.64s e2e 14.26s footprint 11.20 GB
+[prefill] heldout 512 CAND512   ttft 12.58s e2e 14.20s footprint 11.20 GB
+[prefill] heldout 512 PROD      ttft 13.18s e2e 14.80s footprint 11.20 GB
+[prefill] heldout 512 PROD      ttft 13.22s e2e 14.84s footprint 11.20 GB
+[prefill] heldout 512 CAND1024  ttft 12.59s e2e 14.21s footprint 11.20 GB
+[prefill] heldout 512 CAND1024  ttft 12.57s e2e 14.18s footprint 11.20 GB
+[prefill] heldout 512 PROD      ttft 13.23s e2e 14.85s footprint 11.20 GB
+[prefill] heldout 512 PROD      ttft 13.18s e2e 14.81s footprint 11.20 GB
+[prefill] heldout 512 CAND1024  ttft 12.60s e2e 14.25s footprint 11.20 GB
+[prefill] heldout 512 CAND1024  ttft 12.59s e2e 14.21s footprint 11.20 GB
+[prefill] heldout 512 PROD      ttft 13.24s e2e 14.86s footprint 11.20 GB
+[prefill] heldout 512 PROD      ttft 13.22s e2e 14.83s footprint 11.20 GB
+[prefill] heldout 512 CAND1024  ttft 12.62s e2e 14.24s footprint 11.20 GB
+[prefill] heldout 512 CAND1024  ttft 12.60s e2e 14.21s footprint 11.20 GB
+[prefill] heldout 512 PROD      ttft 13.19s e2e 14.80s footprint 11.20 GB
+[prefill] heldout 1024 PROD      ttft 26.90s e2e 28.52s footprint 11.30 GB
+[prefill] heldout 1024 CAND512   ttft 25.56s e2e 27.21s footprint 11.30 GB
+[prefill] heldout 1024 CAND512   ttft 25.48s e2e 27.14s footprint 11.30 GB
+[prefill] heldout 1024 PROD      ttft 26.86s e2e 28.51s footprint 11.30 GB
+[prefill] heldout 1024 PROD      ttft 26.88s e2e 28.53s footprint 11.30 GB
+[prefill] heldout 1024 CAND512   ttft 25.53s e2e 27.17s footprint 11.30 GB
+[prefill] heldout 1024 CAND512   ttft 25.50s e2e 27.12s footprint 11.30 GB
+[prefill] heldout 1024 PROD      ttft 26.86s e2e 28.48s footprint 11.30 GB
+[prefill] heldout 1024 PROD      ttft 26.93s e2e 28.58s footprint 11.30 GB
+[prefill] heldout 1024 CAND512   ttft 25.48s e2e 27.10s footprint 11.30 GB
+[prefill] heldout 1024 CAND512   ttft 25.46s e2e 27.12s footprint 11.30 GB
+[prefill] heldout 1024 PROD      ttft 26.86s e2e 28.48s footprint 11.30 GB
+[prefill] heldout 1024 PROD      ttft 26.89s e2e 28.51s footprint 11.30 GB
+[prefill] heldout 1024 CAND1024  ttft 25.66s e2e 27.28s footprint 11.30 GB
+[prefill] heldout 1024 CAND1024  ttft 25.61s e2e 27.23s footprint 11.30 GB
+[prefill] heldout 1024 PROD      ttft 26.88s e2e 28.52s footprint 11.30 GB
+[prefill] heldout 1024 PROD      ttft 26.88s e2e 28.50s footprint 11.30 GB
+[prefill] heldout 1024 CAND1024  ttft 25.60s e2e 27.22s footprint 11.30 GB
+[prefill] heldout 1024 CAND1024  ttft 25.53s e2e 27.15s footprint 11.30 GB
+[prefill] heldout 1024 PROD      ttft 26.85s e2e 28.49s footprint 11.30 GB
+[prefill] heldout 1024 PROD      ttft 26.84s e2e 28.50s footprint 11.30 GB
+[prefill] heldout 1024 CAND1024  ttft 25.56s e2e 27.18s footprint 11.30 GB
+[prefill] heldout 1024 CAND1024  ttft 25.60s e2e 27.23s footprint 11.30 GB
+[prefill] heldout 1024 PROD      ttft 26.85s e2e 28.51s footprint 11.30 GB
+[prefill] heldout 2048 PROD      ttft 52.37s e2e 54.04s footprint 11.40 GB
+[prefill] heldout 2048 CAND512   ttft 49.42s e2e 51.08s footprint 11.40 GB
+[prefill] heldout 2048 CAND512   ttft 49.46s e2e 51.12s footprint 11.40 GB
+[prefill] heldout 2048 PROD      ttft 52.32s e2e 53.98s footprint 11.40 GB
+[prefill] heldout 2048 PROD      ttft 52.27s e2e 53.93s footprint 11.40 GB
+[prefill] heldout 2048 CAND512   ttft 49.33s e2e 50.98s footprint 11.40 GB
+[prefill] heldout 2048 CAND512   ttft 49.36s e2e 51.01s footprint 11.40 GB
+[prefill] heldout 2048 PROD      ttft 52.29s e2e 53.95s footprint 11.40 GB
+[prefill] heldout 2048 PROD      ttft 52.39s e2e 54.05s footprint 11.40 GB
+[prefill] heldout 2048 CAND512   ttft 49.46s e2e 51.11s footprint 11.40 GB
+[prefill] heldout 2048 CAND512   ttft 49.47s e2e 51.13s footprint 11.40 GB
+[prefill] heldout 2048 PROD      ttft 52.30s e2e 53.96s footprint 11.40 GB
+[prefill] heldout 2048 PROD      ttft 52.29s e2e 53.96s footprint 11.40 GB
+[prefill] heldout 2048 CAND1024  ttft 50.14s e2e 51.79s footprint 11.40 GB
+[prefill] heldout 2048 CAND1024  ttft 50.27s e2e 51.93s footprint 11.40 GB
+[prefill] heldout 2048 PROD      ttft 52.33s e2e 53.99s footprint 11.40 GB
+[prefill] heldout 2048 PROD      ttft 52.23s e2e 53.89s footprint 11.40 GB
+[prefill] heldout 2048 CAND1024  ttft 50.34s e2e 51.99s footprint 11.40 GB
+[prefill] heldout 2048 CAND1024  ttft 49.99s e2e 51.64s footprint 11.40 GB
+[prefill] heldout 2048 PROD      ttft 52.33s e2e 53.99s footprint 11.40 GB
+[prefill] heldout 2048 PROD      ttft 52.32s e2e 53.98s footprint 11.40 GB
+[prefill] heldout 2048 CAND1024  ttft 50.46s e2e 52.11s footprint 11.40 GB
+[prefill] heldout 2048 CAND1024  ttft 50.38s e2e 52.03s footprint 11.40 GB
+[prefill] heldout 2048 PROD      ttft 52.26s e2e 53.91s footprint 11.40 GB
+[prefill] heldout wrote logs/qwen_prefill/heldout.json in 2561s
+== DONE 06:02:38

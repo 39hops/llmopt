@@ -1796,6 +1796,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/liverun/qwen-prefill-wall-0.jsonl": {
+   "bytes": 488,
+   "exists": true,
+   "sha256": "5110304271ee6752bd893932b2cb3f782eee16e8c148d8c634aae36e0ac7ca9f",
+   "source": "results",
+   "tracked": true
+  },
   "logs/liverun/qwen-s16-default-0.jsonl": {
    "bytes": 486,
    "exists": true,
@@ -5199,28 +5206,53 @@
    "tracked": true
   },
   "logs/qwen_prefill/adjudicate_1/adjudication.txt": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 641,
+   "exists": true,
+   "sha256": "5358443cc9dcc14721b743320f1be280885e1a09b104ea822140d1aede283c27",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_prefill/adjudicate_1/observations.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 8144,
+   "exists": true,
+   "sha256": "b781d470bdf9328b6e85125e94fe9186656ad4e45f06b36a7235922a936116bd",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_prefill/baseline.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 42350,
+   "exists": true,
+   "sha256": "28cd38de30144d3a3806c737e27ad3c73dd0efa45863c216b76419571f234505",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_prefill/decomp.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 5347,
+   "exists": true,
+   "sha256": "f8fdce94db85a43e4b62fb9e7a9a690406573c4d0c34748dda121a34a20e3b6c",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_prefill/design.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 105847,
+   "exists": true,
+   "sha256": "8c40c82ece0262fba51b6720d4ef0ec0b0d892ea5d4da795ac4d40a85af857d8",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_prefill/heldout.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 100301,
+   "exists": true,
+   "sha256": "2aa74765c4caa5851c8f437772cf9378fa6abf2d1d6e8d18838059386f6dddd1",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwen_prefill/study_f9567077.log": {
+   "bytes": 16418,
+   "exists": true,
+   "sha256": "eca4904dbe334454a75dd9a602054544ba7a7072a7c17bae97f012d7a804a5c4",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_release/adjudicate_1/adjudication.txt": {
    "bytes": 245,
