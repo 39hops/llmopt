@@ -1,0 +1,451 @@
+{
+ "note": "Mechanical projection of logs/qwen_battery/results_v3_A.json, logs/qwen_battery/results_v3_B.json, logs/qwen_battery/results_v3_C.json, logs/qwen_serve/lowchat_v1.json; adapter scratch/qwen_release_obs.py; every battery verdict recomputed with the committed validators",
+ "registration_sha256": "1db7eb014b25e41afd8e658bab86ad5fc609bdd01ff63031d61bce3e146c16a4",
+ "measurement_valid": true,
+ "arms": {
+  "A": {
+   "admissible": true,
+   "reason": "no thinking, 384, on v3"
+  },
+  "B": {
+   "admissible": true,
+   "reason": "no thinking, 768, on v3"
+  },
+  "C": {
+   "admissible": true,
+   "reason": "thinking low, 768, on v3"
+  },
+  "CHAT-NOTHINK": {
+   "admissible": true,
+   "reason": "the four conversations, thinking off, 768"
+  },
+  "CHAT-LOW": {
+   "admissible": true,
+   "reason": "the four conversations, thinking low, 768, incremental and replay"
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 10,
+   "metric": "arith_json_gain_c_minus_b",
+   "population": "tasks:24",
+   "aggregation": "count_difference",
+   "unit": "tasks",
+   "provenance": "A 11/10/23 total 44; B 12/10/23 total 45; C 22/11/23 total 56 (arith+json/code/other)"
+  },
+  "2": {
+   "value": -1,
+   "metric": "code_loss_b_minus_c",
+   "population": "tasks:12",
+   "aggregation": "count_difference",
+   "unit": "tasks",
+   "provenance": "A 11/10/23 total 44; B 12/10/23 total 45; C 22/11/23 total 56 (arith+json/code/other)"
+  },
+  "3": {
+   "value": 0,
+   "metric": "other_loss_b_minus_c",
+   "population": "tasks:24",
+   "aggregation": "count_difference",
+   "unit": "tasks",
+   "provenance": "A 11/10/23 total 44; B 12/10/23 total 45; C 22/11/23 total 56 (arith+json/code/other)"
+  },
+  "4": {
+   "value": 3,
+   "metric": "unterminated_turns_c",
+   "population": "turns:68",
+   "aggregation": "count",
+   "unit": "turns",
+   "provenance": "by kind {'arith': 1, 'code': 1, 'instruct': 1}"
+  },
+  "4:cat": {
+   "value": 1,
+   "metric": "unterminated_max_per_kind_c",
+   "population": "kinds:6",
+   "aggregation": "max_over_kinds",
+   "unit": "turns"
+  },
+  "5": {
+   "value": 12345,
+   "metric": "generated_tokens_c",
+   "population": "turns:68",
+   "aggregation": "sum",
+   "unit": "tokens",
+   "provenance": "A 2741 B 2925; ratios C/A 4.50 C/B 4.22"
+  },
+  "5:time": {
+   "value": 1470.3,
+   "metric": "task_time_s_c",
+   "population": "turns:68",
+   "aggregation": "sum",
+   "unit": "s",
+   "provenance": "A 473.2 B 485.2 s; ratios C/A 3.11 C/B 3.03"
+  },
+  "6": {
+   "value": 0,
+   "metric": "longest_empty_run_low",
+   "population": "conversations:4",
+   "aggregation": "max_over_conversations",
+   "unit": "turns",
+   "provenance": "low empty turns []; nothink longest run 3 empty turns [['travel', 5], ['travel', 6], ['travel', 7]]"
+  },
+  "7": {
+   "value": 32,
+   "metric": "addressed_turns_low",
+   "population": "chat-turns:32",
+   "aggregation": "count",
+   "unit": "turns",
+   "provenance": "low unaddressed []; nothink addressed 26 of 32"
+  },
+  "8": {
+   "value": 0,
+   "metric": "travel_empty_turns_low",
+   "population": "travel-turns:8",
+   "aggregation": "count",
+   "unit": "turns",
+   "provenance": "nothink travel empty turns 3"
+  },
+  "9": {
+   "value": 1,
+   "metric": "later_fallbacks_low",
+   "population": "chat-later-turns:28",
+   "aggregation": "count",
+   "unit": "turns",
+   "provenance": "fallbacks after a closed previous turn; fallbacks after a budget-cut turn (by template design) 0; all later fallbacks 1"
+  },
+  "9:replay": {
+   "value": 0,
+   "metric": "replay_token_mismatch_turns_low",
+   "population": "chat-turns:32",
+   "aggregation": "count",
+   "unit": "turns"
+  },
+  "arith_json_gain_c_minus_b": {
+   "value": 10,
+   "metric": "arith_json_gain_c_minus_b",
+   "population": "tasks:24",
+   "aggregation": "count_difference",
+   "unit": "tasks",
+   "provenance": "A 11/10/23 total 44; B 12/10/23 total 45; C 22/11/23 total 56 (arith+json/code/other)"
+  }
+ },
+ "diagnostics": {
+  "A": {
+   "passes": 44,
+   "by_kind": {
+    "arith": {
+     "fail": 7,
+     "pass": 5
+    },
+    "json": {
+     "pass": 6,
+     "fail": 6
+    },
+    "code": {
+     "pass": 10,
+     "fail": 2
+    },
+    "instruct": {
+     "pass": 9,
+     "fail": 1
+    },
+    "twoturn": {
+     "pass": 8
+    },
+    "degen": {
+     "pass": 6
+    }
+   },
+   "arith_json": 11,
+   "code": 10,
+   "other": 23,
+   "unterminated_turns": 0,
+   "unterminated_by_kind": {},
+   "final_answer_present": 60,
+   "generated_tokens": 2741,
+   "reasoning_tokens": 0,
+   "stop_reasons": {
+    "stop_token": 67,
+    "max_tokens": 1
+   },
+   "first_token_s_median": 2.56,
+   "task_time_s": 473.2,
+   "wall_s": 473.7,
+   "peak_bytes_max": 11719116696,
+   "context_refusals": 0,
+   "rows_changed_by_recompute": [],
+   "evaluator_errors": []
+  },
+  "B": {
+   "passes": 45,
+   "by_kind": {
+    "arith": {
+     "fail": 6,
+     "pass": 6
+    },
+    "json": {
+     "pass": 6,
+     "fail": 6
+    },
+    "code": {
+     "pass": 10,
+     "fail": 2
+    },
+    "instruct": {
+     "pass": 9,
+     "fail": 1
+    },
+    "twoturn": {
+     "pass": 8
+    },
+    "degen": {
+     "pass": 6
+    }
+   },
+   "arith_json": 12,
+   "code": 10,
+   "other": 23,
+   "unterminated_turns": 0,
+   "unterminated_by_kind": {},
+   "final_answer_present": 60,
+   "generated_tokens": 2925,
+   "reasoning_tokens": 0,
+   "stop_reasons": {
+    "stop_token": 68
+   },
+   "first_token_s_median": 2.51,
+   "task_time_s": 485.2,
+   "wall_s": 485.7,
+   "peak_bytes_max": 11719116696,
+   "context_refusals": 0,
+   "rows_changed_by_recompute": [],
+   "evaluator_errors": []
+  },
+  "C": {
+   "passes": 56,
+   "by_kind": {
+    "arith": {
+     "fail": 1,
+     "pass": 11
+    },
+    "json": {
+     "pass": 11,
+     "fail": 1
+    },
+    "code": {
+     "pass": 11,
+     "fail": 1
+    },
+    "instruct": {
+     "pass": 9,
+     "fail": 1
+    },
+    "twoturn": {
+     "pass": 8
+    },
+    "degen": {
+     "pass": 6
+    }
+   },
+   "arith_json": 22,
+   "code": 11,
+   "other": 23,
+   "unterminated_turns": 3,
+   "unterminated_by_kind": {
+    "arith": 1,
+    "code": 1,
+    "instruct": 1
+   },
+   "final_answer_present": 57,
+   "generated_tokens": 12345,
+   "reasoning_tokens": 10879,
+   "stop_reasons": {
+    "stop_token": 66,
+    "max_tokens": 2
+   },
+   "first_token_s_median": 3.4,
+   "task_time_s": 1470.3,
+   "wall_s": 1470.7,
+   "peak_bytes_max": 11832215824,
+   "context_refusals": 0,
+   "rows_changed_by_recompute": [],
+   "evaluator_errors": []
+  },
+  "paired": {
+   "arith-01": "f > f > f",
+   "arith-02": "f > f > p",
+   "arith-03": "p > p > p",
+   "arith-04": "p > p > p",
+   "arith-05": "p > p > p",
+   "arith-06": "f > f > p",
+   "arith-07": "p > p > p",
+   "arith-08": "f > f > p",
+   "arith-09": "p > p > p",
+   "arith-10": "f > p > p",
+   "arith-11": "f > f > p",
+   "arith-12": "f > f > p",
+   "json-01": "p > p > p",
+   "json-02": "p > p > p",
+   "json-03": "f > f > f",
+   "json-04": "f > f > p",
+   "json-05": "p > p > p",
+   "json-06": "f > f > p",
+   "json-07": "f > f > p",
+   "json-08": "p > p > p",
+   "json-09": "p > p > p",
+   "json-10": "f > f > p",
+   "json-11": "f > f > p",
+   "json-12": "p > p > p",
+   "code-01": "p > p > p",
+   "code-02": "p > p > p",
+   "code-03": "p > p > p",
+   "code-04": "p > p > p",
+   "code-05": "p > p > p",
+   "code-06": "p > p > p",
+   "code-07": "p > p > p",
+   "code-08": "f > f > p",
+   "code-09": "f > f > f",
+   "code-10": "p > p > p",
+   "code-11": "p > p > p",
+   "code-12": "p > p > p",
+   "instruct-01": "p > p > p",
+   "instruct-02": "p > p > p",
+   "instruct-03": "p > p > p",
+   "instruct-04": "p > p > p",
+   "instruct-05": "p > p > p",
+   "instruct-06": "p > p > p",
+   "instruct-07": "f > f > f",
+   "instruct-08": "p > p > p",
+   "instruct-09": "p > p > p",
+   "instruct-10": "p > p > p",
+   "twoturn-01": "p > p > p",
+   "twoturn-02": "p > p > p",
+   "twoturn-03": "p > p > p",
+   "twoturn-04": "p > p > p",
+   "twoturn-05": "p > p > p",
+   "twoturn-06": "p > p > p",
+   "twoturn-07": "p > p > p",
+   "twoturn-08": "p > p > p",
+   "degen-01": "p > p > p",
+   "degen-02": "p > p > p",
+   "degen-03": "p > p > p",
+   "degen-04": "p > p > p",
+   "degen-05": "p > p > p",
+   "degen-06": "p > p > p"
+  },
+  "paired_changes": {
+   "arith-02": "f > f > p",
+   "arith-06": "f > f > p",
+   "arith-08": "f > f > p",
+   "arith-10": "f > p > p",
+   "arith-11": "f > f > p",
+   "arith-12": "f > f > p",
+   "json-04": "f > f > p",
+   "json-06": "f > f > p",
+   "json-07": "f > f > p",
+   "json-10": "f > f > p",
+   "json-11": "f > f > p",
+   "code-08": "f > f > p"
+  },
+  "chat": {
+   "NOTHINK": {
+    "turns": 32,
+    "empty_turns": [
+     [
+      "travel",
+      5
+     ],
+     [
+      "travel",
+      6
+     ],
+     [
+      "travel",
+      7
+     ]
+    ],
+    "longest_empty_run": 3,
+    "addressed_turns": 26,
+    "unaddressed": [
+     [
+      "travel",
+      3,
+      "1 lines, wanted 5"
+     ],
+     [
+      "travel",
+      4,
+      "1 words, min 10"
+     ],
+     [
+      "travel",
+      5,
+      "empty reply"
+     ],
+     [
+      "travel",
+      6,
+      "empty reply"
+     ],
+     [
+      "travel",
+      7,
+      "empty reply"
+     ],
+     [
+      "planning",
+      7,
+      "1 lines, wanted 3"
+     ]
+    ],
+    "unterminated_turns": 0,
+    "travel_empty_turns": 3,
+    "generated_tokens": 533,
+    "total_s": 122.9,
+    "first_token_s_median": 2.1831750420387834,
+    "later_fallbacks": 0,
+    "later_fallbacks_after_closed": 0,
+    "later_fallbacks_after_cut": 0,
+    "offset_mismatch_turns": 0,
+    "peak_bytes_max": 11715004924,
+    "active_bytes_last": [
+     9057682120,
+     9058288300,
+     9055060652,
+     9025176252
+    ],
+    "stop_tokens": {
+     "248046": 32
+    },
+    "min_stop_margin_on_empty": 2.2916641235351562
+   },
+   "LOW": {
+    "turns": 32,
+    "empty_turns": [],
+    "longest_empty_run": 0,
+    "addressed_turns": 32,
+    "unaddressed": [],
+    "unterminated_turns": 0,
+    "travel_empty_turns": 0,
+    "generated_tokens": 5202,
+    "total_s": 641.8,
+    "first_token_s_median": 2.1406574160791934,
+    "later_fallbacks": 1,
+    "later_fallbacks_after_closed": 1,
+    "later_fallbacks_after_cut": 0,
+    "offset_mismatch_turns": 0,
+    "peak_bytes_max": 12569535044,
+    "active_bytes_last": [
+     9360753324,
+     9260057260,
+     9157296812,
+     9058206388
+    ],
+    "stop_tokens": {
+     "248046": 32
+    },
+    "min_stop_margin_on_empty": null,
+    "replay_token_mismatch_turns": 0
+   }
+  }
+ }
+}

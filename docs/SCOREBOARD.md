@@ -1,8 +1,9 @@
 # SCOREBOARD — generated sample of index-curated verdicts
 
-*Generated from docs/results-index.jsonl by scripts/gen_scoreboard.py. 92 live of 100 entries carrying a hand-curated `verdict` field, out of 1558 ledger entries; the curated field reaches RESULTS line 85010. This is a PARTIAL view, not current truth: docs/FINDINGS.md is the curated public layer, and every entry resolves through docs/RESULTS.md. Full chains: scripts/results_query.py --chain. Never hand-edit this file.*
+*Generated from docs/results-index.jsonl by scripts/gen_scoreboard.py. 93 live of 101 entries carrying a hand-curated `verdict` field, out of 1559 ledger entries; the curated field reaches RESULTS line 85195. This is a PARTIAL view, not current truth: docs/FINDINGS.md is the curated public layer, and every entry resolves through docs/RESULTS.md. Full chains: scripts/results_query.py --chain. Never hand-edit this file.*
 
 ## QWEN-EFFORT-AND-DEEPCHAT
+- **2026-10-23** HOLD on bar 9 (one benign re-tokenisation fallback); quality gate met with room: low 56 of 60 against 45 and 44, arithmetic plus structured 22 of 24 against 12, code 11 against 10; conversations 32 of 32 addressed, no empty turn; defaults unchanged  *(RESULTS L85195)*
 - **2026-10-23** DIAGNOSED: every bar FIRE; the empty completions are decided <|im_end|> stops (2.1 to 10.0 logits) after shrinking replies, mechanism 1 with 5; template, accounting and the two Metal paths excluded; no serving defect  *(RESULTS L85010)*
 - **2026-10-23** GO on low: reasoning_effort low at 768 fires all five bars (40 of 46, arith+JSON 15 of 18, code 7 of 8, 0.54 of xhigh tokens); medium misses code and cost; low RECOMMENDED as default, not flipped  *(RESULTS L84903)*
 

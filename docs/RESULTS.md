@@ -85191,3 +85191,150 @@ JSON (a FIRE on all nine expected, bar 1 or bar 7 the likeliest HOLD;
 bar 1 needs headroom and cannot fire if B already passes 20 of 24; B
 expected to equal A except where the 384 budget cut a reply; no
 low-effort conversation has been run before this).
+
+## VERDICT QWEN-LOW-RELEASE-0: HOLD on bar 9, eight of nine bars FIRE (adjudicated against docs/preregs/qwen-low-release-0.json; logs/qwen_release/adjudicate_1/observations.json and logs/qwen_release/adjudicate_1/adjudication.txt): on the fresh 60-task v3 collection the low-effort candidate passes 56 of 60 against 45 for the equal-budget no-thinking control and 44 for the 384-token baseline; arithmetic plus structured data 22 of 24 against 12 and 11 (a gain of 10, bar at 5); code 11 of 12 against 10 (a gain, bar allows a loss of 1); the other kinds 23 of 24 in all three arms; 3 unclosed think blocks of 68 turns in three different kinds; 12,345 generated tokens and 1,470 s (4.2x and 3.0x the control, inside the registered 14,000 and 1,700); the four conversations under low: no empty completion in 32 turns (the no-thinking control reproduced its three consecutive empties on the travel transcript), 32 of 32 turns addressed (control 26), the travel transcript 8 of 8, replay token-equal on all 32 turns, and ONE later turn that fell back to replay after a closed turn (planning turn 7) because re-tokenising the stored reply merged two tokens the model had emitted apart (a non-standard token split in the model's own output, not the template's trim), a safe fallback that the registered bar nevertheless counts; the registered rule (all nine FIRE) therefore HOLDS the default; the existing defaults stay; no other budget or effort was tried (2026-10-23, Mac, commit f235306c for the receipts)
+
+The adjudicator's lines, verbatim:
+  BAR 1 ARITH-JSON-GAIN: FIRE
+  BAR 2 CODE-LOSS: FIRE
+  BAR 3 OTHER-LOSS: FIRE
+  BAR 4 TERMINATION: FIRE
+  BAR 5 COST: FIRE
+  BAR 6 NO-COLLAPSE: FIRE
+  BAR 7 ADDRESSED: FIRE
+  BAR 8 TRAVEL-REGRESSION: FIRE
+  BAR 9 CHAT-ACCOUNTING: NO-FIRE
+  REFUTED-IF: NOT-REFUTED
+The structured predicate encodes bar 1 only (NOT-REFUTED: the quality
+gate's question is answered yes); the prose rule governs, and it holds
+the promotion on bar 9.
+
+The receipts' rules block is the frozen collection's (thinking off,
+384) copied unchanged into every arm as the runner documents; the
+execution_config block governs what each arm ran. Receipts: logs/qwen_battery/results_v3_A.json,
+logs/qwen_battery/results_v3_B.json, logs/qwen_battery/results_v3_C.json
+(scratch/qwen_battery_run.py on scratch/evalsets/qwen_battery_v3.json,
+sha256 f45d1f6e..., execution configurations v3-frozen, v3-nothink-768
+and v3-think-768-low recorded apart from the frozen rules; a fresh
+replay session per task; greedy; the same weights, kernel generation 5,
+tokenizer, template, context cap and serving settings),
+logs/qwen_serve/lowchat_v1.json (scratch/qwen_lowchat.py), all under
+liverun qwen-low-release-0 at f235306c on a clean tree (record
+logs/liverun/qwen-low-release-0.jsonl; log logs/qwen_serve/
+lowrelease_f235306c.log; the template and live tests 12 passed first);
+observations by scratch/qwen_release_obs.py (every battery verdict
+recomputed from the stored replies with the committed validators, code
+re-run in the sandbox: no row changed in any arm, no evaluator error, no
+hold, no context refusal; one artifact chain and one tokenizer across
+the four receipts). An Opus receipt audit ran before this booking: every battery turn (204)
+and conversation turn (96) re-rendered and re-scored, the adjudication
+reproduced in memory, A and B identical on 67 of 68 generated id
+sequences with arith-10 diverging only after A's 384th token. Its two
+repairs land at this commit without touching any verdict: the thinking
+scorer's reason string names the stop reason instead of assuming a
+budget cut, and the conversation driver records its configurations in
+the receipt. The smoke receipts named in the freeze are force-added
+with the rest; the freeze headline's "before any candidate output" is
+qualified by its own body (six smoke rows, read to qualify the
+drivers, id-identical to arm A's matching rows).
+
+Quality gate (A no thinking 384; B no thinking 768; C thinking low 768):
+  arithmetic     5, 6, 11 of 12
+  structured     6, 6, 11 of 12
+  code          10, 10, 11 of 12
+  instructions   9, 9, 9 of 10
+  two-turn       8, 8, 8 of 8
+  termination    6, 6, 6 of 6
+  total         44, 45, 56 of 60
+Paired task outcomes (A > B > C), the rows that change: arith-02, -06,
+-08, -11, -12, json-04, -06, -07, -10, -11 and code-08 f > f > p (eleven
+tasks the two no-thinking arms both missed and low passes); arith-10
+f > p > p (the one A-to-B change: the 384 budget cut A's working mid-
+derivation, at 768 B finishes it, so B is A plus one recovered reply and
+otherwise identical, as registered). The eleven recovered tasks are
+exactly the multi-operand families (a three-term sum, a difference of
+products, a digit sum, a product modulo, a mean and a lcm; the readings'
+means, a best average, an inventory count and a total) plus the top-k
+word-frequency function whose alphabetical tie rule the no-thinking
+arms got wrong. C's four misses: arith-01 (a three-term sum: the block
+never closed, the model emitted <|im_end|> inside its reasoning after
+218 tokens with the right number in the hidden text, which the scorer
+correctly never reads; the receipt's stored reason string says "within
+the budget", which is false for this row and is reworded in the scorer
+at this commit without changing any verdict), json-03 (the readings' mean 4.7 for
+5.67 after a closed block), code-09 (binary search with the lowest-index
+rule: the block ran to the 768 budget) and instruct-07 (exactly 12 words:
+the block ran to the budget); the three unclosed blocks (two budget cuts, one
+<|im_end|> inside the block) sit in three kinds (bar 4 and its
+concentration conjunct FIRE). The two no-thinking code misses are a
+syntax error in the word-frequency function (code-08) and a binary
+search whose lower-bound test can never be true on a sorted list
+(code-09); low's code-08 is correct and its code-09 ran out of budget. Final answers
+present 60, 60, 57. Format compliance of the final answer on the 24
+arithmetic and structured tasks: every arm answered in the asked format
+where it answered. Cost: generated tokens 2,741, 2,925, 12,345
+(reasoning 10,879 of C's by the adapter's count, which takes an
+unclosed turn whole; the runner's count to the last close is 9,125); task time 473, 485, 1,470 s;
+median first token 2.6, 2.5, 3.4 s; peak active 11.7, 11.7, 11.8 GB;
+budget stops 1, 0, 2 of 68 turns. Median reasoning length under low by
+kind: arithmetic 125 tokens, structured 147, code 219, instructions
+215, two-turn 44, termination 61.
+
+Reliability gate (the four conversations at 768 tokens, incremental
+sessions; NOTHINK alongside). LOW: 32 of 32 turns addressed, no empty
+completion, every think block closed, every turn ended on <|im_end|>,
+first-token stop margins 10 to 25 logits, median first token 2.1 s,
+5,202 generated tokens over 32 turns, 642 s, peak 12.6 GB; the travel
+transcript answered on all eight turns (287, 343, 374, 251, 285, 370,
+401 and 24 tokens) where the no-thinking configuration again produced
+3, 1, 0, 0, 0 tokens on turns 3 to 7 (the same three consecutive
+empties as QWEN-DEEPCHAT-0, now at a 768-token budget: the budget was
+not the cause); NOTHINK addressed 26 of 32 (the five travel turns and a
+planning list of one line for three). Replay and incremental under low
+agreed token for token on all 32 turns, the measured offsets equal to
+the accounting on every turn.
+
+Bar 9, the hold. One later turn under low, planning turn 7, fell back
+to replay. The previous turn (6, the subject line) closed its block and
+stopped on a stop token; its stored text re-renders through the pinned
+template to the same string, but the tokenizer merges the two tokens
+the model had emitted apart (ids 1 and 2523, a quotation mark and
+"You", in the reasoning's self-check "8 words\n\"You're Invited") into
+one token (20946, "\"You"), so the rendering does not extend the fed ids
+at generated offset 47 and the Session, as designed, replayed the whole
+transcript into a fresh cache; the fallback was token-equal to replay
+and the offsets held. This is the BPE re-tokenisation class the
+registrations of QWEN-CHAT-DEFAULT-0 and QWEN-DEEPCHAT-0 named as a
+benign fallback; it is not the template's trim (the break sits about
+190 tokens before the reasoning's end) and it can hit any turn, closed
+or not, thinking or not, whenever the model's greedy output spells a
+string in a token split the tokenizer would not produce; the bar as
+registered ("every later turn after a closed turn reused") counts it. The rule is mechanical and the
+registration said no threshold moves after the read: HOLD. What the
+measurement says about serving correctness is unchanged and positive;
+what it says about the bar is that "reused" was the wrong word for a
+correctness gate on a template that trims and re-tokenises: the
+correctness invariants (replay equality, offset agreement, no reuse of
+an incompatible cache) all held, 32 of 32.
+
+Interpretation. The quality gate is met with room: low recovers eleven
+of the thirteen tasks both no-thinking arms miss on fresh families, at
+no code loss, with the instruction, retention and termination kinds
+unchanged, at 4.2x the tokens and 3.0x the time of the equal-budget
+control. B against A shows that budget alone buys one task; the gain is
+the reasoning, not the tokens. The reliability gate is met on every
+behavioural bar: no collapse, every turn addressed, the exposed travel
+transcript answered throughout, while the no-thinking control collapsed
+again at the larger budget. Conditional on greedy decoding; one pass
+per arm; the v3 families are new but eleven are near relatives of v2's
+(the overlap report), so this is a fresh-instance confirmation of
+moderate structural independence; every fence is a rounding fence and
+60 tasks are a deployment smoke decision, not a general claim. The
+current defaults stay: thinking off is not the default (the CLI default
+remains the template's own thinking at xhigh when thinking is on, and
+Session's remains None), reasoning_effort low stays an explicit option.
+The next GO, if Artin wants the flip, re-registers bar 9 as the
+correctness property it meant (no incompatible cache reused; replay
+token-equal; offsets equal; fallbacks reported, not gated) and may
+read the seven other bars from these receipts rather than re-run them;
+nothing else in the decision rule needs to change.

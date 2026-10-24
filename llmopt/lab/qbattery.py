@@ -493,7 +493,8 @@ def score_thinking(task: dict, replies: list, results: list) -> dict:
     for i, r in enumerate(replies):
         _, final = split_final(r)
         if final is None and i in scored:
-            return {"status": "fail", "why": f"turn {i + 1}: thinking did not terminate within the budget; no final answer", "final_answers": finals}
+            stop = results[i].get("stop_reason", "?") if i < len(results) else "?"
+            return {"status": "fail", "why": f"turn {i + 1}: thinking did not terminate (the think block never closed; stop {stop}); no final answer", "final_answers": finals}
         finals.append(final if final is not None else "")
     v = score(task, finals, results)
     v["final_answers"] = finals

@@ -1,0 +1,287 @@
+== tests 23:17:20 f235306c
+12 passed, 18 deselected in 81.78s (0:01:21)
+== A 23:18:43 f235306c
+[battery] arith-01     fail  'expected 153695, last integer in reply 53795'  | '53795'
+[battery] arith-02     fail  'expected 3350, last integer in reply 5546'  | '5546'
+[battery] arith-03     pass  'expected 690, last integer in reply 690'  | '690'
+[battery] arith-04     pass  'expected 56, last integer in reply 56'  | '56'
+[battery] arith-05     pass  'expected 40, last integer in reply 40'  | '40'
+[battery] arith-06     fail  'expected 4258, last integer in reply 5258'  | '5258'
+[battery] arith-07     pass  'expected 688900, last integer in reply 688900'  | '688900'
+[battery] arith-08     fail  'expected 41, last integer in reply 31'  | '2+6+7+9+6+4+5+2 = 31'
+[battery] arith-09     pass  'expected 223, last integer in reply 223'  | '223'
+[battery] arith-10     fail  'expected 6, last integer in reply 30'  | 'To find the remainder of $(678 \\times 209) \\mod 72$, we can '
+[battery] arith-11     fail  'expected 112758, last integer in reply 114458'  | '114458'
+[battery] arith-12     fail  'expected 3974, last integer in reply 5146'  | '5146'
+[battery] json-01      pass  'schema and values match'  | 'Calculating the subtotal:\n- Line 1: 2 * 25.05 = 50.10\n- Line'
+[battery] json-02      pass  'schema and values match'  | '{"rows_per_category": {"glass": 4, "wood": 1}, "total_qty": '
+[battery] json-03      fail  'mean: 5.8 != 5.666666666666667'  | '{"max_key": "temp_tue", "min_key": "temp_sun", "mean": 5.8}'
+[battery] json-04      fail  'best_avg_name: kai != mia'  | '{"best_avg_name": "kai", "n_above": 1, "count": 3}'
+[battery] json-05      pass  'schema and values match'  | 'Calculating the subtotal:\n- Line 1: 7 * 5.42 = 37.94\n- Line '
+[battery] json-06      fail  "rows_per_category: {'paint': 1, 'wire': 1, 'glass': 5} != {'paint': 1, 'wire': 1, 'glass':"  | '{"rows_per_category": {"paint": 1, "wire": 1, "glass": 5}, "'
+[battery] json-07      fail  'mean: 13.0 != 13.25'  | '{"max_key": "temp_thu", "min_key": "temp_sat", "mean": 13.0}'
+[battery] json-08      pass  'schema and values match'  | '{"best_avg_name": "ola", "n_above": 1, "count": 3}'
+[battery] json-09      pass  'schema and values match'  | 'Calculating the subtotal:\n- bracket-9: 8 * 14.26 = 114.08\n- '
+[battery] json-10      fail  'total_qty: 158 != 156'  | '{"rows_per_category": {"wood": 2, "glass": 2, "paint": 2}, "'
+[battery] json-11      fail  'mean: 13.3 != 16.75'  | '{"max_key": "temp_sat", "min_key": "temp_tue", "mean": 13.3}'
+[battery] json-12      pass  'schema and values match'  | '{"best_avg_name": "mia", "n_above": 3, "count": 5}'
+[battery] code-01      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | '```python\ndef is_palindrome(s: str) -> bool:\n    cleaned = ['
+[battery] code-02      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | '```python\ndef second_largest(xs):\n    if len(xs) < 2:\n      '
+[battery] code-03      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | '```python\ndef flatten(x):\n    result = []\n    for item in x:'
+[battery] code-04      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | '```python\ndef caesar(s, k):\n    def shift(char, base):\n     '
+[battery] code-05      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | '```python\ndef roman_to_int(s: str) -> int:\n    values = {\n  '
+[battery] code-06      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | '```python\ndef merge_intervals(iv):\n    if not iv:\n        re'
+[battery] code-07      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | '```python\ndef count_vowels(s):\n    vowels = "aeiouAEIOU"\n   '
+[battery] code-08      fail  '{"status": "fail", "returncode": 1, "timed_out": false, "stderr": ""}'  | '```python\nimport re\nfrom collections import Counter\n\ndef top'
+[battery] code-09      fail  '{"status": "fail", "returncode": 1, "timed_out": false, "stderr": ""}'  | '```python\ndef bsearch(xs, t):\n    lo = 0\n    hi = len(xs) - '
+[battery] code-10      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | '```python\ndef diag_sum(m):\n    if not m:\n        return 0\n  '
+[battery] code-11      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | '```python\ndef chunk(xs, n):\n    if not xs:\n        return []'
+[battery] code-12      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | '```python\ndef running_max(xs):\n    result = []\n    max_val ='
+[battery] instruct-01  pass  '2 sentences, wanted 2'  | 'The weathered stone tower stands tall against the crashing w'
+[battery] instruct-02  pass  "first word 'indeed'"  | 'Indeed, reading serves as a vital tool for expanding knowled'
+[battery] instruct-03  pass  'no commas'  | 'It measures the temperature and controls the heating or cool'
+[battery] instruct-04  pass  '4 lines, dash bullets True'  | '- Spoon\n- Fork\n- Knife\n- Plate'
+[battery] instruct-05  pass  '5 lines, plain lower True, alphabetical True, distinct True'  | 'apple\nbanana\ncherry\ndate\ngrape'
+[battery] instruct-06  pass  "ends with '?'"  | 'Would you like to join me for lunch?'
+[battery] instruct-07  fail  '10 words, wanted 12'  | 'The vast blue expanse where waves crash endlessly against sh'
+[battery] instruct-08  pass  'all letters lower'  | 'the leaves turn gold and fall softly to the ground.'
+[battery] instruct-09  pass  "present ['river', 'bridge']"  | 'The town is nestled along the banks of a sparkling river. A '
+[battery] instruct-10  pass  '3 sentences, wanted 3'  | 'The sky appears blue because sunlight scatters off molecules'
+[battery] twoturn-01   pass  "turn 2 reply '5', expected 5"  | '5'
+[battery] twoturn-02   pass  "turn 2 reply '40', expected 40"  | '40'
+[battery] twoturn-03   pass  "turn 2 reply 'Bicycles', expected bicycles"  | 'Bicycles'
+[battery] twoturn-04   pass  "turn 2 reply 'lynx', expected lynx"  | 'lynx'
+[battery] twoturn-05   pass  "turn 2 reply '3', expected 3"  | '3'
+[battery] twoturn-06   pass  "turn 2 reply '27', expected 27"  | '27'
+[battery] twoturn-07   pass  "turn 2 reply 'Meteors', expected meteors"  | 'Meteors'
+[battery] twoturn-08   pass  "turn 2 reply 'heron', expected heron"  | 'heron'
+[battery] degen-01     pass  '7 comma-separated parts'  | 'red door, red door, red door, red door, red door, red door, '
+[battery] degen-02     pass  'numbers [16, 15, 14, 13, 12, 11, 10, 9]'  | '16,15,14,13,12,11,10,9'
+[battery] degen-03     pass  "got 'r-i-v-e-r'"  | 'r-i-v-e-r'
+[battery] degen-04     pass  '1 words; expected mercury'  | 'Mercury'
+[battery] degen-05     pass  "letters ['a', 'b', 'c', 'd', 'e', 'f']"  | 'a,b,c,d,e,f'
+[battery] degen-06     pass  '4 comma-separated parts'  | 'green hill, green hill, green hill, green hill'
+[battery] pass 44/60 scored of 60 tasks; by kind {'arith': {'fail': 7, 'pass': 5}, 'json': {'pass': 6, 'fail': 6}, 'code': {'pass': 10, 'fail': 2}, 'instruct': {'pass': 9, 'fail': 1}, 'twoturn': {'pass': 8}, 'degen': {'pass': 6}}; wrote logs/qwen_battery/results_v3_A.json
+== B 23:26:45 f235306c
+[battery] arith-01     fail  'expected 153695, last integer in reply 53795'  | '53795'
+[battery] arith-02     fail  'expected 3350, last integer in reply 5546'  | '5546'
+[battery] arith-03     pass  'expected 690, last integer in reply 690'  | '690'
+[battery] arith-04     pass  'expected 56, last integer in reply 56'  | '56'
+[battery] arith-05     pass  'expected 40, last integer in reply 40'  | '40'
+[battery] arith-06     fail  'expected 4258, last integer in reply 5258'  | '5258'
+[battery] arith-07     pass  'expected 688900, last integer in reply 688900'  | '688900'
+[battery] arith-08     fail  'expected 41, last integer in reply 31'  | '2+6+7+9+6+4+5+2 = 31'
+[battery] arith-09     pass  'expected 223, last integer in reply 223'  | '223'
+[battery] arith-10     pass  'expected 6, last integer in reply 6'  | 'To find the remainder of $(678 \\times 209) \\mod 72$, we can '
+[battery] arith-11     fail  'expected 112758, last integer in reply 114458'  | '114458'
+[battery] arith-12     fail  'expected 3974, last integer in reply 5146'  | '5146'
+[battery] json-01      pass  'schema and values match'  | 'Calculating the subtotal:\n- Line 1: 2 * 25.05 = 50.10\n- Line'
+[battery] json-02      pass  'schema and values match'  | '{"rows_per_category": {"glass": 4, "wood": 1}, "total_qty": '
+[battery] json-03      fail  'mean: 5.8 != 5.666666666666667'  | '{"max_key": "temp_tue", "min_key": "temp_sun", "mean": 5.8}'
+[battery] json-04      fail  'best_avg_name: kai != mia'  | '{"best_avg_name": "kai", "n_above": 1, "count": 3}'
+[battery] json-05      pass  'schema and values match'  | 'Calculating the subtotal:\n- Line 1: 7 * 5.42 = 37.94\n- Line '
+[battery] json-06      fail  "rows_per_category: {'paint': 1, 'wire': 1, 'glass': 5} != {'paint': 1, 'wire': 1, 'glass':"  | '{"rows_per_category": {"paint": 1, "wire": 1, "glass": 5}, "'
+[battery] json-07      fail  'mean: 13.0 != 13.25'  | '{"max_key": "temp_thu", "min_key": "temp_sat", "mean": 13.0}'
+[battery] json-08      pass  'schema and values match'  | '{"best_avg_name": "ola", "n_above": 1, "count": 3}'
+[battery] json-09      pass  'schema and values match'  | 'Calculating the subtotal:\n- bracket-9: 8 * 14.26 = 114.08\n- '
+[battery] json-10      fail  'total_qty: 158 != 156'  | '{"rows_per_category": {"wood": 2, "glass": 2, "paint": 2}, "'
+[battery] json-11      fail  'mean: 13.3 != 16.75'  | '{"max_key": "temp_sat", "min_key": "temp_tue", "mean": 13.3}'
+[battery] json-12      pass  'schema and values match'  | '{"best_avg_name": "mia", "n_above": 3, "count": 5}'
+[battery] code-01      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | '```python\ndef is_palindrome(s: str) -> bool:\n    cleaned = ['
+[battery] code-02      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | '```python\ndef second_largest(xs):\n    if len(xs) < 2:\n      '
+[battery] code-03      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | '```python\ndef flatten(x):\n    result = []\n    for item in x:'
+[battery] code-04      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | '```python\ndef caesar(s, k):\n    def shift(char, base):\n     '
+[battery] code-05      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | '```python\ndef roman_to_int(s: str) -> int:\n    values = {\n  '
+[battery] code-06      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | '```python\ndef merge_intervals(iv):\n    if not iv:\n        re'
+[battery] code-07      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | '```python\ndef count_vowels(s):\n    vowels = "aeiouAEIOU"\n   '
+[battery] code-08      fail  '{"status": "fail", "returncode": 1, "timed_out": false, "stderr": ""}'  | '```python\nimport re\nfrom collections import Counter\n\ndef top'
+[battery] code-09      fail  '{"status": "fail", "returncode": 1, "timed_out": false, "stderr": ""}'  | '```python\ndef bsearch(xs, t):\n    lo = 0\n    hi = len(xs) - '
+[battery] code-10      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | '```python\ndef diag_sum(m):\n    if not m:\n        return 0\n  '
+[battery] code-11      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | '```python\ndef chunk(xs, n):\n    if not xs:\n        return []'
+[battery] code-12      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | '```python\ndef running_max(xs):\n    result = []\n    max_val ='
+[battery] instruct-01  pass  '2 sentences, wanted 2'  | 'The weathered stone tower stands tall against the crashing w'
+[battery] instruct-02  pass  "first word 'indeed'"  | 'Indeed, reading serves as a vital tool for expanding knowled'
+[battery] instruct-03  pass  'no commas'  | 'It measures the temperature and controls the heating or cool'
+[battery] instruct-04  pass  '4 lines, dash bullets True'  | '- Spoon\n- Fork\n- Knife\n- Plate'
+[battery] instruct-05  pass  '5 lines, plain lower True, alphabetical True, distinct True'  | 'apple\nbanana\ncherry\ndate\ngrape'
+[battery] instruct-06  pass  "ends with '?'"  | 'Would you like to join me for lunch?'
+[battery] instruct-07  fail  '10 words, wanted 12'  | 'The vast blue expanse where waves crash endlessly against sh'
+[battery] instruct-08  pass  'all letters lower'  | 'the leaves turn gold and fall softly to the ground.'
+[battery] instruct-09  pass  "present ['river', 'bridge']"  | 'The town is nestled along the banks of a sparkling river. A '
+[battery] instruct-10  pass  '3 sentences, wanted 3'  | 'The sky appears blue because sunlight scatters off molecules'
+[battery] twoturn-01   pass  "turn 2 reply '5', expected 5"  | '5'
+[battery] twoturn-02   pass  "turn 2 reply '40', expected 40"  | '40'
+[battery] twoturn-03   pass  "turn 2 reply 'Bicycles', expected bicycles"  | 'Bicycles'
+[battery] twoturn-04   pass  "turn 2 reply 'lynx', expected lynx"  | 'lynx'
+[battery] twoturn-05   pass  "turn 2 reply '3', expected 3"  | '3'
+[battery] twoturn-06   pass  "turn 2 reply '27', expected 27"  | '27'
+[battery] twoturn-07   pass  "turn 2 reply 'Meteors', expected meteors"  | 'Meteors'
+[battery] twoturn-08   pass  "turn 2 reply 'heron', expected heron"  | 'heron'
+[battery] degen-01     pass  '7 comma-separated parts'  | 'red door, red door, red door, red door, red door, red door, '
+[battery] degen-02     pass  'numbers [16, 15, 14, 13, 12, 11, 10, 9]'  | '16,15,14,13,12,11,10,9'
+[battery] degen-03     pass  "got 'r-i-v-e-r'"  | 'r-i-v-e-r'
+[battery] degen-04     pass  '1 words; expected mercury'  | 'Mercury'
+[battery] degen-05     pass  "letters ['a', 'b', 'c', 'd', 'e', 'f']"  | 'a,b,c,d,e,f'
+[battery] degen-06     pass  '4 comma-separated parts'  | 'green hill, green hill, green hill, green hill'
+[battery] pass 45/60 scored of 60 tasks; by kind {'arith': {'fail': 6, 'pass': 6}, 'json': {'pass': 6, 'fail': 6}, 'code': {'pass': 10, 'fail': 2}, 'instruct': {'pass': 9, 'fail': 1}, 'twoturn': {'pass': 8}, 'degen': {'pass': 6}}; wrote logs/qwen_battery/results_v3_B.json
+== C 23:34:59 f235306c
+[battery] arith-01     fail  'turn 1: thinking did not terminate within the budget; no final answer'  | 'Thinking: I need to add three numbers: 28961, 24918, and 998'
+[battery] arith-02     pass  'expected 3350, last integer in reply 3350'  | 'Let me calculate step by step:\n\n95 * 64 = 6080\n39 * 70 = 273'
+[battery] arith-03     pass  'expected 690, last integer in reply 690'  | '15196 ÷ 22. Let me compute this.\n\n22 × 600 = 13200\n15196 - 1'
+[battery] arith-04     pass  'expected 56, last integer in reply 56'  | '28 = 4 × 7 = 2² × 7\n8 = 8 = 2³\nLCM = 2³ × 7 = 8 × 7 = 56\n</t'
+[battery] arith-05     pass  'expected 40, last integer in reply 40'  | 'The percent change formula is: (new - old) / old × 100\n\nNew '
+[battery] arith-06     pass  'expected 4258, last integer in reply 4258'  | 'The range is the largest minus smallest value.\n\nLet me find '
+[battery] arith-07     pass  'expected 688900, last integer in reply 688900'  | '830 squared = 830 × 830 = 830 × 800 + 830 × 30 = 664000 + 24'
+[battery] arith-08     pass  'expected 41, last integer in reply 41'  | 'The user is asking me to find the sum of the digits of the n'
+[battery] arith-09     pass  'expected 223, last integer in reply 223'  | 'To find the mean, I need to sum the numbers and divide by th'
+[battery] arith-10     pass  'expected 6, last integer in reply 6'  | 'Let me compute (678 * 209) mod 72.\n\nFirst, let me find 678 m'
+[battery] arith-11     pass  'expected 112758, last integer in reply 112758'  | 'Let me add these numbers step by step.\n\n4635 + 32635 = 37270'
+[battery] arith-12     pass  'expected 3974, last integer in reply 3974'  | 'Let me calculate step by step:\n\n63 * 86 = 5418\n19 * 76 = 144'
+[battery] json-01      pass  'schema and values match'  | '1. hinge-8: 2 * 25.05 = 50.10\n2. hinge-4: 4 * 29.35 = 117.40'
+[battery] json-02      pass  'schema and values match'  | 'The user wants me to parse a CSV inventory and return a spec'
+[battery] json-03      fail  'mean: 4.7 != 5.666666666666667'  | 'I have 6 temperature values:\n- temp_fri = 6\n- temp_sun = -1\n'
+[battery] json-04      pass  'schema and values match'  | 'Let me calculate the averages for each student:\n- kai: (34 +'
+[battery] json-05      pass  'schema and values match'  | '1. bracket-6: 7 * 5.42 = 37.94\n2. bracket-9: 9 * 25.99 = 233'
+[battery] json-06      pass  'schema and values match'  | 'The user wants me to parse a CSV inventory and return a JSON'
+[battery] json-07      pass  'schema and values match'  | 'I have 4 temperature values:\n- temp_sun = 17\n- temp_thu = 23'
+[battery] json-08      pass  'schema and values match'  | 'Let me calculate the averages for each student:\n- ola: (43 +'
+[battery] json-09      pass  'schema and values match'  | 'Let me calculate the subtotal, discount, and total.\n\nLines:\n'
+[battery] json-10      pass  'schema and values match'  | 'The user wants me to parse a CSV inventory and return a JSON'
+[battery] json-11      pass  'schema and values match'  | 'I have 4 temperature values:\n- temp_thu = 27\n- temp_sat = 29'
+[battery] json-12      pass  'schema and values match'  | 'Let me calculate the averages for each student:\n\n- mia: (95 '
+[battery] code-01      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | 'The user wants a Python function that checks if a string is '
+[battery] code-02      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | 'The user wants a Python function that returns the second lar'
+[battery] code-03      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | 'The user wants a Python function that flattens arbitrarily n'
+[battery] code-04      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | 'The user wants a Python function `caesar(s, k)` that perform'
+[battery] code-05      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | 'The user wants a Python function that converts Roman numeral'
+[battery] code-06      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | 'The user wants a Python function that merges overlapping or '
+[battery] code-07      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | 'The user wants a Python function that counts vowels in a str'
+[battery] code-08      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | 'The user wants a Python function `top_words(text, k)` that:\n'
+[battery] code-09      fail  'turn 1: thinking did not terminate within the budget; no final answer'  | 'The user wants a Python function that performs binary search'
+[battery] code-10      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | 'The user wants a Python function that computes the sum of th'
+[battery] code-11      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | 'The user wants a Python function that splits a list into con'
+[battery] code-12      pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'  | 'The user wants a Python function that computes the running m'
+[battery] instruct-01  pass  '2 sentences, wanted 2'  | 'The user wants me to describe a lighthouse in exactly two se'
+[battery] instruct-02  pass  "first word 'indeed'"  | 'Thinking: The user wants me to agree that reading is useful.'
+[battery] instruct-03  pass  'no commas'  | 'The user wants me to explain what a thermostat does in one o'
+[battery] instruct-04  pass  '4 lines, dash bullets True'  | 'Thinking: The user wants a list of four kitchen tools as a b'
+[battery] instruct-05  pass  '5 lines, plain lower True, alphabetical True, distinct True'  | 'Thinking: The user wants a list of five fruits in alphabetic'
+[battery] instruct-06  pass  "ends with '?'"  | 'Thinking: The user wants a single sentence inviting a friend'
+[battery] instruct-07  fail  'turn 1: thinking did not terminate within the budget; no final answer'  | 'I need to describe the sea in exactly 12 words. Let me count'
+[battery] instruct-08  pass  'all letters lower'  | 'The user wants me to write one sentence about autumn, and th'
+[battery] instruct-09  pass  "present ['river', 'bridge']"  | 'The user wants me to write two sentences about a town, using'
+[battery] instruct-10  pass  '3 sentences, wanted 3'  | 'The user wants me to explain why the sky looks blue in exact'
+[battery] twoturn-01   pass  "turn 2 reply '5', expected 5"  | 'The user asked me to remember a list: cobalt, tulip, maple, '
+[battery] twoturn-02   pass  "turn 2 reply '40', expected 40"  | 'The user asked me to remember two numbers: 10 and 4. Now the'
+[battery] twoturn-03   pass  "turn 2 reply 'Bicycles', expected bicycles"  | 'The user asked me to remember the sentence: "Bicycles drift '
+[battery] twoturn-04   pass  "turn 2 reply 'Lynx', expected lynx"  | 'The user asked me to recall their favorite animal from the p'
+[battery] twoturn-05   pass  "turn 2 reply '3', expected 3"  | 'The user asked me to remember a list: "willow, maple, granit'
+[battery] twoturn-06   pass  "turn 2 reply '27', expected 27"  | 'The user asked me to remember two numbers: 3 and 9. Now they'
+[battery] twoturn-07   pass  "turn 2 reply 'Meteors', expected meteors"  | 'The user asked me to remember the sentence: "Meteors drift o'
+[battery] twoturn-08   pass  "turn 2 reply 'heron', expected heron"  | 'The user asked me to identify their favorite animal based on'
+[battery] degen-01     pass  '7 comma-separated parts'  | "The user wants me to write the phrase 'red door' exactly 7 t"
+[battery] degen-02     pass  'numbers [16, 15, 14, 13, 12, 11, 10, 9]'  | 'The user wants me to count down from 16 to 9 in digits, sepa'
+[battery] degen-03     pass  "got 'r-i-v-e-r'"  | 'The user wants me to spell the word "river" with its letters'
+[battery] degen-04     pass  '1 words; expected mercury'  | 'The user asks which planet is closest to the Sun. The planet'
+[battery] degen-05     pass  "letters ['a', 'b', 'c', 'd', 'e', 'f']"  | 'The user asks for the first 6 letters of the English alphabe'
+[battery] degen-06     pass  '4 comma-separated parts'  | "The user wants me to write the phrase 'green hill' exactly 4"
+[battery] pass 56/60 scored of 60 tasks; by kind {'arith': {'fail': 1, 'pass': 11}, 'json': {'pass': 11, 'fail': 1}, 'code': {'pass': 11, 'fail': 1}, 'instruct': {'pass': 9, 'fail': 1}, 'twoturn': {'pass': 8}, 'degen': {'pass': 6}}; wrote logs/qwen_battery/results_v3_C.json
+== chat 23:59:39 f235306c
+[lowchat] travel      nothink incr t1 gen  94 stop empty False addressed True  term None margin +12.91 fres
+[lowchat] travel      nothink incr t2 gen  91 stop empty False addressed True  term None margin +6.19 incr
+[lowchat] travel      nothink incr t3 gen   3 stop empty False addressed False term None margin +1.52 incr
+[lowchat] travel      nothink incr t4 gen   1 stop empty False addressed False term None margin +0.20 incr
+[lowchat] travel      nothink incr t5 gen   0 stop empty True  addressed False term None margin +2.29 incr
+[lowchat] travel      nothink incr t6 gen   0 stop empty True  addressed False term None margin +4.64 incr
+[lowchat] travel      nothink incr t7 gen   0 stop empty True  addressed False term None margin +9.96 incr
+[lowchat] travel      nothink incr t8 gen   2 stop empty False addressed True  term None margin +2.51 incr
+[lowchat] travel      low     incr t1 gen 287 stop empty False addressed True  term True margin +16.22 fres
+[lowchat] travel      low     incr t2 gen 343 stop empty False addressed True  term True margin +24.76 incr
+[lowchat] travel      low     incr t3 gen 374 stop empty False addressed True  term True margin +19.54 incr
+[lowchat] travel      low     incr t4 gen 251 stop empty False addressed True  term True margin +19.42 incr
+[lowchat] travel      low     incr t5 gen 285 stop empty False addressed True  term True margin +14.71 incr
+[lowchat] travel      low     incr t6 gen 370 stop empty False addressed True  term True margin +11.92 incr
+[lowchat] travel      low     incr t7 gen 401 stop empty False addressed True  term True margin +18.59 incr
+[lowchat] travel      low     incr t8 gen  24 stop empty False addressed True  term True margin +17.45 incr
+[lowchat] travel      low     repl t1 gen 287 stop empty False addressed True  term True margin +16.22 fres
+[lowchat] travel      low     repl t2 gen 343 stop empty False addressed True  term True margin +24.76 fres
+[lowchat] travel      low     repl t3 gen 374 stop empty False addressed True  term True margin +19.54 fres
+[lowchat] travel      low     repl t4 gen 251 stop empty False addressed True  term True margin +19.42 fres
+[lowchat] travel      low     repl t5 gen 285 stop empty False addressed True  term True margin +14.71 fres
+[lowchat] travel      low     repl t6 gen 370 stop empty False addressed True  term True margin +11.92 fres
+[lowchat] travel      low     repl t7 gen 401 stop empty False addressed True  term True margin +18.59 fres
+[lowchat] travel      low     repl t8 gen  24 stop empty False addressed True  term True margin +17.45 fres
+[lowchat] planning    nothink incr t1 gen  52 stop empty False addressed True  term None margin +9.40 fres
+[lowchat] planning    nothink incr t2 gen  52 stop empty False addressed True  term None margin +10.65 incr
+[lowchat] planning    nothink incr t3 gen  37 stop empty False addressed True  term None margin +11.36 incr
+[lowchat] planning    nothink incr t4 gen   3 stop empty False addressed True  term None margin +2.51 incr
+[lowchat] planning    nothink incr t5 gen   3 stop empty False addressed True  term None margin +0.87 incr
+[lowchat] planning    nothink incr t6 gen  10 stop empty False addressed True  term None margin +0.46 incr
+[lowchat] planning    nothink incr t7 gen   4 stop empty False addressed False term None margin +0.28 incr
+[lowchat] planning    nothink incr t8 gen   2 stop empty False addressed True  term None margin +3.65 incr
+[lowchat] planning    low     incr t1 gen 220 stop empty False addressed True  term True margin +17.14 fres
+[lowchat] planning    low     incr t2 gen 746 stop empty False addressed True  term True margin +24.47 incr
+[lowchat] planning    low     incr t3 gen 337 stop empty False addressed True  term True margin +20.11 incr
+[lowchat] planning    low     incr t4 gen  35 stop empty False addressed True  term True margin +16.21 incr
+[lowchat] planning    low     incr t5 gen  20 stop empty False addressed True  term True margin +16.78 incr
+[lowchat] planning    low     incr t6 gen 240 stop empty False addressed True  term True margin +14.12 incr
+[lowchat] planning    low     incr t7 gen 119 stop empty False addressed True  term True margin +16.77 repl
+[lowchat] planning    low     incr t8 gen  24 stop empty False addressed True  term True margin +18.21 incr
+[lowchat] planning    low     repl t1 gen 220 stop empty False addressed True  term True margin +17.14 fres
+[lowchat] planning    low     repl t2 gen 746 stop empty False addressed True  term True margin +24.47 fres
+[lowchat] planning    low     repl t3 gen 337 stop empty False addressed True  term True margin +20.11 fres
+[lowchat] planning    low     repl t4 gen  35 stop empty False addressed True  term True margin +16.21 fres
+[lowchat] planning    low     repl t5 gen  20 stop empty False addressed True  term True margin +16.78 fres
+[lowchat] planning    low     repl t6 gen 240 stop empty False addressed True  term True margin +14.12 fres
+[lowchat] planning    low     repl t7 gen 119 stop empty False addressed True  term True margin +16.77 fres
+[lowchat] planning    low     repl t8 gen  24 stop empty False addressed True  term True margin +18.21 fres
+[lowchat] programming nothink incr t1 gen  22 stop empty False addressed True  term None margin +9.50 fres
+[lowchat] programming nothink incr t2 gen  24 stop empty False addressed True  term None margin +7.37 incr
+[lowchat] programming nothink incr t3 gen  19 stop empty False addressed True  term None margin +0.69 incr
+[lowchat] programming nothink incr t4 gen  28 stop empty False addressed True  term None margin +3.35 incr
+[lowchat] programming nothink incr t5 gen  24 stop empty False addressed True  term None margin +3.68 incr
+[lowchat] programming nothink incr t6 gen  18 stop empty False addressed True  term None margin +3.71 incr
+[lowchat] programming nothink incr t7 gen  29 stop empty False addressed True  term None margin +5.43 incr
+[lowchat] programming nothink incr t8 gen   1 stop empty False addressed True  term None margin +5.47 incr
+[lowchat] programming low     incr t1 gen 170 stop empty False addressed True  term True margin +20.04 fres
+[lowchat] programming low     incr t2 gen 182 stop empty False addressed True  term True margin +21.81 incr
+[lowchat] programming low     incr t3 gen  71 stop empty False addressed True  term True margin +13.88 incr
+[lowchat] programming low     incr t4 gen 114 stop empty False addressed True  term True margin +22.67 incr
+[lowchat] programming low     incr t5 gen 218 stop empty False addressed True  term True margin +21.27 incr
+[lowchat] programming low     incr t6 gen  61 stop empty False addressed True  term True margin +18.93 incr
+[lowchat] programming low     incr t7 gen  73 stop empty False addressed True  term True margin +21.04 incr
+[lowchat] programming low     incr t8 gen  16 stop empty False addressed True  term True margin +20.22 incr
+[lowchat] programming low     repl t1 gen 170 stop empty False addressed True  term True margin +20.04 fres
+[lowchat] programming low     repl t2 gen 182 stop empty False addressed True  term True margin +21.81 fres
+[lowchat] programming low     repl t3 gen  71 stop empty False addressed True  term True margin +13.88 fres
+[lowchat] programming low     repl t4 gen 114 stop empty False addressed True  term True margin +22.67 fres
+[lowchat] programming low     repl t5 gen 218 stop empty False addressed True  term True margin +21.27 fres
+[lowchat] programming low     repl t6 gen  61 stop empty False addressed True  term True margin +18.93 fres
+[lowchat] programming low     repl t7 gen  73 stop empty False addressed True  term True margin +21.04 fres
+[lowchat] programming low     repl t8 gen  16 stop empty False addressed True  term True margin +20.22 fres
+[lowchat] factual     nothink incr t1 gen   1 stop empty False addressed True  term None margin +6.58 fres
+[lowchat] factual     nothink incr t2 gen   2 stop empty False addressed True  term None margin +7.83 incr
+[lowchat] factual     nothink incr t3 gen   1 stop empty False addressed True  term None margin +1.35 incr
+[lowchat] factual     nothink incr t4 gen   3 stop empty False addressed True  term None margin +2.70 incr
+[lowchat] factual     nothink incr t5 gen   1 stop empty False addressed True  term None margin +1.52 incr
+[lowchat] factual     nothink incr t6 gen   3 stop empty False addressed True  term None margin +4.89 incr
+[lowchat] factual     nothink incr t7 gen   2 stop empty False addressed True  term None margin +3.46 incr
+[lowchat] factual     nothink incr t8 gen   1 stop empty False addressed True  term None margin +7.82 incr
+[lowchat] factual     low     incr t1 gen  31 stop empty False addressed True  term True margin +10.41 fres
+[lowchat] factual     low     incr t2 gen  25 stop empty False addressed True  term True margin +13.81 incr
+[lowchat] factual     low     incr t3 gen  60 stop empty False addressed True  term True margin +11.43 incr
+[lowchat] factual     low     incr t4 gen  19 stop empty False addressed True  term True margin +18.02 incr
+[lowchat] factual     low     incr t5 gen  23 stop empty False addressed True  term True margin +15.49 incr
+[lowchat] factual     low     incr t6 gen  26 stop empty False addressed True  term True margin +17.65 incr
+[lowchat] factual     low     incr t7 gen  21 stop empty False addressed True  term True margin +17.42 incr
+[lowchat] factual     low     incr t8 gen  16 stop empty False addressed True  term True margin +15.90 incr
+[lowchat] factual     low     repl t1 gen  31 stop empty False addressed True  term True margin +10.41 fres
+[lowchat] factual     low     repl t2 gen  25 stop empty False addressed True  term True margin +13.81 fres
+[lowchat] factual     low     repl t3 gen  60 stop empty False addressed True  term True margin +11.43 fres
+[lowchat] factual     low     repl t4 gen  19 stop empty False addressed True  term True margin +18.02 fres
+[lowchat] factual     low     repl t5 gen  23 stop empty False addressed True  term True margin +15.49 fres
+[lowchat] factual     low     repl t6 gen  26 stop empty False addressed True  term True margin +17.65 fres
+[lowchat] factual     low     repl t7 gen  21 stop empty False addressed True  term True margin +17.42 fres
+[lowchat] factual     low     repl t8 gen  16 stop empty False addressed True  term True margin +15.90 fres
+[lowchat] summary {"NOTHINK": {"turns": 32, "longest_empty_run": 3, "addressed_turns": 26, "unterminated_turns": 0, "travel_empty_turns": 3, "generated_tokens": 533, "total_s": 122.9, "first_token_s_median": 2.1831750420387834, "later_fallbacks": 0, "later_fallbacks_after_closed": 0, "later_fallbacks_after_cut": 0, "offset_mismatch_turns": 0, "peak_bytes_max": 11715004924, "min_stop_margin_on_empty": 2.2916641235351562}, "LOW": {"turns": 32, "longest_empty_run": 0, "addressed_turns": 32, "unterminated_turns": 0, "travel_empty_turns": 0, "generated_tokens": 5202, "total_s": 641.8, "first_token_s_median": 2.1406574160791934, "later_fallbacks": 1, "later_fallbacks_after_closed": 1, "later_fallbacks_after_cut": 0, "offset_mismatch_turns": 0, "peak_bytes_max": 12569535044, "min_stop_margin_on_empty": null, "replay_token_mismatch_turns": 0}}; wrote logs/qwen_serve/lowchat_v1.json
+== DONE 00:33:24

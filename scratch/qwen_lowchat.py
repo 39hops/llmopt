@@ -207,7 +207,7 @@ def main() -> None:
                           "stop_tokens": {str(x["stop_token_id"]): sum(1 for _, y in rows if y["stop_token_id"] == x["stop_token_id"]) for _, x in rows if x["stop_token_id"] is not None},
                           "min_stop_margin_on_empty": min((x["stop_margin"] for _, x in rows if x["empty"]), default=None)}
     summary["LOW"]["replay_token_mismatch_turns"] = sum(1 for e in out for eq in e["configs"]["LOW"]["replay_equal_tokens"] if not eq)
-    receipt = {"commit": head, "tree_dirty": dirty, "smoke": SMOKE, "budget": BUDGET, "engine": {"load_s": eng.load_s, "kernel_version": eng.info.get("kernel_version"),
+    receipt = {"commit": head, "tree_dirty": dirty, "smoke": SMOKE, "budget": BUDGET, "configs": dict(CONFIGS), "engine": {"load_s": eng.load_s, "kernel_version": eng.info.get("kernel_version"),
                "chain_sha256": eng.info.get("chain_sha256"), "stop_ids": sorted(eng.stop_ids), "context_cap": eng.context_cap, "cache_limit_bytes": eng.cfg.cache_limit_bytes,
                "tokenizer_files_sha256": getattr(eng, "tokenizer_files_sha256", {})}, "conversations": out, "summary": summary, "wall_s": time.perf_counter() - t0}
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
