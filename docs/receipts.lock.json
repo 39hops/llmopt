@@ -5198,6 +5198,30 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qwen_prefill/adjudicate_1/adjudication.txt": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_prefill/adjudicate_1/observations.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_prefill/baseline.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_prefill/decomp.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_prefill/design.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_prefill/heldout.json": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/qwen_release/adjudicate_1/adjudication.txt": {
    "bytes": 245,
    "exists": true,

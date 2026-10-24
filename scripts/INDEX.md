@@ -1231,6 +1231,7 @@ Depth anatomy: WHERE in the stack does the rewrite decision form?
 Local greedy chat with the qualified Qwen3.8-27B arm C on this Mac (QWEN-INFERENCE-BASELINE-0): the command-line face of llmopt.lab.qserve.
 
 - `_report(res, load_s=None)`
+- `summarize_turns(turns: list) -> dict` — Operational accounting derived from the recorded turn results only
 - `resolve_mode(thinking_flag: bool, no_thinking_flag: bool, effort)` — The CLI's configuration: no flags = thinking on at low effort (VERDICT
 - `main() -> int`
 
@@ -5821,6 +5822,30 @@ QWEN-MODEL2-ALLOC-1 observations builder + adjudication.
 - `compose_violations(a, c, rc_a, frozen)`
 - `build_observations(rc, comp)`
 - `main()`
+
+### scratch/qwen_prefill_obs.py
+Observations adapter for PRE-REG QWEN-PREFILL-WALL-0: derives the registered measurements from the held-out receipt of scratch/qwen_prefill_wall.py (STAGE=heldout) in committed code.
+
+- `main(receipt_path, prereg_path)`
+
+### scratch/qwen_prefill_wall.py
+QWEN-PREFILL-WALL-0: the user-facing first-token latency of the released arm C serving path (generation 5, chunk-256 GEMM prefill, final-position head, 2 GiB allocator-cache limit, greedy), measured, decomposed and probed on a small registered design space. The qualified kernels and the serving defaults are not changed; every variant here is a diagnostic in this process only.
+
+- `prose(seed: str, n_words: int) -> str`
+- `fixed_prompt(eng, seed: str, target: int) -> list` — Chat-rendered ids (thinking off) of a plain-prose request whose length lands within 8 of target.
+- `sha(ids)`
+- `mem()`
+- `prefill_instrumented(model, ids, cache, chunk, matmul='gemm')` — The prefill_chunked loop with per-chunk CPU-issue and GPU-completion times.
+- `topk(lg, k=16)`
+- `top16_diff(x, ref)` — largest absolute logit difference over the ids shared by the two top-16 lists; 99 if they share none
+- `decode_steps(model, cache, first, n)`
+- `run_prefill(eng, ids, chunk, matmul='gemm', decode=0, instrument=False, clear_pool=True)` — One measured prefill through the qualified call (and optionally the instrumented replica and a decode).
+- `preflight_ok(extra_gb: float) -> dict`
+- `stage_baseline(eng, receipt)`
+- `stage_decomp(eng, receipt)`
+- `stage_design(eng, receipt)`
+- `stage_heldout(eng, receipt)`
+- `main() -> None`
 
 ### scratch/qwen_qualify.py
 Thin CLI over llmopt.lab.qartifact — the qualification ladder.

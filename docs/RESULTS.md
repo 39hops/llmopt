@@ -85526,3 +85526,110 @@ wall; prefill kernels need their own GO), with the deterministic sampler
 design and the multi-row fused kernel from the DeepInfer review as the
 studied options; a fallback-rate metric in the CLI's receipts is the
 cheap operational follow-up.
+
+## PRE-REG QWEN-PREFILL-WALL-0: a bounded study of the user-facing first-token latency of the released arm C serving path (generation 5, chunk-256 GEMM prefill, final-position head, 2 GiB allocator-cache limit, greedy), with no change to the qualified kernels or the serving defaults: operational fallback accounting in the CLI receipts derived from the recorded turns; the warm prefill baseline at 512, 1,024 and 2,048 tokens (4,096 after a memory preflight) on fixed development prompts in order-balanced repeats with CPU issue and GPU completion separated per chunk and cold load recorded apart; a decomposition of the 1,024-token chunk-256 prefill by MARGINAL stand-in replacement per family (W4 MLP, S16 body projections, head, DeltaNet core, attention core, norms; not additive) and by ADDITIVE synchronous exclusive timing (inflated by serialisation, compared with the unsynchronised wall); a small design space of diagnostics against production in ABBA pairs (chunk 128, 512, 1,024; a GEMM slab variant was dropped because every body matrix already decodes in one slab) with parity, memory and TTFT, plus a throwaway fp16 matmul microbenchmark on one W4 matrix (the matmul alone on pre-decoded, pre-cast weights) under a correctness oracle; and the registered hurdle on three HELD-OUT prompts (frozen with sha256s in scratch/evalsets/qwen_prefill_heldout_prompts.json before any measurement) for two candidates, chunk 512 and chunk 1,024: TTFT down at least 10 percent at 1,024 and 2,048 tokens, no material regression at 512, no parity change in the final argmax or 16 greedy decode steps, per-run peak memory up at most 20 percent, the prefill-plus-decode wall down at least 5 percent at 2,048 and the decode steps after the prefill no more than 2 percent slower, each ratio bar fenced at the measurement noise (so FIRE on the latency bars needs 13 percent); a candidate firing all five earns a recommendation for a separate implementation GO, never an automatic default change; neither firing books NULL (docs/preregs/qwen-prefill-wall-0.json) (2026-10-23)
+
+Artin's GO after the release of QWEN-LOW-DEFAULT-1. Immutable here: the
+arm C weights and format, the generation-5 dispatch, the low-thinking
+768-token chat default and the fast override, the incremental prefix
+check and replay fallback, the tokenizer contract, every historical
+receipt. Every variant in this study is a diagnostic inside the
+measuring process (a chunk argument to the qualified entry point, or a
+module constant for the GEMM slab limit), never a production edit.
+
+Part 1, accounting: scripts/qwen_chat.py now derives a summary from the
+recorded turn results alone (turns, incremental reuses, replay fallbacks
+with their reasons, first-token latency by mode with medians, the prompt
+tokens re-prefilled by fallbacks and their cost, token totals, peak and
+footprint and active memory, the cache's token count) into the --json
+receipt and a closing stderr line; tests/test_qchat_summary.py pins it
+on synthetic turns. No cache logic is duplicated; no fallback is
+suppressed.
+
+Parts 2 to 4, the driver scratch/qwen_prefill_wall.py (stages baseline,
+decomp, design, heldout; receipts logs/qwen_prefill/<stage>.json).
+Prompts are plain prose from a string-seeded word list rendered through
+the pinned template with thinking off; development seeds and held-out
+seeds differ and the held-out ids and sha256s are frozen in
+scratch/evalsets/qwen_prefill_heldout_prompts.json at this commit, which
+the held-out stage reads and asserts before its first run. "TTFT" in
+this study is the prefill-to-first-logits latency of one fresh prompt
+through the qualified prefill_chunked call: it excludes the template
+rendering, the session's prefix check, the cache allocation, the
+host-side argmax and detokenisation, and the thinking block of the
+released default; a later turn under incremental reuse prefills only
+its new tokens, usually under one chunk, where the chunk size is
+irrelevant. Every measured run empties the allocator pool first (the
+serving path never does), and the baseline records a warm-pool pair
+alongside. The
+baseline records the Engine's load time and the first prefill of the
+process apart from the warm runs, then an A B C C B A order over the
+three lengths, twice, each run timing the qualified prefill_chunked call
+end to end and an instrumented replica of its loop that separates CPU
+issue (graph construction plus the host-side embedding decode) from GPU
+completion per chunk (the GPU side is completion minus issue; the two
+are not summed), with 16 greedy decode steps and peak, active, transient
+and cache memory; 4,096 tokens run only after a preflight of active
+memory plus 4 GB under 30 GB (known to fit from QWEN-METAL-PREFILL-GEMM-0).
+The design and held-out stages run one discarded warm-up per variant and
+length before their ABBA blocks (the baseline isolates the process's
+first prefill the same way). The decomposition follows the
+method of OBSERVATION QWEN-METAL-DECODE-BREAKDOWN-0 (stand-ins that
+keep a cheap data dependence so the lazy graph is not pruned); the
+families are defined exactly in the receipt (the DeltaNet stand-in also
+drops in_proj_b, in_proj_a and the gated norm; the attention stand-in
+also drops the q and k norms and the output gate; a recurrence-only
+stand-in replaces gated_delta_update alone); marginal costs are full
+minus without and are not summed; the additive pass evaluates every
+family's INPUTS before its timed call and its output after (under lazy
+evaluation an upstream cost otherwise lands on the first consumer that
+forces it, which the pre-registration smoke showed: the recurrence's
+time booked to out_proj), subtracts inner calls, and reports the
+untimed residual (synchronised wall minus the sum) and the serialisation
+penalty (synchronised minus unsynchronised wall) apart. The design stage
+pairs each variant with production in ABBA order on the development
+prompts and reports TTFT, memory, the final argmax, the top-16 logits
+and 16 decode tokens against production; the microbenchmark decodes one
+W4 MLP matrix to float32 once, casts a copy to float16 (finiteness and
+flush-to-zero counted), and times the matmul alone for 256, 512 and
+1,024 seeded random rows in both precisions, reporting the max absolute
+error of the float16 product against the float32 one, under a preflight;
+whether MLX accumulates float16 matmuls in float32 is not verified.
+
+Part 5, the hurdle: scratch/qwen_prefill_obs.py against the held-out
+receipt; adjudication in logs/qwen_prefill/adjudicate_1/. Bars as in the
+JSON: TTFT ratios at 1,024 and 2,048 below 0.90 (effective 0.87 under
+the 0.03 fence), the 512 ratio below 1.03 (effective 1.01; bar 8 is the
+same computation as bar 3 because the 510-token prompt is one chunk
+under both candidates, and is reported as such), parity mismatches zero,
+the per-run peak ratio below 1.20 with the end-to-end ratio at 2,048
+below 0.95 and the decode-step ratio below 1.02 as conjuncts (the
+footprint is flattened by the 2 GiB pool cap and is reported, not
+gated); production's ABBA spread above 10 percent invalidates the
+measurement. Registered prior: as in the JSON (from QWEN-METAL-PREFILL-GEMM-0's
+measured 3.38 ms decode and 11.3 ms matmul per 256 rows on a 17408x5120
+matrix and its projected tower-wide decode of 0.97 s in a 6.73 s chunk,
+about 14 percent, the expected TTFT reduction is about 7 percent at
+chunk 512 and 11 percent at 1,024: the latency bars are expected
+UNRESOLVED or NO-FIRE against the 13 percent effective threshold and
+the study's registered expectation is NULL on the hurdle, with the
+decomposition and the design stage carrying the actionable finding;
+parity expected held with top-16 differences near 1e-4, the chunk-512
+numerical difference of QWEN-METAL-CHUNKED-PREFILL-0 being 1.8e-5
+relative and attributed by pattern to the attention kernel a query
+length selects; the peak-memory ratio expected near 1.1 at chunk 512
+and near or above 1.2 at 1,024; the W4 MLP matmuls expected the leading
+family, the DeltaNet recurrence the leading non-matmul cost if the
+smoke's hint holds; fp16 expected faster than fp32 at about 1e-3
+relative error, a kernel hypothesis for a separate GO). Disclosed: a
+smoke of each stage at 256 tokens (logs/qwen_prefill/smoke/, not
+evidence) was read before this registration to qualify the driver; its 256-token
+marginal decomposition hinted at a DeltaNet-recurrence share near a
+third, which the prior now names as the hypothesis to confirm, and
+exposed the lazy-evaluation attribution bias the additive timer now
+avoids. An Opus methodology audit ran before this registration and its
+repairs are in this commit (the memory bar moved from the pool-capped
+footprint to the per-run peak; warm-ups per variant; the frozen prompts
+read rather than regenerated; the slab variant dropped as a no-op; the
+microbenchmark isolating the matmul; the prior's arithmetic and parity
+citation corrected; the TTFT definition and the pool clearing stated).

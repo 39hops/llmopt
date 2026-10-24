@@ -1,0 +1,313 @@
+{
+ "name": "QWEN-PREFILL-WALL-0",
+ "note": "Machine-readable form of PRE-REG QWEN-PREFILL-WALL-0; the prose governs on any conflict. Artin's GO (2026-10-23): a bounded performance and bottleneck study of first-token latency on the released arm C serving path (generation 5, chunk-256 GEMM prefill, final-position head, 2 GiB cache limit, greedy), with no change to the qualified kernels or the serving defaults. The baseline, decomposition and design-space stages run on development prompts; this registration's bars read the HELD-OUT prompts (scratch/evalsets/qwen_prefill_heldout_prompts.json, frozen with their sha256s before any measurement) once, comparing two registered diagnostic candidates (chunk 512, chunk 1,024) against production in ABBA pairs. Decision rule: a candidate firing all five of its bars earns a recommendation for a SEPARATE bounded implementation GO (never an automatic default change); neither firing books NULL; a fence on every ratio bar makes a reading inside the measurement noise UNRESOLVED. The structured refuted_if_predicate covers CAND512's bar 1 only; the prose rule (NULL if neither candidate fires all five) governs. TTFT here means the prefill-to-first-logits latency of one fresh prompt rendered with thinking off, through the qualified prefill_chunked call: it excludes the template rendering, the session's prefix check, the cache allocation, the host-side argmax and detokenisation, and the thinking block of the released default; a later turn under incremental reuse prefills only its new tokens, usually under one chunk, where the chunk size is irrelevant. Every measured run empties the allocator pool first (serving never does); the baseline records a warm-pool pair as well. The 1,029-token held-out prompt ends every arm with a 5-token chunk that runs on the fused tiles, which slightly dilutes bars 1 and 6.",
+ "results_id": "2026-10-23-pre-reg-qwen-prefill-wall-0",
+ "registered": "2026-10-23",
+ "machine": "mac",
+ "arms": {
+  "PROD": {
+   "description": "the qualified serving path: chunk 256, GEMM prefill, final-position head, 2 GiB allocator-cache limit, greedy; unchanged"
+  },
+  "CAND512": {
+   "description": "the same path with chunk 512 (the GEMM decode of every matrix amortised over twice the rows), a diagnostic in the measuring process only"
+  },
+  "CAND1024": {
+   "description": "the same path with chunk 1,024, a diagnostic in the measuring process only"
+  }
+ },
+ "bars": [
+  {
+   "id": 1,
+   "name": "TTFT-1024-512",
+   "metric": "ttft_ratio_1024_cand512",
+   "population": "heldout-1024:6v6",
+   "aggregation": "median_ratio",
+   "unit": "ratio",
+   "direction": "below",
+   "value": 0.9,
+   "fence": {
+    "width": 0.03,
+    "unit": "ratio"
+   },
+   "arms": [
+    "PROD",
+    "CAND512"
+   ],
+   "description": "chunk 512 cuts the median end-to-end first-token latency of the 1,024-token held-out prompt by at least 10 percent against production, paired ABBA three times (6 runs each). Under the 0.03 fence a ratio between 0.87 and 0.93 reads UNRESOLVED, so FIRE needs a 13 percent reduction."
+  },
+  {
+   "id": 2,
+   "name": "TTFT-2048-512",
+   "metric": "ttft_ratio_2048_cand512",
+   "population": "heldout-2048:6v6",
+   "aggregation": "median_ratio",
+   "unit": "ratio",
+   "direction": "below",
+   "value": 0.9,
+   "fence": {
+    "width": 0.03,
+    "unit": "ratio"
+   },
+   "arms": [
+    "PROD",
+    "CAND512"
+   ],
+   "description": "the same at 2,048 tokens. Under the 0.03 fence a ratio between 0.87 and 0.93 reads UNRESOLVED, so FIRE needs a 13 percent reduction."
+  },
+  {
+   "id": 3,
+   "name": "NO-REGRESSION-512-512",
+   "metric": "ttft_ratio_512_cand512",
+   "population": "heldout-512:6v6",
+   "aggregation": "median_ratio",
+   "unit": "ratio",
+   "direction": "below",
+   "value": 1.03,
+   "fence": {
+    "width": 0.02,
+    "unit": "ratio"
+   },
+   "arms": [
+    "PROD",
+    "CAND512"
+   ],
+   "description": "no material regression at 512 tokens (the ratio at most 1.03). Under the 0.02 fence FIRE needs a ratio of at most 1.01."
+  },
+  {
+   "id": 4,
+   "name": "PARITY-512",
+   "metric": "parity_mismatches_cand512",
+   "population": "heldout-runs:18",
+   "aggregation": "count",
+   "unit": "runs",
+   "direction": "below",
+   "value": 0.5,
+   "arms": [
+    "PROD",
+    "CAND512"
+   ],
+   "gate_class": "sanity",
+   "description": "every chunk-512 run has the same final argmax and the same 16 greedy decode tokens as production on its prompt (the greedy-output and cache-state oracle); the top-16 logit differences are reported."
+  },
+  {
+   "id": 5,
+   "name": "PEAK-E2E-DECODE-512",
+   "metric": "peak_ratio_cand512",
+   "population": "heldout-lengths:3",
+   "aggregation": "max_ratio",
+   "unit": "ratio",
+   "direction": "below",
+   "value": 1.2,
+   "fence": {
+    "width": 0.02,
+    "unit": "ratio"
+   },
+   "arms": [
+    "PROD",
+    "CAND512"
+   ],
+   "conjuncts": [
+    {
+     "measurement": "5:e2e",
+     "metric": "e2e_ratio_2048_cand512",
+     "population": "heldout-2048:6v6",
+     "aggregation": "median_ratio",
+     "unit": "ratio",
+     "direction": "below",
+     "value": 0.95,
+     "fence": {
+      "width": 0.03,
+      "unit": "ratio"
+     }
+    },
+    {
+     "measurement": "5:decode",
+     "metric": "decode_s_ratio_cand512",
+     "population": "heldout-lengths:3",
+     "aggregation": "max_median_ratio",
+     "unit": "ratio",
+     "direction": "below",
+     "value": 1.02,
+     "fence": {
+      "width": 0.02,
+      "unit": "ratio"
+     }
+    }
+   ],
+   "description": "the per-run peak active memory grows by at most 20 percent at any length against production (the footprint, active plus the allocator pool, is flattened by the 2 GiB pool cap and is reported, not gated); the end-to-end wall of prefill plus 16 decode steps at 2,048 tokens falls by at least 5 percent; and the 16 greedy decode steps after the prefill are no more than 2 percent slower than production's at any length (a hidden cost outside the first-token interval). Effective FIRE thresholds under the fences: peak at most 1.18, end-to-end at most 0.92, decode at most 1.00."
+  },
+  {
+   "id": 6,
+   "name": "TTFT-1024-1024",
+   "metric": "ttft_ratio_1024_cand1024",
+   "population": "heldout-1024:6v6",
+   "aggregation": "median_ratio",
+   "unit": "ratio",
+   "direction": "below",
+   "value": 0.9,
+   "fence": {
+    "width": 0.03,
+    "unit": "ratio"
+   },
+   "arms": [
+    "PROD",
+    "CAND1024"
+   ],
+   "description": "as bar 1 for chunk 1,024. Under the 0.03 fence a ratio between 0.87 and 0.93 reads UNRESOLVED, so FIRE needs a 13 percent reduction."
+  },
+  {
+   "id": 7,
+   "name": "TTFT-2048-1024",
+   "metric": "ttft_ratio_2048_cand1024",
+   "population": "heldout-2048:6v6",
+   "aggregation": "median_ratio",
+   "unit": "ratio",
+   "direction": "below",
+   "value": 0.9,
+   "fence": {
+    "width": 0.03,
+    "unit": "ratio"
+   },
+   "arms": [
+    "PROD",
+    "CAND1024"
+   ],
+   "description": "as bar 2 for chunk 1,024. Under the 0.03 fence a ratio between 0.87 and 0.93 reads UNRESOLVED, so FIRE needs a 13 percent reduction."
+  },
+  {
+   "id": 8,
+   "name": "NO-REGRESSION-512-1024",
+   "metric": "ttft_ratio_512_cand1024",
+   "population": "heldout-512:6v6",
+   "aggregation": "median_ratio",
+   "unit": "ratio",
+   "direction": "below",
+   "value": 1.03,
+   "fence": {
+    "width": 0.02,
+    "unit": "ratio"
+   },
+   "arms": [
+    "PROD",
+    "CAND1024"
+   ],
+   "description": "as bar 3 for chunk 1,024 (a 512-token prompt is one chunk of 512 under this candidate). Under the 0.02 fence FIRE needs a ratio of at most 1.01. Bar 8 is the same computation as bar 3 (the 510-token prompt is one chunk under both candidates) and is reported as such, not as independent evidence."
+  },
+  {
+   "id": 9,
+   "name": "PARITY-1024",
+   "metric": "parity_mismatches_cand1024",
+   "population": "heldout-runs:18",
+   "aggregation": "count",
+   "unit": "runs",
+   "direction": "below",
+   "value": 0.5,
+   "arms": [
+    "PROD",
+    "CAND1024"
+   ],
+   "gate_class": "sanity",
+   "description": "as bar 4 for chunk 1,024."
+  },
+  {
+   "id": 10,
+   "name": "PEAK-E2E-DECODE-1024",
+   "metric": "peak_ratio_cand1024",
+   "population": "heldout-lengths:3",
+   "aggregation": "max_ratio",
+   "unit": "ratio",
+   "direction": "below",
+   "value": 1.2,
+   "fence": {
+    "width": 0.02,
+    "unit": "ratio"
+   },
+   "arms": [
+    "PROD",
+    "CAND1024"
+   ],
+   "conjuncts": [
+    {
+     "measurement": "10:e2e",
+     "metric": "e2e_ratio_2048_cand1024",
+     "population": "heldout-2048:6v6",
+     "aggregation": "median_ratio",
+     "unit": "ratio",
+     "direction": "below",
+     "value": 0.95,
+     "fence": {
+      "width": 0.03,
+      "unit": "ratio"
+     }
+    },
+    {
+     "measurement": "10:decode",
+     "metric": "decode_s_ratio_cand1024",
+     "population": "heldout-lengths:3",
+     "aggregation": "max_median_ratio",
+     "unit": "ratio",
+     "direction": "below",
+     "value": 1.02,
+     "fence": {
+      "width": 0.02,
+      "unit": "ratio"
+     }
+    }
+   ],
+   "description": "the per-run peak active memory grows by at most 20 percent at any length against production (the footprint, active plus the allocator pool, is flattened by the 2 GiB pool cap and is reported, not gated); the end-to-end wall of prefill plus 16 decode steps at 2,048 tokens falls by at least 5 percent; and the 16 greedy decode steps after the prefill are no more than 2 percent slower than production's at any length (a hidden cost outside the first-token interval). Effective FIRE thresholds under the fences: peak at most 1.18, end-to-end at most 0.92, decode at most 1.00."
+  }
+ ],
+ "receipts": [
+  "logs/qwen_prefill/baseline.json",
+  "logs/qwen_prefill/decomp.json",
+  "logs/qwen_prefill/design.json",
+  "logs/qwen_prefill/heldout.json",
+  "logs/qwen_prefill/adjudicate_1/observations.json",
+  "logs/qwen_prefill/adjudicate_1/adjudication.txt"
+ ],
+ "operands": [
+  {
+   "name": "the arm C artifact digest chain",
+   "provider": "logs/qwenwhole/artifact_digest_C.txt"
+  },
+  {
+   "name": "the frozen held-out prompts",
+   "provider": "scratch/evalsets/qwen_prefill_heldout_prompts.json"
+  },
+  {
+   "name": "the qualified prefill entry point",
+   "provider": "llmopt/lab/qprefill.py"
+  },
+  {
+   "name": "the kernels and the GEMM path",
+   "provider": "llmopt/lab/qmetal.py"
+  },
+  {
+   "name": "the engine",
+   "provider": "llmopt/lab/qserve.py"
+  },
+  {
+   "name": "the study driver",
+   "provider": "scratch/qwen_prefill_wall.py"
+  },
+  {
+   "name": "the observations adapter",
+   "provider": "scratch/qwen_prefill_obs.py"
+  },
+  {
+   "name": "the chain",
+   "provider": "scratch/qwen_prefill_study.sh"
+  }
+ ],
+ "refuted_if": "NULL for this study if neither candidate fires all five of its bars: no registered diagnostic earns an implementation GO; the baseline and the decomposition are booked either way. A reading inside the fence on a ratio bar is UNRESOLVED (noise), not a win.",
+ "refuted_if_predicate": {
+  "measurement": "ttft_ratio_1024_cand512",
+  "direction": "above",
+  "value": 0.9,
+  "fence": {
+   "width": 0.03,
+   "unit": "ratio"
+  }
+ },
+ "registered_prior": "The GEMM path decodes every compressed matrix to float32 once per chunk and multiplies the chunk's rows against it, so the decode cost per token halves from chunk 256 to 512 and again to 1,024, while the float32 matmul cost per token is roughly flat and the attention's per-chunk work grows with the chunk. QWEN-METAL-PREFILL-GEMM-0 measured the decode of a 17408x5120 MLP matrix at 3.38 ms and its float32 matmul for 256 rows at 11.3 ms (decode plus matmul 15.0 ms, decode 22 percent of that matrix's call), and projected the tower-wide decode at about 0.97 s of a measured 6.73 s 256-token chunk (about 14 percent). Expected TTFT reduction therefore about 7 percent at chunk 512 and about 11 percent at chunk 1,024 before any attention growth: bars 1 and 2 (chunk 512) expected UNRESOLVED or NO-FIRE against the 13 percent effective threshold, bars 6 and 7 (chunk 1,024) near the fence and more likely UNRESOLVED than FIRE; the study's registered expectation is therefore NULL or UNRESOLVED on latency, with the decomposition and the design stage carrying the actionable finding. At 512 tokens both candidates run the 510-token prompt as one chunk, so bars 3 and 8 measure the same quantity and are expected near 1.0 (FIRE if under 1.01). Parity: QWEN-METAL-CHUNKED-PREFILL-0 found chunks 128 and 256 bit-identical and chunk 512 different at 1.8e-5 relative, attributed by pattern to the attention kernel a query length selects (not a measurement of the scores), so the argmax and the 16 decode tokens are expected equal (bars 4 and 9 FIRE) with top-16 differences near 1e-4. Memory: the fused-path record (QWEN-METAL-CHUNKED-PREFILL-0) had peak 11.41 GB at chunk 256 and 13.00 GB at chunk 512 at 1,024 tokens, a ratio of 1.14; the GEMM path's per-matrix outputs scale with the chunk (71 MB per matrix at 1,024 rows), so the peak ratio is expected near 1.1 at chunk 512 and near or above 1.2 at chunk 1,024 (bar 10's peak conjunct the likeliest NO-FIRE). Production ABBA spread expected 2 to 5 percent. The decomposition is expected to show the W4 MLP matmuls as the leading family (about half of the chunk time) with the S16 body projections next; the pre-registration smoke at 256 tokens hinted that the DeltaNet recurrence's marginal cost is about a third of the chunk, which if confirmed at 1,024 tokens is the leading actionable non-matmul cost; the attention core and the norms are expected under 5 percent; the fp16 matmul microbenchmark is expected faster than fp32 at a relative error near 1e-3, a kernel-design hypothesis for a separate GO, not a candidate here."
+}

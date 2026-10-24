@@ -44,6 +44,30 @@ def _report(res, load_s=None):
           f"cache holds {res.cache_tokens} tokens; mode {res.mode}", file=sys.stderr)
 
 
+def summarize_turns(turns: list) -> dict:
+    """Operational accounting derived from the recorded turn results only
+    (QWEN-PREFILL-WALL-0): mode counts, fallback reasons, first-token latency
+    by mode, the prompt tokens re-prefilled by fallbacks and their cost,
+    token totals and memory. No cache logic is duplicated here."""
+    import statistics
+    by_mode: dict = {}
+    reasons: dict = {}
+    for t in turns:
+        by_mode.setdefault(t["mode"], []).append(t["timings"]["first_token_s"])
+        if t["mode"] == "replay-fallback":
+            reasons[t.get("note") or "unspecified"] = reasons.get(t.get("note") or "unspecified", 0) + 1
+    fallbacks = [t for t in turns if t["mode"] == "replay-fallback"]
+    return {"turns": len(turns), "incremental_reuses": sum(1 for t in turns if t["mode"] == "incremental"),
+            "replay_fallbacks": len(fallbacks), "fresh_turns": sum(1 for t in turns if t["mode"] == "fresh"), "fallback_reasons": reasons,
+            "first_token_s_by_mode": by_mode, "first_token_s_median_by_mode": {m: statistics.median(v) for m, v in by_mode.items()},
+            "replayed_prompt_tokens": sum(len(t["prompt_ids"]) for t in fallbacks), "replay_cost_s": sum(t["timings"]["first_token_s"] for t in fallbacks),
+            "prompt_tokens_total": sum(len(t["prompt_ids"]) for t in turns), "generated_tokens_total": sum(len(t["generated_ids"]) for t in turns),
+            "peak_bytes_max": max((t["memory"]["peak_bytes"] for t in turns), default=None),
+            "footprint_bytes_max": max((t["memory"]["footprint_bytes"] for t in turns), default=None),
+            "active_bytes_last": turns[-1]["memory"]["active_bytes"] if turns else None,
+            "cache_tokens_last": turns[-1]["cache_tokens"] if turns else None}
+
+
 def resolve_mode(thinking_flag: bool, no_thinking_flag: bool, effort):   # thinking_flag is kept for the record: --thinking alone is the default configuration
     """The CLI's configuration: no flags = thinking on at low effort (VERDICT
     QWEN-LOW-DEFAULT-1); --no-thinking = direct answers; --reasoning-effort
@@ -118,6 +142,15 @@ def main() -> int:
                 print("[qwen_chat] session reset", file=sys.stderr)
                 continue
             turn(line)
+    summary = summarize_turns(receipts["turns"])
+    receipts["summary"] = summary
+    if summary["turns"]:
+        med = summary["first_token_s_median_by_mode"]
+        print(f"[qwen_chat] {summary['turns']} turns: {summary['incremental_reuses']} reused, {summary['replay_fallbacks']} replayed"
+              f"{' (' + '; '.join(summary['fallback_reasons']) + ')' if summary['fallback_reasons'] else ''}, {summary['fresh_turns']} fresh; "
+              f"first token median by mode {{{', '.join(f'{m}: {v:.2f}s' for m, v in med.items())}}}; replayed {summary['replayed_prompt_tokens']} prompt tokens "
+              f"costing {summary['replay_cost_s']:.1f}s; peak {summary['peak_bytes_max'] / 1e9:.2f} GB, footprint {summary['footprint_bytes_max'] / 1e9:.2f} GB, "
+              f"active {summary['active_bytes_last'] / 1e9:.2f} GB, cache holds {summary['cache_tokens_last']} tokens", file=sys.stderr)
     if a.json:
         json.dump(receipts, open(a.json, "w"), indent=1)
         print(f"[qwen_chat] wrote {a.json}", file=sys.stderr)

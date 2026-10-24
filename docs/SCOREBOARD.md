@@ -1,6 +1,6 @@
 # SCOREBOARD — generated sample of index-curated verdicts
 
-*Generated from docs/results-index.jsonl by scripts/gen_scoreboard.py. 94 live of 102 entries carrying a hand-curated `verdict` field, out of 1562 ledger entries; the curated field reaches RESULTS line 85431. This is a PARTIAL view, not current truth: docs/FINDINGS.md is the curated public layer, and every entry resolves through docs/RESULTS.md. Full chains: scripts/results_query.py --chain. Never hand-edit this file.*
+*Generated from docs/results-index.jsonl by scripts/gen_scoreboard.py. 94 live of 102 entries carrying a hand-curated `verdict` field, out of 1563 ledger entries; the curated field reaches RESULTS line 85431. This is a PARTIAL view, not current truth: docs/FINDINGS.md is the curated public layer, and every entry resolves through docs/RESULTS.md. Full chains: scripts/results_query.py --chain. Never hand-edit this file.*
 
 ## QWEN-LOW-DEFAULT
 - **2026-10-23** GO: six of six contract bars FIRE on the fresh smoke; chat defaults released as thinking low, 768 tokens, incremental reuse with replay fallback; the turn-7 re-tokenisation fixture reproduced and replayed; 40 release tests passed  *(RESULTS L85431)*
