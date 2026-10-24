@@ -61,7 +61,10 @@ from typing import Iterable, Optional
 CACHE_LIMIT_BYTES = 2 * 1024 ** 3
 DEFAULT_CONTEXT_CAP = 8192
 REASONING_EFFORTS = ("xhigh", "medium", "low")   # the pinned template's values; xhigh is its default
-DEFAULT_MAX_TOKENS = 512
+DEFAULT_MAX_TOKENS = 768            # VERDICT QWEN-LOW-DEFAULT-1: the budget of the default configuration
+DEFAULT_THINKING = True             # the chat default since VERDICT QWEN-LOW-DEFAULT-1: thinking on at low effort
+DEFAULT_EFFORT = "low"
+_UNSET = object()
 REQUIRED_KERNEL_GENERATION = 5
 ENDOFTEXT = "<|endoftext|>"
 
@@ -289,16 +292,28 @@ class Engine:
 
 
 class Session:
-    """A conversation against one Engine. mode "incremental" (the default
+    """A conversation against one Engine (defaults: thinking on at low effort,
+    768 tokens per turn, incremental cache reuse). mode "incremental" (the default
     since VERDICT QWEN-CHAT-DEFAULT-0) keeps the cache across turns when the
     rendered transcript extends the fed token sequence exactly, else replays
     into a fresh cache and says so; mode "replay" (the reference) re-renders
     and re-prefills the whole transcript into a fresh cache each turn."""
 
-    def __init__(self, engine: Engine, system: Optional[str] = None, mode: str = "incremental", enable_thinking: Optional[bool] = None,
-                 reasoning_effort: Optional[str] = None):
+    def __init__(self, engine: Engine, system: Optional[str] = None, mode: str = "incremental", enable_thinking=_UNSET, reasoning_effort=_UNSET):
+        """Defaults (VERDICT QWEN-LOW-DEFAULT-1): when neither control is given,
+        thinking on with the template's reasoning_effort low. Any explicit
+        enable_thinking (True, False or None for the template's own default)
+        with no effort keeps the template's default effort, so research drivers
+        that name their mode reproduce their prior receipts; an effort with
+        thinking False is refused."""
         if mode not in ("replay", "incremental"):
             raise ValueError(mode)
+        if enable_thinking is _UNSET and reasoning_effort is _UNSET:
+            enable_thinking, reasoning_effort = DEFAULT_THINKING, DEFAULT_EFFORT       # nothing specified: the chat default
+        elif enable_thinking is _UNSET:
+            enable_thinking = None if reasoning_effort is None else True              # an explicit effort implies thinking; an explicit None keeps the template's default
+        elif reasoning_effort is _UNSET:
+            reasoning_effort = None            # an explicit thinking choice with no effort keeps the template's own default (xhigh): every existing research driver reproduces
         if reasoning_effort is not None and (reasoning_effort not in REASONING_EFFORTS or enable_thinking is False):
             raise InputError(f"reasoning_effort {reasoning_effort!r} needs enable_thinking True (or unset) and one of {REASONING_EFFORTS}")
         self.engine, self.mode, self.enable_thinking, self.reasoning_effort = engine, mode, enable_thinking, reasoning_effort

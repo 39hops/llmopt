@@ -1231,6 +1231,7 @@ Depth anatomy: WHERE in the stack does the rewrite decision form?
 Local greedy chat with the qualified Qwen3.8-27B arm C on this Mac (QWEN-INFERENCE-BASELINE-0): the command-line face of llmopt.lab.qserve.
 
 - `_report(res, load_s=None)`
+- `resolve_mode(thinking_flag: bool, no_thinking_flag: bool, effort)` — The CLI's configuration: no flags = thinking on at low effort (VERDICT
 - `main() -> int`
 
 ### scripts/recover_receipt.py
@@ -5341,6 +5342,19 @@ Observations adapter for PRE-REG QWEN-DEEPCHAT-0 as amended by AMENDMENT QWEN-DE
 
 - `chatml_sha(tok, turns, k)` — sha256 of the ids of a hand-built thinking-off ChatML transcript up to the user turn k (0-based).
 - `main(receipt_path, prereg_path)`
+
+### scratch/qwen_default1_obs.py
+Observations adapter for PRE-REG QWEN-LOW-DEFAULT-1: derives the registered measurements from the integration-smoke receipt (scratch/qwen_default1_smoke.py) in committed code.
+
+- `main(receipt_path, prereg_path)`
+
+### scratch/qwen_default1_smoke.py
+QWEN-LOW-DEFAULT-1: the fresh integration smoke of the corrected operational cache contract under the promoted defaults (Session and CLI: enable_thinking True, reasoning_effort low, 768 tokens, incremental reuse under the exact-prefix check with replay fallback, greedy, generation 5).
+
+- `sha(ids)`
+- `run_tests()`
+- `session_rows(eng, sess, turns)`
+- `main() -> None`
 
 ### scratch/qwen_displace_extract.py
 Extract one gate_proj matrix from HF-cached Qwen2.5-0.5B base and Instruct into plot_neurons-compatible .pt files, so the --displace (central-lattice whisper-zoom) view can render an INTERNET-trained model's post-training displacement next to the closed-system natives' (the chaos-vs-structure tell, Artin's ask 2026-08-08; generator-loss lesson: this adapter is COMMITTED).

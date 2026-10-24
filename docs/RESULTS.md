@@ -85338,3 +85338,69 @@ correctness property it meant (no incompatible cache reused; replay
 token-equal; offsets equal; fallbacks reported, not gated) and may
 read the seven other bars from these receipts rather than re-run them;
 nothing else in the decision rule needs to change.
+
+## PRE-REG QWEN-LOW-DEFAULT-1: the corrected operational cache-correctness contract registered as the release decision for the chat defaults (Session and CLI with no controls given: enable_thinking True, reasoning_effort low, 768 tokens, incremental reuse under the exact rendered-prefix check with replay fallback, greedy, generation 5), decided by six bars on a FRESH integration smoke (no unsafe reuse; incremental equal to replay on every turn and on the planning-turn-7 fixture against its replay and the frozen receipt; every measured offset equal to the accounting; the fixture reproducing and replaying; mid-session effort and thinking changes never reusing the cache; the release test suites passing in fresh subprocesses on the pinned tokenizer and the live tower); fallback frequency and latency reported as operational metrics, not failures; the v3 quality and conversation receipts of QWEN-LOW-RELEASE-0 cited as prior evidence already read, not re-run and not a new blind confirmation; the historical HOLD unamended; the defaults changed in code at this registration and reverted if any bar reads other than FIRE (docs/preregs/qwen-low-default-1.json) (2026-10-23)
+
+Artin's release-engineering GO after VERDICT QWEN-LOW-RELEASE-0: the
+HOLD stands exactly as booked (eight of nine bars FIRE, bar 9 NO-FIRE
+on a safe replay fallback caused by the re-tokenisation of a stored
+reply, which demonstrated no incorrect reuse, no token divergence and
+no offset mismatch). This registration does not redo model selection
+and does not turn that bar into a FIRE; it registers the engineering
+requirement the earlier bar meant, and decides the promotion on a new
+smoke of the actual defaults. The contract, in the module docstring of
+llmopt/lab/qserve.py since QWEN-INFERENCE-BASELINE-0 and now the release
+decision: reuse only on an exact fed-prefix match of the rendered
+transcript; otherwise full replay with the reason recorded; never reuse
+an incompatible cache; token equality with full replay where qualified;
+every measured KV offset equal to the accounting; fallbacks reported
+with their latency.
+
+The defaults at this commit. Session(engine) with neither control given
+resolves to enable_thinking True and reasoning_effort low; any explicit
+enable_thinking (True, False or None, the template's own default) with
+no effort keeps the template's default effort, and an explicit effort
+implies thinking, so every research driver that names its mode
+(scratch/qwen_battery_run.py, qwen_incr_perf.py, qwen_deepchat_diag.py,
+qwen_lowchat.py and the frozen evaluation configurations) reproduces its
+prior receipts; an effort with thinking False is refused. DEFAULT_MAX_TOKENS
+is 768. The CLI resolves no flags to thinking at low effort with 768
+tokens; --no-thinking (the fast mode, named in --help) gives direct
+answers; --reasoning-effort xhigh, medium or low and --max-tokens
+override; --replay keeps full replay; --thinking alone takes the default
+effort. Nothing in the weights, codebooks, kernels, tokenizer files or
+frozen research configurations changes. tests/test_qdefaults.py pins
+the defaults on the stub in fresh subprocesses; tests/test_qtemplate.py
+and tests/test_qrelease.py pin them on the pinned tokenizer (no flags
+renders as thinking low; --no-thinking renders the pinned off template
+b1d7a1c8ffb7; --reasoning-effort xhigh renders the pinned xhigh template
+a2c3268e72cb and equals the template's own default; the help names the
+fast option) and, live, the fallback and the multi-turn equivalence.
+
+The regression fixture, tests/fixtures/qwen_planning_turn7.json, is the
+planning conversation's first seven turns under low from the frozen
+receipt logs/qwen_serve/lowchat_v1.json: the ids the model generated on
+turn 6 contain the quotation mark and "You" as two tokens (ids 1 and
+2523) at generated offset 47, re-encoding the stored text gives one token
+(20946), the rendering of turn 7 therefore does not extend the fed ids
+(the break at the same offset), the prefix check detects it and the
+session replays; on the real tower a session holding exactly those fed
+ids asks turn 7 and must replay to the replay session's and the frozen
+receipt's 119 tokens with the offsets equal to the accounting. Transcript
+semantics are not changed to force token-boundary preservation.
+
+Measurement: scratch/qwen_default1_smoke.py under liverun (the release
+suites in fresh subprocesses with pass and fail counts; the fixture on
+the tower; two bounded conversations of four turns, programming and
+factual, as incremental and replay sessions under the default; a
+mid-session effort change and a thinking change, a budget stop, a
+context-cap refusal and recovery, a reset); receipt
+logs/qwen_release/default1_smoke.json; adapter
+scratch/qwen_default1_obs.py; adjudication
+logs/qwen_release/default1_adjudicate_1/. Bars as in the JSON; every
+bar FIRE promotes and the release verdict books the defaults; any other
+reading reverts the code defaults in the HOLD commit. Registered prior:
+as in the JSON (every bar FIRE expected; the fallback's first token near
+a 1,851-token prefill, about 50 s, against 2 to 3 s for an incremental
+turn: the operational cost of a fallback is what this registration
+reports).

@@ -1,0 +1,44 @@
+{
+ "name": "QWEN-LOW-DEFAULT-1",
+ "note": "Machine-readable form of PRE-REG QWEN-LOW-DEFAULT-1; the prose governs on any conflict. Artin's release-engineering GO (2026-10-23) after VERDICT QWEN-LOW-RELEASE-0 was HELD on its bar 9: the operational cache-correctness contract is registered as the decision, and the chat defaults (Session and CLI with no controls given: enable_thinking True, reasoning_effort low, 768 tokens, incremental reuse under the exact-prefix check with replay fallback, greedy, generation 5) are promoted if the contract passes a FRESH integration smoke. The contract: reuse the cache only when the rendered transcript has the previously fed ids as an exact prefix; otherwise replay with the reason recorded; never reuse an incompatible cache; generated tokens equal full replay where qualified; every measured KV offset equals the accounting; fallback frequency and latency are operational metrics, not failures. The v3 quality receipts and the four-conversation receipt of QWEN-LOW-RELEASE-0 are prior evidence already read, cited, not re-run and not a new blind confirmation; the historical HOLD stands as booked. The defaults are changed in code at this registration so the smoke tests the actual defaults; any bar other than FIRE reverts them in the HOLD commit.",
+ "results_id": "2026-10-23-pre-reg-qwen-low-default-1",
+ "registered": "2026-10-23",
+ "machine": "mac",
+ "arms": {
+  "DEFAULT": {"description": "Session() and scripts/qwen_chat.py with no controls: thinking True, reasoning_effort low, 768 tokens, incremental, greedy, generation 5"},
+  "REPLAY": {"description": "the same transcripts through full-transcript replay, the qualified reference"}
+ },
+ "bars": [
+  {"id": 1, "name": "NO-UNSAFE-REUSE", "metric": "unsafe_reuse_turns", "population": "turns", "aggregation": "count", "unit": "turns", "direction": "below", "value": 0.5, "arms": ["DEFAULT"], "gate_class": "sanity",
+   "description": "no turn taken through the incremental path whose rendered prompt did not continue the fed ids exactly (computed from the recorded ids of every smoke, contract and fixture turn)."},
+  {"id": 2, "name": "REPLAY-EQUAL", "metric": "replay_token_mismatch", "population": "turns", "aggregation": "count", "unit": "turns", "direction": "below", "value": 0.5, "arms": ["DEFAULT", "REPLAY"],
+   "description": "the incremental session's generated ids equal the replay session's on every smoke turn, and the fixture's fallback turn equals both its replay session and the frozen receipt of QWEN-LOW-RELEASE-0 (119 tokens)."},
+  {"id": 3, "name": "OFFSETS", "metric": "offset_mismatch_turns", "population": "turns", "aggregation": "count", "unit": "turns", "direction": "below", "value": 0.5, "arms": ["DEFAULT", "REPLAY"], "gate_class": "sanity",
+   "description": "every measured KV offset equals the token accounting (a within-session mismatch aborts the run; the count is what the guard let through)."},
+  {"id": 4, "name": "FIXTURE", "metric": "fixture_outcome", "population": "fixture:1", "aggregation": "indicator", "unit": "fixtures", "direction": "above", "value": 0.5, "arms": ["DEFAULT", "REPLAY"],
+   "description": "the planning-turn-7 tokenizer mismatch reproduces on the real tower: the rendering does not extend the fed ids (the merge of ids 1 and 2523 into 20946 at generated offset 47), the session replays rather than reuses, the tokens equal the replay reference and the frozen receipt, the offsets hold."},
+  {"id": 5, "name": "NO-INCOMPATIBLE-REUSE", "metric": "incompatible_change_reused", "population": "changes:2", "aggregation": "count", "unit": "turns", "direction": "below", "value": 0.5, "arms": ["DEFAULT"], "gate_class": "sanity",
+   "description": "a mid-session reasoning_effort change and a mid-session thinking change each fall back to replay; neither reuses the cache."},
+  {"id": 6, "name": "RELEASE-TESTS", "metric": "tests_failed", "population": "suites:3", "aggregation": "count", "unit": "tests", "direction": "below", "value": 0.5, "arms": ["DEFAULT"],
+   "description": "the release suites pass in fresh subprocesses: the stub default tests (tests/test_qdefaults.py), the pinned-template tests (tests/test_qtemplate.py), and the release tests on the pinned tokenizer and the live tower (tests/test_qrelease.py: no flags renders as thinking low, --no-thinking renders the pinned off template, --reasoning-effort xhigh renders the pinned xhigh template, the CLI help names the fast option, the fixture ids, the live fallback, the live multi-turn incremental-equals-replay smoke with an incompatible change, a budget stop, a cap refusal, recovery and reset)."}
+ ],
+ "receipts": [
+  "logs/qwen_release/default1_smoke.json",
+  "logs/qwen_release/default1_adjudicate_1/observations.json",
+  "logs/qwen_release/default1_adjudicate_1/adjudication.txt"
+ ],
+ "operands": [
+  {"name": "the arm C artifact digest chain", "provider": "logs/qwenwhole/artifact_digest_C.txt"},
+  {"name": "the engine with the promoted defaults", "provider": "llmopt/lab/qserve.py"},
+  {"name": "the CLI", "provider": "scripts/qwen_chat.py"},
+  {"name": "the tokenizer mismatch fixture", "provider": "tests/fixtures/qwen_planning_turn7.json"},
+  {"name": "the release tests", "provider": "tests/test_qrelease.py"},
+  {"name": "the default tests", "provider": "tests/test_qdefaults.py"},
+  {"name": "the smoke driver", "provider": "scratch/qwen_default1_smoke.py"},
+  {"name": "the observations adapter", "provider": "scratch/qwen_default1_obs.py"},
+  {"name": "the chain", "provider": "scratch/qwen_default1_study.sh"}
+ ],
+ "refuted_if": "The promotion is HELD and the defaults reverted if any bar reads other than FIRE: an unsafe or incompatible reuse, a token difference against replay, an offset mismatch, a fixture that does not reproduce or does not replay, or a failing release test; the failing bar and its value are the HOLD's evidence.",
+ "refuted_if_predicate": {"measurement": "unsafe_reuse_turns", "direction": "above", "value": 0.5},
+ "registered_prior": "The contract already held on every measured turn of QWEN-CHAT-DEFAULT-0 (32 of 32), QWEN-DEEPCHAT-0 (24 of 24) and QWEN-LOW-RELEASE-0 (32 of 32 with one benign fallback), so bars 1, 2, 3 and 5 are expected FIRE at 0. The fixture is expected to reproduce exactly (greedy on the same ids; the merge is a property of the tokenizer, not the model) with the fallback's first token near a 1,851-token replay prefill (about 50 s) against 2 to 3 s for an incremental turn: the latency cost of a fallback is the operational metric this registration reports. The release tests are expected to pass; the likeliest failure is a live timing or environment flake, which would read as a HOLD to be understood, not a defect of the contract."
+}
