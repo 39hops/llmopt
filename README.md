@@ -161,6 +161,48 @@ quantization, eviction. [`kernels/`](llmopt/kernels/) — hand-written Metal and
 Triton kernels **with the benchmarks they lost**.
 [`codegen/`](llmopt/codegen/) — assemble the prediction, run the program.
 
+## Local chat with the compressed Qwen3.8-27B
+
+The qualified arm C (9.37 GB resident, generation-5 Metal kernels) serves on
+a 36 GB Apple Silicon Mac through `scripts/qwen_chat.py`. The default since
+VERDICT QWEN-LOW-DEFAULT-1 is thinking at the template's low reasoning
+effort with a 768-token budget, incremental cache reuse under an exact
+rendered-prefix check with full-transcript replay as the fallback, greedy
+decoding. The fast mode answers directly without a reasoning block.
+
+```bash
+.venv/bin/python scripts/qwen_chat.py --interactive                 # ordinary: thinking, low effort, 768 tokens
+.venv/bin/python scripts/qwen_chat.py --interactive --no-thinking   # fast: direct answers
+.venv/bin/python scripts/qwen_chat.py --prompt "What is 413 * 685?" --reasoning-effort xhigh --max-tokens 1024
+.venv/bin/python scripts/qwen_chat.py --interactive --replay        # full-transcript replay every turn (the reference)
+```
+
+What the default buys and costs, measured on purpose-built batteries
+(RESULTS: VERDICT QWEN-EFFORT-0, VERDICT QWEN-LOW-RELEASE-0): on the
+60-task v3 confirmation battery the default configuration passed 56 of 60
+against 45 for direct answers at the same 768-token budget; these are
+measured pass counts on a small battery whose families were chosen by the
+lab, not a general accuracy figure. The cost in that battery: 12,345
+generated tokens and 1,470 s against 2,925 tokens and 485 s for direct
+answers; in four eight-turn conversations 5,202 tokens and 642 s against
+533 tokens and 123 s (logs/qwen_serve/lowchat_v1.json). Three of 68 battery turns never closed their
+reasoning block and produced no final answer. First token after about 2
+to 3.5 s on short prompts; a 2,048-token prompt waits about 63 s.
+
+Known limitations. Direct-answer mode (no thinking) collapses in longer
+conversations: in two studies it produced three consecutive empty replies
+on turns 5 to 7 of an eight-turn conversation at both 96 and 768-token
+budgets; the stop was the model's own decision (margins of 2 to 10
+logits), not a serving defect. Thinking mode did not show this in 32
+measured turns but can run a reasoning block to the budget without
+answering. Multi-operand arithmetic without thinking is unreliable. All
+measurements are greedy; the vendor recommends sampling for ordinary
+generation, which this program does not implement. Incremental reuse and
+full replay were token-identical on every measured turn, with the two
+paths not bit-equivalent by construction; a re-tokenisation of a stored
+reply can force a replay, which the session reports and which costs the
+prefill of the whole transcript.
+
 ## Reproduce
 
 ```bash

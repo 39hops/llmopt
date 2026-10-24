@@ -85427,3 +85427,102 @@ for the record, not corrected (RESULTS is append-only): the HOLD
 verdict of QWEN-LOW-RELEASE-0 says "the seven other bars" where eight
 fired, and "thinking off is not the default" where "thinking at low
 effort is not the default" was meant.
+
+## VERDICT QWEN-LOW-DEFAULT-1: GO, every bar FIRE (adjudicated against the amended docs/preregs/qwen-low-default-1a.json; logs/qwen_release/default1_adjudicate_1/observations.json and logs/qwen_release/default1_adjudicate_1/adjudication.txt): the operational cache-correctness contract holds on the fresh integration smoke of the promoted defaults (Session and CLI with no controls given: enable_thinking True, reasoning_effort low, 768 tokens, incremental reuse under the exact rendered-prefix check with replay fallback, greedy, generation 5): no unsafe reuse on 21 smoke and contract turns checked against an independent re-rendering, 6 of 6 later smoke turns reused the cache and were token-equal to replay, every measured KV offset equal to the accounting, the planning-turn-7 re-tokenisation fixture reproduced on the tower (the break at generated offset 47, the session replayed rather than reused, 119 tokens equal to the replay session and to the frozen receipt, offsets valid, the fallback's first token 48.2 s against 2.0 to 2.3 s for a reused turn), a mid-session effort change and a thinking change both fell back, a budget stop, a context-cap refusal with the cache dropped, recovery and reset behaved, and the four release suites passed in fresh subprocesses with no live test skipped (40 passed); the defaults are therefore RELEASED at this commit; the historical HOLD of QWEN-LOW-RELEASE-0 stands unamended and the v3 and conversation receipts it cites are prior evidence already read, not a new confirmation (2026-10-23, Mac, commit 1e0e09b5 for the receipt)
+
+The adjudicator's lines, verbatim:
+  BAR 1 NO-UNSAFE-REUSE: FIRE
+  BAR 2 REPLAY-EQUAL: FIRE
+  BAR 3 OFFSETS: FIRE
+  BAR 4 FIXTURE: FIRE
+  BAR 5 NO-INCOMPATIBLE-REUSE: FIRE
+  BAR 6 RELEASE-TESTS: FIRE
+  REFUTED-IF: NOT-REFUTED
+
+Receipt logs/qwen_release/default1_smoke_2.json (scratch/qwen_default1_smoke.py
+under liverun qwen-low-default-1b at 1e0e09b5, clean tree, 737 s; record
+logs/liverun/qwen-low-default-1b.jsonl; log logs/qwen_release/
+default1_1e0e09b5.log); observations by scratch/qwen_default1_obs.py (the
+artifact chain checked against logs/qwenwhole/artifact_digest_C.txt, no
+live test skipped, 6 of 6 later smoke turns reused). The first smoke
+(logs/qwen_release/default1_smoke.json at 520a11db, superseded by
+AMENDMENT QWEN-LOW-DEFAULT-1-SMOKE before it was read) is disclosed: its
+one failing test was the context-cap probe the review had called too
+short; its fixture, contract and smoke blocks read the same as the
+second's (break 47, fallback, equal, offsets; 0 unsafe reuses; 0 token
+mismatches; both incompatible changes fell back; 8 of 8 smoke turns
+equal).
+
+The defaults as released. Session(engine) with neither control given:
+enable_thinking True, reasoning_effort low, mode incremental,
+DEFAULT_MAX_TOKENS 768 (the receipt records them from a constructed
+Session). Any explicit enable_thinking (True, False, or None for the
+template's own default) with no effort keeps the template's default
+effort, so every research driver that names its mode reproduces its
+prior receipts (scratch/qwen_battery_run.py, qwen_incr_perf.py,
+qwen_deepchat_diag.py, qwen_lowchat.py, qwen_serve_perf.py and the
+frozen evaluation configurations, traced caller by caller in the
+review); an explicit effort implies thinking; an effort with thinking
+False is refused; Engine.chat keeps its own explicit arguments. The CLI
+(scripts/qwen_chat.py): no flags give thinking at low effort with 768
+tokens; --no-thinking is the fast mode (direct answers, named in the
+help); --reasoning-effort xhigh, medium or low; --max-tokens; --replay
+for full-transcript replay; --thinking alone takes the default effort;
+--replay with --incremental, a --max-tokens below 1, a --context-cap
+below 1 and --reasoning-effort with --no-thinking are refused before the
+cold load. Weights, codebooks, kernels, tokenizer files and the frozen
+research configurations are unchanged.
+
+Measured on the smoke (programming and factual conversations, four
+turns each, under the default): incremental later turns first token 2.0
+to 2.3 s against replay's 3.5 to 16.2 s growing with the transcript;
+replies 19 to 182 tokens, every think block closed, 672 generated tokens
+and 86 s over the eight incremental turns; peak active 11.5 GB
+(11.9 GB over the whole smoke including the 1,851-token fixture
+prefill). The fixture: a cache holding exactly the 1,826 fed ids of the
+frozen planning transcript asked turn 7; the rendering did not extend
+the fed ids (ids 1 and 2523 emitted, 20946 re-encoded, at generated
+offset 47; the rendering's sha equal to the frozen receipt's prompt
+sha), the session replayed with the reason on record, generated the
+same 119 ids as the replay session and as the frozen receipt, and the
+offsets held; the fallback cost a 1,851-token prefill, 48.2 s against
+48.2 s for the replay session's own prefill and 2 s for a reused turn.
+This is the operational cost of a fallback, reported as the registration
+required and not gated.
+
+Release tests (fresh subprocesses, the pinned tokenizer, the live
+tower): tests/test_qdefaults.py 5 passed (the stub defaults, effort-only
+implies thinking, the refused combination, the CLI resolution, mode and
+effort changes never reusing); tests/test_qtemplate.py 4 passed (omitted
+equals xhigh, low and medium, no-thinking unchanged, unsupported
+refused); tests/test_qrelease.py 6 passed (no flags render as thinking
+low on the real tokenizer; --no-thinking renders the pinned off template
+b1d7a1c8ffb7; --reasoning-effort xhigh renders the pinned xhigh template
+a2c3268e72cb; the help names the fast option; the fixture's exact ids
+and prefix-check detection; Session.ask on the stub with the real
+tokenizer falling back; the live fallback to the reference; the live
+multi-turn equivalence with reuse asserted after closed turns, an
+incompatible change, a budget stop, a cap refusal with the cache
+dropped, recovery and reset); tests/test_qserve.py 25 passed, 1 skipped
+(a stub test that skips when the stub's trajectory offers no stop token
+within its budget, as it always has).
+
+What this release means and does not mean. Ordinary chat now thinks at
+low effort by default; the measured basis is QWEN-EFFORT-0 and
+QWEN-LOW-RELEASE-0 (56 of 60 against 45 on the v3 confirmation battery,
+32 of 32 conversation turns addressed, no empty completion), which were
+read before this registration and are prior evidence, not a blind
+confirmation; this verdict certifies the serving contract under the new
+defaults, not model quality. The cost documented for users: 12,345
+tokens and 1,470 s against 2,925 and 485 s on the v3 battery; 5,202
+tokens and 642 s against 533 and 123 s over the four conversations;
+three of 68 battery turns never closed their block; the no-thinking
+collapse at depth reproduced in two studies. The README carries a
+quick-start for both modes and a limitations note with these numbers,
+stated as measured pass counts on a purpose-built battery, not as
+general accuracy. Conditional on greedy decoding. Recommendation for the
+next workstream: first-token latency on long prompts (the single-turn
+wall; prefill kernels need their own GO), with the deterministic sampler
+design and the multi-row fused kernel from the DeepInfer review as the
+studied options; a fallback-rate metric in the CLI's receipts is the
+cheap operational follow-up.

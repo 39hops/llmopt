@@ -1775,6 +1775,13 @@
    "source": "results",
    "tracked": true
   },
+  "logs/liverun/qwen-low-default-1b.jsonl": {
+   "bytes": 488,
+   "exists": true,
+   "sha256": "da159ce9e72ef1d84067169d619d5a114e67dbb24daa5a8012aa63e212b540a1",
+   "source": "results",
+   "tracked": true
+  },
   "logs/liverun/qwen-low-release-0.jsonl": {
    "bytes": 486,
    "exists": true,
@@ -5206,24 +5213,32 @@
    "tracked": true
   },
   "logs/qwen_release/default1_adjudicate_1/adjudication.txt": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 177,
+   "exists": true,
+   "sha256": "c4dbdc8fb7988e2063a8af6f4e2e0c53905cbb505ac0b7a1835e19bef5014aea",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_release/default1_adjudicate_1/observations.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 3358,
+   "exists": true,
+   "sha256": "38d226181d0ad99cf527c2f567e8310b97d964515536ba2224ff49872dcfabdf",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_release/default1_smoke.json": {
    "bytes": 32448,
    "exists": true,
-   "local_only": true,
    "sha256": "a44491b530dc32817e2dce87cfe3e46d50615acb1482bbed9f014e2565a843f4",
    "source": "results",
-   "tracked": false
+   "tracked": true
   },
   "logs/qwen_release/default1_smoke_2.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 32235,
+   "exists": true,
+   "sha256": "9129057b43aab9b9867cd65a1d8079e2bfd9dc0213d4c1763f8cc9ecb452560b",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_serve/chatdefault_7ae6a556.log": {
    "bytes": 14657,

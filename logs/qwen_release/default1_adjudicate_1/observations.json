@@ -1,0 +1,114 @@
+{
+ "note": "Mechanical projection of logs/qwen_release/default1_smoke_2.json (commit 1e0e09b5); adapter scratch/qwen_default1_obs.py",
+ "registration_sha256": "c5a6f02f3a72f8fc3b265adcceb3ef6a786bef23bbc672b41e4b36d83ce73d78",
+ "measurement_valid": true,
+ "arms": {
+  "DEFAULT": {
+   "admissible": true,
+   "reason": "Session and CLI with no controls given: thinking True, low, 768, incremental, greedy, generation 5"
+  },
+  "REPLAY": {
+   "admissible": true,
+   "reason": "the same transcripts through full replay (the reference)"
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 0,
+   "metric": "unsafe_reuse_turns",
+   "population": "turns",
+   "aggregation": "count",
+   "unit": "turns",
+   "provenance": "21 smoke and contract turns checked against an independent re-rendering; 6 later smoke turns reused the cache, 0 fell back"
+  },
+  "2": {
+   "value": 0,
+   "metric": "replay_token_mismatch",
+   "population": "turns",
+   "aggregation": "count",
+   "unit": "turns",
+   "provenance": "smoke mismatches 0 of 8; fixture equal to replay True and to the frozen receipt True"
+  },
+  "3": {
+   "value": 0,
+   "metric": "offset_mismatch_turns",
+   "population": "turns",
+   "aggregation": "count",
+   "unit": "turns"
+  },
+  "4": {
+   "value": 1,
+   "metric": "fixture_outcome",
+   "population": "fixture:1",
+   "aggregation": "indicator",
+   "unit": "fixtures",
+   "provenance": "extends False mode replay-fallback break offset 47 n_generated 119 first token fallback 48.17 s replay 48.22 s"
+  },
+  "5": {
+   "value": 0,
+   "metric": "incompatible_change_reused",
+   "population": "changes:2",
+   "aggregation": "count",
+   "unit": "turns",
+   "provenance": "effort change replay-fallback, thinking change replay-fallback; budget stop max_tokens, cap refused True, cache dropped True, recovery fresh, reset True"
+  },
+  "6": {
+   "value": 0,
+   "metric": "tests_failed",
+   "population": "suites:4",
+   "aggregation": "count",
+   "unit": "tests",
+   "provenance": "passed 40; returncodes {'defaults_stub': 0, 'template': 0, 'release': 0, 'serve': 0}; summaries ['5 passed in 1.15s', '4 passed in 15.07s', '6 passed in 233.22s (0:03:53)', '25 passed, 1 skipped in 66.62s (0:01:06)']"
+  },
+  "unsafe_reuse_turns": {
+   "value": 0,
+   "metric": "unsafe_reuse_turns",
+   "population": "turns",
+   "aggregation": "count",
+   "unit": "turns",
+   "provenance": "21 smoke and contract turns checked against an independent re-rendering; 6 later smoke turns reused the cache, 0 fell back"
+  }
+ },
+ "diagnostics": {
+  "tests_failed": 0,
+  "tests_passed": 40,
+  "tests_returncodes": {
+   "defaults_stub": 0,
+   "template": 0,
+   "release": 0,
+   "serve": 0
+  },
+  "fixture_detected_and_replayed": true,
+  "fixture_tokens_equal_replay_and_receipt": true,
+  "fixture_offsets_ok": true,
+  "smoke_turns": 8,
+  "smoke_token_mismatch_turns": 0,
+  "smoke_later_fallbacks": 0,
+  "smoke_later_incremental": 6,
+  "tests_skipped_live_suites": 0,
+  "unsafe_reuse_turns": 0,
+  "offset_mismatch_turns": 0,
+  "incompatible_change_reused": 0,
+  "fallback_first_token_s": [],
+  "incremental_later_first_token_s": [
+   2.29,
+   2.13,
+   2.27,
+   1.98,
+   2.01,
+   2.0
+  ],
+  "replay_later_first_token_s": [
+   8.27,
+   12.69,
+   16.23,
+   3.47,
+   4.87,
+   6.38
+  ],
+  "smoke_generated_tokens": 672,
+  "smoke_total_s": 85.8,
+  "peak_bytes_max": 11935338052,
+  "think_closed_turns": 8
+ }
+}
