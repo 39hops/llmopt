@@ -1,0 +1,324 @@
+{
+ "name": "QWEN-GDN-KERNEL-0",
+ "note": "Machine-readable form of PRE-REG QWEN-GDN-KERNEL-0; the prose governs on any conflict. Artin's GO (2026-10-24): qualification, not promotion, of mlx-lm's Metal GatedDeltaNet recurrence kernel as a substitute for the Python reference loop the released arm C serving path runs today (the loop is selected by the vendor's training-mode flag, VERDICT QWEN-PREFILL-WALL-0). ORACLE: arm C against arm C, identical weights, prompts, cache construction and chunking (the serving path: generation 5, chunk 256, GEMM prefill, final or full head as the stage needs, 2 GiB cache limit, greedy), the loop (arm LOOP, today's code path unchanged) against the kernel (arm KERNEL), both selected by name through llmopt.lab.qgdn.recurrence_path in one process; agreement with the teacher token and the frozen generation-5 census rows (logs/qwen_metal_qual/C_v5/positions.jsonl, sha256 b2ec44f1...: its metal_* fields are arm C on Metal through the loop, generation 5, one-shot fused forward; its cpu_* fields are the HF torch arm C of logs/qwen_e0/C, a different implementation, not the mlx loop; its teacher_token is the original Qwen3.8-27B's) are DESCRIPTIVE only and bear no bar. DISPATCH PROOF: every arm's receipt carries the count of calls that reached gated_delta_ops and gated_delta_kernel (the implementations themselves wrapped, not the flag), and the observations are INVALID unless every LOOP selection executed ops only and every KERNEL selection executed the kernel only. SAFETY BARS (1 to 6) are required; PERFORMANCE BARS (7 to 10) are optional wins. DECISION RULE: a recommendation for a SEPARATE promotion GO (never a default change here) needs bars 1 to 6 all FIRE AND bars 7 and 8 FIRE; bars 1 to 6 FIRE with 7 or 8 NO-FIRE or UNRESOLVED books 'qualified, no material first-token gain, no recommendation'; any of bars 1 to 6 NO-FIRE books NULL with the divergence preserved (the layers and decode receipts classify it: arithmetic, state carry, or dispatch) and the bars unmoved; any of bars 1 to 6 UNRESOLVED (bar 6 is fenced) books UNRESOLVED, no recommendation; invalid observations (the adapter's validity floors, including the dispatch proof) book every bar UNRESOLVED with the reason chain, no recommendation, and any repair is a new registered rung; bars 9 and 10 are reported and play no part in the recommendation. NEAR TIES: the 15 census positions whose frozen metal_margin (the Metal loop path) is under 0.02 logits are listed one by one with both arms' argmaxes and margins; a flip there is a flip (bar 2 and bar 1 both count it), never 'rounding'. The state error is max |kernel - loop| over the root mean square of the loop's state (robust to near-zero elements); the element-wise relative error is read only on elements at least 1e-3 of the state's largest magnitude, and near-zero elements are counted. Bar 3 separates ARITHMETIC faithfulness (identical inputs and state-in, the layers stage) from PROPAGATED divergence (final states after the whole tower, a sanity bound only): the two are different quantities and the second grows with depth by construction. TTFT means the prefill-to-first-logits latency of one fresh prompt rendered with thinking off through the qualified prefill_chunked call, allocator pool emptied first, as in QWEN-PREFILL-WALL-0; the serving defaults and the qualified kernels are unchanged by this registration and by its verdict.",
+ "results_id": "2026-10-24-pre-reg-qwen-gdn-kernel-0",
+ "registered": "2026-10-24",
+ "machine": "mac",
+ "arms": {
+  "LOOP": {
+   "description": "the released path's recurrence: mlx-lm gated_delta_ops (the per-token Python loop), selected by name; identical to today's serving behaviour"
+  },
+  "KERNEL": {
+   "description": "the same tower with mlx-lm gated_delta_kernel (the Metal recurrence kernel the module ships) selected by name for every recurrence call; nothing else changed"
+  }
+ },
+ "bars": [
+  {
+   "id": 1,
+   "name": "CENSUS-ARGMAX",
+   "metric": "census_argmax_mismatches",
+   "population": "census-positions:4722",
+   "aggregation": "count",
+   "unit": "positions",
+   "direction": "below",
+   "value": 0.5,
+   "arms": [
+    "LOOP",
+    "KERNEL"
+   ],
+   "description": "SAFETY. At every one of the 4,722 E0 rollout positions (full-head chunked prefill of prompt plus recorded continuation through both arms) the kernel's argmax equals the loop's. Zero mismatches; every mismatch is listed with both margins. The frozen generation-5 census has no position with a metal_margin under 1e-3 logits (minimum 1.236e-3), so no exact tie exists in this population; a near-tie flip counts here and in bar 2 (bar 2 is a subset of this bar)."
+  },
+  {
+   "id": 2,
+   "name": "NEAR-TIES",
+   "metric": "census_near_tie_flips",
+   "population": "census-near-ties:15",
+   "aggregation": "count",
+   "unit": "positions",
+   "direction": "below",
+   "value": 0.5,
+   "arms": [
+    "LOOP",
+    "KERNEL"
+   ],
+   "description": "SAFETY. The 15 positions whose frozen generation-5 census metal_margin is under 0.02 logits (5 under 0.01; the same 15 rows under the cpu_margin field, which is the HF torch arm C and is not used) are token-identical between the arms; each is listed with the loop margin, the kernel margin and both argmaxes whatever the outcome."
+  },
+  {
+   "id": 3,
+   "name": "STATE",
+   "metric": "state_max_abs_over_rms",
+   "population": "layers-stage:6-dnet-layers-x-4-chunks+kernel-carried+decode-step",
+   "aggregation": "max",
+   "unit": "ratio",
+   "direction": "below",
+   "value": 0.0003,
+   "arms": [
+    "LOOP",
+    "KERNEL"
+   ],
+   "conjuncts": [
+    {
+     "measurement": "3:rel",
+     "metric": "state_max_rel_on_large",
+     "population": "layers-stage:6-dnet-layers-x-4-chunks+kernel-carried+decode-step",
+     "aggregation": "max",
+     "unit": "ratio",
+     "direction": "below",
+     "value": 0.001
+    },
+    {
+     "measurement": "3:prop",
+     "metric": "propagated_state_max_abs_over_rms",
+     "population": "final-states:census-48-layers-x-24-prompts+decode-2-prompts",
+     "aggregation": "max",
+     "unit": "ratio",
+     "direction": "below",
+     "value": 0.01
+    },
+    {
+     "measurement": "3:finite",
+     "metric": "nonfinite_arrays",
+     "population": "all-compared-arrays",
+     "aggregation": "count",
+     "unit": "arrays",
+     "direction": "below",
+     "value": 0.5
+    }
+   ],
+   "description": "SAFETY. Arithmetic faithfulness on IDENTICAL inputs: at six DeltaNet layers (ordinals 0, 9, 19, 29, 39, 47 of 48) on every chunk of a 1,000 to 1,024-token development prompt, the kernel re-run from the loop's own operands and state-in gives a new state within 3e-4 of the loop state's root mean square, as does the kernel carried on its own state across the four chunks against the loop's carried state, and a T = 1 step from each arm's carried state; the element-wise relative error on elements at least 1e-3 of the largest magnitude is at most 1e-3 (the near-zero count is reported: real states are heavy-tailed, about 98 percent of elements sit under 1e-3 of the maximum, which is why the error is normalized by the RMS and the relative read is restricted). PROPAGATED divergence (the kernel's state after a full prefill or 256-step decode against the loop's, where every upstream layer's perturbation has passed through the tower) is a sanity bound only: at most 1e-2 of the RMS at every one of the 48 layers of the 24 census prompts and the 2 decode prompts; its depth profile is reported. Every compared array is finite. Calibration before registration, disclosed: the layers stage run once on development seed gdn-dev-1-1024 (1,027 tokens, FIVE chunks; receipt force-added at logs/qwen_gdn/calibration/layers_gdn-dev-1-1024.json) read 5.4e-5 same-input, 6.7e-5 carried, 9.9e-6 on the output, 5.2e-5 relative on large elements; the registered run uses the first UNREAD seed from gdn-dev-2-1024 upward whose length lands in 1,000 to 1,024 tokens (exactly four chunks), so bar 3 is a prediction for a fresh prompt; the smoke's propagated readings were 5.8e-4 after a 70-token prefill (growing with depth from 2e-5 at layer 0) and 3.0e-4 after 24 decode steps, with 1.5e-3 relative on large elements, which is why the propagated quantity carries a sanity bound and no relative bar."
+  },
+  {
+   "id": 4,
+   "name": "DECODE",
+   "metric": "decode_stream_mismatch_prompts",
+   "population": "decode-prompts:2",
+   "aggregation": "count",
+   "unit": "prompts",
+   "direction": "below",
+   "value": 0.5,
+   "arms": [
+    "LOOP",
+    "KERNEL"
+   ],
+   "conjuncts": [
+    {
+     "measurement": "4:logit",
+     "metric": "teacher_forced_max_abs_logit_diff",
+     "population": "decode-steps:512",
+     "aggregation": "max",
+     "unit": "logits",
+     "direction": "below",
+     "value": 0.01
+    },
+    {
+     "measurement": "4:repeat",
+     "metric": "kernel_repeat_unequal_prompts",
+     "population": "decode-prompts:2",
+     "aggregation": "count",
+     "unit": "prompts",
+     "direction": "below",
+     "value": 0.5
+    }
+   ],
+   "description": "SAFETY. On two rollout prompts the 256-step free-run greedy streams of the two arms are equal (the first divergence and its margins are listed otherwise); the loop's stream fed teacher-forced through the kernel arm keeps the full-vocabulary max abs logit difference under 1e-2 logits at every one of the 512 steps (the accumulated decode error; the census top-16 level between CPU and Metal is 1e-3 at worst); the kernel arm run twice emits equal streams (determinism)."
+  },
+  {
+   "id": 5,
+   "name": "CACHE-HISTORY",
+   "metric": "cache_history_unequal_turns",
+   "population": "chat-turns:9",
+   "aggregation": "count",
+   "unit": "turns",
+   "direction": "below",
+   "value": 0.5,
+   "arms": [
+    "LOOP",
+    "KERNEL"
+   ],
+   "description": "SAFETY. Three fixed three-turn conversations (thinking off, 32 tokens a turn): on every turn the kernel arm's incremental session emits the same ids as the kernel arm's replay session (the recurrent state carried across a closed turn equals a fresh prefill) and the same ids as the loop arm's incremental session."
+  },
+  {
+   "id": 6,
+   "name": "NO-REGRESSION",
+   "metric": "peak_ratio_max",
+   "population": "heldout-lengths:3",
+   "aggregation": "max_ratio",
+   "unit": "ratio",
+   "direction": "below",
+   "value": 1.05,
+   "fence": {
+    "width": 0.01,
+    "unit": "ratio"
+   },
+   "arms": [
+    "LOOP",
+    "KERNEL"
+   ],
+   "conjuncts": [
+    {
+     "measurement": "6:decode",
+     "metric": "decode16_s_ratio_max",
+     "population": "heldout-lengths:3",
+     "aggregation": "max_median_ratio",
+     "unit": "ratio",
+     "direction": "below",
+     "value": 1.02,
+     "fence": {
+      "width": 0.02,
+      "unit": "ratio"
+     }
+    },
+    {
+     "measurement": "6:ttft512",
+     "metric": "ttft_ratio_512",
+     "population": "heldout-512:6v6",
+     "aggregation": "median_ratio",
+     "unit": "ratio",
+     "direction": "below",
+     "value": 1.03,
+     "fence": {
+      "width": 0.02,
+      "unit": "ratio"
+     }
+    }
+   ],
+   "description": "SAFETY. On the held-out prompts (LOOP against KERNEL, ABBA three times per length, 6 runs each): the largest per-run peak active memory over the prefill and its 16 decode steps in the kernel arm, over the largest in the loop arm, grows by at most 5 percent at any length (fence 0.01: FIRE needs at most 1.04); the 16 greedy decode steps after the prefill are no slower than 1.02 of the loop's at any length (fence 0.02: FIRE needs at most 1.00); the short 512-token prompt's TTFT is no worse than 1.03 (fence 0.02: FIRE needs at most 1.01). The 16-step decode parity (argmax and decode ids) and the top-16 logit differences are reported with it."
+  },
+  {
+   "id": 7,
+   "name": "TTFT-1024",
+   "metric": "ttft_ratio_1024",
+   "population": "heldout-1024:6v6",
+   "aggregation": "median_ratio",
+   "unit": "ratio",
+   "direction": "below",
+   "value": 0.8,
+   "fence": {
+    "width": 0.03,
+    "unit": "ratio"
+   },
+   "arms": [
+    "LOOP",
+    "KERNEL"
+   ],
+   "description": "PERFORMANCE. The kernel arm cuts the median TTFT of the 1,024-token held-out prompt by at least 20 percent (fence 0.03: FIRE needs a ratio at most 0.77). The recurrence was 34 percent of the loop path's chunk time at 1,017 tokens (QWEN-PREFILL-WALL-0), so 0.66 is the ceiling if the recurrence became free; the layer microbenchmark projects about 0.70."
+  },
+  {
+   "id": 8,
+   "name": "TTFT-2048",
+   "metric": "ttft_ratio_2048",
+   "population": "heldout-2048:6v6",
+   "aggregation": "median_ratio",
+   "unit": "ratio",
+   "direction": "below",
+   "value": 0.8,
+   "fence": {
+    "width": 0.03,
+    "unit": "ratio"
+   },
+   "arms": [
+    "LOOP",
+    "KERNEL"
+   ],
+   "description": "PERFORMANCE. The same at 2,048 tokens."
+  },
+  {
+   "id": 9,
+   "name": "DECODE-STEP-LONG",
+   "metric": "decode_step_ratio_long_1024",
+   "population": "long-1024:4v4",
+   "aggregation": "median_ratio",
+   "unit": "ratio",
+   "direction": "below",
+   "value": 0.95,
+   "fence": {
+    "width": 0.02,
+    "unit": "ratio"
+   },
+   "arms": [
+    "LOOP",
+    "KERNEL"
+   ],
+   "description": "PERFORMANCE. The steady decode step (median over 256 greedy steps after the 1,024-token held-out prompt, ABBA twice, 4 against 4) is at least 5 percent faster in the kernel arm (fence 0.02: FIRE needs at most 0.93). The DeltaNet core was 13 percent of the step under generation 5 (QWEN-METAL-DECODE-BREAKDOWN-2), so 0.87 is the ceiling. Reported; no part in the recommendation."
+  },
+  {
+   "id": 10,
+   "name": "E2E-LONG-1024",
+   "metric": "e2e_ratio_long_1024",
+   "population": "long-1024:4v4",
+   "aggregation": "median_ratio",
+   "unit": "ratio",
+   "direction": "below",
+   "value": 0.9,
+   "fence": {
+    "width": 0.03,
+    "unit": "ratio"
+   },
+   "arms": [
+    "LOOP",
+    "KERNEL"
+   ],
+   "description": "PERFORMANCE. The end-to-end wall of the 1,024-token prefill plus 256 greedy decode steps falls by at least 10 percent (fence 0.03: FIRE needs at most 0.87): the user-visible latency of a long answer. Reported; no part in the recommendation."
+  }
+ ],
+ "receipts": [
+  "logs/qwen_gdn/calibration/layers_gdn-dev-1-1024.json",
+  "logs/qwen_gdn/layers.json",
+  "logs/qwen_gdn/census.json",
+  "logs/qwen_gdn/census_positions.jsonl",
+  "logs/qwen_gdn/decode.json",
+  "logs/qwen_gdn/heldout.json",
+  "logs/qwen_gdn/cachehist.json",
+  "logs/qwen_gdn/adjudicate_1/observations.json",
+  "logs/qwen_gdn/adjudicate_1/adjudication.txt"
+ ],
+ "operands": [
+  {
+   "name": "the arm C artifact digest chain",
+   "provider": "logs/qwenwhole/artifact_digest_C.txt"
+  },
+  {
+   "name": "the frozen held-out prompts",
+   "provider": "scratch/evalsets/qwen_prefill_heldout_prompts.json"
+  },
+  {
+   "name": "the frozen generation-5 census rows (descriptive reference and the near-tie definition)",
+   "provider": "logs/qwen_metal_qual/C_v5/positions.jsonl"
+  },
+  {
+   "name": "the teacher rollout tokens (prompts and recorded continuations)",
+   "provider": "logs/qwenteacher_v2/rollout_tokens.jsonl"
+  },
+  {
+   "name": "the recurrence selector with dispatch proof",
+   "provider": "llmopt/lab/qgdn.py"
+  },
+  {
+   "name": "the qualified prefill entry point",
+   "provider": "llmopt/lab/qprefill.py"
+  },
+  {
+   "name": "the engine and session",
+   "provider": "llmopt/lab/qserve.py"
+  },
+  {
+   "name": "the study driver",
+   "provider": "scratch/qwen_gdn_kernel_qual.py"
+  },
+  {
+   "name": "the observations adapter",
+   "provider": "scratch/qwen_gdn_obs.py"
+  },
+  {
+   "name": "the chain",
+   "provider": "scratch/qwen_gdn_study.sh"
+  }
+ ],
+ "refuted_if": "The kernel is not a numerically faithful substitute for the loop on arm C: bar 1 NO-FIRE (any census argmax mismatch) REFUTES (the structured predicate); bar 3 NO-FIRE (on identical inputs a recurrent state differing by more than 3e-4 of its root mean square or a relative error above 1e-3 on a large element; a propagated state beyond 1e-2 of its RMS; or any non-finite array) books NULL under the decision rule without the REFUTED label. Either way the divergence is preserved and classified, the bars are not moved and the serving default stays on the loop.",
+ "refuted_if_predicate": {
+  "measurement": "census_argmax_mismatches",
+  "direction": "above",
+  "value": 0.5
+ },
+ "registered_prior": "Prior: parity holds and the first-token gain is material. The unit-level comparison on synthetic operands at the real dimensions (Dk = Dv = 128, 16 key and 48 value heads, T = 256, float32 everywhere) read 2.5e-6 on the output and 1.3e-6 on the state over the reference RMS, bit-identical across two kernel runs, 1.9 ms against 42.5 ms per layer-chunk (this session's unreceipted microbenchmark; the 2.3 ms in VERDICT QWEN-PREFILL-WALL-0 was the previous session's, also unreceipted); on REAL operands (the force-added calibration receipt logs/qwen_gdn/calibration/layers_gdn-dev-1-1024.json) 9.9e-6 and 5.4e-5 (6.7e-5 carried), 87.0 against 3.4 ms per layer-chunk, so real states are about 40x less forgiving than synthetic ones under the RMS normalization because they are heavy-tailed. Expected propagated state divergence about 1e-3 at the deepest layers after long prefills, well under the 1e-2 sanity bound. The census has no exact tie (minimum margin 1.24e-3 logits, 15 positions under 0.02), so a 1e-6-relative perturbation is expected to flip no argmax, but a flip at one of the 5 positions under 0.01 logits is possible and would book NO-FIRE on bars 1 and 2. Expected TTFT ratio about 0.70 at 1,024 and 2,048 (ceiling 0.66); decode step ratio about 0.90 to 0.95 (ceiling 0.87), which puts bar 9 near its fence. The held-out prompts measure 510, 1,029 and 2,040 tokens (named 512, 1,024 and 2,048 after their targets, as in QWEN-PREFILL-WALL-0)."
+}

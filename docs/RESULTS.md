@@ -85766,3 +85766,160 @@ with random activations and does not verify MLX's float16 accumulation
 dtype; the memory preflight is a fixed 30 GB figure, not the device's
 working-set limit; nothing here is a kernel measurement, which the
 implementation GO would be.
+
+## PRE-REG QWEN-GDN-KERNEL-0: a bounded qualification, not a promotion, of mlx-lm's Metal GatedDeltaNet recurrence kernel as a substitute for the Python reference loop the released arm C serving path runs today (the loop is selected by the vendor's training-mode flag, VERDICT QWEN-PREFILL-WALL-0): the implementation selected by NAME per measured call through a new selector (llmopt/lab/qgdn.py) whose receipt counts which implementation EXECUTED (the vendor's two implementations wrapped, not the flag), the training flag never touched; the oracle arm C against arm C (identical weights, prompts, cache construction and chunking on the serving path, loop against kernel in one process), teacher agreement and the frozen generation-5 census rows descriptive only; five stages (six captured DeltaNet layers on every chunk of the development prompt with the kernel re-run from the loop's own operands and state, kernel carried across chunks, a T = 1 step, determinism; the 4,722 E0 rollout positions through both arms with every argmax, margin, the full-vocabulary and top-16 logit differences and the 48 recurrent states per prompt compared; two 256-step free-run decodes with the loop's stream fed teacher-forced through the kernel and the per-step logit difference; the three frozen held-out prompts ABBA three times with 16 decode steps, instrumented runs, 4,096 tokens once after a preflight and 256-step long generations at 1,024 and 2,048; three fixed conversations incremental against replay in both arms); six SAFETY bars (zero census argmax mismatches, zero flips at the 15 near ties listed one by one, the kernel's recurrent state on identical inputs within 3e-4 of the loop state's root mean square and 1e-3 relative on large elements with the propagated final states under a 1e-2 sanity bound and every array finite, equal 256-step decode streams with the teacher-forced logit difference under 1e-2 and a deterministic kernel, equal ids on every chat turn, peak memory at most 1.05 and decode steps at most 1.02 and the 512-token TTFT at most 1.03 with fences) and four PERFORMANCE bars (TTFT at most 0.80 at 1,024 and at 2,048, fence 0.03; the long decode step at most 0.95 and the 1,024-token prefill plus 256 steps at most 0.90, reported only); a recommendation for a SEPARATE promotion GO needs every safety bar and both TTFT bars FIRE; any safety bar NO-FIRE books NULL with the divergence preserved and the bars unmoved, any safety bar UNRESOLVED or invalid observations book UNRESOLVED with no recommendation; the serving default, the qualified kernels, every historical receipt and every frozen driver unchanged (docs/preregs/qwen-gdn-kernel-0.json) (2026-10-24, mac)
+
+Artin's GO (2026-10-24) after the prefill-wall verdict, with five corrections
+applied before this registration: the parity oracle is arm C's loop against
+arm C's kernel (not the teacher, not the frozen census rows); the state
+comparisons are normalized with explicit near-zero treatment, per layer and
+per chunk, with the accumulated decode error read; thresholds and fences are
+unambiguous and the adoption recommendation requires memory, decode and
+short-prompt non-regression, safety bars distinguished from performance
+wins; dispatch is proven in the receipts; nothing released changes.
+
+Provenance of the census rows, verified before bar 1 was written (and
+corrected by the Opus audit): the frozen generation-5 census
+(logs/qwen_metal_qual/C_v5/positions.jsonl, sha256 b2ec44f1..., 4,722 rows)
+carries metal_* fields that are arm C on Metal through the LOOP path in a
+one-shot fused forward (summary.json: matrix_calls_by_path fused 243,006,
+gemm 0; code 3d10cf65) and cpu_* fields that are the HF transformers torch
+arm C of logs/qwen_e0/C (scratch/qwen_e0_spec_census.py,
+AutoModelForCausalLM on the CPU, a different implementation of the delta
+rule, not the mlx loop; the first draft of this registration called them
+the loop, which was wrong); its teacher_token is the original Qwen3.8-27B's
+greedy token (logs/qwenteacher_v2). None of those rows is the kernel path
+and none is the oracle here. The reference arm of this study is the loop RE-RUN in the
+same process through the serving path (chunk 256, GEMM, full head), so the
+loop arm itself will differ from the frozen rows at the GEMM reduction
+level; its agreement with them is reported, not gated. Near ties are defined on the frozen
+metal_margin (the Metal loop path, the same implementation as this study's
+reference arm): no row is under 1e-3 logits (minimum 1.236e-3), 5 are
+under 0.01 and 15 under 0.02 (the same 15 rows under the cpu_margin field);
+the 15 are the registered near-tie set, defined from the frozen file, not
+from this run. Bar 2 is a subset of bar 1 by construction.
+
+What .eval() would change, checked in the installed mlx 0.31.2 and mlx-lm
+0.31.3: only Dropout, BatchNorm and QuantizedLinear read the training flag
+in mlx.nn, and the qwen3_5 module has none of them (every linear in the
+tower is the house QLinear, the embedding the house QEmbedding), so the
+flag's only effect here is the recurrence dispatch. The study still does
+not flip it: llmopt/lab/qgdn.recurrence_path replaces qwen3_5's
+gated_delta_update name (the exec-rewritten __call__ resolves it from
+vars(qwen3_5) at call time) with a forwarding wrapper that forces
+use_kernel, and wraps gated_delta.gated_delta_ops and
+gated_delta.gated_delta_kernel inside their module so the receipt counts
+EXECUTIONS of each; the vendor guard refuses if the dispatch line, the
+update condition or the two implementations are missing, nesting is
+refused, exit restores every name and asserts it, the serving code never
+imports the module, and a LOOP selection is today's code path bit for bit.
+The observations are INVALID unless every LOOP selection executed ops only
+and every KERNEL selection executed the kernel only. Unit tests
+(tests/test_qgdn.py, 12 passing) pin the dispatch on a small GatedDeltaNet
+module in training mode and on an exec-rewritten __call__ of the qtower
+shape, restoration after an exception, the detection of a foreign change
+inside the block, the refusal of nesting, loop against kernel agreement on
+realistic operands and state continuation across a chunk boundary. The
+layers stage's offline comparisons also run through the selector with the
+vendor flag inverted on purpose, so the receipt records the executed implementation there
+too.
+
+Driver scratch/qwen_gdn_kernel_qual.py (stages layers, census, decode,
+heldout, cachehist; receipts logs/qwen_gdn/<stage>.json and
+census_positions.jsonl; SMOKE=1 writes under logs/qwen_gdn/smoke/ only);
+adapter scratch/qwen_gdn_obs.py; chain scratch/qwen_gdn_study.sh under
+scripts/liverun.py. Normalized error: max |kernel - loop| over the root
+mean square of the loop array (bars), the element-wise relative error read
+only on elements at least 1e-3 of the array's largest magnitude with the
+near-zero count reported, and the count of elements differing by more than
+1e-5 of the largest magnitude; finiteness of both arrays is asserted and
+counted. Every ratio bar is kernel over loop on medians of paired ABBA runs
+with the pool emptied before each run as in QWEN-PREFILL-WALL-0; TTFT is the
+prefill-to-first-logits latency of the qualified prefill_chunked call with
+thinking off.
+
+Bars, machine-readable in docs/preregs/qwen-gdn-kernel-0.json (ten bars,
+refuted_if_predicate on bar 1). SAFETY, all required: (1) census argmax
+mismatches 0 of 4,722; (2) near-tie flips 0 of 15; (3) ARITHMETIC
+faithfulness on identical inputs (the layers stage: six DeltaNet layers on
+every one of the four chunks of a fresh 1,000 to 1,024-token development prompt, the kernel from the loop's own
+operands and state-in, the kernel carried across chunks, a T = 1 step): state
+max-over-RMS at most 3e-4 and relative on large elements at most 1e-3;
+PROPAGATED divergence (the 48 final states of every census prompt and of
+the decode prompts, every upstream perturbation included) under a 1e-2
+sanity bound with its depth profile reported; zero non-finite arrays; (4) decode streams equal on 2 prompts, teacher-forced
+full-vocabulary logit difference under 1e-2 at all 512 steps, kernel
+deterministic; (5) 0 of 9 chat turns unequal (kernel incremental against
+kernel replay and against loop incremental); (6) peak memory ratio at most
+1.05 (fence 0.01), 16-step decode ratio at most 1.02 (fence 0.02), 512-token
+TTFT ratio at most 1.03 (fence 0.02). PERFORMANCE, optional: (7) TTFT ratio
+at 1,024 at most 0.80, fence 0.03; (8) the same at 2,048; (9) long decode
+step ratio at most 0.95, fence 0.02 (4 against 4); (10) 1,024-token prefill
+plus 256 steps at most 0.90, fence 0.03 (4 against 4). Decision: bars 1 to 6 FIRE and 7 and 8
+FIRE earns a recommendation for a separate promotion GO (the default stays
+on the loop until that GO passes its own gates); bars 1 to 6 FIRE with 7
+or 8 NO-FIRE or UNRESOLVED books "qualified, no material first-token gain,
+no recommendation"; any of 1 to 6 NO-FIRE books NULL, the divergence
+preserved and classified by the layers and decode receipts (arithmetic,
+state carry, or dispatch), the bars unmoved; any of 1 to 6 UNRESOLVED
+books UNRESOLVED, no recommendation; invalid observations (the adapter's
+validity floors, the dispatch proof among them) book every bar UNRESOLVED
+with the reason chain and any repair is a new rung; bars 9 and 10 are
+reported and play no part. Bar 1 NO-FIRE is the structured refutation;
+bar 3 NO-FIRE books NULL without the REFUTED label. The held-out prompts
+measure 510, 1,029 and 2,040 tokens and are named by their targets.
+
+Calibration and smoke before registration, disclosed in full. (a) The
+unit-level comparison on synthetic operands at the real dimensions
+(Dk = Dv = 128, 16 key and 48 value heads, T = 256, float32) read 2.5e-6 on
+the output and 1.3e-6 on the state over the reference RMS, bit-identical
+across two kernel runs, 1.9 against 42.5 ms per layer-chunk. (b) The
+layers stage run once on development seed gdn-dev-1-1024 (1,027 tokens,
+five chunks; receipt force-added at
+logs/qwen_gdn/calibration/layers_gdn-dev-1-1024.json) read 5.4e-5
+same-input and 6.7e-5 carried on the state, 9.9e-6 on the output, 5.2e-5
+relative on large elements, 87.0 against 3.4 ms per layer-chunk: real
+states are heavy-tailed (about 98 percent of elements under 1e-3 of the
+maximum), so the RMS-normalized error is about 40x the synthetic reading;
+bar 3's 3e-4 is set from this calibration with 5x headroom, and the
+registered run uses the first UNREAD seed from gdn-dev-2-1024 upward whose
+length fits exactly four chunks, so the bar is a prediction, not a
+re-read. (c) The first SMOKE chain (one 70-token prefix of rollout chat-1, a
+member of the census and decode populations, 8 census positions, 24 decode
+steps, one 256-token development prompt in one ABBA block, one two-turn
+conversation; receipts logs/qwen_gdn/smoke_1/census.json, decode.json,
+heldout.json, layers.json, cachehist.json, which the adapter refuses as
+smoke; a second smoke after the audit's repairs sits under
+logs/qwen_gdn/smoke/) ran every stage with every dispatch proof
+holding (816 of 816 calls on the selected implementation per held-out run)
+and read: 8 of 8 argmaxes identical, full-vocabulary logit difference
+1.8e-4, propagated final state 5.8e-4 at the deepest layer growing from
+2.3e-5 at layer 0 (which is why the propagated quantity carries a sanity
+bound and no relative bar: its relative-on-large read was 1.5e-3), decode
+streams equal with the teacher-forced logit difference 1.2e-4, chat turns
+equal with incremental reuse exercised in both arms, TTFT ratio 0.68 at
+256 tokens, 16-step decode ratio 0.94, long step ratio 0.86, peak 1.006.
+The bars above were written before (a) to (c) were read except bar 3,
+whose threshold was reset from (b) after the smoke exposed the
+identical-input against propagated conflation, and whose propagated
+conjunct (1e-2) and dropped relative bar were set after the smoke's 5.8e-4
+and 1.5e-3 reads on chat-1; no other bar moved. The Opus 5.5 methodology
+audit (three blockers: the cpu_* provenance, bar 3 re-reading its own
+calibration prompt, bar 5 able to fire without reuse; eleven should-fix
+items) was applied before registration: near ties on metal_margin, a fresh
+layers seed, validity floors for reuse 6 of 6 with no fallback, offline
+dispatch proof, carried relative error, an explicit non-finite count, the
+32-step decode snapshots, the refutation predicate restricted to bar 1,
+the decision rule closed over UNRESOLVED and invalid observations, spread
+gates at 3 percent (long runs 5 percent, two ABBA blocks at 1,024),
+operand sha pins, gate_class labels dropped, peak read after the decode.
+
+Registered prior: parity holds and the first-token gain is material. A
+flip at one of the 5 positions under 0.01 logits is possible and would
+book NO-FIRE on bars 1 and 2. Expected TTFT ratio about 0.70 at 1,024 and 2,048 (ceiling 0.66 if
+the recurrence became free); decode step ratio 0.90 to 0.95 (ceiling 0.87),
+so bar 9 sits near its fence. Fences: one Mac, one session, generation 5,
+chunk 256 GEMM prefill, single unpadded prompts (the two implementations
+differ in their masked semantics, which no serving call reaches), mlx-lm
+0.31.3 under the source guard. Cost about one hour of Mac GPU. Not in
+scope: any default change, any new kernel, Muon, distillation.

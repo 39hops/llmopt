@@ -1,0 +1,214 @@
+{
+ "commit": "4a828e10",
+ "tree_dirty": true,
+ "smoke": true,
+ "stage": "cachehist",
+ "cold_load_s": 6.149651583982632,
+ "driver": "scratch/qwen_gdn_kernel_qual.py",
+ "driver_sha256": "89ef4a9b180b7c9c14e369a45116266c4a667fab1a0baebb35995a5a52b799ef",
+ "selector_sha256": "8c6907a971241f9262f04c9ef27841a813ff8a83d3d311d66fdccc86ba340aad",
+ "layer_ordinals": [
+  0,
+  47
+ ],
+ "vendor": {
+  "mlx_version": "0.31.2",
+  "mlx_lm_version": "0.31.3",
+  "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+  "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+  "metal_available": true,
+  "default_device": "Device(gpu, 0)"
+ },
+ "model_training_flag": true,
+ "engine": {
+  "kernel_version": 5,
+  "chain_sha256": "de7e0180bf49f965c17116b7fbe8c34d2b1529c2431cc234f3a6460ad84b24dc",
+  "cache_limit_bytes": 2147483648,
+  "chunk": 256,
+  "matmul": "gemm",
+  "tokenizer_files_sha256": {
+   "tokenizer.json": "0997f410c57a1f4e53b09e4be8f4a172d90edd9564368fb0847030937229b9f3",
+   "tokenizer_config.json": "b11349aafa7cdc6a320767cf7ceb29ed82f7eda5d65e8e0819e76f0ce947bf27",
+   "config.json": "191e0af232104ed8b65258cf3fb2b842e288008baca7633c11b82a1ac7203aab"
+  },
+  "families": {
+   "linear_attn": 48,
+   "full_attn": 16
+  },
+  "v_live": 248077
+ },
+ "conversations": [
+  [
+   "What is the capital of Portugal?",
+   "And its population, roughly?"
+  ]
+ ],
+ "max_tokens": 32,
+ "dispatch": [
+  {
+   "label": "cachehist LOOP incremental",
+   "selector": "llmopt.lab.qgdn.recurrence_path",
+   "path": "loop",
+   "update_calls": 2544,
+   "requested_by_vendor_flag": {
+    "kernel": 0,
+    "loop": 2544
+   },
+   "executed": {
+    "ops": 2544,
+    "kernel": 0
+   },
+   "max_T": 20,
+   "vendor": {
+    "mlx_version": "0.31.2",
+    "mlx_lm_version": "0.31.3",
+    "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+    "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+    "metal_available": true,
+    "default_device": "Device(gpu, 0)"
+   }
+  },
+  {
+   "label": "cachehist LOOP replay",
+   "selector": "llmopt.lab.qgdn.recurrence_path",
+   "path": "loop",
+   "update_calls": 2544,
+   "requested_by_vendor_flag": {
+    "kernel": 0,
+    "loop": 2544
+   },
+   "executed": {
+    "ops": 2544,
+    "kernel": 0
+   },
+   "max_T": 59,
+   "vendor": {
+    "mlx_version": "0.31.2",
+    "mlx_lm_version": "0.31.3",
+    "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+    "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+    "metal_available": true,
+    "default_device": "Device(gpu, 0)"
+   }
+  },
+  {
+   "label": "cachehist KERNEL incremental",
+   "selector": "llmopt.lab.qgdn.recurrence_path",
+   "path": "kernel",
+   "update_calls": 2544,
+   "requested_by_vendor_flag": {
+    "kernel": 0,
+    "loop": 2544
+   },
+   "executed": {
+    "ops": 0,
+    "kernel": 2544
+   },
+   "max_T": 20,
+   "vendor": {
+    "mlx_version": "0.31.2",
+    "mlx_lm_version": "0.31.3",
+    "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+    "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+    "metal_available": true,
+    "default_device": "Device(gpu, 0)"
+   }
+  },
+  {
+   "label": "cachehist KERNEL replay",
+   "selector": "llmopt.lab.qgdn.recurrence_path",
+   "path": "kernel",
+   "update_calls": 2544,
+   "requested_by_vendor_flag": {
+    "kernel": 0,
+    "loop": 2544
+   },
+   "executed": {
+    "ops": 0,
+    "kernel": 2544
+   },
+   "max_T": 59,
+   "vendor": {
+    "mlx_version": "0.31.2",
+    "mlx_lm_version": "0.31.3",
+    "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+    "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+    "metal_available": true,
+    "default_device": "Device(gpu, 0)"
+   }
+  }
+ ],
+ "turns": [
+  {
+   "conversation": 0,
+   "turn": 0,
+   "kernel_incremental_equals_kernel_replay": true,
+   "kernel_incremental_equals_loop_incremental": true,
+   "loop_incremental_equals_loop_replay": true,
+   "modes": {
+    "KERNEL": "fresh",
+    "LOOP": "fresh"
+   },
+   "notes": {
+    "KERNEL": "",
+    "LOOP": ""
+   },
+   "n_generated": {
+    "KERNEL": 20,
+    "LOOP": 20
+   },
+   "first_token_s": {
+    "KERNEL_inc": 1.7680379578378052,
+    "LOOP_inc": 1.9353950410149992,
+    "KERNEL_replay": 1.7708633749280125,
+    "LOOP_replay": 1.9035920421592891
+   },
+   "kernel_text": "The capital of Portugal is **Lisbon** (Portuguese: *Lisboa*).",
+   "loop_text": "The capital of Portugal is **Lisbon** (Portuguese: *Lisboa*)."
+  },
+  {
+   "conversation": 0,
+   "turn": 1,
+   "kernel_incremental_equals_kernel_replay": true,
+   "kernel_incremental_equals_loop_incremental": true,
+   "loop_incremental_equals_loop_replay": true,
+   "modes": {
+    "KERNEL": "incremental",
+    "LOOP": "incremental"
+   },
+   "notes": {
+    "KERNEL": "",
+    "LOOP": ""
+   },
+   "n_generated": {
+    "KERNEL": 32,
+    "LOOP": 32
+   },
+   "first_token_s": {
+    "KERNEL_inc": 1.770346499979496,
+    "LOOP_inc": 1.9143492910079658,
+    "KERNEL_replay": 2.207693667151034,
+    "LOOP_replay": 2.678805457893759
+   },
+   "kernel_text": "The population of Lisbon varies depending on whether you are referring to the city proper or the greater metropolitan ar",
+   "loop_text": "The population of Lisbon varies depending on whether you are referring to the city proper or the greater metropolitan ar"
+  }
+ ],
+ "summary": {
+  "n_turns": 2,
+  "unequal_turns": 0,
+  "kernel_inc_vs_replay_unequal": 0,
+  "kernel_vs_loop_unequal": 0,
+  "loop_inc_vs_replay_unequal": 0,
+  "incremental_reused_turns": {
+   "LOOP": 1,
+   "KERNEL": 1
+  },
+  "fallback_turns": {
+   "LOOP": 0,
+   "KERNEL": 0
+  }
+ },
+ "wall_s": 43.922335541807115,
+ "process_peak_rss_bytes": 11092606976
+}

@@ -5425,6 +5425,41 @@ QWEN-FAMILY-PROBE-0: cheapest acceptable RATE per non-FFN family.
 - `probe_tensor(fam, name)` — Two passes over row-chunks so 1.27B-param tensors fit VRAM:
 - `main()`
 
+### scratch/qwen_gdn_kernel_qual.py
+QWEN-GDN-KERNEL-0: qualification of mlx-lm's Metal GatedDeltaNet recurrence kernel as a substitute for the Python reference loop the released arm C serving path runs today (VERDICT QWEN-PREFILL-WALL-0 found the loop selected by the vendor's training-mode flag). Nothing here changes a default: the implementation is selected per measured call through llmopt.lab.qgdn.recurrence_path, whose receipt counts which implementation EXECUTED; the baseline arm LOOP runs today's code path unchanged.
+
+- `sha_ids(ids)`
+- `fsha(p)`
+- `mem()`
+- `selected(path)` — The selector for one arm; the caller records sel.receipt() after the block.
+- `record_dispatch(receipt, sel, label)`
+- `dnet_layers(model)`
+- `state_errors(cache_a, cache_b, model)` — Per DeltaNet layer: normalized errors of the recurrent state and the conv state of cache_a against cache_b.
+- `worst(errs, key='state')`
+- `prose(seed, n_words)`
+- `fixed_prompt(eng, seed, target)`
+- `topk(row, k=16)`
+- `top1_margin(z)` — argmax and the gap to the runner-up of a float64 vector.
+- `teacher_rollouts(eng)`
+- `stage_layers(eng, receipt)`
+- `full_head_rows(eng, ids, p_len, n_gen, path)` — Chunked full-head prefill of ids through one arm; returns (float32 [n_gen, v_live] logits at the generated positions, cache, wall, selector).
+- `stage_census(eng, receipt)`
+- `greedy_run(eng, prompt, n_steps, path, feed=None, snaps=None)` — Prefill prompt (serving path), then n_steps greedy decode (or teacher-forced on feed); per step the argmax,
+- `stage_decode(eng, receipt)`
+- `run_prefill(eng, ids, path, decode=0, instrument=False)`
+- `top16_diff(x, ref)`
+- `preflight_ok(extra_gb)`
+- `stage_heldout(eng, receipt)`
+- `stage_cachehist(eng, receipt)`
+- `main()`
+
+### scratch/qwen_gdn_obs.py
+Observations adapter for PRE-REG QWEN-GDN-KERNEL-0: derives the registered measurements from the five stage receipts of scratch/qwen_gdn_kernel_qual.py in committed code (never hand-written).
+
+- `dispatch_ok(d)` — One selector receipt: the selected implementation executed, the other never, at least one call.
+- `main(rdir, prereg_path)`
+- `emit(prereg, valid, reasons, meas, diag, rdir, commit=None, contrasts=None)`
+
 ### scratch/qwen_geometry_capture.py
 QWEN-LOSSY-GEOMETRY-0, stage 1: the frozen inputs of the local representation study. For the selected layer-22 matrices (mlp.gate_proj [17408, 5120] and mlp.down_proj [5120, 17408], both W4; linear_attn. in_proj_qkv [10240, 5120], S16; gate_proj and up_proj share an input and up_proj is reported through gate_proj's captures) this driver:   1. verifies vendor shard 7's pin (sha256 and size) and reads the      ORIGINAL BF16 tensors from it (exact uint16 patterns widened to      float32, which is exact for BF16);   2. reads the arm C payloads of the same tensors from the artifact under      the digest chain, checks the manifest entries (codec, shape, length      formula), the exponent-scale range and the canonical decoder output      (llmopt.lab.qcodec.decode_entry) against the original (relative      Frobenius error of arm C, the control's figure);   3. builds the qualified tower (generation 5 default) and runs the 24      teacher rollouts (prompt plus recorded continuation, teacher-forced)      through the serving prefill path (prefill_chunked, chunk 256, GEMM),      recording the input of each selected module at EVERY position;      prompts are split by index into a development set (0 to 11) and a      blocked evaluation set (12 to 23) before any candidate is built;   4. writes the captures as float32 .npy files under DUMP (machine-local,      untracked; sha256 in the receipt) and the receipt      logs/qwen_geometry/capture.json (refuse-if-exists). Nothing in the artifact, the shards or the kernels is modified. Env: ART_DIR, VENDOR_DIR, SHARD_DIR, OUT_DIR (logs/qwen_geometry), SMOKE=1 (2 prompts, 32 tokens each, OUT_DIR logs/qwen_geometry/smoke).
 
@@ -7224,6 +7259,16 @@ Reusable CUDA tower: codec dispatch + FusedS16Linear + residency plan.
 - `expected_compressed(manifest: dict) -> dict` — Manifest keys that MUST run compressed: every 2D w4/s16 entry.
 - `verify_routes(model, manifest: dict, name_fn=None, dedicated_routes=None) -> dict` — The executable invariant, as EXACT CONSERVATION (not merely
 - `fused_module(entry: dict, buf: bytes)` — Materialize the fused module for a manifest entry (CUDA).
+
+### llmopt/lab/qgdn.py
+Explicit selection of the GatedDeltaNet recurrence implementation for the arm C Metal tower, with proof of dispatch in the receipt.
+
+- `_modules()`
+- `_file_sha(path: str) -> str`
+- `check_vendor() -> dict` — Refuse unless the installed mlx-lm has the dispatch this module
+- `class DispatchCount` (as_dict, assert_exclusive)
+- `class recurrence_path` (receipt)
+- `normalized_errors(a, b, rel_floor: float=0.001) -> dict` — Error of array ``a`` against reference ``b`` (numpy or mlx arrays),
 
 ### llmopt/lab/qmetal.py
 Fused Metal decode-and-multiply for the frozen WHOLE-0T payloads (Apple silicon, mx.fast.metal_kernel). Companion of llmopt.lab.qcuda.

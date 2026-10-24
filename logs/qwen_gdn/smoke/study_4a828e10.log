@@ -1,0 +1,36 @@
+== selector 23:32:23 4a828e10
+12 passed in 1.65s
+== tests 23:32:25 4a828e10
+31 passed, 6 skipped in 0.78s
+== layers 23:32:27 4a828e10
+[gdn] layers: y 4.89e-06 state 3.90e-05 carried 2.93e-05 per call loop 17.3 ms kernel 2.8 ms
+[gdn] layers wrote logs/qwen_gdn/smoke/layers.json in 11s
+== census 23:32:38 4a828e10
+[gdn] census chat-1: 8 positions, identical 8/8, full-vocab max abs 1.82e-04, state 5.83e-04, wall loop 3.5s kernel 2.9s
+[gdn] census: identical 8/8, near-tie flips 0/0, state max 5.83e-04
+[gdn] census wrote logs/qwen_gdn/smoke/census.json in 15s
+== decode 23:32:53 4a828e10
+[gdn] decode chat-1: streams equal True (first divergence None), kernel repeat equal True, teacher-forced max |dlogit| 1.20e-04, final state 3.01e-04, step loop 101 ms kernel 95 ms
+[gdn] decode wrote logs/qwen_gdn/smoke/decode.json in 27s
+== heldout 23:33:21 4a828e10
+[gdn] heldout 256 LOOP   ttft 7.00s e2e 8.63s peak 11.87 GB step 101 ms
+[gdn] heldout 256 KERNEL ttft 4.74s e2e 6.27s peak 11.94 GB step 95 ms
+[gdn] heldout 256 KERNEL ttft 4.72s e2e 6.25s peak 11.94 GB step 95 ms
+[gdn] heldout 256 LOOP   ttft 6.93s e2e 8.57s peak 11.87 GB step 102 ms
+[gdn] long 256 LOOP   e2e 9.4s decode 2.4s step 101 ms
+[gdn] long 256 KERNEL e2e 7.0s decode 2.3s step 95 ms
+[gdn] long 256 KERNEL e2e 7.0s decode 2.3s step 95 ms
+[gdn] long 256 LOOP   e2e 9.4s decode 2.5s step 102 ms
+[gdn] heldout wrote logs/qwen_gdn/smoke/heldout.json in 105s
+== cachehist 23:35:07 4a828e10
+[gdn] cachehist LOOP incremental c0 t0: 20 tokens, mode fresh, first token 1.94s
+[gdn] cachehist LOOP incremental c0 t1: 32 tokens, mode incremental, first token 1.91s
+[gdn] cachehist LOOP replay c0 t0: 20 tokens, mode fresh, first token 1.90s
+[gdn] cachehist LOOP replay c0 t1: 32 tokens, mode fresh, first token 2.68s
+[gdn] cachehist KERNEL incremental c0 t0: 20 tokens, mode fresh, first token 1.77s
+[gdn] cachehist KERNEL incremental c0 t1: 32 tokens, mode incremental, first token 1.77s
+[gdn] cachehist KERNEL replay c0 t0: 20 tokens, mode fresh, first token 1.77s
+[gdn] cachehist KERNEL replay c0 t1: 32 tokens, mode fresh, first token 2.21s
+[gdn] cachehist: unequal turns 0/2, reused {'LOOP': 1, 'KERNEL': 1}
+[gdn] cachehist wrote logs/qwen_gdn/smoke/cachehist.json in 44s
+== DONE 23:35:51

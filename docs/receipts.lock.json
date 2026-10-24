@@ -4868,6 +4868,52 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qwen_gdn/adjudicate_1/adjudication.txt": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_gdn/adjudicate_1/observations.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_gdn/cachehist.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_gdn/calibration/layers_gdn-dev-1-1024.json": {
+   "bytes": 57684,
+   "exists": true,
+   "sha256": "127c8787cff71138c8ed58d87c0b36fee7cc381532078aea6148397da79b3086",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwen_gdn/census.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_gdn/census_positions.jsonl": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_gdn/decode.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_gdn/heldout.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_gdn/layers.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_gdn/smoke_1/census.json": {
+   "bytes": 6128,
+   "exists": true,
+   "sha256": "1c428b4ce121ced47c5c2c28f584f0be3252eabff175e2fbf574e76012c8894a",
+   "source": "results",
+   "tracked": true
+  },
   "logs/qwen_geometry/adjudicate_1/adjudication.txt": {
    "bytes": 109,
    "exists": true,
@@ -5149,6 +5195,14 @@
    "tracked": true
   },
   "logs/qwen_metal_qual/C_v4/positions.jsonl": {
+   "bytes": 2162730,
+   "exists": true,
+   "local_only": true,
+   "sha256": "b2ec44f16916476abd891dd6c0601ed1982732f7ff5b185de23233e305646287",
+   "source": "results",
+   "tracked": false
+  },
+  "logs/qwen_metal_qual/C_v5/positions.jsonl": {
    "bytes": 2162730,
    "exists": true,
    "local_only": true,

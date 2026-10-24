@@ -1,0 +1,1115 @@
+{
+ "commit": "4a828e10",
+ "tree_dirty": true,
+ "smoke": true,
+ "stage": "heldout",
+ "cold_load_s": 6.1221153328660876,
+ "driver": "scratch/qwen_gdn_kernel_qual.py",
+ "driver_sha256": "89ef4a9b180b7c9c14e369a45116266c4a667fab1a0baebb35995a5a52b799ef",
+ "selector_sha256": "8c6907a971241f9262f04c9ef27841a813ff8a83d3d311d66fdccc86ba340aad",
+ "layer_ordinals": [
+  0,
+  47
+ ],
+ "vendor": {
+  "mlx_version": "0.31.2",
+  "mlx_lm_version": "0.31.3",
+  "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+  "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+  "metal_available": true,
+  "default_device": "Device(gpu, 0)"
+ },
+ "model_training_flag": true,
+ "engine": {
+  "kernel_version": 5,
+  "chain_sha256": "de7e0180bf49f965c17116b7fbe8c34d2b1529c2431cc234f3a6460ad84b24dc",
+  "cache_limit_bytes": 2147483648,
+  "chunk": 256,
+  "matmul": "gemm",
+  "tokenizer_files_sha256": {
+   "tokenizer.json": "0997f410c57a1f4e53b09e4be8f4a172d90edd9564368fb0847030937229b9f3",
+   "tokenizer_config.json": "b11349aafa7cdc6a320767cf7ceb29ed82f7eda5d65e8e0819e76f0ce947bf27",
+   "config.json": "191e0af232104ed8b65258cf3fb2b842e288008baca7633c11b82a1ac7203aab"
+  },
+  "families": {
+   "linear_attn": 48,
+   "full_attn": 16
+  },
+  "v_live": 248077
+ },
+ "prompts": {
+  "256": {
+   "tokens": 254,
+   "sha256": "890fb7e41e12b60366629bb09548e470366a8294481109ebcf16bf8d778883d1"
+  }
+ },
+ "runs": [
+  {
+   "tokens": 254,
+   "path": "loop",
+   "ttft_s": 6.999188499990851,
+   "prefill_tok_per_s": 36.289921324498124,
+   "argmax": 760,
+   "top16_ids": [
+    760,
+    9205,
+    1919,
+    40,
+    2064,
+    1206,
+    7525,
+    8917,
+    18656,
+    623,
+    12934,
+    21003,
+    1719,
+    32,
+    8839,
+    7732
+   ],
+   "top16_logits": [
+    24.09081268310547,
+    21.81629753112793,
+    17.47054100036621,
+    17.40475082397461,
+    17.243228912353516,
+    16.861970901489258,
+    15.872858047485352,
+    15.623939514160156,
+    15.619094848632812,
+    15.597391128540039,
+    15.277579307556152,
+    15.265655517578125,
+    15.073311805725098,
+    14.782942771911621,
+    14.547035217285156,
+    14.198990821838379
+   ],
+   "memory": {
+    "active_bytes": 9022604012,
+    "peak_bytes": 11868342836,
+    "cache_bytes": 2145206764,
+    "footprint_bytes": 11167810776,
+    "rss_peak_bytes": 11184914432,
+    "active_before_bytes": 8829764140,
+    "transient_bytes": 3038578696
+   },
+   "decode_ids": [
+    760,
+    8129,
+    6475,
+    314,
+    264,
+    56127,
+    1103,
+    314,
+    7859,
+    86746,
+    321,
+    961,
+    83588,
+    11,
+    2583,
+    3665
+   ],
+   "decode_s": 1.6325038329232484,
+   "end_to_end_s": 8.631692332914099,
+   "decode_step_median_s": 0.10091327107511461,
+   "peak_after_decode_bytes": 11868342836,
+   "dispatch": {
+    "selector": "llmopt.lab.qgdn.recurrence_path",
+    "path": "loop",
+    "update_calls": 816,
+    "requested_by_vendor_flag": {
+     "kernel": 0,
+     "loop": 816
+    },
+    "executed": {
+     "ops": 816,
+     "kernel": 0
+    },
+    "max_T": 254,
+    "vendor": {
+     "mlx_version": "0.31.2",
+     "mlx_lm_version": "0.31.3",
+     "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+     "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+     "metal_available": true,
+     "default_device": "Device(gpu, 0)"
+    }
+   },
+   "arm": "LOOP",
+   "target": 256
+  },
+  {
+   "tokens": 254,
+   "path": "kernel",
+   "ttft_s": 4.735460374969989,
+   "prefill_tok_per_s": 53.63786831425228,
+   "argmax": 760,
+   "top16_ids": [
+    760,
+    9205,
+    1919,
+    40,
+    2064,
+    1206,
+    7525,
+    8917,
+    18656,
+    623,
+    12934,
+    21003,
+    1719,
+    32,
+    8839,
+    7732
+   ],
+   "top16_logits": [
+    24.090797424316406,
+    21.8162841796875,
+    17.470548629760742,
+    17.40473175048828,
+    17.24332618713379,
+    16.861988067626953,
+    15.872843742370605,
+    15.623908996582031,
+    15.619059562683105,
+    15.597393035888672,
+    15.27759075164795,
+    15.26561164855957,
+    15.073326110839844,
+    14.782933235168457,
+    14.54703140258789,
+    14.198978424072266
+   ],
+   "memory": {
+    "active_bytes": 9022604012,
+    "peak_bytes": 11940072084,
+    "cache_bytes": 2123137064,
+    "footprint_bytes": 11145741076,
+    "rss_peak_bytes": 11184914432,
+    "active_before_bytes": 8829764140,
+    "transient_bytes": 3110307944
+   },
+   "decode_ids": [
+    760,
+    8129,
+    6475,
+    314,
+    264,
+    56127,
+    1103,
+    314,
+    7859,
+    86746,
+    321,
+    961,
+    83588,
+    11,
+    2583,
+    3665
+   ],
+   "decode_s": 1.5364087091293186,
+   "end_to_end_s": 6.271869084099308,
+   "decode_step_median_s": 0.09490827098488808,
+   "peak_after_decode_bytes": 11940072084,
+   "dispatch": {
+    "selector": "llmopt.lab.qgdn.recurrence_path",
+    "path": "kernel",
+    "update_calls": 816,
+    "requested_by_vendor_flag": {
+     "kernel": 0,
+     "loop": 816
+    },
+    "executed": {
+     "ops": 0,
+     "kernel": 816
+    },
+    "max_T": 254,
+    "vendor": {
+     "mlx_version": "0.31.2",
+     "mlx_lm_version": "0.31.3",
+     "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+     "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+     "metal_available": true,
+     "default_device": "Device(gpu, 0)"
+    }
+   },
+   "arm": "KERNEL",
+   "target": 256
+  },
+  {
+   "tokens": 254,
+   "path": "kernel",
+   "ttft_s": 4.718288792064413,
+   "prefill_tok_per_s": 53.83307618372089,
+   "argmax": 760,
+   "top16_ids": [
+    760,
+    9205,
+    1919,
+    40,
+    2064,
+    1206,
+    7525,
+    8917,
+    18656,
+    623,
+    12934,
+    21003,
+    1719,
+    32,
+    8839,
+    7732
+   ],
+   "top16_logits": [
+    24.090797424316406,
+    21.8162841796875,
+    17.470548629760742,
+    17.40473175048828,
+    17.24332618713379,
+    16.861988067626953,
+    15.872843742370605,
+    15.623908996582031,
+    15.619059562683105,
+    15.597393035888672,
+    15.27759075164795,
+    15.26561164855957,
+    15.073326110839844,
+    14.782933235168457,
+    14.54703140258789,
+    14.198978424072266
+   ],
+   "memory": {
+    "active_bytes": 9022604012,
+    "peak_bytes": 11940072084,
+    "cache_bytes": 2123137064,
+    "footprint_bytes": 11145741076,
+    "rss_peak_bytes": 11184914432,
+    "active_before_bytes": 8829764140,
+    "transient_bytes": 3110307944
+   },
+   "decode_ids": [
+    760,
+    8129,
+    6475,
+    314,
+    264,
+    56127,
+    1103,
+    314,
+    7859,
+    86746,
+    321,
+    961,
+    83588,
+    11,
+    2583,
+    3665
+   ],
+   "decode_s": 1.531441958853975,
+   "end_to_end_s": 6.249730750918388,
+   "decode_step_median_s": 0.09465525043196976,
+   "peak_after_decode_bytes": 11940072084,
+   "dispatch": {
+    "selector": "llmopt.lab.qgdn.recurrence_path",
+    "path": "kernel",
+    "update_calls": 816,
+    "requested_by_vendor_flag": {
+     "kernel": 0,
+     "loop": 816
+    },
+    "executed": {
+     "ops": 0,
+     "kernel": 816
+    },
+    "max_T": 254,
+    "vendor": {
+     "mlx_version": "0.31.2",
+     "mlx_lm_version": "0.31.3",
+     "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+     "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+     "metal_available": true,
+     "default_device": "Device(gpu, 0)"
+    }
+   },
+   "arm": "KERNEL",
+   "target": 256
+  },
+  {
+   "tokens": 254,
+   "path": "loop",
+   "ttft_s": 6.931991833029315,
+   "prefill_tok_per_s": 36.6417050276588,
+   "argmax": 760,
+   "top16_ids": [
+    760,
+    9205,
+    1919,
+    40,
+    2064,
+    1206,
+    7525,
+    8917,
+    18656,
+    623,
+    12934,
+    21003,
+    1719,
+    32,
+    8839,
+    7732
+   ],
+   "top16_logits": [
+    24.09081268310547,
+    21.81629753112793,
+    17.47054100036621,
+    17.40475082397461,
+    17.243228912353516,
+    16.861970901489258,
+    15.872858047485352,
+    15.623939514160156,
+    15.619094848632812,
+    15.597391128540039,
+    15.277579307556152,
+    15.265655517578125,
+    15.073311805725098,
+    14.782942771911621,
+    14.547035217285156,
+    14.198990821838379
+   ],
+   "memory": {
+    "active_bytes": 9022604012,
+    "peak_bytes": 11868342836,
+    "cache_bytes": 2145206764,
+    "footprint_bytes": 11167810776,
+    "rss_peak_bytes": 11216175104,
+    "active_before_bytes": 8829764140,
+    "transient_bytes": 3038578696
+   },
+   "decode_ids": [
+    760,
+    8129,
+    6475,
+    314,
+    264,
+    56127,
+    1103,
+    314,
+    7859,
+    86746,
+    321,
+    961,
+    83588,
+    11,
+    2583,
+    3665
+   ],
+   "decode_s": 1.6410086669493467,
+   "end_to_end_s": 8.573000499978662,
+   "decode_step_median_s": 0.10183906252495944,
+   "peak_after_decode_bytes": 11868342836,
+   "dispatch": {
+    "selector": "llmopt.lab.qgdn.recurrence_path",
+    "path": "loop",
+    "update_calls": 816,
+    "requested_by_vendor_flag": {
+     "kernel": 0,
+     "loop": 816
+    },
+    "executed": {
+     "ops": 816,
+     "kernel": 0
+    },
+    "max_T": 254,
+    "vendor": {
+     "mlx_version": "0.31.2",
+     "mlx_lm_version": "0.31.3",
+     "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+     "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+     "metal_available": true,
+     "default_device": "Device(gpu, 0)"
+    }
+   },
+   "arm": "LOOP",
+   "target": 256
+  }
+ ],
+ "warmups": [
+  {
+   "tokens": 256,
+   "arm": "LOOP",
+   "ttft_s": 6.915802167030051
+  },
+  {
+   "tokens": 256,
+   "arm": "KERNEL",
+   "ttft_s": 4.748636416858062
+  }
+ ],
+ "instrumented": [
+  {
+   "tokens": 254,
+   "path": "loop",
+   "ttft_s": 6.9483092909213156,
+   "prefill_tok_per_s": 36.555655392582665,
+   "argmax": 760,
+   "top16_ids": [
+    760,
+    9205,
+    1919,
+    40,
+    2064,
+    1206,
+    7525,
+    8917,
+    18656,
+    623,
+    12934,
+    21003,
+    1719,
+    32,
+    8839,
+    7732
+   ],
+   "top16_logits": [
+    24.09081268310547,
+    21.81629753112793,
+    17.47054100036621,
+    17.40475082397461,
+    17.243228912353516,
+    16.861970901489258,
+    15.872858047485352,
+    15.623939514160156,
+    15.619094848632812,
+    15.597391128540039,
+    15.277579307556152,
+    15.265655517578125,
+    15.073311805725098,
+    14.782942771911621,
+    14.547035217285156,
+    14.198990821838379
+   ],
+   "memory": {
+    "active_bytes": 9022604012,
+    "peak_bytes": 11868342836,
+    "cache_bytes": 2145206764,
+    "footprint_bytes": 11167810776,
+    "rss_peak_bytes": 11240783872,
+    "active_before_bytes": 8829764140,
+    "transient_bytes": 3038578696
+   },
+   "instrumented": {
+    "wall_s": 6.9509958329144865,
+    "issue_s_total": 0.10935058305040002,
+    "complete_s_total": 6.95097737503238,
+    "gpu_side_s_total": 6.84162679198198,
+    "argmax_equal": true
+   },
+   "dispatch": {
+    "selector": "llmopt.lab.qgdn.recurrence_path",
+    "path": "loop",
+    "update_calls": 96,
+    "requested_by_vendor_flag": {
+     "kernel": 0,
+     "loop": 96
+    },
+    "executed": {
+     "ops": 96,
+     "kernel": 0
+    },
+    "max_T": 254,
+    "vendor": {
+     "mlx_version": "0.31.2",
+     "mlx_lm_version": "0.31.3",
+     "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+     "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+     "metal_available": true,
+     "default_device": "Device(gpu, 0)"
+    }
+   },
+   "arm": "LOOP",
+   "target": 256
+  },
+  {
+   "tokens": 254,
+   "path": "kernel",
+   "ttft_s": 4.720237375004217,
+   "prefill_tok_per_s": 53.8108531034995,
+   "argmax": 760,
+   "top16_ids": [
+    760,
+    9205,
+    1919,
+    40,
+    2064,
+    1206,
+    7525,
+    8917,
+    18656,
+    623,
+    12934,
+    21003,
+    1719,
+    32,
+    8839,
+    7732
+   ],
+   "top16_logits": [
+    24.090797424316406,
+    21.8162841796875,
+    17.470548629760742,
+    17.40473175048828,
+    17.24332618713379,
+    16.861988067626953,
+    15.872843742370605,
+    15.623908996582031,
+    15.619059562683105,
+    15.597393035888672,
+    15.27759075164795,
+    15.26561164855957,
+    15.073326110839844,
+    14.782933235168457,
+    14.54703140258789,
+    14.198978424072266
+   ],
+   "memory": {
+    "active_bytes": 9022604012,
+    "peak_bytes": 11940072084,
+    "cache_bytes": 2123137064,
+    "footprint_bytes": 11145741076,
+    "rss_peak_bytes": 11240783872,
+    "active_before_bytes": 8829764140,
+    "transient_bytes": 3110307944
+   },
+   "instrumented": {
+    "wall_s": 4.722733750008047,
+    "issue_s_total": 0.014517417177557945,
+    "complete_s_total": 4.722719124983996,
+    "gpu_side_s_total": 4.708201707806438,
+    "argmax_equal": true
+   },
+   "dispatch": {
+    "selector": "llmopt.lab.qgdn.recurrence_path",
+    "path": "kernel",
+    "update_calls": 96,
+    "requested_by_vendor_flag": {
+     "kernel": 0,
+     "loop": 96
+    },
+    "executed": {
+     "ops": 0,
+     "kernel": 96
+    },
+    "max_T": 254,
+    "vendor": {
+     "mlx_version": "0.31.2",
+     "mlx_lm_version": "0.31.3",
+     "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+     "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+     "metal_available": true,
+     "default_device": "Device(gpu, 0)"
+    }
+   },
+   "arm": "KERNEL",
+   "target": 256
+  }
+ ],
+ "preflight": {
+  "256": {
+   "active_gb": 8.829764136,
+   "needed_gb": 11.829764136,
+   "limit_gb": 30.0,
+   "ok": true
+  }
+ },
+ "long_runs": [
+  {
+   "tokens": 254,
+   "path": "loop",
+   "ttft_s": 6.9609829999972135,
+   "prefill_tok_per_s": 36.4890993125686,
+   "argmax": 760,
+   "top16_ids": [
+    760,
+    9205,
+    1919,
+    40,
+    2064,
+    1206,
+    7525,
+    8917,
+    18656,
+    623,
+    12934,
+    21003,
+    1719,
+    32,
+    8839,
+    7732
+   ],
+   "top16_logits": [
+    24.09081268310547,
+    21.81629753112793,
+    17.47054100036621,
+    17.40475082397461,
+    17.243228912353516,
+    16.861970901489258,
+    15.872858047485352,
+    15.623939514160156,
+    15.619094848632812,
+    15.597391128540039,
+    15.277579307556152,
+    15.265655517578125,
+    15.073311805725098,
+    14.782942771911621,
+    14.547035217285156,
+    14.198990821838379
+   ],
+   "memory": {
+    "active_bytes": 9022604012,
+    "peak_bytes": 11868342836,
+    "cache_bytes": 2145206764,
+    "footprint_bytes": 11167810776,
+    "rss_peak_bytes": 11246977024,
+    "active_before_bytes": 8829764140,
+    "transient_bytes": 3038578696
+   },
+   "decode_ids": [
+    760,
+    8129,
+    6475,
+    314,
+    264,
+    56127,
+    1103,
+    314,
+    7859,
+    86746,
+    321,
+    961,
+    83588,
+    11,
+    2583,
+    3665,
+    1040,
+    728,
+    5662,
+    11,
+    22700,
+    11,
+    22561,
+    11
+   ],
+   "decode_s": 2.445963833015412,
+   "end_to_end_s": 9.406946833012626,
+   "decode_step_median_s": 0.10111124999821186,
+   "peak_after_decode_bytes": 11868342836,
+   "dispatch": {
+    "selector": "llmopt.lab.qgdn.recurrence_path",
+    "path": "loop",
+    "update_calls": 1200,
+    "requested_by_vendor_flag": {
+     "kernel": 0,
+     "loop": 1200
+    },
+    "executed": {
+     "ops": 1200,
+     "kernel": 0
+    },
+    "max_T": 254,
+    "vendor": {
+     "mlx_version": "0.31.2",
+     "mlx_lm_version": "0.31.3",
+     "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+     "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+     "metal_available": true,
+     "default_device": "Device(gpu, 0)"
+    }
+   },
+   "arm": "LOOP",
+   "target": 256
+  },
+  {
+   "tokens": 254,
+   "path": "kernel",
+   "ttft_s": 4.726011832943186,
+   "prefill_tok_per_s": 53.74510453602021,
+   "argmax": 760,
+   "top16_ids": [
+    760,
+    9205,
+    1919,
+    40,
+    2064,
+    1206,
+    7525,
+    8917,
+    18656,
+    623,
+    12934,
+    21003,
+    1719,
+    32,
+    8839,
+    7732
+   ],
+   "top16_logits": [
+    24.090797424316406,
+    21.8162841796875,
+    17.470548629760742,
+    17.40473175048828,
+    17.24332618713379,
+    16.861988067626953,
+    15.872843742370605,
+    15.623908996582031,
+    15.619059562683105,
+    15.597393035888672,
+    15.27759075164795,
+    15.26561164855957,
+    15.073326110839844,
+    14.782933235168457,
+    14.54703140258789,
+    14.198978424072266
+   ],
+   "memory": {
+    "active_bytes": 9022604012,
+    "peak_bytes": 11940072084,
+    "cache_bytes": 2124136488,
+    "footprint_bytes": 11146740500,
+    "rss_peak_bytes": 11246977024,
+    "active_before_bytes": 8829764140,
+    "transient_bytes": 3110307944
+   },
+   "decode_ids": [
+    760,
+    8129,
+    6475,
+    314,
+    264,
+    56127,
+    1103,
+    314,
+    7859,
+    86746,
+    321,
+    961,
+    83588,
+    11,
+    2583,
+    3665,
+    1040,
+    728,
+    5662,
+    11,
+    22700,
+    11,
+    22561,
+    11
+   ],
+   "decode_s": 2.3037886661477387,
+   "end_to_end_s": 7.029800499090925,
+   "decode_step_median_s": 0.09483125002589077,
+   "peak_after_decode_bytes": 11940072084,
+   "dispatch": {
+    "selector": "llmopt.lab.qgdn.recurrence_path",
+    "path": "kernel",
+    "update_calls": 1200,
+    "requested_by_vendor_flag": {
+     "kernel": 0,
+     "loop": 1200
+    },
+    "executed": {
+     "ops": 0,
+     "kernel": 1200
+    },
+    "max_T": 254,
+    "vendor": {
+     "mlx_version": "0.31.2",
+     "mlx_lm_version": "0.31.3",
+     "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+     "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+     "metal_available": true,
+     "default_device": "Device(gpu, 0)"
+    }
+   },
+   "arm": "KERNEL",
+   "target": 256
+  },
+  {
+   "tokens": 254,
+   "path": "kernel",
+   "ttft_s": 4.727837624959648,
+   "prefill_tok_per_s": 53.724349300631474,
+   "argmax": 760,
+   "top16_ids": [
+    760,
+    9205,
+    1919,
+    40,
+    2064,
+    1206,
+    7525,
+    8917,
+    18656,
+    623,
+    12934,
+    21003,
+    1719,
+    32,
+    8839,
+    7732
+   ],
+   "top16_logits": [
+    24.090797424316406,
+    21.8162841796875,
+    17.470548629760742,
+    17.40473175048828,
+    17.24332618713379,
+    16.861988067626953,
+    15.872843742370605,
+    15.623908996582031,
+    15.619059562683105,
+    15.597393035888672,
+    15.27759075164795,
+    15.26561164855957,
+    15.073326110839844,
+    14.782933235168457,
+    14.54703140258789,
+    14.198978424072266
+   ],
+   "memory": {
+    "active_bytes": 9021604396,
+    "peak_bytes": 11940072084,
+    "cache_bytes": 2124136680,
+    "footprint_bytes": 11145741076,
+    "rss_peak_bytes": 11246977024,
+    "active_before_bytes": 8829764140,
+    "transient_bytes": 3110307944
+   },
+   "decode_ids": [
+    760,
+    8129,
+    6475,
+    314,
+    264,
+    56127,
+    1103,
+    314,
+    7859,
+    86746,
+    321,
+    961,
+    83588,
+    11,
+    2583,
+    3665,
+    1040,
+    728,
+    5662,
+    11,
+    22700,
+    11,
+    22561,
+    11
+   ],
+   "decode_s": 2.2984425828326494,
+   "end_to_end_s": 7.026280207792297,
+   "decode_step_median_s": 0.09486047888640314,
+   "peak_after_decode_bytes": 11940072084,
+   "dispatch": {
+    "selector": "llmopt.lab.qgdn.recurrence_path",
+    "path": "kernel",
+    "update_calls": 1200,
+    "requested_by_vendor_flag": {
+     "kernel": 0,
+     "loop": 1200
+    },
+    "executed": {
+     "ops": 0,
+     "kernel": 1200
+    },
+    "max_T": 254,
+    "vendor": {
+     "mlx_version": "0.31.2",
+     "mlx_lm_version": "0.31.3",
+     "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+     "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+     "metal_available": true,
+     "default_device": "Device(gpu, 0)"
+    }
+   },
+   "arm": "KERNEL",
+   "target": 256
+  },
+  {
+   "tokens": 254,
+   "path": "loop",
+   "ttft_s": 6.9194356659427285,
+   "prefill_tok_per_s": 36.70819590825607,
+   "argmax": 760,
+   "top16_ids": [
+    760,
+    9205,
+    1919,
+    40,
+    2064,
+    1206,
+    7525,
+    8917,
+    18656,
+    623,
+    12934,
+    21003,
+    1719,
+    32,
+    8839,
+    7732
+   ],
+   "top16_logits": [
+    24.09081268310547,
+    21.81629753112793,
+    17.47054100036621,
+    17.40475082397461,
+    17.243228912353516,
+    16.861970901489258,
+    15.872858047485352,
+    15.623939514160156,
+    15.619094848632812,
+    15.597391128540039,
+    15.277579307556152,
+    15.265655517578125,
+    15.073311805725098,
+    14.782942771911621,
+    14.547035217285156,
+    14.198990821838379
+   ],
+   "memory": {
+    "active_bytes": 9021604588,
+    "peak_bytes": 11868342836,
+    "cache_bytes": 2146206252,
+    "footprint_bytes": 11167810840,
+    "rss_peak_bytes": 11267014656,
+    "active_before_bytes": 8829764140,
+    "transient_bytes": 3038578696
+   },
+   "decode_ids": [
+    760,
+    8129,
+    6475,
+    314,
+    264,
+    56127,
+    1103,
+    314,
+    7859,
+    86746,
+    321,
+    961,
+    83588,
+    11,
+    2583,
+    3665,
+    1040,
+    728,
+    5662,
+    11,
+    22700,
+    11,
+    22561,
+    11
+   ],
+   "decode_s": 2.4558983331080526,
+   "end_to_end_s": 9.375333999050781,
+   "decode_step_median_s": 0.10166474932339042,
+   "peak_after_decode_bytes": 11868342836,
+   "dispatch": {
+    "selector": "llmopt.lab.qgdn.recurrence_path",
+    "path": "loop",
+    "update_calls": 1200,
+    "requested_by_vendor_flag": {
+     "kernel": 0,
+     "loop": 1200
+    },
+    "executed": {
+     "ops": 1200,
+     "kernel": 0
+    },
+    "max_T": 254,
+    "vendor": {
+     "mlx_version": "0.31.2",
+     "mlx_lm_version": "0.31.3",
+     "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+     "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+     "metal_available": true,
+     "default_device": "Device(gpu, 0)"
+    }
+   },
+   "arm": "LOOP",
+   "target": 256
+  }
+ ],
+ "summary": {
+  "256": {
+   "n": 2,
+   "ttft_median_s": {
+    "LOOP": 6.965590166510083,
+    "KERNEL": 4.726874583517201
+   },
+   "ttft_ratio": 0.6786036029285185,
+   "loop_spread_pct": 0.9646945248747365,
+   "kernel_spread_pct": 0.3632756190624059,
+   "loop_decode16_spread_pct": 0.5196151856105183,
+   "kernel_decode16_spread_pct": 0.3237934836384092,
+   "e2e16_ratio": 0.7278014177084463,
+   "decode16_s_ratio": 0.9371739585850655,
+   "decode_step_ratio": 0.9349511201719091,
+   "parity_mismatches": 0,
+   "loop_self_mismatches": 0,
+   "top16_max_abs_diff": 9.72747802734375e-05,
+   "peak_ratio": 1.0060437458700995,
+   "peak_after_decode_ratio": 1.0060437458700995,
+   "footprint_ratio": 0.9980238114306674,
+   "transient_ratio": 1.0236061840670523,
+   "instrumented": {
+    "LOOP": {
+     "issue_s": 0.10935058305040002,
+     "complete_s": 6.95097737503238,
+     "gpu_side_s": 6.84162679198198
+    },
+    "KERNEL": {
+     "issue_s": 0.014517417177557945,
+     "complete_s": 4.722719124983996,
+     "gpu_side_s": 4.708201707806438
+    }
+   }
+  },
+  "long:256": {
+   "steps": 24,
+   "n": 2,
+   "e2e_ratio": 0.7483692120547977,
+   "spread_pct": {
+    "loop_e2e": 0.3366240154164651,
+    "kernel_e2e": 0.05008923002133841,
+    "loop_step": 0.5459219306331367,
+    "kernel_step": 0.030817221899949176
+   },
+   "e2e_s": {
+    "LOOP": 9.391140416031703,
+    "KERNEL": 7.028040353441611
+   },
+   "decode_step_ratio": 0.9354742649372584,
+   "decode_step_ms": {
+    "LOOP": 101.38799966080114,
+    "KERNEL": 94.84586445614696
+   },
+   "streams_equal_to_loop": 2,
+   "loop_self_equal": 2,
+   "peak_after_decode_ratio": 1.0060437458700995
+  }
+ },
+ "wall_s": 105.45813274988905,
+ "process_peak_rss_bytes": 11267014656
+}

@@ -1,0 +1,356 @@
+{
+ "commit": "4a828e10",
+ "tree_dirty": true,
+ "smoke": true,
+ "stage": "decode",
+ "cold_load_s": 6.101864833151922,
+ "driver": "scratch/qwen_gdn_kernel_qual.py",
+ "driver_sha256": "89ef4a9b180b7c9c14e369a45116266c4a667fab1a0baebb35995a5a52b799ef",
+ "selector_sha256": "8c6907a971241f9262f04c9ef27841a813ff8a83d3d311d66fdccc86ba340aad",
+ "layer_ordinals": [
+  0,
+  47
+ ],
+ "vendor": {
+  "mlx_version": "0.31.2",
+  "mlx_lm_version": "0.31.3",
+  "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+  "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+  "metal_available": true,
+  "default_device": "Device(gpu, 0)"
+ },
+ "model_training_flag": true,
+ "engine": {
+  "kernel_version": 5,
+  "chain_sha256": "de7e0180bf49f965c17116b7fbe8c34d2b1529c2431cc234f3a6460ad84b24dc",
+  "cache_limit_bytes": 2147483648,
+  "chunk": 256,
+  "matmul": "gemm",
+  "tokenizer_files_sha256": {
+   "tokenizer.json": "0997f410c57a1f4e53b09e4be8f4a172d90edd9564368fb0847030937229b9f3",
+   "tokenizer_config.json": "b11349aafa7cdc6a320767cf7ceb29ed82f7eda5d65e8e0819e76f0ce947bf27",
+   "config.json": "191e0af232104ed8b65258cf3fb2b842e288008baca7633c11b82a1ac7203aab"
+  },
+  "families": {
+   "linear_attn": 48,
+   "full_attn": 16
+  },
+  "v_live": 248077
+ },
+ "teacher": {
+  "dir": "logs/qwenteacher_v2",
+  "code_commit": "0ca4151",
+  "rollout_tokens_sha256": "5cf8d21469fdc7eba1a00c0317f22a262a965c017417935b718477cf64bb7fa3"
+ },
+ "dispatch": [
+  {
+   "label": "decode chat-1 LOOP free-run",
+   "selector": "llmopt.lab.qgdn.recurrence_path",
+   "path": "loop",
+   "update_calls": 1200,
+   "requested_by_vendor_flag": {
+    "kernel": 0,
+    "loop": 1200
+   },
+   "executed": {
+    "ops": 1200,
+    "kernel": 0
+   },
+   "max_T": 62,
+   "vendor": {
+    "mlx_version": "0.31.2",
+    "mlx_lm_version": "0.31.3",
+    "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+    "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+    "metal_available": true,
+    "default_device": "Device(gpu, 0)"
+   }
+  },
+  {
+   "label": "decode chat-1 KERNEL free-run",
+   "selector": "llmopt.lab.qgdn.recurrence_path",
+   "path": "kernel",
+   "update_calls": 1200,
+   "requested_by_vendor_flag": {
+    "kernel": 0,
+    "loop": 1200
+   },
+   "executed": {
+    "ops": 0,
+    "kernel": 1200
+   },
+   "max_T": 62,
+   "vendor": {
+    "mlx_version": "0.31.2",
+    "mlx_lm_version": "0.31.3",
+    "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+    "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+    "metal_available": true,
+    "default_device": "Device(gpu, 0)"
+   }
+  },
+  {
+   "label": "decode chat-1 KERNEL free-run repeat",
+   "selector": "llmopt.lab.qgdn.recurrence_path",
+   "path": "kernel",
+   "update_calls": 1200,
+   "requested_by_vendor_flag": {
+    "kernel": 0,
+    "loop": 1200
+   },
+   "executed": {
+    "ops": 0,
+    "kernel": 1200
+   },
+   "max_T": 62,
+   "vendor": {
+    "mlx_version": "0.31.2",
+    "mlx_lm_version": "0.31.3",
+    "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+    "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+    "metal_available": true,
+    "default_device": "Device(gpu, 0)"
+   }
+  },
+  {
+   "label": "decode chat-1 KERNEL teacher-forced on the loop stream",
+   "selector": "llmopt.lab.qgdn.recurrence_path",
+   "path": "kernel",
+   "update_calls": 1200,
+   "requested_by_vendor_flag": {
+    "kernel": 0,
+    "loop": 1200
+   },
+   "executed": {
+    "ops": 0,
+    "kernel": 1200
+   },
+   "max_T": 62,
+   "vendor": {
+    "mlx_version": "0.31.2",
+    "mlx_lm_version": "0.31.3",
+    "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+    "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+    "metal_available": true,
+    "default_device": "Device(gpu, 0)"
+   }
+  }
+ ],
+ "prompts": [
+  {
+   "prompt_id": "chat-1",
+   "prompt_tokens": 62,
+   "steps": 24,
+   "free_run": {
+    "streams_equal": true,
+    "first_divergence": null,
+    "n_equal_prefix": 24,
+    "margins_at_divergence": null,
+    "kernel_repeat_equal": true,
+    "kernel_repeat_logits_max_abs": 0.0,
+    "prefill_s": {
+     "LOOP": 2.733664416940883,
+     "KERNEL": 2.1956410829443485
+    },
+    "step_median_s": {
+     "LOOP": 0.10116093757096678,
+     "KERNEL": 0.09471052046865225
+    },
+    "loop_text": "The user asks: \"Explain why binary search is O(log n).\" This is a straightforward conceptual question. Need to",
+    "kernel_text": "The user asks: \"Explain why binary search is O(log n).\" This is a straightforward conceptual question. Need to"
+   },
+   "margins": {
+    "loop_free_run": [
+     3.207508087158203,
+     6.800487518310547,
+     1.9711532592773438,
+     3.9936046600341797,
+     4.383796691894531,
+     11.406402587890625,
+     7.777214050292969,
+     12.568500518798828,
+     10.520074844360352,
+     10.073379516601562,
+     11.045782089233398,
+     13.643819808959961,
+     7.709827423095703,
+     12.835138320922852,
+     6.924623489379883,
+     0.8954486846923828,
+     4.958120346069336,
+     2.8883285522460938,
+     0.44077301025390625,
+     0.2946510314941406,
+     1.44036865234375,
+     0.8257675170898438,
+     0.41457366943359375,
+     2.0828170776367188
+    ],
+    "kernel_free_run": [
+     3.207529067993164,
+     6.80048942565918,
+     1.9711532592773438,
+     3.993619918823242,
+     4.383800506591797,
+     11.406402587890625,
+     7.777202606201172,
+     12.568506240844727,
+     10.520082473754883,
+     10.073392868041992,
+     11.045785903930664,
+     13.64382553100586,
+     7.709819793701172,
+     12.835142135620117,
+     6.924617767333984,
+     0.8954505920410156,
+     4.958133697509766,
+     2.8883323669433594,
+     0.44077110290527344,
+     0.2946510314941406,
+     1.44036865234375,
+     0.8257675170898438,
+     0.4145660400390625,
+     2.0828170776367188
+    ]
+   },
+   "state_by_step": [
+    {
+     "step": 8,
+     "per_ordinal_max_abs_over_rms": {
+      "0": 1.1444375446597064e-05,
+      "47": 0.0003254069855700103
+     }
+    },
+    {
+     "step": 16,
+     "per_ordinal_max_abs_over_rms": {
+      "0": 1.1158627241903911e-05,
+      "47": 0.0003085277431141795
+     }
+    },
+    {
+     "step": 24,
+     "per_ordinal_max_abs_over_rms": {
+      "0": 1.3588379238120043e-05,
+      "47": 0.0002585825405355857
+     }
+    }
+   ],
+   "teacher_forced": {
+    "argmax_identical": 24,
+    "max_abs_logit_diff_by_step": [
+     0.00011962652206420898,
+     6.29425048828125e-05,
+     2.7179718017578125e-05,
+     2.6702880859375e-05,
+     4.267692565917969e-05,
+     2.288818359375e-05,
+     8.845329284667969e-05,
+     2.1338462829589844e-05,
+     1.811981201171875e-05,
+     1.430511474609375e-05,
+     2.1696090698242188e-05,
+     2.1457672119140625e-05,
+     2.1219253540039062e-05,
+     2.2411346435546875e-05,
+     3.0517578125e-05,
+     3.504753112792969e-05,
+     3.0040740966796875e-05,
+     2.384185791015625e-05,
+     2.276897430419922e-05,
+     2.47955322265625e-05,
+     2.765655517578125e-05,
+     2.288818359375e-05,
+     4.172325134277344e-05,
+     3.0040740966796875e-05
+    ],
+    "max_abs_logit_diff": 0.00011962652206420898,
+    "max_abs_logit_diff_first_8": 0.00011962652206420898,
+    "max_abs_logit_diff_last_8": 4.172325134277344e-05,
+    "argmax_mismatches": []
+   },
+   "final_state": {
+    "state": {
+     "max_abs_over_rms": 0.0003006620741478807,
+     "max_rel_on_large": 0.0014794606339238693,
+     "all_finite": true,
+     "n_layers": 48
+    },
+    "conv": {
+     "max_abs_over_rms": 1.6852355191770873e-05,
+     "max_rel_on_large": 0.0008089387734465848,
+     "all_finite": true,
+     "n_layers": 48
+    },
+    "per_layer_state_max_abs_over_rms": [
+     1.3588379238120043e-05,
+     4.67959414648662e-05,
+     4.8922692531265004e-05,
+     8.092803416206255e-05,
+     5.193277544987519e-05,
+     7.059937850290147e-05,
+     5.4464025755222844e-05,
+     7.826500821701112e-05,
+     7.91301122327403e-05,
+     7.734544981441723e-05,
+     7.999171673768088e-05,
+     7.413163620540105e-05,
+     3.614983213210484e-05,
+     6.0701677673133647e-05,
+     9.346092894112856e-05,
+     7.062674288499416e-05,
+     4.7076261310323065e-05,
+     5.4477155526511e-05,
+     0.00016734830631109557,
+     6.473250351118782e-05,
+     4.516613725264008e-05,
+     8.828547301261429e-05,
+     6.358510061547412e-05,
+     5.819430385345843e-05,
+     5.708841757141943e-05,
+     8.94254015610364e-05,
+     9.856578603133861e-05,
+     8.13201635080894e-05,
+     0.00013901995082703773,
+     4.8318428301553776e-05,
+     0.0002203402110459679,
+     0.00011014794078962524,
+     0.0001241347896537642,
+     0.00028270409503773674,
+     0.00013262292837104567,
+     0.00013692011704201566,
+     0.000221703258574613,
+     0.00012171899579600692,
+     0.00023644647313091017,
+     0.00021554720097912553,
+     0.00019678199788094572,
+     0.0001512992980844215,
+     0.00020349256300465084,
+     0.0001491337683389651,
+     0.0002581627379066925,
+     0.00022339712004897943,
+     0.0003006620741478807,
+     0.0002585825405355857
+    ],
+    "nonfinite_arrays": 0
+   }
+  }
+ ],
+ "summary": {
+  "n_prompts": 1,
+  "stream_mismatch_prompts": 0,
+  "kernel_repeat_unequal_prompts": 0,
+  "teacher_forced_max_abs_logit_diff": 0.00011962652206420898,
+  "teacher_forced_argmax_mismatches": 0,
+  "final_state_max_abs_over_rms": 0.0003006620741478807,
+  "all_finite": true,
+  "nonfinite_arrays": 0,
+  "state_by_step_max": 0.0003254069855700103,
+  "step_median_s": {
+   "LOOP": 0.10116093757096678,
+   "KERNEL": 0.09471052046865225
+  }
+ },
+ "wall_s": 27.027881792047992,
+ "process_peak_rss_bytes": 11585978368
+}
