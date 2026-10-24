@@ -85404,3 +85404,26 @@ as in the JSON (every bar FIRE expected; the fallback's first token near
 a 1,851-token prefill, about 50 s, against 2 to 3 s for an incremental
 turn: the operational cost of a fallback is what this registration
 reports).
+
+## AMENDMENT QWEN-LOW-DEFAULT-1-SMOKE (amends PRE-REG QWEN-LOW-DEFAULT-1): drafted while the first integration smoke was live and before its receipt was read, from the independent Opus code, cache-correctness and release-protocol review: the first smoke (receipt logs/qwen_release/default1_smoke.json, kept as the record, superseded) was built on a live test whose context-cap input was too short to trip the cap (about 5,000 tokens against a cap of 8,192), on a driver that would abort rather than record a non-reproducing fixture, and on bars that could pass vacuously (bar 6 with the live tests skipped; bars 1, 2 and 5 with no cache reuse exercised; bar 1 repeating the session's own prefix comparison instead of an independent rendering); the smoke is repaired and re-run into logs/qwen_release/default1_smoke_2.json under the amended executable registration docs/preregs/qwen-low-default-1a.json (bars, values and the all-FIRE rule unchanged; the core session suite added to the release suites; validity floors: no live test skipped, at least four of the six later smoke turns reused; bar 1 against an independent re-rendering of the transcript; the fixture bar requiring the registered break offset 47, the receipt's fed length and the turn-7 prompt sha); the revert values on HOLD are stated (Session enable_thinking None and reasoning_effort None, DEFAULT_MAX_TOKENS 512, CLI --max-tokens 512 and thinking None, the two default-pinning test files rewritten in the same commit); an aborted smoke or a missing receipt is a HOLD (2026-10-23)
+
+Also from the review, landing here without changing the contract: the
+Session's post-generation accounting check moves inside the guarded
+block so a failed check discards the cache and leaves the transcript
+unchanged; the CLI refuses --replay with --incremental, a --max-tokens
+below 1 and a --context-cap below 1 at argument parsing, and names the
+fast mode in the --no-thinking help; the default tests cover the
+effort-only and the refused combinations; the release tests assert the
+fixture's turn-7 prompt sha against the frozen receipt and the stored
+text's round trip through the tokenizer, exercise Session.ask itself on
+the stub model with the real tokenizer (the fallback path, not a
+re-implementation of the prefix check), and assert reuse on the live
+turns that follow a closed turn; the smoke's defaults block reads a
+constructed Session rather than module constants; the adapter checks
+the artifact chain against logs/qwenwhole/artifact_digest_C.txt. The
+first smoke's receipt is read only after this amendment is committed,
+and its outcome is reported as a disclosure, not adjudicated. Noted
+for the record, not corrected (RESULTS is append-only): the HOLD
+verdict of QWEN-LOW-RELEASE-0 says "the seven other bars" where eight
+fired, and "thinking off is not the default" where "thinking at low
+effort is not the default" was meant.

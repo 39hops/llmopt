@@ -339,15 +339,16 @@ class Session:
                 res = self.engine.generate_ids(full, max_tokens, mode=("fresh" if self.mode == "replay" or self.cache is None else "replay-fallback"))
                 if res.mode == "replay-fallback":
                     res.note = "the rendered transcript does not extend the fed token sequence; replayed into a fresh cache"
+            new_fed = full + res.generated_ids[: res.fed_generated]
+            if res.cache_tokens != len(new_fed) or (res.cache_offset_measured is not None and res.cache_offset_measured != len(new_fed)):
+                raise RuntimeError(f"cache accounting mismatch: {res.cache_tokens} / {res.cache_offset_measured} != {len(new_fed)}")
         except BaseException:
             # a refused, failed or interrupted turn leaves the transcript as it
             # was and discards the cache (it may be partly fed)
             self.cache = None
             raise
         self.messages = trial
-        self.fed_ids = full + res.generated_ids[: res.fed_generated]
-        if res.cache_tokens != len(self.fed_ids) or (res.cache_offset_measured is not None and res.cache_offset_measured != len(self.fed_ids)):
-            raise RuntimeError(f"cache accounting mismatch: {res.cache_tokens} / {res.cache_offset_measured} != {len(self.fed_ids)}")
+        self.fed_ids = new_fed
         # replay mode holds no cache between turns; incremental holds exactly one
         self.cache = res.cache if self.mode == "incremental" else None
         reasoning, content = split_thinking(res.text)

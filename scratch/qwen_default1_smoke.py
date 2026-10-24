@@ -39,7 +39,7 @@ import time
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-OUT = os.environ.get("OUT", "logs/qwen_release/default1_smoke.json")
+OUT = os.environ.get("OUT", "logs/qwen_release/default1_smoke_2.json")
 FIXTURE = "tests/fixtures/qwen_planning_turn7.json"
 _spec = importlib.util.spec_from_file_location("qwen_lowchat", os.path.join(os.path.dirname(os.path.abspath(__file__)), "qwen_lowchat.py"))
 _lc = importlib.util.module_from_spec(_spec)
@@ -52,7 +52,7 @@ def sha(ids):
 
 def run_tests():
     out = {}
-    for name, cmd in (("defaults_stub", ["tests/test_qdefaults.py"]), ("template", ["tests/test_qtemplate.py"]), ("release", ["tests/test_qrelease.py"])):
+    for name, cmd in (("defaults_stub", ["tests/test_qdefaults.py"]), ("template", ["tests/test_qtemplate.py"]), ("release", ["tests/test_qrelease.py"]), ("serve", ["tests/test_qserve.py"])):
         env = dict(os.environ, LLMOPT_QWEN_LIVE="1")
         p = subprocess.run([sys.executable, "-m", "pytest", "-q", "-p", "no:cacheprovider", *cmd], capture_output=True, text=True, timeout=3600, env=env)
         tail = p.stdout.strip().splitlines()[-1] if p.stdout.strip() else ""
@@ -72,8 +72,10 @@ def session_rows(eng, sess, turns):
         except qserve.ContextLimitError as e:
             rows.append({"user": text[:40], "refused": str(e)[:80]})
             continue
-        # the contract check from the recorded ids: an incremental turn's new ids must continue the fed prefix exactly
-        full_prefix_ok = (r.mode != "incremental") or (sess.fed_ids[: len(fed_before)] == fed_before)
+        # the contract check with an INDEPENDENT rendering: the transcript before the reply, rendered again with the
+        # session's controls, must equal the fed prefix plus the new ids on an incremental turn (the whole prompt on a fresh one)
+        rendered = eng.render_chat(sess.messages[:-1], sess.enable_thinking, sess.reasoning_effort)
+        full_prefix_ok = (rendered == fed_before + r.prompt_ids) if r.mode == "incremental" else (rendered == r.prompt_ids)
         rows.append({"user": text[:40], "mode": r.mode, "note": r.note, "n_prompt": r.n_prompt, "n_generated": r.n_generated, "stop_reason": r.stop_reason,
                      "generated_sha256": sha(r.generated_ids), "generated_ids": r.generated_ids, "cache_tokens": r.cache_tokens, "cache_offset_measured": r.cache_offset_measured,
                      "fed_prefix_preserved": full_prefix_ok, "first_token_s": r.timings["first_token_s"], "total_s": r.timings["total_s"],
@@ -108,8 +110,10 @@ def main() -> None:
     b.messages = list(msgs)
     p7 = eng.render_chat(msgs + [{"role": "user", "content": fx["turns"][6]["user"]}], True, "low")
     ra, rb = a.ask(fx["turns"][6]["user"], 768), b.ask(fx["turns"][6]["user"], 768)
+    brk = next((i for i, (x, y) in enumerate(zip(fed, p7)) if x != y), None)
     fixture = {"fed_len": len(fed), "fed_equals_receipt_cache_tokens": len(fed) == fx["turns"][5]["cache_tokens"], "warm_offset": warm.cache_offset_measured,
-               "rendering_extends_fed": len(p7) > len(fed) and p7[: len(fed)] == fed, "break_offset_in_generation": next((i for i, (x, y) in enumerate(zip(fed, p7)) if x != y), None) - len(p6),
+               "rendering_extends_fed": len(p7) > len(fed) and p7[: len(fed)] == fed, "break_offset_in_generation": (brk - len(p6)) if brk is not None else None,
+               "p7_sha256_equals_receipt": sha(p7) == fx["replay_turn7_prompt_sha256"],
                "mode": ra.mode, "note": ra.note, "generated_equal_replay": ra.generated_ids == rb.generated_ids, "generated_equal_frozen_receipt": ra.generated_ids == fx["replay_turn7_generated_ids"],
                "n_generated": ra.n_generated, "offsets_ok": ra.cache_offset_measured == ra.cache_tokens == len(a.fed_ids) and rb.cache_offset_measured == rb.cache_tokens,
                "prompt_len": ra.n_prompt, "first_token_s_fallback": ra.timings["first_token_s"], "first_token_s_replay": rb.timings["first_token_s"]}
@@ -136,7 +140,7 @@ def main() -> None:
     s.enable_thinking, s.reasoning_effort = False, None
     c_rows += session_rows(eng, s, [("And the smallest? One word.", 64)])
     c_rows += session_rows(eng, s, [("Write one long sentence about rivers.", 5)])
-    c_rows += session_rows(eng, s, [("x " * 5000, 64)])
+    c_rows += session_rows(eng, s, [("x " * (eng.context_cap + 64), 64)])
     cap_dropped_cache = s.cache is None
     c_rows += session_rows(eng, s, [("Reply with just: ok.", 64)])
     s.reset()
@@ -151,6 +155,8 @@ def main() -> None:
                "fixture_tokens_equal_replay_and_receipt": fixture["generated_equal_replay"] and fixture["generated_equal_frozen_receipt"], "fixture_offsets_ok": fixture["offsets_ok"],
                "smoke_turns": sum(len(c["incremental"]) for c in convs), "smoke_token_mismatch_turns": sum(1 for c in convs for eq in c["token_equal"] if not eq),
                "smoke_later_fallbacks": sum(1 for c in convs for x in c["incremental"][1:] if x["mode"] != "incremental"),
+               "smoke_later_incremental": sum(1 for c in convs for x in c["incremental"][1:] if x["mode"] == "incremental"),
+               "tests_skipped_live_suites": sum(t.get("skipped", 0) for k, t in tests.items() if k in ("template", "release")),
                "unsafe_reuse_turns": sum(1 for x in all_rows if x["mode"] == "incremental" and not x["fed_prefix_preserved"]),
                "offset_mismatch_turns": sum(1 for x in all_rows if x["cache_offset_measured"] != x["cache_tokens"]),
                "incompatible_change_reused": int(contract["effort_change_mode"] == "incremental") + int(contract["thinking_change_mode"] == "incremental"),
@@ -159,7 +165,8 @@ def main() -> None:
                "replay_later_first_token_s": [round(x["first_token_s"], 2) for c in convs for x in c["replay"][1:]],
                "smoke_generated_tokens": sum(x["n_generated"] for c in convs for x in c["incremental"]), "smoke_total_s": round(sum(x["total_s"] for c in convs for x in c["incremental"]), 1),
                "peak_bytes_max": max(x["peak_bytes"] for x in all_rows), "think_closed_turns": sum(1 for c in convs for x in c["incremental"] if x["think_closed"])}
-    receipt = {"commit": head, "tree_dirty": dirty, "defaults": {"enable_thinking": qserve.DEFAULT_THINKING, "reasoning_effort": qserve.DEFAULT_EFFORT, "max_tokens": qserve.DEFAULT_MAX_TOKENS, "mode": "incremental"},
+    s0 = qserve.Session(eng)       # the defaults as a constructed Session reports them, not as literals
+    receipt = {"commit": head, "tree_dirty": dirty, "defaults": {"enable_thinking": s0.enable_thinking, "reasoning_effort": s0.reasoning_effort, "max_tokens": qserve.DEFAULT_MAX_TOKENS, "mode": s0.mode},
                "engine": {"load_s": eng.load_s, "kernel_version": eng.info.get("kernel_version"), "chain_sha256": eng.info.get("chain_sha256"), "stop_ids": sorted(eng.stop_ids),
                           "context_cap": eng.context_cap, "cache_limit_bytes": eng.cfg.cache_limit_bytes, "tokenizer_files_sha256": getattr(eng, "tokenizer_files_sha256", {})},
                "tests": tests, "fixture": fixture, "conversations": convs, "contract": contract, "summary": summary, "wall_s": time.perf_counter() - t0}

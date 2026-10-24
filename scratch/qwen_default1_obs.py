@@ -41,24 +41,38 @@ def main(receipt_path, prereg_path):
         reasons.append(f"defaults recorded as {r.get('defaults')}")
     if [c["name"] for c in r.get("conversations", [])] != ["programming", "factual"] or any(len(c["incremental"]) != 4 or len(c["replay"]) != 4 for c in r.get("conversations", [])):
         reasons.append("the smoke conversations are not the registered two of four turns")
-    if not r.get("fixture") or not r.get("contract") or set(r.get("tests", {})) != {"defaults_stub", "template", "release"}:
-        reasons.append("fixture, contract or test blocks missing")
+    if not r.get("fixture") or not r.get("contract"):
+        reasons.append("fixture or contract blocks missing")
     if not r.get("engine", {}).get("chain_sha256"):
         reasons.append("no artifact chain recorded")
+    chain_file = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "logs", "qwenwhole", "artifact_digest_C.txt")
+    if os.path.exists(chain_file):
+        import hashlib
+        if hashlib.sha256(open(chain_file, "rb").read()).hexdigest() != r.get("engine", {}).get("chain_sha256"):
+            reasons.append("the artifact chain differs from logs/qwenwhole/artifact_digest_C.txt")
+    s0 = r.get("summary", {})
+    if s0.get("tests_skipped_live_suites", 1) != 0:
+        reasons.append("live release tests were skipped (the tower or the tokenizer was not present to the test process)")
+    if s0.get("smoke_later_incremental", 0) < 4:
+        reasons.append(f"only {s0.get('smoke_later_incremental')} later smoke turns reused the cache; the contract bars need reuse to be exercised (floor 4 of 6)")
+    if set(r.get("tests", {})) != {"defaults_stub", "template", "release", "serve"}:
+        reasons.append("the four test suites were not all run")
     valid = not reasons
     meas = {}
     if valid:
         s, f = r["summary"], r["fixture"]
-        n_turns = s["smoke_turns"] * 2 + len([x for x in r["contract"]["rows"] if "mode" in x]) + 2
-        meas["1"] = {"value": s["unsafe_reuse_turns"], "metric": "unsafe_reuse_turns", "population": "turns", "aggregation": "count", "unit": "turns", "provenance": f"{n_turns} turns in smoke, contract and fixture"}
+        n_turns = s["smoke_turns"] * 2 + len([x for x in r["contract"]["rows"] if "mode" in x])
+        meas["1"] = {"value": s["unsafe_reuse_turns"], "metric": "unsafe_reuse_turns", "population": "turns", "aggregation": "count", "unit": "turns",
+                     "provenance": f"{n_turns} smoke and contract turns checked against an independent re-rendering; {s['smoke_later_incremental']} later smoke turns reused the cache, {s['smoke_later_fallbacks']} fell back"}
         meas["2"] = {"value": s["smoke_token_mismatch_turns"] + int(not s["fixture_tokens_equal_replay_and_receipt"]), "metric": "replay_token_mismatch", "population": "turns", "aggregation": "count", "unit": "turns",
                      "provenance": f"smoke mismatches {s['smoke_token_mismatch_turns']} of {s['smoke_turns']}; fixture equal to replay {f['generated_equal_replay']} and to the frozen receipt {f['generated_equal_frozen_receipt']}"}
         meas["3"] = {"value": s["offset_mismatch_turns"] + int(not f["offsets_ok"]), "metric": "offset_mismatch_turns", "population": "turns", "aggregation": "count", "unit": "turns"}
-        meas["4"] = {"value": int(s["fixture_detected_and_replayed"] and s["fixture_tokens_equal_replay_and_receipt"] and f["offsets_ok"]), "metric": "fixture_outcome", "population": "fixture:1", "aggregation": "indicator", "unit": "fixtures",
+        meas["4"] = {"value": int(s["fixture_detected_and_replayed"] and s["fixture_tokens_equal_replay_and_receipt"] and f["offsets_ok"] and f["break_offset_in_generation"] == 47
+                                  and f["fed_equals_receipt_cache_tokens"] and f["p7_sha256_equals_receipt"]), "metric": "fixture_outcome", "population": "fixture:1", "aggregation": "indicator", "unit": "fixtures",
                      "provenance": f"extends {f['rendering_extends_fed']} mode {f['mode']} break offset {f['break_offset_in_generation']} n_generated {f['n_generated']} first token fallback {f['first_token_s_fallback']:.2f} s replay {f['first_token_s_replay']:.2f} s"}
         meas["5"] = {"value": s["incompatible_change_reused"], "metric": "incompatible_change_reused", "population": "changes:2", "aggregation": "count", "unit": "turns",
                      "provenance": f"effort change {r['contract']['effort_change_mode']}, thinking change {r['contract']['thinking_change_mode']}; budget stop {r['contract']['budget_stop']}, cap refused {r['contract']['cap_refused']}, cache dropped {r['contract']['cap_dropped_cache']}, recovery {r['contract']['recovery_mode']}, reset {r['contract']['reset_ok']}"}
-        meas["6"] = {"value": s["tests_failed"] + sum(1 for v in s["tests_returncodes"].values() if v != 0 and s["tests_failed"] == 0), "metric": "tests_failed", "population": "suites:3", "aggregation": "count", "unit": "tests",
+        meas["6"] = {"value": s["tests_failed"] + sum(1 for v in s["tests_returncodes"].values() if v != 0 and s["tests_failed"] == 0), "metric": "tests_failed", "population": "suites:4", "aggregation": "count", "unit": "tests",
                      "provenance": f"passed {s['tests_passed']}; returncodes {s['tests_returncodes']}; summaries {[t['summary'] for t in r['tests'].values()]}"}
         meas["unsafe_reuse_turns"] = dict(meas["1"])
     obs = {"note": f"Mechanical projection of {receipt_path} (commit {r.get('commit')}); adapter scratch/qwen_default1_obs.py",

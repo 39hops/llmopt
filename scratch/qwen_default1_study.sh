@@ -3,7 +3,9 @@
 # driver scratch/qwen_default1_smoke.py, which itself runs the release test
 # suites in fresh subprocesses (the live ones on the tower) and then the
 # fixture, the bounded multi-turn smoke and the contract checks; receipt
-# logs/qwen_release/default1_smoke.json (refuses to overwrite). Run under
+# logs/qwen_release/default1_smoke_2.json (refuses to overwrite; the first
+# smoke's receipt default1_smoke.json is superseded by AMENDMENT
+# QWEN-LOW-DEFAULT-1-SMOKE and kept as the record). Run under
 # scripts/liverun.py (clean tree, no commits while live).
 set -uo pipefail
 cd "$(dirname "$0")/.."

@@ -44,7 +44,7 @@ def _report(res, load_s=None):
           f"cache holds {res.cache_tokens} tokens; mode {res.mode}", file=sys.stderr)
 
 
-def resolve_mode(thinking_flag: bool, no_thinking_flag: bool, effort):
+def resolve_mode(thinking_flag: bool, no_thinking_flag: bool, effort):   # thinking_flag is kept for the record: --thinking alone is the default configuration
     """The CLI's configuration: no flags = thinking on at low effort (VERDICT
     QWEN-LOW-DEFAULT-1); --no-thinking = direct answers; --reasoning-effort
     sets the template's control explicitly (xhigh is the template's own
@@ -60,7 +60,7 @@ def main() -> int:
     ap.add_argument("--interactive", action="store_true", help="read turns from stdin until EOF or /quit; /reset starts over")
     ap.add_argument("--system", default=None, help="optional system message")
     ap.add_argument("--max-tokens", type=int, default=768, help="output budget per turn (default 768, the promoted configuration's)")
-    ap.add_argument("--no-thinking", action="store_true", help="direct answers: enable_thinking False (the pre-release default)")
+    ap.add_argument("--no-thinking", action="store_true", help="FAST mode: direct answers with no reasoning block (enable_thinking False)")
     ap.add_argument("--thinking", action="store_true", help="thinking on (the default since VERDICT QWEN-LOW-DEFAULT-1, at low effort unless --reasoning-effort says otherwise)")
     ap.add_argument("--reasoning-effort", choices=("xhigh", "medium", "low"), default=None,
                     help="the pinned template's reasoning_effort (default low; xhigh is the template's own default); refused with --no-thinking")
@@ -75,11 +75,17 @@ def main() -> int:
         ap.error("give --prompt or --interactive")
     if a.thinking and a.no_thinking:
         ap.error("--thinking and --no-thinking exclude each other")
+    if a.incremental and a.replay:
+        ap.error("--replay and --incremental exclude each other")
+    if a.max_tokens < 1:
+        ap.error("--max-tokens must be at least 1")
+    if a.context_cap is not None and a.context_cap < 1:
+        ap.error("--context-cap must be at least 1")
     if a.reasoning_effort and a.no_thinking:
         ap.error("--reasoning-effort has no effect with --no-thinking (the template ignores it)")
     from llmopt.lab import qserve
     thinking, effort = resolve_mode(a.thinking, a.no_thinking, a.reasoning_effort)
-    kw = {"context_cap": a.context_cap} if a.context_cap else {}
+    kw = {"context_cap": a.context_cap} if a.context_cap is not None else {}
     eng = qserve.Engine(art_dir=a.art_dir, vendor_dir=a.vendor_dir, **kw)
     print(f"[qwen_chat] loaded {eng.info.get('fused')} fused tensors, kernel generation {eng.info.get('kernel_version')}, "
           f"chain {eng.info.get('chain_sha256', '')[:12]}, in {eng.load_s:.1f}s; stop ids {sorted(eng.stop_ids)}; "

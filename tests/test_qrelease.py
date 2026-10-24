@@ -76,13 +76,36 @@ def test_turn7_fixture_tokens_differ_from_reencoded_text_and_the_prefix_check_de
         "p7 = eng.render_chat(msgs + [{'role': 'user', 'content': fx['turns'][6]['user']}], True, 'low')\n"
         "extends = len(p7) > len(fed) and p7[:len(fed)] == fed\n"
         "brk = next((i for i, (a, b) in enumerate(zip(fed, p7)) if a != b), None)\n"
+        "import hashlib as H\n"
         "print(json.dumps({'first_diff_in_generation': first, 'gen_at': gen[first:first + 2], 're_at': re_ids[first:first + 1], 'decoded': tok.decode(gen[first:first + 2]),"
+        " 'p7_sha': H.sha256(json.dumps(p7).encode()).hexdigest(), 'decode_roundtrip': tok.decode(gen, skip_special_tokens=True) == t6['text'],"
         " 'p6_len': len(p6), 'p7_len': len(p7), 'fed_len': len(fed), 'extends': extends, 'break_at': brk, 'break_offset_in_generation': (brk - len(p6)) if brk is not None else None}))\n"))
     assert out["first_diff_in_generation"] == fx["mismatch"]["fed_offset_from_turn6_generation"] == 47
     assert out["gen_at"] == [1, 2523] and out["re_at"] == [20946] and out["decoded"] == '"You'       # the exact ids: emitted apart, re-encoded merged
     assert out["p7_len"] == fx["turns"][6]["prompt_len"] == fx["replay_turn7_prompt_len"] == 1851
+    assert out["p7_sha"] == fx["replay_turn7_prompt_sha256"] and out["decode_roundtrip"] is True      # the rendering IS the receipt's prompt; the stored text is the ids' decode
     assert out["extends"] is False and out["break_offset_in_generation"] == 47                   # the prefix check detects it: replay, never reuse
     assert fx["turns"][6]["mode"] == "replay-fallback" and fx["turns"][6]["generated_ids"] == fx["replay_turn7_generated_ids"]   # the frozen receipt: the fallback matched replay
+
+
+def test_turn7_fixture_session_on_the_stub_model_with_the_real_tokenizer_replays():
+    """Session.ask itself (not a re-implementation) on the stub model with the pinned
+    tokenizer: a session holding the fixture's fed ids asks turn 7 and must fall back."""
+    out = sub(PRE + (
+        f"fx = json.load(open({FIXTURE!r}))\n"
+        "msgs = []\n"
+        "for t in fx['turns'][:6]:\n"
+        "    msgs.append({'role': 'user', 'content': t['user']})\n"
+        "    reasoning, content = qserve.split_thinking(t['text'])\n"
+        "    msgs.append({'role': 'assistant', 'content': content, **({'reasoning_content': reasoning} if reasoning else {})})\n"
+        "p6 = eng.render_chat(msgs[:11], True, 'low')\n"
+        "fed = p6 + fx['turns'][5]['generated_ids']\n"
+        "cache = eng.model.make_cache(); cache[0].fed = list(fed)\n"
+        "s = qserve.Session(eng)\n"
+        "s.messages, s.fed_ids, s.cache = list(msgs), list(fed), cache\n"
+        "r = s.ask(fx['turns'][6]['user'], 4)\n"
+        "print(json.dumps({'mode': r.mode, 'note_has_reason': 'does not extend' in r.note, 'prompt_len': r.n_prompt, 'cache_fed_equals_fed_ids': s.cache[0].fed == s.fed_ids}))\n"))
+    assert out["mode"] == "replay-fallback" and out["note_has_reason"] and out["prompt_len"] == 1851 and out["cache_fed_equals_fed_ids"]
 
 
 @pytest.fixture(scope="module")
@@ -131,6 +154,8 @@ def test_live_default_session_multi_turn_incremental_equals_replay(live_engine):
         assert ra.generated_ids == rb.generated_ids and ra.stop_reason == rb.stop_reason, (i, ra.mode, ra.note)
         assert ra.cache_offset_measured == ra.cache_tokens == len(a.fed_ids)
         assert "</think>" in ra.text
+        if i > 0 and "</think>" in a.turns[-2].text:
+            assert ra.mode == "incremental", (i, ra.mode, ra.note)                 # a closed low turn re-renders exactly here, or the fallback reason is on record
     # an incompatible change mid-session never reuses the cache
     a.reasoning_effort = "xhigh"
     r = a.ask("And the symbol for gold? One word.", 128)
@@ -139,7 +164,7 @@ def test_live_default_session_multi_turn_incremental_equals_replay(live_engine):
     r2 = a.ask("Write one long sentence about rivers.", 5)
     assert r2.stop_reason == "max_tokens" and not r2.last_token_in_cache
     with pytest.raises(qserve.ContextLimitError):
-        a.ask("x " * 5000, 64)
+        a.ask("x " * (live_engine.context_cap + 64), 64)                          # longer than the cap on its own, whatever the history
     assert a.cache is None
     r3 = a.ask("Reply with just: ok.", 64)
     assert r3.mode == "fresh"

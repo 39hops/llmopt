@@ -1,0 +1,10 @@
+== smoke 01:36:58 520a11db
+[default1] tests defaults_stub: 4 passed in 0.96s
+[default1] tests template: 4 passed in 14.48s
+[default1] tests release: 1 failed, 4 passed in 369.37s (0:06:09)
+[default1] fixture mode replay-fallback extends False equal_replay True equal_receipt True offsets True
+[default1] smoke programming modes ['fres', 'incr', 'incr', 'incr'] equal [True, True, True, True] ttft inc [3.33, 2.29, 2.14, 2.27] rep [3.31, 8.29, 12.74, 16.27]
+[default1] smoke factual modes ['fres', 'incr', 'incr', 'incr'] equal [True, True, True, True] ttft inc [2.52, 1.99, 2.01, 2.0] rep [2.52, 3.51, 4.86, 6.4]
+[default1] contract {"effort_change_mode": "replay-fallback", "thinking_change_mode": "replay-fallback", "budget_stop": "max_tokens", "cap_refused": false, "cap_dropped_cache": false, "recovery_mode": "incremental", "reset_ok": true}
+[default1] summary {"tests_failed": 1, "tests_passed": 12, "fixture_detected_and_replayed": true, "fixture_tokens_equal_replay_and_receipt": true, "fixture_offsets_ok": true, "smoke_turns": 8, "smoke_token_mismatch_turns": 0, "smoke_later_fallbacks": 0, "unsafe_reuse_turns": 0, "offset_mismatch_turns": 0, "incompatible_change_reused": 0, "smoke_generated_tokens": 672, "smoke_total_s": 85.8, "peak_bytes_max": 12681643588, "think_closed_turns": 8}; wrote logs/qwen_release/default1_smoke.json
+== DONE 01:52:32

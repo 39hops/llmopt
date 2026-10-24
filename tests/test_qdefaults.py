@@ -46,6 +46,15 @@ def test_session_with_no_arguments_is_thinking_low_incremental_768():
                    "default_differs_from_template_default": True, "off_effort": None, "tmpl_effort": None, "tmpl_thinking": None}
 
 
+def test_effort_only_implies_thinking_and_effort_with_no_thinking_is_refused():
+    out = run(STUB + (
+        "e = qserve.Session(eng, reasoning_effort='low')\n"
+        "try:\n    qserve.Session(eng, enable_thinking=False, reasoning_effort='low'); refused = False\n"
+        "except qserve.InputError:\n    refused = True\n"
+        "print(json.dumps({'effort_only_thinking': e.enable_thinking, 'refused': refused}))\n"))
+    assert out == {"effort_only_thinking": True, "refused": True}
+
+
 def test_cli_resolves_no_flags_to_thinking_low_and_keeps_overrides():
     out = run("import json, sys\nsys.path.insert(0, 'scripts')\nimport qwen_chat as q\n"
               "print(json.dumps({'none': q.resolve_mode(False, False, None), 'off': q.resolve_mode(False, True, None), 'xhigh': q.resolve_mode(False, False, 'xhigh'),"
