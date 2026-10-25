@@ -47,8 +47,8 @@ from llmopt.lab.prereg import load, registration_digest  # noqa: E402
 STAGES = ("tests", "heldout", "cache", "battery", "cli")
 HF_REVISION = "1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0"
 CHAIN = "logs/qwenwhole/artifact_digest_C.txt"
-# the live suites' expected shape at the registration commit: (minimum passed, maximum skipped); the one admissible test_qserve skip is the
-# stub model's "no stop trajectory" parametrization (tests/test_qserve.py, a pytest.skip inside a stub-only test), never a live test
+# the live suites' expected shape at the registration commit: (minimum passed, maximum skipped); the one admissible test_qserve skip is a
+# stub-model parametrization (tests/test_qserve.py:250, "no empty trajectory in the stub", a pytest.skip inside a stub-only test), never a live test
 LIVE_SUITE_FLOORS = {"tests/test_qserve.py": (25, 1), "tests/test_qrelease.py": (6, 0)}
 PINS = {"logs/qwen_gdn/heldout.json": "288d8fd85c5c855b12eebe8a7c0623ac0764165ad2775cde1d655f1603971382",
         "logs/qwen_battery/results_v3_C.json": "c47c2d42cd58443f7a510615c6eed101fe7b7557483c8663f4000f8077b1a5d0"}

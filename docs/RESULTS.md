@@ -86393,3 +86393,214 @@ would have been HELD for a reason that is not a property of the kernel
 path; booking that as the verdict would have been a false reading, so
 the correction is made and disclosed here, before the adjudication is
 run and read. The adapter's corrected sha256 is recorded in the verdict.
+
+## VERDICT QWEN-GDN-PROMOTE-0: ALL EIGHT GATES FIRE, NOT-REFUTED; the Metal GatedDeltaNet recurrence kernel IS the arm C serving default (llmopt.lab.qserve.DEFAULT_RECURRENCE "kernel", selected by name per layer, the training flag untouched, the loop selectable by --recurrence loop; one Mac, one session, generation 5, chunk 256 GEMM prefill, mlx-lm 0.31.3, single unpadded prompts), on the promoted code itself: dispatch proven by 717,168 kernel executions and 0 loop executions under every DEFAULT block (121,440 loop and 0 kernel under every LOOP block); nine release suites 92 passed, 0 failed, the one skip a stub test; held-out parity 0 of 36 comparisons differing (18 DEFAULT runs against the in-process loop and against the frozen QWEN-GDN-KERNEL-0 loop rows, final argmax and 16 ids, top-16 logits within 2e-4); cache continuation 9 of 9 turns equal across incremental and replay and across arms with every eligible turn reused; the frozen v3 battery 56 of 60 on the promoted default with all 60 tasks token-identical to the frozen loop receipt (same four failures, zero near ties needed); the fresh 16-task CLI collection token-identical between the default and --recurrence loop in all 16 (15 of 16 pass in both arms, the one failure the same model error in both); TTFT 0.672 / 0.674 / 0.667 at 512 / 1,024 / 2,048 tokens (8.93 / 18.13 / 34.88 s against 13.29 / 26.91 / 52.33), peak memory 1.008 at worst, the 16-step decode 0.930 to 0.933 (steps 94 to 96 against 100 to 102 ms); the model pin confirmed in every engine receipt (Qwen/Qwen3.8-27B revision 1d4bf0f2 read from the teacher manifest, vendor config.json 191e0af2..., arm C chain de7e0180... with manifest d7e56155..., 48 linear_attention and 16 full_attention layers, mlx-lm qwen3_5.py f0daa30b...); one disclosed post-run adapter correction (AMENDMENT QWEN-GDN-PROMOTE-0-ADAPTER, no threshold moved) (2026-10-25, Mac, commit 65039e50 for the receipts, liverun qwen-gdn-promote-0)
+
+Adjudicator output, verbatim (logs/qwen_gdn_promote/adjudicate_1/adjudication.txt,
+adjudicated against docs/preregs/qwen-gdn-promote-0.json over
+logs/qwen_gdn_promote/adjudicate_1/observations.json, exit 0):
+BAR 1 DISPATCH-PROOF: FIRE
+BAR 2 RELEASE-TESTS: FIRE
+BAR 3 HELDOUT-PARITY: FIRE
+BAR 4 CACHE-CONTINUATION: FIRE
+BAR 5 BATTERY: FIRE
+BAR 6 CLI-FRESH: FIRE
+BAR 7 LATENCY: FIRE
+BAR 8 MEMORY: FIRE
+REFUTED-IF: NOT-REFUTED
+(the observations are valid under every floor of
+scratch/qwen_gdn_promote_obs.py as corrected by AMENDMENT
+QWEN-GDN-PROMOTE-0-ADAPTER: one commit, clean tree, one vendor provenance
+with the Metal GPU as the default device, the model pin identical across
+the three engine stages, the frozen references and prompts at their
+sha256s, every dispatch block non-empty, the live suites run, 6 runs per
+arm per length with the loop arm self-consistent and equal to the frozen
+rows, 9 cache turns with 6 of 6 reuses, 60 battery tasks compared, 16 CLI
+tasks in 32 processes.)
+
+Decision, by the registered rule: all eight gates FIRE, so the promotion
+STANDS. DEFAULT_RECURRENCE "kernel", written into llmopt/lab/qserve.py at
+the registration (0360253a), is the serving default from this commit on;
+nothing is reverted. Bar 9 of QWEN-GDN-KERNEL-0 stays UNRESOLVED as
+booked and was not re-registered.
+
+Registered bars against measured values: bar 1 ops under DEFAULT 0 (0),
+kernel under LOOP 0 (0), selection indicator 1 (1); bar 2 failed tests 0
+(0); bar 3 differing comparisons 0 of 36 (0); bar 4 incremental against
+replay unequal 0 of 9 (0), unexplained divergences 0 (0); bar 5 passes
+above 54.5 (56), unexplained divergences 0 (0), errors 0 (0); bar 6
+unexplained divergences 0 (0), receipts indicator 1 (1), errors 0 (0);
+bar 7 TTFT at 1,024 at most 0.80 with fence 0.03 (0.674), at 2,048
+(0.667), at 512 at most 1.03 with fence 0.02 (0.672), spreads within 3
+percent in both arms (largest 1.12); bar 8 peak at most
+1.05 with fence 0.01 (1.008), 16-step decode at most 1.02 with fence 0.02
+(0.933). Against the registered prior (every gate fires; zero to two
+explained near ties; TTFT about 0.67; peak about 1.01; decode about
+0.93; the v3 score 56): every reading inside the prior; zero near ties
+where the prior expected zero to two (the bars admit any number of
+explained ties), on about a quarter of the token volume the prior
+assumed (12,345 battery and 1,059 cache tokens against about 40,000 and
+9,000 expected: the thinking traces were shorter than the prior guessed).
+
+Receipts (commit 65039e50, liverun qwen-gdn-promote-0 armed 05:27:12
+UTC, disarmed 06:34:47, rc 0, 67 minutes; three engine loads of 6.2 to
+6.3 s, no classification engine in the CLI stage, plus 32 CLI cold loads with median 7.6 s): logs/qwen_gdn_promote/
+tests.json, heldout.json, cache.json, battery.json, cli.json,
+study_65039e50.log, the adjudication pair; all force-added. The 32
+per-task CLI receipts (logs/qwen_gdn_promote/cli/) are embedded verbatim
+in cli.json and stay untracked. Driver sha256 67287e67..., adapter as
+corrected abb89907... (the registered adapter's floors are the subject of
+the amendment), llmopt/lab/qtower.py 89d2f3d9..., qserve.py 9f3e8457...,
+qgdn.py 94fc734e..., scripts/qwen_chat.py bb4276d1.... Two receipt-field
+defects of the new driver, found by the receipt audit and disclosed, not
+repaired in the frozen driver: every dispatch block's "path" field reads
+"vendor" (the instrument's counting mode, spread over the arm's path by a
+later dictionary merge); the arm is proven by the block's "arm",
+"selection_before" and "selection_after" fields ({kernel: 48} under
+DEFAULT, {loop: 48} under LOOP) and by the exclusive executed counts, in
+all 47 blocks; and the cache stage's per-turn rows carry the equality
+booleans, the token counts, modes, offsets, timings and the first 160
+characters of text, not the generated ids themselves, so bar 4's zero is
+recomputable from those booleans and counts but not re-derivable from
+ids (the battery and CLI stages carry every id). The CLI stage loaded no
+classification engine (no divergence), so cli.json carries no engine or
+model-pin block of its own; its 32 embedded receipts carry the chain
+sha256, the kernel generation, the selection and the vendor shas. Vendor provenance
+in every receipt: mlx 0.31.2, mlx-lm 0.31.3, qwen3_5.py f0daa30b...,
+gated_delta.py 79c8376a..., default device the Metal GPU; the tower's
+training flag True at the entry and exit of every engine stage, the
+selection kernel on 48 of 48 DeltaNet layers.
+
+Model pin, from the receipts (identical across the heldout, cache and
+battery stages apart from the qualify report's free-memory preflight
+reading): vendor directory sha256s config.json 191e0af2...,
+generation_config.json e70c136c..., model.safetensors.index.json
+77042094... (total 55,562,855,904 bytes over 1,199 tensors),
+tokenizer.json 0997f410..., tokenizer_config.json b11349aa...;
+configuration Qwen3_5ForConditionalGeneration, model_type qwen3_5, text
+model_type qwen3_5_text, hidden 5,120, 64 layers of which 48
+linear_attention and 16 full_attention, DeltaNet 16 key and 48 value heads
+of 128 with conv kernel 4, 24 attention heads with 4 key-value heads of
+256, vocabulary 248,320, mamba_ssm_dtype float32, source dtype bfloat16,
+transformers 5.8.0.dev0; source weights Qwen/Qwen3.8-27B at revision
+1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0, read from
+logs/qwenteacher_v2/teacher_manifest.json (sha256 a29a7415...); the arm
+C artifact (directory C; chain logs/qwenwhole/artifact_digest_C.txt
+sha256 de7e0180..., manifest d7e56155..., 1,199 keys conserved, 402
+fused and 449 raw tensors, 9,367,009,856 resident payload bytes); the
+mlx-lm architecture module qwen3_5.py f0daa30b... (the shared
+Qwen3.5-family architecture implementation; the weights are Qwen3.8-27B).
+
+Stage 1, tests (266 s): tests/test_qgdn.py 12 passed; test_qtower_
+recurrence.py 7; test_qtower_adoption.py 2; test_qdefaults.py 7;
+test_qtemplate.py 4; test_qprefill.py 11; test_qbattery.py 18; live
+test_qserve.py 25 passed and 1 skipped (tests/test_qserve.py:250, "no
+empty trajectory in the stub", a stub-model parametrization, not a live
+test; re-run with -rs after the chain, the same count; that re-run is not
+receipted, the amendment prose carries it); live
+test_qrelease.py 6 passed (the planning-turn-7 fixture replays to the
+reference on the kernel default; the default session equals replay).
+Return codes all 0.
+
+Stage 2, held-out (1,148 s; the frozen prompts of 510, 1,029 and 2,040
+tokens; one warm-up per arm per length, then three ABBA blocks, 6 runs
+per arm per length, pool emptied before every run): TTFT medians loop
+13.29 / 26.91 / 52.33 s against default 8.93 / 18.13 / 34.88 s, ratios
+0.672 / 0.674 / 0.667; spreads loop 0.89 / 0.53 / 0.16 percent, default
+1.12 / 0.38 / 0.14; every DEFAULT run's final argmax and 16 decode ids
+equal to the in-process loop's and to the frozen QWEN-GDN-KERNEL-0 loop
+rows (0 of 36 comparisons differ), the loop arm self-consistent and equal
+to the frozen rows (loop drift across sessions: none); top-16 logit
+differences 6e-5 / 2e-5 / 2e-4; peak active memory ratios 1.007 / 1.008 /
+1.008 (footprint 1.000, transient 1.03); 16-step decode ratios 0.933 /
+0.930 / 0.933 (steps 94 to 96 against 100 to 102 ms); end to end with 16
+steps 0.700 / 0.689 / 0.675. Dispatch: 42 blocks, every one exclusive.
+
+Stage 3, cache (526 s; three fresh three-turn conversations under the
+chat default, thinking low, 768 tokens, incremental and replay sessions
+in both arms): 9 of 9 turns with the DEFAULT incremental ids equal to the
+DEFAULT replay ids, to the LOOP incremental ids and to the LOOP replay
+ids; 6 of 6 eligible turns reused in both arms, no fallback, every KV
+offset equal to the accounting; 1,059 generated tokens per arm (turn
+lengths 52 to 390); first-token latency on reused turns 1.70 to 1.91 s
+(default) against 1.85 to 2.10 s (loop), on replayed turns 2.64 to 6.01
+against 3.70 to 8.33 s. No divergence to classify.
+
+Stage 4, battery (1,344 s; the frozen v3 collection, 60 tasks, thinking
+low, 768, replay sessions, the committed validators): 56 of 60 pass
+(arithmetic 11 of 12, structured 11 of 12, code 11 of 12, instruction 9
+of 10, two-turn 8 of 8, termination 6 of 6); every one of the 60 tasks
+token-identical to the frozen loop receipt logs/qwen_battery/
+results_v3_C.json on every turn (12,345 generated tokens), so the same
+four tasks fail for the same reasons (arith-01, code-09 and instruct-07
+with an unterminated think block, json-03 with a wrong mean); no error,
+no hold, no divergence to classify. Descriptive, cross-session: the
+summed task wall 1,336 s against the frozen receipt's 1,470 (0.91), the
+median first-token latency 2.61 against 3.42 s.
+
+Stage 5, CLI (768 s; the fresh collection scratch/evalsets/
+qwen_battery_v4_cli.json, 16 tasks, through scripts/qwen_chat.py in 32
+fresh processes, default flags against --recurrence loop): all 32
+processes exit 0; every receipt names its selection (kernel on 48 layers
+by default, loop on 48 under the flag, recurrence_of agreeing, the Metal
+GPU as the default device); all 16 tasks token-identical between the
+arms (generated lengths 38 to 332 per turn; the four two-turn tasks reuse
+the cache on their second turn in both arms); 15 of 16 pass in both arms,
+the one failure (cli-json-01, invoice total 38.94 against 28.94: the
+model computed the 9.65 discount and then subtracted it wrongly)
+identical in both arms; median first-token
+latency 2.18 s (default) against 2.70 s (loop) on these short prompts;
+cold load median 7.6 s in both arms. No divergence to classify.
+
+Reading. The promoted code reproduces the qualification: the per-instance
+selection and the forced instrument are the same computation at the
+update call, the TTFT gain is a third at the three measured lengths (0.667 to 0.674;
+the qualification read 0.666 to 0.674), the decode step 6 to 7 percent
+faster, peak memory plus 0.8 percent, and across 36 held-out
+comparisons, 9 chat turns, 60 battery tasks and 16 CLI tasks (about
+16,000 greedy tokens on the default arm, 12,345 of them through 768-token
+thinking traces) not one token differed between the kernel default and the loop,
+so the registered near-tie rule was never invoked (and the cli
+classification block named in bar 1's population never existed: there
+was nothing to classify). The battery and the
+held-out rows also show the loop path reproducing its own frozen
+receipts across sessions and commits token for token, which is what
+makes those frozen rows usable as parity oracles. Limits: one Mac, one
+session, generation 5 kernels with the chunk 256 GEMM prefill, mlx-lm 0.31.3 under the source-sha fence in select_recurrence
+(the kernel is refused under any other installed source), chunk 256
+(the Engine refuses the kernel at another chunk), single unpadded
+prompts (masked and batched semantics remain unmeasured, as in the
+qualification); the live test suite's one skip is a stub-model test; the
+cross-session battery timing comparison is descriptive (different
+commits, the same machine). The near-tie rule and its arm-difference
+bound stand registered but untested by any instance; a future divergence
+would be the first exercise of it.
+
+Hygiene. The Opus 5.5 methodology audit before registration found two
+blockers and seven should-fix items (listed in the pre-registration),
+all applied before the run. After the run, the observations adapter's
+first pass declared the receipts invalid for three reasons that were the
+adapter's own (a per-process free-memory field inside the copied qualify
+report; a stale field name for the revision; a live-suite floor written
+as "no skip" that a stub test tripped); AMENDMENT QWEN-GDN-PROMOTE-0-
+ADAPTER (the entry above) corrected the floors, moved no threshold, fence,
+population or aggregation, but did reword one registered validity
+sentence (the decision rule's "the two live suites run with at least one
+pass and no skip each" became, per suite, return code 0 with the
+preconditions true, at least 25 passed and at most 1 skipped in
+test_qserve, at least 6 passed and none skipped in test_qrelease), and
+disclosed what had been seen before the correction: the chain log, the
+stage summaries, AND the adapter's scratch output after the correction,
+which is every measurement value; the adjudication alone had not been
+run. The registration JSON is unchanged since 0360253a. The Opus 5.5 receipt audit
+before this booking found no blocker; it recomputed the chain, collection
+and frozen-reference sha256s, every held-out ratio, all 60 battery tasks
+against the frozen rows, the 32 CLI processes and the adjudication (byte
+for byte), and raised the two receipt-field items disclosed above plus a
+comment in the adapter naming the wrong stub skip (corrected, comment
+only). The Opus 5.5 pre-registration audit found one blocker (an engine-load
+count) and six should-fix items (a wrong explanation of the CLI failure,
+a turn-length range, a logit difference, the prior's token volume, the
+amendment disclosure, the headline fence), all applied here; its
+verified list covers every bar, dict sum, sha and the decision rule.
+Both checkouts at the booking commit after the push.

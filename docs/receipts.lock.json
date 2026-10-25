@@ -4947,31 +4947,42 @@
    "tracked": true
   },
   "logs/qwen_gdn_promote/adjudicate_1/adjudication.txt": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 216,
+   "exists": true,
+   "sha256": "5a909c83f81f6457afabe71110042ddc6eebdd2cd712c36abf2f508ee2360e4d",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_gdn_promote/adjudicate_1/observations.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 19604,
+   "exists": true,
+   "sha256": "1438f94b6be111866767baff43f0a33263ce25081bbb338bae4ce48a605bab33",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_gdn_promote/battery.json": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/qwen_gdn_promote/cache.json": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/qwen_gdn_promote/cli.json": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/qwen_gdn_promote/heldout.json": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/qwen_gdn_promote/tests.json": {
-   "exists": false,
+   "exists": true,
+   "pending": true,
    "source": "prereg"
   },
   "logs/qwen_geometry/adjudicate_1/adjudication.txt": {

@@ -1,0 +1,187 @@
+== tests 05:27:12 65039e50
+[promote] tests tests/test_qgdn.py: rc 0 12 passed in 1.57s
+[promote] tests tests/test_qtower_recurrence.py: rc 0 7 passed in 1.59s
+[promote] tests tests/test_qtower_adoption.py: rc 0 2 passed in 0.46s
+[promote] tests tests/test_qdefaults.py: rc 0 7 passed in 1.60s
+[promote] tests tests/test_qtemplate.py: rc 0 4 passed in 15.13s
+[promote] tests tests/test_qprefill.py: rc 0 11 passed in 0.57s
+[promote] tests tests/test_qbattery.py: rc 0 18 passed in 2.61s
+[promote] tests tests/test_qserve.py: rc 0 25 passed, 1 skipped in 61.13s (0:01:01)
+[promote] tests tests/test_qrelease.py: rc 0 6 passed in 176.52s (0:02:56)
+[promote] tests wrote logs/qwen_gdn_promote/tests.json in 266s
+== heldout 05:31:38 65039e50
+[promote] heldout 512 LOOP    ttft 13.35s e2e 14.97s peak 11.91 GB step 100 ms frozen-loop True
+[promote] heldout 512 DEFAULT ttft 9.01s e2e 10.53s peak 11.99 GB step 94 ms frozen-loop True
+[promote] heldout 512 DEFAULT ttft 9.01s e2e 10.52s peak 11.99 GB step 94 ms frozen-loop True
+[promote] heldout 512 LOOP    ttft 13.33s e2e 14.95s peak 11.91 GB step 100 ms frozen-loop True
+[promote] heldout 512 LOOP    ttft 13.31s e2e 14.93s peak 11.91 GB step 100 ms frozen-loop True
+[promote] heldout 512 DEFAULT ttft 8.93s e2e 10.44s peak 11.99 GB step 94 ms frozen-loop True
+[promote] heldout 512 DEFAULT ttft 8.92s e2e 10.43s peak 11.99 GB step 94 ms frozen-loop True
+[promote] heldout 512 LOOP    ttft 13.27s e2e 14.88s peak 11.91 GB step 100 ms frozen-loop True
+[promote] heldout 512 LOOP    ttft 13.26s e2e 14.90s peak 11.91 GB step 100 ms frozen-loop True
+[promote] heldout 512 DEFAULT ttft 8.91s e2e 10.42s peak 11.99 GB step 94 ms frozen-loop True
+[promote] heldout 512 DEFAULT ttft 8.91s e2e 10.42s peak 11.99 GB step 94 ms frozen-loop True
+[promote] heldout 512 LOOP    ttft 13.23s e2e 14.84s peak 11.91 GB step 100 ms frozen-loop True
+[promote] heldout 1024 LOOP    ttft 26.94s e2e 28.59s peak 12.02 GB step 101 ms frozen-loop True
+[promote] heldout 1024 DEFAULT ttft 18.10s e2e 19.62s peak 12.12 GB step 95 ms frozen-loop True
+[promote] heldout 1024 DEFAULT ttft 18.14s e2e 19.66s peak 12.12 GB step 95 ms frozen-loop True
+[promote] heldout 1024 LOOP    ttft 26.98s e2e 28.64s peak 12.02 GB step 101 ms frozen-loop True
+[promote] heldout 1024 LOOP    ttft 26.87s e2e 28.50s peak 12.02 GB step 101 ms frozen-loop True
+[promote] heldout 1024 DEFAULT ttft 18.13s e2e 19.65s peak 12.12 GB step 95 ms frozen-loop True
+[promote] heldout 1024 DEFAULT ttft 18.17s e2e 19.68s peak 12.12 GB step 94 ms frozen-loop True
+[promote] heldout 1024 LOOP    ttft 26.89s e2e 28.53s peak 12.02 GB step 101 ms frozen-loop True
+[promote] heldout 1024 LOOP    ttft 26.84s e2e 28.47s peak 12.02 GB step 101 ms frozen-loop True
+[promote] heldout 1024 DEFAULT ttft 18.10s e2e 19.62s peak 12.12 GB step 95 ms frozen-loop True
+[promote] heldout 1024 DEFAULT ttft 18.13s e2e 19.65s peak 12.12 GB step 95 ms frozen-loop True
+[promote] heldout 1024 LOOP    ttft 26.92s e2e 28.55s peak 12.02 GB step 101 ms frozen-loop True
+[promote] heldout 2048 LOOP    ttft 52.38s e2e 54.04s peak 12.15 GB step 102 ms frozen-loop True
+[promote] heldout 2048 DEFAULT ttft 34.89s e2e 36.44s peak 12.25 GB step 96 ms frozen-loop True
+[promote] heldout 2048 DEFAULT ttft 34.89s e2e 36.44s peak 12.25 GB step 96 ms frozen-loop True
+[promote] heldout 2048 LOOP    ttft 52.32s e2e 53.99s peak 12.15 GB step 102 ms frozen-loop True
+[promote] heldout 2048 LOOP    ttft 52.30s e2e 53.97s peak 12.15 GB step 102 ms frozen-loop True
+[promote] heldout 2048 DEFAULT ttft 34.85s e2e 36.42s peak 12.25 GB step 96 ms frozen-loop True
+[promote] heldout 2048 DEFAULT ttft 34.88s e2e 36.43s peak 12.25 GB step 96 ms frozen-loop True
+[promote] heldout 2048 LOOP    ttft 52.33s e2e 53.99s peak 12.15 GB step 102 ms frozen-loop True
+[promote] heldout 2048 LOOP    ttft 52.30s e2e 53.97s peak 12.15 GB step 102 ms frozen-loop True
+[promote] heldout 2048 DEFAULT ttft 34.90s e2e 36.45s peak 12.25 GB step 96 ms frozen-loop True
+[promote] heldout 2048 DEFAULT ttft 34.86s e2e 36.41s peak 12.25 GB step 96 ms frozen-loop True
+[promote] heldout 2048 LOOP    ttft 52.37s e2e 54.02s peak 12.15 GB step 102 ms frozen-loop True
+[promote] heldout wrote logs/qwen_gdn_promote/heldout.json in 1148s
+== cache 05:50:47 65039e50
+[promote] cache DEFAULT incremental c0 t0: 69 tokens, mode fresh, first token 2.09s
+[promote] cache DEFAULT incremental c0 t1: 63 tokens, mode incremental, first token 1.70s
+[promote] cache DEFAULT incremental c0 t2: 83 tokens, mode incremental, first token 1.83s
+[promote] cache DEFAULT incremental c1 t0: 86 tokens, mode fresh, first token 2.08s
+[promote] cache DEFAULT incremental c1 t1: 95 tokens, mode incremental, first token 1.72s
+[promote] cache DEFAULT incremental c1 t2: 390 tokens, mode incremental, first token 1.91s
+[promote] cache DEFAULT incremental c2 t0: 52 tokens, mode fresh, first token 2.10s
+[promote] cache DEFAULT incremental c2 t1: 56 tokens, mode incremental, first token 1.72s
+[promote] cache DEFAULT incremental c2 t2: 165 tokens, mode incremental, first token 1.72s
+[promote] cache DEFAULT replay c0 t0: 69 tokens, mode fresh, first token 2.08s
+[promote] cache DEFAULT replay c0 t1: 63 tokens, mode fresh, first token 3.44s
+[promote] cache DEFAULT replay c0 t2: 83 tokens, mode fresh, first token 4.31s
+[promote] cache DEFAULT replay c1 t0: 86 tokens, mode fresh, first token 2.08s
+[promote] cache DEFAULT replay c1 t1: 95 tokens, mode fresh, first token 3.54s
+[promote] cache DEFAULT replay c1 t2: 390 tokens, mode fresh, first token 6.01s
+[promote] cache DEFAULT replay c2 t0: 52 tokens, mode fresh, first token 2.10s
+[promote] cache DEFAULT replay c2 t1: 56 tokens, mode fresh, first token 2.64s
+[promote] cache DEFAULT replay c2 t2: 165 tokens, mode fresh, first token 4.24s
+[promote] cache LOOP incremental c0 t0: 69 tokens, mode fresh, first token 2.43s
+[promote] cache LOOP incremental c0 t1: 63 tokens, mode incremental, first token 1.85s
+[promote] cache LOOP incremental c0 t2: 83 tokens, mode incremental, first token 1.98s
+[promote] cache LOOP incremental c1 t0: 86 tokens, mode fresh, first token 2.44s
+[promote] cache LOOP incremental c1 t1: 95 tokens, mode incremental, first token 1.88s
+[promote] cache LOOP incremental c1 t2: 390 tokens, mode incremental, first token 2.10s
+[promote] cache LOOP incremental c2 t0: 52 tokens, mode fresh, first token 2.51s
+[promote] cache LOOP incremental c2 t1: 56 tokens, mode incremental, first token 1.88s
+[promote] cache LOOP incremental c2 t2: 165 tokens, mode incremental, first token 1.87s
+[promote] cache LOOP replay c0 t0: 69 tokens, mode fresh, first token 2.43s
+[promote] cache LOOP replay c0 t1: 63 tokens, mode fresh, first token 4.63s
+[promote] cache LOOP replay c0 t2: 83 tokens, mode fresh, first token 6.17s
+[promote] cache LOOP replay c1 t0: 86 tokens, mode fresh, first token 2.44s
+[promote] cache LOOP replay c1 t1: 95 tokens, mode fresh, first token 4.88s
+[promote] cache LOOP replay c1 t2: 390 tokens, mode fresh, first token 8.33s
+[promote] cache LOOP replay c2 t0: 52 tokens, mode fresh, first token 2.52s
+[promote] cache LOOP replay c2 t1: 56 tokens, mode fresh, first token 3.70s
+[promote] cache LOOP replay c2 t2: 165 tokens, mode fresh, first token 5.90s
+[promote] cache: inc-vs-replay unequal 0, default-vs-loop unequal 0, unexplained 0
+[promote] cache wrote logs/qwen_gdn_promote/cache.json in 526s
+== battery 05:59:33 65039e50
+[promote] battery DEFAULT arith-01       fail  'turn 1: thinking did not terminate (the think block never closed; stop stop_toke'
+[promote] battery DEFAULT arith-02       pass  'expected 3350, last integer in reply 3350'
+[promote] battery DEFAULT arith-03       pass  'expected 690, last integer in reply 690'
+[promote] battery DEFAULT arith-04       pass  'expected 56, last integer in reply 56'
+[promote] battery DEFAULT arith-05       pass  'expected 40, last integer in reply 40'
+[promote] battery DEFAULT arith-06       pass  'expected 4258, last integer in reply 4258'
+[promote] battery DEFAULT arith-07       pass  'expected 688900, last integer in reply 688900'
+[promote] battery DEFAULT arith-08       pass  'expected 41, last integer in reply 41'
+[promote] battery DEFAULT arith-09       pass  'expected 223, last integer in reply 223'
+[promote] battery DEFAULT arith-10       pass  'expected 6, last integer in reply 6'
+[promote] battery DEFAULT arith-11       pass  'expected 112758, last integer in reply 112758'
+[promote] battery DEFAULT arith-12       pass  'expected 3974, last integer in reply 3974'
+[promote] battery DEFAULT json-01        pass  'schema and values match'
+[promote] battery DEFAULT json-02        pass  'schema and values match'
+[promote] battery DEFAULT json-03        fail  'mean: 4.7 != 5.666666666666667'
+[promote] battery DEFAULT json-04        pass  'schema and values match'
+[promote] battery DEFAULT json-05        pass  'schema and values match'
+[promote] battery DEFAULT json-06        pass  'schema and values match'
+[promote] battery DEFAULT json-07        pass  'schema and values match'
+[promote] battery DEFAULT json-08        pass  'schema and values match'
+[promote] battery DEFAULT json-09        pass  'schema and values match'
+[promote] battery DEFAULT json-10        pass  'schema and values match'
+[promote] battery DEFAULT json-11        pass  'schema and values match'
+[promote] battery DEFAULT json-12        pass  'schema and values match'
+[promote] battery DEFAULT code-01        pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'
+[promote] battery DEFAULT code-02        pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'
+[promote] battery DEFAULT code-03        pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'
+[promote] battery DEFAULT code-04        pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'
+[promote] battery DEFAULT code-05        pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'
+[promote] battery DEFAULT code-06        pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'
+[promote] battery DEFAULT code-07        pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'
+[promote] battery DEFAULT code-08        pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'
+[promote] battery DEFAULT code-09        fail  'turn 1: thinking did not terminate (the think block never closed; stop max_token'
+[promote] battery DEFAULT code-10        pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'
+[promote] battery DEFAULT code-11        pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'
+[promote] battery DEFAULT code-12        pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'
+[promote] battery DEFAULT instruct-01    pass  '2 sentences, wanted 2'
+[promote] battery DEFAULT instruct-02    pass  "first word 'indeed'"
+[promote] battery DEFAULT instruct-03    pass  'no commas'
+[promote] battery DEFAULT instruct-04    pass  '4 lines, dash bullets True'
+[promote] battery DEFAULT instruct-05    pass  '5 lines, plain lower True, alphabetical True, distinct True'
+[promote] battery DEFAULT instruct-06    pass  "ends with '?'"
+[promote] battery DEFAULT instruct-07    fail  'turn 1: thinking did not terminate (the think block never closed; stop max_token'
+[promote] battery DEFAULT instruct-08    pass  'all letters lower'
+[promote] battery DEFAULT instruct-09    pass  "present ['river', 'bridge']"
+[promote] battery DEFAULT instruct-10    pass  '3 sentences, wanted 3'
+[promote] battery DEFAULT twoturn-01     pass  "turn 2 reply '5', expected 5"
+[promote] battery DEFAULT twoturn-02     pass  "turn 2 reply '40', expected 40"
+[promote] battery DEFAULT twoturn-03     pass  "turn 2 reply 'Bicycles', expected bicycles"
+[promote] battery DEFAULT twoturn-04     pass  "turn 2 reply 'Lynx', expected lynx"
+[promote] battery DEFAULT twoturn-05     pass  "turn 2 reply '3', expected 3"
+[promote] battery DEFAULT twoturn-06     pass  "turn 2 reply '27', expected 27"
+[promote] battery DEFAULT twoturn-07     pass  "turn 2 reply 'Meteors', expected meteors"
+[promote] battery DEFAULT twoturn-08     pass  "turn 2 reply 'heron', expected heron"
+[promote] battery DEFAULT degen-01       pass  '7 comma-separated parts'
+[promote] battery DEFAULT degen-02       pass  'numbers [16, 15, 14, 13, 12, 11, 10, 9]'
+[promote] battery DEFAULT degen-03       pass  "got 'r-i-v-e-r'"
+[promote] battery DEFAULT degen-04       pass  '1 words; expected mercury'
+[promote] battery DEFAULT degen-05       pass  "letters ['a', 'b', 'c', 'd', 'e', 'f']"
+[promote] battery DEFAULT degen-06       pass  '4 comma-separated parts'
+[promote] battery: pass 56/60 (frozen 56), equal to frozen 60/60, unexplained 0
+[promote] battery wrote logs/qwen_gdn_promote/battery.json in 1344s
+== cli 06:21:58 65039e50
+[promote] cli cli-arith-01   DEFAULT rc 0 recurrence kernel on 48 layers, turns 1, 42s
+[promote] cli cli-arith-01   LOOP    rc 0 recurrence loop on 48 layers, turns 1, 44s
+[promote] cli cli-arith-02   DEFAULT rc 0 recurrence kernel on 48 layers, turns 1, 15s
+[promote] cli cli-arith-02   LOOP    rc 0 recurrence loop on 48 layers, turns 1, 16s
+[promote] cli cli-arith-03   DEFAULT rc 0 recurrence kernel on 48 layers, turns 1, 23s
+[promote] cli cli-arith-03   LOOP    rc 0 recurrence loop on 48 layers, turns 1, 24s
+[promote] cli cli-arith-04   DEFAULT rc 0 recurrence kernel on 48 layers, turns 1, 14s
+[promote] cli cli-arith-04   LOOP    rc 0 recurrence loop on 48 layers, turns 1, 15s
+[promote] cli cli-arith-05   DEFAULT rc 0 recurrence kernel on 48 layers, turns 1, 25s
+[promote] cli cli-arith-05   LOOP    rc 0 recurrence loop on 48 layers, turns 1, 26s
+[promote] cli cli-arith-06   DEFAULT rc 0 recurrence kernel on 48 layers, turns 1, 15s
+[promote] cli cli-arith-06   LOOP    rc 0 recurrence loop on 48 layers, turns 1, 16s
+[promote] cli cli-json-01    DEFAULT rc 0 recurrence kernel on 48 layers, turns 1, 27s
+[promote] cli cli-json-01    LOOP    rc 0 recurrence loop on 48 layers, turns 1, 30s
+[promote] cli cli-json-02    DEFAULT rc 0 recurrence kernel on 48 layers, turns 1, 36s
+[promote] cli cli-json-02    LOOP    rc 0 recurrence loop on 48 layers, turns 1, 39s
+[promote] cli cli-json-03    DEFAULT rc 0 recurrence kernel on 48 layers, turns 1, 24s
+[promote] cli cli-json-03    LOOP    rc 0 recurrence loop on 48 layers, turns 1, 26s
+[promote] cli cli-json-04    DEFAULT rc 0 recurrence kernel on 48 layers, turns 1, 27s
+[promote] cli cli-json-04    LOOP    rc 0 recurrence loop on 48 layers, turns 1, 29s
+[promote] cli cli-twoturn-01 DEFAULT rc 0 recurrence kernel on 48 layers, turns 2, 23s
+[promote] cli cli-twoturn-01 LOOP    rc 0 recurrence loop on 48 layers, turns 2, 24s
+[promote] cli cli-twoturn-02 DEFAULT rc 0 recurrence kernel on 48 layers, turns 2, 21s
+[promote] cli cli-twoturn-02 LOOP    rc 0 recurrence loop on 48 layers, turns 2, 22s
+[promote] cli cli-twoturn-03 DEFAULT rc 0 recurrence kernel on 48 layers, turns 2, 28s
+[promote] cli cli-twoturn-03 LOOP    rc 0 recurrence loop on 48 layers, turns 2, 30s
+[promote] cli cli-twoturn-04 DEFAULT rc 0 recurrence kernel on 48 layers, turns 2, 20s
+[promote] cli cli-twoturn-04 LOOP    rc 0 recurrence loop on 48 layers, turns 2, 21s
+[promote] cli cli-degen-01   DEFAULT rc 0 recurrence kernel on 48 layers, turns 1, 17s
+[promote] cli cli-degen-01   LOOP    rc 0 recurrence loop on 48 layers, turns 1, 18s
+[promote] cli cli-degen-02   DEFAULT rc 0 recurrence kernel on 48 layers, turns 1, 14s
+[promote] cli cli-degen-02   LOOP    rc 0 recurrence loop on 48 layers, turns 1, 15s
+[promote] cli: pass {'DEFAULT': 15, 'LOOP': 15}, equal 16/16, unexplained 0, receipts ok True
+[promote] cli wrote logs/qwen_gdn_promote/cli.json in 768s
+== DONE 06:34:47

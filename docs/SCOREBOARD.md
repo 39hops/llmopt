@@ -1,6 +1,6 @@
 # SCOREBOARD — generated sample of index-curated verdicts
 
-*Generated from docs/results-index.jsonl by scripts/gen_scoreboard.py. 95 live of 103 entries carrying a hand-curated `verdict` field, out of 1568 ledger entries; the curated field reaches RESULTS line 85637. This is a PARTIAL view, not current truth: docs/FINDINGS.md is the curated public layer, and every entry resolves through docs/RESULTS.md. Full chains: scripts/results_query.py --chain. Never hand-edit this file.*
+*Generated from docs/results-index.jsonl by scripts/gen_scoreboard.py. 95 live of 103 entries carrying a hand-curated `verdict` field, out of 1569 ledger entries; the curated field reaches RESULTS line 85637. This is a PARTIAL view, not current truth: docs/FINDINGS.md is the curated public layer, and every entry resolves through docs/RESULTS.md. Full chains: scripts/results_query.py --chain. Never hand-edit this file.*
 
 ## QWEN-INFERENCE-BASELINE
 - **2026-10-24** NULL on chunk size (chunk 512 buys 5 percent at every held-out length, parity exact, peak plus 6 percent; 10 percent bar not met); baseline 39 tok/s; decomposition W4 MLP 48, DeltaNet recurrence 34, S16 20 to 25 percent; the recurrence runs the Python loop because the tower never enters eval mode; next: qualify the shipped kernel path  *(RESULTS L85637)*

@@ -1,0 +1,679 @@
+{
+ "commit": "65039e50",
+ "tree_dirty": false,
+ "smoke": false,
+ "stage": "cache",
+ "driver": "scratch/qwen_gdn_promote.py",
+ "driver_sha256": "67287e67cc2378451d3022544134a6bce73fbf7b0ca3bf9f9abab56be667e2ec",
+ "sources_sha256": {
+  "llmopt/lab/qtower.py": "89d2f3d9b128bbbb4fe66e02e919805bec02c77bcd516fa78e21f36f9e5526ff",
+  "llmopt/lab/qserve.py": "9f3e845780900f9f1111d5c300eaf1f34447bab7ff3f9c3582b99d72a2608787",
+  "llmopt/lab/qgdn.py": "94fc734e12054bdeb8d0ba53703af9cfbd0648affa5f2175396fcb886d4620c6",
+  "scripts/qwen_chat.py": "bb4276d13c61978b731c7260fffe29cb559cd0d5abd48c1831e2b08cbc0a807f"
+ },
+ "default_recurrence_in_code": "kernel",
+ "vendor": {
+  "mlx_version": "0.31.2",
+  "mlx_lm_version": "0.31.3",
+  "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+  "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+  "metal_available": true,
+  "default_device": "Device(gpu, 0)"
+ },
+ "near_tie_margin": 0.02,
+ "engine": {
+  "recurrence": "kernel",
+  "recurrence_layers": 48,
+  "recurrence_of": {
+   "loop": 0,
+   "kernel": 48,
+   "unselected": 0
+  },
+  "model_training_flag": true,
+  "kernel_version": 5,
+  "chain_sha256": "de7e0180bf49f965c17116b7fbe8c34d2b1529c2431cc234f3a6460ad84b24dc",
+  "cache_limit_bytes": 2147483648,
+  "chunk": 256,
+  "matmul": "gemm",
+  "context_cap": 8192,
+  "tokenizer_files_sha256": {
+   "tokenizer.json": "0997f410c57a1f4e53b09e4be8f4a172d90edd9564368fb0847030937229b9f3",
+   "tokenizer_config.json": "b11349aafa7cdc6a320767cf7ceb29ed82f7eda5d65e8e0819e76f0ce947bf27",
+   "config.json": "191e0af232104ed8b65258cf3fb2b842e288008baca7633c11b82a1ac7203aab"
+  },
+  "stop_ids": [
+   248044,
+   248046
+  ],
+  "cold_load_s": 6.218367958907038,
+  "v_live": 248077
+ },
+ "model_pin": {
+  "source_weights": {
+   "hf_repo": "Qwen/Qwen3.8-27B",
+   "hf_revision": "1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0",
+   "revision_source": "logs/qwenteacher_v2/teacher_manifest.json",
+   "teacher_manifest_sha256": "a29a74158b249bdb5ce0240bfd9246887d8c578f7489f9f996beafba53f2092f",
+   "vendor_index_total_size_bytes": 55562855904.0,
+   "vendor_index_tensors": 1199
+  },
+  "vendor_dir_files_sha256": {
+   "config.json": "191e0af232104ed8b65258cf3fb2b842e288008baca7633c11b82a1ac7203aab",
+   "generation_config.json": "e70c136c1b78ddc1fb0905bac8e733a4dc448d4f852a5dd75143fffc70be550e",
+   "model.safetensors.index.json": "77042094076611b69791a610065f28b7013b8c621795fa86ddccc8bac7d1b9df",
+   "tokenizer.json": "0997f410c57a1f4e53b09e4be8f4a172d90edd9564368fb0847030937229b9f3",
+   "tokenizer_config.json": "b11349aafa7cdc6a320767cf7ceb29ed82f7eda5d65e8e0819e76f0ce947bf27"
+  },
+  "config": {
+   "architectures": [
+    "Qwen3_5ForConditionalGeneration"
+   ],
+   "model_type": "qwen3_5",
+   "text_model_type": "qwen3_5_text",
+   "hidden_size": 5120,
+   "num_hidden_layers": 64,
+   "layer_types": {
+    "full_attention": 16,
+    "linear_attention": 48
+   },
+   "linear_num_key_heads": 16,
+   "linear_num_value_heads": 48,
+   "linear_key_head_dim": 128,
+   "linear_value_head_dim": 128,
+   "linear_conv_kernel_dim": 4,
+   "num_attention_heads": 24,
+   "num_key_value_heads": 4,
+   "head_dim": 256,
+   "vocab_size": 248320,
+   "mamba_ssm_dtype": "float32",
+   "dtype": "bfloat16",
+   "transformers_version": "5.8.0.dev0"
+  },
+  "artifact": {
+   "art_dir_basename": "C",
+   "chain": "logs/qwenwhole/artifact_digest_C.txt",
+   "chain_sha256": "de7e0180bf49f965c17116b7fbe8c34d2b1529c2431cc234f3a6460ad84b24dc",
+   "manifest_sha256": "d7e56155f5424aef1885b5e41e62951d8033e5351d9b5af8b006460df6540464",
+   "chain_report": {
+    "art_dir": "/Users/artin/qwen_whole0t/C",
+    "rung0": {
+     "checked": 19,
+     "unchained": false
+    },
+    "conservation": {
+     "keys": 1199
+    },
+    "census": {
+     "w4": 192,
+     "s16": 210,
+     "raw": 449,
+     "excluded": 348
+    },
+    "preflight": {
+     "estimated_peak_bytes": 6504933184,
+     "available_bytes": 24918753280,
+     "safety_fraction": 0.8
+    }
+   },
+   "families": {
+    "linear_attn": 48,
+    "full_attn": 16
+   },
+   "fused": 402,
+   "raw": 449,
+   "payload_resident_bytes": 9367009856
+  },
+  "architecture_module": {
+   "name": "mlx_lm.models.qwen3_5 (the shared Qwen3.5-family architecture implementation; the weights are Qwen3.8-27B)",
+   "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+   "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1"
+  }
+ },
+ "conversations": [
+  [
+   "Which element has the chemical symbol Fe?",
+   "What is its atomic number?",
+   "Name one everyday object made mostly of it."
+  ],
+  [
+   "Write two lines about a lighthouse.",
+   "Now two lines about a windmill.",
+   "Which of the two did you find easier to write, and why?"
+  ],
+  [
+   "What is 144 divided by 12?",
+   "Multiply that result by 7.",
+   "Is the product a prime number?"
+  ]
+ ],
+ "max_tokens": 768,
+ "dispatch": [
+  {
+   "label": "cache DEFAULT incremental",
+   "arm": "DEFAULT",
+   "path": "vendor",
+   "selection_before": {
+    "loop": 0,
+    "kernel": 48,
+    "unselected": 0
+   },
+   "selection_after": {
+    "loop": 0,
+    "kernel": 48,
+    "unselected": 0
+   },
+   "exclusive": true,
+   "selector": "llmopt.lab.qgdn.recurrence_path",
+   "update_calls": 51264,
+   "requested_by_vendor_flag": {
+    "kernel": 51264,
+    "loop": 0
+   },
+   "executed": {
+    "ops": 0,
+    "kernel": 51264
+   },
+   "max_T": 52,
+   "vendor": {
+    "mlx_version": "0.31.2",
+    "mlx_lm_version": "0.31.3",
+    "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+    "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+    "metal_available": true,
+    "default_device": "Device(gpu, 0)"
+   }
+  },
+  {
+   "label": "cache DEFAULT replay",
+   "arm": "DEFAULT",
+   "path": "vendor",
+   "selection_before": {
+    "loop": 0,
+    "kernel": 48,
+    "unselected": 0
+   },
+   "selection_after": {
+    "loop": 0,
+    "kernel": 48,
+    "unselected": 0
+   },
+   "exclusive": true,
+   "selector": "llmopt.lab.qgdn.recurrence_path",
+   "update_calls": 51312,
+   "requested_by_vendor_flag": {
+    "kernel": 51312,
+    "loop": 0
+   },
+   "executed": {
+    "ops": 0,
+    "kernel": 51312
+   },
+   "max_T": 256,
+   "vendor": {
+    "mlx_version": "0.31.2",
+    "mlx_lm_version": "0.31.3",
+    "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+    "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+    "metal_available": true,
+    "default_device": "Device(gpu, 0)"
+   }
+  },
+  {
+   "label": "cache LOOP incremental",
+   "arm": "LOOP",
+   "path": "vendor",
+   "selection_before": {
+    "loop": 48,
+    "kernel": 0,
+    "unselected": 0
+   },
+   "selection_after": {
+    "loop": 48,
+    "kernel": 0,
+    "unselected": 0
+   },
+   "exclusive": true,
+   "selector": "llmopt.lab.qgdn.recurrence_path",
+   "update_calls": 51264,
+   "requested_by_vendor_flag": {
+    "kernel": 0,
+    "loop": 51264
+   },
+   "executed": {
+    "ops": 51264,
+    "kernel": 0
+   },
+   "max_T": 52,
+   "vendor": {
+    "mlx_version": "0.31.2",
+    "mlx_lm_version": "0.31.3",
+    "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+    "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+    "metal_available": true,
+    "default_device": "Device(gpu, 0)"
+   }
+  },
+  {
+   "label": "cache LOOP replay",
+   "arm": "LOOP",
+   "path": "vendor",
+   "selection_before": {
+    "loop": 48,
+    "kernel": 0,
+    "unselected": 0
+   },
+   "selection_after": {
+    "loop": 48,
+    "kernel": 0,
+    "unselected": 0
+   },
+   "exclusive": true,
+   "selector": "llmopt.lab.qgdn.recurrence_path",
+   "update_calls": 51312,
+   "requested_by_vendor_flag": {
+    "kernel": 0,
+    "loop": 51312
+   },
+   "executed": {
+    "ops": 51312,
+    "kernel": 0
+   },
+   "max_T": 256,
+   "vendor": {
+    "mlx_version": "0.31.2",
+    "mlx_lm_version": "0.31.3",
+    "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+    "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+    "metal_available": true,
+    "default_device": "Device(gpu, 0)"
+   }
+  }
+ ],
+ "turns": [
+  {
+   "conversation": 0,
+   "turn": 0,
+   "default_incremental_equals_default_replay": true,
+   "default_replay_equals_loop_replay": true,
+   "default_incremental_equals_loop_incremental": true,
+   "loop_incremental_equals_loop_replay": true,
+   "modes": {
+    "DEFAULT": "fresh",
+    "LOOP": "fresh"
+   },
+   "notes": {
+    "DEFAULT": "",
+    "LOOP": ""
+   },
+   "offsets_ok": true,
+   "n_generated": {
+    "DEFAULT": 69,
+    "LOOP": 69
+   },
+   "stop": {
+    "DEFAULT": "stop_token",
+    "LOOP": "stop_token"
+   },
+   "first_token_s": {
+    "DEFAULT_inc": 2.0934220829512924,
+    "LOOP_inc": 2.429122040979564,
+    "DEFAULT_replay": 2.0781090420205146,
+    "LOOP_replay": 2.4327287920750678
+   },
+   "total_s": {
+    "DEFAULT_inc": 8.530684791039675,
+    "LOOP_inc": 9.313398374943063
+   },
+   "default_text": "The user is asking about the element with the chemical symbol Fe. This is a straightforward chemistry question. Fe is the symbol for iron, derived from the Lati",
+   "loop_text": "The user is asking about the element with the chemical symbol Fe. This is a straightforward chemistry question. Fe is the symbol for iron, derived from the Lati"
+  },
+  {
+   "conversation": 0,
+   "turn": 1,
+   "default_incremental_equals_default_replay": true,
+   "default_replay_equals_loop_replay": true,
+   "default_incremental_equals_loop_incremental": true,
+   "loop_incremental_equals_loop_replay": true,
+   "modes": {
+    "DEFAULT": "incremental",
+    "LOOP": "incremental"
+   },
+   "notes": {
+    "DEFAULT": "",
+    "LOOP": ""
+   },
+   "offsets_ok": true,
+   "n_generated": {
+    "DEFAULT": 63,
+    "LOOP": 63
+   },
+   "stop": {
+    "DEFAULT": "stop_token",
+    "LOOP": "stop_token"
+   },
+   "first_token_s": {
+    "DEFAULT_inc": 1.7010819579008967,
+    "LOOP_inc": 1.852085999911651,
+    "DEFAULT_replay": 3.4404835829045624,
+    "LOOP_replay": 4.626791124930605
+   },
+   "total_s": {
+    "DEFAULT_inc": 7.615058624884114,
+    "LOOP_inc": 8.140499165980145
+   },
+   "default_text": "The user is asking about the atomic number of iron (Fe). The atomic number of iron is 26, meaning it has 26 protons in its nucleus.\n</think>\n\nThe atomic number ",
+   "loop_text": "The user is asking about the atomic number of iron (Fe). The atomic number of iron is 26, meaning it has 26 protons in its nucleus.\n</think>\n\nThe atomic number "
+  },
+  {
+   "conversation": 0,
+   "turn": 2,
+   "default_incremental_equals_default_replay": true,
+   "default_replay_equals_loop_replay": true,
+   "default_incremental_equals_loop_incremental": true,
+   "loop_incremental_equals_loop_replay": true,
+   "modes": {
+    "DEFAULT": "incremental",
+    "LOOP": "incremental"
+   },
+   "notes": {
+    "DEFAULT": "",
+    "LOOP": ""
+   },
+   "offsets_ok": true,
+   "n_generated": {
+    "DEFAULT": 83,
+    "LOOP": 83
+   },
+   "stop": {
+    "DEFAULT": "stop_token",
+    "LOOP": "stop_token"
+   },
+   "first_token_s": {
+    "DEFAULT_inc": 1.8296406250447035,
+    "LOOP_inc": 1.9797707500401884,
+    "DEFAULT_replay": 4.313495500013232,
+    "LOOP_replay": 6.170451374957338
+   },
+   "total_s": {
+    "DEFAULT_inc": 9.588092959020287,
+    "LOOP_inc": 10.27235862519592
+   },
+   "default_text": "The user is asking for an everyday object made mostly of iron. Common examples include: a nail, a frying pan, a car, a refrigerator, a bridge, a cooking pot, a ",
+   "loop_text": "The user is asking for an everyday object made mostly of iron. Common examples include: a nail, a frying pan, a car, a refrigerator, a bridge, a cooking pot, a "
+  },
+  {
+   "conversation": 1,
+   "turn": 0,
+   "default_incremental_equals_default_replay": true,
+   "default_replay_equals_loop_replay": true,
+   "default_incremental_equals_loop_incremental": true,
+   "loop_incremental_equals_loop_replay": true,
+   "modes": {
+    "DEFAULT": "fresh",
+    "LOOP": "fresh"
+   },
+   "notes": {
+    "DEFAULT": "",
+    "LOOP": ""
+   },
+   "offsets_ok": true,
+   "n_generated": {
+    "DEFAULT": 86,
+    "LOOP": 86
+   },
+   "stop": {
+    "DEFAULT": "stop_token",
+    "LOOP": "stop_token"
+   },
+   "first_token_s": {
+    "DEFAULT_inc": 2.07826729118824,
+    "LOOP_inc": 2.4360545829404145,
+    "DEFAULT_replay": 2.0760848748032004,
+    "LOOP_replay": 2.442016249988228
+   },
+   "total_s": {
+    "DEFAULT_inc": 10.110142125049606,
+    "LOOP_inc": 11.029921457869932
+   },
+   "default_text": "The user wants me to write two lines about a lighthouse. This is a simple creative writing task. I should craft two poetic or descriptive lines that capture the",
+   "loop_text": "The user wants me to write two lines about a lighthouse. This is a simple creative writing task. I should craft two poetic or descriptive lines that capture the"
+  },
+  {
+   "conversation": 1,
+   "turn": 1,
+   "default_incremental_equals_default_replay": true,
+   "default_replay_equals_loop_replay": true,
+   "default_incremental_equals_loop_incremental": true,
+   "loop_incremental_equals_loop_replay": true,
+   "modes": {
+    "DEFAULT": "incremental",
+    "LOOP": "incremental"
+   },
+   "notes": {
+    "DEFAULT": "",
+    "LOOP": ""
+   },
+   "offsets_ok": true,
+   "n_generated": {
+    "DEFAULT": 95,
+    "LOOP": 95
+   },
+   "stop": {
+    "DEFAULT": "stop_token",
+    "LOOP": "stop_token"
+   },
+   "first_token_s": {
+    "DEFAULT_inc": 1.7234063749201596,
+    "LOOP_inc": 1.8832266668323427,
+    "DEFAULT_replay": 3.536511833081022,
+    "LOOP_replay": 4.879707541083917
+   },
+   "total_s": {
+    "DEFAULT_inc": 10.612061124993488,
+    "LOOP_inc": 11.358476666966453
+   },
+   "default_text": "The user wants two lines about a windmill, similar in style to the previous lighthouse lines. I should craft two poetic, descriptive lines that capture the esse",
+   "loop_text": "The user wants two lines about a windmill, similar in style to the previous lighthouse lines. I should craft two poetic, descriptive lines that capture the esse"
+  },
+  {
+   "conversation": 1,
+   "turn": 2,
+   "default_incremental_equals_default_replay": true,
+   "default_replay_equals_loop_replay": true,
+   "default_incremental_equals_loop_incremental": true,
+   "loop_incremental_equals_loop_replay": true,
+   "modes": {
+    "DEFAULT": "incremental",
+    "LOOP": "incremental"
+   },
+   "notes": {
+    "DEFAULT": "",
+    "LOOP": ""
+   },
+   "offsets_ok": true,
+   "n_generated": {
+    "DEFAULT": 390,
+    "LOOP": 390
+   },
+   "stop": {
+    "DEFAULT": "stop_token",
+    "LOOP": "stop_token"
+   },
+   "first_token_s": {
+    "DEFAULT_inc": 1.9114490828942508,
+    "LOOP_inc": 2.1020445418544114,
+    "DEFAULT_replay": 6.014675500104204,
+    "LOOP_replay": 8.326388374902308
+   },
+   "total_s": {
+    "DEFAULT_inc": 38.70401137485169,
+    "LOOP_inc": 41.565122541971505
+   },
+   "default_text": "The user is asking me to reflect on which of the two creative writing tasks (lighthouse vs. windmill) I found easier to write, and why. This is a meta question ",
+   "loop_text": "The user is asking me to reflect on which of the two creative writing tasks (lighthouse vs. windmill) I found easier to write, and why. This is a meta question "
+  },
+  {
+   "conversation": 2,
+   "turn": 0,
+   "default_incremental_equals_default_replay": true,
+   "default_replay_equals_loop_replay": true,
+   "default_incremental_equals_loop_incremental": true,
+   "loop_incremental_equals_loop_replay": true,
+   "modes": {
+    "DEFAULT": "fresh",
+    "LOOP": "fresh"
+   },
+   "notes": {
+    "DEFAULT": "",
+    "LOOP": ""
+   },
+   "offsets_ok": true,
+   "n_generated": {
+    "DEFAULT": 52,
+    "LOOP": 52
+   },
+   "stop": {
+    "DEFAULT": "stop_token",
+    "LOOP": "stop_token"
+   },
+   "first_token_s": {
+    "DEFAULT_inc": 2.102085999911651,
+    "LOOP_inc": 2.512802624842152,
+    "DEFAULT_replay": 2.102571832947433,
+    "LOOP_replay": 2.5171081249136478
+   },
+   "total_s": {
+    "DEFAULT_inc": 6.959091000026092,
+    "LOOP_inc": 7.715810957830399
+   },
+   "default_text": "144 \u00f7 12 = 12. Let me verify: 12 \u00d7 12 = 144. Yes, that's correct.\n</think>\n\n144 divided by 12 is **12**.",
+   "loop_text": "144 \u00f7 12 = 12. Let me verify: 12 \u00d7 12 = 144. Yes, that's correct.\n</think>\n\n144 divided by 12 is **12**."
+  },
+  {
+   "conversation": 2,
+   "turn": 1,
+   "default_incremental_equals_default_replay": true,
+   "default_replay_equals_loop_replay": true,
+   "default_incremental_equals_loop_incremental": true,
+   "loop_incremental_equals_loop_replay": true,
+   "modes": {
+    "DEFAULT": "incremental",
+    "LOOP": "incremental"
+   },
+   "notes": {
+    "DEFAULT": "",
+    "LOOP": ""
+   },
+   "offsets_ok": true,
+   "n_generated": {
+    "DEFAULT": 56,
+    "LOOP": 56
+   },
+   "stop": {
+    "DEFAULT": "stop_token",
+    "LOOP": "stop_token"
+   },
+   "first_token_s": {
+    "DEFAULT_inc": 1.7249602500814945,
+    "LOOP_inc": 1.8795462499838322,
+    "DEFAULT_replay": 2.638097999850288,
+    "LOOP_replay": 3.695476584136486
+   },
+   "total_s": {
+    "DEFAULT_inc": 6.965359250083566,
+    "LOOP_inc": 7.48656554101035
+   },
+   "default_text": "The previous result was 12 (from 144 \u00f7 12). Now I need to multiply 12 by 7.\n\n12 \u00d7 7 = 84.\n</think>\n\n12 multiplied by 7 is **84**.",
+   "loop_text": "The previous result was 12 (from 144 \u00f7 12). Now I need to multiply 12 by 7.\n\n12 \u00d7 7 = 84.\n</think>\n\n12 multiplied by 7 is **84**."
+  },
+  {
+   "conversation": 2,
+   "turn": 2,
+   "default_incremental_equals_default_replay": true,
+   "default_replay_equals_loop_replay": true,
+   "default_incremental_equals_loop_incremental": true,
+   "loop_incremental_equals_loop_replay": true,
+   "modes": {
+    "DEFAULT": "incremental",
+    "LOOP": "incremental"
+   },
+   "notes": {
+    "DEFAULT": "",
+    "LOOP": ""
+   },
+   "offsets_ok": true,
+   "n_generated": {
+    "DEFAULT": 165,
+    "LOOP": 165
+   },
+   "stop": {
+    "DEFAULT": "stop_token",
+    "LOOP": "stop_token"
+   },
+   "first_token_s": {
+    "DEFAULT_inc": 1.7212049581576139,
+    "LOOP_inc": 1.8714647078886628,
+    "DEFAULT_replay": 4.235249541932717,
+    "LOOP_replay": 5.900957625126466
+   },
+   "total_s": {
+    "DEFAULT_inc": 17.158495916984975,
+    "LOOP_inc": 18.342598290881142
+   },
+   "default_text": "The product is 84. Is 84 a prime number?\n\nA prime number is a number greater than 1 that has no positive divisors other than 1 and itself.\n\n84 can be divided by",
+   "loop_text": "The product is 84. Is 84 a prime number?\n\nA prime number is a number greater than 1 that has no positive divisors other than 1 and itself.\n\n84 can be divided by"
+  }
+ ],
+ "divergences": [],
+ "summary": {
+  "n_turns": 9,
+  "default_inc_vs_replay_unequal": 0,
+  "default_vs_loop_inc_unequal": 0,
+  "default_vs_loop_replay_unequal": 0,
+  "loop_inc_vs_replay_unequal": 0,
+  "offset_mismatches": 0,
+  "incremental_reused_turns": {
+   "DEFAULT": 6,
+   "LOOP": 6
+  },
+  "fallback_turns": {
+   "DEFAULT": 0,
+   "LOOP": 0
+  },
+  "eligible_turns": 6,
+  "divergences_first_per_conversation": 0,
+  "unexplained_divergences": 0,
+  "generated_tokens": {
+   "DEFAULT": 1059,
+   "LOOP": 1059
+  }
+ },
+ "engine_after": {
+  "recurrence": "kernel",
+  "recurrence_layers": 48,
+  "recurrence_of": {
+   "loop": 0,
+   "kernel": 48,
+   "unselected": 0
+  },
+  "model_training_flag": true,
+  "kernel_version": 5,
+  "chain_sha256": "de7e0180bf49f965c17116b7fbe8c34d2b1529c2431cc234f3a6460ad84b24dc",
+  "cache_limit_bytes": 2147483648,
+  "chunk": 256,
+  "matmul": "gemm",
+  "context_cap": 8192,
+  "tokenizer_files_sha256": {
+   "tokenizer.json": "0997f410c57a1f4e53b09e4be8f4a172d90edd9564368fb0847030937229b9f3",
+   "tokenizer_config.json": "b11349aafa7cdc6a320767cf7ceb29ed82f7eda5d65e8e0819e76f0ce947bf27",
+   "config.json": "191e0af232104ed8b65258cf3fb2b842e288008baca7633c11b82a1ac7203aab"
+  },
+  "stop_ids": [
+   248044,
+   248046
+  ],
+  "cold_load_s": 6.218367958907038,
+  "v_live": 248077
+ },
+ "wall_s": 526.1590604160447
+}
