@@ -10,6 +10,16 @@ QWEN-PREFILL-WALL-0). Flipping the training flag would select the kernel
 by a side effect of a mode meant for dropout; this module selects the
 implementation by name instead and leaves the training flag alone.
 
+Two mechanisms, two roles. This module is the QUALIFICATION INSTRUMENT: a
+process-global, with-block-scoped replacement of the vendor names that
+forces a path and COUNTS which implementation executed. The PROMOTED
+serving selection is llmopt.lab.qtower.select_recurrence (QWEN-GDN-
+PROMOTE-0): per module instance, by an attribute the instance's own
+__call__ reads, with the vendor class and module untouched, so it cannot
+leak to another model instance or another engine in the same process.
+Drivers prove the serving selection's dispatch by wrapping a measured call
+in ``recurrence_path("vendor")``, which forces nothing and only counts.
+
 How. The tower's rewritten ``__call__`` executes with ``vars(qwen3_5)`` as
 its globals, so it resolves ``gated_delta_update`` from the qwen3_5 module
 dictionary at call time. ``recurrence_path`` replaces that name, for the
@@ -18,9 +28,9 @@ function with ``use_kernel`` forced to the chosen path. The wrapper also
 wraps ``gated_delta_ops`` and ``gated_delta_kernel`` inside the
 ``gated_delta`` module, so the receipt counts which implementation
 EXECUTED, not which one was requested. Nested selection is refused, exit
-restores every name and asserts the restoration, and nothing here is
-imported by the serving code (llmopt.lab.qserve), so a serving process is
-unaffected.
+restores every name and asserts the restoration. The serving code imports
+only ``check_vendor`` (provenance; it patches nothing), so a serving
+process never runs under a forced selection.
 
 Vendor guard. ``check_vendor`` refuses when the installed mlx-lm no longer
 carries the dispatch line, the condition inside ``gated_delta_update`` or
@@ -78,7 +88,7 @@ class DispatchCount:
     reached each implementation."""
     path: str
     update_calls: int = 0
-    requested: dict = field(default_factory=lambda: {"kernel": 0, "loop": 0})
+    requested: dict = field(default_factory=lambda: {"kernel": 0, "loop": 0})     # the use_kernel the CALLER passed: the vendor flag on a plain module, the instance selection on a qtower-selected one
     executed: dict = field(default_factory=lambda: {"ops": 0, "kernel": 0})
     max_T: int = 0
 

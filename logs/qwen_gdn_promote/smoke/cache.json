@@ -1,0 +1,409 @@
+{
+ "commit": "17b57796",
+ "tree_dirty": true,
+ "smoke": true,
+ "stage": "cache",
+ "driver": "scratch/qwen_gdn_promote.py",
+ "driver_sha256": "67287e67cc2378451d3022544134a6bce73fbf7b0ca3bf9f9abab56be667e2ec",
+ "sources_sha256": {
+  "llmopt/lab/qtower.py": "89d2f3d9b128bbbb4fe66e02e919805bec02c77bcd516fa78e21f36f9e5526ff",
+  "llmopt/lab/qserve.py": "9f3e845780900f9f1111d5c300eaf1f34447bab7ff3f9c3582b99d72a2608787",
+  "llmopt/lab/qgdn.py": "94fc734e12054bdeb8d0ba53703af9cfbd0648affa5f2175396fcb886d4620c6",
+  "scripts/qwen_chat.py": "bb4276d13c61978b731c7260fffe29cb559cd0d5abd48c1831e2b08cbc0a807f"
+ },
+ "default_recurrence_in_code": "kernel",
+ "vendor": {
+  "mlx_version": "0.31.2",
+  "mlx_lm_version": "0.31.3",
+  "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+  "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+  "metal_available": true,
+  "default_device": "Device(gpu, 0)"
+ },
+ "near_tie_margin": 0.02,
+ "engine": {
+  "recurrence": "kernel",
+  "recurrence_layers": 48,
+  "recurrence_of": {
+   "loop": 0,
+   "kernel": 48,
+   "unselected": 0
+  },
+  "model_training_flag": true,
+  "kernel_version": 5,
+  "chain_sha256": "de7e0180bf49f965c17116b7fbe8c34d2b1529c2431cc234f3a6460ad84b24dc",
+  "cache_limit_bytes": 2147483648,
+  "chunk": 256,
+  "matmul": "gemm",
+  "context_cap": 8192,
+  "tokenizer_files_sha256": {
+   "tokenizer.json": "0997f410c57a1f4e53b09e4be8f4a172d90edd9564368fb0847030937229b9f3",
+   "tokenizer_config.json": "b11349aafa7cdc6a320767cf7ceb29ed82f7eda5d65e8e0819e76f0ce947bf27",
+   "config.json": "191e0af232104ed8b65258cf3fb2b842e288008baca7633c11b82a1ac7203aab"
+  },
+  "stop_ids": [
+   248044,
+   248046
+  ],
+  "cold_load_s": 6.26836616685614,
+  "v_live": 248077
+ },
+ "model_pin": {
+  "source_weights": {
+   "hf_repo": "Qwen/Qwen3.8-27B",
+   "hf_revision": "1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0",
+   "revision_source": "logs/qwenteacher_v2/teacher_manifest.json",
+   "teacher_manifest_sha256": "a29a74158b249bdb5ce0240bfd9246887d8c578f7489f9f996beafba53f2092f",
+   "vendor_index_total_size_bytes": 55562855904.0,
+   "vendor_index_tensors": 1199
+  },
+  "vendor_dir_files_sha256": {
+   "config.json": "191e0af232104ed8b65258cf3fb2b842e288008baca7633c11b82a1ac7203aab",
+   "generation_config.json": "e70c136c1b78ddc1fb0905bac8e733a4dc448d4f852a5dd75143fffc70be550e",
+   "model.safetensors.index.json": "77042094076611b69791a610065f28b7013b8c621795fa86ddccc8bac7d1b9df",
+   "tokenizer.json": "0997f410c57a1f4e53b09e4be8f4a172d90edd9564368fb0847030937229b9f3",
+   "tokenizer_config.json": "b11349aafa7cdc6a320767cf7ceb29ed82f7eda5d65e8e0819e76f0ce947bf27"
+  },
+  "config": {
+   "architectures": [
+    "Qwen3_5ForConditionalGeneration"
+   ],
+   "model_type": "qwen3_5",
+   "text_model_type": "qwen3_5_text",
+   "hidden_size": 5120,
+   "num_hidden_layers": 64,
+   "layer_types": {
+    "full_attention": 16,
+    "linear_attention": 48
+   },
+   "linear_num_key_heads": 16,
+   "linear_num_value_heads": 48,
+   "linear_key_head_dim": 128,
+   "linear_value_head_dim": 128,
+   "linear_conv_kernel_dim": 4,
+   "num_attention_heads": 24,
+   "num_key_value_heads": 4,
+   "head_dim": 256,
+   "vocab_size": 248320,
+   "mamba_ssm_dtype": "float32",
+   "dtype": "bfloat16",
+   "transformers_version": "5.8.0.dev0"
+  },
+  "artifact": {
+   "art_dir_basename": "C",
+   "chain": "logs/qwenwhole/artifact_digest_C.txt",
+   "chain_sha256": "de7e0180bf49f965c17116b7fbe8c34d2b1529c2431cc234f3a6460ad84b24dc",
+   "manifest_sha256": "d7e56155f5424aef1885b5e41e62951d8033e5351d9b5af8b006460df6540464",
+   "chain_report": {
+    "art_dir": "/Users/artin/qwen_whole0t/C",
+    "rung0": {
+     "checked": 19,
+     "unchained": false
+    },
+    "conservation": {
+     "keys": 1199
+    },
+    "census": {
+     "w4": 192,
+     "s16": 210,
+     "raw": 449,
+     "excluded": 348
+    },
+    "preflight": {
+     "estimated_peak_bytes": 6504933184,
+     "available_bytes": 25191415808,
+     "safety_fraction": 0.8
+    }
+   },
+   "families": {
+    "linear_attn": 48,
+    "full_attn": 16
+   },
+   "fused": 402,
+   "raw": 449,
+   "payload_resident_bytes": 9367009856
+  },
+  "architecture_module": {
+   "name": "mlx_lm.models.qwen3_5 (the shared Qwen3.5-family architecture implementation; the weights are Qwen3.8-27B)",
+   "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+   "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1"
+  }
+ },
+ "conversations": [
+  [
+   "Which element has the chemical symbol Fe?",
+   "What is its atomic number?"
+  ]
+ ],
+ "max_tokens": 48,
+ "dispatch": [
+  {
+   "label": "cache DEFAULT incremental",
+   "arm": "DEFAULT",
+   "path": "vendor",
+   "selection_before": {
+    "loop": 0,
+    "kernel": 48,
+    "unselected": 0
+   },
+   "selection_after": {
+    "loop": 0,
+    "kernel": 48,
+    "unselected": 0
+   },
+   "exclusive": true,
+   "selector": "llmopt.lab.qgdn.recurrence_path",
+   "update_calls": 4608,
+   "requested_by_vendor_flag": {
+    "kernel": 4608,
+    "loop": 0
+   },
+   "executed": {
+    "ops": 0,
+    "kernel": 4608
+   },
+   "max_T": 48,
+   "vendor": {
+    "mlx_version": "0.31.2",
+    "mlx_lm_version": "0.31.3",
+    "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+    "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+    "metal_available": true,
+    "default_device": "Device(gpu, 0)"
+   }
+  },
+  {
+   "label": "cache DEFAULT replay",
+   "arm": "DEFAULT",
+   "path": "vendor",
+   "selection_before": {
+    "loop": 0,
+    "kernel": 48,
+    "unselected": 0
+   },
+   "selection_after": {
+    "loop": 0,
+    "kernel": 48,
+    "unselected": 0
+   },
+   "exclusive": true,
+   "selector": "llmopt.lab.qgdn.recurrence_path",
+   "update_calls": 4608,
+   "requested_by_vendor_flag": {
+    "kernel": 4608,
+    "loop": 0
+   },
+   "executed": {
+    "ops": 0,
+    "kernel": 4608
+   },
+   "max_T": 114,
+   "vendor": {
+    "mlx_version": "0.31.2",
+    "mlx_lm_version": "0.31.3",
+    "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+    "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+    "metal_available": true,
+    "default_device": "Device(gpu, 0)"
+   }
+  },
+  {
+   "label": "cache LOOP incremental",
+   "arm": "LOOP",
+   "path": "vendor",
+   "selection_before": {
+    "loop": 48,
+    "kernel": 0,
+    "unselected": 0
+   },
+   "selection_after": {
+    "loop": 48,
+    "kernel": 0,
+    "unselected": 0
+   },
+   "exclusive": true,
+   "selector": "llmopt.lab.qgdn.recurrence_path",
+   "update_calls": 4608,
+   "requested_by_vendor_flag": {
+    "kernel": 0,
+    "loop": 4608
+   },
+   "executed": {
+    "ops": 4608,
+    "kernel": 0
+   },
+   "max_T": 48,
+   "vendor": {
+    "mlx_version": "0.31.2",
+    "mlx_lm_version": "0.31.3",
+    "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+    "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+    "metal_available": true,
+    "default_device": "Device(gpu, 0)"
+   }
+  },
+  {
+   "label": "cache LOOP replay",
+   "arm": "LOOP",
+   "path": "vendor",
+   "selection_before": {
+    "loop": 48,
+    "kernel": 0,
+    "unselected": 0
+   },
+   "selection_after": {
+    "loop": 48,
+    "kernel": 0,
+    "unselected": 0
+   },
+   "exclusive": true,
+   "selector": "llmopt.lab.qgdn.recurrence_path",
+   "update_calls": 4608,
+   "requested_by_vendor_flag": {
+    "kernel": 0,
+    "loop": 4608
+   },
+   "executed": {
+    "ops": 4608,
+    "kernel": 0
+   },
+   "max_T": 114,
+   "vendor": {
+    "mlx_version": "0.31.2",
+    "mlx_lm_version": "0.31.3",
+    "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+    "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+    "metal_available": true,
+    "default_device": "Device(gpu, 0)"
+   }
+  }
+ ],
+ "turns": [
+  {
+   "conversation": 0,
+   "turn": 0,
+   "default_incremental_equals_default_replay": true,
+   "default_replay_equals_loop_replay": true,
+   "default_incremental_equals_loop_incremental": true,
+   "loop_incremental_equals_loop_replay": true,
+   "modes": {
+    "DEFAULT": "fresh",
+    "LOOP": "fresh"
+   },
+   "notes": {
+    "DEFAULT": "",
+    "LOOP": ""
+   },
+   "offsets_ok": true,
+   "n_generated": {
+    "DEFAULT": 48,
+    "LOOP": 48
+   },
+   "stop": {
+    "DEFAULT": "max_tokens",
+    "LOOP": "max_tokens"
+   },
+   "first_token_s": {
+    "DEFAULT_inc": 2.169953624950722,
+    "LOOP_inc": 2.49158150004223,
+    "DEFAULT_replay": 2.1399113337974995,
+    "LOOP_replay": 2.4893310831394047
+   },
+   "total_s": {
+    "DEFAULT_inc": 6.640175541862845,
+    "LOOP_inc": 7.237426499836147
+   },
+   "default_text": "The user is asking about the element with the chemical symbol Fe. This is a straightforward chemistry question. Fe is the symbol for iron, derived from the Lati",
+   "loop_text": "The user is asking about the element with the chemical symbol Fe. This is a straightforward chemistry question. Fe is the symbol for iron, derived from the Lati"
+  },
+  {
+   "conversation": 0,
+   "turn": 1,
+   "default_incremental_equals_default_replay": true,
+   "default_replay_equals_loop_replay": true,
+   "default_incremental_equals_loop_incremental": true,
+   "loop_incremental_equals_loop_replay": true,
+   "modes": {
+    "DEFAULT": "incremental",
+    "LOOP": "incremental"
+   },
+   "notes": {
+    "DEFAULT": "",
+    "LOOP": ""
+   },
+   "offsets_ok": true,
+   "n_generated": {
+    "DEFAULT": 47,
+    "LOOP": 47
+   },
+   "stop": {
+    "DEFAULT": "stop_token",
+    "LOOP": "stop_token"
+   },
+   "first_token_s": {
+    "DEFAULT_inc": 1.7849550829268992,
+    "LOOP_inc": 1.9176688329316676,
+    "DEFAULT_replay": 2.6622622918803245,
+    "LOOP_replay": 3.6806694590486586
+   },
+   "total_s": {
+    "DEFAULT_inc": 6.24320654082112,
+    "LOOP_inc": 6.678205291973427
+   },
+   "default_text": "The user is asking about the atomic number of iron (Fe), which was the subject of the previous conversation. Iron's atomic number is 26.\n</think>\n\nThe atomic nu",
+   "loop_text": "The user is asking about the atomic number of iron (Fe), which was the subject of the previous conversation. Iron's atomic number is 26.\n</think>\n\nThe atomic nu"
+  }
+ ],
+ "divergences": [],
+ "summary": {
+  "n_turns": 2,
+  "default_inc_vs_replay_unequal": 0,
+  "default_vs_loop_inc_unequal": 0,
+  "default_vs_loop_replay_unequal": 0,
+  "loop_inc_vs_replay_unequal": 0,
+  "offset_mismatches": 0,
+  "incremental_reused_turns": {
+   "DEFAULT": 1,
+   "LOOP": 1
+  },
+  "fallback_turns": {
+   "DEFAULT": 0,
+   "LOOP": 0
+  },
+  "eligible_turns": 1,
+  "divergences_first_per_conversation": 0,
+  "unexplained_divergences": 0,
+  "generated_tokens": {
+   "DEFAULT": 95,
+   "LOOP": 95
+  }
+ },
+ "engine_after": {
+  "recurrence": "kernel",
+  "recurrence_layers": 48,
+  "recurrence_of": {
+   "loop": 0,
+   "kernel": 48,
+   "unselected": 0
+  },
+  "model_training_flag": true,
+  "kernel_version": 5,
+  "chain_sha256": "de7e0180bf49f965c17116b7fbe8c34d2b1529c2431cc234f3a6460ad84b24dc",
+  "cache_limit_bytes": 2147483648,
+  "chunk": 256,
+  "matmul": "gemm",
+  "context_cap": 8192,
+  "tokenizer_files_sha256": {
+   "tokenizer.json": "0997f410c57a1f4e53b09e4be8f4a172d90edd9564368fb0847030937229b9f3",
+   "tokenizer_config.json": "b11349aafa7cdc6a320767cf7ceb29ed82f7eda5d65e8e0819e76f0ce947bf27",
+   "config.json": "191e0af232104ed8b65258cf3fb2b842e288008baca7633c11b82a1ac7203aab"
+  },
+  "stop_ids": [
+   248044,
+   248046
+  ],
+  "cold_load_s": 6.26836616685614,
+  "v_live": 248077
+ },
+ "wall_s": 64.50368616683409
+}

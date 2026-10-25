@@ -20,7 +20,10 @@ restores direct answers; --reasoning-effort xhigh|medium|low and
 transcript every turn, the KV offset checked against the accounting, a
 replay into a fresh cache whenever the rendering does not extend the fed
 tokens); --replay re-prefills the whole transcript every turn, the
-reference. Nothing in the model, codec or kernels changes.
+reference. The DeltaNet recurrence runs mlx-lm's Metal kernel by default
+(VERDICT QWEN-GDN-KERNEL-0, promoted under QWEN-GDN-PROMOTE-0), selected
+by name per layer; --recurrence loop selects the Python reference loop the
+earlier receipts ran. Nothing in the model, codec or kernels changes.
 """
 from __future__ import annotations
 
@@ -92,6 +95,8 @@ def main() -> int:
     ap.add_argument("--incremental", action="store_true", help=argparse.SUPPRESS)   # the former opt-in; now the default
     ap.add_argument("--context-cap", type=int, default=None)
     ap.add_argument("--json", default=None, help="write the turn receipts (ids, text, timings, memory) to this file")
+    ap.add_argument("--recurrence", choices=("kernel", "loop"), default=None,
+                    help="the GatedDeltaNet recurrence implementation: kernel (the default, mlx-lm's Metal kernel) or loop (the Python reference loop)")
     ap.add_argument("--art-dir", default=None)
     ap.add_argument("--vendor-dir", default=None)
     a = ap.parse_args()
@@ -110,12 +115,17 @@ def main() -> int:
     from llmopt.lab import qserve
     thinking, effort = resolve_mode(a.thinking, a.no_thinking, a.reasoning_effort)
     kw = {"context_cap": a.context_cap} if a.context_cap is not None else {}
+    if a.recurrence is not None:
+        kw["recurrence"] = a.recurrence
     eng = qserve.Engine(art_dir=a.art_dir, vendor_dir=a.vendor_dir, **kw)
     print(f"[qwen_chat] loaded {eng.info.get('fused')} fused tensors, kernel generation {eng.info.get('kernel_version')}, "
-          f"chain {eng.info.get('chain_sha256', '')[:12]}, in {eng.load_s:.1f}s; stop ids {sorted(eng.stop_ids)}; "
+          f"chain {eng.info.get('chain_sha256', '')[:12]}, recurrence {eng.info.get('recurrence')} on {eng.info.get('recurrence_layers')} layers, "
+          f"in {eng.load_s:.1f}s; stop ids {sorted(eng.stop_ids)}; "
           f"cache limit {eng.cfg.cache_limit_bytes >> 20} MiB; context cap {eng.context_cap}", file=sys.stderr)
     sess = qserve.Session(eng, system=a.system, mode="replay" if a.replay else "incremental", enable_thinking=thinking, reasoning_effort=effort)
     receipts = {"load_s": eng.load_s, "kernel_version": eng.info.get("kernel_version"), "chain_sha256": eng.info.get("chain_sha256"),
+                "recurrence": eng.info.get("recurrence"), "recurrence_layers": eng.info.get("recurrence_layers"), "recurrence_vendor": eng.info.get("recurrence_vendor"),
+                "recurrence_of": __import__("llmopt.lab.qtower", fromlist=["x"]).recurrence_of(eng.model) if eng.info.get("recurrence") else None,
                 "thinking": thinking, "reasoning_effort": effort, "max_tokens": a.max_tokens, "mode": sess.mode, "turns": []}
 
     def turn(text):

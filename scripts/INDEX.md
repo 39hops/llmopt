@@ -5460,6 +5460,46 @@ Observations adapter for PRE-REG QWEN-GDN-KERNEL-0: derives the registered measu
 - `main(rdir, prereg_path)`
 - `emit(prereg, valid, reasons, meas, diag, rdir, commit=None, contrasts=None)`
 
+### scratch/qwen_gdn_promote.py
+QWEN-GDN-PROMOTE-0: the acceptance run of the promoted serving default for the arm C GatedDeltaNet recurrence (llmopt.lab.qserve.DEFAULT_RECURRENCE "kernel", selected by name per layer through llmopt.lab.qtower. select_recurrence; the Python loop stays selectable as "loop"). VERDICT QWEN-GDN-KERNEL-0 qualified the kernel against the loop under the qualification instrument (llmopt.lab.qgdn.recurrence_path forcing a path process-wide); this run measures the PROMOTED CODE (the per-instance selection the Engine and the CLI actually use) and leaves the default in place only if every registered gate fires (any other outcome reverts the default to "loop" in the HOLD commit).
+
+- `fsha(p)`
+- `sha_ids(ids)`
+- `mem()`
+- `model_pin(vendor_dir, art_dir, info)` — The exact model artifact and configuration this run served.
+- `engine_block(eng)`
+- `load_engine()`
+- `class arm`
+- `stage_tests(eng, receipt)` — eng is None here: the suites load their own engines.
+- `topk(row, k=16)`
+- `run_prefill(eng, ids, name, receipt, label, decode=0)`
+- `top16_diff(x, ref)`
+- `fixed_prompt(eng, seed, target)`
+- `stage_heldout(eng, receipt)`
+- `classify_divergence(eng, receipt, prompt_ids, prefix_ids, kernel_tok, loop_tok, label)` — Both arms' logits at the divergent position, re-read along the SAME path
+- `first_divergence(a, b)`
+- `compare_streams(eng, receipt, label, prompt_ids, kernel_ids, loop_ids)` — Classify the first divergence of two generated streams from one prompt
+- `stage_cache(eng, receipt)`
+- `run_collection(eng, receipt, label, coll, thinking, effort, budget, system, name='DEFAULT')` — Every task as a fresh replay session under the arm; rows like
+- `compare_tasks(eng, receipt, rows, ref_rows, label)` — Per task: the ids of every turn against the reference rows (by id); the
+- `stage_battery(eng, receipt)`
+- `cli_task(task, name, outdir)` — One scripts/qwen_chat.py process for one task and arm; returns the
+- `stage_cli(eng, receipt)` — eng is None at entry: the subprocesses hold the tower; an engine is
+- `main()`
+
+### scratch/qwen_gdn_promote_collection.py
+QWEN-GDN-PROMOTE-0: the fresh CLI collection (scratch/evalsets/ qwen_battery_v4_cli.json), 16 tasks drawn from the v3 generators (llmopt.lab.qbattery3) under a fresh stable string seed, with an exclusion guard: no task whose FIRST user turn appears in the v1, v2 or v3 collections is kept (the farm skill's exclude= rule; a two-turn task's second turn is one of four fixed v3 question templates and is not the instance). Code and instruction tasks are not drawn (their templates and function lists are fixed menus already exhausted by v3; a fresh instance there would repeat a prompt). The arithmetic, structured, two-turn and termination families are fresh INSTANCES of v3 templates, so this collection confirms behaviour on unread prompts, not on an unrelated benchmark. Written once; a run records the file's sha256 and never edits it.
+
+- `build(seed: str=SEED) -> dict`
+
+### scratch/qwen_gdn_promote_obs.py
+Observations adapter for PRE-REG QWEN-GDN-PROMOTE-0: derives the registered measurements from the five stage receipts of scratch/qwen_gdn_promote.py in committed code (never hand-written).
+
+- `fsha(p)`
+- `engine_ok(e)`
+- `main(rdir, prereg_path)`
+- `emit(prereg, valid, reasons, meas, diag, rdir, commit=None, contrasts=None)`
+
 ### scratch/qwen_geometry_capture.py
 QWEN-LOSSY-GEOMETRY-0, stage 1: the frozen inputs of the local representation study. For the selected layer-22 matrices (mlp.gate_proj [17408, 5120] and mlp.down_proj [5120, 17408], both W4; linear_attn. in_proj_qkv [10240, 5120], S16; gate_proj and up_proj share an input and up_proj is reported through gate_proj's captures) this driver:   1. verifies vendor shard 7's pin (sha256 and size) and reads the      ORIGINAL BF16 tensors from it (exact uint16 patterns widened to      float32, which is exact for BF16);   2. reads the arm C payloads of the same tensors from the artifact under      the digest chain, checks the manifest entries (codec, shape, length      formula), the exponent-scale range and the canonical decoder output      (llmopt.lab.qcodec.decode_entry) against the original (relative      Frobenius error of arm C, the control's figure);   3. builds the qualified tower (generation 5 default) and runs the 24      teacher rollouts (prompt plus recorded continuation, teacher-forced)      through the serving prefill path (prefill_chunked, chunk 256, GEMM),      recording the input of each selected module at EVERY position;      prompts are split by index into a development set (0 to 11) and a      blocked evaluation set (12 to 23) before any candidate is built;   4. writes the captures as float32 .npy files under DUMP (machine-local,      untracked; sha256 in the receipt) and the receipt      logs/qwen_geometry/capture.json (refuse-if-exists). Nothing in the artifact, the shards or the kernels is modified. Env: ART_DIR, VENDOR_DIR, SHARD_DIR, OUT_DIR (logs/qwen_geometry), SMOKE=1 (2 prompts, 32 tokens each, OUT_DIR logs/qwen_geometry/smoke).
 
@@ -7328,7 +7368,7 @@ Local inference for the qualified Qwen3.8-27B arm C (QWEN-INFERENCE- BASELINE-0)
 - `cache_offset(cache) -> Optional[int]` — The token offset the KV cache objects report (every KV layer must
 - `split_thinking(text: str) -> tuple` — (reasoning_content, content): the pinned template renders a past
 - `_check_ids(ids) -> list`
-- `class Engine` (render_chat, generate_ids, chat)
+- `class Engine` (select_recurrence, render_chat, generate_ids, chat)
 - `class Session` (reset, ask)
 
 ### llmopt/lab/qtower.py
@@ -7336,6 +7376,10 @@ The qualified arm C Metal tower, ADOPTED verbatim from scratch/qwen_metal_qual.p
 
 - `fsha(p: str) -> str`
 - `build_metal_model(art: str, vdir: str)` — Arm C through the mlx-lm Qwen3.5 architecture with fused linears.
+- `selected_gdn_class()` — The SelectedGatedDeltaNet class (built once per process from the
+- `_vendor_call_source(qwen3_5) -> str` — The GatedDeltaNet.__call__ body as written in the installed module
+- `select_recurrence(module, path: str) -> dict` — Select the recurrence implementation for every GatedDeltaNet inside
+- `recurrence_of(module) -> dict` — {"loop": n, "kernel": n, "unselected": n} over the GatedDeltaNet
 
 ### llmopt/lab/runfiles.py
 Moved to llmopt.runs.runfiles (Phase 5, 2026-08-12). This alias keeps old imports working with full fidelity (privates included).

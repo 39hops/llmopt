@@ -149,3 +149,135 @@ def build_metal_model(art: str, vdir: str):
             "gemm_ineligible_matrices": sum(1 for _, m in model.named_modules()
                                             if type(m).__name__ == "QLinear" and not m.res.gemm_ok)}
     return model, info
+
+
+# ---------------------------------------------------------------------------
+# Explicit, per-instance selection of the GatedDeltaNet recurrence
+# implementation (QWEN-GDN-PROMOTE-0). mlx-lm's GatedDeltaNet.__call__
+# passes use_kernel=not self.training to gated_delta_update, so a tower
+# built in training mode runs the Python reference loop (gated_delta_ops)
+# and never the Metal kernel the same module ships (VERDICT
+# QWEN-PREFILL-WALL-0). VERDICT QWEN-GDN-KERNEL-0 qualified the kernel
+# against the loop on arm C. The promoted mechanism selects the
+# implementation BY NAME, PER MODULE INSTANCE: every GatedDeltaNet of one
+# tower is re-classed to SelectedGatedDeltaNet, whose __call__ is the
+# vendor body (with the same exact-l2norm edit build_metal_model installs)
+# except that the dispatch argument reads the instance's own `recurrence`
+# attribute. The training flag is never touched; the vendor class and its
+# module dictionary are not modified by the selection, so a GatedDeltaNet
+# built by plain mlx-lm in the same process, or a second tower selected
+# differently, keeps its own behaviour. Dispatch PROOF (counting which
+# implementation executed) stays with the qualification instrument
+# llmopt.lab.qgdn.recurrence_path("vendor"), which drivers wrap around a
+# measured call; nothing in serving depends on it.
+
+RECURRENCE_PATHS = ("loop", "kernel")
+RECURRENCE_FLAGS = {"loop": False, "kernel": True}
+# the vendor sources the kernel path was QUALIFIED against (VERDICT QWEN-GDN-KERNEL-0: mlx-lm 0.31.3);
+# selecting "kernel" under any other source refuses (the loop stays selectable: it is the vendor's own reference path)
+QUALIFIED_VENDOR = {"qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+                    "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1"}
+DISPATCH_LINE = "use_kernel=not self.training,"
+SELECTED_DISPATCH_LINE = "use_kernel=self._llmopt_use_kernel(),"
+L2NORM_EDITS = (("q = (inv_scale**2) * mx.fast.rms_norm(q, None, 1e-6)", "q = inv_scale * (q * mx.rsqrt((q * q).sum(-1, keepdims=True) + 1e-6))"),
+                ("k = inv_scale * mx.fast.rms_norm(k, None, 1e-6)", "k = k * mx.rsqrt((k * k).sum(-1, keepdims=True) + 1e-6)"))
+_selected_class = None
+
+
+def selected_gdn_class():
+    """The SelectedGatedDeltaNet class (built once per process from the
+    installed mlx-lm source under a guard that REFUSES if the vendor body no
+    longer carries the dispatch line or the two l2norm lines)."""
+    global _selected_class
+    if _selected_class is not None:
+        return _selected_class
+    from mlx_lm.models import qwen3_5
+    src = _vendor_call_source(qwen3_5)      # the body as written in the module file, independent of the in-process rewrite build_metal_model installs
+    if DISPATCH_LINE not in src:
+        raise RuntimeError("REFUSING: mlx-lm GatedDeltaNet no longer dispatches on use_kernel=not self.training; re-derive the selector")
+    for old, new in L2NORM_EDITS:
+        if old not in src:
+            raise RuntimeError("REFUSING: mlx-lm GatedDeltaNet source changed; re-derive the l2norm override")
+        src = src.replace(old, new)
+    src = src.replace(DISPATCH_LINE, SELECTED_DISPATCH_LINE)
+    ns: dict = {}
+    exec(compile(src, "qwen3_5_gdn_selected_recurrence", "exec"), vars(qwen3_5), ns)
+
+    class SelectedGatedDeltaNet(qwen3_5.GatedDeltaNet):
+        """A GatedDeltaNet whose recurrence implementation is the instance's
+        `recurrence` attribute ("loop" or "kernel"); refuses to run unselected."""
+        _source = src
+
+        def _llmopt_use_kernel(self):
+            path = getattr(self, "recurrence", None)
+            if path not in RECURRENCE_FLAGS:
+                raise RuntimeError(f"GatedDeltaNet instance has no recurrence selection (got {path!r}); call llmopt.lab.qtower.select_recurrence")
+            return RECURRENCE_FLAGS[path]
+
+    SelectedGatedDeltaNet.__call__ = ns["__call__"]
+    _selected_class = SelectedGatedDeltaNet
+    return _selected_class
+
+
+def _vendor_call_source(qwen3_5) -> str:
+    """The GatedDeltaNet.__call__ body as written in the installed module
+    file (independent of any in-process rewrite of the class attribute)."""
+    import ast
+    import textwrap
+    text = open(qwen3_5.__file__).read()
+    tree = ast.parse(text)
+    for node in tree.body:
+        if isinstance(node, ast.ClassDef) and node.name == "GatedDeltaNet":
+            for fn in node.body:
+                if isinstance(fn, ast.FunctionDef) and fn.name == "__call__":
+                    lines = text.splitlines()[fn.lineno - 1: fn.end_lineno]
+                    return textwrap.dedent("\n".join(lines)) + "\n"
+    raise RuntimeError("REFUSING: GatedDeltaNet.__call__ not found in the installed mlx-lm qwen3_5 module")
+
+
+def select_recurrence(module, path: str) -> dict:
+    """Select the recurrence implementation for every GatedDeltaNet inside
+    `module` (an mlx nn.Module tree, e.g. the tower returned by
+    build_metal_model, or one GatedDeltaNet), by re-classing each one to
+    SelectedGatedDeltaNet and setting its `recurrence` attribute. Returns
+    {"path", "n_selected", "vendor"} where vendor is the installed mlx-lm
+    provenance (llmopt.lab.qgdn.check_vendor: versions, source sha256s,
+    Metal availability). Refuses an unknown path, a tree with no
+    GatedDeltaNet, and the kernel under a vendor source other than the
+    qualified one (QUALIFIED_VENDOR) or without the Metal GPU as the default
+    device (the vendor would silently fall back to the loop). Re-selection of
+    an already selected instance just changes its attribute; never re-select
+    under a live Session whose cache carries recurrent state (the two paths
+    agree to about 1e-4 logits, not bit for bit)."""
+    if path not in RECURRENCE_PATHS:
+        raise ValueError(f"recurrence must be one of {RECURRENCE_PATHS}, got {path!r}")
+    from mlx_lm.models import qwen3_5
+    from llmopt.lab import qgdn
+    vendor = qgdn.check_vendor()
+    if path == "kernel":
+        for k, want in QUALIFIED_VENDOR.items():
+            if vendor.get(k) != want:
+                raise RuntimeError(f"REFUSING the kernel recurrence: installed {k} {vendor.get(k)} is not the qualified {want} (mlx-lm {vendor.get('mlx_lm_version')}); select 'loop' or re-qualify")
+        if not vendor.get("metal_available") or "gpu" not in str(vendor.get("default_device")):
+            raise RuntimeError(f"REFUSING the kernel recurrence: default device {vendor.get('default_device')} is not the Metal GPU (the vendor would run the loop silently)")
+    cls = selected_gdn_class()
+    targets = [module] if isinstance(module, qwen3_5.GatedDeltaNet) else [m for _, m in module.named_modules() if isinstance(m, qwen3_5.GatedDeltaNet)]
+    if not targets:
+        raise RuntimeError("no GatedDeltaNet module found to select a recurrence for")
+    for m in targets:
+        if type(m) is not cls:
+            m.__class__ = cls
+        m.recurrence = path             # a str: an object attribute, never a parameter (mlx Module stores arrays/containers in its dict)
+    return {"path": path, "n_selected": len(targets), "vendor": vendor}
+
+
+def recurrence_of(module) -> dict:
+    """{"loop": n, "kernel": n, "unselected": n} over the GatedDeltaNet
+    instances in the tree: what each instance will dispatch to."""
+    from mlx_lm.models import qwen3_5
+    counts = {"loop": 0, "kernel": 0, "unselected": 0}
+    mods = [module] if isinstance(module, qwen3_5.GatedDeltaNet) else [m for _, m in module.named_modules() if isinstance(m, qwen3_5.GatedDeltaNet)]
+    for m in mods:
+        r = getattr(m, "recurrence", None) if type(m) is not qwen3_5.GatedDeltaNet else None
+        counts[r if r in RECURRENCE_FLAGS else "unselected"] += 1
+    return counts

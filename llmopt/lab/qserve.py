@@ -11,6 +11,17 @@ the qualification driver, with the mlx-lm GatedDeltaNet source guard), the
 prefill is llmopt.lab.qprefill.prefill_chunked, and the decode step is the
 plain model call the serving receipts measured.
 
+Recurrence implementation (QWEN-GDN-PROMOTE-0): the GatedDeltaNet
+recurrence of every DeltaNet layer is selected BY NAME, per module
+instance, through llmopt.lab.qtower.select_recurrence at load, never
+through the training flag (which stays as built). DEFAULT_RECURRENCE
+"kernel" is mlx-lm's Metal recurrence kernel, qualified against the
+Python loop in VERDICT QWEN-GDN-KERNEL-0; "loop" is the Python reference
+loop every receipt before that verdict ran. The selection and the vendor
+provenance (mlx and mlx-lm versions, source sha256s) are recorded in
+Engine.info; a research driver may re-select on a loaded engine
+(Engine.select_recurrence) for paired arms in one process.
+
 Token accounting (the law this module keeps and tests pin):
   prefill feeds the prompt ids p[0..n) and returns the logits at p[n-1];
   the FIRST generated token g[0] is the argmax of those logits and has NOT
@@ -66,6 +77,7 @@ DEFAULT_THINKING = True             # the chat default since VERDICT QWEN-LOW-DE
 DEFAULT_EFFORT = "low"
 _UNSET = object()
 REQUIRED_KERNEL_GENERATION = 5
+DEFAULT_RECURRENCE = "kernel"       # QWEN-GDN-PROMOTE-0: the Metal recurrence kernel; "loop" is the Python reference loop
 ENDOFTEXT = "<|endoftext|>"
 
 
@@ -140,15 +152,20 @@ class Engine:
 
     def __init__(self, art_dir: Optional[str] = None, vendor_dir: Optional[str] = None,
                  context_cap: int = DEFAULT_CONTEXT_CAP, cache_limit_bytes: int = CACHE_LIMIT_BYTES, chunk: int = 256,
-                 model=None, tokenizer=None, info=None):
+                 model=None, tokenizer=None, info=None, recurrence: str = DEFAULT_RECURRENCE):
         """Load (or, for tests, wrap a given model and tokenizer). Loading verifies
         the artifact under logs/qwenwhole/artifact_digest_<arm>.txt, refuses a
-        kernel generation other than 5, applies the serving cache limit and
-        records the cold load time."""
+        kernel generation other than 5, selects the recurrence implementation
+        by name on every DeltaNet layer (refusing a count other than the
+        tower's linear_attn family), applies the serving cache limit and
+        records the cold load time. A supplied model is wrapped as given
+        (no selection; info records recurrence None)."""
         from llmopt.lab import qmetal, qprefill
         if qmetal.VERSION != REQUIRED_KERNEL_GENERATION:
             raise RuntimeError(f"kernel generation {qmetal.VERSION} is not the qualified {REQUIRED_KERNEL_GENERATION}")
         self.context_cap = int(context_cap)
+        if recurrence == "kernel" and chunk != 256:
+            raise RuntimeError(f"the kernel recurrence is qualified at chunk 256 (VERDICT QWEN-GDN-KERNEL-0), not {chunk}; pass recurrence='loop' for another chunk")
         self.cfg = qprefill.ServingConfig(chunk=chunk, cache_limit_bytes=cache_limit_bytes)
         t0 = time.perf_counter()
         if model is None:
@@ -158,9 +175,11 @@ class Engine:
             self.model, self.info = build_metal_model(self.art_dir, self.vendor_dir)
             if self.info["kernel_version"] != REQUIRED_KERNEL_GENERATION:
                 raise RuntimeError("the tower was built under another kernel generation")
+            self.select_recurrence(recurrence)
         else:
             self.art_dir, self.vendor_dir = art_dir, vendor_dir
             self.model, self.info = model, dict(info or {})
+            self.info.setdefault("recurrence", None)
         if tokenizer is None:
             from transformers import AutoTokenizer
             self.tokenizer = AutoTokenizer.from_pretrained(self.vendor_dir)
@@ -180,6 +199,20 @@ class Engine:
         self.stop_ids = {int(t) for t in (eos, eot) if t is not None and t >= 0}
         if not self.stop_ids:
             raise RuntimeError("no stop token ids")
+
+    def select_recurrence(self, path: str) -> dict:
+        """Select the recurrence implementation ("loop" or "kernel") on every
+        DeltaNet layer of the loaded tower, by name; records it in info and
+        returns the selection with the vendor provenance."""
+        from llmopt.lab import qtower
+        sel = qtower.select_recurrence(self.model, path)
+        want = self.info.get("families", {}).get("linear_attn")
+        if want is not None and sel["n_selected"] != want:
+            raise RuntimeError(f"selected {sel['n_selected']} GatedDeltaNet layers, the tower has {want}")
+        self.info["recurrence"] = sel["path"]
+        self.info["recurrence_layers"] = sel["n_selected"]
+        self.info["recurrence_vendor"] = sel["vendor"]
+        return sel
 
     # ---- templates ----
     def render_chat(self, messages: list, enable_thinking: Optional[bool] = None, reasoning_effort: Optional[str] = None) -> list:

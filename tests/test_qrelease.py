@@ -55,6 +55,7 @@ def test_cli_help_names_the_fast_option_and_the_defaults():
     p = subprocess.run([sys.executable, "scripts/qwen_chat.py", "--help"], capture_output=True, text=True, timeout=60, cwd=ROOT)
     assert p.returncode == 0
     assert "--no-thinking" in p.stdout and "fast" in p.stdout.lower() and "768" in p.stdout and "--replay" in p.stdout and "--reasoning-effort" in p.stdout
+    assert "--recurrence" in p.stdout and "{kernel,loop}" in p.stdout
 
 
 def test_turn7_fixture_tokens_differ_from_reencoded_text_and_the_prefix_check_detects_it():

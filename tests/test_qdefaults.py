@@ -82,3 +82,24 @@ def test_changing_mode_or_effort_mid_session_never_reuses_an_incompatible_cache(
         "r2 = s.ask('again', 6)\n"
         "print(json.dumps({'effort_change': r.mode, 'thinking_change': r2.mode, 'cache_equals_fed': s.cache[0].fed == s.fed_ids}))\n"))
     assert out == {"effort_change": "replay-fallback", "thinking_change": "replay-fallback", "cache_equals_fed": True}
+
+
+def test_default_recurrence_is_the_kernel_and_a_supplied_model_records_none():
+    """QWEN-GDN-PROMOTE-0: the library default selects the Metal recurrence
+    kernel by name; the stub engine (a supplied model) makes no selection."""
+    out = run(STUB + (
+        "print(json.dumps({'default': qserve.DEFAULT_RECURRENCE, 'stub_recurrence': eng.info.get('recurrence'),"
+        " 'paths': list(__import__('llmopt.lab.qtower', fromlist=['x']).RECURRENCE_PATHS)}))\n"))
+    assert out["default"] == "kernel" and out["stub_recurrence"] is None and out["paths"] == ["loop", "kernel"]
+
+
+def test_kernel_recurrence_refuses_a_chunk_other_than_256():
+    out = run(STUB + (
+        "try:\n"
+        "    qserve.Engine(model=T._Model(), tokenizer=T._Tok(), context_cap=64, chunk=512)\n"
+        "    refused = False\n"
+        "except RuntimeError as e:\n"
+        "    refused = 'qualified at chunk 256' in str(e)\n"
+        "ok_loop = qserve.Engine(model=T._Model(), tokenizer=T._Tok(), context_cap=64, chunk=512, recurrence='loop').cfg.chunk\n"
+        "print(json.dumps({'refused': refused, 'loop_chunk': ok_loop}))\n"))
+    assert out["refused"] is True and out["loop_chunk"] == 512

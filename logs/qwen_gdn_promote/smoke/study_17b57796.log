@@ -1,0 +1,43 @@
+== tests 05:11:28 17b57796
+[promote] tests tests/test_qgdn.py: rc 0 12 passed in 1.57s
+[promote] tests tests/test_qtower_recurrence.py: rc 0 7 passed in 1.55s
+[promote] tests tests/test_qtower_adoption.py: rc 0 2 passed in 0.46s
+[promote] tests tests/test_qdefaults.py: rc 0 7 passed in 1.60s
+[promote] tests tests/test_qtemplate.py: rc 0 4 passed in 15.30s
+[promote] tests tests/test_qprefill.py: rc 0 11 passed in 0.58s
+[promote] tests tests/test_qbattery.py: rc 0 18 passed in 2.62s
+[promote] tests wrote logs/qwen_gdn_promote/smoke/tests.json in 28s
+== heldout 05:11:56 17b57796
+[promote] heldout 256 LOOP    ttft 6.87s e2e 8.50s peak 11.86 GB step 101 ms frozen-loop None
+[promote] heldout 256 DEFAULT ttft 4.70s e2e 6.23s peak 11.93 GB step 94 ms frozen-loop None
+[promote] heldout 256 DEFAULT ttft 4.73s e2e 6.28s peak 11.93 GB step 95 ms frozen-loop None
+[promote] heldout 256 LOOP    ttft 6.93s e2e 8.58s peak 11.86 GB step 101 ms frozen-loop None
+[promote] heldout wrote logs/qwen_gdn_promote/smoke/heldout.json in 49s
+== cache 05:12:46 17b57796
+[promote] cache DEFAULT incremental c0 t0: 48 tokens, mode fresh, first token 2.17s
+[promote] cache DEFAULT incremental c0 t1: 47 tokens, mode incremental, first token 1.78s
+[promote] cache DEFAULT replay c0 t0: 48 tokens, mode fresh, first token 2.14s
+[promote] cache DEFAULT replay c0 t1: 47 tokens, mode fresh, first token 2.66s
+[promote] cache LOOP incremental c0 t0: 48 tokens, mode fresh, first token 2.49s
+[promote] cache LOOP incremental c0 t1: 47 tokens, mode incremental, first token 1.92s
+[promote] cache LOOP replay c0 t0: 48 tokens, mode fresh, first token 2.49s
+[promote] cache LOOP replay c0 t1: 47 tokens, mode fresh, first token 3.68s
+[promote] cache: inc-vs-replay unequal 0, default-vs-loop unequal 0, unexplained 0
+[promote] cache wrote logs/qwen_gdn_promote/smoke/cache.json in 65s
+== battery 05:13:50 17b57796
+[promote] battery DEFAULT arith-01       fail  'turn 1: thinking did not terminate (the think block never closed; stop stop_toke'
+[promote] battery DEFAULT json-01        pass  'schema and values match'
+[promote] battery DEFAULT code-01        pass  '{"status": "pass", "returncode": 0, "timed_out": false, "stderr": ""}'
+[promote] battery DEFAULT instruct-01    pass  '2 sentences, wanted 2'
+[promote] battery DEFAULT twoturn-01     pass  "turn 2 reply '5', expected 5"
+[promote] battery DEFAULT degen-01       pass  '7 comma-separated parts'
+[promote] battery: pass 5/6 (frozen 56), equal to frozen 6/6, unexplained 0
+[promote] battery wrote logs/qwen_gdn_promote/smoke/battery.json in 132s
+== cli 05:16:03 17b57796
+[promote] cli cli-arith-01   DEFAULT rc 0 recurrence kernel on 48 layers, turns 1, 43s
+[promote] cli cli-arith-01   LOOP    rc 0 recurrence loop on 48 layers, turns 1, 45s
+[promote] cli cli-arith-02   DEFAULT rc 0 recurrence kernel on 48 layers, turns 1, 16s
+[promote] cli cli-arith-02   LOOP    rc 0 recurrence loop on 48 layers, turns 1, 16s
+[promote] cli: pass {'DEFAULT': 2, 'LOOP': 2}, equal 2/2, unexplained 0, receipts ok True
+[promote] cli wrote logs/qwen_gdn_promote/smoke/cli.json in 122s
+== DONE 05:18:05

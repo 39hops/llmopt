@@ -1,0 +1,111 @@
+{
+ "commit": "17b57796",
+ "tree_dirty": true,
+ "smoke": true,
+ "stage": "tests",
+ "driver": "scratch/qwen_gdn_promote.py",
+ "driver_sha256": "67287e67cc2378451d3022544134a6bce73fbf7b0ca3bf9f9abab56be667e2ec",
+ "sources_sha256": {
+  "llmopt/lab/qtower.py": "89d2f3d9b128bbbb4fe66e02e919805bec02c77bcd516fa78e21f36f9e5526ff",
+  "llmopt/lab/qserve.py": "9f3e845780900f9f1111d5c300eaf1f34447bab7ff3f9c3582b99d72a2608787",
+  "llmopt/lab/qgdn.py": "94fc734e12054bdeb8d0ba53703af9cfbd0648affa5f2175396fcb886d4620c6",
+  "scripts/qwen_chat.py": "bb4276d13c61978b731c7260fffe29cb559cd0d5abd48c1831e2b08cbc0a807f"
+ },
+ "default_recurrence_in_code": "kernel",
+ "vendor": {
+  "mlx_version": "0.31.2",
+  "mlx_lm_version": "0.31.3",
+  "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+  "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+  "metal_available": true,
+  "default_device": "Device(gpu, 0)"
+ },
+ "near_tie_margin": 0.02,
+ "suites": [
+  {
+   "suite": "tests/test_qgdn.py",
+   "returncode": 0,
+   "summary": "12 passed in 1.57s",
+   "counts": {
+    "passed": 12
+   },
+   "wall_s": 2.006093916017562,
+   "stderr_tail": ""
+  },
+  {
+   "suite": "tests/test_qtower_recurrence.py",
+   "returncode": 0,
+   "summary": "7 passed in 1.55s",
+   "counts": {
+    "passed": 7
+   },
+   "wall_s": 1.9815769998822361,
+   "stderr_tail": ""
+  },
+  {
+   "suite": "tests/test_qtower_adoption.py",
+   "returncode": 0,
+   "summary": "2 passed in 0.46s",
+   "counts": {
+    "passed": 2
+   },
+   "wall_s": 0.7243170829024166,
+   "stderr_tail": ""
+  },
+  {
+   "suite": "tests/test_qdefaults.py",
+   "returncode": 0,
+   "summary": "7 passed in 1.60s",
+   "counts": {
+    "passed": 7
+   },
+   "wall_s": 1.972725542029366,
+   "stderr_tail": ""
+  },
+  {
+   "suite": "tests/test_qtemplate.py",
+   "returncode": 0,
+   "summary": "4 passed in 15.30s",
+   "counts": {
+    "passed": 4
+   },
+   "wall_s": 15.575698334025219,
+   "stderr_tail": ""
+  },
+  {
+   "suite": "tests/test_qprefill.py",
+   "returncode": 0,
+   "summary": "11 passed in 0.58s",
+   "counts": {
+    "passed": 11
+   },
+   "wall_s": 0.8420259170234203,
+   "stderr_tail": ""
+  },
+  {
+   "suite": "tests/test_qbattery.py",
+   "returncode": 0,
+   "summary": "18 passed in 2.62s",
+   "counts": {
+    "passed": 18
+   },
+   "wall_s": 2.8900881668087095,
+   "stderr_tail": ""
+  }
+ ],
+ "live_preconditions": {
+  "LLMOPT_QWEN_LIVE": "0",
+  "artifact_manifest_present": true,
+  "vendor_tokenizer_present": true
+ },
+ "summary": {
+  "suites": 7,
+  "nonzero_returncodes": 0,
+  "failed": 0,
+  "passed": 61,
+  "skipped": 0,
+  "live_suites": {},
+  "live": false
+ },
+ "wall_s": 27.549017041921616
+}

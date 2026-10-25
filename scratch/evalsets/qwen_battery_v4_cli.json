@@ -1,0 +1,226 @@
+{
+ "collection": "qwen_battery_v4_cli",
+ "version": 4,
+ "seed": "qwen-battery-v4cli-seed-31",
+ "rules": {
+  "decoding": "greedy",
+  "enable_thinking": false,
+  "system": null,
+  "max_tokens_per_turn": 384,
+  "context_cap": 8192,
+  "code_time_limit_s": 10,
+  "code_sandbox": "sandbox-exec: no network, no writes outside the task's temp dir, no reads under /Users, /Volumes or /private/etc, no exec but the interpreter, empty environment; CPU 10 s, 1 MiB file-size and one-process limits inside the sandboxed process; memory is NOT limited (macOS refuses to lower RLIMIT_DATA)"
+ },
+ "generators": "llmopt.lab.qbattery3 (the v3 templates; fresh instances)",
+ "excluded_by_prior_prompt": 3,
+ "prior_collections": [
+  "qwen_battery_v1.json",
+  "qwen_battery_v2.json",
+  "qwen_battery_v3.json"
+ ],
+ "independence_note": "fresh instances of the v3 arithmetic, structured, two-turn and termination templates; no first turn shared with v1, v2 or v3 (asserted at build; two-turn second turns are the fixed v3 question templates); code and instruction tasks omitted because their menus are fixed and exhausted by v3",
+ "tasks": [
+  {
+   "id": "cli-arith-01",
+   "kind": "arith",
+   "family": "sum3",
+   "turns": [
+    "What is 75142 + 95689 + 91226? Answer with the number only."
+   ],
+   "expected": 262057
+  },
+  {
+   "id": "cli-arith-02",
+   "kind": "arith",
+   "family": "diff_prod",
+   "turns": [
+    "What is 67 * 28 - 29 * 23? Answer with the number only."
+   ],
+   "expected": 1209
+  },
+  {
+   "id": "cli-arith-03",
+   "kind": "arith",
+   "family": "quotient",
+   "turns": [
+    "What is the integer quotient of 84610 divided by 89 (ignore the remainder)? Answer with the number only."
+   ],
+   "expected": 950
+  },
+  {
+   "id": "cli-arith-04",
+   "kind": "arith",
+   "family": "lcm",
+   "turns": [
+    "What is the least common multiple of 22 and 33? Answer with the number only."
+   ],
+   "expected": 66
+  },
+  {
+   "id": "cli-arith-05",
+   "kind": "arith",
+   "family": "pct_change",
+   "turns": [
+    "A price goes from 845 to 676. What is the percent change (a positive or negative whole number)? Answer with the number only."
+   ],
+   "expected": -20
+  },
+  {
+   "id": "cli-arith-06",
+   "kind": "arith",
+   "family": "range",
+   "turns": [
+    "What is the range (largest minus smallest) of these numbers: 7161, 4452, 7702, 3815, 2624, 969? Answer with the number only."
+   ],
+   "expected": 6733
+  },
+  {
+   "id": "cli-json-01",
+   "kind": "json",
+   "family": "invoice",
+   "turns": [
+    "Here is an invoice as JSON:\n{\"lines\": [{\"item\": \"screw-4\", \"qty\": 4, \"price\": 8.81}, {\"item\": \"washer-7\", \"qty\": 1, \"price\": 3.35}], \"discount_percent\": 25}\nReturn ONLY a JSON object {\"subtotal\": <number>, \"discount\": <number>, \"total\": <number>} where subtotal is the sum of qty times price, discount is discount_percent of the subtotal, and total is subtotal minus discount, each rounded to 2 decimals."
+   ],
+   "expected": {
+    "subtotal": 38.59,
+    "discount": 9.65,
+    "total": 28.94
+   },
+   "schema": {
+    "subtotal": "number",
+    "discount": "number",
+    "total": "number"
+   },
+   "tol": {
+    "subtotal": 0.011,
+    "discount": 0.011,
+    "total": 0.021
+   }
+  },
+  {
+   "id": "cli-json-02",
+   "kind": "json",
+   "family": "inventory",
+   "turns": [
+    "Here is an inventory as CSV:\nproduct,category,qty\nP337,wire,31\nP546,wire,24\nP683,tools,36\nP995,wire,8\nP179,wire,21\nP126,tools,29\nP637,tools,28\nReturn ONLY a JSON object {\"rows_per_category\": {<category>: <integer count of rows>}, \"total_qty\": <integer>, \"largest_row\": <product with the largest qty>}."
+   ],
+   "expected": {
+    "rows_per_category": {
+     "wire": 4,
+     "tools": 3
+    },
+    "total_qty": 177,
+    "largest_row": "P683"
+   },
+   "schema": {
+    "rows_per_category": "dict",
+    "total_qty": "integer",
+    "largest_row": "string"
+   },
+   "tol": {}
+  },
+  {
+   "id": "cli-json-03",
+   "kind": "json",
+   "family": "readings",
+   "turns": [
+    "Here are temperature readings, one per line as key=value:\ntemp_sat=28\ntemp_mon=12\ntemp_tue=34\ntemp_sun=10\ntemp_wed=7\nReturn ONLY a JSON object {\"max_key\": <the key of the largest value, e.g. temp_mon>, \"min_key\": <the key of the smallest value>, \"mean\": <number, the mean rounded to 1 decimal>}."
+   ],
+   "expected": {
+    "max_key": "temp_tue",
+    "min_key": "temp_wed",
+    "mean": 18.2
+   },
+   "schema": {
+    "max_key": "string",
+    "min_key": "string",
+    "mean": "number"
+   },
+   "tol": {
+    "mean": 0.051
+   }
+  },
+  {
+   "id": "cli-json-04",
+   "kind": "json",
+   "family": "roster2",
+   "turns": [
+    "Here is a roster with two scores per student as CSV:\nname,s1,s2\npip,74,63\nola,63,97\nlee,90,61\nReturn ONLY a JSON object {\"best_avg_name\": <the name with the highest average of s1 and s2>, \"n_above\": <integer, how many students have an average strictly above 60>, \"count\": <integer, number of students>}."
+   ],
+   "expected": {
+    "best_avg_name": "ola",
+    "n_above": 3,
+    "count": 3
+   },
+   "schema": {
+    "best_avg_name": "string",
+    "n_above": "integer",
+    "count": "integer"
+   },
+   "tol": {}
+  },
+  {
+   "id": "cli-twoturn-01",
+   "kind": "twoturn",
+   "family": "list_len",
+   "turns": [
+    "Remember this list: tulip, granite, copper, willow, maple, ember. Reply only: noted.",
+    "How many items were in the list I gave you? Reply with the number only."
+   ],
+   "expected": "6"
+  },
+  {
+   "id": "cli-twoturn-02",
+   "kind": "twoturn",
+   "family": "product",
+   "turns": [
+    "Remember two numbers: 6 and 10. Reply only: noted.",
+    "Multiply the two numbers I gave you and reply with the product only."
+   ],
+   "expected": "60"
+  },
+  {
+   "id": "cli-twoturn-03",
+   "kind": "twoturn",
+   "family": "pair",
+   "turns": [
+    "My favourite colour is teal and my favourite animal is the badger. Reply only: noted.",
+    "Which animal did I say was my favourite? Reply with that one word only."
+   ],
+   "expected": "badger"
+  },
+  {
+   "id": "cli-twoturn-04",
+   "kind": "twoturn",
+   "family": "list_len",
+   "turns": [
+    "Remember this list: copper, maple, ember, tulip, granite, cobalt. Reply only: noted.",
+    "How many items were in the list I gave you? Reply with the number only."
+   ],
+   "expected": "6"
+  },
+  {
+   "id": "cli-degen-01",
+   "kind": "degen",
+   "check": "countdown",
+   "params": {
+    "a": 15,
+    "b": 8
+   },
+   "turns": [
+    "Count down from 15 to 8 in digits, separated by commas, nothing else."
+   ]
+  },
+  {
+   "id": "cli-degen-02",
+   "kind": "degen",
+   "check": "hyphen_spell",
+   "params": {
+    "word": "candle"
+   },
+   "turns": [
+    "Spell the word candle with its letters separated by hyphens, nothing else."
+   ]
+  }
+ ]
+}

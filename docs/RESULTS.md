@@ -86094,3 +86094,244 @@ serving default.
 The microbenchmark numbers of the registration (1.9 against 42.5 ms
 synthetic; 3.4 against 87.0 ms on the calibration prompt) are superseded by
 the receipted 3.1 against 44.4 ms per layer-chunk here.
+
+## PRE-REG QWEN-GDN-PROMOTE-0: the Metal GatedDeltaNet recurrence kernel as the arm C serving default, selected by name per layer, CONDITIONAL on eight acceptance gates (dispatch proof, nine release suites, held-out parity against the in-process loop and the frozen loop rows, cache continuation, the frozen v3 battery at or above 55 of 60 with every divergence a classified near tie, a fresh 16-task collection through the CLI in both arms, TTFT at most 0.80 at 1,024 and 2,048 with no regression at 512, peak memory at most 1.05 with the 16-step decode no slower); any other outcome reverts the default (2026-10-25, Mac, before the run)
+
+Artin's GO (2026-10-25) for the promotion rung recommended by VERDICT
+QWEN-GDN-KERNEL-0 (L85927), with its requirements: that verdict is
+preserved exactly (bar 9 stays UNRESOLVED and is not re-registered); the
+promotion receipts confirm the exact pinned model artifact and
+configuration; the dispatch is explicit and vendor-guarded on the serving
+path, never model.eval(); the promoted mechanism must not leak across
+model instances or sessions (the qualification instrument
+llmopt/lab/qgdn.py patches module globals); the gates are registered
+before the run; the default is conditional on them.
+
+MECHANISM (committed with this registration). llmopt/lab/qtower.py gains
+select_recurrence(module, path): every GatedDeltaNet of one tower is
+re-classed to SelectedGatedDeltaNet, whose __call__ is compiled from the
+installed mlx-lm vendor body (read from the module file, independent of
+any in-process rewrite) with the same exact-l2norm edit build_metal_model
+installs and the dispatch argument replaced by a read of the instance's
+own `recurrence` attribute ("loop" or "kernel"); the vendor class, the
+vendor module dictionary and the training flag are untouched; the build
+refuses if the vendor body no longer carries the dispatch line or the two
+l2norm lines, and an instance re-classed without a selection refuses to
+run. The frozen build_metal_model body is unchanged (the adoption guard
+still pins it to scratch/qwen_metal_qual.py). llmopt/lab/qserve.py:
+DEFAULT_RECURRENCE = "kernel"; Engine(recurrence=...) selects at load and
+refuses a layer count other than the tower's linear_attn family (48);
+Engine.select_recurrence re-selects a loaded engine for paired arms
+(never under a live session's carried state); the Engine refuses the
+kernel at a chunk other than 256 and select_recurrence refuses the kernel
+under any mlx-lm qwen3_5.py or gated_delta.py sha256 other than the
+qualified pair or without the Metal GPU as the default device (the loop
+stays selectable everywhere: the qualified scope is a fence in code, not
+a sentence);
+info records recurrence, recurrence_layers and the vendor provenance
+(mlx 0.31.2, mlx-lm 0.31.3, qwen3_5.py f0daa30b..., gated_delta.py
+79c8376a...). scripts/qwen_chat.py: --recurrence {kernel,loop}, the
+receipt carries the selection. tests/test_qtower_recurrence.py (7
+tests): two instances selected differently dispatch differently in one
+process while a plain vendor instance beside them keeps its class and
+behaviour; the vendor class attribute and the three vendor names are
+unchanged by a selection; the training flag is untouched; forcing a path
+through the instrument on one selected body is bit-identical to selecting
+it; an unselected re-classed instance refuses; a tree selection reaches
+every GatedDeltaNet; the kernel is refused under an unqualified vendor
+sha while the loop stays selectable; the installed sources are the
+qualified pair. tests/test_qdefaults.py pins DEFAULT_RECURRENCE "kernel"
+(a supplied stub model records None) and the chunk-256 fence. As QWEN-LOW-DEFAULT-1 did,
+the default is written into the code at this registration so the run
+tests the actual default; any bar other than FIRE reverts it to "loop" in
+the HOLD commit.
+
+ARMS, one process, one loaded tower: DEFAULT = Engine() with no
+recurrence argument (what every caller of qserve and the CLI gets); LOOP
+= the same engine re-selected to "loop" by name for a block, the default
+restored and asserted after every block. Dispatch is PROVEN per block by
+the qualification instrument in its counting mode
+(qgdn.recurrence_path("vendor"), which forces nothing): the executed
+counts of gated_delta_ops and gated_delta_kernel. Oracle: the loop path
+on identical weights, prompts and serving configuration (generation 5,
+chunk 256 GEMM prefill, 2 GiB cache limit, greedy), plus two frozen
+cross-session references on the loop path, both sha256-pinned in the
+adapter: the LOOP rows of QWEN-GDN-KERNEL-0's held-out receipt
+(logs/qwen_gdn/heldout.json, 288d8fd8...) and the QWEN-LOW-RELEASE-0 v3
+receipt (logs/qwen_battery/results_v3_C.json, c47c2d42...).
+
+NEAR-TIE RULE (registered before any stream is read): a divergence
+between the arms' greedy streams is EXPLAINED only if, re-reading both
+arms' logits at the first divergent position along the path the
+generation took (the prompt through the chunked prefill, the loop's
+generated prefix fed one token at a time through the decode step), the
+loop's top-1 margin is under 0.02 logits, the kernel's token is the
+loop's second token, each arm reproduces its own choice, and the two
+arms' logit gap between the two tokens differs by at most 5e-3 (the
+qualification's worst full-vocabulary arm difference was 9.3e-4; a
+defect that moves logits by more than that is not a tie); a stream that
+ends where the other continues, a turn-count difference, prompts that
+differ at the first divergent turn (every earlier turn equal, so a
+rendering difference), or any other case is UNEXPLAINED and counts.
+Explained ties are reported with both margins and the outputs they
+changed are disclosed (the house fp near-tie doctrine: ties are not
+bugs, and they are not hidden either). Only the first divergent turn of
+a conversation or task is classified.
+
+MODEL PIN, in every engine receipt (derived from the files the run
+opened): sha256 of config.json, generation_config.json,
+model.safetensors.index.json, tokenizer.json and tokenizer_config.json in
+the vendor directory; the configuration summary (architectures
+Qwen3_5ForConditionalGeneration, model_type qwen3_5, text model_type
+qwen3_5_text, 64 layers of which 48 linear_attention and 16
+full_attention, hidden 5,120, DeltaNet 16 key and 48 value heads of 128,
+conv kernel 4, 24 attention heads with 4 key-value heads of 256,
+vocabulary 248,320, mamba_ssm_dtype float32, source dtype bfloat16,
+transformers 5.8.0.dev0; index total 55,562,855,904 bytes over 1,199
+tensors); the source weights Qwen/Qwen3.8-27B at revision
+1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0 (READ by the driver from
+logs/qwenteacher_v2/teacher_manifest.json, the teacher capture's own
+record, whose sha256 is recorded; the run refuses without it; the adapter
+checks the value against this registration); the arm C
+artifact (directory C, chain logs/qwenwhole/artifact_digest_C.txt with its
+sha256 recomputed by the adapter, manifest sha256 d7e56155..., codec
+counts from the qualify report, 48 plus 16 layer families, resident
+payload bytes); and the installed mlx-lm qwen3_5.py and gated_delta.py
+sha256s: mlx-lm names the shared Qwen3.5-family ARCHITECTURE module
+qwen3_5 and this tower runs Qwen3.8-27B weights through it.
+
+STAGES (scratch/qwen_gdn_promote.py, one process each, receipts
+logs/qwen_gdn_promote/<stage>.json, refuse-if-exists; SMOKE=1 writes under
+logs/qwen_gdn_promote/smoke/; chain scratch/qwen_gdn_promote_study.sh under
+scripts/liverun.py):
+  tests     nine suites in fresh subprocesses with LLMOPT_QWEN_LIVE=1
+            (test_qgdn, test_qtower_recurrence, test_qtower_adoption,
+            test_qdefaults, test_qtemplate, test_qprefill, test_qbattery;
+            live test_qserve and test_qrelease on the tower), pass, fail and
+            skip counts from pytest's own summary and the return codes.
+  heldout   the frozen prompts (510, 1,029, 2,040 tokens, named by target):
+            one warm-up per arm per length, then ABBA three times with 16
+            greedy decode steps (TTFT, peak and transient memory, decode
+            time, parity of the final argmax and the 16 ids against the
+            in-process LOOP arm and against the frozen LOOP rows).
+  cache     three fresh three-turn conversations (iron and its atomic
+            number; lighthouse and windmill couplets; 144 / 12 then times 7
+            then primality) under the chat default (thinking low, 768,
+            incremental) in both arms, incremental and replay sessions.
+  battery   the frozen v3 collection (60 tasks) under the released
+            configuration (thinking low, 768, replay sessions, the committed
+            validators) on the DEFAULT arm; every turn's ids against the
+            frozen receipt.
+  cli       scratch/evalsets/qwen_battery_v4_cli.json (16 unread tasks: 6
+            arithmetic, 4 structured, 4 two-turn, 2 termination; fresh
+            instances of the v3 templates drawn under seed
+            qwen-battery-v4cli-seed-31 with an exclusion guard on the first
+            turn against v1 to v3, 3 excluded; code and instruction menus
+            are exhausted by v3 and omitted) through scripts/qwen_chat.py in
+            fresh subprocesses, default flags against --recurrence loop, one
+            process per task and arm (32 processes); the classification
+            engine loads only after every subprocess has exited.
+
+BARS (docs/preregs/qwen-gdn-promote-0.json; all eight are GATES):
+  1 DISPATCH-PROOF: gated_delta_ops executions under any DEFAULT counted
+    block (heldout, cache, battery, the cli classification) 0; conjuncts:
+    gated_delta_kernel executions under any LOOP block 0; every engine
+    block records kernel on 48 layers with the training flag True,
+    DEFAULT_RECURRENCE "kernel" in the code that ran, and every CLI
+    receipt names its selection (kernel or loop on 48) with the Metal GPU
+    as the default device (indicator 1). The CLI processes and the live
+    suites run outside any counting block: their receipts carry the
+    SELECTION and the device; the execution proof for that selection is
+    the in-process evidence on the same Engine class. A non-exclusive
+    block is counted (the bar can read NO-FIRE); an empty block is a
+    validity failure.
+  2 RELEASE-TESTS: failed or errored tests across the nine suites 0 (a
+    non-zero return code with no parsed failure counts as one).
+  3 HELDOUT-PARITY: over the 18 DEFAULT runs, two comparisons each (36),
+    the final argmax and 16 decode ids against the in-process LOOP arm and
+    against the frozen LOOP rows: 0 differing comparisons. Validity
+    floors: the loop arm self-consistent AND equal to the frozen rows
+    (loop drift across sessions is not a kernel reading). The structured
+    refutation predicate.
+  4 CACHE-CONTINUATION: DEFAULT incremental against DEFAULT replay unequal
+    turns 0 of 9; conjunct: unexplained DEFAULT-against-LOOP divergences 0
+    over 3 conversations. Contrast floor: every eligible DEFAULT turn
+    reused (6 of 6), else UNRESOLVED. Offsets equal the accounting
+    (validity).
+  5 BATTERY: v3 passes on the DEFAULT arm at least 55 of 60 (above 54.5;
+    the frozen loop read 56); conjuncts: unexplained divergences against
+    the frozen receipt 0 (the first turn whose ids differ is classified;
+    a prompt that already differs there, or a turn-count difference, is
+    unexplained); plumbing errors 0.
+  6 CLI-FRESH: unexplained divergences between the two CLI arms over 16
+    tasks 0; conjuncts: every CLI receipt names its selection (kernel on
+    48 by default, loop on 48 under the flag; indicator 1); process
+    failures plus error verdicts 0. Both arms' pass counts descriptive.
+  7 LATENCY: median TTFT ratio DEFAULT over LOOP at most 0.80 at 1,024
+    (fence 0.03: FIRE needs at most 0.77); conjuncts: the same at 2,048;
+    at most 1.03 at 512 (fence 0.02). Spreads within 3 percent in both
+    arms, else the contrast is inadmissible.
+  8 MEMORY: the largest peak-after-decode ratio over the three lengths at
+    most 1.05 (fence 0.01: FIRE needs at most 1.04); conjunct: the 16-step
+    decode time ratio at most 1.02 at every length (fence 0.02: FIRE needs
+    at most 1.00).
+DECISION RULE: all eight FIRE = the promotion STANDS and the default stays
+"kernel"; any bar NO-FIRE or UNRESOLVED (a fenced bar inside its fence, an
+inadmissible contrast) = HOLD, the default reverted to "loop" in the HOLD
+commit with the failing bar and its value booked; invalid observations
+(the adapter's floors: five non-smoke clean-tree receipts from one commit,
+one vendor provenance with the Metal GPU as the default device, the model
+pin identical across the engine stages and equal to the pins above, the
+frozen references and prompts at their sha256s, every dispatch block
+non-empty, the two live suites run with at least one pass and no skip
+each, 6 runs per arm per length with a self-consistent loop arm equal to
+the frozen rows, 9 cache turns, 60 battery tasks compared, 16 CLI tasks
+in 32 processes) =
+every bar UNRESOLVED, HOLD, and any repair is a new registered rung.
+Bar 9 of QWEN-GDN-KERNEL-0 is not re-registered and plays no part.
+
+REGISTERED PRIOR: every gate fires. The qualification measured zero
+argmax flips at 4,722 teacher-forced census positions (including the 15
+near ties) and over about 2,600 free-run greedy steps, and the promoted
+selection is the same computation at the update
+call (bit-identical to the forced instrument on one body in the selector
+tests), so the held-out parity is expected exact. The battery and cache
+stages decode about 40,000 and 9,000 greedy tokens through 768-token
+thinking traces; at the measured 1e-4 logit difference a flip needs a
+margin under about 1e-3 (the census had none under 1.2e-3 in 4,722
+positions), so the expectation is zero to two explained near ties and
+zero unexplained divergences, the v3 score 56 with any change confined to
+a task whose trace flipped; TTFT about 0.67 at every length, peak about
+1.01, 16-step decode about 0.93; the live suites, which ran the loop
+before this change, token-equal on the kernel path. Bar 4's inner
+comparison (incremental against replay within DEFAULT) and the live
+turn-7 fixture admit no near tie by construction; a tie there HOLDs, and
+the prior accepts that (the qualification's cache-history stage read 9 of
+9 equal). Expected wall: tests
+10 minutes, held-out 25, cache 20, battery 25, CLI 25 (32 cold loads of
+about 8.5 s), about 1 h 45 min.
+
+Qualification before the run: the live smoke of the promoted engine
+(48 layers selected, 192 kernel executions and 0 loop executions on a
+24-token generation, the loop re-selection 192 and 0 the other way,
+equal ids, training flag True); the selector tests and the affected
+suites green (tests/test_qtower_recurrence.py, test_qgdn, test_qtower_adoption,
+test_qdefaults, test_qserve, test_qrelease, test_qprefill); the SMOKE
+chain of all five stages into logs/qwen_gdn_promote/smoke/ (force-added
+with this registration), with the adapter and the adjudicator run over
+the smoke receipts (every bar UNRESOLVED on the smoke floors, the contract
+exercised end to end); an Opus 5.5 methodology audit of the registration,
+the driver and the adapter applied BEFORE registration: two blockers (a
+"downstream" tag that would have left a rendering divergence out of the
+unexplained count; a turn-count mismatch that crashed the comparison)
+and seven should-fix items (the live suites' skip counts as a floor; loop
+drift against the frozen rows as a floor rather than a refutation; bar 1
+reworded to what is counted and the CLI receipts made to carry the
+selection and device; a non-exclusive block counted instead of
+invalidating; the near-tie re-read moved onto the generation's own path;
+an arm-difference bound on a tie; the vendor sha and chunk fences in
+code), all applied; the remaining notes (a second Engine cannot be built
+in one process because the frozen build rewrites the vendor class from
+its own source, pre-existing and not worsened; the forcing instrument
+overrides a selection by design) are disclosed here. Nothing in the model, codec or kernels
+changes; the qualification receipts under logs/qwen_gdn/ are untouched.
