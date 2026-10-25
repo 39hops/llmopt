@@ -4961,29 +4961,46 @@
    "tracked": true
   },
   "logs/qwen_gdn_promote/battery.json": {
+   "bytes": 363003,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "db5f239e7f1c900101ac4077af120690ba1d380742a1b6da9577101b29839387",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_gdn_promote/cache.json": {
+   "bytes": 20029,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "3178d04428a656b99ebf2e526e2bc68cb5314933b73364f8a643fb54a4e79e3a",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_gdn_promote/cli.json": {
+   "bytes": 239707,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "6847ca8a6a4399b9642e958f6deaf39fb09dec3e18e964dc73e8b3fc753a8b4c",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_gdn_promote/heldout.json": {
+   "bytes": 94554,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "94031fbbdf592d5af03b44756d83270f64bb41d189b8d6ce7406985455bde443",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwen_gdn_promote/study_65039e50.log": {
+   "bytes": 15880,
+   "exists": true,
+   "sha256": "6b1db6a18ce67736aa8e8058cc1e3fe9b2a8592d0515d3447b1de385d78fa76a",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_gdn_promote/tests.json": {
+   "bytes": 3288,
    "exists": true,
-   "pending": true,
-   "source": "prereg"
+   "sha256": "6b1966f1e37fae69854e1d1b483ccd3e614c59a014f47cf9c8023e464399c704",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_geometry/adjudicate_1/adjudication.txt": {
    "bytes": 109,

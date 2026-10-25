@@ -475,7 +475,7 @@ Census: library 205, reproduce-pinned 9, results-cited 571, spec-cited 75, tool-
 | moe | moe_gt1_arm2.py | library | REPRODUCE, RESULTS, specs, TOOLING | REPRODUCE×6, RESULTS×48, specs×7, TOOLING×31 | 16 | 26 | 2 | — |
 | morning | morning_run.sh | UNCITED | — | — | — | — | — | — |
 | mps | mps_sigma_gates.sh | UNCITED | — | — | — | — | — | — |
-| muon | muon_3ep_d256.py | results-cited | via:RESULTS | — | — | 1 | — | night_28_mac.sh |
+| muon | muon_3ep_d256.py | results-cited | specs, via:RESULTS | specs×2 | — | 1 | — | night_28_mac.sh |
 | night | night_28.sh | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
 | night | night_28_mac.sh | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
 | night | night_45m_union.sh | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | 1 | 1 | — |
@@ -624,9 +624,9 @@ Census: library 205, reproduce-pinned 9, results-cited 571, spec-cited 75, tool-
 | qwen | qwen_family_probe.py | library | RESULTS, via:specs | RESULTS×2 | 1 | 1 | — | — |
 | qwen | qwen_gdn_kernel_qual.py | results-cited | RESULTS, specs | RESULTS×10, specs×1 | — | 1 | 1 | — |
 | qwen | qwen_gdn_obs.py | results-cited | RESULTS, specs | RESULTS×6, specs×1 | — | — | — | — |
-| qwen | qwen_gdn_promote.py | results-cited | RESULTS | RESULTS×3 | — | 1 | 1 | — |
+| qwen | qwen_gdn_promote.py | results-cited | RESULTS | RESULTS×8 | — | 1 | 1 | — |
 | qwen | qwen_gdn_promote_collection.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
-| qwen | qwen_gdn_promote_obs.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
+| qwen | qwen_gdn_promote_obs.py | results-cited | RESULTS | RESULTS×6 | — | — | — | — |
 | qwen | qwen_gdn_promote_study.sh | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
 | qwen | qwen_gdn_study.sh | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | — | — | — |
 | qwen | qwen_geometry_capture.py | results-cited | RESULTS, specs | RESULTS×7, specs×1 | — | 1 | 1 | — |
@@ -923,7 +923,7 @@ Census: library 205, reproduce-pinned 9, results-cited 571, spec-cited 75, tool-
 | book | book.py | library | RESULTS, specs, TOOLING | RESULTS×6, specs×7, TOOLING×3 | 1 | 2 | — | — |
 | build | build_gen7_diet.py | UNCITED | — | — | — | — | — | — |
 | calibrate | calibrate_hce.py | spec-cited | specs | specs×9 | — | — | — | — |
-| cite | cite_lookup.py | spec-cited | specs, TOOLING | specs×1, TOOLING×3 | — | 1 | 1 | — |
+| cite | cite_lookup.py | spec-cited | specs, TOOLING | specs×2, TOOLING×3 | — | 1 | 1 | — |
 | ckpt | ckpt_census.py | library | RESULTS, specs | RESULTS×7, specs×4 | 1 | 1 | — | — |
 | ckpt | ckpt_manifest.py | library | RESULTS, specs | RESULTS×4, specs×4 | 1 | — | 1 | — |
 | ckpt | ckpt_plan.py | library | RESULTS, specs | RESULTS×4, specs×3 | 1 | — | — | — |
@@ -981,7 +981,7 @@ Census: library 205, reproduce-pinned 9, results-cited 571, spec-cited 75, tool-
 | plot | plot_identity_crest.py | spec-cited | specs | specs×3 | — | — | — | — |
 | plot | plot_neurons.py | spec-cited | specs | specs×6 | — | — | 1 | — |
 | probe | probe_depth.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
-| qwen | qwen_chat.py | library | RESULTS, specs | RESULTS×28, specs×3 | 1 | 3 | — | — |
+| qwen | qwen_chat.py | library | RESULTS, specs | RESULTS×69, specs×4 | 1 | 3 | — | — |
 | recover | recover_receipt.py | library | RESULTS, specs, TOOLING | RESULTS×2, specs×1, TOOLING×1 | — | 2 | — | — |
 | render | render_anim.py | library | RESULTS, specs, TOOLING | RESULTS×1, specs×1, TOOLING×4 | 1 | 1 | — | — |
 | render | render_gallery.py | spec-cited | specs | specs×7 | — | — | — | — |

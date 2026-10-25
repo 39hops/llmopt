@@ -86604,3 +86604,15 @@ a turn-length range, a logit difference, the prior's token volume, the
 amendment disclosure, the headline fence), all applied here; its
 verified list covers every bar, dict sum, sha and the decision rule.
 Both checkouts at the booking commit after the push.
+
+## AMENDMENT QWEN-GDN-PROMOTE-0-RECEIPTS (target: VERDICT QWEN-GDN-PROMOTE-0): the eight receipt paths cited in full so the receipt lock freezes them (2026-10-25, Mac)
+
+The verdict above cited its receipts as a directory plus file names,
+which the lock cannot resolve (the 2026-10-21 lesson, repeated here
+once more). The receipts of VERDICT QWEN-GDN-PROMOTE-0, by full path:
+logs/qwen_gdn_promote/tests.json, logs/qwen_gdn_promote/heldout.json,
+logs/qwen_gdn_promote/cache.json, logs/qwen_gdn_promote/battery.json,
+logs/qwen_gdn_promote/cli.json, logs/qwen_gdn_promote/study_65039e50.log,
+logs/qwen_gdn_promote/adjudicate_1/observations.json,
+logs/qwen_gdn_promote/adjudicate_1/adjudication.txt. Nothing else
+changes.
