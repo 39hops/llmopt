@@ -16,7 +16,7 @@ this also drives `library`; from lab tooling it drives
 comments or plain strings; `via` names the cited caller a file
 inherits its class from when no document names the file itself.
 
-Census: library 205, reproduce-pinned 9, results-cited 567, spec-cited 75, tool-referenced 4, UNCITED 123 (of 983; library rows that are also doc-cited: 201)
+Census: library 205, reproduce-pinned 9, results-cited 571, spec-cited 75, tool-referenced 4, UNCITED 123 (of 987; library rows that are also doc-cited: 201)
 
 ## scratch/
 
@@ -590,7 +590,7 @@ Census: library 205, reproduce-pinned 9, results-cited 567, spec-cited 75, tool-
 | quick | quick_exact_3080.sh | results-cited | RESULTS, specs | RESULTS×2, specs×1 | — | — | — | — |
 | qwen | qwen_alttok_derive.py | results-cited | RESULTS, specs | RESULTS×3, specs×2 | — | 1 | — | — |
 | qwen | qwen_attrib_adjudicate.py | library | specs | specs×2 | 1 | 1 | 1 | — |
-| qwen | qwen_battery_run.py | results-cited | RESULTS | RESULTS×16 | — | 4 | 3 | — |
+| qwen | qwen_battery_run.py | results-cited | RESULTS | RESULTS×16 | — | 4 | 4 | — |
 | qwen | qwen_ble2_adjudicate.py | library | RESULTS, specs | RESULTS×5, specs×2 | 1 | 1 | — | — |
 | qwen | qwen_ble2_autopsy.py | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
 | qwen | qwen_blem_perf.py | results-cited | RESULTS | RESULTS×4 | — | 1 | — | — |
@@ -624,6 +624,10 @@ Census: library 205, reproduce-pinned 9, results-cited 567, spec-cited 75, tool-
 | qwen | qwen_family_probe.py | library | RESULTS, via:specs | RESULTS×2 | 1 | 1 | — | — |
 | qwen | qwen_gdn_kernel_qual.py | results-cited | RESULTS, specs | RESULTS×10, specs×1 | — | 1 | 1 | — |
 | qwen | qwen_gdn_obs.py | results-cited | RESULTS, specs | RESULTS×6, specs×1 | — | — | — | — |
+| qwen | qwen_gdn_promote.py | results-cited | RESULTS | RESULTS×3 | — | 1 | 1 | — |
+| qwen | qwen_gdn_promote_collection.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
+| qwen | qwen_gdn_promote_obs.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
+| qwen | qwen_gdn_promote_study.sh | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
 | qwen | qwen_gdn_study.sh | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | — | — | — |
 | qwen | qwen_geometry_capture.py | results-cited | RESULTS, specs | RESULTS×7, specs×1 | — | 1 | 1 | — |
 | qwen | qwen_geometry_obs.py | results-cited | RESULTS, specs | RESULTS×10, specs×1 | — | 1 | — | — |
@@ -660,7 +664,7 @@ Census: library 205, reproduce-pinned 9, results-cited 567, spec-cited 75, tool-
 | qwen | qwen_metal_prefill_head.py | library | RESULTS, specs | RESULTS×3, specs×1 | 6 | 2 | 1 | — |
 | qwen | qwen_metal_prefill_serve_ab.py | results-cited | RESULTS, specs | RESULTS×4, specs×1 | — | 1 | 1 | — |
 | qwen | qwen_metal_prefill_study.sh | results-cited | RESULTS | RESULTS×2 | — | — | — | — |
-| qwen | qwen_metal_qual.py | library | RESULTS, specs | RESULTS×15, specs×3 | 14 | 4 | 1 | — |
+| qwen | qwen_metal_qual.py | library | RESULTS, specs | RESULTS×17, specs×3 | 14 | 4 | 1 | — |
 | qwen | qwen_metal_serve_study.sh | UNCITED | — | — | — | — | — | — |
 | qwen | qwen_metal_tower.py | library | RESULTS, specs | RESULTS×6, specs×1 | — | 1 | 2 | — |
 | qwen | qwen_mips_census.py | results-cited | RESULTS | RESULTS×5 | — | — | — | — |
@@ -960,7 +964,7 @@ Census: library 205, reproduce-pinned 9, results-cited 567, spec-cited 75, tool-
 | harvest | harvest_champion.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
 | harvest | harvest_frontier.py | results-cited | RESULTS, specs | RESULTS×1, specs×2 | — | — | — | — |
 | list | list_uncurated.py | spec-cited | specs | specs×6 | — | — | — | — |
-| liverun | liverun.py | library | RESULTS, specs, TOOLING | RESULTS×22, specs×8, TOOLING×3 | — | 29 | 1 | — |
+| liverun | liverun.py | library | RESULTS, specs, TOOLING | RESULTS×24, specs×8, TOOLING×3 | — | 30 | 1 | — |
 | log | log_hygiene.py | library | RESULTS, specs | RESULTS×3, specs×7 | 2 | 1 | — | — |
 | markov | markov_eval.py | UNCITED | — | — | — | — | — | — |
 | markov | markov_prior.py | spec-cited | specs | specs×3 | — | — | — | — |
@@ -977,7 +981,7 @@ Census: library 205, reproduce-pinned 9, results-cited 567, spec-cited 75, tool-
 | plot | plot_identity_crest.py | spec-cited | specs | specs×3 | — | — | — | — |
 | plot | plot_neurons.py | spec-cited | specs | specs×6 | — | — | 1 | — |
 | probe | probe_depth.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
-| qwen | qwen_chat.py | library | RESULTS, specs | RESULTS×22, specs×3 | 1 | 2 | — | — |
+| qwen | qwen_chat.py | library | RESULTS, specs | RESULTS×28, specs×3 | 1 | 3 | — | — |
 | recover | recover_receipt.py | library | RESULTS, specs, TOOLING | RESULTS×2, specs×1, TOOLING×1 | — | 2 | — | — |
 | render | render_anim.py | library | RESULTS, specs, TOOLING | RESULTS×1, specs×1, TOOLING×4 | 1 | 1 | — | — |
 | render | render_gallery.py | spec-cited | specs | specs×7 | — | — | — | — |
