@@ -5523,20 +5523,32 @@
    "tracked": true
   },
   "logs/qwen_w4_roofline/adjudicate_1/adjudication.txt": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 223,
+   "exists": true,
+   "sha256": "a4a579fab02d41beedb6439daaf868bad7e69a80631714e8fb1f1698f163c17d",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_w4_roofline/adjudicate_1/observations.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 12223,
+   "exists": true,
+   "sha256": "083b0726d2dd3ea0c1af2e7fdf9578090fff7fdf1f37471e4e26e7c96466c0b1",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_w4_roofline/decomp.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 24124,
+   "exists": true,
+   "sha256": "06e570d78ea27d5f3a21e5e5763893b6f1c8a30164cc015102b53cd5d6619838",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_w4_roofline/micro.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 21469,
+   "exists": true,
+   "sha256": "75f14da1ecfa6df6ebe2b213d26d36c26ee77f714dd9c84791a0b611b69b38d6",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwenalttok/alttok_observations.json": {
    "exists": false,

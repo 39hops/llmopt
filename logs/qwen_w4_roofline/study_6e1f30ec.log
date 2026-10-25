@@ -1,0 +1,57 @@
+== decomp 17:42:52 6e1f30ec
+[w4roof] decomp marginal full               18.045s
+[w4roof] decomp marginal no_w4_mlp          6.079s
+[w4roof] decomp marginal no_w4_decode       15.223s
+[w4roof] decomp marginal no_w4_matmul       8.588s
+[w4roof] decomp marginal no_s16_body        12.659s
+[w4roof] decomp marginal no_head            17.552s
+[w4roof] decomp marginal no_gdn_core        17.105s
+[w4roof] decomp marginal no_gdn_recurrence  17.302s
+[w4roof] decomp marginal no_attn_core       17.653s
+[w4roof] decomp marginal no_norms           17.747s
+[w4roof] decomp marginal no_all_linears     1.056s
+[w4roof] decomp marginal no_all_linears     1.047s
+[w4roof] decomp marginal no_norms           17.862s
+[w4roof] decomp marginal no_attn_core       17.796s
+[w4roof] decomp marginal no_gdn_recurrence  17.439s
+[w4roof] decomp marginal no_gdn_core        17.260s
+[w4roof] decomp marginal no_head            17.735s
+[w4roof] decomp marginal no_s16_body        12.960s
+[w4roof] decomp marginal no_w4_matmul       8.566s
+[w4roof] decomp marginal no_w4_decode       15.732s
+[w4roof] decomp marginal no_w4_mlp          6.001s
+[w4roof] decomp marginal full               17.751s
+[w4roof] decomp marginal full               17.516s
+[w4roof] decomp marginal no_w4_mlp          5.936s
+[w4roof] decomp marginal no_w4_decode       14.994s
+[w4roof] decomp marginal no_w4_matmul       8.579s
+[w4roof] decomp marginal no_s16_body        12.686s
+[w4roof] decomp marginal no_head            17.526s
+[w4roof] decomp marginal no_gdn_core        17.068s
+[w4roof] decomp marginal no_gdn_recurrence  17.182s
+[w4roof] decomp marginal no_attn_core       17.447s
+[w4roof] decomp marginal no_norms           17.476s
+[w4roof] decomp marginal no_all_linears     1.048s
+[w4roof] decomp marginal no_all_linears     1.040s
+[w4roof] decomp marginal no_norms           17.531s
+[w4roof] decomp marginal no_attn_core       17.477s
+[w4roof] decomp marginal no_gdn_recurrence  17.201s
+[w4roof] decomp marginal no_gdn_core        17.060s
+[w4roof] decomp marginal no_head            17.568s
+[w4roof] decomp marginal no_s16_body        12.668s
+[w4roof] decomp marginal no_w4_matmul       8.591s
+[w4roof] decomp marginal no_w4_decode       14.915s
+[w4roof] decomp marginal no_w4_mlp          5.926s
+[w4roof] decomp marginal full               17.554s
+[w4roof] decomp additive {"w4_mlp": 9.38, "w4_decode": 3.088, "s16_body": 3.96, "s16_decode": 1.586, "head": 0.051, "gdn_core": 0.645, "attn_core": 0.189, "norms": 0.182, "embed_other": 0.0} sum 19.08s sync 19.44s unsync 17.52s
+[w4roof] decomp wrote logs/qwen_w4_roofline/decomp.json in 693s
+== micro 17:54:25 6e1f30ec
+[w4roof] rates f32 4.06 TFLOPS f16 4.62 bf16 4.62 stream 133 GB/s fill 133 GB/s
+[w4roof] micro layers.0.mlp.gate_proj T=256 f32 11.6 ms (3.93 TFLOPS, 0.97 of peak) decode 10.4 prod 14.9 cleared 15.0 f16 10.3 bf16 10.3 qmm32 12.5 qmm16 10.7 ms
+[w4roof] micro layers.0.mlp.gate_proj T=512 f32 22.9 ms (3.99 TFLOPS, 0.98 of peak) decode 10.4 prod 26.2 cleared 26.2 f16 20.3 bf16 20.3 qmm32 24.7 qmm16 21.2 ms
+[w4roof] micro layers.0.mlp.gate_proj T=1024 f32 45.3 ms (4.03 TFLOPS, 0.99 of peak) decode 10.4 prod 48.6 cleared 48.6 f16 40.1 bf16 40.1 qmm32 49.1 qmm16 42.1 ms
+[w4roof] micro layers.0.mlp.down_proj T=256 f32 12.4 ms (3.67 TFLOPS, 0.90 of peak) decode 3.6 prod 15.6 cleared 15.7 f16 10.6 bf16 10.6 qmm32 12.8 qmm16 10.9 ms
+[w4roof] micro layers.0.mlp.down_proj T=512 f32 27.9 ms (3.27 TFLOPS, 0.81 of peak) decode 3.6 prod 31.1 cleared 30.2 f16 20.6 bf16 20.5 qmm32 25.1 qmm16 21.4 ms
+[w4roof] micro layers.0.mlp.down_proj T=1024 f32 58.6 ms (3.11 TFLOPS, 0.77 of peak) decode 3.6 prod 62.0 cleared 63.8 f16 40.5 bf16 40.5 qmm32 49.9 qmm16 42.4 ms
+[w4roof] micro wrote logs/qwen_w4_roofline/micro.json in 20s
+== DONE 17:54:45

@@ -1,0 +1,537 @@
+{
+ "commit": "6e1f30ec",
+ "tree_dirty": false,
+ "smoke": false,
+ "stage": "micro",
+ "driver": "scratch/qwen_w4_roofline.py",
+ "cold_load_s": 8.19561312510632,
+ "engine": {
+  "kernel_version": 5,
+  "chain_sha256": "de7e0180bf49f965c17116b7fbe8c34d2b1529c2431cc234f3a6460ad84b24dc",
+  "recurrence": "kernel",
+  "recurrence_layers": 48,
+  "recurrence_vendor": {
+   "mlx_version": "0.31.2",
+   "mlx_lm_version": "0.31.3",
+   "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+   "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+   "metal_available": true,
+   "default_device": "Device(gpu, 0)"
+  },
+  "cache_limit_bytes": 2147483648,
+  "chunk": 256,
+  "matmul": "gemm",
+  "gemm_min_t_by_codec": {
+   "w4": 16,
+   "s16": 32
+  },
+  "gemm_slab_bytes": 419430400,
+  "default_recurrence_in_code": "kernel"
+ },
+ "device": {
+  "device_name": "Apple M3 Pro",
+  "max_recommended_working_set_size": 30150672384,
+  "memory_size": 38654705664,
+  "architecture": "applegpu_g15s",
+  "max_buffer_length": 22613000192,
+  "resource_limit": 499000
+ },
+ "mlx_version": "0.31.2",
+ "model_pin": {
+  "source_weights": {
+   "hf_repo": "Qwen/Qwen3.8-27B",
+   "hf_revision": "1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0",
+   "revision_source": "logs/qwenteacher_v2/teacher_manifest.json",
+   "teacher_manifest_sha256": "a29a74158b249bdb5ce0240bfd9246887d8c578f7489f9f996beafba53f2092f",
+   "vendor_index_total_size_bytes": 55562855904.0,
+   "vendor_index_tensors": 1199
+  },
+  "vendor_dir_files_sha256": {
+   "config.json": "191e0af232104ed8b65258cf3fb2b842e288008baca7633c11b82a1ac7203aab",
+   "generation_config.json": "e70c136c1b78ddc1fb0905bac8e733a4dc448d4f852a5dd75143fffc70be550e",
+   "model.safetensors.index.json": "77042094076611b69791a610065f28b7013b8c621795fa86ddccc8bac7d1b9df",
+   "tokenizer.json": "0997f410c57a1f4e53b09e4be8f4a172d90edd9564368fb0847030937229b9f3",
+   "tokenizer_config.json": "b11349aafa7cdc6a320767cf7ceb29ed82f7eda5d65e8e0819e76f0ce947bf27"
+  },
+  "config": {
+   "architectures": [
+    "Qwen3_5ForConditionalGeneration"
+   ],
+   "model_type": "qwen3_5",
+   "text_model_type": "qwen3_5_text",
+   "hidden_size": 5120,
+   "num_hidden_layers": 64,
+   "layer_types": {
+    "full_attention": 16,
+    "linear_attention": 48
+   },
+   "linear_num_key_heads": 16,
+   "linear_num_value_heads": 48,
+   "linear_key_head_dim": 128,
+   "linear_value_head_dim": 128,
+   "linear_conv_kernel_dim": 4,
+   "num_attention_heads": 24,
+   "num_key_value_heads": 4,
+   "head_dim": 256,
+   "vocab_size": 248320,
+   "mamba_ssm_dtype": "float32",
+   "dtype": "bfloat16",
+   "transformers_version": "5.8.0.dev0"
+  },
+  "artifact": {
+   "art_dir_basename": "C",
+   "chain": "logs/qwenwhole/artifact_digest_C.txt",
+   "chain_sha256": "de7e0180bf49f965c17116b7fbe8c34d2b1529c2431cc234f3a6460ad84b24dc",
+   "manifest_sha256": "d7e56155f5424aef1885b5e41e62951d8033e5351d9b5af8b006460df6540464",
+   "chain_report": {
+    "art_dir": "/Users/artin/qwen_whole0t/C",
+    "rung0": {
+     "checked": 19,
+     "unchained": false
+    },
+    "conservation": {
+     "keys": 1199
+    },
+    "census": {
+     "w4": 192,
+     "s16": 210,
+     "raw": 449,
+     "excluded": 348
+    },
+    "preflight": {
+     "estimated_peak_bytes": 6504933184,
+     "available_bytes": 25026379776,
+     "safety_fraction": 0.8
+    }
+   },
+   "families": {
+    "linear_attn": 48,
+    "full_attn": 16
+   },
+   "fused": 402,
+   "raw": 449,
+   "payload_resident_bytes": 9367009856
+  },
+  "architecture_module": {
+   "name": "mlx_lm.models.qwen3_5 (the shared Qwen3.5-family architecture implementation; the weights are Qwen3.8-27B)",
+   "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+   "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1"
+  }
+ },
+ "census": {
+  "by_shape": {
+   "s16 [248320, 5120]": {
+    "codec": "s16",
+    "shape": [
+     248320,
+     5120
+    ],
+    "count": 1,
+    "example": "language_model.lm_head",
+    "payload_bytes_each": 645632032,
+    "gemm_ok_all": true,
+    "decoded_f32_bytes_each": 5085593600,
+    "flops_per_chunk_each": 650955980800,
+    "payload_bytes_total": 645632032,
+    "decoded_f32_bytes_total": 5085593600,
+    "flops_per_chunk_total": 650955980800
+   },
+   "w4 [17408, 5120]": {
+    "codec": "w4",
+    "shape": [
+     17408,
+     5120
+    ],
+    "count": 128,
+    "example": "language_model.model.layers.63.mlp.up_proj",
+    "payload_bytes_each": 22980608,
+    "gemm_ok_all": true,
+    "decoded_f32_bytes_each": 356515840,
+    "flops_per_chunk_each": 45634027520,
+    "payload_bytes_total": 2941517824,
+    "decoded_f32_bytes_total": 45634027520,
+    "flops_per_chunk_total": 5841155522560
+   },
+   "w4 [5120, 17408]": {
+    "codec": "w4",
+    "shape": [
+     5120,
+     17408
+    ],
+    "count": 64,
+    "example": "language_model.model.layers.63.mlp.down_proj",
+    "payload_bytes_each": 22980608,
+    "gemm_ok_all": true,
+    "decoded_f32_bytes_each": 356515840,
+    "flops_per_chunk_each": 45634027520,
+    "payload_bytes_total": 1470758912,
+    "decoded_f32_bytes_total": 22817013760,
+    "flops_per_chunk_total": 2920577761280
+   },
+   "s16 [5120, 6144]": {
+    "codec": "s16",
+    "shape": [
+     5120,
+     6144
+    ],
+    "count": 64,
+    "example": "language_model.model.layers.63.self_attn.o_proj",
+    "payload_bytes_each": 15974432,
+    "gemm_ok_all": true,
+    "decoded_f32_bytes_each": 125829120,
+    "flops_per_chunk_each": 16106127360,
+    "payload_bytes_total": 1022363648,
+    "decoded_f32_bytes_total": 8053063680,
+    "flops_per_chunk_total": 1030792151040
+   },
+   "s16 [1024, 5120]": {
+    "codec": "s16",
+    "shape": [
+     1024,
+     5120
+    ],
+    "count": 32,
+    "example": "language_model.model.layers.63.self_attn.v_proj",
+    "payload_bytes_each": 2662432,
+    "gemm_ok_all": true,
+    "decoded_f32_bytes_each": 20971520,
+    "flops_per_chunk_each": 2684354560,
+    "payload_bytes_total": 85197824,
+    "decoded_f32_bytes_total": 671088640,
+    "flops_per_chunk_total": 85899345920
+   },
+   "s16 [12288, 5120]": {
+    "codec": "s16",
+    "shape": [
+     12288,
+     5120
+    ],
+    "count": 16,
+    "example": "language_model.model.layers.63.self_attn.q_proj",
+    "payload_bytes_each": 31948832,
+    "gemm_ok_all": true,
+    "decoded_f32_bytes_each": 251658240,
+    "flops_per_chunk_each": 32212254720,
+    "payload_bytes_total": 511181312,
+    "decoded_f32_bytes_total": 4026531840,
+    "flops_per_chunk_total": 515396075520
+   },
+   "s16 [6144, 5120]": {
+    "codec": "s16",
+    "shape": [
+     6144,
+     5120
+    ],
+    "count": 48,
+    "example": "language_model.model.layers.62.linear_attn.in_proj_z",
+    "payload_bytes_each": 15974432,
+    "gemm_ok_all": true,
+    "decoded_f32_bytes_each": 125829120,
+    "flops_per_chunk_each": 16106127360,
+    "payload_bytes_total": 766772736,
+    "decoded_f32_bytes_total": 6039797760,
+    "flops_per_chunk_total": 773094113280
+   },
+   "s16 [10240, 5120]": {
+    "codec": "s16",
+    "shape": [
+     10240,
+     5120
+    ],
+    "count": 48,
+    "example": "language_model.model.layers.62.linear_attn.in_proj_qkv",
+    "payload_bytes_each": 26624032,
+    "gemm_ok_all": true,
+    "decoded_f32_bytes_each": 209715200,
+    "flops_per_chunk_each": 26843545600,
+    "payload_bytes_total": 1277953536,
+    "decoded_f32_bytes_total": 10066329600,
+    "flops_per_chunk_total": 1288490188800
+   }
+  },
+  "tokens_per_chunk": 256,
+  "head": {
+   "matrices": 1,
+   "weights": 1271398400,
+   "payload_bytes": 645632032,
+   "note": "once per prompt on the final row through the fused kernel; excluded from the per-chunk families"
+  },
+  "w4": {
+   "matrices": 192,
+   "weights": 17112760320,
+   "payload_bytes": 4412276736,
+   "decoded_f32_bytes_per_chunk": 68451041280,
+   "flops_per_chunk": 8761733283840
+  },
+  "s16": {
+   "matrices": 208,
+   "weights": 7214202880,
+   "payload_bytes": 3663469056,
+   "decoded_f32_bytes_per_chunk": 28856811520,
+   "flops_per_chunk": 3693671874560
+  }
+ },
+ "rates": {
+  "matmul_f32_square": {
+   "n": 4096,
+   "s": 0.03388600004836917,
+   "tflops": 4.055921421112508
+  },
+  "matmul_f16_square": {
+   "n": 4096,
+   "s": 0.02977525000460446,
+   "tflops": 4.615879075767504
+  },
+  "matmul_bf16_square": {
+   "n": 4096,
+   "s": 0.029752040980383754,
+   "tflops": 4.619479838798853
+  },
+  "stream_add_1gib": {
+   "bytes_read": 1073741824,
+   "bytes_written": 1073741824,
+   "s": 0.016088541131466627,
+   "gb_per_s": 133.47907870899888,
+   "note": "one read plus one write of the same byte count"
+  },
+  "fill_1gib": {
+   "bytes_written": 1073741824,
+   "s": 0.008046875009313226,
+   "gb_per_s": 133.43587700284664,
+   "note": "write only"
+  }
+ },
+ "matrices": {
+  "layers.0.mlp.gate_proj": {
+   "shape": [
+    17408,
+    5120
+   ],
+   "payload_bytes": 22980608,
+   "decoded_f32_bytes": 356515840,
+   "rows": {
+    "256": {
+     "matmul_f32_s": 0.011605791980400681,
+     "matmul_f32_tflops": 3.932004605723126,
+     "matmul_f32_share_of_peak": 0.9694479250154229,
+     "production_decode_then_matmul_s": 0.014909374993294477,
+     "production_equals_matmul_on_slab": true,
+     "production_over_sum_of_parts": 0.6766735794822345,
+     "production_cleared_pool_s": 0.014995583100244403,
+     "cleared_over_warm_pool": 1.0057821409005205,
+     "matmul_f16_s": 0.010322458110749722,
+     "matmul_bf16_s": 0.010319957975298166,
+     "f16_over_f32": 0.8894229819198729,
+     "bf16_over_f32": 0.8892075605633832,
+     "f16_max_abs_err": 0.0001901686191558838,
+     "bf16_max_abs_err": 0.0016582310199737549,
+     "f16_rel_err": 0.0003821156005984741,
+     "bf16_rel_err": 0.0033319689912082273,
+     "library_qmm_affine4_f32_s": 0.012494125170633197,
+     "library_qmm_affine4_f16_s": 0.010744708124548197,
+     "library_qmm_f32_over_production": 0.8380046230142079,
+     "library_qmm_f16_over_production": 0.7206679105851621,
+     "library_qmm_f32_over_matmul_f32": 1.0765422292362892,
+     "ideal_fused_over_production": 0.7784224345836368,
+     "note": "matmuls on a seeded random activation (not a real activation); the library quantized_matmul is an AFFINE 4-bit group-128 codec of the decoded slab, a different codec with different numbers, timed as the framework's fused in-tile dequantization reference only; f16/bf16 errors against the float32 product, numerics not qualified"
+    },
+    "512": {
+     "matmul_f32_s": 0.022884499980136752,
+     "matmul_f32_tflops": 3.9882040297676893,
+     "matmul_f32_share_of_peak": 0.9833040672355421,
+     "production_decode_then_matmul_s": 0.026155125116929412,
+     "production_equals_matmul_on_slab": true,
+     "production_over_sum_of_parts": 0.7851552633228994,
+     "production_cleared_pool_s": 0.026197124971076846,
+     "cleared_over_warm_pool": 1.0016057982502347,
+     "matmul_f16_s": 0.020296541042625904,
+     "matmul_bf16_s": 0.020301416981965303,
+     "f16_over_f32": 0.8869121484079993,
+     "bf16_over_f32": 0.887125215739321,
+     "f16_max_abs_err": 0.0002142786979675293,
+     "bf16_max_abs_err": 0.002401888370513916,
+     "f16_rel_err": 0.00035075087029145006,
+     "bf16_rel_err": 0.003931629435364273,
+     "library_qmm_affine4_f32_s": 0.024701375048607588,
+     "library_qmm_affine4_f16_s": 0.021202540956437588,
+     "library_qmm_f32_over_production": 0.9444181566013288,
+     "library_qmm_f16_over_production": 0.8106457476937792,
+     "library_qmm_f32_over_matmul_f32": 1.079393260505925,
+     "ideal_fused_over_production": 0.8749528009454757,
+     "note": "matmuls on a seeded random activation (not a real activation); the library quantized_matmul is an AFFINE 4-bit group-128 codec of the decoded slab, a different codec with different numbers, timed as the framework's fused in-tile dequantization reference only; f16/bf16 errors against the float32 product, numerics not qualified"
+    },
+    "1024": {
+     "matmul_f32_s": 0.045250291004776955,
+     "matmul_f32_tflops": 4.033921241760194,
+     "matmul_f32_share_of_peak": 0.9945757875786757,
+     "production_decode_then_matmul_s": 0.0485549580771476,
+     "production_equals_matmul_on_slab": true,
+     "production_over_sum_of_parts": 0.8720698243789795,
+     "production_cleared_pool_s": 0.04858570802025497,
+     "cleared_over_warm_pool": 1.000633301815615,
+     "matmul_f16_s": 0.040093749994412065,
+     "matmul_bf16_s": 0.04007391701452434,
+     "f16_over_f32": 0.8860440254445981,
+     "bf16_over_f32": 0.8856057303652223,
+     "f16_max_abs_err": 0.00024139881134033203,
+     "bf16_max_abs_err": 0.0019013285636901855,
+     "f16_rel_err": 0.0003516088623143972,
+     "bf16_rel_err": 0.002769375579991841,
+     "library_qmm_affine4_f32_s": 0.04907945799641311,
+     "library_qmm_affine4_f16_s": 0.04213479207828641,
+     "library_qmm_f32_over_production": 1.0108021907553117,
+     "library_qmm_f16_over_production": 0.8677752745937836,
+     "library_qmm_f32_over_matmul_f32": 1.084621930745858,
+     "ideal_fused_over_production": 0.9319396575913019,
+     "note": "matmuls on a seeded random activation (not a real activation); the library quantized_matmul is an AFFINE 4-bit group-128 codec of the decoded slab, a different codec with different numbers, timed as the framework's fused in-tile dequantization reference only; f16/bf16 errors against the float32 product, numerics not qualified"
+    }
+   },
+   "decode": {
+    "single_s": 0.01042754203081131,
+    "pipelined2_per_call_s": 0.010046645998954773,
+    "pipelined4_per_call_s": 0.009747458505444229,
+    "fill_same_slab_s": 0.009441209025681019,
+    "fill_cleared_pool_s": 0.00282175000756979,
+    "decode_cleared_pool_s": 0.0035987498704344034,
+    "bytes_written": 356515840,
+    "bytes_read_payload": 22980608,
+    "effective_gb_per_s_single": 36.393662751841575,
+    "effective_gb_per_s_pipelined4": 38.93286109277004,
+    "index_and_codebook_over_fill": 1.1044710484057039,
+    "write_floor_share_of_decode": 0.9054107859535955,
+    "cleared_over_warm_decode": 0.345119670560983,
+    "pipelined4_over_single": 0.9347800734480312,
+    "note": "single: one decode evaluated per call with a warm pool (the slab's buffer reused); pipelined k: k decodes issued then one evaluation, per-call time (k slabs live at once, so buffers beyond the pool are fresh allocations); cleared: the pool emptied before each call (every slab a fresh allocation)"
+   },
+   "fp16_weights_exact": false,
+   "bf16_weights_exact": false
+  },
+  "layers.0.mlp.down_proj": {
+   "shape": [
+    5120,
+    17408
+   ],
+   "payload_bytes": 22980608,
+   "decoded_f32_bytes": 356515840,
+   "rows": {
+    "256": {
+     "matmul_f32_s": 0.0124357920140028,
+     "matmul_f32_tflops": 3.6695714650595415,
+     "matmul_f32_share_of_peak": 0.9047442206247196,
+     "production_decode_then_matmul_s": 0.015647999942302704,
+     "production_equals_matmul_on_slab": true,
+     "production_over_sum_of_parts": 0.9757688982459124,
+     "production_cleared_pool_s": 0.015717624919489026,
+     "cleared_over_warm_pool": 1.0044494489674747,
+     "matmul_f16_s": 0.010583875002339482,
+     "matmul_bf16_s": 0.010577375069260597,
+     "f16_over_f32": 0.8510816995348551,
+     "bf16_over_f32": 0.8505590200728984,
+     "f16_max_abs_err": 0.0014824867248535156,
+     "bf16_max_abs_err": 0.012950539588928223,
+     "f16_rel_err": 0.0003485009526888379,
+     "bf16_rel_err": 0.003044395142912293,
+     "library_qmm_affine4_f32_s": 0.012816499918699265,
+     "library_qmm_affine4_f16_s": 0.010915374848991632,
+     "library_qmm_f32_over_production": 0.8190503556976134,
+     "library_qmm_f16_over_production": 0.6975571887294731,
+     "library_qmm_f32_over_matmul_f32": 1.0306138848468827,
+     "ideal_fused_over_production": 0.7947208627208617,
+     "note": "matmuls on a seeded random activation (not a real activation); the library quantized_matmul is an AFFINE 4-bit group-128 codec of the decoded slab, a different codec with different numbers, timed as the framework's fused in-tile dequantization reference only; f16/bf16 errors against the float32 product, numerics not qualified"
+    },
+    "512": {
+     "matmul_f32_s": 0.027880124980583787,
+     "matmul_f32_tflops": 3.273588447094864,
+     "matmul_f32_share_of_peak": 0.8071133799719779,
+     "production_decode_then_matmul_s": 0.031059833010658622,
+     "production_equals_matmul_on_slab": true,
+     "production_over_sum_of_parts": 0.9866241508206349,
+     "production_cleared_pool_s": 0.030243415851145983,
+     "cleared_over_warm_pool": 0.9737146957862757,
+     "matmul_f16_s": 0.02055095904506743,
+     "matmul_bf16_s": 0.020536167081445456,
+     "f16_over_f32": 0.7371186126095016,
+     "bf16_over_f32": 0.7365880567517974,
+     "f16_max_abs_err": 0.0015087127685546875,
+     "bf16_max_abs_err": 0.01521444320678711,
+     "f16_rel_err": 0.0002486799879181139,
+     "bf16_rel_err": 0.0025077852005383245,
+     "library_qmm_affine4_f32_s": 0.02514291717670858,
+     "library_qmm_affine4_f16_s": 0.021368457935750484,
+     "library_qmm_f32_over_production": 0.8094994318894255,
+     "library_qmm_f16_over_production": 0.6879772318292116,
+     "library_qmm_f32_over_matmul_f32": 0.901822254893712,
+     "ideal_fused_over_production": 0.8976263642826517,
+     "note": "matmuls on a seeded random activation (not a real activation); the library quantized_matmul is an AFFINE 4-bit group-128 codec of the decoded slab, a different codec with different numbers, timed as the framework's fused in-tile dequantization reference only; f16/bf16 errors against the float32 product, numerics not qualified"
+    },
+    "1024": {
+     "matmul_f32_s": 0.05863374983891845,
+     "matmul_f32_tflops": 3.113157704930561,
+     "matmul_f32_share_of_peak": 0.7675586831454555,
+     "production_decode_then_matmul_s": 0.06202075001783669,
+     "production_equals_matmul_on_slab": true,
+     "production_over_sum_of_parts": 0.9965647397300877,
+     "production_cleared_pool_s": 0.06383124995045364,
+     "cleared_over_warm_pool": 1.0291918419576715,
+     "matmul_f16_s": 0.04051879188045859,
+     "matmul_bf16_s": 0.04050141596235335,
+     "f16_over_f32": 0.6910489605691915,
+     "bf16_over_f32": 0.6907526138720592,
+     "f16_max_abs_err": 0.0017528533935546875,
+     "bf16_max_abs_err": 0.015970945358276367,
+     "f16_rel_err": 0.0002964247434345467,
+     "bf16_rel_err": 0.0027008438912472774,
+     "library_qmm_affine4_f32_s": 0.049853499978780746,
+     "library_qmm_affine4_f16_s": 0.04240100015886128,
+     "library_qmm_f32_over_production": 0.8038196888048478,
+     "library_qmm_f16_over_production": 0.6836582941461862,
+     "library_qmm_f32_over_matmul_f32": 0.8502526295135611,
+     "ideal_fused_over_production": 0.9453892418594717,
+     "note": "matmuls on a seeded random activation (not a real activation); the library quantized_matmul is an AFFINE 4-bit group-128 codec of the decoded slab, a different codec with different numbers, timed as the framework's fused in-tile dequantization reference only; f16/bf16 errors against the float32 product, numerics not qualified"
+    }
+   },
+   "decode": {
+    "single_s": 0.0036007920280098915,
+    "pipelined2_per_call_s": 0.0032888544956222177,
+    "pipelined4_per_call_s": 0.00332206254824996,
+    "fill_same_slab_s": 0.0027492090594023466,
+    "fill_cleared_pool_s": 0.00282775005325675,
+    "decode_cleared_pool_s": 0.0035931658931076527,
+    "bytes_written": 356515840,
+    "bytes_read_payload": 22980608,
+    "effective_gb_per_s_single": 105.39249283156809,
+    "effective_gb_per_s_pipelined4": 114.23519048427194,
+    "index_and_codebook_over_fill": 1.3097556243295194,
+    "write_floor_share_of_decode": 0.7635012069613465,
+    "cleared_over_warm_decode": 0.9978820951493681,
+    "pipelined4_over_single": 0.9225921748349399,
+    "note": "single: one decode evaluated per call with a warm pool (the slab's buffer reused); pipelined k: k decodes issued then one evaluation, per-call time (k slabs live at once, so buffers beyond the pool are fresh allocations); cleared: the pool emptied before each call (every slab a fresh allocation)"
+   },
+   "fp16_weights_exact": false,
+   "bf16_weights_exact": false
+  }
+ },
+ "roofline": {
+  "per_chunk_256": {
+   "w4_flops": 8761733283840,
+   "w4_gemm_floor_s_at_peak_f32": 2.1602325030835345,
+   "w4_decoded_slab_bytes_written": 68451041280,
+   "w4_decoded_slab_write_floor_s": 0.5129882818437181,
+   "w4_decoded_slab_bytes_read_by_gemm": 68451041280,
+   "w4_payload_bytes_read": 4412276736,
+   "w4_payload_read_floor_s": 0.03305594238943854,
+   "w4_activation_bytes_read_once": 1811939328,
+   "s16_flops": 3693671874560,
+   "s16_gemm_floor_s_at_peak_f32": 0.9106862512999214,
+   "w4_output_bytes_written": 2617245696,
+   "s16_body_decoded_slab_bytes_written_and_read": 28856811520,
+   "s16_body_decoded_slab_write_floor_s": 0.21625976587529294,
+   "read_terms_note": "slab and activation read bytes are ONE-PASS lower bounds; a tiled GEMM re-reads weight tiles once per activation tile and activation tiles once per weight tile",
+   "decoded_slab_cache_resident_gb_f32": 68.45104128,
+   "decoded_slab_cache_resident_gb_f16": 34.22552064,
+   "device_max_working_set_gb": 30.150672384
+  },
+  "note": "floors at the measured achievable rates of this process (square float32 GEMM; streaming add; fill), not vendor peaks; the decoded slab is written by the decode kernel and read by the GEMM on every chunk, so a prompt of k chunks moves k times these bytes; a fused dequant-GEMM removes the slab write and read and keeps the FLOPs; caching decoded slabs across chunks would hold w4_decoded_slab_bytes_written resident"
+ },
+ "wall_s": 19.848530542105436
+}

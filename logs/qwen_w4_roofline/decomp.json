@@ -1,0 +1,964 @@
+{
+ "commit": "6e1f30ec",
+ "tree_dirty": false,
+ "smoke": false,
+ "stage": "decomp",
+ "driver": "scratch/qwen_w4_roofline.py",
+ "cold_load_s": 7.500894041964784,
+ "engine": {
+  "kernel_version": 5,
+  "chain_sha256": "de7e0180bf49f965c17116b7fbe8c34d2b1529c2431cc234f3a6460ad84b24dc",
+  "recurrence": "kernel",
+  "recurrence_layers": 48,
+  "recurrence_vendor": {
+   "mlx_version": "0.31.2",
+   "mlx_lm_version": "0.31.3",
+   "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+   "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+   "metal_available": true,
+   "default_device": "Device(gpu, 0)"
+  },
+  "cache_limit_bytes": 2147483648,
+  "chunk": 256,
+  "matmul": "gemm",
+  "gemm_min_t_by_codec": {
+   "w4": 16,
+   "s16": 32
+  },
+  "gemm_slab_bytes": 419430400,
+  "default_recurrence_in_code": "kernel"
+ },
+ "device": {
+  "device_name": "Apple M3 Pro",
+  "max_recommended_working_set_size": 30150672384,
+  "memory_size": 38654705664,
+  "architecture": "applegpu_g15s",
+  "max_buffer_length": 22613000192,
+  "resource_limit": 499000
+ },
+ "mlx_version": "0.31.2",
+ "model_pin": {
+  "source_weights": {
+   "hf_repo": "Qwen/Qwen3.8-27B",
+   "hf_revision": "1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0",
+   "revision_source": "logs/qwenteacher_v2/teacher_manifest.json",
+   "teacher_manifest_sha256": "a29a74158b249bdb5ce0240bfd9246887d8c578f7489f9f996beafba53f2092f",
+   "vendor_index_total_size_bytes": 55562855904.0,
+   "vendor_index_tensors": 1199
+  },
+  "vendor_dir_files_sha256": {
+   "config.json": "191e0af232104ed8b65258cf3fb2b842e288008baca7633c11b82a1ac7203aab",
+   "generation_config.json": "e70c136c1b78ddc1fb0905bac8e733a4dc448d4f852a5dd75143fffc70be550e",
+   "model.safetensors.index.json": "77042094076611b69791a610065f28b7013b8c621795fa86ddccc8bac7d1b9df",
+   "tokenizer.json": "0997f410c57a1f4e53b09e4be8f4a172d90edd9564368fb0847030937229b9f3",
+   "tokenizer_config.json": "b11349aafa7cdc6a320767cf7ceb29ed82f7eda5d65e8e0819e76f0ce947bf27"
+  },
+  "config": {
+   "architectures": [
+    "Qwen3_5ForConditionalGeneration"
+   ],
+   "model_type": "qwen3_5",
+   "text_model_type": "qwen3_5_text",
+   "hidden_size": 5120,
+   "num_hidden_layers": 64,
+   "layer_types": {
+    "full_attention": 16,
+    "linear_attention": 48
+   },
+   "linear_num_key_heads": 16,
+   "linear_num_value_heads": 48,
+   "linear_key_head_dim": 128,
+   "linear_value_head_dim": 128,
+   "linear_conv_kernel_dim": 4,
+   "num_attention_heads": 24,
+   "num_key_value_heads": 4,
+   "head_dim": 256,
+   "vocab_size": 248320,
+   "mamba_ssm_dtype": "float32",
+   "dtype": "bfloat16",
+   "transformers_version": "5.8.0.dev0"
+  },
+  "artifact": {
+   "art_dir_basename": "C",
+   "chain": "logs/qwenwhole/artifact_digest_C.txt",
+   "chain_sha256": "de7e0180bf49f965c17116b7fbe8c34d2b1529c2431cc234f3a6460ad84b24dc",
+   "manifest_sha256": "d7e56155f5424aef1885b5e41e62951d8033e5351d9b5af8b006460df6540464",
+   "chain_report": {
+    "art_dir": "/Users/artin/qwen_whole0t/C",
+    "rung0": {
+     "checked": 19,
+     "unchained": false
+    },
+    "conservation": {
+     "keys": 1199
+    },
+    "census": {
+     "w4": 192,
+     "s16": 210,
+     "raw": 449,
+     "excluded": 348
+    },
+    "preflight": {
+     "estimated_peak_bytes": 6504933184,
+     "available_bytes": 24566169600,
+     "safety_fraction": 0.8
+    }
+   },
+   "families": {
+    "linear_attn": 48,
+    "full_attn": 16
+   },
+   "fused": 402,
+   "raw": 449,
+   "payload_resident_bytes": 9367009856
+  },
+  "architecture_module": {
+   "name": "mlx_lm.models.qwen3_5 (the shared Qwen3.5-family architecture implementation; the weights are Qwen3.8-27B)",
+   "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+   "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1"
+  }
+ },
+ "prompt": {
+  "tokens": 1017,
+  "sha256": "a471f99c8fc361567c72fb886831a004cf064d3494f667ad1786a385c41a41f2",
+  "chunk": 256,
+  "seed": "prefill-wall-dev-1-1024"
+ },
+ "census": {
+  "by_shape": {
+   "s16 [248320, 5120]": {
+    "codec": "s16",
+    "shape": [
+     248320,
+     5120
+    ],
+    "count": 1,
+    "example": "language_model.lm_head",
+    "payload_bytes_each": 645632032,
+    "gemm_ok_all": true,
+    "decoded_f32_bytes_each": 5085593600,
+    "flops_per_chunk_each": 650955980800,
+    "payload_bytes_total": 645632032,
+    "decoded_f32_bytes_total": 5085593600,
+    "flops_per_chunk_total": 650955980800
+   },
+   "w4 [17408, 5120]": {
+    "codec": "w4",
+    "shape": [
+     17408,
+     5120
+    ],
+    "count": 128,
+    "example": "language_model.model.layers.63.mlp.up_proj",
+    "payload_bytes_each": 22980608,
+    "gemm_ok_all": true,
+    "decoded_f32_bytes_each": 356515840,
+    "flops_per_chunk_each": 45634027520,
+    "payload_bytes_total": 2941517824,
+    "decoded_f32_bytes_total": 45634027520,
+    "flops_per_chunk_total": 5841155522560
+   },
+   "w4 [5120, 17408]": {
+    "codec": "w4",
+    "shape": [
+     5120,
+     17408
+    ],
+    "count": 64,
+    "example": "language_model.model.layers.63.mlp.down_proj",
+    "payload_bytes_each": 22980608,
+    "gemm_ok_all": true,
+    "decoded_f32_bytes_each": 356515840,
+    "flops_per_chunk_each": 45634027520,
+    "payload_bytes_total": 1470758912,
+    "decoded_f32_bytes_total": 22817013760,
+    "flops_per_chunk_total": 2920577761280
+   },
+   "s16 [5120, 6144]": {
+    "codec": "s16",
+    "shape": [
+     5120,
+     6144
+    ],
+    "count": 64,
+    "example": "language_model.model.layers.63.self_attn.o_proj",
+    "payload_bytes_each": 15974432,
+    "gemm_ok_all": true,
+    "decoded_f32_bytes_each": 125829120,
+    "flops_per_chunk_each": 16106127360,
+    "payload_bytes_total": 1022363648,
+    "decoded_f32_bytes_total": 8053063680,
+    "flops_per_chunk_total": 1030792151040
+   },
+   "s16 [1024, 5120]": {
+    "codec": "s16",
+    "shape": [
+     1024,
+     5120
+    ],
+    "count": 32,
+    "example": "language_model.model.layers.63.self_attn.v_proj",
+    "payload_bytes_each": 2662432,
+    "gemm_ok_all": true,
+    "decoded_f32_bytes_each": 20971520,
+    "flops_per_chunk_each": 2684354560,
+    "payload_bytes_total": 85197824,
+    "decoded_f32_bytes_total": 671088640,
+    "flops_per_chunk_total": 85899345920
+   },
+   "s16 [12288, 5120]": {
+    "codec": "s16",
+    "shape": [
+     12288,
+     5120
+    ],
+    "count": 16,
+    "example": "language_model.model.layers.63.self_attn.q_proj",
+    "payload_bytes_each": 31948832,
+    "gemm_ok_all": true,
+    "decoded_f32_bytes_each": 251658240,
+    "flops_per_chunk_each": 32212254720,
+    "payload_bytes_total": 511181312,
+    "decoded_f32_bytes_total": 4026531840,
+    "flops_per_chunk_total": 515396075520
+   },
+   "s16 [6144, 5120]": {
+    "codec": "s16",
+    "shape": [
+     6144,
+     5120
+    ],
+    "count": 48,
+    "example": "language_model.model.layers.62.linear_attn.in_proj_z",
+    "payload_bytes_each": 15974432,
+    "gemm_ok_all": true,
+    "decoded_f32_bytes_each": 125829120,
+    "flops_per_chunk_each": 16106127360,
+    "payload_bytes_total": 766772736,
+    "decoded_f32_bytes_total": 6039797760,
+    "flops_per_chunk_total": 773094113280
+   },
+   "s16 [10240, 5120]": {
+    "codec": "s16",
+    "shape": [
+     10240,
+     5120
+    ],
+    "count": 48,
+    "example": "language_model.model.layers.62.linear_attn.in_proj_qkv",
+    "payload_bytes_each": 26624032,
+    "gemm_ok_all": true,
+    "decoded_f32_bytes_each": 209715200,
+    "flops_per_chunk_each": 26843545600,
+    "payload_bytes_total": 1277953536,
+    "decoded_f32_bytes_total": 10066329600,
+    "flops_per_chunk_total": 1288490188800
+   }
+  },
+  "tokens_per_chunk": 256,
+  "head": {
+   "matrices": 1,
+   "weights": 1271398400,
+   "payload_bytes": 645632032,
+   "note": "once per prompt on the final row through the fused kernel; excluded from the per-chunk families"
+  },
+  "w4": {
+   "matrices": 192,
+   "weights": 17112760320,
+   "payload_bytes": 4412276736,
+   "decoded_f32_bytes_per_chunk": 68451041280,
+   "flops_per_chunk": 8761733283840
+  },
+  "s16": {
+   "matrices": 208,
+   "weights": 7214202880,
+   "payload_bytes": 3663469056,
+   "decoded_f32_bytes_per_chunk": 28856811520,
+   "flops_per_chunk": 3693671874560
+  }
+ },
+ "families": {
+  "w4_mlp": 192,
+  "s16_body": 208,
+  "head": 1,
+  "head_codec": "s16"
+ },
+ "family_members": {
+  "w4_mlp": [
+   "down_proj",
+   "gate_proj",
+   "up_proj"
+  ],
+  "s16_body": [
+   "in_proj_qkv",
+   "in_proj_z",
+   "k_proj",
+   "o_proj",
+   "out_proj",
+   "q_proj",
+   "v_proj"
+  ],
+  "head": [
+   "lm_head"
+  ]
+ },
+ "promoted_class": {
+  "name": "SelectedGatedDeltaNet",
+  "n_layers": 48,
+  "vendor_base": "GatedDeltaNet"
+ },
+ "config_definitions": {
+  "full": "the serving prefill_chunked call, GEMM scope, chunk 256, final head, on the promoted default",
+  "no_w4_mlp": "every W4 linear (gate_proj, up_proj, down_proj) replaced by a constant with a cheap dependence on x",
+  "no_w4_decode": "every W4 linear keeps the production float32 GEMM against a pre-decoded slab (two per shape, alternated by matrix index, decoded before the warm run): the decode kernel, its slab write and its allocation are gone, the matmul and its slab read intact (decode removal at a fixed float32 GEMM; not a fused dequant-GEMM ceiling, see the library reference in stage micro)",
+  "no_w4_matmul": "every W4 linear runs the production decode kernel and replaces the matmul by a cheap dependence on the decoded slab: the matmul is gone, the decode intact",
+  "no_s16_body": "every S16 body linear replaced by a constant",
+  "no_head": "the vocabulary head replaced by a constant",
+  "no_gdn_core": "the promoted DeltaNet class's __call__ replaced by in_proj_qkv, in_proj_z and out_proj only (the convolution, the recurrence, the gated norm and the small projections gone)",
+  "no_gdn_recurrence": "gated_delta_update replaced by a stand-in carrying the state unchanged (the Metal kernel gone, everything else intact)",
+  "no_attn_core": "the attention block minus q, k, v, o: norms, rope, scores and softmax gone",
+  "no_norms": "every RMSNorm replaced by identity",
+  "no_all_linears": "every W4, S16 and head linear replaced by a constant"
+ },
+ "dispatch_marginal": {
+  "selector": "llmopt.lab.qgdn.recurrence_path (counting mode, one block per run)",
+  "runs": [
+   {
+    "config": "warm",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "full",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_w4_mlp",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_w4_decode",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_w4_matmul",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_s16_body",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_head",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_gdn_core",
+    "executed": {
+     "ops": 0,
+     "kernel": 0
+    },
+    "update_calls": 0,
+    "kernel_only": true
+   },
+   {
+    "config": "no_attn_core",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_norms",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_all_linears",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_all_linears",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_norms",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_attn_core",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_gdn_core",
+    "executed": {
+     "ops": 0,
+     "kernel": 0
+    },
+    "update_calls": 0,
+    "kernel_only": true
+   },
+   {
+    "config": "no_head",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_s16_body",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_w4_matmul",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_w4_decode",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_w4_mlp",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "full",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "full",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_w4_mlp",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_w4_decode",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_w4_matmul",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_s16_body",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_head",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_gdn_core",
+    "executed": {
+     "ops": 0,
+     "kernel": 0
+    },
+    "update_calls": 0,
+    "kernel_only": true
+   },
+   {
+    "config": "no_attn_core",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_norms",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_all_linears",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_all_linears",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_norms",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_attn_core",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_gdn_core",
+    "executed": {
+     "ops": 0,
+     "kernel": 0
+    },
+    "update_calls": 0,
+    "kernel_only": true
+   },
+   {
+    "config": "no_head",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_s16_body",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_w4_matmul",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_w4_decode",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "no_w4_mlp",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   },
+   {
+    "config": "full",
+    "executed": {
+     "ops": 0,
+     "kernel": 192
+    },
+    "update_calls": 192,
+    "kernel_only": true
+   }
+  ],
+  "executed": {
+   "ops": 0,
+   "kernel": 7104
+  },
+  "update_calls": 7104,
+  "vendor": {
+   "mlx_version": "0.31.2",
+   "mlx_lm_version": "0.31.3",
+   "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+   "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+   "metal_available": true,
+   "default_device": "Device(gpu, 0)"
+  },
+  "kernel_only": true,
+  "runs_without_recurrence": [
+   "no_gdn_core"
+  ],
+  "standin_runs": [
+   {
+    "config": "no_gdn_recurrence",
+    "standin_calls": 192
+   },
+   {
+    "config": "no_gdn_recurrence",
+    "standin_calls": 192
+   },
+   {
+    "config": "no_gdn_recurrence",
+    "standin_calls": 192
+   },
+   {
+    "config": "no_gdn_recurrence",
+    "standin_calls": 192
+   }
+  ],
+  "standin_calls_expected_per_run": 192,
+  "note": "kernel_only: no run executed the loop (ops) and every run that called the recurrence executed the kernel; the warm run is counted under config 'warm'; the no_gdn_recurrence runs replace gated_delta_update by a counted stand-in and are not seen by the instrument; the no_gdn_core runs remove the block and call no recurrence"
+ },
+ "marginal": {
+  "full": {
+   "median_s": 17.652716083452106,
+   "runs": [
+    18.045331250177696,
+    17.751289417035878,
+    17.515746999997646,
+    17.554142749868333
+   ],
+   "marginal_s": 0.0,
+   "marginal_pct_of_full": 0.0
+  },
+  "no_w4_mlp": {
+   "median_s": 5.968787978985347,
+   "runs": [
+    6.07900108397007,
+    6.001452500000596,
+    5.936123457970098,
+    5.926067041931674
+   ],
+   "marginal_s": 11.683928104466759,
+   "marginal_pct_of_full": 66.18770759826263
+  },
+  "no_w4_decode": {
+   "median_s": 15.108754041371867,
+   "runs": [
+    15.223337666830048,
+    15.732169334078208,
+    14.994170415913686,
+    14.915448041865602
+   ],
+   "marginal_s": 2.5439620420802385,
+   "marginal_pct_of_full": 14.4111650017698
+  },
+  "no_w4_matmul": {
+   "median_s": 8.583269583526999,
+   "runs": [
+    8.58774279197678,
+    8.566287708003074,
+    8.578796375077218,
+    8.591449041850865
+   ],
+   "marginal_s": 9.069446499925107,
+   "marginal_pct_of_full": 51.377059807963086
+  },
+  "no_s16_body": {
+   "median_s": 12.676765771000646,
+   "runs": [
+    12.659306125016883,
+    12.960407000035048,
+    12.685918292030692,
+    12.6676132499706
+   ],
+   "marginal_s": 4.9759503124514595,
+   "marginal_pct_of_full": 28.18801531123011
+  },
+  "no_head": {
+   "median_s": 17.559681500075385,
+   "runs": [
+    17.551685750018805,
+    17.735326749971136,
+    17.52582575008273,
+    17.567677250131965
+   ],
+   "marginal_s": 0.09303458337672055,
+   "marginal_pct_of_full": 0.527027019167506
+  },
+  "no_gdn_core": {
+   "median_s": 17.086415896075778,
+   "runs": [
+    17.104901167098433,
+    17.259910291992128,
+    17.067930625053123,
+    17.06027662497945
+   ],
+   "marginal_s": 0.5663001873763278,
+   "marginal_pct_of_full": 3.208005978792041
+  },
+  "no_gdn_recurrence": {
+   "median_s": 17.251777875004336,
+   "runs": [
+    17.30239679198712,
+    17.43859637505375,
+    17.18222845811397,
+    17.20115895802155
+   ],
+   "marginal_s": 0.4009382084477693,
+   "marginal_pct_of_full": 2.2712550666558
+  },
+  "no_attn_core": {
+   "median_s": 17.565328374970704,
+   "runs": [
+    17.653318875003606,
+    17.795727499993518,
+    17.44686641707085,
+    17.477337874937803
+   ],
+   "marginal_s": 0.0873877084814012,
+   "marginal_pct_of_full": 0.4950383163037422
+  },
+  "no_norms": {
+   "median_s": 17.638843000051565,
+   "runs": [
+    17.74672320811078,
+    17.861846667015925,
+    17.475680415984243,
+    17.53096279199235
+   ],
+   "marginal_s": 0.013873083400540054,
+   "marginal_pct_of_full": 0.07858894537790062
+  },
+  "no_all_linears": {
+   "median_s": 1.047568104462698,
+   "runs": [
+    1.055985416052863,
+    1.0472467918880284,
+    1.0478894170373678,
+    1.040289750089869
+   ],
+   "marginal_s": 16.605147978989407,
+   "marginal_pct_of_full": 94.0656831531738
+  }
+ },
+ "marginal_note": "marginal cost = full minus the path with the family replaced; GPU work overlaps and dispatch is shared, so these do NOT add to the full time. The no_gdn_recurrence runs executed the stand-in, so the instrument counts fewer kernel executions than full runs; kernel_only reads the whole block.",
+ "w4_split": {
+  "w4_marginal_s": 11.683928104466759,
+  "decode_marginal_s": 2.5439620420802385,
+  "matmul_marginal_s": 9.069446499925107,
+  "decode_share_of_w4": 0.2177317439250318,
+  "matmul_share_of_w4": 0.7762326521384416,
+  "split_sum_over_w4": 0.9939643960634734,
+  "shared_slabs": {
+   "[17408, 5120]": [
+    356515840,
+    356515840
+   ],
+   "[5120, 17408]": [
+    356515840,
+    356515840
+   ]
+  },
+  "note": "decode_marginal is what removing the decode at a fixed float32 GEMM saves in situ (slab write, decode kernel, allocation; the GEMM's slab read stays); matmul_marginal is what the float32 GEMM costs in situ (FLOPs and slab read); their sum over w4 is the overlap check (1.0 = no overlap between the two)"
+ },
+ "dispatch_additive": {
+  "selector": "llmopt.lab.qgdn.recurrence_path",
+  "path": "vendor",
+  "update_calls": 192,
+  "requested_by_vendor_flag": {
+   "kernel": 192,
+   "loop": 0
+  },
+  "executed": {
+   "ops": 0,
+   "kernel": 192
+  },
+  "max_T": 256,
+  "vendor": {
+   "mlx_version": "0.31.2",
+   "mlx_lm_version": "0.31.3",
+   "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+   "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+   "metal_available": true,
+   "default_device": "Device(gpu, 0)"
+  },
+  "kernel_only": true
+ },
+ "additive_synchronous": {
+  "exclusive_s": {
+   "w4_mlp": 9.380326327867806,
+   "w4_decode": 3.088495780946687,
+   "s16_body": 3.959904733346775,
+   "s16_decode": 1.586284814402461,
+   "head": 0.05149758397601545,
+   "gdn_core": 0.6453087348490953,
+   "attn_core": 0.18946591555140913,
+   "norms": 0.1820002910681069,
+   "embed_other": 0.0
+  },
+  "sum_s": 19.083284182008356,
+  "synchronised_wall_s": 19.435882582794875,
+  "unsynchronised_wall_s": 17.52303714561276,
+  "untimed_residual_s": 0.35259840078651905,
+  "serialisation_penalty_s": 1.9128454371821135,
+  "w4_matmul_and_rest_s": 9.380326327867806,
+  "w4_total_s": 12.468822108814493,
+  "s16_total_s": 5.546189547749236,
+  "note": "inputs evaluated before each timed call, outputs after; w4_decode and s16_decode are the exclusive times of the decode kernels (slab evaluated inside the linear's frame and subtracted from it, which moves the slab allocation into the decode term and removes any decode-matmul overlap), so w4_mlp and s16_body here are the matmuls plus the linears' reshapes; the untimed residual is the host-side embedding decode, the residual adds, the chunk-end evaluation and anything in no family; the serialisation penalty is what forcing every call costs over the pipelined path"
+ },
+ "instrumented": {
+  "wall_s": 17.52962008304894,
+  "chunks": [
+   {
+    "start": 0,
+    "tokens": 256,
+    "issue_s": 0.01104320795275271,
+    "complete_s": 4.311185957863927
+   },
+   {
+    "start": 256,
+    "tokens": 256,
+    "issue_s": 0.013785541988909245,
+    "complete_s": 4.30082295788452
+   },
+   {
+    "start": 512,
+    "tokens": 256,
+    "issue_s": 0.013903499813750386,
+    "complete_s": 4.318671291926876
+   },
+   {
+    "start": 768,
+    "tokens": 249,
+    "issue_s": 0.014421375002712011,
+    "complete_s": 4.598774125101045
+   }
+  ],
+  "issue_s_total": 0.05315362475812435,
+  "complete_s_total": 17.529454332776368,
+  "gpu_side_s_total": 17.476300708018243,
+  "gpu_side_share": 0.9969583268332064,
+  "memory": {
+   "active_bytes": 9123267116,
+   "peak_bytes": 12080058948,
+   "cache_bytes": 2388624488,
+   "footprint_bytes": 11511891604,
+   "rss_peak_bytes": 11010015232
+  },
+  "note": "issue_s is graph construction plus the host-side embedding decode per chunk; complete_s is measured from the same start"
+ },
+ "wall_s": 692.7103347079828
+}

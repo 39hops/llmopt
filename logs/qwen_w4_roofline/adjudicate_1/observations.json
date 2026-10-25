@@ -1,0 +1,260 @@
+{
+ "registration_sha256": "958a93a288c43a01d7f6bb13435ee2f2ca1a22f7aafd520d8670c56b81f7336e",
+ "receipts_dir": "logs/qwen_w4_roofline",
+ "commit": "6e1f30ec",
+ "measurement_valid": true,
+ "arms": {
+  "PROMOTED": {
+   "admissible": true,
+   "reason": "the promoted default serving path (kernel recurrence selected by name per layer, chunk 256, GEMM scope); dispatch proven by the executed counts"
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 66.18770759826263,
+   "metric": "w4_mlp_marginal_pct_of_full",
+   "population": "dev-1024:marginal:4v4",
+   "aggregation": "median_difference_pct",
+   "provenance": "{\"full_median_s\": 17.652716083452106, \"no_w4_mlp_median_s\": 5.968787978985347, \"runs\": {\"full\": [18.045331250177696, 17.751289417035878, 17.515746999997646, 17.554142749868333], \"no_w4_mlp\": [6.07900108397007, 6.001452500000596, 5.936123457970098, 5.926067041931674]}}",
+   "unit": "pct"
+  },
+  "2": {
+   "value": 0.2177317439250318,
+   "metric": "w4_decode_marginal_over_w4_marginal",
+   "population": "dev-1024:marginal:4v4",
+   "aggregation": "median_difference_ratio",
+   "provenance": "{\"w4_marginal_s\": 11.683928104466759, \"decode_marginal_s\": 2.5439620420802385, \"matmul_marginal_s\": 9.069446499925107, \"split_sum_over_w4\": 0.9939643960634734}",
+   "unit": "ratio"
+  },
+  "8": {
+   "value": 0.9939643960634734,
+   "metric": "w4_split_sum_over_w4_marginal",
+   "population": "dev-1024:marginal:4v4",
+   "aggregation": "median_difference_ratio",
+   "provenance": "{\"matmul_share_of_w4\": 0.7762326521384416}",
+   "unit": "ratio"
+  },
+  "8:low": {
+   "value": 0.9939643960634734,
+   "metric": "w4_split_sum_over_w4_marginal",
+   "population": "dev-1024:marginal:4v4",
+   "aggregation": "median_difference_ratio",
+   "provenance": "{\"matmul_share_of_w4\": 0.7762326521384416}",
+   "unit": "ratio"
+  },
+  "7": {
+   "value": 0.9969583268332064,
+   "metric": "gpu_side_share_of_instrumented_wall",
+   "population": "dev-1024:instrumented:1",
+   "aggregation": "single_run_ratio",
+   "provenance": "{\"wall_s\": 17.52962008304894, \"issue_s_total\": 0.05315362475812435, \"gpu_side_s_total\": 17.476300708018243}",
+   "unit": "ratio"
+  },
+  "3": {
+   "value": 0.9047442206247196,
+   "metric": "matmul_f32_tflops_over_square_peak",
+   "population": "layer0-gate-and-down:T256:7-repeats",
+   "aggregation": "min_over_shapes_of_median_ratio",
+   "provenance": "{\"by_shape\": {\"layers.0.mlp.gate_proj\": 0.9694479250154229, \"layers.0.mlp.down_proj\": 0.9047442206247196}, \"peak_tflops\": 4.055921421112508, \"tflops\": {\"layers.0.mlp.gate_proj\": 3.932004605723126, \"layers.0.mlp.down_proj\": 3.6695714650595415}}",
+   "unit": "ratio"
+  },
+  "4": {
+   "value": 0.2726544347162024,
+   "metric": "decode_effective_bandwidth_over_stream_add",
+   "population": "layer0-gate-and-down:7-repeats",
+   "aggregation": "min_over_shapes_of_median_ratio",
+   "provenance": "{\"by_shape\": {\"layers.0.mlp.gate_proj\": 0.2726544347162024, \"layers.0.mlp.down_proj\": 0.7895806133134686}, \"stream_gb_per_s\": 133.47907870899888, \"fill_gb_per_s\": 133.43587700284664, \"decode_gb_per_s\": {\"layers.0.mlp.gate_proj\": 36.393662751841575, \"layers.0.mlp.down_proj\": 105.39249283156809}, \"index_and_codebook_over_fill\": {\"layers.0.mlp.gate_proj\": 1.1044710484057039, \"layers.0.mlp.down_proj\": 1.3097556243295194}}",
+   "unit": "ratio"
+  },
+  "5": {
+   "value": 0.8190503556976134,
+   "metric": "library_qmm_f32_over_production_decode_then_matmul",
+   "population": "layer0-gate-and-down:T256:7-repeats",
+   "aggregation": "min_over_shapes_of_median_ratio",
+   "provenance": "{\"by_shape_f32\": {\"layers.0.mlp.gate_proj\": 0.8380046230142079, \"layers.0.mlp.down_proj\": 0.8190503556976134}, \"by_shape_f16_descriptive\": {\"layers.0.mlp.gate_proj\": 0.7206679105851621, \"layers.0.mlp.down_proj\": 0.6975571887294731}, \"qmm_f32_over_matmul_f32\": {\"layers.0.mlp.gate_proj\": 1.0765422292362892, \"layers.0.mlp.down_proj\": 1.0306138848468827}, \"count_weighted_128_64_qmm_f32_over_production\": 0.8314812543032196, \"ideal_fused_over_production\": {\"layers.0.mlp.gate_proj\": 0.7784224345836368, \"layers.0.mlp.down_proj\": 0.7947208627208617}}",
+   "unit": "ratio"
+  },
+  "6": {
+   "value": 1.0057821409005205,
+   "metric": "production_cleared_pool_over_warm_pool",
+   "population": "layer0-gate-and-down:T256:7-repeats",
+   "aggregation": "max_over_shapes_of_median_ratio",
+   "provenance": "{\"by_shape\": {\"layers.0.mlp.gate_proj\": 1.0057821409005205, \"layers.0.mlp.down_proj\": 1.0044494489674747}, \"decode_pipelined4_over_single\": {\"layers.0.mlp.gate_proj\": 0.9347800734480312, \"layers.0.mlp.down_proj\": 0.9225921748349399}, \"decode_cleared_over_warm\": {\"layers.0.mlp.gate_proj\": 0.345119670560983, \"layers.0.mlp.down_proj\": 0.9978820951493681}}",
+   "unit": "ratio"
+  }
+ },
+ "diagnostics": {
+  "decomp": {
+   "marginal_pct": {
+    "full": 0.0,
+    "no_w4_mlp": 66.19,
+    "no_w4_decode": 14.41,
+    "no_w4_matmul": 51.38,
+    "no_s16_body": 28.19,
+    "no_head": 0.53,
+    "no_gdn_core": 3.21,
+    "no_gdn_recurrence": 2.27,
+    "no_attn_core": 0.5,
+    "no_norms": 0.08,
+    "no_all_linears": 94.07
+   },
+   "additive": {
+    "w4_mlp": 9.38,
+    "w4_decode": 3.088,
+    "s16_body": 3.96,
+    "s16_decode": 1.586,
+    "head": 0.051,
+    "gdn_core": 0.645,
+    "attn_core": 0.189,
+    "norms": 0.182,
+    "embed_other": 0.0
+   },
+   "full_median_s": 17.652716083452106
+  },
+  "micro": {
+   "rates": {
+    "matmul_f32_square": {
+     "n": 4096,
+     "s": 0.03388600004836917,
+     "tflops": 4.055921421112508
+    },
+    "matmul_f16_square": {
+     "n": 4096,
+     "s": 0.02977525000460446,
+     "tflops": 4.615879075767504
+    },
+    "matmul_bf16_square": {
+     "n": 4096,
+     "s": 0.029752040980383754,
+     "tflops": 4.619479838798853
+    },
+    "stream_add_1gib": {
+     "bytes_read": 1073741824,
+     "bytes_written": 1073741824,
+     "s": 0.016088541131466627,
+     "gb_per_s": 133.47907870899888,
+     "note": "one read plus one write of the same byte count"
+    },
+    "fill_1gib": {
+     "bytes_written": 1073741824,
+     "s": 0.008046875009313226,
+     "gb_per_s": 133.43587700284664,
+     "note": "write only"
+    }
+   },
+   "T": "256",
+   "rows": {
+    "layers.0.mlp.gate_proj": {
+     "matmul_f32_s": 0.011605791980400681,
+     "matmul_f32_tflops": 3.932004605723126,
+     "matmul_f32_share_of_peak": 0.9694479250154229,
+     "production_decode_then_matmul_s": 0.014909374993294477,
+     "production_equals_matmul_on_slab": true,
+     "production_over_sum_of_parts": 0.6766735794822345,
+     "production_cleared_pool_s": 0.014995583100244403,
+     "cleared_over_warm_pool": 1.0057821409005205,
+     "matmul_f16_s": 0.010322458110749722,
+     "matmul_bf16_s": 0.010319957975298166,
+     "f16_over_f32": 0.8894229819198729,
+     "bf16_over_f32": 0.8892075605633832,
+     "f16_max_abs_err": 0.0001901686191558838,
+     "bf16_max_abs_err": 0.0016582310199737549,
+     "f16_rel_err": 0.0003821156005984741,
+     "bf16_rel_err": 0.0033319689912082273,
+     "library_qmm_affine4_f32_s": 0.012494125170633197,
+     "library_qmm_affine4_f16_s": 0.010744708124548197,
+     "library_qmm_f32_over_production": 0.8380046230142079,
+     "library_qmm_f16_over_production": 0.7206679105851621,
+     "library_qmm_f32_over_matmul_f32": 1.0765422292362892,
+     "ideal_fused_over_production": 0.7784224345836368
+    },
+    "layers.0.mlp.down_proj": {
+     "matmul_f32_s": 0.0124357920140028,
+     "matmul_f32_tflops": 3.6695714650595415,
+     "matmul_f32_share_of_peak": 0.9047442206247196,
+     "production_decode_then_matmul_s": 0.015647999942302704,
+     "production_equals_matmul_on_slab": true,
+     "production_over_sum_of_parts": 0.9757688982459124,
+     "production_cleared_pool_s": 0.015717624919489026,
+     "cleared_over_warm_pool": 1.0044494489674747,
+     "matmul_f16_s": 0.010583875002339482,
+     "matmul_bf16_s": 0.010577375069260597,
+     "f16_over_f32": 0.8510816995348551,
+     "bf16_over_f32": 0.8505590200728984,
+     "f16_max_abs_err": 0.0014824867248535156,
+     "bf16_max_abs_err": 0.012950539588928223,
+     "f16_rel_err": 0.0003485009526888379,
+     "bf16_rel_err": 0.003044395142912293,
+     "library_qmm_affine4_f32_s": 0.012816499918699265,
+     "library_qmm_affine4_f16_s": 0.010915374848991632,
+     "library_qmm_f32_over_production": 0.8190503556976134,
+     "library_qmm_f16_over_production": 0.6975571887294731,
+     "library_qmm_f32_over_matmul_f32": 1.0306138848468827,
+     "ideal_fused_over_production": 0.7947208627208617
+    }
+   },
+   "decode": {
+    "layers.0.mlp.gate_proj": {
+     "single_s": 0.01042754203081131,
+     "pipelined2_per_call_s": 0.010046645998954773,
+     "pipelined4_per_call_s": 0.009747458505444229,
+     "fill_same_slab_s": 0.009441209025681019,
+     "fill_cleared_pool_s": 0.00282175000756979,
+     "decode_cleared_pool_s": 0.0035987498704344034,
+     "bytes_written": 356515840,
+     "bytes_read_payload": 22980608,
+     "effective_gb_per_s_single": 36.393662751841575,
+     "effective_gb_per_s_pipelined4": 38.93286109277004,
+     "index_and_codebook_over_fill": 1.1044710484057039,
+     "write_floor_share_of_decode": 0.9054107859535955,
+     "cleared_over_warm_decode": 0.345119670560983,
+     "pipelined4_over_single": 0.9347800734480312,
+     "note": "single: one decode evaluated per call with a warm pool (the slab's buffer reused); pipelined k: k decodes issued then one evaluation, per-call time (k slabs live at once, so buffers beyond the pool are fresh allocations); cleared: the pool emptied before each call (every slab a fresh allocation)"
+    },
+    "layers.0.mlp.down_proj": {
+     "single_s": 0.0036007920280098915,
+     "pipelined2_per_call_s": 0.0032888544956222177,
+     "pipelined4_per_call_s": 0.00332206254824996,
+     "fill_same_slab_s": 0.0027492090594023466,
+     "fill_cleared_pool_s": 0.00282775005325675,
+     "decode_cleared_pool_s": 0.0035931658931076527,
+     "bytes_written": 356515840,
+     "bytes_read_payload": 22980608,
+     "effective_gb_per_s_single": 105.39249283156809,
+     "effective_gb_per_s_pipelined4": 114.23519048427194,
+     "index_and_codebook_over_fill": 1.3097556243295194,
+     "write_floor_share_of_decode": 0.7635012069613465,
+     "cleared_over_warm_decode": 0.9978820951493681,
+     "pipelined4_over_single": 0.9225921748349399,
+     "note": "single: one decode evaluated per call with a warm pool (the slab's buffer reused); pipelined k: k decodes issued then one evaluation, per-call time (k slabs live at once, so buffers beyond the pool are fresh allocations); cleared: the pool emptied before each call (every slab a fresh allocation)"
+    }
+   },
+   "fp16_weights_exact": {
+    "layers.0.mlp.gate_proj": false,
+    "layers.0.mlp.down_proj": false
+   },
+   "roofline": {
+    "per_chunk_256": {
+     "w4_flops": 8761733283840,
+     "w4_gemm_floor_s_at_peak_f32": 2.1602325030835345,
+     "w4_decoded_slab_bytes_written": 68451041280,
+     "w4_decoded_slab_write_floor_s": 0.5129882818437181,
+     "w4_decoded_slab_bytes_read_by_gemm": 68451041280,
+     "w4_payload_bytes_read": 4412276736,
+     "w4_payload_read_floor_s": 0.03305594238943854,
+     "w4_activation_bytes_read_once": 1811939328,
+     "s16_flops": 3693671874560,
+     "s16_gemm_floor_s_at_peak_f32": 0.9106862512999214,
+     "w4_output_bytes_written": 2617245696,
+     "s16_body_decoded_slab_bytes_written_and_read": 28856811520,
+     "s16_body_decoded_slab_write_floor_s": 0.21625976587529294,
+     "read_terms_note": "slab and activation read bytes are ONE-PASS lower bounds; a tiled GEMM re-reads weight tiles once per activation tile and activation tiles once per weight tile",
+     "decoded_slab_cache_resident_gb_f32": 68.45104128,
+     "decoded_slab_cache_resident_gb_f16": 34.22552064,
+     "device_max_working_set_gb": 30.150672384
+    },
+    "note": "floors at the measured achievable rates of this process (square float32 GEMM; streaming add; fill), not vendor peaks; the decoded slab is written by the decode kernel and read by the GEMM on every chunk, so a prompt of k chunks moves k times these bytes; a fused dequant-GEMM removes the slab write and read and keeps the FLOPs; caching decoded slabs across chunks would hold w4_decoded_slab_bytes_written resident"
+   }
+  }
+ }
+}
