@@ -6063,6 +6063,22 @@ QWEN-MODEL1-TREE observations builder + mechanical tree walker.
 - `walk(outcomes: dict) -> tuple` — outcomes: {bar_id: 'FIRE'|'NO-FIRE'|'UNRESOLVED'} -> (branch,
 - `main()`
 
+### scratch/qwen_w4_roofline.py
+QWEN-W4-PREFILL-ROOFLINE-0: where the first-token wall of the PROMOTED arm C serving path (generation 5, chunk-256 decode-once GEMM prefill, the Metal GatedDeltaNet recurrence kernel as the default since VERDICT QWEN-GDN-PROMOTE-0, final-position head, 2 GiB allocator-cache limit) goes now that the recurrence is gone, and what any W4 matrix design could still remove. Assessment and bounded measurement only: the qualified kernels, the codec, the serving defaults and every frozen receipt are untouched; every stand-in here computes wrong values by construction and is a timing instrument in this process only.
+
+- `tm_(fn, n=5, pipelined=1)` — Median wall of fn over n repeats after one warm call; pipelined > 1
+- `provenance(eng)`
+- `shape_census(model, tokens_per_chunk: int) -> dict` — Every fused resident of the tower by codec and shape: count, payload
+- `stage_decomp(eng, receipt)`
+- `stage_micro(eng, receipt)`
+- `main() -> None`
+
+### scratch/qwen_w4_roofline_obs.py
+Observations adapter for PRE-REG QWEN-W4-PREFILL-ROOFLINE-0: derives every registered measurement from the two receipts of scratch/qwen_w4_roofline.py (logs/qwen_w4_roofline/decomp.json and micro.json) in committed code and writes the observations document scripts/adjudicate.py reads. Validity floors: no smoke receipt, no dirty tree, one commit, the promoted default (DEFAULT_RECURRENCE "kernel" in code, the engine on the kernel on every DeltaNet layer, the kernel the only recurrence executed in every counted block), the pinned model (revision from the teacher manifest, the chain sha of the artifact on disk), every W4 matrix on the GEMM path, the development prompt at 1,024 tokens, T = 256 present in the microbenchmark. A smoke receipt still yields measurements (for pipeline inspection) but measurement_valid is False, so every bar books UNRESOLVED.
+
+- `fsha(p)`
+- `main(rdir, prereg_path)`
+
 ### scratch/qwen_whole0t.py
 QWEN-WHOLE-0T compiler (PRE-REG RESULTS L32776 + -0T-ARMS).
 

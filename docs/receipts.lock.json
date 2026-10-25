@@ -5522,6 +5522,22 @@
    "source": "results",
    "tracked": true
   },
+  "logs/qwen_w4_roofline/adjudicate_1/adjudication.txt": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_w4_roofline/adjudicate_1/observations.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_w4_roofline/decomp.json": {
+   "exists": false,
+   "source": "prereg"
+  },
+  "logs/qwen_w4_roofline/micro.json": {
+   "exists": false,
+   "source": "prereg"
+  },
   "logs/qwenalttok/alttok_observations.json": {
    "exists": false,
    "source": "prereg"

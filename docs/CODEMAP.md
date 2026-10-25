@@ -624,7 +624,7 @@ Census: library 205, reproduce-pinned 9, results-cited 571, spec-cited 75, tool-
 | qwen | qwen_family_probe.py | library | RESULTS, via:specs | RESULTS×2 | 1 | 1 | — | — |
 | qwen | qwen_gdn_kernel_qual.py | results-cited | RESULTS, specs | RESULTS×10, specs×1 | — | 1 | 1 | — |
 | qwen | qwen_gdn_obs.py | results-cited | RESULTS, specs | RESULTS×6, specs×1 | — | — | — | — |
-| qwen | qwen_gdn_promote.py | results-cited | RESULTS | RESULTS×8 | — | 1 | 1 | — |
+| qwen | qwen_gdn_promote.py | results-cited | RESULTS | RESULTS×9 | — | 1 | 1 | — |
 | qwen | qwen_gdn_promote_collection.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
 | qwen | qwen_gdn_promote_obs.py | results-cited | RESULTS | RESULTS×6 | — | — | — | — |
 | qwen | qwen_gdn_promote_study.sh | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
@@ -676,7 +676,7 @@ Census: library 205, reproduce-pinned 9, results-cited 571, spec-cited 75, tool-
 | qwen | qwen_model2_adjudicate.py | library | RESULTS | RESULTS×2 | 1 | 1 | — | — |
 | qwen | qwen_prefill_obs.py | results-cited | RESULTS, specs | RESULTS×6, specs×1 | — | — | — | — |
 | qwen | qwen_prefill_study.sh | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
-| qwen | qwen_prefill_wall.py | results-cited | RESULTS, specs | RESULTS×5, specs×1 | — | 1 | 1 | — |
+| qwen | qwen_prefill_wall.py | results-cited | RESULTS, specs | RESULTS×6, specs×1 | — | 1 | 1 | — |
 | qwen | qwen_qualify.py | spec-cited | specs, TOOLING | specs×1, TOOLING×2 | — | 1 | 1 | — |
 | qwen | qwen_recompose.py | library | RESULTS, specs | RESULTS×1, specs×1 | 1 | 1 | 1 | — |
 | qwen | qwen_release_obs.py | results-cited | RESULTS | RESULTS×6 | — | — | — | — |
@@ -981,7 +981,7 @@ Census: library 205, reproduce-pinned 9, results-cited 571, spec-cited 75, tool-
 | plot | plot_identity_crest.py | spec-cited | specs | specs×3 | — | — | — | — |
 | plot | plot_neurons.py | spec-cited | specs | specs×6 | — | — | 1 | — |
 | probe | probe_depth.py | results-cited | RESULTS | RESULTS×1 | — | — | — | — |
-| qwen | qwen_chat.py | library | RESULTS, specs | RESULTS×69, specs×4 | 1 | 3 | — | — |
+| qwen | qwen_chat.py | library | RESULTS, specs | RESULTS×70, specs×4 | 1 | 3 | — | — |
 | recover | recover_receipt.py | library | RESULTS, specs, TOOLING | RESULTS×2, specs×1, TOOLING×1 | — | 2 | — | — |
 | render | render_anim.py | library | RESULTS, specs, TOOLING | RESULTS×1, specs×1, TOOLING×4 | 1 | 1 | — | — |
 | render | render_gallery.py | spec-cited | specs | specs×7 | — | — | — | — |
