@@ -168,13 +168,21 @@ a 36 GB Apple Silicon Mac through `scripts/qwen_chat.py`. The default since
 VERDICT QWEN-LOW-DEFAULT-1 is thinking at the template's low reasoning
 effort with a 768-token budget, incremental cache reuse under an exact
 rendered-prefix check with full-transcript replay as the fallback, greedy
-decoding. The fast mode answers directly without a reasoning block.
+decoding. The fast mode answers directly without a reasoning block. Since
+VERDICT QWEN-GDN-PROMOTE-0 the 48 GatedDeltaNet layers run mlx-lm's Metal
+recurrence kernel by default, selected per layer by name with the
+vendor's training flag untouched and refused under any other mlx-lm source
+than the qualified 0.31.3 pair; `--recurrence loop` selects the Python
+reference loop the earlier verdicts were measured on. The two paths were
+token-identical on every measured prompt (36 held-out comparisons, 60 v3
+battery tasks, 16 fresh CLI tasks, 9 chat turns).
 
 ```bash
 .venv/bin/python scripts/qwen_chat.py --interactive                 # ordinary: thinking, low effort, 768 tokens
 .venv/bin/python scripts/qwen_chat.py --interactive --no-thinking   # fast: direct answers
 .venv/bin/python scripts/qwen_chat.py --prompt "What is 413 * 685?" --reasoning-effort xhigh --max-tokens 1024
 .venv/bin/python scripts/qwen_chat.py --interactive --replay        # full-transcript replay every turn (the reference)
+.venv/bin/python scripts/qwen_chat.py --interactive --recurrence loop   # Python reference recurrence (the pre-promotion path)
 ```
 
 What the default buys and costs, measured on purpose-built batteries
@@ -186,8 +194,14 @@ lab, not a general accuracy figure. The cost in that battery: 12,345
 generated tokens and 1,470 s against 2,925 tokens and 485 s for direct
 answers; in four eight-turn conversations 5,202 tokens and 642 s against
 533 tokens and 123 s (logs/qwen_serve/lowchat_v1.json). Three of 68 battery turns never closed their
-reasoning block and produced no final answer. First token after about 2
-to 3.5 s on short prompts; a 2,048-token prompt waits about 63 s.
+reasoning block and produced no final answer. First-token latency on the
+kernel default (VERDICT QWEN-GDN-PROMOTE-0, medians): 2.2 s on the 16
+short CLI prompts, 8.9 s at 512 prompt tokens, 18.1 s at 1,024 and 34.9 s
+at 2,048, against 2.7, 13.3, 26.9 and 52.3 s on the reference loop; decode
+steps 94 to 96 ms against 100 to 102 ms. The prefill runs at about 57
+tokens per second at every measured length; by the VERDICT
+QWEN-PREFILL-WALL-0 decomposition the W4 MLP projections are its largest
+remaining term.
 
 Known limitations. Direct-answer mode (no thinking) collapses in longer
 conversations: in two studies it produced three consecutive empty replies

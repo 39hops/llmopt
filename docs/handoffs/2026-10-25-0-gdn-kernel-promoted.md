@@ -68,7 +68,7 @@ session; nothing here depends on it. Previous handoff: 2026-10-24-1
    fixed-rate codebook or on representations at 0.0035 bits per
    dimension; the non-sofic group shares no object with weight-space
    symmetry (finite or compact groups, hence sofic); the one item kept is
-   Chapter 7's CVP hardness as the shape constraint on any future
+   Chapter 7's CVP hardness as practical guidance (budget a fast decoder) for any future
    codebook (structured lattices with fast decoders). No experiment
    proposed, quantization stays CLOSED.
 

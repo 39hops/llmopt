@@ -145,10 +145,16 @@ E8 0.0717, the asymptotic Zador limit 1/(2 pi e) = 0.0585; Conway and
 Sloane; Agrell and Allen, arXiv 2202.09605, prove the optimal lattice
 quantizer's error is white; Agrell, Pook-Kolb and Allen, arXiv
 2401.01799, search such lattices numerically) and the shape gain of the
-source. Translated: the GRANULAR gain still available over our d = 4
-codebook is at most about 0.4 dB to a D4-class cell and about 0.65 dB to
-E8 at d = 8, and the whole asymptotic granular gain over a cube is 1.53 dB
-(0.25 bit per dimension). An asymptotic packing exponent moving by 2
+source. Translated, under the assumptions those figures carry (a fixed-rate,
+entropy-unconstrained quantizer on an i.i.d. source with the error
+measured as plain mean square): the GRANULAR gain still available over
+our d = 4 codebook is about 0.4 dB to a D4-class cell and about 0.65 dB
+to E8 at d = 8, and the whole asymptotic granular gain over a cube is
+1.53 dB (0.25 bit per dimension). These are estimates for that idealized
+regime, not rigorous caps on the house's activation-weighted W4 output
+error, whose source is neither i.i.d. nor white and whose loss is
+weighted by the activations (QWEN-LOSSY-GEOMETRY-0 measured the
+weighting, not the cell geometry, as the dominant term). An asymptotic packing exponent moving by 2
 percent of a gap says nothing at d = 4 or d = 8 and nothing about
 covering at any d. Upper bounds are upper bounds: none of the three
 chapters, nor Klartag's existence proof (a stochastic ellipsoid, not an
@@ -216,11 +222,16 @@ a codebook study ever reopened are finite-dimensional and elementary:
 the coset arithmetic of a nested lattice quantizer (encode, decode, the
 modulo-shift identity NestQuant relies on) and the exactness of a block
 exponent plus lattice point as a pair of maps. Chapter 7's CVP hardness
-is the formal reason such a quantizer must use a STRUCTURED lattice with
-a fast decoder (D4, E8, a trellis): nearest-point decoding on a generic
-lattice is hard to approximate to a polynomial factor, so "learn an
-arbitrary lattice codebook and decode optimally" is not a plan at any
-dimension that matters.
+is practical guidance, not a theorem about codebooks: it says
+nearest-point decoding on a GENERIC lattice is hard to approximate to a
+polynomial factor in the worst case, so "learn an arbitrary lattice
+codebook and decode it optimally" is not a plan at the dimensions and
+speeds that matter here. It does not say every useful codebook must be a
+structured lattice; non-lattice codebooks with their own fast decoders
+(a trained d = 4 table with 256 entries, as W4 is; trellis codes;
+product codes) are outside its scope, and an approximate decoder on an
+unstructured lattice can be perfectly serviceable in practice. The
+guidance is: whatever the codebook, budget a fast decoder up front.
 
 KNOWLEDGE TRANSFER. Nothing in the three chapters touches function
 transfer between networks. Barg's reading of the code bound (a subspace
@@ -242,8 +253,8 @@ experiment follows.
 
 | rank | theorem or result | precise assumption under which it bears on the house | expected benefit | mathematical obstacle | falsifiable prediction (not authorized to run) |
 |---|---|---|---|---|---|
-| 1 | GapCVP polynomial-factor hardness (OpenAI Ch. 7) | a future codebook that quantizes by nearest lattice point in an unstructured lattice of dimension above about 8 | a stop sign: codebooks must be D4, E8 or trellis with fast decoders (the NestQuant and QTIP route), never a learned generic lattice | none; it is a limitation theorem | any "learned lattice codebook" paper that claims optimal decoding above d = 8 at interactive speed is using a structured lattice or an approximate decoder |
-| 2 | finite-dimensional lattice quantizer theory (Zador; Agrell-Allen white-error theorem; G of D4, E8; the 1.53 dB envelope) | fixed-rate, entropy-unconstrained VQ at 2 bits per dimension on roughly Gaussian blocks, as W4 is | an explicit CAP on what any codebook geometry can still buy over W4: about 0.4 dB at d = 4, about 0.65 dB at d = 8; compatible with the 4 to 11 percent measured | the source is not Gaussian and not white; activation weighting dominates (the 26 percent on gate_proj) | an E8 nested-lattice codebook at 2.06 bits per weight on layer-22 gate_proj with real activations reads an output-error ratio of at least 0.85 against W4 (the registered NULL bar does not fire); if it reads under 0.80 this study is wrong about the regime |
+| 1 | GapCVP polynomial-factor hardness (OpenAI Ch. 7) | a future codebook that quantizes by OPTIMAL nearest lattice point in an unstructured lattice of dimension above about 8 (worst case; a generic lattice) | practical guidance: budget a fast decoder (D4, E8, trellis as in NestQuant and QTIP, or a small trained table like W4's) rather than planning on optimal decoding of a learned generic lattice; not a theorem that useful codebooks must be structured lattices | none; it is a limitation theorem | any "learned lattice codebook" paper that claims optimal decoding above d = 8 at interactive speed is using a structured lattice or an approximate decoder |
+| 2 | finite-dimensional lattice quantizer theory (Zador; Agrell-Allen white-error theorem; G of D4, E8; the 1.53 dB envelope) | fixed-rate, entropy-unconstrained VQ at 2 bits per dimension on roughly Gaussian blocks, as W4 is | an ESTIMATE, under the i.i.d. plain-mean-square assumptions, of what codebook geometry can still buy over W4: about 0.4 dB at d = 4, about 0.65 dB at d = 8; not a rigorous cap on the activation-weighted W4 distortion; compatible with the 4 to 11 percent measured | the source is not Gaussian and not white; activation weighting dominates (the 26 percent on gate_proj) | an E8 nested-lattice codebook at 2.06 bits per weight on layer-22 gate_proj with real activations reads an output-error ratio of at least 0.85 against W4 (the registered NULL bar does not fire); if it reads under 0.80 this study is wrong about the regime |
 | 3 | spherical-code and binary-code upper bounds (OpenAI Ch. 2; Alrabiah-Guruswami; Salmon's Delsarte rates; honeycomb hierarchy) | a representation at rate 0.1 to 0.5 bits per dimension with a hard minimum angular separation, in d -> infinity | none at the house's rates (0.0035 bits per dimension for the embedding table; sign codes read by collision probability) | the bounds are asymptotic in d and move by 2 percent of a gap | the maximal pairwise cosine among the 248,320 S16 embedding rows is far above what a Kabatiansky-Levenshtein-optimal spherical code of that size in d = 5,120 would need (which is near zero): the table is nowhere near a packing, so no code bound binds; a CPU desk census on the stored embedding could read it, not requested |
 | 4 | the exact Cohn-Elkies exponent sqrt(e / 2 pi) (OpenAI Ch. 1) and the polynomial lower bounds (Klartag; Gargava-Groebner-Simkin) | sphere PACKING density as d -> infinity | none for quantization (covering, finite d) | upper bound and existence proofs; no construction; packing is not covering | none |
 | 5 | non-sofic groups (OpenAI Ch. 3; Fournier-Facio torsion-free examples) | an infinite, non-amenable, finitely presented symmetry group acting on parameters | none; every parameter symmetry group in the lab is finite or compact, hence sofic; the stability question that does arise (almost-symmetric weights near exactly symmetric ones) is classical for finite groups | the objects do not meet | none; stated as a non-connection, not forced |
@@ -258,10 +269,22 @@ exact LP exponents in the d -> infinity regime; the lab's codebooks live
 at d = 4 and its representations at rates where every such bound is
 vacuous; the relevant finite-dimensional theory is older and already
 agrees with the house's NULLs. The one item worth remembering is
-negative and useful: CVP hardness fixes the shape any future codebook
-must take. The non-sofic construction is a landmark with no object in
+negative and useful: CVP hardness is a practical reason to budget a fast
+decoder into any future codebook design, not a theorem that such a
+codebook must be a structured lattice. The non-sofic construction is a landmark with no object in
 common with weight-space symmetry. Nothing here reopens the closed
 quantization thread, and nothing here authorizes a run.
+
+## Precision note (2026-10-25, Artin's ruling after reading)
+
+The 0.4 to 0.65 dB figures are finite-dimensional quantizer estimates
+under i.i.d., plain-mean-square assumptions and are not rigorous
+universal caps on the house's activation-weighted W4 distortion. Generic
+CVP hardness is not a theorem that every useful codebook must be a
+structured lattice; it is practical guidance (budget a fast decoder)
+under its worst-case, generic-lattice assumptions. The negative result
+of the study stands; the two statements are read as guidance under those
+assumptions, never as bounds. Wording above adjusted accordingly.
 
 ## Sources (metadata level)
 
