@@ -28,7 +28,9 @@ arm reproduces its own choice when re-read. Validity: five non-smoke clean-tree 
 (HF revision, chain sha256 recomputed from logs/qwenwhole/artifact_digest_C.txt, config sha256) identical across the engine stages; the frozen
 references and prompts at their pinned sha256s; every dispatch block exclusive; 6 runs per arm per length with both arms' ABBA spreads within
 3 percent on TTFT and 16-step decode (else the contrasts behind bars 7 and 8 are inadmissible, UNRESOLVED, without invalidating the rest);
-the two live suites ran (LLMOPT_QWEN_LIVE=1 with the artifact and tokenizer present, at least one test passed and none skipped in each);
+the two live suites ran (LLMOPT_QWEN_LIVE=1 with the artifact and tokenizer present recorded as preconditions, return code 0, at least 25 passed in
+tests/test_qserve.py with at most its one known stub-trajectory skip, at least 6 passed and none skipped in tests/test_qrelease.py; AMENDMENT
+QWEN-GDN-PROMOTE-0-ADAPTER: the first form of this floor read "none skipped" and would have invalidated the run on a stub-model skip that is not a live test);
 9 cache turns with every eligible DEFAULT turn reused (else bar 4's contrast is inadmissible); 60 battery tasks compared; 16 CLI tasks in both arms.
 Usage: qwen_gdn_promote_obs.py <receipt dir> <prereg.json> > observations.json
 """
@@ -45,6 +47,9 @@ from llmopt.lab.prereg import load, registration_digest  # noqa: E402
 STAGES = ("tests", "heldout", "cache", "battery", "cli")
 HF_REVISION = "1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0"
 CHAIN = "logs/qwenwhole/artifact_digest_C.txt"
+# the live suites' expected shape at the registration commit: (minimum passed, maximum skipped); the one admissible test_qserve skip is the
+# stub model's "no stop trajectory" parametrization (tests/test_qserve.py, a pytest.skip inside a stub-only test), never a live test
+LIVE_SUITE_FLOORS = {"tests/test_qserve.py": (25, 1), "tests/test_qrelease.py": (6, 0)}
 PINS = {"logs/qwen_gdn/heldout.json": "288d8fd85c5c855b12eebe8a7c0623ac0764165ad2775cde1d655f1603971382",
         "logs/qwen_battery/results_v3_C.json": "c47c2d42cd58443f7a510615c6eed101fe7b7557483c8663f4000f8077b1a5d0"}
 SPREAD_PCT = 3.0
@@ -87,12 +92,18 @@ def main(rdir, prereg_path):
     v = R["heldout"]["vendor"]
     if not v.get("metal_available") or "gpu" not in v.get("default_device", ""):
         reasons.append("the default device is not the Metal GPU")
-    pins = {json.dumps(R[st]["model_pin"], sort_keys=True) for st in ("heldout", "cache", "battery") if "model_pin" in R[st]}
+    def stable_pin(pin):
+        """The pin without the qualify report's preflight block (free memory at load time, a per-process reading, not an identity)."""
+        pin = json.loads(json.dumps(pin))
+        pin.get("artifact", {}).get("chain_report", {}).pop("preflight", None)
+        return json.dumps(pin, sort_keys=True)
+    pins = {stable_pin(R[st]["model_pin"]) for st in ("heldout", "cache", "battery") if "model_pin" in R[st]}
     if len(pins) != 1:
         reasons.append(f"model pin differs between the engine stages ({len(pins)} distinct)")
     pin = R["heldout"].get("model_pin", {})
-    if pin.get("source_weights", {}).get("hf_revision") != HF_REVISION or pin.get("source_weights", {}).get("teacher_manifest_revision") != HF_REVISION:
-        reasons.append("the source-weights revision is not the pinned one")
+    sw = pin.get("source_weights", {})
+    if sw.get("hf_revision") != HF_REVISION or sw.get("revision_source") != "logs/qwenteacher_v2/teacher_manifest.json":
+        reasons.append(f"the source-weights revision is not the pinned one ({sw.get('hf_revision')} from {sw.get('revision_source')})")
     if os.path.exists(CHAIN) and pin.get("artifact", {}).get("chain_sha256") != fsha(CHAIN):
         reasons.append("the artifact chain sha256 in the receipt is not the chain file's")
     cfg = pin.get("config", {})
@@ -117,9 +128,13 @@ def main(rdir, prereg_path):
     T = R["tests"]["summary"]
     if not T.get("live") or T.get("suites") != 9:
         reasons.append(f"tests: {T.get('suites')} suites, live {T.get('live')} (9 suites with the two live ones registered)")
-    for suite, c in T.get("live_suites", {}).items():
-        if c.get("passed", 0) < 1 or c.get("skipped", 0) != 0:
-            reasons.append(f"tests: live suite {suite} passed {c.get('passed')} skipped {c.get('skipped')} (the live tests did not run)")
+    pre = R["tests"].get("live_preconditions", {})
+    if not (pre.get("LLMOPT_QWEN_LIVE") == "1" and pre.get("artifact_manifest_present") and pre.get("vendor_tokenizer_present")):
+        reasons.append(f"tests: live preconditions not met {pre}")
+    for suite, (min_passed, max_skipped) in LIVE_SUITE_FLOORS.items():
+        c = T.get("live_suites", {}).get(suite)
+        if not c or c.get("rc") != 0 or c.get("passed", 0) < min_passed or c.get("skipped", 0) > max_skipped:
+            reasons.append(f"tests: live suite {suite} {c} outside its floor (at least {min_passed} passed, at most {max_skipped} skipped: the live tests did not run)")
     H = R["heldout"]
     if H.get("frozen_reference", {}).get("sha256") != PINS["logs/qwen_gdn/heldout.json"]:
         reasons.append("heldout: the frozen reference is not the pinned receipt")

@@ -86335,3 +86335,61 @@ in one process because the frozen build rewrites the vendor class from
 its own source, pre-existing and not worsened; the forcing instrument
 overrides a selection by design) are disclosed here. Nothing in the model, codec or kernels
 changes; the qualification receipts under logs/qwen_gdn/ are untouched.
+
+## AMENDMENT QWEN-GDN-PROMOTE-0-ADAPTER (target: PRE-REG QWEN-GDN-PROMOTE-0): three validity floors of the observations adapter corrected AFTER the run and BEFORE adjudication; no bar, threshold, fence or decision rule moves; what has and has not been seen stated (2026-10-25, Mac)
+
+The chain ran under liverun qwen-gdn-promote-0 at 65039e50 (armed
+05:27:12 UTC, disarmed 06:34:47, rc 0, 67 minutes; five receipts under
+logs/qwen_gdn_promote/). The adapter scratch/qwen_gdn_promote_obs.py,
+run once over those receipts to a scratch path, declared the
+observations INVALID for three reasons, each a defect of the adapter's
+own floors and none a reading of either arm:
+
+1. "model pin differs between the engine stages (3 distinct)": the
+   model pin block copies the artifact qualify report whole, and that
+   report carries preflight.available_bytes, the free memory at load
+   time, a per-process reading. Every other pin field (vendor
+   configuration sha256s, configuration summary, revision, chain
+   sha256, manifest sha256, codec counts, families, payload bytes,
+   architecture module sha256s) is identical across the three engine
+   receipts. Correction: the pin comparison drops the preflight block
+   and compares the rest.
+2. "the source-weights revision is not the pinned one": the adapter
+   still read a field named teacher_manifest_revision, which the
+   driver's pre-registration audit fix (the revision READ from the
+   manifest, N6) had replaced by hf_revision plus revision_source. The
+   receipts carry hf_revision 1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0
+   read from logs/qwenteacher_v2/teacher_manifest.json (sha256
+   a29a7415...). Correction: the adapter checks hf_revision against the
+   registered value and revision_source against the manifest path.
+3. "live suite tests/test_qserve.py passed 25 skipped 1 (the live
+   tests did not run)": the floor adopted from the audit's S1 ("at
+   least one test passed and none skipped in each live suite") was
+   written as skipped == 0, and tests/test_qserve.py carries one
+   stub-model skip that is not a live test: the parametrized stub-trajectory test at tests/test_qserve.py:250 skips with "no empty trajectory in the stub" (re-run with -rs under LLMOPT_QWEN_LIVE=1 after the chain: 25 passed, 1 skipped, the same count). The live
+   tests themselves ran (the suite's 26 collected tests: 25 passed, 1
+   skipped, return code 0; LLMOPT_QWEN_LIVE=1 with the artifact and
+   tokenizer present recorded as preconditions). Correction: the floor
+   becomes, per live suite at this commit, return code 0, the
+   preconditions true, at least 25 passed with at most 1 skipped in
+   tests/test_qserve.py and at least 6 passed with none skipped in
+   tests/test_qrelease.py.
+
+What HAS been seen before this amendment: the chain log's per-run
+lines (TTFT, end-to-end, peak and step for every held-out run, with
+the frozen-loop equality flag), the stage summaries (the held-out
+ratios, the cache counts, the battery pass count and equality to the
+frozen receipt, the CLI pass counts and equality), the test suite
+summaries, and the adapter's scratch output after the corrections
+(every measurement value). What has NOT been seen: the adjudicator's
+output. The corrections above do not touch a threshold, a fence, a
+population, an aggregation or the decision rule; they change only
+which receipts the adapter accepts as valid, in the direction the
+registered text intended (the floors exist to catch a run that did not
+happen, not a stub skip or a free-memory reading). Had the adapter been
+left as registered, every bar would have read UNRESOLVED on a
+measurement-validity failure caused by the adapter, and the promotion
+would have been HELD for a reason that is not a property of the kernel
+path; booking that as the verdict would have been a false reading, so
+the correction is made and disclosed here, before the adjudication is
+run and read. The adapter's corrected sha256 is recorded in the verdict.
