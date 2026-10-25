@@ -3,9 +3,8 @@
 Session: Fable 5.1 on the Mac. Opus 5.5: a methodology audit before
 registration (three blockers, eleven should-fix items, all applied), a
 receipt audit and a pre-registration audit before booking. HEAD at close: the
-booking commit of this handoff (git log -1), on origin/main. 3080: synced to 4a828e10 at the session's start (ff-only, HEAD
-asserted); the later commits are not yet pulled there and nothing in this
-session depends on it. Previous handoff: 2026-10-24-0 (the prefill wall).
+booking commit of this handoff (git log -1), on origin/main. 3080: fast-forwarded to the booking commit after the push (ff-only, HEAD
+asserted); nothing in this session depends on it. Previous handoff: 2026-10-24-0 (the prefill wall).
 Read BOARD first.
 
 ## What happened
@@ -61,8 +60,6 @@ Read BOARD first.
   fresh-prompt battery through the CLI, held-out parity on the promoted
   code); the selection should live in qtower or qserve under the existing
   vendor source guard, by name, never by model.eval().
-- The 3080 checkout is three commits behind (4a828e10); ff-only sync is
-  standing OK when it is next needed.
 - Muon and transfer workstreams: assessment delivered in chat only, no
   RIFF bank yet (open decision 3).
 
@@ -93,5 +90,5 @@ flip as its verdict), then the W4 GEMM half of the remaining prefill wall.
 Receipts force-added by file name: the six stage receipts (census
 positions 3.0 MB, the one large text receipt, kept because the near-tie
 rows and every per-position margin are the evidence), the chain log, the
-adjudication pair, the calibration receipt, both smoke chains. Mac checkout
-at origin/main; 3080 at 4a828e10.
+adjudication pair, the calibration receipt, both smoke chains. Both checkouts at
+origin/main.
