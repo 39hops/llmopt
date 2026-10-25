@@ -1,0 +1,951 @@
+{
+ "note": "Mechanical projection of the five stage receipts under logs/qwen_gdn (commit 2e3c9cb5); adapter scratch/qwen_gdn_obs.py",
+ "registration_sha256": "1d6bedf5df10ae75d4cf0dcac72372ffd9d50ce993b471cc09ce514f65429e68",
+ "measurement_valid": true,
+ "arms": {
+  "LOOP": {
+   "admissible": true,
+   "reason": "the released path's recurrence (gated_delta_ops), selected by name; dispatch proven by the executed counts"
+  },
+  "KERNEL": {
+   "admissible": true,
+   "reason": "the Metal recurrence kernel selected by name; dispatch proven by the executed counts"
+  }
+ },
+ "measurements": {
+  "1": {
+   "value": 0,
+   "metric": "census_argmax_mismatches",
+   "population": "census-positions:4722",
+   "aggregation": "count",
+   "unit": "positions",
+   "provenance": "{\"mismatches\": [], \"full_vocab_max_abs_diff\": {\"max\": 0.0009340643882751465, \"p99\": 0.0002180409431457519, \"median\": 4.8160552978515625e-05}, \"top16_max_abs_diff\": {\"max\": 0.0006589889526367188, \"p99\": 0.0001171016693115234, \"median\": 3.4332275390625e-05}, \"teacher_agree\": {\"LOOP\": 0.8290978398983482, \"KERNEL\": 0.8290978398983482}, \"loop_vs_frozen_metal_identical\": 4722}"
+  },
+  "2": {
+   "value": 0,
+   "metric": "census_near_tie_flips",
+   "population": "census-near-ties:15",
+   "aggregation": "count",
+   "unit": "positions",
+   "provenance": "[{\"prompt_id\": \"chat-2\", \"step\": 80, \"loop_argmax\": 1248, \"kernel_argmax\": 1248, \"identical\": true, \"loop_margin\": 0.012981414794921875, \"kernel_margin\": 0.012956619262695312, \"frozen_metal_margin\": 0.01296234130859375, \"teacher_token\": 1248}, {\"prompt_id\": \"chat-2\", \"step\": 126, \"loop_argmax\": 26561, \"kernel_argmax\": 26561, \"identical\": true, \"loop_margin\": 0.019073486328125, \"kernel_margin\": 0.019086837768554688, \"frozen_metal_margin\": 0.019006729125976562, \"teacher_token\": 7418}, {\"prompt_id\": \"chat-2\", \"step\": 187, \"loop_argmax\": 36, \"kernel_argmax\": 36, \"identical\": true, \"loop_margin\": 0.0048122406005859375, \"kernel_margin\": 0.004795074462890625, \"frozen_metal_margin\": 0.0047969818115234375, \"teacher_token\": 36}, {\"prompt_id\": \"chat-2\", \"step\": 253, \"loop_argmax\": 1248, \"kernel_argmax\": 1248, \"identical\": true, \"loop_margin\": 0.015573501586914062, \"kernel_margin\": 0.015594482421875, \"frozen_metal_margin\": 0.015560150146484375, \"teacher_token\": 1204}, {\"prompt_id\": \"math-1\", \"step\": 149, \"loop_argmax\": 553, \"kernel_argmax\": 553, \"identical\": true, \"loop_margin\": 0.013147354125976562, \"kernel_margin\": 0.01316070556640625, \"frozen_metal_margin\": 0.013208389282226562, \"teacher_token\": 1590}, {\"prompt_id\": \"code-3\", \"step\": 49, \"loop_argmax\": 11, \"kernel_argmax\": 11, \"identical\": true, \"loop_margin\": 0.017179489135742188, \"kernel_margin\": 0.01715850830078125, \"frozen_metal_margin\": 0.017175674438476562, \"teacher_token\": 11}, {\"prompt_id\": \"code-4\", \"step\": 253, \"loop_argmax\": 3333, \"kernel_argmax\": 3333, \"identical\": true, \"loop_margin\": 0.019479751586914062, \"kernel_margin\": 0.019474029541015625, \"frozen_metal_margin\": 0.019573211669921875, \"teacher_token\": 434}, {\"prompt_id\": \"reason-2\", \"step\": 45, \"loop_argmax\": 1596, \"kernel_argmax\": 1596, \"identical\": true, \"loop_margin\": 0.014192581176757812, \"kernel_margin\": 0.014194488525390625, \"frozen_metal_margin\": 0.014232635498046875, \"teacher_token\": 1596}, {\"prompt_id\": \"reason-2\", \"step\": 75, \"loop_argmax\": 4732, \"kernel_argmax\": 4732, \"identical\": true, \"loop_margin\": 0.0066375732421875, \"kernel_margin\": 0.006626129150390625, \"frozen_metal_margin\": 0.0065822601318359375, \"teacher_token\": 4732}, {\"prompt_id\": \"reason-2\", \"step\": 140, \"loop_argmax\": 67180, \"kernel_argmax\": 67180, \"identical\": true, \"loop_margin\": 0.017148971557617188, \"kernel_margin\": 0.01715087890625, \"frozen_metal_margin\": 0.017120361328125, \"teacher_token\": 64386}, {\"prompt_id\": \"reason-2\", \"step\": 169, \"loop_argmax\": 874, \"kernel_argmax\": 874, \"identical\": true, \"loop_margin\": 0.0045375823974609375, \"kernel_margin\": 0.0045528411865234375, \"frozen_metal_margin\": 0.0045757293701171875, \"teacher_token\": 3070}, {\"prompt_id\": \"reason-4\", \"step\": 179, \"loop_argmax\": 61446, \"kernel_argmax\": 61446, \"identical\": true, \"loop_margin\": 0.0057125091552734375, \"kernel_margin\": 0.0057220458984375, \"frozen_metal_margin\": 0.0057392120361328125, \"teacher_token\": 61446}, {\"prompt_id\": \"know-1\", \"step\": 94, \"loop_argmax\": 11283, \"kernel_argmax\": 11283, \"identical\": true, \"loop_margin\": 0.01923370361328125, \"kernel_margin\": 0.01927947998046875, \"frozen_metal_margin\": 0.019292831420898438, \"teacher_token\": 11995}, {\"prompt_id\": \"long-1\", \"step\": 248, \"loop_argmax\": 13, \"kernel_argmax\": 13, \"identical\": true, \"loop_margin\": 0.0012187957763671875, \"kernel_margin\": 0.001201629638671875, \"frozen_metal_margin\": 0.0012359619140625, \"teacher_token\": 440}, {\"prompt_id\": \"long-2\", \"step\": 163, \"loop_argmax\": 2919, \"kernel_argmax\": 2919, \"identical\": true, \"loop_margin\": 0.016376495361328125, \"kernel_margin\": 0.016386032104492188, \"frozen_metal_margin\": 0.016361236572265625, \"teacher_token\": 220}]"
+  },
+  "3": {
+   "value": 6.126674753292482e-05,
+   "metric": "state_max_abs_over_rms",
+   "population": "layers-stage:6-dnet-layers-x-4-chunks+kernel-carried+decode-step",
+   "aggregation": "max",
+   "unit": "ratio",
+   "provenance": "{\"same_state_in\": 5.241960202560004e-05, \"kernel_carried\": 6.126674753292482e-05, \"y_same_state_in\": 9.806408848000703e-06, \"kernel_repeat_max_abs\": 0.0, \"per_call_ms\": {\"loop_median\": 44.44424994289875, \"kernel_median\": 3.1122503569349647}}"
+  },
+  "3:rel": {
+   "value": 5.6388394297527574e-05,
+   "metric": "state_max_rel_on_large",
+   "population": "layers-stage:6-dnet-layers-x-4-chunks+kernel-carried+decode-step",
+   "aggregation": "max",
+   "unit": "ratio"
+  },
+  "3:prop": {
+   "value": 0.0006680354114186168,
+   "metric": "propagated_state_max_abs_over_rms",
+   "population": "final-states:census-48-layers-x-24-prompts+decode-2-prompts",
+   "aggregation": "max",
+   "unit": "ratio",
+   "provenance": "{\"census_final\": 0.0006680354114186168, \"census_conv\": 0.00010204106700920977, \"census_rel_on_large\": 0.0035310734463276836, \"decode_final\": 0.00023089656172255778}"
+  },
+  "3:finite": {
+   "value": 0,
+   "metric": "nonfinite_arrays",
+   "population": "all-compared-arrays",
+   "aggregation": "count",
+   "unit": "arrays"
+  },
+  "4": {
+   "value": 0,
+   "metric": "decode_stream_mismatch_prompts",
+   "population": "decode-prompts:2",
+   "aggregation": "count",
+   "unit": "prompts",
+   "provenance": "[{\"streams_equal\": true, \"first_divergence\": null, \"margins_at_divergence\": null, \"step_median_s\": {\"LOOP\": 0.09956772951409221, \"KERNEL\": 0.09324831259436905}}, {\"streams_equal\": true, \"first_divergence\": null, \"margins_at_divergence\": null, \"step_median_s\": {\"LOOP\": 0.09956039558164775, \"KERNEL\": 0.09326612506993115}}]"
+  },
+  "4:logit": {
+   "value": 0.00011962652206420898,
+   "metric": "teacher_forced_max_abs_logit_diff",
+   "population": "decode-steps:512",
+   "aggregation": "max",
+   "unit": "logits",
+   "provenance": "{\"argmax_mismatches_teacher_forced\": 0, \"final_state_max_abs_over_rms\": 0.00023089656172255778, \"state_by_step_max\": 0.00024602554102722837}"
+  },
+  "4:repeat": {
+   "value": 0,
+   "metric": "kernel_repeat_unequal_prompts",
+   "population": "decode-prompts:2",
+   "aggregation": "count",
+   "unit": "prompts"
+  },
+  "5": {
+   "value": 0,
+   "metric": "cache_history_unequal_turns",
+   "population": "chat-turns:9",
+   "aggregation": "count",
+   "unit": "turns",
+   "provenance": "{\"kernel_inc_vs_replay_unequal\": 0, \"kernel_vs_loop_unequal\": 0, \"loop_inc_vs_replay_unequal\": 0, \"incremental_reused_turns\": {\"LOOP\": 6, \"KERNEL\": 6}, \"fallback_turns\": {\"LOOP\": 0, \"KERNEL\": 0}}"
+  },
+  "6": {
+   "value": 1.0084623386981093,
+   "metric": "peak_ratio_max",
+   "population": "heldout-lengths:3",
+   "aggregation": "max_ratio",
+   "unit": "ratio",
+   "provenance": "{\"512\": {\"peak\": 1.0068, \"peak_after_decode\": 1.0068, \"footprint\": 0.9998, \"transient\": 1.0264, \"parity_mismatches\": 0, \"top16_max_abs_diff\": 5.53131103515625e-05}, \"1024\": {\"peak\": 1.0085, \"peak_after_decode\": 1.0085, \"footprint\": 0.9828, \"transient\": 1.0319, \"parity_mismatches\": 0, \"top16_max_abs_diff\": 1.9073486328125e-05}, \"2048\": {\"peak\": 1.0081, \"peak_after_decode\": 1.0081, \"footprint\": 0.9997, \"transient\": 1.0296, \"parity_mismatches\": 0, \"top16_max_abs_diff\": 0.000186920166015625}}"
+  },
+  "6:decode": {
+   "value": 0.936202314072035,
+   "metric": "decode16_s_ratio_max",
+   "population": "heldout-lengths:3",
+   "aggregation": "max_median_ratio",
+   "unit": "ratio",
+   "provenance": "{\"512\": 0.9324, \"1024\": 0.9362, \"2048\": 0.934}"
+  },
+  "6:ttft512": {
+   "value": 0.6733909910529539,
+   "metric": "ttft_ratio_512",
+   "population": "heldout-512:6v6",
+   "aggregation": "median_ratio",
+   "unit": "ratio"
+  },
+  "7": {
+   "value": 0.6736170675882888,
+   "metric": "ttft_ratio_1024",
+   "population": "heldout-1024:6v6",
+   "aggregation": "median_ratio",
+   "unit": "ratio",
+   "provenance": "{\"ttft_median_s\": {\"LOOP\": 26.875514938030392, \"KERNEL\": 18.103805562481284}, \"loop_spread_pct\": 0.2, \"kernel_spread_pct\": 0.23, \"instrumented\": {\"LOOP\": {\"issue_s\": 0.5045447910670191, \"complete_s\": 26.87277299980633, \"gpu_side_s\": 26.36822820873931}, \"KERNEL\": {\"issue_s\": 0.060965959215536714, \"complete_s\": 18.109437457984313, \"gpu_side_s\": 18.048471498768777}}}"
+  },
+  "8": {
+   "value": 0.6663655262959768,
+   "metric": "ttft_ratio_2048",
+   "population": "heldout-2048:6v6",
+   "aggregation": "median_ratio",
+   "unit": "ratio",
+   "provenance": "{\"ttft_median_s\": {\"LOOP\": 52.30582500004675, \"KERNEL\": 34.85479860450141}, \"loop_spread_pct\": 1.62, \"kernel_spread_pct\": 0.14, \"instrumented\": {\"LOOP\": {\"issue_s\": 0.9778612486552447, \"complete_s\": 52.25303833303042, \"gpu_side_s\": 51.27517708437517}, \"KERNEL\": {\"issue_s\": 0.10979970917105675, \"complete_s\": 34.84251904208213, \"gpu_side_s\": 34.732719332911074}}}"
+  },
+  "9": {
+   "value": 0.9363690605120969,
+   "metric": "decode_step_ratio_long_1024",
+   "population": "long-1024:4v4",
+   "aggregation": "median_ratio",
+   "unit": "ratio",
+   "provenance": "{\"decode_step_ms\": {\"LOOP\": 101.00007330765948, \"KERNEL\": 94.57334375474602}, \"streams_equal_to_loop\": 4, \"loop_self_equal\": 4}"
+  },
+  "10": {
+   "value": 0.8024664167112764,
+   "metric": "e2e_ratio_long_1024",
+   "population": "long-1024:4v4",
+   "aggregation": "median_ratio",
+   "unit": "ratio",
+   "provenance": "{\"e2e_s\": {\"LOOP\": 52.841313709155656, \"KERNEL\": 42.40337966650259}}"
+  },
+  "census_argmax_mismatches": {
+   "value": 0,
+   "metric": "census_argmax_mismatches",
+   "population": "census-positions:4722",
+   "aggregation": "count",
+   "unit": "positions",
+   "provenance": "{\"mismatches\": [], \"full_vocab_max_abs_diff\": {\"max\": 0.0009340643882751465, \"p99\": 0.0002180409431457519, \"median\": 4.8160552978515625e-05}, \"top16_max_abs_diff\": {\"max\": 0.0006589889526367188, \"p99\": 0.0001171016693115234, \"median\": 3.4332275390625e-05}, \"teacher_agree\": {\"LOOP\": 0.8290978398983482, \"KERNEL\": 0.8290978398983482}, \"loop_vs_frozen_metal_identical\": 4722}"
+  }
+ },
+ "diagnostics": {
+  "heldout": {
+   "512": {
+    "n": 6,
+    "ttft_median_s": {
+     "LOOP": 13.188728875014931,
+     "KERNEL": 8.881171207875013
+    },
+    "ttft_ratio": 0.6733909910529539,
+    "loop_spread_pct": 0.5460078873478751,
+    "kernel_spread_pct": 0.2235572256601742,
+    "loop_decode16_spread_pct": 0.4845206383288292,
+    "kernel_decode16_spread_pct": 0.6710853027307999,
+    "e2e16_ratio": 0.7016926644313843,
+    "decode16_s_ratio": 0.9324007004187579,
+    "decode_step_ratio": 0.936939180315046,
+    "parity_mismatches": 0,
+    "loop_self_mismatches": 0,
+    "top16_max_abs_diff": 5.53131103515625e-05,
+    "peak_ratio": 1.006846041009153,
+    "peak_after_decode_ratio": 1.006846041009153,
+    "footprint_ratio": 0.999814344832706,
+    "transient_ratio": 1.0264491760395096,
+    "instrumented": {
+     "LOOP": {
+      "issue_s": 0.2367312500718981,
+      "complete_s": 13.20873925019987,
+      "gpu_side_s": 12.972008000127971
+     },
+     "KERNEL": {
+      "issue_s": 0.04455804219469428,
+      "complete_s": 8.904335833154619,
+      "gpu_side_s": 8.859777790959924
+     }
+    }
+   },
+   "1024": {
+    "n": 6,
+    "ttft_median_s": {
+     "LOOP": 26.875514938030392,
+     "KERNEL": 18.103805562481284
+    },
+    "ttft_ratio": 0.6736170675882888,
+    "loop_spread_pct": 0.19860952613338484,
+    "kernel_spread_pct": 0.23409465906053525,
+    "loop_decode16_spread_pct": 1.918662508706646,
+    "kernel_decode16_spread_pct": 0.2194600571906994,
+    "e2e16_ratio": 0.6884269268059301,
+    "decode16_s_ratio": 0.936202314072035,
+    "decode_step_ratio": 0.9371738733117438,
+    "parity_mismatches": 0,
+    "loop_self_mismatches": 0,
+    "top16_max_abs_diff": 1.9073486328125e-05,
+    "peak_ratio": 1.0084623386981093,
+    "peak_after_decode_ratio": 1.0084623386981093,
+    "footprint_ratio": 0.9827745818811898,
+    "transient_ratio": 1.0318886668074796,
+    "instrumented": {
+     "LOOP": {
+      "issue_s": 0.5045447910670191,
+      "complete_s": 26.87277299980633,
+      "gpu_side_s": 26.36822820873931
+     },
+     "KERNEL": {
+      "issue_s": 0.060965959215536714,
+      "complete_s": 18.109437457984313,
+      "gpu_side_s": 18.048471498768777
+     }
+    }
+   },
+   "2048": {
+    "n": 6,
+    "ttft_median_s": {
+     "LOOP": 52.30582500004675,
+     "KERNEL": 34.85479860450141
+    },
+    "ttft_ratio": 0.6663655262959768,
+    "loop_spread_pct": 1.619975165211598,
+    "kernel_spread_pct": 0.1359226992743824,
+    "loop_decode16_spread_pct": 0.4414882138634227,
+    "kernel_decode16_spread_pct": 1.2202341568138388,
+    "e2e16_ratio": 0.6745557149406988,
+    "decode16_s_ratio": 0.933963938357032,
+    "decode_step_ratio": 0.9371527933853822,
+    "parity_mismatches": 0,
+    "loop_self_mismatches": 0,
+    "top16_max_abs_diff": 0.000186920166015625,
+    "peak_ratio": 1.0080963859464747,
+    "peak_after_decode_ratio": 1.0080963859464747,
+    "footprint_ratio": 0.9997357493558715,
+    "transient_ratio": 1.0296359344805983,
+    "instrumented": {
+     "LOOP": {
+      "issue_s": 0.9778612486552447,
+      "complete_s": 52.25303833303042,
+      "gpu_side_s": 51.27517708437517
+     },
+     "KERNEL": {
+      "issue_s": 0.10979970917105675,
+      "complete_s": 34.84251904208213,
+      "gpu_side_s": 34.732719332911074
+     }
+    }
+   },
+   "long:1024": {
+    "steps": 256,
+    "n": 4,
+    "e2e_ratio": 0.8024664167112764,
+    "spread_pct": {
+     "loop_e2e": 0.14479981527070224,
+     "kernel_e2e": 0.12026714215638709,
+     "loop_step": 0.13118740884697722,
+     "kernel_step": 0.1573731296006176
+    },
+    "e2e_s": {
+     "LOOP": 52.841313709155656,
+     "KERNEL": 42.40337966650259
+    },
+    "decode_step_ratio": 0.9363690605120969,
+    "decode_step_ms": {
+     "LOOP": 101.00007330765948,
+     "KERNEL": 94.57334375474602
+    },
+    "streams_equal_to_loop": 4,
+    "loop_self_equal": 4,
+    "peak_after_decode_ratio": 1.0084623386981093
+   },
+   "long:2048": {
+    "steps": 256,
+    "n": 2,
+    "e2e_ratio": 0.7568679452600965,
+    "spread_pct": {
+     "loop_e2e": 0.20696063728471503,
+     "kernel_e2e": 0.003818518862914069,
+     "loop_step": 0.08528064909766316,
+     "kernel_step": 0.0746958015782005
+    },
+    "e2e_s": {
+     "LOOP": 78.49314679158852,
+     "KERNEL": 59.40894672914874
+    },
+    "decode_step_ratio": 0.9376526199672214,
+    "decode_step_ms": {
+     "LOOP": 101.96733329212293,
+     "KERNEL": 95.60993721242994
+    },
+    "streams_equal_to_loop": 2,
+    "loop_self_equal": 2,
+    "peak_after_decode_ratio": 1.0080963859464747
+   },
+   "4096": {
+    "ttft_ratio": 0.6677479405513015,
+    "ttft_median_s": {
+     "LOOP": 104.89633493695874,
+     "KERNEL": 70.04431162553374
+    },
+    "peak_ratio": 1.0081216988650585,
+    "parity_mismatches": 0,
+    "role": "development prompt, descriptive"
+   }
+  },
+  "layers": {
+   "same_state_in": {
+    "y_max_abs_over_rms": 9.806408848000703e-06,
+    "state_max_abs_over_rms": 5.241960202560004e-05,
+    "y_max_rel_on_large": 2.490942655732351e-05,
+    "state_max_rel_on_large": 5.6388394297527574e-05,
+    "all_finite": true,
+    "kernel_repeat_max_abs": 0.0
+   },
+   "kernel_carried": {
+    "state_max_abs_over_rms": 6.126674753292482e-05,
+    "y_max_abs_over_rms": 1.382059648071532e-05,
+    "state_max_rel_on_large": 4.708988639999391e-05,
+    "all_finite": true
+   },
+   "per_call_ms": {
+    "loop_median": 44.44424994289875,
+    "kernel_median": 3.1122503569349647
+   }
+  },
+  "decode": {
+   "n_prompts": 2,
+   "stream_mismatch_prompts": 0,
+   "kernel_repeat_unequal_prompts": 0,
+   "teacher_forced_max_abs_logit_diff": 0.00011962652206420898,
+   "teacher_forced_argmax_mismatches": 0,
+   "final_state_max_abs_over_rms": 0.00023089656172255778,
+   "all_finite": true,
+   "nonfinite_arrays": 0,
+   "state_by_step_max": 0.00024602554102722837,
+   "step_median_s": {
+    "LOOP": 0.09956406254786998,
+    "KERNEL": 0.0932572188321501
+   }
+  },
+  "cachehist": {
+   "n_turns": 9,
+   "unequal_turns": 0,
+   "kernel_inc_vs_replay_unequal": 0,
+   "kernel_vs_loop_unequal": 0,
+   "loop_inc_vs_replay_unequal": 0,
+   "incremental_reused_turns": {
+    "LOOP": 6,
+    "KERNEL": 6
+   },
+   "fallback_turns": {
+    "LOOP": 0,
+    "KERNEL": 0
+   }
+  },
+  "census": {
+   "argmax_identical": 4722,
+   "teacher_agree": {
+    "LOOP": 0.8290978398983482,
+    "KERNEL": 0.8290978398983482
+   },
+   "full_vocab_max_abs_diff": {
+    "max": 0.0009340643882751465,
+    "p99": 0.0002180409431457519,
+    "median": 4.8160552978515625e-05
+   },
+   "top16_max_abs_diff": {
+    "max": 0.0006589889526367188,
+    "p99": 0.0001171016693115234,
+    "median": 3.4332275390625e-05
+   },
+   "state_max_abs_over_rms": 0.0006680354114186168,
+   "wall_s": {
+    "LOOP": 195.05306666670367,
+    "KERNEL": 140.78196791606024
+   }
+  },
+  "dispatch_counts": {
+   "layers": [
+    {
+     "label": "capture through the loop path",
+     "path": "loop",
+     "executed": {
+      "ops": 192,
+      "kernel": 0
+     },
+     "update_calls": 192
+    }
+   ],
+   "census": [
+    {
+     "label": "census chat-1 LOOP",
+     "path": "loop",
+     "executed": {
+      "ops": 96,
+      "kernel": 0
+     },
+     "update_calls": 96
+    },
+    {
+     "label": "census chat-1 KERNEL",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 96
+     },
+     "update_calls": 96
+    },
+    {
+     "label": "census chat-2 KERNEL",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 96
+     },
+     "update_calls": 96
+    },
+    {
+     "label": "census chat-2 LOOP",
+     "path": "loop",
+     "executed": {
+      "ops": 96,
+      "kernel": 0
+     },
+     "update_calls": 96
+    },
+    {
+     "label": "census chat-3 LOOP",
+     "path": "loop",
+     "executed": {
+      "ops": 48,
+      "kernel": 0
+     },
+     "update_calls": 48
+    },
+    {
+     "label": "census chat-3 KERNEL",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 48
+     },
+     "update_calls": 48
+    },
+    {
+     "label": "census chat-4 KERNEL",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 48
+     },
+     "update_calls": 48
+    },
+    {
+     "label": "census chat-4 LOOP",
+     "path": "loop",
+     "executed": {
+      "ops": 48,
+      "kernel": 0
+     },
+     "update_calls": 48
+    },
+    {
+     "label": "census math-1 LOOP",
+     "path": "loop",
+     "executed": {
+      "ops": 96,
+      "kernel": 0
+     },
+     "update_calls": 96
+    },
+    {
+     "label": "census math-1 KERNEL",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 96
+     },
+     "update_calls": 96
+    },
+    {
+     "label": "census math-2 KERNEL",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 48
+     },
+     "update_calls": 48
+    },
+    {
+     "label": "census math-2 LOOP",
+     "path": "loop",
+     "executed": {
+      "ops": 48,
+      "kernel": 0
+     },
+     "update_calls": 48
+    },
+    {
+     "label": "census math-3 LOOP",
+     "path": "loop",
+     "executed": {
+      "ops": 48,
+      "kernel": 0
+     },
+     "update_calls": 48
+    },
+    {
+     "label": "census math-3 KERNEL",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 48
+     },
+     "update_calls": 48
+    },
+    {
+     "label": "census math-4 KERNEL",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 48
+     },
+     "update_calls": 48
+    },
+    {
+     "label": "census math-4 LOOP",
+     "path": "loop",
+     "executed": {
+      "ops": 48,
+      "kernel": 0
+     },
+     "update_calls": 48
+    },
+    {
+     "label": "census code-1 LOOP",
+     "path": "loop",
+     "executed": {
+      "ops": 96,
+      "kernel": 0
+     },
+     "update_calls": 96
+    },
+    {
+     "label": "census code-1 KERNEL",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 96
+     },
+     "update_calls": 96
+    },
+    {
+     "label": "census code-2 KERNEL",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 96
+     },
+     "update_calls": 96
+    },
+    {
+     "label": "census code-2 LOOP",
+     "path": "loop",
+     "executed": {
+      "ops": 96,
+      "kernel": 0
+     },
+     "update_calls": 96
+    },
+    {
+     "label": "census code-3 LOOP",
+     "path": "loop",
+     "executed": {
+      "ops": 96,
+      "kernel": 0
+     },
+     "update_calls": 96
+    },
+    {
+     "label": "census code-3 KERNEL",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 96
+     },
+     "update_calls": 96
+    },
+    {
+     "label": "census code-4 KERNEL",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 96
+     },
+     "update_calls": 96
+    },
+    {
+     "label": "census code-4 LOOP",
+     "path": "loop",
+     "executed": {
+      "ops": 96,
+      "kernel": 0
+     },
+     "update_calls": 96
+    },
+    {
+     "label": "census reason-1 LOOP",
+     "path": "loop",
+     "executed": {
+      "ops": 48,
+      "kernel": 0
+     },
+     "update_calls": 48
+    },
+    {
+     "label": "census reason-1 KERNEL",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 48
+     },
+     "update_calls": 48
+    },
+    {
+     "label": "census reason-2 KERNEL",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 96
+     },
+     "update_calls": 96
+    },
+    {
+     "label": "census reason-2 LOOP",
+     "path": "loop",
+     "executed": {
+      "ops": 96,
+      "kernel": 0
+     },
+     "update_calls": 96
+    },
+    {
+     "label": "census reason-3 LOOP",
+     "path": "loop",
+     "executed": {
+      "ops": 96,
+      "kernel": 0
+     },
+     "update_calls": 96
+    },
+    {
+     "label": "census reason-3 KERNEL",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 96
+     },
+     "update_calls": 96
+    },
+    {
+     "label": "census reason-4 KERNEL",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 96
+     },
+     "update_calls": 96
+    },
+    {
+     "label": "census reason-4 LOOP",
+     "path": "loop",
+     "executed": {
+      "ops": 96,
+      "kernel": 0
+     },
+     "update_calls": 96
+    },
+    {
+     "label": "census know-1 LOOP",
+     "path": "loop",
+     "executed": {
+      "ops": 96,
+      "kernel": 0
+     },
+     "update_calls": 96
+    },
+    {
+     "label": "census know-1 KERNEL",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 96
+     },
+     "update_calls": 96
+    },
+    {
+     "label": "census know-2 KERNEL",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 48
+     },
+     "update_calls": 48
+    },
+    {
+     "label": "census know-2 LOOP",
+     "path": "loop",
+     "executed": {
+      "ops": 48,
+      "kernel": 0
+     },
+     "update_calls": 48
+    },
+    {
+     "label": "census know-3 LOOP",
+     "path": "loop",
+     "executed": {
+      "ops": 96,
+      "kernel": 0
+     },
+     "update_calls": 96
+    },
+    {
+     "label": "census know-3 KERNEL",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 96
+     },
+     "update_calls": 96
+    },
+    {
+     "label": "census know-4 KERNEL",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 48
+     },
+     "update_calls": 48
+    },
+    {
+     "label": "census know-4 LOOP",
+     "path": "loop",
+     "executed": {
+      "ops": 48,
+      "kernel": 0
+     },
+     "update_calls": 48
+    },
+    {
+     "label": "census long-1 LOOP",
+     "path": "loop",
+     "executed": {
+      "ops": 96,
+      "kernel": 0
+     },
+     "update_calls": 96
+    },
+    {
+     "label": "census long-1 KERNEL",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 96
+     },
+     "update_calls": 96
+    },
+    {
+     "label": "census long-2 KERNEL",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 96
+     },
+     "update_calls": 96
+    },
+    {
+     "label": "census long-2 LOOP",
+     "path": "loop",
+     "executed": {
+      "ops": 96,
+      "kernel": 0
+     },
+     "update_calls": 96
+    },
+    {
+     "label": "census edge-1 LOOP",
+     "path": "loop",
+     "executed": {
+      "ops": 48,
+      "kernel": 0
+     },
+     "update_calls": 48
+    },
+    {
+     "label": "census edge-1 KERNEL",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 48
+     },
+     "update_calls": 48
+    },
+    {
+     "label": "census edge-2 KERNEL",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 96
+     },
+     "update_calls": 96
+    },
+    {
+     "label": "census edge-2 LOOP",
+     "path": "loop",
+     "executed": {
+      "ops": 96,
+      "kernel": 0
+     },
+     "update_calls": 96
+    }
+   ],
+   "decode": [
+    {
+     "label": "decode chat-1 LOOP free-run",
+     "path": "loop",
+     "executed": {
+      "ops": 12336,
+      "kernel": 0
+     },
+     "update_calls": 12336
+    },
+    {
+     "label": "decode chat-1 KERNEL free-run",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 12336
+     },
+     "update_calls": 12336
+    },
+    {
+     "label": "decode chat-1 KERNEL free-run repeat",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 12336
+     },
+     "update_calls": 12336
+    },
+    {
+     "label": "decode chat-1 KERNEL teacher-forced on the loop stream",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 12336
+     },
+     "update_calls": 12336
+    },
+    {
+     "label": "decode chat-2 LOOP free-run",
+     "path": "loop",
+     "executed": {
+      "ops": 12336,
+      "kernel": 0
+     },
+     "update_calls": 12336
+    },
+    {
+     "label": "decode chat-2 KERNEL free-run",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 12336
+     },
+     "update_calls": 12336
+    },
+    {
+     "label": "decode chat-2 KERNEL free-run repeat",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 12336
+     },
+     "update_calls": 12336
+    },
+    {
+     "label": "decode chat-2 KERNEL teacher-forced on the loop stream",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 12336
+     },
+     "update_calls": 12336
+    }
+   ],
+   "heldout": [],
+   "cachehist": [
+    {
+     "label": "cachehist LOOP incremental",
+     "path": "loop",
+     "executed": {
+      "ops": 11520,
+      "kernel": 0
+     },
+     "update_calls": 11520
+    },
+    {
+     "label": "cachehist LOOP replay",
+     "path": "loop",
+     "executed": {
+      "ops": 11520,
+      "kernel": 0
+     },
+     "update_calls": 11520
+    },
+    {
+     "label": "cachehist KERNEL incremental",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 11520
+     },
+     "update_calls": 11520
+    },
+    {
+     "label": "cachehist KERNEL replay",
+     "path": "kernel",
+     "executed": {
+      "ops": 0,
+      "kernel": 11520
+     },
+     "update_calls": 11520
+    }
+   ]
+  }
+ }
+}

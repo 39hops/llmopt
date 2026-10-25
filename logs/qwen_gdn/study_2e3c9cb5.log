@@ -1,0 +1,132 @@
+== selector 23:46:48 2e3c9cb5
+12 passed in 1.61s
+== tests 23:46:50 2e3c9cb5
+31 passed, 6 skipped in 0.79s
+== layers 23:46:51 2e3c9cb5
+[gdn] layers: y 9.81e-06 state 5.24e-05 carried 6.13e-05 per call loop 44.4 ms kernel 3.1 ms
+[gdn] layers wrote logs/qwen_gdn/layers.json in 38s
+== census 23:47:29 2e3c9cb5
+[gdn] census chat-1: 256 positions, identical 256/256, full-vocab max abs 5.81e-04, state 6.35e-04, wall loop 9.9s kernel 6.9s
+[gdn] census chat-2: 256 positions, identical 256/256, full-vocab max abs 3.19e-04, state 3.61e-04, wall loop 9.5s kernel 6.7s
+[gdn] census chat-3: 186 positions, identical 186/186, full-vocab max abs 3.22e-04, state 6.34e-04, wall loop 6.9s kernel 4.8s
+[gdn] census chat-4: 88 positions, identical 88/88, full-vocab max abs 4.30e-04, state 4.68e-04, wall loop 5.1s kernel 3.8s
+[gdn] census math-1: 256 positions, identical 256/256, full-vocab max abs 6.59e-04, state 5.89e-04, wall loop 9.5s kernel 6.7s
+[gdn] census math-2: 100 positions, identical 100/100, full-vocab max abs 2.10e-04, state 4.87e-04, wall loop 5.4s kernel 3.9s
+[gdn] census math-3: 117 positions, identical 117/117, full-vocab max abs 1.86e-04, state 6.16e-04, wall loop 6.2s kernel 4.5s
+[gdn] census math-4: 138 positions, identical 138/138, full-vocab max abs 1.91e-04, state 4.91e-04, wall loop 6.3s kernel 4.5s
+[gdn] census code-1: 204 positions, identical 204/204, full-vocab max abs 2.21e-04, state 4.67e-04, wall loop 8.6s kernel 6.4s
+[gdn] census code-2: 256 positions, identical 256/256, full-vocab max abs 2.77e-04, state 3.66e-04, wall loop 10.4s kernel 7.6s
+[gdn] census code-3: 256 positions, identical 256/256, full-vocab max abs 2.73e-04, state 3.66e-04, wall loop 10.1s kernel 7.4s
+[gdn] census code-4: 256 positions, identical 256/256, full-vocab max abs 2.59e-04, state 3.59e-04, wall loop 10.2s kernel 7.4s
+[gdn] census reason-1: 53 positions, identical 53/53, full-vocab max abs 2.19e-04, state 6.40e-04, wall loop 3.9s kernel 2.8s
+[gdn] census reason-2: 256 positions, identical 256/256, full-vocab max abs 3.30e-04, state 2.88e-04, wall loop 10.4s kernel 7.6s
+[gdn] census reason-3: 256 positions, identical 256/256, full-vocab max abs 1.73e-04, state 3.73e-04, wall loop 10.3s kernel 7.5s
+[gdn] census reason-4: 252 positions, identical 252/252, full-vocab max abs 3.50e-04, state 5.72e-04, wall loop 9.6s kernel 6.9s
+[gdn] census know-1: 200 positions, identical 200/200, full-vocab max abs 3.81e-04, state 3.23e-04, wall loop 6.9s kernel 4.7s
+[gdn] census know-2: 187 positions, identical 187/187, full-vocab max abs 3.60e-04, state 6.48e-04, wall loop 7.0s kernel 4.8s
+[gdn] census know-3: 256 positions, identical 256/256, full-vocab max abs 3.17e-04, state 3.33e-04, wall loop 9.6s kernel 6.9s
+[gdn] census know-4: 82 positions, identical 82/82, full-vocab max abs 4.38e-04, state 6.04e-04, wall loop 5.1s kernel 3.8s
+[gdn] census long-1: 256 positions, identical 256/256, full-vocab max abs 2.63e-04, state 2.75e-04, wall loop 10.3s kernel 7.5s
+[gdn] census long-2: 256 positions, identical 256/256, full-vocab max abs 9.34e-04, state 5.95e-04, wall loop 10.2s kernel 7.5s
+[gdn] census edge-1: 88 positions, identical 88/88, full-vocab max abs 2.69e-04, state 6.68e-04, wall loop 5.1s kernel 3.8s
+[gdn] census edge-2: 211 positions, identical 211/211, full-vocab max abs 3.86e-04, state 4.78e-04, wall loop 8.7s kernel 6.4s
+[gdn] census: identical 4722/4722, near-tie flips 0/15, state max 6.68e-04
+[gdn] census wrote logs/qwen_gdn/census.json in 453s
+== decode 23:55:02 2e3c9cb5
+[gdn] decode chat-1: streams equal True (first divergence None), kernel repeat equal True, teacher-forced max |dlogit| 1.20e-04, final state 2.31e-04, step loop 100 ms kernel 93 ms
+[gdn] decode chat-2: streams equal True (first divergence None), kernel repeat equal True, teacher-forced max |dlogit| 1.15e-04, final state 1.77e-04, step loop 100 ms kernel 93 ms
+[gdn] decode wrote logs/qwen_gdn/decode.json in 226s
+== heldout 23:58:49 2e3c9cb5
+[gdn] heldout 512 LOOP   ttft 13.17s e2e 14.79s peak 11.91 GB step 100 ms
+[gdn] heldout 512 KERNEL ttft 8.87s e2e 10.37s peak 11.99 GB step 93 ms
+[gdn] heldout 512 KERNEL ttft 8.89s e2e 10.39s peak 11.99 GB step 93 ms
+[gdn] heldout 512 LOOP   ttft 13.19s e2e 14.81s peak 11.91 GB step 100 ms
+[gdn] heldout 512 LOOP   ttft 13.24s e2e 14.86s peak 11.91 GB step 100 ms
+[gdn] heldout 512 KERNEL ttft 8.89s e2e 10.40s peak 11.99 GB step 93 ms
+[gdn] heldout 512 KERNEL ttft 8.88s e2e 10.38s peak 11.99 GB step 94 ms
+[gdn] heldout 512 LOOP   ttft 13.18s e2e 14.80s peak 11.91 GB step 100 ms
+[gdn] heldout 512 LOOP   ttft 13.19s e2e 14.81s peak 11.91 GB step 100 ms
+[gdn] heldout 512 KERNEL ttft 8.87s e2e 10.38s peak 11.99 GB step 93 ms
+[gdn] heldout 512 KERNEL ttft 8.88s e2e 10.39s peak 11.99 GB step 93 ms
+[gdn] heldout 512 LOOP   ttft 13.18s e2e 14.80s peak 11.91 GB step 100 ms
+[gdn] heldout 1024 LOOP   ttft 26.83s e2e 28.48s peak 12.02 GB step 101 ms
+[gdn] heldout 1024 KERNEL ttft 18.09s e2e 19.60s peak 12.12 GB step 94 ms
+[gdn] heldout 1024 KERNEL ttft 18.11s e2e 19.62s peak 12.12 GB step 94 ms
+[gdn] heldout 1024 LOOP   ttft 26.87s e2e 28.50s peak 12.02 GB step 101 ms
+[gdn] heldout 1024 LOOP   ttft 26.85s e2e 28.47s peak 12.02 GB step 101 ms
+[gdn] heldout 1024 KERNEL ttft 18.11s e2e 19.63s peak 12.12 GB step 95 ms
+[gdn] heldout 1024 KERNEL ttft 18.09s e2e 19.61s peak 12.12 GB step 95 ms
+[gdn] heldout 1024 LOOP   ttft 26.88s e2e 28.50s peak 12.02 GB step 101 ms
+[gdn] heldout 1024 LOOP   ttft 26.88s e2e 28.50s peak 12.02 GB step 101 ms
+[gdn] heldout 1024 KERNEL ttft 18.10s e2e 19.62s peak 12.12 GB step 95 ms
+[gdn] heldout 1024 KERNEL ttft 18.13s e2e 19.64s peak 12.12 GB step 94 ms
+[gdn] heldout 1024 LOOP   ttft 26.89s e2e 28.51s peak 12.02 GB step 101 ms
+[gdn] heldout 2048 LOOP   ttft 52.31s e2e 53.97s peak 12.15 GB step 102 ms
+[gdn] heldout 2048 KERNEL ttft 34.88s e2e 36.44s peak 12.25 GB step 96 ms
+[gdn] heldout 2048 KERNEL ttft 34.88s e2e 36.43s peak 12.25 GB step 96 ms
+[gdn] heldout 2048 LOOP   ttft 52.34s e2e 54.00s peak 12.15 GB step 102 ms
+[gdn] heldout 2048 LOOP   ttft 52.29s e2e 53.94s peak 12.15 GB step 102 ms
+[gdn] heldout 2048 KERNEL ttft 34.83s e2e 36.38s peak 12.25 GB step 96 ms
+[gdn] heldout 2048 KERNEL ttft 34.87s e2e 36.41s peak 12.25 GB step 95 ms
+[gdn] heldout 2048 LOOP   ttft 52.30s e2e 53.95s peak 12.15 GB step 102 ms
+[gdn] heldout 2048 LOOP   ttft 53.13s e2e 54.79s peak 12.15 GB step 102 ms
+[gdn] heldout 2048 KERNEL ttft 34.84s e2e 36.39s peak 12.25 GB step 96 ms
+[gdn] heldout 2048 KERNEL ttft 34.84s e2e 36.38s peak 12.25 GB step 96 ms
+[gdn] heldout 2048 LOOP   ttft 52.30s e2e 53.96s peak 12.15 GB step 102 ms
+[gdn] heldout 4096 LOOP   ttft 104.86s peak 12.52 GB
+[gdn] heldout 4096 KERNEL ttft 69.92s peak 12.63 GB
+[gdn] heldout 4096 KERNEL ttft 70.17s peak 12.63 GB
+[gdn] heldout 4096 LOOP   ttft 104.93s peak 12.52 GB
+[gdn] long 1024 LOOP   e2e 52.9s decode 25.9s step 101 ms
+[gdn] long 1024 KERNEL e2e 42.4s decode 24.3s step 95 ms
+[gdn] long 1024 KERNEL e2e 42.4s decode 24.3s step 94 ms
+[gdn] long 1024 LOOP   e2e 52.8s decode 25.9s step 101 ms
+[gdn] long 1024 LOOP   e2e 52.8s decode 25.9s step 101 ms
+[gdn] long 1024 KERNEL e2e 42.4s decode 24.3s step 95 ms
+[gdn] long 1024 KERNEL e2e 42.4s decode 24.3s step 95 ms
+[gdn] long 1024 LOOP   e2e 52.8s decode 25.9s step 101 ms
+[gdn] long 2048 LOOP   e2e 78.4s decode 26.2s step 102 ms
+[gdn] long 2048 KERNEL e2e 59.4s decode 24.5s step 96 ms
+[gdn] long 2048 KERNEL e2e 59.4s decode 24.6s step 96 ms
+[gdn] long 2048 LOOP   e2e 78.6s decode 26.2s step 102 ms
+[gdn] heldout wrote logs/qwen_gdn/heldout.json in 2468s
+== cachehist 00:39:57 2e3c9cb5
+[gdn] cachehist LOOP incremental c0 t0: 20 tokens, mode fresh, first token 1.94s
+[gdn] cachehist LOOP incremental c0 t1: 32 tokens, mode incremental, first token 1.91s
+[gdn] cachehist LOOP incremental c0 t2: 23 tokens, mode incremental, first token 1.91s
+[gdn] cachehist LOOP incremental c1 t0: 18 tokens, mode fresh, first token 1.89s
+[gdn] cachehist LOOP incremental c1 t1: 15 tokens, mode incremental, first token 1.87s
+[gdn] cachehist LOOP incremental c1 t2: 32 tokens, mode incremental, first token 1.98s
+[gdn] cachehist LOOP incremental c2 t0: 32 tokens, mode fresh, first token 2.01s
+[gdn] cachehist LOOP incremental c2 t1: 32 tokens, mode incremental, first token 1.87s
+[gdn] cachehist LOOP incremental c2 t2: 32 tokens, mode incremental, first token 1.87s
+[gdn] cachehist LOOP replay c0 t0: 20 tokens, mode fresh, first token 1.87s
+[gdn] cachehist LOOP replay c0 t1: 32 tokens, mode fresh, first token 2.60s
+[gdn] cachehist LOOP replay c0 t2: 23 tokens, mode fresh, first token 3.58s
+[gdn] cachehist LOOP replay c1 t0: 18 tokens, mode fresh, first token 1.87s
+[gdn] cachehist LOOP replay c1 t1: 15 tokens, mode fresh, first token 2.56s
+[gdn] cachehist LOOP replay c1 t2: 32 tokens, mode fresh, first token 3.69s
+[gdn] cachehist LOOP replay c2 t0: 32 tokens, mode fresh, first token 2.02s
+[gdn] cachehist LOOP replay c2 t1: 32 tokens, mode fresh, first token 3.34s
+[gdn] cachehist LOOP replay c2 t2: 32 tokens, mode fresh, first token 3.71s
+[gdn] cachehist KERNEL incremental c0 t0: 20 tokens, mode fresh, first token 1.72s
+[gdn] cachehist KERNEL incremental c0 t1: 32 tokens, mode incremental, first token 1.72s
+[gdn] cachehist KERNEL incremental c0 t2: 23 tokens, mode incremental, first token 1.72s
+[gdn] cachehist KERNEL incremental c1 t0: 18 tokens, mode fresh, first token 1.72s
+[gdn] cachehist KERNEL incremental c1 t1: 15 tokens, mode incremental, first token 1.72s
+[gdn] cachehist KERNEL incremental c1 t2: 32 tokens, mode incremental, first token 1.81s
+[gdn] cachehist KERNEL incremental c2 t0: 32 tokens, mode fresh, first token 1.82s
+[gdn] cachehist KERNEL incremental c2 t1: 32 tokens, mode incremental, first token 1.71s
+[gdn] cachehist KERNEL incremental c2 t2: 32 tokens, mode incremental, first token 1.72s
+[gdn] cachehist KERNEL replay c0 t0: 20 tokens, mode fresh, first token 1.71s
+[gdn] cachehist KERNEL replay c0 t1: 32 tokens, mode fresh, first token 2.15s
+[gdn] cachehist KERNEL replay c0 t2: 23 tokens, mode fresh, first token 2.59s
+[gdn] cachehist KERNEL replay c1 t0: 18 tokens, mode fresh, first token 1.72s
+[gdn] cachehist KERNEL replay c1 t1: 15 tokens, mode fresh, first token 2.12s
+[gdn] cachehist KERNEL replay c1 t2: 32 tokens, mode fresh, first token 2.88s
+[gdn] cachehist KERNEL replay c2 t0: 32 tokens, mode fresh, first token 1.83s
+[gdn] cachehist KERNEL replay c2 t1: 32 tokens, mode fresh, first token 2.74s
+[gdn] cachehist KERNEL replay c2 t2: 32 tokens, mode fresh, first token 2.63s
+[gdn] cachehist: unequal turns 0/9, reused {'LOOP': 6, 'KERNEL': 6}
+[gdn] cachehist wrote logs/qwen_gdn/cachehist.json in 176s
+== DONE 00:42:53

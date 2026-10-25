@@ -615,16 +615,16 @@ Census: library 205, reproduce-pinned 9, results-cited 567, spec-cited 75, tool-
 | qwen | qwen_e0_disagreement_census.py | results-cited | RESULTS, specs | RESULTS×4, specs×1 | — | 1 | 1 | — |
 | qwen | qwen_e0_preflight.py | UNCITED | — | — | — | — | — | — |
 | qwen | qwen_e0_recompute.py | UNCITED | — | — | — | — | — | — |
-| qwen | qwen_e0_spec_census.py | results-cited | RESULTS, specs | RESULTS×7, specs×4 | — | — | 3 | — |
+| qwen | qwen_e0_spec_census.py | results-cited | RESULTS, specs | RESULTS×7, specs×5 | — | — | 3 | — |
 | qwen | qwen_effort_obs.py | results-cited | RESULTS | RESULTS×6 | — | — | — | — |
 | qwen | qwen_effort_probe.py | results-cited | RESULTS, via:specs | RESULTS×7 | — | 9 | — | — |
 | qwen | qwen_effort_quant.py | results-cited | RESULTS | RESULTS×7 | — | — | 1 | — |
 | qwen | qwen_effort_study.sh | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
 | qwen | qwen_effort_tower.py | results-cited | RESULTS, via:specs | RESULTS×3 | — | 1 | — | — |
 | qwen | qwen_family_probe.py | library | RESULTS, via:specs | RESULTS×2 | 1 | 1 | — | — |
-| qwen | qwen_gdn_kernel_qual.py | results-cited | RESULTS | RESULTS×5 | — | 1 | 1 | — |
-| qwen | qwen_gdn_obs.py | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
-| qwen | qwen_gdn_study.sh | results-cited | RESULTS | RESULTS×3 | — | — | — | — |
+| qwen | qwen_gdn_kernel_qual.py | results-cited | RESULTS, specs | RESULTS×10, specs×1 | — | 1 | 1 | — |
+| qwen | qwen_gdn_obs.py | results-cited | RESULTS, specs | RESULTS×6, specs×1 | — | — | — | — |
+| qwen | qwen_gdn_study.sh | results-cited | RESULTS, specs | RESULTS×3, specs×1 | — | — | — | — |
 | qwen | qwen_geometry_capture.py | results-cited | RESULTS, specs | RESULTS×7, specs×1 | — | 1 | 1 | — |
 | qwen | qwen_geometry_obs.py | results-cited | RESULTS, specs | RESULTS×10, specs×1 | — | 1 | — | — |
 | qwen | qwen_geometry_quant.py | library | RESULTS, specs | RESULTS×11, specs×1 | 1 | 1 | 1 | — |

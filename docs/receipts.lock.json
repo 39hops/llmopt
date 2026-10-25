@@ -4869,16 +4869,25 @@
    "tracked": true
   },
   "logs/qwen_gdn/adjudicate_1/adjudication.txt": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 352,
+   "exists": true,
+   "sha256": "3ae91c8a98f9a35e58d3fac27e2a8db49ebad519fc4bb9095202641da122a1b5",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_gdn/adjudicate_1/observations.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 28269,
+   "exists": true,
+   "sha256": "dba80c17caadc9f96aa1b938164cc95f2c6d45691520b12a3740150803841b21",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_gdn/cachehist.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 11630,
+   "exists": true,
+   "sha256": "ffaacdca1327bbbec78af9f6c2efaa0d8fe89e1ee49cb86c427546c57fb9f707",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_gdn/calibration/layers_gdn-dev-1-1024.json": {
    "bytes": 57684,
@@ -4888,29 +4897,52 @@
    "tracked": true
   },
   "logs/qwen_gdn/census.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 86298,
+   "exists": true,
+   "sha256": "8814d7ef2b2260d7eda4282ba61c280c44a5691db518bbaef9269ecc740d5dec",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_gdn/census_positions.jsonl": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 2287432,
+   "exists": true,
+   "local_only": true,
+   "sha256": "6d1e3be1c71ba9b6ed23f7698ae035bf8229a0f1b8bd201dce14748aa5b3170f",
+   "source": "results",
+   "tracked": false
   },
   "logs/qwen_gdn/decode.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 57640,
+   "exists": true,
+   "sha256": "dcf857f282a829c554d2a4f3febd97edf1765a26c4d146b27c3cce1bdf842a51",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_gdn/heldout.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 151377,
+   "exists": true,
+   "sha256": "288d8fd85c5c855b12eebe8a7c0623ac0764165ad2775cde1d655f1603971382",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_gdn/layers.json": {
-   "exists": false,
-   "source": "prereg"
+   "bytes": 48292,
+   "exists": true,
+   "sha256": "11f93c135ce8907ed74116df8fea3fde943038f9e4826b2d26a6e973c0b619d6",
+   "source": "results",
+   "tracked": true
   },
   "logs/qwen_gdn/smoke_1/census.json": {
    "bytes": 6128,
    "exists": true,
    "sha256": "1c428b4ce121ced47c5c2c28f584f0be3252eabff175e2fbf574e76012c8894a",
+   "source": "results",
+   "tracked": true
+  },
+  "logs/qwen_gdn/study_2e3c9cb5.log": {
+   "bytes": 10687,
+   "exists": true,
+   "sha256": "9bc1f65476940e7c28fc04a8b49d3673bba5f6fd717955e2c66905e023291057",
    "source": "results",
    "tracked": true
   },

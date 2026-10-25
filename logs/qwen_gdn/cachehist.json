@@ -1,0 +1,418 @@
+{
+ "commit": "2e3c9cb5",
+ "tree_dirty": false,
+ "smoke": false,
+ "stage": "cachehist",
+ "cold_load_s": 6.226214250084013,
+ "driver": "scratch/qwen_gdn_kernel_qual.py",
+ "driver_sha256": "89ef4a9b180b7c9c14e369a45116266c4a667fab1a0baebb35995a5a52b799ef",
+ "selector_sha256": "8c6907a971241f9262f04c9ef27841a813ff8a83d3d311d66fdccc86ba340aad",
+ "layer_ordinals": [
+  0,
+  9,
+  19,
+  29,
+  39,
+  47
+ ],
+ "vendor": {
+  "mlx_version": "0.31.2",
+  "mlx_lm_version": "0.31.3",
+  "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+  "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+  "metal_available": true,
+  "default_device": "Device(gpu, 0)"
+ },
+ "model_training_flag": true,
+ "engine": {
+  "kernel_version": 5,
+  "chain_sha256": "de7e0180bf49f965c17116b7fbe8c34d2b1529c2431cc234f3a6460ad84b24dc",
+  "cache_limit_bytes": 2147483648,
+  "chunk": 256,
+  "matmul": "gemm",
+  "tokenizer_files_sha256": {
+   "tokenizer.json": "0997f410c57a1f4e53b09e4be8f4a172d90edd9564368fb0847030937229b9f3",
+   "tokenizer_config.json": "b11349aafa7cdc6a320767cf7ceb29ed82f7eda5d65e8e0819e76f0ce947bf27",
+   "config.json": "191e0af232104ed8b65258cf3fb2b842e288008baca7633c11b82a1ac7203aab"
+  },
+  "families": {
+   "linear_attn": 48,
+   "full_attn": 16
+  },
+  "v_live": 248077
+ },
+ "conversations": [
+  [
+   "What is the capital of Portugal?",
+   "And its population, roughly?",
+   "Name one river there."
+  ],
+  [
+   "Write a haiku about granite.",
+   "Now one about copper.",
+   "Which did you prefer and why?"
+  ],
+  [
+   "Give me three prime numbers above 100.",
+   "Add them together.",
+   "Is the sum prime?"
+  ]
+ ],
+ "max_tokens": 32,
+ "dispatch": [
+  {
+   "label": "cachehist LOOP incremental",
+   "selector": "llmopt.lab.qgdn.recurrence_path",
+   "path": "loop",
+   "update_calls": 11520,
+   "requested_by_vendor_flag": {
+    "kernel": 0,
+    "loop": 11520
+   },
+   "executed": {
+    "ops": 11520,
+    "kernel": 0
+   },
+   "max_T": 23,
+   "vendor": {
+    "mlx_version": "0.31.2",
+    "mlx_lm_version": "0.31.3",
+    "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+    "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+    "metal_available": true,
+    "default_device": "Device(gpu, 0)"
+   }
+  },
+  {
+   "label": "cachehist LOOP replay",
+   "selector": "llmopt.lab.qgdn.recurrence_path",
+   "path": "loop",
+   "update_calls": 11520,
+   "requested_by_vendor_flag": {
+    "kernel": 0,
+    "loop": 11520
+   },
+   "executed": {
+    "ops": 11520,
+    "kernel": 0
+   },
+   "max_T": 124,
+   "vendor": {
+    "mlx_version": "0.31.2",
+    "mlx_lm_version": "0.31.3",
+    "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+    "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+    "metal_available": true,
+    "default_device": "Device(gpu, 0)"
+   }
+  },
+  {
+   "label": "cachehist KERNEL incremental",
+   "selector": "llmopt.lab.qgdn.recurrence_path",
+   "path": "kernel",
+   "update_calls": 11520,
+   "requested_by_vendor_flag": {
+    "kernel": 0,
+    "loop": 11520
+   },
+   "executed": {
+    "ops": 0,
+    "kernel": 11520
+   },
+   "max_T": 23,
+   "vendor": {
+    "mlx_version": "0.31.2",
+    "mlx_lm_version": "0.31.3",
+    "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+    "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+    "metal_available": true,
+    "default_device": "Device(gpu, 0)"
+   }
+  },
+  {
+   "label": "cachehist KERNEL replay",
+   "selector": "llmopt.lab.qgdn.recurrence_path",
+   "path": "kernel",
+   "update_calls": 11520,
+   "requested_by_vendor_flag": {
+    "kernel": 0,
+    "loop": 11520
+   },
+   "executed": {
+    "ops": 0,
+    "kernel": 11520
+   },
+   "max_T": 124,
+   "vendor": {
+    "mlx_version": "0.31.2",
+    "mlx_lm_version": "0.31.3",
+    "qwen3_5_sha256": "f0daa30bba5cb521c8bdfa7093101a544c6a37bbba09bca582288219cb04ae3a",
+    "gated_delta_sha256": "79c8376a51c694b03e54d2f996ced6ea6c8c42868b8571529f97334db165a3e1",
+    "metal_available": true,
+    "default_device": "Device(gpu, 0)"
+   }
+  }
+ ],
+ "turns": [
+  {
+   "conversation": 0,
+   "turn": 0,
+   "kernel_incremental_equals_kernel_replay": true,
+   "kernel_incremental_equals_loop_incremental": true,
+   "loop_incremental_equals_loop_replay": true,
+   "modes": {
+    "KERNEL": "fresh",
+    "LOOP": "fresh"
+   },
+   "notes": {
+    "KERNEL": "",
+    "LOOP": ""
+   },
+   "n_generated": {
+    "KERNEL": 20,
+    "LOOP": 20
+   },
+   "first_token_s": {
+    "KERNEL_inc": 1.7238897080533206,
+    "LOOP_inc": 1.9367187079042196,
+    "KERNEL_replay": 1.7139185420237482,
+    "LOOP_replay": 1.8697577500715852
+   },
+   "kernel_text": "The capital of Portugal is **Lisbon** (Portuguese: *Lisboa*).",
+   "loop_text": "The capital of Portugal is **Lisbon** (Portuguese: *Lisboa*)."
+  },
+  {
+   "conversation": 0,
+   "turn": 1,
+   "kernel_incremental_equals_kernel_replay": true,
+   "kernel_incremental_equals_loop_incremental": true,
+   "loop_incremental_equals_loop_replay": true,
+   "modes": {
+    "KERNEL": "incremental",
+    "LOOP": "incremental"
+   },
+   "notes": {
+    "KERNEL": "",
+    "LOOP": ""
+   },
+   "n_generated": {
+    "KERNEL": 32,
+    "LOOP": 32
+   },
+   "first_token_s": {
+    "KERNEL_inc": 1.7247408342082053,
+    "LOOP_inc": 1.9069008328951895,
+    "KERNEL_replay": 2.1465832921676338,
+    "LOOP_replay": 2.5974112080875784
+   },
+   "kernel_text": "The population of Lisbon varies depending on whether you are referring to the city proper or the greater metropolitan ar",
+   "loop_text": "The population of Lisbon varies depending on whether you are referring to the city proper or the greater metropolitan ar"
+  },
+  {
+   "conversation": 0,
+   "turn": 2,
+   "kernel_incremental_equals_kernel_replay": true,
+   "kernel_incremental_equals_loop_incremental": true,
+   "loop_incremental_equals_loop_replay": true,
+   "modes": {
+    "KERNEL": "incremental",
+    "LOOP": "incremental"
+   },
+   "notes": {
+    "KERNEL": "",
+    "LOOP": ""
+   },
+   "n_generated": {
+    "KERNEL": 23,
+    "LOOP": 23
+   },
+   "first_token_s": {
+    "KERNEL_inc": 1.720394916832447,
+    "LOOP_inc": 1.910691750003025,
+    "KERNEL_replay": 2.592267833882943,
+    "LOOP_replay": 3.576940916944295
+   },
+   "kernel_text": "The main river that flows through Lisbon is the **Tagus** (known in Portuguese as the *Tejo*).",
+   "loop_text": "The main river that flows through Lisbon is the **Tagus** (known in Portuguese as the *Tejo*)."
+  },
+  {
+   "conversation": 1,
+   "turn": 0,
+   "kernel_incremental_equals_kernel_replay": true,
+   "kernel_incremental_equals_loop_incremental": true,
+   "loop_incremental_equals_loop_replay": true,
+   "modes": {
+    "KERNEL": "fresh",
+    "LOOP": "fresh"
+   },
+   "notes": {
+    "KERNEL": "",
+    "LOOP": ""
+   },
+   "n_generated": {
+    "KERNEL": 18,
+    "LOOP": 18
+   },
+   "first_token_s": {
+    "KERNEL_inc": 1.7204221670981497,
+    "LOOP_inc": 1.8889941659290344,
+    "KERNEL_replay": 1.7237419579178095,
+    "LOOP_replay": 1.872360625071451
+   },
+   "kernel_text": "Hard stone, gray face\nWeathered by time's slow hand\nStill stands unbroken",
+   "loop_text": "Hard stone, gray face\nWeathered by time's slow hand\nStill stands unbroken"
+  },
+  {
+   "conversation": 1,
+   "turn": 1,
+   "kernel_incremental_equals_kernel_replay": true,
+   "kernel_incremental_equals_loop_incremental": true,
+   "loop_incremental_equals_loop_replay": true,
+   "modes": {
+    "KERNEL": "incremental",
+    "LOOP": "incremental"
+   },
+   "notes": {
+    "KERNEL": "",
+    "LOOP": ""
+   },
+   "n_generated": {
+    "KERNEL": 15,
+    "LOOP": 15
+   },
+   "first_token_s": {
+    "KERNEL_inc": 1.7170537919737399,
+    "LOOP_inc": 1.8703365840483457,
+    "KERNEL_replay": 2.124789207940921,
+    "LOOP_replay": 2.5585807499010116
+   },
+   "kernel_text": "Red metal gleams\nWarmth flows through its veins\nPatina green",
+   "loop_text": "Red metal gleams\nWarmth flows through its veins\nPatina green"
+  },
+  {
+   "conversation": 1,
+   "turn": 2,
+   "kernel_incremental_equals_kernel_replay": true,
+   "kernel_incremental_equals_loop_incremental": true,
+   "loop_incremental_equals_loop_replay": true,
+   "modes": {
+    "KERNEL": "incremental",
+    "LOOP": "incremental"
+   },
+   "notes": {
+    "KERNEL": "",
+    "LOOP": ""
+   },
+   "n_generated": {
+    "KERNEL": 32,
+    "LOOP": 32
+   },
+   "first_token_s": {
+    "KERNEL_inc": 1.8149998330045491,
+    "LOOP_inc": 1.9796818748582155,
+    "KERNEL_replay": 2.881962792016566,
+    "LOOP_replay": 3.6857239578384906
+   },
+   "kernel_text": "I don\u2019t have personal preferences, but I can tell you which one I think is more effective based on the criteria of a hai",
+   "loop_text": "I don\u2019t have personal preferences, but I can tell you which one I think is more effective based on the criteria of a hai"
+  },
+  {
+   "conversation": 2,
+   "turn": 0,
+   "kernel_incremental_equals_kernel_replay": true,
+   "kernel_incremental_equals_loop_incremental": true,
+   "loop_incremental_equals_loop_replay": true,
+   "modes": {
+    "KERNEL": "fresh",
+    "LOOP": "fresh"
+   },
+   "notes": {
+    "KERNEL": "",
+    "LOOP": ""
+   },
+   "n_generated": {
+    "KERNEL": 32,
+    "LOOP": 32
+   },
+   "first_token_s": {
+    "KERNEL_inc": 1.8226817091926932,
+    "LOOP_inc": 2.0104225408285856,
+    "KERNEL_replay": 1.8305518340785056,
+    "LOOP_replay": 2.015758082969114
+   },
+   "kernel_text": "To find three prime numbers above 100, we can look at the integers immediately following 100 and test them for primality",
+   "loop_text": "To find three prime numbers above 100, we can look at the integers immediately following 100 and test them for primality"
+  },
+  {
+   "conversation": 2,
+   "turn": 1,
+   "kernel_incremental_equals_kernel_replay": true,
+   "kernel_incremental_equals_loop_incremental": true,
+   "loop_incremental_equals_loop_replay": true,
+   "modes": {
+    "KERNEL": "incremental",
+    "LOOP": "incremental"
+   },
+   "notes": {
+    "KERNEL": "",
+    "LOOP": ""
+   },
+   "n_generated": {
+    "KERNEL": 32,
+    "LOOP": 32
+   },
+   "first_token_s": {
+    "KERNEL_inc": 1.7140177909750491,
+    "LOOP_inc": 1.8700882499106228,
+    "KERNEL_replay": 2.7398225001525134,
+    "LOOP_replay": 3.33983700000681
+   },
+   "kernel_text": "Here are three prime numbers above 100:\n1.  **101**\n2.  **103**\n3.",
+   "loop_text": "Here are three prime numbers above 100:\n1.  **101**\n2.  **103**\n3."
+  },
+  {
+   "conversation": 2,
+   "turn": 2,
+   "kernel_incremental_equals_kernel_replay": true,
+   "kernel_incremental_equals_loop_incremental": true,
+   "loop_incremental_equals_loop_replay": true,
+   "modes": {
+    "KERNEL": "incremental",
+    "LOOP": "incremental"
+   },
+   "notes": {
+    "KERNEL": "",
+    "LOOP": ""
+   },
+   "n_generated": {
+    "KERNEL": 32,
+    "LOOP": 32
+   },
+   "first_token_s": {
+    "KERNEL_inc": 1.718531000195071,
+    "LOOP_inc": 1.8735395420808345,
+    "KERNEL_replay": 2.631588750053197,
+    "LOOP_replay": 3.707036458188668
+   },
+   "kernel_text": "No, the sum is not prime.\n\nThe sum of the three prime numbers (101, 103, and 107)",
+   "loop_text": "No, the sum is not prime.\n\nThe sum of the three prime numbers (101, 103, and 107)"
+  }
+ ],
+ "summary": {
+  "n_turns": 9,
+  "unequal_turns": 0,
+  "kernel_inc_vs_replay_unequal": 0,
+  "kernel_vs_loop_unequal": 0,
+  "loop_inc_vs_replay_unequal": 0,
+  "incremental_reused_turns": {
+   "LOOP": 6,
+   "KERNEL": 6
+  },
+  "fallback_turns": {
+   "LOOP": 0,
+   "KERNEL": 0
+  }
+ },
+ "wall_s": 176.23223841679282,
+ "process_peak_rss_bytes": 11148558336
+}

@@ -85923,3 +85923,174 @@ chunk 256 GEMM prefill, single unpadded prompts (the two implementations
 differ in their masked semantics, which no serving call reaches), mlx-lm
 0.31.3 under the source guard. Cost about one hour of Mac GPU. Not in
 scope: any default change, any new kernel, Muon, distillation.
+
+## VERDICT QWEN-GDN-KERNEL-0: BARS 1 TO 8 AND 10 FIRE, BAR 9 UNRESOLVED, NOT-REFUTED; the Metal recurrence kernel QUALIFIES as a substitute for the Python loop on arm C (one Mac, one session, generation 5, chunk 256 GEMM prefill, mlx-lm 0.31.3, single unpadded prompts) and earns a recommendation for a SEPARATE promotion GO (adjudicated against docs/preregs/qwen-gdn-kernel-0.json, every bar quoted below with its registered threshold; logs/qwen_gdn/adjudicate_1/observations.json and logs/qwen_gdn/adjudicate_1/adjudication.txt): arm C against arm C through the serving path, the kernel's argmax equals the loop's at 4,722 of 4,722 E0 positions (full-vocabulary logit difference 9.3e-4 at worst, median 4.8e-5) and at all 15 near ties (loop margins 1.2e-3 to 1.95e-2 logits, kernel margins within 5e-5 of them); on identical inputs the recurrent state differs by 5.2e-5 of its root mean square (6.1e-5 carried across four chunks, at most 5.6e-5 relative on large elements over the layers stage including its T = 1 step, bit-identical across kernel repeats), the propagated final states by 6.7e-4 at worst (4.5e-5 at the first DeltaNet layer, 1.2e-4 to 2.7e-4 through the 23rd, 2.3e-4 to 6.7e-4 from the 24th on), every array finite; both 256-step free-run streams equal, the teacher-forced logit difference 1.2e-4 at worst over 512 steps and the 32-step state curve between 1.7e-4 and 2.5e-4 at the deepest sampled layer; 9 of 9 chat turns equal with incremental reuse on all 6 eligible turns in each arm; peak memory 1.008 at worst, the 16-step decode 0.93 to 0.94, the 512-token TTFT 0.673; TTFT 0.674 at 1,024 (18.1 against 26.9 s) and 0.666 at 2,048 (34.9 against 52.3 s), 0.668 at 4,096 (70.0 against 104.9 s, descriptive), both arms' TTFT spreads under 1.7 percent; the long decode step 0.936 (94.6 against 101.0 ms, inside the 0.02 fence of the 0.95 bar: UNRESOLVED) and the 1,024-token prefill plus 256 steps 0.802 (42.4 against 52.8 s); dispatch proven in every receipt (every LOOP selection executed gated_delta_ops only, every KERNEL selection the kernel only); the serving default stays on the loop until the promotion GO passes its own gates; kernels, defaults and every prior receipt unchanged (2026-10-24, Mac, commit 2e3c9cb5 for the receipts, liverun qwen-gdn-kernel-0)
+
+Adjudicator output, verbatim (logs/qwen_gdn/adjudicate_1/adjudication.txt):
+BAR 1 CENSUS-ARGMAX: FIRE
+BAR 2 NEAR-TIES: FIRE
+BAR 3 STATE: FIRE
+BAR 4 DECODE: FIRE
+BAR 5 CACHE-HISTORY: FIRE
+BAR 6 NO-REGRESSION: FIRE
+BAR 7 TTFT-1024: FIRE
+BAR 8 TTFT-2048: FIRE
+BAR 9 DECODE-STEP-LONG: UNRESOLVED [fence: |observed 0.9363690605120969 - bar 0.95| = 0.01363093948790306 < 0.02 ratio]
+BAR 10 E2E-LONG-1024: FIRE
+REFUTED-IF: NOT-REFUTED
+(the observations are
+valid under every floor of scratch/qwen_gdn_obs.py, including the dispatch
+proof, the operand sha pins, the reuse floor and the 3 percent spread gates.)
+
+Decision, by the registered rule: bars 1 to 6 (safety) all FIRE and bars 7
+and 8 (TTFT) FIRE, so the kernel path earns a RECOMMENDATION for a separate
+promotion GO. Bar 9 is UNRESOLVED inside its fence and plays no part in the
+rule; bar 10 FIRE is reported. Nothing is promoted here: llmopt/lab/qtower.py
+still builds the tower in training mode, llmopt/lab/qserve.py never imports
+the selector, and every serving call still runs the loop.
+
+Receipts (commit 2e3c9cb5, liverun qwen-gdn-kernel-0 armed 23:46:48 UTC,
+disarmed 00:42:53, 56 minutes; five processes, one Engine load each, cold
+load 6.1 to 6.4 s): logs/qwen_gdn/layers.json, logs/qwen_gdn/census.json,
+logs/qwen_gdn/census_positions.jsonl, logs/qwen_gdn/decode.json,
+logs/qwen_gdn/heldout.json, logs/qwen_gdn/cachehist.json,
+logs/qwen_gdn/study_2e3c9cb5.log, the adjudication pair; all force-added
+except census_positions.jsonl (2.3 MB, 4,722 rows), which stays untracked
+and is pinned by its sha256 in census.json (positions_sha256) and in the
+receipt lock, as the frozen generation-5 census positions were. Decode and
+cache-history timings are not ABBA-paired (fixed arm order) and are
+descriptive; the paired timings are the held-out stage's. Vendor provenance
+in every receipt: mlx 0.31.2, mlx-lm 0.31.3, qwen3_5.py sha256 f0daa30b...,
+gated_delta.py sha256 79c8376a..., default device the Metal GPU; the tower's
+training flag True throughout.
+
+Stage 1, layers (seed gdn-dev-3-1024, 1,019 tokens, four chunks; the first
+unread seed that fit): 192 recurrence calls captured through the loop (48
+layers x 4 chunks), the vendor flag requesting the loop on every one; at
+ordinals 0, 9, 19, 29, 39 and 47 on every chunk the kernel re-run from the
+loop's own operands and state-in gives y within 9.8e-6 and the new state
+within 5.2e-5 of the loop's RMS (relative on large elements 2.5e-5 and
+5.6e-5), the kernel carried on its own state across the four chunks within
+6.1e-5 (4.7e-5 relative), the T = 1 step from each arm's carried state inside
+the same band, two kernel runs bit-identical (0.0); every offline call went
+through the selector with the vendor flag inverted on purpose (loop 30 of
+30 calls on gated_delta_ops, kernel 78 of 78 on the kernel). Per call on
+these operands: loop 44.4 ms median, kernel 3.1 ms (14x). Real states are
+heavy-tailed: 97 percent of the first DeltaNet layer's state elements and
+40 to 75 percent of the deeper captured layers' sit under 1e-3 of the
+state's maximum (66 percent on average over the captured calls), which is why the bars
+normalize by the RMS and read the relative error on large elements only
+(the registration's "about 98 percent" was the smoke's two layers).
+
+Stage 2, census (24 rollouts, prompt plus recorded continuation, chunk 256
+GEMM, full head, arm order alternating by prompt): 4,722 of 4,722 argmaxes
+identical; full-vocabulary max abs logit difference 9.3e-4 at worst (p99
+2.2e-4, median 4.8e-5), at the loop's top-16 ids 6.6e-4 at worst (p99
+1.2e-4); teacher agreement 0.8291 in both arms, equal to the frozen census;
+the in-process loop arm argmax-identical to the frozen generation-5 Metal
+rows at 4,722 of 4,722 (descriptive; the frozen rows ran the fused one-shot
+forward, this study the chunked GEMM path). The 15 near ties, one by one
+(prompt, step, loop margin, kernel margin, identical): chat-2 80 0.0130
+0.0130 yes; chat-2 126 0.0191 0.0191 yes; chat-2 187 0.0048 0.0048 yes;
+chat-2 253 0.0156 0.0156 yes; math-1 149 0.0131 0.0132 yes; code-3 49
+0.0172 0.0172 yes; code-4 253 0.0195 0.0195 yes; reason-2 45 0.0142 0.0142
+yes; reason-2 75 0.0066 0.0066 yes; reason-2 140 0.0171 0.0172 yes;
+reason-2 169 0.0045 0.0046 yes; reason-4 179 0.0057 0.0057 yes; know-1 94
+0.0192 0.0193 yes; long-1 248 0.0012 0.0012 yes; long-2 163 0.0164 0.0164
+yes. Propagated final states after the full prefill: 6.7e-4 of the RMS at
+worst over 48 layers x 24 prompts (conv states 1.0e-4; relative on large
+elements 3.5e-3, reported, no bar); the depth profile (max over prompts)
+is 4.5e-5 at the first DeltaNet layer, 1.2e-4 to 2.7e-4 through the 23rd
+(2.0e-4 already at the second), and 2.3e-4 to 6.7e-4 from the 24th on
+(6.5e-4 at the 24th, the maximum 6.7e-4 at the 47th, 6.0e-4 at the 48th),
+not monotone: the difference is an order of magnitude larger at the end of
+the tower than at its first layer and stays 15x under the 1e-2 sanity bound
+(this study injected nothing per layer, so it does not attribute the growth
+to a mechanism). Wall: loop
+195 s, kernel 141 s over the 24 sequences.
+
+Stage 3, decode (chat-1 at 62 prompt tokens, chat-2 at 64; 256 greedy
+steps): both free-run streams equal between the arms, no divergence; the
+kernel run twice equal with logits bit-identical; the loop's stream fed
+teacher-forced through the kernel arm: max abs logit difference 1.2e-4 over
+all 512 steps (first 8 steps 1.2e-4, last 8 steps 1.1e-5 and 1.4e-5), zero
+argmax mismatches; the six-ordinal state curve every 32 steps runs between
+2.5e-4 and 1.7e-4 at the deepest ordinal (falling over the run) and
+between 1.5e-5 and 3.7e-5 at the first (roughly doubling over the run),
+2.5e-4 at most anywhere, the final 48-layer state 2.3e-4 at worst.
+Step medians 99.6 ms (loop) and 93.3 ms (kernel) at this context.
+
+Stage 4, held-out (the frozen prompts of 510, 1,029 and 2,040 tokens, named
+by target; one discarded warm-up per arm per length, then three ABBA
+blocks, 6 runs per arm per length, pool emptied before each run): TTFT
+medians loop 13.19, 26.88, 52.31 s against kernel 8.88, 18.10, 34.85 s,
+ratios 0.673, 0.674, 0.666; loop spreads 0.55, 0.20, 1.62 percent, kernel
+0.22, 0.23, 0.14; parity 0 mismatches in 18 kernel runs (final argmax and
+16 decode tokens equal to the loop's, top-16 within 2e-4), the loop
+self-consistent; peak active memory ratios 1.007, 1.008, 1.008 (footprint
+0.98 to 1.00 under the 2 GiB pool cap, transient 1.03); the 16-step decode
+ratios 0.932, 0.936, 0.934 (steps 100 to 102 ms loop, 93 to 96 ms kernel);
+instrumented runs: the kernel arm's CPU issue falls from 0.50 to 0.06 s at
+1,024 tokens and from 0.98 to 0.11 s at 2,048 and the GPU side from 26.4 to 18.0 s and 51.3 to 34.7 s (the GPU side
+carries most of the gain).
+At 4,096 tokens (the development prompt, one ABBA block, after the
+preflight): 104.9 against 70.0 s, ratio 0.668, peak 1.008, parity exact.
+Long generations (256 greedy steps): at 1,024 tokens two ABBA blocks, end
+to end 52.8 against 42.4 s (0.802), steady step 101.0 against 94.6 ms
+(0.936; the median over steps 5 to 256, the first four excluded), spreads 0.12 to 0.16 percent, all four kernel streams equal to
+the loop's; at 2,048 one block, 78.5 against 59.4 s (0.757), step 0.938,
+streams equal.
+
+Stage 5, cache histories (three conversations, thinking off, 32 tokens a
+turn, incremental and replay sessions in both arms): 9 of 9 turns with the
+kernel arm's incremental ids equal to its replay ids and to the loop arm's
+incremental ids; all 6 eligible turns reused the cache in both arms, no
+fallback; first-token latency on the short turns 1.7 to 1.8 s (kernel)
+against 1.9 to 2.0 s (loop).
+
+Registered bars against measured values: bar 3 at most 3e-4 (6.1e-5),
+relative at most 1e-3 (5.6e-5), propagated under 1e-2 (6.7e-4), non-finite
+0 (0); bar 4 streams unequal 0 (0), logit under 1e-2 (1.2e-4), repeat
+unequal 0 (0); bar 5 unequal turns 0 (0); bar 6 peak at most 1.05 with
+fence 0.01 (1.008), decode at most 1.02 with fence 0.02 (0.936), TTFT-512
+at most 1.03 with fence 0.02 (0.673); bars 7 and 8 at most 0.80 with fence
+0.03 (0.674, 0.666); bar 9 at most 0.95 with fence 0.02, FIRE at most 0.93
+(0.936); bar 10 at most 0.90 with fence 0.03 (0.802). Against the
+registered prior (TTFT about 0.70, ceiling 0.66; decode step 0.90 to
+0.95; propagated about 1e-3): TTFT 0.666 to 0.674 lands at the ceiling,
+the decode step 0.936 inside the prior, the propagated state 6.7e-4 under
+it; bar 3 was a prediction on an unread seed and read 6.1e-5 against the
+calibration's 5.4e-5 and 6.7e-5 (the calibration's loop timing of 87.0 ms
+per call against 44.4 here is unexplained; both are descriptive).
+
+Reading. On identical inputs the kernel differs from the loop by 5e-5 of
+the state's RMS, and the difference the tower propagates (7e-4 of the RMS
+at the deepest layers, 1e-3 logits at the output) flipped no argmax at
+4,722 census positions, 512 decode-stage steps, 20 kernel 16-step held-out
+decodes (18 at the three held-out lengths, 2 at 4,096), six 256-step long
+generations and 9 chat turns, including the 15 census positions decided by
+less than 0.02 logits. The gain is a third of the first-token latency at
+each of the four measured lengths (the recurrence was 34 percent of the
+chunk under QWEN-PREFILL-WALL-0); the decode step falls 6 to 7 percent
+(OBSERVATION QWEN-METAL-DECODE-BREAKDOWN-2 read the DeltaNet core's
+overlapping marginal at 12.6 ms of 100 at context 126; this study does not
+decompose what remains); a long answer's wall falls by a fifth at 1,024
+tokens and a quarter at 2,048; peak memory rises 0.8 percent. Limits: one Mac, one session, generation 5, chunk 256 GEMM prefill,
+mlx-lm 0.31.3 under the source guard; single unpadded prompts (masked
+semantics unmeasured; no mask on any captured call); the census is teacher-forced and
+the free-run evidence is 20 short decodes, six 256-step long generations,
+two 256-step decode-stage streams and nine chat turns; bar 9 is UNRESOLVED inside its fence (the bar asked for
+at least 5 percent, ratio at most 0.95; under its 0.02 fence FIRE needed at
+most 0.93; measured 0.936, 4 against 4 runs, spread 0.16 percent); the loop arm here differs from the frozen fused census at the
+GEMM reduction level (argmax-identical at every position). Bar 2 is a
+subset of bar 1 by construction.
+
+Recommendation (not an action): a separate promotion GO that selects the
+kernel path in llmopt/lab/qtower.py or qserve.py under the existing vendor
+source guard with its own acceptance gates (a fresh-prompt usefulness
+battery through the CLI, the release tests, a re-run of the 16-step
+held-out parity on the promoted code) and, if those pass, would flip the
+serving default.
+The microbenchmark numbers of the registration (1.9 against 42.5 ms
+synthetic; 3.4 against 87.0 ms on the calibration prompt) are superseded by
+the receipted 3.1 against 44.4 ms per layer-chunk here.

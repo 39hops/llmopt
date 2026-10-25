@@ -4,7 +4,7 @@ in committed code (never hand-written).
 
 Measurements (bar: metric)
   1   census_argmax_mismatches        positions of 4,722 where kernel argmax != loop argmax
-  2   census_near_tie_flips           of those, the 15 frozen near ties (cpu_margin < 0.02)
+  2   census_near_tie_flips           of those, the 15 frozen near ties (frozen metal_margin < 0.02)
   3   state_max_abs_over_rms          layers stage: kernel from the loop's own operands and state-in,
                                       and kernel carried across chunks, max over 6 layers x 4 chunks (+ T = 1 step)
   3:rel  state_max_rel_on_large       the element-wise relative error on large elements, same population
