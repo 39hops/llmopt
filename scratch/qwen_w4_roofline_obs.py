@@ -67,6 +67,16 @@ def main(rdir, prereg_path):
             reasons.append(f"{st}: the W4 census is not 192 GEMM-path matrices")
     if len(R) == 2 and R["decomp"]["commit"] != R["micro"]["commit"]:
         reasons.append(f"receipts from two commits {R['decomp']['commit']} {R['micro']['commit']}")
+
+    def stable_pin(pin):
+        """The pin without the qualify report's preflight block (free memory at load time, a per-process reading, not an identity)."""
+        pin = json.loads(json.dumps(pin))
+        pin.get("artifact", {}).get("chain_report", {}).pop("preflight", None)
+        return json.dumps(pin, sort_keys=True)
+    if len(R) == 2 and stable_pin(R["decomp"].get("model_pin", {})) != stable_pin(R["micro"].get("model_pin", {})):
+        reasons.append("model pin differs between the two receipts")
+    if len(R) == 2 and R["decomp"]["engine"].get("recurrence_vendor") != R["micro"]["engine"].get("recurrence_vendor"):
+        reasons.append("vendor provenance differs between the two receipts")
     meas, diag = {}, {}
     if "decomp" in R:
         D = R["decomp"]
@@ -133,6 +143,8 @@ def main(rdir, prereg_path):
             diag["micro"] = {"rates": rates, "T": T, "rows": {m: {k: v for k, v in rows[m]["rows"][T].items() if k != "note"} for m in MATRICES},
                              "decode": {m: rows[m]["decode"] for m in MATRICES}, "fp16_weights_exact": {m: rows[m].get("fp16_weights_exact") for m in MATRICES},
                              "roofline": U.get("roofline")}
+    for k, m in meas.items():            # the registered unit of each bar travels with its measurement (the adjudicator refuses a unit mismatch)
+        m["unit"] = "pct" if k == "1" else "ratio"
     valid = not reasons
     obs = {"registration_sha256": registration_digest(prereg), "receipts_dir": rdir, "commit": next(iter({r["commit"] for r in R.values()})) if len({r["commit"] for r in R.values()}) == 1 else None,
            "measurement_valid": valid, **({} if valid else {"measurement_reason": "; ".join(reasons)}),
